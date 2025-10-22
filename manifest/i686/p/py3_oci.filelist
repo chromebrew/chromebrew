@@ -1,12 +1,12 @@
-# Total size: 360758463
-/usr/local/lib/python3.13/site-packages/oci-2.161.0.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/oci-2.161.0.dist-info/LICENSE.txt
-/usr/local/lib/python3.13/site-packages/oci-2.161.0.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/oci-2.161.0.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/oci-2.161.0.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/oci-2.161.0.dist-info/THIRD_PARTY_LICENSES.txt
-/usr/local/lib/python3.13/site-packages/oci-2.161.0.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/oci-2.161.0.dist-info/top_level.txt
+# Total size: 360997635
+/usr/local/lib/python3.13/site-packages/oci-2.161.1.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/oci-2.161.1.dist-info/LICENSE.txt
+/usr/local/lib/python3.13/site-packages/oci-2.161.1.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/oci-2.161.1.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/oci-2.161.1.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/oci-2.161.1.dist-info/THIRD_PARTY_LICENSES.txt
+/usr/local/lib/python3.13/site-packages/oci-2.161.1.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/oci-2.161.1.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/oci/__init__.py
 /usr/local/lib/python3.13/site-packages/oci/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/__pycache__/alloy.cpython-313.pyc
@@ -2776,6 +2776,7 @@
 /usr/local/lib/python3.13/site-packages/oci/auth/signers/__pycache__/resource_principals_federation_signer.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/auth/signers/__pycache__/resource_principals_signer.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/auth/signers/__pycache__/security_token_signer.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/auth/signers/__pycache__/token_exchange_signer.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/auth/signers/ephemeral_resource_principals_delegation_token_signer.py
 /usr/local/lib/python3.13/site-packages/oci/auth/signers/ephemeral_resource_principals_signer.py
 /usr/local/lib/python3.13/site-packages/oci/auth/signers/ephemeral_resource_principals_v21_signer.py
@@ -2788,6 +2789,7 @@
 /usr/local/lib/python3.13/site-packages/oci/auth/signers/resource_principals_federation_signer.py
 /usr/local/lib/python3.13/site-packages/oci/auth/signers/resource_principals_signer.py
 /usr/local/lib/python3.13/site-packages/oci/auth/signers/security_token_signer.py
+/usr/local/lib/python3.13/site-packages/oci/auth/signers/token_exchange_signer.py
 /usr/local/lib/python3.13/site-packages/oci/autoscaling/__init__.py
 /usr/local/lib/python3.13/site-packages/oci/autoscaling/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/autoscaling/__pycache__/auto_scaling_client.cpython-313.pyc
@@ -9723,7 +9725,9 @@
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/pipeline_dataflow_step_run.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/pipeline_dataflow_step_update_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/pipeline_default_configuration_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/pipeline_default_step_parameter_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/pipeline_infrastructure_configuration_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/pipeline_json_step_output_parameter_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/pipeline_log_configuration_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/pipeline_ml_job_step_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/pipeline_ml_job_step_run.cpython-313.pyc
@@ -9735,7 +9739,9 @@
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/pipeline_shape_config_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/pipeline_step_configuration_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/pipeline_step_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/pipeline_step_output_parameter_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/pipeline_step_override_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/pipeline_step_parameter_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/pipeline_step_run.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/pipeline_step_update_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/__pycache__/pipeline_summary.cpython-313.pyc
@@ -10007,7 +10013,9 @@
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/pipeline_dataflow_step_run.py
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/pipeline_dataflow_step_update_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/pipeline_default_configuration_details.py
+/usr/local/lib/python3.13/site-packages/oci/data_science/models/pipeline_default_step_parameter_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/pipeline_infrastructure_configuration_details.py
+/usr/local/lib/python3.13/site-packages/oci/data_science/models/pipeline_json_step_output_parameter_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/pipeline_log_configuration_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/pipeline_ml_job_step_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/pipeline_ml_job_step_run.py
@@ -10019,7 +10027,9 @@
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/pipeline_shape_config_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/pipeline_step_configuration_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/pipeline_step_details.py
+/usr/local/lib/python3.13/site-packages/oci/data_science/models/pipeline_step_output_parameter_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/pipeline_step_override_details.py
+/usr/local/lib/python3.13/site-packages/oci/data_science/models/pipeline_step_parameter_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/pipeline_step_run.py
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/pipeline_step_update_details.py
 /usr/local/lib/python3.13/site-packages/oci/data_science/models/pipeline_summary.py
@@ -13856,9 +13866,12 @@
 /usr/local/lib/python3.13/site-packages/oci/devops/models/__pycache__/gitlab_trigger_create_result.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/devops/models/__pycache__/gitlab_trigger_summary.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/devops/models/__pycache__/helm_command_spec_artifact_source.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/devops/models/__pycache__/helm_diff_argument.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/devops/models/__pycache__/helm_diff_argument_collection.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/devops/models/__pycache__/helm_repository_deploy_artifact_source.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/devops/models/__pycache__/helm_set_value.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/devops/models/__pycache__/helm_set_value_collection.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/devops/models/__pycache__/helm_stage_content.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/devops/models/__pycache__/inline_deploy_artifact_source.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/devops/models/__pycache__/inline_public_key_verification_key_source.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/devops/models/__pycache__/invoke_function_deploy_stage.cpython-313.pyc
@@ -14000,9 +14013,11 @@
 /usr/local/lib/python3.13/site-packages/oci/devops/models/__pycache__/trigger_build_pipeline_action.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/devops/models/__pycache__/trigger_collection.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/devops/models/__pycache__/trigger_create_result.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/devops/models/__pycache__/trigger_deployment_dry_run_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/devops/models/__pycache__/trigger_deployment_pipeline_stage_run_progress.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/devops/models/__pycache__/trigger_deployment_stage.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/devops/models/__pycache__/trigger_deployment_stage_summary.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/devops/models/__pycache__/trigger_dry_run_result.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/devops/models/__pycache__/trigger_info.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/devops/models/__pycache__/trigger_schedule.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/devops/models/__pycache__/trigger_summary.cpython-313.pyc
@@ -14074,6 +14089,8 @@
 /usr/local/lib/python3.13/site-packages/oci/devops/models/__pycache__/update_wait_deploy_stage_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/devops/models/__pycache__/update_wait_stage_details.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/devops/models/__pycache__/validate_merge_pull_request_details.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/devops/models/__pycache__/value_artifact_content.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci/devops/models/__pycache__/value_artifact_content_collection.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/devops/models/__pycache__/vault_secret_verification_key_source.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/devops/models/__pycache__/vbs_access_token_connection.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci/devops/models/__pycache__/vbs_access_token_connection_summary.cpython-313.pyc
@@ -14392,9 +14409,12 @@
 /usr/local/lib/python3.13/site-packages/oci/devops/models/gitlab_trigger_create_result.py
 /usr/local/lib/python3.13/site-packages/oci/devops/models/gitlab_trigger_summary.py
 /usr/local/lib/python3.13/site-packages/oci/devops/models/helm_command_spec_artifact_source.py
+/usr/local/lib/python3.13/site-packages/oci/devops/models/helm_diff_argument.py
+/usr/local/lib/python3.13/site-packages/oci/devops/models/helm_diff_argument_collection.py
 /usr/local/lib/python3.13/site-packages/oci/devops/models/helm_repository_deploy_artifact_source.py
 /usr/local/lib/python3.13/site-packages/oci/devops/models/helm_set_value.py
 /usr/local/lib/python3.13/site-packages/oci/devops/models/helm_set_value_collection.py
+/usr/local/lib/python3.13/site-packages/oci/devops/models/helm_stage_content.py
 /usr/local/lib/python3.13/site-packages/oci/devops/models/inline_deploy_artifact_source.py
 /usr/local/lib/python3.13/site-packages/oci/devops/models/inline_public_key_verification_key_source.py
 /usr/local/lib/python3.13/site-packages/oci/devops/models/invoke_function_deploy_stage.py
@@ -14536,9 +14556,11 @@
 /usr/local/lib/python3.13/site-packages/oci/devops/models/trigger_build_pipeline_action.py
 /usr/local/lib/python3.13/site-packages/oci/devops/models/trigger_collection.py
 /usr/local/lib/python3.13/site-packages/oci/devops/models/trigger_create_result.py
+/usr/local/lib/python3.13/site-packages/oci/devops/models/trigger_deployment_dry_run_details.py
 /usr/local/lib/python3.13/site-packages/oci/devops/models/trigger_deployment_pipeline_stage_run_progress.py
 /usr/local/lib/python3.13/site-packages/oci/devops/models/trigger_deployment_stage.py
 /usr/local/lib/python3.13/site-packages/oci/devops/models/trigger_deployment_stage_summary.py
+/usr/local/lib/python3.13/site-packages/oci/devops/models/trigger_dry_run_result.py
 /usr/local/lib/python3.13/site-packages/oci/devops/models/trigger_info.py
 /usr/local/lib/python3.13/site-packages/oci/devops/models/trigger_schedule.py
 /usr/local/lib/python3.13/site-packages/oci/devops/models/trigger_summary.py
@@ -14610,6 +14632,8 @@
 /usr/local/lib/python3.13/site-packages/oci/devops/models/update_wait_deploy_stage_details.py
 /usr/local/lib/python3.13/site-packages/oci/devops/models/update_wait_stage_details.py
 /usr/local/lib/python3.13/site-packages/oci/devops/models/validate_merge_pull_request_details.py
+/usr/local/lib/python3.13/site-packages/oci/devops/models/value_artifact_content.py
+/usr/local/lib/python3.13/site-packages/oci/devops/models/value_artifact_content_collection.py
 /usr/local/lib/python3.13/site-packages/oci/devops/models/vault_secret_verification_key_source.py
 /usr/local/lib/python3.13/site-packages/oci/devops/models/vbs_access_token_connection.py
 /usr/local/lib/python3.13/site-packages/oci/devops/models/vbs_access_token_connection_summary.py
