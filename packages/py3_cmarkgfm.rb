@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_cmarkgfm < Pip
   description 'Python bindings to GitHub\'s cmark.'
   homepage 'https://github.com/theacodes/cmarkgfm'
-  version "2024.11.20-#{CREW_PY_VER}"
+  version "2025.10.22-#{CREW_PY_VER}"
   license 'BSD'
   compatibility 'all'
   source_url 'SKIP'
