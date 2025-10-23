@@ -1,4 +1,4 @@
-# Total size: 138142397
+# Total size: 138250759
 /usr/local/bin/create_backup_from_onprem
 /usr/local/bin/oci
 /usr/local/lib/python3.13/site-packages/alloy/__init__.py
@@ -37,15 +37,15 @@
 /usr/local/lib/python3.13/site-packages/interactive/prompt_session.py
 /usr/local/lib/python3.13/site-packages/interactive/supported_resource_types.py
 /usr/local/lib/python3.13/site-packages/interactive/utils.py
-/usr/local/lib/python3.13/site-packages/oci_cli-3.68.0.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/oci_cli-3.68.0.dist-info/LICENSE.txt
-/usr/local/lib/python3.13/site-packages/oci_cli-3.68.0.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/oci_cli-3.68.0.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/oci_cli-3.68.0.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/oci_cli-3.68.0.dist-info/THIRD_PARTY_LICENSES.txt
-/usr/local/lib/python3.13/site-packages/oci_cli-3.68.0.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/oci_cli-3.68.0.dist-info/entry_points.txt
-/usr/local/lib/python3.13/site-packages/oci_cli-3.68.0.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/oci_cli-3.68.1.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/oci_cli-3.68.1.dist-info/LICENSE.txt
+/usr/local/lib/python3.13/site-packages/oci_cli-3.68.1.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/oci_cli-3.68.1.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/oci_cli-3.68.1.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/oci_cli-3.68.1.dist-info/THIRD_PARTY_LICENSES.txt
+/usr/local/lib/python3.13/site-packages/oci_cli-3.68.1.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/oci_cli-3.68.1.dist-info/entry_points.txt
+/usr/local/lib/python3.13/site-packages/oci_cli-3.68.1.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/oci_cli/__init__.py
 /usr/local/lib/python3.13/site-packages/oci_cli/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci_cli/__pycache__/cli.cpython-313.pyc
@@ -219,6 +219,7 @@
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/__init__.py
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/__pycache__/help_text_producer.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/.gitkeep
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/access-governance-cp.txt
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/access-governance-cp/governance-instance-collection.txt
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/access-governance-cp/governance-instance-collection/list-governance-instances.txt
@@ -4743,6 +4744,12 @@
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/devops/repository/update-repository-notification-preference.txt
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/devops/repository/update-repository-settings.txt
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/devops/repository/update.txt
+/usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/devops/trigger-dry-run-result.txt
+/usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/devops/trigger-dry-run-result/trigger-deployment-dry-run-create-deploy-pipeline-deployment-details.txt
+/usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/devops/trigger-dry-run-result/trigger-deployment-dry-run-create-deploy-pipeline-redeployment-details.txt
+/usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/devops/trigger-dry-run-result/trigger-deployment-dry-run-create-single-deploy-stage-deployment-details.txt
+/usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/devops/trigger-dry-run-result/trigger-deployment-dry-run-create-single-deploy-stage-redeployment-details.txt
+/usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/devops/trigger-dry-run-result/trigger-deployment-dry-run.txt
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/devops/trigger.txt
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/devops/trigger/create-bitbucket-cloud-trigger.txt
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/devops/trigger/create-bitbucket-server-trigger.txt
@@ -5894,9 +5901,9 @@
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/governance-rules-control-plane/governance-rule/tenancy-attachment/retry.txt
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/governance-rules-control-plane/work-request.txt
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/governance-rules-control-plane/work-request/work-request-error.txt
-/usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/governance-rules-control-plane/work-request/work-request-error/list-errors.txt
+/usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/governance-rules-control-plane/work-request/work-request-error/list.txt
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/governance-rules-control-plane/work-request/work-request-log.txt
-/usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/governance-rules-control-plane/work-request/work-request-log/list-logs.txt
+/usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/governance-rules-control-plane/work-request/work-request-log/list.txt
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/governance-rules-control-plane/work-request/work-request.txt
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/governance-rules-control-plane/work-request/work-request/cancel.txt
 /usr/local/lib/python3.13/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/governance-rules-control-plane/work-request/work-request/get.txt
