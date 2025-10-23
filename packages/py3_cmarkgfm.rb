@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_cmarkgfm < Pip
   description 'Python bindings to GitHub\'s cmark.'
   homepage 'https://github.com/theacodes/cmarkgfm'
-  version "2024.11.20-#{CREW_PY_VER}"
+  version "2025.10.22-#{CREW_PY_VER}"
   license 'BSD'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0277c9efd8fc5ad8e0d0a075e5356f3a9f13ebe92b58487789ae06b0187be0f3',
-     armv7l: '0277c9efd8fc5ad8e0d0a075e5356f3a9f13ebe92b58487789ae06b0187be0f3',
-       i686: 'd60b44e2366c538cae7bdddd583910f8a323ff021a56e6b442c556da7057d9b6',
-     x86_64: 'fc7a97d99f9d2159bc40117a76bac6ea8ad81027310fcb4e413b5a19ac112bb9'
+    aarch64: '7331103dcb8066a6fe478b806178c834501874518f5349738745b03e604216a2',
+     armv7l: '7331103dcb8066a6fe478b806178c834501874518f5349738745b03e604216a2',
+       i686: '8dbfa6ff50b71398deeb7867319fd3953b5be07b777c08bb778d5591e890626e',
+     x86_64: '434850191781215f4440e79a33021da5d48ddcbb82093f0e9b4dea097a36903b'
   })
 
   depends_on 'glibc' # R
