@@ -34,6 +34,28 @@ def pip_hard_reinstall
   get_pip_info(@py_pkg)
 end
 
+def save_pip_filelist(pip_name = nil, pip_filelist_path = nil)
+  get_pip_info(pip_name)
+  files = @pip_show_files
+  exes = files.grep(%r{/exe/|/bin/})
+  # Pip.bindir should end up being #{CREW_PREFIX}/bin.
+  exes&.map! { |x| x.gsub(%r{^.*(/exe/|/bin/)}, "#{Pip.bindir}/") }
+  filelist = (files + exes).sort.uniq
+  # Create file list and calculate file size (modified from the one
+  # used in crew.)
+  filelist = filelist.select do |e|
+    File.file?(e) || File.symlink?(e)
+  end.to_h do |e|
+    # Ignore symlinks to prevent duplicating calculation.
+    ["/#{e[1..]}", File.symlink?(e) ? 0 : File.size(e)]
+  end
+
+  File.write pip_filelist_path, <<~EOF
+    # Total size: #{filelist.values.sum}
+    #{filelist.keys.sort.join("\n")}
+  EOF
+end
+
 class Pip < Package
   property :pip_install_extras, :pip_pre_configure_options
 
@@ -127,6 +149,9 @@ class Pip < Package
       end
     end
     @pip_install_extras&.call
+    # Create a filelist from the pip package.
+    @pip_filelist_path = File.join(CREW_META_PATH, "#{name}.filelist")
+    save_pip_filelist(@py_pkg, @gem_filelist_path)
     puts "#{@py_pkg}==#{@pip_pkg_version} installed.".lightgreen
   end
 end
