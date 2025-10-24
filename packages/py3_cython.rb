@@ -10,10 +10,10 @@ class Py3_cython < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fdaf2ca6e5d1ca141dfe597ab36e9e2be2bbcc339a8fd48120013fa4e0fb2366',
-     armv7l: 'fdaf2ca6e5d1ca141dfe597ab36e9e2be2bbcc339a8fd48120013fa4e0fb2366',
-       i686: 'a0bccea1d92e3f7288d5c797b68e98aae2e3fdc5d2458a8d82a730189f6bbdeb',
-     x86_64: '7696944a2d956ba0d5eccba25f9f0394a3b919965359122f1767f560d78709e6'
+    aarch64: '9dda2ab2c79df9b3148f475ca1ce9096082e7fd9713f5ba13f2ee53ca41769dd',
+     armv7l: '9dda2ab2c79df9b3148f475ca1ce9096082e7fd9713f5ba13f2ee53ca41769dd',
+       i686: '3845ab51e4f65774efc01752006c4f4813e93108332c482be96de82e58969d0e',
+     x86_64: 'e5c3ec7de70393275935d07f6384400909d0781b396d75b128874e8e286166ec'
   })
 
   depends_on 'glibc' # R
