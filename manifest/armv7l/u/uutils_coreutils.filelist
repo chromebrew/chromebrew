@@ -1,4 +1,4 @@
-# Total size: 11425913
+# Total size: 22999444
 /usr/local/bin/[
 /usr/local/bin/arch
 /usr/local/bin/b2sum
@@ -111,6 +111,7 @@
 /usr/local/bin/unlink
 /usr/local/bin/uptime
 /usr/local/bin/users
+/usr/local/bin/uudoc
 /usr/local/bin/vdir
 /usr/local/bin/wc
 /usr/local/bin/who
@@ -131,6 +132,7 @@
 /usr/local/share/bash-completion/completions/chroot
 /usr/local/share/bash-completion/completions/cksum
 /usr/local/share/bash-completion/completions/comm
+/usr/local/share/bash-completion/completions/coreutils
 /usr/local/share/bash-completion/completions/cp
 /usr/local/share/bash-completion/completions/csplit
 /usr/local/share/bash-completion/completions/cut
@@ -247,6 +249,7 @@
 /usr/local/share/man/man1/chroot.1.zst
 /usr/local/share/man/man1/cksum.1.zst
 /usr/local/share/man/man1/comm.1.zst
+/usr/local/share/man/man1/coreutils.1.zst
 /usr/local/share/man/man1/cp.1.zst
 /usr/local/share/man/man1/csplit.1.zst
 /usr/local/share/man/man1/cut.1.zst
