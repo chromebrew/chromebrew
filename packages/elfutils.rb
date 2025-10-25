@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Elfutils < Autotools
   description 'elfutils is a collection of utilities and libraries to read, create and modify ELF binary files, find and handle DWARF debug data, symbols, thread state and stacktraces for processes and core files on GNU/Linux.'
   homepage 'https://sourceware.org/elfutils/'
-  version '0.193'
+  version '0.194'
   license 'GPL-2+ or LGPL-3+'
   compatibility 'all'
   source_url 'https://sourceware.org/git/elfutils.git'
