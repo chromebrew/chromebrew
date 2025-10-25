@@ -1,4 +1,4 @@
-# Total size: 38086540
+# Total size: 38432691
 /usr/local/bin/callgrind_annotate
 /usr/local/bin/callgrind_control
 /usr/local/bin/cg_annotate
@@ -9,6 +9,7 @@
 /usr/local/bin/valgrind-di-server
 /usr/local/bin/valgrind-listener
 /usr/local/bin/vgdb
+/usr/local/bin/vgstack
 /usr/local/include/valgrind/cachegrind.h
 /usr/local/include/valgrind/callgrind.h
 /usr/local/include/valgrind/config.h
