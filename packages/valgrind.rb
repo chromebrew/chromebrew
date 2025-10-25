@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Valgrind < Autotools
   description 'Valgrind is an instrumentation framework for building dynamic analysis tools.'
   homepage 'https://valgrind.org/'
-  version '3.25.1'
+  version '3.26.0'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://sourceware.org/git/valgrind.git'
@@ -11,10 +11,10 @@ class Valgrind < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8d4fbb92f2511229066956af8ac710ac3e7dca966696aafeb01cfaa5051d4c88',
-     armv7l: '8d4fbb92f2511229066956af8ac710ac3e7dca966696aafeb01cfaa5051d4c88',
-       i686: '6e7ba98fb4ec8d26f24d3af4cd2ea6fe49e9e46d5c99906ecea59c00a93436fd',
-     x86_64: 'd31ec469f3cd72f73d05e2b41a629275bdf24542e4944b5eb846b404419fa5ac'
+    aarch64: 'ca6f5ede527646e74866a5c03bbd470d56b688b301fcc4184da389839fadd6c0',
+     armv7l: 'ca6f5ede527646e74866a5c03bbd470d56b688b301fcc4184da389839fadd6c0',
+       i686: '8725774a8fbe0db05e9e235e3110b049f8cf0235f17884e261cc661e1470802d',
+     x86_64: '620d9201efcf067286c0c09f32707ab7ab8b4b7503995845bc9acc62a06d8d5d'
   })
 
   depends_on 'glibc' # R
