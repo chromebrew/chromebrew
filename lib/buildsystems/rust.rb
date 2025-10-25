@@ -23,7 +23,7 @@ class RUST < Package
         }.transform_keys(&:to_s)
 
     @channel_flag = @rust_channel.to_s.empty? ? '' : "+#{@rust_channel}"
-    @features = @rust_features.to_s.empty? ? '' : "--features #{@rust_features}"
+    @features = @rust_features.to_s.empty? ? '' :  @rust_features.split.map { |f| "--features #{f}" }.join(' ')
     @profile = @rust_release_profile.to_s.empty? ? 'release' : @rust_release_profile
     @rust_install_path ||= '.'
     @packages = @rust_packages.to_s.empty? ? '' : @rust_packages.split.map { |p| "--package #{p}" }.join(' ')
