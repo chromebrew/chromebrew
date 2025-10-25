@@ -1,12 +1,12 @@
-# Total size: 1214446
+# Total size: 1214633
 /usr/local/bin/tox
-/usr/local/lib/python3.13/site-packages/tox-4.31.0.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/tox-4.31.0.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/tox-4.31.0.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/tox-4.31.0.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/tox-4.31.0.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/tox-4.31.0.dist-info/entry_points.txt
-/usr/local/lib/python3.13/site-packages/tox-4.31.0.dist-info/licenses/LICENSE
+/usr/local/lib/python3.13/site-packages/tox-4.32.0.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/tox-4.32.0.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/tox-4.32.0.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/tox-4.32.0.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/tox-4.32.0.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/tox-4.32.0.dist-info/entry_points.txt
+/usr/local/lib/python3.13/site-packages/tox-4.32.0.dist-info/licenses/LICENSE
 /usr/local/lib/python3.13/site-packages/tox/__init__.py
 /usr/local/lib/python3.13/site-packages/tox/__main__.py
 /usr/local/lib/python3.13/site-packages/tox/__pycache__/__init__.cpython-313.pyc
