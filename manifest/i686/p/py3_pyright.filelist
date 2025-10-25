@@ -1,16 +1,16 @@
-# Total size: 18189628
+# Total size: 18234612
 /usr/local/bin/pyright
 /usr/local/bin/pyright-langserver
 /usr/local/bin/pyright-python
 /usr/local/bin/pyright-python-langserver
-/usr/local/lib/python3.13/site-packages/pyright-1.1.406.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/pyright-1.1.406.dist-info/LICENSE
-/usr/local/lib/python3.13/site-packages/pyright-1.1.406.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/pyright-1.1.406.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/pyright-1.1.406.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/pyright-1.1.406.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/pyright-1.1.406.dist-info/entry_points.txt
-/usr/local/lib/python3.13/site-packages/pyright-1.1.406.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/pyright-1.1.407.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/pyright-1.1.407.dist-info/LICENSE
+/usr/local/lib/python3.13/site-packages/pyright-1.1.407.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/pyright-1.1.407.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/pyright-1.1.407.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/pyright-1.1.407.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/pyright-1.1.407.dist-info/entry_points.txt
+/usr/local/lib/python3.13/site-packages/pyright-1.1.407.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/pyright/__init__.py
 /usr/local/lib/python3.13/site-packages/pyright/__main__.py
 /usr/local/lib/python3.13/site-packages/pyright/__pycache__/__init__.cpython-313.pyc
@@ -979,10 +979,12 @@
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/JACK-Client/METADATA.toml
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/JACK-Client/jack/__init__.pyi
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/Jetson.GPIO/Jetson/GPIO/__init__.pyi
+/usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/Jetson.GPIO/Jetson/GPIO/constants.pyi
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/Jetson.GPIO/Jetson/GPIO/gpio.pyi
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/Jetson.GPIO/Jetson/GPIO/gpio_cdev.pyi
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/Jetson.GPIO/Jetson/GPIO/gpio_event.pyi
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/Jetson.GPIO/Jetson/GPIO/gpio_pin_data.pyi
+/usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/Jetson.GPIO/Jetson/GPIO/gpio_pinmux_lookup.pyi
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/Jetson.GPIO/Jetson/__init__.pyi
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/Jetson.GPIO/METADATA.toml
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/Markdown/METADATA.toml
@@ -1480,6 +1482,9 @@
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/apple_pay_options.pyi
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/attribute_getter.pyi
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/authorization_adjustment.pyi
+/usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/bank_account_instant_verification_gateway.pyi
+/usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/bank_account_instant_verification_jwt.pyi
+/usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/bank_account_instant_verification_jwt_request.pyi
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/bin_data.pyi
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/blik_alias.pyi
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/braintree_gateway.pyi
@@ -1607,12 +1612,14 @@
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/plan.pyi
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/plan_gateway.pyi
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/processor_response_types.pyi
+/usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/receiver.pyi
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/resource.pyi
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/resource_collection.pyi
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/revoked_payment_method_metadata.pyi
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/risk_data.pyi
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/samsung_pay_card.pyi
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/search.pyi
+/usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/sender.pyi
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/sepa_direct_debit_account.pyi
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/sepa_direct_debit_account_gateway.pyi
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/settlement_batch_summary.pyi
@@ -1643,6 +1650,7 @@
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/transaction_line_item_gateway.pyi
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/transaction_review.pyi
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/transaction_search.pyi
+/usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/transaction_us_bank_account_request.pyi
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/transfer.pyi
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/unknown_payment_method.pyi
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/us_bank_account.pyi
@@ -4955,6 +4963,8 @@
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/workalendar/workalendar/usa/wyoming.pyi
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/wurlitzer/METADATA.toml
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/wurlitzer/wurlitzer.pyi
+/usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/www-authenticate/METADATA.toml
+/usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/www-authenticate/www_authenticate.pyi
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/xdgenvpy/METADATA.toml
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/xdgenvpy/xdgenvpy/__init__.pyi
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/xdgenvpy/xdgenvpy/_defaults.pyi
@@ -4970,6 +4980,15 @@
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/xlrd/xlrd/sheet.pyi
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/xlrd/xlrd/timemachine.pyi
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/xlrd/xlrd/xldate.pyi
+/usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/xmldiff/METADATA.toml
+/usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/xmldiff/xmldiff/__init__.pyi
+/usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/xmldiff/xmldiff/actions.pyi
+/usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/xmldiff/xmldiff/diff.pyi
+/usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/xmldiff/xmldiff/diff_match_patch.pyi
+/usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/xmldiff/xmldiff/formatting.pyi
+/usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/xmldiff/xmldiff/main.pyi
+/usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/xmldiff/xmldiff/patch.pyi
+/usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/xmldiff/xmldiff/utils.pyi
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/xmltodict/METADATA.toml
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/xmltodict/xmltodict.pyi
 /usr/local/lib/python3.13/site-packages/pyright/dist/dist/typeshed-fallback/stubs/yt-dlp/METADATA.toml
