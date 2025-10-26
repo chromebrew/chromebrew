@@ -424,6 +424,7 @@ unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
     { pkg_name: 'vim_runtime', anitya_pkg: 'vim', comments: '' },
     { pkg_name: 'webkitgtk_6', anitya_pkg: 'webkitgtk~stable', comments: '' },
     { pkg_name: 'xauth', anitya_pkg: 'xorg-x11-xauth', comments: '' },
+    { pkg_name: 'xercesc', anitya_pkg: 'xerces-c', comments: 'Prefer to GitHub' },
     { pkg_name: 'yad', anitya_pkg: 'yad', comments: 'Prefer to GitHub' },
     { pkg_name: 'zimg', anitya_pkg: 'zimg', comments: 'Prefer to GitHub' },
     { pkg_name: 'zoneinfo', anitya_pkg: 'tzdata', comments: '' }
