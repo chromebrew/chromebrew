@@ -1,4 +1,4 @@
-# Total size: 8725179
+# Total size: 9635670
 /usr/local/bin/CreateDOMDocument
 /usr/local/bin/DOMCount
 /usr/local/bin/DOMPrint
@@ -483,7 +483,7 @@
 /usr/local/include/xercesc/xinclude/XIncludeDOMDocumentProcessor.hpp
 /usr/local/include/xercesc/xinclude/XIncludeLocation.hpp
 /usr/local/include/xercesc/xinclude/XIncludeUtils.hpp
-/usr/local/lib/libxerces-c-3.2.so
+/usr/local/lib/libxerces-c-3.3.so
 /usr/local/lib/libxerces-c.la
 /usr/local/lib/libxerces-c.so
 /usr/local/lib/pkgconfig/xerces-c.pc
