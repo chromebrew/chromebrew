@@ -1,11 +1,11 @@
-# Total size: 2029137
-/usr/local/lib/python3.13/site-packages/psutil-7.1.1.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/psutil-7.1.1.dist-info/LICENSE
-/usr/local/lib/python3.13/site-packages/psutil-7.1.1.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/psutil-7.1.1.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/psutil-7.1.1.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/psutil-7.1.1.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/psutil-7.1.1.dist-info/top_level.txt
+# Total size: 2001740
+/usr/local/lib/python3.13/site-packages/psutil-7.1.2.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/psutil-7.1.2.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/psutil-7.1.2.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/psutil-7.1.2.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/psutil-7.1.2.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/psutil-7.1.2.dist-info/licenses/LICENSE
+/usr/local/lib/python3.13/site-packages/psutil-7.1.2.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/psutil/__init__.py
 /usr/local/lib/python3.13/site-packages/psutil/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/psutil/__pycache__/_common.cpython-313.pyc
@@ -24,7 +24,6 @@
 /usr/local/lib/python3.13/site-packages/psutil/_psposix.py
 /usr/local/lib/python3.13/site-packages/psutil/_pssunos.py
 /usr/local/lib/python3.13/site-packages/psutil/_psutil_linux.abi3.so
-/usr/local/lib/python3.13/site-packages/psutil/_psutil_posix.abi3.so
 /usr/local/lib/python3.13/site-packages/psutil/_pswindows.py
 /usr/local/lib/python3.13/site-packages/psutil/tests/__init__.py
 /usr/local/lib/python3.13/site-packages/psutil/tests/__main__.py
