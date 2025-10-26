@@ -139,10 +139,10 @@ CREW_UNATTENDED ||= ENV.fetch('CREW_UNATTENDED', false) unless defined?(CREW_UNA
 
 CREW_STANDALONE_UPGRADE_ORDER = %w[libxcrypt crew_preload glibc openssl ruby python3 perl icu4c sommelier] unless defined?(CREW_STANDALONE_UPGRADE_ORDER)
 
-CREW_DEBUG        ||= ARGV.intersect?(%w[-D --debug]) unless defined?(CREW_DEBUG)
-CREW_FORCE        ||= ARGV.intersect?(%w[-f --force]) unless defined?(CREW_FORCE)
-CREW_VERBOSE      ||= ARGV.intersect?(%w[-v --verbose]) unless defined?(CREW_VERBOSE)
-CREW_VERY_VERBOSE ||= ARGV.intersect?(%w[-vv]) unless defined?(CREW_VERY_VERBOSE)
+CREW_DEBUG        ||= ARGV.include?('-D') || ARGV.include?('--debug') unless defined?(CREW_DEBUG)
+CREW_FORCE        ||= ARGV.include?('-f') || ARGV.include?('--force') unless defined?(CREW_FORCE)
+CREW_VERBOSE      ||= ARGV.include?('-v') || ARGV.include?('--verbose') unless defined?(CREW_VERBOSE)
+CREW_VERY_VERBOSE ||= ARGV.include?('-vv') unless defined?(CREW_VERY_VERBOSE)
 
 # Set CREW_NPROC from environment variable, `distcc -j`, or `nproc`.
 CREW_NPROC ||=
