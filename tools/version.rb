@@ -58,11 +58,11 @@ def get_version(name, homepage, source, version)
   # If anitya_id cannot be determined, a Range can be returned, and
   # .nonzero? does not work with Ranges.
   anitya_id = nil if anitya_id.is_a? Range
-  puts "anitya_name: #{anitya_name} anitya_id: #{anitya_id}" if (VERBOSE || VERY_VERBOSE)
+  puts "anitya_name: #{anitya_name} anitya_id: #{anitya_id}" if VERBOSE || VERY_VERBOSE
   if anitya_id&.nonzero?
     # Get the latest stable version of the package from anitya.
     json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/versions/?project_id=#{anitya_id}")))
-    puts json.to_s if VERY_VERBOSE
+    puts json if VERY_VERBOSE
     return if json['stable_versions'].nil?
     return json['stable_versions'][0]
   elsif source.nil? || %w[Pip].include?(@pkg.superclass.to_s)
@@ -91,7 +91,7 @@ def get_version(name, homepage, source, version)
       url_parts = url.path.split('/')
       unless url_parts.count < 3
         repo = "#{url_parts[1]}/#{url_parts[2].gsub(/.git\z/, '')}"
-        puts "GitHub Repo is #{repo}" if (VERBOSE || VERY_VERBOSE)
+        puts "GitHub Repo is #{repo}" if VERBOSE || VERY_VERBOSE
         if File.which('gh')
           # This allows us to only get non-pre-release versions from
           # GitHub if such releases exist.
@@ -109,7 +109,7 @@ def get_version(name, homepage, source, version)
       url_parts = url.path.split('/')
       unless url_parts.count < 3
         repo = "#{url_parts[1]}/#{url_parts[2].gsub(/.git\z/, '')}"
-        puts "GitLab Repo is #{repo}" if (VERBOSE || VERY_VERBOSE)
+        puts "GitLab Repo is #{repo}" if VERBOSE || VERY_VERBOSE
         puts "curl https://#{url.host}/#{repo}/-/releases/permalink/latest -s | jq .tag_name -r" if VERY_VERBOSE
         gitlab_ver = `curl https://#{url.host}/#{repo}/-/releases/permalink/latest -s | jq .tag_name -r`.chomp
         return gitlab_ver unless gitlab_ver.blank? || gitlab_ver == 'null'
@@ -119,7 +119,7 @@ def get_version(name, homepage, source, version)
       unless url_parts.count < 3
         repo = url_parts[2]
         filename = url_parts.last
-        puts "Sourceforge Repo is #{repo}" if (VERBOSE || VERY_VERBOSE)
+        puts "Sourceforge Repo is #{repo}" if VERBOSE || VERY_VERBOSE
         puts "curl -L -s https://sourceforge.net/projects/#{repo}/best_release.json | jq .release.filename -r" if VERY_VERBOSE
         sourceforge_file = `curl -L -s https://sourceforge.net/projects/#{repo}/best_release.json | jq .release.filename -r`.chomp
         best_release = sourceforge_file.split('/').last
@@ -141,7 +141,7 @@ def get_anitya_id(name, homepage)
   # Find out how many packages Anitya has with the provided name.
   puts "url is https://release-monitoring.org/api/v2/projects/?name=#{CGI.escape(name)}" if VERY_VERBOSE
   json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/projects/?name=#{CGI.escape(name)}")))
-  puts json.to_s if VERY_VERBOSE
+  puts json if VERY_VERBOSE
   number_of_packages = json['total_items']
 
   puts "number_of_packages = #{number_of_packages}" if VERY_VERBOSE
@@ -175,7 +175,7 @@ def get_anitya_id(name, homepage)
         candidates.append(i)
       end
     end
-    puts "candidates = #{candidates.to_s}" if VERY_VERBOSE
+    puts "candidates = #{candidates}" if VERY_VERBOSE
 
     if candidates.length == 1 # If there's only one candidate left, we're done.
       return json['items'][candidates[0]]['id']
@@ -191,10 +191,10 @@ def get_anitya_id(name, homepage)
         # We assume there is only one candidate with the same name and homepage as their crew counterpart.
         # Even if there are multiple candidates with the same name and homepage, its probably fine to treat them as identical.
         # If it isn't fine to treat them as identical, something has gone horribly wrong.
-        homepage_domain = homepage.gsub(/http(s)?:\/\/(www\.)?/, '').chomp('/')
-        puts "homepage_domain = #{homepage.gsub(/http(s)?:\/\/(www\.)?/, '').chomp('/')}" if VERY_VERBOSE
-        candidate_homepage_domain = json['items'][candidate]['homepage'].gsub(/http(s)?:\/\/(www\.)?/, '').chomp('/')
-        puts "candidate_homepage_domain = #{json['items'][candidate]['homepage'].gsub(/http(s)?:\/\/(www\.)?/, '').chomp('/')}" if VERY_VERBOSE
+        homepage_domain = homepage.gsub(%r{http(s)?://(www\.)?}, '').chomp('/')
+        puts "homepage_domain = #{homepage.gsub(%r{http(s)?://(www\.)?}, '').chomp('/')}" if VERY_VERBOSE
+        candidate_homepage_domain = json['items'][candidate]['homepage'].gsub(%r{http(s)?://(www\.)?}, '').chomp('/')
+        puts "candidate_homepage_domain = #{json['items'][candidate]['homepage'].gsub(%r{http(s)?://(www\.)?}, '').chomp('/')}" if VERY_VERBOSE
         return json['items'][candidate]['id'] if homepage_domain == candidate_homepage_domain
       end
       puts 'no candidates found.' if VERY_VERBOSE
