@@ -1581,7 +1581,7 @@ activity: none
 ---
 kind: url
 name: dotnet
-url: https://dotnet.microsoft.com/en-us/download/dotnet
+url: https://dotnet.microsoft.com/en-us/download/dotnet/9.0
 activity: high
 ---
 kind: url
