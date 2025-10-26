@@ -52,9 +52,10 @@ versions = []
 
 def get_version(name, homepage, source, version)
   anitya_name_mapping_idx = CREW_ANITYA_PACKAGE_NAME_MAPPINGS.keys.find_index { |i| i == name }
-  anitya_name = name.gsub(/\Apy\d_|\Aperl_|\Aruby_/, '').tr('_', '-')
+  anitya_name = name.gsub(/\Apy\d_|\Aperl_|\Aruby_/, '')
   anitya_name = CREW_ANITYA_PACKAGE_NAME_MAPPINGS.values[anitya_name_mapping_idx] unless anitya_name_mapping_idx.nil?
   anitya_id = get_anitya_id(anitya_name, homepage)
+  anitya_name = @new_anitya_name unless @new_anitya_name.nil?
   # If anitya_id cannot be determined, a Range can be returned, and
   # .nonzero? does not work with Ranges.
   anitya_id = nil if anitya_id.is_a? Range
@@ -148,16 +149,33 @@ def get_anitya_id(name, homepage)
   if number_of_packages == 1 # We assume we have the right package, take the ID and move on.
     return json['items'][0]['id']
   elsif number_of_packages.zero? # Anitya either doesn't have this package, or has it under a different name.
-    # If it has it under a different name, check if it has the name used by Chromebrew.
-    json2 = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/packages/?name=#{name.tr('-', '_')}")))
-    return if json2['total_items'].zero?
+    @new_anitya_name = nil
+    name_candidate = name.tr('-', '_') if name.include?('-')
+    name_candidate = name.tr('_', '-') if name.include?('_')
+    if name_candidate && name_candidate != name
+      if VERY_VERBOSE
+        puts "No Anitya package found with #{name}. Attempting a new search with #{name_candidate}."
+        puts "url is https://release-monitoring.org/api/v2/projects/?name=#{name_candidate}"
+      end
+      json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/projects/?name=#{name_candidate}")))
+      number_of_packages = json['total_items']
+      if number_of_packages.zero?
+        puts "No Anitya package found with #{candidate_name}." if VERY_VERBOSE
+        return
+      end
 
-    (0..(json2['total_items'] - 1)).each do |i|
-      # If it has it under a different name, make sure that is the Chromebrew mapping, and not some other distribution,
-      # because that could lead to overmatching.
-      next unless json2['items'][i]['distribution'] == 'Chromebrew'
-
-      return get_anitya_id(json2['items'][i]['project'], homepage) if json2['items'][i]['name'] == name.tr('-', '_')
+      puts "number_of_packages = #{number_of_packages}" if VERY_VERBOSE
+      (0..(number_of_packages - 1)).each do |i|
+        next if json['items'][i].nil?
+        homepage_domain = homepage.gsub(%r{http(s)?://(www\.)?}, '').chomp('/')
+        puts "homepage_domain = #{homepage.gsub(%r{http(s)?://(www\.)?}, '').chomp('/')}" if VERY_VERBOSE
+        candidate_homepage_domain = json['items'][i]['homepage'].gsub(%r{http(s)?://(www\.)?}, '').chomp('/')
+        puts "candidate_homepage_domain = #{json['items'][i]['homepage'].gsub(%r{http(s)?://(www\.)?}, '').chomp('/')}" if VERY_VERBOSE
+        if homepage_domain == candidate_homepage_domain
+          @new_anitya_name = name_candidate
+          return json['items'][i]['id']
+        end
+      end
     end
   else # Anitya has more than one package with this exact name.
     candidates = []
