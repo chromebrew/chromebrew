@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
-# version.rb version 3.6 (for Chromebrew)
+# version.rb version 3.7 (for Chromebrew)
 
-OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose]
+OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose -vv]
 
 if ARGV.include?('-h') || ARGV.include?('--help')
   abort <<~EOM
@@ -13,6 +13,7 @@ if ARGV.include?('-h') || ARGV.include?('--help')
     field in the package file.
     Passing --json or -j will only give json output.
     Passing --verbose or -v will display verbose output.
+    Passing -vv will display very verbose output.
   EOM
 end
 
@@ -49,7 +50,7 @@ version_line_string = {}
 versions_updated = {}
 versions = []
 
-def get_version(name, homepage, source)
+def get_version(name, homepage, source, version)
   anitya_name_mapping_idx = CREW_ANITYA_PACKAGE_NAME_MAPPINGS.keys.find_index { |i| i == name }
   anitya_name = name.gsub(/\Apy\d_|\Aperl_|\Aruby_/, '').tr('_', '-')
   anitya_name = CREW_ANITYA_PACKAGE_NAME_MAPPINGS.values[anitya_name_mapping_idx] unless anitya_name_mapping_idx.nil?
@@ -57,10 +58,11 @@ def get_version(name, homepage, source)
   # If anitya_id cannot be determined, a Range can be returned, and
   # .nonzero? does not work with Ranges.
   anitya_id = nil if anitya_id.is_a? Range
-  puts "anitya_name: #{anitya_name} anitya_id: #{anitya_id}" if VERBOSE
+  puts "anitya_name: #{anitya_name} anitya_id: #{anitya_id}" if (VERBOSE || VERY_VERBOSE)
   if anitya_id&.nonzero?
     # Get the latest stable version of the package from anitya.
     json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/versions/?project_id=#{anitya_id}")))
+    puts json.to_s if VERY_VERBOSE
     return if json['stable_versions'].nil?
     return json['stable_versions'][0]
   elsif source.nil? || %w[Pip].include?(@pkg.superclass.to_s)
@@ -83,19 +85,49 @@ def get_version(name, homepage, source)
     end
     source.sub!('www.', '')
     url = URI.parse(source)
-    if url.host == 'github.com'
+    puts "source_url host: #{url.host}" if VERY_VERBOSE
+    case url.host
+    when 'github.com'
       url_parts = url.path.split('/')
       unless url_parts.count < 3
         repo = "#{url_parts[1]}/#{url_parts[2].gsub(/.git\z/, '')}"
-        puts "GitHub Repo is #{repo}" if VERBOSE
+        puts "GitHub Repo is #{repo}" if (VERBOSE || VERY_VERBOSE)
         if File.which('gh')
           # This allows us to only get non-pre-release versions from
           # GitHub if such releases exist.
+          puts "gh release ls --exclude-pre-releases --exclude-drafts -L 1 -R #{repo} --json tagName -q '.[] | .tagName'" if VERY_VERBOSE
           github_ver = `gh release ls --exclude-pre-releases --exclude-drafts -L 1 -R #{repo} --json tagName -q '.[] | .tagName'`.chomp if system 'gh auth status >/dev/null', exception: false
         else
-          github_ver = `curl https://api.github.com/repos/#{repo}/releases/latest -s | jq .tag -r`.chomp
+          puts "curl https://api.github.com/repos/#{repo}/releases/latest -s | jq .tag_name -r" if VERY_VERBOSE
+          github_ver = `curl https://api.github.com/repos/#{repo}/releases/latest -s | jq .tag_name -r`.chomp
+          puts "curl https://api.github.com/repos/#{repo}/tags -s | jq '.[0].name' -r" if VERY_VERBOSE && (github_ver.blank? || github_ver == 'null')
+          github_ver = `curl https://api.github.com/repos/#{repo}/tags -s | jq '.[0].name' -r`.chomp if github_ver.blank? || github_ver == 'null'
         end
         return github_ver unless github_ver.blank? || github_ver == 'null'
+      end
+    when 'gitlab.com'
+      url_parts = url.path.split('/')
+      unless url_parts.count < 3
+        repo = "#{url_parts[1]}/#{url_parts[2].gsub(/.git\z/, '')}"
+        puts "GitLab Repo is #{repo}" if (VERBOSE || VERY_VERBOSE)
+        puts "curl https://#{url.host}/#{repo}/-/releases/permalink/latest -s | jq .tag_name -r" if VERY_VERBOSE
+        gitlab_ver = `curl https://#{url.host}/#{repo}/-/releases/permalink/latest -s | jq .tag_name -r`.chomp
+        return gitlab_ver unless gitlab_ver.blank? || gitlab_ver == 'null'
+      end
+    when 'downloads.sourceforge.net'
+      url_parts = url.path.split('/')
+      unless url_parts.count < 3
+        repo = url_parts[2]
+        filename = url_parts.last
+        puts "Sourceforge Repo is #{repo}" if (VERBOSE || VERY_VERBOSE)
+        puts "curl -L -s https://sourceforge.net/projects/#{repo}/best_release.json | jq .release.filename -r" if VERY_VERBOSE
+        sourceforge_file = `curl -L -s https://sourceforge.net/projects/#{repo}/best_release.json | jq .release.filename -r`.chomp
+        best_release = sourceforge_file.split('/').last
+        if filename == best_release
+          return version
+        else
+          return best_release
+        end
       end
     end
   end
@@ -109,6 +141,7 @@ def get_anitya_id(name, homepage)
   # Find out how many packages Anitya has with the provided name.
   puts "url is https://release-monitoring.org/api/v2/projects/?name=#{CGI.escape(name)}" if VERY_VERBOSE
   json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/projects/?name=#{CGI.escape(name)}")))
+  puts json.to_s if VERY_VERBOSE
   number_of_packages = json['total_items']
 
   puts "number_of_packages = #{number_of_packages}" if VERY_VERBOSE
@@ -142,6 +175,7 @@ def get_anitya_id(name, homepage)
         candidates.append(i)
       end
     end
+    puts "candidates = #{candidates.to_s}" if VERY_VERBOSE
 
     if candidates.length == 1 # If there's only one candidate left, we're done.
       return json['items'][candidates[0]]['id']
@@ -157,8 +191,13 @@ def get_anitya_id(name, homepage)
         # We assume there is only one candidate with the same name and homepage as their crew counterpart.
         # Even if there are multiple candidates with the same name and homepage, its probably fine to treat them as identical.
         # If it isn't fine to treat them as identical, something has gone horribly wrong.
-        return json['items'][candidate]['id'] if homepage.chomp('/') == json['items'][candidate]['homepage'].chomp('/')
+        homepage_domain = homepage.gsub(/http(s)?:\/\/(www\.)?/, '').chomp('/')
+        puts "homepage_domain = #{homepage.gsub(/http(s)?:\/\/(www\.)?/, '').chomp('/')}" if VERY_VERBOSE
+        candidate_homepage_domain = json['items'][candidate]['homepage'].gsub(/http(s)?:\/\/(www\.)?/, '').chomp('/')
+        puts "candidate_homepage_domain = #{json['items'][candidate]['homepage'].gsub(/http(s)?:\/\/(www\.)?/, '').chomp('/')}" if VERY_VERBOSE
+        return json['items'][candidate]['id'] if homepage_domain == candidate_homepage_domain
       end
+      puts 'no candidates found.' if VERY_VERBOSE
 
       # If we're still here, that means none of the candidates had the same homepage as their crew counterpart.
       # Not much we can do at this point to find the version, and its better to be cautious to avoid getting the wrong candidate.
@@ -198,8 +237,8 @@ if filelist.length.positive?
   status_field_length = 17
   version_field_length = 13
 
-  puts "#{'Package'.ljust(package_field_length)}#{'Status'.ljust(status_field_length)}#{'Current'.ljust(version_field_length)}#{'Upstream'.ljust(version_field_length)}Updatable?" unless OUTPUT_JSON
-  puts "#{'-------'.ljust(package_field_length)}#{'------'.ljust(status_field_length)}#{'-------'.ljust(version_field_length)}#{'--------'.ljust(version_field_length)}----------" unless OUTPUT_JSON
+  puts "#{'Package'.ljust(package_field_length)}#{'Status'.ljust(status_field_length)}#{'Current'.ljust(version_field_length)}#{'Upstream'.ljust(version_field_length)}#{'Updatable?'.ljust(version_field_length)}Compile?" unless OUTPUT_JSON
+  puts "#{'-------'.ljust(package_field_length)}#{'------'.ljust(status_field_length)}#{'-------'.ljust(version_field_length)}#{'--------'.ljust(version_field_length)}#{'----------'.ljust(version_field_length)}--------" unless OUTPUT_JSON
   filelist.each do |filename|
     @pkg = Package.load_package(filename)
     cleaned_pkg_version = PackageUtils.get_clean_version(@pkg.version)
@@ -281,7 +320,7 @@ if filelist.length.positive?
       end
     else
       # Get the upstream version.
-      upstream_version = get_version(@pkg.name, @pkg.homepage, @pkg.source_url)
+      upstream_version = get_version(@pkg.name, @pkg.homepage, @pkg.source_url, @pkg.version)
     end
     # Some packages don't work with this yet, so gracefully exit now rather than throwing false positives.
     versions_updated[@pkg.name.to_sym] = 'Not Found.' if upstream_version.nil? || upstream_version.to_s.chomp == 'null'
@@ -302,20 +341,20 @@ if filelist.length.positive?
             if !@pkg.source_sha256.nil? && @pkg.source_sha256.is_a?(Hash) && @pkg.source_sha256&.key?(ARCH.to_sym)
               # Get old hashes
               (@pkg.source_url.keys.map &:to_s).each do |arch|
-                puts "old source_url: #{@pkg.source_url[arch.to_sym]}" if VERBOSE && !OUTPUT_JSON
+                puts "old source_url: #{@pkg.source_url[arch.to_sym]}" if (VERBOSE || VERY_VERBOSE) && !OUTPUT_JSON
                 old_hash[arch] = @pkg.source_sha256[arch.to_sym]
-                puts "old hash: #{old_hash[arch]}" if VERBOSE && !OUTPUT_JSON
+                puts "old hash: #{old_hash[arch]}" if (VERBOSE || VERY_VERBOSE) && !OUTPUT_JSON
               end
               File.write(filename, file)
               # Now get new hashes
               @pkg = Package.load_package(filename, true)
               (@pkg.source_url.keys.map &:to_s).each do |arch|
-                puts "new source_url: #{@pkg.source_url[arch.to_sym]}" if VERBOSE && !OUTPUT_JSON
+                puts "new source_url: #{@pkg.source_url[arch.to_sym]}" if (VERBOSE || VERY_VERBOSE) && !OUTPUT_JSON
                 status = `curl -fsI #{@pkg.source_url[arch.to_sym]}`.lines.first.split[1]
-                puts "new source_url response status: #{status}" if VERBOSE && !OUTPUT_JSON
+                puts "new source_url response status: #{status}" if (VERBOSE || VERY_VERBOSE) && !OUTPUT_JSON
                 unless %w[200 302].include?(status)
                   versions_updated[@pkg.name.to_sym] = 'Bad Source'
-                  puts "#{@pkg.source_url[arch.to_sym]} is a bad source".lightred if VERBOSE && !OUTPUT_JSON
+                  puts "#{@pkg.source_url[arch.to_sym]} is a bad source".lightred if (VERBOSE || VERY_VERBOSE) && !OUTPUT_JSON
                   if File.file?("#{filename}.bak")
                     FileUtils.cp "#{filename}.bak", filename
                     FileUtils.rm "#{filename}.bak"
@@ -323,22 +362,22 @@ if filelist.length.positive?
                   next filename
                 end
                 new_hash[arch] = `curl -Ls #{@pkg.source_url[arch.to_sym]} | sha256sum - | awk '{print $1}'`.chomp
-                puts "new hash: #{new_hash[arch]}" if VERBOSE && !OUTPUT_JSON
+                puts "new hash: #{new_hash[arch]}" if (VERBOSE || VERY_VERBOSE) && !OUTPUT_JSON
                 file.sub!(old_hash[arch], new_hash[arch])
               end
             elsif !@pkg.source_sha256.nil? && !@pkg.source_sha256.is_a?(Hash)
               arch = :all
               # Get old hashes
               old_hash[arch] = @pkg.source_sha256
-              puts "old source_url: #{@pkg.source_url}" if VERBOSE && !OUTPUT_JSON
-              puts "old hash: #{old_hash[arch]}" if VERBOSE && !OUTPUT_JSON
+              puts "old source_url: #{@pkg.source_url}" if (VERBOSE || VERY_VERBOSE) && !OUTPUT_JSON
+              puts "old hash: #{old_hash[arch]}" if (VERBOSE || VERY_VERBOSE) && !OUTPUT_JSON
               File.write(filename, file)
               # Now get new hashes
               @pkg = Package.load_package(filename, true)
-              puts "new source_url: #{@pkg.source_url}" if VERBOSE && !OUTPUT_JSON
+              puts "new source_url: #{@pkg.source_url}" if (VERBOSE || VERY_VERBOSE) && !OUTPUT_JSON
               unless `curl -fsI #{@pkg.source_url}`.lines.first.split[1] == '200'
                 versions_updated[@pkg.name.to_sym] = 'Bad Source'
-                puts "#{@pkg.source_url} is a bad source.".lightred if VERBOSE && !OUTPUT_JSON
+                puts "#{@pkg.source_url} is a bad source.".lightred if (VERBOSE || VERY_VERBOSE) && !OUTPUT_JSON
                 if File.file?("#{filename}.bak")
                   FileUtils.cp "#{filename}.bak", filename
                   FileUtils.rm "#{filename}.bak"
@@ -346,7 +385,7 @@ if filelist.length.positive?
                 next filename
               end
               new_hash[arch] = `curl -Ls #{@pkg.source_url} | sha256sum - | awk '{print $1}'`.chomp
-              puts "new hash: #{new_hash[arch]}" if VERBOSE && !OUTPUT_JSON
+              puts "new hash: #{new_hash[arch]}" if (VERBOSE || VERY_VERBOSE) && !OUTPUT_JSON
               file.sub!(old_hash[arch], new_hash[arch])
             end
             File.write(filename, file)
@@ -403,13 +442,14 @@ if filelist.length.positive?
     when 'Up to date.'
       version_status_string = 'Up to date.'.ljust(status_field_length).lightgreen
     end
-    updatable_string = (updatable_pkg[@pkg.name.to_sym] == 'Yes' ? 'Yes'.lightgreen : 'No'.lightred) if updatable_string.nil?
+    updatable_string = (updatable_pkg[@pkg.name.to_sym] == 'Yes' ? 'Yes'.ljust(version_field_length).lightgreen : 'No'.ljust(version_field_length).lightred) if updatable_string.nil?
+    compile_string = @pkg.no_compile_needed? ? 'No'.lightred : 'Yes'.lightgreen
     versions.push(package: @pkg.name, update_status: versions_updated[@pkg.name.to_sym], version: cleaned_pkg_version, upstream_version: upstream_version.chomp)
 
     addendum_string = "#{@pkg.name} cannot be automatically updated: ".red + "#{updatable_pkg[@pkg.name.to_sym]}\n".purple unless updatable_pkg[@pkg.name.to_sym] == 'Yes'
-    version_line_string[@pkg.name.to_sym] = "#{@pkg.name.ljust(package_field_length)}#{version_status_string}#{cleaned_pkg_version.ljust(version_field_length)}#{upstream_version.chomp.ljust(version_field_length)}#{updatable_string}\n"
-    print version_line_string[@pkg.name.to_sym] if !OUTPUT_JSON && ((versions_updated[@pkg.name.to_sym] == 'Outdated.' && updatable_pkg[@pkg.name.to_sym] == 'Yes') || VERBOSE)
-    print addendum_string unless addendum_string.blank? || OUTPUT_JSON || !VERBOSE
+    version_line_string[@pkg.name.to_sym] = "#{@pkg.name.ljust(package_field_length)}#{version_status_string}#{cleaned_pkg_version.ljust(version_field_length)}#{upstream_version.chomp.ljust(version_field_length)}#{updatable_string}#{compile_string}\n"
+    print version_line_string[@pkg.name.to_sym] if !OUTPUT_JSON && ((versions_updated[@pkg.name.to_sym] == 'Outdated.' && updatable_pkg[@pkg.name.to_sym] == 'Yes') || VERBOSE || VERY_VERBOSE)
+    print addendum_string unless addendum_string.blank? || OUTPUT_JSON || !VERBOSE || !VERY_VERBOSE
 
     print "Failed to update version in #{@pkg.name} to #{upstream_version.chomp}".yellow if !OUTPUT_JSON && (versions_updated[@pkg.name.to_sym].to_s == 'false')
     print "Failed to update binary_compression in #{@pkg.name}".yellow if !OUTPUT_JSON && (bc_updated[@pkg.name.to_sym].to_s == 'false')

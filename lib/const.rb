@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.67.8' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.67.10' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -133,15 +133,16 @@ CREW_MUSL_PREFIX      ||= File.join(CREW_PREFIX, '/share/musl/')
 CREW_DEST_MUSL_PREFIX ||= File.join(CREW_DEST_DIR, CREW_MUSL_PREFIX)
 MUSL_LIBC_VERSION     ||= File.executable?("#{CREW_MUSL_PREFIX}/lib/libc.so") ? `#{CREW_MUSL_PREFIX}/lib/libc.so 2>&1`[/\bVersion\s+\K\S+/] : nil unless defined?(MUSL_LIBC_VERSION)
 
-CREW_DEST_HOME          ||= File.join(CREW_DEST_DIR, HOME)
-CREW_NO_GIT             ||= ENV.fetch('CREW_NO_GIT', false) unless defined?(CREW_NO_GIT)
-CREW_UNATTENDED         ||= ENV.fetch('CREW_UNATTENDED', false) unless defined?(CREW_UNATTENDED)
+CREW_DEST_HOME  ||= File.join(CREW_DEST_DIR, HOME)
+CREW_NO_GIT     ||= ENV.fetch('CREW_NO_GIT', false) unless defined?(CREW_NO_GIT)
+CREW_UNATTENDED ||= ENV.fetch('CREW_UNATTENDED', false) unless defined?(CREW_UNATTENDED)
 
 CREW_STANDALONE_UPGRADE_ORDER = %w[libxcrypt crew_preload glibc openssl ruby python3 perl icu4c sommelier] unless defined?(CREW_STANDALONE_UPGRADE_ORDER)
 
-CREW_DEBUG   ||= ARGV.intersect?(%w[-D --debug]) unless defined?(CREW_DEBUG)
-CREW_FORCE   ||= ARGV.intersect?(%w[-f --force]) unless defined?(CREW_FORCE)
-CREW_VERBOSE ||= ARGV.intersect?(%w[-v --verbose]) unless defined?(CREW_VERBOSE)
+CREW_DEBUG        ||= ARGV.intersect?(%w[-D --debug]) unless defined?(CREW_DEBUG)
+CREW_FORCE        ||= ARGV.intersect?(%w[-f --force]) unless defined?(CREW_FORCE)
+CREW_VERBOSE      ||= ARGV.intersect?(%w[-v --verbose]) unless defined?(CREW_VERBOSE)
+CREW_VERY_VERBOSE ||= ARGV.intersect?(%w[-vv]) unless defined?(CREW_VERY_VERBOSE)
 
 # Set CREW_NPROC from environment variable, `distcc -j`, or `nproc`.
 CREW_NPROC ||=
@@ -424,6 +425,7 @@ unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
     { pkg_name: 'vim_runtime', anitya_pkg: 'vim', comments: '' },
     { pkg_name: 'webkitgtk_6', anitya_pkg: 'webkitgtk~stable', comments: '' },
     { pkg_name: 'xauth', anitya_pkg: 'xorg-x11-xauth', comments: '' },
+    { pkg_name: 'xercesc', anitya_pkg: 'xerces-c', comments: 'Prefer to GitHub' },
     { pkg_name: 'yad', anitya_pkg: 'yad', comments: 'Prefer to GitHub' },
     { pkg_name: 'zimg', anitya_pkg: 'zimg', comments: 'Prefer to GitHub' },
     { pkg_name: 'zoneinfo', anitya_pkg: 'tzdata', comments: '' }
@@ -475,7 +477,7 @@ CREW_DOCOPT ||= <<~DOCOPT
     crew update_package_file [options] [-v|--verbose] [<name> ...]
     crew upgrade [options] [-f|--force] [-k|--keep] [--regenerate-filelist] [-s|--source] [-v|--verbose] [<name> ...]
     crew upload [options] [-f|--force] [-v|--verbose] [<name> ...]
-    crew upstream [options] [-j|--json|-u|--update-package-files|-v|--verbose] <name> ...
+    crew upstream [options] [-j|--json|-u|--update-package-files|-v|--verbose|-vv] <name> ...
     crew version [options] [<name>]
     crew whatprovides [options] <pattern> ...
 
