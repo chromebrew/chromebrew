@@ -75,7 +75,7 @@
     "name": "acquia_cli",
     "description": "Acquia CLI - The official command-line tool for interacting with the Drupal Cloud Platform and services.",
     "homepage": "https://github.com/acquia/cli",
-    "version": "2.48.0",
+    "version": "2.49.0",
     "license": "GPL-2.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -163,7 +163,7 @@
     "name": "alacritty",
     "description": "A cross-platform, GPU-accelerated terminal emulator",
     "homepage": "https://github.com/alacritty/alacritty",
-    "version": "0.15.1",
+    "version": "0.16.0",
     "license": "Apache",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -283,7 +283,7 @@
     "name": "ansible",
     "description": "Ansible is a radically simple IT automation engine that automates cloud provisioning, configuration management, application deployment, intra-service orchestration, and many other IT needs.",
     "homepage": "https://www.ansible.com/",
-    "version": "2.17.3",
+    "version": "12.1.0",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -763,7 +763,7 @@
     "name": "awscli",
     "description": "Universal Command Line Interface for Amazon Web Services",
     "homepage": "https://github.com/aws/aws-cli",
-    "version": "1.42.15",
+    "version": "1.42.55",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -875,7 +875,7 @@
     "name": "bat",
     "description": "Clone of cat with syntax highlighting and Git integration",
     "homepage": "https://github.com/sharkdp/bat",
-    "version": "0.25.0",
+    "version": "0.26.0",
     "license": "Apache-2.0, MIT",
     "compatibility": "all"
   },
@@ -2312,6 +2312,14 @@
     "compatibility": "all"
   },
   {
+    "name": "deskreen",
+    "description": "Turn any device into a secondary screen for your computer",
+    "homepage": "https://deskreen.com/lang-en",
+    "version": "2.0.4",
+    "license": "AGPL-3.0",
+    "compatibility": "x86_64"
+  },
+  {
     "name": "desktop_file_utils",
     "description": "contains a few command line utilities for working with desktop entries",
     "homepage": "https://www.freedesktop.org/wiki/Software/desktop-file-utils/",
@@ -2563,7 +2571,7 @@
     "name": "doxygen",
     "description": "Doxygen is the de facto standard tool for generating documentation from annotated C++ sources, but it also supports other popular programming languages such as C, Objective-C, C#, PHP, Java, Python, IDL (Corba, Microsoft, and UNO/OpenOffice flavors), Fortran, VHDL, Tcl, and to some extent D.",
     "homepage": "https://www.doxygen.nl/",
-    "version": "1.14.0",
+    "version": "1.15.0",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -2667,7 +2675,7 @@
     "name": "edge",
     "description": "Microsoft Edge is the fast and secure browser",
     "homepage": "https://www.microsoft.com/en-us/edge",
-    "version": "141.0.3537.85-1",
+    "version": "141.0.3537.99-1",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -2715,7 +2723,7 @@
     "name": "elfutils",
     "description": "elfutils is a collection of utilities and libraries to read, create and modify ELF binary files, find and handle DWARF debug data, symbols, thread state and stacktraces for processes and core files on GNU/Linux.",
     "homepage": "https://sourceware.org/elfutils/",
-    "version": "0.193",
+    "version": "0.194",
     "license": "GPL-2+ or LGPL-3+",
     "compatibility": "all"
   },
@@ -3795,7 +3803,7 @@
     "name": "gcloud",
     "description": "Command-line interface for Google Cloud Platform products and services",
     "homepage": "https://cloud.google.com/sdk/gcloud/",
-    "version": "543.0.0",
+    "version": "544.0.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -4115,7 +4123,7 @@
     "name": "github_cli",
     "description": "Official Github CLI tool",
     "homepage": "https://cli.github.com/",
-    "version": "2.72.0",
+    "version": "2.82.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -4171,7 +4179,7 @@
     "name": "glab",
     "description": "A GitLab CLI tool bringing GitLab to your command line",
     "homepage": "https://gitlab.com/gitlab-org/cli",
-    "version": "1.68.0",
+    "version": "1.74.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -4651,7 +4659,7 @@
     "name": "go",
     "description": "Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.",
     "homepage": "https://go.dev",
-    "version": "1.25.1",
+    "version": "1.25.3",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -4715,7 +4723,7 @@
     "name": "google_chrome",
     "description": "Google Chrome is a fast, easy to use, and secure web browser.",
     "homepage": "https://www.google.com/chrome/",
-    "version": "141.0.7390.107-1",
+    "version": "141.0.7390.122-1",
     "license": "google-chrome",
     "compatibility": "x86_64"
   },
@@ -6691,7 +6699,7 @@
     "name": "libclc",
     "description": "Library requirements of the OpenCL C programming language",
     "homepage": "https://libclc.llvm.org/",
-    "version": "21.1.2",
+    "version": "21.1.4",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -8507,7 +8515,7 @@
     "name": "libunbound",
     "description": "Unbound is a validating, recursive, and caching DNS resolver.",
     "homepage": "https://nlnetlabs.nl/projects/unbound/about/",
-    "version": "1.24.0",
+    "version": "1.24.1",
     "license": "BSD and GPL-2",
     "compatibility": "all"
   },
@@ -8939,7 +8947,7 @@
     "name": "libxkbcommon",
     "description": "Keymap handling library for toolkits and window systems",
     "homepage": "https://xkbcommon.org",
-    "version": "1.0.3",
+    "version": "1.2.1",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -9315,7 +9323,7 @@
     "name": "llvm21_build",
     "description": "The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The packages included are: bolt clang clang-tools-extra compiler-rt lld lldb polly pstl",
     "homepage": "https://llvm.org/",
-    "version": "21.1.2",
+    "version": "21.1.4",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "all"
   },
@@ -9323,7 +9331,7 @@
     "name": "llvm21_dev",
     "description": "LLVM: Everything except libLLVM & llvm-strip",
     "homepage": "https://llvm.org/",
-    "version": "21.1.2",
+    "version": "21.1.4",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "all"
   },
@@ -9331,7 +9339,7 @@
     "name": "llvm21_lib",
     "description": "LibLLVM and llvm-strip",
     "homepage": "https://llvm.org/",
-    "version": "21.1.2",
+    "version": "21.1.4",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "all"
   },
@@ -11363,7 +11371,7 @@
     "name": "openmp",
     "description": "LLVM OpenMP Runtime Library",
     "homepage": "https://openmp.llvm.org/",
-    "version": "21.1.2",
+    "version": "21.1.4",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "all"
   },
@@ -11395,7 +11403,7 @@
     "name": "openssh",
     "description": "OpenSSH is the premier connectivity tool for remote login with the SSH protocol.",
     "homepage": "https://www.openssh.com/",
-    "version": "10.0p2",
+    "version": "10.2p1",
     "license": "BSD and GPL-2",
     "compatibility": "all"
   },
@@ -11691,7 +11699,7 @@
     "name": "pcre2",
     "description": "The PCRE2 package contains a new generation of the Perl Compatible Regular Expression libraries.",
     "homepage": "http://pcre.org/",
-    "version": "10.46",
+    "version": "10.47",
     "license": "BSD-3",
     "compatibility": "all"
   },
@@ -12891,7 +12899,7 @@
     "name": "py3_argcomplete",
     "description": "Argcomplete provides bash completion for argparse.",
     "homepage": "https://kislyuk.github.io/argcomplete/",
-    "version": "3.6.2",
+    "version": "3.6.3",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -13035,7 +13043,7 @@
     "name": "py3_cmarkgfm",
     "description": "Python bindings to GitHub's cmark.",
     "homepage": "https://github.com/theacodes/cmarkgfm",
-    "version": "2024.11.20",
+    "version": "2025.10.22",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -13083,7 +13091,7 @@
     "name": "py3_cython",
     "description": "The Cython language makes writing C extensions for the Python language as easy as Python itself.",
     "homepage": "https://cython.org/",
-    "version": "3.1.4",
+    "version": "3.1.6",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -13347,7 +13355,7 @@
     "name": "py3_impacket",
     "description": "Impacket provides network protocols constructors and dissectors.",
     "homepage": "https://www.secureauth.com/labs/open-source-tools/impacket/",
-    "version": "0.12.0",
+    "version": "0.13.0",
     "license": "Apache-2.0-with-impacket-modifications",
     "compatibility": "all"
   },
@@ -13603,7 +13611,7 @@
     "name": "py3_nuitka",
     "description": "Nuitka is a Python to binary compiler written in Python. You feed it your Python app, it does a lot of clever things, and spits out an executable or extension module.",
     "homepage": "https://nuitka.net/",
-    "version": "2.8.1",
+    "version": "2.8.4",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -13619,7 +13627,7 @@
     "name": "py3_oci",
     "description": "Oracle Cloud Infrastructure Python SDK",
     "homepage": "https://oracle-cloud-infrastructure-python-sdk.readthedocs.io/",
-    "version": "2.161.0",
+    "version": "2.161.1",
     "license": "UPL-1.0 or Apache-2.0",
     "compatibility": "all"
   },
@@ -13627,7 +13635,7 @@
     "name": "py3_oci_cli",
     "description": "Command Line Interface for Oracle Cloud Infrastructure",
     "homepage": "https://github.com/oracle/oci-cli/",
-    "version": "3.68.0",
+    "version": "3.68.1",
     "license": "UPL-1.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -13707,7 +13715,7 @@
     "name": "py3_pip",
     "description": "Pip is the python package manager from the Python Packaging Authority.",
     "homepage": "https://pip.pypa.io/",
-    "version": "25.2",
+    "version": "25.3",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13763,7 +13771,7 @@
     "name": "py3_psutil",
     "description": "psutil is a cross-platform library for process and system monitoring in Python.",
     "homepage": "https://github.com/giampaolo/psutil/",
-    "version": "7.1.0",
+    "version": "7.1.2",
     "license": "BSD-3",
     "compatibility": "all"
   },
@@ -13867,7 +13875,7 @@
     "name": "py3_pylint",
     "description": "Analyzes Python code looking for bugs and signs of poor quality",
     "homepage": "https://pylint.pycqa.org",
-    "version": "4.0.1",
+    "version": "4.0.2",
     "license": "GPL",
     "compatibility": "all"
   },
@@ -13899,7 +13907,7 @@
     "name": "py3_pypdf",
     "description": "A pure-python PDF library capable of splitting, merging, cropping, and transforming the pages of PDF files.",
     "homepage": "https://github.com/py-pdf/pypdf",
-    "version": "6.1.1",
+    "version": "6.1.3",
     "license": "BSD-3-Clause",
     "compatibility": "all"
   },
@@ -13915,7 +13923,7 @@
     "name": "py3_pyright",
     "description": "Static Type Checker for Python",
     "homepage": "https://github.com/microsoft/pyright",
-    "version": "1.1.406",
+    "version": "1.1.407",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14035,7 +14043,7 @@
     "name": "py3_ruff",
     "description": "An extremely fast Python linter, written in Rust.",
     "homepage": "https://docs.astral.sh/ruff",
-    "version": "0.14.1",
+    "version": "0.14.2",
     "license": "GPL-2.0",
     "compatibility": "all"
   },
@@ -14083,7 +14091,7 @@
     "name": "py3_setuptools_scm",
     "description": "Setuptools-scm is the blessed package to manage your versions by scm tags.",
     "homepage": "https://github.com/pypa/setuptools_scm",
-    "version": "9.2.1",
+    "version": "9.2.2",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14251,7 +14259,7 @@
     "name": "py3_tox",
     "description": "Command line driven CI frontend and development task automation tool.",
     "homepage": "https://tox.readthedocs.io/",
-    "version": "4.31.0",
+    "version": "4.32.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15107,7 +15115,7 @@
     "name": "ruby_activesupport",
     "description": "A toolkit of support libraries and Ruby core extensions extracted from the Rails framework.",
     "homepage": "https://rubyonrails.org/",
-    "version": "8.0.3",
+    "version": "8.1.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15115,7 +15123,7 @@
     "name": "ruby_asciidoctor",
     "description": "A fast text processor & publishing toolchain for converting AsciiDoc to HTML5, DocBook & more.",
     "homepage": "https://asciidoctor.org/",
-    "version": "2.0.25",
+    "version": "2.0.26",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15147,7 +15155,7 @@
     "name": "ruby_benchmark",
     "description": "A performance benchmarking library.",
     "homepage": "https://github.com/ruby/benchmark",
-    "version": "0.4.1",
+    "version": "0.5.0",
     "license": "Ruby",
     "compatibility": "all"
   },
@@ -15467,7 +15475,7 @@
     "name": "ruby_json",
     "description": "This is a JSON implementation as a Ruby extension in C.",
     "homepage": "https://flori.github.io/json",
-    "version": "2.15.1",
+    "version": "2.15.2",
     "license": "Ruby",
     "compatibility": "all"
   },
@@ -15923,7 +15931,7 @@
     "name": "ruby_rubocop",
     "description": "A Ruby static code analyzer and formatter",
     "homepage": "https://rubocop.org",
-    "version": "1.81.1",
+    "version": "1.81.6",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -17507,7 +17515,7 @@
     "name": "telegram",
     "description": "Telegram is a messaging app with a focus on speed and security, it's super-fast, simple and free.",
     "homepage": "https://telegram.org/",
-    "version": "5.15.2",
+    "version": "6.2.4",
     "license": "BSD, LGPL-2+ and GPL-3-with-openssl-exception",
     "compatibility": "x86_64"
   },
@@ -17563,7 +17571,7 @@
     "name": "termius",
     "description": "Modern SSH Client",
     "homepage": "https://termius.com/",
-    "version": "9.32.2",
+    "version": "9.32.3",
     "license": "Apache-2.0, LGPL-2.1, MIT",
     "compatibility": "x86_64"
   },
@@ -17858,8 +17866,8 @@
   {
     "name": "tree",
     "description": "Tree is a recursive directory listing command that produces a depth indented listing of files, which is colorized ala dircolors if the LS_COLORS environment variable is set and output is to tty.",
-    "homepage": "http://mama.indstate.edu/users/ice/tree/",
-    "version": "2.1.0",
+    "homepage": "https://github.com/Old-Man-Programmer/tree",
+    "version": "2.2.1",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -18179,7 +18187,7 @@
     "name": "uutils_coreutils",
     "description": "Cross-platform Rust rewrite of the GNU coreutils",
     "homepage": "https://github.com/uutils/coreutils",
-    "version": "0.2.2",
+    "version": "0.3.0",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -18235,7 +18243,7 @@
     "name": "valgrind",
     "description": "Valgrind is an instrumentation framework for building dynamic analysis tools.",
     "homepage": "https://valgrind.org/",
-    "version": "3.25.1",
+    "version": "3.26.0",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -18987,7 +18995,7 @@
     "name": "xercesc",
     "description": "Xerces-C++ is a validating XML parser written in a portable subset of C++.",
     "homepage": "https://xerces.apache.org/xerces-c/",
-    "version": "3.2.5",
+    "version": "3.3.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
