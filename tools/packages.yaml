@@ -9515,6 +9515,11 @@ url: https://sourceforge.net/projects/trousers/files/trousers/
 activity: none
 ---
 kind: url
+name: trzsz
+url: https://github.com/trzsz/trzsz-go/releases
+activity: none
+---
+kind: url
 name: ttf2pt1
 url: https://sourceforge.net/projects/ttf2pt1/files/ttf2pt1/
 activity: none
