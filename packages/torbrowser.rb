@@ -1,14 +1,15 @@
 require 'package'
-require 'convenience_functions'
 
 class Torbrowser < Package
   description "'The Onion Router' browser"
   homepage 'https://www.torproject.org/'
-  version '14.0.7'
+  version '14.5.8'
   license 'BSD, custom, MPL-2.0 and MIT'
   compatibility 'x86_64'
+  min_glibc '2.34'
+  # Updates available at https://www.torproject.org/download/.
   source_url "https://dist.torproject.org/torbrowser/#{version}/tor-browser-linux-x86_64-#{version}.tar.xz"
-  source_sha256 '091a56fb506a35e2e507272a3335a9e1c597a9a87ce637f83cb8446e8d14b03a'
+  source_sha256 '85fde9925f89f47b36f174b23685c264cd01f40ee0e3f9fa17b585903fe197fa'
 
   depends_on 'gtk3'
   depends_on 'gdk_base'

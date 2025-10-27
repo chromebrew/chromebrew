@@ -1,3 +1,4 @@
+# Total size: 315835370
 /usr/local/bin/tor
 /usr/local/share/torbrowser/Browser/.config/gtk-3.0/settings.ini
 /usr/local/share/torbrowser/Browser/TorBrowser/Data/Browser/profile.default/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi
@@ -8,22 +9,19 @@
 /usr/local/share/torbrowser/Browser/TorBrowser/Data/Tor/torrc-defaults
 /usr/local/share/torbrowser/Browser/TorBrowser/Docs/ChangeLog.txt
 /usr/local/share/torbrowser/Browser/TorBrowser/Docs/Licenses/Firefox.txt
-/usr/local/share/torbrowser/Browser/TorBrowser/Docs/Licenses/Libevent.txt
 /usr/local/share/torbrowser/Browser/TorBrowser/Docs/Licenses/NoScript.txt
 /usr/local/share/torbrowser/Browser/TorBrowser/Docs/Licenses/Noto-CJK-Font.txt
 /usr/local/share/torbrowser/Browser/TorBrowser/Docs/Licenses/Noto-Fonts.txt
-/usr/local/share/torbrowser/Browser/TorBrowser/Docs/Licenses/PluggableTransports/LICENSE
-/usr/local/share/torbrowser/Browser/TorBrowser/Docs/Licenses/PluggableTransports/LICENSE.CC0
-/usr/local/share/torbrowser/Browser/TorBrowser/Docs/Licenses/PluggableTransports/LICENSE.GO
-/usr/local/share/torbrowser/Browser/TorBrowser/Docs/Licenses/PluggableTransports/LICENSE.SNOWFLAKE
 /usr/local/share/torbrowser/Browser/TorBrowser/Docs/Licenses/Tor-Launcher.txt
-/usr/local/share/torbrowser/Browser/TorBrowser/Docs/Licenses/Tor.txt
 /usr/local/share/torbrowser/Browser/TorBrowser/Docs/Licenses/Torbutton.txt
+/usr/local/share/torbrowser/Browser/TorBrowser/Docs/Licenses/conjure.txt
+/usr/local/share/torbrowser/Browser/TorBrowser/Docs/Licenses/libevent.txt
+/usr/local/share/torbrowser/Browser/TorBrowser/Docs/Licenses/lyrebird.txt
+/usr/local/share/torbrowser/Browser/TorBrowser/Docs/Licenses/openssl.txt
+/usr/local/share/torbrowser/Browser/TorBrowser/Docs/Licenses/tor.txt
 /usr/local/share/torbrowser/Browser/TorBrowser/Docs/conjure/README.md
-/usr/local/share/torbrowser/Browser/TorBrowser/Docs/snowflake/README.md
 /usr/local/share/torbrowser/Browser/TorBrowser/Tor/PluggableTransports/conjure-client
 /usr/local/share/torbrowser/Browser/TorBrowser/Tor/PluggableTransports/lyrebird
-/usr/local/share/torbrowser/Browser/TorBrowser/Tor/PluggableTransports/snowflake-client
 /usr/local/share/torbrowser/Browser/TorBrowser/Tor/libcrypto.so.3
 /usr/local/share/torbrowser/Browser/TorBrowser/Tor/libevent-2.1.so.7
 /usr/local/share/torbrowser/Browser/TorBrowser/Tor/libssl.so.3
@@ -44,7 +42,6 @@
 /usr/local/share/torbrowser/Browser/execdesktop
 /usr/local/share/torbrowser/Browser/firefox
 /usr/local/share/torbrowser/Browser/firefox.real
-/usr/local/share/torbrowser/Browser/fontconfig/fonts.conf
 /usr/local/share/torbrowser/Browser/fonts/000_README.txt
 /usr/local/share/torbrowser/Browser/fonts/Arimo-Bold.ttf
 /usr/local/share/torbrowser/Browser/fonts/Arimo-BoldItalic.ttf
@@ -105,7 +102,6 @@
 /usr/local/share/torbrowser/Browser/fonts/NotoSansMongolian-Regular.ttf
 /usr/local/share/torbrowser/Browser/fonts/NotoSansMro-Regular.ttf
 /usr/local/share/torbrowser/Browser/fonts/NotoSansMultani-Regular.ttf
-/usr/local/share/torbrowser/Browser/fonts/NotoSansMyanmar-Regular.ttf
 /usr/local/share/torbrowser/Browser/fonts/NotoSansNKo-Regular.ttf
 /usr/local/share/torbrowser/Browser/fonts/NotoSansNewTaiLue-Regular.ttf
 /usr/local/share/torbrowser/Browser/fonts/NotoSansNewa-Regular.ttf
@@ -183,12 +179,14 @@
 /usr/local/share/torbrowser/Browser/fonts/NotoSerifThai-Regular.ttf
 /usr/local/share/torbrowser/Browser/fonts/NotoSerifTibetan-Regular.ttf
 /usr/local/share/torbrowser/Browser/fonts/NotoSerifYezidi-Regular.ttf
+/usr/local/share/torbrowser/Browser/fonts/Pyidaungsu-2.5.3_Regular.ttf
 /usr/local/share/torbrowser/Browser/fonts/STIXTwoMath-Regular.otf
 /usr/local/share/torbrowser/Browser/fonts/Tinos-Bold.ttf
 /usr/local/share/torbrowser/Browser/fonts/Tinos-BoldItalic.ttf
 /usr/local/share/torbrowser/Browser/fonts/Tinos-Italic.ttf
 /usr/local/share/torbrowser/Browser/fonts/Tinos-Regular.ttf
 /usr/local/share/torbrowser/Browser/fonts/TwemojiMozilla.ttf
+/usr/local/share/torbrowser/Browser/fonts/fonts.conf
 /usr/local/share/torbrowser/Browser/glxtest
 /usr/local/share/torbrowser/Browser/icons/updater.png
 /usr/local/share/torbrowser/Browser/libfreeblpriv3.so
