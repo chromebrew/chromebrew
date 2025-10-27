@@ -141,7 +141,7 @@ CREW_STANDALONE_UPGRADE_ORDER = %w[libxcrypt crew_preload glibc openssl ruby pyt
 
 CREW_DEBUG        ||= ARGV.include?('-D') || ARGV.include?('--debug') unless defined?(CREW_DEBUG)
 CREW_FORCE        ||= ARGV.include?('-f') || ARGV.include?('--force') unless defined?(CREW_FORCE)
-CREW_VERBOSE      ||= ARGV.include?('-v') || ARGV.include?('--verbose') unless defined?(CREW_VERBOSE)
+CREW_VERBOSE      ||= ARGV.include?('-v') || ARGV.include?('--verbose') || ARGV.include?('-vv') unless defined?(CREW_VERBOSE)
 CREW_VERY_VERBOSE ||= ARGV.include?('-vv') unless defined?(CREW_VERY_VERBOSE)
 
 # Set CREW_NPROC from environment variable, `distcc -j`, or `nproc`.
@@ -422,6 +422,7 @@ unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
     { pkg_name: 'signal_desktop', anitya_pkg: 'signal', comments: '' },
     { pkg_name: 'tepl_6', anitya_pkg: 'libgedit-tepl', comments: '' },
     { pkg_name: 'upx', anitya_pkg: 'upx', comments: 'Prefer to GitHub' },
+    { pkg_name: 'vidstab', anitya_pkg: 'vid.stab', comments: 'Prefer to GitHub' },
     { pkg_name: 'vim_runtime', anitya_pkg: 'vim', comments: '' },
     { pkg_name: 'webkitgtk_6', anitya_pkg: 'webkitgtk~stable', comments: '' },
     { pkg_name: 'xauth', anitya_pkg: 'xorg-x11-xauth', comments: '' },
