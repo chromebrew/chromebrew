@@ -1,14 +1,14 @@
-# Total size: 2389649
+# Total size: 3416620
 /usr/local/include/sys/capability.h
 /usr/local/include/sys/psx_syscall.h
 /usr/local/lib64/libcap.a
 /usr/local/lib64/libcap.so
 /usr/local/lib64/libcap.so.2
-/usr/local/lib64/libcap.so.2.76
+/usr/local/lib64/libcap.so.2.77
 /usr/local/lib64/libpsx.a
 /usr/local/lib64/libpsx.so
 /usr/local/lib64/libpsx.so.2
-/usr/local/lib64/libpsx.so.2.76
+/usr/local/lib64/libpsx.so.2.77
 /usr/local/lib64/pkgconfig/libcap.pc
 /usr/local/lib64/pkgconfig/libpsx.pc
 /usr/local/sbin/capsh
