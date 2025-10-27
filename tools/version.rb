@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
-# version.rb version 3.6 (for Chromebrew)
+# version.rb version 3.7 (for Chromebrew)
 
-OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose]
+OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose -vv]
 
 if ARGV.include?('-h') || ARGV.include?('--help')
   abort <<~EOM
@@ -13,6 +13,7 @@ if ARGV.include?('-h') || ARGV.include?('--help')
     field in the package file.
     Passing --json or -j will only give json output.
     Passing --verbose or -v will display verbose output.
+    Passing -vv will display very verbose output.
   EOM
 end
 
@@ -40,7 +41,7 @@ $LOAD_PATH.unshift File.join(crew_local_repo_root, 'lib')
 
 OUTPUT_JSON = ARGV.include?('-j') || ARGV.include?('--json')
 UPDATE_PACKAGE_FILES = ARGV.include?('-u') || ARGV.include?('--update-package-files')
-VERBOSE = ARGV.include?('-v') || ARGV.include?('--verbose')
+VERBOSE = ARGV.include?('-v') || ARGV.include?('--verbose') || ARGV.include?('-vv')
 VERY_VERBOSE = ARGV.include?('-vv')
 bc_updated = {}
 @pkg_names = {}
@@ -49,11 +50,12 @@ version_line_string = {}
 versions_updated = {}
 versions = []
 
-def get_version(name, homepage, source)
+def get_version(name, homepage, source, version)
   anitya_name_mapping_idx = CREW_ANITYA_PACKAGE_NAME_MAPPINGS.keys.find_index { |i| i == name }
-  anitya_name = name.gsub(/\Apy\d_|\Aperl_|\Aruby_/, '').tr('_', '-')
+  anitya_name = name.gsub(/\Apy\d_|\Aperl_|\Aruby_/, '')
   anitya_name = CREW_ANITYA_PACKAGE_NAME_MAPPINGS.values[anitya_name_mapping_idx] unless anitya_name_mapping_idx.nil?
   anitya_id = get_anitya_id(anitya_name, homepage)
+  anitya_name = @new_anitya_name unless @new_anitya_name.nil?
   # If anitya_id cannot be determined, a Range can be returned, and
   # .nonzero? does not work with Ranges.
   anitya_id = nil if anitya_id.is_a? Range
@@ -61,6 +63,7 @@ def get_version(name, homepage, source)
   if anitya_id&.nonzero?
     # Get the latest stable version of the package from anitya.
     json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/versions/?project_id=#{anitya_id}")))
+    puts json if VERY_VERBOSE
     return if json['stable_versions'].nil?
     return json['stable_versions'][0]
   elsif source.nil? || %w[Pip].include?(@pkg.superclass.to_s)
@@ -83,7 +86,9 @@ def get_version(name, homepage, source)
     end
     source.sub!('www.', '')
     url = URI.parse(source)
-    if url.host == 'github.com'
+    puts "source_url host: #{url.host}" if VERY_VERBOSE
+    case url.host
+    when 'github.com'
       url_parts = url.path.split('/')
       unless url_parts.count < 3
         repo = "#{url_parts[1]}/#{url_parts[2].gsub(/.git\z/, '')}"
@@ -91,11 +96,39 @@ def get_version(name, homepage, source)
         if File.which('gh')
           # This allows us to only get non-pre-release versions from
           # GitHub if such releases exist.
+          puts "gh release ls --exclude-pre-releases --exclude-drafts -L 1 -R #{repo} --json tagName -q '.[] | .tagName'" if VERY_VERBOSE
           github_ver = `gh release ls --exclude-pre-releases --exclude-drafts -L 1 -R #{repo} --json tagName -q '.[] | .tagName'`.chomp if system 'gh auth status >/dev/null', exception: false
         else
-          github_ver = `curl https://api.github.com/repos/#{repo}/releases/latest -s | jq .tag -r`.chomp
+          puts "curl https://api.github.com/repos/#{repo}/releases/latest -s | jq .tag_name -r" if VERY_VERBOSE
+          github_ver = `curl https://api.github.com/repos/#{repo}/releases/latest -s | jq .tag_name -r`.chomp
+          puts "curl https://api.github.com/repos/#{repo}/tags -s | jq '.[0].name' -r" if VERY_VERBOSE && (github_ver.blank? || github_ver == 'null')
+          github_ver = `curl https://api.github.com/repos/#{repo}/tags -s | jq '.[0].name' -r`.chomp if github_ver.blank? || github_ver == 'null'
         end
         return github_ver unless github_ver.blank? || github_ver == 'null'
+      end
+    when 'gitlab.com'
+      url_parts = url.path.split('/')
+      unless url_parts.count < 3
+        repo = "#{url_parts[1]}/#{url_parts[2].gsub(/.git\z/, '')}"
+        puts "GitLab Repo is #{repo}" if VERBOSE
+        puts "curl https://#{url.host}/#{repo}/-/releases/permalink/latest -s | jq .tag_name -r" if VERY_VERBOSE
+        gitlab_ver = `curl https://#{url.host}/#{repo}/-/releases/permalink/latest -s | jq .tag_name -r`.chomp
+        return gitlab_ver unless gitlab_ver.blank? || gitlab_ver == 'null'
+      end
+    when 'downloads.sourceforge.net'
+      url_parts = url.path.split('/')
+      unless url_parts.count < 3
+        repo = url_parts[2]
+        filename = url_parts.last
+        puts "Sourceforge Repo is #{repo}" if VERBOSE
+        puts "curl -L -s https://sourceforge.net/projects/#{repo}/best_release.json | jq .release.filename -r" if VERY_VERBOSE
+        sourceforge_file = `curl -L -s https://sourceforge.net/projects/#{repo}/best_release.json | jq .release.filename -r`.chomp
+        best_release = sourceforge_file.split('/').last
+        if filename == best_release
+          return version
+        else
+          return best_release
+        end
       end
     end
   end
@@ -109,22 +142,40 @@ def get_anitya_id(name, homepage)
   # Find out how many packages Anitya has with the provided name.
   puts "url is https://release-monitoring.org/api/v2/projects/?name=#{CGI.escape(name)}" if VERY_VERBOSE
   json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/projects/?name=#{CGI.escape(name)}")))
+  puts json if VERY_VERBOSE
   number_of_packages = json['total_items']
 
   puts "number_of_packages = #{number_of_packages}" if VERY_VERBOSE
   if number_of_packages == 1 # We assume we have the right package, take the ID and move on.
     return json['items'][0]['id']
   elsif number_of_packages.zero? # Anitya either doesn't have this package, or has it under a different name.
-    # If it has it under a different name, check if it has the name used by Chromebrew.
-    json2 = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/packages/?name=#{name.tr('-', '_')}")))
-    return if json2['total_items'].zero?
+    @new_anitya_name = nil
+    name_candidate = name.tr('-', '_') if name.include?('-')
+    name_candidate = name.tr('_', '-') if name.include?('_')
+    if name_candidate && name_candidate != name
+      if VERY_VERBOSE
+        puts "No Anitya package found with #{name}. Attempting a new search with #{name_candidate}."
+        puts "url is https://release-monitoring.org/api/v2/projects/?name=#{name_candidate}"
+      end
+      json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/projects/?name=#{name_candidate}")))
+      number_of_packages = json['total_items']
+      if number_of_packages.zero?
+        puts "No Anitya package found with #{name_candidate}." if VERY_VERBOSE
+        return
+      end
 
-    (0..(json2['total_items'] - 1)).each do |i|
-      # If it has it under a different name, make sure that is the Chromebrew mapping, and not some other distribution,
-      # because that could lead to overmatching.
-      next unless json2['items'][i]['distribution'] == 'Chromebrew'
-
-      return get_anitya_id(json2['items'][i]['project'], homepage) if json2['items'][i]['name'] == name.tr('-', '_')
+      puts "number_of_packages = #{number_of_packages}" if VERY_VERBOSE
+      (0..(number_of_packages - 1)).each do |i|
+        next if json['items'][i].nil?
+        homepage_domain = homepage.gsub(%r{http(s)?://(www\.)?}, '').chomp('/')
+        puts "homepage_domain = #{homepage.gsub(%r{http(s)?://(www\.)?}, '').chomp('/')}" if VERY_VERBOSE
+        candidate_homepage_domain = json['items'][i]['homepage'].gsub(%r{http(s)?://(www\.)?}, '').chomp('/')
+        puts "candidate_homepage_domain = #{json['items'][i]['homepage'].gsub(%r{http(s)?://(www\.)?}, '').chomp('/')}" if VERY_VERBOSE
+        if homepage_domain == candidate_homepage_domain
+          @new_anitya_name = name_candidate
+          return json['items'][i]['id']
+        end
+      end
     end
   else # Anitya has more than one package with this exact name.
     candidates = []
@@ -142,6 +193,7 @@ def get_anitya_id(name, homepage)
         candidates.append(i)
       end
     end
+    puts "candidates = #{candidates}" if VERY_VERBOSE
 
     if candidates.length == 1 # If there's only one candidate left, we're done.
       return json['items'][candidates[0]]['id']
@@ -157,8 +209,13 @@ def get_anitya_id(name, homepage)
         # We assume there is only one candidate with the same name and homepage as their crew counterpart.
         # Even if there are multiple candidates with the same name and homepage, its probably fine to treat them as identical.
         # If it isn't fine to treat them as identical, something has gone horribly wrong.
-        return json['items'][candidate]['id'] if homepage.chomp('/') == json['items'][candidate]['homepage'].chomp('/')
+        homepage_domain = homepage.gsub(%r{http(s)?://(www\.)?}, '').chomp('/')
+        puts "homepage_domain = #{homepage.gsub(%r{http(s)?://(www\.)?}, '').chomp('/')}" if VERY_VERBOSE
+        candidate_homepage_domain = json['items'][candidate]['homepage'].gsub(%r{http(s)?://(www\.)?}, '').chomp('/')
+        puts "candidate_homepage_domain = #{json['items'][candidate]['homepage'].gsub(%r{http(s)?://(www\.)?}, '').chomp('/')}" if VERY_VERBOSE
+        return json['items'][candidate]['id'] if homepage_domain == candidate_homepage_domain
       end
+      puts 'no candidates found.' if VERY_VERBOSE
 
       # If we're still here, that means none of the candidates had the same homepage as their crew counterpart.
       # Not much we can do at this point to find the version, and its better to be cautious to avoid getting the wrong candidate.
@@ -198,8 +255,8 @@ if filelist.length.positive?
   status_field_length = 17
   version_field_length = 13
 
-  puts "#{'Package'.ljust(package_field_length)}#{'Status'.ljust(status_field_length)}#{'Current'.ljust(version_field_length)}#{'Upstream'.ljust(version_field_length)}Updatable?" unless OUTPUT_JSON
-  puts "#{'-------'.ljust(package_field_length)}#{'------'.ljust(status_field_length)}#{'-------'.ljust(version_field_length)}#{'--------'.ljust(version_field_length)}----------" unless OUTPUT_JSON
+  puts "#{'Package'.ljust(package_field_length)}#{'Status'.ljust(status_field_length)}#{'Current'.ljust(version_field_length)}#{'Upstream'.ljust(version_field_length)}#{'Updatable?'.ljust(version_field_length)}Compile?" unless OUTPUT_JSON
+  puts "#{'-------'.ljust(package_field_length)}#{'------'.ljust(status_field_length)}#{'-------'.ljust(version_field_length)}#{'--------'.ljust(version_field_length)}#{'----------'.ljust(version_field_length)}--------" unless OUTPUT_JSON
   filelist.each do |filename|
     @pkg = Package.load_package(filename)
     cleaned_pkg_version = PackageUtils.get_clean_version(@pkg.version)
@@ -281,7 +338,7 @@ if filelist.length.positive?
       end
     else
       # Get the upstream version.
-      upstream_version = get_version(@pkg.name, @pkg.homepage, @pkg.source_url)
+      upstream_version = get_version(@pkg.name, @pkg.homepage, @pkg.source_url, @pkg.version)
     end
     # Some packages don't work with this yet, so gracefully exit now rather than throwing false positives.
     versions_updated[@pkg.name.to_sym] = 'Not Found.' if upstream_version.nil? || upstream_version.to_s.chomp == 'null'
@@ -403,11 +460,12 @@ if filelist.length.positive?
     when 'Up to date.'
       version_status_string = 'Up to date.'.ljust(status_field_length).lightgreen
     end
-    updatable_string = (updatable_pkg[@pkg.name.to_sym] == 'Yes' ? 'Yes'.lightgreen : 'No'.lightred) if updatable_string.nil?
+    updatable_string = (updatable_pkg[@pkg.name.to_sym] == 'Yes' ? 'Yes'.ljust(version_field_length).lightgreen : 'No'.ljust(version_field_length).lightred) if updatable_string.nil?
+    compile_string = @pkg.no_compile_needed? ? 'No'.lightred : 'Yes'.lightgreen
     versions.push(package: @pkg.name, update_status: versions_updated[@pkg.name.to_sym], version: cleaned_pkg_version, upstream_version: upstream_version.chomp)
 
     addendum_string = "#{@pkg.name} cannot be automatically updated: ".red + "#{updatable_pkg[@pkg.name.to_sym]}\n".purple unless updatable_pkg[@pkg.name.to_sym] == 'Yes'
-    version_line_string[@pkg.name.to_sym] = "#{@pkg.name.ljust(package_field_length)}#{version_status_string}#{cleaned_pkg_version.ljust(version_field_length)}#{upstream_version.chomp.ljust(version_field_length)}#{updatable_string}\n"
+    version_line_string[@pkg.name.to_sym] = "#{@pkg.name.ljust(package_field_length)}#{version_status_string}#{cleaned_pkg_version.ljust(version_field_length)}#{upstream_version.chomp.ljust(version_field_length)}#{updatable_string}#{compile_string}\n"
     print version_line_string[@pkg.name.to_sym] if !OUTPUT_JSON && ((versions_updated[@pkg.name.to_sym] == 'Outdated.' && updatable_pkg[@pkg.name.to_sym] == 'Yes') || VERBOSE)
     print addendum_string unless addendum_string.blank? || OUTPUT_JSON || !VERBOSE
 
