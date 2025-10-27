@@ -1,30 +1,24 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libemf < Package
+class Libemf < Autotools
   description 'libEMF is a C/C++ library which provides a drawing toolkit based on ECMA-234.'
   homepage 'https://libemf.sourceforge.net/'
-  version '1.0.9'
+  version '1.0.13'
   license 'LGPL-2.1 and GPL-2'
   compatibility 'all'
-  source_url 'https://prdownloads.sourceforge.net/project/libemf/libemf/1.0.9/libemf-1.0.9.tar.gz'
-  source_sha256 'dcc1f7dc09597a7e20fa808fbef03f0c5cbdd99d65a4fddd981d7f1dd6e28b81'
-  binary_compression 'tar.xz'
+  source_url "https://downloads.sourceforge.net/libemf/libemf/#{version}/libemf-#{version}.tar.gz"
+  source_sha256 '74d92c017e8beb41730a8be07c2c6e4ff6547660c84bf91f832d8f325dd0cf82'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd0823f3f19a891c6dcd66ea7c39f6c8deaefb487e6f14beb9b6045a82a8683b1',
-     armv7l: 'd0823f3f19a891c6dcd66ea7c39f6c8deaefb487e6f14beb9b6045a82a8683b1',
-       i686: '98db956a86f7c3508f01c259d9129b2a4fbb592eb2ed3a65898a4882f6b5b136',
-     x86_64: '3dd865953891dbdeaf295828b096f1bf5d90661519a4f8b564a460668a4949ee'
+    aarch64: '5b78be20e47f02f5e9065699245f929ed2d014b8fd7e8d02352c535c72d3d536',
+     armv7l: '5b78be20e47f02f5e9065699245f929ed2d014b8fd7e8d02352c535c72d3d536',
+       i686: '4031abe4be0420f58ea128aa1a8c192d068b10de48cf1d42b97abb24f84c21e8',
+     x86_64: 'b84ea6da767b7c6e2544b78bdf7ad262e8445fc865e7e3d83159053cec5dcac6'
   })
 
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  run_tests
 end
