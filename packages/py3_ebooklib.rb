@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_ebooklib < Pip
   description 'Ebooklib is a Python E-book library for handling books in EPUB2/EPUB3 format.'
   homepage 'https://docs.sourcefabric.org/projects/ebooklib/'
-  version "0.19-#{CREW_PY_VER}"
+  version "0.20-#{CREW_PY_VER}"
   license 'AGPL-3'
   compatibility 'all'
   source_url 'SKIP'
