@@ -1581,7 +1581,7 @@ activity: none
 ---
 kind: url
 name: dotnet
-url: https://dotnet.microsoft.com/en-us/download/dotnet
+url: https://dotnet.microsoft.com/en-us/download/dotnet/9.0
 activity: high
 ---
 kind: url
@@ -9518,6 +9518,11 @@ kind: url
 name: trzsz
 url: https://github.com/trzsz/trzsz-go/releases
 activity: none
+---
+kind: url
+name: tssh
+url: https://github.com/trzsz/trzsz-ssh/releases
+activity: low
 ---
 kind: url
 name: ttf2pt1
