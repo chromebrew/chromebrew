@@ -9520,6 +9520,11 @@ url: https://sourceforge.net/projects/trousers/files/trousers/
 activity: none
 ---
 kind: url
+name: trzsz
+url: https://github.com/trzsz/trzsz-go/releases
+activity: none
+---
+kind: url
 name: tssh
 url: https://github.com/trzsz/trzsz-ssh/releases
 activity: low
