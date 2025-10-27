@@ -11,10 +11,10 @@ class Libcap < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '565f04b662b09cd2807719397883dee5c2edf0f0a6267d38d43a9294f957cced',
-     armv7l: '565f04b662b09cd2807719397883dee5c2edf0f0a6267d38d43a9294f957cced',
-       i686: '0848abd872cd8d31e1a6f561e1a139774a1f65b8074f22b12d7b6d7e32ec68a0',
-     x86_64: '2ff76cecf3800fc2b38738fb063d6e2243f6a84d8a1fc1da3f2ad1120db90e3f'
+    aarch64: '53a9ed1dd6adba482e5fa7fb282166e9fc649602c957bc1c46b5d7250d7b7749',
+     armv7l: '53a9ed1dd6adba482e5fa7fb282166e9fc649602c957bc1c46b5d7250d7b7749',
+       i686: 'fd451051eca326a62edfe7c7a04ab8a6a932d3b27767d0277b2668b60e57eacc',
+     x86_64: '9d025a75fe53b685fcdff3aa2030b110367f26f2954bd84628f8f67306d11ea2'
   })
 
   depends_on 'glibc' # R
