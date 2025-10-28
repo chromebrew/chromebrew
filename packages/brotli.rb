@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Brotli < CMake
   description 'Brotli compression format'
   homepage 'https://github.com/google/brotli'
-  version '1.1.0'
+  version '1.2.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/google/brotli.git'
