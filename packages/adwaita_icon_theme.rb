@@ -2,7 +2,7 @@ require 'buildsystems/meson'
 
 class Adwaita_icon_theme < Meson
   description 'Theme consisting of a set of icons for GTK+'
-  homepage 'https://gitlab.gnome.org/GNOME/adwaita-icon-theme'
+  homepage 'https://wiki.gnome.org/Design'
   version '49.0'
   license 'LGPL-3 and CC-BY-SA-4.0'
   compatibility 'aarch64 armv7l x86_64'

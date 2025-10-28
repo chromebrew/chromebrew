@@ -2,7 +2,7 @@ require 'package'
 
 class Aspell_en < Package
   description 'English Aspell Dictionary'
-  homepage 'https://ftpmirror.gnu.org/aspell/dict/0index.html'
+  homepage 'https://aspell.net'
   version '2020.12.07-0'
   license 'myspell-en_CA-KevinAtkinson, public-domain, Princeton, and Ispell'
   compatibility 'all'

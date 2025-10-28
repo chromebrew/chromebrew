@@ -2,7 +2,7 @@ require 'package'
 
 class Cantarell_fonts < Package
   description 'Humanist sans serif font'
-  homepage 'https://gitlab.gnome.org/GNOME/cantarell-fonts'
+  homepage 'https://wiki.gnome.org/Projects/CantarellFonts'
   version '0.303.1'
   license 'OFL-1.1'
   compatibility 'all'

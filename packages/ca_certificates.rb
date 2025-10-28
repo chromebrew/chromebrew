@@ -2,7 +2,7 @@ require 'package'
 
 class Ca_certificates < Package
   description 'Common CA Certificates PEM files'
-  homepage 'https://salsa.debian.org/debian/ca-certificates'
+  homepage 'https://packages.debian.org/sid/ca-certificates'
   version '20250419-ba3830f' # Do not replace version with @_ver, the install will break.
   license 'MPL-1.1'
   compatibility 'all'

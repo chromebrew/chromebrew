@@ -2,7 +2,7 @@ require 'buildsystems/meson'
 
 class Xorg_server < Meson
   description 'The Xorg Server is the core of the X Window system.'
-  homepage 'https://www.x.org/wiki/'
+  homepage 'https://gitlab.freedesktop.org/xorg/xserver'
   version '21.1.18-1'
   license 'BSD-3, MIT, BSD-4, MIT-with-advertising, ISC and custom'
   compatibility 'aarch64 armv7l x86_64'
