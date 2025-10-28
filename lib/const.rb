@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.67.10' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.67.11' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -375,10 +375,14 @@ CREW_VALID_BUILDSYSTEMS ||= @buildsystems.sort!
 # Some packges need manual adjustments of URLS for different versions.
 unless defined?(CREW_UPDATER_EXCLUDED_PKGS)
   CREW_UPDATER_EXCLUDED_PKGS = Set[
+    { pkg_name: 'clear_cache', comments: 'Internal Chromebrew Package.' },
+    { pkg_name: 'gdk_base', comments: 'Internal Chromebrew Package.' },
     { pkg_name: 'glibc', comments: 'Requires manual update.' },
     { pkg_name: 'gpm', comments: 'Upstream is defunct.' },
-    { pkg_name: 'pkg_config', comments: 'Upstream is abandoned.' },
+    { pkg_name: 'hello_world_chromebrew', comments: 'Internal Chromebrew Package.' },
+    { pkg_name: 'ld_default', comments: 'Internal Chromebrew Package.' },
     { pkg_name: 'linuxheaders', comments: 'Requires manual update.' },
+    { pkg_name: 'pkg_config', comments: 'Upstream is abandoned.' },
     { pkg_name: 'py3_ldapdomaindump', comments: 'Build is broken.' },
     { pkg_name: 'ruby', comments: 'i686 needs building with GCC 14.' },
     { pkg_name: 'util_linux', comments: '2.41.2 build broken. See https://github.com/util-linux/util-linux/issues/3763' },
