@@ -121,7 +121,7 @@ def get_version(name, homepage, source, version)
         unless gitlab_ver.blank? || gitlab_ver == 'null'
           puts "gitlab_ver = #{gitlab_ver}" if VERY_VERBOSE
           # Strip off any leading non-numeric characters.
-          upstream_version = gitlab_ver.gsub(/.*?(?=[0-9].)/im, '').chomp
+          upstream_version = gitlab_ver.sub(/.*?(?=[0-9].)/im, '').chomp
           return upstream_version
         end
       end
@@ -139,7 +139,7 @@ def get_version(name, homepage, source, version)
         else
           puts "best_release = #{best_release}" if VERY_VERBOSE
           # Strip off any leading non-numeric characters.
-          upstream_version = gitlab_ver.gsub(/.*?(?=[0-9].)/im, '').chomp
+          upstream_version = gitlab_ver.sub(/.*?(?=[0-9].)/im, '').chomp
           return upstream_version
         end
       end
