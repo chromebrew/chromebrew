@@ -1,3 +1,16 @@
-# Total size: 228597
-/usr/local/lib/ruby/3.4.0/armv8l-linux-eabihf/date_core.so
-/usr/local/lib/ruby/3.4.0/date.rb
+# Total size: 694886
+/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0/BSDL
+/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0/COPYING
+/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0/README.md
+/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0/ext/date/Makefile
+/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0/ext/date/date_core.c
+/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0/ext/date/date_parse.c
+/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0/ext/date/date_strftime.c
+/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0/ext/date/date_strptime.c
+/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0/ext/date/date_tmx.h
+/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0/ext/date/extconf.rb
+/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0/ext/date/prereq.mk
+/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0/ext/date/zonetab.h
+/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0/ext/date/zonetab.list
+/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0/lib/date.rb
+/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0/lib/date_core.so
