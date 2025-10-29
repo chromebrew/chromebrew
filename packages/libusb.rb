@@ -11,10 +11,10 @@ class Libusb < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b1ec533b10ebaca34474b8876e26b2ad9dfda3dab193e71a4caeddb4db3a6f38',
-     armv7l: 'b1ec533b10ebaca34474b8876e26b2ad9dfda3dab193e71a4caeddb4db3a6f38',
-       i686: 'f7b9cba3d12a9e999228b0143a617a768f2f90f897ee06588d581313c92f0e5c',
-     x86_64: '5517a4b11a9cd8789f32f700942c6627f872b4e742b6175dcb9746fc3795963f'
+    aarch64: '31dc0f4774997cdadb78ead5d59f436a0c638270312c04987bfd8027ea3f9841',
+     armv7l: '31dc0f4774997cdadb78ead5d59f436a0c638270312c04987bfd8027ea3f9841',
+       i686: '43ef832c441248eabce9fc83affcae4c5e689de2d34c9d7547ed4ca740ad99a1',
+     x86_64: '2891bf3ae30078cd88dbd703a028c401ac0e735f0c86a3d971b80789a3562029'
   })
 
   depends_on 'eudev'
