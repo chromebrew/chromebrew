@@ -1,4 +1,4 @@
-# Total size: 1836706
+# Total size: 1858254
 /usr/local/include/freetype2/freetype/config/ftconfig.h
 /usr/local/include/freetype2/freetype/config/ftheader.h
 /usr/local/include/freetype2/freetype/config/ftmodule.h
@@ -29,6 +29,7 @@
 /usr/local/include/freetype2/freetype/ftincrem.h
 /usr/local/include/freetype2/freetype/ftlcdfil.h
 /usr/local/include/freetype2/freetype/ftlist.h
+/usr/local/include/freetype2/freetype/ftlogging.h
 /usr/local/include/freetype2/freetype/ftlzw.h
 /usr/local/include/freetype2/freetype/ftmac.h
 /usr/local/include/freetype2/freetype/ftmm.h
@@ -55,6 +56,6 @@
 /usr/local/include/freetype2/ft2build.h
 /usr/local/lib64/libfreetype.so
 /usr/local/lib64/libfreetype.so.6
-/usr/local/lib64/libfreetype.so.6.20.2
+/usr/local/lib64/libfreetype.so.6.20.4
 /usr/local/lib64/pkgconfig/freetype2.pc
 /usr/local/share/aclocal/freetype2.m4
