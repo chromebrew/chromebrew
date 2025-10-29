@@ -11,15 +11,7 @@ class Tldr < Package
 
   no_compile_needed
 
-  def self.preflight
-    if Package.installed('tealdeer')
-      abort <<~EOM.orange
-
-        tealdeer is installed. To install this package, execute:
-        crew remove tealdeer && crew install tldr
-      EOM
-    end
-  end
+  conflicts_with 'tealdeer'
 
   def self.patch
     # Fix /usr/local/bin/tldr: 97: /usr/local/bin/tldr: cannot create /dev/stderr: Permission denied
