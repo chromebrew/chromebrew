@@ -22,6 +22,16 @@ Dir.glob("#{__dir__}/../commands/*.rb") { |cmd| require_relative cmd }
 require_relative '../lib/const'
 require_relative '../lib/crew_lockfile'
 require_gem 'pry-byebug' if CREW_DEBUG
+if defined?(PryByebug)
+  Pry.commands.alias_command 'c', 'continue'
+  Pry.commands.alias_command 's', 'step'
+  Pry.commands.alias_command 'n', 'next'
+  Pry.commands.alias_command 'f', 'finish'
+  # Hit Enter to repeat last command
+  Pry::Commands.command(/^$/, 'repeat last command') do
+    pry_instance.run_command Pry.history.to_a.last
+  end
+end
 # Debugging starts at the following breakpoint when enabled via crew
 # being started with a --debug flag.
 # The following line can be used anywhere as a breakpoint.
@@ -483,7 +493,7 @@ def download
 
   # Do an early check for a missing binary package and if so rebuild.
   if !@pkg.source?(@device[:architecture]) && @pkg.superclass.to_s == 'Pip'
-    if `curl -sI #{test_url}`.lines.first.split[1] == '200' && PackageUtils.get_gitlab_pkginfo(@pkg.name, @pkg.version, ARCH)[:pkg_sha256] == sha256sum
+    if `curl -sI #{test_url}`.lines.first.split[1] == '200' && PackageUtils.get_gitlab_pkginfo(@pkg.name, @pkg.version, ARCH, false, false)[:pkg_sha256] == sha256sum
       url = test_url
     else
       url = 'SKIP'
@@ -527,11 +537,10 @@ def download
     puts build_cache_url if CREW_VERBOSE
     puts "curl -fsI #{build_cache_url}" if CREW_VERBOSE
     if `curl -fsI #{build_cache_url}`.lines.first.split[1] == '200'
-      puts "curl -# --header \"#{CREW_GITLAB_TOKEN_LABEL}: GITLAB_TOKEN\" --upload-file \"#{build_cachefile}\" \"#{build_cache_url}\" | cat" if CREW_VERBOSE
-      gitlab_pkginfo = PackageUtils.get_gitlab_pkginfo(package, pkg_version, arch, true)
+      gitlab_pkginfo = PackageUtils.get_gitlab_pkginfo(@pkg.name, @pkg.version, @device[:architecture], true, true)
       gitlab_build_artifact_sha256 = gitlab_pkginfo[:pkg_sha256]
       gitlab_build_artifact_date = gitlab_pkginfo[:pkg_upload_date]
-      puts "Cached build artifact from #{gitlab_build_artifact_date} exists!".lightgreen
+      puts "Cached build artifact from #{gitlab_build_artifact_date} exists! with sha256 #{gitlab_build_artifact_sha256}".lightgreen
       puts "Downloading most recent cached build artifact for #{@pkg.name}-#{@pkg.version}...".orange
       # Download the package build artifact.
       downloader(build_cache_url, gitlab_build_artifact_sha256, build_cachefile, no_update_hash: true)
@@ -1634,7 +1643,7 @@ def update_package_file(package = nil, pkg_version = nil, binary_compression = n
     remote_binary = `curl -fsI #{remote_binary_url}`.lines.first.split[1] == '200'
     next unless remote_binary
     puts "\e[1A\e[KRemote #{package} package binary exists for #{arch}.\r".green
-    binary_sha256_hash[arch.to_sym] = PackageUtils.get_gitlab_pkginfo(package, pkg_version, arch, true)[:pkg_sha256]
+    binary_sha256_hash[arch.to_sym] = PackageUtils.get_gitlab_pkginfo(package, pkg_version, arch, false, true)[:pkg_sha256]
   end
   # 5. Generate new or replacement binary_sha256 block and add to
   # package file.
@@ -1781,7 +1790,7 @@ def upload(pkg_name = nil, pkg_version = nil, binary_compression = nil)
       # 3c. Check to see if an existing upload exists.
       puts "\e[1A\e[KChecking for existing upload ...\r".orange
       remote_binary = `curl -fsI #{new_url}`.lines.first.split[1] == '200'
-      gitlab_remote_binary_sha256 = PackageUtils.get_gitlab_pkginfo(package, new_version, arch, true)[:pkg_sha256] if remote_binary
+      gitlab_remote_binary_sha256 = PackageUtils.get_gitlab_pkginfo(package, new_version, arch, false, true)[:pkg_sha256] if remote_binary
 
       # 3d. Check for local binary.
       if local_tarfile.nil? || !File.file?(local_tarfile)
@@ -1856,7 +1865,7 @@ def upload(pkg_name = nil, pkg_version = nil, binary_compression = nil)
       output = `curl -# --header "#{CREW_GITLAB_TOKEN_LABEL}: #{GITLAB_TOKEN}" --upload-file "#{local_tarfile}" "#{new_url}" | cat`.chomp
       puts "\e[1A\e[KChecking upload...\r".orange
       if output.include?('201 Created')
-        gitlab_new_upload_sha256 = PackageUtils.get_gitlab_pkginfo(package, new_version, arch, true)[:pkg_sha256]
+        gitlab_new_upload_sha256 = PackageUtils.get_gitlab_pkginfo(package, new_version, arch, false, true)[:pkg_sha256]
         if gitlab_new_upload_sha256 == local_sha256
           puts "#{output}\n".lightgreen
         else
@@ -2183,5 +2192,6 @@ if ARGV[0] != 'update' && Time.now.to_i - @last_update_check > (CREW_UPDATE_CHEC
   plural = CREW_UPDATE_CHECK_INTERVAL < 2 ? '' : 's'
   puts "It has been more than #{CREW_UPDATE_CHECK_INTERVAL} day#{plural} since crew was last updated. Please run 'crew update'.".lightpurple
 end
+binding.pry if CREW_DEBUG
 command_name = args.select { |k, v| v && command?(k) }.keys[0]
 send("#{command_name}_command", args)
