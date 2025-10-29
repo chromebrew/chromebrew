@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Xorg_server < Meson
   description 'The Xorg Server is the core of the X Window system.'
   homepage 'https://gitlab.freedesktop.org/xorg/xserver'
-  version '21.1.18-1'
+  version '21.1.20'
   license 'BSD-3, MIT, BSD-4, MIT-with-advertising, ISC and custom'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/xserver.git'
@@ -11,9 +11,9 @@ class Xorg_server < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4238be7e9d714acfdd836c8ba8d4fe13596fe89ab2e6749e2b3254c62c502838',
-     armv7l: '4238be7e9d714acfdd836c8ba8d4fe13596fe89ab2e6749e2b3254c62c502838',
-     x86_64: 'b257d1a74f68da04d6249d018406b763f5da638dc07426022c7940af00e868db'
+    aarch64: '806f52c415a550da3c4124d5e2551e5787bcfa8059bb1e3eeabd5f5a5679f8ae',
+     armv7l: '806f52c415a550da3c4124d5e2551e5787bcfa8059bb1e3eeabd5f5a5679f8ae',
+     x86_64: '08d554e589f5dc3bbbcf6af2aef29e6781393c70b6c62f74fadde949f4474376'
   })
 
   depends_on 'dbus' # R
