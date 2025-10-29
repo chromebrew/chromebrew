@@ -2,25 +2,24 @@ require 'package'
 
 class Glow < Package
   description 'Glow is a terminal based markdown reader.'
-  homepage 'https://charm.sh'
-  version '1.4.1'
+  homepage 'https://github.com/charmbracelet/glow'
+  version '2.1.1'
   license 'MIT'
   compatibility 'all'
   source_url({
-    aarch64: 'https://github.com/charmbracelet/glow/releases/download/v1.4.1/glow_1.4.1_linux_armv7.tar.gz',
-     armv7l: 'https://github.com/charmbracelet/glow/releases/download/v1.4.1/glow_1.4.1_linux_armv7.tar.gz',
-       i686: 'https://github.com/charmbracelet/glow/releases/download/v1.4.1/glow_1.4.1_linux_i386.tar.gz',
-     x86_64: 'https://github.com/charmbracelet/glow/releases/download/v1.4.1/glow_1.4.1_linux_x86_64.tar.gz'
+    aarch64: "https://github.com/charmbracelet/glow/releases/download/v#{version}/glow_#{version}_Linux_arm.tar.gz",
+     armv7l: "https://github.com/charmbracelet/glow/releases/download/v#{version}/glow_#{version}_Linux_arm.tar.gz",
+       i686: "https://github.com/charmbracelet/glow/releases/download/v#{version}/glow_#{version}_Linux_i386.tar.gz",
+     x86_64: "https://github.com/charmbracelet/glow/releases/download/v#{version}/glow_#{version}_Linux_x86_64.tar.gz"
   })
   source_sha256({
-    aarch64: '6e409c3f31a22fd4022e48852cb090d320f633fae5b3f49f54ea579d516853d7',
-     armv7l: '6e409c3f31a22fd4022e48852cb090d320f633fae5b3f49f54ea579d516853d7',
-       i686: '06c2c30c7d90b6befe26c6fcb1cd9daff0581383fea5665891e9fa46ebdd36f0',
-     x86_64: 'ab7b4cf9ae6e20d6c898688c5f33876297f9ef04616cbceff8e0379df9d06321'
+    aarch64: 'cf084110801d6949da9eeed5abf22d427d869a5e678acd7151aee9f9e85df4e8',
+     armv7l: 'cf084110801d6949da9eeed5abf22d427d869a5e678acd7151aee9f9e85df4e8',
+       i686: 'c248c4eec06496f60c4a534f802c4b38720a2f891d35698daa8d933ff4862895',
+     x86_64: '59106b08be69b2a0bda1178327bbb7accd584e7c113ba3d2f5ef6e48ff3ac27f'
   })
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.install 'glow', "#{CREW_DEST_PREFIX}/bin/glow", mode: 0o755
   end
 end

@@ -50,6 +50,66 @@ class PackageUtilsTest < Minitest::Test
     refute(PackageUtils.compatible?(pkg))
   end
 
+  def test_compatible_min_glibc
+    # A package with a minimum glibc smaller than the current libc version is compatible.
+    pkg = Class.new(Package)
+    pkg.instance_eval do
+      compatibility 'all'
+      min_glibc (LIBC_VERSION.to_f - 0.10).to_s
+    end
+    assert(PackageUtils.compatible?(pkg))
+  end
+
+  def test_not_compatible_min_glibc
+    # A package with a minimum glibc greater than the current libc version is not compatible.
+    pkg = Class.new(Package)
+    pkg.instance_eval do
+      compatibility 'all'
+      min_glibc (LIBC_VERSION.to_f + 0.01).to_s
+    end
+    refute(PackageUtils.compatible?(pkg))
+  end
+
+  def test_compatible_max_glibc
+    # A package with a maximum glibc greater than the current libc version is compatible.
+    pkg = Class.new(Package)
+    pkg.instance_eval do
+      compatibility 'all'
+      max_glibc (LIBC_VERSION.to_f + 0.10).to_s
+    end
+    assert(PackageUtils.compatible?(pkg))
+  end
+
+  def test_not_compatible_max_glibc
+    # A package with a maximum glibc smaller than the current libc version is not compatible.
+    pkg = Class.new(Package)
+    pkg.instance_eval do
+      compatibility 'all'
+      max_glibc (LIBC_VERSION.to_f - 0.01).to_s
+    end
+    refute(PackageUtils.compatible?(pkg))
+  end
+
+  def test_compatible_conflicts_with
+    # A package that conflicts with a package that is not installed is compatible.
+    pkg = Class.new(Package)
+    pkg.instance_eval do
+      compatibility 'all'
+      conflicts_with '99notinstalled'
+    end
+    assert(PackageUtils.compatible?(pkg))
+  end
+
+  def test_not_compatible_conflicts_with
+    # A package that conflicts with a package that is not installed is compatible.
+    pkg = Class.new(Package)
+    pkg.instance_eval do
+      compatibility 'all'
+      conflicts_with 'ruby'
+    end
+    refute(PackageUtils.compatible?(pkg))
+  end
+
   def test_get_binary_url_old_hash
     pkg = Class.new(Package)
     pkg.name = 'hello_world_chromebrew'

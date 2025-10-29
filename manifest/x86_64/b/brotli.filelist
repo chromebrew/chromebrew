@@ -1,4 +1,4 @@
-# Total size: 1000202
+# Total size: 1121160
 /usr/local/bin/brotli
 /usr/local/include/brotli/decode.h
 /usr/local/include/brotli/encode.h
@@ -7,13 +7,18 @@
 /usr/local/include/brotli/types.h
 /usr/local/lib64/libbrotlicommon.so
 /usr/local/lib64/libbrotlicommon.so.1
-/usr/local/lib64/libbrotlicommon.so.1.1.0
+/usr/local/lib64/libbrotlicommon.so.1.2.0
 /usr/local/lib64/libbrotlidec.so
 /usr/local/lib64/libbrotlidec.so.1
-/usr/local/lib64/libbrotlidec.so.1.1.0
+/usr/local/lib64/libbrotlidec.so.1.2.0
 /usr/local/lib64/libbrotlienc.so
 /usr/local/lib64/libbrotlienc.so.1
-/usr/local/lib64/libbrotlienc.so.1.1.0
+/usr/local/lib64/libbrotlienc.so.1.2.0
 /usr/local/lib64/pkgconfig/libbrotlicommon.pc
 /usr/local/lib64/pkgconfig/libbrotlidec.pc
 /usr/local/lib64/pkgconfig/libbrotlienc.pc
+/usr/local/share/man/man1/brotli.1.zst
+/usr/local/share/man/man3/constants.h.3.zst
+/usr/local/share/man/man3/decode.h.3.zst
+/usr/local/share/man/man3/encode.h.3.zst
+/usr/local/share/man/man3/types.h.3.zst

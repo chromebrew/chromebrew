@@ -21,13 +21,5 @@ class Tealdeer < RUST
   depends_on 'glibc' # R
   depends_on 'rust' => :build
 
-  def self.preflight
-    if Package.installed('tldr')
-      abort <<~EOM.orange
-
-        tldr is installed. To install this package, execute:
-        crew remove tldr && crew install tealdeer
-      EOM
-    end
-  end
+  conflicts_with 'tldr'
 end

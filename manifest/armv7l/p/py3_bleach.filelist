@@ -1,11 +1,12 @@
-# Total size: 1385472
-/usr/local/lib/python3.13/site-packages/bleach-6.2.0.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/bleach-6.2.0.dist-info/LICENSE
-/usr/local/lib/python3.13/site-packages/bleach-6.2.0.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/bleach-6.2.0.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/bleach-6.2.0.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/bleach-6.2.0.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/bleach-6.2.0.dist-info/top_level.txt
+# Total size: 1387356
+/usr/local/lib/python3.13/site-packages/bleach-6.3.0.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/bleach-6.3.0.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/bleach-6.3.0.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/bleach-6.3.0.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/bleach-6.3.0.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/bleach-6.3.0.dist-info/licenses/LICENSE
+/usr/local/lib/python3.13/site-packages/bleach-6.3.0.dist-info/licenses/bleach/_vendor/html5lib-1.1.dist-info/LICENSE
+/usr/local/lib/python3.13/site-packages/bleach-6.3.0.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/bleach/__init__.py
 /usr/local/lib/python3.13/site-packages/bleach/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/bleach/__pycache__/callbacks.cpython-313.pyc

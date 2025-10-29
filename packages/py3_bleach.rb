@@ -6,17 +6,17 @@ require 'buildsystems/pip'
 class Py3_bleach < Pip
   description 'An easy whitelist-based HTML-sanitizing tool'
   homepage 'https://pypi.org/project/bleach/'
-  version '6.2.0'
+  version '6.3.0'
   license 'Apache'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9981cef16803a2f3d6eb42f28cbbe512cc9ad9a43a34ea1a817476ae41a2331c',
-     armv7l: '9981cef16803a2f3d6eb42f28cbbe512cc9ad9a43a34ea1a817476ae41a2331c',
-       i686: '94dd57c3dffb5ccc2c9e49e8e1d81a320405ab925b1c5a14885453cf2c94a130',
-     x86_64: '9bc903240420f6c4654c5c667e602f87af8786919c1ba1a5d296b40acc6f08b4'
+    aarch64: '700eeecda3253d6ea586846641f98451e59d279d231fa683c0eccc3cb4c39c8e',
+     armv7l: '700eeecda3253d6ea586846641f98451e59d279d231fa683c0eccc3cb4c39c8e',
+       i686: 'fe5eb26e3973fc223051bfde8643a3a96fb4890c4420e8bbe6cf1780a530cfe2',
+     x86_64: '70616348cd5e4b243bcbaaf74d4e3c13998ee9f92a66d864d5530d7c58105f41'
   })
 
   depends_on 'python3' # R

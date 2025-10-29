@@ -24,15 +24,7 @@ class Coreutils < Autotools
   depends_on 'libcap' # R
   depends_on 'openssl' # R
 
-  def self.preflight
-    %w[uutils_coreutils].each do |cutils|
-      next unless File.exist? "#{CREW_PREFIX}/etc/crew/meta/#{cutils}.filelist"
-
-      puts "#{cutils} is installed and conflicts with this version.".orange
-      puts 'To install this version, execute the following:'.lightblue
-      abort "crew remove #{cutils} && crew install coreutils".lightblue
-    end
-  end
+  conflicts_with 'uutils_coreutils'
 
   def self.prebuild
     File.write 'arch', <<~EOF
