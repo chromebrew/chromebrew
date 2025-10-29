@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.9 (for Chromebrew)
+# version.rb version 3.10 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose -vv]
 
@@ -171,20 +171,26 @@ def get_anitya_id(name, homepage)
         puts "url is https://release-monitoring.org/api/v2/projects/?name=#{name_candidate}"
       end
       json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/projects/?name=#{name_candidate}")))
+      puts json if VERY_VERBOSE
       number_of_packages = json['total_items']
       if number_of_packages.zero?
         puts "No Anitya package found with #{name_candidate}." if VERY_VERBOSE
         return
-      elsif number_of_packages == 1 # We assume we have the right package, take the ID and move on.
+      elsif number_of_packages == 1 # We assume we have the right package.
+        package_homepage = homepage.gsub(%r{http(s)?://(www\.)?}, '').chomp('/')
+        puts "package_homepage = #{homepage.gsub(%r{http(s)?://(www\.)?}, '').chomp('/')}" if VERY_VERBOSE
+        anitya_homepage = json['items'][0]['homepage'].gsub(%r{http(s)?://(www\.)?}, '').chomp('/')
+        puts "anitya_homepage = #{json['items'][0]['homepage'].gsub(%r{http(s)?://(www\.)?}, '').chomp('/')}" if VERY_VERBOSE
+        @new_anitya_name = json['items'][0]['name']
         return json['items'][0]['id']
       else
         (0..(number_of_packages - 1)).each do |i|
           next if json['items'][i].nil?
-          homepage_domain = homepage.gsub(%r{http(s)?://(www\.)?}, '').chomp('/')
-          puts "homepage_domain = #{homepage.gsub(%r{http(s)?://(www\.)?}, '').chomp('/')}" if VERY_VERBOSE
-          candidate_homepage_domain = json['items'][i]['homepage'].gsub(%r{http(s)?://(www\.)?}, '').chomp('/')
-          puts "candidate_homepage_domain = #{json['items'][i]['homepage'].gsub(%r{http(s)?://(www\.)?}, '').chomp('/')}" if VERY_VERBOSE
-          if homepage_domain == candidate_homepage_domain
+          package_homepage = homepage.gsub(%r{http(s)?://(www\.)?}, '').chomp('/')
+          puts "package_homepage = #{homepage.gsub(%r{http(s)?://(www\.)?}, '').chomp('/')}" if VERY_VERBOSE
+          anitya_homepage = json['items'][i]['homepage'].gsub(%r{http(s)?://(www\.)?}, '').chomp('/')
+          puts "anitya_homepage = #{json['items'][i]['homepage'].gsub(%r{http(s)?://(www\.)?}, '').chomp('/')}" if VERY_VERBOSE
+          if package_homepage == anitya_homepage
             @new_anitya_name = name_candidate
             return json['items'][i]['id']
           end
@@ -223,13 +229,13 @@ def get_anitya_id(name, homepage)
         # We assume there is only one candidate with the same name and homepage as their crew counterpart.
         # Even if there are multiple candidates with the same name and homepage, its probably fine to treat them as identical.
         # If it isn't fine to treat them as identical, something has gone horribly wrong.
-        homepage_domain = homepage.gsub(%r{http(s)?://(www\.)?}, '').chomp('/')
-        puts "homepage_domain = #{homepage.gsub(%r{http(s)?://(www\.)?}, '').chomp('/')}" if VERY_VERBOSE
-        candidate_homepage_domain = json['items'][candidate]['homepage'].gsub(%r{http(s)?://(www\.)?}, '').chomp('/')
-        puts "candidate_homepage_domain = #{json['items'][candidate]['homepage'].gsub(%r{http(s)?://(www\.)?}, '').chomp('/')}" if VERY_VERBOSE
-        return json['items'][candidate]['id'] if homepage_domain == candidate_homepage_domain
+        package_homepage = homepage.gsub(%r{http(s)?://(www\.)?}, '').chomp('/')
+        puts "package_homepage = #{homepage.gsub(%r{http(s)?://(www\.)?}, '').chomp('/')}" if VERY_VERBOSE
+        anitya_homepage = json['items'][candidate]['homepage'].gsub(%r{http(s)?://(www\.)?}, '').chomp('/')
+        puts "anitya_homepage = #{json['items'][candidate]['homepage'].gsub(%r{http(s)?://(www\.)?}, '').chomp('/')}" if VERY_VERBOSE
+        return json['items'][candidate]['id'] if package_homepage == anitya_homepage
       end
-      puts 'no candidates found.' if VERY_VERBOSE
+      puts 'No Anitya packages found.' if VERY_VERBOSE
 
       # If we're still here, that means none of the candidates had the same homepage as their crew counterpart.
       # Not much we can do at this point to find the version, and its better to be cautious to avoid getting the wrong candidate.
