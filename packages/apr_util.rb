@@ -2,7 +2,7 @@ require 'buildsystems/autotools'
 
 class Apr_util < Autotools
   description 'APR-util provides a number of helpful abstractions on top of APR.'
-  homepage 'https://apr.apache.org/'
+  homepage 'https://apache.org/dist/apr'
   version '1.6.3'
   license 'Apache-2.0'
   compatibility 'all'

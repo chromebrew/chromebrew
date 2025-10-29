@@ -2,7 +2,7 @@ require 'buildsystems/meson'
 
 class At_spi2_core < Meson
   description 'This is over DBus, tookit widgets provide their content to screen readers such as Orca'
-  homepage 'https://www.freedesktop.org/wiki/'
+  homepage 'https://ftp.gnome.org/pub/gnome/sources/at-spi2-core'
   version '2.58.0'
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'

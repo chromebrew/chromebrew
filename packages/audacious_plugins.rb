@@ -2,7 +2,7 @@ require 'buildsystems/autotools'
 
 class Audacious_plugins < Autotools
   description 'Audacious is an open source audio player.'
-  homepage 'https://audacious-media-player.org/'
+  homepage 'https://github.com/audacious-media-player/audacious-plugins'
   version '4.5'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'

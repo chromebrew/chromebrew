@@ -395,6 +395,7 @@ CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX = "(#{CREW_UPDATER_EXCLUDED_PKGS.k
 unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
   CREW_ANITYA_PACKAGE_NAME_MAPPINGS = Set[
     { pkg_name: 'asdf', anitya_pkg: 'asdf-vm', comments: '' },
+    { pkg_name: 'broadway', anitya_pkg: 'gtk+3.0~stable', comments: '' },
     { pkg_name: 'cf', anitya_pkg: 'cf', comments: 'Prefer to GitHub' },
     { pkg_name: 'cups', anitya_pkg: 'cups', comments: 'Prefer to GitHub' },
     { pkg_name: 'cvs', anitya_pkg: 'cvs-stable', comments: '' },

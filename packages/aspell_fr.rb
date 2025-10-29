@@ -2,7 +2,7 @@ require 'package'
 
 class Aspell_fr < Package
   description 'French Aspell Dictionary'
-  homepage 'https://ftpmirror.gnu.org/aspell/dict/0index.html'
+  homepage 'https://aspell.net'
   version '0.50-3'
   license 'GPL-2'
   compatibility 'all'

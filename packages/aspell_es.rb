@@ -2,7 +2,7 @@ require 'package'
 
 class Aspell_es < Package
   description 'Spanish Aspell Dictionary'
-  homepage 'ftp://ftp.gnu.org/gnu/aspell/dict/0index.html'
+  homepage 'https://aspell.net'
   version '1.11-2'
   license 'GPL-2'
   compatibility 'all'

@@ -2,7 +2,7 @@ require 'buildsystems/meson'
 
 class Clutter_gtk < Meson
   description 'The Clutter Gtk package is a library providing facilities to integrate Clutter into GTK+ applications.'
-  homepage 'https://wiki.gnome.org/Attic/Clutter'
+  homepage 'https://download.gnome.org/sources/clutter-gtk/*'
   version '1.8.4'
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'

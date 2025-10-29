@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.7 (for Chromebrew)
+# version.rb version 3.8 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose -vv]
 
@@ -86,7 +86,7 @@ def get_version(name, homepage, source, version)
     end
     source.sub!('www.', '')
     url = URI.parse(source)
-    puts "source_url host: #{url.host}" if VERY_VERBOSE
+    puts "source_url host is #{url.host}" if VERY_VERBOSE
     case url.host
     when 'github.com'
       url_parts = url.path.split('/')
@@ -99,21 +99,31 @@ def get_version(name, homepage, source, version)
           puts "gh release ls --exclude-pre-releases --exclude-drafts -L 1 -R #{repo} --json tagName -q '.[] | .tagName'" if VERY_VERBOSE
           github_ver = `gh release ls --exclude-pre-releases --exclude-drafts -L 1 -R #{repo} --json tagName -q '.[] | .tagName'`.chomp if system 'gh auth status >/dev/null', exception: false
         else
-          puts "curl https://api.github.com/repos/#{repo}/releases/latest -s | jq .tag_name -r" if VERY_VERBOSE
-          github_ver = `curl https://api.github.com/repos/#{repo}/releases/latest -s | jq .tag_name -r`.chomp
-          puts "curl https://api.github.com/repos/#{repo}/tags -s | jq '.[0].name' -r" if VERY_VERBOSE && (github_ver.blank? || github_ver == 'null')
-          github_ver = `curl https://api.github.com/repos/#{repo}/tags -s | jq '.[0].name' -r`.chomp if github_ver.blank? || github_ver == 'null'
+          puts "curl https://api.github.com/repos/#{repo}/releases/latest -Ls | jq .tag_name -r" if VERY_VERBOSE
+          github_ver = `curl https://api.github.com/repos/#{repo}/releases/latest -Ls | jq .tag_name -r`.chomp
+          puts "curl https://api.github.com/repos/#{repo}/tags -Ls | jq '.[0].name' -r" if VERY_VERBOSE && (github_ver.blank? || github_ver == 'null')
+          github_ver = `curl https://api.github.com/repos/#{repo}/tags -Ls | jq '.[0].name' -r`.chomp if github_ver.blank? || github_ver == 'null'
         end
-        return github_ver unless github_ver.blank? || github_ver == 'null'
+        unless github_ver.blank? || github_ver == 'null'
+          puts "github_ver = #{github_ver}" if VERY_VERBOSE
+          # Strip off any leading non-numeric characters.
+          upstream_version = github_ver.sub(/.*?(?=[0-9].)/im, '').chomp
+          return upstream_version
+        end
       end
     when 'gitlab.com'
       url_parts = url.path.split('/')
       unless url_parts.count < 3
         repo = "#{url_parts[1]}/#{url_parts[2].gsub(/.git\z/, '')}"
         puts "GitLab Repo is #{repo}" if VERBOSE
-        puts "curl https://#{url.host}/#{repo}/-/releases/permalink/latest -s | jq .tag_name -r" if VERY_VERBOSE
-        gitlab_ver = `curl https://#{url.host}/#{repo}/-/releases/permalink/latest -s | jq .tag_name -r`.chomp
-        return gitlab_ver unless gitlab_ver.blank? || gitlab_ver == 'null'
+        puts "curl https://#{url.host}/#{repo}/-/releases/permalink/latest -Ls | jq .tag_name -r" if VERY_VERBOSE
+        gitlab_ver = `curl https://#{url.host}/#{repo}/-/releases/permalink/latest -Ls | jq .tag_name -r`.chomp
+        unless gitlab_ver.blank? || gitlab_ver == 'null'
+          puts "gitlab_ver = #{gitlab_ver}" if VERY_VERBOSE
+          # Strip off any leading non-numeric characters.
+          upstream_version = gitlab_ver.sub(/.*?(?=[0-9].)/im, '').chomp
+          return upstream_version
+        end
       end
     when 'downloads.sourceforge.net'
       url_parts = url.path.split('/')
@@ -121,13 +131,16 @@ def get_version(name, homepage, source, version)
         repo = url_parts[2]
         filename = url_parts.last
         puts "Sourceforge Repo is #{repo}" if VERBOSE
-        puts "curl -L -s https://sourceforge.net/projects/#{repo}/best_release.json | jq .release.filename -r" if VERY_VERBOSE
-        sourceforge_file = `curl -L -s https://sourceforge.net/projects/#{repo}/best_release.json | jq .release.filename -r`.chomp
+        puts "curl https://sourceforge.net/projects/#{repo}/best_release.json -Ls | jq .release.filename -r" if VERY_VERBOSE
+        sourceforge_file = `curl https://sourceforge.net/projects/#{repo}/best_release.json -Ls | jq .release.filename -r`.chomp
         best_release = sourceforge_file.split('/').last
         if filename == best_release
           return version
         else
-          return best_release
+          puts "best_release = #{best_release}" if VERY_VERBOSE
+          # Strip off any leading non-numeric characters.
+          upstream_version = gitlab_ver.sub(/.*?(?=[0-9].)/im, '').chomp
+          return upstream_version
         end
       end
     end
@@ -349,7 +362,7 @@ if filelist.length.positive?
         if UPDATE_PACKAGE_FILES && !@pkg.name[/#{CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX}/] && updatable_pkg[@pkg.name.to_sym] == 'Yes'
           file = File.read(filename)
           FileUtils.cp filename, "#{filename}.bak"
-          if file.sub!(PackageUtils.get_clean_version(@pkg.version), upstream_version.chomp).nil?
+          if file.sub!(PackageUtils.get_clean_version(@pkg.version), upstream_version).nil?
             versions_updated[@pkg.name.to_sym] = false
           else
             # Version update succeeded. Now check for a sha256 update.
@@ -393,7 +406,8 @@ if filelist.length.positive?
               # Now get new hashes
               @pkg = Package.load_package(filename, true)
               puts "new source_url: #{@pkg.source_url}" if VERBOSE && !OUTPUT_JSON
-              unless `curl -fsI #{@pkg.source_url}`.lines.first.split[1] == '200'
+              status = `curl -fsI #{@pkg.source_url}`.lines.first.split[1]
+              unless %w[200 302].include?(status)
                 versions_updated[@pkg.name.to_sym] = 'Bad Source'
                 puts "#{@pkg.source_url} is a bad source.".lightred if VERBOSE && !OUTPUT_JSON
                 if File.file?("#{filename}.bak")
@@ -462,14 +476,14 @@ if filelist.length.positive?
     end
     updatable_string = (updatable_pkg[@pkg.name.to_sym] == 'Yes' ? 'Yes'.ljust(version_field_length).lightgreen : 'No'.ljust(version_field_length).lightred) if updatable_string.nil?
     compile_string = @pkg.no_compile_needed? ? 'No'.lightred : 'Yes'.lightgreen
-    versions.push(package: @pkg.name, update_status: versions_updated[@pkg.name.to_sym], version: cleaned_pkg_version, upstream_version: upstream_version.chomp)
+    versions.push(package: @pkg.name, update_status: versions_updated[@pkg.name.to_sym], version: cleaned_pkg_version, upstream_version: upstream_version)
 
     addendum_string = "#{@pkg.name} cannot be automatically updated: ".red + "#{updatable_pkg[@pkg.name.to_sym]}\n".purple unless updatable_pkg[@pkg.name.to_sym] == 'Yes'
-    version_line_string[@pkg.name.to_sym] = "#{@pkg.name.ljust(package_field_length)}#{version_status_string}#{cleaned_pkg_version.ljust(version_field_length)}#{upstream_version.chomp.ljust(version_field_length)}#{updatable_string}#{compile_string}\n"
+    version_line_string[@pkg.name.to_sym] = "#{@pkg.name.ljust(package_field_length)}#{version_status_string}#{cleaned_pkg_version.ljust(version_field_length)}#{upstream_version.ljust(version_field_length)}#{updatable_string}#{compile_string}\n"
     print version_line_string[@pkg.name.to_sym] if !OUTPUT_JSON && ((versions_updated[@pkg.name.to_sym] == 'Outdated.' && updatable_pkg[@pkg.name.to_sym] == 'Yes') || VERBOSE)
     print addendum_string unless addendum_string.blank? || OUTPUT_JSON || !VERBOSE
 
-    print "Failed to update version in #{@pkg.name} to #{upstream_version.chomp}".yellow if !OUTPUT_JSON && (versions_updated[@pkg.name.to_sym].to_s == 'false')
+    print "Failed to update version in #{@pkg.name} to #{upstream_version}".yellow if !OUTPUT_JSON && (versions_updated[@pkg.name.to_sym].to_s == 'false')
     print "Failed to update binary_compression in #{@pkg.name}".yellow if !OUTPUT_JSON && (bc_updated[@pkg.name.to_sym].to_s == 'false')
   end
   puts versions.to_json if OUTPUT_JSON
