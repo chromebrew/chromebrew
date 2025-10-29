@@ -10,10 +10,10 @@ class Ruby_zlib < RUBY
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: 'eace3994d49283f656b4aacca6637d6210cc67d25ac5cc010b3185c503ccd7fe',
-     armv7l: 'eace3994d49283f656b4aacca6637d6210cc67d25ac5cc010b3185c503ccd7fe',
-       i686: 'd99c12eaaa2e7e9dbc0e55446b5fe4d046680c5b1fa65ef2710d7b71593df3f6',
-     x86_64: 'fb822ab8a5526bc2f5f5b7869598f2f2e1ec1b2b82522ba6f42b24a6058eef6a'
+    aarch64: 'cdf422c9dbe8e22c9c64a769306e90d6d0ea2c831f32303e09512148daae4b21',
+     armv7l: 'cdf422c9dbe8e22c9c64a769306e90d6d0ea2c831f32303e09512148daae4b21',
+       i686: '2782c4957fe1d1aace0d203b0e5f50d9b91be347ca315a0f9d499fac7b57de54',
+     x86_64: '3772fea8632656c9c206902465d3d97abd7269c39ede355d5e5706088d0e82f8'
   })
 
   conflicts_ok
