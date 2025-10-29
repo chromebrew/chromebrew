@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.8 (for Chromebrew)
+# version.rb version 3.9 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose -vv]
 
@@ -175,18 +175,19 @@ def get_anitya_id(name, homepage)
       if number_of_packages.zero?
         puts "No Anitya package found with #{name_candidate}." if VERY_VERBOSE
         return
-      end
-
-      puts "number_of_packages = #{number_of_packages}" if VERY_VERBOSE
-      (0..(number_of_packages - 1)).each do |i|
-        next if json['items'][i].nil?
-        homepage_domain = homepage.gsub(%r{http(s)?://(www\.)?}, '').chomp('/')
-        puts "homepage_domain = #{homepage.gsub(%r{http(s)?://(www\.)?}, '').chomp('/')}" if VERY_VERBOSE
-        candidate_homepage_domain = json['items'][i]['homepage'].gsub(%r{http(s)?://(www\.)?}, '').chomp('/')
-        puts "candidate_homepage_domain = #{json['items'][i]['homepage'].gsub(%r{http(s)?://(www\.)?}, '').chomp('/')}" if VERY_VERBOSE
-        if homepage_domain == candidate_homepage_domain
-          @new_anitya_name = name_candidate
-          return json['items'][i]['id']
+      elsif number_of_packages == 1 # We assume we have the right package, take the ID and move on.
+        return json['items'][0]['id']
+      else
+        (0..(number_of_packages - 1)).each do |i|
+          next if json['items'][i].nil?
+          homepage_domain = homepage.gsub(%r{http(s)?://(www\.)?}, '').chomp('/')
+          puts "homepage_domain = #{homepage.gsub(%r{http(s)?://(www\.)?}, '').chomp('/')}" if VERY_VERBOSE
+          candidate_homepage_domain = json['items'][i]['homepage'].gsub(%r{http(s)?://(www\.)?}, '').chomp('/')
+          puts "candidate_homepage_domain = #{json['items'][i]['homepage'].gsub(%r{http(s)?://(www\.)?}, '').chomp('/')}" if VERY_VERBOSE
+          if homepage_domain == candidate_homepage_domain
+            @new_anitya_name = name_candidate
+            return json['items'][i]['id']
+          end
         end
       end
     end
