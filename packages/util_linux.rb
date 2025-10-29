@@ -13,8 +13,8 @@ class Util_linux < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'dc6a69032dbbe6d91bbee63b7868cb0dd153c049a2523e868fcd2e5ab7180121',
-     armv7l: 'dc6a69032dbbe6d91bbee63b7868cb0dd153c049a2523e868fcd2e5ab7180121',
+    aarch64: '091641baf6d3e93ceeb3f06468af895e18eadf4d68167dae863d7ec9d1fe637f',
+     armv7l: '091641baf6d3e93ceeb3f06468af895e18eadf4d68167dae863d7ec9d1fe637f',
        i686: '5e9aeec5e4c6e7cb7dd3b1b3793b9ceb437505d7de8b3ce927d5f04ac6efb9e9',
      x86_64: 'd0a8545e106f3caa6497f9ea11e429a565c05f504bf8abb926b47d6de1ce52a4'
   })
@@ -24,6 +24,7 @@ class Util_linux < Meson
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libcap_ng' # R
+  depends_on 'libeconf' # R
   depends_on 'libxcrypt' # R
   depends_on 'linux_pam' # R
   depends_on 'ncurses' # R
