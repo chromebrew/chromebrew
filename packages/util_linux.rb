@@ -1,23 +1,24 @@
-require 'buildsystems/autotools'
+require 'buildsystems/meson'
 
-class Util_linux < Autotools
+class Util_linux < Meson
   description 'essential linux tools'
   homepage 'https://www.kernel.org/pub/linux/utils/util-linux/'
-  version "2.41.1-#{CREW_PY_VER}"
+  version "2.41.2-9179172-#{CREW_PY_VER}"
   license 'GPL-2, LGPL-2.1, BSD-4, MIT and public-domain'
   compatibility 'all'
   source_url 'https://github.com/util-linux/util-linux.git'
-  git_hashtag "v#{version.split('-').first}"
+  # Build from stable/v2.4.1 branch.
+  git_hashtag '917917253e60b0ba485cf6a27a2f993aa43e1eea'
+  # git_hashtag "v#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '77a7d99d721c3366567224bfc5efc758040505bd52d71f3d487ae56e53da7c8d',
-     armv7l: '77a7d99d721c3366567224bfc5efc758040505bd52d71f3d487ae56e53da7c8d',
-       i686: 'ef3547c60f160f7bfb1e3a8acce8f21838bc33dd371215bf71efc5f5978d5d4c',
-     x86_64: '7d831a53ebdc3a9c114293584c0a900a626aeb7f83aaefe1379e3bb550ebc3bc'
+    aarch64: '091641baf6d3e93ceeb3f06468af895e18eadf4d68167dae863d7ec9d1fe637f',
+     armv7l: '091641baf6d3e93ceeb3f06468af895e18eadf4d68167dae863d7ec9d1fe637f',
+       i686: '5e9aeec5e4c6e7cb7dd3b1b3793b9ceb437505d7de8b3ce927d5f04ac6efb9e9',
+     x86_64: 'd0a8545e106f3caa6497f9ea11e429a565c05f504bf8abb926b47d6de1ce52a4'
   })
 
-  depends_on 'bzip2' # R
   depends_on 'eudev' if ARCH == 'x86_64' # (for libudev.h)
   depends_on 'filecmd' # R
   depends_on 'gcc_lib' # R
@@ -26,26 +27,24 @@ class Util_linux < Autotools
   depends_on 'libeconf' # R
   depends_on 'libxcrypt' # R
   depends_on 'linux_pam' # R
-  depends_on 'lzlib' # R
   depends_on 'ncurses' # R
   depends_on 'pcre2' => :build
+  depends_on 'python3' # R
   depends_on 'readline' # R
   depends_on 'ruby_asciidoctor' => :build
   depends_on 'sqlite' # R
-  depends_on 'xzutils' # R
   depends_on 'zlib' # R
-  depends_on 'zstd' # R
 
   conflicts_ok
 
-  year2038 = '--disable-year2038'
-  i686_disabled_builds = '--disable-blkzone --disable-lsfd'
-  autotools_configure_options "#{year2038 unless ARCH == 'x86_64'} \
-                              --disable-kill \
-                              #{i686_disabled_builds if ARCH == 'i686'} \
-                              --disable-makeinstall-chown \
-                              --disable-makeinstall-setuid \
-                              --disable-makeinstall-tty-setgid \
-                              --without-systemd \
-                              --without-udev"
+  # Needs to be built with CREW_KERNEL_VERSION=5.10 for the build to
+  # succeed on x86_64 and armv7l.
+  year2038 = '-Dallow-32bit-time=true'
+  i686_disabled_builds = '-Dbuild-blkzone=disabled -Dbuild-lsfd=disabled'
+  meson_options "-Dbuild-kill=disabled \
+                 -Dbuild-uuidd=disabled \
+                 -Dprogram-tests=false \
+                 -Dsystemd=disabled \
+                 #{i686_disabled_builds if ARCH == 'i686'} \
+                 #{year2038 unless ARCH == 'x86_64'}"
 end

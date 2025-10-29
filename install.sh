@@ -1,5 +1,5 @@
 #!/bin/bash
-CREW_INSTALLER_VERSION=2025082901
+CREW_INSTALLER_VERSION=2025102901
 # Exit on fail.
 set -eE
 
@@ -12,6 +12,23 @@ echo_info_stderr() { echo -e "\e[1;35m${*}${RESET}" >&2; } # Use Magenta for inf
 echo_success() { echo -e "\e[1;32m${*}${RESET}" >&1; } # Use Green for success messages.
 echo_intra() { echo -e "\e[1;34m${*}${RESET}" >&1; } # Use Blue for intrafunction messages.
 echo_out() { echo -e "\e[0;37m${*}${RESET}" >&1; } # Use Gray for program output.
+
+this_installer=$(basename "$0")
+case "${this_installer}" in
+  63)
+    # We are being piped in. Assume we are being piped in from curl
+    # and echo the current installer date from github.
+    echo_info "Current Chromebrew Installer is from $(curl -s "https://api.github.com/repos/chromebrew/chromebrew/commits?path=install.sh&page=1&per_page=1" | jq -r '.[0].commit.committer.date')"
+    ;;
+  install.sh)
+    # The installer was manually downloaded or we are in a container
+    # image install.
+    echo_info "Current Chromebrew Installer is from $(curl -s "https://api.github.com/repos/chromebrew/chromebrew/commits?path=install.sh&page=1&per_page=1" | jq -r '.[0].commit.committer.date')"
+    echo_info "Installer ${this_installer} last modified at: $(stat -c %y "$0")"
+    ;;
+  *)
+    echo_info "Installer ${this_installer} last modified at: $(stat -c %y "$0")"
+  esac
 
 # Add proper support for parsing /etc/lsb-release
 # Reference: https://www.chromium.org/chromium-os/developer-library/reference/infrastructure/lsb-release/
@@ -317,15 +334,12 @@ function download_check () {
       if [[ -f "$CREW_CACHE_DIR/${3}" ]] ; then
         echo_info "$CREW_CACHE_DIR/${3} found."
         echo_intra "Verifying cached ${1}..."
-        echo_success "$(echo "${4}" "$CREW_CACHE_DIR/${3}" | sha256sum -c -)"
-        case "${?}" in
-        0)
+        if echo "${4}" "$CREW_CACHE_DIR/${3}" | sha256sum -c -; then
+          echo_success "Verification of cached ${1} succeeded."
           ln -sf "$CREW_CACHE_DIR/${3}" "$CREW_BREW_DIR/${3}" || true
-          return
-          ;;
-        *)
-          echo_error "Verification of cached ${1} failed, downloading."
-        esac
+        else
+          echo_error "Verification of cached $CREW_CACHE_DIR/${3} failed with sha256 ${4}, downloading."
+        fi
       else
         echo_intra "$CREW_CACHE_DIR/${3} not found"
       fi
