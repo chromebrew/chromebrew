@@ -71,7 +71,8 @@ class Package
            :git_branch,
            :git_hashtag,
            :max_glibc,
-           :min_glibc
+           :min_glibc,
+           :conflicts_with
 
   create_placeholder :preflight,       # Function for checks to see if install should occur.
                      :patch,           # Function to perform patch operations prior to build from source.
@@ -132,11 +133,6 @@ class Package
     else
       puts "#{config_object} saved.".lightgreen
     end
-  end
-
-  def self.installed(pkg)
-    # Returns true if the package is installed, false otherwise.
-    return File.file? "#{CREW_META_PATH}/#{pkg}.filelist"
   end
 
   def self.load_package(pkg_file, reload = nil)
