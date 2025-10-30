@@ -1,4 +1,4 @@
-# Total size: 665313613
+# Total size: 665368214
 /usr/local/bin/bq
 /usr/local/bin/dev_appserver.py
 /usr/local/bin/docker-credential-gcloud
@@ -22020,6 +22020,7 @@
 /usr/local/share/gcloud/platform/bundledpythonunix/lib/python3.12/__pycache__/__future__.cpython-312.pyc
 /usr/local/share/gcloud/platform/bundledpythonunix/lib/python3.12/__pycache__/_compat_pickle.cpython-312.pyc
 /usr/local/share/gcloud/platform/bundledpythonunix/lib/python3.12/__pycache__/_compression.cpython-312.pyc
+/usr/local/share/gcloud/platform/bundledpythonunix/lib/python3.12/__pycache__/_strptime.cpython-312.pyc
 /usr/local/share/gcloud/platform/bundledpythonunix/lib/python3.12/__pycache__/_weakrefset.cpython-312.pyc
 /usr/local/share/gcloud/platform/bundledpythonunix/lib/python3.12/__pycache__/ast.cpython-312.pyc
 /usr/local/share/gcloud/platform/bundledpythonunix/lib/python3.12/__pycache__/base64.cpython-312.pyc
@@ -22222,6 +22223,8 @@
 /usr/local/share/gcloud/platform/bundledpythonunix/lib/python3.12/crypt.py
 /usr/local/share/gcloud/platform/bundledpythonunix/lib/python3.12/csv.py
 /usr/local/share/gcloud/platform/bundledpythonunix/lib/python3.12/ctypes/__init__.py
+/usr/local/share/gcloud/platform/bundledpythonunix/lib/python3.12/ctypes/__pycache__/__init__.cpython-312.pyc
+/usr/local/share/gcloud/platform/bundledpythonunix/lib/python3.12/ctypes/__pycache__/_endian.cpython-312.pyc
 /usr/local/share/gcloud/platform/bundledpythonunix/lib/python3.12/ctypes/_aix.py
 /usr/local/share/gcloud/platform/bundledpythonunix/lib/python3.12/ctypes/_endian.py
 /usr/local/share/gcloud/platform/bundledpythonunix/lib/python3.12/ctypes/macholib/README.ctypes
