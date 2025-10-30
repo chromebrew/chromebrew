@@ -3,18 +3,18 @@ require 'package'
 class Libusb < Package
   description 'A cross-platform library that gives apps easy access to USB devices'
   homepage 'https://sourceforge.net/projects/libusb/'
-  version '1.0.26'
+  version '1.0.29'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url "https://github.com/libusb/libusb/releases/download/v#{version}/libusb-#{version}.tar.bz2"
-  source_sha256 '12ce7a61fc9854d1d2a1ffe095f7b5fac19ddba095c259e6067a46500381b5a5'
+  source_sha256 '5977fc950f8d1395ccea9bd48c06b3f808fd3c2c961b44b0c2e6e29fc3a70a85'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b1ec533b10ebaca34474b8876e26b2ad9dfda3dab193e71a4caeddb4db3a6f38',
-     armv7l: 'b1ec533b10ebaca34474b8876e26b2ad9dfda3dab193e71a4caeddb4db3a6f38',
-       i686: 'f7b9cba3d12a9e999228b0143a617a768f2f90f897ee06588d581313c92f0e5c',
-     x86_64: '5517a4b11a9cd8789f32f700942c6627f872b4e742b6175dcb9746fc3795963f'
+    aarch64: '31dc0f4774997cdadb78ead5d59f436a0c638270312c04987bfd8027ea3f9841',
+     armv7l: '31dc0f4774997cdadb78ead5d59f436a0c638270312c04987bfd8027ea3f9841',
+       i686: '43ef832c441248eabce9fc83affcae4c5e689de2d34c9d7547ed4ca740ad99a1',
+     x86_64: '2891bf3ae30078cd88dbd703a028c401ac0e735f0c86a3d971b80789a3562029'
   })
 
   depends_on 'eudev'
