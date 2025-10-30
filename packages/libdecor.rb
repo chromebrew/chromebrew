@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Libdecor < Meson
   description 'Client-side decorations library for Wayland clients'
   homepage 'https://gitlab.freedesktop.org/libdecor/libdecor'
-  version '0.2.3'
+  version '0.2.4'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/libdecor/libdecor.git'
@@ -14,9 +14,9 @@ class Libdecor < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4185981721be6ae817532b8a780b29c8508b7b99e9ca2946ce21bb43000ef917',
-     armv7l: '4185981721be6ae817532b8a780b29c8508b7b99e9ca2946ce21bb43000ef917',
-     x86_64: 'f508e2ba9eeb6285c313e5581e41e455997343822b7d00ac169b9c601a9c9d21'
+    aarch64: 'a827ae756d375ee4931aabea46f2032824d87c50b1b98aa0404ddbbf61ce4e9d',
+     armv7l: 'a827ae756d375ee4931aabea46f2032824d87c50b1b98aa0404ddbbf61ce4e9d',
+     x86_64: 'b1357bac979ec34bedf9ef48d3648d6703498225ab2049bffac70b72a2e3cc0a'
   })
 
   depends_on 'cairo' # R
