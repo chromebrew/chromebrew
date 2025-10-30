@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Libunistring < Autotools
   description 'A library that provides functions for manipulating Unicode strings and for manipulating C strings according to the Unicode standard.'
   homepage 'https://www.gnu.org/software/libunistring/'
-  version '1.4'
+  version '1.4.1'
   license 'LGPL-3+ or GPL-2+ and FDL-1.2 or GPL-3+'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/libunistring/libunistring-#{version}.tar.xz"
-  source_sha256 '708571fce9965e805fee08b410aa8e886d391a492c387f75abb7be0e195337f5'
+  source_sha256 '67d88430892527861903788868c77802a217b0959990f7449f2976126a307763'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '719b717b6faffa5b081ca51034466d271d0ec21c37444321a5a26aa1f1645ac7',
-     armv7l: '719b717b6faffa5b081ca51034466d271d0ec21c37444321a5a26aa1f1645ac7',
-       i686: 'e0c065e55ad549ee9e5dcd48b71ab7d8b67d83a8901a83985db0e076fd84c41d',
-     x86_64: '1ac48b063d98e6477745db7fc5352c9c631271fe6750ba5bee199c8820f6476f'
+    aarch64: '96f4210afe9743f15d4294f79f09213e12467a3d2085ecea9bc753b1ad66da1e',
+     armv7l: '96f4210afe9743f15d4294f79f09213e12467a3d2085ecea9bc753b1ad66da1e',
+       i686: '7264c0d67219f7183a51b5b5892b78d2699d345c803745d6872b707ebddf46dc',
+     x86_64: '938cdcf6680fee8df992123a1fde0b3293eabf6936a09a51bd66ef46bbd7ea53'
   })
 
   depends_on 'glibc'
