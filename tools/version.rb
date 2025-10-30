@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.11 (for Chromebrew)
+# version.rb version 3.12 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose -vv]
 
@@ -100,14 +100,17 @@ def get_version(name, homepage, source, version)
           github_ver = `gh release ls --exclude-pre-releases --exclude-drafts -L 1 -R #{repo} --json tagName -q '.[] | .tagName'`.chomp if system 'gh auth status >/dev/null', exception: false
         else
           puts "curl https://api.github.com/repos/#{repo}/releases/latest -Ls | jq .tag_name -r" if VERY_VERBOSE
-          status = `curl -fsI https://api.github.com/repos/#{repo}/releases/latest`.lines.first.split[1]
-          if status == '404'
-            puts 'GitHub repo not found.' if VERBOSE
+          rel_status = `curl -fsI https://api.github.com/repos/#{repo}/releases/latest`.lines.first.split[1]
+          tag_status = `curl -fsI https://api.github.com/repos/#{repo}/tags`.lines.first.split[1]
+          if rel_status == '404' && tag_status == '404'
+            puts 'GitHub repo not found or no release/tag available.' if VERBOSE
             return
           end
           github_ver = `curl https://api.github.com/repos/#{repo}/releases/latest -Ls | jq .tag_name -r`.chomp
-          puts "curl https://api.github.com/repos/#{repo}/tags -Ls | jq '.[0].name' -r" if VERY_VERBOSE && (github_ver.blank? || github_ver == 'null')
-          github_ver = `curl https://api.github.com/repos/#{repo}/tags -Ls | jq '.[0].name' -r`.chomp if github_ver.blank? || github_ver == 'null'
+          if github_ver.blank? || github_ver == 'null'
+            puts "curl https://api.github.com/repos/#{repo}/tags -Ls | jq '.[0].name' -r" if VERY_VERBOSE
+            github_ver = `curl https://api.github.com/repos/#{repo}/tags -Ls | jq '.[0].name' -r`.chomp
+          end
         end
         unless github_ver.blank? || github_ver == 'null'
           puts "github_ver = #{github_ver}" if VERY_VERBOSE
@@ -123,7 +126,7 @@ def get_version(name, homepage, source, version)
         puts "GitLab repo is #{repo}" if VERBOSE
         status = `curl -fsI https://#{url.host}/#{repo}/-/releases/permalink/latest`.lines.first.split[1]
         if status == '404'
-          puts 'GitLab repo not found.' if VERBOSE
+          puts 'GitLab repo not found or no release available.' if VERBOSE
           return
         end
         puts "curl https://#{url.host}/#{repo}/-/releases/permalink/latest -Ls | jq .tag_name -r" if VERY_VERBOSE
@@ -143,7 +146,7 @@ def get_version(name, homepage, source, version)
         puts "Sourceforge repo is #{repo}" if VERBOSE
         status = `curl -fsI https://sourceforge.net/projects/#{repo}/best_release.json`.lines.first.split[1]
         if status == '404'
-          puts 'Sourceforge repo not found.' if VERBOSE
+          puts 'Sourceforge repo not found or no release available.' if VERBOSE
           return
         end
         puts "curl https://sourceforge.net/projects/#{repo}/best_release.json -Ls | jq .release.filename -r" if VERY_VERBOSE
@@ -155,6 +158,25 @@ def get_version(name, homepage, source, version)
           puts "best_release = #{best_release}" if VERY_VERBOSE
           # Strip off any leading non-numeric characters.
           upstream_version = best_release.sub(/.*?(?=[0-9].)/im, '').chomp
+          return upstream_version
+        end
+      end
+    when 'pagure.io'
+      url_parts = url.path.split('/')
+      unless url_parts.count < 2
+        repo = url_parts[1]
+        puts "Pagure repo is #{repo}" if VERBOSE
+        status = `curl -fsI https://pagure.io/api/0/#{repo}/git/tags`.lines.first.split[1]
+        if status == '404'
+          puts 'Pagure repo not found or no release tag available.' if VERBOSE
+          return
+        end
+        puts "curl https://pagure.io/api/0/#{repo}/git/tags -Ls | jq .tags[0] -r" if VERY_VERBOSE
+        pagure_ver = `curl https://pagure.io/api/0/#{repo}/git/tags -Ls | jq .tags[0] -r`.chomp
+        unless pagure_ver.blank? || pagure_ver == 'null'
+          puts "pagure_ver = #{pagure_ver}" if VERY_VERBOSE
+          # Strip off any leading non-numeric characters.
+          upstream_version = pagure_ver.sub(/.*?(?=[0-9].)/im, '').chomp
           return upstream_version
         end
       end
@@ -226,6 +248,9 @@ def get_anitya_id(name, homepage)
         # If a package is not provided by a language package manager, the ecosystem will be set to the homepage.
         # https://release-monitoring.org/static/docs/api.html#get--api-v2-projects-
         candidates.append(i)
+      elsif homepage.include?('pagure.io')
+        # Edge case fallback if the backend is custom or pragure and the homepage is pagure.io.
+        candidates.append(i) if %w[custom pagure].include?(json['items'][i]['backend'])
       end
     end
     puts "candidates = #{candidates}" if VERY_VERBOSE
