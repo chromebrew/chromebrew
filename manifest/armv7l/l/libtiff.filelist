@@ -1,4 +1,4 @@
-# Total size: 6396623
+# Total size: 6396853
 /usr/local/bin/fax2ps
 /usr/local/bin/fax2tiff
 /usr/local/bin/pal2rgb
@@ -39,6 +39,7 @@
 /usr/local/share/doc/tiff-4.7.1/RELEASE-DATE
 /usr/local/share/doc/tiff-4.7.1/TODO
 /usr/local/share/doc/tiff-4.7.1/VERSION
+/usr/local/share/doc/tiff-4.7.1/manual/.buildinfo
 /usr/local/share/doc/tiff-4.7.1/manual/_images/bali.jpg
 /usr/local/share/doc/tiff-4.7.1/manual/_images/cat.gif
 /usr/local/share/doc/tiff-4.7.1/manual/_images/cover.jpg
