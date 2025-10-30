@@ -30,6 +30,9 @@ class Glib < Meson
   gnome
   no_strip if %w[aarch64 armv7l].include? ARCH
 
+  def self.prebuild
+    system 'PIP_DISABLE_PIP_VERSION_CHECK=1 python -m pip install --upgrade --force-reinstall pip setuptools'
+  end
   meson_options '-Dselinux=disabled \
     -Dsysprof=disabled \
     -Dman-pages=disabled \
