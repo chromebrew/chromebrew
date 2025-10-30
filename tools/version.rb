@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.10 (for Chromebrew)
+# version.rb version 3.11 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose -vv]
 
@@ -92,7 +92,7 @@ def get_version(name, homepage, source, version)
       url_parts = url.path.split('/')
       unless url_parts.count < 3
         repo = "#{url_parts[1]}/#{url_parts[2].gsub(/.git\z/, '')}"
-        puts "GitHub Repo is #{repo}" if VERBOSE
+        puts "GitHub repo is #{repo}" if VERBOSE
         if File.which('gh')
           # This allows us to only get non-pre-release versions from
           # GitHub if such releases exist.
@@ -100,6 +100,11 @@ def get_version(name, homepage, source, version)
           github_ver = `gh release ls --exclude-pre-releases --exclude-drafts -L 1 -R #{repo} --json tagName -q '.[] | .tagName'`.chomp if system 'gh auth status >/dev/null', exception: false
         else
           puts "curl https://api.github.com/repos/#{repo}/releases/latest -Ls | jq .tag_name -r" if VERY_VERBOSE
+          status = `curl -fsI https://api.github.com/repos/#{repo}/releases/latest`.lines.first.split[1]
+          if status == '404'
+            puts 'GitHub repo not found.' if VERBOSE
+            return
+          end
           github_ver = `curl https://api.github.com/repos/#{repo}/releases/latest -Ls | jq .tag_name -r`.chomp
           puts "curl https://api.github.com/repos/#{repo}/tags -Ls | jq '.[0].name' -r" if VERY_VERBOSE && (github_ver.blank? || github_ver == 'null')
           github_ver = `curl https://api.github.com/repos/#{repo}/tags -Ls | jq '.[0].name' -r`.chomp if github_ver.blank? || github_ver == 'null'
@@ -115,7 +120,12 @@ def get_version(name, homepage, source, version)
       url_parts = url.path.split('/')
       unless url_parts.count < 3
         repo = "#{url_parts[1]}/#{url_parts[2].gsub(/.git\z/, '')}"
-        puts "GitLab Repo is #{repo}" if VERBOSE
+        puts "GitLab repo is #{repo}" if VERBOSE
+        status = `curl -fsI https://#{url.host}/#{repo}/-/releases/permalink/latest`.lines.first.split[1]
+        if status == '404'
+          puts 'GitLab repo not found.' if VERBOSE
+          return
+        end
         puts "curl https://#{url.host}/#{repo}/-/releases/permalink/latest -Ls | jq .tag_name -r" if VERY_VERBOSE
         gitlab_ver = `curl https://#{url.host}/#{repo}/-/releases/permalink/latest -Ls | jq .tag_name -r`.chomp
         unless gitlab_ver.blank? || gitlab_ver == 'null'
@@ -130,7 +140,12 @@ def get_version(name, homepage, source, version)
       unless url_parts.count < 3
         repo = url_parts[2]
         filename = url_parts.last
-        puts "Sourceforge Repo is #{repo}" if VERBOSE
+        puts "Sourceforge repo is #{repo}" if VERBOSE
+        status = `curl -fsI https://sourceforge.net/projects/#{repo}/best_release.json`.lines.first.split[1]
+        if status == '404'
+          puts 'Sourceforge repo not found.' if VERBOSE
+          return
+        end
         puts "curl https://sourceforge.net/projects/#{repo}/best_release.json -Ls | jq .release.filename -r" if VERY_VERBOSE
         sourceforge_file = `curl https://sourceforge.net/projects/#{repo}/best_release.json -Ls | jq .release.filename -r`.chomp
         best_release = sourceforge_file.split('/').last
@@ -139,7 +154,7 @@ def get_version(name, homepage, source, version)
         else
           puts "best_release = #{best_release}" if VERY_VERBOSE
           # Strip off any leading non-numeric characters.
-          upstream_version = gitlab_ver.sub(/.*?(?=[0-9].)/im, '').chomp
+          upstream_version = best_release.sub(/.*?(?=[0-9].)/im, '').chomp
           return upstream_version
         end
       end
@@ -178,18 +193,18 @@ def get_anitya_id(name, homepage)
         return
       elsif number_of_packages == 1 # We assume we have the right package.
         package_homepage = homepage.gsub(%r{http(s)?://(www\.)?}, '').chomp('/')
-        puts "package_homepage = #{homepage.gsub(%r{http(s)?://(www\.)?}, '').chomp('/')}" if VERY_VERBOSE
+        puts "package_homepage = #{package_homepage}" if VERY_VERBOSE
         anitya_homepage = json['items'][0]['homepage'].gsub(%r{http(s)?://(www\.)?}, '').chomp('/')
-        puts "anitya_homepage = #{json['items'][0]['homepage'].gsub(%r{http(s)?://(www\.)?}, '').chomp('/')}" if VERY_VERBOSE
+        puts "anitya_homepage = #{anitya_homepage}" if VERY_VERBOSE
         @new_anitya_name = json['items'][0]['name']
         return json['items'][0]['id']
       else
         (0..(number_of_packages - 1)).each do |i|
           next if json['items'][i].nil?
           package_homepage = homepage.gsub(%r{http(s)?://(www\.)?}, '').chomp('/')
-          puts "package_homepage = #{homepage.gsub(%r{http(s)?://(www\.)?}, '').chomp('/')}" if VERY_VERBOSE
+          puts "package_homepage = #{package_homepage}" if VERY_VERBOSE
           anitya_homepage = json['items'][i]['homepage'].gsub(%r{http(s)?://(www\.)?}, '').chomp('/')
-          puts "anitya_homepage = #{json['items'][i]['homepage'].gsub(%r{http(s)?://(www\.)?}, '').chomp('/')}" if VERY_VERBOSE
+          puts "anitya_homepage = #{anitya_homepage}" if VERY_VERBOSE
           if package_homepage == anitya_homepage
             @new_anitya_name = name_candidate
             return json['items'][i]['id']
@@ -230,9 +245,9 @@ def get_anitya_id(name, homepage)
         # Even if there are multiple candidates with the same name and homepage, its probably fine to treat them as identical.
         # If it isn't fine to treat them as identical, something has gone horribly wrong.
         package_homepage = homepage.gsub(%r{http(s)?://(www\.)?}, '').chomp('/')
-        puts "package_homepage = #{homepage.gsub(%r{http(s)?://(www\.)?}, '').chomp('/')}" if VERY_VERBOSE
+        puts "package_homepage = #{package_homepage}" if VERY_VERBOSE
         anitya_homepage = json['items'][candidate]['homepage'].gsub(%r{http(s)?://(www\.)?}, '').chomp('/')
-        puts "anitya_homepage = #{json['items'][candidate]['homepage'].gsub(%r{http(s)?://(www\.)?}, '').chomp('/')}" if VERY_VERBOSE
+        puts "anitya_homepage = #{anitya_homepage}" if VERY_VERBOSE
         return json['items'][candidate]['id'] if package_homepage == anitya_homepage
       end
       puts 'No Anitya packages found.' if VERY_VERBOSE
