@@ -1,4 +1,4 @@
-# Total size: 249936682
+# Total size: 326674095
 /usr/local/bin/mullvad
 /usr/local/share/applications/start-mullvad-browser.desktop
 /usr/local/share/icons/default/64x64/apps/web-browser.png
@@ -32,6 +32,10 @@
 /usr/local/share/mullvad/fonts/Cousine-BoldItalic.ttf
 /usr/local/share/mullvad/fonts/Cousine-Italic.ttf
 /usr/local/share/mullvad/fonts/Cousine-Regular.ttf
+/usr/local/share/mullvad/fonts/Jigmo.ttf
+/usr/local/share/mullvad/fonts/Jigmo2.ttf
+/usr/local/share/mullvad/fonts/Jigmo3.ttf
+/usr/local/share/mullvad/fonts/NotoColorEmoji.ttf
 /usr/local/share/mullvad/fonts/NotoNaskhArabic-Regular.ttf
 /usr/local/share/mullvad/fonts/NotoSansAdlam-Regular.ttf
 /usr/local/share/mullvad/fonts/NotoSansArmenian-Regular.ttf
@@ -59,9 +63,7 @@
 /usr/local/share/mullvad/fonts/NotoSansHanifiRohingya-Regular.ttf
 /usr/local/share/mullvad/fonts/NotoSansHanunoo-Regular.ttf
 /usr/local/share/mullvad/fonts/NotoSansHebrew-Regular.ttf
-/usr/local/share/mullvad/fonts/NotoSansJP-Regular.otf
 /usr/local/share/mullvad/fonts/NotoSansJavanese-Regular.ttf
-/usr/local/share/mullvad/fonts/NotoSansKR-Regular.otf
 /usr/local/share/mullvad/fonts/NotoSansKannada-Regular.ttf
 /usr/local/share/mullvad/fonts/NotoSansKayahLi-Regular.ttf
 /usr/local/share/mullvad/fonts/NotoSansKhmer-Regular.ttf
@@ -94,7 +96,6 @@
 /usr/local/share/mullvad/fonts/NotoSansPauCinHau-Regular.ttf
 /usr/local/share/mullvad/fonts/NotoSansRejang-Regular.ttf
 /usr/local/share/mullvad/fonts/NotoSansRunic-Regular.ttf
-/usr/local/share/mullvad/fonts/NotoSansSC-Regular.otf
 /usr/local/share/mullvad/fonts/NotoSansSamaritan-Regular.ttf
 /usr/local/share/mullvad/fonts/NotoSansSaurashtra-Regular.ttf
 /usr/local/share/mullvad/fonts/NotoSansSharada-Regular.ttf
@@ -107,7 +108,6 @@
 /usr/local/share/mullvad/fonts/NotoSansSymbols-Regular.ttf
 /usr/local/share/mullvad/fonts/NotoSansSymbols2-Regular.ttf
 /usr/local/share/mullvad/fonts/NotoSansSyriac-Regular.ttf
-/usr/local/share/mullvad/fonts/NotoSansTC-Regular.otf
 /usr/local/share/mullvad/fonts/NotoSansTagalog-Regular.ttf
 /usr/local/share/mullvad/fonts/NotoSansTagbanwa-Regular.ttf
 /usr/local/share/mullvad/fonts/NotoSansTaiLe-Regular.ttf
@@ -172,7 +172,6 @@
 /usr/local/share/mullvad/icons/updater.png
 /usr/local/share/mullvad/libfreeblpriv3.so
 /usr/local/share/mullvad/libgkcodecs.so
-/usr/local/share/mullvad/libipcclientcerts.so
 /usr/local/share/mullvad/liblgpllibs.so
 /usr/local/share/mullvad/libmozavcodec.so
 /usr/local/share/mullvad/libmozavutil.so
@@ -182,7 +181,6 @@
 /usr/local/share/mullvad/libmozwayland.so
 /usr/local/share/mullvad/libnspr4.so
 /usr/local/share/mullvad/libnss3.so
-/usr/local/share/mullvad/libnssckbi.so
 /usr/local/share/mullvad/libnssutil3.so
 /usr/local/share/mullvad/libplc4.so
 /usr/local/share/mullvad/libplds4.so
