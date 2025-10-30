@@ -3,7 +3,7 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  version '3.13.9-1'
+  version '3.13.9-2'
   license 'PSF-2.0'
   compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{version.split('-').first}/Python-#{version.split('-').first}.tar.xz"
@@ -116,9 +116,8 @@ class Python3 < Package
   end
 
   def self.postinstall
-    # First force pip upgrade to make sure we are past the problematic pip 23.2.1
-    # See https://github.com/pypa/pip/issues/12357 and https://github.com/pypa/pip/issues/12428
-    # system 'PIP_DISABLE_PIP_VERSION_CHECK=1 python -m pip install --upgrade --force-reinstall pip'
+    # Fix issues with newer setuptools breaking existing python3 installs.
+    system 'PIP_DISABLE_PIP_VERSION_CHECK=1 python -m pip install --upgrade --force-reinstall pip setuptools'
     # Pip is installed inside Python 3. The following steps ensure that
     # pip can properly build other packages from buildsystems/pip.
     # @required_pip_modules = %w[build installer setuptools wheel pyproject_hooks]
