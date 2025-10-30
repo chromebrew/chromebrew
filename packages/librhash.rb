@@ -3,7 +3,7 @@ require 'package'
 class Librhash < Package
   description 'RHash is a console utility for computing and verifying hash sums of files.'
   homepage 'http://rhash.anz.ru/'
-  version '1.4.3'
+  version '1.4.6'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/rhash/RHash.git'
