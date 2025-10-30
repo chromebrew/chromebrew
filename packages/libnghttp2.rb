@@ -11,10 +11,10 @@ class Libnghttp2 < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '69170f13b5195a4de3f94fe4fe12c337cee652e1f793ffc5338826d7b7bafa08',
-     armv7l: '69170f13b5195a4de3f94fe4fe12c337cee652e1f793ffc5338826d7b7bafa08',
-       i686: 'f16f42eebd5e14096f7c3bc3e2bcf47d9f11a6ffa45441490672813f6de9e5eb',
-     x86_64: 'f1e1fc9c9aa3f68cff3dafc876f17039ad2cec6048bc927341ac88645770a370'
+    aarch64: 'e50e50473ae3de629ac6dc0dd09f497dee584be58afc7416f72f5e8abbcccb3b',
+     armv7l: 'e50e50473ae3de629ac6dc0dd09f497dee584be58afc7416f72f5e8abbcccb3b',
+       i686: 'e52961bb6e9114f38ce2530f826889ba8c597c220bfe7010d29a34c01fd7e9ce',
+     x86_64: 'd870b2421da67b52b0d8d9e9c50edff65636f34e022d95e6fa583a79b4c14850'
   })
 
   depends_on 'glibc' # R

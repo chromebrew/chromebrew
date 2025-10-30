@@ -1,4 +1,4 @@
-# Total size: 524896
+# Total size: 524485
 /usr/local/include/nghttp2/nghttp2.h
 /usr/local/include/nghttp2/nghttp2ver.h
 /usr/local/lib/cmake/nghttp2/nghttp2Config.cmake
@@ -7,7 +7,7 @@
 /usr/local/lib/cmake/nghttp2/nghttp2Targets.cmake
 /usr/local/lib/libnghttp2.so
 /usr/local/lib/libnghttp2.so.14
-/usr/local/lib/libnghttp2.so.14.29.1
+/usr/local/lib/libnghttp2.so.14.29.2
 /usr/local/lib/pkgconfig/libnghttp2.pc
 /usr/local/share/doc/nghttp2/README.rst
 /usr/local/share/man/man1/h2load.1.zst
