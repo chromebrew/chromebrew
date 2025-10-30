@@ -3,7 +3,7 @@ require 'package'
 class Librhash < Package
   description 'RHash is a console utility for computing and verifying hash sums of files.'
   homepage 'http://rhash.anz.ru/'
-  version '1.4.3'
+  version '1.4.6'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/rhash/RHash.git'
@@ -11,10 +11,10 @@ class Librhash < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fdb6b38162bd3a25a3797a2e151262b45338bd56915555f97402308d6290b4c8',
-     armv7l: 'fdb6b38162bd3a25a3797a2e151262b45338bd56915555f97402308d6290b4c8',
-       i686: 'e3a3a89ca257d2132713f6770aa66774af98def033e2eaa44225da969e7ef1f6',
-     x86_64: 'bdcf6b36fe18f40f153b083daca45f3b634face054642ff469076afa46934299'
+    aarch64: 'c5a49ffb6a41926f89456d2e9bb06c8c75680c4a17c6bbf2e6b065673e51a10c',
+     armv7l: 'c5a49ffb6a41926f89456d2e9bb06c8c75680c4a17c6bbf2e6b065673e51a10c',
+       i686: '979be5fa75c3ea75258a3f0ade6f7854b29f0933be8702d06779c05dadfcc3cb',
+     x86_64: 'a5efd90ae1544559c9ddf6b4c2d698b6eb41135090526a321acf871d8e432ace'
   })
 
   depends_on 'glibc' # R
