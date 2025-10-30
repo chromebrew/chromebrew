@@ -1,4 +1,4 @@
-# Total size: 359625651
+# Total size: 360300535
 /usr/local/bin/opera
 /usr/local/share/applications/opera.desktop
 /usr/local/share/doc/opera-stable/changelog.gz
@@ -181,7 +181,6 @@
 /usr/local/share/x86_64-linux-gnu/opera/resources/standard_themes/default_dark_theme.zip
 /usr/local/share/x86_64-linux-gnu/opera/resources/standard_themes/default_theme.zip
 /usr/local/share/x86_64-linux-gnu/opera/resources/travel_intent_keywords.json
-/usr/local/share/x86_64-linux-gnu/opera/resources/video_conference_popout.json
 /usr/local/share/x86_64-linux-gnu/opera/snapshot_blob.bin
 /usr/local/share/x86_64-linux-gnu/opera/v8_context_snapshot.bin
 /usr/local/share/x86_64-linux-gnu/opera/vk_swiftshader_icd.json
