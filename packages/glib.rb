@@ -11,10 +11,10 @@ class Glib < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9dd914a165ec477952974197531ef5a3163a93a60f19478b1691050070eb6afc',
-     armv7l: '9dd914a165ec477952974197531ef5a3163a93a60f19478b1691050070eb6afc',
-       i686: '8d6728712ffc56e8d9496c9dba31175a0dab3cb4c9fa1b920b3c08046d305640',
-     x86_64: '1e0210b3446d17767b9b88e66fd0b3e8c449790529d3221727c4f7832e38c62a'
+    aarch64: '078fc2e0cbec6f2a3ffabc7983decbd531fb2e89f15d89fedbd83a455573a19d',
+     armv7l: '078fc2e0cbec6f2a3ffabc7983decbd531fb2e89f15d89fedbd83a455573a19d',
+       i686: 'ea903993830032fc0afe98fe320e75fd5abb4d423f7d1a9e19d31db6301ec233',
+     x86_64: '6fc27c85d461d1d1481b5ffcb0ea8157b83c396b8f69475eaa0a872a8e865883'
   })
 
   depends_on 'elfutils' # R
@@ -30,9 +30,6 @@ class Glib < Meson
   gnome
   no_strip if %w[aarch64 armv7l].include? ARCH
 
-  def self.prebuild
-    system 'PIP_DISABLE_PIP_VERSION_CHECK=1 python -m pip install --upgrade --force-reinstall pip setuptools'
-  end
   meson_options '-Dselinux=disabled \
     -Dsysprof=disabled \
     -Dman-pages=disabled \
