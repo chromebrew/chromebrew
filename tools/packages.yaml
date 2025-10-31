@@ -7735,13 +7735,13 @@ url: https://github.com/itstool/itstool/releases
 activity: low
 ---
 kind: url
-name: py3_jsonschema_specifications
-url: https://github.com/python-jsonschema/jsonschema-specifications/releases
+name: py3_jsonschema
+url: https://github.com/python-jsonschema/jsonschema/releases
 activity: high
 ---
 kind: url
-name: py3_jsonschema
-url: https://github.com/python-jsonschema/jsonschema/releases
+name: py3_jsonschema_specifications
+url: https://github.com/python-jsonschema/jsonschema-specifications/releases
 activity: high
 ---
 kind: url
