@@ -845,7 +845,7 @@ def build_and_preconfigure(target_dir)
     @pkg.in_build = false
     Signal.trap('INT', 'DEFAULT') if CREW_CACHE_BUILD || @pkg.cache_build?
 
-    cache_build if (CREW_CACHE_BUILD || @pkg.cache_build?) && @pkg.superclass.to_s != 'Pip' && @pkg.superclass.to_s != 'RUBY'
+    cache_build if (CREW_CACHE_BUILD || @pkg.cache_build?) && !%w[Pip RUBY].include?(@pkg.superclass.to_s)
 
     # wipe crew destdir
     FileUtils.rm_rf Dir["#{CREW_DEST_DIR}/*"], verbose: CREW_VERBOSE unless @pkg.superclass.to_s == 'RUBY'
