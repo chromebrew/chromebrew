@@ -1,16 +1,15 @@
-# Total size: 731170
-/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0/BSDL
-/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0/COPYING
-/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0/README.md
-/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0/ext/date/Makefile
-/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0/ext/date/date_core.c
-/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0/ext/date/date_parse.c
-/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0/ext/date/date_strftime.c
-/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0/ext/date/date_strptime.c
-/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0/ext/date/date_tmx.h
-/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0/ext/date/extconf.rb
-/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0/ext/date/prereq.mk
-/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0/ext/date/zonetab.h
-/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0/ext/date/zonetab.list
-/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0/lib/date.rb
-/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0/lib/date_core.so
+# Total size: 597867
+/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0-x86-linux/BSDL
+/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0-x86-linux/COPYING
+/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0-x86-linux/README.md
+/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0-x86-linux/ext/date/date_core.c
+/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0-x86-linux/ext/date/date_parse.c
+/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0-x86-linux/ext/date/date_strftime.c
+/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0-x86-linux/ext/date/date_strptime.c
+/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0-x86-linux/ext/date/date_tmx.h
+/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0-x86-linux/ext/date/extconf.rb
+/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0-x86-linux/ext/date/prereq.mk
+/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0-x86-linux/ext/date/zonetab.h
+/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0-x86-linux/ext/date/zonetab.list
+/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0-x86-linux/lib/date.rb
+/usr/local/lib/ruby/gems/3.4.0/gems/date-3.5.0-x86-linux/lib/date_core.so
