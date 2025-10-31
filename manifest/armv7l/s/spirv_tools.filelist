@@ -1,6 +1,7 @@
-# Total size: 6821720
+# Total size: 6940675
 /usr/local/bin/spirv-as
 /usr/local/bin/spirv-cfg
+/usr/local/bin/spirv-diff
 /usr/local/bin/spirv-dis
 /usr/local/bin/spirv-lesspipe.sh
 /usr/local/bin/spirv-link
