@@ -7835,14 +7835,14 @@ url: https://github.com/pypa/readme_renderer/releases
 activity: medium
 ---
 kind: url
-name: py3_rich
-url: https://github.com/Textualize/rich/releases
-activity: high
----
-kind: url
 name: py3_referencing
 url: https://github.com/python-jsonschema/referencing/releases
 activity: medium
+---
+kind: url
+name: py3_rich
+url: https://github.com/Textualize/rich/releases
+activity: high
 ---
 kind: url
 name: py3_rpds_py
