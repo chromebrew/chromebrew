@@ -11,10 +11,10 @@ class Libmbedtls < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f4f94256f39201657f86105891b4be02fa87efb92f1c25b36867a4057fe4462c',
-     armv7l: 'f4f94256f39201657f86105891b4be02fa87efb92f1c25b36867a4057fe4462c',
-       i686: 'ca6a29c8f2891016908c259751a504019cab5d52c01a95562b63da03617da72c',
-     x86_64: '24aaf1c149f5f24d317f09a46d466c595e180efe1877b7e0d4e1dc30811f5722'
+    aarch64: '1213726759c6fb3b093b71e95693c66892e7b0c2cbf82bdeec4136fe144220c9',
+     armv7l: '1213726759c6fb3b093b71e95693c66892e7b0c2cbf82bdeec4136fe144220c9',
+       i686: '5d62ecf51bc3329cdf377434f1ce09c29bca7988507447916d8324e5cda7a9c0',
+     x86_64: 'f9d9bd8d8601deda9e6ea6c7579c58cd52418433ee7d80b92e02e98603535072'
   })
 
   depends_on 'glibc' # R
@@ -33,5 +33,5 @@ class Libmbedtls < CMake
 
   # run_tests
 
-  cmake_options '-DUSE_SHARED_MBEDTLS_LIBRARY=ON'
+  cmake_options "-DUSE_SHARED_MBEDTLS_LIBRARY=ON -DENABLE_TESTING=#{@run_tests ? 'ON' : 'OFF'}"
 end
