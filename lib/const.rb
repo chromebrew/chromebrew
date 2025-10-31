@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.67.13' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.67.14' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -323,7 +323,8 @@ CREW_CMAKE_OPTIONS ||= <<~OPT.chomp
   -DCMAKE_SHARED_LINKER_FLAGS='#{CREW_LINKER_FLAGS}' \
   -DCMAKE_MODULE_LINKER_FLAGS='#{CREW_LINKER_FLAGS}' \
   -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=TRUE \
-  -DCMAKE_BUILD_TYPE=Release
+  -DCMAKE_BUILD_TYPE=Release \
+  -Wno-dev
 OPT
 
 CREW_CMAKE_LIBSUFFIX_OPTIONS ||= "#{CREW_CMAKE_OPTIONS} -DLIB_SUFFIX=#{CREW_LIB_SUFFIX}"
@@ -408,6 +409,7 @@ unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
     { pkg_name: 'gvim', anitya_pkg: 'vim', comments: '' },
     { pkg_name: 'libgedit_amtk', anitya_pkg: 'libgedit-amtk', comments: 'Prefer to GitHub' },
     { pkg_name: 'libgedit_gtksourceview', anitya_pkg: 'libgedit-gtksourceview', comments: 'Prefer to GitHub' },
+    { pkg_name: 'libmbedtls', anitya_pkg: 'mbedtls', comments: 'Prefer to GitHub' },
     { pkg_name: 'libnghttp3', anitya_pkg: 'nghttp3', comments: '' },
     { pkg_name: 'libngtcp2', anitya_pkg: 'ngtcp2', comments: '' },
     { pkg_name: 'libssp', anitya_pkg: 'gcc', comments: '' },
