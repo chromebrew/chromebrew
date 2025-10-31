@@ -7735,6 +7735,11 @@ url: https://github.com/itstool/itstool/releases
 activity: low
 ---
 kind: url
+name: py3_jsonschema
+url: https://github.com/python-jsonschema/jsonschema/releases
+activity: low
+---
+kind: url
 name: py3_lxml
 url: https://github.com/lxml/lxml/releases
 activity: high

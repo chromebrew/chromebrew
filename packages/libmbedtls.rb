@@ -18,6 +18,7 @@ class Libmbedtls < CMake
   })
 
   depends_on 'glibc' # R
+  depends_on 'py3_jsonschema' => :build
   run_tests
 
   cmake_options '-DUSE_SHARED_MBEDTLS_LIBRARY=ON'
