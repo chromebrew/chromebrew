@@ -19,6 +19,7 @@ class Libmbedtls < CMake
 
   depends_on 'glibc' # R
   depends_on 'py3_attrs' => :build
+  depends_on 'py3_jinja2' => :build
   depends_on 'py3_jsonschema' => :build
   run_tests
 
