@@ -15,6 +15,7 @@
 /usr/local/include/rhash.h
 /usr/local/include/rhash_torrent.h
 /usr/local/lib/librhash.so
+/usr/local/lib/librhash.so.0
 /usr/local/lib/librhash.so.1
 /usr/local/lib/librhash.so.1.4.6
 /usr/local/lib/pkgconfig/librhash.pc
