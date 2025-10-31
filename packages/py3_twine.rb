@@ -17,6 +17,8 @@ class Py3_twine < Pip
   })
 
   depends_on 'py3_readme_renderer'
+  depends_on 'py3_requests'
+  depends_on 'py3_rich'
   depends_on 'py3_setuptools'
   depends_on 'python3' => :build
   depends_on 'rust' => :build

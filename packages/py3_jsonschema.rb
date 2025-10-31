@@ -19,6 +19,9 @@ class Py3_jsonschema < Pip
      x86_64: '0745d632978887b2b825df535e4b1f25cd2a11433171bbf4456128d5fb0a7249'
   })
 
+  depends_on 'py3_attrs' # R
+  depends_on 'py3_referencing' # R
+  depends_on 'py3_rpds_py' # R
   depends_on 'python3' => :build
 
   no_source_build
