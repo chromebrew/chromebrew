@@ -16,4 +16,6 @@ class Rendercheck < Meson
        i686: 'b0ca933742e0d17470c8f1d3e66dac65c5a03ac4d490a477e6e59c700b08b1b7',
      x86_64: '7c29b512ecdf2472ade1bce7f7b7491cd8f828a1146061fa8e2e512de6dd1dc9'
   })
+
+  depends_on 'libxrender' => :build
 end
