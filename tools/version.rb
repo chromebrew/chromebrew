@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.12 (for Chromebrew)
+# version.rb version 3.13 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose -vv]
 
@@ -64,7 +64,7 @@ def get_version(name, homepage, source, version)
     # Get the latest stable version of the package from anitya.
     json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/versions/?project_id=#{anitya_id}")))
     puts json if VERY_VERBOSE
-    return if json['stable_versions'].nil?
+    return json['latest_version'] if json['stable_versions'][0].nil?
     return json['stable_versions'][0]
   elsif source.nil? || %w[Pip].include?(@pkg.superclass.to_s)
     return
@@ -106,10 +106,17 @@ def get_version(name, homepage, source, version)
             puts 'GitHub repo not found or no release/tag available.' if VERBOSE
             return
           end
+          # Get the latest release.
           github_ver = `curl https://api.github.com/repos/#{repo}/releases/latest -Ls | jq .tag_name -r`.chomp
           if github_ver.blank? || github_ver == 'null'
+            # Get the latest tag.
             puts "curl https://api.github.com/repos/#{repo}/tags -Ls | jq '.[0].name' -r" if VERY_VERBOSE
             github_ver = `curl https://api.github.com/repos/#{repo}/tags -Ls | jq '.[0].name' -r`.chomp
+          end
+          if github_ver.blank? || github_ver == 'null'
+            # Get the first 6 characters of the latest git hash.
+            puts "curl https://api.github.com/repos/#{repo}/git/refs -Ls | jq .[0].object.sha -r" if VERY_VERBOSE
+            github_ver = `curl https://api.github.com/repos/#{repo}/git/refs -Ls | jq .[0].object.sha -r`.chomp[0..5]
           end
         end
         unless github_ver.blank? || github_ver == 'null'
