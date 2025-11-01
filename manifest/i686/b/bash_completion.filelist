@@ -1,4 +1,4 @@
-# Total size: 1036414
+# Total size: 1064720
 /usr/local/etc/bash_completion.d/000_bash_completion_compat.bash
 /usr/local/etc/profile.d/bash_completion.sh
 /usr/local/share/bash-completion/bash_completion
@@ -26,12 +26,14 @@
 /usr/local/share/bash-completion/completions/_arduino-cli
 /usr/local/share/bash-completion/completions/_argc
 /usr/local/share/bash-completion/completions/_argo
+/usr/local/share/bash-completion/completions/_asdf
 /usr/local/share/bash-completion/completions/_atlas
 /usr/local/share/bash-completion/completions/_atmos
 /usr/local/share/bash-completion/completions/_bao
 /usr/local/share/bash-completion/completions/_bashbot
 /usr/local/share/bash-completion/completions/_black
 /usr/local/share/bash-completion/completions/_blackd
+/usr/local/share/bash-completion/completions/_bombadil
 /usr/local/share/bash-completion/completions/_bosh
 /usr/local/share/bash-completion/completions/_buf
 /usr/local/share/bash-completion/completions/_caddy
@@ -71,6 +73,7 @@
 /usr/local/share/bash-completion/completions/_depot
 /usr/local/share/bash-completion/completions/_devspace
 /usr/local/share/bash-completion/completions/_diesel
+/usr/local/share/bash-completion/completions/_diffoci
 /usr/local/share/bash-completion/completions/_dlv
 /usr/local/share/bash-completion/completions/_dmesg
 /usr/local/share/bash-completion/completions/_docker
@@ -95,10 +98,13 @@
 /usr/local/share/bash-completion/completions/_gitconfig
 /usr/local/share/bash-completion/completions/_gitleaks
 /usr/local/share/bash-completion/completions/_gitsign
+/usr/local/share/bash-completion/completions/_glab
+/usr/local/share/bash-completion/completions/_glances
 /usr/local/share/bash-completion/completions/_glen
 /usr/local/share/bash-completion/completions/_glow
 /usr/local/share/bash-completion/completions/_go-licenses
 /usr/local/share/bash-completion/completions/_golangci-lint
+/usr/local/share/bash-completion/completions/_gomarklint
 /usr/local/share/bash-completion/completions/_gopass
 /usr/local/share/bash-completion/completions/_gopherjs
 /usr/local/share/bash-completion/completions/_goreleaser
@@ -164,6 +170,7 @@
 /usr/local/share/bash-completion/completions/_limactl
 /usr/local/share/bash-completion/completions/_linkerd
 /usr/local/share/bash-completion/completions/_look
+/usr/local/share/bash-completion/completions/_mado
 /usr/local/share/bash-completion/completions/_mattermost
 /usr/local/share/bash-completion/completions/_mdbook
 /usr/local/share/bash-completion/completions/_melange
@@ -226,7 +233,9 @@
 /usr/local/share/bash-completion/completions/_runuser
 /usr/local/share/bash-completion/completions/_rustic
 /usr/local/share/bash-completion/completions/_rustup
+/usr/local/share/bash-completion/completions/_secret-tool
 /usr/local/share/bash-completion/completions/_sentry-cli
+/usr/local/share/bash-completion/completions/_shtab
 /usr/local/share/bash-completion/completions/_sinker
 /usr/local/share/bash-completion/completions/_skaffold
 /usr/local/share/bash-completion/completions/_slackpkg
@@ -257,9 +266,15 @@
 /usr/local/share/bash-completion/completions/_timoni
 /usr/local/share/bash-completion/completions/_tkn
 /usr/local/share/bash-completion/completions/_tkn-pac
+/usr/local/share/bash-completion/completions/_tldr
 /usr/local/share/bash-completion/completions/_todoist
 /usr/local/share/bash-completion/completions/_tofu
 /usr/local/share/bash-completion/completions/_tokio-console
+/usr/local/share/bash-completion/completions/_trash
+/usr/local/share/bash-completion/completions/_trash-empty
+/usr/local/share/bash-completion/completions/_trash-list
+/usr/local/share/bash-completion/completions/_trash-put
+/usr/local/share/bash-completion/completions/_trash-restore
 /usr/local/share/bash-completion/completions/_trivy
 /usr/local/share/bash-completion/completions/_udevadm
 /usr/local/share/bash-completion/completions/_umount
@@ -342,6 +357,8 @@
 /usr/local/share/bash-completion/completions/bind
 /usr/local/share/bash-completion/completions/bk
 /usr/local/share/bash-completion/completions/bmake
+/usr/local/share/bash-completion/completions/brave
+/usr/local/share/bash-completion/completions/brave-browser
 /usr/local/share/bash-completion/completions/brctl
 /usr/local/share/bash-completion/completions/bsdtar
 /usr/local/share/bash-completion/completions/btdownloadcurses.py
@@ -381,6 +398,7 @@
 /usr/local/share/bash-completion/completions/civclient
 /usr/local/share/bash-completion/completions/civserver
 /usr/local/share/bash-completion/completions/cksfv
+/usr/local/share/bash-completion/completions/cksum
 /usr/local/share/bash-completion/completions/cleanarch
 /usr/local/share/bash-completion/completions/clisp
 /usr/local/share/bash-completion/completions/clone_member
@@ -464,12 +482,15 @@
 /usr/local/share/bash-completion/completions/fprintd-enroll
 /usr/local/share/bash-completion/completions/fprintd-list
 /usr/local/share/bash-completion/completions/fprintd-verify
+/usr/local/share/bash-completion/completions/free
 /usr/local/share/bash-completion/completions/freeciv
 /usr/local/share/bash-completion/completions/freeciv-gtk2
 /usr/local/share/bash-completion/completions/freeciv-gtk3
 /usr/local/share/bash-completion/completions/freeciv-sdl
 /usr/local/share/bash-completion/completions/freeciv-server
 /usr/local/share/bash-completion/completions/freeciv-xaw
+/usr/local/share/bash-completion/completions/fsnotifywait
+/usr/local/share/bash-completion/completions/fsnotifywatch
 /usr/local/share/bash-completion/completions/function
 /usr/local/share/bash-completion/completions/fusermount
 /usr/local/share/bash-completion/completions/g++
@@ -731,6 +752,7 @@
 /usr/local/share/bash-completion/completions/newlist
 /usr/local/share/bash-completion/completions/newusers
 /usr/local/share/bash-completion/completions/ngrep
+/usr/local/share/bash-completion/completions/nload
 /usr/local/share/bash-completion/completions/nmap
 /usr/local/share/bash-completion/completions/nproc_bash
 /usr/local/share/bash-completion/completions/nslookup
@@ -901,7 +923,6 @@
 /usr/local/share/bash-completion/completions/screen
 /usr/local/share/bash-completion/completions/scrub
 /usr/local/share/bash-completion/completions/sdptool
-/usr/local/share/bash-completion/completions/secret-tool
 /usr/local/share/bash-completion/completions/set
 /usr/local/share/bash-completion/completions/setquota
 /usr/local/share/bash-completion/completions/sftp
@@ -959,6 +980,7 @@
 /usr/local/share/bash-completion/completions/tightvncviewer
 /usr/local/share/bash-completion/completions/timeout_bash
 /usr/local/share/bash-completion/completions/tipc
+/usr/local/share/bash-completion/completions/tmux
 /usr/local/share/bash-completion/completions/tox
 /usr/local/share/bash-completion/completions/tracepath
 /usr/local/share/bash-completion/completions/tracepath6
