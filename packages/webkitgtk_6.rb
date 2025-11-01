@@ -17,10 +17,9 @@ class Webkitgtk_6 < CMake
   binary_sha256({
     aarch64: 'ca91b3dab02d6204eaadab28efbffa85dff186eb02ca7acef28bfc838cc385e6',
      armv7l: 'ca91b3dab02d6204eaadab28efbffa85dff186eb02ca7acef28bfc838cc385e6',
-     x86_64: '5665205aa7b768e4234fee8800b19f8ec52736009b4f136d6af30d9e75394395'
+     x86_64: 'e34da3d2f8324f31213d0fb05cce992f06358209aeb6a30093fabfbf5b8f85ca'
   })
 
-  depends_on 'at_spi2_core' # R
   depends_on 'cairo' # R
   depends_on 'dav1d' => :build
   depends_on 'enchant' # R
@@ -32,6 +31,7 @@ class Webkitgtk_6 < CMake
   depends_on 'glib' # R
   depends_on 'glibc' # R
   depends_on 'gobject_introspection' => :build
+  depends_on 'graphene' # R
   depends_on 'gstreamer' # R
   depends_on 'gtk4' # R
   depends_on 'gtk_doc' => :build
