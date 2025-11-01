@@ -27,6 +27,7 @@ class Bash_completion < Autotools
       chgrp
       chmod
       chown
+      cksum
       dd
       env
       hostname
