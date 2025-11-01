@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.67.14' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.67.15' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -400,23 +400,43 @@ unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
     { pkg_name: 'cf', anitya_pkg: 'cf', comments: 'Prefer to GitHub' },
     { pkg_name: 'cups', anitya_pkg: 'cups', comments: 'Prefer to GitHub' },
     { pkg_name: 'cvs', anitya_pkg: 'cvs-stable', comments: '' },
+    { pkg_name: 'docbook_xml51', anitya_pkg: 'docbook-xml', comments: '' },
     { pkg_name: 'doxygen', anitya_pkg: 'doxygen', comments: '' },
     { pkg_name: 'filecmd', anitya_pkg: 'file', comments: '' },
     { pkg_name: 'gcc_build', anitya_pkg: 'gcc', comments: '' },
     { pkg_name: 'gcc_dev', anitya_pkg: 'gcc', comments: '' },
     { pkg_name: 'gcc_lib', anitya_pkg: 'gcc', comments: '' },
+    { pkg_name: 'gemacs', anitya_pkg: 'emacs', comments: '' },
     { pkg_name: 'gnu_time', anitya_pkg: 'time', comments: '' },
     { pkg_name: 'go_tools', anitya_pkg: 'golang-x-tools', comments: '' },
+    { pkg_name: 'gsfonts', anitya_pkg: 'gs-fonts', comments: '' },
     { pkg_name: 'gtk3', anitya_pkg: 'gtk+3.0~stable', comments: '' },
     { pkg_name: 'gtk4', anitya_pkg: 'gtk', comments: '' },
+    { pkg_name: 'gtkmm4', anitya_pkg: 'gtkmm', comments: '' },
+    { pkg_name: 'gtksharp2', anitya_pkg: 'gtk-sharp', comments: '' },
+    { pkg_name: 'gtksourceview_5', anitya_pkg: 'gtksourceview', comments: '' },
     { pkg_name: 'gvim', anitya_pkg: 'vim', comments: '' },
+    { pkg_name: 'libappindicator_gtk3', anitya_pkg: 'libappindicator', comments: '' },
+    { pkg_name: 'libcom_err', anitya_pkg: 'e2fsprogs', comments: '' },
+    { pkg_name: 'libdbusmenu_gtk3', anitya_pkg: 'libdbusmenu', comments: '' },
     { pkg_name: 'libgedit_amtk', anitya_pkg: 'libgedit-amtk', comments: 'Prefer to GitHub' },
     { pkg_name: 'libgedit_gtksourceview', anitya_pkg: 'libgedit-gtksourceview', comments: 'Prefer to GitHub' },
+    { pkg_name: 'libgconf', anitya_pkg: 'gconf', comments: '' },
+    { pkg_name: 'libhubbub', anitya_pkg: 'hubbub', comments: '' },
+    { pkg_name: 'libindicator_gtk3', anitya_pkg: 'libindicator', comments: '' },
+    { pkg_name: 'libkmod', anitya_pkg: 'kmod', comments: '' },
     { pkg_name: 'libmbedtls', anitya_pkg: 'mbedtls', comments: 'Prefer to GitHub' },
+    { pkg_name: 'libmediainfo', anitya_pkg: 'mediainfo', comments: '' },
     { pkg_name: 'libnghttp3', anitya_pkg: 'nghttp3', comments: '' },
     { pkg_name: 'libngtcp2', anitya_pkg: 'ngtcp2', comments: '' },
+    { pkg_name: 'libpeas2', anitya_pkg: 'libpeas', comments: '' },
+    { pkg_name: 'libpth', anitya_pkg: 'pth', comments: '' },
+    { pkg_name: 'libsdl', anitya_pkg: 'sdl', comments: '' },
     { pkg_name: 'libssp', anitya_pkg: 'gcc', comments: '' },
+    { pkg_name: 'libstfl', anitya_pkg: 'stfl', comments: '' },
+    { pkg_name: 'libtinfo', anitya_pkg: 'ncurses', comments: '' },
     { pkg_name: 'libunbound', anitya_pkg: 'unbound', comments: '' },
+    { pkg_name: 'libx264', anitya_pkg: 'x264', comments: '' },
     { pkg_name: 'linux_pam', anitya_pkg: 'pam', comments: '' },
     { pkg_name: "#{CREW_LLVM_VER}_build", anitya_pkg: 'llvm', comments: '' },
     { pkg_name: "#{CREW_LLVM_VER}_dev", anitya_pkg: 'llvm', comments: '' },
@@ -443,9 +463,12 @@ unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
     { pkg_name: 'xauth', anitya_pkg: 'xorg-x11-xauth', comments: '' },
     { pkg_name: 'xercesc', anitya_pkg: 'xerces-c', comments: 'Prefer to GitHub' },
     { pkg_name: 'xorg_proto', anitya_pkg: 'xorgproto', comments: '' },
+    { pkg_name: 'xxd_standalone', anitya_pkg: 'vim', comments: '' },
     { pkg_name: 'yad', anitya_pkg: 'yad', comments: 'Prefer to GitHub' },
+    { pkg_name: 'zig13', anitya_pkg: 'zig', comments: '' },
     { pkg_name: 'zimg', anitya_pkg: 'zimg', comments: 'Prefer to GitHub' },
-    { pkg_name: 'zoneinfo', anitya_pkg: 'tzdata', comments: '' }
+    { pkg_name: 'zoneinfo', anitya_pkg: 'tzdata', comments: '' },
+    { pkg_name: 'zstd_static', anitya_pkg: 'zstd', comments: '' }
   ].to_h { |h| [h[:pkg_name], h[:anitya_pkg]] }
 end
 
