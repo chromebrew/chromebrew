@@ -16,5 +16,6 @@ class Rendercheck < Meson
      x86_64: '7c29b512ecdf2472ade1bce7f7b7491cd8f828a1146061fa8e2e512de6dd1dc9'
   })
 
+  depends_on 'libxext' => :build
   depends_on 'libxrender' => :build
 end
