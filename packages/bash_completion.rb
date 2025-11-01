@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Bash_completion < Autotools
   description 'Programmable completion functions for bash'
   homepage 'https://github.com/scop/bash-completion'
-  version '2.16.0'
+  version '2.17.0'
   license 'GPL-2+'
   compatibility 'all'
   source_url 'https://github.com/scop/bash-completion.git'
@@ -11,10 +11,10 @@ class Bash_completion < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b144439590fdc6dea667c35d40e816eb872dda828dc4d5129fd4244e7a2fd4bb',
-     armv7l: 'b144439590fdc6dea667c35d40e816eb872dda828dc4d5129fd4244e7a2fd4bb',
-       i686: 'cb0932c71faa7e6c5c4a7771fc61a72ce1b79990219be04db4d8a742c36f38bd',
-     x86_64: 'ff10f76bdc6d113c4bb26458d01e79270965402b3fdfe1d9f39f6d49589ac7c2'
+    aarch64: '25f779ac3896cd66c34bea1830c5639392c4e33d28e55884698ecf6b79709124',
+     armv7l: '25f779ac3896cd66c34bea1830c5639392c4e33d28e55884698ecf6b79709124',
+       i686: '7e4d6f38e28400ff3ff17897ca2b83a5fc380e9bbce1cd2c53785ea2234a9c62',
+     x86_64: '123dc2a644005e0322c744edaf0330e9b5de1a4f59102105bca8bdd2086835f5'
   })
 
   depends_on 'bash' # L
@@ -27,6 +27,7 @@ class Bash_completion < Autotools
       chgrp
       chmod
       chown
+      cksum
       dd
       env
       hostname
