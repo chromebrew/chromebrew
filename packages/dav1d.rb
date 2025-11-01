@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Dav1d < Meson
   description 'dav1d is a new AV1 cross-platform decoder, open-source, and focused on speed and correctness.'
   homepage 'https://code.videolan.org/videolan/dav1d'
-  version '1.5.1'
+  version '1.5.2'
   license 'BSD-2'
   compatibility 'all'
   source_url 'https://code.videolan.org/videolan/dav1d.git'
