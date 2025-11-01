@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Bash_completion < Autotools
   description 'Programmable completion functions for bash'
   homepage 'https://github.com/scop/bash-completion'
-  version '2.16.0'
+  version '2.17.0'
   license 'GPL-2+'
   compatibility 'all'
   source_url 'https://github.com/scop/bash-completion.git'
