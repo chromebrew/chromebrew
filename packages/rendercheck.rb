@@ -1,28 +1,23 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Rendercheck < Package
+class Rendercheck < Meson
   description 'rendercheck is a program to test a Render extension implementation against separate calculations of expected output.'
   homepage 'https://www.x.org/wiki/'
-  version '1.5'
+  version '1.6'
   license 'MIT'
-  compatibility 'all'
-  source_url 'https://x.org/archive/individual/app/rendercheck-1.5.tar.bz2'
-  source_sha256 '00605679436d65ccf9a6f1f1cb206df7a2e8b28a7821e867922d2b14b009f1cc'
-  binary_compression 'tar.xz'
+  compatibility 'aarch64 armv7l x86_64'
+  source_url 'https://gitlab.freedesktop.org/xorg/test/rendercheck.git'
+  git_hashtag "rendercheck-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '90b0f792889946717870f1497e523c3229cb5840feaf1152da6a125710310697',
-     armv7l: '90b0f792889946717870f1497e523c3229cb5840feaf1152da6a125710310697',
-       i686: 'b0ca933742e0d17470c8f1d3e66dac65c5a03ac4d490a477e6e59c700b08b1b7',
-     x86_64: '7c29b512ecdf2472ade1bce7f7b7491cd8f828a1146061fa8e2e512de6dd1dc9'
+    aarch64: 'c32a8a4206836185ddd2700c5f648fbbb098a08e99580b6e6574398cf40b96c5',
+     armv7l: 'c32a8a4206836185ddd2700c5f648fbbb098a08e99580b6e6574398cf40b96c5',
+     x86_64: 'c9ab0d3cd5e40aa84ab0308ca9b6d42685d3ae577baa7f363731dc08c9d008a7'
   })
 
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'glibc' # R
+  depends_on 'libx11' # R
+  depends_on 'libxext' # R
+  depends_on 'libxrender' # R
 end
