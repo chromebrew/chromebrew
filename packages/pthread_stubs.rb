@@ -11,9 +11,9 @@ class Pthread_stubs < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '85fd777e81a2dd5e3954e82465291c2c889567b7ae8bbb7a3e51b196c8ed35dd',
-     armv7l: '85fd777e81a2dd5e3954e82465291c2c889567b7ae8bbb7a3e51b196c8ed35dd',
-       i686: '3fa0eb953101a37c924a22fa28699d1cb7e4a85bd79b7c492f087df91e108e42',
-     x86_64: '74d475f18422369cea3e5ca5591c55aa2caaac2ad23abaf17e5678daec534cf9'
+    aarch64: '18ff6b89a73f42519aed2b30fb90b0cf7ae524bc88e65ad933b732f037cc5af2',
+     armv7l: '18ff6b89a73f42519aed2b30fb90b0cf7ae524bc88e65ad933b732f037cc5af2',
+       i686: '515e14bdb789cb689d7b1abc648e3961bb7126a52a8a9518e3741dc40c115b4d',
+     x86_64: '22f7837cbf00a6115e1f178443a233e221547fab9e0a13872fd2cd8d89eb8347'
   })
 end

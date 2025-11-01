@@ -13,9 +13,11 @@ class Rendercheck < Meson
   binary_sha256({
     aarch64: '90b0f792889946717870f1497e523c3229cb5840feaf1152da6a125710310697',
      armv7l: '90b0f792889946717870f1497e523c3229cb5840feaf1152da6a125710310697',
-     x86_64: '7c29b512ecdf2472ade1bce7f7b7491cd8f828a1146061fa8e2e512de6dd1dc9'
+     x86_64: 'c9ab0d3cd5e40aa84ab0308ca9b6d42685d3ae577baa7f363731dc08c9d008a7'
   })
 
-  depends_on 'libxext' => :build
-  depends_on 'libxrender' => :build
+  depends_on 'glibc' # R
+  depends_on 'libx11' # R
+  depends_on 'libxext' # R
+  depends_on 'libxrender' # R
 end
