@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gnome_calculator < Meson
   description 'GNOME desktop calculator'
   homepage 'https://wiki.gnome.org/Apps/Calculator'
-  version '49.0'
+  version '49.1.1'
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-calculator.git'
