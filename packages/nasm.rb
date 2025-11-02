@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Nasm < Autotools
   description 'The Netwide Assembler'
   homepage 'https://www.nasm.us/'
-  version '2.16.03-1'
+  version '3.01'
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/netwide-assembler/nasm.git'
