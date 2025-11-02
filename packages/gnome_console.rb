@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Gnome_console < Meson
   description 'A simple user-friendly terminal emulator for the GNOME desktop'
   homepage 'https://gitlab.gnome.org/GNOME/console'
-  version '49.0'
+  version '49.1'
   license 'GPL3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/console.git'
