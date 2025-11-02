@@ -117,7 +117,7 @@ class Webkitgtk_6 < CMake
 
   if ARCH == 'armv7l'
     def self.build
-      # This builds webkit2gtk4_1 (which uses gtk3, but not libsoup2)
+      # This builds webkitgtk6 (which uses gtk4, but not libsoup2)
       @workdir = Dir.pwd
       # Bubblewrap sandbox breaks on epiphany with
       # bwrap: Can't make symlink at /var/run: File exists
