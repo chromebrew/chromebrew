@@ -11,9 +11,9 @@ class Gnome_keyring < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '76e86060eceecc2f75f2a1f6c25f903e395fcb998dc5db8b7221ac98cdf94ae8',
-     armv7l: '76e86060eceecc2f75f2a1f6c25f903e395fcb998dc5db8b7221ac98cdf94ae8',
-     x86_64: 'ea6a16c27a7b38a967e2ea62ecb72a5b597460234b98a14581db62357ca60df9'
+    aarch64: '80fbcad4639279749bab1a2bd844b6a068fd6514bca1ebc8a32c5150f5eb2dcc',
+     armv7l: '80fbcad4639279749bab1a2bd844b6a068fd6514bca1ebc8a32c5150f5eb2dcc',
+     x86_64: '9be4397fdabacbc130128fdbc2d1c398faf11fee24bfe20ae943d97c7dd4aaa3'
   })
 
   depends_on 'at_spi2_core' # R
