@@ -5,33 +5,34 @@ require 'package'
 class Sshcode < Package
   description 'Run VS Code on any server over SSH.'
   homepage 'https://github.com/coder/sshcode'
-  version '0.8.0'
+  version '0.10.0'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://raw.githubusercontent.com/cdr/sshcode/v0.8.0/README.md'
-  source_sha256 '5bd544d9d7e8ebf0b48934a04b55b64802e23189a70410ccab2833c2435e6736'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/coder/sshcode.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1b78a1aa63a27ba45913de2cd1b647a3834fff5a8bc7f0be568d86095f9cae3f',
-     armv7l: '1b78a1aa63a27ba45913de2cd1b647a3834fff5a8bc7f0be568d86095f9cae3f',
-       i686: 'c6c78d1bf9fea74282f5b0af1a46e540fa5b6456409e5edf5fbc59917a547cf2',
-     x86_64: 'cfa83667f73510c33fa4b39b1e0da17b5d43137290a00756361ae915807516c8'
+    aarch64: '5a64b03d3fb8d76ca8d41992bbca8234cad3a93f492c5aaf100448e6646d1e61',
+     armv7l: '5a64b03d3fb8d76ca8d41992bbca8234cad3a93f492c5aaf100448e6646d1e61',
+       i686: '2c789847f199eb8a0c50c4326b55a3e06c1dc0a35bba221b4a346e2d787ea799',
+     x86_64: '59a857b1a4cee939e2f8b4a7afbc2fdf03b68ba33225e6833a7e3c6d809c48ba'
   })
 
+  depends_on 'glibc' # R
   depends_on 'go' => :build
 
   def self.install
-    system 'go get go.coder.com/sshcode'
-    system 'cd ~/go/src/go.coder.com/sshcode && git checkout tags/v0.8.0'
-    system "go build -o #{CREW_DEST_PREFIX}/bin/sshcode go.coder.com/sshcode"
+    system "go build -o #{CREW_DEST_PREFIX}/bin/sshcode"
   end
 
   def self.postinstall
     # https://github.com/coder/sshcode/pull/82
-    puts 'To use sshcode you need to bind the webserver to 0.0.0.0:<port>'.lightgreen
-    puts 'For example: sshcode --skipsync --bind 0.0.0.0:8080 [remote-ssh-ip]'.lightgreen
-    puts 'Syncing extensions does not work at this time.'.lightgreen
-    puts
+    ExitMessage.add <<~EOM
+
+      To use sshcode you need to bind the webserver to 0.0.0.0:<port>
+      For example: sshcode --skipsync --bind 0.0.0.0:8080 [remote-ssh-ip]
+      Syncing extensions does not work at this time.
+    EOM
   end
 end
