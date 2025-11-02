@@ -14,9 +14,9 @@ class Gnome_console < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd98688fc6f040398610854a59bea601c590e159070b692a90d9afbbec2101baa',
-     armv7l: 'd98688fc6f040398610854a59bea601c590e159070b692a90d9afbbec2101baa',
-     x86_64: '3439833b9952b4af914ce8eb4f35d15623da5d7426bace7896d44357faaa5852'
+    aarch64: 'f56540d1fbbefd9f235ca86078d0240d9a5a831ec3ec438f57e44b55e90e3b52',
+     armv7l: 'f56540d1fbbefd9f235ca86078d0240d9a5a831ec3ec438f57e44b55e90e3b52',
+     x86_64: '4a981963bac36a6b21d989c2097228e5cb9ff4cb0281b53e4dadef937a2466fb'
   })
 
   depends_on 'desktop_file_utils' => :build
