@@ -11,9 +11,9 @@ class Yelp < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9e83dbae9ce30e16e0edd3fb170ab73d9e864561016356563bc5cfd8f56986ad',
-     armv7l: '9e83dbae9ce30e16e0edd3fb170ab73d9e864561016356563bc5cfd8f56986ad',
-     x86_64: '2f75e70e9bd8805acfe88a79e186ccc942e8910e75040f21d7aa92928a50fe18'
+    aarch64: 'e2b5a55d307a9edb8d9ca776cef0fbdde26fe7a87a5c8c3aba3dfebbaf6d67d5',
+     armv7l: 'e2b5a55d307a9edb8d9ca776cef0fbdde26fe7a87a5c8c3aba3dfebbaf6d67d5',
+     x86_64: '05e74974cdb3d649990a92a88b48ee302bfcbf3c9556ed678b9d9b8852c9553c'
   })
 
   depends_on 'appstream_glib' => :build
