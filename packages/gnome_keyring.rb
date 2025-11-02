@@ -1,9 +1,9 @@
-require 'buildsystems/autotools'
+require 'buildsystems/meson'
 
-class Gnome_keyring < Autotools
+class Gnome_keyring < Meson
   description 'GNOME password and secret manager'
   homepage 'https://www.gnome.org'
-  version '46.1'
+  version '48.0'
   license 'GPL-2+ and LGPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-keyring.git'
@@ -11,9 +11,9 @@ class Gnome_keyring < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '76e86060eceecc2f75f2a1f6c25f903e395fcb998dc5db8b7221ac98cdf94ae8',
-     armv7l: '76e86060eceecc2f75f2a1f6c25f903e395fcb998dc5db8b7221ac98cdf94ae8',
-     x86_64: 'ea6a16c27a7b38a967e2ea62ecb72a5b597460234b98a14581db62357ca60df9'
+    aarch64: '80fbcad4639279749bab1a2bd844b6a068fd6514bca1ebc8a32c5150f5eb2dcc',
+     armv7l: '80fbcad4639279749bab1a2bd844b6a068fd6514bca1ebc8a32c5150f5eb2dcc',
+     x86_64: '9be4397fdabacbc130128fdbc2d1c398faf11fee24bfe20ae943d97c7dd4aaa3'
   })
 
   depends_on 'at_spi2_core' # R
@@ -32,7 +32,6 @@ class Gnome_keyring < Autotools
   depends_on 'libgcrypt' # R
   depends_on 'libgpg_error' # R
   depends_on 'libxslt' => :build
-  depends_on 'linux_pam' # R
   depends_on 'openssh' => :build
   depends_on 'p11kit' # R
   depends_on 'pango' # R
@@ -40,8 +39,6 @@ class Gnome_keyring < Autotools
 
   gnome
 
-  autotools_configure_options "--with-pam-dir=#{CREW_PREFIX}/lib/security \
-    --disable-selinux \
-    --disable-schemas-compile \
-    --disable-doc" # Docs cannot be used due to #4275
+  meson_options "-D{debug-mode,manpage,pam,ssh-agent}=false \
+                -D{selinux,systemd}=disabled"
 end

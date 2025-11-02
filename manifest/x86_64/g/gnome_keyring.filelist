@@ -1,21 +1,13 @@
-# Total size: 3863210
+# Total size: 4440554
 /usr/local/bin/gnome-keyring
 /usr/local/bin/gnome-keyring-3
 /usr/local/bin/gnome-keyring-daemon
 /usr/local/etc/xdg/autostart/gnome-keyring-pkcs11.desktop
 /usr/local/etc/xdg/autostart/gnome-keyring-secrets.desktop
-/usr/local/etc/xdg/autostart/gnome-keyring-ssh.desktop
-/usr/local/lib/security/pam_gnome_keyring.la
-/usr/local/lib/security/pam_gnome_keyring.so
-/usr/local/lib64/gnome-keyring/devel/gkm-gnome2-store-standalone.la
 /usr/local/lib64/gnome-keyring/devel/gkm-gnome2-store-standalone.so
-/usr/local/lib64/gnome-keyring/devel/gkm-secret-store-standalone.la
 /usr/local/lib64/gnome-keyring/devel/gkm-secret-store-standalone.so
-/usr/local/lib64/gnome-keyring/devel/gkm-ssh-store-standalone.la
 /usr/local/lib64/gnome-keyring/devel/gkm-ssh-store-standalone.so
-/usr/local/lib64/gnome-keyring/devel/gkm-xdg-store-standalone.la
 /usr/local/lib64/gnome-keyring/devel/gkm-xdg-store-standalone.so
-/usr/local/lib64/pkcs11/gnome-keyring-pkcs11.la
 /usr/local/lib64/pkcs11/gnome-keyring-pkcs11.so
 /usr/local/share/GConf/gsettings/org.gnome.crypto.cache.convert
 /usr/local/share/dbus-1/services/org.freedesktop.impl.portal.Secret.service
@@ -67,6 +59,7 @@
 /usr/local/share/locale/it/LC_MESSAGES/gnome-keyring.mo
 /usr/local/share/locale/ja/LC_MESSAGES/gnome-keyring.mo
 /usr/local/share/locale/ka/LC_MESSAGES/gnome-keyring.mo
+/usr/local/share/locale/kab/LC_MESSAGES/gnome-keyring.mo
 /usr/local/share/locale/kk/LC_MESSAGES/gnome-keyring.mo
 /usr/local/share/locale/km/LC_MESSAGES/gnome-keyring.mo
 /usr/local/share/locale/kn/LC_MESSAGES/gnome-keyring.mo
