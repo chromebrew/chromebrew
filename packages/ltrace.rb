@@ -2,7 +2,7 @@ require 'package'
 
 class Ltrace < Package
   description 'ltrace intercepts and records dynamic library calls which are called by an executed process and the signals received by that process.'
-  homepage 'https://www.ltrace.org/'
+  homepage 'https://gitlab.com/cespedes/ltrace'
   version '0.7.91-ea8928'
   license 'GPL-2'
   compatibility 'all'

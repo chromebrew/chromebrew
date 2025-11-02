@@ -6,7 +6,7 @@ class Xorg_wacom_driver < Package
   version '0.36.0'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://downloads.sourceforge.net/linuxwacom/xf86-input-wacom-0.36.0.tar.bz2'
+  source_url "https://downloads.sourceforge.net/project/linuxwacom/xf86-input-wacom/xf86-input-wacom-#{version}.tar.bz"
   source_sha256 'eae7c5d2872b1433c8d679bb42b00213403eb2a0544c514f4df2b586284c23f6'
   binary_compression 'tar.xz'
 

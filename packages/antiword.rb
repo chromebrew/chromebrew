@@ -2,12 +2,12 @@ require 'package'
 
 class Antiword < Package
   description 'Antiword is a free MS Word reader for Linux and RISC OS.'
-  homepage 'http://www.winfield.demon.nl/'
+  homepage 'https://github.com/rsdoiel/antiword'
   version '0.37-2'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'http://www.winfield.demon.nl/linux/antiword-0.37.tar.gz'
-  source_sha256 '8e2c000fcbc6d641b0e6ff95e13c846da3ff31097801e86702124a206888f5ac'
+  source_url 'https://github.com/rsdoiel/antiword.git'
+  git_hashtag version.split('-').first
   binary_compression 'tar.xz'
 
   binary_sha256({

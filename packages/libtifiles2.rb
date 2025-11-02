@@ -2,7 +2,7 @@ require 'package'
 
 class Libtifiles2 < Package
   description 'Libtifiles2 offers the library used to properly manipulate files on TI calculators.'
-  homepage 'http://lpg.ticalc.org/prj_tilp/'
+  homepage 'https://sourceforge.net/projects/tilp/'
   version '1.1.7'
   license 'GPL-2'
   compatibility 'all'
