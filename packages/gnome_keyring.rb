@@ -1,6 +1,6 @@
-require 'buildsystems/autotools'
+require 'buildsystems/meson'
 
-class Gnome_keyring < Autotools
+class Gnome_keyring < Meson
   description 'GNOME password and secret manager'
   homepage 'https://www.gnome.org'
   version '48.0'
@@ -32,7 +32,6 @@ class Gnome_keyring < Autotools
   depends_on 'libgcrypt' # R
   depends_on 'libgpg_error' # R
   depends_on 'libxslt' => :build
-  depends_on 'linux_pam' # R
   depends_on 'openssh' => :build
   depends_on 'p11kit' # R
   depends_on 'pango' # R
@@ -40,8 +39,6 @@ class Gnome_keyring < Autotools
 
   gnome
 
-  autotools_configure_options "--with-pam-dir=#{CREW_PREFIX}/lib/security \
-    --disable-selinux \
-    --disable-schemas-compile \
-    --disable-doc" # Docs cannot be used due to #4275
+  meson_options "-D{debug-mode,manpage,pam,ssh-agent}=false \
+                -D{selinux,systemd}=disabled"
 end
