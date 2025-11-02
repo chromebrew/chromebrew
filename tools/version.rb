@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.13 (for Chromebrew)
+# version.rb version 3.14 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose -vv]
 
@@ -91,6 +91,7 @@ def get_version(name, homepage, source, version)
     when 'github.com'
       url_parts = url.path.split('/')
       unless url_parts.count < 3
+        git_hash = nil
         repo = "#{url_parts[1]}/#{url_parts[2].gsub(/.git\z/, '')}"
         puts "GitHub repo is #{repo}" if VERBOSE
         if File.which('gh')
@@ -117,12 +118,13 @@ def get_version(name, homepage, source, version)
             # Get the first 6 characters of the latest git hash.
             puts "curl https://api.github.com/repos/#{repo}/git/refs -Ls | jq .[0].object.sha -r" if VERY_VERBOSE
             github_ver = `curl https://api.github.com/repos/#{repo}/git/refs -Ls | jq .[0].object.sha -r`.chomp[0..5]
+            git_hash = true
           end
         end
         unless github_ver.blank? || github_ver == 'null'
           puts "github_ver = #{github_ver}" if VERY_VERBOSE
           # Strip off any leading non-numeric characters.
-          upstream_version = github_ver.sub(/.*?(?=[0-9].)/im, '').chomp
+          upstream_version = git_hash.nil? ? github_ver.sub(/.*?(?=[0-9].)/im, '').chomp : github_ver
           return upstream_version
         end
       end
@@ -136,8 +138,8 @@ def get_version(name, homepage, source, version)
           puts 'GitLab repo not found or no release available.' if VERBOSE
           return
         end
-        puts "curl https://#{url.host}/#{repo}/-/releases/permalink/latest -Ls | jq .tag_name -r" if VERY_VERBOSE
-        gitlab_ver = `curl https://#{url.host}/#{repo}/-/releases/permalink/latest -Ls | jq .tag_name -r`.chomp
+        puts "curl https://#{url.host}/#{repo}/-/releases/permalink/latest -Ls | grep -Po 'data-tag-name=\"(.*)\" ' | cut -d\\\" -f2" if VERY_VERBOSE
+        gitlab_ver = `curl https://#{url.host}/#{repo}/-/releases/permalink/latest -Ls | grep -Po 'data-tag-name="(.*)" ' | cut -d\\\" -f2`.chomp
         unless gitlab_ver.blank? || gitlab_ver == 'null'
           puts "gitlab_ver = #{gitlab_ver}" if VERY_VERBOSE
           # Strip off any leading non-numeric characters.
