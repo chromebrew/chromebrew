@@ -15,8 +15,8 @@ class Webkitgtk_6 < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ca91b3dab02d6204eaadab28efbffa85dff186eb02ca7acef28bfc838cc385e6',
-     armv7l: 'ca91b3dab02d6204eaadab28efbffa85dff186eb02ca7acef28bfc838cc385e6',
+    aarch64: 'd7489feada015d126eb63b2dcd34401977e83a25b63fe4f9a6c5726b7b4ff375',
+     armv7l: 'd7489feada015d126eb63b2dcd34401977e83a25b63fe4f9a6c5726b7b4ff375',
      x86_64: 'e34da3d2f8324f31213d0fb05cce992f06358209aeb6a30093fabfbf5b8f85ca'
   })
 

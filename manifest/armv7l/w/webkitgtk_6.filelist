@@ -1,3 +1,4 @@
+# Total size: 99566980
 /usr/local/bin/WebKitWebDriver_6
 /usr/local/include/webkitgtk-6.0/jsc/JSCClass.h
 /usr/local/include/webkitgtk-6.0/jsc/JSCContext.h
@@ -17,6 +18,7 @@
 /usr/local/include/webkitgtk-6.0/webkit/WebKitBackForwardListItem.h
 /usr/local/include/webkitgtk-6.0/webkit/WebKitClipboardPermissionRequest.h
 /usr/local/include/webkitgtk-6.0/webkit/WebKitColorChooserRequest.h
+/usr/local/include/webkitgtk-6.0/webkit/WebKitConsoleMessage.h
 /usr/local/include/webkitgtk-6.0/webkit/WebKitContextMenu.h
 /usr/local/include/webkitgtk-6.0/webkit/WebKitContextMenuActions.h
 /usr/local/include/webkitgtk-6.0/webkit/WebKitContextMenuItem.h
@@ -74,6 +76,7 @@
 /usr/local/include/webkitgtk-6.0/webkit/WebKitVersion.h
 /usr/local/include/webkitgtk-6.0/webkit/WebKitWebContext.h
 /usr/local/include/webkitgtk-6.0/webkit/WebKitWebEditor.h
+/usr/local/include/webkitgtk-6.0/webkit/WebKitWebExtensionMatchPattern.h
 /usr/local/include/webkitgtk-6.0/webkit/WebKitWebFormManager.h
 /usr/local/include/webkitgtk-6.0/webkit/WebKitWebHitTestResult.h
 /usr/local/include/webkitgtk-6.0/webkit/WebKitWebInspector.h
@@ -96,15 +99,16 @@
 /usr/local/lib/girepository-1.0/WebKitWebProcessExtension-6.0.typelib
 /usr/local/lib/libjavascriptcoregtk-6.0.so
 /usr/local/lib/libjavascriptcoregtk-6.0.so.1
-/usr/local/lib/libjavascriptcoregtk-6.0.so.1.2.6
+/usr/local/lib/libjavascriptcoregtk-6.0.so.1.6.6
 /usr/local/lib/libwebkitgtk-6.0.so
 /usr/local/lib/libwebkitgtk-6.0.so.4
-/usr/local/lib/libwebkitgtk-6.0.so.4.5.6
+/usr/local/lib/libwebkitgtk-6.0.so.4.13.4
 /usr/local/lib/pkgconfig/javascriptcoregtk-6.0.pc
 /usr/local/lib/pkgconfig/webkitgtk-6.0.pc
 /usr/local/lib/pkgconfig/webkitgtk-web-process-extension-6.0.pc
 /usr/local/lib/webkitgtk-6.0/injected-bundle/libwebkitgtkinjectedbundle.so
 /usr/local/libexec/webkitgtk-6.0/MiniBrowser
+/usr/local/libexec/webkitgtk-6.0/WebKitGPUProcess
 /usr/local/libexec/webkitgtk-6.0/WebKitNetworkProcess
 /usr/local/libexec/webkitgtk-6.0/WebKitWebProcess
 /usr/local/libexec/webkitgtk-6.0/jsc
