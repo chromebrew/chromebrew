@@ -1,4 +1,5 @@
-# Total size: 48562184
+# Total size: 48562317
+/usr/local/.config/gtk-4.0/settings.ini
 /usr/local/bin/gtk4-broadwayd
 /usr/local/bin/gtk4-builder-tool
 /usr/local/bin/gtk4-encode-symbolic-svg
