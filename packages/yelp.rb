@@ -37,7 +37,7 @@ class Yelp < Meson
   depends_on 'libxslt' # R
   depends_on 'pango' # R
   depends_on 'sqlite' # R
-  depends_on 'webkit2gtk_4_1' # R
+  depends_on 'webkitgtk_6' # R
   depends_on 'xorg_server' => :build
   depends_on 'xzutils' # R
   depends_on 'yelp_xsl' => :build
