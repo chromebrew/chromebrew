@@ -6170,6 +6170,11 @@ url: https://sourceforge.net/projects/motif/files/
 activity: none
 ---
 kind: url
+name: mp3cat
+url: https://github.com/dmulholl/mp3cat/releases
+activity: none
+---
+kind: url
 name: mp4v2
 url: https://code.google.com/archive/p/mp4v2/downloads
 activity: none
