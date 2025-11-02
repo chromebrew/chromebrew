@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gnome_weather < Meson
   description 'Access current weather conditions and forecasts'
   homepage 'https://wiki.gnome.org/Apps/Weather'
-  version '48.0'
+  version '49.0'
   license 'GPL-2+, LGPL-2+, MIT, CC-BY-3.0 and CC-BY-SA-3.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-weather.git'
