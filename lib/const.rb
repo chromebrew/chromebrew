@@ -454,7 +454,6 @@ unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
     { pkg_name: 'pthread_stubs', anitya_pkg: 'libpthread-stubs', comments: '' },
     { pkg_name: 'py3_atspi', anitya_pkg: 'pyatspi', comments: '' },
     { pkg_name: 'python3', anitya_pkg: 'python313', comments: '' },
-    { pkg_name: 'qt5_base', anitya_pkg: 'qt', comments: '' },
     { pkg_name: 'rdfind', anitya_pkg: 'rdfind', comments: 'Prefer to GitHub' },
     { pkg_name: 'selenium_server_standalone', anitya_pkg: 'selenium', comments: '' },
     { pkg_name: 'signal_desktop', anitya_pkg: 'signal', comments: '' },
