@@ -2371,7 +2371,7 @@ activity: medium
 ---
 kind: url
 name: gdal
-url: http://download.osgeo.org/gdal
+url: https://download.osgeo.org/gdal/CURRENT/
 activity: medium
 ---
 kind: url

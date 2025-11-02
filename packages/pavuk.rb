@@ -6,7 +6,7 @@ class Pavuk < Package
   version '0.9.35'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://sourceforge.net/projects/pavuk/files/pavuk/0.9.35/pavuk-0.9.35.tar.gz'
+  source_url "https://downloads.sourceforge.net/projects/pavuk/pavuk/#{version}/pavuk-#{version}.tar.gz"
   source_sha256 'f9c64e511822c96a6714fa0bf336c1b0864767104c906e4393ab0fdf427815f6'
   binary_compression 'tar.xz'
 

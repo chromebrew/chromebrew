@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.67.15' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.67.16' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -437,10 +437,12 @@ unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
     { pkg_name: 'libtinfo', anitya_pkg: 'ncurses', comments: '' },
     { pkg_name: 'libunbound', anitya_pkg: 'unbound', comments: '' },
     { pkg_name: 'libx264', anitya_pkg: 'x264', comments: '' },
+    { pkg_name: 'libxml2_autotools', anitya_pkg: 'libxml2', comments: '' },
     { pkg_name: 'linux_pam', anitya_pkg: 'pam', comments: '' },
     { pkg_name: "#{CREW_LLVM_VER}_build", anitya_pkg: 'llvm', comments: '' },
     { pkg_name: "#{CREW_LLVM_VER}_dev", anitya_pkg: 'llvm', comments: '' },
     { pkg_name: "#{CREW_LLVM_VER}_lib", anitya_pkg: 'llvm', comments: '' },
+    { pkg_name: 'mediainfo_gui', anitya_pkg: 'mediainfo', comments: '' },
     { pkg_name: 'mold', anitya_pkg: 'mold', comments: 'Prefer to GitHub' },
     { pkg_name: 'ninja', anitya_pkg: 'ninja-build', comments: '' },
     { pkg_name: 'nnn', anitya_pkg: 'nnn', comments: 'Prefer to GitHub' },
@@ -452,7 +454,9 @@ unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
     { pkg_name: 'pthread_stubs', anitya_pkg: 'libpthread-stubs', comments: '' },
     { pkg_name: 'py3_atspi', anitya_pkg: 'pyatspi', comments: '' },
     { pkg_name: 'python3', anitya_pkg: 'python313', comments: '' },
+    { pkg_name: 'qt5_base', anitya_pkg: 'qt', comments: '' },
     { pkg_name: 'rdfind', anitya_pkg: 'rdfind', comments: 'Prefer to GitHub' },
+    { pkg_name: 'selenium_server_standalone', anitya_pkg: 'selenium', comments: '' },
     { pkg_name: 'signal_desktop', anitya_pkg: 'signal', comments: '' },
     { pkg_name: 'tepl_6', anitya_pkg: 'libgedit-tepl', comments: '' },
     { pkg_name: 'upx', anitya_pkg: 'upx', comments: 'Prefer to GitHub' },

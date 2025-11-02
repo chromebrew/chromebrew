@@ -2,7 +2,7 @@ require 'buildsystems/meson'
 
 class Glade < Meson
   description 'User Interface Builder for GTK+ applications'
-  homepage 'https://wiki.gnome.org/Apps/Glade'
+  homepage 'https://glade.gnome.org'
   version '3.40.0'
   license 'GPL-2+ and LDF-1.1+'
   compatibility 'aarch64 armv7l x86_64'
