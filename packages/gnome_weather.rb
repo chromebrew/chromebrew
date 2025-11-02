@@ -19,6 +19,7 @@ class Gnome_weather < Meson
   depends_on 'desktop_file_utilities' => :build
   depends_on 'gtk3' => :build
   depends_on 'gjs' => :build
+  depends_on 'libadwaita' => :build
   depends_on 'libgweather' => :build
   depends_on 'geoclue' => :build
   depends_on 'gnome_desktop' => :build
