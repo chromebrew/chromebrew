@@ -1,7 +1,7 @@
 require 'package'
 
 class Android_sdk_tools < Package
-  description 'Android SDK CLI tools'
+  description 'Android SDK Command-Line Tools'
   homepage 'https://developer.android.com/studio'
   version '13114758'
   license 'Apache-2.0'
