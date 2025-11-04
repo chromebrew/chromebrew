@@ -86,11 +86,7 @@ end
 
 def save_gem_filelist(gem_name = nil, gem_filelist_path = nil)
   crewlog "@gem_latest_version_installed: #{@gem_latest_version_installed}"
-  files = if @gem_latest_version_installed
-            `gem contents #{gem_name}`.chomp.split
-          else
-            `gem install #{gem_name} &>/dev/null ; gem contents #{gem_name}`.chomp.split
-          end
+  files = `gem install #{gem_name} &>/dev/null ; gem contents #{gem_name}`.chomp.split
   exes = files.grep(%r{/exe/|/bin/})
   # Gem.bindir should end up being #{CREW_PREFIX}/bin.
   exes&.map! { |x| x.gsub(%r{^.*(/exe/|/bin/)}, "#{Gem.bindir}/") }
