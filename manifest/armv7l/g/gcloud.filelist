@@ -1,4 +1,4 @@
-# Total size: 358208157
+# Total size: 360176488
 /usr/local/bin/bq
 /usr/local/bin/dev_appserver.py
 /usr/local/bin/docker-credential-gcloud
@@ -3112,6 +3112,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/deletion.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/exceptions.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/flags.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/iap_tunnel.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/integrations/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/integrations/deployment_states.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/run/integrations/deprecation_util.py
@@ -4365,6 +4366,11 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/cloudscheduler/v1beta1/cloudscheduler_v1beta1_client.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/cloudscheduler/v1beta1/cloudscheduler_v1beta1_messages.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/cloudscheduler/v1beta1/resources.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/cloudsecuritycompliance/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/cloudsecuritycompliance/v1/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/cloudsecuritycompliance/v1/cloudsecuritycompliance_v1_client.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/cloudsecuritycompliance/v1/cloudsecuritycompliance_v1_messages.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/cloudsecuritycompliance/v1/resources.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/cloudshell/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/cloudshell/v1/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/cloudshell/v1/cloudshell_v1_client.py
@@ -6914,6 +6920,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/networkservices/v1alpha1/ServiceLbPolicyFailoverConfig.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/networkservices/v1alpha1/ServiceLbPolicyIsolationConfig.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/networkservices/v1alpha1/SetValue.yaml
+/usr/local/share/gcloud/lib/googlecloudsdk/schemas/networkservices/v1alpha1/SwpSecurityExtension.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/networkservices/v1alpha1/TcpRoute.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/networkservices/v1alpha1/TcpRouteRouteAction.yaml
 /usr/local/share/gcloud/lib/googlecloudsdk/schemas/networkservices/v1alpha1/TcpRouteRouteDestination.yaml
@@ -8627,6 +8634,7 @@
 /usr/local/share/gcloud/lib/surface/compute/ha_controllers/describe.yaml
 /usr/local/share/gcloud/lib/surface/compute/ha_controllers/export.py
 /usr/local/share/gcloud/lib/surface/compute/ha_controllers/failover.yaml
+/usr/local/share/gcloud/lib/surface/compute/ha_controllers/import.py
 /usr/local/share/gcloud/lib/surface/compute/ha_controllers/list.yaml
 /usr/local/share/gcloud/lib/surface/compute/ha_controllers/update.yaml
 /usr/local/share/gcloud/lib/surface/compute/health_aggregation_policies/__init__.py
@@ -10392,6 +10400,7 @@
 /usr/local/share/gcloud/lib/surface/dataplex/datascans/__init__.py
 /usr/local/share/gcloud/lib/surface/dataplex/datascans/create/__init__.py
 /usr/local/share/gcloud/lib/surface/dataplex/datascans/create/data_discovery.py
+/usr/local/share/gcloud/lib/surface/dataplex/datascans/create/data_documentation.py
 /usr/local/share/gcloud/lib/surface/dataplex/datascans/create/data_profile.py
 /usr/local/share/gcloud/lib/surface/dataplex/datascans/create/data_quality.py
 /usr/local/share/gcloud/lib/surface/dataplex/datascans/delete.yaml
@@ -10405,6 +10414,7 @@
 /usr/local/share/gcloud/lib/surface/dataplex/datascans/set_iam_policy.py
 /usr/local/share/gcloud/lib/surface/dataplex/datascans/update/__init__.py
 /usr/local/share/gcloud/lib/surface/dataplex/datascans/update/data_discovery.py
+/usr/local/share/gcloud/lib/surface/dataplex/datascans/update/data_documentation.py
 /usr/local/share/gcloud/lib/surface/dataplex/datascans/update/data_profile.py
 /usr/local/share/gcloud/lib/surface/dataplex/datascans/update/data_quality.py
 /usr/local/share/gcloud/lib/surface/dataplex/encryption_config/__init__.py
@@ -10873,7 +10883,6 @@
 /usr/local/share/gcloud/lib/surface/design_center/spaces/_partials/_create_alpha.yaml
 /usr/local/share/gcloud/lib/surface/design_center/spaces/_partials/_delete_alpha.yaml
 /usr/local/share/gcloud/lib/surface/design_center/spaces/_partials/_describe_alpha.yaml
-/usr/local/share/gcloud/lib/surface/design_center/spaces/_partials/_infer_connections_alpha.yaml
 /usr/local/share/gcloud/lib/surface/design_center/spaces/_partials/_list_alpha.yaml
 /usr/local/share/gcloud/lib/surface/design_center/spaces/_partials/_update_alpha.yaml
 /usr/local/share/gcloud/lib/surface/design_center/spaces/application_templates/__init__.py
@@ -10993,7 +11002,7 @@
 /usr/local/share/gcloud/lib/surface/design_center/spaces/delete.yaml
 /usr/local/share/gcloud/lib/surface/design_center/spaces/describe.yaml
 /usr/local/share/gcloud/lib/surface/design_center/spaces/get_iam_policy.py
-/usr/local/share/gcloud/lib/surface/design_center/spaces/infer_connections.yaml
+/usr/local/share/gcloud/lib/surface/design_center/spaces/infer_connections.py
 /usr/local/share/gcloud/lib/surface/design_center/spaces/list.yaml
 /usr/local/share/gcloud/lib/surface/design_center/spaces/register_with_apphub.py
 /usr/local/share/gcloud/lib/surface/design_center/spaces/set_iam_policy.py
@@ -14753,6 +14762,7 @@
 /usr/local/share/gcloud/lib/surface/run/services/ssh.py
 /usr/local/share/gcloud/lib/surface/run/services/update.py
 /usr/local/share/gcloud/lib/surface/run/services/update_traffic.py
+/usr/local/share/gcloud/lib/surface/run/start_iap_tunnel.py
 /usr/local/share/gcloud/lib/surface/run/worker_pools/__init__.py
 /usr/local/share/gcloud/lib/surface/run/worker_pools/add_iam_policy_binding.yaml
 /usr/local/share/gcloud/lib/surface/run/worker_pools/delete.py
@@ -14868,6 +14878,7 @@
 /usr/local/share/gcloud/lib/surface/scc/artifact_guard/policies/create.yaml
 /usr/local/share/gcloud/lib/surface/scc/artifact_guard/policies/delete.yaml
 /usr/local/share/gcloud/lib/surface/scc/artifact_guard/policies/describe.yaml
+/usr/local/share/gcloud/lib/surface/scc/artifact_guard/policies/list.yaml
 /usr/local/share/gcloud/lib/surface/scc/artifact_guard/policies/update.yaml
 /usr/local/share/gcloud/lib/surface/scc/assets/__init__.py
 /usr/local/share/gcloud/lib/surface/scc/assets/describe.yaml
