@@ -20,6 +20,9 @@ class Libxcrypt < Autotools
   depends_on 'glibc' # R
 
   conflicts_ok
+  no_lto
 
+  # Handle https://github.com/besser82/libxcrypt/issues/181
+  ENV['CREW_LINKER_FLAGS'] = '-Wl,--undefined-version'
   # run_tests
 end
