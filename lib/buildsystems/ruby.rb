@@ -106,6 +106,39 @@ def save_gem_filelist(gem_name = nil, gem_filelist_path = nil)
   EOF
 end
 
+def add_gem_binary_compression
+  pkg_file = File.join(CREW_PACKAGES_PATH, "#{name}.rb")
+  @gem_pkg = Package.load_package(pkg_file)
+  # Remove no_compile_needed
+  system "sed -i '/no_compile_needed/d' #{pkg_file}"
+  binary_compression_not_in_file = binary_compression.nil?
+  if binary_compression_not_in_file
+    binary_compression = @gem_pkg.superclass.to_s == 'RUBY' ? 'gem' : 'tar.zst'
+    binary_compression_line = "  binary_compression '#{binary_compression}'"
+    # 2b. Add missing binary_compression value to file.
+    puts "Setting binary compression in #{pkg_file} to '#{binary_compression}'..."
+    file = File.read(pkg_file)
+    bc_re = /^\ \ binary_compression.*/
+    source_re = /^\ \ source_sha256.*/
+    git_hashtag_re = /^\ \ git_hashtag.*/
+    source_url_re = /^\ \ source_url.*/
+    if file.match(bc_re)
+      File.write(pkg_file, file.gsub(bc_re, binary_compression_line))
+    elsif file.match(source_re)
+      source_sha256_bc_line = "#{file.match(source_re)}\n#{binary_compression_line}"
+      File.write(pkg_file, file.gsub(source_re, source_sha256_bc_line))
+    elsif file.match(git_hashtag_re)
+      git_hashtag_bc_line = "#{file.match(git_hashtag_re)}\n#{binary_compression_line}"
+      File.write(pkg_file, file.gsub(git_hashtag_re, git_hashtag_bc_line))
+    elsif file.match(source_url_re)
+      source_url_bc_line = "#{file.match(source_url_re)}\n#{binary_compression_line}"
+      File.write(pkg_file, file.gsub(source_url_re, source_url_bc_line))
+    else
+      puts "Unable to tell where to add \"#{binary_compression_line}\" to #{pkg_file}. Please add it and manually.".lightblue
+    end
+  end
+end
+
 class RUBY < Package
   property :ruby_gem_name, :ruby_gem_version, :ruby_install_extras
 
@@ -184,6 +217,7 @@ class RUBY < Package
     gem_info(@ruby_gem_name)
     @gems_needing_cleanup = Array(@gems_needing_cleanup) << @ruby_gem_name unless @gem_latest_version_installed
     save_gem_filelist(@ruby_gem_name, @gem_filelist_path)
+    add_gem_binary_compression if File.file?(@gem_filelist_path) && no_compile_needed? && system("grep '.so$' #{@gem_filelist_path}", exception: false)
     @ruby_install_extras&.call
     @install_gem = false
     @just_built_gem = false
