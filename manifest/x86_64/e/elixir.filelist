@@ -1,3 +1,4 @@
+# Total size: 891356
 /usr/local/bin/elixir
 /usr/local/bin/elixirc
 /usr/local/bin/iex
@@ -7,6 +8,7 @@
 /usr/local/lib64/mix/cli.ex
 /usr/local/lib64/mix/compilers/elixir.ex
 /usr/local/lib64/mix/compilers/erlang.ex
+/usr/local/lib64/mix/compilers/protocol.ex
 /usr/local/lib64/mix/compilers/test.ex
 /usr/local/lib64/mix/config.ex
 /usr/local/lib64/mix/dep.ex
@@ -63,6 +65,7 @@
 /usr/local/lib64/mix/tasks/deps.ex
 /usr/local/lib64/mix/tasks/deps.get.ex
 /usr/local/lib64/mix/tasks/deps.loadpaths.ex
+/usr/local/lib64/mix/tasks/deps.partition.ex
 /usr/local/lib64/mix/tasks/deps.precompile.ex
 /usr/local/lib64/mix/tasks/deps.tree.ex
 /usr/local/lib64/mix/tasks/deps.unlock.ex
@@ -80,7 +83,6 @@
 /usr/local/lib64/mix/tasks/loadpaths.ex
 /usr/local/lib64/mix/tasks/local.ex
 /usr/local/lib64/mix/tasks/local.hex.ex
-/usr/local/lib64/mix/tasks/local.public_keys.ex
 /usr/local/lib64/mix/tasks/local.rebar.ex
 /usr/local/lib64/mix/tasks/new.ex
 /usr/local/lib64/mix/tasks/profile.cprof.ex
