@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# build_updated_packages version 3.6 (for Chromebrew)
+# build_updated_packages version 3.7 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -60,7 +60,7 @@ def self.check_build_uploads(architectures_to_check = nil, name = nil)
     remote_binary[arch.to_sym] = `curl -sI #{arch_specific_url}`.lines.first.split[1] == '200'
     puts "#{arch_specific_url} found!" if remote_binary[arch.to_sym] && CREW_VERBOSE
   end
-  system 'crew update_package_file #[name}' unless remote_binary.values.all?(nil)
+  system "crew update_package_file #{name}" unless remote_binary.values.all?(nil)
 
   builds_needed = architectures_to_check.dup
   architectures_to_check.each do |arch|
@@ -84,7 +84,10 @@ def update_hashes(name = nil)
     # Add manifests if we are in the right architecture.
     # Using crew reinstall -f package here updates the hashes for
     # binaries.
-    FileUtils.cp "#{CREW_META_PATH}/#{name}.filelist", "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{name.chr}/#{name}.filelist" if system("yes | crew reinstall --regenerate-filelist #{'-f' unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES} #{name}") && File.exist?("#{CREW_META_PATH}/#{name}.filelist")
+    if system("yes | crew reinstall --regenerate-filelist #{'-f' unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES} #{name}") && File.exist?("#{CREW_META_PATH}/#{name}.filelist")
+      puts 'Adding manifests...'
+      FileUtils.cp "#{CREW_META_PATH}/#{name}.filelist", "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{name.chr}/#{name}.filelist"
+    end
   end
 end
 
@@ -133,9 +136,29 @@ updated_packages.each do |pkg|
   system "rubocop -c .rubocop.yml -A #{pkg}"
   @pkg_obj = Package.load_package(pkg)
 
+  # Handle case of no_compile_needed ruby gems actually containing
+  # libraries requiring compiles, in which which case we need to disable
+  # no_compile_needed and add gem_compile_needed, which the ruby
+  # buildsystem will add.
+  if @pkg_obj.superclass.to_s == 'RUBY' && @pkg_obj.no_compile_needed?
+    puts "#{name} is a gem package.".lightblue
+    system "yes | crew reinstall #{'-f' unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES} #{name}"
+    if system("grep '.so$' #{CREW_META_PATH}/#{name}.filelist", exception: false)
+      puts "#{name} gem has libraries.".lightblue
+      require_relative '../lib/buildsystems/ruby'
+      add_gem_binary_compression(name)
+      puts "Copying #{File.join(CREW_PACKAGES_PATH, pkg.sub('packages/', ''))} to #{pkg}".lightblue
+      FileUtils.cp File.join(CREW_PACKAGES_PATH, pkg.sub('packages/', '')), pkg
+      puts "Reinvoking #{$PROGRAM_NAME} #{ARGV.join(' ')}".orange
+      exec "#{$PROGRAM_NAME} #{ARGV.join(' ')}", chdir: `pwd`.chomp
+    else
+      puts "#{name} gem has no libraries.".lightblue
+    end
+  end
+
   # Don't check if we need new binaries if the package doesn't already
   # have binaries for this architecture.
-  if !system("grep -q binary_sha256 #{pkg}") && !@pkg_obj.no_compile_needed?
+  if !system("grep -q binary_sha256 #{pkg}") && !@pkg_obj.no_compile_needed? && !@pkg_obj.gem_compile_needed?
     puts "#{name.capitalize} #{@pkg_obj.version} has no binaries and may not need them.".lightgreen
     next pkg
   elsif @pkg_obj.no_compile_needed?
@@ -143,9 +166,13 @@ updated_packages.each do |pkg|
     # binaries.
     system "yes | crew reinstall #{'-f' unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES} #{name}"
     # Add manifests if we are in the right architecture.
-    FileUtils.cp "#{CREW_META_PATH}/#{name}.filelist", "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{name.chr}/#{name}.filelist" if system("yes | crew reinstall #{'-f' unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES} #{name}") && File.exist?("#{CREW_META_PATH}/#{name}.filelist")
+    if system("yes | crew reinstall #{'-f' unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES} #{name}") && File.exist?("#{CREW_META_PATH}/#{name}.filelist")
+      puts 'Adding manifests.'
+      FileUtils.cp "#{CREW_META_PATH}/#{name}.filelist", "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{name.chr}/#{name}.filelist"
+    end
   else
     if @pkg_obj.no_binaries_needed?
+      puts "no binaries needed for #{pkg}"
       updated_packages.delete(pkg)
       next
     end
@@ -155,6 +182,12 @@ updated_packages.each do |pkg|
     if builds_needed.empty?
       puts "No builds are needed for #{name} #{@pkg_obj.version}.".lightgreen
       update_hashes(name)
+      puts "Copying #{File.join(CREW_PACKAGES_PATH, pkg.sub('packages/', ''))} to #{pkg}".lightblue
+      FileUtils.cp File.join(CREW_PACKAGES_PATH, pkg.sub('packages/', '')), pkg
+      if File.exist?("#{CREW_META_PATH}/#{name}.filelist")
+        puts 'Adding manifests.'
+        FileUtils.cp "#{CREW_META_PATH}/#{name}.filelist", "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{name.chr}/#{name}.filelist"
+      end
       next
     else
       puts "#{name.capitalize} #{@pkg_obj.version} needs builds uploaded for: #{builds_needed.join(' ')}".lightblue

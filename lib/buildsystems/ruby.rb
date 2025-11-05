@@ -14,7 +14,7 @@ def check_gem_binary_build_needed(ruby_gem_name = nil, ruby_gem_version = nil)
     # either a compiler or a pre-compiled binary gem.
     system "gem fetch #{ruby_gem_name} --platform=ruby --version=#{ruby_gem_version}"
     system "gem unpack #{ruby_gem_name}-#{ruby_gem_version}.gem"
-    system "grep -q -r spec.extensions  #{ruby_gem_name}-#{ruby_gem_version}/*.gemspec", %i[out err] => File::NULL
+    system "grep -q -r spec.extensions  #{ruby_gem_name}-#{ruby_gem_version}/*.gemspec", exception: false, %i[out err] => File::NULL
     @build_needed = system "grep -q -r spec.extensions  #{ruby_gem_name}-#{ruby_gem_version}/*.gemspec", %i[out err] => File::NULL
   end
   FileUtils.rm_rf File.join(CREW_BREW_DIR, @extract_dir)
@@ -86,7 +86,7 @@ end
 
 def save_gem_filelist(gem_name = nil, gem_filelist_path = nil)
   crewlog "@gem_latest_version_installed: #{@gem_latest_version_installed}"
-  files = `gem install #{gem_name} &>/dev/null ; gem contents #{gem_name}`.chomp.split
+  files = `gem install --no-update-sources -N #{gem_name} --conservative &>/dev/null ; gem contents #{gem_name}`.chomp.split
   exes = files.grep(%r{/exe/|/bin/})
   # Gem.bindir should end up being #{CREW_PREFIX}/bin.
   exes&.map! { |x| x.gsub(%r{^.*(/exe/|/bin/)}, "#{Gem.bindir}/") }
@@ -106,12 +106,11 @@ def save_gem_filelist(gem_name = nil, gem_filelist_path = nil)
   EOF
 end
 
-def add_gem_binary_compression
-  pkg_file = File.join(CREW_PACKAGES_PATH, "#{name}.rb")
+def add_gem_binary_compression(pkg_name = nil)
+  pkg_file = File.join(CREW_PACKAGES_PATH, "#{pkg_name}.rb")
   @gem_pkg = Package.load_package(pkg_file)
-  # Remove no_compile_needed
-  system "sed -i '/no_compile_needed/d' #{pkg_file}"
-  binary_compression_not_in_file = binary_compression.nil?
+  system "sed -i 's/no_compile_needed/gem_compile_needed/' #{pkg_file}"
+  binary_compression_not_in_file = @gem_pkg.binary_compression.nil?
   if binary_compression_not_in_file
     binary_compression = @gem_pkg.superclass.to_s == 'RUBY' ? 'gem' : 'tar.zst'
     binary_compression_line = "  binary_compression '#{binary_compression}'"
@@ -182,7 +181,7 @@ class RUBY < Package
 
     Kernel.system "gem fetch #{@ruby_gem_name} --platform=ruby --version=#{@ruby_gem_version}"
     Kernel.system "gem unpack #{@ruby_gem_name}-#{@ruby_gem_version}.gem"
-    system 'gem install gem-compiler' unless Kernel.system('gem compile --help 2>/dev/null', %i[out err] => File::NULL)
+    system 'gem install --no-update-sources -N gem-compiler --conservative' unless Kernel.system('gem compile --help 2>/dev/null', %i[out err] => File::NULL)
     system "gem compile --strip --prune #{@ruby_gem_name}-#{@ruby_gem_version}.gem -O #{CREW_DEST_DIR}/ -- --build-flags --with-cflags='#{CREW_LINKER_FLAGS}' --with-ldflags='#{CREW_LINKER_FLAGS}'"
     @just_built_gem = true
   end
@@ -217,7 +216,7 @@ class RUBY < Package
     gem_info(@ruby_gem_name)
     @gems_needing_cleanup = Array(@gems_needing_cleanup) << @ruby_gem_name unless @gem_latest_version_installed
     save_gem_filelist(@ruby_gem_name, @gem_filelist_path)
-    add_gem_binary_compression if File.file?(@gem_filelist_path) && no_compile_needed? && system("grep '.so$' #{@gem_filelist_path}", exception: false)
+    add_gem_binary_compression(name) if File.file?(@gem_filelist_path) && no_compile_needed? && system("grep '.so$' #{@gem_filelist_path}", exception: false)
     @ruby_install_extras&.call
     @install_gem = false
     @just_built_gem = false
