@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Libxcrypt < Autotools
   description 'Modern library for one-way hashing of passwords'
   homepage 'https://github.com/besser82/libxcrypt/'
-  version '4.5.0'
+  version '4.5.0-1'
   license 'LGPL-2.1+, public-domain, BSD and BSD-2'
   compatibility 'all'
   source_url "https://github.com/besser82/libxcrypt/releases/download/v#{version.split('-').first}/libxcrypt-#{version.split('-').first}.tar.xz"
@@ -20,9 +20,12 @@ class Libxcrypt < Autotools
   depends_on 'glibc' # R
 
   conflicts_ok
-  no_lto
 
   # Handle https://github.com/besser82/libxcrypt/issues/181
-  ENV['CREW_LINKER_FLAGS'] = '-Wl,--undefined-version'
+  #ENV['CREW_LINKER_FLAGS'] = '-Wl,--undefined-version'
   # run_tests
+  def self.patch
+    downloader 'https://github.com/besser82/libxcrypt/pull/215.patch', 'asasaass'
+    system 'patch -Np1 -i 215.patch'
+  end
 end
