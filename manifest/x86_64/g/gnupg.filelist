@@ -1,8 +1,9 @@
-# Total size: 8745931
+# Total size: 11219781
 /usr/local/bin/dirmngr
 /usr/local/bin/dirmngr-client
 /usr/local/bin/gpg
 /usr/local/bin/gpg-agent
+/usr/local/bin/gpg-authcode-sign.sh
 /usr/local/bin/gpg-card
 /usr/local/bin/gpg-connect-agent
 /usr/local/bin/gpg-mail-tube
@@ -73,7 +74,10 @@
 /usr/local/share/gnupg/help.txt
 /usr/local/share/gnupg/help.zh_CN.txt
 /usr/local/share/gnupg/help.zh_TW.txt
-/usr/local/share/gnupg/sks-keyservers.netCA.pem
+/usr/local/share/gnupg/mail-tube.de.txt
+/usr/local/share/gnupg/mail-tube.txt
+/usr/local/share/gnupg/wks-utils.de.txt
+/usr/local/share/gnupg/wks-utils.txt
 /usr/local/share/info/gnupg.info-1.zst
 /usr/local/share/info/gnupg.info-2.zst
 /usr/local/share/info/gnupg.info-3.zst
@@ -128,4 +132,3 @@
 /usr/local/share/man/man8/addgnupghome.8.zst
 /usr/local/share/man/man8/applygnupgdefaults.8.zst
 /usr/local/share/man/man8/dirmngr.8.zst
-/usr/local/share/man/manh/gnupg.7.html.zst

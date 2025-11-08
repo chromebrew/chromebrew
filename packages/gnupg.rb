@@ -2,19 +2,19 @@ require 'buildsystems/autotools'
 
 class Gnupg < Autotools
   description 'GnuPG is a complete and free implementation of the OpenPGP standard as defined by RFC4880 (also known as PGP).'
-  homepage 'https://gnupg.org/'
-  version '2.4.7'
+  homepage 'https://gnupg.org/ftp/gcrypt/gnupg/'
+  version '2.5.13'
   license 'GPL-2'
   compatibility 'all'
   source_url "https://gnupg.org/ftp/gcrypt/gnupg/gnupg-#{version}.tar.bz2"
-  source_sha256 '7b24706e4da7e0e3b06ca068231027401f238102c41c909631349dcc3b85eb46'
+  source_sha256 '31a92aa03525d66a5834fe8ae4aad05a9ba93e99235189f4f64e78ae32f13093'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '358da660d1034cd0486210638a35bd0334531555650634351695541940e207da',
-     armv7l: '358da660d1034cd0486210638a35bd0334531555650634351695541940e207da',
-       i686: '03f99a147bd90de24241fe2319e4137729167959e6b00d227a7b1b3d85f874f2',
-     x86_64: 'e3c31805bf60a2503ab6df58ae96ebf7c22accd63d7e1fdd3bb4159ff2d4fc09'
+    aarch64: 'c3859387a3bd0e20faf8f6f989e49871ebc7f772c3506b0d7d8db430acea7094',
+     armv7l: 'c3859387a3bd0e20faf8f6f989e49871ebc7f772c3506b0d7d8db430acea7094',
+       i686: '55cda9be4abda4556e9f28766dc55cd6b2515ab009b57745d456275bdd8ef77b',
+     x86_64: '47ff160e79a6e3372e26ad8a7aee59679ddf5d0613cc26893de33a973356b98f'
   })
 
   depends_on 'bzip2' # R
@@ -39,4 +39,8 @@ class Gnupg < Autotools
     --with-readline'
 
   run_tests
+
+  def self.postremove
+    Package.agree_to_remove("#{HOME}/.gnupg")
+  end
 end
