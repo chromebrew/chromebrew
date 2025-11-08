@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Libxcrypt < Autotools
   description 'Modern library for one-way hashing of passwords'
   homepage 'https://github.com/besser82/libxcrypt/'
-  version '4.5.0-1'
+  version '4.5.1-1'
   license 'LGPL-2.1+, public-domain, BSD and BSD-2'
   compatibility 'all'
   source_url "https://github.com/besser82/libxcrypt/releases/download/v#{version.split('-').first}/libxcrypt-#{version.split('-').first}.tar.xz"
-  source_sha256 '825e764e4ff2e6304adb814cda297074b222d54a04edbd8ebc7cf58fc3af857d'
+  source_sha256 'e9b46a62397c15372935f6a75dc3929c62161f2620be7b7f57f03d69102c1a86'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -24,8 +24,4 @@ class Libxcrypt < Autotools
   # Handle https://github.com/besser82/libxcrypt/issues/181
   #ENV['CREW_LINKER_FLAGS'] = '-Wl,--undefined-version'
   # run_tests
-  def self.patch
-    downloader 'https://github.com/besser82/libxcrypt/pull/215.patch', 'asasaass'
-    system 'patch -Np1 -i 215.patch'
-  end
 end
