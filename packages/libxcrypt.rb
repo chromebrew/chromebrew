@@ -18,10 +18,12 @@ class Libxcrypt < Autotools
   })
 
   depends_on 'glibc' # R
+  depends_on 'llvm_dev' => :build
 
   conflicts_ok
 
   # Handle https://github.com/besser82/libxcrypt/issues/181
   #ENV['CREW_LINKER_FLAGS'] = '-Wl,--undefined-version'
+  ENV['CREW_LINKER'] = 'lld'
   # run_tests
 end

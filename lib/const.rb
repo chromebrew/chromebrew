@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.67.18' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.67.19' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -244,9 +244,10 @@ end
 # and if so, is it empty?
 CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES ||= ([true, false].include?(ENV.fetch('CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES', false)) ? false : !ENV.fetch('CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES').empty?) unless defined?(CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES)
 
+CREW_LINKER ||= ENV.fetch('CREW_LINKER', 'mold') unless defined?(CREW_LINKER)
 CREW_LINKER_FLAGS ||= ENV.fetch('CREW_LINKER_FLAGS', '-flto=auto') unless defined?(CREW_LINKER_FLAGS)
 
-CREW_CORE_FLAGS           ||= "-O3 -pipe -ffat-lto-objects -fPIC -fuse-ld=mold #{CREW_ARCH_FLAGS} #{CREW_LINKER_FLAGS}"
+CREW_CORE_FLAGS           ||= "-O3 -pipe -ffat-lto-objects -fPIC -fuse-ld=#{CREW_LINKER} #{CREW_ARCH_FLAGS} #{CREW_LINKER_FLAGS}"
 CREW_COMMON_FLAGS         ||= "#{CREW_CORE_FLAGS} -flto=auto"
 CREW_COMMON_FNO_LTO_FLAGS ||= "#{CREW_CORE_FLAGS} -fno-lto"
 CREW_FNO_LTO_LDFLAGS      ||= '-fno-lto'
