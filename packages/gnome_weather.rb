@@ -11,9 +11,9 @@ class Gnome_weather < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '77e7e9f7ec1d0d065f84b1376dcd722d7e7913c3be8feff4da1dc90d41652182',
-     armv7l: '77e7e9f7ec1d0d065f84b1376dcd722d7e7913c3be8feff4da1dc90d41652182',
-     x86_64: 'e89af9c9a5522b3515cc9c06d41d90b010dc7629e416bb07b8823b44a97a05a7'
+    aarch64: '27ef669e2907301a76381ae49b74337db9772c15a2b657b5c927bd984b38babc',
+     armv7l: '27ef669e2907301a76381ae49b74337db9772c15a2b657b5c927bd984b38babc',
+     x86_64: '53c381245c2635feb202d9aa05ddc4f9d44febe0b0006b0150d70df2ec4c2fa7'
   })
 
   depends_on 'desktop_file_utilities' => :build
@@ -26,6 +26,7 @@ class Gnome_weather < Meson
   depends_on 'gobject_introspection' => :build
   depends_on 'appstream_glib' => :build
   depends_on 'libhandy' => :build
+  depends_on 'typescript' => :build
 
   gnome
 end

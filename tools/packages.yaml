@@ -6575,6 +6575,11 @@ url: https://github.com/hokaccha/nodebrew/releases
 activity: low
 ---
 kind: url
+name: npm
+url: https://github.com/npm/cli/releases
+activity: high
+---
+kind: url
 name: npth
 url: https://www.gnupg.org/ftp/gcrypt/npth
 activity: medium
@@ -9603,6 +9608,11 @@ kind: url
 name: txt2regex
 url: https://github.com/aureliojargas/txt2regex/releases
 activity: none
+---
+kind: url
+name: typescript
+url: https://github.com/microsoft/TypeScript/releases
+activity: high
 ---
 kind: url
 name: uchardet
