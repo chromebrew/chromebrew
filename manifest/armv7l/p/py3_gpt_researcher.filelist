@@ -1,6 +1,7 @@
-# Total size: 1303672
+# Total size: 1346296
 /usr/local/lib/python3.13/site-packages/backend/__init__.py
 /usr/local/lib/python3.13/site-packages/backend/__pycache__/__init__.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/backend/__pycache__/run_server.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/backend/__pycache__/utils.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/backend/chat/__init__.py
 /usr/local/lib/python3.13/site-packages/backend/chat/__pycache__/__init__.cpython-313.pyc
@@ -28,16 +29,15 @@
 /usr/local/lib/python3.13/site-packages/backend/report_type/detailed_report/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/backend/report_type/detailed_report/__pycache__/detailed_report.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/backend/report_type/detailed_report/detailed_report.py
+/usr/local/lib/python3.13/site-packages/backend/run_server.py
 /usr/local/lib/python3.13/site-packages/backend/server/__init__.py
 /usr/local/lib/python3.13/site-packages/backend/server/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/backend/server/__pycache__/app.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/backend/server/__pycache__/logging_config.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/backend/server/__pycache__/server.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/backend/server/__pycache__/server_utils.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/backend/server/__pycache__/websocket_manager.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/backend/server/app.py
 /usr/local/lib/python3.13/site-packages/backend/server/logging_config.py
-/usr/local/lib/python3.13/site-packages/backend/server/server.py
 /usr/local/lib/python3.13/site-packages/backend/server/server_utils.py
 /usr/local/lib/python3.13/site-packages/backend/server/websocket_manager.py
 /usr/local/lib/python3.13/site-packages/backend/utils.py
@@ -49,13 +49,13 @@
 /usr/local/lib/python3.13/site-packages/evals/simple_evals/__pycache__/simpleqa_eval.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/evals/simple_evals/run_eval.py
 /usr/local/lib/python3.13/site-packages/evals/simple_evals/simpleqa_eval.py
-/usr/local/lib/python3.13/site-packages/gpt_researcher-0.14.4.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/gpt_researcher-0.14.4.dist-info/LICENSE
-/usr/local/lib/python3.13/site-packages/gpt_researcher-0.14.4.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/gpt_researcher-0.14.4.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/gpt_researcher-0.14.4.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/gpt_researcher-0.14.4.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/gpt_researcher-0.14.4.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/gpt_researcher-0.14.5.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/gpt_researcher-0.14.5.dist-info/LICENSE
+/usr/local/lib/python3.13/site-packages/gpt_researcher-0.14.5.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/gpt_researcher-0.14.5.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/gpt_researcher-0.14.5.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/gpt_researcher-0.14.5.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/gpt_researcher-0.14.5.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/gpt_researcher/__init__.py
 /usr/local/lib/python3.13/site-packages/gpt_researcher/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/gpt_researcher/__pycache__/agent.cpython-313.pyc
@@ -247,6 +247,7 @@
 /usr/local/lib/python3.13/site-packages/gpt_researcher/utils/__pycache__/llm.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/gpt_researcher/utils/__pycache__/logger.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/gpt_researcher/utils/__pycache__/logging_config.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/gpt_researcher/utils/__pycache__/tools.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/gpt_researcher/utils/__pycache__/validators.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/gpt_researcher/utils/__pycache__/workers.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/gpt_researcher/utils/costs.py
@@ -254,6 +255,7 @@
 /usr/local/lib/python3.13/site-packages/gpt_researcher/utils/llm.py
 /usr/local/lib/python3.13/site-packages/gpt_researcher/utils/logger.py
 /usr/local/lib/python3.13/site-packages/gpt_researcher/utils/logging_config.py
+/usr/local/lib/python3.13/site-packages/gpt_researcher/utils/tools.py
 /usr/local/lib/python3.13/site-packages/gpt_researcher/utils/validators.py
 /usr/local/lib/python3.13/site-packages/gpt_researcher/utils/workers.py
 /usr/local/lib/python3.13/site-packages/gpt_researcher/vector_store/__init__.py
