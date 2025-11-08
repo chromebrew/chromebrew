@@ -22,8 +22,6 @@ class Libxcrypt < Autotools
 
   conflicts_ok
 
-  # Handle https://github.com/besser82/libxcrypt/issues/181
-  # ENV['CREW_LINKER_FLAGS'] = '-Wl,--undefined-version'
   ENV['CREW_LINKER'] = 'lld'
   # run_tests
 end
