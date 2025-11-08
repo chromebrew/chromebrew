@@ -3,11 +3,11 @@ require 'package'
 class Jitsi_meet < Package
   description 'Jitsi Meet video conferencing desktop application'
   homepage 'https://jitsi.org/jitsi-meet/'
-  version '2025.4.0'
+  version '2025.10.0'
   license 'Apache-2.0'
   compatibility 'x86_64'
   source_url "https://github.com/jitsi/jitsi-meet-electron/releases/download/v#{version}/jitsi-meet-x86_64.AppImage"
-  source_sha256 'f40bb056423151f18b7a17f04a5d64b82e5dbddfa89840b25aba0def6c48f29c'
+  source_sha256 '1bc259c4c099f6d9bf1d1decc846602b9acf956696d39f75d0a4eefb6ab0acb1'
 
   depends_on 'gtk3'
   depends_on 'sommelier'
@@ -24,12 +24,15 @@ class Jitsi_meet < Package
     FileUtils.mv 'usr/share', CREW_DEST_PREFIX.to_s
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/jitsi"
     FileUtils.mv 'usr/lib', "#{CREW_DEST_PREFIX}/share/jitsi"
+    FileUtils.mv Dir['lib*.so*'], "#{CREW_DEST_PREFIX}/share/jitsi/lib"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/applications"
     FileUtils.rm_rf 'usr'
+    FileUtils.rm 'jitsi-meet.png'
     FileUtils.mv 'jitsi-meet.desktop', "#{CREW_DEST_PREFIX}/share/applications"
     FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/jitsi"
     File.write 'jitsi.sh', <<~EOF
       #!/bin/bash
+      LD_LIBRARY_PATH=#{CREW_PREFIX}/share/jitsi/lib:$LD_LIBRARY_PATH
       cd #{CREW_PREFIX}/share/jitsi
       GDK_BACKEND=x11 ./AppRun "$@"
     EOF
@@ -37,20 +40,10 @@ class Jitsi_meet < Package
   end
 
   def self.postinstall
-    ExitMessage.add "\nType 'jitsi' to get started.\n".lightblue
+    ExitMessage.add "\nType 'jitsi' to get started.\n"
   end
 
   def self.postremove
-    config_dir = "#{CREW_PREFIX}/.config/Jitsi Meet"
-    if Dir.exist? config_dir
-      print "Would you like to remove the #{config_dir} directory? [y/N] "
-      case $stdin.gets.chomp.downcase
-      when 'y', 'yes'
-        FileUtils.rm_rf config_dir
-        puts "#{config_dir} removed.".lightgreen
-      else
-        puts "#{config_dir} saved.".lightgreen
-      end
-    end
+    Package.agree_to_remove("#{CREW_PREFIX}/.config/Jitsi Meet")
   end
 end
