@@ -168,6 +168,7 @@ deprecated_packages = Set[
   { pkg_name: 'openjdk24', comments: 'Deprecated upstream.' },
   { pkg_name: 'percona_boost', comments: 'Replaced by regular boost.' },
   { pkg_name: 'percona_server', comments: 'Replaced by mysql.' },
+  { pkg_name: 'py3_zcmds', comments: 'Removed due to broken builds.' },
   { pkg_name: 'q', comments: 'No longer suitable for packaging.' },
   { pkg_name: 'qtchooser', comments: "Doesn't work for newer Qt versions." },
   { pkg_name: 'skype', comments: 'Officially sunsetting and will be shut down soon.' }
