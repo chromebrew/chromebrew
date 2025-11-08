@@ -18,6 +18,7 @@ class Dart < Package
      x86_64: '61b4b9488e1b4255b94be17ad48ae2ddb23c6fbe67824cf8103d0b28fa8ab816'
   })
 
+  conflicts_with 'flutter'
   no_compile_needed
   no_shrink
 
