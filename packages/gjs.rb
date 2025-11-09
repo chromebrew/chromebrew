@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gjs < Meson
   description 'Javascript Bindings for GNOME'
   homepage 'https://gitlab.gnome.org/GNOME/gjs/'
-  version '1.79.90'
+  version '1.86.0'
   license 'MIT and MPL-1.1, LGPL-2+ or GPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gjs.git'
@@ -24,7 +24,7 @@ class Gjs < Meson
   depends_on 'glib' # R
   depends_on 'gobject_introspection' # R
   depends_on 'harfbuzz' # R
-  depends_on 'js115' # R
+  depends_on 'js140' # R
   depends_on 'libffi' # R
   depends_on 'libx11' # R
 
