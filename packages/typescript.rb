@@ -23,6 +23,8 @@ class Typescript < Package
   depends_on 'nodebrew' # L
   depends_on 'rsync' => :build
 
+  no_upstream_update # newer versions do not build with older node.
+
   def self.prebuild
     system 'crew postinstall nodebrew' unless File.exist?("#{CREW_PREFIX}/bin/node")
   end
