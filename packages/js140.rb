@@ -63,7 +63,7 @@ class Js140 < Package
       ac_add_options --with-intl-api
       ac_add_options --with-system-nspr
       ac_add_options --with-system-zlib
-      ac_add_options --without-system-icu
+      ac_add_options #{ARCH == 'armv7l' ? '--with-system-icu' : '--without-system-icu'}
       mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/obj
     MOZCONFIG_EOF
     File.write('.mozconfig', @mozconfig)
