@@ -3705,6 +3705,11 @@ url: https://archive.mozilla.org/pub/firefox/releases/
 activity: high
 ---
 kind: url
+name: js140
+url: https://archive.mozilla.org/pub/firefox/releases/
+activity: high
+---
+kind: url
 name: json_glib
 url: https://download.gnome.org/sources/json-glib/
 activity: low
