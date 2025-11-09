@@ -75,7 +75,7 @@
     "name": "acquia_cli",
     "description": "Acquia CLI - The official command-line tool for interacting with the Drupal Cloud Platform and services.",
     "homepage": "https://github.com/acquia/cli",
-    "version": "2.49.0",
+    "version": "2.51.2",
     "license": "GPL-2.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -257,7 +257,7 @@
   },
   {
     "name": "android_sdk_tools",
-    "description": "Android SDK CLI tools",
+    "description": "Android SDK Command-Line Tools",
     "homepage": "https://developer.android.com/studio",
     "version": "13114758",
     "license": "Apache-2.0",
@@ -267,7 +267,7 @@
     "name": "android_studio",
     "description": "Android Studio is the official IDE for Android development.",
     "homepage": "https://developer.android.com/studio",
-    "version": "2025.1.2.11",
+    "version": "2025.2.1.7",
     "license": "Apache-2.0",
     "compatibility": "x86_64"
   },
@@ -347,7 +347,7 @@
     "name": "appflowy",
     "description": "AI collaborative workspace where you achieve more without losing control of your data. The best open source alternative to Notion.",
     "homepage": "https://www.appflowy.io/",
-    "version": "0.9.9",
+    "version": "0.10.3",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -891,7 +891,7 @@
     "name": "bazel",
     "description": "a fast, scalable, multi-language and extensible build system",
     "homepage": "https://bazel.build/",
-    "version": "8.4.1",
+    "version": "8.4.2",
     "license": "Apache-2.0",
     "compatibility": "x86_64"
   },
@@ -1051,7 +1051,7 @@
     "name": "blender",
     "description": "Blender is the free and open source 3D creation suite.",
     "homepage": "https://www.blender.org",
-    "version": "4.1.1",
+    "version": "4.5.4",
     "license": "GPLv3+",
     "compatibility": "x86_64"
   },
@@ -1099,7 +1099,7 @@
     "name": "brave",
     "description": "Next generation Brave browser for macOS, Windows, Linux, Android.",
     "homepage": "https://brave.com/",
-    "version": "1.84.132",
+    "version": "1.84.135",
     "license": "MPL-2",
     "compatibility": "x86_64"
   },
@@ -1187,7 +1187,7 @@
     "name": "bun",
     "description": "Incredibly fast JavaScript runtime, bundler, test runner, and package manager – all in one",
     "homepage": "https://bun.sh/",
-    "version": "1.2.22",
+    "version": "1.3.1",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -2067,7 +2067,7 @@
     "name": "crystal",
     "description": "A language for humans and computers",
     "homepage": "https://crystal-lang.org/",
-    "version": "1.17.1",
+    "version": "1.18.2",
     "license": "Apache-2.0",
     "compatibility": "x86_64"
   },
@@ -2123,7 +2123,7 @@
     "name": "curl",
     "description": "Command line tool and library for transferring data with URLs.",
     "homepage": "https://curl.se/",
-    "version": "8.16.0",
+    "version": "8.17.0",
     "license": "curl",
     "compatibility": "all"
   },
@@ -2179,9 +2179,9 @@
     "name": "dart",
     "description": "The Dart SDK is a set of tools and libraries for the Dart programming language.  You can find information about Dart online at dartlang.org.",
     "homepage": "https://dart.dev",
-    "version": "3.7.3",
+    "version": "3.9.4",
     "license": "BSD-3",
-    "compatibility": "all"
+    "compatibility": "aarch64 armv7l x86_64"
   },
   {
     "name": "dash",
@@ -2211,7 +2211,7 @@
     "name": "dbeaver",
     "description": "Free Universal Database Tool",
     "homepage": "https://dbeaver.io",
-    "version": "25.0.4",
+    "version": "25.2.4",
     "license": "Apache-2.0",
     "compatibility": "x86_64"
   },
@@ -2307,7 +2307,7 @@
     "name": "depot_tools",
     "description": "Chromium uses a package of scripts, the depot_tools, to manage interaction with the Chromium source code repository and the Chromium development process.",
     "homepage": "https://dev.chromium.org/developers/how-tos/depottools",
-    "version": "da768751",
+    "version": "240cd0",
     "license": "BSD-Google",
     "compatibility": "all"
   },
@@ -2675,7 +2675,7 @@
     "name": "edge",
     "description": "Microsoft Edge is the fast and secure browser",
     "homepage": "https://www.microsoft.com/en-us/edge",
-    "version": "141.0.3537.99-1",
+    "version": "142.0.3595.65-1",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -2683,7 +2683,7 @@
     "name": "edit",
     "description": "A simple editor for simple needs.",
     "homepage": "https://github.com/microsoft/edit",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -2739,7 +2739,7 @@
     "name": "elixir",
     "description": "Elixir is a dynamic, functional language designed for building scalable and maintainable applications.",
     "homepage": "https://elixir-lang.org/",
-    "version": "1.18.3",
+    "version": "1.19.2",
     "license": "Apache-2.0 and ErlPL-1.1",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -2827,7 +2827,7 @@
     "name": "erlang",
     "description": "Erlang is a programming language used to build massively scalable soft real-time systems with requirements on high availability.",
     "homepage": "https://www.erlang.org/",
-    "version": "27.3.2",
+    "version": "28.1.1",
     "license": "Apache-2.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -2835,7 +2835,7 @@
     "name": "etcd",
     "description": "Distributed reliable key-value store for the most critical data of a distributed system",
     "homepage": "https://etcd.io/",
-    "version": "3.5.21",
+    "version": "3.6.5",
     "license": "Apache-2.0",
     "compatibility": "x86_64"
   },
@@ -3259,7 +3259,7 @@
     "name": "flutter",
     "description": "Flutter is Google's UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase.",
     "homepage": "https://flutter.dev/",
-    "version": "3.35.1",
+    "version": "3.35.7",
     "license": "BSD-3",
     "compatibility": "x86_64"
   },
@@ -3651,7 +3651,7 @@
     "name": "frp",
     "description": "A fast reverse proxy",
     "homepage": "https://github.com/fatedier/frp",
-    "version": "0.62.1",
+    "version": "0.65.0",
     "license": "Apache-2.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -3803,7 +3803,7 @@
     "name": "gcloud",
     "description": "Command-line interface for Google Cloud Platform products and services",
     "homepage": "https://cloud.google.com/sdk/gcloud/",
-    "version": "545.0.0",
+    "version": "546.0.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -4179,7 +4179,7 @@
     "name": "glab",
     "description": "A GitLab CLI tool bringing GitLab to your command line",
     "homepage": "https://gitlab.com/gitlab-org/cli",
-    "version": "1.74.0",
+    "version": "1.76.2",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -4451,7 +4451,7 @@
     "name": "gnome_calculator",
     "description": "GNOME desktop calculator",
     "homepage": "https://wiki.gnome.org/Apps/Calculator",
-    "version": "49.0",
+    "version": "49.1.1",
     "license": "LGPL-2.1+",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -4467,7 +4467,7 @@
     "name": "gnome_console",
     "description": "A simple user-friendly terminal emulator for the GNOME desktop",
     "homepage": "https://gitlab.gnome.org/GNOME/console",
-    "version": "49.0",
+    "version": "49.1",
     "license": "GPL3",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -4507,7 +4507,7 @@
     "name": "gnome_keyring",
     "description": "GNOME password and secret manager",
     "homepage": "https://www.gnome.org",
-    "version": "46.1",
+    "version": "48.0",
     "license": "GPL-2+ and LGPL-2+",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -4634,8 +4634,8 @@
   {
     "name": "gnupg",
     "description": "GnuPG is a complete and free implementation of the OpenPGP standard as defined by RFC4880 (also known as PGP).",
-    "homepage": "https://gnupg.org/",
-    "version": "2.4.7",
+    "homepage": "https://gnupg.org/ftp/gcrypt/gnupg/",
+    "version": "2.5.13",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -4675,7 +4675,7 @@
     "name": "go_containerregistry",
     "description": "Go library and CLIs for working with container registries",
     "homepage": "https://github.com/google/go-containerregistry",
-    "version": "0.20.3",
+    "version": "0.20.6",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -4723,7 +4723,7 @@
     "name": "google_chrome",
     "description": "Google Chrome is a fast, easy to use, and secure web browser.",
     "homepage": "https://www.google.com/chrome/",
-    "version": "142.0.7444.59-1",
+    "version": "142.0.7444.134-1",
     "license": "google-chrome",
     "compatibility": "x86_64"
   },
@@ -5752,6 +5752,14 @@
     "compatibility": "aarch64 armv7l x86_64"
   },
   {
+    "name": "ironclad",
+    "description": "A command line password manager.",
+    "homepage": "https://www.dmulholl.com/docs/ironclad/master/",
+    "version": "2.7.0",
+    "license": "0BSD",
+    "compatibility": "all"
+  },
+  {
     "name": "irrlicht",
     "description": "An open source realtime 3D engine written in C++ — Libraries and headers",
     "homepage": "https://irrlicht.sourceforge.io/",
@@ -5931,7 +5939,7 @@
     "name": "jitsi_meet",
     "description": "Jitsi Meet video conferencing desktop application",
     "homepage": "https://jitsi.org/jitsi-meet/",
-    "version": "2025.4.0",
+    "version": "2025.10.0",
     "license": "Apache-2.0",
     "compatibility": "x86_64"
   },
@@ -8851,7 +8859,7 @@
     "name": "libxcrypt",
     "description": "Modern library for one-way hashing of passwords",
     "homepage": "https://github.com/besser82/libxcrypt/",
-    "version": "4.4.38-1",
+    "version": "4.5.1-1",
     "license": "LGPL-2.1+, public-domain, BSD and BSD-2",
     "compatibility": "all"
   },
@@ -10627,7 +10635,7 @@
     "name": "nasm",
     "description": "The Netwide Assembler",
     "homepage": "https://www.nasm.us/",
-    "version": "2.16.03-1",
+    "version": "3.01",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -11459,7 +11467,7 @@
     "name": "opera",
     "description": "Opera is a multi-platform web browser based on Chromium and developed by Opera Software.",
     "homepage": "https://www.opera.com/",
-    "version": "123.0.5669.23",
+    "version": "123.0.5669.47",
     "license": "OPERA-2018",
     "compatibility": "x86_64"
   },
@@ -12963,7 +12971,7 @@
     "name": "py3_azure_cli",
     "description": "Next generation multi-platform command line experience for Azure.",
     "homepage": "https://pypi.org/project/azure-cli/",
-    "version": "2.78.0",
+    "version": "2.79.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13107,7 +13115,7 @@
     "name": "py3_cython",
     "description": "The Cython language makes writing C extensions for the Python language as easy as Python itself.",
     "homepage": "https://cython.org/",
-    "version": "3.1.6",
+    "version": "3.2.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -13171,7 +13179,7 @@
     "name": "py3_docutils",
     "description": "Docutils is an open-source text processing system for processing plaintext documentation into useful formats, such as HTML, LaTeX, man-pages, open-document or XML.",
     "homepage": "http://docutils.sourceforge.net/",
-    "version": "0.22.2",
+    "version": "0.22.3",
     "license": "BSD-2, GPL-3 and public-domain",
     "compatibility": "all"
   },
@@ -13299,7 +13307,7 @@
     "name": "py3_gpt_researcher",
     "description": "LLM based autonomous agent that conducts deep local and web research on any topic and generates a long report with citations.",
     "homepage": "https://gptr.dev/",
-    "version": "0.14.4",
+    "version": "0.14.5",
     "license": "Apache-2.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -13539,7 +13547,7 @@
     "name": "py3_markdown",
     "description": "Markdown is a Python implementation of Markdown.",
     "homepage": "https://python-markdown.github.io/",
-    "version": "3.9",
+    "version": "3.10",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -13675,7 +13683,7 @@
     "name": "py3_oci",
     "description": "Oracle Cloud Infrastructure Python SDK",
     "homepage": "https://oracle-cloud-infrastructure-python-sdk.readthedocs.io/",
-    "version": "2.162.0",
+    "version": "2.163.0",
     "license": "UPL-1.0 or Apache-2.0",
     "compatibility": "all"
   },
@@ -13683,7 +13691,7 @@
     "name": "py3_oci_cli",
     "description": "Command Line Interface for Oracle Cloud Infrastructure",
     "homepage": "https://github.com/oracle/oci-cli/",
-    "version": "3.69.0",
+    "version": "3.70.0",
     "license": "UPL-1.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -13739,7 +13747,7 @@
     "name": "py3_pdfminer_six",
     "description": "PDFminer.six is a community maintained fork of PDFminer.",
     "homepage": "https://pdfminersix.readthedocs.io/",
-    "version": "20250506",
+    "version": "20251107",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13803,7 +13811,7 @@
     "name": "py3_pre_commit",
     "description": "A framework for managing and maintaining multi-language pre-commit hooks.",
     "homepage": "https://pre-commit.com/",
-    "version": "4.3.0",
+    "version": "4.4.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13819,7 +13827,7 @@
     "name": "py3_psutil",
     "description": "psutil is a cross-platform library for process and system monitoring in Python.",
     "homepage": "https://github.com/giampaolo/psutil/",
-    "version": "7.1.2",
+    "version": "7.1.3",
     "license": "BSD-3",
     "compatibility": "all"
   },
@@ -13915,7 +13923,7 @@
     "name": "py3_pyicu",
     "description": "PyICU is a Python extension wrapping the ICU C++ API.",
     "homepage": "https://pyicu.org/",
-    "version": "2.15.3",
+    "version": "2.16",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13995,7 +14003,7 @@
     "name": "py3_pytest",
     "description": "Pytest is simple powerful testing with Python.",
     "homepage": "https://pytest.org/",
-    "version": "8.4.2",
+    "version": "9.0.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14115,7 +14123,7 @@
     "name": "py3_ruff",
     "description": "An extremely fast Python linter, written in Rust.",
     "homepage": "https://docs.astral.sh/ruff",
-    "version": "0.14.3",
+    "version": "0.14.4",
     "license": "GPL-2.0",
     "compatibility": "all"
   },
@@ -14478,14 +14486,6 @@
     "version": "1.37.1",
     "license": "GPL-3",
     "compatibility": "all"
-  },
-  {
-    "name": "py3_zcmds",
-    "description": "Cross platform(ish) productivity commands written in python",
-    "homepage": "https://github.com/zackees/zcmds",
-    "version": "1.5.34",
-    "license": "MIT",
-    "compatibility": "aarch64"
   },
   {
     "name": "py3_zipp",
@@ -15523,7 +15523,7 @@
     "name": "ruby_io_wait",
     "description": "Waits until io is readable or writable without blocking.",
     "homepage": "https://github.com/ruby/io-wait",
-    "version": "0.3.2",
+    "version": "0.3.3",
     "license": "Ruby",
     "compatibility": "all"
   },
@@ -15555,7 +15555,7 @@
     "name": "ruby_json",
     "description": "This is a JSON implementation as a Ruby extension in C.",
     "homepage": "https://flori.github.io/json",
-    "version": "2.15.2",
+    "version": "2.16.0",
     "license": "Ruby",
     "compatibility": "all"
   },
@@ -15635,7 +15635,7 @@
     "name": "ruby_minitest",
     "description": "minitest provides a complete suite of testing facilities supporting TDD, BDD, mocking, and benchmarking.",
     "homepage": "https://github.com/minitest/minitest",
-    "version": "5.26.0",
+    "version": "5.26.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15803,7 +15803,7 @@
     "name": "ruby_power_assert",
     "description": "Power assert shows each value of variables and method calls in the expression.",
     "homepage": "https://github.com/ruby/power_assert",
-    "version": "2.0.5",
+    "version": "3.0.1",
     "license": "BSD-2-Clause",
     "compatibility": "all"
   },
@@ -15955,7 +15955,7 @@
     "name": "ruby_repl_type_completor",
     "description": "Type based completion for REPL.",
     "homepage": "https://github.com/ruby/repl_type_completor",
-    "version": "0.1.11",
+    "version": "0.1.12",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -16019,7 +16019,7 @@
     "name": "ruby_rubocop_ast",
     "description": "Contains the classes needed by RuboCop to deal with Ruby's AST.",
     "homepage": "https://github.com/rubocop/rubocop-ast",
-    "version": "1.47.1",
+    "version": "1.48.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -16179,7 +16179,7 @@
     "name": "ruby_test_unit",
     "description": "|- test-unit (test::unit) is unit testing framework for ruby, based on xunit principles.",
     "homepage": "https://test-unit.github.io/",
-    "version": "3.7.0",
+    "version": "3.7.1",
     "license": "PSFL",
     "compatibility": "all"
   },
@@ -16251,7 +16251,7 @@
     "name": "ruby_typeprof",
     "description": "TypeProf performs a type analysis of non-annotated Ruby code.",
     "homepage": "https://github.com/ruby/typeprof",
-    "version": "0.30.1",
+    "version": "0.31.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -16291,7 +16291,7 @@
     "name": "ruby_uri",
     "description": "Uri is a module providing classes to handle uniform resource identifiers.",
     "homepage": "https://github.com/ruby/uri",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "license": "Ruby",
     "compatibility": "all"
   },
@@ -16835,7 +16835,7 @@
     "name": "signal_desktop",
     "description": "Private Messenger for Windows, Mac, and Linux",
     "homepage": "https://signal.org/",
-    "version": "7.77.0",
+    "version": "7.78.0",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -17643,7 +17643,7 @@
     "name": "terminus",
     "description": "The Pantheon CLI — a standalone utility for performing operations on the Pantheon Platform",
     "homepage": "https://github.com/pantheon-systems/terminus",
-    "version": "4.1.0",
+    "version": "4.1.1",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -17651,7 +17651,7 @@
     "name": "termius",
     "description": "Modern SSH Client",
     "homepage": "https://termius.com/",
-    "version": "9.32.3",
+    "version": "9.32.4",
     "license": "Apache-2.0, LGPL-2.1, MIT",
     "compatibility": "x86_64"
   },
@@ -17659,7 +17659,7 @@
     "name": "terraform",
     "description": "Terraform is a tool for building, changing, and combining infrastructure safely and efficiently.",
     "homepage": "https://www.terraform.io/",
-    "version": "1.13.3",
+    "version": "1.13.5",
     "license": "Apache-2.0, BSD-2, BSD-4, ECL-2.0, imagemagick, ISC, JSON, MIT, MIT-with-advertising, MPL-2.0 and unicode",
     "compatibility": "all"
   },
@@ -19499,7 +19499,7 @@
     "name": "yelp",
     "description": "Get help with GNOME",
     "homepage": "https://wiki.gnome.org/Apps/Yelp",
-    "version": "42.2",
+    "version": "49.0",
     "license": "GPL-2+",
     "compatibility": "aarch64 armv7l x86_64"
   },
