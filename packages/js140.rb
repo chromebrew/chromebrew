@@ -29,6 +29,7 @@ class Js140 < Package
   depends_on 'ncurses' # R
   depends_on 'nss'
   depends_on 'nss' # R
+  depends_on 'py3_maturin' => :build
   depends_on 'py3_pre_commit' => :build
   depends_on 'py3_pycairo' => :build
   depends_on 'readline' # R
@@ -82,12 +83,14 @@ class Js140 < Package
       # error: Cannot set `RUSTC_BOOTSTRAP=1` from build script of `packed_simd v0.3.4 (https://github.com/hsivonen/packed_simd?rev=0917fe780032a6bbb23d71be545f9c1834128d75#0917fe78)`.
       # note: Crates cannot set `RUSTC_BOOTSTRAP` themselves, as doing so would subvert the stability guarantees of Rust for your project.
       # help: If you're sure you want to do this in your project, set the environment variable `RUSTC_BOOTSTRAP=packed_simd` before running cargo instead.
+      #
+      # Workaround added for error: options `-C embed-bitcode=no` and `-C lto` are incompatible error.
       ENV['RUSTC_BOOTSTRAP'] = 'packed_simd,packed_simd_2,encoding_rs'
       system "CFLAGS='-fcf-protection=none' \
             CXXFLAGS='-fcf-protection=none' \
             CC=gcc CXX=g++ \
             LD=#{CREW_LINKER} \
-            RUSTFLAGS='-Clto=thin' \
+            RUSTFLAGS='-Clto=thin -C embed-bitcode' \
             RUSTUP_HOME='#{CREW_PREFIX}/share/rustup' \
             CARGO_HOME='#{CREW_PREFIX}/share/cargo' \
             LDFLAGS='-lreadline -ltinfo' \
