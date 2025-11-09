@@ -24,7 +24,7 @@ class Typescript < Package
   depends_on 'rsync' => :build
 
   def self.prebuild
-    system 'crew postinstall nodebrew'
+    system 'crew postinstall nodebrew' unless File.exist?("#{CREW_PREFIX}/bin/node")
   end
 
   def self.build
