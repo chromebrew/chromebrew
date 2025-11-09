@@ -20,7 +20,7 @@ class Js140 < Package
   })
 
   depends_on 'autoconf213' => :build
-  depends_on 'ccache' => :build
+  depends_on 'cbindgen' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'icu4c' # R
