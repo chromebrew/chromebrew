@@ -1,13 +1,13 @@
-# Total size: 696032
+# Total size: 707273
 /usr/local/bin/pre-commit
-/usr/local/lib/python3.13/site-packages/pre_commit-4.3.0.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/pre_commit-4.3.0.dist-info/LICENSE
-/usr/local/lib/python3.13/site-packages/pre_commit-4.3.0.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/pre_commit-4.3.0.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/pre_commit-4.3.0.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/pre_commit-4.3.0.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/pre_commit-4.3.0.dist-info/entry_points.txt
-/usr/local/lib/python3.13/site-packages/pre_commit-4.3.0.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/pre_commit-4.4.0.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/pre_commit-4.4.0.dist-info/LICENSE
+/usr/local/lib/python3.13/site-packages/pre_commit-4.4.0.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/pre_commit-4.4.0.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/pre_commit-4.4.0.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/pre_commit-4.4.0.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/pre_commit-4.4.0.dist-info/entry_points.txt
+/usr/local/lib/python3.13/site-packages/pre_commit-4.4.0.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/pre_commit/__init__.py
 /usr/local/lib/python3.13/site-packages/pre_commit/__main__.py
 /usr/local/lib/python3.13/site-packages/pre_commit/__pycache__/__init__.cpython-313.pyc
@@ -95,6 +95,8 @@
 /usr/local/lib/python3.13/site-packages/pre_commit/languages/__pycache__/script.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pre_commit/languages/__pycache__/swift.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pre_commit/languages/__pycache__/system.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/pre_commit/languages/__pycache__/unsupported.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/pre_commit/languages/__pycache__/unsupported_script.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pre_commit/languages/conda.py
 /usr/local/lib/python3.13/site-packages/pre_commit/languages/coursier.py
 /usr/local/lib/python3.13/site-packages/pre_commit/languages/dart.py
@@ -116,6 +118,8 @@
 /usr/local/lib/python3.13/site-packages/pre_commit/languages/script.py
 /usr/local/lib/python3.13/site-packages/pre_commit/languages/swift.py
 /usr/local/lib/python3.13/site-packages/pre_commit/languages/system.py
+/usr/local/lib/python3.13/site-packages/pre_commit/languages/unsupported.py
+/usr/local/lib/python3.13/site-packages/pre_commit/languages/unsupported_script.py
 /usr/local/lib/python3.13/site-packages/pre_commit/logging_handler.py
 /usr/local/lib/python3.13/site-packages/pre_commit/main.py
 /usr/local/lib/python3.13/site-packages/pre_commit/meta_hooks/__init__.py
