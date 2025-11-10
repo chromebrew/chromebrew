@@ -7,7 +7,7 @@ class Libclc < Package
   llvm_build_obj = Package.load_package("#{__dir__}/#{CREW_LLVM_VER}_build.rb")
   description 'Library requirements of the OpenCL C programming language'
   homepage 'https://libclc.llvm.org/'
-  version '21.1.4'
+  version llvm_build_obj.version
   # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
   puts "#{self} version differs from llvm version #{llvm_build_obj.version}".orange if version != llvm_build_obj.version
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
@@ -17,9 +17,9 @@ class Libclc < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '02f85b62d39940cdfcd9344b79812e90e5bd0227236e44685df1895ce6b74c42',
-     armv7l: '02f85b62d39940cdfcd9344b79812e90e5bd0227236e44685df1895ce6b74c42',
-     x86_64: '7bc18f4d72d74fbfaee41656b5cc5351166b1c1e357785419442c0f48c4fa1f8'
+    aarch64: 'b654ab4da781f0bc59a6e444275480add0ca53c4139bee3a48f36c877f4e616c',
+     armv7l: 'b654ab4da781f0bc59a6e444275480add0ca53c4139bee3a48f36c877f4e616c',
+     x86_64: '3457d53ef12ccaf8788d9dcfc29eb4e0e1ff0d62937936f74060b19580431b37'
   })
 
   depends_on 'llvm_dev' => :build
@@ -27,6 +27,11 @@ class Libclc < Package
   depends_on 'spirv_llvm_translator' => :build
 
   no_env_options
+
+  def self.preflight
+    llvm_dev_obj = Package.load_package("#{__dir__}/#{CREW_LLVM_VER}_dev.rb")
+    abort "Update  #{CREW_LLVM_VER}_dev first.".lightred if Gem::Version.new(version.split('-').first) > Gem::Version.new(llvm_dev_obj.version.split('-').first)
+  end
 
   def self.patch
     # Remove rc suffix on final release.

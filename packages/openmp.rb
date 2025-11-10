@@ -7,7 +7,7 @@ class Openmp < Package
   llvm_build_obj = Package.load_package("#{__dir__}/#{CREW_LLVM_VER}_build.rb")
   description 'LLVM OpenMP Runtime Library'
   homepage 'https://openmp.llvm.org/'
-  version '21.1.4'
+  version llvm_build_obj.version
   # When upgrading llvm_build*, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
   puts "#{self} version differs from llvm version #{llvm_build_obj.version}".orange if version != llvm_build_obj.version
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
@@ -17,10 +17,10 @@ class Openmp < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e49a72480326b57187b8afb0ddc5e8037765adce313409130c7c2d7b37bedd77',
-     armv7l: 'e49a72480326b57187b8afb0ddc5e8037765adce313409130c7c2d7b37bedd77',
-       i686: 'b7098181a466b94c9e71369143ef474c9d3c76b35598e2e8b1b090e3ba06083a',
-     x86_64: '89522d353e6c0ddff40f47141c0dd58ff0773618c5ebba425c5518681232d109'
+    aarch64: 'fb6da8ebb677a802dcc0941b9a332c329db8a5219fe2c01cfaa2414e41f3e304',
+     armv7l: 'fb6da8ebb677a802dcc0941b9a332c329db8a5219fe2c01cfaa2414e41f3e304',
+       i686: '9f7be32395bf445897d0d2f7efcec7be39f7c23736692f058d61f9961826da3d',
+     x86_64: 'afd29b5eae9649eaa29bfdd31fd2bb3f9950a27fad3740ba0bbc5c96e5ee5221'
   })
 
   depends_on 'gcc_lib' # R
@@ -29,6 +29,11 @@ class Openmp < Package
   depends_on 'python3' # R
 
   no_env_options
+
+  def self.preflight
+    llvm_dev_obj = Package.load_package("#{__dir__}/#{CREW_LLVM_VER}_dev.rb")
+    abort "Update  #{CREW_LLVM_VER}_dev first.".lightred if Gem::Version.new(version.split('-').first) > Gem::Version.new(llvm_dev_obj.version.split('-').first)
+  end
 
   def self.patch
     # Remove rc suffix on final release.

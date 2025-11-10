@@ -4,7 +4,7 @@ Package.load_package("#{__dir__}/llvm21_build.rb")
 class Llvm21_lib < Package
   description 'LibLLVM and llvm-strip'
   homepage Llvm21_build.homepage
-  version '21.1.4'
+  version '21.1.5'
   # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
   puts "#{self} version differs from llvm version #{Llvm21_build.version}".orange if version != Llvm21_build.version
   license Llvm21_build.license
@@ -13,10 +13,10 @@ class Llvm21_lib < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '836c8558c8d3eea7fd1b4f3aeaeefd2765e19e5898927636122242aadc80baeb',
-     armv7l: '836c8558c8d3eea7fd1b4f3aeaeefd2765e19e5898927636122242aadc80baeb',
-       i686: 'a8212a54fd8ab798190280ab2c14fa60e389f858cf2b6d51becdd0a641a39d83',
-     x86_64: '5198af84e128f2d4e3b5378778418d19b457950b94de35da413e521e7b558675'
+    aarch64: '2b713b81f62befb3659216b604572d86914d74798179eee4263a5c77a78bfac9',
+     armv7l: '2b713b81f62befb3659216b604572d86914d74798179eee4263a5c77a78bfac9',
+       i686: '106cd1288dd3fd8810a069dc5ec790a4a40e8fc3bf06c54ee66a2c163f386952',
+     x86_64: '07f2117378e7e4334fc5bd5e668a82bf3c746a3db2dc3d464b19b84ce10ddd4c'
   })
 
   depends_on 'gcc_lib' # R
@@ -32,6 +32,10 @@ class Llvm21_lib < Package
   no_shrink
   no_source_build
   no_strip
+
+  def self.preflight
+    abort "Update #{CREW_LLVM_VER} first.".lightred if Gem::Version.new(version.split('-').first) < Gem::Version.new(Llvm21_build.version.split('-').first)
+  end
 
   def self.install
     puts 'Installing llvm21_build to pull files for build...'.lightblue

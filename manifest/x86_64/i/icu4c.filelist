@@ -1,4 +1,4 @@
-# Total size: 44501307
+# Total size: 44511849
 /usr/local/bin/derb
 /usr/local/bin/genbrk
 /usr/local/bin/gencfu
@@ -218,6 +218,8 @@
 /usr/local/lib64/icu/77.1/pkgdata.inc
 /usr/local/lib64/icu/Makefile.inc
 /usr/local/lib64/icu/current
+/usr/local/lib64/icu/current/Makefile.inc
+/usr/local/lib64/icu/current/pkgdata.inc
 /usr/local/lib64/icu/pkgdata.inc
 /usr/local/lib64/libicudata.so
 /usr/local/lib64/libicudata.so.77
