@@ -6,7 +6,7 @@ require 'buildsystems/rust'
 class Cbindgen < RUST
   description 'A tool for generating C bindings to Rust code'
   homepage 'https://github.com/eqrion/cbindgen'
-  version '0.29.0'
+  version '0.29.2'
   license 'MPL2'
   compatibility 'all'
   source_url 'https://github.com/eqrion/cbindgen.git'
