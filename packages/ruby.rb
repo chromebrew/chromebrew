@@ -3,7 +3,7 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '3.4.7'
+  version '3.4.7-1'
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
   source_url 'https://github.com/ruby/ruby.git'
@@ -12,10 +12,10 @@ class Ruby < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'dc38c93b003d4a9414f6ebd2507ea373e31fbcf0356522028212f8f62e9ae9a8',
-     armv7l: 'dc38c93b003d4a9414f6ebd2507ea373e31fbcf0356522028212f8f62e9ae9a8',
-       i686: 'eafde9188f8b62b2d96f532d13c851a5374861cd98bfef8a8053e72c71500870',
-     x86_64: 'f7b0ee54068cd153e977c1230b03e1c8d2bfd5be52f76fac4affb658815cc777'
+    aarch64: '6612e80e2300c7d98a08440cec8c0f124589613088792c60a116b58b719c6757',
+     armv7l: '6612e80e2300c7d98a08440cec8c0f124589613088792c60a116b58b719c6757',
+       i686: 'c47ff58b25e5df0e92ed4d31ac5fde52fc91b0ab007ddc1672032e1a2d38339d',
+     x86_64: '3fe70c2bb972b3dbb3fe66efa6d8ece373a3ea0d266cdf81c00a18e345ad267e'
   })
 
   depends_on 'ca_certificates' # L
@@ -78,10 +78,10 @@ class Ruby < Package
     puts 'Updating ruby gems. This may take a while...'
     # update_rubygems is provided by the ruby_rubygems_update package.
     system 'gem install rubygems-update', exception: false unless File.executable?("#{CREW_PREFIX}/bin/update_rubygems")
-    system 'update_rubygems'
+    system 'update_rubygems', exception: false
     # install for Ruby 3.4
     system 'gem uninstall resolv-replace', exception: false
-    system 'gem install highline ptools'
+    system 'gem install highline ptools', exception: false
     system "gem update #{'--silent' unless @opt_verbose} -N --system", exception: false
   end
 end
