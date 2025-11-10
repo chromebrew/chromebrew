@@ -10,7 +10,7 @@ class Cbindgen < RUST
   license 'MPL2'
   compatibility 'all'
   source_url 'https://github.com/eqrion/cbindgen.git'
-  git_hashtag version
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
