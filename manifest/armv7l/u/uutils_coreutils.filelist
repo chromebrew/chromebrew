@@ -1,8 +1,7 @@
-# Total size: 22999444
+# Total size: 23326728
 /usr/local/bin/[
 /usr/local/bin/arch
 /usr/local/bin/b2sum
-/usr/local/bin/b3sum
 /usr/local/bin/base32
 /usr/local/bin/base64
 /usr/local/bin/basename
@@ -75,15 +74,8 @@
 /usr/local/bin/sha1sum
 /usr/local/bin/sha224sum
 /usr/local/bin/sha256sum
-/usr/local/bin/sha3-224sum
-/usr/local/bin/sha3-256sum
-/usr/local/bin/sha3-384sum
-/usr/local/bin/sha3-512sum
 /usr/local/bin/sha384sum
-/usr/local/bin/sha3sum
 /usr/local/bin/sha512sum
-/usr/local/bin/shake128sum
-/usr/local/bin/shake256sum
 /usr/local/bin/shred
 /usr/local/bin/shuf
 /usr/local/bin/sleep
@@ -120,7 +112,6 @@
 /usr/local/share/bash-completion/completions/[
 /usr/local/share/bash-completion/completions/arch
 /usr/local/share/bash-completion/completions/b2sum
-/usr/local/share/bash-completion/completions/b3sum
 /usr/local/share/bash-completion/completions/base32
 /usr/local/share/bash-completion/completions/base64
 /usr/local/share/bash-completion/completions/basename
@@ -193,15 +184,8 @@
 /usr/local/share/bash-completion/completions/sha1sum
 /usr/local/share/bash-completion/completions/sha224sum
 /usr/local/share/bash-completion/completions/sha256sum
-/usr/local/share/bash-completion/completions/sha3-224sum
-/usr/local/share/bash-completion/completions/sha3-256sum
-/usr/local/share/bash-completion/completions/sha3-384sum
-/usr/local/share/bash-completion/completions/sha3-512sum
 /usr/local/share/bash-completion/completions/sha384sum
-/usr/local/share/bash-completion/completions/sha3sum
 /usr/local/share/bash-completion/completions/sha512sum
-/usr/local/share/bash-completion/completions/shake128sum
-/usr/local/share/bash-completion/completions/shake256sum
 /usr/local/share/bash-completion/completions/shred
 /usr/local/share/bash-completion/completions/shuf
 /usr/local/share/bash-completion/completions/sleep
@@ -237,7 +221,6 @@
 /usr/local/share/man/man1/[.1.zst
 /usr/local/share/man/man1/arch.1.zst
 /usr/local/share/man/man1/b2sum.1.zst
-/usr/local/share/man/man1/b3sum.1.zst
 /usr/local/share/man/man1/base32.1.zst
 /usr/local/share/man/man1/base64.1.zst
 /usr/local/share/man/man1/basename.1.zst
@@ -310,15 +293,8 @@
 /usr/local/share/man/man1/sha1sum.1.zst
 /usr/local/share/man/man1/sha224sum.1.zst
 /usr/local/share/man/man1/sha256sum.1.zst
-/usr/local/share/man/man1/sha3-224sum.1.zst
-/usr/local/share/man/man1/sha3-256sum.1.zst
-/usr/local/share/man/man1/sha3-384sum.1.zst
-/usr/local/share/man/man1/sha3-512sum.1.zst
 /usr/local/share/man/man1/sha384sum.1.zst
-/usr/local/share/man/man1/sha3sum.1.zst
 /usr/local/share/man/man1/sha512sum.1.zst
-/usr/local/share/man/man1/shake128sum.1.zst
-/usr/local/share/man/man1/shake256sum.1.zst
 /usr/local/share/man/man1/shred.1.zst
 /usr/local/share/man/man1/shuf.1.zst
 /usr/local/share/man/man1/sleep.1.zst
