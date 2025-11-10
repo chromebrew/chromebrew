@@ -35,7 +35,9 @@ class Llvm21_dev < Package
   no_strip
 
   def self.preflight
-    abort "Update #{CREW_LLVM_VER} first.".lightred if Gem::Version.new(version.split('-').first) < Gem::Version.new(Llvm21_build.version.split('-').first)
+    abort "Update #{CREW_LLVM_VER}_build first.".lightred if Gem::Version.new(version.split('-').first) < Gem::Version.new(Llvm21_build.version.split('-').first)
+    llvm_lib_obj = Package.load_package("#{__dir__}/#{CREW_LLVM_VER}_dev.rb")
+    abort "Update  #{CREW_LLVM_VER}_lib first.".lightred if Gem::Version.new(version.split('-').first) > Gem::Version.new(llvm_lib_obj.version.split('-').first)
   end
 
   def self.install

@@ -7,7 +7,7 @@ class Libclc < Package
   llvm_build_obj = Package.load_package("#{__dir__}/#{CREW_LLVM_VER}_build.rb")
   description 'Library requirements of the OpenCL C programming language'
   homepage 'https://libclc.llvm.org/'
-  version '21.1.4'
+  version llvm_build_obj.version
   # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
   puts "#{self} version differs from llvm version #{llvm_build_obj.version}".orange if version != llvm_build_obj.version
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
@@ -27,6 +27,11 @@ class Libclc < Package
   depends_on 'spirv_llvm_translator' => :build
 
   no_env_options
+
+  def self.preflight
+    llvm_dev_obj = Package.load_package("#{__dir__}/#{CREW_LLVM_VER}_dev.rb")
+    abort "Update  #{CREW_LLVM_VER}_dev first.".lightred if Gem::Version.new(version.split('-').first) > Gem::Version.new(llvm_dev_obj.version.split('-').first)
+  end
 
   def self.patch
     # Remove rc suffix on final release.
