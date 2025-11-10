@@ -3,7 +3,7 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '3.4.7'
+  version '3.4.7-1'
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
   source_url 'https://github.com/ruby/ruby.git'
@@ -78,10 +78,10 @@ class Ruby < Package
     puts 'Updating ruby gems. This may take a while...'
     # update_rubygems is provided by the ruby_rubygems_update package.
     system 'gem install rubygems-update', exception: false unless File.executable?("#{CREW_PREFIX}/bin/update_rubygems")
-    system 'update_rubygems'
+    system 'update_rubygems', exception: false
     # install for Ruby 3.4
     system 'gem uninstall resolv-replace', exception: false
-    system 'gem install highline ptools'
+    system 'gem install highline ptools', exception: false
     system "gem update #{'--silent' unless @opt_verbose} -N --system", exception: false
   end
 end
