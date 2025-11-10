@@ -189,6 +189,7 @@ class RUBY < Package
   def self.install
     # @install_gem will always be true during upgrades since we remove
     # the old gem during the upgrade.
+    set_vars(name, version) if @ruby_gem_name.blank? || @gem_installed_version.blank?
     unless @install_gem
       puts "#{@ruby_gem_name} #{@gem_installed_version} is properly installed.".lightgreen
       return
