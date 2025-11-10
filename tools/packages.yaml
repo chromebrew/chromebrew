@@ -850,6 +850,11 @@ url: http://www.hyperrealm.com/packages
 activity: none
 ---
 kind: url
+name: cbindgen
+url: https://github.com/mozilla/cbindgen/releases
+activity: medium
+---
+kind: url
 name: cbonsai
 url: https://gitlab.com/jallbrit/cbonsai/-/tags
 activity: none
@@ -3696,6 +3701,11 @@ activity: high
 ---
 kind: url
 name: js115
+url: https://archive.mozilla.org/pub/firefox/releases/
+activity: high
+---
+kind: url
+name: js140
 url: https://archive.mozilla.org/pub/firefox/releases/
 activity: high
 ---

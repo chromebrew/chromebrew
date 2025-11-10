@@ -48,7 +48,7 @@ class Icu4c < Autotools
         end
         # Mozjs contains an internal icu which will not match this version.
         # Update the following when there is a new version of mozjs.
-        @file_array.delete_if { |item| item == 'js115' }
+        @file_array.delete_if { |item| item == 'js140' }
         next if @file_array.empty?
 
         @file_array.uniq.sort.each do |item|
