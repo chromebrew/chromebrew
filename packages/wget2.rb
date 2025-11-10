@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Wget2 < Autotools
   description 'GNU Wget is a free software package for retrieving files using HTTP, HTTPS, FTP and FTPS.'
   homepage 'https://www.gnu.org/software/wget/'
-  version '2.1.0'
+  version '2.2.0'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/wget/wget2-2.1.0.tar.lz'
-  source_sha256 'bc034194b512bb83ce0171d15a8db33e1c5c3ab8b3e343e1e6f2cf48f9154fad'
+  source_url "https://ftpmirror.gnu.org/wget/wget2-#{version}.tar.lz"
+  source_sha256 'ffa5e49db90c9ddc0c830b66e473630c679b1b0a26a53d24981d4f0efa1c90b6'
   binary_compression 'tar.zst'
 
   binary_sha256({
