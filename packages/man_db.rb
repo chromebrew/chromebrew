@@ -67,6 +67,6 @@ class Man_db < Package
     # See https://gitlab.com/man-db/man-db/-/issues/4
     # Also https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1003089
     FileUtils.mkdir_p "#{CREW_PREFIX}/var/log"
-    system "MANPATH='' MAN_DISABLE_SECCOMP=1 nice -n 20 mandb -C #{CREW_PREFIX}/etc/man_db.conf -psc &> #{CREW_PREFIX}/var/log/man-db-rebuild.log &"
+    system "MANPATH='' MAN_DISABLE_SECCOMP=1 nice -n 20 mandb -C #{CREW_PREFIX}/etc/man_db.conf -psc &> #{CREW_PREFIX}/var/log/man-db-rebuild.log &", exception: false
   end
 end
