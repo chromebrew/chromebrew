@@ -23,6 +23,7 @@ class Gjs < Meson
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gobject_introspection' # R
+  depends_on 'gtk4' => :build
   depends_on 'harfbuzz' # R
   depends_on 'js140' # R
   depends_on 'libffi' # R
