@@ -3,7 +3,7 @@ require 'package'
 class Nushell < Package
   description 'A new type of shell'
   homepage 'https://www.nushell.sh/'
-  version '0.107.0'
+  version '0.108.0'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.28'
@@ -13,9 +13,9 @@ class Nushell < Package
      x86_64: "https://github.com/nushell/nushell/releases/download/#{version}/nu-#{version}-x86_64-unknown-linux-gnu.tar.gz"
   })
   source_sha256({
-    aarch64: 'ac0537e283bb229c15b8ef6323fdea9abdcf711a129f066248b0870168bbd533',
-     armv7l: 'ac0537e283bb229c15b8ef6323fdea9abdcf711a129f066248b0870168bbd533',
-     x86_64: '9c803a1b2019c80e75b4170edc2d3ccbf02aebc784bc9b243881ac178d27f381'
+    aarch64: '5823f3b115fd4fd303cc5dcc316d07e7afeee74b0d9937ee380d40b97c3d13d9',
+     armv7l: '5823f3b115fd4fd303cc5dcc316d07e7afeee74b0d9937ee380d40b97c3d13d9',
+     x86_64: 'f0daaa0256b0f7dd5f4d9925b4d5522d8de5e947ed9ad64a43526e5cffeb05df'
   })
 
   no_compile_needed
@@ -29,5 +29,9 @@ class Nushell < Package
 
   def self.postinstall
     ExitMessage.add "\nType 'nu' to get started.\n"
+  end
+
+  def self.postremove
+    Package.agree_to_remove("#{CREW_PREFIX}/.config/nushell")
   end
 end
