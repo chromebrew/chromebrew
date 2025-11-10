@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Fish < CMake
   description 'fish is a smart and user-friendly command line shell for macOS, Linux, and the rest of the family.'
   homepage 'https://fishshell.com/'
-  version '4.1.0'
+  version '4.2.0'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/fish-shell/fish-shell.git'
@@ -11,10 +11,10 @@ class Fish < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4bd54a0e4b962e8683c21042ebb6903417d3dad9d41c3cf3e2a1b2205a6f07a7',
-     armv7l: '4bd54a0e4b962e8683c21042ebb6903417d3dad9d41c3cf3e2a1b2205a6f07a7',
-       i686: 'ba90bb8e21abf241eaf8205ec58eebe773e32e251a7a0b1886492789b137d344',
-     x86_64: 'cac01859bff230beaf70ff7ccb2b3562b229e3eaf3ec9220d453f7601cc2fdb5'
+    aarch64: '5e5fe3027a6d9d27deba270d354d11d2408bf4260ef244e271a184e91508c177',
+     armv7l: '5e5fe3027a6d9d27deba270d354d11d2408bf4260ef244e271a184e91508c177',
+       i686: 'd5d2288469058e2a6312aba366e465a827e28953eaecfaed8578658c93bebacc',
+     x86_64: '0e8eea821e0de6680fad136957517baa29dbb1be9e5b81495489fe29e6c009c7'
   })
 
   depends_on 'gcc_lib' # R

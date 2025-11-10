@@ -1,4 +1,4 @@
-# Total size: 29972979
+# Total size: 31071448
 /usr/local/bin/fish
 /usr/local/bin/fish_indent
 /usr/local/bin/fish_key_reader
@@ -6,6 +6,7 @@
 /usr/local/share/doc/fish/CHANGELOG.rst
 /usr/local/share/fish/__fish_build_paths.fish
 /usr/local/share/fish/completions/!.fish
+/usr/local/share/fish/completions/..fish
 /usr/local/share/fish/completions/7z.fish
 /usr/local/share/fish/completions/7za.fish
 /usr/local/share/fish/completions/7zr.fish
@@ -1066,6 +1067,7 @@
 /usr/local/share/fish/functions/__fish_cache_sourced_completions.fish
 /usr/local/share/fish/functions/__fish_cached.fish
 /usr/local/share/fish/functions/__fish_cancel_commandline.fish
+/usr/local/share/fish/functions/__fish_canonicalize_builtin.fish
 /usr/local/share/fish/functions/__fish_change_key_bindings.fish
 /usr/local/share/fish/functions/__fish_cmd__complete_args.fish
 /usr/local/share/fish/functions/__fish_commandline_is_singlequoted.fish
@@ -1119,6 +1121,9 @@
 /usr/local/share/fish/functions/__fish_crux_packages.fish
 /usr/local/share/fish/functions/__fish_cursor_konsole.fish
 /usr/local/share/fish/functions/__fish_cursor_xterm.fish
+/usr/local/share/fish/functions/__fish_data_list_files.fish
+/usr/local/share/fish/functions/__fish_data_with_directory.fish
+/usr/local/share/fish/functions/__fish_data_with_file.fish
 /usr/local/share/fish/functions/__fish_describe_command.fish
 /usr/local/share/fish/functions/__fish_echo.fish
 /usr/local/share/fish/functions/__fish_edit_command_if_at_cursor.fish
@@ -1131,10 +1136,13 @@
 /usr/local/share/fish/functions/__fish_is_first_token.fish
 /usr/local/share/fish/functions/__fish_is_git_repository.fish
 /usr/local/share/fish/functions/__fish_is_nth_token.fish
+/usr/local/share/fish/functions/__fish_is_standalone.fish
 /usr/local/share/fish/functions/__fish_is_switch.fish
 /usr/local/share/fish/functions/__fish_is_token_n.fish
 /usr/local/share/fish/functions/__fish_is_zfs_feature_enabled.fish
 /usr/local/share/fish/functions/__fish_list_current_token.fish
+/usr/local/share/fish/functions/__fish_locale_vars.fish
+/usr/local/share/fish/functions/__fish_macos_set_env.fish
 /usr/local/share/fish/functions/__fish_make_cache_dir.fish
 /usr/local/share/fish/functions/__fish_make_completion_signals.fish
 /usr/local/share/fish/functions/__fish_man_page.fish
@@ -1217,6 +1225,7 @@
 /usr/local/share/fish/functions/__fish_vcs_prompt.fish
 /usr/local/share/fish/functions/__fish_whatis.fish
 /usr/local/share/fish/functions/__fish_whatis_current_token.fish
+/usr/local/share/fish/functions/__fish_with_status.fish
 /usr/local/share/fish/functions/__ssh_history_completions.fish
 /usr/local/share/fish/functions/__terlar_git_prompt.fish
 /usr/local/share/fish/functions/_validate_int.fish
@@ -1293,7 +1302,6 @@
 /usr/local/share/fish/functions/vared.fish
 /usr/local/share/fish/groff/fish.tmac
 /usr/local/share/fish/tools/create_manpage_completions.py
-/usr/local/share/fish/tools/deroff.py
 /usr/local/share/fish/tools/web_config/favicon.png
 /usr/local/share/fish/tools/web_config/fishconfig.css
 /usr/local/share/fish/tools/web_config/fishconfig_print.css
