@@ -34,6 +34,10 @@ class Llvm21_dev < Package
   no_source_build
   no_strip
 
+  def self.preflight
+    abort "Update #{CREW_LLVM_VER} first.".lightred if Gem::Version.new(version.split('-').first) < Gem::Version.new(Llvm21_build.split('-').first)
+  end
+
   def self.install
     puts 'Installing llvm21_build to pull files for build...'.lightblue
     @filelist_path = File.join(CREW_META_PATH, 'llvm21_build.filelist')
