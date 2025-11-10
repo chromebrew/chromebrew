@@ -1,4 +1,4 @@
-# Total size: 1276939
+# Total size: 2216658
 /usr/local/bin/gjs
 /usr/local/bin/gjs-console
 /usr/local/include/gjs-1.0/gjs/context.h
@@ -13,5 +13,14 @@
 /usr/local/lib64/libgjs.so.0
 /usr/local/lib64/libgjs.so.0.0.0
 /usr/local/lib64/pkgconfig/gjs-1.0.pc
+/usr/local/libexec/installed-tests/gjs/GIMarshallingTests-1.0.typelib
+/usr/local/libexec/installed-tests/gjs/Regress-1.0.typelib
+/usr/local/libexec/installed-tests/gjs/RegressUnix-1.0.typelib
+/usr/local/libexec/installed-tests/gjs/Utility-1.0.typelib
+/usr/local/libexec/installed-tests/gjs/WarnLib-1.0.typelib
+/usr/local/libexec/installed-tests/gjs/libgimarshallingtests.so
+/usr/local/libexec/installed-tests/gjs/libregress.so
+/usr/local/libexec/installed-tests/gjs/libutility.so
+/usr/local/libexec/installed-tests/gjs/libwarnlib.so
 /usr/local/share/gjs-1.0/lsan/lsan.supp
 /usr/local/share/gjs-1.0/valgrind/gjs.supp

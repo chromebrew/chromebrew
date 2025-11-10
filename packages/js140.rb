@@ -6,7 +6,7 @@ require 'package'
 class Js140 < Package
   description 'JavaScript interpreter and libraries - Version 115'
   homepage 'https://spidermonkey.dev/'
-  version '140.4.0'
+  version '140.4.0-1'
   license 'MPL-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://archive.mozilla.org/pub/firefox/releases/#{version.split('-').first}esr/source/firefox-#{version.split('-').first}esr.source.tar.xz"
@@ -25,7 +25,7 @@ class Js140 < Package
   depends_on 'glibc' # R
   depends_on 'icu4c' # R
   depends_on 'libnotify' => :build
-  depends_on 'llvm' => :build
+  depends_on 'llvm_dev' => :build # llvm-objdump is needed.
   depends_on 'ncurses' # R
   depends_on 'nss'
   depends_on 'nss' # R
@@ -34,6 +34,7 @@ class Js140 < Package
   depends_on 'py3_pycairo' => :build
   depends_on 'readline' # R
   depends_on 'rust' => :build
+  depends_on 'wget2' => :build
   depends_on 'zlib' # R
 
   @rust_default_host = case ARCH
@@ -42,6 +43,12 @@ class Js140 < Package
                        else
                          "#{ARCH}-unknown-linux-gnu"
                        end
+
+  def self.patch
+    # As per https://bugzilla.mozilla.org/show_bug.cgi?id=1973994
+    system "sed -i '/* js_config_h */i #undef XP_UNIX' js/src/js-config.h.in"
+    system "sed -i '/* js_config_h */i #undef XP_WIN' js/src/js-config.h.in"
+  end
 
   def self.build
     @mozconfig = <<~MOZCONFIG_EOF
@@ -61,9 +68,9 @@ class Js140 < Package
       ac_add_options --libdir=#{CREW_LIB_PREFIX}
       ac_add_options --prefix=#{CREW_PREFIX}
       ac_add_options --with-intl-api
+      ac_add_options --with-system-icu
       ac_add_options --with-system-nspr
       ac_add_options --with-system-zlib
-      ac_add_options #{ARCH == 'armv7l' ? '--with-system-icu' : '--without-system-icu'}
       mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/obj
     MOZCONFIG_EOF
     File.write('.mozconfig', @mozconfig)
@@ -88,9 +95,9 @@ class Js140 < Package
       ENV['RUSTC_BOOTSTRAP'] = 'packed_simd,packed_simd_2,encoding_rs'
       system "CFLAGS='-fcf-protection=none' \
             CXXFLAGS='-fcf-protection=none' \
-            CC=gcc CXX=g++ \
+            CC=gcc \
+            CXX=g++ \
             LD=#{CREW_LINKER} \
-            RUSTFLAGS='-Clto=thin -C embed-bitcode' \
             RUSTUP_HOME='#{CREW_PREFIX}/share/rustup' \
             CARGO_HOME='#{CREW_PREFIX}/share/cargo' \
             LDFLAGS='-lreadline -ltinfo' \
