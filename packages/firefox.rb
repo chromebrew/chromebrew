@@ -3,12 +3,12 @@ require 'package'
 class Firefox < Package
   description 'Mozilla Firefox (or simply Firefox) is a free and open-source web browser'
   homepage 'https://www.mozilla.org/en-US/firefox/'
-  version '144.0.2'
+  version '145.0'
   license 'MPL-2.0, GPL-2 and LGPL-2.1'
   compatibility 'x86_64'
   min_glibc '2.35'
   source_url "https://download-installer.cdn.mozilla.net/pub/firefox/releases/#{version}/linux-x86_64/en-US/firefox-#{version}.tar.xz"
-  source_sha256 '19cada8e7b6f4f00c450411578b4c241d2d50a0a566a1cbe8181fa950b6c0ad4'
+  source_sha256 '00fb922cda6bab971e02bcbfb77923b0a234388ed7d77c23506ca0a1a61d4a86'
 
   depends_on 'at_spi2_core'
   depends_on 'cairo'
