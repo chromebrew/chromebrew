@@ -9605,6 +9605,11 @@ url: https://github.com/aureliojargas/txt2regex/releases
 activity: none
 ---
 kind: url
+name: typescript
+url: https://github.com/microsoft/TypeScript/releases
+activity: high
+---
+kind: url
 name: uchardet
 url: https://www.freedesktop.org/software/uchardet/releases/
 activity: none

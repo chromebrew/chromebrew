@@ -65,17 +65,21 @@ class Nodebrew < Package
     puts
     if ARCH == 'i686'
       puts 'FYI: v17.9.1 is the last version compatible with i686.'.orange
-      puts 'To install the latest node, execute:'.lightblue
-      puts 'nodebrew install-binary v17.9.1'.lightblue
+      # puts 'To install the latest node, execute:'.lightblue
+      # puts 'nodebrew install-binary v17.9.1'.lightblue
+      system 'source ~/.bashrc ; nodebrew install-binary v17.9.1', exception: false
     elsif LIBC_VERSION.to_f <= 2.27
       puts 'FYI: v16.18.1 is the last version compatible with GLIBC 2.27'.orange
-      puts 'To install the latest node, execute:'.lightblue
-      puts 'nodebrew install-binary v16.18.1'.lightblue
+      # puts 'To install the latest node, execute:'.lightblue
+      # puts 'nodebrew install-binary v16.18.1'.lightblue
+      system 'source ~/.bashrc; nodebrew install-binary v16.18.1', exception: false
     else
-      puts 'To install the latest node, execute:'.lightblue
-      puts 'nodebrew install-binary latest'.lightblue
+      # puts 'To install the latest node, execute:'.lightblue
+      # puts 'nodebrew install-binary latest'.lightblue
+      system 'source ~/.bashrc ; nodebrew install-binary latest', exception: false
     end
-    puts 'nodebrew use latest'.lightblue
+    # puts 'nodebrew use latest'.lightblue
+    system 'source ~/.bashrc ; nodebrew use latest', exception: false
     puts
   end
 
