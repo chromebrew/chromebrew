@@ -24,7 +24,7 @@ jobs:
           persist-credentials: true
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.4.5'
+          ruby-version: '3.4.7'
       - name: Install Python pip
         run: sudo apt install -y python3-pip
       - name: Setup Git.
@@ -36,7 +36,7 @@ jobs:
       - name: Install ruby-libversion  # Hopefully this will get added as an Ubuntu/Debian package. https://github.com/repology/libversion/issues/35
         working-directory: ${{ runner.temp }}
         run: |
-          git clone --depth 1 -b 3.0.3 https://github.com/repology/libversion
+          git clone --depth 1 -b 3.0.4 https://github.com/repology/libversion
           cd libversion
           mkdir build
           cd build
@@ -48,6 +48,7 @@ jobs:
         id: update-checks
         run: |
           set -x
+          export CI=1
           git pull
           git stash drop || true
           echo "pwd is $(pwd)"
@@ -57,7 +58,7 @@ jobs:
             git stash pop || true
             pkg=${i%.rb}
             pkg=${pkg#packages/}
-            pkg_version="$(LD_LIBRARY_PATH=/usr/local/lib ruby tools/version.rb -j ${pkg} | jq -r '.[]|.version')"
+            pkg_version="$(LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH ruby tools/version.rb -j ${pkg} | jq -r '.[]|.version')"
             if [[ -z "$pkg_version" ]]; then
               branch_tag="$(date -u +%F-%H-%M)"
             else
