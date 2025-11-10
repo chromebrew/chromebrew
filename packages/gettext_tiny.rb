@@ -17,9 +17,7 @@ class Gettext_tiny < Package
      x86_64: '9435867e7adfa4f9906a89de80288cc59d014ee7dab19ef764ce18c2a7ad7fcd'
   })
 
-  def self.preinstall
-    abort 'gettext already installed. gettext_tiny conflicts with gettext.'.lightred if File.exist? "#{CREW_PREFIX}/bin/msgcomm"
-  end
+  conflicts_with 'gettext'
 
   def self.build
     system 'make', 'LIBINTL=NONE'

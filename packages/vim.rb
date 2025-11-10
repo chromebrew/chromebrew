@@ -27,10 +27,7 @@ class Vim < Autotools
 
   ignore_updater
 
-  def self.preflight
-    gvim = `which #{CREW_PREFIX}/bin/gvim 2> /dev/null`.chomp
-    abort "gvim version #{version} already installed.".lightgreen unless gvim.to_s == ''
-  end
+  conflicts_with 'gvim'
 
   def self.patch
     # set the system-wide vimrc path
