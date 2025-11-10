@@ -41,6 +41,10 @@ class Wget2 < Autotools
                   --with-bzip2 \
                   --with-lzma'
 
+  def self.patch
+    system 'autoreconf -fiv'
+  end
+
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     FileUtils.ln_sf "#{CREW_PREFIX}/bin/wget2", "#{CREW_DEST_PREFIX}/bin/wget"
