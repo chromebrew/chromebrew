@@ -3,12 +3,12 @@ require 'package'
 class Termius < Package
   description 'Modern SSH Client'
   homepage 'https://termius.com/'
-  version '9.32.4'
+  version '9.33.0'
   license 'Apache-2.0, LGPL-2.1, MIT'
   compatibility 'x86_64'
   min_glibc '2.33'
   source_url 'https://www.termius.com/download/linux/Termius.deb'
-  source_sha256 '6b12d2d43049d99ad920d14f6b4e17c70d0f3b4ffa9a2e0bf05b7d224a0b919d'
+  source_sha256 '0120b5e957648d520beecfa2f93a1756cd1e903b5fcf084c592f261619961844'
 
   depends_on 'sommelier'
 
