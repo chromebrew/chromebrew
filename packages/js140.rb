@@ -43,7 +43,7 @@ class Js140 < Package
   end
 
   def self.build
-    @mozconfig = <<~MOZCONFIG_EOF
+    File.write '.mozconfig', <<~MOZCONFIG_EOF
       ac_add_options --disable-bootstrap
       ac_add_options --disable-debug
       ac_add_options --disable-debug-symbols
@@ -65,7 +65,6 @@ class Js140 < Package
       ac_add_options --with-system-zlib
       mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/obj
     MOZCONFIG_EOF
-    File.write('.mozconfig', @mozconfig)
     FileUtils.mkdir_p 'obj'
     Dir.chdir 'obj' do
       # error: Cannot set `RUSTC_BOOTSTRAP=1` from build script of `packed_simd v0.3.4 (https://github.com/hsivonen/packed_simd?rev=0917fe780032a6bbb23d71be545f9c1834128d75#0917fe78)`.
