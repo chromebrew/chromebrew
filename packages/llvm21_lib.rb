@@ -13,8 +13,8 @@ class Llvm21_lib < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '836c8558c8d3eea7fd1b4f3aeaeefd2765e19e5898927636122242aadc80baeb',
-     armv7l: '836c8558c8d3eea7fd1b4f3aeaeefd2765e19e5898927636122242aadc80baeb',
+    aarch64: '2b713b81f62befb3659216b604572d86914d74798179eee4263a5c77a78bfac9',
+     armv7l: '2b713b81f62befb3659216b604572d86914d74798179eee4263a5c77a78bfac9',
        i686: '106cd1288dd3fd8810a069dc5ec790a4a40e8fc3bf06c54ee66a2c163f386952',
      x86_64: '07f2117378e7e4334fc5bd5e668a82bf3c746a3db2dc3d464b19b84ce10ddd4c'
   })
