@@ -25,4 +25,8 @@ class Ollama < Package
   def self.postinstall
     ExitMessage.add "\nType 'ollama' to get started.\n"
   end
+
+  def self.postremove
+    Package.agree_to_remove("#{HOME}/.ollama")
+  end
 end
