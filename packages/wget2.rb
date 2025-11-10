@@ -6,8 +6,8 @@ class Wget2 < Autotools
   version '2.2.0'
   license 'GPL-3'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/wget/wget2-#{version}.tar.lz"
-  source_sha256 'ffa5e49db90c9ddc0c830b66e473630c679b1b0a26a53d24981d4f0efa1c90b6'
+  source_url 'https://gitlab.com/gnuwget/wget2.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
