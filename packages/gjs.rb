@@ -11,9 +11,9 @@ class Gjs < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4ddcbf2cd059a44a886900bd364e569cb749ef5554f415be86c6d276b55a0e5b',
-     armv7l: '4ddcbf2cd059a44a886900bd364e569cb749ef5554f415be86c6d276b55a0e5b',
-     x86_64: 'fd47d6cbf0e9f4cbf41eae0cd5e3c4fa3a7336ea91636c1616947b1dfae825ea'
+    aarch64: 'eb53897926520377b10ef2d3483c4ca2c103f780a54fb514a8cbd87017747341',
+     armv7l: 'eb53897926520377b10ef2d3483c4ca2c103f780a54fb514a8cbd87017747341',
+     x86_64: 'e6311b3433b322b9b616b5f58224d9f6c9d0ff95e254574d1c69d357cb285c4f'
   })
 
   depends_on 'cairo' # R
@@ -22,6 +22,7 @@ class Gjs < Meson
   depends_on 'gcc_lib' # R
   depends_on 'glib' # R
   depends_on 'glibc' # R
+  depends_on 'gobject_introspection' => :build
   depends_on 'gtk4' => :build
   depends_on 'harfbuzz' # R
   depends_on 'js140' # R

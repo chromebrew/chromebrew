@@ -4,7 +4,7 @@
 require 'package'
 
 class Js140 < Package
-  description 'JavaScript interpreter and libraries - Version 115'
+  description 'JavaScript interpreter and libraries - Version 140'
   homepage 'https://spidermonkey.dev/'
   version '140.4.0-1'
   license 'MPL-2.0'
@@ -14,9 +14,9 @@ class Js140 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '030ddc7fa57f6667b6629f67643387326e3885b975894456af7dfe152608d9b3',
-     armv7l: '030ddc7fa57f6667b6629f67643387326e3885b975894456af7dfe152608d9b3',
-     x86_64: '452f9c6d05f84ce7fcef024b8e57a5e799898f79984fe2778b5399cec2ed63ac'
+    aarch64: '20cc7045e2f2d41d8db93eaf8e7b78ce5ff77c51557e0a8e365bf4855751d4cd',
+     armv7l: '20cc7045e2f2d41d8db93eaf8e7b78ce5ff77c51557e0a8e365bf4855751d4cd',
+     x86_64: '733f2b3cf638515f8236465372e8d69585666dfbc46e48b4bc8a6d30072f92d4'
   })
 
   depends_on 'autoconf213' => :build
@@ -27,7 +27,6 @@ class Js140 < Package
   depends_on 'libnotify' => :build
   depends_on 'llvm_dev' => :build # llvm-objdump is needed.
   depends_on 'ncurses' # R
-  depends_on 'nss'
   depends_on 'nss' # R
   depends_on 'py3_maturin' => :build
   depends_on 'py3_pre_commit' => :build
@@ -36,13 +35,6 @@ class Js140 < Package
   depends_on 'rust' => :build
   depends_on 'wget2' => :build
   depends_on 'zlib' # R
-
-  @rust_default_host = case ARCH
-                       when 'aarch64', 'armv7l'
-                         'armv7-unknown-linux-gnueabihf'
-                       else
-                         "#{ARCH}-unknown-linux-gnu"
-                       end
 
   def self.patch
     # As per https://bugzilla.mozilla.org/show_bug.cgi?id=1973994
@@ -74,24 +66,12 @@ class Js140 < Package
       mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/obj
     MOZCONFIG_EOF
     File.write('.mozconfig', @mozconfig)
-    # if %w[armv7l aarch64].include?(ARCH)
-    #  # see https://bugzilla.mozilla.org/show_bug.cgi?id=1786621
-    #  open('.mozconfig', 'a') do |f|
-    #    f.puts 'ac_add_options --without-system-icu'
-    #  end
-    # else
-    #  open('.mozconfig', 'a') do |f|
-    #    f.puts 'ac_add_options --enable-rust-simd'
-    #    f.puts 'ac_add_options --without-system-icu'
-    #  end
-    # end
     FileUtils.mkdir_p 'obj'
     Dir.chdir 'obj' do
       # error: Cannot set `RUSTC_BOOTSTRAP=1` from build script of `packed_simd v0.3.4 (https://github.com/hsivonen/packed_simd?rev=0917fe780032a6bbb23d71be545f9c1834128d75#0917fe78)`.
       # note: Crates cannot set `RUSTC_BOOTSTRAP` themselves, as doing so would subvert the stability guarantees of Rust for your project.
       # help: If you're sure you want to do this in your project, set the environment variable `RUSTC_BOOTSTRAP=packed_simd` before running cargo instead.
       #
-      # Workaround added for error: options `-C embed-bitcode=no` and `-C lto` are incompatible error.
       ENV['RUSTC_BOOTSTRAP'] = 'packed_simd,packed_simd_2,encoding_rs'
       system "CFLAGS='-fcf-protection=none' \
             CXXFLAGS='-fcf-protection=none' \
