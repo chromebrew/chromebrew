@@ -386,7 +386,7 @@ jobs:
       - name: Install ruby-libversion  # Hopefully this will get added as an Ubuntu/Debian package. https://github.com/repology/libversion/issues/35
         working-directory: ${{ runner.temp }}
         run: |
-          git clone --depth 1 -b 3.0.3 https://github.com/repology/libversion
+          git clone --depth 1 -b 3.0.4 https://github.com/repology/libversion
           cd libversion
           mkdir build
           cd build

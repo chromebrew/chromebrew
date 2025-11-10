@@ -23,7 +23,7 @@ jobs:
           persist-credentials: true
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.4.5'
+          ruby-version: '3.4.7'
       - name: Check for updates in core and buildessential packages.
         id: trigger-update-checks
         run: |
