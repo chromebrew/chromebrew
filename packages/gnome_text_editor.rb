@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gnome_text_editor < Meson
   description 'GNOME Text Editor'
   homepage 'https://gitlab.gnome.org/GNOME/gnome-text-editor'
-  version '47.beta'
+  version '49.0'
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-text-editor.git'
