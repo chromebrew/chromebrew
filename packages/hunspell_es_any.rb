@@ -3,42 +3,31 @@ require 'package'
 class Hunspell_es_any < Package
   description 'Diccionarios de español de Hunspell'
   homepage 'http://hunspell.github.io/'
-  version '1.7.0-1'
+  version '6.4'
   license 'MPL-1.1, GPL-2 and LGPL-2.1'
   compatibility 'all'
-  source_url 'https://github.com/hunspell/hunspell/archive/v1.7.0.tar.gz'
-  source_sha256 'bb27b86eb910a8285407cf3ca33b62643a02798cf2eef468c0a74f6c3ee6bc8a'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/LibreOffice/dictionaries.git'
+  git_hashtag "libreoffice-#{version.gsub('.', '-')}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a90ff23957171cf1af1124701ca68c9f46cb7893fedeb568f90238b7d43d4078',
-     armv7l: 'a90ff23957171cf1af1124701ca68c9f46cb7893fedeb568f90238b7d43d4078',
-       i686: '9c3c01eadd76055d27f2c517cb06571445f370a519f0eeff28b17f116643bceb',
-     x86_64: '984019dd5ea744163b7992162256e6e71a91ce1e7341c543d28c38e2f324e86d'
+    aarch64: 'b7eba48f03f26a5ab1006c6fcfd4ec8f3e28f3888379646496d00e9ff994e4e6',
+     armv7l: 'b7eba48f03f26a5ab1006c6fcfd4ec8f3e28f3888379646496d00e9ff994e4e6',
+       i686: '9d44c92b70aae024d44ae0e917499b10dfbeae4c87628dd59654b12635259746',
+     x86_64: '9ef8c2ffcfa382381f17b334e08dea664fb3dfd97cd129a43839e14ba39847c1'
   })
 
   depends_on 'hunspell_base'
+  ignore_updater
 
   def self.install
-    system 'git clone -b libreoffice-6-1 --depth 1 git://anongit.freedesktop.org/libreoffice/dictionaries.git'
-    system "install -Dm644 dictionaries/es/es_ANY.aff #{CREW_DEST_HOME}/Library/Spelling/es_ANY.aff"
-    system "install -Dm644 dictionaries/es/es_ANY.dic #{CREW_DEST_HOME}/Library/Spelling/es_ANY.dic"
+    FileUtils.install 'es/es_ANY.aff', "#{CREW_DEST_HOME}/Library/Spelling/es_ANY.aff", mode: 0o644
+    FileUtils.install 'es/es_ANY.dic', "#{CREW_DEST_HOME}/Library/Spelling/es_ANY.dic", mode: 0o644
 
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
-    @env = <<~EOF
+    File.write "#{CREW_DEST_PREFIX}/etc/env.d/hunspell_es_any", <<~EOF
       # Configuración de hunspell
       export DICTIONARY=es_ANY
     EOF
-    File.write("#{CREW_DEST_PREFIX}/etc/env.d/hunspell_es_any", @env)
-  end
-
-  def self.postinstall
-    system 'git clone -b libreoffice-6-1 --depth 1 git://anongit.freedesktop.org/libreoffice/dictionaries.git'
-    FileUtils.cp 'dictionaries/es/es_ANY.aff', "#{HOME}/Library/Spelling/es_ANY.aff"
-    FileUtils.cp 'dictionaries/es/es_ANY.dic', "#{HOME}/Library/Spelling/es_ANY.dic"
-    FileUtils.rm_rf 'dictionaries/'
-    puts
-    puts "Para actualizar los diccionarios periódicamente, ejecute 'crew postinstall hunspell_es_any'".lightblue
-    puts
   end
 end
