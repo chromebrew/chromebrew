@@ -1,4 +1,4 @@
-# Total size: 14446524
+# Total size: 17456314
 /usr/local/bin/[
 /usr/local/bin/arch
 /usr/local/bin/b2sum
@@ -7,7 +7,6 @@
 /usr/local/bin/basename
 /usr/local/bin/basenc
 /usr/local/bin/cat
-/usr/local/bin/chcon
 /usr/local/bin/chgrp
 /usr/local/bin/chmod
 /usr/local/bin/chown
@@ -66,7 +65,6 @@
 /usr/local/bin/realpath
 /usr/local/bin/rm
 /usr/local/bin/rmdir
-/usr/local/bin/runcon
 /usr/local/bin/seq
 /usr/local/bin/sha1sum
 /usr/local/bin/sha224sum
@@ -202,7 +200,6 @@
 /usr/local/share/man/man1/basename.1.zst
 /usr/local/share/man/man1/basenc.1.zst
 /usr/local/share/man/man1/cat.1.zst
-/usr/local/share/man/man1/chcon.1.zst
 /usr/local/share/man/man1/chgrp.1.zst
 /usr/local/share/man/man1/chmod.1.zst
 /usr/local/share/man/man1/chown.1.zst
@@ -262,7 +259,6 @@
 /usr/local/share/man/man1/realpath.1.zst
 /usr/local/share/man/man1/rm.1.zst
 /usr/local/share/man/man1/rmdir.1.zst
-/usr/local/share/man/man1/runcon.1.zst
 /usr/local/share/man/man1/seq.1.zst
 /usr/local/share/man/man1/sha1sum.1.zst
 /usr/local/share/man/man1/sha224sum.1.zst
