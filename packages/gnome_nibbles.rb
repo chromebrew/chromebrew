@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gnome_nibbles < Meson
   description 'snake game, up to four players'
   homepage 'https://wiki.gnome.org/Apps/Nibbles'
-  version '4.0.3'
+  version '4.4.2'
   license 'GPL-3+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-nibbles.git'
