@@ -1,5 +1,5 @@
 #!/bin/bash
-CREW_INSTALLER_VERSION=2025102901
+CREW_INSTALLER_VERSION=2025111101
 # Exit on fail.
 set -eE
 
@@ -238,7 +238,7 @@ function curl_wrapper () {
     elif [[ "$CURL_STATUS" == "system" ]]; then
       if [[ "$ARCH" == "i686" ]]; then
         # i686 system curl throws a "SSL certificate problem: self signed certificate in certificate chain" error.
-        LD_LIBRARY_PATH=/usr/lib${SYSTEM_LIB_SUFFIX}:/lib${SYSTEM_LIB_SUFFIX} /usr/bin/curl -kC - "${@}" && return 0
+        LD_LIBRARY_PATH=/usr/lib${SYSTEM_LIB_SUFFIX}:/lib${SYSTEM_LIB_SUFFIX} /usr/bin/curl -k "${@}" && return 0
       else
         LD_LIBRARY_PATH=/usr/lib${SYSTEM_LIB_SUFFIX}:/lib${SYSTEM_LIB_SUFFIX} /usr/bin/curl --ssl-reqd --tlsv1.2 -C - "${@}" && return 0
       fi
@@ -337,6 +337,7 @@ function download_check () {
         if echo "${4}" "$CREW_CACHE_DIR/${3}" | sha256sum -c -; then
           echo_success "Verification of cached ${1} succeeded."
           ln -sf "$CREW_CACHE_DIR/${3}" "$CREW_BREW_DIR/${3}" || true
+          return 0
         else
           echo_error "Verification of cached $CREW_CACHE_DIR/${3} failed with sha256 ${4}, downloading."
         fi
@@ -475,8 +476,8 @@ function install_ruby_gem () {
     fi
     echo_intra "Installing ${ruby_gem^} gem..."
     gem_file="/usr/local/lib/crew/packages/ruby_${ruby_gem//-/_}.rb"
-    
-    curdir=$(pwd)  
+
+    curdir=$(pwd)
     if grep -q gem_compile_needed "${gem_file}"; then
       cd "$CREW_BREW_DIR"
       version=$(get_pkg_version "${gem_file}")
