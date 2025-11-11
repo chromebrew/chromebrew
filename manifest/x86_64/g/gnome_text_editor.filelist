@@ -1,13 +1,8 @@
-# Total size: 1721700
+# Total size: 2393393
 /usr/local/bin/gnome-text-editor
 /usr/local/share/applications/org.gnome.TextEditor.desktop
 /usr/local/share/dbus-1/services/org.gnome.TextEditor.service
 /usr/local/share/glib-2.0/schemas/org.gnome.TextEditor.gschema.xml
-/usr/local/share/gnome-text-editor/styles/builder-dark.xml
-/usr/local/share/gnome-text-editor/styles/builder.xml
-/usr/local/share/gnome-text-editor/styles/peninsula-dark.xml
-/usr/local/share/gnome-text-editor/styles/peninsula.xml
-/usr/local/share/gnome-text-editor/styles/printing.xml
 /usr/local/share/help/C/gnome-text-editor/basics-create-new-file.page
 /usr/local/share/help/C/gnome-text-editor/basics-draft-folder.page
 /usr/local/share/help/C/gnome-text-editor/basics-open-file.page
@@ -209,6 +204,7 @@
 /usr/local/share/icons/hicolor/scalable/apps/org.gnome.TextEditor.svg
 /usr/local/share/icons/hicolor/symbolic/apps/org.gnome.TextEditor-symbolic.svg
 /usr/local/share/locale/ab/LC_MESSAGES/gnome-text-editor.mo
+/usr/local/share/locale/ar/LC_MESSAGES/gnome-text-editor.mo
 /usr/local/share/locale/be/LC_MESSAGES/gnome-text-editor.mo
 /usr/local/share/locale/bg/LC_MESSAGES/gnome-text-editor.mo
 /usr/local/share/locale/ca/LC_MESSAGES/gnome-text-editor.mo
@@ -257,7 +253,8 @@
 /usr/local/share/locale/th/LC_MESSAGES/gnome-text-editor.mo
 /usr/local/share/locale/tr/LC_MESSAGES/gnome-text-editor.mo
 /usr/local/share/locale/uk/LC_MESSAGES/gnome-text-editor.mo
+/usr/local/share/locale/uz/LC_MESSAGES/gnome-text-editor.mo
 /usr/local/share/locale/vi/LC_MESSAGES/gnome-text-editor.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/gnome-text-editor.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/gnome-text-editor.mo
-/usr/local/share/metainfo/org.gnome.TextEditor.appdata.xml
+/usr/local/share/metainfo/org.gnome.TextEditor.metainfo.xml

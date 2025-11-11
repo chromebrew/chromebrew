@@ -1,21 +1,20 @@
-# Total size: 564109
+# Total size: 696353
 /usr/local/bin/enchant-2
 /usr/local/bin/enchant-lsmod-2
 /usr/local/include/enchant-2/enchant++.h
-/usr/local/include/enchant-2/enchant-provider.h
 /usr/local/include/enchant-2/enchant.h
-/usr/local/lib/enchant-2/enchant_aspell.a
-/usr/local/lib/enchant-2/enchant_aspell.la
 /usr/local/lib/enchant-2/enchant_aspell.so
-/usr/local/lib/enchant-2/enchant_hunspell.a
-/usr/local/lib/enchant-2/enchant_hunspell.la
 /usr/local/lib/enchant-2/enchant_hunspell.so
 /usr/local/lib/libenchant-2.a
 /usr/local/lib/libenchant-2.la
 /usr/local/lib/libenchant-2.so
 /usr/local/lib/libenchant-2.so.2
-/usr/local/lib/libenchant-2.so.2.2.15
+/usr/local/lib/libenchant-2.so.2.8.12
 /usr/local/lib/pkgconfig/enchant-2.pc
-/usr/local/share/enchant/enchant.ordering
-/usr/local/share/man/man1/enchant-2.1.gz
-/usr/local/share/man/man1/enchant-lsmod-2.1.gz
+/usr/local/share/doc/enchant/enchant-2.html
+/usr/local/share/doc/enchant/enchant-lsmod-2.html
+/usr/local/share/doc/enchant/enchant.html
+/usr/local/share/enchant-2/enchant.ordering
+/usr/local/share/man/man1/enchant-2.1.zst
+/usr/local/share/man/man1/enchant-lsmod-2.1.zst
+/usr/local/share/man/man5/enchant.5.zst

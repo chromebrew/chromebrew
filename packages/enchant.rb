@@ -1,37 +1,31 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Enchant < Package
+class Enchant < Autotools
   description 'Enchant is a library (and command-line program) that wraps a number of different spelling libraries and programs with a consistent interface.'
   homepage 'https://abiword.github.io/enchant/'
-  version '2.2.15'
+  version '2.8.12'
   license 'LGPL-2.1+'
-  compatibility 'all'
-  source_url "https://github.com/AbiWord/enchant/archive/v#{version}.tar.gz"
-  source_sha256 '85295934102a4ab94f209cbc7c956affcb2834e7a5fb2101e2db436365e2922d'
-  binary_compression 'tar.xz'
+  compatibility 'aarch64 armv7l x86_64'
+  source_url 'https://github.com/AbiWord/enchant.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1d13b3581ec9223b127f91b29bd5838b44ed61cfee4eb6d2d58a1e3f945f0a14',
-     armv7l: '1d13b3581ec9223b127f91b29bd5838b44ed61cfee4eb6d2d58a1e3f945f0a14',
-       i686: 'cb657dc849d0133429a5fa8d2de803f15b098e1d05a865d538f6917c10a3234a',
-     x86_64: '975d538cf6b7faf44237230c1e61c9ad51e344bded85cca9527ad4c148bccc0c'
+    aarch64: '83ea7932891bf59f10c678ba042060eaac965bf511a8f31bfbc4a312d0e15c0e',
+     armv7l: '83ea7932891bf59f10c678ba042060eaac965bf511a8f31bfbc4a312d0e15c0e',
+     x86_64: '73db9b0d09602b4d48c9833ea80c9608b096e435e8760c883d24fc5bcb0a5f98'
   })
 
-  depends_on 'aspell_en'
-  depends_on 'hunspell'
+  depends_on 'aspell' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gnupg'
+  depends_on 'hunspell' # L
+  depends_on 'hunspell_base' # R
+  depends_on 'ncurses' # R
+  depends_on 'vala' => :build
 
-  def self.build
-    system './bootstrap'
-    system "env CFLAGS='-flto=auto -ltinfo' CXXFLAGS='-flto=auto' \
-        LDFLAGS='-flto=auto' \
-        ./configure #{CREW_CONFIGURE_OPTIONS} \
-        --with-hunspell \
-        --with-aspell"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  autotools_configure_options '--with-hunspell \
+        --with-aspell'
 end

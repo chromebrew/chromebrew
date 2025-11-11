@@ -14,6 +14,7 @@ class Hunspell < Package
     if ARGV.include?('install')
       options = [
         { value: 'hunspell_en_us',  description: 'American English' },
+        { value: 'hunspell_es_us',  description: 'Spanish (United States)' },
         { value: 'hunspell_fr_fr',  description: 'Français'         },
         { value: 'hunspell_es_any', description: 'Español'          }
       ]

@@ -3340,6 +3340,11 @@ url: https://github.com/hunspell/hunspell/releases
 activity: low
 ---
 kind: url
+name: hunspell_es_us
+url: https://github.com/hunspell/hunspell/releases
+activity: low
+---
+kind: url
 name: hunspell_fr_fr
 url: https://github.com/hunspell/hunspell/releases
 activity: low
@@ -5157,6 +5162,11 @@ activity: none
 kind: url
 name: libspectre
 url: https://libspectre.freedesktop.org/releases/
+activity: low
+---
+kind: url
+name: libspelling
+url: https://gitlab.gnome.org/GNOME/libspelling/-/releases
 activity: low
 ---
 kind: url
