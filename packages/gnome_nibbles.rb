@@ -11,9 +11,9 @@ class Gnome_nibbles < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fd2904863d68384f2ba9b0b91b4ca3b973fd641a153dc942a9678565d1c56f21',
-     armv7l: 'fd2904863d68384f2ba9b0b91b4ca3b973fd641a153dc942a9678565d1c56f21',
-     x86_64: '3b68f82b64471b8fd51fe3cd744f7b9e6102ad993fc4bccb45416fb3f1be2ca2'
+    aarch64: '9387c9f62e9616327b77edc6decb894fb903c7b9936330d9c6c5a3597894eee6',
+     armv7l: '9387c9f62e9616327b77edc6decb894fb903c7b9936330d9c6c5a3597894eee6',
+     x86_64: '214a1d36a89ba55ed4cfaada7b6d95c6d462fc448930fc58cfa254be03689790'
   })
 
   depends_on 'clutter_gtk' => :build
