@@ -31,6 +31,7 @@ class Gnome_maps < Meson
   depends_on 'json_glib' # R
   depends_on 'libchamplain' => :build
   depends_on 'libgee' => :build
+  depends_on 'libgweather' => :build
   depends_on 'libhandy' => :build
   depends_on 'libportal' => :build
   depends_on 'librsvg' # R

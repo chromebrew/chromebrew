@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Libgweather < Meson
   description 'Location and timezone database and weather-lookup library'
   homepage 'https://wiki.gnome.org/Projects/LibGWeather'
-  version '4.4.0'
+  version '4.4.4'
   license 'GPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/libgweather.git'
