@@ -1,4 +1,4 @@
-# Total size: 8273901
+# Total size: 8771365
 /usr/local/include/libsoup-3.0/libsoup/soup-auth-domain-basic.h
 /usr/local/include/libsoup-3.0/libsoup/soup-auth-domain-digest.h
 /usr/local/include/libsoup-3.0/libsoup/soup-auth-domain.h
@@ -44,7 +44,7 @@
 /usr/local/lib/girepository-1.0/Soup-3.0.typelib
 /usr/local/lib/libsoup-3.0.so
 /usr/local/lib/libsoup-3.0.so.0
-/usr/local/lib/libsoup-3.0.so.0.7.1
+/usr/local/lib/libsoup-3.0.so.0.7.4
 /usr/local/lib/pkgconfig/libsoup-3.0.pc
 /usr/local/share/doc/libsoup-3.0/RedHatDisplay-Black.woff
 /usr/local/share/doc/libsoup-3.0/RedHatDisplay-Black.woff2
@@ -180,6 +180,11 @@
 /usr/local/share/doc/libsoup-3.0/error.SessionError.html
 /usr/local/share/doc/libsoup-3.0/error.TLDError.html
 /usr/local/share/doc/libsoup-3.0/error.WebsocketError.html
+/usr/local/share/doc/libsoup-3.0/favicon-16x16.png
+/usr/local/share/doc/libsoup-3.0/favicon-180x180.png
+/usr/local/share/doc/libsoup-3.0/favicon-192x192.png
+/usr/local/share/doc/libsoup-3.0/favicon-32x32.png
+/usr/local/share/doc/libsoup-3.0/favicon.ico
 /usr/local/share/doc/libsoup-3.0/flags.Cacheability.html
 /usr/local/share/doc/libsoup-3.0/flags.Expectation.html
 /usr/local/share/doc/libsoup-3.0/flags.MessageFlags.html
@@ -190,6 +195,7 @@
 /usr/local/share/doc/libsoup-3.0/func.DEPRECATED_IN_3_0_FOR.html
 /usr/local/share/doc/libsoup-3.0/func.DEPRECATED_IN_3_2_FOR.html
 /usr/local/share/doc/libsoup-3.0/func.DEPRECATED_IN_3_4_FOR.html
+/usr/local/share/doc/libsoup-3.0/func.DEPRECATED_IN_3_6_FOR.html
 /usr/local/share/doc/libsoup-3.0/func.UNAVAILABLE.html
 /usr/local/share/doc/libsoup-3.0/func.check_version.html
 /usr/local/share/doc/libsoup-3.0/func.cookies_free.html
@@ -416,7 +422,6 @@
 /usr/local/share/doc/libsoup-3.0/method.MessageHeaders.set_range.html
 /usr/local/share/doc/libsoup-3.0/method.MessageHeaders.set_ranges.html
 /usr/local/share/doc/libsoup-3.0/method.MessageHeaders.unref.html
-/usr/local/share/doc/libsoup-3.0/method.MessageHeadersIter.next.html
 /usr/local/share/doc/libsoup-3.0/method.MessageMetrics.copy.html
 /usr/local/share/doc/libsoup-3.0/method.MessageMetrics.free.html
 /usr/local/share/doc/libsoup-3.0/method.MessageMetrics.get_connect_end.html
@@ -542,6 +547,7 @@
 /usr/local/share/doc/libsoup-3.0/method.WebsocketConnection.get_extensions.html
 /usr/local/share/doc/libsoup-3.0/method.WebsocketConnection.get_io_stream.html
 /usr/local/share/doc/libsoup-3.0/method.WebsocketConnection.get_keepalive_interval.html
+/usr/local/share/doc/libsoup-3.0/method.WebsocketConnection.get_keepalive_pong_timeout.html
 /usr/local/share/doc/libsoup-3.0/method.WebsocketConnection.get_max_incoming_payload_size.html
 /usr/local/share/doc/libsoup-3.0/method.WebsocketConnection.get_origin.html
 /usr/local/share/doc/libsoup-3.0/method.WebsocketConnection.get_protocol.html
@@ -551,6 +557,7 @@
 /usr/local/share/doc/libsoup-3.0/method.WebsocketConnection.send_message.html
 /usr/local/share/doc/libsoup-3.0/method.WebsocketConnection.send_text.html
 /usr/local/share/doc/libsoup-3.0/method.WebsocketConnection.set_keepalive_interval.html
+/usr/local/share/doc/libsoup-3.0/method.WebsocketConnection.set_keepalive_pong_timeout.html
 /usr/local/share/doc/libsoup-3.0/method.WebsocketConnection.set_max_incoming_payload_size.html
 /usr/local/share/doc/libsoup-3.0/method.WebsocketExtension.configure.html
 /usr/local/share/doc/libsoup-3.0/method.WebsocketExtension.get_request_params.html
@@ -626,6 +633,7 @@
 /usr/local/share/doc/libsoup-3.0/property.WebsocketConnection.extensions.html
 /usr/local/share/doc/libsoup-3.0/property.WebsocketConnection.io-stream.html
 /usr/local/share/doc/libsoup-3.0/property.WebsocketConnection.keepalive-interval.html
+/usr/local/share/doc/libsoup-3.0/property.WebsocketConnection.keepalive-pong-timeout.html
 /usr/local/share/doc/libsoup-3.0/property.WebsocketConnection.max-incoming-payload-size.html
 /usr/local/share/doc/libsoup-3.0/property.WebsocketConnection.origin.html
 /usr/local/share/doc/libsoup-3.0/property.WebsocketConnection.protocol.html
@@ -690,6 +698,7 @@
 /usr/local/share/doc/libsoup-3.0/type_func.AuthNegotiate.supported.html
 /usr/local/share/doc/libsoup-3.0/type_func.Cookie.parse.html
 /usr/local/share/doc/libsoup-3.0/type_func.MessageHeadersIter.init.html
+/usr/local/share/doc/libsoup-3.0/type_func.MessageHeadersIter.next.html
 /usr/local/share/doc/libsoup-3.0/type_func.SessionError.quark.html
 /usr/local/share/doc/libsoup-3.0/type_func.Status.get_phrase.html
 /usr/local/share/doc/libsoup-3.0/type_func.TLDError.quark.html
@@ -757,6 +766,7 @@
 /usr/local/share/locale/it/LC_MESSAGES/libsoup-3.0.mo
 /usr/local/share/locale/ja/LC_MESSAGES/libsoup-3.0.mo
 /usr/local/share/locale/ka/LC_MESSAGES/libsoup-3.0.mo
+/usr/local/share/locale/kab/LC_MESSAGES/libsoup-3.0.mo
 /usr/local/share/locale/kn/LC_MESSAGES/libsoup-3.0.mo
 /usr/local/share/locale/ko/LC_MESSAGES/libsoup-3.0.mo
 /usr/local/share/locale/lt/LC_MESSAGES/libsoup-3.0.mo

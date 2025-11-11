@@ -3,29 +3,30 @@ require 'buildsystems/meson'
 class Geocode_glib < Meson
   description 'Helper library for geocoding services'
   homepage 'https://gitlab.gnome.org/GNOME/geocode-glib'
-  version '3.26.4'
+  version '3.26.4-1'
   license 'LGPL-2'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://github.com/GNOME/geocode-glib/archive/3.26.4.tar.gz'
-  source_sha256 'cd4464f74add58584f04e6a7f16347f07caf271509e0b7ef067a4170b74518c9'
+  source_url 'https://gitlab.gnome.org/GNOME/geocode-glib.git'
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b4c19b4b56d86ca0ce4d5a98f0b87f09ba883e5363e271277c0419a72ece6fa3',
-     armv7l: 'b4c19b4b56d86ca0ce4d5a98f0b87f09ba883e5363e271277c0419a72ece6fa3',
-     x86_64: '7149daebea7923591edbabf59b14e328421880aaac8c8147ba4ac0c0838b5d19'
+    aarch64: '9090dd6c6054ce951bca9256b31046730e3a379f14bc4a2f87bac265890c3cf9',
+     armv7l: '9090dd6c6054ce951bca9256b31046730e3a379f14bc4a2f87bac265890c3cf9',
+     x86_64: '35338e68809b3785b69e54b16d0cc9831a75c8a224a2793806ca6a4f98cc5fee'
   })
 
-  depends_on 'json_glib'
-  depends_on 'libsoup'
-  depends_on 'gobject_introspection' => :build
-  depends_on 'gtk_doc' => :build
-  depends_on 'py3_pygments' => :build
   depends_on 'glib' # R
   depends_on 'glibc' # R
+  depends_on 'gobject_introspection' => :build
+  depends_on 'gtk_doc' => :build
+  depends_on 'json_glib'
   depends_on 'libsoup2' # R
+  depends_on 'py3_pygments' => :build
 
   gnome
+
+  meson_options '-Denable-installed-tests=false -Denable-gtk-doc=false -Dsoup2=true'
 
   def self.patch
     system "sed -i 's/gnome/Adwaita/' icons/meson.build"
