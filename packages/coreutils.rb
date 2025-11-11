@@ -24,7 +24,7 @@ class Coreutils < Autotools
   depends_on 'libcap' # R
   depends_on 'openssl' # R
 
-  conflicts_with 'uutils_coreutils'
+  CREW_IN_CONTAINER ? conflicts_ok : (conflicts_with 'uutils_coreutils')
 
   def self.prebuild
     File.write 'arch', <<~EOF
