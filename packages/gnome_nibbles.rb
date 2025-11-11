@@ -19,6 +19,7 @@ class Gnome_nibbles < Meson
   depends_on 'clutter_gtk' => :build
   depends_on 'desktop_file_utils' => :build
   depends_on 'gsound' => :build
+  depends_on 'libadwaita' => :build
   depends_on 'libgnome_games_support2' => :build
   depends_on 'librsvg' => :build
   depends_on 'vala' => :build
