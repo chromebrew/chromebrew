@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gnome_mines < Meson
   description 'GNOME Mines (formerly known as Gnomine) is minesweeper clone for GNOME'
   homepage 'https://wiki.gnome.org/Apps/Mines'
-  version '40.1'
+  version '49.0.1'
   license 'GPL-3+ and CC-BY-SA-3.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-mines.git'
