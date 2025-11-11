@@ -11,10 +11,10 @@ class Libxcrypt < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0c918ceb9e8fcf139ad62088e0544362b4719f8b7e78073e7c2954b668d25e1c',
-     armv7l: '0c918ceb9e8fcf139ad62088e0544362b4719f8b7e78073e7c2954b668d25e1c',
-       i686: 'b26af1777dfb19b7ca6bf71f1d41c7fa8da9b16e0224b01c16fdf0f0c6edbce2',
-     x86_64: '07a0f00b62f322e9dedea378b300933163ecf067e9f334c33399428b084d6a4c'
+    aarch64: '71a07dc54be7bbd21105ee89243e5b9e4687ac9f2f47fba61449005e00eca2c4',
+     armv7l: '71a07dc54be7bbd21105ee89243e5b9e4687ac9f2f47fba61449005e00eca2c4',
+       i686: '5bf079bf54015f8727cbdc44a2d73f5de914a6b94e3e1237030b355630d0d4ce',
+     x86_64: '1553a96a54eb3480a4906eec597178d9cce561f2417d78315fead429a45c5fd8'
   })
 
   depends_on 'glibc' # R
