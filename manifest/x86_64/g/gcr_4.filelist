@@ -1,4 +1,4 @@
-# Total size: 2998771
+# Total size: 3273209
 /usr/local/bin/gcr-viewer-gtk4
 /usr/local/include/gck-2/gck/gck-enum-types.h
 /usr/local/include/gck-2/gck/gck-version.h
@@ -6,6 +6,9 @@
 /usr/local/include/gck-2/gck/pkcs11n.h
 /usr/local/include/gck-2/gck/pkcs11x.h
 /usr/local/include/gcr-4/gcr/gcr-certificate-chain.h
+/usr/local/include/gcr-4/gcr/gcr-certificate-extension-list.h
+/usr/local/include/gcr-4/gcr/gcr-certificate-extension.h
+/usr/local/include/gcr-4/gcr/gcr-certificate-extensions.h
 /usr/local/include/gcr-4/gcr/gcr-certificate-field.h
 /usr/local/include/gcr-4/gcr/gcr-certificate-request.h
 /usr/local/include/gcr-4/gcr/gcr-certificate-section.h
@@ -23,6 +26,7 @@
 /usr/local/include/gcr-4/gcr/gcr-secure-memory.h
 /usr/local/include/gcr-4/gcr/gcr-simple-certificate.h
 /usr/local/include/gcr-4/gcr/gcr-ssh-askpass.h
+/usr/local/include/gcr-4/gcr/gcr-subject-public-key-info.h
 /usr/local/include/gcr-4/gcr/gcr-system-prompt.h
 /usr/local/include/gcr-4/gcr/gcr-system-prompter.h
 /usr/local/include/gcr-4/gcr/gcr-trust.h
@@ -34,10 +38,10 @@
 /usr/local/lib64/girepository-1.0/Gcr-4.typelib
 /usr/local/lib64/libgck-2.so
 /usr/local/lib64/libgck-2.so.2
-/usr/local/lib64/libgck-2.so.2.2.1
+/usr/local/lib64/libgck-2.so.2.4.0
 /usr/local/lib64/libgcr-4.so
 /usr/local/lib64/libgcr-4.so.4
-/usr/local/lib64/libgcr-4.so.4.2.1
+/usr/local/lib64/libgcr-4.so.4.4.0
 /usr/local/lib64/pkgconfig/gck-2.pc
 /usr/local/lib64/pkgconfig/gcr-4.pc
 /usr/local/libexec/gcr-ssh-agent
@@ -89,6 +93,7 @@
 /usr/local/share/locale/it/LC_MESSAGES/gcr-4.mo
 /usr/local/share/locale/ja/LC_MESSAGES/gcr-4.mo
 /usr/local/share/locale/ka/LC_MESSAGES/gcr-4.mo
+/usr/local/share/locale/kab/LC_MESSAGES/gcr-4.mo
 /usr/local/share/locale/kk/LC_MESSAGES/gcr-4.mo
 /usr/local/share/locale/kn/LC_MESSAGES/gcr-4.mo
 /usr/local/share/locale/ko/LC_MESSAGES/gcr-4.mo

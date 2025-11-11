@@ -407,6 +407,8 @@ unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
     { pkg_name: 'gcc_build', anitya_pkg: 'gcc', comments: '' },
     { pkg_name: 'gcc_dev', anitya_pkg: 'gcc', comments: '' },
     { pkg_name: 'gcc_lib', anitya_pkg: 'gcc', comments: '' },
+    { pkg_name: 'gcr_3', anitya_pkg: 'gcr~3', comments: '' },
+    { pkg_name: 'gcr_4', anitya_pkg: 'gcr', comments: '' },
     { pkg_name: 'gemacs', anitya_pkg: 'emacs', comments: '' },
     { pkg_name: 'gnu_time', anitya_pkg: 'time', comments: '' },
     { pkg_name: 'go_tools', anitya_pkg: 'golang-x-tools', comments: '' },
