@@ -20,7 +20,7 @@ class Gnome_mines < Meson
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gsound' => :build
-  depends_on 'gtk3' # R
+  depends_on 'gtk4' # R
   depends_on 'libgnome_games_support' # R
   depends_on 'librsvg' => :build
   depends_on 'wayland' => :build
