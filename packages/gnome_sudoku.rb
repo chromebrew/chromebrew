@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gnome_sudoku < Meson
   description 'Sudoku puzzle game for GNOME'
   homepage 'https://wiki.gnome.org/Apps/Sudoku'
-  version '46.0'
+  version '49.2'
   license 'GPL-3+ and CC-BY-SA-3.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-sudoku.git'
@@ -16,6 +16,7 @@ class Gnome_sudoku < Meson
      x86_64: 'cf7973ad00562200aeb5527ce60cd4747fd737b6a9bc71b03a3e9b687e713ee5'
   })
 
+  depends_on 'blueprint_compiler' => :build
   depends_on 'cairo' # R
   depends_on 'clutter_gtk' => :build
   depends_on 'gcc_lib' # R
