@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Libsoup < Meson
   description 'libsoup is an HTTP client/server library for GNOME.'
   homepage 'https://wiki.gnome.org/Projects/libsoup'
-  version '3.4.4'
+  version '3.6.5'
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/libsoup.git'
@@ -11,17 +11,16 @@ class Libsoup < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bb6057694da2fdf4a5d66544e2af3cdba7fd4f85ef7d9ab515df0cd59a1c0e7c',
-     armv7l: 'bb6057694da2fdf4a5d66544e2af3cdba7fd4f85ef7d9ab515df0cd59a1c0e7c',
-     x86_64: '3123c0f5ac768e957b0a234f9ab7834cfb117394f1e74a1ca8355e888f597ac9'
+    aarch64: '532688450c93709b5a6adb69750c460808050aeb1025956c9c9090d0f0e36694',
+     armv7l: '532688450c93709b5a6adb69750c460808050aeb1025956c9c9090d0f0e36694',
+     x86_64: 'ac2c8a4ffc06a61e2ba2971b9c5d923686699ca09b267b8b539bf741afdd6c49'
   })
 
   depends_on 'brotli' # R
-  depends_on 'e2fsprogs' # R
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'glib_networking' => :build
   depends_on 'glib' # R
+  depends_on 'glib_networking' => :build
+  depends_on 'glibc' # R
   depends_on 'gobject_introspection' => :build
   depends_on 'krb5' # R
   depends_on 'libnghttp2' # R
