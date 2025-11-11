@@ -6,11 +6,13 @@ require 'package'
 class Binutils < Package
   description 'The GNU Binutils are a collection of binary tools.'
   homepage 'https://www.gnu.org/software/binutils/'
-  version '2.45'
+  version '2.45.1'
   license 'GPL-3+'
   compatibility 'all'
-  source_url "https://sourceware.org/pub/binutils/releases/binutils-#{version.split('-').first}.tar.zst"
-  source_sha256 '79cb120b39a195ad588cd354aed886249bfab36c808e746b30208d15271cc95c'
+  source_url 'https://sourceware.org/git/binutils-gdb.git'
+  git_hashtag "binutils-#{version.gsub('.', '_')}"
+  # source_url "https://sourceware.org/pub/binutils/releases/binutils-#{version.split('-').first}.tar.zst"
+  # source_sha256 '79cb120b39a195ad588cd354aed886249bfab36c808e746b30208d15271cc95c'
   binary_compression 'tar.zst'
 
   binary_sha256({
