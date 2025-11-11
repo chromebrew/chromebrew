@@ -11,10 +11,10 @@ class Coreutils < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9843e5c79b8156cab059bf1f03dd224c3d5dcb9e88d1f95f293b56093de74004',
-     armv7l: '9843e5c79b8156cab059bf1f03dd224c3d5dcb9e88d1f95f293b56093de74004',
+    aarch64: 'dc31fef5f6f47c6d75ac30b4c0b000060c0a2e2e74c6a593769bbe0f6a72facf',
+     armv7l: 'dc31fef5f6f47c6d75ac30b4c0b000060c0a2e2e74c6a593769bbe0f6a72facf',
        i686: 'edb52c0f44efa3810fd4c0880585a676ccbf474e6cb79c918edca93ad3cf2bec',
-     x86_64: 'b7ce9bbed82fdeea4007d463eeb45c34f6bda3b0766f054e09998dbbd188a52f'
+     x86_64: '1a8c1b3b069844e4d5325c7f7a188988fd4f0a029a7c3e0e06735f0a77cf26af'
   })
 
   depends_on 'acl' # R
