@@ -17,12 +17,15 @@ class Gnome_mines < Meson
   })
 
   depends_on 'clutter_gtk' => :build
+  depends_on 'desktop_file_utils' => :build
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gsound' => :build
   depends_on 'gtk4' # R
+  depends_on 'libadwaita' => :build
   depends_on 'libgnome_games_support' # R
   depends_on 'librsvg' => :build
+  depends_on 'py3_itstool' => :build
   depends_on 'wayland' => :build
 
   gnome
