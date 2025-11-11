@@ -1,4 +1,4 @@
-# Total size: 1006230
+# Total size: 1006596
 /usr/local/lib/python3.13/site-packages/nacl/__init__.py
 /usr/local/lib/python3.13/site-packages/nacl/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/nacl/__pycache__/encoding.cpython-313.pyc
@@ -61,10 +61,10 @@
 /usr/local/lib/python3.13/site-packages/nacl/secret.py
 /usr/local/lib/python3.13/site-packages/nacl/signing.py
 /usr/local/lib/python3.13/site-packages/nacl/utils.py
-/usr/local/lib/python3.13/site-packages/pynacl-1.6.0.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/pynacl-1.6.0.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/pynacl-1.6.0.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/pynacl-1.6.0.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/pynacl-1.6.0.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/pynacl-1.6.0.dist-info/licenses/LICENSE
-/usr/local/lib/python3.13/site-packages/pynacl-1.6.0.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/pynacl-1.6.1.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/pynacl-1.6.1.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/pynacl-1.6.1.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/pynacl-1.6.1.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/pynacl-1.6.1.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/pynacl-1.6.1.dist-info/licenses/LICENSE
+/usr/local/lib/python3.13/site-packages/pynacl-1.6.1.dist-info/top_level.txt

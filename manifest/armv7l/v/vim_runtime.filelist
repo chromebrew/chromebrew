@@ -1,4 +1,4 @@
-# Total size: 28474785
+# Total size: 28475199
 /usr/local/etc/vimrc
 /usr/local/share/vim/vim91/LICENSE
 /usr/local/share/vim/vim91/README.txt
@@ -1035,6 +1035,7 @@
 /usr/local/share/vim/vim91/pack/dist/opt/dvorak/dvorak/enable.vim
 /usr/local/share/vim/vim91/pack/dist/opt/dvorak/plugin/dvorak.vim
 /usr/local/share/vim/vim91/pack/dist/opt/editexisting/plugin/editexisting.vim
+/usr/local/share/vim/vim91/pack/dist/opt/editorconfig/.editorconfig
 /usr/local/share/vim/vim91/pack/dist/opt/editorconfig/CONTRIBUTORS
 /usr/local/share/vim/vim91/pack/dist/opt/editorconfig/LICENSE
 /usr/local/share/vim/vim91/pack/dist/opt/editorconfig/LICENSE.PSF
