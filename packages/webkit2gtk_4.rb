@@ -90,7 +90,7 @@ class Webkit2gtk_4 < CMake
           -DUSER_AGENT_BRANDING='Chromebrew' \
           -DUSE_GTK4=OFF \
           -DUSE_JPEGXL=ON \
-          -DUSE_SOUP2=OFF"
+          -DUSE_SOUP2=ON"
   cmake_pre_cache_build_extras do
     # This only works in the container.
     system "sudo ln -sf #{CREW_PREFIX}/bin/gcc /usr/bin/gcc" if CREW_IN_CONTAINER
