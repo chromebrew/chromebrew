@@ -34,6 +34,7 @@ class Gnome_nibbles < Meson
   depends_on 'libgee' # R
   depends_on 'libgnome_games_support2' # R
   depends_on 'pango' # R
+  depends_on 'py3_itstool' => :build
 
   gnome
 end
