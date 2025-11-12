@@ -1,0 +1,22 @@
+# Total size: 5301564
+/usr/local/bin/fy-compose
+/usr/local/bin/fy-dump
+/usr/local/bin/fy-filter
+/usr/local/bin/fy-join
+/usr/local/bin/fy-testsuite
+/usr/local/bin/fy-tool
+/usr/local/bin/fy-ypath
+/usr/local/include/libfyaml.h
+/usr/local/lib64/libfyaml.a
+/usr/local/lib64/libfyaml.la
+/usr/local/lib64/libfyaml.so
+/usr/local/lib64/libfyaml.so.0
+/usr/local/lib64/libfyaml.so.0.0.0
+/usr/local/lib64/pkgconfig/libfyaml.pc
+/usr/local/share/man/man1/fy-compose.1.zst
+/usr/local/share/man/man1/fy-dump.1.zst
+/usr/local/share/man/man1/fy-filter.1.zst
+/usr/local/share/man/man1/fy-join.1.zst
+/usr/local/share/man/man1/fy-testsuite.1.zst
+/usr/local/share/man/man1/fy-tool.1.zst
+/usr/local/share/man/man1/fy-ypath.1.zst

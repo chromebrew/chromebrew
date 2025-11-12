@@ -4430,6 +4430,11 @@ url: https://www.x.org/archive/individual/lib/
 activity: none
 ---
 kind: url
+name: libfyaml
+url: https://github.com/pantoniou/libfyaml/releases
+activity: medium
+---
+kind: url
 name: libgc
 url: https://httpredir.debian.org/debian/pool/main/libg/libgc/
 activity: low

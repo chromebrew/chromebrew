@@ -1,4 +1,4 @@
-# Total size: 3309863
+# Total size: 3655690
 /usr/local/include/goa-1.0/goa/goa-generated.h
 /usr/local/include/goa-1.0/goa/goa.h
 /usr/local/include/goa-1.0/goa/goaclient.h
@@ -12,32 +12,29 @@
 /usr/local/include/goa-1.0/goabackend/goaprovider.h
 /usr/local/lib64/girepository-1.0/Goa-1.0.typelib
 /usr/local/lib64/goa-1.0/include/goaconfig.h
-/usr/local/lib64/goa-1.0/web-extensions/libgoawebextension.so
 /usr/local/lib64/libgoa-1.0.so
 /usr/local/lib64/libgoa-1.0.so.0
 /usr/local/lib64/libgoa-1.0.so.0.0.0
 /usr/local/lib64/libgoa-backend-1.0.so
-/usr/local/lib64/libgoa-backend-1.0.so.1
-/usr/local/lib64/libgoa-backend-1.0.so.1.0.0
+/usr/local/lib64/libgoa-backend-1.0.so.2
+/usr/local/lib64/libgoa-backend-1.0.so.2.0.0
 /usr/local/lib64/pkgconfig/goa-1.0.pc
 /usr/local/lib64/pkgconfig/goa-backend-1.0.pc
 /usr/local/libexec/goa-daemon
 /usr/local/libexec/goa-identity-service
+/usr/local/libexec/goa-oauth2-handler
+/usr/local/share/applications/org.gnome.OnlineAccounts.OAuth2.desktop
 /usr/local/share/dbus-1/services/org.gnome.Identity.service
 /usr/local/share/dbus-1/services/org.gnome.OnlineAccounts.service
 /usr/local/share/gir-1.0/Goa-1.0.gir
-/usr/local/share/glib-2.0/schemas/org.gnome.online-accounts.gschema.xml
 /usr/local/share/icons/hicolor/scalable/apps/goa-account-exchange.svg
 /usr/local/share/icons/hicolor/scalable/apps/goa-account-fedora.svg
 /usr/local/share/icons/hicolor/scalable/apps/goa-account-google.svg
-/usr/local/share/icons/hicolor/scalable/apps/goa-account-lastfm.svg
-/usr/local/share/icons/hicolor/scalable/apps/goa-account-msn.svg
+/usr/local/share/icons/hicolor/scalable/apps/goa-account-ms365.svg
 /usr/local/share/icons/hicolor/scalable/apps/goa-account-owncloud.svg
 /usr/local/share/icons/hicolor/scalable/apps/goa-account.svg
 /usr/local/share/icons/hicolor/symbolic/apps/goa-account-exchange-symbolic.svg
 /usr/local/share/icons/hicolor/symbolic/apps/goa-account-google-symbolic.svg
-/usr/local/share/icons/hicolor/symbolic/apps/goa-account-lastfm-symbolic.svg
-/usr/local/share/icons/hicolor/symbolic/apps/goa-account-msn-symbolic.svg
 /usr/local/share/icons/hicolor/symbolic/apps/goa-account-owncloud-symbolic.svg
 /usr/local/share/icons/hicolor/symbolic/apps/goa-account-symbolic.svg
 /usr/local/share/locale/ab/LC_MESSAGES/gnome-online-accounts.mo
@@ -115,9 +112,11 @@
 /usr/local/share/locale/tr/LC_MESSAGES/gnome-online-accounts.mo
 /usr/local/share/locale/ug/LC_MESSAGES/gnome-online-accounts.mo
 /usr/local/share/locale/uk/LC_MESSAGES/gnome-online-accounts.mo
+/usr/local/share/locale/uz/LC_MESSAGES/gnome-online-accounts.mo
 /usr/local/share/locale/vi/LC_MESSAGES/gnome-online-accounts.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/gnome-online-accounts.mo
 /usr/local/share/locale/zh_HK/LC_MESSAGES/gnome-online-accounts.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/gnome-online-accounts.mo
+/usr/local/share/man/man8/goa-daemon.8.zst
 /usr/local/share/vala/vapi/goa-1.0.deps
 /usr/local/share/vala/vapi/goa-1.0.vapi
