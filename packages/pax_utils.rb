@@ -11,10 +11,10 @@ class Pax_utils < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b244ed7adbbfa83c6a8353d29a5dc7759e04f305792bf453e1076f1046759579',
-     armv7l: 'b244ed7adbbfa83c6a8353d29a5dc7759e04f305792bf453e1076f1046759579',
-       i686: 'c4452f9fcea91e1d070848dcbcac595fd40e137cdcd232e6425d8c6e40356085',
-     x86_64: '0e2e3923dd86ea4931ded5d0679b07e1c6e4bd0fc14d38ffc289a973d5d1d21d'
+    aarch64: '6b34d16064171427da557662ef22fdd165ca3b998d94d06fdbfc81cb4e12e4fd',
+     armv7l: '6b34d16064171427da557662ef22fdd165ca3b998d94d06fdbfc81cb4e12e4fd',
+       i686: '5fbad9b22b96385954ebdcdc078a4335a50c3174a01f699177d11cf38aa9764f',
+     x86_64: '9a579a70d2b6fbe9fc8243b0f7a77bb285ac792fc5e1dea6d76cb151d54bc3d4'
   })
 
   depends_on 'glibc' # R
