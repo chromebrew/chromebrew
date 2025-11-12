@@ -20,7 +20,6 @@ class Gnome_nibbles < Meson
   depends_on 'desktop_file_utils' => :build
   depends_on 'gsound' => :build
   depends_on 'libadwaita' => :build
-  depends_on 'libgnome_games_support2' => :build
   depends_on 'librsvg' => :build
   depends_on 'vala' => :build
   depends_on 'wayland' => :build
@@ -32,7 +31,7 @@ class Gnome_nibbles < Meson
   depends_on 'gsound' # R
   depends_on 'gtk4' # R
   depends_on 'libgee' # R
-  depends_on 'libgnome_games_support2' # R
+  depends_on 'libgnome_games_support' # R
   depends_on 'pango' # R
   depends_on 'py3_itstool' => :build
 

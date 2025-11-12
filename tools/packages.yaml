@@ -4515,6 +4515,11 @@ url: https://bitbucket.org/mpyne/game-music-emu/downloads/?tab=tags
 activity: none
 ---
 kind: url
+name: libgnome_games_support1
+url: https://gitlab.gnome.org/GNOME/libgnome-games-support/-/tags
+activity: none
+---
+kind: url
 name: libgnome_games_support
 url: https://gitlab.gnome.org/GNOME/libgnome-games-support/-/tags
 activity: low
