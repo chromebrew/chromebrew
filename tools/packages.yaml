@@ -660,6 +660,11 @@ url: https://www.bennewitz.com/bluefish/stable/source/
 activity: none
 ---
 kind: url
+name: blueprint_compiler
+url: https://gitlab.gnome.org/GNOME/blueprint-compiler/-/releases
+activity: medium
+---
+kind: url
 name: bmon
 url: https://github.com/tgraf/bmon/releases
 activity: none
