@@ -3,12 +3,11 @@ require 'buildsystems/meson'
 class Gnome_klotski < Meson
   description 'A puzzle game for GNOME.'
   homepage 'https://wiki.gnome.org/Apps/Klotski'
-  @_ver = '3.38.2'
-  version "#{@_ver}-1"
+  version "3.38.2-1"
   license 'GPL-3+ and FDL-1.1+'
   compatibility 'aarch64 armv7l x86_64'
-  source_url "https://download.gnome.org/sources/gnome-klotski/#{@_ver.rpartition('.')[0]}/gnome-klotski-#{@_ver}.tar.xz"
-  source_sha256 '91637845649f3ca709d29f71ee775b946d1112087209f32264e8fad21a0ca0e2'
+  source_url 'https://gitlab.gnome.org/GNOME/gnome-klotski.git'
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -26,7 +25,7 @@ class Gnome_klotski < Meson
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
   depends_on 'libgee' # R
-  depends_on 'libgnome_games_support' # R
+  depends_on 'libgnome_games_support1' # R
   depends_on 'librsvg' # R
 
   gnome

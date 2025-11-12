@@ -91,6 +91,7 @@ renamed_packages = Set[
   { pkg_name: 'jsonc', pkg_rename: 'json_c', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'libcurl', pkg_rename: 'curl', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'libxfont', pkg_rename: 'libxfont2', comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'libgnome_games_support2', pkg_rename: 'libgnome_games_support', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'libgpgerror', pkg_rename: 'libgpg_error', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'libjpeg', pkg_rename: 'libjpeg_turbo', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'libsdl2', pkg_rename: 'sdl2', comments: 'Renamed to better match upstream.' },
