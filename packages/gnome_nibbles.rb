@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gnome_nibbles < Meson
   description 'snake game, up to four players'
   homepage 'https://wiki.gnome.org/Apps/Nibbles'
-  version '4.0.3'
+  version '4.4.2'
   license 'GPL-3+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-nibbles.git'
@@ -11,14 +11,15 @@ class Gnome_nibbles < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fd2904863d68384f2ba9b0b91b4ca3b973fd641a153dc942a9678565d1c56f21',
-     armv7l: 'fd2904863d68384f2ba9b0b91b4ca3b973fd641a153dc942a9678565d1c56f21',
-     x86_64: '3b68f82b64471b8fd51fe3cd744f7b9e6102ad993fc4bccb45416fb3f1be2ca2'
+    aarch64: '9387c9f62e9616327b77edc6decb894fb903c7b9936330d9c6c5a3597894eee6',
+     armv7l: '9387c9f62e9616327b77edc6decb894fb903c7b9936330d9c6c5a3597894eee6',
+     x86_64: '214a1d36a89ba55ed4cfaada7b6d95c6d462fc448930fc58cfa254be03689790'
   })
 
   depends_on 'clutter_gtk' => :build
   depends_on 'desktop_file_utils' => :build
   depends_on 'gsound' => :build
+  depends_on 'libadwaita' => :build
   depends_on 'libgnome_games_support2' => :build
   depends_on 'librsvg' => :build
   depends_on 'vala' => :build
@@ -33,6 +34,7 @@ class Gnome_nibbles < Meson
   depends_on 'libgee' # R
   depends_on 'libgnome_games_support2' # R
   depends_on 'pango' # R
+  depends_on 'py3_itstool' => :build
 
   gnome
 end
