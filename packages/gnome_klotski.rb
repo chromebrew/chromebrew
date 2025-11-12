@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gnome_klotski < Meson
   description 'A puzzle game for GNOME.'
   homepage 'https://wiki.gnome.org/Apps/Klotski'
-  version "3.38.2-1"
+  version '3.38.2-1'
   license 'GPL-3+ and FDL-1.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-klotski.git'
