@@ -15,8 +15,8 @@ class Webkit2gtk_4 < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ca91b3dab02d6204eaadab28efbffa85dff186eb02ca7acef28bfc838cc385e6',
-     armv7l: 'ca91b3dab02d6204eaadab28efbffa85dff186eb02ca7acef28bfc838cc385e6',
+    aarch64: '1b66a5f767a4adddbe8ac2afe674dece407738b70ffba198104f5958e9c1b4bf',
+     armv7l: '1b66a5f767a4adddbe8ac2afe674dece407738b70ffba198104f5958e9c1b4bf',
      x86_64: '5665205aa7b768e4234fee8800b19f8ec52736009b4f136d6af30d9e75394395'
   })
 
