@@ -1,4 +1,4 @@
-# Total size: 1359607
+# Total size: 1473743
 /usr/local/bin/gnome-sudoku
 /usr/local/share/applications/org.gnome.Sudoku.desktop
 /usr/local/share/dbus-1/services/org.gnome.Sudoku.service
@@ -14,7 +14,6 @@
 /usr/local/share/help/C/gnome-sudoku/figures/strategy2.png
 /usr/local/share/help/C/gnome-sudoku/highlighting.page
 /usr/local/share/help/C/gnome-sudoku/index.page
-/usr/local/share/help/C/gnome-sudoku/keyboard-shortcuts.page
 /usr/local/share/help/C/gnome-sudoku/legal.xml
 /usr/local/share/help/C/gnome-sudoku/license.page
 /usr/local/share/help/C/gnome-sudoku/print-blank-puzzles.page
@@ -34,7 +33,6 @@
 /usr/local/share/help/ca/gnome-sudoku/figures/strategy2.png
 /usr/local/share/help/ca/gnome-sudoku/highlighting.page
 /usr/local/share/help/ca/gnome-sudoku/index.page
-/usr/local/share/help/ca/gnome-sudoku/keyboard-shortcuts.page
 /usr/local/share/help/ca/gnome-sudoku/legal.xml
 /usr/local/share/help/ca/gnome-sudoku/license.page
 /usr/local/share/help/ca/gnome-sudoku/print-blank-puzzles.page
@@ -54,7 +52,6 @@
 /usr/local/share/help/cs/gnome-sudoku/figures/strategy2.png
 /usr/local/share/help/cs/gnome-sudoku/highlighting.page
 /usr/local/share/help/cs/gnome-sudoku/index.page
-/usr/local/share/help/cs/gnome-sudoku/keyboard-shortcuts.page
 /usr/local/share/help/cs/gnome-sudoku/legal.xml
 /usr/local/share/help/cs/gnome-sudoku/license.page
 /usr/local/share/help/cs/gnome-sudoku/print-blank-puzzles.page
@@ -74,7 +71,6 @@
 /usr/local/share/help/da/gnome-sudoku/figures/strategy2.png
 /usr/local/share/help/da/gnome-sudoku/highlighting.page
 /usr/local/share/help/da/gnome-sudoku/index.page
-/usr/local/share/help/da/gnome-sudoku/keyboard-shortcuts.page
 /usr/local/share/help/da/gnome-sudoku/legal.xml
 /usr/local/share/help/da/gnome-sudoku/license.page
 /usr/local/share/help/da/gnome-sudoku/print-blank-puzzles.page
@@ -94,7 +90,6 @@
 /usr/local/share/help/de/gnome-sudoku/figures/strategy2.png
 /usr/local/share/help/de/gnome-sudoku/highlighting.page
 /usr/local/share/help/de/gnome-sudoku/index.page
-/usr/local/share/help/de/gnome-sudoku/keyboard-shortcuts.page
 /usr/local/share/help/de/gnome-sudoku/legal.xml
 /usr/local/share/help/de/gnome-sudoku/license.page
 /usr/local/share/help/de/gnome-sudoku/print-blank-puzzles.page
@@ -114,7 +109,6 @@
 /usr/local/share/help/el/gnome-sudoku/figures/strategy2.png
 /usr/local/share/help/el/gnome-sudoku/highlighting.page
 /usr/local/share/help/el/gnome-sudoku/index.page
-/usr/local/share/help/el/gnome-sudoku/keyboard-shortcuts.page
 /usr/local/share/help/el/gnome-sudoku/legal.xml
 /usr/local/share/help/el/gnome-sudoku/license.page
 /usr/local/share/help/el/gnome-sudoku/print-blank-puzzles.page
@@ -134,7 +128,6 @@
 /usr/local/share/help/es/gnome-sudoku/figures/strategy2.png
 /usr/local/share/help/es/gnome-sudoku/highlighting.page
 /usr/local/share/help/es/gnome-sudoku/index.page
-/usr/local/share/help/es/gnome-sudoku/keyboard-shortcuts.page
 /usr/local/share/help/es/gnome-sudoku/legal.xml
 /usr/local/share/help/es/gnome-sudoku/license.page
 /usr/local/share/help/es/gnome-sudoku/print-blank-puzzles.page
@@ -154,7 +147,6 @@
 /usr/local/share/help/eu/gnome-sudoku/figures/strategy2.png
 /usr/local/share/help/eu/gnome-sudoku/highlighting.page
 /usr/local/share/help/eu/gnome-sudoku/index.page
-/usr/local/share/help/eu/gnome-sudoku/keyboard-shortcuts.page
 /usr/local/share/help/eu/gnome-sudoku/legal.xml
 /usr/local/share/help/eu/gnome-sudoku/license.page
 /usr/local/share/help/eu/gnome-sudoku/print-blank-puzzles.page
@@ -174,7 +166,6 @@
 /usr/local/share/help/fr/gnome-sudoku/figures/strategy2.png
 /usr/local/share/help/fr/gnome-sudoku/highlighting.page
 /usr/local/share/help/fr/gnome-sudoku/index.page
-/usr/local/share/help/fr/gnome-sudoku/keyboard-shortcuts.page
 /usr/local/share/help/fr/gnome-sudoku/legal.xml
 /usr/local/share/help/fr/gnome-sudoku/license.page
 /usr/local/share/help/fr/gnome-sudoku/print-blank-puzzles.page
@@ -194,7 +185,6 @@
 /usr/local/share/help/gl/gnome-sudoku/figures/strategy2.png
 /usr/local/share/help/gl/gnome-sudoku/highlighting.page
 /usr/local/share/help/gl/gnome-sudoku/index.page
-/usr/local/share/help/gl/gnome-sudoku/keyboard-shortcuts.page
 /usr/local/share/help/gl/gnome-sudoku/legal.xml
 /usr/local/share/help/gl/gnome-sudoku/license.page
 /usr/local/share/help/gl/gnome-sudoku/print-blank-puzzles.page
@@ -214,7 +204,6 @@
 /usr/local/share/help/hu/gnome-sudoku/figures/strategy2.png
 /usr/local/share/help/hu/gnome-sudoku/highlighting.page
 /usr/local/share/help/hu/gnome-sudoku/index.page
-/usr/local/share/help/hu/gnome-sudoku/keyboard-shortcuts.page
 /usr/local/share/help/hu/gnome-sudoku/legal.xml
 /usr/local/share/help/hu/gnome-sudoku/license.page
 /usr/local/share/help/hu/gnome-sudoku/print-blank-puzzles.page
@@ -234,7 +223,6 @@
 /usr/local/share/help/id/gnome-sudoku/figures/strategy2.png
 /usr/local/share/help/id/gnome-sudoku/highlighting.page
 /usr/local/share/help/id/gnome-sudoku/index.page
-/usr/local/share/help/id/gnome-sudoku/keyboard-shortcuts.page
 /usr/local/share/help/id/gnome-sudoku/legal.xml
 /usr/local/share/help/id/gnome-sudoku/license.page
 /usr/local/share/help/id/gnome-sudoku/print-blank-puzzles.page
@@ -254,7 +242,6 @@
 /usr/local/share/help/ko/gnome-sudoku/figures/strategy2.png
 /usr/local/share/help/ko/gnome-sudoku/highlighting.page
 /usr/local/share/help/ko/gnome-sudoku/index.page
-/usr/local/share/help/ko/gnome-sudoku/keyboard-shortcuts.page
 /usr/local/share/help/ko/gnome-sudoku/legal.xml
 /usr/local/share/help/ko/gnome-sudoku/license.page
 /usr/local/share/help/ko/gnome-sudoku/print-blank-puzzles.page
@@ -274,7 +261,6 @@
 /usr/local/share/help/pl/gnome-sudoku/figures/strategy2.png
 /usr/local/share/help/pl/gnome-sudoku/highlighting.page
 /usr/local/share/help/pl/gnome-sudoku/index.page
-/usr/local/share/help/pl/gnome-sudoku/keyboard-shortcuts.page
 /usr/local/share/help/pl/gnome-sudoku/legal.xml
 /usr/local/share/help/pl/gnome-sudoku/license.page
 /usr/local/share/help/pl/gnome-sudoku/print-blank-puzzles.page
@@ -294,7 +280,6 @@
 /usr/local/share/help/pt_BR/gnome-sudoku/figures/strategy2.png
 /usr/local/share/help/pt_BR/gnome-sudoku/highlighting.page
 /usr/local/share/help/pt_BR/gnome-sudoku/index.page
-/usr/local/share/help/pt_BR/gnome-sudoku/keyboard-shortcuts.page
 /usr/local/share/help/pt_BR/gnome-sudoku/legal.xml
 /usr/local/share/help/pt_BR/gnome-sudoku/license.page
 /usr/local/share/help/pt_BR/gnome-sudoku/print-blank-puzzles.page
@@ -314,7 +299,6 @@
 /usr/local/share/help/ru/gnome-sudoku/figures/strategy2.png
 /usr/local/share/help/ru/gnome-sudoku/highlighting.page
 /usr/local/share/help/ru/gnome-sudoku/index.page
-/usr/local/share/help/ru/gnome-sudoku/keyboard-shortcuts.page
 /usr/local/share/help/ru/gnome-sudoku/legal.xml
 /usr/local/share/help/ru/gnome-sudoku/license.page
 /usr/local/share/help/ru/gnome-sudoku/print-blank-puzzles.page
@@ -334,7 +318,6 @@
 /usr/local/share/help/sv/gnome-sudoku/figures/strategy2.png
 /usr/local/share/help/sv/gnome-sudoku/highlighting.page
 /usr/local/share/help/sv/gnome-sudoku/index.page
-/usr/local/share/help/sv/gnome-sudoku/keyboard-shortcuts.page
 /usr/local/share/help/sv/gnome-sudoku/legal.xml
 /usr/local/share/help/sv/gnome-sudoku/license.page
 /usr/local/share/help/sv/gnome-sudoku/print-blank-puzzles.page
@@ -354,7 +337,6 @@
 /usr/local/share/help/uk/gnome-sudoku/figures/strategy2.png
 /usr/local/share/help/uk/gnome-sudoku/highlighting.page
 /usr/local/share/help/uk/gnome-sudoku/index.page
-/usr/local/share/help/uk/gnome-sudoku/keyboard-shortcuts.page
 /usr/local/share/help/uk/gnome-sudoku/legal.xml
 /usr/local/share/help/uk/gnome-sudoku/license.page
 /usr/local/share/help/uk/gnome-sudoku/print-blank-puzzles.page
@@ -450,6 +432,7 @@
 /usr/local/share/locale/tr/LC_MESSAGES/gnome-sudoku.mo
 /usr/local/share/locale/ug/LC_MESSAGES/gnome-sudoku.mo
 /usr/local/share/locale/uk/LC_MESSAGES/gnome-sudoku.mo
+/usr/local/share/locale/uz/LC_MESSAGES/gnome-sudoku.mo
 /usr/local/share/locale/vi/LC_MESSAGES/gnome-sudoku.mo
 /usr/local/share/locale/wa/LC_MESSAGES/gnome-sudoku.mo
 /usr/local/share/locale/xh/LC_MESSAGES/gnome-sudoku.mo
@@ -457,4 +440,4 @@
 /usr/local/share/locale/zh_HK/LC_MESSAGES/gnome-sudoku.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/gnome-sudoku.mo
 /usr/local/share/man/man6/gnome-sudoku.6.zst
-/usr/local/share/metainfo/org.gnome.Sudoku.appdata.xml
+/usr/local/share/metainfo/org.gnome.Sudoku.metainfo.xml
