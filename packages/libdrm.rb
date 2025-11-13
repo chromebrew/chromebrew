@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Libdrm < Meson
   description 'Cross-driver middleware for DRI protocol.'
   homepage 'https://dri.freedesktop.org/wiki/'
-  version '2.4.127'
+  version '2.4.128'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/mesa/drm.git'
@@ -11,9 +11,9 @@ class Libdrm < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cb21ea50c06cb3582e5a9bce6e2edea2e53c8fd8dde3e42dec22d9a28f69e5b0',
-     armv7l: 'cb21ea50c06cb3582e5a9bce6e2edea2e53c8fd8dde3e42dec22d9a28f69e5b0',
-     x86_64: '248c06a0175c10d8de22d129d13d210a709776711ffaea82d35953fad1d49c34'
+    aarch64: '3b9b787dabe0ad12a74fd73a4a22d7fc7152695fa068b4b6c901028086dd4286',
+     armv7l: '3b9b787dabe0ad12a74fd73a4a22d7fc7152695fa068b4b6c901028086dd4286',
+     x86_64: 'c42e7778f594d57a112c33e88e97a1d853c5da85e13193f707970f3f082e3ed6'
   })
 
   depends_on 'cairo' # R
