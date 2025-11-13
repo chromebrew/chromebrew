@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gdk_pixbuf < Meson
   description 'GdkPixbuf is a library for image loading and manipulation.'
   homepage 'https://gtk.org'
-  version '2.44.3'
+  version '2.44.4'
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gdk-pixbuf.git'
