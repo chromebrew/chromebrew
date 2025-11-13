@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Chafa < Autotools
   description 'Image-to-text converter supporting a wide range of symbols and palettes, transparency, animations, etc.'
   homepage 'https://hpjansson.org/chafa/'
-  version '1.16.2'
+  version '1.18.0'
   license 'LGPL'
   compatibility 'all'
   source_url 'https://github.com/hpjansson/chafa.git'
@@ -11,10 +11,10 @@ class Chafa < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cb196f0966528a8231c9e95872b0fc303b376ba70afc9acd589a33ce2bd7ab90',
-     armv7l: 'cb196f0966528a8231c9e95872b0fc303b376ba70afc9acd589a33ce2bd7ab90',
-       i686: 'c6b2bd9180497d2ea3c79c429e53aea512e7126d3b0eff0bf63ad0d7996e7761',
-     x86_64: 'd81d76468bf1366fedd59afe3ad3a399b8fe992943012f3c6c57a6bbea7cfb7b'
+    aarch64: 'c0e78ff8255ef75293ef0867fe38b17703cb2ddaa60d9c3ab93365bb79871102',
+     armv7l: 'c0e78ff8255ef75293ef0867fe38b17703cb2ddaa60d9c3ab93365bb79871102',
+       i686: 'df8189f046b9f2d5092f0874ab880d30e910be4f90470e6aa253f3821fe6a9f0',
+     x86_64: '080ce8bc537bbc3f80dffe908160b0960704e5dd2862db7ea89f286899ae9efd'
   })
 
   depends_on 'glib'
