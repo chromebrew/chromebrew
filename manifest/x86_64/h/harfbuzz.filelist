@@ -1,4 +1,4 @@
-# Total size: 81714250
+# Total size: 81734002
 /usr/local/bin/hb-info
 /usr/local/bin/hb-shape
 /usr/local/bin/hb-subset
@@ -57,6 +57,7 @@
 /usr/local/include/harfbuzz-freetype2/freetype/ftincrem.h
 /usr/local/include/harfbuzz-freetype2/freetype/ftlcdfil.h
 /usr/local/include/harfbuzz-freetype2/freetype/ftlist.h
+/usr/local/include/harfbuzz-freetype2/freetype/ftlogging.h
 /usr/local/include/harfbuzz-freetype2/freetype/ftlzw.h
 /usr/local/include/harfbuzz-freetype2/freetype/ftmac.h
 /usr/local/include/harfbuzz-freetype2/freetype/ftmm.h
@@ -136,27 +137,27 @@
 /usr/local/lib64/libharfbuzz-cairo.a
 /usr/local/lib64/libharfbuzz-cairo.so
 /usr/local/lib64/libharfbuzz-cairo.so.0
-/usr/local/lib64/libharfbuzz-cairo.so.0.61210.0
+/usr/local/lib64/libharfbuzz-cairo.so.0.61220.0
 /usr/local/lib64/libharfbuzz-freetype.a
 /usr/local/lib64/libharfbuzz-freetype.so
 /usr/local/lib64/libharfbuzz-freetype.so.6
-/usr/local/lib64/libharfbuzz-freetype.so.6.20.2
+/usr/local/lib64/libharfbuzz-freetype.so.6.20.4
 /usr/local/lib64/libharfbuzz-gobject.a
 /usr/local/lib64/libharfbuzz-gobject.so
 /usr/local/lib64/libharfbuzz-gobject.so.0
-/usr/local/lib64/libharfbuzz-gobject.so.0.61210.0
+/usr/local/lib64/libharfbuzz-gobject.so.0.61220.0
 /usr/local/lib64/libharfbuzz-icu.a
 /usr/local/lib64/libharfbuzz-icu.so
 /usr/local/lib64/libharfbuzz-icu.so.0
-/usr/local/lib64/libharfbuzz-icu.so.0.61210.0
+/usr/local/lib64/libharfbuzz-icu.so.0.61220.0
 /usr/local/lib64/libharfbuzz-subset.a
 /usr/local/lib64/libharfbuzz-subset.so
 /usr/local/lib64/libharfbuzz-subset.so.0
-/usr/local/lib64/libharfbuzz-subset.so.0.61210.0
+/usr/local/lib64/libharfbuzz-subset.so.0.61220.0
 /usr/local/lib64/libharfbuzz.a
 /usr/local/lib64/libharfbuzz.so
 /usr/local/lib64/libharfbuzz.so.0
-/usr/local/lib64/libharfbuzz.so.0.61210.0
+/usr/local/lib64/libharfbuzz.so.0.61220.0
 /usr/local/lib64/pkgconfig/cairo.pc
 /usr/local/lib64/pkgconfig/freetype2.pc
 /usr/local/lib64/pkgconfig/harfbuzz-cairo.pc
