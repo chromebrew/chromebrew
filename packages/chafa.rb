@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Chafa < Autotools
   description 'Image-to-text converter supporting a wide range of symbols and palettes, transparency, animations, etc.'
   homepage 'https://hpjansson.org/chafa/'
-  version '1.16.2'
+  version '1.18.0'
   license 'LGPL'
   compatibility 'all'
   source_url 'https://github.com/hpjansson/chafa.git'
