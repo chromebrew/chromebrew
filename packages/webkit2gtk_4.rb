@@ -17,7 +17,7 @@ class Webkit2gtk_4 < CMake
   binary_sha256({
     aarch64: '1b66a5f767a4adddbe8ac2afe674dece407738b70ffba198104f5958e9c1b4bf',
      armv7l: '1b66a5f767a4adddbe8ac2afe674dece407738b70ffba198104f5958e9c1b4bf',
-     x86_64: '5665205aa7b768e4234fee8800b19f8ec52736009b4f136d6af30d9e75394395'
+     x86_64: '3ebd8287b6602a71b1c0a64c0de06bdc54b3733921c8b2416dd5cd3f5c1d4706'
   })
 
   depends_on 'at_spi2_core' # R
