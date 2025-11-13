@@ -410,6 +410,7 @@ unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
     { pkg_name: 'gcr_3', anitya_pkg: 'gcr~3', comments: '' },
     { pkg_name: 'gcr_4', anitya_pkg: 'gcr', comments: '' },
     { pkg_name: 'gemacs', anitya_pkg: 'emacs', comments: '' },
+    { pkg_name: 'gnome_docking_library', anitya_pkg: 'gdl', comments: '' },
     { pkg_name: 'gnu_time', anitya_pkg: 'time', comments: '' },
     { pkg_name: 'go_tools', anitya_pkg: 'golang-x-tools', comments: '' },
     { pkg_name: 'gsfonts', anitya_pkg: 'gs-fonts', comments: '' },
