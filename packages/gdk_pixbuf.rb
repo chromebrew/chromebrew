@@ -11,9 +11,9 @@ class Gdk_pixbuf < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5fb5b60c3d9f2b650e37a9898a6e4141b3daad57e1004e3eba296806f6577f8d',
-     armv7l: '5fb5b60c3d9f2b650e37a9898a6e4141b3daad57e1004e3eba296806f6577f8d',
-     x86_64: '1d462a5827b6d376ab730bdb468af9a28e1e08602c0d2ee950eaed4f1ca18327'
+    aarch64: 'a1a987e93936ff2752c3ef5c5535aba1b0e7b3e59896d3f150f90eb83e1f6ff3',
+     armv7l: 'a1a987e93936ff2752c3ef5c5535aba1b0e7b3e59896d3f150f90eb83e1f6ff3',
+     x86_64: '23d81c3225a1e0fbe12d50f94de9f4370b37b88ae979c76799954a417f591b4c'
   })
 
   depends_on 'glib' # R
