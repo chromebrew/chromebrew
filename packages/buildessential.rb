@@ -3,7 +3,7 @@ require 'package'
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage 'SKIP'
-  version '1.48'
+  version '1.49'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -195,4 +195,7 @@ class Buildessential < Package
 
   # Workaround for rust build dependencies needing to be installed and crew rerun before installs work.
   depends_on 'rust'
+
+  # Add container_essential if we are in a container.
+  depends_on 'container_essential' if CREW_IN_CONTAINER
 end
