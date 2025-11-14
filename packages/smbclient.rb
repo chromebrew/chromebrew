@@ -5,7 +5,7 @@ class Smbclient < Package
   homepage 'https://www.samba.org'
   version "4.23.3-#{CREW_ICU_VER}"
   license 'GPLv3'
-  compatibility 'all'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://download.samba.org/pub/samba/stable/samba-#{version.split('-').first}.tar.gz"
   source_sha256 '06cdbb27a6956978b045455fe0696d998ffbac8d24ba24de87a4ef8200813320'
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Smbclient < Package
   binary_sha256({
     aarch64: 'f161a7f955ecca54425add1cfd6683eabb204c15c9fd77894abe33f5546ac30f',
      armv7l: 'f161a7f955ecca54425add1cfd6683eabb204c15c9fd77894abe33f5546ac30f',
-       i686: 'e3cf441f53e3137b89bd92c3518d76c68ac1323636ee116613d2a00f7dcc0c60',
      x86_64: '0d52fa1f276bd5ec3ac28b4b6e132a33c4401f247a65c81626c53cfffdc25db1'
   })
 
