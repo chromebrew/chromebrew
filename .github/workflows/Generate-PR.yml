@@ -530,6 +530,11 @@ jobs:
           fi
           # Try to update branch before finishing.
           [[ "${{ ( inputs.update_rebase_to_master ) }}" == 'true' ]] && gh pr update-branch --rebase || true
+          # Check to see if the PR is marked as WIP, in which case it should stay as draft.
+          if gh pr list -l "wip 🚧" --json number | jq --arg PR_NUMBER "$PR_NUMBER"  -e -r '.[]|select(.number=='$PR_NUMBER')' &>/dev/null; then
+            echo "PR ${PR_NUMBER} is set as WIP, so will be set or kept as Draft."
+            export DRAFT_PR=true
+          fi
           # Draft PRs can not be set to automerge.
           if [[ ${DRAFT_PR} == 'true' ]]; then
             gh pr ready --undo || true

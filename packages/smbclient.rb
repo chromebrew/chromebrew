@@ -3,25 +3,24 @@ require 'package'
 class Smbclient < Package
   description 'Tools to access a servers filespace and printers via SMB'
   homepage 'https://www.samba.org'
-  version "4.20.4-#{CREW_ICU_VER}"
+  version "4.23.3-#{CREW_ICU_VER}"
   license 'GPLv3'
-  compatibility 'all'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://download.samba.org/pub/samba/stable/samba-#{version.split('-').first}.tar.gz"
-  source_sha256 '3a92e97eaeb345b6b32232f503e14d34f03a7aa64c451fe8c258a11bbda908e5'
+  source_sha256 '06cdbb27a6956978b045455fe0696d998ffbac8d24ba24de87a4ef8200813320'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f161a7f955ecca54425add1cfd6683eabb204c15c9fd77894abe33f5546ac30f',
-     armv7l: 'f161a7f955ecca54425add1cfd6683eabb204c15c9fd77894abe33f5546ac30f',
-       i686: 'e3cf441f53e3137b89bd92c3518d76c68ac1323636ee116613d2a00f7dcc0c60',
-     x86_64: '0d52fa1f276bd5ec3ac28b4b6e132a33c4401f247a65c81626c53cfffdc25db1'
+    aarch64: 'c18bf2258061a8c2d35c8c1ab543fbb3892f9178430a7949909874785fded7d5',
+     armv7l: 'c18bf2258061a8c2d35c8c1ab543fbb3892f9178430a7949909874785fded7d5',
+     x86_64: 'caca312edf13377fe71e33f754a14fc9798dbb12095ece60e3a61428e1b5e7ba'
   })
 
   depends_on 'acl' # R
   depends_on 'avahi' # R
   depends_on 'cmocka' => :build
   depends_on 'cups' => :build
-  depends_on 'docbook' => :build
+  depends_on 'docbook' => :build # We still need to set @xml_catalog_files since the XML_CATALOG_FILES env variable might not get picked up before the build.
   depends_on 'gcc_lib' # R
   depends_on 'gdb' => :build
   depends_on 'glibc' # R
@@ -29,17 +28,19 @@ class Smbclient < Package
   depends_on 'gpgme' => :build
   depends_on 'icu4c' # R
   depends_on 'jansson' # R
-  depends_on 'ldb' # R
+  depends_on 'ldb' => :build
   depends_on 'libarchive' # R
   depends_on 'libbsd' # R
   depends_on 'libcap' # R
+  depends_on 'libngtcp2' # R
   depends_on 'libtasn1' # R
-  depends_on 'libtirpc' # R
-  depends_on 'libunwind' # R
+  depends_on 'libtirpc' => :build
+  depends_on 'libunwind' => :build
   depends_on 'liburing' => :build
+  depends_on 'libxcrypt' # R
   depends_on 'linux_pam' # R
-  depends_on 'lmdb' => :build
-  depends_on 'ncurses' # R
+  depends_on 'lmdb' # R
+  depends_on 'ncurses' => :build
   depends_on 'openldap' # R
   depends_on 'perl_json' => :build
   depends_on 'perl_parse_yapp' => :build
@@ -50,6 +51,7 @@ class Smbclient < Package
   depends_on 'talloc' # R
   depends_on 'tdb' # R
   depends_on 'tevent' # R
+  depends_on 'xmlto' => :build
   depends_on 'zlib' # R
 
   @samba4_idmap_modules = 'idmap_ad,idmap_rid,idmap_adex,idmap_hash,idmap_tdb2'
@@ -60,7 +62,7 @@ class Smbclient < Package
                        smbcquotas smbget net nmblookup smbtar]
   @smbclient_pkgconfig = %w[smbclient netapi wbclient]
 
-  @xml_catalog_files = ENV.fetch('XML_CATALOG_FILES', nil)
+  @xml_catalog_files = ENV.fetch('XML_CATALOG_FILES', "#{CREW_PREFIX}/etc/xml/catalog")
 
   def self.patch
     system "sed -e 's:<gpgme.h>:<gpgme/gpgme.h>:' \
@@ -81,7 +83,7 @@ class Smbclient < Package
       --with-configdir=#{CREW_PREFIX}/etc/samba \
       --with-lockdir=#{CREW_PREFIX}/var/cache/samba \
       --builtin-libraries=NONE \
-      --bundled-libraries=!tdb,!talloc,!pytalloc-util,!tevent,!popt,!ldb,!pyldb-util,NONE \
+      --bundled-libraries=!tdb,!talloc,!pytalloc-util,!tevent,!popt,!ldb,!pyldb-util,libquic,NONE \
       --disable-python \
       --disable-rpath \
       --disable-rpath-install \
@@ -92,16 +94,17 @@ class Smbclient < Package
       --with-pammodulesdir=#{CREW_LIB_PREFIX}/security \
       --with-piddir=/run \
       --with-profiling-data \
-      --with-shared-modules=#{@samba4_idmap_modules},#{@samba4_pdb_modules},#{@samba4_auth_modules},vfs_io_uring \
+      --with-shared-modules=#{@samba4_idmap_modules},#{@samba4_pdb_modules},#{@samba4_auth_modules} \
       --with-sockets-dir=/run/samba \
       --without-ad-dc \
+      --without-smb1-server \
       --with-winbind \
       --without-systemd"
     system 'make'
     # We only need some files from the build, so just install into a
     # staging directory during build.
     FileUtils.mkdir_p 'staging'
-    system 'make V=1 DESTDIR=staging install'
+    system 'make V=1 DESTDIR=staging install', exception: false
     FileUtils.cp 'source3/script/smbtar', "staging/#{CREW_PREFIX}/bin/"
   end
 

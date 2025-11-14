@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Libngtcp2 < CMake
   description 'Implementation of IETF QUIC protocol'
   homepage 'https://github.com/ngtcp2/ngtcp2'
-  version '1.15.1'
+  version '1.17.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/ngtcp2/ngtcp2.git'
@@ -14,10 +14,10 @@ class Libngtcp2 < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e614cbdbba9b8c2bd5a63122fe2662b961e4a05aaef1f8e78e191f6ff34d2169',
-     armv7l: 'e614cbdbba9b8c2bd5a63122fe2662b961e4a05aaef1f8e78e191f6ff34d2169',
-       i686: '6a353295c0aec7155d96c432d40408d146012f4c95c9357e67be5a2a4db79a65',
-     x86_64: '91ae00d0036b90e0a8ab460b3a4d8172177d3ee063d27b35ed511981b84af0c3'
+    aarch64: '33cd334939c5c03230468b0a9c542ddc0bbabd2d7679078d95334c6ddef92228',
+     armv7l: '33cd334939c5c03230468b0a9c542ddc0bbabd2d7679078d95334c6ddef92228',
+       i686: 'b5f41bef0676f0dbc3eb49dd757b563b2ee8a376dcaf0fc9bd80dcaeee0608f8',
+     x86_64: '17ba79d8e56fb1a109bc3cbb74fcdcaac51a9b8bfe7c948e0852999eebec240f'
   })
 
   depends_on 'glibc' # R

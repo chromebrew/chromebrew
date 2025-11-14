@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# build_updated_packages version 3.7 (for Chromebrew)
+# build_updated_packages version 3.8 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -70,7 +70,7 @@ def self.check_build_uploads(architectures_to_check = nil, name = nil)
   return builds_needed
 end
 
-def update_hashes(name = nil)
+def update_hashes_and_manifests(name = nil)
   unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES
     remote_binary = { armv7l: nil, i686: nil, x86_64: nil }
     remote_binary.keys.each do |arch|
@@ -82,11 +82,27 @@ def update_hashes(name = nil)
     # Add build hashes.
     system "crew update_package_file #{name}" unless remote_binary.values.all?(nil)
     # Add manifests if we are in the right architecture.
-    # Using crew reinstall -f package here updates the hashes for
-    # binaries.
-    if system("yes | crew reinstall --regenerate-filelist #{'-f' unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES} #{name}") && File.exist?("#{CREW_META_PATH}/#{name}.filelist") && File.directory?(CREW_LOCAL_REPO_ROOT)
-      puts 'Adding manifests...'
-      FileUtils.cp "#{CREW_META_PATH}/#{name}.filelist", "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{name.chr}/#{name}.filelist"
+    if @pkg_obj.compatibility == 'all' || @pkg_obj.compatibility.include?(ARCH)
+      # Using crew reinstall -f package here updates the hashes for
+      # binaries.
+      if system("yes | crew reinstall --regenerate-filelist #{'-f' unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES} #{name}") && File.exist?("#{CREW_META_PATH}/#{name}.filelist") && File.directory?(CREW_LOCAL_REPO_ROOT)
+        puts 'Adding manifests...'
+        FileUtils.cp "#{CREW_META_PATH}/#{name}.filelist", "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{name.chr}/#{name}.filelist"
+      end
+    else
+      puts "Package #{name} is not compatible with your device architecture (#{ARCH}). Manifests will not be added.".orange
+      return
+    end
+  end
+end
+
+def update_deps(name = nil)
+  unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES
+    # Update package dependencies.
+    if @pkg_obj.compatibility == 'all' || @pkg_obj.compatibility.include?(ARCH)
+      Kernel.system "tools/getrealdeps.rb #{name}"
+    else
+      puts "Package #{name} is not compatible with your device architecture (#{ARCH}). Dependencies will not be checked.".orange
     end
   end
 end
@@ -161,7 +177,7 @@ updated_packages.each do |pkg|
   if !system("grep -q binary_sha256 #{pkg}") && !@pkg_obj.no_compile_needed? && !@pkg_obj.gem_compile_needed?
     puts "#{name.capitalize} #{@pkg_obj.version} has no binaries and may not need them.".lightgreen
     next pkg
-  elsif @pkg_obj.no_compile_needed?
+  elsif @pkg_obj.no_compile_needed? && (@pkg_obj.compatibility == 'all' || @pkg_obj.compatibility.include?(ARCH))
     # Using crew reinstall -f package here updates the hashes for
     # binaries.
     system "yes | crew reinstall #{'-f' unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES} #{name}"
@@ -181,13 +197,10 @@ updated_packages.each do |pkg|
     builds_needed = check_build_uploads(architectures_to_check, name)
     if builds_needed.empty?
       puts "No builds are needed for #{name} #{@pkg_obj.version}.".lightgreen
-      update_hashes(name)
+      update_hashes_and_manifests(name)
+      update_deps(name)
       puts "Copying #{File.join(CREW_PACKAGES_PATH, pkg.sub('packages/', ''))} to #{pkg}".lightblue
       FileUtils.cp File.join(CREW_PACKAGES_PATH, pkg.sub('packages/', '')), pkg
-      if File.exist?("#{CREW_META_PATH}/#{name}.filelist") && File.directory?(CREW_LOCAL_REPO_ROOT)
-        puts 'Adding manifests.'
-        FileUtils.cp "#{CREW_META_PATH}/#{name}.filelist", "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{name.chr}/#{name}.filelist"
-      end
       next
     else
       puts "#{name.capitalize} #{@pkg_obj.version} needs builds uploaded for: #{builds_needed.join(' ')}".lightblue

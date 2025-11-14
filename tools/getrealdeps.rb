@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# getrealdeps version 2.3 (for Chromebrew)
+# getrealdeps version 2.4 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 require 'fileutils'
 
@@ -10,11 +10,13 @@ if crew_local_repo_root.to_s.empty?
   require_relative '../lib/color'
   require_relative '../lib/const'
   require_relative '../lib/package'
+  require_relative '../lib/package_utils'
   $LOAD_PATH.unshift File.expand_path('../lib', __dir__)
 else
   require File.join(crew_local_repo_root, 'lib/color')
   require File.join(crew_local_repo_root, 'lib/const')
   require File.join(crew_local_repo_root, 'lib/package')
+  require File.join(crew_local_repo_root, 'lib/package_utils')
   $LOAD_PATH.unshift File.expand_path(File.join(crew_local_repo_root, 'lib'), __dir__)
 end
 
@@ -107,7 +109,13 @@ def write_deps(pkg_file, pkgdeps, pkg)
 
   # Check for and delete old runtime dependencies.
   # Its unsafe to do this with other dependencies, because the packager might know something we don't.
-  pkgdepsblock.delete_if { |line| line.match(/  depends_on '(.*)' # R/) { |matchdata| pkgdeps.none?(matchdata[1]) && !privileged_deps.include?(matchdata[1]) } }
+  # pkgdepsblock.delete_if { |line| line.match(/  depends_on '(.*)' # R/) { |matchdata| pkgdeps.none?(matchdata[1]) && !privileged_deps.include?(matchdata[1]) } }
+
+  # We need to figure out how to handle architecture specific dependencies.
+  # e.g., smbclient on x86_64 has a lmdb dependency, but not on armv7l.
+  pkgdepsblock.each do |line|
+    puts "\n#{line.chomp} may no longer be necessary on #{ARCH} (or is only a build dependency).".orange if line.match(/  depends_on '(.*)' # R/) { |matchdata| pkgdeps.none?(matchdata[1]) && !privileged_deps.include?(matchdata[1]) }
+  end
 
   # If a dependency is both a build and a runtime dependency, we remove the build dependency.
   pkgdepsblock.delete_if { |line| line.match(/  depends_on '(.*)' => :build/) { |matchdata| missingpkgdeps.include?(matchdata[1]) } }
@@ -149,7 +157,7 @@ def write_deps(pkg_file, pkgdeps, pkg)
 end
 
 def main(pkg)
-  # pkg is pkg.name in this function.
+  # pkg is @pkg.name in this function.
   puts "Checking for the runtime dependencies of #{pkg}...".lightblue
   pkg_file = File.join(CREW_PACKAGES_PATH, "#{pkg}.rb")
   FileUtils.cp File.join(CREW_LOCAL_REPO_ROOT, "packages/#{pkg}.rb"), pkg_file if !CREW_LOCAL_REPO_ROOT.to_s.empty? && File.file?(File.join(CREW_LOCAL_REPO_ROOT, "packages/#{pkg}.rb"))
@@ -158,13 +166,22 @@ def main(pkg)
     define_singleton_method('pkgfilelist') { File.join(CREW_DEST_DIR, 'filelist') }
     abort('Pkg was not built.') unless File.exist?(pkgfilelist)
   else
-    define_singleton_method('pkgfilelist') { "#{CREW_PREFIX}/etc/crew/meta/#{pkg}.filelist" }
-    # Package needs to be installed for package filelist to be populated.
-    unless File.exist?(pkgfilelist)
-      puts "Installing #{pkg} because it is not installed."
-      system("yes | crew install #{pkg}")
+    # build_deps = `crew deps -b #{pkg} | sort -u`.split
+    packages_which_need_to_be_installed = @pkg.get_deps_list(include_build_deps: true)
+    # Add pkg to the list of packages we are going to install to make
+    # sure filelists are available.
+    packages_which_need_to_be_installed.push(@pkg.name)
+    puts "Checking for installation of #{pkg} and all of its build deps to make sure we check to see if any build deps are runtime deps.".orange
+    # Packages needs to be installed for package filelist to be populated.
+    packages_which_need_to_be_installed.each do |install_package|
+      @install_pkg = Package.load_package("packages/#{install_package}")
+      next if PackageUtils.installed?(@install_pkg.name)
+      define_singleton_method('pkgfilelist') { "#{CREW_PREFIX}/etc/crew/meta/#{install_package}.filelist" }
+      system("yes | crew install #{install_package}") unless File.exist?(pkgfilelist)
+      next if @install_pkg.is_fake?
+      abort "Package #{install_package} either does not exist or does not contain any libraries.".lightred unless File.exist?(pkgfilelist)
     end
-    abort("Package #{pkg} either does not exist or does not contain any libraries.") unless File.exist?(pkgfilelist)
+    define_singleton_method('pkgfilelist') { "#{CREW_PREFIX}/etc/crew/meta/#{pkg}.filelist" }
   end
 
   # Speed up grep.
