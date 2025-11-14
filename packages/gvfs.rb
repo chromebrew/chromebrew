@@ -11,9 +11,9 @@ class Gvfs < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4d61f624b27f9ae4ba91296fbe6646f7a076fd1e6a19ae7104e3fadff5afe491',
-     armv7l: '4d61f624b27f9ae4ba91296fbe6646f7a076fd1e6a19ae7104e3fadff5afe491',
-     x86_64: 'f744e878e93ef167663a59f2bed8c69dc77544ba35fe3b32d33752ff623417d8'
+    aarch64: 'b39eaa93f8db2060956d0d93ce81c3b932f191d743bda33b2898bc5d65932b7f',
+     armv7l: 'b39eaa93f8db2060956d0d93ce81c3b932f191d743bda33b2898bc5d65932b7f',
+     x86_64: '96cc5f539fbf91f8e17abe9bee41100f8a86d7e2936646671e576e165d6499cc'
   })
 
   depends_on 'avahi' # R
@@ -24,13 +24,13 @@ class Gvfs < Meson
   depends_on 'fuse3' # R
   depends_on 'gcc_lib' => :build
   depends_on 'gcr_4' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gtk3' => :build
   depends_on 'libarchive' # R
-  depends_on 'libcdio' => :build
-  depends_on 'libcdio_paranoia' # R
+  depends_on 'libbluray' => :build
   depends_on 'libcdio' # R
+  depends_on 'libcdio_paranoia' # R
   depends_on 'libgcrypt' # R
   depends_on 'libgphoto' # R
   depends_on 'libgudev' # R
@@ -38,7 +38,6 @@ class Gvfs < Meson
   depends_on 'libnfs' # R
   depends_on 'libplist' # R
   depends_on 'libsecret' # R
-  depends_on 'libsoup2' => :build
   depends_on 'libsoup' # R
   depends_on 'libxml2' # R
   depends_on 'polkit' # R

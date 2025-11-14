@@ -11,9 +11,9 @@ class Wxwidgets < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '105a793c38cc606b4d476e2b4063f4ba41a0f84fb70e87cfd09e7f438eb2e98c',
-     armv7l: '105a793c38cc606b4d476e2b4063f4ba41a0f84fb70e87cfd09e7f438eb2e98c',
-     x86_64: '680f76b00098a9fc6206b19ce967f9e6b32f2c4460aa6ee8971e074ba9e6b0e1'
+    aarch64: '3a69d22b0391c911c71464b16ff901fe6c7fdc71107e439b5bd611db20d4b659',
+     armv7l: '3a69d22b0391c911c71464b16ff901fe6c7fdc71107e439b5bd611db20d4b659',
+     x86_64: 'c5b98f0700ec08bee27543d19de32a14f8c0b16a4284b0256028f7c36a45258c'
   })
 
   depends_on 'at_spi2_core' # R
@@ -28,7 +28,6 @@ class Wxwidgets < CMake
   depends_on 'gspell' # R
   depends_on 'gstreamer' # R
   depends_on 'gtk3' # R
-  depends_on 'gvfs' # R
   depends_on 'harfbuzz' # R
   depends_on 'libglu' # R
   depends_on 'libglvnd' # R
