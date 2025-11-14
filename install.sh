@@ -1,5 +1,5 @@
 #!/bin/bash
-CREW_INSTALLER_VERSION=2025111101
+CREW_INSTALLER_VERSION=2025111401
 # Exit on fail.
 set -eE
 
@@ -303,7 +303,7 @@ BOOTSTRAP_PACKAGES+=' pcre2 expat git'
 
 # Add curl dependencies to BOOTSTRAP_PACKAGES since curl is a git
 # dependency, installing curl last so we don't break the system curl.
-BOOTSTRAP_PACKAGES+=' brotli c_ares libcyrussasl libidn2 libnghttp2 libpsl libssh libunistring openldap curl zstd ruby'
+BOOTSTRAP_PACKAGES+=' brotli c_ares libcyrussasl libidn2 libnghttp2 libnghttp3 libngtcp2 libpsl libssh libunistring openldap curl zstd ruby'
 
 if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]] && [[ -n "${CREW_PRE_GLIBC_STANDALONE}" ]]; then
   # shellcheck disable=SC2231
