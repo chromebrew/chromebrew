@@ -1,8 +1,9 @@
-# Total size: 52981
+# Total size: 54810
 /usr/local/bin/proxy
 /usr/local/include/libproxy/proxy.h
 /usr/local/lib/girepository-1.0/Libproxy-1.0.typelib
 /usr/local/lib/libproxy.so
+/usr/local/lib/libproxy.so.0.5.11
 /usr/local/lib/libproxy.so.1
 /usr/local/lib/libproxy/libpxbackend-1.0.so
 /usr/local/lib/pkgconfig/libproxy-1.0.pc
