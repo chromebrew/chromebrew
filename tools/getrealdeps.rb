@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# getrealdeps version 2.3 (for Chromebrew)
+# getrealdeps version 2.4 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 require 'fileutils'
 
@@ -10,11 +10,13 @@ if crew_local_repo_root.to_s.empty?
   require_relative '../lib/color'
   require_relative '../lib/const'
   require_relative '../lib/package'
+  require_relative '../lib/package_utils'
   $LOAD_PATH.unshift File.expand_path('../lib', __dir__)
 else
   require File.join(crew_local_repo_root, 'lib/color')
   require File.join(crew_local_repo_root, 'lib/const')
   require File.join(crew_local_repo_root, 'lib/package')
+  require File.join(crew_local_repo_root, 'lib/package_utils')
   $LOAD_PATH.unshift File.expand_path(File.join(crew_local_repo_root, 'lib'), __dir__)
 end
 
@@ -158,14 +160,22 @@ def main(pkg)
     define_singleton_method('pkgfilelist') { File.join(CREW_DEST_DIR, 'filelist') }
     abort('Pkg was not built.') unless File.exist?(pkgfilelist)
   else
-    define_singleton_method('pkgfilelist') { "#{CREW_PREFIX}/etc/crew/meta/#{pkg}.filelist" }
-    # Package needs to be installed for package filelist to be populated.
-    unless File.exist?(pkgfilelist)
-      puts "Installing #{pkg} because it is not installed."
-      system("yes | crew install #{pkg}")
+    build_deps = `crew deps -b #{pkg} | sort -u`.split
+    build_deps.push(pkg)
+    puts "Checking for installation of #{pkg} and all of its build deps to make sure we check to see if any build deps are runtime deps.".orange
+    # Packages needs to be installed for package filelist to be populated.
+    build_deps.each do |install_package|
+      @pkg = Package.load_package("packages/#{install_package}")
+      next if PackageUtils.installed?(@pkg.name)
+      define_singleton_method('pkgfilelist') { "#{CREW_PREFIX}/etc/crew/meta/#{install_package}.filelist" }
+      system("yes | crew install #{install_package}") unless File.exist?(pkgfilelist)
+      next if @pkg.is_fake?
+      abort("Package #{install_package} either does not exist or does not contain any libraries.") unless File.exist?(pkgfilelist)
     end
-    abort("Package #{pkg} either does not exist or does not contain any libraries.") unless File.exist?(pkgfilelist)
   end
+  # Reset @pkg.
+  @pkg = Package.load_package("packages/#{pkg}")
+  define_singleton_method('pkgfilelist') { "#{CREW_PREFIX}/etc/crew/meta/#{pkg}.filelist" }
 
   # Speed up grep.
   ENV['LC_ALL'] = 'C'

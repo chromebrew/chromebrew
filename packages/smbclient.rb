@@ -28,20 +28,19 @@ class Smbclient < Package
   depends_on 'gpgme' => :build
   depends_on 'icu4c' # R
   depends_on 'jansson' # R
-  depends_on 'ldb' # R
+  depends_on 'ldb' => :build
   depends_on 'libarchive' # R
   depends_on 'libbsd' # R
   depends_on 'libcap' # R
   depends_on 'libngtcp2' # R
   depends_on 'libtasn1' # R
-  depends_on 'libtirpc' # R
-  depends_on 'libunwind' # R
+  depends_on 'libtirpc' => :build
+  depends_on 'libunwind' => :build
   depends_on 'liburing' => :build
   depends_on 'libxcrypt' # R
   depends_on 'linux_pam' # R
   depends_on 'lmdb' # R
-  depends_on 'lmdb' => :build
-  depends_on 'ncurses' # R
+  depends_on 'ncurses' => :build
   depends_on 'openldap' # R
   depends_on 'perl_json' => :build
   depends_on 'perl_parse_yapp' => :build
