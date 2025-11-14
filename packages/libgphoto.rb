@@ -3,12 +3,12 @@ require 'package'
 class Libgphoto < Package
   description 'The libgphoto2 camera access and control library.'
   homepage 'http://www.gphoto.org/'
-  version '2.5.27'
+  version '2.5.33'
   license 'GPL-2'
   compatibility 'all'
   source_url "https://github.com/gphoto/libgphoto2/archive/libgphoto2-#{version.gsub(/[.]/, '_')}-release.tar.gz"
-  source_sha256 '9ac1ab84fc5070d40194181efd0775044220c8d5cdee830386d528710e864ec9'
-  binary_compression 'tar.xz'
+  source_sha256 '7643f322dfda5668150d0cfdec5e4f87669f69b630106f72211fb5ff6aca2ce8'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: 'f3111fd01e63280e864e24c38ac199bff329766a305b8c2b7009c600078bf66b',
