@@ -6,12 +6,12 @@ require 'package'
 class Libimobiledevice < Package
   description 'Library that talks the protocols to support iPhone and iPod Touch devices on Linux'
   homepage 'https://libimobiledevice.org/'
-  version '1.3.0'
+  version '1.4.0'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url "https://github.com/libimobiledevice/libimobiledevice/archive/refs/tags/#{version}.tar.gz"
-  source_sha256 'acbfb73eabee162e64c0d9de207d71c0a5f47c40cd5ad32a5097f734328ce10a'
-  binary_compression 'tar.xz'
+  source_sha256 '99e042acc1513815c36816723de52e0d0892e081f36ec29672531ce99ed59ccd'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '7a8a73892ac722226e44a17c810900213aa6c5e66c26ad23b8d30b379d5b7dae',
