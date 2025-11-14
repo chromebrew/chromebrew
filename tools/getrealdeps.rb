@@ -179,7 +179,7 @@ def main(pkg)
       define_singleton_method('pkgfilelist') { "#{CREW_PREFIX}/etc/crew/meta/#{install_package}.filelist" }
       system("yes | crew install #{install_package}") unless File.exist?(pkgfilelist)
       next if @install_pkg.is_fake?
-      abort("Package #{install_package} either does not exist or does not contain any libraries.") unless File.exist?(pkgfilelist)
+      abort "Package #{install_package} either does not exist or does not contain any libraries.".lightred unless File.exist?(pkgfilelist)
     end
     define_singleton_method('pkgfilelist') { "#{CREW_PREFIX}/etc/crew/meta/#{pkg}.filelist" }
   end
