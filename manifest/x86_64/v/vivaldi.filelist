@@ -1,4 +1,4 @@
-# Total size: 440847548
+# Total size: 437023806
 /usr/local/bin/vivaldi
 /usr/local/bin/vivaldi-stable
 /usr/local/etc/cron.daily/vivaldi
@@ -7,13 +7,11 @@
 /usr/local/share/doc/vivaldi-stable/changelog.gz
 /usr/local/share/icons/hicolor/128x128/apps/vivaldi.png
 /usr/local/share/icons/hicolor/16x16/apps/vivaldi.png
-/usr/local/share/icons/hicolor/22x22/apps/vivaldi.png
 /usr/local/share/icons/hicolor/24x24/apps/vivaldi.png
 /usr/local/share/icons/hicolor/256x256/apps/vivaldi.png
 /usr/local/share/icons/hicolor/32x32/apps/vivaldi.png
 /usr/local/share/icons/hicolor/48x48/apps/vivaldi.png
 /usr/local/share/icons/hicolor/64x64/apps/vivaldi.png
-/usr/local/share/menu/vivaldi.menu
 /usr/local/share/vivaldi/LICENSE.html
 /usr/local/share/vivaldi/MEIPreload/manifest.json
 /usr/local/share/vivaldi/MEIPreload/preloaded_data.pb
@@ -345,7 +343,6 @@
 /usr/local/share/vivaldi/locales/zh-TW_FEMININE.pak
 /usr/local/share/vivaldi/locales/zh-TW_MASCULINE.pak
 /usr/local/share/vivaldi/locales/zh-TW_NEUTER.pak
-/usr/local/share/vivaldi/product_logo_32.xpm
 /usr/local/share/vivaldi/resources.pak
 /usr/local/share/vivaldi/resources/vivaldi/_locales/af/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/am/messages.json
@@ -447,7 +444,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/adblocker_resources/redirectable_resources.json
 /usr/local/share/vivaldi/resources/vivaldi/background-bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/background-common-bundle.js
-/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-961d098457d963e453bffb7538a6c892.js
+/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-99342bc30d810da1f42f87c66fad928b.js
 /usr/local/share/vivaldi/resources/vivaldi/bundle-mailreader-worker.js
 /usr/local/share/vivaldi/resources/vivaldi/bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/components/mail/mail.html
@@ -585,6 +582,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/americanas_com_br.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/ap.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/aversi.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/favicons/aviasales.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/bbc.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/berlingske_dk.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/bild.png
@@ -721,6 +719,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/tidal.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/trademe.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/trip.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/favicons/tripadvisor.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/twitch.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/unext_jp.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/vedur.png
@@ -799,6 +798,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_ar_tu_babnet.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_arstechnica.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_at_kronen_zeitung.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_aviasales.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_az_oxu.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_ben_prothomalo.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_bestbuy.png
