@@ -89,7 +89,7 @@ class Wxwidgets < CMake
 
   cmake_install_extras do
     Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
-      FileUtils.ln_sf "#{CREW_LIB_PREFIX}/wx/config/gtk3-unicode-3.3", 'wx-config'
+      FileUtils.ln_sf "#{CREW_LIB_PREFIX}/wx/config/gtk3-unicode-#{version.sub(/\.\d+$/, '')}", 'wx-config'
     end
   end
 end
