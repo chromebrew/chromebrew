@@ -65,8 +65,11 @@ class Wxwidgets < CMake
   end
 
   def self.patch
-    downloader 'https://github.com/wxWidgets/wxWidgets/commit/666f7489bb2ffbd8298069393a90ddbe18221df5.patch', 'bf775dbba0da0627386ce51e771dba114c7ec35d5c45c759da7d0d4aebf00c8f'
-    system 'patch -Np1 -i 666f7489bb2ffbd8298069393a90ddbe18221df5.patch'
+    patches = [
+      # Fix for build failure
+      ['https://github.com/wxWidgets/wxWidgets/commit/666f7489bb2ffbd8298069393a90ddbe18221df5.patch', 'bf775dbba0da0627386ce51e771dba114c7ec35d5c45c759da7d0d4aebf00c8f']
+    ]
+    ConvenienceFunctions.patch(patches)
   end
 
   cmake_options "-DwxBUILD_TOOLKIT=gtk3 \
