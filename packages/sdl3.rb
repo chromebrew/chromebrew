@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Sdl3 < CMake
   description 'A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard Version 3'
   homepage 'https://www.libsdl.org'
-  version '3.2.22'
+  version '3.2.26'
   license 'zlib'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/libsdl-org/SDL.git'
@@ -14,9 +14,9 @@ class Sdl3 < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9ba3397585bce1710487317a22886b429263657ba9e1c461739d49e23c8d406c',
-     armv7l: '9ba3397585bce1710487317a22886b429263657ba9e1c461739d49e23c8d406c',
-     x86_64: 'fdfa184af02e96e717aa1341d5fb3799bc126e3917cce9a5734183a6c282f783'
+    aarch64: 'e15bb9fb42ba699682c2f7df2ed7a33d8f3e209d9e79b54947bfd1ad5e6c9c1c',
+     armv7l: 'e15bb9fb42ba699682c2f7df2ed7a33d8f3e209d9e79b54947bfd1ad5e6c9c1c',
+     x86_64: 'f5671ad5fd62ffd3e653033b8e5341f159c566a1c3c6334f0aec582f5637409f'
   })
 
   depends_on 'alsa_lib' => :build
