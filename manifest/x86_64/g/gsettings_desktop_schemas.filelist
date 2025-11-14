@@ -1,4 +1,4 @@
-# Total size: 5669786
+# Total size: 5986054
 /usr/local/include/gsettings-desktop-schemas/gdesktop-enums.h
 /usr/local/lib64/girepository-1.0/GDesktopEnums-3.0.typelib
 /usr/local/share/GConf/gsettings/gsettings-desktop-schemas.convert
@@ -93,6 +93,7 @@
 /usr/local/share/locale/tr/LC_MESSAGES/gsettings-desktop-schemas.mo
 /usr/local/share/locale/ug/LC_MESSAGES/gsettings-desktop-schemas.mo
 /usr/local/share/locale/uk/LC_MESSAGES/gsettings-desktop-schemas.mo
+/usr/local/share/locale/uz/LC_MESSAGES/gsettings-desktop-schemas.mo
 /usr/local/share/locale/vi/LC_MESSAGES/gsettings-desktop-schemas.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/gsettings-desktop-schemas.mo
 /usr/local/share/locale/zh_HK/LC_MESSAGES/gsettings-desktop-schemas.mo
