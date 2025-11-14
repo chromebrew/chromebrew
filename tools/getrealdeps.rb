@@ -109,7 +109,13 @@ def write_deps(pkg_file, pkgdeps, pkg)
 
   # Check for and delete old runtime dependencies.
   # Its unsafe to do this with other dependencies, because the packager might know something we don't.
-  pkgdepsblock.delete_if { |line| line.match(/  depends_on '(.*)' # R/) { |matchdata| pkgdeps.none?(matchdata[1]) && !privileged_deps.include?(matchdata[1]) } }
+  # pkgdepsblock.delete_if { |line| line.match(/  depends_on '(.*)' # R/) { |matchdata| pkgdeps.none?(matchdata[1]) && !privileged_deps.include?(matchdata[1]) } }
+
+  # We need to figure out how to handle architecture specific dependencies.
+  # e.g., smbclient on x86_64 has a lmdb dependency, but not on armv7l.
+  pkgdepsblock.each do |line|
+    puts "\n#{line.chomp} may no longer be necessary on #{ARCH} (or is only a build dependency).".orange if line.match(/  depends_on '(.*)' # R/) { |matchdata| pkgdeps.none?(matchdata[1]) && !privileged_deps.include?(matchdata[1]) }
+  end
 
   # If a dependency is both a build and a runtime dependency, we remove the build dependency.
   pkgdepsblock.delete_if { |line| line.match(/  depends_on '(.*)' => :build/) { |matchdata| missingpkgdeps.include?(matchdata[1]) } }
@@ -151,7 +157,7 @@ def write_deps(pkg_file, pkgdeps, pkg)
 end
 
 def main(pkg)
-  # pkg is pkg.name in this function.
+  # pkg is @pkg.name in this function.
   puts "Checking for the runtime dependencies of #{pkg}...".lightblue
   pkg_file = File.join(CREW_PACKAGES_PATH, "#{pkg}.rb")
   FileUtils.cp File.join(CREW_LOCAL_REPO_ROOT, "packages/#{pkg}.rb"), pkg_file if !CREW_LOCAL_REPO_ROOT.to_s.empty? && File.file?(File.join(CREW_LOCAL_REPO_ROOT, "packages/#{pkg}.rb"))
@@ -160,21 +166,23 @@ def main(pkg)
     define_singleton_method('pkgfilelist') { File.join(CREW_DEST_DIR, 'filelist') }
     abort('Pkg was not built.') unless File.exist?(pkgfilelist)
   else
-    build_deps = `crew deps -b #{pkg} | sort -u`.split
-    build_deps.push(pkg)
+    # build_deps = `crew deps -b #{pkg} | sort -u`.split
+    packages_which_need_to_be_installed = @pkg.get_deps_list(include_build_deps: true)
+    # Add pkg to the list of packages we are going to install to make
+    # sure filelists are available.
+    packages_which_need_to_be_installed.push(@pkg.name)
     puts "Checking for installation of #{pkg} and all of its build deps to make sure we check to see if any build deps are runtime deps.".orange
     # Packages needs to be installed for package filelist to be populated.
-    build_deps.each do |install_package|
-      @pkg = Package.load_package("packages/#{install_package}")
-      next if PackageUtils.installed?(@pkg.name)
+    packages_which_need_to_be_installed.each do |install_package|
+      @install_pkg = Package.load_package("packages/#{install_package}")
+      next if PackageUtils.installed?(@install_pkg.name)
       define_singleton_method('pkgfilelist') { "#{CREW_PREFIX}/etc/crew/meta/#{install_package}.filelist" }
       system("yes | crew install #{install_package}") unless File.exist?(pkgfilelist)
-      next if @pkg.is_fake?
+      next if @install_pkg.is_fake?
       abort("Package #{install_package} either does not exist or does not contain any libraries.") unless File.exist?(pkgfilelist)
     end
   end
-  # Reset @pkg.
-  @pkg = Package.load_package("packages/#{pkg}")
+
   define_singleton_method('pkgfilelist') { "#{CREW_PREFIX}/etc/crew/meta/#{pkg}.filelist" }
 
   # Speed up grep.
