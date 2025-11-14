@@ -11,9 +11,9 @@ class Libproxy < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2faef327daefacb96faecc16d2c732acdf77bbaa08b0815d733f3511d3575fea',
-     armv7l: '2faef327daefacb96faecc16d2c732acdf77bbaa08b0815d733f3511d3575fea',
-     x86_64: 'b5939b2138ba04d4014aeb4c98aa69739810f21a5459ac3383a474a8955fdda2'
+    aarch64: '3fb0d802aed10e6eecbee886f5cf401ab110a4be5b4e72047c4592490bc2c7a1',
+     armv7l: '3fb0d802aed10e6eecbee886f5cf401ab110a4be5b4e72047c4592490bc2c7a1',
+     x86_64: 'd8e41311996b9f2af4f1abd3d798e26ea33e90b51aac98f55655748a08149b57'
   })
 
   depends_on 'curl' # R
