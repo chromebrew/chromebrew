@@ -32,7 +32,7 @@ class Smbclient < Package
   depends_on 'libarchive' # R
   depends_on 'libbsd' # R
   depends_on 'libcap' # R
-  depends_on 'libngtcp2' => :build
+  depends_on 'libngtcp2' # R
   depends_on 'libtasn1' # R
   depends_on 'libtirpc' # R
   depends_on 'libunwind' # R
