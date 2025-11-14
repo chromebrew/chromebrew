@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Curl < Autotools
   description 'Command line tool and library for transferring data with URLs.'
   homepage 'https://curl.se/'
-  version '8.17.0'
+  version '8.17.0-1'
   license 'curl'
   compatibility 'all'
   source_url "https://curl.se/download/curl-#{version.split('-').first}.tar.xz"
@@ -23,6 +23,8 @@ class Curl < Autotools
   depends_on 'glibc' # R
   depends_on 'libidn2' # R
   depends_on 'libnghttp2' # R
+  depends_on 'libnghttp3' => :build
+  depends_on 'libngtcp2' => :build
   depends_on 'libpsl' # R
   depends_on 'libssh' # R
   depends_on 'openldap' # R
@@ -41,6 +43,7 @@ class Curl < Autotools
       --with-ca-fallback \
       --with-ca-path=#{CREW_PREFIX}/etc/ssl/certs \
       --with-libssh \
+      --with-ngtcp2 \
       --with-openssl \
       --without-gnutls \
       --without-librtmp"
