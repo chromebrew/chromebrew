@@ -181,9 +181,8 @@ def main(pkg)
       next if @install_pkg.is_fake?
       abort("Package #{install_package} either does not exist or does not contain any libraries.") unless File.exist?(pkgfilelist)
     end
+    define_singleton_method('pkgfilelist') { "#{CREW_PREFIX}/etc/crew/meta/#{pkg}.filelist" }
   end
-
-  define_singleton_method('pkgfilelist') { "#{CREW_PREFIX}/etc/crew/meta/#{pkg}.filelist" }
 
   # Speed up grep.
   ENV['LC_ALL'] = 'C'
