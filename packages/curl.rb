@@ -11,10 +11,10 @@ class Curl < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '59ca4a5f0a55d4b0854b94a9221b781c68bd39e762a6193459ddb392e37cfca7',
-     armv7l: '59ca4a5f0a55d4b0854b94a9221b781c68bd39e762a6193459ddb392e37cfca7',
-       i686: '48bcb46c76c33a7eec4b046e242ea4c0eda448ef8af2c94e3e3966cdc6fd3660',
-     x86_64: 'e90d023bf210a57f7e7df6d4a2f6e1e7d7e8e9f12121426ea7f39c28b60caf53'
+    aarch64: '287d58b7cf6e2554b95fe905364dcb787fd78bf233ec205c97dc8c3ed533dca0',
+     armv7l: '287d58b7cf6e2554b95fe905364dcb787fd78bf233ec205c97dc8c3ed533dca0',
+       i686: 'bb4a7e8d515a8da6c3ce13d970fbddc5eb565376c5e22e34302dc1b2b88a02a7',
+     x86_64: '499d5af908ade27a2305632d09e4b91dc6ded47a6673784571afd5a3a8fc2484'
   })
 
   depends_on 'brotli' # R
@@ -23,8 +23,8 @@ class Curl < Autotools
   depends_on 'glibc' # R
   depends_on 'libidn2' # R
   depends_on 'libnghttp2' # R
-  depends_on 'libnghttp3' => :build
-  depends_on 'libngtcp2' => :build
+  depends_on 'libnghttp3' # R
+  depends_on 'libngtcp2' # R
   depends_on 'libpsl' # R
   depends_on 'libssh' # R
   depends_on 'openldap' # R
