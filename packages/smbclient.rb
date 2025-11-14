@@ -20,7 +20,7 @@ class Smbclient < Package
   depends_on 'avahi' # R
   depends_on 'cmocka' => :build
   depends_on 'cups' => :build
-  depends_on 'docbook' => :build
+  depends_on 'docbook' => :build # We still need to set @xml_catalog_files since the XML_CATALOG_FILES env variable might not get picked up before the build.
   depends_on 'gcc_lib' # R
   depends_on 'gdb' => :build
   depends_on 'glibc' # R
@@ -50,6 +50,7 @@ class Smbclient < Package
   depends_on 'talloc' # R
   depends_on 'tdb' # R
   depends_on 'tevent' # R
+  depends_on 'xmlto' => :build
   depends_on 'zlib' # R
 
   @samba4_idmap_modules = 'idmap_ad,idmap_rid,idmap_adex,idmap_hash,idmap_tdb2'
@@ -60,7 +61,7 @@ class Smbclient < Package
                        smbcquotas smbget net nmblookup smbtar]
   @smbclient_pkgconfig = %w[smbclient netapi wbclient]
 
-  @xml_catalog_files = ENV.fetch('XML_CATALOG_FILES', nil)
+  @xml_catalog_files = ENV.fetch('XML_CATALOG_FILES', "#{CREW_PREFIX}/etc/xml/catalog")
 
   def self.patch
     system "sed -e 's:<gpgme.h>:<gpgme/gpgme.h>:' \
@@ -102,7 +103,7 @@ class Smbclient < Package
     # We only need some files from the build, so just install into a
     # staging directory during build.
     FileUtils.mkdir_p 'staging'
-    system 'make V=1 DESTDIR=staging install'
+    system 'make V=1 DESTDIR=staging install', exception: false
     FileUtils.cp 'source3/script/smbtar', "staging/#{CREW_PREFIX}/bin/"
   end
 
