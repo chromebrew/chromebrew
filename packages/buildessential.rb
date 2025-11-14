@@ -32,10 +32,6 @@ class Buildessential < Package
   # coreutils provides /usr/local/bin/install for i686
   depends_on 'coreutils' if ARCH == 'i686'
 
-  # Add docbook to make sure that docbook environment variables are set
-  # for manpage generation in many packages,
-  depends_on 'docbook'
-
   # Linkers
   depends_on 'mold'
 
@@ -199,4 +195,7 @@ class Buildessential < Package
 
   # Workaround for rust build dependencies needing to be installed and crew rerun before installs work.
   depends_on 'rust'
+
+  # Add container_essential if we are in a container.
+  depends_on 'container_essential' if CREW_IN_CONTAINER
 end
