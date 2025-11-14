@@ -3,18 +3,18 @@ require 'package'
 class Libgphoto < Package
   description 'The libgphoto2 camera access and control library.'
   homepage 'http://www.gphoto.org/'
-  version '2.5.27'
+  version '2.5.33'
   license 'GPL-2'
   compatibility 'all'
   source_url "https://github.com/gphoto/libgphoto2/archive/libgphoto2-#{version.gsub(/[.]/, '_')}-release.tar.gz"
-  source_sha256 '9ac1ab84fc5070d40194181efd0775044220c8d5cdee830386d528710e864ec9'
-  binary_compression 'tar.xz'
+  source_sha256 '7643f322dfda5668150d0cfdec5e4f87669f69b630106f72211fb5ff6aca2ce8'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f3111fd01e63280e864e24c38ac199bff329766a305b8c2b7009c600078bf66b',
-     armv7l: 'f3111fd01e63280e864e24c38ac199bff329766a305b8c2b7009c600078bf66b',
-       i686: '9f732d1e5202630f789a45645eadf4a7ea012c9acda7db31d1ad92627cf9578a',
-     x86_64: '5edaedd9d40c26c2c8462794288b499e72f64b2ce89b42fdc571a64187991110'
+    aarch64: '695f6b836e51fc2356afb29033f7c87987aa6cf9b17b43798623d524e70c6b87',
+     armv7l: '695f6b836e51fc2356afb29033f7c87987aa6cf9b17b43798623d524e70c6b87',
+       i686: '9a03d6a63969fde796dc6deeeb9034b8356164a6a8575ba931056f096633b5e6',
+     x86_64: 'e817d44ecf2c8916088917a6d93eb648aebb0ecc839e589b4206aa2a163265d8'
   })
 
   depends_on 'gtk_doc'
