@@ -3,7 +3,7 @@ require 'package'
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage 'SKIP'
-  version '1.48'
+  version '1.49'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -31,6 +31,10 @@ class Buildessential < Package
   depends_on 'binutils'
   # coreutils provides /usr/local/bin/install for i686
   depends_on 'coreutils' if ARCH == 'i686'
+
+  # Add docbook to make sure that docbook environment variables are set
+  # for manpage generation in many packages,
+  depends_on 'docbook'
 
   # Linkers
   depends_on 'mold'
