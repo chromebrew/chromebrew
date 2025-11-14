@@ -33,10 +33,12 @@ class Smbclient < Package
   depends_on 'libarchive' # R
   depends_on 'libbsd' # R
   depends_on 'libcap' # R
+  depends_on 'libngtcp2' => :build
   depends_on 'libtasn1' # R
   depends_on 'libtirpc' # R
   depends_on 'libunwind' # R
   depends_on 'liburing' => :build
+  depends_on 'libxslt' => :build
   depends_on 'linux_pam' # R
   depends_on 'lmdb' => :build
   depends_on 'ncurses' # R
@@ -81,7 +83,7 @@ class Smbclient < Package
       --with-configdir=#{CREW_PREFIX}/etc/samba \
       --with-lockdir=#{CREW_PREFIX}/var/cache/samba \
       --builtin-libraries=NONE \
-      --bundled-libraries=!tdb,!talloc,!pytalloc-util,!tevent,!popt,!ldb,!pyldb-util,NONE \
+      --bundled-libraries=!tdb,!talloc,!pytalloc-util,!tevent,!popt,!ldb,!pyldb-util,libquic,NONE \
       --disable-python \
       --disable-rpath \
       --disable-rpath-install \
@@ -92,9 +94,10 @@ class Smbclient < Package
       --with-pammodulesdir=#{CREW_LIB_PREFIX}/security \
       --with-piddir=/run \
       --with-profiling-data \
-      --with-shared-modules=#{@samba4_idmap_modules},#{@samba4_pdb_modules},#{@samba4_auth_modules},vfs_io_uring \
+      --with-shared-modules=#{@samba4_idmap_modules},#{@samba4_pdb_modules},#{@samba4_auth_modules} \
       --with-sockets-dir=/run/samba \
       --without-ad-dc \
+      --without-smb1-server \
       --with-winbind \
       --without-systemd"
     system 'make'
