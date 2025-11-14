@@ -37,7 +37,6 @@ class Smbclient < Package
   depends_on 'libtirpc' # R
   depends_on 'libunwind' # R
   depends_on 'liburing' => :build
-  depends_on 'libxslt' => :build
   depends_on 'linux_pam' # R
   depends_on 'lmdb' => :build
   depends_on 'ncurses' # R
