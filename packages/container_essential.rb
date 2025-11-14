@@ -2,7 +2,7 @@ require 'package'
 
 class Container_essential < Package
   description 'A collection of extra tools and packages needed in the docker build containers.'
-  homepage 'SKIP'
+  homepage 'https://github.com/chromebrew/chromebrew'
   version '1.0'
   license 'GPL-3+'
   compatibility 'all'
