@@ -4790,6 +4790,11 @@ url: https://salsa.debian.org/debian/libmrss/-/tags
 activity: low
 ---
 kind: url
+name: libmspack
+url: https://github.com/kyz/libmspack/tags
+activity: low
+---
+kind: url
 name: libmtp
 url: https://github.com/libmtp/libmtp/releases
 activity: low
