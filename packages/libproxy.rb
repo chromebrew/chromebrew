@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Libproxy < Meson
   description 'libproxy is a library that provides automatic proxy configuration management.'
   homepage 'https://libproxy.github.io/libproxy/'
-  version '0.5.3'
+  version '0.5.11'
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/libproxy/libproxy.git'
