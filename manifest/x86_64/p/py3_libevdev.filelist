@@ -1,12 +1,12 @@
-# Total size: 173877
-/usr/local/lib/python3.13/site-packages/libevdev-0.12.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/libevdev-0.12.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/libevdev-0.12.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/libevdev-0.12.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/libevdev-0.12.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/libevdev-0.12.dist-info/licenses/COPYING
-/usr/local/lib/python3.13/site-packages/libevdev-0.12.dist-info/top_level.txt
+# Total size: 267027
+/usr/local/lib/python3.13/site-packages/libevdev-0.13.1.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/libevdev-0.13.1.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/libevdev-0.13.1.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/libevdev-0.13.1.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/libevdev-0.13.1.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/libevdev-0.13.1.dist-info/licenses/COPYING
 /usr/local/lib/python3.13/site-packages/libevdev/__init__.py
+/usr/local/lib/python3.13/site-packages/libevdev/__init__.pyi
 /usr/local/lib/python3.13/site-packages/libevdev/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/libevdev/__pycache__/_clib.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/libevdev/__pycache__/const.cpython-313.pyc

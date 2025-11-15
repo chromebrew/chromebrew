@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_libevdev < Pip
   description 'Libevdev is a Python wrapper around the libevdev C library.'
   homepage 'https://python-libevdev.readthedocs.io/'
-  version "0.12-#{CREW_PY_VER}"
+  version "0.13.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '24d0374f29bf7ee310ec0a02e2a00b862899911e8d4c054d477db3cd9b3ed59e',
-     armv7l: '24d0374f29bf7ee310ec0a02e2a00b862899911e8d4c054d477db3cd9b3ed59e',
-       i686: '954789cc502589668460813e32da86b9b4a57bfe991d73dc4fd46e1033976253',
-     x86_64: '26c8dbcf65e3fea19203a2b1f9bba5ffa93e5c037b09a1afd20500348212775d'
+    aarch64: '112683492bc39bda0ba1f3c1537c3a6108f123f89ed3d37ca284ec5ca13262a4',
+     armv7l: '112683492bc39bda0ba1f3c1537c3a6108f123f89ed3d37ca284ec5ca13262a4',
+       i686: '26cc8d92f25b555133e8321ecff4d20038ae93c7496687ee2b2c3c59225cc644',
+     x86_64: 'b4dc771ec18fb3baa514fdc2d8660cd41586ccc2c27e95d9c0883dd99fc587fb'
   })
 
   depends_on 'python3' => :build
