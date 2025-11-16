@@ -3,11 +3,11 @@ require 'buildsystems/meson'
 class Babl < Meson
   description 'babl is a dynamic, any to any, pixel format translation library.'
   homepage 'https://gegl.org/babl/'
-  version '0.1.114'
+  version '0.1.116'
   license 'LGPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://download.gimp.org/pub/babl/#{version.rpartition('.')[0]}/babl-#{version}.tar.xz"
-  source_sha256 'bcbb7786c1e447703db3bc7fa34d62d0d2d117b22f04d8834c7b2d5ded456487'
+  source_sha256 '50fae069867c7ade1259888ff1e3db85fec86d708252e5385b5a4f39a78ec483'
   binary_compression 'tar.zst'
 
   binary_sha256({
