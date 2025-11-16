@@ -1,4 +1,4 @@
-# Total size: 5997165
+# Total size: 4509418
 /usr/local/include/glm/common.hpp
 /usr/local/include/glm/detail/_features.hpp
 /usr/local/include/glm/detail/_fixes.hpp
@@ -61,7 +61,7 @@
 /usr/local/include/glm/detail/type_vec3.inl
 /usr/local/include/glm/detail/type_vec4.hpp
 /usr/local/include/glm/detail/type_vec4.inl
-/usr/local/include/glm/detail/type_vec4_simd.inl
+/usr/local/include/glm/detail/type_vec_simd.inl
 /usr/local/include/glm/exponential.hpp
 /usr/local/include/glm/ext.hpp
 /usr/local/include/glm/ext/_matrix_vectorize.hpp
@@ -311,7 +311,7 @@
 /usr/local/include/glm/gtx/fast_square_root.inl
 /usr/local/include/glm/gtx/fast_trigonometry.hpp
 /usr/local/include/glm/gtx/fast_trigonometry.inl
-/usr/local/include/glm/gtx/float_notmalize.inl
+/usr/local/include/glm/gtx/float_normalize.inl
 /usr/local/include/glm/gtx/functions.hpp
 /usr/local/include/glm/gtx/functions.inl
 /usr/local/include/glm/gtx/gradient_paint.hpp
@@ -326,6 +326,8 @@
 /usr/local/include/glm/gtx/intersect.inl
 /usr/local/include/glm/gtx/io.hpp
 /usr/local/include/glm/gtx/io.inl
+/usr/local/include/glm/gtx/iteration.hpp
+/usr/local/include/glm/gtx/iteration.inl
 /usr/local/include/glm/gtx/log_base.hpp
 /usr/local/include/glm/gtx/log_base.inl
 /usr/local/include/glm/gtx/matrix_cross_product.hpp
@@ -383,6 +385,8 @@
 /usr/local/include/glm/gtx/std_based_type.inl
 /usr/local/include/glm/gtx/string_cast.hpp
 /usr/local/include/glm/gtx/string_cast.inl
+/usr/local/include/glm/gtx/structured_bindings.hpp
+/usr/local/include/glm/gtx/structured_bindings.inl
 /usr/local/include/glm/gtx/texture.hpp
 /usr/local/include/glm/gtx/texture.inl
 /usr/local/include/glm/gtx/transform.hpp
