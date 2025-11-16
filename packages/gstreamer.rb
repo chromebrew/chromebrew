@@ -11,9 +11,9 @@ class Gstreamer < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fff97e8e9ac814ab81c7af7992bf72673a9379e43d409f71b04428f5695dec9d',
-     armv7l: 'fff97e8e9ac814ab81c7af7992bf72673a9379e43d409f71b04428f5695dec9d',
-     x86_64: 'cd81c3f18915c91469fac8fb15248f3573aadd9deddd3748f6cb091facc20962'
+    aarch64: '26d02cbb5f8fabe69804deefa0f30063e60d6c2b585eb3d4d65539139760d49a',
+     armv7l: '26d02cbb5f8fabe69804deefa0f30063e60d6c2b585eb3d4d65539139760d49a',
+     x86_64: '52673b19f10646ce035a7a961a09d1173984fa42b342337ff8c0325da23847a7'
   })
 
   depends_on 'alsa_lib' # R
@@ -96,8 +96,6 @@ class Gstreamer < Meson
   depends_on 'py3_gitlint' => :build
   depends_on 'py3_setuptools' => :build
   depends_on 'qt5_base' # R
-  depends_on 'qt5_base' # R
-  depends_on 'qt5_declarative' # R
   depends_on 'qt5_declarative' # R
   depends_on 'rtmpdump' # R
   depends_on 'sbc' # R
