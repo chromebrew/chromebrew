@@ -3,12 +3,12 @@ require 'package'
 class Gsm < Package
   description 'Shared libraries for GSM 06.10 lossy speech compression'
   homepage 'https://www.quut.com/gsm/'
-  version '1.0.19'
+  version '1.0.23'
   license 'gsm'
   compatibility 'all'
   source_url "https://www.quut.com/gsm/gsm-#{version}.tar.gz"
-  source_sha256 '4903652f68a8c04d0041f0d19b1eb713ddcd2aa011c5e595b3b8bca2755270f6'
-  binary_compression 'tar.xz'
+  source_sha256 '8b7591a85ac9adce858f2053005e6b2eb20c23b8b8a868dffb2969645fa323c0'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '4dc9c3426864671b7c61c08d846ff40fd524bf341163997c8e5caddab90c229d',
