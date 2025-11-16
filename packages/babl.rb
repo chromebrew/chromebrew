@@ -3,17 +3,17 @@ require 'buildsystems/meson'
 class Babl < Meson
   description 'babl is a dynamic, any to any, pixel format translation library.'
   homepage 'https://gegl.org/babl/'
-  version '0.1.114'
+  version '0.1.116'
   license 'LGPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://download.gimp.org/pub/babl/#{version.rpartition('.')[0]}/babl-#{version}.tar.xz"
-  source_sha256 'bcbb7786c1e447703db3bc7fa34d62d0d2d117b22f04d8834c7b2d5ded456487'
+  source_sha256 '50fae069867c7ade1259888ff1e3db85fec86d708252e5385b5a4f39a78ec483'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '75f2dd70c49e5afedd3d7aca4557151ad461bc5b256986102af716983a66540f',
-     armv7l: '75f2dd70c49e5afedd3d7aca4557151ad461bc5b256986102af716983a66540f',
-     x86_64: '11243878e0f34458bf0379a5dcf1e4042d31b6b398bed14baa01f288f7567ddd'
+    aarch64: '0986b9e40794045e27836213da379a2dafcd49dc4edcd7f8e52ab5664005fba5',
+     armv7l: '0986b9e40794045e27836213da379a2dafcd49dc4edcd7f8e52ab5664005fba5',
+     x86_64: 'a7d4a6e0ef80baf2475cd34f29f124f6fbaabcc6b2be83316261034e1ec8989e'
   })
 
   depends_on 'gcc_lib' # R
