@@ -3,12 +3,12 @@ require 'package'
 class Git_lfs < Package
   description 'Git extension for versioning large files'
   homepage 'https://git-lfs.com/'
-  version '2.13.2'
+  version '3.7.1'
   license 'AGPL-3'
   compatibility 'all'
   source_url "https://github.com/git-lfs/git-lfs/releases/download/v#{version}/git-lfs-v#{version}.tar.gz"
-  source_sha256 '782e6275df9ca370730945112e16a0b8c64b9819f0b61fae52ba1ebbc8dce2d5'
-  binary_compression 'tar.xz'
+  source_sha256 '8f56058622edfea1d111e50e9844ef2f5ce670b2dbe4d55d48e765c943af4351'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '28dd4fe263e71d34c1af024f7955e975a7baa239b25d8fed9982cce213248d5a',
