@@ -11,10 +11,10 @@ class Gpgme < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '011f15008e005330988dcff0d3c7dacb7417aaee8a51b3ee9567ad72b37ad3a6',
-     armv7l: '011f15008e005330988dcff0d3c7dacb7417aaee8a51b3ee9567ad72b37ad3a6',
-       i686: '08335b59c6d63d2da675544b71332255861d7053b0567649d6872b374ef56d7f',
-     x86_64: '38de5c2986e5288ac1e3a2002b455b3301f10bac1bb891c195aac2b53977eb81'
+    aarch64: '0b5f52f208f9796617389bfc2d1aaa78f19ebba26ba5d6f458a57dc78ee3e338',
+     armv7l: '0b5f52f208f9796617389bfc2d1aaa78f19ebba26ba5d6f458a57dc78ee3e338',
+       i686: '5d59d63943df6e0beec7ea5402cb17fdc4544c6838b97d1b89a5248816f9bb28',
+     x86_64: '4504ee8bf42fcf86d9fe5a06679f9f6b221b40a69bf537d710a09ca002cef7e9'
   })
 
   depends_on 'gcc_lib' # R
