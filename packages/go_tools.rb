@@ -3,7 +3,7 @@ require 'package'
 class Go_tools < Package
   description 'Developer tools for the Go programming language'
   homepage 'https://github.com/golang/tools'
-  version '0.36.0'
+  version '0.39.0'
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/golang/tools.git'
