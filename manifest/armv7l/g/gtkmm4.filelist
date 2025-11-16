@@ -1,9 +1,11 @@
-# Total size: 8502002
+# Total size: 8880211
 /usr/local/include/gtkmm-4.0/gdkmm.h
 /usr/local/include/gtkmm-4.0/gdkmm/applaunchcontext.h
 /usr/local/include/gtkmm-4.0/gdkmm/cairocontext.h
 /usr/local/include/gtkmm-4.0/gdkmm/cairoutils.h
+/usr/local/include/gtkmm-4.0/gdkmm/cicpparams.h
 /usr/local/include/gtkmm-4.0/gdkmm/clipboard.h
+/usr/local/include/gtkmm-4.0/gdkmm/colorstate.h
 /usr/local/include/gtkmm-4.0/gdkmm/contentformats.h
 /usr/local/include/gtkmm-4.0/gdkmm/contentformatsbuilder.h
 /usr/local/include/gtkmm-4.0/gdkmm/contentprovider.h
@@ -35,6 +37,7 @@
 /usr/local/include/gtkmm-4.0/gdkmm/graphene_rect.h
 /usr/local/include/gtkmm-4.0/gdkmm/graphene_size.h
 /usr/local/include/gtkmm-4.0/gdkmm/memorytexture.h
+/usr/local/include/gtkmm-4.0/gdkmm/memorytexturebuilder.h
 /usr/local/include/gtkmm-4.0/gdkmm/monitor.h
 /usr/local/include/gtkmm-4.0/gdkmm/paintable.h
 /usr/local/include/gtkmm-4.0/gdkmm/pixbuf.h
@@ -47,7 +50,9 @@
 /usr/local/include/gtkmm-4.0/gdkmm/popupsurfaceimpl.h
 /usr/local/include/gtkmm-4.0/gdkmm/private/applaunchcontext_p.h
 /usr/local/include/gtkmm-4.0/gdkmm/private/cairocontext_p.h
+/usr/local/include/gtkmm-4.0/gdkmm/private/cicpparams_p.h
 /usr/local/include/gtkmm-4.0/gdkmm/private/clipboard_p.h
+/usr/local/include/gtkmm-4.0/gdkmm/private/colorstate_p.h
 /usr/local/include/gtkmm-4.0/gdkmm/private/contentformats_p.h
 /usr/local/include/gtkmm-4.0/gdkmm/private/contentformatsbuilder_p.h
 /usr/local/include/gtkmm-4.0/gdkmm/private/contentprovider_p.h
@@ -76,6 +81,7 @@
 /usr/local/include/gtkmm-4.0/gdkmm/private/graphene_rect_p.h
 /usr/local/include/gtkmm-4.0/gdkmm/private/graphene_size_p.h
 /usr/local/include/gtkmm-4.0/gdkmm/private/memorytexture_p.h
+/usr/local/include/gtkmm-4.0/gdkmm/private/memorytexturebuilder_p.h
 /usr/local/include/gtkmm-4.0/gdkmm/private/monitor_p.h
 /usr/local/include/gtkmm-4.0/gdkmm/private/paintable_p.h
 /usr/local/include/gtkmm-4.0/gdkmm/private/pixbuf_p.h
@@ -111,11 +117,20 @@
 /usr/local/include/gtkmm-4.0/gdkmm/toplevelsurfaceimpl.h
 /usr/local/include/gtkmm-4.0/gdkmm/value_cairo.h
 /usr/local/include/gtkmm-4.0/gdkmm/wrap_init.h
+/usr/local/include/gtkmm-4.0/gskmm.h
+/usr/local/include/gtkmm-4.0/gskmm/enums.h
+/usr/local/include/gtkmm-4.0/gskmm/private/enums_p.h
+/usr/local/include/gtkmm-4.0/gskmm/private/roundedrect_p.h
+/usr/local/include/gtkmm-4.0/gskmm/private/transform_p.h
+/usr/local/include/gtkmm-4.0/gskmm/roundedrect.h
+/usr/local/include/gtkmm-4.0/gskmm/transform.h
+/usr/local/include/gtkmm-4.0/gskmm/wrap_init.h
 /usr/local/include/gtkmm-4.0/gtkmm.h
 /usr/local/include/gtkmm-4.0/gtkmm/aboutdialog.h
 /usr/local/include/gtkmm-4.0/gtkmm/accelerator.h
 /usr/local/include/gtkmm-4.0/gtkmm/accelkey.h
 /usr/local/include/gtkmm-4.0/gtkmm/accessible.h
+/usr/local/include/gtkmm-4.0/gtkmm/accessibletext.h
 /usr/local/include/gtkmm-4.0/gtkmm/actionable.h
 /usr/local/include/gtkmm-4.0/gtkmm/actionbar.h
 /usr/local/include/gtkmm-4.0/gtkmm/adjustment.h
@@ -217,6 +232,8 @@
 /usr/local/include/gtkmm-4.0/gtkmm/filter.h
 /usr/local/include/gtkmm-4.0/gtkmm/filterlistmodel.h
 /usr/local/include/gtkmm-4.0/gtkmm/fixed.h
+/usr/local/include/gtkmm-4.0/gtkmm/fixedlayout.h
+/usr/local/include/gtkmm-4.0/gtkmm/fixedlayoutchild.h
 /usr/local/include/gtkmm-4.0/gtkmm/flattenlistmodel.h
 /usr/local/include/gtkmm-4.0/gtkmm/flowbox.h
 /usr/local/include/gtkmm-4.0/gtkmm/flowboxchild.h
@@ -305,6 +322,7 @@
 /usr/local/include/gtkmm-4.0/gtkmm/printunixdialog.h
 /usr/local/include/gtkmm-4.0/gtkmm/private/aboutdialog_p.h
 /usr/local/include/gtkmm-4.0/gtkmm/private/accessible_p.h
+/usr/local/include/gtkmm-4.0/gtkmm/private/accessibletext_p.h
 /usr/local/include/gtkmm-4.0/gtkmm/private/actionable_p.h
 /usr/local/include/gtkmm-4.0/gtkmm/private/actionbar_p.h
 /usr/local/include/gtkmm-4.0/gtkmm/private/adjustment_p.h
@@ -404,6 +422,8 @@
 /usr/local/include/gtkmm-4.0/gtkmm/private/filter_p.h
 /usr/local/include/gtkmm-4.0/gtkmm/private/filterlistmodel_p.h
 /usr/local/include/gtkmm-4.0/gtkmm/private/fixed_p.h
+/usr/local/include/gtkmm-4.0/gtkmm/private/fixedlayout_p.h
+/usr/local/include/gtkmm-4.0/gtkmm/private/fixedlayoutchild_p.h
 /usr/local/include/gtkmm-4.0/gtkmm/private/flattenlistmodel_p.h
 /usr/local/include/gtkmm-4.0/gtkmm/private/flowbox_p.h
 /usr/local/include/gtkmm-4.0/gtkmm/private/flowboxchild_p.h
@@ -672,11 +692,13 @@
 /usr/local/include/gtkmm-4.0/gtkmm/windowhandle.h
 /usr/local/include/gtkmm-4.0/gtkmm/wrap_init.h
 /usr/local/lib/gtkmm-4.0/include/gdkmmconfig.h
+/usr/local/lib/gtkmm-4.0/include/gskmmconfig.h
 /usr/local/lib/gtkmm-4.0/include/gtkmmconfig.h
 /usr/local/lib/gtkmm-4.0/proc/m4/class_gtkobject.m4
 /usr/local/lib/gtkmm-4.0/proc/m4/class_shared.m4
 /usr/local/lib/gtkmm-4.0/proc/m4/convert.m4
 /usr/local/lib/gtkmm-4.0/proc/m4/convert_gdk.m4
+/usr/local/lib/gtkmm-4.0/proc/m4/convert_gsk.m4
 /usr/local/lib/gtkmm-4.0/proc/m4/convert_gtk.m4
 /usr/local/lib/gtkmm-4.0/proc/m4/convert_gtkmm.m4
 /usr/local/lib/gtkmm-4.0/proc/m4/enum.m4
