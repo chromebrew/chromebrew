@@ -4,7 +4,7 @@ Package.load_package("#{__dir__}/unicode_character_database.rb")
 class Gucharmap < Meson
   description 'GNOME Character Map, based on the Unicode Character Database.'
   homepage 'https://wiki.gnome.org/Apps/Gucharmap'
-  version '15.1.3'
+  version '17.0.0'
   license 'GPL-3+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gucharmap.git'
