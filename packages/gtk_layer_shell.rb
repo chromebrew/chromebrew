@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Gtk_layer_shell < Meson
   description 'Library to create Wayland desktop components using the Layer Shell protocol'
   homepage 'https://github.com/wmww/gtk-layer-shell'
-  version '0.8.2'
+  version '1.0.1'
   license 'LGPL3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/wmww/gtk-layer-shell.git'
