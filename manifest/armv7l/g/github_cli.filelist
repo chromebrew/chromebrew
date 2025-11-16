@@ -1,4 +1,4 @@
-# Total size: 51670502
+# Total size: 51737221
 /usr/local/bin/gh
 /usr/local/share/man/man1/gh-agent-task-create.1.zst
 /usr/local/share/man/man1/gh-agent-task-list.1.zst
@@ -105,6 +105,7 @@
 /usr/local/share/man/man1/gh-pr-merge.1.zst
 /usr/local/share/man/man1/gh-pr-ready.1.zst
 /usr/local/share/man/man1/gh-pr-reopen.1.zst
+/usr/local/share/man/man1/gh-pr-revert.1.zst
 /usr/local/share/man/man1/gh-pr-review.1.zst
 /usr/local/share/man/man1/gh-pr-status.1.zst
 /usr/local/share/man/man1/gh-pr-unlock.1.zst
