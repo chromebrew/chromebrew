@@ -3,12 +3,12 @@ require 'package'
 class Gpt4all < Package
   description 'A free-to-use, locally running, privacy-aware chatbot.'
   homepage 'https://www.nomic.ai/gpt4all'
-  version '3.0.0'
+  version '3.10.0'
   license 'Copyright 2023 Nomic, Inc., Aaron Miller'
   compatibility 'x86_64'
   min_glibc '2.28'
   source_url "https://github.com/nomic-ai/gpt4all/releases/download/v#{version}/gpt4all-installer-linux-v#{version}.run"
-  source_sha256 '5b08bee88cea2c5a8dd9dc70ee5e4cbc76df4f8204b9c869a54b698822372f91'
+  source_sha256 '4553b66f1c44b74c6344e119cd35de0dffa3c597e70b16dbe1daf26dc8023c0d'
 
   depends_on 'xcb_util_image'
   depends_on 'xcb_util_renderutil'
