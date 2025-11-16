@@ -6,11 +6,11 @@ require 'package'
 class Ghostty < Package
   description 'Fast, native, feature-rich terminal emulator pushing modern features'
   homepage 'https://ghostty.org'
-  version '1.1.3'
+  version '1.2.3'
   license 'MIT'
   compatibility 'x86_64'
   source_url "https://release.files.ghostty.org/#{version}/ghostty-source.tar.gz"
-  source_sha256 '51dd34e68d3eac61beff8e12db0068790678778b81208bb4d626fa59e9ff171a'
+  source_sha256 '559770fe9773161e93e3dd9177d916e27037d7f548edcf6186eabc571c0e520b'
   binary_compression 'tar.zst'
 
   binary_sha256({
