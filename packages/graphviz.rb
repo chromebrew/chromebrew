@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Graphviz < CMake
   description 'Graphviz is open source graph visualization software.'
   homepage 'https://www.graphviz.org/'
-  version '9.0.0'
+  version '14.0.4'
   license 'BSD'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.com/graphviz/graphviz.git'
@@ -11,9 +11,9 @@ class Graphviz < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c12deae6fa8b9d66b083bcd159658b5f693bd93814f1d6d33736c5944336bd2e',
-     armv7l: 'c12deae6fa8b9d66b083bcd159658b5f693bd93814f1d6d33736c5944336bd2e',
-     x86_64: '87162917d3aeab886e233df4863b76ce830f9d4f5c4ea0f3299210a0be2f40c1'
+    aarch64: '5a4836d2f75970e3cf7fd7817df058f6f248d1de5db4e0f25c840811b8833885',
+     armv7l: '5a4836d2f75970e3cf7fd7817df058f6f248d1de5db4e0f25c840811b8833885',
+     x86_64: '503c217ee76c05a0abb1d3da94b265e0143c8575ac4ad81962bd0cca7349d3eb'
   })
 
   depends_on 'at_spi2_core' # R
@@ -22,8 +22,9 @@ class Graphviz < CMake
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'ghostscript' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
   depends_on 'libgd' # R
   depends_on 'libpng' => :build
