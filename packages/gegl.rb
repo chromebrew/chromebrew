@@ -3,11 +3,11 @@ require 'buildsystems/meson'
 class Gegl < Meson
   description 'GEGL (Generic Graphics Library) is a data flow based image processing framework, providing floating point processing and non-destructive image processing capabilities to GNU Image Manipulation Program and other projects.'
   homepage 'https://gegl.org/'
-  version '0.4.62'
+  version '0.4.64'
   license 'GPL-3+ and LGPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://download.gimp.org/pub/gegl/#{version.rpartition('.')[0]}/gegl-#{version}.tar.xz"
-  source_sha256 '418c26d94be8805d7d98f6de0c6825ca26bd74fcacb6c188da47533d9ee28247'
+  source_sha256 '0de1c9dd22c160d5e4bdfc388d292f03447cca6258541b9a12fed783d0cf7c60'
   binary_compression 'tar.zst'
 
   binary_sha256({
