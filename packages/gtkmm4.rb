@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gtkmm4 < Meson
   description 'The Gtkmm4 package provides a C++ interface to GTK+ 4.'
   homepage 'https://www.gtkmm.org/'
-  version '4.13.3'
+  version '4.20.0'
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gtkmm.git'
