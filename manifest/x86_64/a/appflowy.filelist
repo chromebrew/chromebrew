@@ -1,4 +1,4 @@
-# Total size: 145208546
+# Total size: 145374721
 /usr/local/bin/appflowy
 /usr/local/share/AppFlowy/AppFlowy
 /usr/local/share/AppFlowy/data/flutter_assets/AssetManifest.bin
@@ -531,8 +531,10 @@
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/code_block_language_search_icon.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/collapse.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/contact_suffix_icon.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/copy.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/created_at.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/date.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/define.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/doc.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/embed_fullscreen.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/emoji_picker_search_icon.svg
@@ -545,7 +547,9 @@
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/h5.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/h6.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/hide_password.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/icon_close_math_equation_dialog.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/icon_formula.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/icon_math_equation_open_window.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/icon_profile_setting_hint.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/import_workspace.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/last_modified.svg
@@ -568,7 +572,9 @@
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/option_action_turninto.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/palette.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/password_close.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/paste_as_text.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/person_icon_no_access.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/plan.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/private_section_icon.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/profile_add_icon.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/profile_card_avatar_no_access.svg
@@ -579,6 +585,7 @@
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/radio_button_unselected.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/relation.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/remove_inviting_item.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/scissors.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/search_arrow_right.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/search_clear.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/search_icon.svg
@@ -678,6 +685,7 @@
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/24x/folder.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/24x/hide.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/24x/hide_menu.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/24x/icon_math_equation_confirm.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/24x/invite_member_link.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/24x/level.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/24x/m_aa_align_center.svg
