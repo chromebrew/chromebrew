@@ -3,12 +3,12 @@ require 'package'
 class Go_fetch < Package
   description 'fetch makes it easy to download files, folders, or release assets from a specific commit, branch, or tag of a public or private GitHub repo.'
   homepage 'https://github.com/gruntwork-io/fetch/'
-  version '0.4.2'
+  version '0.4.6'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://github.com/gruntwork-io/fetch.git'
   git_hashtag "v#{version}"
-  binary_compression 'tar.xz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: 'b0e8b47876a76312e2ee23bbc436e1493eb04b8814389292888229369416cbbc',
