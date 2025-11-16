@@ -1,4 +1,4 @@
-# Total size: 201870137
+# Total size: 201868130
 /usr/local/bin/go
 /usr/local/bin/gofmt
 /usr/local/share/go/CONTRIBUTING.md
@@ -1482,6 +1482,7 @@
 /usr/local/share/go/src/cmd/compile/testdata/script/embedbad.txt
 /usr/local/share/go/src/cmd/compile/testdata/script/issue70173.txt
 /usr/local/share/go/src/cmd/compile/testdata/script/issue73947.txt
+/usr/local/share/go/src/cmd/compile/testdata/script/issue75461.txt
 /usr/local/share/go/src/cmd/compile/testdata/script/script_test_basics.txt
 /usr/local/share/go/src/cmd/covdata/argsmerge.go
 /usr/local/share/go/src/cmd/covdata/covdata.go
@@ -4929,8 +4930,6 @@
 /usr/local/share/go/src/crypto/internal/fips140/subtle/xor_generic.go
 /usr/local/share/go/src/crypto/internal/fips140/subtle/xor_loong64.go
 /usr/local/share/go/src/crypto/internal/fips140/subtle/xor_loong64.s
-/usr/local/share/go/src/crypto/internal/fips140/subtle/xor_mips64x.s
-/usr/local/share/go/src/crypto/internal/fips140/subtle/xor_mipsx.s
 /usr/local/share/go/src/crypto/internal/fips140/subtle/xor_ppc64x.s
 /usr/local/share/go/src/crypto/internal/fips140/subtle/xor_riscv64.s
 /usr/local/share/go/src/crypto/internal/fips140/tls12/cast.go
@@ -13586,6 +13585,7 @@
 /usr/local/share/go/test/fixedbugs/issue7550.go
 /usr/local/share/go/test/fixedbugs/issue75569.go
 /usr/local/share/go/test/fixedbugs/issue7590.go
+/usr/local/share/go/test/fixedbugs/issue76008.go
 /usr/local/share/go/test/fixedbugs/issue7648.dir/a.go
 /usr/local/share/go/test/fixedbugs/issue7648.dir/b.go
 /usr/local/share/go/test/fixedbugs/issue7648.go
