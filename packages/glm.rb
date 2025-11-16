@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Glm < CMake
   description 'OpenGL Mathematics (GLM) is a header only C++ mathematics library for graphics software based on the OpenGL Shading Language (GLSL) specifications.'
   homepage 'https://github.com/g-truc/glm'
-  version '1.0.1'
+  version '1.0.2'
   license 'HappyBunny or MIT'
   compatibility 'all'
   source_url 'https://github.com/g-truc/glm.git'
