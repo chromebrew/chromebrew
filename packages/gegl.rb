@@ -44,7 +44,6 @@ class Gegl < Meson
   depends_on 'source_highlight' => :build
   depends_on 'zlib' # R
 
-  meson_options '-Dlibjpeg=enabled \
-      -Dlibpng=enabled \
+  meson_options '-Dlibpng=enabled \
       -Dvapigen=disabled'
 end
