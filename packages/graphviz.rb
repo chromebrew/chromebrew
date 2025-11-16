@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Graphviz < CMake
   description 'Graphviz is open source graph visualization software.'
   homepage 'https://www.graphviz.org/'
-  version '9.0.0'
+  version '14.0.4'
   license 'BSD'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.com/graphviz/graphviz.git'
