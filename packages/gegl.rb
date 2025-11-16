@@ -11,12 +11,11 @@ class Gegl < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8459035ff6a09bd6a40a7ff554d33ff8f4f969c896aade3050cea193d9fa4708',
-     armv7l: '8459035ff6a09bd6a40a7ff554d33ff8f4f969c896aade3050cea193d9fa4708',
-     x86_64: '7d3a3348a8f3028940864daf6ec53d4bb5417bf30cc800de59b33a6358813394'
+    aarch64: '73d655b1693f1c4f95cdf5196086cddfdf9668105083b17882a6983f22ad6b91',
+     armv7l: '73d655b1693f1c4f95cdf5196086cddfdf9668105083b17882a6983f22ad6b91',
+     x86_64: '88fa157437c1ef69ba6fa307127bc23465e417bb857499213e9dbbfc311eee01'
   })
 
-  depends_on 'py3_asciidoc' => :build
   depends_on 'babl' # R
   depends_on 'cairo' # R
   depends_on 'enscript' => :build
@@ -24,8 +23,8 @@ class Gegl < Meson
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'gexiv2' => :build
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'graphviz' => :build # for dot
   depends_on 'harfbuzz' # R
   depends_on 'jasper' # R
@@ -34,13 +33,14 @@ class Gegl < Meson
   depends_on 'libjpeg_turbo' # R
   depends_on 'libpng' # R
   depends_on 'librsvg' # R
-  depends_on 'sdl2' # R
   depends_on 'libtiff' # R
   depends_on 'libwebp' # R
   depends_on 'luajit' => :build
   depends_on 'openexr' # R
   depends_on 'pango' # R
   depends_on 'poppler' # R
+  depends_on 'py3_asciidoc' => :build
+  depends_on 'sdl2' # R
   depends_on 'source_highlight' => :build
   depends_on 'zlib' # R
 
