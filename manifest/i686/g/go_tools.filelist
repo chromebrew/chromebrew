@@ -1,4 +1,4 @@
-# Total size: 118956180
+# Total size: 107440100
 /usr/local/bin/benchcmp
 /usr/local/bin/bisect
 /usr/local/bin/callgraph
@@ -13,7 +13,6 @@
 /usr/local/bin/go-contrib-init
 /usr/local/bin/go_bundle
 /usr/local/bin/godex
-/usr/local/bin/godoc
 /usr/local/bin/goimports
 /usr/local/bin/gomvpkg
 /usr/local/bin/gonew
