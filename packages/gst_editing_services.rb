@@ -3,12 +3,12 @@ require 'package'
 class Gst_editing_services < Package
   description 'GStreamer library for creating audio/video editors'
   homepage 'https://gstreamer.freedesktop.org/modules/gst-editing-services.html'
-  version '1.18.4'
+  version '1.26.8'
   license 'LGPL-2.0+'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://gstreamer.freedesktop.org/src/gst-editing-services/gst-editing-services-#{version}.tar.xz"
-  source_sha256 '4687b870a7de18aebf50f45ff572ad9e0138020e3479e02a6f056a0c4c7a1d04'
-  binary_compression 'tar.xz'
+  source_sha256 'c391c33350ee56ec1f3a83b71f114348ef4669953e67b55f86e466c7dbd0f000'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: 'b8ec4f105bd65a5d31bad65e992c9fd5cbbd09a1ae8af2fab7b381a103ee3f98',
