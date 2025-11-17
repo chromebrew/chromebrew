@@ -4,7 +4,7 @@ class Py3_scons < Pip
   description 'SCons is an Open Source software construction tool that is, a next-generation build tool.'
   homepage 'https://scons.org/'
   license 'MIT'
-  version '4.10.0'
+  version '4.10.1'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
