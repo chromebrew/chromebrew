@@ -10,15 +10,15 @@ class Py3_numpy < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '06a30e5efc0ec5fb13ee0c8503ec35cf975c26b2a6f613cddc96587704683a5e',
-     armv7l: '06a30e5efc0ec5fb13ee0c8503ec35cf975c26b2a6f613cddc96587704683a5e',
-       i686: 'ba460bad71eef8ddc60f4829db403d7a9d80147745ab1404c589b384830afe84',
-     x86_64: '0cdc18eceeb4c14c019cac26cd23f3da1acef3cf50213ca8774745c918407e4b'
+    aarch64: '64a3efd8b98732e3cbe85cd1c9494bef40f8aab379e024661509d1589b38f5ee',
+     armv7l: '64a3efd8b98732e3cbe85cd1c9494bef40f8aab379e024661509d1589b38f5ee',
+       i686: '515ccf536c3a5d6777a34d9adafcd0790c439ff1b053309abe74f148e34663a2',
+     x86_64: '3918dc459a05652d51a72656f4921e802c5704b9e6348a25800820ed92699ae1'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'lapack' => :build
+  depends_on 'lapack' # R
   depends_on 'py3_cython' => :build
   depends_on 'py3_setuptools' => :build
   depends_on 'python3' # R
