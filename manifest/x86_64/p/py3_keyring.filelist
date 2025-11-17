@@ -1,13 +1,13 @@
-# Total size: 229170
+# Total size: 228885
 /usr/local/bin/keyring
-/usr/local/lib/python3.13/site-packages/keyring-25.6.0.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/keyring-25.6.0.dist-info/LICENSE
-/usr/local/lib/python3.13/site-packages/keyring-25.6.0.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/keyring-25.6.0.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/keyring-25.6.0.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/keyring-25.6.0.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/keyring-25.6.0.dist-info/entry_points.txt
-/usr/local/lib/python3.13/site-packages/keyring-25.6.0.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/keyring-25.7.0.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/keyring-25.7.0.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/keyring-25.7.0.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/keyring-25.7.0.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/keyring-25.7.0.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/keyring-25.7.0.dist-info/entry_points.txt
+/usr/local/lib/python3.13/site-packages/keyring-25.7.0.dist-info/licenses/LICENSE
+/usr/local/lib/python3.13/site-packages/keyring-25.7.0.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/keyring/__init__.py
 /usr/local/lib/python3.13/site-packages/keyring/__main__.py
 /usr/local/lib/python3.13/site-packages/keyring/__pycache__/__init__.cpython-313.pyc
@@ -48,10 +48,8 @@
 /usr/local/lib/python3.13/site-packages/keyring/compat/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/keyring/compat/__pycache__/properties.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/keyring/compat/__pycache__/py312.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/keyring/compat/__pycache__/py38.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/keyring/compat/properties.py
 /usr/local/lib/python3.13/site-packages/keyring/compat/py312.py
-/usr/local/lib/python3.13/site-packages/keyring/compat/py38.py
 /usr/local/lib/python3.13/site-packages/keyring/completion.py
 /usr/local/lib/python3.13/site-packages/keyring/core.py
 /usr/local/lib/python3.13/site-packages/keyring/credentials.py
