@@ -3,7 +3,7 @@ require 'package'
 class Dart < Package
   description 'The Dart SDK is a set of tools and libraries for the Dart programming language.  You can find information about Dart online at dartlang.org.'
   homepage 'https://dart.dev'
-  version '3.9.4'
+  version '3.10.0'
   license 'BSD-3'
   compatibility 'aarch64 armv7l x86_64'
 
@@ -13,8 +13,8 @@ class Dart < Package
      x86_64: "https://storage.googleapis.com/dart-archive/channels/stable/release/#{version}/sdk/dartsdk-linux-x64-release.zip"
   })
   source_sha256({
-    aarch64: '8490f1d4a137e6b9edc628f7fe56bfa2d93ea22d07981b37bcb08c4248f03be8',
-     armv7l: '8490f1d4a137e6b9edc628f7fe56bfa2d93ea22d07981b37bcb08c4248f03be8',
+    aarch64: 'b91536edbcafc0d6389b8db6d1677bac0c608a1578fdf7c919b47b439aa044f1',
+     armv7l: 'b91536edbcafc0d6389b8db6d1677bac0c608a1578fdf7c919b47b439aa044f1',
      x86_64: '61b4b9488e1b4255b94be17ad48ae2ddb23c6fbe67824cf8103d0b28fa8ab816'
   })
 
