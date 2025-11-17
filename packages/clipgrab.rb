@@ -3,11 +3,11 @@ require 'package'
 class Clipgrab < Package
   description 'A friendly downloader for YouTube and other sites'
   homepage 'https://clipgrab.org/'
-  version '3.9.10'
+  version '3.9.14'
   license 'GPL-3'
   compatibility 'x86_64'
-  source_url 'https://download.clipgrab.org/ClipGrab-3.9.10-x86_64.AppImage'
-  source_sha256 'f53b007f953a533b6ec2c0ffb8370773f734e50bb8ba9ba767b088902ba0a7b1'
+  source_url "https://download.clipgrab.org/ClipGrab-#{version}-x86_64.AppImage"
+  source_sha256 '4d6a0669b3da4992d22c85ad0ac80ed9095544b58acdbbda9b55ea795d106739'
 
   no_compile_needed
 
@@ -34,6 +34,6 @@ class Clipgrab < Package
   end
 
   def self.postinstall
-    puts "\nType 'clipgrab' to get started.\n".lightblue
+    ExitMessage.add "\nType 'clipgrab' to get started.\n"
   end
 end
