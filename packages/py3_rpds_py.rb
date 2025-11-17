@@ -6,7 +6,7 @@ require 'buildsystems/pip'
 class Py3_rpds_py < Pip
   description 'Python bindings to the Rust rpds crate for persistent data structures'
   homepage 'https://github.com/crate-py/rpds'
-  version '0.28.0'
+  version '0.29.0'
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
