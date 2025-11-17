@@ -1,4 +1,4 @@
-# Total size: 22207634
+# Total size: 22212691
 /usr/local/bin/scons
 /usr/local/bin/scons-configure-cache
 /usr/local/bin/sconsign
@@ -273,6 +273,8 @@
 /usr/local/lib/python3.13/site-packages/SCons/Tool/dmd.py
 /usr/local/lib/python3.13/site-packages/SCons/Tool/docbook/__init__.py
 /usr/local/lib/python3.13/site-packages/SCons/Tool/docbook/__pycache__/__init__.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/SCons/Tool/docbook/docbook-xsl-1.76.1/.CatalogManager.properties.example
+/usr/local/lib/python3.13/site-packages/SCons/Tool/docbook/docbook-xsl-1.76.1/.urilist
 /usr/local/lib/python3.13/site-packages/SCons/Tool/docbook/docbook-xsl-1.76.1/AUTHORS
 /usr/local/lib/python3.13/site-packages/SCons/Tool/docbook/docbook-xsl-1.76.1/BUGS
 /usr/local/lib/python3.13/site-packages/SCons/Tool/docbook/docbook-xsl-1.76.1/COPYING
@@ -1771,12 +1773,12 @@
 /usr/local/lib/python3.13/site-packages/SCons/cpp.py
 /usr/local/lib/python3.13/site-packages/SCons/dblite.py
 /usr/local/lib/python3.13/site-packages/SCons/exitfuncs.py
-/usr/local/lib/python3.13/site-packages/scons-4.10.0.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/scons-4.10.0.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/scons-4.10.0.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/scons-4.10.0.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/scons-4.10.0.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/scons-4.10.0.dist-info/entry_points.txt
-/usr/local/lib/python3.13/site-packages/scons-4.10.0.dist-info/licenses/LICENSE
-/usr/local/lib/python3.13/site-packages/scons-4.10.0.dist-info/licenses/SCons/Tool/docbook/docbook-xsl-1.76.1/COPYING
-/usr/local/lib/python3.13/site-packages/scons-4.10.0.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/scons-4.10.1.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/scons-4.10.1.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/scons-4.10.1.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/scons-4.10.1.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/scons-4.10.1.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/scons-4.10.1.dist-info/entry_points.txt
+/usr/local/lib/python3.13/site-packages/scons-4.10.1.dist-info/licenses/LICENSE
+/usr/local/lib/python3.13/site-packages/scons-4.10.1.dist-info/licenses/SCons/Tool/docbook/docbook-xsl-1.76.1/COPYING
+/usr/local/lib/python3.13/site-packages/scons-4.10.1.dist-info/top_level.txt
