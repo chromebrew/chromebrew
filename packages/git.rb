@@ -28,6 +28,7 @@ class Git < Meson
   depends_on 'xmlto' => :build
   depends_on 'zlib_ng' # R
 
+  ENV['CREW_LINKER'] = 'lld'
   print_source_bashrc
   run_tests
 
