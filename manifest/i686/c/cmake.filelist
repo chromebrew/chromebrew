@@ -1,4 +1,4 @@
-# Total size: 46275171
+# Total size: 46278700
 /usr/local/bin/ccmake
 /usr/local/bin/cmake
 /usr/local/bin/cpack
@@ -2977,6 +2977,7 @@
 /usr/local/share/cmake-4.1/Modules/Internal/CMakeParseCompilerArchitectureId.cmake
 /usr/local/share/cmake-4.1/Modules/Internal/CMakeSwiftLinkerInformation.cmake
 /usr/local/share/cmake-4.1/Modules/Internal/CMakeTryCompilerOrLinkerFlag.cmake
+/usr/local/share/cmake-4.1/Modules/Internal/CPack/.gitattributes
 /usr/local/share/cmake-4.1/Modules/Internal/CPack/CPack.DS_Store.in
 /usr/local/share/cmake-4.1/Modules/Internal/CPack/CPack.Description.plist.in
 /usr/local/share/cmake-4.1/Modules/Internal/CPack/CPack.Info.plist.in
@@ -3838,6 +3839,7 @@
 /usr/local/share/cmake-4.1/Modules/kde3init_dummy.cpp.in
 /usr/local/share/cmake-4.1/Modules/kde3uic.cmake
 /usr/local/share/cmake-4.1/Modules/readme.txt
+/usr/local/share/cmake-4.1/Templates/.gitattributes
 /usr/local/share/cmake-4.1/Templates/AppleInfo.plist
 /usr/local/share/cmake-4.1/Templates/CMakeVSMacros1.vsmacros
 /usr/local/share/cmake-4.1/Templates/CMakeVSMacros2.vsmacros
