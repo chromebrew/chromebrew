@@ -1,4 +1,4 @@
-# Total size: 87814416
+# Total size: 95483187
 /usr/local/include/EGL/eglext_angle.h
 /usr/local/include/EGL/eglmesaext.h
 /usr/local/include/GL/internal/dri_interface.h
@@ -124,7 +124,7 @@
 /usr/local/lib/libGLX_mesa.so
 /usr/local/lib/libGLX_mesa.so.0
 /usr/local/lib/libGLX_mesa.so.0.0.0
-/usr/local/lib/libgallium-25.2.7.so
+/usr/local/lib/libgallium-25.3.0.so
 /usr/local/lib/libgbm.so
 /usr/local/lib/libgbm.so.1
 /usr/local/lib/libgbm.so.1.0.0
@@ -134,14 +134,6 @@
 /usr/local/lib/libvulkan_panfrost.so
 /usr/local/lib/pkgconfig/dri.pc
 /usr/local/lib/pkgconfig/gbm.pc
-/usr/local/lib/vdpau/libvdpau_nouveau.so
-/usr/local/lib/vdpau/libvdpau_nouveau.so.1
-/usr/local/lib/vdpau/libvdpau_nouveau.so.1.0
-/usr/local/lib/vdpau/libvdpau_nouveau.so.1.0.0
-/usr/local/lib/vdpau/libvdpau_virtio_gpu.so
-/usr/local/lib/vdpau/libvdpau_virtio_gpu.so.1
-/usr/local/lib/vdpau/libvdpau_virtio_gpu.so.1.0
-/usr/local/lib/vdpau/libvdpau_virtio_gpu.so.1.0.0
 /usr/local/share/drirc.d/00-mesa-defaults.conf
 /usr/local/share/glvnd/egl_vendor.d/50_mesa.json
 /usr/local/share/vulkan/icd.d/freedreno_icd.armv8l.json
