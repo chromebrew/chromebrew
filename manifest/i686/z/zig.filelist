@@ -1,4 +1,4 @@
-# Total size: 348730937
+# Total size: 348745072
 /usr/local/bin/zig
 /usr/local/share/zig/LICENSE
 /usr/local/share/zig/README.md
@@ -13968,6 +13968,7 @@
 /usr/local/share/zig/lib/libc/musl/src/fenv/feupdateenv.c
 /usr/local/share/zig/lib/libc/musl/src/fenv/hexagon/fenv.S
 /usr/local/share/zig/lib/libc/musl/src/fenv/i386/fenv.s
+/usr/local/share/zig/lib/libc/musl/src/fenv/loongarch64/fenv-sf.c
 /usr/local/share/zig/lib/libc/musl/src/fenv/loongarch64/fenv.S
 /usr/local/share/zig/lib/libc/musl/src/fenv/m68k/fenv.c
 /usr/local/share/zig/lib/libc/musl/src/fenv/mips/fenv-sf.c
