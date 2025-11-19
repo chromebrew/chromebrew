@@ -24,6 +24,7 @@ class Gimp < Meson
   depends_on 'babl' # R
   depends_on 'bzip2' # R
   depends_on 'cairo' # R
+  depends_on 'desktop_file_utils' # L
   depends_on 'ffmpeg' => :build
   depends_on 'fontconfig' # R
   depends_on 'freetype' # R
@@ -44,6 +45,7 @@ class Gimp < Meson
   depends_on 'lcms' # R
   depends_on 'libarchive' # R
   depends_on 'libavif' => :build
+  depends_on 'libbacktrace' => :build
   depends_on 'libexif' => :build
   depends_on 'libgudev' # R
   depends_on 'libheif' # R
