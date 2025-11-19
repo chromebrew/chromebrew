@@ -21,6 +21,7 @@ class Git < Meson
   depends_on 'curl' # R
   depends_on 'expat' # R
   depends_on 'glibc' # R
+  depends_on 'llvm_dev' => :build
   depends_on 'openssl' # R
   depends_on 'pcre2' # R
   depends_on 'py3_asciidoc' => :build
