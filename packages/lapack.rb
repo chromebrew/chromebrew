@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Lapack < CMake
   description 'Lapack is a linear algebra package.'
   homepage 'https://www.netlib.org/lapack/'
-  version '3.11.0'
+  version '3.12.1'
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/Reference-LAPACK/lapack.git'
@@ -11,10 +11,10 @@ class Lapack < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '318a9912f69b2f2883c77e9d9b1eb7c63dc5fbfa6751a1792f4b5f793f5400ae',
-     armv7l: '318a9912f69b2f2883c77e9d9b1eb7c63dc5fbfa6751a1792f4b5f793f5400ae',
-       i686: 'd6e4d4239263523c71773907d3abf1de403867b21cf0b4ba761141a7aeac3752',
-     x86_64: '9c4b6ddc16d763f61d79cc7bdc21021f83b6efb06419851ac6a502372f26d850'
+    aarch64: '48e69f2b094d33ac167a185e4d53a7ecb6146edcf14a9cf858da7362fde39656',
+     armv7l: '48e69f2b094d33ac167a185e4d53a7ecb6146edcf14a9cf858da7362fde39656',
+       i686: '31526ff64ea9b7f8a023ca026fb02b4805bd23ff41e57610d1cd837bc4f0a0d3',
+     x86_64: 'a0bac9f30ebef219fea41cfaa9313644727226c166edd953b84278f3e07997b6'
   })
 
   depends_on 'gcc_lib' # R

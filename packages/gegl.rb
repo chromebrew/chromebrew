@@ -3,11 +3,11 @@ require 'buildsystems/meson'
 class Gegl < Meson
   description 'GEGL (Generic Graphics Library) is a data flow based image processing framework, providing floating point processing and non-destructive image processing capabilities to GNU Image Manipulation Program and other projects.'
   homepage 'https://gegl.org/'
-  version '0.4.64'
+  version '0.4.64-1'
   license 'GPL-3+ and LGPL-3'
   compatibility 'aarch64 armv7l x86_64'
-  source_url "https://download.gimp.org/pub/gegl/#{version.rpartition('.')[0]}/gegl-#{version}.tar.xz"
-  source_sha256 '0de1c9dd22c160d5e4bdfc388d292f03447cca6258541b9a12fed783d0cf7c60'
+  source_url 'https://gitlab.gnome.org/GNOME/gegl.git'
+  git_hashtag "GEGL_#{version.split('-').first.gsub('.', '_')}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -30,9 +30,13 @@ class Gegl < Meson
   depends_on 'jasper' # R
   depends_on 'json_glib' # R
   depends_on 'lcms' # R
+  depends_on 'lensfun' => :build
   depends_on 'libjpeg_turbo' # R
   depends_on 'libpng' # R
+  depends_on 'libraw' # R
   depends_on 'librsvg' # R
+  depends_on 'libspiro' # R
+  depends_on 'libtheora' => :build
   depends_on 'libtiff' # R
   depends_on 'libwebp' # R
   depends_on 'luajit' => :build
@@ -42,6 +46,8 @@ class Gegl < Meson
   depends_on 'py3_asciidoc' => :build
   depends_on 'sdl2' # R
   depends_on 'source_highlight' => :build
+  depends_on 'suitesparse' # R
+  depends_on 'w3m' => :build
   depends_on 'zlib' # R
 
   meson_options '-Dvapigen=disabled'

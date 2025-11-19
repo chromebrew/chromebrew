@@ -3950,6 +3950,11 @@ url: https://github.com/technomancy/leiningen/releases
 activity: medium
 ---
 kind: url
+name: lensfun
+url: https://github.com/lensfun/lensfun/releases
+activity: low
+---
+kind: url
 name: leptonica
 url: https://github.com/DanBloomberg/leptonica/releases
 activity: low

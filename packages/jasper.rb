@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Jasper < Package
+class Jasper < CMake
   description 'The JasPer Project is an open-source initiative to provide a free software-based reference implementation of the codec specified in the JPEG-2000 Part-1 standard (i.e., ISO/IEC 15444-1).'
   homepage 'https://www.ece.uvic.ca/~frodo/jasper/'
-  version '3.0.6'
+  version '4.2.8'
   license 'JasPer-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/jasper-software/jasper.git'
@@ -11,34 +11,27 @@ class Jasper < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7869ef04d5dab7ba48e2c240fa04cb74ea7a2408e0d33a5330ba65b606d519f7',
-     armv7l: '7869ef04d5dab7ba48e2c240fa04cb74ea7a2408e0d33a5330ba65b606d519f7',
-     x86_64: 'f7037e21cbcabd82eca2c8382fff9af133db731de5e31b8739eddae727fbfa89'
+    aarch64: 'd7cbe599c821f193b1bbae6f02dd85de4e53fafe687c592705d980a763cc0601',
+     armv7l: 'd7cbe599c821f193b1bbae6f02dd85de4e53fafe687c592705d980a763cc0601',
+     x86_64: 'f4f150c4c1cfc9b02cdb56f43ea402b1b0262b2fb71c5dce9d2eeca108371430'
   })
 
-  depends_on 'freeglut'
-  depends_on 'libglu'
-  depends_on 'libjpeg_turbo'
-  depends_on 'mesa'
-  depends_on 'shared_mime_info'
+  depends_on 'freeglut' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
+  depends_on 'libglu' # R
+  depends_on 'libglvnd' # R
   depends_on 'libheif' # R
+  depends_on 'libjpeg_turbo' # R
+  depends_on 'libxi' # R
+  depends_on 'libxmu' # R
+  depends_on 'mesa' => :build
+  depends_on 'shared_mime_info' => :build
 
-  def self.build
-    Dir.mkdir 'builddir'
-    Dir.chdir 'builddir' do
-      system "cmake \
-        -G Ninja \
-        #{CREW_CMAKE_OPTIONS} \
-        -DJAS_ENABLE_DOC=FALSE \
+  cmake_options '-DALLOW_IN_SOURCE_BUILD=ON \
         -DBUILD_SHARED_LIBS=ON \
-        .."
-    end
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+        -DJAS_ENABLE_CXX=ON \
+        -DJAS_ENABLE_DOC=OFF \
+        -DJAS_ENABLE_HEIC_CODEC=ON \
+        -DJAS_PACKAGING=ON'
 end

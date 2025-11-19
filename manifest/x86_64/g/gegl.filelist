@@ -1,4 +1,4 @@
-# Total size: 15833496
+# Total size: 15894880
 /usr/local/bin/gegl
 /usr/local/bin/gegl-imgcmp
 /usr/local/include/gegl-0.4/gegl-apply.h
@@ -119,6 +119,7 @@
 /usr/local/lib64/gegl-0.4/jpg-load.so
 /usr/local/lib64/gegl-0.4/jpg-save.so
 /usr/local/lib64/gegl-0.4/lcms-from-profile.so
+/usr/local/lib64/gegl-0.4/matting-levin.so
 /usr/local/lib64/gegl-0.4/npd.so
 /usr/local/lib64/gegl-0.4/npy-save.so
 /usr/local/lib64/gegl-0.4/path.so
@@ -129,6 +130,7 @@
 /usr/local/lib64/gegl-0.4/png-save.so
 /usr/local/lib64/gegl-0.4/ppm-load.so
 /usr/local/lib64/gegl-0.4/ppm-save.so
+/usr/local/lib64/gegl-0.4/raw-load.so
 /usr/local/lib64/gegl-0.4/rgbe-load.so
 /usr/local/lib64/gegl-0.4/rgbe-save.so
 /usr/local/lib64/gegl-0.4/sdl2-display.so

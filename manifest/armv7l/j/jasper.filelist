@@ -1,4 +1,4 @@
-# Total size: 832452
+# Total size: 601637
 /usr/local/bin/imgcmp
 /usr/local/bin/imginfo
 /usr/local/bin/jasper
@@ -27,11 +27,11 @@
 /usr/local/include/jasper/jas_version.h
 /usr/local/include/jasper/jasper.h
 /usr/local/lib/libjasper.so
-/usr/local/lib/libjasper.so.6
-/usr/local/lib/libjasper.so.6.0.0
+/usr/local/lib/libjasper.so.7
+/usr/local/lib/libjasper.so.7.0.0
 /usr/local/lib/pkgconfig/jasper.pc
 /usr/local/share/doc/JasPer/README.md
-/usr/local/share/man/man1/imgcmp.1.gz
-/usr/local/share/man/man1/imginfo.1.gz
-/usr/local/share/man/man1/jasper.1.gz
-/usr/local/share/man/man1/jiv.1.gz
+/usr/local/share/man/man1/imgcmp.1.zst
+/usr/local/share/man/man1/imginfo.1.zst
+/usr/local/share/man/man1/jasper.1.zst
+/usr/local/share/man/man1/jiv.1.zst
