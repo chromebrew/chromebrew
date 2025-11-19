@@ -11,8 +11,8 @@ class Suitesparse < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '458d03ffa601714d5e3a1f1990c6dfa76b39a79e8d3335405f60e51e0ab6a669',
-     armv7l: '458d03ffa601714d5e3a1f1990c6dfa76b39a79e8d3335405f60e51e0ab6a669',
+    aarch64: '74d600ca187a132cf02c1e289ead0cbe3640eecaad64ad9bee1235f11b4006d8',
+     armv7l: '74d600ca187a132cf02c1e289ead0cbe3640eecaad64ad9bee1235f11b4006d8',
        i686: '7bf702d27beb0d0bccc0827740150ead66e4a2ecfc06ef9e20a544bb3597610b',
      x86_64: 'fdfdf549665de7b7fc194a939730154d1325052e7ebbcb0623b7c6a036db3d92'
   })

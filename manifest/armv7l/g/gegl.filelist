@@ -1,4 +1,4 @@
-# Total size: 11821082
+# Total size: 12657041
 /usr/local/bin/gegl
 /usr/local/bin/gegl-imgcmp
 /usr/local/include/gegl-0.4/gegl-apply.h
@@ -114,6 +114,7 @@
 /usr/local/lib/gegl-0.4/jpg-load.so
 /usr/local/lib/gegl-0.4/jpg-save.so
 /usr/local/lib/gegl-0.4/lcms-from-profile.so
+/usr/local/lib/gegl-0.4/matting-levin.so
 /usr/local/lib/gegl-0.4/npd.so
 /usr/local/lib/gegl-0.4/npy-save.so
 /usr/local/lib/gegl-0.4/path.so
@@ -124,6 +125,7 @@
 /usr/local/lib/gegl-0.4/png-save.so
 /usr/local/lib/gegl-0.4/ppm-load.so
 /usr/local/lib/gegl-0.4/ppm-save.so
+/usr/local/lib/gegl-0.4/raw-load.so
 /usr/local/lib/gegl-0.4/rgbe-load.so
 /usr/local/lib/gegl-0.4/rgbe-save.so
 /usr/local/lib/gegl-0.4/sdl2-display.so
@@ -139,6 +141,7 @@
 /usr/local/lib/gegl-0.4/vector-stroke.so
 /usr/local/lib/gegl-0.4/webp-load.so
 /usr/local/lib/gegl-0.4/webp-save.so
+/usr/local/lib/girepository-1.0/Gegl-0.4.typelib
 /usr/local/lib/libgegl-0.4.so
 /usr/local/lib/libgegl-0.4.so.0
 /usr/local/lib/libgegl-0.4.so.0.463.1
@@ -170,6 +173,7 @@
 /usr/local/share/gegl-0.4/lua/mrl.lua
 /usr/local/share/gegl-0.4/lua/preferences.lua
 /usr/local/share/gegl-0.4/lua/viewer.lua
+/usr/local/share/gir-1.0/Gegl-0.4.gir
 /usr/local/share/locale/bg/LC_MESSAGES/gegl-0.4.mo
 /usr/local/share/locale/bs/LC_MESSAGES/gegl-0.4.mo
 /usr/local/share/locale/ca/LC_MESSAGES/gegl-0.4.mo
@@ -209,3 +213,5 @@
 /usr/local/share/locale/tr/LC_MESSAGES/gegl-0.4.mo
 /usr/local/share/locale/uk/LC_MESSAGES/gegl-0.4.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/gegl-0.4.mo
+/usr/local/share/vala/vapi/gegl-0.4.deps
+/usr/local/share/vala/vapi/gegl-0.4.vapi
