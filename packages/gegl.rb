@@ -13,7 +13,7 @@ class Gegl < Meson
   binary_sha256({
     aarch64: '73d655b1693f1c4f95cdf5196086cddfdf9668105083b17882a6983f22ad6b91',
      armv7l: '73d655b1693f1c4f95cdf5196086cddfdf9668105083b17882a6983f22ad6b91',
-     x86_64: '88fa157437c1ef69ba6fa307127bc23465e417bb857499213e9dbbfc311eee01'
+     x86_64: '6f30ff15b7fefb8c9636e723f1a7cb391809aeb2acb30103b9f4fd8726f3b4af'
   })
 
   depends_on 'babl' # R
