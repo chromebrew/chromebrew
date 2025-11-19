@@ -13,7 +13,7 @@ class Gimp < Meson
   binary_sha256({
     aarch64: 'f39f422428c9d94f5c8ce52f1eb88477cb5a44904a7b71eeb5fa48272d2961c2',
      armv7l: 'f39f422428c9d94f5c8ce52f1eb88477cb5a44904a7b71eeb5fa48272d2961c2',
-     x86_64: '758437be57ac5ff39c8540d3a261fc7ebdd14e1a8c1c1c8db88959201dddbe5d'
+     x86_64: '2404a3227948255f7127a6bb803d8588af30d1126db9333dd39230f737e4fd96'
   })
 
   depends_on 'aalib' # R
@@ -45,7 +45,7 @@ class Gimp < Meson
   depends_on 'lcms' # R
   depends_on 'libarchive' # R
   depends_on 'libavif' => :build
-  depends_on 'libbacktrace' => :build
+  depends_on 'libbacktrace' # R
   depends_on 'libexif' => :build
   depends_on 'libgudev' # R
   depends_on 'libheif' # R
