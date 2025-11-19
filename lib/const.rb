@@ -252,8 +252,6 @@ CREW_COMMON_FLAGS         ||= "#{CREW_CORE_FLAGS} -flto=auto"
 CREW_COMMON_FNO_LTO_FLAGS ||= "#{CREW_CORE_FLAGS} -fno-lto"
 CREW_FNO_LTO_LDFLAGS      ||= '-fno-lto'
 
-# CC_LD and CXX_LD are needed by meson to override mold being
-# detected and used by default.
 CREW_ENV_OPTIONS_HASH ||=
   if CREW_DISABLE_ENV_OPTIONS
     { 'CREW_DISABLE_ENV_OPTIONS' => '1' }
@@ -264,8 +262,6 @@ CREW_ENV_OPTIONS_HASH ||=
       'FCFLAGS'         => CREW_COMMON_FLAGS,
       'FFLAGS'          => CREW_COMMON_FLAGS,
       'LIBRARY_PATH'    => CREW_GLIBC_INTERPRETER.nil? ? '' : "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
-      'CC_LD'           => CREW_LINKER,
-      'CXX_LD'          => CREW_LINKER,
       'LDFLAGS'         => CREW_LINKER_FLAGS
     }.reject { |_k, v| v == '' }
   end
@@ -279,8 +275,6 @@ CREW_ENV_FNO_LTO_OPTIONS_HASH ||= {
   'FCFLAGS'         => CREW_COMMON_FNO_LTO_FLAGS,
   'FFLAGS'          => CREW_COMMON_FNO_LTO_FLAGS,
   'LIBRARY_PATH'    => CREW_GLIBC_INTERPRETER.nil? ? '' : "#{CREW_GLIBC_PREFIX}:#{CREW_LIB_PREFIX}",
-  'CC_LD'           => CREW_LINKER,
-  'CXX_LD'          => CREW_LINKER,
   'LDFLAGS'         => CREW_FNO_LTO_LDFLAGS
 }.reject { |_k, v| v == '' }
 # parse from hash to shell readable string
