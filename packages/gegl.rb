@@ -13,7 +13,7 @@ class Gegl < Meson
   binary_sha256({
     aarch64: '73d655b1693f1c4f95cdf5196086cddfdf9668105083b17882a6983f22ad6b91',
      armv7l: '73d655b1693f1c4f95cdf5196086cddfdf9668105083b17882a6983f22ad6b91',
-     x86_64: '6f30ff15b7fefb8c9636e723f1a7cb391809aeb2acb30103b9f4fd8726f3b4af'
+     x86_64: '60a33705c2931ee551ab26d40b2d5e2a34f63ac5865c56c6724992eaec28a04d'
   })
 
   depends_on 'babl' # R
@@ -47,8 +47,7 @@ class Gegl < Meson
   depends_on 'sdl2' # R
   depends_on 'source_highlight' => :build
   depends_on 'suitesparse' # R
+  depends_on 'vala' => :build
   depends_on 'w3m' => :build
   depends_on 'zlib' # R
-
-  meson_options '-Dvapigen=disabled'
 end
