@@ -3,19 +3,21 @@ require 'package'
 class Volta < Package
   description 'JS Toolchains as Code'
   homepage 'https://volta.sh/'
-  version '1.1.1'
+  version '2.0.2'
   license 'BSD-2 Clause'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://github.com/volta-cli/volta/archive/v1.1.1.tar.gz'
-  source_sha256 'f2289274538124984bebb09b0968c2821368d8a80d60b9615e4f999f6751366d'
+  source_url 'https://github.com/volta-cli/volta.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2b1f8bffe3cc48eb31e8ee2c14aba862837195545be8156c596bf13af1eca006',
-     armv7l: '2b1f8bffe3cc48eb31e8ee2c14aba862837195545be8156c596bf13af1eca006',
-     x86_64: '3e26dda5ba2d6c66aaf284ac4e359f8d46e869892682d8294a3b942adc984b6f'
+    aarch64: '2775fd02248e9a0109488d8bbea543455f3fb967e1bbdfc7579df0ee0791f266',
+     armv7l: '2775fd02248e9a0109488d8bbea543455f3fb967e1bbdfc7579df0ee0791f266',
+     x86_64: '237271de035625f660d0af903f5319b49e34e8c8b89cc121b7c013bb8b68dbbf'
   })
 
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
   depends_on 'rust' => :build
 
   def self.build
