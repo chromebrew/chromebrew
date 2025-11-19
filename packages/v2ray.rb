@@ -3,21 +3,21 @@ require 'package'
 class V2ray < Package
   description 'A platform for building proxies to bypass network restrictions.'
   homepage 'www.v2fly.org'
-  version 'v5.39.0'
+  version '5.41.0'
   license 'MIT'
   compatibility 'all'
 
   source_url({
-    aarch64: "https://github.com/v2fly/v2ray-core/releases/download/#{version}/v2ray-linux-arm32-v7a.zip",
-     armv7l: "https://github.com/v2fly/v2ray-core/releases/download/#{version}/v2ray-linux-arm32-v7a.zip",
-       i686: "https://github.com/v2fly/v2ray-core/releases/download/#{version}/v2ray-linux-32.zip",
-     x86_64: "https://github.com/v2fly/v2ray-core/releases/download/#{version}/v2ray-linux-64.zip"
+    aarch64: "https://github.com/v2fly/v2ray-core/releases/download/v#{version}/v2ray-linux-arm32-v7a.zip",
+     armv7l: "https://github.com/v2fly/v2ray-core/releases/download/v#{version}/v2ray-linux-arm32-v7a.zip",
+       i686: "https://github.com/v2fly/v2ray-core/releases/download/v#{version}/v2ray-linux-32.zip",
+     x86_64: "https://github.com/v2fly/v2ray-core/releases/download/v#{version}/v2ray-linux-64.zip"
   })
   source_sha256({
-    aarch64: 'dcf53be54ba0f3f481e7e13eb6f9d51bd2bbbff6b76daf29f73f22d79d21ff04',
-     armv7l: 'dcf53be54ba0f3f481e7e13eb6f9d51bd2bbbff6b76daf29f73f22d79d21ff04',
-       i686: '9fb36d15e8cb9c02217909f39d21e4626baeae8c08609e81ffd50f07049c4b2f',
-     x86_64: '793f7e75a6fd2bfd03076253a7a4d58f05beb059e6fc0519ec5c0c2677fabe20'
+    aarch64: 'f2d1f3bd37f1ce7dc58a0af7acb1cbbd31425121f92cc1a2f7181e587f79ada9',
+     armv7l: 'f2d1f3bd37f1ce7dc58a0af7acb1cbbd31425121f92cc1a2f7181e587f79ada9',
+       i686: '37794dbcb11c9a59b856f6f80833404f66fca3088604e0af96471ec7d9dbff22',
+     x86_64: '843c69352e989c492fe4b864cae8598adba0ef0daf104452fc200a5d1950f388'
   })
 
   no_compile_needed
@@ -31,7 +31,8 @@ class V2ray < Package
   end
 
   def self.postinstall
-    ExitMessage.add <<~EOT.lightblue
+    ExitMessage.add <<~EOT
+
       To start using v2ray, type `v2ray`.
 
       For more information, see https://www.v2fly.org/en_US/guide/start.html#novice-guide?
