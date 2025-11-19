@@ -1,4 +1,4 @@
-# Total size: 172244216
+# Total size: 173120398
 /usr/local/bin/az
 /usr/local/bin/az.bat
 /usr/local/bin/az.completion.sh
@@ -114,7 +114,6 @@
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/acr/webhook.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/acs/__init__.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/acs/__pycache__/__init__.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/acs/__pycache__/_breaking_change.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/acs/__pycache__/_client_factory.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/acs/__pycache__/_completers.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/acs/__pycache__/_consts.cpython-313.pyc
@@ -136,7 +135,7 @@
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/acs/__pycache__/custom.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/acs/__pycache__/maintenanceconfiguration.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/acs/__pycache__/managed_cluster_decorator.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/acs/_breaking_change.py
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/acs/__pycache__/managednamespace.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/acs/_client_factory.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/acs/_completers.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/acs/_consts.py
@@ -238,6 +237,7 @@
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/acs/custom.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/acs/maintenanceconfiguration.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/acs/managed_cluster_decorator.py
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/acs/managednamespace.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/advisor/__init__.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/advisor/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/advisor/__pycache__/_client_factory.cpython-313.pyc
@@ -407,6 +407,7 @@
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/__pycache__/_template_builder.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/__pycache__/_validators.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/__pycache__/access_restrictions.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/__pycache__/actions.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/__pycache__/appservice_domains.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/__pycache__/appservice_environment.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/__pycache__/commands.cpython-313.pyc
@@ -428,6 +429,34 @@
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/latest/__init__.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/latest/__pycache__/__init__.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/__cmd_group.py
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/__init__.py
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/__pycache__/__cmd_group.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/__pycache__/__init__.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/plan/__cmd_group.py
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/plan/__init__.py
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/plan/__pycache__/__cmd_group.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/plan/__pycache__/__init__.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/plan/__pycache__/_create.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/plan/__pycache__/_show.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/plan/__pycache__/_update.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/plan/_create.py
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/plan/_show.py
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/plan/_update.py
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/plan/managed_instance/__cmd_group.py
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/plan/managed_instance/__init__.py
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/plan/managed_instance/__pycache__/__cmd_group.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/plan/managed_instance/__pycache__/__init__.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/plan/managed_instance/__pycache__/_show_rdp_password.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/plan/managed_instance/_show_rdp_password.py
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/plan/managed_instance/instance/__cmd_group.py
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/plan/managed_instance/instance/__init__.py
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/plan/managed_instance/instance/__pycache__/__cmd_group.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/plan/managed_instance/instance/__pycache__/__init__.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/plan/managed_instance/instance/__pycache__/_list.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/plan/managed_instance/instance/__pycache__/_recycle.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/plan/managed_instance/instance/_list.py
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/plan/managed_instance/instance/_recycle.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/latest/network/__cmd_group.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/latest/network/__init__.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/latest/network/__pycache__/__cmd_group.cpython-313.pyc
@@ -549,6 +578,7 @@
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/profile_2020_09_01_hybrid/network/vnet/subnet/_show.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/aaz/profile_2020_09_01_hybrid/network/vnet/subnet/_update.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/access_restrictions.py
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/actions.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/appservice_domains.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/appservice_environment.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/appservice/commands.py
@@ -640,7 +670,6 @@
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/backup/custom_wl.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/batch/__init__.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/batch/__pycache__/__init__.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/batch/__pycache__/_breaking_change.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/batch/__pycache__/_client_factory.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/batch/__pycache__/_command_type.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/batch/__pycache__/_completers.cpython-313.pyc
@@ -653,7 +682,6 @@
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/batch/__pycache__/_validators.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/batch/__pycache__/commands.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/batch/__pycache__/custom.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/batch/_breaking_change.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/batch/_client_factory.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/batch/_command_type.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/batch/_completers.py
@@ -1299,12 +1327,16 @@
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/cognitiveservices/__pycache__/__init__.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/cognitiveservices/__pycache__/_client_factory.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/cognitiveservices/__pycache__/_help.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/cognitiveservices/__pycache__/_ml_utils.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/cognitiveservices/__pycache__/_params.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/cognitiveservices/__pycache__/_utils.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/cognitiveservices/__pycache__/commands.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/cognitiveservices/__pycache__/custom.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/cognitiveservices/_client_factory.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/cognitiveservices/_help.py
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/cognitiveservices/_ml_utils.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/cognitiveservices/_params.py
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/cognitiveservices/_utils.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/cognitiveservices/commands.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/cognitiveservices/custom.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/compute_recommender/__init__.py
@@ -1891,7 +1923,6 @@
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/dls/custom.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/dms/__init__.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/dms/__pycache__/__init__.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/dms/__pycache__/_breaking_change.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/dms/__pycache__/_client_factory.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/dms/__pycache__/_help.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/dms/__pycache__/_params.cpython-313.pyc
@@ -1899,7 +1930,6 @@
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/dms/__pycache__/custom.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/dms/__pycache__/scenario_inputs.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/dms/__pycache__/validators.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/dms/_breaking_change.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/dms/_client_factory.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/dms/_help.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/dms/_params.py
@@ -5690,7 +5720,6 @@
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/profile/custom.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/rdbms/__init__.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/rdbms/__pycache__/__init__.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/rdbms/__pycache__/_breaking_change.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/rdbms/__pycache__/_client_factory.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/rdbms/__pycache__/_config_reader.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/rdbms/__pycache__/_flexible_server_location_capabilities_util.cpython-313.pyc
@@ -5707,7 +5736,6 @@
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/rdbms/__pycache__/flexible_server_custom_postgres.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/rdbms/__pycache__/flexible_server_virtual_network.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/rdbms/__pycache__/validators.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/rdbms/_breaking_change.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/rdbms/_client_factory.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/rdbms/_config_reader.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/rdbms/_flexible_server_location_capabilities_util.py
@@ -7378,8 +7406,14 @@
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/restore_point/__init__.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/restore_point/__pycache__/__cmd_group.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/restore_point/__pycache__/__init__.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/restore_point/__pycache__/_create.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/restore_point/__pycache__/_delete.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/restore_point/__pycache__/_show.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/restore_point/__pycache__/_wait.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/restore_point/_create.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/restore_point/_delete.py
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/restore_point/_show.py
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/restore_point/_wait.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/restore_point/collection/__cmd_group.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/restore_point/collection/__init__.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/restore_point/collection/__pycache__/__cmd_group.cpython-313.pyc
@@ -7895,10 +7929,10 @@
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/operations/vm_availability_set.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/operations/vm_extension.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/operations/vmss.py
-/usr/local/lib/python3.13/site-packages/azure_cli-2.79.0.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/azure_cli-2.79.0.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/azure_cli-2.79.0.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/azure_cli-2.79.0.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/azure_cli-2.79.0.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/azure_cli-2.79.0.dist-info/licenses/LICENSE.txt
-/usr/local/lib/python3.13/site-packages/azure_cli-2.79.0.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/azure_cli-2.80.0.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/azure_cli-2.80.0.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/azure_cli-2.80.0.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/azure_cli-2.80.0.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/azure_cli-2.80.0.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/azure_cli-2.80.0.dist-info/licenses/LICENSE.txt
+/usr/local/lib/python3.13/site-packages/azure_cli-2.80.0.dist-info/top_level.txt
