@@ -21,7 +21,6 @@ class Git < Meson
   depends_on 'curl' # R
   depends_on 'expat' # R
   depends_on 'glibc' # R
-  depends_on 'llvm_dev' => :build
   depends_on 'openssl' # R
   depends_on 'pcre2' # R
   depends_on 'py3_asciidoc' => :build
@@ -29,7 +28,7 @@ class Git < Meson
   depends_on 'xmlto' => :build
   depends_on 'zlib_ng' # R
 
-  ENV['CREW_LINKER'] = 'lld'
+  no_mold if ARCH == 'armv7l'
   print_source_bashrc
   run_tests
 
