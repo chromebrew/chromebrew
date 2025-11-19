@@ -88,9 +88,7 @@ class Gimp < Meson
   gnome
 
   meson_options '-Dbug-report-url=https://github.com/chromebrew/chromebrew/issues'
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
+  meson_install_extras do
     @binaries = %w[gimp gimp-console gimp-test-clipboard gimptool]
     @binaries.each do |binary|
       unless File.file?("#{CREW_DEST_PREFIX}/bin/#{binary}")
