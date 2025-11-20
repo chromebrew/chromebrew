@@ -116,7 +116,7 @@ class Core < Package
   depends_on 'sed'
   depends_on 'slang'
   depends_on 'sqlite'
-  depends_on 'tar'
+  depends_on 'tar' unless KERN_ARCH == 'aarch64' # our tar is currently broken on aarch64 machines
   depends_on 'uchardet'
   depends_on 'unzip'
   depends_on 'upx'
