@@ -3,7 +3,7 @@ require 'package'
 class Symfony < Package
   description 'Symfony is a set of PHP Components, a Web Application framework'
   homepage 'https://symfony.com/'
-  version '5.9.1'
+  version '5.15.1'
   license 'AGPL-3.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url({
@@ -12,9 +12,9 @@ class Symfony < Package
      x86_64: "https://github.com/symfony-cli/symfony-cli/releases/download/v#{version}/symfony-cli_linux_amd64.tar.gz"
   })
   source_sha256({
-    aarch64: '5a5aa4c11ae051af09280fcbde51c4708038d75ebc041b1ca31c3f89d97d7cf3',
-     armv7l: '5a5aa4c11ae051af09280fcbde51c4708038d75ebc041b1ca31c3f89d97d7cf3',
-     x86_64: '124013c9d3175a98bd6e577c9dd7024d4311ee79e44c201ab8b3531c2b8bd571'
+    aarch64: 'd1e1cf448ae1756188573a1355b56722284b1d0faf1699482de172c029a02dd3',
+     armv7l: 'd1e1cf448ae1756188573a1355b56722284b1d0faf1699482de172c029a02dd3',
+     x86_64: '2a420e72a4c0e049fa20a276c7ab3b9a006b55405c2396700740516d4031e797'
   })
 
   depends_on 'php83' unless File.exist? "#{CREW_PREFIX}/bin/php"
