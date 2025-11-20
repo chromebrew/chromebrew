@@ -11,10 +11,10 @@ class Gnutls < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6bf6383720452dffe6d47406e6c45c7d3e4a4d0c2fbc66f104bf0244fa07b97c',
-     armv7l: '6bf6383720452dffe6d47406e6c45c7d3e4a4d0c2fbc66f104bf0244fa07b97c',
-       i686: 'c6173981e16c390d062c690722d5a15760160ed490190ffd3dac421cded67d6a',
-     x86_64: '87ba4e6a5f41eb4cbd90045b5dbb0714afcbc5f71dd7d98bdebaa3178dfe4592'
+    aarch64: '7cad8a55bdef26259fc6a1cbe8a95fe724815c066d05eda1b12cc04ab5cc3514',
+     armv7l: '7cad8a55bdef26259fc6a1cbe8a95fe724815c066d05eda1b12cc04ab5cc3514',
+       i686: '18c2e32bb85c2d21ead658324f3e1f8b58fa10225d72d1d7e3b18b001f679d3c',
+     x86_64: 'a4224a48a8aa825cd7e3c8c792a8264a4dec1b1c1617474e259b54b0174fd770'
   })
 
   depends_on 'brotli' # R
