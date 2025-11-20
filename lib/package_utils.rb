@@ -117,9 +117,9 @@ class PackageUtils
     # What is the gitlab package binary PACKAGE_ID?
 
     crewlog 'curl -s --location \\'
-    crewlog "#{CREW_GITLAB_PKG_REPO}?package_type=generic&package_name=#{pkg_name}"
+    crewlog "#{CREW_GITLAB_PKG_REPO}?package_type=generic&package_name=#{pkg_name}&package_version=#{pkg_version}_#{pkg_arch}#{'_build' if build}"
     gitlab_binary_pkg_id = `curl -s --location \
-    "#{CREW_GITLAB_PKG_REPO}?package_type=generic&package_name=#{pkg_name}" \
+    "#{CREW_GITLAB_PKG_REPO}?package_type=generic&package_name=#{pkg_name}&package_version=#{pkg_version}_#{pkg_arch}#{'_build' if build}" \
          | jq -r ".[] | select(.name==\\"#{pkg_name}\\" and .version==\\"#{pkg_version}_#{pkg_arch}#{'_build' if build}\\") | .id"`.chomp
     crewlog "gitlab_binary_pkg_id is #{gitlab_binary_pkg_id}" if verbose
     # What is the hash of the gitlab package remote binary file name?
