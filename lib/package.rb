@@ -402,8 +402,16 @@ class Package
     env['CREW_PRELOAD_ENABLE_COMPILE_HACKS'] = opt_args.delete(:no_preload_hacks) ? '0' : '1'
     # CC_LD and CXX_LD are needed by meson to override mold being
     # detected and used by default.
-    env['CC_LD']                             = @no_mold ? 'bfd' : 'mold'
-    env['CXX_LD']                            = @no_mold ? 'bfd' : 'mold'
+    env['CC_LD']                             = if @no_mold
+                                                 CREW_LINKER == 'mold' ? 'bfd' : CREW_LINKER
+                                               else
+                                                 CREW_LINKER
+                                               end
+    env['CXX_LD']                            = if @no_mold
+                                                 CREW_LINKER == 'mold' ? 'bfd' : CREW_LINKER
+                                               else
+                                                 CREW_LINKER
+                                               end
     env['CREW_PRELOAD_NO_MOLD']              = @no_mold ? '1' : '0'
     env['LD_PRELOAD']                        = File.join(CREW_LIB_PREFIX, 'crew-preload.so') if File.exist?("#{CREW_LIB_PREFIX}/crew-preload.so")
 

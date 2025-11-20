@@ -1,4 +1,4 @@
-# Total size: 25352727
+# Total size: 25709655
 /usr/local/bin/git
 /usr/local/bin/git-cvsserver
 /usr/local/bin/git-receive-pack
@@ -186,6 +186,7 @@
 /usr/local/share/man/man1/git-init.1.zst
 /usr/local/share/man/man1/git-instaweb.1.zst
 /usr/local/share/man/man1/git-interpret-trailers.1.zst
+/usr/local/share/man/man1/git-last-modified.1.zst
 /usr/local/share/man/man1/git-log.1.zst
 /usr/local/share/man/man1/git-ls-files.1.zst
 /usr/local/share/man/man1/git-ls-remote.1.zst
@@ -229,6 +230,7 @@
 /usr/local/share/man/man1/git-repack.1.zst
 /usr/local/share/man/man1/git-replace.1.zst
 /usr/local/share/man/man1/git-replay.1.zst
+/usr/local/share/man/man1/git-repo.1.zst
 /usr/local/share/man/man1/git-request-pull.1.zst
 /usr/local/share/man/man1/git-rerere.1.zst
 /usr/local/share/man/man1/git-reset.1.zst
@@ -283,6 +285,7 @@
 /usr/local/share/man/man5/gitformat-chunk.5.zst
 /usr/local/share/man/man5/gitformat-commit-graph.5.zst
 /usr/local/share/man/man5/gitformat-index.5.zst
+/usr/local/share/man/man5/gitformat-loose.5.zst
 /usr/local/share/man/man5/gitformat-pack.5.zst
 /usr/local/share/man/man5/gitformat-signature.5.zst
 /usr/local/share/man/man5/githooks.5.zst
