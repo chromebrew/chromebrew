@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# build_updated_packages version 3.8 (for Chromebrew)
+# build_updated_packages version 3.9 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -145,6 +145,7 @@ exclusion_regex = "(#{excluded_pkgs.join('|')})"
 updated_packages.delete_if { |d| /#{exclusion_regex}/.match(d) }
 
 updated_packages.each do |pkg|
+  puts "pkg is #{pkg}" if CREW_VERBOSE
   name = pkg.sub('packages/', '').sub('.rb', '')
   next unless File.file?(pkg)
 
