@@ -20,6 +20,7 @@ class Mailutils < Autotools
   depends_on 'brotli' # R
   depends_on 'e2fsprogs' # R
   depends_on 'emacs' => :build
+  depends_on 'fribidi' # R
   depends_on 'gdbm' # R
   depends_on 'glibc' # R
   depends_on 'gmp' # R
