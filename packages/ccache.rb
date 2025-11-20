@@ -3,24 +3,24 @@ require 'buildsystems/cmake'
 class Ccache < CMake
   description 'Compiler cache that speeds up recompilation by caching previous compilations'
   homepage 'https://ccache.dev/'
-  version '4.11.3'
+  version '4.12.1'
   license 'GPL-3 and LGPL-3'
   compatibility 'all'
-  source_url "https://github.com/ccache/ccache/releases/download/v#{version}/ccache-#{version}.tar.xz"
-  source_sha256 '4c03bc840699127d16c3f0e6112e3f40ce6a230d5873daa78c60a59c7ef59d25'
+  source_url 'https://github.com/ccache/ccache.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a41d406641063b63398997b8d2c33142316952f545233c5a0fe9427cded81349',
-     armv7l: 'a41d406641063b63398997b8d2c33142316952f545233c5a0fe9427cded81349',
-       i686: '7ea6be760b129c51437a4cee5f54618803323e9e0f7e451630184e77002a430f',
-     x86_64: '9ea1c743be382dc68eb61e59dfd0aa490796b546ee72f99068212cfa3b7f4ca3'
+    aarch64: '76081a9f2eec365c9df34b73927c3f88ae87ef830c6f58c4190ad52f3a9f3931',
+     armv7l: '76081a9f2eec365c9df34b73927c3f88ae87ef830c6f58c4190ad52f3a9f3931',
+       i686: '6c12afad52cdceeddf827fa93776d18acc93a93ff71d2901d201d969d338dd1a',
+     x86_64: '9f5ce97691806b862a6db34b16658c20b9f88459076f75d4f2cae0a3dc0cf079'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'ruby_asciidoctor' => :build
-  depends_on 'xdg_base'
+  depends_on 'xdg_base' # L
   depends_on 'xxhash' # R
   depends_on 'zstd' # R
 
@@ -32,8 +32,7 @@ class Ccache < CMake
       -DZSTD_FROM_INTERNET=OFF \
       -DHIREDIS_FROM_INTERNET=ON"
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
+  cmake_install_extras do
     FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/ccache/bin"
     Dir.chdir "#{CREW_DEST_LIB_PREFIX}/ccache/bin" do
       %w[gcc g++ c++].each do |bin|
