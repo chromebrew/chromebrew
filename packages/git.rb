@@ -11,10 +11,10 @@ class Git < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '869fbe2b5493ec1a8291a61663e1ba0f90122f470f9956a659ef2289139c4af2',
-     armv7l: '869fbe2b5493ec1a8291a61663e1ba0f90122f470f9956a659ef2289139c4af2',
-       i686: 'c7b6140ed7c89f866d88867ef0c55ac8f1a1f04c559fe19e488785c5b3d3ae70',
-     x86_64: 'c5c556bdd7a6452392b4d8c71215b7ee48baf1d46f5069a7b48bf8b3988a5612'
+    aarch64: '814d8f63987d20480ae79f8c0c7f8d2918f10e2252ac51a4b78de2adc7dcc0d8',
+     armv7l: '814d8f63987d20480ae79f8c0c7f8d2918f10e2252ac51a4b78de2adc7dcc0d8',
+       i686: '290d425d864e44f5f8570dbeb45d5d142fe1f5d3673ffee179db00339278824e',
+     x86_64: 'b0ebde721c958690991dec72abec51cb2d8caec1013318448824aaaa38c7022f'
   })
 
   depends_on 'ca_certificates' => :build
@@ -28,7 +28,6 @@ class Git < Meson
   depends_on 'xmlto' => :build
   depends_on 'zlib_ng' # R
 
-  no_mold if ARCH == 'armv7l'
   print_source_bashrc
   run_tests
 
@@ -37,6 +36,7 @@ class Git < Meson
         -Dgitattributes=#{CREW_PREFIX}/etc/gitattributes \
         -Dgitconfig=#{CREW_PREFIX}/etc/gitconfig \
         -Dgitweb=disabled \
+        #{'-Drust=disabled' if ARCH == 'armv7l'} \
         -Dsane_tool_path=#{CREW_PREFIX}/bin \
         -Dzlib_backend=zlib-ng"
 
