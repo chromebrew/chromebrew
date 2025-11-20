@@ -16,6 +16,7 @@ class Py3_twine < Pip
      x86_64: '61e56df0542895ad70710957995b19b24c11188d6c4c6371e10e9d9e851b4574'
   })
 
+  depends_on 'py3_certifi'
   depends_on 'py3_readme_renderer'
   depends_on 'py3_requests'
   depends_on 'py3_rich'

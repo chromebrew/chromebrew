@@ -12,9 +12,9 @@ class W3m < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '',
-     armv7l: '',
-     x86_64: ''
+    aarch64: '26d2ec1ac94fb70d22fe9ad1046c518eb01ba34049d7768f7ade530fa6fdfc9a',
+     armv7l: '26d2ec1ac94fb70d22fe9ad1046c518eb01ba34049d7768f7ade530fa6fdfc9a',
+     x86_64: '8158b705233aded5ed349fe830f17a6d1eaf128632c8e609b06ce14bb05a16a7'
   })
 
   depends_on 'bdwgc' # R
