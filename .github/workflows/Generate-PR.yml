@@ -410,10 +410,18 @@ jobs:
           make -j "$(nproc)"
           sudo make install
           sudo gem install --no-update-sources -N ruby-libversion --conservative
+      - name: Get GH Token
+        id: get_workflow_token
+        uses: peter-murray/workflow-application-token-action@v4
+        with:
+          application_id: ${{ secrets.APPLICATION_ID }}
+          application_private_key: ${{ secrets.APPLICATION_PRIVATE_KEY }}
+          organization: chromebrew
+          revoke_token: true
       - name: Save git log
         id: save-git-log
         env:
-          GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
+          GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
         run: |
           PR_NUMBER=$(gh pr list -L 1 -s open -H ${{ inputs.branch || github.ref_name }} | cut -f1)
           if [[ -n ${PR_NUMBER} ]]; then
@@ -449,14 +457,6 @@ jobs:
               - '!manifest/**'
               - '!packages/*.rb'
               - '!.github/**'
-      - name: Get GH Token
-        id: get_workflow_token
-        uses: peter-murray/workflow-application-token-action@v4
-        with:
-          application_id: ${{ secrets.APPLICATION_ID }}
-          application_private_key: ${{ secrets.APPLICATION_PRIVATE_KEY }}
-          organization: chromebrew
-          revoke_token: true
       - name: Create Pull Request
         env:
           CHANGED_GITHUB_CONFIG_FILES: ${{ steps.changed-files.outputs.github_all_changed_files }}
