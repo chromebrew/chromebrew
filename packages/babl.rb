@@ -3,17 +3,17 @@ require 'buildsystems/meson'
 class Babl < Meson
   description 'babl is a dynamic, any to any, pixel format translation library.'
   homepage 'https://gegl.org/babl/'
-  version '0.1.116'
+  version '0.1.116-1'
   license 'LGPL-3'
   compatibility 'aarch64 armv7l x86_64'
-  source_url "https://download.gimp.org/pub/babl/#{version.rpartition('.')[0]}/babl-#{version}.tar.xz"
-  source_sha256 '50fae069867c7ade1259888ff1e3db85fec86d708252e5385b5a4f39a78ec483'
+  source_url 'https://gitlab.gnome.org/GNOME/babl.git'
+  git_hashtag "BABL_#{version.split('-').first.gsub('.', '_')}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0986b9e40794045e27836213da379a2dafcd49dc4edcd7f8e52ab5664005fba5',
-     armv7l: '0986b9e40794045e27836213da379a2dafcd49dc4edcd7f8e52ab5664005fba5',
-     x86_64: 'a7d4a6e0ef80baf2475cd34f29f124f6fbaabcc6b2be83316261034e1ec8989e'
+    aarch64: '467461a726ca6245cf4ca64d3fa342945a1dd348b812645da1e753b8b73a9802',
+     armv7l: '467461a726ca6245cf4ca64d3fa342945a1dd348b812645da1e753b8b73a9802',
+     x86_64: '0fe641a5047d82d956a8f68f1d781c6040be66f67d7dc2cca0727585f279e810'
   })
 
   depends_on 'gcc_lib' # R
@@ -21,8 +21,9 @@ class Babl < Meson
   depends_on 'gobject_introspection' => :build
   depends_on 'lcms' # R
   depends_on 'pango' => :build
+  depends_on 'vala' => :build
 
-  meson_options '-Denable-gir=true -Denable-vapi=false'
+  meson_options '-Denable-gir=true'
 
   def self.check
     system "#{CREW_NINJA} -C builddir test || true"

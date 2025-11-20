@@ -1,21 +1,24 @@
-require 'buildsystems/autotools'
+require 'buildsystems/cmake'
 
-class Libogg < Autotools
+class Libogg < CMake
   description 'Ogg is a multimedia container format, and the native file and stream format for the Xiph.org multimedia codecs.'
   homepage 'https://xiph.org/ogg/'
-  version '1.3.5-1'
+  version '1.3.6'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://downloads.xiph.org/releases/ogg/libogg-1.3.5.tar.xz'
-  source_sha256 'c4d91be36fc8e54deae7575241e03f4211eb102afb3fc0775fbbc1b740016705'
+  source_url 'https://gitlab.xiph.org/xiph/ogg.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fe9269e8083da01203ad5b5182dcd54dda35444e51c8d5e4f349f052b7c5811c',
-     armv7l: 'fe9269e8083da01203ad5b5182dcd54dda35444e51c8d5e4f349f052b7c5811c',
-       i686: 'fa445ecacf8135aa50814c892058ecf8d9fa4c060821b3b237836dc84c0b5d1d',
-     x86_64: '7d919816470818a0b07c85979f2a08f86c70fae69137e0274b013ab4bf404e84'
+    aarch64: 'e7e8f22e0eae1a3a6ef568e90fc749e0582f45adc8651b6f275063139ebc9480',
+     armv7l: 'e7e8f22e0eae1a3a6ef568e90fc749e0582f45adc8651b6f275063139ebc9480',
+       i686: '2d87db08728126d3b171ce667d61b18cb3057c47b6a9412e484f3c8a27a5bee5',
+     x86_64: 'fc696a6085d698b2f0abc04ec1ea6273c192cf87aa6a8298194c1c7f42d9ea40'
   })
 
   depends_on 'glibc' # R
+
+  cmake_options '-DBUILD_SHARED_LIBS=ON \
+                 -DINSTALL_DOCS=OFF'
 end

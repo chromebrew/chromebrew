@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION ||= defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION ||= '1.67.20' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION ||= '1.68.0' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH ||= Etc.uname[:machine]
@@ -472,6 +472,7 @@ unless defined?(CREW_ANITYA_PACKAGE_NAME_MAPPINGS)
     { pkg_name: 'selenium_server_standalone', anitya_pkg: 'selenium', comments: '' },
     { pkg_name: 'signal_desktop', anitya_pkg: 'signal', comments: '' },
     { pkg_name: 'smbclient', anitya_pkg: 'samba', comments: '' },
+    { pkg_name: 'tcpwrappers', anitya_pkg: 'tcp_wrappers', comments: '' },
     { pkg_name: 'tepl_6', anitya_pkg: 'libgedit-tepl', comments: '' },
     { pkg_name: 'upx', anitya_pkg: 'upx', comments: 'Prefer to GitHub' },
     { pkg_name: 'vidstab', anitya_pkg: 'vid.stab', comments: 'Prefer to GitHub' },

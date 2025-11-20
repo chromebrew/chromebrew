@@ -1,37 +1,37 @@
-require 'package'
+# Does not build with GCC 15
+require 'buildsystems/autotools'
 
-class W3m < Package
+class W3m < Autotools
   description 'w3m is a text-based browser, pager and HTML typesetter'
   homepage 'https://w3m.sourceforge.net/'
-  version '0.5.3-20220429'
+  version '0.5.3+git20230121'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://github.com/tats/w3m/archive/v0.5.3+git20220429.tar.gz'
-  source_sha256 '6d76fcccb7c94658f2753f0777f69283d5cb447004a0d0d3087c1d873edc0af3'
+  source_url 'https://github.com/tats/w3m.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a0af0f7d06a26072f5af6a5dd16431b226caaa7aeec7b3af89b7f0a602ff987a',
-     armv7l: 'a0af0f7d06a26072f5af6a5dd16431b226caaa7aeec7b3af89b7f0a602ff987a',
-     x86_64: 'c54c80e2253c9026ee038bc46dc3e36ea59d1899a8b4f4d3c7ec93349fd90cc1'
+    aarch64: '26d2ec1ac94fb70d22fe9ad1046c518eb01ba34049d7768f7ade530fa6fdfc9a',
+     armv7l: '26d2ec1ac94fb70d22fe9ad1046c518eb01ba34049d7768f7ade530fa6fdfc9a',
+     x86_64: '8158b705233aded5ed349fe830f17a6d1eaf128632c8e609b06ce14bb05a16a7'
   })
 
-  depends_on 'bdwgc'
+  depends_on 'bdwgc' # R
   depends_on 'gdk_pixbuf'
-  depends_on 'imlib2'
-  depends_on 'mailutils'
+  depends_on 'glibc' # R
+  depends_on 'gpm' # R
+  depends_on 'imlib2' # R
+  depends_on 'libbsd' # R
+  depends_on 'libx11' # R
+  depends_on 'mailutils' => :build
+  depends_on 'ncurses' # R
+  depends_on 'openssl' # R
+  depends_on 'zlib' # R
 
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS} \
-            --with-imagelib='gdk-pixbuf-2.0 imlib2' \
+  autotools_configure_options "--with-imagelib='gdk-pixbuf-2.0 imlib2' \
             --with-editor=$(which vi) \
             --with-mailer=$(which mail) \
             --with-ssl=#{CREW_PREFIX}/include/openssl \
             --with-termlib='terminfo mytinfo termcap tinfo ncurses curses'"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end

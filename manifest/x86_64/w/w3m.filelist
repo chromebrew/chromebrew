@@ -1,4 +1,4 @@
-# Total size: 2075076
+# Total size: 2164330
 /usr/local/bin/w3m
 /usr/local/bin/w3mman
 /usr/local/libexec/w3m/cgi-bin/dirlist.cgi
@@ -18,11 +18,11 @@
 /usr/local/share/locale/sv_SE/LC_MESSAGES/w3m.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/w3m.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/w3m.mo
-/usr/local/share/man/de/man1/w3m.1.gz
-/usr/local/share/man/de/man1/w3mman.1.gz
-/usr/local/share/man/ja/man1/w3m.1.gz
-/usr/local/share/man/man1/w3m.1.gz
-/usr/local/share/man/man1/w3mman.1.gz
+/usr/local/share/man/de/man1/w3m.1.zst
+/usr/local/share/man/de/man1/w3mman.1.zst
+/usr/local/share/man/ja/man1/w3m.1.zst
+/usr/local/share/man/man1/w3m.1.zst
+/usr/local/share/man/man1/w3mman.1.zst
 /usr/local/share/w3m/w3mhelp-funcdesc.de.pl
 /usr/local/share/w3m/w3mhelp-funcdesc.en.pl
 /usr/local/share/w3m/w3mhelp-funcdesc.ja.pl

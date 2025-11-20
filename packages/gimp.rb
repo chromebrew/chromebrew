@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gimp < Meson
   description 'GIMP is a cross-platform image editor available for GNU/Linux, OS X, Windows and more operating systems.'
   homepage 'https://www.gimp.org/'
-  version '3.1.4'
+  version '3.2.0-RC1'
   license 'GPL-3 and LGPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gimp.git'
@@ -11,9 +11,9 @@ class Gimp < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f39f422428c9d94f5c8ce52f1eb88477cb5a44904a7b71eeb5fa48272d2961c2',
-     armv7l: 'f39f422428c9d94f5c8ce52f1eb88477cb5a44904a7b71eeb5fa48272d2961c2',
-     x86_64: '758437be57ac5ff39c8540d3a261fc7ebdd14e1a8c1c1c8db88959201dddbe5d'
+    aarch64: '1169ecf7225130a27a03f0ba829361b748bc2953411066249b25c149c6b33841',
+     armv7l: '1169ecf7225130a27a03f0ba829361b748bc2953411066249b25c149c6b33841',
+     x86_64: '2404a3227948255f7127a6bb803d8588af30d1126db9333dd39230f737e4fd96'
   })
 
   depends_on 'aalib' # R
@@ -24,6 +24,7 @@ class Gimp < Meson
   depends_on 'babl' # R
   depends_on 'bzip2' # R
   depends_on 'cairo' # R
+  depends_on 'desktop_file_utils' # L
   depends_on 'ffmpeg' => :build
   depends_on 'fontconfig' # R
   depends_on 'freetype' # R
@@ -44,6 +45,7 @@ class Gimp < Meson
   depends_on 'lcms' # R
   depends_on 'libarchive' # R
   depends_on 'libavif' => :build
+  depends_on 'libbacktrace' # R
   depends_on 'libexif' => :build
   depends_on 'libgudev' # R
   depends_on 'libheif' # R
@@ -78,16 +80,15 @@ class Gimp < Meson
   depends_on 'py3_pygobject' # L
   depends_on 'pygtk' => :build
   depends_on 'shared_mime_info' => :build
+  depends_on 'vala' => :build
   depends_on 'xdg_base' => :build
   depends_on 'xzutils' # R
   depends_on 'zlib' # R
 
   gnome
 
-  meson_options '-Dbug-report-url=https://github.com/chromebrew/chromebrew/issues -Dvala=disabled'
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
+  meson_options '-Dbug-report-url=https://github.com/chromebrew/chromebrew/issues'
+  meson_install_extras do
     @binaries = %w[gimp gimp-console gimp-test-clipboard gimptool]
     @binaries.each do |binary|
       unless File.file?("#{CREW_DEST_PREFIX}/bin/#{binary}")
