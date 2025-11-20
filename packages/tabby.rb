@@ -3,7 +3,7 @@ require 'package'
 class Tabby < Package
   description 'Tabby is an infinitely customizable cross-platform terminal app for local shells, serial, SSH and Telnet connections.'
   homepage 'https://tabby.sh/'
-  version '1.0.216'
+  version '1.0.229'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url({
@@ -12,13 +12,15 @@ class Tabby < Package
      x86_64: "https://github.com/Eugeny/tabby/releases/download/v#{version}/tabby-#{version}-linux-x64.tar.gz"
   })
   source_sha256({
-    aarch64: '7030226f30a75d8e65ca64fe82f22c9886a65f596186711e5c443b079969076f',
-     armv7l: '7030226f30a75d8e65ca64fe82f22c9886a65f596186711e5c443b079969076f',
-     x86_64: 'bb03f206c73a2aa28825e3ba56f78568ee8a86b76072e0dc6dd8bfdcdede3b57'
+    aarch64: 'cc9b483c91254381de461102c1598ec6a45aa25fafebf193c4e9c73b90c56386',
+     armv7l: 'cc9b483c91254381de461102c1598ec6a45aa25fafebf193c4e9c73b90c56386',
+     x86_64: '7c6cedb85b0a25fc5831fdc893c78dd05f783b69486b8ca3b31a8c5088f25bfb'
   })
 
-  depends_on 'at_spi2_core'
-  depends_on 'gtk3'
+  depends_on 'alsa_lib' # R
+  depends_on 'at_spi2_core' # R
+  depends_on 'gtk3' # R
+  depends_on 'nss' # R
 
   no_compile_needed
   no_shrink
