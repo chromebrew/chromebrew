@@ -3,11 +3,11 @@ require 'buildsystems/cmake'
 class Ccache < CMake
   description 'Compiler cache that speeds up recompilation by caching previous compilations'
   homepage 'https://ccache.dev/'
-  version '4.11.3'
+  version '4.12.1'
   license 'GPL-3 and LGPL-3'
   compatibility 'all'
-  source_url "https://github.com/ccache/ccache/releases/download/v#{version}/ccache-#{version}.tar.xz"
-  source_sha256 '4c03bc840699127d16c3f0e6112e3f40ce6a230d5873daa78c60a59c7ef59d25'
+  source_url 'https://github.com/ccache/ccache.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -20,7 +20,7 @@ class Ccache < CMake
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'ruby_asciidoctor' => :build
-  depends_on 'xdg_base'
+  depends_on 'xdg_base' # L
   depends_on 'xxhash' # R
   depends_on 'zstd' # R
 
@@ -32,8 +32,7 @@ class Ccache < CMake
       -DZSTD_FROM_INTERNET=OFF \
       -DHIREDIS_FROM_INTERNET=ON"
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
+  cmake_install_extras do
     FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/ccache/bin"
     Dir.chdir "#{CREW_DEST_LIB_PREFIX}/ccache/bin" do
       %w[gcc g++ c++].each do |bin|
