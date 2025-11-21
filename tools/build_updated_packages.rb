@@ -30,6 +30,22 @@ require_gem 'timeout'
 # Add >LOCAL< lib to LOAD_PATH
 $LOAD_PATH.unshift File.join(crew_local_repo_root, 'lib')
 
+OPTIONS = %w[-h --help --check-all-python --check-all-ruby --continue-after-failed-builds --skip -v --verbose -vv]
+
+if ARGV.include?('-h') || ARGV.include?('--help')
+  abort <<~EOM
+    Usage: ./build_updated_packages.rb [<package>] #{OPTIONS.to_s.gsub('"', '')}
+    Example: ./build_updated_packages.rb abcde -v
+    If <package> is omitted, recently updated files will be checked.
+    Passing --continue-after-failed-builds will continue if builds fail.
+    Passing --skip will skip update checks.
+    Passing --check-all-python will check py3_ pip packages for updates.
+    Passing --check-all-ruby will check ruby_ gem packages for updates.
+    Passing --verbose or -v will display verbose output.
+    Passing -vv will display very verbose output.
+  EOM
+end
+
 abort "\nGITLAB_TOKEN environment variable not set.\n".lightred if ENV['GITLAB_TOKEN'].nil?
 abort "\nGITLAB_TOKEN_USERNAME environment variable not set.\n".lightred if ENV['GITLAB_TOKEN_USERNAME'].nil?
 puts "Setting the CREW_AGREE_TIMEOUT_SECONDS environment variable to less than the default of #{CREW_AGREE_TIMEOUT_SECONDS} may speed this up...".orange if ENV['CREW_AGREE_TIMEOUT_SECONDS'].nil?
