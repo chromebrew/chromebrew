@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Openmpi < Autotools
   description 'The Open MPI Project is an open source Message Passing Interface implementation that is developed and maintained by a consortium of academic, research, and industry partners.'
   homepage 'https://www.open-mpi.org/'
-  version '5.0.8amzn1'
+  version '5.0.9'
   license 'BSD'
   compatibility 'aarch64 x86_64'
   source_url 'https://github.com/open-mpi/ompi.git'
