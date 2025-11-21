@@ -1,16 +1,20 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Blender < Package
+class Blender < CMake
   description 'Blender is the free and open source 3D creation suite.'
   homepage 'https://www.blender.org'
-  version '4.5.4'
+  version '5.0.0'
   license 'GPLv3+'
   compatibility 'x86_64'
-  min_glibc '2.29'
-  source_url "https://download.blender.org/release/Blender#{version.sub(/\.\d+$/, '')}/blender-#{version}-linux-x64.tar.xz"
-  source_sha256 '2e6ef8e99fc36327270429ddc8e7bad2859dd878a5a137d2e0bf0f02f6792505'
+  source_url "https://download.blender.org/source/blender-#{version}.tar.xz"
+  source_sha256 '120b45227b1dba2ecec116c6f924f3e7efabebac762e030552fdf70baff1b5b4'
+  binary_compression 'tar.zst'
 
-  # depends_on 'audaspace'
+  binary_sha256({
+    x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+  })
+
+  depends_on 'audaspace'
   depends_on 'boost' # R
   depends_on 'eigen'
   depends_on 'embree'
@@ -21,7 +25,6 @@ class Blender < Package
   depends_on 'libepoxy'
   depends_on 'libjpeg_turbo'
   depends_on 'libpng'
-  depends_on 'sdl2' # R
   depends_on 'libsndfile' # R
   depends_on 'libtiff'
   depends_on 'libwebp' # R
@@ -41,18 +44,12 @@ class Blender < Package
   depends_on 'py3_numpy'
   depends_on 'py3_requests'
   depends_on 'python3'
+  depends_on 'sdl2' # R
+  depends_on 'shaderc'
   depends_on 'tbb' # R
+  depends_on 'vulkan_headers'
   depends_on 'zlib'
   depends_on 'zstd'
 
-  no_compile_needed
-
-  def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/blender"
-    FileUtils.install 'blender.desktop', "#{CREW_DEST_PREFIX}/share/applications/blender.desktop", mode: 0o644
-    FileUtils.install 'blender.svg', "#{CREW_DEST_PREFIX}/share/icons/blender.svg", mode: 0o644
-    FileUtils.ln_s "#{CREW_PREFIX}/share/blender/blender-launcher", "#{CREW_DEST_PREFIX}/bin/blender"
-    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/blender"
-  end
+  cmake_options '-DWITH_FFTW3=OFF -DWITH_SYSTEM_EIGEN3=ON -DWITH_SYSTEM_AUDASPACE=ON -DPYTHON_VERSION=3.13 -DWITH_PYTHON_INSTALL=OFF -DWITH_INSTALL_PORTABLE=OFF'
 end
