@@ -57,15 +57,19 @@ jobs:
           git pull
           git stash drop || true
           echo "pwd is $(pwd)"
+          # Make crew do automatic gem installs before looking for deps.
+          LD_LIBRARY_PATH=/usr/local/lib ruby bin/crew version
+          # Force creation of temporary device.json.
+          LD_LIBRARY_PATH=/usr/local/lib ruby bin/crew deps zstd_static
+          # Run Update Checks...
           LD_LIBRARY_PATH=/usr/local/lib ruby tools/version.rb -u -v "${{ inputs.version_cmd_input }}"
           for i in $(git status --porcelain | awk '{print $2}' | grep ^packages/)
           do
             git stash pop || true
             pkg=${i%.rb}
             pkg=${pkg#packages/}
-            LD_LIBRARY_PATH=/usr/local/lib ruby tools/version.rb -j ${pkg}
-            LD_LIBRARY_PATH=/usr/local/lib ruby tools/version.rb -j ${pkg} | jq -r '.[]|.version'
-            pkg_version="$(LD_LIBRARY_PATH=/usr/local/lib ruby tools/version.rb -j ${pkg} | jq -r '.[]|.version')"
+            # The updated package version will be the one in the package file.
+            pkg_version="$(LD_LIBRARY_PATH=/usr/local/lib ruby bin/crew version ${pkg})"
             if [[ -z "$pkg_version" ]]; then
               branch_tag="$(date -u +%F-%H-%M)"
             else
