@@ -53,7 +53,7 @@ jobs:
         id: update-checks
         run: |
           set -x
-          export CI=1
+          export CI=true
           git pull
           git stash drop || true
           echo "pwd is $(pwd)"
@@ -63,7 +63,9 @@ jobs:
             git stash pop || true
             pkg=${i%.rb}
             pkg=${pkg#packages/}
-            pkg_version="$(LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH ruby tools/version.rb -j ${pkg} | jq -r '.[]|.version')"
+            LD_LIBRARY_PATH=/usr/local/lib ruby tools/version.rb -j ${pkg}
+            LD_LIBRARY_PATH=/usr/local/lib ruby tools/version.rb -j ${pkg} | jq -r '.[]|.version'
+            pkg_version="$(LD_LIBRARY_PATH=/usr/local/lib ruby tools/version.rb -j ${pkg} | jq -r '.[]|.version')"
             if [[ -z "$pkg_version" ]]; then
               branch_tag="$(date -u +%F-%H-%M)"
             else
