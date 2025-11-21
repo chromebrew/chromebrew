@@ -11,9 +11,9 @@ class Php83 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '393c0588f29d59912eaf24a6e7a4ddabb968162963d754ec0bad905c03bc55fb',
-     armv7l: '393c0588f29d59912eaf24a6e7a4ddabb968162963d754ec0bad905c03bc55fb',
-     x86_64: '2f05d9fff05cc5631eef0e874b2e4b454c77ea9721c2f9e33449f1b17c755b16'
+    aarch64: 'b1ad545a7b4a6aa9f05d4328a5fc88bad59c5470c922a1c37743d0002b14c8d4',
+     armv7l: 'b1ad545a7b4a6aa9f05d4328a5fc88bad59c5470c922a1c37743d0002b14c8d4',
+     x86_64: '76f653a06a2fe15553374a972b387d9aeb3dc88b018581909e804c063d60fcd3'
   })
 
   depends_on 'aspell' # R
@@ -37,6 +37,8 @@ class Php83 < Package
   depends_on 'libidn2' # R
   depends_on 'libjpeg_turbo' # R
   depends_on 'libnghttp2' # R
+  depends_on 'libnghttp3' # R
+  depends_on 'libngtcp2' # R
   depends_on 'libpng' # R
   depends_on 'libpsl' # R
   depends_on 'libsodium' # R
