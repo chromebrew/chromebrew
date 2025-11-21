@@ -14,10 +14,10 @@ class Py3_maturin < Python
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b0e8a055ac420f238466ab9ae1a5913f46bda2a2c1ee297b8618c54bea2bd33f',
-     armv7l: 'b0e8a055ac420f238466ab9ae1a5913f46bda2a2c1ee297b8618c54bea2bd33f',
-       i686: 'aa16733777beda77813010a3ca6cda4d8d900318252ca5aa69938cafd7ac7392',
-     x86_64: 'ff908376f7467bb6dc1836de65b3d2f094b4b6e975219481c476d743a89ad694'
+    aarch64: '2d8adb85e77974a6aa3a068b1ddc20ea24cfe31a985cba863e4651709f117130',
+     armv7l: '2d8adb85e77974a6aa3a068b1ddc20ea24cfe31a985cba863e4651709f117130',
+       i686: 'cc609758e479b4961822d071ea76b3dcdc215b7d050d5a3e321921d860036ced',
+     x86_64: '653b739a7b867e44c69b3c67928bf5238997efdfb91f8a7970e5b0fe5a2847e9'
   })
 
   depends_on 'gcc_lib' # R
