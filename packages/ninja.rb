@@ -11,10 +11,10 @@ class Ninja < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2f014da421a5b5066019ce9081efb4121350a10cec1cd27699ee0747c41cf736',
-     armv7l: '2f014da421a5b5066019ce9081efb4121350a10cec1cd27699ee0747c41cf736',
-       i686: '179858e70fbf8aa3383a1386937690af63b00b300488ec4f77b05d0416e31d2e',
-     x86_64: '5eb66eb2cad0f11e61915d2c8e851076771e4fecef147079f1180dec070cddfa'
+    aarch64: '0bd19cc2cecf4f0c52658a876ed7975fabe3dcb455d5712f2084cfa24810e75d',
+     armv7l: '0bd19cc2cecf4f0c52658a876ed7975fabe3dcb455d5712f2084cfa24810e75d',
+       i686: 'ff3527ebd5ec3ef0330d896e60d425f5cc6ddb47d17fd6ce73fb04a3c26583e5',
+     x86_64: 'bf085b08f4d0a8ebce3cf51ff4cbfae934d22c5b63152d484f325a793e436663'
   })
 
   depends_on 'gcc_lib' # R
