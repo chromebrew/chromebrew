@@ -14,13 +14,7 @@ permissions:                    # Global permissions configuration starts here
 jobs:
   update-check:
     if: ${{ github.repository_owner == 'chromebrew' }}
-    runs-on: ubuntu-24.04
-    steps:
-      - uses: actions/checkout@v5
-        with:
-          persist-credentials: true
-      - name: Check for updates in core and buildessential packages.
-        id: trigger-update-checks
-        run: |
-          # shellcheck disable=SC2116
-          gh workflow -R chromebrew/chromebrew run Package-Dependencies-Updater.yml -f version_cmd_input="core buildessential"
+    uses: ./.github/workflows/Package-Dependencies-Updater.yml
+    secrets: inherit
+    with:
+      version_cmd_input: "core buildessential*"

@@ -12,15 +12,15 @@ permissions:                    # Global permissions configuration starts here
   packages: write
   pull-requests: write          # 'write' access to pull requests
 jobs:
-  update-check:
+  pip-update-checks:
     if: ${{ github.repository_owner == 'chromebrew' }}
-    runs-on: ubuntu-24.04
-    steps:
-      - name: Check for updates in pip packages.
-        id: pip-update-checks
-        run: |
-          gh workflow -R chromebrew/chromebrew run Updater-on-Demand.yml -f version_cmd_input="py3_*"
-      - name: Check for updates in ruby gem packages.
-        id: gem-update-checks
-        run: |
-          gh workflow -R chromebrew/chromebrew run Updater-on-Demand.yml -f version_cmd_input="ruby_*"
+    uses: ./.github/workflows/Updater-on-Demand.yml
+    secrets: inherit
+    with:
+      version_cmd_input: "py3_*"
+  gem-update-checks:
+    if: ${{ github.repository_owner == 'chromebrew' }}
+    uses: ./.github/workflows/Updater-on-Demand.yml
+    secrets: inherit
+    with:
+      version_cmd_input: "ruby_*"

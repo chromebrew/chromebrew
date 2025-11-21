@@ -7,6 +7,11 @@ on:
       version_cmd_input:
         description: "Input to version.rb command"
         required: true
+  workflow_call:
+    inputs:
+      version_cmd_input:
+        type: string
+        required: true
 env:
   GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}  # setting GH_TOKEN for the entire workflow
 permissions:                    # Global permissions configuration starts here
