@@ -3,7 +3,7 @@ require 'package'
 class Container_essential < Package
   description 'A collection of extra tools and packages needed in the docker build containers.'
   homepage 'https://github.com/chromebrew/chromebrew'
-  version '1.0'
+  version '1.1'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -15,6 +15,8 @@ class Container_essential < Package
 
   depends_on 'psmisc'
   depends_on 'sudo_rs'
+  # xxd is used to pass arguments into the container to the /bin/chromebrewstart docker container start CMD.
+  depends_on 'xxd_standalone'
   depends_on 'util_linux'
 
   if CREW_GLIBC_INTERPRETER.nil?

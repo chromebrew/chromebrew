@@ -12,9 +12,11 @@ class String
        purple: { normal: 35, background: 45 },
          cyan: { normal: 36, background: 46 },
     lightgray: { normal: 37, background: 47 },
+    lightgrey: { normal: 37, background: 47 },
 
            # colors with bold varient available
            gray: { normal: 90, background: 100, bold: 30 },
+           grey: { normal: 90, background: 100, bold: 30 },
        lightred: { normal: 91, background: 101, bold: 31 },
      lightgreen: { normal: 92, background: 102, bold: 32 },
          yellow: { normal: 93, background: 103, bold: 33 },
