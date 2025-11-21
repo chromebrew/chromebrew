@@ -5,16 +5,13 @@ class Acpica < Package
   homepage 'https://www.intel.com/content/www/us/en/developer/topic-technology/open/acpica/overview.html'
   version '20250807'
   license 'GPL-2'
-  compatibility 'all'
+  compatibility 'x86_64'
   source_url 'https://github.com/acpica/acpica.git'
   git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3fcd388f8f8fba58e2aa3a15377b782bb2aa6412ba090bdf5b9da00fdae723e3',
-     armv7l: '3fcd388f8f8fba58e2aa3a15377b782bb2aa6412ba090bdf5b9da00fdae723e3',
-       i686: '0b01a7b5429b74a165642d83b8f7b06115182338c7483c47987c1ba318dd3332',
-     x86_64: '80c71c2cda3045d6c94b4fb298833b647001dc519c5f60e819bbb50b41a022a9'
+     x86_64: '2ed7312f5e2787c778c5157c16dadfa4aadb5afb88cfd0a44657318c5aaadf4d'
   })
 
   depends_on 'glibc' # R
