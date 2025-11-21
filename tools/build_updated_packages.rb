@@ -70,7 +70,8 @@ dependent_packages_to_check = Set[
   { pkg_name: 'gcc_dev', downstream_packages: 'libssp', comments: '' },
   { pkg_name: "#{CREW_LLVM_VER}_build", downstream_packages: "#{CREW_LLVM_VER}_lib", comments: '' },
   { pkg_name: "#{CREW_LLVM_VER}_lib", downstream_packages: "#{CREW_LLVM_VER}_dev", comments: '' },
-  { pkg_name: "#{CREW_LLVM_VER}_dev", downstream_packages: 'openmp spirv_llvm_translator libclc', comments: '' }
+  { pkg_name: "#{CREW_LLVM_VER}_dev", downstream_packages: 'openmp spirv_llvm_translator libclc', comments: '' },
+  { pkg_name: 'spirv_llvm_translator', downstream_packages: 'libclc', comments: '' }
 ]
 dependent_pkgs = dependent_packages_to_check.to_h { [it[:pkg_name], it[:downstream_packages]] }
 
