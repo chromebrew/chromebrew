@@ -3,11 +3,11 @@ require 'package'
 class Acpica < Package
   description 'ACPI tools, including Intel ACPI Source Language compiler'
   homepage 'https://www.intel.com/content/www/us/en/developer/topic-technology/open/acpica/overview.html'
-  version '20250404'
+  version '20250807'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/acpica/acpica.git'
-  git_hashtag 'R2025_04_04'
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
