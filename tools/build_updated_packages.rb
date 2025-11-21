@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# build_updated_packages version 3.9 (for Chromebrew)
+# build_updated_packages version 4.0 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -15,11 +15,20 @@
 
 require 'English'
 require 'fileutils'
-require_relative '../lib/color'
-require_relative '../lib/const'
-require_relative '../lib/package'
-require_relative '../lib/require_gem'
-$LOAD_PATH.unshift File.expand_path('../lib', __dir__)
+
+crew_local_repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp
+# When invoked from crew, pwd is CREW_DEST_DIR, so crew_local_repo_root
+# is empty.
+crew_local_repo_root = '../' if crew_local_repo_root.to_s.empty?
+require File.join(crew_local_repo_root, 'lib/color')
+require File.join(crew_local_repo_root, 'lib/const')
+require File.join(crew_local_repo_root, 'lib/package')
+require File.join(crew_local_repo_root, 'lib/require_gem')
+require_gem 'highline'
+require_gem 'timeout'
+
+# Add >LOCAL< lib to LOAD_PATH
+$LOAD_PATH.unshift File.join(crew_local_repo_root, 'lib')
 
 abort "\nGITLAB_TOKEN environment variable not set.\n".lightred if ENV['GITLAB_TOKEN'].nil?
 abort "\nGITLAB_TOKEN_USERNAME environment variable not set.\n".lightred if ENV['GITLAB_TOKEN_USERNAME'].nil?
@@ -29,8 +38,22 @@ CONTINUE_AFTER_FAILED_BUILDS = ARGV.include?('--continue-after-failed-builds')
 SKIP_UPDATE_CHECKS = ARGV.include?('--skip')
 CHECK_ALL_PYTHON = ARGV.include?('--check-all-python')
 CHECK_ALL_RUBY = ARGV.include?('--check-all-ruby')
-require_gem 'highline'
-require_gem 'timeout'
+VERBOSE = ARGV.include?('-v') || ARGV.include?('--verbose') || ARGV.include?('-vv')
+VERY_VERBOSE = ARGV.include?('-vv')
+
+updated_packages = []
+# Handle multiple packages being passed.
+argv = ARGV.map(&:split).flatten
+if argv.length.positive? && !(argv.length == 1 && OPTIONS.include?(argv[0]))
+  argv.each do |arg|
+    arg = arg.gsub('.rb', '')
+    next unless arg =~ /^[0-9a-zA-Z_*]+$/
+
+    filename = File.join(crew_local_repo_root, "packages/#{arg}.rb")
+    updated_packages.push "packages/#{arg}.rb" if File.exist?(filename)
+    puts "#{arg} has been added to the list of packages to be checked for updates.".lightblue
+  end
+end
 
 build = {}
 
@@ -39,7 +62,17 @@ excluded_packages = Set[
   { pkg_name: 'py3_unsupported_python', commwnts: 'Stub package.' },
   { pkg_name: 'terraform', comments: 'Needs manual update due to package structure.' }
 ]
-excluded_pkgs = excluded_packages.map { |h| h[:pkg_name] }
+excluded_pkgs = excluded_packages.map { it[:pkg_name] }
+
+dependent_packages_to_check = Set[
+  { pkg_name: 'gcc_build', downstream_packages: 'gcc_lib', comments: '' },
+  { pkg_name: 'gcc_lib', downstream_packages: 'gcc_dev', comments: '' },
+  { pkg_name: 'gcc_dev', downstream_packages: 'libssp', comments: '' },
+  { pkg_name: "#{CREW_LLVM_VER}_build", downstream_packages: "#{CREW_LLVM_VER}_lib", comments: '' },
+  { pkg_name: "#{CREW_LLVM_VER}_lib", downstream_packages: "#{CREW_LLVM_VER}_dev", comments: '' },
+  { pkg_name: "#{CREW_LLVM_VER}_dev", downstream_packages: 'openmp spirv_llvm_translator libclc', comments: '' }
+]
+dependent_pkgs = dependent_packages_to_check.to_h { [it[:pkg_name], it[:downstream_packages]] }
 
 def self.agree_default_yes(message = nil)
   Timeout.timeout(CREW_AGREE_TIMEOUT_SECONDS) do
@@ -56,16 +89,16 @@ def self.check_build_uploads(architectures_to_check = nil, name = nil)
   remote_binary = { armv7l: nil, i686: nil, x86_64: nil }
   remote_binary.keys.each do |arch|
     arch_specific_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{name}/#{@pkg_obj.version}_#{arch}/#{name}-#{@pkg_obj.version}-chromeos-#{arch}.#{@pkg_obj.binary_compression}"
-    puts "Checking: curl -sI #{arch_specific_url}" if CREW_VERBOSE
+    puts "Checking: curl -sI #{arch_specific_url}" if VERBOSE
     remote_binary[arch.to_sym] = `curl -sI #{arch_specific_url}`.lines.first.split[1] == '200'
-    puts "#{arch_specific_url} found!" if remote_binary[arch.to_sym] && CREW_VERBOSE
+    puts "#{arch_specific_url} found!" if remote_binary[arch.to_sym] && VERBOSE
   end
   system "crew update_package_file #{name}" unless remote_binary.values.all?(nil)
 
   builds_needed = architectures_to_check.dup
   architectures_to_check.each do |arch|
     builds_needed.delete(arch) if remote_binary[arch.to_sym]
-    puts "builds_needed for #{name} is now #{builds_needed}" if CREW_VERBOSE
+    puts "builds_needed for #{name} is now #{builds_needed}" if VERBOSE
   end
   return builds_needed
 end
@@ -75,9 +108,9 @@ def update_hashes_and_manifests(name = nil)
     remote_binary = { armv7l: nil, i686: nil, x86_64: nil }
     remote_binary.keys.each do |arch|
       arch_specific_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{name}/#{@pkg_obj.version}_#{arch}/#{name}-#{@pkg_obj.version}-chromeos-#{arch}.#{@pkg_obj.binary_compression}"
-      puts "Checking: curl -sI #{arch_specific_url}" if CREW_VERBOSE
+      puts "Checking: curl -sI #{arch_specific_url}" if VERBOSE
       remote_binary[arch.to_sym] = `curl -sI #{arch_specific_url}`.lines.first.split[1] == '200'
-      puts "#{arch_specific_url} found!" if remote_binary[arch.to_sym] && CREW_VERBOSE
+      puts "#{arch_specific_url} found!" if remote_binary[arch.to_sym] && VERBOSE
     end
     # Add build hashes.
     system "crew update_package_file #{name}" unless remote_binary.values.all?(nil)
@@ -117,16 +150,8 @@ else
 end
 changed_files = `git diff HEAD --name-only`.chomp.split
 changed_files_previous_commit = `git diff-tree --no-commit-id --name-only -r $(git rev-parse origin/master)..$(git rev-parse --verify HEAD)`.chomp.split
-updated_packages = changed_files.select { |c| c.include?('packages/') }
+updated_packages.push(*changed_files.select { |c| c.include?('packages/') })
 updated_packages.push(*changed_files_previous_commit.select { |c| c.include?('packages/') })
-
-if updated_packages.empty?
-  puts 'No packages need to be updated.'.orange
-else
-  puts 'These changed packages will be checked to see if they need updated binaries:'.orange
-  updated_packages.uniq!
-  updated_packages.each { |p| puts p.sub('packages/', '').sub('.rb', '').to_s.lightblue }
-end
 
 crew_update_packages = `CREW_NO_GIT=1 CREW_UNATTENDED=1 crew update | grep "\\[\\""  | jq -r '.[]'`.chomp.split.map(&'packages/'.method(:+)).map { |i| i.concat('.rb') }
 if CHECK_ALL_PYTHON
@@ -139,17 +164,38 @@ if CHECK_ALL_RUBY
 end
 updated_packages.push(*crew_update_packages)
 updated_packages.uniq!
+
 # Remove packages that don't need to be checked for updates from the
 # check list.
 exclusion_regex = "(#{excluded_pkgs.join('|')})"
 updated_packages.delete_if { |d| /#{exclusion_regex}/.match(d) }
 
+# Add additional packages that need to be checked for updates.
+inclusion_regex = "(#{dependent_pkgs.keys.join('|')})"
+updated_packages.each do |p|
+  pkg = p.sub('packages/', '').sub('.rb', '')
+  next unless /#{inclusion_regex}/.match(pkg)
+  dependent_pkgs[pkg].split.each do |dependent_pkg|
+    if File.exist?(File.join(crew_local_repo_root, "packages/#{dependent_pkg}.rb"))
+      puts "Will check #{dependent_pkg} since dependent package of #{pkg}...".orange if VERY_VERBOSE
+      updated_packages.push "packages/#{dependent_pkg}.rb"
+    end
+  end
+end
+
+if updated_packages.empty?
+  puts 'No packages need to be updated.'.orange
+else
+  puts 'These packages will be checked to see if they need updated binaries:'.orange
+  updated_packages.uniq!
+  updated_packages.each { |p| puts p.sub('packages/', '').sub('.rb', '').to_s.lightblue }
+end
+
 updated_packages.each do |pkg|
-  puts "pkg is #{pkg}" if CREW_VERBOSE
   name = pkg.sub('packages/', '').sub('.rb', '')
   next unless File.file?(pkg)
 
-  puts "Evaluating #{name} package...".orange
+  puts "Evaluating #{name} package...".lightpurple
   system "rubocop -c .rubocop.yml -A #{pkg}"
   @pkg_obj = Package.load_package(pkg)
 
