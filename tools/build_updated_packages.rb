@@ -36,7 +36,7 @@ if ARGV.include?('-h') || ARGV.include?('--help')
   abort <<~EOM
     Usage: ./build_updated_packages.rb [<package>] #{OPTIONS.to_s.gsub('"', '')}
     Example: ./build_updated_packages.rb abcde -v
-    If <package> is omitted, recently updated files will be checked.
+    If <package> is omitted, recently updated files will be checked for needed builds.
     Passing --continue-after-failed-builds will continue if builds fail.
     Passing --skip will skip update checks.
     Passing --check-all-python will check py3_ pip packages for updates.
