@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Ninja < CMake
   description 'a small build system with a focus on speed'
   homepage 'https://ninja-build.org'
-  version '1.13.1'
+  version '1.13.2'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/ninja-build/ninja.git'
