@@ -6,6 +6,11 @@ on:
       version_cmd_input:
         description: "Packages to check for dependency tree updates."
         required: true
+  workflow_call:
+    inputs:
+      version_cmd_input:
+        type: string
+        required: true
 env:
   GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}  # setting GH_TOKEN for the entire workflow
 permissions:                    # Global permissions configuration starts here
