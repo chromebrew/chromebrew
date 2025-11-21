@@ -3,17 +3,17 @@ require 'package'
 class Php84 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'https://www.php.net/'
-  version '8.4.11'
+  version '8.4.15'
   license 'PHP-3.01'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.php.net/distributions/php-#{version}.tar.xz"
-  source_sha256 '04cd331380a8683a5c2503938eb51764d48d507c53ad4208d2c82e0eed779a00'
+  source_sha256 'a060684f614b8344f9b34c334b6ba8db1177555997edb5b1aceab0a4b807da7e'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd582bc3eef58e3ef5f32f11e487b51f67ca72578a3e57a094f2749cc2bf67414',
-     armv7l: 'd582bc3eef58e3ef5f32f11e487b51f67ca72578a3e57a094f2749cc2bf67414',
-     x86_64: 'bfdd857bf98d45c360f83e9f55acfd3f7e83a040481d34351a795aa47370be33'
+    aarch64: 'f6098d38c69fd32c0cc841f2183b37d5a07750f64d1a0985e37215f1df5d89e2',
+     armv7l: 'f6098d38c69fd32c0cc841f2183b37d5a07750f64d1a0985e37215f1df5d89e2',
+     x86_64: '3dbbedc64c100a30b876c0d038f9e6f60a9707037e48805abf9b5db355784c2a'
   })
 
   depends_on 'aspell_en' => :build
@@ -34,6 +34,8 @@ class Php84 < Package
   depends_on 'libidn2' # R
   depends_on 'libjpeg_turbo' # R
   depends_on 'libnghttp2' # R
+  depends_on 'libnghttp3' # R
+  depends_on 'libngtcp2' # R
   depends_on 'libpng' # R
   depends_on 'libpsl' # R
   depends_on 'libsodium' # R
