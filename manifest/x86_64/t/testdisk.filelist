@@ -1,4 +1,4 @@
-# Total size: 1372143
+# Total size: 1640235
 /usr/local/bin/fidentify
 /usr/local/bin/photorec
 /usr/local/bin/testdisk
@@ -8,9 +8,9 @@
 /usr/local/share/doc/testdisk/README.md
 /usr/local/share/doc/testdisk/THANKS
 /usr/local/share/doc/testdisk/documentation.html
-/usr/local/share/man/man8/fidentify.8.gz
-/usr/local/share/man/man8/photorec.8.gz
-/usr/local/share/man/man8/testdisk.8.gz
-/usr/local/share/man/zh_CN/man8/fidentify.8.gz
-/usr/local/share/man/zh_CN/man8/photorec.8.gz
-/usr/local/share/man/zh_CN/man8/testdisk.8.gz
+/usr/local/share/man/man8/fidentify.8.zst
+/usr/local/share/man/man8/photorec.8.zst
+/usr/local/share/man/man8/testdisk.8.zst
+/usr/local/share/man/zh_CN/man8/fidentify.8.zst
+/usr/local/share/man/zh_CN/man8/photorec.8.zst
+/usr/local/share/man/zh_CN/man8/testdisk.8.zst
