@@ -438,6 +438,7 @@ jobs:
           git config user.email "${{ github.actor }}@users.noreply.github.com"
           git checkout master && git fetch origin master
           git checkout "${{ inputs.branch || github.ref_name }}"
+          git fetch origin "${{ inputs.branch || github.ref_name }}"
           git log --no-merges --oneline -10
           git log --no-merges --oneline master..${{ inputs.branch || github.ref_name }} | grep -v "Merge branch 'master'\|Build Run on\|Package File Update Run on\|lint$" | tr '\n' '\0' | xargs -0 -n1 echo "- $*" >> /tmp/commits.txt
       - name: Get Current HEAD hash
