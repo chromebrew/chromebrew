@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Audaspace < CMake
   description 'A high level and feature rich audio library written in C++ with language bindings.'
   homepage 'https://github.com/audaspace/audaspace'
-  version '1.7.0'
+  version '1.8.0'
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/audaspace/audaspace.git'
