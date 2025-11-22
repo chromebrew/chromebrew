@@ -1,4 +1,4 @@
-# Total size: 1332731
+# Total size: 1390334
 /usr/local/bin/hwloc-annotate
 /usr/local/bin/hwloc-bind
 /usr/local/bin/hwloc-calc
@@ -44,9 +44,8 @@
 /usr/local/lib/libhwloc.la
 /usr/local/lib/libhwloc.so
 /usr/local/lib/libhwloc.so.15
-/usr/local/lib/libhwloc.so.15.10.0
+/usr/local/lib/libhwloc.so.15.10.1
 /usr/local/lib/pkgconfig/hwloc.pc
-/usr/local/share/applications/lstopo.desktop
 /usr/local/share/bash-completion/completions/hwloc
 /usr/local/share/doc/hwloc/dynamic_SVG_example.html
 /usr/local/share/hwloc/hwloc-dump-hwdata.service
