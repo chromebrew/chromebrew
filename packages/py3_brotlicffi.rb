@@ -10,10 +10,10 @@ class Py3_brotlicffi < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cd528efdfe14773b27ea0345b76d02cb876f0e3b40e158bfe4ae49ad65ec9162',
-     armv7l: 'cd528efdfe14773b27ea0345b76d02cb876f0e3b40e158bfe4ae49ad65ec9162',
-       i686: 'f77fe20b7cfec292b6c9d0af017d8d8876f6af8f543e7123c36e770430217cab',
-     x86_64: '2c25cdf07f279de5a1884d4598b0f9230c2489f4e68030f324fef560784d8b97'
+    aarch64: 'a8e7cee7d0ffe586cff24211d1af56ab47f2a6a2c76b1474a5b5370fccb26724',
+     armv7l: 'a8e7cee7d0ffe586cff24211d1af56ab47f2a6a2c76b1474a5b5370fccb26724',
+       i686: 'a93a6c6760881537252184d746fac39b2209dcee57fe6db2cee22539c9f4a427',
+     x86_64: 'af376caf56d65504583f8670c929b866e5c82b3fbffe4684ae326e7686812ead'
   })
 
   depends_on 'brotli'
