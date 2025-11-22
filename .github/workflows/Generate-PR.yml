@@ -378,8 +378,7 @@ jobs:
             git stash || true
             git fetch origin ${{ inputs.branch || github.ref_name }}
             git stash pop || true
-            git add -A
-            git commit -m "${{ inputs.branch || github.ref_name }}: Package File Update Run on ${PLATFORM} container." && git push origin ${{ inputs.branch || github.ref_name }}
+            git commit -am "${{ inputs.branch || github.ref_name }}: Package File Update Run on ${PLATFORM} container." && git push origin ${{ inputs.branch || github.ref_name }}
             git log --oneline -10
           fi
   build-check:
