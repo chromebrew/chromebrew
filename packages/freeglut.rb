@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Freeglut < CMake
   description 'FreeGLUT is a free and open-source alternative to the OpenGL Utility Toolkit (GLUT) library.'
   homepage 'https://freeglut.sourceforge.net/'
-  version '3.6.0'
+  version '3.8.0'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/freeglut/freeglut.git'
