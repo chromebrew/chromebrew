@@ -1,6 +1,6 @@
 ---
 name: Build
-run-name: Build ${{ inputs.branch || github.ref_name }} for ${{ ( inputs.build-on-i686 ) && ' i686 ' || '' }}${{ ( inputs.build-on-x86_64 ) && ' x86_64 ' || '' }}${{ ( inputs.build-on-armv7l ) && ' armv7l ' || '' }} by @${{ github.actor }}
+run-name: Build ${{ inputs.branch || github.ref_name }} for ${{ inputs.build-on }} by @${{ github.actor }}
 on:
   workflow_dispatch:
     inputs:
