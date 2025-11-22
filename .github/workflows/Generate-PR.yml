@@ -12,11 +12,6 @@ on:
       pr_title:
         description: "Title of PR"
         required: false
-      update_rebase_to_master:
-        description: "Update Branch."
-        required: false
-        type: boolean
-        default: 'false'
       update_package_files:
         description: "Update Package Files."
         required: false
@@ -85,16 +80,14 @@ jobs:
             echo "Setting ${PR_NUMBER} to Draft while workflow runs."
             gh pr ready --undo || true
           fi
-          if [[ "${{ ( inputs.update_rebase_to_master ) }}" == 'true' ]]; then
-            if [[ -n ${PR_NUMBER} ]]; then
-              # Try to update branch immediately.
-              gh pr update-branch || true
-            else
-              gh pr create -d -b WIP -t "WIP ${{ inputs.branch || github.ref_name }}"
-              # Create a draft PR and immediately try to update the branch
-              # before continuing.
-              gh pr update-branch || true
-            fi
+          if [[ -n ${PR_NUMBER} ]]; then
+            # Try to update branch immediately.
+            gh pr update-branch || true
+          else
+            gh pr create -d -b WIP -t "WIP ${{ inputs.branch || github.ref_name }}"
+            # Create a draft PR and immediately try to update the branch
+            # before continuing.
+            gh pr update-branch || true
           fi
       - name: Get changed files
         id: changed-files
@@ -560,7 +553,7 @@ jobs:
             gh pr edit --add-reviewer chromebrew/active $PR_EDIT_LABEL_FLAG --title "$(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}" -F /tmp/pr.txt
           fi
           # Try to update branch before finishing.
-          [[ "${{ ( inputs.update_rebase_to_master ) }}" == 'true' ]] && gh pr update-branch --rebase || true
+          gh pr update-branch --rebase || true
           # Check to see if the PR is marked as WIP, in which case it should stay as draft.
           if gh pr list -l "wip 🚧" --json number | jq --arg PR_NUMBER "$PR_NUMBER"  -e -r '.[]|select(.number=='$PR_NUMBER')' &>/dev/null; then
             echo "PR ${PR_NUMBER} is set as WIP, so will be set or kept as Draft."
