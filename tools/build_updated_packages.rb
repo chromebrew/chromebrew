@@ -30,7 +30,7 @@ require_gem 'timeout'
 # Add >LOCAL< lib to LOAD_PATH
 $LOAD_PATH.unshift File.join(crew_local_repo_root, 'lib')
 
-OPTIONS = %w[-h --help --check-all-python --check-all-ruby --continue-after-failed-builds --skip -v --verbose -vv]
+OPTIONS = %w[-h --help --check-all-python --check-all-ruby --continue-after-failed-builds --rebuild --skip -v --verbose -vv]
 
 if ARGV.include?('-h') || ARGV.include?('--help')
   abort <<~EOM
@@ -38,6 +38,7 @@ if ARGV.include?('-h') || ARGV.include?('--help')
     Example: ./build_updated_packages.rb abcde -v
     If <package> is omitted, recently updated files will be checked for needed builds.
     Passing --continue-after-failed-builds will continue if builds fail.
+    Passing --rebuild will rebuild packages even if binaries already exist upstream.
     Passing --skip will skip update checks.
     Passing --check-all-python will check py3_ pip packages for updates.
     Passing --check-all-ruby will check ruby_ gem packages for updates.
@@ -51,6 +52,7 @@ abort "\nGITLAB_TOKEN_USERNAME environment variable not set.\n".lightred if ENV[
 puts "Setting the CREW_AGREE_TIMEOUT_SECONDS environment variable to less than the default of #{CREW_AGREE_TIMEOUT_SECONDS} may speed this up...".orange if ENV['CREW_AGREE_TIMEOUT_SECONDS'].nil?
 
 CONTINUE_AFTER_FAILED_BUILDS = ARGV.include?('--continue-after-failed-builds')
+REBUILD_PACKAGES = ARGV.include?('--rebuild')
 SKIP_UPDATE_CHECKS = ARGV.include?('--skip')
 CHECK_ALL_PYTHON = ARGV.include?('--check-all-python')
 CHECK_ALL_RUBY = ARGV.include?('--check-all-ruby')
@@ -103,6 +105,9 @@ def self.check_build_uploads(architectures_to_check = nil, name = nil)
   return [] if @pkg_obj.is_fake?
   architectures_to_check.delete('aarch64')
   architectures_to_check = %w[x86_64 armv7l i686] if (architectures_to_check & %w[x86_64 armv7l i686]).nil?
+
+  return architectures_to_check if REBUILD_PACKAGES
+
   remote_binary = { armv7l: nil, i686: nil, x86_64: nil }
   remote_binary.keys.each do |arch|
     arch_specific_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{name}/#{@pkg_obj.version}_#{arch}/#{name}-#{@pkg_obj.version}-chromeos-#{arch}.#{@pkg_obj.binary_compression}"
