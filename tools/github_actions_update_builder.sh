@@ -12,4 +12,4 @@ export CREW_AGREE_TIMEOUT_SECONDS=1
 # Deal with a regexp_parser gem issue
 gem install regexp_parser
 yes | crew install ruby_rubocop
-tools/build_updated_packages.rb --skip || exit 1
+tools/build_updated_packages.rb --skip $1 $2 || exit 1

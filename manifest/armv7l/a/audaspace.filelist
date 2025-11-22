@@ -1,4 +1,4 @@
-# Total size: 2783209
+# Total size: 2857019
 /usr/local/include/audaspace/AUD_Device.h
 /usr/local/include/audaspace/AUD_DynamicMusic.h
 /usr/local/include/audaspace/AUD_Handle.h
@@ -34,6 +34,8 @@
 /usr/local/include/audaspace/fx/ADSR.h
 /usr/local/include/audaspace/fx/ADSRReader.h
 /usr/local/include/audaspace/fx/Accumulator.h
+/usr/local/include/audaspace/fx/AnimateableTimeStretchPitchScale.h
+/usr/local/include/audaspace/fx/AnimateableTimeStretchPitchScaleReader.h
 /usr/local/include/audaspace/fx/BaseIIRFilterReader.h
 /usr/local/include/audaspace/fx/BinauralReader.h
 /usr/local/include/audaspace/fx/BinauralSound.h
@@ -83,6 +85,8 @@
 /usr/local/include/audaspace/fx/Source.h
 /usr/local/include/audaspace/fx/Sum.h
 /usr/local/include/audaspace/fx/Threshold.h
+/usr/local/include/audaspace/fx/TimeStretchPitchScale.h
+/usr/local/include/audaspace/fx/TimeStretchPitchScaleReader.h
 /usr/local/include/audaspace/fx/Volume.h
 /usr/local/include/audaspace/fx/VolumeReader.h
 /usr/local/include/audaspace/fx/VolumeSound.h
@@ -99,6 +103,7 @@
 /usr/local/include/audaspace/generator/TriangleReader.h
 /usr/local/include/audaspace/plugin/PluginManager.h
 /usr/local/include/audaspace/python/PyAPI.h
+/usr/local/include/audaspace/python/PyAnimateableProperty.h
 /usr/local/include/audaspace/python/PyDevice.h
 /usr/local/include/audaspace/python/PyDynamicMusic.h
 /usr/local/include/audaspace/python/PyHandle.h
@@ -142,6 +147,7 @@
 /usr/local/include/audaspace/util/ThreadPool.h
 /usr/local/include/python3.13/audaspace/Audaspace.h
 /usr/local/include/python3.13/audaspace/PyAPI.h
+/usr/local/include/python3.13/audaspace/PyAnimateableProperty.h
 /usr/local/include/python3.13/audaspace/PyDevice.h
 /usr/local/include/python3.13/audaspace/PyDynamicMusic.h
 /usr/local/include/python3.13/audaspace/PyHandle.h
@@ -152,26 +158,26 @@
 /usr/local/include/python3.13/audaspace/PySource.h
 /usr/local/include/python3.13/audaspace/PyThreadPool.h
 /usr/local/lib/libaudaspace-c.so
-/usr/local/lib/libaudaspace-c.so.1.7
+/usr/local/lib/libaudaspace-c.so.1.8
 /usr/local/lib/libaudaspace-py.so
-/usr/local/lib/libaudaspace-py.so.1.7
+/usr/local/lib/libaudaspace-py.so.1.8
 /usr/local/lib/libaudaspace.so
-/usr/local/lib/libaudaspace.so.1.7
+/usr/local/lib/libaudaspace.so.1.8
 /usr/local/lib/pkgconfig/audaspace.pc
 /usr/local/lib/python3.13/site-packages/aud.cpython-313-arm-linux-gnueabihf.so
-/usr/local/lib/python3.13/site-packages/audaspace-1.7.0-py3.13.egg-info/PKG-INFO
-/usr/local/lib/python3.13/site-packages/audaspace-1.7.0-py3.13.egg-info/SOURCES.txt
-/usr/local/lib/python3.13/site-packages/audaspace-1.7.0-py3.13.egg-info/dependency_links.txt
-/usr/local/lib/python3.13/site-packages/audaspace-1.7.0-py3.13.egg-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/audaspace-1.8.0-py3.13.egg-info/PKG-INFO
+/usr/local/lib/python3.13/site-packages/audaspace-1.8.0-py3.13.egg-info/SOURCES.txt
+/usr/local/lib/python3.13/site-packages/audaspace-1.8.0-py3.13.egg-info/dependency_links.txt
+/usr/local/lib/python3.13/site-packages/audaspace-1.8.0-py3.13.egg-info/top_level.txt
 /usr/local/share/audaspace/plugins/libaudffmpeg.so
-/usr/local/share/audaspace/plugins/libaudffmpeg.so.1.7
+/usr/local/share/audaspace/plugins/libaudffmpeg.so.1.8
 /usr/local/share/audaspace/plugins/libaudjack.so
-/usr/local/share/audaspace/plugins/libaudjack.so.1.7
+/usr/local/share/audaspace/plugins/libaudjack.so.1.8
 /usr/local/share/audaspace/plugins/libaudlibsndfile.so
-/usr/local/share/audaspace/plugins/libaudlibsndfile.so.1.7
+/usr/local/share/audaspace/plugins/libaudlibsndfile.so.1.8
 /usr/local/share/audaspace/plugins/libaudopenal.so
-/usr/local/share/audaspace/plugins/libaudopenal.so.1.7
+/usr/local/share/audaspace/plugins/libaudopenal.so.1.8
 /usr/local/share/audaspace/plugins/libaudpulseaudio.so
-/usr/local/share/audaspace/plugins/libaudpulseaudio.so.1.7
+/usr/local/share/audaspace/plugins/libaudpulseaudio.so.1.8
 /usr/local/share/audaspace/plugins/libaudsdl.so
-/usr/local/share/audaspace/plugins/libaudsdl.so.1.7
+/usr/local/share/audaspace/plugins/libaudsdl.so.1.8

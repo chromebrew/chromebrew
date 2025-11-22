@@ -1,6 +1,6 @@
 ---
 name: Build
-run-name: Build ${{ inputs.branch || github.ref_name }} for ${{ ( inputs.build-on-i686 ) && ' i686 ' || '' }}${{ ( inputs.build-on-x86_64 ) && ' x86_64 ' || '' }}${{ ( inputs.build-on-armv7l ) && ' armv7l ' || '' }} by @${{ github.actor }}
+run-name: Build ${{ inputs.branch || github.ref_name }} for ${{ inputs.build-on }} by @${{ github.actor }}
 on:
   workflow_dispatch:
     inputs:
@@ -15,6 +15,11 @@ on:
           - 'No'
       allow_fail:
         description: "Allow packages to fail building."
+        required: false
+        type: boolean
+        default: 'false'
+      rebuild_packages:
+        description: "Rebuild packages even if they already have binaries."
         required: false
         type: boolean
         default: 'false'
@@ -37,20 +42,10 @@ on:
         required: false
         type: number
         default: 5.5
-      build-on-i686:
-        description: "Build on i686"
-        default: true
-        type: boolean
-        required: false
-      build-on-x86_64:
-        description: "Build on x86_64"
-        default: true
-        type: boolean
-        required: false
-      build-on-armv7l:
-        description: "Build on armv7l"
-        default: true
-        type: boolean
+      build-on:
+        description: "Architectures to build on"
+        default: 'i686 x86_64 armv7l'
+        type: string
         required: false
 env:
   BRANCH: ${{ inputs.branch || github.ref_name }}
@@ -188,9 +183,9 @@ jobs:
           armv7l_PACKAGES: ${{ steps.get-compatibility.outputs.armv7l_PACKAGES }}
         run: |
           function join_by { local IFS="$1"; shift; echo "$*"; }
-          [[ "${{ ( inputs.build-on-i686) }}" == 'true' ]] && [[ -n "${i686_PACKAGES}" ]] && export CONTAINER_ARCH+=( "\"i686\"" )
-          [[ "${{ ( inputs.build-on-x86_64) }}" == 'true' ]] && [[ -n "${x86_64_PACKAGES}" ]] && export CONTAINER_ARCH+=( "\"x86_64\"" )
-          [[ "${{ ( inputs.build-on-armv7l) }}" == 'true' ]] && [[ -n "${armv7l_PACKAGES}" ]] && export CONTAINER_ARCH+=( "\"armv7l\"" )
+          [[ "${{ ( inputs.build-on) }}" =~ "i686" ]] && [[ -n "${i686_PACKAGES}" ]] && export CONTAINER_ARCH+=( "\"i686\"" )
+          [[ "${{ ( inputs.build-on) }}" =~ "x86_64" ]] && [[ -n "${x86_64_PACKAGES}" ]] && export CONTAINER_ARCH+=( "\"x86_64\"" )
+          [[ "${{ ( inputs.build-on) }}" =~ "armv7l" ]] && [[ -n "${armv7l_PACKAGES}" ]] && export CONTAINER_ARCH+=( "\"armv7l\"" )
           export ARCHES="$(join_by , "${CONTAINER_ARCH[@]}")"
           echo "matrix=[${ARCHES}]" >> $GITHUB_OUTPUT
           echo "matrix=[${ARCHES}]"
@@ -378,7 +373,7 @@ jobs:
               --tmpfs /tmp \
               --ulimit "nofile=$(ulimit -Sn):$(ulimit -Hn)" \
               "${CONTAINER}" \
-              /bin/chromebrewstart "/output/tools/github_actions_update_builder${{ github.event.inputs.allow_fail == 'true' && '_allowing_failures' || ''}}.sh"  > >(tee -a /tmp/build.log) 2> >(tee -a /tmp/build.log >&2)
+              /bin/chromebrewstart "/output/tools/github_actions_update_builder.sh ${{ github.event.inputs.allow_fail == 'true' && '--continue-after-failed-builds' || ''}} ${{ github.event.inputs.rebuild_packages == 'true' && '--rebuild' || ''}}"  > >(tee -a /tmp/build.log) 2> >(tee -a /tmp/build.log >&2)
               grep "Built and Uploaded:" /tmp/build.log || true
               echo "Deleting build output directories."
               sudo rm -rf release pkg_cache
