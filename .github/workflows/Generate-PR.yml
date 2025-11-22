@@ -445,6 +445,7 @@ jobs:
         id: get-current-head
         run: |
           echo "CURRENT_HEAD=$(git ls-remote https://github.com/${{ github.repository }}.git | head -1 | sed 's/HEAD//')" >> "$GITHUB_OUTPUT"
+          echo "CURRENT_HEAD is $(git ls-remote https://github.com/${{ github.repository }}.git | head -1 | sed 's/HEAD//')"
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v47
