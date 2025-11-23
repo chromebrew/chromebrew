@@ -3,12 +3,12 @@ require 'package'
 class Blender < Package
   description 'Blender is the free and open source 3D creation suite.'
   homepage 'https://www.blender.org'
-  version '4.5.4'
+  version '5.0.0'
   license 'GPLv3+'
   compatibility 'x86_64'
   min_glibc '2.29'
   source_url "https://download.blender.org/release/Blender#{version.sub(/\.\d+$/, '')}/blender-#{version}-linux-x64.tar.xz"
-  source_sha256 '2e6ef8e99fc36327270429ddc8e7bad2859dd878a5a137d2e0bf0f02f6792505'
+  source_sha256 '9de96e81432afba9c0a715c7233f1eff616705b75226dc5d0fa2708ddfb0e525'
 
   # depends_on 'audaspace'
   depends_on 'boost' # R
@@ -46,6 +46,7 @@ class Blender < Package
   depends_on 'zstd'
 
   no_compile_needed
+  print_source_bashrc
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
