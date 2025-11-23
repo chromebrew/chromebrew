@@ -11,10 +11,10 @@ class Xcb_util_cursor < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '318d1c11c6e9bc645b9cacc2625e499cd10fd000c41db9b0698d814948133514',
-     armv7l: '318d1c11c6e9bc645b9cacc2625e499cd10fd000c41db9b0698d814948133514',
-       i686: 'a2beef88e82efe8e8904db22d6298b5da7a2c7687ef2e6e91b2ec7aea95821bd',
-     x86_64: 'b9bc0bea5efb9fba07368c41d971b0839e0a87cc8e29d5b135d7151c7dd35afd'
+    aarch64: '96ee4775b9c934aeb6ca69dd011aa30f522e0cc3a9b5e9316f00438342193e98',
+     armv7l: '96ee4775b9c934aeb6ca69dd011aa30f522e0cc3a9b5e9316f00438342193e98',
+       i686: '64f8829b6f2b5619f85208748bbcb4dcc7f85d6263b2e0e0622f8149bbd2e771',
+     x86_64: '1985001323af5a8704adf8514cac9f61bf957756cb940e907e3005fa885a1eb6'
   })
 
   depends_on 'glibc' # R
