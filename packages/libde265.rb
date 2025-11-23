@@ -3,22 +3,23 @@ require 'package'
 class Libde265 < Package
   description 'Open h.265 video codec implementation.'
   homepage 'https://github.com/strukturag/libde265'
-  version '1.0.11'
+  version '1.0.16'
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://github.com/strukturag/libde265/releases/download/v#{version}/libde265-#{version}.tar.gz"
-  source_sha256 '2f8f12cabbdb15e53532b7c1eb964d4e15d444db1be802505e6ac97a25035bab'
+  source_sha256 'b92beb6b53c346db9a8fae968d686ab706240099cdd5aff87777362d668b0de7'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f31bdb3f3d2c6f88f2cd78814dba76dfbdf53f3ae719bdb85d44f05cb81b159e',
-     armv7l: 'f31bdb3f3d2c6f88f2cd78814dba76dfbdf53f3ae719bdb85d44f05cb81b159e',
-     x86_64: '83acdc8cce935ffce2922bd8a8432978662b2c759df192b38c543709800fb574'
+    aarch64: '9bb1e498a24b99f25ca2573efa19af0ba0b80fe787b8290f83710b047b4f8b3d',
+     armv7l: '9bb1e498a24b99f25ca2573efa19af0ba0b80fe787b8290f83710b047b4f8b3d',
+     x86_64: 'ca2cbda88810f15a62f9afe38722544d170cde511b065ed7495481b194ae83aa'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libsdl' # R
+  depends_on 'sdl2' # R
 
   def self.build
     system "cmake \
