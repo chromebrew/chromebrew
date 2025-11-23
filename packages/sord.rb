@@ -9,7 +9,7 @@ class Sord < Meson
   version '0.16.20'
   license 'ISC'
   compatibility 'all'
-  source_url 'https://github.com/drobilla/sord.git'
+  source_url 'https://gitlab.com/drobilla/sord.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
