@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Xcb_util_cursor < Autotools
   description 'The xcb-util-cursor package provides a module that implements the XCB cursor library. It is a the XCB replacement for libXcursor.'
   homepage 'https://xcb.freedesktop.org/'
-  version '0.1.5'
+  version '0.1.6'
   license 'MIT-with-advertising'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxcb-cursor.git'
