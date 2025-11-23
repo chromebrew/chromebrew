@@ -11,10 +11,10 @@ class Libgit2 < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '41bfb7566d34afa5c07d59e28ca1734a43c8b8049903d5d2faed644506abb40e',
-     armv7l: '41bfb7566d34afa5c07d59e28ca1734a43c8b8049903d5d2faed644506abb40e',
-       i686: 'c22cdf93057e33fbf8109c2be948cde27b6d1f42db173dab2213e04cf083a712',
-     x86_64: 'dd634a7a8b0dbc4c25fd9c5e329f6e95670db8dace736f14bfc4f667deaf669c'
+    aarch64: '327f0cf21d1b2e635ad19401b7f4744e6b0c6824494dea5230cf6feaf14e7694',
+     armv7l: '327f0cf21d1b2e635ad19401b7f4744e6b0c6824494dea5230cf6feaf14e7694',
+       i686: 'b5f6116bb8c88ed1e8d434d02d5360568151e52dda83287969e128fc4d1c702c',
+     x86_64: 'd7dfb26737ce9f4d971a3cab7809ed9124f4b65cb68444c467f084ea0e283a85'
   })
 
   depends_on 'glibc' # R
