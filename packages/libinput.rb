@@ -25,7 +25,6 @@ class Libinput < Meson
   depends_on 'libevdev' # R
   depends_on 'libunwind' => :build
   depends_on 'libwacom' # R
-  depends_on 'libwacom' # R
   depends_on 'mtdev' # R
   depends_on 'valgrind' => :build
 
