@@ -1,0 +1,22 @@
+# Total size: 112701
+/usr/local/include/zix-0/zix/allocator.h
+/usr/local/include/zix-0/zix/attributes.h
+/usr/local/include/zix-0/zix/btree.h
+/usr/local/include/zix-0/zix/bump_allocator.h
+/usr/local/include/zix-0/zix/digest.h
+/usr/local/include/zix-0/zix/environment.h
+/usr/local/include/zix-0/zix/filesystem.h
+/usr/local/include/zix-0/zix/hash.h
+/usr/local/include/zix-0/zix/path.h
+/usr/local/include/zix-0/zix/ring.h
+/usr/local/include/zix-0/zix/sem.h
+/usr/local/include/zix-0/zix/status.h
+/usr/local/include/zix-0/zix/string_view.h
+/usr/local/include/zix-0/zix/thread.h
+/usr/local/include/zix-0/zix/tree.h
+/usr/local/include/zix-0/zix/warnings.h
+/usr/local/include/zix-0/zix/zix.h
+/usr/local/lib/libzix-0.so
+/usr/local/lib/libzix-0.so.0
+/usr/local/lib/libzix-0.so.0.8.0
+/usr/local/lib/pkgconfig/zix-0.pc
