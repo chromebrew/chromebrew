@@ -14,16 +14,18 @@ class Sord < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c9667c90d72b3604b7ecda2fc66ea57e2d2d3bf0b8593b195d5286c9170bf19f',
-     armv7l: 'c9667c90d72b3604b7ecda2fc66ea57e2d2d3bf0b8593b195d5286c9170bf19f',
-       i686: '44c32a9b15f9cc90e5b70e11d26880efa75ce577cfa602b465047dffbe069a7c',
-     x86_64: '260e36fbe792e2ee149ee8c0de2e97459b446ce4a1c3b34f334fb4ef25f45da2'
+    aarch64: '4dceccc727b85b7a0bb7ca396068136191a18127441ed722928e34471c884a1c',
+     armv7l: '4dceccc727b85b7a0bb7ca396068136191a18127441ed722928e34471c884a1c',
+       i686: 'fd691f1028ba28f0b5a26863ef6e5c0a62d3d50970656d9d0d6adfdee87752e6',
+     x86_64: '178d27e5a53980a357cd18b5f9b20c28c31c6504863d2b99baea46bb30c3108d'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'pcre' # R
+  depends_on 'pcre2' # R
   depends_on 'serd' # R
+  depends_on 'zix' # R
 
   meson_options '-Ddocs=disabled \
                -Dtests=disabled'
