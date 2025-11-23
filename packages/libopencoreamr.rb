@@ -11,9 +11,11 @@ class Libopencoreamr < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-       i686: 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii',
-     x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+    aarch64: 'f9a0134954eadfb1e307b7944928250d085e411e7bf3fc905aba9c9ca32ab74d',
+     armv7l: 'f9a0134954eadfb1e307b7944928250d085e411e7bf3fc905aba9c9ca32ab74d',
+       i686: 'd3c1da69262e96b5814c76c4c123c26e64999c8304bd318a5a3ccc819a49b948',
+     x86_64: 'd2fe762393e469494f18897541a0b9c9fcddf5d8d6a8bd139fbad49c908b6b48'
   })
+
+  depends_on 'glibc' # R
 end
