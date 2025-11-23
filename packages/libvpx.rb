@@ -11,9 +11,9 @@ class Libvpx < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '32f4ebce8271fc686b711bc48d601077c07a510a9e68b5c4aa6faa3ae85bd4a3',
-     armv7l: '32f4ebce8271fc686b711bc48d601077c07a510a9e68b5c4aa6faa3ae85bd4a3',
-     x86_64: 'ef9b3e27b231f7546402442a04489b53aa8724c396dcbc6abc4e43b8a32080cd'
+    aarch64: '00e81914069c08483411380bdb4b992e63e172504d3f6257664c4d0114952cf8',
+     armv7l: '00e81914069c08483411380bdb4b992e63e172504d3f6257664c4d0114952cf8',
+     x86_64: 'e38a5ea3a9eb39cf7d4d55b6c1c0b2691bbf014276bd1c6dc3b4ff6fec6e00b0'
   })
 
   depends_on 'ccache' => :build
