@@ -3,11 +3,11 @@ require 'buildsystems/meson'
 class Libevdev < Meson
   description 'libevdev is a wrapper library for evdev devices.'
   homepage 'https://www.freedesktop.org/wiki/Software/libevdev/'
-  version '1.13.4'
+  version '1.13.5'
   license 'MIT'
   compatibility 'all'
   source_url "https://www.freedesktop.org/software/libevdev/libevdev-#{version}.tar.xz"
-  source_sha256 'f00ab8d42ad8b905296fab67e13b871f1a424839331516642100f82ad88127cd'
+  source_sha256 '89918ae7b7c13936e6482604a77a2bfbbb74544c5d039fde01c3fa1bdf639987'
   binary_compression 'tar.zst'
 
   binary_sha256({
