@@ -11,11 +11,13 @@ class Gsm < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4dc9c3426864671b7c61c08d846ff40fd524bf341163997c8e5caddab90c229d',
-     armv7l: '4dc9c3426864671b7c61c08d846ff40fd524bf341163997c8e5caddab90c229d',
-       i686: 'e5756a9fe38d9dc52bcdfe74dcaee3edc20eb702cd3c8f6e4b7ddd725166d1ad',
-     x86_64: '791c1a029c92f1839398617a1b1633e960a21c58ac45b19ad057b0ef0d3ddcfe'
+    aarch64: '659c0eb1a7140734d4c6cfbfedae38fd616956901f2d69530a01ff7169adb279',
+     armv7l: '659c0eb1a7140734d4c6cfbfedae38fd616956901f2d69530a01ff7169adb279',
+       i686: 'e48c6609c640a88d5eccc20dc9c44ebdeba8ff835d1b5bf94739bd5547db0547',
+     x86_64: 'bb114f37bbd159fbd29c473891b4f8ac3f8665dc0697a158f1508c02021e96e3'
   })
+
+  depends_on 'glibc' # R
 
   def self.build
     system "env CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
