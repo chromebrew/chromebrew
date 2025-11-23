@@ -375,12 +375,13 @@ jobs:
             git log --oneline -10
           fi
   build-check:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-24.04-arm
     needs:
       - setup
       - update-package-files
     if: ${{ ( always() && !cancelled() ) && needs.setup.result == 'success' && ((( inputs.update_package_files ) && needs.update-package-files.result == 'success') || !( inputs.update_package_files )) }}
     outputs:
+      changed_packages: ${{ steps.changed-packages.outputs.CHANGED_PACKAGES }}
       current_head: ${{ steps.get-current-head.outputs.CURRENT_HEAD }}
     steps:
       - name: Fail if update or build jobs failed, otherwise create a PR
@@ -443,7 +444,7 @@ jobs:
         id: changed-files
         uses: tj-actions/changed-files@v47
         with:
-          base_sha: ${{ steps.get-current-head.outputs.CURRENT_HEAD }}
+          base_sha: ${{ github.event.pull_request.head.sha }}
           files_yaml: |
             manifest:
               - manifest/**
@@ -456,12 +457,24 @@ jobs:
               - '!manifest/**'
               - '!packages/*.rb'
               - '!.github/**'
+      - name: Export variables to github context
+        id: changed-packages
+        env:
+          CHANGED_FILES: ${{ steps.changed-files.outputs.packages_all_changed_files }}
+        run: |
+            if [[ -n "${CHANGED_FILES}" ]]; then
+              # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-files.outputs.packages_all_changed_files) into "foo bar"
+              echo "CHANGED_PACKAGES=$(echo "${CHANGED_FILES}" | xargs basename -s .rb | xargs)" >> "$GITHUB_ENV"
+              echo "CHANGED_PACKAGES=$(echo "${CHANGED_FILES}" | xargs basename -s .rb | xargs)" >> "$GITHUB_OUTPUT"
+            else
+              echo "No Changed Files."
+            fi
       - name: Create Pull Request
         env:
           CHANGED_GITHUB_CONFIG_FILES: ${{ steps.changed-files.outputs.github_all_changed_files }}
           CHANGED_MANIFEST_FILES: ${{ steps.changed-files.outputs.manifest_all_changed_files }}
           CHANGED_OTHER_FILES: ${{ steps.changed-files.outputs.other_all_changed_files }}
-          CHANGED_PACKAGES: ${{ needs.setup.outputs.changed_packages }}
+          CHANGED_PACKAGES: ${{ steps.changed-packages.outputs.CHANGED_PACKAGES }}
           CREW_BRANCH: ${{ inputs.branch || github.ref_name }}
           DRAFT_PR: ${{ inputs.draft_pr }}
           GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
@@ -473,7 +486,13 @@ jobs:
         run: |
           # Make untouched clone of repo so we can get the existing versions of packages.
           (cd /tmp ; git clone --depth=1 https://github.com/${{ github.repository }}.git chromebrew_main )
+          sudo gem install -N json --conservative
           sudo gem install -N ptools --conservative
+          sudo gem install -N highline --conservative
+          sudo gem install -N concurrent-ruby --conservative
+          sudo gem install -N method_source --conservative
+          sudo gem install -N cgi --conservative
+          sudo gem install -N ruby-libversion --conservative
           # Make crew do automatic gem installs before looking for deps.
           LD_LIBRARY_PATH=/usr/local/lib ruby bin/crew version
           # Force creation of temporary device.json.
