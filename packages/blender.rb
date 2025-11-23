@@ -11,7 +11,7 @@ class Blender < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+     x86_64: '13d3c33d2d75e5a433db7ad57efdba87aef5faa000e4323fbdf2dbda9d869e0e'
   })
 
   depends_on 'audaspace'
@@ -20,6 +20,8 @@ class Blender < CMake
   depends_on 'embree'
   depends_on 'ffmpeg'
   depends_on 'freetype'
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
   depends_on 'gmp' # R
   depends_on 'jack' # R
   depends_on 'libepoxy'
@@ -48,6 +50,7 @@ class Blender < CMake
   depends_on 'shaderc'
   depends_on 'tbb' # R
   depends_on 'vulkan_headers'
+  depends_on 'vulkan_icd_loader' # R
   depends_on 'zlib'
   depends_on 'zstd'
 
