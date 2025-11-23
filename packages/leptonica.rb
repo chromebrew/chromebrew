@@ -1,13 +1,13 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Leptonica < Package
+class Leptonica < CMake
   description 'Software that is broadly useful for image processing and image analysis applications'
   homepage 'http://www.leptonica.org'
-  version '1.86.0'
+  version '1.86.0-1'
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/DanBloomberg/leptonica.git'
-  git_hashtag version
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -29,24 +29,5 @@ class Leptonica < Package
   depends_on 'zlib' # R
   depends_on 'zstd' => :build
 
-  def self.patch
-    # See https://github.com/DanBloomberg/leptonica/issues/693
-    system "sed -i 's,lib/cmake/leptonica,#{ARCH_LIB}/cmake/leptonica,g' CMakeLists.txt"
-    system "sed -i 's,lib/pkgconfig,#{ARCH_LIB}/pkgconfig,g' CMakeLists.txt"
-    system "sed -i 's,prefix}/lib,prefix}/#{ARCH_LIB},g' lept.pc.cmake"
-    system "sed -i 's,set(lib,set(#{ARCH_LIB},g' src/CMakeLists.txt"
-    system "sed -i 's,DESTINATION lib ARCHIVE DESTINATION lib,DESTINATION #{ARCH_LIB} ARCHIVE DESTINATION #{ARCH_LIB},g' src/CMakeLists.txt"
-  end
-
-  def self.build
-    system "cmake -B builddir #{CREW_CMAKE_OPTIONS} \
-        -DBUILD_SHARED_LIBS=ON \
-        -Wno-dev \
-        -G Ninja"
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+  cmake_options '-DBUILD_SHARED_LIBS=ON'
 end
