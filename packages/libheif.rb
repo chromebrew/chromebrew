@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libheif < CMake
   description 'libheif is a ISO/IEC 23008-12:2017 HEIF file format decoder and encoder.'
   homepage 'https://github.com/strukturag/libheif'
-  version '1.19.8'
+  version '1.20.2'
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/strukturag/libheif.git'
