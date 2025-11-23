@@ -1,37 +1,11 @@
 # lib/fixup.rb
 # Add fixups to be run during crew update here.
-require 'English'
-require 'etc'
+require 'fileutils'
 require 'json'
 require_relative 'color'
+require_relative 'const'
 require_relative 'convenience_functions'
 require_relative 'package'
-require_relative 'require_gem'
-
-require_gem('highline')
-
-# All needed constants & variables should be defined here in case they
-# have not yet been loaded or fixup is being run standalone.
-
-CREW_UNATTENDED  ||= ENV.fetch('CREW_UNATTENDED', false) unless defined?(CREW_UNATTENDED)
-CREW_VERBOSE     ||= ARGV.intersect?(%w[-v --verbose]) unless defined?(CREW_VERBOSE)
-
-CREW_PREFIX      ||= '/usr/local'
-CREW_LIB_PATH    ||= File.join(CREW_PREFIX, 'lib/crew')
-
-CREW_CONFIG_PATH ||= File.join(CREW_PREFIX, 'etc/crew')
-CREW_META_PATH   ||= File.join(CREW_CONFIG_PATH, 'meta')
-CREW_REPO        ||= ENV.fetch('CREW_REPO', 'https://github.com/chromebrew/chromebrew.git') unless defined?(CREW_REPO)
-CREW_BRANCH      ||= ENV.fetch('CREW_BRANCH', 'master') unless defined?(CREW_BRANCH)
-
-load "#{CREW_LIB_PATH}/lib/const.rb"
-load "#{CREW_LIB_PATH}/lib/package.rb"
-load "#{CREW_LIB_PATH}/lib/convenience_functions.rb"
-
-KERN_ARCH ||= Etc.uname[:machine]
-ARCH ||= %w[aarch64 armv8l].include?(KERN_ARCH) ? 'armv7l' : KERN_ARCH
-LIBC_VERSION ||= Etc.confstr(Etc::CS_GNU_LIBC_VERSION).split.last
-CREW_PACKAGES_PATH ||= File.join(CREW_LIB_PATH, 'packages')
 
 # Commands run immediately after updating from git.
 
