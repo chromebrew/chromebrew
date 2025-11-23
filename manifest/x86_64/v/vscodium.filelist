@@ -1,4 +1,4 @@
-# Total size: 438623891
+# Total size: 440466112
 /usr/local/VSCodium-linux-x64/LICENSES.chromium.html
 /usr/local/VSCodium-linux-x64/bin/codium
 /usr/local/VSCodium-linux-x64/bin/codium-tunnel
@@ -141,6 +141,10 @@
 /usr/local/VSCodium-linux-x64/resources/app/extensions/docker/package.json
 /usr/local/VSCodium-linux-x64/resources/app/extensions/docker/package.nls.json
 /usr/local/VSCodium-linux-x64/resources/app/extensions/docker/syntaxes/docker.tmLanguage.json
+/usr/local/VSCodium-linux-x64/resources/app/extensions/dotenv/language-configuration.json
+/usr/local/VSCodium-linux-x64/resources/app/extensions/dotenv/package.json
+/usr/local/VSCodium-linux-x64/resources/app/extensions/dotenv/package.nls.json
+/usr/local/VSCodium-linux-x64/resources/app/extensions/dotenv/syntaxes/dotenv.tmLanguage.json
 /usr/local/VSCodium-linux-x64/resources/app/extensions/emmet/README.md
 /usr/local/VSCodium-linux-x64/resources/app/extensions/emmet/dist/node/emmetNodeMain.js
 /usr/local/VSCodium-linux-x64/resources/app/extensions/emmet/images/icon.png
@@ -305,7 +309,7 @@
 /usr/local/VSCodium-linux-x64/resources/app/extensions/json-language-features/package.nls.json
 /usr/local/VSCodium-linux-x64/resources/app/extensions/json-language-features/server/.npmrc
 /usr/local/VSCodium-linux-x64/resources/app/extensions/json-language-features/server/dist/node/774.jsonServerMain.js
-/usr/local/VSCodium-linux-x64/resources/app/extensions/json-language-features/server/dist/node/875.jsonServerMain.js
+/usr/local/VSCodium-linux-x64/resources/app/extensions/json-language-features/server/dist/node/962.jsonServerMain.js
 /usr/local/VSCodium-linux-x64/resources/app/extensions/json-language-features/server/dist/node/jsonServerMain.js
 /usr/local/VSCodium-linux-x64/resources/app/extensions/json-language-features/server/package.json
 /usr/local/VSCodium-linux-x64/resources/app/extensions/json/language-configuration.json
@@ -1055,6 +1059,7 @@
 /usr/local/VSCodium-linux-x64/resources/app/node_modules/@vscode/deviceid/package.json
 /usr/local/VSCodium-linux-x64/resources/app/node_modules/@vscode/iconv-lite-umd/LICENSE
 /usr/local/VSCodium-linux-x64/resources/app/node_modules/@vscode/iconv-lite-umd/lib/iconv-lite-umd.js
+/usr/local/VSCodium-linux-x64/resources/app/node_modules/@vscode/iconv-lite-umd/lib/iconv-lite-umd.js.LICENSE.txt
 /usr/local/VSCodium-linux-x64/resources/app/node_modules/@vscode/iconv-lite-umd/package.json
 /usr/local/VSCodium-linux-x64/resources/app/node_modules/@vscode/proxy-agent/LICENSE.md
 /usr/local/VSCodium-linux-x64/resources/app/node_modules/@vscode/proxy-agent/SECURITY.md
@@ -1096,8 +1101,10 @@
 /usr/local/VSCodium-linux-x64/resources/app/node_modules/@vscode/tree-sitter-wasm/SECURITY.md
 /usr/local/VSCodium-linux-x64/resources/app/node_modules/@vscode/tree-sitter-wasm/cgmanifest.json
 /usr/local/VSCodium-linux-x64/resources/app/node_modules/@vscode/tree-sitter-wasm/package.json
+/usr/local/VSCodium-linux-x64/resources/app/node_modules/@vscode/tree-sitter-wasm/wasm/tree-sitter-bash.wasm
 /usr/local/VSCodium-linux-x64/resources/app/node_modules/@vscode/tree-sitter-wasm/wasm/tree-sitter-css.wasm
 /usr/local/VSCodium-linux-x64/resources/app/node_modules/@vscode/tree-sitter-wasm/wasm/tree-sitter-ini.wasm
+/usr/local/VSCodium-linux-x64/resources/app/node_modules/@vscode/tree-sitter-wasm/wasm/tree-sitter-powershell.wasm
 /usr/local/VSCodium-linux-x64/resources/app/node_modules/@vscode/tree-sitter-wasm/wasm/tree-sitter-regex.wasm
 /usr/local/VSCodium-linux-x64/resources/app/node_modules/@vscode/tree-sitter-wasm/wasm/tree-sitter-typescript.wasm
 /usr/local/VSCodium-linux-x64/resources/app/node_modules/@vscode/tree-sitter-wasm/wasm/tree-sitter.js
