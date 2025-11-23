@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Avisynthplus < CMake
   description 'An improved version of the AviSynth frameserver'
   homepage 'https://avs-plus.net/'
-  version '3.7.3'
+  version '3.7.5'
   license 'GPL-2 and GPL-2-with-linking-exception'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/AviSynth/AviSynthPlus.git'
