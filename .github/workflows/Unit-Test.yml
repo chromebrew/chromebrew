@@ -84,6 +84,7 @@ jobs:
         id: non-pkg-changed-files
         uses: tj-actions/changed-files@v47
         with:
+          base_sha: ${{ github.event.pull_request.head.sha }}
           files_ignore: |
             .github/**
             manifest/**
@@ -94,6 +95,7 @@ jobs:
         id: changed-ruby-files
         uses: tj-actions/changed-files@v47
         with:
+          base_sha: ${{ github.event.pull_request.head.sha }}
           files: packages/*.rb
           since_last_remote_commit: true
       - name: Export variables to github context
@@ -228,7 +230,7 @@ jobs:
                 /bin/chromebrewstart /usr/local/lib/crew/tests/unit_test_stub.sh
             fi
   container_test_check:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-24.04-arm
     needs:
       - container_tests
     if: ${{ !cancelled() }}
