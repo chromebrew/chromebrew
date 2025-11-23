@@ -1,13 +1,13 @@
-# Total size: 707273
+# Total size: 710366
 /usr/local/bin/pre-commit
-/usr/local/lib/python3.13/site-packages/pre_commit-4.4.0.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/pre_commit-4.4.0.dist-info/LICENSE
-/usr/local/lib/python3.13/site-packages/pre_commit-4.4.0.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/pre_commit-4.4.0.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/pre_commit-4.4.0.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/pre_commit-4.4.0.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/pre_commit-4.4.0.dist-info/entry_points.txt
-/usr/local/lib/python3.13/site-packages/pre_commit-4.4.0.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/pre_commit-4.5.0.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/pre_commit-4.5.0.dist-info/LICENSE
+/usr/local/lib/python3.13/site-packages/pre_commit-4.5.0.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/pre_commit-4.5.0.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/pre_commit-4.5.0.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/pre_commit-4.5.0.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/pre_commit-4.5.0.dist-info/entry_points.txt
+/usr/local/lib/python3.13/site-packages/pre_commit-4.5.0.dist-info/top_level.txt
 /usr/local/lib/python3.13/site-packages/pre_commit/__init__.py
 /usr/local/lib/python3.13/site-packages/pre_commit/__main__.py
 /usr/local/lib/python3.13/site-packages/pre_commit/__pycache__/__init__.cpython-313.pyc
@@ -43,6 +43,7 @@
 /usr/local/lib/python3.13/site-packages/pre_commit/commands/__pycache__/autoupdate.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pre_commit/commands/__pycache__/clean.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pre_commit/commands/__pycache__/gc.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/pre_commit/commands/__pycache__/hazmat.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pre_commit/commands/__pycache__/hook_impl.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pre_commit/commands/__pycache__/init_templatedir.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pre_commit/commands/__pycache__/install_uninstall.cpython-313.pyc
@@ -55,6 +56,7 @@
 /usr/local/lib/python3.13/site-packages/pre_commit/commands/autoupdate.py
 /usr/local/lib/python3.13/site-packages/pre_commit/commands/clean.py
 /usr/local/lib/python3.13/site-packages/pre_commit/commands/gc.py
+/usr/local/lib/python3.13/site-packages/pre_commit/commands/hazmat.py
 /usr/local/lib/python3.13/site-packages/pre_commit/commands/hook_impl.py
 /usr/local/lib/python3.13/site-packages/pre_commit/commands/init_templatedir.py
 /usr/local/lib/python3.13/site-packages/pre_commit/commands/install_uninstall.py
@@ -92,9 +94,7 @@
 /usr/local/lib/python3.13/site-packages/pre_commit/languages/__pycache__/r.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pre_commit/languages/__pycache__/ruby.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pre_commit/languages/__pycache__/rust.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/pre_commit/languages/__pycache__/script.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pre_commit/languages/__pycache__/swift.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/pre_commit/languages/__pycache__/system.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pre_commit/languages/__pycache__/unsupported.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pre_commit/languages/__pycache__/unsupported_script.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/pre_commit/languages/conda.py
@@ -115,9 +115,7 @@
 /usr/local/lib/python3.13/site-packages/pre_commit/languages/r.py
 /usr/local/lib/python3.13/site-packages/pre_commit/languages/ruby.py
 /usr/local/lib/python3.13/site-packages/pre_commit/languages/rust.py
-/usr/local/lib/python3.13/site-packages/pre_commit/languages/script.py
 /usr/local/lib/python3.13/site-packages/pre_commit/languages/swift.py
-/usr/local/lib/python3.13/site-packages/pre_commit/languages/system.py
 /usr/local/lib/python3.13/site-packages/pre_commit/languages/unsupported.py
 /usr/local/lib/python3.13/site-packages/pre_commit/languages/unsupported_script.py
 /usr/local/lib/python3.13/site-packages/pre_commit/logging_handler.py
