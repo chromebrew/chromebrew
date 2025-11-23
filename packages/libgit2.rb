@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libgit2 < CMake
   description 'A portable, pure C implementation of the Git core methods'
   homepage 'https://libgit2.org/'
-  version '1.5.1'
+  version '1.9.1'
   license 'GPL-2-with-linking-exception'
   compatibility 'all'
   source_url 'https://github.com/libgit2/libgit2.git'
