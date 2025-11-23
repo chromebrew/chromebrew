@@ -1,53 +1,19 @@
 ---
-name: Build
-run-name: Build ${{ inputs.branch || github.ref_name }} for ${{ inputs.build-on }} by @${{ github.actor }}
+name: No-Compile-Needed
+run-name: Generate No-Compile-Needed PR for ${{ inputs.branch || github.ref_name }} by @${{ github.actor }}
 on:
   workflow_dispatch:
     inputs:
-      with_pr:
-        description: "Create a PR after building."
-        required: false
-        type: choice
-        default: 'Pull Request'
-        options:
-          - 'Pull Request'
-          - 'Draft Pull Request'
-          - 'No'
-      allow_fail:
-        description: "Allow packages to fail building."
+      draft_pr:
+        description: "Create a Draft PR."
         required: false
         type: boolean
         default: 'false'
-      rebuild_packages:
-        description: "Rebuild packages even if they already have binaries."
-        required: false
-        type: boolean
-        default: 'false'
-      pr_title:
-        description: "Title of PR"
-        required: false
       branch:
         description: "Branch of chromebrew/chromebrew to run on, if different from this branch."
         required: false
-      update_rebase_to_master:
-        description: "Update Branch."
-        required: false
-        type: boolean
-        default: 'true'
-      pr_label:
-        description: "PR Label (Not Title)"
-        required: false
-      max_build_time:
-        description: "Maximum Build Time (hours)"
-        required: false
-        type: number
-        default: 5.5
-      build-on:
-        description: "Architectures to build on"
-        default: 'i686 x86_64 armv7l'
-        type: string
-        required: false
 env:
+  GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}  # setting GH_TOKEN for the entire workflow
   BRANCH: ${{ inputs.branch || github.ref_name }}
 permissions:
   actions: write
@@ -77,49 +43,41 @@ jobs:
     runs-on: ubuntu-24.04
     outputs:
       timestamp: ${{ steps.set-timestamp.outputs.TIMESTAMP }}  # https://stackoverflow.com/a/75142892
-      current_head: ${{ steps.get-current-head.outputs.CURRENT_HEAD }}
       changed_packages: ${{ steps.changed-packages.outputs.CHANGED_PACKAGES }}
+      no_compile_packages: ${{ steps.get-compatibility.outputs.NO_COMPILE_PACKAGES }}
       glibc_232_compat: ${{ steps.get-compatibility.outputs.GLIBC_232_COMPATIBLE_PACKAGES }}
       glibc_237_compat: ${{ steps.get-compatibility.outputs.GLIBC_237_COMPATIBLE_PACKAGES }}
       i686_packages: ${{ steps.get-compatibility.outputs.i686_PACKAGES }}
       x86_64_packages: ${{ steps.get-compatibility.outputs.x86_64_PACKAGES }}
       armv7l_packages: ${{ steps.get-compatibility.outputs.armv7l_PACKAGES }}
-      matrix: ${{ steps.set-generate-matrix.outputs.matrix }}
     steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+          ref: ${{ inputs.branch || github.ref_name }}
+      - name: Rebase to master
+        run: |
+            git config user.name "${{ github.actor }}"
+            git config user.email "${{ github.actor }}@users.noreply.github.com"
+            git pull --rebase origin master
+            git push -f
+      - name: Push rebase changes
+        uses: ad-m/github-push-action@master
+        with:
+          branch: ${{ inputs.branch || github.ref_name }}
+          force: true
       - name: Set Timestamp
         id: set-timestamp
         run: |
           TIMESTAMP="$(date -u +%F-%H%Z)"
           export TIMESTAMP
           echo "TIMESTAMP=${TIMESTAMP}" >> "$GITHUB_OUTPUT"
-      - uses: actions/checkout@v5
-        with:
-          fetch-depth: 0
-          persist-credentials: true
-          ref: ${{ inputs.branch || github.ref_name }}
-      - name: Set PR to Draft
-        id: set-to-draft
-        env:
-          GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
-        run: |
-          PR_NUMBER=$(gh pr list -L 1 -s open -H ${{ inputs.branch || github.ref_name }} | cut -f1)
-          if [[ -n ${PR_NUMBER} ]]; then
-            echo "Setting ${PR_NUMBER} to Draft while workflow runs."
-            gh pr ready --undo || true
-            # Try to update branch before building if a PR already
-            # exists.
-            [[ "${{ ( inputs.update_rebase_to_master ) }}" == 'true' ]] && gh pr update-branch --rebase || true
-          fi
-      - name: Get Current HEAD hash
-        id: get-current-head
-        run: |
-          echo "CURRENT_HEAD=$(git ls-remote https://github.com/${{ github.repository }}.git | head -1 | sed 's/HEAD//')" >> "$GITHUB_OUTPUT"
-          echo "CURRENT_HEAD is $(git ls-remote https://github.com/${{ github.repository }}.git | head -1 | sed 's/HEAD//')"
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v47
         with:
-          base_sha: ${{ steps.get-current-head.outputs.CURRENT_HEAD }}
+          base_sha: master
           files_yaml: |
             packages:
               - packages/*.rb
@@ -137,8 +95,20 @@ jobs:
       - name: Determine glibc and architecture package compatibility
         id: get-compatibility
         run: |
+            # If a package has 'no_compile_needed', add it to NO_COMPILE_PACKAGES.
+            NO_COMPILE_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]no_compile_needed" packages/"${i}".rb && echo "${i}"; done | xargs)"
+            export NO_COMPILE_PACKAGES
+            if [[ -n ${NO_COMPILE_PACKAGES} ]]; then
+              echo "NO_COMPILE_PACKAGES=${NO_COMPILE_PACKAGES}" >> "$GITHUB_ENV"
+              echo "NO_COMPILE_PACKAGES=${NO_COMPILE_PACKAGES}" >> "$GITHUB_OUTPUT"
+              echo "Branch ${{ inputs.branch || github.ref_name }} has these no_compile_needed packages: ${NO_COMPILE_PACKAGES}"
+            else
+              echo "Branch ${{ inputs.branch || github.ref_name }} is missing no_compile_needed packages that require updates."
+              exit 1
+            fi
+
             # If a package doesnt have a min_glibc value, or if it is below 2.32, add it to GLIBC_232_COMPATIBLE_PACKAGES.
-            GLIBC_232_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do grep min_glibc packages/"${i}".rb | tr -d \' | awk '{exit $2 <= 2.32}' || echo "${i}" ; done | xargs)"
+            GLIBC_232_COMPATIBLE_PACKAGES="$(for i in ${NO_COMPILE_PACKAGES} ; do grep min_glibc packages/"${i}".rb | tr -d \' | awk '{exit $2 <= 2.32}' || echo "${i}" ; done | xargs)"
             export GLIBC_232_COMPATIBLE_PACKAGES
             if [[ -n ${GLIBC_232_COMPATIBLE_PACKAGES} ]]; then
               echo "GLIBC_232_COMPATIBLE_PACKAGES=${GLIBC_232_COMPATIBLE_PACKAGES}" >> "$GITHUB_ENV"
@@ -147,7 +117,7 @@ jobs:
             fi
 
             # If a package doesnt have a min_glibc value, or if it is below 2.37, add it to GLIBC_237_COMPATIBLE_PACKAGES.
-            GLIBC_237_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do grep min_glibc packages/"${i}".rb | tr -d \' | awk '{exit $2 <= 2.37}' || echo "${i}" ; done | xargs)"
+            GLIBC_237_COMPATIBLE_PACKAGES="$(for i in ${NO_COMPILE_PACKAGES} ; do grep min_glibc packages/"${i}".rb | tr -d \' | awk '{exit $2 <= 2.37}' || echo "${i}" ; done | xargs)"
             export GLIBC_237_COMPATIBLE_PACKAGES
             if [[ -n ${GLIBC_237_COMPATIBLE_PACKAGES} ]]; then
               echo "GLIBC_237_COMPATIBLE_PACKAGES=${GLIBC_237_COMPATIBLE_PACKAGES}" >> "$GITHUB_ENV"
@@ -156,7 +126,7 @@ jobs:
             fi
 
             # If a package has a compatibility of 'all' or one that includes 'x86_64', add it to x86_64_PACKAGES.
-            x86_64_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*x86_64" packages/"${i}".rb && echo "${i}"; done | xargs)"
+            x86_64_PACKAGES="$(for i in ${NO_COMPILE_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*x86_64" packages/"${i}".rb && echo "${i}"; done | xargs)"
             export x86_64_PACKAGES
             if [[ -n ${x86_64_PACKAGES} ]]; then
               echo "x86_64_PACKAGES=${x86_64_PACKAGES}" >> "$GITHUB_ENV"
@@ -165,7 +135,7 @@ jobs:
             fi
 
             ## If a package has a compatibility of 'all' or one that includes 'armv7l', add it to armv7l_PACKAGES.
-            armv7l_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*armv7l" packages/"${i}".rb && echo "${i}"; done | xargs)"
+            armv7l_PACKAGES="$(for i in ${NO_COMPILE_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*armv7l" packages/"${i}".rb && echo "${i}"; done | xargs)"
             export armv7l_PACKAGES
             if [[ -n ${armv7l_PACKAGES} ]]; then
               echo "armv7l_PACKAGES=${armv7l_PACKAGES}" >> "$GITHUB_ENV"
@@ -174,33 +144,18 @@ jobs:
             fi
 
             ## If a package has a compatibility of 'all' or one that includes 'i686', add it to i686_PACKAGES.
-            i686_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*i686" packages/"${i}".rb && echo "${i}"; done | xargs)"
+            i686_PACKAGES="$(for i in ${NO_COMPILE_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*i686" packages/"${i}".rb && echo "${i}"; done | xargs)"
             export i686_PACKAGES
             if [[ -n ${i686_PACKAGES} ]]; then
               echo "i686_PACKAGES=${i686_PACKAGES}" >> "$GITHUB_ENV"
               echo "i686_PACKAGES=${i686_PACKAGES}" >> "$GITHUB_OUTPUT"
               echo "Branch ${{ inputs.branch || github.ref_name }} has these i686 compatible packages: ${i686_PACKAGES}"
             fi
-      - name: Generate Creation Matrix
-        id: set-generate-matrix
-        env:
-          i686_PACKAGES: ${{ steps.get-compatibility.outputs.i686_PACKAGES }}
-          x86_64_PACKAGES: ${{ steps.get-compatibility.outputs.x86_64_PACKAGES }}
-          armv7l_PACKAGES: ${{ steps.get-compatibility.outputs.armv7l_PACKAGES }}
-        run: |
-          function join_by { local IFS="$1"; shift; echo "$*"; }
-          [[ "${{ ( inputs.build-on) }}" =~ "i686" ]] && [[ -n "${i686_PACKAGES}" ]] && export CONTAINER_ARCH+=( "\"i686\"" )
-          [[ "${{ ( inputs.build-on) }}" =~ "x86_64" ]] && [[ -n "${x86_64_PACKAGES}" ]] && export CONTAINER_ARCH+=( "\"x86_64\"" )
-          [[ "${{ ( inputs.build-on) }}" =~ "armv7l" ]] && [[ -n "${armv7l_PACKAGES}" ]] && export CONTAINER_ARCH+=( "\"armv7l\"" )
-          export ARCHES="$(join_by , "${CONTAINER_ARCH[@]}")"
-          echo "matrix=[${ARCHES}]" >> $GITHUB_OUTPUT
-          echo "matrix=[${ARCHES}]"
   generate:
-    needs: setup
     strategy:
-      fail-fast: false
+      max-parallel: 1
       matrix:
-        arch: ${{ fromJSON(needs.setup.outputs.matrix) }}
+        arch: [i686, x86_64, armv7l]
         runner:
           - ubuntu-24.04
           - ubuntu-24.04-arm
@@ -212,12 +167,13 @@ jobs:
           - arch: armv7l
             runner: ubuntu-24.04
     runs-on: ${{ matrix.runner }}
+    needs: setup
     env:
-      CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES: 1
       CREW_REPO: ${{ github.event.repository.clone_url }}
       CREW_BRANCH: ${{ inputs.branch || github.ref_name }}
       TARGET_ARCH: ${{ matrix.arch }}
       TIMESTAMP: ${{ needs.setup.outputs.timestamp }}
+      NO_COMPILE_PACKAGES: ${{ needs.setup.outputs.no_compile_packages }}
       GLIBC_232_COMPATIBLE_PACKAGES: ${{ needs.setup.outputs.glibc_232_compat }}
       GLIBC_237_COMPATIBLE_PACKAGES: ${{ needs.setup.outputs.glibc_237_compat }}
       i686_PACKAGES: ${{ needs.setup.outputs.i686_packages }}
@@ -226,7 +182,11 @@ jobs:
     if: ${{ !cancelled() }}
     concurrency:
       group: ${{ matrix.arch }}-${{ github.workflow }}-${{ inputs.branch || github.ref_name }}
+      cancel-in-progress: true
     steps:
+      - name: Container cleanup
+        run: |
+            sudo rm -rf release
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
@@ -251,28 +211,6 @@ jobs:
         env:
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
         run: echo "$MATRIX_CONTEXT"
-<<<<<<< HEAD
-=======
-      #- name: Free Disk Space (Ubuntu)
-        #uses: BRAINSia/free-disk-space@v2
-        #with:
-          ## this might remove tools that are actually needed,
-          ## if set to "true" but frees about 6 GB
-          #tool-cache: false
-
-          ## all of these default to true, but feel free to set to
-          ## "false" if necessary for your workflow
-          #mandb: true
-          #android: true
-          #dotnet: true
-          #haskell: true
-          #large-packages: true
-          #docker-images: true
-          #swap-storage: true
->>>>>>> c30a43ba (Test workflow changes, and try to change linker for shadow build.)
-      - name: Build Container cleanup
-        run: |
-            sudo rm -rf release
       - uses: actions/checkout@v5
         with:
           fetch-depth: 0
@@ -314,107 +252,114 @@ jobs:
       - name: Run Updater in container
         id: run-updater
         if: ${{ !cancelled() }}
-        env:
-          CREW_MAX_BUILD_TIME_INPUT: ${{ inputs.max_build_time }}
         run: |
-            if [[ -n ${CREW_MAX_BUILD_TIME_INPUT} ]]; then
-              # Convert CREW_MAX_BUILD_TIME_INPUT to seconds.
-              CREW_MAX_BUILD_TIME="$(bc <<<"scale=0;$CREW_MAX_BUILD_TIME_INPUT*3600/1")"
-              echo "Maximum build time is $(bc <<<"scale=0;$CREW_MAX_BUILD_TIME_INPUT*60/1") minutes."
-            fi
-            [[ -n ${CI} ]] && echo 'CI variable is set.'
             if [ "$PLATFORM" == 'linux/arm/v7'  ] && [ -z "${armv7l_PACKAGES}" ]; then
               # Exit the arm container if there are not armv7l compatible packages.
-              echo "Skipping armv7l container builds &/or package file updates."
+              echo "Skipping armv7l container."
               exit 0
             elif [ "$PLATFORM" == 'linux/amd64' ] && [ -z "${x86_64_PACKAGES}" ]; then
               # Exit the x86_64 container if there are not x86_64 compatible packages.
-              echo "Skipping x86_64 container builds &/or package file updates."
+              echo "Skipping x86_64 container."
               exit 0
             elif [ "$PLATFORM" == 'linux/386' ] && [ -z "${i686_PACKAGES}" ]; then
               # Exit the i686 container if there are not i686 compatible packages.
-              echo "Skipping i686 container builds &/or package file updates."
+              echo "Skipping i686 container."
               exit 0
             fi
-            # Container Cleanup
-            # Adapted from https://github.com/BRAINSia/free-disk-space/blob/main/action.yml
-<<<<<<< HEAD
-<<<<<<< HEAD
-            echo "Running some background container cleanups from BRAINSia/free-disk-space."
-            ( sudo apt-get purge -qq -o=Dpkg::Use-Pty=0 -y man-db manpages manpages-dev 'aspnetcore-*' 'dotnet-*' 'llvm-*' '*php*' 'mongodb-*' 'mysql-*' azure-cli google-chrome-stable firefox powershell mono-devel libgl1-mesa-dri 'google-cloud-*' 'gcloud-*' &>/dev/null ; \
-            sudo apt-get autoremove -qq -o=Dpkg::Use-Pty=0 -y &>/dev/null) &
-=======
-            ( sudo apt-get purge -qq -o=Dpkg::Use-Pty=0 -y man-db manpages manpages-dev 'aspnetcore-*' 'dotnet-*' 'llvm-*' '*php*' 'mongodb-*' 'mysql-*' azure-cli google-chrome-stable firefox powershell mono-devel libgl1-mesa-dri 'google-cloud-*' 'gcloud-*'  ; \
-            sudo apt-get autoremove -qq -o=Dpkg::Use-Pty=0 -y ) &
->>>>>>> c30a43ba (Test workflow changes, and try to change linker for shadow build.)
-=======
-            ( sudo apt-get purge -qq -o=Dpkg::Use-Pty=0 -y man-db manpages manpages-dev 'aspnetcore-*' 'dotnet-*' 'llvm-*' '*php*' 'mongodb-*' 'mysql-*' azure-cli google-chrome-stable firefox powershell mono-devel libgl1-mesa-dri 'google-cloud-*' 'gcloud-*' &>/dev/null ; \
-            sudo apt-get autoremove -qq -o=Dpkg::Use-Pty=0 -y &>/dev/null) &
->>>>>>> 8a972713 (Adjust env variables.)
 
             git fetch origin
             git checkout "${{ inputs.branch || github.ref_name }}"
             git reset --hard "origin/${{ inputs.branch || github.ref_name }}"
             git log --oneline -10
             docker pull --platform "${PLATFORM}" "${CONTAINER}"
-            # Detection of /output/pkg_cache dir triggers setting
-            # CREW_CACHE_DIR=1 and CREW_CACHE_ENABLED=1 in the build
-            # container. Without these, upload fails.
-            mkdir /tmp/pkg_cache
             sudo setfacl -R -m u:1000:rwx .
-            sudo setfacl -R -m u:1000:rwx /tmp/pkg_cache
+
+            # Use docker-in-docker shim to mount volume inside docker.
+            # docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
+            # ghcr.io/felipecrs/dond-shim:latest \
+            # (cd /tmp || exit ; curl -OLf https://github.com/felipecrs/docker-on-docker-shim/raw/refs/tags/v0.7.1/dond ; chmod +x /tmp/dond )
+            # /tmp/dond run \
             # See https://github.com/containerd/containerd/pull/7566#issuecomment-1461134737 for why we set ulimit.
-            if [ -z ${CI+x} ]; then
-              echo "CI is not set."
-            else
-              CI_PASSTHROUGH=-e
-              CI_PASSTHROUGH+=" "
-              CI_PASSTHROUGH+=NESTED_CI=${CI}
-            fi
-            if [ -z ${CREW_MAX_BUILD_TIME+x} ]; then
-              echo "CREW_MAX_BUILD_TIME is not set."
-            else
-              CREW_MAX_BUILD_TIME_PASSTHROUGH=-e
-              CREW_MAX_BUILD_TIME_PASSTHROUGH+=" "
-              CREW_MAX_BUILD_TIME_PASSTHROUGH+=CREW_MAX_BUILD_TIME=${CREW_MAX_BUILD_TIME}
-            fi
             docker run \
               --rm \
               --platform "${PLATFORM}" \
-              -e PUID=1000 \
-              -e PGID=1000 \
               --privileged \
+              -u chronos \
+              -e LD_LIBRARY_PATH="/usr/local/lib${LIB_SUFFIX}" \
               -e GCONV_PATH="/usr/local/lib${LIB_SUFFIX}/gconv" \
-              -e CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES="${CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES}" \
               -e CREW_REPO="${CREW_REPO}" \
               -e CREW_BRANCH="${{ inputs.branch || github.ref_name }}" \
               -e GITLAB_TOKEN="${{ secrets.GITLAB_TOKEN }}" \
               -e GITLAB_TOKEN_USERNAME="${{ secrets.GITLAB_TOKEN_USERNAME }}" \
-              ${CI_PASSTHROUGH} \
-              ${CREW_MAX_BUILD_TIME_PASSTHROUGH} \
-              -v /tmp/pkg_cache:/usr/local/tmp/packages:rshared \
-              -v "$(pwd)":/output:rshared \
+              -v "$(pwd)":/output \
               --tmpfs /tmp \
               --ulimit "nofile=$(ulimit -Sn):$(ulimit -Hn)" \
               "${CONTAINER}" \
-              /bin/chromebrewstart "/output/tools/github_actions_update_builder.sh ${{ github.event.inputs.allow_fail == 'true' && '--continue-after-failed-builds' || ''}} ${{ github.event.inputs.rebuild_packages == 'true' && '--rebuild' || ''}}"  > >(tee -a /tmp/build.log) 2> >(tee -a /tmp/build.log >&2)
-              grep "Built and Uploaded:" /tmp/build.log || true
-              echo "Deleting build output directories."
-              sudo rm -rf release pkg_cache
-  build-check:
+              /bin/chromebrewstart /output/tools/github_actions_no_compile_updater.sh  > >(tee -a /tmp/update.log) 2> >(tee -a /tmp/update.log >&2)
+              grep "Updated:" /tmp/update.log || true
+              sudo rm -rf release
+      - name: Add updated packages to branch.
+        id: push-check
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "${{ github.actor }}"
+            git config user.email "${{ github.actor }}@users.noreply.github.com"
+            git stash || true
+            git pull
+            git stash pop || true
+            git add -A
+            git commit -m "${{ inputs.branch || github.ref_name }}: Package File Update Run on ${PLATFORM} container." && git push
+            git log --oneline -10
+          fi
+  update-check:
     runs-on: ubuntu-24.04
     needs:
       - setup
       - generate
     if: ${{ !cancelled() }}
     steps:
-      - name: Fail if update or build jobs failed, otherwise create a PR
+      - name: exit if update failed, otherwise create a PR
         if: ${{ contains(needs.*.result, 'failure') }}
         run: exit 1
-      - name: Report update & build success
-        run: echo "Update & build jobs succeeded."
+      - name: Report update success
+        run: echo "Update jobs succeeded. Creating a PR."
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+          ref: ${{ inputs.branch || github.ref_name }}
+      - name: Rebase to master and save git log
+        id: rebase-and-git-log
+        run: |
+            git config user.name "${{ github.actor }}"
+            git config user.email "${{ github.actor }}@users.noreply.github.com"
+            git fetch origin
+            git checkout "${{ inputs.branch || github.ref_name }}"
+            git reset --hard "origin/${{ inputs.branch || github.ref_name }}"
+            git pull --rebase origin master && git push -f
+            git log --oneline -10
+            git checkout master && git pull
+            git log --oneline master..${{ inputs.branch || github.ref_name }} | tr '\n' '\0' | xargs -0 -n1 echo "- $*" >> /tmp/commits.txt
+            git checkout "${{ inputs.branch || github.ref_name }}"
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v47
+        with:
+          base_sha: master
+          files_yaml: |
+            manifest:
+              - manifest/**
+            packages:
+              - packages/*.rb
+            github:
+              - .github/**
+            other:
+              - ./**
+              - '!manifest/**'
+              - '!packages/*.rb'
+              - '!.github/**'
+          since_last_remote_commit: true
       - name: Get GH Token
-        if: ${{ github.event.inputs.with_pr != 'No' }}
         id: get_workflow_token
         uses: peter-murray/workflow-application-token-action@v4
         with:
@@ -422,12 +367,70 @@ jobs:
           application_private_key: ${{ secrets.APPLICATION_PRIVATE_KEY }}
           organization: chromebrew
           revoke_token: true
-      - name: Trigger PR workflow
-        if: ${{ github.event.inputs.with_pr != 'No' }}
-        id: trigger-pr-workflow
+      - name: Create Pull Request
         env:
+          CHANGED_GITHUB_CONFIG_FILES: ${{ steps.changed-files.outputs.github_all_changed_files }}
+          CHANGED_MANIFEST_FILES: ${{ steps.changed-files.outputs.manifest_all_changed_files }}
+          CHANGED_OTHER_FILES: ${{ steps.changed-files.outputs.other_all_changed_files }}
+          CHANGED_PACKAGES: ${{ needs.setup.outputs.changed_packages }}
+          DRAFT_PR: ${{ github.event.inputs.draft_pr }}
           GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
-          PR_TITLE: ${{ inputs.pr_title || inputs.branch || github.ref_name }}
+          TIMESTAMP: ${{ needs.setup.outputs.timestamp }}
+          i686_PACKAGES: ${{ needs.setup.outputs.i686_packages }}
+          x86_64_PACKAGES: ${{ needs.setup.outputs.x86_64_packages }}
+          armv7l_PACKAGES: ${{ needs.setup.outputs.armv7l_packages }}
         run: |
-            echo "PR title being passed to the Generate PR workflow is: ${{ inputs.pr_title || inputs.branch || github.ref_name }}"
-            gh workflow run Generate-PR.yml -R ${{ github.repository }} -r ${{ inputs.branch || github.ref_name }} -f branch="${{ inputs.branch || github.ref_name }}" -f pr_label="${{ inputs.pr_label }}" -f draft_pr="${{ github.event.inputs.with_pr == 'Draft Pull Request' }}" -f pr_title="$(echo "${{ inputs.pr_title || inputs.branch || github.ref_name }}" | ( read -rsd '' x; echo ${x@Q} ))"
+          rm -rf /tmp/pr.txt
+          echo -e "## Description" >> /tmp/pr.txt
+          echo -e "- This PR was built using the No-Compile-Needed.yml workflow, which was pointed to the ${{ inputs.branch || github.ref_name }} branch.\n" >> /tmp/pr.txt
+          echo -e "#### Commits:" >> /tmp/pr.txt
+          # Get git log from rebase-and-git-log step.
+          cat /tmp/commits.txt >> /tmp/pr.txt
+          if [[ "${CHANGED_GITHUB_CONFIG_FILES}" != "" ]]; then
+            echo -e "### Updated GitHub configuration files:" >> /tmp/pr.txt
+            for file in ${CHANGED_GITHUB_CONFIG_FILES}
+              do
+              echo "- ${file}" >> /tmp/pr.txt
+            done
+          fi
+          if [[ "${CHANGED_PACKAGES}" != "" ]]; then
+            echo -e "### Packages with Updated versions or Changed package files:" >> /tmp/pr.txt
+            for file in ${CHANGED_PACKAGES}
+              do
+              echo "- ${file}" >> /tmp/pr.txt
+            done
+            echo -e "##\nBuilds attempted for:" >> /tmp/pr.txt
+            [ -n "${x86_64_PACKAGES}" ] && echo -e "- [x] \`x86_64\`" >> /tmp/pr.txt
+            [ -n "${i686_PACKAGES}" ] && echo -e "- [x] \`i686\`" >> /tmp/pr.txt
+            [ -n "${armv7l_PACKAGES}" ] && echo -e "- [x] \`armv7l\`" >> /tmp/pr.txt
+          fi
+          if [[ "${CHANGED_OTHER_FILES}" != "" ]]; then
+            echo -e "### Other changed files:" >> /tmp/pr.txt
+            for file in ${CHANGED_OTHER_FILES}
+              do
+              echo "- ${file}" >> /tmp/pr.txt
+            done
+          fi
+          if [[ "${CHANGED_MANIFEST_FILES}" == "" ]]; then
+            echo -e "##\n- [x] This PR has no manifest .filelist changes. _(Package changes have neither added nor removed files.)_" >> /tmp/pr.txt
+          fi
+          echo -e "##\n### Run the following to get this pull request's changes locally for testing.\n\`\`\`bash" >> /tmp/pr.txt
+          echo -e "CREW_REPO=https://github.com/chromebrew/chromebrew.git CREW_BRANCH=${{ inputs.branch || github.ref_name }} crew update \\" >> /tmp/pr.txt
+          echo -e "&& yes | crew upgrade\n\`\`\`" >> /tmp/pr.txt
+          cat /tmp/pr.txt
+          [[ $DRAFT_PR == 'true' ]] && export PR_DRAFT_FLAG='-d'
+          if [[ -z ${PR_NUMBER} ]]; then
+            PR_NUMBER=$(gh pr create ${PR_DRAFT_FLAG} --reviewer chromebrew/active --title "${{ inputs.branch || github.ref_name }}: Build for ${CHANGED_PACKAGES}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
+          else
+            gh pr edit --title "${{ inputs.branch || github.ref_name }}: Build for ${CHANGED_PACKAGES}" -F /tmp/pr.txt
+          fi
+          # Draft PRs can not be set to automerge.
+          if [[ $DRAFT_PR == 'true' ]]; then
+            gh pr ready --undo || true
+          else
+            gh pr merge --auto || true
+          fi
+          echo "PR_NUMBER is ${PR_NUMBER}"
+          echo "PR_NUMBER=${PR_NUMBER}" >> "$GITHUB_ENV"
+          # Trigger workflow run:
+          gh workflow run Unit-Test.yml ${PR_NUMBER}

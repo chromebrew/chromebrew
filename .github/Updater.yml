@@ -1,0 +1,26 @@
+---
+name: Generate Updates PR
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Daily
+  workflow_dispatch:
+env:
+  GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}  # setting GH_TOKEN for the entire workflow
+permissions:                    # Global permissions configuration starts here
+  actions: write
+  contents: write
+  packages: write
+  pull-requests: write          # 'write' access to pull requests
+jobs:
+  pip-update-checks:
+    if: ${{ github.repository_owner == 'chromebrew' }}
+    uses: ./.github/workflows/Updater-on-Demand.yml
+    secrets: inherit
+    with:
+      version_cmd_input: "py3_*"
+  gem-update-checks:
+    if: ${{ github.repository_owner == 'chromebrew' }}
+    uses: ./.github/workflows/Updater-on-Demand.yml
+    secrets: inherit
+    with:
+      version_cmd_input: "ruby_*"

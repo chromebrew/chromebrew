@@ -1,39 +1,25 @@
 ---
-name: Build
-run-name: Build ${{ inputs.branch || github.ref_name }} for ${{ inputs.build-on }} by @${{ github.actor }}
+name: Generate PR
+run-name: Generate PR for ${{ inputs.branch || github.ref_name }} by @${{ github.actor }}
 on:
   workflow_dispatch:
     inputs:
-      with_pr:
-        description: "Create a PR after building."
-        required: false
-        type: choice
-        default: 'Pull Request'
-        options:
-          - 'Pull Request'
-          - 'Draft Pull Request'
-          - 'No'
-      allow_fail:
-        description: "Allow packages to fail building."
-        required: false
-        type: boolean
-        default: 'false'
-      rebuild_packages:
-        description: "Rebuild packages even if they already have binaries."
+      draft_pr:
+        description: "Create a Draft PR."
         required: false
         type: boolean
         default: 'false'
       pr_title:
         description: "Title of PR"
         required: false
-      branch:
-        description: "Branch of chromebrew/chromebrew to run on, if different from this branch."
-        required: false
-      update_rebase_to_master:
-        description: "Update Branch."
+      update_package_files:
+        description: "Update Package Files."
         required: false
         type: boolean
         default: 'true'
+      branch:
+        description: "Branch of chromebrew/chromebrew to run on, if different from this branch."
+        required: false
       pr_label:
         description: "PR Label (Not Title)"
         required: false
@@ -42,11 +28,6 @@ on:
         required: false
         type: number
         default: 5.5
-      build-on:
-        description: "Architectures to build on"
-        default: 'i686 x86_64 armv7l'
-        type: string
-        required: false
 env:
   BRANCH: ${{ inputs.branch || github.ref_name }}
 permissions:
@@ -76,7 +57,6 @@ jobs:
     if: ${{ ( github.repository_owner == 'chromebrew' ) && ( inputs.branch != 'master' ) }}
     runs-on: ubuntu-24.04
     outputs:
-      timestamp: ${{ steps.set-timestamp.outputs.TIMESTAMP }}  # https://stackoverflow.com/a/75142892
       current_head: ${{ steps.get-current-head.outputs.CURRENT_HEAD }}
       changed_packages: ${{ steps.changed-packages.outputs.CHANGED_PACKAGES }}
       glibc_232_compat: ${{ steps.get-compatibility.outputs.GLIBC_232_COMPATIBLE_PACKAGES }}
@@ -86,12 +66,6 @@ jobs:
       armv7l_packages: ${{ steps.get-compatibility.outputs.armv7l_PACKAGES }}
       matrix: ${{ steps.set-generate-matrix.outputs.matrix }}
     steps:
-      - name: Set Timestamp
-        id: set-timestamp
-        run: |
-          TIMESTAMP="$(date -u +%F-%H%Z)"
-          export TIMESTAMP
-          echo "TIMESTAMP=${TIMESTAMP}" >> "$GITHUB_OUTPUT"
       - uses: actions/checkout@v5
         with:
           fetch-depth: 0
@@ -106,9 +80,15 @@ jobs:
           if [[ -n ${PR_NUMBER} ]]; then
             echo "Setting ${PR_NUMBER} to Draft while workflow runs."
             gh pr ready --undo || true
-            # Try to update branch before building if a PR already
-            # exists.
-            [[ "${{ ( inputs.update_rebase_to_master ) }}" == 'true' ]] && gh pr update-branch --rebase || true
+          fi
+          if [[ -n ${PR_NUMBER} ]]; then
+            # Try to update branch immediately.
+            gh pr update-branch || true
+          else
+            gh pr create -d -b WIP -t "WIP ${{ inputs.branch || github.ref_name }}"
+            # Create a draft PR and immediately try to update the branch
+            # before continuing.
+            gh pr update-branch || true
           fi
       - name: Get Current HEAD hash
         id: get-current-head
@@ -126,14 +106,16 @@ jobs:
           since_last_remote_commit: true
       - name: Export variables to github context
         id: changed-packages
+        env:
+          CHANGED_FILES: ${{ steps.changed-files.outputs.packages_all_changed_files }}
         run: |
-            if [[ -z "${{ steps.changed-files.outputs.packages_all_changed_files }}" ]]; then
-              echo "Branch ${{ inputs.branch || github.ref_name }} has no changed package files."
-              exit 1
+            if [[ -n "${CHANGED_FILES}" ]]; then
+              # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-files.outputs.packages_all_changed_files) into "foo bar"
+              echo "CHANGED_PACKAGES=$(echo "${CHANGED_FILES}" | xargs basename -s .rb | xargs)" >> "$GITHUB_ENV"
+              echo "CHANGED_PACKAGES=$(echo "${CHANGED_FILES}" | xargs basename -s .rb | xargs)" >> "$GITHUB_OUTPUT"
+            else
+              echo "No Changed Files."
             fi
-            # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-files.outputs.packages_all_changed_files) into "foo bar"
-            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-files.outputs.packages_all_changed_files }}" | xargs basename -s .rb | xargs)" >> "$GITHUB_ENV"
-            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-files.outputs.packages_all_changed_files }}" | xargs basename -s .rb | xargs)" >> "$GITHUB_OUTPUT"
       - name: Determine glibc and architecture package compatibility
         id: get-compatibility
         run: |
@@ -189,16 +171,16 @@ jobs:
           armv7l_PACKAGES: ${{ steps.get-compatibility.outputs.armv7l_PACKAGES }}
         run: |
           function join_by { local IFS="$1"; shift; echo "$*"; }
-          [[ "${{ ( inputs.build-on) }}" =~ "i686" ]] && [[ -n "${i686_PACKAGES}" ]] && export CONTAINER_ARCH+=( "\"i686\"" )
-          [[ "${{ ( inputs.build-on) }}" =~ "x86_64" ]] && [[ -n "${x86_64_PACKAGES}" ]] && export CONTAINER_ARCH+=( "\"x86_64\"" )
-          [[ "${{ ( inputs.build-on) }}" =~ "armv7l" ]] && [[ -n "${armv7l_PACKAGES}" ]] && export CONTAINER_ARCH+=( "\"armv7l\"" )
+          [[ -n "${i686_PACKAGES}" ]] && export CONTAINER_ARCH+=( "\"i686\"" )
+          # Always run workflow on the x86_64 container as a fallback.
+          export CONTAINER_ARCH+=( "\"x86_64\"" )
+          [[ -n "${armv7l_PACKAGES}" ]] && export CONTAINER_ARCH+=( "\"armv7l\"" )
           export ARCHES="$(join_by , "${CONTAINER_ARCH[@]}")"
           echo "matrix=[${ARCHES}]" >> $GITHUB_OUTPUT
           echo "matrix=[${ARCHES}]"
-  generate:
-    needs: setup
+  update-package-files:
     strategy:
-      fail-fast: false
+      max-parallel: 1
       matrix:
         arch: ${{ fromJSON(needs.setup.outputs.matrix) }}
         runner:
@@ -212,21 +194,25 @@ jobs:
           - arch: armv7l
             runner: ubuntu-24.04
     runs-on: ${{ matrix.runner }}
+    needs:
+      - setup
     env:
-      CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES: 1
       CREW_REPO: ${{ github.event.repository.clone_url }}
       CREW_BRANCH: ${{ inputs.branch || github.ref_name }}
       TARGET_ARCH: ${{ matrix.arch }}
-      TIMESTAMP: ${{ needs.setup.outputs.timestamp }}
       GLIBC_232_COMPATIBLE_PACKAGES: ${{ needs.setup.outputs.glibc_232_compat }}
       GLIBC_237_COMPATIBLE_PACKAGES: ${{ needs.setup.outputs.glibc_237_compat }}
       i686_PACKAGES: ${{ needs.setup.outputs.i686_packages }}
       x86_64_PACKAGES: ${{ needs.setup.outputs.x86_64_packages }}
       armv7l_PACKAGES: ${{ needs.setup.outputs.armv7l_packages }}
-    if: ${{ !cancelled() }}
+    if: ${{ !cancelled() && ( inputs.update_package_files ) && needs.setup.outputs.changed_packages }}
     concurrency:
       group: ${{ matrix.arch }}-${{ github.workflow }}-${{ inputs.branch || github.ref_name }}
+      cancel-in-progress: true
     steps:
+      - name: Fail if build jobs failed
+        if: ${{ contains(needs.*.result, 'failure') }}
+        run: exit 1
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
@@ -251,28 +237,6 @@ jobs:
         env:
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
         run: echo "$MATRIX_CONTEXT"
-<<<<<<< HEAD
-=======
-      #- name: Free Disk Space (Ubuntu)
-        #uses: BRAINSia/free-disk-space@v2
-        #with:
-          ## this might remove tools that are actually needed,
-          ## if set to "true" but frees about 6 GB
-          #tool-cache: false
-
-          ## all of these default to true, but feel free to set to
-          ## "false" if necessary for your workflow
-          #mandb: true
-          #android: true
-          #dotnet: true
-          #haskell: true
-          #large-packages: true
-          #docker-images: true
-          #swap-storage: true
->>>>>>> c30a43ba (Test workflow changes, and try to change linker for shadow build.)
-      - name: Build Container cleanup
-        run: |
-            sudo rm -rf release
       - uses: actions/checkout@v5
         with:
           fetch-depth: 0
@@ -313,10 +277,12 @@ jobs:
             esac
       - name: Run Updater in container
         id: run-updater
-        if: ${{ !cancelled() }}
+        if: ${{ ( inputs.update_package_files ) && ( contains(needs.*.result, 'failure') ||  !cancelled() ) }}
         env:
           CREW_MAX_BUILD_TIME_INPUT: ${{ inputs.max_build_time }}
+          UPDATE_PACKAGE_FILES: ${{ github.event.inputs.update_package_files }}
         run: |
+            [[ "$UPDATE_PACKAGE_FILES" == 'false' ]] && exit 0
             if [[ -n ${CREW_MAX_BUILD_TIME_INPUT} ]]; then
               # Convert CREW_MAX_BUILD_TIME_INPUT to seconds.
               CREW_MAX_BUILD_TIME="$(bc <<<"scale=0;$CREW_MAX_BUILD_TIME_INPUT*3600/1")"
@@ -338,19 +304,9 @@ jobs:
             fi
             # Container Cleanup
             # Adapted from https://github.com/BRAINSia/free-disk-space/blob/main/action.yml
-<<<<<<< HEAD
-<<<<<<< HEAD
             echo "Running some background container cleanups from BRAINSia/free-disk-space."
             ( sudo apt-get purge -qq -o=Dpkg::Use-Pty=0 -y man-db manpages manpages-dev 'aspnetcore-*' 'dotnet-*' 'llvm-*' '*php*' 'mongodb-*' 'mysql-*' azure-cli google-chrome-stable firefox powershell mono-devel libgl1-mesa-dri 'google-cloud-*' 'gcloud-*' &>/dev/null ; \
             sudo apt-get autoremove -qq -o=Dpkg::Use-Pty=0 -y &>/dev/null) &
-=======
-            ( sudo apt-get purge -qq -o=Dpkg::Use-Pty=0 -y man-db manpages manpages-dev 'aspnetcore-*' 'dotnet-*' 'llvm-*' '*php*' 'mongodb-*' 'mysql-*' azure-cli google-chrome-stable firefox powershell mono-devel libgl1-mesa-dri 'google-cloud-*' 'gcloud-*'  ; \
-            sudo apt-get autoremove -qq -o=Dpkg::Use-Pty=0 -y ) &
->>>>>>> c30a43ba (Test workflow changes, and try to change linker for shadow build.)
-=======
-            ( sudo apt-get purge -qq -o=Dpkg::Use-Pty=0 -y man-db manpages manpages-dev 'aspnetcore-*' 'dotnet-*' 'llvm-*' '*php*' 'mongodb-*' 'mysql-*' azure-cli google-chrome-stable firefox powershell mono-devel libgl1-mesa-dri 'google-cloud-*' 'gcloud-*' &>/dev/null ; \
-            sudo apt-get autoremove -qq -o=Dpkg::Use-Pty=0 -y &>/dev/null) &
->>>>>>> 8a972713 (Adjust env variables.)
 
             git fetch origin
             git checkout "${{ inputs.branch || github.ref_name }}"
@@ -397,24 +353,54 @@ jobs:
               --tmpfs /tmp \
               --ulimit "nofile=$(ulimit -Sn):$(ulimit -Hn)" \
               "${CONTAINER}" \
-              /bin/chromebrewstart "/output/tools/github_actions_update_builder.sh ${{ github.event.inputs.allow_fail == 'true' && '--continue-after-failed-builds' || ''}} ${{ github.event.inputs.rebuild_packages == 'true' && '--rebuild' || ''}}"  > >(tee -a /tmp/build.log) 2> >(tee -a /tmp/build.log >&2)
+              /bin/chromebrewstart "/output/tools/github_actions_update_builder.sh --continue-after-failed-builds"  > >(tee -a /tmp/build.log) 2> >(tee -a /tmp/build.log >&2)
               grep "Built and Uploaded:" /tmp/build.log || true
               echo "Deleting build output directories."
               sudo rm -rf release pkg_cache
+      - name: Add updated packages to branch.
+        id: push-check
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "${{ github.actor }}"
+            git config user.email "${{ github.actor }}@users.noreply.github.com"
+            git stash || true
+            git fetch origin ${{ inputs.branch || github.ref_name }}
+            git stash pop || true
+            git commit -am "${{ inputs.branch || github.ref_name }}: Package File Update Run on ${PLATFORM} container." && git push origin ${{ inputs.branch || github.ref_name }}
+            git log --oneline -10
+          fi
   build-check:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-24.04-arm
     needs:
       - setup
-      - generate
-    if: ${{ !cancelled() }}
+      - update-package-files
+    if: ${{ ( always() && !cancelled() ) && needs.setup.result == 'success' && ((( inputs.update_package_files ) && needs.update-package-files.result == 'success') || !( inputs.update_package_files )) }}
+    outputs:
+      changed_packages: ${{ steps.changed-packages.outputs.CHANGED_PACKAGES }}
+      current_head: ${{ steps.get-current-head.outputs.CURRENT_HEAD }}
     steps:
       - name: Fail if update or build jobs failed, otherwise create a PR
         if: ${{ contains(needs.*.result, 'failure') }}
         run: exit 1
       - name: Report update & build success
-        run: echo "Update & build jobs succeeded."
+        run: echo "Update & build jobs succeeded. Creating a PR."
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+          ref: ${{ inputs.branch || github.ref_name }}
+      - name: Install ruby-libversion  # Hopefully this will get added as an Ubuntu/Debian package. https://github.com/repology/libversion/issues/35
+        working-directory: ${{ runner.temp }}
+        run: |
+          git clone --depth 1 -b 3.0.4 https://github.com/repology/libversion
+          cd libversion
+          mkdir build
+          cd build
+          cmake ..
+          make -j "$(nproc)"
+          sudo make install
+          sudo gem install --no-update-sources -N ruby-libversion --conservative
       - name: Get GH Token
-        if: ${{ github.event.inputs.with_pr != 'No' }}
         id: get_workflow_token
         uses: peter-murray/workflow-application-token-action@v4
         with:
@@ -422,12 +408,180 @@ jobs:
           application_private_key: ${{ secrets.APPLICATION_PRIVATE_KEY }}
           organization: chromebrew
           revoke_token: true
-      - name: Trigger PR workflow
-        if: ${{ github.event.inputs.with_pr != 'No' }}
-        id: trigger-pr-workflow
+      - name: Save git log
+        id: save-git-log
         env:
           GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
-          PR_TITLE: ${{ inputs.pr_title || inputs.branch || github.ref_name }}
         run: |
-            echo "PR title being passed to the Generate PR workflow is: ${{ inputs.pr_title || inputs.branch || github.ref_name }}"
-            gh workflow run Generate-PR.yml -R ${{ github.repository }} -r ${{ inputs.branch || github.ref_name }} -f branch="${{ inputs.branch || github.ref_name }}" -f pr_label="${{ inputs.pr_label }}" -f draft_pr="${{ github.event.inputs.with_pr == 'Draft Pull Request' }}" -f pr_title="$(echo "${{ inputs.pr_title || inputs.branch || github.ref_name }}" | ( read -rsd '' x; echo ${x@Q} ))"
+          PR_NUMBER=$(gh pr list -L 1 -s open -H ${{ inputs.branch || github.ref_name }} | cut -f1)
+          if [[ -n ${PR_NUMBER} ]]; then
+            # Try to update branch immediately.
+            gh pr update-branch --rebase || true
+          else
+            gh pr create -d -b WIP -t "WIP ${{ inputs.branch || github.ref_name }}"
+            # Create a draft PR and immediately try to update the branch
+            # before continuing.
+            gh pr update-branch --rebase || true
+          fi
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git checkout master && git fetch origin master
+          git checkout "${{ inputs.branch || github.ref_name }}"
+          git fetch origin "${{ inputs.branch || github.ref_name }}"
+          git log --no-merges --oneline -10
+          git log --no-merges --oneline master..${{ inputs.branch || github.ref_name }} | grep -v "Merge branch 'master'\|Build Run on\|Package File Update Run on\|lint$" | tr '\n' '\0' | xargs -0 -n1 echo "- $*" >> /tmp/commits.txt
+      - name: Get Current HEAD hash
+        id: get-current-head
+        run: |
+          echo "CURRENT_HEAD=$(git ls-remote https://github.com/${{ github.repository }}.git | head -1 | sed 's/HEAD//')" >> "$GITHUB_OUTPUT"
+          echo "CURRENT_HEAD is $(git ls-remote https://github.com/${{ github.repository }}.git | head -1 | sed 's/HEAD//')"
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v47
+        with:
+          base_sha: ${{ steps.get-current-head.outputs.CURRENT_HEAD }}
+          files_yaml: |
+            manifest:
+              - manifest/**
+            packages:
+              - packages/*.rb
+            github:
+              - .github/**
+            other:
+              - ./**
+              - '!manifest/**'
+              - '!packages/*.rb'
+              - '!.github/**'
+      - name: Export variables to github context
+        id: changed-packages
+        env:
+          CHANGED_FILES: ${{ steps.changed-files.outputs.packages_all_changed_files }}
+        run: |
+            if [[ -n "${CHANGED_FILES}" ]]; then
+              # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-files.outputs.packages_all_changed_files) into "foo bar"
+              echo "CHANGED_PACKAGES=$(echo "${CHANGED_FILES}" | xargs basename -s .rb | xargs)" >> "$GITHUB_ENV"
+              echo "CHANGED_PACKAGES=$(echo "${CHANGED_FILES}" | xargs basename -s .rb | xargs)" >> "$GITHUB_OUTPUT"
+            else
+              echo "No Changed Files."
+            fi
+      - name: Create Pull Request
+        env:
+          CHANGED_GITHUB_CONFIG_FILES: ${{ steps.changed-files.outputs.github_all_changed_files }}
+          CHANGED_MANIFEST_FILES: ${{ steps.changed-files.outputs.manifest_all_changed_files }}
+          CHANGED_OTHER_FILES: ${{ steps.changed-files.outputs.other_all_changed_files }}
+          CHANGED_PACKAGES: ${{ steps.changed-packages.outputs.CHANGED_PACKAGES }}
+          CREW_BRANCH: ${{ inputs.branch || github.ref_name }}
+          DRAFT_PR: ${{ inputs.draft_pr }}
+          GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
+          PR_LABEL: ${{ inputs.pr_label }}
+          PR_TITLE: ${{ inputs.pr_title }}
+          i686_PACKAGES: ${{ needs.setup.outputs.i686_packages }}
+          x86_64_PACKAGES: ${{ needs.setup.outputs.x86_64_packages }}
+          armv7l_PACKAGES: ${{ needs.setup.outputs.armv7l_packages }}
+        run: |
+          # Make untouched clone of repo so we can get the existing versions of packages.
+          (cd /tmp ; git clone --depth=1 https://github.com/${{ github.repository }}.git chromebrew_main )
+          sudo gem install -N json --conservative
+          sudo gem install -N ptools --conservative
+          sudo gem install -N highline --conservative
+          sudo gem install -N concurrent-ruby --conservative
+          sudo gem install -N method_source --conservative
+          sudo gem install -N cgi --conservative
+          sudo gem install -N ruby-libversion --conservative
+          # Make crew do automatic gem installs before looking for deps.
+          LD_LIBRARY_PATH=/usr/local/lib ruby bin/crew version
+          # Force creation of temporary device.json.
+          LD_LIBRARY_PATH=/usr/local/lib ruby bin/crew deps zstd_static
+          function join_by { local IFS="$1"; shift; echo "$*"; }
+          rm -rf /tmp/pr.txt
+          echo -e "## Description" >> /tmp/pr.txt
+          echo -e "#### Commits:" >> /tmp/pr.txt
+          # Get git log from rebase-and-git-log step.
+          cat /tmp/commits.txt >> /tmp/pr.txt
+          if [[ "${CHANGED_GITHUB_CONFIG_FILES}" != "" ]]; then
+            echo -e "### Updated GitHub configuration files:" >> /tmp/pr.txt
+            for file in ${CHANGED_GITHUB_CONFIG_FILES}
+              do
+              echo "- ${file}" >> /tmp/pr.txt
+            done
+          fi
+          if [[ "${CHANGED_PACKAGES}" != "" ]]; then
+            echo -e "### Packages with Updated versions or Changed package files:" >> /tmp/pr.txt
+            for file in ${CHANGED_PACKAGES}
+              do
+              # Get version before PR, but do not let a broken version stop us.
+              main_version_string="$(cd /tmp/chromebrew_main ; LD_LIBRARY_PATH=/usr/local/lib ruby bin/crew version ${file} || true)"
+              [[ -n "$main_version_string" ]] && main_version_string=": $main_version_string"
+              pkg_version="$(LD_LIBRARY_PATH=/usr/local/lib ruby bin/crew version ${file})"
+              upstream_version="$(LD_LIBRARY_PATH=/usr/local/lib ruby tools/version.rb -j "${file}" | jq -r '.[]|.upstream_version' || true)"
+              if [[ -z "$pkg_version" ]]; then
+                echo "- \`${file}\`${main_version_string}" >> /tmp/pr.txt
+                PKG_DELTA+=( "${file}${main_version_string}" )
+              elif [[ -z "$upstream_version" ]]; then
+                echo "- \`${file}\`${main_version_string} &rarr; ${pkg_version}" >> /tmp/pr.txt
+                PKG_DELTA+=( "${file}${main_version_string} → ${pkg_version}" )
+              elif [[ "$pkg_version" == "$upstream_version" ]]; then
+                echo "- \`${file}\`${main_version_string} &rarr; ${pkg_version}" >> /tmp/pr.txt
+                PKG_DELTA+=( "${file}${main_version_string} → ${pkg_version}" )
+              else
+                echo "- \`${file}\`${main_version_string} &rarr; ${pkg_version} (current version is ${upstream_version})" >> /tmp/pr.txt
+                PKG_DELTA+=( "${file}${main_version_string} → ${pkg_version}" )
+              fi
+            done
+            echo -e "##\nBuilds attempted for:" >> /tmp/pr.txt
+            [ -n "${x86_64_PACKAGES}" ] && echo -e "- [x] \`x86_64\`" >> /tmp/pr.txt
+            [ -n "${i686_PACKAGES}" ] && echo -e "- [x] \`i686\`" >> /tmp/pr.txt
+            [ -n "${armv7l_PACKAGES}" ] && echo -e "- [x] \`armv7l\`" >> /tmp/pr.txt
+          fi
+          if [[ "${CHANGED_OTHER_FILES}" != "" ]]; then
+            echo -e "### Other changed files:" >> /tmp/pr.txt
+            for file in ${CHANGED_OTHER_FILES}
+              do
+              echo "- ${file}" >> /tmp/pr.txt
+            done
+          fi
+          if [[ "${CHANGED_MANIFEST_FILES}" == "" ]]; then
+            echo -e "##\n- [x] This PR has no manifest .filelist changes. _(Package changes have neither added nor removed files.)_" >> /tmp/pr.txt
+          fi
+          echo -e "##\n### Run the following to get this pull request's changes locally for testing.\n\`\`\`bash" >> /tmp/pr.txt
+          echo -e "CREW_REPO=https://github.com/${{ github.repository }}.git CREW_BRANCH=${{ inputs.branch || github.ref_name }} crew update \\" >> /tmp/pr.txt
+          echo -e "&& yes | crew upgrade\n\`\`\`" >> /tmp/pr.txt
+          [[ -n "${PKG_DELTA[*]}" ]] && PKG_DELTAS="— $(join_by , "${PKG_DELTA[@]}")"
+          echo "PKG_DELTAS: $PKG_DELTAS"
+          cat /tmp/pr.txt
+          PR_NUMBER=$(gh pr list -L 1 -s open -H ${{ inputs.branch || github.ref_name }} | cut -f1)
+          PR_TITLE_INPUT="${{ inputs.pr_title }}"
+          if [[ -z ${PR_TITLE_INPUT} ]]; then
+            PR_TITLE="$(git log --oneline master..${{ inputs.branch || github.ref_name }} | grep -v "Merge branch 'master'\|Build Run on\|Package File Update Run on" | tail -n 1 | cut -c 11-)"
+          else
+            PR_TITLE="${{ inputs.pr_title }}"
+          fi
+          echo "PR title is: $(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}"
+          if [[ -n "${PR_LABEL}" ]]; then
+              export PR_CREATE_LABEL_FLAG="--label ${{ inputs.pr_label }}"
+              export PR_EDIT_LABEL_FLAG="--add-label ${{ inputs.pr_label }}"
+          fi
+          if [[ -z ${PR_NUMBER} ]]; then
+            PR_NUMBER=$(gh pr create -d --reviewer chromebrew/active $PR_CREATE_LABEL_FLAG --title "$(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
+          else
+            gh pr edit --add-reviewer chromebrew/active $PR_EDIT_LABEL_FLAG --title "$(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}" -F /tmp/pr.txt
+          fi
+          # Try to update branch before finishing.
+          gh pr update-branch --rebase || true
+          # Check to see if the PR is marked as WIP, in which case it should stay as draft.
+          if gh pr list -l "wip 🚧" --json number | jq --arg PR_NUMBER "$PR_NUMBER"  -e -r '.[]|select(.number=='$PR_NUMBER')' &>/dev/null; then
+            echo "PR ${PR_NUMBER} is set as WIP, so will be set or kept as Draft."
+            export DRAFT_PR=true
+          fi
+          # Draft PRs can not be set to automerge.
+          if [[ ${DRAFT_PR} == 'true' ]]; then
+            gh pr ready --undo || true
+          else
+            gh pr ready || true
+            gh pr merge --auto || true
+          fi
+          echo "PR_NUMBER is ${PR_NUMBER}"
+          echo "PR_NUMBER=${PR_NUMBER}" >> "$GITHUB_ENV"
+          # Trigger workflow runs:
+          # gh workflow run Unit-Test.yml -R ${{ github.repository }} -r ${{ inputs.branch || github.ref_name }}
+          # gh workflow run Linter-Handoff.yml -R ${{ github.repository }} -r ${{ inputs.branch || github.ref_name }}

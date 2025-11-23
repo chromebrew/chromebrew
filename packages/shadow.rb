@@ -17,13 +17,19 @@ class Shadow < Autotools
      x86_64: '3074d0d8cbfb2d807d5e5e9993a2429ac43391a085eadbcd95a9ed12ceeb391a'
   })
 
-  depends_on 'linux_pam' => :build
   depends_on 'acl' # R
   depends_on 'attr' # R
   depends_on 'glibc' # R
+  depends_on 'libbsd' => :build
   depends_on 'libeconf' # R
   depends_on 'libxcrypt' => :build
+  depends_on 'linux_pam' => :build
 
+  # ENV['CREW_LINKER_FLAGS'] = '-Wl,--undefined-version'
+  no_env_options
+  no_mold
+
+  autotools_pre_configure_options 'LD=ld.bfd CCLD=ld.bfd CXXLD=ld.bfd'
   autotools_configure_options "--bindir=#{CREW_PREFIX}/bin \
       --sbindir=#{CREW_PREFIX}/bin \
       --enable-shared \
