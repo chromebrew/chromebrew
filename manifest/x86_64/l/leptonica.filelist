@@ -1,4 +1,4 @@
-# Total size: 3623017
+# Total size: 3623030
 /usr/local/include/leptonica/allheaders.h
 /usr/local/include/leptonica/alltypes.h
 /usr/local/include/leptonica/array.h
@@ -35,11 +35,11 @@
 /usr/local/include/leptonica/stringcode.h
 /usr/local/include/leptonica/sudoku.h
 /usr/local/include/leptonica/watershed.h
-/usr/local/lib/libleptonica.so
-/usr/local/lib/libleptonica.so.6
-/usr/local/lib/libleptonica.so.6.0.0
 /usr/local/lib64/cmake/leptonica/LeptonicaConfig-version.cmake
 /usr/local/lib64/cmake/leptonica/LeptonicaConfig.cmake
 /usr/local/lib64/cmake/leptonica/LeptonicaTargets-release.cmake
 /usr/local/lib64/cmake/leptonica/LeptonicaTargets.cmake
+/usr/local/lib64/libleptonica.so
+/usr/local/lib64/libleptonica.so.6
+/usr/local/lib64/libleptonica.so.6.0.0
 /usr/local/lib64/pkgconfig/lept.pc

@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Leptonica < Package
+class Leptonica < CMake
   description 'Software that is broadly useful for image processing and image analysis applications'
   homepage 'http://www.leptonica.org'
-  version '1.86.0'
+  version '1.87.0-pre1'
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/DanBloomberg/leptonica.git'
@@ -11,9 +11,9 @@ class Leptonica < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9293c5934af118d2ab4282ad14871d4b3113da58df5f207b3761a3cffddf4cea',
-     armv7l: '9293c5934af118d2ab4282ad14871d4b3113da58df5f207b3761a3cffddf4cea',
-     x86_64: '8aec7395faa2f5de04c495fd9a96d7874b97ee6221b726bd715f2fb172f53b9d'
+    aarch64: 'ce467a8ce915951e6a579ef134bb92c9ed82e5b7000db9c65a81cfa2b3ec27cd',
+     armv7l: 'ce467a8ce915951e6a579ef134bb92c9ed82e5b7000db9c65a81cfa2b3ec27cd',
+     x86_64: '77166ed2e0b882ccabe95844007027a4907dce27bbcc67fb17b4107d6cae62c4'
   })
 
   depends_on 'giflib' # R
@@ -29,24 +29,5 @@ class Leptonica < Package
   depends_on 'zlib' # R
   depends_on 'zstd' => :build
 
-  def self.patch
-    # See https://github.com/DanBloomberg/leptonica/issues/693
-    system "sed -i 's,lib/cmake/leptonica,#{ARCH_LIB}/cmake/leptonica,g' CMakeLists.txt"
-    system "sed -i 's,lib/pkgconfig,#{ARCH_LIB}/pkgconfig,g' CMakeLists.txt"
-    system "sed -i 's,prefix}/lib,prefix}/#{ARCH_LIB},g' lept.pc.cmake"
-    system "sed -i 's,set(lib,set(#{ARCH_LIB},g' src/CMakeLists.txt"
-    system "sed -i 's,DESTINATION lib ARCHIVE DESTINATION lib,DESTINATION #{ARCH_LIB} ARCHIVE DESTINATION #{ARCH_LIB},g' src/CMakeLists.txt"
-  end
-
-  def self.build
-    system "cmake -B builddir #{CREW_CMAKE_OPTIONS} \
-        -DBUILD_SHARED_LIBS=ON \
-        -Wno-dev \
-        -G Ninja"
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+  cmake_options '-DBUILD_SHARED_LIBS=ON'
 end
