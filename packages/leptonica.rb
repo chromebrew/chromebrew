@@ -11,9 +11,9 @@ class Leptonica < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6be82c3a3cbbd6aded7690f2d5f7f8b7b035976161d774239a0dfa3f90fb3280',
-     armv7l: '6be82c3a3cbbd6aded7690f2d5f7f8b7b035976161d774239a0dfa3f90fb3280',
-     x86_64: '8f1ece00717612eb72e72484be71823920c209d7b236de0b740c9a08d5aaf43b'
+    aarch64: '9293c5934af118d2ab4282ad14871d4b3113da58df5f207b3761a3cffddf4cea',
+     armv7l: '9293c5934af118d2ab4282ad14871d4b3113da58df5f207b3761a3cffddf4cea',
+     x86_64: '8aec7395faa2f5de04c495fd9a96d7874b97ee6221b726bd715f2fb172f53b9d'
   })
 
   depends_on 'giflib' # R
