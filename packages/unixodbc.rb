@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Unixodbc < Autotools
   description 'ODBC is an open specification for providing application developers with a predictable API with which to access Data Sources.'
   homepage 'https://www.unixodbc.org/'
-  version '2.3.12'
+  version '2.3.14'
   license 'LGPL-2+'
   compatibility 'all'
   source_url "https://www.unixodbc.org/unixODBC-#{version}.tar.gz"
-  source_sha256 'f210501445ce21bf607ba51ef8c125e10e22dffdffec377646462df5f01915ec'
+  source_sha256 '4e2814de3e01fc30b0b9f75e83bb5aba91ab0384ee951286504bb70205524771'
   binary_compression 'tar.zst'
 
   binary_sha256({
