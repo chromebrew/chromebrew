@@ -5,7 +5,7 @@ class Libvpx < Package
   homepage 'https://www.webmproject.org/code/'
   version '1.15.2'
   license 'BSD'
-  compatibility 'all'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://chromium.googlesource.com/webm/libvpx.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Libvpx < Package
   binary_sha256({
     aarch64: '32f4ebce8271fc686b711bc48d601077c07a510a9e68b5c4aa6faa3ae85bd4a3',
      armv7l: '32f4ebce8271fc686b711bc48d601077c07a510a9e68b5c4aa6faa3ae85bd4a3',
-       i686: 'ebdfb3a4e7567d6e359935d8e24d28bdf4533ea119c5d70f6716f2c74aa7b07f',
      x86_64: 'ef9b3e27b231f7546402442a04489b53aa8724c396dcbc6abc4e43b8a32080cd'
   })
 
