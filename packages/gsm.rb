@@ -17,11 +17,6 @@ class Gsm < Package
      x86_64: '791c1a029c92f1839398617a1b1633e960a21c58ac45b19ad057b0ef0d3ddcfe'
   })
 
-  def self.patch
-    # Patch from https://github.com/archlinux/svntogit-packages/blob/master/gsm/trunk/gsm-shared.patch
-    system 'curl -Ls https://github.com/archlinux/svntogit-packages/raw/c5a7dd7fe79daea817539ae8315a7cd8eb9cced7/gsm/trunk/gsm-shared.patch | patch -b'
-  end
-
   def self.build
     system "env CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
         LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
