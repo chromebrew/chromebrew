@@ -11,11 +11,13 @@ class Unixodbc < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a96a7d082d04ad0df1f5a509d30f75072696773662345afddd57d2e8d5d46cff',
-     armv7l: 'a96a7d082d04ad0df1f5a509d30f75072696773662345afddd57d2e8d5d46cff',
-       i686: 'fb62c1ad09e31efc8653afcbea8219630c62c953321749821af0f9b670998564',
-     x86_64: '3a54dac313893c8a2aa8ec263a1b28884ec184f72e54e941fe68d923d618d124'
+    aarch64: '6e2e6db704f11213d0ca3881077617bb5d92b3361f21ab06840d63f80e24b89f',
+     armv7l: '6e2e6db704f11213d0ca3881077617bb5d92b3361f21ab06840d63f80e24b89f',
+       i686: 'a488fb1187c3d3cb474f30ba278cbedf26a2b28faa05a1456a6b0847ddf9866a',
+     x86_64: '59146420f716e3e9fda502642185b3662d57373c217cf3e7d625c38c02ee755b'
   })
 
   depends_on 'glibc' # R
+  depends_on 'libtool' # R
+  depends_on 'readline' # R
 end
