@@ -1,15 +1,33 @@
-# Total size: 1238669
+# Total size: 1529370
 /usr/local/bin/heif-convert
 /usr/local/bin/heif-dec
 /usr/local/bin/heif-enc
 /usr/local/bin/heif-info
 /usr/local/bin/heif-thumbnailer
+/usr/local/bin/heif-view
 /usr/local/include/libheif/heif.h
+/usr/local/include/libheif/heif_aux_images.h
+/usr/local/include/libheif/heif_brands.h
+/usr/local/include/libheif/heif_color.h
+/usr/local/include/libheif/heif_context.h
 /usr/local/include/libheif/heif_cxx.h
+/usr/local/include/libheif/heif_decoding.h
+/usr/local/include/libheif/heif_encoding.h
+/usr/local/include/libheif/heif_entity_groups.h
+/usr/local/include/libheif/heif_error.h
+/usr/local/include/libheif/heif_image.h
+/usr/local/include/libheif/heif_image_handle.h
 /usr/local/include/libheif/heif_items.h
+/usr/local/include/libheif/heif_library.h
+/usr/local/include/libheif/heif_metadata.h
 /usr/local/include/libheif/heif_plugin.h
 /usr/local/include/libheif/heif_properties.h
 /usr/local/include/libheif/heif_regions.h
+/usr/local/include/libheif/heif_security.h
+/usr/local/include/libheif/heif_sequences.h
+/usr/local/include/libheif/heif_tai_timestamps.h
+/usr/local/include/libheif/heif_tiling.h
+/usr/local/include/libheif/heif_uncompressed.h
 /usr/local/include/libheif/heif_version.h
 /usr/local/lib/cmake/libheif/libheif-config-release.cmake
 /usr/local/lib/cmake/libheif/libheif-config-version.cmake
@@ -17,7 +35,7 @@
 /usr/local/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-heif.so
 /usr/local/lib/libheif.so
 /usr/local/lib/libheif.so.1
-/usr/local/lib/libheif.so.1.19.8
+/usr/local/lib/libheif.so.1.20.2
 /usr/local/lib/pkgconfig/libheif.pc
 /usr/local/share/man/man1/heif-dec.1.zst
 /usr/local/share/man/man1/heif-enc.1.zst
