@@ -375,7 +375,7 @@ jobs:
             git log --oneline -10
           fi
   build-check:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-24.04-arm
     needs:
       - setup
       - update-package-files
