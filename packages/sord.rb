@@ -22,7 +22,6 @@ class Sord < Meson
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'pcre' # R
   depends_on 'pcre2' # R
   depends_on 'serd' # R
   depends_on 'zix' # R
