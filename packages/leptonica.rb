@@ -3,11 +3,11 @@ require 'buildsystems/cmake'
 class Leptonica < CMake
   description 'Software that is broadly useful for image processing and image analysis applications'
   homepage 'http://www.leptonica.org'
-  version '1.86.0-1'
+  version '1.87.0-pre1'
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/DanBloomberg/leptonica.git'
-  git_hashtag version.split('-').first
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
