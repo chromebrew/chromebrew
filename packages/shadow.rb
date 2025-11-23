@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Shadow < Package
+class Shadow < Autotools
   description 'Shadow password file utilities'
   homepage 'https://github.com/shadow-maint/shadow'
   version '4.18.0'
@@ -17,15 +17,14 @@ class Shadow < Package
      x86_64: '3074d0d8cbfb2d807d5e5e9993a2429ac43391a085eadbcd95a9ed12ceeb391a'
   })
 
-  depends_on 'linux_pam'
+  depends_on 'linux_pam' => :build
   depends_on 'acl' # R
   depends_on 'attr' # R
   depends_on 'glibc' # R
   depends_on 'libeconf' # R
+  depends_on 'libxcrypt' => :build
 
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS} \
-      --bindir=#{CREW_PREFIX}/bin \
+  autotools_configure_options "--bindir=#{CREW_PREFIX}/bin \
       --sbindir=#{CREW_PREFIX}/bin \
       --enable-shared \
       --with-libpam \
@@ -35,11 +34,8 @@ class Shadow < Package
       --disable-nls \
       --enable-subordinate-ids \
       --disable-account-tools-setuid"
-    system 'make'
-  end
 
-  def self.install
-    system "make install DESTDIR=#{CREW_DEST_DIR}"
+  autotools_install_extras do
     # Handle conflicts with coreutils.
     @conflicts = %w[login su chfn chsh groups]
     @conflicts.each do |conflict_file|
