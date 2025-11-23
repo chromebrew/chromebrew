@@ -9,7 +9,7 @@ class Serd < Meson
   version '0.32.6'
   license 'ISC'
   compatibility 'all'
-  source_url 'https://github.com/drobilla/serd.git'
+  source_url 'https://gitlab.com/drobilla/serd.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
