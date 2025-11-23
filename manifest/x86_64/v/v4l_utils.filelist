@@ -1,4 +1,4 @@
-# Total size: 11004151
+# Total size: 10767017
 /usr/local/bin/cec-compliance
 /usr/local/bin/cec-ctl
 /usr/local/bin/cec-follower
@@ -263,14 +263,11 @@
 /usr/local/share/doc/v4l-utils/html/atsc__header_8h.html
 /usr/local/share/doc/v4l-utils/html/atsc__header_8h.js
 /usr/local/share/doc/v4l-utils/html/atsc__header_8h_source.html
-/usr/local/share/doc/v4l-utils/html/bc_s.png
-/usr/local/share/doc/v4l-utils/html/bc_sd.png
 /usr/local/share/doc/v4l-utils/html/cat_8h.html
 /usr/local/share/doc/v4l-utils/html/cat_8h.js
 /usr/local/share/doc/v4l-utils/html/cat_8h_source.html
 /usr/local/share/doc/v4l-utils/html/classes.html
 /usr/local/share/doc/v4l-utils/html/clipboard.js
-/usr/local/share/doc/v4l-utils/html/closed.png
 /usr/local/share/doc/v4l-utils/html/cookie.js
 /usr/local/share/doc/v4l-utils/html/countries_8h.html
 /usr/local/share/doc/v4l-utils/html/countries_8h.js
@@ -348,8 +345,6 @@
 /usr/local/share/doc/v4l-utils/html/dir_c646299a839a903320bc6bb547c87725.html
 /usr/local/share/doc/v4l-utils/html/dir_c646299a839a903320bc6bb547c87725.js
 /usr/local/share/doc/v4l-utils/html/dir_e68e8157741866f444e17edd764ebbae.html
-/usr/local/share/doc/v4l-utils/html/doc.svg
-/usr/local/share/doc/v4l-utils/html/docd.svg
 /usr/local/share/doc/v4l-utils/html/doxygen.css
 /usr/local/share/doc/v4l-utils/html/doxygen.svg
 /usr/local/share/doc/v4l-utils/html/doxygen_crawl.html
@@ -390,10 +385,6 @@
 /usr/local/share/doc/v4l-utils/html/examples.js
 /usr/local/share/doc/v4l-utils/html/files.html
 /usr/local/share/doc/v4l-utils/html/files_dup.js
-/usr/local/share/doc/v4l-utils/html/folderclosed.svg
-/usr/local/share/doc/v4l-utils/html/folderclosedd.svg
-/usr/local/share/doc/v4l-utils/html/folderopen.svg
-/usr/local/share/doc/v4l-utils/html/folderopend.svg
 /usr/local/share/doc/v4l-utils/html/functions.html
 /usr/local/share/doc/v4l-utils/html/functions_a.html
 /usr/local/share/doc/v4l-utils/html/functions_b.html
@@ -529,8 +520,6 @@
 /usr/local/share/doc/v4l-utils/html/mgt_8h.html
 /usr/local/share/doc/v4l-utils/html/mgt_8h.js
 /usr/local/share/doc/v4l-utils/html/mgt_8h_source.html
-/usr/local/share/doc/v4l-utils/html/minus.svg
-/usr/local/share/doc/v4l-utils/html/minusd.svg
 /usr/local/share/doc/v4l-utils/html/mpeg__es_8h.html
 /usr/local/share/doc/v4l-utils/html/mpeg__es_8h.js
 /usr/local/share/doc/v4l-utils/html/mpeg__es_8h_source.html
@@ -540,11 +529,6 @@
 /usr/local/share/doc/v4l-utils/html/mpeg__ts_8h.html
 /usr/local/share/doc/v4l-utils/html/mpeg__ts_8h.js
 /usr/local/share/doc/v4l-utils/html/mpeg__ts_8h_source.html
-/usr/local/share/doc/v4l-utils/html/nav_f.png
-/usr/local/share/doc/v4l-utils/html/nav_fd.png
-/usr/local/share/doc/v4l-utils/html/nav_g.png
-/usr/local/share/doc/v4l-utils/html/nav_h.png
-/usr/local/share/doc/v4l-utils/html/nav_hd.png
 /usr/local/share/doc/v4l-utils/html/navtree.css
 /usr/local/share/doc/v4l-utils/html/navtree.js
 /usr/local/share/doc/v4l-utils/html/navtreedata.js
@@ -558,22 +542,16 @@
 /usr/local/share/doc/v4l-utils/html/nit_8h.html
 /usr/local/share/doc/v4l-utils/html/nit_8h.js
 /usr/local/share/doc/v4l-utils/html/nit_8h_source.html
-/usr/local/share/doc/v4l-utils/html/open.png
 /usr/local/share/doc/v4l-utils/html/pages.html
 /usr/local/share/doc/v4l-utils/html/pat_8h.html
 /usr/local/share/doc/v4l-utils/html/pat_8h.js
 /usr/local/share/doc/v4l-utils/html/pat_8h_source.html
-/usr/local/share/doc/v4l-utils/html/plus.svg
-/usr/local/share/doc/v4l-utils/html/plusd.svg
 /usr/local/share/doc/v4l-utils/html/pmt_8h.html
 /usr/local/share/doc/v4l-utils/html/pmt_8h.js
 /usr/local/share/doc/v4l-utils/html/pmt_8h_source.html
-/usr/local/share/doc/v4l-utils/html/resize.js
 /usr/local/share/doc/v4l-utils/html/sdt_8h.html
 /usr/local/share/doc/v4l-utils/html/sdt_8h.js
 /usr/local/share/doc/v4l-utils/html/sdt_8h_source.html
-/usr/local/share/doc/v4l-utils/html/splitbar.png
-/usr/local/share/doc/v4l-utils/html/splitbard.png
 /usr/local/share/doc/v4l-utils/html/structatsc__desc__service__location.html
 /usr/local/share/doc/v4l-utils/html/structatsc__desc__service__location.js
 /usr/local/share/doc/v4l-utils/html/structatsc__desc__service__location__elementary.html
@@ -717,16 +695,6 @@
 /usr/local/share/doc/v4l-utils/html/structisdbt__desc__terrestrial__delivery__system.js
 /usr/local/share/doc/v4l-utils/html/structts__t.html
 /usr/local/share/doc/v4l-utils/html/structts__t.js
-/usr/local/share/doc/v4l-utils/html/sync_off.png
-/usr/local/share/doc/v4l-utils/html/sync_on.png
-/usr/local/share/doc/v4l-utils/html/tab_a.png
-/usr/local/share/doc/v4l-utils/html/tab_ad.png
-/usr/local/share/doc/v4l-utils/html/tab_b.png
-/usr/local/share/doc/v4l-utils/html/tab_bd.png
-/usr/local/share/doc/v4l-utils/html/tab_h.png
-/usr/local/share/doc/v4l-utils/html/tab_hd.png
-/usr/local/share/doc/v4l-utils/html/tab_s.png
-/usr/local/share/doc/v4l-utils/html/tab_sd.png
 /usr/local/share/doc/v4l-utils/html/tabs.css
 /usr/local/share/doc/v4l-utils/html/todo.html
 /usr/local/share/doc/v4l-utils/html/topics.html
