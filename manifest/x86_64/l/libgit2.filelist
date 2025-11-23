@@ -1,5 +1,5 @@
-# Total size: 3372082
-/usr/local/bin/git2_cli
+# Total size: 3596151
+/usr/local/bin/git2
 /usr/local/include/git2.h
 /usr/local/include/git2/annotated_commit.h
 /usr/local/include/git2/apply.h
@@ -23,6 +23,7 @@
 /usr/local/include/git2/diff.h
 /usr/local/include/git2/email.h
 /usr/local/include/git2/errors.h
+/usr/local/include/git2/experimental.h
 /usr/local/include/git2/filter.h
 /usr/local/include/git2/global.h
 /usr/local/include/git2/graph.h
@@ -68,6 +69,7 @@
 /usr/local/include/git2/sys/credential.h
 /usr/local/include/git2/sys/diff.h
 /usr/local/include/git2/sys/email.h
+/usr/local/include/git2/sys/errors.h
 /usr/local/include/git2/sys/filter.h
 /usr/local/include/git2/sys/hashsig.h
 /usr/local/include/git2/sys/index.h
@@ -78,7 +80,6 @@
 /usr/local/include/git2/sys/openssl.h
 /usr/local/include/git2/sys/path.h
 /usr/local/include/git2/sys/refdb_backend.h
-/usr/local/include/git2/sys/reflog.h
 /usr/local/include/git2/sys/refs.h
 /usr/local/include/git2/sys/remote.h
 /usr/local/include/git2/sys/repository.h
@@ -92,7 +93,11 @@
 /usr/local/include/git2/types.h
 /usr/local/include/git2/version.h
 /usr/local/include/git2/worktree.h
+/usr/local/lib64/cmake/libgit2/libgit2Config.cmake
+/usr/local/lib64/cmake/libgit2/libgit2ConfigVersion.cmake
+/usr/local/lib64/cmake/libgit2/libgit2Targets-release.cmake
+/usr/local/lib64/cmake/libgit2/libgit2Targets.cmake
 /usr/local/lib64/libgit2.so
-/usr/local/lib64/libgit2.so.1.5
-/usr/local/lib64/libgit2.so.1.5.1
+/usr/local/lib64/libgit2.so.1.9
+/usr/local/lib64/libgit2.so.1.9.1
 /usr/local/lib64/pkgconfig/libgit2.pc
