@@ -1,4 +1,4 @@
-# Total size: 294633431
+# Total size: 293576667
 /usr/local/bin/jar
 /usr/local/bin/jarsigner
 /usr/local/bin/java
@@ -33,6 +33,31 @@
 /usr/local/bin/unpack200
 /usr/local/etc/env.d/10-openjdk11
 /usr/local/share/man/ja
+/usr/local/share/man/ja/man1/jar.1.zst
+/usr/local/share/man/ja/man1/jarsigner.1.zst
+/usr/local/share/man/ja/man1/java.1.zst
+/usr/local/share/man/ja/man1/javac.1.zst
+/usr/local/share/man/ja/man1/javadoc.1.zst
+/usr/local/share/man/ja/man1/javap.1.zst
+/usr/local/share/man/ja/man1/jcmd.1.zst
+/usr/local/share/man/ja/man1/jconsole.1.zst
+/usr/local/share/man/ja/man1/jdb.1.zst
+/usr/local/share/man/ja/man1/jdeps.1.zst
+/usr/local/share/man/ja/man1/jinfo.1.zst
+/usr/local/share/man/ja/man1/jjs.1.zst
+/usr/local/share/man/ja/man1/jmap.1.zst
+/usr/local/share/man/ja/man1/jps.1.zst
+/usr/local/share/man/ja/man1/jrunscript.1.zst
+/usr/local/share/man/ja/man1/jstack.1.zst
+/usr/local/share/man/ja/man1/jstat.1.zst
+/usr/local/share/man/ja/man1/jstatd.1.zst
+/usr/local/share/man/ja/man1/keytool.1.zst
+/usr/local/share/man/ja/man1/pack200.1.zst
+/usr/local/share/man/ja/man1/rmic.1.zst
+/usr/local/share/man/ja/man1/rmid.1.zst
+/usr/local/share/man/ja/man1/rmiregistry.1.zst
+/usr/local/share/man/ja/man1/serialver.1.zst
+/usr/local/share/man/ja/man1/unpack200.1.zst
 /usr/local/share/man/ja_JP.UTF-8/man1/jar.1.zst
 /usr/local/share/man/ja_JP.UTF-8/man1/jarsigner.1.zst
 /usr/local/share/man/ja_JP.UTF-8/man1/java.1.zst
