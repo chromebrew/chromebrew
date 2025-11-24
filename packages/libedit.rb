@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libedit < Package
+class Libedit < Autotools
   description 'An autotooled and libtoolized port of the NetBSD Editline library (libedit).'
   homepage 'https://thrysoee.dk/editline/'
   version '20251016-3.1'
@@ -20,19 +20,6 @@ class Libedit < Package
   depends_on 'glibc' # R
   depends_on 'ncurses' # R
 
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS} \
-            CPPFLAGS=\"-I#{CREW_PREFIX}/include/ncursesw\""
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    # Remove conflict with readline
-    FileUtils.rm_f "#{CREW_DEST_MAN_PREFIX}/man3/history.3"
-  end
-
-  def self.check
-    system 'make', 'check'
-  end
+  autotools_configure_options "CPPFLAGS=-I#{CREW_PREFIX}/include/ncursesw"
+  run_tests
 end
