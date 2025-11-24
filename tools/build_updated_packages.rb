@@ -300,7 +300,7 @@ updated_packages.each do |pkg|
         Process.kill('HUP', actions_timed_killer) if ENV['NESTED_CI']
         # Reinvoke this script to take just built packages that have been built and
         # installed into account, attempting uploads of just built packages immediately.
-        cmdline = "cd #{`pwd`.chomp} && crew upload #{name} ; #{$PROGRAM_NAME} #{ARGV.join(' ')}"
+        cmdline = "cd #{`pwd`.chomp} && crew upload #{name} #{'--force' if REBUILD_PACKAGES} ; #{$PROGRAM_NAME} #{ARGV.join(' ')}"
         puts "cmdline is #{cmdline}"
         exec cmdline
       end
