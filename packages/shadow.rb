@@ -26,12 +26,14 @@ class Shadow < Autotools
   depends_on 'linux_pam' => :build
 
   # ENV['CREW_LINKER_FLAGS'] = '-Wl,--undefined-version'
-  no_env_options
+  # no_env_options
   no_mold
 
-  autotools_pre_configure_options 'LD=ld.bfd CCLD=ld.bfd CXXLD=ld.bfd'
+  # autotools_pre_configure_options 'LD=ld.bfd CCLD=ld.bfd CXXLD=ld.bfd'
+  autotools_pre_configure_options 'env ;'
   autotools_configure_options "--bindir=#{CREW_PREFIX}/bin \
       --sbindir=#{CREW_PREFIX}/bin \
+      --disable-logind \
       --enable-shared \
       --with-libpam \
       --without-selinux \

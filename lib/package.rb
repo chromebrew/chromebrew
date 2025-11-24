@@ -403,12 +403,12 @@ class Package
     # CC_LD and CXX_LD are needed by meson to override mold being
     # detected and used by default.
     env['CC_LD']                             = if @no_mold
-                                                 CREW_LINKER == 'mold' ? 'bfd' : CREW_LINKER
+                                                 CREW_LINKER == 'mold' ? 'ld.bfd' : CREW_LINKER
                                                else
                                                  CREW_LINKER
                                                end
     env['CXX_LD']                            = if @no_mold
-                                                 CREW_LINKER == 'mold' ? 'bfd' : CREW_LINKER
+                                                 CREW_LINKER == 'mold' ? 'ld.bfd' : CREW_LINKER
                                                else
                                                  CREW_LINKER
                                                end
