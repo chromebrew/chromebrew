@@ -42,6 +42,7 @@ class Wget2 < Autotools
                   --with-lzma'
 
   def self.patch
+    system './bootstrap'
     system 'autoreconf -fiv'
   end
 
