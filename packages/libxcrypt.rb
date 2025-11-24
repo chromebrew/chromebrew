@@ -22,6 +22,6 @@ class Libxcrypt < Autotools
 
   conflicts_ok
 
-  ENV['CREW_LINKER'] = 'lld'
+  # ENV['CREW_LINKER'] = 'lld'
   # run_tests
 end
