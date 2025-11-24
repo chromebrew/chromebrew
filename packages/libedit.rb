@@ -11,10 +11,10 @@ class Libedit < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'df991d3222c3861376796273e2cac18c23a5b3f909b3fe13d13ae794776a4335',
-     armv7l: 'df991d3222c3861376796273e2cac18c23a5b3f909b3fe13d13ae794776a4335',
-       i686: '9b2f5431f8edbf727d9f413e46f07c15d4e5ff2c4e9c3006dad3ca42f12bba0e',
-     x86_64: '5becd6c50a6a867a2e37cbdc601a0f02ccc57cc999efe445b84ad57514c030a2'
+    aarch64: 'd1d1bff30aa008299109755393a5181bf1e8e5ee97cdc113e35b02b5e4646902',
+     armv7l: 'd1d1bff30aa008299109755393a5181bf1e8e5ee97cdc113e35b02b5e4646902',
+       i686: '3d6a09ba23138e49a60d28ac5bdcac03c7d4dbbb7f38f8a1b5efa3e1bcc74214',
+     x86_64: '66475f8d1327be4a3492f3dc9e0e49a30a003e74cae6960e8699afc24863370e'
   })
 
   depends_on 'glibc' # R
