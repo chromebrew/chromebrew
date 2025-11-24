@@ -11,10 +11,10 @@ class Wget2 < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '09e08370f029c62c46d1b5c1e308d77a9b195891e350c887252e1dc79b2380be',
-     armv7l: '09e08370f029c62c46d1b5c1e308d77a9b195891e350c887252e1dc79b2380be',
+    aarch64: 'e721c5fc826a29487a21bff10b9af2a5f06ceb6208ab6b9431e9ca644b8ecf12',
+     armv7l: 'e721c5fc826a29487a21bff10b9af2a5f06ceb6208ab6b9431e9ca644b8ecf12',
        i686: 'fcb9cf5a798decde6d27134fe90e982668147a3aceeae56e917544bb3728c08d',
-     x86_64: '7f1da024c4e1d6c8492906e1bcb9fcf627ec283b12c477e7c84d8e5ded28b886'
+     x86_64: '1ed2ba8aeec518c368870e00644706891d973a68267c6b2ce4fb0fc37521cbbf'
   })
 
   depends_on 'brotli' # R
@@ -68,8 +68,7 @@ class Wget2 < Autotools
     system 'autoreconf -fiv'
   end
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  autotools_install_extras do
     FileUtils.ln_sf "#{CREW_PREFIX}/bin/wget2", "#{CREW_DEST_PREFIX}/bin/wget"
     FileUtils.rm_f "#{CREW_DEST_PREFIX}/bin/wget2_noinstall"
   end
