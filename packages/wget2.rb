@@ -42,7 +42,7 @@ class Wget2 < Autotools
                   --with-lzma'
 
   def self.patch
-    system './bootstrap'
+    system "sed -i '/AM_GNU_GETTEXT_VERSION/d' configure.ac"
     system 'autoreconf -fiv'
   end
 
