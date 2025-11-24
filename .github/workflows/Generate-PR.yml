@@ -205,7 +205,7 @@ jobs:
       i686_PACKAGES: ${{ needs.setup.outputs.i686_packages }}
       x86_64_PACKAGES: ${{ needs.setup.outputs.x86_64_packages }}
       armv7l_PACKAGES: ${{ needs.setup.outputs.armv7l_packages }}
-    if: ${{ !cancelled() && ( inputs.update_package_files ) }}
+    if: ${{ !cancelled() && ( inputs.update_package_files ) && needs.setup.outputs.changed_packages }}
     concurrency:
       group: ${{ matrix.arch }}-${{ github.workflow }}-${{ inputs.branch || github.ref_name }}
       cancel-in-progress: true
