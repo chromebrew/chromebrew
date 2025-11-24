@@ -1,5 +1,5 @@
 #!/bin/bash
-CREW_INSTALLER_VERSION=2025111401
+CREW_INSTALLER_VERSION=2025112401
 # Exit on fail.
 set -eE
 
@@ -280,6 +280,8 @@ if [[ -n "${CREW_PRE_GLIBC_STANDALONE}" ]]; then
   [[ "$LIBC_VERSION" == "2.27" ]] && BOOTSTRAP_PACKAGES='zstd_static glibc_build227'
 
   [[ -n "${PREFIX_CMD}" ]] && BOOTSTRAP_PACKAGES+=' util_linux'
+  # Overwrite the glibc libcrypt.so.1.1.0 with the one from libxcrypt.
+  BOOTSTRAP_PACKAGES+=' libxcrypt '
   BOOTSTRAP_PACKAGES+=' upx patchelf lz4 zlib xzutils zlib_ng gcc_lib crew_mvdir ca_certificates libyaml openssl findutils ncurses readline bash psmisc'
 else
   # Ruby wants gcc_lib, so install our version build against our glibc
