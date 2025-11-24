@@ -3,12 +3,12 @@ require 'package'
 class Openjdk25 < Package
   description 'The JDK is a development environment for building applications, applets, and components using the Java programming language.'
   homepage 'https://openjdk.org/'
-  version '25.0.0'
+  version '25.0.1'
   license 'GPL-2'
   compatibility 'x86_64'
   # Visit https://www.azul.com/downloads/?version=java-25-lts&package=jdk#zulu to download the binary.
-  source_url 'https://cdn.azul.com/zulu/bin/zulu25.28.85-ca-jdk25.0.0-linux_x64.tar.gz'
-  source_sha256 '164d901e5a240b8c18516f5ab55bc11fc9689ab6e829045aea8467356dcdb340'
+  source_url 'https://cdn.azul.com/zulu/bin/zulu25.30.17-ca-jdk25.0.1-linux_x64.tar.gz'
+  source_sha256 '471b3e62bdffaed27e37005d842d8639f10d244ccce1c7cdebf7abce06c8313e'
 
   no_compile_needed
   no_shrink
