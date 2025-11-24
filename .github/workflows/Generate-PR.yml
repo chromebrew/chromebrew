@@ -237,22 +237,6 @@ jobs:
         env:
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
         run: echo "$MATRIX_CONTEXT"
-      - name: Free Disk Space (Ubuntu)
-        uses: BRAINSia/free-disk-space@v2
-        with:
-          # this might remove tools that are actually needed,
-          # if set to "true" but frees about 6 GB
-          tool-cache: false
-
-          # all of these default to true, but feel free to set to
-          # "false" if necessary for your workflow
-          mandb: true
-          android: true
-          dotnet: true
-          haskell: true
-          large-packages: true
-          docker-images: true
-          swap-storage: true
       - uses: actions/checkout@v5
         with:
           fetch-depth: 0
@@ -318,6 +302,11 @@ jobs:
               echo "Skipping i686 container builds &/or package file updates."
               exit 0
             fi
+            # Container Cleanup
+            # Adapted from https://github.com/BRAINSia/free-disk-space/blob/main/action.yml
+            echo "Running some background container cleanups from BRAINSia/free-disk-space"
+            ( sudo apt-get purge -qq -o=Dpkg::Use-Pty=0 -y man-db manpages manpages-dev 'aspnetcore-*' 'dotnet-*' 'llvm-*' '*php*' 'mongodb-*' 'mysql-*' azure-cli google-chrome-stable firefox powershell mono-devel libgl1-mesa-dri 'google-cloud-*' 'gcloud-*' &>/dev/null ; \
+            sudo apt-get autoremove -qq -o=Dpkg::Use-Pty=0 -y &>/dev/null) &
 
             git fetch origin
             git checkout "${{ inputs.branch || github.ref_name }}"
