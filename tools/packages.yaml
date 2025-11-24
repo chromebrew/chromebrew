@@ -8920,6 +8920,11 @@ url: https://github.com/sleuthkit/sleuthkit/releases
 activity: medium
 ---
 kind: url
+name: slop
+url: https://github.com/naelstrof/slop/releases
+activity: low
+---
+kind: url
 name: sluice
 url: http://kernel.ubuntu.com/~cking/tarballs/sluice
 activity: medium
