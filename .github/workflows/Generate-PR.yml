@@ -304,7 +304,7 @@ jobs:
             fi
             # Container Cleanup
             # Adapted from https://github.com/BRAINSia/free-disk-space/blob/main/action.yml
-            echo "Running some background container cleanups from BRAINSia/free-disk-space"
+            echo "Running some background container cleanups from BRAINSia/free-disk-space."
             ( sudo apt-get purge -qq -o=Dpkg::Use-Pty=0 -y man-db manpages manpages-dev 'aspnetcore-*' 'dotnet-*' 'llvm-*' '*php*' 'mongodb-*' 'mysql-*' azure-cli google-chrome-stable firefox powershell mono-devel libgl1-mesa-dri 'google-cloud-*' 'gcloud-*' &>/dev/null ; \
             sudo apt-get autoremove -qq -o=Dpkg::Use-Pty=0 -y &>/dev/null) &
 
