@@ -1,4 +1,4 @@
-# Total size: 974864
+# Total size: 984119
 /usr/local/include/wayland-protocols/alpha-modifier-v1-enum.h
 /usr/local/include/wayland-protocols/color-management-v1-enum.h
 /usr/local/include/wayland-protocols/color-representation-v1-enum.h
@@ -56,7 +56,9 @@
 /usr/local/include/wayland-protocols/xdg-toplevel-tag-v1-enum.h
 /usr/local/include/wayland-protocols/xwayland-keyboard-grab-unstable-v1-enum.h
 /usr/local/include/wayland-protocols/xwayland-shell-v1-enum.h
+/usr/local/include/wayland-protocols/xx-input-method-v2-enum.h
 /usr/local/include/wayland-protocols/xx-session-management-v1-enum.h
+/usr/local/include/wayland-protocols/xx-text-input-v3-enum.h
 /usr/local/share/pkgconfig/wayland-protocols.pc
 /usr/local/share/wayland-protocols/stable/linux-dmabuf/linux-dmabuf-v1.xml
 /usr/local/share/wayland-protocols/stable/presentation-time/presentation-time.xml
