@@ -3,11 +3,11 @@ require 'package'
 class Etcd < Package
   description 'Distributed reliable key-value store for the most critical data of a distributed system'
   homepage 'https://etcd.io/'
-  version '3.6.5'
+  version '3.6.6'
   license 'Apache-2.0'
   compatibility 'x86_64'
   source_url "https://github.com/etcd-io/etcd/releases/download/v#{version}/etcd-v#{version}-linux-amd64.tar.gz"
-  source_sha256 '66bad39ed920f6fc15fd74adcb8bfd38ba9a6412f8c7852d09eb11670e88cac3'
+  source_sha256 '887afaa4a99f22d802ccdfbe65730a5e79aa5c9ce2c8799c67e9d804c50ecedb'
 
   no_compile_needed
   no_shrink
