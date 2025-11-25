@@ -49,6 +49,8 @@ class Wget2 < Autotools
                   --with-lzma'
 
   def self.patch
+    # Patch needed due to failure of gettext detection
+    # when 'autoreconf -fvi' invokes autopoint.
     File.write 'gettext.patch', <<~GETTEXT_PATCH_EOF
       diff -Npaur a/configure.ac b/configure.ac
       --- a/configure.ac	2025-11-24 16:32:01.716022174 -0500
