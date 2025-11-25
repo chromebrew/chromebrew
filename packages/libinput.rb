@@ -11,9 +11,9 @@ class Libinput < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a3c9b91070c96b6b8ab1800eae145b044a42eb51ee14a517bf993eda5422e2f6',
-     armv7l: 'a3c9b91070c96b6b8ab1800eae145b044a42eb51ee14a517bf993eda5422e2f6',
-     x86_64: '470f2ebdae07083c13f2b2c11c4e8e535481e4e972796ff30a5e8a5495db1c2b'
+    aarch64: 'a92cad41827ee044bb221e34c0f19067d9b2a09d2be3b0262b282b605d2ffe00',
+     armv7l: 'a92cad41827ee044bb221e34c0f19067d9b2a09d2be3b0262b282b605d2ffe00',
+     x86_64: '7d64271ba1e987af83ab4531b4759ba22c70a4b26a20b633c3c4194371ef9e29'
   })
 
   # depends_on 'graphviz' => :build
