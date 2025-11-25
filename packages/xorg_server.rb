@@ -11,9 +11,9 @@ class Xorg_server < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '806f52c415a550da3c4124d5e2551e5787bcfa8059bb1e3eeabd5f5a5679f8ae',
-     armv7l: '806f52c415a550da3c4124d5e2551e5787bcfa8059bb1e3eeabd5f5a5679f8ae',
-     x86_64: '08d554e589f5dc3bbbcf6af2aef29e6781393c70b6c62f74fadde949f4474376'
+    aarch64: '6232c476e6b6c532388ffc48e7dcc8557d7a728dd812c01815e224f70d96e798',
+     armv7l: '6232c476e6b6c532388ffc48e7dcc8557d7a728dd812c01815e224f70d96e798',
+     x86_64: 'bcf3774f145cdd23f768642641213fae17efeb6584d055f1c0afcbb37eb8c4a3'
   })
 
   depends_on 'dbus' # R
@@ -47,10 +47,10 @@ class Xorg_server < Meson
   depends_on 'lzma' => :build
   depends_on 'mesa' # R
   depends_on 'pixman' # R
+  depends_on 'xcb_util' # R
   depends_on 'xcb_util_cursor' => :build
   depends_on 'xcb_util_image' # R
   depends_on 'xcb_util_keysyms' # R
-  depends_on 'xcb_util' # R
   depends_on 'xcb_util_renderutil' # R
   depends_on 'xcb_util_wm' # R
   depends_on 'xcb_util_xrm' => :build
