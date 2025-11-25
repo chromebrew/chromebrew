@@ -17,6 +17,12 @@ task :lib_test do
   ruby 'tests/lib/package_utils.rb'
 end
 
+# Tool tests
+task :tool_test do
+  ruby 'tests/tool/getrealdeps.rb'
+  ruby 'tests/tool/version.rb'
+end
+
 # Package tests
 task :package_test do
   ruby 'tests/dep_test'
