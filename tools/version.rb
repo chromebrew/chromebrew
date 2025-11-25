@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.15 (for Chromebrew)
+# version.rb version 3.16 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose -vv]
 
@@ -54,7 +54,7 @@ def get_version(name, homepage, source, version)
   anitya_name_mapping_idx = CREW_ANITYA_PACKAGE_NAME_MAPPINGS.keys.find_index { |i| i == name }
   anitya_name = name.gsub(/\Apy\d_|\Aperl_|\Aruby_/, '')
   anitya_name = CREW_ANITYA_PACKAGE_NAME_MAPPINGS.values[anitya_name_mapping_idx] unless anitya_name_mapping_idx.nil?
-  anitya_id = get_anitya_id(anitya_name, homepage)
+  anitya_id = get_anitya_id(anitya_name, homepage, @pkg.superclass.to_s)
   anitya_name = @new_anitya_name unless @new_anitya_name.nil?
   # If anitya_id cannot be determined, a Range can be returned, and
   # .nonzero? does not work with Ranges.
@@ -193,10 +193,9 @@ def get_version(name, homepage, source, version)
   end
 end
 
-def get_anitya_id(name, homepage)
-  # Ignore python pip and ruby gem packages in the Pip and RUBY
-  # superclasses.
-  return if %w[Pip RUBY].include?(@pkg.superclass.to_s)
+def get_anitya_id(name, homepage, buildsystem)
+  # Ignore python pip and ruby gem packages with the Pip and RUBY buildsystems.
+  return if %w[Pip RUBY].include?(buildsystem)
 
   # Find out how many packages Anitya has with the provided name.
   puts "url is https://release-monitoring.org/api/v2/projects/?name=#{CGI.escape(name)}" if VERY_VERBOSE
@@ -208,64 +207,34 @@ def get_anitya_id(name, homepage)
   if number_of_packages == 1 # We assume we have the right package, take the ID and move on.
     return json['items'][0]['id']
   elsif number_of_packages.zero? # Anitya either doesn't have this package, or has it under a different name.
-    @new_anitya_name = nil
-    name_candidate = name.tr('-', '_') if name.include?('-')
-    name_candidate = name.tr('_', '-') if name.include?('_')
-    if name_candidate && name_candidate != name
-      if VERY_VERBOSE
-        puts "No Anitya package found with #{name}. Attempting a new search with #{name_candidate}."
-        puts "url is https://release-monitoring.org/api/v2/projects/?name=#{name_candidate}"
-      end
-      json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/projects/?name=#{name_candidate}")))
-      puts json if VERY_VERBOSE
-      number_of_packages = json['total_items']
-      if number_of_packages.zero?
-        puts "No Anitya package found with #{name_candidate}." if VERY_VERBOSE
-        return
-      elsif number_of_packages == 1 # We assume we have the right package.
-        package_homepage = homepage.gsub(%r{http(s)?://(www\.)?}, '').chomp('/')
-        puts "package_homepage = #{package_homepage}" if VERY_VERBOSE
-        anitya_homepage = json['items'][0]['homepage'].gsub(%r{http(s)?://(www\.)?}, '').chomp('/')
-        puts "anitya_homepage = #{anitya_homepage}" if VERY_VERBOSE
-        @new_anitya_name = json['items'][0]['name']
-        return json['items'][0]['id']
-      else
-        (0..(number_of_packages - 1)).each do |i|
-          next if json['items'][i].nil?
-          package_homepage = homepage.gsub(%r{http(s)?://(www\.)?}, '').chomp('/')
-          puts "package_homepage = #{package_homepage}" if VERY_VERBOSE
-          anitya_homepage = json['items'][i]['homepage'].gsub(%r{http(s)?://(www\.)?}, '').chomp('/')
-          puts "anitya_homepage = #{anitya_homepage}" if VERY_VERBOSE
-          if package_homepage == anitya_homepage
-            @new_anitya_name = name_candidate
-            return json['items'][i]['id']
-          end
-        end
-      end
+    # The most likely scenario is that the correct name is the current one with underscores converted to dashes.
+    # This is also currently the only scenario we handle here.
+    return unless name.include?('_')
+
+    name_candidate = name.tr('_', '-')
+    if VERY_VERBOSE
+      puts "No Anitya package found with #{name}. Attempting a new search with #{name_candidate}."
+      puts "url is https://release-monitoring.org/api/v2/projects/?name=#{name_candidate}"
     end
+
+    # We can just call ourselves, with no fear of infinite recursion because we replaced all the underscores.
+    return get_anitya_id(name_candidate, homepage, buildsystem)
   else # Anitya has more than one package with this exact name.
-    candidates = []
-    # First, we remove any candidates which are provided by language package managers, such as pip.
+    candidates = json['items']
+
+    # We aren't interested in any packages with anitya ecosystems, as they are provided by language package managers, such as pip.
     # This is because Chromebrew does not repackage them (#7713), so they won't be what we're looking for.
-    # (Allow non Pip superclass Python packages through.)
-    (0..(number_of_packages - 1)).each do |i|
-      if %w[Python].include?(@pkg.superclass.to_s)
-        candidates.append(i) if json['items'][i]['ecosystem'] == 'pypi'
-      elsif %w[PERL].include?(@pkg.superclass.to_s)
-        candidates.append(i) if json['items'][i]['backend'] == 'CPAN (perl)'
-      elsif json['items'][i]['ecosystem'] == json['items'][i]['homepage']
-        # If a package is not provided by a language package manager, the ecosystem will be set to the homepage.
-        # https://release-monitoring.org/static/docs/api.html#get--api-v2-projects-
-        candidates.append(i)
-      elsif homepage.include?('pagure.io')
-        # Edge case fallback if the backend is custom or pragure and the homepage is pagure.io.
-        candidates.append(i) if %w[custom pagure].include?(json['items'][i]['backend'])
-      end
-    end
-    puts "candidates = #{candidates}" if VERY_VERBOSE
+    anitya_ecosystems = %w[crates.io maven npm pypi rubygems]
+    # The only exception is if we're checking a Python package, in which case the pypi ecosystem is fine.
+    anitya_ecosystems.delete('pypi') if buildsystem == 'Python'
+
+    candidates.delete_if { |candidate| anitya_ecosystems.include?(candidate['ecosystem']) }
+    # Anitya doesn't have a CPAN ecosystem: https://github.com/fedora-infra/anitya/tree/master/anitya/lib/ecosystems
+    # If the candidate is from CPAN but isn't a Perl package, its not what we're looking for.
+    candidates.delete_if { |candidate| candidate['backend'] == 'CPAN (perl)' && buildsystem != 'PERL' }
 
     if candidates.length == 1 # If there's only one candidate left, we're done.
-      return json['items'][candidates[0]]['id']
+      return candidates[0]['id']
     elsif candidates.empty? # The package we're looking for is provided by a language package manager.
       # We probably shouldn't be providing this package.
       return
@@ -278,11 +247,13 @@ def get_anitya_id(name, homepage)
         # We assume there is only one candidate with the same name and homepage as their crew counterpart.
         # Even if there are multiple candidates with the same name and homepage, its probably fine to treat them as identical.
         # If it isn't fine to treat them as identical, something has gone horribly wrong.
-        package_homepage = homepage.gsub(%r{http(s)?://(www\.)?}, '').chomp('/')
+        # Fuzzy match the homepages by stripping the scheme and www subdomains before checking for equality.
+        package_homepage = homepage.sub(%r{http(s)?://(www\.)?}, '').chomp('/')
         puts "package_homepage = #{package_homepage}" if VERY_VERBOSE
-        anitya_homepage = json['items'][candidate]['homepage'].gsub(%r{http(s)?://(www\.)?}, '').chomp('/')
+        anitya_homepage = candidate['homepage'].sub(%r{http(s)?://(www\.)?}, '').chomp('/')
         puts "anitya_homepage = #{anitya_homepage}" if VERY_VERBOSE
-        return json['items'][candidate]['id'] if package_homepage == anitya_homepage
+
+        return candidate['id'] if package_homepage == anitya_homepage
       end
       puts 'No Anitya packages found.' if VERY_VERBOSE
 
@@ -292,6 +263,9 @@ def get_anitya_id(name, homepage)
     end
   end
 end
+
+# If we have been required from another file (i.e. for testing) don't run any of this, as we're only interested in the functions up above.
+return if __FILE__ != $PROGRAM_NAME
 
 filelist = []
 # Handle multiple packages being passed to version.rb.
