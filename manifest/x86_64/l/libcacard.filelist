@@ -1,4 +1,4 @@
-# Total size: 150308
+# Total size: 118961
 /usr/local/include/cacard/cac.h
 /usr/local/include/cacard/card_7816.h
 /usr/local/include/cacard/card_7816t.h
@@ -12,7 +12,6 @@
 /usr/local/include/cacard/vreader.h
 /usr/local/include/cacard/vreadert.h
 /usr/local/include/cacard/vscard_common.h
-/usr/local/lib64/libcacard.la
 /usr/local/lib64/libcacard.so
 /usr/local/lib64/libcacard.so.0
 /usr/local/lib64/libcacard.so.0.0.0
