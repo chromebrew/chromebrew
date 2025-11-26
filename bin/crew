@@ -961,8 +961,12 @@ def prepare_package(destdir)
       [e[1..], File.symlink?(e) ? 0 : File.size(e)]
     end
 
+    # If the package is completely empty, something has probably gone wrong.
+    total_size = filelist.values.sum
+    abort 'total_size is 0. It seems that no files were installed.'.lightred if total_size.zero?
+
     File.write 'filelist', <<~EOF
-      # Total size: #{filelist.values.sum}
+      # Total size: #{total_size}
       #{filelist.keys.sort.join("\n")}
     EOF
 
