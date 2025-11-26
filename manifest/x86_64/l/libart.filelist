@@ -1,4 +1,4 @@
-# Total size: 1008109
+# Total size: 936383
 /usr/local/bin/libart2-config
 /usr/local/include/libart-2.0/libart_lgpl/art_affine.h
 /usr/local/include/libart-2.0/libart_lgpl/art_alphagamma.h
@@ -48,5 +48,5 @@
 /usr/local/lib64/libart_lgpl_2.la
 /usr/local/lib64/libart_lgpl_2.so
 /usr/local/lib64/libart_lgpl_2.so.2
-/usr/local/lib64/libart_lgpl_2.so.2.3.20
+/usr/local/lib64/libart_lgpl_2.so.2.3.21
 /usr/local/lib64/pkgconfig/libart-2.0.pc
