@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.16 (for Chromebrew)
+# version.rb version 3.17 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose -vv]
 
@@ -51,15 +51,11 @@ versions_updated = {}
 versions = []
 
 def get_version(name, homepage, source, version)
-  anitya_name_mapping_idx = CREW_ANITYA_PACKAGE_NAME_MAPPINGS.keys.find_index { |i| i == name }
-  anitya_name = name.gsub(/\Apy\d_|\Aperl_|\Aruby_/, '')
-  anitya_name = CREW_ANITYA_PACKAGE_NAME_MAPPINGS.values[anitya_name_mapping_idx] unless anitya_name_mapping_idx.nil?
-  anitya_id = get_anitya_id(anitya_name, homepage, @pkg.superclass.to_s)
-  anitya_name = @new_anitya_name unless @new_anitya_name.nil?
+  anitya_id = get_anitya_id(name, homepage, @pkg.superclass.to_s)
   # If anitya_id cannot be determined, a Range can be returned, and
   # .nonzero? does not work with Ranges.
   anitya_id = nil if anitya_id.is_a? Range
-  puts "anitya_name: #{anitya_name} anitya_id: #{anitya_id}" if VERBOSE
+  puts "anitya_id: #{anitya_id}" if VERBOSE
   if anitya_id&.nonzero?
     # Get the latest stable version of the package from anitya.
     json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/versions/?project_id=#{anitya_id}")))
@@ -196,6 +192,14 @@ end
 def get_anitya_id(name, homepage, buildsystem)
   # Ignore python pip and ruby gem packages with the Pip and RUBY buildsystems.
   return if %w[Pip RUBY].include?(buildsystem)
+
+  # Change the name into something Anitya will prefer.
+  original_name = name.dup
+  # Remove any language-specific prefixes and build splitting suffixes.
+  name = PackageUtils.get_clean_name(name)
+  # If this package has a hardcoded mapping, use it.
+  name = CREW_ANITYA_PACKAGE_NAME_MAPPINGS[name] if CREW_ANITYA_PACKAGE_NAME_MAPPINGS.include?(name)
+  puts "anitya_name: #{name} #{"(instead of #{original_name})" if name != original_name}" if VERBOSE
 
   # Find out how many packages Anitya has with the provided name.
   puts "url is https://release-monitoring.org/api/v2/projects/?name=#{CGI.escape(name)}" if VERY_VERBOSE
