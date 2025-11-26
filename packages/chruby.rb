@@ -11,10 +11,10 @@ class Chruby < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-       i686: 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii',
-     x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+    aarch64: '4e6a622e15f48a5353882b960e9f7d5e1a31302eff337cc3172f0deb23a48d64',
+     armv7l: '4e6a622e15f48a5353882b960e9f7d5e1a31302eff337cc3172f0deb23a48d64',
+       i686: '1ea85177b7795cefaad7aa7ccdc135b4842c8c59921e137c7dd514f2972a6c84',
+     x86_64: 'f3ca77a21c312d9451c23738a75449b66a3072befcd0f16d3eae7e2942238baf'
   })
 
   def self.build
