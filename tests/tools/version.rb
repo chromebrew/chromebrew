@@ -26,6 +26,31 @@ class VersionMonitorTest < Minitest::Test
     assert_nil(get_anitya_id('99_still_notreal', 'ftp://com.crystal', 'Package'))
   end
 
+  def test_get_prefixed_anitya_id
+    assert_equal(2636, get_anitya_id('perl_app_cpanminus', 'https://metacpan.org/pod/App::cpanminus', 'PERL'))
+    # We use the Anitya homepage for maturin here to simplify testing.
+    assert_equal(42653, get_anitya_id('py3_maturin', 'https://www.maturin.rs', 'Python'))
+    # Every ruby_ package has the RUBY buildsystem, so we lie here to test the behavior.
+    # Technically that means we don't need the behavior right now, but things may change.
+    assert_equal(139836, get_anitya_id('ruby_typeprof', 'https://github.com/ruby/typeprof', 'Package'))
+  end
+
+  def test_get_split_anitya_id
+    assert_equal(6502, get_anitya_id('gcc_build', 'https://www.gnu.org/software/gcc/', 'Package'))
+    assert_equal(6502, get_anitya_id('gcc_dev', 'https://www.gnu.org/software/gcc/', 'Package'))
+    assert_equal(6502, get_anitya_id('gcc_lib', 'https://www.gnu.org/software/gcc/', 'Package'))
+  end
+
+  def test_get_static_anitya_id
+    assert_equal(12083, get_anitya_id('zstd_static', 'https://facebook.github.io/zstd/', 'Package'))
+  end
+
+  def test_get_mapped_anitya_id
+    assert_equal(1783, get_anitya_id('libxml2_autotools', 'http://xmlsoft.org/', 'Autotools'))
+    assert_equal(6502, get_anitya_id('libssp', 'https://gcc.gnu.org/', 'Autotools'))
+    assert_equal(4194, get_anitya_id('rest', 'https://wiki.gnome.org/Projects/Librest', 'Meson'))
+  end
+
   def test_get_multi_ecosystem_anitya_id
     # This should eliminate all the other candidates due to their ecosystems, so the homepage isn't even checked.
     assert_equal(217, get_anitya_id('bridge_utils', 'https://wiki.linuxfoundation.org/networking/bridge', 'Package'))
