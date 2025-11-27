@@ -11,10 +11,10 @@ class Trousers < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-       i686: 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii',
-     x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+    aarch64: '9a4f8c30008de43e79abb471c0d97c13dfa30ca0a9cc8a53a33729a5dd5f4b3b',
+     armv7l: '9a4f8c30008de43e79abb471c0d97c13dfa30ca0a9cc8a53a33729a5dd5f4b3b',
+       i686: '58e57d31366d315f474d32e4949a53b289a565a000406ecbd575cac513d60089',
+     x86_64: '40a49b1f6ef81f491f4c36accf88c701abc0cbe7f4e54d7d3ac1ae6a8250b494'
   })
 
   depends_on 'glibc' # R
