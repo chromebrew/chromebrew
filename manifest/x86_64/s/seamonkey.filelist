@@ -1,3 +1,4 @@
+# Total size: 165498519
 /usr/local/bin/seamonkey
 /usr/local/share/seamonkey/Throbber-small.gif
 /usr/local/share/seamonkey/application.ini
@@ -94,7 +95,6 @@
 /usr/local/share/seamonkey/libnspr4.so
 /usr/local/share/seamonkey/libnss3.so
 /usr/local/share/seamonkey/libnssckbi.so
-/usr/local/share/seamonkey/libnssdbm3.so
 /usr/local/share/seamonkey/libnssutil3.so
 /usr/local/share/seamonkey/libplc4.so
 /usr/local/share/seamonkey/libplds4.so
