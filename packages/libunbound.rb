@@ -11,10 +11,10 @@ class Libunbound < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a347168c876bbc19b5ea622fa6bcdfc8d97c6b5af791c3222c01934dc1a10e65',
-     armv7l: 'a347168c876bbc19b5ea622fa6bcdfc8d97c6b5af791c3222c01934dc1a10e65',
-       i686: '2fafccf881353b5d8bea70845cffbf8fcd8f503aac7c1e152eacc5b55b199f08',
-     x86_64: 'f436148a003daf3200342401f24a9e0e6a80b8bebe3377260324bee56ab76517'
+    aarch64: 'afab8a9c7459cc9b24d6ea9d33201d415f92f97edb415088e29ac5c930f0bbf6',
+     armv7l: 'afab8a9c7459cc9b24d6ea9d33201d415f92f97edb415088e29ac5c930f0bbf6',
+       i686: '3800840a12073ba27bdd03aaa13885f1c722c3665a7d132219be179ac68d378e',
+     x86_64: 'e6f60b3ea6334804c1ea2e1f16aa195f340aa0e4e2dd92bc46b707fec5825847'
   })
 
   depends_on 'expat' # R
