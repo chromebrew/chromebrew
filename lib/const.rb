@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION = defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION = '1.68.1' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION = '1.68.4' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH = Etc.uname[:machine]
@@ -397,9 +397,6 @@ CREW_ANITYA_PACKAGE_NAME_MAPPINGS = Set[
   { pkg_name: 'docbook_xml51', anitya_pkg: 'docbook-xml', comments: '' },
   { pkg_name: 'doxygen', anitya_pkg: 'doxygen', comments: '' },
   { pkg_name: 'filecmd', anitya_pkg: 'file', comments: '' },
-  { pkg_name: 'gcc_build', anitya_pkg: 'gcc', comments: '' },
-  { pkg_name: 'gcc_dev', anitya_pkg: 'gcc', comments: '' },
-  { pkg_name: 'gcc_lib', anitya_pkg: 'gcc', comments: '' },
   { pkg_name: 'gcr_3', anitya_pkg: 'gcr~3', comments: '' },
   { pkg_name: 'gcr_4', anitya_pkg: 'gcr', comments: '' },
   { pkg_name: 'gemacs', anitya_pkg: 'emacs', comments: '' },
@@ -482,8 +479,7 @@ CREW_ANITYA_PACKAGE_NAME_MAPPINGS = Set[
   { pkg_name: 'yad', anitya_pkg: 'yad', comments: 'Prefer to GitHub' },
   { pkg_name: 'zig13', anitya_pkg: 'zig', comments: '' },
   { pkg_name: 'zimg', anitya_pkg: 'zimg', comments: 'Prefer to GitHub' },
-  { pkg_name: 'zoneinfo', anitya_pkg: 'tzdata', comments: '' },
-  { pkg_name: 'zstd_static', anitya_pkg: 'zstd', comments: '' }
+  { pkg_name: 'zoneinfo', anitya_pkg: 'tzdata', comments: '' }
 ].to_h { |h| [h[:pkg_name], h[:anitya_pkg]] }
 
 CREW_LICENSE = <<~LICENSESTRING

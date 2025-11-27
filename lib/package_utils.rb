@@ -80,7 +80,7 @@ class PackageUtils
     pkg_version.gsub!(/-dfsg.*/, '')
     # Delete -gcc14, futureproofed until gcc 100
     pkg_version.gsub!(/-gcc\d{2}/, '')
-    # Trim kde- suffixes in qt5 packages so nothing else gets confused.
+    # Trim kde- prefixes in qt5 packages so nothing else gets confused.
     pkg_version.delete_prefix!('kde-')
     # Delete -py3.12, futureproofed until Python 4
     pkg_version.gsub!(/-py3\.\d{2}/, '')
@@ -98,6 +98,23 @@ class PackageUtils
     pkg_version.gsub!(/-icu\d{2}\.\d/, '')
 
     return pkg_version
+  end
+
+  # Remove our language-specific prefixes and any build splitting suffixes.
+  # This is mostly for use when querying Anitya in tools/version.rb, and is not suitable for Repology.
+  def self.get_clean_name(pkg_name)
+    # Delete language-specific prefixes.
+    pkg_name.delete_prefix!('perl_')
+    pkg_name.delete_prefix!('py3_')
+    pkg_name.delete_prefix!('ruby_')
+    # Delete suffixes for split packages.
+    pkg_name.delete_suffix!('_build')
+    pkg_name.delete_suffix!('_dev')
+    pkg_name.delete_suffix!('_lib')
+    # Delete the _static suffix for statically built packages.
+    pkg_name.delete_suffix!('_static')
+
+    return pkg_name
   end
 
   def self.get_gitlab_pkginfo(pkg_name, pkg_version, pkg_arch, build = nil, verbose = nil)

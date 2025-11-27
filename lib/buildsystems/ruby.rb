@@ -86,7 +86,9 @@ end
 
 def save_gem_filelist(gem_name = nil, gem_filelist_path = nil)
   crewlog "@gem_latest_version_installed: #{@gem_latest_version_installed}"
-  files = `gem install --no-update-sources -N #{gem_name} --conservative &>/dev/null ; gem contents #{gem_name}`.chomp.split
+  # We need the gem reinstalled, so we don't use --conservative, which
+  # avoids the reinstall.
+  files = `gem install --no-update-sources -N #{gem_name} &>/dev/null ; gem contents #{gem_name}`.chomp.split
   exes = files.grep(%r{/exe/|/bin/})
   # Gem.bindir should end up being #{CREW_PREFIX}/bin.
   exes&.map! { |x| x.gsub(%r{^.*(/exe/|/bin/)}, "#{Gem.bindir}/") }

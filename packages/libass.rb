@@ -1,34 +1,25 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libass < Package
+class Libass < Autotools
   description 'A portable subtitle renderer for the ASS/SSA (Advanced Substation Alpha/Substation Alpha) subtitle format.'
   homepage 'https://github.com/libass/libass'
-  version '0.14.0'
+  version '0.17.4'
   license 'ISC'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://github.com/libass/libass/releases/download/0.14.0/libass-0.14.0.tar.xz'
-  source_sha256 '881f2382af48aead75b7a0e02e65d88c5ebd369fe46bc77d9270a94aa8fd38a2'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/libass/libass.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1749b98d9fcd1783cc6d04543ace006637732db0c0dab128597f86f122a1a28a',
-     armv7l: '1749b98d9fcd1783cc6d04543ace006637732db0c0dab128597f86f122a1a28a',
-     x86_64: '5d4f11533ac29592c4af827480bed3609ee8d4ee48e3b34bb3b68934da7e1248'
+    aarch64: 'd47a891fae1c5301f65e46943d4615228506962f2961b373be1e0ecb05c61674',
+     armv7l: 'd47a891fae1c5301f65e46943d4615228506962f2961b373be1e0ecb05c61674',
+     x86_64: '6268a7018d07edfb6dfe97926f4c979613244f26fccd655b1990f39e8ed083cc'
   })
 
-  # depends_on 'automake' => :build
-  # depends_on 'autoconf' => :build
-  # depends_on 'libtool' => :build
-  depends_on 'fribidi'
   depends_on 'fontconfig'
-
-  def self.build
-    system 'autoconf'
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'freetype'
+  depends_on 'fribidi'
+  depends_on 'glibc' # R
+  depends_on 'harfbuzz'
+  depends_on 'nasm' => :build
 end

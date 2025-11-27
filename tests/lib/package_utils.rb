@@ -230,4 +230,26 @@ class PackageUtilsTest < Minitest::Test
     assert_equal('579-4', PackageUtils.get_clean_version('579-4-1628457'))
     assert_equal('2.1.5-20220429', PackageUtils.get_clean_version('2.1.5-20220429'))
   end
+
+  def test_get_clean_perl_name
+    assert_equal('wakeonlan', PackageUtils.get_clean_name('perl_wakeonlan'))
+  end
+
+  def test_get_clean_python_name
+    assert_equal('maturin', PackageUtils.get_clean_name('py3_maturin'))
+  end
+
+  def test_get_clean_ruby_name
+    assert_equal('typeprof', PackageUtils.get_clean_name('ruby_typeprof'))
+  end
+
+  def test_get_clean_split_name
+    assert_equal('gcc', PackageUtils.get_clean_name('gcc_build'))
+    assert_equal('gcc', PackageUtils.get_clean_name('gcc_dev'))
+    assert_equal('gcc', PackageUtils.get_clean_name('gcc_lib'))
+  end
+
+  def test_get_clean_static_name
+    assert_equal('zstd', PackageUtils.get_clean_name('zstd_static'))
+  end
 end
