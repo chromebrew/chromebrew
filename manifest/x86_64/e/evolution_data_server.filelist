@@ -1,3 +1,4 @@
+# Total size: 18829429
 /usr/local/etc/xdg/autostart/org.gnome.Evolution-alarm-notify.desktop
 /usr/local/include/evolution-data-server/camel/camel-address.h
 /usr/local/include/evolution-data-server/camel/camel-async-closure.h
@@ -17,7 +18,6 @@
 /usr/local/include/evolution-data-server/camel/camel-filter-input-stream.h
 /usr/local/include/evolution-data-server/camel/camel-filter-output-stream.h
 /usr/local/include/evolution-data-server/camel/camel-filter-search.h
-/usr/local/include/evolution-data-server/camel/camel-folder-search.h
 /usr/local/include/evolution-data-server/camel/camel-folder-summary.h
 /usr/local/include/evolution-data-server/camel/camel-folder-thread.h
 /usr/local/include/evolution-data-server/camel/camel-folder.h
@@ -73,7 +73,6 @@
 /usr/local/include/evolution-data-server/camel/camel-nntp-address.h
 /usr/local/include/evolution-data-server/camel/camel-null-output-stream.h
 /usr/local/include/evolution-data-server/camel/camel-object-bag.h
-/usr/local/include/evolution-data-server/camel/camel-object.h
 /usr/local/include/evolution-data-server/camel/camel-offline-folder.h
 /usr/local/include/evolution-data-server/camel/camel-offline-settings.h
 /usr/local/include/evolution-data-server/camel/camel-offline-store.h
@@ -94,12 +93,14 @@
 /usr/local/include/evolution-data-server/camel/camel-sasl-xoauth2.h
 /usr/local/include/evolution-data-server/camel/camel-sasl.h
 /usr/local/include/evolution-data-server/camel/camel-search-private.h
-/usr/local/include/evolution-data-server/camel/camel-search-sql-sexp.h
+/usr/local/include/evolution-data-server/camel/camel-search-utils.h
 /usr/local/include/evolution-data-server/camel/camel-service.h
 /usr/local/include/evolution-data-server/camel/camel-session.h
 /usr/local/include/evolution-data-server/camel/camel-settings.h
 /usr/local/include/evolution-data-server/camel/camel-sexp.h
 /usr/local/include/evolution-data-server/camel/camel-smime-context.h
+/usr/local/include/evolution-data-server/camel/camel-store-db.h
+/usr/local/include/evolution-data-server/camel/camel-store-search.h
 /usr/local/include/evolution-data-server/camel/camel-store-settings.h
 /usr/local/include/evolution-data-server/camel/camel-store-summary.h
 /usr/local/include/evolution-data-server/camel/camel-store.h
@@ -120,7 +121,6 @@
 /usr/local/include/evolution-data-server/camel/camel-url.h
 /usr/local/include/evolution-data-server/camel/camel-utf8.h
 /usr/local/include/evolution-data-server/camel/camel-utils.h
-/usr/local/include/evolution-data-server/camel/camel-vee-data-cache.h
 /usr/local/include/evolution-data-server/camel/camel-vee-folder.h
 /usr/local/include/evolution-data-server/camel/camel-vee-message-info.h
 /usr/local/include/evolution-data-server/camel/camel-vee-store.h
@@ -188,6 +188,7 @@
 /usr/local/include/evolution-data-server/libecal/e-cal-component-alarm.h
 /usr/local/include/evolution-data-server/libecal/e-cal-component-alarms.h
 /usr/local/include/evolution-data-server/libecal/e-cal-component-attendee.h
+/usr/local/include/evolution-data-server/libecal/e-cal-component-bag.h
 /usr/local/include/evolution-data-server/libecal/e-cal-component-datetime.h
 /usr/local/include/evolution-data-server/libecal/e-cal-component-id.h
 /usr/local/include/evolution-data-server/libecal/e-cal-component-organizer.h
@@ -263,6 +264,7 @@
 /usr/local/include/evolution-data-server/libedataserver/e-list.h
 /usr/local/include/evolution-data-server/libedataserver/e-memory.h
 /usr/local/include/evolution-data-server/libedataserver/e-module.h
+/usr/local/include/evolution-data-server/libedataserver/e-ms-oapxbc.h
 /usr/local/include/evolution-data-server/libedataserver/e-named-parameters.h
 /usr/local/include/evolution-data-server/libedataserver/e-network-monitor.h
 /usr/local/include/evolution-data-server/libedataserver/e-oauth2-service-base.h
@@ -384,8 +386,8 @@
 /usr/local/lib/evolution-data-server/registry-modules/module-webdav-backend.so
 /usr/local/lib/evolution-data-server/registry-modules/module-yahoo-backend.so
 /usr/local/lib/libcamel-1.2.so
-/usr/local/lib/libcamel-1.2.so.64
-/usr/local/lib/libcamel-1.2.so.64.0.0
+/usr/local/lib/libcamel-1.2.so.66
+/usr/local/lib/libcamel-1.2.so.66.0.0
 /usr/local/lib/libebackend-1.2.so
 /usr/local/lib/libebackend-1.2.so.11
 /usr/local/lib/libebackend-1.2.so.11.0.0
@@ -425,6 +427,7 @@
 /usr/local/lib/pkgconfig/libedataserverui-1.2.pc
 /usr/local/lib/pkgconfig/libedataserverui4-1.0.pc
 /usr/local/lib/systemd/user/evolution-addressbook-factory.service
+/usr/local/lib/systemd/user/evolution-alarm-notify.service
 /usr/local/lib/systemd/user/evolution-calendar-factory.service
 /usr/local/lib/systemd/user/evolution-source-registry.service
 /usr/local/lib/systemd/user/evolution-user-prompter.service
@@ -519,6 +522,7 @@
 /usr/local/share/locale/hr/LC_MESSAGES/evolution-data-server.mo
 /usr/local/share/locale/hu/LC_MESSAGES/evolution-data-server.mo
 /usr/local/share/locale/id/LC_MESSAGES/evolution-data-server.mo
+/usr/local/share/locale/ie/LC_MESSAGES/evolution-data-server.mo
 /usr/local/share/locale/is/LC_MESSAGES/evolution-data-server.mo
 /usr/local/share/locale/it/LC_MESSAGES/evolution-data-server.mo
 /usr/local/share/locale/ja/LC_MESSAGES/evolution-data-server.mo
