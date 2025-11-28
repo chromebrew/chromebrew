@@ -1,5 +1,6 @@
 #!/bin/bash
-CREW_INSTALLER_VERSION=2025112401
+CREW_INSTALLER_VERSION=2025112701
+
 # Exit on fail.
 set -eE
 
@@ -12,41 +13,6 @@ echo_info_stderr() { echo -e "\e[1;35m${*}${RESET}" >&2; } # Use Magenta for inf
 echo_success() { echo -e "\e[1;32m${*}${RESET}" >&1; } # Use Green for success messages.
 echo_intra() { echo -e "\e[1;34m${*}${RESET}" >&1; } # Use Blue for intrafunction messages.
 echo_out() { echo -e "\e[0;37m${*}${RESET}" >&1; } # Use Gray for program output.
-
-this_installer=$(basename "$0")
-case "${this_installer}" in
-  63)
-    # We are being piped in. Assume we are being piped in from curl
-    # and echo the current installer date from github.
-    echo_info "Current Chromebrew Installer is from $(curl -s "https://api.github.com/repos/chromebrew/chromebrew/commits?path=install.sh&page=1&per_page=1" | jq -r '.[0].commit.committer.date')"
-    ;;
-  install.sh)
-    # The installer was manually downloaded or we are in a container
-    # image install.
-    echo_info "Current Chromebrew Installer is from $(curl -s "https://api.github.com/repos/chromebrew/chromebrew/commits?path=install.sh&page=1&per_page=1" | jq -r '.[0].commit.committer.date')"
-    echo_info "Installer ${this_installer} last modified at: $(stat -c %y "$0")"
-    ;;
-  *)
-    echo_info "Installer ${this_installer} last modified at: $(stat -c %y "$0")"
-  esac
-
-# Add proper support for parsing /etc/lsb-release
-# Reference: https://www.chromium.org/chromium-os/developer-library/reference/infrastructure/lsb-release/
-lsbval() {
-  local key="$1"
-  local lsbfile="${2:-/etc/lsb-release}"
-
-  if ! echo "${key}" | grep -Eq '^[a-zA-Z0-9_]+$'; then
-    return 1
-  fi
-
-  sed -E -n -e \
-    "/^[[:space:]]*${key}[[:space:]]*=/{
-      s:^[^=]+=[[:space:]]*::
-      s:[[:space:]]+$::
-      p
-    }" "${lsbfile}"
-}
 
 # Print a message before exit on error
 # shellcheck disable=SC2064
@@ -67,6 +33,24 @@ if [[ -d /opt/google/cros-containers && "${CREW_FORCE_INSTALL}" != '1' ]]; then
   exit 1
 fi
 
+# Add proper support for parsing /etc/lsb-release
+# Reference: https://www.chromium.org/chromium-os/developer-library/reference/infrastructure/lsb-release/
+lsbval() {
+  local key="$1"
+  local lsbfile="${2:-/etc/lsb-release}"
+
+  if ! echo "${key}" | grep -Eq '^[a-zA-Z0-9_]+$'; then
+    return 1
+  fi
+
+  sed -E -n -e \
+    "/^[[:space:]]*${key}[[:space:]]*=/{
+      s:^[^=]+=[[:space:]]*::
+      s:[[:space:]]+$::
+      p
+    }" "${lsbfile}"
+}
+
 # Reject non-stable Chrome OS channels.
 if [ -f /etc/lsb-release ]; then
   if [[ ! "$(lsbval CHROMEOS_RELEASE_TRACK)" =~ stable-channel && "${CREW_FORCE_INSTALL}" != '1' ]]; then
@@ -79,6 +63,23 @@ else
   echo_info "Unable to detect system information, installation will continue."
 fi
 
+this_installer=$(basename "$0")
+case "${this_installer}" in
+  63)
+    # We are being piped in. Assume we are being piped in from curl
+    # and echo the current installer date from github.
+    echo_info "Current Chromebrew Installer is from $(curl -s "https://api.github.com/repos/chromebrew/chromebrew/commits?path=install.sh&page=1&per_page=1" | jq -r '.[0].commit.committer.date')"
+    ;;
+  install.sh)
+    # The installer was manually downloaded or we are in a container
+    # image install.
+    echo_info "Current Chromebrew Installer is from $(curl -s "https://api.github.com/repos/chromebrew/chromebrew/commits?path=install.sh&page=1&per_page=1" | jq -r '.[0].commit.committer.date')"
+    echo_info "Installer ${this_installer} last modified at: $(stat -c %y "$0")"
+    ;;
+  *)
+    echo_info "Installer ${this_installer} last modified at: $(stat -c %y "$0")"
+  esac
+
 set -a
 # Default chromebrew repo values.
 : "${OWNER:=chromebrew}"
@@ -86,16 +87,17 @@ set -a
 : "${BRANCH:=master}"
 : "${CREW_BRANCH:=${BRANCH}}"
 : "${CREW_REPO:=https://github.com/${OWNER}/${REPO}.git}"
+: "${CREW_PREFIX:=/usr/local}"
+: "${CREW_CACHE_DIR:=$CREW_PREFIX/tmp/packages}"
 set +a
 
 # Check if the user owns the CREW_PREFIX directory, as sudo is unnecessary if this is the case.
 # Check if the user is on ChromeOS v117+ and not in the VT-2 console, as sudo will not work.
-: "${CREW_PREFIX:=/usr/local}"
-if [[ "$(stat -c '%u' "${CREW_PREFIX}")" == "$(id -u)" ]] && sudo 2>&1 | grep -q 'no new privileges'; then
-  echo_error "Please run the installer in the VT-2 shell."
-  echo_info "To start the VT-2 session, type Ctrl + Alt + ->"
-  exit 1
-fi
+#if [[ "$(stat -c '%u' "${CREW_PREFIX}")" == "$(id -u)" ]] && sudo 2>&1 | grep -q 'no new privileges'; then
+#  echo_error "Please run the installer in the VT-2 shell."
+#  echo_info "To start the VT-2 session, type Ctrl + Alt + ->"
+#  exit 1
+#fi
 
 # Make sure installation directory is clean.
 if [ -d "${CREW_PREFIX}" ]; then
@@ -117,10 +119,10 @@ else
 fi
 
 # Do not redundantly use sudo if the user already owns the directory.
-if [ "$(stat -c '%u' "${CREW_PREFIX}")" != "$(id -u)" ]; then
-  # This will allow things to work without sudo.
-  sudo chown "$(id -u)":"$(id -g)" "${CREW_PREFIX}"
-fi
+#if [ "$(stat -c '%u' "${CREW_PREFIX}")" != "$(id -u)" ]; then
+#  # This will allow things to work without sudo.
+#  sudo chown "$(id -u)":"$(id -g)" "${CREW_PREFIX}"
+#fi
 
 # Chromebrew directories.
 CREW_LIB_PATH="${CREW_PREFIX}/lib/crew"
@@ -128,12 +130,11 @@ CREW_CONFIG_PATH="${CREW_PREFIX}/etc/crew"
 CREW_META_PATH="${CREW_CONFIG_PATH}/meta"
 CREW_BREW_DIR="${CREW_PREFIX}/tmp/crew"
 CREW_DEST_DIR="${CREW_BREW_DIR}/dest"
-: "${CREW_CACHE_DIR:=$CREW_PREFIX/tmp/packages}"
 
-if [ -n "$CREW_CACHE_ENABLED" ]; then
+if [ -n "${CREW_CACHE_ENABLED}" ]; then
   echo_intra "Verifying setup of ${CREW_CACHE_DIR} since CREW_CACHE_ENABLED is set..."
   mkdir -p "${CREW_CACHE_DIR}"
-  sudo chown -R "$(id -u)":"$(id -g)" "${CREW_CACHE_DIR}" || true
+  #sudo chown -R "$(id -u)":"$(id -g)" "${CREW_CACHE_DIR}" || true
 fi
 
 # Architecture
@@ -142,13 +143,13 @@ fi
 # on a x86_64 host by setting ARCH=i686.
 : "${ARCH:=$(uname -m)}"
 
-if [[ "$ARCH" == "x86_64" ]] || [[ "$ARCH" == "aarch64" ]]; then
-  SYSTEM_LIB_SUFFIX='64'
-fi
-
+CREW_LIB_SUFFIX=''
+SYSTEM_LIB_SUFFIX=''
 if [[ "$ARCH" == "x86_64" ]]; then
   CREW_LIB_SUFFIX='64'
+  SYSTEM_LIB_SUFFIX='64'
 fi
+export LD_LIBRARY_PATH="${CREW_PREFIX}/lib${CREW_LIB_SUFFIX}:/usr/lib${CREW_LIB_SUFFIX}:/lib${CREW_LIB_SUFFIX}"
 
 # For container usage, when we are emulating armv7l via linux32, where uname -m will report armv8l.
 # Additionally, if the architecture is aarch64, set it to armv7l, as we treat as if it was armv7l.
@@ -156,7 +157,7 @@ fi
 if [[ "${ARCH}" = "armv8l" ]] || [[ "${ARCH}" = "aarch64" ]]; then
   echo_info "Setting ARCH to armv7l."
   ARCH='armv7l'
-  PREFIX_CMD="linux32 env LD_LIBRARY_PATH=${CREW_PREFIX}/lib${CREW_LIB_SUFFIX}:/usr/lib${CREW_LIB_SUFFIX}:/lib${CREW_LIB_SUFFIX}"
+  PREFIX_CMD="linux32 env ${LD_LIBRARY_PATH}"
 fi
 
 if [[ "${ARCH}" = "x86_64" ]] && [[ -f "/lib/ld-2.23.so" ]]; then
@@ -165,7 +166,7 @@ if [[ "${ARCH}" = "x86_64" ]] && [[ -f "/lib/ld-2.23.so" ]]; then
   # Set CREW_PRE_GLIBC_STANDALONE for i686.
   export CREW_PRE_GLIBC_STANDALONE=1
   echo "export CREW_PRE_GLIBC_STANDALONE=1" >> ~/.bashrc
-  PREFIX_CMD="linux32 env LD_LIBRARY_PATH=${CREW_PREFIX}/lib${CREW_LIB_SUFFIX}:/usr/lib${CREW_LIB_SUFFIX}:/lib${CREW_LIB_SUFFIX}"
+  PREFIX_CMD="linux32 env ${LD_LIBRARY_PATH}"
 fi
 
 PATCHELF_INTERPRETER="${CREW_PREFIX}/bin/ld.so"
@@ -288,7 +289,7 @@ else
   # first.
   # psmisc provides pstree which is used by crew
   # findutils provides find which is used by crew during installs.
-  BOOTSTRAP_PACKAGES='zstd_static glibc crew_preload'
+  BOOTSTRAP_PACKAGES='zstd_static glibc'
   # Get linux32 as early as possible.
   [[ -n "${PREFIX_CMD}" ]] && BOOTSTRAP_PACKAGES+=' util_linux'
   BOOTSTRAP_PACKAGES+=' libxcrypt upx patchelf lz4 zlib xzutils zlib_ng crew_mvdir ncurses readline bash gcc_lib ca_certificates libyaml openssl gmp findutils psmisc'
@@ -329,133 +330,133 @@ jq --arg key0 'architecture' --arg value0 "${ARCH}" \
 
 # These functions are for handling packages.
 function download_check () {
-    cd "$CREW_BREW_DIR"
-    # Use cached file if available and caching is enabled.
-    if [ -n "$CREW_CACHE_ENABLED" ]; then
-      echo_intra "Looking for ${3} in ${CREW_CACHE_DIR}"
-      if [[ -f "$CREW_CACHE_DIR/${3}" ]] ; then
-        echo_info "$CREW_CACHE_DIR/${3} found."
-        echo_intra "Verifying cached ${1}..."
-        if echo "${4}" "$CREW_CACHE_DIR/${3}" | sha256sum -c -; then
-          echo_success "Verification of cached ${1} succeeded."
-          ln -sf "$CREW_CACHE_DIR/${3}" "$CREW_BREW_DIR/${3}" || true
-          return 0
-        else
-          echo_error "Verification of cached $CREW_CACHE_DIR/${3} failed with sha256 ${4}, downloading."
-        fi
+  cd "$CREW_BREW_DIR"
+  # Use cached file if available and caching is enabled.
+  if [ -n "$CREW_CACHE_ENABLED" ]; then
+    echo_intra "Looking for ${3} in ${CREW_CACHE_DIR}"
+    if [[ -f "$CREW_CACHE_DIR/${3}" ]] ; then
+      echo_info "$CREW_CACHE_DIR/${3} found."
+      echo_intra "Verifying cached ${1}..."
+      if echo "${4}" "$CREW_CACHE_DIR/${3}" | sha256sum -c -; then
+        echo_success "Verification of cached ${1} succeeded."
+        ln -sf "$CREW_CACHE_DIR/${3}" "$CREW_BREW_DIR/${3}" || true
+        return 0
       else
-        echo_intra "$CREW_CACHE_DIR/${3} not found"
+        echo_error "Verification of cached $CREW_CACHE_DIR/${3} failed with sha256 ${4}, downloading."
       fi
-    fi
-    # Download
-    echo_intra "Downloading ${1}..."
-    curl_wrapper '-#' -L "${2}" -o "${3}"
-
-    # Verify
-    echo_intra "Verifying ${1}..."
-    if echo "${4}" "${3}" | sha256sum -c - ; then
-      if [ -n "$CREW_CACHE_ENABLED" ] ; then
-        cp "${3}" "$CREW_CACHE_DIR/${3}" || true
-      fi
-      echo_success "Verification of ${1} succeeded."
-      return 0
     else
-      if [[ ${5} -lt 2 ]]; then
-        echo_error "Verification of ${1} failed, something may be wrong with the download."
-        exit 1
-      else
-        echo_info "Verification of ${1} failed. Will try another sha256 hash if available."
-        return 1
-      fi
+      echo_intra "$CREW_CACHE_DIR/${3} not found"
     fi
+  fi
+  # Download
+  echo_intra "Downloading ${1}..."
+  curl_wrapper '-#' -L "${2}" -o "${3}"
+
+  # Verify
+  echo_intra "Verifying ${1}..."
+  if echo "${4}" "${3}" | sha256sum -c - ; then
+    if [ -n "$CREW_CACHE_ENABLED" ] ; then
+      cp "${3}" "$CREW_CACHE_DIR/${3}" || true
+    fi
+    echo_success "Verification of ${1} succeeded."
+    return 0
+  else
+    if [[ ${5} -lt 2 ]]; then
+      echo_error "Verification of ${1} failed, something may be wrong with the download."
+      exit 1
+    else
+      echo_info "Verification of ${1} failed. Will try another sha256 hash if available."
+      return 1
+    fi
+  fi
 }
 
 function extract_install () {
-    # Start with a clean slate.
-    rm -rf "${CREW_DEST_DIR}"
-    mkdir "${CREW_DEST_DIR}"
-    cd "${CREW_DEST_DIR}"
-    XZ_STATUS=
-    if [[ -f /usr/bin/xz ]] && env -u LD_LIBRARY_PATH /usr/bin/xz --help &>/dev/null; then
-      XZ_STATUS="system"
-    elif ! xz --help &>/dev/null; then
-      XZ_STATUS="broken"
-    fi
-    ZSTD_STATUS=
-    ZSTD=
-    if [[ -x "${CREW_PREFIX}/bin/zstd-static" ]] && "${CREW_PREFIX}"/bin/zstd-static --help &>/dev/null; then
-      ZSTD_STATUS="crew"
-      ZSTD="${CREW_PREFIX}/bin/zstd-static"
-    elif [[ -f /usr/bin/zstd ]] && env -u LD_LIBRARY_PATH /usr/bin/zstd --help &>/dev/null; then
-      ZSTD_STATUS="system"
-      ZSTD="/usr/bin/zstd"
-    elif ! zstd --help &>/dev/null; then
-      ZSTD_STATUS="broken"
-    fi
+  # Start with a clean slate.
+  rm -rf "${CREW_DEST_DIR}"
+  mkdir "${CREW_DEST_DIR}"
+  cd "${CREW_DEST_DIR}"
+  XZ_STATUS=
+  if [[ -f /usr/bin/xz ]] && env -u LD_LIBRARY_PATH /usr/bin/xz --help &>/dev/null; then
+    XZ_STATUS="system"
+  elif ! xz --help &>/dev/null; then
+    XZ_STATUS="broken"
+  fi
+  ZSTD_STATUS=
+  ZSTD=
+  if [[ -x "${CREW_PREFIX}/bin/zstd-static" ]] && "${CREW_PREFIX}"/bin/zstd-static --help &>/dev/null; then
+    ZSTD_STATUS="crew"
+    ZSTD="${CREW_PREFIX}/bin/zstd-static"
+  elif [[ -f /usr/bin/zstd ]] && env -u LD_LIBRARY_PATH /usr/bin/zstd --help &>/dev/null; then
+    ZSTD_STATUS="system"
+    ZSTD="/usr/bin/zstd"
+  elif ! zstd --help &>/dev/null; then
+    ZSTD_STATUS="broken"
+  fi
 
-    [[ -z ${XZ_STATUS} ]] || echo_info_stderr "XZ: ${XZ_STATUS}"
-    [[ -z ${ZSTD_STATUS} ]] || echo_info_stderr "ZSTD: ${ZSTD_STATUS}"
-    # Extract and install.
-    echo_intra "Extracting ${1} ..."
-    if [[ "${2##*.}" == "xz" ]]; then
-      if [[ -z $XZ_STATUS ]]; then
-        tar xpf ../"${2}"
-      elif [[ $XZ_STATUS == 'system' ]]; then
-       LD_LIBRARY_PATH=/usr/lib${SYSTEM_LIB_SUFFIX}:/lib${SYSTEM_LIB_SUFFIX} /bin/tar -I /usr/bin/xz -xpf ../"${2}"
-      elif [[ $XZ_STATUS == 'broken' ]] && [[ -z $ZSTD_STATUS ]] && zstd --help 2>/dev/null| grep -q lzma; then
-        tar -I "${ZSTD}" -xpf ../"${2}"
-      elif [[ $XZ_STATUS == 'broken' ]] && [[ $ZSTD_STATUS == 'broken' ]]; then
-        echo_error "xz and zstd are broken. Install will fail." && exit 1
-      elif [[ $XZ_STATUS == 'broken' ]] && [[ $ZSTD_STATUS == 'system' ]]; then
-        env -u LD_LIBRARY_PATH tar -I "${ZSTD}" -xpf ../"${2}"
-      fi
+  [[ -z ${XZ_STATUS} ]] || echo_info_stderr "XZ: ${XZ_STATUS}"
+  [[ -z ${ZSTD_STATUS} ]] || echo_info_stderr "ZSTD: ${ZSTD_STATUS}"
+  # Extract and install.
+  echo_intra "Extracting ${1} ..."
+  if [[ "${2##*.}" == "xz" ]]; then
+    if [[ -z $XZ_STATUS ]]; then
+      tar xpf ../"${2}"
+    elif [[ $XZ_STATUS == 'system' ]]; then
+      LD_LIBRARY_PATH=/usr/lib${SYSTEM_LIB_SUFFIX}:/lib${SYSTEM_LIB_SUFFIX} /bin/tar -I /usr/bin/xz -xpf ../"${2}"
+    elif [[ $XZ_STATUS == 'broken' ]] && [[ -z $ZSTD_STATUS ]] && zstd --help 2>/dev/null| grep -q lzma; then
+      tar -I "${ZSTD}" -xpf ../"${2}"
+    elif [[ $XZ_STATUS == 'broken' ]] && [[ $ZSTD_STATUS == 'broken' ]]; then
+      echo_error "xz and zstd are broken. Install will fail." && exit 1
+    elif [[ $XZ_STATUS == 'broken' ]] && [[ $ZSTD_STATUS == 'system' ]]; then
+      env -u LD_LIBRARY_PATH tar -I "${ZSTD}" -xpf ../"${2}"
     fi
-    if [[ "${2##*.}" == "zst" ]]; then
-      if [[ -z $ZSTD_STATUS ]] && tar --usage | grep -q zstd ; then
-        tar xpf ../"${2}"
-      elif [[ $ZSTD_STATUS == 'system' ]]; then
-        LD_LIBRARY_PATH=/usr/lib${SYSTEM_LIB_SUFFIX}:/lib${SYSTEM_LIB_SUFFIX} /bin/tar -I "${ZSTD}" -xpf ../"${2}"
-      elif [[ $ZSTD_STATUS == 'crew' ]]; then
-        tar -I "${ZSTD}" -xpf ../"${2}"
-      elif [[ $ZSTD_STATUS == 'broken' ]]; then
-        DEBUG_OUT="ZSTD: ${ZSTD_STATUS}\nLD_LIBRARY_PATH ${LD_LIBRARY_PATH}"
-        DEBUG_OUT+="$(ldd "$ZSTD")"
-        echo_info_stderr "${DEBUG_OUT}"
-        echo_error "zstd is broken. Install will fail."
-        exit 1
-      else
-        tar -I zstd -xpf ../"${2}"
-      fi
-    fi
-
-    echo_intra "Installing ${1}..."
-    tar cpf - ./*/* | (cd /; tar xp --keep-directory-symlink -m -f -)
-
-    if [[ "${1}" == 'glibc' ]] || [[ "${1}" == 'crew_preload' ]]; then
-      # Update ld.so cache.
-      if [[ "$ARCH" == "i686" ]] || [[ "$ARCH" == "armv7l" ]]; then
-        (sudo "${CREW_PREFIX}/bin/ldconfig" | tee /tmp/crew_ldconfig) || true
-      else
-      "${CREW_PREFIX}/bin/ldconfig" || true
-      fi
-      [[ -d /usr/local/opt/glibc-libs ]] && export LD_PRELOAD=crew-preload.so
+  fi
+  if [[ "${2##*.}" == "zst" ]]; then
+    if [[ -z $ZSTD_STATUS ]] && tar --usage | grep -q zstd ; then
+      tar xpf ../"${2}"
+    elif [[ $ZSTD_STATUS == 'system' ]]; then
+      LD_LIBRARY_PATH=/usr/lib${SYSTEM_LIB_SUFFIX}:/lib${SYSTEM_LIB_SUFFIX} /bin/tar -I "${ZSTD}" -xpf ../"${2}"
+    elif [[ $ZSTD_STATUS == 'crew' ]]; then
+      tar -I "${ZSTD}" -xpf ../"${2}"
+    elif [[ $ZSTD_STATUS == 'broken' ]]; then
+      DEBUG_OUT="ZSTD: ${ZSTD_STATUS}\nLD_LIBRARY_PATH ${LD_LIBRARY_PATH}"
+      DEBUG_OUT+="$(ldd "$ZSTD")"
+      echo_info_stderr "${DEBUG_OUT}"
+      echo_error "zstd is broken. Install will fail."
+      exit 1
     else
-      # Decompress binaries.
-      if command -v upx &> /dev/null; then
-        echo_intra "Running upx on ${1}..."
-        grep "/usr/local/\(bin\|lib\|lib${CREW_LIB_SUFFIX}\)" < filelist | xargs -P "$(nproc)" -n1 upx -qq -d 2> /dev/null || true
-      fi
-      # Switch to our glibc for existing binaries if needed.
-      if [[ -d /usr/local/opt/glibc-libs ]]; then
-        if command -v patchelf &> /dev/null; then
-          echo_intra "Running patchelf on ${1}..."
-          grep '/usr/local/bin' < filelist | xargs -P "$(nproc)" -n1 patchelf --set-interpreter "${PATCHELF_INTERPRETER}" 2> /dev/null || true
-        fi
-      fi
+      tar -I zstd -xpf ../"${2}"
     fi
+  fi
 
-    mv ./dlist "${CREW_META_PATH}/${1}.directorylist"
-    mv ./filelist "${CREW_META_PATH}/${1}.filelist"
+  echo_intra "Installing ${1}..."
+  tar cpf - ./*/* | (cd /; tar xp --keep-directory-symlink -m -f -)
+
+  if [[ "${1}" == 'glibc' ]] || [[ "${1}" == 'crew_preload' ]]; then
+    # Update ld.so cache.
+    if [[ "$ARCH" == "i686" ]] || [[ "$ARCH" == "armv7l" ]]; then
+      (sudo "${CREW_PREFIX}/bin/ldconfig" | tee /tmp/crew_ldconfig) || true
+    else
+     "${CREW_PREFIX}/bin/ldconfig" || true
+    fi
+    #[[ -d /usr/local/opt/glibc-libs ]] && export LD_PRELOAD=crew-preload.so
+  else
+    # Decompress binaries.
+    if command -v upx &> /dev/null; then
+      echo_intra "Running upx on ${1}..."
+      grep "${CREW_PREFIX}/\(bin\|lib\|lib${CREW_LIB_SUFFIX}\)" < filelist | xargs -P "$(nproc)" -n1 upx -qq -d 2> /dev/null || true
+    fi
+    # Switch to our glibc for existing binaries if needed.
+    #if [[ -d /usr/local/opt/glibc-libs ]]; then
+    #  if command -v patchelf &> /dev/null; then
+    #    echo_intra "Running patchelf on ${1}..."
+    #    grep '/usr/local/bin' < filelist | xargs -P "$(nproc)" -n1 patchelf --set-interpreter "${PATCHELF_INTERPRETER}" 2> /dev/null || true
+    #  fi
+    #fi
+  fi
+
+  mv ./dlist "${CREW_META_PATH}/${1}.directorylist"
+  mv ./filelist "${CREW_META_PATH}/${1}.filelist"
 }
 
 function get_pkg_version () {
@@ -553,22 +554,21 @@ ln -sfv "../lib/crew/bin/crew" "${CREW_PREFIX}/bin/"
 echo "export CREW_PREFIX=${CREW_PREFIX}" >> "${CREW_PREFIX}/etc/env.d/profile"
 
 CREW_RUBY_VER="ruby$(ruby -e 'puts RUBY_VERSION.slice(/(?:.*(?=\.))/)')"
-echo_info 'Updating RubyGems...'
-${PREFIX_CMD} gem sources -u
+#echo_info 'Updating RubyGems...'
+#${PREFIX_CMD} gem sources -u
 # Avoid repl_type_completor, which pulls in the rbs gem, which needs a build.
 # shellcheck disable=SC2016
-${PREFIX_CMD} gem outdated | cut -d " " -f 1 | grep -v repl_type_completor | xargs -I % bash -c 'export pkg=% ; grep -q no_compile_needed /usr/local/lib/crew/packages/ruby_${pkg//-/_}.rb && (echo "Updating % gem" ; gem update % --no-update-sources -N) || echo "Not updating % gem, since it needs a gem compile and buildessential has not been installed yet."'
+#${PREFIX_CMD} gem outdated | cut -d " " -f 1 | grep -v repl_type_completor | xargs -I % bash -c 'export pkg=% ; grep -q no_compile_needed /usr/local/lib/crew/packages/ruby_${pkg//-/_}.rb && (echo "Updating % gem" ; gem update % --no-update-sources -N) || echo "Not updating % gem, since it needs a gem compile and buildessential has not been installed yet."'
 
 # Mark packages as installed for pre-installed gems.
 mapfile -t installed_gems < <(gem list | awk -F ' \(' '{print $1, $2}' | sed -e 's/default://' -e 's/)//' -e 's/,//' | awk '{print $1, $2}')
-for i in "${!installed_gems[@]}"
-  do
-   j="${installed_gems[$i]}"
-   gem_package="${j% *}"
-   crew_gem_package="ruby_${gem_package//-/_}"
-   gem_version="${j#* }"
-   gem contents "${gem_package}" > "${CREW_META_PATH}/${crew_gem_package}.filelist"
-   update_device_json "ruby_${gem_package//-/_}" "${gem_version}-${CREW_RUBY_VER}" ""
+for i in "${!installed_gems[@]}"; do
+  j="${installed_gems[$i]}"
+  gem_package="${j% *}"
+  crew_gem_package="ruby_${gem_package//-/_}"
+  gem_version="${j#* }"
+  gem contents "${gem_package}" > "${CREW_META_PATH}/${crew_gem_package}.filelist"
+  update_device_json "ruby_${gem_package//-/_}" "${gem_version}-${CREW_RUBY_VER}" ""
 done
 
 echo_info "Installing essential ruby gems...\n"

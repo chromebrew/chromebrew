@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION = defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION = '1.68.4' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION = '1.68.5' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH = Etc.uname[:machine]
@@ -135,7 +135,7 @@ CREW_DEST_HOME  = File.join(CREW_DEST_DIR, HOME)
 CREW_NO_GIT     = ENV.fetch('CREW_NO_GIT', false)
 CREW_UNATTENDED = ENV.fetch('CREW_UNATTENDED', false)
 
-CREW_STANDALONE_UPGRADE_ORDER = %w[libxcrypt crew_preload glibc openssl ruby python3 perl icu4c sommelier]
+CREW_STANDALONE_UPGRADE_ORDER = %w[libxcrypt glibc openssl ruby python3 perl icu4c sommelier]
 
 CREW_DEBUG        = ARGV.include?('-D') || ARGV.include?('--debug')
 CREW_FORCE        = ARGV.include?('-f') || ARGV.include?('--force')
