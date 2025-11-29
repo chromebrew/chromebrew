@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Evolution_data_server < CMake
   description 'Centralized access to appointments and contacts'
   homepage 'https://wiki.gnome.org/Apps/Evolution'
-  version "3.52.4-#{CREW_ICU_VER}"
+  version "3.58.2-#{CREW_ICU_VER}"
   license 'LGPL-2 or LGPL-3, BSD and Sleepycat'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/evolution-data-server.git'
@@ -11,9 +11,9 @@ class Evolution_data_server < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '412f9158079a8854043b61b7af86f441aafd0df26c495405d27931a95d708899',
-     armv7l: '412f9158079a8854043b61b7af86f441aafd0df26c495405d27931a95d708899',
-     x86_64: 'c62e7f447c0f9d84ae27b3a83b52d042e3190377d582b0cfd99fe054e6dbc445'
+    aarch64: '91922361b25b58baa8a82f99c0d848f58e11620e57058ef135dec649fe216e75',
+     armv7l: '91922361b25b58baa8a82f99c0d848f58e11620e57058ef135dec649fe216e75',
+     x86_64: 'dab1cf04983e43d4ca04a8e50b52477d4d95db576f61c1704ce70c40849ed6f3'
   })
 
   depends_on 'at_spi2_core' # R
@@ -22,8 +22,8 @@ class Evolution_data_server < CMake
   depends_on 'gcc_lib' # R
   depends_on 'gcr_3' # R
   depends_on 'gdk_pixbuf' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gobject_introspection' => :build
   depends_on 'graphene' # R
   depends_on 'gtk3' # R
@@ -43,6 +43,7 @@ class Evolution_data_server < CMake
   depends_on 'p11kit' # R
   depends_on 'pango' # R
   depends_on 'sqlite' # R
+  depends_on 'util_linux' # R
   depends_on 'vala' => :build
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' # R

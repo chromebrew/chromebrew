@@ -1,9 +1,10 @@
-# Total size: 102487519
+# Total size: 1025571854
 /usr/local/bin/netbeans
 /usr/local/share/netbeans/DEPENDENCIES
 /usr/local/share/netbeans/LICENSE
 /usr/local/share/netbeans/NOTICE
 /usr/local/share/netbeans/README.html
+/usr/local/share/netbeans/apisupport/.lastModified
 /usr/local/share/netbeans/apisupport/VERSION.txt
 /usr/local/share/netbeans/apisupport/ant/nblib/org-netbeans-modules-apisupport-ant.jar
 /usr/local/share/netbeans/apisupport/config/Modules/org-netbeans-modules-apisupport-ant.xml
@@ -28,6 +29,7 @@
 /usr/local/share/netbeans/apisupport/update_tracking/org-netbeans-modules-maven-apisupport.xml
 /usr/local/share/netbeans/apisupport/update_tracking/org-netbeans-modules-timers.xml
 /usr/local/share/netbeans/bin/netbeans
+/usr/local/share/netbeans/cpplite/.lastModified
 /usr/local/share/netbeans/cpplite/VERSION.txt
 /usr/local/share/netbeans/cpplite/config/Modules/org-netbeans-modules-cpplite-debugger.xml
 /usr/local/share/netbeans/cpplite/config/Modules/org-netbeans-modules-cpplite-editor.xml
@@ -42,6 +44,7 @@
 /usr/local/share/netbeans/cpplite/update_tracking/org-netbeans-modules-cpplite-editor.xml
 /usr/local/share/netbeans/cpplite/update_tracking/org-netbeans-modules-cpplite-kit.xml
 /usr/local/share/netbeans/cpplite/update_tracking/org-netbeans-modules-cpplite-project.xml
+/usr/local/share/netbeans/enterprise/.lastModified
 /usr/local/share/netbeans/enterprise/VERSION.txt
 /usr/local/share/netbeans/enterprise/ant/extra/jspcompile.jar
 /usr/local/share/netbeans/enterprise/ant/nblib/org-netbeans-modules-j2ee-ant.jar
@@ -547,6 +550,7 @@
 /usr/local/share/netbeans/enterprise/update_tracking/org-netbeans-modules-websvc-utilities.xml
 /usr/local/share/netbeans/enterprise/update_tracking/org-netbeans-modules-websvc-websvcapi.xml
 /usr/local/share/netbeans/enterprise/update_tracking/org-netbeans-modules-websvc-wsstackapi.xml
+/usr/local/share/netbeans/ergonomics/.lastModified
 /usr/local/share/netbeans/ergonomics/config/Modules/org-apache-tools-ant-module.xml
 /usr/local/share/netbeans/ergonomics/config/Modules/org-netbeans-libs-jstl.xml
 /usr/local/share/netbeans/ergonomics/config/Modules/org-netbeans-libs-nbjavacapi.xml
@@ -798,6 +802,7 @@
 /usr/local/share/netbeans/etc/netbeans.clusters
 /usr/local/share/netbeans/etc/netbeans.conf
 /usr/local/share/netbeans/etc/netbeans.import
+/usr/local/share/netbeans/extide/.lastModified
 /usr/local/share/netbeans/extide/VERSION.txt
 /usr/local/share/netbeans/extide/ant/bin/ant
 /usr/local/share/netbeans/extide/ant/bin/ant.bat
@@ -878,6 +883,7 @@
 /usr/local/share/netbeans/extide/update_tracking/org-netbeans-modules-gradle.xml
 /usr/local/share/netbeans/extide/update_tracking/org-netbeans-modules-libs-gradle.xml
 /usr/local/share/netbeans/extide/update_tracking/org-netbeans-modules-options-java.xml
+/usr/local/share/netbeans/groovy/.lastModified
 /usr/local/share/netbeans/groovy/VERSION.txt
 /usr/local/share/netbeans/groovy/config/Modules/org-netbeans-modules-gradle-groovy.xml
 /usr/local/share/netbeans/groovy/config/Modules/org-netbeans-modules-groovy-antproject.xml
@@ -914,6 +920,7 @@
 /usr/local/share/netbeans/groovy/update_tracking/org-netbeans-modules-groovy-support.xml
 /usr/local/share/netbeans/groovy/update_tracking/org-netbeans-modules-libs-groovy.xml
 /usr/local/share/netbeans/groovy/update_tracking/org-netbeans-modules-maven-groovy.xml
+/usr/local/share/netbeans/harness/.lastModified
 /usr/local/share/netbeans/harness/README
 /usr/local/share/netbeans/harness/antlib/bindex-2.2.jar
 /usr/local/share/netbeans/harness/build.xml
@@ -953,6 +960,7 @@
 /usr/local/share/netbeans/harness/update_tracking/org-netbeans-modules-jellytools-platform.xml
 /usr/local/share/netbeans/harness/update_tracking/org-netbeans-modules-jemmy.xml
 /usr/local/share/netbeans/harness/update_tracking/org-netbeans-modules-nbjunit.xml
+/usr/local/share/netbeans/ide/.lastModified
 /usr/local/share/netbeans/ide/VERSION.txt
 /usr/local/share/netbeans/ide/bin/nativeexecution/Linux-aarch64/killall
 /usr/local/share/netbeans/ide/bin/nativeexecution/Linux-aarch64/process_start
@@ -1291,6 +1299,7 @@
 /usr/local/share/netbeans/ide/config/Modules/org-netbeans-modules-terminal-nb.xml
 /usr/local/share/netbeans/ide/config/Modules/org-netbeans-modules-terminal.xml
 /usr/local/share/netbeans/ide/config/Modules/org-netbeans-modules-textmate-lexer.xml
+/usr/local/share/netbeans/ide/config/Modules/org-netbeans-modules-texttools.xml
 /usr/local/share/netbeans/ide/config/Modules/org-netbeans-modules-usersguide.xml
 /usr/local/share/netbeans/ide/config/Modules/org-netbeans-modules-utilities-project.xml
 /usr/local/share/netbeans/ide/config/Modules/org-netbeans-modules-utilities.xml
@@ -1672,6 +1681,7 @@
 /usr/local/share/netbeans/ide/modules/org-netbeans-modules-terminal-nb.jar
 /usr/local/share/netbeans/ide/modules/org-netbeans-modules-terminal.jar
 /usr/local/share/netbeans/ide/modules/org-netbeans-modules-textmate-lexer.jar
+/usr/local/share/netbeans/ide/modules/org-netbeans-modules-texttools.jar
 /usr/local/share/netbeans/ide/modules/org-netbeans-modules-usersguide.jar
 /usr/local/share/netbeans/ide/modules/org-netbeans-modules-utilities-project.jar
 /usr/local/share/netbeans/ide/modules/org-netbeans-modules-utilities.jar
@@ -1953,6 +1963,7 @@
 /usr/local/share/netbeans/ide/update_tracking/org-netbeans-modules-terminal-nb.xml
 /usr/local/share/netbeans/ide/update_tracking/org-netbeans-modules-terminal.xml
 /usr/local/share/netbeans/ide/update_tracking/org-netbeans-modules-textmate-lexer.xml
+/usr/local/share/netbeans/ide/update_tracking/org-netbeans-modules-texttools.xml
 /usr/local/share/netbeans/ide/update_tracking/org-netbeans-modules-usersguide.xml
 /usr/local/share/netbeans/ide/update_tracking/org-netbeans-modules-utilities-project.xml
 /usr/local/share/netbeans/ide/update_tracking/org-netbeans-modules-utilities.xml
@@ -1998,6 +2009,7 @@
 /usr/local/share/netbeans/ide/update_tracking/org-openidex-util.xml
 /usr/local/share/netbeans/ide/update_tracking/slf4j-api.xml
 /usr/local/share/netbeans/ide/update_tracking/slf4j-jdk14.xml
+/usr/local/share/netbeans/java/.lastModified
 /usr/local/share/netbeans/java/VERSION.txt
 /usr/local/share/netbeans/java/ant/extra/org-netbeans-modules-java-j2seproject-copylibstask.jar
 /usr/local/share/netbeans/java/ant/extra/org-netbeans-modules-javawebstart-anttasks.jar
@@ -2666,6 +2678,7 @@
 /usr/local/share/netbeans/java/update_tracking/org-netbeans-modules-xml-tools-java.xml
 /usr/local/share/netbeans/java/update_tracking/org-netbeans-spi-debugger-jpda-ui.xml
 /usr/local/share/netbeans/java/update_tracking/org-netbeans-spi-java-hints.xml
+/usr/local/share/netbeans/javafx/.lastModified
 /usr/local/share/netbeans/javafx/VERSION.txt
 /usr/local/share/netbeans/javafx/config/Modules/org-netbeans-modules-javafx2-editor.xml
 /usr/local/share/netbeans/javafx/config/Modules/org-netbeans-modules-javafx2-kit.xml
@@ -2733,7 +2746,6 @@
 /usr/local/share/netbeans/licenses/EPL-v10-with-osgi
 /usr/local/share/netbeans/licenses/EPL-v20
 /usr/local/share/netbeans/licenses/GPL-2-CP
-/usr/local/share/netbeans/licenses/Gradle
 /usr/local/share/netbeans/licenses/Gradle-icon
 /usr/local/share/netbeans/licenses/HTML5DOC
 /usr/local/share/netbeans/licenses/JavaCUP
@@ -2746,7 +2758,6 @@
 /usr/local/share/netbeans/licenses/MIT-icu4j
 /usr/local/share/netbeans/licenses/MIT-icu4j-74
 /usr/local/share/netbeans/licenses/MIT-isorelax
-/usr/local/share/netbeans/licenses/MIT-java-grammar
 /usr/local/share/netbeans/licenses/MIT-jquery
 /usr/local/share/netbeans/licenses/MIT-jruby
 /usr/local/share/netbeans/licenses/MIT-jsoup
@@ -2761,6 +2772,7 @@
 /usr/local/share/netbeans/licenses/MIT-vscode-material-icon-theme
 /usr/local/share/netbeans/licenses/Maven-EPL-v10
 /usr/local/share/netbeans/licenses/OSGi
+/usr/local/share/netbeans/licenses/PublicDomain-TangoProject
 /usr/local/share/netbeans/licenses/UPL
 /usr/local/share/netbeans/licenses/UPL-Apache-2.0
 /usr/local/share/netbeans/licenses/UPL-MIT-jcodings
@@ -2768,6 +2780,7 @@
 /usr/local/share/netbeans/licenses/W3C
 /usr/local/share/netbeans/licenses/W3C2
 /usr/local/share/netbeans/licenses/WSDL-2004
+/usr/local/share/netbeans/nb/.lastModified
 /usr/local/share/netbeans/nb/VERSION.txt
 /usr/local/share/netbeans/nb/apache-netbeans.ico
 /usr/local/share/netbeans/nb/apache-netbeans.svg
@@ -2819,6 +2832,7 @@
 /usr/local/share/netbeans/nb/update_tracking/org-netbeans-modules-updatecenters.xml
 /usr/local/share/netbeans/nb/update_tracking/org-netbeans-upgrader.xml
 /usr/local/share/netbeans/netbeans.css
+/usr/local/share/netbeans/php/.lastModified
 /usr/local/share/netbeans/php/VERSION.txt
 /usr/local/share/netbeans/php/config/Modules/org-netbeans-libs-javacup.xml
 /usr/local/share/netbeans/php/config/Modules/org-netbeans-modules-hudson-php.xml
@@ -2939,6 +2953,7 @@
 /usr/local/share/netbeans/php/update_tracking/org-netbeans-modules-spellchecker-bindings-php.xml
 /usr/local/share/netbeans/php/update_tracking/org-netbeans-modules-websvc-saas-codegen-php.xml
 /usr/local/share/netbeans/php/zend/NetBeansCommandsProvider.php
+/usr/local/share/netbeans/platform/.lastModified
 /usr/local/share/netbeans/platform/VERSION.txt
 /usr/local/share/netbeans/platform/config/ModuleAutoDeps/org-apache-commons-commons_io.xml
 /usr/local/share/netbeans/platform/config/ModuleAutoDeps/org-netbeans-api-progress.xml
@@ -3057,13 +3072,12 @@
 /usr/local/share/netbeans/platform/config/Modules/org-openide-io.xml
 /usr/local/share/netbeans/platform/config/Modules/org-openide-loaders.xml
 /usr/local/share/netbeans/platform/config/Modules/org-openide-nodes.xml
-/usr/local/share/netbeans/platform/config/Modules/org-openide-options.xml
 /usr/local/share/netbeans/platform/config/Modules/org-openide-text.xml
 /usr/local/share/netbeans/platform/config/Modules/org-openide-util-ui-svg.xml
 /usr/local/share/netbeans/platform/config/Modules/org-openide-windows.xml
-/usr/local/share/netbeans/platform/core/asm-9.8.jar
-/usr/local/share/netbeans/platform/core/asm-commons-9.8.jar
-/usr/local/share/netbeans/platform/core/asm-tree-9.8.jar
+/usr/local/share/netbeans/platform/core/asm-9.9.jar
+/usr/local/share/netbeans/platform/core/asm-commons-9.9.jar
+/usr/local/share/netbeans/platform/core/asm-tree-9.9.jar
 /usr/local/share/netbeans/platform/core/core-base.jar
 /usr/local/share/netbeans/platform/core/core.jar
 /usr/local/share/netbeans/platform/core/org-netbeans-libs-asm.jar
@@ -3077,6 +3091,8 @@
 /usr/local/share/netbeans/platform/docs/junit-jupiter-engine-5.10.3-sources.jar
 /usr/local/share/netbeans/platform/docs/junit-jupiter-params-5.10.3-javadoc.jar
 /usr/local/share/netbeans/platform/docs/junit-jupiter-params-5.10.3-sources.jar
+/usr/local/share/netbeans/platform/docs/opentest4j-1.3.0-javadoc.jar
+/usr/local/share/netbeans/platform/docs/opentest4j-1.3.0-sources.jar
 /usr/local/share/netbeans/platform/docs/testng-6.13.1-javadoc.jar
 /usr/local/share/netbeans/platform/lib/boot.jar
 /usr/local/share/netbeans/platform/lib/nbexec
@@ -3089,7 +3105,7 @@
 /usr/local/share/netbeans/platform/lib/org-openide-util-ui.jar
 /usr/local/share/netbeans/platform/lib/org-openide-util.jar
 /usr/local/share/netbeans/platform/modules/ext/commons-io-2.18.0.jar
-/usr/local/share/netbeans/platform/modules/ext/flatlaf-3.6.1.jar
+/usr/local/share/netbeans/platform/modules/ext/flatlaf-3.6.2.jar
 /usr/local/share/netbeans/platform/modules/ext/hamcrest-core-1.3.jar
 /usr/local/share/netbeans/platform/modules/ext/jcommander-1.78.jar
 /usr/local/share/netbeans/platform/modules/ext/jersey2/jakarta.inject-2.6.1.jar
@@ -3100,6 +3116,7 @@
 /usr/local/share/netbeans/platform/modules/ext/junit-jupiter-api-5.10.3.jar
 /usr/local/share/netbeans/platform/modules/ext/junit-jupiter-engine-5.10.3.jar
 /usr/local/share/netbeans/platform/modules/ext/junit-jupiter-params-5.10.3.jar
+/usr/local/share/netbeans/platform/modules/ext/opentest4j-1.3.0.jar
 /usr/local/share/netbeans/platform/modules/ext/org.apache.felix.main-7.0.5.jar
 /usr/local/share/netbeans/platform/modules/ext/org.eclipse.osgi_3.9.1.nb9.jar
 /usr/local/share/netbeans/platform/modules/ext/osgi.cmpn-7.0.0.jar
@@ -3224,7 +3241,6 @@
 /usr/local/share/netbeans/platform/modules/org-openide-io.jar
 /usr/local/share/netbeans/platform/modules/org-openide-loaders.jar
 /usr/local/share/netbeans/platform/modules/org-openide-nodes.jar
-/usr/local/share/netbeans/platform/modules/org-openide-options.jar
 /usr/local/share/netbeans/platform/modules/org-openide-text.jar
 /usr/local/share/netbeans/platform/modules/org-openide-util-ui-svg.jar
 /usr/local/share/netbeans/platform/modules/org-openide-windows.jar
@@ -3337,13 +3353,13 @@
 /usr/local/share/netbeans/platform/update_tracking/org-openide-loaders.xml
 /usr/local/share/netbeans/platform/update_tracking/org-openide-modules.xml
 /usr/local/share/netbeans/platform/update_tracking/org-openide-nodes.xml
-/usr/local/share/netbeans/platform/update_tracking/org-openide-options.xml
 /usr/local/share/netbeans/platform/update_tracking/org-openide-text.xml
 /usr/local/share/netbeans/platform/update_tracking/org-openide-util-lookup.xml
 /usr/local/share/netbeans/platform/update_tracking/org-openide-util-ui-svg.xml
 /usr/local/share/netbeans/platform/update_tracking/org-openide-util-ui.xml
 /usr/local/share/netbeans/platform/update_tracking/org-openide-util.xml
 /usr/local/share/netbeans/platform/update_tracking/org-openide-windows.xml
+/usr/local/share/netbeans/profiler/.lastModified
 /usr/local/share/netbeans/profiler/VERSION.txt
 /usr/local/share/netbeans/profiler/ant/nblib/org-netbeans-modules-profiler-nbimpl.jar
 /usr/local/share/netbeans/profiler/config/Modules/org-netbeans-lib-profiler-charts.xml
@@ -3480,6 +3496,7 @@
 /usr/local/share/netbeans/profiler/update_tracking/org-netbeans-modules-profiler-snaptracer.xml
 /usr/local/share/netbeans/profiler/update_tracking/org-netbeans-modules-profiler-utilities.xml
 /usr/local/share/netbeans/profiler/update_tracking/org-netbeans-modules-profiler.xml
+/usr/local/share/netbeans/webcommon/.lastModified
 /usr/local/share/netbeans/webcommon/VERSION.txt
 /usr/local/share/netbeans/webcommon/ant/extra/org-netbeans-modules-cordova-projectupdate.jar
 /usr/local/share/netbeans/webcommon/config/Modules/org-netbeans-api-knockout.xml
@@ -3804,6 +3821,7 @@
 /usr/local/share/netbeans/webcommon/update_tracking/org-netbeans-modules-web-inspect.xml
 /usr/local/share/netbeans/webcommon/update_tracking/org-netbeans-modules-web-javascript-debugger.xml
 /usr/local/share/netbeans/webcommon/update_tracking/org-netbeans-modules-web-webkit-tooling.xml
+/usr/local/share/netbeans/websvccommon/.lastModified
 /usr/local/share/netbeans/websvccommon/VERSION.txt
 /usr/local/share/netbeans/websvccommon/config/Modules/org-netbeans-modules-websvc-jaxwsmodelapi.xml
 /usr/local/share/netbeans/websvccommon/config/Modules/org-netbeans-modules-websvc-saas-api.xml

@@ -1,12 +1,12 @@
-# Total size: 219130
+# Total size: 229184
 /usr/local/include/zconf-ng.h
 /usr/local/include/zlib-ng.h
 /usr/local/include/zlib_name_mangling-ng.h
 /usr/local/lib/cmake/zlib-ng/zlib-ng-config-version.cmake
 /usr/local/lib/cmake/zlib-ng/zlib-ng-config.cmake
-/usr/local/lib/cmake/zlib-ng/zlib-ng-release.cmake
-/usr/local/lib/cmake/zlib-ng/zlib-ng.cmake
+/usr/local/lib/cmake/zlib-ng/zlib-ng-targets-release.cmake
+/usr/local/lib/cmake/zlib-ng/zlib-ng-targets.cmake
 /usr/local/lib/libz-ng.so
 /usr/local/lib/libz-ng.so.2
-/usr/local/lib/libz-ng.so.2.2.5
+/usr/local/lib/libz-ng.so.2.3.1
 /usr/local/lib/pkgconfig/zlib-ng.pc
