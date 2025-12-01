@@ -10,8 +10,6 @@ class Xorg_proto < Meson
   git_hashtag "xorgproto-#{version}"
   binary_compression 'tar.zst'
 
-  conflicts_ok # conflicts with glproto
-
   binary_sha256({
     aarch64: '21d51df41e7ad8c3e1e82aa8a0adc59dd5474729623290471f0f8cfe1eb5bdf6',
      armv7l: '21d51df41e7ad8c3e1e82aa8a0adc59dd5474729623290471f0f8cfe1eb5bdf6',

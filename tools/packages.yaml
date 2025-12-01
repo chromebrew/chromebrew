@@ -2675,11 +2675,6 @@ url: https://ftp.gnu.org/gnu/glpk/
 activity: none
 ---
 kind: url
-name: glproto
-url: https://github.com/freedesktop/glproto/releases
-activity: none
----
-kind: url
 name: glslang
 url: https://github.com/KhronosGroup/glslang/releases
 activity: medium
@@ -7598,11 +7593,6 @@ kind: url
 name: premake
 url: https://github.com/premake/premake-core/releases
 activity: low
----
-kind: url
-name: printproto
-url: https://xorg.freedesktop.org/releases/individual/proto/
-activity: none
 ---
 kind: url
 name: procps
