@@ -6,17 +6,17 @@ require 'buildsystems/pip'
 class Py3_rpds_py < Pip
   description 'Python bindings to the Rust rpds crate for persistent data structures'
   homepage 'https://github.com/crate-py/rpds'
-  version '0.29.0'
+  version '0.30.0'
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f1c5d04b16221c8b3650c4b3942c17eef7d4744fa993e50ac27b80620764def4',
-     armv7l: 'f1c5d04b16221c8b3650c4b3942c17eef7d4744fa993e50ac27b80620764def4',
-       i686: '4de9ce4de21d66e71210e4f5a29db2180dce9172865c4b0f01a566c0c1a118ac',
-     x86_64: '7547bcad38e928c966350529a2c03c77b4b2c8125b44fe9ae90680c86d61ac83'
+    aarch64: 'ae4e9c5131bbd302e75b6658168d9e64356184d4be440a54e46c43cc5698c49b',
+     armv7l: 'ae4e9c5131bbd302e75b6658168d9e64356184d4be440a54e46c43cc5698c49b',
+       i686: '1febb1c7a436e22d22775e023a8b887a36e121d209b0891aa5c5c95edb94cbe3',
+     x86_64: 'f59a3a5d91befbbb8dd9deb7f7010755bb45ea3530ea4558ca5c2eae7ebff363'
   })
 
   depends_on 'gcc_lib' # R
