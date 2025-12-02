@@ -11,16 +11,19 @@ class Openvpn < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f73c038224c3e1798c2418e438e0604719aebce8d28a4e87777f84ffac7ca448',
-     armv7l: 'f73c038224c3e1798c2418e438e0604719aebce8d28a4e87777f84ffac7ca448',
-     x86_64: '5d83fab39584fdb277040c612670fbd5d7e0f4b1e1f14524cf483d16d84ae904'
+    aarch64: '1d97aaadde2a82b0d7528da9138c47932422554a172bce51c82cb21281d3a953',
+     armv7l: '1d97aaadde2a82b0d7528da9138c47932422554a172bce51c82cb21281d3a953',
+     x86_64: '0fb418b73729a2a31a29e8ee42ffa88f13d5aa46d788d1b542389cf78cf87bfd'
   })
 
+  depends_on 'e2fsprogs' # R
   depends_on 'glibc' # R
+  depends_on 'krb5' # R
   depends_on 'libcap_ng' # R
   depends_on 'libeconf' # R
   depends_on 'libmbedtls' => :build
   depends_on 'libnl3' # R
+  depends_on 'libtirpc' # R
   depends_on 'linux_pam' # R
   depends_on 'lz4' # R
   depends_on 'lzo' # R
