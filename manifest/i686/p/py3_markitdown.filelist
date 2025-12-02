@@ -1,11 +1,11 @@
-# Total size: 371289
+# Total size: 370606
 /usr/local/bin/markitdown
-/usr/local/lib/python3.13/site-packages/markitdown-0.1.3.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/markitdown-0.1.3.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/markitdown-0.1.3.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/markitdown-0.1.3.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/markitdown-0.1.3.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/markitdown-0.1.3.dist-info/entry_points.txt
+/usr/local/lib/python3.13/site-packages/markitdown-0.1.4.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/markitdown-0.1.4.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/markitdown-0.1.4.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/markitdown-0.1.4.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/markitdown-0.1.4.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/markitdown-0.1.4.dist-info/entry_points.txt
 /usr/local/lib/python3.13/site-packages/markitdown/__about__.py
 /usr/local/lib/python3.13/site-packages/markitdown/__init__.py
 /usr/local/lib/python3.13/site-packages/markitdown/__main__.py
