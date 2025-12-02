@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_markitdown < Pip
   description 'Python tool for converting files and office documents to Markdown.'
   homepage 'https://github.com/microsoft/markitdown'
-  version "0.1.3-#{CREW_PY_VER}"
+  version "0.1.4-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
