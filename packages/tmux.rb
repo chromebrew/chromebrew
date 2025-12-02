@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Tmux < Autotools
   description 'tmux is a terminal multiplexer'
   homepage 'https://tmux.github.io/'
-  version '3.5a'
+  version '3.6'
   license 'ISC'
   compatibility 'all'
   source_url 'https://github.com/tmux/tmux.git'
