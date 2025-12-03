@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Zlib_ng < CMake
   description 'zlib replacement with optimizations for next generation systems'
   homepage 'https://github.com/zlib-ng/zlib-ng'
-  version '2.3.1'
+  version '2.3.2'
   license 'Zlib'
   compatibility 'all'
   source_url 'https://github.com/zlib-ng/zlib-ng.git'
