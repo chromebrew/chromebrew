@@ -15,7 +15,7 @@ class Util_linux < Meson
   binary_sha256({
     aarch64: '091641baf6d3e93ceeb3f06468af895e18eadf4d68167dae863d7ec9d1fe637f',
      armv7l: '091641baf6d3e93ceeb3f06468af895e18eadf4d68167dae863d7ec9d1fe637f',
-       i686: '5e9aeec5e4c6e7cb7dd3b1b3793b9ceb437505d7de8b3ce927d5f04ac6efb9e9',
+       i686: '92052fb6d7237ca9cb2aad83ea9313ca0b0d07cbe8143904dd49013f6244fdbc',
      x86_64: 'd0a8545e106f3caa6497f9ea11e429a565c05f504bf8abb926b47d6de1ce52a4'
   })
 
