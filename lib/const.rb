@@ -349,7 +349,7 @@ crew_gcc_ver_default = '15'
 crew_icu_ver_default = '77.1'
 crew_llvm_ver_default = '21'
 crew_perl_ver_default = '5.42'
-crew_py_ver_default = '3.13'
+crew_py_ver_default = '3.14'
 crew_ruby_ver_default = '3.4'
 if ENV['CI']
   CREW_GCC_VER  = "gcc#{crew_gcc_ver_default}"
@@ -457,7 +457,7 @@ CREW_ANITYA_PACKAGE_NAME_MAPPINGS = Set[
   { pkg_name: 'procps', anitya_pkg: 'procps-ng', comments: '' },
   { pkg_name: 'pthread_stubs', anitya_pkg: 'libpthread-stubs', comments: '' },
   { pkg_name: 'py3_atspi', anitya_pkg: 'pyatspi', comments: '' },
-  { pkg_name: 'python3', anitya_pkg: 'python313', comments: '' },
+  { pkg_name: 'python3', anitya_pkg: 'python314', comments: '' },
   { pkg_name: 'rdfind', anitya_pkg: 'rdfind', comments: 'Prefer to GitHub' },
   { pkg_name: 'rest', anitya_pkg: 'librest', comments: 'Prefer to GitHub' },
   { pkg_name: 'selenium_server_standalone', anitya_pkg: 'selenium', comments: '' },
