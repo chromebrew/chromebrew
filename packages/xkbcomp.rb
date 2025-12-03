@@ -3,12 +3,11 @@ require 'buildsystems/meson'
 class Xkbcomp < Meson
   description 'Compile XKB keyboard'
   homepage 'https://xorg.freedesktop.org/wiki/'
-  version '1.4.7-d03a4ab'
+  version '1.5.0'
   license 'ISC, MIT and custom'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/app/xkbcomp.git'
-  git_hashtag 'd03a4ab1c0b24f6581411622ccf729ceb329aeb8'
-  # git_hashtag "xkbcomp-#{version}"
+  git_hashtag "xkbcomp-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
