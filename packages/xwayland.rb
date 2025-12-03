@@ -24,7 +24,6 @@ class Xwayland < Meson
   depends_on 'font_util' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  # depends_on 'glproto' => :build Conflict with xorg_proto
   depends_on 'graphite' => :build
   depends_on 'libbsd' # R
   depends_on 'libdecor' # R

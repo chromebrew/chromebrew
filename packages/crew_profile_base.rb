@@ -3,11 +3,11 @@ require 'package'
 class Crew_profile_base < Package
   description 'Crew-profile-base sets up Chromebrew\'s environment capabilities.'
   homepage 'https://github.com/chromebrew/crew-profile-base'
-  version '0.0.31-1'
+  version '0.0.32'
   license 'GPL-3+'
   compatibility 'all'
-  source_url "https://github.com/chromebrew/crew-profile-base/archive/refs/tags/#{version.split('-').first}.tar.gz"
-  source_sha256 '462c7ff08b4e9da8b5759e26d80351ff7de708089e94f2d38c036eaca799c366'
+  source_url "https://github.com/chromebrew/crew-profile-base/archive/refs/tags/#{version}.tar.gz"
+  source_sha256 'f9f0705fb68fa69372c0f730af398029704be9b15d8781230ded67cc459a0bdd'
 
   no_compile_needed
   print_source_bashrc
@@ -18,8 +18,13 @@ class Crew_profile_base < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/profile.d"
 
     # Don't overwrite custom changes
-    %w[01-locale 02-editor 03-pager 99-custom].each do |custom_files|
-      FileUtils.rm "./src/env.d/#{custom_files}" if File.exist?("#{CREW_PREFIX}/etc/env.d/#{custom_files}")
+    %w[01-locale 02-editor 03-pager 99-custom].each do |script|
+      FileUtils.rm "./src/env.d/#{script}" if File.exist?("#{CREW_PREFIX}/etc/env.d/#{script}")
+    end
+
+    # Remove deprecated scripts
+    %w[07-ld-library-path 10-milestone].each do |script|
+      FileUtils.rm_f "#{CREW_PREFIX}/etc/env.d/#{script}"
     end
 
     FileUtils.cp_r Dir['./src/*'], "#{CREW_DEST_PREFIX}/etc/"

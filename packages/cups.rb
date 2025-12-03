@@ -3,7 +3,7 @@ require 'package'
 class Cups < Package
   description 'CUPS is the standards-based, open source printing system'
   homepage 'https://openprinting.github.io/cups'
-  version '2.4.14'
+  version '2.4.15'
   compatibility 'all'
   license 'Apache-2.0'
   source_url 'https://github.com/OpenPrinting/cups.git'
@@ -11,10 +11,10 @@ class Cups < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4aacbc9fe7e169a65337e84848fc2b3c28ef790a7280dac7b83a185f62f96cc1',
-     armv7l: '4aacbc9fe7e169a65337e84848fc2b3c28ef790a7280dac7b83a185f62f96cc1',
-       i686: '23932827ac7ad296e4eb0a1264d11323741f147875a0965bdae36af14d99a08e',
-     x86_64: '8327ac7e2f24efc25ad4cf545e61f3a941ea4aa4728374961326d6f6594afdb0'
+    aarch64: 'ce664b89e866f81a0723c638b5b25f4c643f958745e2169ae5030cae022c4b25',
+     armv7l: 'ce664b89e866f81a0723c638b5b25f4c643f958745e2169ae5030cae022c4b25',
+       i686: 'd14f33eba33fcfbb1a405b51134c3005e760711551106c10c50638ef034dcd81',
+     x86_64: '44bf3eb850a65da19208d1929ff69703f7a1935c412625e3b143cd33257f7faa'
   })
 
   depends_on 'acl' # R

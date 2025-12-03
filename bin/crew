@@ -963,7 +963,7 @@ def prepare_package(destdir)
 
     # If the package is completely empty, something has probably gone wrong.
     total_size = filelist.values.sum
-    abort 'total_size is 0. It seems that no files were installed.'.lightred if total_size.zero?
+    abort 'total_size is 0. It seems that no files were installed.'.lightred if total_size.zero? && @pkg.name != 'glibc_fallthrough'
 
     File.write 'filelist', <<~EOF
       # Total size: #{total_size}

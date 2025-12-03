@@ -1095,6 +1095,11 @@ url: http://codelobsteride.com/#download
 activity: medium
 ---
 kind: url
+name: codex
+url: https://github.com/openai/codex/releases
+activity: high
+---
+kind: url
 name: codon
 url: https://github.com/exaloop/codon/releases
 activity: low
@@ -2672,11 +2677,6 @@ activity: medium
 kind: url
 name: glpk
 url: https://ftp.gnu.org/gnu/glpk/
-activity: none
----
-kind: url
-name: glproto
-url: https://github.com/freedesktop/glproto/releases
 activity: none
 ---
 kind: url
@@ -7600,11 +7600,6 @@ url: https://github.com/premake/premake-core/releases
 activity: low
 ---
 kind: url
-name: printproto
-url: https://xorg.freedesktop.org/releases/individual/proto/
-activity: none
----
-kind: url
 name: procps
 url: https://gitlab.com/procps-ng/procps/-/tags
 activity: low
@@ -10598,6 +10593,11 @@ kind: url
 name: yyjson
 url: https://github.com/ibireme/yyjson/releases
 activity: medium
+---
+kind: url
+name: z
+url: https://github.com/rupa/z/releases
+activity: none
 ---
 kind: url
 name: z_library

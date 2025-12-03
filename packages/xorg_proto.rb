@@ -10,12 +10,13 @@ class Xorg_proto < Meson
   git_hashtag "xorgproto-#{version}"
   binary_compression 'tar.zst'
 
-  conflicts_ok # conflicts with glproto
-
   binary_sha256({
-    aarch64: '5a3f2d896b21282b35e80fe8c04cced52a3c6767ed2b7f6c1dd507ddb59f94a9',
-     armv7l: '5a3f2d896b21282b35e80fe8c04cced52a3c6767ed2b7f6c1dd507ddb59f94a9',
-       i686: 'c4f617dd65aeb7853a7c3fb44641ed443255b33e1f5416ca7acf180b3659aa57',
-     x86_64: '4691a9ad052fa497074ddad44efb96d4cd8e1c1e10dc41be2820ac53c210899c'
+    aarch64: '21d51df41e7ad8c3e1e82aa8a0adc59dd5474729623290471f0f8cfe1eb5bdf6',
+     armv7l: '21d51df41e7ad8c3e1e82aa8a0adc59dd5474729623290471f0f8cfe1eb5bdf6',
+       i686: 'e0769e918543e31cdcca830eda7bdaf0c99b37e06f1889fc7faa477c09d1d2d4',
+     x86_64: 'd78e9ab0fad59e59a520643d1809d188c1b65db23c3f13ffe728ec6a58a1c0dc'
   })
+
+  # This is needed to provide the deprecated printproto specifications required to build libxp, which is itself deprecated.
+  meson_options '-Dlegacy=true'
 end
