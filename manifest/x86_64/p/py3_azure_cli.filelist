@@ -1,4 +1,4 @@
-# Total size: 173120398
+# Total size: 174920175
 /usr/local/bin/az
 /usr/local/bin/az.bat
 /usr/local/bin/az.completion.sh
@@ -7599,6 +7599,7 @@
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vm/__pycache__/_assess_patches.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vm/__pycache__/_capture.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vm/__pycache__/_convert.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vm/__pycache__/_create.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vm/__pycache__/_deallocate.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vm/__pycache__/_delete.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vm/__pycache__/_generalize.cpython-313.pyc
@@ -7621,6 +7622,7 @@
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vm/_assess_patches.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vm/_capture.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vm/_convert.py
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vm/_create.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vm/_deallocate.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vm/_delete.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vm/_generalize.py
@@ -7782,6 +7784,7 @@
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/__init__.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/__pycache__/__cmd_group.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/__pycache__/__init__.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/__pycache__/_create.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/__pycache__/_delete.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/__pycache__/_delete_instances.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/__pycache__/_get_os_upgrade_history.cpython-313.pyc
@@ -7791,11 +7794,13 @@
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/__pycache__/_list_skus.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/__pycache__/_patch.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/__pycache__/_perform_maintenance.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/__pycache__/_show.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/__pycache__/_simulate_eviction.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/__pycache__/_start.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/__pycache__/_update.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/__pycache__/_update_domain_walk.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/__pycache__/_wait.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/_create.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/_delete.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/_delete_instances.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/_get_os_upgrade_history.py
@@ -7805,6 +7810,7 @@
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/_list_skus.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/_patch.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/_perform_maintenance.py
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/_show.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/_simulate_eviction.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/_start.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/_update.py
@@ -7862,6 +7868,14 @@
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/run_command/_show.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/run_command/_update.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/run_command/_wait.py
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/vms/__cmd_group.py
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/vms/__init__.py
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/vms/__pycache__/__cmd_group.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/vms/__pycache__/__init__.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/vms/__pycache__/_create.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/vms/__pycache__/_show.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/vms/_create.py
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/vms/_show.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/commands.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/custom.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/disk_encryption.py
@@ -7911,6 +7925,7 @@
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/operations/__pycache__/vm_availability_set.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/operations/__pycache__/vm_extension.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/operations/__pycache__/vmss.cpython-313.pyc
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/operations/__pycache__/vmss_vms.cpython-313.pyc
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/operations/capacity_reservation.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/operations/capacity_reservation_group.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/operations/disk.py
@@ -7929,10 +7944,11 @@
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/operations/vm_availability_set.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/operations/vm_extension.py
 /usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/operations/vmss.py
-/usr/local/lib/python3.13/site-packages/azure_cli-2.80.0.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/azure_cli-2.80.0.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/azure_cli-2.80.0.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/azure_cli-2.80.0.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/azure_cli-2.80.0.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/azure_cli-2.80.0.dist-info/licenses/LICENSE.txt
-/usr/local/lib/python3.13/site-packages/azure_cli-2.80.0.dist-info/top_level.txt
+/usr/local/lib/python3.13/site-packages/azure/cli/command_modules/vm/operations/vmss_vms.py
+/usr/local/lib/python3.13/site-packages/azure_cli-2.81.0.dist-info/INSTALLER
+/usr/local/lib/python3.13/site-packages/azure_cli-2.81.0.dist-info/METADATA
+/usr/local/lib/python3.13/site-packages/azure_cli-2.81.0.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/azure_cli-2.81.0.dist-info/REQUESTED
+/usr/local/lib/python3.13/site-packages/azure_cli-2.81.0.dist-info/WHEEL
+/usr/local/lib/python3.13/site-packages/azure_cli-2.81.0.dist-info/licenses/LICENSE.txt
+/usr/local/lib/python3.13/site-packages/azure_cli-2.81.0.dist-info/top_level.txt
