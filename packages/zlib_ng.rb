@@ -14,10 +14,10 @@ class Zlib_ng < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0ee081560399cb3aa1821c44b0225dc18f25badf0ab7ab173ab87da550c4571e',
-     armv7l: '0ee081560399cb3aa1821c44b0225dc18f25badf0ab7ab173ab87da550c4571e',
-       i686: 'e1e932b270c43e8e6fe2b9f75d4a9cec41a285d88b33ca5ad67c7292187186ab',
-     x86_64: '1f51b2bddc29bfb0be539ac946c217a098e533be1fe30e881f4c93e75f0b4aef'
+    aarch64: '92348376191cb1662d60b1fe7d05ae4e09c6f69936f9bc60060c0bd48c406b90',
+     armv7l: '92348376191cb1662d60b1fe7d05ae4e09c6f69936f9bc60060c0bd48c406b90',
+       i686: '6b4155108b9cb59651b598ef903c410e0ddbe170023c4d045fa795e1ebfce9c6',
+     x86_64: 'a135ccac1853ebdd1f5f68d6f60b3ecf06cb822448114e0f669d732cd4592cd2'
   })
 
   depends_on 'glibc'
