@@ -1,17 +1,17 @@
-# Total size: 36955
-/usr/local/lib/python3.13/site-packages/iniconfig-2.3.0.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/iniconfig-2.3.0.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/iniconfig-2.3.0.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/iniconfig-2.3.0.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/iniconfig-2.3.0.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/iniconfig-2.3.0.dist-info/licenses/LICENSE
-/usr/local/lib/python3.13/site-packages/iniconfig-2.3.0.dist-info/top_level.txt
-/usr/local/lib/python3.13/site-packages/iniconfig/__init__.py
-/usr/local/lib/python3.13/site-packages/iniconfig/__pycache__/__init__.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/iniconfig/__pycache__/_parse.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/iniconfig/__pycache__/_version.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/iniconfig/__pycache__/exceptions.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/iniconfig/_parse.py
-/usr/local/lib/python3.13/site-packages/iniconfig/_version.py
-/usr/local/lib/python3.13/site-packages/iniconfig/exceptions.py
-/usr/local/lib/python3.13/site-packages/iniconfig/py.typed
+# Total size: 44246
+/usr/local/lib/python3.14/site-packages/iniconfig-2.3.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/iniconfig-2.3.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/iniconfig-2.3.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/iniconfig-2.3.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/iniconfig-2.3.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/iniconfig-2.3.0.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/iniconfig-2.3.0.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/iniconfig/__init__.py
+/usr/local/lib/python3.14/site-packages/iniconfig/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/iniconfig/__pycache__/_parse.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/iniconfig/__pycache__/_version.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/iniconfig/__pycache__/exceptions.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/iniconfig/_parse.py
+/usr/local/lib/python3.14/site-packages/iniconfig/_version.py
+/usr/local/lib/python3.14/site-packages/iniconfig/exceptions.py
+/usr/local/lib/python3.14/site-packages/iniconfig/py.typed
