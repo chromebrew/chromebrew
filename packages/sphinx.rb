@@ -10,8 +10,8 @@ class Sphinx < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6764f77ebf38bfd24b6b7f04a706f355fd9fa0152bd98b5a52cad2f4e83ce069',
-     armv7l: '6764f77ebf38bfd24b6b7f04a706f355fd9fa0152bd98b5a52cad2f4e83ce069',
+    aarch64: '8cb2c60a2cd27729ddf1c2fe38777e2b4a10b299e585e44d4c0d46b6527f2134',
+     armv7l: '8cb2c60a2cd27729ddf1c2fe38777e2b4a10b299e585e44d4c0d46b6527f2134',
        i686: '4ca18d7635c92e2ba99b3b79cf633d6162bc67b305d7e06da6f7d66dbde495a9',
      x86_64: '30645c21680e73e8f34d2595cfaeb68ce86b7e28e6451ec2ffe3750dbede5578'
   })
