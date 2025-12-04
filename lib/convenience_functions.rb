@@ -97,8 +97,8 @@ class ConvenienceFunctions
       s.gsub!("#{CREW_LIB_PREFIX}/", '')
     end
     return if libnames.empty?
-    dlname = libnames.grep(/.so./).first
-    libname = dlname.gsub(/.so.\d+/, '')
+    dlname = libnames.grep(/.so(.)?/).first
+    libname = dlname.gsub(/.so(.\d+)?/, '')
     longest_libname = libnames.max_by(&:length)
     libvars = longest_libname.rpartition('.so.')[2].split('.')
 
