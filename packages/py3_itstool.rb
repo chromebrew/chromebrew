@@ -10,10 +10,10 @@ class Py3_itstool < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6d3bfb1577226b6059d7c9c36d4cec050c7faae4af2916445a07c216c5de89f6',
-     armv7l: '6d3bfb1577226b6059d7c9c36d4cec050c7faae4af2916445a07c216c5de89f6',
+    aarch64: 'd009a0414b16e306bd53e12edd4924c9a07200e4136b5209ce23c4558f8aa7a5',
+     armv7l: 'd009a0414b16e306bd53e12edd4924c9a07200e4136b5209ce23c4558f8aa7a5',
        i686: '9730d43c2aeaa6c103e3bc8e43fc2943edee9b92f04f9a7a63d7def1a2838787',
-     x86_64: '31331e3deb79ff1aeb4a5925e025fb9611dbc129af42617e5c00cc5345873a74'
+     x86_64: '000d264ed866829beb57e73b2f46af87b75e8927ed95df99793cc755025d5243'
   })
 
   depends_on 'coreutils' if ARCH == 'i686'
