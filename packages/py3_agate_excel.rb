@@ -12,7 +12,7 @@ class Py3_agate_excel < Pip
   binary_sha256({
     aarch64: 'ac077af3004a6ecc0d36b8e732dddfceee36700195dc110f86fe0dccd1e02417',
      armv7l: 'ac077af3004a6ecc0d36b8e732dddfceee36700195dc110f86fe0dccd1e02417',
-       i686: '62585f8d4a1b348204f58c02e99473a704da64ec70501e7ac2b348d7b22c4d1a',
+       i686: '0d908de0cbc90eba633f515046d6d6c0ee95dd2da508717deb80462da17be7b9',
      x86_64: 'da99c33ad28d62deb879cf41bd686f54106252e3e3565cc5eab23a3c8a0bafaf'
   })
 

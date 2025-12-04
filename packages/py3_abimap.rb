@@ -12,8 +12,8 @@ class Py3_abimap < Pip
   binary_sha256({
     aarch64: '90403f60545cd79ac583afa0cd242b4f0a336a9ed6457bf058a0cddcbfb151c1',
      armv7l: '90403f60545cd79ac583afa0cd242b4f0a336a9ed6457bf058a0cddcbfb151c1',
-       i686: 'a005276c8bedf7f54ccbf3cd63b67524e97022d5a5eb23f1a911dabff52ce575',
-     x86_64: '8448ad32f77ba4d2ff1ef33e5d579ec2ae1d716eff778ce3701f8198486f5221'
+       i686: 'daf6c55138d500e6f1b3e5a68ff9e2f654bb18257e0e69414a41d8752dd76216',
+     x86_64: 'bd21b3a690d51789bbe4e02e47201a7d6ca3ec9e2a68f0e69d1aa0c27e926eb0'
   })
 
   depends_on 'python3' => :build
