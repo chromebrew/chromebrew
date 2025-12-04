@@ -3,29 +3,29 @@ require 'buildsystems/autotools'
 class Httpd < Autotools
   description 'The Apache HTTP Server Project is an effort to develop and maintain an open-source HTTP server for modern operating systems including UNIX and Windows.'
   homepage 'https://httpd.apache.org/'
-  version '2.4.65'
+  version '2.4.66'
   license 'GPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://dlcdn.apache.org/httpd/httpd-#{version}.tar.bz2"
-  source_sha256 '58b8be97d9940ec17f7656c0c6b9f41b618aac468b894b534148e3296c53b8b3'
+  source_sha256 '94d7ff2b42acbb828e870ba29e4cbad48e558a79c623ad3596e4116efcfea25a'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '16d59178572a71110bc76e5a961a9234cf023c7ccf7482fbf3bd1e2e8543a170',
-     armv7l: '16d59178572a71110bc76e5a961a9234cf023c7ccf7482fbf3bd1e2e8543a170',
-     x86_64: 'b82d2fa47b64caae72c223a1b71670e4c035c545cc5dc547dcd51c6c7a2e472f'
+    aarch64: 'd3066b6297164c348ad9f95546c24293dd8c6bf1fd4ac319f1b3b5f88b26bc21',
+     armv7l: 'd3066b6297164c348ad9f95546c24293dd8c6bf1fd4ac319f1b3b5f88b26bc21',
+     x86_64: '3d3d491a0f0a6776341e96ec123d5179d6fabc2fc190249e7f7f4534213e9f9c'
   })
 
   depends_on 'apr'
   depends_on 'apr_util'
-  depends_on 'libtool'
-  depends_on 'libxcrypt'
-  depends_on 'pcre'
-  depends_on 'expat'
   depends_on 'brotli' # R
+  depends_on 'expat'
   depends_on 'glibc' # R
   depends_on 'libnghttp2' # R
+  depends_on 'libtool'
+  depends_on 'libxcrypt'
   depends_on 'openssl' # R
+  depends_on 'pcre'
   depends_on 'pcre2' # R
   depends_on 'util_linux' # R
   depends_on 'zlib' # R
@@ -34,6 +34,7 @@ class Httpd < Autotools
 
   def self.prebuild
     ConvenienceFunctions.libtoolize('expat')
+    ConvenienceFunctions.libtoolize('libuuid', 'util_linux')
   end
 
   autotools_build_extras do
