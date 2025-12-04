@@ -416,7 +416,7 @@ unless defined?($__crew_lockfile__) || defined?(CrewLockfile)
           nil
         end
         begin
-          return ((Time.now - File.stat(@path).mtime) < @max_age)
+          return (Time.now - File.stat(@path).mtime) < @max_age
         rescue Errno::ENOENT
           return false
         end
