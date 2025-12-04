@@ -10,10 +10,10 @@ class Awscli < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '801019e23a5d53b50f3d6b61e2282819b7a6e537c07e6911dce874490688a5f3',
-     armv7l: '801019e23a5d53b50f3d6b61e2282819b7a6e537c07e6911dce874490688a5f3',
-       i686: '2a21bf603e4fd0fed4b360cecab6da3c717aa6a2b26712148743957bc6cea785',
-     x86_64: 'ec48c0ec7db6d8af0853bf68fba36d5e809dfc71f8f6134dbabbe16883b69e28'
+    aarch64: '8eafc358acebd2b1f162291ec30ebf4b5b17e3d8fdc8013501717adac4b633a2',
+     armv7l: '8eafc358acebd2b1f162291ec30ebf4b5b17e3d8fdc8013501717adac4b633a2',
+       i686: '8be23a5d5779e7862eee0fc3923ce3c61fcec05ab8676dcbb74888e945c120e5',
+     x86_64: '969dabda3cc03bd0982f83e3be60fbab2f847892b0481dd1952d9c3387413cb3'
   })
 
   depends_on 'groff'

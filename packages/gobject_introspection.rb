@@ -13,7 +13,7 @@ class Gobject_introspection < Meson
   binary_sha256({
     aarch64: 'a5cba3d959a91159377d03ae4e7d4c60d9751b2999fc9b2be7490f4d32249658',
      armv7l: 'a5cba3d959a91159377d03ae4e7d4c60d9751b2999fc9b2be7490f4d32249658',
-     x86_64: 'd75b5ede1e0a437e514a770521037324a026c4799f9fbc78fa1f372236f62dd5'
+     x86_64: '1bad47ed12d541243679a21183f5ed73db23cda81ed762e68a3d792cd88a3e7b'
   })
 
   depends_on 'gcc_lib' # R

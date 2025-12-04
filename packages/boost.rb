@@ -7,14 +7,14 @@ class Boost < Package
   license 'Boost-1.0'
   compatibility 'all'
   source_url "https://archives.boost.io/release/#{version.split('-').first}/source/boost_#{version.split('-').first.gsub('.', '_')}.tar.bz2"
-  source_sha256 '07911da8fe22fb10e3918528a8f0a5676f03c0b3b135ac19c26779f6804baebe'
+  source_sha256 '7009fe1faa1697476bdc7027703a2badb84e849b7b0baad5086b087b971f8617'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'efa9f68c525abdf0bdeebbd7bcd8e7834f4c19d2a29249438aaa6dd748881d79',
-     armv7l: 'efa9f68c525abdf0bdeebbd7bcd8e7834f4c19d2a29249438aaa6dd748881d79',
+    aarch64: 'a59f454f9f6b1a6639e3e321302fc2226f4807fd8d940299804b9720bb6d7f0d',
+     armv7l: 'a59f454f9f6b1a6639e3e321302fc2226f4807fd8d940299804b9720bb6d7f0d',
        i686: '693ffb63a554775b6bd0a106dc08e1a1c2840a507cc884818f2e2ecf6ccc2844',
-     x86_64: '5d2e99133d8028f1c772bfa95195d541cc219199963b8f0d568719adc602350d'
+     x86_64: 'eec7fe6a9c7bed95592c758df739230383d2c5913085f709f42aa82d19d2e2cf'
   })
 
   depends_on 'bzip2' # R
