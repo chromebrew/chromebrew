@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Httpd < Autotools
   description 'The Apache HTTP Server Project is an effort to develop and maintain an open-source HTTP server for modern operating systems including UNIX and Windows.'
   homepage 'https://httpd.apache.org/'
-  version '2.4.65'
+  version '2.4.66'
   license 'GPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://dlcdn.apache.org/httpd/httpd-#{version}.tar.bz2"
-  source_sha256 '58b8be97d9940ec17f7656c0c6b9f41b618aac468b894b534148e3296c53b8b3'
+  source_sha256 '94d7ff2b42acbb828e870ba29e4cbad48e558a79c623ad3596e4116efcfea25a'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -18,14 +18,14 @@ class Httpd < Autotools
 
   depends_on 'apr'
   depends_on 'apr_util'
-  depends_on 'libtool'
-  depends_on 'libxcrypt'
-  depends_on 'pcre'
-  depends_on 'expat'
   depends_on 'brotli' # R
+  depends_on 'expat'
   depends_on 'glibc' # R
   depends_on 'libnghttp2' # R
+  depends_on 'libtool'
+  depends_on 'libxcrypt'
   depends_on 'openssl' # R
+  depends_on 'pcre'
   depends_on 'pcre2' # R
   depends_on 'util_linux' # R
   depends_on 'zlib' # R
@@ -34,6 +34,7 @@ class Httpd < Autotools
 
   def self.prebuild
     ConvenienceFunctions.libtoolize('expat')
+    ConvenienceFunctions.libtoolize('libuuid', 'util_linux')
   end
 
   autotools_build_extras do
