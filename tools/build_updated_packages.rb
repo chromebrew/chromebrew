@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# build_updated_packages version 4.0 (for Chromebrew)
+# build_updated_packages version 4.1 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -30,7 +30,7 @@ require_gem 'timeout'
 # Add >LOCAL< lib to LOAD_PATH
 $LOAD_PATH.unshift File.join(crew_local_repo_root, 'lib')
 
-OPTIONS = %w[-h --help --check-all-python --check-all-ruby --continue-after-failed-builds --rebuild --skip -v --verbose -vv]
+OPTIONS = %w[-h --help --check-all-python --check-all-ruby --continue-after-failed-builds --ignore-changed-packages --rebuild --skip -v --verbose -vv]
 
 if ARGV.include?('-h') || ARGV.include?('--help')
   abort <<~EOM
@@ -38,6 +38,7 @@ if ARGV.include?('-h') || ARGV.include?('--help')
     Example: ./build_updated_packages.rb abcde -v
     If <package> is omitted, recently updated files will be checked for needed builds.
     Passing --continue-after-failed-builds will continue if builds fail.
+    Passing --ignore-changed-packages will not check packages git reports as having changed.
     Passing --rebuild will rebuild packages even if binaries already exist upstream.
     Passing --skip will skip update checks.
     Passing --check-all-python will check py3_ pip packages for updates.
@@ -53,6 +54,7 @@ puts "Setting the CREW_AGREE_TIMEOUT_SECONDS environment variable to less than t
 
 CONTINUE_AFTER_FAILED_BUILDS = ARGV.include?('--continue-after-failed-builds')
 REBUILD_PACKAGES = ARGV.include?('--rebuild')
+IGNORE_CHANGED_PACKAGES = ARGV.include?('--ignore-changed-packages')
 SKIP_UPDATE_CHECKS = ARGV.include?('--skip')
 CHECK_ALL_PYTHON = ARGV.include?('--check-all-python')
 CHECK_ALL_RUBY = ARGV.include?('--check-all-ruby')
@@ -170,10 +172,16 @@ else
   puts 'Checking for ruby gem package version updates...'.orange
   Kernel.system 'tools/update_ruby_gem_packages.rb'
 end
-changed_files = `git diff HEAD --name-only`.chomp.split
-changed_files_previous_commit = `git diff-tree --no-commit-id --name-only -r $(git rev-parse origin/master)..$(git rev-parse --verify HEAD)`.chomp.split
-updated_packages.push(*changed_files.select { |c| c.include?('packages/') })
-updated_packages.push(*changed_files_previous_commit.select { |c| c.include?('packages/') })
+
+if IGNORE_CHANGED_PACKAGES
+  puts 'Skipping checks for packages git marks as having changed.'.orange
+else
+  puts 'Checking packages git marks as having changed.'.orange
+  changed_files = `git diff HEAD --name-only`.chomp.split
+  changed_files_previous_commit = `git diff-tree --no-commit-id --name-only -r $(git rev-parse origin/master)..$(git rev-parse --verify HEAD)`.chomp.split
+  updated_packages.push(*changed_files.select { |c| c.include?('packages/') })
+  updated_packages.push(*changed_files_previous_commit.select { |c| c.include?('packages/') })
+end
 
 crew_update_packages = `CREW_NO_GIT=1 CREW_UNATTENDED=1 crew update | grep "\\[\\""  | jq -r '.[]'`.chomp.split.map(&'packages/'.method(:+)).map { |i| i.concat('.rb') }
 if CHECK_ALL_PYTHON
