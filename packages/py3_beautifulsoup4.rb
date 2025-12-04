@@ -12,7 +12,7 @@ class Py3_beautifulsoup4 < Pip
   binary_sha256({
     aarch64: 'f2b740ce4c91de5f3a48da9bd590e053819d33546ab8a9364a299ec8a50cd030',
      armv7l: 'f2b740ce4c91de5f3a48da9bd590e053819d33546ab8a9364a299ec8a50cd030',
-       i686: '814ae341e0cc8f71c59310a5fad5823bf3cb3ceea17cdfa92e10f07b1958820a',
+       i686: '93edfca0df68e4103dd1a99d58b48679e8af7251388ab97e7b6ddea0a3515ac1',
      x86_64: '2b654cdeab64ba946129a03b0b5ddad0f013cec397e07fdf19e5ac9e24db207e'
   })
 

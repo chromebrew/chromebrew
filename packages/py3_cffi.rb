@@ -12,7 +12,7 @@ class Py3_cffi < Pip
   binary_sha256({
     aarch64: '1ca6f3f4f3ac6b4cadd5de8d5c9cdcc38f42fd2a9c760a7b09b9759f951ae90d',
      armv7l: '1ca6f3f4f3ac6b4cadd5de8d5c9cdcc38f42fd2a9c760a7b09b9759f951ae90d',
-       i686: 'b8cb7ca6069c829d083d1f06a195893411cd3b99d53a7d7fe6cda40089dd5a78',
+       i686: '7252075ca97d17afead116d926b6434e88d0a4331953098af333db6d94e79b28',
      x86_64: 'c92709e75b88270aba80f7197a4a57b0e20ffbb8fb8370fcd53d4242fd51821f'
   })
 

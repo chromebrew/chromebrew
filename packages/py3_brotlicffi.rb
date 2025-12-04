@@ -12,7 +12,7 @@ class Py3_brotlicffi < Pip
   binary_sha256({
     aarch64: 'a8e7cee7d0ffe586cff24211d1af56ab47f2a6a2c76b1474a5b5370fccb26724',
      armv7l: 'a8e7cee7d0ffe586cff24211d1af56ab47f2a6a2c76b1474a5b5370fccb26724',
-       i686: 'a93a6c6760881537252184d746fac39b2209dcee57fe6db2cee22539c9f4a427',
+       i686: 'd6e16115e7bfec1725975bbe3918bcc40b537a16a6e3cc62cced72008fc8fed4',
      x86_64: 'af376caf56d65504583f8670c929b866e5c82b3fbffe4684ae326e7686812ead'
   })
 

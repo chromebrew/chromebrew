@@ -12,7 +12,7 @@ class Py3_docx2txt < Pip
   binary_sha256({
     aarch64: 'e23497f15f6d2b3065eb703b731e2c9d0716a4b7d12cbcafd3792d85b35e69fa',
      armv7l: 'e23497f15f6d2b3065eb703b731e2c9d0716a4b7d12cbcafd3792d85b35e69fa',
-       i686: '78381058a584d8ae9ba2c33a50765bc54f7763bd155bab8a9bf16b7c366e208d',
+       i686: 'c3d85ada0f4e1c8a1b85b6bf68cdd0f2e353c56955bae5e67dc4fda53cd8bce7',
      x86_64: 'daafc407e3d8c43de36e90956280b545a2644f07ba0635bf0da392cd1fb5295d'
   })
 

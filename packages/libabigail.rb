@@ -14,9 +14,9 @@ class Libabigail < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '82d98b316dfbe648d0a8dbeb0fe09875609d53c3ecb3cfe5457eea84f5d2e3b7',
-     armv7l: '82d98b316dfbe648d0a8dbeb0fe09875609d53c3ecb3cfe5457eea84f5d2e3b7',
-       i686: '87a2d7f4db11ddecbe6a49447ca127c34c9ffe3e0dd076808870892de66176bd',
+    aarch64: 'fccd0a4c8a3e1d40e2bb6fe7cb61b3ad1a2ddc2013e2a477c23c995ed9357068',
+     armv7l: 'fccd0a4c8a3e1d40e2bb6fe7cb61b3ad1a2ddc2013e2a477c23c995ed9357068',
+       i686: '5c227698370fa311c3d800e3a9d78496799880678af02b989609b918007332ec',
      x86_64: '014c0909ee3510e41797d682ee0dec9339eeba1c46153dc268c6dd7bd7b2f439'
   })
 

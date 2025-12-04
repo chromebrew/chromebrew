@@ -13,7 +13,7 @@ class Py3_agate_excel < Pip
     aarch64: 'ac077af3004a6ecc0d36b8e732dddfceee36700195dc110f86fe0dccd1e02417',
      armv7l: 'ac077af3004a6ecc0d36b8e732dddfceee36700195dc110f86fe0dccd1e02417',
        i686: '0d908de0cbc90eba633f515046d6d6c0ee95dd2da508717deb80462da17be7b9',
-     x86_64: 'da99c33ad28d62deb879cf41bd686f54106252e3e3565cc5eab23a3c8a0bafaf'
+     x86_64: 'cc5e792715020743a0510269b2063f2d93ee3b781563dde0b445f56f4b6b258d'
   })
 
   depends_on 'py3_xlrd'

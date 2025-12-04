@@ -11,8 +11,8 @@ class Gobject_introspection < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e74ffa6c249c58aafe0088f280eac429ed2453ca5de082892415af246606539d',
-     armv7l: 'e74ffa6c249c58aafe0088f280eac429ed2453ca5de082892415af246606539d',
+    aarch64: 'a5cba3d959a91159377d03ae4e7d4c60d9751b2999fc9b2be7490f4d32249658',
+     armv7l: 'a5cba3d959a91159377d03ae4e7d4c60d9751b2999fc9b2be7490f4d32249658',
      x86_64: '1bad47ed12d541243679a21183f5ed73db23cda81ed762e68a3d792cd88a3e7b'
   })
 

@@ -4,17 +4,17 @@ require 'convenience_functions'
 class Libcaca < Autotools
   description 'libcaca is a graphics library that outputs text instead of pixels, so that it can work on older video cards or text terminals.'
   homepage 'https://github.com/cacalabs/libcaca'
-  version "0.99.beta20-69a4213-1-#{CREW_PY_VER}"
+  version "0.99.beta20-f42aa68-1-#{CREW_PY_VER}"
   license 'GPL-2, ISC, LGPL-2.1 and WTFPL'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://github.com/cacalabs/libcaca.git'
-  git_hashtag '69a42132350da166a98afe4ab36d89008197b5f2'
+  source_url 'https://github.com/cacalabs/libcaca/archive/f42aa68fc798db63b7b2a789ae8cf5b90b57b752.zip'
+  source_sha256 'a0d0afd5cc9733510f20dab2fcd59256c960b091307e37c921f158629204bfe0'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '36b15e8e52493e55274d914feda93fe62c3779279f790bc2a5197dac5b5acbed',
-     armv7l: '36b15e8e52493e55274d914feda93fe62c3779279f790bc2a5197dac5b5acbed',
-     x86_64: 'f971927840dde5065e162e4e31830d3575d68e8024ff7d0ac3a7c7b56d235e8a'
+    aarch64: '8b2eb8981ef4951c62fbfd6160903b6d6c639e2fa80f381679045830744992e9',
+     armv7l: '8b2eb8981ef4951c62fbfd6160903b6d6c639e2fa80f381679045830744992e9',
+     x86_64: 'cbda913f155d8c0efee4fed8e173100e604cc0fc0df00a5311cd730071386c5f'
   })
 
   depends_on 'freeglut' # R

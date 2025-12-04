@@ -10,6 +10,9 @@ class Meld < Package
   git_hashtag '16224fb03d1652e2a5dc75e491719db539a106a0'
   binary_compression 'tar.zst'
 
+  binary_sha256({
+  })
+
   depends_on 'desktop_file_utils' # L
   depends_on 'gtk3' # L
   depends_on 'gtksourceview_4' # L

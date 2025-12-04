@@ -12,7 +12,7 @@ class Py3_extract_msg < Pip
   binary_sha256({
     aarch64: 'd69dee983bbc7404e9a08aae85ecd7475daa8c88f64efb0995c0dae8bd2f2426',
      armv7l: 'd69dee983bbc7404e9a08aae85ecd7475daa8c88f64efb0995c0dae8bd2f2426',
-       i686: 'fd52cee6a161225f85267f241b6587e39c107cdbfc29ae8bf0524e7d4e2dc163',
+       i686: '1f976a462d5220d0063c1de827cf7ad599934c89d14d670604a7ce6226408553',
      x86_64: '817d06f9eef6bd8ea55bf9ea9916d9cc9490b865eb9d41a6cda86b2150b2fbfd'
   })
 
