@@ -1907,6 +1907,7 @@ def upload(pkg_name = nil, pkg_version = nil, binary_compression = nil)
           puts "Uploading #{wheel}.\nNote that a '400 Bad Request' error here means the wheel has already been uploaded.".orange
           # Note that this uses the python twine from https://github.com/pypa/twine/pull/1123
           abort 'Twine is broken, cannot upload python wheels.'.lightred unless system('twine --help', %i[out err] => File::NULL)
+          abort "Twine is missing dependencies, cannot upload python wheels: #{`twine --version`.chomp}".lightred if `twine --version`.chomp.include?('NOT INSTALLED')
           system("twine upload -u #{GITLAB_TOKEN_USERNAME} -p #{GITLAB_TOKEN} --repository-url #{CREW_GITLAB_PKG_REPO}/pypi --non-interactive #{wheel}", %i[err] => File::NULL)
           FileUtils.rm_f wheel
         end
