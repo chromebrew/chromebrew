@@ -10,8 +10,8 @@ class Py3_requests_toolbelt < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6dbb0d15057932a172c35543ab604bbbe7e48a1362e2bd51f22df9e23246fb91',
-     armv7l: '6dbb0d15057932a172c35543ab604bbbe7e48a1362e2bd51f22df9e23246fb91',
+    aarch64: '73bf8d06562860290b11e2fd2a9f33870c2f9c5bd40e667aea62e8c7d4d6ff33',
+     armv7l: '73bf8d06562860290b11e2fd2a9f33870c2f9c5bd40e667aea62e8c7d4d6ff33',
        i686: '42bc41b34c3034d36dbe9b09bee1717c1b1974bdccaeca2be7213f1a7d0127db',
      x86_64: '71d2c07c31034c4d89edaac3fd82dcb3b78a3e4b6fb1038b45d638e1994cc710'
   })
