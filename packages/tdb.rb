@@ -11,8 +11,8 @@ class Tdb < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '53baf559d427ed3ce19345c80ba646bf06da804e6ddd44ad33f77f41135f4625',
-     armv7l: '53baf559d427ed3ce19345c80ba646bf06da804e6ddd44ad33f77f41135f4625',
+    aarch64: 'e84ef6595ae19a9e8cfe05011c61ad075920cdab39998f47554568e4f45cfe38',
+     armv7l: 'e84ef6595ae19a9e8cfe05011c61ad075920cdab39998f47554568e4f45cfe38',
        i686: 'aa28173f9b0acd8793f9a8d67fc5ca963f1ab9cb320da9242327d2af1f2d2f02',
      x86_64: 'e9315fad39ddb8bbc3d234380414ceda6346d0181323a51acfd426f62af72366'
   })
