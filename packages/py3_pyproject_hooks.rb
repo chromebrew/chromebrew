@@ -10,10 +10,10 @@ class Py3_pyproject_hooks < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0ab6e768a39d869e8e7db43982dd62a2ca5016adbd680433c8f9a876d705fc13',
-     armv7l: '0ab6e768a39d869e8e7db43982dd62a2ca5016adbd680433c8f9a876d705fc13',
-       i686: 'd7dee37e18fdbb9d8ed1ac7690f41c806a10ee677c02f2d975e9f30f2c2f3bb4',
-     x86_64: '95fedaa2f88f1668a353c99db1115c158da02f746ef209b23c5d1ea5798764b2'
+    aarch64: 'ba5fd74a421c6d656263a52412fdcb393cbf9928b34f0c9aaf906162b9d26d22',
+     armv7l: 'ba5fd74a421c6d656263a52412fdcb393cbf9928b34f0c9aaf906162b9d26d22',
+       i686: '3e06d4591b3a1d096435c9e25b704c4de9ffefb9a4ca7b85626c6889f8e5b819',
+     x86_64: 'f5e37a3b3b889401440d7daf473deb3b5c1488315eaad5e54b0fbb64f102f096'
   })
 
   depends_on 'python3'
