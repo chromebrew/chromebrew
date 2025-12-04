@@ -14,8 +14,8 @@ class Gdb < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd74a71602b10817ab94c27126606733dfa302f000efbcb4cbc4c384c61cac855',
-     armv7l: 'd74a71602b10817ab94c27126606733dfa302f000efbcb4cbc4c384c61cac855',
+    aarch64: 'b35ea59fc1e1a4dd8e804b414c7ebc1d2e7ef570583f2a255d283faa821c24a3',
+     armv7l: 'b35ea59fc1e1a4dd8e804b414c7ebc1d2e7ef570583f2a255d283faa821c24a3',
        i686: 'f7988dc74a14b82c2d04521db6394d0cca5b07a3f72f999c463131d98fba09c1',
      x86_64: '3f0d8801f4e29a0aab46f40eaf61602a02fa679881fed4e6951bf48a153e1012'
   })
