@@ -14,8 +14,8 @@ class Tevent < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4a28a359182ba4d965efe075fc3aa1d2c5553cb11e12eac3ec13d05a2a70308c',
-     armv7l: '4a28a359182ba4d965efe075fc3aa1d2c5553cb11e12eac3ec13d05a2a70308c',
+    aarch64: '0c8a896207a86c536fc21ccafd75351a87d2685af933686c8acd3f531498c1ca',
+     armv7l: '0c8a896207a86c536fc21ccafd75351a87d2685af933686c8acd3f531498c1ca',
        i686: '0fec5b27e1c26c6d62bafe4fff459ef2bade43d719e9eac725b777ca9bcdb39a',
      x86_64: 'dc83bbfe1958e69fa9a5509853489a0b731285efc3b60a3ddf50af5c0edf627e'
   })

@@ -12,9 +12,9 @@ class Libcaca < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8b2eb8981ef4951c62fbfd6160903b6d6c639e2fa80f381679045830744992e9',
-     armv7l: '8b2eb8981ef4951c62fbfd6160903b6d6c639e2fa80f381679045830744992e9',
-     x86_64: 'cbda913f155d8c0efee4fed8e173100e604cc0fc0df00a5311cd730071386c5f'
+    aarch64: '36b15e8e52493e55274d914feda93fe62c3779279f790bc2a5197dac5b5acbed',
+     armv7l: '36b15e8e52493e55274d914feda93fe62c3779279f790bc2a5197dac5b5acbed',
+     x86_64: 'f971927840dde5065e162e4e31830d3575d68e8024ff7d0ac3a7c7b56d235e8a'
   })
 
   depends_on 'freeglut' # R
