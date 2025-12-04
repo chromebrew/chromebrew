@@ -17,8 +17,12 @@ class Py3_twine < Pip
   })
 
   depends_on 'py3_certifi'
+  depends_on 'py3_id'
+  depends_on 'py3_keyring'
   depends_on 'py3_readme_renderer'
   depends_on 'py3_requests'
+  depends_on 'py3_requests_toolbelt'
+  depends_on 'py3_rfc3986'
   depends_on 'py3_rich'
   depends_on 'py3_setuptools'
   depends_on 'python3' => :build

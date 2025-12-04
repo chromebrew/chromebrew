@@ -12,8 +12,8 @@ class Py3_imapclient < Pip
   binary_sha256({
     aarch64: 'baf9aec76daf998dacfeccbc4a45d88d97024de43f68a5467d0eee6b092adf91',
      armv7l: 'baf9aec76daf998dacfeccbc4a45d88d97024de43f68a5467d0eee6b092adf91',
-       i686: 'af2daf9e6b076c46c2e6acbeb3f6309cdef8f81498f5b503153f7adcd4806cb6',
-     x86_64: '82d0cbc5f09b75f65b870af85528609ca0148e1a7a3baeeaee6ecb89b57e0d52'
+       i686: '9796cf0ab3bb78751fcff1cd5e7c96b0663e17ef3b6a130bab85e743cee6a745',
+     x86_64: '56666656041c014102e4d874154f85da592135c9dba833df05b70f80748add24'
   })
 
   depends_on 'py3_six'

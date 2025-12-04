@@ -10,10 +10,10 @@ class Py3_platformdirs < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b6449ace1cd37f0f27e67720394978e66c3c7f18cbbbe05923207bc05104b1b2',
-     armv7l: 'b6449ace1cd37f0f27e67720394978e66c3c7f18cbbbe05923207bc05104b1b2',
-       i686: '8aa57d5be7ef044837b4e2a7f3875888e1d82dca361acbc0d97ee840abc2d296',
-     x86_64: '27fc81727940171284539c95f8da25e4181e6f06bd6dcd2a07942db9fd1fe3b4'
+    aarch64: 'cb2e5f6c5acdc04be3fa1b4542cc6381329a20e8b69f7569a248242d23e0fed0',
+     armv7l: 'cb2e5f6c5acdc04be3fa1b4542cc6381329a20e8b69f7569a248242d23e0fed0',
+       i686: 'cb92d6c3f4c9afa73c51638b5ae530746e338ea49761311881734ce1a4b249d0',
+     x86_64: 'd6c9c93fc97b045a6ada7a4167d72078d6493968be67950918e095286acee37a'
   })
 
   depends_on 'python3' => :build

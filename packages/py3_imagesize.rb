@@ -12,8 +12,8 @@ class Py3_imagesize < Pip
   binary_sha256({
     aarch64: '496b7868dcafd439f2be6c27e1a350b548c0dd3f64cdee6b54271583b7c1e752',
      armv7l: '496b7868dcafd439f2be6c27e1a350b548c0dd3f64cdee6b54271583b7c1e752',
-       i686: 'ebbee91dd8289110f28efc3aea74574246c64fcc9d9e6a777b3f1dfaa04113ea',
-     x86_64: 'dff67e0990826aaf6fa95348508d8290a67b3d3ad2156ca37b1c427c6d72643f'
+       i686: '7ebc51e0b85ffb843ddde88ccf251a3a1b65dc60659bf6c768732f76e421b9f2',
+     x86_64: '2f3268ed82f81bc099dc072c910ce4dfec7618283c9314f69ae67705fc447c3b'
   })
 
   depends_on 'python3' => :build

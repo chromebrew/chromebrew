@@ -12,8 +12,8 @@ class Py3_hatchling < Pip
   binary_sha256({
     aarch64: '05dbb59fe2cfc9cb0c1ff2bfbac4c308b40ed578a27fe23f8d3e58d4c92c5045',
      armv7l: '05dbb59fe2cfc9cb0c1ff2bfbac4c308b40ed578a27fe23f8d3e58d4c92c5045',
-       i686: 'db1dba0c7d3bd4345609c8925643d95eec693db3f09a6d0465d2d5828aeeaff5',
-     x86_64: '10e60e8a5fe0e200d9f33dd8463a4dc80a3b425700454dfd64d315190f8963fc'
+       i686: 'b295a841632e069f86c4048b9a68c97983913ceb0db2306168e4121645e2680b',
+     x86_64: 'cad19827c2e451ed551b32f6a22be9a65623901027878792e8fba0c53fe448a7'
   })
 
   depends_on 'py3_editables'

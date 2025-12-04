@@ -10,10 +10,10 @@ class Py3_click < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1a51345aead4bb1d72967775511b29b09005663e3b2a94a6fc765be389840671',
-     armv7l: '1a51345aead4bb1d72967775511b29b09005663e3b2a94a6fc765be389840671',
+    aarch64: 'e0ffa5505fff956d6068591ec6683c468fc0ad91fcb134fff82951a0d98270d4',
+     armv7l: 'e0ffa5505fff956d6068591ec6683c468fc0ad91fcb134fff82951a0d98270d4',
        i686: '61dee2f326d1a9bcbeaf1ee26e6033571695db644adf3bb29f9d154b9c423572',
-     x86_64: '45d3fc3856e1a74e65335a707e8e1f835e17d1a2194daa66f2f79a6d260acf65'
+     x86_64: '5fc2c6bb11634cabef32e5a5aceaea03b5a3318e8cbba00af163019818c8579e'
   })
 
   depends_on 'python3' => :build

@@ -12,7 +12,7 @@ class Py3_itsdangerous < Pip
   binary_sha256({
     aarch64: '46c6bb4a28c70160611cb6405be56708bd6f9dc0de8acaa03745f2d8236dbb52',
      armv7l: '46c6bb4a28c70160611cb6405be56708bd6f9dc0de8acaa03745f2d8236dbb52',
-       i686: '0b138130bb6b1bff3ff5cfafea4036d051529ef52ee4eede99faf3ab714bc0a5',
+       i686: '7a426ef3347f7078dc2568c16613f8fccd4d3de3d7173bb83fc1029af919171f',
      x86_64: '7d12a9199b418b9cff1894ce3d48c343bddf714350452b0ad1b52f2ed2965da1'
   })
 

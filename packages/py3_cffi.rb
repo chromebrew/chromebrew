@@ -10,10 +10,10 @@ class Py3_cffi < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1ca6f3f4f3ac6b4cadd5de8d5c9cdcc38f42fd2a9c760a7b09b9759f951ae90d',
-     armv7l: '1ca6f3f4f3ac6b4cadd5de8d5c9cdcc38f42fd2a9c760a7b09b9759f951ae90d',
+    aarch64: 'de9a661a324899f9d0f8ff27abe975097a88e8f7f88b7087c30343b15d323117',
+     armv7l: 'de9a661a324899f9d0f8ff27abe975097a88e8f7f88b7087c30343b15d323117',
        i686: '7252075ca97d17afead116d926b6434e88d0a4331953098af333db6d94e79b28',
-     x86_64: 'c92709e75b88270aba80f7197a4a57b0e20ffbb8fb8370fcd53d4242fd51821f'
+     x86_64: '5a082e020f6cb7a0df2376f86dcbb3abe4e33114b88aa4d8e0f808ae064c6464'
   })
 
   depends_on 'gcc_lib' # R

@@ -12,8 +12,8 @@ class Py3_hatch_vcs < Pip
   binary_sha256({
     aarch64: '98c77ad86a6a74c0911875fdfad823bd2d5d85ec3b4c4b6eb0903023cf3aafb4',
      armv7l: '98c77ad86a6a74c0911875fdfad823bd2d5d85ec3b4c4b6eb0903023cf3aafb4',
-       i686: '16aa11be9f229a8cd029f01e30344bababc1fc84df3f31339f3949864b364bee',
-     x86_64: '89166c75ba56df60564258a6c9323e0eb5b0e99f25c220f5765530db9901fea4'
+       i686: 'bc1eef6c54925e21b308e5db5624ec386e1620aa3b37ee9a72622d3f74071fde',
+     x86_64: 'c1907fff5322bc662fc1aeff5c80b344fd81d77f56467334d911d921b9cfdb81'
   })
 
   depends_on 'python3' => :build

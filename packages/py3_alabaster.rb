@@ -10,10 +10,10 @@ class Py3_alabaster < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c69245013f76725cf74115ccd8ee7f69f1fe1264bad8b621e38ec45f0490621c',
-     armv7l: 'c69245013f76725cf74115ccd8ee7f69f1fe1264bad8b621e38ec45f0490621c',
+    aarch64: '79059b7acd1296d3ebb91ba850206e7b08786508a2a048de84da82f6fb396b37',
+     armv7l: '79059b7acd1296d3ebb91ba850206e7b08786508a2a048de84da82f6fb396b37',
        i686: '471c06a52ee38ee79cc99a1efc1172b680ed233fb58a5f886a485a59c92a450e',
-     x86_64: '14ff489221a96e87522fcecdb6773daa799c7272e69f14a8b6bd46402a2cdc73'
+     x86_64: '133a5f452953bdabe49fde5e0e9b98b7fa4b4bd00e6a7d5ed00bd07068f0f199'
   })
 
   depends_on 'python3' => :build
