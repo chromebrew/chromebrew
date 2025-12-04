@@ -6,19 +6,18 @@ require 'buildsystems/meson'
 class Lilv < Meson
   description 'A C library interface to the LV2 plug-in standard'
   homepage 'https://drobilla.net/software/lilv/'
-  @_ver = '0.24.20'
-  version "#{@_ver}-#{CREW_PY_VER}"
+  version "0.24.20-#{CREW_PY_VER}"
   license 'isc'
   compatibility 'all'
   source_url 'https://github.com/lv2/lilv.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ada5368cf318ffaf417ed2a3ad79ad3981fe8a2b360e4f53cae6f709493c2351',
-     armv7l: 'ada5368cf318ffaf417ed2a3ad79ad3981fe8a2b360e4f53cae6f709493c2351',
-       i686: '676dd2b3f734beac11dd153cc6aa5dc45834579727cbf9a44203ded0ac739b77',
-     x86_64: 'd8afc26bb659d79ad2821eba2e60ddf71504f7da5e357ca47ea4cef3fffcf4d9'
+    aarch64: '44d5137303bd635b344b91a01dd280cc7da0ff04b14011453b5af74e544f8761',
+     armv7l: '44d5137303bd635b344b91a01dd280cc7da0ff04b14011453b5af74e544f8761',
+       i686: 'afa02806f28bcb43ab4d40f413bbec0e249012ac6c47ca0f9aa1d977b3c84e91',
+     x86_64: 'fefa28b2fcf93f8af004c3e77b283b280ac4e04814e266ae5e19a882b5504682'
   })
 
   depends_on 'gcc_lib' # R
