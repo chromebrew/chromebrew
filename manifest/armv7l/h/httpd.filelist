@@ -1,4 +1,4 @@
-# Total size: 27973529
+# Total size: 28022533
 /usr/local/bin/ab
 /usr/local/bin/apachectl
 /usr/local/bin/apxs
@@ -563,6 +563,7 @@
 /usr/local/share/httpd/manual/images/custom_errordocs.png
 /usr/local/share/httpd/manual/images/down.gif
 /usr/local/share/httpd/manual/images/favicon.ico
+/usr/local/share/httpd/manual/images/favicon.png
 /usr/local/share/httpd/manual/images/feather.gif
 /usr/local/share/httpd/manual/images/feather.png
 /usr/local/share/httpd/manual/images/filter_arch.png
