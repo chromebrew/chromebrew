@@ -345,6 +345,7 @@ PY3_PIP_RETRIES                  = ENV.fetch('PY3_PIP_RETRIES', '5')
 
 # Defaults for the current versions used in version checking, in case
 # we are checking versions from outside Chromebrew, such as in CI.
+# Do adjust necessary variables in install.sh when changed here.
 crew_gcc_ver_default = '15'
 crew_icu_ver_default = '77.1'
 crew_llvm_ver_default = '21'
