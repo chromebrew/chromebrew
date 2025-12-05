@@ -50,13 +50,11 @@ version_line_string = {}
 versions_updated = {}
 versions = []
 
-def get_version(name, homepage, source, version)
+def get_version(name, homepage, source)
   anitya_id = get_anitya_id(name, homepage, @pkg.superclass.to_s)
-  # If anitya_id cannot be determined, a Range can be returned, and
-  # .nonzero? does not work with Ranges.
-  anitya_id = nil if anitya_id.is_a? Range
+  # We return nil if anitya_id cannot be determined.
   puts "anitya_id: #{anitya_id}" if VERBOSE
-  if anitya_id&.nonzero?
+  if !anitya_id.nil?
     # Get the latest stable version of the package from anitya.
     json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/versions/?project_id=#{anitya_id}")))
     puts json if VERY_VERBOSE
@@ -76,10 +74,6 @@ def get_version(name, homepage, source, version)
     # | cut --delimiter='/' --fields=3
     # However, since that does miss text tags, better to just use
     # anitya first.
-    if source.is_a?(Hash)
-      source_arch = (@pkg.source_url.keys.map &:to_s).first
-      source = @pkg.source_url[source_arch.to_sym]
-    end
     source.sub!('www.', '')
     url = URI.parse(source)
     puts "source_url host is #{url.host}" if VERY_VERBOSE
@@ -125,67 +119,78 @@ def get_version(name, homepage, source, version)
         end
       end
     when 'gitlab.com'
-      url_parts = url.path.split('/')
-      unless url_parts.count < 3
-        repo = "#{url_parts[1]}/#{url_parts[2].gsub(/.git\z/, '')}"
-        puts "GitLab repo is #{repo}" if VERBOSE
-        status = `curl -fsI https://#{url.host}/#{repo}/-/releases/permalink/latest`.lines.first.split[1]
-        if status == '404'
-          puts 'GitLab repo not found or no release available.' if VERBOSE
-          return
-        end
-        puts "curl https://#{url.host}/#{repo}/-/releases/permalink/latest -Ls | grep -Po 'data-tag-name=\"(.*)\" ' | cut -d\\\" -f2" if VERY_VERBOSE
-        gitlab_ver = `curl https://#{url.host}/#{repo}/-/releases/permalink/latest -Ls | grep -Po 'data-tag-name="(.*)" ' | cut -d\\\" -f2`.chomp
-        unless gitlab_ver.blank? || gitlab_ver == 'null'
-          puts "gitlab_ver = #{gitlab_ver}" if VERY_VERBOSE
-          # Strip off any leading non-numeric characters.
-          upstream_version = gitlab_ver.sub(/.*?(?=[0-9].)/im, '').chomp
-          return upstream_version
-        end
-      end
+      gitlab_fallback(url)
     when 'downloads.sourceforge.net'
-      url_parts = url.path.split('/')
-      unless url_parts.count < 3
-        repo = url_parts[2]
-        filename = url_parts.last
-        puts "Sourceforge repo is #{repo}" if VERBOSE
-        status = `curl -fsI https://sourceforge.net/projects/#{repo}/best_release.json`.lines.first.split[1]
-        if status == '404'
-          puts 'Sourceforge repo not found or no release available.' if VERBOSE
-          return
-        end
-        puts "curl https://sourceforge.net/projects/#{repo}/best_release.json -Ls | jq .release.filename -r" if VERY_VERBOSE
-        sourceforge_file = `curl https://sourceforge.net/projects/#{repo}/best_release.json -Ls | jq .release.filename -r`.chomp
-        best_release = sourceforge_file.split('/').last
-        if filename == best_release
-          return version
-        else
-          puts "best_release = #{best_release}" if VERY_VERBOSE
-          # Strip off any leading non-numeric characters.
-          upstream_version = best_release.sub(/.*?(?=[0-9].)/im, '').chomp
-          return upstream_version
-        end
-      end
+      sourceforge_fallback(url)
     when 'pagure.io'
-      url_parts = url.path.split('/')
-      unless url_parts.count < 2
-        repo = url_parts[1]
-        puts "Pagure repo is #{repo}" if VERBOSE
-        status = `curl -fsI https://pagure.io/api/0/#{repo}/git/tags`.lines.first.split[1]
-        if status == '404'
-          puts 'Pagure repo not found or no release tag available.' if VERBOSE
-          return
-        end
-        puts "curl https://pagure.io/api/0/#{repo}/git/tags -Ls | jq .tags[0] -r" if VERY_VERBOSE
-        pagure_ver = `curl https://pagure.io/api/0/#{repo}/git/tags -Ls | jq .tags[0] -r`.chomp
-        unless pagure_ver.blank? || pagure_ver == 'null'
-          puts "pagure_ver = #{pagure_ver}" if VERY_VERBOSE
-          # Strip off any leading non-numeric characters.
-          upstream_version = pagure_ver.sub(/.*?(?=[0-9].)/im, '').chomp
-          return upstream_version
-        end
-      end
+      pagure_fallback(url)
     end
+  end
+end
+
+def gitlab_fallback(url)
+  url_parts = url.path.split('/')
+  return if url_parts.count < 3
+
+  repo = "#{url_parts[1]}/#{url_parts[2].delete_suffix('.git')}"
+  redirect = Net::HTTP.get_response(URI("https://#{url.host}/#{repo}/-/releases/permalink/latest"))['location']
+
+  if redirect == "https://#{url.host}/users/sign_in"
+    puts 'GitLab repo not found.' if VERBOSE
+  elsif redirect.nil?
+    puts 'No releases available on GitLab repo.' if VERBOSE
+  else
+    gitlab_ver = redirect.split('/').last
+    # puts "gitlab_ver = #{gitlab_ver}" if VERY_VERBOSE
+    puts "gitlab_ver = #{gitlab_ver}"
+    # Strip off any leading non-numeric characters.
+    return gitlab_ver.sub(/.*?(?=[0-9].)/im, '')
+  end
+end
+
+def sourceforge_fallback(url)
+  url_parts = url.path.split('/')
+  return if url_parts.count < 3
+
+  repo = url_parts[2]
+  puts "Sourceforge repo is #{repo}" if VERBOSE
+
+  response = Net::HTTP.get_response(URI("https://sourceforge.net/projects/#{repo}/best_release.json"))
+  if response.code == '404'
+    puts 'Sourceforge repo not found.' if VERBOSE
+    return
+  end
+
+  json = JSON.parse(response.body)
+  if json['release'].nil?
+    puts 'No releases available on Sourceforge repo.' if VERBOSE
+    return
+  end
+
+  # Remove any preceding path components and remove any extensions, with an additional pass to remove .tar in the case of .tar.gz
+  best_release = File.basename(json['release']['filename'], '.*').delete_suffix('.tar')
+  puts "best_release = #{best_release}" if VERY_VERBOSE
+  # Strip off any leading non-numeric characters.
+  return best_release.sub(/.*?(?=[0-9].)/im, '')
+end
+
+def pagure_fallback(url)
+  url_parts = url.path.split('/')
+  return if url_parts.count < 2
+
+  repo = url_parts[1]
+  puts "Pagure repo is #{repo}" if VERBOSE
+
+  json = JSON.parse(Net::HTTP.get(URI("https://pagure.io/api/0/#{repo}/git/tags")))
+  if !json['error'].nil?
+    puts 'Pagure repo not found.' if VERBOSE
+  elsif json['total_tags'].zero?
+    puts 'No tags available on Pagure repo.' if VERBOSE
+  else
+    pagure_ver = json['tags'][0]
+    puts "pagure_ver = #{pagure_ver}" if VERY_VERBOSE
+    # Strip off any leading non-numeric characters.
+    return pagure_ver.sub(/.*?(?=[0-9].)/im, '')
   end
 end
 
@@ -385,7 +390,7 @@ if filelist.length.positive?
       end
     else
       # Get the upstream version.
-      upstream_version = get_version(@pkg.name, @pkg.homepage, @pkg.source_url, @pkg.version)
+      upstream_version = get_version(@pkg.name, @pkg.homepage, PackageUtils.get_url(@pkg, build_from_source: true))
     end
     # Some packages don't work with this yet, so gracefully exit now rather than throwing false positives.
     versions_updated[@pkg.name.to_sym] = 'Not Found.' if upstream_version.nil? || upstream_version.to_s.chomp == 'null'
