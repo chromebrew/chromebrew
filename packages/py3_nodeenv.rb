@@ -10,10 +10,10 @@ class Py3_nodeenv < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5ed532bde750386d9b73fc8909fb00938eb15d7df1990fac99d3ba9ea8869a35',
-     armv7l: '5ed532bde750386d9b73fc8909fb00938eb15d7df1990fac99d3ba9ea8869a35',
-       i686: '479cfbf1bcf940b6ffd3a15449549ade6484309cd8258a2318b4020002d9f4dd',
-     x86_64: '5aa2efb4274126fd31e1f8555659cbe0c1e4c30261efdcaa1ffe90018e4569dc'
+    aarch64: 'd328a245ab97db6c64cdd9765acba0b8be7030cb6f9ecbef44497f02ccc2e7e8',
+     armv7l: 'd328a245ab97db6c64cdd9765acba0b8be7030cb6f9ecbef44497f02ccc2e7e8',
+       i686: 'd310a507e8045191eded06cab54ba14490d1b56de65006447ee5dabb103b55ae',
+     x86_64: '367a45ead11a04c05f946f4b0570b0a37fb59b3121a324c1c50f9cf134de2a4f'
   })
 
   depends_on 'python3'

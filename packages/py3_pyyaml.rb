@@ -10,14 +10,14 @@ class Py3_pyyaml < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cfb1b6c69e7de919460e30a40e2f547f8e9d2cb3e0f0f073271d279d4e99d0c0',
-     armv7l: 'cfb1b6c69e7de919460e30a40e2f547f8e9d2cb3e0f0f073271d279d4e99d0c0',
-       i686: '2f22f5ba729feebc0b26ff96a13eedfa9fd59a793421b5682aeaf5cfb29cc344',
-     x86_64: '2e6addd83396ee4a20819857bb3b9544471d75ed321d4810a6a765c93c08d4be'
+    aarch64: 'fae496e696756951fd9e08b726c5272e3c8cf024243082ba02f6226ea920661a',
+     armv7l: 'fae496e696756951fd9e08b726c5272e3c8cf024243082ba02f6226ea920661a',
+       i686: 'f0b0c4e59e231d5271d8e27b31744c8e16adabd00c3ce7402c1cf5f668e1653a',
+     x86_64: 'fe440c8306d9a350ab68edb395191ee74725673a31f7c493e0b62181ffc73132'
   })
 
   depends_on 'glibc' # R
-  depends_on 'libyaml' => :build
+  depends_on 'libyaml' # R
   depends_on 'python3' # R
 
   no_source_build

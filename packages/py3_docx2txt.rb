@@ -10,10 +10,10 @@ class Py3_docx2txt < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e23497f15f6d2b3065eb703b731e2c9d0716a4b7d12cbcafd3792d85b35e69fa',
-     armv7l: 'e23497f15f6d2b3065eb703b731e2c9d0716a4b7d12cbcafd3792d85b35e69fa',
-       i686: '78381058a584d8ae9ba2c33a50765bc54f7763bd155bab8a9bf16b7c366e208d',
-     x86_64: 'daafc407e3d8c43de36e90956280b545a2644f07ba0635bf0da392cd1fb5295d'
+    aarch64: '29386f609521d91d91fdfc273cf9a764f5cf3f1114518e6ee2a193e136f77b94',
+     armv7l: '29386f609521d91d91fdfc273cf9a764f5cf3f1114518e6ee2a193e136f77b94',
+       i686: 'c3d85ada0f4e1c8a1b85b6bf68cdd0f2e353c56955bae5e67dc4fda53cd8bce7',
+     x86_64: 'd5512d0350db3e75bbc870698a434f0d4b1c81d176534623fcb93e28189a301d'
   })
 
   depends_on 'python3' => :build

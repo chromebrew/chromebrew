@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION = defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION = '1.68.5' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION = '1.68.6' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH = Etc.uname[:machine]
@@ -59,7 +59,7 @@ end
 # These are packages that crew needs to run-- only packages that the bin/crew needs should be required here.
 # lz4, for example, is required for zstd to have lz4 support, but this is not required to run bin/crew.
 CREW_ESSENTIAL_PACKAGES = %W[
-  bash crew_profile_base gcc_lib gmp gnu_time libxcrypt ncurses patchelf readline ruby ruby_matrix upx zlib zlib_ng zstd
+  bash crew_profile_base gcc_lib gmp gnu_time libnghttp2 libxcrypt ncurses patchelf readline ruby ruby_matrix upx zlib zlib_ng zstd
   #{'crew_preload' unless CREW_GLIBC_INTERPRETER.nil?}
   #{'glibc' unless CREW_GLIBC_INTERPRETER.nil?}
   #{ if LIBC_VERSION.to_f > 2.34 && LIBC_VERSION.to_f < 2.41
@@ -349,7 +349,7 @@ crew_gcc_ver_default = '15'
 crew_icu_ver_default = '77.1'
 crew_llvm_ver_default = '21'
 crew_perl_ver_default = '5.42'
-crew_py_ver_default = '3.13'
+crew_py_ver_default = '3.14'
 crew_ruby_ver_default = '3.4'
 if ENV['CI']
   CREW_GCC_VER  = "gcc#{crew_gcc_ver_default}"
@@ -457,7 +457,7 @@ CREW_ANITYA_PACKAGE_NAME_MAPPINGS = Set[
   { pkg_name: 'procps', anitya_pkg: 'procps-ng', comments: '' },
   { pkg_name: 'pthread_stubs', anitya_pkg: 'libpthread-stubs', comments: '' },
   { pkg_name: 'py3_atspi', anitya_pkg: 'pyatspi', comments: '' },
-  { pkg_name: 'python3', anitya_pkg: 'python313', comments: '' },
+  { pkg_name: 'python3', anitya_pkg: 'python314', comments: '' },
   { pkg_name: 'rdfind', anitya_pkg: 'rdfind', comments: 'Prefer to GitHub' },
   { pkg_name: 'rest', anitya_pkg: 'librest', comments: 'Prefer to GitHub' },
   { pkg_name: 'selenium_server_standalone', anitya_pkg: 'selenium', comments: '' },

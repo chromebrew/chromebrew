@@ -10,10 +10,10 @@ class Py3_colorama < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '473273ff6fa3077b4e06f2f71e33afddca8cc3ba4320eb233e14586e0275a839',
-     armv7l: '473273ff6fa3077b4e06f2f71e33afddca8cc3ba4320eb233e14586e0275a839',
-       i686: '6bce6bfa08b9c21c954177b9ee03887b51c7b5133bf1e690896b0e549445361b',
-     x86_64: '6dfd9a5a1dfe71424df2c0bc1e1c6bf95e355cb8cd6f29ddfd9fa291f5f16db1'
+    aarch64: 'de2bcf3becb719707b2c4c1ce3715a7c020d9a18f81053ae480aaf64ac364924',
+     armv7l: 'de2bcf3becb719707b2c4c1ce3715a7c020d9a18f81053ae480aaf64ac364924',
+       i686: 'be7303cbb39cd8b741e5311d95d6628881a2471c40efb1c2193f83667fdfa996',
+     x86_64: '85fd98c9105015143457c3464f92fb691930d48d8c40c316b929ce9b6fa056b2'
   })
 
   depends_on 'python3' => :build

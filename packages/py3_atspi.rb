@@ -14,9 +14,9 @@ class Py3_atspi < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '90ae1d303780e1a70346f3d5a5f91c63f60b8a4b560564742d6d96952dfaad0a',
-     armv7l: '90ae1d303780e1a70346f3d5a5f91c63f60b8a4b560564742d6d96952dfaad0a',
-     x86_64: '651846c41d5842ede425fe43cd89a434c6f65607a01c675a2986f484eeaa64d0'
+    aarch64: 'a65c5150d7d6f45ac2f102f54ca1eff89a1ffed11d824c39e24d173453d1ea72',
+     armv7l: 'a65c5150d7d6f45ac2f102f54ca1eff89a1ffed11d824c39e24d173453d1ea72',
+     x86_64: '7aabdd98b92bf7aa7dc93a727f01b7bed5af96ecad2bbdac96061cb519fb2025'
   })
 
   depends_on 'py3_pygobject'

@@ -13,10 +13,10 @@ class Py3_setuptools < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '58844ff596a9626d85733e4e9df391e4f6ae6d83714385632eaf42a0fc9ab1c9',
-     armv7l: '58844ff596a9626d85733e4e9df391e4f6ae6d83714385632eaf42a0fc9ab1c9',
-       i686: 'cfb7eb84b774b46c12f42fdadd3685e756153d4d0cd9485e8b12a94a44679a87',
-     x86_64: '326096c15b8e9eea9a9209f74e14df2cfa12662b3b9b190ce78bf6470b89bb9e'
+    aarch64: '9244496f10c86cd9ae6b3cda9d2a388fbc740733326bcd39ec2ae459aa9f5b5f',
+     armv7l: '9244496f10c86cd9ae6b3cda9d2a388fbc740733326bcd39ec2ae459aa9f5b5f',
+       i686: '92da77356bb2438d7c995396b9b5d9feb01d64723cc1e9c1f1b1071db6cf1663',
+     x86_64: '284250e9ff28390f1772ecfa3b64456e0d5fc5c35fb822ab568190a169ec6940'
   })
 
   depends_on 'python3'
