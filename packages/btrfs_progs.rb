@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Btrfs_progs < Autotools
   description 'BTRFS is a modern copy on write filesystem for Linux aimed at implementing advanced features while also focusing on fault tolerance, repair and easy administration.'
   homepage 'https://btrfs.readthedocs.io/en/latest/'
-  version '6.9'
+  version '6.17.1'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/kdave/btrfs-progs.git'
