@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.17 (for Chromebrew)
+# version.rb version 3.18 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose -vv]
 
@@ -396,7 +396,7 @@ if filelist.length.positive?
     versions_updated[@pkg.name.to_sym] = 'Not Found.' if upstream_version.nil? || upstream_version.to_s.chomp == 'null'
 
     unless upstream_version.nil?
-      if versions_updated[@pkg.name.to_sym] != 'Not Found.'
+      if versions_updated[@pkg.name.to_sym] != 'Not Found.' && VERY_VERBOSE
         crewlog "PackageUtils.get_clean_version(@pkg.version): #{PackageUtils.get_clean_version(@pkg.version)}"
         crewlog "upstream_version: #{upstream_version}"
         crewlog "Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version): #{Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version)}"
