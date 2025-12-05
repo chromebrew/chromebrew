@@ -3,7 +3,7 @@ require 'package'
 class Asciinema < Package
   description 'Terminal session recorder'
   homepage 'https://asciinema.org/'
-  version '2.1.0'
+  version '3.0.1'
   license 'GPL-3+'
   compatibility 'all'
   source_url 'https://github.com/asciinema/asciinema.git'
