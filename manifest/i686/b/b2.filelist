@@ -1,4 +1,4 @@
-# Total size: 1917057
+# Total size: 2555907
 /usr/local/bin/b2
 /usr/local/share/b2/src/build-system.jam
 /usr/local/share/b2/src/build/ac.jam
@@ -31,6 +31,7 @@
 /usr/local/share/b2/src/tools/builtin.jam
 /usr/local/share/b2/src/tools/bzip2.jam
 /usr/local/share/b2/src/tools/cast.jam
+/usr/local/share/b2/src/tools/cc.jam
 /usr/local/share/b2/src/tools/clang-darwin.jam
 /usr/local/share/b2/src/tools/clang-linux.jam
 /usr/local/share/b2/src/tools/clang-vxworks.jam
@@ -132,6 +133,7 @@
 /usr/local/share/b2/src/tools/gfortran.jam
 /usr/local/share/b2/src/tools/hp_cxx.jam
 /usr/local/share/b2/src/tools/hpfortran.jam
+/usr/local/share/b2/src/tools/ibmcxx.jam
 /usr/local/share/b2/src/tools/ifort.jam
 /usr/local/share/b2/src/tools/intel-darwin.jam
 /usr/local/share/b2/src/tools/intel-linux.jam
@@ -196,10 +198,8 @@
 /usr/local/share/b2/src/tools/types/sass-type.jam
 /usr/local/share/b2/src/tools/types/xml.jam
 /usr/local/share/b2/src/tools/unix.jam
-/usr/local/share/b2/src/tools/vacpp.jam
 /usr/local/share/b2/src/tools/vmsdecc.jam
 /usr/local/share/b2/src/tools/whale.jam
-/usr/local/share/b2/src/tools/xlcpp.jam
 /usr/local/share/b2/src/tools/xlf.jam
 /usr/local/share/b2/src/tools/xsltproc-config.jam
 /usr/local/share/b2/src/tools/xsltproc.jam
