@@ -1,13 +1,13 @@
-# Total size: 882633
+# Total size: 888162
 /usr/local/include/python3.14/greenlet/greenlet.h
-/usr/local/lib/python3.14/site-packages/greenlet-3.2.4.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/greenlet-3.2.4.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/greenlet-3.2.4.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/greenlet-3.2.4.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/greenlet-3.2.4.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/greenlet-3.2.4.dist-info/licenses/LICENSE
-/usr/local/lib/python3.14/site-packages/greenlet-3.2.4.dist-info/licenses/LICENSE.PSF
-/usr/local/lib/python3.14/site-packages/greenlet-3.2.4.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/greenlet-3.3.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/greenlet-3.3.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/greenlet-3.3.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/greenlet-3.3.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/greenlet-3.3.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/greenlet-3.3.0.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/greenlet-3.3.0.dist-info/licenses/LICENSE.PSF
+/usr/local/lib/python3.14/site-packages/greenlet-3.3.0.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/greenlet/CObjects.cpp
 /usr/local/lib/python3.14/site-packages/greenlet/PyGreenlet.cpp
 /usr/local/lib/python3.14/site-packages/greenlet/PyGreenlet.hpp

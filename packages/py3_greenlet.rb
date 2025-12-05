@@ -10,10 +10,10 @@ class Py3_greenlet < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2917e9994ec197ab1bfc272d700b3a56457130deeb58aaeaf8f21a19433e5f7e',
-     armv7l: '2917e9994ec197ab1bfc272d700b3a56457130deeb58aaeaf8f21a19433e5f7e',
-       i686: '532549ca46aea007987483f1af7169459ac93d88b586f1ba2eee451739b3f39d',
-     x86_64: '3997539c3c52085a87dd3bcb6a2002166e68ff10ab025d023e3e3f1565134540'
+    aarch64: 'a757efca4a00d39c2d3b50edd5c9d20c22697d4c6dc5782f1bfb99d71e376852',
+     armv7l: 'a757efca4a00d39c2d3b50edd5c9d20c22697d4c6dc5782f1bfb99d71e376852',
+       i686: 'e1a37fc5bdfd541b9accd7ceb15ccec9d80218375888d3c12e2e96b9bc529aba',
+     x86_64: '7c411b8b680c7a0be0ba87bb381137583df9e17b28a855059f088e20973fd4ca'
   })
 
   depends_on 'gcc_lib' # R
