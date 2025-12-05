@@ -103,18 +103,19 @@ class PackageUtils
   # Remove our language-specific prefixes and any build splitting suffixes.
   # This is mostly for use when querying Anitya in tools/version.rb, and is not suitable for Repology.
   def self.get_clean_name(pkg_name)
+    cleaned_name = pkg_name.dup
     # Delete language-specific prefixes.
-    pkg_name.delete_prefix!('perl_')
-    pkg_name.delete_prefix!('py3_')
-    pkg_name.delete_prefix!('ruby_')
+    cleaned_name.delete_prefix!('perl_')
+    cleaned_name.delete_prefix!('py3_')
+    cleaned_name.delete_prefix!('ruby_')
     # Delete suffixes for split packages.
-    pkg_name.delete_suffix!('_build')
-    pkg_name.delete_suffix!('_dev')
-    pkg_name.delete_suffix!('_lib')
+    cleaned_name.delete_suffix!('_build')
+    cleaned_name.delete_suffix!('_dev')
+    cleaned_name.delete_suffix!('_lib')
     # Delete the _static suffix for statically built packages.
-    pkg_name.delete_suffix!('_static')
+    cleaned_name.delete_suffix!('_static')
 
-    return pkg_name
+    return cleaned_name
   end
 
   def self.get_gitlab_pkginfo(pkg_name, pkg_version, pkg_arch, build = nil, verbose = nil)

@@ -1731,22 +1731,54 @@ def upload(pkg_name = nil, pkg_version = nil, binary_compression = nil)
   abort "\nGITLAB_TOKEN environment variable not set.\n".lightred if GITLAB_TOKEN.nil?
   abort "\nGITLAB_TOKEN_USERNAME environment variable not set.\n".lightred if GITLAB_TOKEN_USERNAME.nil?
 
+  # Upload python wheels if they have been built, but only
+  # if a gitlab token username is set. (The generic repo does not
+  # require a gitlab token username.)
+  if File.which('pip')
+    pip_config = `pip config list`.chomp
+    Kernel.system 'pip config --user set global.trusted-host gitlab.com', %i[err out] => File::NULL unless pip_config.include?("global.trusted-host='gitlab.com'")
+
+    pip_cache_dir = `pip cache dir`.chomp
+    wheels = Dir["#{pip_cache_dir}/**/*.whl"]
+    unless wheels.empty?
+      wheels.each do |wheel|
+        puts "Uploading #{wheel}.\nNote that a '400 Bad Request' error here means the wheel has already been uploaded.".orange
+        unless File.which('twine')
+          puts 'Twine is missing, cannot upload python wheels. Please check the py3_twine package.'.lightred
+          next
+        end
+        unless system('twine --help', %i[out err] => File::NULL)
+          'Twine is broken, cannot upload python wheels.'.lightred
+          next
+        end
+        if `twine --version`.chomp.include?('NOT INSTALLED')
+          "Twine is missing dependencies, cannot upload python wheels: #{`twine --version`.chomp}".lightred
+          next
+        end
+        system("twine upload -u #{GITLAB_TOKEN_USERNAME} -p #{GITLAB_TOKEN} --repository-url #{CREW_GITLAB_PKG_REPO}/pypi --non-interactive #{wheel}", %i[err] => File::NULL)
+        FileUtils.rm_f wheel
+      end
+    end
+  end
+
   packages = pkg_name
   packages.strip!
 
   [packages].each do |package|
     pkg_file = "#{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
+    # Set @pkg_obj for each package we process.
+    @pkg_obj = Package.load_package(pkg_file)
     # 1. Abort early if package manifests exist but are empty, as this
     #    likely indicates a failed build.
-    abort "#{package} has an empty manifest. Something probably went wrong with the build.".lightred if File.empty?("#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{@pkg.name.chr}/#{@pkg.name}.filelist")
+    abort "#{package} has an empty manifest. Something probably went wrong with the build.".lightred if File.empty?("#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{@pkg_obj.name.chr}/#{@pkg_obj.name}.filelist")
 
     # 2. Check for binary_compression value in file.
     binary_compression_not_in_file = binary_compression.nil?
-    if binary_compression_not_in_file
+    if binary_compression_not_in_file && !@pkg_obj.no_compile_needed?
       # 2a. If missing, determine binary_compression value:
       #     Always set binary_compression to '.gem' for Ruby gems, otherwise
       #     assume a default of 'tar.zst'
-      binary_compression = @pkg.superclass.to_s == 'RUBY' ? 'gem' : 'tar.zst'
+      binary_compression = @pkg_obj.superclass.to_s == 'RUBY' ? 'gem' : 'tar.zst'
       binary_compression_line = "  binary_compression '#{binary_compression}'"
       # 2b. Add missing binary_compression value to file.
       puts "Setting binary compression in #{pkg_file} to '#{binary_compression}'..."
@@ -1783,8 +1815,8 @@ def upload(pkg_name = nil, pkg_version = nil, binary_compression = nil)
       puts "Processing package: #{package}, Arch: #{arch}".yellow
       puts
       # 3a. Pull sha256 values for binary from package file, if there.
-      binary_sha256_hash[arch.to_sym] = @pkg.binary_sha256[arch.to_sym] if @pkg.binary_sha256&.key?(arch.to_sym)
-      starting_binary_sha256_hash[arch.to_sym] = @pkg.binary_sha256[arch.to_sym] if @pkg.binary_sha256&.key?(arch.to_sym)
+      binary_sha256_hash[arch.to_sym] = @pkg_obj.binary_sha256[arch.to_sym] if @pkg_obj.binary_sha256&.key?(arch.to_sym)
+      starting_binary_sha256_hash[arch.to_sym] = @pkg_obj.binary_sha256[arch.to_sym] if @pkg_obj.binary_sha256&.key?(arch.to_sym)
       release_dir = "#{CREW_LOCAL_REPO_ROOT}/release/#{arch}"
       local_tarfile = "#{release_dir}/#{package}-#{pkg_version}-chromeos-#{arch}.#{binary_compression}"
 
@@ -1893,33 +1925,13 @@ def upload(pkg_name = nil, pkg_version = nil, binary_compression = nil)
     #    package file.
     update_package_file(package, pkg_version, binary_compression) unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES
 
-    # Upload python wheels if we are dealing with a pip package, but only
-    # if a gitlab token username is set. (The generic repo does not
-    # require a gitlab token username.)
-    if @pkg.superclass.to_s == 'Pip'
-      pip_config = `pip config list`.chomp
-      Kernel.system 'pip config --user set global.trusted-host gitlab.com', %i[err out] => File::NULL unless pip_config.include?("global.trusted-host='gitlab.com'")
-
-      pip_cache_dir = `pip cache dir`.chomp
-      wheels = Dir["#{pip_cache_dir}/**/*.whl"]
-      unless wheels.empty?
-        wheels.each do |wheel|
-          puts "Uploading #{wheel}.\nNote that a '400 Bad Request' error here means the wheel has already been uploaded.".orange
-          abort 'Twine is missing, cannot upload python wheels. Please check the py3_twine package.'.lightred unless File.which('twine')
-          abort 'Twine is broken, cannot upload python wheels.'.lightred unless system('twine --help', %i[out err] => File::NULL)
-          abort "Twine is missing dependencies, cannot upload python wheels: #{`twine --version`.chomp}".lightred if `twine --version`.chomp.include?('NOT INSTALLED')
-          system("twine upload -u #{GITLAB_TOKEN_USERNAME} -p #{GITLAB_TOKEN} --repository-url #{CREW_GITLAB_PKG_REPO}/pypi --non-interactive #{wheel}", %i[err] => File::NULL)
-          FileUtils.rm_f wheel
-        end
-      end
-    end
-    if !CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES && !File.exist?("#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{@pkg.name.chr}/#{@pkg.name}.filelist")
+    if !CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES && !File.exist?("#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{@pkg_obj.name.chr}/#{@pkg_obj.name}.filelist")
       # 6. If run architecture specfic manifests for package are missing,
       #    attempt to install the package so the manifest files for the
       #    currently running architecture are saved locally. (This is used
       #    by build workflows to make sure updated manifests get
       #    uploaded.)
-      @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name } ? reinstall_command(@pkg.name) : install_command(@pkg.name)
+      @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg_obj.name } ? reinstall_command(@pkg_obj.name) : install_command(@pkg_obj.name)
     end
     puts "\e[1A\e[K🎉 Uploads complete for #{package}. 🎉\r\n".lightgreen
   end
