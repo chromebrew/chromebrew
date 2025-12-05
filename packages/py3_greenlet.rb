@@ -10,8 +10,8 @@ class Py3_greenlet < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '762bcd6c1c2ed7376d7630cab0d9e573df8dafd47ae98c17543cc9f116db5045',
-     armv7l: '762bcd6c1c2ed7376d7630cab0d9e573df8dafd47ae98c17543cc9f116db5045',
+    aarch64: '2917e9994ec197ab1bfc272d700b3a56457130deeb58aaeaf8f21a19433e5f7e',
+     armv7l: '2917e9994ec197ab1bfc272d700b3a56457130deeb58aaeaf8f21a19433e5f7e',
        i686: '532549ca46aea007987483f1af7169459ac93d88b586f1ba2eee451739b3f39d',
      x86_64: '3997539c3c52085a87dd3bcb6a2002166e68ff10ab025d023e3e3f1565134540'
   })
