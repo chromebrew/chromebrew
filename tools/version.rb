@@ -50,7 +50,7 @@ version_line_string = {}
 versions_updated = {}
 versions = []
 
-def get_version(name, homepage, source, version)
+def get_version(name, homepage, source)
   anitya_id = get_anitya_id(name, homepage, @pkg.superclass.to_s)
   # We return nil if anitya_id cannot be determined.
   puts "anitya_id: #{anitya_id}" if VERBOSE
@@ -138,32 +138,37 @@ def get_version(name, homepage, source, version)
         end
       end
     when 'downloads.sourceforge.net'
-      url_parts = url.path.split('/')
-      unless url_parts.count < 3
-        repo = url_parts[2]
-        filename = url_parts.last
-        puts "Sourceforge repo is #{repo}" if VERBOSE
-        status = `curl -fsI https://sourceforge.net/projects/#{repo}/best_release.json`.lines.first.split[1]
-        if status == '404'
-          puts 'Sourceforge repo not found or no release available.' if VERBOSE
-          return
-        end
-        puts "curl https://sourceforge.net/projects/#{repo}/best_release.json -Ls | jq .release.filename -r" if VERY_VERBOSE
-        sourceforge_file = `curl https://sourceforge.net/projects/#{repo}/best_release.json -Ls | jq .release.filename -r`.chomp
-        best_release = sourceforge_file.split('/').last
-        if filename == best_release
-          return version
-        else
-          puts "best_release = #{best_release}" if VERY_VERBOSE
-          # Strip off any leading non-numeric characters.
-          upstream_version = best_release.sub(/.*?(?=[0-9].)/im, '').chomp
-          return upstream_version
-        end
-      end
+      sourceforge_fallback(url)
     when 'pagure.io'
       pagure_fallback(url)
     end
   end
+end
+
+def sourceforge_fallback(url)
+  url_parts = url.path.split('/')
+  return if url_parts.count < 3
+
+  repo = url_parts[2]
+  puts "Sourceforge repo is #{repo}" if VERBOSE
+
+  response = Net::HTTP.get_response(URI("https://sourceforge.net/projects/#{repo}/best_release.json"))
+  if response.code == '404'
+    puts 'Sourceforge repo not found.' if VERBOSE
+    return
+  end
+
+  json = JSON.parse(response.body)
+  if json['release'].nil?
+    puts 'No releases available on Sourceforge repo.' if VERBOSE
+    return
+  end
+
+  # Remove any preceding path components and remove any extensions, with an additional pass to remove .tar in the case of .tar.gz
+  best_release = File.basename(json['release']['filename'], '.*').delete_suffix('.tar')
+  puts "best_release = #{best_release}" if VERY_VERBOSE
+  # Strip off any leading non-numeric characters.
+  return best_release.sub(/.*?(?=[0-9].)/im, '')
 end
 
 def pagure_fallback(url)
@@ -382,7 +387,7 @@ if filelist.length.positive?
       end
     else
       # Get the upstream version.
-      upstream_version = get_version(@pkg.name, @pkg.homepage, PackageUtils.get_url(@pkg, build_from_source: true), @pkg.version)
+      upstream_version = get_version(@pkg.name, @pkg.homepage, PackageUtils.get_url(@pkg, build_from_source: true))
     end
     # Some packages don't work with this yet, so gracefully exit now rather than throwing false positives.
     versions_updated[@pkg.name.to_sym] = 'Not Found.' if upstream_version.nil? || upstream_version.to_s.chomp == 'null'
