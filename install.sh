@@ -1,5 +1,5 @@
 #!/bin/bash
-CREW_INSTALLER_VERSION=2025112401
+CREW_INSTALLER_VERSION=2025120401
 # Exit on fail.
 set -eE
 
@@ -178,7 +178,7 @@ aarch64|armv7l|armv8l)
   ;;
 esac
 
-: "${CREW_PY_VER:=3.13}"
+: "${CREW_PY_VER:=3.14}"
 CREW_NPROC="$(nproc)"
 export CREW_NPROC
 
