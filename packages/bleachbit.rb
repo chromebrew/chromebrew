@@ -3,7 +3,7 @@ require 'package'
 class Bleachbit < Package
   description 'Bleachbit provides a means to clean your system and free disk space.'
   homepage 'https://www.bleachbit.org/'
-  version '4.6.1'
+  version '5.0.2'
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/bleachbit/bleachbit.git'
