@@ -10,8 +10,8 @@ class Py3_hatch_fancy_pypi_readme < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '50169a0ddfff4634f76854e1f3bf7108605a7cd2a3077b4b1b0234470c8a8491',
-     armv7l: '50169a0ddfff4634f76854e1f3bf7108605a7cd2a3077b4b1b0234470c8a8491',
+    aarch64: 'ea53a5e30319540e2f7cdb31eabe2eb3a0ee0ae8f1a6ea86027f221359c0187f',
+     armv7l: 'ea53a5e30319540e2f7cdb31eabe2eb3a0ee0ae8f1a6ea86027f221359c0187f',
        i686: '7cbc55d236d3fa66b5a1220b6528c4612019e279aead86b4dc276ca94a0cc903',
      x86_64: 'af276df57aeeb5327d3fa857af901da951ae1d20944c5edb8bff639db4569d94'
   })
