@@ -11,9 +11,9 @@ class Alsa_utils < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'adf3a2732a82eda1e9d4c62e5c71a6d15bf430bc0db13caf0b23213793c3355f',
-     armv7l: 'adf3a2732a82eda1e9d4c62e5c71a6d15bf430bc0db13caf0b23213793c3355f',
-     x86_64: '319eafbd0afed0942f9da2a1e28d6e4d8d2d4fe0ba2fd9d797ad9d274d8ac6b7'
+    aarch64: 'f1ac69ee7f4aeca6f6dd2be7d4cbb32ef548810171d04984d7644e71c1673933',
+     armv7l: 'f1ac69ee7f4aeca6f6dd2be7d4cbb32ef548810171d04984d7644e71c1673933',
+     x86_64: '88b34e5a7d3050c87fd3b39be746a728aa094a37dfbd90559d1dffdfe9624965'
   })
 
   depends_on 'alsa_lib' # R
