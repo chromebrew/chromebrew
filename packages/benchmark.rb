@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Benchmark < CMake
   description 'A microbenchmark support library from Google'
   homepage 'https://github.com/google/benchmark/'
-  version '1.9.0'
+  version '1.9.4'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/google/benchmark.git'
