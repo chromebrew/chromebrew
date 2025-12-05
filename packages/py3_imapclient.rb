@@ -10,8 +10,8 @@ class Py3_imapclient < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'baf9aec76daf998dacfeccbc4a45d88d97024de43f68a5467d0eee6b092adf91',
-     armv7l: 'baf9aec76daf998dacfeccbc4a45d88d97024de43f68a5467d0eee6b092adf91',
+    aarch64: '6c0d0f666ecab20160daaeb4cef51aaed931ac346efd32c46ed5cdea59902ff4',
+     armv7l: '6c0d0f666ecab20160daaeb4cef51aaed931ac346efd32c46ed5cdea59902ff4',
        i686: '9796cf0ab3bb78751fcff1cd5e7c96b0663e17ef3b6a130bab85e743cee6a745',
      x86_64: '56666656041c014102e4d874154f85da592135c9dba833df05b70f80748add24'
   })
