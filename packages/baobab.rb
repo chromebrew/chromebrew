@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Baobab < Meson
   description 'Disk Usage Analyzer (also known as baobab) scans folders, devices or remote locations and and reports on the disk space consumed by each element.'
   homepage 'https://wiki.gnome.org/Apps/DiskUsageAnalyzer'
-  version '48.0'
+  version '49.1'
   license 'GPL-2+ and FDL-1.1+'
   compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.29'
