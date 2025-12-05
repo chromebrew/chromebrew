@@ -1,4 +1,4 @@
-# Total size: 2283500
+# Total size: 2522756
 /usr/local/bin/aconnect
 /usr/local/bin/alsabat
 /usr/local/bin/alsaloop
@@ -9,8 +9,10 @@
 /usr/local/bin/amixer
 /usr/local/bin/aplay
 /usr/local/bin/aplaymidi
+/usr/local/bin/aplaymidi2
 /usr/local/bin/arecord
 /usr/local/bin/arecordmidi
+/usr/local/bin/arecordmidi2
 /usr/local/bin/aseqdump
 /usr/local/bin/aseqnet
 /usr/local/bin/aseqsend
@@ -44,17 +46,20 @@
 /usr/local/share/locale/sk/LC_MESSAGES/alsa-utils.mo
 /usr/local/share/man/fr/man8/alsaconf.8.zst
 /usr/local/share/man/man1/aconnect.1.zst
-/usr/local/share/man/man1/alsa-info.sh.1.zst
 /usr/local/share/man/man1/alsabat.1.zst
 /usr/local/share/man/man1/alsactl.1.zst
 /usr/local/share/man/man1/alsaloop.1.zst
 /usr/local/share/man/man1/alsamixer.1.zst
+/usr/local/share/man/man1/alsatplg.1.zst
+/usr/local/share/man/man1/alsaucm.1.zst
 /usr/local/share/man/man1/amidi.1.zst
 /usr/local/share/man/man1/amixer.1.zst
 /usr/local/share/man/man1/aplay.1.zst
 /usr/local/share/man/man1/aplaymidi.1.zst
+/usr/local/share/man/man1/aplaymidi2.1.zst
 /usr/local/share/man/man1/arecord.1.zst
 /usr/local/share/man/man1/arecordmidi.1.zst
+/usr/local/share/man/man1/arecordmidi2.1.zst
 /usr/local/share/man/man1/aseqdump.1.zst
 /usr/local/share/man/man1/aseqnet.1.zst
 /usr/local/share/man/man1/aseqsend.1.zst
@@ -64,6 +69,7 @@
 /usr/local/share/man/man1/iecset.1.zst
 /usr/local/share/man/man1/nhlt-dmic-info.1.zst
 /usr/local/share/man/man1/speaker-test.1.zst
+/usr/local/share/man/man8/alsa-info.sh.8.zst
 /usr/local/share/man/man8/alsaconf.8.zst
 /usr/local/share/sounds/alsa/Front_Center.wav
 /usr/local/share/sounds/alsa/Front_Left.wav
