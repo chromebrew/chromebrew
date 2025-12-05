@@ -15,7 +15,6 @@ class Codex < Package
   no_compile_needed
 
   def self.install
-    system 'zstd -dv codex-x86_64-unknown-linux-gnu.zst'
     FileUtils.install 'codex-x86_64-unknown-linux-gnu', "#{CREW_DEST_PREFIX}/bin/codex", mode: 0o755
   end
 

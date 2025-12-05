@@ -754,9 +754,12 @@ def unpack(meta)
       when /\.(tar(\.(bz2|gz|lz|lzma))?|tbz|tgz)$/i
         puts "Unpacking archive using 'tar', this may take a while..."
         system 'tar', "-x#{@verbose}f", meta[:filename], '-C', @extract_dir, exception: true
-      when /\.(tar(\.(xz|zst))?|txz|tpxz)$/i
+      when /\.(tar(\.xz)?|txz|tpxz)$/i
         puts "Unpacking archive using 'tar', this may take a while..."
         system "LD_AUDIT= tar -Izstd -x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true unless system 'tar', '-Izstd', "-x#{@verbose}f", meta[:filename], '-C', @extract_dir
+      when /\.zst$/i
+        puts "Unpacking archive using 'zstd', this may take a while..."
+        system "LD_AUDIT= zstd -d#{@verbose} #{@extract_dir}/#{meta[:filename]}", exception: true unless system 'zstd', "-d#{@verbose}", "#{@extract_dir}/#{meta[:filename]}"
       when /\.deb$/i
         puts "Unpacking '.deb' archive, this may take a while..."
         DebUtils.extract_deb(meta[:filename], /data\..*/)
