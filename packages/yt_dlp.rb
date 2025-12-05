@@ -8,10 +8,6 @@ class Yt_dlp < Python
   compatibility 'all'
   source_url 'https://github.com/yt-dlp/yt-dlp.git'
   git_hashtag version.split('-')[0]
-  binary_compression 'tar.zst'
-
-  binary_sha256({
-  })
 
   depends_on 'py3_brotlicffi'
   depends_on 'py3_certifi'
