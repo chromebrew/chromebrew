@@ -17,7 +17,7 @@ class Py3_maturin < Python
     aarch64: '688b0d8c07c3c733e4a3693d1bcdd2fa8da1cd8f29a45b49791053967a9fc62a',
      armv7l: '688b0d8c07c3c733e4a3693d1bcdd2fa8da1cd8f29a45b49791053967a9fc62a',
        i686: '253bc3de2da6686ac32c09dcea552f4f64d832078997322bfec62f5bcf6100c9',
-     x86_64: '653b739a7b867e44c69b3c67928bf5238997efdfb91f8a7970e5b0fe5a2847e9'
+     x86_64: '92a451f25cc7fecca4a5310828e5dafed324f1c4eaa5e292a944b5596b56830e'
   })
 
   depends_on 'gcc_lib' # R

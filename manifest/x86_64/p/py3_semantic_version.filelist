@@ -1,14 +1,14 @@
-# Total size: 134327
-/usr/local/lib/python3.13/site-packages/semantic_version-2.10.0.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/semantic_version-2.10.0.dist-info/LICENSE
-/usr/local/lib/python3.13/site-packages/semantic_version-2.10.0.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/semantic_version-2.10.0.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/semantic_version-2.10.0.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/semantic_version-2.10.0.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/semantic_version-2.10.0.dist-info/top_level.txt
-/usr/local/lib/python3.13/site-packages/semantic_version/__init__.py
-/usr/local/lib/python3.13/site-packages/semantic_version/__pycache__/__init__.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/semantic_version/__pycache__/base.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/semantic_version/__pycache__/django_fields.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/semantic_version/base.py
-/usr/local/lib/python3.13/site-packages/semantic_version/django_fields.py
+# Total size: 136807
+/usr/local/lib/python3.14/site-packages/semantic_version-2.10.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/semantic_version-2.10.0.dist-info/LICENSE
+/usr/local/lib/python3.14/site-packages/semantic_version-2.10.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/semantic_version-2.10.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/semantic_version-2.10.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/semantic_version-2.10.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/semantic_version-2.10.0.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/semantic_version/__init__.py
+/usr/local/lib/python3.14/site-packages/semantic_version/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/semantic_version/__pycache__/base.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/semantic_version/__pycache__/django_fields.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/semantic_version/base.py
+/usr/local/lib/python3.14/site-packages/semantic_version/django_fields.py
