@@ -119,29 +119,32 @@ def get_version(name, homepage, source)
         end
       end
     when 'gitlab.com'
-      url_parts = url.path.split('/')
-      unless url_parts.count < 3
-        repo = "#{url_parts[1]}/#{url_parts[2].gsub(/.git\z/, '')}"
-        puts "GitLab repo is #{repo}" if VERBOSE
-        status = `curl -fsI https://#{url.host}/#{repo}/-/releases/permalink/latest`.lines.first.split[1]
-        if status == '404'
-          puts 'GitLab repo not found or no release available.' if VERBOSE
-          return
-        end
-        puts "curl https://#{url.host}/#{repo}/-/releases/permalink/latest -Ls | grep -Po 'data-tag-name=\"(.*)\" ' | cut -d\\\" -f2" if VERY_VERBOSE
-        gitlab_ver = `curl https://#{url.host}/#{repo}/-/releases/permalink/latest -Ls | grep -Po 'data-tag-name="(.*)" ' | cut -d\\\" -f2`.chomp
-        unless gitlab_ver.blank? || gitlab_ver == 'null'
-          puts "gitlab_ver = #{gitlab_ver}" if VERY_VERBOSE
-          # Strip off any leading non-numeric characters.
-          upstream_version = gitlab_ver.sub(/.*?(?=[0-9].)/im, '').chomp
-          return upstream_version
-        end
-      end
+      gitlab_fallback(url)
     when 'downloads.sourceforge.net'
       sourceforge_fallback(url)
     when 'pagure.io'
       pagure_fallback(url)
     end
+  end
+end
+
+def gitlab_fallback(url)
+  url_parts = url.path.split('/')
+  return if url_parts.count < 3
+
+  repo = "#{url_parts[1]}/#{url_parts[2].delete_suffix('.git')}"
+  redirect = Net::HTTP.get_response(URI("https://#{url.host}/#{repo}/-/releases/permalink/latest"))['location']
+
+  if redirect == "https://#{url.host}/users/sign_in"
+    puts 'GitLab repo not found.' if VERBOSE
+  elsif redirect.nil?
+    puts 'No releases available on GitLab repo.' if VERBOSE
+  else
+    gitlab_ver = redirect.split('/').last
+    # puts "gitlab_ver = #{gitlab_ver}" if VERY_VERBOSE
+    puts "gitlab_ver = #{gitlab_ver}"
+    # Strip off any leading non-numeric characters.
+    return gitlab_ver.sub(/.*?(?=[0-9].)/im, '')
   end
 end
 
