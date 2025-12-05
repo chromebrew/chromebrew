@@ -6,7 +6,6 @@ class Baobab < Meson
   version '49.1'
   license 'GPL-2+ and FDL-1.1+'
   compatibility 'aarch64 armv7l x86_64'
-  min_glibc '2.29'
   source_url 'https://gitlab.gnome.org/GNOME/baobab.git'
   git_hashtag version
   binary_compression 'tar.zst'
