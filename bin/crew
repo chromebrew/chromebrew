@@ -1731,6 +1731,36 @@ def upload(pkg_name = nil, pkg_version = nil, binary_compression = nil)
   abort "\nGITLAB_TOKEN environment variable not set.\n".lightred if GITLAB_TOKEN.nil?
   abort "\nGITLAB_TOKEN_USERNAME environment variable not set.\n".lightred if GITLAB_TOKEN_USERNAME.nil?
 
+  # Upload python wheels if they have been built, but only
+  # if a gitlab token username is set. (The generic repo does not
+  # require a gitlab token username.)
+  if File.which('pip')
+    pip_config = `pip config list`.chomp
+    Kernel.system 'pip config --user set global.trusted-host gitlab.com', %i[err out] => File::NULL unless pip_config.include?("global.trusted-host='gitlab.com'")
+
+    pip_cache_dir = `pip cache dir`.chomp
+    wheels = Dir["#{pip_cache_dir}/**/*.whl"]
+    unless wheels.empty?
+      wheels.each do |wheel|
+        puts "Uploading #{wheel}.\nNote that a '400 Bad Request' error here means the wheel has already been uploaded.".orange
+        unless File.which('twine')
+          puts 'Twine is missing, cannot upload python wheels. Please check the py3_twine package.'.lightred
+          next
+        end
+        unless system('twine --help', %i[out err] => File::NULL)
+          'Twine is broken, cannot upload python wheels.'.lightred
+          next
+        end
+        if `twine --version`.chomp.include?('NOT INSTALLED')
+          "Twine is missing dependencies, cannot upload python wheels: #{`twine --version`.chomp}".lightred
+          next
+        end
+        system("twine upload -u #{GITLAB_TOKEN_USERNAME} -p #{GITLAB_TOKEN} --repository-url #{CREW_GITLAB_PKG_REPO}/pypi --non-interactive #{wheel}", %i[err] => File::NULL)
+        FileUtils.rm_f wheel
+      end
+    end
+  end
+
   packages = pkg_name
   packages.strip!
 
@@ -1895,26 +1925,6 @@ def upload(pkg_name = nil, pkg_version = nil, binary_compression = nil)
     #    package file.
     update_package_file(package, pkg_version, binary_compression) unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES
 
-    # Upload python wheels if we are dealing with a pip package, but only
-    # if a gitlab token username is set. (The generic repo does not
-    # require a gitlab token username.)
-    if @pkg_obj.superclass.to_s == 'Pip'
-      pip_config = `pip config list`.chomp
-      Kernel.system 'pip config --user set global.trusted-host gitlab.com', %i[err out] => File::NULL unless pip_config.include?("global.trusted-host='gitlab.com'")
-
-      pip_cache_dir = `pip cache dir`.chomp
-      wheels = Dir["#{pip_cache_dir}/**/*.whl"]
-      unless wheels.empty?
-        wheels.each do |wheel|
-          puts "Uploading #{wheel}.\nNote that a '400 Bad Request' error here means the wheel has already been uploaded.".orange
-          abort 'Twine is missing, cannot upload python wheels. Please check the py3_twine package.'.lightred unless File.which('twine')
-          abort 'Twine is broken, cannot upload python wheels.'.lightred unless system('twine --help', %i[out err] => File::NULL)
-          abort "Twine is missing dependencies, cannot upload python wheels: #{`twine --version`.chomp}".lightred if `twine --version`.chomp.include?('NOT INSTALLED')
-          system("twine upload -u #{GITLAB_TOKEN_USERNAME} -p #{GITLAB_TOKEN} --repository-url #{CREW_GITLAB_PKG_REPO}/pypi --non-interactive #{wheel}", %i[err] => File::NULL)
-          FileUtils.rm_f wheel
-        end
-      end
-    end
     if !CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES && !File.exist?("#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{@pkg_obj.name.chr}/#{@pkg_obj.name}.filelist")
       # 6. If run architecture specfic manifests for package are missing,
       #    attempt to install the package so the manifest files for the
