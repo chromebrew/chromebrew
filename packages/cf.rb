@@ -17,8 +17,8 @@ class Cf < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-       i686: '05ac4ed0ef3fd18a206d618f245d40f9c968211b661ef3222eaf743668e8027c',
-     x86_64: '8465927ec7f43c661e11fcbbe939969f86ece4d9b28de20d58b6681f862a2825'
+       i686: '29ceffd87acb1dd0f9a315e3ccd595e8a95fd74ef1c74f28eb23aa3d9b43388f',
+     x86_64: 'b4c73807c554f1d2c88fe6c57490d81e177beb538e0c37a9d7d252265fa71b38'
   })
 
   def self.install
