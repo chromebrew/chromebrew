@@ -14,9 +14,9 @@ class Alacritty < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e5a1d61d4ee4ceccc36fe873f4742664f1fa6a0c240a9f35e66b3817c54f5a08',
-     armv7l: 'e5a1d61d4ee4ceccc36fe873f4742664f1fa6a0c240a9f35e66b3817c54f5a08',
-     x86_64: '91a290725efad5d27126a338e445e31cd44d399889e8a130d0d01197d655b392'
+    aarch64: 'df3b70da55d7dd09a94c42838437b273079770f1ffba9b5a55defdc1ab4fa12c',
+     armv7l: 'df3b70da55d7dd09a94c42838437b273079770f1ffba9b5a55defdc1ab4fa12c',
+     x86_64: '61de08532a05773e63898bd9218ae7ede4f4bf6b81a81eac7cfa97e8d1690fec'
   })
 
   depends_on 'fontconfig' # R
