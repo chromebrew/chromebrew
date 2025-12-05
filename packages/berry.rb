@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Berry < Autotools
   description 'Healthy, bite-sized window manager'
   homepage 'https://github.com/JLErvin/berry'
-  version '0.1.12'
+  version '0.1.13'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/JLErvin/berry.git'
@@ -11,9 +11,9 @@ class Berry < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '59add51bcb91e1bc310128f0f0735e9665ca38afa246b03eb9e8059426b4b6be',
-     armv7l: '59add51bcb91e1bc310128f0f0735e9665ca38afa246b03eb9e8059426b4b6be',
-     x86_64: '32d9f31e492cbd4606d59a12c18ee59e9634e3abc15257c47110f4f7ffeb1b4b'
+    aarch64: 'be99a832545c2b5c21fcfa583c00fdfc95c292d560255338a3a059cfd023fb82',
+     armv7l: 'be99a832545c2b5c21fcfa583c00fdfc95c292d560255338a3a059cfd023fb82',
+     x86_64: '7a8f5f9731eb17735192527c125a2fd4f3c41581be5d1b92d6c79dd9906e858d'
   })
 
   depends_on 'fontconfig' # R
