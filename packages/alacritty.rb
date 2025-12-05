@@ -6,7 +6,7 @@ require 'package'
 class Alacritty < Package
   description 'A cross-platform, GPU-accelerated terminal emulator'
   homepage 'https://github.com/alacritty/alacritty'
-  version '0.16.0'
+  version '0.16.1'
   license 'Apache'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/alacritty/alacritty.git'
