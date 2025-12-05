@@ -1,4 +1,4 @@
-# Total size: 360843462
+# Total size: 360451552
 /usr/local/bin/opera
 /usr/local/share/applications/opera.desktop
 /usr/local/share/doc/opera-stable/changelog.gz
@@ -113,7 +113,6 @@
 /usr/local/share/x86_64-linux-gnu/opera-stable/resources/browser.js
 /usr/local/share/x86_64-linux-gnu/opera-stable/resources/continue_shopping.json
 /usr/local/share/x86_64-linux-gnu/opera-stable/resources/default_partner_content.json
-/usr/local/share/x86_64-linux-gnu/opera-stable/resources/destination_travel_intent_keywords.json
 /usr/local/share/x86_64-linux-gnu/opera-stable/resources/doh_providers.json
 /usr/local/share/x86_64-linux-gnu/opera-stable/resources/domain_suggestions.json
 /usr/local/share/x86_64-linux-gnu/opera-stable/resources/ffmpeg_preload_config.json
@@ -179,7 +178,6 @@
 /usr/local/share/x86_64-linux-gnu/opera-stable/resources/specific_keywords.json
 /usr/local/share/x86_64-linux-gnu/opera-stable/resources/standard_themes/default_dark_theme.zip
 /usr/local/share/x86_64-linux-gnu/opera-stable/resources/standard_themes/default_theme.zip
-/usr/local/share/x86_64-linux-gnu/opera-stable/resources/travel_intent_keywords.json
 /usr/local/share/x86_64-linux-gnu/opera-stable/snapshot_blob.bin
 /usr/local/share/x86_64-linux-gnu/opera-stable/v8_context_snapshot.bin
 /usr/local/share/x86_64-linux-gnu/opera-stable/vk_swiftshader_icd.json
