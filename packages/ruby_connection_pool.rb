@@ -3,7 +3,7 @@ require 'buildsystems/ruby'
 class Ruby_connection_pool < RUBY
   description 'Generic connection pool for ruby.'
   homepage 'https://github.com/mperham/connection_pool'
-  version "2.5.5-#{CREW_RUBY_VER}"
+  version "3.0.1-#{CREW_RUBY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
