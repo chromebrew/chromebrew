@@ -3,7 +3,7 @@ require 'package'
 class Bats < Package
   description 'Bash Automated Testing System'
   homepage 'https://github.com/bats-core/bats-core'
-  version '1.11.0'
+  version '1.13.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/bats-core/bats-core.git'
