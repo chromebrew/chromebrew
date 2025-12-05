@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Bacon < Autotools
   description 'BaCon is a free BASIC to C translator for Unix-based systems.'
   homepage 'https://chiselapp.com/user/bacon/repository/bacon/home'
-  version '5.0.1'
+  version '5.0.3'
   license 'MIT'
   compatibility 'all'
   source_url "https://www.basic-converter.org/stable/bacon-#{version}.tar.gz"
-  source_sha256 '7f0a6dd3a3d465dd414f165a319838f0691d44157bd034845694fa32649ab97b'
+  source_sha256 '17b7ca78cd9ac019b42db517df47038b9036c269fe76bb6ff07ea1c0c8038918'
   binary_compression 'tar.zst'
 
   binary_sha256({
