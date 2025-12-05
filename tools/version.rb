@@ -161,25 +161,28 @@ def get_version(name, homepage, source, version)
         end
       end
     when 'pagure.io'
-      url_parts = url.path.split('/')
-      unless url_parts.count < 2
-        repo = url_parts[1]
-        puts "Pagure repo is #{repo}" if VERBOSE
-        status = `curl -fsI https://pagure.io/api/0/#{repo}/git/tags`.lines.first.split[1]
-        if status == '404'
-          puts 'Pagure repo not found or no release tag available.' if VERBOSE
-          return
-        end
-        puts "curl https://pagure.io/api/0/#{repo}/git/tags -Ls | jq .tags[0] -r" if VERY_VERBOSE
-        pagure_ver = `curl https://pagure.io/api/0/#{repo}/git/tags -Ls | jq .tags[0] -r`.chomp
-        unless pagure_ver.blank? || pagure_ver == 'null'
-          puts "pagure_ver = #{pagure_ver}" if VERY_VERBOSE
-          # Strip off any leading non-numeric characters.
-          upstream_version = pagure_ver.sub(/.*?(?=[0-9].)/im, '').chomp
-          return upstream_version
-        end
-      end
+      pagure_fallback(url)
     end
+  end
+end
+
+def pagure_fallback(url)
+  url_parts = url.path.split('/')
+  return if url_parts.count < 2
+
+  repo = url_parts[1]
+  puts "Pagure repo is #{repo}" if VERBOSE
+
+  json = JSON.parse(Net::HTTP.get(URI("https://pagure.io/api/0/#{repo}/git/tags")))
+  if !json['error'].nil?
+    puts 'Pagure repo not found.' if VERBOSE
+  elsif json['total_tags'].zero?
+    puts 'No tags available on Pagure repo.' if VERBOSE
+  else
+    pagure_ver = json['tags'][0]
+    puts "pagure_ver = #{pagure_ver}" if VERY_VERBOSE
+    # Strip off any leading non-numeric characters.
+    return pagure_ver.sub(/.*?(?=[0-9].)/im, '')
   end
 end
 
