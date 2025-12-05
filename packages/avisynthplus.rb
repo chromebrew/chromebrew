@@ -11,9 +11,9 @@ class Avisynthplus < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b9e247846b433bd2e1767f268bf34a22860e0a18a29e45528aabf8b32725f6e2',
-     armv7l: 'b9e247846b433bd2e1767f268bf34a22860e0a18a29e45528aabf8b32725f6e2',
-     x86_64: '2e7cd1267ae94d155abc1e9890f484a08a8eeb0ea75473d4875431316ae23471'
+    aarch64: '8239f7b0814733343fd22fd41de3407abe5fcb0b73eb2372612f298f3826f2ce',
+     armv7l: '8239f7b0814733343fd22fd41de3407abe5fcb0b73eb2372612f298f3826f2ce',
+     x86_64: 'a9bafe0da24f8f94d6edd1614d31bd5cf4ac25e194e81730dde09d5ba601df8d'
   })
 
   depends_on 'devil' # R
