@@ -185,6 +185,11 @@ url: https://www.apache.org/dist/ant/binaries/
 activity: high
 ---
 kind: url
+name: antigravity
+url: https://antigravity.google/download
+activity: high
+---
+kind: url
 name: antiword
 url: http://www.winfield.demon.nl/linux
 activity: none
