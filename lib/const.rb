@@ -381,7 +381,6 @@ CREW_UPDATER_EXCLUDED_PKGS = Set[
   { pkg_name: 'ld_default', comments: 'Internal Chromebrew Package.' },
   { pkg_name: 'linuxheaders', comments: 'Requires manual update.' },
   { pkg_name: 'pkg_config', comments: 'Upstream is abandoned.' },
-  { pkg_name: 'py3_ldapdomaindump', comments: 'Build is broken.' },
   { pkg_name: 'ruby', comments: 'i686 needs building with GCC 14.' },
   { pkg_name: 'util_linux', comments: '2.41.2 build broken. See https://github.com/util-linux/util-linux/issues/3763' },
   { pkg_name: 'xdg_base', comments: 'Internal Chromebrew Package.' }

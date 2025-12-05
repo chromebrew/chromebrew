@@ -201,14 +201,15 @@ def get_anitya_id(name, homepage, buildsystem)
   # Change the name into something Anitya will prefer.
   original_name = name.dup
   # Remove any language-specific prefixes and build splitting suffixes.
-  name = PackageUtils.get_clean_name(name)
+  # Do not use 'name' since that changes @pkg.name.to_sym
+  anitya_name = PackageUtils.get_clean_name(name)
   # If this package has a hardcoded mapping, use it.
-  name = CREW_ANITYA_PACKAGE_NAME_MAPPINGS[name] if CREW_ANITYA_PACKAGE_NAME_MAPPINGS.include?(name)
-  puts "anitya_name: #{name} #{"(instead of #{original_name})" if name != original_name}" if VERBOSE
+  anitya_name = CREW_ANITYA_PACKAGE_NAME_MAPPINGS[name] if CREW_ANITYA_PACKAGE_NAME_MAPPINGS.include?(name)
+  puts "anitya_name: #{anitya_name} #{"(instead of #{original_name})" if anitya_name != original_name}" if VERBOSE
 
   # Find out how many packages Anitya has with the provided name.
-  puts "url is https://release-monitoring.org/api/v2/projects/?name=#{CGI.escape(name)}" if VERY_VERBOSE
-  json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/projects/?name=#{CGI.escape(name)}")))
+  puts "url is https://release-monitoring.org/api/v2/projects/?name=#{CGI.escape(anitya_name)}" if VERY_VERBOSE
+  json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/projects/?name=#{CGI.escape(anitya_name)}")))
   puts json if VERY_VERBOSE
   number_of_packages = json['total_items']
 
@@ -218,16 +219,16 @@ def get_anitya_id(name, homepage, buildsystem)
   elsif number_of_packages.zero? # Anitya either doesn't have this package, or has it under a different name.
     # The most likely scenario is that the correct name is the current one with underscores converted to dashes.
     # This is also currently the only scenario we handle here.
-    return unless name.include?('_')
+    return unless anitya_name.include?('_')
 
-    name_candidate = name.tr('_', '-')
+    anitya_name_candidate = anitya_name.tr('_', '-')
     if VERY_VERBOSE
-      puts "No Anitya package found with #{name}. Attempting a new search with #{name_candidate}."
-      puts "url is https://release-monitoring.org/api/v2/projects/?name=#{name_candidate}"
+      puts "No Anitya package found with #{anitya_name}. Attempting a new search with #{anitya_name_candidate}."
+      puts "url is https://release-monitoring.org/api/v2/projects/?name=#{anitya_name_candidate}"
     end
 
     # We can just call ourselves, with no fear of infinite recursion because we replaced all the underscores.
-    return get_anitya_id(name_candidate, homepage, buildsystem)
+    return get_anitya_id(anitya_name_candidate, homepage, buildsystem)
   else # Anitya has more than one package with this exact name.
     candidates = json['items']
 
