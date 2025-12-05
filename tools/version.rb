@@ -76,10 +76,6 @@ def get_version(name, homepage, source, version)
     # | cut --delimiter='/' --fields=3
     # However, since that does miss text tags, better to just use
     # anitya first.
-    if source.is_a?(Hash)
-      source_arch = (@pkg.source_url.keys.map &:to_s).first
-      source = @pkg.source_url[source_arch.to_sym]
-    end
     source.sub!('www.', '')
     url = URI.parse(source)
     puts "source_url host is #{url.host}" if VERY_VERBOSE
@@ -385,7 +381,7 @@ if filelist.length.positive?
       end
     else
       # Get the upstream version.
-      upstream_version = get_version(@pkg.name, @pkg.homepage, @pkg.source_url, @pkg.version)
+      upstream_version = get_version(@pkg.name, @pkg.homepage, PackageUtils.get_url(@pkg, build_from_source: true), @pkg.version)
     end
     # Some packages don't work with this yet, so gracefully exit now rather than throwing false positives.
     versions_updated[@pkg.name.to_sym] = 'Not Found.' if upstream_version.nil? || upstream_version.to_s.chomp == 'null'
