@@ -3,7 +3,7 @@ require 'package'
 class B2 < Package
   description 'B2 makes it easy to build C++ projects, everywhere.'
   homepage 'https://www.bfgroup.xyz/b2/'
-  version '5.2.1'
+  version '5.3.3'
   license 'BSL 1.0'
   compatibility 'all'
   source_url 'https://github.com/bfgroup/b2.git'
