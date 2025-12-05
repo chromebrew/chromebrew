@@ -3,11 +3,11 @@ require 'package'
 class Atop < Package
   description 'ASCII full-screen performance monitor'
   homepage 'https://www.atoptool.nl/'
-  version '2.12.0'
+  version '2.12.1'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.atoptool.nl/download/atop-#{version}.tar.gz"
-  source_sha256 'e7a673cf2c82578e7dd82ecb0dec83fd9ecb30828b2561c28a9fa5aaf75d5f93'
+  source_sha256 '4fdbe67c5dfaf89405639e18599f4eae77978073ffa54f3c78c368ab54bd12f6'
   binary_compression 'tar.zst'
 
   binary_sha256({
