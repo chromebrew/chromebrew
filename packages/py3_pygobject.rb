@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 
 class Py3_pygobject < Meson
   description 'PyGObject is a Python package which provides bindings for GObject based libraries such as GTK+, GStreamer, WebKitGTK+, GLib, GIO and many more.'
-  homepage 'https://pygobject.gnome.org/'
+  homepage 'https://wiki.gnome.org/Projects/PyGObject'
   version "3.54.5-#{CREW_PY_VER}"
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'

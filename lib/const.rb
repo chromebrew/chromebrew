@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION = defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION = '1.68.6' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION = '1.68.7' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH = Etc.uname[:machine]
@@ -345,6 +345,7 @@ PY3_PIP_RETRIES                  = ENV.fetch('PY3_PIP_RETRIES', '5')
 
 # Defaults for the current versions used in version checking, in case
 # we are checking versions from outside Chromebrew, such as in CI.
+# Do adjust necessary variables in install.sh when changed here.
 crew_gcc_ver_default = '15'
 crew_icu_ver_default = '77.1'
 crew_llvm_ver_default = '21'
@@ -380,7 +381,6 @@ CREW_UPDATER_EXCLUDED_PKGS = Set[
   { pkg_name: 'ld_default', comments: 'Internal Chromebrew Package.' },
   { pkg_name: 'linuxheaders', comments: 'Requires manual update.' },
   { pkg_name: 'pkg_config', comments: 'Upstream is abandoned.' },
-  { pkg_name: 'py3_ldapdomaindump', comments: 'Build is broken.' },
   { pkg_name: 'ruby', comments: 'i686 needs building with GCC 14.' },
   { pkg_name: 'util_linux', comments: '2.41.2 build broken. See https://github.com/util-linux/util-linux/issues/3763' },
   { pkg_name: 'xdg_base', comments: 'Internal Chromebrew Package.' }
