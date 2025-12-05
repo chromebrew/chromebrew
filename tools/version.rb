@@ -52,11 +52,9 @@ versions = []
 
 def get_version(name, homepage, source, version)
   anitya_id = get_anitya_id(name, homepage, @pkg.superclass.to_s)
-  # If anitya_id cannot be determined, a Range can be returned, and
-  # .nonzero? does not work with Ranges.
-  anitya_id = nil if anitya_id.is_a? Range
+  # We return nil if anitya_id cannot be determined.
   puts "anitya_id: #{anitya_id}" if VERBOSE
-  if anitya_id&.nonzero?
+  if !anitya_id.nil?
     # Get the latest stable version of the package from anitya.
     json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/versions/?project_id=#{anitya_id}")))
     puts json if VERY_VERBOSE
