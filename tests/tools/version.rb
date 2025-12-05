@@ -2,6 +2,26 @@ require 'minitest/autorun'
 require_relative '../../tools/version'
 
 class VersionMonitorTest < Minitest::Test
+  def test_gitlab_fallback
+    assert_equal('1.0.0', gitlab_fallback(URI.parse('https://gitlab.com/caseif/fs2sbc.git')))
+    assert_nil(gitlab_fallback(URI.parse('https://gitlab.com/erikschull/Simple-Camera-Abandoned.git')))
+    assert_nil(gitlab_fallback(URI.parse('https://gitlab.com/99notreal/99notreal.git')))
+  end
+
+  def test_sourceforge_fallback
+    # This repo has been archived for 7 years, so hopefully there won't be any new releases.
+    assert_equal('0.7.1', sourceforge_fallback(URI.parse('http://downloads.sourceforge.net/project/netcat/netcat/0.7.1/netcat-0.7.1.tar.gz')))
+    assert_nil(sourceforge_fallback(URI.parse('https://downloads.sourceforge.net/project/99notreal/99notreal.odz')))
+  end
+
+  def test_pagure_fallback
+    # This repo has been archived for 7 years, so hopefully there won't be any new releases.
+    assert_equal('18.0.0-5', pagure_fallback(URI.parse('https://pagure.io/release-notes')))
+    # https://pagure.io/test
+    assert_nil(pagure_fallback(URI.parse('https://pagure.io/test')))
+    assert_nil(pagure_fallback(URI.parse('https://pagure.io/99notreal')))
+  end
+
   def test_get_simple_anitya_id
     assert_equal(15222, get_anitya_id('audaspace', 'https://github.com/audaspace/audaspace', 'CMake'))
   end
