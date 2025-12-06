@@ -3,18 +3,18 @@ require 'buildsystems/cmake'
 class Libarchive < CMake
   description 'Multi-format archive and compression library.'
   homepage 'https://www.libarchive.org/'
-  version "3.8.3-#{CREW_ICU_VER}"
+  version "3.8.4-#{CREW_ICU_VER}"
   license 'BSD, BSD-2, BSD-4 and public-domain'
   compatibility 'all'
   source_url "https://www.libarchive.org/downloads/libarchive-#{version.split('-').first}.tar.xz"
-  source_sha256 '90e21f2b89f19391ce7b90f6e48ed9fde5394d23ad30ae256fb8236b38b99788'
+  source_sha256 'c7b847b57feacf5e182f4d14dd6cae545ac6843d55cb725f58e107cdf1c9ad73'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f217dc4c7052b84f96133a4397ac86278335b1d2860d65e6a8e0fd86922f1be2',
-     armv7l: 'f217dc4c7052b84f96133a4397ac86278335b1d2860d65e6a8e0fd86922f1be2',
-       i686: '06be7d4c0d78cc3ed63f940e6de657ddde9f9860031a95e8f9999cfed044db18',
-     x86_64: 'b196a7f6c6352b55f957dd807e34b6825cd8a8d115d86d4e5f3ebf1a5a33e255'
+    aarch64: '193c9b327030b6619ab5d2f0a1ced145e24b6529efe86bbdc9bcce9e5b2f25f1',
+     armv7l: '193c9b327030b6619ab5d2f0a1ced145e24b6529efe86bbdc9bcce9e5b2f25f1',
+       i686: 'b167f91180460923cff4f7616556387e0722998a97bfbcf5bc235802882fd690',
+     x86_64: 'd27cadab66206041dc445865b4022e1ab7cfaf773a0ba37c5ed8e03268a891cf'
   })
 
   depends_on 'acl' # R

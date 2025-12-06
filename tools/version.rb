@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.18 (for Chromebrew)
+# version.rb version 3.19 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose -vv]
 
@@ -60,64 +60,14 @@ def get_version(name, homepage, source)
     puts json if VERY_VERBOSE
     return json['latest_version'] if json['stable_versions'][0].nil?
     return json['stable_versions'][0]
-  elsif source.nil? || %w[Pip].include?(@pkg.superclass.to_s)
-    return
-  else
-    # If anitya has failed, check if the source is a GitHub repository
-    # as a fallback.
-    # Note that we only check releases on GitHub since semantic
-    # version ordering isn't easy to get from tags.
-    # You can get the last numeric tag using:
-    # git -c 'versionsort.suffix=-' \
-    # ls-remote --exit-code --refs --sort='version:refname' --tags https://github.com/#{repo} '*.*.*' \
-    # | tail --lines=1 \
-    # | cut --delimiter='/' --fields=3
-    # However, since that does miss text tags, better to just use
-    # anitya first.
+  elsif !source.nil?
+    # If anitya has failed, we have a variety of fallbacks as a last resort.
     source.sub!('www.', '')
     url = URI.parse(source)
     puts "source_url host is #{url.host}" if VERY_VERBOSE
     case url.host
     when 'github.com'
-      url_parts = url.path.split('/')
-      unless url_parts.count < 3
-        git_hash = nil
-        repo = "#{url_parts[1]}/#{url_parts[2].gsub(/.git\z/, '')}"
-        puts "GitHub repo is #{repo}" if VERBOSE
-        if File.which('gh')
-          # This allows us to only get non-pre-release versions from
-          # GitHub if such releases exist.
-          puts "gh release ls --exclude-pre-releases --exclude-drafts -L 1 -R #{repo} --json tagName -q '.[] | .tagName'" if VERY_VERBOSE
-          github_ver = `gh release ls --exclude-pre-releases --exclude-drafts -L 1 -R #{repo} --json tagName -q '.[] | .tagName'`.chomp if system 'gh auth status >/dev/null', exception: false
-        else
-          puts "curl https://api.github.com/repos/#{repo}/releases/latest -Ls | jq .tag_name -r" if VERY_VERBOSE
-          rel_status = `curl -fsI https://api.github.com/repos/#{repo}/releases/latest`.lines.first.split[1]
-          tag_status = `curl -fsI https://api.github.com/repos/#{repo}/tags`.lines.first.split[1]
-          if rel_status == '404' && tag_status == '404'
-            puts 'GitHub repo not found or no release/tag available.' if VERBOSE
-            return
-          end
-          # Get the latest release.
-          github_ver = `curl https://api.github.com/repos/#{repo}/releases/latest -Ls | jq .tag_name -r`.chomp
-          if github_ver.blank? || github_ver == 'null'
-            # Get the latest tag.
-            puts "curl https://api.github.com/repos/#{repo}/tags -Ls | jq '.[0].name' -r" if VERY_VERBOSE
-            github_ver = `curl https://api.github.com/repos/#{repo}/tags -Ls | jq '.[0].name' -r`.chomp
-          end
-          if github_ver.blank? || github_ver == 'null'
-            # Get the first 6 characters of the latest git hash.
-            puts "curl https://api.github.com/repos/#{repo}/git/refs -Ls | jq .[0].object.sha -r" if VERY_VERBOSE
-            github_ver = `curl https://api.github.com/repos/#{repo}/git/refs -Ls | jq .[0].object.sha -r`.chomp[0..5]
-            git_hash = true
-          end
-        end
-        unless github_ver.blank? || github_ver == 'null'
-          puts "github_ver = #{github_ver}" if VERY_VERBOSE
-          # Strip off any leading non-numeric characters.
-          upstream_version = git_hash.nil? ? github_ver.sub(/.*?(?=[0-9].)/im, '').chomp : github_ver
-          return upstream_version
-        end
-      end
+      github_fallback(url)
     when 'gitlab.com'
       gitlab_fallback(url)
     when 'downloads.sourceforge.net'
@@ -126,6 +76,28 @@ def get_version(name, homepage, source)
       pagure_fallback(url)
     end
   end
+end
+
+def github_fallback(url)
+  url_parts = url.path.split('/')
+  return if url_parts.count < 3
+
+  repo = "#{url_parts[1]}/#{url_parts[2].delete_suffix('.git')}"
+  puts "GitHub repo is #{repo}" if VERBOSE
+
+  releases_json = JSON.parse(Net::HTTP.get(URI("https://api.github.com/repos/#{repo}/releases/latest")))
+  tags_json = JSON.parse(Net::HTTP.get(URI("https://api.github.com/repos/#{repo}/tags")))
+
+  # We check for the prescence of a message here because this will also gracefully handle rate limiting.
+  if releases_json.include?('message') && (tags_json.empty? || tags_json.include?('message'))
+    puts 'GitHub repo not found or no release/tag available.' if VERBOSE
+    return
+  end
+
+  github_ver = releases_json['tag_name'].nil? ? tags_json[0]['name'] : releases_json['tag_name']
+  puts "github_ver = #{github_ver}" if VERY_VERBOSE
+  # Strip off any leading non-numeric characters.
+  return github_ver.sub(/.*?(?=[0-9].)/im, '')
 end
 
 def gitlab_fallback(url)
