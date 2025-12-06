@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/python'
 
-class Avocado_framework < Package
+class Avocado_framework < Python
   description 'Avocado is a next generation testing framework inspired by Autotest and modern development tools such as git.'
   homepage 'https://avocado-framework.github.io/'
-  version '111.0'
+  version '112.0'
   license 'GPL-2 and GPL-2+'
   compatibility 'all'
   source_url 'https://github.com/avocado-framework/avocado.git'
@@ -20,12 +20,4 @@ class Avocado_framework < Package
   depends_on 'xdg_base'
   depends_on 'xzutils'
   depends_on 'python3' => :build
-
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
 end
