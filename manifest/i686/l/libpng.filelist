@@ -1,4 +1,4 @@
-# Total size: 773531
+# Total size: 773532
 /usr/local/bin/libpng-config
 /usr/local/bin/libpng16-config
 /usr/local/bin/png-fix-itxt
@@ -18,7 +18,7 @@
 /usr/local/lib/libpng/libpng16.cmake
 /usr/local/lib/libpng16.so
 /usr/local/lib/libpng16.so.16
-/usr/local/lib/libpng16.so.16.52.0
+/usr/local/lib/libpng16.so.16.53.0
 /usr/local/lib/pkgconfig/libpng.pc
 /usr/local/lib/pkgconfig/libpng16.pc
 /usr/local/share/man/man3/libpng.3.zst
