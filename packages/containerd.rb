@@ -6,7 +6,7 @@ require 'package'
 class Containerd < Package
   description 'An open and reliable container runtime'
   homepage 'https://containerd.io/'
-  version '1.7.1'
+  version '2.2.0'
   license 'Apache'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/containerd/containerd.git'
