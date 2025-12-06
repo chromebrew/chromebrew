@@ -3,7 +3,7 @@ require 'package'
 class Clojure < Package
   description 'Clojure is a robust, practical, and fast programming language with a set of useful features that together form a simple, coherent, and powerful tool.'
   homepage 'https://clojure.org/'
-  version '1.11.3'
+  version '1.12.3'
   license 'EPL-1.0, Apache-2.0 and BSD'
   compatibility 'all'
   source_url 'https://github.com/clojure/clojure.git'
