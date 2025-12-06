@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Ctags < Autotools
   description 'Universal Ctags generates an index file of language objects found in source files.'
   homepage 'https://ctags.io/'
-  version '6.1.0'
+  version '6.2.1'
   license 'GPL-2+'
   compatibility 'all'
   source_url 'https://github.com/universal-ctags/ctags.git'
