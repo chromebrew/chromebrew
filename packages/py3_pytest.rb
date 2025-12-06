@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_pytest < Pip
   description 'Pytest is simple powerful testing with Python.'
   homepage 'https://pytest.org/'
-  version "9.0.1-#{CREW_PY_VER}"
+  version "9.0.2-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
