@@ -19,34 +19,27 @@ permissions:                    # Global permissions configuration starts here
   packages: write
   pull-requests: write          # 'write' access to pull requests
 jobs:
-  update-check:
+  dependencies:
     if: ${{ github.repository_owner == 'chromebrew' }}
     runs-on: ubuntu-24.04
+    outputs:
+      packages: ${{ steps.get-dependencies.outputs.packages }}
     steps:
       - uses: actions/checkout@v5
         with:
-          persist-credentials: true
+          fetch-depth: 0
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.4.7'
-      - name: Check for updates in core and buildessential packages.
-        id: trigger-update-checks
-        run: |
-          set -x
-          # Make crew do automatic gem installs before looking for deps.
-          ruby bin/crew version
-          # Force creation of temporary device.json.
-          ruby bin/crew deps zstd_static
-          # Make sure input matches packages in existing packages list.
-          export INPUT="${{ inputs.version_cmd_input }}"
-          # shellcheck disable=SC2046,SC2155
-          export INPUT_PACKAGES="$(comm -12  <(ruby bin/crew list available| sort -u) <(echo $INPUT | tr ' ' '\n'| sort -u))"
-          if [[ -n "${INPUT_PACKAGES}" ]]; then
-            # shellcheck disable=SC2086,SC2155
-            export PACKAGES="$(ruby bin/crew deps $INPUT_PACKAGES | sort -u)"
-          else
-            echo "No valid input packages found."
-            exit 1
-          fi
-          # shellcheck disable=SC2086,SC2116
-          gh workflow -R chromebrew/chromebrew run Updater-on-Demand.yml -f version_cmd_input="$(echo ${PACKAGES})"
+      - name: Install bin/crew gem dependencies
+        run: sudo gem install --conservative highline json ptools digest fileutils find open3 tmpdir uri
+      - name: Get dependencies of core and buildessential packages
+        id: get-dependencies
+        run: echo "packages=$(ruby bin/crew deps ${{ inputs.version_cmd_input }} | sort | uniq | xargs | sed 's/Creating device.json.//')" >> "$GITHUB_OUTPUT"
+  update-check:
+    needs: dependencies
+    if: ${{ github.repository_owner == 'chromebrew' }}
+    uses: ./.github/workflows/Updater-on-Demand.yml
+    secrets: inherit
+    with:
+      version_cmd_input: ${{ needs.dependencies.outputs.packages }}
