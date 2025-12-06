@@ -24,3 +24,9 @@ jobs:
     secrets: inherit
     with:
       version_cmd_input: "ruby_*"
+  core-buildessential-update-checks:
+    if: ${{ github.repository_owner == 'chromebrew' }}
+    uses: ./.github/workflows/Package-Dependencies-Updater.yml
+    secrets: inherit
+    with:
+      version_cmd_input: "core buildessential"
