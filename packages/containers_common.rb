@@ -6,7 +6,7 @@ require 'package'
 class Containers_common < Package
   description 'Configuration files and manpages for containers'
   homepage 'https://github.com/containers'
-  version '0.53.0'
+  version '0.64.2'
   license 'Apache'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/containers/common.git'
