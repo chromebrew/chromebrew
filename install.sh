@@ -592,7 +592,7 @@ yes | ${PREFIX_CMD} crew install crew_profile_base
 # shellcheck disable=SC1090
 trap - ERR && source ~/.bashrc && set_trap
 echo_info "Installing core Chromebrew packages...\n"
-yes | ${PREFIX_CMD} crew install core || (yes | ${PREFIX_CMD} crew install core)
+yes | ${PREFIX_CMD} crew install core || (yes | ${PREFIX_CMD} crew install core) || yes | ${PREFIX_CMD} crew reinstall core
 
 echo_info "\nRunning Bootstrap package postinstall scripts...\n"
 # Due to a bug in crew where it accepts spaces in package files names rather than
