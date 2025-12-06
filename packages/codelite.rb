@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Codelite < CMake
   description 'CodeLite is an open source, free, cross platform IDE, specialized in C, C++, Rust, Python, PHP and JavaScript'
   homepage 'https://codelite.org/'
-  version '18.1.0'
+  version '18.2.0'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/eranif/codelite.git'
