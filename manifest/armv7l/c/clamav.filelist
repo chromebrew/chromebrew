@@ -1,4 +1,4 @@
-# Total size: 70103319
+# Total size: 94727165
 /usr/local/bin/clamav-config
 /usr/local/bin/clambc
 /usr/local/bin/clamconf
@@ -8,6 +8,7 @@
 /usr/local/bin/clamsubmit
 /usr/local/bin/freshclam
 /usr/local/bin/sigtool
+/usr/local/etc/clamav/certs/clamav.crt
 /usr/local/etc/clamav/clamd.conf
 /usr/local/etc/clamav/clamd.conf.sample
 /usr/local/etc/clamav/freshclam.conf
@@ -18,7 +19,7 @@
 /usr/local/include/libfreshclam.h
 /usr/local/lib/libclamav.so
 /usr/local/lib/libclamav.so.12
-/usr/local/lib/libclamav.so.12.0.3
+/usr/local/lib/libclamav.so.12.1.0
 /usr/local/lib/libclamav_rust.a
 /usr/local/lib/libclamav_static.a
 /usr/local/lib/libclammspack.so
@@ -27,15 +28,15 @@
 /usr/local/lib/libclammspack_static.a
 /usr/local/lib/libclamunrar.so
 /usr/local/lib/libclamunrar.so.12
-/usr/local/lib/libclamunrar.so.12.0.3
+/usr/local/lib/libclamunrar.so.12.1.0
 /usr/local/lib/libclamunrar_iface.so
 /usr/local/lib/libclamunrar_iface.so.12
-/usr/local/lib/libclamunrar_iface.so.12.0.3
+/usr/local/lib/libclamunrar_iface.so.12.1.0
 /usr/local/lib/libclamunrar_iface_static.a
 /usr/local/lib/libclamunrar_static.a
 /usr/local/lib/libfreshclam.so
-/usr/local/lib/libfreshclam.so.3
-/usr/local/lib/libfreshclam.so.3.0.2
+/usr/local/lib/libfreshclam.so.4
+/usr/local/lib/libfreshclam.so.4.0.0
 /usr/local/lib/libfreshclam_static.a
 /usr/local/lib/pkgconfig/libclamav.pc
 /usr/local/sbin/clamd
@@ -129,7 +130,6 @@
 /usr/local/share/doc/ClamAV/html/manual/Installing/Add-clamav-user.html
 /usr/local/share/doc/ClamAV/html/manual/Installing/Community-projects.html
 /usr/local/share/doc/ClamAV/html/manual/Installing/Docker.html
-/usr/local/share/doc/ClamAV/html/manual/Installing/Installing-from-source-Unix-old.html
 /usr/local/share/doc/ClamAV/html/manual/Installing/Installing-from-source-Unix.html
 /usr/local/share/doc/ClamAV/html/manual/Installing/Installing-from-source-Windows.html
 /usr/local/share/doc/ClamAV/html/manual/Installing/Packages.html
