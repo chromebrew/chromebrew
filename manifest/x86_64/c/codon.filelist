@@ -1,4 +1,4 @@
-# Total size: 224524121
+# Total size: 224546696
 /usr/local/bin/codon
 /usr/local/include/codon/cir/analyze/analysis.h
 /usr/local/include/codon/cir/analyze/dataflow/capture.h
@@ -146,7 +146,6 @@
 /usr/local/lib/codon/stdlib/collections.codon
 /usr/local/lib/codon/stdlib/copy.codon
 /usr/local/lib/codon/stdlib/datetime.codon
-/usr/local/lib/codon/stdlib/experimental/simd.codon
 /usr/local/lib/codon/stdlib/functools.codon
 /usr/local/lib/codon/stdlib/getopt.codon
 /usr/local/lib/codon/stdlib/gpu.codon
@@ -162,6 +161,7 @@
 /usr/local/lib/codon/stdlib/internal/file.codon
 /usr/local/lib/codon/stdlib/internal/format.codon
 /usr/local/lib/codon/stdlib/internal/gc.codon
+/usr/local/lib/codon/stdlib/internal/gpu.codon
 /usr/local/lib/codon/stdlib/internal/internal.codon
 /usr/local/lib/codon/stdlib/internal/khash.codon
 /usr/local/lib/codon/stdlib/internal/pynumerics.codon
@@ -243,6 +243,7 @@
 /usr/local/lib/codon/stdlib/python.codon
 /usr/local/lib/codon/stdlib/random.codon
 /usr/local/lib/codon/stdlib/re.codon
+/usr/local/lib/codon/stdlib/simd.codon
 /usr/local/lib/codon/stdlib/sortedlist.codon
 /usr/local/lib/codon/stdlib/statistics.codon
 /usr/local/lib/codon/stdlib/string.codon
