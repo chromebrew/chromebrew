@@ -19,7 +19,7 @@ class Openmp < Package
   binary_sha256({
     aarch64: 'fb5a13f992a29ca52b7fbe0722978d444f42758da61c2ed77f1ea8ce894dc800',
      armv7l: 'fb5a13f992a29ca52b7fbe0722978d444f42758da61c2ed77f1ea8ce894dc800',
-       i686: '67b135fc3762a28d2d5f03c0987a3f6fec59b1b669e9a842e38a937a857e4531',
+       i686: '',
      x86_64: '063a7043b77519874cfbd0d561bdea8cb4953e91fd79ee20ee224eb34be36e18'
   })
 
