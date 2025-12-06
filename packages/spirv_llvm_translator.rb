@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Spirv_llvm_translator < CMake
   description 'Tool and a library for bi-directional translation between SPIR-V and LLVM IR'
   homepage 'https://github.com/KhronosGroup/SPIRV-LLVM-Translator'
-  version '21.1.2'
+  version '21.1.3'
   license 'Apache-2.0 WITH LLVM-exception'
   compatibility 'all'
   source_url 'https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git'

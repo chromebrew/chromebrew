@@ -17,10 +17,10 @@ class Openmp < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3b19fd3adcb8fe69eec06070a0d8cf257fa14602b3a13cf3bfb668b92edfa500',
-     armv7l: '3b19fd3adcb8fe69eec06070a0d8cf257fa14602b3a13cf3bfb668b92edfa500',
-       i686: '5e5cd17acfb4dafd4d847656d9a67f21e30a26bd5565c07fbfacbc80e8e5a27d',
-     x86_64: '8a16faced504313444a76c85940d484e599e2b93075f3fa5f917c0cf904e7618'
+    aarch64: 'fb5a13f992a29ca52b7fbe0722978d444f42758da61c2ed77f1ea8ce894dc800',
+     armv7l: 'fb5a13f992a29ca52b7fbe0722978d444f42758da61c2ed77f1ea8ce894dc800',
+       i686: '67b135fc3762a28d2d5f03c0987a3f6fec59b1b669e9a842e38a937a857e4531',
+     x86_64: '063a7043b77519874cfbd0d561bdea8cb4953e91fd79ee20ee224eb34be36e18'
   })
 
   depends_on 'gcc_lib' # R

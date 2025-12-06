@@ -4,7 +4,7 @@ Package.load_package("#{__dir__}/llvm21_build.rb")
 class Llvm21_dev < Package
   description 'LLVM: Everything except libLLVM & llvm-strip'
   homepage Llvm21_build.homepage
-  version '21.1.6'
+  version '21.1.7'
   # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
   puts "#{self} version differs from llvm version #{Llvm21_build.version}".orange if version != Llvm21_build.version
   license Llvm21_build.license
@@ -13,10 +13,10 @@ class Llvm21_dev < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bd4010b1e6a68715ab59e75dec576ea84241a566679a9437d03660f72c7f1314',
-     armv7l: 'bd4010b1e6a68715ab59e75dec576ea84241a566679a9437d03660f72c7f1314',
-       i686: 'a7c76b4a88005ae7e429135b05f4b76bb9184e1c49063bc62f2e2562282e191a',
-     x86_64: '8eefc61ee3381ec31070aa52e01287d790a3694b0207fa6cd25528fdbae89a98'
+    aarch64: '1494f195f28c88b6e3448fb570294dc5f0d587357f09028a4c50993f92d2008b',
+     armv7l: '1494f195f28c88b6e3448fb570294dc5f0d587357f09028a4c50993f92d2008b',
+       i686: 'bfeb6f9c467976ec7395469ccf4593e39333078be90f4009593211ef10e758d2',
+     x86_64: '68c493c0f8de9e85050751995211d3446a035d1830e448359b92d0ab5d5ccd88'
   })
 
   depends_on 'gcc_lib' # R
