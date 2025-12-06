@@ -1,7 +1,8 @@
-# Total size: 15439360
+# Total size: 66934208
 /usr/local/libexec/cni/bandwidth
 /usr/local/libexec/cni/bridge
 /usr/local/libexec/cni/dhcp
+/usr/local/libexec/cni/dummy
 /usr/local/libexec/cni/firewall
 /usr/local/libexec/cni/host-device
 /usr/local/libexec/cni/host-local
@@ -12,6 +13,7 @@
 /usr/local/libexec/cni/ptp
 /usr/local/libexec/cni/sbr
 /usr/local/libexec/cni/static
+/usr/local/libexec/cni/tap
 /usr/local/libexec/cni/tuning
 /usr/local/libexec/cni/vlan
 /usr/local/libexec/cni/vrf
