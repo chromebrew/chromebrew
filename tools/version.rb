@@ -356,7 +356,7 @@ if filelist.length.positive?
       end
       upstream_version = JSON.parse(Net::HTTP.get(URI("https://rubygems.org/api/v1/versions/#{gem_name}/latest.json")))['version']
     elsif %w[Pip].include?(@pkg.superclass.to_s)
-      versions_updated[@pkg.name.to_sym] = 'Not Found.' if @pkg.name[/#{CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX}/]
+      versions_updated[@pkg.name.to_sym] = 'Not Found.' if CREW_UPDATER_EXCLUDED_PKGS.key?(@pkg.name)
       pip_name = @pkg.name.sub(/\Apy\d_/, '').gsub('_', '-')
       begin
         upstream_version = `pip index versions #{'--pre' if @pkg.prerelease?} #{pip_name} 2>/dev/null`.match(/#{Regexp.escape(pip_name)} \(([^)]+)\)/)[1]
@@ -380,7 +380,7 @@ if filelist.length.positive?
       end
       versions_updated[@pkg.name.to_sym] = 'Up to date.' if (Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version) >= 0) && versions_updated[@pkg.name.to_sym] != 'Not Found.'
       if Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version) == -1
-        if UPDATE_PACKAGE_FILES && !@pkg.name[/#{CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX}/] && updatable_pkg[@pkg.name.to_sym] == 'Yes'
+        if UPDATE_PACKAGE_FILES && !CREW_UPDATER_EXCLUDED_PKGS.key?(@pkg.name) && updatable_pkg[@pkg.name.to_sym] == 'Yes'
           file = File.read(filename)
           FileUtils.cp filename, "#{filename}.bak"
           if file.sub!(PackageUtils.get_clean_version(@pkg.version), upstream_version).nil?
@@ -465,10 +465,10 @@ if filelist.length.positive?
             end
           end
         end
-        versions_updated[@pkg.name.to_sym] = if UPDATE_PACKAGE_FILES && !@pkg.name[/#{CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX}/] && versions_updated[@pkg.name.to_sym]
+        versions_updated[@pkg.name.to_sym] = if UPDATE_PACKAGE_FILES && !CREW_UPDATER_EXCLUDED_PKGS.key?(@pkg.name) && versions_updated[@pkg.name.to_sym]
                                                'Updated.'
                                              else
-                                               @pkg.name[/#{CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX}/] ? 'Update manually.' : 'Outdated.'
+                                               CREW_UPDATER_EXCLUDED_PKGS.key?(@pkg.name) ? 'Update manually.' : 'Outdated.'
                                              end
       end
     end
@@ -486,10 +486,7 @@ if filelist.length.positive?
     when 'Update manually.'
       version_status_string = 'Update manually.'.ljust(status_field_length).purple
       updatable_string = 'No'.purple
-      if @pkg.name[/#{CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX}/]
-        exclusion_mapping_idx = CREW_UPDATER_EXCLUDED_PKGS.keys.find_index { |i| i == @pkg.name }
-        updatable_pkg[@pkg.name.to_sym] = exclusion_mapping_idx.nil? ? nil : CREW_UPDATER_EXCLUDED_PKGS.values[exclusion_mapping_idx]
-      end
+      updatable_pkg[@pkg.name.to_sym] = CREW_UPDATER_EXCLUDED_PKGS[@pkg.name] if CREW_UPDATER_EXCLUDED_PKGS.key?(@pkg.name)
     when 'Updated.'
       version_status_string = 'Updated.'.ljust(status_field_length).blue
     when 'Up to date.'

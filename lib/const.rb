@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION = defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION = '1.68.7' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION = '1.68.8' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH = Etc.uname[:machine]
@@ -385,7 +385,6 @@ CREW_UPDATER_EXCLUDED_PKGS = Set[
   { pkg_name: 'util_linux', comments: '2.41.2 build broken. See https://github.com/util-linux/util-linux/issues/3763' },
   { pkg_name: 'xdg_base', comments: 'Internal Chromebrew Package.' }
 ].to_h { |h| [h[:pkg_name], h[:comments]] }
-CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX = "(#{CREW_UPDATER_EXCLUDED_PKGS.keys.map { |p| "^#{p}$" }.join('|')})"
 
 # Some packages have different names in anitya.
 CREW_ANITYA_PACKAGE_NAME_MAPPINGS = Set[
