@@ -302,17 +302,13 @@ if filelist.length.positive?
   filelist.each do |filename|
     @pkg = Package.load_package(filename)
     cleaned_pkg_version = PackageUtils.get_clean_version(@pkg.version)
-    if @pkg.is_fake?
-      # Just skip is_fake packages.
-      versions_updated[@pkg.name.to_sym] = 'Fake'
-      updatable_pkg[@pkg.name.to_sym] = 'No'
-      next
-    end
     # Mark package file as updatable (i.e., the version field can be
     # updated in the package file) if the string "version" is on the
     # git_hashtag line or the string "#{version}" is on the source_url
     # line.
-    updatable_pkg[@pkg.name.to_sym] = if @pkg.ignore_updater?
+    updatable_pkg[@pkg.name.to_sym] = if @pkg.is_fake?
+                                        'No'
+                                      elsif @pkg.ignore_updater?
                                         if `grep '^  version' #{filename} | awk '{print $2}' | grep '\.version'`.empty?
                                           'ignore_updater set'
                                         else
@@ -348,7 +344,10 @@ if filelist.length.positive?
     # We annotate some packages to let us know that they won't work here.
     versions_updated[@pkg.name.to_sym] = 'Up to date.' if @pkg.no_upstream_update?
 
-    if %w[RUBY].include?(@pkg.superclass.to_s)
+    # We aren't interested in trying to find the upstream versions of fake packages.
+    if @pkg.is_fake?
+      upstream_version = ''
+    elsif %w[RUBY].include?(@pkg.superclass.to_s)
       gem_name = @pkg.name.sub('ruby_', '')
       # We replace all dashes with underscores in our initial package names, but some gems actually use underscores, so we need special cases.
       # This list was created by looking at what packages were listed as not having updates in rubygems, and then looking up the upstream name for them.
@@ -385,8 +384,10 @@ if filelist.length.positive?
     # If upstream_version is nil, convert it to an empty string so we don't have to worry about nil errors.
     upstream_version = upstream_version.to_s
 
-    # Some packages don't work with this yet, so gracefully exit now rather than throwing false positives.
-    versions_updated[@pkg.name.to_sym] = 'Not Found.' if upstream_version.empty?
+    # If the upstream version is empty, this is either a fake package or we weren't able to find an upstream version.
+    if upstream_version.empty?
+      versions_updated[@pkg.name.to_sym] = @pkg.is_fake? ? 'Fake.' : 'Not Found.'
+    end
 
     unless upstream_version.empty?
       if VERY_VERBOSE
@@ -492,9 +493,8 @@ if filelist.length.positive?
     version_status_string = ''.ljust(status_field_length)
     updatable_string = nil
     case versions_updated[@pkg.name.to_sym]
-    when 'Fake'
-      version_status_string = 'Fake'.ljust(status_field_length).lightred
-      upstream_version = ''
+    when 'Fake.'
+      version_status_string = 'Fake.'.ljust(status_field_length).lightred
     when 'Not Found.'
       version_status_string = 'Not Found.'.ljust(status_field_length).lightred
     when 'Outdated.'
@@ -509,7 +509,7 @@ if filelist.length.positive?
       version_status_string = 'Up to date.'.ljust(status_field_length).lightgreen
     end
     updatable_string = (updatable_pkg[@pkg.name.to_sym] == 'Yes' ? 'Yes'.ljust(version_field_length).lightgreen : 'No'.ljust(version_field_length).lightred) if updatable_string.nil?
-    compile_string = @pkg.no_compile_needed? ? 'No'.lightred : 'Yes'.lightgreen
+    compile_string = @pkg.no_compile_needed? || @pkg.is_fake? ? 'No'.lightred : 'Yes'.lightgreen
     versions.push(package: @pkg.name, update_status: versions_updated[@pkg.name.to_sym], version: cleaned_pkg_version, upstream_version: upstream_version)
 
     addendum_string = "#{@pkg.name} cannot be automatically updated: ".red + "#{updatable_pkg[@pkg.name.to_sym]}\n".purple unless updatable_pkg[@pkg.name.to_sym] == 'Yes'
