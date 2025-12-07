@@ -14,7 +14,8 @@ class Autotools < Package
     print_buildsystem_methods
 
     Dir.chdir(@autotools_build_relative_dir) do
-      unless File.file?('Makefile') && CREW_CACHE_BUILD
+      # Some packages, such as ocaml, have a dummy makefile, so check that this is actually a generated makefile.
+      unless File.file?('Makefile') && File.read('Makefile', 500).include?('generated') && CREW_CACHE_BUILD
         # Run autoreconf if necessary
         unless File.executable? './configure'
           if File.executable? './autogen.sh'

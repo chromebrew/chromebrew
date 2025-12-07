@@ -1,11 +1,11 @@
-# Total size: 18127267
-/usr/local/lib/python3.14/site-packages/sqlalchemy-2.0.44.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/sqlalchemy-2.0.44.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/sqlalchemy-2.0.44.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/sqlalchemy-2.0.44.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/sqlalchemy-2.0.44.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/sqlalchemy-2.0.44.dist-info/licenses/LICENSE
-/usr/local/lib/python3.14/site-packages/sqlalchemy-2.0.44.dist-info/top_level.txt
+# Total size: 18214625
+/usr/local/lib/python3.14/site-packages/sqlalchemy-2.0.45.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/sqlalchemy-2.0.45.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/sqlalchemy-2.0.45.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/sqlalchemy-2.0.45.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/sqlalchemy-2.0.45.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/sqlalchemy-2.0.45.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/sqlalchemy-2.0.45.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/sqlalchemy/__init__.py
 /usr/local/lib/python3.14/site-packages/sqlalchemy/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/sqlalchemy/__pycache__/events.cpython-314.pyc

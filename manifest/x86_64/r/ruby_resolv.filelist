@@ -1,13 +1,8 @@
-# Total size: 103409
-/usr/local/lib64/ruby/gems/3.4.0/gems/resolv-0.6.3-x86_64-linux/BSDL
-/usr/local/lib64/ruby/gems/3.4.0/gems/resolv-0.6.3-x86_64-linux/COPYING
-/usr/local/lib64/ruby/gems/3.4.0/gems/resolv-0.6.3-x86_64-linux/Gemfile
-/usr/local/lib64/ruby/gems/3.4.0/gems/resolv-0.6.3-x86_64-linux/README.md
-/usr/local/lib64/ruby/gems/3.4.0/gems/resolv-0.6.3-x86_64-linux/Rakefile
-/usr/local/lib64/ruby/gems/3.4.0/gems/resolv-0.6.3-x86_64-linux/bin/console
-/usr/local/lib64/ruby/gems/3.4.0/gems/resolv-0.6.3-x86_64-linux/bin/setup
-/usr/local/lib64/ruby/gems/3.4.0/gems/resolv-0.6.3-x86_64-linux/ext/win32/resolv/extconf.rb
-/usr/local/lib64/ruby/gems/3.4.0/gems/resolv-0.6.3-x86_64-linux/ext/win32/resolv/lib/resolv.rb
-/usr/local/lib64/ruby/gems/3.4.0/gems/resolv-0.6.3-x86_64-linux/ext/win32/resolv/resolv.c
-/usr/local/lib64/ruby/gems/3.4.0/gems/resolv-0.6.3-x86_64-linux/lib/resolv.rb
-/usr/local/lib64/ruby/gems/3.4.0/gems/resolv-0.6.3-x86_64-linux/resolv.gemspec
+# Total size: 105943
+/usr/local/lib64/ruby/gems/3.4.0/gems/resolv-0.7.0-x86_64-linux/BSDL
+/usr/local/lib64/ruby/gems/3.4.0/gems/resolv-0.7.0-x86_64-linux/COPYING
+/usr/local/lib64/ruby/gems/3.4.0/gems/resolv-0.7.0-x86_64-linux/README.md
+/usr/local/lib64/ruby/gems/3.4.0/gems/resolv-0.7.0-x86_64-linux/ext/win32/resolv/extconf.rb
+/usr/local/lib64/ruby/gems/3.4.0/gems/resolv-0.7.0-x86_64-linux/ext/win32/resolv/lib/resolv.rb
+/usr/local/lib64/ruby/gems/3.4.0/gems/resolv-0.7.0-x86_64-linux/ext/win32/resolv/resolv.c
+/usr/local/lib64/ruby/gems/3.4.0/gems/resolv-0.7.0-x86_64-linux/lib/resolv.rb
