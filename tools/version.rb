@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.19 (for Chromebrew)
+# version.rb version 3.20 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose -vv]
 
@@ -12,6 +12,7 @@ if ARGV.include?('-h') || ARGV.include?('--help')
     Passing --update-package-files or -u will try to update the version
     field in the package file.
     Passing --json or -j will only give json output.
+    Passing --all or -a will output the versions of all packages, not just the outdated ones.
     Passing --verbose or -v will display verbose output.
     Passing -vv will display very verbose output.
   EOM
@@ -39,8 +40,9 @@ require_gem('ptools')
 # Add >LOCAL< lib to LOAD_PATH
 $LOAD_PATH.unshift File.join(crew_local_repo_root, 'lib')
 
-OUTPUT_JSON = ARGV.include?('-j') || ARGV.include?('--json')
 UPDATE_PACKAGE_FILES = ARGV.include?('-u') || ARGV.include?('--update-package-files')
+OUTPUT_JSON = ARGV.include?('-j') || ARGV.include?('--json')
+OUTPUT_ALL = ARGV.include?('-a') || ARGV.include?('--all')
 VERBOSE = ARGV.include?('-v') || ARGV.include?('--verbose') || ARGV.include?('-vv')
 VERY_VERBOSE = ARGV.include?('-vv')
 bc_updated = {}
@@ -499,7 +501,7 @@ if filelist.length.positive?
 
     addendum_string = "#{@pkg.name} cannot be automatically updated: ".red + "#{updatable_pkg[@pkg.name.to_sym]}\n".purple unless updatable_pkg[@pkg.name.to_sym] == 'Yes'
     version_line_string[@pkg.name.to_sym] = "#{@pkg.name.ljust(package_field_length)}#{version_status_string}#{cleaned_pkg_version.ljust(version_field_length)}#{upstream_version.ljust(version_field_length)}#{updatable_string}#{compile_string}\n"
-    print version_line_string[@pkg.name.to_sym] if !OUTPUT_JSON && ((versions_updated[@pkg.name.to_sym] == 'Outdated.' && updatable_pkg[@pkg.name.to_sym] == 'Yes') || VERBOSE)
+    print version_line_string[@pkg.name.to_sym] if !OUTPUT_JSON && ((versions_updated[@pkg.name.to_sym] == 'Outdated.' && updatable_pkg[@pkg.name.to_sym] == 'Yes') || OUTPUT_ALL)
     print addendum_string unless addendum_string.blank? || OUTPUT_JSON || !VERBOSE
 
     print "Failed to update version in #{@pkg.name} to #{upstream_version}".yellow if !OUTPUT_JSON && (versions_updated[@pkg.name.to_sym].to_s == 'false')
