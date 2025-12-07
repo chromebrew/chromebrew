@@ -52,19 +52,17 @@ version_line_string = {}
 versions_updated = {}
 versions = []
 
-# Some packges need manual adjustments of URLS for different versions.
+# Some packages do not have upstream versions, often because they are internal chromebrew packages or because upstream doesn't have a versioning scheme.
+NO_UPSTREAM_VERSION_PKGS = %w[clear_cache gdk_base hello_world_chromebrew ld_default xdg_base]
+
+# Some packges aren't eligible to be automatically updated despite having upstream versions.
 CREW_UPDATER_EXCLUDED_PKGS = Set[
-  { pkg_name: 'clear_cache', comments: 'Internal Chromebrew Package.' },
-  { pkg_name: 'gdk_base', comments: 'Internal Chromebrew Package.' },
   { pkg_name: 'glibc', comments: 'Requires manual update.' },
   { pkg_name: 'gpm', comments: 'Upstream is defunct.' },
-  { pkg_name: 'hello_world_chromebrew', comments: 'Internal Chromebrew Package.' },
-  { pkg_name: 'ld_default', comments: 'Internal Chromebrew Package.' },
   { pkg_name: 'linuxheaders', comments: 'Requires manual update.' },
   { pkg_name: 'pkg_config', comments: 'Upstream is abandoned.' },
   { pkg_name: 'ruby', comments: 'i686 needs building with GCC 14.' },
-  { pkg_name: 'util_linux', comments: '2.41.2 build broken. See https://github.com/util-linux/util-linux/issues/3763' },
-  { pkg_name: 'xdg_base', comments: 'Internal Chromebrew Package.' }
+  { pkg_name: 'util_linux', comments: '2.41.2 build broken. See https://github.com/util-linux/util-linux/issues/3763' }
 ].to_h { |h| [h[:pkg_name], h[:comments]] }
 
 def get_version(name, homepage, source)
@@ -341,11 +339,10 @@ if filelist.length.positive?
     # rubocop:enable Lint/DuplicateBranch
     @pkg_names[@pkg.name.to_sym] = @pkg.name
     version_line_string[@pkg.name.to_sym] = ''
-    # We annotate some packages to let us know that they won't work here.
-    versions_updated[@pkg.name.to_sym] = 'Up to date.' if @pkg.no_upstream_update?
 
     # We aren't interested in trying to find the upstream versions of fake packages.
-    if @pkg.is_fake?
+    # We also aren't interested in finding upstream verisons for packages that are guaranteed not to have them.
+    if @pkg.is_fake? || NO_UPSTREAM_VERSION_PKGS.include?(@pkg.name) || @pkg.no_upstream_update?
       upstream_version = ''
     elsif %w[RUBY].include?(@pkg.superclass.to_s)
       gem_name = @pkg.name.sub('ruby_', '')
@@ -386,7 +383,13 @@ if filelist.length.positive?
 
     # If the upstream version is empty, this is either a fake package or we weren't able to find an upstream version.
     if upstream_version.empty?
-      versions_updated[@pkg.name.to_sym] = @pkg.is_fake? ? 'Fake.' : 'Not Found.'
+      versions_updated[@pkg.name.to_sym] = if @pkg.is_fake?
+                                             'Fake.'
+                                           elsif NO_UPSTREAM_VERSION_PKGS.include?(@pkg.name) || @pkg.no_upstream_update?
+                                             'Invalid.'
+                                           else
+                                             'Not Found.'
+                                           end
     end
 
     unless upstream_version.empty?
@@ -495,6 +498,8 @@ if filelist.length.positive?
     case versions_updated[@pkg.name.to_sym]
     when 'Fake.'
       version_status_string = 'Fake.'.ljust(status_field_length).lightred
+    when 'Invalid.'
+      version_status_string = 'Invalid.'.ljust(status_field_length).lightred
     when 'Not Found.'
       version_status_string = 'Not Found.'.ljust(status_field_length).lightred
     when 'Outdated.'
