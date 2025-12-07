@@ -38,17 +38,6 @@ jobs:
           git config --global push.autoSetupRemote true
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
-      - name: Install ruby-libversion  # Hopefully this will get added as an Ubuntu/Debian package. https://github.com/repology/libversion/issues/35
-        working-directory: ${{ runner.temp }}
-        run: |
-          git clone --depth 1 -b 3.0.4 https://github.com/repology/libversion
-          cd libversion
-          mkdir build
-          cd build
-          cmake ..
-          make -j "$(nproc)"
-          sudo make install
-          sudo gem install --no-update-sources -N ruby-libversion --conservative
       - name: Check for updates.
         id: update-checks
         run: |
