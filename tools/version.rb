@@ -501,7 +501,7 @@ if filelist.length.positive?
       version_status_string = 'Outdated.'.ljust(status_field_length).yellow
     when 'Update manually.'
       version_status_string = 'Update manually.'.ljust(status_field_length).purple
-      updatable_string = 'No'.purple
+      updatable_string = 'No'.ljust(version_field_length).purple
       updatable_pkg[@pkg.name.to_sym] = CREW_UPDATER_EXCLUDED_PKGS[@pkg.name] if CREW_UPDATER_EXCLUDED_PKGS.key?(@pkg.name)
     when 'Updated.'
       version_status_string = 'Updated.'.ljust(status_field_length).blue
