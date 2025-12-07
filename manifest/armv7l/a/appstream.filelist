@@ -1,7 +1,6 @@
-# Total size: 27956508
+# Total size: 28812976
 /usr/local/bin/appstreamcli
 /usr/local/include/appstream-compose/appstream-compose.h
-/usr/local/include/appstream-compose/asc-canvas.h
 /usr/local/include/appstream-compose/asc-compose.h
 /usr/local/include/appstream-compose/asc-directory-unit.h
 /usr/local/include/appstream-compose/asc-enums-types.h
@@ -56,9 +55,9 @@
 /usr/local/lib/girepository-1.0/AppStreamCompose-1.0.typelib
 /usr/local/lib/libappstream-compose.so
 /usr/local/lib/libappstream-compose.so.0
-/usr/local/lib/libappstream-compose.so.1.0.3
+/usr/local/lib/libappstream-compose.so.1.1.1
 /usr/local/lib/libappstream.so
-/usr/local/lib/libappstream.so.1.0.3
+/usr/local/lib/libappstream.so.1.1.1
 /usr/local/lib/libappstream.so.5
 /usr/local/lib/pkgconfig/appstream-compose.pc
 /usr/local/lib/pkgconfig/appstream.pc
@@ -95,8 +94,8 @@
 /usr/local/share/doc/appstream/html/api/SourceCodePro-It.ttf.woff
 /usr/local/share/doc/appstream/html/api/SourceCodePro-Regular.ttf.woff
 /usr/local/share/doc/appstream/html/api/SourceCodePro-Semibold.ttf.woff
-/usr/local/share/doc/appstream/html/api/api.devhelp2
 /usr/local/share/doc/appstream/html/api/appstream-logo.svg
+/usr/local/share/doc/appstream/html/api/appstream.devhelp2
 /usr/local/share/doc/appstream/html/api/class.Agreement.html
 /usr/local/share/doc/appstream/html/api/class.AgreementSection.html
 /usr/local/share/doc/appstream/html/api/class.Artifact.html
@@ -977,10 +976,10 @@
 /usr/local/share/doc/appstream/html/compose-api/SourceCodePro-It.ttf.woff
 /usr/local/share/doc/appstream/html/compose-api/SourceCodePro-Regular.ttf.woff
 /usr/local/share/doc/appstream/html/compose-api/SourceCodePro-Semibold.ttf.woff
+/usr/local/share/doc/appstream/html/compose-api/appstream-compose.devhelp2
 /usr/local/share/doc/appstream/html/compose-api/appstream-logo.svg
 /usr/local/share/doc/appstream/html/compose-api/callback.CheckMetadataEarlyFn.html
 /usr/local/share/doc/appstream/html/compose-api/callback.TranslateDesktopTextFn.html
-/usr/local/share/doc/appstream/html/compose-api/class.Canvas.html
 /usr/local/share/doc/appstream/html/compose-api/class.Compose.html
 /usr/local/share/doc/appstream/html/compose-api/class.DirectoryUnit.html
 /usr/local/share/doc/appstream/html/compose-api/class.Hint.html
@@ -989,8 +988,6 @@
 /usr/local/share/doc/appstream/html/compose-api/class.Result.html
 /usr/local/share/doc/appstream/html/compose-api/class.Unit.html
 /usr/local/share/doc/appstream/html/compose-api/classes_hierarchy.html
-/usr/local/share/doc/appstream/html/compose-api/compose-api.devhelp2
-/usr/local/share/doc/appstream/html/compose-api/ctor.Canvas.new.html
 /usr/local/share/doc/appstream/html/compose-api/ctor.Compose.new.html
 /usr/local/share/doc/appstream/html/compose-api/ctor.DirectoryUnit.new.html
 /usr/local/share/doc/appstream/html/compose-api/ctor.Hint.new.html
@@ -1003,7 +1000,6 @@
 /usr/local/share/doc/appstream/html/compose-api/ctor.Unit.new.html
 /usr/local/share/doc/appstream/html/compose-api/enum.IconState.html
 /usr/local/share/doc/appstream/html/compose-api/enum.ImageFormat.html
-/usr/local/share/doc/appstream/html/compose-api/error.CanvasError.html
 /usr/local/share/doc/appstream/html/compose-api/error.ComposeError.html
 /usr/local/share/doc/appstream/html/compose-api/error.ImageError.html
 /usr/local/share/doc/appstream/html/compose-api/flags.ComposeFlags.html
@@ -1026,18 +1022,12 @@
 /usr/local/share/doc/appstream/html/compose-api/func.globals_set_optipng_binary.html
 /usr/local/share/doc/appstream/html/compose-api/func.globals_set_tmp_dir.html
 /usr/local/share/doc/appstream/html/compose-api/func.globals_set_use_optipng.html
-/usr/local/share/doc/appstream/html/compose-api/func.optimize_png.html
-/usr/local/share/doc/appstream/html/compose-api/func.pixbuf_blur.html
-/usr/local/share/doc/appstream/html/compose-api/func.pixbuf_sharpen.html
+/usr/local/share/doc/appstream/html/compose-api/func.render_svg_to_file.html
 /usr/local/share/doc/appstream/html/compose-api/fzy.js
 /usr/local/share/doc/appstream/html/compose-api/go-up-symbolic.png
 /usr/local/share/doc/appstream/html/compose-api/index.html
 /usr/local/share/doc/appstream/html/compose-api/index.json
 /usr/local/share/doc/appstream/html/compose-api/main.js
-/usr/local/share/doc/appstream/html/compose-api/method.Canvas.get_height.html
-/usr/local/share/doc/appstream/html/compose-api/method.Canvas.get_width.html
-/usr/local/share/doc/appstream/html/compose-api/method.Canvas.render_svg.html
-/usr/local/share/doc/appstream/html/compose-api/method.Canvas.save_png.html
 /usr/local/share/doc/appstream/html/compose-api/method.Compose.add_allowed_cid.html
 /usr/local/share/doc/appstream/html/compose-api/method.Compose.add_custom_allowed.html
 /usr/local/share/doc/appstream/html/compose-api/method.Compose.add_flags.html
@@ -1098,16 +1088,13 @@
 /usr/local/share/doc/appstream/html/compose-api/method.IconPolicyIter.init.html
 /usr/local/share/doc/appstream/html/compose-api/method.IconPolicyIter.next.html
 /usr/local/share/doc/appstream/html/compose-api/method.Image.get_height.html
-/usr/local/share/doc/appstream/html/compose-api/method.Image.get_pixbuf.html
 /usr/local/share/doc/appstream/html/compose-api/method.Image.get_width.html
 /usr/local/share/doc/appstream/html/compose-api/method.Image.load_filename.html
 /usr/local/share/doc/appstream/html/compose-api/method.Image.save_filename.html
-/usr/local/share/doc/appstream/html/compose-api/method.Image.save_pixbuf.html
 /usr/local/share/doc/appstream/html/compose-api/method.Image.scale.html
 /usr/local/share/doc/appstream/html/compose-api/method.Image.scale_to_fit.html
 /usr/local/share/doc/appstream/html/compose-api/method.Image.scale_to_height.html
 /usr/local/share/doc/appstream/html/compose-api/method.Image.scale_to_width.html
-/usr/local/share/doc/appstream/html/compose-api/method.Image.set_pixbuf.html
 /usr/local/share/doc/appstream/html/compose-api/method.Result.add_component.html
 /usr/local/share/doc/appstream/html/compose-api/method.Result.add_component_with_string.html
 /usr/local/share/doc/appstream/html/compose-api/method.Result.add_hint.html
@@ -1159,7 +1146,6 @@
 /usr/local/share/doc/appstream/html/compose-api/solarized-light.css
 /usr/local/share/doc/appstream/html/compose-api/struct.IconPolicyIter.html
 /usr/local/share/doc/appstream/html/compose-api/style.css
-/usr/local/share/doc/appstream/html/compose-api/type_func.CanvasError.quark.html
 /usr/local/share/doc/appstream/html/compose-api/type_func.ComposeError.quark.html
 /usr/local/share/doc/appstream/html/compose-api/type_func.IconState.from_string.html
 /usr/local/share/doc/appstream/html/compose-api/type_func.IconState.to_string.html
@@ -1210,10 +1196,10 @@
 /usr/local/share/gtk-doc/html/appstream-compose/SourceCodePro-It.ttf.woff
 /usr/local/share/gtk-doc/html/appstream-compose/SourceCodePro-Regular.ttf.woff
 /usr/local/share/gtk-doc/html/appstream-compose/SourceCodePro-Semibold.ttf.woff
+/usr/local/share/gtk-doc/html/appstream-compose/appstream-compose.devhelp2
 /usr/local/share/gtk-doc/html/appstream-compose/appstream-logo.svg
 /usr/local/share/gtk-doc/html/appstream-compose/callback.CheckMetadataEarlyFn.html
 /usr/local/share/gtk-doc/html/appstream-compose/callback.TranslateDesktopTextFn.html
-/usr/local/share/gtk-doc/html/appstream-compose/class.Canvas.html
 /usr/local/share/gtk-doc/html/appstream-compose/class.Compose.html
 /usr/local/share/gtk-doc/html/appstream-compose/class.DirectoryUnit.html
 /usr/local/share/gtk-doc/html/appstream-compose/class.Hint.html
@@ -1222,8 +1208,6 @@
 /usr/local/share/gtk-doc/html/appstream-compose/class.Result.html
 /usr/local/share/gtk-doc/html/appstream-compose/class.Unit.html
 /usr/local/share/gtk-doc/html/appstream-compose/classes_hierarchy.html
-/usr/local/share/gtk-doc/html/appstream-compose/compose-api.devhelp2
-/usr/local/share/gtk-doc/html/appstream-compose/ctor.Canvas.new.html
 /usr/local/share/gtk-doc/html/appstream-compose/ctor.Compose.new.html
 /usr/local/share/gtk-doc/html/appstream-compose/ctor.DirectoryUnit.new.html
 /usr/local/share/gtk-doc/html/appstream-compose/ctor.Hint.new.html
@@ -1236,7 +1220,6 @@
 /usr/local/share/gtk-doc/html/appstream-compose/ctor.Unit.new.html
 /usr/local/share/gtk-doc/html/appstream-compose/enum.IconState.html
 /usr/local/share/gtk-doc/html/appstream-compose/enum.ImageFormat.html
-/usr/local/share/gtk-doc/html/appstream-compose/error.CanvasError.html
 /usr/local/share/gtk-doc/html/appstream-compose/error.ComposeError.html
 /usr/local/share/gtk-doc/html/appstream-compose/error.ImageError.html
 /usr/local/share/gtk-doc/html/appstream-compose/flags.ComposeFlags.html
@@ -1259,18 +1242,12 @@
 /usr/local/share/gtk-doc/html/appstream-compose/func.globals_set_optipng_binary.html
 /usr/local/share/gtk-doc/html/appstream-compose/func.globals_set_tmp_dir.html
 /usr/local/share/gtk-doc/html/appstream-compose/func.globals_set_use_optipng.html
-/usr/local/share/gtk-doc/html/appstream-compose/func.optimize_png.html
-/usr/local/share/gtk-doc/html/appstream-compose/func.pixbuf_blur.html
-/usr/local/share/gtk-doc/html/appstream-compose/func.pixbuf_sharpen.html
+/usr/local/share/gtk-doc/html/appstream-compose/func.render_svg_to_file.html
 /usr/local/share/gtk-doc/html/appstream-compose/fzy.js
 /usr/local/share/gtk-doc/html/appstream-compose/go-up-symbolic.png
 /usr/local/share/gtk-doc/html/appstream-compose/index.html
 /usr/local/share/gtk-doc/html/appstream-compose/index.json
 /usr/local/share/gtk-doc/html/appstream-compose/main.js
-/usr/local/share/gtk-doc/html/appstream-compose/method.Canvas.get_height.html
-/usr/local/share/gtk-doc/html/appstream-compose/method.Canvas.get_width.html
-/usr/local/share/gtk-doc/html/appstream-compose/method.Canvas.render_svg.html
-/usr/local/share/gtk-doc/html/appstream-compose/method.Canvas.save_png.html
 /usr/local/share/gtk-doc/html/appstream-compose/method.Compose.add_allowed_cid.html
 /usr/local/share/gtk-doc/html/appstream-compose/method.Compose.add_custom_allowed.html
 /usr/local/share/gtk-doc/html/appstream-compose/method.Compose.add_flags.html
@@ -1331,16 +1308,13 @@
 /usr/local/share/gtk-doc/html/appstream-compose/method.IconPolicyIter.init.html
 /usr/local/share/gtk-doc/html/appstream-compose/method.IconPolicyIter.next.html
 /usr/local/share/gtk-doc/html/appstream-compose/method.Image.get_height.html
-/usr/local/share/gtk-doc/html/appstream-compose/method.Image.get_pixbuf.html
 /usr/local/share/gtk-doc/html/appstream-compose/method.Image.get_width.html
 /usr/local/share/gtk-doc/html/appstream-compose/method.Image.load_filename.html
 /usr/local/share/gtk-doc/html/appstream-compose/method.Image.save_filename.html
-/usr/local/share/gtk-doc/html/appstream-compose/method.Image.save_pixbuf.html
 /usr/local/share/gtk-doc/html/appstream-compose/method.Image.scale.html
 /usr/local/share/gtk-doc/html/appstream-compose/method.Image.scale_to_fit.html
 /usr/local/share/gtk-doc/html/appstream-compose/method.Image.scale_to_height.html
 /usr/local/share/gtk-doc/html/appstream-compose/method.Image.scale_to_width.html
-/usr/local/share/gtk-doc/html/appstream-compose/method.Image.set_pixbuf.html
 /usr/local/share/gtk-doc/html/appstream-compose/method.Result.add_component.html
 /usr/local/share/gtk-doc/html/appstream-compose/method.Result.add_component_with_string.html
 /usr/local/share/gtk-doc/html/appstream-compose/method.Result.add_hint.html
@@ -1392,7 +1366,6 @@
 /usr/local/share/gtk-doc/html/appstream-compose/solarized-light.css
 /usr/local/share/gtk-doc/html/appstream-compose/struct.IconPolicyIter.html
 /usr/local/share/gtk-doc/html/appstream-compose/style.css
-/usr/local/share/gtk-doc/html/appstream-compose/type_func.CanvasError.quark.html
 /usr/local/share/gtk-doc/html/appstream-compose/type_func.ComposeError.quark.html
 /usr/local/share/gtk-doc/html/appstream-compose/type_func.IconState.from_string.html
 /usr/local/share/gtk-doc/html/appstream-compose/type_func.IconState.to_string.html
@@ -1437,8 +1410,8 @@
 /usr/local/share/gtk-doc/html/appstream/SourceCodePro-It.ttf.woff
 /usr/local/share/gtk-doc/html/appstream/SourceCodePro-Regular.ttf.woff
 /usr/local/share/gtk-doc/html/appstream/SourceCodePro-Semibold.ttf.woff
-/usr/local/share/gtk-doc/html/appstream/api.devhelp2
 /usr/local/share/gtk-doc/html/appstream/appstream-logo.svg
+/usr/local/share/gtk-doc/html/appstream/appstream.devhelp2
 /usr/local/share/gtk-doc/html/appstream/class.Agreement.html
 /usr/local/share/gtk-doc/html/appstream/class.AgreementSection.html
 /usr/local/share/gtk-doc/html/appstream/class.Artifact.html
@@ -2291,6 +2264,7 @@
 /usr/local/share/installed-tests/appstream/metainfo-validate.test
 /usr/local/share/locale/ain/LC_MESSAGES/appstream.mo
 /usr/local/share/locale/ar/LC_MESSAGES/appstream.mo
+/usr/local/share/locale/bg/LC_MESSAGES/appstream.mo
 /usr/local/share/locale/bn/LC_MESSAGES/appstream.mo
 /usr/local/share/locale/bn_BD/LC_MESSAGES/appstream.mo
 /usr/local/share/locale/ca/LC_MESSAGES/appstream.mo
@@ -2332,6 +2306,8 @@
 /usr/local/share/locale/sr/LC_MESSAGES/appstream.mo
 /usr/local/share/locale/sr@latin/LC_MESSAGES/appstream.mo
 /usr/local/share/locale/sv/LC_MESSAGES/appstream.mo
+/usr/local/share/locale/ta/LC_MESSAGES/appstream.mo
+/usr/local/share/locale/th/LC_MESSAGES/appstream.mo
 /usr/local/share/locale/tr/LC_MESSAGES/appstream.mo
 /usr/local/share/locale/uk/LC_MESSAGES/appstream.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/appstream.mo
