@@ -53,7 +53,7 @@ versions_updated = {}
 versions = []
 
 # Some packages do not have upstream versions, often because they are internal chromebrew packages or because upstream doesn't have a versioning scheme.
-NO_UPSTREAM_VERSION_PKGS = %w[clear_cache gdk_base hello_world_chromebrew ld_default xdg_base]
+NO_UPSTREAM_VERSION_PKGS = %w[clear_cache gdk_base hello_world_chromebrew ld_default xdg_base recomod vdev mywanip clmystery crew_preload cros_resize kwiml libbacktrace libpstat fskit speakify]
 
 # Some packges aren't eligible to be automatically updated despite having upstream versions.
 CREW_UPDATER_EXCLUDED_PKGS = Set[
@@ -342,7 +342,7 @@ if filelist.length.positive?
 
     # We aren't interested in trying to find the upstream versions of fake packages.
     # We also aren't interested in finding upstream verisons for packages that are guaranteed not to have them.
-    if @pkg.is_fake? || NO_UPSTREAM_VERSION_PKGS.include?(@pkg.name) || @pkg.no_upstream_update?
+    if @pkg.is_fake? || NO_UPSTREAM_VERSION_PKGS.include?(@pkg.name) || @pkg.no_upstream_update? || @pkg.name.start_with?('musl_')
       upstream_version = ''
     elsif %w[RUBY].include?(@pkg.superclass.to_s)
       gem_name = @pkg.name.sub('ruby_', '')
@@ -385,7 +385,7 @@ if filelist.length.positive?
     if upstream_version.empty?
       versions_updated[@pkg.name.to_sym] = if @pkg.is_fake?
                                              'Fake.'
-                                           elsif NO_UPSTREAM_VERSION_PKGS.include?(@pkg.name) || @pkg.no_upstream_update?
+                                           elsif NO_UPSTREAM_VERSION_PKGS.include?(@pkg.name) || @pkg.no_upstream_update? || @pkg.name.start_with?('musl_')
                                              'Invalid.'
                                            else
                                              'Not Found.'
