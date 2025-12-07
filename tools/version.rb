@@ -52,6 +52,21 @@ version_line_string = {}
 versions_updated = {}
 versions = []
 
+# Some packges need manual adjustments of URLS for different versions.
+CREW_UPDATER_EXCLUDED_PKGS = Set[
+  { pkg_name: 'clear_cache', comments: 'Internal Chromebrew Package.' },
+  { pkg_name: 'gdk_base', comments: 'Internal Chromebrew Package.' },
+  { pkg_name: 'glibc', comments: 'Requires manual update.' },
+  { pkg_name: 'gpm', comments: 'Upstream is defunct.' },
+  { pkg_name: 'hello_world_chromebrew', comments: 'Internal Chromebrew Package.' },
+  { pkg_name: 'ld_default', comments: 'Internal Chromebrew Package.' },
+  { pkg_name: 'linuxheaders', comments: 'Requires manual update.' },
+  { pkg_name: 'pkg_config', comments: 'Upstream is abandoned.' },
+  { pkg_name: 'ruby', comments: 'i686 needs building with GCC 14.' },
+  { pkg_name: 'util_linux', comments: '2.41.2 build broken. See https://github.com/util-linux/util-linux/issues/3763' },
+  { pkg_name: 'xdg_base', comments: 'Internal Chromebrew Package.' }
+].to_h { |h| [h[:pkg_name], h[:comments]] }
+
 def get_version(name, homepage, source)
   anitya_id = get_anitya_id(name, homepage, @pkg.superclass.to_s)
   # We return nil if anitya_id cannot be determined.
