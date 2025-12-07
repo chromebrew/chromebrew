@@ -382,18 +382,20 @@ if filelist.length.positive?
       # Get the upstream version.
       upstream_version = get_version(@pkg.name, @pkg.homepage, PackageUtils.get_url(@pkg, build_from_source: true))
     end
-    # Some packages don't work with this yet, so gracefully exit now rather than throwing false positives.
-    versions_updated[@pkg.name.to_sym] = 'Not Found.' if upstream_version.nil? || upstream_version.to_s.chomp == 'null'
+    # If upstream_version is nil, convert it to an empty string so we don't have to worry about nil errors.
+    upstream_version = upstream_version.to_s
 
-    unless upstream_version.nil?
-      if versions_updated[@pkg.name.to_sym] != 'Not Found.' && VERY_VERBOSE
+    # Some packages don't work with this yet, so gracefully exit now rather than throwing false positives.
+    versions_updated[@pkg.name.to_sym] = 'Not Found.' if upstream_version.empty?
+
+    unless upstream_version.empty?
+      if VERY_VERBOSE
         crewlog "PackageUtils.get_clean_version(@pkg.version): #{PackageUtils.get_clean_version(@pkg.version)}"
         crewlog "upstream_version: #{upstream_version}"
         crewlog "Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version): #{Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version)}"
         crewlog "Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version) >= 0: #{Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version) >= 0}"
-        crewlog "versions_updated[@pkg.name.to_sym] != 'Not Found.': #{versions_updated[@pkg.name.to_sym] != 'Not Found.'}"
       end
-      versions_updated[@pkg.name.to_sym] = 'Up to date.' if (Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version) >= 0) && versions_updated[@pkg.name.to_sym] != 'Not Found.'
+      versions_updated[@pkg.name.to_sym] = 'Up to date.' if Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version) >= 0
       if Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version) == -1
         if UPDATE_PACKAGE_FILES && !CREW_UPDATER_EXCLUDED_PKGS.key?(@pkg.name) && updatable_pkg[@pkg.name.to_sym] == 'Yes'
           file = File.read(filename)
@@ -495,7 +497,6 @@ if filelist.length.positive?
       upstream_version = ''
     when 'Not Found.'
       version_status_string = 'Not Found.'.ljust(status_field_length).lightred
-      upstream_version = ''
     when 'Outdated.'
       version_status_string = 'Outdated.'.ljust(status_field_length).yellow
     when 'Update manually.'
