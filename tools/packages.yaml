@@ -4450,11 +4450,6 @@ url: https://github.com/pantoniou/libfyaml/releases
 activity: medium
 ---
 kind: url
-name: libgc
-url: https://httpredir.debian.org/debian/pool/main/libg/libgc/
-activity: low
----
-kind: url
 name: libgconf
 url: https://ftp.gnome.org/pub/GNOME/sources/GConf/
 activity: none
