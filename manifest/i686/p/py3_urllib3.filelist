@@ -1,10 +1,10 @@
-# Total size: 969710
-/usr/local/lib/python3.14/site-packages/urllib3-2.6.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/urllib3-2.6.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/urllib3-2.6.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/urllib3-2.6.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/urllib3-2.6.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/urllib3-2.6.0.dist-info/licenses/LICENSE.txt
+# Total size: 970641
+/usr/local/lib/python3.14/site-packages/urllib3-2.6.1.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/urllib3-2.6.1.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/urllib3-2.6.1.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/urllib3-2.6.1.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/urllib3-2.6.1.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/urllib3-2.6.1.dist-info/licenses/LICENSE.txt
 /usr/local/lib/python3.14/site-packages/urllib3/__init__.py
 /usr/local/lib/python3.14/site-packages/urllib3/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/urllib3/__pycache__/_base_connection.cpython-314.pyc
