@@ -1005,6 +1005,11 @@ url: https://gitlab.com/dave_m/clamtk/-/tags
 activity: none
 ---
 kind: url
+name: claude
+url: https://claude.com/product/claude-code
+activity: medium
+---
+kind: url
 name: clean
 url: https://sourceforge.net/projects/clean/files/clean/
 activity: none
