@@ -62,7 +62,7 @@ CREW_UPDATER_EXCLUDED_PKGS = Set[
   { pkg_name: 'linuxheaders', comments: 'Requires manual update.' },
   { pkg_name: 'pkg_config', comments: 'Upstream is abandoned.' },
   { pkg_name: 'ruby', comments: 'i686 needs building with GCC 14.' },
-  { pkg_name: 'util_linux', comments: '2.41.2 build broken. See https://github.com/util-linux/util-linux/issues/3763' }
+  { pkg_name: 'util_linux', comments: 'Needs to be built with CREW_KERNEL_VERSION=5.10. See https://github.com/util-linux/util-linux/issues/3763' }
 ].to_h { |h| [h[:pkg_name], h[:comments]] }
 
 def get_version(name, homepage, source)
