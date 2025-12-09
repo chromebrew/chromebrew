@@ -30,3 +30,21 @@ jobs:
     secrets: inherit
     with:
       version_cmd_input: "core buildessential"
+  generic-packages:
+    runs-on: ubuntu-24.04
+    outputs:
+      packages: ${{ steps.get-packages.outputs.packages }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: Get generic automatically updatable packages
+        id: get-packages
+        run: echo "packages=$(cat tools/automatically_updatable_packages.txt | xargs)" >> "$GITHUB_OUTPUT"
+  generic-packages-update-checks:
+    needs: generic-packages
+    if: ${{ github.repository_owner == 'chromebrew' }}
+    uses: ./.github/workflows/Updater-on-Demand.yml
+    secrets: inherit
+    with:
+      version_cmd_input: ${{ needs.generic-packages.outputs.packages }}
