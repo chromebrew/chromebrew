@@ -1,36 +1,23 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Ocaml < Package
+class Ocaml < Autotools
   description 'OCaml is an industrial strength programming language supporting functional, imperative and object-oriented styles'
   homepage 'https://ocaml.org/'
-  version '4.14.2'
+  version '5.4.0'
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url 'https://caml.inria.fr/pub/distrib/ocaml-4.14/ocaml-4.14.2.tar.xz'
-  source_sha256 'c127974d0242576cf47061b20aa9c86d17be0d6aa9687f6ec9835de67be7bb6f'
+  source_url 'https://github.com/ocaml/ocaml.git'
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a629b32a38def20b0f751282c0bc1cf596c109a21fcd4127a735441325c80ad0',
-     armv7l: 'a629b32a38def20b0f751282c0bc1cf596c109a21fcd4127a735441325c80ad0',
-       i686: '9a2d16619143505a9ea699f6f21da22254d570038b536a4f3ea6297ba5119d26',
-     x86_64: '4de68fa82f535c5ba8ff8a1a7071b83a89862487ff197b79d4d32f399e07a574'
+    aarch64: 'eb10cfb987e6f63ce2308c9de6d7206a3fac01ff72ef3447b194f4f9098d5a4b',
+     armv7l: 'eb10cfb987e6f63ce2308c9de6d7206a3fac01ff72ef3447b194f4f9098d5a4b',
+       i686: 'ce8d7c0aba087176113f77088642559b668ec578be5a0bb7cb67f86c9b3d66e0',
+     x86_64: 'edd6007b3e73623075492a7b7913d9fda9646ee5dd35192a2aceaa47bb74778b'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-
-  def self.patch
-    system 'filefix'
-  end
-
-  def self.build
-    system "./configure -prefix #{CREW_PREFIX} \
-      -libdir #{CREW_LIB_PREFIX}"
-    system 'make -j1 world.opt'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'zstd' # R
 end

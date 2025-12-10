@@ -1,12 +1,12 @@
-# Total size: 369261256
-/usr/local/lib/python3.14/site-packages/oci-2.164.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/oci-2.164.0.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/oci-2.164.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/oci-2.164.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/oci-2.164.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/oci-2.164.0.dist-info/THIRD_PARTY_LICENSES.txt
-/usr/local/lib/python3.14/site-packages/oci-2.164.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/oci-2.164.0.dist-info/top_level.txt
+# Total size: 369354243
+/usr/local/lib/python3.14/site-packages/oci-2.164.1.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/oci-2.164.1.dist-info/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/oci-2.164.1.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/oci-2.164.1.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/oci-2.164.1.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/oci-2.164.1.dist-info/THIRD_PARTY_LICENSES.txt
+/usr/local/lib/python3.14/site-packages/oci-2.164.1.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/oci-2.164.1.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/oci/__init__.py
 /usr/local/lib/python3.14/site-packages/oci/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/__pycache__/alloy.cpython-314.pyc
@@ -2779,6 +2779,7 @@
 /usr/local/lib/python3.14/site-packages/oci/auth/signers/__pycache__/instance_principals_security_token_signer.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/auth/signers/__pycache__/key_pair_signer.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/auth/signers/__pycache__/nested_resource_principals_signer.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/auth/signers/__pycache__/oauth_exhange_token_signer.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/auth/signers/__pycache__/oke_workload_identity_resource_principal_signer.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/auth/signers/__pycache__/resource_principals_delegation_token_signer.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/auth/signers/__pycache__/resource_principals_federation_signer.cpython-314.pyc
@@ -2792,6 +2793,7 @@
 /usr/local/lib/python3.14/site-packages/oci/auth/signers/instance_principals_security_token_signer.py
 /usr/local/lib/python3.14/site-packages/oci/auth/signers/key_pair_signer.py
 /usr/local/lib/python3.14/site-packages/oci/auth/signers/nested_resource_principals_signer.py
+/usr/local/lib/python3.14/site-packages/oci/auth/signers/oauth_exhange_token_signer.py
 /usr/local/lib/python3.14/site-packages/oci/auth/signers/oke_workload_identity_resource_principal_signer.py
 /usr/local/lib/python3.14/site-packages/oci/auth/signers/resource_principals_delegation_token_signer.py
 /usr/local/lib/python3.14/site-packages/oci/auth/signers/resource_principals_federation_signer.py
@@ -10429,6 +10431,8 @@
 /usr/local/lib/python3.14/site-packages/oci/database/models/__pycache__/enable_external_pluggable_database_stack_monitoring_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/database/models/__pycache__/enable_pluggable_database_management_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/database/models/__pycache__/encryption_key_location_details.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/database/models/__pycache__/estimate_cost_saving_summary.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/database/models/__pycache__/estimate_cost_savings_summary_collection.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/database/models/__pycache__/estimated_patching_time.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/database/models/__pycache__/exadata_db_system_migration.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/database/models/__pycache__/exadata_db_system_migration_summary.cpython-314.pyc
@@ -10948,6 +10952,8 @@
 /usr/local/lib/python3.14/site-packages/oci/database/models/enable_external_pluggable_database_stack_monitoring_details.py
 /usr/local/lib/python3.14/site-packages/oci/database/models/enable_pluggable_database_management_details.py
 /usr/local/lib/python3.14/site-packages/oci/database/models/encryption_key_location_details.py
+/usr/local/lib/python3.14/site-packages/oci/database/models/estimate_cost_saving_summary.py
+/usr/local/lib/python3.14/site-packages/oci/database/models/estimate_cost_savings_summary_collection.py
 /usr/local/lib/python3.14/site-packages/oci/database/models/estimated_patching_time.py
 /usr/local/lib/python3.14/site-packages/oci/database/models/exadata_db_system_migration.py
 /usr/local/lib/python3.14/site-packages/oci/database/models/exadata_db_system_migration_summary.py
