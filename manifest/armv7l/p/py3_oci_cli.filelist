@@ -1,4 +1,4 @@
-# Total size: 142497562
+# Total size: 142737070
 /usr/local/bin/create_backup_from_onprem
 /usr/local/bin/oci
 /usr/local/lib/python3.14/site-packages/alloy/__init__.py
@@ -37,15 +37,15 @@
 /usr/local/lib/python3.14/site-packages/interactive/prompt_session.py
 /usr/local/lib/python3.14/site-packages/interactive/supported_resource_types.py
 /usr/local/lib/python3.14/site-packages/interactive/utils.py
-/usr/local/lib/python3.14/site-packages/oci_cli-3.71.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/oci_cli-3.71.0.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/oci_cli-3.71.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/oci_cli-3.71.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/oci_cli-3.71.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/oci_cli-3.71.0.dist-info/THIRD_PARTY_LICENSES.txt
-/usr/local/lib/python3.14/site-packages/oci_cli-3.71.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/oci_cli-3.71.0.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/oci_cli-3.71.0.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/oci_cli-3.71.1.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/oci_cli-3.71.1.dist-info/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/oci_cli-3.71.1.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/oci_cli-3.71.1.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/oci_cli-3.71.1.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/oci_cli-3.71.1.dist-info/THIRD_PARTY_LICENSES.txt
+/usr/local/lib/python3.14/site-packages/oci_cli-3.71.1.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/oci_cli-3.71.1.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/oci_cli-3.71.1.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/__init__.py
 /usr/local/lib/python3.14/site-packages/oci_cli/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci_cli/__pycache__/cli.cpython-314.pyc
@@ -3849,6 +3849,7 @@
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/autonomous-database/get.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/autonomous-database/list-autonomous-database-peers.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/autonomous-database/list-clones.txt
+/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/autonomous-database/list-elastic-pool-cost-savings.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/autonomous-database/list-refreshable-clones.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/autonomous-database/list-resource-pool-members.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/autonomous-database/list.txt
@@ -6034,9 +6035,9 @@
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/governance-rules-control-plane/governance-rule/tenancy-attachment/retry.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/governance-rules-control-plane/work-request.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/governance-rules-control-plane/work-request/work-request-error.txt
-/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/governance-rules-control-plane/work-request/work-request-error/list-errors.txt
-/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/governance-rules-control-plane/work-request/work-request-log.txt
-/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/governance-rules-control-plane/work-request/work-request-log/list.txt
+/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/governance-rules-control-plane/work-request/work-request-error/list.txt
+/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/governance-rules-control-plane/work-request/work-request-log-entry.txt
+/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/governance-rules-control-plane/work-request/work-request-log-entry/list-work-request-logs.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/governance-rules-control-plane/work-request/work-request.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/governance-rules-control-plane/work-request/work-request/cancel.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/governance-rules-control-plane/work-request/work-request/get.txt
@@ -8639,7 +8640,7 @@
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/ocvs/sddc/upgrade-hcx.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/ocvs/sddc/vmware-versions.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/ocvs/work-request-error.txt
-/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/ocvs/work-request-error/list-errors.txt
+/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/ocvs/work-request-error/list.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/ocvs/work-request-log.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/ocvs/work-request-log/list.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/ocvs/work-request.txt
