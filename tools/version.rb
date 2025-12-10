@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.19 (for Chromebrew)
+# version.rb version 3.20 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose -vv]
 
@@ -12,6 +12,7 @@ if ARGV.include?('-h') || ARGV.include?('--help')
     Passing --update-package-files or -u will try to update the version
     field in the package file.
     Passing --json or -j will only give json output.
+    Passing --all or -a will output the versions of all packages, not just the outdated ones.
     Passing --verbose or -v will display verbose output.
     Passing -vv will display very verbose output.
   EOM
@@ -39,8 +40,9 @@ require_gem('ptools')
 # Add >LOCAL< lib to LOAD_PATH
 $LOAD_PATH.unshift File.join(crew_local_repo_root, 'lib')
 
-OUTPUT_JSON = ARGV.include?('-j') || ARGV.include?('--json')
 UPDATE_PACKAGE_FILES = ARGV.include?('-u') || ARGV.include?('--update-package-files')
+OUTPUT_JSON = ARGV.include?('-j') || ARGV.include?('--json')
+OUTPUT_ALL = ARGV.include?('-a') || ARGV.include?('--all')
 VERBOSE = ARGV.include?('-v') || ARGV.include?('--verbose') || ARGV.include?('-vv')
 VERY_VERBOSE = ARGV.include?('-vv')
 bc_updated = {}
@@ -49,6 +51,19 @@ updatable_pkg = {}
 version_line_string = {}
 versions_updated = {}
 versions = []
+
+# Some packages do not have upstream versions, often because they are internal chromebrew packages or because upstream doesn't have a versioning scheme.
+NO_UPSTREAM_VERSION_PKGS = %w[clear_cache gdk_base hello_world_chromebrew ld_default xdg_base recomod vdev mywanip clmystery crew_preload cros_resize kwiml libbacktrace libpstat fskit speakify]
+
+# Some packges aren't eligible to be automatically updated despite having upstream versions.
+CREW_UPDATER_EXCLUDED_PKGS = Set[
+  { pkg_name: 'glibc', comments: 'Requires manual update.' },
+  { pkg_name: 'gpm', comments: 'Upstream is defunct.' },
+  { pkg_name: 'linuxheaders', comments: 'Requires manual update.' },
+  { pkg_name: 'pkg_config', comments: 'Upstream is abandoned.' },
+  { pkg_name: 'ruby', comments: 'i686 needs building with GCC 14.' },
+  { pkg_name: 'util_linux', comments: 'Needs to be built with CREW_KERNEL_VERSION=5.10. See https://github.com/util-linux/util-linux/issues/3763' }
+].to_h { |h| [h[:pkg_name], h[:comments]] }
 
 def get_version(name, homepage, source)
   anitya_id = get_anitya_id(name, homepage, @pkg.superclass.to_s)
@@ -285,17 +300,13 @@ if filelist.length.positive?
   filelist.each do |filename|
     @pkg = Package.load_package(filename)
     cleaned_pkg_version = PackageUtils.get_clean_version(@pkg.version)
-    if @pkg.is_fake?
-      # Just skip is_fake packages.
-      versions_updated[@pkg.name.to_sym] = 'Fake'
-      updatable_pkg[@pkg.name.to_sym] = 'No'
-      next
-    end
     # Mark package file as updatable (i.e., the version field can be
     # updated in the package file) if the string "version" is on the
     # git_hashtag line or the string "#{version}" is on the source_url
     # line.
-    updatable_pkg[@pkg.name.to_sym] = if @pkg.ignore_updater?
+    updatable_pkg[@pkg.name.to_sym] = if @pkg.is_fake?
+                                        'No'
+                                      elsif @pkg.ignore_updater?
                                         if `grep '^  version' #{filename} | awk '{print $2}' | grep '\.version'`.empty?
                                           'ignore_updater set'
                                         else
@@ -328,10 +339,12 @@ if filelist.length.positive?
     # rubocop:enable Lint/DuplicateBranch
     @pkg_names[@pkg.name.to_sym] = @pkg.name
     version_line_string[@pkg.name.to_sym] = ''
-    # We annotate some packages to let us know that they won't work here.
-    versions_updated[@pkg.name.to_sym] = 'Up to date.' if @pkg.no_upstream_update?
 
-    if %w[RUBY].include?(@pkg.superclass.to_s)
+    # We aren't interested in trying to find the upstream versions of fake packages.
+    # We also aren't interested in finding upstream verisons for packages that are guaranteed not to have them.
+    if @pkg.is_fake? || NO_UPSTREAM_VERSION_PKGS.include?(@pkg.name) || @pkg.no_upstream_update? || @pkg.name.start_with?('musl_')
+      upstream_version = ''
+    elsif %w[RUBY].include?(@pkg.superclass.to_s)
       gem_name = @pkg.name.sub('ruby_', '')
       # We replace all dashes with underscores in our initial package names, but some gems actually use underscores, so we need special cases.
       # This list was created by looking at what packages were listed as not having updates in rubygems, and then looking up the upstream name for them.
@@ -354,7 +367,7 @@ if filelist.length.positive?
       end
       upstream_version = JSON.parse(Net::HTTP.get(URI("https://rubygems.org/api/v1/versions/#{gem_name}/latest.json")))['version']
     elsif %w[Pip].include?(@pkg.superclass.to_s)
-      versions_updated[@pkg.name.to_sym] = 'Not Found.' if @pkg.name[/#{CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX}/]
+      versions_updated[@pkg.name.to_sym] = 'Not Found.' if CREW_UPDATER_EXCLUDED_PKGS.key?(@pkg.name)
       pip_name = @pkg.name.sub(/\Apy\d_/, '').gsub('_', '-')
       begin
         upstream_version = `pip index versions #{'--pre' if @pkg.prerelease?} #{pip_name} 2>/dev/null`.match(/#{Regexp.escape(pip_name)} \(([^)]+)\)/)[1]
@@ -365,20 +378,30 @@ if filelist.length.positive?
       # Get the upstream version.
       upstream_version = get_version(@pkg.name, @pkg.homepage, PackageUtils.get_url(@pkg, build_from_source: true))
     end
-    # Some packages don't work with this yet, so gracefully exit now rather than throwing false positives.
-    versions_updated[@pkg.name.to_sym] = 'Not Found.' if upstream_version.nil? || upstream_version.to_s.chomp == 'null'
+    # If upstream_version is nil, convert it to an empty string so we don't have to worry about nil errors.
+    upstream_version = upstream_version.to_s
 
-    unless upstream_version.nil?
-      if versions_updated[@pkg.name.to_sym] != 'Not Found.' && VERY_VERBOSE
+    # If the upstream version is empty, this is either a fake package or we weren't able to find an upstream version.
+    if upstream_version.empty?
+      versions_updated[@pkg.name.to_sym] = if @pkg.is_fake?
+                                             'Fake.'
+                                           elsif NO_UPSTREAM_VERSION_PKGS.include?(@pkg.name) || @pkg.no_upstream_update? || @pkg.name.start_with?('musl_')
+                                             'Invalid.'
+                                           else
+                                             'Not Found.'
+                                           end
+    end
+
+    unless upstream_version.empty?
+      if VERY_VERBOSE
         crewlog "PackageUtils.get_clean_version(@pkg.version): #{PackageUtils.get_clean_version(@pkg.version)}"
         crewlog "upstream_version: #{upstream_version}"
         crewlog "Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version): #{Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version)}"
         crewlog "Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version) >= 0: #{Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version) >= 0}"
-        crewlog "versions_updated[@pkg.name.to_sym] != 'Not Found.': #{versions_updated[@pkg.name.to_sym] != 'Not Found.'}"
       end
-      versions_updated[@pkg.name.to_sym] = 'Up to date.' if (Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version) >= 0) && versions_updated[@pkg.name.to_sym] != 'Not Found.'
+      versions_updated[@pkg.name.to_sym] = 'Up to date.' if Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version) >= 0
       if Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version) == -1
-        if UPDATE_PACKAGE_FILES && !@pkg.name[/#{CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX}/] && updatable_pkg[@pkg.name.to_sym] == 'Yes'
+        if UPDATE_PACKAGE_FILES && !CREW_UPDATER_EXCLUDED_PKGS.key?(@pkg.name) && updatable_pkg[@pkg.name.to_sym] == 'Yes'
           file = File.read(filename)
           FileUtils.cp filename, "#{filename}.bak"
           if file.sub!(PackageUtils.get_clean_version(@pkg.version), upstream_version).nil?
@@ -463,43 +486,40 @@ if filelist.length.positive?
             end
           end
         end
-        versions_updated[@pkg.name.to_sym] = if UPDATE_PACKAGE_FILES && !@pkg.name[/#{CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX}/] && versions_updated[@pkg.name.to_sym]
+        versions_updated[@pkg.name.to_sym] = if UPDATE_PACKAGE_FILES && !CREW_UPDATER_EXCLUDED_PKGS.key?(@pkg.name) && versions_updated[@pkg.name.to_sym]
                                                'Updated.'
                                              else
-                                               @pkg.name[/#{CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX}/] ? 'Update manually.' : 'Outdated.'
+                                               CREW_UPDATER_EXCLUDED_PKGS.key?(@pkg.name) ? 'Update manually.' : 'Outdated.'
                                              end
       end
     end
     version_status_string = ''.ljust(status_field_length)
     updatable_string = nil
     case versions_updated[@pkg.name.to_sym]
-    when 'Fake'
-      version_status_string = 'Fake'.ljust(status_field_length).lightred
-      upstream_version = ''
+    when 'Fake.'
+      version_status_string = 'Fake.'.ljust(status_field_length).lightred
+    when 'Invalid.'
+      version_status_string = 'Invalid.'.ljust(status_field_length).lightred
     when 'Not Found.'
       version_status_string = 'Not Found.'.ljust(status_field_length).lightred
-      upstream_version = ''
     when 'Outdated.'
       version_status_string = 'Outdated.'.ljust(status_field_length).yellow
     when 'Update manually.'
       version_status_string = 'Update manually.'.ljust(status_field_length).purple
-      updatable_string = 'No'.purple
-      if @pkg.name[/#{CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX}/]
-        exclusion_mapping_idx = CREW_UPDATER_EXCLUDED_PKGS.keys.find_index { |i| i == @pkg.name }
-        updatable_pkg[@pkg.name.to_sym] = exclusion_mapping_idx.nil? ? nil : CREW_UPDATER_EXCLUDED_PKGS.values[exclusion_mapping_idx]
-      end
+      updatable_string = 'No'.ljust(version_field_length).purple
+      updatable_pkg[@pkg.name.to_sym] = CREW_UPDATER_EXCLUDED_PKGS[@pkg.name] if CREW_UPDATER_EXCLUDED_PKGS.key?(@pkg.name)
     when 'Updated.'
       version_status_string = 'Updated.'.ljust(status_field_length).blue
     when 'Up to date.'
       version_status_string = 'Up to date.'.ljust(status_field_length).lightgreen
     end
     updatable_string = (updatable_pkg[@pkg.name.to_sym] == 'Yes' ? 'Yes'.ljust(version_field_length).lightgreen : 'No'.ljust(version_field_length).lightred) if updatable_string.nil?
-    compile_string = @pkg.no_compile_needed? ? 'No'.lightred : 'Yes'.lightgreen
+    compile_string = @pkg.no_compile_needed? || @pkg.is_fake? ? 'No'.lightred : 'Yes'.lightgreen
     versions.push(package: @pkg.name, update_status: versions_updated[@pkg.name.to_sym], version: cleaned_pkg_version, upstream_version: upstream_version)
 
     addendum_string = "#{@pkg.name} cannot be automatically updated: ".red + "#{updatable_pkg[@pkg.name.to_sym]}\n".purple unless updatable_pkg[@pkg.name.to_sym] == 'Yes'
     version_line_string[@pkg.name.to_sym] = "#{@pkg.name.ljust(package_field_length)}#{version_status_string}#{cleaned_pkg_version.ljust(version_field_length)}#{upstream_version.ljust(version_field_length)}#{updatable_string}#{compile_string}\n"
-    print version_line_string[@pkg.name.to_sym] if !OUTPUT_JSON && ((versions_updated[@pkg.name.to_sym] == 'Outdated.' && updatable_pkg[@pkg.name.to_sym] == 'Yes') || VERBOSE)
+    print version_line_string[@pkg.name.to_sym] if !OUTPUT_JSON && ((versions_updated[@pkg.name.to_sym] == 'Outdated.' && updatable_pkg[@pkg.name.to_sym] == 'Yes') || OUTPUT_ALL)
     print addendum_string unless addendum_string.blank? || OUTPUT_JSON || !VERBOSE
 
     print "Failed to update version in #{@pkg.name} to #{upstream_version}".yellow if !OUTPUT_JSON && (versions_updated[@pkg.name.to_sym].to_s == 'false')

@@ -1,19 +1,20 @@
-# Total size: 9880354
+# Total size: 10130346
 /usr/local/bin/meson
-/usr/local/lib/python3.14/site-packages/meson-1.9.2.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/meson-1.9.2.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/meson-1.9.2.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/meson-1.9.2.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/meson-1.9.2.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/meson-1.9.2.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/meson-1.9.2.dist-info/licenses/COPYING
-/usr/local/lib/python3.14/site-packages/meson-1.9.2.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/meson-1.10.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/meson-1.10.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/meson-1.10.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/meson-1.10.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/meson-1.10.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/meson-1.10.0.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/meson-1.10.0.dist-info/licenses/COPYING
+/usr/local/lib/python3.14/site-packages/meson-1.10.0.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/mesonbuild/__init__.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/__pycache__/_pathlib.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/__pycache__/_typing.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/__pycache__/arglist.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/__pycache__/build.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/mesonbuild/__pycache__/cmdline.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/__pycache__/coredata.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/__pycache__/depfile.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/__pycache__/envconfig.cpython-314.pyc
@@ -40,6 +41,7 @@
 /usr/local/lib/python3.14/site-packages/mesonbuild/__pycache__/options.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/__pycache__/programs.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/__pycache__/rewriter.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/mesonbuild/__pycache__/tooldetect.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/_pathlib.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/_typing.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/arglist.py
@@ -67,6 +69,7 @@
 /usr/local/lib/python3.14/site-packages/mesonbuild/backend/__pycache__/vs2017backend.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/backend/__pycache__/vs2019backend.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/backend/__pycache__/vs2022backend.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/mesonbuild/backend/__pycache__/vs2026backend.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/backend/__pycache__/xcodebackend.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/backend/backends.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/backend/ninjabackend.py
@@ -78,6 +81,7 @@
 /usr/local/lib/python3.14/site-packages/mesonbuild/backend/vs2017backend.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/backend/vs2019backend.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/backend/vs2022backend.py
+/usr/local/lib/python3.14/site-packages/mesonbuild/backend/vs2026backend.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/backend/xcodebackend.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/build.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/cargo/__init__.py
@@ -117,6 +121,7 @@
 /usr/local/lib/python3.14/site-packages/mesonbuild/cmake/toolchain.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/cmake/traceparser.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/cmake/tracetargets.py
+/usr/local/lib/python3.14/site-packages/mesonbuild/cmdline.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/compilers/__init__.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/compilers/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/compilers/__pycache__/asm.cpython-314.pyc
@@ -162,11 +167,11 @@
 /usr/local/lib/python3.14/site-packages/mesonbuild/compilers/mixins/__pycache__/intel.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/compilers/mixins/__pycache__/islinker.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/compilers/mixins/__pycache__/metrowerks.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/mesonbuild/compilers/mixins/__pycache__/microchip.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/compilers/mixins/__pycache__/pgi.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/compilers/mixins/__pycache__/tasking.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/compilers/mixins/__pycache__/ti.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/compilers/mixins/__pycache__/visualstudio.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/mesonbuild/compilers/mixins/__pycache__/xc16.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/compilers/mixins/apple.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/compilers/mixins/arm.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/compilers/mixins/ccrx.py
@@ -179,11 +184,11 @@
 /usr/local/lib/python3.14/site-packages/mesonbuild/compilers/mixins/intel.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/compilers/mixins/islinker.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/compilers/mixins/metrowerks.py
+/usr/local/lib/python3.14/site-packages/mesonbuild/compilers/mixins/microchip.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/compilers/mixins/pgi.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/compilers/mixins/tasking.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/compilers/mixins/ti.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/compilers/mixins/visualstudio.py
-/usr/local/lib/python3.14/site-packages/mesonbuild/compilers/mixins/xc16.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/compilers/objc.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/compilers/objcpp.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/compilers/rust.py
@@ -313,6 +318,7 @@
 /usr/local/lib/python3.14/site-packages/mesonbuild/modules/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/modules/__pycache__/_qt.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/modules/__pycache__/cmake.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/mesonbuild/modules/__pycache__/codegen.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/modules/__pycache__/cuda.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/modules/__pycache__/dlang.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/modules/__pycache__/external_project.cpython-314.pyc
@@ -332,11 +338,13 @@
 /usr/local/lib/python3.14/site-packages/mesonbuild/modules/__pycache__/qt6.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/modules/__pycache__/rust.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/modules/__pycache__/simd.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/mesonbuild/modules/__pycache__/snippets.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/modules/__pycache__/sourceset.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/modules/__pycache__/wayland.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/modules/__pycache__/windows.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/modules/_qt.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/modules/cmake.py
+/usr/local/lib/python3.14/site-packages/mesonbuild/modules/codegen.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/modules/cuda.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/modules/dlang.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/modules/external_project.py
@@ -356,6 +364,7 @@
 /usr/local/lib/python3.14/site-packages/mesonbuild/modules/qt6.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/modules/rust.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/modules/simd.py
+/usr/local/lib/python3.14/site-packages/mesonbuild/modules/snippets.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/modules/sourceset.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/modules/wayland.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/modules/windows.py
@@ -390,6 +399,7 @@
 /usr/local/lib/python3.14/site-packages/mesonbuild/scripts/__pycache__/itstool.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/scripts/__pycache__/meson_exe.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/scripts/__pycache__/msgfmthelper.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/mesonbuild/scripts/__pycache__/pickle_env.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/scripts/__pycache__/pycompile.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/scripts/__pycache__/python_info.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/scripts/__pycache__/regen_checker.cpython-314.pyc
@@ -424,6 +434,7 @@
 /usr/local/lib/python3.14/site-packages/mesonbuild/scripts/itstool.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/scripts/meson_exe.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/scripts/msgfmthelper.py
+/usr/local/lib/python3.14/site-packages/mesonbuild/scripts/pickle_env.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/scripts/pycompile.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/scripts/python_info.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/scripts/regen_checker.py
@@ -467,20 +478,17 @@
 /usr/local/lib/python3.14/site-packages/mesonbuild/templates/samplefactory.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/templates/sampleimpl.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/templates/valatemplates.py
+/usr/local/lib/python3.14/site-packages/mesonbuild/tooldetect.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/utils/__init__.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/utils/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/utils/__pycache__/core.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/utils/__pycache__/platform.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/mesonbuild/utils/__pycache__/posix.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/utils/__pycache__/universal.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/utils/__pycache__/vsenv.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/mesonbuild/utils/__pycache__/win32.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/utils/core.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/utils/platform.py
-/usr/local/lib/python3.14/site-packages/mesonbuild/utils/posix.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/utils/universal.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/utils/vsenv.py
-/usr/local/lib/python3.14/site-packages/mesonbuild/utils/win32.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/wrap/__init__.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/wrap/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/wrap/__pycache__/wrap.cpython-314.pyc

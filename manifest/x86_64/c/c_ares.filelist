@@ -1,4 +1,4 @@
-# Total size: 548042
+# Total size: 548753
 /usr/local/bin/adig
 /usr/local/bin/ahost
 /usr/local/include/ares.h
@@ -13,7 +13,7 @@
 /usr/local/lib64/cmake/c-ares/c-ares-targets.cmake
 /usr/local/lib64/libcares.so
 /usr/local/lib64/libcares.so.2
-/usr/local/lib64/libcares.so.2.19.4
+/usr/local/lib64/libcares.so.2.19.5
 /usr/local/lib64/pkgconfig/libcares.pc
 /usr/local/share/man/man1/adig.1.zst
 /usr/local/share/man/man1/ahost.1.zst
