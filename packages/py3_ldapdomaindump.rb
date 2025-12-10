@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_ldapdomaindump < Pip
   description 'LDAPDomainDump uses LDAP to dump active directory information.'
   homepage 'https://github.com/dirkjanm/ldapdomaindump/'
-  version "0.9.4-#{CREW_PY_VER}"
+  version "0.10.0-#{CREW_PY_VER}"
   license 'LGPL-3'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ef9ce3dbe2ba6d02fa6028cd52dfd7443808f5e520e6d55c927899301cbc9912',
-     armv7l: 'ef9ce3dbe2ba6d02fa6028cd52dfd7443808f5e520e6d55c927899301cbc9912',
-       i686: '6596a8608080aee0579cd5a4cc33dd942a88a281435d6edf2fc05110ec5ca5bd',
-     x86_64: 'ffbc9d887cdda52dbe557f1c3ce4121c54f9bd0dc495a5e9128e72a533b1cf85'
+    aarch64: '30333d359732b713561e25f97c7c1145daada5601a3307d76df4b106419d42fc',
+     armv7l: '30333d359732b713561e25f97c7c1145daada5601a3307d76df4b106419d42fc',
+       i686: '7a1169e62aa0f77e1238866a743a20e118340d4e6dd6b3a5ffd59c6017893deb',
+     x86_64: '2e590e1041a1b43aa4bb6caa372851307b55408e9ab4ca7d2d26f16240e8a26e'
   })
 
   depends_on 'py3_future'

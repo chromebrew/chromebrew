@@ -11,10 +11,10 @@ class Libcap_ng < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '03157fb9edeed725ed6cd8162731ae8ead0a5ad7841d783e9eb59a2aa1e0cab7',
-     armv7l: '03157fb9edeed725ed6cd8162731ae8ead0a5ad7841d783e9eb59a2aa1e0cab7',
-       i686: '9a2aa76e781b91013633d025504083d410110338057bb1ee485228bf68cd6ed6',
-     x86_64: 'efe0c88308b8fe7b21ea87854cf562df5ef42b40b3a1da2d63d9b49214afbf8f'
+    aarch64: 'cba7da554db69c2c928ec1dc97329a7b6116955a8d23ff05540ba436bf738fb2',
+     armv7l: 'cba7da554db69c2c928ec1dc97329a7b6116955a8d23ff05540ba436bf738fb2',
+       i686: '0ee69cc9da3dae1c502c5d74557cec31ee321017b75e4c574d2d31758f592e23',
+     x86_64: '2059ede3b18680b4c04640908b50807cac169742bf3f27a67d5549f1e651150e'
   })
 
   depends_on 'glibc' # R

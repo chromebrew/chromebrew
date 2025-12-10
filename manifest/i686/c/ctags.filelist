@@ -1,4 +1,4 @@
-# Total size: 803803
+# Total size: 2799186
 /usr/local/bin/ctags
 /usr/local/bin/optscript
 /usr/local/bin/readtags
@@ -14,8 +14,10 @@
 /usr/local/share/man/man7/ctags-lang-automake.7.zst
 /usr/local/share/man/man7/ctags-lang-c++.7.zst
 /usr/local/share/man/man7/ctags-lang-c.7.zst
+/usr/local/share/man/man7/ctags-lang-clojure.7.zst
 /usr/local/share/man/man7/ctags-lang-cuda.7.zst
 /usr/local/share/man/man7/ctags-lang-elm.7.zst
+/usr/local/share/man/man7/ctags-lang-emacslisp.7.zst
 /usr/local/share/man/man7/ctags-lang-fortran.7.zst
 /usr/local/share/man/man7/ctags-lang-gdscript.7.zst
 /usr/local/share/man/man7/ctags-lang-i18nrubygem.7.zst
@@ -25,13 +27,21 @@
 /usr/local/share/man/man7/ctags-lang-julia.7.zst
 /usr/local/share/man/man7/ctags-lang-kconfig.7.zst
 /usr/local/share/man/man7/ctags-lang-ldscript.7.zst
+/usr/local/share/man/man7/ctags-lang-lex.7.zst
+/usr/local/share/man/man7/ctags-lang-lisp.7.zst
+/usr/local/share/man/man7/ctags-lang-make.7.zst
 /usr/local/share/man/man7/ctags-lang-markdown.7.zst
+/usr/local/share/man/man7/ctags-lang-meson.7.zst
+/usr/local/share/man/man7/ctags-lang-powershell.7.zst
 /usr/local/share/man/man7/ctags-lang-python.7.zst
 /usr/local/share/man/man7/ctags-lang-r.7.zst
 /usr/local/share/man/man7/ctags-lang-rmarkdown.7.zst
+/usr/local/share/man/man7/ctags-lang-scheme.7.zst
+/usr/local/share/man/man7/ctags-lang-scss.7.zst
 /usr/local/share/man/man7/ctags-lang-sql.7.zst
 /usr/local/share/man/man7/ctags-lang-systemtap.7.zst
 /usr/local/share/man/man7/ctags-lang-tcl.7.zst
 /usr/local/share/man/man7/ctags-lang-terraform.7.zst
 /usr/local/share/man/man7/ctags-lang-verilog.7.zst
+/usr/local/share/man/man7/ctags-lang-vim.7.zst
 /usr/local/share/man/man7/ctags-optlib.7.zst

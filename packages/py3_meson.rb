@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_meson < Pip
   description 'Meson is an open source build system meant to be both extremely fast and user friendly.'
   homepage 'https://mesonbuild.com/'
-  version "1.9.1-#{CREW_PY_VER}"
+  version "1.10.0-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1de6301daf7e5604f1462ac1a6b65636f219affe1f2131fec164fbf9f5ff34a1',
-     armv7l: '1de6301daf7e5604f1462ac1a6b65636f219affe1f2131fec164fbf9f5ff34a1',
-       i686: 'd43944bed00e6500834d400e6193527ebbe2a98034a478735b0f5a2af67ab68a',
-     x86_64: 'ea4d01614dc8e9a1ffa01b7e73b2bfa696c1ca2b42ceda186f67e6517a720fcf'
+    aarch64: '1ad09f13edbef8f973081a4ee77fcf317d30e9ea9b70686f262edeeea4af7248',
+     armv7l: '1ad09f13edbef8f973081a4ee77fcf317d30e9ea9b70686f262edeeea4af7248',
+       i686: '365b749d007bec944e6c77bef3a44bbacafc7cd28d3a67b1022129924a83c0dc',
+     x86_64: 'bb2c2663d01ed74c9152d18faf5d058179ddc33ed9fb086599cfff19b42b83cd'
   })
 
   depends_on 'ninja'

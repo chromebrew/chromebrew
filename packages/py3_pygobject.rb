@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 
 class Py3_pygobject < Meson
   description 'PyGObject is a Python package which provides bindings for GObject based libraries such as GTK+, GStreamer, WebKitGTK+, GLib, GIO and many more.'
-  homepage 'https://pygobject.gnome.org/'
+  homepage 'https://wiki.gnome.org/Projects/PyGObject'
   version "3.54.5-#{CREW_PY_VER}"
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'
@@ -12,9 +12,9 @@ class Py3_pygobject < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b5d8167181c13e1a95afb19ceeecbea8c1fd36bf7717801ff34788c7d3672fb3',
-     armv7l: 'b5d8167181c13e1a95afb19ceeecbea8c1fd36bf7717801ff34788c7d3672fb3',
-     x86_64: 'c1414c052a3c092c4aacf21326d5d1f5fd201114dc64f38f69e0e1b18a3b48b7'
+    aarch64: 'f9674e905dac7889192971e3ad7f61f7f2813bc57910c90e2b4301681a0f71d2',
+     armv7l: 'f9674e905dac7889192971e3ad7f61f7f2813bc57910c90e2b4301681a0f71d2',
+     x86_64: '715523da5476aef30b24062fc571dfdd1d10745c61e362787264ecc5aa7d5372'
   })
 
   depends_on 'cairo' # R

@@ -3,18 +3,18 @@ require 'buildsystems/cmake'
 class Clamav < CMake
   description 'ClamAV is an open source antivirus engine for detecting trojans, viruses, malware & other malicious threats.'
   homepage 'https://www.clamav.net/'
-  version '1.4.3'
+  version '1.5.1'
   license 'GPL-2'
   compatibility 'all'
   source_url "https://www.clamav.net/downloads/production/clamav-#{version}.tar.gz"
-  source_sha256 'd874cabf3d4765b35b518ef535658a1e6ec74802006a1d613f9f124aa1343210'
+  source_sha256 '64fe4a16a5622c1d71efe9ed7f2c2fbd37f8f237da9f11ff66b73038df71db91'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c79597e6bff782412d637d46de471e73cdc2853049e2d8ad558583d0c2365ede',
-     armv7l: 'c79597e6bff782412d637d46de471e73cdc2853049e2d8ad558583d0c2365ede',
-       i686: '7d24cd9a26466146d9df9dee6ba0815bed17a492b8059fa433fcd809199e0f63',
-     x86_64: '9d30b61e19ae2ac8d71d87ce20078cf7b04e206a3e7aff290c31a0a520ae5986'
+    aarch64: 'c0db3aab369545201accb021a6c1fd6a04d618b4f59ae792fa5d850b4f5f9d6c',
+     armv7l: 'c0db3aab369545201accb021a6c1fd6a04d618b4f59ae792fa5d850b4f5f9d6c',
+       i686: 'b9bb06591614920d105386eb4cfa192f3a36f05c2fe4e95c69920fc46a90c85e',
+     x86_64: '83d74f2a4797944f96952ccfd74ece4d7fce04c23f47f0a44dab285bb5bbc6e8'
   })
 
   depends_on 'bzip2' # R
@@ -22,11 +22,13 @@ class Clamav < CMake
   depends_on 'curl' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
+  depends_on 'json_c' # R
   depends_on 'libiconv' => :build
   depends_on 'libxml2' # R
   depends_on 'ncurses' # R
   depends_on 'openssl' # R
   depends_on 'pcre2' # R
+  depends_on 'psmisc' # R
   depends_on 'py3_pytest' => :build
   depends_on 'rust' => :build
   depends_on 'zlib' # R
@@ -54,10 +56,12 @@ class Clamav < CMake
       To start the clamav daemon, execute the following:
       sudo clamd &
 
+      To stop the clamav daemon, execute the following:
+      sudo killall clamd
+
       To modify the clamav config, edit the following:
       #{CREW_PREFIX}/etc/clamav/clamd.conf
       #{CREW_PREFIX}/etc/clamav/freshclam.conf
-
     EOM
   end
 

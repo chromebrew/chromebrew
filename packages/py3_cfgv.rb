@@ -10,10 +10,10 @@ class Py3_cfgv < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '295238680bc9803be9951a5ce40485a23d243b7b8ff20080a6fc43213cd42505',
-     armv7l: '295238680bc9803be9951a5ce40485a23d243b7b8ff20080a6fc43213cd42505',
-       i686: 'beb6cf7fea5ea6bc05d69cfc1d233b3b3d5f4cc16f74ca659651dca82516285e',
-     x86_64: '7280ba8cf9c616be23b856c8fd49ff9663c1d8fbed39dae1070cf833acddfb33'
+    aarch64: '41afeb2361e43209c8b6ad928aaa0f0c4e3e3a096a8e1f9b8103e3591129f8ae',
+     armv7l: '41afeb2361e43209c8b6ad928aaa0f0c4e3e3a096a8e1f9b8103e3591129f8ae',
+       i686: '2805838e9bb7879f9630cd0cdea26b5d71458ecdbc285688b3b9f149e57af7f6',
+     x86_64: '21dd30e371dbfda49ae840a55be4f1fafbce4e03233c54318fde1f512c87c94e'
   })
 
   depends_on 'python3' => :build

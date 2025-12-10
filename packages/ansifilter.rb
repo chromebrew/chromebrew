@@ -3,7 +3,7 @@ require 'package'
 class Ansifilter < Package
   description 'Ansifilter parses common ANSI codes to remove them or to convert them to another colored text file format (HTML, TeX, LaTeX, RTF, Pango or BBCode).'
   homepage 'http://andre-simon.de/doku/ansifilter/en/ansifilter.php'
-  version '2.21'
+  version '2.22'
   license 'GPL-3+'
   compatibility 'all'
   source_url 'https://gitlab.com/saalen/ansifilter.git'
@@ -11,10 +11,10 @@ class Ansifilter < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ada9c9e7b8af6cb38e636d9716d8bda3809f3decd7f323bcf19da95b12d1ce49',
-     armv7l: 'ada9c9e7b8af6cb38e636d9716d8bda3809f3decd7f323bcf19da95b12d1ce49',
-       i686: '60d9d935d68a763b8c3bad7dca796ed45dc490aa50028a07c4866f3f9c25a8e7',
-     x86_64: '9a4c35ea87585bf78a1e3f5a909e66baa53ed33955922072c6d6ef929080c3d4'
+    aarch64: '7742ae36f472fd8082e663c59d3fadb3b47e96c431aca4f6e1b1d483501d7662',
+     armv7l: '7742ae36f472fd8082e663c59d3fadb3b47e96c431aca4f6e1b1d483501d7662',
+       i686: '1058b2e8cd7650305f44863e2e6abb2f657235cc15f95fe01fd1860b7534348c',
+     x86_64: 'd2d7ef991a3ef271a18dfd9be65babe988cb64d4c63521795d6e80d77a4a4ae1'
   })
 
   depends_on 'gcc_lib' # R

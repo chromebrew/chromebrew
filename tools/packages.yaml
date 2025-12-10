@@ -185,6 +185,11 @@ url: https://www.apache.org/dist/ant/binaries/
 activity: high
 ---
 kind: url
+name: antigravity
+url: https://antigravity.google/download
+activity: high
+---
+kind: url
 name: antiword
 url: http://www.winfield.demon.nl/linux
 activity: none
@@ -998,6 +1003,11 @@ kind: url
 name: clamtk
 url: https://gitlab.com/dave_m/clamtk/-/tags
 activity: none
+---
+kind: url
+name: claude
+url: https://claude.com/product/claude-code
+activity: medium
 ---
 kind: url
 name: clean
@@ -4445,11 +4455,6 @@ url: https://github.com/pantoniou/libfyaml/releases
 activity: medium
 ---
 kind: url
-name: libgc
-url: https://httpredir.debian.org/debian/pool/main/libg/libgc/
-activity: low
----
-kind: url
 name: libgconf
 url: https://ftp.gnome.org/pub/GNOME/sources/GConf/
 activity: none
@@ -7775,6 +7780,11 @@ url: https://github.com/pypa/hatch/releases
 activity: medium
 ---
 kind: url
+name: py3_id
+url: https://github.com/di/id/releases
+activity: medium
+---
+kind: url
 name: py3_identify
 url: https://github.com/pre-commit/identify/tags
 activity: medium
@@ -7892,6 +7902,16 @@ activity: medium
 kind: url
 name: py3_referencing
 url: https://github.com/python-jsonschema/referencing/releases
+activity: medium
+---
+kind: url
+name: py3_requests
+url: https://github.com/psf/requests/releases
+activity: medium
+---
+kind: url
+name: py3_requests_toolbelt
+url: https://github.com/requests/toolbelt/tags
 activity: medium
 ---
 kind: url

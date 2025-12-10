@@ -3,18 +3,17 @@ require 'buildsystems/meson'
 class Xkbcomp < Meson
   description 'Compile XKB keyboard'
   homepage 'https://xorg.freedesktop.org/wiki/'
-  version '1.4.7-d03a4ab'
+  version '1.5.0'
   license 'ISC, MIT and custom'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/app/xkbcomp.git'
-  git_hashtag 'd03a4ab1c0b24f6581411622ccf729ceb329aeb8'
-  # git_hashtag "xkbcomp-#{version}"
+  git_hashtag "xkbcomp-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '303da70f1671c19e2570c1dcb5117d0bce49591b6133833201509a62b75b4f99',
-     armv7l: '303da70f1671c19e2570c1dcb5117d0bce49591b6133833201509a62b75b4f99',
-     x86_64: '3afa38d8c71bf0f1fbde7fc0e3a93be5e8c66b86d40c6528172163a1e579ea87'
+    aarch64: 'af9060fe631be0a03696a5184424075e79322784837b6854db583c297236fdfc',
+     armv7l: 'af9060fe631be0a03696a5184424075e79322784837b6854db583c297236fdfc',
+     x86_64: '7c6a616ab9279147174a9b3f5e4b2060e4cce9ac1164a987420df743580ad60f'
   })
 
   depends_on 'glibc' # R

@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.17 (for Chromebrew)
+# version.rb version 3.20 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose -vv]
 
@@ -12,6 +12,7 @@ if ARGV.include?('-h') || ARGV.include?('--help')
     Passing --update-package-files or -u will try to update the version
     field in the package file.
     Passing --json or -j will only give json output.
+    Passing --all or -a will output the versions of all packages, not just the outdated ones.
     Passing --verbose or -v will display verbose output.
     Passing -vv will display very verbose output.
   EOM
@@ -39,8 +40,9 @@ require_gem('ptools')
 # Add >LOCAL< lib to LOAD_PATH
 $LOAD_PATH.unshift File.join(crew_local_repo_root, 'lib')
 
-OUTPUT_JSON = ARGV.include?('-j') || ARGV.include?('--json')
 UPDATE_PACKAGE_FILES = ARGV.include?('-u') || ARGV.include?('--update-package-files')
+OUTPUT_JSON = ARGV.include?('-j') || ARGV.include?('--json')
+OUTPUT_ALL = ARGV.include?('-a') || ARGV.include?('--all')
 VERBOSE = ARGV.include?('-v') || ARGV.include?('--verbose') || ARGV.include?('-vv')
 VERY_VERBOSE = ARGV.include?('-vv')
 bc_updated = {}
@@ -50,142 +52,132 @@ version_line_string = {}
 versions_updated = {}
 versions = []
 
-def get_version(name, homepage, source, version)
+# Some packages do not have upstream versions, often because they are internal chromebrew packages or because upstream doesn't have a versioning scheme.
+NO_UPSTREAM_VERSION_PKGS = %w[clear_cache gdk_base hello_world_chromebrew ld_default xdg_base recomod vdev mywanip clmystery crew_preload cros_resize kwiml libbacktrace libpstat fskit speakify]
+
+# Some packges aren't eligible to be automatically updated despite having upstream versions.
+CREW_UPDATER_EXCLUDED_PKGS = Set[
+  { pkg_name: 'glibc', comments: 'Requires manual update.' },
+  { pkg_name: 'gpm', comments: 'Upstream is defunct.' },
+  { pkg_name: 'linuxheaders', comments: 'Requires manual update.' },
+  { pkg_name: 'pkg_config', comments: 'Upstream is abandoned.' },
+  { pkg_name: 'ruby', comments: 'i686 needs building with GCC 14.' },
+  { pkg_name: 'util_linux', comments: 'Needs to be built with CREW_KERNEL_VERSION=5.10. See https://github.com/util-linux/util-linux/issues/3763' }
+].to_h { |h| [h[:pkg_name], h[:comments]] }
+
+def get_version(name, homepage, source)
   anitya_id = get_anitya_id(name, homepage, @pkg.superclass.to_s)
-  # If anitya_id cannot be determined, a Range can be returned, and
-  # .nonzero? does not work with Ranges.
-  anitya_id = nil if anitya_id.is_a? Range
+  # We return nil if anitya_id cannot be determined.
   puts "anitya_id: #{anitya_id}" if VERBOSE
-  if anitya_id&.nonzero?
+  if !anitya_id.nil?
     # Get the latest stable version of the package from anitya.
     json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/versions/?project_id=#{anitya_id}")))
     puts json if VERY_VERBOSE
     return json['latest_version'] if json['stable_versions'][0].nil?
     return json['stable_versions'][0]
-  elsif source.nil? || %w[Pip].include?(@pkg.superclass.to_s)
-    return
-  else
-    # If anitya has failed, check if the source is a GitHub repository
-    # as a fallback.
-    # Note that we only check releases on GitHub since semantic
-    # version ordering isn't easy to get from tags.
-    # You can get the last numeric tag using:
-    # git -c 'versionsort.suffix=-' \
-    # ls-remote --exit-code --refs --sort='version:refname' --tags https://github.com/#{repo} '*.*.*' \
-    # | tail --lines=1 \
-    # | cut --delimiter='/' --fields=3
-    # However, since that does miss text tags, better to just use
-    # anitya first.
-    if source.is_a?(Hash)
-      source_arch = (@pkg.source_url.keys.map &:to_s).first
-      source = @pkg.source_url[source_arch.to_sym]
-    end
+  elsif !source.nil?
+    # If anitya has failed, we have a variety of fallbacks as a last resort.
     source.sub!('www.', '')
     url = URI.parse(source)
     puts "source_url host is #{url.host}" if VERY_VERBOSE
     case url.host
     when 'github.com'
-      url_parts = url.path.split('/')
-      unless url_parts.count < 3
-        git_hash = nil
-        repo = "#{url_parts[1]}/#{url_parts[2].gsub(/.git\z/, '')}"
-        puts "GitHub repo is #{repo}" if VERBOSE
-        if File.which('gh')
-          # This allows us to only get non-pre-release versions from
-          # GitHub if such releases exist.
-          puts "gh release ls --exclude-pre-releases --exclude-drafts -L 1 -R #{repo} --json tagName -q '.[] | .tagName'" if VERY_VERBOSE
-          github_ver = `gh release ls --exclude-pre-releases --exclude-drafts -L 1 -R #{repo} --json tagName -q '.[] | .tagName'`.chomp if system 'gh auth status >/dev/null', exception: false
-        else
-          puts "curl https://api.github.com/repos/#{repo}/releases/latest -Ls | jq .tag_name -r" if VERY_VERBOSE
-          rel_status = `curl -fsI https://api.github.com/repos/#{repo}/releases/latest`.lines.first.split[1]
-          tag_status = `curl -fsI https://api.github.com/repos/#{repo}/tags`.lines.first.split[1]
-          if rel_status == '404' && tag_status == '404'
-            puts 'GitHub repo not found or no release/tag available.' if VERBOSE
-            return
-          end
-          # Get the latest release.
-          github_ver = `curl https://api.github.com/repos/#{repo}/releases/latest -Ls | jq .tag_name -r`.chomp
-          if github_ver.blank? || github_ver == 'null'
-            # Get the latest tag.
-            puts "curl https://api.github.com/repos/#{repo}/tags -Ls | jq '.[0].name' -r" if VERY_VERBOSE
-            github_ver = `curl https://api.github.com/repos/#{repo}/tags -Ls | jq '.[0].name' -r`.chomp
-          end
-          if github_ver.blank? || github_ver == 'null'
-            # Get the first 6 characters of the latest git hash.
-            puts "curl https://api.github.com/repos/#{repo}/git/refs -Ls | jq .[0].object.sha -r" if VERY_VERBOSE
-            github_ver = `curl https://api.github.com/repos/#{repo}/git/refs -Ls | jq .[0].object.sha -r`.chomp[0..5]
-            git_hash = true
-          end
-        end
-        unless github_ver.blank? || github_ver == 'null'
-          puts "github_ver = #{github_ver}" if VERY_VERBOSE
-          # Strip off any leading non-numeric characters.
-          upstream_version = git_hash.nil? ? github_ver.sub(/.*?(?=[0-9].)/im, '').chomp : github_ver
-          return upstream_version
-        end
-      end
+      github_fallback(url)
     when 'gitlab.com'
-      url_parts = url.path.split('/')
-      unless url_parts.count < 3
-        repo = "#{url_parts[1]}/#{url_parts[2].gsub(/.git\z/, '')}"
-        puts "GitLab repo is #{repo}" if VERBOSE
-        status = `curl -fsI https://#{url.host}/#{repo}/-/releases/permalink/latest`.lines.first.split[1]
-        if status == '404'
-          puts 'GitLab repo not found or no release available.' if VERBOSE
-          return
-        end
-        puts "curl https://#{url.host}/#{repo}/-/releases/permalink/latest -Ls | grep -Po 'data-tag-name=\"(.*)\" ' | cut -d\\\" -f2" if VERY_VERBOSE
-        gitlab_ver = `curl https://#{url.host}/#{repo}/-/releases/permalink/latest -Ls | grep -Po 'data-tag-name="(.*)" ' | cut -d\\\" -f2`.chomp
-        unless gitlab_ver.blank? || gitlab_ver == 'null'
-          puts "gitlab_ver = #{gitlab_ver}" if VERY_VERBOSE
-          # Strip off any leading non-numeric characters.
-          upstream_version = gitlab_ver.sub(/.*?(?=[0-9].)/im, '').chomp
-          return upstream_version
-        end
-      end
+      gitlab_fallback(url)
     when 'downloads.sourceforge.net'
-      url_parts = url.path.split('/')
-      unless url_parts.count < 3
-        repo = url_parts[2]
-        filename = url_parts.last
-        puts "Sourceforge repo is #{repo}" if VERBOSE
-        status = `curl -fsI https://sourceforge.net/projects/#{repo}/best_release.json`.lines.first.split[1]
-        if status == '404'
-          puts 'Sourceforge repo not found or no release available.' if VERBOSE
-          return
-        end
-        puts "curl https://sourceforge.net/projects/#{repo}/best_release.json -Ls | jq .release.filename -r" if VERY_VERBOSE
-        sourceforge_file = `curl https://sourceforge.net/projects/#{repo}/best_release.json -Ls | jq .release.filename -r`.chomp
-        best_release = sourceforge_file.split('/').last
-        if filename == best_release
-          return version
-        else
-          puts "best_release = #{best_release}" if VERY_VERBOSE
-          # Strip off any leading non-numeric characters.
-          upstream_version = best_release.sub(/.*?(?=[0-9].)/im, '').chomp
-          return upstream_version
-        end
-      end
+      sourceforge_fallback(url)
     when 'pagure.io'
-      url_parts = url.path.split('/')
-      unless url_parts.count < 2
-        repo = url_parts[1]
-        puts "Pagure repo is #{repo}" if VERBOSE
-        status = `curl -fsI https://pagure.io/api/0/#{repo}/git/tags`.lines.first.split[1]
-        if status == '404'
-          puts 'Pagure repo not found or no release tag available.' if VERBOSE
-          return
-        end
-        puts "curl https://pagure.io/api/0/#{repo}/git/tags -Ls | jq .tags[0] -r" if VERY_VERBOSE
-        pagure_ver = `curl https://pagure.io/api/0/#{repo}/git/tags -Ls | jq .tags[0] -r`.chomp
-        unless pagure_ver.blank? || pagure_ver == 'null'
-          puts "pagure_ver = #{pagure_ver}" if VERY_VERBOSE
-          # Strip off any leading non-numeric characters.
-          upstream_version = pagure_ver.sub(/.*?(?=[0-9].)/im, '').chomp
-          return upstream_version
-        end
-      end
+      pagure_fallback(url)
     end
+  end
+end
+
+def github_fallback(url)
+  url_parts = url.path.split('/')
+  return if url_parts.count < 3
+
+  repo = "#{url_parts[1]}/#{url_parts[2].delete_suffix('.git')}"
+  puts "GitHub repo is #{repo}" if VERBOSE
+
+  releases_json = JSON.parse(Net::HTTP.get(URI("https://api.github.com/repos/#{repo}/releases/latest")))
+  tags_json = JSON.parse(Net::HTTP.get(URI("https://api.github.com/repos/#{repo}/tags")))
+
+  # We check for the prescence of a message here because this will also gracefully handle rate limiting.
+  if releases_json.include?('message') && (tags_json.empty? || tags_json.include?('message'))
+    puts 'GitHub repo not found or no release/tag available.' if VERBOSE
+    return
+  end
+
+  github_ver = releases_json['tag_name'].nil? ? tags_json[0]['name'] : releases_json['tag_name']
+  puts "github_ver = #{github_ver}" if VERY_VERBOSE
+  # Strip off any leading non-numeric characters.
+  return github_ver.sub(/.*?(?=[0-9].)/im, '')
+end
+
+def gitlab_fallback(url)
+  url_parts = url.path.split('/')
+  return if url_parts.count < 3
+
+  repo = "#{url_parts[1]}/#{url_parts[2].delete_suffix('.git')}"
+  redirect = Net::HTTP.get_response(URI("https://#{url.host}/#{repo}/-/releases/permalink/latest"))['location']
+
+  if redirect == "https://#{url.host}/users/sign_in"
+    puts 'GitLab repo not found.' if VERBOSE
+  elsif redirect.nil?
+    puts 'No releases available on GitLab repo.' if VERBOSE
+  else
+    gitlab_ver = redirect.split('/').last
+    # puts "gitlab_ver = #{gitlab_ver}" if VERY_VERBOSE
+    puts "gitlab_ver = #{gitlab_ver}"
+    # Strip off any leading non-numeric characters.
+    return gitlab_ver.sub(/.*?(?=[0-9].)/im, '')
+  end
+end
+
+def sourceforge_fallback(url)
+  url_parts = url.path.split('/')
+  return if url_parts.count < 3
+
+  repo = url_parts[2]
+  puts "Sourceforge repo is #{repo}" if VERBOSE
+
+  response = Net::HTTP.get_response(URI("https://sourceforge.net/projects/#{repo}/best_release.json"))
+  if response.code == '404'
+    puts 'Sourceforge repo not found.' if VERBOSE
+    return
+  end
+
+  json = JSON.parse(response.body)
+  if json['release'].nil?
+    puts 'No releases available on Sourceforge repo.' if VERBOSE
+    return
+  end
+
+  # Remove any preceding path components and remove any extensions, with an additional pass to remove .tar in the case of .tar.gz
+  best_release = File.basename(json['release']['filename'], '.*').delete_suffix('.tar')
+  puts "best_release = #{best_release}" if VERY_VERBOSE
+  # Strip off any leading non-numeric characters.
+  return best_release.sub(/.*?(?=[0-9].)/im, '')
+end
+
+def pagure_fallback(url)
+  url_parts = url.path.split('/')
+  return if url_parts.count < 2
+
+  repo = url_parts[1]
+  puts "Pagure repo is #{repo}" if VERBOSE
+
+  json = JSON.parse(Net::HTTP.get(URI("https://pagure.io/api/0/#{repo}/git/tags")))
+  if !json['error'].nil?
+    puts 'Pagure repo not found.' if VERBOSE
+  elsif json['total_tags'].zero?
+    puts 'No tags available on Pagure repo.' if VERBOSE
+  else
+    pagure_ver = json['tags'][0]
+    puts "pagure_ver = #{pagure_ver}" if VERY_VERBOSE
+    # Strip off any leading non-numeric characters.
+    return pagure_ver.sub(/.*?(?=[0-9].)/im, '')
   end
 end
 
@@ -196,14 +188,15 @@ def get_anitya_id(name, homepage, buildsystem)
   # Change the name into something Anitya will prefer.
   original_name = name.dup
   # Remove any language-specific prefixes and build splitting suffixes.
-  name = PackageUtils.get_clean_name(name)
+  # Do not use 'name' since that changes @pkg.name.to_sym
+  anitya_name = PackageUtils.get_clean_name(name)
   # If this package has a hardcoded mapping, use it.
-  name = CREW_ANITYA_PACKAGE_NAME_MAPPINGS[name] if CREW_ANITYA_PACKAGE_NAME_MAPPINGS.include?(name)
-  puts "anitya_name: #{name} #{"(instead of #{original_name})" if name != original_name}" if VERBOSE
+  anitya_name = CREW_ANITYA_PACKAGE_NAME_MAPPINGS[name] if CREW_ANITYA_PACKAGE_NAME_MAPPINGS.include?(name)
+  puts "anitya_name: #{anitya_name} #{"(instead of #{original_name})" if anitya_name != original_name}" if VERBOSE
 
   # Find out how many packages Anitya has with the provided name.
-  puts "url is https://release-monitoring.org/api/v2/projects/?name=#{CGI.escape(name)}" if VERY_VERBOSE
-  json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/projects/?name=#{CGI.escape(name)}")))
+  puts "url is https://release-monitoring.org/api/v2/projects/?name=#{CGI.escape(anitya_name)}" if VERY_VERBOSE
+  json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/projects/?name=#{CGI.escape(anitya_name)}")))
   puts json if VERY_VERBOSE
   number_of_packages = json['total_items']
 
@@ -213,16 +206,16 @@ def get_anitya_id(name, homepage, buildsystem)
   elsif number_of_packages.zero? # Anitya either doesn't have this package, or has it under a different name.
     # The most likely scenario is that the correct name is the current one with underscores converted to dashes.
     # This is also currently the only scenario we handle here.
-    return unless name.include?('_')
+    return unless anitya_name.include?('_')
 
-    name_candidate = name.tr('_', '-')
+    anitya_name_candidate = anitya_name.tr('_', '-')
     if VERY_VERBOSE
-      puts "No Anitya package found with #{name}. Attempting a new search with #{name_candidate}."
-      puts "url is https://release-monitoring.org/api/v2/projects/?name=#{name_candidate}"
+      puts "No Anitya package found with #{anitya_name}. Attempting a new search with #{anitya_name_candidate}."
+      puts "url is https://release-monitoring.org/api/v2/projects/?name=#{anitya_name_candidate}"
     end
 
     # We can just call ourselves, with no fear of infinite recursion because we replaced all the underscores.
-    return get_anitya_id(name_candidate, homepage, buildsystem)
+    return get_anitya_id(anitya_name_candidate, homepage, buildsystem)
   else # Anitya has more than one package with this exact name.
     candidates = json['items']
 
@@ -307,17 +300,13 @@ if filelist.length.positive?
   filelist.each do |filename|
     @pkg = Package.load_package(filename)
     cleaned_pkg_version = PackageUtils.get_clean_version(@pkg.version)
-    if @pkg.is_fake?
-      # Just skip is_fake packages.
-      versions_updated[@pkg.name.to_sym] = 'Fake'
-      updatable_pkg[@pkg.name.to_sym] = 'No'
-      next
-    end
     # Mark package file as updatable (i.e., the version field can be
     # updated in the package file) if the string "version" is on the
     # git_hashtag line or the string "#{version}" is on the source_url
     # line.
-    updatable_pkg[@pkg.name.to_sym] = if @pkg.ignore_updater?
+    updatable_pkg[@pkg.name.to_sym] = if @pkg.is_fake?
+                                        'No'
+                                      elsif @pkg.ignore_updater?
                                         if `grep '^  version' #{filename} | awk '{print $2}' | grep '\.version'`.empty?
                                           'ignore_updater set'
                                         else
@@ -350,10 +339,12 @@ if filelist.length.positive?
     # rubocop:enable Lint/DuplicateBranch
     @pkg_names[@pkg.name.to_sym] = @pkg.name
     version_line_string[@pkg.name.to_sym] = ''
-    # We annotate some packages to let us know that they won't work here.
-    versions_updated[@pkg.name.to_sym] = 'Up to date.' if @pkg.no_upstream_update?
 
-    if %w[RUBY].include?(@pkg.superclass.to_s)
+    # We aren't interested in trying to find the upstream versions of fake packages.
+    # We also aren't interested in finding upstream verisons for packages that are guaranteed not to have them.
+    if @pkg.is_fake? || NO_UPSTREAM_VERSION_PKGS.include?(@pkg.name) || @pkg.no_upstream_update? || @pkg.name.start_with?('musl_')
+      upstream_version = ''
+    elsif %w[RUBY].include?(@pkg.superclass.to_s)
       gem_name = @pkg.name.sub('ruby_', '')
       # We replace all dashes with underscores in our initial package names, but some gems actually use underscores, so we need special cases.
       # This list was created by looking at what packages were listed as not having updates in rubygems, and then looking up the upstream name for them.
@@ -376,7 +367,7 @@ if filelist.length.positive?
       end
       upstream_version = JSON.parse(Net::HTTP.get(URI("https://rubygems.org/api/v1/versions/#{gem_name}/latest.json")))['version']
     elsif %w[Pip].include?(@pkg.superclass.to_s)
-      versions_updated[@pkg.name.to_sym] = 'Not Found.' if @pkg.name[/#{CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX}/]
+      versions_updated[@pkg.name.to_sym] = 'Not Found.' if CREW_UPDATER_EXCLUDED_PKGS.key?(@pkg.name)
       pip_name = @pkg.name.sub(/\Apy\d_/, '').gsub('_', '-')
       begin
         upstream_version = `pip index versions #{'--pre' if @pkg.prerelease?} #{pip_name} 2>/dev/null`.match(/#{Regexp.escape(pip_name)} \(([^)]+)\)/)[1]
@@ -385,22 +376,32 @@ if filelist.length.positive?
       end
     else
       # Get the upstream version.
-      upstream_version = get_version(@pkg.name, @pkg.homepage, @pkg.source_url, @pkg.version)
+      upstream_version = get_version(@pkg.name, @pkg.homepage, PackageUtils.get_url(@pkg, build_from_source: true))
     end
-    # Some packages don't work with this yet, so gracefully exit now rather than throwing false positives.
-    versions_updated[@pkg.name.to_sym] = 'Not Found.' if upstream_version.nil? || upstream_version.to_s.chomp == 'null'
+    # If upstream_version is nil, convert it to an empty string so we don't have to worry about nil errors.
+    upstream_version = upstream_version.to_s
 
-    unless upstream_version.nil?
-      if versions_updated[@pkg.name.to_sym] != 'Not Found.'
+    # If the upstream version is empty, this is either a fake package or we weren't able to find an upstream version.
+    if upstream_version.empty?
+      versions_updated[@pkg.name.to_sym] = if @pkg.is_fake?
+                                             'Fake.'
+                                           elsif NO_UPSTREAM_VERSION_PKGS.include?(@pkg.name) || @pkg.no_upstream_update? || @pkg.name.start_with?('musl_')
+                                             'Invalid.'
+                                           else
+                                             'Not Found.'
+                                           end
+    end
+
+    unless upstream_version.empty?
+      if VERY_VERBOSE
         crewlog "PackageUtils.get_clean_version(@pkg.version): #{PackageUtils.get_clean_version(@pkg.version)}"
         crewlog "upstream_version: #{upstream_version}"
         crewlog "Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version): #{Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version)}"
         crewlog "Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version) >= 0: #{Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version) >= 0}"
-        crewlog "versions_updated[@pkg.name.to_sym] != 'Not Found.': #{versions_updated[@pkg.name.to_sym] != 'Not Found.'}"
       end
-      versions_updated[@pkg.name.to_sym] = 'Up to date.' if (Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version) >= 0) && versions_updated[@pkg.name.to_sym] != 'Not Found.'
+      versions_updated[@pkg.name.to_sym] = 'Up to date.' if Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version) >= 0
       if Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version) == -1
-        if UPDATE_PACKAGE_FILES && !@pkg.name[/#{CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX}/] && updatable_pkg[@pkg.name.to_sym] == 'Yes'
+        if UPDATE_PACKAGE_FILES && !CREW_UPDATER_EXCLUDED_PKGS.key?(@pkg.name) && updatable_pkg[@pkg.name.to_sym] == 'Yes'
           file = File.read(filename)
           FileUtils.cp filename, "#{filename}.bak"
           if file.sub!(PackageUtils.get_clean_version(@pkg.version), upstream_version).nil?
@@ -485,43 +486,40 @@ if filelist.length.positive?
             end
           end
         end
-        versions_updated[@pkg.name.to_sym] = if UPDATE_PACKAGE_FILES && !@pkg.name[/#{CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX}/] && versions_updated[@pkg.name.to_sym]
+        versions_updated[@pkg.name.to_sym] = if UPDATE_PACKAGE_FILES && !CREW_UPDATER_EXCLUDED_PKGS.key?(@pkg.name) && versions_updated[@pkg.name.to_sym]
                                                'Updated.'
                                              else
-                                               @pkg.name[/#{CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX}/] ? 'Update manually.' : 'Outdated.'
+                                               CREW_UPDATER_EXCLUDED_PKGS.key?(@pkg.name) ? 'Update manually.' : 'Outdated.'
                                              end
       end
     end
     version_status_string = ''.ljust(status_field_length)
     updatable_string = nil
     case versions_updated[@pkg.name.to_sym]
-    when 'Fake'
-      version_status_string = 'Fake'.ljust(status_field_length).lightred
-      upstream_version = ''
+    when 'Fake.'
+      version_status_string = 'Fake.'.ljust(status_field_length).lightred
+    when 'Invalid.'
+      version_status_string = 'Invalid.'.ljust(status_field_length).lightred
     when 'Not Found.'
       version_status_string = 'Not Found.'.ljust(status_field_length).lightred
-      upstream_version = ''
     when 'Outdated.'
       version_status_string = 'Outdated.'.ljust(status_field_length).yellow
     when 'Update manually.'
       version_status_string = 'Update manually.'.ljust(status_field_length).purple
-      updatable_string = 'No'.purple
-      if @pkg.name[/#{CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX}/]
-        exclusion_mapping_idx = CREW_UPDATER_EXCLUDED_PKGS.keys.find_index { |i| i == @pkg.name }
-        updatable_pkg[@pkg.name.to_sym] = exclusion_mapping_idx.nil? ? nil : CREW_UPDATER_EXCLUDED_PKGS.values[exclusion_mapping_idx]
-      end
+      updatable_string = 'No'.ljust(version_field_length).purple
+      updatable_pkg[@pkg.name.to_sym] = CREW_UPDATER_EXCLUDED_PKGS[@pkg.name] if CREW_UPDATER_EXCLUDED_PKGS.key?(@pkg.name)
     when 'Updated.'
       version_status_string = 'Updated.'.ljust(status_field_length).blue
     when 'Up to date.'
       version_status_string = 'Up to date.'.ljust(status_field_length).lightgreen
     end
     updatable_string = (updatable_pkg[@pkg.name.to_sym] == 'Yes' ? 'Yes'.ljust(version_field_length).lightgreen : 'No'.ljust(version_field_length).lightred) if updatable_string.nil?
-    compile_string = @pkg.no_compile_needed? ? 'No'.lightred : 'Yes'.lightgreen
+    compile_string = @pkg.no_compile_needed? || @pkg.is_fake? ? 'No'.lightred : 'Yes'.lightgreen
     versions.push(package: @pkg.name, update_status: versions_updated[@pkg.name.to_sym], version: cleaned_pkg_version, upstream_version: upstream_version)
 
     addendum_string = "#{@pkg.name} cannot be automatically updated: ".red + "#{updatable_pkg[@pkg.name.to_sym]}\n".purple unless updatable_pkg[@pkg.name.to_sym] == 'Yes'
     version_line_string[@pkg.name.to_sym] = "#{@pkg.name.ljust(package_field_length)}#{version_status_string}#{cleaned_pkg_version.ljust(version_field_length)}#{upstream_version.ljust(version_field_length)}#{updatable_string}#{compile_string}\n"
-    print version_line_string[@pkg.name.to_sym] if !OUTPUT_JSON && ((versions_updated[@pkg.name.to_sym] == 'Outdated.' && updatable_pkg[@pkg.name.to_sym] == 'Yes') || VERBOSE)
+    print version_line_string[@pkg.name.to_sym] if !OUTPUT_JSON && ((versions_updated[@pkg.name.to_sym] == 'Outdated.' && updatable_pkg[@pkg.name.to_sym] == 'Yes') || OUTPUT_ALL)
     print addendum_string unless addendum_string.blank? || OUTPUT_JSON || !VERBOSE
 
     print "Failed to update version in #{@pkg.name} to #{upstream_version}".yellow if !OUTPUT_JSON && (versions_updated[@pkg.name.to_sym].to_s == 'false')

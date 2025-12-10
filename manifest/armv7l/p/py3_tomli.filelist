@@ -1,16 +1,16 @@
-# Total size: 76555
-/usr/local/lib/python3.13/site-packages/tomli-2.3.0.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/tomli-2.3.0.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/tomli-2.3.0.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/tomli-2.3.0.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/tomli-2.3.0.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/tomli-2.3.0.dist-info/licenses/LICENSE
-/usr/local/lib/python3.13/site-packages/tomli/__init__.py
-/usr/local/lib/python3.13/site-packages/tomli/__pycache__/__init__.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/tomli/__pycache__/_parser.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/tomli/__pycache__/_re.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/tomli/__pycache__/_types.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/tomli/_parser.py
-/usr/local/lib/python3.13/site-packages/tomli/_re.py
-/usr/local/lib/python3.13/site-packages/tomli/_types.py
-/usr/local/lib/python3.13/site-packages/tomli/py.typed
+# Total size: 83446
+/usr/local/lib/python3.14/site-packages/tomli-2.3.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/tomli-2.3.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/tomli-2.3.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/tomli-2.3.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/tomli-2.3.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/tomli-2.3.0.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/tomli/__init__.py
+/usr/local/lib/python3.14/site-packages/tomli/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/tomli/__pycache__/_parser.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/tomli/__pycache__/_re.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/tomli/__pycache__/_types.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/tomli/_parser.py
+/usr/local/lib/python3.14/site-packages/tomli/_re.py
+/usr/local/lib/python3.14/site-packages/tomli/_types.py
+/usr/local/lib/python3.14/site-packages/tomli/py.typed
