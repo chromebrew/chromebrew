@@ -5,12 +5,6 @@ require_relative '../lib/package_utils'
 
 class Command
   def self.files(pkg)
-    # Check if the package is even installed first, as this is the most likely reason we cannot find a filelist.
-    unless PackageUtils.installed?(pkg.name)
-      puts "Package #{pkg.name} is not installed.".lightred
-      return
-    end
-
     # Fake packages do not have any files.
     if pkg.is_fake?
       puts "Package #{pkg.name} is fake and has no files.".lightred
@@ -18,19 +12,33 @@ class Command
     end
 
     # We can't do anything if we don't have the filelist.
-    unless File.file?(filelist_path = File.join(CREW_META_PATH, "#{pkg.name}.filelist"))
-      puts "Package #{pkg.name} does not have a filelist :(".lightred
+    filelist_path = File.join("#{CREW_LIB_PATH}/manifest/#{ARCH}/#{pkg.name[0]}/", "#{pkg.name}.filelist")
+    puts "Manifest file: #{filelist_path}".yellow if CREW_VERBOSE
+    unless File.file?(filelist_path)
+      if PackageUtils.compatible?(pkg)
+        puts "Package #{pkg.name} does not have a filelist but should since #{ARCH} is compatible. :(".lightred
+      else
+        puts "Package #{pkg.name} does not have a filelist since #{ARCH} is not compatible. :(".lightred
+      end
       return
     end
 
-    # Print the name and description of the package.
-    puts pkg.name.lightgreen + ": #{pkg.description}".lightblue
+    # Installed packages have green names, incompatible packages have red, and compatible but not installed have blue.
+    if PackageUtils.installed?(pkg.name)
+      print pkg.name.lightgreen
+    elsif !PackageUtils.compatible?(pkg)
+      print pkg.name.lightred
+    else
+      print pkg.name.lightblue
+    end
+    puts ": #{pkg.description}".lightblue
 
-    size, filelist = ConvenienceFunctions.read_filelist(filelist_path, always_calcuate_from_disk: true)
+    # Extract the filelist and the total size of those files.
+    filesize, filelist = ConvenienceFunctions.read_filelist(filelist_path)
 
     # Print the filelist, the total number of files, and the total size of those files.
     puts filelist
-    puts "\nTotal found: #{filelist.count}".lightgreen
-    puts "Disk usage: #{MiscFunctions.human_size(size)}".lightgreen
+    puts "\nTotal found: #{filelist.count - 1}".lightgreen
+    puts "Disk usage: #{MiscFunctions.human_size(filesize)}".lightgreen
   end
 end

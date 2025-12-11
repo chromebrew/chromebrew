@@ -50,9 +50,8 @@ class Command
       EOT
     when 'files'
       puts <<~EOT
-        Display installed files of package(s).
-        Usage: crew files <package1> [<package2> ...]
-        The package(s) must be currently installed.
+        Display files of package(s).
+        Usage: crew files [-v|--verbose] <package1> [<package2> ...]
       EOT
     when 'install'
       puts <<~EOT
