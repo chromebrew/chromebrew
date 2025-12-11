@@ -10,11 +10,14 @@ class Ruby_date < RUBY
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: '28bfef4e763889bbcac15f926a0169692ec2d971ee80b6327b6d434b8ea1b6c0',
-     armv7l: '28bfef4e763889bbcac15f926a0169692ec2d971ee80b6327b6d434b8ea1b6c0',
-       i686: '73d25f28cba1059253346e9524feed3b25c7fbca0e620791603b5ee1db240b43',
-     x86_64: 'a6afba634c7672c9fc0791c10ad84772dc93f851a878c4bd85e62743f378a33f'
+    aarch64: '752608d959678d7e1bd29cedcd27334ca6117549dfb6b619cd308f8da2e51e11',
+     armv7l: '752608d959678d7e1bd29cedcd27334ca6117549dfb6b619cd308f8da2e51e11',
+       i686: '7b8b6292ff2e820c183c4f63444c78b0956de2e3c91e0fdeb6775e967d5e593b',
+     x86_64: '965ca7ef726f62c1b8e09406e09d8544c9f474199dded177709ac8c578509bdb'
   })
+
+  depends_on 'glibc' # R
+  depends_on 'ruby' # R
 
   conflicts_ok
   gem_compile_needed
