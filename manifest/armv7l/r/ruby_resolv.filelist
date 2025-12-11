@@ -1,13 +1,8 @@
-# Total size: 103409
-/usr/local/lib/ruby/gems/3.4.0/gems/resolv-0.6.3-armv8l-linux-eabihf/BSDL
-/usr/local/lib/ruby/gems/3.4.0/gems/resolv-0.6.3-armv8l-linux-eabihf/COPYING
-/usr/local/lib/ruby/gems/3.4.0/gems/resolv-0.6.3-armv8l-linux-eabihf/Gemfile
-/usr/local/lib/ruby/gems/3.4.0/gems/resolv-0.6.3-armv8l-linux-eabihf/README.md
-/usr/local/lib/ruby/gems/3.4.0/gems/resolv-0.6.3-armv8l-linux-eabihf/Rakefile
-/usr/local/lib/ruby/gems/3.4.0/gems/resolv-0.6.3-armv8l-linux-eabihf/bin/console
-/usr/local/lib/ruby/gems/3.4.0/gems/resolv-0.6.3-armv8l-linux-eabihf/bin/setup
-/usr/local/lib/ruby/gems/3.4.0/gems/resolv-0.6.3-armv8l-linux-eabihf/ext/win32/resolv/extconf.rb
-/usr/local/lib/ruby/gems/3.4.0/gems/resolv-0.6.3-armv8l-linux-eabihf/ext/win32/resolv/lib/resolv.rb
-/usr/local/lib/ruby/gems/3.4.0/gems/resolv-0.6.3-armv8l-linux-eabihf/ext/win32/resolv/resolv.c
-/usr/local/lib/ruby/gems/3.4.0/gems/resolv-0.6.3-armv8l-linux-eabihf/lib/resolv.rb
-/usr/local/lib/ruby/gems/3.4.0/gems/resolv-0.6.3-armv8l-linux-eabihf/resolv.gemspec
+# Total size: 105943
+/usr/local/lib/ruby/gems/3.4.0/gems/resolv-0.7.0-armv8l-linux-eabihf/BSDL
+/usr/local/lib/ruby/gems/3.4.0/gems/resolv-0.7.0-armv8l-linux-eabihf/COPYING
+/usr/local/lib/ruby/gems/3.4.0/gems/resolv-0.7.0-armv8l-linux-eabihf/README.md
+/usr/local/lib/ruby/gems/3.4.0/gems/resolv-0.7.0-armv8l-linux-eabihf/ext/win32/resolv/extconf.rb
+/usr/local/lib/ruby/gems/3.4.0/gems/resolv-0.7.0-armv8l-linux-eabihf/ext/win32/resolv/lib/resolv.rb
+/usr/local/lib/ruby/gems/3.4.0/gems/resolv-0.7.0-armv8l-linux-eabihf/ext/win32/resolv/resolv.c
+/usr/local/lib/ruby/gems/3.4.0/gems/resolv-0.7.0-armv8l-linux-eabihf/lib/resolv.rb
