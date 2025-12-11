@@ -64,10 +64,8 @@ class ConvenienceFunctions
 
   def self.read_filelist(path, always_calcuate_from_disk: false)
     filelist = File.readlines(path, chomp: true)
-
     if filelist.first&.start_with?('# Total size') && !always_calcuate_from_disk
-      total_size, *contents = filelist
-      return [total_size[/Total size: (\d+)/, 1].to_i, contents]
+      return [filelist.first[/Total size: (\d+)/, 1].to_i, filelist]
     else
       return [get_package_disk_size(filelist), filelist]
     end
