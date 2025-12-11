@@ -10,12 +10,15 @@ class Ruby_psych < RUBY
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: 'bd3d40e6b922c5d12fe69c915d7200cd125650bf904524b6824e673fa23aaecc',
-     armv7l: 'bd3d40e6b922c5d12fe69c915d7200cd125650bf904524b6824e673fa23aaecc',
-       i686: 'fd9332dec71d6a9c17170a29d1b06036c00b2288b4fc64297c68fadd00b9fefd',
-     x86_64: 'f968a6f7c4faac0159e7fdcc049364e03f78a841a6a53f19d56e8d8e745ba86c'
+    aarch64: '610da8ed270b973da14070bbbf3dba4bcbe194dbd02517eb85adef723ff990e3',
+     armv7l: '610da8ed270b973da14070bbbf3dba4bcbe194dbd02517eb85adef723ff990e3',
+       i686: 'd8d68f33d37c37d3e2f1e4d196334a76b787d6a51c5a70a26e3189179d9b4f17',
+     x86_64: '85719aa00c0a316adaf380653930507fae791f262e3607725b7633669503f29a'
   })
 
+  depends_on 'glibc' # R
+  depends_on 'libyaml' # R
+  depends_on 'ruby' # R
   depends_on 'ruby_stringio' # R
 
   conflicts_ok
