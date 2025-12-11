@@ -10,10 +10,10 @@ class Ruby_resolv < RUBY
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: 'b6135588ee9ec00d8cf38b73dabbd45561759b1c8baff2d8b095b4881c62a365',
-     armv7l: 'b6135588ee9ec00d8cf38b73dabbd45561759b1c8baff2d8b095b4881c62a365',
-       i686: '0a326befb65bbb796ceee0c37e30abfd68e5d299dc979edd3911b9bac810503e',
-     x86_64: '7be8246f9a33ac20cc263f528e1e154d78afc6d175e29059bda5d1326290898a'
+    aarch64: 'f2bdc1d2d8d68a70cab48321cd7b65f8b1c103b5e3689ed08aabf7ecfcf64855',
+     armv7l: 'f2bdc1d2d8d68a70cab48321cd7b65f8b1c103b5e3689ed08aabf7ecfcf64855',
+       i686: '94f5a1f352662b3a60738c60b9c570cdbe5b59cb6907801d06228b19ab513307',
+     x86_64: 'ee8a9be47f12205d67a40f4d8f0b057a52ea62c0d26c39b8b4fc8c6b35fd055b'
   })
 
   conflicts_ok
