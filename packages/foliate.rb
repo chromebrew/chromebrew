@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Foliate < Meson
   description 'A simple and modern GTK eBook reader'
   homepage 'https://johnfactotum.github.io/foliate/'
-  version '3.1.1'
+  version '3.3.0'
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/johnfactotum/foliate.git'
@@ -11,9 +11,9 @@ class Foliate < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f0bc98dec8ec482f60e05a8758bb98c0a581ed9d1bb093755d7e2075cffec1c6',
-     armv7l: 'f0bc98dec8ec482f60e05a8758bb98c0a581ed9d1bb093755d7e2075cffec1c6',
-     x86_64: '24c4a76b361c91e81e8a584d8bb34bc4a417bb07408d1f7ff46af0fd22aad664'
+    aarch64: '8d344af5950666990013d5bd305085c1006f5afa35105c040cff190e1889a39c',
+     armv7l: '8d344af5950666990013d5bd305085c1006f5afa35105c040cff190e1889a39c',
+     x86_64: '9da89c44726d8521e3d99dd6f4387273dde9f0b7d31ac643cd875568d13153b5'
   })
 
   depends_on 'desktop_file_utils'
