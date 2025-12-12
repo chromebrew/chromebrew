@@ -1,4 +1,4 @@
-# Total size: 1257125536
+# Total size: 1267060112
 /usr/local/bin/cursor
 /usr/local/share/appdata/cursor.appdata.xml
 /usr/local/share/applications/cursor-url-handler.desktop
@@ -8505,6 +8505,7 @@
 /usr/local/share/cursor/resources/app/out/vscode-dts/vscode.d.ts
 /usr/local/share/cursor/resources/app/package.json
 /usr/local/share/cursor/resources/app/product.json
+/usr/local/share/cursor/resources/app/resources/helpers/cursor-sandbox
 /usr/local/share/cursor/resources/app/resources/helpers/cursor-terminal-wrapper
 /usr/local/share/cursor/resources/app/resources/helpers/node
 /usr/local/share/cursor/resources/app/resources/linux/code.png
@@ -17039,6 +17040,7 @@
 /usr/local/share/cursor/usr/share/cursor/resources/app/out/vscode-dts/vscode.d.ts
 /usr/local/share/cursor/usr/share/cursor/resources/app/package.json
 /usr/local/share/cursor/usr/share/cursor/resources/app/product.json
+/usr/local/share/cursor/usr/share/cursor/resources/app/resources/helpers/cursor-sandbox
 /usr/local/share/cursor/usr/share/cursor/resources/app/resources/helpers/cursor-terminal-wrapper
 /usr/local/share/cursor/usr/share/cursor/resources/app/resources/helpers/node
 /usr/local/share/cursor/usr/share/cursor/resources/app/resources/linux/code.png
