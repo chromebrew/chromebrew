@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Flatseal < Meson
   description 'Flatseal is a graphical utility to review and modify permissions from your Flatpak applications.'
   homepage 'https://github.com/tchx84/Flatseal/'
-  version '2.2.0'
+  version '2.4.0'
   license 'GPL-3+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/tchx84/Flatseal.git'
