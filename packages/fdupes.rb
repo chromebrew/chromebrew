@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Fdupes < Autotools
   description 'Program for identifying or deleting duplicate files residing within specified directories.'
   homepage 'https://github.com/adrianlopezroche/fdupes'
-  version '2.3.2'
+  version '2.4.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/adrianlopezroche/fdupes.git'
