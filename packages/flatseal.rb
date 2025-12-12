@@ -11,9 +11,9 @@ class Flatseal < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5d7085de32cad237c2242e87b72cd3078a1970db3cd7104a34e79a6dc48cdf8d',
-     armv7l: '5d7085de32cad237c2242e87b72cd3078a1970db3cd7104a34e79a6dc48cdf8d',
-     x86_64: '1a8e06bedd15890a450a38bfe7b1947ba8246c2bee3bd611e55856c45e5eafcf'
+    aarch64: 'd7f3ba5d78ae99465b7cee071dcb47f7b14337800367cf70caaa27114a3edbcc',
+     armv7l: 'd7f3ba5d78ae99465b7cee071dcb47f7b14337800367cf70caaa27114a3edbcc',
+     x86_64: '49b06ba914fbd127eba0c386ee75ed23a48a5f36bc8d679af711ad1938c8f810'
   })
 
   depends_on 'desktop_file_utils'
