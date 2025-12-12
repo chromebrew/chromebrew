@@ -1,8 +1,8 @@
-# Total size: 518952
+# Total size: 566354
 /usr/local/bin/com.github.tchx84.Flatseal
 /usr/local/bin/flatseal
-/usr/local/share/appdata/com.github.tchx84.Flatseal.appdata.xml
 /usr/local/share/applications/com.github.tchx84.Flatseal.desktop
+/usr/local/share/dbus-1/services/com.github.tchx84.Flatseal.service
 /usr/local/share/flatseal/com.github.tchx84.Flatseal.data.gresource
 /usr/local/share/flatseal/com.github.tchx84.Flatseal.src.gresource
 /usr/local/share/glib-2.0/schemas/com.github.tchx84.Flatseal.gschema.xml
@@ -10,6 +10,7 @@
 /usr/local/share/icons/hicolor/scalable/apps/com.github.tchx84.Flatseal.Flatpak.svg
 /usr/local/share/icons/hicolor/scalable/apps/com.github.tchx84.Flatseal.svg
 /usr/local/share/icons/hicolor/symbolic/apps/com.github.tchx84.Flatseal-symbolic.svg
+/usr/local/share/locale/ar/LC_MESSAGES/flatseal.mo
 /usr/local/share/locale/bg_BG/LC_MESSAGES/flatseal.mo
 /usr/local/share/locale/ca/LC_MESSAGES/flatseal.mo
 /usr/local/share/locale/cs/LC_MESSAGES/flatseal.mo
@@ -17,8 +18,10 @@
 /usr/local/share/locale/de/LC_MESSAGES/flatseal.mo
 /usr/local/share/locale/el/LC_MESSAGES/flatseal.mo
 /usr/local/share/locale/es/LC_MESSAGES/flatseal.mo
+/usr/local/share/locale/fa/LC_MESSAGES/flatseal.mo
 /usr/local/share/locale/fr/LC_MESSAGES/flatseal.mo
 /usr/local/share/locale/he/LC_MESSAGES/flatseal.mo
+/usr/local/share/locale/hi/LC_MESSAGES/flatseal.mo
 /usr/local/share/locale/hu/LC_MESSAGES/flatseal.mo
 /usr/local/share/locale/id/LC_MESSAGES/flatseal.mo
 /usr/local/share/locale/it/LC_MESSAGES/flatseal.mo
@@ -32,3 +35,4 @@
 /usr/local/share/locale/tr/LC_MESSAGES/flatseal.mo
 /usr/local/share/locale/uk/LC_MESSAGES/flatseal.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/flatseal.mo
+/usr/local/share/metainfo/com.github.tchx84.Flatseal.metainfo.xml
