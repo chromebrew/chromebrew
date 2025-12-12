@@ -56,4 +56,5 @@ freeglut
 freerdp
 freetds
 fribidi
+nano
 ocaml
