@@ -58,6 +58,7 @@ freerdp
 freetds
 fribidi
 gambit
+garcon
 libxfce4ui
 nano
 ocaml
