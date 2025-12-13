@@ -1,25 +1,33 @@
-require 'buildsystems/autotools'
+require 'buildsystems/meson'
 
-class Libxfce4ui < Autotools
+class Libxfce4ui < Meson
   description 'Replacement of the old libxfcegui4 library'
-  homepage 'https://xfce.org/'
-  version '4.19.5'
+  homepage 'https://docs.xfce.org/xfce/libxfce4ui/start'
+  version '4.21.3'
   license 'LGPL-2+ and GPL-2+'
   compatibility 'aarch64 armv7l x86_64'
-  source_url "https://archive.xfce.org/src/xfce/libxfce4ui/4.19/libxfce4ui-#{version}.tar.bz2"
-  source_sha256 'ce7a8d68727c43c85c61d22040751a7730591db69eae967f2c091127326803b7'
+  source_url 'https://gitlab.xfce.org/xfce/libxfce4ui.git'
+  git_hashtag "libxfce4ui-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f61f13d9006eef6b9f392de4e48c0d3639931c13baedfc76fc79524dd3c7fd57',
-     armv7l: 'f61f13d9006eef6b9f392de4e48c0d3639931c13baedfc76fc79524dd3c7fd57',
-     x86_64: '8d556af33dc6bb8c0ba938d2f62d31697c5727f10de56a68ea04c767aecc51b5'
+    aarch64: 'dc4c606d76072eb0848fbe7bd1c547fdb4743b0b9cc7303f38c988bde18f34fc',
+     armv7l: 'dc4c606d76072eb0848fbe7bd1c547fdb4743b0b9cc7303f38c988bde18f34fc',
+     x86_64: '10c84fc099465927f8da2f77b7e55d7fc6e66c9fa51afa1f60b83c2fca6d39ac'
   })
 
+  depends_on 'at_spi2_core' # R
+  depends_on 'cairo' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gtk3'
-  depends_on 'gtk2'
-  depends_on 'pygtk' # For gtk+
+  depends_on 'harfbuzz' # R
+  depends_on 'libice' # R
+  depends_on 'libsm' # R
+  depends_on 'libx11' # R
+  depends_on 'libxfce4util' # R
   depends_on 'xfconf'
 
-  run_tests
+  meson_options '-Dintrospection=false'
 end
