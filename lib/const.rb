@@ -135,7 +135,7 @@ CREW_DEST_HOME  = File.join(CREW_DEST_DIR, HOME)
 CREW_NO_GIT     = ENV.fetch('CREW_NO_GIT', false)
 CREW_UNATTENDED = ENV.fetch('CREW_UNATTENDED', false)
 
-CREW_STANDALONE_UPGRADE_ORDER = %w[libxcrypt crew_preload glibc openssl ruby python3 perl icu4c sommelier]
+CREW_STANDALONE_UPGRADE_ORDER = %w[libxcrypt glibc openssl ruby python3 perl icu4c sommelier]
 
 CREW_DEBUG        = ARGV.include?('-D') || ARGV.include?('--debug')
 CREW_FORCE        = ARGV.include?('-f') || ARGV.include?('--force')
@@ -177,7 +177,7 @@ USER = Etc.getlogin
 
 CHROMEOS_RELEASE =
   if File.exist?('/etc/lsb-release')
-    File.read('/etc/lsb-release')[/CHROMEOS_RELEASE_CHROME_MILESTONE=(.+)/, 1]
+    CHROMEOS_RELEASE_CHROME_MILESTONE = File.read('/etc/lsb-release')[/CHROMEOS_RELEASE_CHROME_MILESTONE=(.+)/, 1].chomp
   else
     # newer version of Chrome OS exports info to env by default
     ENV.fetch('CHROMEOS_RELEASE_CHROME_MILESTONE', nil)
