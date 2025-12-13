@@ -1,11 +1,10 @@
-# Total size: 587630091
+# Total size: 598398547
 /usr/local/bin/dart
 /usr/local/lib64/dart/LICENSE
 /usr/local/lib64/dart/README
 /usr/local/lib64/dart/bin/dart
+/usr/local/lib64/dart/bin/dart.sym
 /usr/local/lib64/dart/bin/dartaotruntime
-/usr/local/lib64/dart/bin/dartvm
-/usr/local/lib64/dart/bin/dartvm.sym
 /usr/local/lib64/dart/bin/resources/dartdoc/resources/blank.txt
 /usr/local/lib64/dart/bin/resources/dartdoc/resources/docs.dart.js
 /usr/local/lib64/dart/bin/resources/dartdoc/resources/docs.dart.js.map
@@ -33,6 +32,7 @@
 /usr/local/lib64/dart/bin/resources/dartdoc/templates/_documentation.html
 /usr/local/lib64/dart/bin/resources/dartdoc/templates/_extension.html
 /usr/local/lib64/dart/bin/resources/dartdoc/templates/_extension_type.html
+/usr/local/lib64/dart/bin/resources/dartdoc/templates/_feature_set.html
 /usr/local/lib64/dart/bin/resources/dartdoc/templates/_footer.html
 /usr/local/lib64/dart/bin/resources/dartdoc/templates/_head.html
 /usr/local/lib64/dart/bin/resources/dartdoc/templates/_instance_fields.html
@@ -54,7 +54,6 @@
 /usr/local/lib64/dart/bin/resources/dartdoc/templates/_static_methods.html
 /usr/local/lib64/dart/bin/resources/dartdoc/templates/_static_properties.html
 /usr/local/lib64/dart/bin/resources/dartdoc/templates/_super_chain.html
-/usr/local/lib64/dart/bin/resources/dartdoc/templates/_tags.html
 /usr/local/lib64/dart/bin/resources/dartdoc/templates/_type.html
 /usr/local/lib64/dart/bin/resources/dartdoc/templates/_type_multiline.html
 /usr/local/lib64/dart/bin/resources/dartdoc/templates/_typedef.html
@@ -79,6 +78,7 @@
 /usr/local/lib64/dart/bin/resources/devtools/.last_build_id
 /usr/local/lib64/dart/bin/resources/devtools/assets/AssetManifest.bin
 /usr/local/lib64/dart/bin/resources/devtools/assets/AssetManifest.bin.json
+/usr/local/lib64/dart/bin/resources/devtools/assets/AssetManifest.json
 /usr/local/lib64/dart/bin/resources/devtools/assets/FontManifest.json
 /usr/local/lib64/dart/bin/resources/devtools/assets/NOTICES
 /usr/local/lib64/dart/bin/resources/devtools/assets/assets/dart_syntax.json
@@ -511,8 +511,9 @@
 /usr/local/lib64/dart/bin/snapshots/dart2js_aot.dart.snapshot
 /usr/local/lib64/dart/bin/snapshots/dart2wasm_product.snapshot
 /usr/local/lib64/dart/bin/snapshots/dart_mcp_server_aot.dart.snapshot
+/usr/local/lib64/dart/bin/snapshots/dart_tooling_daemon.dart.snapshot
 /usr/local/lib64/dart/bin/snapshots/dart_tooling_daemon_aot.dart.snapshot
-/usr/local/lib64/dart/bin/snapshots/dartdev_aot.dart.snapshot
+/usr/local/lib64/dart/bin/snapshots/dartdev.dart.snapshot
 /usr/local/lib64/dart/bin/snapshots/dartdevc.dart.snapshot
 /usr/local/lib64/dart/bin/snapshots/dartdevc_aot.dart.snapshot
 /usr/local/lib64/dart/bin/snapshots/dds_aot.dart.snapshot
@@ -790,6 +791,7 @@
 /usr/local/lib64/dart/lib/_internal/wasm/lib/simd_patch.dart
 /usr/local/lib64/dart/lib/_internal/wasm/lib/stack_trace_patch.dart
 /usr/local/lib64/dart/lib/_internal/wasm/lib/stopwatch_patch.dart
+/usr/local/lib64/dart/lib/_internal/wasm/lib/string.dart
 /usr/local/lib64/dart/lib/_internal/wasm/lib/string_buffer_patch.dart
 /usr/local/lib64/dart/lib/_internal/wasm/lib/string_helper.dart
 /usr/local/lib64/dart/lib/_internal/wasm/lib/string_patch.dart
