@@ -13,10 +13,10 @@ class Libgpg_error < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c73d847991b6756b110430d451c375d53c86cd371f95b9ec7b088fd089db46f4',
-     armv7l: 'c73d847991b6756b110430d451c375d53c86cd371f95b9ec7b088fd089db46f4',
-       i686: 'a9f5cc9555f2211aa1f2f5a8b8bad6027decca051e2d281b2516e6caad679a73',
-     x86_64: 'b9e6c3f3e1860a74f1a4b182c5ebd7696cee8d4d9a41742434ffe9f39cecd238'
+    aarch64: '805b6f751948d0f8471fc8dcab33797e8ff0ad036413a33f1e5d2813b2e9d7fe',
+     armv7l: '805b6f751948d0f8471fc8dcab33797e8ff0ad036413a33f1e5d2813b2e9d7fe',
+       i686: 'cebd41e587baa010d4c4ed4d04d7eceb7fa223eabfd6b265a9185ce711376676',
+     x86_64: 'a5dfd48d49047a1461156ebf8f589c661af00f1925a0515577ca16eb6a183049'
   })
 
   depends_on 'gcc_lib' # R
