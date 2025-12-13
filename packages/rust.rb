@@ -11,14 +11,15 @@ class Rust < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e7c672ad0fec0d8b3c1528c797ed002623baebb23a5ed99d7108c4fd50c9b598',
-     armv7l: 'e7c672ad0fec0d8b3c1528c797ed002623baebb23a5ed99d7108c4fd50c9b598',
-       i686: '9a58f62c6d5fbc19cf857a84b182238d983184fd3818ead9df83bc5dcf67bacb',
-     x86_64: '54f2eda69d63f8c173ec9bf46396b407cc53263e43def81fe7b6b54b8c662f4e'
+    aarch64: '329b5fe2f7df3b7098155c7c4f9bc09139056bde055ab0c07d8a0889989062e2',
+     armv7l: '329b5fe2f7df3b7098155c7c4f9bc09139056bde055ab0c07d8a0889989062e2',
+       i686: '1c87c983953f9fbadabe16a0040cc69b54866fb08892af8495fac287a01c2cc5',
+     x86_64: '15187824fac6b0b687ac77f929360f123c350484e23f9abbfd8b534be03a6b92'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
+  depends_on 'zlib' # R
 
   no_strip
   print_source_bashrc
