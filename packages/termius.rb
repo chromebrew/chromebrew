@@ -3,7 +3,7 @@ require 'package'
 class Termius < Package
   description 'Modern SSH Client'
   homepage 'https://termius.com/'
-  version '9.34.4'
+  version '9.34.6'
   license 'Apache-2.0, LGPL-2.1, MIT'
   compatibility 'x86_64'
   min_glibc '2.33'
