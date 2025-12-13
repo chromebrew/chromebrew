@@ -1,39 +1,25 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Gambit < Package
+class Gambit < Autotools
   description 'Efficient implementation of the Scheme programming language'
-  homepage 'http://gambitscheme.org/wiki/index.php/Main_Page' # 404 Not found
-  version '4.9.3'
+  homepage 'https://gambitscheme.org/'
+  version '4.9.7'
   license 'CC0-1.0'
   compatibility 'all'
-  source_url 'https://github.com/gambit/gambit/archive/v4.9.3.tar.gz'
-  source_sha256 'a5e4e5c66a99b6039fa7ee3741ac80f3f6c4cff47dc9e0ff1692ae73e13751ca'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/gambit/gambit.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0e2b98c6d0a60f3715c6e554a4b95018cd6d665c4709892da9eafc74fd84ebd5',
-     armv7l: '0e2b98c6d0a60f3715c6e554a4b95018cd6d665c4709892da9eafc74fd84ebd5',
-       i686: '08bc6d954969ec3f4d3a985d9460647f4667b33609f98fe3ff6b705e09ab8260',
-     x86_64: 'baa93bfbb278ac2560fbf56cb3e6339f2bf633105986b3d23f2e343eedf632e0'
+    aarch64: 'f920b14b1b2a41302bb567b814462487550e295db2f6d5233e2c2cce622902d4',
+     armv7l: 'f920b14b1b2a41302bb567b814462487550e295db2f6d5233e2c2cce622902d4',
+       i686: '277d10da5358567ed6e304401c2dabd191dcb0e0f9efbd6aacb026615573c350',
+     x86_64: '98c87a039acf96a369541b969b1ef945f99873fc2e5554eacba4c1a54d4ad204'
   })
 
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}/gambit",
-           '--enable-openssl',
-           '--enable-single-host',
-           '--enable-multiple-versions',
-           '--enable-compiler-name=gsc-gambit',
-           '--enable-interpreter-name=gsi-gambit'
-    system 'make'
-  end
+  depends_on 'glibc' # R
+  depends_on 'openssl' # R
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
-
-  def self.check
-    system 'make', 'check'
-  end
+  autotools_configure_options '--enable-openssl'
+  run_tests
 end
