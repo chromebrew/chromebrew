@@ -1,4 +1,4 @@
-# Total size: 460927149
+# Total size: 465348041
 /usr/local/bin/signal-desktop
 /usr/local/share/Signal/LICENSE.electron.txt
 /usr/local/share/Signal/LICENSES.chromium.html
@@ -113,6 +113,7 @@
 /usr/local/share/Signal/resources/app.asar.unpacked/node_modules/fs-xattr/build/Release/xattr.node
 /usr/local/share/Signal/resources/apparmor-profile
 /usr/local/share/Signal/resources/org.signalapp.enable-backups.policy
+/usr/local/share/Signal/resources/org.signalapp.plaintext-export.policy
 /usr/local/share/Signal/resources/org.signalapp.view-aep.policy
 /usr/local/share/Signal/resources/package-type
 /usr/local/share/Signal/signal-desktop
