@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Foot < Meson
   description 'Wayland terminal emulator - fast, lightweight and minimalistic'
   homepage 'https://codeberg.org/dnkl/foot'
-  version '1.18.0'
+  version '1.25.0'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://codeberg.org/dnkl/foot.git'
@@ -11,9 +11,9 @@ class Foot < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4d867d515e613a68f40d853474f56a62d68ce57b45c0e5b3541fe7fada81d4a7',
-     armv7l: '4d867d515e613a68f40d853474f56a62d68ce57b45c0e5b3541fe7fada81d4a7',
-     x86_64: 'b15f9dc468b2119adbfc2d41b34cae84a6cd8db639bface1fda065edbc5f51c4'
+    aarch64: 'dd57847d67c11d9a9b50bd124a030526ea9f444d58c654e44deaaf7fa9d3a144',
+     armv7l: 'dd57847d67c11d9a9b50bd124a030526ea9f444d58c654e44deaaf7fa9d3a144',
+     x86_64: '3b460b562e8c2fd91932f2af4bad13c3029b29faac5af02e0347ca27c330af2b'
   })
 
   def self.patch
@@ -37,6 +37,6 @@ class Foot < Meson
   depends_on 'wayland'
   depends_on 'wayland_protocols' => :build
 
-  # https://codeberg.org/dnkl/foot/issues/1789
-  meson_options '-Dwerror=false'
+  # This avoids conflicts with ncurses.
+  meson_options '-Dterminfo=disabled'
 end
