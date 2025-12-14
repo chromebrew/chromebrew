@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Audacious < Autotools
   description 'Audacious is an open source audio player.'
   homepage 'https://audacious-media-player.org/'
-  version '4.5'
+  version '4.5.1'
   license 'BSD-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://distfiles.audacious-media-player.org/audacious-#{version}.tar.bz2"
@@ -23,6 +23,8 @@ class Audacious < Autotools
   depends_on 'gdk_pixbuf' # R
   depends_on 'glib' # R
   depends_on 'glibc' # R
+  depends_on 'gtk3' # R
+  depends_on 'harfbuzz' # R
   depends_on 'pango' # R
   depends_on 'sommelier'
   depends_on 'xdg_base'
@@ -32,18 +34,18 @@ class Audacious < Autotools
                                --disable-qt'
 
   def self.postinstall
-    puts
-    puts 'To configure, execute the following:'.lightblue
-    puts "Type 'audacious' to launch the music player.".lightblue
-    puts "From the menu, select 'Output' > 'Audio Settings'.".lightblue
-    puts "Select 'ALSA Output' for the 'Output plugin'.".lightblue
-    puts "Click 'Settings' to the right of 'ALSA Output'.".lightblue
-    puts "Select 'sysdefault - Default control device' for 'Mixer device'.".lightblue
-    puts "Click 'Close' and 'Close' again to save.".lightblue
-    puts
-    puts 'To completely remove, execute the following:'.lightblue
-    puts 'crew remove audacious audacious_plugins'.lightblue
-    puts 'rm -rf ~/.config/audacious'.lightblue
-    puts
+    ExitMessage.add <<~EOM
+      To configure, execute the following:
+      Type 'audacious' to launch the music player.
+      From the menu, select 'Output' > 'Audio Settings'.
+      Select 'ALSA Output' for the 'Output plugin'.
+      Click 'Settings' to the right of 'ALSA Output'.
+      Select 'sysdefault - Default control device' for 'Mixer device'.
+      Click 'Close' and 'Close' again to save.
+    EOM
+  end
+
+  def self.postremove
+    Package.agree_to_remove("#{HOME}/.config/audacious")
   end
 end
