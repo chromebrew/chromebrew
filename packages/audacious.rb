@@ -11,13 +11,13 @@ class Audacious < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2d20a44ff9efcc984fad709fedf198d226ea9816945f5c1b0e4c2ea2ab4af3b8',
-     armv7l: '2d20a44ff9efcc984fad709fedf198d226ea9816945f5c1b0e4c2ea2ab4af3b8',
-     x86_64: '7223fd048011675270767994ba0aa0fe49309c84102245b187ddd7ac36a40475'
+    aarch64: '6fc8c8358b4376cd4b3d7953e2287e0c1b63e6e8ef6b0ac009f43ba6dca9b439',
+     armv7l: '6fc8c8358b4376cd4b3d7953e2287e0c1b63e6e8ef6b0ac009f43ba6dca9b439',
+     x86_64: 'a67a555c3517b4497e556c0737412581dc64c7a06f6c7b91c3adae4bd30cc681'
   })
 
-  depends_on 'at_spi2_core' # R
   # depends_on 'audacious_plugins' => :runtime
+  depends_on 'at_spi2_core' # R
   depends_on 'cairo' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
