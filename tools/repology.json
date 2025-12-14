@@ -75,7 +75,7 @@
     "name": "acquia_cli",
     "description": "Acquia CLI - The official command-line tool for interacting with the Drupal Cloud Platform and services.",
     "homepage": "https://github.com/acquia/cli",
-    "version": "2.52.0",
+    "version": "2.54.0",
     "license": "GPL-2.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -307,7 +307,7 @@
     "name": "antigravity",
     "description": "Next-generation IDE from Google",
     "homepage": "https://antigravity.google/",
-    "version": "1.11.14",
+    "version": "1.11.17",
     "license": "Google Terms of Service",
     "compatibility": "x86_64"
   },
@@ -355,7 +355,7 @@
     "name": "appflowy",
     "description": "AI collaborative workspace where you achieve more without losing control of your data. The best open source alternative to Notion.",
     "homepage": "https://www.appflowy.io/",
-    "version": "0.10.4",
+    "version": "0.10.6",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -499,7 +499,7 @@
     "name": "asciinema",
     "description": "Terminal session recorder",
     "homepage": "https://asciinema.org/",
-    "version": "2.1.0",
+    "version": "3.0.1",
     "license": "GPL-3+",
     "compatibility": "all"
   },
@@ -883,7 +883,7 @@
     "name": "bat",
     "description": "Clone of cat with syntax highlighting and Git integration",
     "homepage": "https://github.com/sharkdp/bat",
-    "version": "0.26.0",
+    "version": "0.26.1",
     "license": "Apache-2.0, MIT",
     "compatibility": "all"
   },
@@ -899,7 +899,7 @@
     "name": "bazel",
     "description": "a fast, scalable, multi-language and extensible build system",
     "homepage": "https://bazel.build/",
-    "version": "8.4.2",
+    "version": "8.5.0",
     "license": "Apache-2.0",
     "compatibility": "x86_64"
   },
@@ -1027,7 +1027,7 @@
     "name": "bitcoin_core",
     "description": "Bitcoin Core is a full Bitcoin client and builds the backbone of the network.",
     "homepage": "https://bitcoincore.org/",
-    "version": "29.1",
+    "version": "30.0",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -1115,7 +1115,7 @@
     "name": "brave",
     "description": "Next generation Brave browser for macOS, Windows, Linux, Android.",
     "homepage": "https://brave.com/",
-    "version": "1.84.141",
+    "version": "1.85.116",
     "license": "MPL-2",
     "compatibility": "x86_64"
   },
@@ -1203,7 +1203,7 @@
     "name": "bun",
     "description": "Incredibly fast JavaScript runtime, bundler, test runner, and package manager – all in one",
     "homepage": "https://bun.sh/",
-    "version": "1.3.3",
+    "version": "1.3.4",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -1251,7 +1251,7 @@
     "name": "c_ares",
     "description": "C library for asynchronous DNS requests (including name resolves).",
     "homepage": "https://c-ares.org/",
-    "version": "1.34.5",
+    "version": "1.34.6",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -1363,7 +1363,7 @@
     "name": "cargo_c",
     "description": "A cargo subcommand to build and install C-ABI compatible dynamic and static libraries",
     "homepage": "https://github.com/lu-zero/cargo-c/",
-    "version": "0.10.14",
+    "version": "0.10.18",
     "license": "LGPL-2.1 and MPL-1.1",
     "compatibility": "all"
   },
@@ -1624,6 +1624,14 @@
     "compatibility": "x86_64"
   },
   {
+    "name": "claude",
+    "description": "Claude Code, Anthropic’s agentic coding tool that lives in your terminal",
+    "homepage": "https://claude.com/product/claude-code",
+    "version": "2.0.61",
+    "license": "Claude/Antropic Terms and Conditions",
+    "compatibility": "x86_64"
+  },
+  {
     "name": "clean",
     "description": "Clean is a program that searches for files identified by regular expressions and deletes them",
     "homepage": "https://sourceforge.net/projects/clean/",
@@ -1723,7 +1731,7 @@
     "name": "cmake",
     "description": "CMake is an open-source, cross-platform family of tools designed to build, test and package software.",
     "homepage": "https://cmake.org/",
-    "version": "4.2.0",
+    "version": "4.2.1",
     "license": "CMake",
     "compatibility": "all"
   },
@@ -2163,7 +2171,7 @@
     "name": "cursor",
     "description": "The AI Code Editor",
     "homepage": "https://www.cursor.com/",
-    "version": "2.1.48",
+    "version": "2.2.17",
     "license": "Cursor EULA",
     "compatibility": "x86_64"
   },
@@ -2211,7 +2219,7 @@
     "name": "dart",
     "description": "The Dart SDK is a set of tools and libraries for the Dart programming language.  You can find information about Dart online at dartlang.org.",
     "homepage": "https://dart.dev",
-    "version": "3.10.1",
+    "version": "3.10.4",
     "license": "BSD-3",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -2243,7 +2251,7 @@
     "name": "dbeaver",
     "description": "Free Universal Database Tool",
     "homepage": "https://dbeaver.io",
-    "version": "25.2.5",
+    "version": "25.3.0",
     "license": "Apache-2.0",
     "compatibility": "x86_64"
   },
@@ -2707,7 +2715,7 @@
     "name": "edge",
     "description": "Microsoft Edge is the fast and secure browser",
     "homepage": "https://www.microsoft.com/en-us/edge",
-    "version": "143.0.3650.66-1",
+    "version": "143.0.3650.80-1",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -3107,7 +3115,7 @@
     "name": "fdupes",
     "description": "Program for identifying or deleting duplicate files residing within specified directories.",
     "homepage": "https://github.com/adrianlopezroche/fdupes",
-    "version": "2.3.2",
+    "version": "2.4.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -3115,7 +3123,7 @@
     "name": "feh",
     "description": "feh is an X11 image viewer aimed mostly at console users.",
     "homepage": "https://feh.finalrewind.org/",
-    "version": "3.10.3",
+    "version": "3.11.2",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -3211,7 +3219,7 @@
     "name": "firefox",
     "description": "Mozilla Firefox (or simply Firefox) is a free and open-source web browser",
     "homepage": "https://www.mozilla.org/en-US/firefox/",
-    "version": "145.0",
+    "version": "146.0",
     "license": "MPL-2.0, GPL-2 and LGPL-2.1",
     "compatibility": "x86_64"
   },
@@ -3259,7 +3267,7 @@
     "name": "flatseal",
     "description": "Flatseal is a graphical utility to review and modify permissions from your Flatpak applications.",
     "homepage": "https://github.com/tchx84/Flatseal/",
-    "version": "2.2.0",
+    "version": "2.4.0",
     "license": "GPL-3+",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -3291,7 +3299,7 @@
     "name": "flutter",
     "description": "Flutter is Google's UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase.",
     "homepage": "https://flutter.dev/",
-    "version": "3.38.3",
+    "version": "3.38.4",
     "license": "BSD-3",
     "compatibility": "x86_64"
   },
@@ -3315,7 +3323,7 @@
     "name": "foliate",
     "description": "A simple and modern GTK eBook reader",
     "homepage": "https://johnfactotum.github.io/foliate/",
-    "version": "3.1.1",
+    "version": "3.3.0",
     "license": "GPL-3",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -3523,7 +3531,7 @@
     "name": "foot",
     "description": "Wayland terminal emulator - fast, lightweight and minimalistic",
     "homepage": "https://codeberg.org/dnkl/foot",
-    "version": "1.18.0",
+    "version": "1.25.0",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -3754,8 +3762,8 @@
   {
     "name": "gambit",
     "description": "Efficient implementation of the Scheme programming language",
-    "homepage": "http://gambitscheme.org/wiki/index.php/Main_Page",
-    "version": "4.9.3",
+    "homepage": "https://gambitscheme.org/",
+    "version": "4.9.7",
     "license": "CC0-1.0",
     "compatibility": "all"
   },
@@ -4747,7 +4755,7 @@
     "name": "google_chrome",
     "description": "Google Chrome is a fast, easy to use, and secure web browser.",
     "homepage": "https://www.google.com/chrome/",
-    "version": "143.0.7499.40-1",
+    "version": "143.0.7499.109-1",
     "license": "google-chrome",
     "compatibility": "x86_64"
   },
@@ -7027,7 +7035,7 @@
     "name": "libeconf",
     "description": "Enhanced config file parser, which merges config files placed in several locations into one.",
     "homepage": "https://github.com/openSUSE/libeconf",
-    "version": "0.8.1",
+    "version": "0.8.2",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -7208,14 +7216,6 @@
     "compatibility": "all"
   },
   {
-    "name": "libgc",
-    "description": "libgc is a library for garbage collection in Rust.",
-    "homepage": "https://github.com/softdevteam/libgc",
-    "version": "8.0.4",
-    "license": "Apache-2.0",
-    "compatibility": "all"
-  },
-  {
     "name": "libgconf",
     "description": "GConf is a system for storing application preferences.",
     "homepage": "https://gitlab.gnome.org/Archive/gconf",
@@ -7371,7 +7371,7 @@
     "name": "libgpg_error",
     "description": "Libgpg-error is a small library that defines common error values for all GnuPG components.",
     "homepage": "https://www.gnupg.org/related_software/libgpg-error/index.html",
-    "version": "1.56",
+    "version": "1.58",
     "license": "GPL-2 and LGPL-2.1",
     "compatibility": "all"
   },
@@ -8978,8 +8978,8 @@
   {
     "name": "libxfce4ui",
     "description": "Replacement of the old libxfcegui4 library",
-    "homepage": "https://xfce.org/",
-    "version": "4.19.5",
+    "homepage": "https://docs.xfce.org/xfce/libxfce4ui/start",
+    "version": "4.21.3",
     "license": "LGPL-2+ and GPL-2+",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -10339,7 +10339,7 @@
     "name": "mullvad",
     "description": "Privacy-focused browser",
     "homepage": "https://mullvad.net/browser",
-    "version": "15.0.2",
+    "version": "15.0.3",
     "license": "Mozilla Public License V2",
     "compatibility": "x86_64"
   },
@@ -10691,7 +10691,7 @@
     "name": "nano",
     "description": "Nano's ANOther editor, an enhanced free Pico clone.",
     "homepage": "https://www.nano-editor.org/",
-    "version": "8.4",
+    "version": "8.7",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -11203,7 +11203,7 @@
     "name": "ocaml",
     "description": "OCaml is an industrial strength programming language supporting functional, imperative and object-oriented styles",
     "homepage": "https://ocaml.org/",
-    "version": "4.14.2",
+    "version": "5.4.0",
     "license": "LGPL-2.1",
     "compatibility": "all"
   },
@@ -13539,7 +13539,7 @@
     "name": "py3_json2xml",
     "description": "json to xml converter",
     "homepage": "https://json2xml.readthedocs.io/",
-    "version": "5.2.1",
+    "version": "5.3.1",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -13691,7 +13691,7 @@
     "name": "py3_meson",
     "description": "Meson is an open source build system meant to be both extremely fast and user friendly.",
     "homepage": "https://mesonbuild.com/",
-    "version": "1.9.2",
+    "version": "1.10.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -13763,7 +13763,7 @@
     "name": "py3_oci",
     "description": "Oracle Cloud Infrastructure Python SDK",
     "homepage": "https://oracle-cloud-infrastructure-python-sdk.readthedocs.io/",
-    "version": "2.164.0",
+    "version": "2.164.1",
     "license": "UPL-1.0 or Apache-2.0",
     "compatibility": "all"
   },
@@ -13771,7 +13771,7 @@
     "name": "py3_oci_cli",
     "description": "Command Line Interface for Oracle Cloud Infrastructure",
     "homepage": "https://github.com/oracle/oci-cli/",
-    "version": "3.71.0",
+    "version": "3.71.1",
     "license": "UPL-1.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -14051,7 +14051,7 @@
     "name": "py3_pypdf",
     "description": "A pure-python PDF library capable of splitting, merging, cropping, and transforming the pages of PDF files.",
     "homepage": "https://github.com/py-pdf/pypdf",
-    "version": "6.4.0",
+    "version": "6.4.1",
     "license": "BSD-3-Clause",
     "compatibility": "all"
   },
@@ -14227,7 +14227,7 @@
     "name": "py3_ruff",
     "description": "An extremely fast Python linter, written in Rust.",
     "homepage": "https://docs.astral.sh/ruff",
-    "version": "0.14.8",
+    "version": "0.14.9",
     "license": "GPL-2.0",
     "compatibility": "all"
   },
@@ -14395,7 +14395,7 @@
     "name": "py3_sqlalchemy",
     "description": "SQLalchemy is a database toolkit for Python.",
     "homepage": "https://sqlalchemy.org",
-    "version": "2.0.44",
+    "version": "2.0.45",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14507,7 +14507,7 @@
     "name": "py3_urllib3",
     "description": "URLlib3 is an HTTP library with thread-safe connection pooling, file post, and more.",
     "homepage": "https://urllib3.readthedocs.io/",
-    "version": "2.6.0",
+    "version": "2.6.2",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15355,7 +15355,7 @@
     "name": "ruby_bundler",
     "description": "Bundler manages an application's dependencies through its entire life, across many machines, systematically and repeatably.",
     "homepage": "https://bundler.io",
-    "version": "4.0.0",
+    "version": "4.0.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15371,7 +15371,7 @@
     "name": "ruby_cgi",
     "description": "Support for the common gateway interface protocol.",
     "homepage": "https://github.com/ruby/cgi",
-    "version": "0.5.0",
+    "version": "0.5.1",
     "license": "Ruby",
     "compatibility": "all"
   },
@@ -15387,7 +15387,7 @@
     "name": "ruby_concurrent_ruby",
     "description": "Modern concurrency tools for Ruby. Inspired by Erlang, Clojure, Scala, Haskell, F#, C#, Java, and classic concurrency patterns.",
     "homepage": "https://github.com/ruby-concurrency/concurrent-ruby",
-    "version": "1.3.5",
+    "version": "1.3.6",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15411,7 +15411,7 @@
     "name": "ruby_date",
     "description": "A subclass of object includes comparable module for handling dates.",
     "homepage": "https://github.com/ruby/date",
-    "version": "3.5.0",
+    "version": "3.5.1",
     "license": "Ruby",
     "compatibility": "all"
   },
@@ -15659,7 +15659,7 @@
     "name": "ruby_json",
     "description": "This is a JSON implementation as a Ruby extension in C.",
     "homepage": "https://flori.github.io/json",
-    "version": "2.17.1",
+    "version": "2.18.0",
     "license": "Ruby",
     "compatibility": "all"
   },
@@ -15739,7 +15739,7 @@
     "name": "ruby_minitest",
     "description": "minitest provides a complete suite of testing facilities supporting TDD, BDD, mocking, and benchmarking.",
     "homepage": "https://github.com/minitest/minitest",
-    "version": "5.26.2",
+    "version": "5.27.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15867,7 +15867,7 @@
     "name": "ruby_optparse",
     "description": "OptionParser is a class for command-line option analysis.",
     "homepage": "https://github.com/ruby/optparse",
-    "version": "0.8.0",
+    "version": "0.8.1",
     "license": "BSD-2-Clause",
     "compatibility": "all"
   },
@@ -15971,7 +15971,7 @@
     "name": "ruby_psych",
     "description": "| psych is a yaml parser and emitter.",
     "homepage": "https://github.com/ruby/psych",
-    "version": "5.2.6",
+    "version": "5.3.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -16019,7 +16019,7 @@
     "name": "ruby_rdoc",
     "description": "RDoc produces HTML and command-line documentation for Ruby projects.",
     "homepage": "https://ruby.github.io/rdoc",
-    "version": "6.16.1",
+    "version": "6.17.0",
     "license": "Ruby",
     "compatibility": "all"
   },
@@ -16067,7 +16067,7 @@
     "name": "ruby_resolv",
     "description": "Thread-aware dns resolver library in ruby.",
     "homepage": "https://github.com/ruby/resolv",
-    "version": "0.6.3",
+    "version": "0.7.0",
     "license": "BSD-2-Clause",
     "compatibility": "all"
   },
@@ -16147,7 +16147,7 @@
     "name": "ruby_ruby_libversion",
     "description": "Ruby bindings for libversion.",
     "homepage": "https://github.com/Zopolis4/ruby-libversion",
-    "version": "1.1.0",
+    "version": "1.0.0-2",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -16163,7 +16163,7 @@
     "name": "ruby_rubygems_update",
     "description": "RubyGems is a package management framework for Ruby.",
     "homepage": "https://github.com/rubygems/rubygems",
-    "version": "4.0.0",
+    "version": "4.0.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -16323,7 +16323,7 @@
     "name": "ruby_timeout",
     "description": "Auto-terminate potentially long-running operations in ruby.",
     "homepage": "https://github.com/ruby/timeout",
-    "version": "0.4.4",
+    "version": "0.5.0",
     "license": "Ruby",
     "compatibility": "all"
   },
@@ -16483,7 +16483,7 @@
     "name": "rust",
     "description": "Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.",
     "homepage": "https://www.rust-lang.org/",
-    "version": "1.91.1",
+    "version": "1.92.0",
     "license": "Apache-2.0 and MIT",
     "compatibility": "all"
   },
@@ -16939,7 +16939,7 @@
     "name": "signal_desktop",
     "description": "Private Messenger for Windows, Mac, and Linux",
     "homepage": "https://signal.org/",
-    "version": "7.80.1",
+    "version": "7.82.0",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -17763,7 +17763,7 @@
     "name": "termius",
     "description": "Modern SSH Client",
     "homepage": "https://termius.com/",
-    "version": "9.34.4",
+    "version": "9.34.6",
     "license": "Apache-2.0, LGPL-2.1, MIT",
     "compatibility": "x86_64"
   },
@@ -18403,7 +18403,7 @@
     "name": "uutils_coreutils",
     "description": "Cross-platform Rust rewrite of the GNU coreutils",
     "homepage": "https://github.com/uutils/coreutils",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -18571,7 +18571,7 @@
     "name": "vivaldi",
     "description": "Vivaldi is a new browser that blocks unwanted ads, protects you from trackers, and puts you in control with unique built-in features.",
     "homepage": "https://vivaldi.com/",
-    "version": "7.7.3851.58-1",
+    "version": "7.7.3851.61-1",
     "license": "Vivaldi",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -19827,7 +19827,7 @@
     "name": "zoneinfo",
     "description": "Code and data that represent the history of local time for many representative locations around the globe.",
     "homepage": "https://www.iana.org/time-zones",
-    "version": "2025b",
+    "version": "2025c",
     "license": "public-domain",
     "compatibility": "all"
   },
