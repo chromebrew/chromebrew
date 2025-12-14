@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Ansible < Pip
   description 'Ansible is a radically simple IT automation engine that automates cloud provisioning, configuration management, application deployment, intra-service orchestration, and many other IT needs.'
   homepage 'https://www.ansible.com/'
-  version "13.0.0-#{CREW_PY_VER}"
+  version "13.1.0-#{CREW_PY_VER}"
   license 'GPL-3'
   compatibility 'all'
   source_url 'SKIP'
