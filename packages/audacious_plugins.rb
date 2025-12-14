@@ -3,17 +3,17 @@ require 'buildsystems/autotools'
 class Audacious_plugins < Autotools
   description 'Audacious is an open source audio player.'
   homepage 'https://github.com/audacious-media-player/audacious-plugins'
-  version '4.5'
+  version '4.5.1'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://distfiles.audacious-media-player.org/audacious-plugins-#{version}.tar.bz2"
-  source_sha256 '36c19940ee7227f67df4f0c7fd98a5f60c60257a1a47ecd014c9e2a26d7846dd'
+  source_sha256 'f4feedc32776acfa9d24701d3b794fc97822f76da6991e91e627e70e561fdd3b'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '12d6510f1bf2fe266e0b2749c1285e5f634d99eea17d770602bcdfc3048f5818',
-     armv7l: '12d6510f1bf2fe266e0b2749c1285e5f634d99eea17d770602bcdfc3048f5818',
-     x86_64: 'd00000415a164d4154308eaedbdec825bf37e90edc8dade86ae11de66c21a62e'
+    aarch64: '4590895debbab7dff1a6cfeae080d2b77a8ac15afcfc1872685ecbe60b650aac',
+     armv7l: '4590895debbab7dff1a6cfeae080d2b77a8ac15afcfc1872685ecbe60b650aac',
+     x86_64: 'cb2ebdf7ff22f173a9ac532017013496d5f7f2367edd2e3eef2e4673ae06f3c8'
   })
 
   depends_on 'alsa_lib' # R
@@ -22,13 +22,22 @@ class Audacious_plugins < Autotools
   depends_on 'cairo' # R
   depends_on 'curl' # R
   depends_on 'flac' # R
-  depends_on 'flac' => :build
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glib' # R
   depends_on 'glibc' # R
+  depends_on 'gtk3' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'json_glib' # R
   depends_on 'libglvnd' # R
+  depends_on 'libogg' # R
+  depends_on 'libvorbis' # R
   depends_on 'libx11' # R
+  depends_on 'libxcomposite' # R
+  depends_on 'libxml2' # R
+  depends_on 'libxrender' # R
+  depends_on 'mpg123' # R
+  depends_on 'neon' # R
   depends_on 'pango' # R
   depends_on 'wavpack'
   depends_on 'zlib' # R
