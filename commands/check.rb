@@ -64,6 +64,7 @@ class Command
     # Run property and buildsystem tests on the package, and fail if they fail.
     return false unless system "#{CREW_LIB_PATH}/tests/prop_test #{name}"
     return false unless system "#{CREW_LIB_PATH}/tests/buildsystem_test #{name}"
+    return false if (ARGV[0] == 'check') && !system("#{CREW_LIB_PATH}/tests/package_test #{name}")
 
     # If we're still here every test has passed, so return true.
     return true
