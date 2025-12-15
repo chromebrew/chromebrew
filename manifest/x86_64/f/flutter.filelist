@@ -1,5 +1,6 @@
-# Total size: 2455360161
+# Total size: 2455709702
 /home/chronos/user/.flutter_tool_state
+/usr/local/bin/dart
 /usr/local/bin/flutter
 /usr/local/share/flutter/.autoroller-preupload.sh
 /usr/local/share/flutter/.ci.yaml
@@ -35,9 +36,9 @@
 /usr/local/share/flutter/.git/logs/refs/remotes/origin/HEAD
 /usr/local/share/flutter/.git/objects/info/commit-graph
 /usr/local/share/flutter/.git/objects/info/packs
-/usr/local/share/flutter/.git/objects/pack/pack-5ac3fc3549ae70cd593bb388f67c8ce47491d59f.idx
-/usr/local/share/flutter/.git/objects/pack/pack-5ac3fc3549ae70cd593bb388f67c8ce47491d59f.pack
-/usr/local/share/flutter/.git/objects/pack/pack-5ac3fc3549ae70cd593bb388f67c8ce47491d59f.rev
+/usr/local/share/flutter/.git/objects/pack/pack-39e683a3ec4b44bd2817e08fa22d791a3638f0c6.idx
+/usr/local/share/flutter/.git/objects/pack/pack-39e683a3ec4b44bd2817e08fa22d791a3638f0c6.pack
+/usr/local/share/flutter/.git/objects/pack/pack-39e683a3ec4b44bd2817e08fa22d791a3638f0c6.rev
 /usr/local/share/flutter/.git/packed-refs
 /usr/local/share/flutter/.git/refs/remotes/origin/HEAD
 /usr/local/share/flutter/.gitattributes

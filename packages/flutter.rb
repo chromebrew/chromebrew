@@ -3,17 +3,22 @@ require 'package'
 class Flutter < Package
   description "Flutter is Google's UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase."
   homepage 'https://flutter.dev/'
-  version '3.38.4'
+  version '3.38.5'
   license 'BSD-3'
   compatibility 'x86_64'
   source_url "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_#{version}-stable.tar.xz"
-  source_sha256 '1deb32975560b12b580a7b57a46c5043b5b855403ef4b9b783bd36f8b7b9686a'
+  source_sha256 'a264940cfc431c1778f34f7413fa6ab71443ad52c71f38c50b0284397a4039b0'
 
   depends_on 'libglu'
 
   conflicts_with 'dart'
   no_compile_needed
   no_shrink
+
+  def self.preflight
+    # Need at least 3.65 gb of free disk space to install.
+    MiscFunctions.check_free_disk_space(3919157657)
+  end
 
   def self.install
     FileUtils.mkdir_p CREW_DEST_HOME
