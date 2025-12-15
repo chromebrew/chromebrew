@@ -11,10 +11,10 @@ class Wayland_protocols < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4ae3d7455fd139d98caa53a0e6a3eb87b80083daff3a2eb418e1530329daa82c',
-     armv7l: '4ae3d7455fd139d98caa53a0e6a3eb87b80083daff3a2eb418e1530329daa82c',
-       i686: '737f1d56ab72fee69daa356d2cd872a09e05b68310165340380a99f924d8ee3b',
-     x86_64: '1f79f3c8e195ade95784e5b9d15bf63e27e6b39c210cde1a808025926c2938ad'
+    aarch64: 'c08a005eb388f860b004fda816fa1726b54e8faff451fa2b5a765cd08af9dcff',
+     armv7l: 'c08a005eb388f860b004fda816fa1726b54e8faff451fa2b5a765cd08af9dcff',
+       i686: '5aef9699f9584c077c422863381a03692f3e8a24939746d5401ef4851fe10dbb',
+     x86_64: '21c5a4dca6484e25bd7c996b52ad468e93a3812c3d8541f6f74281580fd72e9d'
   })
 
   depends_on 'wayland' # L
