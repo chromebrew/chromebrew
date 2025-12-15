@@ -1,0 +1,6 @@
+#!/bin/bash
+# 2>&1 is needed since help output is redirected to stderr.
+elixir -h 2>&1
+elixirc -h 2>&1
+iex -h 2>&1
+elixir --short-version
