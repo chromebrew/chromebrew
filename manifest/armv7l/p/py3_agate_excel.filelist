@@ -1,12 +1,12 @@
-# Total size: 31478
-/usr/local/lib/python3.14/site-packages/agate_excel-0.4.1.dist-info/AUTHORS.rst
-/usr/local/lib/python3.14/site-packages/agate_excel-0.4.1.dist-info/COPYING
-/usr/local/lib/python3.14/site-packages/agate_excel-0.4.1.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/agate_excel-0.4.1.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/agate_excel-0.4.1.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/agate_excel-0.4.1.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/agate_excel-0.4.1.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/agate_excel-0.4.1.dist-info/top_level.txt
+# Total size: 31708
+/usr/local/lib/python3.14/site-packages/agate_excel-0.4.2.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/agate_excel-0.4.2.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/agate_excel-0.4.2.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/agate_excel-0.4.2.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/agate_excel-0.4.2.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/agate_excel-0.4.2.dist-info/licenses/AUTHORS.rst
+/usr/local/lib/python3.14/site-packages/agate_excel-0.4.2.dist-info/licenses/COPYING
+/usr/local/lib/python3.14/site-packages/agate_excel-0.4.2.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/agateexcel/__init__.py
 /usr/local/lib/python3.14/site-packages/agateexcel/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/agateexcel/__pycache__/table_xls.cpython-314.pyc
