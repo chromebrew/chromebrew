@@ -10,10 +10,10 @@ class Ruby_erb < RUBY
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: 'b7d64a0a23af4ead9e992061be8f8bfc52b2bef1e0a7035e6aa091b41ce6109e',
-     armv7l: 'b7d64a0a23af4ead9e992061be8f8bfc52b2bef1e0a7035e6aa091b41ce6109e',
-       i686: '6ba91f9a8fbfd55f2c9dd80f75ccd14a71b88747f2983bcb43b3588149d6db0c',
-     x86_64: '5b27a0dc7a5777deccec27e9b2c739b783eaa4b90c00fce2bd708019dd86fdb8'
+    aarch64: '1d42a31a9cc55fe42dff40fd1b375d16c00789d7b38fb9b7f1b0115ae06a71c0',
+     armv7l: '1d42a31a9cc55fe42dff40fd1b375d16c00789d7b38fb9b7f1b0115ae06a71c0',
+       i686: 'c79194279ba178dc08e1297a7afb7af0bc1aaf8e23a76e2e488807b42f34deb9',
+     x86_64: '29570c860fa4df29a1eaad01d3284f6e0195873f086479ffa657c0ca6c1b8520'
   })
 
   depends_on 'ruby_cgi' # R
