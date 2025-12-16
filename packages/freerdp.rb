@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Freerdp < CMake
   description 'FreeRDP is a free implementation of the Remote Desktop Protocol.'
   homepage 'https://www.freerdp.com/'
-  version "3.12.0-#{CREW_ICU_VER}"
+  version "3.19.1-#{CREW_ICU_VER}"
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/FreeRDP/FreeRDP.git'
@@ -11,9 +11,9 @@ class Freerdp < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b4688a6fd84cb8db8f7e0b985ffe36e6ff976d4779c3ebe50fd82f9baa66094d',
-     armv7l: 'b4688a6fd84cb8db8f7e0b985ffe36e6ff976d4779c3ebe50fd82f9baa66094d',
-     x86_64: '7e9998e8e09bfaa0eb76b3337fda6f6cc79e632705011f7b03ca1c7e7932f8fd'
+    aarch64: '955e013a8a873d62f49a0d13446dd9d2e6c4676edd1ed54462e218ad388b3976',
+     armv7l: '955e013a8a873d62f49a0d13446dd9d2e6c4676edd1ed54462e218ad388b3976',
+     x86_64: 'de785a005e5edb81d1ab5cd722b70115850e58d75f59cc007254071245ef5805'
   })
 
   depends_on 'alsa_lib' # R
@@ -28,8 +28,8 @@ class Freerdp < CMake
   depends_on 'fuse3' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gsm' # R
   depends_on 'gstreamer' => :build
   depends_on 'gtk3' # R
@@ -51,8 +51,8 @@ class Freerdp < CMake
   depends_on 'libxdamage' # R
   depends_on 'libxext' # R
   depends_on 'libxfixes' # R
-  depends_on 'libxinerama' # R
   depends_on 'libxi' # R
+  depends_on 'libxinerama' # R
   depends_on 'libxkbcommon' # R
   depends_on 'libxkbfile' # R
   depends_on 'libxrandr' # R
