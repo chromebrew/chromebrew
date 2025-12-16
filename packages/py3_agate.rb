@@ -10,10 +10,10 @@ class Py3_agate < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ffb5870cf0e6857af7f2ea7a6006389e96ec57cb3be08fbb2e94b6e7ba423564',
-     armv7l: 'ffb5870cf0e6857af7f2ea7a6006389e96ec57cb3be08fbb2e94b6e7ba423564',
-       i686: '39160b7d400b95db8cb31c203b58da97d4395fdf30f5fbc05a4042b4bd6f5ba5',
-     x86_64: 'aeff8c3907cb6ffd66c4ce8b857df0646ac64a9b5d2576347185a80c58ce5fe6'
+    aarch64: 'dab0b929ae4e207edebbb2b4101d9b0a1ecf660e8c2119ad57beea2e9c9f53f6',
+     armv7l: 'dab0b929ae4e207edebbb2b4101d9b0a1ecf660e8c2119ad57beea2e9c9f53f6',
+       i686: 'fc04afaa35716bae2a79f87e4d6118bcc862019aa1d8b0df456cf702fb1598fe',
+     x86_64: 'bc43470242195bac1c79581e9f5f6731b6b4e8f5c3d7bd219d01abb59302c85b'
   })
 
   depends_on 'py3_babel'

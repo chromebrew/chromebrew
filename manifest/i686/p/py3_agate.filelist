@@ -1,12 +1,12 @@
-# Total size: 563874
-/usr/local/lib/python3.14/site-packages/agate-1.13.0.dist-info/AUTHORS.rst
-/usr/local/lib/python3.14/site-packages/agate-1.13.0.dist-info/COPYING
-/usr/local/lib/python3.14/site-packages/agate-1.13.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/agate-1.13.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/agate-1.13.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/agate-1.13.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/agate-1.13.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/agate-1.13.0.dist-info/top_level.txt
+# Total size: 564071
+/usr/local/lib/python3.14/site-packages/agate-1.14.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/agate-1.14.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/agate-1.14.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/agate-1.14.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/agate-1.14.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/agate-1.14.0.dist-info/licenses/AUTHORS.rst
+/usr/local/lib/python3.14/site-packages/agate-1.14.0.dist-info/licenses/COPYING
+/usr/local/lib/python3.14/site-packages/agate-1.14.0.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/agate/__init__.py
 /usr/local/lib/python3.14/site-packages/agate/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/agate/__pycache__/columns.cpython-314.pyc
