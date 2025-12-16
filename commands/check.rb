@@ -8,6 +8,9 @@ class Command
   def self.check(name, force)
     local_package = File.join(CREW_LOCAL_REPO_ROOT, 'packages', "#{name}.rb")
     crew_package = File.join(CREW_PACKAGES_PATH, "#{name}.rb")
+    local_package_test = File.join(CREW_LOCAL_REPO_ROOT, 'tests', 'package', name[0].to_s, name)
+    crew_package_test_path = File.join(CREW_LIB_PATH, 'tests', 'package', name[0].to_s)
+    crew_package_test = File.join(crew_package_test_path, name)
 
     # We return true here in order to exit early but behave as if the check passed, so that other operations can continue.
     unless File.file?(local_package)
@@ -33,6 +36,7 @@ class Command
     end
 
     to_copy = force
+    to_copy_test = force
 
     # Prompt to copy the local repo package to crew if the package is not found.
     unless force || File.file?(crew_package)
@@ -40,10 +44,22 @@ class Command
       to_copy = true
     end
 
+    # Prompt to copy the local repo package test to crew if the package test is not found.
+    if File.file?(local_package_test) && !(force || File.file?(crew_package_test))
+      puts "The crew package test '#{name}' does not exist."
+      to_copy_test = true
+    end
+
     # Compare local repo package to the crew repo package and prompt to copy if necessary to prepare for the operation.
     unless force || (File.file?(crew_package) && FileUtils.identical?(local_package, crew_package))
-      puts "#{CREW_LOCAL_REPO_ROOT}/packages/#{name}.rb does not match the crew package."
+      puts "#{local_package} does not match the crew package."
       to_copy = true
+    end
+
+    # Compare local repo package test to the crew repo package test and prompt to copy if necessary to prepare for the operation.
+    if File.file?(local_package_test) && !(force || (File.file?(crew_package_test) && FileUtils.identical?(local_package_test, crew_package_test)))
+      puts "#{local_package_test} does not match the crew package test."
+      to_copy_test = true
     end
 
     if to_copy && !force
@@ -56,15 +72,31 @@ class Command
       end
     end
 
+    if to_copy_test && !force && File.file?(local_package_test)
+      # This pulls the operation from the calling function.
+      operation = caller_locations(1, 2)[0].to_s.split[3].split('_')[0].split('#')[1]
+      if Package.agree_default_yes("\nWould you like to copy #{local_package_test} to crew and start the #{operation}")
+        to_copy_test = true
+      else
+        return false
+      end
+    end
+
     if to_copy
       FileUtils.copy_file(local_package, crew_package)
       puts "Copied #{local_package} to #{CREW_PACKAGES_PATH}".lightgreen
     end
 
+    if to_copy_test && File.file?(local_package_test)
+      FileUtils.mkdir_p crew_package_test_path unless File.directory?(crew_package_test_path)
+      FileUtils.copy_file(local_package_test, crew_package_test)
+      puts "Copied #{local_package_test} to #{crew_package_test_path}".lightgreen
+    end
+
     # Run property and buildsystem tests on the package, and fail if they fail.
     return false unless system "#{CREW_LIB_PATH}/tests/prop_test #{name}"
     return false unless system "#{CREW_LIB_PATH}/tests/buildsystem_test #{name}"
-    return false if (ARGV[0] == 'check') && !system("#{CREW_LIB_PATH}/tests/package_test #{name}")
+    return false if (ARGV[0] == 'check') && File.file?(local_package_test) && !system("#{CREW_LIB_PATH}/tests/package_test #{name}")
 
     # If we're still here every test has passed, so return true.
     return true
