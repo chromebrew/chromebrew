@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_agate_dbf < Pip
   description 'Agate-dbf adds read support for DBF files to agate.'
   homepage 'https://agate-dbf.readthedocs.org/'
-  version "0.2.3-#{CREW_PY_VER}"
+  version "0.2.4-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fa28dd4973d1d8c90a97eb8fd1ac62862fbfd3012d16546635114b007fe151f4',
-     armv7l: 'fa28dd4973d1d8c90a97eb8fd1ac62862fbfd3012d16546635114b007fe151f4',
-       i686: '8fbe26d205485e4225a0d8921aae5e506d055fe3c0173a94b42f514c1ee7fa59',
-     x86_64: 'c8225eff24cddce0907ddd25d4f447bdbf786cca67b88e0a0929423dd97dd66b'
+    aarch64: '5518619adf1c1aabacdd130125d6906282047d62f90872c9b1c7a7c47a4a1771',
+     armv7l: '5518619adf1c1aabacdd130125d6906282047d62f90872c9b1c7a7c47a4a1771',
+       i686: '3dfb198fb21df2e02c02636c93aa8a2e55649b7a5d68cffcee0dc57cedbb0d3a',
+     x86_64: '8a53e4d0e6d93ae9d504c1d02070cc8126f8d8ca7c1522e9dc5bbf633a46185e'
   })
 
   depends_on 'py3_dbfread'
