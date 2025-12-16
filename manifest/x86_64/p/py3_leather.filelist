@@ -1,11 +1,11 @@
-# Total size: 190483
-/usr/local/lib/python3.14/site-packages/leather-0.4.0.dist-info/COPYING
-/usr/local/lib/python3.14/site-packages/leather-0.4.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/leather-0.4.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/leather-0.4.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/leather-0.4.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/leather-0.4.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/leather-0.4.0.dist-info/top_level.txt
+# Total size: 190680
+/usr/local/lib/python3.14/site-packages/leather-0.4.1.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/leather-0.4.1.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/leather-0.4.1.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/leather-0.4.1.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/leather-0.4.1.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/leather-0.4.1.dist-info/licenses/COPYING
+/usr/local/lib/python3.14/site-packages/leather-0.4.1.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/leather/__init__.py
 /usr/local/lib/python3.14/site-packages/leather/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/leather/__pycache__/axis.cpython-314.pyc
