@@ -10,11 +10,15 @@ class Ruby_openssl < RUBY
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: 'dbf0b092f6fbb2940d6d32f8437157c927ddd3f36b8e3c2fe83c3264b398b98a',
-     armv7l: 'dbf0b092f6fbb2940d6d32f8437157c927ddd3f36b8e3c2fe83c3264b398b98a',
-       i686: '21dcf42557b53181d794ebeeefbee44726ad032dd1ff3f6c99df91d043f60e17',
-     x86_64: '136373d545fba2460841da43016ccc801836eb2d7bbe565b064c5622f3e1bf5a'
+    aarch64: 'cb4765949d9bcfaab3e082d4fb6ae30344713b34d87a3428ae0d5120fd76401e',
+     armv7l: 'cb4765949d9bcfaab3e082d4fb6ae30344713b34d87a3428ae0d5120fd76401e',
+       i686: 'a73bd598c4411279ec52c74b07ac38053d29c996686a52e811beee72124d7538',
+     x86_64: '09becd26ed8eaa549e8d2e233c5ee9c2eb7c9fd26d8047278bf890ce5c308456'
   })
+
+  depends_on 'glibc' # R
+  depends_on 'openssl' # R
+  depends_on 'ruby' # R
 
   conflicts_ok
   gem_compile_needed
