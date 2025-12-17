@@ -27,8 +27,6 @@ class Alsa_tools < Package
   depends_on 'glib' # R
   depends_on 'glibc' # R
   depends_on 'graphene' # R
-  depends_on 'gtk2' # R
-  depends_on 'gtk3' # R
   depends_on 'gtk4' # R
   depends_on 'harfbuzz' # R
   depends_on 'libx11' # R
