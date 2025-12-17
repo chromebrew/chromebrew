@@ -11,8 +11,8 @@ class Alsa_tools < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e22e1948652e91d03ee0f037e675057a5a6e2968a839c416c4b111f2e3a5d319',
-     armv7l: 'e22e1948652e91d03ee0f037e675057a5a6e2968a839c416c4b111f2e3a5d319',
+    aarch64: '0371cbf52b671b2bc4fcfec6246fcfdcdec0ab795cb7c18c8eb4142c393a5e6e',
+     armv7l: '0371cbf52b671b2bc4fcfec6246fcfdcdec0ab795cb7c18c8eb4142c393a5e6e',
      x86_64: '1d2ebf055aec3993d90fd6b1266849092d0898587bad672715287eb25f04aa91'
   })
 
