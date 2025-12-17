@@ -373,6 +373,7 @@ CREW_VALID_BUILDSYSTEMS = @buildsystems.sort!
 
 # Some packages have different names in anitya.
 CREW_ANITYA_PACKAGE_NAME_MAPPINGS = Set[
+  { pkg_name: 'alsa_lib', anitya_pkg: 'alsa-lib', comments: '' },
   { pkg_name: 'asdf', anitya_pkg: 'asdf-vm', comments: '' },
   { pkg_name: 'broadway', anitya_pkg: 'gtk+3.0~stable', comments: '' },
   { pkg_name: 'cf', anitya_pkg: 'cf', comments: 'Prefer to GitHub' },
