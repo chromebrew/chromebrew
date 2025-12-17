@@ -3,18 +3,21 @@ require 'buildsystems/ruby'
 class Ruby_bigdecimal < RUBY
   description 'This library provides arbitrary-precision decimal floating-point number class.'
   homepage 'https://github.com/ruby/bigdecimal'
-  version "3.3.1-#{CREW_RUBY_VER}"
+  version "4.0.0-#{CREW_RUBY_VER}"
   license 'BSD-2-Clause'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: '98c81bad6b853b2b07b6e5e00f4e3edfcb6ef622d3034bd7cf4c64725c4ff824',
-     armv7l: '98c81bad6b853b2b07b6e5e00f4e3edfcb6ef622d3034bd7cf4c64725c4ff824',
-       i686: '84495b4d2a476ef7c81c6ca0fdbbd2c59e2b913fd7807ab3d0c7addf27aecf1f',
-     x86_64: '3159c9871e9827f8322473fa615f0080b64d311a7b7a4bc77e118077c433c096'
+    aarch64: '58b913c9a897996db80828b688669d0bcab4d630efdfc2e1011154bf5c727009',
+     armv7l: '58b913c9a897996db80828b688669d0bcab4d630efdfc2e1011154bf5c727009',
+       i686: 'c937df0fa4a84aebfe3cd6619216e70f84b569d956e4b9f3e2a9245dba34ff47',
+     x86_64: '5a46b96dc505c5fb48ae3b292fd7197f515e9a46e87bce40d96e20ef9db95d56'
   })
+
+  depends_on 'glibc' # R
+  depends_on 'ruby' # R
 
   conflicts_ok
   gem_compile_needed
