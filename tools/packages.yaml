@@ -6015,6 +6015,11 @@ url: https://git.kernel.org/pub/scm/utils/cpu/mce/mcelog.git/
 activity: medium
 ---
 kind: url
+name: mcfly
+url: https://github.com/cantino/mcfly/releases
+activity: low
+---
+kind: url
 name: mdp
 url: https://github.com/visit1985/mdp/releases
 activity: low
