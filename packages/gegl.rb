@@ -13,7 +13,7 @@ class Gegl < Meson
   binary_sha256({
     aarch64: '8211d0815e20b090ad8bcc63fd9c96874415accf1aee76e0fd7926e0e8982a46',
      armv7l: '8211d0815e20b090ad8bcc63fd9c96874415accf1aee76e0fd7926e0e8982a46',
-     x86_64: 'd3d171d2c0a23a99f2b3e356f60e22a0feb8229ff6272ee34baa10e521abc619'
+     x86_64: '84731586a31cb3e10d8718ec49613d5fafb8b30b4efdea9b32557f5bb6398fab'
   })
 
   depends_on 'babl' # R
@@ -25,6 +25,7 @@ class Gegl < Meson
   depends_on 'gexiv2' => :build
   depends_on 'glib' # R
   depends_on 'glibc' # R
+  depends_on 'gobject_introspection' => :build
   depends_on 'graphviz' => :build # for dot
   depends_on 'harfbuzz' # R
   depends_on 'jasper' # R
@@ -35,7 +36,7 @@ class Gegl < Meson
   depends_on 'libpng' # R
   depends_on 'libraw' # R
   depends_on 'librsvg' # R
-  depends_on 'libspiro' # R
+  depends_on 'libspiro' => :build
   depends_on 'libtheora' => :build
   depends_on 'libtiff' # R
   depends_on 'libwebp' # R
@@ -44,6 +45,7 @@ class Gegl < Meson
   depends_on 'pango' # R
   depends_on 'poppler' # R
   depends_on 'py3_asciidoc' => :build
+  depends_on 'py3_pygobject' => :build
   depends_on 'sdl2' # R
   depends_on 'source_highlight' => :build
   depends_on 'suitesparse' # R
