@@ -10,11 +10,14 @@ class Ruby_prism < RUBY
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: '0d4821c5608717cac99b9c3d64e04543c46fa166bf5b154f461b383d497172d0',
-     armv7l: '0d4821c5608717cac99b9c3d64e04543c46fa166bf5b154f461b383d497172d0',
-       i686: 'b630577e5328fdb734f87b4a7fed2dcfce1c68311b0877db934301ccdd53bd6b',
-     x86_64: 'dae3fe75b6e12f2c357cbdcd58a28e43c970e43ce1b324b4837ff5a9b85b8dc8'
+    aarch64: '159d6d17ef53eb244c1daecbcafd890f06f098cd24367072cc15018356a07995',
+     armv7l: '159d6d17ef53eb244c1daecbcafd890f06f098cd24367072cc15018356a07995',
+       i686: '57c23ccc2117b30afa8f60af695eaa31316a53bbd82c157e7c4d89daa0e1af74',
+     x86_64: 'e13ba7e2855678a0f3ea48bb0d949d9f5a02f6ca9d8f819c69630a1603411117'
   })
+
+  depends_on 'glibc' # R
+  depends_on 'ruby' # R
 
   conflicts_ok
   gem_compile_needed
