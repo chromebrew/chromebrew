@@ -3,7 +3,7 @@ require 'package'
 class Go_containerregistry < Package
   description 'Go library and CLIs for working with container registries'
   homepage 'https://github.com/google/go-containerregistry'
-  version '0.20.6'
+  version '0.20.7'
   license 'Apache-2.0'
   compatibility 'all'
   source_url({
@@ -13,10 +13,10 @@ class Go_containerregistry < Package
      x86_64: "https://github.com/google/go-containerregistry/releases/download/v#{version}/go-containerregistry_Linux_x86_64.tar.gz"
   })
   source_sha256({
-    aarch64: '6c7c80b4e9d7ea683b0b6267776d094d24ce7ec3dca3e0f43ce18a80a1b84e86',
-     armv7l: '6c7c80b4e9d7ea683b0b6267776d094d24ce7ec3dca3e0f43ce18a80a1b84e86',
-       i686: 'efca5a8d3d59a9a58fc91bafa26921c2f90dc0e26a88428807fe237eb85ec448',
-     x86_64: 'c1d593d01551f2c9a3df5ca0a0be4385a839bd9b86d4a76e18d7b17d16559127'
+    aarch64: 'd8d6c91f6b0c4475406b12050b6a70841ad330af9f339945027147e99126baea',
+     armv7l: 'd8d6c91f6b0c4475406b12050b6a70841ad330af9f339945027147e99126baea',
+       i686: '9c8865fc6af4a4be62a64093ae9c2f6ed05f73ec32ed29cffa0bcd3ec0002986',
+     x86_64: '8ef3564d264e6b5ca93f7b7f5652704c4dd29d33935aff6947dd5adefd05953e'
   })
 
   no_compile_needed
