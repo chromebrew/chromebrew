@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_docutils < Pip
   description 'Docutils is an open-source text processing system for processing plaintext documentation into useful formats, such as HTML, LaTeX, man-pages, open-document or XML.'
   homepage 'http://docutils.sourceforge.net/'
-  version "0.22.3-#{CREW_PY_VER}"
+  version "0.22.4-#{CREW_PY_VER}"
   license 'BSD-2, GPL-3 and public-domain'
   compatibility 'all'
   source_url 'SKIP'
