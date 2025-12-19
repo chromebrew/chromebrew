@@ -1,0 +1,3 @@
+#!/bin/bash
+glab -h
+glab -v
