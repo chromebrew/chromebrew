@@ -1,0 +1,3 @@
+#!/bin/bash
+stack -h | head
+stack --version
