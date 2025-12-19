@@ -1,0 +1,3 @@
+#!/bin/bash
+go 2>&1 | head
+go version
