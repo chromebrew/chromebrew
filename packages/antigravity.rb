@@ -3,13 +3,13 @@ require 'package'
 class Antigravity < Package
   description 'Next-generation IDE from Google'
   homepage 'https://antigravity.google/'
-  version '1.11.17'
+  version '1.12.4'
   license 'Google Terms of Service'
   compatibility 'x86_64'
   min_glibc '2.28'
   # To display this url, the latest Debian package must be installed and then run 'apt download --print-uris antigravity'
-  source_url 'https://us-central1-apt.pkg.dev/projects/antigravity-auto-updater-dev/pool/antigravity-debian/antigravity_1.11.17-1765244408_amd64_9df0712156d4f7f37ea353feaa9633ca.deb'
-  source_sha256 'f5b61a4d00354f846e8850a2da9e87b7e204298f0f5cfa0365ede7207c7fc897'
+  source_url 'https://us-central1-apt.pkg.dev/projects/antigravity-auto-updater-dev/pool/antigravity-debian/antigravity_1.12.4-1765945650_amd64_2e1596b9e78009717589d375637bab9f.deb'
+  source_sha256 'b19ba8495542ae75152df7c111330a36c6f7ba8358c015734418ad2f2847ae4d'
 
   no_compile_needed
 
