@@ -3,7 +3,7 @@ require 'package'
 class Nuclei < Package
   description 'Fast, customizable vulnerability scanner'
   homepage 'https://docs.projectdiscovery.io/tools/nuclei'
-  version '3.4.10'
+  version '3.6.1'
   license 'MIT'
   compatibility 'all'
   source_url({
@@ -13,10 +13,10 @@ class Nuclei < Package
      x86_64: "https://github.com/projectdiscovery/nuclei/releases/download/v#{version}/nuclei_#{version}_linux_amd64.zip"
   })
   source_sha256({
-    aarch64: 'e8d79f94076083f6b434092ae93cbc5e51f8e087c8aed21a7e086b8c1ca1a4ca',
-     armv7l: 'e8d79f94076083f6b434092ae93cbc5e51f8e087c8aed21a7e086b8c1ca1a4ca',
-       i686: '35fdf9077c6c4f3e448d473e7946964b36e9b4f91317ab2dd37a14b86509f037',
-     x86_64: '234c12cc5288af071abdcd6f854245b6067345556e1235cf96b76725c1004357'
+    aarch64: '097fb33dba8d032e7bdea12f863d96e18038571eb9d1ec7d09fb107a18edfa05',
+     armv7l: '097fb33dba8d032e7bdea12f863d96e18038571eb9d1ec7d09fb107a18edfa05',
+       i686: 'dc86a4d3887f7e723d3e998e63de70559bdb0a1b43ba46fce173ba14b973cd0c',
+     x86_64: '343be622fbb4261aaeb968072a1cab1dc103f8a74313072717a0f9774ac345a0'
   })
 
   no_compile_needed
@@ -31,6 +31,7 @@ class Nuclei < Package
   end
 
   def self.postremove
+    Package.agree_to_remove("#{HOME}/.pdcp")
     Package.agree_to_remove("#{HOME}/nuclei-templates")
   end
 end
