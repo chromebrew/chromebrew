@@ -1,0 +1,3 @@
+#!/bin/bash
+onlyoffice --help
+onlyoffice --version 2>&1
