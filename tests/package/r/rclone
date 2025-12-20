@@ -1,0 +1,3 @@
+#!/bin/bash
+rclone help | head
+rclone version
