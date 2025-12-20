@@ -3,22 +3,23 @@ require 'buildsystems/ruby'
 class Ruby_debug < RUBY
   description 'The debug library provides debugging functionality to Ruby (MRI) 2.7 and later.'
   homepage 'https://github.com/ruby/debug'
-  version "1.11.0-#{CREW_RUBY_VER}"
+  version "1.11.1-#{CREW_RUBY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: '7a1efdf95437021b37d11070c5b8d8233c23a15734435164795458867dfbd712',
-     armv7l: '7a1efdf95437021b37d11070c5b8d8233c23a15734435164795458867dfbd712',
-       i686: 'ccf6c9a901804bcc1618a5e8a69c34f68c024fc9f5dd3fcbe9864035d30d4d3f',
-     x86_64: '9f2af2b749e8f4284d768387a6bb711400854e3bc46e1c92ecb2e3d44f95e277'
+    aarch64: 'ad8c3e75d5e3673d3435fb00ce284285604d1edfa2060ec8241cb8f34469867a',
+     armv7l: 'ad8c3e75d5e3673d3435fb00ce284285604d1edfa2060ec8241cb8f34469867a',
+       i686: 'b3bd965dfac055f4dfdfa64f50bd1ac7971fdc11331320866a7d716fb87877fa',
+     x86_64: '8b8ff98e15039d9320b9602404b18f7f88fceb326b9cb786993d73fff8f476f3'
   })
 
-  depends_on 'ruby_reline' # R
-
+  depends_on 'glibc' # R
+  depends_on 'ruby' # R
   depends_on 'ruby_irb' # R
+  depends_on 'ruby_reline' # R
 
   conflicts_ok
   gem_compile_needed
