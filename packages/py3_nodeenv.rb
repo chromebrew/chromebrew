@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_nodeenv < Pip
   description 'Tool to create isolated node.js environments.'
   homepage 'https://github.com/ekalinin/nodeenv'
-  version "1.9.1-#{CREW_PY_VER}"
+  version "1.10.0-#{CREW_PY_VER}"
   license 'Copyright (c) 2011, Eugene Kalinin'
   compatibility 'all'
   source_url 'SKIP'
