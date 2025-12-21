@@ -3,11 +3,11 @@ require 'package'
 class Stack < Package
   description 'The Haskell Tool Stack - Stack is a cross-platform program for developing Haskell projects. It is aimed at Haskellers both new and experienced.'
   homepage 'https://docs.haskellstack.org/'
-  version '2.15.7'
+  version '3.7.1'
   license 'BSD'
   compatibility 'x86_64'
   source_url "https://github.com/commercialhaskell/stack/releases/download/v#{version}/stack-#{version}-linux-x86_64-bin"
-  source_sha256 '70fdbbcb368275673fb8ce8a3d1c1c907b239454b900c87220743f1998e47a1c'
+  source_sha256 'c9ba670e7efd3f3807528e60ad09667dd37eba3d941c7edf6ab09d938abc70a8'
 
   no_compile_needed
   no_shrink
@@ -29,16 +29,6 @@ class Stack < Package
   end
 
   def self.postremove
-    config_dir = "#{CREW_PREFIX}/share/stack"
-    if Dir.exist? config_dir
-      print "Would you like to remove the #{config_dir} directory? [y/N] "
-      case $stdin.gets.chomp.downcase
-      when 'y', 'yes'
-        FileUtils.rm_rf config_dir
-        puts "#{config_dir} removed.".lightgreen
-      else
-        puts "#{config_dir} saved.".lightgreen
-      end
-    end
+    Package.agree_to_remove("#{CREW_PREFIX}/share/stack")
   end
 end
