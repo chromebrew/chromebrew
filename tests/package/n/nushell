@@ -1,0 +1,3 @@
+#!/bin/bash
+nu -h | head
+nu --version
