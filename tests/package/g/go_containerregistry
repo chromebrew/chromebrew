@@ -1,0 +1,2 @@
+#!/bin/bash
+for b in crane gcrane krane; do $b version; done
