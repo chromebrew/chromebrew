@@ -14,10 +14,10 @@ class Gdb < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b35ea59fc1e1a4dd8e804b414c7ebc1d2e7ef570583f2a255d283faa821c24a3',
-     armv7l: 'b35ea59fc1e1a4dd8e804b414c7ebc1d2e7ef570583f2a255d283faa821c24a3',
-       i686: 'dd0a8be703238de7cadef59e913b247debb16486caa6bb6a3197f469d6fbca26',
-     x86_64: '3f0d8801f4e29a0aab46f40eaf61602a02fa679881fed4e6951bf48a153e1012'
+    aarch64: '74988a13afd23cf7a83bbf12ebeb449527674a87c817a953a75fc7388fe91084',
+     armv7l: '74988a13afd23cf7a83bbf12ebeb449527674a87c817a953a75fc7388fe91084',
+       i686: 'a82689691f10191896b421fa6995a9b7a26052ee2361f43c38b7d1236d83f24b',
+     x86_64: '4d7587b2b4c4f3c5c89db024d03e7fe7785d6c0d8f93bf74b577d74ac5a7513d'
   })
 
   depends_on 'binutils' # R

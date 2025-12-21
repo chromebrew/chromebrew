@@ -1,4 +1,4 @@
-# Total size: 21784665
+# Total size: 22234965
 /usr/local/bin/gcore
 /usr/local/bin/gdb
 /usr/local/bin/gdb-add-index
@@ -11,7 +11,7 @@
 /usr/local/include/gdb/jit-reader.h
 /usr/local/include/plugin-api.h
 /usr/local/include/symcat.h
-/usr/local/lib/libbfd-2.43.50.so
+/usr/local/lib/libbfd-2.45.50.so
 /usr/local/lib/libbfd.a
 /usr/local/lib/libbfd.la
 /usr/local/lib/libbfd.so
@@ -30,6 +30,7 @@
 /usr/local/share/gdb/python/gdb/dap/__init__.py
 /usr/local/share/gdb/python/gdb/dap/breakpoint.py
 /usr/local/share/gdb/python/gdb/dap/bt.py
+/usr/local/share/gdb/python/gdb/dap/completions.py
 /usr/local/share/gdb/python/gdb/dap/disassemble.py
 /usr/local/share/gdb/python/gdb/dap/evaluate.py
 /usr/local/share/gdb/python/gdb/dap/events.py
