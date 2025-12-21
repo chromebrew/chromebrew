@@ -1,8 +1,11 @@
+# Total size: 689359
 /usr/local/.config/scbi/.core.plugins
 /usr/local/.config/scbi/.env
 /usr/local/.config/scbi/.pkgs-cos
 /usr/local/.config/scbi/.pkgs-deb
+/usr/local/.config/scbi/.pkgs-deb~12
 /usr/local/.config/scbi/.pkgs-fed
+/usr/local/.config/scbi/.pkgs-mingw
 /usr/local/.config/scbi/.pkgs-rhl
 /usr/local/.config/scbi/.pkgs-ubt
 /usr/local/.config/scbi/.plan-default
@@ -28,6 +31,8 @@
 /usr/local/.config/scbi/c-alt-ergo
 /usr/local/.config/scbi/c-aunit
 /usr/local/.config/scbi/c-aws
+/usr/local/.config/scbi/c-aws-lib
+/usr/local/.config/scbi/c-aws-tools
 /usr/local/.config/scbi/c-ayacc
 /usr/local/.config/scbi/c-binutils
 /usr/local/.config/scbi/c-blaslapack
@@ -40,10 +45,12 @@
 /usr/local/.config/scbi/c-e3-core
 /usr/local/.config/scbi/c-e3-testsuite
 /usr/local/.config/scbi/c-exiv2
+/usr/local/.config/scbi/c-garlic
 /usr/local/.config/scbi/c-gcc
 /usr/local/.config/scbi/c-gdb
 /usr/local/.config/scbi/c-gimp
 /usr/local/.config/scbi/c-git
+/usr/local/.config/scbi/c-glade
 /usr/local/.config/scbi/c-gmp
 /usr/local/.config/scbi/c-gnadelite
 /usr/local/.config/scbi/c-gnatcoll
@@ -58,6 +65,7 @@
 /usr/local/.config/scbi/c-gnatcoll-db-libs-sql
 /usr/local/.config/scbi/c-gnatcoll-db-libs-sqlite
 /usr/local/.config/scbi/c-gnatcoll-db-tools
+/usr/local/.config/scbi/c-gnatdist
 /usr/local/.config/scbi/c-gnatdoc4
 /usr/local/.config/scbi/c-gpmdp
 /usr/local/.config/scbi/c-gpr2
@@ -73,6 +81,7 @@
 /usr/local/.config/scbi/c-hubicfuse
 /usr/local/.config/scbi/c-imagemagick
 /usr/local/.config/scbi/c-langkit
+/usr/local/.config/scbi/c-langkit-support
 /usr/local/.config/scbi/c-lcms2
 /usr/local/.config/scbi/c-lensfun
 /usr/local/.config/scbi/c-libadalang
@@ -83,7 +92,9 @@
 /usr/local/.config/scbi/c-libgegl
 /usr/local/.config/scbi/c-libgpr
 /usr/local/.config/scbi/c-libiconv
+/usr/local/.config/scbi/c-liblktlang
 /usr/local/.config/scbi/c-libmypaint
+/usr/local/.config/scbi/c-libopenjpeg
 /usr/local/.config/scbi/c-librest
 /usr/local/.config/scbi/c-llvm
 /usr/local/.config/scbi/c-markdown
@@ -97,6 +108,7 @@
 /usr/local/.config/scbi/c-pixelsaver
 /usr/local/.config/scbi/c-polyorb
 /usr/local/.config/scbi/c-prettier-ada
+/usr/local/.config/scbi/c-python-post-install-dist-packages
 /usr/local/.config/scbi/c-python3-modules
 /usr/local/.config/scbi/c-readline
 /usr/local/.config/scbi/c-sandbox
@@ -105,6 +117,7 @@
 /usr/local/.config/scbi/c-templates-parser
 /usr/local/.config/scbi/c-v2p
 /usr/local/.config/scbi/c-vss
+/usr/local/.config/scbi/c-vss-text
 /usr/local/.config/scbi/c-win32ada
 /usr/local/.config/scbi/c-wisi-token
 /usr/local/.config/scbi/c-wposix
@@ -112,7 +125,9 @@
 /usr/local/.config/scbi/patches/0001-fix-mpris-support-in-gnome.patch
 /usr/local/.config/scbi/patches/gps-css-gtk3.36.patch
 /usr/local/.config/scbi/patches/libfswatch.patch
+/usr/local/.config/scbi/patches/wisi-adb.patch
 /usr/local/bin/scbi
+/usr/local/bin/scbi-format
 /usr/local/bin/scbi-lint
 /usr/local/bin/scbi-shell
 /usr/local/bin/scbi-show
