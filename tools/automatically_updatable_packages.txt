@@ -59,6 +59,7 @@ freetds
 fribidi
 gambit
 libcdr
+libvisio
 libxfce4ui
 nano
 ocaml
