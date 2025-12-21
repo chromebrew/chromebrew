@@ -3,11 +3,11 @@ require 'package'
 class Deskreen < Package
   description 'Turn any device into a secondary screen for your computer'
   homepage 'https://deskreen.com/lang-en'
-  version '3.1.19'
+  version '3.2.1'
   license 'AGPL-3.0'
   compatibility 'x86_64'
   source_url "https://github.com/pavlobu/deskreen/releases/download/v#{version}/deskreen-ce-#{version}-x86_64.AppImage"
-  source_sha256 '10599bcfea04654d1438a468094f625a2bb59ef49bf7be3b612586ee175bfd4c'
+  source_sha256 'caecfa17fb135a01fc600ef5d01c6c08d4cc6175270bef9ff0371e7e6ba092f3'
 
   no_compile_needed
   no_shrink
