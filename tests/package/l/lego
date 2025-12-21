@@ -1,0 +1,3 @@
+#!/bin/bash
+lego -h | head
+lego -v
