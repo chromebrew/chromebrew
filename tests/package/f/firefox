@@ -1,0 +1,2 @@
+#!/bin/bash
+firefox --version 2> /dev/null

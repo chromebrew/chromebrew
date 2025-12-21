@@ -3,11 +3,11 @@ require 'package'
 class Onlyoffice < Package
   description 'The most complete office suite'
   homepage 'https://www.onlyoffice.com/en/'
-  version '9.1.0'
+  version '9.2.0'
   license 'AGPL-3'
   compatibility 'x86_64'
   source_url "https://github.com/ONLYOFFICE/appimage-desktopeditors/releases/download/v#{version}/DesktopEditors-x86_64.AppImage"
-  source_sha256 '45f07575e18b04d6b3d4aeb86c6d651259745d7801eba14068c0017ced8f9d08'
+  source_sha256 '6de50a1a555cc33bf2b4fd29e45d405d0179d87984b2f4c31277df079ea8f2f1'
 
   depends_on 'gtk3' # R
   depends_on 'gdk_base' # R

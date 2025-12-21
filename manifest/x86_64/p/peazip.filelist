@@ -1,14 +1,19 @@
+# Total size: 44467030
 /usr/local/bin/pea
 /usr/local/bin/peazip
+/usr/local/lib64/libpthread.so.0
 /usr/local/share/application/peazip.desktop
 /usr/local/share/peazip/pea
 /usr/local/share/peazip/peazip
 /usr/local/share/peazip/res/bin/7z/7z
 /usr/local/share/peazip/res/bin/7z/7z.sfx
+/usr/local/share/peazip/res/bin/7z/7zCon.linux.sfx
 /usr/local/share/peazip/res/bin/7z/7zCon.sfx
+/usr/local/share/peazip/res/bin/7z/7zalt
 /usr/local/share/peazip/res/bin/7z/Codecs/Rar.so
 /usr/local/share/peazip/res/bin/arc/arc
 /usr/local/share/peazip/res/bin/arc/arc-tiny.linux.sfx
+/usr/local/share/peazip/res/bin/arc/arc-tiny.sfx
 /usr/local/share/peazip/res/bin/arc/arc.groups
 /usr/local/share/peazip/res/bin/arc/arc.ini
 /usr/local/share/peazip/res/bin/arc/freearc-installer.sfx
@@ -166,6 +171,13 @@
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/Nautilus-scripts/PeaZip/Test
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/Nautilus-scripts/add_peazip_to_gnome_context_menu.sh
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/Nautilus-scripts/readme_add_peazip_to_gnome_context_menu.txt
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/Nemo-actions/PeaZip, add to archive.nemo_action
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/Nemo-actions/PeaZip, extract archive .nemo_action
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/Nemo-actions/PeaZip, extract here.nemo_action
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/Nemo-actions/PeaZip, open as archive.nemo_action
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/Nemo-actions/PeaZip, test.nemo_action
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/Nemo-actions/add_peazip_to_cinnamon_context_menu.sh
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/Nemo-actions/readme_add_peazip_to_cinnamon_context_menu.txt
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip-add-to-7z.desktop
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip-add-to-archive.desktop
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip-add-to-brotli.desktop
@@ -193,6 +205,12 @@
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip_convert.png
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip_extract.png
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/additional-desktop-files/peazip_zip.png
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/alternative-icons/48px/peazip.png
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/alternative-icons/48px/peazip_add.png
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/alternative-icons/48px/peazip_extract.png
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/alternative-icons/svg/peazip.svg
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/alternative-icons/svg/peazip_add.svg
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/alternative-icons/svg/peazip_extract.svg
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip-add-to-archive.desktop
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip-extract.desktop
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip.desktop
@@ -200,6 +218,8 @@
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip_add.png
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip_extract.png
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/readme_freedesktop_integration.txt
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/thunar-archive-plugin/README.md
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/thunar-archive-plugin/peazip.tap
 /usr/local/share/peazip/res/share/batch/macOS service menus/PeaZip, add to BZ2.workflow/Contents/Info.plist
 /usr/local/share/peazip/res/share/batch/macOS service menus/PeaZip, add to BZ2.workflow/Contents/QuickLook/Thumbnail.png
 /usr/local/share/peazip/res/share/batch/macOS service menus/PeaZip, add to BZ2.workflow/Contents/document.wflow
@@ -282,6 +302,7 @@
 /usr/local/share/peazip/res/share/copying/third-parties/paq note.txt
 /usr/local/share/peazip/res/share/copying/third-parties/upx note.txt
 /usr/local/share/peazip/res/share/copying/third-parties/zpaq note.txt
+/usr/local/share/peazip/res/share/copying/third-parties/zpaqfranz-license.txt
 /usr/local/share/peazip/res/share/copying/third-parties/zstd note.txt
 /usr/local/share/peazip/res/share/icons/PeaZip_7z.icns
 /usr/local/share/peazip/res/share/icons/PeaZip_7z.ico
@@ -332,6 +353,7 @@
 /usr/local/share/peazip/res/share/lang-wincontext/es-es.reg
 /usr/local/share/peazip/res/share/lang-wincontext/es-la.reg
 /usr/local/share/peazip/res/share/lang-wincontext/eu.reg
+/usr/local/share/peazip/res/share/lang-wincontext/fa.reg
 /usr/local/share/peazip/res/share/lang-wincontext/fi.reg
 /usr/local/share/peazip/res/share/lang-wincontext/fr.reg
 /usr/local/share/peazip/res/share/lang-wincontext/fr_alt.reg
@@ -351,8 +373,10 @@
 /usr/local/share/peazip/res/share/lang-wincontext/sl.reg
 /usr/local/share/peazip/res/share/lang-wincontext/sv.reg
 /usr/local/share/peazip/res/share/lang-wincontext/tr.reg
+/usr/local/share/peazip/res/share/lang-wincontext/tt.reg
 /usr/local/share/peazip/res/share/lang-wincontext/uk.reg
 /usr/local/share/peazip/res/share/lang/ar.txt
+/usr/local/share/peazip/res/share/lang/az.txt
 /usr/local/share/peazip/res/share/lang/bg.txt
 /usr/local/share/peazip/res/share/lang/by-cr.txt
 /usr/local/share/peazip/res/share/lang/by-lt.txt
@@ -366,15 +390,20 @@
 /usr/local/share/peazip/res/share/lang/en.txt
 /usr/local/share/peazip/res/share/lang/es-es.txt
 /usr/local/share/peazip/res/share/lang/es-la.txt
+/usr/local/share/peazip/res/share/lang/et.txt
 /usr/local/share/peazip/res/share/lang/eu.txt
+/usr/local/share/peazip/res/share/lang/fa.txt
 /usr/local/share/peazip/res/share/lang/fi.txt
 /usr/local/share/peazip/res/share/lang/fr.txt
 /usr/local/share/peazip/res/share/lang/fr_alt.txt
 /usr/local/share/peazip/res/share/lang/gl.txt
 /usr/local/share/peazip/res/share/lang/gr.txt
-/usr/local/share/peazip/res/share/lang/he-prototype.txt
+/usr/local/share/peazip/res/share/lang/he.txt
+/usr/local/share/peazip/res/share/lang/hi.txt
 /usr/local/share/peazip/res/share/lang/hu.txt
+/usr/local/share/peazip/res/share/lang/hy.txt
 /usr/local/share/peazip/res/share/lang/id.txt
+/usr/local/share/peazip/res/share/lang/is.txt
 /usr/local/share/peazip/res/share/lang/it.txt
 /usr/local/share/peazip/res/share/lang/ja.txt
 /usr/local/share/peazip/res/share/lang/ko.txt
@@ -390,9 +419,13 @@
 /usr/local/share/peazip/res/share/lang/sk.txt
 /usr/local/share/peazip/res/share/lang/sl.txt
 /usr/local/share/peazip/res/share/lang/sv.txt
+/usr/local/share/peazip/res/share/lang/sw.txt
+/usr/local/share/peazip/res/share/lang/th.txt
 /usr/local/share/peazip/res/share/lang/tj.txt
 /usr/local/share/peazip/res/share/lang/tr.txt
+/usr/local/share/peazip/res/share/lang/tt.txt
 /usr/local/share/peazip/res/share/lang/uk.txt
+/usr/local/share/peazip/res/share/lang/ur.txt
 /usr/local/share/peazip/res/share/lang/uz.txt
 /usr/local/share/peazip/res/share/lang/vn.txt
 /usr/local/share/peazip/res/share/peazip_help.pdf
@@ -411,19 +444,19 @@
 /usr/local/share/peazip/res/share/presets/7.txt
 /usr/local/share/peazip/res/share/presets/8.txt
 /usr/local/share/peazip/res/share/presets/9.txt
-/usr/local/share/peazip/res/share/presets/alt/7z-brotli.txt
+/usr/local/share/peazip/res/share/presets/alt/11-brotli.txt
+/usr/local/share/peazip/res/share/presets/alt/12-brotli.txt
 /usr/local/share/peazip/res/share/presets/alt/arc.txt
-/usr/local/share/peazip/res/share/presets/alt/brotli.txt
 /usr/local/share/peazip/res/share/presets/alt/cb7.txt
 /usr/local/share/peazip/res/share/presets/alt/cbr.txt
 /usr/local/share/peazip/res/share/presets/alt/cbt.txt
 /usr/local/share/peazip/res/share/presets/alt/cbz.txt
 /usr/local/share/peazip/res/share/presets/alt/zip-bzip2.txt
 /usr/local/share/peazip/res/share/presets/alt/zpaq.txt
-/usr/local/share/peazip/res/share/presets/alt/zstandard.txt
 /usr/local/share/peazip/res/share/readme/readme_Linux.txt
 /usr/local/share/peazip/res/share/readme/readme_Windows.txt
 /usr/local/share/peazip/res/share/readme/readme_macOS.txt
+/usr/local/share/peazip/res/share/themes/line-dark.theme.7z
 /usr/local/share/peazip/res/share/themes/line.theme.7z
 /usr/local/share/peazip/res/share/themes/mac-dark.theme.7z
 /usr/local/share/peazip/res/share/themes/mac.theme.7z
@@ -433,6 +466,7 @@
 /usr/local/share/peazip/res/share/themes/main.theme.7z
 /usr/local/share/peazip/res/share/themes/ten-dark.theme.7z
 /usr/local/share/peazip/res/share/themes/ten.theme.7z
+/usr/local/share/peazip/res/share/themes/tux-alt-dark.theme.7z
 /usr/local/share/peazip/res/share/themes/tux-alt.theme.7z
 /usr/local/share/peazip/res/share/themes/tux-dark.theme.7z
 /usr/local/share/peazip/res/share/themes/tux.theme.7z
