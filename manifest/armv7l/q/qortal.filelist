@@ -1,3 +1,4 @@
+# Total size: 87570521
 /usr/local/bin/qortalstart
 /usr/local/bin/qortalstop
 /usr/local/share/qortal/log4j2.properties
@@ -5,6 +6,5 @@
 /usr/local/share/qortal/qortal.jar
 /usr/local/share/qortal/qortal.sh
 /usr/local/share/qortal/settings.json
-/usr/local/share/qortal/settings.json~
 /usr/local/share/qortal/start.sh
 /usr/local/share/qortal/stop.sh
