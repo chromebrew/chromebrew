@@ -1,0 +1,4 @@
+#!/bin/bash
+rqbench -h 2>&1
+rqlite -h | head
+rqlite -v
