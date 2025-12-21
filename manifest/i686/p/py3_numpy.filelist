@@ -1,13 +1,29 @@
-# Total size: 40426328
+# Total size: 37872314
 /usr/local/bin/f2py
 /usr/local/bin/numpy-config
-/usr/local/lib/python3.14/site-packages/numpy-2.3.5.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/numpy-2.3.5.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/numpy-2.3.5.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/numpy-2.3.5.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/numpy-2.3.5.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/numpy-2.3.5.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/numpy-2.3.5.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/numpy-2.4.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/numpy-2.4.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/numpy-2.4.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/numpy-2.4.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/numpy-2.4.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/numpy-2.4.0.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/numpy-2.4.0.dist-info/licenses/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/numpy-2.4.0.dist-info/licenses/numpy/_core/include/numpy/libdivide/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/numpy-2.4.0.dist-info/licenses/numpy/_core/src/common/pythoncapi-compat/COPYING
+/usr/local/lib/python3.14/site-packages/numpy-2.4.0.dist-info/licenses/numpy/_core/src/highway/LICENSE
+/usr/local/lib/python3.14/site-packages/numpy-2.4.0.dist-info/licenses/numpy/_core/src/multiarray/dragon4_LICENSE.txt
+/usr/local/lib/python3.14/site-packages/numpy-2.4.0.dist-info/licenses/numpy/_core/src/npysort/x86-simd-sort/LICENSE.md
+/usr/local/lib/python3.14/site-packages/numpy-2.4.0.dist-info/licenses/numpy/_core/src/umath/svml/LICENSE
+/usr/local/lib/python3.14/site-packages/numpy-2.4.0.dist-info/licenses/numpy/fft/pocketfft/LICENSE.md
+/usr/local/lib/python3.14/site-packages/numpy-2.4.0.dist-info/licenses/numpy/linalg/lapack_lite/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/numpy-2.4.0.dist-info/licenses/numpy/ma/LICENSE
+/usr/local/lib/python3.14/site-packages/numpy-2.4.0.dist-info/licenses/numpy/random/LICENSE.md
+/usr/local/lib/python3.14/site-packages/numpy-2.4.0.dist-info/licenses/numpy/random/src/distributions/LICENSE.md
+/usr/local/lib/python3.14/site-packages/numpy-2.4.0.dist-info/licenses/numpy/random/src/mt19937/LICENSE.md
+/usr/local/lib/python3.14/site-packages/numpy-2.4.0.dist-info/licenses/numpy/random/src/pcg64/LICENSE.md
+/usr/local/lib/python3.14/site-packages/numpy-2.4.0.dist-info/licenses/numpy/random/src/philox/LICENSE.md
+/usr/local/lib/python3.14/site-packages/numpy-2.4.0.dist-info/licenses/numpy/random/src/sfc64/LICENSE.md
+/usr/local/lib/python3.14/site-packages/numpy-2.4.0.dist-info/licenses/numpy/random/src/splitmix64/LICENSE.md
 /usr/local/lib/python3.14/site-packages/numpy/__config__.py
 /usr/local/lib/python3.14/site-packages/numpy/__config__.pyi
 /usr/local/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd
@@ -41,7 +57,6 @@
 /usr/local/lib/python3.14/site-packages/numpy/_core/__pycache__/_dtype_ctypes.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/numpy/_core/__pycache__/_exceptions.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/numpy/_core/__pycache__/_internal.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/numpy/_core/__pycache__/_machar.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/numpy/_core/__pycache__/_methods.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/numpy/_core/__pycache__/_string_helpers.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/numpy/_core/__pycache__/_type_aliases.cpython-314.pyc
@@ -77,8 +92,6 @@
 /usr/local/lib/python3.14/site-packages/numpy/_core/_exceptions.pyi
 /usr/local/lib/python3.14/site-packages/numpy/_core/_internal.py
 /usr/local/lib/python3.14/site-packages/numpy/_core/_internal.pyi
-/usr/local/lib/python3.14/site-packages/numpy/_core/_machar.py
-/usr/local/lib/python3.14/site-packages/numpy/_core/_machar.pyi
 /usr/local/lib/python3.14/site-packages/numpy/_core/_methods.py
 /usr/local/lib/python3.14/site-packages/numpy/_core/_methods.pyi
 /usr/local/lib/python3.14/site-packages/numpy/_core/_multiarray_tests.cpython-314-i386-linux-gnu.so
@@ -95,6 +108,7 @@
 /usr/local/lib/python3.14/site-packages/numpy/_core/_ufunc_config.py
 /usr/local/lib/python3.14/site-packages/numpy/_core/_ufunc_config.pyi
 /usr/local/lib/python3.14/site-packages/numpy/_core/_umath_tests.cpython-314-i386-linux-gnu.so
+/usr/local/lib/python3.14/site-packages/numpy/_core/_umath_tests.pyi
 /usr/local/lib/python3.14/site-packages/numpy/_core/arrayprint.py
 /usr/local/lib/python3.14/site-packages/numpy/_core/arrayprint.pyi
 /usr/local/lib/python3.14/site-packages/numpy/_core/cversions.py
@@ -186,6 +200,7 @@
 /usr/local/lib/python3.14/site-packages/numpy/_core/tests/__pycache__/test_einsum.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/numpy/_core/tests/__pycache__/test_errstate.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/numpy/_core/tests/__pycache__/test_extint128.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/numpy/_core/tests/__pycache__/test_finfo.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/numpy/_core/tests/__pycache__/test_function_base.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/numpy/_core/tests/__pycache__/test_getlimits.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/numpy/_core/tests/__pycache__/test_half.cpython-314.pyc
@@ -195,11 +210,11 @@
 /usr/local/lib/python3.14/site-packages/numpy/_core/tests/__pycache__/test_item_selection.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/numpy/_core/tests/__pycache__/test_limited_api.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/numpy/_core/tests/__pycache__/test_longdouble.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/numpy/_core/tests/__pycache__/test_machar.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/numpy/_core/tests/__pycache__/test_mem_overlap.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/numpy/_core/tests/__pycache__/test_mem_policy.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/numpy/_core/tests/__pycache__/test_memmap.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/numpy/_core/tests/__pycache__/test_multiarray.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/numpy/_core/tests/__pycache__/test_multiprocessing.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/numpy/_core/tests/__pycache__/test_multithreading.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/numpy/_core/tests/__pycache__/test_nditer.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/numpy/_core/tests/__pycache__/test_nep50_promotions.cpython-314.pyc
@@ -287,6 +302,7 @@
 /usr/local/lib/python3.14/site-packages/numpy/_core/tests/test_einsum.py
 /usr/local/lib/python3.14/site-packages/numpy/_core/tests/test_errstate.py
 /usr/local/lib/python3.14/site-packages/numpy/_core/tests/test_extint128.py
+/usr/local/lib/python3.14/site-packages/numpy/_core/tests/test_finfo.py
 /usr/local/lib/python3.14/site-packages/numpy/_core/tests/test_function_base.py
 /usr/local/lib/python3.14/site-packages/numpy/_core/tests/test_getlimits.py
 /usr/local/lib/python3.14/site-packages/numpy/_core/tests/test_half.py
@@ -296,11 +312,11 @@
 /usr/local/lib/python3.14/site-packages/numpy/_core/tests/test_item_selection.py
 /usr/local/lib/python3.14/site-packages/numpy/_core/tests/test_limited_api.py
 /usr/local/lib/python3.14/site-packages/numpy/_core/tests/test_longdouble.py
-/usr/local/lib/python3.14/site-packages/numpy/_core/tests/test_machar.py
 /usr/local/lib/python3.14/site-packages/numpy/_core/tests/test_mem_overlap.py
 /usr/local/lib/python3.14/site-packages/numpy/_core/tests/test_mem_policy.py
 /usr/local/lib/python3.14/site-packages/numpy/_core/tests/test_memmap.py
 /usr/local/lib/python3.14/site-packages/numpy/_core/tests/test_multiarray.py
+/usr/local/lib/python3.14/site-packages/numpy/_core/tests/test_multiprocessing.py
 /usr/local/lib/python3.14/site-packages/numpy/_core/tests/test_multithreading.py
 /usr/local/lib/python3.14/site-packages/numpy/_core/tests/test_nditer.py
 /usr/local/lib/python3.14/site-packages/numpy/_core/tests/test_nep50_promotions.py
@@ -682,14 +698,11 @@
 /usr/local/lib/python3.14/site-packages/numpy/fft/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/numpy/fft/__pycache__/_helper.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/numpy/fft/__pycache__/_pocketfft.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/numpy/fft/__pycache__/helper.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/numpy/fft/_helper.py
 /usr/local/lib/python3.14/site-packages/numpy/fft/_helper.pyi
 /usr/local/lib/python3.14/site-packages/numpy/fft/_pocketfft.py
 /usr/local/lib/python3.14/site-packages/numpy/fft/_pocketfft.pyi
 /usr/local/lib/python3.14/site-packages/numpy/fft/_pocketfft_umath.cpython-314-i386-linux-gnu.so
-/usr/local/lib/python3.14/site-packages/numpy/fft/helper.py
-/usr/local/lib/python3.14/site-packages/numpy/fft/helper.pyi
 /usr/local/lib/python3.14/site-packages/numpy/fft/tests/__init__.py
 /usr/local/lib/python3.14/site-packages/numpy/fft/tests/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/numpy/fft/tests/__pycache__/test_helper.cpython-314.pyc
@@ -855,15 +868,12 @@
 /usr/local/lib/python3.14/site-packages/numpy/linalg/__init__.pyi
 /usr/local/lib/python3.14/site-packages/numpy/linalg/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/numpy/linalg/__pycache__/_linalg.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/numpy/linalg/__pycache__/linalg.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/numpy/linalg/_linalg.py
 /usr/local/lib/python3.14/site-packages/numpy/linalg/_linalg.pyi
 /usr/local/lib/python3.14/site-packages/numpy/linalg/_umath_linalg.cpython-314-i386-linux-gnu.so
 /usr/local/lib/python3.14/site-packages/numpy/linalg/_umath_linalg.pyi
 /usr/local/lib/python3.14/site-packages/numpy/linalg/lapack_lite.cpython-314-i386-linux-gnu.so
 /usr/local/lib/python3.14/site-packages/numpy/linalg/lapack_lite.pyi
-/usr/local/lib/python3.14/site-packages/numpy/linalg/linalg.py
-/usr/local/lib/python3.14/site-packages/numpy/linalg/linalg.pyi
 /usr/local/lib/python3.14/site-packages/numpy/linalg/tests/__init__.py
 /usr/local/lib/python3.14/site-packages/numpy/linalg/tests/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/numpy/linalg/tests/__pycache__/test_deprecations.cpython-314.pyc
@@ -907,6 +917,7 @@
 /usr/local/lib/python3.14/site-packages/numpy/ma/tests/test_regression.py
 /usr/local/lib/python3.14/site-packages/numpy/ma/tests/test_subclassing.py
 /usr/local/lib/python3.14/site-packages/numpy/ma/testutils.py
+/usr/local/lib/python3.14/site-packages/numpy/ma/testutils.pyi
 /usr/local/lib/python3.14/site-packages/numpy/matlib.py
 /usr/local/lib/python3.14/site-packages/numpy/matlib.pyi
 /usr/local/lib/python3.14/site-packages/numpy/matrixlib/__init__.py
@@ -1114,6 +1125,7 @@
 /usr/local/lib/python3.14/site-packages/numpy/tests/test_scripts.py
 /usr/local/lib/python3.14/site-packages/numpy/tests/test_warnings.py
 /usr/local/lib/python3.14/site-packages/numpy/typing/__init__.py
+/usr/local/lib/python3.14/site-packages/numpy/typing/__init__.pyi
 /usr/local/lib/python3.14/site-packages/numpy/typing/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/numpy/typing/__pycache__/mypy_plugin.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/numpy/typing/mypy_plugin.py
@@ -1202,7 +1214,6 @@
 /usr/local/lib/python3.14/site-packages/numpy/typing/tests/data/pass/__pycache__/scalars.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/numpy/typing/tests/data/pass/__pycache__/shape.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/numpy/typing/tests/data/pass/__pycache__/simple.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/numpy/typing/tests/data/pass/__pycache__/simple_py3.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/numpy/typing/tests/data/pass/__pycache__/ufunc_config.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/numpy/typing/tests/data/pass/__pycache__/ufunclike.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/numpy/typing/tests/data/pass/__pycache__/ufuncs.cpython-314.pyc
@@ -1238,7 +1249,6 @@
 /usr/local/lib/python3.14/site-packages/numpy/typing/tests/data/pass/scalars.py
 /usr/local/lib/python3.14/site-packages/numpy/typing/tests/data/pass/shape.py
 /usr/local/lib/python3.14/site-packages/numpy/typing/tests/data/pass/simple.py
-/usr/local/lib/python3.14/site-packages/numpy/typing/tests/data/pass/simple_py3.py
 /usr/local/lib/python3.14/site-packages/numpy/typing/tests/data/pass/ufunc_config.py
 /usr/local/lib/python3.14/site-packages/numpy/typing/tests/data/pass/ufunclike.py
 /usr/local/lib/python3.14/site-packages/numpy/typing/tests/data/pass/ufuncs.py
