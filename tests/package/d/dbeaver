@@ -1,0 +1,3 @@
+#!/bin/bash
+dbeaver -h
+dbeaver -V

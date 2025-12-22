@@ -3,6 +3,7 @@ acpi
 alsa_lib
 alsa_plugins
 alsa_utils
+appflowy
 appres
 apr
 apr_util
@@ -18,6 +19,7 @@ bison
 bitmap
 bmon
 codex
+dbeaver
 f2fs_tools
 faad2
 fastfetch
