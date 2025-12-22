@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Libva < Meson
   description 'Libva is an implementation for VA-API (Video Acceleration API)'
   homepage 'https://01.org/linuxmedia'
-  version '2.22.0'
+  version '2.23.0'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/intel/libva.git'
