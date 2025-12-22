@@ -17,6 +17,7 @@ bind
 bison
 bitmap
 bmon
+codex
 f2fs_tools
 faad2
 fastfetch
