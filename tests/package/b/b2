@@ -1,0 +1,3 @@
+#!/bin/bash
+b2 --help
+b2 --version
