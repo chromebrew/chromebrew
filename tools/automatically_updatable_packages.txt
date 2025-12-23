@@ -12,6 +12,7 @@ asunder
 augeas
 autoconf_archive
 axel
+b2
 bc
 bdftopcf
 bind

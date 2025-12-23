@@ -1,4 +1,4 @@
-# Total size: 2555907
+# Total size: 2582316
 /usr/local/bin/b2
 /usr/local/share/b2/src/build-system.jam
 /usr/local/share/b2/src/build/ac.jam
@@ -66,6 +66,7 @@
 /usr/local/share/b2/src/tools/features/cflags-feature.jam
 /usr/local/share/b2/src/tools/features/compileflags-feature.jam
 /usr/local/share/b2/src/tools/features/conditional-feature.jam
+/usr/local/share/b2/src/tools/features/contracts-feature.jam
 /usr/local/share/b2/src/tools/features/coverage-feature.jam
 /usr/local/share/b2/src/tools/features/cxx-template-depth-feature.jam
 /usr/local/share/b2/src/tools/features/cxxabi-feature.jam
@@ -198,6 +199,7 @@
 /usr/local/share/b2/src/tools/types/sass-type.jam
 /usr/local/share/b2/src/tools/types/xml.jam
 /usr/local/share/b2/src/tools/unix.jam
+/usr/local/share/b2/src/tools/vcpkg.jam
 /usr/local/share/b2/src/tools/vmsdecc.jam
 /usr/local/share/b2/src/tools/whale.jam
 /usr/local/share/b2/src/tools/xlf.jam
