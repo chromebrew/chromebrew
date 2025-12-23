@@ -3380,6 +3380,11 @@ url: https://github.com/open-mpi/hwloc/tags
 activity: medium
 ---
 kind: url
+name: hyperfine
+url: https://github.com/sharkdp/hyperfine/releases
+activity: medium
+---
+kind: url
 name: hyphen
 url: https://github.com/hunspell/hyphen/
 activity: none
