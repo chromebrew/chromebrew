@@ -19,6 +19,7 @@ bind
 bison
 bitmap
 bmon
+codex
 dbeaver
 f2fs_tools
 faad2
