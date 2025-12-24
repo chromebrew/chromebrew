@@ -6790,6 +6790,11 @@ url: https://github.com/KhronosGroup/OpenCL-ICD-Loader/releases
 activity: medium
 ---
 kind: url
+name: opencode
+url: https://github.com/sst/opencode/releases
+activity: high
+---
+kind: url
 name: openconnect
 url: ftp://ftp.infradead.org/pub/openconnect/
 activity: none
