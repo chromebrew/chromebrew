@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Wxwidgets < CMake
   description 'wxWidgets is a C++ library that lets developers create applications for Windows, macOS, Linux and other platforms with a single code base.'
   homepage 'https://www.wxwidgets.org/'
-  version '3.3.1'
+  version '3.3.1-1'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://github.com/wxWidgets/wxWidgets/releases/download/v#{version.split('-')[0]}/wxWidgets-#{version.split('-')[0]}.tar.bz2"
@@ -11,9 +11,9 @@ class Wxwidgets < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3a69d22b0391c911c71464b16ff901fe6c7fdc71107e439b5bd611db20d4b659',
-     armv7l: '3a69d22b0391c911c71464b16ff901fe6c7fdc71107e439b5bd611db20d4b659',
-     x86_64: 'c5b98f0700ec08bee27543d19de32a14f8c0b16a4284b0256028f7c36a45258c'
+    aarch64: 'e9b9c9eb0e30a906bd2a80bcde9a43c7fe0588e9763f2f040d9dc42591e68805',
+     armv7l: 'e9b9c9eb0e30a906bd2a80bcde9a43c7fe0588e9763f2f040d9dc42591e68805',
+     x86_64: '407295bab738f459f781999b51215142fcdf73dfc67118276d6299e04b1946ab'
   })
 
   depends_on 'at_spi2_core' # R
@@ -84,12 +84,25 @@ class Wxwidgets < CMake
     -DwxUSE_LIBMSPACK=ON \
     -DwxUSE_PRIVATE_FONTS=ON \
     -DwxUSE_GTKPRINT=ON \
-    -DwxUSE_STD_STRING_CONV_IN_WXSTRING=ON\
+    -DwxUSE_STD_STRING_CONV_IN_WXSTRING=ON \
     -DwxUSE_WEBVIEW=ON"
 
   cmake_install_extras do
-    Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
-      FileUtils.ln_sf "#{CREW_LIB_PREFIX}/wx/config/gtk3-unicode-#{version.sub(/\.\d+$/, '')}", 'wx-config'
+    # Fixes CMake Warning:
+    #   Manually-specified variables were not used by the project:
+    #
+    #     CMAKE_INSTALL_LIBDIR
+    if ARCH.eql?('x86_64')
+      Dir["#{CREW_DEST_PREFIX}/lib/**/*"].each do |lib|
+        lib64 = lib.sub("#{CREW_DEST_PREFIX}/lib", CREW_DEST_LIB_PREFIX)
+        if File.directory?(lib)
+          FileUtils.mkdir_p lib64
+        else
+          FileUtils.mv lib, lib64
+        end
+      end
     end
+    FileUtils.ln_sf "#{CREW_LIB_PREFIX}/wx/config/gtk3-unicode-#{version.split('-')[0].sub(/\.\d+$/, '')}", "#{CREW_DEST_PREFIX}/bin/wx-config"
+    FileUtils.ln_sf "#{CREW_PREFIX}/bin/wxrc-#{version.split('-')[0].sub(/\.\d+$/, '')}", "#{CREW_DEST_PREFIX}/bin/wxrc"
   end
 end
