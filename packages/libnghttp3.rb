@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Libnghttp3 < CMake
   description 'HTTP/3 library written in C'
   homepage 'https://github.com/ngtcp2/nghttp3'
-  version '1.13.1'
+  version '1.14.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/ngtcp2/nghttp3.git'
