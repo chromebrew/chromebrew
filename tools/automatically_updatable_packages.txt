@@ -67,4 +67,5 @@ libvisio
 libxfce4ui
 nano
 ocaml
+opencode
 rqlite
