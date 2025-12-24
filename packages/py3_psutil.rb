@@ -10,10 +10,10 @@ class Py3_psutil < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '888d9f34fbf8b3cfead305f979b754942d45987ca17ed96a716ae0fc39f3b93e',
-     armv7l: '888d9f34fbf8b3cfead305f979b754942d45987ca17ed96a716ae0fc39f3b93e',
-       i686: 'd2a22e62f9b3408f7a01feea9061ca5339aadd5d20994af41ff3399d8e32de7b',
-     x86_64: '7787fe39f8046b2a049c484888107499656f678a64e0f6f82c8cc8bd0f552dec'
+    aarch64: 'ff997e05f08f1f40b9b8056d2b60b9f7846ba4dca9ca9589dc62cbdf324c9b99',
+     armv7l: 'ff997e05f08f1f40b9b8056d2b60b9f7846ba4dca9ca9589dc62cbdf324c9b99',
+       i686: 'b3465fadace16e25978999e61028bcbf48f7d52c82dec3762fc4141ee140c418',
+     x86_64: 'b84252a10fb602931c5c7c5c7f3de043dc26e4a025659b8dc06d7070300b3665'
   })
 
   depends_on 'glibc' # R
