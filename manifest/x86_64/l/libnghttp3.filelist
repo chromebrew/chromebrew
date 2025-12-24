@@ -1,4 +1,4 @@
-# Total size: 1248644
+# Total size: 1259051
 /usr/local/include/nghttp3/nghttp3.h
 /usr/local/include/nghttp3/version.h
 /usr/local/lib/cmake/nghttp3/nghttp3Config.cmake
@@ -8,6 +8,6 @@
 /usr/local/lib64/libnghttp3.a
 /usr/local/lib64/libnghttp3.so
 /usr/local/lib64/libnghttp3.so.9
-/usr/local/lib64/libnghttp3.so.9.5.1
+/usr/local/lib64/libnghttp3.so.9.6.0
 /usr/local/lib64/pkgconfig/libnghttp3.pc
 /usr/local/share/doc/nghttp3/README.rst
