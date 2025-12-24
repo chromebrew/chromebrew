@@ -11,9 +11,9 @@ class Wxwidgets < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3a69d22b0391c911c71464b16ff901fe6c7fdc71107e439b5bd611db20d4b659',
-     armv7l: '3a69d22b0391c911c71464b16ff901fe6c7fdc71107e439b5bd611db20d4b659',
-     x86_64: 'c5b98f0700ec08bee27543d19de32a14f8c0b16a4284b0256028f7c36a45258c'
+    aarch64: 'e9b9c9eb0e30a906bd2a80bcde9a43c7fe0588e9763f2f040d9dc42591e68805',
+     armv7l: 'e9b9c9eb0e30a906bd2a80bcde9a43c7fe0588e9763f2f040d9dc42591e68805',
+     x86_64: '407295bab738f459f781999b51215142fcdf73dfc67118276d6299e04b1946ab'
   })
 
   depends_on 'at_spi2_core' # R
