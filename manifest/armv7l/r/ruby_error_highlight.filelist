@@ -1,6 +1,11 @@
-# Total size: 27778
-/usr/local/lib/ruby/3.4.0/error_highlight.rb
-/usr/local/lib/ruby/3.4.0/error_highlight/base.rb
-/usr/local/lib/ruby/3.4.0/error_highlight/core_ext.rb
-/usr/local/lib/ruby/3.4.0/error_highlight/formatter.rb
-/usr/local/lib/ruby/3.4.0/error_highlight/version.rb
+# Total size: 36885
+/usr/local/lib/ruby/gems/3.4.0/gems/error_highlight-0.7.1/Gemfile
+/usr/local/lib/ruby/gems/3.4.0/gems/error_highlight-0.7.1/LICENSE.txt
+/usr/local/lib/ruby/gems/3.4.0/gems/error_highlight-0.7.1/README.md
+/usr/local/lib/ruby/gems/3.4.0/gems/error_highlight-0.7.1/Rakefile
+/usr/local/lib/ruby/gems/3.4.0/gems/error_highlight-0.7.1/error_highlight.gemspec
+/usr/local/lib/ruby/gems/3.4.0/gems/error_highlight-0.7.1/lib/error_highlight.rb
+/usr/local/lib/ruby/gems/3.4.0/gems/error_highlight-0.7.1/lib/error_highlight/base.rb
+/usr/local/lib/ruby/gems/3.4.0/gems/error_highlight-0.7.1/lib/error_highlight/core_ext.rb
+/usr/local/lib/ruby/gems/3.4.0/gems/error_highlight-0.7.1/lib/error_highlight/formatter.rb
+/usr/local/lib/ruby/gems/3.4.0/gems/error_highlight-0.7.1/lib/error_highlight/version.rb
