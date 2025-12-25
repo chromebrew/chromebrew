@@ -1,5 +1,5 @@
 #!/bin/bash
-CREW_INSTALLER_VERSION=2025120401
+CREW_INSTALLER_VERSION=2025122401
 # Exit on fail.
 set -eE
 
@@ -13,6 +13,14 @@ echo_success() { echo -e "\e[1;32m${*}${RESET}" >&1; } # Use Green for success m
 echo_warn() { echo -e "\e[0;33m${*}${RESET}" >&1; } # Use Orange for warning messages.
 echo_intra() { echo -e "\e[1;34m${*}${RESET}" >&1; } # Use Blue for intrafunction messages.
 echo_out() { echo -e "\e[0;37m${*}${RESET}" >&1; } # Use Gray for program output.
+
+# Check if the script is being run in the VT-2 Developer Console.
+if [ "${TERM}" == "xterm" ]; then
+  echo_error "Chromebrew should not be installed in the VT-2 Developer Console."
+  echo_info "\nPlease return to bash shell initiated from crosh and try again."
+  echo_info "To exit the VT-2 Developer Console, press Ctrl + Alt + <- (left arrow)"
+  exit 1
+fi
 
 # Print a message before exit on error
 # shellcheck disable=SC2064
@@ -39,11 +47,11 @@ lsbval() {
   local key="$1"
   local lsbfile="${2:-/etc/lsb-release}"
 
-  if ! echo "${key}" | grep -Eq '^[a-zA-Z0-9_]+$'; then
+  if ! echo "${key}" | /bin/grep -Eq '^[a-zA-Z0-9_]+$'; then
     return 1
   fi
 
-  sed -E -n -e \
+  /bin/sed -E -n -e \
     "/^[[:space:]]*${key}[[:space:]]*=/{
       s:^[^=]+=[[:space:]]*::
       s:[[:space:]]+$::
@@ -95,21 +103,16 @@ set -a
 : "${CREW_PY_VER:=3.13}"
 set +a
 
-# Check if the user owns the CREW_PREFIX directory, as sudo is unnecessary if this is the case.
-# Check if the user is on ChromeOS v117+ and not in the VT-2 console, as sudo will not work.
-#if [[ "$(stat -c '%u' "${CREW_PREFIX}")" == "$(id -u)" ]] && sudo 2>&1 | grep -q 'no new privileges'; then
-#  echo_error "Please run the installer in the VT-2 shell."
-#  echo_info "To start the VT-2 session, type Ctrl + Alt + ->"
-#  exit 1
-#fi
+# Check if the user owns the CREW_PREFIX directory and prompt to fix if not.
 if [ -n "$(/usr/bin/find ${CREW_PREFIX} ! -user $(id -u) -printf '%u')" ]; then
-  echo_error "\nUnable to install due to some files or subdirectories not owned by $(/usr/bin/whoami) in ${CREW_PREFIX}."
-  echo_info "\nPlease enter the VT-2 shell and execute the following:"
-  echo_intra "\nsudo /bin/rm -rf ${CREW_PREFIX}"
-  echo_info "\nand then return to this crosh session and try again."
+  CREW_USER=$(/usr/bin/whoami)
+  echo_error "\nUnable to install due to some files or subdirectories not owned by ${CREW_USER} in ${CREW_PREFIX}."
+  echo_info "\nPlease enter the VT-2 Developer Console and execute the following:"
+  echo_intra "/bin/bash ${CREW_PREFIX}/lib/crew/restore.sh"
+  echo_info "\nand then return to this bash session and try again."
   echo_warn "\nNOTICE: This will remove ALL files and subdirectories in ${CREW_PREFIX} which is recommended to install Chromebrew."
-  echo_info "\nTo start the VT-2 session, type Ctrl + Alt + ->"
-  echo_info "To exit the VT-2 session, type Ctrl + Alt + <-"
+  echo_info "\nTo start the VT-2 Developer Console, press Ctrl + Alt + -> (right arrow)"
+  echo_info "To exit the VT-2 Developer Console, press Ctrl + Alt + <- (left arrow)"
   exit 1
 fi
 
@@ -385,8 +388,8 @@ function download_check () {
 
 function extract_install () {
   # Start with a clean slate.
-  rm -rf "${CREW_DEST_DIR}"
-  mkdir "${CREW_DEST_DIR}"
+  /bin/rm -rf "${CREW_DEST_DIR}"
+  /bin/mkdir "${CREW_DEST_DIR}"
   cd "${CREW_DEST_DIR}"
   XZ_STATUS=
   if [[ -f /usr/bin/xz ]] && env -u LD_LIBRARY_PATH /usr/bin/xz --help &>/dev/null; then
@@ -412,11 +415,11 @@ function extract_install () {
   echo_intra "Extracting ${1} ..."
   if [[ "${2##*.}" == "xz" ]]; then
     if [[ -z $XZ_STATUS ]]; then
-      tar xpf ../"${2}"
+      /bin/tar xpf ../"${2}"
     elif [[ $XZ_STATUS == 'system' ]]; then
       LD_LIBRARY_PATH=/usr/lib${SYSTEM_LIB_SUFFIX}:/lib${SYSTEM_LIB_SUFFIX} /bin/tar -I /usr/bin/xz -xpf ../"${2}"
     elif [[ $XZ_STATUS == 'broken' ]] && [[ -z $ZSTD_STATUS ]] && zstd --help 2>/dev/null| grep -q lzma; then
-      tar -I "${ZSTD}" -xpf ../"${2}"
+      /bin/tar -I "${ZSTD}" -xpf ../"${2}"
     elif [[ $XZ_STATUS == 'broken' ]] && [[ $ZSTD_STATUS == 'broken' ]]; then
       echo_error "xz and zstd are broken. Install will fail." && exit 1
     elif [[ $XZ_STATUS == 'broken' ]] && [[ $ZSTD_STATUS == 'system' ]]; then
@@ -425,11 +428,11 @@ function extract_install () {
   fi
   if [[ "${2##*.}" == "zst" ]]; then
     if [[ -z $ZSTD_STATUS ]] && tar --usage | grep -q zstd ; then
-      tar xpf ../"${2}"
+      /bin/tar xpf ../"${2}"
     elif [[ $ZSTD_STATUS == 'system' ]]; then
       LD_LIBRARY_PATH=/usr/lib${SYSTEM_LIB_SUFFIX}:/lib${SYSTEM_LIB_SUFFIX} /bin/tar -I "${ZSTD}" -xpf ../"${2}"
     elif [[ $ZSTD_STATUS == 'crew' ]]; then
-      tar -I "${ZSTD}" -xpf ../"${2}"
+      /bin/tar -I "${ZSTD}" -xpf ../"${2}"
     elif [[ $ZSTD_STATUS == 'broken' ]]; then
       DEBUG_OUT="ZSTD: ${ZSTD_STATUS}\nLD_LIBRARY_PATH ${LD_LIBRARY_PATH}"
       DEBUG_OUT+="$(ldd "$ZSTD")"
@@ -437,12 +440,12 @@ function extract_install () {
       echo_error "zstd is broken. Install will fail."
       exit 1
     else
-      tar -I zstd -xpf ../"${2}"
+      /bin/tar -I zstd -xpf ../"${2}"
     fi
   fi
 
   echo_intra "Installing ${1}..."
-  tar cpf - ./*/* | (cd /; tar xp --keep-directory-symlink -m -f -)
+  /bin/tar cpf - ./*/* | (cd /; /bin/tar xp --keep-directory-symlink -m -f -)
 
   if [[ "${1}" == 'glibc' ]] || [[ "${1}" == 'crew_preload' ]]; then
     # Update ld.so cache.
@@ -456,7 +459,7 @@ function extract_install () {
     # Decompress binaries.
     if command -v upx &> /dev/null; then
       echo_intra "Running upx on ${1}..."
-      grep "${CREW_PREFIX}/\(bin\|lib\|lib${CREW_LIB_SUFFIX}\)" < filelist | xargs -P "$(nproc)" -n1 upx -qq -d 2> /dev/null || true
+      /bin/grep "${CREW_PREFIX}/\(bin\|lib\|lib${CREW_LIB_SUFFIX}\)" < filelist | xargs -P "$(nproc)" -n1 upx -qq -d 2> /dev/null || true
     fi
     # Switch to our glibc for existing binaries if needed.
     #if [[ -d /usr/local/opt/glibc-libs ]]; then
@@ -467,19 +470,19 @@ function extract_install () {
     #fi
   fi
 
-  mv ./dlist "${CREW_META_PATH}/${1}.directorylist"
-  mv ./filelist "${CREW_META_PATH}/${1}.filelist"
+  /bin/mv ./dlist "${CREW_META_PATH}/${1}.directorylist"
+  /bin/mv ./filelist "${CREW_META_PATH}/${1}.filelist"
 }
 
 function get_pkg_version () {
-  grep "\ \ version" "${1}" | head -n 1 | sed "s/#{LIBC_VERSION}/$LIBC_VERSION/g" | sed "s/#{@gcc_libc_version}/$LIBC_VERSION/g" | sed "s/#{CREW_PY_VER}/py$CREW_PY_VER/g"| sed "s/#{CREW_RUBY_VER}/$CREW_RUBY_VER/g"| awk '{print substr($2,2,length($2)-2)}'
+  /bin/grep "\ \ version" "${1}" | head -n 1 | /bin/sed "s/#{LIBC_VERSION}/$LIBC_VERSION/g" | /bin/sed "s/#{@gcc_libc_version}/$LIBC_VERSION/g" | /bin/sed "s/#{CREW_PY_VER}/py$CREW_PY_VER/g"| /bin/sed "s/#{CREW_RUBY_VER}/$CREW_RUBY_VER/g"| awk '{print substr($2,2,length($2)-2)}'
 }
 
 function update_device_json () {
   cd "${CREW_CONFIG_PATH}"
   echo_intra "Adding new information on ${1} ${2} to device.json..."
   new_info=$(jq --arg name "$1" --arg version "$2" --arg sha256 "$3" '.installed_packages |= . + [{"name": $name, "version": $version, "sha256": $sha256}]' device.json)
-  cat <<< "${new_info}" > device.json
+  /bin/cat <<< "${new_info}" > device.json
 }
 
 function install_ruby_gem () {
@@ -497,7 +500,7 @@ function install_ruby_gem () {
       cd "$CREW_BREW_DIR"
       version=$(get_pkg_version "${gem_file}")
       url="https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby_${gem}/${version}_${ARCH}/ruby_${gem}-${version}-chromeos-${ARCH}.gem"
-      sha256=$(sed -n "s/.*${ARCH}: '\([^']*\)'.*/\1/p" "${gem_file}")
+      sha256=$(/bin/sed -n "s/.*${ARCH}: '\([^']*\)'.*/\1/p" "${gem_file}")
       gemfile=$(basename "${url}")
       if download_check "ruby_${gem}" "${url}" "${gemfile}" "${sha256}" '1'; then
         gem install --no-update-sources -N --local "ruby_${gem}-${version}-chromeos-${ARCH}.gem" --conservative
@@ -535,7 +538,7 @@ echo -e "# Generated by install.sh\nLD_LIBRARY_PATH=$LD_LIBRARY_PATH" >> "$CREW_
 for package in $BOOTSTRAP_PACKAGES; do
   cd "${CREW_LIB_PATH}/packages"
   version=$(get_pkg_version "${CREW_LIB_PATH}"/packages/"${package}".rb)
-  binary_compression=$(sed -n "s/.*binary_compression '\([^']*\)'.*/\1/p" "${package}.rb")
+  binary_compression=$(/bin/sed -n "s/.*binary_compression '\([^']*\)'.*/\1/p" "${package}.rb")
   if [[ -z "$binary_compression" ]]; then
     binary_compression='tar.zst'
   fi
@@ -543,7 +546,7 @@ for package in $BOOTSTRAP_PACKAGES; do
   url="https://gitlab.com/api/v4/projects/26210301/packages/generic/${package}/${version}_${ARCH}/${package}-${version}-chromeos-${ARCH}.${binary_compression}"
   tarfile=$(basename "${url}")
 
-  sha256=$(sed -n "s/.*${ARCH}: '\([^']*\)'.*/\1/p" "${package}.rb")
+  sha256=$(/bin/sed -n "s/.*${ARCH}: '\([^']*\)'.*/\1/p" "${package}.rb")
   shacount=$(echo "$sha256" | wc -w)
   for sha in $sha256
   do
@@ -561,7 +564,7 @@ if [[ -n "${CREW_PRE_GLIBC_STANDALONE}" ]] && { [[ "$ARCH" == "i686" ]] || [[ "$
 fi
 
 echo_out "\nCreating symlink to 'crew' in ${CREW_PREFIX}/bin/"
-ln -sfv "../lib/crew/bin/crew" "${CREW_PREFIX}/bin/"
+/bin/ln -sfv "../lib/crew/bin/crew" "${CREW_PREFIX}/bin/"
 
 echo "export CREW_PREFIX=${CREW_PREFIX}" >> "${CREW_PREFIX}/etc/env.d/profile"
 
@@ -570,10 +573,10 @@ CREW_RUBY_VER="ruby$(ruby -e 'puts RUBY_VERSION.slice(/(?:.*(?=\.))/)')"
 #${PREFIX_CMD} gem sources -u
 # Avoid repl_type_completor, which pulls in the rbs gem, which needs a build.
 # shellcheck disable=SC2016
-#${PREFIX_CMD} gem outdated | cut -d " " -f 1 | grep -v repl_type_completor | xargs -I % bash -c 'export pkg=% ; grep -q no_compile_needed /usr/local/lib/crew/packages/ruby_${pkg//-/_}.rb && (echo "Updating % gem" ; gem update % --no-update-sources -N) || echo "Not updating % gem, since it needs a gem compile and buildessential has not been installed yet."'
+#${PREFIX_CMD} gem outdated | cut -d " " -f 1 | /bin/grep -v repl_type_completor | xargs -I % bash -c 'export pkg=% ; /bin/grep -q no_compile_needed /usr/local/lib/crew/packages/ruby_${pkg//-/_}.rb && (echo "Updating % gem" ; gem update % --no-update-sources -N) || echo "Not updating % gem, since it needs a gem compile and buildessential has not been installed yet."'
 
 # Mark packages as installed for pre-installed gems.
-mapfile -t installed_gems < <(gem list | awk -F ' \(' '{print $1, $2}' | sed -e 's/default://' -e 's/)//' -e 's/,//' | awk '{print $1, $2}')
+mapfile -t installed_gems < <(gem list | awk -F ' \(' '{print $1, $2}' | /bin/sed -e 's/default://' -e 's/)//' -e 's/,//' | awk '{print $1, $2}')
 for i in "${!installed_gems[@]}"; do
   j="${installed_gems[$i]}"
   gem_package="${j% *}"
