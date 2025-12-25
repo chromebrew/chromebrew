@@ -1,4 +1,4 @@
-# Total size: 358354510
+# Total size: 365032153
 /usr/local/VSCodium-linux-arm/LICENSES.chromium.html
 /usr/local/VSCodium-linux-arm/bin/codium
 /usr/local/VSCodium-linux-arm/bin/codium-tunnel
@@ -112,7 +112,7 @@
 /usr/local/VSCodium-linux-arm/resources/app/extensions/css-language-features/package.nls.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/css-language-features/schemas/package.schema.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/css-language-features/server/.npmrc
-/usr/local/VSCodium-linux-arm/resources/app/extensions/css-language-features/server/dist/node/85.cssServerMain.js
+/usr/local/VSCodium-linux-arm/resources/app/extensions/css-language-features/server/dist/node/533.cssServerMain.js
 /usr/local/VSCodium-linux-arm/resources/app/extensions/css-language-features/server/dist/node/920.cssServerMain.js
 /usr/local/VSCodium-linux-arm/resources/app/extensions/css-language-features/server/dist/node/cssServerMain.js
 /usr/local/VSCodium-linux-arm/resources/app/extensions/css-language-features/server/package.json
@@ -259,8 +259,8 @@
 /usr/local/VSCodium-linux-arm/resources/app/extensions/html-language-features/package.nls.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/html-language-features/schemas/package.schema.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/html-language-features/server/.npmrc
-/usr/local/VSCodium-linux-arm/resources/app/extensions/html-language-features/server/dist/node/421.htmlServerMain.js
 /usr/local/VSCodium-linux-arm/resources/app/extensions/html-language-features/server/dist/node/490.htmlServerMain.js
+/usr/local/VSCodium-linux-arm/resources/app/extensions/html-language-features/server/dist/node/573.htmlServerMain.js
 /usr/local/VSCodium-linux-arm/resources/app/extensions/html-language-features/server/dist/node/769.htmlServerMain.js
 /usr/local/VSCodium-linux-arm/resources/app/extensions/html-language-features/server/dist/node/htmlServerMain.js
 /usr/local/VSCodium-linux-arm/resources/app/extensions/html-language-features/server/lib/jquery.d.ts
@@ -308,8 +308,8 @@
 /usr/local/VSCodium-linux-arm/resources/app/extensions/json-language-features/package.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/json-language-features/package.nls.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/json-language-features/server/.npmrc
-/usr/local/VSCodium-linux-arm/resources/app/extensions/json-language-features/server/dist/node/774.jsonServerMain.js
 /usr/local/VSCodium-linux-arm/resources/app/extensions/json-language-features/server/dist/node/962.jsonServerMain.js
+/usr/local/VSCodium-linux-arm/resources/app/extensions/json-language-features/server/dist/node/990.jsonServerMain.js
 /usr/local/VSCodium-linux-arm/resources/app/extensions/json-language-features/server/dist/node/jsonServerMain.js
 /usr/local/VSCodium-linux-arm/resources/app/extensions/json-language-features/server/package.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/json/language-configuration.json
@@ -435,6 +435,7 @@
 /usr/local/VSCodium-linux-arm/resources/app/extensions/microsoft-authentication/README.md
 /usr/local/VSCodium-linux-arm/resources/app/extensions/microsoft-authentication/dist/extension.js
 /usr/local/VSCodium-linux-arm/resources/app/extensions/microsoft-authentication/dist/extension.js.LICENSE.txt
+/usr/local/VSCodium-linux-arm/resources/app/extensions/microsoft-authentication/dist/libmsalruntime.so
 /usr/local/VSCodium-linux-arm/resources/app/extensions/microsoft-authentication/media/auth.css
 /usr/local/VSCodium-linux-arm/resources/app/extensions/microsoft-authentication/media/favicon.ico
 /usr/local/VSCodium-linux-arm/resources/app/extensions/microsoft-authentication/media/icon.png
@@ -1118,6 +1119,13 @@
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/@vscode/vscode-languagedetection/model/model.json
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/@vscode/vscode-languagedetection/package.json
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/@vscode/windows-mutex/LICENSE
+/usr/local/VSCodium-linux-arm/resources/app/node_modules/@vscodium/native-keymap/LICENSE
+/usr/local/VSCodium-linux-arm/resources/app/node_modules/@vscodium/native-keymap/ThirdPartyNotices.txt
+/usr/local/VSCodium-linux-arm/resources/app/node_modules/@vscodium/native-keymap/build/Release/keymapping.node
+/usr/local/VSCodium-linux-arm/resources/app/node_modules/@vscodium/native-keymap/checksum.txt
+/usr/local/VSCodium-linux-arm/resources/app/node_modules/@vscodium/native-keymap/index.js
+/usr/local/VSCodium-linux-arm/resources/app/node_modules/@vscodium/native-keymap/install.js
+/usr/local/VSCodium-linux-arm/resources/app/node_modules/@vscodium/native-keymap/package.json
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/@vscodium/policy-watcher/LICENSE
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/@vscodium/policy-watcher/build/Release/vscodium-policy-watcher.node
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/@vscodium/policy-watcher/index.js
@@ -1744,13 +1752,6 @@
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/native-is-elevated/package.json
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/native-is-elevated/tst/elevated.js
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/native-is-elevated/tst/normal.js
-/usr/local/VSCodium-linux-arm/resources/app/node_modules/native-keymap/License.txt
-/usr/local/VSCodium-linux-arm/resources/app/node_modules/native-keymap/PoliCheckExclusions.xml
-/usr/local/VSCodium-linux-arm/resources/app/node_modules/native-keymap/SECURITY.md
-/usr/local/VSCodium-linux-arm/resources/app/node_modules/native-keymap/ThirdPartyNotices.txt
-/usr/local/VSCodium-linux-arm/resources/app/node_modules/native-keymap/build/Release/keymapping.node
-/usr/local/VSCodium-linux-arm/resources/app/node_modules/native-keymap/index.js
-/usr/local/VSCodium-linux-arm/resources/app/node_modules/native-keymap/package.json
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/native-watchdog/LICENSE
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/native-watchdog/SECURITY.md
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/native-watchdog/build/Release/watchdog.node
@@ -2012,9 +2013,9 @@
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/tar/node_modules/yallist/package.json
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/tar/node_modules/yallist/yallist.js
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/tar/package.json
-/usr/local/VSCodium-linux-arm/resources/app/node_modules/tas-client-umd/LICENSE
-/usr/local/VSCodium-linux-arm/resources/app/node_modules/tas-client-umd/lib/tas-client-umd.js
-/usr/local/VSCodium-linux-arm/resources/app/node_modules/tas-client-umd/package.json
+/usr/local/VSCodium-linux-arm/resources/app/node_modules/tas-client/LICENSE.txt
+/usr/local/VSCodium-linux-arm/resources/app/node_modules/tas-client/dist/tas-client.min.js
+/usr/local/VSCodium-linux-arm/resources/app/node_modules/tas-client/package.json
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/tiny-inflate/LICENSE
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/tiny-inflate/index.js
 /usr/local/VSCodium-linux-arm/resources/app/node_modules/tiny-inflate/package.json
@@ -2384,6 +2385,7 @@
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/workbench.desktop.main.js
 /usr/local/VSCodium-linux-arm/resources/app/out/vscode-dts/vscode.d.ts
 /usr/local/VSCodium-linux-arm/resources/app/package.json
+/usr/local/VSCodium-linux-arm/resources/app/policies/policy.json
 /usr/local/VSCodium-linux-arm/resources/app/product.json
 /usr/local/VSCodium-linux-arm/resources/app/resources/linux/code.png
 /usr/local/VSCodium-linux-arm/resources/completions/bash/codium

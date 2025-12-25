@@ -19,6 +19,7 @@ bind
 bison
 bitmap
 bmon
+cargo_c
 codex
 dbeaver
 f2fs_tools
@@ -69,3 +70,4 @@ nano
 ocaml
 opencode
 rqlite
+vscodium
