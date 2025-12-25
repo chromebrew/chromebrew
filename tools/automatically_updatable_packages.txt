@@ -20,6 +20,7 @@ bison
 bitmap
 bmon
 codex
+dart
 dbeaver
 f2fs_tools
 faad2
