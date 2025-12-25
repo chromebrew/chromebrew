@@ -68,3 +68,4 @@ libxfce4ui
 nano
 ocaml
 opencode
+vscodium
