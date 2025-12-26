@@ -65,6 +65,7 @@ freetds
 fribidi
 gambit
 libcdr
+libcpuid
 libvisio
 libxfce4ui
 nano
