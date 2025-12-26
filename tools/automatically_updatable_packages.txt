@@ -56,6 +56,7 @@ font_isas_misc
 font_jis_misc
 font_misc_misc
 font_mutt_misc
+fontforge
 foot
 fossil
 fragments
