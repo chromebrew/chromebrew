@@ -34,6 +34,7 @@ caprine
 cargo_c
 codex
 composer
+cpu_x
 dart
 dav1d
 dbeaver
