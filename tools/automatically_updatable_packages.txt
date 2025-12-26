@@ -72,3 +72,4 @@ ocaml
 opencode
 rqlite
 vscodium
+yyjson
