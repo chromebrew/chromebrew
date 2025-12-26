@@ -3,7 +3,7 @@ require 'package'
 class Ddgr < Package
   description 'DuckDuckGo from the terminal'
   homepage 'https://github.com/jarun/ddgr'
-  version '2.1'
+  version '2.2'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/jarun/ddgr.git'
