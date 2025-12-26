@@ -39,6 +39,7 @@ cargo_c
 codex
 composer
 conmon
+cpu_x
 dart
 dav1d
 dbeaver
