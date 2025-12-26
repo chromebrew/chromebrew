@@ -1,0 +1,3 @@
+#!/bin/bash
+dehtml --help 2>&1
+dehtml --version
