@@ -7125,6 +7125,11 @@ url: https://www.piumarta.com/software/peg/
 activity: none
 ---
 kind: url
+name: penguins_eggs
+url: https://github.com/pieroproietti/penguins-eggs/releases
+activity: high
+---
+kind: url
 name: perf
 url: https://www.kernel.org/pub/linux/kernel/v4.x/
 activity: medium
