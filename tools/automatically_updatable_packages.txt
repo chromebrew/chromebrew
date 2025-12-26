@@ -21,6 +21,7 @@ bitmap
 bmon
 cargo_c
 codex
+dart
 dbeaver
 f2fs_tools
 faad2
