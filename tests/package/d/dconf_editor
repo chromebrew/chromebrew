@@ -1,0 +1,3 @@
+#!/bin/bash
+dconf-editor -h | head
+dconf-editor -v
