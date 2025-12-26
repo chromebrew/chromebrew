@@ -3,12 +3,13 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '3.4.7-1'
+  version '4.0.0'
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
   source_url 'https://github.com/ruby/ruby.git'
   # git_hashtag '07f7832cffea879946a796e066ccb13ccb4b2abd'
-  git_hashtag "v#{version.split('-').first.gsub('.', '_')}"
+  # git_hashtag "v#{version.split('-').first.gsub('.', '_')}"
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
