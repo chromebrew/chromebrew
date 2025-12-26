@@ -11,10 +11,10 @@ class Yyjson < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-       i686: 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii',
-     x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+    aarch64: '26423264b2d7c2414a53b99db68415d6c4d911e14282ad33edf7c599e57676c0',
+     armv7l: '26423264b2d7c2414a53b99db68415d6c4d911e14282ad33edf7c599e57676c0',
+       i686: 'c43dfb2091d143cc43ddd78c353077f94b40d91fb62ee9eb3a535035468b57a8',
+     x86_64: 'f9ab48ee53291f51446a0a6238ae8263e6d7653a101c6b46f51354039f334b98'
   })
 
   depends_on 'glibc' # R
