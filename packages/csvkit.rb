@@ -10,10 +10,10 @@ class Csvkit < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '237442c5f24223eeaee2c8d93d706b47880ab9506038cef0c40158fc59b5b486',
-     armv7l: '237442c5f24223eeaee2c8d93d706b47880ab9506038cef0c40158fc59b5b486',
-       i686: '294dc0cc7ee96c87d137e2afd8219d3a10c6d9cc667c36adfe8ce67a7ef70ce8',
-     x86_64: '1f2311ce413c14a19152d26b5a66baaa3ef3c8f3526a1b81337709f68c7b1c78'
+    aarch64: '7fcf87a074099ec53ff818fa94de501cf792a931a2ba7c3b3f5c8052ebf127fc',
+     armv7l: '7fcf87a074099ec53ff818fa94de501cf792a931a2ba7c3b3f5c8052ebf127fc',
+       i686: '8758ffb68571a89e9550e1e0a3e6095d8d1e151eaf121883a358825d51cbd218',
+     x86_64: '61e5538a80df2213477bde09da18b8d4c2b5375fedd866e1eebbb1acdfbd0dca'
   })
 
   depends_on 'py3_agate'
