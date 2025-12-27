@@ -23,6 +23,7 @@ cargo_c
 codex
 dart
 dbeaver
+delve
 f2fs_tools
 faad2
 fastfetch
