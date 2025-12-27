@@ -107,8 +107,8 @@ def save_gem_filelist(gem_name = nil, gem_filelist_path = nil)
     #{filelist.keys.sort.join("\n")}
   EOF
   if Dir.exist?("#{CREW_LOCAL_REPO_ROOT}/manifest") && File.writable?("#{CREW_LOCAL_REPO_ROOT}/manifest")
-      FileUtils.mkdir_p "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/r"
-      FileUtils.cp gem_filelist_path, "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/r/ruby_#{gem_name.gsub('-', '_')}.filelist"
+    FileUtils.mkdir_p "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/r"
+    FileUtils.cp gem_filelist_path, "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/r/ruby_#{gem_name.gsub('-', '_')}.filelist"
   end
 end
 
