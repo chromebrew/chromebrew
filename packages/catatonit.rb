@@ -1,41 +1,19 @@
-# Adapted from Arch Linux catatonit PKGBUILD at:
-# https://github.com/archlinux/svntogit-community/raw/packages/catatonit/trunk/PKGBUILD
+require 'buildsystems/autotools'
 
-require 'package'
-
-class Catatonit < Package
+class Catatonit < Autotools
   description 'A container init that is so simple its effectively brain-dead.'
   homepage 'https://github.com/openSUSE/catatonit/'
-  version '0.1.7'
+  version '0.2.1'
   license 'GPL3'
   compatibility 'all'
-  source_url 'https://github.com/openSUSE/catatonit.git'
-  git_hashtag "v#{version}"
+  source_url "https://github.com/openSUSE/catatonit/releases/download/v#{version}/catatonit.tar.xz"
+  source_sha256 '9950425501af862e12f618bdc930ea755c46db6a16072a1462b4fc93b2bd59bc'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e53312d2dfe70cb4983c842faa39bbfbec1482057669e98d2a3920203182c944',
-     armv7l: 'e53312d2dfe70cb4983c842faa39bbfbec1482057669e98d2a3920203182c944',
-       i686: '236251e20bb00af261ac86787ae40db52d54e99b4c1007a294d2f1e353e174b7',
-     x86_64: '56ce55a9a73f365b7d46577b7ee0df920a45a541a97c15a155c3037a5d534ebf'
+    aarch64: '6bb468c2e667f596401cfdbdb39fdac06bbf016e53bd6fd24c27513e1ea2742a',
+     armv7l: '6bb468c2e667f596401cfdbdb39fdac06bbf016e53bd6fd24c27513e1ea2742a',
+       i686: '0626cda2e2df48b894e6479be6608572de3cf70cb051094f0a78f284007341d4',
+     x86_64: '32d504ee383cd9fdd777877f8c5aed7832264673693db459ed659346b83dc5ce'
   })
-
-  def self.patch
-    downloader 'https://github.com/openSUSE/catatonit/commit/99bb9048f532257f3a2c3856cfa19fe957ab6cec.patch',
-               '93e0429aa58cecea6cf2a8727bcc53e6eca90da63305a24c4f826b5e31c90d1a'
-    downloader 'https://patch-diff.githubusercontent.com/raw/openSUSE/catatonit/pull/24.patch',
-               '101f6483b5f9d66c91c098bd125b17dd7da0b9ca7b01bd0e7c721bd075cd71bd'
-    system 'patch -Np1 -i 99bb9048f532257f3a2c3856cfa19fe957ab6cec.patch'
-    system 'patch -Np1 -i 24.patch'
-  end
-
-  def self.build
-    system 'autoreconf -fiv'
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make V=1'
-  end
-
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-  end
 end

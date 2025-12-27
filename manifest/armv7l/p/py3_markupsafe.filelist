@@ -1,16 +1,16 @@
-# Total size: 51616
-/usr/local/lib/python3.13/site-packages/markupsafe-3.0.3.dist-info/INSTALLER
-/usr/local/lib/python3.13/site-packages/markupsafe-3.0.3.dist-info/METADATA
-/usr/local/lib/python3.13/site-packages/markupsafe-3.0.3.dist-info/RECORD
-/usr/local/lib/python3.13/site-packages/markupsafe-3.0.3.dist-info/REQUESTED
-/usr/local/lib/python3.13/site-packages/markupsafe-3.0.3.dist-info/WHEEL
-/usr/local/lib/python3.13/site-packages/markupsafe-3.0.3.dist-info/licenses/LICENSE.txt
-/usr/local/lib/python3.13/site-packages/markupsafe-3.0.3.dist-info/top_level.txt
-/usr/local/lib/python3.13/site-packages/markupsafe/__init__.py
-/usr/local/lib/python3.13/site-packages/markupsafe/__pycache__/__init__.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/markupsafe/__pycache__/_native.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/markupsafe/_native.py
-/usr/local/lib/python3.13/site-packages/markupsafe/_speedups.c
-/usr/local/lib/python3.13/site-packages/markupsafe/_speedups.cpython-313-arm-linux-gnueabihf.so
-/usr/local/lib/python3.13/site-packages/markupsafe/_speedups.pyi
-/usr/local/lib/python3.13/site-packages/markupsafe/py.typed
+# Total size: 58923
+/usr/local/lib/python3.14/site-packages/markupsafe-3.0.3.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/markupsafe-3.0.3.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/markupsafe-3.0.3.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/markupsafe-3.0.3.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/markupsafe-3.0.3.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/markupsafe-3.0.3.dist-info/licenses/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/markupsafe-3.0.3.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/markupsafe/__init__.py
+/usr/local/lib/python3.14/site-packages/markupsafe/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/markupsafe/__pycache__/_native.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/markupsafe/_native.py
+/usr/local/lib/python3.14/site-packages/markupsafe/_speedups.c
+/usr/local/lib/python3.14/site-packages/markupsafe/_speedups.cpython-314-arm-linux-gnueabihf.so
+/usr/local/lib/python3.14/site-packages/markupsafe/_speedups.pyi
+/usr/local/lib/python3.14/site-packages/markupsafe/py.typed

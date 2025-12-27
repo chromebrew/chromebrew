@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Bacon < Autotools
   description 'BaCon is a free BASIC to C translator for Unix-based systems.'
   homepage 'https://chiselapp.com/user/bacon/repository/bacon/home'
-  version '5.0.1'
+  version '5.0.3'
   license 'MIT'
   compatibility 'all'
   source_url "https://www.basic-converter.org/stable/bacon-#{version}.tar.gz"
-  source_sha256 '7f0a6dd3a3d465dd414f165a319838f0691d44157bd034845694fa32649ab97b'
+  source_sha256 '17b7ca78cd9ac019b42db517df47038b9036c269fe76bb6ff07ea1c0c8038918'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7fb09aed952f9062229db822bf8703626c061fea5492764adfa5f955cac7828c',
-     armv7l: '7fb09aed952f9062229db822bf8703626c061fea5492764adfa5f955cac7828c',
-       i686: 'aaa886ad1cebf601dd1342c2acbe4d0fc28353ef5df2d54d8081d4af051e195c',
-     x86_64: '252211ebb4a026d5e799bd9d39c7750e9d6fcd4b721dd951f38622f6ae3f0a6b'
+    aarch64: 'e4060f1682208b403f2e9a2da4f31d3df8b16b8035c21fa437786167dac94715',
+     armv7l: 'e4060f1682208b403f2e9a2da4f31d3df8b16b8035c21fa437786167dac94715',
+       i686: '783e565c4f5068bf9e71bab02e55439d95572f45612a98ee818ade6975ea642b',
+     x86_64: 'd483716bd64c47cd54e3fff09b78308db0736125c9b1d031a7d969cc026a6f9b'
   })
 
   depends_on 'glibc' # R

@@ -21,7 +21,6 @@ class Xorg_server < Meson
   depends_on 'font_util' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'glproto' => :build
   depends_on 'graphite' => :build
   depends_on 'libbsd' # R
   depends_on 'libdrm' # R

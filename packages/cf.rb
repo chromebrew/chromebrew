@@ -3,7 +3,7 @@ require 'package'
 class Cf < Package
   description 'The official command line client for Cloud Foundry'
   homepage 'https://docs.cloudfoundry.org/cf-cli/'
-  version '8.14.1'
+  version '8.17.0'
   license 'Apache-2.0'
   compatibility 'i686 x86_64'
   case ARCH
@@ -12,13 +12,13 @@ class Cf < Package
     source_sha256 '92d2960b950d16387c8fa9c8d5e279708930734daa5cf2ba905e0b640ed4799d'
   when 'x86_64'
     source_url "https://github.com/cloudfoundry/cli/releases/download/v#{version}/cf8-cli_#{version}_linux_x86-64.tgz"
-    source_sha256 'c605b0737690efe2d33d642939589737955251c85f0633b59b67a8742b08fceb'
+    source_sha256 '922b91e5651d141ff8756e631adc613c820610c84dcae6cb59f57e22ae073112'
   end
   binary_compression 'tar.zst'
 
   binary_sha256({
-       i686: '05ac4ed0ef3fd18a206d618f245d40f9c968211b661ef3222eaf743668e8027c',
-     x86_64: '8465927ec7f43c661e11fcbbe939969f86ece4d9b28de20d58b6681f862a2825'
+       i686: '29ceffd87acb1dd0f9a315e3ccd595e8a95fd74ef1c74f28eb23aa3d9b43388f',
+     x86_64: 'b4c73807c554f1d2c88fe6c57490d81e177beb538e0c37a9d7d252265fa71b38'
   })
 
   def self.install

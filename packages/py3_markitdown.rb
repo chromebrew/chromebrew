@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_markitdown < Pip
   description 'Python tool for converting files and office documents to Markdown.'
   homepage 'https://github.com/microsoft/markitdown'
-  version "0.1.3-#{CREW_PY_VER}"
+  version "0.1.4-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f1935b73945a2e9eae59f92a4a4bc46231e8d2c88d0525bd81381b0a79b37344',
-     armv7l: 'f1935b73945a2e9eae59f92a4a4bc46231e8d2c88d0525bd81381b0a79b37344',
-       i686: '5f375b8792558b4793f337c26841c827e93f95eda069efc7a85568e3cb7d771e',
-     x86_64: '746ded4f38404e68a6e112c5b2140d3c10ef801cc04408ca1093921439b80389'
+    aarch64: '86fb060082676a0f3110287c27b62dfab7a8d99bc72441ada916829d1699defe',
+     armv7l: '86fb060082676a0f3110287c27b62dfab7a8d99bc72441ada916829d1699defe',
+       i686: 'de40461b7c2e9d1236c4f42aaba6e93692f3bcf226b24469efa5d45f3c665207',
+     x86_64: 'db66db97d4932f084600519a322805be2bf18938d6ba78aa8450494278575ce5'
   })
 
   depends_on 'python3' => :build

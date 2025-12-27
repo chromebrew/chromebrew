@@ -1,4 +1,4 @@
-# Total size: 5547759
+# Total size: 5650210
 /usr/local/include/armadillo
 /usr/local/include/armadillo_bits/BaseCube_bones.hpp
 /usr/local/include/armadillo_bits/BaseCube_meat.hpp
@@ -79,8 +79,7 @@
 /usr/local/include/armadillo_bits/compiler_check.hpp
 /usr/local/include/armadillo_bits/compiler_setup.hpp
 /usr/local/include/armadillo_bits/compiler_setup_post.hpp
-/usr/local/include/armadillo_bits/cond_rel_bones.hpp
-/usr/local/include/armadillo_bits/cond_rel_meat.hpp
+/usr/local/include/armadillo_bits/cond_rel.hpp
 /usr/local/include/armadillo_bits/config.hpp
 /usr/local/include/armadillo_bits/constants.hpp
 /usr/local/include/armadillo_bits/constants_old.hpp
@@ -124,6 +123,7 @@
 /usr/local/include/armadillo_bits/fn_balance.hpp
 /usr/local/include/armadillo_bits/fn_chi2rnd.hpp
 /usr/local/include/armadillo_bits/fn_chol.hpp
+/usr/local/include/armadillo_bits/fn_circshift.hpp
 /usr/local/include/armadillo_bits/fn_clamp.hpp
 /usr/local/include/armadillo_bits/fn_cond_rcond.hpp
 /usr/local/include/armadillo_bits/fn_conv.hpp
@@ -145,7 +145,6 @@
 /usr/local/include/armadillo_bits/fn_eigs_gen.hpp
 /usr/local/include/armadillo_bits/fn_eigs_sym.hpp
 /usr/local/include/armadillo_bits/fn_elem.hpp
-/usr/local/include/armadillo_bits/fn_eps.hpp
 /usr/local/include/armadillo_bits/fn_expmat.hpp
 /usr/local/include/armadillo_bits/fn_eye.hpp
 /usr/local/include/armadillo_bits/fn_fft.hpp
@@ -198,6 +197,7 @@
 /usr/local/include/armadillo_bits/fn_qr.hpp
 /usr/local/include/armadillo_bits/fn_quantile.hpp
 /usr/local/include/armadillo_bits/fn_qz.hpp
+/usr/local/include/armadillo_bits/fn_rande.hpp
 /usr/local/include/armadillo_bits/fn_randg.hpp
 /usr/local/include/armadillo_bits/fn_randi.hpp
 /usr/local/include/armadillo_bits/fn_randn.hpp
@@ -213,7 +213,6 @@
 /usr/local/include/armadillo_bits/fn_reverse.hpp
 /usr/local/include/armadillo_bits/fn_roots.hpp
 /usr/local/include/armadillo_bits/fn_schur.hpp
-/usr/local/include/armadillo_bits/fn_shift.hpp
 /usr/local/include/armadillo_bits/fn_shuffle.hpp
 /usr/local/include/armadillo_bits/fn_size.hpp
 /usr/local/include/armadillo_bits/fn_solve.hpp
@@ -355,6 +354,8 @@
 /usr/local/include/armadillo_bits/newarp_UpperHessenbergQR_bones.hpp
 /usr/local/include/armadillo_bits/newarp_UpperHessenbergQR_meat.hpp
 /usr/local/include/armadillo_bits/newarp_cx_attrib.hpp
+/usr/local/include/armadillo_bits/op_accu_bones.hpp
+/usr/local/include/armadillo_bits/op_accu_meat.hpp
 /usr/local/include/armadillo_bits/op_all_bones.hpp
 /usr/local/include/armadillo_bits/op_all_meat.hpp
 /usr/local/include/armadillo_bits/op_any_bones.hpp
@@ -363,6 +364,8 @@
 /usr/local/include/armadillo_bits/op_chi2rnd_meat.hpp
 /usr/local/include/armadillo_bits/op_chol_bones.hpp
 /usr/local/include/armadillo_bits/op_chol_meat.hpp
+/usr/local/include/armadillo_bits/op_circshift_bones.hpp
+/usr/local/include/armadillo_bits/op_circshift_meat.hpp
 /usr/local/include/armadillo_bits/op_clamp_bones.hpp
 /usr/local/include/armadillo_bits/op_clamp_meat.hpp
 /usr/local/include/armadillo_bits/op_col_as_mat_bones.hpp
@@ -391,6 +394,8 @@
 /usr/local/include/armadillo_bits/op_dot_meat.hpp
 /usr/local/include/armadillo_bits/op_dotext_bones.hpp
 /usr/local/include/armadillo_bits/op_dotext_meat.hpp
+/usr/local/include/armadillo_bits/op_elem_bones.hpp
+/usr/local/include/armadillo_bits/op_elem_meat.hpp
 /usr/local/include/armadillo_bits/op_expmat_bones.hpp
 /usr/local/include/armadillo_bits/op_expmat_meat.hpp
 /usr/local/include/armadillo_bits/op_fft_bones.hpp
@@ -425,8 +430,6 @@
 /usr/local/include/armadillo_bits/op_median_meat.hpp
 /usr/local/include/armadillo_bits/op_min_bones.hpp
 /usr/local/include/armadillo_bits/op_min_meat.hpp
-/usr/local/include/armadillo_bits/op_misc_bones.hpp
-/usr/local/include/armadillo_bits/op_misc_meat.hpp
 /usr/local/include/armadillo_bits/op_nonzeros_bones.hpp
 /usr/local/include/armadillo_bits/op_nonzeros_meat.hpp
 /usr/local/include/armadillo_bits/op_norm2est_bones.hpp
@@ -469,8 +472,6 @@
 /usr/local/include/armadillo_bits/op_roots_meat.hpp
 /usr/local/include/armadillo_bits/op_row_as_mat_bones.hpp
 /usr/local/include/armadillo_bits/op_row_as_mat_meat.hpp
-/usr/local/include/armadillo_bits/op_shift_bones.hpp
-/usr/local/include/armadillo_bits/op_shift_meat.hpp
 /usr/local/include/armadillo_bits/op_shuffle_bones.hpp
 /usr/local/include/armadillo_bits/op_shuffle_meat.hpp
 /usr/local/include/armadillo_bits/op_sort_bones.hpp
@@ -571,6 +572,10 @@
 /usr/local/include/armadillo_bits/spglue_schur_meat.hpp
 /usr/local/include/armadillo_bits/spglue_times_bones.hpp
 /usr/local/include/armadillo_bits/spglue_times_meat.hpp
+/usr/local/include/armadillo_bits/spop_accu_bones.hpp
+/usr/local/include/armadillo_bits/spop_accu_meat.hpp
+/usr/local/include/armadillo_bits/spop_circshift_bones.hpp
+/usr/local/include/armadillo_bits/spop_circshift_meat.hpp
 /usr/local/include/armadillo_bits/spop_diagmat_bones.hpp
 /usr/local/include/armadillo_bits/spop_diagmat_meat.hpp
 /usr/local/include/armadillo_bits/spop_htrans_bones.hpp
@@ -589,8 +594,6 @@
 /usr/local/include/armadillo_bits/spop_repmat_meat.hpp
 /usr/local/include/armadillo_bits/spop_reverse_bones.hpp
 /usr/local/include/armadillo_bits/spop_reverse_meat.hpp
-/usr/local/include/armadillo_bits/spop_shift_bones.hpp
-/usr/local/include/armadillo_bits/spop_shift_meat.hpp
 /usr/local/include/armadillo_bits/spop_strans_bones.hpp
 /usr/local/include/armadillo_bits/spop_strans_meat.hpp
 /usr/local/include/armadillo_bits/spop_symmat_bones.hpp
@@ -642,8 +645,8 @@
 /usr/local/include/armadillo_bits/xvec_htrans_bones.hpp
 /usr/local/include/armadillo_bits/xvec_htrans_meat.hpp
 /usr/local/lib64/libarmadillo.so
-/usr/local/lib64/libarmadillo.so.14
-/usr/local/lib64/libarmadillo.so.14.6.2
+/usr/local/lib64/libarmadillo.so.15
+/usr/local/lib64/libarmadillo.so.15.2.2
 /usr/local/lib64/pkgconfig/armadillo.pc
 /usr/local/share/Armadillo/CMake/ArmadilloConfig.cmake
 /usr/local/share/Armadillo/CMake/ArmadilloConfigVersion.cmake

@@ -389,17 +389,6 @@ jobs:
           fetch-depth: 0
           persist-credentials: true
           ref: ${{ inputs.branch || github.ref_name }}
-      - name: Install ruby-libversion  # Hopefully this will get added as an Ubuntu/Debian package. https://github.com/repology/libversion/issues/35
-        working-directory: ${{ runner.temp }}
-        run: |
-          git clone --depth 1 -b 3.0.4 https://github.com/repology/libversion
-          cd libversion
-          mkdir build
-          cd build
-          cmake ..
-          make -j "$(nproc)"
-          sudo make install
-          sudo gem install --no-update-sources -N ruby-libversion --conservative
       - name: Get GH Token
         id: get_workflow_token
         uses: peter-murray/workflow-application-token-action@v4
@@ -553,18 +542,20 @@ jobs:
           PR_TITLE_INPUT="${{ inputs.pr_title }}"
           if [[ -z ${PR_TITLE_INPUT} ]]; then
             PR_TITLE="$(git log --oneline master..${{ inputs.branch || github.ref_name }} | grep -v "Merge branch 'master'\|Build Run on\|Package File Update Run on" | tail -n 1 | cut -c 11-)"
+            TITLE="$(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}"
           else
             PR_TITLE="${{ inputs.pr_title }}"
+            TITLE="${PR_TITLE}"
           fi
-          echo "PR title is: $(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}"
+          echo "PR title is: ${TITLE}"
           if [[ -n "${PR_LABEL}" ]]; then
               export PR_CREATE_LABEL_FLAG="--label ${{ inputs.pr_label }}"
               export PR_EDIT_LABEL_FLAG="--add-label ${{ inputs.pr_label }}"
           fi
           if [[ -z ${PR_NUMBER} ]]; then
-            PR_NUMBER=$(gh pr create -d --reviewer chromebrew/active $PR_CREATE_LABEL_FLAG --title "$(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
+            PR_NUMBER=$(gh pr create -d --reviewer chromebrew/active $PR_CREATE_LABEL_FLAG --title "${TITLE}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
           else
-            gh pr edit --add-reviewer chromebrew/active $PR_EDIT_LABEL_FLAG --title "$(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}" -F /tmp/pr.txt
+            gh pr edit --add-reviewer chromebrew/active $PR_EDIT_LABEL_FLAG --title "${TITLE}" -F /tmp/pr.txt
           fi
           # Try to update branch before finishing.
           gh pr update-branch --rebase || true

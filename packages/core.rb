@@ -9,8 +9,8 @@ class Core < Package
 
   is_fake
 
-  depends_on 'bash'
-  depends_on 'bash_completion'
+  # depends_on 'bash'
+  # depends_on 'bash_completion'
   depends_on 'brotli'
   depends_on 'bzip2'
   depends_on 'c_ares'
@@ -18,7 +18,7 @@ class Core < Package
   depends_on 'command_not_found'
   depends_on 'crew_mvdir'
   depends_on 'crew_profile_base'
-  depends_on 'crew_sudo' if CHROMEOS_RELEASE.to_i > 116 && !CREW_IN_CONTAINER
+  # depends_on 'crew_sudo' if CHROMEOS_RELEASE.to_i > 116 && !CREW_IN_CONTAINER
   depends_on 'e2fsprogs'
   depends_on 'elfutils'
   depends_on 'expat'

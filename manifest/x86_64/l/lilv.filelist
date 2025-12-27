@@ -1,4 +1,4 @@
-# Total size: 398867
+# Total size: 398815
 /usr/local/bin/lv2apply
 /usr/local/bin/lv2bench
 /usr/local/bin/lv2info
@@ -6,8 +6,8 @@
 /usr/local/etc/bash_completion.d/lilv
 /usr/local/include/lilv-0/lilv/lilv.h
 /usr/local/include/lilv-0/lilv/lilvmm.hpp
-/usr/local/lib/python3.13/site-packages/__pycache__/lilv.cpython-313.pyc
-/usr/local/lib/python3.13/site-packages/lilv.py
+/usr/local/lib/python3.14/site-packages/__pycache__/lilv.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/lilv.py
 /usr/local/lib64/liblilv-0.so
 /usr/local/lib64/liblilv-0.so.0
 /usr/local/lib64/liblilv-0.so.0.24.20

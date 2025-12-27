@@ -6,7 +6,7 @@ require 'buildsystems/rust'
 class Cargo_about < RUST
   description 'Cargo plugin to generate list of all licenses for a crate'
   homepage 'https://github.com/EmbarkStudios/cargo-about'
-  version '0.7.1'
+  version '0.8.4'
   license 'Apache MIT'
   compatibility 'all'
   source_url 'https://github.com/EmbarkStudios/cargo-about.git'
@@ -14,10 +14,10 @@ class Cargo_about < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0c74f01d9c6327ffd3c7971a56447e7c83df5f14ed1e40a60452795747e3aadb',
-     armv7l: '0c74f01d9c6327ffd3c7971a56447e7c83df5f14ed1e40a60452795747e3aadb',
-       i686: '8038a9cfaf806775f03ab9bf02d8caab93758508be712caa82a0a171eeca2ae8',
-     x86_64: '64646e7fca526ae51f654c15d85ab0156b2dfbdc33a9a5b77e4ccc1d639d4984'
+    aarch64: '46f9e15a46d9ffbba523052af853b5c80b51aeb8fa6350aa56a2fde836ca8874',
+     armv7l: '46f9e15a46d9ffbba523052af853b5c80b51aeb8fa6350aa56a2fde836ca8874',
+       i686: 'a571d1a7721ee07663838d86041be348c27c88b3b2faf5686f4084e45cd13a68',
+     x86_64: 'f2bfb1f67c896be2bfb43d1422b3a27ae8138a03f0a90b8fdb7042c42bd8cbce'
   })
 
   depends_on 'gcc_lib' # R

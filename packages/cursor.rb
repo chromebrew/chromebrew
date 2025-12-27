@@ -3,12 +3,12 @@ require 'package'
 class Cursor < Package
   description 'The AI Code Editor'
   homepage 'https://www.cursor.com/'
-  version '2.0.77'
+  version '2.1.48'
   license 'Cursor EULA'
   compatibility 'x86_64'
-  # Download links can be found at https://github.com/oslook/cursor-ai-downloads
-  source_url "https://downloads.cursor.com/production/ba90f2f88e4911312761abab9492c42442117cfe/linux/x64/Cursor-#{version}-x86_64.AppImage"
-  source_sha256 'febedc9a380585e73b7c42947c52b0def52807d2c90763ffeb8e9c31e44aa7fd'
+  # Download links can be found at https://cursor.uuid.site/
+  source_url 'https://downloads.cursor.com/production/ce371ffbf5e240ca47f4b5f3f20efed084991120/linux/x64/Cursor-2.1.48-x86_64.AppImage'
+  source_sha256 '52aeb5659673951c83a8f68d9c96ed785438282f6eb03e437544931a0be8db02'
 
   no_compile_needed
   no_shrink

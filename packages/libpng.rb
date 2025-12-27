@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libpng < CMake
   description 'libpng is the official PNG reference library.'
   homepage 'https://www.libpng.org/pub/png/libpng.html'
-  version '1.6.51'
+  version '1.6.53'
   license 'libpng2'
   compatibility 'all'
   source_url 'https://github.com/pnggroup/libpng.git'
@@ -11,10 +11,10 @@ class Libpng < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3ad0fb2766d354c186aaf88ebcbe9add501594eee507b0598101ca1055baef33',
-     armv7l: '3ad0fb2766d354c186aaf88ebcbe9add501594eee507b0598101ca1055baef33',
-       i686: 'b5f86a98aae17725f36590e43f409686f20fdae55f70709cb077c7b12913b92c',
-     x86_64: 'b9757a9b7641301868b38e5e1f2795e969b65689bcb679f6c7b6d399cc2685c1'
+    aarch64: '6a8dc1970e5fa94081fc14e50ea0ab060ec4af3fe6a6b77b3ff49e1be02da85a',
+     armv7l: '6a8dc1970e5fa94081fc14e50ea0ab060ec4af3fe6a6b77b3ff49e1be02da85a',
+       i686: 'f8b319b2d00dc8771561b140a4d2f9044b8bb2baf5ea714eda06058526f7814b',
+     x86_64: '57168fc3f94d9652220b9fc27d58b1d410c4bb5938e9ef4e39862fe8d545ee20'
   })
 
   depends_on 'glibc' # R

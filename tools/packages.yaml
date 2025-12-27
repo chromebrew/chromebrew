@@ -185,6 +185,11 @@ url: https://www.apache.org/dist/ant/binaries/
 activity: high
 ---
 kind: url
+name: antigravity
+url: https://antigravity.google/download
+activity: high
+---
+kind: url
 name: antiword
 url: http://www.winfield.demon.nl/linux
 activity: none
@@ -1000,6 +1005,11 @@ url: https://gitlab.com/dave_m/clamtk/-/tags
 activity: none
 ---
 kind: url
+name: claude
+url: https://claude.com/product/claude-code
+activity: medium
+---
+kind: url
 name: clean
 url: https://sourceforge.net/projects/clean/files/clean/
 activity: none
@@ -1093,6 +1103,11 @@ kind: url
 name: codelobster
 url: http://codelobsteride.com/#download
 activity: medium
+---
+kind: url
+name: codex
+url: https://github.com/openai/codex/releases
+activity: high
 ---
 kind: url
 name: codon
@@ -2672,11 +2687,6 @@ activity: medium
 kind: url
 name: glpk
 url: https://ftp.gnu.org/gnu/glpk/
-activity: none
----
-kind: url
-name: glproto
-url: https://github.com/freedesktop/glproto/releases
 activity: none
 ---
 kind: url
@@ -4443,11 +4453,6 @@ kind: url
 name: libfyaml
 url: https://github.com/pantoniou/libfyaml/releases
 activity: medium
----
-kind: url
-name: libgc
-url: https://httpredir.debian.org/debian/pool/main/libg/libgc/
-activity: low
 ---
 kind: url
 name: libgconf
@@ -7600,11 +7605,6 @@ url: https://github.com/premake/premake-core/releases
 activity: low
 ---
 kind: url
-name: printproto
-url: https://xorg.freedesktop.org/releases/individual/proto/
-activity: none
----
-kind: url
 name: procps
 url: https://gitlab.com/procps-ng/procps/-/tags
 activity: low
@@ -7780,6 +7780,11 @@ url: https://github.com/pypa/hatch/releases
 activity: medium
 ---
 kind: url
+name: py3_id
+url: https://github.com/di/id/releases
+activity: medium
+---
+kind: url
 name: py3_identify
 url: https://github.com/pre-commit/identify/tags
 activity: medium
@@ -7897,6 +7902,16 @@ activity: medium
 kind: url
 name: py3_referencing
 url: https://github.com/python-jsonschema/referencing/releases
+activity: medium
+---
+kind: url
+name: py3_requests
+url: https://github.com/psf/requests/releases
+activity: medium
+---
+kind: url
+name: py3_requests_toolbelt
+url: https://github.com/requests/toolbelt/tags
 activity: medium
 ---
 kind: url
@@ -10598,6 +10613,11 @@ kind: url
 name: yyjson
 url: https://github.com/ibireme/yyjson/releases
 activity: medium
+---
+kind: url
+name: z
+url: https://github.com/rupa/z/releases
+activity: none
 ---
 kind: url
 name: z_library

@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION = defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION = '1.68.5' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION = '1.68.8' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH = Etc.uname[:machine]
@@ -59,7 +59,7 @@ end
 # These are packages that crew needs to run-- only packages that the bin/crew needs should be required here.
 # lz4, for example, is required for zstd to have lz4 support, but this is not required to run bin/crew.
 CREW_ESSENTIAL_PACKAGES = %W[
-  bash crew_profile_base gcc_lib gmp gnu_time libxcrypt ncurses patchelf readline ruby ruby_matrix upx zlib zlib_ng zstd
+  bash crew_profile_base gcc_lib gmp gnu_time libnghttp2 libxcrypt ncurses patchelf readline ruby ruby_matrix upx zlib zlib_ng zstd
   #{'crew_preload' unless CREW_GLIBC_INTERPRETER.nil?}
   #{'glibc' unless CREW_GLIBC_INTERPRETER.nil?}
   #{ if LIBC_VERSION.to_f > 2.34 && LIBC_VERSION.to_f < 2.41
@@ -177,7 +177,7 @@ USER = Etc.getlogin
 
 CHROMEOS_RELEASE =
   if File.exist?('/etc/lsb-release')
-    File.read('/etc/lsb-release')[/CHROMEOS_RELEASE_CHROME_MILESTONE=(.+)/, 1]
+    CHROMEOS_RELEASE_CHROME_MILESTONE = File.read('/etc/lsb-release')[/CHROMEOS_RELEASE_CHROME_MILESTONE=(.+)/, 1].chomp
   else
     # newer version of Chrome OS exports info to env by default
     ENV.fetch('CHROMEOS_RELEASE_CHROME_MILESTONE', nil)
@@ -345,11 +345,12 @@ PY3_PIP_RETRIES                  = ENV.fetch('PY3_PIP_RETRIES', '5')
 
 # Defaults for the current versions used in version checking, in case
 # we are checking versions from outside Chromebrew, such as in CI.
+# Do adjust necessary variables in install.sh when changed here.
 crew_gcc_ver_default = '15'
 crew_icu_ver_default = '77.1'
 crew_llvm_ver_default = '21'
 crew_perl_ver_default = '5.42'
-crew_py_ver_default = '3.13'
+crew_py_ver_default = '3.14'
 crew_ruby_ver_default = '3.4'
 if ENV['CI']
   CREW_GCC_VER  = "gcc#{crew_gcc_ver_default}"
@@ -369,23 +370,6 @@ end
 @buildsystems = ['Package']
 Dir.glob("#{CREW_LIB_PATH}/lib/buildsystems/*.rb") { |file| @buildsystems << File.foreach(file, encoding: Encoding::UTF_8).grep(/^class/).to_s.split[1] }
 CREW_VALID_BUILDSYSTEMS = @buildsystems.sort!
-
-# Some packges need manual adjustments of URLS for different versions.
-CREW_UPDATER_EXCLUDED_PKGS = Set[
-  { pkg_name: 'clear_cache', comments: 'Internal Chromebrew Package.' },
-  { pkg_name: 'gdk_base', comments: 'Internal Chromebrew Package.' },
-  { pkg_name: 'glibc', comments: 'Requires manual update.' },
-  { pkg_name: 'gpm', comments: 'Upstream is defunct.' },
-  { pkg_name: 'hello_world_chromebrew', comments: 'Internal Chromebrew Package.' },
-  { pkg_name: 'ld_default', comments: 'Internal Chromebrew Package.' },
-  { pkg_name: 'linuxheaders', comments: 'Requires manual update.' },
-  { pkg_name: 'pkg_config', comments: 'Upstream is abandoned.' },
-  { pkg_name: 'py3_ldapdomaindump', comments: 'Build is broken.' },
-  { pkg_name: 'ruby', comments: 'i686 needs building with GCC 14.' },
-  { pkg_name: 'util_linux', comments: '2.41.2 build broken. See https://github.com/util-linux/util-linux/issues/3763' },
-  { pkg_name: 'xdg_base', comments: 'Internal Chromebrew Package.' }
-].to_h { |h| [h[:pkg_name], h[:comments]] }
-CREW_AUTOMATIC_VERSION_UPDATE_EXCLUSION_REGEX = "(#{CREW_UPDATER_EXCLUDED_PKGS.keys.map { |p| "^#{p}$" }.join('|')})"
 
 # Some packages have different names in anitya.
 CREW_ANITYA_PACKAGE_NAME_MAPPINGS = Set[
@@ -457,7 +441,7 @@ CREW_ANITYA_PACKAGE_NAME_MAPPINGS = Set[
   { pkg_name: 'procps', anitya_pkg: 'procps-ng', comments: '' },
   { pkg_name: 'pthread_stubs', anitya_pkg: 'libpthread-stubs', comments: '' },
   { pkg_name: 'py3_atspi', anitya_pkg: 'pyatspi', comments: '' },
-  { pkg_name: 'python3', anitya_pkg: 'python313', comments: '' },
+  { pkg_name: 'python3', anitya_pkg: 'python314', comments: '' },
   { pkg_name: 'rdfind', anitya_pkg: 'rdfind', comments: 'Prefer to GitHub' },
   { pkg_name: 'rest', anitya_pkg: 'librest', comments: 'Prefer to GitHub' },
   { pkg_name: 'selenium_server_standalone', anitya_pkg: 'selenium', comments: '' },

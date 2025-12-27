@@ -11,9 +11,9 @@ class Py3_devedeng < Python
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3a6e041069dede588b118d92a099ba0ce92aa70dfd5905c22e795f15e38aae9d',
-     armv7l: '3a6e041069dede588b118d92a099ba0ce92aa70dfd5905c22e795f15e38aae9d',
-     x86_64: 'fd77cf75388c77f23704bdc96bcfaf2647fc22f5623c3f777769bc5985125590'
+    aarch64: 'df580a3eec96fe5919cf4220c1407462efa14921ac587d39843cc0e1291b87ab',
+     armv7l: 'df580a3eec96fe5919cf4220c1407462efa14921ac587d39843cc0e1291b87ab',
+     x86_64: 'cfe5ea084596c70763ef59ced3c69570d0f3df93d3363c4e1d6d18462ef5a935'
   })
 
   depends_on 'python3' => :build

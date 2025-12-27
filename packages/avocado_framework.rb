@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/python'
 
-class Avocado_framework < Package
+class Avocado_framework < Python
   description 'Avocado is a next generation testing framework inspired by Autotest and modern development tools such as git.'
   homepage 'https://avocado-framework.github.io/'
-  version '111.0'
+  version '112.0'
   license 'GPL-2 and GPL-2+'
   compatibility 'all'
   source_url 'https://github.com/avocado-framework/avocado.git'
@@ -11,21 +11,13 @@ class Avocado_framework < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '22ff88b7d75d1566eadc58e88f1526e82e9e536e5b8e2f7937ee7e5ebf36dfc9',
-     armv7l: '22ff88b7d75d1566eadc58e88f1526e82e9e536e5b8e2f7937ee7e5ebf36dfc9',
-       i686: '6e2cbf94cbe2daa87e7261eee9b60b27627a315346d4e468736638c102767145',
-     x86_64: '12b929bbefcf36d8cb07cc8fc658c70dd2a82aabcc0a4f872a7c3fff2d6bb34c'
+    aarch64: '6a378adcadb53c3be8c7bf82cb61ca67157e82b63e7d34e809ad41a3189d14cf',
+     armv7l: '6a378adcadb53c3be8c7bf82cb61ca67157e82b63e7d34e809ad41a3189d14cf',
+       i686: 'b15ef7164ac47b3fbdcc821a116409ddaabd09410cfce7db38a11b50f12df054',
+     x86_64: '3f299d803640057d49850454097ce822616da78ae6e8a0e6b36c5a729d7fbfd9'
   })
 
   depends_on 'xdg_base'
   depends_on 'xzutils'
   depends_on 'python3' => :build
-
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
 end
