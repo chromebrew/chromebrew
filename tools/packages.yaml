@@ -5120,6 +5120,11 @@ url: http://ftp.gnome.org/pub/GNOME/sources/libsigc++/
 activity: medium
 ---
 kind: url
+name: libsigcplusplus2
+url: http://ftp.gnome.org/pub/GNOME/sources/libsigc++/
+activity: none
+---
+kind: url
 name: libsigcplusplus3
 url: http://ftp.gnome.org/pub/GNOME/sources/libsigc++/
 activity: medium
