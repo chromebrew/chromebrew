@@ -10,10 +10,10 @@ class Ruby_io_wait < RUBY
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: '4f6024ca91fc94cd44d4e84a090d9f4e355b76d04d5ecd0bf8dc5f16517cb638',
-     armv7l: '4f6024ca91fc94cd44d4e84a090d9f4e355b76d04d5ecd0bf8dc5f16517cb638',
-       i686: '81abf826342342e839b2435d262d3b6dc3434d16ddca61263e5f26564fb15b33',
-     x86_64: '8f69c1856f0249eb9d9e5a815df91d1c2975dafefc835bf76bac536162e6431a'
+    aarch64: '20b99bf56af0ca566544e8a8663f25170b511a2dce184ddff0921cf301d1d403',
+     armv7l: '20b99bf56af0ca566544e8a8663f25170b511a2dce184ddff0921cf301d1d403',
+       i686: 'a4c5c6233b17e9f55126e5dafcf2f4f4a5cab1428deae156a41d4aa9b2eb7db8',
+     x86_64: 'b67d1759d016850561239005b1c7ac396faf5459fc6dd1f166545f28613d81f0'
   })
 
   depends_on 'glibc' # R

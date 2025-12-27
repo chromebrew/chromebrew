@@ -1,0 +1,24 @@
+# Total size: 1378053
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-x86-linux/Gemfile
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-x86-linux/LICENSE.txt
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-x86-linux/README.md
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-x86-linux/Rakefile
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-x86-linux/bin/console
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-x86-linux/bin/setup
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-x86-linux/ext/java/org/jruby/ext/nkf/Command.java
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-x86-linux/ext/java/org/jruby/ext/nkf/CommandParser.java
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-x86-linux/ext/java/org/jruby/ext/nkf/NKFLibrary.java
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-x86-linux/ext/java/org/jruby/ext/nkf/Option.java
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-x86-linux/ext/java/org/jruby/ext/nkf/Options.java
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-x86-linux/ext/java/org/jruby/ext/nkf/RubyNKF.java
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-x86-linux/ext/nkf/extconf.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-x86-linux/ext/nkf/nkf-utf8/config.h
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-x86-linux/ext/nkf/nkf-utf8/nkf.c
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-x86-linux/ext/nkf/nkf-utf8/nkf.h
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-x86-linux/ext/nkf/nkf-utf8/utf8tbl.c
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-x86-linux/ext/nkf/nkf-utf8/utf8tbl.h
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-x86-linux/ext/nkf/nkf.c
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-x86-linux/lib/kconv.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-x86-linux/lib/nkf.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-x86-linux/lib/nkf.so
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-x86-linux/nkf.gemspec

@@ -3,7 +3,7 @@ require 'buildsystems/ruby'
 class Ruby_typeprof < RUBY
   description 'TypeProf performs a type analysis of non-annotated Ruby code.'
   homepage 'https://github.com/ruby/typeprof'
-  version "0.31.0-#{CREW_RUBY_VER}"
+  version "0.31.1-#{CREW_RUBY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

@@ -10,11 +10,14 @@ class Ruby_syslog < RUBY
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: '35e45616691617acbedee3b233bc805891ab97d7661f2f89f261d46112ac8d13',
-     armv7l: '35e45616691617acbedee3b233bc805891ab97d7661f2f89f261d46112ac8d13',
-       i686: '32c2074fcb9d7e9903c6c46e56376f5e0288c0f2925ca4d89eac06f1b6c61c00',
-     x86_64: 'ec37532cf8f14c967e6b84e3fc8c8b10d3b0dbdfc6ed4b0736083e4d09e3fb9e'
+    aarch64: '0b3053851621effc962a71d95a11e9227150a4a01d54dddc51b7892bcbc34c18',
+     armv7l: '0b3053851621effc962a71d95a11e9227150a4a01d54dddc51b7892bcbc34c18',
+       i686: 'a423225327a1c48a41319d75cbbaa152e26a503a980b7ef65ea7bdaed68b09e4',
+     x86_64: 'd8eb0339c59075e23d1b1006a4a610dde6b8287629c1a984e75174a903dcc70c'
   })
+
+  depends_on 'glibc' # R
+  depends_on 'ruby' # R
 
   conflicts_ok
   gem_compile_needed
