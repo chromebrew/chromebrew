@@ -1,9 +1,10 @@
 require 'buildsystems/cmake'
+Package.load_package("#{__dir__}/wxwidgets.rb")
 
 class Codelite < CMake
   description 'CodeLite is an open source, free, cross platform IDE, specialized in C, C++, Rust, Python, PHP and JavaScript'
   homepage 'https://codelite.org/'
-  version '18.1.0'
+  version '18.2.0'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/eranif/codelite.git'
@@ -30,4 +31,7 @@ class Codelite < CMake
   depends_on 'gtk3' # R
   depends_on 'pango' # R
   depends_on 'uchardet' # R
+
+  cmake_options "-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    -DCMAKE_C_FLAGS=-I#{CREW_LIB_PREFIX}/wx/include/gtk3-unicode-#{Wxwidgets.version.split('-')[0].sub(/\.\d+$/, '')}"
 end
