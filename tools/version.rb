@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.20 (for Chromebrew)
+# version.rb version 3.21 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose -vv]
 
@@ -75,7 +75,7 @@ def get_version(name, homepage, source)
     puts json if VERY_VERBOSE
     return json['latest_version'] if json['stable_versions'][0].nil?
     return json['stable_versions'][0]
-  elsif !source.nil?
+  elsif !source.nil? && !source.is_a?(Hash)
     # If anitya has failed, we have a variety of fallbacks as a last resort.
     source.sub!('www.', '')
     url = URI.parse(source)
