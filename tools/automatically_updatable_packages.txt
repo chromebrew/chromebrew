@@ -73,4 +73,5 @@ ocaml
 opencode
 rqlite
 vscodium
+xdpyinfo
 yyjson
