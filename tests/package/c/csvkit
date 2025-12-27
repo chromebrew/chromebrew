@@ -1,0 +1,2 @@
+#!/bin/bash
+for b in $(crew files csvkit | grep /usr/local/bin); do $b --version; done

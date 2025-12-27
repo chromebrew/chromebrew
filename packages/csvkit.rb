@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Csvkit < Pip
   description 'A suite of utilities for converting to and working with CSV, the king of tabular file formats.'
   homepage 'https://csvkit.readthedocs.io/en/latest/'
-  version '2.1.0'
+  version '2.2.0'
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
