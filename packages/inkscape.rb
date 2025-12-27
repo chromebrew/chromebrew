@@ -3,12 +3,12 @@ require 'buildsystems/cmake'
 class Inkscape < CMake
   description 'Inkscape is a professional vector graphics editor for Windows, Mac OS X and Linux.'
   homepage 'https://inkscape.org/'
-  version '1.4.1'
+  version '1.4.3'
   license 'GPL-2 and LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.37'
   source_url "https://media.inkscape.org/dl/resources/file/inkscape-#{version}.tar.xz"
-  source_sha256 '74796a8af4e14a0d5d5c1cc58d3ec1ea6d488a04306dd6e8d32c11f0748d7232'
+  source_sha256 '2000530c7917e5260c9e8575a7154ff6926643d2006487d714e304a963f0c782'
   binary_compression 'tar.zst'
 
   binary_sha256({
