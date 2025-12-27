@@ -1,12 +1,12 @@
 # Total size: 33138
-/usr/local/lib/ruby/gems/3.4.0/gems/unicode-display_width-3.2.0/CHANGELOG.md
-/usr/local/lib/ruby/gems/3.4.0/gems/unicode-display_width-3.2.0/MIT-LICENSE.txt
-/usr/local/lib/ruby/gems/3.4.0/gems/unicode-display_width-3.2.0/README.md
-/usr/local/lib/ruby/gems/3.4.0/gems/unicode-display_width-3.2.0/data/display_width.marshal.gz
-/usr/local/lib/ruby/gems/3.4.0/gems/unicode-display_width-3.2.0/lib/unicode/display_width.rb
-/usr/local/lib/ruby/gems/3.4.0/gems/unicode-display_width-3.2.0/lib/unicode/display_width/constants.rb
-/usr/local/lib/ruby/gems/3.4.0/gems/unicode-display_width-3.2.0/lib/unicode/display_width/emoji_support.rb
-/usr/local/lib/ruby/gems/3.4.0/gems/unicode-display_width-3.2.0/lib/unicode/display_width/index.rb
-/usr/local/lib/ruby/gems/3.4.0/gems/unicode-display_width-3.2.0/lib/unicode/display_width/no_string_ext.rb
-/usr/local/lib/ruby/gems/3.4.0/gems/unicode-display_width-3.2.0/lib/unicode/display_width/reline_ext.rb
-/usr/local/lib/ruby/gems/3.4.0/gems/unicode-display_width-3.2.0/lib/unicode/display_width/string_ext.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/unicode-display_width-3.2.0/CHANGELOG.md
+/usr/local/lib/ruby/gems/4.0.0/gems/unicode-display_width-3.2.0/MIT-LICENSE.txt
+/usr/local/lib/ruby/gems/4.0.0/gems/unicode-display_width-3.2.0/README.md
+/usr/local/lib/ruby/gems/4.0.0/gems/unicode-display_width-3.2.0/data/display_width.marshal.gz
+/usr/local/lib/ruby/gems/4.0.0/gems/unicode-display_width-3.2.0/lib/unicode/display_width.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/unicode-display_width-3.2.0/lib/unicode/display_width/constants.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/unicode-display_width-3.2.0/lib/unicode/display_width/emoji_support.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/unicode-display_width-3.2.0/lib/unicode/display_width/index.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/unicode-display_width-3.2.0/lib/unicode/display_width/no_string_ext.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/unicode-display_width-3.2.0/lib/unicode/display_width/reline_ext.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/unicode-display_width-3.2.0/lib/unicode/display_width/string_ext.rb

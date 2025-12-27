@@ -1,2 +1,5 @@
-# Total size: 215
-/usr/local/lib64/ruby/3.4.0/readline.rb
+# Total size: 4439
+/usr/local/lib64/ruby/gems/4.0.0/gems/readline-0.0.4/BSDL
+/usr/local/lib64/ruby/gems/4.0.0/gems/readline-0.0.4/COPYING
+/usr/local/lib64/ruby/gems/4.0.0/gems/readline-0.0.4/README.md
+/usr/local/lib64/ruby/gems/4.0.0/gems/readline-0.0.4/lib/readline.rb

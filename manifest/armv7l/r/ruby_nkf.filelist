@@ -1,0 +1,24 @@
+# Total size: 1403605
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-armv8l-linux-eabihf/Gemfile
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-armv8l-linux-eabihf/LICENSE.txt
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-armv8l-linux-eabihf/README.md
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-armv8l-linux-eabihf/Rakefile
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-armv8l-linux-eabihf/bin/console
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-armv8l-linux-eabihf/bin/setup
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-armv8l-linux-eabihf/ext/java/org/jruby/ext/nkf/Command.java
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-armv8l-linux-eabihf/ext/java/org/jruby/ext/nkf/CommandParser.java
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-armv8l-linux-eabihf/ext/java/org/jruby/ext/nkf/NKFLibrary.java
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-armv8l-linux-eabihf/ext/java/org/jruby/ext/nkf/Option.java
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-armv8l-linux-eabihf/ext/java/org/jruby/ext/nkf/Options.java
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-armv8l-linux-eabihf/ext/java/org/jruby/ext/nkf/RubyNKF.java
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-armv8l-linux-eabihf/ext/nkf/extconf.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-armv8l-linux-eabihf/ext/nkf/nkf-utf8/config.h
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-armv8l-linux-eabihf/ext/nkf/nkf-utf8/nkf.c
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-armv8l-linux-eabihf/ext/nkf/nkf-utf8/nkf.h
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-armv8l-linux-eabihf/ext/nkf/nkf-utf8/utf8tbl.c
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-armv8l-linux-eabihf/ext/nkf/nkf-utf8/utf8tbl.h
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-armv8l-linux-eabihf/ext/nkf/nkf.c
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-armv8l-linux-eabihf/lib/kconv.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-armv8l-linux-eabihf/lib/nkf.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-armv8l-linux-eabihf/lib/nkf.so
+/usr/local/lib/ruby/gems/4.0.0/gems/nkf-0.2.0-armv8l-linux-eabihf/nkf.gemspec

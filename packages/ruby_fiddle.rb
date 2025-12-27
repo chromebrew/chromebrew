@@ -10,11 +10,15 @@ class Ruby_fiddle < RUBY
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: '6c9742b3101b5f8222c3a27d969f92caa8d4875c4d77feb99051cb71dcbe3a44',
-     armv7l: '6c9742b3101b5f8222c3a27d969f92caa8d4875c4d77feb99051cb71dcbe3a44',
-       i686: '60ea5261f339048e9393cc1d8fac09c92303a55a3b0ef238482148a8e3e27b54',
-     x86_64: '0b9ee21db9d0d88443923337300e49609761e9aa9424d1098a2ebfc601faee9f'
+    aarch64: 'e708ffbb59e68a9d6574a1a10a6e0d5374f06c5e085e65c92d8f78f90e625b35',
+     armv7l: 'e708ffbb59e68a9d6574a1a10a6e0d5374f06c5e085e65c92d8f78f90e625b35',
+       i686: 'fb9ed0a9a13afdea2cf358e53cd35cc973865a820ca6fe57798254e7cbec6ecd',
+     x86_64: 'a6bf9e0458ca281f659ae9969242cd32a0cf1b9458149cbcc1554a98006f1ce5'
   })
+
+  depends_on 'glibc' # R
+  depends_on 'libffi' # R
+  depends_on 'ruby' # R
 
   conflicts_ok
   gem_compile_needed

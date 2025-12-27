@@ -10,11 +10,14 @@ class Ruby_fcntl < RUBY
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: '656d15449c41be93bb79ea6f889306d1fbafb13db68134d951d62b91d4f58be5',
-     armv7l: '656d15449c41be93bb79ea6f889306d1fbafb13db68134d951d62b91d4f58be5',
-       i686: '280dac9a4e4eb50656fdc845d81a92be8a1f2474b472b004588b9e231fdabae2',
-     x86_64: 'dc59456c573d998df6f53363648b34cbee700dca440d80d6a9d97c13aaca76f9'
+    aarch64: 'dce6f8f583be42db4e0fc13ff916af39a27788739c78c92fd626e218127e53d2',
+     armv7l: 'dce6f8f583be42db4e0fc13ff916af39a27788739c78c92fd626e218127e53d2',
+       i686: '5fb4646f2f3c9e86391b9aee1a3e01877477e9cac2361d2a90bd48cca1b17775',
+     x86_64: 'c124e7e0fde8831456c59101263283bd9cb3a3e8b3451d4f96bbcd413c45b700'
   })
+
+  depends_on 'glibc' # R
+  depends_on 'ruby' # R
 
   conflicts_ok
   gem_compile_needed
