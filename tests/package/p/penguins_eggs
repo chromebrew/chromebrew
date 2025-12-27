@@ -1,0 +1,3 @@
+#!/bin/bash
+eggs help
+eggs version

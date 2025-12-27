@@ -1,4 +1,4 @@
-# Total size: 2602572
+# Total size: 3488055
 /usr/local/bin/dconf-editor
 /usr/local/share/applications/ca.desrt.dconf-editor.desktop
 /usr/local/share/bash-completion/completions/dconf-editor
@@ -73,9 +73,10 @@
 /usr/local/share/locale/tr/LC_MESSAGES/dconf-editor.mo
 /usr/local/share/locale/ug/LC_MESSAGES/dconf-editor.mo
 /usr/local/share/locale/uk/LC_MESSAGES/dconf-editor.mo
+/usr/local/share/locale/uz/LC_MESSAGES/dconf-editor.mo
 /usr/local/share/locale/vi/LC_MESSAGES/dconf-editor.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/dconf-editor.mo
 /usr/local/share/locale/zh_HK/LC_MESSAGES/dconf-editor.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/dconf-editor.mo
 /usr/local/share/man/man1/dconf-editor.1.zst
-/usr/local/share/metainfo/ca.desrt.dconf-editor.appdata.xml
+/usr/local/share/metainfo/ca.desrt.dconf-editor.metainfo.xml
