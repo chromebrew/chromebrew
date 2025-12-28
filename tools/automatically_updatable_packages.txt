@@ -1,5 +1,6 @@
 acl
 acpi
+acpica
 aliyun_cli
 alsa_lib
 alsa_plugins
