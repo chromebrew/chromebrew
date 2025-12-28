@@ -1,5 +1,6 @@
 acl
 acpi
+acpica
 alsa_lib
 alsa_plugins
 alsa_utils
