@@ -292,22 +292,22 @@ if [[ -n "${CREW_PRE_GLIBC_STANDALONE}" ]]; then
   LIBC_VERSION=$(/lib"${CREW_LIB_SUFFIX}"/libc.so.6 2>/dev/null | awk 'match($0, /Gentoo ([^-]+)/) {print substr($0, RSTART+7, RLENGTH-7)}')
   # Add the appropriate glibc stub package for these systems as
   # subsequent package installs may rely on it.
-  [[ "$ARCH" == "i686" ]] && BOOTSTRAP_PACKAGES='zstd_static glibc_build223'
-  [[ "$LIBC_VERSION" == "2.27" ]] && BOOTSTRAP_PACKAGES='zstd_static glibc_build227'
+  BOOTSTRAP_PACKAGES='zlib zlib_ng'
+  [[ "$ARCH" == "i686" ]] && BOOTSTRAP_PACKAGES+=' zstd_static glibc_build223'
+  [[ "$LIBC_VERSION" == "2.27" ]] && BOOTSTRAP_PACKAGES+=' zstd_static glibc_build227'
 
   [[ -n "${PREFIX_CMD}" ]] && BOOTSTRAP_PACKAGES+=' util_linux'
   # Overwrite the glibc libcrypt.so.1.1.0 with the one from libxcrypt.
-  BOOTSTRAP_PACKAGES+=' libxcrypt '
-  BOOTSTRAP_PACKAGES+=' upx patchelf lz4 zlib xzutils zlib_ng gcc_lib crew_mvdir ca_certificates libyaml openssl findutils ncurses readline psmisc'
+  BOOTSTRAP_PACKAGES+=' libxcrypt upx patchelf lz4 xzutils gcc_lib crew_mvdir ca_certificates libyaml openssl findutils ncurses readline psmisc'
 else
   # Ruby wants gcc_lib, so install our version build against our glibc
   # first.
   # psmisc provides pstree which is used by crew
   # findutils provides find which is used by crew during installs.
-  BOOTSTRAP_PACKAGES='zstd_static glibc'
+  BOOTSTRAP_PACKAGES='zlib zlib_ng zstd_static glibc'
   # Get linux32 as early as possible.
   [[ -n "${PREFIX_CMD}" ]] && BOOTSTRAP_PACKAGES+=' util_linux'
-  BOOTSTRAP_PACKAGES+=' libxcrypt upx patchelf lz4 zlib xzutils zlib_ng crew_mvdir ncurses readline gcc_lib ca_certificates libyaml openssl gmp findutils psmisc'
+  BOOTSTRAP_PACKAGES+=' libxcrypt upx patchelf lz4 xzutils crew_mvdir ncurses readline gcc_lib ca_certificates libyaml openssl gmp findutils psmisc'
   [[ "${ARCH}" == 'i686' ]] || BOOTSTRAP_PACKAGES+=' uutils_coreutils'
 fi
 
