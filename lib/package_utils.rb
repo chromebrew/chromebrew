@@ -138,7 +138,7 @@ class PackageUtils
     crewlog "#{CREW_GITLAB_PKG_REPO}?package_type=generic&package_name=#{pkg_name}&package_version=#{pkg_version}_#{pkg_arch}#{'_build' if build}"
     gitlab_binary_pkg_id = `curl -s --location \
     "#{CREW_GITLAB_PKG_REPO}?package_type=generic&package_name=#{pkg_name}&package_version=#{pkg_version}_#{pkg_arch}#{'_build' if build}" \
-         | jq -r ".[] | select(.name==\\"#{pkg_name}\\" and .version==\\"#{pkg_version}_#{pkg_arch}#{'_build' if build}\\") | .id" 2> /dev/null`.chomp
+         | jq -r ".[] | select(.name==\\"#{pkg_name}\\" and .version==\\"#{pkg_version}_#{pkg_arch}#{'_build' if build}\\") | .id 2> /dev/null"`.chomp
     # Need fallback for complicated versions like in w3m.
     if gitlab_binary_pkg_id.blank?
       gitlab_binary_pkg_id = `curl -s --location \
