@@ -1,0 +1,3 @@
+#!/bin/bash
+aws help | head
+aws --version

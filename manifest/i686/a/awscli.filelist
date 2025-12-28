@@ -1,4 +1,4 @@
-# Total size: 12000481
+# Total size: 12083986
 /usr/local/bin/aws
 /usr/local/bin/aws.cmd
 /usr/local/bin/aws_bash_completer
@@ -6,13 +6,13 @@
 /usr/local/bin/aws_zsh_completer.sh
 /usr/local/etc/bash.d/aws
 /usr/local/etc/zsh.d/aws
-/usr/local/lib/python3.14/site-packages/awscli-1.43.15.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/awscli-1.43.15.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/awscli-1.43.15.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/awscli-1.43.15.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/awscli-1.43.15.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/awscli-1.43.15.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/awscli-1.43.15.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/awscli-1.44.7.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/awscli-1.44.7.dist-info/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/awscli-1.44.7.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/awscli-1.44.7.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/awscli-1.44.7.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/awscli-1.44.7.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/awscli-1.44.7.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/awscli/__init__.py
 /usr/local/lib/python3.14/site-packages/awscli/__main__.py
 /usr/local/lib/python3.14/site-packages/awscli/__pycache__/__init__.cpython-314.pyc
@@ -391,11 +391,13 @@
 /usr/local/lib/python3.14/site-packages/awscli/customizations/s3/syncstrategy/__init__.py
 /usr/local/lib/python3.14/site-packages/awscli/customizations/s3/syncstrategy/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/awscli/customizations/s3/syncstrategy/__pycache__/base.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/awscli/customizations/s3/syncstrategy/__pycache__/caseconflict.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/awscli/customizations/s3/syncstrategy/__pycache__/delete.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/awscli/customizations/s3/syncstrategy/__pycache__/exacttimestamps.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/awscli/customizations/s3/syncstrategy/__pycache__/register.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/awscli/customizations/s3/syncstrategy/__pycache__/sizeonly.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/awscli/customizations/s3/syncstrategy/base.py
+/usr/local/lib/python3.14/site-packages/awscli/customizations/s3/syncstrategy/caseconflict.py
 /usr/local/lib/python3.14/site-packages/awscli/customizations/s3/syncstrategy/delete.py
 /usr/local/lib/python3.14/site-packages/awscli/customizations/s3/syncstrategy/exacttimestamps.py
 /usr/local/lib/python3.14/site-packages/awscli/customizations/s3/syncstrategy/register.py
@@ -980,11 +982,14 @@
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/cancel-update-stack.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/continue-update-rollback.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/create-change-set.rst
+/usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/create-generated-template.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/create-stack-instances.rst
+/usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/create-stack-refactor.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/create-stack-set.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/create-stack.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/deactivate-type.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/delete-change-set.rst
+/usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/delete-generated-template.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/delete-stack-instances.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/delete-stack-set.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/delete-stack.rst
@@ -992,10 +997,13 @@
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/deregister-type.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/describe-account-limits.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/describe-change-set.rst
+/usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/describe-generated-template.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/describe-publisher.rst
+/usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/describe-resource-scan.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/describe-stack-drift-detection-status.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/describe-stack-events.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/describe-stack-instance.rst
+/usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/describe-stack-refactor.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/describe-stack-resource-drifts.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/describe-stack-resource.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/describe-stack-resources.rst
@@ -1009,13 +1017,18 @@
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/detect-stack-set-drift.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/estimate-template-cost.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/execute-change-set.rst
+/usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/execute-stack-refactor.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/get-stack-policy.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/get-template-summary.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/get-template.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/list-change-sets.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/list-exports.rst
+/usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/list-generated-templates.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/list-imports.rst
+/usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/list-resource-scan-related-resources.rst
+/usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/list-resource-scan-resources.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/list-stack-instances.rst
+/usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/list-stack-refactor-actions.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/list-stack-resources.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/list-stack-set-operation-results.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/list-stack-set-operations.rst
@@ -1032,6 +1045,7 @@
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/set-type-configuration.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/set-type-default-version.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/signal-resource.rst
+/usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/start-resource-scan.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/stop-stack-set-operation.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/test-type.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/cloudformation/update-stack-instances.rst
@@ -6287,6 +6301,7 @@
 /usr/local/lib/python3.14/site-packages/awscli/text.py
 /usr/local/lib/python3.14/site-packages/awscli/topics/config-vars.rst
 /usr/local/lib/python3.14/site-packages/awscli/topics/return-codes.rst
+/usr/local/lib/python3.14/site-packages/awscli/topics/s3-case-insensitivity.rst
 /usr/local/lib/python3.14/site-packages/awscli/topics/s3-config.rst
 /usr/local/lib/python3.14/site-packages/awscli/topics/s3-faq.rst
 /usr/local/lib/python3.14/site-packages/awscli/topics/topic-tags.json

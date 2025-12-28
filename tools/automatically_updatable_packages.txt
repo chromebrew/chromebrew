@@ -13,6 +13,7 @@ arp_scan
 asunder
 augeas
 autoconf_archive
+awscli
 axel
 b2
 bc
