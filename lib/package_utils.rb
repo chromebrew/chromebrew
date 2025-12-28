@@ -136,14 +136,14 @@ class PackageUtils
 
     crewlog 'curl -s --location \\'
     crewlog "#{CREW_GITLAB_PKG_REPO}?package_type=generic&package_name=#{pkg_name}&package_version=#{pkg_version}_#{pkg_arch}#{'_build' if build}"
-    gitlab_binary_pkg_id = `curl -s --location \
-    "#{CREW_GITLAB_PKG_REPO}?package_type=generic&package_name=#{pkg_name}&package_version=#{pkg_version}_#{pkg_arch}#{'_build' if build}" 2> /dev/null \
-         | jq -r ".[] | select(.name==\\"#{pkg_name}\\" and .version==\\"#{pkg_version}_#{pkg_arch}#{'_build' if build}\\") | .id" 2>&1`.chomp
+    gitlab_binary_pkg_id = `curl --location \
+    "#{CREW_GITLAB_PKG_REPO}?package_type=generic&package_name=#{pkg_name}&package_version=#{pkg_version}_#{pkg_arch}#{'_build' if build}" \
+         | jq -r ".[] | select(.name==\\"#{pkg_name}\\" and .version==\\"#{pkg_version}_#{pkg_arch}#{'_build' if build}\\") | .id"`.to_s.chomp
     # Need fallback for complicated versions like in w3m.
     if gitlab_binary_pkg_id.blank?
       gitlab_binary_pkg_id = `curl -s --location \
     "#{CREW_GITLAB_PKG_REPO}?package_type=generic&package_name=#{pkg_name}" \
-         | jq -r ".[] | select(.name==\\"#{pkg_name}\\" and .version==\\"#{pkg_version}_#{pkg_arch}#{'_build' if build}\\") | .id" 2>&1`.chomp
+         | jq -r ".[] | select(.name==\\"#{pkg_name}\\" and .version==\\"#{pkg_version}_#{pkg_arch}#{'_build' if build}\\") | .id"`.to_s.chomp
     end
     crewlog "gitlab_binary_pkg_id is #{gitlab_binary_pkg_id}" if verbose
     # What is the hash of the gitlab package remote binary file name?
