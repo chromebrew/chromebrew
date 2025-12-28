@@ -298,7 +298,7 @@ if [[ -n "${CREW_PRE_GLIBC_STANDALONE}" ]]; then
   [[ -n "${PREFIX_CMD}" ]] && BOOTSTRAP_PACKAGES+=' util_linux'
   # Overwrite the glibc libcrypt.so.1.1.0 with the one from libxcrypt.
   BOOTSTRAP_PACKAGES+=' libxcrypt '
-  BOOTSTRAP_PACKAGES+=' upx patchelf lz4 zlib xzutils zlib_ng gcc_lib crew_mvdir ca_certificates libyaml openssl findutils ncurses readline bash psmisc'
+  BOOTSTRAP_PACKAGES+=' upx patchelf lz4 zlib xzutils zlib_ng gcc_lib crew_mvdir ca_certificates libyaml openssl findutils ncurses readline psmisc'
 else
   # Ruby wants gcc_lib, so install our version build against our glibc
   # first.
@@ -307,7 +307,7 @@ else
   BOOTSTRAP_PACKAGES='zstd_static glibc'
   # Get linux32 as early as possible.
   [[ -n "${PREFIX_CMD}" ]] && BOOTSTRAP_PACKAGES+=' util_linux'
-  BOOTSTRAP_PACKAGES+=' libxcrypt upx patchelf lz4 zlib xzutils zlib_ng crew_mvdir ncurses readline bash gcc_lib ca_certificates libyaml openssl gmp findutils psmisc'
+  BOOTSTRAP_PACKAGES+=' libxcrypt upx patchelf lz4 zlib xzutils zlib_ng crew_mvdir ncurses readline gcc_lib ca_certificates libyaml openssl gmp findutils psmisc'
   [[ "${ARCH}" == 'i686' ]] || BOOTSTRAP_PACKAGES+=' uutils_coreutils'
 fi
 
@@ -573,7 +573,7 @@ CREW_RUBY_VER="ruby$(ruby -e 'puts RUBY_VERSION.slice(/(?:.*(?=\.))/)')"
 #${PREFIX_CMD} gem sources -u
 # Avoid repl_type_completor, which pulls in the rbs gem, which needs a build.
 # shellcheck disable=SC2016
-#${PREFIX_CMD} gem outdated | cut -d " " -f 1 | /bin/grep -v repl_type_completor | xargs -I % bash -c 'export pkg=% ; /bin/grep -q no_compile_needed /usr/local/lib/crew/packages/ruby_${pkg//-/_}.rb && (echo "Updating % gem" ; gem update % --no-update-sources -N) || echo "Not updating % gem, since it needs a gem compile and buildessential has not been installed yet."'
+#${PREFIX_CMD} gem outdated | cut -d " " -f 1 | /bin/grep -v repl_type_completor | xargs -I % /bin/bash -c 'export pkg=% ; /bin/grep -q no_compile_needed /usr/local/lib/crew/packages/ruby_${pkg//-/_}.rb && (echo "Updating % gem" ; gem update % --no-update-sources -N) || echo "Not updating % gem, since it needs a gem compile and buildessential has not been installed yet."'
 
 # Mark packages as installed for pre-installed gems.
 mapfile -t installed_gems < <(gem list | awk -F ' \(' '{print $1, $2}' | /bin/sed -e 's/default://' -e 's/)//' -e 's/,//' | awk '{print $1, $2}')
