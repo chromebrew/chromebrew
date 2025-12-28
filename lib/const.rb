@@ -59,7 +59,7 @@ end
 # These are packages that crew needs to run-- only packages that the bin/crew needs should be required here.
 # lz4, for example, is required for zstd to have lz4 support, but this is not required to run bin/crew.
 CREW_ESSENTIAL_PACKAGES = %W[
-  bash crew_profile_base gcc_lib gmp gnu_time libnghttp2 libxcrypt ncurses patchelf readline ruby ruby_matrix upx zlib zlib_ng zstd
+  crew_profile_base gcc_lib gmp gnu_time libnghttp2 libxcrypt ncurses patchelf readline ruby ruby_matrix upx zlib zlib_ng zstd
   #{'crew_preload' unless CREW_GLIBC_INTERPRETER.nil?}
   #{'glibc' unless CREW_GLIBC_INTERPRETER.nil?}
   #{ if LIBC_VERSION.to_f > 2.34 && LIBC_VERSION.to_f < 2.41
