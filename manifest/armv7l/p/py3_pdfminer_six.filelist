@@ -1,4 +1,4 @@
-# Total size: 8187623
+# Total size: 8191614
 /usr/local/bin/__pycache__/dumppdf.cpython-314.pyc
 /usr/local/bin/__pycache__/pdf2txt.cpython-314.pyc
 /usr/local/bin/dumppdf.py
@@ -217,10 +217,10 @@
 /usr/local/lib/python3.14/site-packages/pdfminer/runlength.py
 /usr/local/lib/python3.14/site-packages/pdfminer/settings.py
 /usr/local/lib/python3.14/site-packages/pdfminer/utils.py
-/usr/local/lib/python3.14/site-packages/pdfminer_six-20251107.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/pdfminer_six-20251107.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/pdfminer_six-20251107.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/pdfminer_six-20251107.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/pdfminer_six-20251107.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/pdfminer_six-20251107.dist-info/licenses/LICENSE
-/usr/local/lib/python3.14/site-packages/pdfminer_six-20251107.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/pdfminer_six-20251227.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/pdfminer_six-20251227.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/pdfminer_six-20251227.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/pdfminer_six-20251227.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/pdfminer_six-20251227.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/pdfminer_six-20251227.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/pdfminer_six-20251227.dist-info/top_level.txt
