@@ -1,8 +1,8 @@
 # Total size: 96865
-/usr/local/lib64/ruby/gems/3.4.0/gems/matrix-0.4.3/BSDL
-/usr/local/lib64/ruby/gems/3.4.0/gems/matrix-0.4.3/COPYING
-/usr/local/lib64/ruby/gems/3.4.0/gems/matrix-0.4.3/lib/matrix.rb
-/usr/local/lib64/ruby/gems/3.4.0/gems/matrix-0.4.3/lib/matrix/eigenvalue_decomposition.rb
-/usr/local/lib64/ruby/gems/3.4.0/gems/matrix-0.4.3/lib/matrix/lup_decomposition.rb
-/usr/local/lib64/ruby/gems/3.4.0/gems/matrix-0.4.3/lib/matrix/version.rb
-/usr/local/lib64/ruby/gems/3.4.0/gems/matrix-0.4.3/matrix.gemspec
+/usr/local/lib64/ruby/gems/4.0.0/gems/matrix-0.4.3/BSDL
+/usr/local/lib64/ruby/gems/4.0.0/gems/matrix-0.4.3/COPYING
+/usr/local/lib64/ruby/gems/4.0.0/gems/matrix-0.4.3/lib/matrix.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/matrix-0.4.3/lib/matrix/eigenvalue_decomposition.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/matrix-0.4.3/lib/matrix/lup_decomposition.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/matrix-0.4.3/lib/matrix/version.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/matrix-0.4.3/matrix.gemspec

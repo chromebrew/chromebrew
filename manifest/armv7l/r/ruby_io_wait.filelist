@@ -1,8 +1,8 @@
-# Total size: 23851
-/usr/local/lib/ruby/gems/3.4.0/gems/io-wait-0.3.6-armv8l-linux-eabihf/COPYING
-/usr/local/lib/ruby/gems/3.4.0/gems/io-wait-0.3.6-armv8l-linux-eabihf/README.md
-/usr/local/lib/ruby/gems/3.4.0/gems/io-wait-0.3.6-armv8l-linux-eabihf/_doc/io.rb
-/usr/local/lib/ruby/gems/3.4.0/gems/io-wait-0.3.6-armv8l-linux-eabihf/ext/io/wait/depend
-/usr/local/lib/ruby/gems/3.4.0/gems/io-wait-0.3.6-armv8l-linux-eabihf/ext/io/wait/extconf.rb
-/usr/local/lib/ruby/gems/3.4.0/gems/io-wait-0.3.6-armv8l-linux-eabihf/ext/io/wait/wait.c
-/usr/local/lib/ruby/gems/3.4.0/gems/io-wait-0.3.6-armv8l-linux-eabihf/lib/io/wait.so
+# Total size: 8800
+/usr/local/lib/ruby/gems/4.0.0/gems/io-wait-0.4.0-armv8l-linux-eabihf/COPYING
+/usr/local/lib/ruby/gems/4.0.0/gems/io-wait-0.4.0-armv8l-linux-eabihf/README.md
+/usr/local/lib/ruby/gems/4.0.0/gems/io-wait-0.4.0-armv8l-linux-eabihf/_doc/io.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/io-wait-0.4.0-armv8l-linux-eabihf/ext/io/wait/depend
+/usr/local/lib/ruby/gems/4.0.0/gems/io-wait-0.4.0-armv8l-linux-eabihf/ext/io/wait/extconf.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/io-wait-0.4.0-armv8l-linux-eabihf/ext/io/wait/wait.c
+/usr/local/lib/ruby/gems/4.0.0/gems/io-wait-0.4.0-armv8l-linux-eabihf/lib/io/wait.so

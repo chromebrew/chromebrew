@@ -1,0 +1,3 @@
+#!/bin/bash
+keepassxc -h
+keepassxc -v

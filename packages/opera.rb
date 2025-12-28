@@ -3,12 +3,12 @@ require 'package'
 class Opera < Package
   description 'Opera is a multi-platform web browser based on Chromium and developed by Opera Software.'
   homepage 'https://www.opera.com/'
-  version '125.0.5729.15'
+  version '125.0.5729.49'
   license 'OPERA-2018'
   compatibility 'x86_64'
 
   source_url "https://deb.opera.com/opera-stable/pool/non-free/o/opera-stable/opera-stable_#{version}_amd64.deb"
-  source_sha256 'aa82b1ac72ec4aa07108f17568267fe7ad266e1ee8dbac66f2c15f255952d073'
+  source_sha256 'badc645bfe6130b9b4d4341a0a4c82c5ac5f115f4daf5203b90c66d072fa40b7'
 
   no_compile_needed
   no_shrink
@@ -23,7 +23,7 @@ class Opera < Package
   def self.build
     File.write 'opera.sh', <<~EOF
       #!/bin/bash
-      LD_LIBRARY_PATH=/usr/local/share/x86_64-linux-gnu/opera-stable:$LD_LIBRARY
+      LD_LIBRARY_PATH=#{CREW_PREFIX}/share/x86_64-linux-gnu/opera-stable:$LD_LIBRARY
       #{CREW_PREFIX}/share/x86_64-linux-gnu/opera-stable/opera "$@"
     EOF
   end

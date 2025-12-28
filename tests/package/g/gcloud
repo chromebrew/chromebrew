@@ -1,0 +1,4 @@
+#!/bin/bash
+echo 'n' | gcloud init
+gcloud --help | head
+gcloud --version

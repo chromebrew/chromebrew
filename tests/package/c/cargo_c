@@ -1,0 +1,2 @@
+#!/bin/bash
+for b in $(crew files cargo_c | grep /usr/local/bin); do $b --version; done

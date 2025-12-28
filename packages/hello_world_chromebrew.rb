@@ -13,10 +13,10 @@ class Hello_world_chromebrew < Package
   # These are needed to successfully build and check for dependencies.
 
   binary_sha256({
-    aarch64: 'd2fb648b2f41ea10f851fc66602a15e595866a7e0b6cd999969e038a3af74bc1',
-     armv7l: 'd2fb648b2f41ea10f851fc66602a15e595866a7e0b6cd999969e038a3af74bc1',
-       i686: '9303a26a1a3c9ad93edf874da13148ccd823e9c5f4739ca8675d141065eac9ab',
-     x86_64: '486eac7f7f9cbc5010d667c7bdd3991c4da6ef79040afc68775cbe7f0ee6a167'
+    aarch64: '2b92a497fbf44d4d89339d79aa5497a71bcfd52bc7cfb44066eeb1de5d5fba63',
+     armv7l: '2b92a497fbf44d4d89339d79aa5497a71bcfd52bc7cfb44066eeb1de5d5fba63',
+       i686: 'f7f929d718adbaa506c1f87f738ef25da8792f952323900a191d0982cbe5eed6',
+     x86_64: '6af9b35814f5e9bfa2f33a01fc7574be4a1d203ddc07b7c5f24f85abc0cbb979'
   })
 
   # Register dependencies (use the following line as a basis)
@@ -25,6 +25,7 @@ class Hello_world_chromebrew < Package
   # depends_on '*' # R
   # Build dependencies:
   # depends_on '*' => :build
+  depends_on 'glibc' # R
 
   # Function to perform patch operations prior to build from source.
   def self.patch

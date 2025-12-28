@@ -3,12 +3,12 @@ require 'package'
 class Firefox < Package
   description 'Mozilla Firefox (or simply Firefox) is a free and open-source web browser'
   homepage 'https://www.mozilla.org/en-US/firefox/'
-  version '145.0'
+  version '146.0.1'
   license 'MPL-2.0, GPL-2 and LGPL-2.1'
   compatibility 'x86_64'
   min_glibc '2.35'
   source_url "https://download-installer.cdn.mozilla.net/pub/firefox/releases/#{version}/linux-x86_64/en-US/firefox-#{version}.tar.xz"
-  source_sha256 '00fb922cda6bab971e02bcbfb77923b0a234388ed7d77c23506ca0a1a61d4a86'
+  source_sha256 '36a4dc0e3be8af2d49d8388021abf790976d2398162b9d13a6d758cc8c37f8dd'
 
   depends_on 'at_spi2_core'
   depends_on 'cairo'
@@ -82,7 +82,7 @@ class Firefox < Package
     end
     # The following image is needed for crew-launcher which requires a minimum icon size of 144x144.
     downloader 'https://images.freeimages.com/fic/images/icons/783/mozilla_pack/256/firefox.png',
-               '314c3d2fe4cce3629007519a08e21c7aea8bd65ec262a11b00c0f583dd4a2087'
+               '9ef1fb263cd33c0ffae8eca3df466e2d9b9cf8b7c598bfa72e8a2dc68bed11c4'
     FileUtils.install 'firefox.png', "#{icon_base_path}/256x256/apps/firefox.png", mode: 0o644
   end
 

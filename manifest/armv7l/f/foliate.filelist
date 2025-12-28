@@ -1,4 +1,4 @@
-# Total size: 3611111
+# Total size: 12557807
 /usr/local/bin/foliate
 /usr/local/share/applications/com.github.johnfactotum.Foliate.desktop
 /usr/local/share/com.github.johnfactotum.Foliate/com.github.johnfactotum.Foliate.gresource
@@ -13,12 +13,15 @@
 /usr/local/share/locale/eu/LC_MESSAGES/com.github.johnfactotum.Foliate.mo
 /usr/local/share/locale/fa_IR/LC_MESSAGES/com.github.johnfactotum.Foliate.mo
 /usr/local/share/locale/fr/LC_MESSAGES/com.github.johnfactotum.Foliate.mo
+/usr/local/share/locale/gl/LC_MESSAGES/com.github.johnfactotum.Foliate.mo
 /usr/local/share/locale/he/LC_MESSAGES/com.github.johnfactotum.Foliate.mo
 /usr/local/share/locale/hi/LC_MESSAGES/com.github.johnfactotum.Foliate.mo
 /usr/local/share/locale/hr/LC_MESSAGES/com.github.johnfactotum.Foliate.mo
+/usr/local/share/locale/hu/LC_MESSAGES/com.github.johnfactotum.Foliate.mo
 /usr/local/share/locale/id/LC_MESSAGES/com.github.johnfactotum.Foliate.mo
 /usr/local/share/locale/ie/LC_MESSAGES/com.github.johnfactotum.Foliate.mo
 /usr/local/share/locale/it/LC_MESSAGES/com.github.johnfactotum.Foliate.mo
+/usr/local/share/locale/ja/LC_MESSAGES/com.github.johnfactotum.Foliate.mo
 /usr/local/share/locale/ko/LC_MESSAGES/com.github.johnfactotum.Foliate.mo
 /usr/local/share/locale/nb/LC_MESSAGES/com.github.johnfactotum.Foliate.mo
 /usr/local/share/locale/nl/LC_MESSAGES/com.github.johnfactotum.Foliate.mo
@@ -26,6 +29,7 @@
 /usr/local/share/locale/oc/LC_MESSAGES/com.github.johnfactotum.Foliate.mo
 /usr/local/share/locale/pt_BR/LC_MESSAGES/com.github.johnfactotum.Foliate.mo
 /usr/local/share/locale/ru/LC_MESSAGES/com.github.johnfactotum.Foliate.mo
+/usr/local/share/locale/sr/LC_MESSAGES/com.github.johnfactotum.Foliate.mo
 /usr/local/share/locale/sv/LC_MESSAGES/com.github.johnfactotum.Foliate.mo
 /usr/local/share/locale/tr/LC_MESSAGES/com.github.johnfactotum.Foliate.mo
 /usr/local/share/locale/uk/LC_MESSAGES/com.github.johnfactotum.Foliate.mo

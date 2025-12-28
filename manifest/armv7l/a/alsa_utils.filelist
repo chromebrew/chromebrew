@@ -1,4 +1,4 @@
-# Total size: 2522756
+# Total size: 2542254
 /usr/local/bin/aconnect
 /usr/local/bin/alsabat
 /usr/local/bin/alsaloop
@@ -50,8 +50,6 @@
 /usr/local/share/man/man1/alsactl.1.zst
 /usr/local/share/man/man1/alsaloop.1.zst
 /usr/local/share/man/man1/alsamixer.1.zst
-/usr/local/share/man/man1/alsatplg.1.zst
-/usr/local/share/man/man1/alsaucm.1.zst
 /usr/local/share/man/man1/amidi.1.zst
 /usr/local/share/man/man1/amixer.1.zst
 /usr/local/share/man/man1/aplay.1.zst

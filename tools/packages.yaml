@@ -3380,6 +3380,11 @@ url: https://github.com/open-mpi/hwloc/tags
 activity: medium
 ---
 kind: url
+name: hyperfine
+url: https://github.com/sharkdp/hyperfine/releases
+activity: medium
+---
+kind: url
 name: hyphen
 url: https://github.com/hunspell/hyphen/
 activity: none
@@ -5115,6 +5120,11 @@ url: http://ftp.gnome.org/pub/GNOME/sources/libsigc++/
 activity: medium
 ---
 kind: url
+name: libsigcplusplus2
+url: http://ftp.gnome.org/pub/GNOME/sources/libsigc++/
+activity: none
+---
+kind: url
 name: libsigcplusplus3
 url: http://ftp.gnome.org/pub/GNOME/sources/libsigc++/
 activity: medium
@@ -6015,6 +6025,11 @@ url: https://git.kernel.org/pub/scm/utils/cpu/mce/mcelog.git/
 activity: medium
 ---
 kind: url
+name: mcfly
+url: https://github.com/cantino/mcfly/releases
+activity: low
+---
+kind: url
 name: mdp
 url: https://github.com/visit1985/mdp/releases
 activity: low
@@ -6780,6 +6795,11 @@ url: https://github.com/KhronosGroup/OpenCL-ICD-Loader/releases
 activity: medium
 ---
 kind: url
+name: opencode
+url: https://github.com/sst/opencode/releases
+activity: high
+---
+kind: url
 name: openconnect
 url: ftp://ftp.infradead.org/pub/openconnect/
 activity: none
@@ -7108,6 +7128,11 @@ kind: url
 name: peg
 url: https://www.piumarta.com/software/peg/
 activity: none
+---
+kind: url
+name: penguins_eggs
+url: https://github.com/pieroproietti/penguins-eggs/releases
+activity: high
 ---
 kind: url
 name: perf

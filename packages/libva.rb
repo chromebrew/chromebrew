@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Libva < Meson
   description 'Libva is an implementation for VA-API (Video Acceleration API)'
   homepage 'https://01.org/linuxmedia'
-  version '2.22.0'
+  version '2.23.0'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/intel/libva.git'
@@ -11,9 +11,9 @@ class Libva < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'df90f06f31baa1d5788f74db2e7375d1b55a65139682b462d48ea7d4c2288414',
-     armv7l: 'df90f06f31baa1d5788f74db2e7375d1b55a65139682b462d48ea7d4c2288414',
-     x86_64: 'd69d1976c650f61712667bdbafecf9a0ca7cf8af250c8d1e0496a31e35031791'
+    aarch64: '8fe3ef3ef6c128d4eb23b5a060f9f55a22c5e5f95b82379d29dff4173b734eb5',
+     armv7l: '8fe3ef3ef6c128d4eb23b5a060f9f55a22c5e5f95b82379d29dff4173b734eb5',
+     x86_64: 'd3035b4ddbd9c5838c1b825cfd22c2fb7cfcefde0946eb13eab7f20f8d40c597'
   })
 
   depends_on 'glibc' # R

@@ -7,7 +7,7 @@ require 'buildsystems/rust'
 class Cargo_c < RUST
   description 'A cargo subcommand to build and install C-ABI compatible dynamic and static libraries'
   homepage 'https://github.com/lu-zero/cargo-c/'
-  version '0.10.14'
+  version '0.10.19'
   license 'LGPL-2.1 and MPL-1.1'
   compatibility 'all'
   source_url 'https://github.com/lu-zero/cargo-c.git'
@@ -15,10 +15,10 @@ class Cargo_c < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0f23fe4cd20b5a93305638bb2590215df77524d1b360525a791f7eded771a4a9',
-     armv7l: '0f23fe4cd20b5a93305638bb2590215df77524d1b360525a791f7eded771a4a9',
-       i686: '8ee676ffbbbe4126998aeb3c2deecfa85db3d755b74504a964f57c533a14fd1d',
-     x86_64: '269fe0575a46cc4cccd5af15071ddd14d14901a29a5dab31d4cdf7ee01e5458f'
+    aarch64: '508bd6cd29beb51a6031077fc797ceb14de2b54aaaef3aabcd2009467ef51c14',
+     armv7l: '508bd6cd29beb51a6031077fc797ceb14de2b54aaaef3aabcd2009467ef51c14',
+       i686: '79a4f693895c39f8beffbf6425aa6467a59aaedcab04163793d48d5d937d1c43',
+     x86_64: '1f193eca5b477ebd37e6250a623560b9b232e9f5832659df13dd8a3cf5bc72fc'
   })
 
   depends_on 'curl' # R

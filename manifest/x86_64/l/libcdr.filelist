@@ -1,3 +1,4 @@
+# Total size: 8287936
 /usr/local/bin/cdr2raw
 /usr/local/bin/cdr2text
 /usr/local/bin/cdr2xhtml
@@ -11,7 +12,7 @@
 /usr/local/lib64/libcdr-0.1.la
 /usr/local/lib64/libcdr-0.1.so
 /usr/local/lib64/libcdr-0.1.so.1
-/usr/local/lib64/libcdr-0.1.so.1.0.7
+/usr/local/lib64/libcdr-0.1.so.1.0.8
 /usr/local/lib64/pkgconfig/libcdr-0.1.pc
 /usr/local/share/doc/libcdr/html/CDRCollector_8cpp.html
 /usr/local/share/doc/libcdr/html/CDRCollector_8h.html
@@ -61,8 +62,6 @@
 /usr/local/share/doc/libcdr/html/CommonParser_8h.html
 /usr/local/share/doc/libcdr/html/CommonParser_8h_source.html
 /usr/local/share/doc/libcdr/html/annotated.html
-/usr/local/share/doc/libcdr/html/bc_s.png
-/usr/local/share/doc/libcdr/html/bc_sd.png
 /usr/local/share/doc/libcdr/html/classes.html
 /usr/local/share/doc/libcdr/html/classlibcdr_1_1CDRArcToElement-members.html
 /usr/local/share/doc/libcdr/html/classlibcdr_1_1CDRArcToElement.html
@@ -167,7 +166,6 @@
 /usr/local/share/doc/libcdr/html/classlibcdr_1_1EndOfStreamException.html
 /usr/local/share/doc/libcdr/html/classlibcdr_1_1GenericException.html
 /usr/local/share/doc/libcdr/html/classlibcdr_1_1UnknownPrecisionException.html
-/usr/local/share/doc/libcdr/html/closed.png
 /usr/local/share/doc/libcdr/html/dir_2b3695d7d1985b128e4cd1a7992c9c05.html
 /usr/local/share/doc/libcdr/html/dir_68267d1309a1af8e8297ef4c3efbcdba.html
 /usr/local/share/doc/libcdr/html/dir_bfccd401955b95cf8c75461437045ac0.html
@@ -261,15 +259,7 @@
 /usr/local/share/doc/libcdr/html/namespacemembers_eval.html
 /usr/local/share/doc/libcdr/html/namespacemembers_func.html
 /usr/local/share/doc/libcdr/html/namespaces.html
-/usr/local/share/doc/libcdr/html/nav_f.png
-/usr/local/share/doc/libcdr/html/nav_fd.png
-/usr/local/share/doc/libcdr/html/nav_g.png
-/usr/local/share/doc/libcdr/html/nav_h.png
-/usr/local/share/doc/libcdr/html/nav_hd.png
 /usr/local/share/doc/libcdr/html/navtree.css
-/usr/local/share/doc/libcdr/html/open.png
-/usr/local/share/doc/libcdr/html/splitbar.png
-/usr/local/share/doc/libcdr/html/splitbard.png
 /usr/local/share/doc/libcdr/html/structlibcdr_1_1CDRBitmap-members.html
 /usr/local/share/doc/libcdr/html/structlibcdr_1_1CDRBitmap.html
 /usr/local/share/doc/libcdr/html/structlibcdr_1_1CDRBox-members.html
@@ -328,14 +318,4 @@
 /usr/local/share/doc/libcdr/html/structlibcdr_1_1WaldoRecordInfo.html
 /usr/local/share/doc/libcdr/html/structlibcdr_1_1WaldoRecordType1-members.html
 /usr/local/share/doc/libcdr/html/structlibcdr_1_1WaldoRecordType1.html
-/usr/local/share/doc/libcdr/html/sync_off.png
-/usr/local/share/doc/libcdr/html/sync_on.png
-/usr/local/share/doc/libcdr/html/tab_a.png
-/usr/local/share/doc/libcdr/html/tab_ad.png
-/usr/local/share/doc/libcdr/html/tab_b.png
-/usr/local/share/doc/libcdr/html/tab_bd.png
-/usr/local/share/doc/libcdr/html/tab_h.png
-/usr/local/share/doc/libcdr/html/tab_hd.png
-/usr/local/share/doc/libcdr/html/tab_s.png
-/usr/local/share/doc/libcdr/html/tab_sd.png
 /usr/local/share/doc/libcdr/html/tabs.css

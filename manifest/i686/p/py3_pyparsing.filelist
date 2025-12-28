@@ -1,10 +1,10 @@
-# Total size: 997490
-/usr/local/lib/python3.14/site-packages/pyparsing-3.2.5.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/pyparsing-3.2.5.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/pyparsing-3.2.5.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/pyparsing-3.2.5.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/pyparsing-3.2.5.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/pyparsing-3.2.5.dist-info/licenses/LICENSE
+# Total size: 1042036
+/usr/local/lib/python3.14/site-packages/pyparsing-3.3.1.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/pyparsing-3.3.1.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/pyparsing-3.3.1.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/pyparsing-3.3.1.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/pyparsing-3.3.1.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/pyparsing-3.3.1.dist-info/licenses/LICENSE
 /usr/local/lib/python3.14/site-packages/pyparsing/__init__.py
 /usr/local/lib/python3.14/site-packages/pyparsing/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pyparsing/__pycache__/actions.cpython-314.pyc
@@ -17,6 +17,13 @@
 /usr/local/lib/python3.14/site-packages/pyparsing/__pycache__/unicode.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pyparsing/__pycache__/util.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pyparsing/actions.py
+/usr/local/lib/python3.14/site-packages/pyparsing/ai/__init__.py
+/usr/local/lib/python3.14/site-packages/pyparsing/ai/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/pyparsing/ai/best_practices.md
+/usr/local/lib/python3.14/site-packages/pyparsing/ai/show_best_practices/__init__.py
+/usr/local/lib/python3.14/site-packages/pyparsing/ai/show_best_practices/__main__.py
+/usr/local/lib/python3.14/site-packages/pyparsing/ai/show_best_practices/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/pyparsing/ai/show_best_practices/__pycache__/__main__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pyparsing/common.py
 /usr/local/lib/python3.14/site-packages/pyparsing/core.py
 /usr/local/lib/python3.14/site-packages/pyparsing/diagram/__init__.py

@@ -3,18 +3,21 @@ require 'buildsystems/ruby'
 class Ruby_io_console < RUBY
   description 'add console capabilities to IO instances.'
   homepage 'https://github.com/ruby/io-console'
-  version "0.8.1-#{CREW_RUBY_VER}"
+  version "0.8.2-#{CREW_RUBY_VER}"
   license 'BSD-2-Clause'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: 'ffdac0f757bcef6149a861d461290a22d5be5c03cdde27450297d1605ad7d516',
-     armv7l: 'ffdac0f757bcef6149a861d461290a22d5be5c03cdde27450297d1605ad7d516',
-       i686: 'b13e17e63eb453cf871dcd3dca24fb5620aee619bb842f863888060f34ef9663',
-     x86_64: '7f4de5173f80bc06fd9c9cdaa2a31e26df030706dd62adfc32d7d135efdb4529'
+    aarch64: 'b937bfd6041b647b71dda88d7a5ceb5911be051a12eb45b835c2e4dedcfe3f27',
+     armv7l: 'b937bfd6041b647b71dda88d7a5ceb5911be051a12eb45b835c2e4dedcfe3f27',
+       i686: '952be7ef51d147a4f46928593b3ae4091b13a399132db387bd0fbcfa5582139a',
+     x86_64: '416956a3e4a00890c0467ae382748a8958d14dc5e667d50111a646d74553246f'
   })
+
+  depends_on 'glibc' # R
+  depends_on 'ruby' # R
 
   conflicts_ok
   gem_compile_needed

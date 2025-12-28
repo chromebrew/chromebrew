@@ -1,0 +1,3 @@
+#!/bin/bash
+monero-wallet-cli --help 2>&1 | head
+monero-wallet-cli --version

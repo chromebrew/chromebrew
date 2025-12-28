@@ -3,18 +3,21 @@ require 'buildsystems/ruby'
 class Ruby_cgi < RUBY
   description 'Support for the common gateway interface protocol.'
   homepage 'https://github.com/ruby/cgi'
-  version "0.5.0-#{CREW_RUBY_VER}"
+  version "0.5.1-#{CREW_RUBY_VER}"
   license 'Ruby'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: '638200863fc3f23003e62cfd66d5d141fe46669bcde9766f5e147d59e16a0ce0',
-     armv7l: '638200863fc3f23003e62cfd66d5d141fe46669bcde9766f5e147d59e16a0ce0',
-       i686: '6526f8417c3820f657b82e81696c9bf49285325abac8cf6bcbed35b6c8e3e6b1',
-     x86_64: '5fdfffc4229cebfca3f283abf42e43371a4a0f2c1567dc4a3d3067e5ce45a959'
+    aarch64: '9a8e934fb192f32542a87df91baaa03086ddd14ee8dbb7e775606f4c6c20f781',
+     armv7l: '9a8e934fb192f32542a87df91baaa03086ddd14ee8dbb7e775606f4c6c20f781',
+       i686: '800fbfbe1e6ec939de9d9aa8fe791a73fca655edb4b20458d8cdd7cb55aa3d23',
+     x86_64: '4c0e2ff6099091acd23f8b5e4e3789e778a8ca9da68c9800b142971c54feb84c'
   })
+
+  depends_on 'glibc' # R
+  depends_on 'ruby' # R
 
   conflicts_ok
   gem_compile_needed

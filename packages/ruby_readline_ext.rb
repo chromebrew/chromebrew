@@ -10,11 +10,16 @@ class Ruby_readline_ext < RUBY
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: '2d279fe49a1e4288894174f550f1af00e25016faca6bb36ec37baabd566ee1b7',
-     armv7l: '2d279fe49a1e4288894174f550f1af00e25016faca6bb36ec37baabd566ee1b7',
-       i686: '40344f5aa782feb32a556ac4bb5b9d8f84605f9065d0f7ffd65307a9006b0c7a',
-     x86_64: '0e121aa723be9b294b25717b2da9815a92675f540afff310b2f92885ea26f2cc'
+    aarch64: '56dbf983fb57f4c9fd2de679bf536e48292a836af69ac204d9e8c998bdfbf137',
+     armv7l: '56dbf983fb57f4c9fd2de679bf536e48292a836af69ac204d9e8c998bdfbf137',
+       i686: 'fb6e9fc2c5d816938a06ad8b32e3169223f2961e8f63ea8cdfbef0f03e13cc78',
+     x86_64: '045b680143d1fab63b63752c9ddc87957b4d5c2b089c63ce36c234047b7dbf18'
   })
+
+  depends_on 'glibc' # R
+  depends_on 'ncurses' # R
+  depends_on 'readline' # R
+  depends_on 'ruby' # R
 
   conflicts_ok
   gem_compile_needed

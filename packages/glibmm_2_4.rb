@@ -19,7 +19,7 @@ class Glibmm_2_4 < Meson
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
-  depends_on 'libsigcplusplus' # R
+  depends_on 'libsigcplusplus2' # R
   depends_on 'mm_common' => :build
 
   gnome

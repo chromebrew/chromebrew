@@ -10,11 +10,15 @@ class Ruby_dbm < RUBY
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: 'fd9835fe70bd21049a79b6c72f1b1aecd0bdb9e9f287317d7ac1e5d84e6445fb',
-     armv7l: 'fd9835fe70bd21049a79b6c72f1b1aecd0bdb9e9f287317d7ac1e5d84e6445fb',
-       i686: 'eb9258697d79caa82143f9e61ea51d522c1c2341e524fdcda99674cedeed9be0',
-     x86_64: 'b21fb3132169637c38e1bae6c011e99b318f69a66e7d2826cb9a5da992933de3'
+    aarch64: 'da0ace268b4084f769d3b521cf8b8cda8a45a352533595127e57b937f1d61ded',
+     armv7l: 'da0ace268b4084f769d3b521cf8b8cda8a45a352533595127e57b937f1d61ded',
+       i686: 'cbed7a0dbb899968d9f2128b3f6abea146aea2e66d1776d0a62fd474c50d333f',
+     x86_64: '43af5c5483c3168bc69329b686a31e87fc725d3b8df888b6ae9039deb92e9dbd'
   })
+
+  depends_on 'glibc' # R
+  depends_on 'libdb' # R
+  depends_on 'ruby' # R
 
   conflicts_ok
   gem_compile_needed

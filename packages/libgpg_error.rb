@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Libgpg_error < Autotools
   description 'Libgpg-error is a small library that defines common error values for all GnuPG components.'
   homepage 'https://www.gnupg.org/related_software/libgpg-error/index.html'
-  version '1.56'
+  version '1.58'
   license 'GPL-2 and LGPL-2.1'
   compatibility 'all'
   # source_url "https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-#{version}.tar.bz2"
@@ -13,10 +13,10 @@ class Libgpg_error < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '39da8b9fe114a779d082d4354bd6b76bc90e7959ca8b69bb2be45cb0f255bdb2',
-     armv7l: '39da8b9fe114a779d082d4354bd6b76bc90e7959ca8b69bb2be45cb0f255bdb2',
-       i686: '16c159fe9b1352f0e0805099d2ea2013b746ee3621645d300211e7dad124d079',
-     x86_64: '16503f0ff1003dacfa400f8051d4b21b28f30d9346bd0c88aac50879371e072c'
+    aarch64: '805b6f751948d0f8471fc8dcab33797e8ff0ad036413a33f1e5d2813b2e9d7fe',
+     armv7l: '805b6f751948d0f8471fc8dcab33797e8ff0ad036413a33f1e5d2813b2e9d7fe',
+       i686: 'cebd41e587baa010d4c4ed4d04d7eceb7fa223eabfd6b265a9185ce711376676',
+     x86_64: 'a5dfd48d49047a1461156ebf8f589c661af00f1925a0515577ca16eb6a183049'
   })
 
   depends_on 'gcc_lib' # R

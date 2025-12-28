@@ -1,0 +1,3 @@
+#!/bin/bash
+hugo -h | head
+hugo version

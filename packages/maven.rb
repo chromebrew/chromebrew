@@ -3,11 +3,11 @@ require 'package'
 class Maven < Package
   description 'Apache Maven is a software project management and comprehension tool.'
   homepage 'https://maven.apache.org/'
-  version '3.9.11'
+  version '3.9.12'
   license 'Apache-2.0'
   compatibility 'all'
   source_url "https://dlcdn.apache.org/maven/maven-3/#{version}/binaries/apache-maven-#{version}-bin.tar.gz"
-  source_sha256 '4b7195b6a4f5c81af4c0212677a32ee8143643401bc6e1e8412e6b06ea82beac'
+  source_sha256 'fa2c9948729296c23afd18fd01a90f62cdda09a46191b54a8bc3764c2eee812e'
 
   depends_on 'openjdk17' unless File.exist? "#{CREW_PREFIX}/bin/java"
 

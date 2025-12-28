@@ -1,0 +1,24 @@
+# Total size: 69535
+/usr/local/lib64/ruby/gems/4.0.0/gems/multi_xml-0.8.0/CHANGELOG.md
+/usr/local/lib64/ruby/gems/4.0.0/gems/multi_xml-0.8.0/CONTRIBUTING.md
+/usr/local/lib64/ruby/gems/4.0.0/gems/multi_xml-0.8.0/Gemfile
+/usr/local/lib64/ruby/gems/4.0.0/gems/multi_xml-0.8.0/LICENSE.md
+/usr/local/lib64/ruby/gems/4.0.0/gems/multi_xml-0.8.0/README.md
+/usr/local/lib64/ruby/gems/4.0.0/gems/multi_xml-0.8.0/Rakefile
+/usr/local/lib64/ruby/gems/4.0.0/gems/multi_xml-0.8.0/Steepfile
+/usr/local/lib64/ruby/gems/4.0.0/gems/multi_xml-0.8.0/lib/multi_xml.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/multi_xml-0.8.0/lib/multi_xml/constants.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/multi_xml-0.8.0/lib/multi_xml/errors.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/multi_xml-0.8.0/lib/multi_xml/file_like.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/multi_xml-0.8.0/lib/multi_xml/helpers.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/multi_xml-0.8.0/lib/multi_xml/parsers/dom_parser.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/multi_xml-0.8.0/lib/multi_xml/parsers/libxml.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/multi_xml-0.8.0/lib/multi_xml/parsers/libxml_sax.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/multi_xml-0.8.0/lib/multi_xml/parsers/nokogiri.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/multi_xml-0.8.0/lib/multi_xml/parsers/nokogiri_sax.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/multi_xml-0.8.0/lib/multi_xml/parsers/oga.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/multi_xml-0.8.0/lib/multi_xml/parsers/ox.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/multi_xml-0.8.0/lib/multi_xml/parsers/rexml.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/multi_xml-0.8.0/lib/multi_xml/parsers/sax_handler.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/multi_xml-0.8.0/lib/multi_xml/version.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/multi_xml-0.8.0/sig/multi_xml.rbs

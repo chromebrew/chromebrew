@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION = defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION = '1.68.8' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION = '1.69.0' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH = Etc.uname[:machine]
@@ -373,6 +373,7 @@ CREW_VALID_BUILDSYSTEMS = @buildsystems.sort!
 
 # Some packages have different names in anitya.
 CREW_ANITYA_PACKAGE_NAME_MAPPINGS = Set[
+  { pkg_name: 'alsa_lib', anitya_pkg: 'alsa-lib', comments: '' },
   { pkg_name: 'asdf', anitya_pkg: 'asdf-vm', comments: '' },
   { pkg_name: 'broadway', anitya_pkg: 'gtk+3.0~stable', comments: '' },
   { pkg_name: 'cf', anitya_pkg: 'cf', comments: 'Prefer to GitHub' },
@@ -497,7 +498,7 @@ CREW_DOCOPT = <<~DOCOPT
     crew deps [options] [--deep] [-t|--tree] [-b|--include-build-deps] [--exclude-buildessential] [-v|--verbose] <name> ...
     crew diskstat [options] [-a|--all] [<count>]
     crew download [options] [-s|--source] [-v|--verbose] <name> ...
-    crew files [options] <name> ...
+    crew files [options] [-v|--verbose] <name> ...
     crew help [options] [<command>] [-v|--verbose] [<subcommand>]
     crew install [options] [-f|--force] [-k|--keep] [--regenerate-filelist] [-s|--source] [-S|--recursive-build] [-v|--verbose] <name> ...
     crew list [options] [-v|--verbose] (available|compatible|incompatible|essential|installed)

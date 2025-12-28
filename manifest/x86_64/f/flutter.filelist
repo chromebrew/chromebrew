@@ -1,4 +1,4 @@
-# Total size: 2454951143
+# Total size: 2455709702
 /home/chronos/user/.flutter_tool_state
 /usr/local/bin/dart
 /usr/local/bin/flutter
@@ -36,9 +36,9 @@
 /usr/local/share/flutter/.git/logs/refs/remotes/origin/HEAD
 /usr/local/share/flutter/.git/objects/info/commit-graph
 /usr/local/share/flutter/.git/objects/info/packs
-/usr/local/share/flutter/.git/objects/pack/pack-2a9a3b13ddef91e1ad2194681fc4103e4b91d427.idx
-/usr/local/share/flutter/.git/objects/pack/pack-2a9a3b13ddef91e1ad2194681fc4103e4b91d427.pack
-/usr/local/share/flutter/.git/objects/pack/pack-2a9a3b13ddef91e1ad2194681fc4103e4b91d427.rev
+/usr/local/share/flutter/.git/objects/pack/pack-39e683a3ec4b44bd2817e08fa22d791a3638f0c6.idx
+/usr/local/share/flutter/.git/objects/pack/pack-39e683a3ec4b44bd2817e08fa22d791a3638f0c6.pack
+/usr/local/share/flutter/.git/objects/pack/pack-39e683a3ec4b44bd2817e08fa22d791a3638f0c6.rev
 /usr/local/share/flutter/.git/packed-refs
 /usr/local/share/flutter/.git/refs/remotes/origin/HEAD
 /usr/local/share/flutter/.gitattributes
@@ -194,14 +194,13 @@
 /usr/local/share/flutter/.pub-preload-cache/native_toolchain_c-0.17.2.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/nested-1.0.0.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/node_preamble-2.0.2.tar.gz
-/usr/local/share/flutter/.pub-preload-cache/objective_c-9.1.0.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/package_config-2.2.0.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/path-1.9.1.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/path_provider-2.1.5.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/path_provider_android-2.2.18.tar.gz
-/usr/local/share/flutter/.pub-preload-cache/path_provider_android-2.2.21.tar.gz
+/usr/local/share/flutter/.pub-preload-cache/path_provider_android-2.2.22.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/path_provider_foundation-2.4.2.tar.gz
-/usr/local/share/flutter/.pub-preload-cache/path_provider_foundation-2.5.0.tar.gz
+/usr/local/share/flutter/.pub-preload-cache/path_provider_foundation-2.5.1.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/path_provider_linux-2.2.1.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/path_provider_platform_interface-2.1.2.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/path_provider_windows-2.3.0.tar.gz
@@ -16550,6 +16549,8 @@
 /usr/local/share/flutter/packages/flutter_tools/test/commands.shard/hermetic/widget_preview/preview_detector/projects/basic_project_exhaustive_previews.dart
 /usr/local/share/flutter/packages/flutter_tools/test/commands.shard/hermetic/widget_preview/preview_detector/projects/multipreview_project.dart
 /usr/local/share/flutter/packages/flutter_tools/test/commands.shard/hermetic/widget_preview/preview_detector_graph_test.dart
+/usr/local/share/flutter/packages/flutter_tools/test/commands.shard/hermetic/widget_preview/preview_manifest/preview_manifest_test.dart
+/usr/local/share/flutter/packages/flutter_tools/test/commands.shard/hermetic/widget_preview/preview_manifest/preview_manifest_workspace_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/commands.shard/hermetic/widget_preview/preview_pubspec_builder_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/commands.shard/hermetic/widget_preview/regress_176018_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/commands.shard/hermetic/widget_preview/utils/preview_details_matcher.dart
@@ -16647,6 +16648,7 @@
 /usr/local/share/flutter/packages/flutter_tools/test/general.shard/build_system/targets/dart_plugin_registrant_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/general.shard/build_system/targets/deferred_components_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/general.shard/build_system/targets/desktop_test.dart
+/usr/local/share/flutter/packages/flutter_tools/test/general.shard/build_system/targets/hook_runner_native_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/general.shard/build_system/targets/icon_tree_shaker_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/general.shard/build_system/targets/ios_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/general.shard/build_system/targets/linux_test.dart
@@ -16823,7 +16825,6 @@
 /usr/local/share/flutter/packages/flutter_tools/test/general.shard/web/web_validator_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/general.shard/web/workflow_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/general.shard/web_template_test.dart
-/usr/local/share/flutter/packages/flutter_tools/test/general.shard/widget_preview/preview_manifest_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/general.shard/windows/application_package_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/general.shard/windows/migrations/build_architecture_migration_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/general.shard/windows/migrations/show_window_migration_test.dart
