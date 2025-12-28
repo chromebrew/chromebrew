@@ -1321,7 +1321,7 @@ def resolve_dependencies_and_install(no_advisory: false)
       # The shell in containers is in a subshell of sudo, which is NOT
       # what PPID reports, so we ned to use this complicated logic to
       # find the relevant parent bash process.
-      @parent_bash_process = `pstree -lap chronos | grep 'bash \\[trap set]' | head -n 1`.chomp.gsub('bash [trap set],', '').split.first.to_i
+      @parent_bash_process = Kernel.system('command -v pstree', %i[out err] => File::NULL) ? `pstree -lap chronos | grep 'bash \\[trap set]' | head -n 1`.chomp.gsub('bash [trap set],', '').split.first.to_i : 'none'
       if Dir.exist?("/proc/#{@parent_bash_process}") && File.read("/proc/#{@parent_bash_process}/comm").include?('[trap set]')
         crewlog 'USR1 trap exists. Sourcing ~/.bashrc .'
         Process.kill('USR1', @parent_bash_process)
@@ -1477,7 +1477,9 @@ def install(skip_postinstall: false)
   crewlog "Adding package #{@pkg.name} to device.json."
   @device[:installed_packages].delete_if { |entry| entry[:name] == @pkg.name } and @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, sha256: PackageUtils.get_sha256(@pkg, build_from_source: @opt_source))
   ConvenienceFunctions.save_json(@device)
-  crewlog "#{@pkg.name} in device.json after install: #{`jq --arg key '#{@pkg.name}' -e '.installed_packages[] | select(.name == $key )' #{File.join(CREW_CONFIG_PATH, 'device.json')}`}" if Kernel.system('jq -h', %i[out err] => File::NULL)
+  if Kernel.system('command -v jq', %i[out err] => File::NULL)
+    crewlog "#{@pkg.name} in device.json after install: #{`jq --arg key '#{@pkg.name}' -e '.installed_packages[] | select(.name == $key )' #{File.join(CREW_CONFIG_PATH, 'device.json')}`}" if Kernel.system('jq -h', %i[out err] => File::NULL)
+  end
   @pkg.in_install = false
 end
 
