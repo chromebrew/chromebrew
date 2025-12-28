@@ -1,5 +1,5 @@
 #!/bin/bash
-CREW_INSTALLER_VERSION=2025122401
+CREW_INSTALLER_VERSION=2025122701
 # Exit on fail.
 set -eE
 
@@ -14,8 +14,23 @@ echo_warn() { echo -e "\e[0;33m${*}${RESET}" >&1; } # Use Orange for warning mes
 echo_intra() { echo -e "\e[1;34m${*}${RESET}" >&1; } # Use Blue for intrafunction messages.
 echo_out() { echo -e "\e[0;37m${*}${RESET}" >&1; } # Use Gray for program output.
 
+set -a
+# Default chromebrew environment variable values.
+: "${OWNER:=chromebrew}"
+: "${REPO:=chromebrew}}"
+: "${BRANCH:=master}"
+: "${CREW_BRANCH:=${BRANCH}}"
+: "${CREW_REPO:=https://github.com/${OWNER}/${REPO}.git}"
+: "${CREW_PREFIX:=/usr/local}"
+: "${CREW_CACHE_DIR:=$CREW_PREFIX/tmp/packages}"
+# For container usage, where we want to specify i686 arch
+# on a x86_64 host by setting ARCH=i686.
+: "${ARCH:=$(uname -m)}"
+: "${CREW_PY_VER:=3.14}"
+set +a
+
 # Check if the script is being run in the VT-2 Developer Console.
-if [ "${TERM}" == "xterm" ]; then
+if [[ "${ARCH}" != "i686" && "${TERM}" == "xterm" ]]; then
   echo_error "Chromebrew should not be installed in the VT-2 Developer Console."
   echo_info "\nPlease return to bash shell initiated from crosh and try again."
   echo_info "To exit the VT-2 Developer Console, press Ctrl + Alt + <- (left arrow)"
@@ -88,27 +103,12 @@ case "${this_installer}" in
     echo_info "Installer ${this_installer} last modified at: $(stat -c %y "$0")"
 esac
 
-set -a
-# Default chromebrew environment variable values.
-: "${OWNER:=chromebrew}"
-: "${REPO:=chromebrew}}"
-: "${BRANCH:=master}"
-: "${CREW_BRANCH:=${BRANCH}}"
-: "${CREW_REPO:=https://github.com/${OWNER}/${REPO}.git}"
-: "${CREW_PREFIX:=/usr/local}"
-: "${CREW_CACHE_DIR:=$CREW_PREFIX/tmp/packages}"
-# For container usage, where we want to specify i686 arch
-# on a x86_64 host by setting ARCH=i686.
-: "${ARCH:=$(uname -m)}"
-: "${CREW_PY_VER:=3.13}"
-set +a
-
 # Check if the user owns the CREW_PREFIX directory and prompt to fix if not.
 if [ -n "$(/usr/bin/find ${CREW_PREFIX} ! -user $(id -u) -printf '%u')" ]; then
   CREW_USER=$(/usr/bin/whoami)
   echo_error "\nUnable to install due to some files or subdirectories not owned by ${CREW_USER} in ${CREW_PREFIX}."
   echo_info "\nPlease enter the VT-2 Developer Console and execute the following:"
-  echo_intra "/bin/bash ${CREW_PREFIX}/lib/crew/restore.sh"
+  echo_intra "/bin/bash <(curl -L https://raw.githubusercontent.com/chromebrew/chromebrew/master/restore.sh)"
   echo_info "\nand then return to this bash session and try again."
   echo_warn "\nNOTICE: This will remove ALL files and subdirectories in ${CREW_PREFIX} which is recommended to install Chromebrew."
   echo_info "\nTo start the VT-2 Developer Console, press Ctrl + Alt + -> (right arrow)"
