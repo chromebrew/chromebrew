@@ -1,4 +1,4 @@
-# Total size: 12083986
+# Total size: 12050779
 /usr/local/bin/aws
 /usr/local/bin/aws.cmd
 /usr/local/bin/aws_bash_completer
@@ -6,13 +6,13 @@
 /usr/local/bin/aws_zsh_completer.sh
 /usr/local/etc/bash.d/aws
 /usr/local/etc/zsh.d/aws
-/usr/local/lib/python3.14/site-packages/awscli-1.44.7.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/awscli-1.44.7.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/awscli-1.44.7.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/awscli-1.44.7.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/awscli-1.44.7.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/awscli-1.44.7.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/awscli-1.44.7.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/awscli-1.44.8.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/awscli-1.44.8.dist-info/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/awscli-1.44.8.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/awscli-1.44.8.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/awscli-1.44.8.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/awscli-1.44.8.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/awscli-1.44.8.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/awscli/__init__.py
 /usr/local/lib/python3.14/site-packages/awscli/__main__.py
 /usr/local/lib/python3.14/site-packages/awscli/__pycache__/__init__.cpython-314.pyc
@@ -2891,22 +2891,6 @@
 /usr/local/lib/python3.14/site-packages/awscli/examples/elasticbeanstalk/update-configuration-template.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/elasticbeanstalk/update-environment.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/elasticbeanstalk/validate-configuration-settings.rst
-/usr/local/lib/python3.14/site-packages/awscli/examples/elastictranscoder/cancel-job.rst
-/usr/local/lib/python3.14/site-packages/awscli/examples/elastictranscoder/create-job.rst
-/usr/local/lib/python3.14/site-packages/awscli/examples/elastictranscoder/create-pipeline.rst
-/usr/local/lib/python3.14/site-packages/awscli/examples/elastictranscoder/create-preset.rst
-/usr/local/lib/python3.14/site-packages/awscli/examples/elastictranscoder/delete-pipeline.rst
-/usr/local/lib/python3.14/site-packages/awscli/examples/elastictranscoder/delete-preset.rst
-/usr/local/lib/python3.14/site-packages/awscli/examples/elastictranscoder/list-jobs-by-pipeline.rst
-/usr/local/lib/python3.14/site-packages/awscli/examples/elastictranscoder/list-jobs-by-status.rst
-/usr/local/lib/python3.14/site-packages/awscli/examples/elastictranscoder/list-pipelines.rst
-/usr/local/lib/python3.14/site-packages/awscli/examples/elastictranscoder/list-presets.rst
-/usr/local/lib/python3.14/site-packages/awscli/examples/elastictranscoder/read-job.rst
-/usr/local/lib/python3.14/site-packages/awscli/examples/elastictranscoder/read-pipeline.rst
-/usr/local/lib/python3.14/site-packages/awscli/examples/elastictranscoder/read-preset.rst
-/usr/local/lib/python3.14/site-packages/awscli/examples/elastictranscoder/update-pipeline-notifications.rst
-/usr/local/lib/python3.14/site-packages/awscli/examples/elastictranscoder/update-pipeline-status.rst
-/usr/local/lib/python3.14/site-packages/awscli/examples/elastictranscoder/update-pipeline.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/elb/add-tags.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/elb/apply-security-groups-to-load-balancer.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/elb/attach-load-balancer-to-subnets.rst
