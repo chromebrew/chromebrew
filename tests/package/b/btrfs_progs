@@ -1,0 +1,2 @@
+#!/bin/bash
+for b in btrfs btrfs-image btrfstune mkfs.btrfs; do $b --version; done
