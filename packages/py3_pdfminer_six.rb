@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_pdfminer_six < Pip
   description 'PDFminer.six is a community maintained fork of PDFminer.'
   homepage 'https://pdfminersix.readthedocs.io/'
-  version "20251227-#{CREW_PY_VER}"
+  version "20251229-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
