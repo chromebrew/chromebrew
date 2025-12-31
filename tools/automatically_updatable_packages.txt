@@ -29,6 +29,7 @@ dbeaver
 delve
 detox
 difftastic
+doctl
 f2fs_tools
 faad2
 fastfetch
