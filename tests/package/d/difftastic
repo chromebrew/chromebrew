@@ -1,0 +1,3 @@
+#!/bin/bash
+difft -h | head
+difft -V
