@@ -27,6 +27,7 @@ codex
 dart
 dbeaver
 delve
+detox
 f2fs_tools
 faad2
 fastfetch
