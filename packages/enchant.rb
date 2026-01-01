@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Enchant < Autotools
   description 'Enchant is a library (and command-line program) that wraps a number of different spelling libraries and programs with a consistent interface.'
   homepage 'https://abiword.github.io/enchant/'
-  version '2.8.12'
+  version '2.8.14'
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/AbiWord/enchant.git'
