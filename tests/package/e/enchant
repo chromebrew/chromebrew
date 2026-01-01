@@ -1,0 +1,5 @@
+#!/bin/bash
+enchant-2 -h
+enchant-2 -v
+enchant-lsmod-2 -help 2>&1
+enchant-lsmod-2 -version 2>&1

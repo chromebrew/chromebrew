@@ -1,4 +1,4 @@
-# Total size: 768838
+# Total size: 763386
 /usr/local/bin/enchant-2
 /usr/local/bin/enchant-lsmod-2
 /usr/local/include/enchant-2/enchant++.h
@@ -9,7 +9,7 @@
 /usr/local/lib64/libenchant-2.la
 /usr/local/lib64/libenchant-2.so
 /usr/local/lib64/libenchant-2.so.2
-/usr/local/lib64/libenchant-2.so.2.8.12
+/usr/local/lib64/libenchant-2.so.2.8.14
 /usr/local/lib64/pkgconfig/enchant-2.pc
 /usr/local/share/doc/enchant/enchant-2.html
 /usr/local/share/doc/enchant/enchant-lsmod-2.html
