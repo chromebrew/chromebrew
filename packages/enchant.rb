@@ -11,9 +11,9 @@ class Enchant < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '83ea7932891bf59f10c678ba042060eaac965bf511a8f31bfbc4a312d0e15c0e',
-     armv7l: '83ea7932891bf59f10c678ba042060eaac965bf511a8f31bfbc4a312d0e15c0e',
-     x86_64: '73db9b0d09602b4d48c9833ea80c9608b096e435e8760c883d24fc5bcb0a5f98'
+    aarch64: 'b018f45460b6535571d1abd8730ea9aa7ca0498d0f72160ecee1e39daa633045',
+     armv7l: 'b018f45460b6535571d1abd8730ea9aa7ca0498d0f72160ecee1e39daa633045',
+     x86_64: '61a3479cf176f05675df561e653b495610dcdcb43960128235c3622a5742f48a'
   })
 
   depends_on 'aspell' # R
