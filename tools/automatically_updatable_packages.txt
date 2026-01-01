@@ -25,6 +25,7 @@ bmon
 cargo_c
 codex
 dart
+dav1d
 dbeaver
 delve
 detox
