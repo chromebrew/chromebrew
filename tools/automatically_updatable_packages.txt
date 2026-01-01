@@ -33,6 +33,7 @@ difftastic
 doctl
 enchant
 enet
+epiphany
 f2fs_tools
 faad2
 fastfetch
