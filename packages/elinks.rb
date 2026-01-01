@@ -24,6 +24,7 @@ class Elinks < Meson
   depends_on 'glibc' # R
   depends_on 'gpgme' => :build
   depends_on 'gpm' # R
+  depends_on 'libcss' # R
   depends_on 'lzip' => :build
   depends_on 'openssl' # R
   depends_on 'tre' # R
