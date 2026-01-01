@@ -31,6 +31,7 @@ delve
 detox
 difftastic
 doctl
+enet
 f2fs_tools
 faad2
 fastfetch

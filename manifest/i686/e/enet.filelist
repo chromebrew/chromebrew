@@ -1,4 +1,4 @@
-# Total size: 412378
+# Total size: 415016
 /usr/local/include/enet/callbacks.h
 /usr/local/include/enet/enet.h
 /usr/local/include/enet/list.h
@@ -12,5 +12,5 @@
 /usr/local/lib/libenet.la
 /usr/local/lib/libenet.so
 /usr/local/lib/libenet.so.7
-/usr/local/lib/libenet.so.7.0.5
+/usr/local/lib/libenet.so.7.0.6
 /usr/local/lib/pkgconfig/libenet.pc
