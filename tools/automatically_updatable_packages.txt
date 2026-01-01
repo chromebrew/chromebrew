@@ -32,6 +32,7 @@ detox
 difftastic
 doctl
 enchant
+enet
 f2fs_tools
 faad2
 fastfetch
