@@ -79,6 +79,7 @@ nano
 ocaml
 opencode
 rqlite
+usql
 vscodium
 xdpyinfo
 yyjson

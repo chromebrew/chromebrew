@@ -9835,6 +9835,11 @@ url: https://www.kernel.org/pub/linux/utils/usb/usbutils/
 activity: low
 ---
 kind: url
+name: usql
+url: https://github.com/xo/usql/releases
+activity: medium
+---
+kind: url
 name: utf8proc
 url: https://github.com/JuliaLang/utf8proc/releases
 activity: low
