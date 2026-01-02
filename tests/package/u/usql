@@ -1,0 +1,3 @@
+#!/bin/bash
+usql --help | head
+usql -V
