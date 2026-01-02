@@ -1,4 +1,4 @@
-# Total size: 10800343
+# Total size: 10503863
 /usr/local/bin/evince
 /usr/local/bin/evince-previewer
 /usr/local/bin/evince-thumbnailer
@@ -2869,6 +2869,7 @@
 /usr/local/share/locale/it/LC_MESSAGES/evince.mo
 /usr/local/share/locale/ja/LC_MESSAGES/evince.mo
 /usr/local/share/locale/ka/LC_MESSAGES/evince.mo
+/usr/local/share/locale/kab/LC_MESSAGES/evince.mo
 /usr/local/share/locale/kk/LC_MESSAGES/evince.mo
 /usr/local/share/locale/km/LC_MESSAGES/evince.mo
 /usr/local/share/locale/kn/LC_MESSAGES/evince.mo
