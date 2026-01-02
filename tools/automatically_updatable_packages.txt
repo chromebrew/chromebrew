@@ -34,6 +34,7 @@ doctl
 enchant
 enet
 epiphany
+evince
 f2fs_tools
 faad2
 fastfetch
