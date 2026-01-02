@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_pynacl < Pip
   description 'Python binding to the Networking and Cryptography (NaCl) library'
   homepage 'https://github.com/pyca/pynacl'
-  version "1.6.1-#{CREW_PY_VER}"
+  version "1.6.2-#{CREW_PY_VER}"
   license 'BSD'
   compatibility 'all'
   source_url 'SKIP'
