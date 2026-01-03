@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.21 (for Chromebrew)
+# version.rb version 3.22 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose -vv]
 
@@ -312,7 +312,7 @@ if filelist.length.positive?
                                         else
                                           "version alias: #{`grep '^  version' #{filename} | awk '{print $2}'`.chomp}"
                                         end
-                                      elsif @pkg.source_url.is_a?(Hash) || @pkg.source_url.include?('SKIP')
+                                      elsif !@pkg.source_url.nil? && (@pkg.source_url.is_a?(Hash) || @pkg.source_url.include?('SKIP'))
                                         'Yes'
                                       # If there is a git_hashtag, we can
                                       # check to see if 'version' is on
