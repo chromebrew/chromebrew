@@ -31,17 +31,17 @@ def check_libraries(pkg_path, verbose: false)
   else
     valid_libraries = `grep -E "^#{CREW_LIB_PREFIX}/" "#{filelist}" | grep -vE "^#{CREW_PREFIX}/libexec/" | grep -vE "^#{CREW_PREFIX}/lib/perl" | grep -vE "^#{CREW_PREFIX}/lib/python"`.chomp
     if valid_libraries.empty?
-      puts 'All libraries:'
-      puts libraries
-      puts 'Invalid library paths.'.lightred
+      puts 'Invalid libraries:'.lightred
+      puts libraries.lightred
       puts "Library test for #{name} failed.".lightred
       return 1
     elsif libraries != valid_libraries
-      puts 'All libraries:'
-      puts libraries
-      puts 'Valid libraries:'
-      puts valid_libraries
-      puts 'Invalid library paths.'.lightred
+      libraries_array = libraries.split("\n")
+      valid_libraries_array = valid_libraries.split("\n")
+      invalid_libraries_array = libraries_array - valid_libraries_array
+      invalid_libraries = invalid_libraries_array.join("\n")
+      puts 'Invalid libraries:'.lightred
+      puts invalid_libraries.lightred
       puts "Library test for #{name} failed.".lightred
       return 1
     else
