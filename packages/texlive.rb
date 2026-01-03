@@ -3,17 +3,16 @@ require 'package'
 class Texlive < Package
   description 'TeX Live is an easy way to get up and running with the TeX document production system.'
   homepage 'https://www.tug.org/texlive/'
-  version '20230319'
+  version '20250308'
   license 'GPL-2 and GPL-3'
   compatibility 'aarch64 armv7l x86_64'
-  min_glibc '2.28'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5136c02c438be3d419c50990a058cde110a0dd144088d6c650e0dc6bedae037e',
-     armv7l: '5136c02c438be3d419c50990a058cde110a0dd144088d6c650e0dc6bedae037e',
-     x86_64: '9dc5195868f9de7afa9804028dec264e2926fda6966792e941c19a7154d28dce'
+    aarch64: '05230f304f770a1a3935af99ac87dec46e46e7fbbc1e564e26bc4b477cb1ac01',
+     armv7l: '05230f304f770a1a3935af99ac87dec46e46e7fbbc1e564e26bc4b477cb1ac01',
+     x86_64: '84f29639d020300c2525585fcd6f0c9fdeb118ccabc4705db2bb9069615c4302'
   })
 
   depends_on 'glibc' # R
@@ -24,12 +23,11 @@ class Texlive < Package
   depends_on 'libxmu' # R
   depends_on 'libxt' # R
 
+  no_source_build
+  print_source_bashrc
+
   def self.build
-    system 'curl -#LO https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz'
-    system 'curl -#LO https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz.sha512'
-    system "cat install-tl-unx.tar.gz.sha512 | xargs | cut -d' ' -f1 > sha512"
-    sha512 = open('sha512').read.chomp
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA512.hexdigest(File.read('install-tl-unx.tar.gz')) == sha512
+    downloader 'https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz', 'SKIP'
     system 'tar --strip-components=1 -xf install-tl-unx.tar.gz'
   end
 
@@ -46,26 +44,26 @@ class Texlive < Package
 
     case ARCH
     when 'armv7l', 'aaarch64'
-      @archpath = 'armhf-linux'
+      archpath = 'armhf-linux'
     when 'i686'
-      @archpath = 'i386-linux'
+      archpath = 'i386-linux'
     when 'x86_64'
-      @archpath = 'x86_64-linux'
+      archpath = 'x86_64-linux'
     end
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
-    destpath = `echo #{CREW_DEST_PREFIX}/share/texlive/20*`.chomp
+    destpath = `echo #{dir}/20*`.chomp
     path = destpath.gsub(CREW_DEST_PREFIX, CREW_PREFIX)
-    @texliveenv = <<~TEXLIVEEOF
+    File.write "#{CREW_DEST_PREFIX}/etc/env.d/texlive", <<~TEXLIVEEOF
       # texlive configuration
-      export PATH="$PATH:#{path}/bin/#{@archpath}"
-      export MANPATH="$MANPATH:#{path}/bin/texmf-dist/doc/man"
+      export PATH="$PATH:#{path}/bin/#{archpath}"
+      export MANPATH="$MANPATH:#{path}/bin/#{archpath}/man"
     TEXLIVEEOF
-    File.write("#{CREW_DEST_PREFIX}/etc/env.d/texlive", @texliveenv)
   end
 
   def self.postinstall
-    puts
-    puts "\nThis is a very small installation, with only the basic packages. To install more, open a new shell/terminal and use `tlmgr install <package>`.".lightblue
-    puts
+    ExitMessage.add <<~EOM
+
+      This is a very small installation, with only the basic packages. To install more, open a new shell/terminal and use `tlmgr install <package>`.
+    EOM
   end
 end
