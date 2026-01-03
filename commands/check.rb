@@ -15,10 +15,13 @@ class Command
     crew_package_test_path = File.join(CREW_LIB_PATH, 'tests', 'package', name[0].to_s)
     crew_package_test = File.join(crew_package_test_path, name)
 
+    # This pulls the operation from the calling function.
+    operation = caller_locations(1, 2)[0].to_s.split[3].split('_')[0].split('#')[1]
+
     # We return true here in order to exit early but behave as if the check passed, so that other operations can continue.
     unless File.file?(local_package)
       # If the operation is a bare 'crew check', then we don't want to silently skip it.
-      puts 'No local package file found, skipping check.'.lightred if caller_locations(1, 2)[0].to_s.split[3].split('_')[0].split('#')[1].to_s == 'check'
+      puts 'No local package file found, skipping check.'.lightred if operation == 'check'
       return true
     end
 
@@ -41,9 +44,6 @@ class Command
     to_copy_package = force
     to_copy_test = force
     to_copy_filelist = force
-
-    # This pulls the operation from the calling function.
-    operation = caller_locations(1, 2)[0].to_s.split[3].split('_')[0].split('#')[1]
 
     # Prompt to copy the local repo package to crew if the package is not found.
     if !force && File.file?(local_package) && !File.file?(crew_package)
