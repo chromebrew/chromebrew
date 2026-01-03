@@ -1,0 +1,23 @@
+# Total size: 439473
+/usr/local/bin/cpuid_tool
+/usr/local/include/libcpuid/libcpuid.h
+/usr/local/include/libcpuid/libcpuid_constants.h
+/usr/local/include/libcpuid/libcpuid_types.h
+/usr/local/lib/cmake/cpuid/cpuidConfig.cmake
+/usr/local/lib/cmake/cpuid/cpuidConfigVersion.cmake
+/usr/local/lib/cmake/cpuid/cpuidTargets-release.cmake
+/usr/local/lib/cmake/cpuid/cpuidTargets.cmake
+/usr/local/lib/libcpuid.so
+/usr/local/lib/libcpuid.so.18
+/usr/local/lib/libcpuid.so.18.1.1
+/usr/local/lib/pkgconfig/libcpuid.pc
+/usr/local/share/man/man3/cpu_affinity_mask_t.3.zst
+/usr/local/share/man/man3/cpu_epc_t.3.zst
+/usr/local/share/man/man3/cpu_id_t.3.zst
+/usr/local/share/man/man3/cpu_list_t.3.zst
+/usr/local/share/man/man3/cpu_mark_t.3.zst
+/usr/local/share/man/man3/cpu_raw_data_array_t.3.zst
+/usr/local/share/man/man3/cpu_raw_data_t.3.zst
+/usr/local/share/man/man3/cpu_sgx_t.3.zst
+/usr/local/share/man/man3/cpuid_tool.3.zst
+/usr/local/share/man/man3/libcpuid.3.zst
