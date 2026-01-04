@@ -23,7 +23,11 @@ class Awscli < Pip
      x86_64: 'c98892c9796f3e9b021e37488130d295eb8637f332ec7ab65e0df4449bc9c81c'
   })
 
-  depends_on 'groff'
+  depends_on 'groff' # R
+  depends_on 'py3_botocore' # R
+  depends_on 'py3_docutils' # R
+  depends_on 'py3_rsa' # R
+  depends_on 'py3_s3transfer' # R
   depends_on 'python3' => :build
 
   no_source_build
