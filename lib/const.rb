@@ -177,7 +177,7 @@ USER = Etc.getlogin
 
 CHROMEOS_RELEASE =
   if File.exist?('/etc/lsb-release')
-    CHROMEOS_RELEASE_CHROME_MILESTONE = File.read('/etc/lsb-release')[/CHROMEOS_RELEASE_CHROME_MILESTONE=(.+)/, 1].chomp
+    File.read('/etc/lsb-release')[/CHROMEOS_RELEASE_CHROME_MILESTONE=(.+)/, 1].chomp
   else
     # newer version of Chrome OS exports info to env by default
     ENV.fetch('CHROMEOS_RELEASE_CHROME_MILESTONE', nil)
