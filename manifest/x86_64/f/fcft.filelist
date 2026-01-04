@@ -1,7 +1,28 @@
-# Total size: 151560
+# Total size: 199543
 /usr/local/include/fcft/fcft.h
 /usr/local/include/fcft/stride.h
 /usr/local/lib64/libfcft.so
 /usr/local/lib64/libfcft.so.4
-/usr/local/lib64/libfcft.so.4.3.2
+/usr/local/lib64/libfcft.so.4.3.3
 /usr/local/lib64/pkgconfig/fcft.pc
+/usr/local/share/doc/fcft/CHANGELOG.md
+/usr/local/share/doc/fcft/LICENSE
+/usr/local/share/doc/fcft/README.md
+/usr/local/share/man/man3/fcft_capabilities.3.zst
+/usr/local/share/man/man3/fcft_clone.3.zst
+/usr/local/share/man/man3/fcft_destroy.3.zst
+/usr/local/share/man/man3/fcft_fini.3.zst
+/usr/local/share/man/man3/fcft_font_options_create.3.zst
+/usr/local/share/man/man3/fcft_font_options_destroy.3.zst
+/usr/local/share/man/man3/fcft_from_name.3.zst
+/usr/local/share/man/man3/fcft_from_name2.3.zst
+/usr/local/share/man/man3/fcft_init.3.zst
+/usr/local/share/man/man3/fcft_kerning.3.zst
+/usr/local/share/man/man3/fcft_log_init.3.zst
+/usr/local/share/man/man3/fcft_precompose.3.zst
+/usr/local/share/man/man3/fcft_rasterize_char_utf32.3.zst
+/usr/local/share/man/man3/fcft_rasterize_grapheme_utf32.3.zst
+/usr/local/share/man/man3/fcft_rasterize_text_run_utf32.3.zst
+/usr/local/share/man/man3/fcft_set_emoji_presentation.3.zst
+/usr/local/share/man/man3/fcft_set_scaling_filter.3.zst
+/usr/local/share/man/man3/fcft_text_run_destroy.3.zst

@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Fcft < Meson
   description 'Simple library for font loading and glyph rasterization using FontConfig, FreeType and pixman.'
   homepage 'https://codeberg.org/dnkl/fcft'
-  version '3.3.2'
+  version '3.3.3'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://codeberg.org/dnkl/fcft.git'
@@ -11,18 +11,20 @@ class Fcft < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6937b8eebd922e2447aa1d6f76a1ec53b68617fed21674b2edfedddc6765ef8e',
-     armv7l: '6937b8eebd922e2447aa1d6f76a1ec53b68617fed21674b2edfedddc6765ef8e',
-     x86_64: '3a9fd4e0d4a64e2203cc059ecbfa0049a332eb2174b83b63df2344ef0369bb1e'
+    aarch64: '0b74dcc7e12e4bb04bf05605460cd12b965db3a65c812db143407d96a2ef9326',
+     armv7l: '0b74dcc7e12e4bb04bf05605460cd12b965db3a65c812db143407d96a2ef9326',
+     x86_64: '162af7bdfc86bf20825894a8c81ccfa3fcfdd32ed763747ba15f24d255376667'
   })
 
-  depends_on 'fontconfig'
-  depends_on 'freetype'
+  depends_on 'check' => :build
+  depends_on 'fontconfig' # R
+  depends_on 'freetype' # R
   depends_on 'glibc' # R
-  depends_on 'harfbuzz'
-  depends_on 'pixman'
+  depends_on 'harfbuzz' # R
+  depends_on 'pixman' # R
+  depends_on 'scdoc' => :build
   depends_on 'tllist' => :build
-  depends_on 'utf8proc'
+  depends_on 'utf8proc' # R
 
   def self.patch
     # threads.h was introduced in glibc 2.28. This is a workaround for pre-M92 systems.
