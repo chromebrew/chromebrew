@@ -1,12 +1,15 @@
-# Total size: 439386
+# Total size: 500798
 /usr/local/bin/detox
 /usr/local/bin/inline-detox
 /usr/local/etc/detoxrc
 /usr/local/share/detox/cp1252.tbl
 /usr/local/share/detox/iso8859_1.tbl
+/usr/local/share/detox/legacy/cp1252.tbl
+/usr/local/share/detox/legacy/iso8859_1.tbl
+/usr/local/share/detox/legacy/unicode.tbl
+/usr/local/share/detox/legacy/unidecode.tbl
 /usr/local/share/detox/safe.tbl
 /usr/local/share/detox/unicode.tbl
-/usr/local/share/detox/unidecode.tbl
 /usr/local/share/doc/detox/BUILD.md
 /usr/local/share/doc/detox/CHANGELOG.md
 /usr/local/share/doc/detox/LICENSE

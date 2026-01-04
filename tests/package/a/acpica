@@ -1,0 +1,2 @@
+#!/bin/bash
+for b in $(crew files acpica | grep /usr/local/bin); do $b -v 2>&1; done

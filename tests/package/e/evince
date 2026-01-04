@@ -1,0 +1,5 @@
+#!/bin/bash
+evince --help | head
+evince --version
+evince-previewer -h | head
+evince-thumbnailer -h | head

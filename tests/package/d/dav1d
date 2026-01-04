@@ -1,0 +1,3 @@
+#!/bin/bash
+dav1d 2>&1 | head
+dav1d -v 2>&1

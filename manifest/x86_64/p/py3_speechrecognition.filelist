@@ -1,4 +1,4 @@
-# Total size: 41874999
+# Total size: 41876266
 /usr/local/bin/sprc
 /usr/local/lib/python3.14/site-packages/speech_recognition/__init__.py
 /usr/local/lib/python3.14/site-packages/speech_recognition/__main__.py
@@ -52,15 +52,15 @@
 /usr/local/lib/python3.14/site-packages/speech_recognition/recognizers/whisper_local/base.py
 /usr/local/lib/python3.14/site-packages/speech_recognition/recognizers/whisper_local/faster_whisper.py
 /usr/local/lib/python3.14/site-packages/speech_recognition/recognizers/whisper_local/whisper.py
-/usr/local/lib/python3.14/site-packages/speechrecognition-3.14.4.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/speechrecognition-3.14.4.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/speechrecognition-3.14.4.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/speechrecognition-3.14.4.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/speechrecognition-3.14.4.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/speechrecognition-3.14.4.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/speechrecognition-3.14.4.dist-info/licenses/LICENSE-FLAC.txt
-/usr/local/lib/python3.14/site-packages/speechrecognition-3.14.4.dist-info/licenses/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/speechrecognition-3.14.4.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/speechrecognition-3.14.5.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/speechrecognition-3.14.5.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/speechrecognition-3.14.5.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/speechrecognition-3.14.5.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/speechrecognition-3.14.5.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/speechrecognition-3.14.5.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/speechrecognition-3.14.5.dist-info/licenses/LICENSE-FLAC.txt
+/usr/local/lib/python3.14/site-packages/speechrecognition-3.14.5.dist-info/licenses/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/speechrecognition-3.14.5.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/tests/__init__.py
 /usr/local/lib/python3.14/site-packages/tests/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tests/__pycache__/test_audio.cpython-314.pyc

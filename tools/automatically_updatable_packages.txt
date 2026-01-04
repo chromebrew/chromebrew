@@ -1,5 +1,7 @@
 acl
 acpi
+acpica
+aliyun_cli
 alsa_lib
 alsa_plugins
 alsa_utils
@@ -11,6 +13,7 @@ arp_scan
 asunder
 augeas
 autoconf_archive
+awscli
 axel
 b2
 bc
@@ -22,8 +25,16 @@ bmon
 cargo_c
 codex
 dart
+dav1d
 dbeaver
 delve
+detox
+difftastic
+doctl
+enchant
+enet
+epiphany
+evince
 f2fs_tools
 faad2
 fastfetch
@@ -73,6 +84,7 @@ nano
 ocaml
 opencode
 rqlite
+usql
 vscodium
 xdpyinfo
 yyjson

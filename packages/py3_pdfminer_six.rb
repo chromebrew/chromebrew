@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_pdfminer_six < Pip
   description 'PDFminer.six is a community maintained fork of PDFminer.'
   homepage 'https://pdfminersix.readthedocs.io/'
-  version "20251107-#{CREW_PY_VER}"
+  version "20251230-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1c2e4e6306caf634cf7d82a3ab60b468b8a273448e425884d23344d0a7bb7302',
-     armv7l: '1c2e4e6306caf634cf7d82a3ab60b468b8a273448e425884d23344d0a7bb7302',
-       i686: '6715c2714001aca4409487c6a5cb0fec2c2cc24365ffbbbf3262141b43239cce',
-     x86_64: '73de578b222d286420539cfc274d52b9340960883a3538637427f770164b1bcb'
+    aarch64: '122c13a17d44ac598a081df519e418f91302e45d626e5287da06930051bf6daa',
+     armv7l: '122c13a17d44ac598a081df519e418f91302e45d626e5287da06930051bf6daa',
+       i686: 'e098081ae89b09056f395a5b2ee78d3e51f1267aa01c26fbad2a45067c4d0ac1',
+     x86_64: 'b6d341277c157706be961c228acf4b12ae74599f9dd3c073d0a234481fde9b33'
   })
 
   depends_on 'py3_pycryptodome'
