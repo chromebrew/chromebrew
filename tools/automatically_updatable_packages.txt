@@ -35,6 +35,7 @@ enchant
 enet
 epiphany
 evince
+exo
 f2fs_tools
 faad2
 fastfetch
