@@ -7750,6 +7750,11 @@ url: https://github.com/deepin-community/python-bleach/tags
 activity: low
 ---
 kind: url
+name: py3_botocore
+url: https://github.com/boto/botocore/tags
+activity: high
+---
+kind: url
 name: py3_brotlicffi
 url: https://github.com/python-hyper/brotlicffi/tags
 activity: low
@@ -7950,8 +7955,18 @@ url: https://github.com/crate-py/rpds/releases
 activity: high
 ---
 kind: url
+name: py3_rsa
+url: https://github.com/sybrenstuvel/python-rsa/tags
+activity: none
+---
+kind: url
 name: py3_ruff
 url: https://docs.astral.sh/ruff
+activity: medium
+---
+kind: url
+name: py3_s3transfer
+url: https://github.com/boto/s3transfer/tags
 activity: medium
 ---
 kind: url
