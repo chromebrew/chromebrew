@@ -1,4 +1,4 @@
-# Total size: 2470260
+# Total size: 2604312
 /usr/local/bin/firecfg
 /usr/local/bin/firejail
 /usr/local/bin/firemon
@@ -439,6 +439,7 @@
 /usr/local/etc/firejail/ghostwriter.profile
 /usr/local/etc/firejail/gimp-2.10.profile
 /usr/local/etc/firejail/gimp-2.8.profile
+/usr/local/etc/firejail/gimp-3.0.profile
 /usr/local/etc/firejail/gimp.profile
 /usr/local/etc/firejail/gist-paste.profile
 /usr/local/etc/firejail/gist.profile
@@ -496,6 +497,7 @@
 /usr/local/etc/firejail/gnome-system-log.profile
 /usr/local/etc/firejail/gnome-taquin.profile
 /usr/local/etc/firejail/gnome-tetravex.profile
+/usr/local/etc/firejail/gnome-text-editor.profile
 /usr/local/etc/firejail/gnome-todo.profile
 /usr/local/etc/firejail/gnome-twitch.profile
 /usr/local/etc/firejail/gnome-weather.profile
@@ -544,6 +546,8 @@
 /usr/local/etc/firejail/gunzip.profile
 /usr/local/etc/firejail/guvcview.profile
 /usr/local/etc/firejail/gwenview.profile
+/usr/local/etc/firejail/gzdoom-common.profile
+/usr/local/etc/firejail/gzdoom.profile
 /usr/local/etc/firejail/gzexe.profile
 /usr/local/etc/firejail/gzip.profile
 /usr/local/etc/firejail/handbrake-gtk.profile
@@ -698,6 +702,7 @@
 /usr/local/etc/firejail/lzcat.profile
 /usr/local/etc/firejail/lzcmp.profile
 /usr/local/etc/firejail/lzdiff.profile
+/usr/local/etc/firejail/lzdoom.profile
 /usr/local/etc/firejail/lzegrep.profile
 /usr/local/etc/firejail/lzfgrep.profile
 /usr/local/etc/firejail/lzgrep.profile
@@ -809,6 +814,7 @@
 /usr/local/etc/firejail/ncdu.profile
 /usr/local/etc/firejail/ncdu2.profile
 /usr/local/etc/firejail/ncmpcpp.profile
+/usr/local/etc/firejail/ne.profile
 /usr/local/etc/firejail/nemo.profile
 /usr/local/etc/firejail/neochat.profile
 /usr/local/etc/firejail/neomutt.profile
@@ -871,6 +877,7 @@
 /usr/local/etc/firejail/openmw-launcher.profile
 /usr/local/etc/firejail/openmw.profile
 /usr/local/etc/firejail/openoffice.org.profile
+/usr/local/etc/firejail/openra.profile
 /usr/local/etc/firejail/openshot-qt.profile
 /usr/local/etc/firejail/openshot.profile
 /usr/local/etc/firejail/openstego.profile
@@ -960,6 +967,7 @@
 /usr/local/etc/firejail/qt6ct.profile
 /usr/local/etc/firejail/qtox.profile
 /usr/local/etc/firejail/quadrapassel.profile
+/usr/local/etc/firejail/quakespasm.profile
 /usr/local/etc/firejail/quassel.profile
 /usr/local/etc/firejail/quaternion.profile
 /usr/local/etc/firejail/quiterss.profile
@@ -1199,6 +1207,7 @@
 /usr/local/etc/firejail/transmission-show.profile
 /usr/local/etc/firejail/tremc.profile
 /usr/local/etc/firejail/tremulous.profile
+/usr/local/etc/firejail/trivalent.profile
 /usr/local/etc/firejail/trojita.profile
 /usr/local/etc/firejail/truecraft.profile
 /usr/local/etc/firejail/ts3client_runscript.sh.profile
@@ -1229,6 +1238,7 @@
 /usr/local/etc/firejail/utox.profile
 /usr/local/etc/firejail/uudeview.profile
 /usr/local/etc/firejail/uzbl-browser.profile
+/usr/local/etc/firejail/uzdoom.profile
 /usr/local/etc/firejail/vesktop.profile
 /usr/local/etc/firejail/viewnior.profile
 /usr/local/etc/firejail/viking.profile
@@ -1257,6 +1267,7 @@
 /usr/local/etc/firejail/warmux.profile
 /usr/local/etc/firejail/warsow.profile
 /usr/local/etc/firejail/warzone2100.profile
+/usr/local/etc/firejail/warzone2100.real.profile
 /usr/local/etc/firejail/waterfox-classic.profile
 /usr/local/etc/firejail/waterfox-current.profile
 /usr/local/etc/firejail/waterfox.profile
@@ -1369,8 +1380,8 @@
 /usr/local/etc/firejail/zulip.profile
 /usr/local/lib64/firejail/etc-cleanup
 /usr/local/lib64/firejail/fbuilder
+/usr/local/lib64/firejail/fbwrap
 /usr/local/lib64/firejail/fcopy
-/usr/local/lib64/firejail/fids
 /usr/local/lib64/firejail/firejail-welcome.sh
 /usr/local/lib64/firejail/fix_private-bin.py
 /usr/local/lib64/firejail/fj-mkdeb.py
@@ -1415,6 +1426,7 @@
 /usr/local/share/doc/firejail/COPYING
 /usr/local/share/doc/firejail/README
 /usr/local/share/doc/firejail/RELNOTES
+/usr/local/share/doc/firejail/new_syscalls.txt
 /usr/local/share/doc/firejail/profile.template
 /usr/local/share/doc/firejail/redirect_alias-profile.template
 /usr/local/share/doc/firejail/syscalls.txt
