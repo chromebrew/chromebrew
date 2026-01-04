@@ -413,6 +413,7 @@ class Package
                                                  CREW_LINKER
                                                end
     env['CREW_PRELOAD_NO_MOLD']              = @no_mold ? '1' : '0'
+    # env['LD_PRELOAD']                        = File.join(CREW_LIB_PREFIX, 'crew-preload.so') if File.exist?("#{CREW_LIB_PREFIX}/crew-preload.so")
 
     # After removing the env hash, all remaining args must be command args.
 

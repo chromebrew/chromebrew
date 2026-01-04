@@ -23,6 +23,7 @@ unless CREW_PRE_GLIBC_STANDALONE
        x86_64: '50729b68b70aceb95f467812950fc58ec29e3e8b184f95d7c7b4ce7cb2d53946'
     })
 
+    # depends_on 'crew_preload' # L
     depends_on 'gawk'    => :build
     depends_on 'libidn2' => :build
     depends_on 'make' => :build
