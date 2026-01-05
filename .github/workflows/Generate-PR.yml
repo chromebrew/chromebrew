@@ -453,6 +453,9 @@ jobs:
             else
               echo "No Changed Files."
             fi
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '4.0.0'
       - name: Create Pull Request
         env:
           CHANGED_GITHUB_CONFIG_FILES: ${{ steps.changed-files.outputs.github_all_changed_files }}
