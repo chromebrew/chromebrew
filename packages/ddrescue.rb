@@ -1,33 +1,24 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Ddrescue < Package
+class Ddrescue < Autotools
   description 'GNU ddrescue is a data recovery tool.'
   homepage 'https://www.gnu.org/software/ddrescue/'
-  version '1.25'
+  version '1.30'
   license 'GPL-2+'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/ddrescue/ddrescue-1.25.tar.lz'
-  source_sha256 'ce538ebd26a09f45da67d3ad3f7431932428231ceec7a2d255f716fa231a1063'
-  binary_compression 'tar.xz'
+  source_url "https://ftpmirror.gnu.org/ddrescue/ddrescue-#{version}.tar.lz"
+  source_sha256 '2264622d309d6c87a1cfc19148292b8859a688e9bc02d4702f5cd4f288745542'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'abc719d94dc994ffc18cbe065e6606282d04f78652cab536897af2773b447d0d',
-     armv7l: 'abc719d94dc994ffc18cbe065e6606282d04f78652cab536897af2773b447d0d',
-       i686: 'b53bcbb1219c17db6cc3979e792a847904b0782ac2f045ad26bacfdbc52ed44e',
-     x86_64: '8fca45af7835153cff43b00cebc1a990b450070f7e7de16887d9ff4b91bcdf0e'
+    aarch64: 'ed4c1191de356867b8610cf268b7f433485d9c3f3174f7b1ff540cc9520fee33',
+     armv7l: 'ed4c1191de356867b8610cf268b7f433485d9c3f3174f7b1ff540cc9520fee33',
+       i686: '7c3fea6fc14acc04a9365c3fd6822ee976924f9bedea30689cc68b30189f37bc',
+     x86_64: 'b50c0c067e4ecbc84a9386351e1d281c7cffdb4ab3e2667c2087eafa7f951059'
   })
 
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS} \
-            --enable-non-posix"
-    system 'make'
-  end
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
-
-  def self.check
-    system 'make', 'check'
-  end
+  autotools_configure_options '--enable-non-posix'
 end
