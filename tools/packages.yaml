@@ -7950,6 +7950,11 @@ url: https://github.com/Textualize/rich/releases
 activity: high
 ---
 kind: url
+name: py3_roman_numerals
+url: https://github.com/AA-Turner/roman-numerals/releases
+activity: low
+---
+kind: url
 name: py3_rpds_py
 url: https://github.com/crate-py/rpds/releases
 activity: high
