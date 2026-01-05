@@ -3,7 +3,7 @@ require 'package'
 class Aliyun_cli < Package
   description 'Alibaba Cloud CLI'
   homepage 'https://www.alibabacloud.com/help/en/cli/'
-  version '3.2.4'
+  version '3.2.5'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/aliyun/aliyun-cli.git'
