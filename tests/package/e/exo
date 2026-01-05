@@ -1,0 +1,3 @@
+#!/bin/bash
+exo-desktop-item-edit --version 2>&1
+exo-open --version 2>&1
