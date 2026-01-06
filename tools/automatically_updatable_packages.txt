@@ -24,6 +24,7 @@ bind
 bison
 bitmap
 bmon
+btop
 caprine
 cargo_c
 codex

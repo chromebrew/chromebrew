@@ -1,4 +1,4 @@
-# Total size: 2744860
+# Total size: 2437768
 /usr/local/bin/btop
 /usr/local/share/applications/btop.desktop
 /usr/local/share/btop/README.md
@@ -15,6 +15,7 @@
 /usr/local/share/btop/themes/everforest-light-medium.theme
 /usr/local/share/btop/themes/flat-remix-light.theme
 /usr/local/share/btop/themes/flat-remix.theme
+/usr/local/share/btop/themes/gotham.theme
 /usr/local/share/btop/themes/greyscale.theme
 /usr/local/share/btop/themes/gruvbox_dark.theme
 /usr/local/share/btop/themes/gruvbox_dark_v2.theme
