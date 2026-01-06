@@ -7,9 +7,11 @@ class Ruby_nokogiri < RUBY
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
+  binary_compression 'gem'
 
+  depends_on 'ruby_mini_portile2' # R
   depends_on 'ruby_racc' # R
 
   conflicts_ok
-  no_compile_needed
+  gem_compile_needed
 end
