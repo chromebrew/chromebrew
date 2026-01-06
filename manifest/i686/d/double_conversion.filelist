@@ -1,4 +1,5 @@
-# Total size: 168843
+# Total size: 175797
+/usr/local/include/double-conversion/bignum-dtoa.h
 /usr/local/include/double-conversion/bignum.h
 /usr/local/include/double-conversion/cached-powers.h
 /usr/local/include/double-conversion/diy-fp.h
@@ -16,4 +17,5 @@
 /usr/local/lib/cmake/double-conversion/double-conversionTargets.cmake
 /usr/local/lib/libdouble-conversion.so
 /usr/local/lib/libdouble-conversion.so.3
-/usr/local/lib/libdouble-conversion.so.3.3.0
+/usr/local/lib/libdouble-conversion.so.3.4.0
+/usr/local/lib/pkgconfig/double-conversion.pc
