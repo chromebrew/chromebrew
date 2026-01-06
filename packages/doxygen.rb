@@ -11,10 +11,10 @@ class Doxygen < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c06666fe7999c337dbf9e28f4a280f1d97771120643a56a22b3a3163babe3d98',
-     armv7l: 'c06666fe7999c337dbf9e28f4a280f1d97771120643a56a22b3a3163babe3d98',
-       i686: 'fde921f416e292fc8921db845834df962e98b739881e1e27f9aa65b6576b1cd2',
-     x86_64: '62663412b949a409afcd419d8b662e31a5dca9d5be7aed73591bce7051cff31a'
+    aarch64: '68f2aa9fed058defc501ef90e24556d1b3d9e45810fcffc355da0dbd14031ccf',
+     armv7l: '68f2aa9fed058defc501ef90e24556d1b3d9e45810fcffc355da0dbd14031ccf',
+       i686: '0f3ff1eed758a57af851b33b7950793be7336584314e48b0e29983ac9cc6610d',
+     x86_64: 'eb9addc779227c7ef2fdfaa394944edc18116ec1425fe7b4fd3229649a074112'
   })
 
   depends_on 'gcc_lib' # R
