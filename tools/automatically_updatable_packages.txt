@@ -23,6 +23,7 @@ bind
 bison
 bitmap
 bmon
+caprine
 cargo_c
 codex
 dart
