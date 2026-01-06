@@ -3,7 +3,7 @@ require 'package'
 class Gcloud < Package
   description 'Command-line interface for Google Cloud Platform products and services'
   homepage 'https://cloud.google.com/sdk/gcloud/'
-  version '550.0.0'
+  version '551.0.0'
   license 'Apache-2.0'
   compatibility 'all'
   source_url({
@@ -13,10 +13,10 @@ class Gcloud < Package
      x86_64: "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-#{version}-linux-x86_64.tar.gz"
   })
   source_sha256({
-    aarch64: '55e28546d7418454247f13f67a8d949ea29282bb0cee0414c2b2e0063b206bb0',
-     armv7l: '55e28546d7418454247f13f67a8d949ea29282bb0cee0414c2b2e0063b206bb0',
-       i686: '360028f213cf228c1a45cac00bbc385002419f4d662bcf2f135dba500164a891',
-     x86_64: '578716510e049a9a1094b80ef953ebaf3d4378c0de29a03f1f5cbb7be813e126'
+    aarch64: 'e663cac03239fbbeeef9a185df26f53b8839e23ea4d6345a8836afaf53aed235',
+     armv7l: 'e663cac03239fbbeeef9a185df26f53b8839e23ea4d6345a8836afaf53aed235',
+       i686: 'b2be9f0f929502ef666dea1da5d2d5860a35768f5af79f46525d72342ae8f94d',
+     x86_64: '77c59c0aadb74ee56f6b9d210d2b23d5df6b520d8d7309563b9069cb7480b708'
   })
 
   depends_on 'python3'

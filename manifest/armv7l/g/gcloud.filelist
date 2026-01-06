@@ -1,4 +1,4 @@
-# Total size: 364594902
+# Total size: 364901193
 /usr/local/bin/bq
 /usr/local/bin/dev_appserver.py
 /usr/local/bin/docker-credential-gcloud
@@ -8575,6 +8575,7 @@
 /usr/local/share/gcloud/lib/surface/components/repositories/remove.py
 /usr/local/share/gcloud/lib/surface/components/restore.py
 /usr/local/share/gcloud/lib/surface/components/update.py
+/usr/local/share/gcloud/lib/surface/components/update_macos_python.py
 /usr/local/share/gcloud/lib/surface/composer/__init__.py
 /usr/local/share/gcloud/lib/surface/composer/environments/__init__.py
 /usr/local/share/gcloud/lib/surface/composer/environments/check_upgrade.py
@@ -14088,7 +14089,6 @@
 /usr/local/share/gcloud/lib/surface/network_services/multicast_group_consumer_activations/list.yaml
 /usr/local/share/gcloud/lib/surface/network_services/multicast_group_consumer_activations/update.yaml
 /usr/local/share/gcloud/lib/surface/network_services/multicast_group_definitions/__init__.py
-/usr/local/share/gcloud/lib/surface/network_services/multicast_group_definitions/create.yaml
 /usr/local/share/gcloud/lib/surface/network_services/multicast_group_definitions/delete.yaml
 /usr/local/share/gcloud/lib/surface/network_services/multicast_group_definitions/describe.yaml
 /usr/local/share/gcloud/lib/surface/network_services/multicast_group_definitions/list.yaml
@@ -14111,7 +14111,6 @@
 /usr/local/share/gcloud/lib/surface/network_services/multicast_group_ranges/list.yaml
 /usr/local/share/gcloud/lib/surface/network_services/multicast_group_ranges/update.yaml
 /usr/local/share/gcloud/lib/surface/network_services/multicast_groups/__init__.py
-/usr/local/share/gcloud/lib/surface/network_services/multicast_groups/create.yaml
 /usr/local/share/gcloud/lib/surface/network_services/multicast_groups/delete.yaml
 /usr/local/share/gcloud/lib/surface/network_services/multicast_groups/describe.yaml
 /usr/local/share/gcloud/lib/surface/network_services/multicast_groups/list.yaml
@@ -15102,6 +15101,8 @@
 /usr/local/share/gcloud/lib/surface/run/domain_mappings/describe.py
 /usr/local/share/gcloud/lib/surface/run/domain_mappings/list.py
 /usr/local/share/gcloud/lib/surface/run/instances/__init__.py
+/usr/local/share/gcloud/lib/surface/run/instances/create.py
+/usr/local/share/gcloud/lib/surface/run/instances/delete.py
 /usr/local/share/gcloud/lib/surface/run/instances/describe.py
 /usr/local/share/gcloud/lib/surface/run/instances/list.py
 /usr/local/share/gcloud/lib/surface/run/integrations/__init__.py
@@ -15224,6 +15225,12 @@
 /usr/local/share/gcloud/lib/surface/runtime_config/configs/waiters/wait.py
 /usr/local/share/gcloud/lib/surface/saas_runtime/__init__.py
 /usr/local/share/gcloud/lib/surface/saas_runtime/flags/__init__.py
+/usr/local/share/gcloud/lib/surface/saas_runtime/flags/attributes/__init__.py
+/usr/local/share/gcloud/lib/surface/saas_runtime/flags/attributes/create.yaml
+/usr/local/share/gcloud/lib/surface/saas_runtime/flags/attributes/delete.yaml
+/usr/local/share/gcloud/lib/surface/saas_runtime/flags/attributes/describe.yaml
+/usr/local/share/gcloud/lib/surface/saas_runtime/flags/attributes/list.yaml
+/usr/local/share/gcloud/lib/surface/saas_runtime/flags/attributes/update.yaml
 /usr/local/share/gcloud/lib/surface/saas_runtime/flags/create.yaml
 /usr/local/share/gcloud/lib/surface/saas_runtime/flags/delete.yaml
 /usr/local/share/gcloud/lib/surface/saas_runtime/flags/describe.yaml
@@ -15924,6 +15931,9 @@
 /usr/local/share/gcloud/lib/surface/stacks/types/list.py
 /usr/local/share/gcloud/lib/surface/storage/__init__.py
 /usr/local/share/gcloud/lib/surface/storage/batch_operations/__init__.py
+/usr/local/share/gcloud/lib/surface/storage/batch_operations/bucket_operations/__init__.py
+/usr/local/share/gcloud/lib/surface/storage/batch_operations/bucket_operations/describe.py
+/usr/local/share/gcloud/lib/surface/storage/batch_operations/bucket_operations/list.py
 /usr/local/share/gcloud/lib/surface/storage/batch_operations/jobs/__init__.py
 /usr/local/share/gcloud/lib/surface/storage/batch_operations/jobs/cancel.py
 /usr/local/share/gcloud/lib/surface/storage/batch_operations/jobs/create.py
@@ -16012,11 +16022,6 @@
 /usr/local/share/gcloud/lib/surface/storage/managed_folders/list.py
 /usr/local/share/gcloud/lib/surface/storage/managed_folders/remove_iam_policy_binding.py
 /usr/local/share/gcloud/lib/surface/storage/managed_folders/set_iam_policy.py
-/usr/local/share/gcloud/lib/surface/storage/management_hub/__init__.py
-/usr/local/share/gcloud/lib/surface/storage/management_hub/describe.py
-/usr/local/share/gcloud/lib/surface/storage/management_hub/disable.py
-/usr/local/share/gcloud/lib/surface/storage/management_hub/enable.py
-/usr/local/share/gcloud/lib/surface/storage/management_hub/update.py
 /usr/local/share/gcloud/lib/surface/storage/mv.py
 /usr/local/share/gcloud/lib/surface/storage/objects/__init__.py
 /usr/local/share/gcloud/lib/surface/storage/objects/add_iam_policy_binding.py
