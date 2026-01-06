@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Extra_cmake_modules < CMake
   description 'Extra modules and scripts for CMake.'
   homepage 'https://invent.kde.org/frameworks/extra-cmake-modules'
-  version '6.11.0'
+  version '6.21.0'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://invent.kde.org/frameworks/extra-cmake-modules.git'
@@ -11,9 +11,11 @@ class Extra_cmake_modules < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ea4855c212a9aec1c5c8fc9814b9e06c1ee6e78c9469311477ee624b1f328b16',
-     armv7l: 'ea4855c212a9aec1c5c8fc9814b9e06c1ee6e78c9469311477ee624b1f328b16',
-       i686: 'dd678b6ba3eac98d94f3eeaccc9bb567eece03e70ecd9088969acd1097d82c6f',
-     x86_64: 'c6b4de42093bdfcd9bd04cc291d3fca80d287d0132791c57c1c5f71fcc8a45d0'
+    aarch64: '8483579341c800021b404fad4e343bdac2f4cf728814672f851cc70900bc6a7a',
+     armv7l: '8483579341c800021b404fad4e343bdac2f4cf728814672f851cc70900bc6a7a',
+       i686: '5ff099be77f7a5751a521b1d9b769d6dc9b77119767f9e82603795602cc1fe78',
+     x86_64: 'f2e2b5024173d3f3f7f09b2dc59834c79ffebfe8f4b824e7eed9aa08e33cd24a'
   })
+
+  depends_on 'sphinx' => :build
 end
