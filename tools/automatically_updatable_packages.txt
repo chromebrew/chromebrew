@@ -6,6 +6,7 @@ aliyun_cli
 alsa_lib
 alsa_plugins
 alsa_utils
+ansible
 appflowy
 appres
 apr
