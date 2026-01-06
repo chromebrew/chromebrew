@@ -35,6 +35,7 @@ enchant
 enet
 epiphany
 evince
+exfatprogs
 exo
 extra_cmake_modules
 f2fs_tools

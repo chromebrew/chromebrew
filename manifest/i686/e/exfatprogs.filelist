@@ -1,12 +1,10 @@
-# Total size: 276751
-/usr/local/sbin/defrag.exfat
+# Total size: 237361
 /usr/local/sbin/dump.exfat
 /usr/local/sbin/exfat2img
 /usr/local/sbin/exfatlabel
 /usr/local/sbin/fsck.exfat
 /usr/local/sbin/mkfs.exfat
 /usr/local/sbin/tune.exfat
-/usr/local/share/man/man8/defrag.exfat.8.zst
 /usr/local/share/man/man8/dump.exfat.8.zst
 /usr/local/share/man/man8/exfat2img.8.zst
 /usr/local/share/man/man8/exfatlabel.8.zst
