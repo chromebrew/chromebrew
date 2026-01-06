@@ -370,7 +370,7 @@ jobs:
             git log --oneline -10
           fi
   build-check:
-    runs-on: ubuntu-24.04-arm
+    runs-on: ubuntu-24.04
     needs:
       - setup
       - update-package-files
@@ -471,15 +471,17 @@ jobs:
           x86_64_PACKAGES: ${{ needs.setup.outputs.x86_64_packages }}
           armv7l_PACKAGES: ${{ needs.setup.outputs.armv7l_packages }}
         run: |
+          ruby --version
+          which ruby
           # Make untouched clone of repo so we can get the existing versions of packages.
           (cd /tmp ; git clone --depth=1 https://github.com/${{ github.repository }}.git chromebrew_main )
-          sudo gem install -N json --conservative
-          sudo gem install -N ptools --conservative
-          sudo gem install -N highline --conservative
-          sudo gem install -N concurrent-ruby --conservative
-          sudo gem install -N method_source --conservative
-          sudo gem install -N cgi --conservative
-          sudo gem install -N ruby-libversion --conservative
+          gem install -N json --conservative
+          gem install -N ptools --conservative
+          gem install -N highline --conservative
+          gem install -N concurrent-ruby --conservative
+          gem install -N method_source --conservative
+          gem install -N cgi --conservative
+          gem install -N ruby-libversion --conservative
           # Make crew do automatic gem installs before looking for deps.
           LD_LIBRARY_PATH=/usr/local/lib ruby bin/crew version
           # Force creation of temporary device.json.
@@ -501,11 +503,15 @@ jobs:
             echo -e "### Packages with Updated versions or Changed package files:" >> /tmp/pr.txt
             for file in ${CHANGED_PACKAGES}
               do
+              ruby --version
+              which ruby
               # Get version before PR, but do not let a broken version stop us.
               main_version_string="$(cd /tmp/chromebrew_main ; LD_LIBRARY_PATH=/usr/local/lib ruby bin/crew version ${file} || true)"
               [[ -n "$main_version_string" ]] && main_version_string=": $main_version_string"
-              pkg_version="$(LD_LIBRARY_PATH=/usr/local/lib ruby bin/crew version ${file})"
-              upstream_version="$(LD_LIBRARY_PATH=/usr/local/lib ruby tools/version.rb -j "${file}" | jq -r '.[]|.upstream_version' || true)"
+              pkg_version="$(LD_LIBRARY_PATH=/usr/local/lib /opt/hostedtoolcache/Ruby/4.0.0/x64/bin/ruby bin/crew version ${file})"
+              echo "pkg_version: $pkg_version"
+              upstream_version="$(LD_LIBRARY_PATH=/usr/local/lib /opt/hostedtoolcache/Ruby/4.0.0/x64/bin/ruby tools/version.rb -j "${file}" | jq -r '.[]|.upstream_version' || true)"
+              echo "upstream_version: $upstream_version"
               if [[ -z "$pkg_version" ]]; then
                 echo "- \`${file}\`${main_version_string}" >> /tmp/pr.txt
                 PKG_DELTA+=( "${file}${main_version_string}" )
