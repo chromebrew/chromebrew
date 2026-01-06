@@ -3,11 +3,11 @@ require 'package'
 class Caprine < Package
   description 'An elegant Facebook Messenger desktop app'
   homepage 'https://sindresorhus.com/caprine/'
-  version '2.60.3'
+  version '2.61.0'
   license 'MIT'
   compatibility 'x86_64'
   source_url "https://github.com/sindresorhus/caprine/releases/download/v#{version}/Caprine-#{version}.AppImage"
-  source_sha256 '3fc8f57fcff84638d81679846ee9241091f71e914be7657787218f96985a73ce'
+  source_sha256 '1372b67a2de8fd9c9d3f0178557c3ac67add86f270d6b4c3073b06d38751980b'
 
   depends_on 'gtk3'
   depends_on 'sommelier'
