@@ -7,8 +7,7 @@ class Ruby_mini_portile2 < RUBY
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
-  binary_compression 'gem'
 
   conflicts_ok
-  gem_compile_needed
+  no_compile_needed
 end
