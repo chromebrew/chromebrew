@@ -16,6 +16,9 @@ class Ruby_jaro_winkler < RUBY
      x86_64: 'ea4c231509537fb3333903adc376a7e27e170ebecb5696a4d8501113ca51e5ff'
   })
 
+  depends_on 'glibc' # R
+  depends_on 'ruby' # R
+
   conflicts_ok
   gem_compile_needed
 end
