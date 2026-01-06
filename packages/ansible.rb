@@ -24,4 +24,8 @@ class Ansible < Pip
   depends_on 'python3' => :build
 
   no_source_build
+
+  def self.postremove
+    Package.agree_to_remove("#{HOME}/.ansible")
+  end
 end
