@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION = defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION = '1.70.1' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION = '1.70.2' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH = Etc.uname[:machine]
@@ -351,7 +351,7 @@ crew_icu_ver_default = '77.1'
 crew_llvm_ver_default = '21'
 crew_perl_ver_default = '5.42'
 crew_py_ver_default = '3.14'
-crew_ruby_ver_default = '3.4'
+crew_ruby_ver_default = '4.0'
 if ENV['CI']
   CREW_GCC_VER  = "gcc#{crew_gcc_ver_default}"
   CREW_ICU_VER  = "icu#{crew_icu_ver_default}"
