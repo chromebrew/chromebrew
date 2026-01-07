@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Curl < Autotools
   description 'Command line tool and library for transferring data with URLs.'
   homepage 'https://curl.se/'
-  version '8.17.0-1'
+  version '8.18.0'
   license 'curl'
   compatibility 'all'
   source_url "https://curl.se/download/curl-#{version.split('-').first}.tar.xz"
-  source_sha256 '955f6e729ad6b3566260e8fef68620e76ba3c31acf0a18524416a185acf77992'
+  source_sha256 '40df79166e74aa20149365e11ee4c798a46ad57c34e4f68fd13100e2c9a91946'
   binary_compression 'tar.zst'
 
   binary_sha256({
