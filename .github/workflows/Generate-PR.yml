@@ -473,13 +473,13 @@ jobs:
         run: |
           # Make untouched clone of repo so we can get the existing versions of packages.
           (cd /tmp ; git clone --depth=1 https://github.com/${{ github.repository }}.git chromebrew_main )
-          sudo gem install -N json --conservative
-          sudo gem install -N ptools --conservative
-          sudo gem install -N highline --conservative
-          sudo gem install -N concurrent-ruby --conservative
-          sudo gem install -N method_source --conservative
-          sudo gem install -N cgi --conservative
-          sudo gem install -N ruby-libversion --conservative
+          gem install -N json --conservative
+          gem install -N ptools --conservative
+          gem install -N highline --conservative
+          gem install -N concurrent-ruby --conservative
+          gem install -N method_source --conservative
+          gem install -N cgi --conservative
+          gem install -N ruby-libversion --conservative
           # Make crew do automatic gem installs before looking for deps.
           LD_LIBRARY_PATH=/usr/local/lib ruby bin/crew version
           # Force creation of temporary device.json.
