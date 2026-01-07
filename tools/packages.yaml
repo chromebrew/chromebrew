@@ -8545,6 +8545,11 @@ url: https://github.com/banister/method_source/tags
 activity: low
 ---
 kind: url
+name: ruby_mini_portile2
+url: https://github.com/flavorjones/mini_portile/releases
+activity: low
+---
+kind: url
 name: ruby_nokogiri
 url: https://github.com/sparklemotion/nokogiri/releases
 activity: high
