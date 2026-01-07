@@ -11,10 +11,10 @@ class Xzutils < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '704d9231ca3a3aacf710b32049d9e96e5efcd6afc4446c2f7d73ca7efe177f2c',
-     armv7l: '704d9231ca3a3aacf710b32049d9e96e5efcd6afc4446c2f7d73ca7efe177f2c',
-       i686: '6135be59adfa169b7517a731ae532841999b26cb44acd77bb153e400c6d574fd',
-     x86_64: '11efc5d59ab7b1c7acdef3c0bf7f4ebb89129bddef7fd753169d6468c6b07ec7'
+    aarch64: '6c54532c166ac31d4892c295e90120faa2cdc7de5fe219312408b4ef43c096bd',
+     armv7l: '6c54532c166ac31d4892c295e90120faa2cdc7de5fe219312408b4ef43c096bd',
+       i686: '1e30cc74fc0fae110561cda9ddec45125b766b49c710a596dcab2b531367983e',
+     x86_64: '894bae0c7a402a7f191b8df6c290d391ec35d1f399d350e3027d93cb6ff36fb2'
   })
 
   depends_on 'glibc' # R
