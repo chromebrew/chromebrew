@@ -363,6 +363,7 @@ jobs:
           if [ -n "$(git status --porcelain)" ]; then
             git config user.name "${{ github.actor }}"
             git config user.email "${{ github.actor }}@users.noreply.github.com"
+            git add .
             git stash || true
             git fetch origin ${{ inputs.branch || github.ref_name }}
             git stash pop || true
