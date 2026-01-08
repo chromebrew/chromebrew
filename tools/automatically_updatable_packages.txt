@@ -84,6 +84,7 @@ freerdp
 freetds
 fribidi
 gambit
+google_chrome
 libcdr
 libvisio
 libxfce4ui
