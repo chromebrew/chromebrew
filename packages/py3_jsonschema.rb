@@ -6,7 +6,7 @@ require 'buildsystems/pip'
 class Py3_jsonschema < Pip
   description 'An implementation of JSON Schema validation for Python'
   homepage 'https://github.com/python-jsonschema/jsonschema'
-  version '4.25.1'
+  version '4.26.0'
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
