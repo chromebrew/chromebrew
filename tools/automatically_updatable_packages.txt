@@ -95,6 +95,7 @@ opencode
 rqlite
 sphinx
 usql
+vivaldi
 vscodium
 xdpyinfo
 yyjson
