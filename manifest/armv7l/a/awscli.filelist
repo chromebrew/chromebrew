@@ -1,4 +1,4 @@
-# Total size: 12050789
+# Total size: 12024164
 /usr/local/bin/aws
 /usr/local/bin/aws.cmd
 /usr/local/bin/aws_bash_completer
@@ -6,13 +6,13 @@
 /usr/local/bin/aws_zsh_completer.sh
 /usr/local/etc/bash.d/aws
 /usr/local/etc/zsh.d/aws
-/usr/local/lib/python3.14/site-packages/awscli-1.44.10.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/awscli-1.44.10.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/awscli-1.44.10.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/awscli-1.44.10.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/awscli-1.44.10.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/awscli-1.44.10.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/awscli-1.44.10.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/awscli-1.44.14.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/awscli-1.44.14.dist-info/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/awscli-1.44.14.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/awscli-1.44.14.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/awscli-1.44.14.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/awscli-1.44.14.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/awscli-1.44.14.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/awscli/__init__.py
 /usr/local/lib/python3.14/site-packages/awscli/__main__.py
 /usr/local/lib/python3.14/site-packages/awscli/__pycache__/__init__.cpython-314.pyc
@@ -391,13 +391,11 @@
 /usr/local/lib/python3.14/site-packages/awscli/customizations/s3/syncstrategy/__init__.py
 /usr/local/lib/python3.14/site-packages/awscli/customizations/s3/syncstrategy/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/awscli/customizations/s3/syncstrategy/__pycache__/base.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/awscli/customizations/s3/syncstrategy/__pycache__/caseconflict.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/awscli/customizations/s3/syncstrategy/__pycache__/delete.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/awscli/customizations/s3/syncstrategy/__pycache__/exacttimestamps.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/awscli/customizations/s3/syncstrategy/__pycache__/register.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/awscli/customizations/s3/syncstrategy/__pycache__/sizeonly.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/awscli/customizations/s3/syncstrategy/base.py
-/usr/local/lib/python3.14/site-packages/awscli/customizations/s3/syncstrategy/caseconflict.py
 /usr/local/lib/python3.14/site-packages/awscli/customizations/s3/syncstrategy/delete.py
 /usr/local/lib/python3.14/site-packages/awscli/customizations/s3/syncstrategy/exacttimestamps.py
 /usr/local/lib/python3.14/site-packages/awscli/customizations/s3/syncstrategy/register.py
@@ -6285,7 +6283,6 @@
 /usr/local/lib/python3.14/site-packages/awscli/text.py
 /usr/local/lib/python3.14/site-packages/awscli/topics/config-vars.rst
 /usr/local/lib/python3.14/site-packages/awscli/topics/return-codes.rst
-/usr/local/lib/python3.14/site-packages/awscli/topics/s3-case-insensitivity.rst
 /usr/local/lib/python3.14/site-packages/awscli/topics/s3-config.rst
 /usr/local/lib/python3.14/site-packages/awscli/topics/s3-faq.rst
 /usr/local/lib/python3.14/site-packages/awscli/topics/topic-tags.json

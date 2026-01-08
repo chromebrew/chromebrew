@@ -1,4 +1,4 @@
-# Total size: 1417536
+# Total size: 1421406
 /usr/local/bin/lzcat
 /usr/local/bin/lzcmp
 /usr/local/bin/lzdiff
@@ -44,7 +44,7 @@
 /usr/local/lib/liblzma.la
 /usr/local/lib/liblzma.so
 /usr/local/lib/liblzma.so.5
-/usr/local/lib/liblzma.so.5.8.1
+/usr/local/lib/liblzma.so.5.8.2
 /usr/local/lib/pkgconfig/liblzma.pc
 /usr/local/share/doc/xz/AUTHORS
 /usr/local/share/doc/xz/COPYING

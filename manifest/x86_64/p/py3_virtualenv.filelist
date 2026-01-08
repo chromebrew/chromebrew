@@ -1,12 +1,12 @@
-# Total size: 6870473
+# Total size: 6900868
 /usr/local/bin/virtualenv
-/usr/local/lib/python3.14/site-packages/virtualenv-20.35.4.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/virtualenv-20.35.4.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/virtualenv-20.35.4.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/virtualenv-20.35.4.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/virtualenv-20.35.4.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/virtualenv-20.35.4.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/virtualenv-20.35.4.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/virtualenv-20.36.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/virtualenv-20.36.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/virtualenv-20.36.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/virtualenv-20.36.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/virtualenv-20.36.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/virtualenv-20.36.0.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/virtualenv-20.36.0.dist-info/licenses/LICENSE
 /usr/local/lib/python3.14/site-packages/virtualenv/__init__.py
 /usr/local/lib/python3.14/site-packages/virtualenv/__main__.py
 /usr/local/lib/python3.14/site-packages/virtualenv/__pycache__/__init__.cpython-314.pyc
@@ -189,6 +189,7 @@
 /usr/local/lib/python3.14/site-packages/virtualenv/util/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/virtualenv/util/__pycache__/error.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/virtualenv/util/__pycache__/lock.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/virtualenv/util/__pycache__/specifier.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/virtualenv/util/__pycache__/zipapp.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/virtualenv/util/error.py
 /usr/local/lib/python3.14/site-packages/virtualenv/util/lock.py
@@ -200,6 +201,7 @@
 /usr/local/lib/python3.14/site-packages/virtualenv/util/path/_permission.py
 /usr/local/lib/python3.14/site-packages/virtualenv/util/path/_sync.py
 /usr/local/lib/python3.14/site-packages/virtualenv/util/path/_win.py
+/usr/local/lib/python3.14/site-packages/virtualenv/util/specifier.py
 /usr/local/lib/python3.14/site-packages/virtualenv/util/subprocess/__init__.py
 /usr/local/lib/python3.14/site-packages/virtualenv/util/subprocess/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/virtualenv/util/zipapp.py

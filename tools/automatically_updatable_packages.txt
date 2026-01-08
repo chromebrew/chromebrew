@@ -1,10 +1,12 @@
 acl
 acpi
 acpica
+act
 aliyun_cli
 alsa_lib
 alsa_plugins
 alsa_utils
+ansible
 appflowy
 appres
 apr
@@ -22,6 +24,9 @@ bind
 bison
 bitmap
 bmon
+brave
+btop
+caprine
 cargo_c
 codex
 dart
@@ -35,6 +40,9 @@ enchant
 enet
 epiphany
 evince
+exfatprogs
+exo
+extra_cmake_modules
 f2fs_tools
 faad2
 fastfetch
@@ -77,6 +85,7 @@ freerdp
 freetds
 fribidi
 gambit
+google_chrome
 libcdr
 libvisio
 libxfce4ui
@@ -84,7 +93,9 @@ nano
 ocaml
 opencode
 rqlite
+sphinx
 usql
+vivaldi
 vscodium
 xdpyinfo
 yyjson

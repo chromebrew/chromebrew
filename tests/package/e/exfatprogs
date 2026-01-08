@@ -1,0 +1,2 @@
+#!/bin/bash
+for b in $(crew files exfatprogs | grep /usr/local/sbin); do $b -V 2>&1; done
