@@ -24,6 +24,7 @@ bind
 bison
 bitmap
 bmon
+brave
 btop
 caprine
 cargo_c
