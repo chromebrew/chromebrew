@@ -95,6 +95,7 @@ libxfce4ui
 nano
 ocaml
 opencode
+opera
 rqlite
 signal_desktop
 sphinx
