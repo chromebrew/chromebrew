@@ -33,6 +33,7 @@ dart
 dav1d
 dbeaver
 delve
+deno
 detox
 difftastic
 doctl
