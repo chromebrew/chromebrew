@@ -36,6 +36,7 @@ delve
 detox
 difftastic
 doctl
+dust
 enchant
 enet
 epiphany
