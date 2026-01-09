@@ -30,6 +30,7 @@ btop
 caprine
 cargo_c
 codex
+composer
 dart
 dav1d
 dbeaver
