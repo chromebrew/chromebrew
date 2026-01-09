@@ -92,6 +92,7 @@ libxfce4ui
 nano
 ocaml
 opencode
+opera
 rqlite
 sphinx
 usql
