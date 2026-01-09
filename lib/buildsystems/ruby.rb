@@ -88,7 +88,15 @@ def save_gem_filelist(gem_name = nil, gem_filelist_path = nil)
   crewlog "@gem_latest_version_installed: #{@gem_latest_version_installed}"
   # We need the gem reinstalled, so we don't use --conservative, which
   # avoids the reinstall.
-  files = `gem install --no-update-sources -N #{gem_name} &>/dev/null ; gem contents #{gem_name}`.chomp.split
+  if [`gem list --no-update-sources -l -e #{gem_name}`.chomp.to_s].grep(/#{gem_name}/)[0]
+    # Gem is already installed.
+  elsif File.file?("#{CREW_DEST_DIR}/#{@ruby_gem_name}-#{@ruby_gem_version}-#{GEM_ARCH}.gem")
+    # Gem not installed but a binary for the gem exists.
+    Kernel.system "gem install --no-update-sources -N --local #{CREW_DEST_DIR}/#{@ruby_gem_name}-#{@ruby_gem_version}-#{GEM_ARCH}.gem --conservative &>/dev/null"
+  else
+    Kernel.system "gem install --no-update-sources -N #{gem_name} &>/dev/null"
+  end
+  files = `gem contents #{gem_name}`.chomp.split
   exes = files.grep(%r{/exe/|/bin/})
   # Gem.bindir should end up being #{CREW_PREFIX}/bin.
   exes&.map! { |x| x.gsub(%r{^.*(/exe/|/bin/)}, "#{Gem.bindir}/") }
