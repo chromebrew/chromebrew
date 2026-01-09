@@ -11,6 +11,7 @@ appflowy
 appres
 apr
 apr_util
+armadillo
 arp_scan
 asunder
 augeas
