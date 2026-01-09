@@ -95,6 +95,7 @@ nano
 ocaml
 opencode
 rqlite
+signal_desktop
 sphinx
 usql
 vivaldi
