@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Alsa_utils < Autotools
   description 'The Advanced Linux Sound Architecture (ALSA) - utilities'
   homepage 'https://github.com/alsa-project/alsa-utils'
-  version '1.2.15.1'
+  version '1.2.15.2'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/alsa-project/alsa-utils.git'
