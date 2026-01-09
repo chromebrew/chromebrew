@@ -41,6 +41,18 @@ end
 # Rename the binary_sha256 variable to sha256 in the device.json file
 system("sed -i 's/binary_sha256/sha256/g' #{File.join(CREW_CONFIG_PATH, 'device.json')}")
 
+# Create gem required spec folder if it does not exist, and
+FileUtils.mkdir_p "#{CREW_PREFIX}/.cache/gem/specs"
+# Fix improperly installed gems from that directory having been missing.
+# gems_marked_as_installed = `crew list installed --no-color| grep --color=never ruby_`.split
+# gems_marked_as_installed.each do |gem_to_be_checked|
+# gem_to_be_checked_name = gem_to_be_checked.gsub('ruby_', '')
+# gem_to_be_checked_search = [`gem list --no-update-sources -l -e #{gem_to_be_checked_name}`.chomp.to_s].grep(/#{gem_to_be_checked_name}/)[0]
+# unless gem_to_be_checked_search
+#   puts "Fixing install of #{gem_to_be_checked_name}...".orange
+#   system "yes | crew install ruby_#{gem_to_be_checked}"
+# end
+
 # Check for renamed and deprecated packages, and handle them.
 
 renamed_packages = Set[
