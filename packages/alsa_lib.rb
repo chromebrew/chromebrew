@@ -11,10 +11,10 @@ class Alsa_lib < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd130815f4e67d70b6ddc40fc8f305e0ae51fb92fe4d6724e0620827f52f6aa39',
-     armv7l: 'd130815f4e67d70b6ddc40fc8f305e0ae51fb92fe4d6724e0620827f52f6aa39',
-       i686: '23f14112cf5553589fd2fea792d394eb15de74e993e571e7bdc3b5259f22dea2',
-     x86_64: 'b76637e76ee49a2efebd3efd1183e3513030b64a73fb42d0beeaf9cf13252cfe'
+    aarch64: '8cf7c0a67102781f3983c1ecd24ecdf730e193e80aa41c1409ff3a48504e166f',
+     armv7l: '8cf7c0a67102781f3983c1ecd24ecdf730e193e80aa41c1409ff3a48504e166f',
+       i686: 'fc730c0fbcd856492ee1a513673772d13e7a07cf951874a9761104b874206468',
+     x86_64: '2db3d8b56eebad4db9254daff4e0e8035fd0269c0d1a5f66db051e5cae790d40'
   })
 
   depends_on 'glibc' # R
