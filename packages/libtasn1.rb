@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Libtasn1 < Autotools
   description 'Libtasn1 is the ASN.1 library used by GnuTLS, GNU Shishi and some other packages.'
   homepage 'https://www.gnu.org/software/libtasn1/'
-  version '4.20.0'
+  version '4.21.0'
   license 'GPL-3 and LGPL-2.1'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/libtasn1/libtasn1-#{version}.tar.gz"
-  source_sha256 '92e0e3bd4c02d4aeee76036b2ddd83f0c732ba4cda5cb71d583272b23587a76c'
+  source_sha256 '1d8a444a223cc5464240777346e125de51d8e6abf0b8bac742ac84609167dc87'
   binary_compression 'tar.zst'
 
   binary_sha256({
