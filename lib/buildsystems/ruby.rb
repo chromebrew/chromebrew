@@ -105,7 +105,10 @@ def save_gem_filelist(gem_name = nil, gem_version = nil, gem_filelist_path = nil
     Kernel.system "gem install --no-update-sources -N #{gem_name} &>/dev/null"
   end
   files = `gem contents #{gem_name}`.chomp.split
-  abort "filelist is blank for #{gem_name}".lightred if files.blank?
+  if files.blank?
+    puts "Filelist is blank for #{gem_name}".lightred
+    return
+  end
 
   exes = files.grep(%r{/exe/|/bin/})
   # Gem.bindir should end up being #{CREW_PREFIX}/bin.
@@ -261,7 +264,8 @@ class RUBY < Package
   def self.install
     # @install_gem will always be true during upgrades since we remove
     # the old gem during the upgrade.
-    set_vars(name, version) if @ruby_gem_name.blank? || @gem_installed_version.blank?
+    set_vars(name, version) if @ruby_gem_name.blank? || @gem_installed_version.blank? || @ruby_gem_version.blank?
+    @gem_filelist_path = File.join(CREW_META_PATH, "#{name.downcase}.filelist") if @gem_filelist_path.nil?
     if @gem_installed_version.blank?
       crewlog "@gem_installed_version.blank? is #{@gem_installed_version.blank?}, setting @install_gem = true"
       @install_gem = true if @gem_installed_version.blank?
@@ -277,7 +281,12 @@ class RUBY < Package
     if !no_compile_needed? || !@gem_binary_build_needed.blank? || gem_compile_needed?
       @gem_pkg = Package.load_package(File.join(CREW_PACKAGES_PATH, "#{name}.rb"))
       gem_pkg_sha256sum = PackageUtils.get_sha256(@gem_pkg)
-      gem_sha256 = `sha256sum #{CREW_DEST_DIR}/#{@ruby_gem_name}-#{@ruby_gem_version}-#{GEM_ARCH}.gem`.chomp.split.first
+      if File.file?("#{CREW_DEST_DIR}/#{@ruby_gem_name}-#{@ruby_gem_version}-#{GEM_ARCH}.gem")
+        gem_sha256 = `sha256sum #{CREW_DEST_DIR}/#{@ruby_gem_name}-#{@ruby_gem_version}-#{GEM_ARCH}.gem`.chomp.split.first
+      else
+        system "ls -aFl #{CREW_DEST_DIR}"
+        gem_sha256 = nil
+      end
       if File.file?("#{CREW_DEST_DIR}/#{@ruby_gem_name}-#{@ruby_gem_version}-#{GEM_ARCH}.gem") && (gem_sha256 == gem_pkg_sha256sum || @just_built_gem)
         puts "Installing #{@ruby_gem_name} gem #{@ruby_gem_version}...".orange
         Kernel.system "gem install --no-update-sources -N --local #{CREW_DEST_DIR}/#{@ruby_gem_name}-#{@ruby_gem_version}-#{GEM_ARCH}.gem --conservative"

@@ -771,8 +771,20 @@ def unpack(meta)
         end
         system "../#{meta[:filename]}", '--appimage-extract', chdir: @extract_dir, exception: true
       when /\.gem$/i
-        puts "Moving #{@pkg.ruby_gem_name} binary gem for install..."
-        gem_file = "#{@pkg.ruby_gem_name}-#{@pkg.ruby_gem_version}-#{GEM_ARCH}.gem"
+        if @pkg.ruby_gem_name.blank?
+          ruby_gem_name = @pkg.name.sub('ruby_', '').sub('_', '-')
+          puts "@pkg.ruby_gem_name is blank! Trying #{ruby_gem_name}".orange
+        else
+          ruby_gem_name = @pkg.ruby_gem_name
+        end
+        if @pkg.ruby_gem_version.blank?
+          ruby_gem_version = PackageUtils.get_clean_version(@pkg.version)
+          puts "@pkg.ruby_gem_version is blank! Trying #{ruby_gem_version}".orange
+        else
+          ruby_gem_version = @pkg.ruby_gem_version
+        end
+        puts "Moving #{ruby_gem_name} binary gem for install...".orange
+        gem_file = "#{ruby_gem_name}-#{ruby_gem_version}-#{GEM_ARCH}.gem"
         FileUtils.mv meta[:filename], File.join(@extract_dir, gem_file)
       end
     end
@@ -1405,7 +1417,19 @@ def install(skip_postinstall: false)
   elsif @pkg.superclass.to_s == 'RUBY'
     meta = download
     target_dir = unpack meta
-    gem_file = "#{@pkg.ruby_gem_name}-#{@pkg.ruby_gem_version}-#{GEM_ARCH}.gem"
+    if @pkg.ruby_gem_name.blank?
+      ruby_gem_name = @pkg.name.sub('ruby_', '').sub('_', '-')
+      puts "@pkg.ruby_gem_name is blank! Trying #{ruby_gem_name}".orange
+    else
+      ruby_gem_name = @pkg.ruby_gem_name
+    end
+    if @pkg.ruby_gem_version.blank?
+      ruby_gem_version = PackageUtils.get_clean_version(@pkg.version)
+      puts "@pkg.ruby_gem_version is blank! Trying #{ruby_gem_version}".orange
+    else
+      ruby_gem_version = @pkg.ruby_gem_version
+    end
+    gem_file = "#{ruby_gem_name}-#{ruby_gem_version}-#{GEM_ARCH}.gem"
     if File.file?(File.join(target_dir, gem_file))
       FileUtils.mv File.join(target_dir, gem_file), File.join(CREW_DEST_DIR, gem_file)
     else
