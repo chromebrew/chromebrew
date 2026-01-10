@@ -86,6 +86,7 @@ def set_vars(passed_name = nil, passed_version = nil)
 end
 
 def save_gem_filelist(gem_name = nil, gem_version = nil, gem_filelist_path = nil)
+  gem_filelist_path = File.join(CREW_META_PATH, "ruby_#{gem_name.gsub('-', '_')}.filelist") if gem_filelist_path.nil?
   crewlog "@gem_latest_version_installed: #{@gem_latest_version_installed}"
   # Skip if in reinstall or upgrade, as the install hasn't happened yet.
   @pkg = Package.load_package("packages/ruby_#{gem_name.gsub('-', '_')}.rb")
