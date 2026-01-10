@@ -40,6 +40,7 @@ detox
 difftastic
 doctl
 dust
+edge
 elixir
 enchant
 enet
