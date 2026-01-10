@@ -264,7 +264,7 @@ class RUBY < Package
   def self.install
     # @install_gem will always be true during upgrades since we remove
     # the old gem during the upgrade.
-    set_vars(name, version) if @ruby_gem_name.blank? || @gem_installed_version.blank?
+    set_vars(name, version) if @ruby_gem_name.blank? || @gem_installed_version.blank? || @ruby_gem_version.blank?
     @gem_filelist_path = File.join(CREW_META_PATH, "#{name.downcase}.filelist") if @gem_filelist_path.nil?
     if @gem_installed_version.blank?
       crewlog "@gem_installed_version.blank? is #{@gem_installed_version.blank?}, setting @install_gem = true"
@@ -281,7 +281,6 @@ class RUBY < Package
     if !no_compile_needed? || !@gem_binary_build_needed.blank? || gem_compile_needed?
       @gem_pkg = Package.load_package(File.join(CREW_PACKAGES_PATH, "#{name}.rb"))
       gem_pkg_sha256sum = PackageUtils.get_sha256(@gem_pkg)
-      puts "@ruby_gem_version is #{@ruby_gem_version}"
       if File.file?("#{CREW_DEST_DIR}/#{@ruby_gem_name}-#{@ruby_gem_version}-#{GEM_ARCH}.gem")
         gem_sha256 = `sha256sum #{CREW_DEST_DIR}/#{@ruby_gem_name}-#{@ruby_gem_version}-#{GEM_ARCH}.gem`.chomp.split.first
       else
