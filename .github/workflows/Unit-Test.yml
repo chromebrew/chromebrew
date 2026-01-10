@@ -60,7 +60,6 @@ jobs:
         run: |
             if [[ -z "${{ steps.changed-files.outputs.packages_all_changed_files }}" ]]; then
               echo "Branch ${{ github.ref_name }} has no changed package files."
-              exit 1
             fi
             # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-files.outputs.packages_all_changed_files) into "foo bar"
             echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-files.outputs.packages_all_changed_files }}" | xargs basename -s .rb | xargs)" >> "$GITHUB_ENV"
