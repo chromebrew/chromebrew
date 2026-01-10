@@ -87,20 +87,25 @@ end
 
 def save_gem_filelist(gem_name = nil, gem_version = nil, gem_filelist_path = nil)
   crewlog "@gem_latest_version_installed: #{@gem_latest_version_installed}"
+  # Skip if in reinstall or upgrade, as the install hasn't happened yet.
+  @pkg = Package.load_package("packages/ruby_#{gem_name.gsub('-', '_')}.rb")
+  return if @pkg.in_upgrade
   # We need the gem reinstalled, so we don't use --conservative, which
   # avoids the reinstall.
   if [`gem list --no-update-sources -l -e #{gem_name}`.chomp.to_s].grep(/#{gem_name}/)[0]
     # Gem is already installed.
-    crewlog "#{gem_name} already installed."
+    crewlog "#{gem_name} is already installed."
   elsif File.file?("#{CREW_DEST_DIR}/#{gem_name}-#{gem_version}-#{GEM_ARCH}.gem")
     # Gem not installed but a binary for the gem exists.
-    crewlog "#{gem_name} not installed, but binary exists."
+    crewlog "#{gem_name} not installed, but a binary exists."
     Kernel.system "gem install --no-update-sources -N --local #{CREW_DEST_DIR}/#{gem_name}-#{gem_version}-#{GEM_ARCH}.gem --conservative &>/dev/null"
   else
-    crewlog "#{gem_name} not installed"
+    crewlog "#{gem_name} is not installed"
     Kernel.system "gem install --no-update-sources -N #{gem_name} &>/dev/null"
   end
   files = `gem contents #{gem_name}`.chomp.split
+  abort "filelist is blank for #{gem_name}".lightred if files.blank?
+
   exes = files.grep(%r{/exe/|/bin/})
   # Gem.bindir should end up being #{CREW_PREFIX}/bin.
   exes&.map! { |x| x.gsub(%r{^.*(/exe/|/bin/)}, "#{Gem.bindir}/") }
@@ -114,16 +119,18 @@ def save_gem_filelist(gem_name = nil, gem_version = nil, gem_filelist_path = nil
     ["/#{e[1..]}", File.symlink?(e) ? 0 : File.size(e)]
   end
 
+  # If the package is completely empty, something has probably gone wrong.
+  total_size = filelist.values.sum
+  abort 'total_size is 0. It seems that no files were installed.'.lightred if total_size.zero?
+
   File.write gem_filelist_path, <<~EOF
-    # Total size: #{filelist.values.sum}
+    # Total size: #{total_size}
     #{filelist.keys.sort.join("\n")}
   EOF
   if Dir.exist?("#{CREW_LOCAL_REPO_ROOT}/manifest") && File.writable?("#{CREW_LOCAL_REPO_ROOT}/manifest")
     FileUtils.mkdir_p "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/r"
     FileUtils.cp gem_filelist_path, "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/r/ruby_#{gem_name.gsub('-', '_')}.filelist"
   end
-  # Copy filelist to CREW_DEST_DIR so prepare_package finds it.
-  FileUtils.cp gem_filelist_path, "#{CREW_DEST_DIR}/ruby_#{gem_name.gsub('-', '_')}.filelist"
 end
 
 def add_gem_binary_compression(pkg_name = nil)
@@ -184,7 +191,7 @@ def check_and_install_gem_deps(gem_name = nil, gem_version = nil)
         else
           install_pkg = Package.load_package("packages/#{gem_dep}.rb")
           crewlog "#{install_pkg.name} installed".orange if PackageUtils.installed?(install_pkg.name)
-          system("yes | crew install -f #{gem_dep}")
+          system("yes | crew install #{gem_dep}")
         end
       else
         puts "Will not install #{gem_dep} from a Chromebrew package, as one does not exist.".orange
