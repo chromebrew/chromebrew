@@ -1,4 +1,4 @@
-# Total size: 12024164
+# Total size: 12025957
 /usr/local/bin/aws
 /usr/local/bin/aws.cmd
 /usr/local/bin/aws_bash_completer
@@ -6,13 +6,13 @@
 /usr/local/bin/aws_zsh_completer.sh
 /usr/local/etc/bash.d/aws
 /usr/local/etc/zsh.d/aws
-/usr/local/lib/python3.14/site-packages/awscli-1.44.14.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/awscli-1.44.14.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/awscli-1.44.14.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/awscli-1.44.14.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/awscli-1.44.14.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/awscli-1.44.14.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/awscli-1.44.14.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/awscli-1.44.15.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/awscli-1.44.15.dist-info/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/awscli-1.44.15.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/awscli-1.44.15.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/awscli-1.44.15.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/awscli-1.44.15.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/awscli-1.44.15.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/awscli/__init__.py
 /usr/local/lib/python3.14/site-packages/awscli/__main__.py
 /usr/local/lib/python3.14/site-packages/awscli/__pycache__/__init__.cpython-314.pyc
@@ -587,6 +587,7 @@
 /usr/local/lib/python3.14/site-packages/awscli/examples/apigateway/update-stage.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/apigateway/update-usage-plan.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/apigateway/update-usage.rst
+/usr/local/lib/python3.14/site-packages/awscli/examples/apigateway/update-vpc-link.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/apigatewaymanagementapi/delete-connection.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/apigatewaymanagementapi/get-connection.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/apigatewaymanagementapi/post-to-connection.rst
