@@ -122,6 +122,8 @@ def save_gem_filelist(gem_name = nil, gem_version = nil, gem_filelist_path = nil
     FileUtils.mkdir_p "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/r"
     FileUtils.cp gem_filelist_path, "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/r/ruby_#{gem_name.gsub('-', '_')}.filelist"
   end
+  # Copy filelist to CREW_DEST_DIR so prepare_package finds it.
+  FileUtils.cp gem_filelist_path, "#{CREW_DEST_DIR}/ruby_#{gem_name.gsub('-', '_')}.filelist"
 end
 
 def add_gem_binary_compression(pkg_name = nil)
@@ -159,12 +161,6 @@ end
 def check_and_install_gem_deps(gem_name = nil, gem_version = nil)
   deps = BasicCompactIndexClientDeps.new.deps(gem_name)
   gem_deps = deps.grep(/#{"^#{gem_version}\\s.*$"}/).last.gsub(/^#{gem_version} /, '').gsub(/\|.*$/, '').split(',').map { |dep| dep.gsub(/:.*$/, '') }
-  # if [`gem list --no-update-sources -l -e #{gem_name}`.chomp.to_s].grep(/#{gem_name}/)[0]
-  # gem_deps = `gem dep -lv #{gem_version} #{gem_name} --pipe`.split("\n").map { |line| line.split.first }
-  # else
-  # puts "Checking rubygems.org for #{gem_name}/#{gem_version} gem dependencies...".orange
-  # gem_deps = `gem dep -rv #{gem_version} #{gem_name} --pipe`.split("\n").map { |line| line.split.first }
-  # end
   unless gem_deps.blank?
     puts 'Dependencies:'.orange
     puts gem_deps
@@ -188,7 +184,7 @@ def check_and_install_gem_deps(gem_name = nil, gem_version = nil)
         else
           install_pkg = Package.load_package("packages/#{gem_dep}.rb")
           crewlog "#{install_pkg.name} installed".orange if PackageUtils.installed?(install_pkg.name)
-          system("yes | crew install #{gem_dep}")
+          system("yes | crew install -f #{gem_dep}")
         end
       else
         puts "Will not install #{gem_dep} from a Chromebrew package, as one does not exist.".orange
