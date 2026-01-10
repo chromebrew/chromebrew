@@ -3,23 +3,24 @@ require 'package'
 class Core < Package
   description 'Core Chromebrew Packages.'
   homepage 'https://github.com/chromebrew/chromebrew'
-  version '3.17'
+  version '3.18'
   license 'GPL-3+'
   compatibility 'all'
 
   is_fake
 
-  depends_on 'bash'
-  depends_on 'bash_completion'
+  # Beware of using a non-static bash as missing dependencies can prevent the shell from starting.
+  # depends_on 'bash'
+  # depends_on 'bash_completion'
   depends_on 'brotli'
   depends_on 'bzip2'
   depends_on 'c_ares'
   depends_on 'ca_certificates'
   depends_on 'command_not_found'
   depends_on 'crew_mvdir'
-  depends_on 'crew_preload' unless CREW_GLIBC_INTERPRETER.nil?
+  # depends_on 'crew_preload' unless CREW_GLIBC_INTERPRETER.nil?
   depends_on 'crew_profile_base'
-  depends_on 'crew_sudo' if CHROMEOS_RELEASE.to_i > 116 && !CREW_IN_CONTAINER
+  # depends_on 'crew_sudo' if CHROMEOS_RELEASE.to_i > 116 && !CREW_IN_CONTAINER
   depends_on 'e2fsprogs'
   depends_on 'elfutils'
   depends_on 'expat'
