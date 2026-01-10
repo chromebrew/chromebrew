@@ -58,6 +58,7 @@ feh
 finch
 findutils
 firejail
+fish
 flatseal
 flutter
 foliate

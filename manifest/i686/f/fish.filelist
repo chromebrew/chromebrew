@@ -1,4 +1,4 @@
-# Total size: 28261148
+# Total size: 37189218
 /usr/local/bin/fish
 /usr/local/bin/fish_indent
 /usr/local/bin/fish_key_reader
@@ -75,6 +75,7 @@
 /usr/local/share/fish/completions/apt-zip-list.fish
 /usr/local/share/fish/completions/apt.fish
 /usr/local/share/fish/completions/aptitude.fish
+/usr/local/share/fish/completions/aqua.fish
 /usr/local/share/fish/completions/ar.fish
 /usr/local/share/fish/completions/arc.fish
 /usr/local/share/fish/completions/archlinux-java.fish
@@ -82,6 +83,7 @@
 /usr/local/share/fish/completions/argocd.fish
 /usr/local/share/fish/completions/argparse.fish
 /usr/local/share/fish/completions/ark.fish
+/usr/local/share/fish/completions/arp-scan.fish
 /usr/local/share/fish/completions/arp.fish
 /usr/local/share/fish/completions/arping.fish
 /usr/local/share/fish/completions/as.fish
@@ -952,6 +954,7 @@
 /usr/local/share/fish/completions/warp-cli.fish
 /usr/local/share/fish/completions/watch.fish
 /usr/local/share/fish/completions/watchexec.fish
+/usr/local/share/fish/completions/waydroid.fish
 /usr/local/share/fish/completions/wc.fish
 /usr/local/share/fish/completions/web-ext.fish
 /usr/local/share/fish/completions/wesnoth.fish
@@ -1063,6 +1066,7 @@
 /usr/local/share/fish/functions/__fish_append.fish
 /usr/local/share/fish/functions/__fish_apropos.fish
 /usr/local/share/fish/functions/__fish_argcomplete_complete.fish
+/usr/local/share/fish/functions/__fish_backup_config_files.fish
 /usr/local/share/fish/functions/__fish_cache_put.fish
 /usr/local/share/fish/functions/__fish_cache_sourced_completions.fish
 /usr/local/share/fish/functions/__fish_cached.fish
@@ -1116,14 +1120,14 @@
 /usr/local/share/fish/functions/__fish_complete_zfs_rw_properties.fish
 /usr/local/share/fish/functions/__fish_complete_zfs_write_once_properties.fish
 /usr/local/share/fish/functions/__fish_concat_completions.fish
+/usr/local/share/fish/functions/__fish_config_files.fish
 /usr/local/share/fish/functions/__fish_config_interactive.fish
+/usr/local/share/fish/functions/__fish_config_with_file.fish
 /usr/local/share/fish/functions/__fish_contains_opt.fish
 /usr/local/share/fish/functions/__fish_crux_packages.fish
 /usr/local/share/fish/functions/__fish_cursor_konsole.fish
 /usr/local/share/fish/functions/__fish_cursor_xterm.fish
-/usr/local/share/fish/functions/__fish_data_list_files.fish
 /usr/local/share/fish/functions/__fish_data_with_directory.fish
-/usr/local/share/fish/functions/__fish_data_with_file.fish
 /usr/local/share/fish/functions/__fish_describe_command.fish
 /usr/local/share/fish/functions/__fish_echo.fish
 /usr/local/share/fish/functions/__fish_edit_command_if_at_cursor.fish
@@ -1136,7 +1140,6 @@
 /usr/local/share/fish/functions/__fish_is_first_token.fish
 /usr/local/share/fish/functions/__fish_is_git_repository.fish
 /usr/local/share/fish/functions/__fish_is_nth_token.fish
-/usr/local/share/fish/functions/__fish_is_standalone.fish
 /usr/local/share/fish/functions/__fish_is_switch.fish
 /usr/local/share/fish/functions/__fish_is_token_n.fish
 /usr/local/share/fish/functions/__fish_is_zfs_feature_enabled.fish
@@ -1145,8 +1148,10 @@
 /usr/local/share/fish/functions/__fish_macos_set_env.fish
 /usr/local/share/fish/functions/__fish_make_cache_dir.fish
 /usr/local/share/fish/functions/__fish_make_completion_signals.fish
+/usr/local/share/fish/functions/__fish_man1_pages.fish
 /usr/local/share/fish/functions/__fish_man_page.fish
 /usr/local/share/fish/functions/__fish_md5.fish
+/usr/local/share/fish/functions/__fish_migrate.fish
 /usr/local/share/fish/functions/__fish_mktemp_relative.fish
 /usr/local/share/fish/functions/__fish_move_last.fish
 /usr/local/share/fish/functions/__fish_no_arguments.fish
@@ -1157,6 +1162,9 @@
 /usr/local/share/fish/functions/__fish_paginate.fish
 /usr/local/share/fish/functions/__fish_parent_directories.fish
 /usr/local/share/fish/functions/__fish_paste.fish
+/usr/local/share/fish/functions/__fish_per_os_bind.fish
+/usr/local/share/fish/functions/__fish_posix_quote.fish
+/usr/local/share/fish/functions/__fish_posix_shell.fish
 /usr/local/share/fish/functions/__fish_prepend_sudo.fish
 /usr/local/share/fish/functions/__fish_prev_arg_in.fish
 /usr/local/share/fish/functions/__fish_preview_current_file.fish
@@ -1218,14 +1226,27 @@
 /usr/local/share/fish/functions/__fish_systemctl_services.fish
 /usr/local/share/fish/functions/__fish_systemd_machine_images.fish
 /usr/local/share/fish/functions/__fish_systemd_machines.fish
+/usr/local/share/fish/functions/__fish_theme_cat.fish
+/usr/local/share/fish/functions/__fish_theme_dir.fish
+/usr/local/share/fish/functions/__fish_theme_export_for_webconfig.fish
+/usr/local/share/fish/functions/__fish_theme_for_each.fish
+/usr/local/share/fish/functions/__fish_theme_freeze.fish
+/usr/local/share/fish/functions/__fish_theme_names.fish
+/usr/local/share/fish/functions/__fish_theme_paths.fish
+/usr/local/share/fish/functions/__fish_theme_variable_filter.fish
+/usr/local/share/fish/functions/__fish_theme_variables.fish
 /usr/local/share/fish/functions/__fish_toggle_comment_commandline.fish
 /usr/local/share/fish/functions/__fish_tokenizer_state.fish
+/usr/local/share/fish/functions/__fish_tried_to_embed_manpages.fish
 /usr/local/share/fish/functions/__fish_uname.fish
+/usr/local/share/fish/functions/__fish_unexpand_tilde.fish
 /usr/local/share/fish/functions/__fish_use_subcommand.fish
 /usr/local/share/fish/functions/__fish_vcs_prompt.fish
+/usr/local/share/fish/functions/__fish_webconfig_update_color_hook.fish
 /usr/local/share/fish/functions/__fish_whatis.fish
 /usr/local/share/fish/functions/__fish_whatis_current_token.fish
 /usr/local/share/fish/functions/__fish_with_status.fish
+/usr/local/share/fish/functions/__fish_without_manpager.fish
 /usr/local/share/fish/functions/__ssh_history_completions.fish
 /usr/local/share/fish/functions/__terlar_git_prompt.fish
 /usr/local/share/fish/functions/_validate_int.fish
@@ -1256,6 +1277,7 @@
 /usr/local/share/fish/functions/fish_greeting.fish
 /usr/local/share/fish/functions/fish_hg_prompt.fish
 /usr/local/share/fish/functions/fish_hybrid_key_bindings.fish
+/usr/local/share/fish/functions/fish_in_macos_terminal.fish
 /usr/local/share/fish/functions/fish_is_root_user.fish
 /usr/local/share/fish/functions/fish_jj_prompt.fish
 /usr/local/share/fish/functions/fish_job_summary.fish
@@ -1300,7 +1322,41 @@
 /usr/local/share/fish/functions/umask.fish
 /usr/local/share/fish/functions/up-or-search.fish
 /usr/local/share/fish/functions/vared.fish
-/usr/local/share/fish/groff/fish.tmac
+/usr/local/share/fish/prompts/acidhub.fish
+/usr/local/share/fish/prompts/arrow.fish
+/usr/local/share/fish/prompts/astronaut.fish
+/usr/local/share/fish/prompts/default.fish
+/usr/local/share/fish/prompts/disco.fish
+/usr/local/share/fish/prompts/informative.fish
+/usr/local/share/fish/prompts/informative_vcs.fish
+/usr/local/share/fish/prompts/minimalist.fish
+/usr/local/share/fish/prompts/nim.fish
+/usr/local/share/fish/prompts/pythonista.fish
+/usr/local/share/fish/prompts/scales.fish
+/usr/local/share/fish/prompts/simple.fish
+/usr/local/share/fish/prompts/terlar.fish
+/usr/local/share/fish/themes/ayu-mirage.theme
+/usr/local/share/fish/themes/ayu.theme
+/usr/local/share/fish/themes/base16-default.theme
+/usr/local/share/fish/themes/base16-eighties.theme
+/usr/local/share/fish/themes/bay-cruise.theme
+/usr/local/share/fish/themes/coolbeans.theme
+/usr/local/share/fish/themes/default-rgb.theme
+/usr/local/share/fish/themes/default.theme
+/usr/local/share/fish/themes/dracula.theme
+/usr/local/share/fish/themes/fairground.theme
+/usr/local/share/fish/themes/just-a-touch.theme
+/usr/local/share/fish/themes/lava.theme
+/usr/local/share/fish/themes/mono-lace.theme
+/usr/local/share/fish/themes/mono-smoke.theme
+/usr/local/share/fish/themes/none.theme
+/usr/local/share/fish/themes/nord.theme
+/usr/local/share/fish/themes/old-school.theme
+/usr/local/share/fish/themes/seaweed.theme
+/usr/local/share/fish/themes/snow-day.theme
+/usr/local/share/fish/themes/solarized.theme
+/usr/local/share/fish/themes/tomorrow-night-bright.theme
+/usr/local/share/fish/themes/tomorrow.theme
 /usr/local/share/fish/tools/create_manpage_completions.py
 /usr/local/share/fish/tools/web_config/favicon.png
 /usr/local/share/fish/tools/web_config/fishconfig.css
@@ -1309,43 +1365,5 @@
 /usr/local/share/fish/tools/web_config/js/alpine.js
 /usr/local/share/fish/tools/web_config/js/colorutils.js
 /usr/local/share/fish/tools/web_config/js/main.js
-/usr/local/share/fish/tools/web_config/sample_prompts/acidhub.fish
-/usr/local/share/fish/tools/web_config/sample_prompts/arrow.fish
-/usr/local/share/fish/tools/web_config/sample_prompts/astronaut.fish
-/usr/local/share/fish/tools/web_config/sample_prompts/default.fish
-/usr/local/share/fish/tools/web_config/sample_prompts/disco.fish
-/usr/local/share/fish/tools/web_config/sample_prompts/informative.fish
-/usr/local/share/fish/tools/web_config/sample_prompts/informative_vcs.fish
-/usr/local/share/fish/tools/web_config/sample_prompts/minimalist.fish
-/usr/local/share/fish/tools/web_config/sample_prompts/nim.fish
-/usr/local/share/fish/tools/web_config/sample_prompts/pythonista.fish
-/usr/local/share/fish/tools/web_config/sample_prompts/scales.fish
-/usr/local/share/fish/tools/web_config/sample_prompts/simple.fish
-/usr/local/share/fish/tools/web_config/sample_prompts/terlar.fish
-/usr/local/share/fish/tools/web_config/themes/Base16 Default Dark.theme
-/usr/local/share/fish/tools/web_config/themes/Base16 Default Light.theme
-/usr/local/share/fish/tools/web_config/themes/Base16 Eighties.theme
-/usr/local/share/fish/tools/web_config/themes/Bay Cruise.theme
-/usr/local/share/fish/tools/web_config/themes/Dracula.theme
-/usr/local/share/fish/tools/web_config/themes/Fairground.theme
-/usr/local/share/fish/tools/web_config/themes/Just a Touch.theme
-/usr/local/share/fish/tools/web_config/themes/Lava.theme
-/usr/local/share/fish/tools/web_config/themes/Mono Lace.theme
-/usr/local/share/fish/tools/web_config/themes/Mono Smoke.theme
-/usr/local/share/fish/tools/web_config/themes/None.theme
-/usr/local/share/fish/tools/web_config/themes/Nord.theme
-/usr/local/share/fish/tools/web_config/themes/Old School.theme
-/usr/local/share/fish/tools/web_config/themes/Seaweed.theme
-/usr/local/share/fish/tools/web_config/themes/Snow Day.theme
-/usr/local/share/fish/tools/web_config/themes/Solarized Dark.theme
-/usr/local/share/fish/tools/web_config/themes/Solarized Light.theme
-/usr/local/share/fish/tools/web_config/themes/Tomorrow Night Bright.theme
-/usr/local/share/fish/tools/web_config/themes/Tomorrow Night.theme
-/usr/local/share/fish/tools/web_config/themes/Tomorrow.theme
-/usr/local/share/fish/tools/web_config/themes/ayu Dark.theme
-/usr/local/share/fish/tools/web_config/themes/ayu Light.theme
-/usr/local/share/fish/tools/web_config/themes/ayu Mirage.theme
-/usr/local/share/fish/tools/web_config/themes/coolbeans.theme
-/usr/local/share/fish/tools/web_config/themes/fish default.theme
 /usr/local/share/fish/tools/web_config/webconfig.py
 /usr/local/share/pkgconfig/fish.pc
