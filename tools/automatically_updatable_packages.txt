@@ -40,6 +40,7 @@ detox
 difftastic
 doctl
 dust
+elixir
 enchant
 enet
 epiphany
