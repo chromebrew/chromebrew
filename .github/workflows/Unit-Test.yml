@@ -41,7 +41,6 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: true
-          ref: ${{ github.ref_name }}
       - name: Get Current HEAD hash
         id: get-current-head
         run: |
