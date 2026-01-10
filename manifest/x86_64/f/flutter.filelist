@@ -1,6 +1,5 @@
-# Total size: 2455709702
+# Total size: 2456878381
 /home/chronos/user/.flutter_tool_state
-/usr/local/bin/dart
 /usr/local/bin/flutter
 /usr/local/share/flutter/.autoroller-preupload.sh
 /usr/local/share/flutter/.ci.yaml
@@ -36,9 +35,9 @@
 /usr/local/share/flutter/.git/logs/refs/remotes/origin/HEAD
 /usr/local/share/flutter/.git/objects/info/commit-graph
 /usr/local/share/flutter/.git/objects/info/packs
-/usr/local/share/flutter/.git/objects/pack/pack-39e683a3ec4b44bd2817e08fa22d791a3638f0c6.idx
-/usr/local/share/flutter/.git/objects/pack/pack-39e683a3ec4b44bd2817e08fa22d791a3638f0c6.pack
-/usr/local/share/flutter/.git/objects/pack/pack-39e683a3ec4b44bd2817e08fa22d791a3638f0c6.rev
+/usr/local/share/flutter/.git/objects/pack/pack-2ac869627bec8211a0864535b6033a208f74b59e.idx
+/usr/local/share/flutter/.git/objects/pack/pack-2ac869627bec8211a0864535b6033a208f74b59e.pack
+/usr/local/share/flutter/.git/objects/pack/pack-2ac869627bec8211a0864535b6033a208f74b59e.rev
 /usr/local/share/flutter/.git/packed-refs
 /usr/local/share/flutter/.git/refs/remotes/origin/HEAD
 /usr/local/share/flutter/.gitattributes
@@ -16466,6 +16465,7 @@
 /usr/local/share/flutter/packages/flutter_tools/templates/widget_preview_scaffold/README.md.tmpl
 /usr/local/share/flutter/packages/flutter_tools/templates/widget_preview_scaffold/lib/main.dart.tmpl
 /usr/local/share/flutter/packages/flutter_tools/templates/widget_preview_scaffold/lib/src/controls.dart.tmpl
+/usr/local/share/flutter/packages/flutter_tools/templates/widget_preview_scaffold/lib/src/dtd/dtd_connection_info.dart.tmpl
 /usr/local/share/flutter/packages/flutter_tools/templates/widget_preview_scaffold/lib/src/dtd/dtd_services.dart.tmpl
 /usr/local/share/flutter/packages/flutter_tools/templates/widget_preview_scaffold/lib/src/dtd/editor_service.dart.tmpl
 /usr/local/share/flutter/packages/flutter_tools/templates/widget_preview_scaffold/lib/src/dtd/utils.dart.tmpl
@@ -17011,6 +17011,7 @@
 /usr/local/share/flutter/packages/flutter_tools/test/widget_preview_scaffold.shard/widget_preview_scaffold/analysis_options.yaml
 /usr/local/share/flutter/packages/flutter_tools/test/widget_preview_scaffold.shard/widget_preview_scaffold/lib/main.dart
 /usr/local/share/flutter/packages/flutter_tools/test/widget_preview_scaffold.shard/widget_preview_scaffold/lib/src/controls.dart
+/usr/local/share/flutter/packages/flutter_tools/test/widget_preview_scaffold.shard/widget_preview_scaffold/lib/src/dtd/dtd_connection_info.dart
 /usr/local/share/flutter/packages/flutter_tools/test/widget_preview_scaffold.shard/widget_preview_scaffold/lib/src/dtd/dtd_services.dart
 /usr/local/share/flutter/packages/flutter_tools/test/widget_preview_scaffold.shard/widget_preview_scaffold/lib/src/dtd/editor_service.dart
 /usr/local/share/flutter/packages/flutter_tools/test/widget_preview_scaffold.shard/widget_preview_scaffold/lib/src/dtd/utils.dart
