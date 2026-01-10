@@ -11,6 +11,7 @@ appflowy
 appres
 apr
 apr_util
+armadillo
 arp_scan
 asunder
 augeas
@@ -29,13 +30,16 @@ btop
 caprine
 cargo_c
 codex
+composer
 dart
 dav1d
 dbeaver
 delve
+deno
 detox
 difftastic
 doctl
+dust
 enchant
 enet
 epiphany
@@ -92,7 +96,9 @@ libxfce4ui
 nano
 ocaml
 opencode
+opera
 rqlite
+signal_desktop
 sphinx
 usql
 vivaldi
