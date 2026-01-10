@@ -41,6 +41,9 @@ end
 # Rename the binary_sha256 variable to sha256 in the device.json file
 system("sed -i 's/binary_sha256/sha256/g' #{File.join(CREW_CONFIG_PATH, 'device.json')}")
 
+# Create gem required spec folder if it does not exist.
+FileUtils.mkdir_p "#{CREW_PREFIX}/.cache/gem/specs"
+
 # Check for renamed and deprecated packages, and handle them.
 
 renamed_packages = Set[

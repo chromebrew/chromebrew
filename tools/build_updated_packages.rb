@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# build_updated_packages version 4.1 (for Chromebrew)
+# build_updated_packages version 4.2 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -236,7 +236,7 @@ updated_packages.each do |pkg|
   if @pkg_obj.superclass.to_s == 'RUBY' && @pkg_obj.no_compile_needed?
     puts "#{name} is a gem package.".lightblue
     system "yes | crew reinstall #{'-f' unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES} #{name}"
-    if system("grep '.so$' #{CREW_META_PATH}/#{name}.filelist", exception: false)
+    if File.file?("#{CREW_META_PATH}/#{name}.filelist") && system("grep '.so$' #{CREW_META_PATH}/#{name}.filelist", exception: false)
       puts "#{name} gem has libraries.".lightblue
       require_relative '../lib/buildsystems/ruby'
       add_gem_binary_compression(name)
@@ -245,7 +245,7 @@ updated_packages.each do |pkg|
       puts "Reinvoking #{$PROGRAM_NAME} #{ARGV.join(' ')}".orange
       exec "#{$PROGRAM_NAME} #{ARGV.join(' ')}", chdir: `pwd`.chomp
     else
-      puts "#{name} gem has no libraries.".lightblue
+      puts "#{name} gem may have no libraries.".lightblue
     end
   end
 

@@ -1,5 +1,5 @@
 #!/bin/bash
-CREW_INSTALLER_VERSION=2025120401
+CREW_INSTALLER_VERSION=2026010901
 # Exit on fail.
 set -eE
 
@@ -254,7 +254,9 @@ function curl_wrapper () {
 }
 
 # This will create the directories.
-crew_folders="bin cache doc docbook include lib/crew/packages lib${CREW_LIB_SUFFIX} libexec man sbin share var etc/crew/meta etc/env.d tmp/crew/dest"
+# Note that .cache/gem/specs is needed as per the SPEC CACHE DIRECTORY
+# reported in 'gem environment'.
+crew_folders="bin cache doc docbook include lib/crew/packages lib${CREW_LIB_SUFFIX} libexec man sbin share var etc/crew/meta etc/env.d tmp/crew/dest .cache/gem/specs"
 # shellcheck disable=SC2086
 # Quoting crew_folders leads to breakage.
 (cd "${CREW_PREFIX}" && mkdir -p ${crew_folders})

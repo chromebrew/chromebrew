@@ -1,7 +1,7 @@
 require 'buildsystems/ruby'
 
 class Ruby_multi_xml < RUBY
-  description '---.'
+  description 'A generic swappable back-end for XML parsing'
   homepage 'https://github.com/sferik/multi_xml'
   version "0.8.1-#{CREW_RUBY_VER}"
   license 'MIT'
