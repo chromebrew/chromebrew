@@ -1,5 +1,6 @@
 require_relative '../color'
 require_relative '../gem_compact_index_client'
+require_relative '../gem_compact_index_client_deps'
 require_relative '../package'
 require_relative '../package_utils'
 require_relative '../report_buildsystem_methods'
@@ -156,12 +157,14 @@ def add_gem_binary_compression(pkg_name = nil)
 end
 
 def check_and_install_gem_deps(gem_name = nil, gem_version = nil)
-  if [`gem list --no-update-sources -l -e #{gem_name}`.chomp.to_s].grep(/#{gem_name}/)[0]
-    gem_deps = `gem dep -lv #{gem_version} #{gem_name} --pipe`.split("\n").map { |line| line.split.first }
-  else
-    puts "Checking rubygems.org for #{gem_name}/#{gem_version} gem dependencies...".orange
-    gem_deps = `gem dep -rv #{gem_version} #{gem_name} --pipe`.split("\n").map { |line| line.split.first }
-  end
+  deps = BasicCompactIndexClientDeps.new.deps(gem_name)
+  gem_deps = deps.grep(/#{"^#{gem_version}\\s.*$"}/).last.gsub(/^#{gem_version} /, '').gsub(/\|.*$/, '').split(',').map { |dep| dep.gsub(/:.*$/, '') }
+  # if [`gem list --no-update-sources -l -e #{gem_name}`.chomp.to_s].grep(/#{gem_name}/)[0]
+  # gem_deps = `gem dep -lv #{gem_version} #{gem_name} --pipe`.split("\n").map { |line| line.split.first }
+  # else
+  # puts "Checking rubygems.org for #{gem_name}/#{gem_version} gem dependencies...".orange
+  # gem_deps = `gem dep -rv #{gem_version} #{gem_name} --pipe`.split("\n").map { |line| line.split.first }
+  # end
   unless gem_deps.blank?
     puts 'Dependencies:'.orange
     puts gem_deps
