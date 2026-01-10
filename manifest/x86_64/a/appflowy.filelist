@@ -1,4 +1,4 @@
-# Total size: 170787569
+# Total size: 175268316
 /usr/local/bin/appflowy
 /usr/local/share/AppFlowy/AppFlowy
 /usr/local/share/AppFlowy/data/flutter_assets/AssetManifest.bin
@@ -98,6 +98,8 @@
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/close_error.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/close_filled.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/close_viewer.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/code_block.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/code_block_mermaid.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/collapse_all_page.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/color_default.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/color_select.svg
@@ -321,6 +323,7 @@
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/media.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/mention.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/menu_item_ai_writer.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/mermaid_diagram.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/message_support.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/messages.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/minus.svg
@@ -435,6 +438,7 @@
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/space_permission_dropdown.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/space_permission_private.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/space_permission_public.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/split_viewport.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/star.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/strikethrough.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/success.svg
@@ -489,6 +493,7 @@
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/upgrade_storage.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/url.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/usd.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/user.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/view_item_add.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/view_item_expand.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/view_item_open_in_new_tab.svg
@@ -546,11 +551,13 @@
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/checklist.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/cloud.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/cloud_mode.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/code_block.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/code_block_add_inline_comment.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/code_block_ask_ai.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/code_block_check_code.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/code_block_explain.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/code_block_language_search_icon.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/code_block_mermaid.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/collapse.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/contact_suffix_icon.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/copy.svg
@@ -636,6 +643,7 @@
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/mention_more_results.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/mention_send_email.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/mention_send_notification.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/mermaid_diagram.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/mobile_icon_close.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/mobile_icon_remove_link.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/more.svg
@@ -701,6 +709,7 @@
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/single_select.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/smile.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/sound.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/split_viewport.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/text.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/text_color.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/text_color_border.svg
@@ -1100,6 +1109,7 @@
 /usr/local/share/AppFlowy/lib/libbitsdojo_window_linux_plugin.so
 /usr/local/share/AppFlowy/lib/libdart_ffi.so
 /usr/local/share/AppFlowy/lib/libdesktop_drop_plugin.so
+/usr/local/share/AppFlowy/lib/libfile_saver_plugin.so
 /usr/local/share/AppFlowy/lib/libfile_selector_linux_plugin.so
 /usr/local/share/AppFlowy/lib/libflowy_infra_ui_plugin.so
 /usr/local/share/AppFlowy/lib/libflutter_linux_gtk.so

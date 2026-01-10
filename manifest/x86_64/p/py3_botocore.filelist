@@ -1,12 +1,12 @@
-# Total size: 20512671
-/usr/local/lib/python3.14/site-packages/botocore-1.42.24.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/botocore-1.42.24.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/botocore-1.42.24.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/botocore-1.42.24.dist-info/NOTICE
-/usr/local/lib/python3.14/site-packages/botocore-1.42.24.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/botocore-1.42.24.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/botocore-1.42.24.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/botocore-1.42.24.dist-info/top_level.txt
+# Total size: 20517814
+/usr/local/lib/python3.14/site-packages/botocore-1.42.25.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/botocore-1.42.25.dist-info/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/botocore-1.42.25.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/botocore-1.42.25.dist-info/NOTICE
+/usr/local/lib/python3.14/site-packages/botocore-1.42.25.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/botocore-1.42.25.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/botocore-1.42.25.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/botocore-1.42.25.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/botocore/__init__.py
 /usr/local/lib/python3.14/site-packages/botocore/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/botocore/__pycache__/args.cpython-314.pyc
@@ -1827,6 +1827,7 @@
 /usr/local/lib/python3.14/site-packages/botocore/data/transcribe/2017-10-26/examples-1.json
 /usr/local/lib/python3.14/site-packages/botocore/data/transcribe/2017-10-26/paginators-1.json
 /usr/local/lib/python3.14/site-packages/botocore/data/transcribe/2017-10-26/service-2.json.gz
+/usr/local/lib/python3.14/site-packages/botocore/data/transcribe/2017-10-26/waiters-2.json
 /usr/local/lib/python3.14/site-packages/botocore/data/transfer/2018-11-05/endpoint-rule-set-1.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/transfer/2018-11-05/examples-1.json
 /usr/local/lib/python3.14/site-packages/botocore/data/transfer/2018-11-05/paginators-1.json
