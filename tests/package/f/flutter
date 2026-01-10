@@ -1,0 +1,3 @@
+#!/bin/bash
+flutter -h | head
+flutter --version

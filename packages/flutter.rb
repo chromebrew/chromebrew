@@ -11,7 +11,6 @@ class Flutter < Package
 
   depends_on 'libglu'
 
-  conflicts_with 'dart'
   no_compile_needed
   no_shrink
 
