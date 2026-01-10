@@ -262,6 +262,7 @@ class RUBY < Package
     # @install_gem will always be true during upgrades since we remove
     # the old gem during the upgrade.
     set_vars(name, version) if @ruby_gem_name.blank? || @gem_installed_version.blank?
+    @gem_filelist_path = File.join(CREW_META_PATH, "ruby_#{gem_name.gsub('-', '_')}.filelist") if @gem_filelist_path.nil?
     if @gem_installed_version.blank?
       crewlog "@gem_installed_version.blank? is #{@gem_installed_version.blank?}, setting @install_gem = true"
       @install_gem = true if @gem_installed_version.blank?
