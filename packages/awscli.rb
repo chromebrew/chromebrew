@@ -26,6 +26,9 @@ class Awscli < Pip
   depends_on 'groff' # R
   depends_on 'py3_botocore' # R
   depends_on 'py3_docutils' # R
+  depends_on 'py3_jmespath' # R
+  depends_on 'py3_pyasn1' # R
+  depends_on 'py3_python_dateutil' # R
   depends_on 'py3_rsa' # R
   depends_on 'py3_s3transfer' # R
   depends_on 'python3' => :build
