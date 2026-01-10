@@ -91,6 +91,7 @@ freeglut
 freerdp
 freetds
 fribidi
+frp
 gambit
 google_chrome
 libcdr
