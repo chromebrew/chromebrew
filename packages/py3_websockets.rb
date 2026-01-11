@@ -16,8 +16,8 @@ class Py3_websockets < Pip
      x86_64: 'aabda867e2b5cb93218a5f56524e15b8f4bab4e40497d45bda036122a81e0652'
   })
 
-  depends_on 'python3' # L
   depends_on 'glibc' # R
+  depends_on 'python3' # L
 
   no_source_build
 end
