@@ -1,49 +1,46 @@
-require 'package'
-require 'misc_functions'
+require 'buildsystems/cmake'
 
-class Freecad < Package
+class Freecad < CMake
   description 'A free and opensource multiplatform 3D parametric modeler.'
   homepage 'https://www.freecad.org/'
-  version '1.0.2'
-  license 'GPL-2'
-  compatibility 'x86_64'
-  source_url "https://github.com/FreeCAD/FreeCAD/releases/download/#{version}/FreeCAD_#{version}-conda-Linux-x86_64-py311.AppImage"
-  source_sha256 'e00be00ad9fdb12b05c5002bfd1aa2ea8126f2c1d4e2fb603eb7423b72904f61'
+  version '1.1.0'
+  license 'LGPL-2.1'
+  compatibility 'aarch64 armv7l x86_64'
+  source_url 'https://github.com/FreeCAD/FreeCAD.git'
+  git_hashtag version
 
-  no_compile_needed
-  no_shrink
+  binary_sha256({
+    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+     x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+  })
 
-  depends_on 'sommelier' => :logical
-
-  def self.preflight
-    MiscFunctions.check_free_disk_space(5583457485)
-  end
-
-  def self.patch
-    system "sed -i 's,LD_LIBRARY_PATH=\${HERE}/usr/lib,LD_LIBRARY_PATH=\${HERE}/usr/lib:\${LD_LIBRARY_PATH},' AppRun"
-  end
-
-  def self.build
-    File.write 'freecad.sh', <<~EOF
-      #!/bin/bash
-      cd #{CREW_PREFIX}/share/freecad
-      ./AppRun "$@"
-    EOF
-  end
-
-  def self.install
-    FileUtils.install 'freecad.sh', "#{CREW_DEST_PREFIX}/bin/freecad", mode: 0o755
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/freecad"
-    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/freecad"
-  end
-
-  def self.postinstall
-    ExitMessage.add "\nType 'freecad' to get started.\n"
-  end
+  depends_on 'boost'
+  depends_on 'coin'
+  depends_on 'eigen'
+  depends_on 'hdf5'
+  depends_on 'libfmt'
+  depends_on 'libmedfile'
+  depends_on 'opencascade'
+  depends_on 'pivy'
+  depends_on 'py3_pybind11'
+  depends_on 'qt5_base'
+  depends_on 'qt5_svg'
+  depends_on 'qt5_tools'
+  depends_on 'swig'
+  depends_on 'vtk'
+  depends_on 'xercesc'
+  depends_on 'yaml_cpp'
 
   def self.postremove
     Package.agree_to_remove("#{CREW_PREFIX}/.cache/FreeCAD")
     Package.agree_to_remove("#{CREW_PREFIX}/.config/FreeCAD")
     Package.agree_to_remove("#{CREW_PREFIX}/.config/.local/share/FreeCAD")
   end
+
+  # https://github.com/FreeCAD/FreeCAD/issues/23929
+  # TODO: Re-enable this once a new version releases
+  # cmake_options '-DBUILD_SMESH=OFF -DFREECAD_USE_SMESH=OFF -DFREECAD_USE_EXTERNAL_SMESH=OFF'
+
+  cmake_options "-Dpybind11_DIR=#{CREW_PREFIX}/lib/python#{CREW_PY_VER.delete_prefix('py')}/site-packages/pybind11/share/cmake/pybind11"
 end
