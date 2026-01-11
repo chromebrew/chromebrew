@@ -7,8 +7,6 @@ class Util_linux < Meson
   license 'GPL-2, LGPL-2.1, BSD-4, MIT and public-domain'
   compatibility 'all'
   source_url 'https://github.com/util-linux/util-linux.git'
-  # Build from stable/v2.4.1 branch.
-  # git_hashtag '917917253e60b0ba485cf6a27a2f993aa43e1eea'
   git_hashtag "v#{version.split('-').first}"
   binary_compression 'tar.zst'
 
