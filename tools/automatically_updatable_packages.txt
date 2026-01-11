@@ -95,6 +95,7 @@ frp
 gambit
 google_chrome
 libcdr
+libcpuid
 libvisio
 libxfce4ui
 nano
