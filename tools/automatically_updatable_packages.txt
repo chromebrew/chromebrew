@@ -93,8 +93,10 @@ freetds
 fribidi
 frp
 gambit
+gedit
 google_chrome
 libcdr
+libgedit_gtksourceview
 libvisio
 libxfce4ui
 nano
@@ -104,6 +106,7 @@ opera
 rqlite
 signal_desktop
 sphinx
+tepl_6
 usql
 vivaldi
 vscodium
