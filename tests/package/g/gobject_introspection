@@ -1,0 +1,5 @@
+#!/bin/bash
+for b in $(crew files gobject_introspection | grep /usr/local/bin); do
+  $b -h | head
+  [ "$b" != "/usr/local/bin/g-ir-inspect" ] && $b --version
+done
