@@ -1,0 +1,3 @@
+#!/bin/bash
+man gs | head
+gs -v
