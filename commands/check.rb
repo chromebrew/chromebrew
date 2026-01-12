@@ -81,11 +81,11 @@ class Command
       to_copy_filelist = true
     end
 
-    return false if !force && to_copy_package && !Package.agree_default_yes("\nWould you like to copy #{local_package} to crew and start the #{operation}")
+    return false if (!force && to_copy_package && !Package.agree_default_yes("\nWould you like to copy #{local_package} to crew and start the #{operation}")) && (!force && to_copy_test && !Package.agree_default_yes("\nWould you like to copy #{local_package_test} to crew and start the #{operation}")) && (!force && to_copy_filelist && !Package.agree_default_yes("\nWould you like to copy #{local_filelist} to crew and start the #{operation}"))
 
-    return false if !force && to_copy_test && !Package.agree_default_yes("\nWould you like to copy #{local_package_test} to crew and start the #{operation}")
+    # return false if !force && to_copy_test && !Package.agree_default_yes("\nWould you like to copy #{local_package_test} to crew and start the #{operation}")
 
-    return false if !force && to_copy_filelist && !Package.agree_default_yes("\nWould you like to copy #{local_filelist} to crew and start the #{operation}")
+    # return false if !force && to_copy_filelist && !Package.agree_default_yes("\nWould you like to copy #{local_filelist} to crew and start the #{operation}")
 
     if to_copy_package && File.file?(local_package)
       FileUtils.copy_file(local_package, crew_package)

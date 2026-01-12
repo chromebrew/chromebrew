@@ -1460,6 +1460,7 @@ def install(skip_postinstall: false)
     if @pkg.superclass.to_s == 'RUBY'
       Dir.chdir(target_dir) do
         @pkg.install
+        Command.check(@pkg.name, @opt_force)
       end
     else
       install_package dest_dir
@@ -2077,7 +2078,7 @@ def install_command(args)
     # postinstall from being run for an already installed package.
     if !@pkg_name.start_with?('ruby_') && @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg_name }
       puts "Package #{@pkg_name} already installed, skipping...".lightgreen
-      next
+      next unless Command.check(name, @opt_force)
     end
     next unless Command.check(name, @opt_force)
     search @pkg_name
