@@ -1,12 +1,12 @@
-# Total size: 430336
+# Total size: 431373
 /usr/local/lib64/python3.14/site-packages/7bce59c0a152c0e01f70__mypyc.cpython-314-x86_64-linux-gnu.so
-/usr/local/lib64/python3.14/site-packages/tomli-2.3.0.dist-info/INSTALLER
-/usr/local/lib64/python3.14/site-packages/tomli-2.3.0.dist-info/METADATA
-/usr/local/lib64/python3.14/site-packages/tomli-2.3.0.dist-info/RECORD
-/usr/local/lib64/python3.14/site-packages/tomli-2.3.0.dist-info/REQUESTED
-/usr/local/lib64/python3.14/site-packages/tomli-2.3.0.dist-info/WHEEL
-/usr/local/lib64/python3.14/site-packages/tomli-2.3.0.dist-info/licenses/LICENSE
-/usr/local/lib64/python3.14/site-packages/tomli-2.3.0.dist-info/top_level.txt
+/usr/local/lib64/python3.14/site-packages/tomli-2.4.0.dist-info/INSTALLER
+/usr/local/lib64/python3.14/site-packages/tomli-2.4.0.dist-info/METADATA
+/usr/local/lib64/python3.14/site-packages/tomli-2.4.0.dist-info/RECORD
+/usr/local/lib64/python3.14/site-packages/tomli-2.4.0.dist-info/REQUESTED
+/usr/local/lib64/python3.14/site-packages/tomli-2.4.0.dist-info/WHEEL
+/usr/local/lib64/python3.14/site-packages/tomli-2.4.0.dist-info/licenses/LICENSE
+/usr/local/lib64/python3.14/site-packages/tomli-2.4.0.dist-info/top_level.txt
 /usr/local/lib64/python3.14/site-packages/tomli/__init__.cpython-314-x86_64-linux-gnu.so
 /usr/local/lib64/python3.14/site-packages/tomli/__init__.py
 /usr/local/lib64/python3.14/site-packages/tomli/__pycache__/__init__.cpython-314.pyc
