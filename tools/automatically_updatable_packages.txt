@@ -94,6 +94,7 @@ fribidi
 frp
 gambit
 gedit
+git_lfs
 gobject_introspection
 google_chrome
 libcdr
