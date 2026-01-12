@@ -163,7 +163,7 @@ class PackageUtils
       # being upgraded to.
       gem_latest_version_installed = false
     end
-    crewlog "ruby_gem_version: #{ruby_gem_version} gem_installed_version: #{gem_installed_version} gem_outdated: #{gem_outdated} gem_latest_version_installed: #{gem_latest_version_installed}"
+    crewlog "ruby_gem_name: #{ruby_gem_name} ruby_gem_version: #{ruby_gem_version} gem_installed_version: #{gem_installed_version} gem_outdated: #{gem_outdated} gem_latest_version_installed: #{gem_latest_version_installed}" if CREW_VERY_VERBOSE
 
     return ruby_gem_name, ruby_gem_version, remote_ruby_gem_version, gem_installed_version, gem_latest_version_installed, gem_outdated, gem_deps
   end

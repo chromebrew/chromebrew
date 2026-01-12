@@ -105,8 +105,6 @@ def add_gem_binary_compression(pkg_name = nil)
 end
 
 def check_and_install_gem_deps(gem_name = nil, gem_version = nil)
-  # deps = BasicCompactIndexClientDeps.new.deps(gem_name)
-  # gem_deps = deps.grep(/#{"^#{gem_version}\\s.*$"}/).last.gsub(/^#{gem_version} /, '').gsub(/\|.*$/, '').split(',').map { |dep| dep.gsub(/:.*$/, '') }
   unless @gem_deps.blank?
     puts 'Dependencies:'.orange
     puts @gem_deps

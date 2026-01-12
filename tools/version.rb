@@ -43,8 +43,6 @@ $LOAD_PATH.unshift File.join(crew_local_repo_root, 'lib')
 UPDATE_PACKAGE_FILES = ARGV.include?('-u') || ARGV.include?('--update-package-files')
 OUTPUT_JSON = ARGV.include?('-j') || ARGV.include?('--json')
 OUTPUT_ALL = ARGV.include?('-a') || ARGV.include?('--all')
-VERBOSE = ARGV.include?('-v') || ARGV.include?('--verbose') || ARGV.include?('-vv')
-VERY_VERBOSE = ARGV.include?('-vv')
 bc_updated = {}
 @pkg_names = {}
 updatable_pkg = {}
@@ -72,14 +70,14 @@ def get_version(name, homepage, source)
   if !anitya_id.nil?
     # Get the latest stable version of the package from anitya.
     json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/versions/?project_id=#{anitya_id}")))
-    puts json if VERY_VERBOSE
+    puts json if CREW_VERY_VERBOSE
     return json['latest_version'] if json['stable_versions'][0].nil?
     return json['stable_versions'][0]
   elsif !source.nil? && !source.is_a?(Hash)
     # If anitya has failed, we have a variety of fallbacks as a last resort.
     source.sub!('www.', '')
     url = URI.parse(source)
-    puts "source_url host is #{url.host}" if VERY_VERBOSE
+    puts "source_url host is #{url.host}" if CREW_VERY_VERBOSE
     case url.host
     when 'github.com'
       github_fallback(url)
@@ -110,7 +108,7 @@ def github_fallback(url)
   end
 
   github_ver = releases_json['tag_name'].nil? ? tags_json[0]['name'] : releases_json['tag_name']
-  puts "github_ver = #{github_ver}" if VERY_VERBOSE
+  puts "github_ver = #{github_ver}" if CREW_VERY_VERBOSE
   # Strip off any leading non-numeric characters.
   return github_ver.sub(/.*?(?=[0-9].)/im, '')
 end
@@ -128,7 +126,7 @@ def gitlab_fallback(url)
     puts 'No releases available on GitLab repo.' if VERBOSE
   else
     gitlab_ver = redirect.split('/').last
-    # puts "gitlab_ver = #{gitlab_ver}" if VERY_VERBOSE
+    # puts "gitlab_ver = #{gitlab_ver}" if CREW_VERY_VERBOSE
     puts "gitlab_ver = #{gitlab_ver}"
     # Strip off any leading non-numeric characters.
     return gitlab_ver.sub(/.*?(?=[0-9].)/im, '')
@@ -156,7 +154,7 @@ def sourceforge_fallback(url)
 
   # Remove any preceding path components and remove any extensions, with an additional pass to remove .tar in the case of .tar.gz
   best_release = File.basename(json['release']['filename'], '.*').delete_suffix('.tar')
-  puts "best_release = #{best_release}" if VERY_VERBOSE
+  puts "best_release = #{best_release}" if CREW_VERY_VERBOSE
   # Strip off any leading non-numeric characters.
   return best_release.sub(/.*?(?=[0-9].)/im, '')
 end
@@ -175,7 +173,7 @@ def pagure_fallback(url)
     puts 'No tags available on Pagure repo.' if VERBOSE
   else
     pagure_ver = json['tags'][0]
-    puts "pagure_ver = #{pagure_ver}" if VERY_VERBOSE
+    puts "pagure_ver = #{pagure_ver}" if CREW_VERY_VERBOSE
     # Strip off any leading non-numeric characters.
     return pagure_ver.sub(/.*?(?=[0-9].)/im, '')
   end
@@ -195,12 +193,12 @@ def get_anitya_id(name, homepage, buildsystem)
   puts "anitya_name: #{anitya_name} #{"(instead of #{original_name})" if anitya_name != original_name}" if VERBOSE
 
   # Find out how many packages Anitya has with the provided name.
-  puts "url is https://release-monitoring.org/api/v2/projects/?name=#{CGI.escape(anitya_name)}" if VERY_VERBOSE
+  puts "url is https://release-monitoring.org/api/v2/projects/?name=#{CGI.escape(anitya_name)}" if CREW_VERY_VERBOSE
   json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/projects/?name=#{CGI.escape(anitya_name)}")))
-  puts json if VERY_VERBOSE
+  puts json if CREW_VERY_VERBOSE
   number_of_packages = json['total_items']
 
-  puts "number_of_packages = #{number_of_packages}" if VERY_VERBOSE
+  puts "number_of_packages = #{number_of_packages}" if CREW_VERY_VERBOSE
   if number_of_packages == 1 # We assume we have the right package, take the ID and move on.
     return json['items'][0]['id']
   elsif number_of_packages.zero? # Anitya either doesn't have this package, or has it under a different name.
@@ -209,7 +207,7 @@ def get_anitya_id(name, homepage, buildsystem)
     return unless anitya_name.include?('_')
 
     anitya_name_candidate = anitya_name.tr('_', '-')
-    if VERY_VERBOSE
+    if CREW_VERY_VERBOSE
       puts "No Anitya package found with #{anitya_name}. Attempting a new search with #{anitya_name_candidate}."
       puts "url is https://release-monitoring.org/api/v2/projects/?name=#{anitya_name_candidate}"
     end
@@ -246,13 +244,13 @@ def get_anitya_id(name, homepage, buildsystem)
         # If it isn't fine to treat them as identical, something has gone horribly wrong.
         # Fuzzy match the homepages by stripping the scheme and www subdomains before checking for equality.
         package_homepage = homepage.sub(%r{http(s)?://(www\.)?}, '').chomp('/')
-        puts "package_homepage = #{package_homepage}" if VERY_VERBOSE
+        puts "package_homepage = #{package_homepage}" if CREW_VERY_VERBOSE
         anitya_homepage = candidate['homepage'].sub(%r{http(s)?://(www\.)?}, '').chomp('/')
-        puts "anitya_homepage = #{anitya_homepage}" if VERY_VERBOSE
+        puts "anitya_homepage = #{anitya_homepage}" if CREW_VERY_VERBOSE
 
         return candidate['id'] if package_homepage == anitya_homepage
       end
-      puts 'No Anitya packages found.' if VERY_VERBOSE
+      puts 'No Anitya packages found.' if CREW_VERY_VERBOSE
 
       # If we're still here, that means none of the candidates had the same homepage as their crew counterpart.
       # Not much we can do at this point to find the version, and its better to be cautious to avoid getting the wrong candidate.
@@ -345,27 +343,7 @@ if filelist.length.positive?
     if @pkg.is_fake? || NO_UPSTREAM_VERSION_PKGS.include?(@pkg.name) || @pkg.no_upstream_update? || @pkg.name.start_with?('musl_')
       upstream_version = ''
     elsif %w[RUBY].include?(@pkg.superclass.to_s)
-      gem_name = @pkg.name.sub('ruby_', '')
-      # We replace all dashes with underscores in our initial package names, but some gems actually use underscores, so we need special cases.
-      # This list was created by looking at what packages were listed as not having updates in rubygems, and then looking up the upstream name for them.
-      if %w[
-        connection_pool error_highlight jaro_winkler
-        lint_roller method_source mini_mime multi_xml mutex_m
-        power_assert regexp_parser repl_type_completor ruby2_keywords
-        syntax_suggest
-      ].include?(gem_name)
-        # These gems used underscores originally, so don't replace anything
-      elsif gem_name == 'language_server_protocol'
-        # These gems have an underscore then a dash, but there's only one, so we hardcode the logic for now.
-        gem_name = 'language_server-protocol'
-      elsif gem_name == 'unicode_display_width'
-        # These gems have a dash then an underscore, but there's only one, so we hardcode the logic for now.
-        gem_name = 'unicode-display_width'
-      else
-        # In the common case, the gem name used only dashes, which we all replaced with underscores.
-        gem_name.gsub!('_', '-')
-      end
-      upstream_version = JSON.parse(Net::HTTP.get(URI("https://rubygems.org/api/v1/versions/#{gem_name}/latest.json")))['version']
+      _gem_name, _ruby_gem_version, upstream_version, _gem_installed_version, _gem_latest_version_installed, _gem_outdated, _gem_deps = PackageUtils.get_gem_vars(@pkg.name, @pkg.version)
     elsif %w[Pip].include?(@pkg.superclass.to_s)
       versions_updated[@pkg.name.to_sym] = 'Not Found.' if CREW_UPDATER_EXCLUDED_PKGS.key?(@pkg.name)
       pip_name = @pkg.name.sub(/\Apy\d_/, '').gsub('_', '-')
@@ -393,7 +371,7 @@ if filelist.length.positive?
     end
 
     unless upstream_version.empty?
-      if VERY_VERBOSE
+      if CREW_VERY_VERBOSE
         crewlog "PackageUtils.get_clean_version(@pkg.version): #{PackageUtils.get_clean_version(@pkg.version)}"
         crewlog "upstream_version: #{upstream_version}"
         crewlog "Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version): #{Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version)}"
