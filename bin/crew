@@ -771,18 +771,7 @@ def unpack(meta)
         end
         system "../#{meta[:filename]}", '--appimage-extract', chdir: @extract_dir, exception: true
       when /\.gem$/i
-        if @pkg.ruby_gem_name.blank?
-          ruby_gem_name = @pkg.name.sub('ruby_', '').sub('_', '-')
-          puts "@pkg.ruby_gem_name is blank! Trying #{ruby_gem_name}".orange
-        else
-          ruby_gem_name = @pkg.ruby_gem_name
-        end
-        if @pkg.ruby_gem_version.blank?
-          ruby_gem_version = PackageUtils.get_clean_version(@pkg.version)
-          puts "@pkg.ruby_gem_version is blank! Trying #{ruby_gem_version}".orange
-        else
-          ruby_gem_version = @pkg.ruby_gem_version
-        end
+        ruby_gem_name, ruby_gem_version, _upstream_version, _gem_installed_version, _gem_latest_version_installed, _gem_outdated, _gem_deps = PackageUtils.get_gem_vars(@pkg.name, @pkg.version)
         puts "Moving #{ruby_gem_name} binary gem for install...".orange
         gem_file = "#{ruby_gem_name}-#{ruby_gem_version}-#{GEM_ARCH}.gem"
         FileUtils.mv meta[:filename], File.join(@extract_dir, gem_file)
@@ -1417,18 +1406,7 @@ def install(skip_postinstall: false)
   elsif @pkg.superclass.to_s == 'RUBY'
     meta = download
     target_dir = unpack meta
-    if @pkg.ruby_gem_name.blank?
-      ruby_gem_name = @pkg.name.sub('ruby_', '').sub('_', '-')
-      puts "@pkg.ruby_gem_name is blank! Trying #{ruby_gem_name}".orange
-    else
-      ruby_gem_name = @pkg.ruby_gem_name
-    end
-    if @pkg.ruby_gem_version.blank?
-      ruby_gem_version = PackageUtils.get_clean_version(@pkg.version)
-      puts "@pkg.ruby_gem_version is blank! Trying #{ruby_gem_version}".orange
-    else
-      ruby_gem_version = @pkg.ruby_gem_version
-    end
+    ruby_gem_name, ruby_gem_version, _upstream_version, _gem_installed_version, _gem_latest_version_installed, _gem_outdated, _gem_deps = PackageUtils.get_gem_vars(@pkg.name, @pkg.version)
     gem_file = "#{ruby_gem_name}-#{ruby_gem_version}-#{GEM_ARCH}.gem"
     if File.file?(File.join(target_dir, gem_file))
       FileUtils.mv File.join(target_dir, gem_file), File.join(CREW_DEST_DIR, gem_file)
@@ -1603,7 +1581,8 @@ end
 
 def archive_package(crew_archive_dest)
   if @pkg.superclass.to_s == 'RUBY'
-    gem_file = "#{@pkg.ruby_gem_name}-#{@pkg.ruby_gem_version}-#{GEM_ARCH}.gem"
+    ruby_gem_name, ruby_gem_version, _upstream_version, _gem_installed_version, _gem_latest_version_installed, _gem_outdated, _gem_deps = PackageUtils.get_gem_vars(@pkg.name, @pkg.version)
+    gem_file = "#{ruby_gem_name}-#{ruby_gem_version}-#{GEM_ARCH}.gem"
     pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.gem"
     begin
       FileUtils.mv File.join(CREW_DEST_DIR, gem_file), File.join(crew_archive_dest, pkg_name)
