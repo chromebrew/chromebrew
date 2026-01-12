@@ -94,6 +94,7 @@ fribidi
 frp
 gambit
 gedit
+gegl
 google_chrome
 libcdr
 libgedit_gtksourceview

@@ -1,0 +1,3 @@
+#!/bin/bash
+gegl -h | head
+gegl-imgcmp -h
