@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Fastfetch < CMake
   description 'Like Neofetch, but much faster because written in C'
   homepage 'https://github.com/fastfetch-cli/fastfetch'
-  version '2.56.1'
+  version '2.57.0'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/fastfetch-cli/fastfetch.git'
@@ -14,9 +14,9 @@ class Fastfetch < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a53400daace622eb3d0248cc82841976f1fa0c59aaa8e0c7ce9e30cd665bf1ce',
-     armv7l: 'a53400daace622eb3d0248cc82841976f1fa0c59aaa8e0c7ce9e30cd665bf1ce',
-     x86_64: '869df9d3a665d335af89fbf3ded81ecb2ca0d8088ca0199ce855236f6770193e'
+    aarch64: '8a790be49dbd3d9ede9afa8c720d7f8a4b16fba00a580eb59b8ca3afab0983ed',
+     armv7l: '8a790be49dbd3d9ede9afa8c720d7f8a4b16fba00a580eb59b8ca3afab0983ed',
+     x86_64: '8e8484133f089e037a47ee7fd6deccc3e79cb920583597736ad7dec27f76f978'
   })
 
   depends_on 'chafa' => :build
