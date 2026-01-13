@@ -46,39 +46,39 @@ class Command
     to_copy_filelist = force
 
     # Prompt to copy the local repo package to crew if the package is not found.
-    if !force && File.file?(local_package) && !File.file?(crew_package)
+    if File.file?(local_package) && !File.file?(crew_package)
       puts "The crew package #{crew_package} does not exist.".yellow
-      to_copy_package = true
+      to_copy_package = true if !force
     end
 
     # Prompt to copy the local repo package test to crew if the package test is not found.
-    if !force && File.file?(local_package_test) && !File.file?(crew_package_test)
+    if File.file?(local_package_test) && !File.file?(crew_package_test)
       puts "The crew package test #{crew_package_test} does not exist.".yellow
-      to_copy_test = true
+      to_copy_test = true if !force
     end
 
     # Prompt to copy the local repo filelist to crew if the filelist is not found.
-    if !force && File.file?(local_filelist) && !File.file?(crew_filelist)
+    if File.file?(local_filelist) && !File.file?(crew_filelist)
       puts "The crew filelist #{crew_filelist} does not exist.".yellow
-      to_copy_filelist = true
+      to_copy_filelist = true if !force
     end
 
     # Compare local repo package to the crew repo package and prompt to copy if necessary to prepare for the operation.
-    if !force && File.file?(local_package) && File.file?(crew_package) && !FileUtils.identical?(local_package, crew_package)
+    if File.file?(local_package) && File.file?(crew_package) && !FileUtils.identical?(local_package, crew_package)
       puts "#{local_package} does not match the crew package.".yellow
-      to_copy_package = true
+      to_copy_package = true if !force
     end
 
     # Compare local repo package test to the crew repo package test and prompt to copy if necessary to prepare for the operation.
-    if !force && File.file?(local_package_test) && File.file?(crew_package_test) && !FileUtils.identical?(local_package_test, crew_package_test)
+    if File.file?(local_package_test) && File.file?(crew_package_test) && !FileUtils.identical?(local_package_test, crew_package_test)
       puts "#{local_package_test} does not match the crew package test.".yellow
-      to_copy_test = true
+      to_copy_test = true if !force
     end
 
     # Compare local repo filelist to the crew filelist and prompt to copy if necessary to prepare for the operation.
-    if !force && File.file?(local_filelist) && File.file?(crew_filelist) && !FileUtils.identical?(local_filelist, crew_filelist)
+    if File.file?(local_filelist) && File.file?(crew_filelist) && !FileUtils.identical?(local_filelist, crew_filelist)
       puts "#{local_filelist} does not match the crew filelist.".yellow
-      to_copy_filelist = true
+      to_copy_filelist = true if !force
     end
 
     return false if (!force && to_copy_package && !Package.agree_default_yes("\nWould you like to copy #{local_package} to crew and start the #{operation}")) && (!force && to_copy_test && !Package.agree_default_yes("\nWould you like to copy #{local_package_test} to crew and start the #{operation}")) && (!force && to_copy_filelist && !Package.agree_default_yes("\nWould you like to copy #{local_filelist} to crew and start the #{operation}"))

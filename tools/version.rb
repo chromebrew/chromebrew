@@ -66,7 +66,7 @@ CREW_UPDATER_EXCLUDED_PKGS = Set[
 def get_version(name, homepage, source)
   anitya_id = get_anitya_id(name, homepage, @pkg.superclass.to_s)
   # We return nil if anitya_id cannot be determined.
-  puts "anitya_id: #{anitya_id}" if VERBOSE
+  puts "anitya_id: #{anitya_id}" if CREW_VERY_VERBOSE
   if !anitya_id.nil?
     # Get the latest stable version of the package from anitya.
     json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/versions/?project_id=#{anitya_id}")))
@@ -96,14 +96,14 @@ def github_fallback(url)
   return if url_parts.count < 3
 
   repo = "#{url_parts[1]}/#{url_parts[2].delete_suffix('.git')}"
-  puts "GitHub repo is #{repo}" if VERBOSE
+  puts "GitHub repo is #{repo}" if CREW_VERY_VERBOSE
 
   releases_json = JSON.parse(Net::HTTP.get(URI("https://api.github.com/repos/#{repo}/releases/latest")))
   tags_json = JSON.parse(Net::HTTP.get(URI("https://api.github.com/repos/#{repo}/tags")))
 
   # We check for the prescence of a message here because this will also gracefully handle rate limiting.
   if releases_json.include?('message') && (tags_json.empty? || tags_json.include?('message'))
-    puts 'GitHub repo not found or no release/tag available.' if VERBOSE
+    puts 'GitHub repo not found or no release/tag available.' if CREW_VERBOSE
     return
   end
 
@@ -121,9 +121,9 @@ def gitlab_fallback(url)
   redirect = Net::HTTP.get_response(URI("https://#{url.host}/#{repo}/-/releases/permalink/latest"))['location']
 
   if redirect == "https://#{url.host}/users/sign_in"
-    puts 'GitLab repo not found.' if VERBOSE
+    puts 'GitLab repo not found.' if CREW_VERBOSE
   elsif redirect.nil?
-    puts 'No releases available on GitLab repo.' if VERBOSE
+    puts 'No releases available on GitLab repo.' if CREW_VERBOSE
   else
     gitlab_ver = redirect.split('/').last
     # puts "gitlab_ver = #{gitlab_ver}" if CREW_VERY_VERBOSE
@@ -138,17 +138,17 @@ def sourceforge_fallback(url)
   return if url_parts.count < 3
 
   repo = url_parts[2]
-  puts "Sourceforge repo is #{repo}" if VERBOSE
+  puts "Sourceforge repo is #{repo}" if CREW_VERBOSE
 
   response = Net::HTTP.get_response(URI("https://sourceforge.net/projects/#{repo}/best_release.json"))
   if response.code == '404'
-    puts 'Sourceforge repo not found.' if VERBOSE
+    puts 'Sourceforge repo not found.' if CREW_VERBOSE
     return
   end
 
   json = JSON.parse(response.body)
   if json['release'].nil?
-    puts 'No releases available on Sourceforge repo.' if VERBOSE
+    puts 'No releases available on Sourceforge repo.' if CREW_VERBOSE
     return
   end
 
@@ -164,13 +164,13 @@ def pagure_fallback(url)
   return if url_parts.count < 2
 
   repo = url_parts[1]
-  puts "Pagure repo is #{repo}" if VERBOSE
+  puts "Pagure repo is #{repo}" if CREW_VERBOSE
 
   json = JSON.parse(Net::HTTP.get(URI("https://pagure.io/api/0/#{repo}/git/tags")))
   if !json['error'].nil?
-    puts 'Pagure repo not found.' if VERBOSE
+    puts 'Pagure repo not found.' if CREW_VERBOSE
   elsif json['total_tags'].zero?
-    puts 'No tags available on Pagure repo.' if VERBOSE
+    puts 'No tags available on Pagure repo.' if CREW_VERBOSE
   else
     pagure_ver = json['tags'][0]
     puts "pagure_ver = #{pagure_ver}" if CREW_VERY_VERBOSE
@@ -190,7 +190,7 @@ def get_anitya_id(name, homepage, buildsystem)
   anitya_name = PackageUtils.get_clean_name(name)
   # If this package has a hardcoded mapping, use it.
   anitya_name = CREW_ANITYA_PACKAGE_NAME_MAPPINGS[name] if CREW_ANITYA_PACKAGE_NAME_MAPPINGS.include?(name)
-  puts "anitya_name: #{anitya_name} #{"(instead of #{original_name})" if anitya_name != original_name}" if VERBOSE
+  puts "anitya_name: #{anitya_name} #{"(instead of #{original_name})" if anitya_name != original_name}" if CREW_VERY_VERBOSE
 
   # Find out how many packages Anitya has with the provided name.
   puts "url is https://release-monitoring.org/api/v2/projects/?name=#{CGI.escape(anitya_name)}" if CREW_VERY_VERBOSE
@@ -392,20 +392,20 @@ if filelist.length.positive?
             if !@pkg.source_sha256.nil? && @pkg.source_sha256.is_a?(Hash) && @pkg.source_sha256&.key?(ARCH.to_sym)
               # Get old hashes
               (@pkg.source_url.keys.map &:to_s).each do |arch|
-                puts "old source_url: #{@pkg.source_url[arch.to_sym]}" if VERBOSE && !OUTPUT_JSON
+                puts "old source_url: #{@pkg.source_url[arch.to_sym]}" if CREW_VERBOSE && !OUTPUT_JSON
                 old_hash[arch] = @pkg.source_sha256[arch.to_sym]
-                puts "old hash: #{old_hash[arch]}" if VERBOSE && !OUTPUT_JSON
+                puts "old hash: #{old_hash[arch]}" if CREW_VERBOSE && !OUTPUT_JSON
               end
               File.write(filename, file)
               # Now get new hashes
               @pkg = Package.load_package(filename, true)
               (@pkg.source_url.keys.map &:to_s).each do |arch|
-                puts "new source_url: #{@pkg.source_url[arch.to_sym]}" if VERBOSE && !OUTPUT_JSON
+                puts "new source_url: #{@pkg.source_url[arch.to_sym]}" if CREW_VERBOSE && !OUTPUT_JSON
                 status = `curl -fsI #{@pkg.source_url[arch.to_sym]}`.lines.first.split[1]
-                puts "new source_url response status: #{status}" if VERBOSE && !OUTPUT_JSON
+                puts "new source_url response status: #{status}" if CREW_VERBOSE && !OUTPUT_JSON
                 unless %w[200 302].include?(status)
                   versions_updated[@pkg.name.to_sym] = 'Bad Source'
-                  puts "#{@pkg.source_url[arch.to_sym]} is a bad source".lightred if VERBOSE && !OUTPUT_JSON
+                  puts "#{@pkg.source_url[arch.to_sym]} is a bad source".lightred if CREW_VERBOSE && !OUTPUT_JSON
                   if File.file?("#{filename}.bak")
                     FileUtils.cp "#{filename}.bak", filename
                     FileUtils.rm "#{filename}.bak"
@@ -413,23 +413,23 @@ if filelist.length.positive?
                   next filename
                 end
                 new_hash[arch] = `curl -Ls #{@pkg.source_url[arch.to_sym]} | sha256sum - | awk '{print $1}'`.chomp
-                puts "new hash: #{new_hash[arch]}" if VERBOSE && !OUTPUT_JSON
+                puts "new hash: #{new_hash[arch]}" if CREW_VERBOSE && !OUTPUT_JSON
                 file.sub!(old_hash[arch], new_hash[arch])
               end
             elsif !@pkg.source_sha256.nil? && !@pkg.source_sha256.is_a?(Hash)
               arch = :all
               # Get old hashes
               old_hash[arch] = @pkg.source_sha256
-              puts "old source_url: #{@pkg.source_url}" if VERBOSE && !OUTPUT_JSON
-              puts "old hash: #{old_hash[arch]}" if VERBOSE && !OUTPUT_JSON
+              puts "old source_url: #{@pkg.source_url}" if CREW_VERBOSE && !OUTPUT_JSON
+              puts "old hash: #{old_hash[arch]}" if CREW_VERBOSE && !OUTPUT_JSON
               File.write(filename, file)
               # Now get new hashes
               @pkg = Package.load_package(filename, true)
-              puts "new source_url: #{@pkg.source_url}" if VERBOSE && !OUTPUT_JSON
+              puts "new source_url: #{@pkg.source_url}" if CREW_VERBOSE && !OUTPUT_JSON
               status = `curl -fsI #{@pkg.source_url}`.lines.first.split[1]
               unless %w[200 302].include?(status)
                 versions_updated[@pkg.name.to_sym] = 'Bad Source'
-                puts "#{@pkg.source_url} is a bad source.".lightred if VERBOSE && !OUTPUT_JSON
+                puts "#{@pkg.source_url} is a bad source.".lightred if CREW_VERBOSE && !OUTPUT_JSON
                 if File.file?("#{filename}.bak")
                   FileUtils.cp "#{filename}.bak", filename
                   FileUtils.rm "#{filename}.bak"
@@ -437,7 +437,7 @@ if filelist.length.positive?
                 next filename
               end
               new_hash[arch] = `curl -Ls #{@pkg.source_url} | sha256sum - | awk '{print $1}'`.chomp
-              puts "new hash: #{new_hash[arch]}" if VERBOSE && !OUTPUT_JSON
+              puts "new hash: #{new_hash[arch]}" if CREW_VERBOSE && !OUTPUT_JSON
               file.sub!(old_hash[arch], new_hash[arch])
             end
             File.write(filename, file)
@@ -498,7 +498,7 @@ if filelist.length.positive?
     addendum_string = "#{@pkg.name} cannot be automatically updated: ".red + "#{updatable_pkg[@pkg.name.to_sym]}\n".purple unless updatable_pkg[@pkg.name.to_sym] == 'Yes'
     version_line_string[@pkg.name.to_sym] = "#{@pkg.name.ljust(package_field_length)}#{version_status_string}#{cleaned_pkg_version.ljust(version_field_length)}#{upstream_version.ljust(version_field_length)}#{updatable_string}#{compile_string}\n"
     print version_line_string[@pkg.name.to_sym] if !OUTPUT_JSON && ((versions_updated[@pkg.name.to_sym] == 'Outdated.' && updatable_pkg[@pkg.name.to_sym] == 'Yes') || OUTPUT_ALL)
-    print addendum_string unless addendum_string.blank? || OUTPUT_JSON || !VERBOSE
+    print addendum_string unless addendum_string.blank? || OUTPUT_JSON || !CREW_VERBOSE
 
     print "Failed to update version in #{@pkg.name} to #{upstream_version}".yellow if !OUTPUT_JSON && (versions_updated[@pkg.name.to_sym].to_s == 'false')
     print "Failed to update binary_compression in #{@pkg.name}".yellow if !OUTPUT_JSON && (bc_updated[@pkg.name.to_sym].to_s == 'false')
