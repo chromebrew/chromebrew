@@ -98,6 +98,7 @@ gedit
 git_lfs
 glib
 glm
+glslang
 gmmlib
 gobject_introspection
 google_chrome
