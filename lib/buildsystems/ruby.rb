@@ -25,8 +25,8 @@ def save_gem_filelist(gem_name = nil, gem_version = nil, gem_filelist_path = nil
   crewlog "@gem_latest_version_installed: #{@gem_latest_version_installed}"
   # Skip if in reinstall or upgrade, as the install hasn't happened yet.
   @pkg = Package.load_package("packages/ruby_#{gem_name.gsub('-', '_')}.rb")
-  puts 'return if @pkg.in_upgrade' if @pkg.in_upgrade
-  return if @pkg.in_upgrade
+  # puts 'return if @pkg.in_upgrade' if @pkg.in_upgrade
+  # return if @pkg.in_upgrade
   # We need the gem reinstalled, so we don't use --conservative, which
   # avoids the reinstall.
   if [`gem list --no-update-sources -l -e #{gem_name}`.chomp.to_s].grep(/#{gem_name}/)[0]
@@ -43,6 +43,7 @@ def save_gem_filelist(gem_name = nil, gem_version = nil, gem_filelist_path = nil
   files = `gem contents #{gem_name}`.chomp.split
   if files.blank?
     puts "Filelist is blank for #{gem_name}".lightred
+    system "gem contents #{gem_name}"
     return
   end
 
