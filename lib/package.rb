@@ -72,7 +72,8 @@ class Package
            :git_hashtag,
            :max_glibc,
            :min_glibc,
-           :conflicts_with
+           :conflicts_with,
+           :upstream_name
 
   create_placeholder :preflight,       # Function for checks to see if install should occur.
                      :patch,           # Function to perform patch operations prior to build from source.

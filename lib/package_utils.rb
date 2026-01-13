@@ -127,9 +127,15 @@ class PackageUtils
     # here: https://guides.rubygems.org/rubygems-org-compact-index-api/
     # Figure out gem name, noting that there may be dashes and underscores
     # in the name.
-    gem_test = $gems.grep(/#{"^#{passed_name.gsub(/^ruby_/, '')}\\s.*$"}/).last.blank? ? $gems.grep(/#{"^\(#{passed_name.gsub(/^ruby_/, '').gsub('_', ')+.(')}\\s\).*$"}/).last : $gems.grep(/#{"^#{passed_name.gsub(/^ruby_/, '')}\\s.*$"}/).last
-    abort "Cannot find #{passed_name} gem to install.".lightred if gem_test.blank?
-    gem_test_name = gem_test.split.first
+    if @pkg.upstream_name.blank?
+      gem_test = $gems.grep(/#{"^#{passed_name.gsub(/^ruby_/, '')}\\s.*$"}/).last.blank? ? $gems.grep(/#{"^\(#{passed_name.gsub(/^ruby_/, '').gsub('_', ')+.(')}\\s\).*$"}/).last : $gems.grep(/#{"^#{passed_name.gsub(/^ruby_/, '')}\\s.*$"}/).last
+      abort "Cannot find #{passed_name} gem to install.".lightred if gem_test.blank?
+      gem_test_name = gem_test.split.first
+      ruby_gem_name = gem_test_name.blank? ? Gem::SpecFetcher.fetcher.suggest_gems_from_name(passed_name.gsub(/^ruby_/, '')).first : gem_test_name
+    else
+      ruby_gem_name = @pkg.upstream_name
+      gem_test = $gems.grep(/#{"^#{ruby_gem_name}\\s.*$"}/).last
+    end
     gem_test_versions = gem_test.split[1].split(',')
     # Remove minus prefixed versions, as those have been yanked as per
     # https://guides.rubygems.org/rubygems-org-compact-index-api/
@@ -138,8 +144,8 @@ class PackageUtils
     # https://github.com/rubygems/rubygems/blob/b5798efd348935634d4e0e2b846d4f455582db48/lib/rubygems/version.rb#L305
     gem_test_versions.delete_if { |i| i.match?(/[a-zA-Z]/) }
     gem_test_version = gem_test_versions.map { |v| Gem::Version.new(v) }.max.to_s
-    ruby_gem_name = gem_test_name.blank? ? Gem::SpecFetcher.fetcher.suggest_gems_from_name(passed_name.gsub(/^ruby_/, '')).first : gem_test_name
-    remote_ruby_gem_version = gem_test_name.blank? ? Gem.latest_version_for(ruby_gem_name).to_s : gem_test_version
+    remote_gem_version_test = Gem.latest_version_for(ruby_gem_name).to_s
+    remote_ruby_gem_version = remote_gem_version_test.blank? ? gem_test_version : Gem.latest_version_for(ruby_gem_name).to_s
     ruby_gem_version = passed_version.split('-').first.to_s
     # Use latest gem version.
     ruby_gem_version = remote_ruby_gem_version.to_s if Gem::Version.new(remote_ruby_gem_version.to_s) > Gem::Version.new(ruby_gem_version)
