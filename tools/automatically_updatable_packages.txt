@@ -95,6 +95,7 @@ frp
 gambit
 gedit
 git_lfs
+glm
 gobject_introspection
 google_chrome
 libcdr
