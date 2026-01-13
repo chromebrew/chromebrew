@@ -23,6 +23,7 @@ end
 def save_gem_filelist(gem_name = nil, gem_version = nil, gem_filelist_path = nil)
   gem_filelist_path = File.join(CREW_META_PATH, "ruby_#{gem_name.gsub('-', '_')}.filelist") if gem_filelist_path.nil?
   crewlog "@gem_latest_version_installed: #{@gem_latest_version_installed}"
+  puts "@gem_latest_version_installed: #{@gem_latest_version_installed}"
   # Skip if in reinstall or upgrade, as the install hasn't happened yet.
   @pkg = Package.load_package("packages/ruby_#{gem_name.gsub('-', '_')}.rb")
   # puts 'return if @pkg.in_upgrade' if @pkg.in_upgrade
@@ -32,17 +33,21 @@ def save_gem_filelist(gem_name = nil, gem_version = nil, gem_filelist_path = nil
   if [`gem list --no-update-sources -l -e #{gem_name}`.chomp.to_s].grep(/#{gem_name}/)[0]
     # Gem is already installed.
     crewlog "#{gem_name} is already installed."
+    puts "#{gem_name} is already installed."
   elsif File.file?("#{CREW_DEST_DIR}/#{gem_name}-#{gem_version}-#{GEM_ARCH}.gem")
     # Gem not installed but a binary for the gem exists.
     crewlog "#{gem_name} not installed, but a binary exists."
+    puts "#{gem_name} not installed, but a binary exists."
     Kernel.system "gem install --no-update-sources -N --local #{CREW_DEST_DIR}/#{gem_name}-#{gem_version}-#{GEM_ARCH}.gem --conservative &>/dev/null"
   else
     crewlog "#{gem_name} is not installed"
+    puts "#{gem_name} is not installed"
     Kernel.system "gem install --no-update-sources -N #{gem_name} &>/dev/null"
   end
   files = `gem contents #{gem_name}`.chomp.split
   if files.blank?
     puts "Filelist is blank for #{gem_name}".lightred
+    puts "gem contents #{gem_name}"
     system "gem contents #{gem_name}"
     return
   end
