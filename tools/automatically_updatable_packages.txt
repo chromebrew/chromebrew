@@ -97,6 +97,7 @@ gedit
 git_lfs
 glib
 glm
+gmmlib
 gobject_introspection
 google_chrome
 libcdr
