@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.22 (for Chromebrew)
+# version.rb version 3.23 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose -vv]
 
