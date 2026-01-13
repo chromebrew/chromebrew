@@ -23,32 +23,25 @@ end
 def save_gem_filelist(gem_name = nil, gem_version = nil, gem_filelist_path = nil)
   gem_filelist_path = File.join(CREW_META_PATH, "ruby_#{gem_name.gsub('-', '_')}.filelist") if gem_filelist_path.nil?
   crewlog "@gem_latest_version_installed: #{@gem_latest_version_installed}"
-  puts "@gem_latest_version_installed: #{@gem_latest_version_installed}"
   # Skip if in reinstall or upgrade, as the install hasn't happened yet.
-  @pkg = Package.load_package("packages/ruby_#{gem_name.gsub('-', '_')}.rb")
-  # puts 'return if @pkg.in_upgrade' if @pkg.in_upgrade
   # return if @pkg.in_upgrade
   # We need the gem reinstalled, so we don't use --conservative, which
   # avoids the reinstall.
-  if [`gem list --no-update-sources -l -e #{gem_name}`.chomp.to_s].grep(/#{gem_name}/)[0]
+  files = `gem contents #{gem_name}`.chomp.split
+  if [`gem list --no-update-sources -l -e #{gem_name}`.chomp.to_s].grep(/#{gem_name}/)[0] && !files.blank?
     # Gem is already installed.
     crewlog "#{gem_name} is already installed."
-    puts "#{gem_name} is already installed."
   elsif File.file?("#{CREW_DEST_DIR}/#{gem_name}-#{gem_version}-#{GEM_ARCH}.gem")
     # Gem not installed but a binary for the gem exists.
     crewlog "#{gem_name} not installed, but a binary exists."
-    puts "#{gem_name} not installed, but a binary exists."
     Kernel.system "gem install --no-update-sources -N --local #{CREW_DEST_DIR}/#{gem_name}-#{gem_version}-#{GEM_ARCH}.gem --conservative &>/dev/null"
   else
     crewlog "#{gem_name} is not installed"
-    puts "#{gem_name} is not installed"
     Kernel.system "gem install --no-update-sources -N #{gem_name} &>/dev/null"
   end
   files = `gem contents #{gem_name}`.chomp.split
   if files.blank?
     puts "Filelist is blank for #{gem_name}".lightred
-    puts "gem contents #{gem_name}"
-    system "gem contents #{gem_name}"
     return
   end
 
@@ -76,7 +69,7 @@ def save_gem_filelist(gem_name = nil, gem_version = nil, gem_filelist_path = nil
   local_filelist = File.join(CREW_LOCAL_REPO_ROOT, 'manifest', ARCH, name[0].to_s, "#{name}.filelist")
   FileUtils.mkdir_p File.join(CREW_LOCAL_REPO_ROOT, 'manifest', ARCH, name[0].to_s)
   FileUtils.cp gem_filelist_path, local_filelist
-  puts "Copied #{gem_filelist_path} to #{local_filelist}".lightpurple
+  puts "Copied #{gem_filelist_path} to #{local_filelist}".lightpurple if CREW_VERBOSE || ENV['NESTED_CI']
 end
 
 def add_gem_binary_compression(pkg_name = nil)
@@ -151,7 +144,7 @@ class RUBY < Package
 
   def self.preflight
     @install_gem ||= true
-    @ruby_gem_name, @ruby_gem_version, @remote_ruby_gem_version, @gem_installed_version, @gem_latest_version_installed, @gem_outdated, @gem_deps = PackageUtils.get_gem_vars(name, version)
+    @ruby_gem_name, @ruby_gem_version, @remote_ruby_gem_version, @gem_installed_version, @gem_latest_version_installed, @gem_outdated, @gem_deps = PackageUtils.get_gem_vars(name, version, Package.load_package(File.join(CREW_PACKAGES_PATH, "#{name}.rb")).upstream_name)
     puts "Examining #{@ruby_gem_name} gem...".orange
     @gem_filelist_path = File.join(CREW_META_PATH, "#{name}.filelist")
 
@@ -203,7 +196,7 @@ class RUBY < Package
   def self.install
     # @install_gem will always be true during upgrades since we remove
     # the old gem during the upgrade.
-    @ruby_gem_name, @ruby_gem_version, @remote_ruby_gem_version, @gem_installed_version, @gem_latest_version_installed, @gem_outdated, @gem_deps = PackageUtils.get_gem_vars(name, version) if @ruby_gem_name.blank? || @gem_installed_version.blank? || @ruby_gem_version.blank?
+    @ruby_gem_name, @ruby_gem_version, @remote_ruby_gem_version, @gem_installed_version, @gem_latest_version_installed, @gem_outdated, @gem_deps = PackageUtils.get_gem_vars(name, version, Package.load_package(File.join(CREW_PACKAGES_PATH, "#{name}.rb")).upstream_name) if @ruby_gem_name.blank? || @gem_installed_version.blank? || @ruby_gem_version.blank?
     @gem_filelist_path = File.join(CREW_META_PATH, "#{name.downcase}.filelist") if @gem_filelist_path.nil?
     if @gem_installed_version.blank?
       crewlog "@gem_installed_version.blank? is #{@gem_installed_version.blank?}, setting @install_gem = true"
@@ -237,9 +230,9 @@ class RUBY < Package
       Kernel.system "gem install --no-update-sources -N #{@ruby_gem_name} --conservative"
     end
     # Check gem versions again.
-    @ruby_gem_name, @ruby_gem_version, @remote_ruby_gem_version, @gem_installed_version, @gem_latest_version_installed, @gem_outdated, @gem_deps = PackageUtils.get_gem_vars(name, version)
+    @ruby_gem_name, @ruby_gem_version, @remote_ruby_gem_version, @gem_installed_version, @gem_latest_version_installed, @gem_outdated, @gem_deps = PackageUtils.get_gem_vars(name, version, Package.load_package(File.join(CREW_PACKAGES_PATH, "#{name}.rb")).upstream_name)
     @gems_needing_cleanup = Array(@gems_needing_cleanup) << @ruby_gem_name unless @gem_latest_version_installed
-    puts "save_gem_filelist(#{@ruby_gem_name}, #{@ruby_gem_version}, #{@gem_filelist_path})".lightpurple
+    puts "save_gem_filelist(#{@ruby_gem_name}, #{@ruby_gem_version}, #{@gem_filelist_path})".lightpurple if CREW_VERBOSE
     save_gem_filelist(@ruby_gem_name, @ruby_gem_version, @gem_filelist_path)
     add_gem_binary_compression(name) if File.file?(@gem_filelist_path) && no_compile_needed? && system("grep '.so$' #{@gem_filelist_path}", exception: false)
     @ruby_install_extras&.call

@@ -771,7 +771,7 @@ def unpack(meta)
         end
         system "../#{meta[:filename]}", '--appimage-extract', chdir: @extract_dir, exception: true
       when /\.gem$/i
-        ruby_gem_name, ruby_gem_version, _upstream_version, _gem_installed_version, _gem_latest_version_installed, _gem_outdated, _gem_deps = PackageUtils.get_gem_vars(@pkg.name, @pkg.version)
+        ruby_gem_name, ruby_gem_version, _upstream_version, _gem_installed_version, _gem_latest_version_installed, _gem_outdated, _gem_deps = PackageUtils.get_gem_vars(@pkg.name, @pkg.version, @pkg.upstream_name)
         puts "Moving #{ruby_gem_name} binary gem for install...".orange
         gem_file = "#{ruby_gem_name}-#{ruby_gem_version}-#{GEM_ARCH}.gem"
         FileUtils.mv meta[:filename], File.join(@extract_dir, gem_file)
@@ -1406,7 +1406,7 @@ def install(skip_postinstall: false)
   elsif @pkg.superclass.to_s == 'RUBY'
     meta = download
     target_dir = unpack meta
-    ruby_gem_name, ruby_gem_version, _upstream_version, _gem_installed_version, _gem_latest_version_installed, _gem_outdated, _gem_deps = PackageUtils.get_gem_vars(@pkg.name, @pkg.version)
+    ruby_gem_name, ruby_gem_version, _upstream_version, _gem_installed_version, _gem_latest_version_installed, _gem_outdated, _gem_deps = PackageUtils.get_gem_vars(@pkg.name, @pkg.version, @pkg.upstream_name)
     gem_file = "#{ruby_gem_name}-#{ruby_gem_version}-#{GEM_ARCH}.gem"
     if File.file?(File.join(target_dir, gem_file))
       FileUtils.mv File.join(target_dir, gem_file), File.join(CREW_DEST_DIR, gem_file)
@@ -1582,7 +1582,7 @@ end
 
 def archive_package(crew_archive_dest)
   if @pkg.superclass.to_s == 'RUBY'
-    ruby_gem_name, ruby_gem_version, _upstream_version, _gem_installed_version, _gem_latest_version_installed, _gem_outdated, _gem_deps = PackageUtils.get_gem_vars(@pkg.name, @pkg.version)
+    ruby_gem_name, ruby_gem_version, _upstream_version, _gem_installed_version, _gem_latest_version_installed, _gem_outdated, _gem_deps = PackageUtils.get_gem_vars(@pkg.name, @pkg.version, @pkg.upstream_name)
     gem_file = "#{ruby_gem_name}-#{ruby_gem_version}-#{GEM_ARCH}.gem"
     pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.gem"
     begin

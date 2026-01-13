@@ -101,7 +101,7 @@ class PackageUtils
     return new_version
   end
 
-  def self.get_gem_vars(passed_name = nil, passed_version = nil)
+  def self.get_gem_vars(passed_name = nil, passed_version = nil, upstream_name = nil)
     require_relative 'gem_compact_index_client'
     # crewlog "Setting gem variables... name: #{passed_name}, version: #{passed_version}"
     # This assumes the package class name starts with 'Ruby_' and
@@ -127,13 +127,13 @@ class PackageUtils
     # here: https://guides.rubygems.org/rubygems-org-compact-index-api/
     # Figure out gem name, noting that there may be dashes and underscores
     # in the name.
-    if @pkg.upstream_name.blank?
+    if upstream_name.nil?
       gem_test = $gems.grep(/#{"^#{passed_name.gsub(/^ruby_/, '')}\\s.*$"}/).last.blank? ? $gems.grep(/#{"^\(#{passed_name.gsub(/^ruby_/, '').gsub('_', ')+.(')}\\s\).*$"}/).last : $gems.grep(/#{"^#{passed_name.gsub(/^ruby_/, '')}\\s.*$"}/).last
       abort "Cannot find #{passed_name} gem to install.".lightred if gem_test.blank?
       gem_test_name = gem_test.split.first
       ruby_gem_name = gem_test_name.blank? ? Gem::SpecFetcher.fetcher.suggest_gems_from_name(passed_name.gsub(/^ruby_/, '')).first : gem_test_name
     else
-      ruby_gem_name = @pkg.upstream_name
+      ruby_gem_name = upstream_name
       gem_test = $gems.grep(/#{"^#{ruby_gem_name}\\s.*$"}/).last
     end
     gem_test_versions = gem_test.split[1].split(',')
