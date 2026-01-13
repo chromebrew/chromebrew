@@ -57,6 +57,7 @@ fdupes
 feh
 finch
 findutils
+firefox
 firejail
 fish
 flatseal
