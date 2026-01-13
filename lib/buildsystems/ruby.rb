@@ -104,35 +104,34 @@ def add_gem_binary_compression(pkg_name = nil)
   end
 end
 
-def check_and_install_gem_deps(gem_name = nil, gem_version = nil)
-  unless @gem_deps.blank?
-    puts 'Dependencies:'.orange
-    puts @gem_deps
-    @gem_deps.each do |gem_dep|
-      gem_dep = "ruby_#{gem_dep.gsub('-', '_')}"
-      if File.file?(File.join(CREW_PACKAGES_PATH, "#{gem_dep}.rb"))
-        crewlog "#{gem_dep.capitalize} package exists."
-        install_pkg = Package.load_package("packages/#{gem_dep}.rb")
-        installed_gem_search = [`gem list --no-update-sources -l -e #{gem_name}`.chomp.to_s].grep(/#{gem_name}/)[0]
-        if installed_gem_search
-          installed_gem_info = installed_gem_search.delete('()').gsub('default:', '').gsub(',', '').split
-          gem_installed_version = installed_gem_info[1]
-          (Gem::Version.new(gem_version) > Gem::Version.new(gem_installed_version))
-          gem_latest_version_installed = Gem::Version.new(gem_version) <= Gem::Version.new(gem_installed_version)
-        else
-          gem_latest_version_installed = false
-        end
-        crewlog "#{install_pkg.name}: PackageUtils.installed?(install_pkg.name): #{PackageUtils.installed?(install_pkg.name)} gem_latest_version_installed: #{gem_latest_version_installed}"
-        if PackageUtils.installed?(install_pkg.name) && gem_latest_version_installed
-          crewlog "Current version of #{gem_dep.capitalize} installed."
-        else
-          install_pkg = Package.load_package("packages/#{gem_dep}.rb")
-          crewlog "#{install_pkg.name} installed".orange if PackageUtils.installed?(install_pkg.name)
-          system("yes | crew install #{gem_dep}")
-        end
+def install_gem_deps(gem_name = nil, gem_version = nil, gem_deps = nil)
+  return if gem_deps.nil? || gem_deps.blank?
+  puts 'Dependencies:'.orange
+  puts gem_deps
+  gem_deps.each do |gem_dep|
+    gem_dep = "ruby_#{gem_dep.gsub('-', '_')}"
+    if File.file?(File.join(CREW_PACKAGES_PATH, "#{gem_dep}.rb"))
+      crewlog "#{gem_dep.capitalize} package exists."
+      install_pkg = Package.load_package("packages/#{gem_dep}.rb")
+      installed_gem_search = [`gem list --no-update-sources -l -e #{gem_name}`.chomp.to_s].grep(/#{gem_name}/)[0]
+      if installed_gem_search
+        installed_gem_info = installed_gem_search.delete('()').gsub('default:', '').gsub(',', '').split
+        gem_installed_version = installed_gem_info[1]
+        (Gem::Version.new(gem_version) > Gem::Version.new(gem_installed_version))
+        gem_latest_version_installed = Gem::Version.new(gem_version) <= Gem::Version.new(gem_installed_version)
       else
-        puts "Will not install #{gem_dep} from a Chromebrew package, as one does not exist.".orange
+        gem_latest_version_installed = false
       end
+      crewlog "#{install_pkg.name}: PackageUtils.installed?(install_pkg.name): #{PackageUtils.installed?(install_pkg.name)} gem_latest_version_installed: #{gem_latest_version_installed}"
+      if PackageUtils.installed?(install_pkg.name) && gem_latest_version_installed
+        crewlog "Current version of #{gem_dep.capitalize} installed."
+      else
+        install_pkg = Package.load_package("packages/#{gem_dep}.rb")
+        crewlog "#{install_pkg.name} installed".orange if PackageUtils.installed?(install_pkg.name)
+        system("yes | crew install #{gem_dep}")
+      end
+    else
+      puts "Will not install #{gem_dep} from a Chromebrew package, as one does not exist.".orange
     end
   end
 end
@@ -151,7 +150,7 @@ class RUBY < Package
     # Check for gem dependencies before installing, in case those gems
     # already have packages or binary packages, so we can avoid
     # compiling those on end-user devices.
-    check_and_install_gem_deps(@ruby_gem_name, @ruby_gem_version)
+    install_gem_deps(@ruby_gem_name, @ruby_gem_version, @gem_deps)
 
     # Create a filelist from the gem if the latest gem version is
     # installed.

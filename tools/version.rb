@@ -343,7 +343,7 @@ if filelist.length.positive?
     if @pkg.is_fake? || NO_UPSTREAM_VERSION_PKGS.include?(@pkg.name) || @pkg.no_upstream_update? || @pkg.name.start_with?('musl_')
       upstream_version = ''
     elsif %w[RUBY].include?(@pkg.superclass.to_s)
-      _gem_name, _ruby_gem_version, upstream_version, _gem_installed_version, _gem_latest_version_installed, _gem_outdated, _gem_deps = PackageUtils.get_gem_vars(@pkg.name, @pkg.version)
+      _gem_name, _ruby_gem_version, upstream_version, _gem_installed_version, _gem_latest_version_installed, _gem_outdated, _gem_deps = PackageUtils.get_gem_vars(@pkg.name, @pkg.version, @pkg.upstream_name)
     elsif %w[Pip].include?(@pkg.superclass.to_s)
       versions_updated[@pkg.name.to_sym] = 'Not Found.' if CREW_UPDATER_EXCLUDED_PKGS.key?(@pkg.name)
       pip_name = @pkg.name.sub(/\Apy\d_/, '').gsub('_', '-')
