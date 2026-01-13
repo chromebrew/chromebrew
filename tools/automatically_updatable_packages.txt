@@ -99,6 +99,7 @@ glib
 glm
 gobject_introspection
 google_chrome
+gtk4
 libcdr
 libgedit_gtksourceview
 libvisio
