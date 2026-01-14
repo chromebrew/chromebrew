@@ -1,4 +1,4 @@
-# Total size: 177467044
+# Total size: 178165789
 /usr/local/bin/az
 /usr/local/bin/az.bat
 /usr/local/bin/az.completion.sh
@@ -433,6 +433,8 @@
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/__init__.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/__pycache__/__cmd_group.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/__pycache__/_list_locations.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/_list_locations.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/plan/__cmd_group.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/plan/__init__.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/appservice/aaz/latest/appservice/plan/__pycache__/__cmd_group.cpython-314.pyc
@@ -2793,6 +2795,20 @@
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/monitor/aaz/latest/monitor/autoscale/_show.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/monitor/aaz/latest/monitor/autoscale/_show_predictive_metric.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/monitor/aaz/latest/monitor/autoscale/_update.py
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/monitor/aaz/latest/monitor/dashboard/__cmd_group.py
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/monitor/aaz/latest/monitor/dashboard/__init__.py
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/monitor/aaz/latest/monitor/dashboard/__pycache__/__cmd_group.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/monitor/aaz/latest/monitor/dashboard/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/monitor/aaz/latest/monitor/dashboard/__pycache__/_create.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/monitor/aaz/latest/monitor/dashboard/__pycache__/_delete.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/monitor/aaz/latest/monitor/dashboard/__pycache__/_list.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/monitor/aaz/latest/monitor/dashboard/__pycache__/_show.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/monitor/aaz/latest/monitor/dashboard/__pycache__/_wait.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/monitor/aaz/latest/monitor/dashboard/_create.py
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/monitor/aaz/latest/monitor/dashboard/_delete.py
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/monitor/aaz/latest/monitor/dashboard/_list.py
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/monitor/aaz/latest/monitor/dashboard/_show.py
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/monitor/aaz/latest/monitor/dashboard/_wait.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/monitor/aaz/latest/monitor/diagnostic_settings/__cmd_group.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/monitor/aaz/latest/monitor/diagnostic_settings/__init__.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/monitor/aaz/latest/monitor/diagnostic_settings/__pycache__/__cmd_group.cpython-314.pyc
@@ -3180,6 +3196,7 @@
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/monitor/validators.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/mysql/__init__.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/mysql/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/mysql/__pycache__/_breaking_change.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/mysql/__pycache__/_client_factory.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/mysql/__pycache__/_help.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/mysql/__pycache__/_network.cpython-314.pyc
@@ -3190,6 +3207,7 @@
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/mysql/__pycache__/action.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/mysql/__pycache__/commands.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/mysql/__pycache__/custom.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/mysql/_breaking_change.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/mysql/_client_factory.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/mysql/_help.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/mysql/_network.py
@@ -5128,6 +5146,18 @@
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/network/aaz/latest/network/virtual_appliance/connection/_show.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/network/aaz/latest/network/virtual_appliance/connection/_update.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/network/aaz/latest/network/virtual_appliance/connection/_wait.py
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/network/aaz/latest/network/virtual_appliance/identity/__cmd_group.py
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/network/aaz/latest/network/virtual_appliance/identity/__init__.py
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/network/aaz/latest/network/virtual_appliance/identity/__pycache__/__cmd_group.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/network/aaz/latest/network/virtual_appliance/identity/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/network/aaz/latest/network/virtual_appliance/identity/__pycache__/_assign.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/network/aaz/latest/network/virtual_appliance/identity/__pycache__/_remove.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/network/aaz/latest/network/virtual_appliance/identity/__pycache__/_show.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/network/aaz/latest/network/virtual_appliance/identity/__pycache__/_wait.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/network/aaz/latest/network/virtual_appliance/identity/_assign.py
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/network/aaz/latest/network/virtual_appliance/identity/_remove.py
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/network/aaz/latest/network/virtual_appliance/identity/_show.py
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/network/aaz/latest/network/virtual_appliance/identity/_wait.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/network/aaz/latest/network/virtual_appliance/inbound_security_rule/__cmd_group.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/network/aaz/latest/network/virtual_appliance/inbound_security_rule/__init__.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/network/aaz/latest/network/virtual_appliance/inbound_security_rule/__pycache__/__cmd_group.cpython-314.pyc
@@ -5720,6 +5750,7 @@
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/profile/custom.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/rdbms/__init__.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/rdbms/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/rdbms/__pycache__/_breaking_change.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/rdbms/__pycache__/_client_factory.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/rdbms/__pycache__/_config_reader.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/rdbms/__pycache__/_flexible_server_location_capabilities_util.cpython-314.pyc
@@ -5736,6 +5767,7 @@
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/rdbms/__pycache__/flexible_server_custom_postgres.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/rdbms/__pycache__/flexible_server_virtual_network.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/rdbms/__pycache__/validators.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/rdbms/_breaking_change.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/rdbms/_client_factory.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/rdbms/_config_reader.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/rdbms/_flexible_server_location_capabilities_util.py
@@ -7830,6 +7862,12 @@
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/extension/image/_list_names.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/extension/image/_list_versions.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/extension/image/_show.py
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/instance_view/__cmd_group.py
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/instance_view/__init__.py
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/instance_view/__pycache__/__cmd_group.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/instance_view/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/instance_view/__pycache__/_show.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/instance_view/_show.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/nic/__cmd_group.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/nic/__init__.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/nic/__pycache__/__cmd_group.cpython-314.pyc
@@ -7876,6 +7914,12 @@
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/vms/__pycache__/_show.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/vms/_create.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/vms/_show.py
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/vms/instance_view/__cmd_group.py
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/vms/instance_view/__init__.py
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/vms/instance_view/__pycache__/__cmd_group.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/vms/instance_view/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/vms/instance_view/__pycache__/_show.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/azure/cli/command_modules/vm/aaz/latest/vmss/vms/instance_view/_show.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/vm/commands.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/vm/custom.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/vm/disk_encryption.py
@@ -7945,10 +7989,10 @@
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/vm/operations/vm_extension.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/vm/operations/vmss.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/vm/operations/vmss_vms.py
-/usr/local/lib/python3.14/site-packages/azure_cli-2.81.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/azure_cli-2.81.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/azure_cli-2.81.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/azure_cli-2.81.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/azure_cli-2.81.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/azure_cli-2.81.0.dist-info/licenses/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/azure_cli-2.81.0.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/azure_cli-2.82.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/azure_cli-2.82.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/azure_cli-2.82.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/azure_cli-2.82.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/azure_cli-2.82.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/azure_cli-2.82.0.dist-info/licenses/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/azure_cli-2.82.0.dist-info/top_level.txt
