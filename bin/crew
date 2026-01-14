@@ -1446,7 +1446,7 @@ def install(skip_postinstall: false)
 
   # remove it just before the file copy
   if @pkg.in_upgrade
-    if CREW_ESSENTIAL_PACKAGES.include?(@pkg.name)
+    if CREW_ESSENTIAL_PACKAGES.include?(@pkg.name) && @pkg.superclass.to_s == 'RUBY'
       puts "Not attempting removal despite this being an upgrade or reinstall because #{@pkg.name} is a member of CREW_ESSENTIAL_PACKAGES...".orange
     else
       puts 'Attempting removal since this is an upgrade or reinstall...'.orange
