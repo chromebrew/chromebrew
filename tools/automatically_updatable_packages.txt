@@ -101,6 +101,7 @@ glm
 glslang
 gmmlib
 gnome_console
+gnome_online_accounts
 gobject_introspection
 google_chrome
 libcdr
