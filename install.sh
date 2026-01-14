@@ -1,5 +1,5 @@
 #!/bin/bash
-CREW_INSTALLER_VERSION=2026010901
+CREW_INSTALLER_VERSION=2026011301
 # Exit on fail.
 set -eE
 
@@ -586,6 +586,9 @@ if ! git --version; then
   echo_error "git is broken. Install will fail."
   exit 1
 fi
+# Set CREW_LOCAL_REPO_ROOT since git rev-parse --show-toplevel will not
+# work until the git clone is setup.
+export CREW_LOCAL_REPO_ROOT="${CREW_PREFIX}/lib/crew"
 # This is needed for SSL env variables to be populated so ruby doesn't
 # complain about missing certs, resulting in failed https connections.
 echo_info "Installing crew_profile_base...\n"
