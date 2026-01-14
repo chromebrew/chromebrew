@@ -109,7 +109,7 @@ class PackageUtils
     # For example, name 'Ruby_awesome' and version '1.0.0-ruby-3.3'.
     # Just use the fetcher.suggest_gems_from_name function to figure out
     # proper gem name with the appropriate dashes and underscores.
-    if CREW_VERBOSE
+    if CREW_VERY_VERBOSE
       # Voluminous info about the gem fetcher network connection...
       require 'rubygems/request'
       Gem::Request.prepend(Module.new do
