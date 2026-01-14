@@ -98,7 +98,7 @@ CREW_CACHE_DIR          = ENV.fetch('CREW_CACHE_DIR', "#{HOME}/.cache/crewcache"
 CREW_CACHE_FAILED_BUILD = ENV.fetch('CREW_CACHE_FAILED_BUILD', false)
 CREW_CACHE_BUILD        = ENV.fetch('CREW_CACHE_BUILD', false)
 crew_local_repo_root = `git rev-parse --show-toplevel 2>/dev/null`.chomp
-CREW_LOCAL_REPO_ROOT = if crew_local_repo_root.nil?
+CREW_LOCAL_REPO_ROOT = if crew_local_repo_root.nil? || crew_local_repo_root.empty?
                          ENV.fetch('CREW_LOCAL_REPO_ROOT', File.join(CREW_PREFIX, 'lib/crew'))
                        else
                          ENV.fetch('CREW_LOCAL_REPO_ROOT', crew_local_repo_root)
