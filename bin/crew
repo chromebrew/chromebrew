@@ -1446,8 +1446,12 @@ def install(skip_postinstall: false)
 
   # remove it just before the file copy
   if @pkg.in_upgrade
-    puts 'Attempting removal since this is an upgrade or reinstall...'
-    Command.remove(@pkg, verbose: CREW_VERBOSE, force: true, only_remove_files: true)
+    if CREW_ESSENTIAL_PACKAGES.include?(@pkg.name)
+      puts "Not attempting removal despite this being an upgrade or reinstall because #{@pkg.name} is a member of CREW_ESSENTIAL_PACKAGES...".orange
+    else
+      puts 'Attempting removal since this is an upgrade or reinstall...'.orange
+      Command.remove(@pkg, verbose: CREW_VERBOSE, force: true, only_remove_files: true)
+    end
   end
 
   if @pkg.is_fake?
