@@ -10,11 +10,14 @@ class Ruby_pathname < RUBY
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: 'dbfe41b7683b7c3efc0710be58460e3ac2de0a66a03ffa225c39ec1283b132eb',
-     armv7l: 'dbfe41b7683b7c3efc0710be58460e3ac2de0a66a03ffa225c39ec1283b132eb',
-       i686: '80df189ff31aa90245c1dcca3334c508ca9f5d3927dfd5c75a42986fb6a30510',
-     x86_64: 'ee8391154644f784ad6973affb92af5bf70a5cba0317f9383784c38b71fa275c'
+    aarch64: 'fa49f2fdb19b89834738270e09072046416a04af54dd07c6abf59053e29b264b',
+     armv7l: 'fa49f2fdb19b89834738270e09072046416a04af54dd07c6abf59053e29b264b',
+       i686: 'b34fadbfe70932a3e0c31394bc27a90ffa737e827c1d3854cc486037d5bdc50c',
+     x86_64: '874f4c9314e70e2a869532eda3f7f774568bf410489539e8f45b116420f4908f'
   })
+
+  depends_on 'glibc' # R
+  depends_on 'ruby' # R
 
   conflicts_ok
   gem_compile_needed

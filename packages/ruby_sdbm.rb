@@ -10,11 +10,14 @@ class Ruby_sdbm < RUBY
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: 'ec6e32d972b86e80dec1fa13b45f98c3b5fe7bfbf05bca6a616b58d54bb0aff8',
-     armv7l: 'ec6e32d972b86e80dec1fa13b45f98c3b5fe7bfbf05bca6a616b58d54bb0aff8',
-       i686: 'b53d96f851a19e8ae95b7eeb009dff8192655479408a1b88b85e3bfd230e68b3',
-     x86_64: '7ec5550b8f9d7851a42b193f8beb36f7c9f8830e97c03e4407d31cbe52fd0e3f'
+    aarch64: '61d0da88da540206991566a5744eb633707721d50988140b9c7c20380f2eef83',
+     armv7l: '61d0da88da540206991566a5744eb633707721d50988140b9c7c20380f2eef83',
+       i686: 'ae8031479d3f8c611bcb28b8b7adca7058479891f6eca7a13cd451d0fcd56383',
+     x86_64: '5983723193ed335bb093ee8e5b954a412354100964d930b45314f48aa694b453'
   })
+
+  depends_on 'glibc' # R
+  depends_on 'ruby' # R
 
   conflicts_ok
   gem_compile_needed

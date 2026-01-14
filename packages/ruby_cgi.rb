@@ -10,10 +10,10 @@ class Ruby_cgi < RUBY
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: 'eb40431e74c99abd3113db3bc6c9764e377fbccde70d423ed82bbb2651794ee4',
-     armv7l: 'eb40431e74c99abd3113db3bc6c9764e377fbccde70d423ed82bbb2651794ee4',
-       i686: '3dbb576d37ab881406f6deb81e5e57a317c149401f0ed05b460168963f204c17',
-     x86_64: '6cccb22349171aa514fe6e6b14b5336b29f58b47ce62b3714497d6530d26900a'
+    aarch64: '9a8e934fb192f32542a87df91baaa03086ddd14ee8dbb7e775606f4c6c20f781',
+     armv7l: '9a8e934fb192f32542a87df91baaa03086ddd14ee8dbb7e775606f4c6c20f781',
+       i686: '800fbfbe1e6ec939de9d9aa8fe791a73fca655edb4b20458d8cdd7cb55aa3d23',
+     x86_64: '4c0e2ff6099091acd23f8b5e4e3789e778a8ca9da68c9800b142971c54feb84c'
   })
 
   depends_on 'glibc' # R

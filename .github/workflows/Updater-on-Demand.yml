@@ -29,7 +29,7 @@ jobs:
           persist-credentials: true
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.4.7'
+          ruby-version: '4.0.0'
       - name: Install Python pip
         run: sudo apt install -y python3-pip
       - name: Setup Git.

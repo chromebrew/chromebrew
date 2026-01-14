@@ -5120,6 +5120,11 @@ url: http://ftp.gnome.org/pub/GNOME/sources/libsigc++/
 activity: medium
 ---
 kind: url
+name: libsigcplusplus2
+url: http://ftp.gnome.org/pub/GNOME/sources/libsigc++/
+activity: none
+---
+kind: url
 name: libsigcplusplus3
 url: http://ftp.gnome.org/pub/GNOME/sources/libsigc++/
 activity: medium
@@ -7125,6 +7130,11 @@ url: https://www.piumarta.com/software/peg/
 activity: none
 ---
 kind: url
+name: penguins_eggs
+url: https://github.com/pieroproietti/penguins-eggs/releases
+activity: high
+---
+kind: url
 name: perf
 url: https://www.kernel.org/pub/linux/kernel/v4.x/
 activity: medium
@@ -7740,6 +7750,11 @@ url: https://github.com/deepin-community/python-bleach/tags
 activity: low
 ---
 kind: url
+name: py3_botocore
+url: https://github.com/boto/botocore/tags
+activity: high
+---
+kind: url
 name: py3_brotlicffi
 url: https://github.com/python-hyper/brotlicffi/tags
 activity: low
@@ -7935,13 +7950,28 @@ url: https://github.com/Textualize/rich/releases
 activity: high
 ---
 kind: url
+name: py3_roman_numerals
+url: https://github.com/AA-Turner/roman-numerals/releases
+activity: low
+---
+kind: url
 name: py3_rpds_py
 url: https://github.com/crate-py/rpds/releases
 activity: high
 ---
 kind: url
+name: py3_rsa
+url: https://github.com/sybrenstuvel/python-rsa/tags
+activity: none
+---
+kind: url
 name: py3_ruff
 url: https://docs.astral.sh/ruff
+activity: medium
+---
+kind: url
+name: py3_s3transfer
+url: https://github.com/boto/s3transfer/tags
 activity: medium
 ---
 kind: url
@@ -8512,6 +8542,11 @@ activity: low
 kind: url
 name: ruby_method_source
 url: https://github.com/banister/method_source/tags
+activity: low
+---
+kind: url
+name: ruby_mini_portile2
+url: https://github.com/flavorjones/mini_portile/releases
 activity: low
 ---
 kind: url
@@ -9823,6 +9858,11 @@ kind: url
 name: usbutils
 url: https://www.kernel.org/pub/linux/utils/usb/usbutils/
 activity: low
+---
+kind: url
+name: usql
+url: https://github.com/xo/usql/releases
+activity: medium
 ---
 kind: url
 name: utf8proc

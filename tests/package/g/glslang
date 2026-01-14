@@ -1,0 +1,4 @@
+#!/bin/bash
+glslang --help | head
+glslang --version
+glslangValidator --version

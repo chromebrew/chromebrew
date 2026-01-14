@@ -1,8 +1,8 @@
-# Total size: 8036
-/usr/local/lib/ruby/gems/3.4.0/gems/io-wait-0.4.0-x86-linux/COPYING
-/usr/local/lib/ruby/gems/3.4.0/gems/io-wait-0.4.0-x86-linux/README.md
-/usr/local/lib/ruby/gems/3.4.0/gems/io-wait-0.4.0-x86-linux/_doc/io.rb
-/usr/local/lib/ruby/gems/3.4.0/gems/io-wait-0.4.0-x86-linux/ext/io/wait/depend
-/usr/local/lib/ruby/gems/3.4.0/gems/io-wait-0.4.0-x86-linux/ext/io/wait/extconf.rb
-/usr/local/lib/ruby/gems/3.4.0/gems/io-wait-0.4.0-x86-linux/ext/io/wait/wait.c
-/usr/local/lib/ruby/gems/3.4.0/gems/io-wait-0.4.0-x86-linux/lib/io/wait.so
+# Total size: 18520
+/usr/local/lib/ruby/gems/4.0.0/gems/io-wait-0.4.0-x86-linux/COPYING
+/usr/local/lib/ruby/gems/4.0.0/gems/io-wait-0.4.0-x86-linux/README.md
+/usr/local/lib/ruby/gems/4.0.0/gems/io-wait-0.4.0-x86-linux/_doc/io.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/io-wait-0.4.0-x86-linux/ext/io/wait/depend
+/usr/local/lib/ruby/gems/4.0.0/gems/io-wait-0.4.0-x86-linux/ext/io/wait/extconf.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/io-wait-0.4.0-x86-linux/ext/io/wait/wait.c
+/usr/local/lib/ruby/gems/4.0.0/gems/io-wait-0.4.0-x86-linux/lib/io/wait.so

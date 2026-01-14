@@ -1,0 +1,3 @@
+#!/bin/bash
+doctl -h | head
+doctl version

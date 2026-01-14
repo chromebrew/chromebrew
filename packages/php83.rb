@@ -3,17 +3,17 @@ require 'package'
 class Php83 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'https://www.php.net/'
-  version '8.3.28-1'
+  version '8.3.29'
   license 'PHP-3.01'
   compatibility 'aarch64 armv7l x86_64'
-  source_url "https://www.php.net/distributions/php-#{version.split('-').first}.tar.xz"
+  source_url "https://www.php.net/distributions/php-#{version}.tar.xz"
   source_sha256 '25e3860f30198a386242891c0bf9e2955931f7b666b96c3e3103d36a2a322326'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1f3bffdbeff97dc0cdbcedc007db65272d583e012106fe9fd2581027fe7c1b8a',
-     armv7l: '1f3bffdbeff97dc0cdbcedc007db65272d583e012106fe9fd2581027fe7c1b8a',
-     x86_64: '8f735b1cfd7837d3b3b87f590fd8a4c31076c89bab3501f1819dcbf942483577'
+    aarch64: 'a6019251691b872cc827632760087158599546e5a4ffc60c51657199b3d1284f',
+     armv7l: 'a6019251691b872cc827632760087158599546e5a4ffc60c51657199b3d1284f',
+     x86_64: '87b5ff84593b7209b55cfbb512b673c4f4fe4c2e413dbfb6d4984a553e34c9dc'
   })
 
   depends_on 'aspell' # R

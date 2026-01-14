@@ -1,3 +1,4 @@
-/usr/local/lib64/ruby/gems/3.4.0/gems/gdbm-2.1.1-x86_64-linux/ext/gdbm/extconf.rb
-/usr/local/lib64/ruby/gems/3.4.0/gems/gdbm-2.1.1-x86_64-linux/ext/gdbm/gdbm.c
-/usr/local/lib64/ruby/gems/3.4.0/gems/gdbm-2.1.1-x86_64-linux/lib/gdbm.so
+# Total size: 63573
+/usr/local/lib64/ruby/gems/4.0.0/gems/gdbm-2.1.1-x86_64-linux/ext/gdbm/extconf.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/gdbm-2.1.1-x86_64-linux/ext/gdbm/gdbm.c
+/usr/local/lib64/ruby/gems/4.0.0/gems/gdbm-2.1.1-x86_64-linux/lib/gdbm.so

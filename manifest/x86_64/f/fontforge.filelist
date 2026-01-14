@@ -1,12 +1,12 @@
-# Total size: 17250648
+# Total size: 22418409
 /usr/local/bin/fontforge
 /usr/local/bin/fontimage
 /usr/local/bin/fontlint
 /usr/local/bin/sfddiff
 /usr/local/lib64/libfontforge.so
 /usr/local/lib64/libfontforge.so.4
-/usr/local/lib64/python3.12/site-packages/fontforge.so
-/usr/local/lib64/python3.12/site-packages/psMat.so
+/usr/local/lib64/python3.14/site-packages/fontforge.so
+/usr/local/lib64/python3.14/site-packages/psMat.so
 /usr/local/share/applications/org.fontforge.FontForge.desktop
 /usr/local/share/fontforge/cidmap/Adobe-CNS1-6.cidmap
 /usr/local/share/fontforge/cidmap/Adobe-GB1-5.cidmap
@@ -401,6 +401,7 @@
 /usr/local/share/locale/pl/LC_MESSAGES/FontForge.mo
 /usr/local/share/locale/pt/LC_MESSAGES/FontForge.mo
 /usr/local/share/locale/ru/LC_MESSAGES/FontForge.mo
+/usr/local/share/locale/th_TH/LC_MESSAGES/FontForge.mo
 /usr/local/share/locale/tr_TR/LC_MESSAGES/FontForge.mo
 /usr/local/share/locale/uk/LC_MESSAGES/FontForge.mo
 /usr/local/share/locale/vi/LC_MESSAGES/FontForge.mo

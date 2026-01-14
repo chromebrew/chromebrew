@@ -1,4 +1,4 @@
-# Total size: 2739650
+# Total size: 6838172
 /usr/local/bin/btrfs
 /usr/local/bin/btrfs-find-root
 /usr/local/bin/btrfs-image
@@ -11,8 +11,6 @@
 /usr/local/include/btrfs/ctree.h
 /usr/local/include/btrfs/ioctl.h
 /usr/local/include/btrfs/kerncompat.h
-/usr/local/include/btrfs/list.h
-/usr/local/include/btrfs/rbtree.h
 /usr/local/include/btrfs/rbtree_types.h
 /usr/local/include/btrfs/send-stream.h
 /usr/local/include/btrfs/send-utils.h
@@ -23,12 +21,12 @@
 /usr/local/lib/libbtrfs.so
 /usr/local/lib/libbtrfs.so.0
 /usr/local/lib/libbtrfs.so.0.1
-/usr/local/lib/libbtrfs.so.0.1.3
+/usr/local/lib/libbtrfs.so.0.1.4
 /usr/local/lib/libbtrfsutil.a
 /usr/local/lib/libbtrfsutil.so
 /usr/local/lib/libbtrfsutil.so.1
 /usr/local/lib/libbtrfsutil.so.1.3
-/usr/local/lib/libbtrfsutil.so.1.3.1
+/usr/local/lib/libbtrfsutil.so.1.3.2
 /usr/local/lib/pkgconfig/libbtrfsutil.pc
 /usr/local/lib/udev/rules.d/64-btrfs-dm.rules
 /usr/local/lib/udev/rules.d/64-btrfs-zoned.rules

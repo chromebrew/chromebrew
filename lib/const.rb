@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION = defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION = '1.68.9' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION = '1.70.9' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH = Etc.uname[:machine]
@@ -59,7 +59,7 @@ end
 # These are packages that crew needs to run-- only packages that the bin/crew needs should be required here.
 # lz4, for example, is required for zstd to have lz4 support, but this is not required to run bin/crew.
 CREW_ESSENTIAL_PACKAGES = %W[
-  bash crew_profile_base gcc_lib gmp gnu_time libnghttp2 libxcrypt ncurses patchelf readline ruby ruby_matrix upx zlib zlib_ng zstd
+  bash crew_profile_base gcc_lib gmp gnu_time libnghttp2 libxcrypt ncurses patchelf readline ruby ruby_matrix ruby_parser upx zlib zlib_ng zstd
   #{'crew_preload' unless CREW_GLIBC_INTERPRETER.nil?}
   #{'glibc' unless CREW_GLIBC_INTERPRETER.nil?}
   #{ if LIBC_VERSION.to_f > 2.34 && LIBC_VERSION.to_f < 2.41
@@ -97,7 +97,13 @@ CREW_KERNEL_VERSION =
 CREW_CACHE_DIR          = ENV.fetch('CREW_CACHE_DIR', "#{HOME}/.cache/crewcache")
 CREW_CACHE_FAILED_BUILD = ENV.fetch('CREW_CACHE_FAILED_BUILD', false)
 CREW_CACHE_BUILD        = ENV.fetch('CREW_CACHE_BUILD', false)
-CREW_LOCAL_REPO_ROOT = `git rev-parse --show-toplevel 2>/dev/null`.chomp
+crew_local_repo_root = `git rev-parse --show-toplevel 2>/dev/null`.chomp
+crew_local_repo_root_test = if crew_local_repo_root.nil? || crew_local_repo_root.empty?
+                              ENV.fetch('CREW_LOCAL_REPO_ROOT', File.join(CREW_PREFIX, 'lib/crew'))
+                            else
+                              ENV.fetch('CREW_LOCAL_REPO_ROOT', crew_local_repo_root)
+                            end
+CREW_LOCAL_REPO_ROOT = Dir.exist?(crew_local_repo_root_test) ? crew_local_repo_root_test : File.join(CREW_PREFIX, 'lib/crew')
 CREW_LOCAL_BUILD_DIR = "#{CREW_LOCAL_REPO_ROOT}/release/#{ARCH}"
 CREW_MAX_BUILD_TIME  = ENV.fetch('CREW_MAX_BUILD_TIME', '19800') # GitHub Action containers are killed after 6 hours, so set to 5.5 hours.
 CREW_GITLAB_PKG_REPO = 'https://gitlab.com/api/v4/projects/26210301/packages'
@@ -351,7 +357,7 @@ crew_icu_ver_default = '77.1'
 crew_llvm_ver_default = '21'
 crew_perl_ver_default = '5.42'
 crew_py_ver_default = '3.14'
-crew_ruby_ver_default = '3.4'
+crew_ruby_ver_default = '4.0'
 if ENV['CI']
   CREW_GCC_VER  = "gcc#{crew_gcc_ver_default}"
   CREW_ICU_VER  = "icu#{crew_icu_ver_default}"

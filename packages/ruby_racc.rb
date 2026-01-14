@@ -10,11 +10,14 @@ class Ruby_racc < RUBY
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: 'd463a733734336c4087fc9f578e1161a9f32e754f5931de3f562543839555bcc',
-     armv7l: 'd463a733734336c4087fc9f578e1161a9f32e754f5931de3f562543839555bcc',
-       i686: 'aa6668bf2079ec35e8888b12889dab02a169f982d3a1fcc0b6b356c1643e8afe',
-     x86_64: '923654c7e27ba05b10a28bd4f008e789b1455a053ad379de6b7c7b4208586756'
+    aarch64: 'cbbbd3e0d2527efcd8202d38cd3310bf58a7a88ee6e1f080d4a0d36d6065c1eb',
+     armv7l: 'cbbbd3e0d2527efcd8202d38cd3310bf58a7a88ee6e1f080d4a0d36d6065c1eb',
+       i686: '3854dbcc451a4c3913da62afe0b4ed05f16a2805c43587a09e58c84d76b25fef',
+     x86_64: '3f5522004826d0ef99e0f248812e80338d8c1deadd198c22fb062ceb82e872d3'
   })
+
+  depends_on 'glibc' # R
+  depends_on 'ruby' # R
 
   conflicts_ok
   gem_compile_needed

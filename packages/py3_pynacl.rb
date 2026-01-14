@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_pynacl < Pip
   description 'Python binding to the Networking and Cryptography (NaCl) library'
   homepage 'https://github.com/pyca/pynacl'
-  version "1.6.1-#{CREW_PY_VER}"
+  version "1.6.2-#{CREW_PY_VER}"
   license 'BSD'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c66b7b092003a3794ab3dc7edbbede791d555267d54efc5debd7a26ffb4fdf4b',
-     armv7l: 'c66b7b092003a3794ab3dc7edbbede791d555267d54efc5debd7a26ffb4fdf4b',
-       i686: 'cb142ff0657183b3dfa982a3263b6f828377b853f986b662b94cc4f77e0d7b81',
-     x86_64: '28ab18a529270c75402ecd42bc8ff7603b99bae5606010d8f40068032278ec6b'
+    aarch64: 'afba8591fab8133eb7813d834c466ac399fe4757d4a646d411103041c90af079',
+     armv7l: 'afba8591fab8133eb7813d834c466ac399fe4757d4a646d411103041c90af079',
+       i686: '75efad52833e54dca8f849f05ff5643d91828cf85c6457c83297a0940d66f7be',
+     x86_64: '54138afd06f9d2470adc5fcb6eb41a3107e069a6faa7c6300be8c66fc11f5e5c'
   })
 
   depends_on 'glibc' # R

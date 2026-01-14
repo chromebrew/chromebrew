@@ -76,28 +76,102 @@ class PackageUtils
   end
 
   def self.get_clean_version(pkg_version)
+    new_version = pkg_version.dup
     # Delete debian versions for packages like libdb.
-    pkg_version.gsub!(/-dfsg.*/, '')
+    new_version.gsub!(/-dfsg.*/, '')
     # Delete -gcc14, futureproofed until gcc 100
-    pkg_version.gsub!(/-gcc\d{2}/, '')
+    new_version.gsub!(/-gcc\d{2}/, '')
     # Trim kde- prefixes in qt5 packages so nothing else gets confused.
-    pkg_version.delete_prefix!('kde-')
+    new_version.delete_prefix!('kde-')
     # Delete -py3.12, futureproofed until Python 4
-    pkg_version.gsub!(/-py3\.\d{2}/, '')
-    # Delete -ruby3.4, futureproofed until Ruby 4 or Ruby 3.10
-    pkg_version.gsub!(/-ruby3\.\d{1}/, '')
+    new_version.gsub!(/-py3\.\d{2}/, '')
+    # Delete -ruby4.x, futureproofed until Ruby 5 or Ruby 4.10
+    new_version.gsub!(/-ruby4\.\d{1}/, '')
     # Delete -perl 5.40, futureproofed until Perl 5.100
-    pkg_version.gsub!(/-perl5\.\d{2}/, '')
+    new_version.gsub!(/-perl5\.\d{2}/, '')
     # Delete -llvm18, futureproofed until llvm 100
-    pkg_version.gsub!(/-llvm\d{2}/, '')
+    new_version.gsub!(/-llvm\d{2}/, '')
     # Delete -glibc2.37, or whatever the system glibc is.
-    pkg_version.delete_suffix!("-glibc#{LIBC_VERSION}")
+    new_version.delete_suffix!("-glibc#{LIBC_VERSION}")
     # Delete git version tags (1.2.4-qnd73k6), avoiding overmatching and hitting things that arent git hashtags.
-    pkg_version.gsub!(/-\w{7}$/, '')
+    new_version.gsub!(/-\w{7}$/, '')
     # Delete -icu75.1, futureproofed until icu 100
-    pkg_version.gsub!(/-icu\d{2}\.\d/, '')
+    new_version.gsub!(/-icu\d{2}\.\d/, '')
 
-    return pkg_version
+    return new_version
+  end
+
+  def self.get_gem_vars(passed_name = nil, passed_version = nil, upstream_name = nil)
+    require_relative 'gem_compact_index_client'
+    # crewlog "Setting gem variables... name: #{passed_name}, version: #{passed_version}"
+    # This assumes the package class name starts with 'Ruby_' and
+    # version is in the form '(gem version)-ruby-(ruby version)'.
+    # For example, name 'Ruby_awesome' and version '1.0.0-ruby-3.3'.
+    # Just use the fetcher.suggest_gems_from_name function to figure out
+    # proper gem name with the appropriate dashes and underscores.
+    if CREW_VERY_VERBOSE
+      # Voluminous info about the gem fetcher network connection...
+      require 'rubygems/request'
+      Gem::Request.prepend(Module.new do
+        def perform_request(req)
+          super.tap { |rsp| p [self, req, rsp] }
+        end
+      end)
+    end
+    if $gems.blank?
+      puts 'Populating gem information using compact index client...'.lightgreen
+      $gems ||= BasicCompactIndexClient.new.gems
+      puts 'Done populating gem information.'.lightgreen
+    end
+    # Parse gem information from compact index, the format for which is
+    # here: https://guides.rubygems.org/rubygems-org-compact-index-api/
+    # Figure out gem name, noting that there may be dashes and underscores
+    # in the name.
+    if upstream_name.nil?
+      gem_test = $gems.grep(/#{"^#{passed_name.gsub(/^ruby_/, '')}\\s.*$"}/).last.blank? ? $gems.grep(/#{"^\(#{passed_name.gsub(/^ruby_/, '').gsub('_', ')+.(')}\\s\).*$"}/).last : $gems.grep(/#{"^#{passed_name.gsub(/^ruby_/, '')}\\s.*$"}/).last
+      abort "Cannot find #{passed_name} gem to install.".lightred if gem_test.blank?
+      gem_test_name = gem_test.split.first
+      ruby_gem_name = gem_test_name.blank? ? Gem::SpecFetcher.fetcher.suggest_gems_from_name(passed_name.gsub(/^ruby_/, '')).first : gem_test_name
+    else
+      ruby_gem_name = upstream_name
+      gem_test = $gems.grep(/#{"^#{ruby_gem_name}\\s.*$"}/).last
+    end
+    gem_test_versions = gem_test.split[1].split(',')
+    # Remove minus prefixed versions, as those have been yanked as per
+    # https://guides.rubygems.org/rubygems-org-compact-index-api/
+    gem_test_versions.delete_if { |i| i.start_with?('-') }
+    # Any version with a letter is considered a prerelease as per
+    # https://github.com/rubygems/rubygems/blob/b5798efd348935634d4e0e2b846d4f455582db48/lib/rubygems/version.rb#L305
+    gem_test_versions.delete_if { |i| i.match?(/[a-zA-Z]/) }
+    gem_test_version = gem_test_versions.map { |v| Gem::Version.new(v) }.max.to_s
+    remote_gem_version_test = Gem.latest_version_for(ruby_gem_name).to_s
+    remote_ruby_gem_version = remote_gem_version_test.blank? ? gem_test_version : Gem.latest_version_for(ruby_gem_name).to_s
+    ruby_gem_version = passed_version.split('-').first.to_s
+    # Use latest gem version.
+    ruby_gem_version = remote_ruby_gem_version.to_s if Gem::Version.new(remote_ruby_gem_version.to_s) > Gem::Version.new(ruby_gem_version)
+    require_relative 'gem_compact_index_client_deps'
+
+    deps = BasicCompactIndexClientDeps.new.deps(ruby_gem_name)
+    gem_deps = deps.grep(/#{"^#{ruby_gem_version}\\s.*$"}/).last.gsub(/^#{ruby_gem_version} /, '').gsub(/\|.*$/, '').split(',').map { |dep| dep.gsub(/:.*$/, '') }
+    gem_installed_version = nil
+    gem_outdated = nil
+    gem_latest_version_installed = false
+    installed_gem_search = [`gem list --no-update-sources -l -e #{ruby_gem_name}`.chomp.to_s].grep(/#{ruby_gem_name}/)[0]
+    if installed_gem_search
+      installed_gem_info = installed_gem_search.delete('()').gsub('default:', '').gsub(',', '').split
+      gem_installed_version = installed_gem_info[1]
+      gem_outdated = (Gem::Version.new(ruby_gem_version) > Gem::Version.new(gem_installed_version))
+      gem_latest_version_installed = Gem::Version.new(ruby_gem_version) <= Gem::Version.new(gem_installed_version)
+    else
+      # If the current gem being installed is not installed this should
+      # be false. This will also handle cases of the current installed
+      # gem as per 'gem list' being the same version as the version
+      # being upgraded to.
+      gem_latest_version_installed = false
+    end
+    crewlog "ruby_gem_name: #{ruby_gem_name} ruby_gem_version: #{ruby_gem_version} gem_installed_version: #{gem_installed_version} gem_outdated: #{gem_outdated} gem_latest_version_installed: #{gem_latest_version_installed}" if CREW_VERY_VERBOSE
+
+    return ruby_gem_name, ruby_gem_version, remote_ruby_gem_version, gem_installed_version, gem_latest_version_installed, gem_outdated, gem_deps
   end
 
   # Remove our language-specific prefixes and any build splitting suffixes.

@@ -3,17 +3,17 @@ require 'buildsystems/ruby'
 class Ruby_prism < RUBY
   description 'Prism is a parser for the Ruby programming language.'
   homepage 'https://github.com/ruby/prism'
-  version "1.7.0-#{CREW_RUBY_VER}"
+  version "1.8.0-#{CREW_RUBY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: '159d6d17ef53eb244c1daecbcafd890f06f098cd24367072cc15018356a07995',
-     armv7l: '159d6d17ef53eb244c1daecbcafd890f06f098cd24367072cc15018356a07995',
-       i686: '57c23ccc2117b30afa8f60af695eaa31316a53bbd82c157e7c4d89daa0e1af74',
-     x86_64: 'e13ba7e2855678a0f3ea48bb0d949d9f5a02f6ca9d8f819c69630a1603411117'
+    aarch64: '125cec1a97e43b9b97ae6b22ab0f3748d52b3c737d75d02c6f2d9e5e220aab9b',
+     armv7l: '125cec1a97e43b9b97ae6b22ab0f3748d52b3c737d75d02c6f2d9e5e220aab9b',
+       i686: '960cc32aa112881e0e106a21710941e1e302378e6396e76765c510cb061a6b8e',
+     x86_64: '51eb192bac7f183f41f4fd13d693978f7c9da50c38f1694940c081f0ad55a710'
   })
 
   depends_on 'glibc' # R

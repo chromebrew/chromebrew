@@ -1,5 +1,5 @@
 #!/bin/bash
-CREW_INSTALLER_VERSION=2025120401
+CREW_INSTALLER_VERSION=2026011301
 # Exit on fail.
 set -eE
 
@@ -254,7 +254,9 @@ function curl_wrapper () {
 }
 
 # This will create the directories.
-crew_folders="bin cache doc docbook include lib/crew/packages lib${CREW_LIB_SUFFIX} libexec man sbin share var etc/crew/meta etc/env.d tmp/crew/dest"
+# Note that .cache/gem/specs is needed as per the SPEC CACHE DIRECTORY
+# reported in 'gem environment'.
+crew_folders="bin cache doc docbook include lib/crew/packages lib${CREW_LIB_SUFFIX} libexec man sbin share var etc/crew/meta etc/env.d tmp/crew/dest .cache/gem/specs"
 # shellcheck disable=SC2086
 # Quoting crew_folders leads to breakage.
 (cd "${CREW_PREFIX}" && mkdir -p ${crew_folders})
@@ -584,6 +586,9 @@ if ! git --version; then
   echo_error "git is broken. Install will fail."
   exit 1
 fi
+# Set CREW_LOCAL_REPO_ROOT since git rev-parse --show-toplevel will not
+# work until the git clone is setup.
+export CREW_LOCAL_REPO_ROOT="${CREW_PREFIX}/lib/crew"
 # This is needed for SSL env variables to be populated so ruby doesn't
 # complain about missing certs, resulting in failed https connections.
 echo_info "Installing crew_profile_base...\n"

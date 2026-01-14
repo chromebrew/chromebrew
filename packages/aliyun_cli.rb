@@ -3,7 +3,7 @@ require 'package'
 class Aliyun_cli < Package
   description 'Alibaba Cloud CLI'
   homepage 'https://www.alibabacloud.com/help/en/cli/'
-  version '3.2.2'
+  version '3.2.6'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/aliyun/aliyun-cli.git'
@@ -11,10 +11,10 @@ class Aliyun_cli < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd6f9002773b46dbf20cd6eb549b5cb1b326ce3022abc1a092148c1033e446f66',
-     armv7l: 'd6f9002773b46dbf20cd6eb549b5cb1b326ce3022abc1a092148c1033e446f66',
-       i686: '99fa0243b1bc194fb3eb39aa32e88233d6bdb6314ee9ae89244bc3dd03635cfa',
-     x86_64: '99c8931d3e521a740a21e8df19a48190ed10494997790125898e428a6b0e4a31'
+    aarch64: '79ff2bb65c12dd343fcc5df3b0c7e3958f991de2c9de46dd1893814e1396d6e2',
+     armv7l: '79ff2bb65c12dd343fcc5df3b0c7e3958f991de2c9de46dd1893814e1396d6e2',
+       i686: 'aaac10ffec9e93ef154db92830b962c70c8722fdd20d012b6cccac9520728b31',
+     x86_64: '9b2414bc814fa7727d06b4470aafb68eda77d69caf10781e8744909eddcf2437'
   })
 
   depends_on 'glibc' # R

@@ -249,7 +249,7 @@ jobs:
                 if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
                     echo "CONTAINER=satmandu/crewbuild:nocturne-x86_64.m97" >> "$GITHUB_ENV"
                 elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=satmandu/crewbuild:hatch-x86_64.m142" >> "$GITHUB_ENV"
+                    echo "CONTAINER=satmandu/crewbuild:hatch-x86_64.m143" >> "$GITHUB_ENV"
                 else
                     echo "CONTAINER=satmandu/crew-pre-glibc-standalone:nocturne-x86_64.m90" >> "$GITHUB_ENV"
                 fi
@@ -261,7 +261,7 @@ jobs:
                 if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
                     echo "CONTAINER=satmandu/crewbuild:fievel-armv7l.m97" >> "$GITHUB_ENV"
                 elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=satmandu/crewbuild:strongbad-armv7l.m142" >> "$GITHUB_ENV"
+                    echo "CONTAINER=satmandu/crewbuild:strongbad-armv7l.m143" >> "$GITHUB_ENV"
                 else
                     echo "CONTAINER=satmandu/crew-pre-glibc-standalone:fievel-armv7l.m91" >> "$GITHUB_ENV"
                 fi
@@ -363,6 +363,7 @@ jobs:
           if [ -n "$(git status --porcelain)" ]; then
             git config user.name "${{ github.actor }}"
             git config user.email "${{ github.actor }}@users.noreply.github.com"
+            git add .
             git stash || true
             git fetch origin ${{ inputs.branch || github.ref_name }}
             git stash pop || true
@@ -453,6 +454,9 @@ jobs:
             else
               echo "No Changed Files."
             fi
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '4.0.0'
       - name: Create Pull Request
         env:
           CHANGED_GITHUB_CONFIG_FILES: ${{ steps.changed-files.outputs.github_all_changed_files }}
@@ -470,13 +474,13 @@ jobs:
         run: |
           # Make untouched clone of repo so we can get the existing versions of packages.
           (cd /tmp ; git clone --depth=1 https://github.com/${{ github.repository }}.git chromebrew_main )
-          sudo gem install -N json --conservative
-          sudo gem install -N ptools --conservative
-          sudo gem install -N highline --conservative
-          sudo gem install -N concurrent-ruby --conservative
-          sudo gem install -N method_source --conservative
-          sudo gem install -N cgi --conservative
-          sudo gem install -N ruby-libversion --conservative
+          gem install -N json --conservative
+          gem install -N ptools --conservative
+          gem install -N highline --conservative
+          gem install -N concurrent-ruby --conservative
+          gem install -N method_source --conservative
+          gem install -N cgi --conservative
+          gem install -N ruby-libversion --conservative
           # Make crew do automatic gem installs before looking for deps.
           LD_LIBRARY_PATH=/usr/local/lib ruby bin/crew version
           # Force creation of temporary device.json.

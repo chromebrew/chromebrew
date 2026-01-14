@@ -1,4 +1,4 @@
-# Total size: 4173126
+# Total size: 4257125
 /usr/local/bin/glslang
 /usr/local/bin/glslangValidator
 /usr/local/include/glslang/Include/ResourceLimits.h
@@ -21,10 +21,10 @@
 /usr/local/lib64/cmake/glslang/glslang-targets.cmake
 /usr/local/lib64/libSPIRV.so
 /usr/local/lib64/libSPIRV.so.16
-/usr/local/lib64/libSPIRV.so.16.0.0
+/usr/local/lib64/libSPIRV.so.16.1.0
 /usr/local/lib64/libglslang-default-resource-limits.so
 /usr/local/lib64/libglslang-default-resource-limits.so.16
-/usr/local/lib64/libglslang-default-resource-limits.so.16.0.0
+/usr/local/lib64/libglslang-default-resource-limits.so.16.1.0
 /usr/local/lib64/libglslang.so
 /usr/local/lib64/libglslang.so.16
-/usr/local/lib64/libglslang.so.16.0.0
+/usr/local/lib64/libglslang.so.16.1.0

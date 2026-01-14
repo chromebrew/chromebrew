@@ -1,9 +1,9 @@
-# Total size: 13097225
+# Total size: 12565428
 /usr/local/bin/epiphany
+/usr/local/lib64/epiphany/libephyautofill.so
 /usr/local/lib64/epiphany/libephymain.so
 /usr/local/lib64/epiphany/libephymisc.so
 /usr/local/lib64/epiphany/libephysync.so
-/usr/local/lib64/epiphany/web-process-extensions/libephywebextension.so
 /usr/local/lib64/epiphany/web-process-extensions/libephywebprocessextension.so
 /usr/local/libexec/epiphany-search-provider
 /usr/local/libexec/epiphany-webapp-provider
@@ -710,6 +710,7 @@
 /usr/local/share/locale/hr/LC_MESSAGES/epiphany.mo
 /usr/local/share/locale/hu/LC_MESSAGES/epiphany.mo
 /usr/local/share/locale/hy/LC_MESSAGES/epiphany.mo
+/usr/local/share/locale/ia/LC_MESSAGES/epiphany.mo
 /usr/local/share/locale/id/LC_MESSAGES/epiphany.mo
 /usr/local/share/locale/ie/LC_MESSAGES/epiphany.mo
 /usr/local/share/locale/ig/LC_MESSAGES/epiphany.mo
@@ -717,6 +718,7 @@
 /usr/local/share/locale/it/LC_MESSAGES/epiphany.mo
 /usr/local/share/locale/ja/LC_MESSAGES/epiphany.mo
 /usr/local/share/locale/ka/LC_MESSAGES/epiphany.mo
+/usr/local/share/locale/kab/LC_MESSAGES/epiphany.mo
 /usr/local/share/locale/kk/LC_MESSAGES/epiphany.mo
 /usr/local/share/locale/km/LC_MESSAGES/epiphany.mo
 /usr/local/share/locale/kn/LC_MESSAGES/epiphany.mo
@@ -772,4 +774,4 @@
 /usr/local/share/locale/zh_HK/LC_MESSAGES/epiphany.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/epiphany.mo
 /usr/local/share/man/man1/epiphany.1.zst
-/usr/local/share/metainfo/org.gnome.Epiphany.appdata.xml
+/usr/local/share/metainfo/org.gnome.Epiphany.metainfo.xml

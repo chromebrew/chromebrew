@@ -1,4 +1,12 @@
-# Total size: 11782
-/usr/local/lib/ruby/3.4.0/yaml.rb
-/usr/local/lib/ruby/3.4.0/yaml/dbm.rb
-/usr/local/lib/ruby/3.4.0/yaml/store.rb
+# Total size: 19824
+/usr/local/lib/ruby/gems/4.0.0/gems/yaml-0.4.0/BSDL
+/usr/local/lib/ruby/gems/4.0.0/gems/yaml-0.4.0/COPYING
+/usr/local/lib/ruby/gems/4.0.0/gems/yaml-0.4.0/Gemfile
+/usr/local/lib/ruby/gems/4.0.0/gems/yaml-0.4.0/README.md
+/usr/local/lib/ruby/gems/4.0.0/gems/yaml-0.4.0/Rakefile
+/usr/local/lib/ruby/gems/4.0.0/gems/yaml-0.4.0/bin/console
+/usr/local/lib/ruby/gems/4.0.0/gems/yaml-0.4.0/bin/setup
+/usr/local/lib/ruby/gems/4.0.0/gems/yaml-0.4.0/lib/yaml.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/yaml-0.4.0/lib/yaml/dbm.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/yaml-0.4.0/lib/yaml/store.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/yaml-0.4.0/yaml.gemspec

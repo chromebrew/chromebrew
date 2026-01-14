@@ -1,2 +1,7 @@
-# Total size: 13592
-/usr/local/lib/ruby/3.4.0/i686-linux/io/nonblock.so
+# Total size: 23796
+/usr/local/lib/ruby/gems/4.0.0/gems/io-nonblock-0.3.2-x86-linux/COPYING
+/usr/local/lib/ruby/gems/4.0.0/gems/io-nonblock-0.3.2-x86-linux/README.md
+/usr/local/lib/ruby/gems/4.0.0/gems/io-nonblock-0.3.2-x86-linux/ext/io/nonblock/depend
+/usr/local/lib/ruby/gems/4.0.0/gems/io-nonblock-0.3.2-x86-linux/ext/io/nonblock/extconf.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/io-nonblock-0.3.2-x86-linux/ext/io/nonblock/nonblock.c
+/usr/local/lib/ruby/gems/4.0.0/gems/io-nonblock-0.3.2-x86-linux/lib/io/nonblock.so

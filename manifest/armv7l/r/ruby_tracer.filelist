@@ -1,0 +1,16 @@
+# Total size: 29779
+/usr/local/lib/ruby/gems/4.0.0/gems/tracer-0.2.3/CHANGELOG.md
+/usr/local/lib/ruby/gems/4.0.0/gems/tracer-0.2.3/CODE_OF_CONDUCT.md
+/usr/local/lib/ruby/gems/4.0.0/gems/tracer-0.2.3/LICENSE.txt
+/usr/local/lib/ruby/gems/4.0.0/gems/tracer-0.2.3/README.md
+/usr/local/lib/ruby/gems/4.0.0/gems/tracer-0.2.3/lib/tracer.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/tracer-0.2.3/lib/tracer/base.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/tracer-0.2.3/lib/tracer/call_tracer.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/tracer-0.2.3/lib/tracer/color.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/tracer-0.2.3/lib/tracer/exception_tracer.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/tracer-0.2.3/lib/tracer/helper.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/tracer-0.2.3/lib/tracer/irb.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/tracer-0.2.3/lib/tracer/ivar_tracer.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/tracer-0.2.3/lib/tracer/line_tracer.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/tracer-0.2.3/lib/tracer/object_tracer.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/tracer-0.2.3/lib/tracer/version.rb
