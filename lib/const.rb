@@ -98,11 +98,12 @@ CREW_CACHE_DIR          = ENV.fetch('CREW_CACHE_DIR', "#{HOME}/.cache/crewcache"
 CREW_CACHE_FAILED_BUILD = ENV.fetch('CREW_CACHE_FAILED_BUILD', false)
 CREW_CACHE_BUILD        = ENV.fetch('CREW_CACHE_BUILD', false)
 crew_local_repo_root = `git rev-parse --show-toplevel 2>/dev/null`.chomp
-CREW_LOCAL_REPO_ROOT = if crew_local_repo_root.nil? || crew_local_repo_root.empty?
-                         ENV.fetch('CREW_LOCAL_REPO_ROOT', File.join(CREW_PREFIX, 'lib/crew'))
-                       else
-                         ENV.fetch('CREW_LOCAL_REPO_ROOT', crew_local_repo_root)
-                       end
+crew_local_repo_root_test = if crew_local_repo_root.nil? || crew_local_repo_root.empty?
+                              ENV.fetch('CREW_LOCAL_REPO_ROOT', File.join(CREW_PREFIX, 'lib/crew'))
+                            else
+                              ENV.fetch('CREW_LOCAL_REPO_ROOT', crew_local_repo_root)
+                            end
+CREW_LOCAL_REPO_ROOT = Dir.exist?(crew_local_repo_root_test) ? crew_local_repo_root_test : File.join(CREW_PREFIX, 'lib/crew')
 CREW_LOCAL_BUILD_DIR = "#{CREW_LOCAL_REPO_ROOT}/release/#{ARCH}"
 CREW_MAX_BUILD_TIME  = ENV.fetch('CREW_MAX_BUILD_TIME', '19800') # GitHub Action containers are killed after 6 hours, so set to 5.5 hours.
 CREW_GITLAB_PKG_REPO = 'https://gitlab.com/api/v4/projects/26210301/packages'
