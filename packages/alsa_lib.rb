@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Alsa_lib < Autotools
   description 'The Advanced Linux Sound Architecture (ALSA) provides audio and MIDI functionality to the Linux operating system.'
   homepage 'https://www.alsa-project.org/main/index.php/Main_Page'
-  version "1.2.15.2-#{CREW_PY_VER}"
+  version "1.2.15.3-#{CREW_PY_VER}"
   license 'LGPL-2.1'
   compatibility 'all'
   source_url "https://github.com/alsa-project/alsa-lib/archive/v#{version.split('-').first}.tar.gz"
-  source_sha256 '3222aaf0e58ddf3cfcb1e7322e7adfdd60d9652aa41f1615459d39c7c8b48f95'
+  source_sha256 '7a3bee640f1c29fdfa3d1f922185929b546f012c27a73bbb6b424d12488c3c8e'
   binary_compression 'tar.zst'
 
   binary_sha256({
