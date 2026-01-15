@@ -19,7 +19,7 @@ class Gcc_dev < Package
      x86_64: 'a18a219aa78497247b45b550f3bfd9805a121bc3f07c83357741bfacca88bd16'
   })
 
-  depends_on 'gcc_build' => :build
+  depends_on 'gcc_build' # L
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'gmp' # R
