@@ -11,10 +11,10 @@ class Sqlite < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cd816a90cd19818cceb254adc68e24c64fb675428b6c97d20000303e332696fb',
-     armv7l: 'cd816a90cd19818cceb254adc68e24c64fb675428b6c97d20000303e332696fb',
-       i686: 'e22b6746fc23fc4a830b8152ea41abfc415011e7baee4270d8aaa11b2a7eba97',
-     x86_64: '11e0a5b16b0120ac87788cd94cf6f8f8f7696a0f6468a42d6c024f26162baafa'
+    aarch64: 'bdc40c8b7a89a034d7d606a80291b9c27557f860bd8ac41f52b89b501d32161e',
+     armv7l: 'bdc40c8b7a89a034d7d606a80291b9c27557f860bd8ac41f52b89b501d32161e',
+       i686: '949f614b7101f8545490f33a331761e505edeb231ac0dbc6b039c0595f325bfe',
+     x86_64: '3571a86b7c78175c28cdbe7233cad9f67bd108eeb5ccf813ddceac9d2e52d3ba'
   })
 
   depends_on 'gcc_lib' # R
