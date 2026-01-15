@@ -14,6 +14,7 @@ apr_util
 armadillo
 arp_scan
 asunder
+at_spi2_core
 augeas
 autoconf_archive
 awscli
