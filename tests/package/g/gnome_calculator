@@ -1,0 +1,3 @@
+#!/bin/bash
+gnome-calculator --help | head
+gnome-calculator --version 2>&1
