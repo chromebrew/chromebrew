@@ -1,4 +1,4 @@
-# Total size: 733706599
+# Total size: 736416838
 /usr/local/bin/antigravity
 /usr/local/share/antigravity/LICENSES.chromium.html
 /usr/local/share/antigravity/antigravity
@@ -13021,6 +13021,20 @@
 /usr/local/share/antigravity/resources/app/node_modules/rc/node_modules/strip-json-comments/license
 /usr/local/share/antigravity/resources/app/node_modules/rc/node_modules/strip-json-comments/package.json
 /usr/local/share/antigravity/resources/app/node_modules/rc/package.json
+/usr/local/share/antigravity/resources/app/node_modules/react-dom/LICENSE
+/usr/local/share/antigravity/resources/app/node_modules/react-dom/client.js
+/usr/local/share/antigravity/resources/app/node_modules/react-dom/client.mjs
+/usr/local/share/antigravity/resources/app/node_modules/react-dom/index.js
+/usr/local/share/antigravity/resources/app/node_modules/react-dom/index.mjs
+/usr/local/share/antigravity/resources/app/node_modules/react-dom/jsx-dev-runtime.js
+/usr/local/share/antigravity/resources/app/node_modules/react-dom/jsx-dev-runtime.mjs
+/usr/local/share/antigravity/resources/app/node_modules/react-dom/jsx-runtime.js
+/usr/local/share/antigravity/resources/app/node_modules/react-dom/jsx-runtime.mjs
+/usr/local/share/antigravity/resources/app/node_modules/react-dom/lib/ReactCSSTransitionGroup.js
+/usr/local/share/antigravity/resources/app/node_modules/react-dom/lib/ReactComponentWithPureRenderMixin.js
+/usr/local/share/antigravity/resources/app/node_modules/react-dom/package.json
+/usr/local/share/antigravity/resources/app/node_modules/react-dom/server.js
+/usr/local/share/antigravity/resources/app/node_modules/react-dom/server.mjs
 /usr/local/share/antigravity/resources/app/node_modules/react-error-boundary/LICENSE
 /usr/local/share/antigravity/resources/app/node_modules/react-error-boundary/dist/react-error-boundary.cjs.js
 /usr/local/share/antigravity/resources/app/node_modules/react-error-boundary/dist/react-error-boundary.esm.js
@@ -13066,6 +13080,20 @@
 /usr/local/share/antigravity/resources/app/node_modules/react-tooltip/dist/react-tooltip.umd.js
 /usr/local/share/antigravity/resources/app/node_modules/react-tooltip/dist/react-tooltip.umd.min.js
 /usr/local/share/antigravity/resources/app/node_modules/react-tooltip/package.json
+/usr/local/share/antigravity/resources/app/node_modules/react/LICENSE
+/usr/local/share/antigravity/resources/app/node_modules/react/client.js
+/usr/local/share/antigravity/resources/app/node_modules/react/client.mjs
+/usr/local/share/antigravity/resources/app/node_modules/react/index.js
+/usr/local/share/antigravity/resources/app/node_modules/react/index.mjs
+/usr/local/share/antigravity/resources/app/node_modules/react/jsx-dev-runtime.js
+/usr/local/share/antigravity/resources/app/node_modules/react/jsx-dev-runtime.mjs
+/usr/local/share/antigravity/resources/app/node_modules/react/jsx-runtime.js
+/usr/local/share/antigravity/resources/app/node_modules/react/jsx-runtime.mjs
+/usr/local/share/antigravity/resources/app/node_modules/react/lib/ReactCSSTransitionGroup.js
+/usr/local/share/antigravity/resources/app/node_modules/react/lib/ReactComponentWithPureRenderMixin.js
+/usr/local/share/antigravity/resources/app/node_modules/react/package.json
+/usr/local/share/antigravity/resources/app/node_modules/react/server.js
+/usr/local/share/antigravity/resources/app/node_modules/react/server.mjs
 /usr/local/share/antigravity/resources/app/node_modules/reactivity-store/LICENSE
 /usr/local/share/antigravity/resources/app/node_modules/reactivity-store/dist/cjs/index.development.js
 /usr/local/share/antigravity/resources/app/node_modules/reactivity-store/dist/cjs/index.production.js

@@ -1,6 +1,7 @@
 acl
 acpi
 acpica
+acquia_cli
 act
 aliyun_cli
 alsa_lib
@@ -14,11 +15,13 @@ apr_util
 armadillo
 arp_scan
 asunder
+at_spi2_core
 augeas
 autoconf_archive
 awscli
 axel
 b2
+bazel
 bc
 bdftopcf
 bind
@@ -100,6 +103,7 @@ glib
 glm
 glslang
 gmmlib
+gnome_calculator
 gnome_console
 gnome_online_accounts
 gnome_sudoku
