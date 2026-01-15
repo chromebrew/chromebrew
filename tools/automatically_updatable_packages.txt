@@ -110,7 +110,6 @@ gnome_sudoku
 gobject_introspection
 google_chrome
 libcdr
-libcpuid
 libgedit_gtksourceview
 libvisio
 libxfce4ui
