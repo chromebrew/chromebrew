@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Sqlite < Autotools
   description 'SQLite is a self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine.'
   homepage 'https://www.sqlite.org/'
-  version '3.51.1'
+  version '3.51.2'
   license 'public-domain'
   compatibility 'all'
   source_url 'https://github.com/sqlite/sqlite.git'
