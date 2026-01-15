@@ -1,6 +1,7 @@
 acl
 acpi
 acpica
+acquia_cli
 act
 aliyun_cli
 alsa_lib
