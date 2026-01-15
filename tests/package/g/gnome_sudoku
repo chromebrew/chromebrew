@@ -1,0 +1,3 @@
+#!/bin/bash
+gnome-sudoku -h
+gnome-sudoku -v 2>&1

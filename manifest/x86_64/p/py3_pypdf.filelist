@@ -1,10 +1,10 @@
-# Total size: 3347375
-/usr/local/lib/python3.14/site-packages/pypdf-6.5.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/pypdf-6.5.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/pypdf-6.5.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/pypdf-6.5.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/pypdf-6.5.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/pypdf-6.5.0.dist-info/licenses/LICENSE
+# Total size: 3344906
+/usr/local/lib/python3.14/site-packages/pypdf-6.6.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/pypdf-6.6.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/pypdf-6.6.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/pypdf-6.6.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/pypdf-6.6.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/pypdf-6.6.0.dist-info/licenses/LICENSE
 /usr/local/lib/python3.14/site-packages/pypdf/__init__.py
 /usr/local/lib/python3.14/site-packages/pypdf/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pypdf/__pycache__/_cmap.cpython-314.pyc
@@ -66,11 +66,9 @@
 /usr/local/lib/python3.14/site-packages/pypdf/_text_extraction/_layout_mode/__init__.py
 /usr/local/lib/python3.14/site-packages/pypdf/_text_extraction/_layout_mode/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pypdf/_text_extraction/_layout_mode/__pycache__/_fixed_width_page.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/pypdf/_text_extraction/_layout_mode/__pycache__/_font.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pypdf/_text_extraction/_layout_mode/__pycache__/_text_state_manager.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pypdf/_text_extraction/_layout_mode/__pycache__/_text_state_params.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pypdf/_text_extraction/_layout_mode/_fixed_width_page.py
-/usr/local/lib/python3.14/site-packages/pypdf/_text_extraction/_layout_mode/_font.py
 /usr/local/lib/python3.14/site-packages/pypdf/_text_extraction/_layout_mode/_text_state_manager.py
 /usr/local/lib/python3.14/site-packages/pypdf/_text_extraction/_layout_mode/_text_state_params.py
 /usr/local/lib/python3.14/site-packages/pypdf/_text_extraction/_text_extractor.py

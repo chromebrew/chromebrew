@@ -1,0 +1,3 @@
+#!/bin/bash
+kgx --help
+kgx --version

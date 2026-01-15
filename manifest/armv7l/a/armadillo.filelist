@@ -1,4 +1,4 @@
-# Total size: 5622122
+# Total size: 5623344
 /usr/local/include/armadillo
 /usr/local/include/armadillo_bits/BaseCube_bones.hpp
 /usr/local/include/armadillo_bits/BaseCube_meat.hpp
@@ -646,7 +646,7 @@
 /usr/local/include/armadillo_bits/xvec_htrans_meat.hpp
 /usr/local/lib/libarmadillo.so
 /usr/local/lib/libarmadillo.so.15
-/usr/local/lib/libarmadillo.so.15.2.2
+/usr/local/lib/libarmadillo.so.15.2.3
 /usr/local/lib/pkgconfig/armadillo.pc
 /usr/local/share/Armadillo/CMake/ArmadilloConfig.cmake
 /usr/local/share/Armadillo/CMake/ArmadilloConfigVersion.cmake

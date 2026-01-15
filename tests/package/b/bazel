@@ -1,0 +1,3 @@
+#!/bin/bash
+bazel help 2>&1 | head
+bazel version 2>&1

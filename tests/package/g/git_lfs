@@ -1,0 +1,3 @@
+#!/bin/bash
+man git-lfs | head
+git-lfs -v

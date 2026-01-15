@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# getrealdeps version 2.4 (for Chromebrew)
+# getrealdeps version 2.5 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 require 'fileutils'
 
@@ -149,19 +149,17 @@ def write_deps(pkg_file, pkgdeps, pkg)
   File.write(pkg_file, pkg_file_lines.join("\n").gsub("\n\n", "\n"))
 
   # Find the location of the rubocop configuration.
-  rubocop_config = CREW_LOCAL_REPO_ROOT.to_s.empty? ? "#{CREW_LIB_PATH}/.rubocop.yml" : File.join(CREW_LOCAL_REPO_ROOT, '.rubocop.yml')
+  rubocop_config = FileUtils.identical?(pkg_file, "#{CREW_LOCAL_REPO_ROOT}/packages/#{File.basename(pkg_file)}") ? "#{CREW_LIB_PATH}/.rubocop.yml" : File.join(CREW_LOCAL_REPO_ROOT, '.rubocop.yml')
 
   # Clean with rubocop.
   system "rubocop -c #{rubocop_config} -A #{pkg_file}"
-  FileUtils.cp pkg_file, "#{CREW_LOCAL_REPO_ROOT}/packages/#{File.basename(pkg_file)}" unless CREW_LOCAL_REPO_ROOT.to_s.empty?
+  FileUtils.cp pkg_file, "#{CREW_LOCAL_REPO_ROOT}/packages/#{File.basename(pkg_file)}" unless FileUtils.identical?(pkg_file, "#{CREW_LOCAL_REPO_ROOT}/packages/#{File.basename(pkg_file)}")
 end
 
 def main(pkg)
   # pkg is @pkg.name in this function.
   puts "Checking for the runtime dependencies of #{pkg}...".lightblue
-  pkg_file = File.join(CREW_PACKAGES_PATH, "#{pkg}.rb")
-  FileUtils.cp File.join(CREW_LOCAL_REPO_ROOT, "packages/#{pkg}.rb"), pkg_file if !CREW_LOCAL_REPO_ROOT.to_s.empty? && File.file?(File.join(CREW_LOCAL_REPO_ROOT, "packages/#{pkg}.rb"))
-
+  pkg_file = Dir["{#{CREW_LOCAL_REPO_ROOT}/packages,#{CREW_PACKAGES_PATH}}/#{pkg}.rb"].max { |a, b| File.mtime(a) <=> File.mtime(b) }
   if @opt_use_crew_dest_dir
     define_singleton_method('pkgfilelist') { File.join(CREW_DEST_DIR, 'filelist') }
     abort('Pkg was not built.') unless File.exist?(pkgfilelist)
@@ -250,6 +248,8 @@ def main(pkg)
 
   # Write the changed dependencies to the package file.
   write_deps(pkg_file, pkgdeps, @pkg)
+  FileUtils.cp pkg_file, File.join(CREW_LOCAL_REPO_ROOT, "packages/#{pkg}.rb") unless FileUtils.identical?(pkg_file, File.join(CREW_LOCAL_REPO_ROOT, "packages/#{pkg}.rb"))
+  FileUtils.cp pkg_file, File.join(CREW_PACKAGES_PATH, "#{pkg}.rb") unless FileUtils.identical?(pkg_file, File.join(CREW_PACKAGES_PATH, "#{pkg}.rb"))
 end
 
 ARGV.each do |package|

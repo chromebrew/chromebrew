@@ -1,0 +1,16 @@
+#!/bin/bash
+gapplication help | head
+gapplication version
+gdbus help
+gi-compile-repository -h
+gi-compile-repository --version
+gi-inspect-typelib -h
+gio --help | head
+gio --version
+gio-querymodules
+glib-compile-resources --help
+glib-compile-resources --version
+glib-mkenums --help | head
+glib-mkenums --version
+gobject-query --help
+gresource help

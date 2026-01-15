@@ -1,4 +1,6 @@
-# Total size: 1123567
+# Total size: 1152015
+/usr/local/include/libgedit-tepl-6/tepl/code-comment/tepl-code-comment-view.h
+/usr/local/include/libgedit-tepl-6/tepl/code-comment/tepl-code-comment.h
 /usr/local/include/libgedit-tepl-6/tepl/tepl-abstract-factory.h
 /usr/local/include/libgedit-tepl-6/tepl/tepl-application-window.h
 /usr/local/include/libgedit-tepl-6/tepl/tepl-application.h
@@ -14,7 +16,6 @@
 /usr/local/include/libgedit-tepl-6/tepl/tepl-info-bar.h
 /usr/local/include/libgedit-tepl-6/tepl/tepl-init.h
 /usr/local/include/libgedit-tepl-6/tepl/tepl-io-error-info-bars.h
-/usr/local/include/libgedit-tepl-6/tepl/tepl-iter.h
 /usr/local/include/libgedit-tepl-6/tepl/tepl-language-chooser-dialog.h
 /usr/local/include/libgedit-tepl-6/tepl/tepl-language-chooser-widget.h
 /usr/local/include/libgedit-tepl-6/tepl/tepl-language-chooser.h
@@ -41,6 +42,7 @@
 /usr/local/include/libgedit-tepl-6/tepl/tepl-signal-group.h
 /usr/local/include/libgedit-tepl-6/tepl/tepl-space-drawer-prefs.h
 /usr/local/include/libgedit-tepl-6/tepl/tepl-status-menu-button.h
+/usr/local/include/libgedit-tepl-6/tepl/tepl-statusbar.h
 /usr/local/include/libgedit-tepl-6/tepl/tepl-style-scheme-chooser-full.h
 /usr/local/include/libgedit-tepl-6/tepl/tepl-style-scheme-chooser-simple.h
 /usr/local/include/libgedit-tepl-6/tepl/tepl-tab-group.h
@@ -54,7 +56,7 @@
 /usr/local/include/libgedit-tepl-6/tepl/tepl.h
 /usr/local/lib/girepository-1.0/Tepl-6.typelib
 /usr/local/lib/libgedit-tepl-6.so
-/usr/local/lib/libgedit-tepl-6.so.3
+/usr/local/lib/libgedit-tepl-6.so.4
 /usr/local/lib/pkgconfig/libgedit-tepl-6.pc
 /usr/local/share/gir-1.0/Tepl-6.gir
 /usr/local/share/locale/be/LC_MESSAGES/libgedit-tepl-6.mo

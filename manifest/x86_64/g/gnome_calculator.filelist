@@ -1,9 +1,9 @@
-# Total size: 8388972
+# Total size: 8029539
 /usr/local/bin/gcalccmd
 /usr/local/bin/gnome-calculator
 /usr/local/include/gcalc-2/gcalc/gcalc.h
 /usr/local/include/gci-2/gci/gci.h
-/usr/local/lib/python3.13/site-packages/blueprintcompiler/reference_docs.json
+/usr/local/lib/python3.14/site-packages/blueprintcompiler/reference_docs.json
 /usr/local/lib64/girepository-1.0/GCalc-2.typelib
 /usr/local/lib64/girepository-1.0/GCi-1.typelib
 /usr/local/lib64/libgcalc-2.so

@@ -3,21 +3,21 @@ require 'package'
 class Php82 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'https://www.php.net/'
-  version '8.2.29'
+  version '8.2.30'
   license 'PHP-3.01'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.php.net/distributions/php-#{version}.tar.xz"
-  source_sha256 '475f991afd2d5b901fb410be407d929bc00c46285d3f439a02c59e8b6fe3589c'
+  source_sha256 'bc90523e17af4db46157e75d0c9ef0b9d0030b0514e62c26ba7b513b8c4eb015'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ad7b0b63ad9e987a9e096b623406044e50e37d238ae2402411b979338ad10540',
-     armv7l: 'ad7b0b63ad9e987a9e096b623406044e50e37d238ae2402411b979338ad10540',
-     x86_64: '6d58d8f67ac65cb073f32a4382578b156c9046ce41fdbbd767e1392873496959'
+    aarch64: '639c5dd59218e2b1f400c2c1416eda6d0e6907c569fbd471986c4863c9270015',
+     armv7l: '639c5dd59218e2b1f400c2c1416eda6d0e6907c569fbd471986c4863c9270015',
+     x86_64: '5de61d89f6627c0b1e16c72127af514281521fbc9e0cb40c8ca202678e2044b0'
   })
 
-  depends_on 'aspell_en' => :build
   depends_on 'aspell' # R
+  depends_on 'aspell_en' => :build
   depends_on 'brotli' # R
   depends_on 'bzip2' # R
   depends_on 'c_ares' # R
@@ -37,6 +37,8 @@ class Php82 < Package
   depends_on 'libidn2' # R
   depends_on 'libjpeg_turbo' # R
   depends_on 'libnghttp2' # R
+  depends_on 'libnghttp3' # R
+  depends_on 'libngtcp2' # R
   depends_on 'libpng' # R
   depends_on 'libpsl' # R
   depends_on 'libsodium' # R

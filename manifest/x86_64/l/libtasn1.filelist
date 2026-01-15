@@ -1,4 +1,4 @@
-# Total size: 751606
+# Total size: 756276
 /usr/local/bin/asn1Coding
 /usr/local/bin/asn1Decoding
 /usr/local/bin/asn1Parser
@@ -7,7 +7,7 @@
 /usr/local/lib64/libtasn1.la
 /usr/local/lib64/libtasn1.so
 /usr/local/lib64/libtasn1.so.6
-/usr/local/lib64/libtasn1.so.6.6.4
+/usr/local/lib64/libtasn1.so.6.6.5
 /usr/local/lib64/pkgconfig/libtasn1.pc
 /usr/local/share/info/libtasn1.info.zst
 /usr/local/share/man/man1/asn1Coding.1.zst

@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Tepl_6 < Meson
   description 'Library that eases the development of GtkSourceView-based text editors and IDEs'
   homepage 'https://gitlab.gnome.org/World/gedit/libgedit-tepl'
-  version "6.13.0-#{CREW_ICU_VER}"
+  version "6.14.0-#{CREW_ICU_VER}"
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/World/gedit/libgedit-tepl.git'
@@ -11,9 +11,9 @@ class Tepl_6 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7f3bbee8e7ba59106959ee11dad127f761ac66e8ba0d926f8a82f0eb6cdfbeae',
-     armv7l: '7f3bbee8e7ba59106959ee11dad127f761ac66e8ba0d926f8a82f0eb6cdfbeae',
-     x86_64: '640e74588abc0727dd353a3b1559378b56570aa57a35ab4c590b08c95ba2800c'
+    aarch64: '36727139e79479954df6068874ce34cdfc4c1275a92ecd83967d0c46bb6e1be5',
+     armv7l: '36727139e79479954df6068874ce34cdfc4c1275a92ecd83967d0c46bb6e1be5',
+     x86_64: '00cdf9424f455b67eaea339c0f9b8f15e637ddbe4fd329e8b034371bb6a5553c'
   })
 
   depends_on 'cairo' # R

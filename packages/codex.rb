@@ -3,12 +3,12 @@ require 'package'
 class Codex < Package
   description 'Lightweight coding agent that runs in your terminal'
   homepage 'https://github.com/openai/codex'
-  version '0.79.0'
+  version '0.81.0'
   license 'Apache-2.0'
   compatibility 'x86_64'
   min_glibc '2.28'
   source_url "https://github.com/openai/codex/releases/download/rust-v#{version}/codex-x86_64-unknown-linux-gnu.zst"
-  source_sha256 '8ab37ba3020586c3ee0972bbf06412c996824f10ef4e6c57f4aedffc35ab42b9'
+  source_sha256 '892fe8fb8a6c5f470f564fd616518d6230c021b431e7a24c7733e51433069403'
 
   depends_on 'zstd'
 

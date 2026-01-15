@@ -1,4 +1,4 @@
-# Total size: 1894581
+# Total size: 1988557
 /usr/local/include/igdgmm/GmmLib/CachePolicy/GmmCachePolicyConditionals.h
 /usr/local/include/igdgmm/GmmLib/CachePolicy/GmmCachePolicyResourceUsageDefinitions.h
 /usr/local/include/igdgmm/GmmLib/CachePolicy/GmmCachePolicyUndefineConditionals.h
@@ -9,6 +9,7 @@
 /usr/local/include/igdgmm/GmmLib/CachePolicy/GmmGen8CachePolicy.h
 /usr/local/include/igdgmm/GmmLib/CachePolicy/GmmGen9CachePolicy.h
 /usr/local/include/igdgmm/GmmLib/CachePolicy/GmmXe2_LPGCachePolicy.h
+/usr/local/include/igdgmm/GmmLib/CachePolicy/GmmXe3P_XPCCachePolicy.h
 /usr/local/include/igdgmm/GmmLib/CachePolicy/GmmXe_LPGCachePolicy.h
 /usr/local/include/igdgmm/GmmLib/Platform/GmmPlatforms.h
 /usr/local/include/igdgmm/GmmLib/Texture/GmmTexture.h
@@ -24,6 +25,7 @@
 /usr/local/include/igdgmm/GmmLib/inc/External/Common/CachePolicy/GmmCachePolicyGen8.h
 /usr/local/include/igdgmm/GmmLib/inc/External/Common/CachePolicy/GmmCachePolicyGen9.h
 /usr/local/include/igdgmm/GmmLib/inc/External/Common/CachePolicy/GmmCachePolicyXe2_LPG.h
+/usr/local/include/igdgmm/GmmLib/inc/External/Common/CachePolicy/GmmCachePolicyXe3P_XPC.h
 /usr/local/include/igdgmm/GmmLib/inc/External/Common/CachePolicy/GmmCachePolicyXe_LPG.h
 /usr/local/include/igdgmm/GmmLib/inc/External/Common/GmmCachePolicy.h
 /usr/local/include/igdgmm/GmmLib/inc/External/Common/GmmCachePolicyCommon.h
@@ -66,5 +68,5 @@
 /usr/local/include/igdgmm/util/gfxDebug.h
 /usr/local/lib64/libigdgmm.so
 /usr/local/lib64/libigdgmm.so.12
-/usr/local/lib64/libigdgmm.so.12.8.0
+/usr/local/lib64/libigdgmm.so.12.9.0
 /usr/local/lib64/pkgconfig/igdgmm.pc

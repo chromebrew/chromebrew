@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gnome_calculator < Meson
   description 'GNOME desktop calculator'
   homepage 'https://wiki.gnome.org/Apps/Calculator'
-  version '49.1.1'
+  version '49.2'
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-calculator.git'
@@ -11,9 +11,9 @@ class Gnome_calculator < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bbb2fb609c3a0d2e2ad177eb3fd231785fffe790f515345e4d39a3b85ab2efee',
-     armv7l: 'bbb2fb609c3a0d2e2ad177eb3fd231785fffe790f515345e4d39a3b85ab2efee',
-     x86_64: '236ea5bff327eeb0e879cf44d1d1c56562ff7db691a8bd830832b47f15440c0d'
+    aarch64: '54291f6315978b770b449cca3acd3525cc8da8a0526e2344ba73300f6daea131',
+     armv7l: '54291f6315978b770b449cca3acd3525cc8da8a0526e2344ba73300f6daea131',
+     x86_64: 'd6a6c62ffcff637fe5ea2e90328ba798856041a4885ec75c53db9b227308ed6d'
   })
 
   depends_on 'gcc_lib' # R

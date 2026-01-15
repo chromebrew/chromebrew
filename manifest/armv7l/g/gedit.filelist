@@ -1,26 +1,27 @@
-# Total size: 10586111
+# Total size: 10674626
 /usr/local/bin/gedit
-/usr/local/include/gedit-48.2/gedit/gedit-app-activatable.h
-/usr/local/include/gedit-48.2/gedit/gedit-app.h
-/usr/local/include/gedit-48.2/gedit/gedit-commands.h
-/usr/local/include/gedit-48.2/gedit/gedit-debug.h
-/usr/local/include/gedit-48.2/gedit/gedit-document.h
-/usr/local/include/gedit-48.2/gedit/gedit-encodings-combo-box.h
-/usr/local/include/gedit-48.2/gedit/gedit-enum-types.h
-/usr/local/include/gedit-48.2/gedit/gedit-menu-extension.h
-/usr/local/include/gedit-48.2/gedit/gedit-message-bus.h
-/usr/local/include/gedit-48.2/gedit/gedit-message.h
-/usr/local/include/gedit-48.2/gedit/gedit-statusbar.h
-/usr/local/include/gedit-48.2/gedit/gedit-tab.h
-/usr/local/include/gedit-48.2/gedit/gedit-utils.h
-/usr/local/include/gedit-48.2/gedit/gedit-view-activatable.h
-/usr/local/include/gedit-48.2/gedit/gedit-view.h
-/usr/local/include/gedit-48.2/gedit/gedit-window-activatable.h
-/usr/local/include/gedit-48.2/gedit/gedit-window.h
+/usr/local/include/gedit-49/gedit/gedit-app-activatable.h
+/usr/local/include/gedit-49/gedit/gedit-app.h
+/usr/local/include/gedit-49/gedit/gedit-commands.h
+/usr/local/include/gedit-49/gedit/gedit-debug.h
+/usr/local/include/gedit-49/gedit/gedit-document.h
+/usr/local/include/gedit-49/gedit/gedit-encodings-combo-box.h
+/usr/local/include/gedit-49/gedit/gedit-enum-types.h
+/usr/local/include/gedit-49/gedit/gedit-menu-extension.h
+/usr/local/include/gedit-49/gedit/gedit-message-bus.h
+/usr/local/include/gedit-49/gedit/gedit-message.h
+/usr/local/include/gedit-49/gedit/gedit-tab.h
+/usr/local/include/gedit-49/gedit/gedit-utils.h
+/usr/local/include/gedit-49/gedit/gedit-view-activatable.h
+/usr/local/include/gedit-49/gedit/gedit-view.h
+/usr/local/include/gedit-49/gedit/gedit-window-activatable.h
+/usr/local/include/gedit-49/gedit/gedit-window.h
 /usr/local/lib/gedit/girepository-1.0/Gedit-3.0.typelib
-/usr/local/lib/gedit/libgedit-48.2.so
+/usr/local/lib/gedit/libgedit-49.so
+/usr/local/lib/gedit/plugins/codecomment.plugin
 /usr/local/lib/gedit/plugins/docinfo.plugin
 /usr/local/lib/gedit/plugins/filebrowser.plugin
+/usr/local/lib/gedit/plugins/libcodecomment.so
 /usr/local/lib/gedit/plugins/libdocinfo.so
 /usr/local/lib/gedit/plugins/libfilebrowser.so
 /usr/local/lib/gedit/plugins/libmodelines.so
@@ -63,6 +64,7 @@
 /usr/local/share/help/C/gedit/gedit-open-on-server.page
 /usr/local/share/help/C/gedit/gedit-open-recent.page
 /usr/local/share/help/C/gedit/gedit-open-several-files-at-once.page
+/usr/local/share/help/C/gedit/gedit-plugin-code-comment.page
 /usr/local/share/help/C/gedit/gedit-plugin-guide.page
 /usr/local/share/help/C/gedit/gedit-plugins-doc-stats.page
 /usr/local/share/help/C/gedit/gedit-plugins-file-browser.page
@@ -97,6 +99,7 @@
 /usr/local/share/help/ar/gedit/gedit-open-on-server.page
 /usr/local/share/help/ar/gedit/gedit-open-recent.page
 /usr/local/share/help/ar/gedit/gedit-open-several-files-at-once.page
+/usr/local/share/help/ar/gedit/gedit-plugin-code-comment.page
 /usr/local/share/help/ar/gedit/gedit-plugin-guide.page
 /usr/local/share/help/ar/gedit/gedit-plugins-doc-stats.page
 /usr/local/share/help/ar/gedit/gedit-plugins-file-browser.page
@@ -131,6 +134,7 @@
 /usr/local/share/help/bg/gedit/gedit-open-on-server.page
 /usr/local/share/help/bg/gedit/gedit-open-recent.page
 /usr/local/share/help/bg/gedit/gedit-open-several-files-at-once.page
+/usr/local/share/help/bg/gedit/gedit-plugin-code-comment.page
 /usr/local/share/help/bg/gedit/gedit-plugin-guide.page
 /usr/local/share/help/bg/gedit/gedit-plugins-doc-stats.page
 /usr/local/share/help/bg/gedit/gedit-plugins-file-browser.page
@@ -165,6 +169,7 @@
 /usr/local/share/help/ca/gedit/gedit-open-on-server.page
 /usr/local/share/help/ca/gedit/gedit-open-recent.page
 /usr/local/share/help/ca/gedit/gedit-open-several-files-at-once.page
+/usr/local/share/help/ca/gedit/gedit-plugin-code-comment.page
 /usr/local/share/help/ca/gedit/gedit-plugin-guide.page
 /usr/local/share/help/ca/gedit/gedit-plugins-doc-stats.page
 /usr/local/share/help/ca/gedit/gedit-plugins-file-browser.page
@@ -199,6 +204,7 @@
 /usr/local/share/help/cs/gedit/gedit-open-on-server.page
 /usr/local/share/help/cs/gedit/gedit-open-recent.page
 /usr/local/share/help/cs/gedit/gedit-open-several-files-at-once.page
+/usr/local/share/help/cs/gedit/gedit-plugin-code-comment.page
 /usr/local/share/help/cs/gedit/gedit-plugin-guide.page
 /usr/local/share/help/cs/gedit/gedit-plugins-doc-stats.page
 /usr/local/share/help/cs/gedit/gedit-plugins-file-browser.page
@@ -233,6 +239,7 @@
 /usr/local/share/help/da/gedit/gedit-open-on-server.page
 /usr/local/share/help/da/gedit/gedit-open-recent.page
 /usr/local/share/help/da/gedit/gedit-open-several-files-at-once.page
+/usr/local/share/help/da/gedit/gedit-plugin-code-comment.page
 /usr/local/share/help/da/gedit/gedit-plugin-guide.page
 /usr/local/share/help/da/gedit/gedit-plugins-doc-stats.page
 /usr/local/share/help/da/gedit/gedit-plugins-file-browser.page
@@ -267,6 +274,7 @@
 /usr/local/share/help/de/gedit/gedit-open-on-server.page
 /usr/local/share/help/de/gedit/gedit-open-recent.page
 /usr/local/share/help/de/gedit/gedit-open-several-files-at-once.page
+/usr/local/share/help/de/gedit/gedit-plugin-code-comment.page
 /usr/local/share/help/de/gedit/gedit-plugin-guide.page
 /usr/local/share/help/de/gedit/gedit-plugins-doc-stats.page
 /usr/local/share/help/de/gedit/gedit-plugins-file-browser.page
@@ -301,6 +309,7 @@
 /usr/local/share/help/el/gedit/gedit-open-on-server.page
 /usr/local/share/help/el/gedit/gedit-open-recent.page
 /usr/local/share/help/el/gedit/gedit-open-several-files-at-once.page
+/usr/local/share/help/el/gedit/gedit-plugin-code-comment.page
 /usr/local/share/help/el/gedit/gedit-plugin-guide.page
 /usr/local/share/help/el/gedit/gedit-plugins-doc-stats.page
 /usr/local/share/help/el/gedit/gedit-plugins-file-browser.page
@@ -335,6 +344,7 @@
 /usr/local/share/help/en_GB/gedit/gedit-open-on-server.page
 /usr/local/share/help/en_GB/gedit/gedit-open-recent.page
 /usr/local/share/help/en_GB/gedit/gedit-open-several-files-at-once.page
+/usr/local/share/help/en_GB/gedit/gedit-plugin-code-comment.page
 /usr/local/share/help/en_GB/gedit/gedit-plugin-guide.page
 /usr/local/share/help/en_GB/gedit/gedit-plugins-doc-stats.page
 /usr/local/share/help/en_GB/gedit/gedit-plugins-file-browser.page
@@ -369,6 +379,7 @@
 /usr/local/share/help/es/gedit/gedit-open-on-server.page
 /usr/local/share/help/es/gedit/gedit-open-recent.page
 /usr/local/share/help/es/gedit/gedit-open-several-files-at-once.page
+/usr/local/share/help/es/gedit/gedit-plugin-code-comment.page
 /usr/local/share/help/es/gedit/gedit-plugin-guide.page
 /usr/local/share/help/es/gedit/gedit-plugins-doc-stats.page
 /usr/local/share/help/es/gedit/gedit-plugins-file-browser.page
@@ -403,6 +414,7 @@
 /usr/local/share/help/eu/gedit/gedit-open-on-server.page
 /usr/local/share/help/eu/gedit/gedit-open-recent.page
 /usr/local/share/help/eu/gedit/gedit-open-several-files-at-once.page
+/usr/local/share/help/eu/gedit/gedit-plugin-code-comment.page
 /usr/local/share/help/eu/gedit/gedit-plugin-guide.page
 /usr/local/share/help/eu/gedit/gedit-plugins-doc-stats.page
 /usr/local/share/help/eu/gedit/gedit-plugins-file-browser.page
@@ -437,6 +449,7 @@
 /usr/local/share/help/fi/gedit/gedit-open-on-server.page
 /usr/local/share/help/fi/gedit/gedit-open-recent.page
 /usr/local/share/help/fi/gedit/gedit-open-several-files-at-once.page
+/usr/local/share/help/fi/gedit/gedit-plugin-code-comment.page
 /usr/local/share/help/fi/gedit/gedit-plugin-guide.page
 /usr/local/share/help/fi/gedit/gedit-plugins-doc-stats.page
 /usr/local/share/help/fi/gedit/gedit-plugins-file-browser.page
@@ -471,6 +484,7 @@
 /usr/local/share/help/fr/gedit/gedit-open-on-server.page
 /usr/local/share/help/fr/gedit/gedit-open-recent.page
 /usr/local/share/help/fr/gedit/gedit-open-several-files-at-once.page
+/usr/local/share/help/fr/gedit/gedit-plugin-code-comment.page
 /usr/local/share/help/fr/gedit/gedit-plugin-guide.page
 /usr/local/share/help/fr/gedit/gedit-plugins-doc-stats.page
 /usr/local/share/help/fr/gedit/gedit-plugins-file-browser.page
@@ -505,6 +519,7 @@
 /usr/local/share/help/gl/gedit/gedit-open-on-server.page
 /usr/local/share/help/gl/gedit/gedit-open-recent.page
 /usr/local/share/help/gl/gedit/gedit-open-several-files-at-once.page
+/usr/local/share/help/gl/gedit/gedit-plugin-code-comment.page
 /usr/local/share/help/gl/gedit/gedit-plugin-guide.page
 /usr/local/share/help/gl/gedit/gedit-plugins-doc-stats.page
 /usr/local/share/help/gl/gedit/gedit-plugins-file-browser.page
@@ -539,6 +554,7 @@
 /usr/local/share/help/hu/gedit/gedit-open-on-server.page
 /usr/local/share/help/hu/gedit/gedit-open-recent.page
 /usr/local/share/help/hu/gedit/gedit-open-several-files-at-once.page
+/usr/local/share/help/hu/gedit/gedit-plugin-code-comment.page
 /usr/local/share/help/hu/gedit/gedit-plugin-guide.page
 /usr/local/share/help/hu/gedit/gedit-plugins-doc-stats.page
 /usr/local/share/help/hu/gedit/gedit-plugins-file-browser.page
@@ -573,6 +589,7 @@
 /usr/local/share/help/id/gedit/gedit-open-on-server.page
 /usr/local/share/help/id/gedit/gedit-open-recent.page
 /usr/local/share/help/id/gedit/gedit-open-several-files-at-once.page
+/usr/local/share/help/id/gedit/gedit-plugin-code-comment.page
 /usr/local/share/help/id/gedit/gedit-plugin-guide.page
 /usr/local/share/help/id/gedit/gedit-plugins-doc-stats.page
 /usr/local/share/help/id/gedit/gedit-plugins-file-browser.page
@@ -607,6 +624,7 @@
 /usr/local/share/help/it/gedit/gedit-open-on-server.page
 /usr/local/share/help/it/gedit/gedit-open-recent.page
 /usr/local/share/help/it/gedit/gedit-open-several-files-at-once.page
+/usr/local/share/help/it/gedit/gedit-plugin-code-comment.page
 /usr/local/share/help/it/gedit/gedit-plugin-guide.page
 /usr/local/share/help/it/gedit/gedit-plugins-doc-stats.page
 /usr/local/share/help/it/gedit/gedit-plugins-file-browser.page
@@ -641,6 +659,7 @@
 /usr/local/share/help/ja/gedit/gedit-open-on-server.page
 /usr/local/share/help/ja/gedit/gedit-open-recent.page
 /usr/local/share/help/ja/gedit/gedit-open-several-files-at-once.page
+/usr/local/share/help/ja/gedit/gedit-plugin-code-comment.page
 /usr/local/share/help/ja/gedit/gedit-plugin-guide.page
 /usr/local/share/help/ja/gedit/gedit-plugins-doc-stats.page
 /usr/local/share/help/ja/gedit/gedit-plugins-file-browser.page
@@ -675,6 +694,7 @@
 /usr/local/share/help/ko/gedit/gedit-open-on-server.page
 /usr/local/share/help/ko/gedit/gedit-open-recent.page
 /usr/local/share/help/ko/gedit/gedit-open-several-files-at-once.page
+/usr/local/share/help/ko/gedit/gedit-plugin-code-comment.page
 /usr/local/share/help/ko/gedit/gedit-plugin-guide.page
 /usr/local/share/help/ko/gedit/gedit-plugins-doc-stats.page
 /usr/local/share/help/ko/gedit/gedit-plugins-file-browser.page
@@ -709,6 +729,7 @@
 /usr/local/share/help/lv/gedit/gedit-open-on-server.page
 /usr/local/share/help/lv/gedit/gedit-open-recent.page
 /usr/local/share/help/lv/gedit/gedit-open-several-files-at-once.page
+/usr/local/share/help/lv/gedit/gedit-plugin-code-comment.page
 /usr/local/share/help/lv/gedit/gedit-plugin-guide.page
 /usr/local/share/help/lv/gedit/gedit-plugins-doc-stats.page
 /usr/local/share/help/lv/gedit/gedit-plugins-file-browser.page
@@ -743,6 +764,7 @@
 /usr/local/share/help/oc/gedit/gedit-open-on-server.page
 /usr/local/share/help/oc/gedit/gedit-open-recent.page
 /usr/local/share/help/oc/gedit/gedit-open-several-files-at-once.page
+/usr/local/share/help/oc/gedit/gedit-plugin-code-comment.page
 /usr/local/share/help/oc/gedit/gedit-plugin-guide.page
 /usr/local/share/help/oc/gedit/gedit-plugins-doc-stats.page
 /usr/local/share/help/oc/gedit/gedit-plugins-file-browser.page
@@ -777,6 +799,7 @@
 /usr/local/share/help/pl/gedit/gedit-open-on-server.page
 /usr/local/share/help/pl/gedit/gedit-open-recent.page
 /usr/local/share/help/pl/gedit/gedit-open-several-files-at-once.page
+/usr/local/share/help/pl/gedit/gedit-plugin-code-comment.page
 /usr/local/share/help/pl/gedit/gedit-plugin-guide.page
 /usr/local/share/help/pl/gedit/gedit-plugins-doc-stats.page
 /usr/local/share/help/pl/gedit/gedit-plugins-file-browser.page
@@ -811,6 +834,7 @@
 /usr/local/share/help/pt_BR/gedit/gedit-open-on-server.page
 /usr/local/share/help/pt_BR/gedit/gedit-open-recent.page
 /usr/local/share/help/pt_BR/gedit/gedit-open-several-files-at-once.page
+/usr/local/share/help/pt_BR/gedit/gedit-plugin-code-comment.page
 /usr/local/share/help/pt_BR/gedit/gedit-plugin-guide.page
 /usr/local/share/help/pt_BR/gedit/gedit-plugins-doc-stats.page
 /usr/local/share/help/pt_BR/gedit/gedit-plugins-file-browser.page
@@ -845,6 +869,7 @@
 /usr/local/share/help/ro/gedit/gedit-open-on-server.page
 /usr/local/share/help/ro/gedit/gedit-open-recent.page
 /usr/local/share/help/ro/gedit/gedit-open-several-files-at-once.page
+/usr/local/share/help/ro/gedit/gedit-plugin-code-comment.page
 /usr/local/share/help/ro/gedit/gedit-plugin-guide.page
 /usr/local/share/help/ro/gedit/gedit-plugins-doc-stats.page
 /usr/local/share/help/ro/gedit/gedit-plugins-file-browser.page
@@ -879,6 +904,7 @@
 /usr/local/share/help/ru/gedit/gedit-open-on-server.page
 /usr/local/share/help/ru/gedit/gedit-open-recent.page
 /usr/local/share/help/ru/gedit/gedit-open-several-files-at-once.page
+/usr/local/share/help/ru/gedit/gedit-plugin-code-comment.page
 /usr/local/share/help/ru/gedit/gedit-plugin-guide.page
 /usr/local/share/help/ru/gedit/gedit-plugins-doc-stats.page
 /usr/local/share/help/ru/gedit/gedit-plugins-file-browser.page
@@ -913,6 +939,7 @@
 /usr/local/share/help/sl/gedit/gedit-open-on-server.page
 /usr/local/share/help/sl/gedit/gedit-open-recent.page
 /usr/local/share/help/sl/gedit/gedit-open-several-files-at-once.page
+/usr/local/share/help/sl/gedit/gedit-plugin-code-comment.page
 /usr/local/share/help/sl/gedit/gedit-plugin-guide.page
 /usr/local/share/help/sl/gedit/gedit-plugins-doc-stats.page
 /usr/local/share/help/sl/gedit/gedit-plugins-file-browser.page
@@ -947,6 +974,7 @@
 /usr/local/share/help/sv/gedit/gedit-open-on-server.page
 /usr/local/share/help/sv/gedit/gedit-open-recent.page
 /usr/local/share/help/sv/gedit/gedit-open-several-files-at-once.page
+/usr/local/share/help/sv/gedit/gedit-plugin-code-comment.page
 /usr/local/share/help/sv/gedit/gedit-plugin-guide.page
 /usr/local/share/help/sv/gedit/gedit-plugins-doc-stats.page
 /usr/local/share/help/sv/gedit/gedit-plugins-file-browser.page
@@ -981,6 +1009,7 @@
 /usr/local/share/help/te/gedit/gedit-open-on-server.page
 /usr/local/share/help/te/gedit/gedit-open-recent.page
 /usr/local/share/help/te/gedit/gedit-open-several-files-at-once.page
+/usr/local/share/help/te/gedit/gedit-plugin-code-comment.page
 /usr/local/share/help/te/gedit/gedit-plugin-guide.page
 /usr/local/share/help/te/gedit/gedit-plugins-doc-stats.page
 /usr/local/share/help/te/gedit/gedit-plugins-file-browser.page
@@ -1015,6 +1044,7 @@
 /usr/local/share/help/th/gedit/gedit-open-on-server.page
 /usr/local/share/help/th/gedit/gedit-open-recent.page
 /usr/local/share/help/th/gedit/gedit-open-several-files-at-once.page
+/usr/local/share/help/th/gedit/gedit-plugin-code-comment.page
 /usr/local/share/help/th/gedit/gedit-plugin-guide.page
 /usr/local/share/help/th/gedit/gedit-plugins-doc-stats.page
 /usr/local/share/help/th/gedit/gedit-plugins-file-browser.page
@@ -1049,6 +1079,7 @@
 /usr/local/share/help/uk/gedit/gedit-open-on-server.page
 /usr/local/share/help/uk/gedit/gedit-open-recent.page
 /usr/local/share/help/uk/gedit/gedit-open-several-files-at-once.page
+/usr/local/share/help/uk/gedit/gedit-plugin-code-comment.page
 /usr/local/share/help/uk/gedit/gedit-plugin-guide.page
 /usr/local/share/help/uk/gedit/gedit-plugins-doc-stats.page
 /usr/local/share/help/uk/gedit/gedit-plugins-file-browser.page
@@ -1083,6 +1114,7 @@
 /usr/local/share/help/zh_CN/gedit/gedit-open-on-server.page
 /usr/local/share/help/zh_CN/gedit/gedit-open-recent.page
 /usr/local/share/help/zh_CN/gedit/gedit-open-several-files-at-once.page
+/usr/local/share/help/zh_CN/gedit/gedit-plugin-code-comment.page
 /usr/local/share/help/zh_CN/gedit/gedit-plugin-guide.page
 /usr/local/share/help/zh_CN/gedit/gedit-plugins-doc-stats.page
 /usr/local/share/help/zh_CN/gedit/gedit-plugins-file-browser.page
@@ -1117,6 +1149,7 @@
 /usr/local/share/help/zh_HK/gedit/gedit-open-on-server.page
 /usr/local/share/help/zh_HK/gedit/gedit-open-recent.page
 /usr/local/share/help/zh_HK/gedit/gedit-open-several-files-at-once.page
+/usr/local/share/help/zh_HK/gedit/gedit-plugin-code-comment.page
 /usr/local/share/help/zh_HK/gedit/gedit-plugin-guide.page
 /usr/local/share/help/zh_HK/gedit/gedit-plugins-doc-stats.page
 /usr/local/share/help/zh_HK/gedit/gedit-plugins-file-browser.page
@@ -1151,6 +1184,7 @@
 /usr/local/share/help/zh_TW/gedit/gedit-open-on-server.page
 /usr/local/share/help/zh_TW/gedit/gedit-open-recent.page
 /usr/local/share/help/zh_TW/gedit/gedit-open-several-files-at-once.page
+/usr/local/share/help/zh_TW/gedit/gedit-plugin-code-comment.page
 /usr/local/share/help/zh_TW/gedit/gedit-plugin-guide.page
 /usr/local/share/help/zh_TW/gedit/gedit-plugins-doc-stats.page
 /usr/local/share/help/zh_TW/gedit/gedit-plugins-file-browser.page

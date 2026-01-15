@@ -1,5 +1,7 @@
-# Total size: 3877124
+# Total size: 3889863
 /usr/local/include/libgedit-gtksourceview-300/gtksourceview/completion-providers/words/gtksourcecompletionwords.h
+/usr/local/include/libgedit-gtksourceview-300/gtksourceview/file-loading-and-saving/gtksourceiconv.h
+/usr/local/include/libgedit-gtksourceview-300/gtksourceview/file-loading-and-saving/gtksourceinputstream.h
 /usr/local/include/libgedit-gtksourceview-300/gtksourceview/gtksource-enumtypes.h
 /usr/local/include/libgedit-gtksourceview-300/gtksourceview/gtksource.h
 /usr/local/include/libgedit-gtksourceview-300/gtksourceview/gtksourceautocleanups.h
@@ -19,6 +21,7 @@
 /usr/local/include/libgedit-gtksourceview-300/gtksourceview/gtksourcegutterrendererpixbuf.h
 /usr/local/include/libgedit-gtksourceview-300/gtksourceview/gtksourcegutterrenderertext.h
 /usr/local/include/libgedit-gtksourceview-300/gtksourceview/gtksourceinit.h
+/usr/local/include/libgedit-gtksourceview-300/gtksourceview/gtksourceiter.h
 /usr/local/include/libgedit-gtksourceview-300/gtksourceview/gtksourcelanguage.h
 /usr/local/include/libgedit-gtksourceview-300/gtksourceview/gtksourcelanguagemanager.h
 /usr/local/include/libgedit-gtksourceview-300/gtksourceview/gtksourcemark.h
@@ -38,7 +41,7 @@
 /usr/local/include/libgedit-gtksourceview-300/gtksourceview/gtksourceview.h
 /usr/local/lib64/girepository-1.0/GtkSource-300.typelib
 /usr/local/lib64/libgedit-gtksourceview-300.so
-/usr/local/lib64/libgedit-gtksourceview-300.so.3
+/usr/local/lib64/libgedit-gtksourceview-300.so.4
 /usr/local/lib64/pkgconfig/libgedit-gtksourceview-300.pc
 /usr/local/share/gir-1.0/GtkSource-300.gir
 /usr/local/share/libgedit-gtksourceview-300/language-specs/R.lang

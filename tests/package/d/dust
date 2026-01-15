@@ -1,0 +1,3 @@
+#!/bin/bash
+dust -h | head
+dust -V

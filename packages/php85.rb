@@ -3,7 +3,7 @@ require 'package'
 class Php85 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'https://www.php.net/'
-  version '8.5.0'
+  version '8.5.1'
   license 'PHP-3.01'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.php.net/distributions/php-#{version}.tar.xz"
@@ -11,9 +11,9 @@ class Php85 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c2787c9323651af3d0a56d0f7ddb70d86e623aa841087c5e219f13ddb0abb763',
-     armv7l: 'c2787c9323651af3d0a56d0f7ddb70d86e623aa841087c5e219f13ddb0abb763',
-     x86_64: 'd86d051c8ef1bde112d102e4085ff704b911335b82707f15ca6f9679e303c74c'
+    aarch64: '1f76317922a018ba7004b2e97d74022f39b13fcfa217fbe1c028a525425ee30e',
+     armv7l: '1f76317922a018ba7004b2e97d74022f39b13fcfa217fbe1c028a525425ee30e',
+     x86_64: '3c6088a4b86cb769c7248660b89c2ed6c99fee83797cd6f7c5d204f5f31dc19b'
   })
 
   depends_on 'aspell_en' => :build

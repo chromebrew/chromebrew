@@ -3,41 +3,36 @@ require 'package'
 class Git_lfs < Package
   description 'Git extension for versioning large files'
   homepage 'https://git-lfs.com/'
-  version '2.13.2'
+  version '3.7.1'
   license 'AGPL-3'
   compatibility 'all'
   source_url "https://github.com/git-lfs/git-lfs/releases/download/v#{version}/git-lfs-v#{version}.tar.gz"
-  source_sha256 '782e6275df9ca370730945112e16a0b8c64b9819f0b61fae52ba1ebbc8dce2d5'
-  binary_compression 'tar.xz'
+  source_sha256 '8f56058622edfea1d111e50e9844ef2f5ce670b2dbe4d55d48e765c943af4351'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '28dd4fe263e71d34c1af024f7955e975a7baa239b25d8fed9982cce213248d5a',
-     armv7l: '28dd4fe263e71d34c1af024f7955e975a7baa239b25d8fed9982cce213248d5a',
-       i686: 'df546bc44ec2978165ffa8c0b31bad8504df93e86e52aac58288df707692a4af',
-     x86_64: '6078b2db1ac18189f96da4aa5cd9ddd78db5575e89080e85824a08b2dc21e958'
+    aarch64: '950c862d38542c4e111c29f196b57e3188bf0aba7e58ae5ae887e4058fb03cf9',
+     armv7l: '950c862d38542c4e111c29f196b57e3188bf0aba7e58ae5ae887e4058fb03cf9',
+       i686: 'b7ac2d1172b5381816f6f0ebc33c0772afa7a990e79b334868fb8d76f4d191bc',
+     x86_64: 'c5c0a929e356957e01d77d61002ffad407dbc191d1167a71134418acfa979b7c'
   })
 
+  depends_on 'asciidoctor' => :build
+  depends_on 'glibc' # R
   depends_on 'go' => :build
-  depends_on 'go_tools' => :build
 
   def self.build
-    system 'gem install -N ronn'
-    system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      CGO_CPPFLAGS=${CXXFLAGS} \
-      CGO_CFLAGS=${CFLAGS} \
-      CGO_CXXFLAGS=${CXXFLAGS} \
-      CGO_LDFLAGS=${LDFLAGS} \
-      GOFLAGS='-buildmode=pie -trimpath -mod=vendor -modcacherw -ldflags=-linkmode=external' \
-      go generate ./commands && go build ."
-    system 'make man'
-    system 'gem uninstall --ignore-dependencies ronn'
+    system 'go build -o bin/git-lfs'
+    Dir['docs/man/*.adoc'].each do |adoc|
+      system "asciidoctor --backend manpage #{adoc}"
+    end
   end
 
   def self.install
-    system "install -Dm755 git-lfs #{CREW_DEST_PREFIX}/bin/git-lfs"
-    system "install -Dm644 -t #{CREW_DEST_MAN_PREFIX}/man1 man/*.1"
-    system "install -Dm644 -t #{CREW_DEST_MAN_PREFIX}/man5 man/*.5"
+    FileUtils.install 'bin/git-lfs', "#{CREW_DEST_PREFIX}/bin/git-lfs", mode: 0o755
+    Dir['docs/man/*.1'].each do |manpage|
+      man = File.basename(manpage)
+      FileUtils.install manpage, "#{CREW_DEST_MAN_PREFIX}/man1/#{man}", mode: 0o644
+    end
   end
 end

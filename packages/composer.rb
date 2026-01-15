@@ -3,13 +3,13 @@ require 'package'
 class Composer < Package
   description 'Dependency Manager for PHP'
   homepage 'https://getcomposer.org/'
-  version '2.9.2'
+  version '2.9.3'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://github.com/composer/composer/releases/download/#{version}/composer.phar"
-  source_sha256 '471f2d857abf0ec18af7b055e61472214d91adb24f9bdbbb864c1c64faad7dd6'
+  source_sha256 '3b3f9503a2d46590170e45edd29734197e797cea545b396d0b2823cac8ef4643'
 
-  depends_on 'php83' unless File.exist? "#{CREW_PREFIX}/bin/php"
+  depends_on 'php84' unless File.exist? "#{CREW_PREFIX}/bin/php"
   depends_on 'xdg_base'
 
   no_compile_needed
