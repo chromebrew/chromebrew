@@ -3,11 +3,11 @@ require 'buildsystems/cmake'
 class Libcpuid < CMake
   description 'libcpuid is a small C library for x86 CPU detection and feature extraction.'
   homepage 'https://libcpuid.sourceforge.net/'
-  version '0.8.1'
+  version '0.8.1-1'
   license 'BSD-2'
   compatibility 'all'
   source_url 'https://github.com/anrieff/libcpuid.git'
-  git_hashtag "v#{version}"
+  git_hashtag "v#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -20,4 +20,13 @@ class Libcpuid < CMake
   depends_on 'glibc' # R
 
   run_tests
+
+  def self.patch
+    patches = [
+      # Fix libdir
+      ['https://github.com/anrieff/libcpuid/pull/221.diff',
+       '2a8cdd016bf9f5996e544c5e58b364f59d5fcfb426568bd6e1369a7c428c83a6']
+    ]
+    ConvenienceFunctions.patch(patches)
+  end
 end
