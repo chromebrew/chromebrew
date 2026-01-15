@@ -19,6 +19,7 @@ autoconf_archive
 awscli
 axel
 b2
+bazel
 bc
 bdftopcf
 bind
