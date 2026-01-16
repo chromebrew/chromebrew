@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.23 (for Chromebrew)
+# version.rb version 3.24 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose -vv]
 
@@ -293,8 +293,8 @@ if filelist.length.positive?
   status_field_length = 17
   version_field_length = 13
 
-  puts "#{'Package'.ljust(package_field_length)}#{'Status'.ljust(status_field_length)}#{'Current'.ljust(version_field_length)}#{'Upstream'.ljust(version_field_length)}#{'Updatable?'.ljust(version_field_length)}Compile?" unless OUTPUT_JSON
-  puts "#{'-------'.ljust(package_field_length)}#{'------'.ljust(status_field_length)}#{'-------'.ljust(version_field_length)}#{'--------'.ljust(version_field_length)}#{'----------'.ljust(version_field_length)}--------" unless OUTPUT_JSON
+  puts "#{'Package'.ljust(package_field_length)}#{'Status'.ljust(status_field_length)}#{'Current'.ljust(version_field_length)}#{'Upstream'.ljust(version_field_length)}Updatable?  Compile?  Autoupdate?" unless OUTPUT_JSON
+  puts "#{'-------'.ljust(package_field_length)}#{'------'.ljust(status_field_length)}#{'-------'.ljust(version_field_length)}#{'--------'.ljust(version_field_length)}----------  --------  -----------" unless OUTPUT_JSON
   filelist.each do |filename|
     @pkg = Package.load_package(filename)
     cleaned_pkg_version = PackageUtils.get_clean_version(@pkg.version)
@@ -491,12 +491,13 @@ if filelist.length.positive?
     when 'Up to date.'
       version_status_string = 'Up to date.'.ljust(status_field_length).lightgreen
     end
-    updatable_string = (updatable_pkg[@pkg.name.to_sym] == 'Yes' ? 'Yes'.ljust(version_field_length).lightgreen : 'No'.ljust(version_field_length).lightred) if updatable_string.nil?
-    compile_string = @pkg.no_compile_needed? || @pkg.is_fake? ? 'No'.lightred : 'Yes'.lightgreen
+    updatable_string = (updatable_pkg[@pkg.name.to_sym] == 'Yes' ? 'Yes         '.lightgreen : 'No          '.lightred) if updatable_string.nil?
+    compile_string = @pkg.no_compile_needed? || @pkg.is_fake? ? 'No        '.lightred : 'Yes       '.lightgreen
+    autoupdate_string = `grep "^#{@pkg.name.downcase}$" "#{CREW_LIB_PATH}/tools/automatically_updatable_packages.txt"`.empty? ? 'No'.lightred : 'Yes'.lightgreen
     versions.push(package: @pkg.name, update_status: versions_updated[@pkg.name.to_sym], version: cleaned_pkg_version, upstream_version: upstream_version)
 
     addendum_string = "#{@pkg.name} cannot be automatically updated: ".red + "#{updatable_pkg[@pkg.name.to_sym]}\n".purple unless updatable_pkg[@pkg.name.to_sym] == 'Yes'
-    version_line_string[@pkg.name.to_sym] = "#{@pkg.name.ljust(package_field_length)}#{version_status_string}#{cleaned_pkg_version.ljust(version_field_length)}#{upstream_version.ljust(version_field_length)}#{updatable_string}#{compile_string}\n"
+    version_line_string[@pkg.name.to_sym] = "#{@pkg.name.ljust(package_field_length)}#{version_status_string}#{cleaned_pkg_version.ljust(version_field_length)}#{upstream_version.ljust(version_field_length)}#{updatable_string}#{compile_string}#{autoupdate_string}\n"
     print version_line_string[@pkg.name.to_sym] if !OUTPUT_JSON && ((versions_updated[@pkg.name.to_sym] == 'Outdated.' && updatable_pkg[@pkg.name.to_sym] == 'Yes') || OUTPUT_ALL)
     print addendum_string unless addendum_string.blank? || OUTPUT_JSON || !CREW_VERBOSE
 
