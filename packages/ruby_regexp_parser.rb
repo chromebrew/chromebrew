@@ -10,4 +10,5 @@ class Ruby_regexp_parser < RUBY
 
   conflicts_ok
   no_compile_needed
+  upstream_name 'regexp_parser'
 end

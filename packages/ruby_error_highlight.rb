@@ -10,4 +10,5 @@ class Ruby_error_highlight < RUBY
 
   conflicts_ok
   no_compile_needed
+  upstream_name 'error_highlight'
 end
