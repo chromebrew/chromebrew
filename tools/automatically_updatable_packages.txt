@@ -21,6 +21,7 @@ autoconf_archive
 awscli
 axel
 b2
+babl
 bazel
 bc
 bdftopcf

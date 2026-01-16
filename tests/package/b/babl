@@ -1,0 +1,3 @@
+#!/bin/bash
+babl -h | head
+babl -v

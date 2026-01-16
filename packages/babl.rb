@@ -3,17 +3,17 @@ require 'buildsystems/meson'
 class Babl < Meson
   description 'babl is a dynamic, any to any, pixel format translation library.'
   homepage 'https://gegl.org/babl/'
-  version '0.1.118'
+  version '0.1.120'
   license 'LGPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/babl.git'
-  git_hashtag "BABL_#{version.split('-').first.gsub('.', '_')}"
+  git_hashtag "BABL_#{version.gsub('.', '_')}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e9c98331062a69a27225181df361fc9094457b104566eb6ccadc124ac8f836f6',
-     armv7l: 'e9c98331062a69a27225181df361fc9094457b104566eb6ccadc124ac8f836f6',
-     x86_64: 'b51feabbec06c9ed1c6734fd788c61682b0d614bb26c9caf6b1b6ac8393de312'
+    aarch64: '2e930124ed3e17713859fa9ec7931fcb8cdb899a440975000857a7e4f2c5f2ad',
+     armv7l: '2e930124ed3e17713859fa9ec7931fcb8cdb899a440975000857a7e4f2c5f2ad',
+     x86_64: '94b27b43d1bf63c4f6cf77302d6aa9d40e315d3f20020d4dbd01cb2801cb7767'
   })
 
   depends_on 'gcc_lib' # R
