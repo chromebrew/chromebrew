@@ -23,6 +23,7 @@ axel
 b2
 babl
 bazel
+bazelisk
 bc
 bdftopcf
 bind

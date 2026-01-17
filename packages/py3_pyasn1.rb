@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_pyasn1 < Pip
   description 'PyASN.1 is a generic ASN.1 library for Python'
   homepage 'https://github.com/etingof/pyasn1/'
-  version "0.6.1-#{CREW_PY_VER}"
+  version "0.6.2-#{CREW_PY_VER}"
   license 'BSD-2'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '172da797ac6550fb12eb8a7cc90db8b88e2be8a7b270d9d375f0a1dfeab44178',
-     armv7l: '172da797ac6550fb12eb8a7cc90db8b88e2be8a7b270d9d375f0a1dfeab44178',
-       i686: 'dd2b51fe843008b5728327a201c462b76adca2f3da012323c184237f2990fcbd',
-     x86_64: '7cf592e5dada02001c17e3588a004f6e0340c22fb38fa57388909b85b3ac1a95'
+    aarch64: 'ef2e5a7ed8b1d20f3aa88de921924c90f5f9d2ef007723fb4e669e7317bbd544',
+     armv7l: 'ef2e5a7ed8b1d20f3aa88de921924c90f5f9d2ef007723fb4e669e7317bbd544',
+       i686: '76f9a00d5a65822f4d5493e2b441182fbf5943ac05445842567a36b35ff5a7e0',
+     x86_64: '0a9ee3d7ccb4895357fa9b63f372fef3ddccdcb4f2a787dd69fe16081b7f7ef0'
   })
 
   depends_on 'python3' => :build

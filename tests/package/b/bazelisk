@@ -1,0 +1,3 @@
+#!/bin/bash
+bazelisk -h 2>&1 | head
+bazelisk --version
