@@ -107,12 +107,14 @@ glslang
 gmmlib
 gnome_calculator
 gnome_console
+gnome_maps
 gnome_online_accounts
 gnome_sudoku
 gobject_introspection
 google_chrome
 libcdr
 libgedit_gtksourceview
+libportal
 libvisio
 libxfce4ui
 nano
