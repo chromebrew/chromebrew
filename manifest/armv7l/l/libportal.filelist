@@ -1,4 +1,4 @@
-# Total size: 237833
+# Total size: 587589
 /usr/local/include/libportal-gtk3/portal-gtk3.h
 /usr/local/include/libportal-gtk4/portal-gtk4.h
 /usr/local/include/libportal/account.h
@@ -7,6 +7,7 @@
 /usr/local/include/libportal/dynamic-launcher.h
 /usr/local/include/libportal/email.h
 /usr/local/include/libportal/filechooser.h
+/usr/local/include/libportal/glib-backports.h
 /usr/local/include/libportal/inhibit.h
 /usr/local/include/libportal/inputcapture-pointerbarrier.h
 /usr/local/include/libportal/inputcapture-zone.h
@@ -28,6 +29,9 @@
 /usr/local/include/libportal/types.h
 /usr/local/include/libportal/updates.h
 /usr/local/include/libportal/wallpaper.h
+/usr/local/lib/girepository-1.0/Xdp-1.0.typelib
+/usr/local/lib/girepository-1.0/XdpGtk3-1.0.typelib
+/usr/local/lib/girepository-1.0/XdpGtk4-1.0.typelib
 /usr/local/lib/libportal-gtk3.so
 /usr/local/lib/libportal-gtk3.so.1
 /usr/local/lib/libportal-gtk3.so.1.0.0
@@ -40,3 +44,12 @@
 /usr/local/lib/pkgconfig/libportal-gtk3.pc
 /usr/local/lib/pkgconfig/libportal-gtk4.pc
 /usr/local/lib/pkgconfig/libportal.pc
+/usr/local/share/gir-1.0/Xdp-1.0.gir
+/usr/local/share/gir-1.0/XdpGtk3-1.0.gir
+/usr/local/share/gir-1.0/XdpGtk4-1.0.gir
+/usr/local/share/vala/vapi/libportal-gtk3.deps
+/usr/local/share/vala/vapi/libportal-gtk3.vapi
+/usr/local/share/vala/vapi/libportal-gtk4.deps
+/usr/local/share/vala/vapi/libportal-gtk4.vapi
+/usr/local/share/vala/vapi/libportal.deps
+/usr/local/share/vala/vapi/libportal.vapi
