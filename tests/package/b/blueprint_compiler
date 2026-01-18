@@ -1,0 +1,3 @@
+#!/bin/bash
+blueprint-compiler --help
+blueprint-compiler --version
