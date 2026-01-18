@@ -129,6 +129,7 @@ rqlite
 signal_desktop
 sphinx
 tepl_6
+terraform
 trzsz
 usql
 vivaldi
