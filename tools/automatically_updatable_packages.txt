@@ -125,6 +125,7 @@ rqlite
 signal_desktop
 sphinx
 tepl_6
+terraform
 usql
 vivaldi
 vscodium
