@@ -3,7 +3,7 @@ require 'package'
 class Trzsz < Package
   description 'Simple file transfer tools, similar to lrzsz (rz/sz), and compatible with tmux.'
   homepage 'https://trzsz.github.io'
-  version '1.1.8'
+  version '1.2.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/trzsz/trzsz-go.git'
