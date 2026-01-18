@@ -1,0 +1,3 @@
+#!/bin/bash
+trzsz -h | head
+trzsz -v
