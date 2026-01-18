@@ -32,6 +32,7 @@ bitmap
 bmon
 brave
 btop
+bun
 caprine
 cargo_c
 codex
