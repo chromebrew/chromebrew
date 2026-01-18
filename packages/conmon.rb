@@ -6,7 +6,7 @@ require 'package'
 class Conmon < Package
   description 'OCI container runtime monitor'
   homepage 'https://github.com/containers/conmon'
-  version '2.1.13'
+  version '2.2.0'
   license 'APACHE'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/containers/conmon.git'
@@ -14,9 +14,9 @@ class Conmon < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '44765056e635186d2346c667a628c3e6c35ab96f145c5fe732519ea334024be9',
-     armv7l: '44765056e635186d2346c667a628c3e6c35ab96f145c5fe732519ea334024be9',
-     x86_64: '282e880b018ce286885eb4be27b24634b2ae6b7f88356a81befcfb1405357200'
+    aarch64: 'ef1d4ac65976cb544587eba612821ba514316c2910307ece17f06725abe7337d',
+     armv7l: 'ef1d4ac65976cb544587eba612821ba514316c2910307ece17f06725abe7337d',
+     x86_64: '2554a5dd5092bc501e88f653ce755382b66f20b9e39036f7fa3b5664e0ed0d3f'
   })
 
   depends_on 'glib' # R
