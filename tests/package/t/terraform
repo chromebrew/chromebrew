@@ -1,0 +1,3 @@
+#!/bin/bash
+terraform -h | head
+terraform -v
