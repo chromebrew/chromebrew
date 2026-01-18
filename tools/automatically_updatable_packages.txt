@@ -29,6 +29,7 @@ bdftopcf
 bind
 bison
 bitmap
+blueprint_compiler
 bmon
 brave
 btop
