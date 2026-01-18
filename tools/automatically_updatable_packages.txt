@@ -43,6 +43,7 @@ delve
 deno
 detox
 difftastic
+dmd
 doctl
 dust
 edge
