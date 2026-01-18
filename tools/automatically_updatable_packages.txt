@@ -29,13 +29,16 @@ bdftopcf
 bind
 bison
 bitmap
+blueprint_compiler
 bmon
 brave
 btop
+bun
 caprine
 cargo_c
 codex
 composer
+conmon
 dart
 dav1d
 dbeaver
@@ -126,6 +129,7 @@ signal_desktop
 sphinx
 tepl_6
 terraform
+trzsz
 usql
 vivaldi
 vscodium

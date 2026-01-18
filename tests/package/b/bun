@@ -1,3 +1,3 @@
 #!/bin/bash
-bun
-bun --version
+bun -h | head
+bun -v
