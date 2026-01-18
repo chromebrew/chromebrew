@@ -1,0 +1,3 @@
+#!/bin/bash
+conmon -h | head
+conmon --version
