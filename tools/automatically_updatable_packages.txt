@@ -15,6 +15,7 @@ apr
 apr_util
 armadillo
 arp_scan
+asciinema
 asunder
 at_spi2_core
 augeas
