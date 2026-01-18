@@ -1,0 +1,3 @@
+#!/bin/bash
+tssh -h | head
+tssh -v

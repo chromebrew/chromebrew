@@ -131,6 +131,7 @@ sphinx
 tepl_6
 terraform
 trzsz
+tssh
 usql
 vivaldi
 vscodium
