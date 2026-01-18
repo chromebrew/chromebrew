@@ -3,7 +3,7 @@ require 'package'
 class Tssh < Package
   description 'Alternative ssh client with additional features.'
   homepage 'https://trzsz.github.io/ssh'
-  version '0.1.23'
+  version '0.1.24'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/trzsz/trzsz-ssh.git'
