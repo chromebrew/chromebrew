@@ -1,0 +1,3 @@
+#!/bin/bash
+crystal -h | head
+crystal -v
