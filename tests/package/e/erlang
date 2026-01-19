@@ -1,0 +1,8 @@
+#!/bin/bash
+dialyzer -h | head
+dialyzer -v
+epmd -h 2>&1 | head
+erlc -help 2>&1 | head
+to_erl -h 2>&1
+typer -h | head
+typer -v
