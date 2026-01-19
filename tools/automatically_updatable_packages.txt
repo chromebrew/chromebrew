@@ -57,6 +57,7 @@ elixir
 enchant
 enet
 epiphany
+erlang
 evince
 exfatprogs
 exo
