@@ -1,0 +1,15 @@
+#!/bin/bash
+ddemangle -h 2>&1
+dub --version
+dustmite --version
+ldc-build-plugin -h | head
+ldc-build-runtime --version
+ldc-profdata --version
+ldc-profgen --version
+ldc-prune-cache -h 2>&1
+ldc2 -h | head
+ldc2 --version | head
+ldmd2 --version | head
+rdmd --version | head
+reggae --version | head
+timetrace2txt --help 2>&1

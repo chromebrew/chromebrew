@@ -119,6 +119,7 @@ gnome_online_accounts
 gnome_sudoku
 gobject_introspection
 google_chrome
+ldc
 libcdr
 libgedit_gtksourceview
 libportal
