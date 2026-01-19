@@ -129,6 +129,7 @@ nano
 ocaml
 opencode
 opera
+protobuf
 rqlite
 signal_desktop
 sphinx

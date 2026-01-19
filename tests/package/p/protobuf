@@ -1,0 +1,3 @@
+#!/bin/bash
+protoc -h | head
+protoc --version
