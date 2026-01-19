@@ -3,7 +3,7 @@ require 'buildsystems/rust'
 class Asciinema < RUST
   description 'Terminal session recorder'
   homepage 'https://asciinema.org/'
-  version '3.0.1'
+  version '3.1.0'
   license 'GPL-3+'
   compatibility 'all'
   source_url 'https://github.com/asciinema/asciinema.git'
@@ -11,10 +11,10 @@ class Asciinema < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '99c98bb937becd11ed33a2e698825fccd57f57a7bf1eea9a4b159212537d38e6',
-     armv7l: '99c98bb937becd11ed33a2e698825fccd57f57a7bf1eea9a4b159212537d38e6',
-       i686: '0e93849e396c9686bef0a409c5f4330d2ffd4636087f3aedb84dba84b6dfa50e',
-     x86_64: '6be54897e8e98b7baa45f0d33088a72828539308d8cbf55d084e25f2cbd46554'
+    aarch64: '5904e59ee2743d01a7f9d791e68925db3bf96f23d9b018933156cfa4c0753c37',
+     armv7l: '5904e59ee2743d01a7f9d791e68925db3bf96f23d9b018933156cfa4c0753c37',
+       i686: 'b07ab36cb1b4a71a73f94694fa87bb2bd7bfc697792e9a131af19f4d73615bda',
+     x86_64: '021f9a3fda92899c292dd0fc1134ce5a5827470147895abf1edba3d942730d08'
   })
 
   depends_on 'gcc_lib' # R

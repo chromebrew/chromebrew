@@ -1,3 +1,4 @@
+abseil_cpp
 acl
 acpi
 acpica
@@ -14,6 +15,7 @@ apr
 apr_util
 armadillo
 arp_scan
+asciinema
 asunder
 at_spi2_core
 augeas
@@ -40,6 +42,7 @@ codex
 composer
 conmon
 cpu_x
+crystal
 dart
 dav1d
 dbeaver
