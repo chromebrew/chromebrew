@@ -53,8 +53,6 @@ class Evolution_data_server < CMake
 
   gnome
 
-  libsuffix = ARCH.eql?('x86_64') ? '64' : ''
-
   cmake_options "-DCMAKE_VERBOSE_MAKEFILE=ON \
     -DENABLE_CANBERRA=OFF \
     -DENABLE_EXAMPLES=OFF \
@@ -64,7 +62,7 @@ class Evolution_data_server < CMake
     -DENABLE_OAUTH2=OFF \
     -DENABLE_VALA_BINDINGS=OFF \
     -DENABLE_WEATHER=OFF \
-    -DLIB_SUFFIX=#{libsuffix} \
+    -DLIB_SUFFIX=#{ARCH.eql?('x86_64') ? '64' : ''} \
     -DWITH_NSPR_INCLUDES=#{CREW_PREFIX}/include/nspr \
     -DWITH_NSS_INCLUDES=#{CREW_PREFIX}/include/nss \
     -DWITH_OPENLDAP=OFF \
