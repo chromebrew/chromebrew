@@ -6,7 +6,7 @@ class Llvm21_lib < Package
   homepage Llvm21_build.homepage
   version '21.1.7'
   # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
-  puts "#{self} version differs from llvm version #{Llvm21_build.version}".orange if version != Llvm21_build.version
+  puts "#{self} version differs from llvm version #{Llvm21_build.version}".orange if version != Llvm21_build.version && !ENV['NESTED_CI']
   license Llvm21_build.license
   compatibility 'all'
   source_url 'SKIP'
