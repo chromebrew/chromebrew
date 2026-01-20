@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_json2xml < Pip
   description 'json to xml converter'
   homepage 'https://json2xml.readthedocs.io/'
-  version "6.0.1-#{CREW_PY_VER}"
+  version "6.0.2-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'
