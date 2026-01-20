@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Evolution_data_server < CMake
   description 'Centralized access to appointments and contacts'
   homepage 'https://wiki.gnome.org/Apps/Evolution'
-  version "3.58.2-#{CREW_ICU_VER}"
+  version "3.59.1-#{CREW_ICU_VER}"
   license 'LGPL-2 or LGPL-3, BSD and Sleepycat'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/evolution-data-server.git'
@@ -36,7 +36,7 @@ class Evolution_data_server < CMake
   depends_on 'libdb' # R
   depends_on 'libical' # R
   depends_on 'libsecret' # R
-  depends_on 'libsoup'
+  depends_on 'libsoup' # R
   depends_on 'libsoup2' # R
   depends_on 'libxml2' # R
   depends_on 'nss' # R
@@ -53,16 +53,18 @@ class Evolution_data_server < CMake
 
   gnome
 
+  libsuffix = ARCH.eql?('x86_64') ? '64' : ''
+
   cmake_options "-DCMAKE_VERBOSE_MAKEFILE=ON \
     -DENABLE_CANBERRA=OFF \
     -DENABLE_EXAMPLES=OFF \
     -DENABLE_GOA=OFF \
     -DENABLE_GOOGLE=OFF \
     -DENABLE_GTK_DOC=OFF \
-    -DENABLE_INTROSPECTION=OFF \
     -DENABLE_OAUTH2=OFF \
     -DENABLE_VALA_BINDINGS=OFF \
     -DENABLE_WEATHER=OFF \
+    -DLIB_SUFFIX=#{libsuffix} \
     -DWITH_NSPR_INCLUDES=#{CREW_PREFIX}/include/nspr \
     -DWITH_NSS_INCLUDES=#{CREW_PREFIX}/include/nss \
     -DWITH_OPENLDAP=OFF \

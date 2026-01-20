@@ -59,6 +59,7 @@ enet
 epiphany
 erlang
 evince
+evolution_data_server
 exfatprogs
 exo
 extra_cmake_modules
