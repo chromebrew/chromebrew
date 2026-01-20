@@ -62,7 +62,7 @@ class Evolution_data_server < CMake
     -DENABLE_OAUTH2=OFF \
     -DENABLE_VALA_BINDINGS=OFF \
     -DENABLE_WEATHER=OFF \
-    -DLIB_SUFFIX=#{ARCH.eql?('x86_64') ? '64' : ''} \
+    -DLIB_SUFFIX=#{'64' if ARCH.eql?('x86_64')} \
     -DWITH_NSPR_INCLUDES=#{CREW_PREFIX}/include/nspr \
     -DWITH_NSS_INCLUDES=#{CREW_PREFIX}/include/nss \
     -DWITH_OPENLDAP=OFF \
