@@ -1,4 +1,4 @@
-# Total size: 16998305
+# Total size: 16977357
 /usr/local/etc/xdg/autostart/org.gnome.Evolution-alarm-notify.desktop
 /usr/local/include/evolution-data-server/camel/camel-address.h
 /usr/local/include/evolution-data-server/camel/camel-async-closure.h
@@ -386,8 +386,8 @@
 /usr/local/lib/evolution-data-server/registry-modules/module-webdav-backend.so
 /usr/local/lib/evolution-data-server/registry-modules/module-yahoo-backend.so
 /usr/local/lib/libcamel-1.2.so
-/usr/local/lib/libcamel-1.2.so.66
-/usr/local/lib/libcamel-1.2.so.66.0.0
+/usr/local/lib/libcamel-1.2.so.67
+/usr/local/lib/libcamel-1.2.so.67.0.0
 /usr/local/lib/libebackend-1.2.so
 /usr/local/lib/libebackend-1.2.so.11
 /usr/local/lib/libebackend-1.2.so.11.0.0
@@ -395,8 +395,8 @@
 /usr/local/lib/libebook-1.2.so.21
 /usr/local/lib/libebook-1.2.so.21.1.3
 /usr/local/lib/libebook-contacts-1.2.so
-/usr/local/lib/libebook-contacts-1.2.so.4
-/usr/local/lib/libebook-contacts-1.2.so.4.0.0
+/usr/local/lib/libebook-contacts-1.2.so.5
+/usr/local/lib/libebook-contacts-1.2.so.5.0.0
 /usr/local/lib/libecal-2.0.so
 /usr/local/lib/libecal-2.0.so.3
 /usr/local/lib/libecal-2.0.so.3.0.0
@@ -443,7 +443,6 @@
 /usr/local/libexec/evolution-data-server/evolution-alarm-notify
 /usr/local/libexec/evolution-data-server/evolution-oauth2-handler
 /usr/local/libexec/evolution-data-server/list-sources
-/usr/local/libexec/evolution-scan-gconf-tree-xml
 /usr/local/libexec/evolution-source-registry
 /usr/local/libexec/evolution-user-prompter
 /usr/local/share/GConf/gsettings/evolution-data-server.convert
