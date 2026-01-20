@@ -3,7 +3,7 @@ require 'package'
 class Bazelisk < Package
   description 'A user-friendly launcher for Bazel.'
   homepage 'https://github.com/bazelbuild/bazelisk'
-  version '1.28.0'
+  version '1.28.1'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/bazelbuild/bazelisk.git'
