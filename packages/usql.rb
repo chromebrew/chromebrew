@@ -10,7 +10,7 @@ class Usql < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: 'aebb1e0fb75dab1b1627c2e315b2b7810f7fac636efb4d2b7acb74252bd1a571'
+     x86_64: '0c6069338f63210c787584c04bcb36dfd83b457d68d9688fc91c30f6efa31e18'
   })
 
   depends_on 'gcc_lib' # R
