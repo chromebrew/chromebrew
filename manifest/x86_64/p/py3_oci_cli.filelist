@@ -1,4 +1,4 @@
-# Total size: 143887821
+# Total size: 144361146
 /usr/local/bin/create_backup_from_onprem
 /usr/local/bin/oci
 /usr/local/lib/python3.14/site-packages/alloy/__init__.py
@@ -37,15 +37,15 @@
 /usr/local/lib/python3.14/site-packages/interactive/prompt_session.py
 /usr/local/lib/python3.14/site-packages/interactive/supported_resource_types.py
 /usr/local/lib/python3.14/site-packages/interactive/utils.py
-/usr/local/lib/python3.14/site-packages/oci_cli-3.72.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/oci_cli-3.72.0.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/oci_cli-3.72.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/oci_cli-3.72.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/oci_cli-3.72.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/oci_cli-3.72.0.dist-info/THIRD_PARTY_LICENSES.txt
-/usr/local/lib/python3.14/site-packages/oci_cli-3.72.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/oci_cli-3.72.0.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/oci_cli-3.72.0.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/oci_cli-3.72.1.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/oci_cli-3.72.1.dist-info/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/oci_cli-3.72.1.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/oci_cli-3.72.1.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/oci_cli-3.72.1.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/oci_cli-3.72.1.dist-info/THIRD_PARTY_LICENSES.txt
+/usr/local/lib/python3.14/site-packages/oci_cli-3.72.1.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/oci_cli-3.72.1.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/oci_cli-3.72.1.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/__init__.py
 /usr/local/lib/python3.14/site-packages/oci_cli/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci_cli/__pycache__/cli.cpython-314.pyc
@@ -3869,8 +3869,12 @@
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/autonomous-container-database/change-compartment.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/autonomous-container-database/change-dataguard-role.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/autonomous-container-database/convert-standby.txt
+/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/autonomous-container-database/create-autonomous-container-database-aws-encryption-key-details.txt
+/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/autonomous-container-database/create-autonomous-container-database-azure-encryption-key-details.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/autonomous-container-database/create-autonomous-container-database-create-autonomous-container-database-details.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/autonomous-container-database/create-autonomous-container-database-create-autonomous-container-database-from-backup-details.txt
+/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/autonomous-container-database/create-autonomous-container-database-external-hsm-encryption-details.txt
+/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/autonomous-container-database/create-autonomous-container-database-google-cloud-provider-encryption-key-details.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/autonomous-container-database/create.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/autonomous-container-database/edit-autonomous-container-database-dataguard.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/autonomous-container-database/failover-autonomous-container-database-dataguard.txt
@@ -3933,6 +3937,7 @@
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/autonomous-database/fail-over.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/autonomous-database/generate-wallet.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/autonomous-database/get.txt
+/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/autonomous-database/import-transportable-tablespace.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/autonomous-database/list-autonomous-database-peers.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/autonomous-database/list-clones.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/autonomous-database/list-elastic-pool-cost-savings.txt
@@ -4006,8 +4011,10 @@
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/cloud-autonomous-vm-cluster/get.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/cloud-autonomous-vm-cluster/list-cloud-autonomous-vm-cluster-acd-resource-usage.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/cloud-autonomous-vm-cluster/list.txt
+/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/cloud-autonomous-vm-cluster/register-cloud-autonomous-vm-cluster-pkcs.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/cloud-autonomous-vm-cluster/rotate-cloud-autonomous-vm-cluster-ords-certs.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/cloud-autonomous-vm-cluster/rotate-cloud-autonomous-vm-cluster-ssl-certs.txt
+/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/cloud-autonomous-vm-cluster/unregister-cloud-autonomous-vm-cluster-pkcs.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/cloud-autonomous-vm-cluster/update.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/cloud-exa-infra.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/cloud-exa-infra/add-storage.txt
@@ -4108,6 +4115,7 @@
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/database/reinstate-data-guard.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/database/restore.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/database/rotate-vault-key.txt
+/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/database/run-data-patch.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/database/set-oci-db-key-version.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/database/switch-over-data-guard.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/database/update-data-guard.txt
@@ -4117,6 +4125,10 @@
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/database/upgrade-with-db-home.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/database/upgrade-with-db-version.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/database/upgrade.txt
+/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/db-connection-bundle.txt
+/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/db-connection-bundle/download.txt
+/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/db-connection-bundle/get.txt
+/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/db-connection-bundle/list.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/db-home.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/db-home/create-db-home-create-db-home-with-vm-cluster-id-from-database-details.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/db/db-home/create.txt
@@ -4609,9 +4621,9 @@
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/delegate-access-control/service-provider/list.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/delegate-access-control/work-request.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/delegate-access-control/work-request/work-request-error.txt
-/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/delegate-access-control/work-request/work-request-error/list.txt
-/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/delegate-access-control/work-request/work-request-log-entry.txt
-/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/delegate-access-control/work-request/work-request-log-entry/list-work-request-logs.txt
+/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/delegate-access-control/work-request/work-request-error/list-errors.txt
+/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/delegate-access-control/work-request/work-request-log.txt
+/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/delegate-access-control/work-request/work-request-log/list-logs.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/delegate-access-control/work-request/work-request.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/delegate-access-control/work-request/work-request/get.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/delegate-access-control/work-request/work-request/list.txt
@@ -5851,6 +5863,7 @@
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/generative-ai-inference/apply-guardrails-result/apply-guardrails-guardrails-text-input.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/generative-ai-inference/apply-guardrails-result/apply-guardrails.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/generative-ai-inference/chat-result.txt
+/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/generative-ai-inference/chat-result/chat-cohere-chat-request-v2.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/generative-ai-inference/chat-result/chat-cohere-chat-request.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/generative-ai-inference/chat-result/chat-dedicated-serving-mode.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/generative-ai-inference/chat-result/chat-generic-chat-request.txt
@@ -5868,6 +5881,16 @@
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/generative-ai-inference/summarize-text-result.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/generative-ai-inference/summarize-text-result/summarize-text.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/generative-ai.txt
+/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/generative-ai/api-key-collection.txt
+/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/generative-ai/api-key-collection/list-api-keys.txt
+/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/generative-ai/api-key.txt
+/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/generative-ai/api-key/change-compartment.txt
+/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/generative-ai/api-key/create.txt
+/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/generative-ai/api-key/delete.txt
+/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/generative-ai/api-key/get.txt
+/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/generative-ai/api-key/renew.txt
+/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/generative-ai/api-key/set-api-key-state.txt
+/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/generative-ai/api-key/update.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/generative-ai/dedicated-ai-cluster-collection.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/generative-ai/dedicated-ai-cluster-collection/list-dedicated-ai-clusters.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/generative-ai/dedicated-ai-cluster.txt
@@ -9396,9 +9419,9 @@
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/organizations/subscription/list-available-regions.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/organizations/subscription/list.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/organizations/work-request-error.txt
-/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/organizations/work-request-error/list.txt
-/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/organizations/work-request-log-entry.txt
-/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/organizations/work-request-log-entry/list.txt
+/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/organizations/work-request-error/list-errors.txt
+/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/organizations/work-request-log.txt
+/usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/organizations/work-request-log/list.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/organizations/work-request.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/organizations/work-request/get.txt
 /usr/local/lib/python3.14/site-packages/oci_cli/help_text_producer/data_files/text/cmdref/organizations/work-request/list.txt
