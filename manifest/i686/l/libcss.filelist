@@ -1,4 +1,4 @@
-# Total size: 683614
+# Total size: 691064
 /usr/local/include/libcss/computed.h
 /usr/local/include/libcss/errors.h
 /usr/local/include/libcss/font_face.h
@@ -10,7 +10,8 @@
 /usr/local/include/libcss/select.h
 /usr/local/include/libcss/stylesheet.h
 /usr/local/include/libcss/types.h
+/usr/local/include/libcss/unit.h
 /usr/local/lib/libcss.so
 /usr/local/lib/libcss.so.0
-/usr/local/lib/libcss.so.0.9.1
+/usr/local/lib/libcss.so.0.9.2
 /usr/local/lib/pkgconfig/libcss.pc
