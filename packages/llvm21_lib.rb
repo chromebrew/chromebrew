@@ -4,7 +4,7 @@ Package.load_package("#{__dir__}/llvm21_build.rb")
 class Llvm21_lib < Package
   description 'LibLLVM and llvm-strip'
   homepage Llvm21_build.homepage
-  version '21.1.7'
+  version '21.1.8'
   # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
   puts "#{self} version differs from llvm version #{Llvm21_build.version}".orange if version != Llvm21_build.version && !ENV['NESTED_CI']
   license Llvm21_build.license
