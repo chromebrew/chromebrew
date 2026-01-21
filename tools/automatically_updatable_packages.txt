@@ -53,6 +53,7 @@ dmd
 doctl
 dust
 edge
+elinks
 elixir
 enchant
 enet
@@ -124,6 +125,7 @@ google_chrome
 ldc
 libcdr
 libcss
+libdom
 libgedit_gtksourceview
 libparserutils
 libportal

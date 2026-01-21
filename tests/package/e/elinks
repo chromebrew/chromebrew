@@ -1,0 +1,3 @@
+#!/bin/bash
+elinks -help | head
+elinks -version

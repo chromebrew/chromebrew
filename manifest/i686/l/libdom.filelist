@@ -1,4 +1,4 @@
-# Total size: 719783
+# Total size: 640191
 /usr/local/include/dom/bindings/hubbub/errors.h
 /usr/local/include/dom/bindings/hubbub/parser.h
 /usr/local/include/dom/bindings/xml/xmlerror.h
@@ -20,6 +20,7 @@
 /usr/local/include/dom/core/pi.h
 /usr/local/include/dom/core/string.h
 /usr/local/include/dom/core/text.h
+/usr/local/include/dom/core/tokenlist.h
 /usr/local/include/dom/core/typeinfo.h
 /usr/local/include/dom/dom.h
 /usr/local/include/dom/events/custom_event.h
@@ -96,7 +97,8 @@
 /usr/local/include/dom/html/html_title_element.h
 /usr/local/include/dom/html/html_ulist_element.h
 /usr/local/include/dom/inttypes.h
+/usr/local/include/dom/walk.h
 /usr/local/lib/libdom.so
 /usr/local/lib/libdom.so.0
-/usr/local/lib/libdom.so.0.4.1
+/usr/local/lib/libdom.so.0.4.2
 /usr/local/lib/pkgconfig/libdom.pc
