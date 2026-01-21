@@ -3,7 +3,7 @@ require 'package'
 class Usql < Package
   description 'Universal command-line interface for SQL databases'
   homepage 'https://github.com/xo/usql'
-  version '0.20.0'
+  version '0.20.8'
   license 'MIT'
   compatibility 'x86_64'
   source_url 'SKIP'
