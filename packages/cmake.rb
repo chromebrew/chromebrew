@@ -11,10 +11,10 @@ class Cmake < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd6c6ae7fd0ce7f0d622cac4852d1c90eba6c641ed97b986d750c1c9d79fb6a0a',
-     armv7l: 'd6c6ae7fd0ce7f0d622cac4852d1c90eba6c641ed97b986d750c1c9d79fb6a0a',
-       i686: 'bc77335ff8404a678827d0421bf53f410bdb8f93b1649092bab07185088840a1',
-     x86_64: 'fd22e57cce0510b4b0bb061cce7416ebdbb05da36759baa7b3b40789d1eef1e2'
+    aarch64: '4465af609eaab8aa0c47e6a8cb2f7ca5ed7ef35d403ea9d9e508237c60a99073',
+     armv7l: '4465af609eaab8aa0c47e6a8cb2f7ca5ed7ef35d403ea9d9e508237c60a99073',
+       i686: 'ab2e456c5ffa22da7e76c5a98e2e1afa878269ca09f3a01866f4c0e74b77506a',
+     x86_64: 'd4c40eefdcf820d1459f8e1b1203da06c591b81f09986fa84cf5889b11ded8f6'
   })
 
   depends_on 'bzip2' => :build
