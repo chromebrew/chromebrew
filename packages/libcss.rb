@@ -3,35 +3,45 @@ require 'package'
 class Libcss < Package
   description 'CSS parser and selection engine, written in C'
   homepage 'https://www.netsurf-browser.org'
-  version '0.9.1'
+  version '0.9.2'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://download.netsurf-browser.org/libs/releases/libcss-0.9.1-src.tar.gz'
-  source_sha256 'd2dce16e93392e8d6a7209420d47c2d56a3811701a0e81a724fc541c63d3c6dc'
-  binary_compression 'tar.xz'
+  source_url "https://download.netsurf-browser.org/libs/releases/libcss-#{version}-src.tar.gz"
+  source_sha256 '2df215bbec34d51d60c1a04b01b2df4d5d18f510f1f3a7af4b80cddb5671154e'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f34982b8995086556d75aa49105afdc8478f204a32c4ec01d53d4696b1419916',
-     armv7l: 'f34982b8995086556d75aa49105afdc8478f204a32c4ec01d53d4696b1419916',
-       i686: '8b75584cdc3db5d1a6a78653ca8926f7108a1dc19f053675a89cf2d174662aa1',
-     x86_64: '8de9cd9715f8089a787b3bd757161690d13b409badb503875d1b069815b80d3c'
+    aarch64: '2ed5acd3592424cf2bb3280570ea27a707e8dc8a803819dec31132f599baa5fc',
+     armv7l: '2ed5acd3592424cf2bb3280570ea27a707e8dc8a803819dec31132f599baa5fc',
+       i686: '2f5285be52fa5955d6b322271a5aa82a7209ee2113b67a23fb137a4c99d0cedf',
+     x86_64: 'f9186c282c557ba8d044a8df80d26840b959be3274b0f7933844f0602db2cff1'
   })
 
+  depends_on 'glibc' # R
+  depends_on 'libparserutils' # R
+  depends_on 'libwapcaplet' # R
   depends_on 'netsurf_buildsystem' => :build
-  depends_on 'libparserutils'
-  depends_on 'libwapcaplet'
+
+  @env = {
+    'PREFIX' => CREW_PREFIX,
+    'LIBDIR' => "lib#{CREW_LIB_SUFFIX}",
+    'DESTDIR' => CREW_DEST_DIR,
+    'COMPONENT_TYPE' => 'lib-shared'
+  }
+
+  def self.patch
+    # Fix error: ‘calloc’ sizes specified with ‘sizeof’ in the earlier argument and not in the later argument.
+    system "sed -i 's/sizeof(css_computed_style), 1/1, sizeof(css_computed_style)/' src/select/computed.c"
+    system "sed -i 's/sizeof(struct css_node_data), 1/1, sizeof(struct css_node_data)/' src/select/select.c"
+    system "sed -i 's/sizeof(css_select_ctx), 1/1, sizeof(css_select_ctx)/' src/select/select.c"
+    system "sed -i 's/sizeof(css_bloom), CSS_BLOOM_SIZE/CSS_BLOOM_SIZE, sizeof(css_bloom)/' src/select/select.c"
+  end
 
   def self.build
-    system "make PREFIX=#{CREW_PREFIX} COMPONENT_TYPE=lib-shared"
+    system @env, 'make'
   end
 
   def self.install
-    system "make install PREFIX=#{CREW_PREFIX} COMPONENT_TYPE=lib-shared DESTDIR=#{CREW_DEST_DIR}"
-    case ARCH
-    when 'x86_64'
-      Dir.chdir CREW_DEST_PREFIX do
-        FileUtils.mv 'lib/', 'lib64/'
-      end
-    end
+    system @env, 'make install'
   end
 end
