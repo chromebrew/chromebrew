@@ -9,7 +9,7 @@ class Openmp < Package
   homepage 'https://openmp.llvm.org/'
   version llvm_build_obj.version
   # When upgrading llvm_build*, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
-  puts "#{self} version differs from llvm version #{llvm_build_obj.version}".orange if version != llvm_build_obj.version
+  puts "#{self} version differs from llvm version #{llvm_build_obj.version}".orange if version != llvm_build_obj.version && !ENV['NESTED_CI']
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/llvm/llvm-project.git'
