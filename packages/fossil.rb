@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Fossil < Autotools
   description 'Fossil is a simple, high-reliability, distributed software configuration management system'
   homepage 'https://fossil-scm.org/home/doc/trunk/www/index.wiki'
-  version '2.24'
+  version '2.27'
   license 'BSD-2'
   compatibility 'all'
   source_url 'https://github.com/drhsqlite/fossil-mirror.git'
