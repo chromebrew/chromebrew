@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Libngtcp2 < CMake
   description 'Implementation of IETF QUIC protocol'
   homepage 'https://github.com/ngtcp2/ngtcp2'
-  version '1.19.0'
+  version '1.20.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/ngtcp2/ngtcp2.git'
