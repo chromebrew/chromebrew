@@ -1,4 +1,4 @@
-# Total size: 3108856
+# Total size: 3105921
 /usr/local/include/ngtcp2/ngtcp2.h
 /usr/local/include/ngtcp2/ngtcp2_crypto.h
 /usr/local/include/ngtcp2/ngtcp2_crypto_gnutls.h
@@ -11,15 +11,15 @@
 /usr/local/lib64/libngtcp2.a
 /usr/local/lib64/libngtcp2.so
 /usr/local/lib64/libngtcp2.so.16
-/usr/local/lib64/libngtcp2.so.16.7.2
+/usr/local/lib64/libngtcp2.so.16.7.3
 /usr/local/lib64/libngtcp2_crypto_gnutls.a
 /usr/local/lib64/libngtcp2_crypto_gnutls.so
 /usr/local/lib64/libngtcp2_crypto_gnutls.so.8
-/usr/local/lib64/libngtcp2_crypto_gnutls.so.8.3.0
+/usr/local/lib64/libngtcp2_crypto_gnutls.so.8.3.1
 /usr/local/lib64/libngtcp2_crypto_ossl.a
 /usr/local/lib64/libngtcp2_crypto_ossl.so
 /usr/local/lib64/libngtcp2_crypto_ossl.so.0
-/usr/local/lib64/libngtcp2_crypto_ossl.so.0.1.0
+/usr/local/lib64/libngtcp2_crypto_ossl.so.0.1.1
 /usr/local/lib64/pkgconfig/libngtcp2.pc
 /usr/local/lib64/pkgconfig/libngtcp2_crypto_gnutls.pc
 /usr/local/lib64/pkgconfig/libngtcp2_crypto_ossl.pc
