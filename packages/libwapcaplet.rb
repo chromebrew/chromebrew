@@ -6,7 +6,7 @@ class Libwapcaplet < Package
   version '0.4.3'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://download.netsurf-browser.org/libs/releases/libwapcaplet-0.4.3-src.tar.gz'
+  source_url "https://download.netsurf-browser.org/libs/releases/libwapcaplet-#{version}-src.tar.gz"
   source_sha256 '9b2aa1dd6d6645f8e992b3697fdbd87f0c0e1da5721fa54ed29b484d13160c5c'
   binary_compression 'tar.xz'
 
@@ -19,17 +19,18 @@ class Libwapcaplet < Package
 
   depends_on 'netsurf_buildsystem' => :build
 
+  @env = {
+    'PREFIX' => CREW_PREFIX,
+    'LIBDIR' => "lib#{CREW_LIB_SUFFIX}",
+    'DESTDIR' => CREW_DEST_DIR,
+    'COMPONENT_TYPE' => 'lib-shared'
+  }
+
   def self.build
-    system "make PREFIX=#{CREW_PREFIX} COMPONENT_TYPE=lib-shared"
+    system @env, 'make'
   end
 
   def self.install
-    system "make install PREFIX=#{CREW_PREFIX} COMPONENT_TYPE=lib-shared DESTDIR=#{CREW_DEST_DIR}"
-    case ARCH
-    when 'x86_64'
-      Dir.chdir CREW_DEST_PREFIX do
-        FileUtils.mv 'lib/', 'lib64/'
-      end
-    end
+    system @env, 'make install'
   end
 end
