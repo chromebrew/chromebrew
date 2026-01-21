@@ -11,9 +11,9 @@ class Freerdp < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '955e013a8a873d62f49a0d13446dd9d2e6c4676edd1ed54462e218ad388b3976',
-     armv7l: '955e013a8a873d62f49a0d13446dd9d2e6c4676edd1ed54462e218ad388b3976',
-     x86_64: 'de785a005e5edb81d1ab5cd722b70115850e58d75f59cc007254071245ef5805'
+    aarch64: 'b176fdc494851da5a5e1aeeb02cefa9a4f659ce60a84b0863aeb22ca48652cf0',
+     armv7l: 'b176fdc494851da5a5e1aeeb02cefa9a4f659ce60a84b0863aeb22ca48652cf0',
+     x86_64: '0a3bdff0b82fa1c391b0bb8852437639ad1c35b5b32d953ec59aa2be77c94007'
   })
 
   depends_on 'alsa_lib' # R
