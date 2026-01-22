@@ -132,6 +132,7 @@ libparserutils
 libportal
 libvisio
 libxfce4ui
+mullvad
 nano
 ocaml
 opencode
