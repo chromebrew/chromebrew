@@ -1,0 +1,3 @@
+#!/bin/bash
+fakeroot -h 2>&1
+fakeroot -v
