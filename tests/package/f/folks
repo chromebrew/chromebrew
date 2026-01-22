@@ -1,0 +1,3 @@
+#!/bin/bash
+folks-import -h
+folks-inspect -h
