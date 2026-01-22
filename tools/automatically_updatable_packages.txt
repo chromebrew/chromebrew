@@ -110,6 +110,7 @@ freerdp
 freetds
 fribidi
 frp
+fuse3
 gambit
 gedit
 git_lfs

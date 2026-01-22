@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Fuse3 < Meson
   description 'The reference implementation of the Linux FUSE (Filesystem in Userspace) interface.'
   homepage 'https://github.com/libfuse/libfuse/'
-  version '3.16.2'
+  version '3.18.1'
   license 'GPL-2+'
   compatibility 'all'
   source_url 'https://github.com/libfuse/libfuse.git'
@@ -11,10 +11,10 @@ class Fuse3 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7596282fa27cbe6683c81cb3158159421b3a21834db71f4130fbea2d7d8ca59a',
-     armv7l: '7596282fa27cbe6683c81cb3158159421b3a21834db71f4130fbea2d7d8ca59a',
-       i686: 'b6197530830442cb1225334e9fa29d00a113ded9a4ff7e072c335e91e468244e',
-     x86_64: '14b191a1e6b19c58f9e45861fae0be8b50a10803dab46b98ac82a3c6f906c60b'
+    aarch64: 'a07a40a56054303557bac6c18a4d500eb2779900bdb34183fd9fa122f644a675',
+     armv7l: 'a07a40a56054303557bac6c18a4d500eb2779900bdb34183fd9fa122f644a675',
+       i686: '27ee11c7cca4f8e7336d8d88bffe6066472b9de3223ecc0c600a854f0a821d35',
+     x86_64: 'f2215c568cf0b7f378ee63d7b558ee409abfe974a54aa271f270cf2542d5119b'
   })
 
   depends_on 'gcc_lib' # R
