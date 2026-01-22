@@ -1,4 +1,4 @@
-# Total size: 12053293
+# Total size: 12054614
 /usr/local/bin/aws
 /usr/local/bin/aws.cmd
 /usr/local/bin/aws_bash_completer
@@ -6,13 +6,13 @@
 /usr/local/bin/aws_zsh_completer.sh
 /usr/local/etc/bash.d/aws
 /usr/local/etc/zsh.d/aws
-/usr/local/lib/python3.14/site-packages/awscli-1.44.21.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/awscli-1.44.21.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/awscli-1.44.21.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/awscli-1.44.21.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/awscli-1.44.21.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/awscli-1.44.21.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/awscli-1.44.21.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/awscli-1.44.22.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/awscli-1.44.22.dist-info/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/awscli-1.44.22.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/awscli-1.44.22.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/awscli-1.44.22.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/awscli-1.44.22.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/awscli-1.44.22.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/awscli/__init__.py
 /usr/local/lib/python3.14/site-packages/awscli/__main__.py
 /usr/local/lib/python3.14/site-packages/awscli/__pycache__/__init__.cpython-314.pyc
@@ -3294,6 +3294,7 @@
 /usr/local/lib/python3.14/site-packages/awscli/examples/guardduty/list-invitations.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/guardduty/list-ip-sets.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/guardduty/list-members.rst
+/usr/local/lib/python3.14/site-packages/awscli/examples/guardduty/update-detector.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/guardduty/update-ip-set.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/health/describe-affected-entities.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/health/describe-event-details.rst
