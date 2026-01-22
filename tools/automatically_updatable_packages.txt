@@ -77,6 +77,7 @@ firefox
 firejail
 fish
 flatseal
+folks
 flutter
 foliate
 font_adobe_100dpi

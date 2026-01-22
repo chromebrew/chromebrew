@@ -1,4 +1,4 @@
-# Total size: 2795757
+# Total size: 2931397
 /usr/local/bin/folks-import
 /usr/local/bin/folks-inspect
 /usr/local/include/folks/folks-dummy.h
@@ -51,6 +51,7 @@
 /usr/local/share/locale/it/LC_MESSAGES/folks.mo
 /usr/local/share/locale/ja/LC_MESSAGES/folks.mo
 /usr/local/share/locale/ka/LC_MESSAGES/folks.mo
+/usr/local/share/locale/kab/LC_MESSAGES/folks.mo
 /usr/local/share/locale/kk/LC_MESSAGES/folks.mo
 /usr/local/share/locale/kn/LC_MESSAGES/folks.mo
 /usr/local/share/locale/ko/LC_MESSAGES/folks.mo
@@ -82,6 +83,7 @@
 /usr/local/share/locale/tr/LC_MESSAGES/folks.mo
 /usr/local/share/locale/ug/LC_MESSAGES/folks.mo
 /usr/local/share/locale/uk/LC_MESSAGES/folks.mo
+/usr/local/share/locale/uz/LC_MESSAGES/folks.mo
 /usr/local/share/locale/vi/LC_MESSAGES/folks.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/folks.mo
 /usr/local/share/locale/zh_HK/LC_MESSAGES/folks.mo
