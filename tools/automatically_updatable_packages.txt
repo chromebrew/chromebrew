@@ -110,6 +110,7 @@ freerdp
 freetds
 fribidi
 frp
+fuse_overlayfs
 fuse3
 gambit
 gedit
