@@ -11,9 +11,9 @@ class Elinks < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e8672bf1e0e8532672bde9e64d129fdc6942580efab6296f794406edfe3c7b7d',
-     armv7l: 'e8672bf1e0e8532672bde9e64d129fdc6942580efab6296f794406edfe3c7b7d',
-       i686: 'c410b2bf0dbd5a5d914f58d9da41822ef9044153e5cd79e6ec47d3387d49447b',
+    aarch64: '44b2811e076aebbf37793742e99b35c633b8142dfa9b34efaeb15b6695abb53f',
+     armv7l: '44b2811e076aebbf37793742e99b35c633b8142dfa9b34efaeb15b6695abb53f',
+       i686: '53a036a8ea6cdef93a38f6b65359b7c380199d54bd14b6b1db1333fc38e84071',
      x86_64: '979b4e3b4a5a5adbb1a8b0f2de49cebabfb86027c34bfecd0fb6f6fd9620583a'
   })
 
