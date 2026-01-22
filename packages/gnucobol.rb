@@ -2,12 +2,12 @@ require 'package'
 
 class Gnucobol < Package
   description 'GnuCOBOL (formerly OpenCOBOL) is a free COBOL compiler.'
-  homepage 'https://gnucobol.sourceforge.io/'
-  version '3.0-rc1'
-  license 'LGPL-2, GPL-2, GPL-3 and LGPL-3'
+  homepage 'https://www.gnu.org/software/gnucobol/'
+  version '3.2'
+  license 'GPL-3 and LGPL-3'
   compatibility 'all'
-  source_url 'http://downloads.sourceforge.net/project/open-cobol/gnu-cobol/3.0/gnucobol-3.0-rc1.tar.gz'
-  source_sha256 'e55aeea6b1f77e763b4cd4b520c78eb06da7671b4dcc76463fd0237dbf2e4816'
+  source_url 'https://ftp.gnu.org/gnu/gnucobol/gnucobol-3.2.tar.xz'
+  source_sha256 '3bb48af46ced4779facf41fdc2ee60e4ccb86eaa99d010b36685315df39c2ee2 '
   binary_compression 'tar.xz'
 
   binary_sha256({
