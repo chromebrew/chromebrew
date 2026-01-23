@@ -1,13 +1,13 @@
-# Total size: 154012
+# Total size: 154272
 /usr/local/bin/__pycache__/jp.cpython-314.pyc
 /usr/local/bin/jp.py
-/usr/local/lib/python3.14/site-packages/jmespath-1.0.1.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/jmespath-1.0.1.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/jmespath-1.0.1.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/jmespath-1.0.1.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/jmespath-1.0.1.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/jmespath-1.0.1.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/jmespath-1.0.1.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/jmespath-1.1.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/jmespath-1.1.0.dist-info/LICENSE
+/usr/local/lib/python3.14/site-packages/jmespath-1.1.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/jmespath-1.1.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/jmespath-1.1.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/jmespath-1.1.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/jmespath-1.1.0.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/jmespath/__init__.py
 /usr/local/lib/python3.14/site-packages/jmespath/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/jmespath/__pycache__/ast.cpython-314.pyc
