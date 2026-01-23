@@ -112,6 +112,7 @@ fribidi
 frp
 fuse_overlayfs
 fuse3
+fzf
 gambit
 gedit
 git_lfs
