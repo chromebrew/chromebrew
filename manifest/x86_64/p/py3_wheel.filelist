@@ -1,18 +1,19 @@
-# Total size: 203040
+# Total size: 205607
 /usr/local/bin/wheel
-/usr/local/lib/python3.14/site-packages/wheel-0.46.2.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/wheel-0.46.2.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/wheel-0.46.2.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/wheel-0.46.2.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/wheel-0.46.2.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/wheel-0.46.2.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/wheel-0.46.2.dist-info/licenses/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/wheel-0.46.3.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/wheel-0.46.3.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/wheel-0.46.3.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/wheel-0.46.3.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/wheel-0.46.3.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/wheel-0.46.3.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/wheel-0.46.3.dist-info/licenses/LICENSE.txt
 /usr/local/lib/python3.14/site-packages/wheel/__init__.py
 /usr/local/lib/python3.14/site-packages/wheel/__main__.py
 /usr/local/lib/python3.14/site-packages/wheel/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/wheel/__pycache__/__main__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/wheel/__pycache__/_bdist_wheel.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/wheel/__pycache__/_metadata.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/wheel/__pycache__/_setuptools_logging.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/wheel/__pycache__/bdist_wheel.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/wheel/__pycache__/macosx_libfile.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/wheel/__pycache__/metadata.cpython-314.pyc
@@ -29,6 +30,7 @@
 /usr/local/lib/python3.14/site-packages/wheel/_commands/tags.py
 /usr/local/lib/python3.14/site-packages/wheel/_commands/unpack.py
 /usr/local/lib/python3.14/site-packages/wheel/_metadata.py
+/usr/local/lib/python3.14/site-packages/wheel/_setuptools_logging.py
 /usr/local/lib/python3.14/site-packages/wheel/bdist_wheel.py
 /usr/local/lib/python3.14/site-packages/wheel/macosx_libfile.py
 /usr/local/lib/python3.14/site-packages/wheel/metadata.py
