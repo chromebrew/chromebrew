@@ -1,14 +1,14 @@
-# Total size: 2372511
+# Total size: 2372568
 /usr/local/bin/gi-docgen
-/usr/local/lib/python3.14/site-packages/gi_docgen-2025.5.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/gi_docgen-2025.5.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/gi_docgen-2025.5.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/gi_docgen-2025.5.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/gi_docgen-2025.5.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/gi_docgen-2025.5.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/gi_docgen-2025.5.dist-info/licenses/LICENSES/Apache-2.0.txt
-/usr/local/lib/python3.14/site-packages/gi_docgen-2025.5.dist-info/licenses/LICENSES/GPL-3.0-or-later.txt
-/usr/local/lib/python3.14/site-packages/gi_docgen-2025.5.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/gi_docgen-2026.1.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/gi_docgen-2026.1.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/gi_docgen-2026.1.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/gi_docgen-2026.1.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/gi_docgen-2026.1.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/gi_docgen-2026.1.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/gi_docgen-2026.1.dist-info/licenses/LICENSES/Apache-2.0.txt
+/usr/local/lib/python3.14/site-packages/gi_docgen-2026.1.dist-info/licenses/LICENSES/GPL-3.0-or-later.txt
+/usr/local/lib/python3.14/site-packages/gi_docgen-2026.1.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/gidocgen/__init__.py
 /usr/local/lib/python3.14/site-packages/gidocgen/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/gidocgen/__pycache__/config.cpython-314.pyc
