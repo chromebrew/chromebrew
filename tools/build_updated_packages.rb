@@ -24,6 +24,7 @@ require File.join(crew_local_repo_root, 'lib/color')
 require File.join(crew_local_repo_root, 'lib/const')
 require File.join(crew_local_repo_root, 'lib/package')
 require File.join(crew_local_repo_root, 'lib/require_gem')
+require_gem 'dagwood'
 require_gem 'highline'
 require_gem 'timeout'
 

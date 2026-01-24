@@ -11,5 +11,5 @@ git config --global --add safe.directory /output
 export CREW_AGREE_TIMEOUT_SECONDS=1
 # Deal with a regexp_parser gem issue
 gem install regexp_parser
-yes | crew install ruby_rubocop
+yes | crew install ruby_rubocop ruby_dagwood
 tools/build_updated_packages.rb --skip $1 $2 || exit 1
