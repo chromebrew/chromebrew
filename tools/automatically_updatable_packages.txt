@@ -116,6 +116,8 @@ fzf
 gambit
 gedit
 git_lfs
+github_cli
+glab
 glib
 glm
 glslang
@@ -125,8 +127,10 @@ gnome_console
 gnome_maps
 gnome_online_accounts
 gnome_sudoku
+go
 gobject_introspection
 google_chrome
+gradle
 ldc
 libcdr
 libcss

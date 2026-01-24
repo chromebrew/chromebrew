@@ -1,4 +1,4 @@
-# Total size: 51606068
+# Total size: 35354069
 /usr/local/bin/gh
 /usr/local/share/man/man1/gh-agent-task-create.1.zst
 /usr/local/share/man/man1/gh-agent-task-list.1.zst
@@ -48,6 +48,7 @@
 /usr/local/share/man/man1/gh-config-list.1.zst
 /usr/local/share/man/man1/gh-config-set.1.zst
 /usr/local/share/man/man1/gh-config.1.zst
+/usr/local/share/man/man1/gh-copilot.1.zst
 /usr/local/share/man/man1/gh-extension-browse.1.zst
 /usr/local/share/man/man1/gh-extension-create.1.zst
 /usr/local/share/man/man1/gh-extension-exec.1.zst
