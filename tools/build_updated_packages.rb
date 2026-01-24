@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# build_updated_packages version 4.2 (for Chromebrew)
+# build_updated_packages version 4.3 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -164,6 +164,76 @@ def update_deps(name = nil)
   end
 end
 
+def determine_recursive_deps(d_pkg_input)
+  # How to hardcode a dependency:
+  # @gcc_lib_graph = Dagwood::DependencyGraph.new(gcc_lib: %i[glibc])
+  # @glibc_graph = Dagwood::DependencyGraph.new(glibc: nil)
+  # @gcc_lib_graph.merge(@glibc_graph)
+  if d_pkg_input.is_a? String
+    (d_pkgs ||= []).push(d_pkg_input)
+  else
+    ((d_pkgs ||= []) << d_pkg_input).flatten!
+  end
+  d_pkgs.each do |d_pkg|
+    # Remove glibc from the dependency list to avoid a circular dependency with libxcrypt.
+    instance_variable_set("@#{d_pkg}_deps", `ruby bin/crew -d deps --exclude-buildessential #{d_pkg}`.split.delete_if { |d| d == 'glibc' })
+    # Pull in build dependencies if necessary.
+    if d_pkg.include?('_lib') || d_pkg.include?('_dev')
+      puts "#{"#{__LINE__}:" if CREW_VERBOSE} #{d_pkg} includes _dev || _lib, pulling build deps.".orange
+      instance_variable_set("@#{d_pkg}_deps", `ruby bin/crew -d deps -b --exclude-buildessential #{d_pkg}`.split.delete_if { |d| d == 'glibc' })
+    end
+    instance_variable_set("@#{d_pkg}_graph", Dagwood::DependencyGraph.new({ d_pkg.to_sym => (instance_variable_get("@#{d_pkg}_deps").map &:to_sym) })) if instance_variable_get("@#{d_pkg}_graph").nil?
+
+    next unless !instance_variable_get("@#{d_pkg}_graph").nil? && !instance_variable_get("@#{d_pkg}_graph").dependencies.nil?
+
+    next if instance_variable_get("@#{d_pkg}_deps").empty?
+    instance_variable_get("@#{d_pkg}_deps").each do |d|
+      determine_recursive_deps(d) if instance_variable_get("@#{d}_graph").nil?
+      instance_variable_set("@#{d_pkg}_graph", instance_variable_get("@#{d_pkg}_graph").merge(instance_variable_get("@#{d}_graph"))) unless instance_variable_get("@#{d}_graph").dependencies.nil?
+    end
+  end
+end
+
+def print_recursive_deps(d_pkg_input)
+  if d_pkg_input.is_a? String
+    (d_pkgs ||= []).push(d_pkg_input)
+  else
+    ((d_pkgs ||= []) << d_pkg_input).flatten!
+  end
+  d_pkgs.each do |p|
+    abort "@#{p}_graph does not exist!".lightred unless !instance_variable_get("@#{p}_graph").nil? && !instance_variable_get("@#{p}_graph").dependencies.nil?
+    deps = instance_variable_get("@#{p}_graph").dependencies
+    puts deps.to_s.lightblue
+    begin
+      puts instance_variable_get("@#{p}_graph").order
+    rescue RuntimeError => e
+      puts e.message.lightred
+    rescue TSort::Cyclic => e
+      puts "Circular dependency detected: #{e.message}".lightred
+    end
+  end
+end
+
+def order_recursive_deps(d_pkg_input)
+  if d_pkg_input.is_a? String
+    (d_pkgs ||= []).push(d_pkg_input)
+  else
+    ((d_pkgs ||= []) << d_pkg_input).flatten!
+  end
+  puts "#{"#{__LINE__}:" if CREW_VERBOSE} Processing dependencies...".lightpurple
+  determine_recursive_deps(d_pkgs)
+  @input_pkgs = d_pkgs.to_set
+  merge_base = instance_variable_get("@#{d_pkgs.pop}_graph")
+
+  d_pkgs.each do |p|
+    merge_base = merge_base.merge(instance_variable_get("@#{p}_graph"))
+  end
+  @package_deps_build_order = merge_base.order.to_set(&:to_s)
+  # Want the intersection of these sets.
+  # puts (@package_deps_build_order & @input_pkgs).to_a
+  return (@package_deps_build_order & @input_pkgs).to_a
+end
+
 if SKIP_UPDATE_CHECKS
   puts 'Skipping pip and gem remote update checks.'.orange
 else
@@ -220,6 +290,8 @@ else
   updated_packages.uniq!
   updated_packages.each { |p| puts p.sub('packages/', '').sub('.rb', '').to_s.lightblue }
 end
+
+updated_packages = determine_recursive_deps(updated_packages.map { |p| p.sub('packages/', '').sub('.rb', '') }).map { |p| p.prepend('packages/').concat('.rb') }
 
 updated_packages.each do |pkg|
   name = pkg.sub('packages/', '').sub('.rb', '')
