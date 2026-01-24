@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Util_linux < Meson
   description 'essential linux tools'
   homepage 'https://www.kernel.org/pub/linux/utils/util-linux/'
-  version "2.41.3-1-#{CREW_PY_VER}"
+  version "2.41.3-#{CREW_PY_VER}"
   license 'GPL-2, LGPL-2.1, BSD-4, MIT and public-domain'
   compatibility 'all'
   source_url 'https://github.com/util-linux/util-linux.git'
@@ -38,9 +38,7 @@ class Util_linux < Meson
   # succeed on x86_64 and armv7l.
   year2038 = '-Dallow-32bit-time=true'
   i686_disabled_builds = '-Dbuild-blkzone=disabled -Dbuild-lsfd=disabled'
-  # Disable python build to avoid circular dependency with python3.
   meson_options "-Dbuild-kill=disabled \
-                 -Dbuild-python=disabled \
                  -Dbuild-uuidd=disabled \
                  -Dprogram-tests=false \
                  -Dsystemd=disabled \
