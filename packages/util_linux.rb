@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Util_linux < Meson
   description 'essential linux tools'
   homepage 'https://www.kernel.org/pub/linux/utils/util-linux/'
-  version "2.41.3-#{CREW_PY_VER}"
+  version "2.41.3-1-#{CREW_PY_VER}"
   license 'GPL-2, LGPL-2.1, BSD-4, MIT and public-domain'
   compatibility 'all'
   source_url 'https://github.com/util-linux/util-linux.git'
@@ -17,7 +17,7 @@ class Util_linux < Meson
      x86_64: 'e2b44a21ff4c93f2e99496d087a0989fae42eff2da84a020e3f4f4c40d9ab5f8'
   })
 
-  depends_on 'eudev' if ARCH == 'x86_64' # (for libudev.h)
+  depends_on 'eudev_header' if ARCH == 'x86_64' # (for libudev.h)
   depends_on 'filecmd' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
@@ -27,7 +27,6 @@ class Util_linux < Meson
   depends_on 'linux_pam' # R
   depends_on 'ncurses' # R
   depends_on 'pcre2' => :build
-  depends_on 'python3' # R
   depends_on 'readline' # R
   depends_on 'ruby_asciidoctor' => :build
   depends_on 'sqlite' # R
@@ -39,7 +38,9 @@ class Util_linux < Meson
   # succeed on x86_64 and armv7l.
   year2038 = '-Dallow-32bit-time=true'
   i686_disabled_builds = '-Dbuild-blkzone=disabled -Dbuild-lsfd=disabled'
+  # Disable python build to avoid circular dependency with python3.
   meson_options "-Dbuild-kill=disabled \
+                 -Dbuild-python=disabled \
                  -Dbuild-uuidd=disabled \
                  -Dprogram-tests=false \
                  -Dsystemd=disabled \
