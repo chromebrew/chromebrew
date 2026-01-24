@@ -17,7 +17,7 @@ class Util_linux < Meson
      x86_64: 'e2b44a21ff4c93f2e99496d087a0989fae42eff2da84a020e3f4f4c40d9ab5f8'
   })
 
-  depends_on 'eudev_header' if ARCH == 'x86_64' # (for libudev.h)
+  depends_on 'eudev_header' => :build if ARCH == 'x86_64' # (for libudev.h)
   depends_on 'filecmd' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
