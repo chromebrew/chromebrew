@@ -115,6 +115,7 @@ fuse3
 fzf
 gambit
 gedit
+ghostscript
 git_lfs
 github_cli
 glab

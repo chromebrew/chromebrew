@@ -3,11 +3,11 @@ require 'package'
 class Ghostscript < Package
   description 'Interpreter for the PostScript language'
   homepage 'https://www.ghostscript.com/'
-  version '10.05.0'
+  version '10.06.0'
   license 'AGPL-3+'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs#{version.tr('.', '')}/ghostpdl-#{version}.tar.xz"
-  source_sha256 '0603f5629bc6f567b454911d104cd96702489c9e70e577787843f480b23d4a77'
+  source_sha256 '3602056368cf649026231e2d65250b5860c023f3d4a0d9c35e6605e28e543ec1'
   binary_compression 'tar.zst'
 
   binary_sha256({
