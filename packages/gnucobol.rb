@@ -2,34 +2,25 @@ require 'package'
 
 class Gnucobol < Package
   description 'GnuCOBOL (formerly OpenCOBOL) is a free COBOL compiler.'
-  homepage 'https://gnucobol.sourceforge.io/'
-  version '3.0-rc1'
-  license 'LGPL-2, GPL-2, GPL-3 and LGPL-3'
-  compatibility 'all'
-  source_url 'http://downloads.sourceforge.net/project/open-cobol/gnu-cobol/3.0/gnucobol-3.0-rc1.tar.gz'
-  source_sha256 'e55aeea6b1f77e763b4cd4b520c78eb06da7671b4dcc76463fd0237dbf2e4816'
-  binary_compression 'tar.xz'
+  homepage 'https://www.gnu.org/software/gnucobol/'
+  version '3.2'
+  license 'GPL-3 and LGPL-3'
+  compatibility 'x86_64'
+  min_glibc '2.28'
+  source_url "https://downloads.sourceforge.net/project/gnucobol/gnucobol/#{version}/gnucobol-#{version}_bin.tar.xz"
+  source_sha256 'c6e8aa801cbd46331a4cd352ed1599e955b6f62174ed01d848a8df4626e32f2f'
 
-  binary_sha256({
-    aarch64: '414d959994a7816b3afca483ebbff70306ea9f5577e702957806f76f1d714718',
-     armv7l: '414d959994a7816b3afca483ebbff70306ea9f5577e702957806f76f1d714718',
-       i686: '5a881e05b716742c8f5e590f542a9b7eee411c38ff946e5896d843e21bb021ef',
-     x86_64: '00e04366fab756136bba0bcb07a285c1bda4d218b5f6555e0bc67583fb051963'
-  })
-
+  depends_on 'cjson' # R
   depends_on 'glibc' # R
   depends_on 'gmp' # R
-  depends_on 'libdb'
+  depends_on 'libdb' # R
   depends_on 'ncurses' # R
 
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
+  no_compile_needed
 
   def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
+    FileUtils.mv %w[usr/local/bin usr/local/include usr/local/share], CREW_DEST_PREFIX
+    FileUtils.mv Dir['usr/local/lib/*'], CREW_DEST_LIB_PREFIX
   end
 end
