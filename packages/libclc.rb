@@ -9,7 +9,7 @@ class Libclc < Package
   homepage 'https://libclc.llvm.org/'
   version llvm_build_obj.version
   # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
-  puts "#{self} version differs from llvm version #{llvm_build_obj.version}".orange if version != llvm_build_obj.version
+  puts "#{self} version differs from llvm version #{llvm_build_obj.version}".orange if version != llvm_build_obj.version && !ENV['NESTED_CI']
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/llvm/llvm-project.git'
@@ -17,9 +17,9 @@ class Libclc < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b8d5fb0904bcbb74cf1304afff7a032d7e8c9d9b130f89f12433232de3b07309',
-     armv7l: 'b8d5fb0904bcbb74cf1304afff7a032d7e8c9d9b130f89f12433232de3b07309',
-     x86_64: '64ef38975eb668aeb47ba4998ed7477aa1395308aee0d7a67f2de9777a44bdb3'
+    aarch64: 'e3371eefd8f1b4b9a126d3836be5a02d321c41fe36b2cfd7163e95f10f76a97e',
+     armv7l: 'e3371eefd8f1b4b9a126d3836be5a02d321c41fe36b2cfd7163e95f10f76a97e',
+     x86_64: '0b85783f9823786516c2558251565ed4592b5b60cf4c61b14d5c413065253048'
   })
 
   depends_on 'llvm_dev' => :build

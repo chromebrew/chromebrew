@@ -64,7 +64,11 @@ jobs:
             else
               branch_tag="${pkg_version}"
             fi
-            export updater_branch="updater-${pkg}-${branch_tag}"
+            if [ ${{ github.ref_name }} == 'master' ]; then
+              export updater_branch="updater-${pkg}-${branch_tag}"
+            else
+              export updater_branch="${{ github.ref_name }}"
+            fi
             echo "Updater branch: ${updater_branch}"
             if git branch -a | grep -q "${updater_branch}"; then
               echo "Updating & rebasing existing ${updater_branch} branch."
