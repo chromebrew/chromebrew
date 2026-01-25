@@ -4,8 +4,8 @@ Package.load_package("#{__dir__}/eudev.rb")
 class Eudev_header < Package
   description 'Gentoo standalone udev libudev.h for util_linux build.'
   homepage Eudev.homepage
-  version '3.2.14'
-  license 'LGPL-2.1, MIT and GPL-2'
+  Eudev.version
+  Eudev.license
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
