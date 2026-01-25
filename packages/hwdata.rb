@@ -1,12 +1,12 @@
 # Adapted from Arch Linux hwdata PKGBUILD at:
 # https://github.com/archlinux/svntogit-packages/raw/packages/hwdata/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/autotools'
 
-class Hwdata < Package
+class Hwdata < Autotools
   description 'hardware identification databases'
   homepage 'https://github.com/vcrhonek/hwdata'
-  version '0.364'
+  version '0.403'
   license 'GPL2'
   compatibility 'all'
   source_url 'https://github.com/vcrhonek/hwdata.git'
@@ -14,24 +14,15 @@ class Hwdata < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2c7eda3e087119c16dadfaaacb8114b8876b62f65af3a32da36450fb165b0a26',
-     armv7l: '2c7eda3e087119c16dadfaaacb8114b8876b62f65af3a32da36450fb165b0a26',
-       i686: 'e95f8441e9d608df1b1a1be0e82796a0d02fff3be81ca12fbf9709d6201a68fa',
-     x86_64: 'c22a385eb2e767af12082d2334a49af8aafa5796b1174b869d5cfc2e0a8cec83'
+    aarch64: 'e5b33b1b7e203987171f5e814ab887b37c8a3203356e35c7a1553bb89ae3011d',
+     armv7l: 'e5b33b1b7e203987171f5e814ab887b37c8a3203356e35c7a1553bb89ae3011d',
+       i686: '56bf21cab8c734af090794eabc9c0cc408a6e756dc8cb29c2ab7dcce9de2a2e6',
+     x86_64: '835f9d294c19cb4e6e5c83fdf0831df1141a8d5780380de01bceda7d995c4ce7'
   })
 
   def self.patch
     system "sed -i 's,$(DESTDIR)$(datadir)/pkgconfig,$(DESTDIR)$(libdir)/pkgconfig,g' Makefile"
   end
 
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS} \
-      --datadir=#{CREW_PREFIX}/share \
-      --disable-blacklist"
-    system 'make'
-  end
-
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-  end
+  autotools_configure_options "--datadir=#{CREW_PREFIX}/share --disable-blacklist"
 end
