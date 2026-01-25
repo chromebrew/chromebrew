@@ -20,6 +20,8 @@ class Icu4c < Autotools
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
+  ignore_updater # Handle updates manually since so many packages need to be rebuilt with an icu4c update.
+
   autotools_make_j1
   autotools_build_relative_dir 'source'
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.24 (for Chromebrew)
+# version.rb version 3.25 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose -vv]
 
@@ -314,9 +314,10 @@ if filelist.length.positive?
                                         'Yes'
                                       # If there is a git_hashtag, we can
                                       # check to see if 'version' is on
-                                      # that line.
+                                      # that line. Also allow _obj.git_hashtag
+                                      # as we're using that for llvm packages.
                                       elsif !@pkg.git_hashtag.blank?
-                                        if `grep "^  git_hashtag" #{filename} | grep version`.empty? && @pkg.name != 'rust'
+                                        if `grep "^  git_hashtag" #{filename} | grep "version\\|_obj.git_hashtag"`.empty? && @pkg.name != 'rust'
                                           'static git_hashtag'
                                         else
                                           'Yes'

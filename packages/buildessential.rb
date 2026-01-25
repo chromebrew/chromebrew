@@ -3,7 +3,7 @@ require 'package'
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage 'SKIP'
-  version '1.49'
+  version '1.50'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -179,6 +179,8 @@ class Buildessential < Package
   # Ruby gems
   # Add ruby_concurrent_ruby
   depends_on 'ruby_concurrent_ruby'
+  # Needed for container package builder.
+  depends_on 'ruby_dagwood'
   # Needed for irb
   depends_on 'ruby_debug'
   # Needed for buildsystems reporting.
