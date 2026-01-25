@@ -131,6 +131,7 @@ go
 gobject_introspection
 google_chrome
 gradle
+hugo
 ldc
 libcdr
 libcss
