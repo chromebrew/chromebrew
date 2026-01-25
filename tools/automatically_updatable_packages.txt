@@ -135,6 +135,7 @@ hugo
 hunspell_en_us
 hunspell_es_us
 hunspell_fr_fr
+hurl
 ldc
 libcdr
 libcss
