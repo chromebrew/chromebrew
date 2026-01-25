@@ -6,17 +6,17 @@ require 'buildsystems/pip'
 class Py3_rich < Pip
   description 'Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal'
   homepage 'https://github.com/willmcgugan/rich'
-  version "14.2.0-#{CREW_PY_VER}"
+  version "14.3.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7c36364664162ad2a301a746ef8be2a1bc062d44a47f6fe35ef5c39facdfdf9f',
-     armv7l: '7c36364664162ad2a301a746ef8be2a1bc062d44a47f6fe35ef5c39facdfdf9f',
-       i686: '33f1549c670fc95f8b58da9f4c41cba94f2c5545c1ad18818328525e0c93a216',
-     x86_64: '5a711dd33cf5ae14b814f323b13eb02a6241ba351b2e021f6e521a744f3fa1fa'
+    aarch64: '1347674c4e532b9de319aa7803da574599a0faecb31820383498a49dc8c052d4',
+     armv7l: '1347674c4e532b9de319aa7803da574599a0faecb31820383498a49dc8c052d4',
+       i686: 'c482d54bc1a66cd871a0443edd1efdf46ed523544b1f39711e2e7410a680d758',
+     x86_64: 'eed0f38d915b379a6c6b9947321426fa6c3b4c93d695aa4f5337389e329cbbe1'
   })
 
   depends_on 'py3_colorama'
