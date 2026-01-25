@@ -132,6 +132,9 @@ gobject_introspection
 google_chrome
 gradle
 hugo
+hunspell_en_us
+hunspell_es_us
+hunspell_fr_fr
 ldc
 libcdr
 libcss
