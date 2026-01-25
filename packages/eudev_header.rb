@@ -1,4 +1,4 @@
-require 'buildsystems/autotools'
+require 'package'
 
 class Eudev_header < Package
   eudev_obj = Package.load_package("#{__dir__}/eudev.rb")
