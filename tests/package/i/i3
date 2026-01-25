@@ -1,0 +1,11 @@
+#!/bin/bash
+i3 --version
+i3-config-wizard --version
+i3-dmenu-desktop --version
+i3-dump-log --version
+i3-input --version
+i3-msg --version
+i3-nagbar --version
+i3-with-shmlog --version
+i3bar --version
+starti3 --version
