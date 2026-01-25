@@ -136,6 +136,7 @@ hunspell_en_us
 hunspell_es_us
 hunspell_fr_fr
 hurl
+hwdata
 ldc
 libcdr
 libcss
