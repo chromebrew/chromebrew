@@ -4,9 +4,9 @@ class Eudev_header < Package
   eudev_obj = Package.load_package("#{__dir__}/eudev.rb")
   description 'Gentoo standalone udev libudev.h for util_linux build.'
   homepage eudev_obj.homepage
-  eudev_obj.version
+  version eudev_obj.version
   # puts "#{self} version differs from eudev version #{eudev_obj.version}".orange if version != eudev_obj.version && !ENV['NESTED_CI']
-  eudev_obj.license
+  license eudev_obj.license
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
