@@ -1,4 +1,5 @@
 require 'buildsystems/autotools'
+require 'convenience_functions'
 
 class Libxmu < Autotools
   description 'X.org X interface library for miscellaneous utilities not part of the Xlib standard'
@@ -29,4 +30,8 @@ class Libxmu < Autotools
   depends_on 'libxt' # R
   depends_on 'util_linux' # R
   depends_on 'xorg_macros' => :build
+
+  def self.prebuild
+    ConvenienceFunctions.libtoolize('libuuid', 'util_linux')
+  end
 end
