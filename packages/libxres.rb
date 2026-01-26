@@ -3,7 +3,7 @@ require 'package'
 class Libxres < Package
   description 'X.org X-Resource extension client library'
   homepage 'https://www.x.org/wiki/'
-  version '1.2.2'
+  version '1.2.3'
   license 'X11'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxres.git'
