@@ -11,13 +11,11 @@ class Libxcomposite < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '50e1b0cb36c409a0fd6ef47b41e4ebc98458eaf011d02960517bdc1cc7dc0414',
-     armv7l: '50e1b0cb36c409a0fd6ef47b41e4ebc98458eaf011d02960517bdc1cc7dc0414',
-     x86_64: '73bbe30ceb97b42ec1c7ab78c4b0df8df1f2a2900016b2ebc7206160988a8851'
+    aarch64: 'b09de753524e76b1f943abba77509249385ac2c0f1524bbb51070e7146946ca6',
+     armv7l: 'b09de753524e76b1f943abba77509249385ac2c0f1524bbb51070e7146946ca6',
+     x86_64: '961d9670c9bafeec269faffd8dff08cda2681bbfb58a1cd1a14f069412cae443'
   })
 
-  depends_on 'libxfixes' => :build
-  depends_on 'libxext' => :build
   depends_on 'glibc' # R
   depends_on 'libbsd' # R
   depends_on 'libmd' # R
@@ -25,4 +23,6 @@ class Libxcomposite < Meson
   depends_on 'libxau' # R
   depends_on 'libxcb' # R
   depends_on 'libxdmcp' # R
+  depends_on 'libxext' => :build
+  depends_on 'libxfixes' => :build
 end
