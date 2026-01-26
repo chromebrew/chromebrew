@@ -21,6 +21,8 @@ class Libxvmc < Package
   depends_on 'libxext' # R
   depends_on 'libxv'
 
+  conflicts_ok # xorg_proto: /usr/local/include/X11/extensions/vldXvMC.h
+
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \
             builddir"
