@@ -3,17 +3,17 @@ require 'buildsystems/autotools'
 class Imlib2 < Autotools
   description 'library that does image file loading and saving as well as rendering, manipulation, arbitrary polygon support, etc.'
   homepage 'https://sourceforge.net/projects/enlightenment/'
-  version '1.12.5'
+  version '1.12.6'
   license 'BSD'
   compatibility 'aarch64 armv7l x86_64'
-  source_url "https://sourceforge.net/projects/enlightenment/files/imlib2-src/#{version.split('-').first}/imlib2-#{version.split('-').first}.tar.xz"
-  source_sha256 'fa2315f28379b430a6e6605b4284b07be06a3ef422d4f5e1c9bb24714c4cf6dd'
+  source_url "https://downloads.sourceforge.net/project/enlightenment/imlib2-src/#{version}/imlib2-#{version}.tar.xz"
+  source_sha256 '250f9752f69dc522e529a81aaa9395705f7fc312ff2453e5de59ac2ba1f2858f'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7a0d4d31970a5f4cf2d0c9ba47b66f176cffbe801fa01220fe600d58c3048fc0',
-     armv7l: '7a0d4d31970a5f4cf2d0c9ba47b66f176cffbe801fa01220fe600d58c3048fc0',
-     x86_64: '7dacae0624fcec95d158c4abd8ed10c8cc5eaecc999685c139900b10c74dc2fb'
+    aarch64: '5012edbb6108b16c76c11cec5236daf3a520d414d7bd1c4ee9463082e0e8f440',
+     armv7l: '5012edbb6108b16c76c11cec5236daf3a520d414d7bd1c4ee9463082e0e8f440',
+     x86_64: '32d0498a80b9123c59259ac059adebefb36a47908e8b98ee7e1d7f76a10ca1d0'
   })
 
   depends_on 'bzip2' # R
