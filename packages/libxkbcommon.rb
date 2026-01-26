@@ -11,9 +11,9 @@ class Libxkbcommon < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7082a5b8af1d778a40ffd9e346602c39b6c66136dbbc9bd7be5c7cdd9fd81c8e',
-     armv7l: '7082a5b8af1d778a40ffd9e346602c39b6c66136dbbc9bd7be5c7cdd9fd81c8e',
-     x86_64: '4e3d6544efb95dfd8b6689f5f566150a95c04c4649eb61c271edf66707ea5e49'
+    aarch64: 'f47b5809d6c349db50d6e357348fdb473975485e8bf1eb7c2c2a798a97a08045',
+     armv7l: 'f47b5809d6c349db50d6e357348fdb473975485e8bf1eb7c2c2a798a97a08045',
+     x86_64: 'a5c98021c1eb33bc8f15794d95eec8c50d7eaf6ff3ec4aa7110b61d5b630507b'
   })
 
   depends_on 'glibc' # R
