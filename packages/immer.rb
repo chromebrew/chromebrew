@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Immer < CMake
   description 'Postmodern immutable and persistent data structures for C++'
   homepage 'https://github.com/arximboldi/immer'
-  version '0.8.1'
+  version '0.9.1'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/arximboldi/immer.git'
@@ -11,10 +11,10 @@ class Immer < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '18a9da2015ea2abc36e404c7e7d787b27230b8e556765b3bcad3eb938777c47c',
-     armv7l: '18a9da2015ea2abc36e404c7e7d787b27230b8e556765b3bcad3eb938777c47c',
-       i686: '9342a543a2f945eefbb59ccec61b78686720c569d22a80f12814db45cc6f755d',
-     x86_64: '4f5b645748d40dc8e0aed4df36ca50e956c7fee2e37e8b249cae58dc7c5039e0'
+    aarch64: '6b26c47b880ef56aa4d95a8cdc06239e031c7b09560b383def107a36e60011d2',
+     armv7l: '6b26c47b880ef56aa4d95a8cdc06239e031c7b09560b383def107a36e60011d2',
+       i686: 'c2d3ad070fe8996f9cac4f953aa11ceccf1e49b46cb508636e7681138da00f57',
+     x86_64: '3c2ab7e58b2352661164c1247124f3dea4024119c04ba9b5f6119e71b56bae8c'
   })
 
   cmake_options '-Dimmer_BUILD_TESTS=OFF -Dimmer_BUILD_EXTRAS=OFF -Dimmer_BUILD_EXAMPLES=OFF'
