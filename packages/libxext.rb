@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Libxext < Autotools
   description 'library for the X window system'
   homepage 'https://x.org/wiki/'
-  version '1.3.6-1'
+  version '1.3.7'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxext.git'
