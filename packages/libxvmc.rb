@@ -3,11 +3,11 @@ require 'package'
 class Libxvmc < Package
   description 'X.org X-Video Motion Compensation Library'
   homepage 'https://www.x.org/wiki/'
-  version '1.0.14'
+  version '1.0.15'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://gitlab.freedesktop.org/xorg/lib/libxvmc/-/archive/libXvMC-#{version}/libxvmc-libXvMC-#{version}.tar.gz"
-  source_sha256 '08d9a9f8ebdd353ef0d831641a8959c01824db618ef833453f6f0707488ae300'
+  source_sha256 'd75333e43ec7d04052e5851b461c7a14a43b28fba2434378d35dc8c7fea69704'
   binary_compression 'tar.zst'
 
   binary_sha256({
