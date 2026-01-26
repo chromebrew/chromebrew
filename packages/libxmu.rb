@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Libxmu < Autotools
   description 'X.org X interface library for miscellaneous utilities not part of the Xlib standard'
   homepage 'https://www.x.org/wiki/'
-  version '1.2.1'
+  version '1.3.0'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxmu.git'
