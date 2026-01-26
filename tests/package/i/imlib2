@@ -1,0 +1,5 @@
+#!/bin/bash
+imlib2_conv
+imlib2_grab
+imlib2_load
+imlib2_view
