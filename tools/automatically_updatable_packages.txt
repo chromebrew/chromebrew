@@ -138,6 +138,8 @@ hunspell_fr_fr
 hurl
 hwdata
 i3
+immer
+inetutils
 ldc
 libcdr
 libcss
