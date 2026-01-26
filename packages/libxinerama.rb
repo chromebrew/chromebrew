@@ -5,10 +5,9 @@ class Libxinerama < Meson
   homepage 'https://www.x.org/wiki/'
   compatibility 'aarch64 armv7l x86_64'
   license 'MIT'
-  version '1.1.5-cc22c2f'
+  version '1.1.6'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxinerama.git'
-  git_hashtag 'cc22c2f60c3862482562955116d5455263b443dc'
-  # git_hashtag "libXinerama-#{version}"
+  git_hashtag "libXinerama-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
