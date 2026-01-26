@@ -3,11 +3,11 @@ require 'buildsystems/meson'
 class Libxdamage < Meson
   description 'library for the X window system'
   homepage 'https://x.org/wiki/'
-  version '1.1.6-1319ae5'
+  version '1.1.7'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxdamage.git'
-  git_hashtag '1319ae5cfbde5b75e23383baa5e00cc23513448c'
+  git_hashtag "libXdamage-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
