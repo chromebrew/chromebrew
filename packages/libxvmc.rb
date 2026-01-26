@@ -11,9 +11,9 @@ class Libxvmc < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f3cab83d90a45a4342a6c222a5cada082ebfb8397f4f4be4d3115cd3aa264eaa',
-     armv7l: 'f3cab83d90a45a4342a6c222a5cada082ebfb8397f4f4be4d3115cd3aa264eaa',
-     x86_64: 'af01cdf69aa30b98e0ad29bee967f264a88a652438d614ed8a59637088bd52c0'
+    aarch64: 'c7541a7a6c59cee021f31cb970481b21f3cc742eb5b69735a84451fc740d99ce',
+     armv7l: 'c7541a7a6c59cee021f31cb970481b21f3cc742eb5b69735a84451fc740d99ce',
+     x86_64: '4afd9912c25216a5dbc05826284193aa88f96795210c6f06847976a7ae437231'
   })
 
   depends_on 'glibc' # R
