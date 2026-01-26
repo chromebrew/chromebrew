@@ -19,8 +19,8 @@ class Shared_mime_info < Meson
 
   depends_on 'gcc_lib' # R
   depends_on 'gettext' => :build
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'libxml2' # R
 
   meson_options '-Dbuild-tests=false'

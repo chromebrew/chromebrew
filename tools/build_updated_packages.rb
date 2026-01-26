@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# build_updated_packages version 4.3 (for Chromebrew)
+# build_updated_packages version 4.4 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -169,6 +169,8 @@ def determine_recursive_deps(d_pkg_input)
   # How to hardcode a dependency:
   # @gcc_lib_graph = Dagwood::DependencyGraph.new(gcc_lib: %i[glibc])
   # @glibc_graph = Dagwood::DependencyGraph.new(glibc: nil)
+  # @glibc_build227_graph = Dagwood::DependencyGraph.new(glibc_build227: %i[glibc])
+  # @glibc_build227_graph.merge(@glibc_graph)
   # @gcc_lib_graph.merge(@glibc_graph)
   if d_pkg_input.is_a? String
     (d_pkgs ||= []).push(d_pkg_input)
@@ -176,12 +178,13 @@ def determine_recursive_deps(d_pkg_input)
     ((d_pkgs ||= []) << d_pkg_input).flatten!
   end
   d_pkgs.each do |d_pkg|
-    # Remove glibc from the dependency list to avoid a circular dependency with libxcrypt.
-    instance_variable_set("@#{d_pkg}_deps", `ruby bin/crew -d deps --exclude-buildessential #{d_pkg}`.split.delete_if { |d| d == 'glibc' })
+    @d_pkg_obj = Package.load_package("packages/#{d_pkg}.rb")
+    instance_variable_set("@#{d_pkg}_deps", @d_pkg_obj.dependencies.map { |key, value| key.to_s if value == [[], nil] }.compact)
     # Pull in build dependencies if necessary.
-    if d_pkg.include?('_lib') || d_pkg.include?('_dev')
-      puts "#{"#{__LINE__}:" if CREW_VERBOSE} #{d_pkg} includes _dev || _lib, pulling build deps.".orange
-      instance_variable_set("@#{d_pkg}_deps", `ruby bin/crew -d deps -b --exclude-buildessential #{d_pkg}`.split.delete_if { |d| d == 'glibc' })
+    if (d_pkg.include?('_lib') || d_pkg.include?('_dev')) && !d_pkg.include?('gcc_lib')
+      puts "#{"#{__LINE__}: " if CREW_VERBOSE}#{d_pkg} includes _dev || _lib, pulling build deps.".orange
+      # instance_variable_set("@#{d_pkg}_deps", instance_variable_set("@#{d_pkg}_deps", @d_pkg_obj.get_deps_list(exclude_buildessential: false).delete_if { |d| ( d == 'glibc' || d == 'gcc_lib' ) }))
+      instance_variable_set("@#{d_pkg}_deps", @d_pkg_obj.dependencies.map { |key, _value| key.to_s }.compact.delete_if { |d| %w[glibc gcc_lib].include?(d) })
     end
     instance_variable_set("@#{d_pkg}_graph", Dagwood::DependencyGraph.new({ d_pkg.to_sym => (instance_variable_get("@#{d_pkg}_deps").map &:to_sym) })) if instance_variable_get("@#{d_pkg}_graph").nil?
 
@@ -190,6 +193,16 @@ def determine_recursive_deps(d_pkg_input)
     next if instance_variable_get("@#{d_pkg}_deps").empty?
     instance_variable_get("@#{d_pkg}_deps").each do |d|
       determine_recursive_deps(d) if instance_variable_get("@#{d}_graph").nil?
+      begin
+        # puts "#{"#{__LINE__}: " if CREW_VERBOSE}order for #{d} is #{instance_variable_get("@#{d}_graph").order}".lightpurple
+        # Make sure that the dependency tree for each d_pkg dependency
+        # d is copacetic. If not error out with a complaint.
+        instance_variable_get("@#{d}_graph").order
+      rescue TSort::Cyclic => e
+        puts "#{"#{__LINE__}: " if CREW_VERBOSE}Error processing dependencies for #{d_pkg}:".lightred
+        puts "#{"#{__LINE__}: " if CREW_VERBOSE}Circular dependency detected from #{instance_variable_get("@#{d}_graph").dependencies}:".lightred
+        abort "#{"#{__LINE__}: " if CREW_VERBOSE}#{e.message}".lightred
+      end
       instance_variable_set("@#{d_pkg}_graph", instance_variable_get("@#{d_pkg}_graph").merge(instance_variable_get("@#{d}_graph"))) unless instance_variable_get("@#{d}_graph").dependencies.nil?
     end
   end
@@ -221,18 +234,25 @@ def order_recursive_deps(d_pkg_input)
   else
     ((d_pkgs ||= []) << d_pkg_input).flatten!
   end
-  puts "#{"#{__LINE__}:" if CREW_VERBOSE} Processing dependencies...".lightpurple
+  puts "#{"#{__LINE__}: " if CREW_VERBOSE}Processing dependencies...".lightpurple
   determine_recursive_deps(d_pkgs)
-  @input_pkgs = d_pkgs.to_set
+  input_pkgs = d_pkgs.to_set
   merge_base = instance_variable_get("@#{d_pkgs.pop}_graph")
 
   d_pkgs.each do |p|
+    begin
+      merge_base.order
+    rescue TSort::Cyclic => e
+      puts "#{"#{__LINE__}: " if CREW_VERBOSE}Circular dependency detected from #{merge_base.dependencies}:".lightpurple
+      abort e.message.to_s.lightred
+    end
     merge_base = merge_base.merge(instance_variable_get("@#{p}_graph"))
+    # puts "#{"#{__LINE__}: " if CREW_VERBOSE}merge_base.order is now #{merge_base.order}".lightpurple
   end
-  @package_deps_build_order = merge_base.order.to_set(&:to_s)
-  # Want the intersection of these sets.
-  # puts (@package_deps_build_order & @input_pkgs).to_a
-  return (@package_deps_build_order & @input_pkgs).to_a
+  package_deps_build_order = merge_base.order.to_set(&:to_s)
+  # Want the intersection of these sets, but the intersection appears
+  # to reorder the result, which isn't what we want.
+  return package_deps_build_order.delete_if { |p| !input_pkgs.include? p }.to_a
 end
 
 if SKIP_UPDATE_CHECKS
@@ -287,12 +307,15 @@ end
 if updated_packages.empty?
   puts 'No packages need to be updated.'.orange
 else
-  puts 'These packages will be checked to see if they need updated binaries:'.orange
   updated_packages.uniq!
-  updated_packages.each { |p| puts p.sub('packages/', '').sub('.rb', '').to_s.lightblue }
+  updated_packages_reordered = order_recursive_deps(updated_packages.map { |p| p.sub('packages/', '').sub('.rb', '') }).map { |p| "packages/#{p}.rb" }
+  puts 'These packages will be checked to see if they need updated binaries:'.orange
+  unless updated_packages == updated_packages_reordered
+    puts "#{"#{__LINE__}: " if CREW_VERBOSE}Packages to check have been reordered!".lightpurple
+    updated_packages = updated_packages_reordered
+  end
+  updated_packages.each { |p| puts " #{p.sub('packages/', '').sub('.rb', '').to_s.lightblue}" }
 end
-
-updated_packages = determine_recursive_deps(updated_packages.map { |p| p.sub('packages/', '').sub('.rb', '') }).map { |p| p.prepend('packages/').concat('.rb') }
 
 updated_packages.each do |pkg|
   name = pkg.sub('packages/', '').sub('.rb', '')
