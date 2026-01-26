@@ -14,15 +14,15 @@ class Libxmlb < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6e8fc1cfaf0e7332a9fb4bb5111d60fbbe2ce33036fd1a34eb2ba8883a37c0f0',
-     armv7l: '6e8fc1cfaf0e7332a9fb4bb5111d60fbbe2ce33036fd1a34eb2ba8883a37c0f0',
-       i686: '4833226d07eeb7afc4ee89dd7130df5c292ba3e2c47c220c536cd73175344367',
-     x86_64: '6e31fb5ded6d3c981f5e13887f284cfe36bfc941672d5f8d08f1eb8e297c5d71'
+    aarch64: '515b9b44b6a92a49ec8cb40617eeb50caa854e0d09b77a44b95fe15e2b1f2868',
+     armv7l: '515b9b44b6a92a49ec8cb40617eeb50caa854e0d09b77a44b95fe15e2b1f2868',
+       i686: '44712fec86321e6e6b33c21a0e74c5c8c13cd6fe27b8cd8210b457c78905ecb8',
+     x86_64: '4912f8ce873af0be7f0ecb374248d8959a47d11c611f5e7fbcbdc04d28761ec4'
   })
 
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gtk_doc' => :build
   depends_on 'libstemmer' # R
   depends_on 'libxslt' => :build
