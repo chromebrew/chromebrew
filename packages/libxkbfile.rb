@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Libxkbfile < Meson
   description 'library for the X window system'
   homepage 'https://x.org/wiki/'
-  version '1.1.3'
+  version '1.2.0'
   license 'MIT and custom'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxkbfile.git'
