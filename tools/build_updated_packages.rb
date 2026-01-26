@@ -307,9 +307,9 @@ end
 if updated_packages.empty?
   puts 'No packages need to be updated.'.orange
 else
-  puts 'These packages will be checked to see if they need updated binaries:'.orange
   updated_packages.uniq!
   updated_packages_reordered = order_recursive_deps(updated_packages.map { |p| p.sub('packages/', '').sub('.rb', '') }).map { |p| "packages/#{p}.rb" }
+  puts 'These packages will be checked to see if they need updated binaries:'.orange
   unless updated_packages == updated_packages_reordered
     puts "#{"#{__LINE__}:" if CREW_VERBOSE} Packages to check have been reordered!".lightpurple
     updated_packages = updated_packages_reordered
