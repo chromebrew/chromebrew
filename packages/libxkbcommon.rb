@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Libxkbcommon < Meson
   description 'Keymap handling library for toolkits and window systems'
   homepage 'https://xkbcommon.org'
-  version '1.12.2'
+  version '1.13.1'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/xkbcommon/libxkbcommon.git'
