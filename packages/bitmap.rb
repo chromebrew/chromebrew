@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Bitmap < Autotools
   description 'bitmap, bmtoa, atobm - X bitmap (XBM) editor and converter utilities'
   homepage 'https://gitlab.freedesktop.org/xorg/app/bitmap'
-  version '1.1.1'
+  version '1.1.2'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/app/bitmap.git'
