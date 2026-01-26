@@ -1,4 +1,4 @@
-# Total size: 965036
+# Total size: 970490
 /usr/local/bin/xkbcli
 /usr/local/include/xkbcommon/xkbcommon-compat.h
 /usr/local/include/xkbcommon/xkbcommon-compose.h
@@ -9,13 +9,13 @@
 /usr/local/include/xkbcommon/xkbregistry.h
 /usr/local/lib/libxkbcommon-x11.so
 /usr/local/lib/libxkbcommon-x11.so.0
-/usr/local/lib/libxkbcommon-x11.so.0.12.2
+/usr/local/lib/libxkbcommon-x11.so.0.13.1
 /usr/local/lib/libxkbcommon.so
 /usr/local/lib/libxkbcommon.so.0
-/usr/local/lib/libxkbcommon.so.0.12.2
+/usr/local/lib/libxkbcommon.so.0.13.1
 /usr/local/lib/libxkbregistry.so
 /usr/local/lib/libxkbregistry.so.0
-/usr/local/lib/libxkbregistry.so.0.12.2
+/usr/local/lib/libxkbregistry.so.0.13.1
 /usr/local/lib/pkgconfig/xkbcommon-x11.pc
 /usr/local/lib/pkgconfig/xkbcommon.pc
 /usr/local/lib/pkgconfig/xkbregistry.pc
