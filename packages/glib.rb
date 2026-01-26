@@ -23,7 +23,7 @@ class Glib < Meson
   depends_on 'libffi' # R
   depends_on 'pcre2' # R
   depends_on 'py3_pygments' => :build
-  depends_on 'shared_mime_info' # L
+  depends_on 'shared_mime_info' => :logical
   depends_on 'util_linux' # R
   depends_on 'zlib' # R
 
