@@ -3,7 +3,7 @@ require 'package'
 class Libxxf86dga < Package
   description 'X.org the client library for the XFree86-DGA extension'
   homepage 'https://www.x.org/wiki/'
-  version '1.1.6'
+  version '1.1.7'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxxf86dga.git'
