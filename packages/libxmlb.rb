@@ -23,16 +23,14 @@ class Libxmlb < Meson
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
-  depends_on 'gobject_introspection' => :build unless ARCH == 'i686'
   depends_on 'gtk_doc' => :build
   depends_on 'libstemmer' # R
   depends_on 'libxslt' => :build
   depends_on 'py3_pygments' => :build
-  depends_on 'py3_setuptools' => :build
   depends_on 'xzutils' # R
   depends_on 'zstd' # R
 
   run_tests
 
-  meson_options "-Dstemmer=true #{'-Dintrospection=false' if ARCH == 'i686'}"
+  meson_options '-Dintrospection=false -Dstemmer=true'
 end
