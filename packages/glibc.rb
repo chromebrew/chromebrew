@@ -29,7 +29,7 @@ unless CREW_PRE_GLIBC_STANDALONE
     depends_on 'make' => :build
     depends_on 'patchelf' => :build
     depends_on 'texinfo' => :build
-    depends_on 'libxcrypt' # Latest glibc removed libcrypt.so, add this for backward compatibility
+    depends_on 'libxcrypt' => :logical # Latest glibc removed libcrypt.so, add this for backward compatibility
 
     conflicts_ok
     no_env_options

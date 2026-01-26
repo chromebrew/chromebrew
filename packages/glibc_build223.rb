@@ -18,7 +18,7 @@ class Glibc_build223 < Package
   })
 
   depends_on 'gawk' => :build
-  depends_on 'filecmd' # L Fixes creating symlinks on a fresh install.
+  depends_on 'filecmd' => :logical # Fixes creating symlinks on a fresh install.
   depends_on 'libidn2' => :build
   depends_on 'texinfo' => :build
   depends_on 'hashpipe' => :build
