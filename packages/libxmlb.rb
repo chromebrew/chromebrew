@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Libxmlb < Meson
   description 'Library to help create and query binary XML blobs'
   homepage 'https://github.com/hughsie/libxmlb'
-  version '0.3.14'
+  version '0.3.24'
   license 'LGPL'
   compatibility 'all'
   source_url 'https://github.com/hughsie/libxmlb.git'
@@ -23,7 +23,7 @@ class Libxmlb < Meson
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
-  depends_on 'gobject_introspection' => :build
+  depends_on 'gobject_introspection' => :build unless ARCH == 'i686'
   depends_on 'gtk_doc' => :build
   depends_on 'libstemmer' # R
   depends_on 'py3_pygments' => :build
@@ -32,5 +32,5 @@ class Libxmlb < Meson
 
   run_tests
 
-  meson_options '-Dstemmer=true'
+  meson_options "-Dstemmer=true #{'-Dintrospection=false' if ARCH == 'i686'}"
 end
