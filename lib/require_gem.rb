@@ -8,6 +8,9 @@ def require_gem(ruby_gem_name_and_require = nil, require_override = nil)
   begin
     gem ruby_gem_name
   rescue LoadError
+    require 'rubygems/gem_runner'
+    Gem::GemRunner.new.run %w[check doctor]
+    Gem::GemRunner.new.run ['sources', '-u']
     puts " -> install #{ruby_gem_name} gem".orange
     Gem.install(ruby_gem_name)
     gem ruby_gem_name
