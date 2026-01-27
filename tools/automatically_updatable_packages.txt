@@ -140,6 +140,8 @@ hwdata
 i3
 immer
 inetutils
+intel_media_driver
+inxi
 ldc
 libcdr
 libcss
