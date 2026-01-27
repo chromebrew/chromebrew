@@ -140,6 +140,7 @@ hwdata
 i3
 immer
 inetutils
+iperf3
 ldc
 libcdr
 libcss
