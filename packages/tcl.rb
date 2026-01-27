@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Tcl < Autotools
   description 'Tcl (Tool Command Language) is a very powerful but easy to learn dynamic programming language, suitable for a very wide range of uses, including web and desktop applications, networking, administration, testing and many more.'
   homepage 'http://www.tcl.tk/'
-  version '9.0.2'
+  version '9.0.3'
   license 'tcltk'
   compatibility 'all'
   source_url "https://downloads.sourceforge.net/project/tcl/Tcl/#{version}/tcl#{version}-src.tar.gz"
-  source_sha256 'a72b1607d7a399c75148c80fcdead88ed3371a29884181f200f2200cdee33bbc'
+  source_sha256 '2537ba0c86112c8c953f7c09d33f134dd45c0fb3a71f2d7f7691fd301d2c33a6'
   binary_compression 'tar.zst'
 
   binary_sha256({
