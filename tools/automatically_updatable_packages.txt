@@ -142,6 +142,7 @@ immer
 inetutils
 intel_media_driver
 inxi
+iperf3
 ldc
 libcdr
 libcss

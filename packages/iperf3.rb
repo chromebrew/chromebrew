@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Iperf3 < Autotools
   description 'iPerf3 is a tool for active measurements of the maximum achievable bandwidth on IP networks.'
   homepage 'https://iperf.fr'
-  version '3.19.1'
+  version '3.20'
   license 'BSD-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/esnet/iperf.git'
@@ -11,9 +11,9 @@ class Iperf3 < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4a0da34022f0e393734ab267995399f505186cafff157a5873475f370fe98316',
-     armv7l: '4a0da34022f0e393734ab267995399f505186cafff157a5873475f370fe98316',
-     x86_64: 'bea966ad5a7b61eb1650f9ae975cbb45aded37e4a641d12b538d832294223c1f'
+    aarch64: 'fc306c0d841d3a1da00954f36e5ac87a1cc7a13d7c0cc17399ffecdffacdbddd',
+     armv7l: 'fc306c0d841d3a1da00954f36e5ac87a1cc7a13d7c0cc17399ffecdffacdbddd',
+     x86_64: '0773a7433305562a186cdb1de478bfc34cf99e31addc8b63b7fb231c9b94b701'
   })
 
   depends_on 'glibc' # R
