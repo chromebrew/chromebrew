@@ -31,6 +31,7 @@ class Libtiff < CMake
   depends_on 'libx11' unless ARCH == 'i686' # R
   depends_on 'libxi' unless ARCH == 'i686' # R
   depends_on 'mesa' => :build unless ARCH == 'i686'
+  depends_on 'sphinx' => :build
   depends_on 'wget2' => :build
   depends_on 'xzutils' # R
   depends_on 'zlib' # R
