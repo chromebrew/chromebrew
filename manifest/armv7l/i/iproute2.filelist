@@ -1,4 +1,4 @@
-# Total size: 2877261
+# Total size: 2905306
 /usr/local/bin/arpd
 /usr/local/bin/bridge
 /usr/local/bin/ctstat
@@ -87,6 +87,7 @@
 /usr/local/share/man/man8/ip-xfrm.8.zst
 /usr/local/share/man/man8/ip.8.zst
 /usr/local/share/man/man8/lnstat.8.zst
+/usr/local/share/man/man8/netshaper.8.zst
 /usr/local/share/man/man8/nstat.8.zst
 /usr/local/share/man/man8/rdma-dev.8.zst
 /usr/local/share/man/man8/rdma-link.8.zst
@@ -114,6 +115,7 @@
 /usr/local/share/man/man8/tc-ct.8.zst
 /usr/local/share/man/man8/tc-ctinfo.8.zst
 /usr/local/share/man/man8/tc-drr.8.zst
+/usr/local/share/man/man8/tc-dualpi2.8.zst
 /usr/local/share/man/man8/tc-ematch.8.zst
 /usr/local/share/man/man8/tc-etf.8.zst
 /usr/local/share/man/man8/tc-ets.8.zst

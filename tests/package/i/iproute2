@@ -1,0 +1,16 @@
+#!/bin/bash
+arpd -h 2>&1
+bridge -V
+ctstat -V 2>&1 | head -1
+genl -V
+ifstat -V
+ip -V
+lnstat -V 2>&1 | head -1
+nstat -V
+routel -h
+rtacct -V
+rtmon -V
+rtstat -V 2>&1 | head -1
+nstat -V
+ss -V
+tc -V
