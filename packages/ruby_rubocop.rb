@@ -6,7 +6,7 @@ require 'buildsystems/ruby'
 class Ruby_rubocop < RUBY
   description 'A Ruby static code analyzer and formatter'
   homepage 'https://rubocop.org'
-  version "1.82.1-#{CREW_RUBY_VER}"
+  version "1.84.0-#{CREW_RUBY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
@@ -23,7 +23,7 @@ class Ruby_rubocop < RUBY
   depends_on 'ruby_regexp_parser' # R
   depends_on 'ruby_rubocop' # R
   depends_on 'ruby_rubocop_ast' # R
-  depends_on 'ruby_rubocop_chromebrew' # R
+  depends_on 'ruby_rubocop_chromebrew' => :logical
   depends_on 'ruby_ruby_progressbar' # R
   depends_on 'ruby_tsort' # R
   depends_on 'ruby_unicode_display_width' # R
