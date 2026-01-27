@@ -1,0 +1,3 @@
+#!/bin/bash
+iperf3 -h | head
+iperf3 -v
