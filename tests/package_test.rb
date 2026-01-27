@@ -21,7 +21,7 @@ def check_package(pkg, verbose: false)
     test_stdout, test_stderr, test_status = Open3.capture3("#{CREW_LIB_PATH}/tests/package/#{pkg.name[0]}/#{pkg.name}")
   else
     default_tests = true
-    test_stdout, test_stderr, test_status = Open3.capture3("#{CREW_LIB_PATH}/tests/package/default_package_tests")
+    test_stdout, test_stderr, test_status = Open3.capture3("#{CREW_LIB_PATH}/tests/package/default_package_tests #{pkg.name}")
   end
   print test_stdout
   # Check if the tests passed.
