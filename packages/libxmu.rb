@@ -31,6 +31,14 @@ class Libxmu < Autotools
   depends_on 'util_linux' # R
   depends_on 'xorg_macros' => :build
 
+  def self.patch
+    patches = [
+      # Fix for https://gitlab.freedesktop.org/xorg/lib/libxmu/-/issues/3
+      ['https://gitlab.freedesktop.org/xorg/lib/libxmu/-/commit/3d207f8600adbc8fad6f5a5daaa66bf3961d9bdd.patch', 'b0379e234646e01b4d01bfefd6fe19bfa4b3f36668ebc29bf622aad615917084']
+    ]
+    ConvenienceFunctions.patch(patches) if ARCH != 'x86_64' && version == '1.3.0'
+  end
+
   def self.prebuild
     ConvenienceFunctions.libtoolize('libuuid', 'util_linux')
   end
