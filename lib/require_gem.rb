@@ -12,7 +12,7 @@ def require_gem(ruby_gem_name_and_require = nil, require_override = nil)
     # e.g.,
     # Gem::Specification#activate_dependencies': Could not find 'rubocop' (>= 0) among 150 total gem(s) (Gem::MissingSpecError)
     require 'rubygems/gem_runner'
-    Gem::GemRunner.new.run %w[check doctor]
+    Gem::GemRunner.new.run %w[check doctor #{ruby_gem_name}]
     Gem::GemRunner.new.run ['sources', '-u']
     puts " -> install #{ruby_gem_name} gem".orange
     Gem.install(ruby_gem_name)
