@@ -7,10 +7,17 @@ def require_gem(ruby_gem_name_and_require = nil, require_override = nil)
   ruby_gem_name = ruby_gem_name_and_require.split('/')[0]
   begin
     gem ruby_gem_name
-  rescue LoadError
+  rescue NoMethodError, Gem::MissingSpecError
+    # Handle possible error immediately after a gem uninstall.
+    # e.g.,
+    # Gem::Specification#activate_dependencies': Could not find 'rubocop' (>= 0) among 150 total gem(s) (Gem::MissingSpecError)
     require 'rubygems/gem_runner'
     Gem::GemRunner.new.run %w[check doctor]
     Gem::GemRunner.new.run ['sources', '-u']
+    puts " -> install #{ruby_gem_name} gem".orange
+    Gem.install(ruby_gem_name)
+    gem ruby_gem_name
+  rescue LoadError
     puts " -> install #{ruby_gem_name} gem".orange
     Gem.install(ruby_gem_name)
     gem ruby_gem_name
