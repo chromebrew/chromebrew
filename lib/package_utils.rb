@@ -49,11 +49,27 @@ class PackageUtils
 
     # List all the packages with the name and version of the package file.
     # The name search is fuzzy, so we need to refine it further (otherwise packages like vim, gvim and vim_runtime would break).
-    response = get_http_response("#{CREW_GITLAB_PKG_REPO}?package_name=#{pkg.name}&package_version=#{pkg.version}_#{ARCH}")
-    packages = JSON.parse(response.body)
+    pkg_json_download_try_count = 3
+    packages = nil
+    while pkg_json_download_try_count.positive? || packages.nil?
+      pkg_json_download_try_count -= 1
+      pkg_json_response = get_http_response("#{CREW_GITLAB_PKG_REPO}?package_name=#{pkg.name}&package_version=#{pkg.version}_#{ARCH}")
+      pkg_json_response_code = pkg_json_response.code
+      if pkg_json_response_code != '200'
+        puts pkg_json_response.header.to_s.orange
+        redo
+      end
+      begin
+        packages = JSON.parse(pkg_json_response.body)
+      rescue JSON::ParserError
+        puts "#{CREW_GITLAB_PKG_REPO}?package_name=#{pkg.name}&package_version=#{pkg.version}_#{ARCH} is not valid JSON.".orange
+        puts 'Retrying download...'.orange
+        packages = nil
+      end
+    end
 
     # Loop over each result until we get an exact name match, then return the package ID for that match.
-    package_id = packages.select(&->(p) { p['name'] == pkg.name }).dig(0, 'id')
+    package_id = packages.select(&->(p) { p['name'] == pkg.name }).dig(0, 'id') unless packages.nil?
 
     # Return early if we weren't able to find the package ID, so that the CREW_CACHE_ENABLED hack to test packages without uploading them still works.
     # When we're doing that, we're calling download knowing that there isn't an actual file to download, but relying on CREW_CACHE_ENABLED to save us before we get there.
