@@ -6,15 +6,15 @@ class Libtiff < CMake
   version '4.7.1-1'
   license 'libtiff'
   compatibility 'all'
-  source_url "https://github.com/libsdl-org/libtiff.git"
+  source_url 'https://github.com/libsdl-org/libtiff.git'
   git_hashtag "v#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1ac9f8425b9dc95a4895abf6d593e14a15696f3bc0b2464c2467e74ddeaba9d5',
-     armv7l: '1ac9f8425b9dc95a4895abf6d593e14a15696f3bc0b2464c2467e74ddeaba9d5',
-       i686: '535c1315f1de95bf13a13d5222ba99f626bf4511e298699771e29c63867a5b0b',
-     x86_64: '273da7543a57e58339b456c4b9ea6194236a8a606e81faa97b04af8842a48ba6'
+    aarch64: '95226e90392eed108b5863a692f2c4bd39a1c524e1f330868e2f471655008310',
+     armv7l: '95226e90392eed108b5863a692f2c4bd39a1c524e1f330868e2f471655008310',
+       i686: 'ae9cbd6400afb1f4423fefe190336be4c9d90dec3b9aa2364e32f8fb837cb555',
+     x86_64: '1199576773668006bc8af5553deffda57a45e18c6b2d3654c0f87595ae721d74'
   })
 
   depends_on 'freeglut' unless ARCH == 'i686' # R
