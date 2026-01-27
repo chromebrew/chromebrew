@@ -1,13 +1,13 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Libtiff < Package
+class Libtiff < CMake
   description 'LibTIFF provides support for the Tag Image File Format (TIFF), a widely used format for storing image data.'
   homepage 'http://www.libtiff.org/'
-  version '4.7.1'
+  version '4.7.1-1'
   license 'libtiff'
   compatibility 'all'
-  source_url "https://download.osgeo.org/libtiff/tiff-#{version}.tar.xz"
-  source_sha256 'b92017489bdc1db3a4c97191aa4b75366673cb746de0dce5d7a749d5954681ba'
+  source_url "https://github.com/libsdl-org/libtiff.git"
+  git_hashtag "v#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -28,7 +28,6 @@ class Libtiff < Package
   depends_on 'libice' unless ARCH == 'i686' # R
   depends_on 'libjpeg_turbo' # R
   depends_on 'libsm' unless ARCH == 'i686' # R
-  depends_on 'libwebp' unless ARCH == 'i686' # R
   depends_on 'libx11' unless ARCH == 'i686' # R
   depends_on 'libxi' unless ARCH == 'i686' # R
   depends_on 'mesa' => :build unless ARCH == 'i686'
@@ -38,27 +37,9 @@ class Libtiff < Package
   depends_on 'zstd' # R
 
   gnome
-  no_env_options
 
-  def self.build
-    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    @x = ARCH == 'i686' ? '' : '--with-x --enable-webp'
-    system "#{CREW_ENV_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} ./configure #{CREW_CONFIGURE_OPTIONS} \
-      #{@x} \
-      --enable-zlib \
-      --enable-mdi \
-      --enable-libdeflate \
-      --enable-pixarlog \
-      --enable-jpeg \
-      --enable-lzma \
-      --enable-zstd \
-      --enable-cxx"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    # Remove static library.
-    FileUtils.rm "#{CREW_DEST_LIB_PREFIX}/libtiff.a"
-  end
+  cmake_options '-DBUILD_SHARED_LIBS=ON \
+                 -Dtiff-static=OFF \
+                 -Dtiff-tests=OFF \
+                 -Dtiff-contrib=OFF'
 end
