@@ -1,0 +1,3 @@
+#!/bin/bash
+pnpm -h | head
+pnpm -v
