@@ -141,6 +141,7 @@ i3
 immer
 inetutils
 intel_media_driver
+inxi
 jansson
 ldc
 libcdr
