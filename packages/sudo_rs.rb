@@ -14,10 +14,10 @@ class Sudo_rs < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '08695b92aa36d0c7acbf4fd41dcbefcf806689e84f5049405a55d09413953d87',
-     armv7l: '08695b92aa36d0c7acbf4fd41dcbefcf806689e84f5049405a55d09413953d87',
-       i686: 'f7210dec62ea359a9b614e8ac74b8dbe6d85ee27b5c48bd33ee81ec8dcba7abc',
-     x86_64: 'ca797bc8a9670fd6e23eb2df23e2f43fad0dbb563ae7637c1ccef1b233222208'
+    aarch64: 'e849b1f086888c6798ebe069c994bc0b8877341ac4efefb52279ce711d8a4ba9',
+     armv7l: 'e849b1f086888c6798ebe069c994bc0b8877341ac4efefb52279ce711d8a4ba9',
+       i686: '9721d5e3c6764654a019dd0a19127ff6fb5393753c3e17586528cb70ebe8bb34',
+     x86_64: '03e980b15ba7b0edf43c49887816b32850b252cfa6763104c07cae278ad9b11c'
   })
 
   depends_on 'gcc_lib' # R
