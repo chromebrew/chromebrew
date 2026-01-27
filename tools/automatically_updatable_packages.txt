@@ -159,6 +159,7 @@ nano
 ocaml
 opencode
 opera
+pnpm
 protobuf
 rqlite
 signal_desktop
