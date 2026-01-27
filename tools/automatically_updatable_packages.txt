@@ -140,6 +140,7 @@ hwdata
 i3
 immer
 inetutils
+intel_media_driver
 iproute2
 ldc
 libcdr
