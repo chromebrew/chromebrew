@@ -378,6 +378,8 @@ jobs:
       - setup
       - generate
     if: ${{ !cancelled() }}
+    env:
+      CHANGED_PACKAGES: ${{ needs.setup.outputs.changed_packages }}
     steps:
       - name: Fail if update or build jobs failed, otherwise create a PR
         if: ${{ contains(needs.*.result, 'failure') }}
@@ -393,6 +395,24 @@ jobs:
           application_private_key: ${{ secrets.APPLICATION_PRIVATE_KEY }}
           organization: chromebrew
           revoke_token: true
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+          ref: ${{ inputs.branch || github.ref_name }}
+      - name: Add package build completion files.
+        id: add-build-success-marks
+        run: |
+          for file in $(echo "${CHANGED_PACKAGES}" | xargs basename -s .rb | xargs)
+            do
+            touch tools/automatically_updatable_packages/${file}
+          done
+      - uses: EndBug/add-and-commit@v9
+        if: ${{ contains(needs.generate.result, 'success') }}
+        with:
+          add: 'tools/automatically_updatable_packages'
+          fetch: false
+          message: 'Mark packages from successful builds as automatically buildable.'
       - name: Trigger PR workflow
         if: ${{ github.event.inputs.with_pr != 'No' }}
         id: trigger-pr-workflow
