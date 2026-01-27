@@ -12,9 +12,9 @@ class Libxmu < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5272195d6e4d49923a6d675be707609c6eafe2ed97c1f9f6284a982c2e1629a8',
-     armv7l: '5272195d6e4d49923a6d675be707609c6eafe2ed97c1f9f6284a982c2e1629a8',
-     x86_64: 'f9f3fb77836a4d4f20495394e9f333463f04cb91c1fa4f2bc5285fac430ece1c'
+    aarch64: '98bb6518a8d1f00c0ce60cd9059ce5e8922e4a299d0aa6756587db4b93b21916',
+     armv7l: '98bb6518a8d1f00c0ce60cd9059ce5e8922e4a299d0aa6756587db4b93b21916',
+     x86_64: '1cb7c473758970c2cb4979e6d96748ece9c9656e27ad5315f021467b1976bfcf'
   })
 
   depends_on 'glibc' # R
