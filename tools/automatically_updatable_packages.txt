@@ -143,6 +143,7 @@ inetutils
 intel_media_driver
 inxi
 iperf3
+iproute2
 ldc
 libcdr
 libcss
