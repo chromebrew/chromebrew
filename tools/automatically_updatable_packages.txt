@@ -144,6 +144,7 @@ intel_media_driver
 inxi
 iperf3
 iproute2
+jansson
 ldc
 libcdr
 libcss

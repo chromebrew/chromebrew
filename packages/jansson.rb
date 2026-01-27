@@ -3,18 +3,18 @@ require 'buildsystems/cmake'
 class Jansson < CMake
   description 'Jansson is a C library for encoding, decoding and manipulating JSON data.'
   homepage 'https://github.com/akheron/jansson'
-  version '2.14.1-1'
+  version '2.15.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/akheron/jansson.git'
-  git_hashtag "v#{version.split('-')[0]}"
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aafccf57e3f8e28b720dedd2ce3b919874caaef1cc048de8e4997a0e82e980ca',
-     armv7l: 'aafccf57e3f8e28b720dedd2ce3b919874caaef1cc048de8e4997a0e82e980ca',
-       i686: '22b6361db30f20a0f8bbf0f69f4b115ce1619730503ad4648a0890b39a22e975',
-     x86_64: 'a8a588fa0215143177a515a40ef3c61eca362081925037a734367a4b82d38b74'
+    aarch64: 'b6685abaaae6a1ca5bebce3ad71a57b00fcd14be195c941867b0b197cb8763e5',
+     armv7l: 'b6685abaaae6a1ca5bebce3ad71a57b00fcd14be195c941867b0b197cb8763e5',
+       i686: 'f5d42b40e698f39bd6fb23321abb6be141f276bdf2284d1fc87a8b103b0cefed',
+     x86_64: 'c2d4025f913d9c01ffbb494ba7da737eab8f661636f00c696202d587a4a6c8c6'
   })
 
   depends_on 'glibc' # R
