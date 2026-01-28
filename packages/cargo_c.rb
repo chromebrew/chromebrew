@@ -11,7 +11,7 @@ class Cargo_c < RUST
   license 'LGPL-2.1 and MPL-1.1'
   compatibility 'all'
   source_url 'https://github.com/lu-zero/cargo-c.git'
-  git_hashtag "v#{version}"
+  git_hashtag "v#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
