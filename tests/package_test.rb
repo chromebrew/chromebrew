@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+require 'open3'
 require_relative '../lib/const'
 require_relative '../lib/color'
 require_relative '../lib/package'
@@ -16,21 +17,25 @@ def check_package(pkg, verbose: false)
     return 1
   end
   if File.exist? "#{CREW_LIB_PATH}/tests/package/#{pkg.name[0]}/#{pkg.name}"
-    stdout = `#{CREW_LIB_PATH}/tests/package/#{pkg.name[0]}/#{pkg.name} 2> /tmp/errout`
-    errout = `cat /tmp/errout`.chomp
+    default_tests = false
+    test_stdout, test_stderr, test_status = Open3.capture3("#{CREW_LIB_PATH}/tests/package/#{pkg.name[0]}/#{pkg.name}")
   else
-    stdout = ''
-    errout = "Package tests for #{pkg.name} do not exist. :(".lightred
+    default_tests = true
+    test_stdout, test_stderr, test_status = Open3.capture3("#{CREW_LIB_PATH}/tests/package/default_package_tests #{pkg.name}")
   end
-  print stdout
+  print test_stdout
   # Check if the tests passed.
-  if errout.empty?
+  if test_stderr.empty? || test_status
     puts "Package tests for #{pkg.name} passed.".lightgreen if verbose
     return 0
-  else
-    puts errout
+  elsif default_tests == false
+    puts test_stderr
     puts "Package tests for #{pkg.name} failed.".lightred
     return 1
+  else
+    puts test_stderr
+    puts "Default package tests for #{pkg.name} failed.".orange
+    return 0
   end
 end
 
