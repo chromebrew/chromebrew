@@ -100,7 +100,7 @@ class PackageUtils
     # Delete -glibc2.37, or whatever the system glibc is.
     new_version.delete_suffix!("-glibc#{LIBC_VERSION}")
     # Delete -icuXX.Y
-    new_version.gsub(/\-icu(\d)+\.\d/, '')
+    new_version.gsub(/\-icu(\d+)\.\d/, '')
     # Trim kde- prefixes in qt5 packages so nothing else gets confused.
     new_version.delete_prefix!('kde-')
     # Delete -llvm18, futureproofed until llvm 100
