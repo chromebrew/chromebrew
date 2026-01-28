@@ -19,9 +19,9 @@ class Libsdl < Package
   depends_on 'glibc' # R
   # depends_on 'xorg_server'
   # depends_on 'xwayland'
-  depends_on 'alsa_lib'
-  depends_on 'pulseaudio'
-  depends_on 'mesa'
+  depends_on 'alsa_lib' => :logical
+  depends_on 'pulseaudio' => :logical
+  depends_on 'mesa' => :logical
   depends_on 'nasm' => :build
 
   def self.patch
