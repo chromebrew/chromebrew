@@ -7,7 +7,7 @@ require 'buildsystems/rust'
 class Cargo_c < RUST
   description 'A cargo subcommand to build and install C-ABI compatible dynamic and static libraries'
   homepage 'https://github.com/lu-zero/cargo-c/'
-  version '0.10.20+cargo-0.94.0'
+  version "0.10.20-#{CREW_RUST_VER}"
   license 'LGPL-2.1 and MPL-1.1'
   compatibility 'all'
   source_url 'https://github.com/lu-zero/cargo-c.git'

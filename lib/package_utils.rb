@@ -97,22 +97,24 @@ class PackageUtils
     new_version.gsub!(/-dfsg.*/, '')
     # Delete -gcc14, futureproofed until gcc 100
     new_version.gsub!(/-gcc\d{2}/, '')
+    # Delete -glibc2.37, or whatever the system glibc is.
+    new_version.delete_suffix!("-glibc#{LIBC_VERSION}")
+    # Delete -icu75.1, futureproofed until icu 100
+    new_version.gsub!(/-icu\d{2}\.\d/, '')
     # Trim kde- prefixes in qt5 packages so nothing else gets confused.
     new_version.delete_prefix!('kde-')
+    # Delete -llvm18, futureproofed until llvm 100
+    new_version.gsub!(/-llvm\d{2}/, '')
+    # Delete -perl 5.40, futureproofed until Perl 5.100
+    new_version.gsub!(/-perl5\.\d{2}/, '')
     # Delete -py3.12, futureproofed until Python 4
     new_version.gsub!(/-py3\.\d{2}/, '')
     # Delete -ruby4.x, futureproofed until Ruby 5 or Ruby 4.10
     new_version.gsub!(/-ruby4\.\d{1}/, '')
-    # Delete -perl 5.40, futureproofed until Perl 5.100
-    new_version.gsub!(/-perl5\.\d{2}/, '')
-    # Delete -llvm18, futureproofed until llvm 100
-    new_version.gsub!(/-llvm\d{2}/, '')
-    # Delete -glibc2.37, or whatever the system glibc is.
-    new_version.delete_suffix!("-glibc#{LIBC_VERSION}")
+    # Delete -rustX.YY
+    new_version.gsub!(/-rust\d{1}\.\d{2}/, '')
     # Delete git version tags (1.2.4-qnd73k6), avoiding overmatching and hitting things that arent git hashtags.
     new_version.gsub!(/-\w{7}$/, '')
-    # Delete -icu75.1, futureproofed until icu 100
-    new_version.gsub!(/-icu\d{2}\.\d/, '')
 
     return new_version
   end
