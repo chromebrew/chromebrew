@@ -19,17 +19,17 @@ class Elogind < Package
   })
 
   depends_on 'acl' # R
-  depends_on 'dbus'
+  depends_on 'dbus' => :build
   depends_on 'docbook_xml'
-  depends_on 'eudev'
+  depends_on 'eudev' => :build
   depends_on 'gcc_lib' # R
-  depends_on 'glib'
-  depends_on 'gperf'
-  depends_on 'libcap'
-  depends_on 'libxslt'
+  depends_on 'glib' => :build
+  depends_on 'gperf' => :build
+  depends_on 'libcap' => :build
+  depends_on 'libxslt' => :build
   depends_on 'linux_pam' # For _pam_macros.h
   depends_on 'polkit' => :logical
-  depends_on 'shadow'
+  depends_on 'shadow' => :build
 
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \
