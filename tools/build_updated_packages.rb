@@ -270,8 +270,8 @@ else
   puts 'Checking packages git marks as having changed.'.orange
   changed_files = `git diff HEAD --name-only`.chomp.split
   changed_files_previous_commit = `git diff-tree --no-commit-id --name-only -r $(git rev-parse origin/master)..$(git rev-parse --verify HEAD)`.chomp.split
-  updated_packages.push(*changed_files.select { |c| c =~ /(packages\/).*.*(.rb)/ })
-  updated_packages.push(*changed_files_previous_commit.select { |c| c =~ /(packages\/).*.*(.rb)/ })
+  updated_packages.push(*changed_files.grep(%r{(packages/).*.*(.rb)}))
+  updated_packages.push(*changed_files_previous_commit.grep(%r{(packages/).*.*(.rb)}))
 end
 
 crew_update_packages = `CREW_NO_GIT=1 CREW_UNATTENDED=1 crew update | grep "\\[\\""  | jq -r '.[]'`.chomp.split.map(&'packages/'.method(:+)).map { |i| i.concat('.rb') }
