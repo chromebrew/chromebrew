@@ -13,13 +13,14 @@ class Terminology < Package
   binary_sha256({
     aarch64: 'be229db30e4c8c423bd89adb118e1e3d7958fe718ca5ecc149bfc395939b0523',
      armv7l: 'be229db30e4c8c423bd89adb118e1e3d7958fe718ca5ecc149bfc395939b0523',
+       i686: 'd9d03f10e5522feec35fbb4ea2c789eb805a483403ceafacfc0ab6dcda3c36c6',
      x86_64: '8d975f5df0ff60a90073b858141b042c0b5abe034b84c862b116e4ce0e767fdb'
   })
 
   depends_on 'desktop_file_utilities'
-  depends_on 'xdg_utils'
   depends_on 'libefl'
   depends_on 'sommelier' => :logical
+  depends_on 'xdg_utils'
 
   def self.build
     system "meson --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} _build"

@@ -13,20 +13,21 @@ class Motif < Package
   binary_sha256({
     aarch64: '5de7b5fb40d604071d404f5baba20eef3746caaa6850c40730f4aa36472aa016',
      armv7l: '5de7b5fb40d604071d404f5baba20eef3746caaa6850c40730f4aa36472aa016',
+       i686: '60a1013b3e7b8ab41c8809ace6683e5b13115ef577662c3b58df5e0f226669e1',
      x86_64: '9e9936ac3c75240ad36814eaf97d6004674aead89d23ad688f1bdcaa12070529'
   })
 
+  depends_on 'expat' # R
   depends_on 'fontconfig'
   depends_on 'freetype'
-  depends_on 'libjpeg_turbo'
-  depends_on 'libpng'
-  depends_on 'sommelier' => :logical
-  depends_on 'expat' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'harfbuzz' # R
   depends_on 'libbsd' # R
   depends_on 'libice' # R
+  depends_on 'libjpeg_turbo'
   depends_on 'libmd' # R
+  depends_on 'libpng'
   depends_on 'libsm' # R
   depends_on 'libx11' # R
   depends_on 'libxau' # R
@@ -37,6 +38,7 @@ class Motif < Package
   depends_on 'libxmu' # R
   depends_on 'libxrender' # R
   depends_on 'libxt' # R
+  depends_on 'sommelier' => :logical
   depends_on 'util_linux' # R
   depends_on 'zlib' # R
 

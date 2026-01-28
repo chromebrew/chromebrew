@@ -13,12 +13,14 @@ class Sqlitebrowser < Package
   binary_sha256({
     aarch64: 'a2ef3c40eb1eed02125a24b2b4d9ffaa81d9dfa4be9042ddf410c53cdcf6eab7',
      armv7l: 'a2ef3c40eb1eed02125a24b2b4d9ffaa81d9dfa4be9042ddf410c53cdcf6eab7',
+       i686: '116f831ced1a81c4d2bd7dfc6fc29f31b6cbd2ca6101605cdcbab789bf155e31',
      x86_64: 'b4213ade6b79ad9a03f2062c08dfde249009f0de6115b94e15b37edfc087949e'
   })
 
-  depends_on 'sqlite'
+  depends_on 'gcc_lib' # R
   depends_on 'qt5_base'
   depends_on 'sommelier' => :logical
+  depends_on 'sqlite'
 
   def self.build
     system 'cmake',

@@ -1,3 +1,5 @@
+# Total size: 301268182
+/home/chronos/user/.wingpersonal10/ide.log
 /usr/local/bin/wing
 /usr/local/share/wing-personal/CATALOG.txt
 /usr/local/share/wing-personal/CHANGELOG.txt
@@ -8,6 +10,8 @@
 /usr/local/share/wing-personal/bin/__os__/linux-x64/runtime-icu/lib/icu/67.1/pkgdata.inc
 /usr/local/share/wing-personal/bin/__os__/linux-x64/runtime-icu/lib/icu/Makefile.inc
 /usr/local/share/wing-personal/bin/__os__/linux-x64/runtime-icu/lib/icu/current
+/usr/local/share/wing-personal/bin/__os__/linux-x64/runtime-icu/lib/icu/current/Makefile.inc
+/usr/local/share/wing-personal/bin/__os__/linux-x64/runtime-icu/lib/icu/current/pkgdata.inc
 /usr/local/share/wing-personal/bin/__os__/linux-x64/runtime-icu/lib/icu/pkgdata.inc
 /usr/local/share/wing-personal/bin/__os__/linux-x64/runtime-icu/lib/libicudata.so
 /usr/local/share/wing-personal/bin/__os__/linux-x64/runtime-icu/lib/libicudata.so.67
@@ -8844,4 +8848,3 @@
 /usr/local/share/wing-personal/wingdb
 /usr/local/share/wing-personal/wingdb-suid
 /usr/local/share/wing-personal/wingdbstub.py
-/home/chronos/user/.wingpersonal10/ide.log

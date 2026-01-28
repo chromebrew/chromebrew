@@ -13,11 +13,23 @@ class Rxvt_unicode < Package
   binary_sha256({
     aarch64: 'b23e4d4e20911d6e8085e8867358f9cb189d599c1733edc994504de55147261a',
      armv7l: 'b23e4d4e20911d6e8085e8867358f9cb189d599c1733edc994504de55147261a',
+       i686: 'd0d24b033752ea7191b8d2ef8990a79ac14192deb72e231f8cf4e43f1f5530d7',
      x86_64: '4393a4bdb819213b05deb41b0a713e81b52ad0f786c095dd77fe2f03e0a8452c'
   })
 
+  depends_on 'fontconfig' # R
+  depends_on 'freetype' # R
+  depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf'
+  depends_on 'glib' # R
   depends_on 'libptytty'
+  depends_on 'libx11' # R
+  depends_on 'libxcrypt' # R
+  depends_on 'libxft' # R
+  depends_on 'libxmu' # R
+  depends_on 'libxrender' # R
+  depends_on 'libxt' # R
+  depends_on 'perl' # R
   depends_on 'sommelier' => :logical
 
   def self.build

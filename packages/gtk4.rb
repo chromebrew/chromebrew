@@ -16,6 +16,8 @@ class Gtk4 < Meson
      x86_64: '93152f070abd5e2402c6e04ccad186f79d2596e07ed8b459803decd238a444f4'
   })
 
+  # depends_on 'gnome_icon_theme' # L
+  # depends_on 'gstreamer' # R Let's avoid the glibc 2.29 dep.
   depends_on 'adwaita_fonts' # L
   depends_on 'adwaita_icon_theme' # L
   depends_on 'cairo' # R
@@ -29,10 +31,8 @@ class Gtk4 < Meson
   depends_on 'glib' # R
   depends_on 'glibc' # R
   depends_on 'glslang' => :build
-  # depends_on 'gnome_icon_theme' # L
   depends_on 'gobject_introspection' => :build
   depends_on 'graphene' # R
-  # depends_on 'gstreamer' # R Let's avoid the glibc 2.29 dep.
   depends_on 'harfbuzz' # R
   depends_on 'hicolor_icon_theme' # L
   depends_on 'intel_media_sdk' => :build if ARCH.eql?('x86_64')

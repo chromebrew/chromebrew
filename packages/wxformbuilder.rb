@@ -13,11 +13,13 @@ class Wxformbuilder < Package
   binary_sha256({
     aarch64: '72919b2bd017609c541cdd137375e4f5b77ebbc575b64bf4c36f800ff9063acb',
      armv7l: '72919b2bd017609c541cdd137375e4f5b77ebbc575b64bf4c36f800ff9063acb',
+       i686: '401bfac8ccbad94011998a2e8f1b30605fbae2c11e11469516b171d0fe96e334',
      x86_64: 'f812d32fda14a1a379be8d8c98c291da84f0353bd7cefc6f07bad3f8ad89b4ad'
   })
 
-  depends_on 'wxwidgets'
+  depends_on 'gcc_lib' # R
   depends_on 'sommelier' => :logical
+  depends_on 'wxwidgets'
 
   def self.build
     system 'git clone --recursive --depth=1 https://github.com/wxFormBuilder/wxFormBuilder'

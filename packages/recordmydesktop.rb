@@ -13,12 +13,23 @@ class Recordmydesktop < Package
   binary_sha256({
     aarch64: '9bb5c75a43e50eb5b61598efe09ffc8131c7cbd6fb714b6ca33d3f22a3ff6b86',
      armv7l: '9bb5c75a43e50eb5b61598efe09ffc8131c7cbd6fb714b6ca33d3f22a3ff6b86',
+       i686: 'c5341ca6d41f184d736d16766f92f7c4ec35836c4454e22dff14386271e623e4',
      x86_64: '16fdce8d65a3b57e1167f5edaaf0c8ac2829b27cc38d821d8a64332409349095'
   })
 
+  depends_on 'alsa_lib' # R
   depends_on 'alsa_plugins'
+  depends_on 'libice' # R
+  depends_on 'libogg' # R
+  depends_on 'libsm' # R
   depends_on 'libtheora'
+  depends_on 'libvorbis' # R
+  depends_on 'libx11' # R
+  depends_on 'libxdamage' # R
+  depends_on 'libxext' # R
+  depends_on 'libxfixes' # R
   depends_on 'sommelier' => :logical
+  depends_on 'zlib' # R
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX}"

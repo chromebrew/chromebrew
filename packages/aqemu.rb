@@ -16,11 +16,12 @@ class Aqemu < Package
      x86_64: '99544f65ac97a48e5f7e4c25eb26113db8301b25a5bbdd41d2fbfe52a5bdcd26'
   })
 
+  depends_on 'gcc_lib' # R
   depends_on 'libvncserver'
   depends_on 'qemu'
   depends_on 'qt5_base'
-  depends_on 'xdg_base'
   depends_on 'sommelier' => :logical
+  depends_on 'xdg_base'
 
   def self.build
     Dir.mkdir 'build'

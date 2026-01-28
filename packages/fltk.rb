@@ -16,7 +16,18 @@ class Fltk < Package
      x86_64: '3f46ea64f96026a3b8c62f4ea8951a69365c7c2340e9d3c64885978980946159'
   })
 
+  depends_on 'gcc_lib' # R
+  depends_on 'libglvnd' # R
+  depends_on 'libice' # R
+  depends_on 'libpng' # R
+  depends_on 'libsm' # R
+  depends_on 'libx11' # R
+  depends_on 'libxcursor' # R
+  depends_on 'libxext' # R
+  depends_on 'libxfixes' # R
+  depends_on 'libxrender' # R
   depends_on 'sommelier' => :logical
+  depends_on 'zlib' # R
 
   def self.build
     system "cmake -B builddir \

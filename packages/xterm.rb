@@ -24,8 +24,6 @@ class Xterm < Package
   depends_on 'libutempter' # R
   depends_on 'libx11' # R
   depends_on 'libxaw' # R
-  depends_on 'libxaw' # R
-  depends_on 'libxaw' => :build
   depends_on 'libxext' # R
   depends_on 'libxft' # R
   depends_on 'libxinerama' # R

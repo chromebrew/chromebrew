@@ -22,8 +22,8 @@ class Gnome_keyring < Meson
   depends_on 'docbook_xml' => :build
   depends_on 'gcr_3' # R
   depends_on 'gdk_pixbuf' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
   depends_on 'libcap' => :build
