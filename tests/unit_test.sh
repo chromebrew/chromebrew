@@ -44,8 +44,8 @@ if [[ -n ${CHANGED_PACKAGES-} ]]; then
     do
     # Only check packages compatible with the architecture being run on.
     if echo "${all_compatible_packages}" | grep "^${pkg}$"; then
-      ruby ../tests/prop_test "${pkg}"
-      ruby ../tests/buildsystem_test "${pkg}"
+      ruby ../tests/prop_test.rb "${pkg}"
+      ruby ../tests/buildsystem_test.rb "${pkg}"
       if echo "${all_installed_packages}" | grep "^${pkg}$"; then
         echo "Testing reinstall of ${pkg}."
         yes | time crew reinstall "${pkg}"
