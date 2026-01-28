@@ -1,16 +1,17 @@
-# Total size: 912129
-/usr/local/lib/python3.14/site-packages/wcwidth-0.4.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/wcwidth-0.4.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/wcwidth-0.4.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/wcwidth-0.4.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/wcwidth-0.4.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/wcwidth-0.4.0.dist-info/licenses/LICENSE
+# Total size: 952196
+/usr/local/lib/python3.14/site-packages/wcwidth-0.5.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/wcwidth-0.5.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/wcwidth-0.5.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/wcwidth-0.5.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/wcwidth-0.5.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/wcwidth-0.5.0.dist-info/licenses/LICENSE
 /usr/local/lib/python3.14/site-packages/wcwidth/__init__.py
 /usr/local/lib/python3.14/site-packages/wcwidth/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/wcwidth/__pycache__/bisearch.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/wcwidth/__pycache__/control_codes.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/wcwidth/__pycache__/escape_sequences.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/wcwidth/__pycache__/grapheme.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/wcwidth/__pycache__/sgr_state.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/wcwidth/__pycache__/table_ambiguous.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/wcwidth/__pycache__/table_grapheme.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/wcwidth/__pycache__/table_vs16.cpython-314.pyc
@@ -24,6 +25,7 @@
 /usr/local/lib/python3.14/site-packages/wcwidth/escape_sequences.py
 /usr/local/lib/python3.14/site-packages/wcwidth/grapheme.py
 /usr/local/lib/python3.14/site-packages/wcwidth/py.typed
+/usr/local/lib/python3.14/site-packages/wcwidth/sgr_state.py
 /usr/local/lib/python3.14/site-packages/wcwidth/table_ambiguous.py
 /usr/local/lib/python3.14/site-packages/wcwidth/table_grapheme.py
 /usr/local/lib/python3.14/site-packages/wcwidth/table_vs16.py
