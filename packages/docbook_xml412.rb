@@ -18,7 +18,6 @@ class Docbook_xml412 < Package
      x86_64: 'ece6d95295cd269780339a9dca5925b224f63cf01879a1a27370faf7d13a4648'
   })
 
-  depends_on 'docbook_xml'
   depends_on 'libxml2'
   depends_on 'xmlcatmgr'
 
