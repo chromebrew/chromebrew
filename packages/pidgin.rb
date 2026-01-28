@@ -24,7 +24,7 @@ class Pidgin < Autotools
   depends_on 'gtk2'
   depends_on 'libgconf'
   depends_on 'libidn2'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.patch
     system "sed -i 's,/usr/include,#{CREW_PREFIX}/include,g' configure"

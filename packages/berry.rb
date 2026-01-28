@@ -23,7 +23,7 @@ class Berry < Autotools
   depends_on 'libx11'
   depends_on 'libxft' # R
   depends_on 'libxinerama' # R
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.postinstall
     ExitMessage.add 'A hotkey system such as sxhkd is needed in order to use berry as a WM'.lightblue

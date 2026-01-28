@@ -66,7 +66,7 @@ class Freerdp < CMake
   depends_on 'pulseaudio' # R
   depends_on 'sdl2' # R
   depends_on 'sdl2_ttf' # R
-  depends_on 'sommelier' # L
+  depends_on 'sommelier' => :logical
   depends_on 'uriparser' # R
   depends_on 'wayland' # R
   depends_on 'webkit2gtk_4_1' # R

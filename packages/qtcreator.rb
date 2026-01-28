@@ -8,7 +8,7 @@ class Qtcreator < Package
   compatibility 'x86_64'
   source_url 'SKIP'
 
-  depends_on 'sommelier' # L
+  depends_on 'sommelier' => :logical
   depends_on 'xcb_util_image' # R
   depends_on 'xcb_util_keysyms' # R
   depends_on 'xcb_util_renderutil' # R

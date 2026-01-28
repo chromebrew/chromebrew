@@ -10,7 +10,7 @@ class Snowflake < Package
   source_sha256 'cc1768e5ce7038d26a893e00066e4d8bed2f42c1ba75b960b324471c5eab74c1'
 
   depends_on 'openjdk21'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   no_compile_needed
 

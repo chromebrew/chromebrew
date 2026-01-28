@@ -43,7 +43,7 @@ class Vscodium < Package
   depends_on 'mesa' # R
   depends_on 'nss' # R
   depends_on 'pango' # R
-  depends_on 'sommelier' # L
+  depends_on 'sommelier' => :logical
 
   no_fhs
   no_compile_needed

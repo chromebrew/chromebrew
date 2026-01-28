@@ -19,7 +19,7 @@ class Arduino_ide < Package
   depends_on 'xzutils'
   depends_on 'openjdk8'
   depends_on 'ant' => :build
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   case ARCH
   when 'x86_64'

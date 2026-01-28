@@ -10,7 +10,7 @@ class Far < Package
   source_sha256 'd0e8406b08833be398476e3482a657998cd89e429025989f87cd35added5bedf'
 
   depends_on 'openjdk8'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   no_compile_needed
 

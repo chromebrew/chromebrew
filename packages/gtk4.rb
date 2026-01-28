@@ -62,7 +62,7 @@ class Gtk4 < Meson
   depends_on 'sassc' => :build
   depends_on 'shaderc' => :build
   depends_on 'shared_mime_info' # L
-  depends_on 'sommelier' # L
+  depends_on 'sommelier' => :logical
   depends_on 'valgrind' => :build
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' # R

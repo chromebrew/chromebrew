@@ -16,7 +16,7 @@ class Smplayer < Package
   depends_on 'gtk3'
   depends_on 'jack'
   depends_on 'libthai'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.build
     File.write 'smplayer', <<~EOF

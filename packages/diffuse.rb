@@ -18,7 +18,7 @@ class Diffuse < Package
 
   depends_on 'pygtk'
   depends_on 'xdg_base'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.install
     system 'python', 'install.py',

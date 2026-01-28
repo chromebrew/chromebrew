@@ -20,7 +20,7 @@ class Pdfchain < Package
   depends_on 'pdftk'
   depends_on 'gtkmm3'
   depends_on 'valgrind'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.build
     system "./configure #{CREW_CONFIGURE_OPTIONS}"

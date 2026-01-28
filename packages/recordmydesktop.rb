@@ -18,7 +18,7 @@ class Recordmydesktop < Package
 
   depends_on 'alsa_plugins'
   depends_on 'libtheora'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX}"

@@ -20,7 +20,7 @@ class Aqemu < Package
   depends_on 'qemu'
   depends_on 'qt5_base'
   depends_on 'xdg_base'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.build
     Dir.mkdir 'build'

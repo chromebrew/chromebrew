@@ -18,7 +18,7 @@ class Rxvt_unicode < Package
 
   depends_on 'gdk_pixbuf'
   depends_on 'libptytty'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.build
     system "./configure #{CREW_CONFIGURE_OPTIONS}"

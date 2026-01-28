@@ -47,7 +47,7 @@ class Wine < Package
   depends_on 'opencl_icd_loader' # R
   depends_on 'openldap' => :build
   depends_on 'pulseaudio' # R
-  depends_on 'sommelier' # L
+  depends_on 'sommelier' => :logical
   depends_on 'vkd3d' => :build
   depends_on 'wayland' # R
   depends_on 'xdg_base' => :build

@@ -18,7 +18,7 @@ class Tilp2 < Package
 
   depends_on 'libticalcs2'
   depends_on 'libglade'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.patch
     system 'cat << _EOF > tilp2.patch

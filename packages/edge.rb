@@ -14,7 +14,7 @@ class Edge < Package
   depends_on 'libcom_err'
   depends_on 'libxcomposite'
   depends_on 'libxdamage'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   no_compile_needed
   no_shrink

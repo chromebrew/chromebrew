@@ -13,7 +13,7 @@ class Gpt4all < Package
   depends_on 'xcb_util_image'
   depends_on 'xcb_util_renderutil'
   depends_on 'xcb_util_wm'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   no_compile_needed
   no_shrink

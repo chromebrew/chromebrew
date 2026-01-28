@@ -15,7 +15,7 @@ class Neo4j < Package
   gnome
 
   depends_on 'gtk3'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
   depends_on 'xdg_base'
 
   def self.preflight

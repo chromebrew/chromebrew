@@ -10,7 +10,7 @@ class Caprine < Package
   source_sha256 '1372b67a2de8fd9c9d3f0178557c3ac67add86f270d6b4c3073b06d38751980b'
 
   depends_on 'gtk3'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   no_compile_needed
   no_shrink

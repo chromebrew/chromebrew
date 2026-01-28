@@ -10,7 +10,7 @@ class Qortal_hub < Package
   source_sha256 'b52e920dfd48edd57e07befee5cd9d3a930d49c9a3d52509afef7726a234ec35'
 
   depends_on 'gtk3'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   no_shrink
   no_compile_needed

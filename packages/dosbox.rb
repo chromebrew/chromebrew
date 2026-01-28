@@ -18,7 +18,7 @@ class Dosbox < Package
 
   depends_on 'libpng'
   depends_on 'libsdl'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.build
     system "./configure #{CREW_CONFIGURE_OPTIONS}"

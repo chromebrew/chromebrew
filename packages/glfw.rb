@@ -19,7 +19,7 @@ class Glfw < CMake
   depends_on 'glibc' # R
   depends_on 'libxi' => :build
   depends_on 'libxinerama' => :build
-  depends_on 'sommelier' => :build
+  depends_on 'sommelier' => :logical
 
   cmake_options '-DGLFW_BUILD_DOCS=OFF -DGLFW_BUILD_TESTS=OFF -DGLFW_BUILD_EXAMPLES=OFF -DBUILD_SHARED_LIBS=ON'
 end

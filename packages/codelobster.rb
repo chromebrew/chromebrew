@@ -12,7 +12,7 @@ class Codelobster < Package
   binary_compression 'tpxz'
 
   depends_on 'curl'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   binary_sha256({
      x86_64: 'bb07382b79b0c7a2a11fb35f2364e21497623362f8ef1a21fac0dbda15a5b6d8'

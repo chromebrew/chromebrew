@@ -45,7 +45,7 @@ class Gtk2 < Package
   depends_on 'libxau' # R
   depends_on 'libxcb' # R
   depends_on 'libxdmcp' # R
-  depends_on 'sommelier' unless ARCH == 'i686' # L
+  depends_on 'sommelier' => :logical unless ARCH == 'i686'
 
   gnome
   no_upstream_update

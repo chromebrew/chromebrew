@@ -10,7 +10,7 @@ class Electric < Package
   source_sha256 '7a8fbe5fac60989659a5197eabb4a1dac53a675adfa12c26c98a7d1089aeeb97'
 
   depends_on 'openjdk17'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   no_compile_needed
 

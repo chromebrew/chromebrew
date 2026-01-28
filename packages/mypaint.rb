@@ -24,7 +24,7 @@ class Mypaint < Package
   depends_on 'py3_pygobject'
   depends_on 'librsvg'
   depends_on 'xdg_base'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
   depends_on 'py3_numpy'
 
   def self.build

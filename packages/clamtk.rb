@@ -37,7 +37,7 @@ class Clamtk < Package
   depends_on 'perl_try_tiny'
   depends_on 'perl_uri'
   depends_on 'xdpyinfo'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   gnome
   no_compile_needed

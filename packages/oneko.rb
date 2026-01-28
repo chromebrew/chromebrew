@@ -18,7 +18,7 @@ class Oneko < Package
 
   depends_on 'libx11'
   depends_on 'libxext'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
   depends_on 'imake' => :build
   depends_on 'xorg_cf_files' => :build
   depends_on 'gccmakedep' => :build

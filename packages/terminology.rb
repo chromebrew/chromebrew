@@ -19,7 +19,7 @@ class Terminology < Package
   depends_on 'desktop_file_utilities'
   depends_on 'xdg_utils'
   depends_on 'libefl'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.build
     system "meson --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} _build"

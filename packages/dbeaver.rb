@@ -12,7 +12,7 @@ class Dbeaver < Package
 
   depends_on 'gtk3'
   depends_on 'xdg_base'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   no_compile_needed
 

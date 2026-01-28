@@ -16,7 +16,7 @@ class Fltk < Package
      x86_64: '3f46ea64f96026a3b8c62f4ea8951a69365c7c2340e9d3c64885978980946159'
   })
 
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.build
     system "cmake -B builddir \

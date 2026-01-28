@@ -30,7 +30,7 @@ class Lutris < Meson
   depends_on 'py3_pycairo' # R
   depends_on 'py3_pygobject' # R
   depends_on 'py3_pyyaml' # R
-  depends_on 'sommelier' # R
+  depends_on 'sommelier' => :logical
   depends_on 'vulkan_headers' # R
   depends_on 'vulkan_tools' # R
   depends_on 'webkit2gtk_4_1' # R

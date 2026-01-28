@@ -14,7 +14,7 @@ class Cpu_x < Package
   no_compile_needed
 
   depends_on 'gtk3'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.build
     File.write 'cpu-x.sh', <<~EOF

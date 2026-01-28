@@ -24,7 +24,7 @@ class Smallbasic < Autotools
   depends_on 'sdl2' => :build
   depends_on 'msttcorefonts' # L
   depends_on 'pcre' # R
-  depends_on 'sommelier' # L
+  depends_on 'sommelier' => :logical
   depends_on 'xxd_standalone' => :build
 
   autotools_configure_options '--enable-sdl'

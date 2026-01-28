@@ -23,7 +23,7 @@ class Uget < Package
   depends_on 'shared_mime_info'
   depends_on 'gnome_icon_theme'
   depends_on 'hicolor_icon_theme'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.build
     system './configure',

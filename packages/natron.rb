@@ -16,7 +16,7 @@ class Natron < Package
 
   depends_on 'desktop_file_utils'
   depends_on 'libglu'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.install
     # IMPORTANT BUILD/INSTALL FROM SOURCE INSTRUCTIONS BELOW:

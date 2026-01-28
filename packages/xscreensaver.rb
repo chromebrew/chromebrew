@@ -18,7 +18,7 @@ class Xscreensaver < Package
 
   depends_on 'glfw'
   depends_on 'freeglut'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX}"

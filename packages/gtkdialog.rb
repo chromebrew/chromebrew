@@ -17,7 +17,7 @@ class Gtkdialog < Package
   })
 
   depends_on 'gtk2'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.build
     system './configure',

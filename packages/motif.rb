@@ -20,7 +20,7 @@ class Motif < Package
   depends_on 'freetype'
   depends_on 'libjpeg_turbo'
   depends_on 'libpng'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
   depends_on 'expat' # R
   depends_on 'glibc' # R
   depends_on 'harfbuzz' # R

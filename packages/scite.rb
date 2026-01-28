@@ -20,7 +20,7 @@ class Scite < Package
   depends_on 'gnome_icon_theme'
   depends_on 'hicolor_icon_theme'
   depends_on 'shared_mime_info'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.build
     Dir.chdir 'lexilla/src' do

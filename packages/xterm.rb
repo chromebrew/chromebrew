@@ -35,7 +35,7 @@ class Xterm < Package
   depends_on 'luit' => :build
   depends_on 'ncurses' # R
   depends_on 'pcre' # R
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   no_env_options
 

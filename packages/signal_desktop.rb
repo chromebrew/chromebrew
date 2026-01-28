@@ -15,7 +15,7 @@ class Signal_desktop < Package
 
   depends_on 'at_spi2_core'
   depends_on 'gtk3'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.patch
     Dir.chdir 'usr/share/applications' do

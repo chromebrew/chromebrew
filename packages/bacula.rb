@@ -19,7 +19,7 @@ class Bacula < Autotools
   depends_on 'lzo'
   depends_on 'mysql'
   depends_on 'openssl' # R
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
   depends_on 'tcpwrappers'
   depends_on 'zlib' # R
   depends_on 'zstd' # R

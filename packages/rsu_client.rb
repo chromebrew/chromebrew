@@ -20,7 +20,7 @@ class Rsu_client < Package
   depends_on 'p7zip'
   depends_on 'wxwidgets'
   depends_on 'xdg_utils'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.patch
     Dir.chdir 'runescape' do

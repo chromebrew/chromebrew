@@ -15,7 +15,7 @@ class Cursor < Package
 
   depends_on 'gdk_base'
   depends_on 'gtk3'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.patch
     system "sed -i 's,AppRun,cursor,' cursor.desktop"

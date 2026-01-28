@@ -26,7 +26,7 @@ class Audacious < Autotools
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
   depends_on 'pango' # R
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
   depends_on 'xdg_base'
   depends_on 'zlib' # R
 

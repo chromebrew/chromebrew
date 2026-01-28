@@ -17,7 +17,7 @@ class Wxformbuilder < Package
   })
 
   depends_on 'wxwidgets'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.build
     system 'git clone --recursive --depth=1 https://github.com/wxFormBuilder/wxFormBuilder'

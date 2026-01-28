@@ -29,7 +29,7 @@ class Gparted < Package
   depends_on 'libsigcplusplus'
   depends_on 'librsvg'
   depends_on 'xhost'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.patch
     system 'filefix' # Fix ./configure: line 7001: /usr/bin/file: No such file or directory

@@ -14,7 +14,7 @@ class Joplin < Package
   depends_on 'gdk_base'
   depends_on 'libxss'
   depends_on 'libxtst'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   no_compile_needed
   no_shrink

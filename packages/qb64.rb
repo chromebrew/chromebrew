@@ -24,7 +24,7 @@ class Qb64 < Package
   depends_on 'libglu'
   depends_on 'libx11' # R
   depends_on 'mesa' # R
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.patch
     system "find . -name '*.sh' -exec sed -i \"s/\\r//g\" {} \\;"

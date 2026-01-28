@@ -10,7 +10,7 @@ class Termius < Package
   source_url 'https://www.termius.com/download/linux/Termius.deb'
   source_sha256 '5fe9eb848254a9189da9d4e4e4e5234e79c92bb49b50155980fd181fcc3139a3'
 
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   no_compile_needed
   no_shrink

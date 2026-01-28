@@ -18,7 +18,7 @@ class Sqlitebrowser < Package
 
   depends_on 'sqlite'
   depends_on 'qt5_base'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.build
     system 'cmake',

@@ -57,7 +57,7 @@ class Mpv < Meson
   depends_on 'py3_docutils' => :build
   depends_on 'rubberband' # R
   depends_on 'shaderc' # R
-  depends_on 'sommelier' # L
+  depends_on 'sommelier' => :logical
   depends_on 'uchardet' # R
   depends_on 'vapoursynth' # R
   depends_on 'vulkan_headers' => :build

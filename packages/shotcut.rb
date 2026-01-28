@@ -83,7 +83,7 @@ class Shotcut < Package
   depends_on 'readline' # R
   depends_on 'rubberband' # R
   depends_on 'sdl2' # R
-  depends_on 'sommelier' # L
+  depends_on 'sommelier' => :logical
   depends_on 'sqlite' # R
   depends_on 'tcpwrappers' # R
   depends_on 'util_linux' # R

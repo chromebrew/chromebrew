@@ -10,7 +10,7 @@ class Shells < Package
   source_sha256 '6d1a8267056c5c372f2bc1918e022f618006e2bcec1869cf2bfbb7d33e8dbc84'
 
   depends_on 'xcb_util_wm'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
