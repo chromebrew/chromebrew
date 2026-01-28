@@ -10,29 +10,31 @@ class Firefox < Package
   source_url "https://download-installer.cdn.mozilla.net/pub/firefox/releases/#{version}/linux-x86_64/en-US/firefox-#{version}.tar.xz"
   source_sha256 '691ed0831506907cdb94a6a4a6dee9a7ff2f2b64d51e84edbce5b0cfb7b812fa'
 
-  depends_on 'at_spi2_core'
-  depends_on 'cairo'
-  depends_on 'desktop_file_utils'
-  depends_on 'dbus'
-  depends_on 'dbus_glib'
-  depends_on 'fontconfig'
-  depends_on 'freetype'
-  depends_on 'gdk_pixbuf'
-  depends_on 'glib'
-  depends_on 'gtk2'
-  depends_on 'gtk3'
-  depends_on 'libx11'
-  depends_on 'libxcb'
-  depends_on 'libxcomposite'
-  depends_on 'libxcursor'
-  depends_on 'libxdamage'
-  depends_on 'libxext'
-  depends_on 'libxfixes'
-  depends_on 'libxi'
-  depends_on 'libxrender'
-  depends_on 'libxt'
-  depends_on 'pango'
-  depends_on 'pulseaudio'
+  depends_on 'alsa_lib' # R
+  depends_on 'at_spi2_core' # R
+  depends_on 'cairo' # R
+  depends_on 'dbus' # R
+  depends_on 'dbus_glib' => :logical
+  depends_on 'desktop_file_utils' => :logical
+  depends_on 'fontconfig' # R
+  depends_on 'freetype' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glib' # R
+  depends_on 'gtk3' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'libx11' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxcomposite' # R
+  depends_on 'libxcursor' # R
+  depends_on 'libxdamage' # R
+  depends_on 'libxext' # R
+  depends_on 'libxfixes' # R
+  depends_on 'libxi' # R
+  depends_on 'libxrandr' # R
+  depends_on 'libxrender' # R
+  depends_on 'pango' # R
+  depends_on 'pulseaudio' => :logical
   depends_on 'sommelier' => :logical
 
   no_compile_needed
