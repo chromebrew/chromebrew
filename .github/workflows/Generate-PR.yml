@@ -85,7 +85,10 @@ jobs:
             # Try to update branch immediately.
             gh pr update-branch || true
           else
-            gh pr create -d -b WIP -t "WIP ${{ inputs.branch || github.ref_name }}"
+            echo -e "##\n### Run the following to get this pull request's changes locally for testing.\n\`\`\`bash" >> /tmp/wip_pr.txt
+            echo -e "CREW_REPO=https://github.com/${{ github.repository }}.git CREW_BRANCH=${{ inputs.branch || github.ref_name }} crew update \\" >> /tmp/wip_pr.txt
+            echo -e "&& yes | crew upgrade\n\`\`\`" >> /tmp/wip_pr.txt
+            gh pr create -d -b WIP -t "WIP ${{ inputs.branch || github.ref_name }}" -F /tmp/wip_pr.txt
             # Create a draft PR and immediately try to update the branch
             # before continuing.
             gh pr update-branch || true
