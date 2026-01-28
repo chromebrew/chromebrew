@@ -1192,7 +1192,11 @@ def install_package(pkgdir)
         FileUtils.cp 'filelist', "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{@pkg.name.chr.downcase}/#{@pkg.name}.filelist"
       end
     end
-    FileUtils.cp 'dlist', File.join(CREW_META_PATH, "#{@pkg.name}.directorylist"), verbose: CREW_VERBOSE
+    if File.file('dlist')
+      FileUtils.cp 'dlist', File.join(CREW_META_PATH, "#{@pkg.name}.directorylist"), verbose: CREW_VERBOSE
+    else
+      puts "dlist missing for #{@pkg.name}.".lightred
+    end
     FileUtils.cp 'filelist', File.join(CREW_META_PATH, "#{@pkg.name}.filelist"), verbose: CREW_VERBOSE
 
     unless CREW_NOT_LINKS || @pkg.no_links?
