@@ -41,6 +41,7 @@ cargo_c
 codex
 composer
 conmon
+cpu_x
 crystal
 dart
 dav1d
