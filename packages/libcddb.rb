@@ -17,9 +17,9 @@ class Libcddb < Package
      x86_64: 'b99165bbe3988b2f68dfc716a8a4f7deac042e2def97f9df35ae5eb83a3cb6af'
   })
 
-  depends_on 'libcdio'
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
+  depends_on 'libcdio'
 
   def self.patch
     downloader 'https://sources.debian.org/data/main/libc/libcddb/1.3.2-7/debian/patches/0001-Switch-default-server-to-gnudb.org.patch',

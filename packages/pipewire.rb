@@ -35,6 +35,7 @@ class Pipewire < Meson
     })
   end
 
+  # depends_on 'webrtc_audio_processing' # R
   depends_on 'alsa_lib' # R
   depends_on 'alsa_plugins' => :build
   depends_on 'avahi' # R
@@ -43,10 +44,9 @@ class Pipewire < Meson
   depends_on 'elogind' # R
   depends_on 'eudev' # R
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gsettings_desktop_schemas' => :build
-  depends_on 'gstreamer' # R
+  depends_on 'gstreamer' => :logical
   depends_on 'jack' # R
   depends_on 'libdrm' # R
   depends_on 'libsndfile' # R
@@ -59,7 +59,6 @@ class Pipewire < Meson
   depends_on 'readline' # R
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' # R
-  depends_on 'webrtc_audio_processing' # R
 
   def self.prebuild
     # Without running the ca_certificates postinstall armv7l build breaks

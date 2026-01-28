@@ -19,25 +19,23 @@ class Appstream < Meson
      x86_64: '459bf98ba7d915107c9f42c07fbdd5e35b1f7847d4db0b4c9d637cc877104d01'
   })
 
+  # depends_on 'libadwaita' # R
+  # depends_on 'libfyaml' # R
   depends_on 'cairo' # R
   depends_on 'curl' # R
   depends_on 'fontconfig' # R
   depends_on 'freetype' # R
-  depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glib' # R
-  depends_on 'glibc' # R
   depends_on 'gobject_introspection' => :build
   depends_on 'gperf' => :build
   depends_on 'gtk_doc' => :build
   depends_on 'harfbuzz' # R
-  depends_on 'libadwaita' # R
   depends_on 'libfyaml' # R
   depends_on 'librsvg' # R
   depends_on 'libstemmer' # R
   depends_on 'libxml2' # R
   depends_on 'libxmlb' # R
-  depends_on 'libyaml' # R
   depends_on 'pango' # R
   depends_on 'py3_gi_docgen' => :build
   depends_on 'py3_itstool' => :build
