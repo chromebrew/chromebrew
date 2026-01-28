@@ -16,7 +16,7 @@ class Upower < Meson
      x86_64: '4e9693515224ebdb7d7064767b6c8c52050b6801e4599c7711c486c231108da0'
   })
 
-  depends_on 'docbook_xsl' => :build
+  depends_on 'docbook_xml' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glib' # R
   depends_on 'glibc' # R

@@ -21,7 +21,7 @@ class Elogind < Package
   depends_on 'libcap'
   depends_on 'linux_pam' # For _pam_macros.h
   depends_on 'dbus'
-  depends_on 'docbook_xsl'
+  depends_on 'docbook_xml'
   depends_on 'gperf'
   depends_on 'libxslt'
   depends_on 'shadow'

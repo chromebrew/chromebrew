@@ -24,7 +24,7 @@ class Tesseract < CMake
   depends_on 'cairo' # R
   depends_on 'c_ares' => :build
   depends_on 'curl' # R
-  depends_on 'docbook_xsl' => :build
+  depends_on 'docbook_xml' => :build
   depends_on 'e2fsprogs' => :build
   depends_on 'expat' => :build
   depends_on 'fontconfig' # R

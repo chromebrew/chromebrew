@@ -17,7 +17,6 @@ class Docbook_xsl < Package
      x86_64: '0358b98fa34acc6681a7fff0431acc43753220ec8a2662fdef52b9dde0490c67'
   })
 
-  depends_on 'docbook_xml'
   depends_on 'libxml2'
   depends_on 'xmlcatmgr'
   print_source_bashrc
@@ -67,6 +66,15 @@ class Docbook_xsl < Package
 
   def self.preinstall
     # Docbook common preinstall block
+    unless File.exist?("#{CREW_PREFIX}/etc/env.d/docbook_xml") || ENV['CI']
+      FileUtils.mkdir_p "#{CREW_PREFIX}/etc/env.d/"
+      @env = <<~DOCBOOK_XML_EOF
+        # Docbook_xml configuration
+        XML_CATALOG_FILES=#{CREW_PREFIX}/etc/xml/catalog
+      DOCBOOK_XML_EOF
+      File.write("#{CREW_PREFIX}/etc/env.d/docbook_xml", @env)
+    end
+
     FileUtils.mkdir_p "#{CREW_PREFIX}/etc/xml"
 
     if File.exist?("#{CREW_PREFIX}/etc/xml/catalog") && !File.empty?("#{CREW_PREFIX}/etc/xml/catalog")

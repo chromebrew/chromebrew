@@ -18,7 +18,6 @@ class Docbook_xml43 < Package
      x86_64: '15b5f0da306a63ae5e32b87692f333fe77502798792af99a30bc5bbfc3422862'
   })
 
-  depends_on 'docbook_xml'
   depends_on 'libxml2'
   depends_on 'xmlcatmgr'
 
@@ -32,6 +31,15 @@ class Docbook_xml43 < Package
 
   def self.preinstall
     # Docbook common preinstall block
+    unless File.exist?("#{CREW_PREFIX}/etc/env.d/docbook_xml") || ENV['CI']
+      FileUtils.mkdir_p "#{CREW_PREFIX}/etc/env.d/"
+      @env = <<~DOCBOOK_XML_EOF
+        # Docbook_xml configuration
+        XML_CATALOG_FILES=#{CREW_PREFIX}/etc/xml/catalog
+      DOCBOOK_XML_EOF
+      File.write("#{CREW_PREFIX}/etc/env.d/docbook_xml", @env)
+    end
+
     FileUtils.mkdir_p "#{CREW_PREFIX}/etc/xml"
 
     if File.exist?("#{CREW_PREFIX}/etc/xml/catalog") && !File.empty?("#{CREW_PREFIX}/etc/xml/catalog")
@@ -49,6 +57,7 @@ class Docbook_xml43 < Package
       FileUtils.rm_f "#{CREW_PREFIX}/etc/xml/docbook-xml"
       system "xmlcatalog --noout --create #{CREW_PREFIX}/etc/xml/docbook-xml"
     end
+
     # End Docbook common preinstall block
   end
 

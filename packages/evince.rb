@@ -22,7 +22,7 @@ class Evince < Meson
   depends_on 'at_spi2_core' # R
   depends_on 'cairo' # R
   depends_on 'djvulibre' # R
-  depends_on 'docbook_xsl' => :build
+  depends_on 'docbook_xml' => :build
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glib' # R
