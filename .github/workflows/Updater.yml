@@ -40,7 +40,7 @@ jobs:
           fetch-depth: 0
       - name: Get generic automatically updatable packages
         id: get-packages
-        run: echo "packages=$(cat tools/automatically_updatable_packages.txt | xargs)" >> "$GITHUB_OUTPUT"
+        run: echo "packages=$(find tools/automatically_updatable_packages/ -exec basename {} ';' | xargs)" >> "$GITHUB_OUTPUT"
   generic-packages-update-checks:
     needs: generic-packages
     if: ${{ github.repository_owner == 'chromebrew' }}
