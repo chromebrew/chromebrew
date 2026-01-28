@@ -3,16 +3,16 @@ require 'buildsystems/pip'
 class Py3_oci_cli < Pip
   description 'Command Line Interface for Oracle Cloud Infrastructure'
   homepage 'https://github.com/oracle/oci-cli/'
-  version "3.72.1-#{CREW_PY_VER}"
+  version "3.73.1-#{CREW_PY_VER}"
   license 'UPL-1.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4faff3a59699df6a0feaac5518df681da08c7b5d45a9db517ef17fc8110de1b2',
-     armv7l: '4faff3a59699df6a0feaac5518df681da08c7b5d45a9db517ef17fc8110de1b2',
-     x86_64: '20ca2dd3e827265099468bfaa8db552a1a5b403e349a4ff340a3c17f61d0c52b'
+    aarch64: '7aedf7d5fb6cc211efb7ad489274e32024d323c115e44c60137ea796a2e237c4',
+     armv7l: '7aedf7d5fb6cc211efb7ad489274e32024d323c115e44c60137ea796a2e237c4',
+     x86_64: '7a8b74f96e3acbd8e5c754a6887ca9b2392e99afa5cbaa9977c8bc38066bfdac'
   })
 
   depends_on 'py3_arrow'
