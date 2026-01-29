@@ -113,6 +113,11 @@ jobs:
         env:
           CHANGED_FILES: ${{ steps.changed-files.outputs.packages_all_changed_files }}
         run: |
+            git config user.name "${{ github.actor }}"
+            git config user.email "${{ github.actor }}@users.noreply.github.com"
+            git checkout master && git fetch origin master
+            git checkout "${{ inputs.branch || github.ref_name }}"
+            git fetch origin "${{ inputs.branch || github.ref_name }}"
             CHANGED_PACKAGE_FILES=$(git diff --name-only master..${{ inputs.branch || github.ref_name }} | grep '^packages/')
             if [[ -n "${CHANGED_PACKAGE_FILES}" ]]; then
               # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-files.outputs.packages_all_changed_files) into "foo bar"
@@ -452,6 +457,11 @@ jobs:
         env:
           CHANGED_FILES: ${{ steps.changed-files.outputs.packages_all_changed_files }}
         run: |
+            git config user.name "${{ github.actor }}"
+            git config user.email "${{ github.actor }}@users.noreply.github.com"
+            git checkout master && git fetch origin master
+            git checkout "${{ inputs.branch || github.ref_name }}"
+            git fetch origin "${{ inputs.branch || github.ref_name }}"
             CHANGED_PACKAGE_FILES=$(git diff --name-only master..${{ inputs.branch || github.ref_name }} | grep '^packages/')
             if [[ -n "${CHANGED_PACKAGE_FILES}" ]]; then
               # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-files.outputs.packages_all_changed_files) into "foo bar"
