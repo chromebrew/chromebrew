@@ -14,9 +14,9 @@ class Appstream < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd058391cf39a5a986273a8413c29ff466b3fb7541e2895853769a004efa62a81',
-     armv7l: 'd058391cf39a5a986273a8413c29ff466b3fb7541e2895853769a004efa62a81',
-     x86_64: '459bf98ba7d915107c9f42c07fbdd5e35b1f7847d4db0b4c9d637cc877104d01'
+    aarch64: 'dee51c1b27694ff7d25e4bfcf989086f695b7e3768eb79e1bf5efa0231904bfd',
+     armv7l: 'dee51c1b27694ff7d25e4bfcf989086f695b7e3768eb79e1bf5efa0231904bfd',
+     x86_64: '427e4bfd8fb8b29503dd42641c023a694e96ba86fdf6af366995479e1f99cfdc'
   })
 
   # depends_on 'libadwaita' # R
@@ -27,6 +27,7 @@ class Appstream < Meson
   depends_on 'freetype' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gobject_introspection' => :build
   depends_on 'gperf' => :build
   depends_on 'gtk_doc' => :build
