@@ -1,4 +1,4 @@
-# Total size: 435716829
+# Total size: 435709031
 /usr/local/bin/deskreen
 /usr/local/share/applications/deskreen-ce.desktop
 /usr/local/share/deskreen/AppRun
@@ -157,23 +157,23 @@
 /usr/local/share/deskreen/resources/app.asar.unpacked/node_modules/jszip/tsconfig.json
 /usr/local/share/deskreen/resources/app.asar.unpacked/node_modules/jszip/vendor/FileSaver.js
 /usr/local/share/deskreen/resources/app.asar.unpacked/resources/icon.png
-/usr/local/share/deskreen/resources/client-viewer/assets/allPaths-DhINQBxu.js
-/usr/local/share/deskreen/resources/client-viewer/assets/allPaths-legacy-CLScRZ6q.js
-/usr/local/share/deskreen/resources/client-viewer/assets/allPathsLoader-BC9EcADF.js
-/usr/local/share/deskreen/resources/client-viewer/assets/allPathsLoader-legacy-JPEaoxYe.js
-/usr/local/share/deskreen/resources/client-viewer/assets/browser-ponyfill-c1FElBTD.js
-/usr/local/share/deskreen/resources/client-viewer/assets/browser-ponyfill-legacy-Bio0g65S.js
+/usr/local/share/deskreen/resources/client-viewer/assets/allPaths-DaP-Cvdz.js
+/usr/local/share/deskreen/resources/client-viewer/assets/allPaths-legacy-PUddJOlp.js
+/usr/local/share/deskreen/resources/client-viewer/assets/allPathsLoader-CEhUd1Vf.js
+/usr/local/share/deskreen/resources/client-viewer/assets/allPathsLoader-legacy-BtmPfX6N.js
+/usr/local/share/deskreen/resources/client-viewer/assets/browser-ponyfill-CeP0uL3-.js
+/usr/local/share/deskreen/resources/client-viewer/assets/browser-ponyfill-legacy-enDLEwle.js
 /usr/local/share/deskreen/resources/client-viewer/assets/deskreen_logo_128x128-ndVS49i5.png
 /usr/local/share/deskreen/resources/client-viewer/assets/index-BZITDwoa.js
 /usr/local/share/deskreen/resources/client-viewer/assets/index-C2UcLfO8.css
-/usr/local/share/deskreen/resources/client-viewer/assets/index-DqLBUiPS.js
+/usr/local/share/deskreen/resources/client-viewer/assets/index-DBBUgSH9.js
+/usr/local/share/deskreen/resources/client-viewer/assets/index-legacy-BHriLDzp.js
 /usr/local/share/deskreen/resources/client-viewer/assets/index-legacy-BMkrPMqp.js
-/usr/local/share/deskreen/resources/client-viewer/assets/index-legacy-Do81DPGL.js
 /usr/local/share/deskreen/resources/client-viewer/assets/index-legacy-VEq4rErU.js
 /usr/local/share/deskreen/resources/client-viewer/assets/index-voJy5fZe.js
 /usr/local/share/deskreen/resources/client-viewer/assets/polyfills-legacy-l6fuxk9e.js
-/usr/local/share/deskreen/resources/client-viewer/assets/splitPathsBySizeLoader-BtA_GwJW.js
-/usr/local/share/deskreen/resources/client-viewer/assets/splitPathsBySizeLoader-legacy-2ZOmNY_1.js
+/usr/local/share/deskreen/resources/client-viewer/assets/splitPathsBySizeLoader-BcDb-h7i.js
+/usr/local/share/deskreen/resources/client-viewer/assets/splitPathsBySizeLoader-legacy-D2F-S7hf.js
 /usr/local/share/deskreen/resources/client-viewer/favicon.ico
 /usr/local/share/deskreen/resources/client-viewer/img/logo512.png
 /usr/local/share/deskreen/resources/client-viewer/index.html
