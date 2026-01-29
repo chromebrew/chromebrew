@@ -1,4 +1,4 @@
-# Total size: 29193448
+# Total size: 29218040
 /usr/local/bin/appstreamcli
 /usr/local/include/appstream-compose/appstream-compose.h
 /usr/local/include/appstream-compose/asc-compose.h
@@ -55,14 +55,15 @@
 /usr/local/lib64/girepository-1.0/AppStreamCompose-1.0.typelib
 /usr/local/lib64/libappstream-compose.so
 /usr/local/lib64/libappstream-compose.so.0
-/usr/local/lib64/libappstream-compose.so.1.1.1
+/usr/local/lib64/libappstream-compose.so.1.1.2
 /usr/local/lib64/libappstream.so
-/usr/local/lib64/libappstream.so.1.1.1
+/usr/local/lib64/libappstream.so.1.1.2
 /usr/local/lib64/libappstream.so.5
 /usr/local/lib64/pkgconfig/appstream-compose.pc
 /usr/local/lib64/pkgconfig/appstream.pc
 /usr/local/libexec/appstreamcli-compose
 /usr/local/share/appstream/appstream.conf
+/usr/local/share/bash-completion/completions/appstreamcli
 /usr/local/share/doc/appstream/html/api/RedHatDisplay-Black.woff
 /usr/local/share/doc/appstream/html/api/RedHatDisplay-Black.woff2
 /usr/local/share/doc/appstream/html/api/RedHatDisplay-BlackItalic.woff
@@ -2291,6 +2292,7 @@
 /usr/local/share/locale/ja/LC_MESSAGES/appstream.mo
 /usr/local/share/locale/ka/LC_MESSAGES/appstream.mo
 /usr/local/share/locale/ko/LC_MESSAGES/appstream.mo
+/usr/local/share/locale/kw/LC_MESSAGES/appstream.mo
 /usr/local/share/locale/lt/LC_MESSAGES/appstream.mo
 /usr/local/share/locale/nb/LC_MESSAGES/appstream.mo
 /usr/local/share/locale/nl/LC_MESSAGES/appstream.mo
