@@ -113,7 +113,8 @@ jobs:
         env:
           CHANGED_FILES: ${{ steps.changed-files.outputs.packages_all_changed_files }}
         run: |
-            if [[ -n "${CHANGED_FILES}" ]]; then
+            CHANGED_PACKAGE_FILES=$(git diff --name-only master..${{ inputs.branch || github.ref_name }} | grep '^packages/')
+            if [[ -n "${CHANGED_PACKAGE_FILES}" ]]; then
               # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-files.outputs.packages_all_changed_files) into "foo bar"
               echo "CHANGED_PACKAGES=$(echo "${CHANGED_FILES}" | xargs basename -s .rb | xargs)" >> "$GITHUB_ENV"
               echo "CHANGED_PACKAGES=$(echo "${CHANGED_FILES}" | xargs basename -s .rb | xargs)" >> "$GITHUB_OUTPUT"
@@ -451,7 +452,8 @@ jobs:
         env:
           CHANGED_FILES: ${{ steps.changed-files.outputs.packages_all_changed_files }}
         run: |
-            if [[ -n "${CHANGED_FILES}" ]]; then
+            CHANGED_PACKAGE_FILES=$(git diff --name-only master..${{ inputs.branch || github.ref_name }} | grep '^packages/')
+            if [[ -n "${CHANGED_PACKAGE_FILES}" ]]; then
               # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-files.outputs.packages_all_changed_files) into "foo bar"
               echo "CHANGED_PACKAGES=$(echo "${CHANGED_FILES}" | xargs basename -s .rb | xargs)" >> "$GITHUB_ENV"
               echo "CHANGED_PACKAGES=$(echo "${CHANGED_FILES}" | xargs basename -s .rb | xargs)" >> "$GITHUB_OUTPUT"
@@ -552,8 +554,13 @@ jobs:
             PR_TITLE="$(git log --oneline master..${{ inputs.branch || github.ref_name }} | grep -v "Merge branch 'master'\|Build Run on\|Package File Update Run on" | tail -n 1 | cut -c 11-)"
             TITLE="$(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}"
           else
-            PR_TITLE="${{ inputs.pr_title }}"
-            TITLE="${PR_TITLE}"
+            if [[ "${PR_TITLE_INPUT}" == "${{ inputs.branch || github.ref_name }}" ]]; then
+              PR_TITLE="$(echo "${PR_TITLE_INPUT}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}"
+              TITLE="${PR_TITLE}"
+            else
+              PR_TITLE="${{ inputs.pr_title }}"
+              TITLE="${PR_TITLE}"
+            fi
           fi
           echo "PR title is: ${TITLE}"
           if [[ -n "${PR_LABEL}" ]]; then
