@@ -1,4 +1,4 @@
-# Total size: 6350479
+# Total size: 7882948
 /usr/local/bin/gparted
 /usr/local/bin/gparted.elf
 /usr/local/libexec/gpartedbin
@@ -73,6 +73,7 @@
 /usr/local/share/locale/gl/LC_MESSAGES/gparted.mo
 /usr/local/share/locale/gu/LC_MESSAGES/gparted.mo
 /usr/local/share/locale/he/LC_MESSAGES/gparted.mo
+/usr/local/share/locale/hi/LC_MESSAGES/gparted.mo
 /usr/local/share/locale/hr/LC_MESSAGES/gparted.mo
 /usr/local/share/locale/hu/LC_MESSAGES/gparted.mo
 /usr/local/share/locale/id/LC_MESSAGES/gparted.mo
