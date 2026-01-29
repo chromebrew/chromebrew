@@ -99,19 +99,19 @@ class PackageUtils
     new_version.gsub!(/-gcc(\d+)/, '')
     # Delete -glibc2.37, or whatever the system glibc is.
     new_version.delete_suffix!("-glibc#{LIBC_VERSION}")
-    # Delete -icuXX.Y
-    new_version.gsub!(/-icu(\d+)\.\d/, '')
+    # Delete -icuXX.YY
+    new_version.gsub!(/-icu(\d+)\.\d+/, '')
     # Trim kde- prefixes in qt5 packages so nothing else gets confused.
     new_version.delete_prefix!('kde-')
-    # Delete -llvm18
+    # Delete -llvmXXXX
     new_version.gsub!(/-llvm(\d+)/, '')
     # Delete -perlX.YYYYY
     new_version.gsub!(/-perl\d\.\d+/, '')
-    # Delete -pyX.YY
+    # Delete -pyX.YYYY
     new_version.gsub!(/-py\d\.\d+/, '')
-    # Delete -ruby4.X
-    new_version.gsub!(/-ruby\d\.\d{1}/, '')
-    # Delete -rustX.YY
+    # Delete -rubyX.YYYY
+    new_version.gsub!(/-ruby\d\.\d+/, '')
+    # Delete -rustX.YYYY
     new_version.gsub!(/-rust\d\.\d+/, '')
     # Delete git version tags (1.2.4-qnd73k6), avoiding overmatching and hitting things that arent git hashtags.
     new_version.gsub!(/-\w{7}$/, '')
