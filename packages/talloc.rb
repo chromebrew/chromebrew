@@ -6,11 +6,11 @@ require 'package'
 class Talloc < Package
   description 'Hierarchical pool based memory allocator with destructors'
   homepage 'https://talloc.samba.org/'
-  version "2.4.3-#{CREW_PY_VER}"
+  version "2.4.4-#{CREW_PY_VER}"
   license 'LGPL'
   compatibility 'all'
   source_url "https://www.samba.org/ftp/talloc/talloc-#{version.split('-').first}.tar.gz"
-  source_sha256 'dc46c40b9f46bb34dd97fe41f548b0e8b247b77a918576733c528e83abd854dd'
+  source_sha256 '55e47994018c13743485544e7206780ffbb3c8495e704a99636503e6e77abf59'
   binary_compression 'tar.zst'
 
   binary_sha256({
