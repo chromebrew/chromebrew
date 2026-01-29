@@ -57,22 +57,20 @@ class Docbook_xsl < Package
     FileUtils.ln_s "#{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{version.split('-').first}",
                    "#{CREW_DEST_PREFIX}/share/xml/docbook/stylesheet/docbook-xsl"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
-    @env = <<~EOF
+    File.write "#{CREW_DEST_PREFIX}/etc/env.d/docbook_xml", <<~DOCBOOK_XML_EOF
       # Docbook_xml configuration
       XML_CATALOG_FILES=#{CREW_PREFIX}/etc/xml/catalog
-    EOF
-    File.write("#{CREW_DEST_PREFIX}/etc/env.d/docbook_xml", @env)
+    DOCBOOK_XML_EOF
   end
 
   def self.preinstall
     # Docbook common preinstall block
     unless File.exist?("#{CREW_PREFIX}/etc/env.d/docbook_xml") || ENV['CI']
       FileUtils.mkdir_p "#{CREW_PREFIX}/etc/env.d/"
-      @env = <<~DOCBOOK_XML_EOF
+      File.write "#{CREW_PREFIX}/etc/env.d/docbook_xml", <<~DOCBOOK_XML_EOF
         # Docbook_xml configuration
         XML_CATALOG_FILES=#{CREW_PREFIX}/etc/xml/catalog
       DOCBOOK_XML_EOF
-      File.write("#{CREW_PREFIX}/etc/env.d/docbook_xml", @env)
     end
 
     FileUtils.mkdir_p "#{CREW_PREFIX}/etc/xml"

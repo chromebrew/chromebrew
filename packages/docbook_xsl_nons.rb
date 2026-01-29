@@ -58,11 +58,10 @@ class Docbook_xsl_nons < Package
     # Docbook common preinstall block
     unless File.exist?("#{CREW_PREFIX}/etc/env.d/docbook_xml") || ENV['CI']
       FileUtils.mkdir_p "#{CREW_PREFIX}/etc/env.d/"
-      @env = <<~DOCBOOK_XML_EOF
+      File.write "#{CREW_PREFIX}/etc/env.d/docbook_xml", <<~DOCBOOK_XML_EOF
         # Docbook_xml configuration
         XML_CATALOG_FILES=#{CREW_PREFIX}/etc/xml/catalog
       DOCBOOK_XML_EOF
-      File.write("#{CREW_PREFIX}/etc/env.d/docbook_xml", @env)
     end
 
     FileUtils.mkdir_p "#{CREW_PREFIX}/etc/xml"
