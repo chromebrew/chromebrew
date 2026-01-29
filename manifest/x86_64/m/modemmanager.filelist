@@ -1,29 +1,4 @@
-# Total size: 11015735
-/lib/udev/rules.d/77-mm-broadmobi-port-types.rules
-/lib/udev/rules.d/77-mm-cinterion-port-types.rules
-/lib/udev/rules.d/77-mm-dell-port-types.rules
-/lib/udev/rules.d/77-mm-dlink-port-types.rules
-/lib/udev/rules.d/77-mm-ericsson-mbm.rules
-/lib/udev/rules.d/77-mm-fibocom-port-types.rules
-/lib/udev/rules.d/77-mm-foxconn-port-types.rules
-/lib/udev/rules.d/77-mm-gosuncn-port-types.rules
-/lib/udev/rules.d/77-mm-haier-port-types.rules
-/lib/udev/rules.d/77-mm-huawei-net-port-types.rules
-/lib/udev/rules.d/77-mm-longcheer-port-types.rules
-/lib/udev/rules.d/77-mm-mtk-port-types.rules
-/lib/udev/rules.d/77-mm-nokia-port-types.rules
-/lib/udev/rules.d/77-mm-pcmcia-device-blacklist.rules
-/lib/udev/rules.d/77-mm-quectel-port-types.rules
-/lib/udev/rules.d/77-mm-sierra.rules
-/lib/udev/rules.d/77-mm-simtech-port-types.rules
-/lib/udev/rules.d/77-mm-telit-port-types.rules
-/lib/udev/rules.d/77-mm-tplink-port-types.rules
-/lib/udev/rules.d/77-mm-ublox-port-types.rules
-/lib/udev/rules.d/77-mm-usb-device-blacklist.rules
-/lib/udev/rules.d/77-mm-usb-serial-adapters-greylist.rules
-/lib/udev/rules.d/77-mm-x22x-port-types.rules
-/lib/udev/rules.d/77-mm-zte-port-types.rules
-/lib/udev/rules.d/80-mm-candidate.rules
+# Total size: 10925150
 /usr/local/bin/mmcli
 /usr/local/include/ModemManager/ModemManager-compat.h
 /usr/local/include/ModemManager/ModemManager-enums.h
