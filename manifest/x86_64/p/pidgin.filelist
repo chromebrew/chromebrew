@@ -1,4 +1,4 @@
-# Total size: 28575783
+# Total size: 29458155
 /usr/local/bin/pidgin
 /usr/local/etc/gconf/schemas/purple.schemas
 /usr/local/include/libpurple/account.h
@@ -122,7 +122,7 @@
 /usr/local/lib64/libpurple.la
 /usr/local/lib64/libpurple.so
 /usr/local/lib64/libpurple.so.0
-/usr/local/lib64/libpurple.so.0.14.13
+/usr/local/lib64/libpurple.so.0.14.14
 /usr/local/lib64/pidgin/convcolors.la
 /usr/local/lib64/pidgin/convcolors.so
 /usr/local/lib64/pidgin/extplacement.la
