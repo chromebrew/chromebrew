@@ -1,4 +1,4 @@
-# Total size: 226624
+# Total size: 227072
 /usr/local/bin/tdbbackup
 /usr/local/bin/tdbdump
 /usr/local/bin/tdbrestore
@@ -6,7 +6,7 @@
 /usr/local/include/tdb.h
 /usr/local/lib/libtdb.so
 /usr/local/lib/libtdb.so.1
-/usr/local/lib/libtdb.so.1.4.14
+/usr/local/lib/libtdb.so.1.4.15
 /usr/local/lib/pkgconfig/tdb.pc
 /usr/local/lib/python3.14/site-packages/_tdb_text.py
 /usr/local/lib/python3.14/site-packages/tdb.cpython-314-i386-linux-gnu.so
