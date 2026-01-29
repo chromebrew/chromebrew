@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_gpt_researcher < Pip
   description 'LLM based autonomous agent that conducts deep local and web research on any topic and generates a long report with citations.'
   homepage 'https://gptr.dev/'
-  version "0.14.5-#{CREW_PY_VER}"
+  version "0.14.6-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'SKIP'
