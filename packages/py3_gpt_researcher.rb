@@ -3,16 +3,16 @@ require 'buildsystems/pip'
 class Py3_gpt_researcher < Pip
   description 'LLM based autonomous agent that conducts deep local and web research on any topic and generates a long report with citations.'
   homepage 'https://gptr.dev/'
-  version "0.14.5-#{CREW_PY_VER}"
+  version "0.14.6-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '48ed077b1f15eac06d7a44b8cae485a5f84e90d68ae78fca7d3882853bd2e91e',
-     armv7l: '48ed077b1f15eac06d7a44b8cae485a5f84e90d68ae78fca7d3882853bd2e91e',
-     x86_64: '579b16b9ca2ef3bd795e1dad4142d3f241690f2a95ce1d5cd03dabe3d38d6f13'
+    aarch64: 'e106eb396b2b49cfad300af50f947f3a55595ed73059ee99b272b5da3ee917ec',
+     armv7l: 'e106eb396b2b49cfad300af50f947f3a55595ed73059ee99b272b5da3ee917ec',
+     x86_64: '9c454cb385c543e7a9fe46af80681e0e5c3a860a3adb2059755555a72cd8cbd2'
   })
 
   depends_on 'llvm_dev' => :build
