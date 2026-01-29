@@ -11,9 +11,9 @@ class Gnome_maps < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '757812f0671443c6fb4eba9aa727d5db6c8a54d5614771f644c82582877c1c04',
-     armv7l: '757812f0671443c6fb4eba9aa727d5db6c8a54d5614771f644c82582877c1c04',
-     x86_64: '5aca499e006b3831ec8acf82ed669de79f65f982ffd7fbff9ddc2c35370dbd9f'
+    aarch64: 'e6b27e769295e4b4017c46297a1e7b6e939bf87dd5a817b153497e67573302a9',
+     armv7l: 'e6b27e769295e4b4017c46297a1e7b6e939bf87dd5a817b153497e67573302a9',
+     x86_64: '1e9342772b31fb909782b7d2e34af54572754638e3a131ee7b0eccca8bd2ef2b'
   })
 
   depends_on 'cairo' # R
