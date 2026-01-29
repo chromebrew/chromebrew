@@ -3,13 +3,13 @@ require 'buildsystems/autotools'
 class Gettext < Autotools
   description 'GNU gettext utilities are a set of tools that provides a framework to help other GNU packages produce multi-lingual messages.'
   homepage 'https://gnu.org/s/gettext/'
-  version '0.26-1'
+  version '1.0'
   license 'GPL-3+ and LGPL-2.1+'
   compatibility 'all'
   # source_url 'https://github.com/autotools-mirror/gettext.git'
   # git_hashtag "v#{version.split('-')[0]}"
   source_url "https://ftpmirror.gnu.org/gnu/gettext/gettext-#{version.split('-')[0]}.tar.lz"
-  source_sha256 'a0151088dad8942374dc038e461b228352581defd7055e79297f156268b8d508'
+  source_sha256 '664f2b1654c363a6348b688d5d475ed9ec0e7ef3c72f6f315f37fe97a2fe63eb'
   binary_compression 'tar.zst'
 
   binary_sha256({
