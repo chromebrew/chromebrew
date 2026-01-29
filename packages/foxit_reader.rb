@@ -3,7 +3,7 @@ require 'package'
 class Foxit_reader < Package
   description "Industry's most powerful PDF reader. View, annotate, form fill, and sign PDFs."
   homepage 'https://www.foxit.com/pdf-reader/'
-  version '2.4.5.0727'
+  version '2025.3.0'
   license 'Foxit'
   compatibility 'x86_64'
   source_url 'SKIP'
