@@ -25,7 +25,7 @@ def check_package(pkg, verbose: false)
   end
   print test_stdout
   # Check if the tests passed.
-  if test_stderr.empty? || test_status.to_s.split.last.zero?
+  if test_stderr.empty? || test_status.to_s.split.last.to_i.zero?
     puts "Package tests for #{pkg.name} passed.".lightgreen if verbose
     return 0
   elsif default_tests == false
