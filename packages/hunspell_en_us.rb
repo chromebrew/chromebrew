@@ -11,10 +11,10 @@ class Hunspell_en_us < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9f4dd73619d94bca609bc3724626e1dc154250421dfd9dbc9c4b698dd75a9361',
-     armv7l: '9f4dd73619d94bca609bc3724626e1dc154250421dfd9dbc9c4b698dd75a9361',
-       i686: '7ad208e9402e01f4ac84e6cb5deabf4fdf5aa676e4cbcd8be47107b275452004',
-     x86_64: 'a4acf95f7815077bf2a77cc4436e9ac47665819750642872f8e6166faa15e442'
+    aarch64: '27bfe8f57365e1533694b34a3a806ec75e80f5c31c69fe0101cbeade43c37ed9',
+     armv7l: '27bfe8f57365e1533694b34a3a806ec75e80f5c31c69fe0101cbeade43c37ed9',
+       i686: '18fafe0ec102686b2daa6f7dcab7ce9f3f9bb3fdb555997cb0d514f8db32f3ce',
+     x86_64: '82bcbf000f52382bb87be974e9db9d9a1cf38b05eb64f3d20e60ca54228b4dc9'
   })
 
   depends_on 'hunspell_base'
