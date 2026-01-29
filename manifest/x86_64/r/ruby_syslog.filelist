@@ -1,15 +1,16 @@
-# Total size: 50336
-/usr/local/lib64/ruby/gems/4.0.0/gems/syslog-0.3.0-x86_64-linux/BSDL
-/usr/local/lib64/ruby/gems/4.0.0/gems/syslog-0.3.0-x86_64-linux/COPYING
-/usr/local/lib64/ruby/gems/4.0.0/gems/syslog-0.3.0-x86_64-linux/Gemfile
-/usr/local/lib64/ruby/gems/4.0.0/gems/syslog-0.3.0-x86_64-linux/README.md
-/usr/local/lib64/ruby/gems/4.0.0/gems/syslog-0.3.0-x86_64-linux/Rakefile
-/usr/local/lib64/ruby/gems/4.0.0/gems/syslog-0.3.0-x86_64-linux/bin/console
-/usr/local/lib64/ruby/gems/4.0.0/gems/syslog-0.3.0-x86_64-linux/bin/setup
-/usr/local/lib64/ruby/gems/4.0.0/gems/syslog-0.3.0-x86_64-linux/ext/syslog/extconf.rb
-/usr/local/lib64/ruby/gems/4.0.0/gems/syslog-0.3.0-x86_64-linux/ext/syslog/syslog.c
-/usr/local/lib64/ruby/gems/4.0.0/gems/syslog-0.3.0-x86_64-linux/ext/syslog/syslog.txt
-/usr/local/lib64/ruby/gems/4.0.0/gems/syslog-0.3.0-x86_64-linux/lib/syslog.rb
-/usr/local/lib64/ruby/gems/4.0.0/gems/syslog-0.3.0-x86_64-linux/lib/syslog/logger.rb
-/usr/local/lib64/ruby/gems/4.0.0/gems/syslog-0.3.0-x86_64-linux/lib/syslog_ext.so
-/usr/local/lib64/ruby/gems/4.0.0/gems/syslog-0.3.0-x86_64-linux/syslog.gemspec
+# Total size: 59732
+/usr/local/lib64/ruby/gems/4.0.0/gems/syslog-0.4.0-x86_64-linux/BSDL
+/usr/local/lib64/ruby/gems/4.0.0/gems/syslog-0.4.0-x86_64-linux/COPYING
+/usr/local/lib64/ruby/gems/4.0.0/gems/syslog-0.4.0-x86_64-linux/Gemfile
+/usr/local/lib64/ruby/gems/4.0.0/gems/syslog-0.4.0-x86_64-linux/README.md
+/usr/local/lib64/ruby/gems/4.0.0/gems/syslog-0.4.0-x86_64-linux/Rakefile
+/usr/local/lib64/ruby/gems/4.0.0/gems/syslog-0.4.0-x86_64-linux/bin/console
+/usr/local/lib64/ruby/gems/4.0.0/gems/syslog-0.4.0-x86_64-linux/bin/setup
+/usr/local/lib64/ruby/gems/4.0.0/gems/syslog-0.4.0-x86_64-linux/ext/syslog/extconf.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/syslog-0.4.0-x86_64-linux/ext/syslog/syslog.c
+/usr/local/lib64/ruby/gems/4.0.0/gems/syslog-0.4.0-x86_64-linux/ext/syslog/syslog.txt
+/usr/local/lib64/ruby/gems/4.0.0/gems/syslog-0.4.0-x86_64-linux/lib/syslog.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/syslog-0.4.0-x86_64-linux/lib/syslog/jruby.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/syslog-0.4.0-x86_64-linux/lib/syslog/logger.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/syslog-0.4.0-x86_64-linux/lib/syslog_ext.so
+/usr/local/lib64/ruby/gems/4.0.0/gems/syslog-0.4.0-x86_64-linux/syslog.gemspec
