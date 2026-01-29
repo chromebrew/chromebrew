@@ -3,17 +3,17 @@ require 'buildsystems/ruby'
 class Ruby_syslog < RUBY
   description 'Ruby interface for the posix system logging facility.'
   homepage 'https://github.com/ruby/syslog'
-  version "0.3.0-#{CREW_RUBY_VER}"
+  version "0.4.0-#{CREW_RUBY_VER}"
   license 'Ruby'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: '0b3053851621effc962a71d95a11e9227150a4a01d54dddc51b7892bcbc34c18',
-     armv7l: '0b3053851621effc962a71d95a11e9227150a4a01d54dddc51b7892bcbc34c18',
-       i686: 'a423225327a1c48a41319d75cbbaa152e26a503a980b7ef65ea7bdaed68b09e4',
-     x86_64: 'd8eb0339c59075e23d1b1006a4a610dde6b8287629c1a984e75174a903dcc70c'
+    aarch64: 'da6e707a2a116f24ff24551d50ad0a9d6819ff31c6e7bd257e47c2b3d0d48dfc',
+     armv7l: 'da6e707a2a116f24ff24551d50ad0a9d6819ff31c6e7bd257e47c2b3d0d48dfc',
+       i686: 'f49bf992a4f666abd4bab2aa98ed9d6cb49f5636e0b3141ad797046d3e1cfff0',
+     x86_64: 'd66baa5fa2bdbd08f995f2d65657e5e68bfaa7abbc626fbdb61bac5539ff1844'
   })
 
   depends_on 'glibc' # R
