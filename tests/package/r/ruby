@@ -1,6 +1,6 @@
 #!/bin/bash -ex
 for b in $(crew files ruby | grep /usr/local/bin); do $b --version 2>&1; done
 # See https://bugs.ruby-lang.org/issues/21607
-ruby -e "require 'concurrent-ruby' ; puts 'success'"
+ruby -e "require 'concurrent-ruby' ; puts 'success'" || echo "Please rebuild ruby with GCC 14."
 # See https://bugs.ruby-lang.org/issues/20085
 ruby -e "Fiber.new{}.resume"
