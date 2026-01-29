@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_cssselect < Pip
   description 'CSSselect parses CSS3 Selectors and translates them to XPath 1.0.'
   homepage 'https://cssselect.readthedocs.io/'
-  version "1.3.0-#{CREW_PY_VER}"
+  version "1.4.0-#{CREW_PY_VER}"
   license 'BSD'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4127dbc8e30199c4b666b71d0241ec3e479cb5517f1007ab43084872233a730b',
-     armv7l: '4127dbc8e30199c4b666b71d0241ec3e479cb5517f1007ab43084872233a730b',
-       i686: 'bf9b6354591cc42706dba799ae8a9463fb049b9f2dc5811b36c47d41ea3d133e',
-     x86_64: '4dba7a388b1772cd679bbf186185368ab9660d8efc32aba38395d3c129783597'
+    aarch64: '6fcd8362db867edc0e5b9c4e7113539385e9c475a68c62790c7442df558c03de',
+     armv7l: '6fcd8362db867edc0e5b9c4e7113539385e9c475a68c62790c7442df558c03de',
+       i686: '77f88e7acf0dfa78453f1681ffacb76482a981ad82d9058ee7a20c19d06d6cb3',
+     x86_64: '7771f35bfeb0b0cd6b0ac603b208a858f4e45bfb5efa54e63d0f243920816084'
   })
 
   depends_on 'python3' => :build
