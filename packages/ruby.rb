@@ -3,7 +3,7 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '4.0.0'
+  version '4.0.1'
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
   source_url 'https://github.com/ruby/ruby.git'
