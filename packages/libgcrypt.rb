@@ -11,10 +11,10 @@ class Libgcrypt < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4159c1ad66fabb3db314f97c94f986b5195c357c313eaca916af5e6e3e06b95b',
-     armv7l: '4159c1ad66fabb3db314f97c94f986b5195c357c313eaca916af5e6e3e06b95b',
-       i686: 'ecc138567f57120938ff9e267f29ea3487684eeb01bcfc91d873ecaa6f50b7e1',
-     x86_64: '8c2c775817ea36f9863be6604755bea8c25600df65d1323b02924d409dcc83bf'
+    aarch64: 'dae4b0c147f31a1b0663c5619eebe0c0aa991e17f5d591ba0c0ca4f00c04e925',
+     armv7l: 'dae4b0c147f31a1b0663c5619eebe0c0aa991e17f5d591ba0c0ca4f00c04e925',
+       i686: 'e9fa488830c0e4b3be75a3bc02cdbd094aa724998ed8c739064948fd65a0a384',
+     x86_64: '01d3540e95234dda997c759e9fa2525cb00037196d62ad3e3a644691015fd32c'
   })
 
   depends_on 'gcc_lib' # R
