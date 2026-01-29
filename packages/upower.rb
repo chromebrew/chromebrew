@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Upower < Meson
   description 'Abstraction for enumerating power devices, listening to device events and querying history and statistics'
   homepage 'https://upower.freedesktop.org'
-  version '1.90.9'
+  version '1.91.0'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/upower/upower.git'
@@ -11,9 +11,9 @@ class Upower < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bc09340bdb4e6878f628a44600605ae588b3740ddd649d4f7b2f1a5f25581b82',
-     armv7l: 'bc09340bdb4e6878f628a44600605ae588b3740ddd649d4f7b2f1a5f25581b82',
-     x86_64: '4e9693515224ebdb7d7064767b6c8c52050b6801e4599c7711c486c231108da0'
+    aarch64: 'b9a1dde9bf2a8ea894a43137510656cbca93e8cd3f296bbf8a497a68208e1c52',
+     armv7l: 'b9a1dde9bf2a8ea894a43137510656cbca93e8cd3f296bbf8a497a68208e1c52',
+     x86_64: '9c9ecdacf4e8ea93869a2bacf6388d0fe63ec3fac5a2dbe8e8ac46e1f48162e5'
   })
 
   depends_on 'docbook_xml' => :build
