@@ -16,20 +16,35 @@ class Gparted < Package
      x86_64: '1b8f2885bc04c372c22194966e8ca11bf042da297d2c732f5d6db88f1250e4b9'
   })
 
-  depends_on 'parted'
-  depends_on 'gtkmm3'
-  depends_on 'intltool' => :build
-  depends_on 'py3_itstool' => :build
-  depends_on 'yelp_tools' => :build
-  depends_on 'xfsprogs'
+  depends_on 'at_spi2_core' # R
+  depends_on 'atkmm16' # R
+  depends_on 'cairo' # R
+  depends_on 'cairomm_1_0' # R
   depends_on 'exfatprogs'
   depends_on 'f2fs_tools'
+  depends_on 'gcc_lib' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glib' # R
+  depends_on 'glibmm_2_4' # R
   depends_on 'gpart'
-  depends_on 'mtools'
-  depends_on 'libsigcplusplus'
+  depends_on 'gtk3' # R
+  depends_on 'gtkmm3'
+  depends_on 'harfbuzz' # R
+  depends_on 'intltool' => :build
   depends_on 'librsvg'
+  depends_on 'libsigcplusplus'
+  depends_on 'libsigcplusplus2' # R
+  depends_on 'mtools'
+  depends_on 'pango' # R
+  depends_on 'pangomm_1_4' # R
+  depends_on 'parted'
+  depends_on 'py3_itstool' => :build
+  depends_on 'sommelier' => :logical
+  depends_on 'util_linux' # R
+  depends_on 'xfsprogs'
   depends_on 'xhost'
-  depends_on 'sommelier'
+  depends_on 'yelp_tools' => :build
+  depends_on 'zlib' # R
 
   def self.patch
     system 'filefix' # Fix ./configure: line 7001: /usr/bin/file: No such file or directory

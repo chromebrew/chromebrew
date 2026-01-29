@@ -16,6 +16,8 @@ class Gstreamer < Meson
      x86_64: '52673b19f10646ce035a7a961a09d1173984fa42b342337ff8c0325da23847a7'
   })
 
+  # depends_on 'gsm' # R
+  # depends_on 'libvpx' # R
   depends_on 'alsa_lib' # R
   depends_on 'bzip2' # R
   depends_on 'ca_certificates' => :build
@@ -25,16 +27,13 @@ class Gstreamer < Meson
   depends_on 'elfutils' # R
   depends_on 'faac' # R
   depends_on 'faad2' # R
-  depends_on 'ffmpeg' # R
+  depends_on 'ffmpeg' => :logical
   depends_on 'flac' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glib' # R
-  depends_on 'glibc' # R
   depends_on 'gnutls' # R
   depends_on 'graphene' # R
-  depends_on 'gsl' => :build
-  depends_on 'gsm' # R
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
   depends_on 'intel_media_sdk' if ARCH.eql?('x86_64') # R
@@ -43,7 +42,6 @@ class Gstreamer < Meson
   depends_on 'libaom' # R
   depends_on 'libass' # R
   depends_on 'libavc1394' # R
-  depends_on 'libcap'
   depends_on 'libcap' # R
   depends_on 'libdrm' # R
   depends_on 'libdv' # R
@@ -51,7 +49,6 @@ class Gstreamer < Meson
   depends_on 'libglvnd' # R
   depends_on 'libgudev' # R
   depends_on 'libiec61883' # R
-  depends_on 'libjpeg_turbo'
   depends_on 'libjpeg_turbo' # R
   depends_on 'libmodplug' # R
   depends_on 'libmp3lame' # R
@@ -62,12 +59,10 @@ class Gstreamer < Meson
   depends_on 'librsvg' # R
   depends_on 'libsndfile' # R
   depends_on 'libtheora' # R
-  depends_on 'libunwind'
   depends_on 'libunwind' # R
   depends_on 'libusb' # R
   depends_on 'libva' # R
   depends_on 'libvorbis' # R
-  depends_on 'libvpx' # R
   depends_on 'libwebp' # R
   depends_on 'libx11' # R
   depends_on 'libx264' # R
@@ -92,7 +87,7 @@ class Gstreamer < Meson
   depends_on 'opus' # R
   depends_on 'opusfile' => :build
   depends_on 'pango' # R
-  depends_on 'pulseaudio' # R
+  depends_on 'pulseaudio' => :logical
   depends_on 'py3_gitlint' => :build
   depends_on 'py3_setuptools' => :build
   depends_on 'qt5_base' # R

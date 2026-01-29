@@ -25,7 +25,7 @@ class I3 < Meson
   depends_on 'libxkbcommon' # R
   depends_on 'pango' # R
   depends_on 'pcre2' # R
-  depends_on 'sommelier' # R
+  depends_on 'sommelier' => :logical
   depends_on 'startup_notification' # R
   depends_on 'wayland' => :build
   depends_on 'xcb_util' # R

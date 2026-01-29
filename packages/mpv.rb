@@ -27,8 +27,8 @@ class Mpv < Meson
   depends_on 'libass' # R
   depends_on 'libbluray' # R
   depends_on 'libcaca' # R
-  depends_on 'libcdio_paranoia' # R
   depends_on 'libcdio' # R
+  depends_on 'libcdio_paranoia' # R
   depends_on 'libdovi' # R
   depends_on 'libdrm' # R
   depends_on 'libdvdnav' # R
@@ -37,7 +37,6 @@ class Mpv < Meson
   depends_on 'libjpeg_turbo' # R
   depends_on 'libplacebo' # R
   depends_on 'libsamplerate' # R
-  depends_on 'sdl2' # R
   depends_on 'libva' # R
   depends_on 'libvdpau' # R
   depends_on 'libx11' # R
@@ -56,8 +55,9 @@ class Mpv < Meson
   depends_on 'pulseaudio' # R
   depends_on 'py3_docutils' => :build
   depends_on 'rubberband' # R
+  depends_on 'sdl2' # R
   depends_on 'shaderc' # R
-  depends_on 'sommelier' # L
+  depends_on 'sommelier' => :logical
   depends_on 'uchardet' # R
   depends_on 'vapoursynth' # R
   depends_on 'vulkan_headers' => :build

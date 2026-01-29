@@ -13,17 +13,24 @@ class Uget < Package
   binary_sha256({
     aarch64: 'ca69d322f0584a63365f90a390adc5b5c543fc8554091f27b23b8cdd2dc60a5a',
      armv7l: 'ca69d322f0584a63365f90a390adc5b5c543fc8554091f27b23b8cdd2dc60a5a',
+       i686: 'b408fd80bc029f391f6ea442947a93f314d8b454bdf6d0e51b909eb537187bbf',
      x86_64: 'e75eeddfb77a1d22fbe9ff38b20b65a2e85862b22812f78296a4f760f44a0854'
   })
 
+  depends_on 'at_spi2_core' # R
+  depends_on 'cairo' # R
   depends_on 'curl'
-  depends_on 'gtk3'
-  depends_on 'libnotify'
-  depends_on 'gstreamer'
-  depends_on 'shared_mime_info'
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glib' # R
   depends_on 'gnome_icon_theme'
+  depends_on 'gstreamer'
+  depends_on 'gtk3'
+  depends_on 'harfbuzz' # R
   depends_on 'hicolor_icon_theme'
-  depends_on 'sommelier'
+  depends_on 'libnotify'
+  depends_on 'pango' # R
+  depends_on 'shared_mime_info'
+  depends_on 'sommelier' => :logical
 
   def self.build
     system './configure',

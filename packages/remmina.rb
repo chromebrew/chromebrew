@@ -24,8 +24,8 @@ class Remmina < CMake
   depends_on 'fuse3' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
   depends_on 'json_glib' # R
@@ -39,7 +39,7 @@ class Remmina < CMake
   depends_on 'openssl' # R
   depends_on 'pango' # R
   depends_on 'python3' # R
-  depends_on 'sommelier' # L
+  depends_on 'sommelier' => :logical
   depends_on 'spice_gtk' => :build
   depends_on 'vte' # R
   depends_on 'wayland' # R

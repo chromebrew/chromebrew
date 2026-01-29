@@ -24,7 +24,7 @@ class Feh < Package
   depends_on 'libpng'
   depends_on 'libx11'
   depends_on 'libxinerama'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.build
     system "PREFIX=#{CREW_PREFIX} make"

@@ -13,7 +13,7 @@ class Freecad < Package
   no_compile_needed
   no_shrink
 
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.preflight
     MiscFunctions.check_free_disk_space(5583457485)

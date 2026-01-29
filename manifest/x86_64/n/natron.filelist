@@ -1,4 +1,4 @@
-# Total size: 558792212
+# Total size: 580400581
 /usr/local/bin/natron
 /usr/local/share/Natron-2.4.0/InstallationLog.txt
 /usr/local/share/Natron-2.4.0/Licenses/natron-license.txt
@@ -4105,6 +4105,25 @@
 /usr/local/share/Natron-2.4.0/lib/python2.7/plat-linux2/TYPES.pyo
 /usr/local/share/Natron-2.4.0/lib/python2.7/plat-linux2/regen
 /usr/local/share/Natron-2.4.0/lib/python2.7/site-packages/PySide
+/usr/local/share/Natron-2.4.0/lib/python2.7/site-packages/PySide/QtCore.so
+/usr/local/share/Natron-2.4.0/lib/python2.7/site-packages/PySide/QtDeclarative.so
+/usr/local/share/Natron-2.4.0/lib/python2.7/site-packages/PySide/QtGui.so
+/usr/local/share/Natron-2.4.0/lib/python2.7/site-packages/PySide/QtHelp.so
+/usr/local/share/Natron-2.4.0/lib/python2.7/site-packages/PySide/QtNetwork.so
+/usr/local/share/Natron-2.4.0/lib/python2.7/site-packages/PySide/QtOpenGL.so
+/usr/local/share/Natron-2.4.0/lib/python2.7/site-packages/PySide/QtScript.so
+/usr/local/share/Natron-2.4.0/lib/python2.7/site-packages/PySide/QtScriptTools.so
+/usr/local/share/Natron-2.4.0/lib/python2.7/site-packages/PySide/QtSql.so
+/usr/local/share/Natron-2.4.0/lib/python2.7/site-packages/PySide/QtSvg.so
+/usr/local/share/Natron-2.4.0/lib/python2.7/site-packages/PySide/QtTest.so
+/usr/local/share/Natron-2.4.0/lib/python2.7/site-packages/PySide/QtUiTools.so
+/usr/local/share/Natron-2.4.0/lib/python2.7/site-packages/PySide/QtWebKit.so
+/usr/local/share/Natron-2.4.0/lib/python2.7/site-packages/PySide/QtXml.so
+/usr/local/share/Natron-2.4.0/lib/python2.7/site-packages/PySide/QtXmlPatterns.so
+/usr/local/share/Natron-2.4.0/lib/python2.7/site-packages/PySide/__init__.py
+/usr/local/share/Natron-2.4.0/lib/python2.7/site-packages/PySide/__init__.pyc
+/usr/local/share/Natron-2.4.0/lib/python2.7/site-packages/PySide/_utils.py
+/usr/local/share/Natron-2.4.0/lib/python2.7/site-packages/PySide/_utils.pyc
 /usr/local/share/Natron-2.4.0/lib/python2.7/site-packages/easy_install.py
 /usr/local/share/Natron-2.4.0/lib/python2.7/site-packages/easy_install.pyc
 /usr/local/share/Natron-2.4.0/lib/python2.7/site-packages/pip-20.3.4.dist-info/INSTALLER

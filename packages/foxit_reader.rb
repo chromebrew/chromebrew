@@ -34,7 +34,7 @@ class Foxit_reader < Package
   depends_on 'pkg_7_zip' => :build
   depends_on 'qt5_declarative' # R
   depends_on 'qt5_location' # R
-  depends_on 'sommelier' # L
+  depends_on 'sommelier' => :logical
   depends_on 'zlib' # R
 
   def self.install

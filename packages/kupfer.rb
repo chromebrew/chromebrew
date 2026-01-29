@@ -17,7 +17,7 @@ class Kupfer < Package
   depends_on 'py3_pyxdg'
   depends_on 'py3_docutils' => :build
   depends_on 'python3' => :build
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   binary_sha256({
      x86_64: '78b56a3946bdb3775c7408c9372a6d49a60418c673ec0ca5d246d6cd6ca38a04'

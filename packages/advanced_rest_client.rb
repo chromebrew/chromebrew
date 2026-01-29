@@ -10,7 +10,7 @@ class Advanced_rest_client < Package
   source_sha256 '0461eb86ffad7ee733964a527c1b85e06154454f655631d7bef5ea5b111577d5'
 
   depends_on 'gtk3'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   no_shrink
 

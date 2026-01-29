@@ -12,7 +12,7 @@ class Seamonkey < Package
 
   depends_on 'dbus_glib'
   depends_on 'gtk3'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   no_compile_needed
   no_shrink

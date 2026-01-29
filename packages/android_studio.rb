@@ -12,7 +12,7 @@ class Android_studio < Package
 
   depends_on 'openjdk17'
   depends_on 'xdg_base'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   print_source_bashrc
 

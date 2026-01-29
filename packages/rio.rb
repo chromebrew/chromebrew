@@ -18,7 +18,7 @@ class Rio < Package
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'wayland' # R
-  depends_on 'sommelier' # R
+  depends_on 'sommelier' => :logical
 
   def self.build
     system 'cargo build -p rioterm --release --no-default-features --features=x11,wayland'

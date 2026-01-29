@@ -16,11 +16,18 @@ class Scite < Package
      x86_64: 'b684675d163cc75cc3f631f201e1bbe95dfbb8eea58f97d1c4bdc8b981c1fc6d'
   })
 
-  depends_on 'gtk3'
+  depends_on 'at_spi2_core' # R
+  depends_on 'cairo' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glib' # R
   depends_on 'gnome_icon_theme'
+  depends_on 'gtk3'
+  depends_on 'harfbuzz' # R
   depends_on 'hicolor_icon_theme'
+  depends_on 'pango' # R
   depends_on 'shared_mime_info'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.build
     Dir.chdir 'lexilla/src' do

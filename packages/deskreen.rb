@@ -13,7 +13,7 @@ class Deskreen < Package
   no_shrink
 
   depends_on 'gtk3'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.patch
     system "sed -i 's,AppRun --no-sandbox,deskreen,' deskreen-ce.desktop"

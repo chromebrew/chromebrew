@@ -10,7 +10,7 @@ class Crossmobile < Package
   source_sha256 '295f65a8ef3d115061749370ec0a9eb68424e9b96d208acd91aa18818e3fa134'
 
   depends_on 'openjdk8'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   no_compile_needed
 

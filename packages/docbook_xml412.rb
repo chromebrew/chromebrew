@@ -18,7 +18,6 @@ class Docbook_xml412 < Package
      x86_64: 'ece6d95295cd269780339a9dca5925b224f63cf01879a1a27370faf7d13a4648'
   })
 
-  depends_on 'docbook_xml'
   depends_on 'libxml2'
   depends_on 'xmlcatmgr'
 
@@ -32,6 +31,14 @@ class Docbook_xml412 < Package
 
   def self.preinstall
     # Docbook common preinstall block
+    unless File.exist?("#{CREW_PREFIX}/etc/env.d/docbook_xml") || ENV['CI']
+      FileUtils.mkdir_p "#{CREW_PREFIX}/etc/env.d/"
+      File.write "#{CREW_PREFIX}/etc/env.d/docbook_xml", <<~DOCBOOK_XML_EOF
+        # Docbook_xml configuration
+        XML_CATALOG_FILES=#{CREW_PREFIX}/etc/xml/catalog
+      DOCBOOK_XML_EOF
+    end
+
     FileUtils.mkdir_p "#{CREW_PREFIX}/etc/xml"
 
     if File.exist?("#{CREW_PREFIX}/etc/xml/catalog") && !File.empty?("#{CREW_PREFIX}/etc/xml/catalog")
@@ -39,7 +46,7 @@ class Docbook_xml412 < Package
     else
       puts "Creating #{CREW_PREFIX}/etc/xml/catalog" if @opt_verbose
       FileUtils.rm_f "#{CREW_PREFIX}/etc/xml/catalog"
-      system "LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} xmlcatalog --noout --create #{CREW_PREFIX}/etc/xml/catalog || true"
+      system "xmlcatalog --noout --create #{CREW_PREFIX}/etc/xml/catalog"
     end
 
     if File.exist?("#{CREW_PREFIX}/etc/xml/docbook-xml") && !File.empty?("#{CREW_PREFIX}/etc/xml/docbook-xml")
@@ -49,6 +56,7 @@ class Docbook_xml412 < Package
       FileUtils.rm_f "#{CREW_PREFIX}/etc/xml/docbook-xml"
       system "xmlcatalog --noout --create #{CREW_PREFIX}/etc/xml/docbook-xml"
     end
+
     # End Docbook common preinstall block
   end
 

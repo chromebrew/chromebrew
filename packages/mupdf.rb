@@ -28,7 +28,7 @@ class Mupdf < Package
   depends_on 'libxrandr' # R
   depends_on 'openjpeg'
   depends_on 'openssl' # R
-  depends_on 'sommelier' unless ARCH == 'i686'
+  depends_on 'sommelier' => :logical unless ARCH == 'i686'
 
   def self.build
     if ARCH == 'i686'

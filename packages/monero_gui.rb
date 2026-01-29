@@ -16,7 +16,7 @@ class Monero_gui < Package
   depends_on 'xcb_util_keysyms' # R
   depends_on 'xcb_util_renderutil' # R
   depends_on 'xcb_util_wm' # R
-  depends_on 'sommelier' # R
+  depends_on 'sommelier' => :logical
 
   no_compile_needed
   no_shrink

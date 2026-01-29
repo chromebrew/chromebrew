@@ -22,7 +22,7 @@ class Balena_etcher < Package
   depends_on 'gsettings_desktop_schemas'
   depends_on 'unzip'
   depends_on 'xhost'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   gnome
   no_compile_needed

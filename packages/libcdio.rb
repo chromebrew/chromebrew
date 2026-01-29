@@ -17,7 +17,9 @@ class Libcdio < Package
      x86_64: '1988c60ace1972669716ef55db1445708b1692cd44692edc269fbb759fbd1f6e'
   })
 
-  depends_on 'libcddb'
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'libcddb' => :logical
 
   def self.build
     system "#{CREW_ENV_OPTIONS} ./configure #{CREW_CONFIGURE_OPTIONS} \

@@ -13,12 +13,13 @@ class Xscreensaver < Package
   binary_sha256({
     aarch64: '6e6fe321404454f174492ed9b116ed339b7b3053c86d6af7b463d266b4558feb',
      armv7l: '6e6fe321404454f174492ed9b116ed339b7b3053c86d6af7b463d266b4558feb',
+       i686: '601c1c6c14e128d6ec5bd69949cd7f25e50c7cd29b57cc2faf075ae0c36e0f60',
      x86_64: '9f318d5f089884acfcef0ccfd0147535a44b38957f94338ff2f97e1cec27f3c0'
   })
 
   depends_on 'glfw'
   depends_on 'freeglut'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX}"

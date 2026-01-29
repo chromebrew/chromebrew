@@ -9,7 +9,7 @@ class Sublime_merge < Package
   source_url "https://download.sublimetext.com/sublime_merge_build_#{version.split.last}_x64.tar.xz"
   source_sha256 'e3523aa79c0dc76a45e7a9e9ee01eaa77f7a447a57b50bb9aee92c532c05fd48'
 
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   no_compile_needed
 

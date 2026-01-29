@@ -16,7 +16,7 @@ class Gitkraken < Package
 
   depends_on 'gtk3'
   depends_on 'libgit2'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"

@@ -35,7 +35,7 @@ class Darktable < Package
   depends_on 'openexr'
   depends_on 'pugixml'
   depends_on 'sqlite'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.build
     Dir.mkdir 'build'

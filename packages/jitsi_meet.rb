@@ -10,7 +10,7 @@ class Jitsi_meet < Package
   source_sha256 '1bc259c4c099f6d9bf1d1decc846602b9acf956696d39f75d0a4eefb6ab0acb1'
 
   depends_on 'gtk3'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   no_compile_needed
   no_shrink

@@ -18,7 +18,7 @@ class Brackets < Package
   depends_on 'gtk2'
   depends_on 'libgconf'
   depends_on 'xdg_base'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.build
     case ARCH

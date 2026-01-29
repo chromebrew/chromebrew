@@ -17,7 +17,7 @@ class Libxslt < CMake
      x86_64: '9aaf57c2d0dd896191f4f923aa1a1753ae84cdfeacc55e392d6fbd18c7b20dd7'
   })
 
-  depends_on 'docbook_xsl' => :build
+  depends_on 'docbook_xml' => :build
   depends_on 'glibc' # R
   depends_on 'libxml2' # R
 

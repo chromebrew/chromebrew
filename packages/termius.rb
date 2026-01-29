@@ -8,9 +8,9 @@ class Termius < Package
   compatibility 'x86_64'
   min_glibc '2.33'
   source_url 'https://www.termius.com/download/linux/Termius.deb'
-  source_sha256 '5fe9eb848254a9189da9d4e4e4e5234e79c92bb49b50155980fd181fcc3139a3'
+  source_sha256 'f418f1c5c4fe7c3351c7667f9e51b3da053cdb5d9e37b0fd797729274390988d'
 
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   no_compile_needed
   no_shrink

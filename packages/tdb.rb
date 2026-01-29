@@ -17,7 +17,7 @@ class Tdb < Package
      x86_64: 'e9315fad39ddb8bbc3d234380414ceda6346d0181323a51acfd426f62af72366'
   })
 
-  depends_on 'docbook_xsl' => :build
+  depends_on 'docbook_xml' => :build
   depends_on 'gcc_lib' # R
   depends_on 'gdb' => :build
   depends_on 'glibc' # R

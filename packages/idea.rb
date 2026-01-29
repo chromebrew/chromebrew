@@ -12,7 +12,7 @@ class Idea < Package
   depends_on 'openjdk8'
   depends_on 'gdk_base'
   depends_on 'xdg_base'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   no_compile_needed
   no_fhs

@@ -13,7 +13,7 @@ class Antigravity < Package
 
   no_compile_needed
 
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.preflight
     # Need at least 1.4 gb of free disk space to install.

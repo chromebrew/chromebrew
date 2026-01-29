@@ -16,21 +16,20 @@ class Ffmpeg < Package
      x86_64: '5c9de7400d706c246037e75375e51c93cb4da90f1c1603d1eb24a4402fbb93ed'
   })
 
+  # depends_on 'avisynthplus' # R
+  # depends_on 'gsm' # R
+  # depends_on 'libtheora' # R
+  # depends_on 'vmaf' # R
   depends_on 'alsa_lib' # R
-  depends_on 'avisynthplus' # R
   depends_on 'bzip2' # R
   depends_on 'ccache' => :build
-  depends_on 'chromaprint' # ?
   depends_on 'dav1d' # R
   depends_on 'fontconfig' # R
   depends_on 'freetype' # R
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'gsm' # R
-  depends_on 'harfbuzz'
+  depends_on 'harfbuzz' # R
   depends_on 'intel_media_sdk' if ARCH == 'x86_64' && CREW_IS_INTEL # R
   depends_on 'jack' # R
-  depends_on 'ladspa' # ?
   depends_on 'libaom' # R
   depends_on 'libass' # R
   depends_on 'libavc1394' # R
@@ -46,27 +45,23 @@ class Ffmpeg < Package
   depends_on 'libmp3lame' # R
   depends_on 'libopencoreamr' # R
   depends_on 'libraw1394' # R
-  depends_on 'sdl2' # R
   depends_on 'libsoxr' # R
   depends_on 'libssh' # R
-  depends_on 'libtheora' # R
   depends_on 'libva' # R
   depends_on 'libvdpau' # R
   depends_on 'libvoamrwbenc' => :build
   depends_on 'libvorbis' # R
-  depends_on 'libvpx' # R
   depends_on 'libwebp' # R
   depends_on 'libx11' # R
   depends_on 'libx264' # R
   depends_on 'libx265' # R
   depends_on 'libxcb' # R
   depends_on 'libxext' # R
-  depends_on 'libxml2' # R
-  depends_on 'libxvid' # R
+  depends_on 'libxml2' => :build
   depends_on 'libxv' # R
+  depends_on 'libxvid' # R
   depends_on 'lilv' # R
   depends_on 'nasm' => :build
-  depends_on 'openal' # ?
   depends_on 'openjpeg' # R
   depends_on 'openssl' # R
   depends_on 'opus' # R
@@ -75,14 +70,13 @@ class Ffmpeg < Package
   depends_on 'rav1e' # R
   depends_on 'rtmpdump' # R
   depends_on 'rubberband' # R
+  depends_on 'sdl2' # R
   depends_on 'snappy' # R
   depends_on 'speex' # R
   depends_on 'srt' # R
   depends_on 'tesseract' # R
   depends_on 'v4l_utils' # R
   depends_on 'vidstab' # R
-  depends_on 'vmaf' # R
-  depends_on 'wavpack' # ?
   depends_on 'xzutils' # R
   depends_on 'zeromq' # R
   depends_on 'zimg' # R

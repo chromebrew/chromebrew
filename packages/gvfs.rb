@@ -19,7 +19,7 @@ class Gvfs < Meson
   depends_on 'avahi' # R
   depends_on 'dbus' => :build
   depends_on 'dconf' => :build
-  depends_on 'docbook_xsl' => :build
+  depends_on 'docbook_xml' => :build
   depends_on 'elogind' => :build
   depends_on 'fuse3' # R
   depends_on 'gcc_lib' => :build

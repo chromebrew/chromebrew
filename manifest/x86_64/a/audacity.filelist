@@ -1,4 +1,4 @@
-# Total size: 759891169
+# Total size: 759891181
 /usr/local/bin/audacity
 /usr/local/share/applications/audacity-url-handler.desktop
 /usr/local/share/applications/audacity.desktop
@@ -34,6 +34,8 @@
 /usr/local/share/audacity/fallback/libpixman-1.so.0/libpixman-1.so.0
 /usr/local/share/audacity/fallback/libportaudio.so/libportaudio.so
 /usr/local/share/audacity/fallback/librsvg-2.so.2/librsvg-2.so.2
+/usr/local/share/audacity/lib/
+
 /usr/local/share/audacity/lib/audacity/engines-1.1/afalg.so
 /usr/local/share/audacity/lib/audacity/engines-1.1/capi.so
 /usr/local/share/audacity/lib/audacity/engines-1.1/padlock.so
@@ -352,6 +354,7 @@
 /usr/local/share/audacity/plug-ins/spectral-delete.ny
 /usr/local/share/audacity/plug-ins/tremolo.ny
 /usr/local/share/audacity/plug-ins/vocoder.ny
+/usr/local/share/audacity/usr
 /usr/local/share/audacity/usr/AppRun
 /usr/local/share/audacity/usr/AppRun.wrapped
 /usr/local/share/audacity/usr/EffectsMenuDefaults.xml
@@ -384,6 +387,8 @@
 /usr/local/share/audacity/usr/fallback/libpixman-1.so.0/libpixman-1.so.0
 /usr/local/share/audacity/usr/fallback/libportaudio.so/libportaudio.so
 /usr/local/share/audacity/usr/fallback/librsvg-2.so.2/librsvg-2.so.2
+/usr/local/share/audacity/usr/lib/
+
 /usr/local/share/audacity/usr/lib/audacity/engines-1.1/afalg.so
 /usr/local/share/audacity/usr/lib/audacity/engines-1.1/capi.so
 /usr/local/share/audacity/usr/lib/audacity/engines-1.1/padlock.so

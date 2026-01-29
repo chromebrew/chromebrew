@@ -13,7 +13,7 @@ class Onlyoffice < Package
   depends_on 'gdk_base' # R
   depends_on 'gsettings_desktop_schemas' # R
   depends_on 'libnotify' # R
-  depends_on 'sommelier' # R
+  depends_on 'sommelier' => :logical
 
   gnome
   no_compile_needed

@@ -12,7 +12,7 @@ class Exodus < Package
   depends_on 'at_spi2_core'
   depends_on 'gtk3'
   depends_on 'xdg_base'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   no_compile_needed
   no_shrink

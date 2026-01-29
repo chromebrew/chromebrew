@@ -13,12 +13,27 @@ class Tilp2 < Package
   binary_sha256({
     aarch64: '201dc44208b9be80c48f7c490db5278734451890fbeb2d2a5d14453edd1fbf38',
      armv7l: '201dc44208b9be80c48f7c490db5278734451890fbeb2d2a5d14453edd1fbf38',
+       i686: 'ab237640a29d6b6f5270958be66a85bc149c1e33b3bdffac6cc10e33e5de39b1',
      x86_64: '6299305628afe6455a951234e91a1ee6dc501b48d0f47b1739963080be416536'
   })
 
-  depends_on 'libticalcs2'
+  depends_on 'at_spi2_core' # R
+  depends_on 'cairo' # R
+  depends_on 'fontconfig' # R
+  depends_on 'freetype' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glib' # R
+  depends_on 'gtk2' # R
+  depends_on 'harfbuzz' # R
   depends_on 'libglade'
-  depends_on 'sommelier'
+  depends_on 'libticables2' # R
+  depends_on 'libticalcs2'
+  depends_on 'libticonv' # R
+  depends_on 'libtifiles2' # R
+  depends_on 'pango' # R
+  depends_on 'sommelier' => :logical
+  depends_on 'zlib' # R
 
   def self.patch
     system 'cat << _EOF > tilp2.patch

@@ -11,7 +11,7 @@ class Pycharm < Package
 
   depends_on 'jdk8'
   depends_on 'xdg_base'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.patch
     # Fix java.io.IOException: Cannot run program "/home/chronos/user/.PyCharmCE2019.3/system/tmp/ij1055598732.tmp": error=13, Permission denied

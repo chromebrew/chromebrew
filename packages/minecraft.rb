@@ -16,7 +16,7 @@ class Minecraft < Package
   depends_on 'gtk3'
   depends_on 'libcom_err'
   depends_on 'libsecret'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   no_fhs
 

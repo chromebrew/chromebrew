@@ -23,7 +23,7 @@ class Foliate < Meson
   depends_on 'gtk4'
   depends_on 'iso_codes'
   depends_on 'libadwaita'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
   depends_on 'webkitgtk_6'
 
   gnome

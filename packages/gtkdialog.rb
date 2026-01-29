@@ -13,11 +13,20 @@ class Gtkdialog < Package
   binary_sha256({
     aarch64: '8185be58027fe00733c033561df5376f5e41f59d9966ca70a7500cf99c56c444',
      armv7l: '8185be58027fe00733c033561df5376f5e41f59d9966ca70a7500cf99c56c444',
+       i686: '0ee37eac4701018f42ca5c68235c0f076d4d9e2974bbbb0cb759a07a1df97f9d',
      x86_64: 'c83761ad0523adea05546fea20352a9133e362aefd7ea74737e2e4099b783fa0'
   })
 
+  depends_on 'at_spi2_core' # R
+  depends_on 'cairo' # R
+  depends_on 'fontconfig' # R
+  depends_on 'freetype' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glib' # R
   depends_on 'gtk2'
-  depends_on 'sommelier'
+  depends_on 'harfbuzz' # R
+  depends_on 'pango' # R
+  depends_on 'sommelier' => :logical
 
   def self.build
     system './configure',

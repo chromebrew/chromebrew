@@ -14,7 +14,7 @@ class Wing < Package
   depends_on 'xcb_util_cursor'
   depends_on 'xcb_util_keysyms'
   depends_on 'xcb_util_wm'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   no_compile_needed
   no_shrink

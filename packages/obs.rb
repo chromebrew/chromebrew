@@ -24,7 +24,7 @@ class Obs < Package
   depends_on 'qt5_x11extras'
   depends_on 'v4l_utils'
   depends_on 'xdg_base'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.build
     # Use the gold linker.

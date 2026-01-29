@@ -17,7 +17,7 @@ class Vivaldi < Package
   depends_on 'nss'
   depends_on 'xdg_base'
   depends_on 'xdg_utils'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   no_compile_needed
   no_shrink

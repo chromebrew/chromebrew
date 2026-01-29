@@ -10,7 +10,7 @@ class Logisim < Package
   source_sha256 '362a78c12ad18c203fed868872c4a01cd9c12141379d92e892bbe2c37e627bc2'
 
   depends_on 'openjdk8'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   no_compile_needed
 

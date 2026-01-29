@@ -10,7 +10,7 @@ class Squeak < Package
   source_sha256 'f154c3e87c218fae7451598e2106f60bae67830a45681a093cc376ba68a9941d'
 
   depends_on 'pulseaudio'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"

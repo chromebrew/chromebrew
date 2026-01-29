@@ -17,7 +17,7 @@ class Brave < Package
   depends_on 'gtk3'
   depends_on 'libcom_err'
   depends_on 'xdg_base'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
