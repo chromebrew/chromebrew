@@ -1,4 +1,4 @@
-# Total size: 2313877
+# Total size: 2314293
 /usr/local/bin/babl
 /usr/local/include/babl-0.1/babl/babl-introspect.h
 /usr/local/include/babl-0.1/babl/babl-macros.h
@@ -74,7 +74,7 @@
 /usr/local/lib64/girepository-1.0/Babl-0.1.typelib
 /usr/local/lib64/libbabl-0.1.so
 /usr/local/lib64/libbabl-0.1.so.0
-/usr/local/lib64/libbabl-0.1.so.0.218.1
+/usr/local/lib64/libbabl-0.1.so.0.221.1
 /usr/local/lib64/pkgconfig/babl-0.1.pc
 /usr/local/share/gir-1.0/Babl-0.1.gir
 /usr/local/share/vala/vapi/babl-0.1.deps
