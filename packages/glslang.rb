@@ -14,9 +14,9 @@ class Glslang < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ad9d650e3933404391c22e29837c6b8cba742c7d7ed1e6ccef452cff13edea24',
-     armv7l: 'ad9d650e3933404391c22e29837c6b8cba742c7d7ed1e6ccef452cff13edea24',
-     x86_64: '1b215b7f2b5c383af1faf547f228cf1337ba4157cfe6d56d7cc138654efa628b'
+    aarch64: 'c0aa4ef070c4cd58d7eb8aec2e7149327fe3ac709b38b27173f98bf1c61d8070',
+     armv7l: 'c0aa4ef070c4cd58d7eb8aec2e7149327fe3ac709b38b27173f98bf1c61d8070',
+     x86_64: 'f332064f46f60f3323fa542761abd37972ca7c6e9e263c64137c0ed3743438ae'
   })
 
   depends_on 'gcc_lib' # R
