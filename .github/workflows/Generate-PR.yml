@@ -1,4 +1,5 @@
 ---
+# Version 1.0
 name: Generate PR
 run-name: Generate PR for ${{ inputs.branch || github.ref_name }} by @${{ github.actor }}
 on:
@@ -102,7 +103,7 @@ jobs:
         id: changed-files
         uses: tj-actions/changed-files@v47
         with:
-          base_sha: ${{ steps.get-current-head.outputs.CURRENT_HEAD }}
+          base_sha: master
           files_yaml: |
             packages:
               - packages/*.rb
@@ -432,7 +433,7 @@ jobs:
         id: changed-files
         uses: tj-actions/changed-files@v47
         with:
-          base_sha: ${{ steps.get-current-head.outputs.CURRENT_HEAD }}
+          base_sha: master
           files_yaml: |
             manifest:
               - manifest/**
