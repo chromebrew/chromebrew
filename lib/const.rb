@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION = defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION = '1.71.1' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION = '1.71.2' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH = Etc.uname[:machine]
@@ -358,6 +358,7 @@ crew_llvm_ver_default = '21'
 crew_perl_ver_default = '5.42'
 crew_py_ver_default = '3.14'
 crew_ruby_ver_default = '4.0'
+crew_rust_ver_default = '1.93'
 if ENV['CI']
   CREW_GCC_VER  = "gcc#{crew_gcc_ver_default}"
   CREW_ICU_VER  = "icu#{crew_icu_ver_default}"
@@ -365,6 +366,7 @@ if ENV['CI']
   CREW_PERL_VER = "perl#{crew_perl_ver_default}"
   CREW_PY_VER   = "py#{crew_py_ver_default}"
   CREW_RUBY_VER = "ruby#{crew_ruby_ver_default}"
+  CREW_RUST_VER = "rust#{crew_rust_ver_default}"
 else
   CREW_GCC_VER  = Kernel.system('which gcc', %i[out err] => File::NULL) ? "gcc#{`gcc -dumpversion`.chomp}" : "gcc#{crew_gcc_ver_default}"
   CREW_ICU_VER  = Kernel.system('which uconv', %i[out err] => File::NULL) ? "icu#{`uconv --version`.chomp.split[3]}" : "icu#{crew_icu_ver_default}"
@@ -372,6 +374,7 @@ else
   CREW_PERL_VER = Kernel.system('which perl', %i[out err] => File::NULL) ? "perl#{`perl --version|xargs|cut -d\\( -f2|cut -d\\) -f1|cut -dv -f2`.chomp.sub(/\.\d+$/, '')}" : "perl#{crew_perl_ver_default}"
   CREW_PY_VER   = Kernel.system("#{CREW_PREFIX}/bin/python3 --version", %i[out err] => File::NULL) ? "py#{`python3 -c "print('.'.join(__import__('platform').python_version_tuple()[:2]))"`.chomp}" : "py#{crew_py_ver_default}"
   CREW_RUBY_VER = "ruby#{RUBY_VERSION.slice(/(?:.*(?=\.))/)}"
+  CREW_RUST_VER = Kernel.system('which cargo', %i[out err] => File::NULL) ? "rust#{`cargo -V`.chomp.split[1].split('.')[0..1].join('.')}" : "rust#{crew_rust_ver_default}"
 end
 @buildsystems = ['Package']
 Dir.glob("#{CREW_LIB_PATH}/lib/buildsystems/*.rb") { |file| @buildsystems << File.foreach(file, encoding: Encoding::UTF_8).grep(/^class/).to_s.split[1] }

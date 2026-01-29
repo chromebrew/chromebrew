@@ -95,24 +95,26 @@ class PackageUtils
     new_version = pkg_version.dup
     # Delete debian versions for packages like libdb.
     new_version.gsub!(/-dfsg.*/, '')
-    # Delete -gcc14, futureproofed until gcc 100
-    new_version.gsub!(/-gcc\d{2}/, '')
-    # Trim kde- prefixes in qt5 packages so nothing else gets confused.
-    new_version.delete_prefix!('kde-')
-    # Delete -py3.12, futureproofed until Python 4
-    new_version.gsub!(/-py3\.\d{2}/, '')
-    # Delete -ruby4.x, futureproofed until Ruby 5 or Ruby 4.10
-    new_version.gsub!(/-ruby4\.\d{1}/, '')
-    # Delete -perl 5.40, futureproofed until Perl 5.100
-    new_version.gsub!(/-perl5\.\d{2}/, '')
-    # Delete -llvm18, futureproofed until llvm 100
-    new_version.gsub!(/-llvm\d{2}/, '')
+    # Delete -gcc14
+    new_version.gsub!(/-gcc(\d+)/, '')
     # Delete -glibc2.37, or whatever the system glibc is.
     new_version.delete_suffix!("-glibc#{LIBC_VERSION}")
+    # Delete -icuXX.YY
+    new_version.gsub!(/-icu(\d+)\.\d+/, '')
+    # Trim kde- prefixes in qt5 packages so nothing else gets confused.
+    new_version.delete_prefix!('kde-')
+    # Delete -llvmXXXX
+    new_version.gsub!(/-llvm(\d+)/, '')
+    # Delete -perlX.YYYYY
+    new_version.gsub!(/-perl\d\.\d+/, '')
+    # Delete -pyX.YYYY
+    new_version.gsub!(/-py\d\.\d+/, '')
+    # Delete -rubyX.YYYY
+    new_version.gsub!(/-ruby\d\.\d+/, '')
+    # Delete -rustX.YYYY
+    new_version.gsub!(/-rust\d\.\d+/, '')
     # Delete git version tags (1.2.4-qnd73k6), avoiding overmatching and hitting things that arent git hashtags.
     new_version.gsub!(/-\w{7}$/, '')
-    # Delete -icu75.1, futureproofed until icu 100
-    new_version.gsub!(/-icu\d{2}\.\d/, '')
 
     return new_version
   end
