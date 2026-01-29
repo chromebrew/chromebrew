@@ -1,4 +1,4 @@
-# Total size: 6451094
+# Total size: 7834104
 /usr/local/bin/scite
 /usr/local/lib/scite/liblexilla.so
 /usr/local/lib/scite/libscintilla.so
@@ -37,6 +37,7 @@
 /usr/local/share/scite/ave.properties
 /usr/local/share/scite/avs.properties
 /usr/local/share/scite/baan.properties
+/usr/local/share/scite/bash.properties
 /usr/local/share/scite/blitzbasic.properties
 /usr/local/share/scite/bullant.properties
 /usr/local/share/scite/caml.properties

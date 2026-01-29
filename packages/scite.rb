@@ -11,9 +11,9 @@ class Scite < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c22e93f663185ecc128b1f6adaf5402306e87f5f37d898ec35f349b7d3bf9d78',
-     armv7l: 'c22e93f663185ecc128b1f6adaf5402306e87f5f37d898ec35f349b7d3bf9d78',
-     x86_64: 'b684675d163cc75cc3f631f201e1bbe95dfbb8eea58f97d1c4bdc8b981c1fc6d'
+    aarch64: '9cb2da5f18b166080a39395dd4763f8b5cd0b89df4a2e0162000e512299012d5',
+     armv7l: '9cb2da5f18b166080a39395dd4763f8b5cd0b89df4a2e0162000e512299012d5',
+     x86_64: '2f1b5a02ebae0a0247fc1c9a898343a71990205e09defd7d58455fbdb1de8f82'
   })
 
   depends_on 'at_spi2_core' # R
@@ -21,6 +21,7 @@ class Scite < Package
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gnome_icon_theme'
   depends_on 'gtk3'
   depends_on 'harfbuzz' # R
@@ -28,6 +29,7 @@ class Scite < Package
   depends_on 'pango' # R
   depends_on 'shared_mime_info'
   depends_on 'sommelier' => :logical
+  depends_on 'zlib' # R
 
   def self.build
     Dir.chdir 'lexilla/src' do
