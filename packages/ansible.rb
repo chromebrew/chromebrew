@@ -10,10 +10,10 @@ class Ansible < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '98a268e8386eb79796fb9afbf614351fd32a97b194b1d836b813b6248984782b',
-     armv7l: '98a268e8386eb79796fb9afbf614351fd32a97b194b1d836b813b6248984782b',
-       i686: 'd11c9e150c72e677fcecd88617d23ab0cb6df406943ecd57408e64ba5246594f',
-     x86_64: '05b6e6f998837c38c6bfb4f3f2a7e22b36c1b033e5514b08b1fedbfb4b4b1314'
+    aarch64: 'ba343239cbfaeb4b8d363cf666d8a66fc9c66f27aecfbbd637c5ca2cc6958578',
+     armv7l: 'ba343239cbfaeb4b8d363cf666d8a66fc9c66f27aecfbbd637c5ca2cc6958578',
+       i686: '25fec96c078d8b2d3b4f293a9fc00568ff15994e59bd8f46b8aaf39645d6e024',
+     x86_64: '6c9ebc4fea19cc9167abefc7232084af72edbd4e7ee549b8ed78001f2538a0ec'
   })
 
   depends_on 'xdg_base'
