@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.29 (for Chromebrew)
+# version.rb version 3.30 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose -vv]
 
@@ -41,7 +41,6 @@ require_gem('ptools')
 $LOAD_PATH.unshift File.join(crew_local_repo_root, 'lib')
 
 UPDATE_PACKAGE_FILES = ARGV.include?('-u') || ARGV.include?('--update-package-files')
-OUTPUT_JSON = ARGV.include?('-j') || ARGV.include?('--json')
 OUTPUT_ALL = ARGV.include?('-a') || ARGV.include?('--all')
 bc_updated = {}
 @pkg_names = {}
@@ -293,8 +292,8 @@ if filelist.length.positive?
   status_field_length = 17
   version_field_length = 13
 
-  puts "#{'Package'.ljust(package_field_length)}#{'Status'.ljust(status_field_length)}#{'Current'.ljust(version_field_length)}#{'Upstream'.ljust(version_field_length)}Updatable?  Compile?  Autoupdate?" unless OUTPUT_JSON
-  puts "#{'-------'.ljust(package_field_length)}#{'------'.ljust(status_field_length)}#{'-------'.ljust(version_field_length)}#{'--------'.ljust(version_field_length)}----------  --------  -----------" unless OUTPUT_JSON
+  puts "#{'Package'.ljust(package_field_length)}#{'Status'.ljust(status_field_length)}#{'Current'.ljust(version_field_length)}#{'Upstream'.ljust(version_field_length)}Updatable?  Compile?  Autoupdate?" unless CREW_OUTPUT_JSON
+  puts "#{'-------'.ljust(package_field_length)}#{'------'.ljust(status_field_length)}#{'-------'.ljust(version_field_length)}#{'--------'.ljust(version_field_length)}----------  --------  -----------" unless CREW_OUTPUT_JSON
   filelist.each do |filename|
     @pkg = Package.load_package(filename)
     cleaned_pkg_version = PackageUtils.get_clean_version(@pkg.version)
@@ -393,20 +392,20 @@ if filelist.length.positive?
             if !@pkg.source_sha256.nil? && @pkg.source_sha256.is_a?(Hash) && @pkg.source_sha256&.key?(ARCH.to_sym)
               # Get old hashes
               (@pkg.source_url.keys.map &:to_s).each do |arch|
-                puts "old source_url: #{@pkg.source_url[arch.to_sym]}" if CREW_VERBOSE && !OUTPUT_JSON
+                puts "old source_url: #{@pkg.source_url[arch.to_sym]}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
                 old_hash[arch] = @pkg.source_sha256[arch.to_sym]
-                puts "old hash: #{old_hash[arch]}" if CREW_VERBOSE && !OUTPUT_JSON
+                puts "old hash: #{old_hash[arch]}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
               end
               File.write(filename, file)
               # Now get new hashes
               @pkg = Package.load_package(filename, true)
               (@pkg.source_url.keys.map &:to_s).each do |arch|
-                puts "new source_url: #{@pkg.source_url[arch.to_sym]}" if CREW_VERBOSE && !OUTPUT_JSON
+                puts "new source_url: #{@pkg.source_url[arch.to_sym]}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
                 status = `curl -fsI #{@pkg.source_url[arch.to_sym]}`.lines.first.split[1]
-                puts "new source_url response status: #{status}" if CREW_VERBOSE && !OUTPUT_JSON
+                puts "new source_url response status: #{status}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
                 unless %w[200 302].include?(status)
                   versions_updated[@pkg.name.to_sym] = 'Bad Source'
-                  puts "#{@pkg.source_url[arch.to_sym]} is a bad source".lightred if CREW_VERBOSE && !OUTPUT_JSON
+                  puts "#{@pkg.source_url[arch.to_sym]} is a bad source".lightred if CREW_VERBOSE && !CREW_OUTPUT_JSON
                   if File.file?("#{filename}.bak")
                     FileUtils.cp "#{filename}.bak", filename
                     FileUtils.rm "#{filename}.bak"
@@ -414,23 +413,23 @@ if filelist.length.positive?
                   next filename
                 end
                 new_hash[arch] = `curl -Ls #{@pkg.source_url[arch.to_sym]} | sha256sum - | awk '{print $1}'`.chomp
-                puts "new hash: #{new_hash[arch]}" if CREW_VERBOSE && !OUTPUT_JSON
+                puts "new hash: #{new_hash[arch]}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
                 file.sub!(old_hash[arch], new_hash[arch])
               end
             elsif !@pkg.source_sha256.nil? && !@pkg.source_sha256.is_a?(Hash)
               arch = :all
               # Get old hashes
               old_hash[arch] = @pkg.source_sha256
-              puts "old source_url: #{@pkg.source_url}" if CREW_VERBOSE && !OUTPUT_JSON
-              puts "old hash: #{old_hash[arch]}" if CREW_VERBOSE && !OUTPUT_JSON
+              puts "old source_url: #{@pkg.source_url}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
+              puts "old hash: #{old_hash[arch]}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
               File.write(filename, file)
               # Now get new hashes
               @pkg = Package.load_package(filename, true)
-              puts "new source_url: #{@pkg.source_url}" if CREW_VERBOSE && !OUTPUT_JSON
+              puts "new source_url: #{@pkg.source_url}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
               status = `curl -fsI #{@pkg.source_url}`.lines.first.split[1]
               unless %w[200 302].include?(status)
                 versions_updated[@pkg.name.to_sym] = 'Bad Source'
-                puts "#{@pkg.source_url} is a bad source.".lightred if CREW_VERBOSE && !OUTPUT_JSON
+                puts "#{@pkg.source_url} is a bad source.".lightred if CREW_VERBOSE && !CREW_OUTPUT_JSON
                 if File.file?("#{filename}.bak")
                   FileUtils.cp "#{filename}.bak", filename
                   FileUtils.rm "#{filename}.bak"
@@ -438,7 +437,7 @@ if filelist.length.positive?
                 next filename
               end
               new_hash[arch] = `curl -Ls #{@pkg.source_url} | sha256sum - | awk '{print $1}'`.chomp
-              puts "new hash: #{new_hash[arch]}" if CREW_VERBOSE && !OUTPUT_JSON
+              puts "new hash: #{new_hash[arch]}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
               file.sub!(old_hash[arch], new_hash[arch])
             end
             File.write(filename, file)
@@ -495,15 +494,15 @@ if filelist.length.positive?
     updatable_string = (updatable_pkg[@pkg.name.to_sym] == 'Yes' ? 'Yes         '.lightgreen : 'No          '.lightred) if updatable_string.nil?
     compile_string = @pkg.no_compile_needed? || @pkg.is_fake? ? 'No        '.lightred : 'Yes       '.lightgreen
     autoupdate_string = File.file?("#{CREW_LIB_PATH}/tools/automatically_updatable_packages/#{@pkg.name}") ? 'Yes'.lightgreen : 'No'.lightred
-    versions.push(package: @pkg.name, update_status: versions_updated[@pkg.name.to_sym], version: cleaned_pkg_version, upstream_version: upstream_version)
+    versions.push(package: @pkg.name, updatable: updatable_pkg[@pkg.name.to_sym], update_status: versions_updated[@pkg.name.to_sym], version: cleaned_pkg_version, upstream_version: upstream_version)
 
     addendum_string = "#{@pkg.name} cannot be automatically updated: ".red + "#{updatable_pkg[@pkg.name.to_sym]}\n".purple unless updatable_pkg[@pkg.name.to_sym] == 'Yes'
     version_line_string[@pkg.name.to_sym] = "#{@pkg.name.ljust(package_field_length)}#{version_status_string}#{cleaned_pkg_version.ljust(version_field_length)}#{upstream_version.ljust(version_field_length)}#{updatable_string}#{compile_string}#{autoupdate_string}\n"
-    print version_line_string[@pkg.name.to_sym] if !OUTPUT_JSON && ((versions_updated[@pkg.name.to_sym] == 'Outdated.' && updatable_pkg[@pkg.name.to_sym] == 'Yes') || OUTPUT_ALL)
-    print addendum_string unless addendum_string.blank? || OUTPUT_JSON || !CREW_VERBOSE
+    print version_line_string[@pkg.name.to_sym] if !CREW_OUTPUT_JSON && ((versions_updated[@pkg.name.to_sym] == 'Outdated.' && updatable_pkg[@pkg.name.to_sym] == 'Yes') || OUTPUT_ALL)
+    print addendum_string unless addendum_string.blank? || CREW_OUTPUT_JSON || !CREW_VERBOSE
 
-    print "Failed to update version in #{@pkg.name} to #{upstream_version}".yellow if !OUTPUT_JSON && (versions_updated[@pkg.name.to_sym].to_s == 'false')
-    print "Failed to update binary_compression in #{@pkg.name}".yellow if !OUTPUT_JSON && (bc_updated[@pkg.name.to_sym].to_s == 'false')
+    print "Failed to update version in #{@pkg.name} to #{upstream_version}".yellow if !CREW_OUTPUT_JSON && (versions_updated[@pkg.name.to_sym].to_s == 'false')
+    print "Failed to update binary_compression in #{@pkg.name}".yellow if !CREW_OUTPUT_JSON && (bc_updated[@pkg.name.to_sym].to_s == 'false')
   end
-  puts versions.to_json if OUTPUT_JSON
+  puts versions.to_json if CREW_OUTPUT_JSON
 end

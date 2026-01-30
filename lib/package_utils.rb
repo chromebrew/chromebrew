@@ -137,9 +137,9 @@ class PackageUtils
       end)
     end
     if $gems.blank?
-      puts 'Populating gem information using compact index client...'.lightgreen
+      puts 'Populating gem information using compact index client...'.lightgreen unless CREW_OUTPUT_JSON
       $gems ||= BasicCompactIndexClient.new.gems
-      puts 'Done populating gem information.'.lightgreen
+      puts 'Done populating gem information.'.lightgreen unless CREW_OUTPUT_JSON
     end
     # Parse gem information from compact index, the format for which is
     # here: https://guides.rubygems.org/rubygems-org-compact-index-api/
