@@ -1,4 +1,5 @@
 ---
+# Version 1.0
 name: Build
 run-name: Build ${{ inputs.branch || github.ref_name }} for ${{ inputs.build-on }} by @${{ github.actor }}
 on:
@@ -400,12 +401,15 @@ jobs:
           fetch-depth: 0
           persist-credentials: true
           ref: ${{ inputs.branch || github.ref_name }}
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '4.0.1'
       - name: Add package build completion files.
         id: add-build-success-marks
         run: |
           for file in $(echo "${CHANGED_PACKAGES}" | xargs basename -s .rb | xargs)
             do
-            touch tools/automatically_updatable_packages/${file}
+            [[ "$(ruby bin/crew prop ignore_updater ${file})" == "false" ]] && touch tools/automatically_updatable_packages/${file}
           done
       - uses: EndBug/add-and-commit@v9
         if: ${{ contains(needs.generate.result, 'success') }}
