@@ -30,14 +30,12 @@ class Gettext < Autotools
   depends_on 'openjdk8' => :build
   depends_on 'wget2' => :build
 
+  # --without-git is needed as per https://github.com/autotools-mirror/gettext/blob/master/PACKAGING
+  # to make sure $prefix/share/gettext/archive.dir.tar.* is installed.
   autotools_configure_options '--disable-static \
     --enable-shared \
     --with-pic \
     --with-xz \
+    --without-git \
     --without-included-gettext'
-
-  autotools_install_extras do
-    # This fixes a missing archive message from autopoint.
-    downloader "https://alpha.gnu.org/gnu/gettext/archive.dir-#{version.split('-')[0]}.tar.xz", 'b93c05f162f10e23dea468445f8ac9326cf318cb99c22bae1646fffff7d4a97b', "#{CREW_DEST_PREFIX}/share/gettext/archive.dir.tar.xz"
-  end
 end
