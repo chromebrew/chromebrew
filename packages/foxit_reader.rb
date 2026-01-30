@@ -8,8 +8,6 @@ class Foxit_reader < Package
   compatibility 'x86_64'
   source_url 'SKIP'
 
-  no_compile_needed
-
   depends_on 'cups' # R
   depends_on 'e2fsprogs' # R
   depends_on 'fontconfig' # R
@@ -36,6 +34,10 @@ class Foxit_reader < Package
   depends_on 'qt5_location' # R
   depends_on 'sommelier' => :logical
   depends_on 'zlib' # R
+
+  ignore_updater # Linux version appears abandoned.
+  no_compile_needed
+  no_upstream_update
 
   def self.install
     # Adapted from https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=foxitreader

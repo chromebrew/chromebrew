@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.28 (for Chromebrew)
+# version.rb version 3.29 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose -vv]
 
@@ -55,6 +55,7 @@ NO_UPSTREAM_VERSION_PKGS = %w[clear_cache gdk_base hello_world_chromebrew ld_def
 
 # Some packges aren't eligible to be automatically updated despite having upstream versions.
 CREW_UPDATER_EXCLUDED_PKGS = Set[
+  { pkg_name: 'foxit_reader', comments: 'Linux version is no longer updated.' },
   { pkg_name: 'glibc', comments: 'Requires manual update.' },
   { pkg_name: 'gpm', comments: 'Upstream is defunct.' },
   { pkg_name: 'linuxheaders', comments: 'Requires manual update.' },
