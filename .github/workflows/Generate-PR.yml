@@ -104,8 +104,8 @@ jobs:
             CHANGED_PACKAGE_FILES=$(git diff --name-only master..${{ inputs.branch || github.ref_name }} | grep '^packages/')
             if [[ -n "${CHANGED_PACKAGE_FILES}" ]]; then
               # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-files.outputs.packages_all_changed_files) into "foo bar"
-              echo "CHANGED_PACKAGES=$(echo "${CHANGED_FILES}" | xargs basename -s .rb | xargs)" >> "$GITHUB_ENV"
-              echo "CHANGED_PACKAGES=$(echo "${CHANGED_FILES}" | xargs basename -s .rb | xargs)" >> "$GITHUB_OUTPUT"
+              echo "CHANGED_PACKAGES=$(echo "${CHANGED_PACKAGE_FILES}" | xargs basename -s .rb | xargs)" >> "$GITHUB_ENV"
+              echo "CHANGED_PACKAGES=$(echo "${CHANGED_PACKAGE_FILES}" | xargs basename -s .rb | xargs)" >> "$GITHUB_OUTPUT"
             else
               echo "No Changed Files."
             fi
@@ -440,8 +440,8 @@ jobs:
             CHANGED_PACKAGE_FILES=$(git diff --name-only master..${{ inputs.branch || github.ref_name }} | grep '^packages/')
             if [[ -n "${CHANGED_PACKAGE_FILES}" ]]; then
               # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-files.outputs.packages_all_changed_files) into "foo bar"
-              echo "CHANGED_PACKAGES=$(echo "${CHANGED_FILES}" | xargs basename -s .rb | xargs)" >> "$GITHUB_ENV"
-              echo "CHANGED_PACKAGES=$(echo "${CHANGED_FILES}" | xargs basename -s .rb | xargs)" >> "$GITHUB_OUTPUT"
+              echo "CHANGED_PACKAGES=$(echo "${CHANGED_PACKAGE_FILES}" | xargs basename -s .rb | xargs)" >> "$GITHUB_ENV"
+              echo "CHANGED_PACKAGES=$(echo "${CHANGED_PACKAGE_FILES}" | xargs basename -s .rb | xargs)" >> "$GITHUB_OUTPUT"
             else
               echo "No Changed Packages."
             fi

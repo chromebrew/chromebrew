@@ -37,6 +37,7 @@ class Foxit_reader < Package
 
   ignore_updater # Linux version appears abandoned.
   no_compile_needed
+  no_upstream_update
 
   def self.install
     # Adapted from https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=foxitreader
