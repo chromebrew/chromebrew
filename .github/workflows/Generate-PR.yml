@@ -431,7 +431,10 @@ jobs:
               - '!.github/**'
       - name: Export variables to github context
         id: changed-packages
+        env:
+          GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
         run: |
+            gh pr update-branch --rebase || true
             git config user.name "${{ github.actor }}"
             git config user.email "${{ github.actor }}@users.noreply.github.com"
             git checkout master && git fetch origin master
@@ -472,8 +475,10 @@ jobs:
           gem install -N method_source --conservative
           gem install -N cgi --conservative
           gem install -N ruby-libversion --conservative
-          # Make crew do automatic gem installs before looking for deps.
-          LD_LIBRARY_PATH=/usr/local/lib ruby bin/crew version
+          # Make crew do automatic gem installs to keep gem install
+          # output from cluttering up output.
+          ruby bin/crew version
+          echo "Done installing required gems for crew."
           # Force creation of temporary device.json.
           LD_LIBRARY_PATH=/usr/local/lib ruby bin/crew deps zstd_static
           function join_by { local IFS="$1"; shift; echo "$*"; }
@@ -539,11 +544,11 @@ jobs:
             PR_TITLE="$(git log --oneline master..${{ inputs.branch || github.ref_name }} | grep -v "Merge branch 'master'\|Build Run on\|Package File Update Run on" | tail -n 1 | cut -c 11-)"
             TITLE="$(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}"
           else
-            if [[ "${PR_TITLE_INPUT}" == "${{ inputs.branch || github.ref_name }}" ]]; then
+            if [[ "${PR_TITLE_INPUT}" == *"${{ inputs.branch || github.ref_name }}"* ]]; then
               PR_TITLE="$(echo "${PR_TITLE_INPUT}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}"
               TITLE="${PR_TITLE}"
             else
-              PR_TITLE="${{ inputs.pr_title }}"
+              PR_TITLE="$(echo "${PR_TITLE_INPUT}" | sed -e "s/^'//" -e "s/'$//")"
               TITLE="${PR_TITLE}"
             fi
           fi
