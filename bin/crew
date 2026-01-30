@@ -2117,7 +2117,7 @@ def postinstall_command(args)
 end
 
 def prop_command(args)
-  Command.prop(args['<property>'])
+  Command.prop(args['<property>'], args['<name>'][0])
 end
 
 def reinstall_command(args)
