@@ -1,5 +1,5 @@
 ---
-# Version 1.0
+# Version 1.1
 name: Generate Updates PRs on Demand
 run-name: Generating Updates PRs on Demand using ${{ inputs.version_cmd_input }}
 on:
@@ -48,7 +48,7 @@ jobs:
           git stash drop || true
           echo "pwd is $(pwd)"
           # Install required gems.
-          ruby -e "require_relative 'lib/require_gem' ; require_gem 'regexp_parser' ; require_gem 'dagwood' ; require_gem 'rubocop' ; require_gem 'rubocop-chromebrew' ; puts 'Required gems installed.'.orange"
+          ruby -e "require_relative 'lib/require_gem' ; require_gem 'regexp_parser' ; require_gem 'dagwood' ; require_gem 'ruby-libversion', 'ruby_libversion' ; require_gem 'highline' ; require_gem 'ptools'; require_gem 'cgi' ;  require_gem 'rubocop' ; require_gem 'rubocop-chromebrew' ; puts 'Required gems installed.'.orange"
           # Force creation of temporary device.json.
           LD_LIBRARY_PATH=/usr/local/lib ruby bin/crew version
           # Force creation of temporary device.json.

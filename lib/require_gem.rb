@@ -14,12 +14,12 @@ def require_gem(ruby_gem_name_and_require = nil, require_override = nil)
     require 'rubygems/gem_runner'
     Gem::GemRunner.new.run %w[check doctor #{ruby_gem_name}]
     Gem::GemRunner.new.run ['sources', '-u']
-    puts " -> install #{ruby_gem_name} gem".orange
-    Gem.install(ruby_gem_name)
+    puts " -> install #{ruby_gem_name} gem".orange CREW_OUTPUT_JSON if CREW_VERBOSE && !CREW_OUTPUT_JSON
+    system "gem install #{ruby_gem_name} -N #{'--silent -q' unless CREW_VERBOSE && !CREW_OUTPUT_JSON}"
     gem ruby_gem_name
   rescue LoadError
-    puts " -> install #{ruby_gem_name} gem".orange
-    Gem.install(ruby_gem_name)
+    puts " -> install #{ruby_gem_name} gem".orange if CREW_VERBOSE && !CREW_OUTPUT_JSON
+    system "gem install #{ruby_gem_name} -N #{'--silent -q' unless CREW_VERBOSE && !CREW_OUTPUT_JSON}"
     gem ruby_gem_name
   end
   requires = if require_override.nil?
