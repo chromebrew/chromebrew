@@ -1,0 +1,3 @@
+#!/bin/bash
+iw --help | head
+iw --version
