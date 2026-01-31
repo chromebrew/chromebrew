@@ -1,14 +1,14 @@
-# Total size: 94453
-/usr/local/lib64/ruby/gems/4.0.0/gems/repl_type_completor-0.1.12/Gemfile
-/usr/local/lib64/ruby/gems/4.0.0/gems/repl_type_completor-0.1.12/LICENSE.txt
-/usr/local/lib64/ruby/gems/4.0.0/gems/repl_type_completor-0.1.12/README.md
-/usr/local/lib64/ruby/gems/4.0.0/gems/repl_type_completor-0.1.12/Rakefile
-/usr/local/lib64/ruby/gems/4.0.0/gems/repl_type_completor-0.1.12/lib/repl_type_completor.rb
-/usr/local/lib64/ruby/gems/4.0.0/gems/repl_type_completor-0.1.12/lib/repl_type_completor/methods.rb
-/usr/local/lib64/ruby/gems/4.0.0/gems/repl_type_completor-0.1.12/lib/repl_type_completor/require_paths.rb
-/usr/local/lib64/ruby/gems/4.0.0/gems/repl_type_completor-0.1.12/lib/repl_type_completor/result.rb
-/usr/local/lib64/ruby/gems/4.0.0/gems/repl_type_completor-0.1.12/lib/repl_type_completor/scope.rb
-/usr/local/lib64/ruby/gems/4.0.0/gems/repl_type_completor-0.1.12/lib/repl_type_completor/type_analyzer.rb
-/usr/local/lib64/ruby/gems/4.0.0/gems/repl_type_completor-0.1.12/lib/repl_type_completor/types.rb
-/usr/local/lib64/ruby/gems/4.0.0/gems/repl_type_completor-0.1.12/lib/repl_type_completor/version.rb
-/usr/local/lib64/ruby/gems/4.0.0/gems/repl_type_completor-0.1.12/sig/repl_type_completor.rbs
+# Total size: 94553
+/usr/local/lib64/ruby/gems/4.0.0/gems/repl_type_completor-0.1.13/Gemfile
+/usr/local/lib64/ruby/gems/4.0.0/gems/repl_type_completor-0.1.13/LICENSE.txt
+/usr/local/lib64/ruby/gems/4.0.0/gems/repl_type_completor-0.1.13/README.md
+/usr/local/lib64/ruby/gems/4.0.0/gems/repl_type_completor-0.1.13/Rakefile
+/usr/local/lib64/ruby/gems/4.0.0/gems/repl_type_completor-0.1.13/lib/repl_type_completor.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/repl_type_completor-0.1.13/lib/repl_type_completor/methods.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/repl_type_completor-0.1.13/lib/repl_type_completor/require_paths.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/repl_type_completor-0.1.13/lib/repl_type_completor/result.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/repl_type_completor-0.1.13/lib/repl_type_completor/scope.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/repl_type_completor-0.1.13/lib/repl_type_completor/type_analyzer.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/repl_type_completor-0.1.13/lib/repl_type_completor/types.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/repl_type_completor-0.1.13/lib/repl_type_completor/version.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/repl_type_completor-0.1.13/sig/repl_type_completor.rbs
