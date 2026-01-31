@@ -1,5 +1,5 @@
 ---
-# Version 1.1
+# Version 1.2
 name: Build
 run-name: Build ${{ inputs.branch || github.ref_name }} for ${{ inputs.build-on }} by @${{ github.actor }}
 on:
@@ -404,15 +404,35 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '4.0.1'
+      - name: Install bin/crew gem dependencies
+        run: |
+          # Install required gems.
+          require_gem () {
+            for g in "$@"
+            do
+              install_gem=0
+              # Check to see if the gem is recorded as installed AND if there are
+              # gem contents before assuming that the gem is installed.
+              if gem list --no-update-sources -l -e "$g" 2>/dev/null | grep -q "$g"; then
+                :
+              else
+                install_gem=1
+              fi
+              # shellcheck disable=SC2143
+              if [[ $(gem contents "$g" 2>/dev/null | grep 'Unable to find gem') ]] || [[ "$(gem contents "$g" 2>/dev/null | wc -l)" == "0" ]]; then
+                install_gem=1
+              else
+                :
+              fi
+             [[ $install_gem == '1' ]] && gem install -N "$g"
+            done
+          }
+          require_gem regexp_parser dagwood ruby-libversion highline ptools cgi rubocop rubocop-chromebrew
+          # Force creation of temporary device.json.
+          ruby bin/crew version
       - name: Add package build completion files.
         id: add-build-success-marks
         run: |
-          # Make crew do automatic gem installs to keep gem install
-          # output from cluttering up output.
-          gem install -N highline --conservative
-          gem install -N ptools --conservative
-          ruby bin/crew version
-          echo "Done installing required gems for crew."
           for file in $(echo "${CHANGED_PACKAGES}" | xargs basename -s .rb | xargs)
             do
             ruby bin/crew prop ignore_updater ${file}
