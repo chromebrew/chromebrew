@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Protobuf < CMake
   description 'Protocol Buffers - Googles data interchange format'
   homepage 'https://protobuf.dev'
-  version '33.4'
+  version '33.5'
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/protocolbuffers/protobuf.git'
@@ -14,10 +14,10 @@ class Protobuf < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cbc7d02e13db52c785fb399fb7487c3a16d0289aced82e289d3138069d81780a',
-     armv7l: 'cbc7d02e13db52c785fb399fb7487c3a16d0289aced82e289d3138069d81780a',
-       i686: '87689212f97eb6a01c42d72b3756a3e2e7cc194143be06dba596e190bf785e8c',
-     x86_64: '51ef7a143e1b87a545812100ee538aa2875e6e4f03b7f29c3718e5d546ff216e'
+    aarch64: '2de9f29509b12c2cc71860c8bfb9d5a9cc54da561c3a65e239cb47454612f143',
+     armv7l: '2de9f29509b12c2cc71860c8bfb9d5a9cc54da561c3a65e239cb47454612f143',
+       i686: '00510f8b61c1ae0998c5b655adc915a641a0578fb3cbe09f8765bffb6135438b',
+     x86_64: 'ace36c332949e14ba768997707c614323254e01ca6f1f32650a95d9a3cbab1f3'
   })
 
   depends_on 'abseil_cpp' # R
