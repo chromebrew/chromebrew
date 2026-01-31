@@ -1,12 +1,12 @@
-# Total size: 15844660
+# Total size: 15843428
 /usr/local/bin/protoc
-/usr/local/bin/protoc-33.4.0
+/usr/local/bin/protoc-33.5.0
 /usr/local/bin/protoc-gen-upb
-/usr/local/bin/protoc-gen-upb-33.4.0
+/usr/local/bin/protoc-gen-upb-33.5.0
 /usr/local/bin/protoc-gen-upb_minitable
-/usr/local/bin/protoc-gen-upb_minitable-33.4.0
+/usr/local/bin/protoc-gen-upb_minitable-33.5.0
 /usr/local/bin/protoc-gen-upbdefs
-/usr/local/bin/protoc-gen-upbdefs-33.4.0
+/usr/local/bin/protoc-gen-upbdefs-33.5.0
 /usr/local/include/google/protobuf/any.h
 /usr/local/include/google/protobuf/any.pb.h
 /usr/local/include/google/protobuf/any.proto
@@ -311,16 +311,16 @@
 /usr/local/lib64/cmake/utf8_range/utf8_range-targets-release.cmake
 /usr/local/lib64/cmake/utf8_range/utf8_range-targets.cmake
 /usr/local/lib64/libprotobuf-lite.so
-/usr/local/lib64/libprotobuf-lite.so.33.4.0
+/usr/local/lib64/libprotobuf-lite.so.33.5.0
 /usr/local/lib64/libprotobuf.so
-/usr/local/lib64/libprotobuf.so.33.4.0
+/usr/local/lib64/libprotobuf.so.33.5.0
 /usr/local/lib64/libprotoc.so
-/usr/local/lib64/libprotoc.so.33.4.0
+/usr/local/lib64/libprotoc.so.33.5.0
 /usr/local/lib64/libupb.a
 /usr/local/lib64/libutf8_range.so
-/usr/local/lib64/libutf8_range.so.33.4.0
+/usr/local/lib64/libutf8_range.so.33.5.0
 /usr/local/lib64/libutf8_validity.so
-/usr/local/lib64/libutf8_validity.so.33.4.0
+/usr/local/lib64/libutf8_validity.so.33.5.0
 /usr/local/lib64/pkgconfig/protobuf-lite.pc
 /usr/local/lib64/pkgconfig/protobuf.pc
 /usr/local/lib64/pkgconfig/upb.pc
