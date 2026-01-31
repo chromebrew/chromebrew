@@ -1,4 +1,5 @@
 require_relative 'color'
+require_relative 'const'
 
 def require_gem(ruby_gem_name_and_require = nil, require_override = nil)
   # Allow only loading gems when needed.
