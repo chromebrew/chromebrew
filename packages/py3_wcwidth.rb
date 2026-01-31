@@ -10,10 +10,10 @@ class Py3_wcwidth < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b02729d4cd56274c071df8ebbd0525244e699cbba72ffe9f879cf4398591eb4c',
-     armv7l: 'b02729d4cd56274c071df8ebbd0525244e699cbba72ffe9f879cf4398591eb4c',
-       i686: 'b60283918a38ad66029a8854ffd4bd9a5ec4edcfeceead3c48a3154fc68f7493',
-     x86_64: 'da187edbc18eb09502ee836c5f9d9b5fe28e50d6997ba14e90c6a9ee63784516'
+    aarch64: '91837bade46e457db257e2282de9a3cf5cdca95fb63cceed2512cb8313baf727',
+     armv7l: '91837bade46e457db257e2282de9a3cf5cdca95fb63cceed2512cb8313baf727',
+       i686: 'e50dc88564c9fce5e7c2e0964cbc29180c39d86e022d2c2b594b21f4dcd9b9e7',
+     x86_64: '2e913b403cf82e8e676729b8b1f38f49a241155eb1ce4b119329a6d99ee4114d'
   })
 
   depends_on 'python3' => :build
