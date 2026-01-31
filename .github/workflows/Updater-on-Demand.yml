@@ -1,5 +1,5 @@
 ---
-# Version 1.1
+# Version 1.2
 name: Generate Updates PRs on Demand
 run-name: Generating Updates PRs on Demand using ${{ inputs.version_cmd_input }}
 on:
@@ -48,7 +48,27 @@ jobs:
           git stash drop || true
           echo "pwd is $(pwd)"
           # Install required gems.
-          ruby -e "require_relative 'lib/require_gem' ; require_gem 'regexp_parser' ; require_gem 'dagwood' ; require_gem 'ruby-libversion', 'ruby_libversion' ; require_gem 'highline' ; require_gem 'ptools'; require_gem 'cgi' ;  require_gem 'rubocop' ; require_gem 'rubocop-chromebrew' ; puts 'Required gems installed.'.orange"
+          require_gem () {
+            for g in "$@"
+            do
+              install_gem=0
+              # Check to see if the gem is recorded as installed AND if there are
+              # gem contents before assuming that the gem is installed.
+              if gem list --no-update-sources -l -e "$g" 2>/dev/null | grep -q "$g"; then
+                :
+              else
+                install_gem=1
+              fi
+              # shellcheck disable=SC2143
+              if [[ $(gem contents "$g" 2>/dev/null | grep 'Unable to find gem') ]] || [[ "$(gem contents "$g" 2>/dev/null | wc -l)" == "0" ]]; then
+                install_gem=1
+              else
+                :
+              fi
+             [[ $install_gem == '1' ]] && gem install -N "$g"
+            done
+          }
+          require_gem regexp_parser dagwood ruby-libversion highline ptools cgi rubocop rubocop-chromebrew
           # Force creation of temporary device.json.
           LD_LIBRARY_PATH=/usr/local/lib ruby bin/crew version
           # Force creation of temporary device.json.
