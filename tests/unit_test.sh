@@ -1,11 +1,33 @@
 #!/bin/bash
 # This is for use as a Github CI Unit Test.
-# Version 1.6
+# Version 1.7
 set -e
 cd /usr/local/lib/crew/packages/
 echo "CREW_BRANCH: $CREW_BRANCH"
 git clone --depth=1 --branch="$CREW_BRANCH" "$CREW_REPO" ~/build_test
-ruby -e "require_relative '../lib/require_gem' ; require_gem 'rubocop' ; require_gem 'rubocop-chromebrew' ; puts 'Required gems installed.'.orange"
+require_gem () {
+  set +e
+  for g in "$@"
+  do
+    install_gem=0
+    # Check to see if the gem is recorded as installed AND if there are
+    # gem contents before assuming that the gem is installed.
+    if gem list --no-update-sources -l -e "$g" 2>/dev/null | grep -q "$g"; then
+      :
+    else
+      install_gem=1
+    fi
+    # shellcheck disable=SC2143
+    if [[ $(gem contents "$g" 2>/dev/null | grep 'Unable to find gem') ]] || [[ "$(gem contents "$g" 2>/dev/null | wc -l)" == "0" ]]; then
+      install_gem=1
+    else
+      :
+    fi
+   [[ $install_gem == '1' ]] && gem install -N "$g"
+  done
+  set -e
+}
+require_gem regexp_parser dagwood ruby-libversion highline ptools cgi rubocop rubocop-chromebrew
 # Check if rubocop-chromebrew is installed and working, and if not install it.
 rubocop --require rubocop-chromebrew &>/dev/null || gem install rubocop-chromebrew
 # crew wont let you build if you're in the installation directory.
