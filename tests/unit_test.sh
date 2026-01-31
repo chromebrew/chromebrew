@@ -1,10 +1,11 @@
 #!/bin/bash
 # This is for use as a Github CI Unit Test.
-# Version 1.5
+# Version 1.6
 set -e
 cd /usr/local/lib/crew/packages/
 echo "CREW_BRANCH: $CREW_BRANCH"
 git clone --depth=1 --branch="$CREW_BRANCH" "$CREW_REPO" ~/build_test
+ruby -e "require_relative '../lib/require_gem' ; require_gem 'rubocop' ; require_gem 'rubocop-chromebrew' ; puts 'Required gems installed.'.orange"
 # Check if rubocop-chromebrew is installed and working, and if not install it.
 rubocop --require rubocop-chromebrew &>/dev/null || gem install rubocop-chromebrew
 # crew wont let you build if you're in the installation directory.

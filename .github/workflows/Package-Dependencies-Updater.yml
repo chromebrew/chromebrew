@@ -30,7 +30,7 @@ jobs:
           fetch-depth: 0
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '4.0.0'
+          ruby-version: '4.0.1'
       - name: Install bin/crew gem dependencies
         run: ruby bin/crew version
       - name: Get dependencies of core and buildessential packages

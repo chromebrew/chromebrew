@@ -1,5 +1,5 @@
 ---
-# Version 1.0
+# Version 1.1
 name: Generate PR
 run-name: Generate PR for ${{ inputs.branch || github.ref_name }} by @${{ github.actor }}
 on:
@@ -58,7 +58,6 @@ jobs:
     if: ${{ ( github.repository_owner == 'chromebrew' ) && ( inputs.branch != 'master' ) }}
     runs-on: ubuntu-24.04
     outputs:
-      current_head: ${{ steps.get-current-head.outputs.CURRENT_HEAD }}
       changed_packages: ${{ steps.changed-packages.outputs.CHANGED_PACKAGES }}
       glibc_232_compat: ${{ steps.get-compatibility.outputs.GLIBC_232_COMPATIBLE_PACKAGES }}
       glibc_237_compat: ${{ steps.get-compatibility.outputs.GLIBC_237_COMPATIBLE_PACKAGES }}
@@ -94,37 +93,23 @@ jobs:
             # before continuing.
             gh pr update-branch || true
           fi
-      - name: Get Current HEAD hash
-        id: get-current-head
-        run: |
-          echo "CURRENT_HEAD=$(git ls-remote https://github.com/${{ github.repository }}.git | head -1 | sed 's/HEAD//')" >> "$GITHUB_OUTPUT"
-          echo "CURRENT_HEAD is $(git ls-remote https://github.com/${{ github.repository }}.git | head -1 | sed 's/HEAD//')"
-      - name: Get changed files
-        id: changed-files
-        uses: tj-actions/changed-files@v47
-        with:
-          base_sha: master
-          files_yaml: |
-            packages:
-              - packages/*.rb
-          since_last_remote_commit: true
       - name: Export variables to github context
         id: changed-packages
-        env:
-          CHANGED_FILES: ${{ steps.changed-files.outputs.packages_all_changed_files }}
         run: |
             git config user.name "${{ github.actor }}"
             git config user.email "${{ github.actor }}@users.noreply.github.com"
             git checkout master && git fetch origin master
             git checkout "${{ inputs.branch || github.ref_name }}"
             git fetch origin "${{ inputs.branch || github.ref_name }}"
+            set +e
             CHANGED_PACKAGE_FILES=$(git diff --name-only master..${{ inputs.branch || github.ref_name }} | grep '^packages/')
+            set -e
             if [[ -n "${CHANGED_PACKAGE_FILES}" ]]; then
               # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-files.outputs.packages_all_changed_files) into "foo bar"
-              echo "CHANGED_PACKAGES=$(echo "${CHANGED_FILES}" | xargs basename -s .rb | xargs)" >> "$GITHUB_ENV"
-              echo "CHANGED_PACKAGES=$(echo "${CHANGED_FILES}" | xargs basename -s .rb | xargs)" >> "$GITHUB_OUTPUT"
+              echo "CHANGED_PACKAGES=$(echo "${CHANGED_PACKAGE_FILES}" | xargs basename -s .rb | xargs)" >> "$GITHUB_ENV"
+              echo "CHANGED_PACKAGES=$(echo "${CHANGED_PACKAGE_FILES}" | xargs basename -s .rb | xargs)" >> "$GITHUB_OUTPUT"
             else
-              echo "No Changed Files."
+              echo "No Changed Packages."
             fi
       - name: Determine glibc and architecture package compatibility
         id: get-compatibility
@@ -388,7 +373,6 @@ jobs:
     if: ${{ ( always() && !cancelled() ) && needs.setup.result == 'success' && ((( inputs.update_package_files ) && needs.update-package-files.result == 'success') || !( inputs.update_package_files )) }}
     outputs:
       changed_packages: ${{ steps.changed-packages.outputs.CHANGED_PACKAGES }}
-      current_head: ${{ steps.get-current-head.outputs.CURRENT_HEAD }}
     steps:
       - name: Fail if update or build jobs failed, otherwise create a PR
         if: ${{ contains(needs.*.result, 'failure') }}
@@ -430,11 +414,6 @@ jobs:
           git fetch origin "${{ inputs.branch || github.ref_name }}"
           git log --no-merges --oneline -10
           git log --no-merges --oneline master..${{ inputs.branch || github.ref_name }} | grep -v "Merge branch 'master'\|Build Run on\|Package File Update Run on\|lint$" | tr '\n' '\0' | xargs -0 -n1 echo "- $*" >> /tmp/commits.txt
-      - name: Get Current HEAD hash
-        id: get-current-head
-        run: |
-          echo "CURRENT_HEAD=$(git ls-remote https://github.com/${{ github.repository }}.git | head -1 | sed 's/HEAD//')" >> "$GITHUB_OUTPUT"
-          echo "CURRENT_HEAD is $(git ls-remote https://github.com/${{ github.repository }}.git | head -1 | sed 's/HEAD//')"
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v47
@@ -455,24 +434,27 @@ jobs:
       - name: Export variables to github context
         id: changed-packages
         env:
-          CHANGED_FILES: ${{ steps.changed-files.outputs.packages_all_changed_files }}
+          GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
         run: |
+            gh pr update-branch --rebase || true
             git config user.name "${{ github.actor }}"
             git config user.email "${{ github.actor }}@users.noreply.github.com"
             git checkout master && git fetch origin master
             git checkout "${{ inputs.branch || github.ref_name }}"
             git fetch origin "${{ inputs.branch || github.ref_name }}"
+            set +e
             CHANGED_PACKAGE_FILES=$(git diff --name-only master..${{ inputs.branch || github.ref_name }} | grep '^packages/')
+            set -e
             if [[ -n "${CHANGED_PACKAGE_FILES}" ]]; then
               # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-files.outputs.packages_all_changed_files) into "foo bar"
-              echo "CHANGED_PACKAGES=$(echo "${CHANGED_FILES}" | xargs basename -s .rb | xargs)" >> "$GITHUB_ENV"
-              echo "CHANGED_PACKAGES=$(echo "${CHANGED_FILES}" | xargs basename -s .rb | xargs)" >> "$GITHUB_OUTPUT"
+              echo "CHANGED_PACKAGES=$(echo "${CHANGED_PACKAGE_FILES}" | xargs basename -s .rb | xargs)" >> "$GITHUB_ENV"
+              echo "CHANGED_PACKAGES=$(echo "${CHANGED_PACKAGE_FILES}" | xargs basename -s .rb | xargs)" >> "$GITHUB_OUTPUT"
             else
-              echo "No Changed Files."
+              echo "No Changed Packages."
             fi
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '4.0.0'
+          ruby-version: '4.0.1'
       - name: Create Pull Request
         env:
           CHANGED_GITHUB_CONFIG_FILES: ${{ steps.changed-files.outputs.github_all_changed_files }}
@@ -497,8 +479,10 @@ jobs:
           gem install -N method_source --conservative
           gem install -N cgi --conservative
           gem install -N ruby-libversion --conservative
-          # Make crew do automatic gem installs before looking for deps.
-          LD_LIBRARY_PATH=/usr/local/lib ruby bin/crew version
+          # Make crew do automatic gem installs to keep gem install
+          # output from cluttering up output.
+          ruby bin/crew version
+          echo "Done installing required gems for crew."
           # Force creation of temporary device.json.
           LD_LIBRARY_PATH=/usr/local/lib ruby bin/crew deps zstd_static
           function join_by { local IFS="$1"; shift; echo "$*"; }
@@ -564,11 +548,11 @@ jobs:
             PR_TITLE="$(git log --oneline master..${{ inputs.branch || github.ref_name }} | grep -v "Merge branch 'master'\|Build Run on\|Package File Update Run on" | tail -n 1 | cut -c 11-)"
             TITLE="$(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}"
           else
-            if [[ "${PR_TITLE_INPUT}" == "${{ inputs.branch || github.ref_name }}" ]]; then
+            if [[ "${PR_TITLE_INPUT}" == *"${{ inputs.branch || github.ref_name }}"* ]]; then
               PR_TITLE="$(echo "${PR_TITLE_INPUT}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}"
               TITLE="${PR_TITLE}"
             else
-              PR_TITLE="${{ inputs.pr_title }}"
+              PR_TITLE="$(echo "${PR_TITLE_INPUT}" | sed -e "s/^'//" -e "s/'$//")"
               TITLE="${PR_TITLE}"
             fi
           fi
