@@ -1,0 +1,3 @@
+#!/bin/bash
+terminus -h | head
+terminus -V
