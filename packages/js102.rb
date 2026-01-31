@@ -3,11 +3,11 @@ require 'package'
 class Js102 < Package
   description 'Spidermonkey is a javaScript interpreter with libraries from Mozilla — Version 102'
   homepage 'https://spidermonkey.dev/'
-  version '102.4.0'
+  version '102.15.1'
   license 'MPL-2.0'
   compatibility 'all'
   source_url "https://archive.mozilla.org/pub/firefox/releases/#{version}esr/source/firefox-#{version}esr.source.tar.xz"
-  source_sha256 'e79f0ddd4914dfbff61c5eea7ff28ad2dd12ecfbf3d63a41dab57d50171d904e'
+  source_sha256 '09194fb765953bc6979a35aa8834118c453b9d6060bf1ec4e134551bad740113'
   binary_compression 'tar.zst'
 
   binary_sha256({
