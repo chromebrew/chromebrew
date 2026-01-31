@@ -549,7 +549,7 @@ jobs:
             TITLE="$(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}"
           else
             if [[ "${PR_TITLE_INPUT}" == *"${{ inputs.branch || github.ref_name }}"* ]]; then
-              PR_TITLE="$(echo "${PR_TITLE_INPUT}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}"
+              PR_TITLE="${PKG_DELTAS}"
               TITLE="${PR_TITLE}"
             else
               PR_TITLE="$(echo "${PR_TITLE_INPUT}" | sed -e "s/^'//" -e "s/'$//")"
