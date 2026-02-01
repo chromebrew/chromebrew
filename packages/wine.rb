@@ -3,11 +3,11 @@ require 'package'
 class Wine < Package
   description 'Wine (originally an acronym for "Wine Is Not an Emulator") is a compatibility layer capable of running Microsoft Windows applications.'
   homepage 'https://www.winehq.org/'
-  version '10.12'
+  version '11.1'
   license 'LGPL-2.1'
   compatibility 'x86_64'
   source_url "https://dl.winehq.org/wine/source/#{"#{version.split('.').first}.x"}/wine-#{version}.tar.xz"
-  source_sha256 '7cfd090a5395f5b76d95bb5defac8a312c8de4c070c1163b8b58da38330ca6ee'
+  source_sha256 'bf4c7c8fb5d8c1f656f30a2bea93870c85f13ff8311ab2f61ddef900eb28cb8f'
   binary_compression 'tar.zst'
 
   binary_sha256({
