@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Mawk < Autotools
   description 'mawk is a POSIX compatible interpreter of the awk language faster than gawk.'
   homepage 'https://invisible-island.net/mawk/'
-  version '1.3.4-20250131'
+  version '1.3.4-20260129'
   license 'GPL-2'
   compatibility 'all'
   source_url "https://invisible-island.net/archives/mawk/mawk-#{version}.tgz"
-  source_sha256 '51bcb82d577b141d896d9d9c3077d7aaa209490132e9f2b9573ba8511b3835be'
+  source_sha256 'a71fb7efea5a63770d8fb71321ef6ae7afe0592f1aa7f7e2b496c26ccbb392a4'
   binary_compression 'tar.zst'
 
   binary_sha256({
