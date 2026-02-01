@@ -1,4 +1,4 @@
-# Total size: 54283113
+# Total size: 54231416
 /usr/local/.config/gtk-4.0/settings.ini
 /usr/local/bin/gtk4-broadwayd
 /usr/local/bin/gtk4-builder-tool
@@ -417,7 +417,7 @@
 /usr/local/lib64/girepository-1.0/Gtk-4.0.typelib
 /usr/local/lib64/libgtk-4.so
 /usr/local/lib64/libgtk-4.so.1
-/usr/local/lib64/libgtk-4.so.1.2000.2
+/usr/local/lib64/libgtk-4.so.1.2000.3
 /usr/local/lib64/pkgconfig/gtk4-atspi.pc
 /usr/local/lib64/pkgconfig/gtk4-broadway.pc
 /usr/local/lib64/pkgconfig/gtk4-unix-print.pc

@@ -1,5 +1,5 @@
 ---
-# Version 1.2
+# Version 1.3
 name: Generate PR
 run-name: Generate PR for ${{ inputs.branch || github.ref_name }} by @${{ github.actor }}
 on:
@@ -539,14 +539,18 @@ jobs:
           echo -e "##\n### Run the following to get this pull request's changes locally for testing.\n\`\`\`bash" >> /tmp/pr.txt
           echo -e "CREW_REPO=https://github.com/${{ github.repository }}.git CREW_BRANCH=${{ inputs.branch || github.ref_name }} crew update \\" >> /tmp/pr.txt
           echo -e "&& yes | crew upgrade\n\`\`\`" >> /tmp/pr.txt
-          [[ -n "${PKG_DELTA[*]}" ]] && PKG_DELTAS="— $(join_by , "${PKG_DELTA[@]}")"
+          [[ -n "${PKG_DELTA[*]}" ]] && PKG_DELTAS="$(join_by , "${PKG_DELTA[@]}")"
           echo "PKG_DELTAS: $PKG_DELTAS"
           cat /tmp/pr.txt
           PR_NUMBER=$(gh pr list -L 1 -s open -H ${{ inputs.branch || github.ref_name }} | cut -f1)
           PR_TITLE_INPUT="${{ inputs.pr_title }}"
           if [[ -z ${PR_TITLE_INPUT} ]]; then
             PR_TITLE="$(git log --oneline master..${{ inputs.branch || github.ref_name }} | grep -v "Merge branch 'master'\|Build Run on\|Package File Update Run on" | tail -n 1 | cut -c 11-)"
-            TITLE="$(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") ${PKG_DELTAS}"
+            if [[ -z ${PKG_DELTAS} ]]; then
+              TITLE="$(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//")"
+            else
+              TITLE="$(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") — ${PKG_DELTAS}"
+            fi
           else
             if [[ "${PR_TITLE_INPUT}" == *"${{ inputs.branch || github.ref_name }}"* ]]; then
               PR_TITLE="${PKG_DELTAS}"
