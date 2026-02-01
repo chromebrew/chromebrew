@@ -11,9 +11,9 @@ class Gtk4 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b3627c8720cdf41e459964f44a477a90dd24e64518cd2190a98c6c4b6d2ff04c',
-     armv7l: 'b3627c8720cdf41e459964f44a477a90dd24e64518cd2190a98c6c4b6d2ff04c',
-     x86_64: '93152f070abd5e2402c6e04ccad186f79d2596e07ed8b459803decd238a444f4'
+    aarch64: '0ce35946d1961f8c88e5282131c684d2ba5796adaffab2d44277b4550e8f12a2',
+     armv7l: '0ce35946d1961f8c88e5282131c684d2ba5796adaffab2d44277b4550e8f12a2',
+     x86_64: 'f0df0579473887cc0f967ffa2f5485f76cf992f70010d9f0eb1cb1d36cc4958f'
   })
 
   # depends_on 'gnome_icon_theme' # L
