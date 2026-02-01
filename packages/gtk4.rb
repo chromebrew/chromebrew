@@ -80,6 +80,15 @@ class Gtk4 < Meson
       FileUtils.rm_rf "subprojects/#{dep}"
       FileUtils.rm_rf "subprojects/#{dep}.wrap"
     end
+
+    patches = [
+      # These fix the 32-bit build.
+      ['https://gitlab.gnome.org/GNOME/gtk/-/commit/1f9e80c8c0e7440f6d2256fbf8ead29c44a83b90.patch',
+       '130071ac28e4fca222915a232b754dafcaf2a6b937634ab7da1383dbc3f10429'],
+      ['https://gitlab.gnome.org/GNOME/gtk/-/commit/af9440dea029d225adcfc1f9024a1122e9abb006.patch',
+       '6ff8f4264ec92ffc2922c0c7c3b9bd52293d62aa553aec27146dcda9a64b072f']
+    ]
+    ConvenienceFunctions.patch(patches) unless ARCH == 'x86_64'
   end
 
   meson_options '-Dbroadway-backend=true \
