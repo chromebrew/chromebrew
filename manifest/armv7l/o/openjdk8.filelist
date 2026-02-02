@@ -1,4 +1,4 @@
-# Total size: 79284537
+# Total size: 79046849
 /usr/local/bin/appletviewer
 /usr/local/bin/extcheck
 /usr/local/bin/idlj
@@ -106,7 +106,7 @@
 /usr/local/jre/lib/aarch32/libawt_xawt.so
 /usr/local/jre/lib/aarch32/libdt_socket.so
 /usr/local/jre/lib/aarch32/libfontmanager.so
-/usr/local/jre/lib/aarch32/libfreetype.so.6
+/usr/local/jre/lib/aarch32/libfreetype.so
 /usr/local/jre/lib/aarch32/libhprof.so
 /usr/local/jre/lib/aarch32/libinstrument.so
 /usr/local/jre/lib/aarch32/libj2gss.so

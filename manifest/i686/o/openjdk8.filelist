@@ -1,4 +1,4 @@
-# Total size: 158302867
+# Total size: 158521856
 /usr/local/bin/appletviewer
 /usr/local/bin/clhsdb
 /usr/local/bin/extcheck
@@ -141,7 +141,6 @@
 /usr/local/jre/lib/i386/libdt_socket.so
 /usr/local/jre/lib/i386/libfontmanager.so
 /usr/local/jre/lib/i386/libfreetype.so
-/usr/local/jre/lib/i386/libfreetype.so.6
 /usr/local/jre/lib/i386/libhprof.so
 /usr/local/jre/lib/i386/libinstrument.so
 /usr/local/jre/lib/i386/libj2gss.so
