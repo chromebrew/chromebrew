@@ -6,7 +6,7 @@ require 'buildsystems/pip'
 class Py3_rich < Pip
   description 'Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal'
   homepage 'https://github.com/willmcgugan/rich'
-  version "14.3.1-#{CREW_PY_VER}"
+  version "14.3.2-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
