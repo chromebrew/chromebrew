@@ -1,4 +1,4 @@
-# Total size: 23219155
+# Total size: 24787743
 /usr/local/bin/[
 /usr/local/bin/arch
 /usr/local/bin/b2sum
@@ -33,7 +33,6 @@
 /usr/local/bin/fmt
 /usr/local/bin/fold
 /usr/local/bin/groups
-/usr/local/bin/hashsum
 /usr/local/bin/head
 /usr/local/bin/hostid
 /usr/local/bin/hostname
@@ -143,7 +142,6 @@
 /usr/local/share/bash-completion/completions/fmt
 /usr/local/share/bash-completion/completions/fold
 /usr/local/share/bash-completion/completions/groups
-/usr/local/share/bash-completion/completions/hashsum
 /usr/local/share/bash-completion/completions/head
 /usr/local/share/bash-completion/completions/hostid
 /usr/local/share/bash-completion/completions/hostname
@@ -252,7 +250,6 @@
 /usr/local/share/man/man1/fmt.1.zst
 /usr/local/share/man/man1/fold.1.zst
 /usr/local/share/man/man1/groups.1.zst
-/usr/local/share/man/man1/hashsum.1.zst
 /usr/local/share/man/man1/head.1.zst
 /usr/local/share/man/man1/hostid.1.zst
 /usr/local/share/man/man1/hostname.1.zst
