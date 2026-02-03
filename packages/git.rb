@@ -3,11 +3,11 @@ require 'buildsystems/meson'
 class Git < Meson
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  version '2.52.0'
+  version '2.53.0'
   license 'GPL-2'
   compatibility 'all'
   source_url "https://mirrors.edge.kernel.org/pub/software/scm/git/git-#{version.split('-').first}.tar.xz"
-  source_sha256 '3cd8fee86f69a949cb610fee8cd9264e6873d07fa58411f6060b3d62729ed7c5'
+  source_sha256 '5818bd7d80b061bbbdfec8a433d609dc8818a05991f731ffc4a561e2ca18c653'
   binary_compression 'tar.zst'
 
   binary_sha256({
