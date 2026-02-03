@@ -1,0 +1,3 @@
+#!/bin/bash
+mlr --help
+mlr --version
