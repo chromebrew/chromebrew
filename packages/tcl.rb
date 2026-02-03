@@ -13,7 +13,7 @@ class Tcl < Autotools
   binary_sha256({
     aarch64: '63236d31520815b4ee8a0d8ec7a82b73b4d1184c948194eab05d60f64cd70e44',
      armv7l: '63236d31520815b4ee8a0d8ec7a82b73b4d1184c948194eab05d60f64cd70e44',
-       i686: 'befe90114d3dd315aa9670e6ac22afcd85c6993f02deb12446f6d72ff278fdfe',
+       i686: '194cbd3ea4c4999528a14cf7be63f1d675ef10680250520d7e7a2005ed497a97',
      x86_64: 'f0b3e5eb256233eef55875bff028010fb8f000a998f50652dd08aeddce5dcf7f'
   })
 
@@ -31,9 +31,10 @@ class Tcl < Autotools
   autotools_build_relative_dir 'unix'
   autotools_pre_configure_options "TCL_LIBRARY=#{CREW_LIB_PREFIX}/tcl#{version.rpartition('.')[0]} TCL_PACKAGE_PATH=#{CREW_LIB_PREFIX}/tcltk:#{CREW_PREFIX}/share/tcltk:#{CREW_LIB_PREFIX}/tcltk:#{CREW_PREFIX}share/tcltk:#{CREW_LIB_PREFIX}/tcltk/tcl#{version.rpartition('.')[0]}:#{CREW_LIB_PREFIX}"
   autotools_configure_options "--#{ARCH == 'x86_64' ? 'enable' : 'disable'}-64bit \
-                               --includedir=#{CREW_PREFIX}/include/tcl#{version.rpartition('.')[0]} \
+                               --disable-zipfs \
                                --enable-shared \
-                               --enable-threads"
+                               --enable-threads \
+                               --includedir=#{CREW_PREFIX}/include/tcl#{version.rpartition('.')[0]}"
 
   autotools_install_options "INSTALL_ROOT=#{CREW_DEST_DIR} MAN_INSTALL_DIR=#{CREW_DEST_MAN_PREFIX} TCL_MODULE_PATH=\"#{CREW_LIB_PREFIX}/tcltk #{CREW_PREFIX}/share/tcltk\""
   autotools_install_extras do
