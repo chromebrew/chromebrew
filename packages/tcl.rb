@@ -11,10 +11,10 @@ class Tcl < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f6e18c0c225f8bab2942851b34dfa380fd589fcdd9ca1c04f8dc796a05e96310',
-     armv7l: 'f6e18c0c225f8bab2942851b34dfa380fd589fcdd9ca1c04f8dc796a05e96310',
-       i686: 'e339e6f0cadf57a026f2860985317d6cfb1bb919e676f500805e75141325019f',
-     x86_64: '4af0b7b94994ce2b48b065760ef9b6028e5b14efdf7f5bc344229082afa5f522'
+    aarch64: '63236d31520815b4ee8a0d8ec7a82b73b4d1184c948194eab05d60f64cd70e44',
+     armv7l: '63236d31520815b4ee8a0d8ec7a82b73b4d1184c948194eab05d60f64cd70e44',
+       i686: 'befe90114d3dd315aa9670e6ac22afcd85c6993f02deb12446f6d72ff278fdfe',
+     x86_64: 'f0b3e5eb256233eef55875bff028010fb8f000a998f50652dd08aeddce5dcf7f'
   })
 
   depends_on 'glibc' # R
