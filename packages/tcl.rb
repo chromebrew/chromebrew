@@ -22,6 +22,11 @@ class Tcl < Autotools
 
   no_lto
 
+  def self.patch
+    # As in https://salsa.debian.org/tcltk-team/tcl9.0/-/blob/master/debian/rules?ref_type=heads
+    FileUtils.touch 'generic/tclStubInit.c'
+  end
+
   # Much copied from https://salsa.debian.org/tcltk-team/tcl9.0/-/blob/master/debian/rules?ref_type=heads
   autotools_build_relative_dir 'unix'
   autotools_pre_configure_options "TCL_LIBRARY=#{CREW_LIB_PREFIX}/tcl#{version.rpartition('.')[0]} TCL_PACKAGE_PATH=#{CREW_LIB_PREFIX}/tcltk:#{CREW_PREFIX}/share/tcltk:#{CREW_LIB_PREFIX}/tcltk:#{CREW_PREFIX}share/tcltk:#{CREW_LIB_PREFIX}/tcltk/tcl#{version.rpartition('.')[0]}:#{CREW_LIB_PREFIX}"
@@ -30,9 +35,9 @@ class Tcl < Autotools
                                --enable-shared \
                                --enable-threads"
 
+  autotools_install_options "INSTALL_ROOT=#{CREW_DEST_DIR} MAN_INSTALL_DIR=#{CREW_DEST_MAN_PREFIX} TCL_MODULE_PATH=\"#{CREW_LIB_PREFIX}/tcltk #{CREW_PREFIX}/share/tcltk\""
   autotools_install_extras do
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", "INSTALL_ROOT=#{CREW_DEST_DIR}", "MAN_INSTALL_DIR=#{CREW_DEST_MAN_PREFIX}", "TCL_MODULE_PATH=\"#{CREW_LIB_PREFIX}/tcltk #{CREW_PREFIX}/share/tcltk\"", 'install'
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", "INSTALL_ROOT=#{CREW_DEST_DIR}", "MAN_INSTALL_DIR=#{CREW_DEST_MAN_PREFIX}", "TCL_MODULE_PATH=\"#{CREW_LIB_PREFIX}/tcltk #{CREW_PREFIX}/share/tcltk\"", 'install-private-headers'
+    system "make #{@autotools_install_options} install-private-headers"
     FileUtils.ln_s "#{CREW_PREFIX}/bin/tclsh#{version.rpartition('.')[0]}", "#{CREW_DEST_PREFIX}/bin/tclsh"
   end
 end
