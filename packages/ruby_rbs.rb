@@ -18,8 +18,8 @@ class Ruby_rbs < RUBY
 
   depends_on 'glibc' # R
   depends_on 'ruby' # R
-  depends_on 'ruby_abbrev' # R
   depends_on 'ruby_logger' # R
+  depends_on 'ruby_tsort' # R
 
   conflicts_ok
   gem_compile_needed
