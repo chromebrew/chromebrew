@@ -28,8 +28,7 @@ class Tcl < Autotools
   autotools_configure_options "--#{ARCH == 'x86_64' ? 'enable' : 'disable'}-64bit \
                                --includedir=#{CREW_PREFIX}/include/tcl#{version.rpartition('.')[0]} \
                                --enable-shared \
-                               --enable-threads \
-                               --enable-dll-unloading"
+                               --enable-threads"
 
   autotools_install_extras do
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", "INSTALL_ROOT=#{CREW_DEST_DIR}", "MAN_INSTALL_DIR=#{CREW_DEST_MAN_PREFIX}", "TCL_MODULE_PATH=\"#{CREW_LIB_PREFIX}/tcltk #{CREW_PREFIX}/share/tcltk\"", 'install'
