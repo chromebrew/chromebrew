@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Libpcap < Autotools
   description 'A portable C/C++ library for network traffic capture.'
   homepage 'https://www.tcpdump.org/'
-  version '1.10.5'
+  version '1.10.6'
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/the-tcpdump-group/libpcap.git'
