@@ -1,4 +1,4 @@
-# Total size: 20027
+# Total size: 18869
 /usr/local/lib/ruby/gems/4.0.0/gems/tsort-0.2.0/Gemfile
 /usr/local/lib/ruby/gems/4.0.0/gems/tsort-0.2.0/LICENSE.txt
 /usr/local/lib/ruby/gems/4.0.0/gems/tsort-0.2.0/README.md
@@ -6,4 +6,3 @@
 /usr/local/lib/ruby/gems/4.0.0/gems/tsort-0.2.0/bin/console
 /usr/local/lib/ruby/gems/4.0.0/gems/tsort-0.2.0/bin/setup
 /usr/local/lib/ruby/gems/4.0.0/gems/tsort-0.2.0/lib/tsort.rb
-/usr/local/lib/ruby/gems/4.0.0/gems/tsort-0.2.0/tsort.gemspec
