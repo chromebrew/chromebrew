@@ -1,4 +1,4 @@
-# Total size: 30120156
+# Total size: 30218659
 /usr/local/bin/git
 /usr/local/bin/git-cvsserver
 /usr/local/bin/git-receive-pack
@@ -303,6 +303,7 @@
 /usr/local/share/man/man7/gitcore-tutorial.7.zst
 /usr/local/share/man/man7/gitcredentials.7.zst
 /usr/local/share/man/man7/gitcvs-migration.7.zst
+/usr/local/share/man/man7/gitdatamodel.7.zst
 /usr/local/share/man/man7/gitdiffcore.7.zst
 /usr/local/share/man/man7/giteveryday.7.zst
 /usr/local/share/man/man7/gitfaq.7.zst
