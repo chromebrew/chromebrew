@@ -28,6 +28,7 @@ class Tcl < Autotools
   end
 
   # Much copied from https://salsa.debian.org/tcltk-team/tcl9.0/-/blob/master/debian/rules?ref_type=heads
+  # --disable-zipfs needed for init.tcl
   autotools_build_relative_dir 'unix'
   autotools_pre_configure_options "TCL_LIBRARY=#{CREW_LIB_PREFIX}/tcl#{version.rpartition('.')[0]} TCL_PACKAGE_PATH=#{CREW_LIB_PREFIX}/tcltk:#{CREW_PREFIX}/share/tcltk:#{CREW_LIB_PREFIX}/tcltk:#{CREW_PREFIX}share/tcltk:#{CREW_LIB_PREFIX}/tcltk/tcl#{version.rpartition('.')[0]}:#{CREW_LIB_PREFIX}"
   autotools_configure_options "--#{ARCH == 'x86_64' ? 'enable' : 'disable'}-64bit \
