@@ -3,7 +3,7 @@ require 'package'
 class Mcfly < Package
   description 'fly through your shell history'
   homepage 'https://github.com/cantino/mcfly'
-  version '0.9.3'
+  version '0.9.4'
   license 'MIT'
   compatibility 'all'
   source_url({
@@ -13,10 +13,10 @@ class Mcfly < Package
      x86_64: "https://github.com/cantino/mcfly/releases/download/v#{version}/mcfly-v#{version}-x86_64-unknown-linux-musl.tar.gz"
   })
   source_sha256({
-    aarch64: 'f8b960a5c9b7634637b40cd6823458d8e39eb3c0bfecaa540dd7a4d446f01771',
-     armv7l: 'f8b960a5c9b7634637b40cd6823458d8e39eb3c0bfecaa540dd7a4d446f01771',
-       i686: 'd3a1f513e5dead8400a1bd431fb1b579ad7ace8bcd6a27610eb4d2fa2982afc1',
-     x86_64: 'be0d3c1e0253189a5d834767231c2a4d206f077f4184699ac7069482ed9c6453'
+    aarch64: '10a8673e50394c6164777a85e26313e05be8cb84052c7083c3b8fe78e4bd63f4',
+     armv7l: '10a8673e50394c6164777a85e26313e05be8cb84052c7083c3b8fe78e4bd63f4',
+       i686: 'abcb88eb876e3b13e63fd3526513c0bd0fd494fe60f5666713ee92b7eaed3728',
+     x86_64: '72d2c6fdaa111ac96c2cf725fc40e313e2856643482be58608911a09440313f1'
   })
 
   no_compile_needed
