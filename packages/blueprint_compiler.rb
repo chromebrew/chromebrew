@@ -19,5 +19,5 @@ class Blueprint_compiler < Meson
      x86_64: '87785fad35e13182fa1b3927413fcfa365ec7dc50fe8c6da86c95662a8090c44'
   })
 
-  depends_on 'py3_pygobject' => :build
+  depends_on 'py3_pygobject' # R
 end
