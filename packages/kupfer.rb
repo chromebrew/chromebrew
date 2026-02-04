@@ -3,11 +3,11 @@ require 'package'
 class Kupfer < Package
   description 'a smart, quick launcher'
   homepage 'https://kupferlauncher.github.io/'
-  version '321'
+  version '329'
   license 'GPL-3.0'
   compatibility 'x86_64'
   source_url 'https://github.com/kupferlauncher/kupfer.git'
-  git_hashtag version
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   depends_on 'desktop_file_utils'
