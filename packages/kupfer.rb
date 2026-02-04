@@ -22,7 +22,7 @@ class Kupfer < Package
   depends_on 'sommelier' => :logical
 
   binary_sha256({
-     x86_64: '78b56a3946bdb3775c7408c9372a6d49a60418c673ec0ca5d246d6cd6ca38a04'
+     x86_64: 'd8ee8a6df3086275c4900c020ce29ab667dc6bf55d7cc461a3ca354fce173493'
   })
 
   def self.build
