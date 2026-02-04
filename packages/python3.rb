@@ -3,18 +3,18 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  version '3.14.2'
+  version '3.14.3'
   license 'PSF-2.0'
   compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{version.split('-').first}/Python-#{version.split('-').first}.tar.xz"
-  source_sha256 'ce543ab854bc256b61b71e9b27f831ffd1bfd60a479d639f8be7f9757cf573e9'
+  source_sha256 'a97d5549e9ad81fe17159ed02c68774ad5d266c72f8d9a0b5a9c371fe85d902b'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '04383cf06a3544fb40d7ef36e2b3dd04921ddd81047888fa5b72eed28b4a069b',
-     armv7l: '04383cf06a3544fb40d7ef36e2b3dd04921ddd81047888fa5b72eed28b4a069b',
-       i686: 'bc2eb80dc425ca95589064176f9e9bb85d12d5de1beb98439e955fb5f1084b2f',
-     x86_64: '635160c0f69d72571525db8c12eda61181845c1d818d806a556c9792f0141e38'
+    aarch64: '25102328e5ac11216175f0742d054ab1424524ce104af7d5aaec9a71954a8938',
+     armv7l: '25102328e5ac11216175f0742d054ab1424524ce104af7d5aaec9a71954a8938',
+       i686: '7f9de420fc900c36e4e441c04932e5819f6d6117703ddc9ac6e7d0c17437965a',
+     x86_64: '950aa984e6fd3832f1c704543ee19b50eb0d5b4e2af5f2b1722a8aa9c776d4b1'
   })
 
   depends_on 'autoconf_archive' => :build
@@ -26,6 +26,7 @@ class Python3 < Package
   depends_on 'krb5' => :build
   depends_on 'libdb' # R
   depends_on 'libffi' # R
+  depends_on 'llvm_dev' => :build
   depends_on 'mpdecimal' # R
   depends_on 'ncurses' # R
   depends_on 'openssl' # R
@@ -82,7 +83,10 @@ class Python3 < Package
 
     FileUtils.mkdir_p 'builddir'
     Dir.chdir 'builddir' do
-      system "../configure #{CREW_CONFIGURE_OPTIONS} \
+      # --with-tail-call-interp in 3.14.3 requires clang & bolt, which is
+      # only available on our x86_64 llvm builds.
+      # https://docs.python.org/3/using/configure.html#cmdoption-with-tail-call-interp
+      system "#{'CC=clang CXX=clang++' if ARCH == 'x86_64'} ../configure #{CREW_CONFIGURE_OPTIONS} \
           --with-lto \
           --with-computed-gotos \
           --enable-loadable-sqlite-extensions \
@@ -91,6 +95,7 @@ class Python3 < Package
           --with-platlibdir='lib#{CREW_LIB_SUFFIX}' \
           --with-system-expat \
           --with-system-libmpdec \
+          #{'--with-tail-call-interp' if ARCH == 'x86_64'} \
           --with-tzpath=#{CREW_PREFIX}/share/zoneinfo \
           --with-libc= \
           --enable-shared"
