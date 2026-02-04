@@ -1,4 +1,4 @@
-# Total size: 293062486
+# Total size: 277484574
 /usr/local/bin/idle3
 /usr/local/bin/idle3.14
 /usr/local/bin/pip
@@ -3672,10 +3672,14 @@
 /usr/local/lib64/python3.14/pydoc_data/__pycache__/__init__.cpython-314.opt-1.pyc
 /usr/local/lib64/python3.14/pydoc_data/__pycache__/__init__.cpython-314.opt-2.pyc
 /usr/local/lib64/python3.14/pydoc_data/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib64/python3.14/pydoc_data/__pycache__/module_docs.cpython-314.opt-1.pyc
+/usr/local/lib64/python3.14/pydoc_data/__pycache__/module_docs.cpython-314.opt-2.pyc
+/usr/local/lib64/python3.14/pydoc_data/__pycache__/module_docs.cpython-314.pyc
 /usr/local/lib64/python3.14/pydoc_data/__pycache__/topics.cpython-314.opt-1.pyc
 /usr/local/lib64/python3.14/pydoc_data/__pycache__/topics.cpython-314.opt-2.pyc
 /usr/local/lib64/python3.14/pydoc_data/__pycache__/topics.cpython-314.pyc
 /usr/local/lib64/python3.14/pydoc_data/_pydoc.css
+/usr/local/lib64/python3.14/pydoc_data/module_docs.py
 /usr/local/lib64/python3.14/pydoc_data/topics.py
 /usr/local/lib64/python3.14/queue.py
 /usr/local/lib64/python3.14/quopri.py
@@ -3760,6 +3764,7 @@
 /usr/local/lib64/python3.14/tabnanny.py
 /usr/local/lib64/python3.14/tarfile.py
 /usr/local/lib64/python3.14/tempfile.py
+/usr/local/lib64/python3.14/test/NormalizationTest-3.2.0.txt
 /usr/local/lib64/python3.14/test/__init__.py
 /usr/local/lib64/python3.14/test/__main__.py
 /usr/local/lib64/python3.14/test/__pycache__/__init__.cpython-314.opt-1.pyc
@@ -3852,9 +3857,15 @@
 /usr/local/lib64/python3.14/test/__pycache__/mp_preload_main.cpython-314.opt-1.pyc
 /usr/local/lib64/python3.14/test/__pycache__/mp_preload_main.cpython-314.opt-2.pyc
 /usr/local/lib64/python3.14/test/__pycache__/mp_preload_main.cpython-314.pyc
+/usr/local/lib64/python3.14/test/__pycache__/mp_preload_sysargv.cpython-314.opt-1.pyc
+/usr/local/lib64/python3.14/test/__pycache__/mp_preload_sysargv.cpython-314.opt-2.pyc
+/usr/local/lib64/python3.14/test/__pycache__/mp_preload_sysargv.cpython-314.pyc
 /usr/local/lib64/python3.14/test/__pycache__/multibytecodec_support.cpython-314.opt-1.pyc
 /usr/local/lib64/python3.14/test/__pycache__/multibytecodec_support.cpython-314.opt-2.pyc
 /usr/local/lib64/python3.14/test/__pycache__/multibytecodec_support.cpython-314.pyc
+/usr/local/lib64/python3.14/test/__pycache__/picklecommon.cpython-314.opt-1.pyc
+/usr/local/lib64/python3.14/test/__pycache__/picklecommon.cpython-314.opt-2.pyc
+/usr/local/lib64/python3.14/test/__pycache__/picklecommon.cpython-314.pyc
 /usr/local/lib64/python3.14/test/__pycache__/pickletester.cpython-314.opt-1.pyc
 /usr/local/lib64/python3.14/test/__pycache__/pickletester.cpython-314.opt-2.pyc
 /usr/local/lib64/python3.14/test/__pycache__/pickletester.cpython-314.pyc
@@ -5055,6 +5066,9 @@
 /usr/local/lib64/python3.14/test/__pycache__/test_xmlrpc.cpython-314.opt-1.pyc
 /usr/local/lib64/python3.14/test/__pycache__/test_xmlrpc.cpython-314.opt-2.pyc
 /usr/local/lib64/python3.14/test/__pycache__/test_xmlrpc.cpython-314.pyc
+/usr/local/lib64/python3.14/test/__pycache__/test_xpickle.cpython-314.opt-1.pyc
+/usr/local/lib64/python3.14/test/__pycache__/test_xpickle.cpython-314.opt-2.pyc
+/usr/local/lib64/python3.14/test/__pycache__/test_xpickle.cpython-314.pyc
 /usr/local/lib64/python3.14/test/__pycache__/test_xxlimited.cpython-314.opt-1.pyc
 /usr/local/lib64/python3.14/test/__pycache__/test_xxlimited.cpython-314.opt-2.pyc
 /usr/local/lib64/python3.14/test/__pycache__/test_xxlimited.cpython-314.pyc
@@ -5094,6 +5108,9 @@
 /usr/local/lib64/python3.14/test/__pycache__/xmltests.cpython-314.opt-1.pyc
 /usr/local/lib64/python3.14/test/__pycache__/xmltests.cpython-314.opt-2.pyc
 /usr/local/lib64/python3.14/test/__pycache__/xmltests.cpython-314.pyc
+/usr/local/lib64/python3.14/test/__pycache__/xpickle_worker.cpython-314.opt-1.pyc
+/usr/local/lib64/python3.14/test/__pycache__/xpickle_worker.cpython-314.opt-2.pyc
+/usr/local/lib64/python3.14/test/__pycache__/xpickle_worker.cpython-314.pyc
 /usr/local/lib64/python3.14/test/_code_definitions.py
 /usr/local/lib64/python3.14/test/_crossinterp_definitions.py
 /usr/local/lib64/python3.14/test/_test_atexit.py
@@ -5534,7 +5551,9 @@
 /usr/local/lib64/python3.14/test/mp_preload.py
 /usr/local/lib64/python3.14/test/mp_preload_flush.py
 /usr/local/lib64/python3.14/test/mp_preload_main.py
+/usr/local/lib64/python3.14/test/mp_preload_sysargv.py
 /usr/local/lib64/python3.14/test/multibytecodec_support.py
+/usr/local/lib64/python3.14/test/picklecommon.py
 /usr/local/lib64/python3.14/test/pickletester.py
 /usr/local/lib64/python3.14/test/profilee.py
 /usr/local/lib64/python3.14/test/pstats.pck
@@ -8493,6 +8512,7 @@
 /usr/local/lib64/python3.14/test/test_xml_etree.py
 /usr/local/lib64/python3.14/test/test_xml_etree_c.py
 /usr/local/lib64/python3.14/test/test_xmlrpc.py
+/usr/local/lib64/python3.14/test/test_xpickle.py
 /usr/local/lib64/python3.14/test/test_xxlimited.py
 /usr/local/lib64/python3.14/test/test_xxtestfuzz.py
 /usr/local/lib64/python3.14/test/test_yield_from.py
@@ -8738,6 +8758,7 @@
 /usr/local/lib64/python3.14/test/xmltestdata/test.xml
 /usr/local/lib64/python3.14/test/xmltestdata/test.xml.out
 /usr/local/lib64/python3.14/test/xmltests.py
+/usr/local/lib64/python3.14/test/xpickle_worker.py
 /usr/local/lib64/python3.14/test/zipimport_data/sparse-zip64-c0-0x000000000.part
 /usr/local/lib64/python3.14/test/zipimport_data/sparse-zip64-c0-0x100000000.part
 /usr/local/lib64/python3.14/test/zipimport_data/sparse-zip64-c0-0x200000000.part
