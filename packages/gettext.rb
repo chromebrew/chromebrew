@@ -30,6 +30,11 @@ class Gettext < Autotools
   depends_on 'openjdk8' => :build
   depends_on 'wget2' => :build
 
+  def self.patch
+    # See https://savannah.gnu.org/bugs/?67999
+    system "sed -i '/patch $@ < $(srcdir)\\/po-fetch.1.diff/d' gettext-tools/man/Makefile.am"
+  end
+
   # --without-git is needed as per https://github.com/autotools-mirror/gettext/blob/master/PACKAGING
   # to make sure $prefix/share/gettext/archive.dir.tar.* is installed.
   autotools_configure_options '--disable-static \
