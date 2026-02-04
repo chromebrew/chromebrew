@@ -5,10 +5,12 @@ require_relative '../report_buildsystem_methods'
 
 class Autotools < Package
   boolean_property :autotools_make_j1
-  property :autotools_build_relative_dir, :autotools_configure_options, :autotools_pre_configure_options, :autotools_build_extras, :autotools_install_extras
+  property :autotools_build_relative_dir, :autotools_configure_options, :autotools_install_options, :autotools_pre_configure_options, :autotools_build_extras, :autotools_install_extras
 
   def self.build
     @autotools_build_relative_dir ||= '.'
+    @autotools_install_options ||= "DESTDIR=#{CREW_DEST_DIR}"
+    @autotools_install_options = @autotools_install_options.split.unshift("DESTDIR=#{CREW_DEST_DIR}").uniq.join(' ')
     extend ReportBuildsystemMethods
 
     print_buildsystem_methods
@@ -45,7 +47,7 @@ class Autotools < Package
 
   def self.install
     Dir.chdir(@autotools_build_relative_dir) do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+      system "make #{@autotools_install_options} install"
       @autotools_install_extras&.call
     end
   end
@@ -55,7 +57,7 @@ class Autotools < Package
 
     Dir.chdir(@autotools_build_relative_dir) do
       puts 'Testing with make check.'.orange
-      system 'make', 'check'
+      system "make #{@autotools_install_options} check"
     end
   end
 end
