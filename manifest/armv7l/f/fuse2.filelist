@@ -1,7 +1,4 @@
-# Total size: 772008
-/etc/init.d/fuse
-/etc/udev/rules.d/99-fuse.rules
-/sbin/mount.fuse
+# Total size: 751115
 /usr/local/bin/fusermount
 /usr/local/bin/ulockmgr_server
 /usr/local/include/fuse.h
