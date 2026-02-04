@@ -17,15 +17,16 @@ class Fossil < Autotools
      x86_64: 'd03d57a3cb8ae8ca669b8fd6019314c656898ae36943492f4b43162ff6ccdc75'
   })
 
+  # Error: system SQLite library omits required build option -DSQLITE_ENABLE_DBSTAT_VTAB
   # depends_on 'sqlite'
   depends_on 'fuse2'
   depends_on 'glibc' # R
   depends_on 'openssl' # R
   depends_on 'tcl' => :build
   depends_on 'zlib' # R
-  # Error: system SQLite library omits required build option -DSQLITE_ENABLE_DBSTAT_VTAB
 
-  # Fossil uses autosetup, which behaves enough like autotools that if we only pass certain options we can still use the rest of the autotools buildsystem.
+  # Fossil uses autosetup, which behaves enough like autotools that if we only pass certain options,
+  # we can still use the rest of the autotools buildsystem.
 
   autotools_install_extras do
     FileUtils.install 'fossil.1', "#{CREW_DEST_MAN_PREFIX}/man1/fossil.1", mode: 0o644
