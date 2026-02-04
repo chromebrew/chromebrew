@@ -3,11 +3,11 @@ require 'package'
 class Mediainfo_gui < Package
   description 'MediaInfo is a convenient unified display of the most relevant technical and tag data for video and audio files.'
   homepage 'https://mediaarea.net/en/MediaInfo'
-  version '25.07'
+  version '25.10'
   license 'BSD-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://mediaarea.net/download/binary/mediainfo-gui/#{version}/MediaInfo_GUI_#{version}_GNU_FromSource.tar.xz"
-  source_sha256 'eff17dc966290f3ee0f8be0abd279e98eb0d34e1799fbb8b1ec7b210ed624d88'
+  source_sha256 '67a6e07aff23a58a7c296dc3aec532266514bc3439eb7d6d2614e753921af910'
   binary_compression 'tar.zst'
 
   binary_sha256({
