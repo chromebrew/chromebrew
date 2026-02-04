@@ -19,6 +19,7 @@ class Gnome_sudoku < Meson
   depends_on 'blueprint_compiler' => :build
   depends_on 'cairo' # R
   depends_on 'clutter_gtk' => :build
+  depends_on 'desktop_file_utils' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glib' # R
   depends_on 'glibc' # R
