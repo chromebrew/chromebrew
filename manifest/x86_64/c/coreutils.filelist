@@ -1,4 +1,4 @@
-# Total size: 17199448
+# Total size: 16886294
 /usr/local/bin/[
 /usr/local/bin/arch
 /usr/local/bin/b2sum
@@ -106,6 +106,8 @@
 /usr/local/share/info/coreutils.info.zst
 /usr/local/share/locale/af/LC_MESSAGES/coreutils.mo
 /usr/local/share/locale/af/LC_TIME/coreutils.mo
+/usr/local/share/locale/ar/LC_MESSAGES/coreutils.mo
+/usr/local/share/locale/ar/LC_TIME/coreutils.mo
 /usr/local/share/locale/be/LC_MESSAGES/coreutils.mo
 /usr/local/share/locale/be/LC_TIME/coreutils.mo
 /usr/local/share/locale/bg/LC_MESSAGES/coreutils.mo
@@ -230,7 +232,6 @@
 /usr/local/share/man/man1/id.1.zst
 /usr/local/share/man/man1/install.1.zst
 /usr/local/share/man/man1/join.1.zst
-/usr/local/share/man/man1/kill.1.zst
 /usr/local/share/man/man1/link.1.zst
 /usr/local/share/man/man1/ln.1.zst
 /usr/local/share/man/man1/logname.1.zst
@@ -290,7 +291,6 @@
 /usr/local/share/man/man1/unexpand.1.zst
 /usr/local/share/man/man1/uniq.1.zst
 /usr/local/share/man/man1/unlink.1.zst
-/usr/local/share/man/man1/uptime.1.zst
 /usr/local/share/man/man1/users.1.zst
 /usr/local/share/man/man1/vdir.1.zst
 /usr/local/share/man/man1/wc.1.zst
