@@ -30,6 +30,7 @@ class Gnome_sudoku < Meson
   depends_on 'libgee' # R
   depends_on 'librsvg' => :build
   depends_on 'pango' # R
+  depends_on 'py3_itstool' => :build
   depends_on 'qqwing' # R
 
   gnome
