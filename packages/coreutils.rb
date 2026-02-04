@@ -40,7 +40,9 @@ class Coreutils < Autotools
     FileUtils.install 'arch', "#{CREW_DEST_PREFIX}/bin/arch", mode: 0o755
     # Remove conflicts with psmisc package.
     Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
-      FileUtils.rm %w[kill uptime]
+      %w[kill uptime].each do |f|
+        FileUtils.rm f if File.file?(f)
+      end
     end
   end
 
