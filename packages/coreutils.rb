@@ -39,11 +39,7 @@ class Coreutils < Autotools
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.install 'arch', "#{CREW_DEST_PREFIX}/bin/arch", mode: 0o755
     # Remove conflicts with psmisc package.
-    Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
-      %w[kill uptime].each do |f|
-        FileUtils.rm f if File.file?(f)
-      end
-    end
+    %w[kill uptime].each { |f| FileUtils.rm_f "#{CREW_DEST_PREFIX}/bin/#{f}" }
   end
 
   # FAIL: tests/tail/inotify-dir-recreate.sh
