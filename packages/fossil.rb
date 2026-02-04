@@ -25,9 +25,6 @@ class Fossil < Autotools
   depends_on 'zlib' # R
 
   # Fossil uses autosetup, which behaves enough like autotools that if we only pass certain options we can still use the rest of the autotools buildsystem.
-  def self.build
-    system "./configure --prefix=#{CREW_PREFIX}"
-  end
 
   autotools_install_extras do
     FileUtils.install 'fossil.1', "#{CREW_DEST_MAN_PREFIX}/man1/fossil.1", mode: 0o644
