@@ -1,4 +1,4 @@
-# Total size: 37189218
+# Total size: 37471013
 /usr/local/bin/fish
 /usr/local/bin/fish_indent
 /usr/local/bin/fish_key_reader
@@ -171,6 +171,7 @@
 /usr/local/share/fish/completions/clang++.fish
 /usr/local/share/fish/completions/clang.fish
 /usr/local/share/fish/completions/clasp.fish
+/usr/local/share/fish/completions/claude.fish
 /usr/local/share/fish/completions/clean.fish
 /usr/local/share/fish/completions/cleanmgr.fish
 /usr/local/share/fish/completions/climate.fish
@@ -441,6 +442,7 @@
 /usr/local/share/fish/completions/ifdown.fish
 /usr/local/share/fish/completions/iftop.fish
 /usr/local/share/fish/completions/ifup.fish
+/usr/local/share/fish/completions/ijq.fish
 /usr/local/share/fish/completions/ikdasm.fish
 /usr/local/share/fish/completions/ilasm.fish
 /usr/local/share/fish/completions/import.fish
@@ -1340,6 +1342,9 @@
 /usr/local/share/fish/themes/base16-default.theme
 /usr/local/share/fish/themes/base16-eighties.theme
 /usr/local/share/fish/themes/bay-cruise.theme
+/usr/local/share/fish/themes/catppuccin-frappe.theme
+/usr/local/share/fish/themes/catppuccin-macchiato.theme
+/usr/local/share/fish/themes/catppuccin-mocha.theme
 /usr/local/share/fish/themes/coolbeans.theme
 /usr/local/share/fish/themes/default-rgb.theme
 /usr/local/share/fish/themes/default.theme
