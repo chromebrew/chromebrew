@@ -11,9 +11,9 @@ class Coreutils < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'dc31fef5f6f47c6d75ac30b4c0b000060c0a2e2e74c6a593769bbe0f6a72facf',
-     armv7l: 'dc31fef5f6f47c6d75ac30b4c0b000060c0a2e2e74c6a593769bbe0f6a72facf',
-       i686: 'fde10cb818b39b8178f6b8a95b5a2d43ba71423268f937c5959b7595826b79cb',
+    aarch64: 'f5a2ea0f371e15d54b0ceb6b01a896faa13e32041c24a423cd062d1b9ab66456',
+     armv7l: 'f5a2ea0f371e15d54b0ceb6b01a896faa13e32041c24a423cd062d1b9ab66456',
+       i686: 'f50db114f6299bf933d426b02b410302fb42052a400b085b04bfb9b6362d475d',
      x86_64: 'fb1c417e9691075be0baeaca6bf29d672b43d29af14156c3820260de0c53c9f6'
   })
 
