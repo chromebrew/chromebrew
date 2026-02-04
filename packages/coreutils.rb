@@ -6,7 +6,7 @@ class Coreutils < Autotools
   version '9.10'
   license 'GPL-3'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/coreutils/coreutils-#{version}.tar.xz"
+  source_url "https://ftp.gnu.org/gnu/coreutils/coreutils-#{version}.tar.xz"
   source_sha256 '664f2b1654c363a6348b688d5d475ed9ec0e7ef3c72f6f315f37fe97a2fe63eb'
   binary_compression 'tar.zst'
 
@@ -14,7 +14,7 @@ class Coreutils < Autotools
     aarch64: 'dc31fef5f6f47c6d75ac30b4c0b000060c0a2e2e74c6a593769bbe0f6a72facf',
      armv7l: 'dc31fef5f6f47c6d75ac30b4c0b000060c0a2e2e74c6a593769bbe0f6a72facf',
        i686: 'fde10cb818b39b8178f6b8a95b5a2d43ba71423268f937c5959b7595826b79cb',
-     x86_64: '1a8c1b3b069844e4d5325c7f7a188988fd4f0a029a7c3e0e06735f0a77cf26af'
+     x86_64: 'fb1c417e9691075be0baeaca6bf29d672b43d29af14156c3820260de0c53c9f6'
   })
 
   depends_on 'acl' # R
