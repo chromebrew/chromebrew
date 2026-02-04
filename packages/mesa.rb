@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Mesa < Meson
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  version "25.3.3-#{CREW_LLVM_VER}"
+  version "25.3.4-#{CREW_LLVM_VER}"
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/mesa/mesa.git'
@@ -53,6 +53,8 @@ class Mesa < Meson
   depends_on 'xcb_util_keysyms' # R
   depends_on 'zlib' # R
   depends_on 'zstd' # R
+
+  no_lto # As per https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/39671
 
   meson_options "#{CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
     -Db_asneeded=false \
