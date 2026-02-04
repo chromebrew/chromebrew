@@ -13,10 +13,10 @@ class Gettext < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '544431c68111b92e5d0276d864ff4f744d6730e3129a3bdd98aba141b16ac9b7',
-     armv7l: '544431c68111b92e5d0276d864ff4f744d6730e3129a3bdd98aba141b16ac9b7',
-       i686: 'ddf90d4b54d84863b94b63e833d96ed0c9052a2d8a476d98ca46a9ff6f2bc6f8',
-     x86_64: '5c6e808ed06953e3e5ffc9defef6323253d4ada901e302900e79cdaed802f440'
+    aarch64: 'c73672798c742340ed8f956c3c2b9af0c67782649bb82e4994f91ee2dee83c25',
+     armv7l: 'c73672798c742340ed8f956c3c2b9af0c67782649bb82e4994f91ee2dee83c25',
+       i686: 'ed254a8ada9a5f2efddbd38c8b04c7792a9d59bb45261117de2a00c14a2cb8e4',
+     x86_64: 'fa19b714399cd145ca248497445ef6a46fabec1dcf2f41e7b9f8fe1d22885b86'
   })
 
   depends_on 'acl' # R
