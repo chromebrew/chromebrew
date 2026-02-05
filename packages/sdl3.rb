@@ -35,6 +35,7 @@ class Sdl3 < CMake
 
   cmake_options '-DSDL_HIDAPI_LIBUSB=OFF \
     -DSDL_RPI=OFF \
+    -DSDL_X11_XSCRNSAVER=OFF \
     -DSDL_STATIC=OFF \
     -DSDL_RPATH=OFF'
 end
