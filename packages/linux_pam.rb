@@ -30,12 +30,12 @@ class Linux_pam < Meson
       -Dnis=disabled'
 
   meson_build_extras do
-    # We need to move libcrypto.so out of the way so libxcrypto is used.
-    FileUtils.mv "#{CREW_LIB_PREFIX}/libcrypto.so.bak", "#{CREW_LIB_PREFIX}/libcrypto.so" if File.file? "#{CREW_LIB_PREFIX}/libcrypto.so.bak"
+    # We need to move libcrypt.so out of the way so libxcrypt is used.
+    FileUtils.mv "#{CREW_LIB_PREFIX}/libcrypt.so.bak", "#{CREW_LIB_PREFIX}/libcrypt.so" if File.file? "#{CREW_LIB_PREFIX}/libcrypt.so.bak"
   end
 
   def self.prebuild
-    # We need to move libcrypto.so out of the way so libxcrypto is used.
-    FileUtils.mv "#{CREW_LIB_PREFIX}/libcrypto.so", "#{CREW_LIB_PREFIX}/libcrypto.so.bak" if File.file? "#{CREW_LIB_PREFIX}/libcrypto.so"
+    # We need to move libcrypt.so out of the way so libxcrypt is used.
+    FileUtils.mv "#{CREW_LIB_PREFIX}/libcrypt.so", "#{CREW_LIB_PREFIX}/libcrypt.so.bak" if File.file? "#{CREW_LIB_PREFIX}/libcrypt.so"
   end
 end
