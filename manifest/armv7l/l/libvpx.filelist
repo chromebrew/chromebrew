@@ -1,6 +1,4 @@
-# Total size: 19804926
-/usr/local/bin/vpxdec
-/usr/local/bin/vpxenc
+# Total size: 19422440
 /usr/local/include/vpx/vp8.h
 /usr/local/include/vpx/vp8cx.h
 /usr/local/include/vpx/vp8dx.h
@@ -14,7 +12,7 @@
 /usr/local/include/vpx/vpx_tpl.h
 /usr/local/lib/libvpx.a
 /usr/local/lib/libvpx.so
-/usr/local/lib/libvpx.so.11
-/usr/local/lib/libvpx.so.11.0
-/usr/local/lib/libvpx.so.11.0.1
+/usr/local/lib/libvpx.so.12
+/usr/local/lib/libvpx.so.12.0
+/usr/local/lib/libvpx.so.12.0.0
 /usr/local/lib/pkgconfig/vpx.pc
