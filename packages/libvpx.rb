@@ -22,6 +22,7 @@ class Libvpx < Autotools
   depends_on 'libyuv' => :build
   depends_on 'yasm' => :build
 
+  autotools_configure_modifications [/--mandir=.*/, '']
   autotools_configure_options '--disable-debug-libs \
         --disable-install-docs \
         --enable-ccache \
