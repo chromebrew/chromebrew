@@ -3,17 +3,17 @@ require 'package'
 class Mediainfo_gui < Package
   description 'MediaInfo is a convenient unified display of the most relevant technical and tag data for video and audio files.'
   homepage 'https://mediaarea.net/en/MediaInfo'
-  version '25.10'
+  version '26.01'
   license 'BSD-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://mediaarea.net/download/binary/mediainfo-gui/#{version}/MediaInfo_GUI_#{version}_GNU_FromSource.tar.xz"
-  source_sha256 '67a6e07aff23a58a7c296dc3aec532266514bc3439eb7d6d2614e753921af910'
+  source_sha256 'ecc545afa6e8583f15863c0005f082e7eda46d1bf90a7dadcb644701663ac239'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e9d682b4a00406fdf27a1d08e0c49a01fc9a1bad4ce205243e188dca0703bef2',
-     armv7l: 'e9d682b4a00406fdf27a1d08e0c49a01fc9a1bad4ce205243e188dca0703bef2',
-     x86_64: '6dea56185baf554f08252a2d3d4fb761a49cd0c02c356282b1a8b0b060eefca0'
+    aarch64: '19131933a4c7d4f4e4dfab3eb2e35ac7143a0212037133a33fc75a6b280bff94',
+     armv7l: '19131933a4c7d4f4e4dfab3eb2e35ac7143a0212037133a33fc75a6b280bff94',
+     x86_64: '90f147b4ec7ed5d0a7d6f8734083f1ea1bda5b490ca08149be503da649b13ba1'
   })
 
   depends_on 'at_spi2_core' # R
