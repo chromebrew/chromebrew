@@ -11,9 +11,9 @@ class Gnome_online_accounts < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd10546f2bbd75de9d6c9090ae9bc93836dcb43b48e6a4f1fd0024f1ebdd6c43b',
-     armv7l: 'd10546f2bbd75de9d6c9090ae9bc93836dcb43b48e6a4f1fd0024f1ebdd6c43b',
-     x86_64: 'f4b4881655f06ffc020b279566352279979bc087a7eb4f104a9d2a4a8c65a4ee'
+    aarch64: 'b30820d5e23744c70eb55ce65304425b67b922db16da6b2c48cfea36a12d0f1d',
+     armv7l: 'b30820d5e23744c70eb55ce65304425b67b922db16da6b2c48cfea36a12d0f1d',
+     x86_64: '1e9c820085b635b699aee3d3c07949910726b75eb6f4ca706f44a60e98aa19f8'
   })
 
   depends_on 'gcr_4' # R
