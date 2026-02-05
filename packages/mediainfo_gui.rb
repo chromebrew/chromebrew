@@ -11,9 +11,9 @@ class Mediainfo_gui < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e9d682b4a00406fdf27a1d08e0c49a01fc9a1bad4ce205243e188dca0703bef2',
-     armv7l: 'e9d682b4a00406fdf27a1d08e0c49a01fc9a1bad4ce205243e188dca0703bef2',
-     x86_64: '6dea56185baf554f08252a2d3d4fb761a49cd0c02c356282b1a8b0b060eefca0'
+    aarch64: '19131933a4c7d4f4e4dfab3eb2e35ac7143a0212037133a33fc75a6b280bff94',
+     armv7l: '19131933a4c7d4f4e4dfab3eb2e35ac7143a0212037133a33fc75a6b280bff94',
+     x86_64: '90f147b4ec7ed5d0a7d6f8734083f1ea1bda5b490ca08149be503da649b13ba1'
   })
 
   depends_on 'at_spi2_core' # R
