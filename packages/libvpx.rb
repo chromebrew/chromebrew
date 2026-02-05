@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libvpx < Package
+class Libvpx < Autotools
   description 'VP8/VP9 Codec SDK'
   homepage 'https://www.webmproject.org/code/'
-  version '1.15.2'
+  version '1.16.0'
   license 'BSD'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://chromium.googlesource.com/webm/libvpx.git'
@@ -22,10 +22,7 @@ class Libvpx < Package
   depends_on 'libyuv' => :build
   depends_on 'yasm' => :build
 
-  def self.build
-    Dir.chdir 'build' do
-      system "../configure #{CREW_CONFIGURE_OPTIONS.sub(/--mandir=.*/, '')} \
-        --disable-debug-libs \
+  autotools_configure_options '--disable-debug-libs \
         --disable-install-docs \
         --enable-ccache \
         --enable-libyuv \
@@ -34,14 +31,5 @@ class Libvpx < Package
         --enable-shared \
         --enable-vp8 \
         --enable-vp9 \
-        --enable-vp9-highbitdepth"
-      system 'make'
-    end
-  end
-
-  def self.install
-    Dir.chdir 'build' do
-      system "make DESTDIR=#{CREW_DEST_DIR} install"
-    end
-  end
+        --enable-vp9-highbitdepth'
 end
