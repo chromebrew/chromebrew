@@ -1,4 +1,4 @@
-# Total size: 364280
+# Total size: 364416
 /usr/local/include/zconf-ng.h
 /usr/local/include/zlib-ng.h
 /usr/local/include/zlib_name_mangling-ng.h
@@ -8,5 +8,5 @@
 /usr/local/lib/cmake/zlib-ng/zlib-ng-targets.cmake
 /usr/local/lib/libz-ng.so
 /usr/local/lib/libz-ng.so.2
-/usr/local/lib/libz-ng.so.2.3.2
+/usr/local/lib/libz-ng.so.2.3.3
 /usr/local/lib/pkgconfig/zlib-ng.pc

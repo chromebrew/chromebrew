@@ -1,12 +1,12 @@
-# Total size: 20569828
-/usr/local/lib/python3.14/site-packages/botocore-1.42.41.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/botocore-1.42.41.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/botocore-1.42.41.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/botocore-1.42.41.dist-info/NOTICE
-/usr/local/lib/python3.14/site-packages/botocore-1.42.41.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/botocore-1.42.41.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/botocore-1.42.41.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/botocore-1.42.41.dist-info/top_level.txt
+# Total size: 20574730
+/usr/local/lib/python3.14/site-packages/botocore-1.42.42.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/botocore-1.42.42.dist-info/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/botocore-1.42.42.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/botocore-1.42.42.dist-info/NOTICE
+/usr/local/lib/python3.14/site-packages/botocore-1.42.42.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/botocore-1.42.42.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/botocore-1.42.42.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/botocore-1.42.42.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/botocore/__init__.py
 /usr/local/lib/python3.14/site-packages/botocore/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/botocore/__pycache__/args.cpython-314.pyc
@@ -567,6 +567,7 @@
 /usr/local/lib/python3.14/site-packages/botocore/data/connectcampaignsv2/2024-04-23/service-2.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/connectcases/2022-10-03/endpoint-rule-set-1.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/connectcases/2022-10-03/paginators-1.json
+/usr/local/lib/python3.14/site-packages/botocore/data/connectcases/2022-10-03/paginators-1.sdk-extras.json
 /usr/local/lib/python3.14/site-packages/botocore/data/connectcases/2022-10-03/service-2.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/connectcases/2022-10-03/waiters-2.json
 /usr/local/lib/python3.14/site-packages/botocore/data/connectparticipant/2018-09-07/endpoint-rule-set-1.json.gz
