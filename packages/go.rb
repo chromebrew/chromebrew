@@ -3,7 +3,7 @@ require 'package'
 class Go < Package
   description 'Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.'
   homepage 'https://go.dev'
-  version '1.25.6'
+  version '1.25.7'
   license 'BSD'
   compatibility 'all'
   source_url({
@@ -13,10 +13,10 @@ class Go < Package
      x86_64: "https://go.dev/dl/go#{version}.linux-amd64.tar.gz"
   })
   source_sha256({
-    aarch64: '679f0e70b27c637116791e3c98afbf8c954deb2cd336364944d014f8e440e2ae',
-     armv7l: '679f0e70b27c637116791e3c98afbf8c954deb2cd336364944d014f8e440e2ae',
-       i686: '59fe62eee3cca65332acef3ebe9b6ff3272467e0a08bf7f68f96334902bf23b9',
-     x86_64: 'f022b6aad78e362bcba9b0b94d09ad58c5a70c6ba3b7582905fababf5fe0181a'
+    aarch64: '1ba07e0eb86b839e72467f4b5c7a5597d07f30bcf5563c951410454f7cda5266',
+     armv7l: '1ba07e0eb86b839e72467f4b5c7a5597d07f30bcf5563c951410454f7cda5266',
+       i686: '2866517e9ca81e6a2e85a930e9b11bc8a05cfeb2fc6dc6cb2765e7fb3c14b715',
+     x86_64: '12e6d6a191091ae27dc31f6efc630e3a3b8ba409baf3573d955b196fdf086005'
   })
 
   conflicts_ok # FIXME: Remove this when file conflicts between go and gcc are fixed
