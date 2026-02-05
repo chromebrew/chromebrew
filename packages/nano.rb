@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Nano < Autotools
   description 'Nano\'s ANOther editor, an enhanced free Pico clone.'
   homepage 'https://www.nano-editor.org/'
-  version '8.7'
+  version '8.7.1'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://git.savannah.gnu.org/git/nano.git'
