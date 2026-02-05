@@ -1,11 +1,11 @@
-# Total size: 54603
-/usr/local/lib/python3.14/site-packages/id-1.5.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/id-1.5.0.dist-info/LICENSE
-/usr/local/lib/python3.14/site-packages/id-1.5.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/id-1.5.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/id-1.5.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/id-1.5.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/id-1.5.0.dist-info/entry_points.txt
+# Total size: 59622
+/usr/local/lib/python3.14/site-packages/id-1.6.1.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/id-1.6.1.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/id-1.6.1.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/id-1.6.1.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/id-1.6.1.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/id-1.6.1.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/id-1.6.1.dist-info/licenses/LICENSE
 /usr/local/lib/python3.14/site-packages/id/__init__.py
 /usr/local/lib/python3.14/site-packages/id/__main__.py
 /usr/local/lib/python3.14/site-packages/id/__pycache__/__init__.cpython-314.pyc
@@ -14,3 +14,4 @@
 /usr/local/lib/python3.14/site-packages/id/_internal/oidc/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/id/_internal/oidc/__pycache__/ambient.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/id/_internal/oidc/ambient.py
+/usr/local/lib/python3.14/site-packages/id/py.typed
