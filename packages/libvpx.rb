@@ -11,9 +11,9 @@ class Libvpx < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0e5e962ce9b8ca950d7b277cb52b95ea3e79e9d9f8dbb091b23eba828c88422d',
-     armv7l: '0e5e962ce9b8ca950d7b277cb52b95ea3e79e9d9f8dbb091b23eba828c88422d',
-     x86_64: '6c8c12bfee73d22a939bd0d6b294263de9e45f44e0a044b51349924b013a58c1'
+    aarch64: '2c0e052c6610524e555c476cde5dfe522d5538f711788e010223eeb85a439992',
+     armv7l: '2c0e052c6610524e555c476cde5dfe522d5538f711788e010223eeb85a439992',
+     x86_64: '300c1866fed6b25968edf355b952e66ffb83627002bf5ce807365df3ccf2afbe'
   })
 
   depends_on 'ccache' => :build
