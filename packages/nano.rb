@@ -11,10 +11,10 @@ class Nano < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '40dca9f30cf0d4ab22d5ed171343101f07cc0f9b23892c7b2d947455c6360dd6',
-     armv7l: '40dca9f30cf0d4ab22d5ed171343101f07cc0f9b23892c7b2d947455c6360dd6',
-       i686: '01efa2e719bd038a4fa8b346ff9fedda840d635940fb246574412beb14d51384',
-     x86_64: '2e6b2cfff04f9e91b782dce8ea4a4295664f097aab8934908da3d668f7aa9dfb'
+    aarch64: 'b77bd21b3d13314b479c5c3dde79e80adf0f150f829f2a9441cc77a8ad71f7f3',
+     armv7l: 'b77bd21b3d13314b479c5c3dde79e80adf0f150f829f2a9441cc77a8ad71f7f3',
+       i686: '6fe3e4b93f80ea64babde96c4ba7a3485bd29ceb6e8468e03ec6d005195d6614',
+     x86_64: '146bab1540de95d986b4f993d793eb61e7e0b4fc50cac40cc8d13dc2ad4853b6'
   })
 
   depends_on 'filecmd' # R
@@ -60,9 +60,7 @@ class Nano < Autotools
 
   def self.prebuild
     am = `grep "\\[am__api_version=" aclocal.m4`.chomp.split('=')[1].gsub("'", '')
-    unless am.nil?
-      %w[aclocal automake].each { |f| FileUtils.ln_sf "#{CREW_PREFIX}/bin/#{f}", "#{CREW_PREFIX}/bin/#{f}-#{am}" }
-    end
+    %w[aclocal automake].each { |f| FileUtils.ln_sf "#{CREW_PREFIX}/bin/#{f}", "#{CREW_PREFIX}/bin/#{f}-#{am}" } unless am.nil?
   end
 
   autotools_install_extras do
