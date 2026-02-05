@@ -3,11 +3,11 @@ require 'package'
 class Libmediainfo < Package
   description 'MediaInfo is a convenient unified display of the most relevant technical and tag data for video and audio files.'
   homepage 'https://mediaarea.net/en/MediaInfo'
-  version '25.10'
+  version '26.01'
   license 'BSD-2'
   compatibility 'all'
   source_url "https://mediaarea.net/download/binary/libmediainfo0/#{version}/MediaInfo_DLL_#{version}_GNU_FromSource.tar.xz"
-  source_sha256 '5cd8dfbdffcab1622e10203323f77585bcab510e3d10b2db5afc194af7edf660'
+  source_sha256 '860b768d51b7fb58d5935eb96afc4ba8c17883c5e062555d64af3c7146059497'
   binary_compression 'tar.zst'
 
   binary_sha256({
