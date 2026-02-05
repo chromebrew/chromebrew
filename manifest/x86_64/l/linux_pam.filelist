@@ -1,14 +1,4 @@
-# Total size: 1634425
-/usr/local/etc/environment
-/usr/local/etc/security/access.conf
-/usr/local/etc/security/faillock.conf
-/usr/local/etc/security/group.conf
-/usr/local/etc/security/limits.conf
-/usr/local/etc/security/namespace.conf
-/usr/local/etc/security/namespace.init
-/usr/local/etc/security/pam_env.conf
-/usr/local/etc/security/pwhistory.conf
-/usr/local/etc/security/time.conf
+# Total size: 2759445
 /usr/local/include/security/_pam_compat.h
 /usr/local/include/security/_pam_macros.h
 /usr/local/include/security/_pam_types.h
