@@ -1,0 +1,3 @@
+#!/bin/bash
+aide -h | head
+aide -v | head
