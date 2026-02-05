@@ -25,7 +25,6 @@ class Libvpx < Autotools
   autotools_configure_modifications [/--mandir=.*/, '']
   autotools_configure_options '--disable-debug-libs \
         --disable-docs \
-        --disable-examples \
         --disable-install-docs \
         --enable-ccache \
         --enable-libyuv \
