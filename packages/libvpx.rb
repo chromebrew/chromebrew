@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libvpx < Package
+class Libvpx < Autotools
   description 'VP8/VP9 Codec SDK'
   homepage 'https://www.webmproject.org/code/'
-  version '1.15.2'
+  version '1.16.0'
   license 'BSD'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://chromium.googlesource.com/webm/libvpx.git'
@@ -11,9 +11,9 @@ class Libvpx < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '00e81914069c08483411380bdb4b992e63e172504d3f6257664c4d0114952cf8',
-     armv7l: '00e81914069c08483411380bdb4b992e63e172504d3f6257664c4d0114952cf8',
-     x86_64: 'e38a5ea3a9eb39cf7d4d55b6c1c0b2691bbf014276bd1c6dc3b4ff6fec6e00b0'
+    aarch64: '2c0e052c6610524e555c476cde5dfe522d5538f711788e010223eeb85a439992',
+     armv7l: '2c0e052c6610524e555c476cde5dfe522d5538f711788e010223eeb85a439992',
+     x86_64: '300c1866fed6b25968edf355b952e66ffb83627002bf5ce807365df3ccf2afbe'
   })
 
   depends_on 'ccache' => :build
@@ -22,10 +22,9 @@ class Libvpx < Package
   depends_on 'libyuv' => :build
   depends_on 'yasm' => :build
 
-  def self.build
-    Dir.chdir 'build' do
-      system "../configure #{CREW_CONFIGURE_OPTIONS.sub(/--mandir=.*/, '')} \
-        --disable-debug-libs \
+  autotools_configure_modifications [/--mandir=.*/, '']
+  autotools_configure_options '--disable-debug-libs \
+        --disable-docs \
         --disable-install-docs \
         --enable-ccache \
         --enable-libyuv \
@@ -34,14 +33,5 @@ class Libvpx < Package
         --enable-shared \
         --enable-vp8 \
         --enable-vp9 \
-        --enable-vp9-highbitdepth"
-      system 'make'
-    end
-  end
-
-  def self.install
-    Dir.chdir 'build' do
-      system "make DESTDIR=#{CREW_DEST_DIR} install"
-    end
-  end
+        --enable-vp9-highbitdepth'
 end
