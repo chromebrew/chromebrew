@@ -58,6 +58,13 @@ class Nano < Autotools
     end
   end
 
+  def self.prebuild
+    am = `grep "\\[am__api_version=" aclocal.m4`.chomp.split('=')[1].gsub("'", '')
+    unless am.nil?
+      %w[aclocal automake].each { |f| FileUtils.ln_sf "#{CREW_PREFIX}/bin/#{f}", "#{CREW_PREFIX}/bin/#{f}-#{am}" }
+    end
+  end
+
   autotools_install_extras do
     FileUtils.install 'nanorc', "#{CREW_DEST_HOME}/.nanorc", mode: 0o644
   end
