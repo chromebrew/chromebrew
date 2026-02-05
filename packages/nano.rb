@@ -6,8 +6,8 @@ class Nano < Autotools
   version '8.7.1'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://git.savannah.gnu.org/git/nano.git'
-  git_hashtag "v#{version}"
+  source_url "https://www.nano-editor.org/dist/v8/nano-#{version}.tar.xz"
+  source_sha256 '76f0dcb248f2e2f1251d4ecd20fd30fb400a360a3a37c6c340e0a52c2d1cdedf'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -34,9 +34,7 @@ class Nano < Autotools
       --enable-mouse \
       --enable-multibuffer \
       --enable-nanorc \
-      --enable-nls \
       --enable-operatingdir \
-      --enable-rpath \
       --enable-speller \
       --enable-tabcomp \
       --enable-threads=posix \
