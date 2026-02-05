@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Linux_pam < Meson
   description 'Linux PAM (Pluggable Authentication Modules for Linux) project'
   homepage 'https://github.com/linux-pam/linux-pam'
-  version '1.7.1'
+  version '1.7.2'
   license 'BSD-3'
   compatibility 'all'
   source_url 'https://github.com/linux-pam/linux-pam.git'
