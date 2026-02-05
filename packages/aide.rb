@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Aide < Autotools
   description 'Advanced Intrusion Detection Environment'
   homepage 'https://aide.github.io'
-  version '0.19.2'
+  version '0.19.3'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/aide/aide.git'
@@ -11,10 +11,10 @@ class Aide < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f9cbf008e39601340562e2cc77a42b13416ff72d5653ba39d7434274df18ca91',
-     armv7l: 'f9cbf008e39601340562e2cc77a42b13416ff72d5653ba39d7434274df18ca91',
-       i686: 'c007160a7df592aa4c0e1be863b79a88405dd525620f0ff3d65715d49dc28251',
-     x86_64: '007f8b097f79a275b573e7d0801cafd2f2b8683d0a7acc355c6a5abc58a4b08a'
+    aarch64: '1644325e839bf383b1dc080a7759cb9f9c38f85ca80a89e0bfc526180aa0cee3',
+     armv7l: '1644325e839bf383b1dc080a7759cb9f9c38f85ca80a89e0bfc526180aa0cee3',
+       i686: '1bad6d94ccfe0fad495d35a3035f46b4b31f462bf82e999a9f6d9428a509a9e7',
+     x86_64: 'fdbdbf8341767db4ed116cdadcc519bf410938ddc7d41dfdac42b8508c0bb0a0'
   })
 
   depends_on 'autoconf_archive' => :build
