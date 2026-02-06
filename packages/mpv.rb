@@ -55,7 +55,7 @@ class Mpv < Meson
   depends_on 'pulseaudio' # R
   depends_on 'py3_docutils' => :build
   depends_on 'rubberband' # R
-  depends_on 'sdl2' # R
+  depends_on 'sdl3' # R
   depends_on 'shaderc' # R
   depends_on 'sommelier' => :logical
   depends_on 'uchardet' # R
@@ -72,8 +72,7 @@ class Mpv < Meson
   # the ancient wl_compositor 3.
   meson_options '-Dwayland=disabled \
       -Dlibmpv=true \
-      -Dgl-x11=enabled \
-      -Dsdl2=enabled'
+      -Dgl-x11=enabled'
 
   meson_build_extras do
     # mpv conf file
