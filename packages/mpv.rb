@@ -61,6 +61,7 @@ class Mpv < Meson
   depends_on 'sommelier' => :logical
   depends_on 'uchardet' # R
   depends_on 'vapoursynth' # R
+  depends_on 'vmaf' => :build
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' # L
   depends_on 'wayland' # R
