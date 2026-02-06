@@ -16,11 +16,8 @@ class Ffmpeg < Package
      x86_64: '1497dc3a88dac075c616b987908fbc138263f7ac8d413a33fda579e5db9904a2'
   })
 
-  # depends_on 'avisynthplus' # R
-  # depends_on 'gsm' # R
-  # depends_on 'libtheora' # R
-  # depends_on 'vmaf' # R
   depends_on 'alsa_lib' # R
+  depends_on 'avisynthplus' => :build
   depends_on 'bzip2' # R
   depends_on 'ccache' => :build
   depends_on 'dav1d' # R
@@ -28,6 +25,7 @@ class Ffmpeg < Package
   depends_on 'freetype' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
+  depends_on 'gsm' => :build
   depends_on 'gstreamer' # R
   depends_on 'harfbuzz' # R
   depends_on 'intel_media_sdk' if ARCH == 'x86_64' && CREW_IS_INTEL # R
@@ -49,6 +47,7 @@ class Ffmpeg < Package
   depends_on 'libraw1394' # R
   depends_on 'libsoxr' # R
   depends_on 'libssh' # R
+  depends_on 'libtheora' => :build
   depends_on 'libva' # R
   depends_on 'libvdpau' # R
   depends_on 'libvoamrwbenc' => :build
@@ -79,6 +78,7 @@ class Ffmpeg < Package
   depends_on 'tesseract' # R
   depends_on 'v4l_utils' # R
   depends_on 'vidstab' # R
+  depends_on 'vmaf' => :build
   depends_on 'xzutils' # R
   depends_on 'zeromq' # R
   depends_on 'zimg' # R
