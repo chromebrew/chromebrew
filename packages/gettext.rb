@@ -13,10 +13,10 @@ class Gettext < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c73672798c742340ed8f956c3c2b9af0c67782649bb82e4994f91ee2dee83c25',
-     armv7l: 'c73672798c742340ed8f956c3c2b9af0c67782649bb82e4994f91ee2dee83c25',
-       i686: 'ed254a8ada9a5f2efddbd38c8b04c7792a9d59bb45261117de2a00c14a2cb8e4',
-     x86_64: 'fa19b714399cd145ca248497445ef6a46fabec1dcf2f41e7b9f8fe1d22885b86'
+    aarch64: '9704567e8c727eedfa605236c11f9910b7a751b57e2118741d3c4ef0c619d901',
+     armv7l: '9704567e8c727eedfa605236c11f9910b7a751b57e2118741d3c4ef0c619d901',
+       i686: 'cc15e500550a2b5c0376dbad660e8d689e3a9f342edcb8870707ce9b333d0687',
+     x86_64: '51a3ac85d367f61ebb115acb4dfdfa592e1cdd2910245322c2ceedacd0fd4b86'
   })
 
   depends_on 'acl' # R
@@ -48,7 +48,7 @@ class Gettext < Autotools
     --with-xz \
     --without-git \
     --without-included-gettext'
-    
+
   autotools_install_extras do
     # This fixes a missing archive message from autopoint.
     # #{CREW_DEST_PREFIX}/share/gettext/archive.dir.tar.xz from our
