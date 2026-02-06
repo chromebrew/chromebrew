@@ -46,7 +46,4 @@ class Gettext < Autotools
     --with-xz \
     --without-git \
     --without-included-gettext'
-  
-  def self.test
-    
 end
