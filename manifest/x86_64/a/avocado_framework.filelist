@@ -1,4 +1,4 @@
-# Total size: 3435037
+# Total size: 3473090
 /usr/local/bin/avocado
 /usr/local/bin/avocado-external-runner
 /usr/local/bin/avocado-runner-asset
@@ -411,10 +411,10 @@
 /usr/local/lib/python3.14/site-packages/avocado/utils/sysinfo.py
 /usr/local/lib/python3.14/site-packages/avocado/utils/vmimage.py
 /usr/local/lib/python3.14/site-packages/avocado/utils/wait.py
-/usr/local/lib/python3.14/site-packages/avocado_framework-112.0-py3.14.egg-info/PKG-INFO
-/usr/local/lib/python3.14/site-packages/avocado_framework-112.0-py3.14.egg-info/SOURCES.txt
-/usr/local/lib/python3.14/site-packages/avocado_framework-112.0-py3.14.egg-info/dependency_links.txt
-/usr/local/lib/python3.14/site-packages/avocado_framework-112.0-py3.14.egg-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/avocado_framework-112.0-py3.14.egg-info/not-zip-safe
-/usr/local/lib/python3.14/site-packages/avocado_framework-112.0-py3.14.egg-info/requires.txt
-/usr/local/lib/python3.14/site-packages/avocado_framework-112.0-py3.14.egg-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/avocado_framework-113.0-py3.14.egg-info/PKG-INFO
+/usr/local/lib/python3.14/site-packages/avocado_framework-113.0-py3.14.egg-info/SOURCES.txt
+/usr/local/lib/python3.14/site-packages/avocado_framework-113.0-py3.14.egg-info/dependency_links.txt
+/usr/local/lib/python3.14/site-packages/avocado_framework-113.0-py3.14.egg-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/avocado_framework-113.0-py3.14.egg-info/not-zip-safe
+/usr/local/lib/python3.14/site-packages/avocado_framework-113.0-py3.14.egg-info/requires.txt
+/usr/local/lib/python3.14/site-packages/avocado_framework-113.0-py3.14.egg-info/top_level.txt
