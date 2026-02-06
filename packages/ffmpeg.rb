@@ -28,6 +28,7 @@ class Ffmpeg < Package
   depends_on 'freetype' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
+  depends_on 'gstreamer' # R
   depends_on 'harfbuzz' # R
   depends_on 'intel_media_sdk' if ARCH == 'x86_64' && CREW_IS_INTEL # R
   depends_on 'jack' # R
