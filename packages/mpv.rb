@@ -11,9 +11,9 @@ class Mpv < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2bc48246dbc53037698b0ec25842b950714d2eb623254ded3d5adacb19c6493f',
-     armv7l: '2bc48246dbc53037698b0ec25842b950714d2eb623254ded3d5adacb19c6493f',
-     x86_64: 'e58d9512455a4006effd4262720d54f700d4ba6e8d1607b7779afa2ca0f88996'
+    aarch64: 'a9a1f24758659b0f0cdad06c1c4b9c913e6f56273ace93e8da140a46b48a77a9',
+     armv7l: 'a9a1f24758659b0f0cdad06c1c4b9c913e6f56273ace93e8da140a46b48a77a9',
+     x86_64: 'c28521b863619adae799845ea6487e3e824daa9c3bfe6c8986e54381861fea10'
   })
 
   depends_on 'alsa_lib' # R
@@ -42,6 +42,7 @@ class Mpv < Meson
   depends_on 'libvpx' => :build
   depends_on 'libx11' # R
   depends_on 'libxext' # R
+  depends_on 'libxfixes' # R
   depends_on 'libxinerama' # R
   depends_on 'libxkbcommon' # R
   depends_on 'libxpresent' # R

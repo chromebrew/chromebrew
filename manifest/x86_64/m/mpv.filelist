@@ -1,7 +1,6 @@
-# Total size: 4781616
+# Total size: 7051750
 /home/chronos/user/.mpv/mpv.conf
 /usr/local/bin/mpv
-/usr/local/etc/mpv/encoding-profiles.conf
 /usr/local/include/mpv/client.h
 /usr/local/include/mpv/render.h
 /usr/local/include/mpv/render_gl.h
@@ -12,6 +11,7 @@
 /usr/local/lib64/pkgconfig/mpv.pc
 /usr/local/share/applications/mpv.desktop
 /usr/local/share/bash-completion/completions/mpv
+/usr/local/share/doc/mpv/encoding-profiles.conf
 /usr/local/share/doc/mpv/input.conf
 /usr/local/share/doc/mpv/mplayer-input.conf
 /usr/local/share/doc/mpv/mpv.conf
