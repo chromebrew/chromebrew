@@ -1,4 +1,4 @@
-# Total size: 691951
+# Total size: 692157
 /usr/local/include/gc.h
 /usr/local/include/gc/cord.h
 /usr/local/include/gc/cord_pos.h
@@ -25,7 +25,7 @@
 /usr/local/lib/libcord.so.1.5.1
 /usr/local/lib/libgc.so
 /usr/local/lib/libgc.so.1
-/usr/local/lib/libgc.so.1.5.5
+/usr/local/lib/libgc.so.1.5.6
 /usr/local/lib/pkgconfig/bdw-gc.pc
 /usr/local/share/doc/gc/AUTHORS
 /usr/local/share/doc/gc/README.DGUX386
