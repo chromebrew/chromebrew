@@ -1,4 +1,4 @@
-# Total size: 28240885
+# Total size: 27875112
 /usr/local/bin/nettle-hash
 /usr/local/bin/nettle-lfib-stream
 /usr/local/bin/nettle-pbkdf2
@@ -27,7 +27,6 @@
 /usr/local/include/nettle/curve448.h
 /usr/local/include/nettle/des.h
 /usr/local/include/nettle/drbg-ctr.h
-/usr/local/include/nettle/dsa-compat.h
 /usr/local/include/nettle/dsa.h
 /usr/local/include/nettle/eax.h
 /usr/local/include/nettle/ecc-curve.h
@@ -43,7 +42,6 @@
 /usr/local/include/nettle/macros.h
 /usr/local/include/nettle/md2.h
 /usr/local/include/nettle/md4.h
-/usr/local/include/nettle/md5-compat.h
 /usr/local/include/nettle/md5.h
 /usr/local/include/nettle/memops.h
 /usr/local/include/nettle/memxor.h
@@ -52,7 +50,6 @@
 /usr/local/include/nettle/nist-keywrap.h
 /usr/local/include/nettle/ocb.h
 /usr/local/include/nettle/pbkdf2.h
-/usr/local/include/nettle/pgp.h
 /usr/local/include/nettle/pkcs1.h
 /usr/local/include/nettle/poly1305.h
 /usr/local/include/nettle/pss-mgf1.h
@@ -63,12 +60,12 @@
 /usr/local/include/nettle/salsa20.h
 /usr/local/include/nettle/serpent.h
 /usr/local/include/nettle/sexp.h
-/usr/local/include/nettle/sha.h
 /usr/local/include/nettle/sha1.h
 /usr/local/include/nettle/sha2.h
 /usr/local/include/nettle/sha3.h
 /usr/local/include/nettle/siv-cmac.h
 /usr/local/include/nettle/siv-gcm.h
+/usr/local/include/nettle/slh-dsa.h
 /usr/local/include/nettle/sm3.h
 /usr/local/include/nettle/sm4.h
 /usr/local/include/nettle/streebog.h
@@ -79,12 +76,12 @@
 /usr/local/include/nettle/yarrow.h
 /usr/local/lib64/libhogweed.a
 /usr/local/lib64/libhogweed.so
-/usr/local/lib64/libhogweed.so.6
-/usr/local/lib64/libhogweed.so.6.11
+/usr/local/lib64/libhogweed.so.7
+/usr/local/lib64/libhogweed.so.7.0
 /usr/local/lib64/libnettle.a
 /usr/local/lib64/libnettle.so
-/usr/local/lib64/libnettle.so.8
-/usr/local/lib64/libnettle.so.8.11
+/usr/local/lib64/libnettle.so.9
+/usr/local/lib64/libnettle.so.9.0
 /usr/local/lib64/pkgconfig/hogweed.pc
 /usr/local/lib64/pkgconfig/nettle.pc
 /usr/local/share/info/nettle.info.zst
