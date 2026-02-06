@@ -39,6 +39,7 @@ class Mpv < Meson
   depends_on 'libsamplerate' # R
   depends_on 'libva' # R
   depends_on 'libvdpau' # R
+  depends_on 'libvpx' => :build
   depends_on 'libx11' # R
   depends_on 'libxext' # R
   depends_on 'libxinerama' # R
