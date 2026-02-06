@@ -3,7 +3,7 @@ require 'package'
 class Ffmpeg < Package
   description 'Complete solution to record, convert and stream audio and video'
   homepage 'https://ffmpeg.org/'
-  version '7.1.1'
+  version '8.0.1'
   license 'LGPL-2,1, GPL-2, GPL-3, and LGPL-3' # When changing ffmpeg's configure options, make sure this variable is still accurate.
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://git.ffmpeg.org/ffmpeg.git'
@@ -11,22 +11,22 @@ class Ffmpeg < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '78088c53bd4f4a65117bfc563d5c86e7973b9c346d3f3152d96a4b7bda67b6ba',
-     armv7l: '78088c53bd4f4a65117bfc563d5c86e7973b9c346d3f3152d96a4b7bda67b6ba',
-     x86_64: '5c9de7400d706c246037e75375e51c93cb4da90f1c1603d1eb24a4402fbb93ed'
+    aarch64: '7713bbd72baeaf21c34eacf30e18c49f5a628ce66665fa8b7925e006016c4276',
+     armv7l: '7713bbd72baeaf21c34eacf30e18c49f5a628ce66665fa8b7925e006016c4276',
+     x86_64: '1497dc3a88dac075c616b987908fbc138263f7ac8d413a33fda579e5db9904a2'
   })
 
-  # depends_on 'avisynthplus' # R
-  # depends_on 'gsm' # R
-  # depends_on 'libtheora' # R
-  # depends_on 'vmaf' # R
   depends_on 'alsa_lib' # R
+  depends_on 'avisynthplus' => :build
   depends_on 'bzip2' # R
   depends_on 'ccache' => :build
   depends_on 'dav1d' # R
   depends_on 'fontconfig' # R
   depends_on 'freetype' # R
   depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'gsm' => :build
+  depends_on 'gstreamer' # R
   depends_on 'harfbuzz' # R
   depends_on 'intel_media_sdk' if ARCH == 'x86_64' && CREW_IS_INTEL # R
   depends_on 'jack' # R
@@ -47,6 +47,7 @@ class Ffmpeg < Package
   depends_on 'libraw1394' # R
   depends_on 'libsoxr' # R
   depends_on 'libssh' # R
+  depends_on 'libtheora' => :build
   depends_on 'libva' # R
   depends_on 'libvdpau' # R
   depends_on 'libvoamrwbenc' => :build
@@ -57,7 +58,7 @@ class Ffmpeg < Package
   depends_on 'libx265' # R
   depends_on 'libxcb' # R
   depends_on 'libxext' # R
-  depends_on 'libxml2' => :build
+  depends_on 'libxml2' # R
   depends_on 'libxv' # R
   depends_on 'libxvid' # R
   depends_on 'lilv' # R
@@ -77,6 +78,7 @@ class Ffmpeg < Package
   depends_on 'tesseract' # R
   depends_on 'v4l_utils' # R
   depends_on 'vidstab' # R
+  depends_on 'vmaf' => :build
   depends_on 'xzutils' # R
   depends_on 'zeromq' # R
   depends_on 'zimg' # R
