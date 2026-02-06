@@ -1,4 +1,4 @@
-# Total size: 304086887
+# Total size: 303680010
 /usr/local/bin/jitsi
 /usr/local/share/applications/jitsi-meet.desktop
 /usr/local/share/icons/hicolor/512x512/apps/jitsi-meet.png
@@ -82,22 +82,18 @@
 /usr/local/share/jitsi/resources/app.asar
 /usr/local/share/jitsi/resources/app.asar.unpacked/node_modules/@jitsi/electron-sdk/.eslintignore
 /usr/local/share/jitsi/resources/app.asar.unpacked/node_modules/@jitsi/electron-sdk/.eslintrc.js
+/usr/local/share/jitsi/resources/app.asar.unpacked/node_modules/@jitsi/electron-sdk/CLAUDE.md
 /usr/local/share/jitsi/resources/app.asar.unpacked/node_modules/@jitsi/electron-sdk/LICENSE
-/usr/local/share/jitsi/resources/app.asar.unpacked/node_modules/@jitsi/electron-sdk/alwaysontop/constants.js
-/usr/local/share/jitsi/resources/app.asar.unpacked/node_modules/@jitsi/electron-sdk/alwaysontop/index.js
-/usr/local/share/jitsi/resources/app.asar.unpacked/node_modules/@jitsi/electron-sdk/alwaysontop/main/config.js
-/usr/local/share/jitsi/resources/app.asar.unpacked/node_modules/@jitsi/electron-sdk/alwaysontop/main/index.js
-/usr/local/share/jitsi/resources/app.asar.unpacked/node_modules/@jitsi/electron-sdk/alwaysontop/main/utils.js
-/usr/local/share/jitsi/resources/app.asar.unpacked/node_modules/@jitsi/electron-sdk/alwaysontop/render/alwaysontop.css
-/usr/local/share/jitsi/resources/app.asar.unpacked/node_modules/@jitsi/electron-sdk/alwaysontop/render/alwaysontop.js
-/usr/local/share/jitsi/resources/app.asar.unpacked/node_modules/@jitsi/electron-sdk/alwaysontop/render/index.js
-/usr/local/share/jitsi/resources/app.asar.unpacked/node_modules/@jitsi/electron-sdk/alwaysontop/render/utils.js
 /usr/local/share/jitsi/resources/app.asar.unpacked/node_modules/@jitsi/electron-sdk/helpers/functions.js
 /usr/local/share/jitsi/resources/app.asar.unpacked/node_modules/@jitsi/electron-sdk/index.js
 /usr/local/share/jitsi/resources/app.asar.unpacked/node_modules/@jitsi/electron-sdk/install.js
 /usr/local/share/jitsi/resources/app.asar.unpacked/node_modules/@jitsi/electron-sdk/node_addons/sourceId2Coordinates/index.js
 /usr/local/share/jitsi/resources/app.asar.unpacked/node_modules/@jitsi/electron-sdk/node_addons/sourceId2Coordinates/src/sourceId2Coordinates.h
 /usr/local/share/jitsi/resources/app.asar.unpacked/node_modules/@jitsi/electron-sdk/package.json
+/usr/local/share/jitsi/resources/app.asar.unpacked/node_modules/@jitsi/electron-sdk/pip/constants.js
+/usr/local/share/jitsi/resources/app.asar.unpacked/node_modules/@jitsi/electron-sdk/pip/index.js
+/usr/local/share/jitsi/resources/app.asar.unpacked/node_modules/@jitsi/electron-sdk/pip/main.js
+/usr/local/share/jitsi/resources/app.asar.unpacked/node_modules/@jitsi/electron-sdk/pip/render.js
 /usr/local/share/jitsi/resources/app.asar.unpacked/node_modules/@jitsi/electron-sdk/popupsconfig/PopupsConfigRegistry.js
 /usr/local/share/jitsi/resources/app.asar.unpacked/node_modules/@jitsi/electron-sdk/popupsconfig/constants.js
 /usr/local/share/jitsi/resources/app.asar.unpacked/node_modules/@jitsi/electron-sdk/popupsconfig/functions.js
