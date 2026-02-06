@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Gettext < Autotools
   description 'GNU gettext utilities are a set of tools that provides a framework to help other GNU packages produce multi-lingual messages.'
   homepage 'https://gnu.org/s/gettext/'
-  version '1.0'
+  version '1.0-1'
   license 'GPL-3+ and LGPL-2.1+'
   compatibility 'all'
   # source_url 'https://github.com/autotools-mirror/gettext.git'
@@ -30,9 +30,12 @@ class Gettext < Autotools
   depends_on 'openjdk8' => :build
   depends_on 'wget2' => :build
 
-  def self.patch
-    # See https://savannah.gnu.org/bugs/?67999
-    system "sed -i '/patch $@ < $(srcdir)\\/po-fetch.1.diff/d' gettext-tools/man/Makefile.am"
+  def self.patch    
+    patches = [
+      # See https://savannah.gnu.org/bugs/?67999
+      ['https://gitweb.git.savannah.gnu.org/gitweb/?p=gettext.git;a=patch;h=633b7fdef68b660802ce190f1cf0ab64eb8c3e5e', '2109c1e1d85f13e2d3e69ab33505783ce2fdfd759789a8481133e9078ee608a9']
+    ]
+    ConvenienceFunctions.patch(patches) if version.split('-')[0] == '1.0'
   end
 
   # --without-git is needed as per https://github.com/autotools-mirror/gettext/blob/master/PACKAGING
@@ -43,4 +46,7 @@ class Gettext < Autotools
     --with-xz \
     --without-git \
     --without-included-gettext'
+  
+  def self.test
+    
 end
