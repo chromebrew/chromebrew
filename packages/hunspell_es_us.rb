@@ -3,7 +3,7 @@ require 'package'
 class Hunspell_es_us < Package
   description 'Diccionarios de español de Hunspell'
   homepage 'http://hunspell.github.io/'
-  version '26.2.0.3'
+  version '26.2.1.1'
   license 'MPL-1.1, GPL-2 and LGPL-2.1'
   compatibility 'all'
   source_url 'https://github.com/LibreOffice/dictionaries.git'
