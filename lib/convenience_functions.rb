@@ -155,9 +155,11 @@ class ConvenienceFunctions
     patch_array.each do |patch_item|
       abort 'Patch array is not valid!'.lightred unless patch_item[0]
       abort 'Patch sha256sum does not exist!'.lightred unless patch_item[1]
-      patch_file = File.basename(patch_item[0])
-      puts "downloader #{patch_item[0]}, #{patch_item[1]}" if CREW_VERBOSE
-      downloader patch_item[0], patch_item[1]
+      # Remove special characters from url when determining patch_file
+      # name.
+      patch_file = File.basename(patch_item[0]).gsub(/[^\w\s]/, '')
+      puts "downloader #{patch_item[0]}, #{patch_item[1]}, #{patch_file}" if CREW_VERBOSE
+      downloader patch_item[0], patch_item[1], patch_file
       puts "patch -Np1 -i #{patch_file}" if CREW_VERBOSE
       system "patch -Np1 -i #{patch_file}"
     end
