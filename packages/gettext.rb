@@ -30,12 +30,14 @@ class Gettext < Autotools
   depends_on 'openjdk8' => :build
   depends_on 'wget2' => :build
 
-  def self.patch    
-    patches = [
-      # See https://savannah.gnu.org/bugs/?67999
-      ['https://github.com/autotools-mirror/gettext/commit/633b7fdef68b660802ce190f1cf0ab64eb8c3e5e.patch', '64b4d9506988c71c1a703cd731bfac204d1221e75ed794ee43109d47d9a19d7c']
-    ]
-    ConvenienceFunctions.patch(patches) if version.split('-')[0] == '1.0'
+  def self.patch
+    # patches = [
+    # # See https://savannah.gnu.org/bugs/?67999
+    # ['https://github.com/autotools-mirror/gettext/commit/633b7fdef68b660802ce190f1cf0ab64eb8c3e5e.patch', '64b4d9506988c71c1a703cd731bfac204d1221e75ed794ee43109d47d9a19d7c']
+    # ]
+    # ConvenienceFunctions.patch(patches) if version.split('-')[0] == '1.0'
+    # See https://savannah.gnu.org/bugs/?67999
+    system "sed -i '/patch $@ < $(srcdir)\\/po-fetch.1.diff/d' gettext-tools/man/Makefile.am" if version.split('-')[0] == '1.0'
   end
 
   # --without-git is needed as per https://github.com/autotools-mirror/gettext/blob/master/PACKAGING
