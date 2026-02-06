@@ -33,7 +33,7 @@ class Gettext < Autotools
   def self.patch    
     patches = [
       # See https://savannah.gnu.org/bugs/?67999
-      ['https://gitweb.git.savannah.gnu.org/gitweb/?p=gettext.git;a=patch;h=633b7fdef68b660802ce190f1cf0ab64eb8c3e5e', '2109c1e1d85f13e2d3e69ab33505783ce2fdfd759789a8481133e9078ee608a9']
+      ['https://github.com/autotools-mirror/gettext/commit/633b7fdef68b660802ce190f1cf0ab64eb8c3e5e.patch', '64b4d9506988c71c1a703cd731bfac204d1221e75ed794ee43109d47d9a19d7c']
     ]
     ConvenienceFunctions.patch(patches) if version.split('-')[0] == '1.0'
   end
