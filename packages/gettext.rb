@@ -48,4 +48,12 @@ class Gettext < Autotools
     --with-xz \
     --without-git \
     --without-included-gettext'
+    
+  autotools_install_extras do
+    # This fixes a missing archive message from autopoint.
+    # #{CREW_DEST_PREFIX}/share/gettext/archive.dir.tar.xz from our
+    # build keeps getting corrupted for some reason.
+    downloader "https://github.com/autotools-mirror/gettext/raw/refs/tags/v#{version.split('-')[0]}/gettext-tools/autotools/archive.dir.tar", 'e32c5de9b39a70092e9a82e83ebffb4c0a8c698cf3acbdcbb4902dfebdf767f8', "#{CREW_DEST_PREFIX}/share/gettext/archive.dir.tar"
+    system "xz -v -f #{CREW_DEST_PREFIX}/share/gettext/archive.dir.tar", chdir: "#{CREW_DEST_PREFIX}/share/gettext"
+  end
 end
