@@ -11,10 +11,10 @@ class Perl_libintl_perl < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c104b2dd63e7662e4809e45d5c59ffd7f60582d5174bcff90960ca7acc44c272',
-     armv7l: 'c104b2dd63e7662e4809e45d5c59ffd7f60582d5174bcff90960ca7acc44c272',
-       i686: 'e0ef07730e168d7cb73f27419c7d15ec72d982724f9078093a430835d9824dcd',
-     x86_64: '5d07e7cffede716afd6a875ff7af62052bb1ca11aa4e69bcbf0bc12dd87d9ad3'
+    aarch64: '4a63e1c46b366397c9d186b6af6e7edbe6f09ffbe894e31f617041f0f08fe04f',
+     armv7l: '4a63e1c46b366397c9d186b6af6e7edbe6f09ffbe894e31f617041f0f08fe04f',
+       i686: 'f74b20b7af70c3a959506db2527449d73c15cfbb58e0dc929b4eb90a80a649e2',
+     x86_64: '15e31913bc246941fbc12a112bef57e35eff0b9d2b7111eb0d0c18c500d6aba1'
   })
 
   depends_on 'glibc' # R
