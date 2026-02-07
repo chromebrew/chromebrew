@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Elinks < Meson
   description 'Full-Featured Text WWW Browser'
   homepage 'https://github.com/rkd77/elinks'
-  version '0.19.0'
+  version '0.19.1'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/rkd77/elinks.git'
