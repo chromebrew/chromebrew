@@ -6,8 +6,8 @@ class Perl_libintl_perl < PERL
   version "1.36-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
-  source_url "https://cpan.metacpan.org/authors/id/G/GU/GUIDO/libintl-perl-#{version.split('-').first}.tar.gz"
-  source_sha256 'f0168a66befc67af17fd1164bf2a84b95b806628502c5f8d4f7da853b9d0939c'
+  source_url 'https://github.com/gflohr/libintl-perl.git'
+  git_hashtag "v#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
