@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class I3 < Meson
   description 'Improved tiling window manager'
   homepage 'https://i3wm.org/'
-  version '4.25'
+  version '4.25.1'
   license 'BSD'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/i3/i3.git'
@@ -11,9 +11,9 @@ class I3 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c80e9228de17400f0867ffdc06320a575961036da921b73c02d55792a3255a2a',
-     armv7l: 'c80e9228de17400f0867ffdc06320a575961036da921b73c02d55792a3255a2a',
-     x86_64: '1bd6abf4f8444c6be265251ca350e20fbc172300e1a36dc3f06d7c1727c8d751'
+    aarch64: 'a6146d44cb28ac210d974005c341a794eeab216e775e9bd7815daecf6435d00f',
+     armv7l: 'a6146d44cb28ac210d974005c341a794eeab216e775e9bd7815daecf6435d00f',
+     x86_64: '91a1401b559ef961a0f4d3bc5498770b96c37b22f76f7c657ad5088d01cdd454'
   })
 
   depends_on 'cairo' # R
