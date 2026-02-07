@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.30 (for Chromebrew)
+# version.rb version 3.31 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose -vv]
 
@@ -493,7 +493,7 @@ if filelist.length.positive?
     end
     updatable_string = (updatable_pkg[@pkg.name.to_sym] == 'Yes' ? 'Yes         '.lightgreen : 'No          '.lightred) if updatable_string.nil?
     compile_string = @pkg.no_compile_needed? || @pkg.is_fake? ? 'No        '.lightred : 'Yes       '.lightgreen
-    autoupdate_string = File.file?("#{CREW_LIB_PATH}/tools/automatically_updatable_packages/#{@pkg.name}") ? 'Yes'.lightgreen : 'No'.lightred
+    autoupdate_string = File.file?("#{CREW_LIB_PATH}/tools/automatically_updatable_packages/#{@pkg.name}") && !File.file?("#{CREW_LIB_PATH}/tools/disabled_autobuild_packages/#{@pkg.name}") ? 'Yes'.lightgreen : 'No'.lightred
     versions.push(package: @pkg.name, updatable: updatable_pkg[@pkg.name.to_sym], update_status: versions_updated[@pkg.name.to_sym], version: cleaned_pkg_version, upstream_version: upstream_version)
 
     addendum_string = "#{@pkg.name} cannot be automatically updated: ".red + "#{updatable_pkg[@pkg.name.to_sym]}\n".purple unless updatable_pkg[@pkg.name.to_sym] == 'Yes'
