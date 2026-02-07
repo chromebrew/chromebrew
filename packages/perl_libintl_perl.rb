@@ -3,11 +3,11 @@ require 'buildsystems/perl'
 class Perl_libintl_perl < PERL
   description 'Internationalization library for Perl that aims to be compatible with the Uniforum message translations system as implemented for example in GNU gettext'
   homepage 'https://metacpan.org/dist/libintl-perl'
-  version "1.35-#{CREW_PERL_VER}"
+  version "1.36-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url "https://cpan.metacpan.org/authors/id/G/GU/GUIDO/libintl-perl-#{version.split('-').first}.tar.gz"
-  source_sha256 '64abed956aa07d1c8cc816c91cf78642c02faf03ab704ed38031baa07f06b16a'
+  source_sha256 'f0168a66befc67af17fd1164bf2a84b95b806628502c5f8d4f7da853b9d0939c'
   binary_compression 'tar.zst'
 
   binary_sha256({
