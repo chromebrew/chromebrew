@@ -14,10 +14,10 @@ class Hwdata < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e5b33b1b7e203987171f5e814ab887b37c8a3203356e35c7a1553bb89ae3011d',
-     armv7l: 'e5b33b1b7e203987171f5e814ab887b37c8a3203356e35c7a1553bb89ae3011d',
-       i686: '56bf21cab8c734af090794eabc9c0cc408a6e756dc8cb29c2ab7dcce9de2a2e6',
-     x86_64: '835f9d294c19cb4e6e5c83fdf0831df1141a8d5780380de01bceda7d995c4ce7'
+    aarch64: 'aecffcc211279b214a174a1dedecf800821e52c1327b36fdc8db3fa132558ce7',
+     armv7l: 'aecffcc211279b214a174a1dedecf800821e52c1327b36fdc8db3fa132558ce7',
+       i686: 'fe79d394ff2071130c91b76822d702dd191f1f40fcaa91807ea9e83d729f6f45',
+     x86_64: '8c83f8ad04c42a7dabf43e23de651d3e3f2a24830fb8bec36780e24c112fbfc0'
   })
 
   def self.patch
