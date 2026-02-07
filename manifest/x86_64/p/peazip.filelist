@@ -1,4 +1,4 @@
-# Total size: 44467030
+# Total size: 44506751
 /usr/local/bin/pea
 /usr/local/bin/peazip
 /usr/local/share/application/peazip.desktop
@@ -342,8 +342,6 @@
 /usr/local/share/peazip/res/share/lang-wincontext/by-cr.reg
 /usr/local/share/peazip/res/share/lang-wincontext/by-lt.reg
 /usr/local/share/peazip/res/share/lang-wincontext/ca.reg
-/usr/local/share/peazip/res/share/lang-wincontext/chs.reg
-/usr/local/share/peazip/res/share/lang-wincontext/cht.reg
 /usr/local/share/peazip/res/share/lang-wincontext/cz.reg
 /usr/local/share/peazip/res/share/lang-wincontext/de-uml.reg
 /usr/local/share/peazip/res/share/lang-wincontext/default.reg
@@ -374,14 +372,14 @@
 /usr/local/share/peazip/res/share/lang-wincontext/tr.reg
 /usr/local/share/peazip/res/share/lang-wincontext/tt.reg
 /usr/local/share/peazip/res/share/lang-wincontext/uk.reg
+/usr/local/share/peazip/res/share/lang-wincontext/zh-cn.reg
+/usr/local/share/peazip/res/share/lang-wincontext/zh-hant.reg
 /usr/local/share/peazip/res/share/lang/ar.txt
 /usr/local/share/peazip/res/share/lang/az.txt
 /usr/local/share/peazip/res/share/lang/bg.txt
 /usr/local/share/peazip/res/share/lang/by-cr.txt
 /usr/local/share/peazip/res/share/lang/by-lt.txt
 /usr/local/share/peazip/res/share/lang/ca.txt
-/usr/local/share/peazip/res/share/lang/chs.txt
-/usr/local/share/peazip/res/share/lang/cht.txt
 /usr/local/share/peazip/res/share/lang/cz.txt
 /usr/local/share/peazip/res/share/lang/de-uml.txt
 /usr/local/share/peazip/res/share/lang/default.txt
@@ -427,6 +425,8 @@
 /usr/local/share/peazip/res/share/lang/ur.txt
 /usr/local/share/peazip/res/share/lang/uz.txt
 /usr/local/share/peazip/res/share/lang/vn.txt
+/usr/local/share/peazip/res/share/lang/zh-cn.txt
+/usr/local/share/peazip/res/share/lang/zh-hant.txt
 /usr/local/share/peazip/res/share/peazip_help.pdf
 /usr/local/share/peazip/res/share/presets/1.txt
 /usr/local/share/peazip/res/share/presets/10.txt
