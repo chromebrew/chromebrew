@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class M4 < Autotools
   description 'GNU M4 is an implementation of the traditional Unix macro processor.'
   homepage 'https://www.gnu.org/software/m4/'
-  version '1.4.20-1'
+  version '1.4.21'
   license 'GPL-3'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/gnu/m4/m4-#{version.split('-').first}.tar.xz"
-  source_sha256 'e236ea3a1ccf5f6c270b1c4bb60726f371fa49459a8eaaebc90b216b328daf2b'
+  source_sha256 '664f2b1654c363a6348b688d5d475ed9ec0e7ef3c72f6f315f37fe97a2fe63eb'
   binary_compression 'tar.zst'
 
   binary_sha256({
