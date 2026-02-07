@@ -1,4 +1,4 @@
-# Total size: 5216241
+# Total size: 5216721
 /usr/local/bin/p11-kit
 /usr/local/bin/trust
 /usr/local/etc/pkcs11/pkcs11.conf.example
@@ -13,7 +13,7 @@
 /usr/local/include/p11-kit-1/p11-kit/version.h
 /usr/local/lib64/libp11-kit.so
 /usr/local/lib64/libp11-kit.so.0
-/usr/local/lib64/libp11-kit.so.0.4.7
+/usr/local/lib64/libp11-kit.so.0.4.8
 /usr/local/lib64/p11-kit-proxy.so
 /usr/local/lib64/pkcs11/p11-kit-client.so
 /usr/local/lib64/pkcs11/p11-kit-trust.so
