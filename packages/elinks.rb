@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Elinks < Meson
   description 'Full-Featured Text WWW Browser'
   homepage 'https://github.com/rkd77/elinks'
-  version '0.19.0'
+  version '0.19.1'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/rkd77/elinks.git'
@@ -11,10 +11,10 @@ class Elinks < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '44b2811e076aebbf37793742e99b35c633b8142dfa9b34efaeb15b6695abb53f',
-     armv7l: '44b2811e076aebbf37793742e99b35c633b8142dfa9b34efaeb15b6695abb53f',
-       i686: '53a036a8ea6cdef93a38f6b65359b7c380199d54bd14b6b1db1333fc38e84071',
-     x86_64: '979b4e3b4a5a5adbb1a8b0f2de49cebabfb86027c34bfecd0fb6f6fd9620583a'
+    aarch64: 'ed6864a246abda8af2e118cea825a3410addba38486e3f95a8e2dc1f66f10ffe',
+     armv7l: 'ed6864a246abda8af2e118cea825a3410addba38486e3f95a8e2dc1f66f10ffe',
+       i686: 'b6144db59e1847f251b950cb8fdacd10c8b41848b823ebeb4d7a7965790fabcb',
+     x86_64: 'f8df12160126cc07507b7e35c0379134a06055b814bb45e1de3539aeb2dfdcd8'
   })
 
   depends_on 'brotli' # R
