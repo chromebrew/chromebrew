@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class I3 < Meson
   description 'Improved tiling window manager'
   homepage 'https://i3wm.org/'
-  version '4.25'
+  version '4.25.1'
   license 'BSD'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/i3/i3.git'
