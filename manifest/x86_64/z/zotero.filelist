@@ -1,4 +1,4 @@
-# Total size: 223845576
+# Total size: 240925367
 /usr/local/bin/zotero
 /usr/local/share/applications/zotero.desktop
 /usr/local/share/fonts/TwemojiMozilla.ttf
@@ -7,12 +7,12 @@
 /usr/local/share/icons/icon64.png
 /usr/local/share/icons/symbolic.svg
 /usr/local/share/icons/updater.png
-/usr/local/share/zotero/Throbber-small.gif
 /usr/local/share/zotero/app/application.ini
 /usr/local/share/zotero/app/hyphenation/hyph_af.hyf
 /usr/local/share/zotero/app/hyphenation/hyph_bg.hyf
 /usr/local/share/zotero/app/hyphenation/hyph_bn.hyf
 /usr/local/share/zotero/app/hyphenation/hyph_ca.hyf
+/usr/local/share/zotero/app/hyphenation/hyph_cs.hyf
 /usr/local/share/zotero/app/hyphenation/hyph_cy.hyf
 /usr/local/share/zotero/app/hyphenation/hyph_da.hyf
 /usr/local/share/zotero/app/hyphenation/hyph_de-1901.hyf
@@ -55,6 +55,7 @@
 /usr/local/share/zotero/app/hyphenation/hyph_tr.hyf
 /usr/local/share/zotero/app/hyphenation/hyph_uk.hyf
 /usr/local/share/zotero/app/omni.ja
+/usr/local/share/zotero/crashhelper
 /usr/local/share/zotero/dependentlibs.list
 /usr/local/share/zotero/firefox-bin.sig
 /usr/local/share/zotero/firefox.sig
@@ -64,7 +65,7 @@
 /usr/local/share/zotero/gmp-clearkey/0.1/manifest.json
 /usr/local/share/zotero/integration/libreoffice/Zotero_LibreOffice_Integration.oxt
 /usr/local/share/zotero/libfreeblpriv3.so
-/usr/local/share/zotero/libipcclientcerts.so
+/usr/local/share/zotero/libgkcodecs.so
 /usr/local/share/zotero/liblgpllibs.so
 /usr/local/share/zotero/libmozavcodec.so
 /usr/local/share/zotero/libmozavutil.so
@@ -74,7 +75,6 @@
 /usr/local/share/zotero/libmozwayland.so
 /usr/local/share/zotero/libnspr4.so
 /usr/local/share/zotero/libnss3.so
-/usr/local/share/zotero/libnssckbi.so
 /usr/local/share/zotero/libnssutil3.so
 /usr/local/share/zotero/libplc4.so
 /usr/local/share/zotero/libplds4.so
@@ -83,11 +83,8 @@
 /usr/local/share/zotero/libssl3.so
 /usr/local/share/zotero/libxul.so
 /usr/local/share/zotero/libxul.so.sig
-/usr/local/share/zotero/minidump-analyzer
 /usr/local/share/zotero/omni.ja
 /usr/local/share/zotero/platform.ini
-/usr/local/share/zotero/plugin-container
-/usr/local/share/zotero/plugin-container.sig
 /usr/local/share/zotero/precomplete
 /usr/local/share/zotero/removed-files
 /usr/local/share/zotero/set_launcher_icon
