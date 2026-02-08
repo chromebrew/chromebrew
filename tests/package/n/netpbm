@@ -1,0 +1,5 @@
+#!/bin/bash
+anytopnm --version 2>&1
+asciitopgm --version 2>&1
+cameratopam --version 2>&1
+netpbm-config --version
