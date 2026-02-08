@@ -1,0 +1,3 @@
+#!/bin/bash
+cpu-x --help | head
+cpu-x --version
