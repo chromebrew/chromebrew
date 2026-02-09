@@ -451,7 +451,7 @@ function extract_install () {
       if [[ -d "${CREW_PREFIX}/opt/glibc-libs" ]]; then
         if command -v patchelf &> /dev/null; then
           echo_intra "Running patchelf on ${1}..."
-          grep '/usr/local/\(bin\|libexec\)' < filelist | xargs -P "$(nproc)" -n1 patchelf --set-interpreter "${PATCHELF_INTERPRETER}" 2> /dev/null || true
+          grep "${CREW_PREFIX}/\(bin\|libexec\)" < filelist | xargs -P "$(nproc)" -n1 patchelf --set-interpreter "${PATCHELF_INTERPRETER}" 2> /dev/null || true
         fi
       fi
     fi
