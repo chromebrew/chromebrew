@@ -1,4 +1,4 @@
-# Total size: 435709031
+# Total size: 414840127
 /usr/local/bin/deskreen
 /usr/local/share/applications/deskreen-ce.desktop
 /usr/local/share/deskreen/AppRun
@@ -74,9 +74,6 @@
 /usr/local/share/deskreen/resources.pak
 /usr/local/share/deskreen/resources/app-update.yml
 /usr/local/share/deskreen/resources/app.asar
-/usr/local/share/deskreen/resources/app.asar.unpacked/node_modules/@roamhq/wrtc-linux-x64/index.js
-/usr/local/share/deskreen/resources/app.asar.unpacked/node_modules/@roamhq/wrtc-linux-x64/package.json
-/usr/local/share/deskreen/resources/app.asar.unpacked/node_modules/@roamhq/wrtc-linux-x64/wrtc.node
 /usr/local/share/deskreen/resources/app.asar.unpacked/node_modules/jszip/.codeclimate.yml
 /usr/local/share/deskreen/resources/app.asar.unpacked/node_modules/jszip/.editorconfig
 /usr/local/share/deskreen/resources/app.asar.unpacked/node_modules/jszip/.eslintrc.js
