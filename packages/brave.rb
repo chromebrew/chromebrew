@@ -4,7 +4,7 @@ require 'convenience_functions'
 class Brave < Package
   description 'Next generation Brave browser for macOS, Windows, Linux, Android.'
   homepage 'https://brave.com/'
-  version '1.85.120'
+  version '1.86.148'
   license 'MPL-2'
   compatibility 'x86_64'
   min_glibc '2.29'
