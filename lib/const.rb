@@ -458,6 +458,7 @@ CREW_ANITYA_PACKAGE_NAME_MAPPINGS = Set[
   { pkg_name: 'selenium_server_standalone', anitya_pkg: 'selenium', comments: '' },
   { pkg_name: 'signal_desktop', anitya_pkg: 'signal', comments: '' },
   { pkg_name: 'smbclient', anitya_pkg: 'samba', comments: '' },
+  { pkg_name: 'snowflake', anitya_pkg: 'Muon', comments: 'Renamed to muon upstream' },
   { pkg_name: 'tcpwrappers', anitya_pkg: 'tcp_wrappers', comments: '' },
   { pkg_name: 'tepl_6', anitya_pkg: 'libgedit-tepl', comments: '' },
   { pkg_name: 'upx', anitya_pkg: 'upx', comments: 'Prefer to GitHub' },
