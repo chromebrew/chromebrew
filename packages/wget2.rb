@@ -13,10 +13,10 @@ class Wget2 < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e721c5fc826a29487a21bff10b9af2a5f06ceb6208ab6b9431e9ca644b8ecf12',
-     armv7l: 'e721c5fc826a29487a21bff10b9af2a5f06ceb6208ab6b9431e9ca644b8ecf12',
-       i686: 'fcb9cf5a798decde6d27134fe90e982668147a3aceeae56e917544bb3728c08d',
-     x86_64: '1ed2ba8aeec518c368870e00644706891d973a68267c6b2ce4fb0fc37521cbbf'
+    aarch64: 'bcc35aa52125321e99fa293f99bff03c764ac36da3b48b921ed04dca1203fefb',
+     armv7l: 'bcc35aa52125321e99fa293f99bff03c764ac36da3b48b921ed04dca1203fefb',
+       i686: '94fd7df2890c9feb82f44e3d50363c45aa067c7a550e7335654e70db911c3f33',
+     x86_64: '7fcbd974cec93c4161057f3b6743dc709fe624eb0de97dc1736f623d2369333b'
   })
 
   depends_on 'brotli' # R
