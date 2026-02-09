@@ -1,4 +1,4 @@
-# Total size: 241668376
+# Total size: 245248709
 /usr/local/bin/mupdf-gl
 /usr/local/bin/mupdf-x11
 /usr/local/bin/mutool
@@ -29,6 +29,7 @@
 /usr/local/include/mupdf/fitz/hash.h
 /usr/local/include/mupdf/fitz/heap-imp.h
 /usr/local/include/mupdf/fitz/heap.h
+/usr/local/include/mupdf/fitz/hyphen.h
 /usr/local/include/mupdf/fitz/image.h
 /usr/local/include/mupdf/fitz/json.h
 /usr/local/include/mupdf/fitz/link.h
@@ -107,6 +108,7 @@
 /usr/local/share/doc/mupdf/examples/pdf-portfolio.js
 /usr/local/share/doc/mupdf/examples/pdf-trace.js
 /usr/local/share/doc/mupdf/examples/reconvert-cmyk.js
+/usr/local/share/doc/mupdf/examples/searchtest.c
 /usr/local/share/doc/mupdf/examples/storytest.c
 /usr/local/share/doc/mupdf/examples/storytest.js
 /usr/local/share/doc/mupdf/examples/trace-device.js
