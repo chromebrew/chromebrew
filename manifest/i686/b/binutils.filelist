@@ -1,4 +1,4 @@
-# Total size: 49954007
+# Total size: 50807794
 /usr/local/bin/addr2line
 /usr/local/bin/ar
 /usr/local/bin/as
@@ -169,7 +169,7 @@
 /usr/local/lib/ldscripts/elf_x86_64.xwer
 /usr/local/lib/ldscripts/stamp
 /usr/local/lib/libbfd-2.39.50.so
-/usr/local/lib/libbfd-2.45.1.so
+/usr/local/lib/libbfd-2.46.so
 /usr/local/lib/libbfd.a
 /usr/local/lib/libbfd.la
 /usr/local/lib/libbfd.so
@@ -185,15 +185,15 @@
 /usr/local/lib/libctf.so.0.0.0
 /usr/local/lib/libiberty.a
 /usr/local/lib/libopcodes-2.39.50.so
-/usr/local/lib/libopcodes-2.45.1.so
+/usr/local/lib/libopcodes-2.46.so
 /usr/local/lib/libopcodes.a
 /usr/local/lib/libopcodes.la
 /usr/local/lib/libopcodes.so
 /usr/local/lib/libsframe.a
 /usr/local/lib/libsframe.la
 /usr/local/lib/libsframe.so
-/usr/local/lib/libsframe.so.2
-/usr/local/lib/libsframe.so.2.0.0
+/usr/local/lib/libsframe.so.3
+/usr/local/lib/libsframe.so.3.0.0
 /usr/local/share/info/as.info.zst
 /usr/local/share/info/bfd.info.zst
 /usr/local/share/info/binutils.info.zst
@@ -202,6 +202,7 @@
 /usr/local/share/info/ld.info.zst
 /usr/local/share/info/ldint.info.zst
 /usr/local/share/info/sframe-spec.info.zst
+/usr/local/share/locale/ar/LC_MESSAGES/binutils.mo
 /usr/local/share/locale/bg/LC_MESSAGES/binutils.mo
 /usr/local/share/locale/bg/LC_MESSAGES/gprof.mo
 /usr/local/share/locale/bg/LC_MESSAGES/ld.mo
@@ -239,7 +240,6 @@
 /usr/local/share/locale/ga/LC_MESSAGES/gprof.mo
 /usr/local/share/locale/ga/LC_MESSAGES/ld.mo
 /usr/local/share/locale/ga/LC_MESSAGES/opcodes.mo
-/usr/local/share/locale/gas.es/LC_MESSAGES/gas.mo
 /usr/local/share/locale/hr/LC_MESSAGES/bfd.mo
 /usr/local/share/locale/hr/LC_MESSAGES/binutils.mo
 /usr/local/share/locale/hu/LC_MESSAGES/gprof.mo
@@ -262,9 +262,12 @@
 /usr/local/share/locale/ja/LC_MESSAGES/gprof.mo
 /usr/local/share/locale/ja/LC_MESSAGES/ld.mo
 /usr/local/share/locale/ka/LC_MESSAGES/bfd.mo
+/usr/local/share/locale/ka/LC_MESSAGES/binutils.mo
+/usr/local/share/locale/ka/LC_MESSAGES/gas.mo
 /usr/local/share/locale/ka/LC_MESSAGES/gold.mo
 /usr/local/share/locale/ka/LC_MESSAGES/gprof.mo
 /usr/local/share/locale/ka/LC_MESSAGES/ld.mo
+/usr/local/share/locale/ka/LC_MESSAGES/opcodes.mo
 /usr/local/share/locale/ms/LC_MESSAGES/bfd.mo
 /usr/local/share/locale/ms/LC_MESSAGES/gprof.mo
 /usr/local/share/locale/nl/LC_MESSAGES/gprof.mo
