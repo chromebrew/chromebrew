@@ -81,9 +81,9 @@ fi
 
 set -a
 # Default chromebrew repo values.
-: "${OWNER:=chromebrew}"
-: "${REPO:=chromebrew}}"
-: "${BRANCH:=master}"
+: "${OWNER:=FinnBaltazar1111}"
+: "${REPO:=chromebrew}"
+: "${BRANCH:=fix}"
 : "${CREW_BRANCH:=${BRANCH}}"
 : "${CREW_REPO:=https://github.com/${OWNER}/${REPO}.git}"
 set +a
@@ -440,7 +440,7 @@ function extract_install () {
       else
       "${CREW_PREFIX}/bin/ldconfig" || true
       fi
-      [[ -d /usr/local/opt/glibc-libs ]] && export LD_PRELOAD=crew-preload.so
+      [[ -d "${CREW_PREFIX}/opt/glibc-libs" ]] && [[ -f "${CREW_PREFIX}/lib${CREW_LIB_SUFFIX}/crew-preload.so" ]] && export LD_PRELOAD="${CREW_PREFIX}/lib${CREW_LIB_SUFFIX}/crew-preload.so"
     else
       # Decompress binaries.
       if command -v upx &> /dev/null; then
@@ -448,10 +448,10 @@ function extract_install () {
         grep "/usr/local/\(bin\|lib\|lib${CREW_LIB_SUFFIX}\)" < filelist | xargs -P "$(nproc)" -n1 upx -qq -d 2> /dev/null || true
       fi
       # Switch to our glibc for existing binaries if needed.
-      if [[ -d /usr/local/opt/glibc-libs ]]; then
+      if [[ -d "${CREW_PREFIX}/opt/glibc-libs" ]]; then
         if command -v patchelf &> /dev/null; then
           echo_intra "Running patchelf on ${1}..."
-          grep '/usr/local/bin' < filelist | xargs -P "$(nproc)" -n1 patchelf --set-interpreter "${PATCHELF_INTERPRETER}" 2> /dev/null || true
+          grep '/usr/local/\(bin\|libexec\)' < filelist | xargs -P "$(nproc)" -n1 patchelf --set-interpreter "${PATCHELF_INTERPRETER}" 2> /dev/null || true
         fi
       fi
     fi
@@ -637,8 +637,8 @@ else
   git sparse-checkout set packages "manifest/${ARCH}" lib commands bin crew tests tools
   git reset --hard origin/"${BRANCH}"
 
-  # Set mtimes of files to when the file was committed.
-  git-restore-mtime -sq 2>/dev/null
+  # Set mtimes of files to when the file was committed (if tool is available).
+  [[ -x "${CREW_PREFIX}/bin/git-restore-mtime" ]] && git-restore-mtime -sq 2>/dev/null || true
 
   echo_info "Cleaning up older ruby gem versions...\n"
   gem cleanup
