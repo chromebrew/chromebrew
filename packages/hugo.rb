@@ -3,7 +3,7 @@ require 'package'
 class Hugo < Package
   description 'Hugo is one of the most popular open-source static site generators.'
   homepage 'https://gohugo.io'
-  version %w[aarch64 armv7l x86_64].include?(ARCH) ? '0.155.2' : '0.101.0'
+  version %w[aarch64 armv7l x86_64].include?(ARCH) ? '0.155.3' : '0.101.0'
   license 'Apache-2.0, Unlicense, BSD, BSD-2 and MPL-2.0'
   compatibility 'all'
   min_glibc '2.29' if ARCH.eql?('x86_64')
@@ -14,10 +14,10 @@ class Hugo < Package
      x86_64: "https://github.com/gohugoio/hugo/releases/download/v#{version}/hugo_extended_#{version}_linux-amd64.tar.gz"
   })
   source_sha256({
-    aarch64: 'f65d8571895539247b006ab065dcbea62a582824a8e932de3b9b58da5b718584',
-     armv7l: 'f65d8571895539247b006ab065dcbea62a582824a8e932de3b9b58da5b718584',
+    aarch64: '2fc1f7db519737ae87825a8076f695cef998fdfd64863107e1e53e8957b9f6b8',
+     armv7l: '2fc1f7db519737ae87825a8076f695cef998fdfd64863107e1e53e8957b9f6b8',
        i686: '9ae794edd86415a611cae15fc72382ee6f2b729754e15319c144057a5457eaed',
-     x86_64: '2bf76c75610e75fa5d15fd3dd0e1377c16ce4fa7202713283c744a19323ff419'
+     x86_64: 'b98243d840f904367ebfaeb53d3c8e51d89a4edec518ef420c1fb3eae3a9cbb1'
   })
 
   no_compile_needed
