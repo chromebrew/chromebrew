@@ -17,6 +17,9 @@ class Atom < Package
   depends_on 'libsecret'
   depends_on 'sommelier' => :logical
 
+  ignore_updater
+  no_upstream_update
+
   def self.install
     FileUtils.mkdir_p CREW_DEST_PREFIX
     FileUtils.mv Dir['*'], CREW_DEST_PREFIX
