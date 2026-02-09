@@ -1,4 +1,4 @@
-# Total size: 837541
+# Total size: 827073
 /usr/local/bin/ldbadd
 /usr/local/bin/ldbdel
 /usr/local/bin/ldbedit
@@ -28,18 +28,11 @@
 /usr/local/lib64/ldb/modules/ldb/tdb.so
 /usr/local/lib64/libldb.so
 /usr/local/lib64/libldb.so.2
-/usr/local/lib64/libldb.so.2.9.1
+/usr/local/lib64/libldb.so.2.9.2
 /usr/local/lib64/libpyldb-util.cpython-314-x86-64-linux-gnu.so
 /usr/local/lib64/libpyldb-util.cpython-314-x86-64-linux-gnu.so.2
-/usr/local/lib64/libpyldb-util.cpython-314-x86-64-linux-gnu.so.2.9.1
+/usr/local/lib64/libpyldb-util.cpython-314-x86-64-linux-gnu.so.2.9.2
 /usr/local/lib64/pkgconfig/ldb.pc
 /usr/local/lib64/pkgconfig/pyldb-util.cpython-314-x86_64-linux-gnu.pc
 /usr/local/lib64/python3.14/site-packages/_ldb_text.py
 /usr/local/lib64/python3.14/site-packages/ldb.cpython-314-x86_64-linux-gnu.so
-/usr/local/share/man/man1/ldbadd.1.zst
-/usr/local/share/man/man1/ldbdel.1.zst
-/usr/local/share/man/man1/ldbedit.1.zst
-/usr/local/share/man/man1/ldbmodify.1.zst
-/usr/local/share/man/man1/ldbrename.1.zst
-/usr/local/share/man/man1/ldbsearch.1.zst
-/usr/local/share/man/man3/ldb.3.zst

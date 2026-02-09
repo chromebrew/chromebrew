@@ -6,18 +6,18 @@ require 'package'
 class Ldb < Package
   description 'Schema-less, ldap like, API and database'
   homepage 'https://ldb.samba.org/'
-  version "2.9.1-#{CREW_PY_VER}"
+  version "2.9.2-#{CREW_PY_VER}"
   license 'GPLv3'
   compatibility 'all'
-  source_url "https://samba.org/ftp/ldb/ldb-#{version.split('-').first}.tar.gz"
-  source_sha256 'c95e4dc32dea8864b79899ee340c9fdf28b486f464bbc38ba99151a08b493f9b'
+  source_url "https://www.samba.org/ftp/ldb/ldb-#{version.split('-').first}.tar.gz"
+  source_sha256 'd155884002c79dbb1c3d8642f8b1013f2e520b3aeefd6e96412adec5b8d6cbc0'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f71d4cc7d5d3118d0d1614923155b4a6c79380fd9c133b753b2ccb56b75746d1',
-     armv7l: 'f71d4cc7d5d3118d0d1614923155b4a6c79380fd9c133b753b2ccb56b75746d1',
-       i686: 'c16bd47cc996d1ae6a7af446f3c5a957f126e3be33adef10dd1fa1aa8c240b4b',
-     x86_64: 'f7707afd610a4bd19fd9dc5de3582b7e2a1bf7b882dfd617b9243cc2caff1013'
+    aarch64: 'b12820807d572e792692b56116edc64c579254287c99d3097b3e0eb65eabb540',
+     armv7l: 'b12820807d572e792692b56116edc64c579254287c99d3097b3e0eb65eabb540',
+       i686: '38e3cd51346b36c83467b5f5cd04db47d8445fcd11fe0dcbc0ba370f6678f90b',
+     x86_64: '7efacb9a2a2341f4d2d76e4dde61f5846943a0a496c5586c78a73457e76b33c1'
   })
 
   depends_on 'cmocka' => :build
