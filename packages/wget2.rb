@@ -7,9 +7,7 @@ class Wget2 < Autotools
   license 'GPL-3'
   compatibility 'all'
   source_url "https://ftp.gnu.org/gnu/wget/wget2-#{version}.tar.gz"
-  source_sha256 'agagag'
-  # source_url 'https://gitlab.com/gnuwget/wget2.git'
-  # git_hashtag "v#{version}"
+  source_sha256 'd7544b13e37f18e601244fce5f5f40688ac1d6ab9541e0fbb01a32ee1fb447b4'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -22,7 +20,6 @@ class Wget2 < Autotools
   depends_on 'brotli' # R
   depends_on 'bzip2' # R
   depends_on 'ca_certificates' # L
-  depends_on 'curl' => :build
   depends_on 'glibc' # R
   depends_on 'gmp' # R
   depends_on 'gnutls' # R
@@ -43,11 +40,6 @@ class Wget2 < Autotools
   depends_on 'xzutils' # R
   depends_on 'zlib' # R
   depends_on 'zstd' # R
-
-  def self.patch
-    # system './bootstrap'
-    # system 'autoreconf -fiv'
-  end
 
   autotools_configure_options '--enable-year2038 \
                   --with-openssl=no \
