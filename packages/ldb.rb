@@ -14,10 +14,10 @@ class Ldb < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '345b5c1720f4b68093f1a0c38b44cc4a6a0136a2344fab97da24827954e3dabe',
-     armv7l: '345b5c1720f4b68093f1a0c38b44cc4a6a0136a2344fab97da24827954e3dabe',
-       i686: 'c5fb335c4950b91cec0808e0919599e3d3ea090224a23f3a857af16e75bce3d3',
-     x86_64: '82afef5038862dff2dfd2e2b6b0e10ebedf38b24e1c2c7caabca2267cec5f3d8'
+    aarch64: 'b12820807d572e792692b56116edc64c579254287c99d3097b3e0eb65eabb540',
+     armv7l: 'b12820807d572e792692b56116edc64c579254287c99d3097b3e0eb65eabb540',
+       i686: '38e3cd51346b36c83467b5f5cd04db47d8445fcd11fe0dcbc0ba370f6678f90b',
+     x86_64: '7efacb9a2a2341f4d2d76e4dde61f5846943a0a496c5586c78a73457e76b33c1'
   })
 
   depends_on 'cmocka' => :build
