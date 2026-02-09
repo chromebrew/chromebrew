@@ -3,7 +3,7 @@ require 'buildsystems/perl'
 class Perl_libintl_perl < PERL
   description 'Internationalization library for Perl that aims to be compatible with the Uniforum message translations system as implemented for example in GNU gettext'
   homepage 'https://metacpan.org/dist/libintl-perl'
-  version "1.36-#{CREW_PERL_VER}"
+  version "1.37-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://github.com/gflohr/libintl-perl.git'
