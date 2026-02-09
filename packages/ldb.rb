@@ -6,11 +6,11 @@ require 'package'
 class Ldb < Package
   description 'Schema-less, ldap like, API and database'
   homepage 'https://ldb.samba.org/'
-  version "2.9.1-#{CREW_PY_VER}"
+  version "2.9.2-#{CREW_PY_VER}"
   license 'GPLv3'
   compatibility 'all'
-  source_url "https://samba.org/ftp/ldb/ldb-#{version.split('-').first}.tar.gz"
-  source_sha256 'c95e4dc32dea8864b79899ee340c9fdf28b486f464bbc38ba99151a08b493f9b'
+  source_url "https://www.samba.org/ftp/ldb/ldb-#{version.split('-').first}.tar.gz"
+  source_sha256 'd155884002c79dbb1c3d8642f8b1013f2e520b3aeefd6e96412adec5b8d6cbc0'
   binary_compression 'tar.zst'
 
   binary_sha256({
