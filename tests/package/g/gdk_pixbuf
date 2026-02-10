@@ -1,0 +1,3 @@
+#!/bin/bash
+gdk-pixbuf-csource --version 2>&1
+gdk-pixbuf-pixdata --version 2>&1
