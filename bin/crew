@@ -1117,7 +1117,7 @@ end
 def shrink_dir(dir)
   unless CREW_NOT_SHRINK_ARCHIVE || @pkg.no_shrink?
     Dir.chdir dir do
-      if File.file?("#{CREW_PREFIX}/bin/rdfind")
+      if File.executable?("#{CREW_PREFIX}/bin/rdfind") && system('rdfind --help', %i[out err] => File::NULL)
         puts 'Using rdfind to convert duplicate files to hard links.'
         system "#{CREW_PREFIX}/bin/rdfind -removeidentinode true -makesymlinks false -makehardlinks true -makeresultsfile false ."
       end
@@ -1214,7 +1214,7 @@ def install_package(pkgdir)
           end
         end
       end
-      if File.executable?("#{CREW_PREFIX}/bin/rdfind")
+      if File.executable?("#{CREW_PREFIX}/bin/rdfind") && system('rdfind --help', %i[out err] => File::NULL)
         puts 'Using rdfind to convert duplicate files to hard links.'
         system 'rdfind -removeidentinode true -makesymlinks false -makehardlinks true -makeresultsfile false .'
       end
