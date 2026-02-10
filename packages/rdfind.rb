@@ -6,11 +6,11 @@ require 'buildsystems/autotools'
 class Rdfind < Autotools
   description 'Redundant data find - a program that finds duplicate files.'
   homepage 'https://rdfind.pauldreik.se/'
-  version '1.7.0'
+  version '1.7.0-1'
   license 'GPL2'
   compatibility 'all'
   source_url 'https://github.com/pauldreik/rdfind.git'
-  git_hashtag "releases/#{version}"
+  git_hashtag "releases/#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
