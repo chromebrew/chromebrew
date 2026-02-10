@@ -81,9 +81,9 @@ fi
 
 set -a
 # Default chromebrew repo values.
-: "${OWNER:=FinnBaltazar1111}"
+: "${OWNER:=chromebrew}"
 : "${REPO:=chromebrew}"
-: "${BRANCH:=fix}"
+: "${BRANCH:=master}"
 : "${CREW_BRANCH:=${BRANCH}}"
 : "${CREW_REPO:=https://github.com/${OWNER}/${REPO}.git}"
 set +a
