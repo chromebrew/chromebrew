@@ -1,4 +1,4 @@
-# Total size: 1144051
+# Total size: 1150769
 /usr/local/bin/upower
 /usr/local/etc/UPower/UPower.conf
 /usr/local/etc/UPower/UPower.conf.d/README.md
@@ -18,7 +18,7 @@
 /usr/local/lib64/girepository-1.0/UPowerGlib-1.0.typelib
 /usr/local/lib64/libupower-glib.so
 /usr/local/lib64/libupower-glib.so.3
-/usr/local/lib64/libupower-glib.so.3.1.1
+/usr/local/lib64/libupower-glib.so.3.1.2
 /usr/local/lib64/pkgconfig/upower-glib.pc
 /usr/local/libexec/upower/integration-test.py
 /usr/local/libexec/upower/output_checker.py
