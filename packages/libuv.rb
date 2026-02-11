@@ -3,11 +3,11 @@ require 'buildsystems/cmake'
 class Libuv < CMake
   description 'libuv is a multi-platform support library with a focus on asynchronous I/O.'
   homepage 'https://libuv.org/'
-  version '1.51.0'
+  version '1.52.0'
   license 'BSD, BSD-2, ISC and MIT'
   compatibility 'all'
   source_url "https://dist.libuv.org/dist/v#{version}/libuv-v#{version}.tar.gz"
-  source_sha256 '5f0557b90b1106de71951a3c3931de5e0430d78da1d9a10287ebc7a3f78ef8eb'
+  source_sha256 '19fd091a582c39c7ea26dcbb40a7d2e7cf095b070a757b3c32c05de6cfed6638'
   binary_compression 'tar.zst'
 
   binary_sha256({
