@@ -3,21 +3,38 @@ require 'package'
 class Google_chrome < Package
   description 'Google Chrome is a fast, easy to use, and secure web browser.'
   homepage 'https://www.google.com/chrome/'
-  version '143.0.7499.192-1'
+  version '145.0.7632.45'
   license 'google-chrome'
   compatibility 'x86_64'
-
-  source_url "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_#{version}_amd64.deb"
-  source_sha256 '6484c286dc8089f0eb41d124b96e3ef4c4cb0ff289dc0f8698e1f1b851fbc834'
+  source_url "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_#{version}-1_amd64.deb"
+  source_sha256 '6aed53fe777ca9a58a680b848a80022300566fb902424291e054984a784c73a2'
 
   no_compile_needed
   no_shrink
 
-  depends_on 'nss'
-  depends_on 'cairo'
-  depends_on 'gtk3'
-  depends_on 'expat'
-  depends_on 'cras'
+  depends_on 'alsa_lib' => :executable_only
+  depends_on 'at_spi2_core' => :executable_only
+  depends_on 'cairo' => :executable_only
+  depends_on 'cras' => :logical
+  depends_on 'cups' => :executable_only
+  depends_on 'dbus' => :executable_only
+  depends_on 'eudev' => :executable_only
+  depends_on 'expat' => :executable_only
+  depends_on 'gcc_lib' # R
+  depends_on 'glib' => :executable_only
+  depends_on 'glibc' # R
+  depends_on 'harfbuzz' => :executable_only
+  depends_on 'libx11' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxcomposite' => :executable_only
+  depends_on 'libxdamage' => :executable_only
+  depends_on 'libxext' # R
+  depends_on 'libxfixes' => :executable_only
+  depends_on 'libxkbcommon' => :executable_only
+  depends_on 'libxrandr' => :executable_only
+  depends_on 'mesa' => :executable_only
+  depends_on 'nss' => :executable_only
+  depends_on 'pango' => :executable_only
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
