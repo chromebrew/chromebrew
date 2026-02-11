@@ -1,5 +1,5 @@
 ---
-# Version 1.3
+# Version 1.4
 name: Generate Updates PRs on Demand
 run-name: Generating Updates PRs on Demand using ${{ inputs.version_cmd_input }}
 on:
@@ -82,7 +82,7 @@ jobs:
           # for i in $(git status --porcelain | awk '{print $2}' | grep ^packages/)
           # do
           #  git stash pop || true
-            ruby tools/version.rb -v -u $i
+            ruby tools/version.rb -v -u $i || continue
             pkg=${i%.rb}
             pkg=${pkg#packages/}
             # The updated package version will be the one in the package file.

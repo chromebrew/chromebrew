@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.31 (for Chromebrew)
+# version.rb version 3.32 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose -vv]
 
@@ -410,6 +410,7 @@ if filelist.length.positive?
                     FileUtils.cp "#{filename}.bak", filename
                     FileUtils.rm "#{filename}.bak"
                   end
+                  exit! if !CREW_OUTPUT_JSON && (filelist.length == 1)
                   next filename
                 end
                 new_hash[arch] = `curl -Ls #{@pkg.source_url[arch.to_sym]} | sha256sum - | awk '{print $1}'`.chomp
@@ -434,6 +435,7 @@ if filelist.length.positive?
                   FileUtils.cp "#{filename}.bak", filename
                   FileUtils.rm "#{filename}.bak"
                 end
+                exit! if !CREW_OUTPUT_JSON && (filelist.length == 1)
                 next filename
               end
               new_hash[arch] = `curl -Ls #{@pkg.source_url} | sha256sum - | awk '{print $1}'`.chomp
@@ -501,7 +503,7 @@ if filelist.length.positive?
     print version_line_string[@pkg.name.to_sym] if !CREW_OUTPUT_JSON && ((versions_updated[@pkg.name.to_sym] == 'Outdated.' && updatable_pkg[@pkg.name.to_sym] == 'Yes') || OUTPUT_ALL)
     print addendum_string unless addendum_string.blank? || CREW_OUTPUT_JSON || !CREW_VERBOSE
 
-    print "Failed to update version in #{@pkg.name} to #{upstream_version}".yellow if !CREW_OUTPUT_JSON && (versions_updated[@pkg.name.to_sym].to_s == 'false')
+    print "Failed to update version in #{@pkg.name} to #{upstream_version}".yellow if !CREW_OUTPUT_JSON && ['false', 'Bad Source'].include?(versions_updated[@pkg.name.to_sym].to_s)
     print "Failed to update binary_compression in #{@pkg.name}".yellow if !CREW_OUTPUT_JSON && (bc_updated[@pkg.name.to_sym].to_s == 'false')
   end
   puts versions.to_json if CREW_OUTPUT_JSON
