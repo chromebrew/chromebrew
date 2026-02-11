@@ -1,4 +1,4 @@
-# Total size: 436925686
+# Total size: 442358727
 /usr/local/bin/vivaldi
 /usr/local/bin/vivaldi-stable
 /usr/local/etc/cron.daily/vivaldi
@@ -20,9 +20,9 @@
 /usr/local/share/vivaldi/chrome_crashpad_handler
 /usr/local/share/vivaldi/cron/vivaldi
 /usr/local/share/vivaldi/icudtl.dat
-/usr/local/share/vivaldi/lib/libffmpeg.so
 /usr/local/share/vivaldi/libEGL.so
 /usr/local/share/vivaldi/libGLESv2.so
+/usr/local/share/vivaldi/libffmpeg.so
 /usr/local/share/vivaldi/libqt5_shim.so
 /usr/local/share/vivaldi/libqt6_shim.so
 /usr/local/share/vivaldi/libvk_swiftshader.so
@@ -344,6 +344,11 @@
 /usr/local/share/vivaldi/locales/zh-TW_MASCULINE.pak
 /usr/local/share/vivaldi/locales/zh-TW_NEUTER.pak
 /usr/local/share/vivaldi/resources.pak
+/usr/local/share/vivaldi/resources/accessibility/reading_mode_gdocs_helper/content.js
+/usr/local/share/vivaldi/resources/accessibility/reading_mode_gdocs_helper/gdocs_script.js
+/usr/local/share/vivaldi/resources/accessibility/reading_mode_gdocs_helper_manifest.json
+/usr/local/share/vivaldi/resources/inspector_overlay/inspector_overlay_resources.grd
+/usr/local/share/vivaldi/resources/inspector_overlay/main.js
 /usr/local/share/vivaldi/resources/vivaldi/_locales/af/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/am/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/ar/messages.json
@@ -437,6 +442,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/_locales/uk/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/vi/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/zh_CN/messages.json
+/usr/local/share/vivaldi/resources/vivaldi/_locales/zh_HANT/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/zh_HK/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/zh_TW/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/adblocker_resources/LICENSE.txt
@@ -444,7 +450,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/adblocker_resources/redirectable_resources.json
 /usr/local/share/vivaldi/resources/vivaldi/background-bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/background-common-bundle.js
-/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-0fe36b1b818f562085b49c433b0a1d84.js
+/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-04a6648921ce5b26e1187e1a2f82f8cd.js
 /usr/local/share/vivaldi/resources/vivaldi/bundle-mailreader-worker.js
 /usr/local/share/vivaldi/resources/vivaldi/bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/components/mail/mail.html
@@ -782,6 +788,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/provider_outlook.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/provider_proton.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/provider_yahoo.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/random_image_thumb.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_7net.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_abc.net.au.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_accuweather.png
@@ -1145,6 +1152,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/theme/vivaldi/Stop.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/theme/vivaldi/SyncStatus.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/theme/vivaldi/TilingToggle.svg
+/usr/local/share/vivaldi/resources/vivaldi/resources/theme/vivaldi/ToggleAutoHide.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/theme/vivaldi/UpdateButton.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/theme/vivaldi/WorkspaceButton.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/theme/vivaldi/background.webp
