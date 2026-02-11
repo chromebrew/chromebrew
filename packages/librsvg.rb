@@ -19,7 +19,7 @@ class Librsvg < Meson
   depends_on 'cairo' # R
   depends_on 'cargo_c' => :build
   depends_on 'dav1d' # R
-  depends_on 'fontconfig' # R
+  depends_on 'fontconfig' => :executable_only
   depends_on 'fribidi' => :build
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R

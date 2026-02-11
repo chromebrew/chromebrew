@@ -20,13 +20,13 @@ class Cairo < Meson
   depends_on 'fontconfig' # R
   depends_on 'freetype' # R
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'harfbuzz' # R
   depends_on 'libpng' # R
   depends_on 'libx11' # R
   depends_on 'libxcb' # R
-  depends_on 'libxrender' # R
+  depends_on 'libxrender' => :build
   depends_on 'lzo' # R
   depends_on 'mesa' => :build
   depends_on 'pixman' # R
