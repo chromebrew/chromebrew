@@ -16,16 +16,16 @@ class Chafa < Autotools
      x86_64: 'bb460334e3a93e55c323b9d3269558b1c62071291950b2a924e4ef6d5764ec3c'
   })
 
-  depends_on 'cairo' # R
-  depends_on 'freetype' # R
-  depends_on 'gdk_pixbuf' # R
+  depends_on 'cairo' => :executable_only
+  depends_on 'freetype' => :executable_only
+  depends_on 'gdk_pixbuf' => :executable_only
   depends_on 'glib' # R
   depends_on 'glibc' # R
-  depends_on 'harfbuzz' # R
-  depends_on 'libjpeg_turbo' # R
-  depends_on 'librsvg' # R
-  depends_on 'libtiff' # R
-  depends_on 'libxslt' # R
+  depends_on 'harfbuzz' => :executable_only
+  depends_on 'libjpeg_turbo' => :executable_only
+  depends_on 'librsvg' => :executable_only
+  depends_on 'libtiff' => :executable_only
+  depends_on 'libxslt' => :build
 
   autotools_configure_options '--enable-gtk-doc'
 end
