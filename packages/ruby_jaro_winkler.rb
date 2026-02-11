@@ -3,17 +3,17 @@ require 'buildsystems/ruby'
 class Ruby_jaro_winkler < RUBY
   description 'Jaro_winkler is an implementation of Jaro-Winkler distance algorithm which is written in C extension and will fallback to pure Ruby version in platforms other than MRI/KRI like JRuby or Rubinius.'
   homepage 'https://github.com/tonytonyjan/jaro_winkler'
-  version "1.6.1-#{CREW_RUBY_VER}"
+  version "1.7.0-#{CREW_RUBY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: '856bedbe2e6028fd40f0794b2ca45dd2c36436d1dd72725c9ca7afe1da56b7e1',
-     armv7l: '856bedbe2e6028fd40f0794b2ca45dd2c36436d1dd72725c9ca7afe1da56b7e1',
-       i686: 'd16ad5475994b158796ac5ca7ee21c15206b94ee0616c33a2c2fd31f8fae57a0',
-     x86_64: 'ea4c231509537fb3333903adc376a7e27e170ebecb5696a4d8501113ca51e5ff'
+    aarch64: 'b73c4e0d60f72bc759b8eb5a88fe9a7c8286f516b55bf225c9700443d22ad936',
+     armv7l: 'b73c4e0d60f72bc759b8eb5a88fe9a7c8286f516b55bf225c9700443d22ad936',
+       i686: '96c78c74b973a935acd43cca1b8f7bcb2b0138e53344b305e6d03ddede2867b4',
+     x86_64: '8a3a66de59b9acf35affd9b718c0bee54e3e1e9b6247e464a2798e79c71ba713'
   })
 
   depends_on 'glibc' # R
