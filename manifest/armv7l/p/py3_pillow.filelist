@@ -1,4 +1,4 @@
-# Total size: 3195577
+# Total size: 3113081
 /usr/local/lib/python3.14/site-packages/PIL/AvifImagePlugin.py
 /usr/local/lib/python3.14/site-packages/PIL/BdfFontFile.py
 /usr/local/lib/python3.14/site-packages/PIL/BlpImagePlugin.py
@@ -206,11 +206,11 @@
 /usr/local/lib/python3.14/site-packages/PIL/features.py
 /usr/local/lib/python3.14/site-packages/PIL/py.typed
 /usr/local/lib/python3.14/site-packages/PIL/report.py
-/usr/local/lib/python3.14/site-packages/pillow-12.1.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/pillow-12.1.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/pillow-12.1.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/pillow-12.1.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/pillow-12.1.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/pillow-12.1.0.dist-info/licenses/LICENSE
-/usr/local/lib/python3.14/site-packages/pillow-12.1.0.dist-info/top_level.txt
-/usr/local/lib/python3.14/site-packages/pillow-12.1.0.dist-info/zip-safe
+/usr/local/lib/python3.14/site-packages/pillow-12.1.1.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/pillow-12.1.1.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/pillow-12.1.1.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/pillow-12.1.1.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/pillow-12.1.1.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/pillow-12.1.1.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/pillow-12.1.1.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/pillow-12.1.1.dist-info/zip-safe
