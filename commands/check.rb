@@ -25,20 +25,23 @@ class Command
       return true
     end
 
-    # Use rubocop to sanitize package file, and let errors get flagged.
-    if Kernel.system('rubocop --version', %i[out err] => File::NULL)
-      puts "Using rubocop to sanitize #{local_package}".yellow
-      # The .rubocop.yml file is found in the rubocop-chromebrew gem
-      require_gem('rubocop-chromebrew')
-      if File.file?(File.join(CREW_LOCAL_REPO_ROOT, '.rubocop.yml'))
-        system "rubocop -c #{File.join(CREW_LOCAL_REPO_ROOT, '.rubocop.yml')} -A #{local_package}", exception: true
+    # We don't need to lint with rubocop during the Chromebrew install.
+    unless ENV['CREW_INSTALLER_RUNNING']
+      # Use rubocop to sanitize package file, and let errors get flagged.
+      if Kernel.system('rubocop --version', %i[out err] => File::NULL)
+        puts "Using rubocop to sanitize #{local_package}".yellow
+        # The .rubocop.yml file is found in the rubocop-chromebrew gem
+        require_gem('rubocop-chromebrew')
+        if File.file?(File.join(CREW_LOCAL_REPO_ROOT, '.rubocop.yml'))
+          system "rubocop -c #{File.join(CREW_LOCAL_REPO_ROOT, '.rubocop.yml')} -A #{local_package}", exception: true
+        else
+          puts 'The configuration file for rubocop in .rubocop.yml, from the rubocop-chromebrew gem, was not found.'.lightred
+          puts 'To install rubocop-chromebrew, run the following command: '.lightred + "crew #{'re' if PackageUtils.installed?('ruby_rubocop_chromebrew')}install ruby_rubocop_chromebrew".lightblue
+        end
       else
-        puts 'The configuration file for rubocop in .rubocop.yml, from the rubocop-chromebrew gem, was not found.'.lightred
-        puts 'To install rubocop-chromebrew, run the following command: '.lightred + "crew #{'re' if PackageUtils.installed?('ruby_rubocop_chromebrew')}install ruby_rubocop_chromebrew".lightblue
+        puts "Rubocop is not installed, and thus will not be used to sanitize #{local_package}".lightred
+        puts 'To install Rubocop, run the following command: '.lightred + "crew #{'re' if PackageUtils.installed?('ruby_rubocop')}install ruby_rubocop".lightblue
       end
-    else
-      puts "Rubocop is not installed, and thus will not be used to sanitize #{local_package}".lightred
-      puts 'To install Rubocop, run the following command: '.lightred + "crew #{'re' if PackageUtils.installed?('ruby_rubocop')}install ruby_rubocop".lightblue
     end
 
     to_copy_package = force

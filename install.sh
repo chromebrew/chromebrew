@@ -1,5 +1,6 @@
 #!/bin/bash
-CREW_INSTALLER_VERSION=2026021101
+CREW_INSTALLER_VERSION=2026021201
+export CREW_INSTALLER_RUNNING=1
 # Exit on fail.
 set -eE
 
@@ -507,6 +508,34 @@ function install_ruby_gem () {
   done
 }
 
+function update_and_install_rubygems () {
+  # Note that installing rubocop early does NOT work, as there are
+  # dependencies that need to be installed first, and that is done
+  # through the normal install process.
+  echo_info 'Updating RubyGems...'
+  ${PREFIX_CMD} gem sources -u
+  # Avoid repl_type_completor, which pulls in the rbs gem, which needs a build.
+  # shellcheck disable=SC2016
+  ${PREFIX_CMD} gem outdated | cut -d " " -f 1 | grep -v repl_type_completor | xargs -I % bash -c 'export pkg=% ; grep -q no_compile_needed /usr/local/lib/crew/packages/ruby_${pkg//-/_}.rb && (echo "Updating % gem" ; gem update % --no-update-sources -N) || echo "Not updating % gem, since it needs a gem compile and buildessential has not been installed yet."'
+
+  # Mark packages as installed for pre-installed gems.
+  mapfile -t installed_gems < <(gem list | awk -F ' \(' '{print $1, $2}' | sed -e 's/default://' -e 's/)//' -e 's/,//' | awk '{print $1, $2}')
+  for i in "${!installed_gems[@]}"
+    do
+     j="${installed_gems[$i]}"
+     gem_package="${j% *}"
+     crew_gem_package="ruby_${gem_package//-/_}"
+     gem_version="${j#* }"
+     gem contents "${gem_package}" > "${CREW_META_PATH}/${crew_gem_package}.filelist"
+     update_device_json "ruby_${gem_package//-/_}" "${gem_version}-${CREW_RUBY_VER}" ""
+  done
+
+  echo_info "Installing essential ruby gems...\n"
+  BOOTSTRAP_GEMS='base64 connection_pool concurrent-ruby drb i18n logger minitest securerandom tzinfo highline ptools openssl rbs'
+  # shellcheck disable=SC2086
+  install_ruby_gem ${BOOTSTRAP_GEMS}
+}
+
 echo_info "Downloading Bootstrap packages:\n${BOOTSTRAP_PACKAGES}"
 
 # Set LD_LIBRARY_PATH so crew doesn't break on i686, xz doesn't fail on
@@ -556,28 +585,7 @@ echo "export CREW_PREFIX=${CREW_PREFIX}" >> "${CREW_PREFIX}/etc/env.d/profile"
 
 CREW_RUBY_VER="ruby$(ruby -e 'puts RUBY_VERSION.slice(/(?:.*(?=\.))/)')"
 
-echo_info 'Updating RubyGems...'
-${PREFIX_CMD} gem sources -u
-# Avoid repl_type_completor, which pulls in the rbs gem, which needs a build.
-# shellcheck disable=SC2016
-${PREFIX_CMD} gem outdated | cut -d " " -f 1 | grep -v repl_type_completor | xargs -I % bash -c 'export pkg=% ; grep -q no_compile_needed /usr/local/lib/crew/packages/ruby_${pkg//-/_}.rb && (echo "Updating % gem" ; gem update % --no-update-sources -N) || echo "Not updating % gem, since it needs a gem compile and buildessential has not been installed yet."'
-
-# Mark packages as installed for pre-installed gems.
-mapfile -t installed_gems < <(gem list | awk -F ' \(' '{print $1, $2}' | sed -e 's/default://' -e 's/)//' -e 's/,//' | awk '{print $1, $2}')
-for i in "${!installed_gems[@]}"
-  do
-   j="${installed_gems[$i]}"
-   gem_package="${j% *}"
-   crew_gem_package="ruby_${gem_package//-/_}"
-   gem_version="${j#* }"
-   gem contents "${gem_package}" > "${CREW_META_PATH}/${crew_gem_package}.filelist"
-   update_device_json "ruby_${gem_package//-/_}" "${gem_version}-${CREW_RUBY_VER}" ""
-done
-
-echo_info "Installing essential ruby gems...\n"
-BOOTSTRAP_GEMS='base64 connection_pool concurrent-ruby drb i18n logger minitest securerandom tzinfo highline ptools openssl rbs'
-# shellcheck disable=SC2086
-install_ruby_gem ${BOOTSTRAP_GEMS}
+update_and_install_rubygems
 
 # Git needs to be working since crew invokes it in lib/const.rb.
 if ! git --version; then
