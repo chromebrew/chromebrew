@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Abseil_cpp < CMake
   description 'Abseil Common Libraries C++'
   homepage 'https://abseil.io/'
-  version '20260107.0'
+  version '20260107.1'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/abseil/abseil-cpp.git'
