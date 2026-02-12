@@ -6,6 +6,9 @@ require_relative '../lib/require_gem'
 
 class Command
   def self.check(name, force)
+    # We don't need to check during the Chromebrew install.
+    return true if ENV['CREW_INSTALLER_RUNNING']
+
     local_package = File.join(CREW_LOCAL_REPO_ROOT, 'packages', "#{name}.rb")
     crew_package = File.join(CREW_PACKAGES_PATH, "#{name}.rb")
     local_filelist = File.join(CREW_LOCAL_REPO_ROOT, 'manifest', ARCH, name[0].to_s, "#{name}.filelist")
