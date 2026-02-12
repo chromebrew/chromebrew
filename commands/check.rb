@@ -6,6 +6,9 @@ require_relative '../lib/require_gem'
 
 class Command
   def self.check(name, force)
+    # We don't need to check during the Chromebrew install.
+    return true if ENV['CREW_INSTALLER_RUNNING']
+
     local_package = File.join(CREW_LOCAL_REPO_ROOT, 'packages', "#{name}.rb")
     crew_package = File.join(CREW_PACKAGES_PATH, "#{name}.rb")
     local_filelist = File.join(CREW_LOCAL_REPO_ROOT, 'manifest', ARCH, name[0].to_s, "#{name}.filelist")
@@ -105,11 +108,11 @@ class Command
     end
 
     # Run property and buildsystem tests on the package, and fail if they fail.
-    return false unless system "#{CREW_LIB_PATH}/tests/prop_test #{name}"
-    return false unless system "#{CREW_LIB_PATH}/tests/buildsystem_test #{name}"
+    return false unless system "#{CREW_LIB_PATH}/tests/prop_test.rb #{name}"
+    return false unless system "#{CREW_LIB_PATH}/tests/buildsystem_test.rb #{name}"
     if ARGV[0] == 'check'
-      return false unless system("#{CREW_LIB_PATH}/tests/library_test #{name}")
-      return false unless system("#{CREW_LIB_PATH}/tests/package_test #{name}")
+      return false unless system("#{CREW_LIB_PATH}/tests/library_test.rb #{name}")
+      return false unless system("#{CREW_LIB_PATH}/tests/package_test.rb #{name}")
     end
 
     # If we're still here every test has passed, so return true.

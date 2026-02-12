@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gtk4 < Meson
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://www.gtk.org/'
-  version '4.20.2'
+  version '4.20.3'
   license 'LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
@@ -11,11 +11,13 @@ class Gtk4 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b3627c8720cdf41e459964f44a477a90dd24e64518cd2190a98c6c4b6d2ff04c',
-     armv7l: 'b3627c8720cdf41e459964f44a477a90dd24e64518cd2190a98c6c4b6d2ff04c',
-     x86_64: '93152f070abd5e2402c6e04ccad186f79d2596e07ed8b459803decd238a444f4'
+    aarch64: '0ce35946d1961f8c88e5282131c684d2ba5796adaffab2d44277b4550e8f12a2',
+     armv7l: '0ce35946d1961f8c88e5282131c684d2ba5796adaffab2d44277b4550e8f12a2',
+     x86_64: 'f0df0579473887cc0f967ffa2f5485f76cf992f70010d9f0eb1cb1d36cc4958f'
   })
 
+  # depends_on 'gnome_icon_theme' # L
+  # depends_on 'gstreamer' # R Let's avoid the glibc 2.29 dep.
   depends_on 'adwaita_fonts' # L
   depends_on 'adwaita_icon_theme' # L
   depends_on 'cairo' # R
@@ -29,10 +31,8 @@ class Gtk4 < Meson
   depends_on 'glib' # R
   depends_on 'glibc' # R
   depends_on 'glslang' => :build
-  # depends_on 'gnome_icon_theme' # L
   depends_on 'gobject_introspection' => :build
   depends_on 'graphene' # R
-  # depends_on 'gstreamer' # R Let's avoid the glibc 2.29 dep.
   depends_on 'harfbuzz' # R
   depends_on 'hicolor_icon_theme' # L
   depends_on 'intel_media_sdk' => :build if ARCH.eql?('x86_64')
@@ -62,7 +62,7 @@ class Gtk4 < Meson
   depends_on 'sassc' => :build
   depends_on 'shaderc' => :build
   depends_on 'shared_mime_info' # L
-  depends_on 'sommelier' # L
+  depends_on 'sommelier' => :logical
   depends_on 'valgrind' => :build
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' # R
@@ -80,6 +80,15 @@ class Gtk4 < Meson
       FileUtils.rm_rf "subprojects/#{dep}"
       FileUtils.rm_rf "subprojects/#{dep}.wrap"
     end
+
+    patches = [
+      # These fix the 32-bit build.
+      ['https://gitlab.gnome.org/GNOME/gtk/-/commit/1f9e80c8c0e7440f6d2256fbf8ead29c44a83b90.patch',
+       '130071ac28e4fca222915a232b754dafcaf2a6b937634ab7da1383dbc3f10429'],
+      ['https://gitlab.gnome.org/GNOME/gtk/-/commit/af9440dea029d225adcfc1f9024a1122e9abb006.patch',
+       '6ff8f4264ec92ffc2922c0c7c3b9bd52293d62aa553aec27146dcda9a64b072f']
+    ]
+    ConvenienceFunctions.patch(patches) if ARCH != 'x86_64' && version == '4.20.3'
   end
 
   meson_options '-Dbroadway-backend=true \

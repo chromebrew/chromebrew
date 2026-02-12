@@ -1,5 +1,10 @@
 #!/bin/bash
+<<<<<<< update-install.sh
 CREW_INSTALLER_VERSION=2026010401
+=======
+CREW_INSTALLER_VERSION=2026021201
+export CREW_INSTALLER_RUNNING=1
+>>>>>>> master
 # Exit on fail.
 set -eE
 
@@ -86,6 +91,7 @@ else
   echo_info "Unable to detect system information, installation will continue."
 fi
 
+<<<<<<< update-install.sh
 this_installer=$(basename "$0")
 case "${this_installer}" in
   63)
@@ -102,6 +108,16 @@ case "${this_installer}" in
   *)
     echo_info "Installer ${this_installer} last modified at: $(stat -c %y "$0")"
 esac
+=======
+set -a
+# Default chromebrew repo values.
+: "${OWNER:=chromebrew}"
+: "${REPO:=chromebrew}"
+: "${BRANCH:=master}"
+: "${CREW_BRANCH:=${BRANCH}}"
+: "${CREW_REPO:=https://github.com/${OWNER}/${REPO}.git}"
+set +a
+>>>>>>> master
 
 # Check if the user owns the CREW_PREFIX directory and prompt to fix if not.
 if [ -n "$(/usr/bin/find ${CREW_PREFIX} ! -user $(id -u) -printf '%u')" ]; then
@@ -281,7 +297,9 @@ function curl_wrapper () {
 }
 
 # This will create the directories.
-crew_folders="bin cache doc docbook include lib/crew/packages lib${CREW_LIB_SUFFIX} libexec man sbin share var etc/crew/meta etc/env.d tmp/crew/dest"
+# Note that .cache/gem/specs is needed as per the SPEC CACHE DIRECTORY
+# reported in 'gem environment'.
+crew_folders="bin cache doc docbook include lib/crew/packages lib${CREW_LIB_SUFFIX} libexec man sbin share var etc/crew/meta etc/env.d tmp/crew/dest .cache/gem/specs"
 # shellcheck disable=SC2086
 # Quoting crew_folders leads to breakage.
 (cd "${CREW_PREFIX}" && /bin/mkdir -p ${crew_folders})
@@ -457,12 +475,36 @@ function extract_install () {
   echo_intra "Installing ${1}..."
   /bin/tar cpf - ./*/* | (cd /; /bin/tar xp --keep-directory-symlink -m -f -)
 
+<<<<<<< update-install.sh
   if [[ "${1}" == 'glibc' ]] || [[ "${1}" == 'crew_preload' ]]; then
     # Update ld.so cache.
     if [[ "$ARCH" == "i686" ]] || [[ "$ARCH" == "armv7l" ]]; then
       ("${CREW_PREFIX}/bin/ldconfig" | tee /tmp/crew_ldconfig) || true
     else
      "${CREW_PREFIX}/bin/ldconfig" || true
+=======
+    if [[ "${1}" == 'glibc' ]] || [[ "${1}" == 'crew_preload' ]]; then
+      # Update ld.so cache.
+      if [[ "$ARCH" == "i686" ]] || [[ "$ARCH" == "armv7l" ]]; then
+        (sudo "${CREW_PREFIX}/bin/ldconfig" | tee /tmp/crew_ldconfig) || true
+      else
+      "${CREW_PREFIX}/bin/ldconfig" || true
+      fi
+      [[ -d "${CREW_PREFIX}/opt/glibc-libs" ]] && [[ -f "${CREW_PREFIX}/lib${CREW_LIB_SUFFIX}/crew-preload.so" ]] && export LD_PRELOAD="${CREW_PREFIX}/lib${CREW_LIB_SUFFIX}/crew-preload.so"
+    else
+      # Decompress binaries.
+      if command -v upx &> /dev/null; then
+        echo_intra "Running upx on ${1}..."
+        grep "/usr/local/\(bin\|lib\|lib${CREW_LIB_SUFFIX}\)" < filelist | xargs -P "$(nproc)" -n1 upx -qq -d 2> /dev/null || true
+      fi
+      # Switch to our glibc for existing binaries if needed.
+      if [[ -d "${CREW_PREFIX}/opt/glibc-libs" ]]; then
+        if command -v patchelf &> /dev/null; then
+          echo_intra "Running patchelf on ${1}..."
+          grep "${CREW_PREFIX}/\(bin\|libexec\)" < filelist | xargs -P "$(nproc)" -n1 patchelf --set-interpreter "${PATCHELF_INTERPRETER}" 2> /dev/null || true
+        fi
+      fi
+>>>>>>> master
     fi
     #[[ -d /usr/local/opt/glibc-libs ]] && export LD_PRELOAD=crew-preload.so
   else
@@ -531,6 +573,34 @@ function install_ruby_gem () {
   done
 }
 
+function update_and_install_rubygems () {
+  # Note that installing rubocop early does NOT work, as there are
+  # dependencies that need to be installed first, and that is done
+  # through the normal install process.
+  echo_info 'Updating RubyGems...'
+  ${PREFIX_CMD} gem sources -u
+  # Avoid repl_type_completor, which pulls in the rbs gem, which needs a build.
+  # shellcheck disable=SC2016
+  ${PREFIX_CMD} gem outdated | cut -d " " -f 1 | grep -v repl_type_completor | xargs -I % bash -c 'export pkg=% ; grep -q no_compile_needed /usr/local/lib/crew/packages/ruby_${pkg//-/_}.rb && (echo "Updating % gem" ; gem update % --no-update-sources -N) || echo "Not updating % gem, since it needs a gem compile and buildessential has not been installed yet."'
+
+  # Mark packages as installed for pre-installed gems.
+  mapfile -t installed_gems < <(gem list | awk -F ' \(' '{print $1, $2}' | sed -e 's/default://' -e 's/)//' -e 's/,//' | awk '{print $1, $2}')
+  for i in "${!installed_gems[@]}"
+    do
+     j="${installed_gems[$i]}"
+     gem_package="${j% *}"
+     crew_gem_package="ruby_${gem_package//-/_}"
+     gem_version="${j#* }"
+     gem contents "${gem_package}" > "${CREW_META_PATH}/${crew_gem_package}.filelist"
+     update_device_json "ruby_${gem_package//-/_}" "${gem_version}-${CREW_RUBY_VER}" ""
+  done
+
+  echo_info "Installing essential ruby gems...\n"
+  BOOTSTRAP_GEMS='base64 connection_pool concurrent-ruby drb i18n logger minitest securerandom tzinfo highline ptools openssl rbs'
+  # shellcheck disable=SC2086
+  install_ruby_gem ${BOOTSTRAP_GEMS}
+}
+
 echo_info "Downloading Bootstrap packages:\n${BOOTSTRAP_PACKAGES}"
 
 # Extract, install and register packages.
@@ -568,6 +638,7 @@ echo_out "\nCreating symlink to 'crew' in ${CREW_PREFIX}/bin/"
 echo "export CREW_PREFIX=${CREW_PREFIX}" >> "${CREW_PREFIX}/etc/env.d/profile"
 
 CREW_RUBY_VER="ruby$(ruby -e 'puts RUBY_VERSION.slice(/(?:.*(?=\.))/)')"
+<<<<<<< update-install.sh
 #echo_info 'Updating RubyGems...'
 #${PREFIX_CMD} gem sources -u
 # Avoid repl_type_completor, which pulls in the rbs gem, which needs a build.
@@ -584,11 +655,10 @@ for i in "${!installed_gems[@]}"; do
   gem contents "${gem_package}" > "${CREW_META_PATH}/${crew_gem_package}.filelist"
   update_device_json "ruby_${gem_package//-/_}" "${gem_version}-${CREW_RUBY_VER}" ""
 done
+=======
+>>>>>>> master
 
-echo_info "Installing essential ruby gems...\n"
-BOOTSTRAP_GEMS='base64 connection_pool concurrent-ruby drb i18n logger minitest securerandom tzinfo highline ptools openssl rbs'
-# shellcheck disable=SC2086
-install_ruby_gem ${BOOTSTRAP_GEMS}
+update_and_install_rubygems
 
 # Git needs to be working since crew invokes it in lib/const.rb.
 if ! git --version; then
@@ -598,6 +668,9 @@ if ! git --version; then
   echo_error "git is broken. Install will fail."
   exit 1
 fi
+# Set CREW_LOCAL_REPO_ROOT since git rev-parse --show-toplevel will not
+# work until the git clone is setup.
+export CREW_LOCAL_REPO_ROOT="${CREW_PREFIX}/lib/crew"
 # This is needed for SSL env variables to be populated so ruby doesn't
 # complain about missing certs, resulting in failed https connections.
 echo_info "Installing crew_profile_base...\n"
@@ -605,8 +678,15 @@ yes | ${PREFIX_CMD} crew install crew_profile_base
 
 # shellcheck disable=SC1090
 trap - ERR && source ~/.bashrc && set_trap
+
 echo_info "Installing core Chromebrew packages...\n"
 yes | ${PREFIX_CMD} crew install core || (yes | ${PREFIX_CMD} crew install core)
+
+echo_info "Installing buildessential...\n"
+yes | ${PREFIX_CMD} crew install buildessential
+
+# Ensure installed binaries have correct execute permissions.
+chmod +x "${CREW_PREFIX}"/bin/* 2>/dev/null || true
 
 echo_info "\nRunning Bootstrap package postinstall scripts...\n"
 # Due to a bug in crew where it accepts spaces in package files names rather than
@@ -646,8 +726,8 @@ else
   git sparse-checkout set packages "manifest/${ARCH}" lib commands bin crew tests tools
   git reset --hard origin/"${BRANCH}"
 
-  # Set mtimes of files to when the file was committed.
-  git-restore-mtime -sq 2>/dev/null
+  # Set mtimes of files to when the file was committed (if tool is available).
+  [[ -x "${CREW_PREFIX}/bin/git-restore-mtime" ]] && git-restore-mtime -sq 2>/dev/null || true
 
   echo_info "Cleaning up older ruby gem versions...\n"
   gem cleanup

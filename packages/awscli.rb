@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Awscli < Pip
   description 'Universal Command Line Interface for Amazon Web Services'
   homepage 'https://github.com/aws/aws-cli'
-  version "1.44.14-#{CREW_PY_VER}"
+  version "1.44.37-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'
@@ -17,15 +17,18 @@ class Awscli < Pip
   })
 
   binary_sha256({
-    aarch64: '0231c719c0136675d1e99477afef9fff4ec588d70b462314f790ce3e2837b474',
-     armv7l: '0231c719c0136675d1e99477afef9fff4ec588d70b462314f790ce3e2837b474',
-       i686: '21af956ce332e54124229152af5e7825315f74495adc75a417d3b3b5f86b0c02',
-     x86_64: 'a06284c1c2eab7d28f2c0951c8a0211aed032d13f02cb8b6ac5b228a75fa681d'
+    aarch64: 'c0addc42c59d36ed9ef0ca7cff0f74d9913c589fe0b5147ca18405da6b362dc1',
+     armv7l: 'c0addc42c59d36ed9ef0ca7cff0f74d9913c589fe0b5147ca18405da6b362dc1',
+       i686: '5388d4678eab00d4a8c6670ac39034ba09783f317714fdc022702497975d2be2',
+     x86_64: 'eedbbd9bcadef0f1bad88054397937e1761a177365740f7c2b8b7c43dec9adb3'
   })
 
   depends_on 'groff' # R
   depends_on 'py3_botocore' # R
   depends_on 'py3_docutils' # R
+  depends_on 'py3_jmespath' # R
+  depends_on 'py3_pyasn1' # R
+  depends_on 'py3_python_dateutil' # R
   depends_on 'py3_rsa' # R
   depends_on 'py3_s3transfer' # R
   depends_on 'python3' => :build

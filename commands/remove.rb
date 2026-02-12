@@ -53,8 +53,8 @@ class Command
     pkg.preremove unless only_remove_files
 
     # Use gem to first try to remove gems...
-    if pkg.name.start_with?('ruby_')
-      @ruby_gem_name = pkg.name.sub('ruby_', '').sub('_', '-')
+    if pkg.superclass.to_s == 'RUBY'
+      @ruby_gem_name = pkg.upstream_name.nil? ? pkg.name.sub('ruby_', '').sub('_', '-') : pkg.upstream_name
       if Kernel.system "gem list -i \"^#{@ruby_gem_name}\$\"", %i[out err] => File::NULL
         puts "Uninstalling #{@ruby_gem_name} before removing gem files. It's ok if this fails.".orange
         system "gem uninstall -aIx --abort-on-dependent #{@ruby_gem_name}", exception: false

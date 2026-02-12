@@ -1,5 +1,4 @@
 require_relative '../color'
-require_relative '../gem_compact_index_client'
 require_relative '../package'
 require_relative '../package_utils'
 require_relative '../report_buildsystem_methods'
@@ -21,74 +20,31 @@ def check_gem_binary_build_needed(ruby_gem_name = nil, ruby_gem_version = nil)
   return @build_needed
 end
 
-def gem_info(ruby_gem_name = nil)
-  # @ruby_gem_version comes from the set_vars function.
-  installed_gem_search = [`gem list --no-update-sources -l -e #{ruby_gem_name}`.chomp.to_s].grep(/#{ruby_gem_name}/)[0]
-  if installed_gem_search
-    installed_gem_info = installed_gem_search.delete('()').gsub('default:', '').gsub(',', '').split
-    @gem_installed_version = installed_gem_info[1]
-    @gem_outdated = (Gem::Version.new(@ruby_gem_version) > Gem::Version.new(@gem_installed_version))
-    @gem_latest_version_installed = Gem::Version.new(@ruby_gem_version) <= Gem::Version.new(@gem_installed_version)
-  else
-    # If the current gem being installed is not installed this should
-    # be false. This will also handle cases of the current installed
-    # gem as per 'gem list' being the same version as the version
-    # being upgraded to.
-    @gem_latest_version_installed = false
-  end
-  crewlog "@ruby_gem_version: #{@ruby_gem_version} gem_installed_version: #{@gem_installed_version} @gem_outdated: #{@gem_outdated} @gem_latest_version_installed: #{@gem_latest_version_installed}"
-end
-
-def set_vars(passed_name = nil, passed_version = nil)
-  # crewlog "Setting gem variables... name: #{passed_name}, version: #{passed_version}"
-  # This assumes the package class name starts with 'Ruby_' and
-  # version is in the form '(gem version)-ruby-(ruby version)'.
-  # For example, name 'Ruby_awesome' and version '1.0.0-ruby-3.3'.
-
-  # Just use the fetcher.suggest_gems_from_name function to figure out
-  # proper gem name with the appropriate dashes and underscores.
-  if CREW_VERBOSE
-    # Voluminous info about the gem fetcher network connection...
-    require 'rubygems/request'
-    Gem::Request.prepend(Module.new do
-      def perform_request(req)
-        super.tap { |rsp| p [self, req, rsp] }
-      end
-    end)
-  end
-  if $gems.blank?
-    puts 'Populating gem information using compact index client...'.lightgreen
-    $gems ||= BasicCompactIndexClient.new.gems
-    puts 'Done populating gem information.'.lightgreen
-  end
-  # Parse gem information from compact index, the format for which is
-  # here: https://guides.rubygems.org/rubygems-org-compact-index-api/
-  # Figure out gem name, noting that there may be dashes and underscores
-  # in the name.
-  gem_test = $gems.grep(/#{"^#{passed_name.gsub(/^ruby_/, '')}\\s.*$"}/).last.blank? ? $gems.grep(/#{"^\(#{passed_name.gsub(/^ruby_/, '').gsub('_', ')+.(')}\\s\).*$"}/).last : $gems.grep(/#{"^#{passed_name.gsub(/^ruby_/, '')}\\s.*$"}/).last
-  abort "Cannot find #{passed_name} gem to install.".lightred if gem_test.blank?
-  gem_test_name = gem_test.split.first
-  gem_test_versions = gem_test.split[1].split(',')
-  # Remove minus prefixed versions, as those have been yanked as per
-  # https://guides.rubygems.org/rubygems-org-compact-index-api/
-  gem_test_versions.delete_if { |i| i.start_with?('-') }
-  # Any version with a letter is considered a prerelease as per
-  # https://github.com/rubygems/rubygems/blob/b5798efd348935634d4e0e2b846d4f455582db48/lib/rubygems/version.rb#L305
-  gem_test_versions.delete_if { |i| i.match?(/[a-zA-Z]/) }
-  gem_test_version = gem_test_versions.map { |v| Gem::Version.new(v) }.max.to_s
-  @ruby_gem_name = gem_test_name.blank? ? Gem::SpecFetcher.fetcher.suggest_gems_from_name(passed_name.gsub(/^ruby_/, '')).first : gem_test_name
-  @remote_ruby_gem_version = gem_test_name.blank? ? Gem.latest_version_for(@ruby_gem_name).to_s : gem_test_version
-  @ruby_gem_version = passed_version.split('-').first.to_s
-  @gem_package_ver = @ruby_gem_version.dup
-  # Use latest gem version.
-  @ruby_gem_version = @remote_ruby_gem_version.to_s if Gem::Version.new(@remote_ruby_gem_version.to_s) > Gem::Version.new(@ruby_gem_version)
-end
-
-def save_gem_filelist(gem_name = nil, gem_filelist_path = nil)
+def save_gem_filelist(gem_name = nil, gem_version = nil, gem_filelist_path = nil)
+  gem_filelist_path = File.join(CREW_META_PATH, "ruby_#{gem_name.gsub('-', '_')}.filelist") if gem_filelist_path.nil?
   crewlog "@gem_latest_version_installed: #{@gem_latest_version_installed}"
+  # Skip if in reinstall or upgrade, as the install hasn't happened yet.
+  # return if @pkg.in_upgrade
   # We need the gem reinstalled, so we don't use --conservative, which
   # avoids the reinstall.
-  files = `gem install --no-update-sources -N #{gem_name} &>/dev/null ; gem contents #{gem_name}`.chomp.split
+  files = `gem contents #{gem_name}`.chomp.split
+  if [`gem list --no-update-sources -l -e #{gem_name}`.chomp.to_s].grep(/#{gem_name}/)[0] && !files.blank?
+    # Gem is already installed.
+    crewlog "#{gem_name} is already installed."
+  elsif File.file?("#{CREW_DEST_DIR}/#{gem_name}-#{gem_version}-#{GEM_ARCH}.gem")
+    # Gem not installed but a binary for the gem exists.
+    crewlog "#{gem_name} not installed, but a binary exists."
+    Kernel.system "gem install --no-update-sources -N --local #{CREW_DEST_DIR}/#{gem_name}-#{gem_version}-#{GEM_ARCH}.gem --conservative &>/dev/null"
+  else
+    crewlog "#{gem_name} is not installed"
+    Kernel.system "gem install --no-update-sources -N #{gem_name} &>/dev/null"
+  end
+  files = `gem contents #{gem_name}`.chomp.split
+  if files.blank?
+    puts "Filelist is blank for #{gem_name}".lightred
+    return
+  end
+
   exes = files.grep(%r{/exe/|/bin/})
   # Gem.bindir should end up being #{CREW_PREFIX}/bin.
   exes&.map! { |x| x.gsub(%r{^.*(/exe/|/bin/)}, "#{Gem.bindir}/") }
@@ -102,14 +58,18 @@ def save_gem_filelist(gem_name = nil, gem_filelist_path = nil)
     ["/#{e[1..]}", File.symlink?(e) ? 0 : File.size(e)]
   end
 
+  # If the package is completely empty, something has probably gone wrong.
+  total_size = filelist.values.sum
+  abort 'total_size is 0. It seems that no files were installed.'.lightred if total_size.zero?
+
   File.write gem_filelist_path, <<~EOF
-    # Total size: #{filelist.values.sum}
+    # Total size: #{total_size}
     #{filelist.keys.sort.join("\n")}
   EOF
-  if Dir.exist?("#{CREW_LOCAL_REPO_ROOT}/manifest") && File.writable?("#{CREW_LOCAL_REPO_ROOT}/manifest")
-    FileUtils.mkdir_p "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/r"
-    FileUtils.cp gem_filelist_path, "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/r/ruby_#{gem_name.gsub('-', '_')}.filelist"
-  end
+  local_filelist = File.join(CREW_LOCAL_REPO_ROOT, 'manifest', ARCH, name[0].to_s, "#{name}.filelist")
+  FileUtils.mkdir_p File.join(CREW_LOCAL_REPO_ROOT, 'manifest', ARCH, name[0].to_s)
+  FileUtils.cp gem_filelist_path, local_filelist
+  puts "Copied #{gem_filelist_path} to #{local_filelist}".lightpurple if CREW_VERBOSE || ENV['NESTED_CI']
 end
 
 def add_gem_binary_compression(pkg_name = nil)
@@ -144,6 +104,38 @@ def add_gem_binary_compression(pkg_name = nil)
   end
 end
 
+def install_gem_deps(gem_name = nil, gem_version = nil, gem_deps = nil)
+  return if gem_deps.nil? || gem_deps.blank?
+  puts 'Dependencies:'.orange
+  puts gem_deps
+  gem_deps.each do |gem_dep|
+    gem_dep = "ruby_#{gem_dep.gsub('-', '_')}"
+    if File.file?(File.join(CREW_PACKAGES_PATH, "#{gem_dep}.rb"))
+      crewlog "#{gem_dep.capitalize} package exists."
+      install_pkg = Package.load_package("packages/#{gem_dep}.rb")
+      installed_gem_search = [`gem list --no-update-sources -l -e #{gem_name}`.chomp.to_s].grep(/#{gem_name}/)[0]
+      if installed_gem_search
+        installed_gem_info = installed_gem_search.delete('()').gsub('default:', '').gsub(',', '').split
+        gem_installed_version = installed_gem_info[1]
+        (Gem::Version.new(gem_version) > Gem::Version.new(gem_installed_version))
+        gem_latest_version_installed = Gem::Version.new(gem_version) <= Gem::Version.new(gem_installed_version)
+      else
+        gem_latest_version_installed = false
+      end
+      crewlog "#{install_pkg.name}: PackageUtils.installed?(install_pkg.name): #{PackageUtils.installed?(install_pkg.name)} gem_latest_version_installed: #{gem_latest_version_installed}"
+      if PackageUtils.installed?(install_pkg.name) && gem_latest_version_installed
+        crewlog "Current version of #{gem_dep.capitalize} installed."
+      else
+        install_pkg = Package.load_package("packages/#{gem_dep}.rb")
+        crewlog "#{install_pkg.name} installed".orange if PackageUtils.installed?(install_pkg.name)
+        system("yes | crew install #{gem_dep}")
+      end
+    else
+      puts "Will not install #{gem_dep} from a Chromebrew package, as one does not exist.".orange
+    end
+  end
+end
+
 class RUBY < Package
   property :ruby_gem_name, :ruby_gem_version, :ruby_install_extras
 
@@ -151,14 +143,19 @@ class RUBY < Package
 
   def self.preflight
     @install_gem ||= true
-    set_vars(name, version)
+    @ruby_gem_name, @ruby_gem_version, @remote_ruby_gem_version, @gem_installed_version, @gem_latest_version_installed, @gem_outdated, @gem_deps = PackageUtils.get_gem_vars(name, version, Package.load_package(File.join(CREW_PACKAGES_PATH, "#{name}.rb")).upstream_name)
     puts "Examining #{@ruby_gem_name} gem...".orange
     @gem_filelist_path = File.join(CREW_META_PATH, "#{name}.filelist")
-    gem_info(@ruby_gem_name)
+
+    # Check for gem dependencies before installing, in case those gems
+    # already have packages or binary packages, so we can avoid
+    # compiling those on end-user devices.
+    install_gem_deps(@ruby_gem_name, @ruby_gem_version, @gem_deps)
 
     # Create a filelist from the gem if the latest gem version is
     # installed.
-    save_gem_filelist(@ruby_gem_name, @gem_filelist_path) if @gem_latest_version_installed
+    crewlog "@gem_latest_version_installed for #{@ruby_gem_name} is #{@gem_latest_version_installed}"
+    save_gem_filelist(@ruby_gem_name, @ruby_gem_version, @gem_filelist_path) if @gem_latest_version_installed
 
     # If the version number gem reports isn't newer than the version
     # number that Chromebrew has recorded, force an install.
@@ -171,7 +168,10 @@ class RUBY < Package
     # installed or having a changed version number despite the gem
     # having been installed.
     @json_gem_pkg_version = pkg_info[:version].gsub!('_', '-').to_s
-    @install_gem = false if Gem::Version.new(@ruby_gem_version) <= Gem::Version.new(@json_gem_pkg_version)
+    if Gem::Version.new(@ruby_gem_version) <= Gem::Version.new(@json_gem_pkg_version)
+      crewlog "#{name}: #{@ruby_gem_version} <= #{@json_gem_pkg_version}, setting @install_gem to false"
+      @install_gem = false
+    end
   end
 
   def self.preinstall
@@ -195,19 +195,28 @@ class RUBY < Package
   def self.install
     # @install_gem will always be true during upgrades since we remove
     # the old gem during the upgrade.
-    set_vars(name, version) if @ruby_gem_name.blank? || @gem_installed_version.blank?
+    @ruby_gem_name, @ruby_gem_version, @remote_ruby_gem_version, @gem_installed_version, @gem_latest_version_installed, @gem_outdated, @gem_deps = PackageUtils.get_gem_vars(name, version, Package.load_package(File.join(CREW_PACKAGES_PATH, "#{name}.rb")).upstream_name) if @ruby_gem_name.blank? || @gem_installed_version.blank? || @ruby_gem_version.blank?
+    @gem_filelist_path = File.join(CREW_META_PATH, "#{name.downcase}.filelist") if @gem_filelist_path.nil?
+    if @gem_installed_version.blank?
+      crewlog "@gem_installed_version.blank? is #{@gem_installed_version.blank?}, setting @install_gem = true"
+      @install_gem = true if @gem_installed_version.blank?
+    end
     unless @install_gem
       puts "#{@ruby_gem_name} #{@gem_installed_version} is properly installed.".lightgreen
       return
     end
-    gem_info(@ruby_gem_name)
 
     crewlog "no_compile_needed?: #{no_compile_needed?} @gem_binary_build_needed.blank?: #{@gem_binary_build_needed.blank?}, gem_compile_needed?: #{gem_compile_needed?}"
     puts "#{@ruby_gem_name.capitalize} needs a binary gem built!".orange unless @gem_binary_build_needed.blank?
     if !no_compile_needed? || !@gem_binary_build_needed.blank? || gem_compile_needed?
       @gem_pkg = Package.load_package(File.join(CREW_PACKAGES_PATH, "#{name}.rb"))
       gem_pkg_sha256sum = PackageUtils.get_sha256(@gem_pkg)
-      gem_sha256 = `sha256sum #{CREW_DEST_DIR}/#{@ruby_gem_name}-#{@ruby_gem_version}-#{GEM_ARCH}.gem`.chomp.split.first
+      if File.file?("#{CREW_DEST_DIR}/#{@ruby_gem_name}-#{@ruby_gem_version}-#{GEM_ARCH}.gem")
+        gem_sha256 = `sha256sum #{CREW_DEST_DIR}/#{@ruby_gem_name}-#{@ruby_gem_version}-#{GEM_ARCH}.gem`.chomp.split.first
+      else
+        system "ls -aFl #{CREW_DEST_DIR}"
+        gem_sha256 = nil
+      end
       if File.file?("#{CREW_DEST_DIR}/#{@ruby_gem_name}-#{@ruby_gem_version}-#{GEM_ARCH}.gem") && (gem_sha256 == gem_pkg_sha256sum || @just_built_gem)
         puts "Installing #{@ruby_gem_name} gem #{@ruby_gem_version}...".orange
         Kernel.system "gem install --no-update-sources -N --local #{CREW_DEST_DIR}/#{@ruby_gem_name}-#{@ruby_gem_version}-#{GEM_ARCH}.gem --conservative"
@@ -220,9 +229,10 @@ class RUBY < Package
       Kernel.system "gem install --no-update-sources -N #{@ruby_gem_name} --conservative"
     end
     # Check gem versions again.
-    gem_info(@ruby_gem_name)
+    @ruby_gem_name, @ruby_gem_version, @remote_ruby_gem_version, @gem_installed_version, @gem_latest_version_installed, @gem_outdated, @gem_deps = PackageUtils.get_gem_vars(name, version, Package.load_package(File.join(CREW_PACKAGES_PATH, "#{name}.rb")).upstream_name)
     @gems_needing_cleanup = Array(@gems_needing_cleanup) << @ruby_gem_name unless @gem_latest_version_installed
-    save_gem_filelist(@ruby_gem_name, @gem_filelist_path)
+    puts "save_gem_filelist(#{@ruby_gem_name}, #{@ruby_gem_version}, #{@gem_filelist_path})".lightpurple if CREW_VERBOSE
+    save_gem_filelist(@ruby_gem_name, @ruby_gem_version, @gem_filelist_path)
     add_gem_binary_compression(name) if File.file?(@gem_filelist_path) && no_compile_needed? && system("grep '.so$' #{@gem_filelist_path}", exception: false)
     @ruby_install_extras&.call
     @install_gem = false

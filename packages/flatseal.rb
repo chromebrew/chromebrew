@@ -20,7 +20,7 @@ class Flatseal < Meson
   depends_on 'gjs'
   depends_on 'gtk4'
   depends_on 'libadwaita'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
   depends_on 'webkitgtk_6'
 
   run_tests

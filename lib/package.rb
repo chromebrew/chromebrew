@@ -72,7 +72,8 @@ class Package
            :git_hashtag,
            :max_glibc,
            :min_glibc,
-           :conflicts_with
+           :conflicts_with,
+           :upstream_name
 
   create_placeholder :preflight,       # Function for checks to see if install should occur.
                      :patch,           # Function to perform patch operations prior to build from source.
@@ -386,7 +387,7 @@ class Package
                               CREW_ENV_OPTIONS_HASH
                             end
     # Replace CREW_ARCH_FLAGS if @arch_flags_override is true.
-    crew_env_options_hash.transform_values! { |v| v.gsub(CREW_ARCH_FLAGS, CREW_ARCH_FLAGS_OVERRIDE) } if arch_flags_override
+    crew_env_options_hash.transform_values! { |v| v.gsub(CREW_ARCH_FLAGS, CREW_ARCH_FLAGS_OVERRIDE) } if arch_flags_override?
 
     # Add exception option to opt_args.
     opt_args.merge!(exception: true) unless opt_args.key?(:exception)
@@ -413,7 +414,13 @@ class Package
                                                  CREW_LINKER
                                                end
     env['CREW_PRELOAD_NO_MOLD']              = @no_mold ? '1' : '0'
+<<<<<<< update-install.sh
     # env['LD_PRELOAD']                        = File.join(CREW_LIB_PREFIX, 'crew-preload.so') if File.exist?("#{CREW_LIB_PREFIX}/crew-preload.so")
+=======
+    # Cannot use a ternary with nil here, as putting a nil into the hash can break
+    # crew_env_options_hash.transform_values!
+    env['LD_PRELOAD']                        = File.join(CREW_LIB_PREFIX, 'crew-preload.so') if File.exist?("#{CREW_LIB_PREFIX}/crew-preload.so")
+>>>>>>> master
 
     # After removing the env hash, all remaining args must be command args.
 

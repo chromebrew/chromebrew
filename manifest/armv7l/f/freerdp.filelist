@@ -1,4 +1,4 @@
-# Total size: 8003224
+# Total size: 7921368
 /usr/local/bin/freerdp-proxy
 /usr/local/bin/freerdp-shadow-cli
 /usr/local/bin/sdl-freerdp
@@ -317,22 +317,22 @@
 /usr/local/lib/freerdp3/proxy/libproxy-dyn-channel-dump-plugin.so
 /usr/local/lib/libfreerdp-client3.so
 /usr/local/lib/libfreerdp-client3.so.3
-/usr/local/lib/libfreerdp-client3.so.3.19.1
+/usr/local/lib/libfreerdp-client3.so.3.22.0
 /usr/local/lib/libfreerdp-server-proxy3.so
 /usr/local/lib/libfreerdp-server-proxy3.so.3
-/usr/local/lib/libfreerdp-server-proxy3.so.3.19.1
+/usr/local/lib/libfreerdp-server-proxy3.so.3.22.0
 /usr/local/lib/libfreerdp-server3.so
 /usr/local/lib/libfreerdp-server3.so.3
-/usr/local/lib/libfreerdp-server3.so.3.19.1
+/usr/local/lib/libfreerdp-server3.so.3.22.0
 /usr/local/lib/libfreerdp-shadow-subsystem3.so
 /usr/local/lib/libfreerdp-shadow-subsystem3.so.3
-/usr/local/lib/libfreerdp-shadow-subsystem3.so.3.19.1
+/usr/local/lib/libfreerdp-shadow-subsystem3.so.3.22.0
 /usr/local/lib/libfreerdp-shadow3.so
 /usr/local/lib/libfreerdp-shadow3.so.3
-/usr/local/lib/libfreerdp-shadow3.so.3.19.1
+/usr/local/lib/libfreerdp-shadow3.so.3.22.0
 /usr/local/lib/libfreerdp3.so
 /usr/local/lib/libfreerdp3.so.3
-/usr/local/lib/libfreerdp3.so.3.19.1
+/usr/local/lib/libfreerdp3.so.3.22.0
 /usr/local/lib/librdtk0.so
 /usr/local/lib/librdtk0.so.0
 /usr/local/lib/librdtk0.so.0.2.0
@@ -341,10 +341,10 @@
 /usr/local/lib/libuwac0.so.0.2.0
 /usr/local/lib/libwinpr-tools3.so
 /usr/local/lib/libwinpr-tools3.so.3
-/usr/local/lib/libwinpr-tools3.so.3.19.1
+/usr/local/lib/libwinpr-tools3.so.3.22.0
 /usr/local/lib/libwinpr3.so
 /usr/local/lib/libwinpr3.so.3
-/usr/local/lib/libwinpr3.so.3.19.1
+/usr/local/lib/libwinpr3.so.3.22.0
 /usr/local/lib/pkgconfig/freerdp-client3.pc
 /usr/local/lib/pkgconfig/freerdp-server-proxy3.pc
 /usr/local/lib/pkgconfig/freerdp-server3.pc

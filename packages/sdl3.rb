@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Sdl3 < CMake
   description 'A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard Version 3'
   homepage 'https://www.libsdl.org'
-  version '3.2.26'
+  version '3.4.0'
   license 'zlib'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/libsdl-org/SDL.git'
@@ -14,9 +14,9 @@ class Sdl3 < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e15bb9fb42ba699682c2f7df2ed7a33d8f3e209d9e79b54947bfd1ad5e6c9c1c',
-     armv7l: 'e15bb9fb42ba699682c2f7df2ed7a33d8f3e209d9e79b54947bfd1ad5e6c9c1c',
-     x86_64: 'f5671ad5fd62ffd3e653033b8e5341f159c566a1c3c6334f0aec582f5637409f'
+    aarch64: '9bd18e01507bb4a973cef635bf8d3d380e5f8e1d68a066a936a360ceb4be2017',
+     armv7l: '9bd18e01507bb4a973cef635bf8d3d380e5f8e1d68a066a936a360ceb4be2017',
+     x86_64: '2b1a42bd80d14f588154d319c17d69cfa2c8643e1d8683c8d222f0e40a787450'
   })
 
   depends_on 'alsa_lib' => :build
@@ -35,6 +35,7 @@ class Sdl3 < CMake
 
   cmake_options '-DSDL_HIDAPI_LIBUSB=OFF \
     -DSDL_RPI=OFF \
+    -DSDL_X11_XSCRNSAVER=OFF \
     -DSDL_STATIC=OFF \
     -DSDL_RPATH=OFF'
 end

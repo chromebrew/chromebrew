@@ -5,19 +5,37 @@ class Vivaldi < Package
   description 'Vivaldi is a new browser that blocks unwanted ads, protects you from trackers, and puts you in control with unique built-in features.'
   homepage 'https://vivaldi.com/'
   # The project stopped supporting armv7l after the 7.5 release.
-  version ARCH.eql?('x86_64') ? '7.7.3851.67-1' : '7.5.3735.74-1'
+  version ARCH.eql?('x86_64') ? '7.8.3925.62' : '7.5.3735.74-1'
   license 'Vivaldi'
   compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.37'
 
-  depends_on 'cras'
-  depends_on 'gtk3'
-  depends_on 'gsettings_desktop_schemas'
-  depends_on 'libx264'
-  depends_on 'nss'
-  depends_on 'xdg_base'
-  depends_on 'xdg_utils'
-  depends_on 'sommelier'
+  depends_on 'alsa_lib' => :executable_only
+  depends_on 'at_spi2_core' => :executable_only
+  depends_on 'cairo' => :executable_only
+  depends_on 'cras' => :logical
+  depends_on 'cups' => :executable_only
+  depends_on 'dbus' => :executable_only
+  depends_on 'eudev' => :executable_only
+  depends_on 'expat' => :executable_only
+  depends_on 'gcc_lib' # R
+  depends_on 'glib' => :executable_only
+  depends_on 'gsettings_desktop_schemas' => :logical
+  depends_on 'harfbuzz' => :executable_only
+  depends_on 'libx11' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxcomposite' => :executable_only
+  depends_on 'libxdamage' => :executable_only
+  depends_on 'libxext' # R
+  depends_on 'libxfixes' => :executable_only
+  depends_on 'libxkbcommon' => :executable_only
+  depends_on 'libxrandr' => :executable_only
+  depends_on 'mesa' => :executable_only
+  depends_on 'nss' => :executable_only
+  depends_on 'pango' => :executable_only
+  depends_on 'sommelier' => :logical
+  depends_on 'xdg_base' => :logical
+  depends_on 'xdg_utils' => :logical
 
   no_compile_needed
   no_shrink
@@ -28,10 +46,15 @@ class Vivaldi < Package
     source_sha256 '9017e6327c140ad9a9e1f0ce450681a729a15ea764337c30226f51c042ff7e62'
   when 'x86_64'
     arch = 'amd64'
-    source_sha256 '6ef739415b7e41c6b0f596b7e92e93ba07d72c08fbe5bbbc17bda74ba174a6f1'
+    source_sha256 '2a26fe72bbe330cd91eb0c46a3137454e1054d9ee3df0eea9f6206d4f02201f5'
   end
 
-  source_url "https://downloads.vivaldi.com/stable/vivaldi-stable_#{version}_#{arch}.deb"
+  case ARCH
+  when 'armv7l'
+    source_url "https://downloads.vivaldi.com/stable/vivaldi-stable_#{version}_#{arch}.deb"
+  else
+    source_url "https://downloads.vivaldi.com/stable/vivaldi-stable_#{version}-1_#{arch}.deb"
+  end
 
   def self.patch
     # ERROR: ld.so: object '/home/chronos/user/.local/lib/vivaldi/media-codecs-89.0.4389.82/libffmpeg.so' from LD_PRELOAD cannot be preloaded

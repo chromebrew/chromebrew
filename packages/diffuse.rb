@@ -13,12 +13,13 @@ class Diffuse < Package
   binary_sha256({
     aarch64: '1d729d31f35e0839c4793d94e08a35088f9fcf8244799aedebdfc554a34cd944',
      armv7l: '1d729d31f35e0839c4793d94e08a35088f9fcf8244799aedebdfc554a34cd944',
+       i686: '067c999e0893d4ded1567d22b0f6abcdfa2b4152877d46e676302c211871e7e7',
      x86_64: '868bd81b7505b4488fdcb86f3b710e45b46e410b4c28c95c73a51411bc73d27f'
   })
 
   depends_on 'pygtk'
   depends_on 'xdg_base'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.install
     system 'python', 'install.py',

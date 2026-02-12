@@ -3,7 +3,7 @@ require 'package'
 class Libxxf86dga < Package
   description 'X.org the client library for the XFree86-DGA extension'
   homepage 'https://www.x.org/wiki/'
-  version '1.1.6'
+  version '1.1.7'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxxf86dga.git'
@@ -11,9 +11,9 @@ class Libxxf86dga < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'df5fe89f84bffc941eef3a55b71873c6b9b4597846f776d9d6d07315ddcebecb',
-     armv7l: 'df5fe89f84bffc941eef3a55b71873c6b9b4597846f776d9d6d07315ddcebecb',
-     x86_64: '6ed7919a1b20aecfcddd03ce63255f36ff82d06fdea1d903af109e377f35ea88'
+    aarch64: '1edc8c4e2508d441d7bdd082c28b4331095a932a193f616307edc515a46ccc3d',
+     armv7l: '1edc8c4e2508d441d7bdd082c28b4331095a932a193f616307edc515a46ccc3d',
+     x86_64: 'e7915a563d5283427409208366b1d873afda1972b1635443a4d9f18e98b07b4b'
   })
 
   depends_on 'glibc' # R

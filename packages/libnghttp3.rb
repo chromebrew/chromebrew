@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Libnghttp3 < CMake
   description 'HTTP/3 library written in C'
   homepage 'https://github.com/ngtcp2/nghttp3'
-  version '1.14.0'
+  version '1.15.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/ngtcp2/nghttp3.git'
@@ -14,10 +14,10 @@ class Libnghttp3 < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ad3c8f414a89e649439c40ed63c2fdaae11661ae682a3c896e3ea9ed2a942685',
-     armv7l: 'ad3c8f414a89e649439c40ed63c2fdaae11661ae682a3c896e3ea9ed2a942685',
-       i686: 'bc80a5c0633ad52a977da4edef5ef53403a46b731ee801972a689d49089b95ee',
-     x86_64: 'aa85bf3ee1aaf83522e145045f6960b32e6bf15ad53b855f7c515203bfbf9258'
+    aarch64: 'a232d4257fd6df6f0365d25d039ad730b637caa31e3804b2188a326c1e10605a',
+     armv7l: 'a232d4257fd6df6f0365d25d039ad730b637caa31e3804b2188a326c1e10605a',
+       i686: '8eb1f574c24d70c855015ac4258c86206dfeb6990703916c34eb1cc9ef86964e',
+     x86_64: '61ca10a660aec6644e1c93ae4c116e03b4812adaa9363e1d4acf8c48401e090d'
   })
 
   depends_on 'glibc' # R

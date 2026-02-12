@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gnome_online_accounts < Meson
   description 'Single sign-on framework for GNOME'
   homepage 'https://wiki.gnome.org/Projects/GnomeOnlineAccounts'
-  version '3.56.1'
+  version '3.56.4'
   license 'LGPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-online-accounts.git'
@@ -11,9 +11,9 @@ class Gnome_online_accounts < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9f3e757ec845a19c0f1e29547c43b4d785e721bd309ee035437317a2d193b5e0',
-     armv7l: '9f3e757ec845a19c0f1e29547c43b4d785e721bd309ee035437317a2d193b5e0',
-     x86_64: 'deabb79fdf85df0f316ac73d8e0c97540a55b9d601eba9b21b29f0d1bbcda8b6'
+    aarch64: 'b30820d5e23744c70eb55ce65304425b67b922db16da6b2c48cfea36a12d0f1d',
+     armv7l: 'b30820d5e23744c70eb55ce65304425b67b922db16da6b2c48cfea36a12d0f1d',
+     x86_64: '1e9c820085b635b699aee3d3c07949910726b75eb6f4ca706f44a60e98aa19f8'
   })
 
   depends_on 'gcr_4' # R

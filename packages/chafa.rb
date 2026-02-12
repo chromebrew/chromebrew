@@ -3,23 +3,29 @@ require 'buildsystems/autotools'
 class Chafa < Autotools
   description 'Image-to-text converter supporting a wide range of symbols and palettes, transparency, animations, etc.'
   homepage 'https://hpjansson.org/chafa/'
-  version '1.18.0'
+  version '1.18.1'
   license 'LGPL'
-  compatibility 'all'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/hpjansson/chafa.git'
   git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c0e78ff8255ef75293ef0867fe38b17703cb2ddaa60d9c3ab93365bb79871102',
-     armv7l: 'c0e78ff8255ef75293ef0867fe38b17703cb2ddaa60d9c3ab93365bb79871102',
-       i686: 'df8189f046b9f2d5092f0874ab880d30e910be4f90470e6aa253f3821fe6a9f0',
-     x86_64: '080ce8bc537bbc3f80dffe908160b0960704e5dd2862db7ea89f286899ae9efd'
+    aarch64: 'f6d9dc18294c7c2a00d888cf4eedf1c3a415625625c60ef32e50d09f046aacfe',
+     armv7l: 'f6d9dc18294c7c2a00d888cf4eedf1c3a415625625c60ef32e50d09f046aacfe',
+     x86_64: 'bb460334e3a93e55c323b9d3269558b1c62071291950b2a924e4ef6d5764ec3c'
   })
 
-  depends_on 'glib'
-  depends_on 'libxslt'
+  depends_on 'cairo' => :executable_only
+  depends_on 'freetype' => :executable_only
+  depends_on 'gdk_pixbuf' => :executable_only
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'harfbuzz' => :executable_only
+  depends_on 'libjpeg_turbo' => :executable_only
+  depends_on 'librsvg' => :executable_only
+  depends_on 'libtiff' => :executable_only
+  depends_on 'libxslt' => :build
 
-  # The tools depends on freetype, which drops i686 compatibility.
-  autotools_configure_options '--without-tools'
+  autotools_configure_options '--enable-gtk-doc'
 end

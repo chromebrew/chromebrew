@@ -15,7 +15,10 @@ class Atom < Package
   depends_on 'gtk3'
   depends_on 'libcom_err'
   depends_on 'libsecret'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
+
+  ignore_updater
+  no_upstream_update
 
   def self.install
     FileUtils.mkdir_p CREW_DEST_PREFIX

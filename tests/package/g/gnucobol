@@ -1,0 +1,3 @@
+#!/bin/bash
+for b in $(crew files gnucobol | grep /usr/local/bin); do $b --help 2>&1 | head; done
+for b in $(crew files gnucobol | grep /usr/local/bin); do $b --version 2>&1; done

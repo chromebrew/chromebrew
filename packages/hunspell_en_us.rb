@@ -3,7 +3,7 @@ require 'package'
 class Hunspell_en_us < Package
   description 'Hunspell US English dictionary'
   homepage 'http://hunspell.github.io/'
-  version '25.8.3.2'
+  version '26.2.1.1'
   license 'MPL-1.1, GPL-2 and LGPL-2.1'
   compatibility 'all'
   source_url 'https://github.com/LibreOffice/dictionaries.git'
@@ -11,10 +11,10 @@ class Hunspell_en_us < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8bde230cb123cd04ce1e36d51cee6b3225d61c1c7b8d3962c397a31cca68f155',
-     armv7l: '8bde230cb123cd04ce1e36d51cee6b3225d61c1c7b8d3962c397a31cca68f155',
-       i686: 'a886e2a0a037b7f9363414c786ff6124c48d1377eba391b9a686f85c78158287',
-     x86_64: '50c560f73838494afce43cbf3d60d48a72a8499493ec78bbba48d27c0ec75b8d'
+    aarch64: '20a947cb8b1379b08734566e6ecdb0db1228ab66903d243d435a99cbfbc341be',
+     armv7l: '20a947cb8b1379b08734566e6ecdb0db1228ab66903d243d435a99cbfbc341be',
+       i686: '1286a699fd71adbfac3334f2e085739f8dfba617946b3bfe55bcbdebaa96babc',
+     x86_64: '6ec07753f2e12641bdff8a516faeac54e590db9adb7e103ace0f7e542b0cec3a'
   })
 
   depends_on 'hunspell_base'

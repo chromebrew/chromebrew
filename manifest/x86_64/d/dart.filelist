@@ -1,9 +1,12 @@
-# Total size: 587619377
+# Total size: 637207653
 /usr/local/bin/dart
 /usr/local/lib64/dart/LICENSE
 /usr/local/lib64/dart/README
 /usr/local/lib64/dart/bin/dart
 /usr/local/lib64/dart/bin/dartaotruntime
+/usr/local/lib64/dart/bin/dartaotruntime_asan
+/usr/local/lib64/dart/bin/dartaotruntime_msan
+/usr/local/lib64/dart/bin/dartaotruntime_tsan
 /usr/local/lib64/dart/bin/dartvm
 /usr/local/lib64/dart/bin/dartvm.sym
 /usr/local/lib64/dart/bin/resources/dartdoc/resources/blank.txt
@@ -478,6 +481,7 @@
 /usr/local/lib64/dart/bin/resources/devtools/assets/packages/perfetto_ui_compiled/dist/v34.0-16f63abe3/perfetto.css
 /usr/local/lib64/dart/bin/resources/devtools/assets/packages/perfetto_ui_compiled/dist/v34.0-16f63abe3/trace_processor.wasm
 /usr/local/lib64/dart/bin/resources/devtools/assets/shaders/ink_sparkle.frag
+/usr/local/lib64/dart/bin/resources/devtools/assets/shaders/stretch_effect.frag
 /usr/local/lib64/dart/bin/resources/devtools/canvaskit/canvaskit.js
 /usr/local/lib64/dart/bin/resources/devtools/canvaskit/canvaskit.js.symbols
 /usr/local/lib64/dart/bin/resources/devtools/canvaskit/canvaskit.wasm
@@ -490,6 +494,9 @@
 /usr/local/lib64/dart/bin/resources/devtools/canvaskit/skwasm_heavy.js
 /usr/local/lib64/dart/bin/resources/devtools/canvaskit/skwasm_heavy.js.symbols
 /usr/local/lib64/dart/bin/resources/devtools/canvaskit/skwasm_heavy.wasm
+/usr/local/lib64/dart/bin/resources/devtools/canvaskit/wimp.js
+/usr/local/lib64/dart/bin/resources/devtools/canvaskit/wimp.js.symbols
+/usr/local/lib64/dart/bin/resources/devtools/canvaskit/wimp.wasm
 /usr/local/lib64/dart/bin/resources/devtools/devtools_analytics.js
 /usr/local/lib64/dart/bin/resources/devtools/favicon.png
 /usr/local/lib64/dart/bin/resources/devtools/flutter.js
@@ -560,6 +567,7 @@
 /usr/local/lib64/dart/lib/_internal/js_dev_runtime/patch/convert_patch.dart
 /usr/local/lib64/dart/lib/_internal/js_dev_runtime/patch/core_patch.dart
 /usr/local/lib64/dart/lib/_internal/js_dev_runtime/patch/developer_patch.dart
+/usr/local/lib64/dart/lib/_internal/js_dev_runtime/patch/ffi_patch.dart
 /usr/local/lib64/dart/lib/_internal/js_dev_runtime/patch/internal_patch.dart
 /usr/local/lib64/dart/lib/_internal/js_dev_runtime/patch/io_patch.dart
 /usr/local/lib64/dart/lib/_internal/js_dev_runtime/patch/isolate_patch.dart
@@ -776,7 +784,6 @@
 /usr/local/lib64/dart/lib/_internal/wasm/lib/js_string_convert.dart
 /usr/local/lib64/dart/lib/_internal/wasm/lib/js_typed_array.dart
 /usr/local/lib64/dart/lib/_internal/wasm/lib/js_types.dart
-/usr/local/lib64/dart/lib/_internal/wasm/lib/js_util_patch.dart
 /usr/local/lib64/dart/lib/_internal/wasm/lib/list.dart
 /usr/local/lib64/dart/lib/_internal/wasm/lib/math_patch.dart
 /usr/local/lib64/dart/lib/_internal/wasm/lib/named_parameters.dart
@@ -808,6 +815,7 @@
 /usr/local/lib64/dart/lib/_internal/wasm_js_compatibility/lib/string_buffer_patch.dart
 /usr/local/lib64/dart/lib/_internal/wasm_js_compatibility/lib/string_patch.dart
 /usr/local/lib64/dart/lib/_internal/wasm_js_compatibility/lib/typed_data_patch.dart
+/usr/local/lib64/dart/lib/_vm/_vm.dart
 /usr/local/lib64/dart/lib/_wasm/OWNERS
 /usr/local/lib64/dart/lib/_wasm/wasm_types.dart
 /usr/local/lib64/dart/lib/api_readme.md
@@ -826,6 +834,10 @@
 /usr/local/lib64/dart/lib/async/stream_transformers.dart
 /usr/local/lib64/dart/lib/async/timer.dart
 /usr/local/lib64/dart/lib/async/zone.dart
+/usr/local/lib64/dart/lib/async/zone_api.dart
+/usr/local/lib64/dart/lib/async/zone_delegate.dart
+/usr/local/lib64/dart/lib/async/zone_root.dart
+/usr/local/lib64/dart/lib/async/zone_specification.dart
 /usr/local/lib64/dart/lib/cli/cli.dart
 /usr/local/lib64/dart/lib/collection/collection.dart
 /usr/local/lib64/dart/lib/collection/collections.dart

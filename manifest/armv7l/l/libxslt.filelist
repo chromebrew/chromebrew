@@ -1,4 +1,4 @@
-# Total size: 1417194
+# Total size: 1417674
 /usr/local/bin/xslt-config
 /usr/local/bin/xsltproc
 /usr/local/include/libexslt/exslt.h
@@ -18,6 +18,7 @@
 /usr/local/include/libxslt/security.h
 /usr/local/include/libxslt/templates.h
 /usr/local/include/libxslt/transform.h
+/usr/local/include/libxslt/transformInternals.h
 /usr/local/include/libxslt/variables.h
 /usr/local/include/libxslt/xslt.h
 /usr/local/include/libxslt/xsltInternals.h
@@ -25,16 +26,16 @@
 /usr/local/include/libxslt/xsltexports.h
 /usr/local/include/libxslt/xsltlocale.h
 /usr/local/include/libxslt/xsltutils.h
-/usr/local/lib/cmake/libxslt-1.1.43/libxslt-config-version.cmake
-/usr/local/lib/cmake/libxslt-1.1.43/libxslt-config.cmake
-/usr/local/lib/cmake/libxslt-1.1.43/libxslt-export-release.cmake
-/usr/local/lib/cmake/libxslt-1.1.43/libxslt-export.cmake
+/usr/local/lib/cmake/libxslt-1.1.45/libxslt-config-version.cmake
+/usr/local/lib/cmake/libxslt-1.1.45/libxslt-config.cmake
+/usr/local/lib/cmake/libxslt-1.1.45/libxslt-export-release.cmake
+/usr/local/lib/cmake/libxslt-1.1.45/libxslt-export.cmake
 /usr/local/lib/libexslt.so
 /usr/local/lib/libexslt.so.0
-/usr/local/lib/libexslt.so.0.8.24
+/usr/local/lib/libexslt.so.0.8.25
 /usr/local/lib/libxslt.so
 /usr/local/lib/libxslt.so.1
-/usr/local/lib/libxslt.so.1.1.43
+/usr/local/lib/libxslt.so.1.1.45
 /usr/local/lib/pkgconfig/libexslt.pc
 /usr/local/lib/pkgconfig/libxslt.pc
 /usr/local/lib/xsltConf.sh

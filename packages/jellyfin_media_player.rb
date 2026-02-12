@@ -25,7 +25,6 @@ class Jellyfin_media_player < Package
   depends_on 'libcec' # R
   depends_on 'libglvnd' # R
   depends_on 'libice' # R
-  depends_on 'sdl2' # R
   depends_on 'libsm' # R
   depends_on 'libx11' # R
   depends_on 'libxext' # R
@@ -42,8 +41,9 @@ class Jellyfin_media_player < Package
   depends_on 'qt5_webchannel' # R
   depends_on 'qt5_webengine' # R
   depends_on 'qt5_x11extras' # R
+  depends_on 'sdl2' # R
   depends_on 'shaderc' # L
-  depends_on 'sommelier' # L
+  depends_on 'sommelier' => :logical
   depends_on 'zlib' # R
 
   def self.patch

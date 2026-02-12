@@ -3,23 +3,23 @@ require 'buildsystems/ruby'
 class Ruby_rbs < RUBY
   description 'RBS is the language for type signatures for Ruby and standard library definitions.'
   homepage 'https://github.com/ruby/rbs'
-  version "3.10.2-#{CREW_RUBY_VER}"
+  version "3.10.3-#{CREW_RUBY_VER}"
   license 'BSD-2-Clause'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: '8cc89a7db7a93f872c5e248d10e523496f73b727260a62bafa3e0dcb88293359',
-     armv7l: '8cc89a7db7a93f872c5e248d10e523496f73b727260a62bafa3e0dcb88293359',
-       i686: 'dd280655fec2284119a274c8e390b208ca002be7ce0733e50344975ec8400e9e',
-     x86_64: '925bd7e783b247701ab41c1cc3f513c3a1c738699586ef6bfd62ef2007d50412'
+    aarch64: 'cab81499585b3f3454e9370104ba1388cc4e9f91c4728573341dee77335a4767',
+     armv7l: 'cab81499585b3f3454e9370104ba1388cc4e9f91c4728573341dee77335a4767',
+       i686: 'ec0d326029dbc9cb9d1ed8fcd6c45d62f77c9a7b77d491f4fb45ac854bd2dc86',
+     x86_64: 'aaade95cfb4b0141d313dfba766e193324474cfe1c279583da1812d1fdf106bf'
   })
 
   depends_on 'glibc' # R
   depends_on 'ruby' # R
-  depends_on 'ruby_abbrev' # R
   depends_on 'ruby_logger' # R
+  depends_on 'ruby_tsort' # R
 
   conflicts_ok
   gem_compile_needed

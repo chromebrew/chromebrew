@@ -1,10 +1,11 @@
-# Total size: 1254531
+# Total size: 1091399
 /usr/local/bin/xb-tool
 /usr/local/include/libxmlb-2/libxmlb/xb-builder-fixup.h
 /usr/local/include/libxmlb-2/libxmlb/xb-builder-node.h
 /usr/local/include/libxmlb-2/libxmlb/xb-builder-source-ctx.h
 /usr/local/include/libxmlb-2/libxmlb/xb-builder-source.h
 /usr/local/include/libxmlb-2/libxmlb/xb-builder.h
+/usr/local/include/libxmlb-2/libxmlb/xb-compile.h
 /usr/local/include/libxmlb-2/libxmlb/xb-machine.h
 /usr/local/include/libxmlb-2/libxmlb/xb-node-query.h
 /usr/local/include/libxmlb-2/libxmlb/xb-node-silo.h
@@ -20,7 +21,6 @@
 /usr/local/include/libxmlb-2/libxmlb/xb-value-bindings.h
 /usr/local/include/libxmlb-2/libxmlb/xb-version.h
 /usr/local/include/libxmlb-2/xmlb.h
-/usr/local/lib/girepository-1.0/Xmlb-2.0.typelib
 /usr/local/lib/libxmlb.so
 /usr/local/lib/libxmlb.so.2
 /usr/local/lib/libxmlb.so.2.0.0
@@ -30,9 +30,8 @@
 /usr/local/libexec/installed-tests/libxmlb/test.xml
 /usr/local/libexec/installed-tests/libxmlb/test.xml.gz.gz.gz
 /usr/local/libexec/installed-tests/libxmlb/test.xml.xz
-/usr/local/libexec/installed-tests/libxmlb/test.xml.zstd
+/usr/local/libexec/installed-tests/libxmlb/test.xml.zst
 /usr/local/libexec/installed-tests/libxmlb/xb-self-test
-/usr/local/share/gir-1.0/Xmlb-2.0.gir
 /usr/local/share/gtk-doc/html/libxmlb/annotation-glossary.html
 /usr/local/share/gtk-doc/html/libxmlb/api-index-full.html
 /usr/local/share/gtk-doc/html/libxmlb/deprecated-api-index.html

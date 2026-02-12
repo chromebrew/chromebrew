@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_soupsieve < Pip
   description 'CSS selector library designed to be used with Beautiful Soup 4.'
   homepage 'https://github.com/facelessuser/soupsieve'
-  version "2.8.1-#{CREW_PY_VER}"
+  version "2.8.3-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c4dccdf0a108a826aee95e34ff00552f59ad3405f64aa81d321b2068580d9aa4',
-     armv7l: 'c4dccdf0a108a826aee95e34ff00552f59ad3405f64aa81d321b2068580d9aa4',
-       i686: '668b6182e3b06c3b3cd1b3074d458cd86e42c7abbd48e797d00898bcda31813e',
-     x86_64: 'd54fb8c45b0bb8629f3256b69d338feeda41e8a5c8e75db58f4d51a3398f068f'
+    aarch64: 'e92d2e37811e1f4030acb26a63a69cd4e63727d2c60a4e52186e807f41702256',
+     armv7l: 'e92d2e37811e1f4030acb26a63a69cd4e63727d2c60a4e52186e807f41702256',
+       i686: 'f10c66c5402436cae7593d2702315c7056c5aae9b511185fe89d011b11838a6c',
+     x86_64: '7695d0c8adf1e23499762a7a7364634e84363675c3d6dfdbb677dbf0130d599a'
   })
 
   depends_on 'python3' => :build

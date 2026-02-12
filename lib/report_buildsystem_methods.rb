@@ -9,7 +9,7 @@ module ReportBuildsystemMethods
       method_strings = []
       method_list.sort.each do |method|
         @method_info = send method
-        if @method_info.is_a? String
+        if @method_info.is_a?(String) || @method_info.is_a?(Array)
           method_strings << "#{method}: #{@method_info}".orange
         else
           method_blocks << @method_info.source.to_s.orange

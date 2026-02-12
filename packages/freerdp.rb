@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Freerdp < CMake
   description 'FreeRDP is a free implementation of the Remote Desktop Protocol.'
   homepage 'https://www.freerdp.com/'
-  version "3.19.1-#{CREW_ICU_VER}"
+  version "3.22.0-#{CREW_ICU_VER}"
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/FreeRDP/FreeRDP.git'
@@ -11,9 +11,9 @@ class Freerdp < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '955e013a8a873d62f49a0d13446dd9d2e6c4676edd1ed54462e218ad388b3976',
-     armv7l: '955e013a8a873d62f49a0d13446dd9d2e6c4676edd1ed54462e218ad388b3976',
-     x86_64: 'de785a005e5edb81d1ab5cd722b70115850e58d75f59cc007254071245ef5805'
+    aarch64: '9936e5c2e868f173b0e50a11e77d19a12ee07f2405d1f59de0eb011bf58319b1',
+     armv7l: '9936e5c2e868f173b0e50a11e77d19a12ee07f2405d1f59de0eb011bf58319b1',
+     x86_64: 'd5b02b7919a3b7d5e131b920ad31821ee18b5eeaafb03a5419548baef1815a79'
   })
 
   depends_on 'alsa_lib' # R
@@ -66,7 +66,7 @@ class Freerdp < CMake
   depends_on 'pulseaudio' # R
   depends_on 'sdl2' # R
   depends_on 'sdl2_ttf' # R
-  depends_on 'sommelier' # L
+  depends_on 'sommelier' => :logical
   depends_on 'uriparser' # R
   depends_on 'wayland' # R
   depends_on 'webkit2gtk_4_1' # R

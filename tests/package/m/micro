@@ -1,0 +1,3 @@
+#!/bin/bash
+micro --help | head
+micro --version

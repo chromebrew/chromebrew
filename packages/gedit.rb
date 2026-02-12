@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gedit < Meson
   description 'GNOME Text Editor'
   homepage 'https://wiki.gnome.org/Apps/Gedit'
-  version '48.2'
+  version '49.0'
   license 'GPL-2+ CC-BY-SA-3.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gedit.git'
@@ -11,9 +11,9 @@ class Gedit < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b2f680df1b9d04e1265deb33c369dcc0ae21fb53d00b24f8b390c0c76474efb7',
-     armv7l: 'b2f680df1b9d04e1265deb33c369dcc0ae21fb53d00b24f8b390c0c76474efb7',
-     x86_64: '7dfd711561470d782f37feb7d97510d9a2db059c7cd5b1dccbc7b023097a5cca'
+    aarch64: 'ac6287afc679ad75a753df15741126b4be8fc650bfcaeea1f4cf47c77467ef5c',
+     armv7l: 'ac6287afc679ad75a753df15741126b4be8fc650bfcaeea1f4cf47c77467ef5c',
+     x86_64: 'b66022b46a4f7dee6db5d51bba361ce0ab25d25a526dbfe55b6c12b1b8c7b811'
   })
 
   depends_on 'cairo' # R
@@ -26,6 +26,7 @@ class Gedit < Meson
   depends_on 'gspell' # R
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
+  depends_on 'libgedit_gtksourceview' # R
   depends_on 'libpeas' # R
   depends_on 'pango' # R
   depends_on 'py3_lxml' => :build

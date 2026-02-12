@@ -8480,6 +8480,11 @@ url: https://github.com/ruby-concurrency/concurrent-ruby/releases
 activity: medium
 ---
 kind: url
+name: ruby_dagwood
+url: https://github.com/rewindio/dagwood/releases
+activity: low
+---
+kind: url
 name: ruby_debug
 url: https://github.com/ruby/debug/releases
 activity: medium

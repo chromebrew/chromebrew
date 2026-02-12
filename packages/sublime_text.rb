@@ -10,7 +10,7 @@ class Sublime_text < Package
   source_sha256 '8e4f70282d1081f8621c36147270e1b26809b013ce5260a4caf41e239e08249e'
 
   depends_on 'gtk2'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   no_compile_needed
 

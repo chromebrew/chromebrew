@@ -1,0 +1,20 @@
+# Total size: 22611
+/usr/local/lib/ruby/gems/4.0.0/gems/backport-1.2.0/CHANGELOG.md
+/usr/local/lib/ruby/gems/4.0.0/gems/backport-1.2.0/Gemfile
+/usr/local/lib/ruby/gems/4.0.0/gems/backport-1.2.0/LICENSE.txt
+/usr/local/lib/ruby/gems/4.0.0/gems/backport-1.2.0/README.md
+/usr/local/lib/ruby/gems/4.0.0/gems/backport-1.2.0/Rakefile
+/usr/local/lib/ruby/gems/4.0.0/gems/backport-1.2.0/backport.gemspec
+/usr/local/lib/ruby/gems/4.0.0/gems/backport-1.2.0/bin/console
+/usr/local/lib/ruby/gems/4.0.0/gems/backport-1.2.0/bin/setup
+/usr/local/lib/ruby/gems/4.0.0/gems/backport-1.2.0/lib/backport.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/backport-1.2.0/lib/backport/adapter.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/backport-1.2.0/lib/backport/client.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/backport-1.2.0/lib/backport/machine.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/backport-1.2.0/lib/backport/server.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/backport-1.2.0/lib/backport/server/base.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/backport-1.2.0/lib/backport/server/connectable.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/backport-1.2.0/lib/backport/server/interval.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/backport-1.2.0/lib/backport/server/stdio.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/backport-1.2.0/lib/backport/server/tcpip.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/backport-1.2.0/lib/backport/version.rb

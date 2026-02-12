@@ -12,7 +12,7 @@ class Keepassxc < Package
 
   no_compile_needed
 
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.build
     File.write 'keepassxc.sh', <<~EOF

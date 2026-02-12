@@ -88,7 +88,6 @@ end
 String.use_color = args['--color'] || !args['--no-color']
 
 @opt_force     = args['--force']
-@opt_json      = args['--json']
 @opt_keep      = args['--keep']
 @opt_recursive = args['--recursive-build']
 @opt_regen_filelist = args['--regenerate-filelist']
@@ -97,7 +96,6 @@ String.use_color = args['--color'] || !args['--no-color']
 @opt_version   = args['--version']
 
 # Verbose options
-@json          = @opt_json ? '-j' : ''
 @update        = @opt_update ? '-u' : ''
 @verbose       = CREW_VERBOSE ? 'v' : ''
 @short_verbose = CREW_VERBOSE ? '-v' : ''
@@ -771,8 +769,9 @@ def unpack(meta)
         end
         system "../#{meta[:filename]}", '--appimage-extract', chdir: @extract_dir, exception: true
       when /\.gem$/i
-        puts "Moving #{@pkg.ruby_gem_name} binary gem for install..."
-        gem_file = "#{@pkg.ruby_gem_name}-#{@pkg.ruby_gem_version}-#{GEM_ARCH}.gem"
+        ruby_gem_name, ruby_gem_version, _upstream_version, _gem_installed_version, _gem_latest_version_installed, _gem_outdated, _gem_deps = PackageUtils.get_gem_vars(@pkg.name, @pkg.version, @pkg.upstream_name)
+        puts "Moving #{ruby_gem_name} binary gem for install...".orange
+        gem_file = "#{ruby_gem_name}-#{ruby_gem_version}-#{GEM_ARCH}.gem"
         FileUtils.mv meta[:filename], File.join(@extract_dir, gem_file)
       end
     end
@@ -1118,7 +1117,7 @@ end
 def shrink_dir(dir)
   unless CREW_NOT_SHRINK_ARCHIVE || @pkg.no_shrink?
     Dir.chdir dir do
-      if File.file?("#{CREW_PREFIX}/bin/rdfind")
+      if File.executable?("#{CREW_PREFIX}/bin/rdfind") && system('rdfind --help', %i[out err] => File::NULL)
         puts 'Using rdfind to convert duplicate files to hard links.'
         system "#{CREW_PREFIX}/bin/rdfind -removeidentinode true -makesymlinks false -makehardlinks true -makeresultsfile false ."
       end
@@ -1215,7 +1214,7 @@ def install_package(pkgdir)
           end
         end
       end
-      if File.executable?("#{CREW_PREFIX}/bin/rdfind")
+      if File.executable?("#{CREW_PREFIX}/bin/rdfind") && system('rdfind --help', %i[out err] => File::NULL)
         puts 'Using rdfind to convert duplicate files to hard links.'
         system 'rdfind -removeidentinode true -makesymlinks false -makehardlinks true -makeresultsfile false .'
       end
@@ -1405,7 +1404,8 @@ def install(skip_postinstall: false)
   elsif @pkg.superclass.to_s == 'RUBY'
     meta = download
     target_dir = unpack meta
-    gem_file = "#{@pkg.ruby_gem_name}-#{@pkg.ruby_gem_version}-#{GEM_ARCH}.gem"
+    ruby_gem_name, ruby_gem_version, _upstream_version, _gem_installed_version, _gem_latest_version_installed, _gem_outdated, _gem_deps = PackageUtils.get_gem_vars(@pkg.name, @pkg.version, @pkg.upstream_name)
+    gem_file = "#{ruby_gem_name}-#{ruby_gem_version}-#{GEM_ARCH}.gem"
     if File.file?(File.join(target_dir, gem_file))
       FileUtils.mv File.join(target_dir, gem_file), File.join(CREW_DEST_DIR, gem_file)
     else
@@ -1444,8 +1444,12 @@ def install(skip_postinstall: false)
 
   # remove it just before the file copy
   if @pkg.in_upgrade
-    puts 'Attempting removal since this is an upgrade or reinstall...'
-    Command.remove(@pkg, verbose: CREW_VERBOSE, force: true, only_remove_files: true)
+    if CREW_ESSENTIAL_PACKAGES.include?(@pkg.name) && @pkg.superclass.to_s == 'RUBY'
+      puts "Not attempting removal despite this being an upgrade or reinstall because #{@pkg.name} is a member of CREW_ESSENTIAL_PACKAGES...".orange
+    else
+      puts 'Attempting removal since this is an upgrade or reinstall...'.orange
+      Command.remove(@pkg, verbose: CREW_VERBOSE, force: true, only_remove_files: true)
+    end
   end
 
   if @pkg.is_fake?
@@ -1458,6 +1462,7 @@ def install(skip_postinstall: false)
     if @pkg.superclass.to_s == 'RUBY'
       Dir.chdir(target_dir) do
         @pkg.install
+        Command.check(@pkg.name, @opt_force)
       end
     else
       install_package dest_dir
@@ -1581,7 +1586,8 @@ end
 
 def archive_package(crew_archive_dest)
   if @pkg.superclass.to_s == 'RUBY'
-    gem_file = "#{@pkg.ruby_gem_name}-#{@pkg.ruby_gem_version}-#{GEM_ARCH}.gem"
+    ruby_gem_name, ruby_gem_version, _upstream_version, _gem_installed_version, _gem_latest_version_installed, _gem_outdated, _gem_deps = PackageUtils.get_gem_vars(@pkg.name, @pkg.version, @pkg.upstream_name)
+    gem_file = "#{ruby_gem_name}-#{ruby_gem_version}-#{GEM_ARCH}.gem"
     pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.gem"
     begin
       FileUtils.mv File.join(CREW_DEST_DIR, gem_file), File.join(crew_archive_dest, pkg_name)
@@ -2076,7 +2082,7 @@ def install_command(args)
     # postinstall from being run for an already installed package.
     if !@pkg_name.start_with?('ruby_') && @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg_name }
       puts "Package #{@pkg_name} already installed, skipping...".lightgreen
-      next
+      next unless Command.check(name, @opt_force)
     end
     next unless Command.check(name, @opt_force)
     search @pkg_name
@@ -2111,7 +2117,7 @@ def postinstall_command(args)
 end
 
 def prop_command(args)
-  Command.prop(args['<property>'])
+  Command.prop(args['<property>'], args['<name>'][0])
 end
 
 def reinstall_command(args)
@@ -2181,7 +2187,7 @@ def upstream_command(args)
   # Pass the whole argument input to tools/version.rb, stripping out any file extensions that occur as a result of using a wildcard argument in a directory where it matches files.
   args = { '<name>' => args.split } if args.is_a? String
   Dir.chdir CREW_PACKAGES_PATH do
-    system "../tools/version.rb #{args['<name>'].join(' ').gsub('.rb', '')} #{@json} #{@update} #{@short_verbose} #{@very_verbose}"
+    system "../tools/version.rb #{args['<name>'].join(' ').gsub('.rb', '')} #{'-j' if CREW_OUTPUT_JSON} #{@update} #{@short_verbose} #{@very_verbose}"
   end
 end
 

@@ -14,19 +14,22 @@ class Elogind < Package
   binary_sha256({
     aarch64: '7bf79ff8159f5d90f36c8680f70bb4ad8b36276c0600e4aac664ce79b8808b6e',
      armv7l: '7bf79ff8159f5d90f36c8680f70bb4ad8b36276c0600e4aac664ce79b8808b6e',
+       i686: '2a4c82de76b21a2fd0ea1e2b53c96ea5e90650d012fe5509e48f837258771648',
      x86_64: 'a12c145e41d5f8691731bf29a3d832f7974fea3e887677b649dbc43ea5888a9a'
   })
 
-  depends_on 'eudev'
-  depends_on 'libcap'
+  depends_on 'acl' # R
+  depends_on 'dbus' => :build
+  depends_on 'docbook_xml'
+  depends_on 'eudev' => :build
+  depends_on 'gcc_lib' # R
+  depends_on 'glib' => :build
+  depends_on 'gperf' => :build
+  depends_on 'libcap' => :build
+  depends_on 'libxslt' => :build
   depends_on 'linux_pam' # For _pam_macros.h
-  depends_on 'dbus'
-  depends_on 'docbook_xsl'
-  depends_on 'gperf'
-  depends_on 'libxslt'
-  depends_on 'shadow'
-  depends_on 'glib'
-  depends_on 'polkit'
+  depends_on 'polkit' => :logical
+  depends_on 'shadow' => :build
 
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \

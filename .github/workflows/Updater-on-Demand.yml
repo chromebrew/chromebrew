@@ -1,4 +1,5 @@
 ---
+# Version 1.4
 name: Generate Updates PRs on Demand
 run-name: Generating Updates PRs on Demand using ${{ inputs.version_cmd_input }}
 on:
@@ -27,9 +28,6 @@ jobs:
       - uses: actions/checkout@v5
         with:
           persist-credentials: true
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '4.0.0'
       - name: Install Python pip
         run: sudo apt install -y python3-pip
       - name: Setup Git.
@@ -38,6 +36,35 @@ jobs:
           git config --global push.autoSetupRemote true
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '4.0.1'
+      - name: Install bin/crew gem dependencies
+        run: |
+          # Install required gems.
+          require_gem () {
+            for g in "$@"
+            do
+              install_gem=0
+              # Check to see if the gem is recorded as installed AND if there are
+              # gem contents before assuming that the gem is installed.
+              if gem list --no-update-sources -l -e "$g" 2>/dev/null | grep -q "$g"; then
+                :
+              else
+                install_gem=1
+              fi
+              # shellcheck disable=SC2143
+              if [[ $(gem contents "$g" 2>/dev/null | grep 'Unable to find gem') ]] || [[ "$(gem contents "$g" 2>/dev/null | wc -l)" == "0" ]]; then
+                install_gem=1
+              else
+                :
+              fi
+             [[ $install_gem == '1' ]] && gem install -N "$g"
+            done
+          }
+          require_gem regexp_parser dagwood ruby-libversion highline ptools cgi rubocop rubocop-chromebrew
+          # Force creation of temporary device.json.
+          ruby bin/crew version
       - name: Check for updates.
         id: update-checks
         run: |
@@ -46,15 +73,16 @@ jobs:
           git pull
           git stash drop || true
           echo "pwd is $(pwd)"
-          # Make crew do automatic gem installs before looking for deps.
-          LD_LIBRARY_PATH=/usr/local/lib ruby bin/crew version
-          # Force creation of temporary device.json.
-          LD_LIBRARY_PATH=/usr/local/lib ruby bin/crew deps zstd_static
           # Run Update Checks...
-          LD_LIBRARY_PATH=/usr/local/lib ruby tools/version.rb -u -v "${{ inputs.version_cmd_input }}"
-          for i in $(git status --porcelain | awk '{print $2}' | grep ^packages/)
+          # LD_LIBRARY_PATH=/usr/local/lib ruby tools/version.rb -u -v "${{ inputs.version_cmd_input }}"
+          UPDATABLE_PACKAGES="$(ruby tools/version.rb -j "${{ inputs.version_cmd_input }}" | jq -r '.[]|select(.updatable | contains("Yes"))|select(.update_status | contains("Outdated"))|.package' | xargs)"
+          for i in $UPDATABLE_PACKAGES
           do
-            git stash pop || true
+            git checkout -f master
+          # for i in $(git status --porcelain | awk '{print $2}' | grep ^packages/)
+          # do
+          #  git stash pop || true
+            ruby tools/version.rb -v -u $i || continue
             pkg=${i%.rb}
             pkg=${pkg#packages/}
             # The updated package version will be the one in the package file.
@@ -64,27 +92,38 @@ jobs:
             else
               branch_tag="${pkg_version}"
             fi
-            export updater_branch="updater-${pkg}-${branch_tag}"
+            if [ ${{ github.ref_name }} == 'master' ]; then
+              export updater_branch="updater-${pkg}-${branch_tag}"
+            else
+              export updater_branch="${{ github.ref_name }}"
+            fi
             echo "Updater branch: ${updater_branch}"
-            if git branch -a | grep -q "${updater_branch}"; then
-              echo "Updating & rebasing existing ${updater_branch} branch."
-              git stash || true
-              git config advice.detachedHead false
-              git checkout remotes/origin/"${updater_branch}"
-              git pull origin "${updater_branch}"
+            if [[ "$(git branch -a --list ${updater_branch} | wc -l)" != '0' ]]; then
+              echo "Attempting rebase and build of existing ${updater_branch} branch."
+              if gh pr update-branch --rebase; then
+                gh workflow -R chromebrew/chromebrew run Build.yml -f branch="${updater_branch}" -f pr_label=updater
+                continue
+              else
+                continue
+              fi
+              # echo "Updating & rebasing existing ${updater_branch} branch."
+              # git stash || true
+              # git config advice.detachedHead false
+              # git checkout remotes/origin/"${updater_branch}"
+              # git pull origin "${updater_branch}"
               # Let build workflow handle rebasing.
               # git pull --rebase origin master; git push origin "HEAD:${updater_branch}" -f ; git pull origin "${updater_branch}"
-              git stash pop || true
+              # git stash pop || true
             else
               git checkout -b "${updater_branch}"
               echo "${updater_branch} branch created."
-              git add $i
+              git add packages/${i}.rb
             fi
             # If there are no changes, the next step will fail, but that
             # is ok.
-            git commit -m "Add unbuilt ${pkg} to ${updater_branch}" || true
+            git commit -m "${pkg} -> ${pkg_version} in ${updater_branch}" || true
             git push origin "HEAD:${updater_branch}" -f || true
             gh workflow -R chromebrew/chromebrew run Build.yml -f branch="${updater_branch}" -f pr_label=updater
-            git stash || true
-            git checkout master
+            # git stash || true
+            git checkout -f master
           done

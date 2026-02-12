@@ -1,0 +1,2 @@
+#!/bin/bash
+man gc 2>&1 | head 

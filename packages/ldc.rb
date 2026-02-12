@@ -14,6 +14,7 @@ class Ldc < Package
   depends_on 'ncurses'
   depends_on 'zlib'
 
+  conflicts_with 'dmd'
   no_compile_needed
   no_shrink
   print_source_bashrc

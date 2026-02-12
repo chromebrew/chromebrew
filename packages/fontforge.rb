@@ -40,7 +40,7 @@ class Fontforge < CMake
   depends_on 'pangomm_1_4' # R
   depends_on 'python3' # R
   depends_on 'readline' # R
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
   depends_on 'zlib' # R
 
   run_tests

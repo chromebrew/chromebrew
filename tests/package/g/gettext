@@ -1,0 +1,4 @@
+#!/bin/bash -ex
+for b in $(crew files ${1} | grep /usr/local/bin); do $b -v 2>&1; done
+# If this fails, then autopoint may fail on subsequent installs.
+cd /tmp ; tar fxv /usr/local/share/gettext/archive.dir.tar.xz 

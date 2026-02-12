@@ -17,22 +17,21 @@ class Tesseract < CMake
   })
 
   depends_on 'acl' => :build
-  depends_on 'py3_asciidoc' => :build
   depends_on 'attr' => :build
   depends_on 'brotli' => :build
   depends_on 'bzip2' => :build
-  depends_on 'cairo' # R
   depends_on 'c_ares' => :build
+  depends_on 'cairo' # R
   depends_on 'curl' # R
-  depends_on 'docbook_xsl' => :build
+  depends_on 'docbook_xml' => :build
   depends_on 'e2fsprogs' => :build
   depends_on 'expat' => :build
   depends_on 'fontconfig' # R
   depends_on 'freetype' # R
   depends_on 'gcc_lib' # R
   depends_on 'giflib' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'harfbuzz' # R
   depends_on 'icu4c' # R
   depends_on 'krb5' => :build
@@ -56,6 +55,7 @@ class Tesseract < CMake
   depends_on 'openmp' => :build
   depends_on 'openssl' => :build
   depends_on 'pango' # R
+  depends_on 'py3_asciidoc' => :build
   depends_on 'xzutils' => :build
   depends_on 'zlib' # R
   depends_on 'zstd' => :build

@@ -3,7 +3,7 @@ require 'package'
 class Vscodium < Package
   description 'VSCodium is Open Source Software Binaries of VSCode with a community-driven default configuration.'
   homepage 'https://vscodium.com/'
-  version '1.107.18605'
+  version '1.109.21026'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.28'
@@ -13,9 +13,9 @@ class Vscodium < Package
      x86_64: "https://github.com/VSCodium/vscodium/releases/download/#{version}/VSCodium-linux-x64-#{version}.tar.gz"
   })
   source_sha256({
-    aarch64: '1aa286260582156b3b2313fcd7d92a35041eb223d6980ecc6a3711e2c85a4163',
-     armv7l: '1aa286260582156b3b2313fcd7d92a35041eb223d6980ecc6a3711e2c85a4163',
-     x86_64: '6eb0b68cdae20aa5cca73fb4e2c0cc58459e02b484aeb57d7edfe2bc21d32abd'
+    aarch64: '7eef62f1fabf82087d7339f754f04b63bbb9102d6a203253a28f47c7e3cc0abf',
+     armv7l: '7eef62f1fabf82087d7339f754f04b63bbb9102d6a203253a28f47c7e3cc0abf',
+     x86_64: 'eaff3ba44e3f410fc7f9d2e4fd639eae31715265c2960a0a58c363e30b3ca00c'
   })
 
   depends_on 'alsa_lib' # R
@@ -43,7 +43,7 @@ class Vscodium < Package
   depends_on 'mesa' # R
   depends_on 'nss' # R
   depends_on 'pango' # R
-  depends_on 'sommelier' # L
+  depends_on 'sommelier' => :logical
 
   no_fhs
   no_compile_needed

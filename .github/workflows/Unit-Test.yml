@@ -17,11 +17,122 @@ on:
     types:
       - completed
 jobs:
+  setup:
+    if: ${{ ( github.repository_owner == 'chromebrew' ) }}
+    runs-on: ubuntu-24.04
+    outputs:
+      timestamp: ${{ steps.set-timestamp.outputs.TIMESTAMP }}  # https://stackoverflow.com/a/75142892
+      current_head: ${{ steps.get-current-head.outputs.CURRENT_HEAD }}
+      changed_packages: ${{ steps.changed-packages.outputs.CHANGED_PACKAGES }}
+      glibc_232_compat: ${{ steps.get-compatibility.outputs.GLIBC_232_COMPATIBLE_PACKAGES }}
+      glibc_237_compat: ${{ steps.get-compatibility.outputs.GLIBC_237_COMPATIBLE_PACKAGES }}
+      i686_packages: ${{ steps.get-compatibility.outputs.i686_PACKAGES }}
+      x86_64_packages: ${{ steps.get-compatibility.outputs.x86_64_PACKAGES }}
+      armv7l_packages: ${{ steps.get-compatibility.outputs.armv7l_PACKAGES }}
+      matrix: ${{ steps.set-generate-matrix.outputs.matrix }}
+    steps:
+      - name: Set Timestamp
+        id: set-timestamp
+        run: |
+          TIMESTAMP="$(date -u +%F-%H%Z)"
+          export TIMESTAMP
+          echo "TIMESTAMP=${TIMESTAMP}" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - name: Get Current HEAD hash
+        id: get-current-head
+        run: |
+          echo "CURRENT_HEAD=$(git ls-remote https://github.com/${{ github.repository }}.git | head -1 | sed 's/HEAD//')" >> "$GITHUB_OUTPUT"
+          echo "CURRENT_HEAD is $(git ls-remote https://github.com/${{ github.repository }}.git | head -1 | sed 's/HEAD//')"
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v47
+        with:
+          base_sha: ${{ steps.get-current-head.outputs.CURRENT_HEAD }}
+          files_yaml: |
+            packages:
+              - packages/*.rb
+          since_last_remote_commit: true
+      - name: Export variables to github context
+        id: changed-packages
+        run: |
+            if [[ -z "${{ steps.changed-files.outputs.packages_all_changed_files }}" ]]; then
+              echo "Branch ${{ github.ref_name }} has no changed package files."
+            fi
+            # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-files.outputs.packages_all_changed_files) into "foo bar"
+            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-files.outputs.packages_all_changed_files }}" | xargs basename -s .rb | xargs)" >> "$GITHUB_ENV"
+            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-files.outputs.packages_all_changed_files }}" | xargs basename -s .rb | xargs)" >> "$GITHUB_OUTPUT"
+      - name: Determine glibc and architecture package compatibility
+        id: get-compatibility
+        run: |
+            # If a package doesnt have a min_glibc value, or if it is below 2.32, add it to GLIBC_232_COMPATIBLE_PACKAGES.
+            GLIBC_232_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do grep min_glibc packages/"${i}".rb | tr -d \' | awk '{exit $2 <= 2.32}' || echo "${i}" ; done | xargs)"
+            export GLIBC_232_COMPATIBLE_PACKAGES
+            if [[ -n ${GLIBC_232_COMPATIBLE_PACKAGES} ]]; then
+              echo "GLIBC_232_COMPATIBLE_PACKAGES=${GLIBC_232_COMPATIBLE_PACKAGES}" >> "$GITHUB_ENV"
+              echo "GLIBC_232_COMPATIBLE_PACKAGES=${GLIBC_232_COMPATIBLE_PACKAGES}" >> "$GITHUB_OUTPUT"
+              echo "Branch ${{ github.ref_name }} has these possibly Glibc 2.32 compatible packages: ${GLIBC_232_COMPATIBLE_PACKAGES}"
+            fi
+
+            # If a package doesnt have a min_glibc value, or if it is below 2.37, add it to GLIBC_237_COMPATIBLE_PACKAGES.
+            GLIBC_237_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do grep min_glibc packages/"${i}".rb | tr -d \' | awk '{exit $2 <= 2.37}' || echo "${i}" ; done | xargs)"
+            export GLIBC_237_COMPATIBLE_PACKAGES
+            if [[ -n ${GLIBC_237_COMPATIBLE_PACKAGES} ]]; then
+              echo "GLIBC_237_COMPATIBLE_PACKAGES=${GLIBC_237_COMPATIBLE_PACKAGES}" >> "$GITHUB_ENV"
+              echo "GLIBC_237_COMPATIBLE_PACKAGES=${GLIBC_237_COMPATIBLE_PACKAGES}" >> "$GITHUB_OUTPUT"
+              echo "Branch ${{ github.ref_name }} has these possibly Glibc 2.37 compatible packages: ${GLIBC_237_COMPATIBLE_PACKAGES}"
+            fi
+
+            # If a package has a compatibility of 'all' or one that includes 'x86_64', add it to x86_64_PACKAGES.
+            x86_64_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*x86_64" packages/"${i}".rb && echo "${i}"; done | xargs)"
+            export x86_64_PACKAGES
+            if [[ -n ${x86_64_PACKAGES} ]]; then
+              echo "x86_64_PACKAGES=${x86_64_PACKAGES}" >> "$GITHUB_ENV"
+              echo "x86_64_PACKAGES=${x86_64_PACKAGES}" >> "$GITHUB_OUTPUT"
+              echo "Branch ${{ github.ref_name }} has these x86_64 compatible packages: ${x86_64_PACKAGES}"
+            fi
+
+            ## If a package has a compatibility of 'all' or one that includes 'armv7l', add it to armv7l_PACKAGES.
+            armv7l_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*armv7l" packages/"${i}".rb && echo "${i}"; done | xargs)"
+            export armv7l_PACKAGES
+            if [[ -n ${armv7l_PACKAGES} ]]; then
+              echo "armv7l_PACKAGES=${armv7l_PACKAGES}" >> "$GITHUB_ENV"
+              echo "armv7l_PACKAGES=${armv7l_PACKAGES}" >> "$GITHUB_OUTPUT"
+              echo "Branch ${{ github.ref_name }} has these armv7l compatible packages: ${armv7l_PACKAGES}"
+            fi
+
+            ## If a package has a compatibility of 'all' or one that includes 'i686', add it to i686_PACKAGES.
+            i686_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*i686" packages/"${i}".rb && echo "${i}"; done | xargs)"
+            export i686_PACKAGES
+            if [[ -n ${i686_PACKAGES} ]]; then
+              echo "i686_PACKAGES=${i686_PACKAGES}" >> "$GITHUB_ENV"
+              echo "i686_PACKAGES=${i686_PACKAGES}" >> "$GITHUB_OUTPUT"
+              echo "Branch ${{ github.ref_name }} has these i686 compatible packages: ${i686_PACKAGES}"
+            fi
+      - name: Generate Creation Matrix
+        id: set-generate-matrix
+        env:
+          i686_PACKAGES: ${{ steps.get-compatibility.outputs.i686_PACKAGES }}
+          x86_64_PACKAGES: ${{ steps.get-compatibility.outputs.x86_64_PACKAGES }}
+          armv7l_PACKAGES: ${{ steps.get-compatibility.outputs.armv7l_PACKAGES }}
+        run: |
+          function join_by { local IFS="$1"; shift; echo "$*"; }
+          [[ -n "${i686_PACKAGES}" ]] && export CONTAINER_ARCH+=( "\"i686\"" )
+          # Always run on x86_64
+          export CONTAINER_ARCH+=( "\"x86_64\"" )
+          [[ -n "${armv7l_PACKAGES}" ]] && export CONTAINER_ARCH+=( "\"armv7l\"" )
+          export ARCHES="$(join_by , "${CONTAINER_ARCH[@]}")"
+          echo "matrix=[${ARCHES}]" >> $GITHUB_OUTPUT
+          echo "matrix=[${ARCHES}]"
   container_tests:
     if: ${{ github.repository_owner == 'chromebrew' }}
+    needs: setup
     strategy:
+      fail-fast: false
       matrix:
-        arch: [x86_64, armv7l, i686]
+        arch: ${{ fromJSON(needs.setup.outputs.matrix) }}
         runner:
           - ubuntu-24.04
           - ubuntu-24.04-arm
@@ -140,7 +251,7 @@ jobs:
                 if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
                     echo "CONTAINER=satmandu/crewbuild:nocturne-x86_64.m97" >> "$GITHUB_ENV"
                 elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=satmandu/crewbuild:hatch-x86_64.m142" >> "$GITHUB_ENV"
+                    echo "CONTAINER=satmandu/crewbuild:hatch-x86_64.m144" >> "$GITHUB_ENV"
                 else
                     echo "CONTAINER=satmandu/crew-pre-glibc-standalone:nocturne-x86_64.m90" >> "$GITHUB_ENV"
                 fi
@@ -152,7 +263,7 @@ jobs:
                 if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
                     echo "CONTAINER=satmandu/crewbuild:fievel-armv7l.m97" >> "$GITHUB_ENV"
                 elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=satmandu/crewbuild:strongbad-armv7l.m142" >> "$GITHUB_ENV"
+                    echo "CONTAINER=satmandu/crewbuild:strongbad-armv7l.m144" >> "$GITHUB_ENV"
                 else
                     echo "CONTAINER=satmandu/crew-pre-glibc-standalone:fievel-armv7l.m91" >> "$GITHUB_ENV"
                 fi

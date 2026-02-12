@@ -3,17 +3,17 @@ require 'package'
 class Deskreen < Package
   description 'Turn any device into a secondary screen for your computer'
   homepage 'https://deskreen.com/lang-en'
-  version '3.2.1'
+  version '3.2.14'
   license 'AGPL-3.0'
   compatibility 'x86_64'
   source_url "https://github.com/pavlobu/deskreen/releases/download/v#{version}/deskreen-ce-#{version}-x86_64.AppImage"
-  source_sha256 'caecfa17fb135a01fc600ef5d01c6c08d4cc6175270bef9ff0371e7e6ba092f3'
+  source_sha256 '9e61416ae039831c28a9d8f9f4ae24a607be6882dace8c419a563b33630b66eb'
 
   no_compile_needed
   no_shrink
 
   depends_on 'gtk3'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.patch
     system "sed -i 's,AppRun --no-sandbox,deskreen,' deskreen-ce.desktop"

@@ -3,33 +3,35 @@ require 'package'
 class Libparserutils < Package
   description 'Library for building efficient parsers, written in C'
   homepage 'https://www.netsurf-browser.org'
-  version '0.2.4'
+  version '0.2.5'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://download.netsurf-browser.org/libs/releases/libparserutils-0.2.4-src.tar.gz'
-  source_sha256 '322bae61b30ccede3e305bf6eae2414920649775bc5ff1d1b688012a3c4947d8'
-  binary_compression 'tar.xz'
+  source_url "https://download.netsurf-browser.org/libs/releases/libparserutils-#{version}-src.tar.gz"
+  source_sha256 '317ed5c718f17927b5721974bae5de32c3fd6d055db131ad31b4312a032ed139'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f6cf71d523cc7846199ae7cc8fccb712981ea1d1bad0672a83f602b4dc054c38',
-     armv7l: 'f6cf71d523cc7846199ae7cc8fccb712981ea1d1bad0672a83f602b4dc054c38',
-       i686: 'cf81d606dddc0f9c0667d5b53f656f4e282fcf1aefd7d0e7e75a35d467faf88f',
-     x86_64: '3f571ae3599d8623b433faf79944f3be1598fc1aaefdfd555cde4882bcc4936c'
+    aarch64: 'a8efe2831f945ea6d485439cdbd081a595a2450c658beb3dfa1dca04439a7f12',
+     armv7l: 'a8efe2831f945ea6d485439cdbd081a595a2450c658beb3dfa1dca04439a7f12',
+       i686: 'fdf9a787490a0daacde8d10eedc2c378d6321b1f05a01c9aafe10d4d901489a6',
+     x86_64: '37336d94ef206073c83f64f46a1110c92804a158bc1563892be6479f98e29602'
   })
 
+  depends_on 'glibc' # R
   depends_on 'netsurf_buildsystem' => :build
 
+  @env = {
+    'PREFIX' => CREW_PREFIX,
+    'LIBDIR' => "lib#{CREW_LIB_SUFFIX}",
+    'DESTDIR' => CREW_DEST_DIR,
+    'COMPONENT_TYPE' => 'lib-shared'
+  }
+
   def self.build
-    system "make PREFIX=#{CREW_PREFIX} COMPONENT_TYPE=lib-shared"
+    system @env, 'make'
   end
 
   def self.install
-    system "make install PREFIX=#{CREW_PREFIX} COMPONENT_TYPE=lib-shared DESTDIR=#{CREW_DEST_DIR}"
-    case ARCH
-    when 'x86_64'
-      Dir.chdir CREW_DEST_PREFIX do
-        FileUtils.mv 'lib/', 'lib64/'
-      end
-    end
+    system @env, 'make install'
   end
 end

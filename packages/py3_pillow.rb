@@ -3,22 +3,22 @@ require 'buildsystems/pip'
 class Py3_pillow < Pip
   description 'Pillow is a Python Imaging Library (PIL).'
   homepage 'https://python-pillow.org/'
-  version "12.1.0-#{CREW_PY_VER}"
+  version "12.1.1-#{CREW_PY_VER}"
   license 'HPND'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '50cf3eef76b7ce849940a973472f169e5854bcfe97f1bd751eb506f62a2b3267',
-     armv7l: '50cf3eef76b7ce849940a973472f169e5854bcfe97f1bd751eb506f62a2b3267',
-     x86_64: '2289c02cd714a0c9445eef49427a21c76e600251cd3b6f1236efd0afae5a1efe'
+    aarch64: '4b0ca3a39c2838ee7a6d6fcdf251f117e7f2364f98ef7f03a3169b0fb2272f26',
+     armv7l: '4b0ca3a39c2838ee7a6d6fcdf251f117e7f2364f98ef7f03a3169b0fb2272f26',
+     x86_64: '92c0402853e69b9ef5d04509880ce5720ccc464a3436ad5fa33de5dddc36c837'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'libjpeg_turbo'
-  depends_on 'libxcb'
+  depends_on 'libjpeg_turbo' # R
+  depends_on 'libxcb' # R
   depends_on 'py3_lxml'
   depends_on 'py3_xlsxwriter'
   depends_on 'python3' # R

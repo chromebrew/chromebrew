@@ -28,7 +28,7 @@ def test_wrapper(input_file, expected_pkg_file, deps, name: 'example', pkg_class
   File.unlink(pkg_file.path)
 
   # Remove the file copied to CREW_LOCAL_REPO_ROOT/packages, as to not leave any residue.
-  File.unlink("#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg}.rb")
+  File.unlink("#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg}.rb") unless FileUtils.identical?("#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg}.rb", File.join(CREW_PACKAGES_PATH, "#{pkg}.rb"))
 
   # Test that the expected package file and the actual package file are the same.
   assert_equal(expected_pkg_file, actual_pkg_file)

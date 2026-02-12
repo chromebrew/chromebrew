@@ -6,7 +6,7 @@ require 'buildsystems/rust'
 class Deno < RUST
   description 'A secure runtime for JavaScript and TypeScript'
   homepage 'https://deno.land'
-  version '2.6.3'
+  version '2.6.9'
   license 'MIT'
   compatibility 'x86_64'
   source_url 'https://github.com/denoland/deno.git'
@@ -14,7 +14,7 @@ class Deno < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '0271b20a6910910741593a169e2dc9cd909b211ad53a24315dfb5382e44fe53c'
+     x86_64: 'fdc686524a18d54a9d454d2904340c860af733366384cbbceefdfa3a00e6db9d'
   })
 
   depends_on 'gcc_lib' # R

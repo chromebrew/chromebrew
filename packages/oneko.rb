@@ -13,15 +13,16 @@ class Oneko < Package
   binary_sha256({
     aarch64: '18128ddab7d13999c43c4fa2ce24fdd15a9bcd4541a815ad8c19f9154d006db8',
      armv7l: '18128ddab7d13999c43c4fa2ce24fdd15a9bcd4541a815ad8c19f9154d006db8',
+       i686: '68469cb17415e9088f966a3b6551b52dcfcd15f3cec905e91fa4c7eca16dc3a0',
      x86_64: 'abcfe89e40fb13c5df22abcbae616892d9f9917ef931520a80dbbd067bb0775d'
   })
 
+  depends_on 'gccmakedep' => :build
+  depends_on 'imake' => :build
   depends_on 'libx11'
   depends_on 'libxext'
-  depends_on 'sommelier'
-  depends_on 'imake' => :build
+  depends_on 'sommelier' => :logical
   depends_on 'xorg_cf_files' => :build
-  depends_on 'gccmakedep' => :build
 
   def self.patch
     # Download extra sources

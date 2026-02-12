@@ -13,7 +13,7 @@ class Dexed < Package
   depends_on 'dmd'
   depends_on 'gtk2'
   depends_on 'xdg_base'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   no_compile_needed
 

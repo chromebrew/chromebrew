@@ -12,7 +12,7 @@ class Audacity < Package
 
   depends_on 'gtk3'
   depends_on 'libthai'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   no_shrink
   no_compile_needed

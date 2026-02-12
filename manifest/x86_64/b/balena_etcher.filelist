@@ -1,4 +1,4 @@
-# Total size: 429917872
+# Total size: 429938680
 /usr/local/bin/etcher
 /usr/local/share/balena-etcher/LICENSE
 /usr/local/share/balena-etcher/LICENSES.chromium.html
@@ -72,6 +72,8 @@
 /usr/local/share/balena-etcher/locales/zh-TW.pak
 /usr/local/share/balena-etcher/resources.pak
 /usr/local/share/balena-etcher/resources/app.asar
+/usr/local/share/balena-etcher/resources/app.asar.unpacked/.webpack/renderer/native_modules/prebuilds/linux-x64/node.napi.node
+/usr/local/share/balena-etcher/resources/app.asar.unpacked/.webpack/renderer/native_modules/prebuilds/linux-x64/node.napi1.node
 /usr/local/share/balena-etcher/resources/etcher-util
 /usr/local/share/balena-etcher/resources/sudo-askpass.osascript-en.js
 /usr/local/share/balena-etcher/resources/sudo-askpass.osascript-zh.js

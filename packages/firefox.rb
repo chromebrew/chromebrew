@@ -3,37 +3,39 @@ require 'package'
 class Firefox < Package
   description 'Mozilla Firefox (or simply Firefox) is a free and open-source web browser'
   homepage 'https://www.mozilla.org/en-US/firefox/'
-  version '146.0.1'
+  version '147.0.3'
   license 'MPL-2.0, GPL-2 and LGPL-2.1'
   compatibility 'x86_64'
   min_glibc '2.35'
   source_url "https://download-installer.cdn.mozilla.net/pub/firefox/releases/#{version}/linux-x86_64/en-US/firefox-#{version}.tar.xz"
-  source_sha256 '36a4dc0e3be8af2d49d8388021abf790976d2398162b9d13a6d758cc8c37f8dd'
+  source_sha256 '3bdf654c08bfa7dda5e13fa2554cd0edf997f32e972aa63942a3a7ab5a0fb877'
 
-  depends_on 'at_spi2_core'
-  depends_on 'cairo'
-  depends_on 'desktop_file_utils'
-  depends_on 'dbus'
-  depends_on 'dbus_glib'
-  depends_on 'fontconfig'
-  depends_on 'freetype'
-  depends_on 'gdk_pixbuf'
-  depends_on 'glib'
-  depends_on 'gtk2'
-  depends_on 'gtk3'
-  depends_on 'libx11'
-  depends_on 'libxcb'
-  depends_on 'libxcomposite'
-  depends_on 'libxcursor'
-  depends_on 'libxdamage'
-  depends_on 'libxext'
-  depends_on 'libxfixes'
-  depends_on 'libxi'
-  depends_on 'libxrender'
-  depends_on 'libxt'
-  depends_on 'pango'
-  depends_on 'pulseaudio'
-  depends_on 'sommelier'
+  depends_on 'alsa_lib' # R
+  depends_on 'at_spi2_core' # R
+  depends_on 'cairo' # R
+  depends_on 'dbus' # R
+  depends_on 'dbus_glib' => :logical
+  depends_on 'desktop_file_utils' => :logical
+  depends_on 'fontconfig' # R
+  depends_on 'freetype' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glib' # R
+  depends_on 'gtk3' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'libx11' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxcomposite' # R
+  depends_on 'libxcursor' # R
+  depends_on 'libxdamage' # R
+  depends_on 'libxext' # R
+  depends_on 'libxfixes' # R
+  depends_on 'libxi' # R
+  depends_on 'libxrandr' # R
+  depends_on 'libxrender' # R
+  depends_on 'pango' # R
+  depends_on 'pulseaudio' => :logical
+  depends_on 'sommelier' => :logical
 
   no_compile_needed
   no_shrink

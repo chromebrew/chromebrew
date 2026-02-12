@@ -13,6 +13,7 @@ class Qb64 < Package
   binary_sha256({
     aarch64: '52da6cf27545c7274592622927df205de268cbd8f4be87c75ff845ec68120cd4',
      armv7l: '52da6cf27545c7274592622927df205de268cbd8f4be87c75ff845ec68120cd4',
+       i686: '7aef527455b9dcf70438665b901d0e5f80e57e1ad9079cf767397476338355d8',
      x86_64: 'f93227d12bceb6248131ceecd2d542c995a4476185c6bb1f00095135879acf49'
   })
 
@@ -22,9 +23,10 @@ class Qb64 < Package
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libglu'
+  depends_on 'libglvnd' # R
   depends_on 'libx11' # R
   depends_on 'mesa' # R
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.patch
     system "find . -name '*.sh' -exec sed -i \"s/\\r//g\" {} \\;"

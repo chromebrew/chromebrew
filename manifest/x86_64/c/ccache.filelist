@@ -1,4 +1,4 @@
-# Total size: 1488220
+# Total size: 2235269
 /usr/local/bin/ccache
 /usr/local/etc/env.d/00-ccache
 /usr/local/lib64/ccache/bin/c++
@@ -7,3 +7,12 @@
 /usr/local/lib64/ccache/bin/clang++
 /usr/local/lib64/ccache/bin/g++
 /usr/local/lib64/ccache/bin/gcc
+/usr/local/share/doc/ccache/AUTHORS.adoc
+/usr/local/share/doc/ccache/AUTHORS.html
+/usr/local/share/doc/ccache/LICENSE.adoc
+/usr/local/share/doc/ccache/LICENSE.html
+/usr/local/share/doc/ccache/MANUAL.adoc
+/usr/local/share/doc/ccache/MANUAL.html
+/usr/local/share/doc/ccache/NEWS.adoc
+/usr/local/share/doc/ccache/NEWS.html
+/usr/local/share/man/man1/ccache.1.zst

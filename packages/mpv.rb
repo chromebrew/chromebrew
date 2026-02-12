@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Mpv < Meson
   description 'Video player based on MPlayer/mplayer2'
   homepage 'https://mpv.io/'
-  version '0.40.0'
+  version '0.41.0'
   license 'LGPL-2.1+, GPL-2+, BSD, ISC and GPL-3+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/mpv-player/mpv.git'
@@ -11,9 +11,9 @@ class Mpv < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2bc48246dbc53037698b0ec25842b950714d2eb623254ded3d5adacb19c6493f',
-     armv7l: '2bc48246dbc53037698b0ec25842b950714d2eb623254ded3d5adacb19c6493f',
-     x86_64: 'e58d9512455a4006effd4262720d54f700d4ba6e8d1607b7779afa2ca0f88996'
+    aarch64: 'a9a1f24758659b0f0cdad06c1c4b9c913e6f56273ace93e8da140a46b48a77a9',
+     armv7l: 'a9a1f24758659b0f0cdad06c1c4b9c913e6f56273ace93e8da140a46b48a77a9',
+     x86_64: 'c28521b863619adae799845ea6487e3e824daa9c3bfe6c8986e54381861fea10'
   })
 
   depends_on 'alsa_lib' # R
@@ -27,8 +27,8 @@ class Mpv < Meson
   depends_on 'libass' # R
   depends_on 'libbluray' # R
   depends_on 'libcaca' # R
-  depends_on 'libcdio_paranoia' # R
   depends_on 'libcdio' # R
+  depends_on 'libcdio_paranoia' # R
   depends_on 'libdovi' # R
   depends_on 'libdrm' # R
   depends_on 'libdvdnav' # R
@@ -37,11 +37,12 @@ class Mpv < Meson
   depends_on 'libjpeg_turbo' # R
   depends_on 'libplacebo' # R
   depends_on 'libsamplerate' # R
-  depends_on 'sdl2' # R
   depends_on 'libva' # R
   depends_on 'libvdpau' # R
+  depends_on 'libvpx' => :build
   depends_on 'libx11' # R
   depends_on 'libxext' # R
+  depends_on 'libxfixes' # R
   depends_on 'libxinerama' # R
   depends_on 'libxkbcommon' # R
   depends_on 'libxpresent' # R
@@ -56,10 +57,12 @@ class Mpv < Meson
   depends_on 'pulseaudio' # R
   depends_on 'py3_docutils' => :build
   depends_on 'rubberband' # R
+  depends_on 'sdl3' # R
   depends_on 'shaderc' # R
-  depends_on 'sommelier' # L
+  depends_on 'sommelier' => :logical
   depends_on 'uchardet' # R
   depends_on 'vapoursynth' # R
+  depends_on 'vmaf' => :build
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' # L
   depends_on 'wayland' # R
@@ -72,8 +75,7 @@ class Mpv < Meson
   # the ancient wl_compositor 3.
   meson_options '-Dwayland=disabled \
       -Dlibmpv=true \
-      -Dgl-x11=enabled \
-      -Dsdl2=enabled'
+      -Dgl-x11=enabled'
 
   meson_build_extras do
     # mpv conf file

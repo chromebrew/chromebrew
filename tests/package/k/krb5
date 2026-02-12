@@ -1,0 +1,3 @@
+#!/bin/bash
+klist -V
+krb5-config --version

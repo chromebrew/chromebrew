@@ -5,19 +5,19 @@ require 'buildsystems/meson'
 
 class Blueprint_compiler < Meson
   description 'A markup language for GTK user interfaces'
-  homepage 'https://jwestman.pages.gitlab.gnome.org/blueprint-compiler/'
-  version '0.18.0'
+  homepage 'https://gitlab.gnome.org/GNOME/blueprint-compiler'
+  version '0.19.0'
   license 'LGPL'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://gitlab.gnome.org/jwestman/blueprint-compiler.git'
-  git_hashtag "v#{version}"
+  source_url 'https://gitlab.gnome.org/GNOME/blueprint-compiler.git'
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c0d0424001a8e84f6091d5dee326631e5729508bffdf3514eb2d25a2951b157a',
-     armv7l: 'c0d0424001a8e84f6091d5dee326631e5729508bffdf3514eb2d25a2951b157a',
-     x86_64: 'ddcc11cf462dd9c000ca6cf73c09ff86b3047270e4bbbb24d3908f5b2c06bdda'
+    aarch64: '663d47197654ed242479e989bf77674e2b771bea19bed49f6e73f14cc03860da',
+     armv7l: '663d47197654ed242479e989bf77674e2b771bea19bed49f6e73f14cc03860da',
+     x86_64: '87785fad35e13182fa1b3927413fcfa365ec7dc50fe8c6da86c95662a8090c44'
   })
 
-  depends_on 'py3_pygobject' => :build
+  depends_on 'py3_pygobject' # R
 end

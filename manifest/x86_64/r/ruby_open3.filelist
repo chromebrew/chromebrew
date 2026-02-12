@@ -1,11 +1,3 @@
-# Total size: 59364
-/usr/local/lib64/ruby/gems/4.0.0/gems/open3-0.2.1/Gemfile
-/usr/local/lib64/ruby/gems/4.0.0/gems/open3-0.2.1/LICENSE.txt
-/usr/local/lib64/ruby/gems/4.0.0/gems/open3-0.2.1/README.md
-/usr/local/lib64/ruby/gems/4.0.0/gems/open3-0.2.1/Rakefile
-/usr/local/lib64/ruby/gems/4.0.0/gems/open3-0.2.1/bin/console
-/usr/local/lib64/ruby/gems/4.0.0/gems/open3-0.2.1/bin/setup
-/usr/local/lib64/ruby/gems/4.0.0/gems/open3-0.2.1/lib/open3.rb
-/usr/local/lib64/ruby/gems/4.0.0/gems/open3-0.2.1/lib/open3/jruby_windows.rb
-/usr/local/lib64/ruby/gems/4.0.0/gems/open3-0.2.1/lib/open3/version.rb
-/usr/local/lib64/ruby/gems/4.0.0/gems/open3-0.2.1/open3.gemspec
+# Total size: 48711
+/usr/local/lib64/ruby/4.0.0/open3.rb
+/usr/local/lib64/ruby/4.0.0/open3/version.rb

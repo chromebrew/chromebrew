@@ -22,8 +22,8 @@ class Pango < Meson
   depends_on 'freetype' # R
   depends_on 'fribidi' # R
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gobject_introspection' => :build # add this package to build gtk+, avoid compilation error
   depends_on 'harfbuzz' # R
   depends_on 'libx11' # R

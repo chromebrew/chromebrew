@@ -11,7 +11,7 @@ class Netbeans < Package
 
   depends_on 'openjdk17'
   depends_on 'libxtst'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   no_compile_needed
 

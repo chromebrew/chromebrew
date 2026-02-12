@@ -1,0 +1,3 @@
+#!/bin/bash
+php -h | head
+php -v

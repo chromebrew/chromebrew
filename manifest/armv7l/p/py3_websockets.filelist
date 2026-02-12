@@ -1,13 +1,13 @@
-# Total size: 1353693
+# Total size: 1363957
 /usr/local/bin/websockets
-/usr/local/lib/python3.14/site-packages/websockets-15.0.1.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/websockets-15.0.1.dist-info/LICENSE
-/usr/local/lib/python3.14/site-packages/websockets-15.0.1.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/websockets-15.0.1.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/websockets-15.0.1.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/websockets-15.0.1.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/websockets-15.0.1.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/websockets-15.0.1.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/websockets-16.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/websockets-16.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/websockets-16.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/websockets-16.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/websockets-16.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/websockets-16.0.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/websockets-16.0.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/websockets-16.0.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/websockets/__init__.py
 /usr/local/lib/python3.14/site-packages/websockets/__main__.py
 /usr/local/lib/python3.14/site-packages/websockets/__pycache__/__init__.cpython-314.pyc
@@ -24,6 +24,7 @@
 /usr/local/lib/python3.14/site-packages/websockets/__pycache__/http11.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/websockets/__pycache__/imports.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/websockets/__pycache__/protocol.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/websockets/__pycache__/proxy.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/websockets/__pycache__/server.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/websockets/__pycache__/streams.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/websockets/__pycache__/typing.cpython-314.pyc
@@ -82,6 +83,7 @@
 /usr/local/lib/python3.14/site-packages/websockets/legacy/protocol.py
 /usr/local/lib/python3.14/site-packages/websockets/legacy/server.py
 /usr/local/lib/python3.14/site-packages/websockets/protocol.py
+/usr/local/lib/python3.14/site-packages/websockets/proxy.py
 /usr/local/lib/python3.14/site-packages/websockets/py.typed
 /usr/local/lib/python3.14/site-packages/websockets/server.py
 /usr/local/lib/python3.14/site-packages/websockets/speedups.c

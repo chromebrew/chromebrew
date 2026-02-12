@@ -13,13 +13,14 @@ class Arduino_ide < Package
   binary_sha256({
     aarch64: '33bd83f692a6f241b14738bfef32a9118ebb6eb2f4936b69909e2c9f546d49d3',
      armv7l: '33bd83f692a6f241b14738bfef32a9118ebb6eb2f4936b69909e2c9f546d49d3',
+       i686: '1636654217841dd03dc22b315228ced30f9c50f67d39b6892f75e0732624dcb3',
      x86_64: 'd48a6cf203c563b343d3c33dd8c2767a8a416446ef73b34ca931ee964e88b244'
   })
 
   depends_on 'xzutils'
   depends_on 'openjdk8'
   depends_on 'ant' => :build
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   case ARCH
   when 'x86_64'

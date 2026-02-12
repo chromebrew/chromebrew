@@ -1,6 +1,7 @@
-# Total size: 4133895
+# Total size: 4142352
 /usr/local/lib64/perl5/5.42/site_perl/auto/Locale/gettext_xs/gettext_xs.so
 /usr/local/share/man/man3/Locale::Messages.3.zst
+/usr/local/share/man/man3/Locale::Messages::Debug.3.zst
 /usr/local/share/man/man3/Locale::Recode.3.zst
 /usr/local/share/man/man3/Locale::Recode::_Aliases.3.zst
 /usr/local/share/man/man3/Locale::Recode::_Conversions.3.zst
@@ -150,6 +151,7 @@
 /usr/local/share/man/man3/Locale::gettext_xs.3.zst
 /usr/local/share/man/man3/Locale::libintlFAQ.3.zst
 /usr/local/share/perl5/site_perl/Locale/Messages.pm
+/usr/local/share/perl5/site_perl/Locale/Messages/Debug.pm
 /usr/local/share/perl5/site_perl/Locale/Recode.pm
 /usr/local/share/perl5/site_perl/Locale/Recode/_Aliases.pm
 /usr/local/share/perl5/site_perl/Locale/Recode/_Conversions.pm

@@ -13,15 +13,16 @@ class Libsdl < Package
   binary_sha256({
     aarch64: '0875d5715c39505b6c07a04ea267d233df122fb0f2179c09b700b31817e9d4c6',
      armv7l: '0875d5715c39505b6c07a04ea267d233df122fb0f2179c09b700b31817e9d4c6',
+       i686: '86e6bfe0051158b63e7b14c5a41d681c759f45522149133031da6854e673bae7',
      x86_64: '1ff00ecd7af2ce401776cbdaa75a8b1d2d7c35d48688124bc986d7f5ef4108da'
   })
 
   depends_on 'glibc' # R
   # depends_on 'xorg_server'
   # depends_on 'xwayland'
-  depends_on 'alsa_lib'
-  depends_on 'pulseaudio'
-  depends_on 'mesa'
+  depends_on 'alsa_lib' => :logical
+  depends_on 'pulseaudio' => :logical
+  depends_on 'mesa' => :logical
   depends_on 'nasm' => :build
 
   def self.patch

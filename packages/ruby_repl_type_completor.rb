@@ -3,7 +3,7 @@ require 'buildsystems/ruby'
 class Ruby_repl_type_completor < RUBY
   description 'Type based completion for REPL.'
   homepage 'https://github.com/ruby/repl_type_completor'
-  version "0.1.12-#{CREW_RUBY_VER}"
+  version "0.1.13-#{CREW_RUBY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

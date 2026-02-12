@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION = defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION = '1.71.0' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION = '1.72.4' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH = Etc.uname[:machine]
@@ -59,7 +59,11 @@ end
 # These are packages that crew needs to run-- only packages that the bin/crew needs should be required here.
 # lz4, for example, is required for zstd to have lz4 support, but this is not required to run bin/crew.
 CREW_ESSENTIAL_PACKAGES = %W[
+<<<<<<< update-install.sh
   git crew_profile_base gcc_lib gmp gnu_time libnghttp2 libxcrypt ncurses patchelf readline ruby ruby_matrix upx zlib zlib_ng zstd
+=======
+  bash crew_profile_base gcc_lib gmp gnu_time libnghttp2 libxcrypt ncurses patchelf readline ruby ruby_matrix ruby_parser upx zlib zlib_ng zstd
+>>>>>>> master
   #{'crew_preload' unless CREW_GLIBC_INTERPRETER.nil?}
   #{'glibc' unless CREW_GLIBC_INTERPRETER.nil?}
   #{ if LIBC_VERSION.to_f > 2.34 && LIBC_VERSION.to_f < 2.41
@@ -97,7 +101,13 @@ CREW_KERNEL_VERSION =
 CREW_CACHE_DIR          = ENV.fetch('CREW_CACHE_DIR', "#{HOME}/.cache/crewcache")
 CREW_CACHE_FAILED_BUILD = ENV.fetch('CREW_CACHE_FAILED_BUILD', false)
 CREW_CACHE_BUILD        = ENV.fetch('CREW_CACHE_BUILD', false)
-CREW_LOCAL_REPO_ROOT = Kernel.system('command -v git', %i[out err] => File::NULL) ? `git rev-parse --show-toplevel 2>/dev/null`.chomp : ''
+crew_local_repo_root = `git rev-parse --show-toplevel 2>/dev/null`.chomp
+crew_local_repo_root_test = if crew_local_repo_root.nil? || crew_local_repo_root.empty?
+                              ENV.fetch('CREW_LOCAL_REPO_ROOT', File.join(CREW_PREFIX, 'lib/crew'))
+                            else
+                              ENV.fetch('CREW_LOCAL_REPO_ROOT', crew_local_repo_root)
+                            end
+CREW_LOCAL_REPO_ROOT = Dir.exist?(crew_local_repo_root_test) ? crew_local_repo_root_test : File.join(CREW_PREFIX, 'lib/crew')
 CREW_LOCAL_BUILD_DIR = "#{CREW_LOCAL_REPO_ROOT}/release/#{ARCH}"
 CREW_MAX_BUILD_TIME  = ENV.fetch('CREW_MAX_BUILD_TIME', '19800') # GitHub Action containers are killed after 6 hours, so set to 5.5 hours.
 CREW_GITLAB_PKG_REPO = 'https://gitlab.com/api/v4/projects/26210301/packages'
@@ -139,6 +149,7 @@ CREW_STANDALONE_UPGRADE_ORDER = %w[libxcrypt glibc openssl ruby python3 perl icu
 
 CREW_DEBUG        = ARGV.include?('-D') || ARGV.include?('--debug')
 CREW_FORCE        = ARGV.include?('-f') || ARGV.include?('--force')
+CREW_OUTPUT_JSON  = ARGV.include?('-j') || ARGV.include?('--json')
 CREW_VERBOSE      = ARGV.include?('-v') || ARGV.include?('--verbose') || ARGV.include?('-vv')
 CREW_VERY_VERBOSE = ARGV.include?('-vv')
 
@@ -352,6 +363,7 @@ crew_llvm_ver_default = '21'
 crew_perl_ver_default = '5.42'
 crew_py_ver_default = '3.14'
 crew_ruby_ver_default = '4.0'
+crew_rust_ver_default = '1.93'
 if ENV['CI']
   CREW_GCC_VER  = "gcc#{crew_gcc_ver_default}"
   CREW_ICU_VER  = "icu#{crew_icu_ver_default}"
@@ -359,6 +371,7 @@ if ENV['CI']
   CREW_PERL_VER = "perl#{crew_perl_ver_default}"
   CREW_PY_VER   = "py#{crew_py_ver_default}"
   CREW_RUBY_VER = "ruby#{crew_ruby_ver_default}"
+  CREW_RUST_VER = "rust#{crew_rust_ver_default}"
 else
   CREW_GCC_VER  = Kernel.system('command -v gcc', %i[out err] => File::NULL) ? "gcc#{`gcc -dumpversion`.chomp}" : "gcc#{crew_gcc_ver_default}"
   CREW_ICU_VER  = Kernel.system('command -v uconv', %i[out err] => File::NULL) ? "icu#{`uconv --version`.chomp.split[3]}" : "icu#{crew_icu_ver_default}"
@@ -366,6 +379,7 @@ else
   CREW_PERL_VER = Kernel.system('command -v perl', %i[out err] => File::NULL) ? "perl#{`perl --version|xargs|cut -d\\( -f2|cut -d\\) -f1|cut -dv -f2`.chomp.sub(/\.\d+$/, '')}" : "perl#{crew_perl_ver_default}"
   CREW_PY_VER   = Kernel.system('command -v python3', %i[out err] => File::NULL) ? "py#{`python3 -c "print('.'.join(__import__('platform').python_version_tuple()[:2]))"`.chomp}" : "py#{crew_py_ver_default}"
   CREW_RUBY_VER = "ruby#{RUBY_VERSION.slice(/(?:.*(?=\.))/)}"
+  CREW_RUST_VER = Kernel.system('which cargo', %i[out err] => File::NULL) ? "rust#{`cargo -V`.chomp.split[1].split('.')[0..1].join('.')}" : "rust#{crew_rust_ver_default}"
 end
 @buildsystems = ['Package']
 Dir.glob("#{CREW_LIB_PATH}/lib/buildsystems/*.rb") { |file| @buildsystems << File.foreach(file, encoding: Encoding::UTF_8).grep(/^class/).to_s.split[1] }
@@ -448,6 +462,7 @@ CREW_ANITYA_PACKAGE_NAME_MAPPINGS = Set[
   { pkg_name: 'selenium_server_standalone', anitya_pkg: 'selenium', comments: '' },
   { pkg_name: 'signal_desktop', anitya_pkg: 'signal', comments: '' },
   { pkg_name: 'smbclient', anitya_pkg: 'samba', comments: '' },
+  { pkg_name: 'snowflake', anitya_pkg: 'Muon', comments: 'Renamed to muon upstream' },
   { pkg_name: 'tcpwrappers', anitya_pkg: 'tcp_wrappers', comments: '' },
   { pkg_name: 'tepl_6', anitya_pkg: 'libgedit-tepl', comments: '' },
   { pkg_name: 'upx', anitya_pkg: 'upx', comments: 'Prefer to GitHub' },
@@ -503,7 +518,7 @@ CREW_DOCOPT = <<~DOCOPT
     crew install [options] [-f|--force] [-k|--keep] [--regenerate-filelist] [-s|--source] [-S|--recursive-build] [-v|--verbose] <name> ...
     crew list [options] [-v|--verbose] (available|compatible|incompatible|essential|installed)
     crew postinstall [options] [-v|--verbose] <name> ...
-    crew prop [options] [<property>]
+    crew prop [options] [<property>] [<name>]
     crew reinstall [options] [-f|--force] [-k|--keep] [-s|--source] [--regenerate-filelist] [-S|--recursive-build] [-v|--verbose] <name> ...
     crew remove [options] [-f|--force] [-v|--verbose] <name> ...
     crew search [options] [-v|--verbose] <name> ...

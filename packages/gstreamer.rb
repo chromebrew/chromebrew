@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gstreamer < Meson
   description 'GStreamer is a library for constructing graphs of media-handling components.'
   homepage 'https://gstreamer.freedesktop.org/'
-  version '1.26.8'
+  version '1.28.0'
   license 'LGPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/gstreamer/gstreamer.git'
@@ -11,11 +11,13 @@ class Gstreamer < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '26d02cbb5f8fabe69804deefa0f30063e60d6c2b585eb3d4d65539139760d49a',
-     armv7l: '26d02cbb5f8fabe69804deefa0f30063e60d6c2b585eb3d4d65539139760d49a',
-     x86_64: '52673b19f10646ce035a7a961a09d1173984fa42b342337ff8c0325da23847a7'
+    aarch64: 'a69a2e38955364b72226072f10275fa41b6dc22a8a5f97320a0b8201e85d44fc',
+     armv7l: 'a69a2e38955364b72226072f10275fa41b6dc22a8a5f97320a0b8201e85d44fc',
+     x86_64: '4fac6c28487630defd3daf9a86b70393cf59651117197ec6f059e48b51c9eb1a'
   })
 
+  # depends_on 'gsm' # R
+  # depends_on 'libvpx' # R
   depends_on 'alsa_lib' # R
   depends_on 'bzip2' # R
   depends_on 'ca_certificates' => :build
@@ -25,7 +27,7 @@ class Gstreamer < Meson
   depends_on 'elfutils' # R
   depends_on 'faac' # R
   depends_on 'faad2' # R
-  depends_on 'ffmpeg' # R
+  depends_on 'ffmpeg' => :logical
   depends_on 'flac' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
@@ -33,8 +35,6 @@ class Gstreamer < Meson
   depends_on 'glibc' # R
   depends_on 'gnutls' # R
   depends_on 'graphene' # R
-  depends_on 'gsl' => :build
-  depends_on 'gsm' # R
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
   depends_on 'intel_media_sdk' if ARCH.eql?('x86_64') # R
@@ -43,7 +43,6 @@ class Gstreamer < Meson
   depends_on 'libaom' # R
   depends_on 'libass' # R
   depends_on 'libavc1394' # R
-  depends_on 'libcap'
   depends_on 'libcap' # R
   depends_on 'libdrm' # R
   depends_on 'libdv' # R
@@ -51,7 +50,6 @@ class Gstreamer < Meson
   depends_on 'libglvnd' # R
   depends_on 'libgudev' # R
   depends_on 'libiec61883' # R
-  depends_on 'libjpeg_turbo'
   depends_on 'libjpeg_turbo' # R
   depends_on 'libmodplug' # R
   depends_on 'libmp3lame' # R
@@ -62,12 +60,10 @@ class Gstreamer < Meson
   depends_on 'librsvg' # R
   depends_on 'libsndfile' # R
   depends_on 'libtheora' # R
-  depends_on 'libunwind'
   depends_on 'libunwind' # R
   depends_on 'libusb' # R
   depends_on 'libva' # R
   depends_on 'libvorbis' # R
-  depends_on 'libvpx' # R
   depends_on 'libwebp' # R
   depends_on 'libx11' # R
   depends_on 'libx264' # R
@@ -92,7 +88,7 @@ class Gstreamer < Meson
   depends_on 'opus' # R
   depends_on 'opusfile' => :build
   depends_on 'pango' # R
-  depends_on 'pulseaudio' # R
+  depends_on 'pulseaudio' => :logical
   depends_on 'py3_gitlint' => :build
   depends_on 'py3_setuptools' => :build
   depends_on 'qt5_base' # R

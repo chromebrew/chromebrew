@@ -1,4 +1,4 @@
-# Total size: 1967981
+# Total size: 2314293
 /usr/local/bin/babl
 /usr/local/include/babl-0.1/babl/babl-introspect.h
 /usr/local/include/babl-0.1/babl/babl-macros.h
@@ -58,11 +58,23 @@
 /usr/local/lib64/babl-0.1/x86-64-v3-u16.so
 /usr/local/lib64/babl-0.1/x86-64-v3-u32.so
 /usr/local/lib64/babl-0.1/x86-64-v3-ycbcr.so
+/usr/local/lib64/babl-0.1/x86-64-v4-CIE.so
+/usr/local/lib64/babl-0.1/x86-64-v4-cairo.so
+/usr/local/lib64/babl-0.1/x86-64-v4-double.so
+/usr/local/lib64/babl-0.1/x86-64-v4-float.so
+/usr/local/lib64/babl-0.1/x86-64-v4-gegl-fixups.so
+/usr/local/lib64/babl-0.1/x86-64-v4-gggl-lies.so
+/usr/local/lib64/babl-0.1/x86-64-v4-gggl.so
+/usr/local/lib64/babl-0.1/x86-64-v4-grey.so
+/usr/local/lib64/babl-0.1/x86-64-v4-simple.so
+/usr/local/lib64/babl-0.1/x86-64-v4-u16.so
+/usr/local/lib64/babl-0.1/x86-64-v4-u32.so
+/usr/local/lib64/babl-0.1/x86-64-v4-ycbcr.so
 /usr/local/lib64/babl-0.1/ycbcr.so
 /usr/local/lib64/girepository-1.0/Babl-0.1.typelib
 /usr/local/lib64/libbabl-0.1.so
 /usr/local/lib64/libbabl-0.1.so.0
-/usr/local/lib64/libbabl-0.1.so.0.217.1
+/usr/local/lib64/libbabl-0.1.so.0.221.1
 /usr/local/lib64/pkgconfig/babl-0.1.pc
 /usr/local/share/gir-1.0/Babl-0.1.gir
 /usr/local/share/vala/vapi/babl-0.1.deps

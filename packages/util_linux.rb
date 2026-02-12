@@ -3,23 +3,21 @@ require 'buildsystems/meson'
 class Util_linux < Meson
   description 'essential linux tools'
   homepage 'https://www.kernel.org/pub/linux/utils/util-linux/'
-  version "2.41.2-9179172-#{CREW_PY_VER}"
+  version "2.41.3-#{CREW_PY_VER}"
   license 'GPL-2, LGPL-2.1, BSD-4, MIT and public-domain'
   compatibility 'all'
   source_url 'https://github.com/util-linux/util-linux.git'
-  # Build from stable/v2.4.1 branch.
-  git_hashtag '917917253e60b0ba485cf6a27a2f993aa43e1eea'
-  # git_hashtag "v#{version.split('-').first}"
+  git_hashtag "v#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '91decac55f4df9b732374862399db44b9104b60dfc0a538f5686886d1d83ac30',
-     armv7l: '91decac55f4df9b732374862399db44b9104b60dfc0a538f5686886d1d83ac30',
-       i686: '0b5c219fa26fe65437b9261bef0f178763595cbf5d1346d65e3d15d7fff2a089',
-     x86_64: '3e109b0a94fe9369382ac1cda73225f842ec06d00086a0a1019f6f4738f184fc'
+    aarch64: '0ca17519ba5227b3c81fee800ed2078d79671ee9f10cf6af08580ab6081c177f',
+     armv7l: '0ca17519ba5227b3c81fee800ed2078d79671ee9f10cf6af08580ab6081c177f',
+       i686: '6ee516c2cace06a6fd13f46376424a01847024979266cfc5fa8cac7f704ad167',
+     x86_64: 'e2b44a21ff4c93f2e99496d087a0989fae42eff2da84a020e3f4f4c40d9ab5f8'
   })
 
-  depends_on 'eudev' if ARCH == 'x86_64' # (for libudev.h)
+  depends_on 'eudev_header' => :build if ARCH == 'x86_64' # (for libudev.h)
   depends_on 'filecmd' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
@@ -29,7 +27,6 @@ class Util_linux < Meson
   depends_on 'linux_pam' # R
   depends_on 'ncurses' # R
   depends_on 'pcre2' => :build
-  depends_on 'python3' # R
   depends_on 'readline' # R
   depends_on 'ruby_asciidoctor' => :build
   depends_on 'sqlite' # R

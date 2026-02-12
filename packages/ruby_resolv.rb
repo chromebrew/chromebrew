@@ -3,17 +3,17 @@ require 'buildsystems/ruby'
 class Ruby_resolv < RUBY
   description 'Thread-aware dns resolver library in ruby.'
   homepage 'https://github.com/ruby/resolv'
-  version "0.7.0-#{CREW_RUBY_VER}"
+  version "0.7.1-#{CREW_RUBY_VER}"
   license 'BSD-2-Clause'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: 'd9cc9762096855a7277510cdaafac99673385a814188789014a740fb56b9d46c',
-     armv7l: 'd9cc9762096855a7277510cdaafac99673385a814188789014a740fb56b9d46c',
-       i686: 'c6d61d2c45b8129f539d86f57967ebdeacbfa91815047c1e7ffe590694954a15',
-     x86_64: '03e37fd0ab49cb211e9c21a76c5e66a30a0d3b3802e925a052843b7baa459e86'
+    aarch64: '9f3704637fc84af3553396dd8eceff2e7facc04f7b4ad16cd48214c213f5845b',
+     armv7l: '9f3704637fc84af3553396dd8eceff2e7facc04f7b4ad16cd48214c213f5845b',
+       i686: 'ec9f9dfba6e335d482d032cad141f7e30222825bb19579497c08c2ad7e304ece',
+     x86_64: 'ad301b59ec471e674e42e1a528b1d13120658856c98a712dc099b81a3f3fb773'
   })
 
   conflicts_ok

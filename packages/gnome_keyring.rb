@@ -19,11 +19,11 @@ class Gnome_keyring < Meson
   depends_on 'at_spi2_core' # R
   depends_on 'cairo' # R
   depends_on 'dconf' => :build
-  depends_on 'docbook_xsl' => :build
+  depends_on 'docbook_xml' => :build
   depends_on 'gcr_3' # R
   depends_on 'gdk_pixbuf' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glibc' # R
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
   depends_on 'libcap' => :build

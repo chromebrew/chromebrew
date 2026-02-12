@@ -3,12 +3,12 @@ require 'package'
 class Smplayer < Package
   description 'SMPlayer is a free media player for Windows and Linux with built-in codecs that can play virtually all video and audio formats.'
   homepage 'https://www.smplayer.info/'
-  version '24.5.0'
+  version '25.6.0'
   license 'GPL-2'
   compatibility 'x86_64'
   min_glibc '2.30'
   source_url "https://github.com/smplayer-dev/smplayer/releases/download/v#{version}/SMPlayer-#{version}-x86_64.AppImage"
-  source_sha256 '85fb5a2322f48a298b7784fc3516e672525593c017ca504310bff05e1330457b'
+  source_sha256 '04b891f013e42c1f92620acf5be57556ac37b973a3aab53489aff58231679794'
 
   no_compile_needed
 
@@ -16,7 +16,7 @@ class Smplayer < Package
   depends_on 'gtk3'
   depends_on 'jack'
   depends_on 'libthai'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.build
     File.write 'smplayer', <<~EOF

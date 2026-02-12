@@ -3,16 +3,16 @@ require 'package'
 class Dbeaver < Package
   description 'Free Universal Database Tool'
   homepage 'https://dbeaver.io'
-  version '25.3.2'
+  version '25.3.4'
   license 'Apache-2.0'
   compatibility 'x86_64'
   min_glibc '2.30'
   source_url "https://github.com/dbeaver/dbeaver/releases/download/#{version}/dbeaver-ce-#{version}-linux.gtk.x86_64.tar.gz"
-  source_sha256 '90e9502c7ac4e509ab9adcf25fd7c3274b42676d583c03be8e747407e9174ab0'
+  source_sha256 '8aa6e9bd74a7d23b0735db27ebf0b5455dbc5dce78a365e7bed1bc5ae8e92451'
 
   depends_on 'gtk3'
   depends_on 'xdg_base'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   no_compile_needed
 

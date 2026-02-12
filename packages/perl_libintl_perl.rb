@@ -3,18 +3,18 @@ require 'buildsystems/perl'
 class Perl_libintl_perl < PERL
   description 'Internationalization library for Perl that aims to be compatible with the Uniforum message translations system as implemented for example in GNU gettext'
   homepage 'https://metacpan.org/dist/libintl-perl'
-  version "1.35-#{CREW_PERL_VER}"
+  version "1.37-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url "https://cpan.metacpan.org/authors/id/G/GU/GUIDO/libintl-perl-#{version.split('-').first}.tar.gz"
-  source_sha256 '64abed956aa07d1c8cc816c91cf78642c02faf03ab704ed38031baa07f06b16a'
+  source_sha256 'a49b08d56813789e5f03289a3f949459eafe9e40a1a9fc066c42c90009a322cf'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c104b2dd63e7662e4809e45d5c59ffd7f60582d5174bcff90960ca7acc44c272',
-     armv7l: 'c104b2dd63e7662e4809e45d5c59ffd7f60582d5174bcff90960ca7acc44c272',
-       i686: 'e0ef07730e168d7cb73f27419c7d15ec72d982724f9078093a430835d9824dcd',
-     x86_64: '5d07e7cffede716afd6a875ff7af62052bb1ca11aa4e69bcbf0bc12dd87d9ad3'
+    aarch64: '53faaa6391ee0964ee495c8adbf1532c065d039a895b716cb9d69a80de0e3243',
+     armv7l: '53faaa6391ee0964ee495c8adbf1532c065d039a895b716cb9d69a80de0e3243',
+       i686: '561ed846639f73f5470163be715ea7e2e2de90f67a918c8d2999426218775ccf',
+     x86_64: '496889e426f4c1f0aba3b726cf0c8508a476fe19f2052274ad217a54efbc2ad7'
   })
 
   depends_on 'glibc' # R

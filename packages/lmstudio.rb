@@ -37,7 +37,7 @@ class Lmstudio < Package
   depends_on 'opencl_icd_loader' # R
   depends_on 'pango' # R
   depends_on 'gdk_base' # R
-  depends_on 'sommelier' # R
+  depends_on 'sommelier' => :logical
 
   no_shrink
   no_compile_needed

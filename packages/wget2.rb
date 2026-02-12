@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Wget2 < Autotools
   description 'GNU Wget is a free software package for retrieving files using HTTP, HTTPS, FTP and FTPS.'
   homepage 'https://www.gnu.org/software/wget/'
-  version '2.2.0'
+  version '2.2.1'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://gitlab.com/gnuwget/wget2.git'
-  git_hashtag "v#{version}"
+  source_url "https://ftp.gnu.org/gnu/wget/wget2-#{version}.tar.gz"
+  source_sha256 'd7544b13e37f18e601244fce5f5f40688ac1d6ab9541e0fbb01a32ee1fb447b4'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e721c5fc826a29487a21bff10b9af2a5f06ceb6208ab6b9431e9ca644b8ecf12',
-     armv7l: 'e721c5fc826a29487a21bff10b9af2a5f06ceb6208ab6b9431e9ca644b8ecf12',
-       i686: 'fcb9cf5a798decde6d27134fe90e982668147a3aceeae56e917544bb3728c08d',
-     x86_64: '1ed2ba8aeec518c368870e00644706891d973a68267c6b2ce4fb0fc37521cbbf'
+    aarch64: 'bcc35aa52125321e99fa293f99bff03c764ac36da3b48b921ed04dca1203fefb',
+     armv7l: 'bcc35aa52125321e99fa293f99bff03c764ac36da3b48b921ed04dca1203fefb',
+       i686: '94fd7df2890c9feb82f44e3d50363c45aa067c7a550e7335654e70db911c3f33',
+     x86_64: '7fcbd974cec93c4161057f3b6743dc709fe624eb0de97dc1736f623d2369333b'
   })
 
   depends_on 'brotli' # R
@@ -47,28 +47,6 @@ class Wget2 < Autotools
                   --without-libidn \
                   --with-bzip2 \
                   --with-lzma'
-
-  def self.patch
-    # Patch needed due to failure of gettext detection
-    # when 'autoreconf -fvi' invokes autopoint.
-    File.write 'gettext.patch', <<~GETTEXT_PATCH_EOF
-      diff -Npaur a/configure.ac b/configure.ac
-      --- a/configure.ac	2025-11-24 16:32:01.716022174 -0500
-      +++ b/configure.ac	2025-11-24 16:33:02.520730059 -0500
-      @@ -417,10 +417,6 @@ m4_ifdef([AM_GNU_GETTEXT], [
-       ], [
-         have_po=no
-       ])
-      -m4_ifdef([AM_GNU_GETTEXT_VERSION], [
-      -#do not indent here
-      -AM_GNU_GETTEXT_VERSION([0.21])
-      -])
-       AM_CONDITIONAL([HAVE_PO], [ test "$have_po" = "yes" ])
-    GETTEXT_PATCH_EOF
-    system 'patch -Np1 -i gettext.patch'
-    system './bootstrap'
-    system 'autoreconf -fiv'
-  end
 
   autotools_install_extras do
     FileUtils.ln_sf "#{CREW_PREFIX}/bin/wget2", "#{CREW_DEST_PREFIX}/bin/wget"

@@ -16,7 +16,7 @@ class Chromaprint < Package
      x86_64: '05f5a2e30fcbd6ccc344388701b9b2e27a867d2d7e0fe39f71a9a989cee7aa23'
   })
 
-  depends_on 'ffmpeg' # R
+  depends_on 'ffmpeg' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 

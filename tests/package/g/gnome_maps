@@ -1,0 +1,3 @@
+#!/bin/bash
+gnome-maps -h 2>&1
+gnome-maps -v 2>&1

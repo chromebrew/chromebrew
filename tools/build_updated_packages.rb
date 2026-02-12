@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# build_updated_packages version 4.1 (for Chromebrew)
+# build_updated_packages version 4.8 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -24,6 +24,7 @@ require File.join(crew_local_repo_root, 'lib/color')
 require File.join(crew_local_repo_root, 'lib/const')
 require File.join(crew_local_repo_root, 'lib/package')
 require File.join(crew_local_repo_root, 'lib/require_gem')
+require_gem 'dagwood'
 require_gem 'highline'
 require_gem 'timeout'
 
@@ -164,6 +165,96 @@ def update_deps(name = nil)
   end
 end
 
+def determine_recursive_deps(d_pkg_input)
+  # How to hardcode a dependency:
+  # @gcc_lib_graph = Dagwood::DependencyGraph.new(gcc_lib: %i[glibc])
+  # @glibc_graph = Dagwood::DependencyGraph.new(glibc: nil)
+  # @glibc_build227_graph = Dagwood::DependencyGraph.new(glibc_build227: %i[glibc])
+  # @glibc_build227_graph.merge(@glibc_graph)
+  # @gcc_lib_graph.merge(@glibc_graph)
+  if d_pkg_input.is_a? String
+    (d_pkgs ||= []).push(d_pkg_input)
+  else
+    ((d_pkgs ||= []) << d_pkg_input).flatten!
+  end
+  d_pkgs.each do |d_pkg|
+    @d_pkg_obj = Package.load_package("packages/#{d_pkg}.rb")
+    instance_variable_set("@#{d_pkg}_deps", @d_pkg_obj.dependencies.map { |key, value| key.to_s if value == [[], nil] }.compact)
+    # Pull in build dependencies if necessary.
+    if (d_pkg.include?('_lib') || d_pkg.include?('_dev')) && !d_pkg.include?('gcc_lib')
+      puts "#{"#{__LINE__}: " if CREW_VERBOSE}#{d_pkg} includes _dev || _lib, pulling build deps.".orange
+      # instance_variable_set("@#{d_pkg}_deps", instance_variable_set("@#{d_pkg}_deps", @d_pkg_obj.get_deps_list(exclude_buildessential: false).delete_if { |d| ( d == 'glibc' || d == 'gcc_lib' ) }))
+      instance_variable_set("@#{d_pkg}_deps", @d_pkg_obj.dependencies.map { |key, _value| key.to_s }.compact.delete_if { |d| %w[glibc gcc_lib].include?(d) })
+    end
+    instance_variable_set("@#{d_pkg}_graph", Dagwood::DependencyGraph.new({ d_pkg.to_sym => (instance_variable_get("@#{d_pkg}_deps").map &:to_sym) })) if instance_variable_get("@#{d_pkg}_graph").nil?
+
+    next unless !instance_variable_get("@#{d_pkg}_graph").nil? && !instance_variable_get("@#{d_pkg}_graph").dependencies.nil?
+
+    next if instance_variable_get("@#{d_pkg}_deps").empty?
+    instance_variable_get("@#{d_pkg}_deps").each do |d|
+      determine_recursive_deps(d) if instance_variable_get("@#{d}_graph").nil?
+      begin
+        # puts "#{"#{__LINE__}: " if CREW_VERBOSE}order for #{d} is #{instance_variable_get("@#{d}_graph").order}".lightpurple
+        # Make sure that the dependency tree for each d_pkg dependency
+        # d is copacetic. If not error out with a complaint.
+        instance_variable_get("@#{d}_graph").order
+      rescue TSort::Cyclic => e
+        puts "#{"#{__LINE__}: " if CREW_VERBOSE}Error processing dependencies for #{d_pkg}:".lightred
+        puts "#{"#{__LINE__}: " if CREW_VERBOSE}Circular dependency detected from #{instance_variable_get("@#{d}_graph").dependencies}:".lightred
+        abort "#{"#{__LINE__}: " if CREW_VERBOSE}#{e.message}".lightred
+      end
+      instance_variable_set("@#{d_pkg}_graph", instance_variable_get("@#{d_pkg}_graph").merge(instance_variable_get("@#{d}_graph"))) unless instance_variable_get("@#{d}_graph").dependencies.nil?
+    end
+  end
+end
+
+def print_recursive_deps(d_pkg_input)
+  if d_pkg_input.is_a? String
+    (d_pkgs ||= []).push(d_pkg_input)
+  else
+    ((d_pkgs ||= []) << d_pkg_input).flatten!
+  end
+  d_pkgs.each do |p|
+    abort "@#{p}_graph does not exist!".lightred unless !instance_variable_get("@#{p}_graph").nil? && !instance_variable_get("@#{p}_graph").dependencies.nil?
+    deps = instance_variable_get("@#{p}_graph").dependencies
+    puts deps.to_s.lightblue
+    begin
+      puts instance_variable_get("@#{p}_graph").order
+    rescue RuntimeError => e
+      puts e.message.lightred
+    rescue TSort::Cyclic => e
+      puts "Circular dependency detected: #{e.message}".lightred
+    end
+  end
+end
+
+def order_recursive_deps(d_pkg_input)
+  if d_pkg_input.is_a? String
+    (d_pkgs ||= []).push(d_pkg_input)
+  else
+    ((d_pkgs ||= []) << d_pkg_input).flatten!
+  end
+  puts "#{"#{__LINE__}: " if CREW_VERBOSE}Processing dependencies...".lightpurple
+  determine_recursive_deps(d_pkgs)
+  input_pkgs = d_pkgs.to_set
+  merge_base = instance_variable_get("@#{d_pkgs.pop}_graph")
+
+  d_pkgs.each do |p|
+    begin
+      merge_base.order
+    rescue TSort::Cyclic => e
+      puts "#{"#{__LINE__}: " if CREW_VERBOSE}Circular dependency detected from #{merge_base.dependencies}:".lightpurple
+      abort e.message.to_s.lightred
+    end
+    merge_base = merge_base.merge(instance_variable_get("@#{p}_graph"))
+    # puts "#{"#{__LINE__}: " if CREW_VERBOSE}merge_base.order is now #{merge_base.order}".lightpurple
+  end
+  package_deps_build_order = merge_base.order.to_set(&:to_s)
+  # Want the intersection of these sets, but the intersection appears
+  # to reorder the result, which isn't what we want.
+  return package_deps_build_order.delete_if { |p| !input_pkgs.include? p }.to_a
+end
+
 if SKIP_UPDATE_CHECKS
   puts 'Skipping pip and gem remote update checks.'.orange
 else
@@ -179,8 +270,8 @@ else
   puts 'Checking packages git marks as having changed.'.orange
   changed_files = `git diff HEAD --name-only`.chomp.split
   changed_files_previous_commit = `git diff-tree --no-commit-id --name-only -r $(git rev-parse origin/master)..$(git rev-parse --verify HEAD)`.chomp.split
-  updated_packages.push(*changed_files.select { |c| c.include?('packages/') })
-  updated_packages.push(*changed_files_previous_commit.select { |c| c.include?('packages/') })
+  updated_packages.push(*changed_files.grep(%r{(packages/).*.*(\.rb$)}))
+  updated_packages.push(*changed_files_previous_commit.grep(%r{(packages/).*.*(\.rb$)}))
 end
 
 crew_update_packages = `CREW_NO_GIT=1 CREW_UNATTENDED=1 crew update | grep "\\[\\""  | jq -r '.[]'`.chomp.split.map(&'packages/'.method(:+)).map { |i| i.concat('.rb') }
@@ -216,9 +307,14 @@ end
 if updated_packages.empty?
   puts 'No packages need to be updated.'.orange
 else
-  puts 'These packages will be checked to see if they need updated binaries:'.orange
   updated_packages.uniq!
-  updated_packages.each { |p| puts p.sub('packages/', '').sub('.rb', '').to_s.lightblue }
+  updated_packages_reordered = order_recursive_deps(updated_packages.map { |p| p.sub('packages/', '').sub('.rb', '') }).map { |p| "packages/#{p}.rb" }
+  puts 'These packages will be checked to see if they need updated binaries:'.orange
+  unless updated_packages == updated_packages_reordered
+    puts "#{"#{__LINE__}: " if CREW_VERBOSE}Packages to check have been reordered!".lightpurple
+    updated_packages = updated_packages_reordered
+  end
+  updated_packages.each { |p| puts " #{p.sub('packages/', '').sub('.rb', '').to_s.lightblue}" }
 end
 
 updated_packages.each do |pkg|
@@ -236,7 +332,7 @@ updated_packages.each do |pkg|
   if @pkg_obj.superclass.to_s == 'RUBY' && @pkg_obj.no_compile_needed?
     puts "#{name} is a gem package.".lightblue
     system "yes | crew reinstall #{'-f' unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES} #{name}"
-    if system("grep '.so$' #{CREW_META_PATH}/#{name}.filelist", exception: false)
+    if File.file?("#{CREW_META_PATH}/#{name}.filelist") && system("grep '.so$' #{CREW_META_PATH}/#{name}.filelist", exception: false)
       puts "#{name} gem has libraries.".lightblue
       require_relative '../lib/buildsystems/ruby'
       add_gem_binary_compression(name)
@@ -245,7 +341,7 @@ updated_packages.each do |pkg|
       puts "Reinvoking #{$PROGRAM_NAME} #{ARGV.join(' ')}".orange
       exec "#{$PROGRAM_NAME} #{ARGV.join(' ')}", chdir: `pwd`.chomp
     else
-      puts "#{name} gem has no libraries.".lightblue
+      puts "#{name} gem may have no libraries.".lightblue
     end
   end
 
@@ -317,8 +413,12 @@ updated_packages.each do |pkg|
         upload_pkg = true if File.file?("release/#{build}/#{name}-#{@pkg_obj.version}-chromeos-#{build}.#{@pkg_obj.binary_compression}")
       end
       system('yes | crew reinstall py3_twine', %i[out err] => File::NULL) unless system('twine --help', %i[out err] => File::NULL)
-      system "crew upload -v #{name}" if upload_pkg == true && agree_default_yes("\nWould you like to upload #{name} #{@pkg_obj.version}")
-      system "rubocop -c .rubocop.yml -A #{pkg}"
+      if system("crew check #{name}")
+        system "crew upload -v #{name}" if upload_pkg == true && agree_default_yes("\nWould you like to upload #{name} #{@pkg_obj.version}")
+        system "rubocop -c .rubocop.yml -A #{pkg}"
+      else
+        abort "Failed: crew check #{name}".lightred
+      end
       puts "Are builds still needed for #{name}?".orange
       builds_still_needed = check_build_uploads(architectures_to_check, name)
       puts "Built and Uploaded: #{name} for #{ARCH}" if builds_needed != builds_still_needed

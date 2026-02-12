@@ -12,7 +12,7 @@ class Udeler < Package
   no_compile_needed
 
   depends_on 'gtk3'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.patch
     system "sed -i 's,AppRun,udeler,' udeler.desktop"

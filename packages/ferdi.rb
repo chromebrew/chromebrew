@@ -11,7 +11,7 @@ class Ferdi < Package
 
   depends_on 'gtk3'
   depends_on 'xdg_base'
-  depends_on 'sommelier'
+  depends_on 'sommelier' => :logical
 
   def self.patch
     system "sed -i 's,AppRun,ferdi,' ferdi.desktop"

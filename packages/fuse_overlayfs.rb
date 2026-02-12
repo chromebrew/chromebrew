@@ -6,7 +6,7 @@ require 'package'
 class Fuse_overlayfs < Package
   description 'FUSE implementation of overlayfs'
   homepage 'https://github.com/containers/fuse-overlayfs'
-  version '1.10'
+  version '1.16'
   license 'GPL3'
   compatibility 'all'
   source_url 'https://github.com/containers/fuse-overlayfs.git'
@@ -14,15 +14,15 @@ class Fuse_overlayfs < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '676a073380c10bd30130c76d61a58edace6477bc0762e156645cf0e4749582cd',
-     armv7l: '676a073380c10bd30130c76d61a58edace6477bc0762e156645cf0e4749582cd',
-       i686: 'fce98a2f2b1bacaaba55baf06f5299c8dfba0d0101126e31f9508ba1a6c2d73b',
-     x86_64: 'b87612894c390f30a49be7edc6fd51279acf74bae16535b7d0808435a0252a9c'
+    aarch64: 'f5f34e8005324799c5dd3e6e9287c92f549c6751bc956f1c226a41b98ff3c717',
+     armv7l: 'f5f34e8005324799c5dd3e6e9287c92f549c6751bc956f1c226a41b98ff3c717',
+       i686: '47c5e67a8066685d834b918c64d62f84cfec1a5519ca355ea397e623f9982dfe',
+     x86_64: '7d6f6ff5fdcd81f2cf3b2ca91811a23baa4c4aaab25de136bc51fe80d961f6fa'
   })
 
   depends_on 'fuse3' # R
-  depends_on 'go_md2man' => :build
   depends_on 'glibc' # R
+  depends_on 'go_md2man' => :build
 
   def self.build
     system 'autoreconf -fiv'

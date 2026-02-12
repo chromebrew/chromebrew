@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Abseil_cpp < CMake
   description 'Abseil Common Libraries C++'
   homepage 'https://abseil.io/'
-  version '20250814.1'
+  version '20260107.1'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/abseil/abseil-cpp.git'
@@ -11,10 +11,10 @@ class Abseil_cpp < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '09d000e511a10a9981c5afe20ad3444888f47743f5dba6841b8f366b1ad37978',
-     armv7l: '09d000e511a10a9981c5afe20ad3444888f47743f5dba6841b8f366b1ad37978',
-       i686: 'faaad0820c180fd0d26f195c4d9741640a6fdb3f8e93e0618d569b8763634134',
-     x86_64: '9f793aee9ea8db2a16a80b52df9ad5263f44ca0d2e262ba4efbdbfa39cb24742'
+    aarch64: 'cdcd076ce54bd07dbc52a2cc138ed14646fd93e8f7a1f4f88a8d0fc4ef51fced',
+     armv7l: 'cdcd076ce54bd07dbc52a2cc138ed14646fd93e8f7a1f4f88a8d0fc4ef51fced',
+       i686: '7c2d3bbe606941acbf0980f1ffa493ea93684a47e403a3588845884818050804',
+     x86_64: '548b1c0158896314545442212543cf304fc582e27fe3eb60f54c8695035f8791'
   })
 
   depends_on 'gcc_lib' # R

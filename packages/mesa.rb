@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Mesa < Meson
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  version "25.3.3-#{CREW_LLVM_VER}"
+  version "26.0.0-#{CREW_LLVM_VER}"
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/mesa/mesa.git'
@@ -11,9 +11,9 @@ class Mesa < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '102f2259ecfa0939cff9848e6aaf20804c1e2bf588b620be818e9f4e69aff23a',
-     armv7l: '102f2259ecfa0939cff9848e6aaf20804c1e2bf588b620be818e9f4e69aff23a',
-     x86_64: '3575171c97c96069628ae790162cca9abc26f09836aff4c07543c5b156c70732'
+    aarch64: '10d941e2ed50bd4545d7658842dd42b9c4269a49f4a0f26560e826c5e2b8eb2d',
+     armv7l: '10d941e2ed50bd4545d7658842dd42b9c4269a49f4a0f26560e826c5e2b8eb2d',
+     x86_64: '2409d6fabba978f772d23f8ba8542ad0cd3a1e11df6cc41dc172c97da1df3059'
   })
 
   depends_on 'elfutils' # R
@@ -53,6 +53,8 @@ class Mesa < Meson
   depends_on 'xcb_util_keysyms' # R
   depends_on 'zlib' # R
   depends_on 'zstd' # R
+
+  no_lto # As per https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/39671
 
   meson_options "#{CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
     -Db_asneeded=false \
