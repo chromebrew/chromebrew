@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# getrealdeps version 2.7 (for Chromebrew)
+# getrealdeps version 2.8 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 require 'fileutils'
 
@@ -216,9 +216,11 @@ def determine_dependencies(pkg, pkgfiles_to_check)
   pkgdeps = pkgdeps.map { |i| i.gsub(/llvm(\d)+_lib/, 'llvm_lib') }.uniq
   pkgdeps = pkgdeps.map { |i| i.gsub(/llvm(\d)+_dev/, 'llvm_dev') }.uniq
 
-  # Leave early if we didn't find any dependencies.
-  # return if pkgdeps.empty?
-  return pkgdeps
+  if pkgdeps.blank?
+    return
+  else
+    return pkgdeps
+  end
 end
 
 def main(pkg)
@@ -288,9 +290,15 @@ def main(pkg)
   bin_pkgfiles = pkgfiles.reject { |p| lib_pkgfiles.include?(p) }
 
   # Determine dependencies for each subset of files.
-  lib_deps = determine_dependencies(pkg, lib_pkgfiles)
-  bin_deps = determine_dependencies(pkg, bin_pkgfiles)
-  bin_deps = lib_deps.nil? ? bin_deps : (bin_deps - lib_deps)
+  ((lib_deps ||= []) << determine_dependencies(pkg, lib_pkgfiles)).compact!
+  ((bin_deps ||= []) << determine_dependencies(pkg, bin_pkgfiles)).compact!
+  lib_deps.flatten!
+  bin_deps.flatten!
+  bin_deps = if lib_deps.nil?
+               bin_deps
+             else
+               (bin_deps.nil? ? bin_deps : (bin_deps - lib_deps))
+             end
 
   # Write the changed dependencies to the package file.
   write_deps(pkg_file, bin_deps, @pkg, 'bin') unless bin_deps.nil?
