@@ -1,0 +1,3 @@
+#!/bin/bash
+gnome-text-editor --help
+gnome-text-editor --version
