@@ -3,7 +3,7 @@ require 'package'
 class Vscodium < Package
   description 'VSCodium is Open Source Software Binaries of VSCode with a community-driven default configuration.'
   homepage 'https://vscodium.com/'
-  version '1.109.01000'
+  version '1.109.21026'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.28'
@@ -13,9 +13,9 @@ class Vscodium < Package
      x86_64: "https://github.com/VSCodium/vscodium/releases/download/#{version}/VSCodium-linux-x64-#{version}.tar.gz"
   })
   source_sha256({
-    aarch64: '2382bd3a4c1dc5a261788bb514cfc601a4d4eb178e4d22528ffb587520967e44',
-     armv7l: '2382bd3a4c1dc5a261788bb514cfc601a4d4eb178e4d22528ffb587520967e44',
-     x86_64: '32e52a31b292e66c93a5be124bd520f9176b1c0971cb69dcbf084cb78283021f'
+    aarch64: '7eef62f1fabf82087d7339f754f04b63bbb9102d6a203253a28f47c7e3cc0abf',
+     armv7l: '7eef62f1fabf82087d7339f754f04b63bbb9102d6a203253a28f47c7e3cc0abf',
+     x86_64: 'eaff3ba44e3f410fc7f9d2e4fd639eae31715265c2960a0a58c363e30b3ca00c'
   })
 
   depends_on 'alsa_lib' # R
