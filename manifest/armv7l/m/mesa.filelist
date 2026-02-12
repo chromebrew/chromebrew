@@ -1,4 +1,4 @@
-# Total size: 95475694
+# Total size: 98542130
 /usr/local/include/EGL/eglext_angle.h
 /usr/local/include/EGL/eglmesaext.h
 /usr/local/include/GL/internal/dri_interface.h
@@ -124,7 +124,7 @@
 /usr/local/lib/libGLX_mesa.so
 /usr/local/lib/libGLX_mesa.so.0
 /usr/local/lib/libGLX_mesa.so.0.0.0
-/usr/local/lib/libgallium-25.3.5.so
+/usr/local/lib/libgallium-26.0.0.so
 /usr/local/lib/libgbm.so
 /usr/local/lib/libgbm.so.1
 /usr/local/lib/libgbm.so.1.0.0
