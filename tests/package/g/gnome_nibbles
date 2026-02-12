@@ -1,0 +1,3 @@
+#!/bin/bash
+gnome-nibbles --help | head
+gnome-nibbles --version 2>&1
