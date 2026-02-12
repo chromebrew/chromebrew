@@ -1,4 +1,4 @@
-# Total size: 1697615
+# Total size: 1712531
 /usr/local/include/uv.h
 /usr/local/include/uv/aix.h
 /usr/local/include/uv/bsd.h
@@ -15,6 +15,7 @@
 /usr/local/include/uv/win.h
 /usr/local/lib/cmake/libuv/libuvConfig-release.cmake
 /usr/local/lib/cmake/libuv/libuvConfig.cmake
+/usr/local/lib/cmake/libuv/libuvConfigVersion.cmake
 /usr/local/lib/libuv.a
 /usr/local/lib/libuv.so
 /usr/local/lib/libuv.so.1
