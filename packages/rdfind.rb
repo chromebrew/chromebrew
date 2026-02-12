@@ -15,10 +15,10 @@ class Rdfind < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a8c69c6491066c5ec4e4d03d93e8ad0b52f0ed860726fc30c6811a9640eb1ef8',
-     armv7l: 'a8c69c6491066c5ec4e4d03d93e8ad0b52f0ed860726fc30c6811a9640eb1ef8',
+    aarch64: '0ae9197eb83e4b11cb03fefc8dd8dc4cc8f8ec1186821874b10ddc456416befa',
+     armv7l: '0ae9197eb83e4b11cb03fefc8dd8dc4cc8f8ec1186821874b10ddc456416befa',
        i686: '8906db22f0dcca36ca4938cedcb4374c0e9f3402bad72f46a93082e28fc6ac4d',
-     x86_64: '5fce0767f527c9f1f0af226aad64a21d992f9ed9dcfba497a180bfb18d33a2c7'
+     x86_64: 'e4782a1446cbf734a3794e0ceb88b842c708e177c1128724576f03611e3b68ce'
   })
 
   depends_on 'autoconf_archive' => :build
