@@ -1,0 +1,3 @@
+#!/bin/bash
+go-fetch -h | head
+go-fetch -v
