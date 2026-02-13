@@ -9,7 +9,14 @@ require_relative '../lib/package_utils'
 # Add >LOCAL< lib to LOAD_PATH so that packages can be loaded
 $LOAD_PATH.unshift File.join(CREW_LIB_PATH, 'lib')
 
-def check_package(pkg, verbose: false)
+if ARGV.include?('--fail_if_check_failure')
+  ARGV.delete('--fail_if_check_failure')
+  fail_if_check_failure = true
+else
+  fail_if_check_failure = false
+end
+
+def check_package(pkg, verbose: false, fail_if_check_failure: false)
   puts "Checking #{pkg.name} package ...".yellow if verbose
   unless PackageUtils.installed?(pkg.name)
     puts "Package #{pkg.name} is not installed.".lightred
@@ -28,7 +35,7 @@ def check_package(pkg, verbose: false)
   if test_stderr.empty? || test_status.to_s.split.last.to_i.zero?
     puts "Package tests for #{pkg.name} passed.".lightgreen if verbose
     return 0
-  elsif default_tests == false
+  elsif default_tests == false || fail_if_check_failure
     puts test_stderr
     puts "Package tests for #{pkg.name} failed.".lightred
     return 1
@@ -42,7 +49,7 @@ end
 if ARGV[0]
   ARGV.each do |name|
     if File.file?(File.join(CREW_PACKAGES_PATH, "#{name}.rb"))
-      test_result = check_package(Package.load_package(File.join(CREW_PACKAGES_PATH, "#{name}.rb")), verbose: true)
+      test_result = check_package(Package.load_package(File.join(CREW_PACKAGES_PATH, "#{name}.rb")), verbose: true, fail_if_check_failure: fail_if_check_failure )
       exit(1) if test_result.positive?
     else
       puts "Package #{name} not found.".lightred

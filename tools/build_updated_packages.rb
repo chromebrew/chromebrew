@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# build_updated_packages version 4.8 (for Chromebrew)
+# build_updated_packages version 4.9 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -404,9 +404,13 @@ updated_packages.each do |pkg|
         Process.kill('HUP', actions_timed_killer) if ENV['NESTED_CI']
         # Reinvoke this script to take just built packages that have been built and
         # installed into account, attempting uploads of just built packages immediately.
-        cmdline = "cd #{`pwd`.chomp} && crew upload #{name} #{'--force' if REBUILD_PACKAGES} ; #{$PROGRAM_NAME} #{ARGV.join(' ')}"
-        puts "cmdline is #{cmdline}"
-        exec cmdline
+        if system("crew check #{name}")
+          cmdline = "cd #{`pwd`.chomp} && crew upload #{name} #{'--force' if REBUILD_PACKAGES} ; #{$PROGRAM_NAME} #{ARGV.join(' ')}"
+          puts "cmdline is #{cmdline}"
+          exec cmdline
+        else
+          abort "Failed: crew check #{name}".lightred
+        end
       end
       upload_pkg = nil
       builds_needed.each do |build|
