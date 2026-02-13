@@ -6,7 +6,7 @@ require 'package'
 class Conmon < Package
   description 'OCI container runtime monitor'
   homepage 'https://github.com/containers/conmon'
-  version '2.2.0'
+  version '2.2.1'
   license 'APACHE'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/containers/conmon.git'
@@ -14,15 +14,15 @@ class Conmon < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ef1d4ac65976cb544587eba612821ba514316c2910307ece17f06725abe7337d',
-     armv7l: 'ef1d4ac65976cb544587eba612821ba514316c2910307ece17f06725abe7337d',
-     x86_64: '2554a5dd5092bc501e88f653ce755382b66f20b9e39036f7fa3b5664e0ed0d3f'
+    aarch64: 'b0c678144167a2f51bccbf3d7dac0979a107a3e23de9194ac258c420b6c5d367',
+     armv7l: 'b0c678144167a2f51bccbf3d7dac0979a107a3e23de9194ac258c420b6c5d367',
+     x86_64: '25b2564b8f093ae5a5af02600e112983fe9fd0ac73f09c87da0a9a74d49884b2'
   })
 
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
+  depends_on 'glib' => :executable_only
+  depends_on 'glibc' => :executable_only
   depends_on 'go_md2man' => :build
-  depends_on 'libseccomp' # R
+  depends_on 'libseccomp' => :executable_only
   depends_on 'runc' # L
 
   def self.patch
