@@ -6,7 +6,7 @@ require 'package'
 class Conmon < Package
   description 'OCI container runtime monitor'
   homepage 'https://github.com/containers/conmon'
-  version '2.2.0'
+  version '2.2.1'
   license 'APACHE'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/containers/conmon.git'
