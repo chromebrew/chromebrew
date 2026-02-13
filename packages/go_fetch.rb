@@ -3,7 +3,7 @@ require 'package'
 class Go_fetch < Package
   description 'fetch makes it easy to download files, folders, or release assets from a specific commit, branch, or tag of a public or private GitHub repo.'
   homepage 'https://github.com/gruntwork-io/fetch/'
-  version '0.4.6'
+  version '0.4.8'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://github.com/gruntwork-io/fetch.git'
@@ -11,13 +11,13 @@ class Go_fetch < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ae4c664cdc479f79ad98c5a498b5af3a58182baaaf0b464ca801e5ff29872317',
-     armv7l: 'ae4c664cdc479f79ad98c5a498b5af3a58182baaaf0b464ca801e5ff29872317',
-       i686: '055a7501d381aa0d0562df27d0d3a2202300714f48b92d6752db7eadeaf9f78c',
-     x86_64: '9e6e60e4f3667bc8e6c200e6de71c4df29652837e59d9acc9e21fba11a3e598c'
+    aarch64: '88b046562fb38601b38a4896a9b2b4410ca65fd43ad45ee4c17661bed64d2a4b',
+     armv7l: '88b046562fb38601b38a4896a9b2b4410ca65fd43ad45ee4c17661bed64d2a4b',
+       i686: '73b034d582bbfb473835c059703a93629f0008c88d7165391cabe6582a11b40b',
+     x86_64: '01c299923ff02607bce592d382dc3a1539cd37c36fee0524ca80ff2be4bc41a5'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :executable_only
   depends_on 'go' => :build
 
   def self.build
