@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Extra_cmake_modules < CMake
   description 'Extra modules and scripts for CMake.'
   homepage 'https://invent.kde.org/frameworks/extra-cmake-modules'
-  version '6.22.0'
+  version '6.23.0'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://invent.kde.org/frameworks/extra-cmake-modules.git'
