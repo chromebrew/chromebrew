@@ -1,11 +1,11 @@
-# Total size: 14767579
+# Total size: 14618910
 /usr/local/bin/maturin
-/usr/local/lib64/python3.14/site-packages/maturin-1.11.5-py3.14.egg-info/PKG-INFO
-/usr/local/lib64/python3.14/site-packages/maturin-1.11.5-py3.14.egg-info/SOURCES.txt
-/usr/local/lib64/python3.14/site-packages/maturin-1.11.5-py3.14.egg-info/dependency_links.txt
-/usr/local/lib64/python3.14/site-packages/maturin-1.11.5-py3.14.egg-info/not-zip-safe
-/usr/local/lib64/python3.14/site-packages/maturin-1.11.5-py3.14.egg-info/requires.txt
-/usr/local/lib64/python3.14/site-packages/maturin-1.11.5-py3.14.egg-info/top_level.txt
+/usr/local/lib64/python3.14/site-packages/maturin-1.12.0-py3.14.egg-info/PKG-INFO
+/usr/local/lib64/python3.14/site-packages/maturin-1.12.0-py3.14.egg-info/SOURCES.txt
+/usr/local/lib64/python3.14/site-packages/maturin-1.12.0-py3.14.egg-info/dependency_links.txt
+/usr/local/lib64/python3.14/site-packages/maturin-1.12.0-py3.14.egg-info/not-zip-safe
+/usr/local/lib64/python3.14/site-packages/maturin-1.12.0-py3.14.egg-info/requires.txt
+/usr/local/lib64/python3.14/site-packages/maturin-1.12.0-py3.14.egg-info/top_level.txt
 /usr/local/lib64/python3.14/site-packages/maturin/__init__.py
 /usr/local/lib64/python3.14/site-packages/maturin/__main__.py
 /usr/local/lib64/python3.14/site-packages/maturin/__pycache__/__init__.cpython-314.pyc
