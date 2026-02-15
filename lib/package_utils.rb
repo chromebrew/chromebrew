@@ -228,29 +228,19 @@ class PackageUtils
 
     crewlog 'curl -s --location \\'
     crewlog "#{CREW_GITLAB_PKG_REPO}?package_type=generic&package_name=#{pkg_name}&package_version=#{pkg_version}_#{pkg_arch}#{'_build' if build}"
-    gitlab_binary_pkg_id = `curl -s --location \
-    "#{CREW_GITLAB_PKG_REPO}?package_type=generic&package_name=#{pkg_name}&package_version=#{pkg_version}_#{pkg_arch}#{'_build' if build}" \
-         | jq -r ".[] | select(.name==\\"#{pkg_name}\\" and .version==\\"#{pkg_version}_#{pkg_arch}#{'_build' if build}\\") | .id"`.chomp
+    gitlab_binary_pkg_id = `curl -s --location "#{CREW_GITLAB_PKG_REPO}?package_type=generic&package_name=#{pkg_name}&package_version=#{pkg_version}_#{pkg_arch}#{'_build' if build}" | jq -r ".[] | select(.name==\\"#{pkg_name}\\" and .version==\\"#{pkg_version}_#{pkg_arch}#{'_build' if build}\\") | .id"`.chomp
     # Need fallback for complicated versions like in w3m.
     if gitlab_binary_pkg_id.blank?
-      gitlab_binary_pkg_id = `curl -s --location \
-    "#{CREW_GITLAB_PKG_REPO}?package_type=generic&package_name=#{pkg_name}" \
-         | jq -r ".[] | select(.name==\\"#{pkg_name}\\" and .version==\\"#{pkg_version}_#{pkg_arch}#{'_build' if build}\\") | .id"`.chomp
+      gitlab_binary_pkg_id = `curl -s --location "#{CREW_GITLAB_PKG_REPO}?package_type=generic&package_name=#{pkg_name}" | jq -r ".[] | select(.name==\\"#{pkg_name}\\" and .version==\\"#{pkg_version}_#{pkg_arch}#{'_build' if build}\\") | .id"`.chomp
     end
     crewlog "gitlab_binary_pkg_id is #{gitlab_binary_pkg_id}" if verbose
     # What is the hash of the gitlab package remote binary file name?
-    pkg_file_name = `curl -s --location \
-    "#{CREW_GITLAB_PKG_REPO}/#{gitlab_binary_pkg_id}/package_files" \
-         | jq -r "last(.[].file_name)"`.chomp
+    pkg_file_name = `curl -s --location "#{CREW_GITLAB_PKG_REPO}/#{gitlab_binary_pkg_id}/package_files" | jq -r "last(.[].file_name)"`.chomp
     crewlog "pkg_file_name is #{pkg_file_name}" if verbose
     # What is the hash of the gitlab package remote binary?
-    pkg_sha256 = `curl -s --location \
-    "#{CREW_GITLAB_PKG_REPO}/#{gitlab_binary_pkg_id}/package_files" \
-         | jq -r "last(.[].file_sha256)"`.chomp
+    pkg_sha256 = `curl -s --location "#{CREW_GITLAB_PKG_REPO}/#{gitlab_binary_pkg_id}/package_files" | jq -r "last(.[].file_sha256)"`.chomp
     # What is the upload date of this gitlab package remote binary?
-    pkg_upload_date = `curl -s --location \
-    "#{CREW_GITLAB_PKG_REPO}/#{gitlab_binary_pkg_id}/package_files" \
-         | jq -r "last(.[].created_at)"`.chomp
+    pkg_upload_date = `curl -s --location "#{CREW_GITLAB_PKG_REPO}/#{gitlab_binary_pkg_id}/package_files" | jq -r "last(.[].created_at)"`.chomp
     crewlog "pkg_upload_date is #{pkg_upload_date}" if verbose
     pkg_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{pkg_name}/#{pkg_version}_#{pkg_arch}/#{pkg_file_name}"
     puts "\e[1A\e[K#{pkg_name.capitalize} #{pkg_version} has a#{'n' if pkg_arch.start_with?('a', 'e', 'i', 'o', 'u')} #{pkg_arch} upload on Gitlab.\n".green
