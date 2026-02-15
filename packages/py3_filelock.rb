@@ -10,10 +10,10 @@ class Py3_filelock < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'dfa765ff352d43aaed072333fca6a8ec46972d0a2afb95e47373210dd0f2011b',
-     armv7l: 'dfa765ff352d43aaed072333fca6a8ec46972d0a2afb95e47373210dd0f2011b',
-       i686: 'c547fcd691fd4b3bd2578db97307285936fd5f50581083423ea72f41b6b30c48',
-     x86_64: '44bd9d7b27d0b495be2720f58eb656586031b5c4d27f2ca24147ed5239a277c1'
+    aarch64: '09b4a324a49845c5539dbce8c651a778b3dde8d4ee09d18e90db309d1eeb13c9',
+     armv7l: '09b4a324a49845c5539dbce8c651a778b3dde8d4ee09d18e90db309d1eeb13c9',
+       i686: 'ea3eeb42da455fe90b90bc8bb5e4d91c4f27034ee2cb683045aeb87e7b78e758',
+     x86_64: 'ded3b202c627f5d2630d2a01d5398546f21d32e65e42c6d6d577d80b61433a9c'
   })
 
   depends_on 'python3' => :build
