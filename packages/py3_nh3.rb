@@ -6,7 +6,7 @@ require 'buildsystems/pip'
 class Py3_nh3 < Pip
   description 'Ammonia HTML sanitizer Python binding'
   homepage 'https://pypi.org/project/nh3/'
-  version '0.3.2'
+  version '0.3.3'
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
