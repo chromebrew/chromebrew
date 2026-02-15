@@ -1,15 +1,15 @@
-# Total size: 28671140
+# Total size: 28707429
 /usr/local/bin/nuitka
 /usr/local/bin/nuitka-run
-/usr/local/lib/python3.14/site-packages/nuitka-4.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/nuitka-4.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/nuitka-4.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/nuitka-4.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/nuitka-4.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/nuitka-4.0.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/nuitka-4.0.dist-info/licenses/LICENSE-RUNTIME.txt
-/usr/local/lib/python3.14/site-packages/nuitka-4.0.dist-info/licenses/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/nuitka-4.0.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/nuitka-4.0.1.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/nuitka-4.0.1.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/nuitka-4.0.1.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/nuitka-4.0.1.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/nuitka-4.0.1.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/nuitka-4.0.1.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/nuitka-4.0.1.dist-info/licenses/LICENSE-RUNTIME.txt
+/usr/local/lib/python3.14/site-packages/nuitka-4.0.1.dist-info/licenses/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/nuitka-4.0.1.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/nuitka/Builtins.py
 /usr/local/lib/python3.14/site-packages/nuitka/BytecodeCaching.py
 /usr/local/lib/python3.14/site-packages/nuitka/Bytecodes.py
@@ -1272,16 +1272,20 @@
 /usr/local/lib/python3.14/site-packages/nuitka/optimizations/__pycache__/ValueTraces.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/nuitka/optimizations/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/nuitka/options/BuildPackage.py
+/usr/local/lib/python3.14/site-packages/nuitka/options/BuildPackageCommon.py
 /usr/local/lib/python3.14/site-packages/nuitka/options/CommandLineOptionsTools.py
 /usr/local/lib/python3.14/site-packages/nuitka/options/OptionParsing.py
 /usr/local/lib/python3.14/site-packages/nuitka/options/Options.py
 /usr/local/lib/python3.14/site-packages/nuitka/options/Poetry.py
+/usr/local/lib/python3.14/site-packages/nuitka/options/UvBuild.py
 /usr/local/lib/python3.14/site-packages/nuitka/options/__init__.py
 /usr/local/lib/python3.14/site-packages/nuitka/options/__pycache__/BuildPackage.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/nuitka/options/__pycache__/BuildPackageCommon.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/nuitka/options/__pycache__/CommandLineOptionsTools.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/nuitka/options/__pycache__/OptionParsing.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/nuitka/options/__pycache__/Options.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/nuitka/options/__pycache__/Poetry.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/nuitka/options/__pycache__/UvBuild.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/nuitka/options/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/nuitka/package_config/__init__.py
 /usr/local/lib/python3.14/site-packages/nuitka/package_config/__pycache__/__init__.cpython-314.pyc
@@ -1425,6 +1429,10 @@
 /usr/local/lib/python3.14/site-packages/nuitka/tools/general/extract_poetry_config/__main__.py
 /usr/local/lib/python3.14/site-packages/nuitka/tools/general/extract_poetry_config/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/nuitka/tools/general/extract_poetry_config/__pycache__/__main__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/nuitka/tools/general/extract_uv_config/__init__.py
+/usr/local/lib/python3.14/site-packages/nuitka/tools/general/extract_uv_config/__main__.py
+/usr/local/lib/python3.14/site-packages/nuitka/tools/general/extract_uv_config/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/nuitka/tools/general/extract_uv_config/__pycache__/__main__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/nuitka/tools/general/find_module/FindModuleCode.py
 /usr/local/lib/python3.14/site-packages/nuitka/tools/general/find_module/__init__.py
 /usr/local/lib/python3.14/site-packages/nuitka/tools/general/find_module/__pycache__/FindModuleCode.cpython-314.pyc
