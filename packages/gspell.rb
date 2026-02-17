@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gspell < Meson
   description 'a flexible API to implement the spell checking in a GTK+ application'
   homepage 'https://wiki.gnome.org/Projects/gspell'
-  version "1.14.0-#{CREW_ICU_VER}"
+  version "1.14.2-#{CREW_ICU_VER}"
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gspell.git'
@@ -11,9 +11,9 @@ class Gspell < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2b53c8bd835ca913e070beae76e935f7cfef3adc4934134ce1da150ca5895e09',
-     armv7l: '2b53c8bd835ca913e070beae76e935f7cfef3adc4934134ce1da150ca5895e09',
-     x86_64: '4d33ec34e9dd15c10bb618204cc7d3420e031da2b2bf08f397401920d7e5b38b'
+    aarch64: 'e326ec91d31b83df4273e856e42567d36530203adbe4d47100891ce1e989aa37',
+     armv7l: 'e326ec91d31b83df4273e856e42567d36530203adbe4d47100891ce1e989aa37',
+     x86_64: 'b0c1cdc7e6ce54e14f12785ea7034dba7ae98dfcbe1dbe3bf5659c35e2390906'
   })
 
   depends_on 'aspell' => :build
