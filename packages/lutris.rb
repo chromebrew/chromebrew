@@ -11,9 +11,9 @@ class Lutris < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7f546417296a2a142f4311b15945a52acdf28b23e63e9969f9e719a7a0d0c592',
-     armv7l: '7f546417296a2a142f4311b15945a52acdf28b23e63e9969f9e719a7a0d0c592',
-     x86_64: '895c325a3c6903240a695d2214cb37e5c084630812ad0b3453e9af728b4121a1'
+    aarch64: '4b1dd14c0bb4ec0a94facff58b1ea0bbba6b58a08568bcaac350d8d12e540742',
+     armv7l: '4b1dd14c0bb4ec0a94facff58b1ea0bbba6b58a08568bcaac350d8d12e540742',
+     x86_64: '2ce7e0947481350d77f9548a4d85d0834d364f7cb61e734da8e9f2e40639627a'
   })
 
   depends_on 'appstream_glib' # R
