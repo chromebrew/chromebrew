@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Lutris < Meson
   description 'Desktop client to play all your games on Linux'
   homepage 'https://lutris.net/'
-  version '0.5.19'
+  version '0.5.20'
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/lutris/lutris.git'
