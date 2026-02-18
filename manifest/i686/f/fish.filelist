@@ -1,4 +1,4 @@
-# Total size: 37471013
+# Total size: 37019105
 /usr/local/bin/fish
 /usr/local/bin/fish_indent
 /usr/local/bin/fish_key_reader
@@ -268,6 +268,7 @@
 /usr/local/share/fish/completions/downgrade.fish
 /usr/local/share/fish/completions/dpkg-reconfigure.fish
 /usr/local/share/fish/completions/dpkg.fish
+/usr/local/share/fish/completions/dput.fish
 /usr/local/share/fish/completions/dropdb.fish
 /usr/local/share/fish/completions/dscacheutil.fish
 /usr/local/share/fish/completions/du.fish
