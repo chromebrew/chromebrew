@@ -1,4 +1,4 @@
-# Total size: 1529484
+# Total size: 1534730
 /usr/local/bin/koi8rxterm
 /usr/local/bin/resize
 /usr/local/bin/uxterm
@@ -43,6 +43,7 @@
 /usr/local/lib/terminfo/x/xterm
 /usr/local/lib/terminfo/x/xterm+256color
 /usr/local/lib/terminfo/x/xterm+256color2
+/usr/local/lib/terminfo/x/xterm+3keys
 /usr/local/lib/terminfo/x/xterm+acs
 /usr/local/lib/terminfo/x/xterm+alt+title
 /usr/local/lib/terminfo/x/xterm+alt1049
