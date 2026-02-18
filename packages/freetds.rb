@@ -11,19 +11,19 @@ class Freetds < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '909483ca614a905c81b3f253ea91744bb8a05929237b0e3637daf04d10ad1698',
-     armv7l: '909483ca614a905c81b3f253ea91744bb8a05929237b0e3637daf04d10ad1698',
-       i686: '032036a9003bb3bbd8223621333f7d134539413a23140d08bab878a62dad2840',
-     x86_64: 'd0cf7690608d2c7f671260c4f17cc92111ce898dccc2d80e2e9da296bd4502f8'
+    aarch64: 'a4d64b742ad70e8440a4652a9ad9a5eebd3e903325b5d53dc1d1c10f7ac93358',
+     armv7l: 'a4d64b742ad70e8440a4652a9ad9a5eebd3e903325b5d53dc1d1c10f7ac93358',
+       i686: '62ca1bcb413ea952cdab15bbfa8dc41b51a2356cf59bf7fe697c28a8c4d6e024',
+     x86_64: '45a4367acb1a0d7f4023a81da319af7b1443e1c1ab956eeda5db20ca1d82ff99'
   })
 
   depends_on 'glibc' # R
   depends_on 'gperf' => :build
   depends_on 'libtool' # R
-  depends_on 'ncurses' # R
+  depends_on 'ncurses' => :executable_only
   depends_on 'openssl' # R
-  depends_on 'readline' # R
-  depends_on 'unixodbc'
+  depends_on 'readline' => :executable_only
+  depends_on 'unixodbc' # R
 
   def self.postinstall
     ExitMessage.add <<~EOM
