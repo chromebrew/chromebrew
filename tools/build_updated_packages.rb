@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# build_updated_packages version 4.8 (for Chromebrew)
+# build_updated_packages version 4.9 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -355,9 +355,13 @@ updated_packages.each do |pkg|
     # binaries.
     system "yes | crew reinstall #{'-f' unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES} #{name}"
     # Add manifests if we are in the right architecture.
-    if system("yes | crew reinstall #{'-f' unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES} #{name}") && File.exist?("#{CREW_META_PATH}/#{name}.filelist") && File.directory?(CREW_LOCAL_REPO_ROOT)
+    local_filelist = File.join(CREW_LOCAL_REPO_ROOT, 'manifest', ARCH, name[0].to_s, "#{name}.filelist")
+    local_meta_filelist = File.join(CREW_META_PATH, "#{name}.filelist")
+    newest_filelist = Dir[local_filelist, local_meta_filelist].max_by { |f| File.mtime(f) }
+    if system("yes | crew reinstall #{'-f' unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES} #{name}") && File.exist?("#{CREW_META_PATH}/#{name}.filelist") && File.directory?(CREW_LOCAL_REPO_ROOT) && !FileUtils.identical?(newest_filelist, local_filelist)
       puts 'Adding manifests.'
-      FileUtils.cp "#{CREW_META_PATH}/#{name}.filelist", "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{name.chr}/#{name}.filelist"
+      puts "Copying #{newest_filelist} to #{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{name.chr}/#{name}.filelist"
+      FileUtils.mkdir_p(File.join(CREW_LOCAL_REPO_ROOT, 'manifest', ARCH, name[0].to_s)) && FileUtils.cp(newest_filelist, local_filelist)
     end
   else
     if @pkg_obj.no_binaries_needed?
