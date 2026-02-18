@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Ocaml < Autotools
   description 'OCaml is an industrial strength programming language supporting functional, imperative and object-oriented styles'
   homepage 'https://ocaml.org/'
-  version '5.4.0'
+  version '5.4.1'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://github.com/ocaml/ocaml.git'
