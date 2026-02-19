@@ -1,4 +1,4 @@
-# Total size: 37758421
+# Total size: 38251122
 /usr/local/bin/gh
 /usr/local/share/man/man1/gh-agent-task-create.1.zst
 /usr/local/share/man/man1/gh-agent-task-list.1.zst
@@ -92,6 +92,7 @@
 /usr/local/share/man/man1/gh-label-edit.1.zst
 /usr/local/share/man/man1/gh-label-list.1.zst
 /usr/local/share/man/man1/gh-label.1.zst
+/usr/local/share/man/man1/gh-licenses.1.zst
 /usr/local/share/man/man1/gh-org-list.1.zst
 /usr/local/share/man/man1/gh-org.1.zst
 /usr/local/share/man/man1/gh-pr-checkout.1.zst
