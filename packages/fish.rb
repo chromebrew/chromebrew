@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Fish < CMake
   description 'fish is a smart and user-friendly command line shell for macOS, Linux, and the rest of the family.'
   homepage 'https://fishshell.com/'
-  version '4.4.0'
+  version '4.5.0'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/fish-shell/fish-shell.git'
@@ -11,15 +11,15 @@ class Fish < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9e7ccc4cb1112f9a072e0f197ca1102a58c70a4948daa5621d0b9c78a18354d9',
-     armv7l: '9e7ccc4cb1112f9a072e0f197ca1102a58c70a4948daa5621d0b9c78a18354d9',
-       i686: '16e2bc3268102d2ba4fd5d1274da223bf5a99180fa6d55b582db31f06e5fd6eb',
-     x86_64: '63a98e736003d44d6517455d87bb165da4c8d0afa5bdffda05769a14f3079a46'
+    aarch64: '3eb2d939245dabca55f687f04c825424f5a911246d312cd8bcf1ae179641b00c',
+     armv7l: '3eb2d939245dabca55f687f04c825424f5a911246d312cd8bcf1ae179641b00c',
+       i686: '72d31b98be41f2bfcfeb36a54c9c2187f40ef68e56874339fad18864b1305dae',
+     x86_64: 'bec1490c7dc58aa72fc2facb04a8e6c5aa76e43597e0a3c5917745aed4d753f0'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'pcre2' # R
+  depends_on 'gcc_lib' => :executable_only
+  depends_on 'glibc' => :executable_only
+  depends_on 'pcre2' => :executable_only
 
   cmake_options "-DCURSES_INCLUDE_PATH=#{CREW_PREFIX}/include/ncurses"
 

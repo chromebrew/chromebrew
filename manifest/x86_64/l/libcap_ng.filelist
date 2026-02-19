@@ -1,5 +1,4 @@
-# Total size: 303005
-/usr/local/bin/captest
+# Total size: 294566
 /usr/local/bin/filecap
 /usr/local/bin/netcap
 /usr/local/bin/pscap
@@ -44,7 +43,6 @@
 /usr/local/share/man/man3/capng_update.3.zst
 /usr/local/share/man/man3/capng_updatev.3.zst
 /usr/local/share/man/man7/libdrop_ambient.7.zst
-/usr/local/share/man/man8/captest.8.zst
 /usr/local/share/man/man8/filecap.8.zst
 /usr/local/share/man/man8/netcap.8.zst
 /usr/local/share/man/man8/pscap.8.zst
