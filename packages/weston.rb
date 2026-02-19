@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Weston < Meson
   description 'Weston is the reference implementation of a Wayland compositor, and a useful compositor in its own right.'
   homepage 'https://wayland.freedesktop.org'
-  version '14.0.2'
+  version '15.0.0'
   license 'MIT and CC-BY-SA-3.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/wayland/weston.git'
@@ -11,9 +11,9 @@ class Weston < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '645c1955ebbf4b2c0cf0aa027542010e30151f270b159bf56343ef9ac25f5b1a',
-     armv7l: '645c1955ebbf4b2c0cf0aa027542010e30151f270b159bf56343ef9ac25f5b1a',
-     x86_64: '5774bad67970b3b94b802f3b52fc1e4ce211aefdc4f335764c70f1556b4de6e1'
+    aarch64: '1a2441e9c7a3f7e903d1de534c6f40a84c3d7cb4a82d1501517d23c520a32919',
+     armv7l: '1a2441e9c7a3f7e903d1de534c6f40a84c3d7cb4a82d1501517d23c520a32919',
+     x86_64: '7599ad9083f3b0e6623bde3070136e87c85db844711b808694835095e24f6fe1'
   })
 
   depends_on 'aml' # R
@@ -21,9 +21,10 @@ class Weston < Meson
   depends_on 'dbus' => :build
   depends_on 'eudev' # R
   depends_on 'fontconfig' # R
-  depends_on 'gcc_lib' # R
+  depends_on 'gcc_lib' => :executable_only
   depends_on 'glib' # R
   depends_on 'glibc' # R
+  depends_on 'glslang' => :build
   depends_on 'graphite' => :build
   depends_on 'gstreamer' # R
   depends_on 'harfbuzz' # R
@@ -40,22 +41,25 @@ class Weston < Meson
   depends_on 'libwebp' # R
   depends_on 'libx11' # R
   depends_on 'libxcb' # R
-  depends_on 'libxcursor'
   depends_on 'libxcursor' # R
-  depends_on 'libxkbcommon'
   depends_on 'libxkbcommon' # R
   depends_on 'libxxf86vm'
   depends_on 'linux_pam' # R
+  depends_on 'lua' # R
   depends_on 'mesa' # R
   depends_on 'neatvnc' # R
   depends_on 'pango' # R
   depends_on 'pipewire' # R
   depends_on 'pixman' # R
   depends_on 'seatd' # R
+  depends_on 'vulkan_headers' => :build
+  depends_on 'vulkan_icd_loader' # R
   depends_on 'wayland' # R
   depends_on 'wayland_protocols'
   depends_on 'xcb_util_cursor' => :build
   depends_on 'xdg_base' => :build
+
+  conflicts_ok # v4l_utils also provides edid-decode
 
   meson_options "-Dbackend-default=wayland \
         -Dbackend-drm=true \
