@@ -24,6 +24,7 @@ class Weston < Meson
   depends_on 'gcc_lib' # R
   depends_on 'glib' # R
   depends_on 'glibc' # R
+  depends_on 'glslang' => :build
   depends_on 'graphite' => :build
   depends_on 'gstreamer' # R
   depends_on 'harfbuzz' # R
