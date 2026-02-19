@@ -2555,6 +2555,11 @@ url: https://gitlab.gnome.org/GNOME/gimp/-/tags
 activity: high
 ---
 kind: url
+name: gir_files_rs
+url: https://gitlab.freedesktop.org/gstreamer/gir-files-rs/-/tags
+activity: medium
+---
+kind: url
 name: girara
 url: https://pwmt.org/projects/girara/download/
 activity: low
