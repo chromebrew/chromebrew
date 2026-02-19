@@ -1,4 +1,4 @@
-# Total size: 29114066
+# Total size: 29118656
 /usr/local/etc/vimrc
 /usr/local/share/vim/vim92/LICENSE
 /usr/local/share/vim/vim92/README.txt
@@ -2029,4 +2029,5 @@
 /usr/local/share/vim/vim92/tutor/tutor2.sr
 /usr/local/share/vim/vim92/tutor/tutor2.sv
 /usr/local/share/vim/vim92/vimrc_example.vim
+/usr/local/share/vim/vim92/xdg.vim
 /usr/local/share/vim/vimfiles/chromebrew.vim
