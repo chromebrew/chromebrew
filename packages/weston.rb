@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Weston < Meson
   description 'Weston is the reference implementation of a Wayland compositor, and a useful compositor in its own right.'
   homepage 'https://wayland.freedesktop.org'
-  version '14.0.2'
+  version '15.0.0'
   license 'MIT and CC-BY-SA-3.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/wayland/weston.git'
