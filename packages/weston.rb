@@ -60,6 +60,8 @@ class Weston < Meson
   depends_on 'xcb_util_cursor' => :build
   depends_on 'xdg_base' => :build
 
+  conflicts_ok # v4l_utils also provides edid-decode
+
   meson_options "-Dbackend-default=wayland \
         -Dbackend-drm=true \
         -Dbackend-rdp=false \
