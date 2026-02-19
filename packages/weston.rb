@@ -47,6 +47,7 @@ class Weston < Meson
   depends_on 'libxkbcommon' # R
   depends_on 'libxxf86vm'
   depends_on 'linux_pam' # R
+  depends_on 'lua' => :build
   depends_on 'mesa' # R
   depends_on 'neatvnc' # R
   depends_on 'pango' # R
