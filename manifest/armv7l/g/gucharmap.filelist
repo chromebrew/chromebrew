@@ -1,4 +1,4 @@
-# Total size: 8255568
+# Total size: 8661718
 /usr/local/bin/gucharmap
 /usr/local/include/gucharmap-2.90/gucharmap/gucharmap-block-chapters-model.h
 /usr/local/include/gucharmap-2.90/gucharmap/gucharmap-block-codepoint-list.h
@@ -65,6 +65,7 @@
 /usr/local/share/locale/it/LC_MESSAGES/gucharmap.mo
 /usr/local/share/locale/ja/LC_MESSAGES/gucharmap.mo
 /usr/local/share/locale/ka/LC_MESSAGES/gucharmap.mo
+/usr/local/share/locale/kab/LC_MESSAGES/gucharmap.mo
 /usr/local/share/locale/kk/LC_MESSAGES/gucharmap.mo
 /usr/local/share/locale/kn/LC_MESSAGES/gucharmap.mo
 /usr/local/share/locale/ko/LC_MESSAGES/gucharmap.mo
