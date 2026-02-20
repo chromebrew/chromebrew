@@ -17,7 +17,7 @@ class Command_not_found < Package
      x86_64: 'c231721811f8d82f61e7515dfef7ea42e3e990d7c5a31a1c85e4e53de5d12582'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :executable_only
 
   print_source_bashrc
 

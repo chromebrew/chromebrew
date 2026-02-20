@@ -18,8 +18,8 @@ class Less < Autotools
   })
 
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'ncurses' # R
+  depends_on 'glibc' => :executable_only
+  depends_on 'ncurses' => :executable_only
   depends_on 'patch' => :build
 
   autotools_configure_options '--with-regex=posix'

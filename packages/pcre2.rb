@@ -17,9 +17,9 @@ class Pcre2 < CMake
      x86_64: '0684ca6b8a488696d594cc0874721fae0d8314eb59b0956709ce2e9b1233cab9'
   })
 
-  depends_on 'bzip2' # R
+  depends_on 'bzip2' => :executable_only
   depends_on 'glibc' # R
-  depends_on 'zlib' # R
+  depends_on 'zlib' => :executable_only
 
   cmake_options '-DPCRE2_BUILD_TESTS=OFF \
       -DBUILD_SHARED_LIBS=ON \
