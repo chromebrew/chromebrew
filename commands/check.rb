@@ -12,8 +12,12 @@ class Command
     local_package = File.join(CREW_LOCAL_REPO_ROOT, 'packages', "#{name}.rb")
     crew_package = File.join(CREW_PACKAGES_PATH, "#{name}.rb")
     local_filelist = File.join(CREW_LOCAL_REPO_ROOT, 'manifest', ARCH, name[0].to_s, "#{name}.filelist")
+    local_meta_filelist = File.join(CREW_META_PATH, "#{name}.filelist")
     crew_filelist_path = File.join(CREW_LIB_PATH, 'manifest', ARCH, name[0].to_s)
     crew_filelist = File.join(crew_filelist_path, "#{name}.filelist")
+    # Determine newest filelist. (nil if missing.)
+    newest_filelist = Dir[crew_filelist, local_meta_filelist, local_filelist].max_by { |f| File.mtime(f) }
+    FileUtils.mkdir_p(File.expand_path(File.dirname(local_filelist))) && FileUtils.copy_file(newest_filelist, local_filelist) unless newest_filelist.nil?
     local_package_test = File.join(CREW_LOCAL_REPO_ROOT, 'tests', 'package', name[0].to_s, name)
     crew_package_test_path = File.join(CREW_LIB_PATH, 'tests', 'package', name[0].to_s)
     crew_package_test = File.join(crew_package_test_path, name)
@@ -78,9 +82,12 @@ class Command
       to_copy_test = true
     end
 
-    # Compare local repo filelist to the crew filelist and prompt to copy if necessary to prepare for the operation.
-    if !force && File.file?(local_filelist) && File.file?(crew_filelist) && !FileUtils.identical?(local_filelist, crew_filelist)
-      puts "#{local_filelist} does not match the crew filelist.".yellow
+    # Prompt to copy if crew_filelist is missing or older than newest_filelist.
+    if !force && !newest_filelist.nil? && !File.file?(crew_filelist)
+      puts "#{newest_filelist} exists but the crew filelist does not.".yellow
+      to_copy_filelist = true
+    elsif !force && !newest_filelist.nil? && File.file?(newest_filelist) && File.file?(crew_filelist) && !FileUtils.identical?(newest_filelist, crew_filelist) && crew_filelist != Dir[newest_filelist, crew_filelist].max_by { |f| File.mtime(f) }
+      puts "#{newest_filelist} does not match the crew filelist and is newer.".yellow
       to_copy_filelist = true
     end
 
@@ -101,10 +108,10 @@ class Command
       puts "Copied #{local_package_test} to #{crew_package_test_path}".lightgreen
     end
 
-    if to_copy_filelist && File.file?(local_filelist)
+    if to_copy_filelist && File.file?(newest_filelist)
       FileUtils.mkdir_p crew_filelist_path unless File.directory?(crew_filelist_path)
-      FileUtils.copy_file(local_filelist, crew_filelist)
-      puts "Copied #{local_filelist} to #{crew_filelist_path}".lightgreen
+      FileUtils.copy_file(newest_filelist, crew_filelist)
+      puts "Copied #{newest_filelist} to #{crew_filelist_path}".lightgreen
     end
 
     # Run property and buildsystem tests on the package, and fail if they fail.
