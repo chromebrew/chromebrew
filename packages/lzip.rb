@@ -17,6 +17,6 @@ class Lzip < Autotools
      x86_64: 'f9e9a6ea29a9bdfafb24c5eb5ca72e60ac8b6470ecec545a647667bc84630204'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :executable_only
+  depends_on 'glibc' => :executable_only
 end

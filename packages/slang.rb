@@ -17,11 +17,11 @@ class Slang < Package
      x86_64: '777a1a2a147ee1778a33d15fb1955aa41b1e67f3160d90bbba4c9be2f9a46206'
   })
 
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libpng' # R
   depends_on 'pcre' # R
   depends_on 'zlib' # R
-  depends_on 'gcc_lib' # R
 
   def self.build
     system "./configure #{CREW_CONFIGURE_OPTIONS} --without-x"

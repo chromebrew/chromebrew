@@ -20,8 +20,8 @@ class Upx < CMake
      x86_64: 'ae4289bdcc3b7c790feb54c3e316a74f47638c51ef57ffeab7f0287d75a88838'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :executable_only
+  depends_on 'glibc' => :executable_only
 
   cmake_options '-DUPX_CONFIG_DISABLE_GITREV=true'
 end

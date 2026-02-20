@@ -18,7 +18,7 @@ class Zip < Package
   })
 
   depends_on 'bzip2' # R
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :executable_only
 
   # adapted from the homebrew recipe as seen at: https://github.com/Homebrew/homebrew-core/blob/master/Formula/zip.rb
   # Upstream is unmaintained so we use the Debian patchset:

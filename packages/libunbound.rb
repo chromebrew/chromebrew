@@ -17,7 +17,7 @@ class Libunbound < Autotools
      x86_64: 'e6f60b3ea6334804c1ea2e1f16aa195f340aa0e4e2dd92bc46b707fec5825847'
   })
 
-  depends_on 'expat' # R
+  depends_on 'expat' => :executable_only
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'openssl' # R On i686 openssl needs to be installed before libunbound.

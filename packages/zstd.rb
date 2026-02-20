@@ -17,11 +17,11 @@ class Zstd < CMake
      x86_64: '1549e818ef9ecd1cbd33aa8322aaaacaceda3c8b4a422e990b8ed8d273f4e8db'
   })
 
-  depends_on 'gcc_lib' # R
+  depends_on 'gcc_lib' => :executable_only
   depends_on 'glibc' # R
-  depends_on 'lz4' # R
-  depends_on 'xzutils' # R
-  depends_on 'zlib' # R
+  depends_on 'lz4' => :executable_only
+  depends_on 'xzutils' => :executable_only
+  depends_on 'zlib' => :executable_only
 
   conflicts_ok # Conflicts with zstd_static.
   run_tests

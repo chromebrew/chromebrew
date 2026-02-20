@@ -17,7 +17,7 @@ class Crew_mvdir < Package
      x86_64: 'd55466dacf8df9994b8ed0b33347f4cd730b4a23d34462672c00b5269e22c2e9'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :executable_only
 
   def self.build
     system 'make'

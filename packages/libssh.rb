@@ -17,13 +17,13 @@ class Libssh < CMake
      x86_64: '3a3f9eb8a3fa873d0a10a3a53fbe4fd21c21a819339eda171535e23c2833c077'
   })
 
-  depends_on 'e2fsprogs'
+  depends_on 'e2fsprogs' # R
   depends_on 'glibc' # R
-  depends_on 'krb5'
+  depends_on 'krb5' # R
   depends_on 'libgcrypt'
   depends_on 'openssl' # R
   depends_on 'py3_abimap' => :build
-  depends_on 'zlib'
+  depends_on 'zlib' # R
 
   cmake_options '-DWITH_EXAMPLES=OFF \
     -DBUILD_SHARED_LIBS=ON'
