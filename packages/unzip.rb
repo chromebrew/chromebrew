@@ -18,7 +18,7 @@ class Unzip < Package
   })
 
   depends_on 'compressdoc' => :build
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :executable_only
   depends_on 'patch' => :build
 
   # adapted from the homebrew recipe as seen at: https://github.com/Homebrew/homebrew-dupes/blob/master/unzip.rb

@@ -17,5 +17,8 @@ class Libversion < CMake
      x86_64: '0d451b69e43e8931d79e2a097ecce63bf4d287e37ccb67c80839f06a5956c812'
   })
 
+  depends_on 'gcc_lib' => :executable_only
+  depends_on 'glibc' # R
+
   run_tests
 end

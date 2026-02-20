@@ -17,5 +17,5 @@ class Which < Autotools
      x86_64: '97c4353ec10d5756a3ec4db272c388865b15964f32e94980560806cfc7208d1b'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :executable_only
 end

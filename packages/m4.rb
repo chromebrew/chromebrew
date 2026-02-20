@@ -17,6 +17,6 @@ class M4 < Autotools
      x86_64: '2ffed7ee8131ea0757f140cfb6ed1559463243d6b8049ded703c1cea28fbff39'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :executable_only
   depends_on 'libsigsegv' => :build
 end

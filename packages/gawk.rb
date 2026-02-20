@@ -29,7 +29,7 @@ class Gawk < Autotools
   depends_on 'libsigsegv' # R
   depends_on 'mpfr' # R
   depends_on 'ncurses' => :build
-  depends_on 'readline' # R
+  depends_on 'readline' => :executable_only
 
   # Tests appear to have container issues...
   # run_tests unless ARCH == 'i686' || ARCH == 'x86_64'
