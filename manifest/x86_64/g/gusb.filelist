@@ -1,9 +1,11 @@
-# Total size: 297623
+# Total size: 352269
 /usr/local/bin/gusbcmd
 /usr/local/include/gusb-1/gusb.h
-/usr/local/include/gusb-1/gusb/gusb-autocleanups.h
+/usr/local/include/gusb-1/gusb/gusb-bos-descriptor-private.h
+/usr/local/include/gusb-1/gusb/gusb-bos-descriptor.h
 /usr/local/include/gusb-1/gusb/gusb-context-private.h
 /usr/local/include/gusb-1/gusb/gusb-context.h
+/usr/local/include/gusb-1/gusb/gusb-device-event.h
 /usr/local/include/gusb-1/gusb/gusb-device-list.h
 /usr/local/include/gusb-1/gusb/gusb-device-private.h
 /usr/local/include/gusb-1/gusb/gusb-device.h
