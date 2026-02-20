@@ -7,7 +7,7 @@ unless CREW_PRE_GLIBC_STANDALONE
   class Glibc < Package
     description 'The GNU C Library project provides the core libraries for GNU/Linux systems.'
     homepage 'https://www.gnu.org/software/libc/'
-    version '2.41-5'
+    version '2.41-6'
     license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
     compatibility 'all'
     source_url 'https://sourceware.org/git/glibc.git'
@@ -23,7 +23,7 @@ unless CREW_PRE_GLIBC_STANDALONE
        x86_64: '50729b68b70aceb95f467812950fc58ec29e3e8b184f95d7c7b4ce7cb2d53946'
     })
 
-    depends_on 'crew_preload' # L
+    # depends_on 'crew_preload' # L
     depends_on 'gawk'    => :build
     depends_on 'libidn2' => :build
     depends_on 'make' => :build

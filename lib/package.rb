@@ -414,9 +414,13 @@ class Package
                                                  CREW_LINKER
                                                end
     env['CREW_PRELOAD_NO_MOLD']              = @no_mold ? '1' : '0'
+<<<<<<< update-install.sh
+    # env['LD_PRELOAD']                        = File.join(CREW_LIB_PREFIX, 'crew-preload.so') if File.exist?("#{CREW_LIB_PREFIX}/crew-preload.so")
+=======
     # Cannot use a ternary with nil here, as putting a nil into the hash can break
     # crew_env_options_hash.transform_values!
     env['LD_PRELOAD']                        = File.join(CREW_LIB_PREFIX, 'crew-preload.so') if File.exist?("#{CREW_LIB_PREFIX}/crew-preload.so")
+>>>>>>> master
 
     # After removing the env hash, all remaining args must be command args.
 

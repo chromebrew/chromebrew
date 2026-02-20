@@ -59,7 +59,11 @@ end
 # These are packages that crew needs to run-- only packages that the bin/crew needs should be required here.
 # lz4, for example, is required for zstd to have lz4 support, but this is not required to run bin/crew.
 CREW_ESSENTIAL_PACKAGES = %W[
+<<<<<<< update-install.sh
+  git crew_profile_base gcc_lib gmp gnu_time libnghttp2 libxcrypt ncurses patchelf readline ruby ruby_matrix upx zlib zlib_ng zstd
+=======
   bash crew_profile_base gcc_lib gmp gnu_time libnghttp2 libxcrypt ncurses patchelf readline ruby ruby_matrix ruby_parser upx zlib zlib_ng zstd
+>>>>>>> master
   #{'crew_preload' unless CREW_GLIBC_INTERPRETER.nil?}
   #{'glibc' unless CREW_GLIBC_INTERPRETER.nil?}
   #{ if LIBC_VERSION.to_f > 2.34 && LIBC_VERSION.to_f < 2.41
@@ -141,7 +145,7 @@ CREW_DEST_HOME  = File.join(CREW_DEST_DIR, HOME)
 CREW_NO_GIT     = ENV.fetch('CREW_NO_GIT', false)
 CREW_UNATTENDED = ENV.fetch('CREW_UNATTENDED', false)
 
-CREW_STANDALONE_UPGRADE_ORDER = %w[libxcrypt crew_preload glibc openssl ruby python3 perl icu4c sommelier]
+CREW_STANDALONE_UPGRADE_ORDER = %w[libxcrypt glibc openssl ruby python3 perl icu4c sommelier]
 
 CREW_DEBUG        = ARGV.include?('-D') || ARGV.include?('--debug')
 CREW_FORCE        = ARGV.include?('-f') || ARGV.include?('--force')
@@ -184,7 +188,7 @@ USER = Etc.getlogin
 
 CHROMEOS_RELEASE =
   if File.exist?('/etc/lsb-release')
-    File.read('/etc/lsb-release')[/CHROMEOS_RELEASE_CHROME_MILESTONE=(.+)/, 1]
+    File.read('/etc/lsb-release')[/CHROMEOS_RELEASE_CHROME_MILESTONE=(.+)/, 1].chomp
   else
     # newer version of Chrome OS exports info to env by default
     ENV.fetch('CHROMEOS_RELEASE_CHROME_MILESTONE', nil)
@@ -369,11 +373,11 @@ if ENV['CI']
   CREW_RUBY_VER = "ruby#{crew_ruby_ver_default}"
   CREW_RUST_VER = "rust#{crew_rust_ver_default}"
 else
-  CREW_GCC_VER  = Kernel.system('which gcc', %i[out err] => File::NULL) ? "gcc#{`gcc -dumpversion`.chomp}" : "gcc#{crew_gcc_ver_default}"
-  CREW_ICU_VER  = Kernel.system('which uconv', %i[out err] => File::NULL) ? "icu#{`uconv --version`.chomp.split[3]}" : "icu#{crew_icu_ver_default}"
-  CREW_LLVM_VER = Kernel.system('which llvm-config', %i[out err] => File::NULL) ? "llvm#{`llvm-config --version`.chomp.split('.')[0]}" : "llvm#{crew_llvm_ver_default}"
-  CREW_PERL_VER = Kernel.system('which perl', %i[out err] => File::NULL) ? "perl#{`perl --version|xargs|cut -d\\( -f2|cut -d\\) -f1|cut -dv -f2`.chomp.sub(/\.\d+$/, '')}" : "perl#{crew_perl_ver_default}"
-  CREW_PY_VER   = Kernel.system("#{CREW_PREFIX}/bin/python3 --version", %i[out err] => File::NULL) ? "py#{`python3 -c "print('.'.join(__import__('platform').python_version_tuple()[:2]))"`.chomp}" : "py#{crew_py_ver_default}"
+  CREW_GCC_VER  = Kernel.system('command -v gcc', %i[out err] => File::NULL) ? "gcc#{`gcc -dumpversion`.chomp}" : "gcc#{crew_gcc_ver_default}"
+  CREW_ICU_VER  = Kernel.system('command -v uconv', %i[out err] => File::NULL) ? "icu#{`uconv --version`.chomp.split[3]}" : "icu#{crew_icu_ver_default}"
+  CREW_LLVM_VER = Kernel.system('command -v llvm-config', %i[out err] => File::NULL) ? "llvm#{`llvm-config --version`.chomp.split('.')[0]}" : "llvm#{crew_llvm_ver_default}"
+  CREW_PERL_VER = Kernel.system('command -v perl', %i[out err] => File::NULL) ? "perl#{`perl --version|xargs|cut -d\\( -f2|cut -d\\) -f1|cut -dv -f2`.chomp.sub(/\.\d+$/, '')}" : "perl#{crew_perl_ver_default}"
+  CREW_PY_VER   = Kernel.system('command -v python3', %i[out err] => File::NULL) ? "py#{`python3 -c "print('.'.join(__import__('platform').python_version_tuple()[:2]))"`.chomp}" : "py#{crew_py_ver_default}"
   CREW_RUBY_VER = "ruby#{RUBY_VERSION.slice(/(?:.*(?=\.))/)}"
   CREW_RUST_VER = Kernel.system('which cargo', %i[out err] => File::NULL) ? "rust#{`cargo -V`.chomp.split[1].split('.')[0..1].join('.')}" : "rust#{crew_rust_ver_default}"
 end

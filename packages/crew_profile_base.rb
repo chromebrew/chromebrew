@@ -32,11 +32,11 @@ class Crew_profile_base < Package
 
   def self.postinstall
     # Write our rc files
-    crew_rc_source_line = "source #{CREW_PREFIX}/etc/profile"
+    crew_etc_profile = "#{CREW_PREFIX}/etc/profile"
     crew_rcfile = <<~CREW_PROFILE_EOF
       # DO NOT DELETE THIS LINE
       # See #{CREW_PREFIX}/etc/profile for further details
-      #{crew_rc_source_line}
+      [[ -f #{crew_etc_profile} ]] && source #{crew_etc_profile}
 
       # Put your stuff under this comment
 
@@ -51,21 +51,9 @@ class Crew_profile_base < Package
 
       rc_file = File.readlines(rc_path, chomp: true)
 
-      # remove duplicated `source` lines (if any)
-      if rc_file.count(crew_rc_source_line) > 1
-        puts "Removing duplicated `source` lines in #{rc_path}...".yellow
-        first_source_line_index = rc_file.find_index(crew_rc_source_line)
-
-        # delete all `source` lines
-        rc_file.delete(crew_rc_source_line)
-
-        # re-add the first `source` line
-        rc_file.insert(first_source_line_index, crew_rc_source_line)
-      end
-
       # append our rc string to the beginning of the rc file (if not exist)
-      if rc_file.none? { |line| line == "source #{CREW_PREFIX}/etc/profile" }
-        puts "Appending `#{crew_rc_source_line}` to the beginning of #{rc_path}...".yellow
+      if rc_file.none? { |line| line == "[[ -f #{crew_etc_profile} ]] && source #{crew_etc_profile}" }
+        puts "Appending `#{crew_etc_profile}` to the beginning of #{rc_path}...".yellow
         rc_file.unshift(crew_rcfile.lines(chomp: true))
       end
 
@@ -87,10 +75,10 @@ class Crew_profile_base < Package
 
         # PAGER from container PAGER variable is passed through into the
         # CONTAINER_PAGER variable.
-        if [ -z "$CONTAINER_PAGER" ]; then
+        if [ -z "${CONTAINER_PAGER}" ]; then
           PAGER="#{@pager_default}"
         else
-          PAGER="$CONTAINER_PAGER"
+          PAGER="${CONTAINER_PAGER}"
         fi
       PAGER_ENV_EOF
       FileUtils.install 'pagerenv', "#{CREW_PREFIX}/etc/env.d/03-pager", mode: 0o644
