@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Freetds < Autotools
   description 'FreeTDS is a set of libraries for Unix and Linux that allows your programs to natively talk to Microsoft SQL Server and Sybase databases.'
   homepage 'https://www.freetds.org/'
-  version '1.5.12'
+  version '1.5.13'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/FreeTDS/freetds.git'
