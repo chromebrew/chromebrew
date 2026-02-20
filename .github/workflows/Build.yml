@@ -441,7 +441,7 @@ jobs:
           for file in $(echo "${CHANGED_PACKAGES}" | xargs basename -s .rb | xargs)
             do
             ruby bin/crew prop ignore_updater ${file}
-            [[ "$(ruby bin/crew prop ignore_updater ${file})" == "false" ]] && touch tools/automatically_updatable_packages/${file}
+            [[ "$(ruby bin/crew prop ignore_updater ${file})" == "false" ]] && touch tools/automatically_updatable_packages/${file} || true
           done
       - uses: EndBug/add-and-commit@v9
         if: ${{ contains(needs.generate.result, 'success') }}
