@@ -1,7 +1,7 @@
 ---
-# Version 1.2
+# Version 1.3
 name: Build
-run-name: Build ${{ inputs.branch || github.ref_name }} for ${{ inputs.build-on }} by @${{ github.actor }}
+run-name: Build ${{ inputs.packages_to_build }} for ${{ inputs.build-on }} on branch ${{ inputs.branch || github.ref_name }} requested by @${{ github.actor }}
 on:
   workflow_dispatch:
     inputs:
@@ -19,6 +19,9 @@ on:
         required: false
         type: boolean
         default: 'false'
+      packages_to_build:
+        description: "Specify packages to build."
+        required: false
       rebuild_packages:
         description: "Rebuild packages even if they already have binaries."
         required: false
@@ -128,13 +131,15 @@ jobs:
       - name: Export variables to github context
         id: changed-packages
         run: |
-            if [[ -z "${{ steps.changed-files.outputs.packages_all_changed_files }}" ]]; then
+            # Add ${{ inputs.packages_to_build }} to the packages we
+            # will check for architecture and glibc compatibility.
+            if [[ -z "${{ steps.changed-files.outputs.packages_all_changed_files }} ${{ inputs.packages_to_build }}" ]]; then
               echo "Branch ${{ inputs.branch || github.ref_name }} has no changed package files."
               exit 1
             fi
             # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-files.outputs.packages_all_changed_files) into "foo bar"
-            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-files.outputs.packages_all_changed_files }}" | xargs basename -s .rb | xargs)" >> "$GITHUB_ENV"
-            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-files.outputs.packages_all_changed_files }}" | xargs basename -s .rb | xargs)" >> "$GITHUB_OUTPUT"
+            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-files.outputs.packages_all_changed_files }} ${{ inputs.packages_to_build }}" | xargs basename -s .rb | sort -u | xargs)" >> "$GITHUB_ENV"
+            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-files.outputs.packages_all_changed_files }} ${{ inputs.packages_to_build }}" | xargs basename -s .rb | sort -u | xargs)" >> "$GITHUB_OUTPUT"
       - name: Determine glibc and architecture package compatibility
         id: get-compatibility
         run: |
