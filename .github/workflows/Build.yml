@@ -323,6 +323,12 @@ jobs:
               echo "Skipping i686 container builds &/or package file updates."
               exit 0
             fi
+            case $PLATFORM in
+              linux/386)    CREW_ARCH_PACKAGES_ENCODED=$(echo ${i686_PACKAGES} | xxd -ps -c 0 | tr -d '\n')";;
+              linux/amd64)  CREW_ARCH_PACKAGES_ENCODED=$(echo ${x86_64_PACKAGES} | xxd -ps -c 0 | tr -d '\n')";;
+              linux/arm/v7) CREW_ARCH_PACKAGES_ENCODED=$(echo ${armv7l_PACKAGES} | xxd -ps -c 0 | tr -d '\n')";;
+              *)             echo "$PLATFORM not determined." && exit 1 ;;
+            esac
             # Container Cleanup
             # Adapted from https://github.com/BRAINSia/free-disk-space/blob/main/action.yml
             echo "Running some background container cleanups from BRAINSia/free-disk-space."
@@ -341,6 +347,14 @@ jobs:
             sudo setfacl -R -m u:1000:rwx .
             sudo setfacl -R -m u:1000:rwx /tmp/pkg_cache
             # See https://github.com/containerd/containerd/pull/7566#issuecomment-1461134737 for why we set ulimit.
+            # Pass in packages we definitely might want to build.
+            if [ -z ${CREW_ARCH_PACKAGES_ENCODED+x} ]; then
+              echo "${CREW_ARCH_PACKAGES_ENCODED} is not set."
+            else
+              ARCH_PACKAGES_PASSTHROUGH=-e
+              ARCH_PACKAGES_PASSTHROUGH+=" "
+              ARCH_PACKAGES_PASSTHROUGH+="CREW_ARCH_PACKAGES_ENCODED=${CREW_ARCH_PACKAGES_ENCODED}"
+            fi
             if [ -z ${CI+x} ]; then
               echo "CI is not set."
             else
@@ -355,6 +369,27 @@ jobs:
               CREW_MAX_BUILD_TIME_PASSTHROUGH+=" "
               CREW_MAX_BUILD_TIME_PASSTHROUGH+=CREW_MAX_BUILD_TIME=${CREW_MAX_BUILD_TIME}
             fi
+            echo "Docker cmdline is: docker run"
+            echo -rm \
+              --platform "${PLATFORM}" \
+              -e PUID=1000 \
+              -e PGID=1000 \
+              --privileged \
+              -e GCONV_PATH="/usr/local/lib${LIB_SUFFIX}/gconv" \
+              -e CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES="${CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES}" \
+              -e CREW_REPO="${CREW_REPO}" \
+              -e CREW_BRANCH="${{ inputs.branch || github.ref_name }}" \
+              -e GITLAB_TOKEN="${{ secrets.GITLAB_TOKEN }}" \
+              -e GITLAB_TOKEN_USERNAME="${{ secrets.GITLAB_TOKEN_USERNAME }}" \
+              ${CI_PASSTHROUGH} \
+              ${ARCH_PACKAGES_PASSTHROUGH} \
+              ${CREW_MAX_BUILD_TIME_PASSTHROUGH} \
+              -v /tmp/pkg_cache:/usr/local/tmp/packages:rshared \
+              -v "$(pwd)":/output:rshared \
+              --tmpfs /tmp \
+              --ulimit "nofile=$(ulimit -Sn):$(ulimit -Hn)" \
+              "${CONTAINER}" \
+              /bin/chromebrewstart "/output/tools/github_actions_update_builder.sh ${{ github.event.inputs.allow_fail == 'true' && '--continue-after-failed-builds' || ''}} ${{ github.event.inputs.rebuild_packages == 'true' && '--rebuild' || ''}}"
             docker run \
               --rm \
               --platform "${PLATFORM}" \
@@ -368,6 +403,7 @@ jobs:
               -e GITLAB_TOKEN="${{ secrets.GITLAB_TOKEN }}" \
               -e GITLAB_TOKEN_USERNAME="${{ secrets.GITLAB_TOKEN_USERNAME }}" \
               ${CI_PASSTHROUGH} \
+              ${ARCH_PACKAGES_PASSTHROUGH} \
               ${CREW_MAX_BUILD_TIME_PASSTHROUGH} \
               -v /tmp/pkg_cache:/usr/local/tmp/packages:rshared \
               -v "$(pwd)":/output:rshared \
