@@ -1,7 +1,7 @@
 ---
-# Version 1.2
+# Version 1.3
 name: Build
-run-name: Build ${{ inputs.branch || github.ref_name }} for ${{ inputs.build-on }} by @${{ github.actor }}
+run-name: Build ${{ inputs.packages_to_build }} for ${{ inputs.build-on }} on branch ${{ inputs.branch || github.ref_name }} requested by @${{ github.actor }}
 on:
   workflow_dispatch:
     inputs:
@@ -19,6 +19,9 @@ on:
         required: false
         type: boolean
         default: 'false'
+      packages_to_build:
+        description: "Specify packages to build."
+        required: false
       rebuild_packages:
         description: "Rebuild packages even if they already have binaries."
         required: false
@@ -128,13 +131,15 @@ jobs:
       - name: Export variables to github context
         id: changed-packages
         run: |
-            if [[ -z "${{ steps.changed-files.outputs.packages_all_changed_files }}" ]]; then
+            # Add inputs.packages_to_build to the packages we will
+            # check for architecture and glibc compatibility.
+            if [[ -z "${{ steps.changed-files.outputs.packages_all_changed_files }} ${{ inputs.packages_to_build }}" ]]; then
               echo "Branch ${{ inputs.branch || github.ref_name }} has no changed package files."
               exit 1
             fi
             # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-files.outputs.packages_all_changed_files) into "foo bar"
-            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-files.outputs.packages_all_changed_files }}" | xargs basename -s .rb | xargs)" >> "$GITHUB_ENV"
-            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-files.outputs.packages_all_changed_files }}" | xargs basename -s .rb | xargs)" >> "$GITHUB_OUTPUT"
+            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-files.outputs.packages_all_changed_files }} ${{ inputs.packages_to_build }}" | xargs basename -s .rb | sort -u | xargs)" >> "$GITHUB_ENV"
+            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-files.outputs.packages_all_changed_files }} ${{ inputs.packages_to_build }}" | xargs basename -s .rb | sort -u | xargs)" >> "$GITHUB_OUTPUT"
       - name: Determine glibc and architecture package compatibility
         id: get-compatibility
         run: |
@@ -318,6 +323,12 @@ jobs:
               echo "Skipping i686 container builds &/or package file updates."
               exit 0
             fi
+            case $PLATFORM in
+              linux/386)    CREW_ARCH_PACKAGES_ENCODED="$(echo ${i686_PACKAGES} | xxd -ps -c 0 | tr -d '\n')";;
+              linux/amd64)  CREW_ARCH_PACKAGES_ENCODED="$(echo ${x86_64_PACKAGES} | xxd -ps -c 0 | tr -d '\n')";;
+              linux/arm/v7) CREW_ARCH_PACKAGES_ENCODED="$(echo ${armv7l_PACKAGES} | xxd -ps -c 0 | tr -d '\n')";;
+              *)             echo "$PLATFORM not determined." && exit 1 ;;
+            esac
             # Container Cleanup
             # Adapted from https://github.com/BRAINSia/free-disk-space/blob/main/action.yml
             echo "Running some background container cleanups from BRAINSia/free-disk-space."
@@ -336,6 +347,14 @@ jobs:
             sudo setfacl -R -m u:1000:rwx .
             sudo setfacl -R -m u:1000:rwx /tmp/pkg_cache
             # See https://github.com/containerd/containerd/pull/7566#issuecomment-1461134737 for why we set ulimit.
+            # Pass in packages we definitely might want to build.
+            if [ -z ${CREW_ARCH_PACKAGES_ENCODED+x} ]; then
+              echo "${CREW_ARCH_PACKAGES_ENCODED} is not set."
+            else
+              ARCH_PACKAGES_PASSTHROUGH=-e
+              ARCH_PACKAGES_PASSTHROUGH+=" "
+              ARCH_PACKAGES_PASSTHROUGH+="CREW_ARCH_PACKAGES_ENCODED=${CREW_ARCH_PACKAGES_ENCODED}"
+            fi
             if [ -z ${CI+x} ]; then
               echo "CI is not set."
             else
@@ -363,6 +382,7 @@ jobs:
               -e GITLAB_TOKEN="${{ secrets.GITLAB_TOKEN }}" \
               -e GITLAB_TOKEN_USERNAME="${{ secrets.GITLAB_TOKEN_USERNAME }}" \
               ${CI_PASSTHROUGH} \
+              ${ARCH_PACKAGES_PASSTHROUGH} \
               ${CREW_MAX_BUILD_TIME_PASSTHROUGH} \
               -v /tmp/pkg_cache:/usr/local/tmp/packages:rshared \
               -v "$(pwd)":/output:rshared \
@@ -436,7 +456,7 @@ jobs:
           for file in $(echo "${CHANGED_PACKAGES}" | xargs basename -s .rb | xargs)
             do
             ruby bin/crew prop ignore_updater ${file}
-            [[ "$(ruby bin/crew prop ignore_updater ${file})" == "false" ]] && touch tools/automatically_updatable_packages/${file}
+            [[ "$(ruby bin/crew prop ignore_updater ${file})" == "false" ]] && touch tools/automatically_updatable_packages/${file} || true
           done
       - uses: EndBug/add-and-commit@v9
         if: ${{ contains(needs.generate.result, 'success') }}
@@ -454,4 +474,4 @@ jobs:
           PR_TITLE: ${{ inputs.pr_title || inputs.branch || github.ref_name }}
         run: |
             echo "PR title being passed to the Generate PR workflow is: ${{ inputs.pr_title || inputs.branch || github.ref_name }}"
-            gh workflow run Generate-PR.yml -R ${{ github.repository }} -r ${{ inputs.branch || github.ref_name }} -f branch="${{ inputs.branch || github.ref_name }}" -f pr_label="${{ inputs.pr_label }}" -f draft_pr="${{ github.event.inputs.with_pr == 'Draft Pull Request' }}" -f pr_title="$(echo "${{ inputs.pr_title || inputs.branch || github.ref_name }}" | ( read -rsd '' x; echo ${x@Q} ))"
+            gh workflow run Generate-PR.yml -R ${{ github.repository }} -r ${{ inputs.branch || github.ref_name }} -f branch="${{ inputs.branch || github.ref_name }}" -f packages_to_check_for_build="${{ inputs.packages_to_build }}" -f pr_label="${{ inputs.pr_label }}" -f draft_pr="${{ github.event.inputs.with_pr == 'Draft Pull Request' }}" -f pr_title="$(echo "${{ inputs.pr_title || inputs.branch || github.ref_name }}" | ( read -rsd '' x; echo ${x@Q} ))"
