@@ -19,9 +19,9 @@ class Sed < Autotools
      x86_64: '545c56168809e37a8c84381ad16905775def14949a09595453fc8ee5ffe7e0fc'
   })
 
-  depends_on 'acl' # R
-  depends_on 'attr' # R
-  depends_on 'glibc' # R
+  depends_on 'acl' => :executable_only
+  depends_on 'attr' => :executable_only
+  depends_on 'glibc' => :executable_only
   depends_on 'wget2' => :build
 
   autotools_configure_options '--without-selinux \

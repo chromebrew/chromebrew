@@ -12,17 +12,17 @@ class Vim < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a9c1c43506dfdf06964de1bb3c40e3de1acb45a68b5d106044e0ddc7e590920d',
-     armv7l: 'a9c1c43506dfdf06964de1bb3c40e3de1acb45a68b5d106044e0ddc7e590920d',
-       i686: '1f6f195603efcaac11f367144556d133c358bea1712b58171f637a801bf4154e',
-     x86_64: 'b629880d8f1f8f0f67c22baa94fdb98842002e27274ba6ca2e294dd2698a1f97'
+    aarch64: 'f4c70b0d0e0d5a0c96f0676a646306c30db219f419eca01718f774278cf251f5',
+     armv7l: 'f4c70b0d0e0d5a0c96f0676a646306c30db219f419eca01718f774278cf251f5',
+       i686: '5bda908e77ec57fc92abb1f19610bf9003d2f9b3aa2a85c08976971ecc851588',
+     x86_64: '52e94d2405c08021ab9d0cf2171653059367d946137bd5549674996f459c87cc'
   })
 
-  depends_on 'acl' # R
-  depends_on 'glibc' # R
-  depends_on 'gpm' # R
-  depends_on 'libsodium' # R
-  depends_on 'ncurses' # R
+  depends_on 'acl' => :executable_only
+  depends_on 'glibc' => :executable_only
+  depends_on 'gpm' => :executable_only
+  depends_on 'libsodium' => :executable_only
+  depends_on 'ncurses' => :executable_only
   depends_on 'vim_runtime' # L
 
   ignore_updater

@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gnome_desktop < Meson
   description 'Library with common API for various GNOME modules'
   homepage 'https://gitlab.gnome.org/GNOME/gnome-desktop'
-  version '44.4'
+  version '44.5'
   license 'GPL-2+, LGPL-2+ and FDL-1.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-desktop.git'
@@ -11,9 +11,9 @@ class Gnome_desktop < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a74a717c66874349bde46b11ec7e7378806953c54e804956bf078f7d0f4ecdfc',
-     armv7l: 'a74a717c66874349bde46b11ec7e7378806953c54e804956bf078f7d0f4ecdfc',
-     x86_64: '2af7c5dd8f519577164944439db95c1c110b47a151de9657f3af03f91841d562'
+    aarch64: 'cf52cfdd6da99e26f5317a6587b53f2847b210d2102e2787beee7f249d968035',
+     armv7l: 'cf52cfdd6da99e26f5317a6587b53f2847b210d2102e2787beee7f249d968035',
+     x86_64: 'bd7a97f8025604eee297aaf858727041fbe7a660cda059d5d70077615404a0a5'
   })
 
   depends_on 'cairo' # R

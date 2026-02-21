@@ -25,7 +25,7 @@ rescue RuntimeError => e
   end
 end
 
-def downloader(url, sha256sum, filename = File.basename(url).gsub(/[^\w\s]/, ''), no_update_hash: false, verbose: false)
+def downloader(url, sha256sum, filename = File.basename(url).gsub(/\s+/, ''), no_update_hash: false, verbose: false)
   # downloader: wrapper for all Chromebrew downloaders (`net/http`,`curl`...)
   # Usage: downloader <url>, <sha256sum>, <filename::optional>, <verbose::optional>
   #

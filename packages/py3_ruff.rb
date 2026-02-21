@@ -3,24 +3,24 @@ require 'buildsystems/pip'
 class Py3_ruff < Pip
   description 'An extremely fast Python linter, written in Rust.'
   homepage 'https://docs.astral.sh/ruff'
-  version "0.15.0-#{CREW_PY_VER}"
+  version "0.15.1-#{CREW_PY_VER}"
   license 'GPL-2.0'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8e2c69afe89077526164531b4482b38f27d41e684e15ddd6853a66d97f7d7e35',
-     armv7l: '8e2c69afe89077526164531b4482b38f27d41e684e15ddd6853a66d97f7d7e35',
-       i686: 'a438702f15cefcb537150a78fcc38465f91d6e01e4e2a28ee1dd35ab1e721381',
-     x86_64: 'e53d275402c913709ceefc3364952be66f2b8f9ceb7d88fb298af3ca9411fb18'
+    aarch64: 'ff14c930390737db5d0898ff92f3e6c537e9faff45141b325a93c5b6e5d136ce',
+     armv7l: 'ff14c930390737db5d0898ff92f3e6c537e9faff45141b325a93c5b6e5d136ce',
+       i686: 'e874706dad6d1e56bbdf0a09aae2db898f6657a8e420bae013ca5c6bdd99e2cd',
+     x86_64: 'ac7322e9a4770b67056b92e6334afc05e2f94c2b21f208c3301ca8d7a8005a7f'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :executable_only
+  depends_on 'glibc' => :executable_only
   depends_on 'llvm_dev' => :build
   depends_on 'py3_maturin' => :build
-  depends_on 'python3' # R
+  depends_on 'python3' => :executable_only
   depends_on 'rust' => :build
 
   no_env_options

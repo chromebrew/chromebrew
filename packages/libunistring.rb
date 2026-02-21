@@ -17,7 +17,7 @@ class Libunistring < Autotools
      x86_64: '938cdcf6680fee8df992123a1fde0b3293eabf6936a09a51bd66ef46bbd7ea53'
   })
 
-  depends_on 'glibc'
+  depends_on 'glibc' # R
 
   autotools_configure_options '--enable-static \
       --enable-shared'

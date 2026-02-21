@@ -20,8 +20,8 @@ class Bash < Autotools
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'ncurses' # R
-  depends_on 'readline' # R
+  depends_on 'ncurses' => :executable_only
+  depends_on 'readline' => :executable_only
 
   autotools_configure_options '--with-curses \
     --enable-extended-glob-default \

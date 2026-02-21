@@ -17,7 +17,7 @@ class Zoneinfo < Package
      x86_64: 'e273aef17205ded1ffdf1ba596c3856b7804231528e34fcce45ef0450df2b506'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :executable_only
 
   conflicts_ok # Conflicts with coreutils.
 

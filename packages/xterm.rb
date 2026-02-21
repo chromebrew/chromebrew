@@ -3,7 +3,7 @@ require 'package'
 class Xterm < Package
   description 'The xterm program is a terminal emulator for the X Window System.'
   homepage 'https://invisible-island.net/xterm/'
-  version '406'
+  version '407'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/ThomasDickey/xterm-snapshots.git'
@@ -11,28 +11,28 @@ class Xterm < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f5d2412ff0cc2c04b1f8e4586a1a0836592fca8186394528194f772437def082',
-     armv7l: 'f5d2412ff0cc2c04b1f8e4586a1a0836592fca8186394528194f772437def082',
-     x86_64: 'e45a39d55d55557d24dbc627e1471204d64aaacc9478a53b22b3a857b14a0d86'
+    aarch64: 'e51a11c5222c7eef82730162b8a417c304fc4110c402806c40ee9c2801d5b065',
+     armv7l: 'e51a11c5222c7eef82730162b8a417c304fc4110c402806c40ee9c2801d5b065',
+     x86_64: '70ee2c01f0528f6ac62972a38bab18a8f8b1ab3e7b1f18cce48c0e4879c9a11d'
   })
 
-  depends_on 'fontconfig' # R
-  depends_on 'freetype' # R
-  depends_on 'glibc' # R
-  depends_on 'harfbuzz' # R
-  depends_on 'libice' # R
-  depends_on 'libutempter' # R
-  depends_on 'libx11' # R
-  depends_on 'libxaw' # R
-  depends_on 'libxext' # R
-  depends_on 'libxft' # R
-  depends_on 'libxinerama' # R
-  depends_on 'libxmu' # R
-  depends_on 'libxpm' # R
-  depends_on 'libxt' # R
+  depends_on 'fontconfig' => :executable_only
+  depends_on 'freetype' => :executable_only
+  depends_on 'glibc' => :executable_only
+  depends_on 'harfbuzz' => :executable_only
+  depends_on 'libice' => :executable_only
+  depends_on 'libutempter' => :executable_only
+  depends_on 'libx11' => :executable_only
+  depends_on 'libxaw' => :executable_only
+  depends_on 'libxext' => :executable_only
+  depends_on 'libxft' => :executable_only
+  depends_on 'libxinerama' => :executable_only
+  depends_on 'libxmu' => :executable_only
+  depends_on 'libxpm' => :executable_only
+  depends_on 'libxt' => :executable_only
   depends_on 'luit' => :build
-  depends_on 'ncurses' # R
-  depends_on 'pcre' # R
+  depends_on 'ncurses' => :executable_only
+  depends_on 'pcre' => :executable_only
   depends_on 'sommelier' => :logical
 
   no_env_options

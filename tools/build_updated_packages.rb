@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# build_updated_packages version 4.8 (for Chromebrew)
+# build_updated_packages version 4.9 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -75,6 +75,13 @@ if argv.length.positive? && !(argv.length == 1 && OPTIONS.include?(argv[0]))
     puts "#{arg} has been added to the list of packages to be checked for updates.".lightblue
   end
 end
+
+# Check env for CREW_ARCH_PACKAGES_ENCODED variable that may have been
+# passed in with encoded package names, as that avoids space in variable
+# name issues when invoking subshells in container start.
+ARCH_PACKAGES_ENCODED = ENV.fetch('CREW_ARCH_PACKAGES_ENCODED', nil)
+ARCH_PACKAGES = ARCH_PACKAGES_ENCODED.nil? || !system('xxd -v &>/dev/null') ? nil : `echo #{ARCH_PACKAGES_ENCODED} | xxd -ps -r`.chomp
+ARCH_PACKAGES&.split { updated_packages.push "packages/#{it}.rb" if File.exist?(File.join(crew_local_repo_root, "packages/#{it}.rb")) }
 
 build = {}
 

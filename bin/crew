@@ -2080,7 +2080,7 @@ def install_command(args)
     # postinstall from being run for an already installed package.
     if !@pkg_name.start_with?('ruby_') && @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg_name }
       puts "Package #{@pkg_name} already installed, skipping...".lightgreen
-      next unless Command.check(name, @opt_force)
+      next
     end
     next unless Command.check(name, @opt_force)
     search @pkg_name

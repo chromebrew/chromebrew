@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Fastfetch < CMake
   description 'Like Neofetch, but much faster because written in C'
   homepage 'https://github.com/fastfetch-cli/fastfetch'
-  version '2.58.0'
+  version '2.59.0'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/fastfetch-cli/fastfetch.git'
@@ -14,16 +14,16 @@ class Fastfetch < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8700ca3a39385052a207dcdac0e874982676ca1a003ca341ffbe899223d47145',
-     armv7l: '8700ca3a39385052a207dcdac0e874982676ca1a003ca341ffbe899223d47145',
-     x86_64: 'f6e852669d064caa309286c4a28db5906425bf5b02ae4bb0585fa682fe81a98e'
+    aarch64: 'c4da9079902e215d73e79b5716f7a0fa0826ec0e1aeaa93a3a0d9fa43a7e372f',
+     armv7l: 'c4da9079902e215d73e79b5716f7a0fa0826ec0e1aeaa93a3a0d9fa43a7e372f',
+     x86_64: '763553c014ee786da7e73355a6150119f8ad80db49939e97f26d7b64591ae9bc'
   })
 
   depends_on 'chafa' => :build
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :executable_only
   depends_on 'sqlite' => :build
-  depends_on 'yyjson' # R
+  depends_on 'yyjson' => :executable_only
 
   cmake_options "-DENABLE_SYSTEM_YYJSON=ON \
     -DINSTALL_LICENSE=OFF"

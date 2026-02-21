@@ -17,6 +17,6 @@ class Acl < Autotools
      x86_64: 'e5b1beae3754bae84e18928c85a6c1c28ee196f387299b51f4cd2ea91dc09645'
   })
 
-  depends_on 'attr'
+  depends_on 'attr' # R
   depends_on 'glibc' # R
 end

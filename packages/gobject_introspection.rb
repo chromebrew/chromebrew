@@ -17,7 +17,8 @@ class Gobject_introspection < Meson
   })
 
   depends_on 'gcc_lib' # R
-  depends_on 'glib' # R
+  depends_on 'glib' => :logical
+  depends_on 'glib_stub' => :build
   depends_on 'glibc' # R
   depends_on 'libffi' # R
   depends_on 'py3_setuptools' => :build

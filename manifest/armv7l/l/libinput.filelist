@@ -1,4 +1,4 @@
-# Total size: 1019349
+# Total size: 1034937
 /usr/local/bin/libinput
 /usr/local/include/libinput.h
 /usr/local/lib/libinput.so
@@ -40,8 +40,9 @@
 /usr/local/share/libinput/30-vendor-cypress.quirks
 /usr/local/share/libinput/30-vendor-elantech.quirks
 /usr/local/share/libinput/30-vendor-glorious.quirks
+/usr/local/share/libinput/30-vendor-goodix.quirks
+/usr/local/share/libinput/30-vendor-hantick.quirks
 /usr/local/share/libinput/30-vendor-huion.quirks
-/usr/local/share/libinput/30-vendor-ibm.quirks
 /usr/local/share/libinput/30-vendor-ite.quirks
 /usr/local/share/libinput/30-vendor-kensington.quirks
 /usr/local/share/libinput/30-vendor-logitech.quirks
@@ -49,18 +50,16 @@
 /usr/local/share/libinput/30-vendor-microsoft.quirks
 /usr/local/share/libinput/30-vendor-nulea.quirks
 /usr/local/share/libinput/30-vendor-oracle.quirks
+/usr/local/share/libinput/30-vendor-pixart.quirks
 /usr/local/share/libinput/30-vendor-qemu.quirks
 /usr/local/share/libinput/30-vendor-razer.quirks
 /usr/local/share/libinput/30-vendor-synaptics.quirks
 /usr/local/share/libinput/30-vendor-trust.quirks
-/usr/local/share/libinput/30-vendor-uniwill.quirks
 /usr/local/share/libinput/30-vendor-vmware.quirks
 /usr/local/share/libinput/30-vendor-wacom.quirks
 /usr/local/share/libinput/50-system-acer.quirks
 /usr/local/share/libinput/50-system-apple.quirks
 /usr/local/share/libinput/50-system-asus.quirks
-/usr/local/share/libinput/50-system-chicony.quirks
-/usr/local/share/libinput/50-system-chuwi.quirks
 /usr/local/share/libinput/50-system-cyborg.quirks
 /usr/local/share/libinput/50-system-dell.quirks
 /usr/local/share/libinput/50-system-framework.quirks
@@ -79,9 +78,7 @@
 /usr/local/share/libinput/50-system-sony.quirks
 /usr/local/share/libinput/50-system-starlabs.quirks
 /usr/local/share/libinput/50-system-system76.quirks
-/usr/local/share/libinput/50-system-tongfang.quirks
 /usr/local/share/libinput/50-system-toshiba.quirks
-/usr/local/share/libinput/50-system-vaio.quirks
 /usr/local/share/man/man1/libinput-analyze-buttons.1.zst
 /usr/local/share/man/man1/libinput-analyze-per-slot-delta.1.zst
 /usr/local/share/man/man1/libinput-analyze-recording.1.zst

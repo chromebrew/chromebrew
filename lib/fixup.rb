@@ -132,6 +132,7 @@ deprecated_packages = Set[
   { pkg_name: 'gnome_settings_daemon', comments: 'No longer compatible with any architecture, requires systemd.' },
   { pkg_name: 'gnome_shell', comments: 'No longer compatible with any architecture, requires systemd.' },
   { pkg_name: 'gnome_tweaks', comments: 'No longer compatible with any architecture, requires systemd in dep package gnome_settings_daemon.' },
+  { pkg_name: 'gst_editing_services', comments: 'No other packages depend on it and most of the files are already available in gstreamer.' },
   { pkg_name: 'ilmbase', comments: 'Included in openexr.' },
   { pkg_name: 'imagemagick6', comments: 'Obsolete version of package, no longer required.' },
   { pkg_name: 'imagemagick', comments: 'Metapackage made redundant by the removal of imagemagick6.' },

@@ -1,12 +1,12 @@
-# Total size: 6900660
+# Total size: 6765846
 /usr/local/bin/virtualenv
-/usr/local/lib/python3.14/site-packages/virtualenv-20.36.1.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/virtualenv-20.36.1.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/virtualenv-20.36.1.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/virtualenv-20.36.1.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/virtualenv-20.36.1.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/virtualenv-20.36.1.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/virtualenv-20.36.1.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/virtualenv-20.38.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/virtualenv-20.38.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/virtualenv-20.38.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/virtualenv-20.38.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/virtualenv-20.38.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/virtualenv-20.38.0.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/virtualenv-20.38.0.dist-info/licenses/LICENSE
 /usr/local/lib/python3.14/site-packages/virtualenv/__init__.py
 /usr/local/lib/python3.14/site-packages/virtualenv/__main__.py
 /usr/local/lib/python3.14/site-packages/virtualenv/__pycache__/__init__.cpython-314.pyc
@@ -179,9 +179,9 @@
 /usr/local/lib/python3.14/site-packages/virtualenv/seed/wheels/embed/__init__.py
 /usr/local/lib/python3.14/site-packages/virtualenv/seed/wheels/embed/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/virtualenv/seed/wheels/embed/pip-25.0.1-py3-none-any.whl
-/usr/local/lib/python3.14/site-packages/virtualenv/seed/wheels/embed/pip-25.3-py3-none-any.whl
-/usr/local/lib/python3.14/site-packages/virtualenv/seed/wheels/embed/setuptools-75.3.2-py3-none-any.whl
-/usr/local/lib/python3.14/site-packages/virtualenv/seed/wheels/embed/setuptools-80.9.0-py3-none-any.whl
+/usr/local/lib/python3.14/site-packages/virtualenv/seed/wheels/embed/pip-26.0.1-py3-none-any.whl
+/usr/local/lib/python3.14/site-packages/virtualenv/seed/wheels/embed/setuptools-75.3.4-py3-none-any.whl
+/usr/local/lib/python3.14/site-packages/virtualenv/seed/wheels/embed/setuptools-82.0.0-py3-none-any.whl
 /usr/local/lib/python3.14/site-packages/virtualenv/seed/wheels/embed/wheel-0.45.1-py3-none-any.whl
 /usr/local/lib/python3.14/site-packages/virtualenv/seed/wheels/periodic_update.py
 /usr/local/lib/python3.14/site-packages/virtualenv/seed/wheels/util.py
