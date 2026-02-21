@@ -11,13 +11,13 @@ class Fzf < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '135739dc22d8c6a621ccfeb57d76cdacfe437d98a4932a76d41437df01ed2481',
-     armv7l: '135739dc22d8c6a621ccfeb57d76cdacfe437d98a4932a76d41437df01ed2481',
-       i686: '508e3e147c49cf56ab86e6399253de04dab66051eb4674621eec2b0b58e10af9',
-     x86_64: '9eec396e22ab6a047ee7269c2f8f448aeb6804edd559a893aa148febd6fcacc8'
+    aarch64: '205e977bd185b7bd2724a6fe33b23971fade3ad917cc7abfc007989dbeb408e7',
+     armv7l: '205e977bd185b7bd2724a6fe33b23971fade3ad917cc7abfc007989dbeb408e7',
+       i686: 'ce93e5d09b1c4b6a6b154dc19ee1c0271a0993553174d07cb92ff14fdb3372de',
+     x86_64: '63622780c2de36bb36c5c5ea7208b234d2060ccdd4cc09cf38c2890a8925e03b'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :executable_only
   depends_on 'go' => :build
   depends_on 'tmux' # R - Needed for tmux integration
 
