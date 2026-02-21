@@ -3,7 +3,7 @@ require 'package'
 class Github_cli < Package
   description 'Official Github CLI tool'
   homepage 'https://cli.github.com/'
-  version '2.87.0'
+  version '2.87.2'
   license 'MIT'
   compatibility 'all'
   source_url({
@@ -13,10 +13,10 @@ class Github_cli < Package
      x86_64: "https://github.com/cli/cli/releases/download/v#{version}/gh_#{version}_linux_amd64.tar.gz"
   })
   source_sha256({
-    aarch64: '91757b5b2442cd1384d448ceee2cced1bdd910dade601c4040a0cd2cee450090',
-     armv7l: '91757b5b2442cd1384d448ceee2cced1bdd910dade601c4040a0cd2cee450090',
-       i686: '20e814b53e10ca5bd1ae162f10d207214ee257fcc60938da8902d2a67d521409',
-     x86_64: '5f461c1dc2b80483ea5617f9253d591fb427b3ecfdd69c69089e1ee6156dc234'
+    aarch64: 'd2f644f3236b9e2586b35034e09e98d2187693169a2c19cf65facd098d14e629',
+     armv7l: 'd2f644f3236b9e2586b35034e09e98d2187693169a2c19cf65facd098d14e629',
+       i686: 'c3eeee50b038fce1f2454a0413b0ee4d257d7a3926507890adbee2199e2faacf',
+     x86_64: '18360b2243e3bf9c1457035db45f6400ae4cf957dcc2f674e69717b4e0b14d55'
   })
 
   no_compile_needed
