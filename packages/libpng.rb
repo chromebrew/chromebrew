@@ -18,7 +18,7 @@ class Libpng < CMake
   })
 
   depends_on 'glibc' # R
-  depends_on 'zlib'
+  depends_on 'zlib' # R
 
   gnome
 

@@ -20,8 +20,8 @@ class Grep < Autotools
      x86_64: '81670d54d70bebb2d2d0ae78016603838cb86d28dc844916f8b3d72d994504a0'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'pcre2' # R
+  depends_on 'glibc' => :executable_only
+  depends_on 'pcre2' => :executable_only
 
   # NOTE: built on i686 by removing the c11threads derived threads.h
   # installed by the chromebrew glibc package on this architecture.

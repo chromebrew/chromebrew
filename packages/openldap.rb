@@ -23,7 +23,7 @@ class Openldap < Autotools
   depends_on 'krb5' => :build
   depends_on 'libcyrussasl' # R
   depends_on 'openssl' # R
-  depends_on 'util_linux' # R
+  depends_on 'util_linux' => :executable_only
 
   autotools_configure_options '--disable-slapd'
 end

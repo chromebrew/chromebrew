@@ -20,7 +20,7 @@ class Zlib_ng < CMake
      x86_64: 'd5c15197063e01ac52cfcc13d00c2114f6a52a21ee202072def770ff29b40d34'
   })
 
-  depends_on 'glibc'
+  depends_on 'glibc' # R
 
   cmake_options '-DWITH_GTEST=OFF \
     -DZLIB_ENABLE_TESTS=OFF \

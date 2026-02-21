@@ -18,9 +18,9 @@ class Elfutils < Autotools
   })
 
   depends_on 'bzip2' # R
-  depends_on 'gcc_lib' # R
+  depends_on 'gcc_lib' => :executable_only
   depends_on 'glibc' # R
-  depends_on 'libarchive' # R
+  depends_on 'libarchive' => :executable_only
   depends_on 'xzutils' # R
   depends_on 'zlib' # R
   depends_on 'zstd' # R

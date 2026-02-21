@@ -19,7 +19,7 @@ class Pcre < Autotools
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'readline' # R
+  depends_on 'readline' => :executable_only
 
   autotools_configure_options '--enable-shared \
       --with-pic \

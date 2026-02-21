@@ -1,4 +1,4 @@
-# Total size: 29114066
+# Total size: 29119851
 /usr/local/etc/vimrc
 /usr/local/share/vim/vim92/LICENSE
 /usr/local/share/vim/vim92/README.txt
@@ -1343,6 +1343,7 @@
 /usr/local/share/vim/vim92/syntax/elinks.vim
 /usr/local/share/vim/vim92/syntax/elm.vim
 /usr/local/share/vim/vim92/syntax/elmfilt.vim
+/usr/local/share/vim/vim92/syntax/env.vim
 /usr/local/share/vim/vim92/syntax/erlang.vim
 /usr/local/share/vim/vim92/syntax/eruby.vim
 /usr/local/share/vim/vim92/syntax/esmtprc.vim
@@ -2029,4 +2030,5 @@
 /usr/local/share/vim/vim92/tutor/tutor2.sr
 /usr/local/share/vim/vim92/tutor/tutor2.sv
 /usr/local/share/vim/vim92/vimrc_example.vim
+/usr/local/share/vim/vim92/xdg.vim
 /usr/local/share/vim/vimfiles/chromebrew.vim

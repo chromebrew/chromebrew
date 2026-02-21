@@ -17,15 +17,15 @@ class Rsync < Autotools
      x86_64: 'e1cf690b2a42be06b5d85d40cbf1fede1b1f15a70f783578742e38bd2f3b2c23'
   })
 
-  depends_on 'acl' # R
-  depends_on 'attr' # R
-  depends_on 'glibc' # R
-  depends_on 'lz4' # R
-  depends_on 'openssl' # R
-  depends_on 'popt' # R
+  depends_on 'acl' => :executable_only
+  depends_on 'attr' => :executable_only
+  depends_on 'glibc' => :executable_only
+  depends_on 'lz4' => :executable_only
+  depends_on 'openssl' => :executable_only
+  depends_on 'popt' => :executable_only
   depends_on 'py3_cmarkgfm' => :build
-  depends_on 'xxhash' # R
-  depends_on 'zstd' # R
+  depends_on 'xxhash' => :executable_only
+  depends_on 'zstd' => :executable_only
 
   no_patchelf
 
