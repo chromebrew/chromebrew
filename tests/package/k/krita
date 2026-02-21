@@ -1,0 +1,3 @@
+#!/bin/bash
+krita -h 2>&1 | head
+krita -v 2>&1
