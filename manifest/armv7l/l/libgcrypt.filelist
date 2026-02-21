@@ -1,4 +1,4 @@
-# Total size: 8750861
+# Total size: 8253801
 /usr/local/bin/dumpsexp
 /usr/local/bin/hmac256
 /usr/local/bin/mpicalc
@@ -7,7 +7,7 @@
 /usr/local/lib/libgcrypt.la
 /usr/local/lib/libgcrypt.so
 /usr/local/lib/libgcrypt.so.20
-/usr/local/lib/libgcrypt.so.20.7.0
+/usr/local/lib/libgcrypt.so.20.7.1
 /usr/local/lib/pkgconfig/libgcrypt.pc
 /usr/local/share/aclocal/libgcrypt.m4
 /usr/local/share/info/gcrypt.info-1.zst

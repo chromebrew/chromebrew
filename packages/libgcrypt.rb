@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Libgcrypt < Autotools
   description 'Libgcrypt is a general purpose cryptographic library originally based on code from GnuPG.'
   homepage 'https://www.gnupg.org/related_software/libgcrypt/index.html'
-  version '1.12.0'
+  version '1.12.1'
   license 'LGPL-2.1 and MIT'
   compatibility 'all'
   source_url "https://www.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-#{version}.tar.bz2"
-  source_sha256 '0311454e678189bad62a7e9402a9dd793025efff6e7449898616e2fc75e0f4f5'
+  source_sha256 '7df5c08d952ba33f9b6bdabdb06a61a78b2cf62d2122c2d1d03a91a79832aa3c'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'dae4b0c147f31a1b0663c5619eebe0c0aa991e17f5d591ba0c0ca4f00c04e925',
-     armv7l: 'dae4b0c147f31a1b0663c5619eebe0c0aa991e17f5d591ba0c0ca4f00c04e925',
-       i686: 'e9fa488830c0e4b3be75a3bc02cdbd094aa724998ed8c739064948fd65a0a384',
-     x86_64: '01d3540e95234dda997c759e9fa2525cb00037196d62ad3e3a644691015fd32c'
+    aarch64: 'bac670e6614c57a9c467c059c0e5e52f3e12d882f900e0256c202d01a402fd4a',
+     armv7l: 'bac670e6614c57a9c467c059c0e5e52f3e12d882f900e0256c202d01a402fd4a',
+       i686: 'a5745ee7c26b23c7446d8bb8e0a30c21d1ff13681ccd6b4452d3860b57edcc91',
+     x86_64: 'e33abf8a01b97d6bee3cf233eb2a734803942cf914f41d7af998f78365c15a93'
   })
 
   depends_on 'gcc_lib' # R
