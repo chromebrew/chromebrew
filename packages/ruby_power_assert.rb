@@ -10,4 +10,5 @@ class Ruby_power_assert < RUBY
 
   conflicts_ok
   no_compile_needed
+  upstream_name 'power_assert'
 end
