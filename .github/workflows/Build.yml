@@ -131,8 +131,8 @@ jobs:
       - name: Export variables to github context
         id: changed-packages
         run: |
-            # Add ${{ inputs.packages_to_build }} to the packages we
-            # will check for architecture and glibc compatibility.
+            # Add inputs.packages_to_build to the packages we will
+            # check for architecture and glibc compatibility.
             if [[ -z "${{ steps.changed-files.outputs.packages_all_changed_files }} ${{ inputs.packages_to_build }}" ]]; then
               echo "Branch ${{ inputs.branch || github.ref_name }} has no changed package files."
               exit 1
@@ -474,4 +474,4 @@ jobs:
           PR_TITLE: ${{ inputs.pr_title || inputs.branch || github.ref_name }}
         run: |
             echo "PR title being passed to the Generate PR workflow is: ${{ inputs.pr_title || inputs.branch || github.ref_name }}"
-            gh workflow run Generate-PR.yml -R ${{ github.repository }} -r ${{ inputs.branch || github.ref_name }} -f branch="${{ inputs.branch || github.ref_name }}" -f pr_label="${{ inputs.pr_label }}" -f draft_pr="${{ github.event.inputs.with_pr == 'Draft Pull Request' }}" -f pr_title="$(echo "${{ inputs.pr_title || inputs.branch || github.ref_name }}" | ( read -rsd '' x; echo ${x@Q} ))"
+            gh workflow run Generate-PR.yml -R ${{ github.repository }} -r ${{ inputs.branch || github.ref_name }} -f branch="${{ inputs.branch || github.ref_name }}" -f packages_to_check_for_build="${{ inputs.packages_to_build }}" -f pr_label="${{ inputs.pr_label }}" -f draft_pr="${{ github.event.inputs.with_pr == 'Draft Pull Request' }}" -f pr_title="$(echo "${{ inputs.pr_title || inputs.branch || github.ref_name }}" | ( read -rsd '' x; echo ${x@Q} ))"
