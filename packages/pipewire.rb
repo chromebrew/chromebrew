@@ -8,7 +8,7 @@ class Pipewire < Meson
   elsif Gem::Version.new(CREW_KERNEL_VERSION.to_s) <= Gem::Version.new('5.4') || Gem::Version.new(LIBC_VERSION) < Gem::Version.new('2.32')
     version '0.3.60'
   else
-    version '1.2.6'
+    version '1.6.0'
     min_glibc '2.32'
   end
   compatibility 'aarch64 armv7l x86_64'
