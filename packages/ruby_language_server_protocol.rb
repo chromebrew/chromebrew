@@ -10,5 +10,4 @@ class Ruby_language_server_protocol < RUBY
 
   conflicts_ok
   no_compile_needed
-  upstream_name 'language_server-protocol'
 end

@@ -12,5 +12,4 @@ class Ruby_unicode_display_width < RUBY
 
   conflicts_ok
   no_compile_needed
-  upstream_name 'unicode-display_width'
 end

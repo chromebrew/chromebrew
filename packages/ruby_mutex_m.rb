@@ -10,5 +10,4 @@ class Ruby_mutex_m < RUBY
 
   conflicts_ok
   no_compile_needed
-  upstream_name 'mutex_m'
 end

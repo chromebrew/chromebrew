@@ -21,5 +21,4 @@ class Ruby_jaro_winkler < RUBY
 
   conflicts_ok
   gem_compile_needed
-  upstream_name 'jaro_winkler'
 end

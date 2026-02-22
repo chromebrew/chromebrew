@@ -13,5 +13,4 @@ class Ruby_repl_type_completor < RUBY
 
   conflicts_ok
   no_compile_needed
-  upstream_name 'repl_type_completor'
 end

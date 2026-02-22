@@ -12,5 +12,4 @@ class Ruby_multi_xml < RUBY
 
   conflicts_ok
   no_compile_needed
-  upstream_name 'multi_xml'
 end

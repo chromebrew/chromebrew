@@ -10,5 +10,4 @@ class Ruby_mini_mime < RUBY
 
   conflicts_ok
   no_compile_needed
-  upstream_name 'mini_mime'
 end
