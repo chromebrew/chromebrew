@@ -125,7 +125,7 @@ class PackageUtils
     # For example, name 'Ruby_awesome' and version '1.0.0-ruby-3.3'.
 
     # The package name probably just used dashes as separators, but if it didn't then the correct name is in the upstream_name argument.
-    ruby_gem_name = upstream_name.nil? ? passed_name.delete_prefix('Ruby_').gsub('_', '-') : upstream_name
+    ruby_gem_name = upstream_name.nil? ? passed_name.delete_prefix('ruby_').delete_prefix('Ruby_').gsub('_', '-') : upstream_name
 
     ruby_gem_json = JSON.parse(Net::HTTP.get(URI("https://rubygems.org/api/v1/gems/#{ruby_gem_name}.json")))
 
