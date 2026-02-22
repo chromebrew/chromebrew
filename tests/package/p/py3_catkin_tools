@@ -1,0 +1,3 @@
+#!/bin/bash
+catkin -h | head
+catkin --version
