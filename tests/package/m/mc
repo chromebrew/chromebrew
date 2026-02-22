@@ -1,0 +1,3 @@
+#!/bin/bash
+mc -h | head
+mc -V
