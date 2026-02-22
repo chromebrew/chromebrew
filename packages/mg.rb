@@ -1,29 +1,32 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Mg < Package
+class Mg < Autotools
   description 'mg is the portable version of the mg editor from OpenBSD'
   homepage 'https://github.com/hboetes/mg/'
-  version '20170917'
+  version '20250523'
   license 'public-domain'
   compatibility 'all'
   source_url 'https://github.com/hboetes/mg.git'
   git_hashtag version
-  binary_compression 'tar.xz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9c9ee8e796407f78ce16b6f6da3c1faf2d04f1a6691bc2f020cf27258cfd585f',
-     armv7l: '9c9ee8e796407f78ce16b6f6da3c1faf2d04f1a6691bc2f020cf27258cfd585f',
-       i686: '9655b3efbe43f45e6ec46eb9f0ff36727f155e2dce90c5d3b03266b3df1c825c',
-     x86_64: 'b33010e42645f5b311ca7b1ca3dcbab53ad033aab3cedab2ec6a3e73f7a1dafa'
+    aarch64: 'cbb39e5be4fef7fc2f063ddc015583cdee47ade599d8e72a415f417b0db077de',
+     armv7l: 'cbb39e5be4fef7fc2f063ddc015583cdee47ade599d8e72a415f417b0db077de',
+       i686: '753a9de0f056eb3691e9110f8768a8fc415312b2f617492c5a9c22a648d84126',
+     x86_64: '382d1b4e27864d2134737e98d8502ab5bc528587f18af9abe4c126213867a287'
   })
 
-  depends_on 'ncurses'
+  depends_on 'glibc' => :executable_only
+  depends_on 'libbsd' => :executable_only
+  depends_on 'ncurses' => :executable_only
 
-  def self.build
-    system "CFLAGS=-I#{CREW_PREFIX}/include/ncurses make"
-  end
+  autotools_skip_configure
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  autotools_pre_make_options "CFLAGS=-I#{CREW_PREFIX}/include/ncursesw"
+
+  def self.patch
+    # Fix make: /usr/bin/pkg-config: No such file or directory.
+    system "sed -i 's,/usr/bin/pkg-config,#{CREW_PREFIX}/bin/pkg-config,g' GNUmakefile"
   end
 end

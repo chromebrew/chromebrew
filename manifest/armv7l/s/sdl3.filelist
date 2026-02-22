@@ -1,4 +1,4 @@
-# Total size: 6773052
+# Total size: 6790187
 /usr/local/include/SDL3/SDL.h
 /usr/local/include/SDL3/SDL_assert.h
 /usr/local/include/SDL3/SDL_asyncio.h
@@ -94,7 +94,7 @@
 /usr/local/lib/cmake/SDL3/SDL3testTargets.cmake
 /usr/local/lib/libSDL3.so
 /usr/local/lib/libSDL3.so.0
-/usr/local/lib/libSDL3.so.0.4.0
+/usr/local/lib/libSDL3.so.0.4.2
 /usr/local/lib/libSDL3_test.a
 /usr/local/lib/pkgconfig/sdl3.pc
 /usr/local/share/licenses/SDL3/LICENSE.txt

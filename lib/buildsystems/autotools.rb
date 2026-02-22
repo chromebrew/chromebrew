@@ -4,8 +4,8 @@ require_relative '../require_gem'
 require_relative '../report_buildsystem_methods'
 
 class Autotools < Package
-  boolean_property :autotools_make_j1
-  property :autotools_build_relative_dir, :autotools_configure_options, :autotools_configure_modifications, :autotools_install_options, :autotools_pre_configure_options, :autotools_build_extras, :autotools_install_extras
+  boolean_property :autotools_make_j1, :autotools_skip_configure
+  property :autotools_build_relative_dir, :autotools_configure_options, :autotools_configure_modifications, :autotools_install_options, :autotools_pre_configure_options, :autotools_build_extras, :autotools_install_extras, :autotools_pre_make_options
 
   def self.prebuild_config_and_report
     @autotools_build_relative_dir ||= '.'
@@ -21,7 +21,7 @@ class Autotools < Package
   def self.build
     Dir.chdir(@autotools_build_relative_dir) do
       # Some packages, such as ocaml, have a dummy makefile, so check that this is actually a generated makefile.
-      unless File.file?('Makefile') && File.read('Makefile', 500).include?('generated') && CREW_CACHE_BUILD
+      unless @autotools_skip_configure || (File.file?('Makefile') && File.read('Makefile', 500).include?('generated') && CREW_CACHE_BUILD)
         # Run autoreconf if necessary
         unless File.executable? './configure'
           if File.executable? './autogen.sh'
@@ -40,9 +40,9 @@ class Autotools < Package
 
       # Add "-j#" argument to "make" at compile-time, if necessary.
       if @autotools_make_j1
-        system 'make', '-j1'
+        system "#{@autotools_pre_make_options} make -j1"
       else
-        system 'make', '-j', CREW_NPROC
+        system "#{@autotools_pre_make_options} make -j#{CREW_NPROC}"
       end
 
       @autotools_build_extras&.call
