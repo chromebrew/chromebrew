@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Units < Autotools
   description 'GNU Units converts quantities expressed in various systems of measurement to their equivalents in other systems of measurement.'
   homepage 'https://www.gnu.org/software/units/units.html'
-  version '2.24'
+  version '2.25'
   license 'FDL-1.3 and GPL-3'
   compatibility 'all'
   source_url "https://ftp.gnu.org/gnu/units/units-#{version}.tar.gz"
-  source_sha256 '1e502c4edfacf20b29284716c72e5ddb51a495a2365d7b03e7960494c4a0c902'
+  source_sha256 '36edf43ac00b4d6304baea91387e65ab05118bf65c921f73d3b08828e5a6ec0b'
   binary_compression 'tar.zst'
 
   no_fhs
