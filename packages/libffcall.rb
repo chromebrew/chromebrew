@@ -13,9 +13,14 @@ class Libffcall < Autotools
   binary_sha256({
     aarch64: '30ebb220d932b87a34428d3fa6dae866ac5dc417007d223ec7d87cab96b706bf',
      armv7l: '30ebb220d932b87a34428d3fa6dae866ac5dc417007d223ec7d87cab96b706bf',
-       i686: 'a48db57667d8867fa0566372c4177711fd6532199b416ac6874e4a82d1310ad0',
+       i686: '4fda7d35562cd7d18ae14dbb5e089c1b98d215551798572acea2255a53a6f2a3',
      x86_64: '6f0395b9c855cc827bdc35ca351a4dc8367c42a601972b6b6986f7d8cd6277a5'
   })
 
   depends_on 'glibc' # R
+
+  autotools_make_j1
+
+  autotools_configure_options '--with-pic \
+                               --disable-static'
 end
