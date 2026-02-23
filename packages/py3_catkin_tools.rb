@@ -16,7 +16,9 @@ class Py3_catkin_tools < Pip
      x86_64: 'b63a0e417264a860e700afd196ac25224bfd615ac0c2bb3c5969bbbdfa67dff5'
   })
 
+  depends_on 'py3_catkin_pkg'
   depends_on 'py3_nh3'
+  depends_on 'py3_osrf_pycommon'
   depends_on 'python3' => :build
 
   no_source_build
