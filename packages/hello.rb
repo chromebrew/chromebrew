@@ -3,11 +3,11 @@ require 'package'
 class Hello < Package
   description 'GNU Hello is another implementation of the classic program that prints “Hello, world!”'
   homepage 'https://www.gnu.org/software/hello/'
-  version '2.12'
+  version '2.12.2'
   license 'FDL-1.3 GPL-3'
   compatibility 'all'
-  source_url 'https://ftp.gnu.org/gnu/hello/hello-2.12.tar.gz'
-  source_sha256 'cf04af86dc085268c5f4470fbae49b18afbc221b78096aab842d934a76bad0ab'
+  source_url "https://ftp.gnu.org/gnu/hello/hello-#{version}.tar.gz"
+  source_sha256 '5a9a996dc292cc24dcf411cee87e92f6aae5b8d13bd9c6819b4c7a9dce0818ab'
   binary_compression 'tar.zst'
 
   binary_sha256({
