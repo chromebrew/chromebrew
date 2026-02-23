@@ -1,13 +1,13 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libiconv < Package
+class Libiconv < Autotools
   description 'GNU charset conversion library for libc which does not implement it.'
   homepage 'https://www.gnu.org/software/libiconv/'
-  version '1.17'
+  version '1.18'
   license 'LGPL-2+ and GPL-3+'
   compatibility 'all'
-  source_url 'https://ftp.gnu.org/gnu/libiconv/libiconv-1.17.tar.gz'
-  source_sha256 '8f74213b56238c85a50a5329f77e06198771e70dd9a739779f4c02f65d971313'
+  source_url "https://ftp.gnu.org/gnu/libiconv/libiconv-#{version}.tar.gz"
+  source_sha256 '3b08f5f4f9b4eb82f151a7040bfd6fe6c6fb922efe4b1659c66ea933276965e8'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -19,17 +19,12 @@ class Libiconv < Package
 
   depends_on 'glibc' # R
 
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS} \
-        --includedir=#{CREW_PREFIX}/include/gnu-libiconv \
+  autotools_configure_options "--includedir=#{CREW_PREFIX}/include/gnu-libiconv \
         --enable-static \
         --enable-relocatable \
         --enable-extra-encodings"
-    system 'make'
-  end
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  autotools_install_extras do
     FileUtils.mv "#{CREW_DEST_PREFIX}/bin/iconv", "#{CREW_DEST_PREFIX}/bin/gnu-libiconv-iconv"
     FileUtils.mv "#{CREW_DEST_MAN_PREFIX}/man3/iconv_close.3", "#{CREW_DEST_MAN_PREFIX}/man3/gnu-libiconv-iconv_close.3"
     FileUtils.mv "#{CREW_DEST_MAN_PREFIX}/man3/iconv.3", "#{CREW_DEST_MAN_PREFIX}/man3/gnu-libiconv-iconv.3"
