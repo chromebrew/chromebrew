@@ -24,19 +24,22 @@ class Gnuastro < Autotools
   depends_on 'curl' # R
   depends_on 'glibc' # R
   depends_on 'gsl' # R
+  depends_on 'jbigkit' # R
   depends_on 'libcyrussasl' # R
+  depends_on 'libdeflate' # R
   depends_on 'libgit2'
   depends_on 'libidn2' # R
   depends_on 'libjpeg_turbo' # R
   depends_on 'libnghttp2' # R
   depends_on 'libpsl' # R
   depends_on 'libssh' # R
-  depends_on 'libtiff'
+  depends_on 'libtiff' # R
   depends_on 'libunistring' # R
+  depends_on 'libwebp' # R
   depends_on 'openldap' # R
   depends_on 'openssl' # R
   depends_on 'wcslib' # R
-  depends_on 'xzutils'
+  depends_on 'xzutils' # R
   depends_on 'zlib' # R
   depends_on 'zstd' # R
 end
