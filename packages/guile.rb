@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Guile < Autotools
   description 'Guile is designed to help programmers create flexible applications that can be extended by users or other programmers with plug-ins, modules, or scripts.'
   homepage 'http://www.gnu.org/software/guile/'
-  version '3.0.9'
+  version '3.0.11'
   license 'LGPL-3+'
   compatibility 'all'
-  source_url 'https://ftp.gnu.org/gnu/guile/guile-3.0.9.tar.xz'
-  source_sha256 '1a2625ac72b2366e95792f3fe758fd2df775b4044a90a4a9787326e66c0d750d'
+  source_url "https://ftp.gnu.org/gnu/guile/guile-#{version}.tar.xz"
+  source_sha256 '818c79d236657a7fa96fb364137cc7b41b3bdee0d65c6174ca03769559579460'
   binary_compression 'tar.zst'
 
   binary_sha256({
