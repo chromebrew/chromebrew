@@ -8,7 +8,7 @@ class Automake < Autotools
   compatibility 'all'
   source_url 'https://https.git.savannah.gnu.org/git/automake.git'
   git_hashtag "v#{version}"
-  # source_url "https://ftpmirror.gnu.org/gnu/automake/automake-#{version}.tar.xz"
+  # source_url "https://ftp.gnu.org/gnu/gnu/automake/automake-#{version}.tar.xz"
   # source_sha256 '5bdccca96b007a7e344c24204b9b9ac12ecd17f5971931a9063bdee4887f4aaf'
   binary_compression 'tar.zst'
 

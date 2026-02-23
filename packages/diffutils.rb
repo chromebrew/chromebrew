@@ -9,7 +9,7 @@ class Diffutils < Autotools
   source_url 'https://git.savannah.gnu.org/git/diffutils.git'
   git_hashtag '25919920377f08d6f09df804c7f8af11f5adaabe'
   # git_hashtag "v#{version.split('-').first}"
-  # source_url "https://ftpmirror.gnu.org/diffutils/diffutils-#{version.split('-').first}.tar.xz"
+  # source_url "https://ftp.gnu.org/gnu/diffutils/diffutils-#{version.split('-').first}.tar.xz"
   # source_sha256 '7c8b7f9fc8609141fdea9cece85249d308624391ff61dedaf528fcb337727dfd'
   binary_compression 'tar.zst'
 

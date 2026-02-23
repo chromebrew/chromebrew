@@ -6,7 +6,7 @@ class Glpk < Package
   version '5.0'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/glpk/glpk-5.0.tar.gz'
+  source_url 'https://ftp.gnu.org/gnu/glpk/glpk-5.0.tar.gz'
   source_sha256 '4a1013eebb50f728fc601bdd833b0b2870333c3b3e5a816eeba921d95bec6f15'
   binary_compression 'tar.zst'
 

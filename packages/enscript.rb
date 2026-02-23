@@ -6,7 +6,7 @@ class Enscript < Package
   version '1.6.6'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/enscript/enscript-1.6.6.tar.gz'
+  source_url 'https://ftp.gnu.org/gnu/enscript/enscript-1.6.6.tar.gz'
   source_sha256 '6d56bada6934d055b34b6c90399aa85975e66457ac5bf513427ae7fc77f5c0bb'
   binary_compression 'tar.xz'
 

@@ -6,7 +6,7 @@ class Libmicrohttpd < Autotools
   version '1.0.2'
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/libmicrohttpd/libmicrohttpd-#{version}.tar.gz"
+  source_url "https://ftp.gnu.org/gnu/libmicrohttpd/libmicrohttpd-#{version}.tar.gz"
   source_sha256 'df324fcd0834175dab07483133902d9774a605bfa298025f69883288fd20a8c7'
   binary_compression 'tar.zst'
 

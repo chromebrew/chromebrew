@@ -6,7 +6,7 @@ class Gzip < Autotools
   version '1.14'
   compatibility 'all'
   license 'GPL-3'
-  source_url "https://ftpmirror.gnu.org/gzip/gzip-#{version}.tar.xz"
+  source_url "https://ftp.gnu.org/gnu/gzip/gzip-#{version}.tar.xz"
   source_sha256 '01a7b881bd220bfdf615f97b8718f80bdfd3f6add385b993dcf6efd14e8c0ac6'
   binary_compression 'tar.zst'
 

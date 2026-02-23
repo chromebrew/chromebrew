@@ -6,7 +6,7 @@ class Gnuastro < Autotools
   version '0.21'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/gnuastro/gnuastro-0.21.tar.gz'
+  source_url 'https://ftp.gnu.org/gnu/gnuastro/gnuastro-0.21.tar.gz'
   source_sha256 '2fba993d8422391517b55f7eb511788946d7a886aa1584984fd4678bdd27537f'
   binary_compression 'tar.zst'
 

@@ -6,7 +6,7 @@ class Ddrescue < Autotools
   version '1.30'
   license 'GPL-2+'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/ddrescue/ddrescue-#{version}.tar.lz"
+  source_url "https://ftp.gnu.org/gnu/ddrescue/ddrescue-#{version}.tar.lz"
   source_sha256 '2264622d309d6c87a1cfc19148292b8859a688e9bc02d4702f5cd4f288745542'
   binary_compression 'tar.zst'
 

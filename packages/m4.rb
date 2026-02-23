@@ -6,7 +6,7 @@ class M4 < Autotools
   version '1.4.21'
   license 'GPL-3'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/gnu/m4/m4-#{version.split('-').first}.tar.xz"
+  source_url "https://ftp.gnu.org/gnu/gnu/m4/m4-#{version.split('-').first}.tar.xz"
   source_sha256 '664f2b1654c363a6348b688d5d475ed9ec0e7ef3c72f6f315f37fe97a2fe63eb'
   binary_compression 'tar.zst'
 

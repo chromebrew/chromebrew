@@ -6,7 +6,7 @@ class Libffcall < Package
   version '2.0'
   license 'GPL-3+'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/libffcall/libffcall-2.0.tar.gz'
+  source_url 'https://ftp.gnu.org/gnu/libffcall/libffcall-2.0.tar.gz'
   source_sha256 '41aad2b449d90a5308e72267829db006dc9f9cc8736807082e1f2daef680196c'
   binary_compression 'tar.xz'
 

@@ -6,7 +6,7 @@ class Wdiff < Package
   version '1.2.2'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/wdiff/wdiff-1.2.2.tar.gz'
+  source_url 'https://ftp.gnu.org/gnu/wdiff/wdiff-1.2.2.tar.gz'
   source_sha256 '34ff698c870c87e6e47a838eeaaae729fa73349139fc8db12211d2a22b78af6b'
   binary_compression 'tar.xz'
 

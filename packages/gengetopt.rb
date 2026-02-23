@@ -6,7 +6,7 @@ class Gengetopt < Autotools
   version '2.23'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/gengetopt/gengetopt-2.23.tar.xz'
+  source_url 'https://ftp.gnu.org/gnu/gengetopt/gengetopt-2.23.tar.xz'
   source_sha256 'b941aec9011864978dd7fdeb052b1943535824169d2aa2b0e7eae9ab807584ac'
   binary_compression 'tar.zst'
 

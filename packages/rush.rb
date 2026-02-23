@@ -6,7 +6,7 @@ class Rush < Autotools
   version '2.4'
   license 'GPL-3'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/rush/rush-#{version}.tar.xz"
+  source_url "https://ftp.gnu.org/gnu/rush/rush-#{version}.tar.xz"
   source_sha256 'fa95af9d2c7b635581841cc27a1d27af611f60dd962113a93d23a8874aa060f4'
   binary_compression 'tar.zst'
 

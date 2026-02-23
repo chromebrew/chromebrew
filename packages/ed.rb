@@ -6,7 +6,7 @@ class Ed < Package
   version '1.15'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/ed/ed-1.15.tar.lz'
+  source_url 'https://ftp.gnu.org/gnu/ed/ed-1.15.tar.lz'
   source_sha256 'ad4489c0ad7a108c514262da28e6c2a426946fb408a3977ef1ed34308bdfd174'
   binary_compression 'tar.xz'
 

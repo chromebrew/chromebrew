@@ -6,7 +6,7 @@ class Units < Autotools
   version '2.24'
   license 'FDL-1.3 and GPL-3'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/units/units-#{version}.tar.gz"
+  source_url "https://ftp.gnu.org/gnu/units/units-#{version}.tar.gz"
   source_sha256 '1e502c4edfacf20b29284716c72e5ddb51a495a2365d7b03e7960494c4a0c902'
   binary_compression 'tar.zst'
 

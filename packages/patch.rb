@@ -6,7 +6,7 @@ class Patch < Autotools
   version '2.8'
   license 'GPL-3+'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/patch/patch-#{version}.tar.xz"
+  source_url "https://ftp.gnu.org/gnu/patch/patch-#{version}.tar.xz"
   source_sha256 'f87cee69eec2b4fcbf60a396b030ad6aa3415f192aa5f7ee84cad5e11f7f5ae3'
   binary_compression 'tar.zst'
 

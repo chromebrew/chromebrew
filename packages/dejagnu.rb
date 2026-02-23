@@ -6,7 +6,7 @@ class Dejagnu < Autotools
   version '1.6.3'
   license 'GPL-3'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/dejagnu/dejagnu-#{version}.tar.gz"
+  source_url "https://ftp.gnu.org/gnu/dejagnu/dejagnu-#{version}.tar.gz"
   source_sha256 'bf5b28bb797e0ace4cfc0766a996339c795d8223bef54158be7887046bc01692'
   binary_compression 'tar.zst'
 

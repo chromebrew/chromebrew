@@ -6,7 +6,7 @@ class Libtool < Package
   version '2.5.4'
   license 'GPL-2'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/libtool/libtool-#{version}.tar.xz"
+  source_url "https://ftp.gnu.org/gnu/libtool/libtool-#{version}.tar.xz"
   source_sha256 'f81f5860666b0bc7d84baddefa60d1cb9fa6fceb2398cc3baca6afaa60266675'
   binary_compression 'tar.zst'
 

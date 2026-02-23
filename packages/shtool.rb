@@ -6,7 +6,7 @@ class Shtool < Package
   version '2.0.8'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/shtool/shtool-2.0.8.tar.gz'
+  source_url 'https://ftp.gnu.org/gnu/shtool/shtool-2.0.8.tar.gz'
   source_sha256 '1298a549416d12af239e9f4e787e6e6509210afb49d5cf28eb6ec4015046ae19'
   binary_compression 'tar.xz'
 

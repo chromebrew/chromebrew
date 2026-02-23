@@ -6,7 +6,7 @@ class Gnuchess < Package
   version '6.2.9'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/chess/gnuchess-6.2.9.tar.gz'
+  source_url 'https://ftp.gnu.org/gnu/chess/gnuchess-6.2.9.tar.gz'
   source_sha256 'ddfcc20bdd756900a9ab6c42c7daf90a2893bf7f19ce347420ce36baebc41890'
   binary_compression 'tpxz'
 

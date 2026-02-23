@@ -7,7 +7,7 @@ class Musl_libidn2 < Package
   version "#{@_ver}-3"
   license 'GPL-2+ and LGPL-3+'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/libidn/libidn2-#{@_ver}.tar.gz"
+  source_url "https://ftp.gnu.org/gnu/libidn/libidn2-#{@_ver}.tar.gz"
   source_sha256 '76940cd4e778e8093579a9d195b25fff5e936e9dc6242068528b437a76764f91'
   binary_compression 'tar.zst'
 

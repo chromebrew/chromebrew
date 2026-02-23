@@ -12,7 +12,7 @@ unless CREW_PRE_GLIBC_STANDALONE
     compatibility 'all'
     source_url 'https://sourceware.org/git/glibc.git'
     git_hashtag '515d4166f4dbcf43b1568e3f63a19d9a92b2d50e' # Build from latest commit in the stable branch.
-    # source_url "https://ftpmirror.gnu.org/glibc/glibc-#{version.partition('-')[0]}.tar.xz"
+    # source_url "https://ftp.gnu.org/gnu/glibc/glibc-#{version.partition('-')[0]}.tar.xz"
     # source_sha256 'a5a26b22f545d6b7d7b3dd828e11e428f24f4fac43c934fb071b6a7d0828e901'
     binary_compression 'tar.zst'
 
