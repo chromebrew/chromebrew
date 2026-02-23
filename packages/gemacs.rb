@@ -29,6 +29,7 @@ class Gemacs < Package
   depends_on 'gdk_pixbuf' => :executable_only
   depends_on 'giflib' => :executable_only
   depends_on 'glib' => :executable_only
+  depends_on 'glibc' # R
   depends_on 'glibc' => :executable_only
   depends_on 'gmp' => :executable_only
   depends_on 'gnutls' => :executable_only

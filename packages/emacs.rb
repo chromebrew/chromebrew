@@ -20,6 +20,7 @@ class Emacs < Package
   depends_on 'acl' => :executable_only
   depends_on 'alsa_lib' => :executable_only
   depends_on 'dbus' => :executable_only
+  depends_on 'glibc' # R
   depends_on 'glibc' => :executable_only
   depends_on 'gmp' => :executable_only
   depends_on 'gnutls' => :executable_only

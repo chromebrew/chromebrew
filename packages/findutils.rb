@@ -17,6 +17,7 @@ class Findutils < Autotools
      x86_64: 'f0b7307d68f232450f567e914ef515f67325db7276c3775ad701dd545a28b8b9'
   })
 
+  depends_on 'glibc' # R
   depends_on 'glibc' => :executable_only
   depends_on 'python3' => :build
 
