@@ -3,10 +3,10 @@ require 'buildsystems/autotools'
 class Libunistring < Autotools
   description 'A library that provides functions for manipulating Unicode strings and for manipulating C strings according to the Unicode standard.'
   homepage 'https://www.gnu.org/software/libunistring/'
-  version '1.4.1'
+  version '1.4.1-1'
   license 'LGPL-3+ or GPL-2+ and FDL-1.2 or GPL-3+'
   compatibility 'all'
-  source_url "https://ftp.gnu.org/gnu/libunistring/libunistring-#{version}.tar.xz"
+  source_url "https://ftp.gnu.org/gnu/libunistring/libunistring-#{version.split('-').first}.tar.xz"
   source_sha256 '67d88430892527861903788868c77802a217b0959990f7449f2976126a307763'
   binary_compression 'tar.zst'
 
@@ -18,6 +18,7 @@ class Libunistring < Autotools
   })
 
   depends_on 'glibc' # R
+  depends_on 'libiconv' => :build
 
   autotools_configure_options '--enable-static \
       --enable-shared'
