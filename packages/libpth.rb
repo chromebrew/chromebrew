@@ -6,7 +6,7 @@ class Libpth < Package
   version '2.0.7'
   license 'LGPL-2.1+'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/pth/pth-2.0.7.tar.gz'
+  source_url 'https://ftp.gnu.org/gnu/pth/pth-2.0.7.tar.gz'
   source_sha256 '72353660c5a2caafd601b20e12e75d865fd88f6cf1a088b306a3963f0bc77232'
   binary_compression 'tar.xz'
 
@@ -16,6 +16,8 @@ class Libpth < Package
        i686: '49344c2b2eafe8f4490b94bed951b8e7eb31bb45c358d21f531fcd9741e412c6',
      x86_64: 'b82687dc8d4525dd8deee18576ae9ffbb149c2a7a378de68db60fd12de3f6b12'
   })
+
+  depends_on 'glibc' # R
 
   def self.build
     system './configure',

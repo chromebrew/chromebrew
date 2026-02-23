@@ -6,7 +6,7 @@ class Parted < Autotools
   version '3.6-2'
   license 'GPL-3'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/parted/parted-#{version.split('-').first}.tar.xz"
+  source_url "https://ftp.gnu.org/gnu/parted/parted-#{version.split('-').first}.tar.xz"
   source_sha256 '3b43dbe33cca0f9a18601ebab56b7852b128ec1a3df3a9b30ccde5e73359e612'
   binary_compression 'tar.zst'
 
@@ -19,7 +19,7 @@ class Parted < Autotools
 
   depends_on 'glibc' # R
   depends_on 'lvm2' # R
-  depends_on 'ncurses' # R
-  depends_on 'readline' # R
+  depends_on 'ncurses' => :executable_only
+  depends_on 'readline' => :executable_only
   depends_on 'util_linux' # R
 end

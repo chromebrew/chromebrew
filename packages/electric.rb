@@ -6,7 +6,7 @@ class Electric < Package
   version '9.08'
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
-  source_url "https://ftpmirror.gnu.org/electric/electricBinary-#{version}.jar"
+  source_url "https://ftp.gnu.org/gnu/electric/electricBinary-#{version}.jar"
   source_sha256 '7a8fbe5fac60989659a5197eabb4a1dac53a675adfa12c26c98a7d1089aeeb97'
 
   depends_on 'openjdk17'

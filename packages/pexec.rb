@@ -6,7 +6,7 @@ class Pexec < Package
   version '1.0rc8-1'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/pexec/pexec-1.0rc8.tar.gz'
+  source_url 'https://ftp.gnu.org/gnu/pexec/pexec-1.0rc8.tar.gz'
   source_sha256 'a968e4774eef80b8b1de3c10e6c0ad2ebeeb732b10e438596f110aa6aaf94a64'
   binary_compression 'tar.xz'
 
@@ -17,6 +17,7 @@ class Pexec < Package
      x86_64: '15696468ef1b797e0c77cd0a1ec91766d3890072739514772cdf355124f3a1d3'
   })
 
+  depends_on 'glibc' => :executable_only
   depends_on 'groff'
   depends_on 'help2man'
   depends_on 'texinfo'

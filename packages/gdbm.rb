@@ -6,7 +6,7 @@ class Gdbm < Package
   version '1.26'
   license 'GPL-3'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/gdbm/gdbm-#{version}.tar.gz"
+  source_url "https://ftp.gnu.org/gnu/gdbm/gdbm-#{version}.tar.gz"
   source_sha256 '6a24504a14de4a744103dcb936be976df6fbe88ccff26065e54c1c47946f4a5e'
   binary_compression 'tar.zst'
 

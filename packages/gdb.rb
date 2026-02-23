@@ -9,7 +9,7 @@ class Gdb < Autotools
   version "17.1-#{CREW_GCC_VER}-#{CREW_PY_VER}"
   license 'GPL3'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/gdb/gdb-#{version.split('-').first}.tar.xz"
+  source_url "https://ftp.gnu.org/gnu/gdb/gdb-#{version.split('-').first}.tar.xz"
   source_sha256 '14996f5f74c9f68f5a543fdc45bca7800207f91f92aeea6c2e791822c7c6d876'
   binary_compression 'tar.zst'
 
@@ -20,21 +20,21 @@ class Gdb < Autotools
      x86_64: '4d7587b2b4c4f3c5c89db024d03e7fe7785d6c0d8f93bf74b577d74ac5a7513d'
   })
 
-  depends_on 'binutils' # R
-  depends_on 'boost' # R
+  depends_on 'binutils' => :executable_only
+  depends_on 'boost' => :executable_only
   depends_on 'elfutils' # R
-  depends_on 'expat' # R
-  depends_on 'gcc_lib' # R
+  depends_on 'expat' => :executable_only
+  depends_on 'gcc_lib' => :executable_only
   depends_on 'glibc' # R
-  depends_on 'gmp' # R
-  depends_on 'mpfr' # R
-  depends_on 'ncurses' # R
-  depends_on 'python3' # R
-  depends_on 'readline' # R
-  depends_on 'source_highlight' # R
+  depends_on 'gmp' => :executable_only
+  depends_on 'mpfr' => :executable_only
+  depends_on 'ncurses' => :executable_only
+  depends_on 'python3' => :executable_only
+  depends_on 'readline' => :executable_only
+  depends_on 'source_highlight' => :executable_only
   depends_on 'texinfo' => :build
-  depends_on 'xxhash' # R
-  depends_on 'xzutils' # R
+  depends_on 'xxhash' => :executable_only
+  depends_on 'xzutils' => :executable_only
   depends_on 'zlib' # R
   depends_on 'zstd' # R
 

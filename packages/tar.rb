@@ -6,7 +6,7 @@ class Tar < Autotools
   version '1.35'
   license 'BSD'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/gnu/tar/tar-#{version}.tar.xz"
+  source_url "https://ftp.gnu.org/gnu/gnu/tar/tar-#{version}.tar.xz"
   source_sha256 '4d62ff37342ec7aed748535323930c7cf94acf71c3591882b26a7ea50f3edc16'
   binary_compression 'tar.zst'
 
@@ -18,7 +18,9 @@ class Tar < Autotools
   })
 
   depends_on 'acl' # R
+  depends_on 'acl' => :executable_only
   depends_on 'glibc' # R
+  depends_on 'glibc' => :executable_only
 
   autotools_configure_options '--disable-year2038' unless ARCH == 'x86_64'
 end

@@ -6,7 +6,7 @@ class Ddrescue < Autotools
   version '1.30'
   license 'GPL-2+'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/ddrescue/ddrescue-#{version}.tar.lz"
+  source_url "https://ftp.gnu.org/gnu/ddrescue/ddrescue-#{version}.tar.lz"
   source_sha256 '2264622d309d6c87a1cfc19148292b8859a688e9bc02d4702f5cd4f288745542'
   binary_compression 'tar.zst'
 
@@ -17,8 +17,8 @@ class Ddrescue < Autotools
      x86_64: 'b50c0c067e4ecbc84a9386351e1d281c7cffdb4ab3e2667c2087eafa7f951059'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :executable_only
+  depends_on 'glibc' => :executable_only
 
   autotools_configure_options '--enable-non-posix'
 end

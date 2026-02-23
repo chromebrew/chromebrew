@@ -6,7 +6,7 @@ class Patch < Autotools
   version '2.8'
   license 'GPL-3+'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/patch/patch-#{version}.tar.xz"
+  source_url "https://ftp.gnu.org/gnu/patch/patch-#{version}.tar.xz"
   source_sha256 'f87cee69eec2b4fcbf60a396b030ad6aa3415f192aa5f7ee84cad5e11f7f5ae3'
   binary_compression 'tar.zst'
 
@@ -17,8 +17,8 @@ class Patch < Autotools
      x86_64: 'b6805b38f3cb66882c6ba9d17297b811b625f71e69dec686adb1212f5656b6ea'
   })
 
-  depends_on 'attr' # R
-  depends_on 'glibc' # R
+  depends_on 'attr' => :executable_only
+  depends_on 'glibc' => :executable_only
 
   autotools_configure_options '--disable-year2038' unless ARCH.include?('x86_64')
 

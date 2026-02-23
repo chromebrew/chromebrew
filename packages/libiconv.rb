@@ -6,7 +6,7 @@ class Libiconv < Package
   version '1.17'
   license 'LGPL-2+ and GPL-3+'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/libiconv/libiconv-1.17.tar.gz'
+  source_url 'https://ftp.gnu.org/gnu/libiconv/libiconv-1.17.tar.gz'
   source_sha256 '8f74213b56238c85a50a5329f77e06198771e70dd9a739779f4c02f65d971313'
   binary_compression 'tar.zst'
 
@@ -16,6 +16,8 @@ class Libiconv < Package
        i686: 'd4f65cc6d4a00b825003fc05a2eb847fb650d85d8b9b19094d7cd990055ec464',
      x86_64: '5b6dea457a565ee6fca3346a74d2aab7241c9556a2afab3bcb2accb589d6da92'
   })
+
+  depends_on 'glibc' # R
 
   def self.build
     system "./configure #{CREW_CONFIGURE_OPTIONS} \

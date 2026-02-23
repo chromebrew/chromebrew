@@ -6,7 +6,7 @@ class Libcdio < Package
   version '2.1.0-1'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/libcdio/libcdio-2.1.0.tar.bz2'
+  source_url 'https://ftp.gnu.org/gnu/libcdio/libcdio-2.1.0.tar.bz2'
   source_sha256 '8550e9589dbd594bfac93b81ecf129b1dc9d0d51e90f9696f1b2f9b2af32712b'
   binary_compression 'tar.zst'
 
@@ -19,6 +19,7 @@ class Libcdio < Package
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
+  depends_on 'libcddb' => :executable_only
   depends_on 'libcddb' => :logical
 
   def self.build

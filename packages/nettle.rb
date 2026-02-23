@@ -6,7 +6,7 @@ class Nettle < Autotools
   version '4.0'
   license 'LGPL-3 or LGPL-2.1'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/nettle/nettle-#{version}.tar.gz"
+  source_url "https://ftp.gnu.org/gnu/nettle/nettle-#{version}.tar.gz"
   source_sha256 '55f7d9e99b8e2d4e0e193b2f0275501e6d9c1ebd29cadbea6a0da48a8587e3e0'
   binary_compression 'tar.zst'
 

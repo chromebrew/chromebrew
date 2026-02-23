@@ -1,7 +1,6 @@
-# Total size: 90579
+# Total size: 81175
 /usr/local/bin/ed
 /usr/local/bin/red
-/usr/local/share/info/dir.gz
-/usr/local/share/info/ed.info.gz
-/usr/local/share/man/man1/ed.1.gz
-/usr/local/share/man/man1/red.1.gz
+/usr/local/share/info/ed.info.zst
+/usr/local/share/man/man1/ed.1.zst
+/usr/local/share/man/man1/red.1.zst

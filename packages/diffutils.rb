@@ -9,7 +9,7 @@ class Diffutils < Autotools
   source_url 'https://git.savannah.gnu.org/git/diffutils.git'
   git_hashtag '25919920377f08d6f09df804c7f8af11f5adaabe'
   # git_hashtag "v#{version.split('-').first}"
-  # source_url "https://ftpmirror.gnu.org/diffutils/diffutils-#{version.split('-').first}.tar.xz"
+  # source_url "https://ftp.gnu.org/gnu/diffutils/diffutils-#{version.split('-').first}.tar.xz"
   # source_sha256 '7c8b7f9fc8609141fdea9cece85249d308624391ff61dedaf528fcb337727dfd'
   binary_compression 'tar.zst'
 
@@ -20,7 +20,7 @@ class Diffutils < Autotools
      x86_64: '5bfbb058e3f3ed009066afb381dae0e8c5d7be3f20d9f9d063ad0227f1e62aba'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :executable_only
   depends_on 'gperf' => :build
   depends_on 'libsigsegv' # R
   depends_on 'wget2' => :build

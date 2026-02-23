@@ -9,7 +9,7 @@ class Glibc_build223 < Package
   compatibility 'i686'
   min_glibc version.split('-').first
   max_glibc version.split('-').first
-  source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.23.tar.xz'
+  source_url 'https://ftp.gnu.org/gnu/glibc/glibc-2.23.tar.xz'
   source_sha256 '94efeb00e4603c8546209cefb3e1a50a5315c86fa9b078b6fad758e187ce13e9'
   binary_compression 'tar.zst'
 

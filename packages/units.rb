@@ -6,7 +6,7 @@ class Units < Autotools
   version '2.24'
   license 'FDL-1.3 and GPL-3'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/units/units-#{version}.tar.gz"
+  source_url "https://ftp.gnu.org/gnu/units/units-#{version}.tar.gz"
   source_sha256 '1e502c4edfacf20b29284716c72e5ddb51a495a2365d7b03e7960494c4a0c902'
   binary_compression 'tar.zst'
 
@@ -19,6 +19,6 @@ class Units < Autotools
      x86_64: 'ab4f6ba7b24e47e375f22553251fee588718e7b4f14c32dd0d425b2be1084fa8'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'readline' # R
+  depends_on 'glibc' => :executable_only
+  depends_on 'readline' => :executable_only
 end

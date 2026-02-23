@@ -6,7 +6,7 @@ class Tack < Package
   version '1.08'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/ncurses/tack-1.08.tar.gz'
+  source_url 'https://ftp.gnu.org/gnu/ncurses/tack-1.08.tar.gz'
   source_sha256 '60f8515eed87176e1f74ac81372645df14dcffbf200d778353e56f640d55b1f2'
   binary_compression 'tar.xz'
 
@@ -17,7 +17,9 @@ class Tack < Package
      x86_64: 'c45d3013d0874dd8d6203e4b3871f94b1cc84beb33c5576d3a8d1840e8ccd9f5'
   })
 
+  depends_on 'glibc' => :executable_only
   depends_on 'ncurses'
+  depends_on 'ncurses' => :executable_only
 
   def self.build
     system './configure',

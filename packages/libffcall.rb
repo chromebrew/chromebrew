@@ -6,7 +6,7 @@ class Libffcall < Package
   version '2.0'
   license 'GPL-3+'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/libffcall/libffcall-2.0.tar.gz'
+  source_url 'https://ftp.gnu.org/gnu/libffcall/libffcall-2.0.tar.gz'
   source_sha256 '41aad2b449d90a5308e72267829db006dc9f9cc8736807082e1f2daef680196c'
   binary_compression 'tar.xz'
 
@@ -16,6 +16,8 @@ class Libffcall < Package
        i686: 'a48db57667d8867fa0566372c4177711fd6532199b416ac6874e4a82d1310ad0',
      x86_64: '6f0395b9c855cc827bdc35ca351a4dc8367c42a601972b6b6986f7d8cd6277a5'
   })
+
+  depends_on 'glibc' # R
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} CFLAGS=\" -fPIC\""

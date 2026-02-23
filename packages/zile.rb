@@ -6,7 +6,7 @@ class Zile < Package
   version '2.6.4'
   license 'GPL-3+'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/zile/zile-2.4.14.tar.gz'
+  source_url 'https://ftp.gnu.org/gnu/zile/zile-2.4.14.tar.gz'
   source_sha256 '7a78742795ca32480f2bab697fd5e328618d9997d6f417cf1b14e9da9af26b74'
   binary_compression 'tar.zst'
 
@@ -17,11 +17,12 @@ class Zile < Package
      x86_64: '7e015099074a3376dbea22fa603fc394cafbb03f2116c1c8f523b09c9a25bb16'
   })
 
-  depends_on 'acl' # R
+  depends_on 'acl' => :executable_only
   depends_on 'bdwgc'
-  depends_on 'glibc' # R
+  depends_on 'bdwgc' => :executable_only
+  depends_on 'glibc' => :executable_only
   depends_on 'help2man' => :build
-  depends_on 'ncurses' # R
+  depends_on 'ncurses' => :executable_only
 
   def self.build
     system './configure',

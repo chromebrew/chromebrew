@@ -7,7 +7,7 @@ class Musl_libunistring < Package
   version "#{@_ver}-1"
   license 'LGPL-3+ or GPL-2+ and FDL-1.2 or GPL-3+'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/libunistring/libunistring-1.0.tar.xz'
+  source_url 'https://ftp.gnu.org/gnu/libunistring/libunistring-1.0.tar.xz'
   source_sha256 '5bab55b49f75d77ed26b257997e919b693f29fd4a1bc22e0e6e024c246c72741'
   binary_compression 'tar.zst'
 

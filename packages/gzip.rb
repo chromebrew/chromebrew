@@ -6,7 +6,7 @@ class Gzip < Autotools
   version '1.14'
   compatibility 'all'
   license 'GPL-3'
-  source_url "https://ftpmirror.gnu.org/gzip/gzip-#{version}.tar.xz"
+  source_url "https://ftp.gnu.org/gnu/gzip/gzip-#{version}.tar.xz"
   source_sha256 '01a7b881bd220bfdf615f97b8718f80bdfd3f6add385b993dcf6efd14e8c0ac6'
   binary_compression 'tar.zst'
 
@@ -17,7 +17,7 @@ class Gzip < Autotools
      x86_64: '5b2d9a48456d3aca4c07f778d4562ce86afdb8cf37eb333e1a1340c180b399b2'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :executable_only
 
   run_tests
 end

@@ -6,7 +6,7 @@ class Mpc < Autotools
   version '1.3.1'
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/mpc/mpc-#{version}.tar.gz"
+  source_url "https://ftp.gnu.org/gnu/mpc/mpc-#{version}.tar.gz"
   source_sha256 '17503d2c395dfcf106b622dc142683c1199431d095367c6aacba6eec30340459'
   binary_compression 'tar.zst'
 

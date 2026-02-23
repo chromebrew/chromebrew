@@ -6,7 +6,7 @@ class Libunistring < Autotools
   version '1.4.1'
   license 'LGPL-3+ or GPL-2+ and FDL-1.2 or GPL-3+'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/libunistring/libunistring-#{version}.tar.xz"
+  source_url "https://ftp.gnu.org/gnu/libunistring/libunistring-#{version}.tar.xz"
   source_sha256 '67d88430892527861903788868c77802a217b0959990f7449f2976126a307763'
   binary_compression 'tar.zst'
 

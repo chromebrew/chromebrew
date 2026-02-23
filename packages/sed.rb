@@ -8,7 +8,7 @@ class Sed < Autotools
   compatibility 'all'
   source_url 'https://git.savannah.gnu.org/git/sed.git'
   git_hashtag 'b4d01a9c9174b514fd9ccac50f6e7990a1e86fbe'
-  # source_url "https://ftpmirror.gnu.org/sed/sed-#{version.split('-').first}.tar.lz"
+  # source_url "https://ftp.gnu.org/gnu/sed/sed-#{version.split('-').first}.tar.lz"
   # source_sha256 '6e226b732e1cd739464ad6862bd1a1aba42d7982922da7a53519631d24975181'
   binary_compression 'tar.zst'
 
