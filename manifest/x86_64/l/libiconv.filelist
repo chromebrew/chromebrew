@@ -1,4 +1,4 @@
-# Total size: 6237656
+# Total size: 6341076
 /usr/local/bin/gnu-libiconv-iconv
 /usr/local/include/gnu-libiconv/iconv.h
 /usr/local/include/gnu-libiconv/libcharset.h
@@ -12,7 +12,7 @@
 /usr/local/lib64/libiconv.la
 /usr/local/lib64/libiconv.so
 /usr/local/lib64/libiconv.so.2
-/usr/local/lib64/libiconv.so.2.6.1
+/usr/local/lib64/libiconv.so.2.7.0
 /usr/local/share/doc/iconv.1.html
 /usr/local/share/doc/iconv.3.html
 /usr/local/share/doc/iconv_close.3.html
@@ -20,6 +20,7 @@
 /usr/local/share/doc/iconv_open_into.3.html
 /usr/local/share/doc/iconvctl.3.html
 /usr/local/share/locale/af/LC_MESSAGES/libiconv.mo
+/usr/local/share/locale/be/LC_MESSAGES/libiconv.mo
 /usr/local/share/locale/bg/LC_MESSAGES/libiconv.mo
 /usr/local/share/locale/ca/LC_MESSAGES/libiconv.mo
 /usr/local/share/locale/cs/LC_MESSAGES/libiconv.mo
@@ -38,6 +39,7 @@
 /usr/local/share/locale/id/LC_MESSAGES/libiconv.mo
 /usr/local/share/locale/it/LC_MESSAGES/libiconv.mo
 /usr/local/share/locale/ja/LC_MESSAGES/libiconv.mo
+/usr/local/share/locale/ka/LC_MESSAGES/libiconv.mo
 /usr/local/share/locale/ko/LC_MESSAGES/libiconv.mo
 /usr/local/share/locale/lt/LC_MESSAGES/libiconv.mo
 /usr/local/share/locale/nl/LC_MESSAGES/libiconv.mo
@@ -57,9 +59,9 @@
 /usr/local/share/locale/wa/LC_MESSAGES/libiconv.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/libiconv.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/libiconv.mo
-/usr/local/share/man/man1/gnu-libiconv-iconv.1.gz
-/usr/local/share/man/man3/gnu-libiconv-iconv.3.gz
-/usr/local/share/man/man3/gnu-libiconv-iconv_close.3.gz
-/usr/local/share/man/man3/gnu-libiconv-iconv_open.3.gz
-/usr/local/share/man/man3/iconv_open_into.3.gz
-/usr/local/share/man/man3/iconvctl.3.gz
+/usr/local/share/man/man1/gnu-libiconv-iconv.1.zst
+/usr/local/share/man/man3/gnu-libiconv-iconv.3.zst
+/usr/local/share/man/man3/gnu-libiconv-iconv_close.3.zst
+/usr/local/share/man/man3/gnu-libiconv-iconv_open.3.zst
+/usr/local/share/man/man3/iconv_open_into.3.zst
+/usr/local/share/man/man3/iconvctl.3.zst
