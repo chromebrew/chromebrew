@@ -17,6 +17,8 @@ class Libffcall < Package
      x86_64: '6f0395b9c855cc827bdc35ca351a4dc8367c42a601972b6b6986f7d8cd6277a5'
   })
 
+  depends_on 'glibc' # R
+
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} CFLAGS=\" -fPIC\""
     system 'make', '-j1' # doesn't support parallel builds

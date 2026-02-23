@@ -17,6 +17,8 @@ class Libiconv < Package
      x86_64: '5b6dea457a565ee6fca3346a74d2aab7241c9556a2afab3bcb2accb589d6da92'
   })
 
+  depends_on 'glibc' # R
+
   def self.build
     system "./configure #{CREW_CONFIGURE_OPTIONS} \
         --includedir=#{CREW_PREFIX}/include/gnu-libiconv \

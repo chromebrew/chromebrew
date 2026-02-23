@@ -17,15 +17,26 @@ class Gnuastro < Autotools
      x86_64: 'e35a00f1090c838434c114d6eb56055a8b51c4bd57b175646437cdbde2a99d7b'
   })
 
-  depends_on 'bzip2'
-  depends_on 'cfitsio'
-  depends_on 'curl'
-  depends_on 'glibc'
-  depends_on 'gsl'
+  depends_on 'brotli' # R
+  depends_on 'bzip2' # R
+  depends_on 'c_ares' # R
+  depends_on 'cfitsio' # R
+  depends_on 'curl' # R
+  depends_on 'glibc' # R
+  depends_on 'gsl' # R
+  depends_on 'libcyrussasl' # R
   depends_on 'libgit2'
-  depends_on 'libjpeg_turbo'
+  depends_on 'libidn2' # R
+  depends_on 'libjpeg_turbo' # R
+  depends_on 'libnghttp2' # R
+  depends_on 'libpsl' # R
+  depends_on 'libssh' # R
   depends_on 'libtiff'
-  depends_on 'wcslib'
+  depends_on 'libunistring' # R
+  depends_on 'openldap' # R
+  depends_on 'openssl' # R
+  depends_on 'wcslib' # R
   depends_on 'xzutils'
-  depends_on 'zlib'
+  depends_on 'zlib' # R
+  depends_on 'zstd' # R
 end

@@ -17,6 +17,9 @@ class Wdiff < Package
      x86_64: '091e34045534f4f777172e1f4a3c9e966377efa9158304f1bb15f31a3edc2dac'
   })
 
+  depends_on 'glibc' => :executable_only
+  depends_on 'ncurses' => :executable_only
+
   def self.build
     system "./configure --prefix=#{CREW_PREFIX}"
     system 'make'

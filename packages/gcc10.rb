@@ -19,6 +19,7 @@ class Gcc10 < Package
 
   depends_on 'binutils' => :build
   depends_on 'dejagnu' => :build # for test
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'gmp' # R
   depends_on 'isl' # R
@@ -27,7 +28,6 @@ class Gcc10 < Package
   depends_on 'mpfr' # R
   depends_on 'zlib' # R
   depends_on 'zstd' # R
-  depends_on 'gcc_lib' # R
 
   conflicts_ok
   no_env_options

@@ -19,6 +19,6 @@ class Units < Autotools
      x86_64: 'ab4f6ba7b24e47e375f22553251fee588718e7b4f14c32dd0d425b2be1084fa8'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'readline' # R
+  depends_on 'glibc' => :executable_only
+  depends_on 'readline' => :executable_only
 end

@@ -17,5 +17,7 @@ class Gsl < Autotools
      x86_64: '77040ff7e8b9da1e95c93fed6d6f8e8942c3e64ef790a0775303906f82322aed'
   })
 
+  depends_on 'glibc' # R
+
   run_tests
 end

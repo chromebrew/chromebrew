@@ -16,4 +16,7 @@ class Gengetopt < Autotools
        i686: 'a0f64b05cbdc817d908e19031930c9624abcbd04b8865f144b3d448ed6573ac7',
      x86_64: '002712609debd70bb81c76809c627914bcf7f4467f0bfdcfb5052b9f7fd19c50'
   })
+
+  depends_on 'gcc_lib' => :executable_only
+  depends_on 'glibc' => :executable_only
 end

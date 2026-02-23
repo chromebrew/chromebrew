@@ -24,5 +24,6 @@ class Guile < Autotools
   depends_on 'libffi' # R
   depends_on 'libtool' => :build
   depends_on 'libunistring' # R
+  depends_on 'libxcrypt' # R
   depends_on 'readline' # R
 end

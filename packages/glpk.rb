@@ -17,6 +17,8 @@ class Glpk < Package
      x86_64: 'c8daf55a17a122a0d6b0d3a7e0853e29adaa6ee96e9d9fda04105930b1fd77f9'
   })
 
+  depends_on 'glibc' # R
+
   def self.build
     system "./configure #{CREW_CONFIGURE_OPTIONS}"
     system 'make'

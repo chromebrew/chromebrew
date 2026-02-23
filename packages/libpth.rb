@@ -17,6 +17,8 @@ class Libpth < Package
      x86_64: 'b82687dc8d4525dd8deee18576ae9ffbb149c2a7a378de68db60fd12de3f6b12'
   })
 
+  depends_on 'glibc' # R
+
   def self.build
     system './configure',
            "--prefix=#{CREW_PREFIX}",
