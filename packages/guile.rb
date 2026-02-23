@@ -26,4 +26,10 @@ class Guile < Autotools
   depends_on 'libunistring' # R
   depends_on 'libxcrypt' # R
   depends_on 'readline' # R
+
+  def self.patch
+    # Fix automake 1.17 requirements.
+    system 'grep -rlZ AM_INIT_AUTOMAKE . | xargs -0 sed -i \'s,1.17,1.18,g\''
+    system 'grep -rlZ aclocal . | xargs -0 sed -i \'s,1.17,1.18,g\''
+  end
 end
