@@ -1,14 +1,14 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Ed < Package
+class Ed < Autotools
   description 'GNU ed is a line-oriented text editor.'
   homepage 'http://www.gnu.org/software/ed/ed.html'
-  version '1.15'
+  version '1.22.5'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://ftp.gnu.org/gnu/ed/ed-1.15.tar.lz'
-  source_sha256 'ad4489c0ad7a108c514262da28e6c2a426946fb408a3977ef1ed34308bdfd174'
-  binary_compression 'tar.xz'
+  source_url "https://ftp.gnu.org/gnu/ed/ed-#{version}.tar.lz"
+  source_sha256 '56e107ddc2f29dad6690376c15bf9751509e1ee3b8241710e44edbe5c3a158cc'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '7191a1f8ade2fc029dc0d82783dbcbc2e6176af3cd779756c21e10ca32cd146f',
@@ -19,18 +19,4 @@ class Ed < Package
 
   # only lz archive is available for ed and it requires lzip.
   depends_on 'lzip' => :build
-
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
-
-  def self.check
-    system 'make', 'check'
-  end
 end
