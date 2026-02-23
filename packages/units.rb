@@ -21,4 +21,8 @@ class Units < Autotools
 
   depends_on 'glibc' => :executable_only
   depends_on 'readline' => :executable_only
+
+  def self.patch
+    system "grep -rlZ '/usr/bin/perl' . | xargs -0 sed -i \'s,/usr/bin/perl,#{CREW_PREFIX}/bin/perl,g\'"
+  end
 end
