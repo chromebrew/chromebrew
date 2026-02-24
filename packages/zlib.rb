@@ -3,14 +3,14 @@ require 'buildsystems/cmake'
 class Zlib < CMake
   description 'zlib is a massively spiffy yet delicately unobtrusive compression library.'
   homepage 'https://www.zlib.net'
-  version '1.3.1-3' # Do not use @_ver here, it will break the installer.
+  version '1.3.2' # Do not use @_ver here, it will break the installer.
   # When upgrading zlib, be sure to upgrade minizip in tandem.
   # The following breaks the installer script.
   # puts "#{self} version differs from Minizip version #{Minizip.version}".orange if @_ver != Minizip.version
   license 'zlib'
   compatibility 'all'
   source_url "https://www.zlib.net/zlib-#{version.split('-').first}.tar.gz"
-  source_sha256 '9a93b2b7dfdac77ceba5a558a580e74667dd6fede4585b91eefb60f03b72df23'
+  source_sha256 'bb329a0a2cd0274d05519d61c667c062e06990d72e125ee2dfa8de64f0119d16'
   binary_compression 'tar.zst'
 
   binary_sha256({
