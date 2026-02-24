@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION = defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION = '1.72.6' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION = '1.72.7' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH = Etc.uname[:machine]
@@ -525,6 +525,7 @@ CREW_DOCOPT = <<~DOCOPT
     crew upload [options] [-f|--force] [-v|--verbose] [<name> ...]
     crew upstream [options] [-j|--json|-u|--update-package-files|-v|--verbose|-vv] <name> ...
     crew version [options] [<name>]
+    crew whatdepends <name> ...
     crew whatprovides [options] <pattern> ...
 
     -b --include-build-deps    Include build dependencies in output.

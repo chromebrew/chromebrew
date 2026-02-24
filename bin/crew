@@ -2201,6 +2201,12 @@ def version_command(args)
   end
 end
 
+def whatdepends_command(args)
+  args['<name>'].each do |pkg|
+    Command.whatdepends(pkg)
+  end
+end
+
 def whatprovides_command(args)
   args['<pattern>'].each do |regex|
     Command.whatprovides(regex)
