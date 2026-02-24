@@ -1,7 +1,7 @@
 require 'package'
 
 class Llvm22_build < Package
-  @llvm_projects_to_build = ARCH == 'x86_64' ? 'bolt;clang;clang-tools-extra;compiler-rt;lld;lldb;polly;pstl' : 'clang;clang-tools-extra;compiler-rt;lld;lldb;polly;pstl'
+  @llvm_projects_to_build = ARCH == 'x86_64' ? 'bolt;clang;clang-tools-extra;compiler-rt;lld;lldb;polly' : 'clang;clang-tools-extra;compiler-rt;lld;lldb;polly'
   description "The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The packages included are: #{@llvm_projects_to_build.gsub(';', ' ')}"
   homepage 'https://llvm.org/'
   version '22.1.0'
