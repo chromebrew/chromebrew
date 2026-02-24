@@ -1,28 +1,25 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Libfrei0r < Package
+class Libfrei0r < CMake
   description 'Minimalistic API for a collection of free video effect plugins.'
   homepage 'https://frei0r.dyne.org/'
-  version '1.6.1'
+  version '2.5.1'
   license 'GPL-2'
-  compatibility 'all'
-  source_url 'https://github.com/dyne/frei0r/archive/v1.6.1.tar.gz'
-  source_sha256 'dae0ca623c83173788ce4fc74cb67ac7e50cf33a4412ee3d33bed284da1a8437'
-  binary_compression 'tar.xz'
+  compatibility 'aarch64 armv7l x86_64'
+  source_url 'https://github.com/dyne/frei0r.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bd9381d2c456c270133c206c66e94ed5f77a856bd23d18138d92df6b4e2c7759',
-     armv7l: 'bd9381d2c456c270133c206c66e94ed5f77a856bd23d18138d92df6b4e2c7759',
-       i686: '97eed475d2ad73584e604455e9d7b8c09d6348b0b0ade255f369eae4d1f6a4c7',
-     x86_64: '73646984853d48487d8881cdc4a9ac3fd35f08e8384be54db9948a6d41046d23'
+    aarch64: 'a6f6053dd096606bfd9bf3375bf3092c2487b895ba0ee822e5dc44d4a07dfc8d',
+     armv7l: 'a6f6053dd096606bfd9bf3375bf3092c2487b895ba0ee822e5dc44d4a07dfc8d',
+     x86_64: 'c7c8ed067dfb67fb7f908879841f05e5e5dbd3fc8847dfbfb7453b1b14dd4329'
   })
 
-  def self.build
-    system "cmake . -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_CXX_FLAGS=' -L#{CREW_LIB_PREFIX}'"
-    system 'make'
-  end
+  depends_on 'cairo' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'harfbuzz' # R
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  cmake_options "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_CXX_FLAGS=' -L#{CREW_LIB_PREFIX}'"
 end
