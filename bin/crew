@@ -490,7 +490,7 @@ def download
   sha256sum = PackageUtils.get_sha256(@pkg, build_from_source: @opt_source || @pkg.build_from_source)
 
   # Do an early check for a missing binary package and if so rebuild.
-  if (!@pkg.source?(@device[:architecture]) && @pkg.superclass.to_s == 'Pip') || ((@pkg.no_source_build? || @pkg.gem_compile_needed?) && !@pkg.in_upgrade && !@pkg.in_install && caller.grep(/download_command/).empty?)
+  if !@pkg.source?(@device[:architecture]) && @pkg.superclass.to_s == 'Pip'
     if `curl -sI #{test_url}`.lines.first.split[1] == '200' && PackageUtils.get_gitlab_pkginfo(@pkg.name, @pkg.version, ARCH, false, false)[:pkg_sha256] == sha256sum
       url = test_url
     else
@@ -498,8 +498,13 @@ def download
       @pkg.missing_binaries = true
       puts "Binaries are missing at #{test_url}".lightpurple
     end
-  else
+  elsif `curl -sI #{test_url}`.lines.first.split[1] == '200' && PackageUtils.get_gitlab_pkginfo(@pkg.name, @pkg.version, ARCH, false, false)[:pkg_sha256] == sha256sum
     url = test_url
+  else
+    @pkg.missing_binaries = true
+    puts "Binaries are missing at #{test_url}".lightpurple
+    url = PackageUtils.get_url(@pkg, build_from_source: true)
+    sha256sum = PackageUtils.get_sha256(@pkg, build_from_source: true)
   end
 
   source = @pkg.source?(@device[:architecture])
@@ -1276,12 +1281,13 @@ def resolve_dependencies_and_install(no_advisory: false)
       end
     end
 
-    # Only install dependencies from source if recursive.
-    @opt_source = false unless @opt_recursive
-
     to_install.each do |pkg_to_install|
       search pkg_to_install
       print_current_package
+      # Only install dependencies from source if recursive or if
+      # binaries are unavailable.
+      @pkg.missing_binaries = `curl -sI #{PackageUtils.get_url(@pkg, build_from_source: @opt_source || @pkg.build_from_source)}`.lines.first.split[1] != '200'
+      @opt_source = @opt_recursive || @pkg.missing_binaries
       install(skip_postinstall: true)
     end
 
@@ -1538,6 +1544,10 @@ def resolve_dependencies_and_build
     dependencies.each do |dep_to_install|
       search dep_to_install
       print_current_package
+      # Only install dependencies from source if recursive or if
+      # binaries are unavailable.
+      @pkg.missing_binaries = `curl -sI #{PackageUtils.get_url(@pkg, build_from_source: @opt_source || @pkg.build_from_source)}`.lines.first.split[1] != '200'
+      @opt_source = @opt_recursive || @pkg.missing_binaries
       install(skip_postinstall: true)
     end
 
