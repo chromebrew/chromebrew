@@ -1,5 +1,6 @@
-# Total size: 433719
+# Total size: 1220323
 /usr/local/bin/mujs
+/usr/local/bin/mujs-pp
 /usr/local/include/mujs.h
 /usr/local/lib64/libmujs.so
 /usr/local/lib64/pkgconfig/mujs.pc

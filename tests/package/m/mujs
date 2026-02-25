@@ -1,0 +1,2 @@
+#!/bin/bash
+mujs-pp 2>&1
