@@ -1,8 +1,10 @@
 ---
-# Version 1.6
+# Version 1.7
 name: Generate PR
 run-name: Generate PR for ${{ inputs.branch || github.ref_name }} by @${{ github.actor }}
 on:
+  pull_request:
+    types: [labeled]
   workflow_dispatch:
     inputs:
       draft_pr:
@@ -42,7 +44,7 @@ permissions:
   repository-projects: read
 jobs:
   debug:
-    if: ${{ ( github.repository_owner == 'chromebrew' ) }}
+    if: ${{ ( github.repository_owner == 'chromebrew' ) || ( github.repository_owner == 'chromebrew' && github.event.action  == 'labeled' && github.event.label.name == 'generate_pr' ) }}
     runs-on: ubuntu-24.04
     steps:
       - name: Dump GitHub context
@@ -630,6 +632,8 @@ jobs:
           fi
           echo "PR_NUMBER is ${PR_NUMBER}"
           echo "PR_NUMBER=${PR_NUMBER}" >> "$GITHUB_ENV"
+          # Remove the generate_pr label if set.
+          gh pr edit --remove-label generate_pr || true
           # Trigger workflow runs:
           # gh workflow run Unit-Test.yml -R ${{ github.repository }} -r ${{ inputs.branch || github.ref_name }}
           # gh workflow run Linter-Handoff.yml -R ${{ github.repository }} -r ${{ inputs.branch || github.ref_name }}
