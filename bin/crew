@@ -496,6 +496,7 @@ def download
     else
       url = 'SKIP'
       @pkg.missing_binaries = true
+      puts "Binaries are missing at #{test_url}".lightpurple
     end
   else
     url = test_url
