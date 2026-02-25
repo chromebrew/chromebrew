@@ -3,11 +3,11 @@ require 'package'
 class Scite < Package
   description 'A free source code editing component for Win32, GTK+, and OS X'
   homepage 'https://www.scintilla.org/'
-  version '5.5.8'
+  version '5.5.9'
   license 'HPND and MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.scintilla.org/scite#{version.gsub('.', '')}.tgz"
-  source_sha256 'abd5eec4f97de9d746bca0f719b89ccb84a1c7ee5bd37fecc4b8c913b6968d21'
+  source_sha256 'af7eb6299340e21462a386dadcdbca82e037fcd04ae6b0aa1b2af417c8bf4d71'
   binary_compression 'tar.zst'
 
   binary_sha256({
