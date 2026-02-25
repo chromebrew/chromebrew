@@ -10,4 +10,5 @@ class Ruby_lint_roller < RUBY
 
   conflicts_ok
   no_compile_needed
+  upstream_name 'lint_roller'
 end

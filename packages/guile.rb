@@ -6,7 +6,7 @@ class Guile < Autotools
   version '3.0.9'
   license 'LGPL-3+'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/guile/guile-3.0.9.tar.xz'
+  source_url 'https://ftp.gnu.org/gnu/guile/guile-3.0.9.tar.xz'
   source_sha256 '1a2625ac72b2366e95792f3fe758fd2df775b4044a90a4a9787326e66c0d750d'
   binary_compression 'tar.zst'
 
@@ -24,5 +24,6 @@ class Guile < Autotools
   depends_on 'libffi' # R
   depends_on 'libtool' => :build
   depends_on 'libunistring' # R
+  depends_on 'libxcrypt' # R
   depends_on 'readline' # R
 end

@@ -6,7 +6,7 @@ class Libtasn1 < Autotools
   version '4.21.0'
   license 'GPL-3 and LGPL-2.1'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/libtasn1/libtasn1-#{version}.tar.gz"
+  source_url "https://ftp.gnu.org/gnu/libtasn1/libtasn1-#{version}.tar.gz"
   source_sha256 '1d8a444a223cc5464240777346e125de51d8e6abf0b8bac742ac84609167dc87'
   binary_compression 'tar.zst'
 

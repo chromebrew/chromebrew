@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Ansible < Pip
   description 'Ansible is a radically simple IT automation engine that automates cloud provisioning, configuration management, application deployment, intra-service orchestration, and many other IT needs.'
   homepage 'https://www.ansible.com/'
-  version "13.3.0-#{CREW_PY_VER}"
+  version "13.4.0-#{CREW_PY_VER}"
   license 'GPL-3'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ba343239cbfaeb4b8d363cf666d8a66fc9c66f27aecfbbd637c5ca2cc6958578',
-     armv7l: 'ba343239cbfaeb4b8d363cf666d8a66fc9c66f27aecfbbd637c5ca2cc6958578',
-       i686: '25fec96c078d8b2d3b4f293a9fc00568ff15994e59bd8f46b8aaf39645d6e024',
-     x86_64: '6c9ebc4fea19cc9167abefc7232084af72edbd4e7ee549b8ed78001f2538a0ec'
+    aarch64: '85ec48532ed0719141e5dfc0810b19a791d37a726d2110e7139d040d21b1bd37',
+     armv7l: '85ec48532ed0719141e5dfc0810b19a791d37a726d2110e7139d040d21b1bd37',
+       i686: '45de1378029aeaa328f852d2fb917a4622c0b3c3b1b9c1529dfdc973c1fe4e63',
+     x86_64: 'c20d79cfd515329bc83335e783905f5d960f681a32fcd49613734e5be3c708fb'
   })
 
   depends_on 'xdg_base'

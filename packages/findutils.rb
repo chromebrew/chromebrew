@@ -6,7 +6,7 @@ class Findutils < Autotools
   version '4.10.0'
   license 'GPL-3+'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/findutils/findutils-#{version}.tar.xz"
+  source_url "https://ftp.gnu.org/gnu/findutils/findutils-#{version}.tar.xz"
   source_sha256 '1387e0b67ff247d2abde998f90dfbf70c1491391a59ddfecb8ae698789f0a4f5'
   binary_compression 'tar.zst'
 
@@ -18,6 +18,7 @@ class Findutils < Autotools
   })
 
   depends_on 'glibc' # R
+  depends_on 'glibc' => :executable_only
   depends_on 'python3' => :build
 
   autotools_configure_options "--without-selinux #{'--disable-year2038' unless ARCH.eql?('x86_64')}"

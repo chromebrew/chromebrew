@@ -9,7 +9,7 @@ class Glibc_build232 < Package
   compatibility 'aarch64 armv7l x86_64'
   min_glibc version.split('-').first
   max_glibc version.split('-').first
-  source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.32.tar.xz'
+  source_url 'https://ftp.gnu.org/gnu/glibc/glibc-2.32.tar.xz'
   source_sha256 '1627ea54f5a1a8467032563393e0901077626dc66f37f10ee6363bb722222836'
   binary_compression 'tar.zst'
 

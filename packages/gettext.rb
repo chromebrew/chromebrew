@@ -8,7 +8,7 @@ class Gettext < Autotools
   compatibility 'all'
   # source_url 'https://github.com/autotools-mirror/gettext.git'
   # git_hashtag "v#{version.split('-')[0]}"
-  source_url "https://ftpmirror.gnu.org/gnu/gettext/gettext-#{version.split('-')[0]}.tar.lz"
+  source_url "https://ftp.gnu.org/gnu/gnu/gettext/gettext-#{version.split('-')[0]}.tar.lz"
   source_sha256 'd6342cbe1411a2fe7d139bfed80c2d63b1babc92acfedc72501cc105184f61ee'
   binary_compression 'tar.zst'
 

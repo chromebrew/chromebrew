@@ -9,7 +9,7 @@ class Glibc_build227 < Package
   compatibility 'aarch64 armv7l x86_64'
   min_glibc version.split('-').first
   max_glibc version.split('-').first
-  source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.27.tar.xz'
+  source_url 'https://ftp.gnu.org/gnu/glibc/glibc-2.27.tar.xz'
   source_sha256 '5172de54318ec0b7f2735e5a91d908afe1c9ca291fec16b5374d9faadfc1fc72'
   binary_compression 'tar.xz'
 

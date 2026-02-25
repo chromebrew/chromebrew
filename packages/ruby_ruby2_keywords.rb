@@ -10,4 +10,5 @@ class Ruby_ruby2_keywords < RUBY
 
   conflicts_ok
   no_compile_needed
+  upstream_name 'ruby2_keywords'
 end

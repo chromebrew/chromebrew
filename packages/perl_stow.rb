@@ -6,7 +6,7 @@ class Perl_stow < Package
   version "2.4.0-#{CREW_PERL_VER}"
   license 'GPL-3+'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/stow/stow-2.4.0.tar.gz'
+  source_url 'https://ftp.gnu.org/gnu/stow/stow-2.4.0.tar.gz'
   source_sha256 '6fed67cf64deab6d3d9151a43e2c06c95cdfca6a88fab7d416f46a648b1d761d'
   binary_compression 'tar.zst'
 

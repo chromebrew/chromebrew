@@ -1,4 +1,4 @@
-# Total size: 6762594
+# Total size: 7839858
 /usr/local/bin/mc
 /usr/local/bin/mcdiff
 /usr/local/bin/mcedit
@@ -10,6 +10,7 @@
 /usr/local/etc/mc/mc.ext.ini
 /usr/local/etc/mc/mc.keymap
 /usr/local/etc/mc/mc.menu
+/usr/local/etc/mc/mc.vim.keymap
 /usr/local/etc/mc/mcedit.menu
 /usr/local/etc/mc/sfs.ini
 /usr/local/libexec/mc/cons.saver
@@ -43,6 +44,7 @@
 /usr/local/libexec/mc/extfs.d/rpm
 /usr/local/libexec/mc/extfs.d/rpms+
 /usr/local/libexec/mc/extfs.d/s3+
+/usr/local/libexec/mc/extfs.d/torrent
 /usr/local/libexec/mc/extfs.d/trpm
 /usr/local/libexec/mc/extfs.d/u7z
 /usr/local/libexec/mc/extfs.d/uace

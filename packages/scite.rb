@@ -3,17 +3,17 @@ require 'package'
 class Scite < Package
   description 'A free source code editing component for Win32, GTK+, and OS X'
   homepage 'https://www.scintilla.org/'
-  version '5.5.8'
+  version '5.5.9'
   license 'HPND and MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.scintilla.org/scite#{version.gsub('.', '')}.tgz"
-  source_sha256 'abd5eec4f97de9d746bca0f719b89ccb84a1c7ee5bd37fecc4b8c913b6968d21'
+  source_sha256 'af7eb6299340e21462a386dadcdbca82e037fcd04ae6b0aa1b2af417c8bf4d71'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9cb2da5f18b166080a39395dd4763f8b5cd0b89df4a2e0162000e512299012d5',
-     armv7l: '9cb2da5f18b166080a39395dd4763f8b5cd0b89df4a2e0162000e512299012d5',
-     x86_64: '2f1b5a02ebae0a0247fc1c9a898343a71990205e09defd7d58455fbdb1de8f82'
+    aarch64: 'd523d840b5ad77e1fe63ddfdeb329c48d00134f76b7ac0b24a010fba86ef351e',
+     armv7l: 'd523d840b5ad77e1fe63ddfdeb329c48d00134f76b7ac0b24a010fba86ef351e',
+     x86_64: '3fc7d74fc6e9458a0c2b5e1e14e8d841704b39b3be02632a19f310348d70cec9'
   })
 
   depends_on 'at_spi2_core' # R
@@ -23,7 +23,7 @@ class Scite < Package
   depends_on 'glib' # R
   depends_on 'glibc' # R
   depends_on 'gnome_icon_theme'
-  depends_on 'gtk3'
+  depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
   depends_on 'hicolor_icon_theme'
   depends_on 'pango' # R

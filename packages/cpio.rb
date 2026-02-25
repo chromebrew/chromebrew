@@ -6,7 +6,7 @@ class Cpio < Autotools
   version '2.14'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/cpio/cpio-2.14.tar.bz2'
+  source_url 'https://ftp.gnu.org/gnu/cpio/cpio-2.14.tar.bz2'
   source_sha256 'fcdc15d60f7267a6fc7efcd6b9db7b6c8966c4f2fbbb964c24d41336fd3f2c12'
   binary_compression 'tar.zst'
 
@@ -18,6 +18,7 @@ class Cpio < Autotools
   })
 
   depends_on 'glibc' # R
+  depends_on 'glibc' => :executable_only
 
   autotools_configure_options '--enable-mt' # magnetic tape, not manifest tool
 end

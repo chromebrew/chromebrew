@@ -6,7 +6,7 @@ class Glpk < Package
   version '5.0'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/glpk/glpk-5.0.tar.gz'
+  source_url 'https://ftp.gnu.org/gnu/glpk/glpk-5.0.tar.gz'
   source_sha256 '4a1013eebb50f728fc601bdd833b0b2870333c3b3e5a816eeba921d95bec6f15'
   binary_compression 'tar.zst'
 
@@ -16,6 +16,9 @@ class Glpk < Package
        i686: '82f10794ee43f98d03b8bb1d163f9aa121d15b3af8b343613f69a0f5dfd49fdf',
      x86_64: 'c8daf55a17a122a0d6b0d3a7e0853e29adaa6ee96e9d9fda04105930b1fd77f9'
   })
+
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
 
   def self.build
     system "./configure #{CREW_CONFIGURE_OPTIONS}"

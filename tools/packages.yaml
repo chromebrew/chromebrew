@@ -6810,6 +6810,11 @@ url: ftp://ftp.infradead.org/pub/openconnect/
 activity: none
 ---
 kind: url
+name: opencv
+url: https://github.com/opencv/opencv/releases
+activity: medium
+---
+kind: url
 name: openexr
 url: https://github.com/openexr/openexr/releases
 activity: low

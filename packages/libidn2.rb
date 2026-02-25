@@ -6,7 +6,7 @@ class Libidn2 < Autotools
   version '2.3.8'
   license 'GPL-2+ and LGPL-3+'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/libidn/libidn2-#{version}.tar.gz"
+  source_url "https://ftp.gnu.org/gnu/libidn/libidn2-#{version}.tar.gz"
   source_sha256 '93caba72b4e051d1f8d4f5a076ab63c99b77faee019b72b9783b267986dbb45f'
   binary_compression 'tar.zst'
 

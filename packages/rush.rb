@@ -6,7 +6,7 @@ class Rush < Autotools
   version '2.4'
   license 'GPL-3'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/rush/rush-#{version}.tar.xz"
+  source_url "https://ftp.gnu.org/gnu/rush/rush-#{version}.tar.xz"
   source_sha256 'fa95af9d2c7b635581841cc27a1d27af611f60dd962113a93d23a8874aa060f4'
   binary_compression 'tar.zst'
 
@@ -17,7 +17,7 @@ class Rush < Autotools
      x86_64: 'd6c610c443b41d2a726edf74afbb628ecc9a4248cdf2405f68d00c0091bc44f9'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :executable_only
 
   def self.patch
     # The aclocal version is hardcoded.

@@ -172,6 +172,11 @@ class Command
         Display the crew version.
         Usage: crew version
       EOT
+    when 'whatdepends'
+      puts <<~EOT
+        Determine which package(s) depend on the provided package.
+        Usage: crew whatdepends <package> ...
+      EOT
     when 'whatprovides'
       puts <<~EOT
         Determine which package(s) contains file(s).

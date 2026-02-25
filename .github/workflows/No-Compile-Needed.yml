@@ -1,6 +1,7 @@
 ---
+# Version 1.0
 name: No-Compile-Needed
-run-name: Generate No-Compile-Needed PR for ${{ inputs.branch || github.ref_name }} by @${{ github.actor }}
+run-name: Generate No-Compile-Needed PR for ${{ inputs.branch || github.head_ref || github.ref_name }} by @${{ github.actor }}
 on:
   workflow_dispatch:
     inputs:
@@ -14,7 +15,7 @@ on:
         required: false
 env:
   GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}  # setting GH_TOKEN for the entire workflow
-  BRANCH: ${{ inputs.branch || github.ref_name }}
+  BRANCH: ${{ inputs.branch || github.head_ref || github.ref_name }}
 permissions:
   actions: write
   contents: write
@@ -51,11 +52,11 @@ jobs:
       x86_64_packages: ${{ steps.get-compatibility.outputs.x86_64_PACKAGES }}
       armv7l_packages: ${{ steps.get-compatibility.outputs.armv7l_PACKAGES }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           persist-credentials: true
-          ref: ${{ inputs.branch || github.ref_name }}
+          ref: ${{ inputs.branch || github.head_ref || github.ref_name }}
       - name: Rebase to master
         run: |
             git config user.name "${{ github.actor }}"
@@ -65,7 +66,7 @@ jobs:
       - name: Push rebase changes
         uses: ad-m/github-push-action@master
         with:
-          branch: ${{ inputs.branch || github.ref_name }}
+          branch: ${{ inputs.branch || github.head_ref || github.ref_name }}
           force: true
       - name: Set Timestamp
         id: set-timestamp
@@ -86,7 +87,7 @@ jobs:
         id: changed-packages
         run: |
             if [[ -z "${{ steps.changed-files.outputs.packages_all_changed_files }}" ]]; then
-              echo "Branch ${{ inputs.branch || github.ref_name }} has no changed package files."
+              echo "Branch ${{ inputs.branch || github.head_ref || github.ref_name }} has no changed package files."
               exit 1
             fi
             # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-files.outputs.packages_all_changed_files) into "foo bar"
@@ -101,9 +102,9 @@ jobs:
             if [[ -n ${NO_COMPILE_PACKAGES} ]]; then
               echo "NO_COMPILE_PACKAGES=${NO_COMPILE_PACKAGES}" >> "$GITHUB_ENV"
               echo "NO_COMPILE_PACKAGES=${NO_COMPILE_PACKAGES}" >> "$GITHUB_OUTPUT"
-              echo "Branch ${{ inputs.branch || github.ref_name }} has these no_compile_needed packages: ${NO_COMPILE_PACKAGES}"
+              echo "Branch ${{ inputs.branch || github.head_ref || github.ref_name }} has these no_compile_needed packages: ${NO_COMPILE_PACKAGES}"
             else
-              echo "Branch ${{ inputs.branch || github.ref_name }} is missing no_compile_needed packages that require updates."
+              echo "Branch ${{ inputs.branch || github.head_ref || github.ref_name }} is missing no_compile_needed packages that require updates."
               exit 1
             fi
 
@@ -113,7 +114,7 @@ jobs:
             if [[ -n ${GLIBC_232_COMPATIBLE_PACKAGES} ]]; then
               echo "GLIBC_232_COMPATIBLE_PACKAGES=${GLIBC_232_COMPATIBLE_PACKAGES}" >> "$GITHUB_ENV"
               echo "GLIBC_232_COMPATIBLE_PACKAGES=${GLIBC_232_COMPATIBLE_PACKAGES}" >> "$GITHUB_OUTPUT"
-              echo "Branch ${{ inputs.branch || github.ref_name }} has these possibly Glibc 2.32 compatible packages: ${GLIBC_232_COMPATIBLE_PACKAGES}"
+              echo "Branch ${{ inputs.branch || github.head_ref || github.ref_name }} has these possibly Glibc 2.32 compatible packages: ${GLIBC_232_COMPATIBLE_PACKAGES}"
             fi
 
             # If a package doesnt have a min_glibc value, or if it is below 2.37, add it to GLIBC_237_COMPATIBLE_PACKAGES.
@@ -122,7 +123,7 @@ jobs:
             if [[ -n ${GLIBC_237_COMPATIBLE_PACKAGES} ]]; then
               echo "GLIBC_237_COMPATIBLE_PACKAGES=${GLIBC_237_COMPATIBLE_PACKAGES}" >> "$GITHUB_ENV"
               echo "GLIBC_237_COMPATIBLE_PACKAGES=${GLIBC_237_COMPATIBLE_PACKAGES}" >> "$GITHUB_OUTPUT"
-              echo "Branch ${{ inputs.branch || github.ref_name }} has these possibly Glibc 2.37 compatible packages: ${GLIBC_237_COMPATIBLE_PACKAGES}"
+              echo "Branch ${{ inputs.branch || github.head_ref || github.ref_name }} has these possibly Glibc 2.37 compatible packages: ${GLIBC_237_COMPATIBLE_PACKAGES}"
             fi
 
             # If a package has a compatibility of 'all' or one that includes 'x86_64', add it to x86_64_PACKAGES.
@@ -131,7 +132,7 @@ jobs:
             if [[ -n ${x86_64_PACKAGES} ]]; then
               echo "x86_64_PACKAGES=${x86_64_PACKAGES}" >> "$GITHUB_ENV"
               echo "x86_64_PACKAGES=${x86_64_PACKAGES}" >> "$GITHUB_OUTPUT"
-              echo "Branch ${{ inputs.branch || github.ref_name }} has these x86_64 compatible packages: ${x86_64_PACKAGES}"
+              echo "Branch ${{ inputs.branch || github.head_ref || github.ref_name }} has these x86_64 compatible packages: ${x86_64_PACKAGES}"
             fi
 
             ## If a package has a compatibility of 'all' or one that includes 'armv7l', add it to armv7l_PACKAGES.
@@ -140,7 +141,7 @@ jobs:
             if [[ -n ${armv7l_PACKAGES} ]]; then
               echo "armv7l_PACKAGES=${armv7l_PACKAGES}" >> "$GITHUB_ENV"
               echo "armv7l_PACKAGES=${armv7l_PACKAGES}" >> "$GITHUB_OUTPUT"
-              echo "Branch ${{ inputs.branch || github.ref_name }} has these armv7l compatible packages: ${armv7l_PACKAGES}"
+              echo "Branch ${{ inputs.branch || github.head_ref || github.ref_name }} has these armv7l compatible packages: ${armv7l_PACKAGES}"
             fi
 
             ## If a package has a compatibility of 'all' or one that includes 'i686', add it to i686_PACKAGES.
@@ -149,7 +150,7 @@ jobs:
             if [[ -n ${i686_PACKAGES} ]]; then
               echo "i686_PACKAGES=${i686_PACKAGES}" >> "$GITHUB_ENV"
               echo "i686_PACKAGES=${i686_PACKAGES}" >> "$GITHUB_OUTPUT"
-              echo "Branch ${{ inputs.branch || github.ref_name }} has these i686 compatible packages: ${i686_PACKAGES}"
+              echo "Branch ${{ inputs.branch || github.head_ref || github.ref_name }} has these i686 compatible packages: ${i686_PACKAGES}"
             fi
   generate:
     strategy:
@@ -170,7 +171,7 @@ jobs:
     needs: setup
     env:
       CREW_REPO: ${{ github.event.repository.clone_url }}
-      CREW_BRANCH: ${{ inputs.branch || github.ref_name }}
+      CREW_BRANCH: ${{ inputs.branch || github.head_ref || github.ref_name }}
       TARGET_ARCH: ${{ matrix.arch }}
       TIMESTAMP: ${{ needs.setup.outputs.timestamp }}
       NO_COMPILE_PACKAGES: ${{ needs.setup.outputs.no_compile_packages }}
@@ -181,7 +182,7 @@ jobs:
       armv7l_PACKAGES: ${{ needs.setup.outputs.armv7l_packages }}
     if: ${{ !cancelled() }}
     concurrency:
-      group: ${{ matrix.arch }}-${{ github.workflow }}-${{ inputs.branch || github.ref_name }}
+      group: ${{ matrix.arch }}-${{ github.workflow }}-${{ inputs.branch || github.head_ref || github.ref_name }}
       cancel-in-progress: true
     steps:
       - name: Container cleanup
@@ -211,7 +212,7 @@ jobs:
         env:
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
         run: echo "$MATRIX_CONTEXT"
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           persist-credentials: true
@@ -268,8 +269,8 @@ jobs:
             fi
 
             git fetch origin
-            git checkout "${{ inputs.branch || github.ref_name }}"
-            git reset --hard "origin/${{ inputs.branch || github.ref_name }}"
+            git checkout "${{ inputs.branch || github.head_ref || github.ref_name }}"
+            git reset --hard "origin/${{ inputs.branch || github.head_ref || github.ref_name }}"
             git log --oneline -10
             docker pull --platform "${PLATFORM}" "${CONTAINER}"
             sudo setfacl -R -m u:1000:rwx .
@@ -288,7 +289,7 @@ jobs:
               -e LD_LIBRARY_PATH="/usr/local/lib${LIB_SUFFIX}" \
               -e GCONV_PATH="/usr/local/lib${LIB_SUFFIX}/gconv" \
               -e CREW_REPO="${CREW_REPO}" \
-              -e CREW_BRANCH="${{ inputs.branch || github.ref_name }}" \
+              -e CREW_BRANCH="${{ inputs.branch || github.head_ref || github.ref_name }}" \
               -e GITLAB_TOKEN="${{ secrets.GITLAB_TOKEN }}" \
               -e GITLAB_TOKEN_USERNAME="${{ secrets.GITLAB_TOKEN_USERNAME }}" \
               -v "$(pwd)":/output \
@@ -308,7 +309,7 @@ jobs:
             git pull
             git stash pop || true
             git add -A
-            git commit -m "${{ inputs.branch || github.ref_name }}: Package File Update Run on ${PLATFORM} container." && git push
+            git commit -m "${{ inputs.branch || github.head_ref || github.ref_name }}: Package File Update Run on ${PLATFORM} container." && git push
             git log --oneline -10
           fi
   update-check:
@@ -323,24 +324,24 @@ jobs:
         run: exit 1
       - name: Report update success
         run: echo "Update jobs succeeded. Creating a PR."
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           persist-credentials: true
-          ref: ${{ inputs.branch || github.ref_name }}
+          ref: ${{ inputs.branch || github.head_ref || github.ref_name }}
       - name: Rebase to master and save git log
         id: rebase-and-git-log
         run: |
             git config user.name "${{ github.actor }}"
             git config user.email "${{ github.actor }}@users.noreply.github.com"
             git fetch origin
-            git checkout "${{ inputs.branch || github.ref_name }}"
-            git reset --hard "origin/${{ inputs.branch || github.ref_name }}"
+            git checkout "${{ inputs.branch || github.head_ref || github.ref_name }}"
+            git reset --hard "origin/${{ inputs.branch || github.head_ref || github.ref_name }}"
             git pull --rebase origin master && git push -f
             git log --oneline -10
             git checkout master && git pull
-            git log --oneline master..${{ inputs.branch || github.ref_name }} | tr '\n' '\0' | xargs -0 -n1 echo "- $*" >> /tmp/commits.txt
-            git checkout "${{ inputs.branch || github.ref_name }}"
+            git log --oneline master..${{ inputs.branch || github.head_ref || github.ref_name }} | tr '\n' '\0' | xargs -0 -n1 echo "- $*" >> /tmp/commits.txt
+            git checkout "${{ inputs.branch || github.head_ref || github.ref_name }}"
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v47
@@ -382,7 +383,7 @@ jobs:
         run: |
           rm -rf /tmp/pr.txt
           echo -e "## Description" >> /tmp/pr.txt
-          echo -e "- This PR was built using the No-Compile-Needed.yml workflow, which was pointed to the ${{ inputs.branch || github.ref_name }} branch.\n" >> /tmp/pr.txt
+          echo -e "- This PR was built using the No-Compile-Needed.yml workflow, which was pointed to the ${{ inputs.branch || github.head_ref || github.ref_name }} branch.\n" >> /tmp/pr.txt
           echo -e "#### Commits:" >> /tmp/pr.txt
           # Get git log from rebase-and-git-log step.
           cat /tmp/commits.txt >> /tmp/pr.txt
@@ -415,14 +416,14 @@ jobs:
             echo -e "##\n- [x] This PR has no manifest .filelist changes. _(Package changes have neither added nor removed files.)_" >> /tmp/pr.txt
           fi
           echo -e "##\n### Run the following to get this pull request's changes locally for testing.\n\`\`\`bash" >> /tmp/pr.txt
-          echo -e "CREW_REPO=https://github.com/chromebrew/chromebrew.git CREW_BRANCH=${{ inputs.branch || github.ref_name }} crew update \\" >> /tmp/pr.txt
+          echo -e "CREW_REPO=https://github.com/chromebrew/chromebrew.git CREW_BRANCH=${{ inputs.branch || github.head_ref || github.ref_name }} crew update \\" >> /tmp/pr.txt
           echo -e "&& yes | crew upgrade\n\`\`\`" >> /tmp/pr.txt
           cat /tmp/pr.txt
           [[ $DRAFT_PR == 'true' ]] && export PR_DRAFT_FLAG='-d'
           if [[ -z ${PR_NUMBER} ]]; then
-            PR_NUMBER=$(gh pr create ${PR_DRAFT_FLAG} --reviewer chromebrew/active --title "${{ inputs.branch || github.ref_name }}: Build for ${CHANGED_PACKAGES}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
+            PR_NUMBER=$(gh pr create ${PR_DRAFT_FLAG} --reviewer chromebrew/active --title "${{ inputs.branch || github.head_ref || github.ref_name }}: Build for ${CHANGED_PACKAGES}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
           else
-            gh pr edit --title "${{ inputs.branch || github.ref_name }}: Build for ${CHANGED_PACKAGES}" -F /tmp/pr.txt
+            gh pr edit --title "${{ inputs.branch || github.head_ref || github.ref_name }}: Build for ${CHANGED_PACKAGES}" -F /tmp/pr.txt
           fi
           # Draft PRs can not be set to automerge.
           if [[ $DRAFT_PR == 'true' ]]; then

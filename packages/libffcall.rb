@@ -1,28 +1,26 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libffcall < Package
+class Libffcall < Autotools
   description 'GNU libffcall is a library which can be used to build foreign function call interfaces in embedded interpreters.'
   homepage 'https://www.gnu.org/software/libffcall/'
-  version '2.0'
+  version '2.5'
   license 'GPL-3+'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/libffcall/libffcall-2.0.tar.gz'
-  source_sha256 '41aad2b449d90a5308e72267829db006dc9f9cc8736807082e1f2daef680196c'
-  binary_compression 'tar.xz'
+  source_url "https://ftp.gnu.org/gnu/libffcall/libffcall-#{version}.tar.gz"
+  source_sha256 '7f422096b40498b1389093955825f141bb67ed6014249d884009463dc7846879'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '30ebb220d932b87a34428d3fa6dae866ac5dc417007d223ec7d87cab96b706bf',
-     armv7l: '30ebb220d932b87a34428d3fa6dae866ac5dc417007d223ec7d87cab96b706bf',
-       i686: 'a48db57667d8867fa0566372c4177711fd6532199b416ac6874e4a82d1310ad0',
-     x86_64: '6f0395b9c855cc827bdc35ca351a4dc8367c42a601972b6b6986f7d8cd6277a5'
+    aarch64: '965a4937f3fd25809350d4403b21f255eec552644927da770e60fbe0bf62f220',
+     armv7l: '965a4937f3fd25809350d4403b21f255eec552644927da770e60fbe0bf62f220',
+       i686: '4fda7d35562cd7d18ae14dbb5e089c1b98d215551798572acea2255a53a6f2a3',
+     x86_64: '47cc626e0b356fd819f3536e8a18592a8b9a7663b6cabe5215c8b52666bd5839'
   })
 
-  def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} CFLAGS=\" -fPIC\""
-    system 'make', '-j1' # doesn't support parallel builds
-  end
+  depends_on 'glibc' # R
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  autotools_make_j1
+
+  autotools_configure_options '--with-pic \
+                               --disable-static'
 end

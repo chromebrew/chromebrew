@@ -6,7 +6,7 @@ class Gemacs < Package
   version '29.1'
   license 'GPL-3+, FDL-1.3+, BSD, HPND, MIT, W3C, unicode, PSF-2'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://ftpmirror.gnu.org/emacs/emacs-29.1.tar.xz'
+  source_url 'https://ftp.gnu.org/gnu/emacs/emacs-29.1.tar.xz'
   source_sha256 'd2f881a5cc231e2f5a03e86f4584b0438f83edd7598a09d24a21bd8d003e2e01'
   binary_compression 'tar.zst'
 
@@ -16,53 +16,56 @@ class Gemacs < Package
      x86_64: '12d16157477a3726a16c349e420e05f70b93bb6f5093faeee6c22f0331a883c9'
   })
 
-  depends_on 'acl' # R
-  depends_on 'alsa_lib' # R
-  depends_on 'at_spi2_core' # R
+  depends_on 'acl' => :executable_only
+  depends_on 'alsa_lib' => :executable_only
+  depends_on 'at_spi2_core' => :executable_only
   depends_on 'cairo'
-  depends_on 'dbus' # R
-  depends_on 'fontconfig' # R
-  depends_on 'freetype' # R
-  depends_on 'gcc_dev' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'gdk_pixbuf' # R
-  depends_on 'giflib' # R
+  depends_on 'cairo' => :executable_only
+  depends_on 'dbus' => :executable_only
+  depends_on 'fontconfig' => :executable_only
+  depends_on 'freetype' => :executable_only
+  depends_on 'gcc_dev' => :executable_only
+  depends_on 'gcc_lib' => :executable_only
+  depends_on 'gdk_pixbuf' => :executable_only
+  depends_on 'giflib' => :executable_only
+  depends_on 'glib' => :executable_only
   depends_on 'glibc' # R
-  depends_on 'glib' # R
-  depends_on 'gmp' # R
-  depends_on 'gnutls' # R
-  depends_on 'gpm' # R
-  depends_on 'gtk3' # R
-  depends_on 'harfbuzz' # R
-  depends_on 'jansson' # R
-  depends_on 'lcms' # R
-  depends_on 'libice' # R
-  depends_on 'libjpeg_turbo' # R
-  depends_on 'libotf' # R
-  depends_on 'libpng' # R
-  depends_on 'librsvg' # R
-  depends_on 'libsm' # R
-  depends_on 'libsoup2' # R
-  depends_on 'libtiff' # R
-  depends_on 'libwebp' # R
-  depends_on 'libx11' # R
-  depends_on 'libxcb' # R
-  depends_on 'libxcomposite' # R
-  depends_on 'libxext' # R
-  depends_on 'libxfixes' # R
-  depends_on 'libxinerama' # R
-  depends_on 'libxi' # R
+  depends_on 'glibc' => :executable_only
+  depends_on 'gmp' => :executable_only
+  depends_on 'gnutls' => :executable_only
+  depends_on 'gpm' => :executable_only
+  depends_on 'gtk3' => :executable_only
+  depends_on 'harfbuzz' => :executable_only
+  depends_on 'jansson' => :executable_only
+  depends_on 'lcms' => :executable_only
+  depends_on 'libice' => :executable_only
+  depends_on 'libjpeg_turbo' => :executable_only
+  depends_on 'libotf' => :executable_only
+  depends_on 'libpng' => :executable_only
+  depends_on 'librsvg' => :executable_only
+  depends_on 'libsm' => :executable_only
+  depends_on 'libsoup2' => :executable_only
+  depends_on 'libtiff' => :executable_only
+  depends_on 'libwebp' => :executable_only
+  depends_on 'libx11' => :executable_only
+  depends_on 'libxcb' => :executable_only
+  depends_on 'libxcomposite' => :executable_only
+  depends_on 'libxext' => :executable_only
+  depends_on 'libxfixes' => :executable_only
+  depends_on 'libxi' => :executable_only
+  depends_on 'libxinerama' => :executable_only
   depends_on 'libxml2' # R
-  depends_on 'libxpm' # R
-  depends_on 'libxrandr' # R
-  depends_on 'libxrender' # R
-  depends_on 'ncurses' # R
-  depends_on 'pango' # R
-  depends_on 'sqlite' # R
+  depends_on 'libxpm' => :executable_only
+  depends_on 'libxrandr' => :executable_only
+  depends_on 'libxrender' => :executable_only
+  depends_on 'ncurses' => :executable_only
+  depends_on 'pango' => :executable_only
+  depends_on 'sqlite' => :executable_only
   depends_on 'texinfo'
   depends_on 'webkit2gtk_4'
-  depends_on 'xcb_util' # R
-  depends_on 'zlib' # R
+  depends_on 'webkit2gtk_4' => :executable_only
+  depends_on 'xcb_util' => :executable_only
+  depends_on 'zlib' => :executable_only
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'

@@ -6,7 +6,7 @@ class Gnuchess < Package
   version '6.2.9'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/chess/gnuchess-6.2.9.tar.gz'
+  source_url 'https://ftp.gnu.org/gnu/chess/gnuchess-6.2.9.tar.gz'
   source_sha256 'ddfcc20bdd756900a9ab6c42c7daf90a2893bf7f19ce347420ce36baebc41890'
   binary_compression 'tpxz'
 
@@ -16,6 +16,10 @@ class Gnuchess < Package
        i686: '8741213f6f4ae25654c7a4df3c5c17566101dffcd8f932eda0048415996b7ef8',
      x86_64: 'fcf26dedf74b36d4b470b89f6accacafb88675b85db8e76862c179560ef7163d'
   })
+
+  depends_on 'gcc_lib' => :executable_only
+  depends_on 'glibc' => :executable_only
+  depends_on 'readline' => :executable_only
 
   def self.build
     system "#{CREW_ENV_OPTIONS} ./configure #{CREW_CONFIGURE_OPTIONS} \

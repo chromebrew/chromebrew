@@ -10,4 +10,5 @@ class Ruby_syntax_suggest < RUBY
 
   conflicts_ok
   no_compile_needed
+  upstream_name 'syntax_suggest'
 end

@@ -6,7 +6,7 @@ class Hello < Package
   version '2.12'
   license 'FDL-1.3 GPL-3'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/hello/hello-2.12.tar.gz'
+  source_url 'https://ftp.gnu.org/gnu/hello/hello-2.12.tar.gz'
   source_sha256 'cf04af86dc085268c5f4470fbae49b18afbc221b78096aab842d934a76bad0ab'
   binary_compression 'tar.zst'
 
@@ -17,7 +17,7 @@ class Hello < Package
      x86_64: '432d72ce76e2224d5af08ddaa323b577dd625cfac7feefe18866c9afdf3b1190'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :executable_only
 
   def self.build
     system "./configure #{CREW_CONFIGURE_OPTIONS}"

@@ -6,7 +6,7 @@ class Bison < Autotools
   version '3.8.2'
   license 'GPL-2'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/bison/bison-#{version}.tar.lz"
+  source_url "https://ftp.gnu.org/gnu/bison/bison-#{version}.tar.lz"
   source_sha256 'fdf98bfe82abb04a34d4356753f7748dbbd2ef1221b1f202852a2b5ce0f78534'
   binary_compression 'tar.zst'
 
@@ -17,6 +17,6 @@ class Bison < Autotools
      x86_64: '4476aa49cf42b79a2fed31e77a7d1df7e11aebb3bf269d036c2666d2ab7e238a'
   })
 
-  depends_on 'gettext' # R
-  depends_on 'glibc' # R
+  depends_on 'gettext' => :executable_only
+  depends_on 'glibc' => :executable_only
 end

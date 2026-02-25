@@ -1,6 +1,6 @@
-# Total size: 4601698
+# Total size: 5692934
 /usr/local/bin/gawk
-/usr/local/bin/gawk-5.3.2
+/usr/local/bin/gawk-5.4.0
 /usr/local/bin/gawkbug
 /usr/local/etc/profile.d/gawk.csh
 /usr/local/etc/profile.d/gawk.sh
@@ -58,20 +58,17 @@
 /usr/local/share/info/gawk_statist.jpg.zst
 /usr/local/share/info/gawkinet.info.zst
 /usr/local/share/info/gawkworkflow.info.zst
+/usr/local/share/info/notes.info.zst
 /usr/local/share/info/pm-gawk.info.zst
+/usr/local/share/locale/ar/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/bg/LC_MESSAGES/gawk.mo
-/usr/local/share/locale/ca/LC_MESSAGES/gawk.mo
-/usr/local/share/locale/da/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/de/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/es/LC_MESSAGES/gawk.mo
-/usr/local/share/locale/fi/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/fr/LC_MESSAGES/gawk.mo
+/usr/local/share/locale/he/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/id/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/it/LC_MESSAGES/gawk.mo
-/usr/local/share/locale/ja/LC_MESSAGES/gawk.mo
-/usr/local/share/locale/ka/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/ko/LC_MESSAGES/gawk.mo
-/usr/local/share/locale/ms/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/nl/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/pl/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/pt/LC_MESSAGES/gawk.mo
@@ -81,7 +78,6 @@
 /usr/local/share/locale/sv/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/tr/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/uk/LC_MESSAGES/gawk.mo
-/usr/local/share/locale/vi/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/gawk.mo
 /usr/local/share/man/man1/gawk.1.zst
 /usr/local/share/man/man1/gawkbug.1.zst

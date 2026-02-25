@@ -1,4 +1,4 @@
-# Total size: 7834104
+# Total size: 7932611
 /usr/local/bin/scite
 /usr/local/lib/scite/liblexilla.so
 /usr/local/lib/scite/libscintilla.so
@@ -55,6 +55,7 @@
 /usr/local/share/scite/eiffel.properties
 /usr/local/share/scite/erlang.properties
 /usr/local/share/scite/escript.properties
+/usr/local/share/scite/escseq.properties
 /usr/local/share/scite/flagship.properties
 /usr/local/share/scite/forth.properties
 /usr/local/share/scite/fortran.properties
