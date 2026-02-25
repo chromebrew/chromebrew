@@ -21,7 +21,6 @@ class Opencv < CMake
 
   depends_on 'ant' => :build
   depends_on 'cairo' # R
-  depends_on 'cmake' => :build
   depends_on 'eigen' => :build
   depends_on 'ffmpeg' # R
   depends_on 'gcc_lib' # R
