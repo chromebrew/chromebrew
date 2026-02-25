@@ -1,7 +1,7 @@
 ---
 # Version 1.7
 name: Generate PR
-run-name: Generate PR for ${{ inputs.branch || github.ref_name }} by @${{ github.actor }}
+run-name: Generate PR for ${{ inputs.branch || github.head_ref || github.ref_name }} by @${{ github.actor }}
 on:
   pull_request:
     types: [labeled]
@@ -35,7 +35,7 @@ on:
         type: number
         default: 5.5
 env:
-  BRANCH: ${{ inputs.branch || github.ref_name }}
+  BRANCH: ${{ inputs.branch || github.head_ref || github.ref_name }}
 permissions:
   actions: write
   contents: write
@@ -44,7 +44,7 @@ permissions:
   repository-projects: read
 jobs:
   debug:
-    if: ${{ ( github.repository_owner == 'chromebrew' ) || ( github.repository_owner == 'chromebrew' && github.event.action  == 'labeled' && github.event.label.name == 'generate_pr' ) }}
+    if: ${{ ( github.repository_owner == 'chromebrew' ) || ( github.repository_owner == 'chromebrew' && github.event.action  == 'labeled' && github.event.label.name == 'regenerate_pr' ) }}
     runs-on: ubuntu-24.04
     steps:
       - name: Dump GitHub context
@@ -79,17 +79,17 @@ jobs:
           application_private_key: ${{ secrets.APPLICATION_PRIVATE_KEY }}
           organization: chromebrew
           revoke_token: true
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           persist-credentials: true
-          ref: ${{ inputs.branch || github.ref_name }}
+          ref: ${{ inputs.branch || github.head_ref || github.ref_name }}
       - name: Set PR to Draft
         id: set-to-draft
         env:
           GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
         run: |
-          PR_NUMBER=$(gh pr list -L 1 -s open -H ${{ inputs.branch || github.ref_name }} | cut -f1)
+          PR_NUMBER=$(gh pr list -L 1 -s open -H ${{ inputs.branch || github.head_ref || github.ref_name }} | cut -f1)
           if [[ -n ${PR_NUMBER} ]]; then
             echo "Setting ${PR_NUMBER} to Draft while workflow runs."
             gh pr ready --undo || true
@@ -99,9 +99,9 @@ jobs:
             gh pr update-branch || true
           else
             echo -e "##\n### Run the following to get this pull request's changes locally for testing.\n\`\`\`bash" >> /tmp/wip_pr.txt
-            echo -e "CREW_REPO=https://github.com/${{ github.repository }}.git CREW_BRANCH=${{ inputs.branch || github.ref_name }} crew update \\" >> /tmp/wip_pr.txt
+            echo -e "CREW_REPO=https://github.com/${{ github.repository }}.git CREW_BRANCH=${{ inputs.branch || github.head_ref || github.ref_name }} crew update \\" >> /tmp/wip_pr.txt
             echo -e "&& yes | crew upgrade\n\`\`\`" >> /tmp/wip_pr.txt
-            gh pr create -d -b WIP -t "WIP ${{ inputs.branch || github.ref_name }}" -F /tmp/wip_pr.txt
+            gh pr create -d -b WIP -t "WIP ${{ inputs.branch || github.head_ref || github.ref_name }}" -F /tmp/wip_pr.txt
             # Create a draft PR and immediately try to update the branch
             # before continuing.
             gh pr update-branch || true
@@ -126,7 +126,7 @@ jobs:
             # Add inputs.packages_to_check_for_build to the packages we
             # will check for architecture and glibc compatibility.
             if [[ -z "${{ steps.changed-files.outputs.packages_all_changed_files }} ${{ inputs.packages_to_check_for_build }}" ]]; then
-              echo "Branch ${{ inputs.branch || github.ref_name }} has no changed package files."
+              echo "Branch ${{ inputs.branch || github.head_ref || github.ref_name }} has no changed package files."
               exit 1
             fi
             # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-files.outputs.packages_all_changed_files) into "foo bar"
@@ -141,7 +141,7 @@ jobs:
             if [[ -n ${GLIBC_232_COMPATIBLE_PACKAGES} ]]; then
               echo "GLIBC_232_COMPATIBLE_PACKAGES=${GLIBC_232_COMPATIBLE_PACKAGES}" >> "$GITHUB_ENV"
               echo "GLIBC_232_COMPATIBLE_PACKAGES=${GLIBC_232_COMPATIBLE_PACKAGES}" >> "$GITHUB_OUTPUT"
-              echo "Branch ${{ inputs.branch || github.ref_name }} has these possibly Glibc 2.32 compatible packages: ${GLIBC_232_COMPATIBLE_PACKAGES}"
+              echo "Branch ${{ inputs.branch || github.head_ref || github.ref_name }} has these possibly Glibc 2.32 compatible packages: ${GLIBC_232_COMPATIBLE_PACKAGES}"
             fi
 
             # If a package doesnt have a min_glibc value, or if it is below 2.37, add it to GLIBC_237_COMPATIBLE_PACKAGES.
@@ -150,7 +150,7 @@ jobs:
             if [[ -n ${GLIBC_237_COMPATIBLE_PACKAGES} ]]; then
               echo "GLIBC_237_COMPATIBLE_PACKAGES=${GLIBC_237_COMPATIBLE_PACKAGES}" >> "$GITHUB_ENV"
               echo "GLIBC_237_COMPATIBLE_PACKAGES=${GLIBC_237_COMPATIBLE_PACKAGES}" >> "$GITHUB_OUTPUT"
-              echo "Branch ${{ inputs.branch || github.ref_name }} has these possibly Glibc 2.37 compatible packages: ${GLIBC_237_COMPATIBLE_PACKAGES}"
+              echo "Branch ${{ inputs.branch || github.head_ref || github.ref_name }} has these possibly Glibc 2.37 compatible packages: ${GLIBC_237_COMPATIBLE_PACKAGES}"
             fi
 
             # If a package has a compatibility of 'all' or one that includes 'x86_64', add it to x86_64_PACKAGES.
@@ -159,7 +159,7 @@ jobs:
             if [[ -n ${x86_64_PACKAGES} ]]; then
               echo "x86_64_PACKAGES=${x86_64_PACKAGES}" >> "$GITHUB_ENV"
               echo "x86_64_PACKAGES=${x86_64_PACKAGES}" >> "$GITHUB_OUTPUT"
-              echo "Branch ${{ inputs.branch || github.ref_name }} has these x86_64 compatible packages: ${x86_64_PACKAGES}"
+              echo "Branch ${{ inputs.branch || github.head_ref || github.ref_name }} has these x86_64 compatible packages: ${x86_64_PACKAGES}"
             fi
 
             ## If a package has a compatibility of 'all' or one that includes 'armv7l', add it to armv7l_PACKAGES.
@@ -168,7 +168,7 @@ jobs:
             if [[ -n ${armv7l_PACKAGES} ]]; then
               echo "armv7l_PACKAGES=${armv7l_PACKAGES}" >> "$GITHUB_ENV"
               echo "armv7l_PACKAGES=${armv7l_PACKAGES}" >> "$GITHUB_OUTPUT"
-              echo "Branch ${{ inputs.branch || github.ref_name }} has these armv7l compatible packages: ${armv7l_PACKAGES}"
+              echo "Branch ${{ inputs.branch || github.head_ref || github.ref_name }} has these armv7l compatible packages: ${armv7l_PACKAGES}"
             fi
 
             ## If a package has a compatibility of 'all' or one that includes 'i686', add it to i686_PACKAGES.
@@ -177,7 +177,7 @@ jobs:
             if [[ -n ${i686_PACKAGES} ]]; then
               echo "i686_PACKAGES=${i686_PACKAGES}" >> "$GITHUB_ENV"
               echo "i686_PACKAGES=${i686_PACKAGES}" >> "$GITHUB_OUTPUT"
-              echo "Branch ${{ inputs.branch || github.ref_name }} has these i686 compatible packages: ${i686_PACKAGES}"
+              echo "Branch ${{ inputs.branch || github.head_ref || github.ref_name }} has these i686 compatible packages: ${i686_PACKAGES}"
             fi
       - name: Generate Creation Matrix
         id: set-generate-matrix
@@ -214,7 +214,7 @@ jobs:
       - setup
     env:
       CREW_REPO: ${{ github.event.repository.clone_url }}
-      CREW_BRANCH: ${{ inputs.branch || github.ref_name }}
+      CREW_BRANCH: ${{ inputs.branch || github.head_ref || github.ref_name }}
       TARGET_ARCH: ${{ matrix.arch }}
       GLIBC_232_COMPATIBLE_PACKAGES: ${{ needs.setup.outputs.glibc_232_compat }}
       GLIBC_237_COMPATIBLE_PACKAGES: ${{ needs.setup.outputs.glibc_237_compat }}
@@ -223,7 +223,7 @@ jobs:
       armv7l_PACKAGES: ${{ needs.setup.outputs.armv7l_packages }}
     if: ${{ !cancelled() && ( inputs.update_package_files ) && needs.setup.outputs.changed_packages }}
     concurrency:
-      group: ${{ matrix.arch }}-${{ github.workflow }}-${{ inputs.branch || github.ref_name }}
+      group: ${{ matrix.arch }}-${{ github.workflow }}-${{ inputs.branch || github.head_ref || github.ref_name }}
       cancel-in-progress: true
     steps:
       - name: Fail if build jobs failed
@@ -253,7 +253,7 @@ jobs:
         env:
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
         run: echo "$MATRIX_CONTEXT"
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           persist-credentials: true
@@ -331,8 +331,8 @@ jobs:
             sudo apt-get autoremove -qq -o=Dpkg::Use-Pty=0 -y &>/dev/null) &
 
             git fetch origin
-            git checkout "${{ inputs.branch || github.ref_name }}"
-            git reset --hard "origin/${{ inputs.branch || github.ref_name }}"
+            git checkout "${{ inputs.branch || github.head_ref || github.ref_name }}"
+            git reset --hard "origin/${{ inputs.branch || github.head_ref || github.ref_name }}"
             git log --oneline -10
             docker pull --platform "${PLATFORM}" "${CONTAINER}"
             # Detection of /output/pkg_cache dir triggers setting
@@ -373,7 +373,7 @@ jobs:
               -e GCONV_PATH="/usr/local/lib${LIB_SUFFIX}/gconv" \
               -e CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES="${CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES}" \
               -e CREW_REPO="${CREW_REPO}" \
-              -e CREW_BRANCH="${{ inputs.branch || github.ref_name }}" \
+              -e CREW_BRANCH="${{ inputs.branch || github.head_ref || github.ref_name }}" \
               -e GITLAB_TOKEN="${{ secrets.GITLAB_TOKEN }}" \
               -e GITLAB_TOKEN_USERNAME="${{ secrets.GITLAB_TOKEN_USERNAME }}" \
               ${CI_PASSTHROUGH} \
@@ -396,9 +396,9 @@ jobs:
             git config user.email "${{ github.actor }}@users.noreply.github.com"
             git add .
             git stash || true
-            git fetch origin ${{ inputs.branch || github.ref_name }}
+            git fetch origin ${{ inputs.branch || github.head_ref || github.ref_name }}
             git stash pop || true
-            git commit -am "${{ inputs.branch || github.ref_name }}: Package File Update Run on ${PLATFORM} container." && git push origin ${{ inputs.branch || github.ref_name }}
+            git commit -am "${{ inputs.branch || github.head_ref || github.ref_name }}: Package File Update Run on ${PLATFORM} container." && git push origin ${{ inputs.branch || github.head_ref || github.ref_name }}
             git log --oneline -10
           fi
   build-check:
@@ -415,11 +415,11 @@ jobs:
         run: exit 1
       - name: Report update & build success
         run: echo "Update & build jobs succeeded. Creating a PR."
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           persist-credentials: true
-          ref: ${{ inputs.branch || github.ref_name }}
+          ref: ${{ inputs.branch || github.head_ref || github.ref_name }}
       - name: Get GH Token
         id: get_workflow_token
         uses: peter-murray/workflow-application-token-action@v4
@@ -433,12 +433,12 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
         run: |
-          PR_NUMBER=$(gh pr list -L 1 -s open -H ${{ inputs.branch || github.ref_name }} | cut -f1)
+          PR_NUMBER=$(gh pr list -L 1 -s open -H ${{ inputs.branch || github.head_ref || github.ref_name }} | cut -f1)
           if [[ -n ${PR_NUMBER} ]]; then
             # Try to update branch immediately.
             gh pr update-branch --rebase || true
           else
-            gh pr create -d -b WIP -t "WIP ${{ inputs.branch || github.ref_name }}"
+            gh pr create -d -b WIP -t "WIP ${{ inputs.branch || github.head_ref || github.ref_name }}"
             # Create a draft PR and immediately try to update the branch
             # before continuing.
             gh pr update-branch --rebase || true
@@ -446,10 +446,10 @@ jobs:
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
           git checkout master && git fetch origin master
-          git checkout "${{ inputs.branch || github.ref_name }}"
-          git fetch origin "${{ inputs.branch || github.ref_name }}"
+          git checkout "${{ inputs.branch || github.head_ref || github.ref_name }}"
+          git fetch origin "${{ inputs.branch || github.head_ref || github.ref_name }}"
           git log --no-merges --oneline -10
-          git log --no-merges --oneline master..${{ inputs.branch || github.ref_name }} | grep -v "Merge branch 'master'\|Build Run on\|Package File Update Run on\|lint$" | tr '\n' '\0' | xargs -0 -n1 echo "- $*" >> /tmp/commits.txt
+          git log --no-merges --oneline master..${{ inputs.branch || github.head_ref || github.ref_name }} | grep -v "Merge branch 'master'\|Build Run on\|Package File Update Run on\|lint$" | tr '\n' '\0' | xargs -0 -n1 echo "- $*" >> /tmp/commits.txt
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v47
@@ -476,10 +476,10 @@ jobs:
             git config user.name "${{ github.actor }}"
             git config user.email "${{ github.actor }}@users.noreply.github.com"
             git checkout master && git fetch origin master
-            git checkout "${{ inputs.branch || github.ref_name }}"
-            git fetch origin "${{ inputs.branch || github.ref_name }}"
+            git checkout "${{ inputs.branch || github.head_ref || github.ref_name }}"
+            git fetch origin "${{ inputs.branch || github.head_ref || github.ref_name }}"
             set +e
-            CHANGED_PACKAGE_FILES=$(git diff --name-only master..${{ inputs.branch || github.ref_name }} | grep '^packages/')
+            CHANGED_PACKAGE_FILES=$(git diff --name-only master..${{ inputs.branch || github.head_ref || github.ref_name }} | grep '^packages/')
             set -e
             if [[ -n "${CHANGED_PACKAGE_FILES}" ]]; then
               # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-files.outputs.packages_all_changed_files) into "foo bar"
@@ -497,7 +497,7 @@ jobs:
           CHANGED_MANIFEST_FILES: ${{ steps.changed-files.outputs.manifest_all_changed_files }}
           CHANGED_OTHER_FILES: ${{ steps.changed-files.outputs.other_all_changed_files }}
           CHANGED_PACKAGES: ${{ steps.changed-packages.outputs.CHANGED_PACKAGES }}
-          CREW_BRANCH: ${{ inputs.branch || github.ref_name }}
+          CREW_BRANCH: ${{ inputs.branch || github.head_ref || github.ref_name }}
           DRAFT_PR: ${{ inputs.draft_pr }}
           GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
           PR_LABEL: ${{ inputs.pr_label }}
@@ -573,22 +573,22 @@ jobs:
             echo -e "##\n- [x] This PR has no manifest .filelist changes. _(Package changes have neither added nor removed files.)_" >> /tmp/pr.txt
           fi
           echo -e "##\n### Run the following to get this pull request's changes locally for testing.\n\`\`\`bash" >> /tmp/pr.txt
-          echo -e "CREW_REPO=https://github.com/${{ github.repository }}.git CREW_BRANCH=${{ inputs.branch || github.ref_name }} crew update \\" >> /tmp/pr.txt
+          echo -e "CREW_REPO=https://github.com/${{ github.repository }}.git CREW_BRANCH=${{ inputs.branch || github.head_ref || github.ref_name }} crew update \\" >> /tmp/pr.txt
           echo -e "&& yes | crew upgrade\n\`\`\`" >> /tmp/pr.txt
           [[ -n "${PKG_DELTA[*]}" ]] && PKG_DELTAS="$(join_by , "${PKG_DELTA[@]}")"
           echo "PKG_DELTAS: $PKG_DELTAS"
           cat /tmp/pr.txt
-          PR_NUMBER=$(gh pr list -L 1 -s open -H ${{ inputs.branch || github.ref_name }} | cut -f1)
+          PR_NUMBER=$(gh pr list -L 1 -s open -H ${{ inputs.branch || github.head_ref || github.ref_name }} | cut -f1)
           PR_TITLE_INPUT="${{ inputs.pr_title }}"
           if [[ -z ${PR_TITLE_INPUT} ]]; then
-            PR_TITLE="$(git log --oneline master..${{ inputs.branch || github.ref_name }} | grep -v "Merge branch 'master'\|Build Run on\|Package File Update Run on" | tail -n 1 | cut -c 11-)"
+            PR_TITLE="$(git log --oneline master..${{ inputs.branch || github.head_ref || github.ref_name }} | grep -v "Merge branch 'master'\|Build Run on\|Package File Update Run on" | tail -n 1 | cut -c 11-)"
             if [[ -z ${PKG_DELTAS} ]]; then
               TITLE="$(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//")"
             else
               TITLE="$(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") — ${PKG_DELTAS}"
             fi
           else
-            if [[ "${PR_TITLE_INPUT}" == *"${{ inputs.branch || github.ref_name }}"* ]]; then
+            if [[ "${PR_TITLE_INPUT}" == *"${{ inputs.branch || github.head_ref || github.ref_name }}"* ]]; then
               PR_TITLE="${PKG_DELTAS}"
               TITLE="${PR_TITLE}"
             else
@@ -632,8 +632,8 @@ jobs:
           fi
           echo "PR_NUMBER is ${PR_NUMBER}"
           echo "PR_NUMBER=${PR_NUMBER}" >> "$GITHUB_ENV"
-          # Remove the generate_pr label if set.
-          gh pr edit --remove-label generate_pr || true
+          # Remove the regenerate_pr label if set.
+          gh pr edit --remove-label regenerate_pr || true
           # Trigger workflow runs:
-          # gh workflow run Unit-Test.yml -R ${{ github.repository }} -r ${{ inputs.branch || github.ref_name }}
-          # gh workflow run Linter-Handoff.yml -R ${{ github.repository }} -r ${{ inputs.branch || github.ref_name }}
+          # gh workflow run Unit-Test.yml -R ${{ github.repository }} -r ${{ inputs.branch || github.head_ref || github.ref_name }}
+          # gh workflow run Linter-Handoff.yml -R ${{ github.repository }} -r ${{ inputs.branch || github.head_ref || github.ref_name }}

@@ -37,7 +37,7 @@ jobs:
     outputs:
       category: ${{ steps.changed-file-extensions.outputs.category }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Update branch

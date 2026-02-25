@@ -96,7 +96,7 @@ jobs:
           TIMESTAMP="$(date -u +%F-%H%Z)"
           export TIMESTAMP
           echo "TIMESTAMP=${TIMESTAMP}" >> "$GITHUB_OUTPUT"
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           persist-credentials: true
@@ -260,7 +260,7 @@ jobs:
       - name: Build Container cleanup
         run: |
             sudo rm -rf release
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           persist-credentials: true
@@ -416,7 +416,7 @@ jobs:
           application_private_key: ${{ secrets.APPLICATION_PRIVATE_KEY }}
           organization: chromebrew
           revoke_token: true
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           persist-credentials: true

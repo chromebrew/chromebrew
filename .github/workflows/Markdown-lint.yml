@@ -11,7 +11,7 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-       - uses: actions/checkout@v5
+       - uses: actions/checkout@v6
        - name: Markdown-lint
          uses: reviewdog/action-markdownlint@v0
          with:
