@@ -490,7 +490,7 @@ def download
   sha256sum = PackageUtils.get_sha256(@pkg, build_from_source: @opt_source || @pkg.build_from_source)
 
   # Do an early check for a missing binary package and if so rebuild.
-  if !@pkg.source?(@device[:architecture]) && @pkg.superclass.to_s == 'Pip'
+  if (!@pkg.source?(@device[:architecture]) && @pkg.superclass.to_s == 'Pip') || ((@pkg.no_source_build? || @pkg.gem_compile_needed?) && !@pkg.in_upgrade && !@pkg.in_install && caller.grep(/download_command/).empty?)
     if `curl -sI #{test_url}`.lines.first.split[1] == '200' && PackageUtils.get_gitlab_pkginfo(@pkg.name, @pkg.version, ARCH, false, false)[:pkg_sha256] == sha256sum
       url = test_url
     else
@@ -526,6 +526,8 @@ def download
 
   git = true unless @pkg.git_hashtag.to_s.empty?
   gitlab_binary_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{@pkg.name}/#{@pkg.version}_#{@device[:architecture]}/#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.#{@pkg.binary_compression}"
+  # Do a quick check to see if the binaries are available.
+  # @pkg.missing_binaries = true unless `curl -sI #{gitlab_binary_url}`.lines.first.split[1] == '200'
 
   if (@pkg.cache_build? || CREW_CACHE_BUILD) && !File.file?(build_cachefile) && !@pkg.no_source_build? && !File.file?(File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.#{@pkg.binary_compression}")) && `curl -fsI #{gitlab_binary_url}`.lines.first.split[1] != '200'
 
@@ -600,6 +602,9 @@ def download
         else
           puts "Cannot find cached archive at #{cachefile}. 😔 Will download.".orange
           cachefile = ''
+          # If binaries are unavailable and there is no cached file,
+          # skip to next.
+          next if @pkg.missing_binaries
         end
       end
       # Download file if not cached.
