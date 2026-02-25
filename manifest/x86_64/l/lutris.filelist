@@ -1,4 +1,4 @@
-# Total size: 9137042
+# Total size: 9417317
 /usr/local/bin/lutris
 /usr/local/lib/python3.14/site-packages/lutris/__init__.py
 /usr/local/lib/python3.14/site-packages/lutris/__pycache__/__init__.cpython-314.pyc
@@ -203,6 +203,7 @@
 /usr/local/lib/python3.14/site-packages/lutris/migrations/__pycache__/migrate_ge_proton.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/lutris/migrations/__pycache__/migrate_hidden_category.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/lutris/migrations/__pycache__/migrate_hidden_ids.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/lutris/migrations/__pycache__/migrate_proton_to_wine_dir.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/lutris/migrations/__pycache__/migrate_sortname.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/lutris/migrations/__pycache__/migrate_steam_appids.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/lutris/migrations/__pycache__/retrieve_discord_appids.cpython-314.pyc
@@ -211,6 +212,7 @@
 /usr/local/lib/python3.14/site-packages/lutris/migrations/migrate_ge_proton.py
 /usr/local/lib/python3.14/site-packages/lutris/migrations/migrate_hidden_category.py
 /usr/local/lib/python3.14/site-packages/lutris/migrations/migrate_hidden_ids.py
+/usr/local/lib/python3.14/site-packages/lutris/migrations/migrate_proton_to_wine_dir.py
 /usr/local/lib/python3.14/site-packages/lutris/migrations/migrate_sortname.py
 /usr/local/lib/python3.14/site-packages/lutris/migrations/migrate_steam_appids.py
 /usr/local/lib/python3.14/site-packages/lutris/migrations/retrieve_discord_appids.py
@@ -247,6 +249,7 @@
 /usr/local/lib/python3.14/site-packages/lutris/runners/__pycache__/runner.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/lutris/runners/__pycache__/ryujinx.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/lutris/runners/__pycache__/scummvm.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/lutris/runners/__pycache__/shadps4.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/lutris/runners/__pycache__/snes9x.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/lutris/runners/__pycache__/steam.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/lutris/runners/__pycache__/vice.cpython-314.pyc
@@ -254,6 +257,7 @@
 /usr/local/lib/python3.14/site-packages/lutris/runners/__pycache__/web.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/lutris/runners/__pycache__/wine.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/lutris/runners/__pycache__/xemu.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/lutris/runners/__pycache__/xenia.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/lutris/runners/__pycache__/yuzu.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/lutris/runners/__pycache__/zdoom.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/lutris/runners/atari800.py
@@ -290,6 +294,7 @@
 /usr/local/lib/python3.14/site-packages/lutris/runners/runner.py
 /usr/local/lib/python3.14/site-packages/lutris/runners/ryujinx.py
 /usr/local/lib/python3.14/site-packages/lutris/runners/scummvm.py
+/usr/local/lib/python3.14/site-packages/lutris/runners/shadps4.py
 /usr/local/lib/python3.14/site-packages/lutris/runners/snes9x.py
 /usr/local/lib/python3.14/site-packages/lutris/runners/steam.py
 /usr/local/lib/python3.14/site-packages/lutris/runners/vice.py
@@ -297,6 +302,7 @@
 /usr/local/lib/python3.14/site-packages/lutris/runners/web.py
 /usr/local/lib/python3.14/site-packages/lutris/runners/wine.py
 /usr/local/lib/python3.14/site-packages/lutris/runners/xemu.py
+/usr/local/lib/python3.14/site-packages/lutris/runners/xenia.py
 /usr/local/lib/python3.14/site-packages/lutris/runners/yuzu.py
 /usr/local/lib/python3.14/site-packages/lutris/runners/zdoom.py
 /usr/local/lib/python3.14/site-packages/lutris/runtime.py
@@ -394,6 +400,7 @@
 /usr/local/lib/python3.14/site-packages/lutris/util/__pycache__/savesync.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/lutris/util/__pycache__/settings.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/lutris/util/__pycache__/shell.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/lutris/util/__pycache__/sniper.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/lutris/util/__pycache__/standalone_scripts.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/lutris/util/__pycache__/strings.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/lutris/util/__pycache__/system.cpython-314.pyc
@@ -487,6 +494,7 @@
 /usr/local/lib/python3.14/site-packages/lutris/util/savesync.py
 /usr/local/lib/python3.14/site-packages/lutris/util/settings.py
 /usr/local/lib/python3.14/site-packages/lutris/util/shell.py
+/usr/local/lib/python3.14/site-packages/lutris/util/sniper.py
 /usr/local/lib/python3.14/site-packages/lutris/util/standalone_scripts.py
 /usr/local/lib/python3.14/site-packages/lutris/util/steam/__init__.py
 /usr/local/lib/python3.14/site-packages/lutris/util/steam/__pycache__/__init__.cpython-314.pyc
@@ -586,6 +594,7 @@
 /usr/local/share/locale/nl/LC_MESSAGES/lutris.mo
 /usr/local/share/locale/pl/LC_MESSAGES/lutris.mo
 /usr/local/share/locale/pt_BR/LC_MESSAGES/lutris.mo
+/usr/local/share/locale/pt_PT/LC_MESSAGES/lutris.mo
 /usr/local/share/locale/ru/LC_MESSAGES/lutris.mo
 /usr/local/share/locale/tr/LC_MESSAGES/lutris.mo
 /usr/local/share/locale/vi/LC_MESSAGES/lutris.mo
