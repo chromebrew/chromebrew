@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Freerdp < CMake
   description 'FreeRDP is a free implementation of the Remote Desktop Protocol.'
   homepage 'https://www.freerdp.com/'
-  version "3.22.0-#{CREW_ICU_VER}"
+  version "3.23.0-#{CREW_ICU_VER}"
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/FreeRDP/FreeRDP.git'
@@ -11,9 +11,9 @@ class Freerdp < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9936e5c2e868f173b0e50a11e77d19a12ee07f2405d1f59de0eb011bf58319b1',
-     armv7l: '9936e5c2e868f173b0e50a11e77d19a12ee07f2405d1f59de0eb011bf58319b1',
-     x86_64: 'd5b02b7919a3b7d5e131b920ad31821ee18b5eeaafb03a5419548baef1815a79'
+    aarch64: 'cf8d67ed0d0add452221deb6e43758d764a2b4059c9ebd2701d7e2e77c930434',
+     armv7l: 'cf8d67ed0d0add452221deb6e43758d764a2b4059c9ebd2701d7e2e77c930434',
+     x86_64: '8a8f6665c2d22845b17b01d198f5f489ffd1fd6782e5854d904b586b28eb077a'
   })
 
   depends_on 'alsa_lib' # R
@@ -47,25 +47,25 @@ class Freerdp < CMake
   depends_on 'libsoxr' # R
   depends_on 'libusb' # R
   depends_on 'libx11' # R
-  depends_on 'libxcursor' # R
+  depends_on 'libxcursor' => :executable_only
   depends_on 'libxdamage' # R
   depends_on 'libxext' # R
   depends_on 'libxfixes' # R
-  depends_on 'libxi' # R
+  depends_on 'libxi' => :executable_only
   depends_on 'libxinerama' # R
   depends_on 'libxkbcommon' # R
   depends_on 'libxkbfile' # R
-  depends_on 'libxrandr' # R
-  depends_on 'libxrender' # R
+  depends_on 'libxrandr' => :executable_only
+  depends_on 'libxrender' => :executable_only
   depends_on 'libxtst' # R
-  depends_on 'libxv' # R
+  depends_on 'libxv' => :executable_only
   depends_on 'linux_pam' # R
   depends_on 'openh264' # R
   depends_on 'openssl' # R
   depends_on 'pango' # R
   depends_on 'pulseaudio' # R
-  depends_on 'sdl2' # R
-  depends_on 'sdl2_ttf' # R
+  depends_on 'sdl2' => :executable_only
+  depends_on 'sdl2_ttf' => :executable_only
   depends_on 'sommelier' => :logical
   depends_on 'uriparser' # R
   depends_on 'wayland' # R
