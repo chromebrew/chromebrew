@@ -355,7 +355,7 @@ PY3_PIP_RETRIES                  = ENV.fetch('PY3_PIP_RETRIES', '5')
 # Do adjust necessary variables in install.sh when changed here.
 crew_gcc_ver_default = '15'
 crew_icu_ver_default = '77.1'
-crew_llvm_ver_default = '21'
+crew_llvm_ver_default = '22'
 crew_perl_ver_default = '5.42'
 crew_py_ver_default = '3.14'
 crew_ruby_ver_default = '4.0'
