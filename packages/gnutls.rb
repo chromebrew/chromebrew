@@ -46,6 +46,14 @@ class Gnutls < Autotools
     system "#{CREW_PREFIX}/bin/update-ca-certificates --fresh --certsconf #{CREW_PREFIX}/etc/ca-certificates.conf"
   end
 
+  def self.patch
+    patches = [
+      # nettle 4.0 patch
+      ['https://gitlab.com/gnutls/gnutls/-/merge_requests/2075.diff', '8ad95e64281f6d8a952a080da0b9f56b83c8eb460f4f27227b36ab2e6bf314c2']
+    ]
+    ConvenienceFunctions.patch(patches)
+  end
+
   autotools_configure_options "--disable-doc \
       --enable-manpages \
       --enable-shared \
