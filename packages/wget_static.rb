@@ -19,7 +19,7 @@ class Wget_static < Package
        x86_64: 'b8a286b93cb70d16b5f63ec362193730ddb10ae96c6ec889b6b1923be6cc10c9'
     })
 
-  conflicts_ok # wget2 will conflict.
+  conflicts_with 'wget2'
   ignore_updater
   no_compile_needed
 
