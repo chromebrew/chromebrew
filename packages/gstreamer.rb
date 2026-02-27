@@ -25,7 +25,6 @@ class Gstreamer < Meson
   depends_on 'elfutils' # R
   depends_on 'faac' # R
   depends_on 'faad2' # R
-  depends_on 'ffmpeg' # R
   depends_on 'ffmpeg' => :logical
   depends_on 'flac' # R
   depends_on 'gcc_lib' # R
@@ -37,7 +36,6 @@ class Gstreamer < Meson
   # depends_on 'gsm' # R
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
-  depends_on 'intel_media_sdk' # R
   depends_on 'intel_media_sdk' if ARCH.eql?('x86_64') # R
   depends_on 'json_glib' # R
   depends_on 'lcms' # R
@@ -65,7 +63,7 @@ class Gstreamer < Meson
   depends_on 'libusb' # R
   depends_on 'libva' # R
   depends_on 'libvorbis' # R
-  # depends_on 'libvpx' # R
+  depends_on 'libvpx' => :build
   depends_on 'libwebp' # R
   depends_on 'libx11' # R
   depends_on 'libx264' # R
@@ -90,7 +88,6 @@ class Gstreamer < Meson
   depends_on 'opus' # R
   depends_on 'opusfile' => :build
   depends_on 'pango' # R
-  depends_on 'pulseaudio' # R
   depends_on 'pulseaudio' => :logical
   depends_on 'py3_gitlint' => :build
   depends_on 'py3_setuptools' => :build
@@ -109,7 +106,7 @@ class Gstreamer < Meson
   depends_on 'zvbi' # R
 
   # no_lto
-  conflicts_ok # conflicts with libglvnd
+  conflicts_with 'libglvnd'
   gnome
 
   def self.prebuild
