@@ -19,8 +19,9 @@ class Terraform < Package
      x86_64: '364c6ee08b0cb8fcbb28a115aacb2aa48e88abc56c149170bd65c2f75d98ea8d'
   })
 
+  no_compile_needed
+
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.install 'terraform', "#{CREW_DEST_PREFIX}/bin/terraform", mode: 0o755
   end
 
