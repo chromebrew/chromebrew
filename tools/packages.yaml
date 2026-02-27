@@ -10180,6 +10180,11 @@ url: https://github.com/wez/wezterm/releases
 activity: low
 ---
 kind: url
+name: wget_static
+url: https://ftp.gnu.org/gnu/wget/
+activity: none
+---
+kind: url
 name: wget2
 url: https://ftp.gnu.org/gnu/wget/
 activity: low
