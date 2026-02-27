@@ -9260,6 +9260,11 @@ url: https://freedesktop.org/software/startup-notification/releases
 activity: none
 ---
 kind: url
+name: static_get
+url: https://github.com/minos-org/minos-static
+activity: none
+---
+kind: url
 name: stellarium
 url: https://github.com/Stellarium/stellarium/releases
 activity: medium
