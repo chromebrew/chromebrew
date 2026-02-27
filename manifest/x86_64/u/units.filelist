@@ -1,12 +1,16 @@
-# Total size: 907860
+# Total size: 918379
 /usr/local/bin/units
 /usr/local/bin/units_cur
 /usr/local/com/units/cpi.units
+/usr/local/com/units/crypto.units
 /usr/local/com/units/currency.units
+/usr/local/com/units/metal_prices.units
 /usr/local/share/info/units.info.zst
 /usr/local/share/man/man1/units.1.zst
 /usr/local/share/units/cpi.units
+/usr/local/share/units/crypto.units
 /usr/local/share/units/currency.units
 /usr/local/share/units/definitions.units
 /usr/local/share/units/elements.units
 /usr/local/share/units/locale_map.txt
+/usr/local/share/units/metal_prices.units
