@@ -51,7 +51,7 @@ class Gnutls < Autotools
       # nettle 4.0 patch
       ['https://gitlab.com/gnutls/gnutls/-/merge_requests/2075.diff', '890a5b576253d1088f91e187e0a2979283d034b7d5f41eca13c0e857f37e61f3']
     ]
-    ConvenienceFunctions.patch(patches)
+    ConvenienceFunctions.patch(patches) if version == '3.8.12'
   end
 
   autotools_configure_options "--disable-doc \
