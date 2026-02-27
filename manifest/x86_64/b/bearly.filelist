@@ -1,4 +1,4 @@
-# Total size: 260890325
+# Total size: 313562604
 /usr/local/bin/bearly
 /usr/local/share/applications/bearly.desktop
 /usr/local/share/bearly/AppRun
@@ -86,7 +86,7 @@
 /usr/local/share/bearly/usr/lib/libgconf-2.so.4
 /usr/local/share/bearly/usr/lib/libindicator.so.7
 /usr/local/share/bearly/usr/lib/libnotify.so.4
-/usr/local/share/bearly/usr/share/icons/hicolor/0x0/apps/bearly.png
+/usr/local/share/bearly/usr/share/icons/hicolor/1024x1024/apps/bearly.png
 /usr/local/share/bearly/v8_context_snapshot.bin
 /usr/local/share/bearly/vk_swiftshader_icd.json
-/usr/local/share/icons/hicolor/0x0/apps/bearly.png
+/usr/local/share/icons/hicolor/1024x1024/apps/bearly.png
