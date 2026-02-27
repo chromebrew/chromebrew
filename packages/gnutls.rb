@@ -33,7 +33,7 @@ class Gnutls < Autotools
   depends_on 'openssl' # R
   depends_on 'p11kit' # R
   depends_on 'trousers' => :build
-  depends_on 'wget2' => :build
+  depends_on 'wget_static' => :build
   depends_on 'zlib' # R
   depends_on 'zstd' # R
 
@@ -49,7 +49,7 @@ class Gnutls < Autotools
   def self.patch
     patches = [
       # nettle 4.0 patch
-      ['https://gitlab.com/gnutls/gnutls/-/merge_requests/2075.diff', '8ad95e64281f6d8a952a080da0b9f56b83c8eb460f4f27227b36ab2e6bf314c2']
+      ['https://gitlab.com/gnutls/gnutls/-/merge_requests/2075.diff', '890a5b576253d1088f91e187e0a2979283d034b7d5f41eca13c0e857f37e61f3']
     ]
     ConvenienceFunctions.patch(patches)
   end
