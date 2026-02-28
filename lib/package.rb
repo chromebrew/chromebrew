@@ -190,13 +190,13 @@ class Package
     # Add current package to @checked_list for preventing extra checks.
     @checked_list.merge!({ pkg_name => pkg_tags })
 
-    pkg_obj = load_package(File.join(CREW_PACKAGES_PATH, "#{pkg_name}.rb"))
-    is_source = pkg_obj.source?(ARCH.to_sym) or pkg_obj.build_from_source
-    deps = pkg_obj.dependencies
+    @dep_pkg_obj = load_package(File.join(CREW_PACKAGES_PATH, "#{pkg_name}.rb"))
+    is_source = @dep_pkg_obj.source?(ARCH.to_sym) or @dep_pkg_obj.build_from_source
+    deps = @dep_pkg_obj.dependencies
 
     # Append buildessential to deps if building from source is needed/specified.
     if ((include_build_deps == true) || ((include_build_deps == 'auto') && is_source)) &&
-       !pkg_obj.no_compile_needed? &&
+       !@dep_pkg_obj.no_compile_needed? &&
        !exclude_buildessential &&
        !@checked_list.keys.include?('buildessential')
 
@@ -207,8 +207,8 @@ class Package
     expanded_deps = deps.uniq.map do |dep, (dep_tags, ver_check, dep_architectures)|
       # Check build dependencies only if building from source is needed/specified.
       # Do not recursively find :build based build dependencies.
-      next unless dep_architectures.include?(ARCH) && ((include_build_deps == true && @crew_current_package == pkg_obj.name) ||
-                  ((include_build_deps == 'auto') && is_source && @crew_current_package == pkg_obj.name) ||
+      next unless dep_architectures.include?(ARCH) && ((include_build_deps == true && @crew_current_package == @dep_pkg_obj.name) ||
+                  ((include_build_deps == 'auto') && is_source && @crew_current_package == @dep_pkg_obj.name) ||
                   !dep_tags.include?(:build))
 
       # Overwrite tags if parent dependency is a build dependency.
@@ -350,7 +350,7 @@ class Package
     else
       # Parse "depends_on name".
       dep_name = dependency
-      dep_compatibility = pkg_obj.compatibility.split
+      dep_compatibility = @dep_pkg_obj.compatibility.split
       dep_architectures = dep_compatibility == 'all' ? %w[aarch64 armv7l i686 x86_64] : dep_compatibility
     end
 
