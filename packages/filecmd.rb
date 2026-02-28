@@ -3,7 +3,7 @@ require 'package'
 class Filecmd < Package
   description 'file and libmagic determine file type'
   homepage 'https://darwinsys.com/file/'
-  version '5.46-2'
+  version '5.47'
   license 'BSD-2 and GPL-3+' # Chromebrew's filefix is GPL-3+, file itself is BSD-2
   compatibility 'all'
   source_url 'https://github.com/file/file.git'
