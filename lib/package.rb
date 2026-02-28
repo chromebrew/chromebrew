@@ -204,12 +204,12 @@ class Package
     end
 
     # Parse dependencies recursively.
-    expanded_deps = deps.uniq.map do |dep, (dep_tags, ver_check)|
+    expanded_deps = deps.uniq.map do |dep, (dep_tags, ver_check, architectures)|
       # Check build dependencies only if building from source is needed/specified.
       # Do not recursively find :build based build dependencies.
       next unless (include_build_deps == true && @crew_current_package == pkg_obj.name) ||
                   ((include_build_deps == 'auto') && is_source && @crew_current_package == pkg_obj.name) ||
-                  !dep_tags.include?(:build)
+                  !dep_tags.include?(:build) || architectures.include?(ARCH)
 
       # Overwrite tags if parent dependency is a build dependency.
       # (for build dependencies highlighting)
@@ -332,7 +332,7 @@ class Package
     puts tree_view
   end
 
-  def self.depends_on(dependency, ver_range = nil)
+  def self.depends_on(dependency, ver_range = nil, architectures = %w[aarch64 armv7l i686 x86_64])
     @dependencies ||= {}
     ver_check = nil
     dep_tags = []
@@ -341,6 +341,8 @@ class Package
     if dependency.is_a?(Hash)
       # Parse "depends_on name => <tags: Symbol|Array>".
       dep_name, tags = dependency.first
+
+      tags.intersection(architectures) if tags.is_a?(Array) && !tags.intersect?(architectures).nil?
 
       # Convert `tags` to array in case `tags` is a symbol.
       dep_tags += [tags].flatten

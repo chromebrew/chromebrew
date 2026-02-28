@@ -36,7 +36,7 @@ class Gstreamer < Meson
   # depends_on 'gsm' # R
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
-  depends_on 'intel_media_sdk' if ARCH.eql?('x86_64') # R
+  depends_on 'intel_media_sdk' => [:runtime, 'x86_64']
   depends_on 'json_glib' # R
   depends_on 'lcms' # R
   depends_on 'libaom' # R
