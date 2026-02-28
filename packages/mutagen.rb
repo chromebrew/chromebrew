@@ -3,21 +3,23 @@ require 'package'
 class Mutagen < Package
   description 'Mutagen provides real-time file synchronization and flexible network forwarding, extending the reach of your existing development tools to cloud-based containers and infrastructure.'
   homepage 'https://mutagen.io/'
-  version '0.17.5'
+  version '0.18.1'
   license 'GPL-2'
   compatibility 'all'
   source_url({
-    aarch64: 'https://github.com/mutagen-io/mutagen/releases/download/v0.17.5/mutagen_linux_arm_v0.17.5.tar.gz',
-     armv7l: 'https://github.com/mutagen-io/mutagen/releases/download/v0.17.5/mutagen_linux_arm_v0.17.5.tar.gz',
-       i686: 'https://github.com/mutagen-io/mutagen/releases/download/v0.17.5/mutagen_linux_386_v0.17.5.tar.gz',
-     x86_64: 'https://github.com/mutagen-io/mutagen/releases/download/v0.17.5/mutagen_linux_amd64_v0.17.5.tar.gz'
+    aarch64: "https://github.com/mutagen-io/mutagen/releases/download/v#{version}/mutagen_linux_arm_v#{version}.tar.gz",
+     armv7l: "https://github.com/mutagen-io/mutagen/releases/download/v#{version}/mutagen_linux_arm_v#{version}.tar.gz",
+       i686: "https://github.com/mutagen-io/mutagen/releases/download/v#{version}/mutagen_linux_386_v#{version}.tar.gz",
+     x86_64: "https://github.com/mutagen-io/mutagen/releases/download/v#{version}/mutagen_linux_amd64_v#{version}.tar.gz"
   })
   source_sha256({
-    aarch64: '96b0aac073d0ea902c1b8040ae88005dd1255bdefec01ee5a18003be7a30174c',
-     armv7l: '96b0aac073d0ea902c1b8040ae88005dd1255bdefec01ee5a18003be7a30174c',
-       i686: '0b98ef515688693c421e3794f9a767604b6868b6bcb6379b8bae70c651c9fd00',
-     x86_64: 'cabee0af590faf822cb5542437e254406b0f037df43781c02bf6eeac267911f6'
+    aarch64: '441599fc7f8212fa009d8a829507b3879d11849dd78fcc1f3a773bfa1bc97bb9',
+     armv7l: '441599fc7f8212fa009d8a829507b3879d11849dd78fcc1f3a773bfa1bc97bb9',
+       i686: '58c2bdfb148da219569fb0ddb84aec2e3c121b8538f356dc78c73a989d67c4b6',
+     x86_64: '7735286c778cc438418209f24d03a64f3a0151c8065ef0fe079cfaf093af6f8f'
   })
+
+  no_compile_needed
 
   def self.install
     case ARCH
@@ -34,6 +36,6 @@ class Mutagen < Package
   end
 
   def self.postinstall
-    ExitMessage.add "\nType 'mutagen' to get started.\n".lightblue
+    ExitMessage.add "\nType 'mutagen' to get started.\n"
   end
 end
