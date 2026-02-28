@@ -3,7 +3,7 @@ require 'package'
 class Filecmd < Package
   description 'file and libmagic determine file type'
   homepage 'https://darwinsys.com/file/'
-  version '5.46-2'
+  version '5.47'
   license 'BSD-2 and GPL-3+' # Chromebrew's filefix is GPL-3+, file itself is BSD-2
   compatibility 'all'
   source_url 'https://github.com/file/file.git'
@@ -11,10 +11,10 @@ class Filecmd < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '246df01ec3981f49313eca434716d68c22b363ed53a9a87525fb3b6221870f1a',
-     armv7l: '246df01ec3981f49313eca434716d68c22b363ed53a9a87525fb3b6221870f1a',
-       i686: 'e8b32e2089f22b36e7b6399133dad0baefe54621a1da9b975808d60a55f5469d',
-     x86_64: '2fad06a6f1affb945cb25af7048bdc0b26dd3384471543fb64621cf7ec3e92c7'
+    aarch64: '9163715750c6d7e9d70ff081edc97c70b1a717e822787385793708222cc5408e',
+     armv7l: '9163715750c6d7e9d70ff081edc97c70b1a717e822787385793708222cc5408e',
+       i686: '668763b09dc6d188fb5e0acdad208563718d10a9b28aa543247a663a87356efe',
+     x86_64: 'e5fe4216f9fd7d02d4b75f225fa5eb53fc4c6faca7df95416e27689136054470'
   })
 
   depends_on 'bzip2' # R
