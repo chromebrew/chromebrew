@@ -1,0 +1,3 @@
+#!/bin/bash
+multitail -h 2>&1 | head
+multitail -V
