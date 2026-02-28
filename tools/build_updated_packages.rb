@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# build_updated_packages version 5.0 (for Chromebrew)
+# build_updated_packages version 5.1 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -87,8 +87,7 @@ build = {}
 
 excluded_packages = Set[
   { pkg_name: 'glibc_fallthrough', comments: 'Stub package.' },
-  { pkg_name: 'py3_unsupported_python', commwnts: 'Stub package.' },
-  { pkg_name: 'terraform', comments: 'Needs manual update due to package structure.' }
+  { pkg_name: 'py3_unsupported_python', comments: 'Stub package.' }
 ]
 excluded_pkgs = excluded_packages.map { it[:pkg_name] }
 
