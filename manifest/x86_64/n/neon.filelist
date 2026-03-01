@@ -1,4 +1,4 @@
-# Total size: 1636563
+# Total size: 1637510
 /usr/local/bin/neon-config
 /usr/local/include/neon/ne_207.h
 /usr/local/include/neon/ne_acl.h
@@ -28,6 +28,6 @@
 /usr/local/lib64/libneon.la
 /usr/local/lib64/libneon.so
 /usr/local/lib64/libneon.so.27
-/usr/local/lib64/libneon.so.27.8.0
+/usr/local/lib64/libneon.so.27.10.0
 /usr/local/lib64/neon.so
 /usr/local/lib64/pkgconfig/neon.pc
