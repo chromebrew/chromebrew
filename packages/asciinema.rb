@@ -3,7 +3,7 @@ require 'buildsystems/rust'
 class Asciinema < RUST
   description 'Terminal session recorder'
   homepage 'https://asciinema.org/'
-  version '3.1.0'
+  version '3.2.0'
   license 'GPL-3+'
   compatibility 'all'
   source_url 'https://github.com/asciinema/asciinema.git'
