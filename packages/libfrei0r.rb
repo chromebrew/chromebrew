@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libfrei0r < CMake
   description 'Minimalistic API for a collection of free video effect plugins.'
   homepage 'https://frei0r.dyne.org/'
-  version '2.5.1'
+  version '2.5.4'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/dyne/frei0r.git'
@@ -21,5 +21,6 @@ class Libfrei0r < CMake
   depends_on 'glibc' # R
   depends_on 'harfbuzz' # R
 
-  cmake_options "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_CXX_FLAGS=' -L#{CREW_LIB_PREFIX}'"
+  # TODO: should we add gavl and enable this?
+  cmake_options '-DWITHOUT_OPENCV=ON -DWITHOUT_GAVL=ON'
 end
