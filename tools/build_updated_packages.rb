@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# build_updated_packages version 5.1 (for Chromebrew)
+# build_updated_packages version 5.2 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -397,7 +397,7 @@ updated_packages.each do |pkg|
           end
           Process.detach(actions_timed_killer)
         end
-        system "yes | #{'CREW_CACHE_BUILD=1' if ENV['NESTED_CI']} nice -n 20 crew build -v -f #{pkg}"
+        system "yes | #{'CREW_CACHE_BUILD=1' if ENV['NESTED_CI']} nice -n 20 crew build #{'-v' if VERBOSE} -f #{pkg}"
         build[name.to_sym] = $CHILD_STATUS.success?
         unless build[name.to_sym]
           if CONTINUE_AFTER_FAILED_BUILDS
