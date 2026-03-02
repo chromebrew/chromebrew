@@ -11,10 +11,10 @@ class Mujs < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '317132f0f3783a7c708be9406d4d173c704e9b559eb8a56e442f28d0ab77e156',
-     armv7l: '317132f0f3783a7c708be9406d4d173c704e9b559eb8a56e442f28d0ab77e156',
-       i686: 'a8bf48dd9d384ea2c6a013d9755235173bc284b742b5d69e9526ae38a1a9ad95',
-     x86_64: 'c6951672b9bc937e8c38a090c8102bc6c3050e9250a747636965e78a11caf0fe'
+    aarch64: 'c34a1c25bba90c9ea8cc29b3ae7f4037413f7b1934ebb0d5ee4b8600eaf23f1a',
+     armv7l: 'c34a1c25bba90c9ea8cc29b3ae7f4037413f7b1934ebb0d5ee4b8600eaf23f1a',
+       i686: 'a0801f7e0efcb31feeb42c32f4b91eac99c207a03bb7c005deeb8ab25b25d460',
+     x86_64: 'dee2285e3ddfac2c845fde3be2c9e540255a299c3a1e518b5f282d73b04b256e'
   })
 
   depends_on 'glibc' # R
