@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Freetds < Autotools
   description 'FreeTDS is a set of libraries for Unix and Linux that allows your programs to natively talk to Microsoft SQL Server and Sybase databases.'
   homepage 'https://www.freetds.org/'
-  version '1.5.13'
+  version '1.5.14'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/FreeTDS/freetds.git'
@@ -11,10 +11,10 @@ class Freetds < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c74b68890bf94d55ff5095d471fa4627d2d0b5b1f0a5d667e1d73d2d51bd9044',
-     armv7l: 'c74b68890bf94d55ff5095d471fa4627d2d0b5b1f0a5d667e1d73d2d51bd9044',
-       i686: '40148661363b3d67c54160a33c380ac103784749711a88752e5ed2057a1f0c46',
-     x86_64: 'e6bfcba5057563bc3ba48ab5d24d50943f4f610b3a2ed5d60be8f2a4cf75ef82'
+    aarch64: '2c37929c92136d3eff6c560aa245d7e82e8165986e5ebe040989d7720e63eaf6',
+     armv7l: '2c37929c92136d3eff6c560aa245d7e82e8165986e5ebe040989d7720e63eaf6',
+       i686: '4b737bf0e3fb16a8b9012154a48528d58286f70d5671f22b8da9ccd5f78c5caa',
+     x86_64: 'aa68c5815ca66fe619c31d91385e373450fda486bf15e26adbae613fa8f6d08e'
   })
 
   depends_on 'glibc' # R
