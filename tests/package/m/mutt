@@ -1,0 +1,3 @@
+#!/bin/bash
+mutt -h | head
+mutt -v | head

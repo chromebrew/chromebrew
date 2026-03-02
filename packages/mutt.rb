@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Mutt < Autotools
   description 'Mutt is a small but very powerful text-based mail client for Unix operating systems.'
   homepage 'http://mutt.org/'
-  version '2.2.14'
+  version '2.3'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://gitlab.com/muttmua/mutt.git'
@@ -11,19 +11,19 @@ class Mutt < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7e2baa377337ee80a60205a89a94b52f945bcd40ac2bf27458a0012442797de7',
-     armv7l: '7e2baa377337ee80a60205a89a94b52f945bcd40ac2bf27458a0012442797de7',
-       i686: '861d8502be5be389b183c3ac2a55833880555c6a1ff5fd58e47b71bfc37b74c9',
-     x86_64: 'd580e3c20a871e23a9701ebf5482288aded9136be0a1705319086efd73e6ce37'
+    aarch64: '3360227b7d62d6ce5b95dbf34023ce0bc2ecd949a360ea59854586d6cbd20d85',
+     armv7l: '3360227b7d62d6ce5b95dbf34023ce0bc2ecd949a360ea59854586d6cbd20d85',
+       i686: '89bf53911df6faff81804c2dc5911c94e45ea6173e88a5ac75b6feee24e9027b',
+     x86_64: 'cdc654fe5b89c962d0d8990d4ee21d7824a56218d7fdc14aa167d4119cf1849a'
   })
 
-  depends_on 'libcyrussasl'
+  depends_on 'gdbm' => :executable_only
+  depends_on 'glibc' => :executable_only
+  depends_on 'libcyrussasl' => :executable_only
   depends_on 'libxslt'
-  depends_on 'gdbm' # R
-  depends_on 'glibc' # R
-  depends_on 'ncurses' # R
-  depends_on 'openssl' # R
-  depends_on 'zlib' # R
+  depends_on 'ncurses' => :executable_only
+  depends_on 'openssl' => :executable_only
+  depends_on 'zlib' => :executable_only
 
   autotools_configure_options "--with-mailpath=#{CREW_PREFIX}/etc/mail \
     --with-sasl=#{CREW_LIB_PREFIX}/sasl2 \
