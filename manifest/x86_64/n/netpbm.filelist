@@ -1,4 +1,4 @@
-# Total size: 7111987
+# Total size: 7076179
 /usr/local/bin/411toppm
 /usr/local/bin/anytopnm
 /usr/local/bin/asciitopgm
@@ -128,7 +128,6 @@
 /usr/local/bin/pamunlookup
 /usr/local/bin/pamvalidate
 /usr/local/bin/pamwipeout
-/usr/local/bin/pamx
 /usr/local/bin/pbmclean
 /usr/local/bin/pbmlife
 /usr/local/bin/pbmmake
