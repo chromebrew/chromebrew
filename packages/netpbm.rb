@@ -11,18 +11,18 @@ class Netpbm < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-     armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-       i686: 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii',
-     x86_64: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+    aarch64: '05f9b56a49c5c0464f9fc75c92dec98ea9c621259d29c7a9e8da02565aaf97ce',
+     armv7l: '05f9b56a49c5c0464f9fc75c92dec98ea9c621259d29c7a9e8da02565aaf97ce',
+       i686: '85c1926bf1068365a062fb50fc2e5cb937be4a7693c7e09caf0c66d2e20731af',
+     x86_64: '340a481d769de24609e4b01b7a44686afd4b2afe4ff531e594a8102b7c32ea23'
   })
 
   depends_on 'glibc' # R
-  depends_on 'libjpeg_turbo' # R
-  depends_on 'libpng' # R
-  depends_on 'libtiff' # R
-  depends_on 'libxml2' # R
-  depends_on 'zlib' # R
+  depends_on 'libjpeg_turbo' => :executable_only
+  depends_on 'libpng' => :executable_only
+  depends_on 'libtiff' => :executable_only
+  depends_on 'libxml2' => :executable_only
+  depends_on 'zlib' => :executable_only
 
   def self.patch
     # Change installation directories.
