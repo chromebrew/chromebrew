@@ -3,7 +3,7 @@ require 'buildsystems/rust'
 class Asciinema < RUST
   description 'Terminal session recorder'
   homepage 'https://asciinema.org/'
-  version '3.1.0'
+  version '3.2.0'
   license 'GPL-3+'
   compatibility 'all'
   source_url 'https://github.com/asciinema/asciinema.git'
@@ -11,14 +11,14 @@ class Asciinema < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5904e59ee2743d01a7f9d791e68925db3bf96f23d9b018933156cfa4c0753c37',
-     armv7l: '5904e59ee2743d01a7f9d791e68925db3bf96f23d9b018933156cfa4c0753c37',
-       i686: 'b07ab36cb1b4a71a73f94694fa87bb2bd7bfc697792e9a131af19f4d73615bda',
-     x86_64: '021f9a3fda92899c292dd0fc1134ce5a5827470147895abf1edba3d942730d08'
+    aarch64: '13de0cc11c3afa81a9381b584c0456eba73eb39c2bb28b23cf8da15318104d05',
+     armv7l: '13de0cc11c3afa81a9381b584c0456eba73eb39c2bb28b23cf8da15318104d05',
+       i686: 'e564ab489f6f89c4a57a3cd44d2962f9b70faf53b7a882624eac180743ed357d',
+     x86_64: '43a6c8f3765a15f9cd835d80f26e00f996133624da73233e3ac4529bb0696bce'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :executable_only
+  depends_on 'glibc' => :executable_only
   depends_on 'python3' => :build
   depends_on 'xdg_base'
 
