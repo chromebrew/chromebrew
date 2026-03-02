@@ -11,9 +11,9 @@ class Blueprint_compiler < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '663d47197654ed242479e989bf77674e2b771bea19bed49f6e73f14cc03860da',
-     armv7l: '663d47197654ed242479e989bf77674e2b771bea19bed49f6e73f14cc03860da',
-     x86_64: '87785fad35e13182fa1b3927413fcfa365ec7dc50fe8c6da86c95662a8090c44'
+    aarch64: '44c43509e1e77f5fcb82dbb3ee37f13c212a3df3fcb4cb41c9f46fa4c4e17d9e',
+     armv7l: '44c43509e1e77f5fcb82dbb3ee37f13c212a3df3fcb4cb41c9f46fa4c4e17d9e',
+     x86_64: '944f06851e44b2a0ca10e2cf6d75f23c2066e02545c2fb84c807281d62b922e9'
   })
 
   depends_on 'py3_pygobject' # R
