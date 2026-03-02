@@ -1,15 +1,12 @@
-# Adapted from Arch Linux mujs PKGBUILD at:
-# https://github.com/archlinux/svntogit-community/raw/packages/mujs/trunk/PKGBUILD
+require 'package'
 
-require 'buildsystems/autotools'
-
-class Mujs < Autotools
+class Mujs < Package
   description 'An embeddable Javascript interpreter in C'
   homepage 'https://mujs.com/'
-  version '1.3.7'
+  version '1.3.8'
   license 'ISC'
   compatibility 'all'
-  source_url 'https://github.com/ccxvii/mujs.git'
+  source_url 'https://codeberg.org/ccxvii/mujs.git'
   git_hashtag version
   binary_compression 'tar.zst'
 
@@ -23,16 +20,11 @@ class Mujs < Autotools
   depends_on 'glibc' # R
   depends_on 'readline' => :executable_only
 
-  autotools_skip_configure
-
-  autotools_pre_make_options "XCFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-    XCPPFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto'"
+  def self.build
+    system 'make', 'release'
+  end
 
   def self.install
-    system "make \
-      DESTDIR=#{CREW_DEST_DIR} \
-      prefix=#{CREW_PREFIX} \
-      libdir=#{CREW_LIB_PREFIX} \
-      install-shared"
+    system 'make', "prefix=#{CREW_PREFIX}", "libdir=#{CREW_LIB_PREFIX}", "DESTDIR=#{CREW_DEST_DIR}", 'install-shared'
   end
 end
