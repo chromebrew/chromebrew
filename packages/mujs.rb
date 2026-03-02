@@ -6,7 +6,7 @@ require 'buildsystems/autotools'
 class Mujs < Autotools
   description 'An embeddable Javascript interpreter in C'
   homepage 'https://mujs.com/'
-  version '1.3.7'
+  version '1.3.8'
   license 'ISC'
   compatibility 'all'
   source_url 'https://github.com/ccxvii/mujs.git'
