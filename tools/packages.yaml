@@ -7415,6 +7415,11 @@ url: https://cpan.metacpan.org/authors/id/G/GR/GRANTM/
 activity: none
 ---
 kind: url
+name: perl_xml_writer
+url: https://metacpan.org/pod/XML::Writer
+activity: none
+---
+kind: url
 name: perl_xml_xpath
 url: https://metacpan.org/pod/XML::XPath
 activity: low
