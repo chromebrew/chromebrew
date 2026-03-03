@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Smallbasic < Autotools
   description 'SmallBASIC is a fast and easy to learn BASIC language interpreter'
   homepage 'https://smallbasic.github.io/'
-  version '12.28'
+  version '12_33'
   license 'GPLv3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/smallbasic/SmallBASIC.git'
