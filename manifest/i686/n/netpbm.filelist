@@ -1,4 +1,4 @@
-# Total size: 7076179
+# Total size: 6342767
 /usr/local/bin/411toppm
 /usr/local/bin/anytopnm
 /usr/local/bin/asciitopgm
@@ -417,14 +417,14 @@
 /usr/local/include/ppmfloyd.h
 /usr/local/include/runlength.h
 /usr/local/include/shhopt.h
-/usr/local/lib64/libnetpbm.a
-/usr/local/lib64/libnetpbm.so
-/usr/local/lib64/libnetpbm.so.11
-/usr/local/lib64/libnetpbm.so.11.86
-/usr/local/lib64/palmcolor8.map
-/usr/local/lib64/palmgray1.map
-/usr/local/lib64/palmgray2.map
-/usr/local/lib64/palmgray4.map
-/usr/local/lib64/pcxstd.ppm
-/usr/local/lib64/pkgconfig/netpbm.pc
-/usr/local/lib64/rgb.txt
+/usr/local/lib/libnetpbm.a
+/usr/local/lib/libnetpbm.so
+/usr/local/lib/libnetpbm.so.11
+/usr/local/lib/libnetpbm.so.11.86
+/usr/local/lib/palmcolor8.map
+/usr/local/lib/palmgray1.map
+/usr/local/lib/palmgray2.map
+/usr/local/lib/palmgray4.map
+/usr/local/lib/pcxstd.ppm
+/usr/local/lib/pkgconfig/netpbm.pc
+/usr/local/lib/rgb.txt
