@@ -115,11 +115,11 @@ class Command
       # Run property and buildsystem tests on the package, and fail if they fail.
       return false unless system "#{CREW_LIB_PATH}/tests/prop_test.rb #{name}"
       return false unless system "#{CREW_LIB_PATH}/tests/buildsystem_test.rb #{name}"
-      # Only run library and package tests with crew check.
-      if ARGV[0] == 'check'
-        return false unless system("#{CREW_LIB_PATH}/tests/library_test.rb #{name}")
-        return false unless system("#{CREW_LIB_PATH}/tests/package_test.rb #{name}")
-      end
+    end
+    # Only run library and package tests with crew check.
+    if ARGV[0] == 'check'
+      return false unless system("#{CREW_LIB_PATH}/tests/library_test.rb #{name}")
+      return false unless system("#{CREW_LIB_PATH}/tests/package_test.rb #{name}")
     end
 
     # If we're still here every test has passed, so return true.
