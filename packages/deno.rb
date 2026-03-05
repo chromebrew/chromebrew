@@ -14,7 +14,7 @@ class Deno < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '3dce7d084c119018a0946f04810c211b0fe06f19915698f231374fecf9fd6863'
+     x86_64: '362b64fa01bb4d78deecede5cc21acb54b8ca42d1d44612934da8a0d028f9ce8'
   })
 
   depends_on 'gcc_lib' => :executable_only
