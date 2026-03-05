@@ -5,8 +5,8 @@ require_relative '../../lib/package'
 class PropCommandTest < Minitest::Test
   def test_no_arguments
     expected_output = <<~EOT
-      Explain the purpose of various package boolean properties.
-      Usage: crew prop <property>
+      Explain the purpose of various package boolean properties, and give a property of a package if specified.
+      Usage: crew prop <property> <name>
       Available properties: #{Package.available_boolean_properties.join(', ')}
     EOT
     assert_output expected_output, nil do
