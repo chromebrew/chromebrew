@@ -10,11 +10,11 @@ class Usql < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '0c6069338f63210c787584c04bcb36dfd83b457d68d9688fc91c30f6efa31e18'
+     x86_64: '9303852f01d49bc5d412d7ebc0af65b5a707bc1769e3a45b88c11f393c53afc3'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :executable_only
+  depends_on 'glibc' => :executable_only
   depends_on 'go' => :build
 
   no_source_build
