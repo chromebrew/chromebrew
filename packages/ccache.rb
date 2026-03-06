@@ -11,10 +11,10 @@ class Ccache < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9946f0fa9c2b6399e6eb432b05913f8c5aebe3eb58d86193aab9765b91b2cc6d',
-     armv7l: '9946f0fa9c2b6399e6eb432b05913f8c5aebe3eb58d86193aab9765b91b2cc6d',
-       i686: 'ea72180b9e6c5a5770f74e8961538c8bb975d4e00f70713b3a21d67b191096ab',
-     x86_64: '5e4298bdd15a6762c046f52385bed5ff2a1a692e5e58d14a20d18792af1257c0'
+    aarch64: 'bf1733e9a0991eb2b8edb575c9b5e89da4823c3f68bb85d93f4c86b2f5273a3b',
+     armv7l: 'bf1733e9a0991eb2b8edb575c9b5e89da4823c3f68bb85d93f4c86b2f5273a3b',
+       i686: '728f51affa862555390ae1eba982bc1ee8fbe7659f57b3d7ccfef95fb40d6de7',
+     x86_64: '687d26c0a5c1c23fac8e785ca5df204890b3aad099a290924b479aed6d4d978c'
   })
 
   depends_on 'gcc_lib' # R
