@@ -11,9 +11,9 @@ class Foot < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'dd57847d67c11d9a9b50bd124a030526ea9f444d58c654e44deaaf7fa9d3a144',
-     armv7l: 'dd57847d67c11d9a9b50bd124a030526ea9f444d58c654e44deaaf7fa9d3a144',
-     x86_64: '3b460b562e8c2fd91932f2af4bad13c3029b29faac5af02e0347ca27c330af2b'
+    aarch64: '0785522a584e77a166d4c11a71102cfabd7ec0eb88a5c048839b5ab8074186ac',
+     armv7l: '0785522a584e77a166d4c11a71102cfabd7ec0eb88a5c048839b5ab8074186ac',
+     x86_64: 'd2604346ff47fb4e8b539078e304af15df85803e9935181f9ca957c9bc1c84e5'
   })
 
   def self.patch
@@ -24,17 +24,23 @@ class Foot < Meson
   end
 
   depends_on 'fcft'
+  depends_on 'fcft' => :executable_only
   depends_on 'fontconfig'
+  depends_on 'fontconfig' => :executable_only
   depends_on 'freetype' # R
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'harfbuzz' # R
+  depends_on 'glibc' => :executable_only
+  depends_on 'harfbuzz' => :executable_only
   depends_on 'libxkbcommon'
+  depends_on 'libxkbcommon' => :executable_only
   depends_on 'ncurses'
   depends_on 'pixman'
+  depends_on 'pixman' => :executable_only
   depends_on 'tllist' => :build
   depends_on 'utf8proc'
+  depends_on 'utf8proc' => :executable_only
   depends_on 'wayland'
+  depends_on 'wayland' => :executable_only
   depends_on 'wayland_protocols' => :build
 
   # This avoids conflicts with ncurses.
