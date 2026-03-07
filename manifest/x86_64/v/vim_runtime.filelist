@@ -1,4 +1,4 @@
-# Total size: 29120040
+# Total size: 29123350
 /usr/local/etc/vimrc
 /usr/local/share/vim/vim92/LICENSE
 /usr/local/share/vim/vim92/README.txt
@@ -499,6 +499,7 @@
 /usr/local/share/vim/vim92/ftplugin/elinks.vim
 /usr/local/share/vim/vim92/ftplugin/elixir.vim
 /usr/local/share/vim/vim92/ftplugin/elm.vim
+/usr/local/share/vim/vim92/ftplugin/env.vim
 /usr/local/share/vim/vim92/ftplugin/erlang.vim
 /usr/local/share/vim/vim92/ftplugin/eruby.vim
 /usr/local/share/vim/vim92/ftplugin/eterm.vim
