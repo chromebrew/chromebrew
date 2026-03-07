@@ -1,4 +1,4 @@
-# Total size: 226221098
+# Total size: 226311035
 /usr/local/bin/go
 /usr/local/bin/gofmt
 /usr/local/share/go/CONTRIBUTING.md
@@ -2631,7 +2631,6 @@
 /usr/local/share/go/src/cmd/go/testdata/script/mod_init_issue74784.txt
 /usr/local/share/go/src/cmd/go/testdata/script/mod_init_path.txt
 /usr/local/share/go/src/cmd/go/testdata/script/mod_init_tidy.txt
-/usr/local/share/go/src/cmd/go/testdata/script/mod_init_version.txt
 /usr/local/share/go/src/cmd/go/testdata/script/mod_insecure_issue63845.txt
 /usr/local/share/go/src/cmd/go/testdata/script/mod_install_hint.txt
 /usr/local/share/go/src/cmd/go/testdata/script/mod_install_pkg_version.txt
@@ -2991,7 +2990,6 @@
 /usr/local/share/go/src/cmd/go/testdata/script/work_init_gowork.txt
 /usr/local/share/go/src/cmd/go/testdata/script/work_init_path.txt
 /usr/local/share/go/src/cmd/go/testdata/script/work_init_toolchain.txt
-/usr/local/share/go/src/cmd/go/testdata/script/work_init_version.txt
 /usr/local/share/go/src/cmd/go/testdata/script/work_install_submodule.txt
 /usr/local/share/go/src/cmd/go/testdata/script/work_issue51204.txt
 /usr/local/share/go/src/cmd/go/testdata/script/work_issue54048.txt
@@ -7456,6 +7454,7 @@
 /usr/local/share/go/src/internal/poll/fd_writev_libc.go
 /usr/local/share/go/src/internal/poll/fd_writev_unix.go
 /usr/local/share/go/src/internal/poll/file_plan9.go
+/usr/local/share/go/src/internal/poll/fstatat_unix.go
 /usr/local/share/go/src/internal/poll/hook_cloexec.go
 /usr/local/share/go/src/internal/poll/hook_unix.go
 /usr/local/share/go/src/internal/poll/hook_windows.go
@@ -9329,6 +9328,9 @@
 /usr/local/share/go/src/os/stat_unix.go
 /usr/local/share/go/src/os/stat_wasip1.go
 /usr/local/share/go/src/os/stat_windows.go
+/usr/local/share/go/src/os/statat.go
+/usr/local/share/go/src/os/statat_other.go
+/usr/local/share/go/src/os/statat_unix.go
 /usr/local/share/go/src/os/sticky_bsd.go
 /usr/local/share/go/src/os/sticky_notbsd.go
 /usr/local/share/go/src/os/sys.go
@@ -14075,7 +14077,11 @@
 /usr/local/share/go/test/fixedbugs/issue7740.go
 /usr/local/share/go/test/fixedbugs/issue7742.go
 /usr/local/share/go/test/fixedbugs/issue7746.go
+/usr/local/share/go/test/fixedbugs/issue77534.go
 /usr/local/share/go/test/fixedbugs/issue7760.go
+/usr/local/share/go/test/fixedbugs/issue77604.go
+/usr/local/share/go/test/fixedbugs/issue77613.go
+/usr/local/share/go/test/fixedbugs/issue77779.go
 /usr/local/share/go/test/fixedbugs/issue7794.go
 /usr/local/share/go/test/fixedbugs/issue7863.go
 /usr/local/share/go/test/fixedbugs/issue7867.go
