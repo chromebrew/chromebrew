@@ -11,10 +11,10 @@ class E2fsprogs < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6fc5f306eb85311da4c149c27698af90112dc65ffa15dce34d0227fc833a4e2e',
-     armv7l: '6fc5f306eb85311da4c149c27698af90112dc65ffa15dce34d0227fc833a4e2e',
-       i686: '3d0e8ac3f57682f35c69e52d3fd905b76e535422c1f87eb3faa5b531846739f6',
-     x86_64: 'c158544f1f6202ca7c8e4eaf29fd889527b7e50ef02b38ef54d6160397e2823d'
+    aarch64: 'fa71bdc757bb4bc77fb8c71ab09432ef4c18c6c4e1f46cc9bd8fcbf641ea6278',
+     armv7l: 'fa71bdc757bb4bc77fb8c71ab09432ef4c18c6c4e1f46cc9bd8fcbf641ea6278',
+       i686: 'd2dee22286152a0209c29b3029c43cb664710a307c673f9ca69b1672b3681250',
+     x86_64: 'e2d50995075b6218654c6159bc878ff3dda753e1f9e78250a119d63307dd432c'
   })
 
   depends_on 'gcc_lib' # R
