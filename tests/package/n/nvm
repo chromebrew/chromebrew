@@ -1,0 +1,4 @@
+#!/bin/bash
+source ~/.bashrc
+nvm -h | head
+nvm -v
