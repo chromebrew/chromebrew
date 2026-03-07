@@ -56,7 +56,7 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
     suffix = ' => :build'
   when 'lib'
     puts "Processing library dependencies for #{pkg.name}...".orange
-    suffix = ' # R'
+    suffix = ' => :runtime'
   when 'logical'
     puts "Processing logical dependencies for #{pkg.name}...".orange
     suffix = ' => :logical'
@@ -148,7 +148,7 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
   pkgdepsblock.delete_if { it.match(/(?<=^  depends_on ').*(?='$)/) { pkgdeps.include?(it[0]) } } if label == 'lib'
 
   # If a dependency is listed as both a executable_only and a runtime dependency, we remove the runtime dependency.
-  pkgdepsblock.delete_if { it.match(/^  depends_on '(.*)' # R/) { missingpkgdeps.include?(it[1]) } } if label == 'bin'
+  pkgdepsblock.delete_if { it.match(/(^  depends_on '(.*)' # R)|(^  depends_on '(.*)' => ).*(:runtime.*)/) { missingpkgdeps.include?(it[1]) } } if label == 'bin'
 
   # Deduplicate for lines with comments.
   pkgdepsblock.delete_if { it.match(/(?<=^  depends_on ').*(?='#{suffix}$)/) { !pkg_file_lines.map(&:chomp).grep(/^  depends_on '.*#{it[0]}.*'#{suffix} \S/).blank? } }
