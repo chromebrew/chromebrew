@@ -143,7 +143,7 @@ class RUBY < Package
 
   def self.preflight
     @install_gem ||= true
-    @ruby_gem_name, @ruby_gem_version, @remote_ruby_gem_version, @gem_installed_version, @gem_latest_version_installed, @gem_outdated, @gem_deps = PackageUtils.get_gem_vars(name, version, Package.load_package(File.join(CREW_PACKAGES_PATH, "#{name}.rb")).upstream_name)
+    @ruby_gem_name, @ruby_gem_version, @remote_ruby_gem_version, @gem_installed_version, @gem_latest_version_installed, @gem_deps = PackageUtils.get_gem_vars(name, version, Package.load_package(File.join(CREW_PACKAGES_PATH, "#{name}.rb")).upstream_name)
     puts "Examining #{@ruby_gem_name} gem...".orange
     @gem_filelist_path = File.join(CREW_META_PATH, "#{name}.filelist")
 
@@ -195,7 +195,7 @@ class RUBY < Package
   def self.install
     # @install_gem will always be true during upgrades since we remove
     # the old gem during the upgrade.
-    @ruby_gem_name, @ruby_gem_version, @remote_ruby_gem_version, @gem_installed_version, @gem_latest_version_installed, @gem_outdated, @gem_deps = PackageUtils.get_gem_vars(name, version, Package.load_package(File.join(CREW_PACKAGES_PATH, "#{name}.rb")).upstream_name) if @ruby_gem_name.blank? || @gem_installed_version.blank? || @ruby_gem_version.blank?
+    @ruby_gem_name, @ruby_gem_version, @remote_ruby_gem_version, @gem_installed_version, @gem_latest_version_installed, @gem_deps = PackageUtils.get_gem_vars(name, version, Package.load_package(File.join(CREW_PACKAGES_PATH, "#{name}.rb")).upstream_name) if @ruby_gem_name.blank? || @gem_installed_version.blank? || @ruby_gem_version.blank?
     @gem_filelist_path = File.join(CREW_META_PATH, "#{name.downcase}.filelist") if @gem_filelist_path.nil?
     if @gem_installed_version.blank?
       crewlog "@gem_installed_version.blank? is #{@gem_installed_version.blank?}, setting @install_gem = true"
@@ -221,15 +221,12 @@ class RUBY < Package
         puts "Installing #{@ruby_gem_name} gem #{@ruby_gem_version}...".orange
         Kernel.system "gem install --no-update-sources -N --local #{CREW_DEST_DIR}/#{@ruby_gem_name}-#{@ruby_gem_version}-#{GEM_ARCH}.gem --conservative"
       end
-    elsif @gem_outdated || Gem::Version.new(@ruby_gem_version) <= Gem::Version.new(@json_gem_pkg_version)
+    elsif !@gem_latest_version_installed || Gem::Version.new(@ruby_gem_version) <= Gem::Version.new(@json_gem_pkg_version)
       puts "Updating #{@ruby_gem_name} gem: #{@gem_installed_version} 🔜 #{@ruby_gem_version} ...".orange
       Kernel.system "gem update --no-update-sources -N #{@ruby_gem_name} --conservative"
-    elsif !@gem_latest_version_installed
-      puts "Installing #{@ruby_gem_name} gem #{@ruby_gem_version}...".orange
-      Kernel.system "gem install --no-update-sources -N #{@ruby_gem_name} --conservative"
     end
     # Check gem versions again.
-    @ruby_gem_name, @ruby_gem_version, @remote_ruby_gem_version, @gem_installed_version, @gem_latest_version_installed, @gem_outdated, @gem_deps = PackageUtils.get_gem_vars(name, version, Package.load_package(File.join(CREW_PACKAGES_PATH, "#{name}.rb")).upstream_name)
+    @ruby_gem_name, @ruby_gem_version, @remote_ruby_gem_version, @gem_installed_version, @gem_latest_version_installed, @gem_deps = PackageUtils.get_gem_vars(name, version, Package.load_package(File.join(CREW_PACKAGES_PATH, "#{name}.rb")).upstream_name)
     @gems_needing_cleanup = Array(@gems_needing_cleanup) << @ruby_gem_name unless @gem_latest_version_installed
     puts "save_gem_filelist(#{@ruby_gem_name}, #{@ruby_gem_version}, #{@gem_filelist_path})".lightpurple if CREW_VERBOSE
     save_gem_filelist(@ruby_gem_name, @ruby_gem_version, @gem_filelist_path)
