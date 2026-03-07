@@ -1,4 +1,4 @@
-# Total size: 12913621
+# Total size: 12914547
 /usr/local/bin/chattr
 /usr/local/bin/compile_et
 /usr/local/bin/lsattr
@@ -42,8 +42,6 @@
 /usr/local/lib64/pkgconfig/e2p.pc
 /usr/local/lib64/pkgconfig/ext2fs.pc
 /usr/local/lib64/pkgconfig/ss.pc
-/usr/local/lib64/udev/rules.d/64-ext4.rules
-/usr/local/lib64/udev/rules.d/96-e2scrub.rules
 /usr/local/sbin/badblocks
 /usr/local/sbin/debugfs
 /usr/local/sbin/dumpe2fs
