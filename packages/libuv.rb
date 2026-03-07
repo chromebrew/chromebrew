@@ -11,10 +11,10 @@ class Libuv < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a014c97f5ea4879140f775816006948717a75637ce9db89d0151eb6a0dfe975d',
-     armv7l: 'a014c97f5ea4879140f775816006948717a75637ce9db89d0151eb6a0dfe975d',
-       i686: 'cf4335ce9e5fbf2f48e23408b90461c1f1641a74fee161259a8be4751c467d37',
-     x86_64: 'ca9e9928d3ea32b747fdb6b7a1c2cc0251fe078e221532f55c4cbedb3f926819'
+    aarch64: 'fc8ae5c75eb65b7f8b32ddd1b048abae46fab872f192e7ce348c07bc513153b1',
+     armv7l: 'fc8ae5c75eb65b7f8b32ddd1b048abae46fab872f192e7ce348c07bc513153b1',
+       i686: '66ef1f3dc86d9a84b1897e632f8bfef8b56d370ba4ecca9299822ea8cc1ddb77',
+     x86_64: '29a099cb2888bf28e14c9642d965efca7eab952eb0257247ea4ae0a0e8a8f38a'
   })
 
   depends_on 'glibc' # R
