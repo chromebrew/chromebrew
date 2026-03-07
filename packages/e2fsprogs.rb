@@ -3,11 +3,11 @@ require 'package'
 class E2fsprogs < Package
   description 'e2fsprogs are ext2/3/4 file system utilities.'
   homepage 'https://e2fsprogs.sourceforge.net/'
-  version '1.47.3'
+  version '1.47.4'
   license 'GPL-2 and BSD'
   compatibility 'all'
   source_url "https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v#{version}/e2fsprogs-#{version}.tar.xz"
-  source_sha256 '144af53f2bbd921cef6f8bea88bb9faddca865da3fbc657cc9b4d2001097d5db'
+  source_sha256 'fd5bf388cbdbe006a3d3b318d983b2948382440acc85a87f1e7d108653e8db0b'
   binary_compression 'tar.zst'
 
   binary_sha256({
