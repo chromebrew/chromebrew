@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Libiconv < Autotools
   description 'GNU charset conversion library for libc which does not implement it.'
   homepage 'https://www.gnu.org/software/libiconv/'
-  version '1.18'
+  version '1.19'
   license 'LGPL-2+ and GPL-3+'
   compatibility 'all'
   source_url "https://ftp.gnu.org/gnu/libiconv/libiconv-#{version}.tar.gz"
-  source_sha256 '3b08f5f4f9b4eb82f151a7040bfd6fe6c6fb922efe4b1659c66ea933276965e8'
+  source_sha256 '88dd96a8c0464eca144fc791ae60cd31cd8ee78321e67397e25fc095c4a19aa6'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd688b659e5435fa2443075772311086bc430bccfafa77e7889746a343357b90d',
-     armv7l: 'd688b659e5435fa2443075772311086bc430bccfafa77e7889746a343357b90d',
-       i686: '1d9cdfca3f904b469bf58ba2df36e921064274a23da3fbc1599f0ba63e570dd2',
-     x86_64: '1de35f406639130b9b43795ff03223e0e5d78ccea3ed1ec36f28812537a692c9'
+    aarch64: 'ef74c65f179c2bc2a915b1bf0dc55d69f202bccdd58b4f3a44e3f0fc06e6de18',
+     armv7l: 'ef74c65f179c2bc2a915b1bf0dc55d69f202bccdd58b4f3a44e3f0fc06e6de18',
+       i686: '80406266295b5bffd5a891daa2df1a258ccf82f33cf6934f18c24d1d94844231',
+     x86_64: 'fe48380945f08a4f391dc38dcdc9ec4774c22ff68fdd415be73b76873b87f86a'
   })
 
   depends_on 'glibc' # R
