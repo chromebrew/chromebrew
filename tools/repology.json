@@ -499,7 +499,7 @@
     "name": "asciinema",
     "description": "Terminal session recorder",
     "homepage": "https://asciinema.org/",
-    "version": "3.1.0",
+    "version": "3.2.0",
     "license": "GPL-3+",
     "compatibility": "all"
   },
@@ -771,7 +771,7 @@
     "name": "awscli",
     "description": "Universal Command Line Interface for Amazon Web Services",
     "homepage": "https://github.com/aws/aws-cli",
-    "version": "1.44.49",
+    "version": "1.44.53",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -947,7 +947,7 @@
     "name": "bearly",
     "description": "Bearly makes you 10x faster by adding state of the art AI to your workflow.",
     "homepage": "https://bearly.ai/",
-    "version": "5.0.3",
+    "version": "5.0.4",
     "license": "Unknown",
     "compatibility": "x86_64"
   },
@@ -1075,7 +1075,7 @@
     "name": "blueprint_compiler",
     "description": "A markup language for GTK user interfaces",
     "homepage": "https://gitlab.gnome.org/GNOME/blueprint-compiler",
-    "version": "0.19.0",
+    "version": "0.20.0",
     "license": "LGPL",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -1403,7 +1403,7 @@
     "name": "ccache",
     "description": "Compiler cache that speeds up recompilation by caching previous compilations",
     "homepage": "https://ccache.dev/",
-    "version": "4.12.3",
+    "version": "4.13",
     "license": "GPL-3 and LGPL-3",
     "compatibility": "all"
   },
@@ -1795,7 +1795,7 @@
     "name": "codex",
     "description": "Lightweight coding agent that runs in your terminal",
     "homepage": "https://github.com/openai/codex",
-    "version": "0.106.0",
+    "version": "0.111.0",
     "license": "Apache-2.0",
     "compatibility": "x86_64"
   },
@@ -2323,7 +2323,7 @@
     "name": "delve",
     "description": "Debugger for the Go programming language",
     "homepage": "https://github.com/go-delve/delve",
-    "version": "1.26.0",
+    "version": "1.26.1",
     "license": "MIT",
     "compatibility": "i686 x86_64"
   },
@@ -2331,7 +2331,7 @@
     "name": "deno",
     "description": "A secure runtime for JavaScript and TypeScript",
     "homepage": "https://deno.land",
-    "version": "2.7.1",
+    "version": "2.7.4",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -2691,7 +2691,7 @@
     "name": "e2fsprogs",
     "description": "e2fsprogs are ext2/3/4 file system utilities.",
     "homepage": "https://e2fsprogs.sourceforge.net/",
-    "version": "1.47.3",
+    "version": "1.47.4",
     "license": "GPL-2 and BSD",
     "compatibility": "all"
   },
@@ -2867,7 +2867,7 @@
     "name": "erlang",
     "description": "Erlang is a programming language used to build massively scalable soft real-time systems with requirements on high availability.",
     "homepage": "https://www.erlang.org/",
-    "version": "28.3.3",
+    "version": "28.4",
     "license": "Apache-2.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -3083,7 +3083,7 @@
     "name": "fastfetch",
     "description": "Like Neofetch, but much faster because written in C",
     "homepage": "https://github.com/fastfetch-cli/fastfetch",
-    "version": "2.59.0",
+    "version": "2.60.0",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -3307,7 +3307,7 @@
     "name": "flutter",
     "description": "Flutter is Google's UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase.",
     "homepage": "https://flutter.dev/",
-    "version": "3.41.2",
+    "version": "3.41.4",
     "license": "BSD-3",
     "compatibility": "x86_64"
   },
@@ -3539,7 +3539,7 @@
     "name": "foot",
     "description": "Wayland terminal emulator - fast, lightweight and minimalistic",
     "homepage": "https://codeberg.org/dnkl/foot",
-    "version": "1.25.0",
+    "version": "1.26.0",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -3667,7 +3667,7 @@
     "name": "freetds",
     "description": "FreeTDS is a set of libraries for Unix and Linux that allows your programs to natively talk to Microsoft SQL Server and Sybase databases.",
     "homepage": "https://www.freetds.org/",
-    "version": "1.5.13",
+    "version": "1.5.14",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -3763,7 +3763,7 @@
     "name": "fzf",
     "description": "A command-line fuzzy finder",
     "homepage": "https://github.com/junegunn/fzf",
-    "version": "0.68.0",
+    "version": "0.70.0",
     "license": "MIT and BSD-with-disclosure",
     "compatibility": "all"
   },
@@ -4235,7 +4235,7 @@
     "name": "glab",
     "description": "A GitLab CLI tool bringing GitLab to your command line",
     "homepage": "https://gitlab.com/gitlab-org/cli",
-    "version": "1.86.0",
+    "version": "1.89.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -4715,7 +4715,7 @@
     "name": "go",
     "description": "Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.",
     "homepage": "https://go.dev",
-    "version": "1.26.0",
+    "version": "1.26.1",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -4779,7 +4779,7 @@
     "name": "google_chrome",
     "description": "Google Chrome is a fast, easy to use, and secure web browser.",
     "homepage": "https://www.google.com/chrome/",
-    "version": "145.0.7632.116",
+    "version": "145.0.7632.159",
     "license": "google-chrome",
     "compatibility": "x86_64"
   },
@@ -4907,7 +4907,7 @@
     "name": "gradle",
     "description": "From mobile apps to microservices, from small startups to big enterprises, Gradle helps teams build, automate and deliver better software, faster.",
     "homepage": "https://gradle.org/",
-    "version": "9.3.1",
+    "version": "9.4.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -5059,7 +5059,7 @@
     "name": "gtk4",
     "description": "GTK+ is a multi-platform toolkit for creating graphical user interfaces.",
     "homepage": "https://www.gtk.org/",
-    "version": "4.20.3",
+    "version": "4.22.0",
     "license": "LGPL-2.1",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -5499,7 +5499,7 @@
     "name": "hunspell_en_us",
     "description": "Hunspell US English dictionary",
     "homepage": "http://hunspell.github.io/",
-    "version": "26.2.1.2",
+    "version": "26.2.2.1",
     "license": "MPL-1.1, GPL-2 and LGPL-2.1",
     "compatibility": "all"
   },
@@ -5515,7 +5515,7 @@
     "name": "hunspell_es_us",
     "description": "Diccionarios de español de Hunspell",
     "homepage": "http://hunspell.github.io/",
-    "version": "26.2.1.2",
+    "version": "26.2.2.1",
     "license": "MPL-1.1, GPL-2 and LGPL-2.1",
     "compatibility": "all"
   },
@@ -5523,7 +5523,7 @@
     "name": "hunspell_fr_fr",
     "description": "Dictionnaire Français Hunspell",
     "homepage": "http://hunspell.github.io/",
-    "version": "26.2.1.2",
+    "version": "26.2.2.1",
     "license": "MPL-1.1, GPL-2 and LGPL-2.1",
     "compatibility": "all"
   },
@@ -5539,7 +5539,7 @@
     "name": "hwdata",
     "description": "hardware identification databases",
     "homepage": "https://github.com/vcrhonek/hwdata",
-    "version": "0.404",
+    "version": "0.405",
     "license": "GPL2",
     "compatibility": "all"
   },
@@ -6019,7 +6019,7 @@
     "name": "joplin",
     "description": "Open source note-taking app",
     "homepage": "https://joplinapp.org/",
-    "version": "3.6.2",
+    "version": "3.6.4",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -7227,7 +7227,7 @@
     "name": "libfrei0r",
     "description": "Minimalistic API for a collection of free video effect plugins.",
     "homepage": "https://frei0r.dyne.org/",
-    "version": "2.5.1",
+    "version": "2.5.4",
     "license": "GPL-2",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -7515,7 +7515,7 @@
     "name": "libiconv",
     "description": "GNU charset conversion library for libc which does not implement it.",
     "homepage": "https://www.gnu.org/software/libiconv/",
-    "version": "1.18",
+    "version": "1.19",
     "license": "LGPL-2+ and GPL-3+",
     "compatibility": "all"
   },
@@ -7875,7 +7875,7 @@
     "name": "libnftnl",
     "description": "libnftnl is a userspace library providing a low-level netlink programming interface (API) to the in-kernel nf_tables subsystem.",
     "homepage": "https://netfilter.org/projects/libnftnl/",
-    "version": "1.3.0",
+    "version": "1.3.1",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -8731,7 +8731,7 @@
     "name": "libuv",
     "description": "libuv is a multi-platform support library with a focus on asynchronous I/O.",
     "homepage": "https://libuv.org/",
-    "version": "1.52.0",
+    "version": "1.52.1",
     "license": "BSD, BSD-2, ISC and MIT",
     "compatibility": "all"
   },
@@ -9907,7 +9907,7 @@
     "name": "mawk",
     "description": "mawk is a POSIX compatible interpreter of the awk language faster than gawk.",
     "homepage": "https://invisible-island.net/mawk/",
-    "version": "1.3.4-20260129",
+    "version": "1.3.4-20260302",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -10379,7 +10379,7 @@
     "name": "mujs",
     "description": "An embeddable Javascript interpreter in C",
     "homepage": "https://mujs.com/",
-    "version": "1.3.7",
+    "version": "1.3.8",
     "license": "ISC",
     "compatibility": "all"
   },
@@ -10667,7 +10667,7 @@
     "name": "mutagen",
     "description": "Mutagen provides real-time file synchronization and flexible network forwarding, extending the reach of your existing development tools to cloud-based containers and infrastructure.",
     "homepage": "https://mutagen.io/",
-    "version": "0.17.5",
+    "version": "0.18.1",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -10675,7 +10675,7 @@
     "name": "mutt",
     "description": "Mutt is a small but very powerful text-based mail client for Unix operating systems.",
     "homepage": "http://mutt.org/",
-    "version": "2.2.14",
+    "version": "2.3",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -10907,7 +10907,7 @@
     "name": "neon",
     "description": "neon is an HTTP and WebDAV client library, with a C interface.",
     "homepage": "http://www.webdav.org/neon/",
-    "version": "0.35.0",
+    "version": "0.37.0",
     "license": "GPL-2",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -10981,7 +10981,7 @@
     "homepage": "https://netpbm.sourceforge.net/",
     "version": "10.86.48",
     "license": "GPL-2",
-    "compatibility": "aarch64 armv7l x86_64"
+    "compatibility": "all"
   },
   {
     "name": "netperf",
@@ -11043,7 +11043,7 @@
     "name": "nftables",
     "description": "Netfilter tables userspace tools",
     "homepage": "https://netfilter.org/projects/nftables/",
-    "version": "1.1.3",
+    "version": "1.1.6",
     "license": "GPL2",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -11051,7 +11051,7 @@
     "name": "nginx",
     "description": "nginx [engine x] is an HTTP and reverse proxy server, a mail proxy server, and a generic TCP/UDP proxy server, originally written by Igor Sysoev.",
     "homepage": "http://nginx.org/",
-    "version": "1.28.0",
+    "version": "1.29.5",
     "license": "BSD-2, BSD, SSLeay, MIT, GPL-2 and GPL-2+",
     "compatibility": "all"
   },
@@ -11067,7 +11067,7 @@
     "name": "nikto",
     "description": "Open Source (GPL) web server scanner which performs comprehensive tests against web servers",
     "homepage": "https://cirt.net/Nikto2",
-    "version": "2.5.0",
+    "version": "2.6.0",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -11099,7 +11099,7 @@
     "name": "nlopt",
     "description": "nonlinear optimization library",
     "homepage": "http://ab-initio.mit.edu/wiki/index.php/NLopt",
-    "version": "2.10.0",
+    "version": "2.10.1",
     "license": "LGPL",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -11123,7 +11123,7 @@
     "name": "nnn",
     "description": "Full-featured terminal file manager.",
     "homepage": "https://github.com/jarun/nnn",
-    "version": "5.1",
+    "version": "5.2",
     "license": "BSD-2 Clause",
     "compatibility": "all"
   },
@@ -11187,7 +11187,7 @@
     "name": "nuclei",
     "description": "Fast, customizable vulnerability scanner",
     "homepage": "https://docs.projectdiscovery.io/tools/nuclei",
-    "version": "3.6.1",
+    "version": "3.7.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -11203,7 +11203,7 @@
     "name": "nushell",
     "description": "A new type of shell",
     "homepage": "https://www.nushell.sh/",
-    "version": "0.109.1",
+    "version": "0.111.0",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -11211,7 +11211,7 @@
     "name": "nuspell",
     "description": "Nuspell is a fast and safe spelling checker software program.",
     "homepage": "https://nuspell.github.io/",
-    "version": "5.1.3",
+    "version": "5.1.7",
     "license": "LGPL-3.0, GPL-3.0",
     "compatibility": "all"
   },
@@ -11219,7 +11219,7 @@
     "name": "nvm",
     "description": "Node Version Manager - Simple bash script to manage multiple active node.js versions.",
     "homepage": "https://github.com/nvm-sh/nvm",
-    "version": "0.40.3",
+    "version": "0.40.4",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -11339,7 +11339,7 @@
     "name": "onlyoffice",
     "description": "The most complete office suite",
     "homepage": "https://www.onlyoffice.com/en/",
-    "version": "9.2.1",
+    "version": "9.3.1",
     "license": "AGPL-3",
     "compatibility": "x86_64"
   },
@@ -11603,7 +11603,7 @@
     "name": "opera",
     "description": "Opera is a multi-platform web browser based on Chromium and developed by Opera Software.",
     "homepage": "https://www.opera.com/",
-    "version": "128.0.5807.25",
+    "version": "128.0.5807.52",
     "license": "OPERA-2018",
     "compatibility": "x86_64"
   },
@@ -12389,6 +12389,14 @@
     "homepage": "https://metacpan.org/pod/XML::Simple",
     "version": "2.25",
     "license": "GPL-1+ or Artistic",
+    "compatibility": "all"
+  },
+  {
+    "name": "perl_xml_writer",
+    "description": "Perl extension for writing XML documents.",
+    "homepage": "https://metacpan.org/pod/XML::Writer",
+    "version": "0.900",
+    "license": "Copyright (c) 2004-2010 Joseph Walton",
     "compatibility": "all"
   },
   {
@@ -16643,7 +16651,7 @@
     "name": "rust",
     "description": "Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.",
     "homepage": "https://www.rust-lang.org/",
-    "version": "1.93.1",
+    "version": "1.94.0",
     "license": "Apache-2.0 and MIT",
     "compatibility": "all"
   },
@@ -17099,7 +17107,7 @@
     "name": "signal_desktop",
     "description": "Private Messenger for Windows, Mac, and Linux",
     "homepage": "https://signal.org/",
-    "version": "8.0.0",
+    "version": "8.1.0",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -18235,7 +18243,7 @@
     "name": "tree_sitter",
     "description": "An incremental parsing system for programming tools",
     "homepage": "https://github.com/tree-sitter/tree-sitter",
-    "version": "0.25.8-1",
+    "version": "0.26.6",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -18539,7 +18547,7 @@
     "name": "usql",
     "description": "Universal command-line interface for SQL databases",
     "homepage": "https://github.com/xo/usql",
-    "version": "0.20.8",
+    "version": "0.21.1",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -18747,7 +18755,7 @@
     "name": "vivaldi",
     "description": "Vivaldi is a new browser that blocks unwanted ads, protects you from trackers, and puts you in control with unique built-in features.",
     "homepage": "https://vivaldi.com/",
-    "version": "7.8.3925.74",
+    "version": "7.8.3925.76",
     "license": "Vivaldi",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -18803,7 +18811,7 @@
     "name": "vscodium",
     "description": "VSCodium is Open Source Software Binaries of VSCode with a community-driven default configuration.",
     "homepage": "https://vscodium.com/",
-    "version": "1.109.51242",
+    "version": "1.110.11602",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
