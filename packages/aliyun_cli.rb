@@ -11,10 +11,10 @@ class Aliyun_cli < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '532fe06491f11140e031c5b47531972bd7ce1162053136bb1de00b6b2144471e',
-     armv7l: '532fe06491f11140e031c5b47531972bd7ce1162053136bb1de00b6b2144471e',
-       i686: '8c04a58d51efac4e657ad90b04760cbd6ee2613d335aaea8624cdf7ada959ed6',
-     x86_64: '6dd1de964f462373296c5075bdcf853a9bb31dc14d5c3e1ed6870a31662f5480'
+    aarch64: 'c8cba0d82fa859d3dfd655e6cad0a4c012416bca1aa13dd83a8193bdedda2e7b',
+     armv7l: 'c8cba0d82fa859d3dfd655e6cad0a4c012416bca1aa13dd83a8193bdedda2e7b',
+       i686: '5885182a8479a6574eb740c64b1262a4ec32030f4e42e1a4da4edc57f716d8d7',
+     x86_64: 'e8edb5350dcd31a4f32c3a9377e4cd119a98fbd727f5560fe4fd1c4215b05fad'
   })
 
   depends_on 'glibc' => :executable_only
