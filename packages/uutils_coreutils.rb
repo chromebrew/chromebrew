@@ -29,7 +29,7 @@ class Uutils_coreutils < RUST
   conflicts_ok # conflicts with coreutils, util_linux, zoneinfo
 
   rust_features 'unix uudoc'
-  rust_release_profile 'release-fast'
+  rust_release_profile 'release-small'
 
   rust_install_extras do
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/bash-completion/completions"
