@@ -1,4 +1,4 @@
-# Total size: 3797902
+# Total size: 6830110
 /usr/local/bin/opam
 /usr/local/bin/opam-installer
 /usr/local/etc/bash.d/opam
@@ -6,12 +6,15 @@
 /usr/local/share/man/man1/opam-admin-add-hashes.1.zst
 /usr/local/share/man/man1/opam-admin-cache.1.zst
 /usr/local/share/man/man1/opam-admin-check.1.zst
+/usr/local/share/man/man1/opam-admin-compare-versions.1.zst
 /usr/local/share/man/man1/opam-admin-filter.1.zst
 /usr/local/share/man/man1/opam-admin-help.1.zst
 /usr/local/share/man/man1/opam-admin-index.1.zst
 /usr/local/share/man/man1/opam-admin-lint.1.zst
 /usr/local/share/man/man1/opam-admin-list.1.zst
 /usr/local/share/man/man1/opam-admin-make.1.zst
+/usr/local/share/man/man1/opam-admin-migrate-extrafiles.1.zst
+/usr/local/share/man/man1/opam-admin-update-extrafiles.1.zst
 /usr/local/share/man/man1/opam-admin-upgrade.1.zst
 /usr/local/share/man/man1/opam-admin.1.zst
 /usr/local/share/man/man1/opam-clean.1.zst
@@ -36,9 +39,11 @@
 /usr/local/share/man/man1/opam-show.1.zst
 /usr/local/share/man/man1/opam-source.1.zst
 /usr/local/share/man/man1/opam-switch.1.zst
+/usr/local/share/man/man1/opam-tree.1.zst
 /usr/local/share/man/man1/opam-uninstall.1.zst
 /usr/local/share/man/man1/opam-unpin.1.zst
 /usr/local/share/man/man1/opam-update.1.zst
 /usr/local/share/man/man1/opam-upgrade.1.zst
 /usr/local/share/man/man1/opam-var.1.zst
+/usr/local/share/man/man1/opam-why.1.zst
 /usr/local/share/man/man1/opam.1.zst
