@@ -1,0 +1,3 @@
+#!/bin/bash
+opam --help 2>&1 | head
+opam --version
