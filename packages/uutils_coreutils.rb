@@ -14,14 +14,14 @@ class Uutils_coreutils < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '97d9263242074252587bc0c95680c3c3bf840d2ef613311634bb52633061e186',
-     armv7l: '97d9263242074252587bc0c95680c3c3bf840d2ef613311634bb52633061e186',
-     x86_64: 'dea9c69cad75d984400e785070dd01d042edef0f36c8db7f29a1253c9b740bd0'
+    aarch64: '745b6b22bd31606649088aa8c4ac5114f01553e8042cb52c93a1bd5b1cc3c669',
+     armv7l: '745b6b22bd31606649088aa8c4ac5114f01553e8042cb52c93a1bd5b1cc3c669',
+     x86_64: '30ed1d7c33c46c2da25805df842579fcf770996e8446b58e908d098db7cd9f82'
   })
 
   depends_on 'acl' => :build
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :executable_only
+  depends_on 'glibc' => :executable_only
   depends_on 'llvm_dev' => :build
   depends_on 'rust' => :build
   depends_on 'sphinx' => :build
