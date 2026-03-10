@@ -7615,6 +7615,11 @@ url: http://rpm5.org/files/popt/
 activity: none
 ---
 kind: url
+name: portaudio
+url: https://github.com/PortAudio/portaudio/releases
+activity: none
+---
+kind: url
 name: postgres
 url: https://ftp.postgresql.org/pub/source
 activity: medium

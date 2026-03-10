@@ -1,0 +1,10 @@
+# Total size: 1446528
+/usr/local/include/pa_jack.h
+/usr/local/include/pa_linux_alsa.h
+/usr/local/include/portaudio.h
+/usr/local/lib64/libportaudio.a
+/usr/local/lib64/libportaudio.la
+/usr/local/lib64/libportaudio.so
+/usr/local/lib64/libportaudio.so.2
+/usr/local/lib64/libportaudio.so.2.0.0
+/usr/local/lib64/pkgconfig/portaudio-2.0.pc
