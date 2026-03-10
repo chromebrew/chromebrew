@@ -8130,6 +8130,11 @@ url: https://github.com/fukuchi/libqrencode/releases
 activity: none
 ---
 kind: url
+name: qrupdate
+url: https://sourceforge.net/projects/qrupdate/files/qrupdate/
+activity: none
+---
+kind: url
 name: qt5_base
 url: https://invent.kde.org/qt/qt/qtbase/-/tags
 activity: medium
