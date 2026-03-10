@@ -1,7 +1,9 @@
-# Total size: 93227
+# Total size: 170579
+/usr/local/bin/cllayerinfo
 /usr/local/lib/libOpenCL.so
 /usr/local/lib/libOpenCL.so.1
-/usr/local/lib/libOpenCL.so.1.2
+/usr/local/lib/libOpenCL.so.1.0.0
+/usr/local/lib/pkgconfig/OpenCL.pc
 /usr/local/share/cmake/OpenCLICDLoader/OpenCLICDLoaderConfig.cmake
 /usr/local/share/cmake/OpenCLICDLoader/OpenCLICDLoaderConfigVersion.cmake
 /usr/local/share/cmake/OpenCLICDLoader/OpenCLICDLoaderTargets-release.cmake
