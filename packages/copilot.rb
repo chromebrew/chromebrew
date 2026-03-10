@@ -27,6 +27,6 @@ class Copilot < Package
   end
 
   def self.postremove
-    Package.agree_to_remove("#{HOME}/.copilot")                                                                                                                                                             
+    Package.agree_to_remove("#{HOME}/.copilot")
   end
 end
