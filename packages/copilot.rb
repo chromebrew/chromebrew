@@ -12,6 +12,8 @@ class Copilot < Package
 
   depends_on 'nodebrew' # R
 
+  no_compile_needed
+
   def self.preinstall
     # Get the major node version.
     node_version = `node -v 2> /dev/null`.gsub(/[^\d^.]/, '').split('.')[0].chomp
