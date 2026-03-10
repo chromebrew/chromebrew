@@ -1115,11 +1115,6 @@ url: https://github.com/exaloop/codon/releases
 activity: low
 ---
 kind: url
-name: vscodium
-url: https://github.com/VSCodium/vscodium/releases
-activity: high
----
-kind: url
 name: cogl
 url: https://ftp.gnome.org/pub/GNOME/sources/cogl/
 activity: low
@@ -1183,6 +1178,11 @@ kind: url
 name: containers_common
 url: https://github.com/containers/common/releases
 activity: medium
+---
+kind: url
+name: copilot
+url: https://github.com/github/copilot-cli/releases
+activity: high
 ---
 kind: url
 name: coreutils
@@ -10058,6 +10058,11 @@ kind: url
 name: vpnc
 url: https://www.unix-ag.uni-kl.de/~massar/vpnc
 activity: none
+---
+kind: url
+name: vscodium
+url: https://github.com/VSCodium/vscodium/releases
+activity: high
 ---
 kind: url
 name: vtable_dumper
