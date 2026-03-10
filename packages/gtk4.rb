@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gtk4 < Meson
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://www.gtk.org/'
-  version '4.20.3'
+  version '4.22.0'
   license 'LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
@@ -11,13 +11,11 @@ class Gtk4 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0ce35946d1961f8c88e5282131c684d2ba5796adaffab2d44277b4550e8f12a2',
-     armv7l: '0ce35946d1961f8c88e5282131c684d2ba5796adaffab2d44277b4550e8f12a2',
-     x86_64: 'f0df0579473887cc0f967ffa2f5485f76cf992f70010d9f0eb1cb1d36cc4958f'
+    aarch64: 'e51f5946e6a64d6ebbfa1c787f8d9412a04fa1536461a7fdafc2a55ba47c6216',
+     armv7l: 'e51f5946e6a64d6ebbfa1c787f8d9412a04fa1536461a7fdafc2a55ba47c6216',
+     x86_64: 'b6235fd05ed45a30512fe9ec7957b815c2d7b9f881df21b967518dd5c2e223a8'
   })
 
-  # depends_on 'gnome_icon_theme' # L
-  # depends_on 'gstreamer' # R Let's avoid the glibc 2.29 dep.
   depends_on 'adwaita_fonts' # L
   depends_on 'adwaita_icon_theme' # L
   depends_on 'cairo' # R
@@ -31,8 +29,10 @@ class Gtk4 < Meson
   depends_on 'glib' # R
   depends_on 'glibc' # R
   depends_on 'glslang' => :build
+  # depends_on 'gnome_icon_theme' # L
   depends_on 'gobject_introspection' => :build
   depends_on 'graphene' # R
+  # depends_on 'gstreamer' # R Let's avoid the glibc 2.29 dep.
   depends_on 'harfbuzz' # R
   depends_on 'hicolor_icon_theme' # L
   depends_on 'intel_media_sdk' => :build if ARCH.eql?('x86_64')

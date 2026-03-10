@@ -1,0 +1,3 @@
+#!/bin/bash
+nginx -h 2>&1 | head
+nginx -v

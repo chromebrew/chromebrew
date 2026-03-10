@@ -1,4 +1,4 @@
-# Total size: 1128418
+# Total size: 1210545
 /usr/local/bin/blueprint-compiler
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/__init__.py
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/__pycache__/__init__.cpython-314.pyc
@@ -18,12 +18,16 @@
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/__pycache__/parse_tree.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/__pycache__/parser.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/__pycache__/tokenizer.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/blueprintcompiler/__pycache__/types.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/__pycache__/utils.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/__pycache__/xml_reader.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/annotations.py
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/ast_utils.py
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/completions.py
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/completions_utils.py
+/usr/local/lib/python3.14/site-packages/blueprintcompiler/data/__pycache__/collect_stats.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/blueprintcompiler/data/collect_stats.py
+/usr/local/lib/python3.14/site-packages/blueprintcompiler/data/stats.json
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/decompiler.py
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/errors.py
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/formatter.py
@@ -93,7 +97,6 @@
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/linter_rules/__init__.py
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/linter_rules/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/linter_rules/__pycache__/avoid_all_caps.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/blueprintcompiler/linter_rules/__pycache__/clamp_scrolledwindow.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/linter_rules/__pycache__/incorrect_widget_placement.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/linter_rules/__pycache__/missing_user_facing_properties.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/linter_rules/__pycache__/no_gtk_switch_state.cpython-314.pyc
@@ -103,12 +106,12 @@
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/linter_rules/__pycache__/prefer_adw_bin.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/linter_rules/__pycache__/prefer_unicode_chars.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/linter_rules/__pycache__/require_a11y_label.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/blueprintcompiler/linter_rules/__pycache__/scrollable_parent.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/linter_rules/__pycache__/translatable_display_string.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/blueprintcompiler/linter_rules/__pycache__/unused_object.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/blueprintcompiler/linter_rules/__pycache__/unused_widget.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/linter_rules/__pycache__/use_styles_over_css_classes.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/linter_rules/__pycache__/utils.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/linter_rules/avoid_all_caps.py
-/usr/local/lib/python3.14/site-packages/blueprintcompiler/linter_rules/clamp_scrolledwindow.py
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/linter_rules/incorrect_widget_placement.py
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/linter_rules/missing_user_facing_properties.py
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/linter_rules/no_gtk_switch_state.py
@@ -118,8 +121,9 @@
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/linter_rules/prefer_adw_bin.py
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/linter_rules/prefer_unicode_chars.py
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/linter_rules/require_a11y_label.py
+/usr/local/lib/python3.14/site-packages/blueprintcompiler/linter_rules/scrollable_parent.py
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/linter_rules/translatable_display_string.py
-/usr/local/lib/python3.14/site-packages/blueprintcompiler/linter_rules/unused_object.py
+/usr/local/lib/python3.14/site-packages/blueprintcompiler/linter_rules/unused_widget.py
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/linter_rules/use_styles_over_css_classes.py
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/linter_rules/utils.py
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/lsp.py
@@ -135,6 +139,7 @@
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/parser.py
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/reference_docs.json
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/tokenizer.py
+/usr/local/lib/python3.14/site-packages/blueprintcompiler/types.py
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/utils.py
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/xml_reader.py
 /usr/local/share/pkgconfig/blueprint-compiler.pc

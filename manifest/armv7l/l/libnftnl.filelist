@@ -1,4 +1,4 @@
-# Total size: 774205
+# Total size: 180643
 /usr/local/include/libnftnl/batch.h
 /usr/local/include/libnftnl/chain.h
 /usr/local/include/libnftnl/common.h
@@ -15,5 +15,5 @@
 /usr/local/lib/libnftnl.la
 /usr/local/lib/libnftnl.so
 /usr/local/lib/libnftnl.so.11
-/usr/local/lib/libnftnl.so.11.6.0
+/usr/local/lib/libnftnl.so.11.7.0
 /usr/local/lib/pkgconfig/libnftnl.pc

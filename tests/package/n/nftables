@@ -1,0 +1,3 @@
+#!/bin/bash
+nft -h | head
+nft -v

@@ -140,13 +140,11 @@ class PackageUtils
     # Get the installed version of the gem.
     gem_installed_version = `gem list --no-update-sources -l -e #{ruby_gem_name}`.gsub(/[^[:digit:]. ]/, '').split.last
 
-    # TODO: These are just the inverse of each other, so there's probably not a lot of reason to return them both.
-    gem_outdated = Gem::Version.new(ruby_gem_version) > Gem::Version.new(gem_installed_version)
     gem_latest_version_installed = Gem::Version.new(ruby_gem_version) <= Gem::Version.new(gem_installed_version)
 
     gem_deps = ruby_gem_json['dependencies']['runtime'].map { it['name'] }
 
-    return ruby_gem_name, ruby_gem_version, remote_ruby_gem_version, gem_installed_version, gem_latest_version_installed, gem_outdated, gem_deps
+    return ruby_gem_name, ruby_gem_version, remote_ruby_gem_version, gem_installed_version, gem_latest_version_installed, gem_deps
   end
 
   # Remove our language-specific prefixes and any build splitting suffixes.

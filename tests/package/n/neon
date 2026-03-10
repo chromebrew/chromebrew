@@ -1,0 +1,3 @@
+#!/bin/bash
+neon-config --help
+neon-config --version

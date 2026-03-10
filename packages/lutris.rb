@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Lutris < Meson
   description 'Desktop client to play all your games on Linux'
   homepage 'https://lutris.net/'
-  version '0.5.21'
+  version '0.5.22'
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/lutris/lutris.git'
@@ -11,9 +11,9 @@ class Lutris < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3df92fac6ce93f046a9ad69d00084ec020d6296458962b521f511f52c81f5441',
-     armv7l: '3df92fac6ce93f046a9ad69d00084ec020d6296458962b521f511f52c81f5441',
-     x86_64: '2554fe5c57004148c25b19b3fdbfacd3f8e2a4088ee1a82ed528cd402eb3cb20'
+    aarch64: 'c894663e9168aae73d8279d6fb65bb7b7788c9a3b7cd6e8e049a365214451bef',
+     armv7l: 'c894663e9168aae73d8279d6fb65bb7b7788c9a3b7cd6e8e049a365214451bef',
+     x86_64: '3a13f6a6da097d23413594b7c9d02a0d92d2ed288e7b33cdabd13c35a6b26e72'
   })
 
   depends_on 'appstream_glib' # R

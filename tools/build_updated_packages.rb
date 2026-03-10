@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# build_updated_packages version 5.0 (for Chromebrew)
+# build_updated_packages version 5.3 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -88,8 +88,7 @@ build = {}
 
 excluded_packages = Set[
   { pkg_name: 'glibc_fallthrough', comments: 'Stub package.' },
-  { pkg_name: 'py3_unsupported_python', commwnts: 'Stub package.' },
-  { pkg_name: 'terraform', comments: 'Needs manual update due to package structure.' }
+  { pkg_name: 'py3_unsupported_python', comments: 'Stub package.' }
 ]
 excluded_pkgs = excluded_packages.map { it[:pkg_name] }
 
@@ -362,9 +361,9 @@ updated_packages.each do |pkg|
   elsif @pkg_obj.no_compile_needed? && (@pkg_obj.compatibility == 'all' || @pkg_obj.compatibility.include?(ARCH))
     # Using crew reinstall -f package here updates the hashes for
     # binaries.
-    system "yes | crew reinstall #{'-f' unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES} #{name}"
+    system "yes | crew reinstall #{'-f --regenerate-filelist' unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES} #{name}"
     # Add manifests if we are in the right architecture.
-    if system("yes | crew reinstall #{'-f' unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES} #{name}") && File.exist?("#{CREW_META_PATH}/#{name}.filelist") && File.directory?(CREW_LOCAL_REPO_ROOT)
+    if system("yes | crew reinstall #{'-f --regenerate-filelist' unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES} #{name}") && File.exist?("#{CREW_META_PATH}/#{name}.filelist") && File.directory?(CREW_LOCAL_REPO_ROOT)
       puts 'Adding manifests.'
       FileUtils.cp "#{CREW_META_PATH}/#{name}.filelist", "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{name.chr}/#{name}.filelist"
     end
@@ -400,7 +399,7 @@ updated_packages.each do |pkg|
           end
           Process.detach(actions_timed_killer)
         end
-        system "yes | #{'CREW_CACHE_BUILD=1' if ENV['NESTED_CI']} nice -n 20 crew build -v -f #{pkg}"
+        system "yes | #{'CREW_CACHE_BUILD=1' if ENV['NESTED_CI']} nice -n 20 crew build #{'-v' if VERBOSE} -f #{pkg}"
         build[name.to_sym] = $CHILD_STATUS.success?
         unless build[name.to_sym]
           if CONTINUE_AFTER_FAILED_BUILDS

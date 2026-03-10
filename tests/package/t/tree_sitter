@@ -1,0 +1,3 @@
+#!/bin/bash
+tree-sitter -h | head
+tree-sitter -V

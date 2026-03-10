@@ -1,0 +1,3 @@
+#!/bin/bash
+nnn -h | head
+nnn -V

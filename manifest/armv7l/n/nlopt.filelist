@@ -1,4 +1,4 @@
-# Total size: 553966
+# Total size: 795005
 /usr/local/include/nlopt.h
 /usr/local/include/nlopt.hpp
 /usr/local/lib/cmake/nlopt/NLoptConfig.cmake
@@ -10,6 +10,9 @@
 /usr/local/lib/libnlopt.so.1.0.0
 /usr/local/lib/octave/9.4.0/site/oct/armv8l-unknown-linux-gnueabihf/nlopt_optimize.oct
 /usr/local/lib/pkgconfig/nlopt.pc
+/usr/local/lib/python3.14/site-packages/_nlopt.so
+/usr/local/lib/python3.14/site-packages/nlopt-2.10.1.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/nlopt.py
 /usr/local/share/man/man3/nlopt.3.zst
 /usr/local/share/man/man3/nlopt_minimize.3.zst
 /usr/local/share/man/man3/nlopt_minimize_constrained.3.zst

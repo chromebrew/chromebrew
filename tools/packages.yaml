@@ -7415,6 +7415,11 @@ url: https://cpan.metacpan.org/authors/id/G/GR/GRANTM/
 activity: none
 ---
 kind: url
+name: perl_xml_writer
+url: https://metacpan.org/pod/XML::Writer
+activity: none
+---
+kind: url
 name: perl_xml_xpath
 url: https://metacpan.org/pod/XML::XPath
 activity: low
@@ -8122,6 +8127,11 @@ activity: none
 kind: url
 name: qrencode
 url: https://github.com/fukuchi/libqrencode/releases
+activity: none
+---
+kind: url
+name: qrupdate
+url: https://sourceforge.net/projects/qrupdate/files/qrupdate/
 activity: none
 ---
 kind: url
@@ -9260,6 +9270,11 @@ url: https://freedesktop.org/software/startup-notification/releases
 activity: none
 ---
 kind: url
+name: static_get
+url: https://github.com/minos-org/minos-static
+activity: none
+---
+kind: url
 name: stellarium
 url: https://github.com/Stellarium/stellarium/releases
 activity: medium
@@ -10173,6 +10188,11 @@ kind: url
 name: wezterm
 url: https://github.com/wez/wezterm/releases
 activity: low
+---
+kind: url
+name: wget_static
+url: https://ftp.gnu.org/gnu/wget/
+activity: none
 ---
 kind: url
 name: wget2

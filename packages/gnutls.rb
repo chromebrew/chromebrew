@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Gnutls < Autotools
   description 'GnuTLS is a secure communications library implementing the SSL, TLS and DTLS protocols and technologies around them.'
   homepage 'https://gnutls.org/'
-  version '3.8.11'
+  version '3.8.12'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://gitlab.com/gnutls/gnutls.git'
@@ -11,10 +11,10 @@ class Gnutls < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7cad8a55bdef26259fc6a1cbe8a95fe724815c066d05eda1b12cc04ab5cc3514',
-     armv7l: '7cad8a55bdef26259fc6a1cbe8a95fe724815c066d05eda1b12cc04ab5cc3514',
-       i686: '18c2e32bb85c2d21ead658324f3e1f8b58fa10225d72d1d7e3b18b001f679d3c',
-     x86_64: 'a4224a48a8aa825cd7e3c8c792a8264a4dec1b1c1617474e259b54b0174fd770'
+    aarch64: '7e5d7741139db8e2c9614fa662663b2e003ee8a68319ae99bd909a243971754d',
+     armv7l: '7e5d7741139db8e2c9614fa662663b2e003ee8a68319ae99bd909a243971754d',
+       i686: 'c8c5e45df68e6d3c7c38b66fd54990c3cfd6a5bed3e78d3cd765c4b55a4d9231',
+     x86_64: 'c99a27294d0833284c23a77c800a3ca9e7f769d122a6ea7a95db6e68ed7e1d2b'
   })
 
   depends_on 'brotli' # R
@@ -33,7 +33,7 @@ class Gnutls < Autotools
   depends_on 'openssl' # R
   depends_on 'p11kit' # R
   depends_on 'trousers' => :build
-  depends_on 'wget2' => :build
+  depends_on 'wget_static' => :build
   depends_on 'zlib' # R
   depends_on 'zstd' # R
 
@@ -44,6 +44,14 @@ class Gnutls < Autotools
     system "#{CREW_PREFIX}/sbin/unbound-anchor -a '#{CREW_PREFIX}/etc/unbound/root.key' || #{CREW_PREFIX}/sbin/unbound-anchor -4 -a '#{CREW_PREFIX}/etc/unbound/root.key'"
     # Rebuild ca-certificates.
     system "#{CREW_PREFIX}/bin/update-ca-certificates --fresh --certsconf #{CREW_PREFIX}/etc/ca-certificates.conf"
+  end
+
+  def self.patch
+    patches = [
+      # nettle 4.0 patch
+      ['https://gitlab.com/gnutls/gnutls/-/merge_requests/2075.diff', '890a5b576253d1088f91e187e0a2979283d034b7d5f41eca13c0e857f37e61f3']
+    ]
+    ConvenienceFunctions.patch(patches) if version == '3.8.12'
   end
 
   autotools_configure_options "--disable-doc \
