@@ -26,7 +26,7 @@ class Copilot < Package
     FileUtils.install 'copilot', "#{CREW_DEST_PREFIX}/bin/copilot", mode: 0o755
   end
 
-  def self.postremove                                                                                                                                                                                           
+  def self.postremove
     Package.agree_to_remove("#{HOME}/.copilot")                                                                                                                                                             
   end
 end
