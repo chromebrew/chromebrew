@@ -3,18 +3,18 @@ require 'buildsystems/meson'
 class Opus < Meson
   description 'Opus is a totally open, royalty-free, highly versatile audio codec.'
   homepage 'https://opus-codec.org'
-  version '1.5.2-1'
+  version '1.6.1'
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/xiph/opus.git'
-  git_hashtag "v#{version.split('-').first}"
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1df3cde37f4a58f6eae05fed8703d78769538936071a6ce577bfe8575b88a9aa',
-     armv7l: '1df3cde37f4a58f6eae05fed8703d78769538936071a6ce577bfe8575b88a9aa',
-       i686: '148b3ff34845a7880c8fe585d9882126deb69ccfdf3bdf330276f2d5a47e6c60',
-     x86_64: 'ba1c94c977cb542d2f195251a12027bd221b08da056254910cf233c95f173579'
+    aarch64: 'e7aaa3a6aa87f50da387fa639b279ffdfd27a462eed059d686fdd6444d98747b',
+     armv7l: 'e7aaa3a6aa87f50da387fa639b279ffdfd27a462eed059d686fdd6444d98747b',
+       i686: '0ee43847fcf37033641b71503ed2ba4159cb25e8a6c12628af6722adfcc9acbf',
+     x86_64: '3d14e2f63dd73446938c06b8a7957e206bf067a4609d7ed8021cf6630dd2e7c2'
   })
 
   depends_on 'doxygen' => :build
