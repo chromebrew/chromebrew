@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Opencl_icd_loader < Package
+class Opencl_icd_loader < CMake
   description 'OpenCL Installable Client Driver ICD Loader'
   homepage 'https://github.com/KhronosGroup/OpenCL-ICD-Loader'
-  version '2022.09.30'
+  version '2025.07.22'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/KhronosGroup/OpenCL-ICD-Loader.git'
@@ -11,32 +11,16 @@ class Opencl_icd_loader < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e49bb8bb67b4ab19e42f334c219c494fd05e30340df862750515017194df05e8',
-     armv7l: 'e49bb8bb67b4ab19e42f334c219c494fd05e30340df862750515017194df05e8',
-       i686: 'b819bce928df90fb1101337985a0c48c31c4f2e94420c8393dc2f6eaaf398b63',
-     x86_64: '609de7c8d6bc96f75c3c455b2172ba57f4afd7620bfee34703f9806d840865e3'
+    aarch64: '0d70d13dc355ab2f0776ae4bfe781d4620de3259e204c58710c3ee2571e545e8',
+     armv7l: '0d70d13dc355ab2f0776ae4bfe781d4620de3259e204c58710c3ee2571e545e8',
+       i686: 'ffc72d971973a57978d056f3e2b85f06ffa2632299e5dad4fe9d7be7f32101d7',
+     x86_64: '0f11157feadd877d6ec72ab35aeb38cbfbe638abec95bc2bd1f4111721bde1b6'
   })
 
   depends_on 'glibc' # R
   depends_on 'opencl_headers' => :build
 
-  def self.build
-    Dir.mkdir 'builddir'
-    Dir.chdir 'builddir' do
-      system "cmake -G Ninja \
-        #{CREW_CMAKE_OPTIONS} \
-        -DOPENCL_HEADERS_INSTALL_DIR=#{CREW_PREFIX} \
-        -DOPENCL_ICD_LOADER_BUILD_TESTING=ON \
-         .."
-    end
-    system 'samu -C builddir'
-  end
+  cmake_options '-DOPENCL_ICD_LOADER_BUILD_TESTING=ON'
 
-  def self.check
-    system 'samu -C builddir test'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
-  end
+  run_tests
 end
