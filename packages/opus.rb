@@ -7,7 +7,7 @@ class Opus < Meson
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/xiph/opus.git'
-  git_hashtag "v#{version.split('-').first}"
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
