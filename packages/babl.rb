@@ -11,9 +11,9 @@ class Babl < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '891d4b165564b7a36e59223a87e7bdfa77a74856e88adf0ea8725639bfdfc966',
-     armv7l: '891d4b165564b7a36e59223a87e7bdfa77a74856e88adf0ea8725639bfdfc966',
-     x86_64: 'cf1156bf6d9188b327988d38f6df7116679e02900e83aebef30c2d6b982edea8'
+    aarch64: '82cacc135cf449d74fa8161bb5292f5d9559ecc691a26c500a3cb46bc28c84f3',
+     armv7l: '82cacc135cf449d74fa8161bb5292f5d9559ecc691a26c500a3cb46bc28c84f3',
+     x86_64: '6b1e7a3dca460d2251376baeb2e1ee270402f14f4c33b951abc734e7dce95c34'
   })
 
   depends_on 'gcc_lib' # R
