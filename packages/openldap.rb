@@ -11,10 +11,10 @@ class Openldap < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9abf23887c4ea133215d9f83b2447488697f2971e298fadf8bcb3477f5eba8e3',
-     armv7l: '9abf23887c4ea133215d9f83b2447488697f2971e298fadf8bcb3477f5eba8e3',
-       i686: 'dac0a391b2cfe0b1850b0436f2e9ae4678950b1723c95141938f2b7092e1d269',
-     x86_64: '8385c9826391f34c25374d01ca24f53fad4e3f1fdf15e00eebe644760b3d607c'
+    aarch64: 'fe4526b9055e9ff1ed965577a1bdb7a83ce24ad272b7e758de054ab5ea2b23ea',
+     armv7l: 'fe4526b9055e9ff1ed965577a1bdb7a83ce24ad272b7e758de054ab5ea2b23ea',
+       i686: '4589122bcceabc92e4669330dbfe83a16cabeaf9879433a2fa665a7da5514e1a',
+     x86_64: '88540a9db9c707ae0f320400ab54b6262a5b9bce5e9468a5140f29a3bc335288'
   })
 
   depends_on 'e2fsprogs' => :build
