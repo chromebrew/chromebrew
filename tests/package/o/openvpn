@@ -1,0 +1,3 @@
+#!/bin/bash
+openvpn --help | head
+openvpn --version
