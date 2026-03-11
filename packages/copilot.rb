@@ -16,8 +16,15 @@ class Copilot < Package
 
   def self.preinstall
     # Get the major node version.
-    node_version = `node -v 2> /dev/null`.gsub(/[^\d^.]/, '').split('.')[0].chomp
-    unless node_version != '' && node_version >= '22'
+    node_version = `node -v 2> /dev/null`
+    if node_version.empty?
+      abort <<~EOM.lightred
+        Node.js is not installed. Use nodebrew to install a compatible version.
+        Example: source ~/.bashrc && nodebrew install 22 && nodebrew use 22
+      EOM
+    end
+    node_major_version = node_version.gsub(/[^\d^.]/, '').split('.')[0].chomp
+    unless node_major_version >= '22'
       abort <<~EOM.lightred
         Node.js version must be >= 22. Use nodebrew to install a compatible version.
         Example: source ~/.bashrc && nodebrew install 22 && nodebrew use 22
