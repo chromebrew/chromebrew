@@ -11,10 +11,10 @@ class Perl < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0d92a28300b6bbf662ede94eef2fa3af8b9356335475d2de1711185ea087f2e6',
-     armv7l: '0d92a28300b6bbf662ede94eef2fa3af8b9356335475d2de1711185ea087f2e6',
-       i686: '08c0ddc46354c4f092dd396726f3d149db4a61eff38f51d985b40386855157f1',
-     x86_64: '96feb4852d26fba0b9ff1cde5aad3562cff9efa0de09cc0199018ce9bd1ff7e8'
+    aarch64: '6c53427ee0d6078b54b29b6a1766207aae1a3894ced42d2f3ab5e90febe8a59a',
+     armv7l: '6c53427ee0d6078b54b29b6a1766207aae1a3894ced42d2f3ab5e90febe8a59a',
+       i686: '6d60f1b474ed9455a7323bc0e9e0f72e0b48eac7806036d8de3987aa730380c6',
+     x86_64: '872c4c9525102ffdcd6fda7c36136bfd43987f1aaac106882288888d44cd8bcf'
   })
 
   depends_on 'gdbm' # R
