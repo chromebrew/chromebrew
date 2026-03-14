@@ -1,0 +1,3 @@
+#!/bin/bash
+platform -h | head
+platform -V
