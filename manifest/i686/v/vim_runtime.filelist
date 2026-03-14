@@ -1,4 +1,4 @@
-# Total size: 29120040
+# Total size: 29167327
 /usr/local/etc/vimrc
 /usr/local/share/vim/vim92/LICENSE
 /usr/local/share/vim/vim92/README.txt
@@ -499,6 +499,7 @@
 /usr/local/share/vim/vim92/ftplugin/elinks.vim
 /usr/local/share/vim/vim92/ftplugin/elixir.vim
 /usr/local/share/vim/vim92/ftplugin/elm.vim
+/usr/local/share/vim/vim92/ftplugin/env.vim
 /usr/local/share/vim/vim92/ftplugin/erlang.vim
 /usr/local/share/vim/vim92/ftplugin/eruby.vim
 /usr/local/share/vim/vim92/ftplugin/eterm.vim
@@ -650,6 +651,7 @@
 /usr/local/share/vim/vim92/ftplugin/neomuttrc.vim
 /usr/local/share/vim/vim92/ftplugin/netrc.vim
 /usr/local/share/vim/vim92/ftplugin/nginx.vim
+/usr/local/share/vim/vim92/ftplugin/nickel.vim
 /usr/local/share/vim/vim92/ftplugin/nim.vim
 /usr/local/share/vim/vim92/ftplugin/nix.vim
 /usr/local/share/vim/vim92/ftplugin/nroff.vim
@@ -816,6 +818,7 @@
 /usr/local/share/vim/vim92/ftplugin/xf86conf.vim
 /usr/local/share/vim/vim92/ftplugin/xhtml.vim
 /usr/local/share/vim/vim92/ftplugin/xinetd.vim
+/usr/local/share/vim/vim92/ftplugin/xkb.vim
 /usr/local/share/vim/vim92/ftplugin/xml.vim
 /usr/local/share/vim/vim92/ftplugin/xmodmap.vim
 /usr/local/share/vim/vim92/ftplugin/xs.vim
@@ -894,6 +897,7 @@
 /usr/local/share/vim/vim92/indent/gyp.vim
 /usr/local/share/vim/vim92/indent/haml.vim
 /usr/local/share/vim/vim92/indent/hamster.vim
+/usr/local/share/vim/vim92/indent/handlebars.vim
 /usr/local/share/vim/vim92/indent/hare.vim
 /usr/local/share/vim/vim92/indent/hcl.vim
 /usr/local/share/vim/vim92/indent/hog.vim
@@ -1394,6 +1398,7 @@
 /usr/local/share/vim/vim92/syntax/gitsendemail.vim
 /usr/local/share/vim/vim92/syntax/gkrellmrc.vim
 /usr/local/share/vim/vim92/syntax/gleam.vim
+/usr/local/share/vim/vim92/syntax/glimmer.vim
 /usr/local/share/vim/vim92/syntax/glsl.vim
 /usr/local/share/vim/vim92/syntax/gnash.vim
 /usr/local/share/vim/vim92/syntax/gnuplot.vim
@@ -1416,6 +1421,7 @@
 /usr/local/share/vim/vim92/syntax/gyp.vim
 /usr/local/share/vim/vim92/syntax/haml.vim
 /usr/local/share/vim/vim92/syntax/hamster.vim
+/usr/local/share/vim/vim92/syntax/handlebars.vim
 /usr/local/share/vim/vim92/syntax/hare.vim
 /usr/local/share/vim/vim92/syntax/haredoc.vim
 /usr/local/share/vim/vim92/syntax/haskell.vim
