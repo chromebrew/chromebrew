@@ -1,5 +1,5 @@
 ---
-# Version 1.4
+# Version 1.5
 name: Build
 run-name: Build ${{ inputs.packages_to_build }} for ${{ inputs.build-on }} on branch ${{ inputs.branch || github.head_ref || github.ref_name }} requested by @${{ github.actor }}
 on:
@@ -22,6 +22,11 @@ on:
       packages_to_build:
         description: "Specify packages to build."
         required: false
+      check_downstream_packages:
+        description: "Check if downstream packages need builds."
+        required: false
+        type: boolean
+        default: 'false'
       rebuild_packages:
         description: "Rebuild packages even if they already have binaries."
         required: false
@@ -128,18 +133,57 @@ jobs:
             packages:
               - packages/*.rb
           since_last_remote_commit: true
-      - name: Export variables to github context
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '4.0.1'
+      - name: Install bin/crew gem dependencies
+        run: |
+          # Install required gems.
+          require_gem () {
+            for g in "$@"
+            do
+              install_gem=0
+              # Check to see if the gem is recorded as installed AND if there are
+              # gem contents before assuming that the gem is installed.
+              if gem list --no-update-sources -l -e "$g" 2>/dev/null | grep -q "$g"; then
+                :
+              else
+                install_gem=1
+              fi
+              # shellcheck disable=SC2143
+              if [[ $(gem contents "$g" 2>/dev/null | grep 'Unable to find gem') ]] || [[ "$(gem contents "$g" 2>/dev/null | wc -l)" == "0" ]]; then
+                install_gem=1
+              else
+                :
+              fi
+             [[ $install_gem == '1' ]] && gem install -N "$g"
+            done
+          }
+          require_gem regexp_parser dagwood ruby-libversion highline ptools cgi rubocop rubocop-chromebrew
+          # Force creation of temporary device.json.
+          ruby bin/crew version
+      - name: Determine packages to check for changes and export variables to github context
         id: changed-packages
         run: |
             # Add inputs.packages_to_build to the packages we will
             # check for architecture and glibc compatibility.
-            if [[ -z "${{ steps.changed-files.outputs.packages_all_changed_files }} ${{ inputs.packages_to_build }}" ]]; then
+            if [[ -n "${{ steps.changed-files.outputs.packages_all_changed_files }} ${{ inputs.packages_to_build }}" ]]; then
+              # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-files.outputs.packages_all_changed_files) into "foo bar"
+              pkg_list="$(echo "${{ steps.changed-files.outputs.packages_all_changed_files }} ${{ inputs.packages_to_build }}" | xargs basename -s .rb | sed 's/ /\n/g' | sort -u | xargs)"
+              if [[ "${{ github.event.inputs.check_downstream_packages }}" == "true" ]]; then
+                # Expand checks to cover downstream dependencies.
+                downstream_list="$(ruby bin/crew whatdepends -j "${pkg_list}" | jq -r '.[]' | sort -u | xargs)"
+                expanded_package_list="$(echo ${pkg_list} ${downstream_list} | sed 's/ /\n/g' | sort -u | xargs)"
+                echo "CHANGED_PACKAGES=$(echo "${expanded_package_list}")" >> "$GITHUB_ENV"
+                echo "CHANGED_PACKAGES=$(echo "${expanded_package_list}")" >> "$GITHUB_OUTPUT"
+              else
+                echo "CHANGED_PACKAGES=$(echo "${pkg_list}")" >> "$GITHUB_ENV"
+                echo "CHANGED_PACKAGES=$(echo "${pkg_list}")" >> "$GITHUB_OUTPUT"
+              fi
+            else
               echo "Branch ${{ inputs.branch || github.head_ref || github.ref_name }} has no changed package files."
               exit 1
             fi
-            # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-files.outputs.packages_all_changed_files) into "foo bar"
-            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-files.outputs.packages_all_changed_files }} ${{ inputs.packages_to_build }}" | xargs basename -s .rb | sort -u | xargs)" >> "$GITHUB_ENV"
-            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-files.outputs.packages_all_changed_files }} ${{ inputs.packages_to_build }}" | xargs basename -s .rb | sort -u | xargs)" >> "$GITHUB_OUTPUT"
       - name: Determine glibc and architecture package compatibility
         id: get-compatibility
         run: |

@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# build_updated_packages version 5.2 (for Chromebrew)
+# build_updated_packages version 5.3 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -23,6 +23,7 @@ crew_local_repo_root = '../' if crew_local_repo_root.to_s.empty?
 require File.join(crew_local_repo_root, 'lib/color')
 require File.join(crew_local_repo_root, 'lib/const')
 require File.join(crew_local_repo_root, 'lib/package')
+require File.join(crew_local_repo_root, 'lib/package_utils')
 require File.join(crew_local_repo_root, 'lib/require_gem')
 require_gem 'dagwood'
 require_gem 'highline'
@@ -314,6 +315,7 @@ if updated_packages.empty?
   puts 'No packages need to be updated.'.orange
 else
   updated_packages.uniq!
+  updated_packages.delete_if { !PackageUtils.compatible?(Package.load_package(File.join(crew_local_repo_root, it.downcase))) }
   updated_packages_reordered = order_recursive_deps(updated_packages.map { |p| p.sub('packages/', '').sub('.rb', '') }).map { |p| "packages/#{p}.rb" }
   puts 'These packages will be checked to see if they need updated binaries:'.orange
   unless updated_packages == updated_packages_reordered
