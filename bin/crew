@@ -952,13 +952,24 @@ def prepare_package(destdir)
 
     strip_dir destdir
 
-    # Create file list and calculate file size
-    filelist = Dir[".{#{CREW_PREFIX}/**/{.*,*,.?*/**},#{HOME}}/**/{.*,*,.?*/**}"].select do |e|
-      File.file?(e) || File.symlink?(e)
-    end.to_h do |e|
-      # Ignore symlinks to prevent duplicating calculation.
-      [e[1..], File.symlink?(e) ? 0 : File.size(e)]
+    filelist = {}
+    [".#{CREW_PREFIX}", ".#{HOME}"].each do |root|
+      next unless File.exist?(root) || File.symlink?(root)
+      Find.find(root) do |e|
+        begin
+          next unless File.file?(e) || File.symlink?(e)
+          filelist[e[1..]] = File.symlink?(e) ? 0 : File.size(e)
+        rescue Errno::ELOOP
+          warn "Skipping symlink loop: #{e}"
+        rescue Errno::ENOENT
+          warn "Skipping missing path: #{e}"
+        end
+      rescue Errno::ELOOP
+        warn "Skipping symlink loop during traversal: #{e}"
+        Find.prune
+      end
     end
+
 
     # If the package is completely empty, something has probably gone wrong.
     total_size = filelist.values.sum
