@@ -607,7 +607,7 @@ yes | ${PREFIX_CMD} crew install crew_profile_base
 trap - ERR && source ~/.bashrc && set_trap
 
 echo_info "Installing core Chromebrew packages...\n"
-yes | ${PREFIX_CMD} crew install core || (yes | ${PREFIX_CMD} crew install core)
+yes | ${PREFIX_CMD} crew install core || (yes | ${PREFIX_CMD} crew install core) || yes | ${PREFIX_CMD} crew reinstall core
 
 echo_info "Installing buildessential...\n"
 yes | ${PREFIX_CMD} crew install buildessential
