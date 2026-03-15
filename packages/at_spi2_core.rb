@@ -11,9 +11,9 @@ class At_spi2_core < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0841e1ff1754a275cabdef77feca999056741d3b87d2acd9992f67a4c1ec5dce',
-     armv7l: '0841e1ff1754a275cabdef77feca999056741d3b87d2acd9992f67a4c1ec5dce',
-     x86_64: '5deec07cd42d951e86a3944d46ff0b8d0a110302d1b0063c1b8c59648cad1865'
+    aarch64: 'b9cdb0c33062bbb20b6c88a74f7a3afe49c420c91c4e2853081b4211af87fb68',
+     armv7l: 'b9cdb0c33062bbb20b6c88a74f7a3afe49c420c91c4e2853081b4211af87fb68',
+     x86_64: '9518405d9121068866e562178be368b757d3735f9a7670e8954b19440ef46d6c'
   })
 
   depends_on 'dbus' # R
@@ -27,7 +27,7 @@ class At_spi2_core < Meson
   depends_on 'libxext' => :build
   depends_on 'libxfixes' => :build
   depends_on 'libxi' # R
-  depends_on 'libxtst' # R
+  depends_on 'libxtst' => :executable_only
 
   gnome
 end
