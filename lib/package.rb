@@ -190,13 +190,13 @@ class Package
     # Add current package to @checked_list for preventing extra checks.
     @checked_list.merge!({ pkg_name => pkg_tags })
 
-    pkg_obj = load_package(File.join(CREW_PACKAGES_PATH, "#{pkg_name}.rb"))
-    is_source = pkg_obj.source?(ARCH.to_sym) or pkg_obj.build_from_source
-    deps = pkg_obj.dependencies
+    @dep_pkg_obj = load_package(File.join(CREW_PACKAGES_PATH, "#{pkg_name}.rb"))
+    is_source = @dep_pkg_obj.source?(ARCH.to_sym) or @dep_pkg_obj.build_from_source
+    deps = @dep_pkg_obj.dependencies
 
     # Append buildessential to deps if building from source is needed/specified.
     if ((include_build_deps == true) || ((include_build_deps == 'auto') && is_source)) &&
-       !pkg_obj.no_compile_needed? &&
+       !@dep_pkg_obj.no_compile_needed? &&
        !exclude_buildessential &&
        !@checked_list.keys.include?('buildessential')
 
@@ -204,12 +204,12 @@ class Package
     end
 
     # Parse dependencies recursively.
-    expanded_deps = deps.uniq.map do |dep, (dep_tags, ver_check)|
+    expanded_deps = deps.uniq.map do |dep, (dep_tags, ver_check, dep_architectures)|
       # Check build dependencies only if building from source is needed/specified.
       # Do not recursively find :build based build dependencies.
-      next unless (include_build_deps == true && @crew_current_package == pkg_obj.name) ||
-                  ((include_build_deps == 'auto') && is_source && @crew_current_package == pkg_obj.name) ||
-                  !dep_tags.include?(:build)
+      next unless dep_architectures.include?(ARCH) && ((include_build_deps == true && @crew_current_package == @dep_pkg_obj.name) ||
+                  ((include_build_deps == 'auto') && is_source && @crew_current_package == @dep_pkg_obj.name) ||
+                  !dep_tags.include?(:build))
 
       # Overwrite tags if parent dependency is a build dependency.
       # (for build dependencies highlighting)
@@ -247,7 +247,7 @@ class Package
     elsif include_self
       # Return pkg_name itself if this function is called as a recursive loop (see `expanded_deps`).
       if return_attr
-        return [expanded_deps, { pkg_name => [pkg_tags, ver_check] }].flatten
+        return [expanded_deps, { pkg_name => [pkg_tags, ver_check, dep_architectures] }].flatten
       else
         return [expanded_deps, pkg_name].flatten
       end
@@ -341,12 +341,17 @@ class Package
     if dependency.is_a?(Hash)
       # Parse "depends_on name => <tags: Symbol|Array>".
       dep_name, tags = dependency.first
+      dep_compatibility = load_package(File.join(CREW_PACKAGES_PATH, "#{dep_name}.rb")).compatibility.split
+      dep_compatibility = %w[aarch64 armv7l i686 x86_64] if dep_compatibility == ['all']
+      dep_architectures = tags.is_a?(Array) && !tags.intersect?(dep_compatibility).nil? ? tags.intersection(dep_compatibility) : %w[aarch64 armv7l i686 x86_64]
 
       # Convert `tags` to array in case `tags` is a symbol.
       dep_tags += [tags].flatten
     else
       # Parse "depends_on name".
       dep_name = dependency
+      dep_compatibility = @dep_pkg_obj.compatibility.split
+      dep_architectures = dep_compatibility == 'all' ? %w[aarch64 armv7l i686 x86_64] : dep_compatibility
     end
 
     # Process dependency version range if specified.
@@ -372,7 +377,7 @@ class Package
       end
     end
 
-    @dependencies.store(dep_name, [dep_tags, ver_check])
+    @dependencies.store(dep_name, [dep_tags, ver_check, dep_architectures])
   end
 
   def self.binary?(architecture) = !@build_from_source && @binary_sha256&.key?(architecture)
