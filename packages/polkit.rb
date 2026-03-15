@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Polkit < Meson
   description 'Application development toolkit for controlling system-wide privileges'
   homepage 'https://github.com/polkit-org/polkit'
-  version '126'
+  version '127'
   license 'LGPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/polkit-org/polkit.git'
@@ -11,11 +11,12 @@ class Polkit < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b4590a3ed9d697d83cfd8572f099149c312523a2c6c746c4bd8de1b9372a330a',
-     armv7l: 'b4590a3ed9d697d83cfd8572f099149c312523a2c6c746c4bd8de1b9372a330a',
-     x86_64: '52ba4765904dd0ecbbb774643bf2e113ff87148eb1a22603162349779869f887'
+    aarch64: '84490f0403cdfe2f6357dacf5af775af06e44112ae42c62d0bc8a10ef56703fc',
+     armv7l: '84490f0403cdfe2f6357dacf5af775af06e44112ae42c62d0bc8a10ef56703fc',
+     x86_64: '38ad0b4e78df4443940086461324526ef6fc67d5b3e8819c1e10c6e1a3e307f9'
   })
 
+  depends_on 'dbus' => :build
   depends_on 'duktape' => :build
   depends_on 'elogind' # R
   depends_on 'expat' => :build
@@ -27,5 +28,8 @@ class Polkit < Meson
   meson_options "-Dlibs-only=true \
                  -Dsession_tracking=elogind \
                  -Dsystemdsystemunitdir=#{CREW_PREFIX}/etc/elogind"
-  run_tests
+
+  meson_install_extras do
+    FileUtils.mv Dir["#{CREW_DEST_PREFIX}/lib/*"], CREW_DEST_LIB_PREFIX.to_s if ARCH.eql?('x86_64')
+  end
 end
