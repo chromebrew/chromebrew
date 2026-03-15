@@ -1,6 +1,6 @@
-# Total size: 216034
-/usr/local/lib/cmake/PlasmaWaylandProtocols/PlasmaWaylandProtocolsConfig.cmake
-/usr/local/lib/cmake/PlasmaWaylandProtocols/PlasmaWaylandProtocolsConfigVersion.cmake
+# Total size: 222989
+/usr/local/share/cmake/PlasmaWaylandProtocols/PlasmaWaylandProtocolsConfig.cmake
+/usr/local/share/cmake/PlasmaWaylandProtocols/PlasmaWaylandProtocolsConfigVersion.cmake
 /usr/local/share/plasma-wayland-protocols/appmenu.xml
 /usr/local/share/plasma-wayland-protocols/blur.xml
 /usr/local/share/plasma-wayland-protocols/contrast.xml

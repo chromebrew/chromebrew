@@ -1,0 +1,3 @@
+#!/bin/bash
+pcsc-spy -h
+pcsc-spy -v

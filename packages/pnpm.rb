@@ -3,11 +3,11 @@ require 'package'
 class Pnpm < Package
   description 'Fast, disk space efficient package manager'
   homepage 'https://pnpm.io/'
-  version '10.32.0'
+  version '10.32.1'
   license 'MIT'
   compatibility 'x86_64'
   source_url "https://github.com/pnpm/pnpm/releases/download/v#{version}/pnpm-linux-x64"
-  source_sha256 '0417d19eb256e8b9971c281a825c3ab3b3e2b07b46ff78e977f149335bdb4955'
+  source_sha256 'c5607a86bfb948297e96b393a53c90107766fe56329e62967b1f239d861d4363'
 
   no_compile_needed
 

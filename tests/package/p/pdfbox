@@ -1,0 +1,3 @@
+#!/bin/bash
+pdfbox help | head
+pdfbox version

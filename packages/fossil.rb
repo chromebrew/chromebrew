@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Fossil < Autotools
   description 'Fossil is a simple, high-reliability, distributed software configuration management system'
   homepage 'https://fossil-scm.org/home/doc/trunk/www/index.wiki'
-  version '2.27'
+  version '2.28'
   license 'BSD-2'
   compatibility 'all'
   source_url 'https://github.com/drhsqlite/fossil-mirror.git'
@@ -11,19 +11,20 @@ class Fossil < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd96af524277488356522e3bde93e3971798e091cf2a249c5d35698cb08274da5',
-     armv7l: 'd96af524277488356522e3bde93e3971798e091cf2a249c5d35698cb08274da5',
-       i686: '28048a4e282dc2d0b8d9e07b50ae5d745dcc125a30203a5aa51d1caf9a563fbe',
-     x86_64: 'd03d57a3cb8ae8ca669b8fd6019314c656898ae36943492f4b43162ff6ccdc75'
+    aarch64: '1a0f7180eb3a164dc90872d99e168d233f442ffb34c3eaee35fb0ab637d99ea9',
+     armv7l: '1a0f7180eb3a164dc90872d99e168d233f442ffb34c3eaee35fb0ab637d99ea9',
+       i686: 'f8ac9ec86f7163eccda5f3092cef384a1c96203c9920a43246f3324fff174574',
+     x86_64: '90ff6bc93846c2d7416f86320929898a38d46c356b47fd18d75db3bf8577f411'
   })
 
   # Error: system SQLite library omits required build option -DSQLITE_ENABLE_DBSTAT_VTAB
-  # depends_on 'sqlite'
   depends_on 'fuse2'
-  depends_on 'glibc' # R
-  depends_on 'openssl' # R
+  depends_on 'fuse2' => :executable_only
+  depends_on 'glibc' => :executable_only
+  depends_on 'openssl' => :executable_only
+  # depends_on 'sqlite'
   depends_on 'tcl' => :build
-  depends_on 'zlib' # R
+  depends_on 'zlib' => :executable_only
 
   # Fossil uses autosetup, which behaves enough like autotools that if we only pass certain options,
   # we can still use the rest of the autotools buildsystem.

@@ -8035,6 +8035,11 @@ url: https://github.com/ntessore/unsupported-python/releases
 activity: none
 ---
 kind: url
+name: py3_wakeonlan
+url: https://github.com/remcohaszing/pywakeonlan/releases
+activity: none
+---
+kind: url
 name: py3_websockets
 url: https://github.com/python-websockets/websockets/tags
 activity: high
