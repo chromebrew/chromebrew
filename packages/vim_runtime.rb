@@ -11,10 +11,10 @@ class Vim_runtime < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2adb31b189c79c70768244e0ec4246c8d3dfbd45ca9a9666b708926f273b444c',
-     armv7l: '2adb31b189c79c70768244e0ec4246c8d3dfbd45ca9a9666b708926f273b444c',
-       i686: '340672429844ec3aaf8ee67e903eacf6b3842a36f0fb68e948ade27eb198ce82',
-     x86_64: '7c6f76ab152dec671c896d63f4ac0b6ac5fbdcd5844fc79c934b2b067deca9a6'
+    aarch64: '5e8e37d62c6aad49d8123ba20005b44dd5fe38399dc3eb002cae00a15e66db2c',
+     armv7l: '5e8e37d62c6aad49d8123ba20005b44dd5fe38399dc3eb002cae00a15e66db2c',
+       i686: '4dd23bfdfabf36454e2dd6904f9238cf755953c5ded334bc3d34541c0c29807a',
+     x86_64: 'e6e894fb199403432cfe04f89f202ebbec7d3093f199f6922820c1f30c3ae06c'
   })
 
   depends_on 'gpm' # R
