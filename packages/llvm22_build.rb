@@ -13,10 +13,10 @@ class Llvm22_build < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '794c7f8b9cf900d0cd335dcd475491fb1739846bb15a943412996c87db07e818',
-     armv7l: '794c7f8b9cf900d0cd335dcd475491fb1739846bb15a943412996c87db07e818',
-       i686: '99f951531bf054afd57fb3a2ecd11f7bb6b4732ebc2601402d0ca06c39561c55',
-     x86_64: 'a89a37e5ebbd4fc6802901fb0d5be27bf6e96d50c45d0f0861ba10ffaa545bdc'
+    aarch64: 'f5203f66177b18a12324fc6adfd037072165243b62ca567e16c2d2ed3f45e7d7',
+     armv7l: 'f5203f66177b18a12324fc6adfd037072165243b62ca567e16c2d2ed3f45e7d7',
+       i686: 'e569f5a490ed7208e7f0e33db33a5af6f0525f76af5175b1717358889f4f7725',
+     x86_64: '7bf5a128e2ba6fda03bb295b35b1c768fbec072b4b4edf9036a226df4075b38c'
   })
 
   depends_on 'gcc_lib' # R
@@ -180,12 +180,12 @@ class Llvm22_build < Package
   def self.postinstall
     ExitMessage.add <<~EOM
 
-    To compile programs, use 'clang' or 'clang++'.
+      To compile programs, use 'clang' or 'clang++'.
 
-    To avoid the repeated use of switch options,
-    try the wrapper scripts 'clc' or 'clc++'.
+      To avoid the repeated use of switch options,
+      try the wrapper scripts 'clc' or 'clc++'.
 
-    For more information, see https://llvm.org/pubs/2008-10-04-ACAT-LLVM-Intro.pdf
+      For more information, see https://llvm.org/pubs/2008-10-04-ACAT-LLVM-Intro.pdf
     EOM
   end
 end
