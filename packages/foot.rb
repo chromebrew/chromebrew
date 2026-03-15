@@ -11,9 +11,9 @@ class Foot < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0785522a584e77a166d4c11a71102cfabd7ec0eb88a5c048839b5ab8074186ac',
-     armv7l: '0785522a584e77a166d4c11a71102cfabd7ec0eb88a5c048839b5ab8074186ac',
-     x86_64: 'd2604346ff47fb4e8b539078e304af15df85803e9935181f9ca957c9bc1c84e5'
+    aarch64: 'b2884de51d076dfc42d4087470fd14939fde6ea03988f2dfbd903190dc627ff1',
+     armv7l: 'b2884de51d076dfc42d4087470fd14939fde6ea03988f2dfbd903190dc627ff1',
+     x86_64: '315b809f64d38ef42cc2a01add728c3914eb7a52f1927f2fe29a4095a3944374'
   })
 
   def self.patch
