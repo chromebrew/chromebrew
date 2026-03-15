@@ -1,8 +1,17 @@
 #!/bin/bash
 # This is for use as a Github CI Unit Test.
-# Version 1.7
+# Version 1.8
 set -e
 cd /usr/local/lib/crew/packages/
+
+# We have some tests for specific files that aren't run as part of our general testsuite, but we should run those tests if those files are changed.
+for file in ${NON_PKG_CHANGED_FILES}; do
+  # The only files with direct corresponding tests are located in the root of the commands, lib, and tools directories.
+  echo "commands lib tools" | grep -q "$(dirname "${file}")" || continue
+  # If we have modified a file that has a direct corresponding test, run that test.
+  [[ -f "../tests/${file}" ]] && ruby "../tests/${file}"
+done
+
 echo "CREW_BRANCH: $CREW_BRANCH"
 git clone --depth=1 --branch="$CREW_BRANCH" "$CREW_REPO" ~/build_test
 require_gem () {
