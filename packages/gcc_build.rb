@@ -4,7 +4,7 @@ require 'package'
 class Gcc_build < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '15.2.0'
+  version '14.3.0'
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
   source_url 'https://github.com/gcc-mirror/gcc.git'
@@ -12,10 +12,10 @@ class Gcc_build < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '23be50500a3c5798f8bd1dc9677d2f20454e499c073d93419bdb43558319f4c3',
-     armv7l: '23be50500a3c5798f8bd1dc9677d2f20454e499c073d93419bdb43558319f4c3',
-       i686: '241b57db6a445badecc423250b1df29f6443c580e425f736e6b83a986489ff2c',
-     x86_64: '820d2a79e15e48e96a0d0f240dc475f646bb47591edd79eaa25d249260e4924d'
+    aarch64: '84673a4b3c35f96f902c5e341108f39940d9fcde8554ce15246194b71ec90e55',
+     armv7l: '84673a4b3c35f96f902c5e341108f39940d9fcde8554ce15246194b71ec90e55',
+       i686: '69571ccb3d6ed8d51e938f178a0e592f716aad67e5674a0bfd5d8bf4482bed27',
+     x86_64: '586571bbf4f55cbd28f2b5329c0d9de87b551147f454d13c20a09de45e4144e8'
   })
 
   conflicts_ok
