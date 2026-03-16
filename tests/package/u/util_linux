@@ -1,0 +1,2 @@
+#!/bin/bash
+for f in $(crew files util_linux | grep /usr/local/sbin); do $f --version; $f --help | head -5; done
