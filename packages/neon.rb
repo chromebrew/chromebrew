@@ -3,7 +3,7 @@ require 'package'
 class Neon < Package
   description 'neon is an HTTP and WebDAV client library, with a C interface.'
   homepage 'http://www.webdav.org/neon/'
-  version '0.37.0'
+  version '0.37.1'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/notroj/neon.git'
@@ -11,9 +11,9 @@ class Neon < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '524ce6754fd9e659a53c82b3834375b48d954f7cc3fee1fc63b7ce765e875433',
-     armv7l: '524ce6754fd9e659a53c82b3834375b48d954f7cc3fee1fc63b7ce765e875433',
-     x86_64: 'e3600f6a9851b634f08591daf501881b843a6ce93a29aea6735b5c76f9f2d72c'
+    aarch64: '829ded8698de05a688550be810c50f8c119f14692e0332a86a8fe234df8b71e5',
+     armv7l: '829ded8698de05a688550be810c50f8c119f14692e0332a86a8fe234df8b71e5',
+     x86_64: 'f93d7a5415886e4181a88fb99c409d43c539755808665ccd6d96ca1453f6a149'
   })
 
   depends_on 'expat' # R
