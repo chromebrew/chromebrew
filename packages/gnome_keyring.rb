@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gnome_keyring < Meson
   description 'GNOME password and secret manager'
   homepage 'https://www.gnome.org'
-  version '48.0'
+  version '50.0'
   license 'GPL-2+ and LGPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-keyring.git'
