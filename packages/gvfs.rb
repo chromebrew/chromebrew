@@ -16,46 +16,31 @@ class Gvfs < Meson
      x86_64: 'a1c5dd80d8be87511e2b31890fb9597853e3bdacf8c155191806b901082322f6'
   })
 
-  depends_on 'avahi' # R
   depends_on 'avahi' => :executable_only
   depends_on 'dbus' => :build
   depends_on 'dconf' => :build
   depends_on 'docbook_xml' => :build
   depends_on 'elogind' => :build
-  depends_on 'fuse3' # R
   depends_on 'fuse3' => :executable_only
   depends_on 'gcc_lib' => :build
   depends_on 'gcr_4' # R
   depends_on 'glib' # R
   depends_on 'glibc' # R
   depends_on 'gtk3' => :build
-  depends_on 'libarchive' # R
   depends_on 'libarchive' => :executable_only
   depends_on 'libbluray' => :build
-  depends_on 'libcdio' # R
   depends_on 'libcdio' => :executable_only
-  depends_on 'libcdio_paranoia' # R
   depends_on 'libcdio_paranoia' => :executable_only
-  depends_on 'libgcrypt' # R
   depends_on 'libgcrypt' => :executable_only
-  depends_on 'libgphoto' # R
   depends_on 'libgphoto' => :executable_only
-  depends_on 'libgudev' # R
   depends_on 'libgudev' => :executable_only
-  depends_on 'libimobiledevice' # R
   depends_on 'libimobiledevice' => :executable_only
-  depends_on 'libnfs' # R
   depends_on 'libnfs' => :executable_only
-  depends_on 'libplist' # R
   depends_on 'libplist' => :executable_only
   depends_on 'libsecret' # R
-  depends_on 'libsoup' # R
   depends_on 'libsoup' => :executable_only
-  depends_on 'libxml2' # R
   depends_on 'libxml2' => :executable_only
-  depends_on 'polkit' # R
   depends_on 'polkit' => :executable_only
-  depends_on 'smbclient' # R
   depends_on 'smbclient' => :executable_only
 
   gnome
