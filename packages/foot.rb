@@ -23,23 +23,14 @@ class Foot < Meson
     FileUtils.cp('threads.h', 'tests')
   end
 
-  depends_on 'fcft'
   depends_on 'fcft' => :executable_only
-  depends_on 'fontconfig'
   depends_on 'fontconfig' => :executable_only
-  depends_on 'freetype' # R
-  depends_on 'gcc_lib' # R
   depends_on 'glibc' => :executable_only
   depends_on 'harfbuzz' => :executable_only
-  depends_on 'libxkbcommon'
   depends_on 'libxkbcommon' => :executable_only
-  depends_on 'ncurses'
-  depends_on 'pixman'
   depends_on 'pixman' => :executable_only
   depends_on 'tllist' => :build
-  depends_on 'utf8proc'
   depends_on 'utf8proc' => :executable_only
-  depends_on 'wayland'
   depends_on 'wayland' => :executable_only
   depends_on 'wayland_protocols' => :build
 
