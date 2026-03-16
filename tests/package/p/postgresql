@@ -1,0 +1,3 @@
+#!/bin/bash
+psql --help | head
+psql --version
