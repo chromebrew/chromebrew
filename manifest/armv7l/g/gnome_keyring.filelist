@@ -1,4 +1,4 @@
-# Total size: 3291150
+# Total size: 3307250
 /usr/local/bin/gnome-keyring
 /usr/local/bin/gnome-keyring-3
 /usr/local/bin/gnome-keyring-daemon
@@ -64,6 +64,7 @@
 /usr/local/share/locale/km/LC_MESSAGES/gnome-keyring.mo
 /usr/local/share/locale/kn/LC_MESSAGES/gnome-keyring.mo
 /usr/local/share/locale/ko/LC_MESSAGES/gnome-keyring.mo
+/usr/local/share/locale/kw/LC_MESSAGES/gnome-keyring.mo
 /usr/local/share/locale/lt/LC_MESSAGES/gnome-keyring.mo
 /usr/local/share/locale/lv/LC_MESSAGES/gnome-keyring.mo
 /usr/local/share/locale/mai/LC_MESSAGES/gnome-keyring.mo
@@ -101,6 +102,7 @@
 /usr/local/share/locale/tr/LC_MESSAGES/gnome-keyring.mo
 /usr/local/share/locale/ug/LC_MESSAGES/gnome-keyring.mo
 /usr/local/share/locale/uk/LC_MESSAGES/gnome-keyring.mo
+/usr/local/share/locale/uz/LC_MESSAGES/gnome-keyring.mo
 /usr/local/share/locale/vi/LC_MESSAGES/gnome-keyring.mo
 /usr/local/share/locale/xh/LC_MESSAGES/gnome-keyring.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/gnome-keyring.mo
