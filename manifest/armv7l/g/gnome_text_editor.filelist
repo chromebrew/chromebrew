@@ -1,4 +1,4 @@
-# Total size: 2371777
+# Total size: 2415162
 /usr/local/bin/gnome-text-editor
 /usr/local/share/applications/org.gnome.TextEditor.desktop
 /usr/local/share/dbus-1/services/org.gnome.TextEditor.service
@@ -129,6 +129,24 @@
 /usr/local/share/help/it/gnome-text-editor/legal.xml
 /usr/local/share/help/it/gnome-text-editor/media/org.gnome.TextEditor.svg
 /usr/local/share/help/it/gnome-text-editor/media/search-recent.png
+/usr/local/share/help/ja/gnome-text-editor/basics-create-new-file.page
+/usr/local/share/help/ja/gnome-text-editor/basics-draft-folder.page
+/usr/local/share/help/ja/gnome-text-editor/basics-open-file.page
+/usr/local/share/help/ja/gnome-text-editor/edit-search-and-replace.page
+/usr/local/share/help/ja/gnome-text-editor/edit-undo-redo.page
+/usr/local/share/help/ja/gnome-text-editor/index.page
+/usr/local/share/help/ja/gnome-text-editor/legal.xml
+/usr/local/share/help/ja/gnome-text-editor/media/org.gnome.TextEditor.svg
+/usr/local/share/help/ja/gnome-text-editor/media/search-recent.png
+/usr/local/share/help/kk/gnome-text-editor/basics-create-new-file.page
+/usr/local/share/help/kk/gnome-text-editor/basics-draft-folder.page
+/usr/local/share/help/kk/gnome-text-editor/basics-open-file.page
+/usr/local/share/help/kk/gnome-text-editor/edit-search-and-replace.page
+/usr/local/share/help/kk/gnome-text-editor/edit-undo-redo.page
+/usr/local/share/help/kk/gnome-text-editor/index.page
+/usr/local/share/help/kk/gnome-text-editor/legal.xml
+/usr/local/share/help/kk/gnome-text-editor/media/org.gnome.TextEditor.svg
+/usr/local/share/help/kk/gnome-text-editor/media/search-recent.png
 /usr/local/share/help/ko/gnome-text-editor/basics-create-new-file.page
 /usr/local/share/help/ko/gnome-text-editor/basics-draft-folder.page
 /usr/local/share/help/ko/gnome-text-editor/basics-open-file.page
