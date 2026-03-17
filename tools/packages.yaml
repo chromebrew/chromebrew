@@ -390,6 +390,11 @@ url: http://download.savannah.gnu.org/releases/attr
 activity: medium
 ---
 kind: url
+name: atuin
+url: https://github.com/atuinsh/atuin/releases
+activity: high
+---
+kind: url
 name: audacious
 url: https://distfiles.audacious-media-player.org/
 activity: low
