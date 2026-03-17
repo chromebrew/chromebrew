@@ -46,7 +46,7 @@ class GetRealDepsTest < Minitest::Test
       class Example < Package
         binary_sha256({})
 
-        depends_on 'libcanberra' # R
+        depends_on 'libcanberra' => :library
       end
     EOF
 
@@ -68,7 +68,7 @@ class GetRealDepsTest < Minitest::Test
         binary_sha256({})
 
         depends_on 'a2png'
-        depends_on 'banner' # R
+        depends_on 'banner' => :library
         depends_on 'lzlib'
       end
     EOF
@@ -92,8 +92,8 @@ class GetRealDepsTest < Minitest::Test
         binary_sha256({})
 
         depends_on 'a2png'
-        depends_on 'banner' # R
-        depends_on 'libcanberra' # R
+        depends_on 'banner' => :library
+        depends_on 'libcanberra' => :library
         depends_on 'libmaxminddb'
         depends_on 'lzlib'
       end
@@ -118,7 +118,7 @@ class GetRealDepsTest < Minitest::Test
         binary_sha256({})
 
         depends_on 'a2png'
-        depends_on 'json_c' # R
+        depends_on 'json_c' => :library
         depends_on 'lzlib'
       end
     EOF
@@ -137,7 +137,7 @@ class GetRealDepsTest < Minitest::Test
       class Example < Pip
         binary_sha256({})
 
-        depends_on 'python3' # R
+        depends_on 'python3' => :library
       end
     EOF
     pkg_class = Pip
@@ -175,7 +175,7 @@ class GetRealDepsTest < Minitest::Test
       class Llvm21_build < Package
         binary_sha256({})
 
-        depends_on 'asciinema' # R
+        depends_on 'asciinema' => :library
         depends_on 'glm'
       end
     EOF
@@ -211,16 +211,16 @@ class GetRealDepsTest < Minitest::Test
         binary_sha256({})
 
         depends_on 'glm'
-        depends_on 'libpng' # R
+        depends_on 'libpng' => :library
       end
     EOF
     expected_pkg_file = <<~EOF
       class Example < Package
         binary_sha256({})
 
-        depends_on 'abcde' # R
+        depends_on 'abcde' => :library
         depends_on 'glm'
-        depends_on 'libpng' # R
+        depends_on 'libpng' => :library
       end
     EOF
 
@@ -234,7 +234,7 @@ class GetRealDepsTest < Minitest::Test
         binary_sha256({})
 
         depends_on 'libnftnl'
-        depends_on 'python3' # R
+        depends_on 'python3' => :library
       end
     EOF
     expected_pkg_file = <<~EOF
@@ -242,7 +242,7 @@ class GetRealDepsTest < Minitest::Test
         binary_sha256({})
 
         depends_on 'libnftnl'
-        depends_on 'python3' # R
+        depends_on 'python3' => :library
       end
     EOF
     pkg_class = Pip
@@ -256,7 +256,7 @@ class GetRealDepsTest < Minitest::Test
       class Example < Package
         binary_sha256({})
 
-        depends_on 'qt5_x11extras' # R
+        depends_on 'qt5_x11extras' => :library
         depends_on 'libmatroska'
       end
     EOF
@@ -265,7 +265,7 @@ class GetRealDepsTest < Minitest::Test
         binary_sha256({})
 
         depends_on 'libmatroska'
-        depends_on 'libspng' # R
+        depends_on 'libspng' => :library
       end
     EOF
 
@@ -278,9 +278,9 @@ class GetRealDepsTest < Minitest::Test
       class Example < Package
         binary_sha256({})
 
-        depends_on 'haveged' # R
+        depends_on 'haveged' => :library
         depends_on 'libmms'
-        depends_on 'ruby' # R
+        depends_on 'ruby' => :library
       end
     EOF
     expected_pkg_file = <<~EOF
@@ -288,8 +288,8 @@ class GetRealDepsTest < Minitest::Test
         binary_sha256({})
 
         depends_on 'libmms'
-        depends_on 'libspng' # R
-        depends_on 'ruby' # R
+        depends_on 'libspng' => :library
+        depends_on 'ruby' => :library
       end
     EOF
 
@@ -311,7 +311,7 @@ class GetRealDepsTest < Minitest::Test
         binary_sha256({})
 
         depends_on 'libmatroska'
-        depends_on 'libspng' # R
+        depends_on 'libspng' => :library
         depends_on 'ninja' => :build
       end
     EOF
