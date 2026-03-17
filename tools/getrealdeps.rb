@@ -1,6 +1,13 @@
 #!/usr/local/bin/ruby
-# getrealdeps version 2.8 (for Chromebrew)
+# getrealdeps version 2.9 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
+#
+# Dependencies in Chromebrew can be:
+# :build (required only for building.)
+# :executable_only (required only for the executables in the package to run.)
+# :library (required for libraries in the package, and thus also for downstream packages.)
+# :logical (required for the package to be useful, but not needed in build dependency calculations.)
+
 require 'fileutils'
 
 crew_local_repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp
@@ -56,7 +63,7 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
     suffix = ' => :build'
   when 'lib'
     puts "Processing library dependencies for #{pkg.name}...".orange
-    suffix = ' => :runtime'
+    suffix = ' => :library'
   when 'logical'
     puts "Processing logical dependencies for #{pkg.name}...".orange
     suffix = ' => :logical'
@@ -99,7 +106,7 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
     puts "#{pkg.name}: #{exception[:exclusion_regex]} - #{exception[:comments]}..".orange if pkgdeps_length != pkgdeps.length
   end
 
-  puts "\n#{pkg.name.capitalize} has #{'executables with ' if label == 'bin'}#{'libraries with ' if label == 'lib'} these dependencies:".lightblue
+  puts "\n#{pkg.name.capitalize} has #{'executables with ' if label == 'bin'}#{'libraries with ' if label == 'lib'}these #{'build ' if label == 'build'}#{'logical ' if label == 'logical'}dependencies:".lightblue
   pkgdeps.each do |i|
     puts "  depends_on '#{i}'#{suffix}".lightgreen
   end
@@ -141,14 +148,28 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
     puts "\n#{line.chomp} is either not necessary on #{ARCH} as a library dependency or is only a dependency for building or executables.".orange if label == 'lib' && line.match(/  depends_on '(.*)'#{suffix}/) { |matchdata| pkgdeps.none?(matchdata[1]) && !privileged_deps.include?(matchdata[1]) }
   end
 
-  # If a dependency is both a build and a runtime dependency, we remove the build dependency.
+  # If a dependency is both a build and a library dependency, we remove the build dependency.
   pkgdepsblock.delete_if { it.match(/^  depends_on '(.*)' => :build/) { missingpkgdeps.include?(it[1]) } }
+
   # Remove runtime dependencies for libraries that already exist but
   # aren't marked as runtime dependencies.
   pkgdepsblock.delete_if { it.match(/(?<=^  depends_on ').*(?='$)/) { pkgdeps.include?(it[0]) } } if label == 'lib'
 
-  # If a dependency is listed as both a executable_only and a runtime dependency, we remove the runtime dependency.
-  pkgdepsblock.delete_if { it.match(/(^  depends_on '(.*)' # R)|(^  depends_on '(.*)' => ).*(:runtime.*)/) { missingpkgdeps.include?(it[1]) } } if label == 'bin'
+  if label == 'bin'
+    # If a dependency is listed as both a executable_only and either a
+    # library or generic runtime dependency, we remove the
+    # non-executable_only dependency lines.
+    executable_only_deps_in_package = []
+    pkgdepsblock.each { it.match(/(^  depends_on '(.*)' => ).*(:executable_only.*)/) { executable_only_deps_in_package.push(it[2]) } }
+    pkgdepsblock.delete_if { it.match(/(^  depends_on '(.*)' # R)|(^  depends_on '(.*)' => ).*(:library.*)/) { executable_only_deps_in_package.include?(it[2]) } }
+
+    # If a dependency is listed as both a old style # R generic runtime
+    # dependency and as a library or logical dependency, remove the # R
+    # dependency line.
+    runtime_deps_in_package_as_library_or_logical = []
+    pkgdepsblock.each { it.match(/(^  depends_on '(.*)' => ).*(:library.*)|(^  depends_on '(.*)' => ).*(:logical.*)/) { runtime_deps_in_package_as_library_or_logical.push(it[2]) } }
+    pkgdepsblock.delete_if { it.match(/(^  depends_on '(.*)' # R)/) { runtime_deps_in_package_as_library_or_logical.include?(it[2]) } }
+  end
 
   # Deduplicate for lines with comments.
   pkgdepsblock.delete_if { it.match(/(?<=^  depends_on ').*(?='#{suffix}$)/) { !pkg_file_lines.map(&:chomp).grep(/^  depends_on '.*#{it[0]}.*'#{suffix} \S/).blank? } }
@@ -301,6 +322,7 @@ def main(pkg)
              end
 
   # Write the changed dependencies to the package file.
+  # Note that logical and build dependencies are handled manually.
   write_deps(pkg_file, bin_deps, @pkg, 'bin') unless bin_deps.nil?
   write_deps(pkg_file, lib_deps, @pkg, 'lib') unless lib_deps.nil?
   FileUtils.cp pkg_file, File.join(CREW_LOCAL_REPO_ROOT, "packages/#{pkg}.rb") unless FileUtils.identical?(pkg_file, File.join(CREW_LOCAL_REPO_ROOT, "packages/#{pkg}.rb"))

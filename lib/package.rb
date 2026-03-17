@@ -350,7 +350,7 @@ class Package
     else
       # Parse "depends_on name".
       dep_name = dependency
-      dep_compatibility = @dep_pkg_obj.compatibility.split
+      dep_compatibility = @dep_pkg_obj.nil? ? 'all' : @dep_pkg_obj.compatibility.split
       dep_architectures = dep_compatibility == 'all' ? %w[aarch64 armv7l i686 x86_64] : dep_compatibility
     end
 
