@@ -23,9 +23,9 @@ class Gvfs < Meson
   depends_on 'elogind' => :build
   depends_on 'fuse3' => :executable_only
   depends_on 'gcc_lib' => :build
-  depends_on 'gcr_4' # R
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcr_4' => :library
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
   depends_on 'gtk3' => :build
   depends_on 'libarchive' => :executable_only
   depends_on 'libbluray' => :build
@@ -37,7 +37,7 @@ class Gvfs < Meson
   depends_on 'libimobiledevice' => :executable_only
   depends_on 'libnfs' => :executable_only
   depends_on 'libplist' => :executable_only
-  depends_on 'libsecret' # R
+  depends_on 'libsecret' => :library
   depends_on 'libsoup' => :executable_only
   depends_on 'libxml2' => :executable_only
   depends_on 'polkit' => :executable_only
