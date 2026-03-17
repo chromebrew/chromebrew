@@ -1,4 +1,4 @@
-# Total size: 3462489
+# Total size: 3545228
 /usr/local/bin/free
 /usr/local/bin/hugetop
 /usr/local/bin/kill
@@ -28,7 +28,7 @@
 /usr/local/lib64/libproc2.la
 /usr/local/lib64/libproc2.so
 /usr/local/lib64/libproc2.so.1
-/usr/local/lib64/libproc2.so.1.0.0
+/usr/local/lib64/libproc2.so.1.0.1
 /usr/local/lib64/pkgconfig/libproc2.pc
 /usr/local/sbin/sysctl
 /usr/local/share/doc/procps-ng/FAQ
@@ -52,7 +52,6 @@
 /usr/local/share/man/man1/pgrep.1.zst
 /usr/local/share/man/man1/pidof.1.zst
 /usr/local/share/man/man1/pidwait.1.zst
-/usr/local/share/man/man1/pkill.1.zst
 /usr/local/share/man/man1/pmap.1.zst
 /usr/local/share/man/man1/ps.1.zst
 /usr/local/share/man/man1/pwdx.1.zst
