@@ -3,8 +3,8 @@ require 'buildsystems/meson'
 class Gnome_maps < Meson
   description 'A simple GNOME maps application'
   homepage 'https://wiki.gnome.org/Apps/Maps'
-  version '49.4'
-  license 'GPL-2+, LGPL-2+, MIT, CC-BY-3.0 and CC-BY-SA-3.0'
+  version '50.0'
+  license 'GPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-maps.git'
   git_hashtag version
@@ -16,6 +16,7 @@ class Gnome_maps < Meson
      x86_64: '1e9342772b31fb909782b7d2e34af54572754638e3a131ee7b0eccca8bd2ef2b'
   })
 
+  depends_on 'blueprint_compiler'
   depends_on 'cairo' # R
   depends_on 'desktop_file_utils' => :build
   depends_on 'folks' => :build
