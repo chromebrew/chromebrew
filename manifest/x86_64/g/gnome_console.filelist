@@ -1,4 +1,4 @@
-# Total size: 965874
+# Total size: 1032426
 /usr/local/bin/kgx
 /usr/local/share/applications/org.gnome.Console.desktop
 /usr/local/share/dbus-1/services/org.gnome.Console.service
@@ -37,6 +37,7 @@
 /usr/local/share/locale/kab/LC_MESSAGES/kgx.mo
 /usr/local/share/locale/kk/LC_MESSAGES/kgx.mo
 /usr/local/share/locale/ko/LC_MESSAGES/kgx.mo
+/usr/local/share/locale/kw/LC_MESSAGES/kgx.mo
 /usr/local/share/locale/lt/LC_MESSAGES/kgx.mo
 /usr/local/share/locale/lv/LC_MESSAGES/kgx.mo
 /usr/local/share/locale/nb/LC_MESSAGES/kgx.mo

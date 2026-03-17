@@ -14,27 +14,27 @@ class Gnome_console < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '36bea987e21d954b5dddaae7a1a84cba56fd082e1058d3fdc7ab5fe69a14df94',
-     armv7l: '36bea987e21d954b5dddaae7a1a84cba56fd082e1058d3fdc7ab5fe69a14df94',
-     x86_64: '35746d34093f1d5b2e109fdee4ba49f6dbec112c8716e6929f4e390add0170af'
+    aarch64: 'e1e573875f2edd0b842a9290180e551bade62d4c9235f76985f5fcba867faf6f',
+     armv7l: 'e1e573875f2edd0b842a9290180e551bade62d4c9235f76985f5fcba867faf6f',
+     x86_64: '67d7580bfc3d67d2e12cd0491efe77cb3df3ad5fdff4717aad3af64b750b5c51'
   })
 
   depends_on 'desktop_file_utils' => :build
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' => :build
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
+  depends_on 'glib' => :executable_only
+  depends_on 'glibc' => :executable_only
   depends_on 'graphene' => :build
-  depends_on 'gtk4' # R
+  depends_on 'gtk4' => :executable_only
   depends_on 'harfbuzz' => :build
-  depends_on 'libadwaita' # R
-  depends_on 'libgtop' # R
+  depends_on 'libadwaita' => :executable_only
+  depends_on 'libgtop' => :executable_only
   depends_on 'libhandy' => :build
   depends_on 'nautilus' => :build
-  depends_on 'pango' # R
+  depends_on 'pango' => :executable_only
   depends_on 'pcre2' => :build
   depends_on 'sassc' => :build
-  depends_on 'vte' # R
+  depends_on 'vte' => :executable_only
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' # L
 
