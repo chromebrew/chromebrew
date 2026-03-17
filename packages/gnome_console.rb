@@ -20,7 +20,7 @@ class Gnome_console < Meson
   })
 
   depends_on 'desktop_file_utils' => :build
-  depends_on 'gcc_lib' # R
+  depends_on 'gcc_lib' => :executable_only
   depends_on 'gdk_pixbuf' => :build
   depends_on 'glib' => :executable_only
   depends_on 'glibc' => :executable_only
