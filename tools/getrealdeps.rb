@@ -169,6 +169,9 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
   pkgdepsblock.each { it.match(/(^  depends_on '(.*)' => ).*(:library.*)|(^  depends_on '(.*)' => ).*(:logical.*)/) { runtime_deps_in_package_as_library_or_logical.push(it[2]) } }
   pkgdepsblock.delete_if { it.match(/(^  depends_on '(.*)' # R)/) { runtime_deps_in_package_as_library_or_logical.include?(it[2]) } }
 
+  # Change '# L' comments to be '=> :logical'.
+  pkgdepsblock.map! { |dep| dep.match(/(^  depends_on '(.*)' # L)/) ? dep.gsub('# L', '=> :logical') : dep }
+
   # Deduplicate for lines with comments.
   pkgdepsblock.delete_if { it.match(/(?<=^  depends_on ').*(?='#{suffix}$)/) { !pkg_file_lines.map(&:chomp).grep(/^  depends_on '.*#{it[0]}.*'#{suffix} \S/).blank? } }
 
@@ -320,7 +323,7 @@ def main(pkg)
              end
 
   # Write the changed dependencies to the package file.
-  # Note that logical and build dependencies are handled manually.
+  # Note that logical and build dependencies are added manually.
   write_deps(pkg_file, bin_deps, @pkg, 'bin') unless bin_deps.nil?
   write_deps(pkg_file, lib_deps, @pkg, 'lib') unless lib_deps.nil?
   FileUtils.cp pkg_file, File.join(CREW_LOCAL_REPO_ROOT, "packages/#{pkg}.rb") unless FileUtils.identical?(pkg_file, File.join(CREW_LOCAL_REPO_ROOT, "packages/#{pkg}.rb"))

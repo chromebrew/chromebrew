@@ -23,7 +23,7 @@ class Vim < Autotools
   depends_on 'gpm' => :executable_only
   depends_on 'libsodium' => :executable_only
   depends_on 'ncurses' => :executable_only
-  depends_on 'vim_runtime' # L
+  depends_on 'vim_runtime' => :logical
 
   ignore_updater
 
