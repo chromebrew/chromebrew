@@ -1,41 +1,25 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Libfmt < Package
+class Libfmt < CMake
   description 'A modern formatting library'
   homepage 'https://fmt.dev'
-  version '9.0.0-c48be43'
+  version '12.1.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/fmtlib/fmt.git'
-  git_hashtag 'c48be439f1ae03f2726e30ac93fce3a667dc4be2'
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '46077930c6984ac1da70868a6fda98f3a1eb6cf0e45e6ca5b0c3be1b39b18c9a',
-     armv7l: '46077930c6984ac1da70868a6fda98f3a1eb6cf0e45e6ca5b0c3be1b39b18c9a',
-       i686: '21aa870bf1073526eb30e2e3f4268a2dc150a92aee33a912a2caed73c485c2fd',
-     x86_64: '4728da91e5b944a97df30e5ee8c91816a1bb1dc2854f49846584fc90d5c1812b'
+    aarch64: '0b24c4ddb0500db3386366501c7db7e0f45d4d7dd8c22d72456416930d8a6398',
+     armv7l: '0b24c4ddb0500db3386366501c7db7e0f45d4d7dd8c22d72456416930d8a6398',
+       i686: '2d800a7deb9582ed1890d1ec22ddfd87754047a056f47904de3ec689a4399ecc',
+     x86_64: 'b48579b0d43716789899a4561cfc8e7b47666df6a40a8fb6114c07dcf55d37a2'
   })
 
-  def self.build
-    Dir.mkdir 'builddir'
-    Dir.chdir 'builddir' do
-      system "cmake #{CREW_CMAKE_OPTIONS} \
-              -DBUILD_SHARED_LIBS=TRUE \
-              .."
-      system 'make'
-    end
-  end
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
 
-  def self.install
-    Dir.chdir 'builddir' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    end
-  end
-
-  def self.check
-    Dir.chdir 'builddir' do
-      system 'make', 'test'
-    end
-  end
+  cmake_options '-DBUILD_SHARED_LIBS=TRUE'
+  run_tests
 end
