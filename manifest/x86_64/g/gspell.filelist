@@ -1,4 +1,4 @@
-# Total size: 334486
+# Total size: 336896
 /usr/local/bin/gspell-app1
 /usr/local/include/gspell-1/gspell/gspell-checker-dialog.h
 /usr/local/include/gspell-1/gspell/gspell-checker.h
@@ -51,6 +51,7 @@
 /usr/local/share/locale/kab/LC_MESSAGES/gspell-1.mo
 /usr/local/share/locale/kk/LC_MESSAGES/gspell-1.mo
 /usr/local/share/locale/ko/LC_MESSAGES/gspell-1.mo
+/usr/local/share/locale/kw/LC_MESSAGES/gspell-1.mo
 /usr/local/share/locale/lt/LC_MESSAGES/gspell-1.mo
 /usr/local/share/locale/lv/LC_MESSAGES/gspell-1.mo
 /usr/local/share/locale/mjw/LC_MESSAGES/gspell-1.mo
