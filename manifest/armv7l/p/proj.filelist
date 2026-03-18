@@ -1,4 +1,4 @@
-# Total size: 13479449
+# Total size: 14544305
 /usr/local/bin/cct
 /usr/local/bin/cs2cs
 /usr/local/bin/geod
@@ -23,6 +23,7 @@
 /usr/local/include/proj_constants.h
 /usr/local/include/proj_experimental.h
 /usr/local/include/proj_symbol_rename.h
+/usr/local/include/projapps_lib.h
 /usr/local/lib/cmake/proj/proj-config-version.cmake
 /usr/local/lib/cmake/proj/proj-config.cmake
 /usr/local/lib/cmake/proj/proj-targets-release.cmake
@@ -37,7 +38,7 @@
 /usr/local/lib/cmake/proj4/proj4-targets.cmake
 /usr/local/lib/libproj.so
 /usr/local/lib/libproj.so.25
-/usr/local/lib/libproj.so.25.9.6.2
+/usr/local/lib/libproj.so.25.9.8.0
 /usr/local/lib/pkgconfig/proj.pc
 /usr/local/share/bash-completion/completions/projinfo
 /usr/local/share/doc/proj/AUTHORS.md
