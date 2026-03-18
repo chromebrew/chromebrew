@@ -3,7 +3,7 @@ require 'package'
 class Difftastic < Package
   description 'Difftastic is a structural diff tool that compares files based on their syntax.'
   homepage 'https://github.com/Wilfred/difftastic'
-  version '0.67.0'
+  version '0.68.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/Wilfred/difftastic.git'
