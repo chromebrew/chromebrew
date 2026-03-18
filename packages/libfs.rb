@@ -1,13 +1,13 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libfs < Package
+class Libfs < Autotools
   description 'X.org library interface to the X Font Server.'
-  homepage 'https://www.x.org/wiki/'
-  license 'custom'
-  version '1.0.9'
+  homepage 'https://gitlab.freedesktop.org/xorg/lib/libfs'
+  license 'MIT'
+  version '1.0.10'
   compatibility 'all'
-  source_url 'https://www.x.org/archive/individual/lib/libFS-1.0.9.tar.xz'
-  source_sha256 '597379438b3242ccc7d7b0fc432dc6c844eca0d4a82a7b82518bfeb203fc208a'
+  source_url 'https://gitlab.freedesktop.org/xorg/lib/libfs.git'
+  git_hashtag "libFS-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -20,14 +20,4 @@ class Libfs < Package
   depends_on 'xorg_proto'
   depends_on 'libxtrans'
   depends_on 'glibc' # R
-
-  def self.build
-    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-  end
 end
