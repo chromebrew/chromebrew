@@ -1,4 +1,4 @@
-# Total size: 39637320
+# Total size: 39640647
 /home/chronos/user/.gemrc
 /usr/local/bin/bundle
 /usr/local/bin/bundler
@@ -209,7 +209,7 @@
 /usr/local/include/ruby-4.0.0/ruby/vm.h
 /usr/local/lib/libruby.so
 /usr/local/lib/libruby.so.4.0
-/usr/local/lib/libruby.so.4.0.1
+/usr/local/lib/libruby.so.4.0.2
 /usr/local/lib/pkgconfig/ruby-4.0.pc
 /usr/local/lib/ruby/4.0.0/English.rb
 /usr/local/lib/ruby/4.0.0/bundled_gems.rb
@@ -1183,8 +1183,8 @@
 /usr/local/lib/ruby/gems/4.0.0/gems/benchmark-0.5.0/bin/console
 /usr/local/lib/ruby/gems/4.0.0/gems/benchmark-0.5.0/bin/setup
 /usr/local/lib/ruby/gems/4.0.0/gems/benchmark-0.5.0/lib/benchmark.rb
-/usr/local/lib/ruby/gems/4.0.0/gems/bundler-4.0.3/exe/bundle
-/usr/local/lib/ruby/gems/4.0.0/gems/bundler-4.0.3/exe/bundler
+/usr/local/lib/ruby/gems/4.0.0/gems/bundler-4.0.6/exe/bundle
+/usr/local/lib/ruby/gems/4.0.0/gems/bundler-4.0.6/exe/bundler
 /usr/local/lib/ruby/gems/4.0.0/gems/csv-3.3.5/LICENSE.txt
 /usr/local/lib/ruby/gems/4.0.0/gems/csv-3.3.5/NEWS.md
 /usr/local/lib/ruby/gems/4.0.0/gems/csv-3.3.5/README.md
@@ -1969,7 +1969,7 @@
 /usr/local/lib/ruby/gems/4.0.0/gems/rss-0.3.2/lib/rss/xml.rb
 /usr/local/lib/ruby/gems/4.0.0/gems/rss-0.3.2/lib/rss/xmlparser.rb
 /usr/local/lib/ruby/gems/4.0.0/gems/rss-0.3.2/lib/rss/xmlscanner.rb
-/usr/local/lib/ruby/gems/4.0.0/gems/syntax_suggest-2.0.2/exe/syntax_suggest
+/usr/local/lib/ruby/gems/4.0.0/gems/syntax_suggest-2.0.3/exe/syntax_suggest
 /usr/local/lib/ruby/gems/4.0.0/gems/test-unit-3.7.7/BSDL
 /usr/local/lib/ruby/gems/4.0.0/gems/test-unit-3.7.7/COPYING
 /usr/local/lib/ruby/gems/4.0.0/gems/test-unit-3.7.7/PSFL
@@ -2111,7 +2111,7 @@
 /usr/local/lib/ruby/gems/4.0.0/specifications/base64-0.3.0.gemspec
 /usr/local/lib/ruby/gems/4.0.0/specifications/benchmark-0.5.0.gemspec
 /usr/local/lib/ruby/gems/4.0.0/specifications/csv-3.3.5.gemspec
-/usr/local/lib/ruby/gems/4.0.0/specifications/default/bundler-4.0.3.gemspec
+/usr/local/lib/ruby/gems/4.0.0/specifications/default/bundler-4.0.6.gemspec
 /usr/local/lib/ruby/gems/4.0.0/specifications/default/date-3.5.1.gemspec
 /usr/local/lib/ruby/gems/4.0.0/specifications/default/delegate-0.6.1.gemspec
 /usr/local/lib/ruby/gems/4.0.0/specifications/default/did_you_mean-2.0.0.gemspec
@@ -2137,7 +2137,7 @@
 /usr/local/lib/ruby/gems/4.0.0/specifications/default/optparse-0.8.1.gemspec
 /usr/local/lib/ruby/gems/4.0.0/specifications/default/pp-0.6.3.gemspec
 /usr/local/lib/ruby/gems/4.0.0/specifications/default/prettyprint-0.2.0.gemspec
-/usr/local/lib/ruby/gems/4.0.0/specifications/default/prism-1.8.0.gemspec
+/usr/local/lib/ruby/gems/4.0.0/specifications/default/prism-1.8.1.gemspec
 /usr/local/lib/ruby/gems/4.0.0/specifications/default/psych-5.3.1.gemspec
 /usr/local/lib/ruby/gems/4.0.0/specifications/default/resolv-0.7.0.gemspec
 /usr/local/lib/ruby/gems/4.0.0/specifications/default/ruby2_keywords-0.0.5.gemspec
@@ -2146,7 +2146,7 @@
 /usr/local/lib/ruby/gems/4.0.0/specifications/default/singleton-0.3.0.gemspec
 /usr/local/lib/ruby/gems/4.0.0/specifications/default/stringio-3.2.0.gemspec
 /usr/local/lib/ruby/gems/4.0.0/specifications/default/strscan-3.1.6.gemspec
-/usr/local/lib/ruby/gems/4.0.0/specifications/default/syntax_suggest-2.0.2.gemspec
+/usr/local/lib/ruby/gems/4.0.0/specifications/default/syntax_suggest-2.0.3.gemspec
 /usr/local/lib/ruby/gems/4.0.0/specifications/default/tempfile-0.3.1.gemspec
 /usr/local/lib/ruby/gems/4.0.0/specifications/default/time-0.4.2.gemspec
 /usr/local/lib/ruby/gems/4.0.0/specifications/default/timeout-0.6.0.gemspec
@@ -2156,7 +2156,7 @@
 /usr/local/lib/ruby/gems/4.0.0/specifications/default/uri-1.1.1.gemspec
 /usr/local/lib/ruby/gems/4.0.0/specifications/default/weakref-0.1.4.gemspec
 /usr/local/lib/ruby/gems/4.0.0/specifications/default/yaml-0.4.0.gemspec
-/usr/local/lib/ruby/gems/4.0.0/specifications/default/zlib-3.2.2.gemspec
+/usr/local/lib/ruby/gems/4.0.0/specifications/default/zlib-3.2.3.gemspec
 /usr/local/lib/ruby/gems/4.0.0/specifications/drb-2.2.3.gemspec
 /usr/local/lib/ruby/gems/4.0.0/specifications/getoptlong-0.2.1.gemspec
 /usr/local/lib/ruby/gems/4.0.0/specifications/irb-1.17.0.gemspec
@@ -3816,9 +3816,11 @@
 /usr/local/share/ri/4.0.0/system/Gem/BasicSpecification/version-i.ri
 /usr/local/share/ri/4.0.0/system/Gem/BundlerVersionFinder/bundle_config_version-c.ri
 /usr/local/share/ri/4.0.0/system/Gem/BundlerVersionFinder/bundle_update_bundler_version-c.ri
-/usr/local/share/ri/4.0.0/system/Gem/BundlerVersionFinder/bundler_config_file-c.ri
+/usr/local/share/ri/4.0.0/system/Gem/BundlerVersionFinder/bundler_global_config_file-c.ri
+/usr/local/share/ri/4.0.0/system/Gem/BundlerVersionFinder/bundler_local_config_file-c.ri
 /usr/local/share/ri/4.0.0/system/Gem/BundlerVersionFinder/bundler_version-c.ri
 /usr/local/share/ri/4.0.0/system/Gem/BundlerVersionFinder/cdesc-BundlerVersionFinder.ri
+/usr/local/share/ri/4.0.0/system/Gem/BundlerVersionFinder/gemfile_path-c.ri
 /usr/local/share/ri/4.0.0/system/Gem/BundlerVersionFinder/lockfile_contents-c.ri
 /usr/local/share/ri/4.0.0/system/Gem/BundlerVersionFinder/lockfile_version-c.ri
 /usr/local/share/ri/4.0.0/system/Gem/BundlerVersionFinder/prioritize%21-c.ri
@@ -5405,6 +5407,7 @@
 /usr/local/share/ri/4.0.0/system/Gem/Specification/find_in_unresolved-c.ri
 /usr/local/share/ri/4.0.0/system/Gem/Specification/find_in_unresolved_tree-c.ri
 /usr/local/share/ri/4.0.0/system/Gem/Specification/find_inactive_by_path-c.ri
+/usr/local/share/ri/4.0.0/system/Gem/Specification/find_unloaded_by_path-c.ri
 /usr/local/share/ri/4.0.0/system/Gem/Specification/for_cache-i.ri
 /usr/local/share/ri/4.0.0/system/Gem/Specification/from_yaml-c.ri
 /usr/local/share/ri/4.0.0/system/Gem/Specification/gems_dir-i.ri
@@ -5489,6 +5492,7 @@
 /usr/local/share/ri/4.0.0/system/Gem/SpecificationPolicy/validate_array_attributes-i.ri
 /usr/local/share/ri/4.0.0/system/Gem/SpecificationPolicy/validate_attribute_present-i.ri
 /usr/local/share/ri/4.0.0/system/Gem/SpecificationPolicy/validate_authors_field-i.ri
+/usr/local/share/ri/4.0.0/system/Gem/SpecificationPolicy/validate_executable-i.ri
 /usr/local/share/ri/4.0.0/system/Gem/SpecificationPolicy/validate_for_resolution-i.ri
 /usr/local/share/ri/4.0.0/system/Gem/SpecificationPolicy/validate_lazy_metadata-i.ri
 /usr/local/share/ri/4.0.0/system/Gem/SpecificationPolicy/validate_licenses-i.ri
@@ -5522,6 +5526,7 @@
 /usr/local/share/ri/4.0.0/system/Gem/SpecificationRecord/find_all_by_name-i.ri
 /usr/local/share/ri/4.0.0/system/Gem/SpecificationRecord/find_by_path-i.ri
 /usr/local/share/ri/4.0.0/system/Gem/SpecificationRecord/find_inactive_by_path-i.ri
+/usr/local/share/ri/4.0.0/system/Gem/SpecificationRecord/find_unloaded_by_path-i.ri
 /usr/local/share/ri/4.0.0/system/Gem/SpecificationRecord/from_path-c.ri
 /usr/local/share/ri/4.0.0/system/Gem/SpecificationRecord/installed_stubs-i.ri
 /usr/local/share/ri/4.0.0/system/Gem/SpecificationRecord/latest_spec_for-i.ri
