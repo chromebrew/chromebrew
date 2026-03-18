@@ -16,9 +16,9 @@ class Py3_pyyaml < Pip
      x86_64: 'fe440c8306d9a350ab68edb395191ee74725673a31f7c493e0b62181ffc73132'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'libyaml' # R
-  depends_on 'python3' # R
+  depends_on 'glibc' => :library
+  depends_on 'libyaml' => :library
+  depends_on 'python3' => :logical
 
   no_source_build
 end
