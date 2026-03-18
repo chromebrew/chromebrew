@@ -5,7 +5,7 @@ require_relative '../../lib/package_utils'
 require_relative '../../lib/buildsystems/pip'
 require_relative '../../tools/getrealdeps'
 
-def test_wrapper(input_file, expected_pkg_file, deps, name: 'example', pkg_class: Package)
+def test_wrapper(input_file, expected_pkg_file, deps, label = 'lib', name: 'example', pkg_class: Package)
   # Create the Package (or superclass) object, assigning it the relevant values.
   pkg = Class.new(pkg_class)
   pkg.name = name
@@ -16,7 +16,7 @@ def test_wrapper(input_file, expected_pkg_file, deps, name: 'example', pkg_class
   pkg_file.rewind
 
   # Write the dependencies to the temporary package file using the created object.
-  write_deps(pkg_file.path, deps, pkg)
+  write_deps(pkg_file.path, deps, pkg, label)
 
   # Close the temporary package file.
   pkg_file.close
@@ -197,7 +197,7 @@ class GetRealDepsTest < Minitest::Test
       class Example < Package
         binary_sha256({})
 
-        depends_on 'libnftnl'
+        depends_on 'libnftnl' => :library
       end
     EOF
 
