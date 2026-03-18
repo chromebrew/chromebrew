@@ -53,32 +53,11 @@ end
 
 # Write the missing dependencies to the package file.
 def write_deps(pkg_file, pkgdeps, pkg, label)
-  return if pkgdeps.empty?
-  case label
-  when 'bin'
-    puts "Processing executable dependencies for #{pkg.name}...".orange
-    suffix = ' => :executable'
-  when 'build'
-    puts "Processing build dependencies for #{pkg.name}...".orange
-    suffix = ' => :build'
-  when 'lib'
-    puts "Processing library dependencies for #{pkg.name}...".orange
-    suffix = ' => :library'
-  when 'logical'
-    puts "Processing logical dependencies for #{pkg.name}...".orange
-    suffix = ' => :logical'
-  end
   # pkg is not pkg.name in this function.
   # e.g., pkg is Package::Py3_pyyaml
-  # Add special deps for perl, pip, python, and ruby gem packages.
-  case pkg.superclass.to_s
-  when 'PERL'
-    pkgdeps << 'perl'
-  when 'Pip', 'Python'
-    pkgdeps << 'python3'
-  when 'RUBY'
-    pkgdeps << 'ruby'
-  end
+  return if pkgdeps.empty?
+  puts "Processing #{label} dependencies for #{pkg.name}...".orange
+  suffix = " => :#{label}"
 
   pkgdeps.uniq!
 
@@ -106,7 +85,7 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
     puts "#{pkg.name}: #{exception[:exclusion_regex]} - #{exception[:comments]}..".orange if pkgdeps_length != pkgdeps.length
   end
 
-  puts "\n#{pkg.name.capitalize} has #{'executables with ' if label == 'bin'}#{'libraries with ' if label == 'lib'}these #{'build ' if label == 'build'}#{'logical ' if label == 'logical'}dependencies:".lightblue
+  puts "\n#{pkg.name.capitalize} has #{'executables with ' if label == 'executable'}#{'libraries with ' if label == 'library'}these #{'build ' if label == 'build'}#{'logical ' if label == 'logical'}dependencies:".lightblue
   pkgdeps.each do |i|
     puts "  depends_on '#{i}'#{suffix}".lightgreen
   end
@@ -145,7 +124,7 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
   # We need to figure out how to handle architecture specific dependencies.
   # e.g., smbclient on x86_64 has a lmdb dependency, but not on armv7l.
   pkgdepsblock.each do |line|
-    puts "\n#{line.chomp} is either not necessary on #{ARCH} as a library dependency or is only a dependency for building or executables.".orange if label == 'lib' && line.match(/  depends_on '(.*)'#{suffix}/) { |matchdata| pkgdeps.none?(matchdata[1]) && !privileged_deps.include?(matchdata[1]) }
+    puts "\n#{line.chomp} is either not necessary on #{ARCH} as a library dependency or is only a dependency for building or executables.".orange if label == 'library' && line.match(/  depends_on '(.*)'#{suffix}/) { |matchdata| pkgdeps.none?(matchdata[1]) && !privileged_deps.include?(matchdata[1]) }
   end
 
   # If a dependency is both a build and a library dependency, we remove the build dependency.
@@ -153,7 +132,7 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
 
   # Remove runtime dependencies for libraries that already exist but
   # aren't marked as runtime dependencies.
-  pkgdepsblock.delete_if { it.match(/(?<=^  depends_on ').*(?='$)/) { pkgdeps.include?(it[0]) } } if label == 'lib'
+  pkgdepsblock.delete_if { it.match(/(?<=^  depends_on ').*(?='$)/) { pkgdeps.include?(it[0]) } } if label == 'library'
 
   # If a dependency is listed as both a executable and either a
   # library or generic runtime dependency, we remove the
@@ -166,7 +145,7 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
   # dependency and as a library or logical dependency, remove the # R
   # dependency line.
   runtime_deps_in_package_as_library_or_logical = []
-  pkgdepsblock.each { it.match(/(^  depends_on '(.*)' => ).*(:library.*)|(^  depends_on '(.*)' => ).*(:logical.*)/) { runtime_deps_in_package_as_library_or_logical.push(it[2]) } }
+  pkgdepsblock.each { it.match(/(^  depends_on '(.*)' => ).*(:library.*)|(^  depends_on '(.*)' => ).*(:logical.*)/) { it[2].nil? ? runtime_deps_in_package_as_library_or_logical.push(it[5]) : runtime_deps_in_package_as_library_or_logical.push(it[2]) } }
   pkgdepsblock.delete_if { it.match(/(^  depends_on '(.*)' # R)/) { runtime_deps_in_package_as_library_or_logical.include?(it[2]) } }
 
   # Change '# L' comments to be '=> :logical'.
@@ -307,25 +286,38 @@ def main(pkg)
   pkgfiles = pkgfiles.reject { |i| !File.file?(i.chomp) || File.read(i.chomp, 4) != "\x7FELF" || i.include?('.zst') }
 
   # Try to select all libraries based upon filename and location.
-  lib_pkgfiles = pkgfiles.select { |p| p.include?('.so') || p.include?(CREW_LIB_PREFIX) }
-  # Assume bin_pkgfiles is everything left.
-  bin_pkgfiles = pkgfiles.reject { |p| lib_pkgfiles.include?(p) }
+  library_pkgfiles = pkgfiles.select { |p| p.include?('.so') || p.include?(CREW_LIB_PREFIX) }
+  # Assume executable_pkgfiles is everything left.
+  executable_pkgfiles = pkgfiles.reject { |p| library_pkgfiles.include?(p) }
 
   # Determine dependencies for each subset of files.
-  ((lib_deps ||= []) << determine_dependencies(pkg, lib_pkgfiles)).compact!
-  ((bin_deps ||= []) << determine_dependencies(pkg, bin_pkgfiles)).compact!
-  lib_deps.flatten!
-  bin_deps.flatten!
-  bin_deps = if lib_deps.nil?
-               bin_deps
-             else
-               (bin_deps.nil? ? bin_deps : (bin_deps - lib_deps))
-             end
+  ((library_deps ||= []) << determine_dependencies(pkg, library_pkgfiles)).compact!
+  ((executable_deps ||= []) << determine_dependencies(pkg, executable_pkgfiles)).compact!
+  library_deps.flatten!
+  executable_deps.flatten!
+  executable_deps = if library_deps.nil?
+                      executable_deps
+                    else
+                      (executable_deps.nil? ? executable_deps : (executable_deps - library_deps))
+                    end
+
+  # Add logical deps for perl, pip, python, and ruby gem packages.
+  logical_deps = []
+  case @pkg.superclass.to_s
+  when 'PERL'
+    logical_deps << 'perl'
+  when 'Pip', 'Python'
+    logical_deps << 'python3'
+  when 'RUBY'
+    logical_deps << 'ruby'
+  end
+  logical_deps.flatten!
 
   # Write the changed dependencies to the package file.
-  # Note that logical and build dependencies are added manually.
-  write_deps(pkg_file, bin_deps, @pkg, 'bin') unless bin_deps.nil?
-  write_deps(pkg_file, lib_deps, @pkg, 'lib') unless lib_deps.nil?
+  # Note that most logical and all build dependencies are added manually.
+  write_deps(pkg_file, logical_deps, @pkg, 'logical') unless logical_deps.nil?
+  write_deps(pkg_file, executable_deps, @pkg, 'executable') unless executable_deps.nil?
+  write_deps(pkg_file, library_deps, @pkg, 'library') unless library_deps.nil?
   FileUtils.cp pkg_file, File.join(CREW_LOCAL_REPO_ROOT, "packages/#{pkg}.rb") unless FileUtils.identical?(pkg_file, File.join(CREW_LOCAL_REPO_ROOT, "packages/#{pkg}.rb"))
   FileUtils.cp pkg_file, File.join(CREW_PACKAGES_PATH, "#{pkg}.rb") unless FileUtils.identical?(pkg_file, File.join(CREW_PACKAGES_PATH, "#{pkg}.rb"))
 end
