@@ -4,7 +4,7 @@
 #
 # Dependencies in Chromebrew can be:
 # :build (required only for building.)
-# :executable_only (required only for the executables in the package to run.)
+# :executable (required only for the executables in the package to run.)
 # :library (required for libraries in the package, and thus also for downstream packages.)
 # :logical (required for the package to be useful, but not needed in build dependency calculations.)
 
@@ -57,7 +57,7 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
   case label
   when 'bin'
     puts "Processing executable dependencies for #{pkg.name}...".orange
-    suffix = ' => :executable_only'
+    suffix = ' => :executable'
   when 'build'
     puts "Processing build dependencies for #{pkg.name}...".orange
     suffix = ' => :build'
@@ -155,12 +155,12 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
   # aren't marked as runtime dependencies.
   pkgdepsblock.delete_if { it.match(/(?<=^  depends_on ').*(?='$)/) { pkgdeps.include?(it[0]) } } if label == 'lib'
 
-  # If a dependency is listed as both a executable_only and either a
+  # If a dependency is listed as both a executable and either a
   # library or generic runtime dependency, we remove the
-  # non-executable_only dependency lines.
-  executable_only_deps_in_package = []
-  pkgdepsblock.each { it.match(/(^  depends_on '(.*)' => ).*(:executable_only.*)/) { executable_only_deps_in_package.push(it[2]) } }
-  pkgdepsblock.delete_if { it.match(/(^  depends_on '(.*)' # R)|(^  depends_on '(.*)' => ).*(:library.*)/) { executable_only_deps_in_package.include?(it[2]) } }
+  # non-executable dependency lines.
+  executable_deps_in_package = []
+  pkgdepsblock.each { it.match(/(^  depends_on '(.*)' => ).*(:executable.*)/) { executable_deps_in_package.push(it[2]) } }
+  pkgdepsblock.delete_if { it.match(/(^  depends_on '(.*)' # R)|(^  depends_on '(.*)' => ).*(:library.*)/) { executable_deps_in_package.include?(it[2]) } }
 
   # If a dependency is listed as both a old style # R generic runtime
   # dependency and as a library or logical dependency, remove the # R
