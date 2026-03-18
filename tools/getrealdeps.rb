@@ -182,11 +182,15 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
   File.write(pkg_file, pkg_file_lines.join("\n").gsub("\n\n", "\n"))
 
   # Find the location of the rubocop configuration.
-  rubocop_config = FileUtils.identical?(pkg_file, "#{CREW_LOCAL_REPO_ROOT}/packages/#{File.basename(pkg_file)}") ? "#{CREW_LIB_PATH}/.rubocop.yml" : File.join(CREW_LOCAL_REPO_ROOT, '.rubocop.yml')
+  rubocop_config = if File.file?("#{CREW_LOCAL_REPO_ROOT}/packages/#{File.basename(pkg_file)}")
+                     FileUtils.identical?(pkg_file, "#{CREW_LOCAL_REPO_ROOT}/packages/#{File.basename(pkg_file)}") ? "#{CREW_LIB_PATH}/.rubocop.yml" : File.join(CREW_LOCAL_REPO_ROOT, '.rubocop.yml')
+                   else
+                     File.join(CREW_LOCAL_REPO_ROOT, '.rubocop.yml')
+                   end
 
   # Clean with rubocop.
-  system "rubocop -c #{rubocop_config} -A #{pkg_file}"
-  FileUtils.cp pkg_file, "#{CREW_LOCAL_REPO_ROOT}/packages/#{File.basename(pkg_file)}" unless FileUtils.identical?(pkg_file, "#{CREW_LOCAL_REPO_ROOT}/packages/#{File.basename(pkg_file)}")
+  system "rubocop -c #{rubocop_config} --except Naming/FileName -A #{pkg_file}"
+  FileUtils.cp pkg_file, "#{CREW_LOCAL_REPO_ROOT}/packages/#{File.basename(pkg_file)}" if File.file?("#{CREW_LOCAL_REPO_ROOT}/packages/#{File.basename(pkg_file)}") && !FileUtils.identical?(pkg_file, "#{CREW_LOCAL_REPO_ROOT}/packages/#{File.basename(pkg_file)}")
 end
 
 def determine_dependencies(pkg, pkgfiles_to_check)
