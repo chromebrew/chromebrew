@@ -11,27 +11,27 @@ class Cmake < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '624b7711a73cbaf08a377a7903b83913f12851e417d05991b814d9950cb4d4a7',
-     armv7l: '624b7711a73cbaf08a377a7903b83913f12851e417d05991b814d9950cb4d4a7',
-       i686: 'a20786ba13c357fac35a74f72a1b334b81934c93c175989f718ac16d6a16612b',
-     x86_64: 'c3e0a875b106cc9e3250dbbc3f13080aa3ca639214da30a75ce0df65f13644c2'
+    aarch64: 'cedc8dffc0955196685fe49ddabad93cdd0a4fcfec72f5f2067e2a0cdb52ce77',
+     armv7l: 'cedc8dffc0955196685fe49ddabad93cdd0a4fcfec72f5f2067e2a0cdb52ce77',
+       i686: 'a059eb1a8d2003fd3029bc39664e704a393c84aa0e3b23c4321fcf79483721f1',
+     x86_64: '95b3ecfc796a9f47cf1ee21686a9ed08069928bde9a5ee1ca5e7f3ef3c7de1dc'
   })
 
   depends_on 'bzip2' => :build
-  depends_on 'cppdap' # R
-  depends_on 'curl' # R
-  depends_on 'expat' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'jsoncpp' # R
-  depends_on 'libarchive' # R
+  depends_on 'cppdap' => :executable_only
+  depends_on 'curl' => :executable_only
+  depends_on 'expat' => :executable_only
+  depends_on 'gcc_lib' => :executable_only
+  depends_on 'glibc' => :executable_only
+  depends_on 'jsoncpp' => :executable_only
+  depends_on 'libarchive' => :executable_only
   depends_on 'libnghttp2' => :build
-  depends_on 'librhash' # R
-  depends_on 'libuv' # R
+  depends_on 'librhash' => :executable_only
+  depends_on 'libuv' => :executable_only
   depends_on 'llvm_lib' => :build
-  depends_on 'ncurses' # R
+  depends_on 'ncurses' => :executable_only
   depends_on 'xzutils' => :build
-  depends_on 'zlib' # R
+  depends_on 'zlib' => :executable_only
   depends_on 'zstd' => :build
 
   def self.prebuild
