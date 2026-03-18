@@ -11,41 +11,43 @@ class Gparted < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e1c380b9e4b25dd5e73380935788f521011703af1a6dbb1ae3a1c53f80ff09f3',
-     armv7l: 'e1c380b9e4b25dd5e73380935788f521011703af1a6dbb1ae3a1c53f80ff09f3',
-     x86_64: '0df67181929dd5f02c1a682042b6a8117538365e26c03bfd48abbbc32f68f4cb'
+    aarch64: '8d8d5d77a36531fde85ecba4f084463b921a40855a442485eb9f340c0139d3fe',
+     armv7l: '8d8d5d77a36531fde85ecba4f084463b921a40855a442485eb9f340c0139d3fe',
+     x86_64: 'fab804cf579892b2660dc7eb115d2c9852425b3e6d726fc9247f88698c169613'
   })
 
-  depends_on 'at_spi2_core' # R
-  depends_on 'atkmm16' # R
-  depends_on 'cairo' # R
-  depends_on 'cairomm_1_0' # R
+  depends_on 'at_spi2_core' => :executable_only
+  depends_on 'atkmm16' => :executable_only
+  depends_on 'cairo' => :executable_only
+  depends_on 'cairomm_1_0' => :executable_only
   depends_on 'exfatprogs'
   depends_on 'f2fs_tools'
-  depends_on 'gcc_lib' # R
-  depends_on 'gdk_pixbuf' # R
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
-  depends_on 'glibmm_2_4' # R
+  depends_on 'gcc_lib' => :executable_only
+  depends_on 'gdk_pixbuf' => :executable_only
+  depends_on 'glib' => :executable_only
+  depends_on 'glibc' => :executable_only
+  depends_on 'glibmm_2_4' => :executable_only
   depends_on 'gpart'
-  depends_on 'gtk3' # R
+  depends_on 'gtk3' => :executable_only
   depends_on 'gtkmm3'
-  depends_on 'harfbuzz' # R
+  depends_on 'gtkmm3' => :executable_only
+  depends_on 'harfbuzz' => :executable_only
   depends_on 'intltool' => :build
   depends_on 'librsvg'
   depends_on 'libsigcplusplus'
-  depends_on 'libsigcplusplus2' # R
+  depends_on 'libsigcplusplus2' => :executable_only
   depends_on 'mtools'
-  depends_on 'pango' # R
-  depends_on 'pangomm_1_4' # R
+  depends_on 'pango' => :executable_only
+  depends_on 'pangomm_1_4' => :executable_only
   depends_on 'parted'
+  depends_on 'parted' => :executable_only
   depends_on 'py3_itstool' => :build
   depends_on 'sommelier' => :logical
-  depends_on 'util_linux' # R
+  depends_on 'util_linux' => :executable_only
   depends_on 'xfsprogs'
   depends_on 'xhost'
   depends_on 'yelp_tools' => :build
-  depends_on 'zlib' # R
+  depends_on 'zlib' => :executable_only
 
   def self.patch
     system 'filefix' # Fix ./configure: line 7001: /usr/bin/file: No such file or directory
