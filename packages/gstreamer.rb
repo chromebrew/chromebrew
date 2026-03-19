@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gstreamer < Meson
   description 'GStreamer is a library for constructing graphs of media-handling components.'
   homepage 'https://gstreamer.freedesktop.org/'
-  version '1.28.0'
+  version '1.28.1'
   license 'LGPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/gstreamer/gstreamer.git'
@@ -16,97 +16,97 @@ class Gstreamer < Meson
      x86_64: '4fac6c28487630defd3daf9a86b70393cf59651117197ec6f059e48b51c9eb1a'
   })
 
-  # depends_on 'gsm' # R
-  # depends_on 'libvpx' # R
-  depends_on 'alsa_lib' # R
-  depends_on 'bzip2' # R
+  # depends_on 'gsm' => :library
+  # depends_on 'libvpx' => :library
+  depends_on 'alsa_lib' => :library
+  depends_on 'bzip2' => :library
   depends_on 'ca_certificates' => :build
-  depends_on 'cairo' # R
-  depends_on 'chromaprint' # R
-  depends_on 'curl' # R
-  depends_on 'elfutils' # R
-  depends_on 'faac' # R
-  depends_on 'faad2' # R
+  depends_on 'cairo' => :library
+  depends_on 'chromaprint' => :library
+  depends_on 'curl' => :library
+  depends_on 'elfutils' => :library
+  depends_on 'faac' => :library
+  depends_on 'faad2' => :library
   depends_on 'ffmpeg' => :logical
-  depends_on 'flac' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'gdk_pixbuf' # R
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
-  depends_on 'gnutls' # R
-  depends_on 'graphene' # R
-  depends_on 'gtk3' # R
-  depends_on 'harfbuzz' # R
-  depends_on 'intel_media_sdk' if ARCH.eql?('x86_64') # R
-  depends_on 'json_glib' # R
-  depends_on 'lcms' # R
-  depends_on 'libaom' # R
-  depends_on 'libass' # R
-  depends_on 'libavc1394' # R
-  depends_on 'libcap' # R
-  depends_on 'libdrm' # R
-  depends_on 'libdv' # R
-  depends_on 'libfdk_aac' # R
-  depends_on 'libglvnd' # R
-  depends_on 'libgudev' # R
-  depends_on 'libiec61883' # R
-  depends_on 'libjpeg_turbo' # R
-  depends_on 'libmodplug' # R
-  depends_on 'libmp3lame' # R
-  depends_on 'libogg' # R
-  depends_on 'libopencoreamr' # R
-  depends_on 'libpng' # R
-  depends_on 'libraw1394' # R
-  depends_on 'librsvg' # R
-  depends_on 'libsndfile' # R
-  depends_on 'libtheora' # R
-  depends_on 'libunwind' # R
-  depends_on 'libusb' # R
-  depends_on 'libva' # R
-  depends_on 'libvorbis' # R
-  depends_on 'libwebp' # R
-  depends_on 'libx11' # R
-  depends_on 'libx264' # R
-  depends_on 'libx265' # R
-  depends_on 'libxcb' # R
-  depends_on 'libxdamage' # R
-  depends_on 'libxext' # R
-  depends_on 'libxfixes' # R
-  depends_on 'libxi' # R
-  depends_on 'libxml2' # R
-  depends_on 'libxtst' # R
-  depends_on 'libxv' # R
-  depends_on 'lilv' # R
-  depends_on 'mesa' # R
-  depends_on 'neon' # R
-  depends_on 'nettle' # R
-  depends_on 'openal' # R
-  depends_on 'openexr' # R
-  depends_on 'openh264' # R
-  depends_on 'openjpeg' # R
-  depends_on 'openssl' # R
-  depends_on 'opus' # R
+  depends_on 'flac' => :library
+  depends_on 'gcc_lib' => :library
+  depends_on 'gdk_pixbuf' => :library
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'gnutls' => :library
+  depends_on 'graphene' => :library
+  depends_on 'gtk3' => :library
+  depends_on 'harfbuzz' => :library
+  depends_on 'intel_media_sdk' => :library if ARCH.eql?('x86_64')
+  depends_on 'json_glib' => :library
+  depends_on 'lcms' => :library
+  depends_on 'libaom' => :library
+  depends_on 'libass' => :library
+  depends_on 'libavc1394' => :library
+  depends_on 'libcap' => :library
+  depends_on 'libdrm' => :library
+  depends_on 'libdv' => :library
+  depends_on 'libfdk_aac' => :library
+  depends_on 'libglvnd' => :library
+  depends_on 'libgudev' => :library
+  depends_on 'libiec61883' => :library
+  depends_on 'libjpeg_turbo' => :library
+  depends_on 'libmodplug' => :library
+  depends_on 'libmp3lame' => :library
+  depends_on 'libogg' => :library
+  depends_on 'libopencoreamr' => :library
+  depends_on 'libpng' => :library
+  depends_on 'libraw1394' => :library
+  depends_on 'librsvg' => :library
+  depends_on 'libsndfile' => :library
+  depends_on 'libtheora' => :library
+  depends_on 'libunwind' => :library
+  depends_on 'libusb' => :library
+  depends_on 'libva' => :library
+  depends_on 'libvorbis' => :library
+  depends_on 'libwebp' => :library
+  depends_on 'libx11' => :library
+  depends_on 'libx264' => :library
+  depends_on 'libx265' => :library
+  depends_on 'libxcb' => :library
+  depends_on 'libxdamage' => :library
+  depends_on 'libxext' => :library
+  depends_on 'libxfixes' => :library
+  depends_on 'libxi' => :library
+  depends_on 'libxml2' => :library
+  depends_on 'libxtst' => :library
+  depends_on 'libxv' => :library
+  depends_on 'lilv' => :library
+  depends_on 'mesa' => :library
+  depends_on 'neon' => :library
+  depends_on 'nettle' => :library
+  depends_on 'openal' => :library
+  depends_on 'openexr' => :library
+  depends_on 'openh264' => :library
+  depends_on 'openjpeg' => :library
+  depends_on 'openssl' => :library
+  depends_on 'opus' => :library
   depends_on 'opusfile' => :build
-  depends_on 'pango' # R
+  depends_on 'pango' => :library
   depends_on 'pulseaudio' => :logical
   depends_on 'py3_gitlint' => :build
   depends_on 'py3_setuptools' => :build
-  depends_on 'qt5_base' # R
-  depends_on 'qt5_declarative' # R
-  depends_on 'rtmpdump' # R
-  depends_on 'sbc' # R
-  depends_on 'speex' # R
-  depends_on 'srt' # R
-  depends_on 'svt_av1' # R
-  depends_on 'v4l_utils' # R
-  depends_on 'wavpack' # R
-  depends_on 'wayland' # R
-  depends_on 'webrtc_audio_processing' # R
-  depends_on 'zlib' # R
-  depends_on 'zvbi' # R
+  depends_on 'qt5_base' => :library
+  depends_on 'qt5_declarative' => :library
+  depends_on 'rtmpdump' => :library
+  depends_on 'sbc' => :library
+  depends_on 'speex' => :library
+  depends_on 'srt' => :library
+  depends_on 'svt_av1' => :library
+  depends_on 'v4l_utils' => :library
+  depends_on 'wavpack' => :library
+  depends_on 'wayland' => :library
+  depends_on 'webrtc_audio_processing' => :library
+  depends_on 'zlib' => :library
+  depends_on 'zvbi' => :library
 
   # no_lto
-  conflicts_ok # conflicts with libglvnd
+  conflicts_with 'libglvnd'
   gnome
 
   def self.prebuild
