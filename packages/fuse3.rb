@@ -11,14 +11,14 @@ class Fuse3 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a07a40a56054303557bac6c18a4d500eb2779900bdb34183fd9fa122f644a675',
-     armv7l: 'a07a40a56054303557bac6c18a4d500eb2779900bdb34183fd9fa122f644a675',
-       i686: '27ee11c7cca4f8e7336d8d88bffe6066472b9de3223ecc0c600a854f0a821d35',
-     x86_64: 'f2215c568cf0b7f378ee63d7b558ee409abfe974a54aa271f270cf2542d5119b'
+    aarch64: 'f34226f5c0e59011579ea20b805ddd718184c2e7f25cfb8993712b9ec7282b72',
+     armv7l: 'f34226f5c0e59011579ea20b805ddd718184c2e7f25cfb8993712b9ec7282b72',
+       i686: '568a592a431b5a61bd311d23d0d8116166b7e2a48020c18070eafe97256b90aa',
+     x86_64: '89edc4152da90ea28da4f44dafa939cf8925bff378e8597d7be41fe2049393d3'
   })
 
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
   depends_on 'py3_pytest' => :build
 
   meson_options "-Ddisable-mtab=true \
