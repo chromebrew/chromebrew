@@ -478,7 +478,12 @@ def upgrade(*pkgs, build_from_source: false)
   if rerun_upgrade
     at_exit do
       puts "Rerunning 'crew upgrade' to make sure upgrades are complete.".lightblue
-      exec 'crew upgrade'
+      # Rerunning does not preserve the force option.
+      if @opt_force
+        exec 'crew upgrade -f'
+      else
+        exec 'crew upgrade'
+      end
     end
   else
     puts 'Packages have been updated.'.lightgreen

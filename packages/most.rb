@@ -17,9 +17,9 @@ class Most < Package
      x86_64: 'afc592b6140eb946a257197597f624a5125ae1f694f4883d5013461be388e071'
   })
 
-  depends_on 'gcc_lib' => :executable_only
-  depends_on 'glibc' => :executable_only
-  depends_on 'slang' => :executable_only
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'slang' => :executable
 
   def self.build
     system "./configure #{CREW_CONFIGURE_OPTIONS}"

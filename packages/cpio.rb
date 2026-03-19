@@ -18,7 +18,7 @@ class Cpio < Autotools
   })
 
   depends_on 'glibc' # R
-  depends_on 'glibc' => :executable_only
+  depends_on 'glibc' => :executable
 
   autotools_configure_options '--enable-mt' # magnetic tape, not manifest tool
 end

@@ -17,9 +17,9 @@ class Fish < CMake
      x86_64: 'bec1490c7dc58aa72fc2facb04a8e6c5aa76e43597e0a3c5917745aed4d753f0'
   })
 
-  depends_on 'gcc_lib' => :executable_only
-  depends_on 'glibc' => :executable_only
-  depends_on 'pcre2' => :executable_only
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'pcre2' => :executable
 
   cmake_options "-DCURSES_INCLUDE_PATH=#{CREW_PREFIX}/include/ncurses"
 

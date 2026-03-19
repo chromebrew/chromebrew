@@ -1,4 +1,4 @@
-# Total size: 63722958
+# Total size: 63589899
 /usr/local/bin/corelist
 /usr/local/bin/cpan
 /usr/local/bin/enc2xs
@@ -9,7 +9,7 @@
 /usr/local/bin/json_pp
 /usr/local/bin/libnetcfg
 /usr/local/bin/perl
-/usr/local/bin/perl5.42.0
+/usr/local/bin/perl5.42.1
 /usr/local/bin/perlbug
 /usr/local/bin/perldoc
 /usr/local/bin/perlivp
@@ -32,8 +32,8 @@
 /usr/local/bin/zipdetails
 /usr/local/lib64/libperl.so
 /usr/local/lib64/libperl.so.5.42
-/usr/local/lib64/libperl.so.5.42.0
-/usr/local/lib64/libperl.so5.42.0
+/usr/local/lib64/libperl.so.5.42.1
+/usr/local/lib64/libperl.so5.42.1
 /usr/local/lib64/perl5/5.42/core_perl/.packlist
 /usr/local/lib64/perl5/5.42/core_perl/B.pm
 /usr/local/lib64/perl5/5.42/core_perl/B/Concise.pm
@@ -359,6 +359,7 @@
 /usr/local/share/man/man1/perl5401delta.1.zst
 /usr/local/share/man/man1/perl5402delta.1.zst
 /usr/local/share/man/man1/perl5420delta.1.zst
+/usr/local/share/man/man1/perl5421delta.1.zst
 /usr/local/share/man/man1/perl561delta.1.zst
 /usr/local/share/man/man1/perl56delta.1.zst
 /usr/local/share/man/man1/perl581delta.1.zst
@@ -2072,6 +2073,7 @@
 /usr/local/share/perl5/core_perl/pod/perl5401delta.pod
 /usr/local/share/perl5/core_perl/pod/perl5402delta.pod
 /usr/local/share/perl5/core_perl/pod/perl5420delta.pod
+/usr/local/share/perl5/core_perl/pod/perl5421delta.pod
 /usr/local/share/perl5/core_perl/pod/perl561delta.pod
 /usr/local/share/perl5/core_perl/pod/perl56delta.pod
 /usr/local/share/perl5/core_perl/pod/perl581delta.pod

@@ -5,34 +5,34 @@ class Vivaldi < Package
   description 'Vivaldi is a new browser that blocks unwanted ads, protects you from trackers, and puts you in control with unique built-in features.'
   homepage 'https://vivaldi.com/'
   # The project stopped supporting armv7l after the 7.5 release.
-  version ARCH.eql?('x86_64') ? '7.8.3925.76' : '7.5.3735.74-1'
+  version ARCH.eql?('x86_64') ? '7.8.3925.81' : '7.5.3735.74-1'
   license 'Vivaldi'
   compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.37'
 
-  depends_on 'alsa_lib' => :executable_only
-  depends_on 'at_spi2_core' => :executable_only
-  depends_on 'cairo' => :executable_only
+  depends_on 'alsa_lib' => :executable
+  depends_on 'at_spi2_core' => :executable
+  depends_on 'cairo' => :executable
   depends_on 'cras' => :logical
-  depends_on 'cups' => :executable_only
-  depends_on 'dbus' => :executable_only
-  depends_on 'eudev' => :executable_only
-  depends_on 'expat' => :executable_only
+  depends_on 'cups' => :executable
+  depends_on 'dbus' => :executable
+  depends_on 'eudev' => :executable
+  depends_on 'expat' => :executable
   depends_on 'gcc_lib' # R
-  depends_on 'glib' => :executable_only
+  depends_on 'glib' => :executable
   depends_on 'gsettings_desktop_schemas' => :logical
-  depends_on 'harfbuzz' => :executable_only
+  depends_on 'harfbuzz' => :executable
   depends_on 'libx11' # R
   depends_on 'libxcb' # R
-  depends_on 'libxcomposite' => :executable_only
-  depends_on 'libxdamage' => :executable_only
+  depends_on 'libxcomposite' => :executable
+  depends_on 'libxdamage' => :executable
   depends_on 'libxext' # R
-  depends_on 'libxfixes' => :executable_only
-  depends_on 'libxkbcommon' => :executable_only
-  depends_on 'libxrandr' => :executable_only
-  depends_on 'mesa' => :executable_only
-  depends_on 'nss' => :executable_only
-  depends_on 'pango' => :executable_only
+  depends_on 'libxfixes' => :executable
+  depends_on 'libxkbcommon' => :executable
+  depends_on 'libxrandr' => :executable
+  depends_on 'mesa' => :executable
+  depends_on 'nss' => :executable
+  depends_on 'pango' => :executable
   depends_on 'sommelier' => :logical
   depends_on 'xdg_base' => :logical
   depends_on 'xdg_utils' => :logical
@@ -46,7 +46,7 @@ class Vivaldi < Package
     source_sha256 '9017e6327c140ad9a9e1f0ce450681a729a15ea764337c30226f51c042ff7e62'
   when 'x86_64'
     arch = 'amd64'
-    source_sha256 '04894eca42b311b0a836bcb38951a9a5ca2b7931adf718243a625b55de73c003'
+    source_sha256 'acaf34af7ab502faf02adf4a1f4049e1eced2dceb733a112b3dfccbaf21166f7'
   end
 
   case ARCH

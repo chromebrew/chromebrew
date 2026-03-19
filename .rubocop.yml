@@ -88,6 +88,10 @@ Style/NumericLiterals:
   Enabled: false
 
 # TODO
+Style/OneClassPerFile:
+ Enabled: false
+
+# TODO
 Style/RedundantStringEscape:
   Enabled: false
 

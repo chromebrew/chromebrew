@@ -17,8 +17,8 @@ class Ddrescue < Autotools
      x86_64: 'b50c0c067e4ecbc84a9386351e1d281c7cffdb4ab3e2667c2087eafa7f951059'
   })
 
-  depends_on 'gcc_lib' => :executable_only
-  depends_on 'glibc' => :executable_only
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
 
   autotools_configure_options '--enable-non-posix'
 end

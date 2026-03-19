@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Procps < Autotools
   description 'procps is a set of command line and full-screen utilities that provide information out of the pseudo-filesystem most commonly located at /proc.'
   homepage 'https://gitlab.com/procps-ng/procps'
-  version '4.0.5'
+  version '4.0.6'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://gitlab.com/procps-ng/procps.git'
@@ -11,11 +11,14 @@ class Procps < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a31ef07767fde20684c0c5c23c9d47d6e7b646906bb3fa5db2f61794f4297625',
-     armv7l: 'a31ef07767fde20684c0c5c23c9d47d6e7b646906bb3fa5db2f61794f4297625',
-       i686: '71bd241f9913074041d15480c6aba8f91f8af7bbc27b8815d8cdbf022c82b31f',
-     x86_64: 'f4919b4b88cf3d83a361304b74c5202754d7588b440c9bf8cb6579868c0c82ef'
+    aarch64: 'c3cb80317d20af10c73e660789f61b5ff183338d1ef05ef52a4895e92566b459',
+     armv7l: 'c3cb80317d20af10c73e660789f61b5ff183338d1ef05ef52a4895e92566b459',
+       i686: 'cf8e4fdcf65a83aaf4464233bc23139b354c9f40324b8f58f7b8ff09ddee94ef',
+     x86_64: '3193c16555554d63bffe63957b6add1ab3f689bb8d5eb57f22533068fceb5605'
   })
+
+  depends_on 'glibc' # R
+  depends_on 'ncurses' => :executable
 
   conflicts_ok # Conflicts with uutils_coreutils.
 

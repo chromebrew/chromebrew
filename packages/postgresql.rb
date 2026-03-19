@@ -3,41 +3,46 @@ require 'buildsystems/meson'
 class Postgresql < Meson
   description 'PostgreSQL is a powerful, open source object-relational database system.'
   homepage 'https://www.postgresql.org'
-  version "18.0-#{CREW_ICU_VER}"
+  version "18.3-#{CREW_ICU_VER}"
   license 'PostgreSQL and GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://ftp.postgresql.org/pub/source/v#{version.split('-').first}/postgresql-#{version.split('-').first}.tar.bz2"
-  source_sha256 '0d5b903b1e5fe361bca7aa9507519933773eb34266b1357c4e7780fdee6d6078'
+  source_sha256 'd95663fbbf3a80f81a9d98d895266bdcb74ba274bcc04ef6d76630a72dee016f'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'db37f0edcd0957aa2ec6cee468392c530e6305da827ad89abeba85962aef77d7',
-     armv7l: 'db37f0edcd0957aa2ec6cee468392c530e6305da827ad89abeba85962aef77d7',
-     x86_64: '24618c801c76ed6c238c6d5a86ff142f81ace4665fcb6126493bd17c68413cdc'
+    aarch64: '98260cc3aa908dd412715f01706df848c14513b84208ef3320c39e9b3a8c3aa0',
+     armv7l: '98260cc3aa908dd412715f01706df848c14513b84208ef3320c39e9b3a8c3aa0',
+     x86_64: 'a43dd827d31b6be6fc8b1d0ef3e147f6292cc87a7498b57d025c913eef24edb2'
   })
 
   depends_on 'brotli' => :build
   depends_on 'curl' # R
   depends_on 'docbook_xml45' => :build
   depends_on 'expat' => :build
+  depends_on 'fop' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'icu4c' # R
+  depends_on 'icu4c' => :executable
   depends_on 'krb5' # R
   depends_on 'libcyrussasl' => :build
+  depends_on 'liburing' => :executable
   depends_on 'libxml2' # R
   depends_on 'libxslt' # R
-  depends_on 'linux_pam' # R
+  depends_on 'linux_pam' => :executable
   depends_on 'llvm_dev' => :build
-  depends_on 'lz4' # R
+  depends_on 'lz4' => :executable
+  depends_on 'numactl' => :executable
   depends_on 'openldap' # R
   depends_on 'openssl' # R
+  depends_on 'pandoc' => :build
   depends_on 'perl' # R
   depends_on 'python3' # R
-  depends_on 'readline' # R
+  depends_on 'readline' => :executable
   depends_on 'tcl' # R
+  depends_on 'wget2' # R
   depends_on 'zlib' # R
-  depends_on 'zstd' # R
+  depends_on 'zstd' => :executable
 
   print_source_bashrc
 

@@ -1,4 +1,4 @@
-# Total size: 9607429
+# Total size: 15667872
 /usr/local/bin/poclcc
 /usr/local/include/CL/cl.h
 /usr/local/include/CL/cl2.hpp
@@ -7,6 +7,8 @@
 /usr/local/include/CL/cl_dx9_media_sharing.h
 /usr/local/include/CL/cl_dx9_media_sharing_intel.h
 /usr/local/include/CL/cl_egl.h
+/usr/local/include/CL/cl_exp_defined_builtin_kernels.h
+/usr/local/include/CL/cl_exp_tensor.h
 /usr/local/include/CL/cl_ext.h
 /usr/local/include/CL/cl_ext_intel.h
 /usr/local/include/CL/cl_ext_pocl.h
@@ -21,7 +23,7 @@
 /usr/local/include/CL/opencl.hpp
 /usr/local/lib64/libOpenCL.so
 /usr/local/lib64/libOpenCL.so.2
-/usr/local/lib64/libOpenCL.so.2.13.0
+/usr/local/lib64/libOpenCL.so.2.15.0
 /usr/local/lib64/pkgconfig/pocl.pc
 /usr/local/lib64/pocl/libpocl-devices-basic.so
 /usr/local/lib64/pocl/libpocl-devices-pthread.so
@@ -31,7 +33,6 @@
 /usr/local/share/pocl/include/_kernel.h
 /usr/local/share/pocl/include/_kernel_c.h
 /usr/local/share/pocl/include/_kernel_constants.h
-/usr/local/share/pocl/include/_libclang_versions_checks.h
 /usr/local/share/pocl/include/opencl-c-base.h
 /usr/local/share/pocl/include/opencl-c.h
 /usr/local/share/pocl/include/pocl.h

@@ -1,22 +1,26 @@
-# Total size: 219242
+# Total size: 266223
 /usr/local/bin/pcsc-spy
+/usr/local/etc/default/pcscd
+/usr/local/etc/sysusers.d/pcscd-sysusers.conf
 /usr/local/include/PCSC/debuglog.h
 /usr/local/include/PCSC/ifdhandler.h
 /usr/local/include/PCSC/pcsclite.h
 /usr/local/include/PCSC/reader.h
 /usr/local/include/PCSC/winscard.h
 /usr/local/include/PCSC/wintypes.h
-/usr/local/lib/libpcsclite.la
 /usr/local/lib/libpcsclite.so
 /usr/local/lib/libpcsclite.so.1
-/usr/local/lib/libpcsclite.so.1.0.0
-/usr/local/lib/libpcscspy.la
+/usr/local/lib/libpcsclite_real.so
+/usr/local/lib/libpcsclite_real.so.1
 /usr/local/lib/libpcscspy.so
 /usr/local/lib/libpcscspy.so.0
-/usr/local/lib/libpcscspy.so.0.0.0
 /usr/local/lib/pkgconfig/libpcsclite.pc
+/usr/local/lib/systemd/user/pcscd.service
+/usr/local/lib/systemd/user/pcscd.socket
 /usr/local/sbin/pcscd
-/usr/local/share/doc/pcsc-lite/README.polkit
-/usr/local/share/man/man1/pcsc-spy.1.gz
-/usr/local/share/man/man5/reader.conf.5.gz
-/usr/local/share/man/man8/pcscd.8.gz
+/usr/local/share/doc/pcsc-lite/setup_spy.sh
+/usr/local/share/man/man1/pcsc-spy.1.zst
+/usr/local/share/man/man5/reader.conf.5.zst
+/usr/local/share/man/man8/pcscd.8.zst
+/usr/local/share/metainfo/fr.apdu.pcsclite.metainfo.xml
+/usr/local/share/polkit-1/actions/org.debian.pcsc-lite.policy

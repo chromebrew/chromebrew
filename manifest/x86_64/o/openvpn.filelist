@@ -1,10 +1,11 @@
-# Total size: 1841139
+# Total size: 1835354
 /usr/local/include/openvpn-msg.h
 /usr/local/include/openvpn-plugin.h
 /usr/local/lib64/openvpn/plugins/openvpn-plugin-auth-pam.la
 /usr/local/lib64/openvpn/plugins/openvpn-plugin-auth-pam.so
 /usr/local/lib64/openvpn/plugins/openvpn-plugin-down-root.la
 /usr/local/lib64/openvpn/plugins/openvpn-plugin-down-root.so
+/usr/local/libexec/openvpn/dns-updown
 /usr/local/sbin/openvpn
 /usr/local/share/doc/openvpn/COPYING
 /usr/local/share/doc/openvpn/COPYRIGHT.GPL

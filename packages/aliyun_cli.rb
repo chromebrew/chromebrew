@@ -3,7 +3,7 @@ require 'package'
 class Aliyun_cli < Package
   description 'Alibaba Cloud CLI'
   homepage 'https://www.alibabacloud.com/help/en/cli/'
-  version '3.2.10'
+  version '3.3.1'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/aliyun/aliyun-cli.git'
@@ -11,13 +11,13 @@ class Aliyun_cli < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '532fe06491f11140e031c5b47531972bd7ce1162053136bb1de00b6b2144471e',
-     armv7l: '532fe06491f11140e031c5b47531972bd7ce1162053136bb1de00b6b2144471e',
-       i686: '8c04a58d51efac4e657ad90b04760cbd6ee2613d335aaea8624cdf7ada959ed6',
-     x86_64: '6dd1de964f462373296c5075bdcf853a9bb31dc14d5c3e1ed6870a31662f5480'
+    aarch64: 'd34abba2b1baaa79526bf9d97feb979a104a35bef4f59a495e7c9031e3a9e6e8',
+     armv7l: 'd34abba2b1baaa79526bf9d97feb979a104a35bef4f59a495e7c9031e3a9e6e8',
+       i686: '23daa4bb35b7f83db0800df5fe6e4b373663f1450ba22f5b3e54f1ba382708cf',
+     x86_64: '9c04188650cc7a8607c1f673b837fba703012a80281930258cc9f7701c0a3257'
   })
 
-  depends_on 'glibc' => :executable_only
+  depends_on 'glibc' => :executable
   depends_on 'go' => :build
 
   def self.build

@@ -1,4 +1,4 @@
-# Total size: 2110348
+# Total size: 2220174
 /usr/local/include/opus/opus.h
 /usr/local/include/opus/opus_defines.h
 /usr/local/include/opus/opus_multistream.h
@@ -6,7 +6,7 @@
 /usr/local/include/opus/opus_types.h
 /usr/local/lib/libopus.so
 /usr/local/lib/libopus.so.0
-/usr/local/lib/libopus.so.0.10.1
+/usr/local/lib/libopus.so.0.11.1
 /usr/local/lib/pkgconfig/opus.pc
 /usr/local/share/doc/opus/html/clipboard.js
 /usr/local/share/doc/opus/html/cookie.js

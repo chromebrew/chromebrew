@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Openal < CMake
   description 'OpenAL Soft is a software implementation of the cross-platform OpenAL 3D audio API appropriate for use with gaming applications and many other types of audio applications.'
   homepage 'https://openal-soft.org/'
-  version '1.24.3'
+  version '1.25.1'
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/kcat/openal-soft.git'
@@ -11,11 +11,22 @@ class Openal < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4d05900090331e849191b1f484d6afd6e9207bfa61537b48520d0e9ad0b7972a',
-     armv7l: '4d05900090331e849191b1f484d6afd6e9207bfa61537b48520d0e9ad0b7972a',
-       i686: 'f30e0f54b58554c56abd0d97e6a78ed86337e5d971fa6a0818bcb4b006307867',
-     x86_64: '5efa6a7f3b97436888e9530583abfa0e4362ee88bd436e7a73c0ee32c662d767'
+    aarch64: '66eb40c326b54b67dcdbf8402339041050fd78cc5959ab51d84fac7128663a77',
+     armv7l: '66eb40c326b54b67dcdbf8402339041050fd78cc5959ab51d84fac7128663a77',
+     x86_64: '737074c8055fa50957e66e7ba4724dbef67f544b45a0a6c38342c31141e981f2'
   })
+
+  depends_on 'alsa_lib'
+  depends_on 'dbus'
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'jack'
+  depends_on 'libmysofa'
+  depends_on 'libmysofa' => :executable
+  depends_on 'libsndfile'
+  depends_on 'pipewire'
+  depends_on 'portaudio'
+  depends_on 'pulseaudio'
 
   cmake_options '-DALSOFT_EXAMPLES=OFF'
 end

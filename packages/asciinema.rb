@@ -17,8 +17,8 @@ class Asciinema < RUST
      x86_64: '43a6c8f3765a15f9cd835d80f26e00f996133624da73233e3ac4529bb0696bce'
   })
 
-  depends_on 'gcc_lib' => :executable_only
-  depends_on 'glibc' => :executable_only
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
   depends_on 'python3' => :build
   depends_on 'xdg_base'
 

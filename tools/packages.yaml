@@ -390,6 +390,11 @@ url: http://download.savannah.gnu.org/releases/attr
 activity: medium
 ---
 kind: url
+name: atuin
+url: https://github.com/atuinsh/atuin/releases
+activity: high
+---
+kind: url
 name: audacious
 url: https://distfiles.audacious-media-player.org/
 activity: low
@@ -1115,11 +1120,6 @@ url: https://github.com/exaloop/codon/releases
 activity: low
 ---
 kind: url
-name: vscodium
-url: https://github.com/VSCodium/vscodium/releases
-activity: high
----
-kind: url
 name: cogl
 url: https://ftp.gnome.org/pub/GNOME/sources/cogl/
 activity: low
@@ -1183,6 +1183,11 @@ kind: url
 name: containers_common
 url: https://github.com/containers/common/releases
 activity: medium
+---
+kind: url
+name: copilot
+url: https://github.com/github/copilot-cli/releases
+activity: high
 ---
 kind: url
 name: coreutils
@@ -7615,6 +7620,11 @@ url: http://rpm5.org/files/popt/
 activity: none
 ---
 kind: url
+name: portaudio
+url: https://github.com/PortAudio/portaudio/releases
+activity: none
+---
+kind: url
 name: postgres
 url: https://ftp.postgresql.org/pub/source
 activity: medium
@@ -8027,6 +8037,11 @@ activity: low
 kind: url
 name: py3_unsupported_python
 url: https://github.com/ntessore/unsupported-python/releases
+activity: none
+---
+kind: url
+name: py3_wakeonlan
+url: https://github.com/remcohaszing/pywakeonlan/releases
 activity: none
 ---
 kind: url
@@ -10055,6 +10070,11 @@ url: https://www.unix-ag.uni-kl.de/~massar/vpnc
 activity: none
 ---
 kind: url
+name: vscodium
+url: https://github.com/VSCodium/vscodium/releases
+activity: high
+---
+kind: url
 name: vtable_dumper
 url: https://github.com/lvc/vtable-dumper/releases
 activity: none
@@ -10062,6 +10082,11 @@ activity: none
 kind: url
 name: vte
 url: https://download.gnome.org/sources/vte/
+activity: medium
+---
+kind: url
+name: vtk
+url: https://gitlab.kitware.com/vtk/vtk/-/tags
 activity: medium
 ---
 kind: url

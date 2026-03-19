@@ -1,4 +1,4 @@
-# Total size: 1077587
+# Total size: 1129389
 /usr/local/include/shumate-1.0/shumate/shumate-compass.h
 /usr/local/include/shumate-1.0/shumate/shumate-coordinate.h
 /usr/local/include/shumate-1.0/shumate/shumate-data-source-request.h
@@ -29,6 +29,7 @@
 /usr/local/include/shumate-1.0/shumate/shumate-vector-renderer.h
 /usr/local/include/shumate-1.0/shumate/shumate-vector-sprite-sheet.h
 /usr/local/include/shumate-1.0/shumate/shumate-vector-sprite.h
+/usr/local/include/shumate-1.0/shumate/shumate-vector-value.h
 /usr/local/include/shumate-1.0/shumate/shumate-version.h
 /usr/local/include/shumate-1.0/shumate/shumate-viewport.h
 /usr/local/include/shumate-1.0/shumate/shumate.h
@@ -59,6 +60,7 @@
 /usr/local/share/locale/hi/LC_MESSAGES/shumate1.mo
 /usr/local/share/locale/hr/LC_MESSAGES/shumate1.mo
 /usr/local/share/locale/hu/LC_MESSAGES/shumate1.mo
+/usr/local/share/locale/ia/LC_MESSAGES/shumate1.mo
 /usr/local/share/locale/id/LC_MESSAGES/shumate1.mo
 /usr/local/share/locale/ie/LC_MESSAGES/shumate1.mo
 /usr/local/share/locale/is/LC_MESSAGES/shumate1.mo
@@ -67,9 +69,11 @@
 /usr/local/share/locale/kab/LC_MESSAGES/shumate1.mo
 /usr/local/share/locale/kk/LC_MESSAGES/shumate1.mo
 /usr/local/share/locale/ko/LC_MESSAGES/shumate1.mo
+/usr/local/share/locale/kw/LC_MESSAGES/shumate1.mo
 /usr/local/share/locale/lt/LC_MESSAGES/shumate1.mo
 /usr/local/share/locale/lv/LC_MESSAGES/shumate1.mo
 /usr/local/share/locale/ml/LC_MESSAGES/shumate1.mo
+/usr/local/share/locale/nb/LC_MESSAGES/shumate1.mo
 /usr/local/share/locale/ne/LC_MESSAGES/shumate1.mo
 /usr/local/share/locale/nl/LC_MESSAGES/shumate1.mo
 /usr/local/share/locale/oc/LC_MESSAGES/shumate1.mo

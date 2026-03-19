@@ -1,0 +1,3 @@
+#!/bin/bash
+makemhr -h | head
+openal-info -h

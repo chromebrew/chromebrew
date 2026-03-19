@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Ccache < CMake
   description 'Compiler cache that speeds up recompilation by caching previous compilations'
   homepage 'https://ccache.dev/'
-  version '4.13'
+  version '4.13.1'
   license 'GPL-3 and LGPL-3'
   compatibility 'all'
   source_url 'https://github.com/ccache/ccache.git'
@@ -11,10 +11,10 @@ class Ccache < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bf1733e9a0991eb2b8edb575c9b5e89da4823c3f68bb85d93f4c86b2f5273a3b',
-     armv7l: 'bf1733e9a0991eb2b8edb575c9b5e89da4823c3f68bb85d93f4c86b2f5273a3b',
-       i686: '728f51affa862555390ae1eba982bc1ee8fbe7659f57b3d7ccfef95fb40d6de7',
-     x86_64: '687d26c0a5c1c23fac8e785ca5df204890b3aad099a290924b479aed6d4d978c'
+    aarch64: 'a789dbaf6705e5d5cb6e14e90d8efd4df118c2c57e674ba3b84621137d5627c5',
+     armv7l: 'a789dbaf6705e5d5cb6e14e90d8efd4df118c2c57e674ba3b84621137d5627c5',
+       i686: '12908a2b9ce8dca804da4dbbc9568aee4c75ee82febe4a5455eb47a27757e18e',
+     x86_64: 'c350a1e8708927aae942addebc488aae29b99010b097f722432d13477dbdacab'
   })
 
   depends_on 'gcc_lib' # R

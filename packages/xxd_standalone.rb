@@ -18,7 +18,7 @@ class Xxd_standalone < Package
      x86_64: 'f4dc5be9d7b1e30412bb8dfae21aefbd626f052566f24515b1ada9d59c579f71'
   })
 
-  depends_on 'glibc' => :executable_only
+  depends_on 'glibc' => :executable
 
   ignore_updater
 

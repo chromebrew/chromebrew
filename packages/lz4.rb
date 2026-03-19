@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Lz4 < Meson
   description 'LZ4 is lossless compression algorithm, providing compression speed at 400 MB/s per core (0.16 Bytes/cycle).'
   homepage 'https://lz4.org/'
-  version '1.10.0-1'
+  version '1.10.0-2'
   license 'BSD-2 and GPL-2'
   compatibility 'all'
   source_url 'https://github.com/lz4/lz4.git'
@@ -11,13 +11,15 @@ class Lz4 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9669e8adb89378c650bcbe5d81d25e04bd2ad6703f322d68b05eb7e0fe7d8d0e',
-     armv7l: '9669e8adb89378c650bcbe5d81d25e04bd2ad6703f322d68b05eb7e0fe7d8d0e',
-       i686: '90a0e67a0f7fb1bdc016fb3ced6691d895d35b9d9d5ab2cac974c63c13cbf262',
-     x86_64: '1c82e13055a0150477a4fb27d8ede4a9e373cc1c610587dd23da971989dcfab6'
+    aarch64: '2c3cfc33448b4b1ce19536e07187b44eaa649e3f161a252957dc6fd511f3bee5',
+     armv7l: '2c3cfc33448b4b1ce19536e07187b44eaa649e3f161a252957dc6fd511f3bee5',
+       i686: '1c67990d04b5ac9d36331de00af4aa900bd0cb63c456e04adfe8641c1aaa9aa8',
+     x86_64: 'eb0777acb53c1e81e673e87648fdae53a0a05c5e463475e688e6633c27e5b195'
   })
 
   depends_on 'glibc' # R
+
+  meson_options '-Dprograms=true'
 
   meson_build_relative_dir 'build/meson'
 end

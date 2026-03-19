@@ -18,12 +18,12 @@ class Vim < Autotools
      x86_64: '2daa01b0aa494d2953dd4fc06dc2b378e0d836add2c2b8832e4a96970dacd7d5'
   })
 
-  depends_on 'acl' => :executable_only
-  depends_on 'glibc' => :executable_only
-  depends_on 'gpm' => :executable_only
-  depends_on 'libsodium' => :executable_only
-  depends_on 'ncurses' => :executable_only
-  depends_on 'vim_runtime' # L
+  depends_on 'acl' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'gpm' => :executable
+  depends_on 'libsodium' => :executable
+  depends_on 'ncurses' => :executable
+  depends_on 'vim_runtime' => :logical
 
   ignore_updater
 

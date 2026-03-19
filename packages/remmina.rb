@@ -19,7 +19,7 @@ class Remmina < CMake
   depends_on 'avahi' # L
   depends_on 'cairo' # R
   depends_on 'cups' # R
-  depends_on 'curl' => :executable_only
+  depends_on 'curl' => :executable
   depends_on 'freerdp' # R
   depends_on 'fuse3' # R
   depends_on 'gcc_lib' # R
@@ -28,20 +28,20 @@ class Remmina < CMake
   depends_on 'glibc' # R
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
-  depends_on 'json_glib' => :executable_only
-  depends_on 'libappindicator_gtk3' => :executable_only
-  depends_on 'libgcrypt' => :executable_only
+  depends_on 'json_glib' => :executable
+  depends_on 'libappindicator_gtk3' => :executable
+  depends_on 'libgcrypt' => :executable
   depends_on 'libsecret' # R
-  depends_on 'libsodium' => :executable_only
+  depends_on 'libsodium' => :executable
   depends_on 'libsoup' # R
-  depends_on 'libssh' => :executable_only
+  depends_on 'libssh' => :executable
   depends_on 'libvncserver' # R
-  depends_on 'openssl' => :executable_only
+  depends_on 'openssl' => :executable
   depends_on 'pango' # R
   depends_on 'python3' # R
   depends_on 'sommelier' => :logical
   depends_on 'spice_gtk' => :build
-  depends_on 'vte' => :executable_only
+  depends_on 'vte' => :executable
   depends_on 'wayland' # R
   depends_on 'webkit2gtk_4_1' # R
   depends_on 'xdg_utils' => :build

@@ -19,7 +19,7 @@ class Glib_stub < Meson
      x86_64: 'd98bea7dcc189f77a4445ffebe7c7f44daa4638d55ea75837eea9d64935420fa'
   })
 
-  depends_on 'elfutils' => :executable_only
+  depends_on 'elfutils' => :executable
   depends_on 'gcc_lib' # R
   depends_on 'glib' # R
   depends_on 'glibc' # R

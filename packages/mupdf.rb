@@ -19,15 +19,15 @@ class Mupdf < Package
   depends_on 'freeglut'
   depends_on 'freetype'
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' => :executable_only
+  depends_on 'glibc' => :executable
   depends_on 'jbigkit'
-  depends_on 'libglvnd' => :executable_only
+  depends_on 'libglvnd' => :executable
   depends_on 'libjpeg_turbo'
-  depends_on 'libx11' => :executable_only
-  depends_on 'libxext' => :executable_only
-  depends_on 'libxrandr' => :executable_only
+  depends_on 'libx11' => :executable
+  depends_on 'libxext' => :executable
+  depends_on 'libxrandr' => :executable
   depends_on 'openjpeg'
-  depends_on 'openssl' => :executable_only
+  depends_on 'openssl' => :executable
   depends_on 'sommelier' => :logical unless ARCH == 'i686'
 
   def self.build

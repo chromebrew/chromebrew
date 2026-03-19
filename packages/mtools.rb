@@ -16,7 +16,7 @@ class Mtools < Autotools
      x86_64: '649e44c6ae13ab3834149702d321a6f23c09abcb49c703a6bf36420e99e652ad'
   })
 
-  depends_on 'glibc' => :executable_only
+  depends_on 'glibc' => :executable
 
   autotools_configure_options '--without-x'
 end

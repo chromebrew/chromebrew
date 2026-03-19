@@ -17,9 +17,9 @@ class Mg < Autotools
      x86_64: 'f0c1b137bba90d5e9203b5f83b432aaccf6b8fdcaa20a976737829e24e78f0d9'
   })
 
-  depends_on 'glibc' => :executable_only
-  depends_on 'libbsd' => :executable_only
-  depends_on 'ncurses' => :executable_only
+  depends_on 'glibc' => :executable
+  depends_on 'libbsd' => :executable
+  depends_on 'ncurses' => :executable
 
   autotools_skip_configure
 

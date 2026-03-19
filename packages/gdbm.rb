@@ -19,8 +19,8 @@ class Gdbm < Package
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'ncurses' => :executable_only
-  depends_on 'readline' => :executable_only
+  depends_on 'ncurses' => :executable
+  depends_on 'readline' => :executable
 
   def self.build
     system "./configure \

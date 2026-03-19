@@ -17,9 +17,9 @@ class Xmlstarlet < Autotools
      x86_64: 'e6d96615719b3c47d0d6c558cd651dea02387af7baca0ab1cf8b22e8b6b6e221'
   })
 
-  depends_on 'glibc' => :executable_only
-  depends_on 'libxml2' => :executable_only
-  depends_on 'libxslt' => :executable_only
+  depends_on 'glibc' => :executable
+  depends_on 'libxml2' => :executable
+  depends_on 'libxslt' => :executable
 
   def self.patch
     system "sed -i 's, ATTRIBUTE_UNUSED,,g' src/xml_pyx.c"

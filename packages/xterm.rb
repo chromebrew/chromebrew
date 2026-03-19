@@ -16,23 +16,23 @@ class Xterm < Package
      x86_64: '70ee2c01f0528f6ac62972a38bab18a8f8b1ab3e7b1f18cce48c0e4879c9a11d'
   })
 
-  depends_on 'fontconfig' => :executable_only
-  depends_on 'freetype' => :executable_only
-  depends_on 'glibc' => :executable_only
-  depends_on 'harfbuzz' => :executable_only
-  depends_on 'libice' => :executable_only
-  depends_on 'libutempter' => :executable_only
-  depends_on 'libx11' => :executable_only
-  depends_on 'libxaw' => :executable_only
-  depends_on 'libxext' => :executable_only
-  depends_on 'libxft' => :executable_only
-  depends_on 'libxinerama' => :executable_only
-  depends_on 'libxmu' => :executable_only
-  depends_on 'libxpm' => :executable_only
-  depends_on 'libxt' => :executable_only
+  depends_on 'fontconfig' => :executable
+  depends_on 'freetype' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'harfbuzz' => :executable
+  depends_on 'libice' => :executable
+  depends_on 'libutempter' => :executable
+  depends_on 'libx11' => :executable
+  depends_on 'libxaw' => :executable
+  depends_on 'libxext' => :executable
+  depends_on 'libxft' => :executable
+  depends_on 'libxinerama' => :executable
+  depends_on 'libxmu' => :executable
+  depends_on 'libxpm' => :executable
+  depends_on 'libxt' => :executable
   depends_on 'luit' => :build
-  depends_on 'ncurses' => :executable_only
-  depends_on 'pcre' => :executable_only
+  depends_on 'ncurses' => :executable
+  depends_on 'pcre' => :executable
   depends_on 'sommelier' => :logical
 
   no_env_options

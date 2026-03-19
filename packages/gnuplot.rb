@@ -16,29 +16,29 @@ class Gnuplot < Autotools
      x86_64: '71bb3d83d27298efa8bfe43b333f3b0146632034dbfa037db7cf33b2f9f59509'
   })
 
-  depends_on 'at_spi2_core' => :executable_only
-  depends_on 'cairo' => :executable_only
-  depends_on 'gcc_lib' => :executable_only
-  depends_on 'gdk_pixbuf' => :executable_only
-  depends_on 'glib' => :executable_only
-  depends_on 'glibc' => :executable_only
-  depends_on 'gtk3' => :executable_only
-  depends_on 'harfbuzz' => :executable_only
-  depends_on 'libcerf' => :executable_only
-  depends_on 'libgd' => :executable_only
-  depends_on 'libwebp' => :executable_only
-  depends_on 'libx11' => :executable_only
+  depends_on 'at_spi2_core' => :executable
+  depends_on 'cairo' => :executable
+  depends_on 'gcc_lib' => :executable
+  depends_on 'gdk_pixbuf' => :executable
+  depends_on 'glib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'gtk3' => :executable
+  depends_on 'harfbuzz' => :executable
+  depends_on 'libcerf' => :executable
+  depends_on 'libgd' => :executable
+  depends_on 'libwebp' => :executable
+  depends_on 'libx11' => :executable
   depends_on 'libxrender'
   depends_on 'libxxf86vm'
-  depends_on 'lua' => :executable_only
-  depends_on 'ncurses' => :executable_only
-  depends_on 'pango' => :executable_only
-  depends_on 'qt5_base' => :executable_only
-  depends_on 'qt5_svg' => :executable_only
+  depends_on 'lua' => :executable
+  depends_on 'ncurses' => :executable
+  depends_on 'pango' => :executable
+  depends_on 'qt5_base' => :executable
+  depends_on 'qt5_svg' => :executable
   depends_on 'qt5_tools'
-  depends_on 'readline' => :executable_only
-  depends_on 'wxwidgets' => :executable_only
-  depends_on 'zlib' => :executable_only
+  depends_on 'readline' => :executable
+  depends_on 'wxwidgets' => :executable
+  depends_on 'zlib' => :executable
 
   autotools_configure_options "CPPFLAGS='-I#{CREW_PREFIX}/share/Qt-5/include/QtCore \
     -I#{CREW_LIB_PREFIX}/wx/include/gtk3-unicode-3.3'"

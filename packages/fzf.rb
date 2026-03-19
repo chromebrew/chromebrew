@@ -17,7 +17,7 @@ class Fzf < Package
      x86_64: 'd643e90174bf9d742a24db6da226de522e9466c407771aeb28f6071e9ca37b5a'
   })
 
-  depends_on 'glibc' => :executable_only
+  depends_on 'glibc' => :executable
   depends_on 'go' => :build
   depends_on 'tmux' # R - Needed for tmux integration
 

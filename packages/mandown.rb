@@ -20,8 +20,8 @@ class Mandown < Package
      x86_64: '0c7039702eb592970baec29f9730b695ee5e2adaa9b235e44d5cdafaab7ce5b5'
   })
 
-  depends_on 'gcc_lib' => :executable_only
-  depends_on 'glibc' => :executable_only
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
   depends_on 'rust' => :build
 
   def self.build

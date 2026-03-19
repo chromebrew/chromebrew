@@ -17,6 +17,6 @@ class Bison < Autotools
      x86_64: '4476aa49cf42b79a2fed31e77a7d1df7e11aebb3bf269d036c2666d2ab7e238a'
   })
 
-  depends_on 'gettext' => :executable_only
-  depends_on 'glibc' => :executable_only
+  depends_on 'gettext' => :executable
+  depends_on 'glibc' => :executable
 end
