@@ -16,7 +16,7 @@ class Coin < CMake
      x86_64: 'b9ddb60f1d10b0715b292cdee5d197a658ecf7290fa5fcb83c4932e9be1c5b84'
   })
 
-  depends_on 'boost'
+  depends_on 'boost' => :build
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
   depends_on 'libglvnd' => :library
