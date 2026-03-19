@@ -19,7 +19,7 @@ class Libgsf < Autotools
 
   depends_on 'bzip2' # R
   depends_on 'gcc_lib' # R
-  depends_on 'gdk_pixbuf' => :executable_only
+  depends_on 'gdk_pixbuf' => :executable
   depends_on 'glib' # R
   depends_on 'glibc' # R
   depends_on 'gtk_doc' => :build

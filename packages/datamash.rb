@@ -17,7 +17,7 @@ class Datamash < Package
      x86_64: '2ef1f4edaa2a041b70fc20c5e3f46576e9bd4b9ac6418d6a4702c756a5d6e088'
   })
 
-  depends_on 'glibc' => :executable_only
+  depends_on 'glibc' => :executable
 
   def self.build
     system "./configure #{CREW_CONFIGURE_OPTIONS}"

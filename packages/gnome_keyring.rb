@@ -20,14 +20,14 @@ class Gnome_keyring < Meson
   depends_on 'cairo' # R
   depends_on 'dconf' => :build
   depends_on 'docbook_xml' => :build
-  depends_on 'gcr_3' => :executable_only
+  depends_on 'gcr_3' => :executable
   depends_on 'gdk_pixbuf' # R
   depends_on 'glib' # R
   depends_on 'glibc' # R
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
   depends_on 'libcap' => :build
-  depends_on 'libcap_ng' => :executable_only
+  depends_on 'libcap_ng' => :executable
   depends_on 'libeconf' # R
   depends_on 'libgcrypt' # R
   depends_on 'libgpg_error' # R

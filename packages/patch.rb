@@ -17,8 +17,8 @@ class Patch < Autotools
      x86_64: 'b6805b38f3cb66882c6ba9d17297b811b625f71e69dec686adb1212f5656b6ea'
   })
 
-  depends_on 'attr' => :executable_only
-  depends_on 'glibc' => :executable_only
+  depends_on 'attr' => :executable
+  depends_on 'glibc' => :executable
 
   autotools_configure_options '--disable-year2038' unless ARCH.include?('x86_64')
 

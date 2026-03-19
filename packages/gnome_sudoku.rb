@@ -17,22 +17,22 @@ class Gnome_sudoku < Meson
   })
 
   depends_on 'blueprint_compiler' => :build
-  depends_on 'cairo' => :executable_only
+  depends_on 'cairo' => :executable
   depends_on 'clutter_gtk' => :build
   depends_on 'desktop_file_utils' => :build
-  depends_on 'gcc_lib' => :executable_only
-  depends_on 'glib' => :executable_only
-  depends_on 'glibc' => :executable_only
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glib' => :executable
+  depends_on 'glibc' => :executable
   depends_on 'gsound' => :build
-  depends_on 'gtk4' => :executable_only
-  depends_on 'harfbuzz' => :executable_only
-  depends_on 'json_glib' => :executable_only
-  depends_on 'libadwaita' => :executable_only
-  depends_on 'libgee' => :executable_only
+  depends_on 'gtk4' => :executable
+  depends_on 'harfbuzz' => :executable
+  depends_on 'json_glib' => :executable
+  depends_on 'libadwaita' => :executable
+  depends_on 'libgee' => :executable
   depends_on 'librsvg' => :build
-  depends_on 'pango' => :executable_only
+  depends_on 'pango' => :executable
   depends_on 'py3_itstool' => :build
-  depends_on 'qqwing' => :executable_only
+  depends_on 'qqwing' => :executable
 
   gnome
 end

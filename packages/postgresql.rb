@@ -23,26 +23,26 @@ class Postgresql < Meson
   depends_on 'fop' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'icu4c' => :executable_only
+  depends_on 'icu4c' => :executable
   depends_on 'krb5' # R
   depends_on 'libcyrussasl' => :build
-  depends_on 'liburing' => :executable_only
+  depends_on 'liburing' => :executable
   depends_on 'libxml2' # R
   depends_on 'libxslt' # R
-  depends_on 'linux_pam' => :executable_only
+  depends_on 'linux_pam' => :executable
   depends_on 'llvm_dev' => :build
-  depends_on 'lz4' => :executable_only
-  depends_on 'numactl' => :executable_only
+  depends_on 'lz4' => :executable
+  depends_on 'numactl' => :executable
   depends_on 'openldap' # R
   depends_on 'openssl' # R
   depends_on 'pandoc' => :build
   depends_on 'perl' # R
   depends_on 'python3' # R
-  depends_on 'readline' => :executable_only
+  depends_on 'readline' => :executable
   depends_on 'tcl' # R
   depends_on 'wget2' # R
   depends_on 'zlib' # R
-  depends_on 'zstd' => :executable_only
+  depends_on 'zstd' => :executable
 
   print_source_bashrc
 

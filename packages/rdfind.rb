@@ -22,10 +22,10 @@ class Rdfind < Autotools
   })
 
   depends_on 'autoconf_archive' => :build
-  depends_on 'gcc_lib' => :executable_only
-  depends_on 'glibc' => :executable_only
-  depends_on 'nettle' => :executable_only
-  depends_on 'xxhash' => :executable_only
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'nettle' => :executable
+  depends_on 'xxhash' => :executable
 
   def self.patch
     system "sed -i '/<vector>/a #include <limits>' rdfind.cc"

@@ -17,7 +17,7 @@ class Gzip < Autotools
      x86_64: '5b2d9a48456d3aca4c07f778d4562ce86afdb8cf37eb333e1a1340c180b399b2'
   })
 
-  depends_on 'glibc' => :executable_only
+  depends_on 'glibc' => :executable
 
   run_tests
 end

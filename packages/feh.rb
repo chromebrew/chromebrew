@@ -17,18 +17,18 @@ class Feh < Package
   })
 
   depends_on 'curl'
-  depends_on 'curl' => :executable_only
-  depends_on 'glibc' => :executable_only
+  depends_on 'curl' => :executable
+  depends_on 'glibc' => :executable
   depends_on 'gtk3'
   depends_on 'imlib2'
-  depends_on 'imlib2' => :executable_only
+  depends_on 'imlib2' => :executable
   depends_on 'libexif'
   depends_on 'libpng'
-  depends_on 'libpng' => :executable_only
+  depends_on 'libpng' => :executable
   depends_on 'libx11'
-  depends_on 'libx11' => :executable_only
+  depends_on 'libx11' => :executable
   depends_on 'libxinerama'
-  depends_on 'libxinerama' => :executable_only
+  depends_on 'libxinerama' => :executable
   depends_on 'sommelier' => :logical
 
   def self.build

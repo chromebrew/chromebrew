@@ -18,11 +18,11 @@ class Netpbm < Package
   })
 
   depends_on 'glibc' # R
-  depends_on 'libjpeg_turbo' => :executable_only
-  depends_on 'libpng' => :executable_only
-  depends_on 'libtiff' => :executable_only
-  depends_on 'libxml2' => :executable_only
-  depends_on 'zlib' => :executable_only
+  depends_on 'libjpeg_turbo' => :executable
+  depends_on 'libpng' => :executable
+  depends_on 'libtiff' => :executable
+  depends_on 'libxml2' => :executable
+  depends_on 'zlib' => :executable
 
   def self.patch
     # Change installation directories.

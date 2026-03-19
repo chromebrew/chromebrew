@@ -17,8 +17,8 @@ class Difftastic < Package
      x86_64: 'b8cd8832d04cf84b0afd6e1f461604587dd3fc30bb47568523d0b5025f6f3b94'
   })
 
-  depends_on 'gcc_lib' => :executable_only
-  depends_on 'glibc' => :executable_only
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
   depends_on 'rust' => :build
 
   def self.install

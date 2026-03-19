@@ -17,7 +17,7 @@ class Make < Package
      x86_64: '2ba3b3be1433ecdce1e52fb023a91a64b11d429ca5e119264c20972e9d1befd7'
   })
 
-  depends_on 'glibc' => :executable_only
+  depends_on 'glibc' => :executable
 
   def self.build
     system "./configure #{CREW_CONFIGURE_OPTIONS} \

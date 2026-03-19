@@ -17,9 +17,9 @@ class Tack < Package
      x86_64: 'c45d3013d0874dd8d6203e4b3871f94b1cc84beb33c5576d3a8d1840e8ccd9f5'
   })
 
-  depends_on 'glibc' => :executable_only
+  depends_on 'glibc' => :executable
   depends_on 'ncurses'
-  depends_on 'ncurses' => :executable_only
+  depends_on 'ncurses' => :executable
 
   def self.build
     system './configure',

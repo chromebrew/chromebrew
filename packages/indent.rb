@@ -17,7 +17,7 @@ class Indent < Autotools
      x86_64: '3bde20cd3215760975bdf8016c53cbc279fe19b8a270b4f204b5d91270941c9b'
   })
 
-  depends_on 'glibc' => :executable_only
+  depends_on 'glibc' => :executable
 
   run_tests
 end

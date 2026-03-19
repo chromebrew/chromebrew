@@ -17,8 +17,8 @@ class Deno < RUST
      x86_64: '35ee776778c2034b36cbf089a914c0096f4f049610c632d52c99584c70fae4dc'
   })
 
-  depends_on 'gcc_lib' => :executable_only
-  depends_on 'glibc' => :executable_only
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
   depends_on 'llvm_dev' => :build
   depends_on 'protobuf' => :build
 

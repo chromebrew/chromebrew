@@ -19,10 +19,10 @@ class Conmon < Package
      x86_64: '25b2564b8f093ae5a5af02600e112983fe9fd0ac73f09c87da0a9a74d49884b2'
   })
 
-  depends_on 'glib' => :executable_only
-  depends_on 'glibc' => :executable_only
+  depends_on 'glib' => :executable
+  depends_on 'glibc' => :executable
   depends_on 'go_md2man' => :build
-  depends_on 'libseccomp' => :executable_only
+  depends_on 'libseccomp' => :executable
   depends_on 'runc' # L
 
   def self.patch

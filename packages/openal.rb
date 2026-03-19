@@ -22,7 +22,7 @@ class Openal < CMake
   depends_on 'glibc' # R
   depends_on 'jack'
   depends_on 'libmysofa'
-  depends_on 'libmysofa' => :executable_only
+  depends_on 'libmysofa' => :executable
   depends_on 'libsndfile'
   depends_on 'pipewire'
   depends_on 'portaudio'

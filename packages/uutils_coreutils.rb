@@ -20,8 +20,8 @@ class Uutils_coreutils < RUST
   })
 
   depends_on 'acl' => :build
-  depends_on 'gcc_lib' => :executable_only
-  depends_on 'glibc' => :executable_only
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
   depends_on 'llvm_dev' => :build
   depends_on 'rust' => :build
   depends_on 'sphinx' => :build

@@ -14,7 +14,7 @@ class Delve < Package
      x86_64: 'dda2b038b2dcde6884f3633548b9b5de230645fb5a1fa859ab9cdaa5ad34c599'
   })
 
-  depends_on 'glibc' => :executable_only
+  depends_on 'glibc' => :executable
   depends_on 'go' => :build
 
   no_source_build

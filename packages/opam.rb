@@ -18,11 +18,11 @@ class Opam < Autotools
   })
 
   depends_on 'bubblewrap' # L
-  depends_on 'gcc_lib' => :executable_only
-  depends_on 'glibc' => :executable_only
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
   depends_on 'ocaml' # R
   depends_on 'rsync' => :build
-  depends_on 'zstd' => :executable_only
+  depends_on 'zstd' => :executable
 
   @OPAMROOT = "#{CREW_PREFIX}/share/opam"
 

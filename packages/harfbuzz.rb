@@ -22,8 +22,8 @@ class Harfbuzz < Meson
 
   depends_on 'brotli' # R
   depends_on 'bzip2' # R
-  depends_on 'cairo' => :executable_only
-  depends_on 'chafa' => :executable_only
+  depends_on 'cairo' => :executable
+  depends_on 'chafa' => :executable
   depends_on 'expat' # R
   # depends_on 'fontconfig' # This pulls in freetype.
   # depends_on 'freetype' # R harfbuzz provides this.

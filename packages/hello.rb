@@ -17,7 +17,7 @@ class Hello < Package
      x86_64: '432d72ce76e2224d5af08ddaa323b577dd625cfac7feefe18866c9afdf3b1190'
   })
 
-  depends_on 'glibc' => :executable_only
+  depends_on 'glibc' => :executable
 
   def self.build
     system "./configure #{CREW_CONFIGURE_OPTIONS}"

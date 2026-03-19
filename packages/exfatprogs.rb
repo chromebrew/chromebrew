@@ -17,5 +17,5 @@ class Exfatprogs < Autotools
      x86_64: '2d254bcf1512abf0fb922f225ce0bd7a014741de3036cc88fd870105ccd4d225'
   })
 
-  depends_on 'glibc' => :executable_only
+  depends_on 'glibc' => :executable
 end

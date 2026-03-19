@@ -20,7 +20,7 @@ class Tree_sitter < Package
      x86_64: '4d07cb00080081ec554ae0e367458a00cb378d0446bc60c6d827e7084d306bda'
   })
 
-  depends_on 'gcc_lib' => :executable_only
+  depends_on 'gcc_lib' => :executable
   depends_on 'git' => :build
   depends_on 'glibc' # R
   depends_on 'llvm' => :build

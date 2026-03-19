@@ -23,15 +23,15 @@ class Foot < Meson
     FileUtils.cp('threads.h', 'tests')
   end
 
-  depends_on 'fcft' => :executable_only
-  depends_on 'fontconfig' => :executable_only
-  depends_on 'glibc' => :executable_only
-  depends_on 'harfbuzz' => :executable_only
-  depends_on 'libxkbcommon' => :executable_only
-  depends_on 'pixman' => :executable_only
+  depends_on 'fcft' => :executable
+  depends_on 'fontconfig' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'harfbuzz' => :executable
+  depends_on 'libxkbcommon' => :executable
+  depends_on 'pixman' => :executable
   depends_on 'tllist' => :build
-  depends_on 'utf8proc' => :executable_only
-  depends_on 'wayland' => :executable_only
+  depends_on 'utf8proc' => :executable
+  depends_on 'wayland' => :executable
   depends_on 'wayland_protocols' => :build
 
   # This avoids conflicts with ncurses.
