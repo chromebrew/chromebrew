@@ -21,7 +21,7 @@ class Weston < Meson
   depends_on 'dbus' => :build
   depends_on 'eudev' # R
   depends_on 'fontconfig' # R
-  depends_on 'gcc_lib' => :executable_only
+  depends_on 'gcc_lib' => :executable
   depends_on 'glib' # R
   depends_on 'glibc' # R
   depends_on 'glslang' => :build

@@ -17,8 +17,8 @@ class Enscript < Package
      x86_64: '638519de1bdfc08816d511f8ad468213d78293a77a26295630a0266b664582c9'
   })
 
-  depends_on 'flex' => :executable_only
-  depends_on 'glibc' => :executable_only
+  depends_on 'flex' => :executable
+  depends_on 'glibc' => :executable
   depends_on 'libpth'
 
   def self.build

@@ -35,7 +35,7 @@ class Krita < CMake
   depends_on 'kf5_config' # R
   depends_on 'kf5_coreaddons' # R
   depends_on 'kf5_crash'
-  depends_on 'kf5_crash' => :executable_only
+  depends_on 'kf5_crash' => :executable
   depends_on 'kf5_guiaddons' # R
   depends_on 'kf5_i18n' # R
   depends_on 'kf5_itemmodels'

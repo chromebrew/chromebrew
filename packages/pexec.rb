@@ -17,7 +17,7 @@ class Pexec < Package
      x86_64: '15696468ef1b797e0c77cd0a1ec91766d3890072739514772cdf355124f3a1d3'
   })
 
-  depends_on 'glibc' => :executable_only
+  depends_on 'glibc' => :executable
   depends_on 'groff'
   depends_on 'help2man'
   depends_on 'texinfo'

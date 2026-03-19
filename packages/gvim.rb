@@ -17,25 +17,25 @@ class Gvim < Autotools
      x86_64: '484bce9660488dd37593ddfc51c857e7c00e35381e5408ad6e3f59f96ebfb412'
   })
 
-  depends_on 'acl' => :executable_only
-  depends_on 'cairo' => :executable_only
+  depends_on 'acl' => :executable
+  depends_on 'cairo' => :executable
   depends_on 'gcc_lib' # R
-  depends_on 'gdk_pixbuf' => :executable_only
-  depends_on 'glib' => :executable_only
-  depends_on 'glibc' => :executable_only
-  depends_on 'gpm' => :executable_only
-  depends_on 'gtk3' => :executable_only
+  depends_on 'gdk_pixbuf' => :executable
+  depends_on 'glib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'gpm' => :executable
+  depends_on 'gtk3' => :executable
   depends_on 'harfbuzz'
-  depends_on 'harfbuzz' => :executable_only
-  depends_on 'libice' => :executable_only
-  depends_on 'libsm' => :executable_only
-  depends_on 'libsodium' => :executable_only
-  depends_on 'libx11' => :executable_only
-  depends_on 'libxt' => :executable_only
-  depends_on 'ncurses' => :executable_only
-  depends_on 'pango' => :executable_only
+  depends_on 'harfbuzz' => :executable
+  depends_on 'libice' => :executable
+  depends_on 'libsm' => :executable
+  depends_on 'libsodium' => :executable
+  depends_on 'libx11' => :executable
+  depends_on 'libxt' => :executable
+  depends_on 'ncurses' => :executable
+  depends_on 'pango' => :executable
   depends_on 'vim_runtime' # L
-  depends_on 'wayland' => :executable_only
+  depends_on 'wayland' => :executable
 
   ignore_updater
 

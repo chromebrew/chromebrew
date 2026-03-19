@@ -17,11 +17,11 @@ class Nginx < Package
      x86_64: '4ffae7163978bb7a9a4067e0257c7e743d597b7021ab948c84d452596e76d4b0'
   })
 
-  depends_on 'glibc' => :executable_only
-  depends_on 'libxcrypt' => :executable_only
+  depends_on 'glibc' => :executable
+  depends_on 'libxcrypt' => :executable
   depends_on 'pcre'
-  depends_on 'pcre2' => :executable_only
-  depends_on 'zlib' => :executable_only
+  depends_on 'pcre2' => :executable
+  depends_on 'zlib' => :executable
 
   print_source_bashrc
 

@@ -19,12 +19,12 @@ class Fossil < Autotools
 
   # Error: system SQLite library omits required build option -DSQLITE_ENABLE_DBSTAT_VTAB
   depends_on 'fuse2'
-  depends_on 'fuse2' => :executable_only
-  depends_on 'glibc' => :executable_only
-  depends_on 'openssl' => :executable_only
+  depends_on 'fuse2' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'openssl' => :executable
   # depends_on 'sqlite'
   depends_on 'tcl' => :build
-  depends_on 'zlib' => :executable_only
+  depends_on 'zlib' => :executable
 
   # Fossil uses autosetup, which behaves enough like autotools that if we only pass certain options,
   # we can still use the rest of the autotools buildsystem.

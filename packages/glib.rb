@@ -17,7 +17,7 @@ class Glib < Meson
      x86_64: '8010ed726613dfd4c70f3af030e6ea42a701abeb232081555d35e2a8ceda95f9'
   })
 
-  depends_on 'elfutils' => :executable_only
+  depends_on 'elfutils' => :executable
   depends_on 'gcc_lib' # R
   depends_on 'glib_stub' => :build
   depends_on 'gobject_introspection' => :build unless ARCH == 'i686' # L

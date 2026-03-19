@@ -17,8 +17,8 @@ class Multitail < CMake
      x86_64: 'eb31ec5a22057605bfc74da263eb0bff38c84f20b73e9d1092fc3c2b420bf781'
   })
 
-  depends_on 'glibc' => :executable_only
-  depends_on 'ncurses' => :executable_only
+  depends_on 'glibc' => :executable
+  depends_on 'ncurses' => :executable
 
   cmake_options "-DCMAKE_C_FLAGS='-I#{CREW_PREFIX}/include/ncursesw'"
 end

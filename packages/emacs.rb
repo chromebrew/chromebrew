@@ -17,22 +17,22 @@ class Emacs < Package
      x86_64: '54767b9f97dae52ee3b6ad63494a1a02b7d9c8f539ad15dc91ef49a4f939c2eb'
   })
 
-  depends_on 'acl' => :executable_only
-  depends_on 'alsa_lib' => :executable_only
-  depends_on 'dbus' => :executable_only
+  depends_on 'acl' => :executable
+  depends_on 'alsa_lib' => :executable
+  depends_on 'dbus' => :executable
   depends_on 'glibc' # R
-  depends_on 'glibc' => :executable_only
-  depends_on 'gmp' => :executable_only
-  depends_on 'gnutls' => :executable_only
-  depends_on 'gpm' => :executable_only
-  depends_on 'jansson' => :executable_only
+  depends_on 'glibc' => :executable
+  depends_on 'gmp' => :executable
+  depends_on 'gnutls' => :executable
+  depends_on 'gpm' => :executable
+  depends_on 'jansson' => :executable
   depends_on 'lcms'
-  depends_on 'lcms' => :executable_only
+  depends_on 'lcms' => :executable
   depends_on 'libjpeg_turbo'
   depends_on 'libxml2' # R
-  depends_on 'ncurses' => :executable_only
-  depends_on 'sqlite' => :executable_only
-  depends_on 'zlib' => :executable_only
+  depends_on 'ncurses' => :executable
+  depends_on 'sqlite' => :executable
+  depends_on 'zlib' => :executable
 
   def self.build
     system "./configure \

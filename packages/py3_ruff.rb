@@ -16,11 +16,11 @@ class Py3_ruff < Pip
      x86_64: 'ac7322e9a4770b67056b92e6334afc05e2f94c2b21f208c3301ca8d7a8005a7f'
   })
 
-  depends_on 'gcc_lib' => :executable_only
-  depends_on 'glibc' => :executable_only
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
   depends_on 'llvm_dev' => :build
   depends_on 'py3_maturin' => :build
-  depends_on 'python3' => :executable_only
+  depends_on 'python3' => :executable
   depends_on 'rust' => :build
 
   no_env_options

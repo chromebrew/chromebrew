@@ -17,9 +17,9 @@ class Gnuchess < Package
      x86_64: 'fcf26dedf74b36d4b470b89f6accacafb88675b85db8e76862c179560ef7163d'
   })
 
-  depends_on 'gcc_lib' => :executable_only
-  depends_on 'glibc' => :executable_only
-  depends_on 'readline' => :executable_only
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'readline' => :executable
 
   def self.build
     system "#{CREW_ENV_OPTIONS} ./configure #{CREW_CONFIGURE_OPTIONS} \

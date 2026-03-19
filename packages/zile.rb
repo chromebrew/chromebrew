@@ -17,12 +17,12 @@ class Zile < Package
      x86_64: '7e015099074a3376dbea22fa603fc394cafbb03f2116c1c8f523b09c9a25bb16'
   })
 
-  depends_on 'acl' => :executable_only
+  depends_on 'acl' => :executable
   depends_on 'bdwgc'
-  depends_on 'bdwgc' => :executable_only
-  depends_on 'glibc' => :executable_only
+  depends_on 'bdwgc' => :executable
+  depends_on 'glibc' => :executable
   depends_on 'help2man' => :build
-  depends_on 'ncurses' => :executable_only
+  depends_on 'ncurses' => :executable
 
   def self.build
     system './configure',

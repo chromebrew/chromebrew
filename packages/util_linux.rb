@@ -18,19 +18,19 @@ class Util_linux < Meson
   })
 
   depends_on 'eudev_header' => :build if ARCH == 'x86_64' # (for libudev.h)
-  depends_on 'filecmd' => :executable_only
-  depends_on 'gcc_lib' => :executable_only
+  depends_on 'filecmd' => :executable
+  depends_on 'gcc_lib' => :executable
   depends_on 'glibc' # R
-  depends_on 'libcap_ng' => :executable_only
+  depends_on 'libcap_ng' => :executable
   depends_on 'libeconf' # R
-  depends_on 'libxcrypt' => :executable_only
+  depends_on 'libxcrypt' => :executable
   depends_on 'linux_pam' # R
-  depends_on 'ncurses' => :executable_only
+  depends_on 'ncurses' => :executable
   depends_on 'pcre2' => :build
-  depends_on 'readline' => :executable_only
+  depends_on 'readline' => :executable
   depends_on 'ruby_asciidoctor' => :build
   depends_on 'sqlite' # R
-  depends_on 'zlib' => :executable_only
+  depends_on 'zlib' => :executable
 
   conflicts_ok
 

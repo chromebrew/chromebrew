@@ -17,7 +17,7 @@ class Go_fetch < Package
      x86_64: '01c299923ff02607bce592d382dc3a1539cd37c36fee0524ca80ff2be4bc41a5'
   })
 
-  depends_on 'glibc' => :executable_only
+  depends_on 'glibc' => :executable
   depends_on 'go' => :build
 
   def self.build

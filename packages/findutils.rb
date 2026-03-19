@@ -18,7 +18,7 @@ class Findutils < Autotools
   })
 
   depends_on 'glibc' # R
-  depends_on 'glibc' => :executable_only
+  depends_on 'glibc' => :executable
   depends_on 'python3' => :build
 
   autotools_configure_options "--without-selinux #{'--disable-year2038' unless ARCH.eql?('x86_64')}"

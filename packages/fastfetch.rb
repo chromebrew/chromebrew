@@ -21,9 +21,9 @@ class Fastfetch < CMake
 
   depends_on 'chafa' => :build
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' => :executable_only
+  depends_on 'glibc' => :executable
   depends_on 'sqlite' => :build
-  depends_on 'yyjson' => :executable_only
+  depends_on 'yyjson' => :executable
 
   cmake_options "-DENABLE_SYSTEM_YYJSON=ON \
     -DINSTALL_LICENSE=OFF"

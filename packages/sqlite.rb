@@ -19,8 +19,8 @@ class Sqlite < Autotools
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'libedit' => :executable_only
-  depends_on 'ncurses' => :executable_only
+  depends_on 'libedit' => :executable
+  depends_on 'ncurses' => :executable
   depends_on 'readline' => :build
   depends_on 'zlib' # R
 

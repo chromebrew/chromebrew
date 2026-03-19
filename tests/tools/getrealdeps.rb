@@ -1,22 +1,27 @@
 require 'minitest/autorun'
+# Enables parallel (multithreaded) execution for all tests.
+require 'minitest/hell'
 require_relative '../../lib/const'
 require_relative '../../lib/package'
 require_relative '../../lib/package_utils'
 require_relative '../../lib/buildsystems/pip'
 require_relative '../../tools/getrealdeps'
 
-def test_wrapper(input_file, expected_pkg_file, deps, name: 'example', pkg_class: Package)
+def test_wrapper(input_file, expected_pkg_file, deps, label = 'library', name: 'example', pkg_class: Package)
+  puts "🧪 #{self.name}".lightpurple
+  # Use for debugging if needed:
+  # puts "input_file: #{input_file}, expected_pkg_file: #{expected_pkg_file}, deps: #{deps}, label: #{label}, name: #{name}, pkg_class: #{pkg_class}"
   # Create the Package (or superclass) object, assigning it the relevant values.
   pkg = Class.new(pkg_class)
   pkg.name = name
 
   # Create the temporary package file, write the content to it, and rewind the stream.
-  pkg_file = Tempfile.create
+  pkg_file = Tempfile.create(self.name)
   pkg_file.puts input_file
   pkg_file.rewind
 
   # Write the dependencies to the temporary package file using the created object.
-  write_deps(pkg_file.path, deps, pkg)
+  write_deps(pkg_file.path, deps, pkg, label)
 
   # Close the temporary package file.
   pkg_file.close
@@ -28,13 +33,14 @@ def test_wrapper(input_file, expected_pkg_file, deps, name: 'example', pkg_class
   File.unlink(pkg_file.path)
 
   # Remove the file copied to CREW_LOCAL_REPO_ROOT/packages, as to not leave any residue.
-  File.unlink("#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg}.rb") unless FileUtils.identical?("#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg}.rb", File.join(CREW_PACKAGES_PATH, "#{pkg}.rb"))
-
+  File.unlink("#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg}.rb") if File.file?("#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg}.rb") && !FileUtils.identical?("#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg}.rb", File.join(CREW_PACKAGES_PATH, "#{pkg}.rb"))
   # Test that the expected package file and the actual package file are the same.
   assert_equal(expected_pkg_file, actual_pkg_file)
 end
 
 class GetRealDepsTest < Minitest::Test
+  make_my_diffs_pretty!
+
   def test_add_single_dependency_to_empty
     deps = ['libcanberra']
     input_file = <<~EOF
@@ -46,7 +52,7 @@ class GetRealDepsTest < Minitest::Test
       class Example < Package
         binary_sha256({})
 
-        depends_on 'libcanberra' # R
+        depends_on 'libcanberra' => :library
       end
     EOF
 
@@ -68,7 +74,7 @@ class GetRealDepsTest < Minitest::Test
         binary_sha256({})
 
         depends_on 'a2png'
-        depends_on 'banner' # R
+        depends_on 'banner' => :library
         depends_on 'lzlib'
       end
     EOF
@@ -92,8 +98,8 @@ class GetRealDepsTest < Minitest::Test
         binary_sha256({})
 
         depends_on 'a2png'
-        depends_on 'banner' # R
-        depends_on 'libcanberra' # R
+        depends_on 'banner' => :library
+        depends_on 'libcanberra' => :library
         depends_on 'libmaxminddb'
         depends_on 'lzlib'
       end
@@ -118,7 +124,7 @@ class GetRealDepsTest < Minitest::Test
         binary_sha256({})
 
         depends_on 'a2png'
-        depends_on 'json_c' # R
+        depends_on 'json_c' => :library
         depends_on 'lzlib'
       end
     EOF
@@ -126,8 +132,8 @@ class GetRealDepsTest < Minitest::Test
     test_wrapper(input_file, expected_pkg_file, deps)
   end
 
-  def test_add_special_dependency_to_empty
-    deps = []
+  def test_add_logical_dependency_to_empty
+    deps = ['python3']
     input_file = <<~EOF
       class Example < Pip
         binary_sha256({})
@@ -137,12 +143,12 @@ class GetRealDepsTest < Minitest::Test
       class Example < Pip
         binary_sha256({})
 
-        depends_on 'python3' # R
+        depends_on 'python3' => :logical
       end
     EOF
     pkg_class = Pip
 
-    test_wrapper(input_file, expected_pkg_file, deps, pkg_class: pkg_class)
+    test_wrapper(input_file, expected_pkg_file, deps, 'logical', pkg_class: pkg_class)
   end
 
   def test_simple_dependency_exception
@@ -175,7 +181,7 @@ class GetRealDepsTest < Minitest::Test
       class Llvm21_build < Package
         binary_sha256({})
 
-        depends_on 'asciinema' # R
+        depends_on 'asciinema' => :library
         depends_on 'glm'
       end
     EOF
@@ -197,7 +203,7 @@ class GetRealDepsTest < Minitest::Test
       class Example < Package
         binary_sha256({})
 
-        depends_on 'libnftnl'
+        depends_on 'libnftnl' => :library
       end
     EOF
 
@@ -211,30 +217,30 @@ class GetRealDepsTest < Minitest::Test
         binary_sha256({})
 
         depends_on 'glm'
-        depends_on 'libpng' # R
+        depends_on 'libpng' => :library
       end
     EOF
     expected_pkg_file = <<~EOF
       class Example < Package
         binary_sha256({})
 
-        depends_on 'abcde' # R
+        depends_on 'abcde' => :library
         depends_on 'glm'
-        depends_on 'libpng' # R
+        depends_on 'libpng' => :library
       end
     EOF
 
     test_wrapper(input_file, expected_pkg_file, deps)
   end
 
-  def test_add_special_duplicate_dependency
+  def test_add_logical_duplicate_dependency
     deps = ['python3']
     input_file = <<~EOF
       class Example < Package
         binary_sha256({})
 
         depends_on 'libnftnl'
-        depends_on 'python3' # R
+        depends_on 'python3' => :logical
       end
     EOF
     expected_pkg_file = <<~EOF
@@ -242,21 +248,22 @@ class GetRealDepsTest < Minitest::Test
         binary_sha256({})
 
         depends_on 'libnftnl'
-        depends_on 'python3' # R
+        depends_on 'python3' => :logical
       end
     EOF
     pkg_class = Pip
 
-    test_wrapper(input_file, expected_pkg_file, deps, pkg_class: pkg_class)
+    test_wrapper(input_file, expected_pkg_file, deps, 'logical', pkg_class: pkg_class)
   end
 
   def test_remove_runtime_dependency
+    skip 'Removing dependencies currently disabled.'
     deps = ['libspng']
     input_file = <<~EOF
       class Example < Package
         binary_sha256({})
 
-        depends_on 'qt5_x11extras' # R
+        depends_on 'qt5_x11extras' => :library
         depends_on 'libmatroska'
       end
     EOF
@@ -265,7 +272,7 @@ class GetRealDepsTest < Minitest::Test
         binary_sha256({})
 
         depends_on 'libmatroska'
-        depends_on 'libspng' # R
+        depends_on 'libspng' => :library
       end
     EOF
 
@@ -273,14 +280,15 @@ class GetRealDepsTest < Minitest::Test
   end
 
   def test_remove_privileged_dependency
+    skip 'Removing dependencies currently disabled.'
     deps = ['libspng']
     input_file = <<~EOF
       class Example < Package
         binary_sha256({})
 
-        depends_on 'haveged' # R
+        depends_on 'haveged' => :library
         depends_on 'libmms'
-        depends_on 'ruby' # R
+        depends_on 'ruby' => :library
       end
     EOF
     expected_pkg_file = <<~EOF
@@ -288,8 +296,8 @@ class GetRealDepsTest < Minitest::Test
         binary_sha256({})
 
         depends_on 'libmms'
-        depends_on 'libspng' # R
-        depends_on 'ruby' # R
+        depends_on 'libspng' => :library
+        depends_on 'ruby' => :library
       end
     EOF
 
@@ -311,7 +319,7 @@ class GetRealDepsTest < Minitest::Test
         binary_sha256({})
 
         depends_on 'libmatroska'
-        depends_on 'libspng' # R
+        depends_on 'libspng' => :library
         depends_on 'ninja' => :build
       end
     EOF

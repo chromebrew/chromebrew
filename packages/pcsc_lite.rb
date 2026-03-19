@@ -17,10 +17,10 @@ class Pcsc_lite < Meson
   })
 
   depends_on 'elogind'
-  depends_on 'eudev' => :executable_only
-  depends_on 'glib' => :executable_only
+  depends_on 'eudev' => :executable
+  depends_on 'glib' => :executable
   depends_on 'glibc' # R
-  depends_on 'polkit' => :executable_only
+  depends_on 'polkit' => :executable
 
   def self.patch
     system "for i in \$(cat debian/patches/series); do patch -Np1 -i debian/patches/\${i}; done"

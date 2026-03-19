@@ -17,7 +17,7 @@ class Rush < Autotools
      x86_64: 'd6c610c443b41d2a726edf74afbb628ecc9a4248cdf2405f68d00c0091bc44f9'
   })
 
-  depends_on 'glibc' => :executable_only
+  depends_on 'glibc' => :executable
 
   def self.patch
     # The aclocal version is hardcoded.

@@ -19,9 +19,9 @@ class Bc < Autotools
 
   depends_on 'ed' => :build
   depends_on 'flex'
-  depends_on 'ncurses' => :executable_only
+  depends_on 'ncurses' => :executable
   depends_on 'readline'
-  depends_on 'readline' => :executable_only
+  depends_on 'readline' => :executable
   depends_on 'texinfo' => :build
 
   autotools_configure_options '--with-readline'
