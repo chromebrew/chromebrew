@@ -15,16 +15,16 @@ class Cargo_c < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a6a2ac5bf372a64530f61c0c5998f80bbafdec8c9caa5c900b697314499a83e6',
-     armv7l: 'a6a2ac5bf372a64530f61c0c5998f80bbafdec8c9caa5c900b697314499a83e6',
-       i686: '62368f476dbe177012e1208625f5f582294ed7edb40fb8e0c4171dd5e698f972',
-     x86_64: 'fd535c8b73c0afc1a18dad72899defef139bb97bbb5227db841fb5429259e8c6'
+    aarch64: 'f3237d2cf60838ea8f610d98b3a7ff4845beb6905760dfade72bba529a3fc6cc',
+     armv7l: 'f3237d2cf60838ea8f610d98b3a7ff4845beb6905760dfade72bba529a3fc6cc',
+       i686: '3bd2220487606febf676b6b50c4ea841eda3570b57316a6cdab628eb4e4b7dbf',
+     x86_64: '8ec826659ecce5e0b7bcff5777cff4a4447090bcc9a594c5345ec0e52b7d52ef'
   })
 
-  depends_on 'curl' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'openssl' # R
+  depends_on 'curl' => :executable
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'openssl' => :executable
   depends_on 'rust' => :build
-  depends_on 'zlib' # R
+  depends_on 'zlib' => :executable
 end
