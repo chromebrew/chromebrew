@@ -11,22 +11,24 @@ class Ettercap < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e777dff6d81b611460dfaded82b8091b38e091c2feb5056536121535f86f045f',
-     armv7l: 'e777dff6d81b611460dfaded82b8091b38e091c2feb5056536121535f86f045f',
-       i686: 'd7c1019cc15151b200797f88d915f0877881c32408ae89efb7f4c304f137438c',
-     x86_64: 'e24fe09a30a95396459a131d4e8e90965551572110318f8b4708789ebebba209'
+    aarch64: '047e6e2bc4396bbf63e561650669259bdd157f58e88a565a55e730096e66d460',
+     armv7l: '047e6e2bc4396bbf63e561650669259bdd157f58e88a565a55e730096e66d460',
+       i686: '25b62a9151348f0e843961ce7df04869977ec56b4deab772a5d81d2dffab76bf',
+     x86_64: 'c9841dbdf5f864843d7b6ed513e8776c072973e8698944f853ceae07643f7312'
   })
 
   depends_on 'check' => :build
-  depends_on 'curl' => :build
-  depends_on 'libbsd'
-  depends_on 'libmaxminddb'
-  depends_on 'libnet'
-  depends_on 'libpcap'
-  depends_on 'ncurses'
-  depends_on 'openssl'
+  depends_on 'curl' => :library
+  depends_on 'glibc' => :library
+  depends_on 'libbsd' => :library
+  depends_on 'libmaxminddb' => :library
+  depends_on 'libnet' => :library
+  depends_on 'libpcap' => :library
+  depends_on 'ncurses' => :library
+  depends_on 'openssl' => :library
   depends_on 'pcre'
-  depends_on 'zlib'
+  depends_on 'pcre2' => :library
+  depends_on 'zlib' => :library
 
   cmake_options '-DENABLE_GTK=OFF -DENABLE_TESTS=ON -DENABLE_IPV6=ON'
 
