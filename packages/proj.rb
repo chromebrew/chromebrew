@@ -16,9 +16,9 @@ class Proj < CMake
      x86_64: '587982adcaaf9d1964eb030d2a2c4aab7815be50eeca8bcbf8c4603bdca7d4be'
   })
 
-  depends_on 'curl' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'libtiff' # R
-  depends_on 'sqlite' # R
+  depends_on 'curl' => :library
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'libtiff' => :library
+  depends_on 'sqlite' => :library
 end
