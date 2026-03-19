@@ -11,15 +11,15 @@ class Vkd3d < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: 'e165921a54201ad2c300ce92f939780969f86c240993fd0828ebb55cc8196c2b'
+     x86_64: '9f6f5f8c93d0796e4a2878107b507d9cd075b44f264c64797ad7dc64ee708684'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
   depends_on 'libxcb' => :build
-  depends_on 'ncurses' # R
+  depends_on 'ncurses' => :executable
   depends_on 'perl_json' => :build
   depends_on 'spirv_headers' => :build
-  depends_on 'spirv_tools' # R
+  depends_on 'spirv_tools' => :library
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' => :build
   depends_on 'wine' => :build
