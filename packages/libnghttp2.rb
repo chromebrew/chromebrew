@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libnghttp2 < CMake
   description 'library implementing HTTP/2 protocol'
   homepage 'https://nghttp2.org/'
-  version "1.68.0-#{CREW_PY_VER}"
+  version "1.68.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/nghttp2/nghttp2.git'
@@ -11,13 +11,13 @@ class Libnghttp2 < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1836b2103c51ae3a040cae982078373326c3e99bea9ebe69c05a9a37c01dd6be',
-     armv7l: '1836b2103c51ae3a040cae982078373326c3e99bea9ebe69c05a9a37c01dd6be',
-       i686: '49897ed248a55a8826d6fe0bfa3bc56511bbde818f9d2d1ca72040b21c9a9c05',
-     x86_64: '3bec63e51203971e13f0e5da10ff2889db34698ba29848b30c7fbf92eba96ccd'
+    aarch64: '4b97295173c77410c1f5a7786e2616d6bed487807598a733ee3a94fedacada1e',
+     armv7l: '4b97295173c77410c1f5a7786e2616d6bed487807598a733ee3a94fedacada1e',
+       i686: 'c065e449d1404225bdfa9e002bb269ff4d290a1088f5eb461a8a380f6d9c8653',
+     x86_64: '730c1ad9ed3317ded8dfa36b0dfcca2b4528dc7d51871d8fe9e5bad292cf7014'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
   depends_on 'jansson' => :build
   depends_on 'jemalloc' => :build
   depends_on 'libev' => :build
