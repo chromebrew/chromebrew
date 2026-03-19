@@ -16,56 +16,56 @@ class Gemacs < Package
      x86_64: '12d16157477a3726a16c349e420e05f70b93bb6f5093faeee6c22f0331a883c9'
   })
 
-  depends_on 'acl' => :executable_only
-  depends_on 'alsa_lib' => :executable_only
-  depends_on 'at_spi2_core' => :executable_only
+  depends_on 'acl' => :executable
+  depends_on 'alsa_lib' => :executable
+  depends_on 'at_spi2_core' => :executable
   depends_on 'cairo'
-  depends_on 'cairo' => :executable_only
-  depends_on 'dbus' => :executable_only
-  depends_on 'fontconfig' => :executable_only
-  depends_on 'freetype' => :executable_only
-  depends_on 'gcc_dev' => :executable_only
-  depends_on 'gcc_lib' => :executable_only
-  depends_on 'gdk_pixbuf' => :executable_only
-  depends_on 'giflib' => :executable_only
-  depends_on 'glib' => :executable_only
+  depends_on 'cairo' => :executable
+  depends_on 'dbus' => :executable
+  depends_on 'fontconfig' => :executable
+  depends_on 'freetype' => :executable
+  depends_on 'gcc_dev' => :executable
+  depends_on 'gcc_lib' => :executable
+  depends_on 'gdk_pixbuf' => :executable
+  depends_on 'giflib' => :executable
+  depends_on 'glib' => :executable
   depends_on 'glibc' # R
-  depends_on 'glibc' => :executable_only
-  depends_on 'gmp' => :executable_only
-  depends_on 'gnutls' => :executable_only
-  depends_on 'gpm' => :executable_only
-  depends_on 'gtk3' => :executable_only
-  depends_on 'harfbuzz' => :executable_only
-  depends_on 'jansson' => :executable_only
-  depends_on 'lcms' => :executable_only
-  depends_on 'libice' => :executable_only
-  depends_on 'libjpeg_turbo' => :executable_only
-  depends_on 'libotf' => :executable_only
-  depends_on 'libpng' => :executable_only
-  depends_on 'librsvg' => :executable_only
-  depends_on 'libsm' => :executable_only
-  depends_on 'libsoup2' => :executable_only
-  depends_on 'libtiff' => :executable_only
-  depends_on 'libwebp' => :executable_only
-  depends_on 'libx11' => :executable_only
-  depends_on 'libxcb' => :executable_only
-  depends_on 'libxcomposite' => :executable_only
-  depends_on 'libxext' => :executable_only
-  depends_on 'libxfixes' => :executable_only
-  depends_on 'libxi' => :executable_only
-  depends_on 'libxinerama' => :executable_only
+  depends_on 'glibc' => :executable
+  depends_on 'gmp' => :executable
+  depends_on 'gnutls' => :executable
+  depends_on 'gpm' => :executable
+  depends_on 'gtk3' => :executable
+  depends_on 'harfbuzz' => :executable
+  depends_on 'jansson' => :executable
+  depends_on 'lcms' => :executable
+  depends_on 'libice' => :executable
+  depends_on 'libjpeg_turbo' => :executable
+  depends_on 'libotf' => :executable
+  depends_on 'libpng' => :executable
+  depends_on 'librsvg' => :executable
+  depends_on 'libsm' => :executable
+  depends_on 'libsoup2' => :executable
+  depends_on 'libtiff' => :executable
+  depends_on 'libwebp' => :executable
+  depends_on 'libx11' => :executable
+  depends_on 'libxcb' => :executable
+  depends_on 'libxcomposite' => :executable
+  depends_on 'libxext' => :executable
+  depends_on 'libxfixes' => :executable
+  depends_on 'libxi' => :executable
+  depends_on 'libxinerama' => :executable
   depends_on 'libxml2' # R
-  depends_on 'libxpm' => :executable_only
-  depends_on 'libxrandr' => :executable_only
-  depends_on 'libxrender' => :executable_only
-  depends_on 'ncurses' => :executable_only
-  depends_on 'pango' => :executable_only
-  depends_on 'sqlite' => :executable_only
+  depends_on 'libxpm' => :executable
+  depends_on 'libxrandr' => :executable
+  depends_on 'libxrender' => :executable
+  depends_on 'ncurses' => :executable
+  depends_on 'pango' => :executable
+  depends_on 'sqlite' => :executable
   depends_on 'texinfo'
   depends_on 'webkit2gtk_4'
-  depends_on 'webkit2gtk_4' => :executable_only
-  depends_on 'xcb_util' => :executable_only
-  depends_on 'zlib' => :executable_only
+  depends_on 'webkit2gtk_4' => :executable
+  depends_on 'xcb_util' => :executable
+  depends_on 'zlib' => :executable
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'

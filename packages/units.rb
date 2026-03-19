@@ -19,8 +19,8 @@ class Units < Autotools
      x86_64: 'ecc1f41a7148caa0f3c39f667cef5056d58858daec8beaef073c1db0131dbefd'
   })
 
-  depends_on 'glibc' => :executable_only
-  depends_on 'readline' => :executable_only
+  depends_on 'glibc' => :executable
+  depends_on 'readline' => :executable
 
   def self.patch
     system "grep -rlZ '/usr/bin/perl' . | xargs -0 sed -i \'s,/usr/bin/perl,#{CREW_PREFIX}/bin/perl,g\'"

@@ -17,10 +17,10 @@ class Nnn < Package
      x86_64: 'b6b21729a493ed1f515c81fc099ea798c8b671061b3d6c2638ff3e4bb0df860c'
   })
 
-  depends_on 'glibc' => :executable_only
-  depends_on 'ncurses' => :executable_only
+  depends_on 'glibc' => :executable
+  depends_on 'ncurses' => :executable
   depends_on 'pkg_config' => :build
-  depends_on 'readline' => :executable_only
+  depends_on 'readline' => :executable
 
   def self.install
     system 'make', "PREFIX=#{CREW_PREFIX}", "DESTDIR=#{CREW_DEST_DIR}", 'install'

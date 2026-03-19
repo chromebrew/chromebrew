@@ -47,25 +47,25 @@ class Freerdp < CMake
   depends_on 'libsoxr' # R
   depends_on 'libusb' # R
   depends_on 'libx11' # R
-  depends_on 'libxcursor' => :executable_only
+  depends_on 'libxcursor' => :executable
   depends_on 'libxdamage' # R
   depends_on 'libxext' # R
   depends_on 'libxfixes' # R
-  depends_on 'libxi' => :executable_only
+  depends_on 'libxi' => :executable
   depends_on 'libxinerama' # R
   depends_on 'libxkbcommon' # R
   depends_on 'libxkbfile' # R
-  depends_on 'libxrandr' => :executable_only
-  depends_on 'libxrender' => :executable_only
+  depends_on 'libxrandr' => :executable
+  depends_on 'libxrender' => :executable
   depends_on 'libxtst' # R
-  depends_on 'libxv' => :executable_only
+  depends_on 'libxv' => :executable
   depends_on 'linux_pam' # R
   depends_on 'openh264' # R
   depends_on 'openssl' # R
   depends_on 'pango' # R
   depends_on 'pulseaudio' # R
-  depends_on 'sdl2' => :executable_only
-  depends_on 'sdl2_ttf' => :executable_only
+  depends_on 'sdl2' => :executable
+  depends_on 'sdl2_ttf' => :executable
   depends_on 'sommelier' => :logical
   depends_on 'uriparser' # R
   depends_on 'wayland' # R

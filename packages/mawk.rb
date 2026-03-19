@@ -17,7 +17,7 @@ class Mawk < Autotools
      x86_64: '6c0e9e3da1bcaab5aac246df98355ad4ba02ba5dbfeb7bfc394c0ab4a4e03bab'
   })
 
-  depends_on 'glibc' => :executable_only
+  depends_on 'glibc' => :executable
 
   autotools_install_extras do
     FileUtils.ln_s "#{CREW_PREFIX}/bin/mawk", "#{CREW_DEST_PREFIX}/bin/awk"

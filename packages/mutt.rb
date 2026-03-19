@@ -17,13 +17,13 @@ class Mutt < Autotools
      x86_64: 'cdc654fe5b89c962d0d8990d4ee21d7824a56218d7fdc14aa167d4119cf1849a'
   })
 
-  depends_on 'gdbm' => :executable_only
-  depends_on 'glibc' => :executable_only
-  depends_on 'libcyrussasl' => :executable_only
+  depends_on 'gdbm' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'libcyrussasl' => :executable
   depends_on 'libxslt'
-  depends_on 'ncurses' => :executable_only
-  depends_on 'openssl' => :executable_only
-  depends_on 'zlib' => :executable_only
+  depends_on 'ncurses' => :executable
+  depends_on 'openssl' => :executable
+  depends_on 'zlib' => :executable
 
   autotools_configure_options "--with-mailpath=#{CREW_PREFIX}/etc/mail \
     --with-sasl=#{CREW_LIB_PREFIX}/sasl2 \

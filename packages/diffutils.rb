@@ -20,7 +20,7 @@ class Diffutils < Autotools
      x86_64: '5bfbb058e3f3ed009066afb381dae0e8c5d7be3f20d9f9d063ad0227f1e62aba'
   })
 
-  depends_on 'glibc' => :executable_only
+  depends_on 'glibc' => :executable
   depends_on 'gperf' => :build
   depends_on 'libsigsegv' # R
   depends_on 'wget2' => :build

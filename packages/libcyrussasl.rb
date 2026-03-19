@@ -23,7 +23,7 @@ class Libcyrussasl < Autotools
   depends_on 'krb5' # R
   depends_on 'libdb' # R
   depends_on 'libxcrypt' # R
-  depends_on 'linux_pam' => :executable_only
+  depends_on 'linux_pam' => :executable
   depends_on 'openssl' # R
 
   autotools_configure_options "--enable-shared \

@@ -16,7 +16,7 @@ class Doctl < Package
      x86_64: '8fcd7592a356230b1eca85ee1f4f0b991890b1fc23131cfdb0abf9311311f004'
   })
 
-  depends_on 'glibc' => :executable_only
+  depends_on 'glibc' => :executable
   depends_on 'go' => :build
 
   no_source_build

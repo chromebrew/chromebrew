@@ -17,20 +17,20 @@ class Gnome_text_editor < Meson
   })
 
   depends_on 'desktop_file_utils' => :build
-  depends_on 'editorconfig_core_c' => :executable_only
+  depends_on 'editorconfig_core_c' => :executable
   depends_on 'gcc_lib' # R
-  depends_on 'glib' => :executable_only
-  depends_on 'glibc' => :executable_only
+  depends_on 'glib' => :executable
+  depends_on 'glibc' => :executable
   depends_on 'gobject_introspection' => :build
   depends_on 'gspell' => :build
-  depends_on 'gtk4' => :executable_only
+  depends_on 'gtk4' => :executable
   depends_on 'gtk_doc' => :build
-  depends_on 'gtksourceview_5' => :executable_only
+  depends_on 'gtksourceview_5' => :executable
   depends_on 'ibus' => :build
-  depends_on 'libadwaita' => :executable_only
+  depends_on 'libadwaita' => :executable
   depends_on 'libpeas' => :build
-  depends_on 'libspelling' => :executable_only
-  depends_on 'pango' => :executable_only
+  depends_on 'libspelling' => :executable
+  depends_on 'pango' => :executable
   depends_on 'pcre' => :build
   depends_on 'py3_pygobject' => :build
   depends_on 'sassc' => :build

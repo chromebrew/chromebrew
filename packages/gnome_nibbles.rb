@@ -20,16 +20,16 @@ class Gnome_nibbles < Meson
   depends_on 'clutter_gtk' => :build
   depends_on 'desktop_file_utils' => :build
   depends_on 'gcc_lib' # R
-  depends_on 'glib' => :executable_only
-  depends_on 'glibc' => :executable_only
-  depends_on 'gsound' => :executable_only
-  depends_on 'gtk4' => :executable_only
+  depends_on 'glib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'gsound' => :executable
+  depends_on 'gtk4' => :executable
   depends_on 'harfbuzz' # R
-  depends_on 'libadwaita' => :executable_only
-  depends_on 'libgee' => :executable_only
+  depends_on 'libadwaita' => :executable
+  depends_on 'libgee' => :executable
   depends_on 'libgnome_games_support' # R
   depends_on 'librsvg' => :build
-  depends_on 'pango' => :executable_only
+  depends_on 'pango' => :executable
   depends_on 'py3_itstool' => :build
   depends_on 'vala' => :build
   depends_on 'wayland' => :build

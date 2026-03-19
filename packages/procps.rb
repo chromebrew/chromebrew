@@ -18,7 +18,7 @@ class Procps < Autotools
   })
 
   depends_on 'glibc' # R
-  depends_on 'ncurses' => :executable_only
+  depends_on 'ncurses' => :executable
 
   conflicts_ok # Conflicts with uutils_coreutils.
 

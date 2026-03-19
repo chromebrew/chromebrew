@@ -18,9 +18,9 @@ class Tar < Autotools
   })
 
   depends_on 'acl' # R
-  depends_on 'acl' => :executable_only
+  depends_on 'acl' => :executable
   depends_on 'glibc' # R
-  depends_on 'glibc' => :executable_only
+  depends_on 'glibc' => :executable
 
   autotools_configure_options '--disable-year2038' unless ARCH == 'x86_64'
 end

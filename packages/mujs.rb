@@ -18,7 +18,7 @@ class Mujs < Package
   })
 
   depends_on 'glibc' # R
-  depends_on 'readline' => :executable_only
+  depends_on 'readline' => :executable
 
   def self.build
     system 'make', 'release'

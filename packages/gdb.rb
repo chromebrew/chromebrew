@@ -20,21 +20,21 @@ class Gdb < Autotools
      x86_64: '4d7587b2b4c4f3c5c89db024d03e7fe7785d6c0d8f93bf74b577d74ac5a7513d'
   })
 
-  depends_on 'binutils' => :executable_only
-  depends_on 'boost' => :executable_only
+  depends_on 'binutils' => :executable
+  depends_on 'boost' => :executable
   depends_on 'elfutils' # R
-  depends_on 'expat' => :executable_only
-  depends_on 'gcc_lib' => :executable_only
+  depends_on 'expat' => :executable
+  depends_on 'gcc_lib' => :executable
   depends_on 'glibc' # R
-  depends_on 'gmp' => :executable_only
-  depends_on 'mpfr' => :executable_only
-  depends_on 'ncurses' => :executable_only
-  depends_on 'python3' => :executable_only
-  depends_on 'readline' => :executable_only
-  depends_on 'source_highlight' => :executable_only
+  depends_on 'gmp' => :executable
+  depends_on 'mpfr' => :executable
+  depends_on 'ncurses' => :executable
+  depends_on 'python3' => :executable
+  depends_on 'readline' => :executable
+  depends_on 'source_highlight' => :executable
   depends_on 'texinfo' => :build
-  depends_on 'xxhash' => :executable_only
-  depends_on 'xzutils' => :executable_only
+  depends_on 'xxhash' => :executable
+  depends_on 'xzutils' => :executable
   depends_on 'zlib' # R
   depends_on 'zstd' # R
 

@@ -20,12 +20,12 @@ class Py3_maturin < Python
      x86_64: 'bcd3af9796f6d8d4ad83c6fa08e1a019c7212f1ae90292926af51670fbdd7c16'
   })
 
-  depends_on 'gcc_lib' => :executable_only
-  depends_on 'glibc' => :executable_only
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
   depends_on 'py3_semantic_version' => :build
   depends_on 'py3_setuptools'
   depends_on 'py3_setuptools_rust'
   depends_on 'python3'
-  depends_on 'python3' => :executable_only
+  depends_on 'python3' => :executable
   depends_on 'rust'
 end

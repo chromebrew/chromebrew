@@ -19,12 +19,12 @@ class Mc < Autotools
 
   depends_on 'aspell' => :build
   depends_on 'check' => :build
-  depends_on 'e2fsprogs' => :executable_only
-  depends_on 'glib' => :executable_only
-  depends_on 'glibc' => :executable_only
-  depends_on 'gpm' => :executable_only
+  depends_on 'e2fsprogs' => :executable
+  depends_on 'glib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'gpm' => :executable
   depends_on 'graphviz' => :build unless ARCH.eql?('i686')
-  depends_on 'slang' => :executable_only
+  depends_on 'slang' => :executable
 
   run_tests
 end

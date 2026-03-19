@@ -20,21 +20,21 @@ class Gnome_console < Meson
   })
 
   depends_on 'desktop_file_utils' => :build
-  depends_on 'gcc_lib' => :executable_only
+  depends_on 'gcc_lib' => :executable
   depends_on 'gdk_pixbuf' => :build
-  depends_on 'glib' => :executable_only
-  depends_on 'glibc' => :executable_only
+  depends_on 'glib' => :executable
+  depends_on 'glibc' => :executable
   depends_on 'graphene' => :build
-  depends_on 'gtk4' => :executable_only
+  depends_on 'gtk4' => :executable
   depends_on 'harfbuzz' => :build
-  depends_on 'libadwaita' => :executable_only
-  depends_on 'libgtop' => :executable_only
+  depends_on 'libadwaita' => :executable
+  depends_on 'libgtop' => :executable
   depends_on 'libhandy' => :build
   depends_on 'nautilus' => :build
-  depends_on 'pango' => :executable_only
+  depends_on 'pango' => :executable
   depends_on 'pcre2' => :build
   depends_on 'sassc' => :build
-  depends_on 'vte' => :executable_only
+  depends_on 'vte' => :executable
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' # L
 

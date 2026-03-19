@@ -17,7 +17,7 @@ class Aliyun_cli < Package
      x86_64: '9c04188650cc7a8607c1f673b837fba703012a80281930258cc9f7701c0a3257'
   })
 
-  depends_on 'glibc' => :executable_only
+  depends_on 'glibc' => :executable
   depends_on 'go' => :build
 
   def self.build

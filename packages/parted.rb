@@ -19,7 +19,7 @@ class Parted < Autotools
 
   depends_on 'glibc' # R
   depends_on 'lvm2' # R
-  depends_on 'ncurses' => :executable_only
-  depends_on 'readline' => :executable_only
+  depends_on 'ncurses' => :executable
+  depends_on 'readline' => :executable
   depends_on 'util_linux' # R
 end

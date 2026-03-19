@@ -13,8 +13,8 @@ class Usql < Package
      x86_64: '9303852f01d49bc5d412d7ebc0af65b5a707bc1769e3a45b88c11f393c53afc3'
   })
 
-  depends_on 'gcc_lib' => :executable_only
-  depends_on 'glibc' => :executable_only
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
   depends_on 'go' => :build
 
   no_source_build

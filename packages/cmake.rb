@@ -18,20 +18,20 @@ class Cmake < CMake
   })
 
   depends_on 'bzip2' => :build
-  depends_on 'cppdap' => :executable_only
-  depends_on 'curl' => :executable_only
-  depends_on 'expat' => :executable_only
-  depends_on 'gcc_lib' => :executable_only
-  depends_on 'glibc' => :executable_only
-  depends_on 'jsoncpp' => :executable_only
-  depends_on 'libarchive' => :executable_only
+  depends_on 'cppdap' => :executable
+  depends_on 'curl' => :executable
+  depends_on 'expat' => :executable
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'jsoncpp' => :executable
+  depends_on 'libarchive' => :executable
   depends_on 'libnghttp2' => :build
-  depends_on 'librhash' => :executable_only
-  depends_on 'libuv' => :executable_only
+  depends_on 'librhash' => :executable
+  depends_on 'libuv' => :executable
   depends_on 'llvm_lib' => :build
-  depends_on 'ncurses' => :executable_only
+  depends_on 'ncurses' => :executable
   depends_on 'xzutils' => :build
-  depends_on 'zlib' => :executable_only
+  depends_on 'zlib' => :executable
   depends_on 'zstd' => :build
 
   def self.prebuild

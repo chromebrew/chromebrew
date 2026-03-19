@@ -19,10 +19,10 @@ class A2ps < Autotools
   })
 
   depends_on 'bdwgc'
-  depends_on 'bdwgc' => :executable_only
-  depends_on 'glibc' => :executable_only
+  depends_on 'bdwgc' => :executable
+  depends_on 'glibc' => :executable
   depends_on 'libpaper'
-  depends_on 'libpaper' => :executable_only
+  depends_on 'libpaper' => :executable
   depends_on 'py3_pspdfutils'
 
   run_tests

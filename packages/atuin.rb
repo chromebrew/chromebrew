@@ -16,8 +16,8 @@ class Atuin < Package
      x86_64: 'd9b3f7941ea4441f06cc229acf07510ea157e7bb1703837fce3519a036abbb33'
   })
 
-  depends_on 'gcc_lib' => :executable_only
-  depends_on 'glibc' => :executable_only
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
   depends_on 'rust' => :build
 
   print_source_bashrc
