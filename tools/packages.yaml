@@ -4745,6 +4745,11 @@ url: https://git.hadrons.org/git/libmd.git
 activity: low
 ---
 kind: url
+name: libmedfile
+url: https://www.salome-platform.org/?page_id=2768
+activity: none
+---
+kind: url
 name: libmediaart
 url: https://gitlab.gnome.org/GNOME/libmediaart/-/tags
 activity: low
