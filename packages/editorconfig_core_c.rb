@@ -1,16 +1,13 @@
-# Adapted from Arch Linux editorconfig-core-c PKGBUILD at:
-# https://github.com/archlinux/svntogit-packages/raw/packages/editorconfig-core-c/trunk/PKGBUILD
+require 'buildsystems/cmake'
 
-require 'package'
-
-class Editorconfig_core_c < Package
+class Editorconfig_core_c < CMake
   description 'EditorConfig core code written in C for use by plugins supporting EditorConfig parsing'
   homepage 'https://github.com/editorconfig/editorconfig-core-c'
-  version '0.12.6'
+  version '0.12.10'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/editorconfig/editorconfig-core-c/archive/v0.12.6/editorconfig-core-c-0.12.6.tar.gz'
-  source_sha256 '36052a5371731d915b53d9c7a24a11c4032585ccacb392ec9d58656eef4c0edf'
+  source_url 'https://github.com/editorconfig/editorconfig-core-c.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -21,18 +18,5 @@ class Editorconfig_core_c < Package
   })
 
   depends_on 'pcre2' # R
-  depends_on 'doxygen' => :build
   depends_on 'glibc' # R
-
-  def self.build
-    system "cmake -B builddir \
-          #{CREW_CMAKE_OPTIONS} \
-          -Wdev \
-          -G Ninja"
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
 end
