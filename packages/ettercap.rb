@@ -1,55 +1,36 @@
-# Adapted from Arch Linux ettercap PKGBUILD at:
-# https://github.com/archlinux/svntogit-community/raw/packages/ettercap/trunk/PKGBUILD
+require 'buildsystems/cmake'
 
-require 'package'
-
-class Ettercap < Package
+class Ettercap < CMake
   description 'Network sniffer/interceptor/logger for ethernet LANs'
   homepage 'https://ettercap.github.com/ettercap/'
-  version '0.8.3.1'
+  version '0.8.4'
   license 'GPL'
   compatibility 'all'
-  source_url 'https://github.com/Ettercap/ettercap/archive/v0.8.3.1/ettercap-0.8.3.1.tar.gz'
-  source_sha256 'd0c3ef88dfc284b61d3d5b64d946c1160fd04276b448519c1ae4438a9cdffaf3'
+  source_url 'https://github.com/Ettercap/ettercap.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e777dff6d81b611460dfaded82b8091b38e091c2feb5056536121535f86f045f',
-     armv7l: 'e777dff6d81b611460dfaded82b8091b38e091c2feb5056536121535f86f045f',
-       i686: 'd7c1019cc15151b200797f88d915f0877881c32408ae89efb7f4c304f137438c',
-     x86_64: 'e24fe09a30a95396459a131d4e8e90965551572110318f8b4708789ebebba209'
+    aarch64: '047e6e2bc4396bbf63e561650669259bdd157f58e88a565a55e730096e66d460',
+     armv7l: '047e6e2bc4396bbf63e561650669259bdd157f58e88a565a55e730096e66d460',
+       i686: '25b62a9151348f0e843961ce7df04869977ec56b4deab772a5d81d2dffab76bf',
+     x86_64: 'c9841dbdf5f864843d7b6ed513e8776c072973e8698944f853ceae07643f7312'
   })
 
-  depends_on 'curl' => :build
-  depends_on 'ethtool' => :build
-  depends_on 'geoip' # R
-  depends_on 'ghostscript' => :build
-  depends_on 'glibc' # R
-  depends_on 'libbsd' # R
-  depends_on 'curl' # R
-  depends_on 'libnet' # R
-  depends_on 'libpcap' # R
-  depends_on 'libtool' => :build
-  depends_on 'ncurses' # R
-  depends_on 'openssl' # R
-  depends_on 'pcre' # R
-  depends_on 'zlib' # R
+  depends_on 'check' => :build
+  depends_on 'curl' => :library
+  depends_on 'glibc' => :library
+  depends_on 'libbsd' => :library
+  depends_on 'libmaxminddb' => :library
+  depends_on 'libnet' => :library
+  depends_on 'libpcap' => :library
+  depends_on 'ncurses' => :library
+  depends_on 'openssl' => :library
+  depends_on 'pcre'
+  depends_on 'pcre2' => :library
+  depends_on 'zlib' => :library
 
-  def self.build
-    system "cmake -B builddir #{CREW_CMAKE_OPTIONS} \
-            -G Ninja \
-            -DINSTALL_SYSCONFDIR=#{CREW_PREFIX}/etc \
-            -DENABLE_GTK=OFF \
-            -DENABLE_TESTS=ON \
-            -DENABLE_IPV6=ON"
-    system 'samu -C builddir'
-  end
+  cmake_options '-DENABLE_GTK=OFF -DENABLE_TESTS=ON -DENABLE_IPV6=ON'
 
-  def self.check
-    system 'samu -C builddir test'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
-  end
+  run_tests
 end
