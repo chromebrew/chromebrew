@@ -157,6 +157,10 @@ jobs:
           echo "matrix=[${ARCHES}]"
 
   update-package-files:
+    needs:
+      - gen-matrix
+      - get-compatibility
+      - setup
     strategy:
       max-parallel: 1
       matrix:
@@ -172,8 +176,6 @@ jobs:
           - arch: armv7l
             runner: ubuntu-24.04
     runs-on: ${{ matrix.runner }}
-    needs:
-      - setup
     env:
       CREW_REPO: ${{ github.event.repository.clone_url }}
       CREW_BRANCH: ${{ inputs.branch || github.head_ref || github.ref_name }}

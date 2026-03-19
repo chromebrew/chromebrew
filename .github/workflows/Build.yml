@@ -166,7 +166,10 @@ jobs:
           echo "matrix=[${ARCHES}]"
 
   generate:
-    needs: setup
+    needs:
+      - gen-matrix
+      - get-compatibility
+      - setup
     strategy:
       fail-fast: false
       matrix:
