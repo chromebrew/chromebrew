@@ -359,7 +359,7 @@ crew_llvm_ver_default = '21'
 crew_perl_ver_default = '5.42'
 crew_py_ver_default = '3.14'
 crew_ruby_ver_default = '4.0'
-crew_rust_ver_default = '1.93'
+crew_rust_ver_default = '1.94'
 if ENV['CI']
   CREW_GCC_VER  = "gcc#{crew_gcc_ver_default}"
   CREW_ICU_VER  = "icu#{crew_icu_ver_default}"
