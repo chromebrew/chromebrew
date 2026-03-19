@@ -89,7 +89,7 @@ Style/NumericLiterals:
 
 # TODO
 Style/OneClassPerFile:
-  Enabled: false
+ Enabled: false
 
 # TODO
 Style/RedundantStringEscape:
