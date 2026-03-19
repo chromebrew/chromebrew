@@ -141,6 +141,7 @@ jobs:
     uses: ./.github/workflows/Determine-Compatibility.yml
     with:
       changed_packages: ${{ needs.setup.outputs.changed_packages }}
+      branch: ${{ inputs.branch || github.head_ref || github.ref_name }}
 
   gen-matrix:
     needs: get-compatibility
@@ -165,7 +166,10 @@ jobs:
           echo "matrix=[${ARCHES}]"
 
   generate:
-    needs: setup
+    needs:
+      - gen-matrix
+      - get-compatibility
+      - setup
     strategy:
       fail-fast: false
       matrix:
