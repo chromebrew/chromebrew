@@ -11,12 +11,13 @@ class Libxvid < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0587f20f1a2ea2ede14054ccddfc2fbef2a0ef5b611c3ba679c0d1724da365eb',
-     armv7l: '0587f20f1a2ea2ede14054ccddfc2fbef2a0ef5b611c3ba679c0d1724da365eb',
-       i686: '2d398811d6468a57dd236907d7b2e8a71263fba2423d3baf4d04f8f1b7ac5b1a',
-     x86_64: 'e990606cef5b83dcffa96e6595538240934c6f926ca49701c165322811f8a44f'
+    aarch64: '2b27cd16aab5f20218d5560d91ed39589771c77ae7ef0c25de9a4a3d477393fc',
+     armv7l: '2b27cd16aab5f20218d5560d91ed39589771c77ae7ef0c25de9a4a3d477393fc',
+       i686: '0d3d5f7233268a1c187141e20dafe370ccf176048becc7972bfdfa2843436758',
+     x86_64: 'e6eeb1052e11ad481cd50fe54b6669d23555b94fd34f23d7e8ff6ec99ff86bd3'
   })
 
+  depends_on 'glibc' => :library
   depends_on 'yasm' => :build
 
   autotools_pre_configure_options 'CFLAGS=-std=c99'
