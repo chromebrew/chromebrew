@@ -11,48 +11,48 @@ class Mesa < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '45e69c5d7fc4cd14f65bdad82b8be5c93b3ac1e85e74c1f8f286c8fd61764e9d',
-     armv7l: '45e69c5d7fc4cd14f65bdad82b8be5c93b3ac1e85e74c1f8f286c8fd61764e9d',
-     x86_64: '8f54dfd09450acf30058aff522d561473e47c796f424844609966d5964aae8c0'
+    aarch64: '403ba5de2bd65a766dc915f2d3263f351f63a0ff5e4af7de06e69771627ed8de',
+     armv7l: '403ba5de2bd65a766dc915f2d3263f351f63a0ff5e4af7de06e69771627ed8de',
+     x86_64: 'd8dc44a38b74c2df1dd5bd6b2e6622b18db80658a139ccef4a50dfa9ea6fe539'
   })
 
-  depends_on 'elfutils' # R
-  depends_on 'eudev' # R
-  depends_on 'expat' # R
+  depends_on 'elfutils' => :library
+  depends_on 'eudev' => :library
+  depends_on 'expat' => :library
   depends_on 'gcc_dev' => :build
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
   depends_on 'glslang' => :build
   depends_on 'libclc' => :build
-  depends_on 'libdrm' # R
+  depends_on 'libdrm' => :library
   depends_on 'libomxil_bellagio' => :build
-  depends_on 'libunwind' # R
+  depends_on 'libunwind' => :library
   depends_on 'libva' => :build
   depends_on 'libvdpau' => :build
-  depends_on 'libx11' # R
-  depends_on 'libxcb' # R
+  depends_on 'libx11' => :library
+  depends_on 'libxcb' => :library
   depends_on 'libxdamage' => :build
   depends_on 'libxdmcp' => :build
-  depends_on 'libxext' # R
-  depends_on 'libxrandr' # R
-  depends_on 'libxshmfence' # R
+  depends_on 'libxext' => :library
+  depends_on 'libxrandr' => :library
+  depends_on 'libxshmfence' => :library
   depends_on 'libxv' => :build
-  depends_on 'libxxf86vm' # R
+  depends_on 'libxxf86vm' => :library
   depends_on 'llvm_dev' => :build
-  depends_on 'llvm_lib' # R
-  depends_on 'lm_sensors' # R
+  depends_on 'llvm_lib' => :library
+  depends_on 'lm_sensors' => :library
   depends_on 'py3_mako' => :build
   depends_on 'py3_ply' => :build
   depends_on 'py3_pycparser' => :build
   depends_on 'spirv_llvm_translator' => :build
-  depends_on 'spirv_tools' # R
+  depends_on 'spirv_tools' => :library
   depends_on 'valgrind' => :build
   depends_on 'vulkan_headers' => :build
-  depends_on 'wayland' # R
+  depends_on 'wayland' => :library
   depends_on 'wayland_protocols' => :build
-  depends_on 'xcb_util_keysyms' # R
-  depends_on 'zlib' # R
-  depends_on 'zstd' # R
+  depends_on 'xcb_util_keysyms' => :library
+  depends_on 'zlib' => :library
+  depends_on 'zstd' => :library
 
   no_lto # As per https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/39671
 
