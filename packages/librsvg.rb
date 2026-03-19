@@ -11,26 +11,26 @@ class Librsvg < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '95e9b16ba603bc9a3fa988e5114f2b68090be2bdce46203254986fa80b68bbb1',
-     armv7l: '95e9b16ba603bc9a3fa988e5114f2b68090be2bdce46203254986fa80b68bbb1',
-     x86_64: '73b57253c5198126e2b141f2313e90baab0c4168c151eb8e3627891d8c6eb0f7'
+    aarch64: '25e1e877a5bbfa2d4b306b9e3f8a97c909edef1e3157948143d239afe751cdda',
+     armv7l: '25e1e877a5bbfa2d4b306b9e3f8a97c909edef1e3157948143d239afe751cdda',
+     x86_64: '4f5663afdf20b89fc4bb8950fbb3ebcea1455ade3a22b98f05a62ba208cef484'
   })
 
-  depends_on 'cairo' # R
+  depends_on 'cairo' => :library
   depends_on 'cargo_c' => :build
-  depends_on 'dav1d' # R
+  depends_on 'dav1d' => :library
   depends_on 'fontconfig' => :executable
   depends_on 'fribidi' => :build
-  depends_on 'gcc_lib' # R
-  depends_on 'gdk_pixbuf' # R
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'gdk_pixbuf' => :library
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
   depends_on 'gobject_introspection' => :build
-  depends_on 'harfbuzz' # R
+  depends_on 'harfbuzz' => :library
   depends_on 'libcroco' => :build
   depends_on 'libjpeg_turbo' => :build
-  depends_on 'libxml2' # R
-  depends_on 'pango' # R
+  depends_on 'libxml2' => :library
+  depends_on 'pango' => :library
   depends_on 'py3_meson' => :build
   depends_on 'py3_six' => :build
   depends_on 'py3_smartypants' => :build
