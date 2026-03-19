@@ -1,14 +1,14 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libxvid < Package
+class Libxvid < Autotools
   description 'The free video codec that is strong in compression and quality.'
   homepage 'https://www.xvid.com/'
-  version '1.3.5'
-  license 'custom'
+  version '1.3.7'
+  license 'GPL-2'
   compatibility 'all'
-  source_url 'https://downloads.xvid.com/downloads/xvidcore-1.3.5.tar.bz2'
-  source_sha256 '7c20f279f9d8e89042e85465d2bcb1b3130ceb1ecec33d5448c4589d78f010b4'
-  binary_compression 'tar.xz'
+  source_url "https://downloads.xvid.com/downloads/xvidcore-#{version}.tar.bz2"
+  source_sha256 'aeeaae952d4db395249839a3bd03841d6844843f5a4f84c271ff88f7aa1acff7'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '0587f20f1a2ea2ede14054ccddfc2fbef2a0ef5b611c3ba679c0d1724da365eb',
@@ -19,16 +19,6 @@ class Libxvid < Package
 
   depends_on 'yasm' => :build
 
-  def self.build
-    FileUtils.cd('build/generic') do
-      system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-      system 'make'
-    end
-  end
-
-  def self.install
-    FileUtils.cd('build/generic') do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    end
-  end
+  autotools_pre_configure_options 'CFLAGS=-std=c99'
+  autotools_build_relative_dir 'build/generic'
 end
