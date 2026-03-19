@@ -17,53 +17,35 @@ class Gparted < Package
   })
 
   depends_on 'at_spi2_core' => :executable
-  depends_on 'at_spi2_core' => :executable_only
   depends_on 'atkmm16' => :executable
-  depends_on 'atkmm16' => :executable_only
   depends_on 'cairo' => :executable
-  depends_on 'cairo' => :executable_only
   depends_on 'cairomm_1_0' => :executable
-  depends_on 'cairomm_1_0' => :executable_only
   depends_on 'exfatprogs'
   depends_on 'f2fs_tools'
   depends_on 'gcc_lib' => :executable
-  depends_on 'gcc_lib' => :executable_only
   depends_on 'gdk_pixbuf' => :executable
-  depends_on 'gdk_pixbuf' => :executable_only
   depends_on 'glib' => :executable
-  depends_on 'glib' => :executable_only
   depends_on 'glibc' => :executable
-  depends_on 'glibc' => :executable_only
   depends_on 'glibmm_2_4' => :executable
-  depends_on 'glibmm_2_4' => :executable_only
   depends_on 'gpart'
   depends_on 'gtk3' => :executable
-  depends_on 'gtk3' => :executable_only
   depends_on 'gtkmm3' => :executable
-  depends_on 'gtkmm3' => :executable_only
   depends_on 'harfbuzz' => :executable
-  depends_on 'harfbuzz' => :executable_only
   depends_on 'intltool' => :build
   depends_on 'librsvg'
   depends_on 'libsigcplusplus'
   depends_on 'libsigcplusplus2' => :executable
-  depends_on 'libsigcplusplus2' => :executable_only
   depends_on 'mtools'
   depends_on 'pango' => :executable
-  depends_on 'pango' => :executable_only
   depends_on 'pangomm_1_4' => :executable
-  depends_on 'pangomm_1_4' => :executable_only
   depends_on 'parted' => :executable
-  depends_on 'parted' => :executable_only
   depends_on 'py3_itstool' => :build
   depends_on 'sommelier' => :logical
   depends_on 'util_linux' => :executable
-  depends_on 'util_linux' => :executable_only
   depends_on 'xfsprogs'
   depends_on 'xhost'
   depends_on 'yelp_tools' => :build
   depends_on 'zlib' => :executable
-  depends_on 'zlib' => :executable_only
 
   def self.patch
     system 'filefix' # Fix ./configure: line 7001: /usr/bin/file: No such file or directory
