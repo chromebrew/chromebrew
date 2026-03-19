@@ -1,32 +1,24 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Hdf5 < Package
+class Hdf5 < CMake
   description 'HDF5 is a unique technology suite that makes possible the management of extremely large and complex data collections.'
   homepage 'https://www.hdfgroup.org/'
-  version '1.10.5'
-  license 'NCSA-HDF'
+  version '1.14.6' # Do not update to 2.x branch, it will break libmedfile.
+  license 'BSD-3'
   compatibility 'all'
-  source_url 'https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.5/src/hdf5-1.10.5.tar.bz2'
-  source_sha256 '68d6ea8843d2a106ec6a7828564c1689c7a85714a35d8efafa2fee20ca366f44'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/HDFGroup/hdf5.git'
+  git_hashtag "hdf5-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e1f92f38039d13d530ef8dee9f0c2bf3ddb9be9be3a60adee6bb82dc87a62a3a',
-     armv7l: 'e1f92f38039d13d530ef8dee9f0c2bf3ddb9be9be3a60adee6bb82dc87a62a3a',
-       i686: 'd56fe7f4f5e7234fad92a98cd081a812d07f4906c190ba3d615c1a14ca188957',
-     x86_64: '258e724a97f0943a940f1b8663a591efeff11ffc507ca51ecd0ffe38b3997fdb'
+    aarch64: 'b5c211e8278e2131b8a075a28cbe5fba446da9ca514d15b915a8c997384bcd6d',
+     armv7l: 'b5c211e8278e2131b8a075a28cbe5fba446da9ca514d15b915a8c997384bcd6d',
+       i686: '75b553e5aaa69e029fc6446d92c7bf45aea8d6ffb884ada875cfbf2d4b006f28',
+     x86_64: '79fc2b988f6b8de1bb0ff1b0a9f53dc22bd95158bb1e2447be2a2ef67691970c'
   })
 
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-maintainer-mode',
-           '--disable-static'
-    system 'make'
-  end
+  depends_on 'glibc' => :library
+  depends_on 'zlib' => :library
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  cmake_options '-DHDF5_USE_GNU_DIRS=ON'
 end
