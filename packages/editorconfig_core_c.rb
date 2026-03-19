@@ -11,12 +11,12 @@ class Editorconfig_core_c < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e11a40cf379fbcdd7da6aa7183c097214909c6375bb609587a07fbeb55dd4eb3',
-     armv7l: 'e11a40cf379fbcdd7da6aa7183c097214909c6375bb609587a07fbeb55dd4eb3',
-       i686: 'b6f86925b01a0b25ff7fbac61fb6ca683e519ba262daf7a9a2389d7e79810a74',
-     x86_64: 'eb1ad56f799f7f276aa7aef8a5d589a99b9f3469879eb79e2846f5c95dae22bd'
+    aarch64: 'a1bde9ba3e552ef6a455be6df84711c16983165cbf48c31b5511e922b954a4b6',
+     armv7l: 'a1bde9ba3e552ef6a455be6df84711c16983165cbf48c31b5511e922b954a4b6',
+       i686: 'beaf517a94f49555888861c2d41ba6858f89320727914bd0d96779cdc352602a',
+     x86_64: '7cb97d683d99c0ea51799e2775ceb53e23efa78a9f25eb1513ca6bf6b1495253'
   })
 
-  depends_on 'pcre2' # R
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
+  depends_on 'pcre2' => :library
 end
