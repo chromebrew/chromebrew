@@ -6,6 +6,9 @@ on:
       changed_packages:
         required: true
         type: string
+      branch:
+        required: false
+        type: string
     outputs:
       glibc_227_compat:
         description: "The packages compatible with glibc 2.27"
@@ -37,6 +40,8 @@ jobs:
       armv7l_PACKAGES: ${{ steps.get-compatibility.outputs.armv7l_PACKAGES }}
     steps:
       - uses: actions/checkout@v6
+        with:
+          ref: ${{ inputs.branch || github.head_ref || github.ref_name }}
       - name: Determine glibc and architecture package compatibility
         id: get-compatibility
         env:
