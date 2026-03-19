@@ -1,16 +1,13 @@
-# Adapted from Arch Linux ettercap PKGBUILD at:
-# https://github.com/archlinux/svntogit-community/raw/packages/ettercap/trunk/PKGBUILD
+require 'buildsystems/cmake'
 
-require 'package'
-
-class Ettercap < Package
+class Ettercap < CMake
   description 'Network sniffer/interceptor/logger for ethernet LANs'
   homepage 'https://ettercap.github.com/ettercap/'
-  version '0.8.3.1'
+  version '0.8.4'
   license 'GPL'
   compatibility 'all'
-  source_url 'https://github.com/Ettercap/ettercap/archive/v0.8.3.1/ettercap-0.8.3.1.tar.gz'
-  source_sha256 'd0c3ef88dfc284b61d3d5b64d946c1160fd04276b448519c1ae4438a9cdffaf3'
+  source_url 'https://github.com/Ettercap/ettercap.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -20,36 +17,18 @@ class Ettercap < Package
      x86_64: 'e24fe09a30a95396459a131d4e8e90965551572110318f8b4708789ebebba209'
   })
 
+  depends_on 'check' => :build
   depends_on 'curl' => :build
-  depends_on 'ethtool' => :build
-  depends_on 'geoip' # R
-  depends_on 'ghostscript' => :build
-  depends_on 'glibc' # R
-  depends_on 'libbsd' # R
-  depends_on 'curl' # R
-  depends_on 'libnet' # R
-  depends_on 'libpcap' # R
-  depends_on 'libtool' => :build
-  depends_on 'ncurses' # R
-  depends_on 'openssl' # R
-  depends_on 'pcre' # R
-  depends_on 'zlib' # R
+  depends_on 'libbsd'
+  depends_on 'libmaxminddb'
+  depends_on 'libnet'
+  depends_on 'libpcap'
+  depends_on 'ncurses'
+  depends_on 'openssl'
+  depends_on 'pcre'
+  depends_on 'zlib'
 
-  def self.build
-    system "cmake -B builddir #{CREW_CMAKE_OPTIONS} \
-            -G Ninja \
-            -DINSTALL_SYSCONFDIR=#{CREW_PREFIX}/etc \
-            -DENABLE_GTK=OFF \
-            -DENABLE_TESTS=ON \
-            -DENABLE_IPV6=ON"
-    system 'samu -C builddir'
-  end
+  cmake_options '-DENABLE_GTK=OFF -DENABLE_TESTS=ON -DENABLE_IPV6=ON'
 
-  def self.check
-    system 'samu -C builddir test'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
-  end
+  run_tests
 end
