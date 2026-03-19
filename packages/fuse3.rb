@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Fuse3 < Meson
   description 'The reference implementation of the Linux FUSE (Filesystem in Userspace) interface.'
   homepage 'https://github.com/libfuse/libfuse/'
-  version '3.18.1'
+  version '3.18.2'
   license 'GPL-2+'
   compatibility 'all'
   source_url 'https://github.com/libfuse/libfuse.git'
