@@ -16,7 +16,7 @@ class Vtk < CMake
      x86_64: '0ee81a09c1fc3b727211b6bc4d6f82ddc87571164e5be3cd28092c7086b6b8c6'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'libx11'
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'libx11' => :build
 end
