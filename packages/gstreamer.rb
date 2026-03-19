@@ -42,7 +42,7 @@ class Gstreamer < Meson
   depends_on 'libaom' # R
   depends_on 'libass' # R
   depends_on 'libavc1394' # R
-  depends_on 'libcap' => :executable_only
+  depends_on 'libcap' => :executable
   depends_on 'libdrm' # R
   depends_on 'libdv' # R
   depends_on 'libfdk_aac' # R
