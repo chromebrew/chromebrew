@@ -1125,6 +1125,11 @@ url: https://ftp.gnome.org/pub/GNOME/sources/cogl/
 activity: low
 ---
 kind: url
+name: coin
+url: https://github.com/coin3d/coin/tags
+activity: medium
+---
+kind: url
 name: collectl
 url: https://sourceforge.net/projects/collectl/files/collectl/
 activity: low
