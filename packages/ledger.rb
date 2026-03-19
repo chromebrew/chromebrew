@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Ledger < CMake
   description 'A double-entry accounting system with a command-line reporting interface'
   homepage 'https://ledger-cli.org/'
-  version '3.3.2'
+  version '3.4.1'
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/ledger/ledger.git'
