@@ -1,0 +1,12 @@
+#!/bin/bash
+cct -h 2>&1 | head -5
+cct --version
+cs2cs 2>&1
+geod 2>&1
+gie -h 2>&1 | head -5
+gie --version
+invgeod 2>&1
+invproj 2>&1
+proj 2>&1
+projinfo 2>&1 | head -5
+projsync -h 2>&1 | head -5
