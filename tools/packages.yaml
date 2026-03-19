@@ -10085,6 +10085,11 @@ url: https://download.gnome.org/sources/vte/
 activity: medium
 ---
 kind: url
+name: vtk
+url: https://gitlab.kitware.com/vtk/vtk/-/tags
+activity: medium
+---
+kind: url
 name: vulkan_headers
 url: https://github.com/KhronosGroup/Vulkan-Headers/tags
 activity: high
