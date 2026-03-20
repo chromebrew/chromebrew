@@ -7225,6 +7225,11 @@ url: https://metacpan.org/pod/ExtUtils::PkgConfig
 activity: low
 ---
 kind: url
+name: perl_file_sharedir_install
+url: https://metacpan.org/pod/File::ShareDir::Install
+activity: low
+---
+kind: url
 name: perl_file_spec
 url: https://metacpan.org/pod/File::Spec
 activity: low
