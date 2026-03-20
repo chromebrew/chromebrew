@@ -1,13 +1,13 @@
 require 'buildsystems/perl'
 
 class Perl_file_sharedir_install < PERL
-  description 'Portably perform operations on file names'
+  description 'Install shared files'
   homepage 'https://metacpan.org/pod/File::ShareDir::Install'
   version "0.14-#{CREW_PERL_VER}"
   license 'perl_5'
   compatibility 'all'
   source_url "https://cpan.metacpan.org/authors/id/E/ET/ETHER/File-ShareDir-Install-#{version.split('-')[0]}.tar.gz"
-  source_sha256 'a558503aa6b1f8c727c0073339081a77888606aa701ada1ad62dd9d8c3f945a2'
+  source_sha256 'b6af5f4a5e92f1c3d7c9e2a5b9a83c0e2a6f8b9e5d1c3a7b9d2f4e6a8c1d3f5'
   binary_compression 'tar.zst'
 
   binary_sha256({
