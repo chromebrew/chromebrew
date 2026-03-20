@@ -1,4 +1,4 @@
-# Total size: 2596639
+# Total size: 2589889
 /usr/local/bin/tv_combo
 /usr/local/bin/tv_ctrlpt
 /usr/local/bin/tv_device
@@ -19,13 +19,11 @@
 /usr/local/include/upnp/UpnpString.h
 /usr/local/include/upnp/UpnpSubscriptionRequest.h
 /usr/local/include/upnp/UpnpUniStd.h
-/usr/local/include/upnp/ithread.h
 /usr/local/include/upnp/ixml.h
 /usr/local/include/upnp/ixmldebug.h
 /usr/local/include/upnp/list.h
 /usr/local/include/upnp/upnp.h
 /usr/local/include/upnp/upnpconfig.h
-/usr/local/include/upnp/upnpdebug.h
 /usr/local/include/upnp/upnptools.h
 /usr/local/lib64/cmake/IXML/IXML-release.cmake
 /usr/local/lib64/cmake/IXML/IXML.cmake
@@ -38,11 +36,11 @@
 /usr/local/lib64/libixml.a
 /usr/local/lib64/libixml.so
 /usr/local/lib64/libixml.so.11
-/usr/local/lib64/libixml.so.11.1.2
+/usr/local/lib64/libixml.so.11.1.8
 /usr/local/lib64/libupnp.a
 /usr/local/lib64/libupnp.so
-/usr/local/lib64/libupnp.so.17
-/usr/local/lib64/libupnp.so.17.1.3
+/usr/local/lib64/libupnp.so.20
+/usr/local/lib64/libupnp.so.20.0.3
 /usr/local/lib64/pkgconfig/libupnp.pc
 /usr/local/share/upnp/tvcombodesc.xml
 /usr/local/share/upnp/tvcontrolSCPD.xml
