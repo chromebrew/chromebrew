@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Cmake < CMake
   description 'CMake is an open-source, cross-platform family of tools designed to build, test and package software.'
   homepage 'https://cmake.org/'
-  version '4.3.0'
+  version '4.3.0-1'
   license 'CMake'
   compatibility 'all'
   source_url 'https://gitlab.kitware.com/cmake/cmake.git'
@@ -35,6 +35,8 @@ class Cmake < CMake
   depends_on 'zstd' => :build
 
   def self.prebuild
+    # Handle libjsoncpp library version change.
+    FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libjsoncpp.so.27", "#{CREW_LIB_PREFIX}/libjsoncpp.so.26" if version == '4.3.0-1'
     @current_installed_cmake_major_version = `cmake --version | head -n 1 | awk '{print \$3}'`.chomp.split('.').reverse[1..2].reverse.join('.')
     @new_cmake_major_version = version.split('.').reverse[1..2].reverse.join('.')
     # Only do tests on major version changes.
