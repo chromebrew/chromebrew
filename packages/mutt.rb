@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Mutt < Autotools
   description 'Mutt is a small but very powerful text-based mail client for Unix operating systems.'
   homepage 'http://mutt.org/'
-  version '2.3'
+  version '2.3.1'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://gitlab.com/muttmua/mutt.git'
