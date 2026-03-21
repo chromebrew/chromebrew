@@ -1,4 +1,4 @@
-# Total size: 2407710
+# Total size: 2435093
 /usr/local/bin/autoconf
 /usr/local/bin/autoheader
 /usr/local/bin/autom4te
@@ -17,6 +17,7 @@
 /usr/local/share/autoconf/Autom4te/Request.pm
 /usr/local/share/autoconf/Autom4te/XFile.pm
 /usr/local/share/autoconf/INSTALL
+/usr/local/share/autoconf/autoconf/a68.m4
 /usr/local/share/autoconf/autoconf/autoconf.m4
 /usr/local/share/autoconf/autoconf/autoconf.m4f
 /usr/local/share/autoconf/autoconf/autoheader.m4
@@ -38,6 +39,7 @@
 /usr/local/share/autoconf/autoconf/status.m4
 /usr/local/share/autoconf/autoconf/trailer.m4
 /usr/local/share/autoconf/autoconf/types.m4
+/usr/local/share/autoconf/autoconf_version.m4
 /usr/local/share/autoconf/autom4te.cfg
 /usr/local/share/autoconf/autoscan/autoscan.list
 /usr/local/share/autoconf/autotest/autotest.m4
@@ -52,7 +54,6 @@
 /usr/local/share/autoconf/m4sugar/m4sh.m4f
 /usr/local/share/autoconf/m4sugar/m4sugar.m4
 /usr/local/share/autoconf/m4sugar/m4sugar.m4f
-/usr/local/share/autoconf/version.m4
 /usr/local/share/info/autoconf.info.zst
 /usr/local/share/info/standards.info.zst
 /usr/local/share/man/man1/autoconf.1.zst
