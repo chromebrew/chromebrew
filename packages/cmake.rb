@@ -41,7 +41,7 @@ class Cmake < CMake
     _stdout, _stderr, @cmake_status = Open3.capture3('cmake --version')
     unless @cmake_status.to_s.split.last == '0'
       puts 'CMake is broken. Bootstrapping cmake...'.lightpurple
-      system "../bootstrap && make && cp bin/* #{CREW_DEST_PREFIX}/bin/", chdir: 'builddir'
+      system "../bootstrap && make && make DESTDIR=#{CREW_DEST_DIR} install", chdir: 'builddir'
     end
     @current_installed_cmake_major_version = `PATH=#{CREW_DEST_PREFIX}/bin:\$PATH cmake --version | head -n 1 | awk '{print \$3}'`.chomp.split('.').reverse[1..2].reverse.join('.')
     @new_cmake_major_version = version.split('.').reverse[1..2].reverse.join('.')
