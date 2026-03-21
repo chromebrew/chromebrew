@@ -3,12 +3,12 @@ require 'package'
 class Signal_desktop < Package
   description 'Private Messenger for Windows, Mac, and Linux'
   homepage 'https://signal.org/'
-  version '8.2.1'
+  version '8.3.0'
   license 'AGPL-3.0'
   compatibility 'x86_64'
   min_glibc '2.29'
   source_url "https://updates.signal.org/desktop/apt/pool/s/signal-desktop/signal-desktop_#{version}_amd64.deb"
-  source_sha256 '341a6383e1986c62e112ac4bb3eabc9c1d90314cc0af2c2aece5dfba796a7412'
+  source_sha256 '863bea0a12a145b11c151c9ae949b5c695d7cf92375324c3d5e88af847698fb5'
 
   no_compile_needed
   no_shrink
