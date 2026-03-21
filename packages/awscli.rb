@@ -17,10 +17,10 @@ class Awscli < Pip
   })
 
   binary_sha256({
-    aarch64: 'd7ccc7e84fe82ca8f5a12f3438fcdef22fa2a5238aaf2fdd43bf6ea73db6ba5b',
-     armv7l: 'd7ccc7e84fe82ca8f5a12f3438fcdef22fa2a5238aaf2fdd43bf6ea73db6ba5b',
-       i686: '4a6db009f22fea21fb1fd0bb944fca3f86455fdf50a9e21e8f83d9fc3032e639',
-     x86_64: '719787a2145ed3c613d3e0b810d38d501d5a5456df54410948caf121208548ef'
+    aarch64: 'bfcf91ac26dd2490f60a26662f963724e9295d7d0b0b713a91818e16745127fc',
+     armv7l: 'bfcf91ac26dd2490f60a26662f963724e9295d7d0b0b713a91818e16745127fc',
+       i686: '9cee7288fc31b4e34906cd7ac708138370bd21089d7da7cc6273df3d38202634',
+     x86_64: '9dd34794778678c6af900067f8921a20a502291254d9c5b89cb3327c6f9a6870'
   })
 
   depends_on 'groff' # R
@@ -31,7 +31,7 @@ class Awscli < Pip
   depends_on 'py3_python_dateutil' # R
   depends_on 'py3_rsa' # R
   depends_on 'py3_s3transfer' # R
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 
