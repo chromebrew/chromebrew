@@ -1,0 +1,3 @@
+#!/bin/bash
+sccache -h | head
+sccache -V
