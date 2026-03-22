@@ -14,16 +14,16 @@ class Protobuf < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6bc9efc69d5f8f6c666e27f27d2b3eca4db3537f13500762312a24999f0eab86',
-     armv7l: '6bc9efc69d5f8f6c666e27f27d2b3eca4db3537f13500762312a24999f0eab86',
-       i686: '158a666d86b2f0dbb2cac91eb81bc880b3a0958e76bca75b9d2fb0459bf25256',
-     x86_64: 'ec736e7b44e1b278b9ce120a28e9c89fd29adbe09a9824fb3bc1aa82a519fd46'
+    aarch64: 'd1b61b0a83915ba73db53ed4d5502c6cf9cc4d830d224cf095a978fe26b1edcc',
+     armv7l: 'd1b61b0a83915ba73db53ed4d5502c6cf9cc4d830d224cf095a978fe26b1edcc',
+       i686: 'a174175902325e6d5e0f075eefdc952ecb5572aa77c9942d6709a92ac5e55bdb',
+     x86_64: '4ccf08220f92413e8e38b415e6ba457fc7c290e50588707b8cc03683920b56bb'
   })
 
-  depends_on 'abseil_cpp' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'zlib' # R
+  depends_on 'abseil_cpp' => :library
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'zlib' => :library
 
   cmake_options '-Dprotobuf_BUILD_SHARED_LIBS=ON \
       -Dprotobuf_BUILD_TESTS=OFF'
