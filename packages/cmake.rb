@@ -18,6 +18,7 @@ class Cmake < CMake
   })
 
   depends_on 'bzip2' => :build
+  depends_on 'cmake_bootstrap' => :build
   depends_on 'cppdap' => :executable
   depends_on 'curl' => :executable
   depends_on 'expat' => :executable
@@ -34,23 +35,21 @@ class Cmake < CMake
   depends_on 'zlib' => :executable
   depends_on 'zstd' => :build
 
+  conflicts_ok # cmake_bootstrap
+
   def self.prebuild
-    FileUtils.mkdir_p 'builddir'
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    # Handle broken CMake.
+    # Warn about a broken CMake.
     _stdout, _stderr, @cmake_status = Open3.capture3('cmake --version')
     unless @cmake_status.to_s.split.last == '0'
-      puts 'CMake is broken. Bootstrapping cmake...'.lightpurple
-      system "../bootstrap && make && make DESTDIR=#{CREW_DEST_DIR} install", chdir: 'builddir'
+      abort 'CMake is broken.'.lightred
     end
-    @current_installed_cmake_major_version = `PATH=#{CREW_DEST_PREFIX}/bin:\$PATH cmake --version | head -n 1 | awk '{print \$3}'`.chomp.split('.').reverse[1..2].reverse.join('.')
+    @current_installed_cmake_major_version = `cmake --version | head -n 1 | awk '{print \$3}'`.chomp.split('.').reverse[1..2].reverse.join('.')
     @new_cmake_major_version = version.split('.').reverse[1..2].reverse.join('.')
     # Only do tests on major version changes.
     @cmake_testing = @current_installed_cmake_major_version != @new_cmake_major_version
     puts 'Build testing will be skipped since this is not a major version change from the existing cmake.'.orange unless @cmake_testing
   end
 
-  pre_cmake_options "PATH=#{CREW_DEST_PREFIX}/bin:\$PATH"
   cmake_options "-DCMake_BUILD_LTO=ON \
      -DCMAKE_USE_SYSTEM_LIBRARIES=ON \
      -DCMAKE_USE_SYSTEM_LIBARCHIVE=ON \
@@ -66,7 +65,7 @@ class Cmake < CMake
   def self.check
     return unless @cmake_testing
 
-    system "PATH=#{CREW_DEST_PREFIX}/bin:\$PATH #{CREW_NINJA} -C builddir test || true"
+    system "#{CREW_NINJA} -C builddir test || true"
   end
 
   cmake_install_extras do
