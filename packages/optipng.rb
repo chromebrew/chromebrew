@@ -1,30 +1,31 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Optipng < Package
+class Optipng < CMake
   description 'OptiPNG is a PNG optimizer that recompresses image files to a smaller size, without losing any information.'
   homepage 'https://optipng.sourceforge.net/'
-  version '0.7.7'
+  version '7.9.1'
   license 'ZLIB'
   compatibility 'all'
-  source_url 'https://prdownloads.sourceforge.net/project/optipng/OptiPNG/optipng-0.7.7/optipng-0.7.7.tar.gz'
-  source_sha256 '4f32f233cef870b3f95d3ad6428bfe4224ef34908f1b42b0badf858216654452'
-  binary_compression 'tar.xz'
+  source_url "https://downloads.sourceforge.net/project/optipng/OptiPNG/optipng-#{version}/optipng-#{version}.tar.gz"
+  source_sha256 'c2579be58c2c66dae9d63154edcb3d427fef64cb00ec0aff079c9d156ec46f29'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1601aa1f127fdb2eacad1c0faa347c405722e208387fea068a9566d11373c92f',
-     armv7l: '1601aa1f127fdb2eacad1c0faa347c405722e208387fea068a9566d11373c92f',
-       i686: '6ce2f78ccb3a4d33cb15843735ee93ef42f7862f448cbf2fdb2515e5e355b364',
-     x86_64: 'cc4c62f535d32680b40ec79f8334b1d046032ff773596cc87f2c127128b032d3'
+    aarch64: 'b885d5e53bbe54ecae635c91bf8bdeb90aed187aa49d92e27153073ec2e866de',
+     armv7l: 'b885d5e53bbe54ecae635c91bf8bdeb90aed187aa49d92e27153073ec2e866de',
+       i686: '1ac0481618048c34f4893f05a4e3fb48854629a744ef1622d38a441b733940e9',
+     x86_64: 'b3d2f6078e72506f171be7f8cf9ed0c9965c03bdfc8d1d7eaa5042876125913b'
   })
 
-  depends_on 'libpng'
+  depends_on 'glibc' => :executable
+  depends_on 'libpng' => :executable
+  depends_on 'zlib' => :executable
 
-  def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --with-system-libpng" # Bundled libpng doesn't work on armv7l
-    system 'make'
+  cmake_options '-DOPTIPNG_USE_SYSTEM_ZLIB=ON -DOPTIPNG_USE_SYSTEM_PNG=ON' # Bundled libpng doesn't work on armv7l
+
+  cmake_install_extras do
+    FileUtils.chmod 0o755, "#{CREW_DEST_PREFIX}/bin/optipng"
   end
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  run_tests
 end
