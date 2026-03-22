@@ -1,4 +1,4 @@
-# Total size: 1450425
+# Total size: 1477044
 /home/chronos/user/.reminders
 /usr/local/bin/rem
 /usr/local/bin/rem2ps
@@ -590,4 +590,13 @@
 /usr/local/share/remind/site/README
 /usr/local/share/remind/solar-eclipses.rem
 /usr/local/share/remind/sun.rem
+/usr/local/share/remind/translations/README.txt
+/usr/local/share/remind/translations/de/holidays/chinese-new-year.rem
+/usr/local/share/remind/translations/de/moonphases.rem
+/usr/local/share/remind/translations/de/seasons.rem
+/usr/local/share/remind/translations/de/sun.rem
+/usr/local/share/remind/translations/nl/holidays/chinese-new-year.rem
+/usr/local/share/remind/translations/nl/moonphases.rem
+/usr/local/share/remind/translations/nl/seasons.rem
+/usr/local/share/remind/translations/nl/sun.rem
 /usr/local/share/remind/utils/add-html-anchors.rem

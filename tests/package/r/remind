@@ -1,0 +1,3 @@
+#!/bin/bash
+remind -h 2>&1 | head
+remind --version
