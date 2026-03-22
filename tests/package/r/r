@@ -1,0 +1,3 @@
+#!/bin/bash
+R -h | head
+R --version

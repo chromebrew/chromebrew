@@ -1,4 +1,4 @@
-# Total size: 78717552
+# Total size: 77593984
 /usr/local/bin/R
 /usr/local/bin/Rscript
 /usr/local/lib/R/COPYING
@@ -865,6 +865,7 @@
 /usr/local/lib/R/library/lattice/doc/index.html
 /usr/local/lib/R/library/lattice/help/AnIndex
 /usr/local/lib/R/library/lattice/help/aliases.rds
+/usr/local/lib/R/library/lattice/help/figures/logo.svg
 /usr/local/lib/R/library/lattice/help/lattice.rdb
 /usr/local/lib/R/library/lattice/help/lattice.rdx
 /usr/local/lib/R/library/lattice/help/paths.rds
