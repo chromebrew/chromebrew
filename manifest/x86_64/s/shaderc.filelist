@@ -1,4 +1,4 @@
-# Total size: 177304909
+# Total size: 181896039
 /usr/local/bin/glslang
 /usr/local/bin/glslangValidator
 /usr/local/bin/glslc
@@ -23,7 +23,6 @@
 /usr/local/include/glslang/Public/resource_limits_c.h
 /usr/local/include/glslang/SPIRV/GlslangToSpv.h
 /usr/local/include/glslang/SPIRV/Logger.h
-/usr/local/include/glslang/SPIRV/SPVRemapper.h
 /usr/local/include/glslang/SPIRV/SpvTools.h
 /usr/local/include/glslang/SPIRV/disassemble.h
 /usr/local/include/glslang/SPIRV/spirv.hpp11
@@ -70,17 +69,14 @@
 /usr/local/lib64/libSPIRV-Tools-shared.so
 /usr/local/lib64/libSPIRV-Tools.a
 /usr/local/lib64/libSPIRV.so
-/usr/local/lib64/libSPIRV.so.15
-/usr/local/lib64/libSPIRV.so.15.4.0
-/usr/local/lib64/libSPVRemapper.so
-/usr/local/lib64/libSPVRemapper.so.15
-/usr/local/lib64/libSPVRemapper.so.15.4.0
+/usr/local/lib64/libSPIRV.so.16
+/usr/local/lib64/libSPIRV.so.16.2.0
 /usr/local/lib64/libglslang-default-resource-limits.so
-/usr/local/lib64/libglslang-default-resource-limits.so.15
-/usr/local/lib64/libglslang-default-resource-limits.so.15.4.0
+/usr/local/lib64/libglslang-default-resource-limits.so.16
+/usr/local/lib64/libglslang-default-resource-limits.so.16.2.0
 /usr/local/lib64/libglslang.so
-/usr/local/lib64/libglslang.so.15
-/usr/local/lib64/libglslang.so.15.4.0
+/usr/local/lib64/libglslang.so.16
+/usr/local/lib64/libglslang.so.16.2.0
 /usr/local/lib64/libshaderc.a
 /usr/local/lib64/libshaderc_combined.a
 /usr/local/lib64/libshaderc_shared.so
