@@ -1,0 +1,2 @@
+#!/bin/bash
+for p in $(crew files shaderc | grep /usr/local/bin); do $p --version; done
