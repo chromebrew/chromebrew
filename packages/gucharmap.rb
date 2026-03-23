@@ -1,10 +1,9 @@
 require 'buildsystems/meson'
-Package.load_package("#{__dir__}/unicode_character_database.rb")
 
 class Gucharmap < Meson
   description 'GNOME Character Map, based on the Unicode Character Database.'
   homepage 'https://wiki.gnome.org/Apps/Gucharmap'
-  version '17.0.1'
+  version '17.0.2'
   license 'GPL-3+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gucharmap.git'
@@ -20,6 +19,7 @@ class Gucharmap < Meson
   depends_on 'at_spi2_core' # R
   depends_on 'cairo' # R
   depends_on 'desktop_file_utilities' => :build
+  depends_on 'gobject_introspection'
   depends_on 'glib' # R
   depends_on 'glibc' # R
   depends_on 'gtk3' # R
@@ -27,19 +27,11 @@ class Gucharmap < Meson
   depends_on 'pango' # R
   depends_on 'pcre2' # R
   depends_on 'py3_itstool' => :build
-  depends_on 'unzip' => :build
+  depends_on 'unicode_character_database'
   depends_on 'vala' => :build
 
   gnome
-  no_lto
+  no_lto # Build fails with meson.build:146:0: ERROR: Assert failed: LTO not supported
 
-  def self.prebuild
-    downloader 'https://www.unicode.org/Public/zipped/latest/Unihan.zip', 'SKIP', '/tmp/Unihan.zip'
-    downloader 'https://www.unicode.org/Public/zipped/latest/UCD.zip', 'SKIP', '/tmp/UCD.zip'
-    Dir.chdir '/tmp' do
-      system 'unzip UCD.zip'
-    end
-  end
-
-  meson_options '-Ddocs=false -Ducd_path=/tmp/'
+  meson_options "-Ddocs=false -Ducd_path=#{CREW_PREFIX}/share/unicode"
 end
