@@ -11,59 +11,59 @@ class Gtk3 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c16fc1ed90b02fce49d75e37def55a1543b15e50d518f2b835f1a9e6c0f81f7f',
-     armv7l: 'c16fc1ed90b02fce49d75e37def55a1543b15e50d518f2b835f1a9e6c0f81f7f',
-     x86_64: '88dc2bc6f045d56ad578002f261682d09a6b34fd0cea09f77d9ed09e2120284b'
+    aarch64: 'd9fa44b3c2edc9e189c61cecbb674d825cafdf67f3b0f84a0275fe87b907ddcd',
+     armv7l: 'd9fa44b3c2edc9e189c61cecbb674d825cafdf67f3b0f84a0275fe87b907ddcd',
+     x86_64: '7e0d065cec961d5c5eddf20000beab56972b3c4d75714b012d3222cdca0d0b23'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
-  depends_on 'adwaita_fonts' # L
-  depends_on 'adwaita_icon_theme' # L
-  depends_on 'at_spi2_core' # R
-  depends_on 'cairo' # R
-  depends_on 'cups' # R
+  depends_on 'adwaita_fonts' => :logical
+  depends_on 'adwaita_icon_theme' => :logical
+  depends_on 'at_spi2_core' => :library
+  depends_on 'cairo' => :library
+  depends_on 'cups' => :library
   depends_on 'docbook' => :build
-  depends_on 'fontconfig' # R
-  depends_on 'fribidi' # R
+  depends_on 'fontconfig' => :library
+  depends_on 'fribidi' => :library
   depends_on 'gcc_lib' # R
-  depends_on 'gdk_pixbuf' # R
+  depends_on 'gdk_pixbuf' => :library
   depends_on 'ghostscript' => :build
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
   depends_on 'gobject_introspection' => :build
   depends_on 'graphene' => :build # Do we need this?
   depends_on 'graphite' => :build # Do we need this?
-  depends_on 'harfbuzz' # R
-  depends_on 'hicolor_icon_theme' # L
+  depends_on 'harfbuzz' => :library
+  depends_on 'hicolor_icon_theme' => :logical
   depends_on 'iso_codes' => :build
   depends_on 'json_glib' => :build
   depends_on 'libdeflate' => :build # Do we need this?
-  depends_on 'libepoxy' # R
+  depends_on 'libepoxy' => :library
   depends_on 'libjpeg_turbo' => :build # Do we need this?
-  depends_on 'librsvg' # L
+  depends_on 'librsvg' => :logical
   depends_on 'libsass' => :build
   depends_on 'libspectre' => :build
-  depends_on 'libx11' # R
-  depends_on 'libxcomposite' # R
-  depends_on 'libxcursor' # R
-  depends_on 'libxdamage' # R
-  depends_on 'libxext' # R
-  depends_on 'libxfixes' # R
-  depends_on 'libxi' # R
-  depends_on 'libxinerama' # R
-  depends_on 'libxkbcommon' # R
-  depends_on 'libxrandr' # R
+  depends_on 'libx11' => :library
+  depends_on 'libxcomposite' => :library
+  depends_on 'libxcursor' => :library
+  depends_on 'libxdamage' => :library
+  depends_on 'libxext' => :library
+  depends_on 'libxfixes' => :library
+  depends_on 'libxi' => :library
+  depends_on 'libxinerama' => :library
+  depends_on 'libxkbcommon' => :library
+  depends_on 'libxrandr' => :library
   depends_on 'mesa' => :build
-  depends_on 'pango' # R
+  depends_on 'pango' => :library
   depends_on 'rest' => :build
   depends_on 'shaderc' => :build
-  depends_on 'shared_mime_info' # L
+  depends_on 'shared_mime_info' => :logical
   depends_on 'sommelier' => :logical
   depends_on 'valgrind' => :build
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' => :build
-  depends_on 'wayland' # R
-  depends_on 'xdg_base' # L
+  depends_on 'wayland' => :library
+  depends_on 'xdg_base' => :logical
 
   gnome
   no_fhs
