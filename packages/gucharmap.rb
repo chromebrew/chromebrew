@@ -17,15 +17,15 @@ class Gucharmap < Meson
      x86_64: 'f3194a73da3f43e620b286fe80dadcd80dd5d05a63082f93f56305af9dcc6ecf'
   })
 
-  depends_on 'at_spi2_core' # R
-  depends_on 'cairo' # R
+  depends_on 'at_spi2_core' => :library
+  depends_on 'cairo' => :library
   depends_on 'desktop_file_utilities' => :build
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
-  depends_on 'gtk3' # R
-  depends_on 'harfbuzz' # R
-  depends_on 'pango' # R
-  depends_on 'pcre2' # R
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'gtk3' => :library
+  depends_on 'harfbuzz' => :library
+  depends_on 'pango' => :library
+  depends_on 'pcre2' => :library
   depends_on 'py3_itstool' => :build
   depends_on 'unzip' => :build
   depends_on 'vala' => :build
