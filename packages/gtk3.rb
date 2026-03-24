@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gtk3 < Meson
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://docs.gtk.org/gtk3/'
-  version '3.24.51'
+  version '3.24.52'
   license 'LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
@@ -67,7 +67,6 @@ class Gtk3 < Meson
 
   gnome
   no_fhs
-  no_upstream_update
 
   def self.patch
     # Use locally build subprojects
