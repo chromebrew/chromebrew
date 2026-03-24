@@ -11,14 +11,14 @@ class Openblas < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4de9367187751c153dae7e7274bcc13ce7a94ec9724dfd63518d98e9c435e452',
-     armv7l: '4de9367187751c153dae7e7274bcc13ce7a94ec9724dfd63518d98e9c435e452',
-       i686: 'f08011f068fbd5e7b12c12b7899a997ff12b81b22fbc6d686d208ea6dcd3bd04',
-     x86_64: '6fd324e18cc8e5276e4c9c0cc815501d4ea70cbf58efaac1e1f55010de03dad3'
+    aarch64: '8b2b14a6c57e22afca4a0c530e551b8bdf573c57c1ad61c6db7d83cf9edc069a',
+     armv7l: '8b2b14a6c57e22afca4a0c530e551b8bdf573c57c1ad61c6db7d83cf9edc069a',
+       i686: '66ef405e7ac491e7144be99f1cc8ff90f4684df6dc6058b8cebcafce961eab44',
+     x86_64: '44002f3366754fd9867b1183858689dbe96fc58f91d1292b8d59cf7ab18517e2'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
   depends_on 'lapack' # R
 
   no_env_options
