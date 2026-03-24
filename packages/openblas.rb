@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Openblas < CMake
   description 'OpenBLAS is an optimized BLAS library'
   homepage 'http://www.openblas.net/'
-  version '0.3.31'
+  version '0.3.32'
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/OpenMathLib/OpenBLAS.git'
