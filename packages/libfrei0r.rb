@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libfrei0r < CMake
   description 'Minimalistic API for a collection of free video effect plugins.'
   homepage 'https://frei0r.dyne.org/'
-  version '2.5.4'
+  version '2.5.6'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/dyne/frei0r.git'
