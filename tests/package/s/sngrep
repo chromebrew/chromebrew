@@ -1,0 +1,3 @@
+#!/bin/bash
+sngrep -h | head
+sngrep -V
