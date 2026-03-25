@@ -1,0 +1,5 @@
+#!/bin/bash
+sordi -h
+sordi -v
+sord_validate -h
+sord_validate -v
