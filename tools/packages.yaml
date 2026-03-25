@@ -7525,6 +7525,11 @@ url: https://gitlab.freedesktop.org/pipewire/pipewire/-/tags
 activity: high
 ---
 kind: url
+name: pivy
+url: https://github.com/coin3d/pivy/tags
+activity: low
+---
+kind: url
 name: pixman
 url: https://www.cairographics.org/releases/
 activity: none
