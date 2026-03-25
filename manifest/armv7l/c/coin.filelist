@@ -1,4 +1,4 @@
-# Total size: 9736639
+# Total size: 9738410
 /usr/local/bin/coin-config
 /usr/local/include/Inventor/C/XML/attribute.h
 /usr/local/include/Inventor/C/XML/document.h
@@ -614,6 +614,7 @@
 /usr/local/include/Inventor/misc/SoNotification.h
 /usr/local/include/Inventor/misc/SoProto.h
 /usr/local/include/Inventor/misc/SoProtoInstance.h
+/usr/local/include/Inventor/misc/SoRefPtr.h
 /usr/local/include/Inventor/misc/SoScriptEngine.h
 /usr/local/include/Inventor/misc/SoState.h
 /usr/local/include/Inventor/misc/SoTempPath.h
@@ -876,13 +877,13 @@
 /usr/local/include/SoDebug.h
 /usr/local/include/SoWinEnterScope.h
 /usr/local/include/SoWinLeaveScope.h
-/usr/local/lib/cmake/Coin-4.0.7/coin-config-version.cmake
-/usr/local/lib/cmake/Coin-4.0.7/coin-config.cmake
-/usr/local/lib/cmake/Coin-4.0.7/coin-export-release.cmake
-/usr/local/lib/cmake/Coin-4.0.7/coin-export.cmake
+/usr/local/lib/cmake/Coin-4.0.8/coin-config-version.cmake
+/usr/local/lib/cmake/Coin-4.0.8/coin-config.cmake
+/usr/local/lib/cmake/Coin-4.0.8/coin-export-release.cmake
+/usr/local/lib/cmake/Coin-4.0.8/coin-export.cmake
 /usr/local/lib/libCoin.so
 /usr/local/lib/libCoin.so.80
-/usr/local/lib/libCoin.so.80.0.7
+/usr/local/lib/libCoin.so.80.0.8
 /usr/local/lib/pkgconfig/Coin.pc
 /usr/local/share/Coin/conf/coin-default.cfg
 /usr/local/share/Coin/draggerDefaults/centerballDragger.iv
