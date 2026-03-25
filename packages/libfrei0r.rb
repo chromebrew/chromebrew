@@ -11,15 +11,15 @@ class Libfrei0r < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7acedb2d0e857f529ce5e36aadf923b89674ffc2da37bd412f07e24acd8308ce',
-     armv7l: '7acedb2d0e857f529ce5e36aadf923b89674ffc2da37bd412f07e24acd8308ce',
-     x86_64: '8c546108bd074c5023b9068d7a83da6564028ca31cb9dba7ed6fbf007554c808'
+    aarch64: '1501a40474325902aa103b712eca13253e3ffe817ffe15c7fc91dbe965a707c1',
+     armv7l: '1501a40474325902aa103b712eca13253e3ffe817ffe15c7fc91dbe965a707c1',
+     x86_64: '04b4c16da5480d35cc4268e5cde4c4cb038f22aaaca05cea6f290f6d4045c56f'
   })
 
-  depends_on 'cairo' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'harfbuzz' # R
+  depends_on 'cairo' => :library
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'harfbuzz' => :library
 
   # TODO: should we add gavl and enable this?
   cmake_options '-DWITHOUT_OPENCV=ON -DWITHOUT_GAVL=ON'
