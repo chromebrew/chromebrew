@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Sord < Meson
   description 'A lightweight C library for storing RDF data in memory'
   homepage 'https://drobilla.net/software/sord/'
-  version '0.16.20'
+  version '0.16.22'
   license 'ISC'
   compatibility 'all'
   source_url 'https://gitlab.com/drobilla/sord.git'
@@ -14,18 +14,17 @@ class Sord < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4dceccc727b85b7a0bb7ca396068136191a18127441ed722928e34471c884a1c',
-     armv7l: '4dceccc727b85b7a0bb7ca396068136191a18127441ed722928e34471c884a1c',
-       i686: 'fd691f1028ba28f0b5a26863ef6e5c0a62d3d50970656d9d0d6adfdee87752e6',
-     x86_64: '178d27e5a53980a357cd18b5f9b20c28c31c6504863d2b99baea46bb30c3108d'
+    aarch64: 'c4535cb14e24b286579e8db853f23f92f78f7fb0886cd66479364dc092f4e9e8',
+     armv7l: 'c4535cb14e24b286579e8db853f23f92f78f7fb0886cd66479364dc092f4e9e8',
+       i686: '71f246ce23adb3a1914d09f14c76ddc03d1eaa1623bc07cee7e9867d65f2ef6e',
+     x86_64: '5bd20c773127a64b4ade1f1803440fae3ab9b963c6b597926d3b0bd1389387c1'
   })
 
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'pcre2' # R
-  depends_on 'serd' # R
-  depends_on 'zix' # R
+  depends_on 'glibc' => :library
+  depends_on 'pcre2' => :executable
+  depends_on 'serd' => :library
+  depends_on 'zix' => :library
 
-  meson_options '-Ddocs=disabled \
-               -Dtests=disabled'
+  meson_options '-Ddocs=disabled -Dtests=disabled'
 end
