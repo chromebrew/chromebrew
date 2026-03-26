@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Coin < CMake
   description 'OpenGL-based, 3D graphics library'
   homepage 'https://github.com/coin3d/coin'
-  version '4.0.7'
+  version '4.0.8'
   license 'BSD-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/coin3d/coin.git'
@@ -11,9 +11,9 @@ class Coin < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '02db1dfa522732a1b351d42b061225465f4bc4a052e8af781834dbfe92ffd2e9',
-     armv7l: '02db1dfa522732a1b351d42b061225465f4bc4a052e8af781834dbfe92ffd2e9',
-     x86_64: 'b9ddb60f1d10b0715b292cdee5d197a658ecf7290fa5fcb83c4932e9be1c5b84'
+    aarch64: '47e2d1b797491b5792635c28ea95dedd6ba517bd7be015bdb9eed0ce95a1116c',
+     armv7l: '47e2d1b797491b5792635c28ea95dedd6ba517bd7be015bdb9eed0ce95a1116c',
+     x86_64: '03fb9edad151f6b418e39e98eb67a5945a28562892379ec46a10177d5c4c0e10'
   })
 
   depends_on 'boost' => :build

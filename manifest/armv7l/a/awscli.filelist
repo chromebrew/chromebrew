@@ -1,4 +1,4 @@
-# Total size: 12056563
+# Total size: 12057380
 /usr/local/bin/aws
 /usr/local/bin/aws.cmd
 /usr/local/bin/aws_bash_completer
@@ -6,13 +6,13 @@
 /usr/local/bin/aws_zsh_completer.sh
 /usr/local/etc/bash.d/aws
 /usr/local/etc/zsh.d/aws
-/usr/local/lib/python3.14/site-packages/awscli-1.44.63.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/awscli-1.44.63.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/awscli-1.44.63.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/awscli-1.44.63.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/awscli-1.44.63.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/awscli-1.44.63.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/awscli-1.44.63.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/awscli-1.44.66.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/awscli-1.44.66.dist-info/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/awscli-1.44.66.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/awscli-1.44.66.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/awscli-1.44.66.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/awscli-1.44.66.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/awscli-1.44.66.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/awscli/__init__.py
 /usr/local/lib/python3.14/site-packages/awscli/__main__.py
 /usr/local/lib/python3.14/site-packages/awscli/__pycache__/__init__.cpython-314.pyc
@@ -2981,6 +2981,7 @@
 /usr/local/lib/python3.14/site-packages/awscli/examples/emr/list-instances.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/emr/list-security-configurations.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/emr/list-steps.rst
+/usr/local/lib/python3.14/site-packages/awscli/examples/emr/list-studios.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/emr/modify-cluster-attributes.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/emr/modify-instance-fleet.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/emr/put.rst
