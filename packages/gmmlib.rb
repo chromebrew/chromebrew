@@ -11,11 +11,11 @@ class Gmmlib < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '0dd9d0de6121ae3413ad69d62f91cf3e67069e3cfe9c1bd3a69c80583067f130'
+     x86_64: '90d74981309f7656d9ccd1707d5e6df67bcadec46b4c721c8b4336bf39781546'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
   depends_on 'libva' => :build
 
   cmake_options '-DCMAKE_POLICY_VERSION_MINIMUM=3.5.0 -DRUN_TEST_SUITE=OFF'
