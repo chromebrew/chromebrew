@@ -1,4 +1,4 @@
-# Total size: 273223
+# Total size: 274215
 /usr/local/bin/dvcont
 /usr/local/bin/mkrfc2734
 /usr/local/bin/panelctl
@@ -16,6 +16,6 @@
 /usr/local/lib64/librom1394.so.0
 /usr/local/lib64/librom1394.so.0.3.0
 /usr/local/lib64/pkgconfig/libavc1394.pc
-/usr/local/share/man/man1/dvcont.1.gz
-/usr/local/share/man/man1/mkrfc2734.1.gz
-/usr/local/share/man/man1/panelctl.1.gz
+/usr/local/share/man/man1/dvcont.1.zst
+/usr/local/share/man/man1/mkrfc2734.1.zst
+/usr/local/share/man/man1/panelctl.1.zst
