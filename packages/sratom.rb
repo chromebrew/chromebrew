@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Sratom < Meson
   description 'An LV2 Atom RDF serialisation library'
   homepage 'https://drobilla.net/software/sratom/'
-  version '0.6.14'
+  version '0.6.22'
   license 'ISC'
   compatibility 'all'
   source_url 'https://github.com/lv2/sratom.git'
@@ -14,17 +14,17 @@ class Sratom < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4a241eab0e75c3e2ee29821ced0df0871384d77a901c331dcf75881114a76db8',
-     armv7l: '4a241eab0e75c3e2ee29821ced0df0871384d77a901c331dcf75881114a76db8',
-       i686: '1ee7375c5ee4a22fc0db8d537e3242e33138f1ef0b77427d1597a4d74844d58d',
-     x86_64: '0e47e2f1d4880e7fd301b53e40507b58510dd1cac83cef8869ce96caf0bba0b3'
+    aarch64: 'd7ffd00a8851a65841f227148a6af77ca72f30c434265ee56f0c4975f76ed860',
+     armv7l: 'd7ffd00a8851a65841f227148a6af77ca72f30c434265ee56f0c4975f76ed860',
+       i686: '312d3a59096ec6b717205294bcf052295b2d9aee7e9d96d23fa3b8317b5ab256',
+     x86_64: '79f5aa34f37ae47f5a191229a575c50dbac271ce963dc67e1a7d45292963f8f0'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'serd' # R
-  depends_on 'sord' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'lv2' # R
+  depends_on 'serd' => :library
+  depends_on 'sord' => :library
 
-  meson_options '-Ddocs=disabled \
-               -Dtests=disabled'
+  meson_options '-Ddocs=disabled -Dtests=disabled'
 end
