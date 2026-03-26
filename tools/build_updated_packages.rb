@@ -50,6 +50,7 @@ if ARGV.include?('-h') || ARGV.include?('--help')
   EOM
 end
 
+# We don't directly use the GITLAB_TOKEN* environment variables, but crew upload does, so we check for them here so that we don't build a package and then fail to upload it.
 abort "\nGITLAB_TOKEN environment variable not set.\n".lightred if ENV['GITLAB_TOKEN'].nil?
 abort "\nGITLAB_TOKEN_USERNAME environment variable not set.\n".lightred if ENV['GITLAB_TOKEN_USERNAME'].nil?
 puts "Setting the CREW_AGREE_TIMEOUT_SECONDS environment variable to less than the default of #{CREW_AGREE_TIMEOUT_SECONDS} may speed this up...".orange if ENV['CREW_AGREE_TIMEOUT_SECONDS'].nil?
