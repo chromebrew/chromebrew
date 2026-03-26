@@ -24,7 +24,9 @@ class Gnome_online_accounts < Meson
   depends_on 'gtk_doc' => :build
   depends_on 'json_glib' => :library
   depends_on 'keyutils' => :executable
+  depends_on 'keyutils' => :library
   depends_on 'krb5' => :executable
+  depends_on 'krb5' => :library
   depends_on 'libadwaita' => :library
   depends_on 'libnotify' => :build
   depends_on 'libsecret' => :library
