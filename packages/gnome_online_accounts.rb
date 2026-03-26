@@ -11,14 +11,14 @@ class Gnome_online_accounts < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b30820d5e23744c70eb55ce65304425b67b922db16da6b2c48cfea36a12d0f1d',
-     armv7l: 'b30820d5e23744c70eb55ce65304425b67b922db16da6b2c48cfea36a12d0f1d',
-     x86_64: '1e9c820085b635b699aee3d3c07949910726b75eb6f4ca706f44a60e98aa19f8'
+    aarch64: '4f31e2917cd17396f8064bc612b0b3ea3bdfbad08d5cb8f386d0114eb63d311d',
+     armv7l: '4f31e2917cd17396f8064bc612b0b3ea3bdfbad08d5cb8f386d0114eb63d311d',
+     x86_64: '34e5e6e06416cd296a8cbda3f161cbe47e86026a55c18237f2e7f5b51b44f41f'
   })
 
   depends_on 'gcr_4' => :library
   depends_on 'glib' => :library
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk4' => :library
   depends_on 'gtk_doc' => :build
