@@ -1,0 +1,5 @@
+#!/bin/bash
+srt-ffplay -version 2>&1
+srt-file-transmit -version 2>&1
+srt-live-transmit -version 2>&1
+srt-tunnel 2>&1

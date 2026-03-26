@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Srt < CMake
   description 'Secure Reliable Transport library'
   homepage 'https://www.srtalliance.org/'
-  version '1.5.3'
+  version '1.5.4'
   license 'MPL-2.0'
   compatibility 'all'
   source_url 'https://github.com/Haivision/srt.git'
@@ -11,11 +11,15 @@ class Srt < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6103cdbf36e560fbab2f9efb9ae8aee535431d5b34aa22e0418df6efaa80c5aa',
-     armv7l: '6103cdbf36e560fbab2f9efb9ae8aee535431d5b34aa22e0418df6efaa80c5aa',
-       i686: '6db1d5c14c45227310c9eb654bf3119ea350c05298c8717b95b243331f21de6a',
-     x86_64: 'ccdfbd33016503367e3d01f37953a9746d31b75547ecfa3ea26593782bc46bf9'
+    aarch64: '9e4829a5c40b77541fd49e535803e5d739766c4f353886973931662fb93ca068',
+     armv7l: '9e4829a5c40b77541fd49e535803e5d739766c4f353886973931662fb93ca068',
+       i686: '752e5c3e998a25789dfec3a7e124c8a2c2bc6eefbea20b4ed8e386dd802a6068',
+     x86_64: '9845a7019d93b2cd927e7d458882bbccaa54fad191bf7ddacd20084acc5d051b'
   })
 
-  depends_on 'openssl'
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'openssl' => :library
+
+  cmake_options '-DCMAKE_POLICY_VERSION_MINIMUM=3.5'
 end
