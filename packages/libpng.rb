@@ -11,14 +11,14 @@ class Libpng < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b6471a07407d111d914a645f2c925c1b2bbbdadb4d1525ac038f4b4c50c01e52',
-     armv7l: 'b6471a07407d111d914a645f2c925c1b2bbbdadb4d1525ac038f4b4c50c01e52',
-       i686: '29fa8cfccd5c4b34c72783168c402b27796a0f4d2261914490f7bfdec50c42ae',
-     x86_64: 'de99af9a941c8d5334c7009892c86f0544967515f2f53c1e0f60101216009592'
+    aarch64: '23136867801ce762ffb99dcaa78c6e29a6cac29947fa0b2f0d76d299e39d2df2',
+     armv7l: '23136867801ce762ffb99dcaa78c6e29a6cac29947fa0b2f0d76d299e39d2df2',
+       i686: 'b2af49a50105b9cc2d99074712e25cd115813396209f601b40e07aa2a92b427d',
+     x86_64: '21704067f871c3e7605cd0bd4dfb558bcf7bbb569e8c405334761178582e5258'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'zlib' # R
+  depends_on 'glibc' => :library
+  depends_on 'zlib' => :library
 
   gnome
 
