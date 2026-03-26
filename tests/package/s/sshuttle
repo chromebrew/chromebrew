@@ -1,0 +1,3 @@
+#!/bin/bash
+sshuttle -h | head
+sshuttle -V
