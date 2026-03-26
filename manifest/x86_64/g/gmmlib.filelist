@@ -1,4 +1,4 @@
-# Total size: 1988557
+# Total size: 2005049
 /usr/local/include/igdgmm/GmmLib/CachePolicy/GmmCachePolicyConditionals.h
 /usr/local/include/igdgmm/GmmLib/CachePolicy/GmmCachePolicyResourceUsageDefinitions.h
 /usr/local/include/igdgmm/GmmLib/CachePolicy/GmmCachePolicyUndefineConditionals.h
@@ -68,5 +68,5 @@
 /usr/local/include/igdgmm/util/gfxDebug.h
 /usr/local/lib64/libigdgmm.so
 /usr/local/lib64/libigdgmm.so.12
-/usr/local/lib64/libigdgmm.so.12.9.0
+/usr/local/lib64/libigdgmm.so.12.10.0
 /usr/local/lib64/pkgconfig/igdgmm.pc
