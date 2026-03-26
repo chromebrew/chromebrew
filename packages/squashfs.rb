@@ -3,7 +3,7 @@ require 'package'
 class Squashfs < Package
   description 'Squashfs is a compressed read-only filesystem for Linux.'
   homepage 'https://github.com/plougher/squashfs-tools'
-  version '4.7.4'
+  version '4.7.5'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/plougher/squashfs-tools.git'
@@ -11,21 +11,21 @@ class Squashfs < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'df94c1a7353d41247a831e3af07fe413be06de0526c513b4a22da846732a7229',
-     armv7l: 'df94c1a7353d41247a831e3af07fe413be06de0526c513b4a22da846732a7229',
-       i686: 'b68c1afa2efc77ad37c60d49bd87432c3b605aae344eb44c196520bcbc0a6320',
-     x86_64: '6b14347f389d05604597759c425364f7a4b00dd0f69c53d11c393bf863d83a78'
+    aarch64: '4fd4f0eff882a2e3317654aee986074a2f14ddafcfb606c756806aa24dffb55c',
+     armv7l: '4fd4f0eff882a2e3317654aee986074a2f14ddafcfb606c756806aa24dffb55c',
+       i686: 'd08efb8eca9d291be96d81d4d68d60e026bbfc7ec2b5805aef22036171c549f8',
+     x86_64: '04cfc48509ad2f8e61e8ed733367665df3de6cca7cc4a2aa5a2648a5e317522d'
   })
 
   depends_on 'compressdoc' => :build
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
   depends_on 'help2man' => :build
-  depends_on 'lz4' # R
-  depends_on 'lzo' # R
-  depends_on 'xzutils' # R
-  depends_on 'zlib' # R
-  depends_on 'zstd' # R
+  depends_on 'lz4' => :executable
+  depends_on 'lzo' => :executable
+  depends_on 'xzutils' => :executable
+  depends_on 'zlib' => :executable
+  depends_on 'zstd' => :executable
 
   def self.patch
     FileUtils.cd('squashfs-tools') do
