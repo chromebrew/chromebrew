@@ -4,11 +4,11 @@ require 'convenience_functions'
 class Mullvad < Package
   description 'Privacy-focused browser'
   homepage 'https://mullvad.net/browser'
-  version '15.0.7'
+  version '15.0.8'
   license 'Mozilla Public License V2'
   compatibility 'x86_64'
   source_url "https://github.com/mullvad/mullvad-browser/releases/download/#{version}/mullvad-browser-linux-x86_64-#{version}.tar.xz"
-  source_sha256 '523d87e8e355a67dc4b7330d97cc6a3807fa51e3ba14600ab721fd0ca87defa5'
+  source_sha256 '12ec83c20368544084928ebac459e6b5e54d9cfb27d8f3a55d153d892f553e5a'
 
   depends_on 'gtk3'
   depends_on 'gdk_base'
