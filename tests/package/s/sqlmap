@@ -1,0 +1,3 @@
+#!/bin/bash
+sqlmap -h | head
+sqlmap --version
