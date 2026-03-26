@@ -264,6 +264,9 @@ def order_recursive_deps(d_pkg_input)
   return package_deps_build_order.delete_if { |p| !input_pkgs.include? p }.to_a
 end
 
+# Do not execute anything if we are required as a library rather than being run as a script.
+return unless __FILE__ == $PROGRAM_NAME
+
 if SKIP_UPDATE_CHECKS
   puts 'Skipping pip and gem remote update checks.'.orange
 else
