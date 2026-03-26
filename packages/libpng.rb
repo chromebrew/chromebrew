@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libpng < CMake
   description 'libpng is the official PNG reference library.'
   homepage 'https://www.libpng.org/pub/png/libpng.html'
-  version '1.6.55'
+  version '1.6.56'
   license 'libpng2'
   compatibility 'all'
   source_url 'https://github.com/pnggroup/libpng.git'
