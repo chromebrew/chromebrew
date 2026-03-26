@@ -3,10 +3,9 @@ require 'package'
 class Starship < Package
   description 'Cross-shell prompt for astronauts'
   homepage 'https://starship.rs'
-  version '1.24.1'
+  version '1.24.2'
   license 'ISC'
   compatibility 'all'
-
   source_url({
     aarch64: "https://github.com/starship/starship/releases/download/v#{version}/starship-arm-unknown-linux-musleabihf.tar.gz",
      armv7l: "https://github.com/starship/starship/releases/download/v#{version}/starship-arm-unknown-linux-musleabihf.tar.gz",
@@ -14,22 +13,25 @@ class Starship < Package
      x86_64: "https://github.com/starship/starship/releases/download/v#{version}/starship-x86_64-unknown-linux-musl.tar.gz"
   })
   source_sha256({
-    aarch64: '639503f751231eea5a51a2e6feaa24b6ee3c56b8a92457bd4337a2b778247d3e',
-     armv7l: '639503f751231eea5a51a2e6feaa24b6ee3c56b8a92457bd4337a2b778247d3e',
-       i686: '866d09eba481794fd5afaf43aaec4515f03f635f48074b0af7b9a913857a9bd6',
-     x86_64: '44a729c34aea5b0451fba49108cdc5ef6b1ae68db65e7623cc244a52efcd23d1'
+    aarch64: '1df5e6ff76725c72c049484863612a165eb0101fd372b28a3c45e4f38dcbe4ab',
+     armv7l: '1df5e6ff76725c72c049484863612a165eb0101fd372b28a3c45e4f38dcbe4ab',
+       i686: '8a720ac41d3e27a94d22eda7c3e5f0d2458228c8bcba0e79782a7ed9a0cd72f1',
+     x86_64: '00ff3c1f8ffb59b5c15d4b44c076bcca04d92cf0055c86b916248c14f3ae714a'
   })
 
   no_compile_needed
   no_shrink
   print_source_bashrc
 
-  def self.install
-    FileUtils.install 'starship', "#{CREW_DEST_PREFIX}/bin/starship", mode: 0o755
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d"
-    File.write "#{CREW_DEST_PREFIX}/etc/env.d/10-starship", <<~EOF
+  def self.build
+    File.write '10-starship', <<~EOF
       eval "$(starship init bash)"
       eval "$(starship completions bash)"
     EOF
+  end
+
+  def self.install
+    FileUtils.install 'starship', "#{CREW_DEST_PREFIX}/bin/starship", mode: 0o755
+    FileUtils.install '10-starship', "#{CREW_DEST_PREFIX}/etc/env.d/10-starship", mode: 0o644
   end
 end
