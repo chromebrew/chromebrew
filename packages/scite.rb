@@ -11,25 +11,25 @@ class Scite < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '14c46302f57c4f0567f59a58345981d942339764528e831e0971ed80dd67029f',
-     armv7l: '14c46302f57c4f0567f59a58345981d942339764528e831e0971ed80dd67029f',
-     x86_64: '517f950661d48ad1627bf3245a82395fdefdf2e37028dea484bd7330d9fc1781'
+    aarch64: 'cfb5ef1a6f3da57e8615ee4f3951dfdc78d9d1aa8d7c915fc0f43da9e4037148',
+     armv7l: 'cfb5ef1a6f3da57e8615ee4f3951dfdc78d9d1aa8d7c915fc0f43da9e4037148',
+     x86_64: 'ae8540ec972921087cc3907fd599baa8ef9135d29b359716a5894998795ef785'
   })
 
-  depends_on 'at_spi2_core' # R
-  depends_on 'cairo' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'gdk_pixbuf' # R
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
+  depends_on 'at_spi2_core' => :library
+  depends_on 'cairo' => :library
+  depends_on 'gcc_lib' => :library
+  depends_on 'gdk_pixbuf' => :library
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
   depends_on 'gnome_icon_theme'
-  depends_on 'gtk3' # R
-  depends_on 'harfbuzz' # R
+  depends_on 'gtk3' => :library
+  depends_on 'harfbuzz' => :library
   depends_on 'hicolor_icon_theme'
-  depends_on 'pango' # R
+  depends_on 'pango' => :library
   depends_on 'shared_mime_info'
   depends_on 'sommelier' => :logical
-  depends_on 'zlib' # R
+  depends_on 'zlib' => :library
 
   def self.build
     Dir.chdir 'lexilla/src' do
