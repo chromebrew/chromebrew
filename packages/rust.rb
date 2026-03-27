@@ -11,15 +11,15 @@ class Rust < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '28c0c6c2512de4a7bd6f37d322c0ba47a2613b1d1a6acd182accee01ee2a6670',
-     armv7l: '28c0c6c2512de4a7bd6f37d322c0ba47a2613b1d1a6acd182accee01ee2a6670',
-       i686: '15281966b2b4b32d13d8a450fc0b15d315d1396e4e6f9230a6f61758d0b50e7a',
-     x86_64: '362930662094d80f6a23a8219ae932fb4d0e207b4a72665bdec26436de4034e4'
+    aarch64: '3d2870a3d4aa467120fe7d8edddf67ee1c3d702fb19e3beb76a02673dc647c96',
+     armv7l: '3d2870a3d4aa467120fe7d8edddf67ee1c3d702fb19e3beb76a02673dc647c96',
+       i686: 'c60682b4f0d88231684f58ac948eb5252d0b130a65ca8cdff4470ee317dc1d84',
+     x86_64: 'c23559199807554e8eb300f7be2d2d9a2186c4307bd3e76d76a6d8a05a8809ea'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'zlib' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'zlib' => :library
 
   no_strip
   print_source_bashrc
