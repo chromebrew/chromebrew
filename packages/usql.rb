@@ -3,14 +3,14 @@ require 'package'
 class Usql < Package
   description 'Universal command-line interface for SQL databases'
   homepage 'https://github.com/xo/usql'
-  version '0.21.2'
+  version '0.21.4'
   license 'MIT'
   compatibility 'x86_64'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '6b95a95c591f97a1f1e2b2507d2174bfe70fb43e6db2ce0cf1b26d145716ae04'
+     x86_64: '724b9218da79ef04d0973e7605ad1c6502667f8f19818dd280b5d39c8e520c1e'
   })
 
   depends_on 'gcc_lib' => :executable
