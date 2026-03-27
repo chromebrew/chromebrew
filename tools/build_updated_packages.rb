@@ -23,6 +23,7 @@ crew_local_repo_root = '../' if crew_local_repo_root.to_s.empty?
 require File.join(crew_local_repo_root, 'lib/color')
 require File.join(crew_local_repo_root, 'lib/const')
 require File.join(crew_local_repo_root, 'lib/package')
+require File.join(crew_local_repo_root, 'lib/package_utils')
 require File.join(crew_local_repo_root, 'lib/require_gem')
 require_gem 'dagwood'
 require_gem 'highline'
@@ -146,7 +147,7 @@ def update_hashes_and_manifests(pkg)
     # Add build hashes.
     system "crew update_package_file #{pkg.name}" unless remote_binary.values.all?(nil)
     # Add manifests if we are in the right architecture.
-    if pkg.compatibility == 'all' || pkg.compatibility.include?(ARCH)
+    if PackageUtils.compatible?(pkg)
       # Using crew reinstall -f package here updates the hashes for
       # binaries.
       if system("yes | crew reinstall --regenerate-filelist #{'-f' unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES} #{pkg.name}") && File.exist?("#{CREW_META_PATH}/#{pkg.name}.filelist") && File.directory?(CREW_LOCAL_REPO_ROOT)
@@ -154,7 +155,8 @@ def update_hashes_and_manifests(pkg)
         FileUtils.cp "#{CREW_META_PATH}/#{pkg.name}.filelist", "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{pkg.name.chr}/#{pkg.name}.filelist"
       end
     else
-      puts "Package #{pkg.name} is not compatible with your device architecture (#{ARCH}). Manifests will not be added.".orange
+      puts PackageUtils.incompatible_reason(pkg).join("\n").orange
+      puts 'Manifests will not be added.'.lightred
       return
     end
   end
@@ -163,10 +165,11 @@ end
 def update_deps(pkg)
   unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES
     # Update package dependencies.
-    if pkg.compatibility == 'all' || pkg.compatibility.include?(ARCH)
+    if PackageUtils.compatible?(pkg)
       Kernel.system "tools/getrealdeps.rb #{pkg.name}"
     else
-      puts "Package #{pkg.name} is not compatible with your device architecture (#{ARCH}). Dependencies will not be checked.".orange
+      puts PackageUtils.incompatible_reason(pkg).join("\n").orange
+      puts 'Dependencies will not be checked.'.lightred
     end
   end
 end
@@ -356,7 +359,7 @@ updated_packages.each do |pkg|
   if !system("grep -q binary_sha256 #{pkg}") && !pkg_obj.no_compile_needed? && !pkg_obj.gem_compile_needed?
     puts "#{name.capitalize} #{pkg_obj.version} has no binaries and may not need them.".lightgreen
     next pkg
-  elsif pkg_obj.no_compile_needed? && (pkg_obj.compatibility == 'all' || pkg_obj.compatibility.include?(ARCH))
+  elsif pkg_obj.no_compile_needed? && PackageUtils.compatible?(pkg_obj)
     # Using crew reinstall -f package here updates the hashes for
     # binaries.
     system "yes | crew reinstall #{'-f --regenerate-filelist' unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES} #{name}"
