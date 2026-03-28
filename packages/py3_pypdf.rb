@@ -16,7 +16,6 @@ class Py3_pypdf < Pip
      x86_64: '09b98bf7a38ab3d661b9f83763f3d5073b9e8a826e121427d44202080812f011'
   })
 
-  depends_on 'python3'
   depends_on 'python3' => :logical
 
   no_source_build
