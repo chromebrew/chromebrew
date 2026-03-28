@@ -16,11 +16,11 @@ class Py3_pyicu < Pip
      x86_64: 'a1cabe5fb45e5ced367baaf4da9108805eb6ff04b37444734d4d2e14a186e3ed'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'icu4c' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'icu4c' => :library
   depends_on 'llvm_dev' => :build
-  depends_on 'python3' # R
+  depends_on 'python3' => :logical
 
   no_source_build
 end
