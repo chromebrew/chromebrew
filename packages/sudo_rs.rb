@@ -6,23 +6,24 @@ require 'buildsystems/rust'
 class Sudo_rs < RUST
   description 'A safety oriented and memory safe implementation of sudo and su written in Rust.'
   homepage 'https://github.com/trifectatechfoundation/sudo-rs'
-  version '0.2.11'
+  version '0.2.13'
   license 'Apache-2.0 AND MIT'
   compatibility 'all'
   source_url 'https://github.com/trifectatechfoundation/sudo-rs.git'
-  git_hashtag "v#{version.split('-').first}"
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e849b1f086888c6798ebe069c994bc0b8877341ac4efefb52279ce711d8a4ba9',
-     armv7l: 'e849b1f086888c6798ebe069c994bc0b8877341ac4efefb52279ce711d8a4ba9',
-       i686: '9721d5e3c6764654a019dd0a19127ff6fb5393753c3e17586528cb70ebe8bb34',
-     x86_64: '03e980b15ba7b0edf43c49887816b32850b252cfa6763104c07cae278ad9b11c'
+    aarch64: '10d040aeead7ff70abdfcca6230628f9b86add54a2570005f3179c47b8adb53b',
+     armv7l: '10d040aeead7ff70abdfcca6230628f9b86add54a2570005f3179c47b8adb53b',
+       i686: 'b35ffdf894798a287c01cc7d95c65cf27af736e194fd8d3b825860c96e07339e',
+     x86_64: 'af0b303e45466a30d675c31a65653582dddd1d6e24886a7bebbc3ef2506bb221'
   })
 
   depends_on 'gcc_lib' => :executable
   depends_on 'glibc' => :executable
   depends_on 'linux_pam' => :executable
+  depends_on 'rust' => :build
 
   conflicts_ok # su conflict with util_linux
 
