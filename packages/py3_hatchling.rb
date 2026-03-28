@@ -10,17 +10,17 @@ class Py3_hatchling < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '74f00702642047e3b4044dc1eab8de3000d707b308aa502e37452ae18af98c11',
-     armv7l: '74f00702642047e3b4044dc1eab8de3000d707b308aa502e37452ae18af98c11',
-       i686: 'b295a841632e069f86c4048b9a68c97983913ceb0db2306168e4121645e2680b',
-     x86_64: 'cad19827c2e451ed551b32f6a22be9a65623901027878792e8fba0c53fe448a7'
+    aarch64: '5fa9a5ad96b8de23be42551ea25a7af330503cce73f36ebc7320501be057adc7',
+     armv7l: '5fa9a5ad96b8de23be42551ea25a7af330503cce73f36ebc7320501be057adc7',
+       i686: 'c60ec91cade3110de15eb3e3e7d7745f1fbb252e1beb59e50e4b252db2e043c2',
+     x86_64: '4bcd66a8a6ae9331f023f1e31e33a7a35bb534610b1daf2aa384bc6961bb45cf'
   })
 
   depends_on 'py3_editables'
   depends_on 'py3_pathspec'
   depends_on 'py3_pluggy'
   depends_on 'py3_trove_classifiers'
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end
