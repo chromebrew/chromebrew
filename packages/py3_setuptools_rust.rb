@@ -18,7 +18,6 @@ class Py3_setuptools_rust < Pip
 
   depends_on 'py3_setuptools_scm' => :build
   depends_on 'py3_typing_extensions' => :build
-  depends_on 'python3'
   depends_on 'python3' => :logical
   depends_on 'rust'
 
