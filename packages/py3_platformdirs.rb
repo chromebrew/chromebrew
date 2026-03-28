@@ -16,7 +16,7 @@ class Py3_platformdirs < Pip
      x86_64: '147eed4b410127a0a89a1085633bcf13a10b7d16f7383eaf4bbb7b2a0ef7aaa0'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

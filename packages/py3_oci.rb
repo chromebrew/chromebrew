@@ -16,13 +16,13 @@ class Py3_oci < Pip
      x86_64: 'b225bb4d861452f35d91264045dcf3bfd254a2b9307bc7773d7d868047bab624'
   })
 
-  depends_on 'py3_python_dateutil'
-  depends_on 'py3_configparser'
-  depends_on 'py3_pyopenssl'
   depends_on 'py3_certifi'
-  depends_on 'py3_pytz'
+  depends_on 'py3_configparser'
   depends_on 'py3_cryptography'
-  depends_on 'python3' => :build
+  depends_on 'py3_pyopenssl'
+  depends_on 'py3_python_dateutil'
+  depends_on 'py3_pytz'
+  depends_on 'python3' => :logical
   depends_on 'rust' => :build
 
   no_source_build

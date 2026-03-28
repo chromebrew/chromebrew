@@ -16,11 +16,11 @@ class Py3_flask < Pip
      x86_64: '8d8650994b7c7ab78de89e99c21349c93617b4cdf30baf5fb46b812074eb1a01'
   })
 
-  depends_on 'py3_werkzeug'
-  depends_on 'py3_itsdangerous'
   depends_on 'py3_click'
+  depends_on 'py3_itsdangerous'
   depends_on 'py3_jinja2'
-  depends_on 'python3' => :build
+  depends_on 'py3_werkzeug'
+  depends_on 'python3' => :logical
 
   no_source_build
 end

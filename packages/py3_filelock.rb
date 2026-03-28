@@ -16,7 +16,7 @@ class Py3_filelock < Pip
      x86_64: '3aceeba402ab99bb373254329338f6172566d2f7146f067f2a658979add53d7c'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

@@ -16,7 +16,7 @@ class Py3_certifi < Pip
      x86_64: '2410a97f84af74edb1d97624104e6890ae0ab72d8de8b88183d17882189eeb2d'
   })
 
-  depends_on 'python3' # L
+  depends_on 'python3' => :logical
 
   no_source_build
 end

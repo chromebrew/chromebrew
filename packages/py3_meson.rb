@@ -18,6 +18,7 @@ class Py3_meson < Pip
 
   depends_on 'ninja'
   depends_on 'python3'
+  depends_on 'python3' => :logical
 
   no_source_build
 end
