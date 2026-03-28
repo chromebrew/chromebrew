@@ -10,10 +10,10 @@ class Py3_ruff < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ff14c930390737db5d0898ff92f3e6c537e9faff45141b325a93c5b6e5d136ce',
-     armv7l: 'ff14c930390737db5d0898ff92f3e6c537e9faff45141b325a93c5b6e5d136ce',
-       i686: 'e874706dad6d1e56bbdf0a09aae2db898f6657a8e420bae013ca5c6bdd99e2cd',
-     x86_64: 'ac7322e9a4770b67056b92e6334afc05e2f94c2b21f208c3301ca8d7a8005a7f'
+    aarch64: '46c8d561cf26be79d0e4f5f60655b2cc9450140b1970bab8c66244f5869ff3d3',
+     armv7l: '46c8d561cf26be79d0e4f5f60655b2cc9450140b1970bab8c66244f5869ff3d3',
+       i686: '9464738924876b294b8a029aa3daec7824aac27a0f0794993b67a821838f45c3',
+     x86_64: '28fae0010d0e55a3159597340aba48fe2ec04066a8741f5f6449afe084ed43c7'
   })
 
   depends_on 'gcc_lib' => :executable
@@ -21,6 +21,7 @@ class Py3_ruff < Pip
   depends_on 'llvm_dev' => :build
   depends_on 'py3_maturin' => :build
   depends_on 'python3' => :executable
+  depends_on 'python3' => :logical
   depends_on 'rust' => :build
 
   no_env_options
