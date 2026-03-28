@@ -14,10 +14,10 @@ class Py3_maturin < Python
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '38632366b25d2959de60a1200ca75348cb615e5c381b863c36bcff739066ed82',
-     armv7l: '38632366b25d2959de60a1200ca75348cb615e5c381b863c36bcff739066ed82',
-       i686: '43bc2334bfb05cee5f6ec43025dc8d00b38afeaea73d07ccda56de7fe2751a05',
-     x86_64: 'bcd3af9796f6d8d4ad83c6fa08e1a019c7212f1ae90292926af51670fbdd7c16'
+    aarch64: '6bd4e028d30af59c805460e3777037313e0e74766b7430241d5702176605c4ee',
+     armv7l: '6bd4e028d30af59c805460e3777037313e0e74766b7430241d5702176605c4ee',
+       i686: '16209d1dd2950751995176fbdfbd55928dc651d88e9ce5543136388ae51ec2c3',
+     x86_64: '98479f257ea00fd286aaf66927243322f64dafb4dc0ee7576bf0bb0f2da4a819'
   })
 
   depends_on 'gcc_lib' => :executable
@@ -27,5 +27,6 @@ class Py3_maturin < Python
   depends_on 'py3_setuptools_rust'
   depends_on 'python3'
   depends_on 'python3' => :executable
+  depends_on 'python3' => :logical
   depends_on 'rust'
 end
