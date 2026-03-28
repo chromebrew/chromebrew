@@ -17,14 +17,14 @@ class Py3_agate < Pip
   })
 
   depends_on 'py3_babel'
-  depends_on 'py3_six'
-  depends_on 'py3_pyicu'
-  depends_on 'py3_pytimeparse'
-  depends_on 'py3_slugify'
   depends_on 'py3_isodate'
   depends_on 'py3_leather'
   depends_on 'py3_parsedatetime'
-  depends_on 'python3' => :build
+  depends_on 'py3_pyicu'
+  depends_on 'py3_pytimeparse'
+  depends_on 'py3_six'
+  depends_on 'py3_slugify'
+  depends_on 'python3' => :logical
 
   no_source_build
 end

@@ -18,9 +18,9 @@ class Py3_brotlicffi < Pip
 
   depends_on 'brotli'
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
   depends_on 'py3_cffi'
-  depends_on 'python3' # L
+  depends_on 'python3' => :logical
 
   no_source_build
 end

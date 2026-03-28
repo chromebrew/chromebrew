@@ -12,10 +12,10 @@ class Xxd_standalone < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b9ec8ddc9ff249c03c9792e6f15691ab81b4bb671b1fef7e7370ecfb96381db1',
-     armv7l: 'b9ec8ddc9ff249c03c9792e6f15691ab81b4bb671b1fef7e7370ecfb96381db1',
-       i686: 'b7e2bee52d963f8928b1547c58fd8bcba83c2fa23855be8836c15169e62e57db',
-     x86_64: 'f4dc5be9d7b1e30412bb8dfae21aefbd626f052566f24515b1ada9d59c579f71'
+    aarch64: '8fa03db4693eef12a75d1d37239ca1512f80b2fe8881045af2c684363da89b73',
+     armv7l: '8fa03db4693eef12a75d1d37239ca1512f80b2fe8881045af2c684363da89b73',
+       i686: '481d1931ae6b2ca1fe5bd54a94edde23605216a87b6d0c85f0d87e1f2a7a0f32',
+     x86_64: '21946a1bd882a201911dfb311494f8843f2c4691aac40853d0899fb4f5e4987a'
   })
 
   depends_on 'glibc' => :executable
