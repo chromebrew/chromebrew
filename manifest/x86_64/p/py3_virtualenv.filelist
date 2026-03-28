@@ -1,12 +1,12 @@
-# Total size: 6778198
+# Total size: 6702774
 /usr/local/bin/virtualenv
-/usr/local/lib/python3.14/site-packages/virtualenv-20.39.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/virtualenv-20.39.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/virtualenv-20.39.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/virtualenv-20.39.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/virtualenv-20.39.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/virtualenv-20.39.0.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/virtualenv-20.39.0.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/virtualenv-21.2.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/virtualenv-21.2.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/virtualenv-21.2.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/virtualenv-21.2.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/virtualenv-21.2.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/virtualenv-21.2.0.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/virtualenv-21.2.0.dist-info/licenses/LICENSE
 /usr/local/lib/python3.14/site-packages/virtualenv/__init__.py
 /usr/local/lib/python3.14/site-packages/virtualenv/__main__.py
 /usr/local/lib/python3.14/site-packages/virtualenv/__pycache__/__init__.cpython-314.pyc
@@ -109,6 +109,8 @@
 /usr/local/lib/python3.14/site-packages/virtualenv/create/via_global_ref/builtin/pypy/common.py
 /usr/local/lib/python3.14/site-packages/virtualenv/create/via_global_ref/builtin/pypy/pypy3.py
 /usr/local/lib/python3.14/site-packages/virtualenv/create/via_global_ref/builtin/ref.py
+/usr/local/lib/python3.14/site-packages/virtualenv/create/via_global_ref/builtin/rustpython/__init__.py
+/usr/local/lib/python3.14/site-packages/virtualenv/create/via_global_ref/builtin/rustpython/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/virtualenv/create/via_global_ref/builtin/via_global_self_do.py
 /usr/local/lib/python3.14/site-packages/virtualenv/create/via_global_ref/store.py
 /usr/local/lib/python3.14/site-packages/virtualenv/create/via_global_ref/venv.py
@@ -124,11 +126,8 @@
 /usr/local/lib/python3.14/site-packages/virtualenv/discovery/discover.py
 /usr/local/lib/python3.14/site-packages/virtualenv/discovery/py_info.py
 /usr/local/lib/python3.14/site-packages/virtualenv/discovery/py_spec.py
-/usr/local/lib/python3.14/site-packages/virtualenv/discovery/windows/__init__.py
-/usr/local/lib/python3.14/site-packages/virtualenv/discovery/windows/__pycache__/__init__.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/virtualenv/discovery/windows/__pycache__/pep514.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/virtualenv/discovery/windows/pep514.py
 /usr/local/lib/python3.14/site-packages/virtualenv/info.py
+/usr/local/lib/python3.14/site-packages/virtualenv/py.typed
 /usr/local/lib/python3.14/site-packages/virtualenv/report.py
 /usr/local/lib/python3.14/site-packages/virtualenv/run/__init__.py
 /usr/local/lib/python3.14/site-packages/virtualenv/run/__pycache__/__init__.cpython-314.pyc
@@ -189,7 +188,6 @@
 /usr/local/lib/python3.14/site-packages/virtualenv/util/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/virtualenv/util/__pycache__/error.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/virtualenv/util/__pycache__/lock.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/virtualenv/util/__pycache__/specifier.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/virtualenv/util/__pycache__/zipapp.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/virtualenv/util/error.py
 /usr/local/lib/python3.14/site-packages/virtualenv/util/lock.py
@@ -201,7 +199,6 @@
 /usr/local/lib/python3.14/site-packages/virtualenv/util/path/_permission.py
 /usr/local/lib/python3.14/site-packages/virtualenv/util/path/_sync.py
 /usr/local/lib/python3.14/site-packages/virtualenv/util/path/_win.py
-/usr/local/lib/python3.14/site-packages/virtualenv/util/specifier.py
 /usr/local/lib/python3.14/site-packages/virtualenv/util/subprocess/__init__.py
 /usr/local/lib/python3.14/site-packages/virtualenv/util/subprocess/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/virtualenv/util/zipapp.py

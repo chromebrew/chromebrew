@@ -3,26 +3,26 @@ require 'buildsystems/pip'
 class Py3_numpy < Pip
   description 'NumPy is the fundamental package for array computing with Python.'
   homepage 'https://numpy.org/'
-  version "2.4.2-#{CREW_PY_VER}"
+  version "2.4.3-#{CREW_PY_VER}"
   license 'BSD'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'dbecb8b550e13111d2441f8272ebfe803c451386b0cb6bedb9deb5c694942bca',
-     armv7l: 'dbecb8b550e13111d2441f8272ebfe803c451386b0cb6bedb9deb5c694942bca',
-       i686: 'e6c2d8105e18b3b144213279a125b764257e718e20f8590c0596b5d22e0a852a',
-     x86_64: 'c30c3a4b13c614d7b556b90247e26360a5ded77d43e69abf730b68e05bd3c5d7'
+    aarch64: '2d57cdf63014dfda8e541f53f6c8315450deafe73e77873d07f5cdcd535e24cd',
+     armv7l: '2d57cdf63014dfda8e541f53f6c8315450deafe73e77873d07f5cdcd535e24cd',
+       i686: 'f1275fb1fbaba39e043e3dcf5a7320cdafc715217d5c9752041d2ccc078b8844',
+     x86_64: '1a3d95f60dde4668fd96415b339659dc43d4db4425d271b01584f5e67b44fe2e'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'lapack' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'lapack' => :library
   depends_on 'py3_cython' => :build
   depends_on 'py3_setuptools' => :build
-  depends_on 'python3' # R
-  depends_on 'zlib' # R
+  depends_on 'python3' => :logical
+  depends_on 'zlib' => :library
 
   no_source_build
 end
