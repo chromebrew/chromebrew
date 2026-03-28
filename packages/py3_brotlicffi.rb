@@ -10,17 +10,17 @@ class Py3_brotlicffi < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a3308c059695c241b62e5b6bdd9e216ac6db380af529ddef24e03d1b6ea75f08',
-     armv7l: 'a3308c059695c241b62e5b6bdd9e216ac6db380af529ddef24e03d1b6ea75f08',
-       i686: 'd6e16115e7bfec1725975bbe3918bcc40b537a16a6e3cc62cced72008fc8fed4',
-     x86_64: '226af815b2749ebeb35f9ff29b6f60240632849274d7d5e118f7a1e54ed1b89c'
+    aarch64: '895a32275311c851a067697fa46e9ca713849dcae4e548c4e76569da51fb4cd4',
+     armv7l: '895a32275311c851a067697fa46e9ca713849dcae4e548c4e76569da51fb4cd4',
+       i686: '294c8bd35ea69abb12c3aa41cb7dfd63b665d3dc700f03a561a647e2eb899b20',
+     x86_64: '8cea13963643583f9147407c028d18c28b7ffb1c67ae4231cbf7ed12c5dc1750'
   })
 
   depends_on 'brotli'
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
   depends_on 'py3_cffi'
-  depends_on 'python3' # L
+  depends_on 'python3' => :logical
 
   no_source_build
 end
