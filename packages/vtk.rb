@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Vtk < CMake
   description 'VTK is an open-source software system for image processing, 3D graphics, volume rendering and visualization.'
   homepage 'https://vtk.org/'
-  version '9.6.0'
+  version '9.6.1'
   license 'BSD-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.kitware.com/vtk/vtk.git'
