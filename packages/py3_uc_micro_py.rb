@@ -13,13 +13,13 @@ class Py3_uc_micro_py < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '945bba18fc521b2d317bf7492b6971cb5386b1f7c5f6608f722262b04be64d0c',
-     armv7l: '945bba18fc521b2d317bf7492b6971cb5386b1f7c5f6608f722262b04be64d0c',
-       i686: 'e97f1c44019abd71017c6d14ca4185e4e11df9eae8a64a447d72b584cfffbf35',
-     x86_64: '2886d2aa4c03c5f4c223dc1c3363e7130918b813a3333ef9a794bbc8adb417b0'
+    aarch64: 'db0296d9ea697c3785807dbca6fdd4d51981bdb70273cbbfba48160bdbe14080',
+     armv7l: 'db0296d9ea697c3785807dbca6fdd4d51981bdb70273cbbfba48160bdbe14080',
+       i686: '7cdbb42d5639c5b3147355f7691eda69e51928f765e1c40f55177b7ef79e1e8c',
+     x86_64: 'fd2cb1463962f28e5abd9e986574551c49b032bb72492cb056f78a7092adeb38'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end
