@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Pupnp < CMake
   description 'PUPnP is the Portable SDK for UPnP devices.'
   homepage 'https://pupnp.github.io/pupnp/'
-  version '1.18.3'
+  version '1.18.4'
   compatibility 'aarch64 armv7l x86_64'
   license 'BSD-3'
   source_url 'https://github.com/pupnp/pupnp.git'
