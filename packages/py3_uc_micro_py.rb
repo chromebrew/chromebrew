@@ -6,7 +6,7 @@ require 'buildsystems/pip'
 class Py3_uc_micro_py < Pip
   description 'Micro subset of unicode data files for linkify-it-py projects'
   homepage 'https://github.com/tsutsu3/uc.micro-py'
-  version '1.0.3'
+  version '2.0.0'
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
