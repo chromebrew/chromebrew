@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_imagesize < Pip
   description 'Imagesize gets image size from png/jpeg/jpeg2000/gif file.'
   homepage 'https://github.com/shibukawa/imagesize_py/'
-  version "1.4.1-#{CREW_PY_VER}"
+  version "2.0.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
