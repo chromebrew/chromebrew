@@ -16,7 +16,6 @@ class Py3_codespell < Pip
      x86_64: 'daeb0af269187cb056b01a90939ae06a3948612a07243313d838458698ac0fe1'
   })
 
-  depends_on 'python3'
   depends_on 'python3' => :logical
 
   no_source_build
