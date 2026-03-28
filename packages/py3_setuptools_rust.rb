@@ -10,16 +10,17 @@ class Py3_setuptools_rust < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7bf252fadaffb25db070b350e27e407526f61ed7cf1aa3595628071b5d8a6774',
-     armv7l: '7bf252fadaffb25db070b350e27e407526f61ed7cf1aa3595628071b5d8a6774',
-       i686: '4320f8666cebbc8e246db45938ae13e7b941a056da78fd5d45223e6b0e48457f',
-     x86_64: 'b24840af22ac51d122128d22fd00eaa2b3dc15109cabe07fe1262ae54da58a60'
+    aarch64: '6b64f300cb41d6b2fe2cd3a8534cb37bd1931c465962cb3bc71bb925dba8aa68',
+     armv7l: '6b64f300cb41d6b2fe2cd3a8534cb37bd1931c465962cb3bc71bb925dba8aa68',
+       i686: 'df33d179b0b22a78667a6dcb37f4867b4769cd5a5f2212afa295a9dbec1f25be',
+     x86_64: '32326de47197af564fc140c4d5a8ccf7856995e95ae32ce08afe06f56beff709'
   })
 
-  depends_on 'rust'
   depends_on 'py3_setuptools_scm' => :build
   depends_on 'py3_typing_extensions' => :build
   depends_on 'python3'
+  depends_on 'python3' => :logical
+  depends_on 'rust'
 
   no_source_build
 end
