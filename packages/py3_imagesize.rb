@@ -16,7 +16,7 @@ class Py3_imagesize < Pip
      x86_64: '2f3268ed82f81bc099dc072c910ce4dfec7618283c9314f69ae67705fc447c3b'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

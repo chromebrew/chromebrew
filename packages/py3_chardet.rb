@@ -16,7 +16,7 @@ class Py3_chardet < Pip
      x86_64: 'bd030455c3f3b92c92e54583cc9c793cf289bce4c861198b063fb2bf628e38ac'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

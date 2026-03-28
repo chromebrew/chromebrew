@@ -19,7 +19,7 @@ class Py3_json2xml < Pip
   depends_on 'py3_dicttoxml'
   depends_on 'py3_requests'
   depends_on 'py3_xmltodict'
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

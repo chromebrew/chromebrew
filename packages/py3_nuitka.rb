@@ -16,7 +16,7 @@ class Py3_nuitka < Pip
      x86_64: '30c842ef339d29a51b0a53b0f460836132fd55231355505aac13e3f650b5d747'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end
