@@ -1,4 +1,4 @@
-# Total size: 1651395
+# Total size: 1723058
 /usr/local/lib/python3.14/site-packages/backend/__init__.py
 /usr/local/lib/python3.14/site-packages/backend/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/backend/__pycache__/run_server.cpython-314.pyc
@@ -51,13 +51,13 @@
 /usr/local/lib/python3.14/site-packages/evals/simple_evals/__pycache__/simpleqa_eval.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/evals/simple_evals/run_eval.py
 /usr/local/lib/python3.14/site-packages/evals/simple_evals/simpleqa_eval.py
-/usr/local/lib/python3.14/site-packages/gpt_researcher-0.14.6.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/gpt_researcher-0.14.6.dist-info/LICENSE
-/usr/local/lib/python3.14/site-packages/gpt_researcher-0.14.6.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/gpt_researcher-0.14.6.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/gpt_researcher-0.14.6.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/gpt_researcher-0.14.6.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/gpt_researcher-0.14.6.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/gpt_researcher-0.14.8.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/gpt_researcher-0.14.8.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/gpt_researcher-0.14.8.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/gpt_researcher-0.14.8.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/gpt_researcher-0.14.8.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/gpt_researcher-0.14.8.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/gpt_researcher-0.14.8.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/gpt_researcher/__init__.py
 /usr/local/lib/python3.14/site-packages/gpt_researcher/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/gpt_researcher/__pycache__/agent.cpython-314.pyc
@@ -114,7 +114,9 @@
 /usr/local/lib/python3.14/site-packages/gpt_researcher/llm_provider/image/__init__.py
 /usr/local/lib/python3.14/site-packages/gpt_researcher/llm_provider/image/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/gpt_researcher/llm_provider/image/__pycache__/image_generator.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/gpt_researcher/llm_provider/image/__pycache__/modelslab_image_generator.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/gpt_researcher/llm_provider/image/image_generator.py
+/usr/local/lib/python3.14/site-packages/gpt_researcher/llm_provider/image/modelslab_image_generator.py
 /usr/local/lib/python3.14/site-packages/gpt_researcher/mcp/__init__.py
 /usr/local/lib/python3.14/site-packages/gpt_researcher/mcp/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/gpt_researcher/mcp/__pycache__/client.cpython-314.pyc
@@ -141,6 +143,10 @@
 /usr/local/lib/python3.14/site-packages/gpt_researcher/retrievers/bing/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/gpt_researcher/retrievers/bing/__pycache__/bing.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/gpt_researcher/retrievers/bing/bing.py
+/usr/local/lib/python3.14/site-packages/gpt_researcher/retrievers/bocha/__init__.py
+/usr/local/lib/python3.14/site-packages/gpt_researcher/retrievers/bocha/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/gpt_researcher/retrievers/bocha/__pycache__/bocha.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/gpt_researcher/retrievers/bocha/bocha.py
 /usr/local/lib/python3.14/site-packages/gpt_researcher/retrievers/custom/__init__.py
 /usr/local/lib/python3.14/site-packages/gpt_researcher/retrievers/custom/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/gpt_researcher/retrievers/custom/__pycache__/custom.cpython-314.pyc
@@ -312,6 +318,16 @@
 /usr/local/lib/python3.14/site-packages/multi_agents/memory/__pycache__/research.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/multi_agents/memory/draft.py
 /usr/local/lib/python3.14/site-packages/multi_agents/memory/research.py
+/usr/local/lib/python3.14/site-packages/multi_agents_ag2/__init__.py
+/usr/local/lib/python3.14/site-packages/multi_agents_ag2/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/multi_agents_ag2/__pycache__/main.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/multi_agents_ag2/agents/__init__.py
+/usr/local/lib/python3.14/site-packages/multi_agents_ag2/agents/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/multi_agents_ag2/agents/__pycache__/editor.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/multi_agents_ag2/agents/__pycache__/orchestrator.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/multi_agents_ag2/agents/editor.py
+/usr/local/lib/python3.14/site-packages/multi_agents_ag2/agents/orchestrator.py
+/usr/local/lib/python3.14/site-packages/multi_agents_ag2/main.py
 /usr/local/lib/python3.14/site-packages/tests/__init__.py
 /usr/local/lib/python3.14/site-packages/tests/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tests/__pycache__/documents-report-source.cpython-314.pyc
