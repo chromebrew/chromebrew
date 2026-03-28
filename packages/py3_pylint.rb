@@ -16,7 +16,7 @@ class Py3_pylint < Pip
     aarch64: '8b420597513a1fcc158f5e2b0dbf85b4b51c410db08180c6a2c9bcd07388153f',
      armv7l: '8b420597513a1fcc158f5e2b0dbf85b4b51c410db08180c6a2c9bcd07388153f',
        i686: 'ff8b24182d45732fe190ad1e60ea4690a4167af0d0395bc1b5db527e853dde7e',
-     x86_64: '62eb663f5db47e7ac242bd0173fc340ad232d6d7e4fcd238d8167c16da16173f'
+     x86_64: '3e62d32e0ccb98d975cbed11aec1fc39327f75eae7a6780b066687207bdba1d3'
   })
 
   depends_on 'python3' => :logical

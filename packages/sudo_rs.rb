@@ -20,9 +20,9 @@ class Sudo_rs < RUST
      x86_64: '03e980b15ba7b0edf43c49887816b32850b252cfa6763104c07cae278ad9b11c'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'linux_pam' # R
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'linux_pam' => :executable
 
   conflicts_ok # su conflict with util_linux
 

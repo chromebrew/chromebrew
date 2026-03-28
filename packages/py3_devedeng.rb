@@ -16,10 +16,10 @@ class Py3_devedeng < Python
      x86_64: 'cfe5ea084596c70763ef59ced3c69570d0f3df93d3363c4e1d6d18462ef5a935'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'gtk3'
   depends_on 'py3_pycairo'
   depends_on 'py3_pygobject'
-  depends_on 'gtk3'
+  depends_on 'python3' => :logical
 
   python_install_extras do
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
