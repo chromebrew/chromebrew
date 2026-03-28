@@ -10,14 +10,14 @@ class Py3_speechrecognition < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aa59b1922c620298fda2517323e3a4a55d36e48362b5948edfac2ddefcd0ca54',
-     armv7l: 'aa59b1922c620298fda2517323e3a4a55d36e48362b5948edfac2ddefcd0ca54',
-       i686: '282ac005a527a601898d9d8c50d5ba5ec74dfdf0ee4548b2a225d1cfd64c2bd6',
-     x86_64: '3be30481e7aefcb7fa18c4fdf4527d4d5ff94439b2ed8d07e16fc6eee9b2838a'
+    aarch64: '7e3ebe04fe71fc5c0bee1ff53bdae4f16b37ea58b71fe96d43f336fb85a8717e',
+     armv7l: '7e3ebe04fe71fc5c0bee1ff53bdae4f16b37ea58b71fe96d43f336fb85a8717e',
+       i686: '6bcb0a32fa0c7822ac24562cc90cdf269a4673b56ebd34b269e670f35f125403',
+     x86_64: '42fe84f890c268ee72c2063d88aad9c7a676632fff20295587f0eca66c5c398c'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'python3' # R
+  depends_on 'glibc' => :library
+  depends_on 'python3' => :logical
 
   no_source_build
 end
