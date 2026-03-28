@@ -3,24 +3,24 @@ require 'buildsystems/pip'
 class Py3_flask < Pip
   description 'Flask is a simple framework for building complex web applications.'
   homepage 'https://palletsprojects.com/p/flask/'
-  version "3.1.2-#{CREW_PY_VER}"
+  version "3.1.3-#{CREW_PY_VER}"
   license 'BSD-3'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '12164ea2a39bff8a16d9db109ff1e5b39e76e6d12f2aaa2c832d49ad84de850c',
-     armv7l: '12164ea2a39bff8a16d9db109ff1e5b39e76e6d12f2aaa2c832d49ad84de850c',
-       i686: '99ff25608583727162f76a3966408a095a27dc348f3ae42945f5adcc59ea1c7e',
-     x86_64: '8d8650994b7c7ab78de89e99c21349c93617b4cdf30baf5fb46b812074eb1a01'
+    aarch64: 'c993af720ea777fad1b4b1ead6245e528175e5b6b589f8b1eb11766bacefc3b6',
+     armv7l: 'c993af720ea777fad1b4b1ead6245e528175e5b6b589f8b1eb11766bacefc3b6',
+       i686: 'fb89968321e3a0f3a53a46bf05ea5802bf5a195d56c86e7c782f7aa73846dd60',
+     x86_64: '7d24ded440ef3fa0974e2217bcaed1459fee71e1883c00d7535623334be07cf9'
   })
 
-  depends_on 'py3_werkzeug'
-  depends_on 'py3_itsdangerous'
   depends_on 'py3_click'
+  depends_on 'py3_itsdangerous'
   depends_on 'py3_jinja2'
-  depends_on 'python3' => :build
+  depends_on 'py3_werkzeug'
+  depends_on 'python3' => :logical
 
   no_source_build
 end

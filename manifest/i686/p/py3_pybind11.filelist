@@ -1,12 +1,12 @@
-# Total size: 1110568
+# Total size: 1170548
 /usr/local/bin/pybind11-config
-/usr/local/lib/python3.14/site-packages/pybind11-3.0.1.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/pybind11-3.0.1.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/pybind11-3.0.1.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/pybind11-3.0.1.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/pybind11-3.0.1.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/pybind11-3.0.1.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/pybind11-3.0.1.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/pybind11-3.0.2.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/pybind11-3.0.2.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/pybind11-3.0.2.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/pybind11-3.0.2.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/pybind11-3.0.2.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/pybind11-3.0.2.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/pybind11-3.0.2.dist-info/licenses/LICENSE
 /usr/local/lib/python3.14/site-packages/pybind11/__init__.py
 /usr/local/lib/python3.14/site-packages/pybind11/__main__.py
 /usr/local/lib/python3.14/site-packages/pybind11/__pycache__/__init__.cpython-314.pyc
@@ -27,6 +27,7 @@
 /usr/local/lib/python3.14/site-packages/pybind11/include/pybind11/conduit/pybind11_platform_abi_id.h
 /usr/local/lib/python3.14/site-packages/pybind11/include/pybind11/conduit/wrap_include_python_h.h
 /usr/local/lib/python3.14/site-packages/pybind11/include/pybind11/critical_section.h
+/usr/local/lib/python3.14/site-packages/pybind11/include/pybind11/detail/argument_vector.h
 /usr/local/lib/python3.14/site-packages/pybind11/include/pybind11/detail/class.h
 /usr/local/lib/python3.14/site-packages/pybind11/include/pybind11/detail/common.h
 /usr/local/lib/python3.14/site-packages/pybind11/include/pybind11/detail/cpp_conduit.h
@@ -34,6 +35,7 @@
 /usr/local/lib/python3.14/site-packages/pybind11/include/pybind11/detail/dynamic_raw_ptr_cast_if_possible.h
 /usr/local/lib/python3.14/site-packages/pybind11/include/pybind11/detail/exception_translation.h
 /usr/local/lib/python3.14/site-packages/pybind11/include/pybind11/detail/function_record_pyobject.h
+/usr/local/lib/python3.14/site-packages/pybind11/include/pybind11/detail/holder_caster_foreign_helpers.h
 /usr/local/lib/python3.14/site-packages/pybind11/include/pybind11/detail/init.h
 /usr/local/lib/python3.14/site-packages/pybind11/include/pybind11/detail/internals.h
 /usr/local/lib/python3.14/site-packages/pybind11/include/pybind11/detail/native_enum_data.h
