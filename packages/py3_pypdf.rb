@@ -17,6 +17,7 @@ class Py3_pypdf < Pip
   })
 
   depends_on 'python3'
+  depends_on 'python3' => :logical
 
   no_source_build
 end

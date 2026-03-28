@@ -16,9 +16,9 @@ class Py3_attrs < Pip
      x86_64: '3412ff5210e5d010755236beb8c580c2464109ef972221d0aad2f330ce24a212'
   })
 
-  depends_on 'python3' => :build
-  depends_on 'py3_hatchling' => :build
   depends_on 'py3_hatch_vcs' => :build
+  depends_on 'py3_hatchling' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end
