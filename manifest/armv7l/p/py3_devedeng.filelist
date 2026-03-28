@@ -1,14 +1,14 @@
-# Total size: 3057024
+# Total size: 3055984
 /usr/local/bin/copy_files_verbose
 /usr/local/bin/devede
 /usr/local/bin/devede_ng
 /usr/local/lib/python3.14/site-packages/__pycache__/copy_files_verbose.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/copy_files_verbose.py
-/usr/local/lib/python3.14/site-packages/devedeng-4.21.0-py3.14.egg-info/PKG-INFO
-/usr/local/lib/python3.14/site-packages/devedeng-4.21.0-py3.14.egg-info/SOURCES.txt
-/usr/local/lib/python3.14/site-packages/devedeng-4.21.0-py3.14.egg-info/dependency_links.txt
-/usr/local/lib/python3.14/site-packages/devedeng-4.21.0-py3.14.egg-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/devedeng-4.21.0-py3.14.egg-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/devedeng-4.21.3-py3.14.egg-info/PKG-INFO
+/usr/local/lib/python3.14/site-packages/devedeng-4.21.3-py3.14.egg-info/SOURCES.txt
+/usr/local/lib/python3.14/site-packages/devedeng-4.21.3-py3.14.egg-info/dependency_links.txt
+/usr/local/lib/python3.14/site-packages/devedeng-4.21.3-py3.14.egg-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/devedeng-4.21.3-py3.14.egg-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/devedeng/__init__.py
 /usr/local/lib/python3.14/site-packages/devedeng/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/devedeng/__pycache__/about.cpython-314.pyc
