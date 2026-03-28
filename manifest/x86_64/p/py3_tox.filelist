@@ -1,12 +1,12 @@
-# Total size: 1390537
+# Total size: 1637471
 /usr/local/bin/tox
-/usr/local/lib/python3.14/site-packages/tox-4.36.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/tox-4.36.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/tox-4.36.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/tox-4.36.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/tox-4.36.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/tox-4.36.0.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/tox-4.36.0.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/tox-4.51.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/tox-4.51.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/tox-4.51.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/tox-4.51.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/tox-4.51.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/tox-4.51.0.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/tox-4.51.0.dist-info/licenses/LICENSE
 /usr/local/lib/python3.14/site-packages/tox/__init__.py
 /usr/local/lib/python3.14/site-packages/tox/__main__.py
 /usr/local/lib/python3.14/site-packages/tox/__pycache__/__init__.cpython-314.pyc
@@ -38,6 +38,7 @@
 /usr/local/lib/python3.14/site-packages/tox/config/loader/__pycache__/api.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tox/config/loader/__pycache__/convert.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tox/config/loader/__pycache__/memory.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/tox/config/loader/__pycache__/native.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tox/config/loader/__pycache__/replacer.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tox/config/loader/__pycache__/section.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tox/config/loader/__pycache__/str_convert.cpython-314.pyc
@@ -51,6 +52,7 @@
 /usr/local/lib/python3.14/site-packages/tox/config/loader/ini/factor.py
 /usr/local/lib/python3.14/site-packages/tox/config/loader/ini/replace.py
 /usr/local/lib/python3.14/site-packages/tox/config/loader/memory.py
+/usr/local/lib/python3.14/site-packages/tox/config/loader/native.py
 /usr/local/lib/python3.14/site-packages/tox/config/loader/replacer.py
 /usr/local/lib/python3.14/site-packages/tox/config/loader/section.py
 /usr/local/lib/python3.14/site-packages/tox/config/loader/str_convert.py
@@ -58,9 +60,11 @@
 /usr/local/lib/python3.14/site-packages/tox/config/loader/toml/__init__.py
 /usr/local/lib/python3.14/site-packages/tox/config/loader/toml/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tox/config/loader/toml/__pycache__/_api.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/tox/config/loader/toml/__pycache__/_product.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tox/config/loader/toml/__pycache__/_replace.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tox/config/loader/toml/__pycache__/_validate.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tox/config/loader/toml/_api.py
+/usr/local/lib/python3.14/site-packages/tox/config/loader/toml/_product.py
 /usr/local/lib/python3.14/site-packages/tox/config/loader/toml/_replace.py
 /usr/local/lib/python3.14/site-packages/tox/config/loader/toml/_validate.py
 /usr/local/lib/python3.14/site-packages/tox/config/main.py
@@ -138,15 +142,16 @@
 /usr/local/lib/python3.14/site-packages/tox/session/cmd/__pycache__/exec_.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tox/session/cmd/__pycache__/legacy.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tox/session/cmd/__pycache__/list_env.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/tox/session/cmd/__pycache__/man.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tox/session/cmd/__pycache__/quickstart.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tox/session/cmd/__pycache__/schema.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/tox/session/cmd/__pycache__/show_config.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tox/session/cmd/__pycache__/version_flag.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tox/session/cmd/depends.py
 /usr/local/lib/python3.14/site-packages/tox/session/cmd/devenv.py
 /usr/local/lib/python3.14/site-packages/tox/session/cmd/exec_.py
 /usr/local/lib/python3.14/site-packages/tox/session/cmd/legacy.py
 /usr/local/lib/python3.14/site-packages/tox/session/cmd/list_env.py
+/usr/local/lib/python3.14/site-packages/tox/session/cmd/man.py
 /usr/local/lib/python3.14/site-packages/tox/session/cmd/quickstart.py
 /usr/local/lib/python3.14/site-packages/tox/session/cmd/run/__init__.py
 /usr/local/lib/python3.14/site-packages/tox/session/cmd/run/__pycache__/__init__.cpython-314.pyc
@@ -159,7 +164,16 @@
 /usr/local/lib/python3.14/site-packages/tox/session/cmd/run/sequential.py
 /usr/local/lib/python3.14/site-packages/tox/session/cmd/run/single.py
 /usr/local/lib/python3.14/site-packages/tox/session/cmd/schema.py
-/usr/local/lib/python3.14/site-packages/tox/session/cmd/show_config.py
+/usr/local/lib/python3.14/site-packages/tox/session/cmd/show_config/__init__.py
+/usr/local/lib/python3.14/site-packages/tox/session/cmd/show_config/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/tox/session/cmd/show_config/__pycache__/common.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/tox/session/cmd/show_config/__pycache__/ini.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/tox/session/cmd/show_config/__pycache__/json_format.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/tox/session/cmd/show_config/__pycache__/toml_format.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/tox/session/cmd/show_config/common.py
+/usr/local/lib/python3.14/site-packages/tox/session/cmd/show_config/ini.py
+/usr/local/lib/python3.14/site-packages/tox/session/cmd/show_config/json_format.py
+/usr/local/lib/python3.14/site-packages/tox/session/cmd/show_config/toml_format.py
 /usr/local/lib/python3.14/site-packages/tox/session/cmd/version_flag.py
 /usr/local/lib/python3.14/site-packages/tox/session/env_select.py
 /usr/local/lib/python3.14/site-packages/tox/session/state.py
@@ -183,10 +197,13 @@
 /usr/local/lib/python3.14/site-packages/tox/tox_env/python/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tox/tox_env/python/__pycache__/api.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tox/tox_env/python/__pycache__/dependency_groups.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/tox/tox_env/python/__pycache__/extras.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tox/tox_env/python/__pycache__/package.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/tox/tox_env/python/__pycache__/pylock.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tox/tox_env/python/__pycache__/runner.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tox/tox_env/python/api.py
 /usr/local/lib/python3.14/site-packages/tox/tox_env/python/dependency_groups.py
+/usr/local/lib/python3.14/site-packages/tox/tox_env/python/extras.py
 /usr/local/lib/python3.14/site-packages/tox/tox_env/python/package.py
 /usr/local/lib/python3.14/site-packages/tox/tox_env/python/pip/__init__.py
 /usr/local/lib/python3.14/site-packages/tox/tox_env/python/pip/__pycache__/__init__.cpython-314.pyc
@@ -202,11 +219,13 @@
 /usr/local/lib/python3.14/site-packages/tox/tox_env/python/pip/req/file.py
 /usr/local/lib/python3.14/site-packages/tox/tox_env/python/pip/req/util.py
 /usr/local/lib/python3.14/site-packages/tox/tox_env/python/pip/req_file.py
+/usr/local/lib/python3.14/site-packages/tox/tox_env/python/pylock.py
 /usr/local/lib/python3.14/site-packages/tox/tox_env/python/runner.py
 /usr/local/lib/python3.14/site-packages/tox/tox_env/python/virtual_env/__init__.py
 /usr/local/lib/python3.14/site-packages/tox/tox_env/python/virtual_env/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tox/tox_env/python/virtual_env/__pycache__/api.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tox/tox_env/python/virtual_env/__pycache__/runner.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/tox/tox_env/python/virtual_env/__pycache__/subprocess_adapter.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tox/tox_env/python/virtual_env/api.py
 /usr/local/lib/python3.14/site-packages/tox/tox_env/python/virtual_env/package/__init__.py
 /usr/local/lib/python3.14/site-packages/tox/tox_env/python/virtual_env/package/__pycache__/__init__.cpython-314.pyc
@@ -217,6 +236,7 @@
 /usr/local/lib/python3.14/site-packages/tox/tox_env/python/virtual_env/package/pyproject.py
 /usr/local/lib/python3.14/site-packages/tox/tox_env/python/virtual_env/package/util.py
 /usr/local/lib/python3.14/site-packages/tox/tox_env/python/virtual_env/runner.py
+/usr/local/lib/python3.14/site-packages/tox/tox_env/python/virtual_env/subprocess_adapter.py
 /usr/local/lib/python3.14/site-packages/tox/tox_env/register.py
 /usr/local/lib/python3.14/site-packages/tox/tox_env/runner.py
 /usr/local/lib/python3.14/site-packages/tox/tox_env/util.py
@@ -235,3 +255,4 @@
 /usr/local/lib/python3.14/site-packages/tox/util/path.py
 /usr/local/lib/python3.14/site-packages/tox/util/spinner.py
 /usr/local/lib/python3.14/site-packages/tox/version.py
+/usr/local/share/man/man1/tox.1.zst
