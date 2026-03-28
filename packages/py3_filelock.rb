@@ -3,20 +3,20 @@ require 'buildsystems/pip'
 class Py3_filelock < Pip
   description 'FileLock implements a platform independent file lock in Python.'
   homepage 'https://github.com/benediktschmitt/py-filelock/'
-  version "3.24.2-#{CREW_PY_VER}"
+  version "3.25.2-#{CREW_PY_VER}"
   license 'Unlicense'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'eb7be91ba076d65fea72ffdf87c5ba4d762a8ca40cc96a939d66c12d81c3c4e1',
-     armv7l: 'eb7be91ba076d65fea72ffdf87c5ba4d762a8ca40cc96a939d66c12d81c3c4e1',
-       i686: '337484c84dcbfdf4b79f4a7a366f54a5b4e37d3fbd356bb73f542c8a45300a72',
-     x86_64: '3aceeba402ab99bb373254329338f6172566d2f7146f067f2a658979add53d7c'
+    aarch64: 'e9c7be9ffc46349a6c66658aa5b4816f0499e8d311c70b8c3a54ad29d6877cfa',
+     armv7l: 'e9c7be9ffc46349a6c66658aa5b4816f0499e8d311c70b8c3a54ad29d6877cfa',
+       i686: '6b7db9205c443c12549dabb81c81b28f5cc5909c18a0c52aea6b3ccdfa14e3ab',
+     x86_64: 'a4fff7d9328453f61323506072909a4cb3d82af5523bc544f88a4d5384bbcce6'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end
