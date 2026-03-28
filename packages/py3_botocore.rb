@@ -16,7 +16,7 @@ class Py3_botocore < Pip
      x86_64: '08443087f05419ec94019d3eb89901750f79dea290044e6ec4f62b388b3e2fd3'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end
