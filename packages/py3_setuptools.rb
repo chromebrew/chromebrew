@@ -20,7 +20,6 @@ class Py3_setuptools < Pip
   })
 
   depends_on 'py3_packaging'
-  depends_on 'python3'
   depends_on 'python3' => :logical
 
   conflicts_ok
