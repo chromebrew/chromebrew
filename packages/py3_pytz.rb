@@ -10,13 +10,13 @@ class Py3_pytz < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '681b2d966bd26759824acaeecd66bcb74a69805f2fd636c2206be51a14f03b2c',
-     armv7l: '681b2d966bd26759824acaeecd66bcb74a69805f2fd636c2206be51a14f03b2c',
-       i686: 'ba168aa832bb782bfaa30432cd35f5ae6f0b9f14ac73a0c5b92034754c987a72',
-     x86_64: 'ed8e81014f0d5181735ff129e99b8c90439c1be0a409b0fcebbb378e593d028c'
+    aarch64: '60592466008687879a1af66ae06df868d33216ebb5b070eb0d7b5c1dce5184cf',
+     armv7l: '60592466008687879a1af66ae06df868d33216ebb5b070eb0d7b5c1dce5184cf',
+       i686: '4f11205d551c707bdadffcc192d2e844aecc94d67c10c88d963340484598e4fa',
+     x86_64: '7835dce8943d630ce420d1ab7b06f38d9cd2ab8d7229f0db4719ff31549e7ef9'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end
