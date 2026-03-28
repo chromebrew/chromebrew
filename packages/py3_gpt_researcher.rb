@@ -10,9 +10,9 @@ class Py3_gpt_researcher < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e106eb396b2b49cfad300af50f947f3a55595ed73059ee99b272b5da3ee917ec',
-     armv7l: 'e106eb396b2b49cfad300af50f947f3a55595ed73059ee99b272b5da3ee917ec',
-     x86_64: '9c454cb385c543e7a9fe46af80681e0e5c3a860a3adb2059755555a72cd8cbd2'
+    aarch64: 'be223ab557e68dd7d9de8b7694e71fa94a47dd5f7862bb3a904b88187f1a8a02',
+     armv7l: 'be223ab557e68dd7d9de8b7694e71fa94a47dd5f7862bb3a904b88187f1a8a02',
+     x86_64: '5bd7d4f5f1fb4725b93fdcbda02e24853f39ce067a5d00478a5a62a341016c54'
   })
 
   depends_on 'llvm_dev' => :build
@@ -20,7 +20,7 @@ class Py3_gpt_researcher < Pip
   depends_on 'py3_pillow' => :build
   depends_on 'py3_pypdf' => :build
   depends_on 'py3_setuptools_rust' => :build
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
   depends_on 'rust' => :build
 
   no_source_build
