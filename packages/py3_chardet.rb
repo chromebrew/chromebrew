@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_chardet < Pip
   description 'Chardet is a universal encoding detector.'
   homepage 'https://github.com/chardet/chardet/'
-  version "6.0.0.post1-#{CREW_PY_VER}"
+  version "7.4.0.post1-#{CREW_PY_VER}"
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'SKIP'
