@@ -12,17 +12,17 @@ class Py3_pygobject < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f9674e905dac7889192971e3ad7f61f7f2813bc57910c90e2b4301681a0f71d2',
-     armv7l: 'f9674e905dac7889192971e3ad7f61f7f2813bc57910c90e2b4301681a0f71d2',
-     x86_64: '715523da5476aef30b24062fc571dfdd1d10745c61e362787264ecc5aa7d5372'
+    aarch64: '54b3776f52a1729d3f875cf20343951a89fa7a728a4eed45e9948665381d8d8a',
+     armv7l: '54b3776f52a1729d3f875cf20343951a89fa7a728a4eed45e9948665381d8d8a',
+     x86_64: 'd626b727d8210fd48dc83368bfc8b09362f323613d75abb8c078340fdf82399f'
   })
 
-  depends_on 'cairo' # R
+  depends_on 'cairo' => :library
   depends_on 'gcc_lib' # R
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
-  depends_on 'harfbuzz' # R
-  depends_on 'libffi' # R
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'harfbuzz' => :library
+  depends_on 'libffi' => :library
   depends_on 'py3_meson_python' => :build
   depends_on 'py3_pycairo' => :build
   depends_on 'python3' # R
