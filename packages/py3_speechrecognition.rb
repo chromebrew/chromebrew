@@ -16,6 +16,7 @@ class Py3_speechrecognition < Pip
      x86_64: '42fe84f890c268ee72c2063d88aad9c7a676632fff20295587f0eca66c5c398c'
   })
 
+  depends_on 'glibc' => :executable
   depends_on 'glibc' => :library
   depends_on 'python3' => :logical
 
