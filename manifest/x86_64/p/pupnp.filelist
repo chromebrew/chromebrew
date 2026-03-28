@@ -1,4 +1,4 @@
-# Total size: 2589889
+# Total size: 2590357
 /usr/local/bin/tv_combo
 /usr/local/bin/tv_ctrlpt
 /usr/local/bin/tv_device
@@ -40,7 +40,7 @@
 /usr/local/lib64/libupnp.a
 /usr/local/lib64/libupnp.so
 /usr/local/lib64/libupnp.so.20
-/usr/local/lib64/libupnp.so.20.0.3
+/usr/local/lib64/libupnp.so.20.0.4
 /usr/local/lib64/pkgconfig/libupnp.pc
 /usr/local/share/upnp/tvcombodesc.xml
 /usr/local/share/upnp/tvcontrolSCPD.xml
