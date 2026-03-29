@@ -11,13 +11,13 @@ class Libgedit_gfls < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f55c6cfe11d52ef37e4f2e58a64fc721c0d6176245e44356de5785b9cea5092f',
-     armv7l: 'f55c6cfe11d52ef37e4f2e58a64fc721c0d6176245e44356de5785b9cea5092f',
-     x86_64: '19e7d404fd0f75be23e179a2db1b7468dbe6b10ad86161eb0f6f1f6d5bc6576c'
+    aarch64: 'abb572598ee74eba5144a9c709b71340c9d2912a76a4b7655398ab08dceaa5be',
+     armv7l: 'abb572598ee74eba5144a9c709b71340c9d2912a76a4b7655398ab08dceaa5be',
+     x86_64: '08ba1ff4a136b977b09d8aae365d751cef64fbca1a696726029a44042bd9416d'
   })
 
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
   depends_on 'gobject_introspection'
   depends_on 'gtk3'
 
