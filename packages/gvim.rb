@@ -30,7 +30,7 @@ class Gvim < Autotools
   depends_on 'imake' => :executable
   depends_on 'libice' => :library
   depends_on 'libsm' => :library
-  depends_on 'libsodium' => :libraray
+  depends_on 'libsodium' => :library
   depends_on 'libx11' => :library
   depends_on 'libxpm' => :library
   depends_on 'libxt' => :library
