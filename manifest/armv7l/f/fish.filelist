@@ -1,4 +1,4 @@
-# Total size: 35520869
+# Total size: 36095399
 /usr/local/bin/fish
 /usr/local/bin/fish_indent
 /usr/local/bin/fish_key_reader
@@ -881,6 +881,7 @@
 /usr/local/share/fish/completions/test.fish
 /usr/local/share/fish/completions/tex-fmt.fish
 /usr/local/share/fish/completions/tex.fish
+/usr/local/share/fish/completions/tflint.fish
 /usr/local/share/fish/completions/tig.fish
 /usr/local/share/fish/completions/time.fish
 /usr/local/share/fish/completions/timedatectl.fish
