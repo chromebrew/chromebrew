@@ -1,12 +1,9 @@
-# Adapted from Arch Linux libgedit-gtksourceview PKGBUILD at:
-# https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=libgedit-gtksourceview
-
 require 'buildsystems/meson'
 
 class Libgedit_gtksourceview < Meson
-  description 'A library that extends GtkTextView, the standard GTK '
-  homepage 'https://gedit-technology.github.io'
-  version '299.6.0'
+  description 'Gedit Technology - Source code editing widget'
+  homepage 'https://gedit-text-editor.org'
+  version '299.7.0'
   license 'LGPL2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/World/gedit/libgedit-gtksourceview.git'
@@ -29,6 +26,8 @@ class Libgedit_gtksourceview < Meson
   depends_on 'harfbuzz' # R
   depends_on 'libxml2' # R
   depends_on 'pango' # R
+  depends_on 'libgedit_amtk'
+  depends_on 'libgedit_gfls'
 
   meson_options '-Dgtk_doc=false'
 end
