@@ -16,13 +16,13 @@ class Py3_cryptography < Pip
      x86_64: 'bc49e3993e4b1e77204dc7efc0dbfb5212043222ed696f04d4702e282a1efec0'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
   depends_on 'openssl' # R
   depends_on 'py3_cffi'
   depends_on 'py3_pycparser' => :build
   depends_on 'py3_typing_extensions'
-  depends_on 'python3' # R
+  depends_on 'python3' => :logical
   depends_on 'rust' => :build
 
   no_source_build
