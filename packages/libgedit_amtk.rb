@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Libgedit_amtk < Meson
   description 'Actions, Menus and Toolbars Kit for GTK+ applications'
   homepage 'https://gedit-technology.github.io'
-  version '5.9.1'
+  version '5.10.0'
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/World/gedit/libgedit-amtk.git'
@@ -11,15 +11,15 @@ class Libgedit_amtk < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fedcc92166518b7291b4def67647730048305246e4af11d845f3eb53f2033b7d',
-     armv7l: 'fedcc92166518b7291b4def67647730048305246e4af11d845f3eb53f2033b7d',
-     x86_64: 'e1895ca9a0816aec23fc128edcc1812c97a94be48694f3176a9775d6b044108e'
+    aarch64: 'f634f3ed5209b7da42361aa19aee75f12dd8dbd8b601584f01350393d2537d81',
+     armv7l: 'f634f3ed5209b7da42361aa19aee75f12dd8dbd8b601584f01350393d2537d81',
+     x86_64: '5921da4b41961fd1220b42d58695a48f5f276f24a7ee89caf6667ee8b343a5c1'
   })
 
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
   depends_on 'gobject_introspection' => :build
-  depends_on 'gtk3' # R
+  depends_on 'gtk3' => :library
   depends_on 'llvm_lib' => :build
 
   meson_options '-Dgtk_doc=false'
