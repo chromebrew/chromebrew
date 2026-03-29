@@ -13,16 +13,16 @@ class Py3_nh3 < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd9b3f72b016c40f96e1322ea963b3bfcd74173f39fb9931c845d17395ca2b076',
-     armv7l: 'd9b3f72b016c40f96e1322ea963b3bfcd74173f39fb9931c845d17395ca2b076',
-       i686: '92da95d9fa12925f8e114bb1226eee912783bbad4bc2f16d841cca07de7fce79',
-     x86_64: 'f92b9d9315a2359e7011ddac014ca4b06260f9fa8328f8eb870da0b0f1a3178f'
+    aarch64: '70a63588ab44ca84ba404d82e2a57d142dd42104da60c7506b007734a5971c50',
+     armv7l: '70a63588ab44ca84ba404d82e2a57d142dd42104da60c7506b007734a5971c50',
+       i686: 'b162f7ca523048096ffde12d6e0d11cb62fbfb07376ccf68c8ffa5fe66fbe681',
+     x86_64: '0138fb19b0bce63824583a6b9f6017ba8fd17a6985ff89a628010ab17e537e2e'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
   depends_on 'py3_maturin' => :build
-  depends_on 'python3' # R
+  depends_on 'python3' => :logical
   depends_on 'rust' => :build
 
   no_source_build
