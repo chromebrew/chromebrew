@@ -1,0 +1,3 @@
+#!/bin/bash
+syncthing-bin --help | head
+syncthing-bin --version
