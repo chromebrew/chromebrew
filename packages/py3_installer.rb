@@ -16,7 +16,6 @@ class Py3_installer < Pip
      x86_64: 'c5558bbd6fdf6b2ab50b66cebc62c493edac7c9271296018a0cea8bd6b94ad88'
   })
 
-  depends_on 'python3'
   depends_on 'python3' => :logical
 
   no_source_build
