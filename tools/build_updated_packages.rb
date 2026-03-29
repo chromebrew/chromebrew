@@ -189,19 +189,19 @@ def determine_recursive_deps(d_pkg_input)
   end
   d_pkgs.each do |d_pkg|
     d_pkg_obj = Package.load_package("packages/#{d_pkg}.rb")
-    instance_variable_set("@#{d_pkg}_deps", d_pkg_obj.dependencies.map { |key, value| key.to_s if value == [[], nil] }.compact)
+    d_pkg_deps = d_pkg_obj.dependencies.map { |key, value| key.to_s if value == [[], nil] }.compact
     # Pull in build dependencies if necessary.
     if (d_pkg.include?('_lib') || d_pkg.include?('_dev')) && !d_pkg.include?('gcc_lib')
       puts "#{"#{__LINE__}: " if CREW_VERBOSE}#{d_pkg} includes _dev || _lib, pulling build deps.".orange
-      # instance_variable_set("@#{d_pkg}_deps", instance_variable_set("@#{d_pkg}_deps", d_pkg_obj.get_deps_list(exclude_buildessential: false).delete_if { |d| ( d == 'glibc' || d == 'gcc_lib' ) }))
-      instance_variable_set("@#{d_pkg}_deps", d_pkg_obj.dependencies.map { |key, _value| key.to_s }.compact.delete_if { |d| %w[glibc gcc_lib].include?(d) })
+      # d_pkg_deps = d_pkg_obj.get_deps_list(exclude_buildessential: false).delete_if { |d| ( d == 'glibc' || d == 'gcc_lib' ) }
+      d_pkg_deps = d_pkg_obj.dependencies.map { |key, _value| key.to_s }.compact.delete_if { |d| %w[glibc gcc_lib].include?(d) }
     end
-    instance_variable_set("@#{d_pkg}_graph", Dagwood::DependencyGraph.new({ d_pkg.to_sym => (instance_variable_get("@#{d_pkg}_deps").map &:to_sym) })) if instance_variable_get("@#{d_pkg}_graph").nil?
+    instance_variable_set("@#{d_pkg}_graph", Dagwood::DependencyGraph.new({ d_pkg.to_sym => (d_pkg_deps.map &:to_sym) })) if instance_variable_get("@#{d_pkg}_graph").nil?
 
     next unless !instance_variable_get("@#{d_pkg}_graph").nil? && !instance_variable_get("@#{d_pkg}_graph").dependencies.nil?
 
-    next if instance_variable_get("@#{d_pkg}_deps").empty?
-    instance_variable_get("@#{d_pkg}_deps").each do |d|
+    next if d_pkg_deps.empty?
+    d_pkg_deps.each do |d|
       determine_recursive_deps(d) if instance_variable_get("@#{d}_graph").nil?
       begin
         # puts "#{"#{__LINE__}: " if CREW_VERBOSE}order for #{d} is #{instance_variable_get("@#{d}_graph").order}".lightpurple
