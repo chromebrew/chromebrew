@@ -1,7 +1,12 @@
-# Total size: 104769
+# Total size: 174610
 /usr/local/include/libgedit-gfls-1/gfls/gfls-attribute-keys.h
+/usr/local/include/libgedit-gfls-1/gfls/gfls-bytes-region-builder.h
+/usr/local/include/libgedit-gfls-1/gfls/gfls-bytes-region.h
+/usr/local/include/libgedit-gfls-1/gfls/gfls-encoding-conversion.h
+/usr/local/include/libgedit-gfls-1/gfls/gfls-encoding-convert.h
 /usr/local/include/libgedit-gfls-1/gfls/gfls-enum-types.h
 /usr/local/include/libgedit-gfls-1/gfls/gfls-error.h
+/usr/local/include/libgedit-gfls-1/gfls/gfls-iconv.h
 /usr/local/include/libgedit-gfls-1/gfls/gfls-init.h
 /usr/local/include/libgedit-gfls-1/gfls/gfls-input-stream.h
 /usr/local/include/libgedit-gfls-1/gfls/gfls-loader-basic.h
@@ -16,10 +21,17 @@
 /usr/local/lib/pkgconfig/libgedit-gfls-1.pc
 /usr/local/share/gir-1.0/Gfls-1.gir
 /usr/local/share/locale/be/LC_MESSAGES/libgedit-gfls-1.mo
+/usr/local/share/locale/bg/LC_MESSAGES/libgedit-gfls-1.mo
+/usr/local/share/locale/cs/LC_MESSAGES/libgedit-gfls-1.mo
 /usr/local/share/locale/da/LC_MESSAGES/libgedit-gfls-1.mo
 /usr/local/share/locale/de/LC_MESSAGES/libgedit-gfls-1.mo
+/usr/local/share/locale/el/LC_MESSAGES/libgedit-gfls-1.mo
+/usr/local/share/locale/eu/LC_MESSAGES/libgedit-gfls-1.mo
 /usr/local/share/locale/hu/LC_MESSAGES/libgedit-gfls-1.mo
 /usr/local/share/locale/ka/LC_MESSAGES/libgedit-gfls-1.mo
+/usr/local/share/locale/kk/LC_MESSAGES/libgedit-gfls-1.mo
+/usr/local/share/locale/kw/LC_MESSAGES/libgedit-gfls-1.mo
+/usr/local/share/locale/lt/LC_MESSAGES/libgedit-gfls-1.mo
 /usr/local/share/locale/pl/LC_MESSAGES/libgedit-gfls-1.mo
 /usr/local/share/locale/pt_BR/LC_MESSAGES/libgedit-gfls-1.mo
 /usr/local/share/locale/ru/LC_MESSAGES/libgedit-gfls-1.mo
