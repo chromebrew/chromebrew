@@ -1,4 +1,4 @@
-# Total size: 8117518
+# Total size: 7398120
 /usr/local/bin/SvtAv1EncApp
 /usr/local/include/svt-av1/EbConfigMacros.h
 /usr/local/include/svt-av1/EbDebugMacros.h
@@ -7,7 +7,11 @@
 /usr/local/include/svt-av1/EbSvtAv1ErrorCodes.h
 /usr/local/include/svt-av1/EbSvtAv1Formats.h
 /usr/local/include/svt-av1/EbSvtAv1Metadata.h
+/usr/local/lib64/cmake/SVT-AV1/SVT-AV1-sharedTargets-release.cmake
+/usr/local/lib64/cmake/SVT-AV1/SVT-AV1-sharedTargets.cmake
+/usr/local/lib64/cmake/SVT-AV1/SVT-AV1Config.cmake
+/usr/local/lib64/cmake/SVT-AV1/SVT-AV1ConfigVersion.cmake
 /usr/local/lib64/libSvtAv1Enc.so
-/usr/local/lib64/libSvtAv1Enc.so.3
-/usr/local/lib64/libSvtAv1Enc.so.3.1.2
+/usr/local/lib64/libSvtAv1Enc.so.4
+/usr/local/lib64/libSvtAv1Enc.so.4.1.0
 /usr/local/lib64/pkgconfig/SvtAv1Enc.pc
