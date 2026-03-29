@@ -1,2 +1,3 @@
-#!/bin/bash -ex
-for b in $(crew files ${1} | grep /usr/local/bin); do $b -h 2>&1; done
+#!/bin/bash
+vim --help | head
+vim --version | head
