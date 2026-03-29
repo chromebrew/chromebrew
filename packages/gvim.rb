@@ -12,29 +12,33 @@ class Gvim < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a8671e643140e1cce92c612197e6388428b51652dc96998533c05c7e4caa9800',
-     armv7l: 'a8671e643140e1cce92c612197e6388428b51652dc96998533c05c7e4caa9800',
-     x86_64: '484bce9660488dd37593ddfc51c857e7c00e35381e5408ad6e3f59f96ebfb412'
+    aarch64: 'f3285509446d19f37d9f937e1ab384aef9150458faf6770e7167f504f71816e7',
+     armv7l: 'f3285509446d19f37d9f937e1ab384aef9150458faf6770e7167f504f71816e7',
+     x86_64: '2310ef469322ee94716e2eefb4b98b4029e3252e87535a3ee4d22f416ce2a6fc'
   })
 
   depends_on 'acl' => :executable
   depends_on 'cairo' => :executable
-  depends_on 'gcc_lib' # R
+  depends_on 'desktop_file_utils' => :executable
+  depends_on 'gcc_lib' => :library
   depends_on 'gdk_pixbuf' => :executable
-  depends_on 'glib' => :executable
-  depends_on 'glibc' => :executable
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
   depends_on 'gpm' => :executable
   depends_on 'gtk3' => :executable
-  depends_on 'harfbuzz'
   depends_on 'harfbuzz' => :executable
-  depends_on 'libice' => :executable
-  depends_on 'libsm' => :executable
-  depends_on 'libsodium' => :executable
-  depends_on 'libx11' => :executable
-  depends_on 'libxt' => :executable
+  depends_on 'imake' => :executable
+  depends_on 'libice' => :library
+  depends_on 'libsm' => :library
+  depends_on 'libsodium' => :library
+  depends_on 'libx11' => :library
+  depends_on 'libxpm' => :library
+  depends_on 'libxt' => :library
+  depends_on 'lua' => :executable
+  depends_on 'luajit' => :executable
   depends_on 'ncurses' => :executable
   depends_on 'pango' => :executable
-  depends_on 'vim_runtime' # L
+  depends_on 'vim_runtime' => :logical
   depends_on 'wayland' => :executable
 
   ignore_updater
@@ -50,6 +54,8 @@ class Gvim < Autotools
              'feature.h'
     end
   end
+
+  ENV['LUA_PREFIX'] = CREW_PREFIX
 
   autotools_configure_options "--localstatedir=#{CREW_PREFIX}/var/lib/vim \
     --disable-canberra \
@@ -67,9 +73,11 @@ class Gvim < Autotools
     --enable-python3interp=dynamic \
     --enable-pythoninterp=dynamic \
     --enable-rubyinterp=dynamic \
-    --enable-tclinterp=dynamic \
+    --enable-tclinterp=no \
     --with-compiledby='Chromebrew' \
     --with-features=huge \
+    --with-luajit=yes \
+    --with-tclsh=no \
     --with-x=yes"
 
   def self.install
