@@ -182,12 +182,7 @@ def determine_recursive_deps(d_pkg_input)
   # @glibc_build227_graph = Dagwood::DependencyGraph.new(glibc_build227: %i[glibc])
   # @glibc_build227_graph.merge(@glibc_graph)
   # @gcc_lib_graph.merge(@glibc_graph)
-  if d_pkg_input.is_a? String
-    (d_pkgs ||= []).push(d_pkg_input)
-  else
-    ((d_pkgs ||= []) << d_pkg_input).flatten!
-  end
-  d_pkgs.each do |d_pkg|
+  [d_pkg_input].flatten.each do |d_pkg|
     d_pkg_obj = Package.load_package("packages/#{d_pkg}.rb")
     d_pkg_deps = d_pkg_obj.dependencies.map { |key, value| key.to_s if value == [[], nil] }.compact
     # Pull in build dependencies if necessary.
@@ -219,12 +214,7 @@ def determine_recursive_deps(d_pkg_input)
 end
 
 def print_recursive_deps(d_pkg_input)
-  if d_pkg_input.is_a? String
-    (d_pkgs ||= []).push(d_pkg_input)
-  else
-    ((d_pkgs ||= []) << d_pkg_input).flatten!
-  end
-  d_pkgs.each do |p|
+  [d_pkg_input].flatten.each do |p|
     abort "@#{p}_graph does not exist!".lightred unless !instance_variable_get("@#{p}_graph").nil? && !instance_variable_get("@#{p}_graph").dependencies.nil?
     deps = instance_variable_get("@#{p}_graph").dependencies
     puts deps.to_s.lightblue
@@ -239,11 +229,7 @@ def print_recursive_deps(d_pkg_input)
 end
 
 def order_recursive_deps(d_pkg_input)
-  if d_pkg_input.is_a? String
-    (d_pkgs ||= []).push(d_pkg_input)
-  else
-    ((d_pkgs ||= []) << d_pkg_input).flatten!
-  end
+  d_pkgs = [d_pkg_input].flatten
   puts "#{"#{__LINE__}: " if CREW_VERBOSE}Processing dependencies...".lightpurple
   determine_recursive_deps(d_pkgs)
   input_pkgs = d_pkgs.to_set

@@ -34,4 +34,12 @@ js78
       print_recursive_deps 'clear_cache'
     end
   end
+
+  def test_multiple_inputs
+    order_recursive_deps %w[autoconf213 clear_cache]
+
+    assert_output("{:autoconf213=>[]}\nautoconf213\n{:clear_cache=>[]}\nclear_cache\n", nil) do
+      print_recursive_deps %w[autoconf213 clear_cache]
+    end
+  end
 end
