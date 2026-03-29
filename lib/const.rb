@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION = defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION = '1.72.8' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION = '1.72.9' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH = Etc.uname[:machine]
@@ -369,13 +369,13 @@ if ENV['CI']
   CREW_RUBY_VER = "ruby#{crew_ruby_ver_default}"
   CREW_RUST_VER = "rust#{crew_rust_ver_default}"
 else
-  CREW_GCC_VER  = Kernel.system('which gcc', %i[out err] => File::NULL) ? "gcc#{`gcc -dumpversion`.chomp}" : "gcc#{crew_gcc_ver_default}"
-  CREW_ICU_VER  = Kernel.system('which uconv', %i[out err] => File::NULL) ? "icu#{`uconv --version`.chomp.split[3]}" : "icu#{crew_icu_ver_default}"
-  CREW_LLVM_VER = Kernel.system('which llvm-config', %i[out err] => File::NULL) ? "llvm#{`llvm-config --version`.chomp.split('.')[0]}" : "llvm#{crew_llvm_ver_default}"
-  CREW_PERL_VER = Kernel.system('which perl', %i[out err] => File::NULL) ? "perl#{`perl --version|xargs|cut -d\\( -f2|cut -d\\) -f1|cut -dv -f2`.chomp.sub(/\.\d+$/, '')}" : "perl#{crew_perl_ver_default}"
+  CREW_GCC_VER  = Kernel.system('command -v gcc', %i[out err] => File::NULL) ? "gcc#{`gcc -dumpversion`.chomp}" : "gcc#{crew_gcc_ver_default}"
+  CREW_ICU_VER  = Kernel.system('command -v uconv', %i[out err] => File::NULL) ? "icu#{`uconv --version`.chomp.split[3]}" : "icu#{crew_icu_ver_default}"
+  CREW_LLVM_VER = Kernel.system('command -v llvm-config', %i[out err] => File::NULL) ? "llvm#{`llvm-config --version`.chomp.split('.')[0]}" : "llvm#{crew_llvm_ver_default}"
+  CREW_PERL_VER = Kernel.system('command -v perl', %i[out err] => File::NULL) ? "perl#{`perl --version|xargs|cut -d\\( -f2|cut -d\\) -f1|cut -dv -f2`.chomp.sub(/\.\d+$/, '')}" : "perl#{crew_perl_ver_default}"
   CREW_PY_VER   = Kernel.system("#{CREW_PREFIX}/bin/python3 --version", %i[out err] => File::NULL) ? "py#{`python3 -c "print('.'.join(__import__('platform').python_version_tuple()[:2]))"`.chomp}" : "py#{crew_py_ver_default}"
   CREW_RUBY_VER = "ruby#{RUBY_VERSION.slice(/(?:.*(?=\.))/)}"
-  CREW_RUST_VER = Kernel.system('which cargo', %i[out err] => File::NULL) ? "rust#{`cargo -V`.chomp.split[1].split('.')[0..1].join('.')}" : "rust#{crew_rust_ver_default}"
+  CREW_RUST_VER = Kernel.system('command -v cargo', %i[out err] => File::NULL) ? "rust#{`cargo -V`.chomp.split[1].split('.')[0..1].join('.')}" : "rust#{crew_rust_ver_default}"
 end
 @buildsystems = ['Package']
 Dir.glob("#{CREW_LIB_PATH}/lib/buildsystems/*.rb") { |file| @buildsystems << File.foreach(file, encoding: Encoding::UTF_8).grep(/^class/).to_s.split[1] }
