@@ -1,12 +1,9 @@
-# Adapted from Arch Linux libgedit-gfls PKGBUILD at:
-# https://gitlab.archlinux.org/archlinux/packaging/packages/libgedit-gfls/-/blob/main/PKGBUILD?ref_type=heads
-
 require 'buildsystems/meson'
 
 class Libgedit_gfls < Meson
   description 'A module dedicated to file loading and saving.'
   homepage 'https://gitlab.gnome.org/World/gedit/libgedit-gfls'
-  version '0.3.0'
+  version '0.4.0'
   license 'LGPL-3.0-or-later'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/World/gedit/libgedit-gfls.git'
@@ -21,6 +18,8 @@ class Libgedit_gfls < Meson
 
   depends_on 'glib' # R
   depends_on 'glibc' # R
+  depends_on 'gobject_introspection'
+  depends_on 'gtk3'
 
   meson_options '-Dgtk_doc=false'
 end
