@@ -41,9 +41,11 @@ You will need a Chromebook with developer mode enabled. To do so, select your de
 | x86_64       | Yes        |
 | i686         | Yes\*      |
 | armv7l       | Yes        |
-| aarch64      | Yes        |
+| aarch64      | Yes\*\*    |
 
 \* _We can only provide limited support for i686 since Google has discontinued support. Although we can no longer support GUI apps, we will try to continue to support CLI programs._
+
+\*\* _We currently only provide armv7l packages even if your chromebook has an aarch64 userspace. For more details, see issue [#8044](https://github.com/chromebrew/chromebrew/issues/8044)._
 
 ## Installation
 
