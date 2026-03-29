@@ -10,17 +10,17 @@ class Py3_greenlet < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '604ed6f27f5b57abdb03e9bfb5f6080f1565df7bd484c22f0a4c9bf7d60f5f64',
-     armv7l: '604ed6f27f5b57abdb03e9bfb5f6080f1565df7bd484c22f0a4c9bf7d60f5f64',
-       i686: '2d24a36e97d2667dc9631ab6e5bac555fd17caf93a928f3fe7b9747a1129ca49',
-     x86_64: 'ff71c63c65a798c315dd3d33a9beec0b667718289ee5d6a2d05d4155391835d3'
+    aarch64: '78a1e8133eb898d5aecc5aba746e6da5b6e145b43559dece294a98a860a0b87c',
+     armv7l: '78a1e8133eb898d5aecc5aba746e6da5b6e145b43559dece294a98a860a0b87c',
+       i686: 'cd89b48d0798f47b3c9b5203661db516c2d9b76bdda9e57ad804e3493863211c',
+     x86_64: '15b7e2d1263a2bc1bbb2dad62bb51b39602b21c4732426e76a1220abc573f5bd'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
   depends_on 'py3_agate'
   depends_on 'py3_sqlalchemy'
-  depends_on 'python3' # R
+  depends_on 'python3' => :logical
 
   no_source_build
 end
