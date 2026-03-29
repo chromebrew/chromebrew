@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Libgedit_amtk < Meson
   description 'Actions, Menus and Toolbars Kit for GTK+ applications'
   homepage 'https://gedit-technology.github.io'
-  version '5.9.1'
+  version '5.10.0'
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/World/gedit/libgedit-amtk.git'
