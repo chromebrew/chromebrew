@@ -16,11 +16,11 @@ class Py3_greenlet < Pip
      x86_64: 'ff71c63c65a798c315dd3d33a9beec0b667718289ee5d6a2d05d4155391835d3'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
   depends_on 'py3_agate'
   depends_on 'py3_sqlalchemy'
-  depends_on 'python3' # R
+  depends_on 'python3' => :logical
 
   no_source_build
 end
