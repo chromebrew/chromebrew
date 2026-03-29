@@ -19,10 +19,10 @@ class Py3_nh3 < Pip
      x86_64: 'f92b9d9315a2359e7011ddac014ca4b06260f9fa8328f8eb870da0b0f1a3178f'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
   depends_on 'py3_maturin' => :build
-  depends_on 'python3' # R
+  depends_on 'python3' => :logical
   depends_on 'rust' => :build
 
   no_source_build
