@@ -1,17 +1,19 @@
-# Total size: 297240
-/usr/local/include/libgedit-amtk-5/amtk/amtk-action-info-central-store.h
-/usr/local/include/libgedit-amtk-5/amtk/amtk-action-info-store.h
-/usr/local/include/libgedit-amtk-5/amtk/amtk-action-info.h
-/usr/local/include/libgedit-amtk-5/amtk/amtk-action-map.h
-/usr/local/include/libgedit-amtk-5/amtk/amtk-application-window.h
-/usr/local/include/libgedit-amtk-5/amtk/amtk-enum-types.h
-/usr/local/include/libgedit-amtk-5/amtk/amtk-factory.h
-/usr/local/include/libgedit-amtk-5/amtk/amtk-gmenu.h
+# Total size: 329019
+/usr/local/include/libgedit-amtk-5/amtk/actions-menus-toolbars/amtk-action-info-central-store.h
+/usr/local/include/libgedit-amtk-5/amtk/actions-menus-toolbars/amtk-action-info-store.h
+/usr/local/include/libgedit-amtk-5/amtk/actions-menus-toolbars/amtk-action-info.h
+/usr/local/include/libgedit-amtk-5/amtk/actions-menus-toolbars/amtk-action-map.h
+/usr/local/include/libgedit-amtk-5/amtk/actions-menus-toolbars/amtk-actions-menus-toolbars-enum-types.h
+/usr/local/include/libgedit-amtk-5/amtk/actions-menus-toolbars/amtk-actions-menus-toolbars.h
+/usr/local/include/libgedit-amtk-5/amtk/actions-menus-toolbars/amtk-application-window.h
+/usr/local/include/libgedit-amtk-5/amtk/actions-menus-toolbars/amtk-factory.h
+/usr/local/include/libgedit-amtk-5/amtk/actions-menus-toolbars/amtk-gmenu.h
+/usr/local/include/libgedit-amtk-5/amtk/actions-menus-toolbars/amtk-menu-item.h
+/usr/local/include/libgedit-amtk-5/amtk/actions-menus-toolbars/amtk-menu-shell.h
+/usr/local/include/libgedit-amtk-5/amtk/actions-menus-toolbars/amtk-shortcuts.h
+/usr/local/include/libgedit-amtk-5/amtk/actions-menus-toolbars/amtk-utils.h
 /usr/local/include/libgedit-amtk-5/amtk/amtk-init.h
-/usr/local/include/libgedit-amtk-5/amtk/amtk-menu-item.h
-/usr/local/include/libgedit-amtk-5/amtk/amtk-menu-shell.h
-/usr/local/include/libgedit-amtk-5/amtk/amtk-shortcuts.h
-/usr/local/include/libgedit-amtk-5/amtk/amtk-utils.h
+/usr/local/include/libgedit-amtk-5/amtk/amtk-tree-view-scrolled-window-sizing.h
 /usr/local/include/libgedit-amtk-5/amtk/amtk.h
 /usr/local/lib/girepository-1.0/Amtk-5.typelib
 /usr/local/lib/libgedit-amtk-5.so
@@ -19,6 +21,7 @@
 /usr/local/lib/pkgconfig/libgedit-amtk-5.pc
 /usr/local/share/gir-1.0/Amtk-5.gir
 /usr/local/share/locale/be/LC_MESSAGES/libgedit-amtk-5.mo
+/usr/local/share/locale/bg/LC_MESSAGES/libgedit-amtk-5.mo
 /usr/local/share/locale/ca/LC_MESSAGES/libgedit-amtk-5.mo
 /usr/local/share/locale/cs/LC_MESSAGES/libgedit-amtk-5.mo
 /usr/local/share/locale/da/LC_MESSAGES/libgedit-amtk-5.mo
@@ -35,6 +38,8 @@
 /usr/local/share/locale/it/LC_MESSAGES/libgedit-amtk-5.mo
 /usr/local/share/locale/ja/LC_MESSAGES/libgedit-amtk-5.mo
 /usr/local/share/locale/ka/LC_MESSAGES/libgedit-amtk-5.mo
+/usr/local/share/locale/kk/LC_MESSAGES/libgedit-amtk-5.mo
+/usr/local/share/locale/kw/LC_MESSAGES/libgedit-amtk-5.mo
 /usr/local/share/locale/lt/LC_MESSAGES/libgedit-amtk-5.mo
 /usr/local/share/locale/ms/LC_MESSAGES/libgedit-amtk-5.mo
 /usr/local/share/locale/nl/LC_MESSAGES/libgedit-amtk-5.mo
