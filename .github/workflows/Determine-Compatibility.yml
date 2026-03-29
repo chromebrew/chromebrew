@@ -41,7 +41,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with:
-          ref: ${{ inputs.branch || github.head_ref || github.ref_name }}
+          ref: ${{ inputs.branch || github.ref }}
       - name: Determine glibc and architecture package compatibility
         id: get-compatibility
         env:
