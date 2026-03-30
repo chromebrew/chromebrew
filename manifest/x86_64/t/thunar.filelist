@@ -1,4 +1,4 @@
-# Total size: 9947742
+# Total size: 10033768
 /usr/local/bin/Thunar
 /usr/local/bin/thunar
 /usr/local/bin/thunar-settings
@@ -17,7 +17,6 @@
 /usr/local/include/thunarx-3/thunarx/thunarx-renamer-provider.h
 /usr/local/include/thunarx-3/thunarx/thunarx-renamer.h
 /usr/local/include/thunarx-3/thunarx/thunarx.h
-/usr/local/lib/systemd/user/thunar.service
 /usr/local/lib64/Thunar/thunar-sendto-email
 /usr/local/lib64/girepository-1.0/Thunarx-3.0.typelib
 /usr/local/lib64/libthunarx-3.la
