@@ -1,0 +1,3 @@
+#!/bin/bash
+man task 2>&1 | head
+task --version

@@ -3,24 +3,25 @@ require 'buildsystems/cmake'
 class Taskwarrior < CMake
   description 'Free and Open Source Software that manages your TODO list from the command line.'
   homepage 'https://taskwarrior.org/'
-  version '3.2.0'
+  version '3.4.2'
   license 'MIT'
   compatibility 'all'
   source_url "https://github.com/GothenburgBitFactory/taskwarrior/releases/download/v#{version}/task-#{version}.tar.gz"
-  source_sha256 '1a543ba373a319f924a2242c8e0db9dac2691c4cf654c2d0c6827a06b3b32592'
+  source_sha256 'd302761fcd1268e4a5a545613a2b68c61abd50c0bcaade3b3e68d728dd02e716'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3a36a5a01e828bff4e7790187ca959fc876135f648678b62a790ee73dccca25a',
-     armv7l: '3a36a5a01e828bff4e7790187ca959fc876135f648678b62a790ee73dccca25a',
-       i686: '323138d15575d05c63b4c342bb0eae49257250a31500319f25e28e11df9642c8',
-     x86_64: 'f56cfb583bcb929406da7ac7724c0ff712b883890584b6fc0205bfccd6bb07fb'
+    aarch64: '65380b475f3d78162f310c8ca629f63bf58b65fe9f49d7e3d9fcf472fa2807ab',
+     armv7l: '65380b475f3d78162f310c8ca629f63bf58b65fe9f49d7e3d9fcf472fa2807ab',
+       i686: '3c5a52de156aaab82b7329db564f850172558180eab8889e56b9da469126ce82',
+     x86_64: '749d58b626149f940437902a05dc6299ce7e973f9d824d75cbe8e08114441b0b'
   })
 
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'llvm_dev' => :build
   depends_on 'rust' => :build
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'util_linux' # R
+  depends_on 'util_linux' => :executable
 
   def self.postinstall
     ExitMessage.add "\nType 'man task' for help to get started.\n"
