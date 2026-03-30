@@ -10,10 +10,10 @@ class Py3_numpy < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2d57cdf63014dfda8e541f53f6c8315450deafe73e77873d07f5cdcd535e24cd',
-     armv7l: '2d57cdf63014dfda8e541f53f6c8315450deafe73e77873d07f5cdcd535e24cd',
-       i686: 'f1275fb1fbaba39e043e3dcf5a7320cdafc715217d5c9752041d2ccc078b8844',
-     x86_64: '1a3d95f60dde4668fd96415b339659dc43d4db4425d271b01584f5e67b44fe2e'
+    aarch64: 'f6321734906b563c80d321364e2514ac6efd489336a90c710aa7d12adbc3bc1e',
+     armv7l: 'f6321734906b563c80d321364e2514ac6efd489336a90c710aa7d12adbc3bc1e',
+       i686: '2ff23cc2cf1b8f8419e5875c7c8448af0dbb9f4611fa538e0a96a7710a9f3d85',
+     x86_64: 'a3a5cc32d536bddd363c3310f488325b477931d0d386ddca16e43df8c5665272'
   })
 
   depends_on 'gcc_lib' => :library
