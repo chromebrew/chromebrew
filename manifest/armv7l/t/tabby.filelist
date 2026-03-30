@@ -1,4 +1,4 @@
-# Total size: 354454600
+# Total size: 359252485
 /usr/local/bin/tabby
 /usr/local/share/tabby/LICENSE.electron.txt
 /usr/local/share/tabby/LICENSES.chromium.html
@@ -305,8 +305,25 @@
 /usr/local/share/tabby/resources/app.asar.unpacked/node_modules/node-pty/lib/worker/conoutSocketWorker.js
 /usr/local/share/tabby/resources/app.asar.unpacked/node_modules/node-pty/node-addon-api/node_addon_api.Makefile
 /usr/local/share/tabby/resources/app.asar.unpacked/node_modules/node-pty/package.json
+/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/node-pty/prebuilds/darwin-arm64/pty.node
+/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/node-pty/prebuilds/darwin-arm64/spawn-helper
+/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/node-pty/prebuilds/darwin-x64/pty.node
+/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/node-pty/prebuilds/darwin-x64/spawn-helper
+/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/node-pty/prebuilds/linux-arm64/pty.node
+/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/node-pty/prebuilds/linux-x64/pty.node
+/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/node-pty/prebuilds/win32-arm64/conpty.node
+/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/node-pty/prebuilds/win32-arm64/conpty_console_list.node
+/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/node-pty/prebuilds/win32-arm64/pty.node
+/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/node-pty/prebuilds/win32-x64/conpty.node
+/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/node-pty/prebuilds/win32-x64/conpty_console_list.node
+/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/node-pty/prebuilds/win32-x64/pty.node
+/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/node-pty/scripts/gen-compile-commands.js
+/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/node-pty/scripts/increment-version.js
+/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/node-pty/scripts/linux/checksums.txt
+/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/node-pty/scripts/linux/install-sysroot.js
+/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/node-pty/scripts/linux/verify-glibc-requirements.sh
 /usr/local/share/tabby/resources/app.asar.unpacked/node_modules/node-pty/scripts/post-install.js
-/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/node-pty/scripts/publish.js
+/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/node-pty/scripts/prebuild.js
 /usr/local/share/tabby/resources/app.asar.unpacked/node_modules/node-pty/src/conpty_console_list_agent.ts
 /usr/local/share/tabby/resources/app.asar.unpacked/node_modules/node-pty/src/eventEmitter2.test.ts
 /usr/local/share/tabby/resources/app.asar.unpacked/node_modules/node-pty/src/eventEmitter2.ts
@@ -321,6 +338,7 @@
 /usr/local/share/tabby/resources/app.asar.unpacked/node_modules/node-pty/src/unixTerminal.test.ts
 /usr/local/share/tabby/resources/app.asar.unpacked/node_modules/node-pty/src/unixTerminal.ts
 /usr/local/share/tabby/resources/app.asar.unpacked/node_modules/node-pty/src/utils.ts
+/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/node-pty/src/win/conpty.h
 /usr/local/share/tabby/resources/app.asar.unpacked/node_modules/node-pty/src/win/path_util.h
 /usr/local/share/tabby/resources/app.asar.unpacked/node_modules/node-pty/src/windowsConoutConnection.ts
 /usr/local/share/tabby/resources/app.asar.unpacked/node_modules/node-pty/src/windowsPtyAgent.test.ts

@@ -1,13 +1,13 @@
-# Total size: 1835589
+# Total size: 1836954
 /usr/local/bin/chardetect
 /usr/local/lib64/python3.14/site-packages/4ef79d6367bb14396397__mypyc.cpython-314-x86_64-linux-gnu.so
-/usr/local/lib64/python3.14/site-packages/chardet-7.4.0.post1.dist-info/INSTALLER
-/usr/local/lib64/python3.14/site-packages/chardet-7.4.0.post1.dist-info/METADATA
-/usr/local/lib64/python3.14/site-packages/chardet-7.4.0.post1.dist-info/RECORD
-/usr/local/lib64/python3.14/site-packages/chardet-7.4.0.post1.dist-info/REQUESTED
-/usr/local/lib64/python3.14/site-packages/chardet-7.4.0.post1.dist-info/WHEEL
-/usr/local/lib64/python3.14/site-packages/chardet-7.4.0.post1.dist-info/entry_points.txt
-/usr/local/lib64/python3.14/site-packages/chardet-7.4.0.post1.dist-info/licenses/LICENSE
+/usr/local/lib64/python3.14/site-packages/chardet-7.4.0.post2.dist-info/INSTALLER
+/usr/local/lib64/python3.14/site-packages/chardet-7.4.0.post2.dist-info/METADATA
+/usr/local/lib64/python3.14/site-packages/chardet-7.4.0.post2.dist-info/RECORD
+/usr/local/lib64/python3.14/site-packages/chardet-7.4.0.post2.dist-info/REQUESTED
+/usr/local/lib64/python3.14/site-packages/chardet-7.4.0.post2.dist-info/WHEEL
+/usr/local/lib64/python3.14/site-packages/chardet-7.4.0.post2.dist-info/entry_points.txt
+/usr/local/lib64/python3.14/site-packages/chardet-7.4.0.post2.dist-info/licenses/LICENSE
 /usr/local/lib64/python3.14/site-packages/chardet/__init__.py
 /usr/local/lib64/python3.14/site-packages/chardet/__main__.py
 /usr/local/lib64/python3.14/site-packages/chardet/__pycache__/__init__.cpython-314.pyc
