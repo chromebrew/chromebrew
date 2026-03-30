@@ -10,14 +10,15 @@ class Ruby_bigdecimal < RUBY
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: 'a0142f9b1c8c22914cd3e3b427d6a6d7b374c00431a871553af9e5b8b13fd23d',
-     armv7l: 'a0142f9b1c8c22914cd3e3b427d6a6d7b374c00431a871553af9e5b8b13fd23d',
-       i686: 'a2109a1ad63de6531769d3a8cabf872d3c6412cc6a4db36443712d4156d46b00',
-     x86_64: '12382bb49f57dcf639863f9639dfc55518c7de70cc014ab54213d37a5bfbdcaa'
+    aarch64: '5758d382a402e76ce5e4d6fd302a8223e12017beea579c80ac9c17c0d70cf20b',
+     armv7l: '5758d382a402e76ce5e4d6fd302a8223e12017beea579c80ac9c17c0d70cf20b',
+       i686: '38946cfbbe11bbfcb8f68b0696b0c52f3be37a11d4117595b910cf86004a834e',
+     x86_64: 'f34f5e3f3c9eb17c6dc2924fa70a2284a52e386fbc63ff2710e496184625aeed'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'ruby' # R
+  depends_on 'glibc' => :library
+  depends_on 'ruby' => :library
+  depends_on 'ruby' => :logical
 
   conflicts_ok
   gem_compile_needed
