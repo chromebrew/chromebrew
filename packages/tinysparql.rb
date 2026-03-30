@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Tinysparql < Meson
   description 'Low-footprint RDF triple store library with SPARQL 1.1 interface'
   homepage 'https://gitlab.gnome.org/GNOME/tinysparql'
-  version "3.10.0-#{CREW_ICU_VER}"
+  version "3.11.0-#{CREW_ICU_VER}"
   license 'GPLv2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/tinysparql.git'
@@ -11,27 +11,27 @@ class Tinysparql < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'dd02fa649ae933b0b209726664ce5ac117be92e8922e41978bb6ce1a3a23f649',
-     armv7l: 'dd02fa649ae933b0b209726664ce5ac117be92e8922e41978bb6ce1a3a23f649',
-     x86_64: 'e31c1af716df083985e8c7102e4fd913357b622a435678562086325c61e9ff23'
+    aarch64: '4b403a9e1bd2fa5236222b26716e0ba8e4133dddfb9ab2a96f236179688b9f16',
+     armv7l: '4b403a9e1bd2fa5236222b26716e0ba8e4133dddfb9ab2a96f236179688b9f16',
+     x86_64: '3961456e657c11f9a123ecb58004b2295d117df2e6122eee7c8f005a10bf8504'
   })
 
-  depends_on 'avahi' # R
+  depends_on 'avahi' => :library
   depends_on 'dbus' => :build
   depends_on 'docbook_xml' => :build
   depends_on 'gcc_lib' # R
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk_doc' => :build
-  depends_on 'icu4c' # R
-  depends_on 'json_glib' # R
-  depends_on 'libsoup' # R
-  depends_on 'libstemmer' # R
-  depends_on 'libxml2' # R
+  depends_on 'icu4c' => :library
+  depends_on 'json_glib' => :library
+  depends_on 'libsoup' => :library
+  depends_on 'libstemmer' => :library
+  depends_on 'libxml2' => :library
   depends_on 'py3_asciidoc' => :build
   depends_on 'py3_pygobject' => :build
-  depends_on 'sqlite' # R
+  depends_on 'sqlite' => :library
   depends_on 'util_linux' => :build
   depends_on 'vala' => :build
 
