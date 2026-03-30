@@ -1,0 +1,3 @@
+#!/bin/bash
+thunar -h | head
+thunar -V

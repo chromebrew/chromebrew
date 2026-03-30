@@ -4,44 +4,50 @@ require 'convenience_functions'
 class Thunar < Autotools
   description 'Thunar File Manager'
   homepage 'https://docs.xfce.org/xfce/thunar/Start'
-  version '4.20.4'
+  version '4.20.8'
   license 'GPL-2+ and LGPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://archive.xfce.org/src/xfce/thunar/#{version.rpartition('.')[0]}/thunar-#{version}.tar.bz2"
-  source_sha256 '27731a76f3aecf3752b1ca35afad89e264c52244f70083d933507dd4a17548b0'
+  source_sha256 'cc735954d948a88eba2e40016a94c598f876309b736686c9f4d0273a05870c69'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a320306ea82a355c3a9170b4ba4904174f6f6688e1a0a3977c14b729c8a9d0b6',
-     armv7l: 'a320306ea82a355c3a9170b4ba4904174f6f6688e1a0a3977c14b729c8a9d0b6',
-     x86_64: '1d41b96fadf908ad2985c331f8a498deaca1b362eee2097b654295c0dcbf7a3e'
+    aarch64: '00a0ce275f5b4d77665714b71b75c66ff9527b91602ee675a473096fff6aae10',
+     armv7l: '00a0ce275f5b4d77665714b71b75c66ff9527b91602ee675a473096fff6aae10',
+     x86_64: 'f885bfaf4100ae45d7405fd810672ff776ed831bbd90ac76fcb846f755e8f8ec'
   })
 
-  depends_on 'at_spi2_core' # R
-  depends_on 'cairo' # R
-  depends_on 'exo' # R
-  depends_on 'gdk_pixbuf' # R
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
-  depends_on 'gtk3' # R
-  depends_on 'harfbuzz' # R
-  depends_on 'libexif' # R
-  depends_on 'libgudev' # R
-  depends_on 'libice' # R
-  depends_on 'libnotify' # R
-  depends_on 'libsm' # R
-  depends_on 'libx11' # R
-  depends_on 'libxfce4ui' # R
-  depends_on 'libxfce4util' # R
-  depends_on 'pango' # R
-  depends_on 'pcre2' # R
-  depends_on 'xfce4_panel' # R
-  depends_on 'xfconf' # R
-  depends_on 'zlib' # R
+  depends_on 'at_spi2_core' => :library
+  depends_on 'cairo' => :library
+  depends_on 'exo' => :library
+  depends_on 'gdk_pixbuf' => :library
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'gtk3' => :library
+  depends_on 'harfbuzz' => :library
+  depends_on 'libexif' => :library
+  depends_on 'libgudev' => :executable
+  depends_on 'libice' => :library
+  depends_on 'libnotify' => :executable
+  depends_on 'libsm' => :library
+  depends_on 'libx11' => :library
+  depends_on 'libxfce4ui' => :library
+  depends_on 'libxfce4util' => :library
+  depends_on 'pango' => :library
+  depends_on 'pcre2' => :library
+  depends_on 'xfce4_panel' => :library
+  depends_on 'xfconf' => :library
+  depends_on 'zlib' => :library
 
   def self.prebuild
     ConvenienceFunctions.libtoolize('glib-2.0', 'glib')
     ConvenienceFunctions.libtoolize('harfbuzz')
+    ConvenienceFunctions.libtoolize('libuuid', 'util_linux')
+  end
+
+  def self.postbuild
+    # Remove systemd.
+    FileUtils.rm_rf "#{CREW_DEST_PREFIX}/lib" if ARCH.eql?('x86_64')
   end
 
   autotools_configure_options '--enable-gio-unix \
