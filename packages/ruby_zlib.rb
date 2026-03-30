@@ -18,7 +18,6 @@ class Ruby_zlib < RUBY
 
   depends_on 'glibc' => :library
   depends_on 'ruby' => :library
-  depends_on 'ruby' => :logical
   depends_on 'zlib' => :library
 
   conflicts_ok
