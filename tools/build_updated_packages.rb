@@ -175,7 +175,7 @@ def update_deps(pkg)
   end
 end
 
-def determine_recursive_deps(d_pkg_input)
+def determine_recursive_deps(d_pkg_input, dependency_graphs: {})
   # How to hardcode a dependency:
   # @gcc_lib_graph = Dagwood::DependencyGraph.new(gcc_lib: %i[glibc])
   # @glibc_graph = Dagwood::DependencyGraph.new(glibc: nil)
@@ -191,35 +191,39 @@ def determine_recursive_deps(d_pkg_input)
       # d_pkg_deps = d_pkg_obj.get_deps_list(exclude_buildessential: false).delete_if { |d| ( d == 'glibc' || d == 'gcc_lib' ) }
       d_pkg_deps = d_pkg_obj.dependencies.map { |key, _value| key.to_s }.compact.delete_if { |d| %w[glibc gcc_lib].include?(d) }
     end
-    instance_variable_set("@#{d_pkg}_graph", Dagwood::DependencyGraph.new({ d_pkg.to_sym => (d_pkg_deps.map &:to_sym) })) if instance_variable_get("@#{d_pkg}_graph").nil?
+    dependency_graphs[d_pkg] = Dagwood::DependencyGraph.new({ d_pkg.to_sym => (d_pkg_deps.map &:to_sym) }) if dependency_graphs[d_pkg].nil?
 
-    next unless !instance_variable_get("@#{d_pkg}_graph").nil? && !instance_variable_get("@#{d_pkg}_graph").dependencies.nil?
+    next unless !dependency_graphs[d_pkg].nil? && !dependency_graphs[d_pkg].dependencies.nil?
 
     next if d_pkg_deps.empty?
     d_pkg_deps.each do |d|
-      determine_recursive_deps(d) if instance_variable_get("@#{d}_graph").nil?
+      dependency_graphs = determine_recursive_deps(d, dependency_graphs:) if dependency_graphs[d].nil?
       begin
         # puts "#{"#{__LINE__}: " if CREW_VERBOSE}order for #{d} is #{instance_variable_get("@#{d}_graph").order}".lightpurple
+        # puts "#{"#{__LINE__}: " if CREW_VERBOSE}order for #{d} is #{dependency_graphs[d_pkg].order}".lightpurple
         # Make sure that the dependency tree for each d_pkg dependency
         # d is copacetic. If not error out with a complaint.
-        instance_variable_get("@#{d}_graph").order
+        dependency_graphs[d_pkg].order
       rescue TSort::Cyclic => e
         puts "#{"#{__LINE__}: " if CREW_VERBOSE}Error processing dependencies for #{d_pkg}:".lightred
-        puts "#{"#{__LINE__}: " if CREW_VERBOSE}Circular dependency detected from #{instance_variable_get("@#{d}_graph").dependencies}:".lightred
+        puts "#{"#{__LINE__}: " if CREW_VERBOSE}Circular dependency detected from #{dependency_graphs[d].dependencies}:".lightred
         abort "#{"#{__LINE__}: " if CREW_VERBOSE}#{e.message}".lightred
       end
-      instance_variable_set("@#{d_pkg}_graph", instance_variable_get("@#{d_pkg}_graph").merge(instance_variable_get("@#{d}_graph"))) unless instance_variable_get("@#{d}_graph").dependencies.nil?
+      dependency_graphs[d_pkg] = dependency_graphs[d_pkg].merge(dependency_graphs[d]) unless dependency_graphs[d].dependencies.nil?
     end
   end
+
+  return dependency_graphs
 end
 
-def print_recursive_deps(d_pkg_input)
+def print_recursive_deps(d_pkg_input, dependency_graphs)
   [d_pkg_input].flatten.each do |p|
-    abort "@#{p}_graph does not exist!".lightred unless !instance_variable_get("@#{p}_graph").nil? && !instance_variable_get("@#{p}_graph").dependencies.nil?
-    deps = instance_variable_get("@#{p}_graph").dependencies
+    abort "@#{p}_graph does not exist!".lightred unless !dependency_graphs[p].nil? && !dependency_graphs[p].dependencies.nil?
+    deps = dependency_graphs[p].dependencies
     puts deps.to_s.lightblue
+
     begin
-      puts instance_variable_get("@#{p}_graph").order
+      puts dependency_graphs[p].order
     rescue RuntimeError => e
       puts e.message.lightred
     rescue TSort::Cyclic => e
@@ -231,9 +235,9 @@ end
 def order_recursive_deps(d_pkg_input)
   d_pkgs = [d_pkg_input].flatten
   puts "#{"#{__LINE__}: " if CREW_VERBOSE}Processing dependencies...".lightpurple
-  determine_recursive_deps(d_pkgs)
+  dependency_graphs = determine_recursive_deps(d_pkgs)
   input_pkgs = d_pkgs.to_set
-  merge_base = instance_variable_get("@#{d_pkgs.pop}_graph")
+  merge_base = dependency_graphs[d_pkgs.pop]
 
   d_pkgs.each do |p|
     begin
@@ -242,7 +246,7 @@ def order_recursive_deps(d_pkg_input)
       puts "#{"#{__LINE__}: " if CREW_VERBOSE}Circular dependency detected from #{merge_base.dependencies}:".lightpurple
       abort e.message.to_s.lightred
     end
-    merge_base = merge_base.merge(instance_variable_get("@#{p}_graph"))
+    merge_base = merge_base.merge(dependency_graphs[p])
     # puts "#{"#{__LINE__}: " if CREW_VERBOSE}merge_base.order is now #{merge_base.order}".lightpurple
   end
   package_deps_build_order = merge_base.order.to_set(&:to_s)
