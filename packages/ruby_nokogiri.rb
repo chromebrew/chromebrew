@@ -10,18 +10,19 @@ class Ruby_nokogiri < RUBY
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: '523c41e8ffb1763b2ed8fb1dfc555cd7f990eac08c599a1c9054a90245bfb01e',
-     armv7l: '523c41e8ffb1763b2ed8fb1dfc555cd7f990eac08c599a1c9054a90245bfb01e',
-       i686: 'c48183cea55c4e9f338ec3e8a27f81f006533d05674729002fb28fe56851a5e0',
-     x86_64: '2e3e19a62b7dd04cc169a6a7bf38f998bf415d112d413a5df1c1d36cd7547ff7'
+    aarch64: '6ec5cb6c22021e4478d256d83a3f16acd766e8c92fc789672207e14bd8a89646',
+     armv7l: '6ec5cb6c22021e4478d256d83a3f16acd766e8c92fc789672207e14bd8a89646',
+       i686: '7e4d1aacc6f2a62373d95695fc8765275447f3e9c2ff09cad3e0ea8dbc222630',
+     x86_64: 'faee0a6a0d9db5fe18e9b1d8fade910c81fb52c944956d9a3743948da0ef18a7'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'ruby' # R
+  depends_on 'glibc' => :library
+  depends_on 'ruby' => :library
+  depends_on 'ruby' => :logical
   depends_on 'ruby_mini_portile2' # R
   depends_on 'ruby_racc' # R
-  depends_on 'xzutils' # R
-  depends_on 'zlib' # R
+  depends_on 'xzutils' => :library
+  depends_on 'zlib' => :library
 
   conflicts_ok
   gem_compile_needed
