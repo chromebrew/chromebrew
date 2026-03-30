@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Libngtcp2 < CMake
   description 'Implementation of IETF QUIC protocol'
   homepage 'https://github.com/ngtcp2/ngtcp2'
-  version '1.21.0'
+  version '1.22.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/ngtcp2/ngtcp2.git'
@@ -14,15 +14,15 @@ class Libngtcp2 < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '10503131c5fbfc3ccc1c392c0d90aedbc3db5ddfce8661e13ff53f04b900aaf7',
-     armv7l: '10503131c5fbfc3ccc1c392c0d90aedbc3db5ddfce8661e13ff53f04b900aaf7',
-       i686: 'c9a79f87566ef5e6c207aca696dd786347d616d7355e090b2fd843211db19f2f',
-     x86_64: '2ab5cba3c0fab8401e062147d2efe6b564a5b46de4bf91053befd1ce91767acb'
+    aarch64: '49fa34e1fd0ff723b4a7a425e7819fc657098d464b985581fb0b29c7a92dddba',
+     armv7l: '49fa34e1fd0ff723b4a7a425e7819fc657098d464b985581fb0b29c7a92dddba',
+       i686: '9446d1a8914ee5ad3d729c751e606543fa1fb78d808f7acb51f19556fa96185a',
+     x86_64: 'ba45841e77c88a2bb50f18d41a802e49d77e5e6d9338811c5e7a9b4542054cd1'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'gnutls' # R
-  depends_on 'openssl' # R
+  depends_on 'glibc' => :library
+  depends_on 'gnutls' => :library
+  depends_on 'openssl' => :library
 
   cmake_options '-DENABLE_GNUTLS=ON \
                  -DENABLE_LIB_ONLY=ON'
