@@ -10,14 +10,15 @@ class Ruby_rbs < RUBY
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: 'cab81499585b3f3454e9370104ba1388cc4e9f91c4728573341dee77335a4767',
-     armv7l: 'cab81499585b3f3454e9370104ba1388cc4e9f91c4728573341dee77335a4767',
-       i686: 'ec0d326029dbc9cb9d1ed8fcd6c45d62f77c9a7b77d491f4fb45ac854bd2dc86',
-     x86_64: 'aaade95cfb4b0141d313dfba766e193324474cfe1c279583da1812d1fdf106bf'
+    aarch64: '78b4ab76633f9c3c40c9e65d2dd6fde04ed1356cbbf5659c5af93389eabdddda',
+     armv7l: '78b4ab76633f9c3c40c9e65d2dd6fde04ed1356cbbf5659c5af93389eabdddda',
+       i686: 'd490c4afd377b31afeb9508267cc74cd7280a3c75c9a80e68059907a85d58d7a',
+     x86_64: '47824f102932b8f28481b44ef69baf3bbc8200f79471f25ace6591e8c0f3b900'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'ruby' # R
+  depends_on 'glibc' => :library
+  depends_on 'ruby' => :library
+  depends_on 'ruby' => :logical
   depends_on 'ruby_logger' # R
   depends_on 'ruby_tsort' # R
 
