@@ -1,0 +1,3 @@
+#!/bin/bash
+stunnel -help 2>&1 | head
+stunnel -version 2>&1

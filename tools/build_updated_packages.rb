@@ -50,6 +50,7 @@ if ARGV.include?('-h') || ARGV.include?('--help')
   EOM
 end
 
+# We don't directly use the GITLAB_TOKEN* environment variables, but crew upload does, so we check for them here so that we don't build a package and then fail to upload it.
 abort "\nGITLAB_TOKEN environment variable not set.\n".lightred if ENV['GITLAB_TOKEN'].nil?
 abort "\nGITLAB_TOKEN_USERNAME environment variable not set.\n".lightred if ENV['GITLAB_TOKEN_USERNAME'].nil?
 puts "Setting the CREW_AGREE_TIMEOUT_SECONDS environment variable to less than the default of #{CREW_AGREE_TIMEOUT_SECONDS} may speed this up...".orange if ENV['CREW_AGREE_TIMEOUT_SECONDS'].nil?
@@ -111,8 +112,8 @@ rescue Timeout::Error
   return true
 end
 
-def self.check_build_uploads(architectures_to_check = nil, name = nil)
-  return [] if @pkg_obj.is_fake?
+def self.check_build_uploads(architectures_to_check, pkg)
+  return [] if pkg.is_fake?
   architectures_to_check.delete('aarch64')
   architectures_to_check = %w[x86_64 armv7l i686] if (architectures_to_check & %w[x86_64 armv7l i686]).nil?
 
@@ -120,54 +121,56 @@ def self.check_build_uploads(architectures_to_check = nil, name = nil)
 
   remote_binary = { armv7l: nil, i686: nil, x86_64: nil }
   remote_binary.keys.each do |arch|
-    arch_specific_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{name}/#{@pkg_obj.version}_#{arch}/#{name}-#{@pkg_obj.version}-chromeos-#{arch}.#{@pkg_obj.binary_compression}"
+    arch_specific_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{pkg.name}/#{pkg.version}_#{arch}/#{pkg.name}-#{pkg.version}-chromeos-#{arch}.#{pkg.binary_compression}"
     puts "Checking: curl -sI #{arch_specific_url}" if VERBOSE
     remote_binary[arch.to_sym] = `curl -sI #{arch_specific_url}`.lines.first.split[1] == '200'
     puts "#{arch_specific_url} found!" if remote_binary[arch.to_sym] && VERBOSE
   end
-  system "crew update_package_file #{name}" unless remote_binary.values.all?(nil)
+  system "crew update_package_file #{pkg.name}" unless remote_binary.values.all?(nil)
 
   builds_needed = architectures_to_check.dup
   architectures_to_check.each do |arch|
     builds_needed.delete(arch) if remote_binary[arch.to_sym]
-    puts "builds_needed for #{name} is now #{builds_needed}" if VERBOSE
+    puts "builds_needed for #{pkg.name} is now #{builds_needed}" if VERBOSE
   end
   return builds_needed
 end
 
-def update_hashes_and_manifests(name = nil)
+def update_hashes_and_manifests(pkg)
   unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES
     remote_binary = { armv7l: nil, i686: nil, x86_64: nil }
     remote_binary.keys.each do |arch|
-      arch_specific_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{name}/#{@pkg_obj.version}_#{arch}/#{name}-#{@pkg_obj.version}-chromeos-#{arch}.#{@pkg_obj.binary_compression}"
+      arch_specific_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{pkg.name}/#{pkg.version}_#{arch}/#{pkg.name}-#{pkg.version}-chromeos-#{arch}.#{pkg.binary_compression}"
       puts "Checking: curl -sI #{arch_specific_url}" if VERBOSE
       remote_binary[arch.to_sym] = `curl -sI #{arch_specific_url}`.lines.first.split[1] == '200'
       puts "#{arch_specific_url} found!" if remote_binary[arch.to_sym] && VERBOSE
     end
     # Add build hashes.
-    system "crew update_package_file #{name}" unless remote_binary.values.all?(nil)
+    system "crew update_package_file #{pkg.name}" unless remote_binary.values.all?(nil)
     # Add manifests if we are in the right architecture.
-    if @pkg_obj.compatibility == 'all' || @pkg_obj.compatibility.include?(ARCH)
+    if PackageUtils.compatible?(pkg)
       # Using crew reinstall -f package here updates the hashes for
       # binaries.
-      if system("yes | crew reinstall --regenerate-filelist #{'-f' unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES} #{name}") && File.exist?("#{CREW_META_PATH}/#{name}.filelist") && File.directory?(CREW_LOCAL_REPO_ROOT)
+      if system("yes | crew reinstall --regenerate-filelist #{'-f' unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES} #{pkg.name}") && File.exist?("#{CREW_META_PATH}/#{pkg.name}.filelist") && File.directory?(CREW_LOCAL_REPO_ROOT)
         puts 'Adding manifests...'
-        FileUtils.cp "#{CREW_META_PATH}/#{name}.filelist", "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{name.chr}/#{name}.filelist"
+        FileUtils.cp "#{CREW_META_PATH}/#{pkg.name}.filelist", "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{pkg.name.chr}/#{pkg.name}.filelist"
       end
     else
-      puts "Package #{name} is not compatible with your device architecture (#{ARCH}). Manifests will not be added.".orange
+      puts PackageUtils.incompatible_reason(pkg).join("\n").orange
+      puts 'Manifests will not be added.'.lightred
       return
     end
   end
 end
 
-def update_deps(name = nil)
+def update_deps(pkg)
   unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES
     # Update package dependencies.
-    if @pkg_obj.compatibility == 'all' || @pkg_obj.compatibility.include?(ARCH)
-      Kernel.system "tools/getrealdeps.rb #{name}"
+    if PackageUtils.compatible?(pkg)
+      Kernel.system "tools/getrealdeps.rb #{pkg.name}"
     else
-      puts "Package #{name} is not compatible with your device architecture (#{ARCH}). Dependencies will not be checked.".orange
+      puts PackageUtils.incompatible_reason(pkg).join("\n").orange
+      puts 'Dependencies will not be checked.'.lightred
     end
   end
 end
@@ -262,6 +265,9 @@ def order_recursive_deps(d_pkg_input)
   return package_deps_build_order.delete_if { |p| !input_pkgs.include? p }.to_a
 end
 
+# Do not execute anything if we are required as a library rather than being run as a script.
+return unless __FILE__ == $PROGRAM_NAME
+
 if SKIP_UPDATE_CHECKS
   puts 'Skipping pip and gem remote update checks.'.orange
 else
@@ -331,13 +337,13 @@ updated_packages.each do |pkg|
 
   puts "Evaluating #{name} package...".lightpurple
   system "rubocop -c .rubocop.yml -A #{pkg}"
-  @pkg_obj = Package.load_package(pkg)
+  pkg_obj = Package.load_package(pkg)
 
   # Handle case of no_compile_needed ruby gems actually containing
   # libraries requiring compiles, in which which case we need to disable
   # no_compile_needed and add gem_compile_needed, which the ruby
   # buildsystem will add.
-  if @pkg_obj.superclass.to_s == 'RUBY' && @pkg_obj.no_compile_needed?
+  if pkg_obj.superclass.to_s == 'RUBY' && pkg_obj.no_compile_needed?
     puts "#{name} is a gem package.".lightblue
     system "yes | crew reinstall #{'-f' unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES} #{name}"
     if File.file?("#{CREW_META_PATH}/#{name}.filelist") && system("grep '.so$' #{CREW_META_PATH}/#{name}.filelist", exception: false)
@@ -355,10 +361,10 @@ updated_packages.each do |pkg|
 
   # Don't check if we need new binaries if the package doesn't already
   # have binaries for this architecture.
-  if !system("grep -q binary_sha256 #{pkg}") && !@pkg_obj.no_compile_needed? && !@pkg_obj.gem_compile_needed?
-    puts "#{name.capitalize} #{@pkg_obj.version} has no binaries and may not need them.".lightgreen
+  if !system("grep -q binary_sha256 #{pkg}") && !pkg_obj.no_compile_needed? && !pkg_obj.gem_compile_needed?
+    puts "#{name.capitalize} #{pkg_obj.version} has no binaries and may not need them.".lightgreen
     next pkg
-  elsif @pkg_obj.no_compile_needed? && (@pkg_obj.compatibility == 'all' || @pkg_obj.compatibility.include?(ARCH))
+  elsif pkg_obj.no_compile_needed? && PackageUtils.compatible?(pkg_obj)
     # Using crew reinstall -f package here updates the hashes for
     # binaries.
     system "yes | crew reinstall #{'-f --regenerate-filelist' unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES} #{name}"
@@ -368,25 +374,25 @@ updated_packages.each do |pkg|
       FileUtils.cp "#{CREW_META_PATH}/#{name}.filelist", "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{name.chr}/#{name}.filelist"
     end
   else
-    if @pkg_obj.no_binaries_needed?
+    if pkg_obj.no_binaries_needed?
       puts "no binaries needed for #{pkg}"
       updated_packages.delete(pkg)
       next
     end
-    architectures_to_check = @pkg_obj.compatibility == 'all' ? %w[x86_64 armv7l i686] : @pkg_obj.compatibility.delete(',').split
+    architectures_to_check = pkg_obj.compatibility == 'all' ? %w[x86_64 armv7l i686] : pkg_obj.compatibility.delete(',').split
     puts "#{name.capitalize} appears to need binaries. Checking to see if current binaries exist...".orange
-    builds_needed = check_build_uploads(architectures_to_check, name)
+    builds_needed = check_build_uploads(architectures_to_check, pkg_obj)
     if builds_needed.empty?
-      puts "No builds are needed for #{name} #{@pkg_obj.version}.".lightgreen
-      update_hashes_and_manifests(name)
-      update_deps(name)
+      puts "No builds are needed for #{name} #{pkg_obj.version}.".lightgreen
+      update_hashes_and_manifests(pkg_obj)
+      update_deps(pkg_obj)
       puts "Copying #{File.join(CREW_PACKAGES_PATH, pkg.sub('packages/', ''))} to #{pkg}".lightblue
       FileUtils.cp File.join(CREW_PACKAGES_PATH, pkg.sub('packages/', '')), pkg
       next
     else
-      puts "#{name.capitalize} #{@pkg_obj.version} needs builds uploaded for: #{builds_needed.join(' ')}".lightblue
+      puts "#{name.capitalize} #{pkg_obj.version} needs builds uploaded for: #{builds_needed.join(' ')}".lightblue
 
-      if builds_needed.include?(ARCH) && !File.file?("release/#{ARCH}/#{name}-#{@pkg_obj.version}-chromeos-#{ARCH}.#{@pkg_obj.binary_compression}") && agree_default_yes("\nWould you like to build #{name} #{@pkg_obj.version}")
+      if builds_needed.include?(ARCH) && !File.file?("release/#{ARCH}/#{name}-#{pkg_obj.version}-chromeos-#{ARCH}.#{pkg_obj.binary_compression}") && agree_default_yes("\nWould you like to build #{name} #{pkg_obj.version}")
         # GitHub actions are killed after 6 hours, so  eed to force
         # creation of build artifacts for long-running builds.
         if ENV['NESTED_CI']
@@ -418,23 +424,23 @@ updated_packages.each do |pkg|
       end
       upload_pkg = nil
       builds_needed.each do |build|
-        upload_pkg = true if File.file?("release/#{build}/#{name}-#{@pkg_obj.version}-chromeos-#{build}.#{@pkg_obj.binary_compression}")
+        upload_pkg = true if File.file?("release/#{build}/#{name}-#{pkg_obj.version}-chromeos-#{build}.#{pkg_obj.binary_compression}")
       end
       system('yes | crew reinstall py3_twine', %i[out err] => File::NULL) unless system('twine --help', %i[out err] => File::NULL)
       if system("crew check #{name}")
-        system "crew upload -v #{name}" if upload_pkg == true && agree_default_yes("\nWould you like to upload #{name} #{@pkg_obj.version}")
+        system "crew upload -v #{name}" if upload_pkg == true && agree_default_yes("\nWould you like to upload #{name} #{pkg_obj.version}")
         system "rubocop -c .rubocop.yml -A #{pkg}"
       else
         abort "Failed: crew check #{name}".lightred
       end
       puts "Are builds still needed for #{name}?".orange
-      builds_still_needed = check_build_uploads(architectures_to_check, name)
+      builds_still_needed = check_build_uploads(architectures_to_check, pkg_obj)
       puts "Built and Uploaded: #{name} for #{ARCH}" if builds_needed != builds_still_needed
       # next if builds_still_needed.empty? && system("grep -q binary_sha256 #{pkg}")
       next if builds_still_needed.empty?
 
-      puts "#{name.capitalize} #{@pkg_obj.version} still needs builds uploaded for: #{builds_still_needed.join(' ')}".lightblue unless builds_still_needed.empty? && system("grep -q binary_sha256 #{pkg}")
-      puts "#{name.capitalize} #{@pkg_obj.version} still needs build sha256 hashes added.".lightblue unless system("grep -q binary_sha256 #{pkg}")
+      puts "#{name.capitalize} #{pkg_obj.version} still needs builds uploaded for: #{builds_still_needed.join(' ')}".lightblue unless builds_still_needed.empty? && system("grep -q binary_sha256 #{pkg}")
+      puts "#{name.capitalize} #{pkg_obj.version} still needs build sha256 hashes added.".lightblue unless system("grep -q binary_sha256 #{pkg}")
     end
   end
 end

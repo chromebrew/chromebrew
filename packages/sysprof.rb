@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Sysprof < Meson
   description 'Kernel based performance profiler'
   homepage 'https://wiki.gnome.org/Apps/Sysprof'
-  version '49.0'
+  version '50.0'
   license 'GPL'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/sysprof.git'
@@ -14,26 +14,26 @@ class Sysprof < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd53c1f4ef3ef030d15377ab048cf970b6e17849c923070e180853719becbdbf1',
-     armv7l: 'd53c1f4ef3ef030d15377ab048cf970b6e17849c923070e180853719becbdbf1',
-     x86_64: 'a71ca1a5c783c646261b24992824ab4a5972283d529bdbb8e72f015070815311'
+    aarch64: 'ac85b617989d653cf33a321511530a0375187ec36719f812f4144c0b237cc945',
+     armv7l: 'ac85b617989d653cf33a321511530a0375187ec36719f812f4144c0b237cc945',
+     x86_64: '49efa8cac1101a23ae2133907c0f311484342c157369d70253672f3699550ec8'
   })
 
-  depends_on 'cairo' # R
+  depends_on 'cairo' => :executable
   depends_on 'desktop_file_utils' => :build
-  depends_on 'gcc_lib' # R
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
-  depends_on 'graphene' # R
-  depends_on 'gtk4' # R
-  depends_on 'harfbuzz' # R
-  depends_on 'json_glib' # R
-  depends_on 'libadwaita' # R
-  depends_on 'libdex' # R
-  depends_on 'libpanel' # R
-  depends_on 'libunwind' # R
-  depends_on 'pango' # R
-  depends_on 'polkit' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'graphene' => :executable
+  depends_on 'gtk4' => :executable
+  depends_on 'harfbuzz' => :executable
+  depends_on 'json_glib' => :library
+  depends_on 'libadwaita' => :executable
+  depends_on 'libdex' => :library
+  depends_on 'libpanel' => :executable
+  depends_on 'libunwind' => :library
+  depends_on 'pango' => :executable
+  depends_on 'polkit' => :library
 
   meson_options '-Dsysprofd=none \
                  -Dexamples=false \

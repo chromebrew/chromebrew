@@ -1,4 +1,4 @@
-# Total size: 3284908
+# Total size: 3508591
 /usr/local/bin/sysprof
 /usr/local/include/sysprof-6/sysprof-address.h
 /usr/local/include/sysprof-6/sysprof-battery-charge.h
@@ -124,8 +124,10 @@
 /usr/local/share/locale/hu/LC_MESSAGES/sysprof.mo
 /usr/local/share/locale/id/LC_MESSAGES/sysprof.mo
 /usr/local/share/locale/it/LC_MESSAGES/sysprof.mo
+/usr/local/share/locale/ja/LC_MESSAGES/sysprof.mo
 /usr/local/share/locale/ka/LC_MESSAGES/sysprof.mo
 /usr/local/share/locale/kab/LC_MESSAGES/sysprof.mo
+/usr/local/share/locale/kk/LC_MESSAGES/sysprof.mo
 /usr/local/share/locale/ko/LC_MESSAGES/sysprof.mo
 /usr/local/share/locale/lt/LC_MESSAGES/sysprof.mo
 /usr/local/share/locale/ne/LC_MESSAGES/sysprof.mo
@@ -140,10 +142,13 @@
 /usr/local/share/locale/sk/LC_MESSAGES/sysprof.mo
 /usr/local/share/locale/sl/LC_MESSAGES/sysprof.mo
 /usr/local/share/locale/sr/LC_MESSAGES/sysprof.mo
+/usr/local/share/locale/sr@latin/LC_MESSAGES/sysprof.mo
 /usr/local/share/locale/sv/LC_MESSAGES/sysprof.mo
 /usr/local/share/locale/tr/LC_MESSAGES/sysprof.mo
+/usr/local/share/locale/ug/LC_MESSAGES/sysprof.mo
 /usr/local/share/locale/uk/LC_MESSAGES/sysprof.mo
 /usr/local/share/locale/uz/LC_MESSAGES/sysprof.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/sysprof.mo
+/usr/local/share/locale/zh_TW/LC_MESSAGES/sysprof.mo
 /usr/local/share/metainfo/org.gnome.Sysprof.metainfo.xml
 /usr/local/share/mime/packages/sysprof-mime.xml

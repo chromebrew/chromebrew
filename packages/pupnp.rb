@@ -1,35 +1,25 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Pupnp < Package
+class Pupnp < CMake
   description 'PUPnP is the Portable SDK for UPnP devices.'
   homepage 'https://pupnp.github.io/pupnp/'
-  version '1.14.12'
+  version '1.18.4'
   compatibility 'all'
   license 'BSD-3'
   source_url 'https://github.com/pupnp/pupnp.git'
   git_hashtag "release-#{version}"
-  binary_compression 'tpxz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'dfd091b7ed9f05b4f430b5f222ec455d682e892b2c1cb8335a7128c6e31c9c64',
-     armv7l: 'dfd091b7ed9f05b4f430b5f222ec455d682e892b2c1cb8335a7128c6e31c9c64',
-       i686: '65e7f095ae985ff94ea5a95747e591f29f81be37cc6c783a86416d909f2e859e',
-     x86_64: '018d7c94f418c608deb388654334e43f61cd2c07c1d8e19b4743ff905308926a'
+    aarch64: 'd0e35db6e0afa9d965dec8d063324dfd86b0a1f3d763718688c54480270da309',
+     armv7l: 'd0e35db6e0afa9d965dec8d063324dfd86b0a1f3d763718688c54480270da309',
+       i686: 'a348e870396a9a58cc29f89bcb2655b7dc948e7b539c9400554e4640dbf7a531',
+     x86_64: 'e99762e6f47b368d9c27dc2bedf0fbec44826d260e66e9c1c0298227453594aa'
   })
 
-  def self.build
-    FileUtils.mkdir 'builddir'
-    Dir.chdir 'builddir' do
-      system "cmake -G 'Ninja' #{CREW_CMAKE_OPTIONS} .."
-    end
-    system 'samu -C builddir'
-  end
+  depends_on 'glibc' => :library
+  depends_on 'gtest' => :build
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
-  end
-
-  def self.check
-    system 'samu -C builddir test'
-  end
+  cmake_options "-DGTest_DIR=#{CREW_LIB_PREFIX}/cmake/GTest"
+  run_tests
 end

@@ -1,0 +1,3 @@
+#!/bin/bash
+optipng -h | head
+optipng --version

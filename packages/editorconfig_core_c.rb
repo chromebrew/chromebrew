@@ -1,38 +1,22 @@
-# Adapted from Arch Linux editorconfig-core-c PKGBUILD at:
-# https://github.com/archlinux/svntogit-packages/raw/packages/editorconfig-core-c/trunk/PKGBUILD
+require 'buildsystems/cmake'
 
-require 'package'
-
-class Editorconfig_core_c < Package
+class Editorconfig_core_c < CMake
   description 'EditorConfig core code written in C for use by plugins supporting EditorConfig parsing'
   homepage 'https://github.com/editorconfig/editorconfig-core-c'
-  version '0.12.6'
+  version '0.12.10'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/editorconfig/editorconfig-core-c/archive/v0.12.6/editorconfig-core-c-0.12.6.tar.gz'
-  source_sha256 '36052a5371731d915b53d9c7a24a11c4032585ccacb392ec9d58656eef4c0edf'
+  source_url 'https://github.com/editorconfig/editorconfig-core-c.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e11a40cf379fbcdd7da6aa7183c097214909c6375bb609587a07fbeb55dd4eb3',
-     armv7l: 'e11a40cf379fbcdd7da6aa7183c097214909c6375bb609587a07fbeb55dd4eb3',
-       i686: 'b6f86925b01a0b25ff7fbac61fb6ca683e519ba262daf7a9a2389d7e79810a74',
-     x86_64: 'eb1ad56f799f7f276aa7aef8a5d589a99b9f3469879eb79e2846f5c95dae22bd'
+    aarch64: 'a1bde9ba3e552ef6a455be6df84711c16983165cbf48c31b5511e922b954a4b6',
+     armv7l: 'a1bde9ba3e552ef6a455be6df84711c16983165cbf48c31b5511e922b954a4b6',
+       i686: 'beaf517a94f49555888861c2d41ba6858f89320727914bd0d96779cdc352602a',
+     x86_64: '7cb97d683d99c0ea51799e2775ceb53e23efa78a9f25eb1513ca6bf6b1495253'
   })
 
-  depends_on 'pcre2' # R
-  depends_on 'doxygen' => :build
-  depends_on 'glibc' # R
-
-  def self.build
-    system "cmake -B builddir \
-          #{CREW_CMAKE_OPTIONS} \
-          -Wdev \
-          -G Ninja"
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+  depends_on 'glibc' => :library
+  depends_on 'pcre2' => :library
 end

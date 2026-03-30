@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Ccache < CMake
   description 'Compiler cache that speeds up recompilation by caching previous compilations'
   homepage 'https://ccache.dev/'
-  version '4.13.1'
+  version '4.13.2'
   license 'GPL-3 and LGPL-3'
   compatibility 'all'
   source_url 'https://github.com/ccache/ccache.git'
@@ -11,18 +11,18 @@ class Ccache < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a789dbaf6705e5d5cb6e14e90d8efd4df118c2c57e674ba3b84621137d5627c5',
-     armv7l: 'a789dbaf6705e5d5cb6e14e90d8efd4df118c2c57e674ba3b84621137d5627c5',
-       i686: '12908a2b9ce8dca804da4dbbc9568aee4c75ee82febe4a5455eb47a27757e18e',
-     x86_64: 'c350a1e8708927aae942addebc488aae29b99010b097f722432d13477dbdacab'
+    aarch64: 'f5b03a309c204e53e0ba4a435b83568009f6b417974d802ec9f752fcd93c7f45',
+     armv7l: 'f5b03a309c204e53e0ba4a435b83568009f6b417974d802ec9f752fcd93c7f45',
+       i686: '73c00fd2c44686c07a2bff71e35ad0b7ffe75a0e543daa31a841faef2db94717',
+     x86_64: '6a9b4e17d82be9d8e5cfd2452239a05a5b94c23a13f836747586d7e28cd5594c'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
   depends_on 'ruby_asciidoctor' => :build
-  depends_on 'xdg_base' # L
-  depends_on 'xxhash' # R
-  depends_on 'zstd' # R
+  depends_on 'xdg_base' => :logical
+  depends_on 'xxhash' => :library
+  depends_on 'zstd' => :library
 
   print_source_bashrc
 

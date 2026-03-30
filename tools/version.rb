@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.32 (for Chromebrew)
+# version.rb version 3.33 (for Chromebrew)
 
 OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose -vv]
 
@@ -125,8 +125,7 @@ def gitlab_fallback(url)
     puts 'No releases available on GitLab repo.' if CREW_VERBOSE
   else
     gitlab_ver = redirect.split('/').last
-    # puts "gitlab_ver = #{gitlab_ver}" if CREW_VERY_VERBOSE
-    puts "gitlab_ver = #{gitlab_ver}"
+    puts "gitlab_ver = #{gitlab_ver}" if CREW_VERY_VERBOSE
     # Strip off any leading non-numeric characters.
     return gitlab_ver.sub(/.*?(?=[0-9].)/im, '')
   end

@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Mutt < Autotools
   description 'Mutt is a small but very powerful text-based mail client for Unix operating systems.'
   homepage 'http://mutt.org/'
-  version '2.3'
+  version '2.3.1'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://gitlab.com/muttmua/mutt.git'
@@ -11,10 +11,10 @@ class Mutt < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3360227b7d62d6ce5b95dbf34023ce0bc2ecd949a360ea59854586d6cbd20d85',
-     armv7l: '3360227b7d62d6ce5b95dbf34023ce0bc2ecd949a360ea59854586d6cbd20d85',
-       i686: '89bf53911df6faff81804c2dc5911c94e45ea6173e88a5ac75b6feee24e9027b',
-     x86_64: 'cdc654fe5b89c962d0d8990d4ee21d7824a56218d7fdc14aa167d4119cf1849a'
+    aarch64: 'e852121f662c37dd6202ef7ecba96361b7bacc2a7b89341326cacc21f4ca376c',
+     armv7l: 'e852121f662c37dd6202ef7ecba96361b7bacc2a7b89341326cacc21f4ca376c',
+       i686: '439e2fcc00a279dd2d5bf1582fe190b0a192e8c7a26978d20d8d67ae162ebe8b',
+     x86_64: '2ed04ae176c92a5201987559e31e80764ab28f36a878f5dcd8bcbcb426990274'
   })
 
   depends_on 'gdbm' => :executable

@@ -1125,6 +1125,11 @@ url: https://ftp.gnome.org/pub/GNOME/sources/cogl/
 activity: low
 ---
 kind: url
+name: coin
+url: https://github.com/coin3d/coin/tags
+activity: medium
+---
+kind: url
 name: collectl
 url: https://sourceforge.net/projects/collectl/files/collectl/
 activity: low
@@ -4740,6 +4745,11 @@ url: https://git.hadrons.org/git/libmd.git
 activity: low
 ---
 kind: url
+name: libmedfile
+url: https://www.salome-platform.org/?page_id=2768
+activity: none
+---
+kind: url
 name: libmediaart
 url: https://gitlab.gnome.org/GNOME/libmediaart/-/tags
 activity: low
@@ -7220,6 +7230,11 @@ url: https://metacpan.org/pod/ExtUtils::PkgConfig
 activity: low
 ---
 kind: url
+name: perl_file_sharedir_install
+url: https://metacpan.org/pod/File::ShareDir::Install
+activity: low
+---
+kind: url
 name: perl_file_spec
 url: https://metacpan.org/pod/File::Spec
 activity: low
@@ -7508,6 +7523,11 @@ kind: url
 name: pipewire
 url: https://gitlab.freedesktop.org/pipewire/pipewire/-/tags
 activity: high
+---
+kind: url
+name: pivy
+url: https://github.com/coin3d/pivy/tags
+activity: low
 ---
 kind: url
 name: pixman

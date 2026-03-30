@@ -3,7 +3,7 @@ require 'package'
 class Sccache < Package
   description 'Shared Compilation Cache'
   homepage 'https://github.com/mozilla/sccache/'
-  version '0.10.0'
+  version '0.14.0'
   license 'Apache-2.0, Apache-2.0-with-LLVM-exceptions, BSD, BSD-2, Boost-1.0, ISC, MIT, Unlicense and ZLIB'
   compatibility 'all'
   source_url 'https://github.com/mozilla/sccache.git'
@@ -11,15 +11,15 @@ class Sccache < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'da53d5b3c9b4a1068165964677a7b72ddd199a61606ed2ffe2a0d4f092b9934f',
-     armv7l: 'da53d5b3c9b4a1068165964677a7b72ddd199a61606ed2ffe2a0d4f092b9934f',
-       i686: 'b4eeef08d3faaef139266ce63138104e2a60946390c5c4c0ff722e05717306f6',
-     x86_64: 'ca129f687034ad50817356cc796679a3c9d54280137690ba96ae82af9eea26cc'
+    aarch64: 'c754d9408f57d9ed867f2cfee12750997e2cffcbc498ead3a3e3cdf9241bdd2c',
+     armv7l: 'c754d9408f57d9ed867f2cfee12750997e2cffcbc498ead3a3e3cdf9241bdd2c',
+       i686: 'a978699434b7769112cdcb5c45fa73a50307b388232018ad238a5218a0a14532',
+     x86_64: '53ec3f4fca323225a9f9a9223cd94e64db04bd384a50e1994af438cfb24dea43'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'openssl' # R
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'openssl' => :executable
   depends_on 'rust' => :build
 
   print_source_bashrc

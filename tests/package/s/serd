@@ -1,0 +1,3 @@
+#!/bin/bash
+serdi -h | head
+serdi -v

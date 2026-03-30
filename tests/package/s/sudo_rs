@@ -1,0 +1,5 @@
+#!/bin/bash
+su -h | head
+su -V 2>&1
+sudo -h | head
+sudo -V

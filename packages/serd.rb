@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Serd < Meson
   description 'Lightweight C library for RDF syntax supporting reading/ writing Turtle and NTriples.'
   homepage 'https://drobilla.net/software/serd/'
-  version '0.32.6'
+  version '0.32.8'
   license 'ISC'
   compatibility 'all'
   source_url 'https://gitlab.com/drobilla/serd.git'
@@ -14,14 +14,14 @@ class Serd < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6d1831972011cc46c6b3cf637b3c1c54ef94faa759347fe2164bbb71a0325222',
-     armv7l: '6d1831972011cc46c6b3cf637b3c1c54ef94faa759347fe2164bbb71a0325222',
-       i686: '2f796221760aa569a9ad8a3b427922be7a28d9ad94eed2f2691e0650d6e25d36',
-     x86_64: '6634f452021fb6a61a7c1b6a0df5eeea85c7dea06ec9c97bd2779097f875bc0c'
+    aarch64: '368a3a655818230edb8f564242462c6bd0340ea9e24f23fc5cf67a49b7a6c87b',
+     armv7l: '368a3a655818230edb8f564242462c6bd0340ea9e24f23fc5cf67a49b7a6c87b',
+       i686: '73d41609a03ed831a3c64ddef6fd8da8fa71e3bc05291619b37c3aae2ab2f10c',
+     x86_64: '2602bd3a9fdedb39a0a710d02cc81cbb4462ccd900d9a66af59d2d0c73911657'
   })
 
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
 
   meson_options '-Ddocs=disabled \
                -Dtests=disabled'

@@ -1,0 +1,5 @@
+#!/bin/bash
+sdl2-config 2>&1
+sdl2-config --cflags
+sdl2-config --libs
+sdl2-config --version

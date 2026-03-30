@@ -1,4 +1,4 @@
-# Total size: 50474397
+# Total size: 66215436
 /usr/local/bin/ccmake
 /usr/local/bin/cmake
 /usr/local/bin/cpack
@@ -4027,7 +4027,16 @@
 /usr/local/share/cmake-4.3/Templates/Windows/Windows_TemporaryKey.pfx
 /usr/local/share/doc/cmake-4.3/CONTRIBUTORS.rst
 /usr/local/share/doc/cmake-4.3/LICENSE.rst
+/usr/local/share/doc/cmake-4.3/cmcppdap/NOTICE
+/usr/local/share/doc/cmake-4.3/cmcurl/COPYING
+/usr/local/share/doc/cmake-4.3/cmlibarchive/COPYING
+/usr/local/share/doc/cmake-4.3/cmliblzma/COPYING
+/usr/local/share/doc/cmake-4.3/cmlibrhash/COPYING
+/usr/local/share/doc/cmake-4.3/cmlibuv/LICENSE
+/usr/local/share/doc/cmake-4.3/cmnghttp2/COPYING
 /usr/local/share/doc/cmake-4.3/cmsys/Copyright.txt
+/usr/local/share/doc/cmake-4.3/cmzlib/Copyright.txt
+/usr/local/share/doc/cmake-4.3/cmzstd/LICENSE
 /usr/local/share/emacs/site-lisp/cmake-mode.el
 /usr/local/share/vim/vimfiles/indent/cmake.vim
 /usr/local/share/vim/vimfiles/syntax/cmake.vim

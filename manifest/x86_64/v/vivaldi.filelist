@@ -1,4 +1,4 @@
-# Total size: 443461062
+# Total size: 451400128
 /usr/local/bin/vivaldi
 /usr/local/bin/vivaldi-stable
 /usr/local/etc/cron.daily/vivaldi
@@ -450,7 +450,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/adblocker_resources/redirectable_resources.json
 /usr/local/share/vivaldi/resources/vivaldi/background-bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/background-common-bundle.js
-/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-175ed7975e33a4acccd4cd62888b74d6.js
+/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-144aaf491c7ac526f11bcb67a7168928.js
 /usr/local/share/vivaldi/resources/vivaldi/bundle-mailreader-worker.js
 /usr/local/share/vivaldi/resources/vivaldi/bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/components/mail/mail.html
@@ -1077,6 +1077,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_youtube.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/search_duckduckgo.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/search_ecosia.svg
+/usr/local/share/vivaldi/resources/vivaldi/resources/search_kagi.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/search_qwant.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/search_startpage.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/share-confetti.gif
@@ -1261,6 +1262,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/web_ui/profile_picker/welcomepage-vivaldi.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/welcome-account.webp
 /usr/local/share/vivaldi/resources/vivaldi/resources/welcome-client.webp
+/usr/local/share/vivaldi/resources/vivaldi/resources/welcome-control.webp
 /usr/local/share/vivaldi/resources/vivaldi/resources/welcomepage-arc.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/welcomepage-brave.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/welcomepage-chrome.png
@@ -1309,4 +1311,5 @@
 /usr/local/share/vivaldi/vivaldi_100_percent.pak
 /usr/local/share/vivaldi/vivaldi_200_percent.pak
 /usr/local/share/vivaldi/vk_swiftshader_icd.json
+/usr/local/share/vivaldi/xdg-settings
 /usr/local/share/xfce4/helpers/vivaldi.desktop

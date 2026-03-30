@@ -1,34 +1,25 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libxvid < Package
+class Libxvid < Autotools
   description 'The free video codec that is strong in compression and quality.'
   homepage 'https://www.xvid.com/'
-  version '1.3.5'
-  license 'custom'
+  version '1.3.7'
+  license 'GPL-2'
   compatibility 'all'
-  source_url 'https://downloads.xvid.com/downloads/xvidcore-1.3.5.tar.bz2'
-  source_sha256 '7c20f279f9d8e89042e85465d2bcb1b3130ceb1ecec33d5448c4589d78f010b4'
-  binary_compression 'tar.xz'
+  source_url "https://downloads.xvid.com/downloads/xvidcore-#{version}.tar.bz2"
+  source_sha256 'aeeaae952d4db395249839a3bd03841d6844843f5a4f84c271ff88f7aa1acff7'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0587f20f1a2ea2ede14054ccddfc2fbef2a0ef5b611c3ba679c0d1724da365eb',
-     armv7l: '0587f20f1a2ea2ede14054ccddfc2fbef2a0ef5b611c3ba679c0d1724da365eb',
-       i686: '2d398811d6468a57dd236907d7b2e8a71263fba2423d3baf4d04f8f1b7ac5b1a',
-     x86_64: 'e990606cef5b83dcffa96e6595538240934c6f926ca49701c165322811f8a44f'
+    aarch64: '2b27cd16aab5f20218d5560d91ed39589771c77ae7ef0c25de9a4a3d477393fc',
+     armv7l: '2b27cd16aab5f20218d5560d91ed39589771c77ae7ef0c25de9a4a3d477393fc',
+       i686: '0d3d5f7233268a1c187141e20dafe370ccf176048becc7972bfdfa2843436758',
+     x86_64: 'e6eeb1052e11ad481cd50fe54b6669d23555b94fd34f23d7e8ff6ec99ff86bd3'
   })
 
+  depends_on 'glibc' => :library
   depends_on 'yasm' => :build
 
-  def self.build
-    FileUtils.cd('build/generic') do
-      system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-      system 'make'
-    end
-  end
-
-  def self.install
-    FileUtils.cd('build/generic') do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    end
-  end
+  autotools_pre_configure_options 'CFLAGS=-std=c99'
+  autotools_build_relative_dir 'build/generic'
 end
