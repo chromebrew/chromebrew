@@ -185,7 +185,7 @@ def search(pkg_name, pkg_path: File.join(CREW_PACKAGES_PATH, "#{pkg_name}.rb"), 
   begin
     return check_load_package(pkg_path) if File.file?(pkg_path)
   rescue StandardError => e
-    puts "Error with #{pkg_name}.rb: #{e}".lightred unless e.to_s.include?('uninitialized constant')
+    puts "Error with #{pkg_name}.rb: #{CREW_VERBOSE ? e.backtrace.join("\n") : e}".lightred unless e.to_s.include?('uninitialized constant')
   end
   unless File.file?(pkg_path) && silent
     @pkg = nil

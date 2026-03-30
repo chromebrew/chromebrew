@@ -25,6 +25,14 @@ def agree_with_default(yes_or_no_question_msg, character = nil, default:)
   end
 end
 
+def trampoline(&block)
+  result = block.call
+  while result.is_a?(Proc)
+    result = result.call
+  end
+  result
+end
+
 class Package
   boolean_property :arch_flags_override,
                    :cache_build, # Cache build to gitlab.
@@ -158,6 +166,16 @@ class Package
     return pkg_obj
   end
 
+  def self.dep_load_package(pkg_name)
+    instance_variable_set("@#{pkg_name}_obj", load_package(File.join(CREW_PACKAGES_PATH, "#{pkg_name}.rb")))
+    is_source = instance_variable_get("@#{pkg_name}_obj").source?(ARCH.to_sym) or instance_variable_get("@#{pkg_name}_obj").build_from_source
+    instance_variable_set("@#{pkg_name}_is_source", is_source)
+    instance_variable_set("@#{pkg_name}_deps", instance_variable_get("@#{pkg_name}_obj").dependencies)
+    instance_variable_set("@#{pkg_name}_compatibility", instance_variable_get("@#{pkg_name}_obj").compatibility.split)
+    instance_variable_set("@#{pkg_name}_no_compile_needed", instance_variable_get("@#{pkg_name}_obj").no_compile_needed?)
+    remove_instance_variable(instance_variable_get("@#{pkg_name}_obj"))
+  end
+
   def self.dependencies
     # We need instance variable in derived class, so do not define it here,
     # base class.  Instead of defining it, we initialize it in a function
@@ -190,52 +208,58 @@ class Package
     # Add current package to @checked_list for preventing extra checks.
     @checked_list.merge!({ pkg_name => pkg_tags })
 
-    pkg_obj = load_package(File.join(CREW_PACKAGES_PATH, "#{pkg_name}.rb"))
-    is_source = pkg_obj.source?(ARCH.to_sym) or pkg_obj.build_from_source
-    deps = pkg_obj.dependencies
+    pkg_name = to_s.split('::').last.downcase if pkg_name.nil?
+
+    dep_load_package(pkg_name)
 
     # Append buildessential to deps if building from source is needed/specified.
-    if ((include_build_deps == true) || ((include_build_deps == 'auto') && is_source)) &&
-       !pkg_obj.no_compile_needed? &&
+    if (((include_build_deps == true) || ((include_build_deps == 'auto') && (instance_variable_get("@#{pkg_name}_is_source") == true))) &&
+       ( instance_variable_get("@#{pkg_name}_no_compile_needed") == false ) &&
        !exclude_buildessential &&
-       !@checked_list.keys.include?('buildessential')
+       !@checked_list.keys.include?('buildessential'))
 
-      deps = { 'buildessential' => [[:build]] }.merge(deps)
+      deps = { 'buildessential' => [[:build]] }.merge(instance_variable_get("@#{pkg_name}_deps"))
     end
 
     # Parse dependencies recursively.
-    expanded_deps = deps.uniq.map do |dep, (dep_tags, ver_check)|
-      # Check build dependencies only if building from source is needed/specified.
-      # Do not recursively find :build based build dependencies.
-      next unless (include_build_deps == true && @crew_current_package == pkg_obj.name) ||
-                  ((include_build_deps == 'auto') && is_source && @crew_current_package == pkg_obj.name) ||
-                  !dep_tags.include?(:build)
+    if instance_variable_get("@#{pkg_name}_expanded_deps").nil?
+      expanded_deps = deps.uniq.map do |dep, (dep_tags, ver_check, dep_architectures)|
+        # Check build dependencies only if building from source is needed/specified.
+        # Do not recursively find :build based build dependencies.
+        next unless dep_architectures.include?(ARCH) && ((include_build_deps == true && @crew_current_package == pkg_name ||
+                    ((include_build_deps == 'auto') && (instance_variable_get("@#{pkg_name}_is_source") == true) && @crew_current_package == pkg_name ||
+                    !dep_tags.include?(:build))))
 
-      # Overwrite tags if parent dependency is a build dependency.
-      # (for build dependencies highlighting)
-      tags = pkg_tags.include?(:build) ? pkg_tags : dep_tags
+        # Overwrite tags if parent dependency is a build dependency.
+        # (for build dependencies highlighting)
+        tags = pkg_tags.include?(:build) ? pkg_tags : dep_tags
 
-      if @checked_list.keys.none?(dep)
-        # Check dependency by calling this function recursively.
-        next \
-          send(
-            __method__, dep, pkg_tags: tags, ver_check:, include_self: true, top_level: false,
-            hash:, return_attr:, include_build_deps:, highlight_build_deps:, exclude_buildessential:
-          )
-      elsif hash && top_level
-        # Will be dropped here if current dependency is already checked and #{top_level} is set to true.
-        #
-        # The '+' symbol tell `print_deps_tree` (`bin/crew`) to color this package as a "satisfied dependency".
-        # The '*' symbol tell `print_deps_tree` (`bin/crew`) to color this package as a "build dependency".
-        if highlight_build_deps && tags.include?(:build)
-          next { "+*#{dep}*+" => [] }
-        elsif highlight_build_deps
-          next { "+#{dep}+" => [] }
-        else
-          next { dep => [] }
+        if @checked_list.keys.none?(dep)
+          # Check dependency by calling this function recursively.
+          next \
+            send(
+              __method__, dep, pkg_tags: tags, ver_check:, include_self: true, top_level: false,
+              hash:, return_attr:, include_build_deps:, highlight_build_deps:, exclude_buildessential:
+            )
+        elsif hash && top_level
+          # Will be dropped here if current dependency is already checked and #{top_level} is set to true.
+          #
+          # The '+' symbol tell `print_deps_tree` (`bin/crew`) to color this package as a "satisfied dependency".
+          # The '*' symbol tell `print_deps_tree` (`bin/crew`) to color this package as a "build dependency".
+          if highlight_build_deps && tags.include?(:build)
+            next { "+*#{dep}*+" => [] }
+          elsif highlight_build_deps
+            next { "+#{dep}+" => [] }
+          else
+            next { dep => [] }
+          end
         end
-      end
-    end.compact
+      end.compact
+      instance_variable_set("@#{pkg_name}_expanded_deps", expanded_deps)
+    else
+      expanded_deps = instance_variable_get("@#{pkg_name}_expanded_deps")
+    end
+
 
     if hash
       # The '*' symbol tell `print_deps_tree` (`bin/crew`) to color this package as a "build dependency".
@@ -247,7 +271,7 @@ class Package
     elsif include_self
       # Return pkg_name itself if this function is called as a recursive loop (see `expanded_deps`).
       if return_attr
-        return [expanded_deps, { pkg_name => [pkg_tags, ver_check] }].flatten
+        return [expanded_deps, { pkg_name => [pkg_tags, ver_check, dep_architectures] }].flatten
       else
         return [expanded_deps, pkg_name].flatten
       end
@@ -341,14 +365,22 @@ class Package
     if dependency.is_a?(Hash)
       # Parse "depends_on name => <tags: Symbol|Array>".
       dep_name, tags = dependency.first
+      dep_compatibility = load_package(File.join(CREW_PACKAGES_PATH, "#{dep_name}.rb")).compatibility.split
+      dep_compatibility = %w[aarch64 armv7l i686 x86_64] if dep_compatibility == ['all']
+      dep_architectures = tags.is_a?(Array) && !tags.intersect?(dep_compatibility).nil? ? tags.intersection(dep_compatibility) : %w[aarch64 armv7l i686 x86_64]
 
       # Convert `tags` to array in case `tags` is a symbol.
       dep_tags += [tags].flatten
     else
       # Parse "depends_on name".
       dep_name = dependency
+      pkg_name = to_s.split('::').last.downcase if pkg_name.nil?
+      # dep_compatibility = instance_variable_get("@#{pkg_name}_obj").nil? ? 'all' : instance_variable_get("@#{pkg_name}_obj").compatibility.split
+      dep_compatibility = instance_variable_get("@#{pkg_name}_compatibility")
+      dep_architectures = dep_compatibility == 'all' ? %w[aarch64 armv7l i686 x86_64] : dep_compatibility
     end
 
+    # remove_instance_variable(instance_variable_get("@#{pkg_name}_obj"))
     # Process dependency version range if specified.
     # example:
     #   depends_on name, '>= 1.0'
@@ -372,7 +404,7 @@ class Package
       end
     end
 
-    @dependencies.store(dep_name, [dep_tags, ver_check])
+    @dependencies.store(dep_name, [dep_tags, ver_check, dep_architectures])
   end
 
   def self.binary?(architecture) = !@build_from_source && @binary_sha256&.key?(architecture)
