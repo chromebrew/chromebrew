@@ -10,15 +10,16 @@ class Ruby_zlib < RUBY
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: '808d7aba79667a448935b18243b0357988684293395276efd6647043166dc2fd',
-     armv7l: '808d7aba79667a448935b18243b0357988684293395276efd6647043166dc2fd',
-       i686: '6d89bd6d766bf926b881fd0dff56ed291d6dddc94e8b9b4a2e6adedf0a767ce9',
-     x86_64: '738d1c5977805dca87c79d7ed640497f0164e0ca4eea27defd263758eead1f91'
+    aarch64: '23ad3d6232f93996555e1f9abec3db8b7d71d6f67449ae33b1c9e5de049ed993',
+     armv7l: '23ad3d6232f93996555e1f9abec3db8b7d71d6f67449ae33b1c9e5de049ed993',
+       i686: 'ee8ff3241df674a136c39909504b4089b6dda06785596a337152ccbe6bb2a6b3',
+     x86_64: 'c7c1525600542fb0e2f266cb0cd6e35dd599eeb6fccfd56dd41888243b242414'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'ruby' # R
-  depends_on 'zlib' # R
+  depends_on 'glibc' => :library
+  depends_on 'ruby' => :library
+  depends_on 'ruby' => :logical
+  depends_on 'zlib' => :library
 
   conflicts_ok
   gem_compile_needed
