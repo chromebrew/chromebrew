@@ -3,12 +3,12 @@ require 'package'
 class Thorium < Package
   description 'The fastest browser on Earth.'
   homepage 'https://thorium.rocks/'
-  version '130.0.6723.174'
+  version '138.0.7204.303'
   license 'BSD-3 Clause'
   compatibility 'x86_64'
   min_glibc '2.29'
   source_url "https://github.com/Alex313031/thorium/releases/download/M#{version}/Thorium_Browser_#{version}_SSE4.AppImage"
-  source_sha256 'bf918672efdb2c931cd9fe14724727f80ae09e72cbfe3ad3fb4d62c3fd74e626'
+  source_sha256 '83c0bf453dcefbee062dbd3d45a84b081fb746e484fc47c809ff6220091171c0'
 
   depends_on 'ffmpeg'
   depends_on 'gtk3'
