@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Evolution_data_server < CMake
   description 'Centralized access to appointments and contacts'
   homepage 'https://wiki.gnome.org/Apps/Evolution'
-  version "3.59.1-#{CREW_ICU_VER}"
+  version "3.60.0-#{CREW_ICU_VER}"
   license 'LGPL-2 or LGPL-3, BSD and Sleepycat'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/evolution-data-server.git'
