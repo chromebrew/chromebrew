@@ -3,11 +3,11 @@ require 'package'
 class Qortal < Package
   description 'Data storage, communications, web hosting, decentralized trading, complete infrastructure for the future blockchain based Internet'
   homepage 'https://qortal.org/'
-  version '6.1.3'
+  version '6.1.4'
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://github.com/Qortal/qortal/releases/download/v#{version}/qortal.zip"
-  source_sha256 'c11ad80ea118f82ab0cffede86aa0370a517d777557a711ffcb383b2db918792'
+  source_sha256 '83668c30ac7dbd36f669225bc457c7e733778f46a68ad63c3cca410629cc7cee'
 
   depends_on 'libx11'
   depends_on 'libxext'
