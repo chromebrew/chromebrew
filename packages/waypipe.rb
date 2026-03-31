@@ -11,13 +11,13 @@ class Waypipe < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4b96adfa989ddc31e40ed8c9d064d9f65e2bc76513ea06c139f58b5bbe1b885d',
-     armv7l: '4b96adfa989ddc31e40ed8c9d064d9f65e2bc76513ea06c139f58b5bbe1b885d',
-     x86_64: '1462f21b1a15e3f4860b7a2c231982106d2d90f2461c84eaae4db1182b78c918'
+    aarch64: 'b7ece71b5296e30daccc50d223d6df20e0d56b02e6c109b8c8f3b8ea8996b2f3',
+     armv7l: 'b7ece71b5296e30daccc50d223d6df20e0d56b02e6c109b8c8f3b8ea8996b2f3',
+     x86_64: '87d5054eb166205c5e55fbb736ca2dd3b16abd38d432a775be6a45ec0088f0dc'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
   depends_on 'libdrm' => :build
   depends_on 'rust' => :build
   depends_on 'scdoc' => :build
