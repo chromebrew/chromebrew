@@ -3,11 +3,11 @@ require 'package'
 class Perl < Package
   description 'Perl 5 is a highly capable, feature-rich programming language with over 29 years of development.'
   homepage 'https://www.perl.org/'
-  version '5.42.1'
+  version '5.42.2'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url "https://www.cpan.org/src/5.0/perl-#{version}.tar.xz"
-  source_sha256 '098c7f76e7a28443f6403610c7e339777905360c5225798fd142b8d33b05c6b4'
+  source_sha256 '0a585eeb9e363c0f80482ddb3571625250c2c86aeb408853e8ea50805cfb14bb'
   binary_compression 'tar.zst'
 
   binary_sha256({
