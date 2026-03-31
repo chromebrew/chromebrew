@@ -1,0 +1,3 @@
+#!/bin/bash
+upx -h 2>&1 | head
+upx -V
