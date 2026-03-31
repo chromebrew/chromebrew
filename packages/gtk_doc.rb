@@ -11,10 +11,10 @@ class Gtk_doc < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0789f654479c3eaa8b60d10845fd8d9f9d96b4a4d32427ee7f492d77aedafae4',
-     armv7l: '0789f654479c3eaa8b60d10845fd8d9f9d96b4a4d32427ee7f492d77aedafae4',
-       i686: '593adbde82c3ea239ad23ad9a91a7ca61f5dc7188388b76d683d1fbf526323fa',
-     x86_64: '83154a542e3b45fb0a516bfe706f38e71d137a137281c0f8eb41c4f570a91b92'
+    aarch64: '2d95e801773918ffb4f05e9b2bba4401bfb646e1814a17e8aa79dcbb08bec1c2',
+     armv7l: '2d95e801773918ffb4f05e9b2bba4401bfb646e1814a17e8aa79dcbb08bec1c2',
+       i686: '1c25ee5d69a256579de007e370a0cf87acda9450cd0bde18ab991a92537a6683',
+     x86_64: '926854ae418f16933e3ecadbec46584c10b3e5b5ab90e91a436c1e172c9de3eb'
   })
 
   depends_on 'docbook_xml' => :build
