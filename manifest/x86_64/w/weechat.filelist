@@ -1,4 +1,4 @@
-# Total size: 8489137
+# Total size: 10160271
 /usr/local/bin/weechat
 /usr/local/bin/weechat-curses
 /usr/local/bin/weechat-headless
@@ -20,7 +20,6 @@
 /usr/local/lib/weechat/plugins/ruby.so
 /usr/local/lib/weechat/plugins/script.so
 /usr/local/lib/weechat/plugins/spell.so
-/usr/local/lib/weechat/plugins/tcl.so
 /usr/local/lib/weechat/plugins/trigger.so
 /usr/local/lib/weechat/plugins/typing.so
 /usr/local/lib/weechat/plugins/xfer.so
