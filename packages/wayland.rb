@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Wayland < Meson
   description 'Wayland is intended as a simpler replacement for X, easier to develop and maintain.'
   homepage 'https://wayland.freedesktop.org'
-  version "1.24.0-#{CREW_ICU_VER}"
+  version "1.25.0-#{CREW_ICU_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/wayland/wayland.git'
@@ -11,25 +11,24 @@ class Wayland < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'df1340d2a03d08c198d1118f7b66708f51b6c5b044a48b7a5717fdbb8aac6508',
-     armv7l: 'df1340d2a03d08c198d1118f7b66708f51b6c5b044a48b7a5717fdbb8aac6508',
-       i686: '31a5cbf3d9a2494d76227a17b6dfa352c85a2d0a26136b24caed17dd7c0f9d41',
-     x86_64: 'b715939c3e527dd0badbc4623714710cd9b8988c8ab5b1c50b7afdb64c3f399f'
+    aarch64: 'd7d7b8a3293dab8ac9b7daf4bc7d46f88c3a9c863f4f0b75ec85ed0c584afe80',
+     armv7l: 'd7d7b8a3293dab8ac9b7daf4bc7d46f88c3a9c863f4f0b75ec85ed0c584afe80',
+       i686: '3722084a585711b9dc9785625c257fedbac4c13dea25e3ac91f59616d466858e',
+     x86_64: '8c2b17c21815ce678a5a3c4d3d52afd2fde10466a6b60858507a9fc6c5a2b59e'
   })
 
-  depends_on 'expat' # R
+  depends_on 'expat' => :executable
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
   depends_on 'icu4c' => :build
-  depends_on 'libffi' # R
-  depends_on 'libxml2' # R
+  depends_on 'libffi' => :library
+  depends_on 'libxml2' => :executable
   depends_on 'zlib' => :build
 
   meson_options '-Ddocumentation=false'
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-    File.write 'waylandenv', <<~WAYLAND_ENV_EOF
+  meson_install_extras do
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+    File.write "#{CREW_DEST_PREFIX}/etc/env.d/wayland", <<~WAYLAND_ENV_EOF, perms: 0o644
       # environment set-up for Chrome OS built-in Wayland server
       : "${XDG_RUNTIME_DIR:=/var/run/chrome}"
       : "${XDG_SESSION_TYPE:=wayland}"
@@ -37,6 +36,5 @@ class Wayland < Meson
       : "${CLUTTER_BACKEND:=wayland}"
       : "${GDK_BACKEND:=wayland}"
     WAYLAND_ENV_EOF
-    FileUtils.install 'waylandenv', "#{CREW_DEST_PREFIX}/etc/env.d/wayland", mode: 0o644
   end
 end

@@ -1,4 +1,4 @@
-# Total size: 867865
+# Total size: 862768
 /usr/local/bin/wayland-scanner
 /usr/local/etc/env.d/wayland
 /usr/local/include/wayland-client-core.h
@@ -15,16 +15,16 @@
 /usr/local/include/wayland-version.h
 /usr/local/lib/libwayland-client.so
 /usr/local/lib/libwayland-client.so.0
-/usr/local/lib/libwayland-client.so.0.24.0
+/usr/local/lib/libwayland-client.so.0.25.0
 /usr/local/lib/libwayland-cursor.so
 /usr/local/lib/libwayland-cursor.so.0
-/usr/local/lib/libwayland-cursor.so.0.24.0
+/usr/local/lib/libwayland-cursor.so.0.25.0
 /usr/local/lib/libwayland-egl.so
 /usr/local/lib/libwayland-egl.so.1
-/usr/local/lib/libwayland-egl.so.1.24.0
+/usr/local/lib/libwayland-egl.so.1.25.0
 /usr/local/lib/libwayland-server.so
 /usr/local/lib/libwayland-server.so.0
-/usr/local/lib/libwayland-server.so.0.24.0
+/usr/local/lib/libwayland-server.so.0.25.0
 /usr/local/lib/pkgconfig/wayland-client.pc
 /usr/local/lib/pkgconfig/wayland-cursor.pc
 /usr/local/lib/pkgconfig/wayland-egl-backend.pc
