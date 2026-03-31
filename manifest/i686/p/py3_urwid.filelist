@@ -1,17 +1,15 @@
-# Total size: 2516838
-/usr/local/lib/python3.14/site-packages/urwid-3.0.5.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/urwid-3.0.5.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/urwid-3.0.5.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/urwid-3.0.5.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/urwid-3.0.5.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/urwid-3.0.5.dist-info/licenses/COPYING
-/usr/local/lib/python3.14/site-packages/urwid-3.0.5.dist-info/top_level.txt
+# Total size: 2497705
+/usr/local/lib/python3.14/site-packages/urwid-4.0.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/urwid-4.0.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/urwid-4.0.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/urwid-4.0.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/urwid-4.0.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/urwid-4.0.0.dist-info/licenses/COPYING
+/usr/local/lib/python3.14/site-packages/urwid-4.0.0.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/urwid/__init__.py
 /usr/local/lib/python3.14/site-packages/urwid/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/urwid/__pycache__/canvas.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/urwid/__pycache__/command_map.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/urwid/__pycache__/container.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/urwid/__pycache__/decoration.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/urwid/__pycache__/font.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/urwid/__pycache__/graphics.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/urwid/__pycache__/numedit.cpython-314.pyc
@@ -22,11 +20,8 @@
 /usr/local/lib/python3.14/site-packages/urwid/__pycache__/util.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/urwid/__pycache__/version.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/urwid/__pycache__/vterm.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/urwid/__pycache__/wimp.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/urwid/canvas.py
 /usr/local/lib/python3.14/site-packages/urwid/command_map.py
-/usr/local/lib/python3.14/site-packages/urwid/container.py
-/usr/local/lib/python3.14/site-packages/urwid/decoration.py
 /usr/local/lib/python3.14/site-packages/urwid/display/__init__.py
 /usr/local/lib/python3.14/site-packages/urwid/display/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/urwid/display/__pycache__/_posix_raw_display.cpython-314.pyc
@@ -141,4 +136,3 @@
 /usr/local/lib/python3.14/site-packages/urwid/widget/widget.py
 /usr/local/lib/python3.14/site-packages/urwid/widget/widget_decoration.py
 /usr/local/lib/python3.14/site-packages/urwid/widget/wimp.py
-/usr/local/lib/python3.14/site-packages/urwid/wimp.py
