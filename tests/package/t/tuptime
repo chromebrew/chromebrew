@@ -1,0 +1,3 @@
+#!/bin/bash
+tuptime -h | head
+tuptime -V
