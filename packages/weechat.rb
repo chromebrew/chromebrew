@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Weechat < CMake
   description 'WeeChat is a fast, light and extensible chat client.'
   homepage 'https://weechat.org/'
-  version '4.4.1'
+  version '4.9.0'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/weechat/weechat.git'
@@ -29,9 +29,8 @@ class Weechat < CMake
   depends_on 'perl'
   depends_on 'python3'
   depends_on 'ruby'
-  depends_on 'tcl'
   depends_on 'zlib'
   depends_on 'zstd'
 
-  cmake_options '-DENABLE_PHP=OFF'
+  cmake_options '-DENABLE_PHP=OFF -DENABLE_TCL=OFF'
 end
