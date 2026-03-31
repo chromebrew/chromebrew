@@ -1,4 +1,4 @@
-# Total size: 210375
+# Total size: 296891
 /usr/local/bin/uriparse
 /usr/local/include/uriparser/Uri.h
 /usr/local/include/uriparser/UriBase.h
@@ -6,11 +6,11 @@
 /usr/local/include/uriparser/UriDefsConfig.h
 /usr/local/include/uriparser/UriDefsUnicode.h
 /usr/local/include/uriparser/UriIp4.h
-/usr/local/lib/cmake/uriparser-0.9.8/uriparser-config-version.cmake
-/usr/local/lib/cmake/uriparser-0.9.8/uriparser-config.cmake
-/usr/local/lib/cmake/uriparser-0.9.8/uriparser-release.cmake
-/usr/local/lib/cmake/uriparser-0.9.8/uriparser.cmake
+/usr/local/lib/cmake/uriparser-1.0.0/uriparser-config-version.cmake
+/usr/local/lib/cmake/uriparser-1.0.0/uriparser-config.cmake
+/usr/local/lib/cmake/uriparser-1.0.0/uriparser-release.cmake
+/usr/local/lib/cmake/uriparser-1.0.0/uriparser.cmake
 /usr/local/lib/liburiparser.so
 /usr/local/lib/liburiparser.so.1
-/usr/local/lib/liburiparser.so.1.0.31
+/usr/local/lib/liburiparser.so.1.2.0
 /usr/local/lib/pkgconfig/liburiparser.pc
