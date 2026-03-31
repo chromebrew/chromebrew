@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Wayland < Meson
   description 'Wayland is intended as a simpler replacement for X, easier to develop and maintain.'
   homepage 'https://wayland.freedesktop.org'
-  version "1.24.0-#{CREW_ICU_VER}"
+  version "1.25.0-#{CREW_ICU_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/wayland/wayland.git'
@@ -26,10 +26,9 @@ class Wayland < Meson
   depends_on 'zlib' => :build
 
   meson_options '-Ddocumentation=false'
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-    File.write 'waylandenv', <<~WAYLAND_ENV_EOF
+  meson_install_extras do
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+    File.write "#{CREW_DEST_PREFIX}/etc/env.d/wayland", <<~WAYLAND_ENV_EOF, perms: 0o644
       # environment set-up for Chrome OS built-in Wayland server
       : "${XDG_RUNTIME_DIR:=/var/run/chrome}"
       : "${XDG_SESSION_TYPE:=wayland}"
@@ -37,6 +36,5 @@ class Wayland < Meson
       : "${CLUTTER_BACKEND:=wayland}"
       : "${GDK_BACKEND:=wayland}"
     WAYLAND_ENV_EOF
-    FileUtils.install 'waylandenv', "#{CREW_DEST_PREFIX}/etc/env.d/wayland", mode: 0o644
   end
 end
