@@ -11,16 +11,16 @@ class Perl < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6c53427ee0d6078b54b29b6a1766207aae1a3894ced42d2f3ab5e90febe8a59a',
-     armv7l: '6c53427ee0d6078b54b29b6a1766207aae1a3894ced42d2f3ab5e90febe8a59a',
-       i686: '6d60f1b474ed9455a7323bc0e9e0f72e0b48eac7806036d8de3987aa730380c6',
-     x86_64: '872c4c9525102ffdcd6fda7c36136bfd43987f1aaac106882288888d44cd8bcf'
+    aarch64: 'd5fa6151fcb58e605caef358089707fc254465d60bfbd81721f961ce725057fe',
+     armv7l: 'd5fa6151fcb58e605caef358089707fc254465d60bfbd81721f961ce725057fe',
+       i686: '697695ee4ab8bd0a1a6000cf3c55146a5024ec25ea086da3ffadb92bc947a504',
+     x86_64: '654e7141f45f4ef8beb9973b548198c6b8dda9646fb3c4be0803b60b87c8c45d'
   })
 
-  depends_on 'gdbm' # R
-  depends_on 'glibc' # R
-  depends_on 'libdb' # R
-  depends_on 'libxcrypt' # R
+  depends_on 'gdbm' => :library
+  depends_on 'glibc' => :library
+  depends_on 'libdb' => :library
+  depends_on 'libxcrypt' => :library
 
   def self.build
     FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libnsl.so.1", "#{CREW_LIB_PREFIX}/libnsl.so"
