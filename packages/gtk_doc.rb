@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gtk_doc < Meson
   description 'Documentation tool for public library API'
   homepage 'https://www.gtk.org/gtk-doc/'
-  version '1.35.1'
+  version '1.36.0'
   license 'GPL-2 and FDL-1.1'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gtk-doc.git'
@@ -22,6 +22,7 @@ class Gtk_doc < Meson
   depends_on 'py3_itstool' => :build
   depends_on 'libxslt' => :build
   depends_on 'py3_pygments' => :build
+  depends_on 'py3_parameterized' => :build
 
   gnome
 end
