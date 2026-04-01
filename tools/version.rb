@@ -286,10 +286,7 @@ def update_package_file(filename, upstream_version)
         puts "new source_url response status: #{status}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
         unless %w[200 302].include?(status)
           puts "#{pkg.source_url[arch.to_sym]} is a bad source".lightred if CREW_VERBOSE && !CREW_OUTPUT_JSON
-          if File.file?("#{filename}.bak")
-            FileUtils.cp "#{filename}.bak", filename
-            FileUtils.rm "#{filename}.bak"
-          end
+          FileUtils.mv "#{filename}.bak", filename
           return 'Bad Source', false
         end
         new_hash[arch] = `curl -Ls #{pkg.source_url[arch.to_sym]} | sha256sum - | awk '{print $1}'`.chomp
@@ -309,10 +306,7 @@ def update_package_file(filename, upstream_version)
       status = `curl -fsI #{pkg.source_url}`.lines.first.split[1]
       unless %w[200 302].include?(status)
         puts "#{pkg.source_url} is a bad source.".lightred if CREW_VERBOSE && !CREW_OUTPUT_JSON
-        if File.file?("#{filename}.bak")
-          FileUtils.cp "#{filename}.bak", filename
-          FileUtils.rm "#{filename}.bak"
-        end
+        FileUtils.mv "#{filename}.bak", filename
         return 'Bad Source', false
       end
       new_hash[arch] = `curl -Ls #{pkg.source_url} | sha256sum - | awk '{print $1}'`.chomp
