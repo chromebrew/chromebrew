@@ -10,10 +10,10 @@ class Py3_pybind11 < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '127e15a932990b358176e0ade0764afc26c9695e5a345d0f08869cf629e997fb',
-     armv7l: '127e15a932990b358176e0ade0764afc26c9695e5a345d0f08869cf629e997fb',
-       i686: '40a4ee22f47dc693deddd1dcbcfaf02a50d14e2f40c02e7e4cbb96203c5544d7',
-     x86_64: 'bfb49229ea3f6c0974bdf9db940f8e7a225a34fef46471f42e4f9ccd0c89e7c3'
+    aarch64: '052cbaabbba2b54704d151e4678ed47bb5f2c333ce8e8e29264a3fbb876077f6',
+     armv7l: '052cbaabbba2b54704d151e4678ed47bb5f2c333ce8e8e29264a3fbb876077f6',
+       i686: '764f3a4a4d7ae6707f931909579c6c0ce9f3810d0d32a8182b5a5b7e001ba2c1',
+     x86_64: '486369665fbf56da9b550ceb8f0cde92d5b22cf038405a3899fb0c3473fc6d75'
   })
 
   depends_on 'python3'
