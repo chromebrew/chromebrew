@@ -1,0 +1,3 @@
+#!/bin/bash
+v2ray help | head
+v2ray version
