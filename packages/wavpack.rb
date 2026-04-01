@@ -1,32 +1,21 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Wavpack < Package
+class Wavpack < Autotools
   description 'WavPack is a completely open audio compression format providing lossless, high-quality lossy, and a unique hybrid compression mode.'
   homepage 'https://www.wavpack.com/'
-  version '5.1.0'
+  version '5.9.0'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/dbry/WavPack/archive/5.1.0.tar.gz'
-  source_sha256 '1af7eaccbf560271013d4179d98ef6fc681a2bb3603382577eeba73d438785f4'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/dbry/WavPack.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0de1c309b6e2ae6cad6ebf4d3c0bae4bfa46e28d37752946e560208bf873eeec',
-     armv7l: '0de1c309b6e2ae6cad6ebf4d3c0bae4bfa46e28d37752946e560208bf873eeec',
-       i686: '29efcd53890903576f4fca002ea829172ad50ec0b4f3fd1360d8efdfe5e128de',
-     x86_64: '956bf59eae3c4410bfc6ff95ea6f4e59513008fdcd0438dec586fa9bdfc208aa'
+    aarch64: '11776c316379886231bfb839e253a5b333bddca889b115b969dfff77a837d06c',
+     armv7l: '11776c316379886231bfb839e253a5b333bddca889b115b969dfff77a837d06c',
+       i686: '1fead54e28e000ceae77795ec046795ac9499d87abfd594d79d7bc80910ac662',
+     x86_64: '86543791e1d04bbc29d271e24923b08c555f63cfe4153ff39eb999f392e18b68'
   })
 
-  def self.build
-    system './autogen.sh'
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-maintainer-mode'
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'glibc' => :library
 end
