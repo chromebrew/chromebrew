@@ -43,7 +43,6 @@ $LOAD_PATH.unshift File.join(crew_local_repo_root, 'lib')
 UPDATE_PACKAGE_FILES = ARGV.include?('-u') || ARGV.include?('--update-package-files')
 OUTPUT_ALL = ARGV.include?('-a') || ARGV.include?('--all')
 bc_updated = {}
-@pkg_names = {}
 updatable_pkg = {}
 version_line_string = {}
 versions_updated = {}
@@ -334,7 +333,6 @@ if filelist.length.positive?
                                         'Yes'
                                       end
     # rubocop:enable Lint/DuplicateBranch
-    @pkg_names[@pkg.name.to_sym] = @pkg.name
     version_line_string[@pkg.name.to_sym] = ''
 
     # We aren't interested in trying to find the upstream versions of fake packages.
