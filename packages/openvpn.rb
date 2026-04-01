@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Openvpn < Autotools
   description 'OpenVPN is an open source VPN daemon'
   homepage 'https://openvpn.net/'
-  version '2.7.0'
+  version '2.7.1'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/OpenVPN/openvpn.git'
