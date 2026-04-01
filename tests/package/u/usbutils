@@ -1,0 +1,6 @@
+#!/bin/bash
+lsusb -h 2>&1 | head
+lsusb -V 2>&1
+usbhid-dump -h 2>&1 | head
+usbhid-dump --version 2>&1
+
