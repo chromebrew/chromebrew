@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gdk_pixbuf < Meson
   description 'GdkPixbuf is a library for image loading and manipulation.'
   homepage 'https://gtk.org'
-  version '2.44.5'
+  version '2.44.6'
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gdk-pixbuf.git'
@@ -11,17 +11,17 @@ class Gdk_pixbuf < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c4fbaaed3cd722b5b6c8ff58d074034e843b64ef851551ab993976330075aa68',
-     armv7l: 'c4fbaaed3cd722b5b6c8ff58d074034e843b64ef851551ab993976330075aa68',
-     x86_64: 'f664583d212dfbebae068e7f636448b1989018416d0571e442d42846780bb856'
+    aarch64: 'c38bd6a075e997588337ed0bf7bf895c430d1ba9417a832acc2056675a7d4dbe',
+     armv7l: 'c38bd6a075e997588337ed0bf7bf895c430d1ba9417a832acc2056675a7d4dbe',
+     x86_64: '4580225f03165f17b4ce63c73d596e8fa36d940725074367a01b374e02ce422e'
   })
 
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
   depends_on 'gobject_introspection' => :build
-  depends_on 'libjpeg_turbo' # R
-  depends_on 'libpng' # R
-  depends_on 'libtiff' # R
+  depends_on 'libjpeg_turbo' => :library
+  depends_on 'libpng' => :library
+  depends_on 'libtiff' => :library
   depends_on 'pango' => :build
   depends_on 'py3_docutils' => :build
   depends_on 'py3_gi_docgen' => :build
