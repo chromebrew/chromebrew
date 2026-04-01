@@ -10,14 +10,15 @@ class Ruby_strscan < RUBY
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: '8a3488be3d51ff41313af5c8cbf6b07f40d5ed0d9687e97c02a20793094111df',
-     armv7l: '8a3488be3d51ff41313af5c8cbf6b07f40d5ed0d9687e97c02a20793094111df',
-       i686: '21af62648d10b861ea508739bad4e6551bad836005d0ee96a2926fba207fce29',
-     x86_64: '7dde2914d650c0e39e28a7c5a2bfc1fb584e47fee7bd5205945482d8e9f73fc4'
+    aarch64: '0f4ea9a77009883f2fb787dc17a2c75d8aed059222c369f28bc16203c8f170d9',
+     armv7l: '0f4ea9a77009883f2fb787dc17a2c75d8aed059222c369f28bc16203c8f170d9',
+       i686: '72bc029063394e956f43be947de43a5eaf7d942c5246f1429a5df01c4ce2ef29',
+     x86_64: '7a2e6792515f9825bd91f1874a0953950af32398dce49053fc0bbeb38d13e6c0'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'ruby' # R
+  depends_on 'glibc' => :library
+  depends_on 'ruby' => :library
+  depends_on 'ruby' => :logical
 
   conflicts_ok
   gem_compile_needed
