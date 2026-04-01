@@ -18,7 +18,6 @@ class Ruby_strscan < RUBY
 
   depends_on 'glibc' => :library
   depends_on 'ruby' => :library
-  depends_on 'ruby' => :logical
 
   conflicts_ok
   gem_compile_needed
