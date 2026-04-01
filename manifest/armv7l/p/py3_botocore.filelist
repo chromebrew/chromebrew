@@ -1,12 +1,12 @@
-# Total size: 20739446
-/usr/local/lib/python3.14/site-packages/botocore-1.42.79.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/botocore-1.42.79.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/botocore-1.42.79.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/botocore-1.42.79.dist-info/NOTICE
-/usr/local/lib/python3.14/site-packages/botocore-1.42.79.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/botocore-1.42.79.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/botocore-1.42.79.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/botocore-1.42.79.dist-info/top_level.txt
+# Total size: 20787609
+/usr/local/lib/python3.14/site-packages/botocore-1.42.80.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/botocore-1.42.80.dist-info/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/botocore-1.42.80.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/botocore-1.42.80.dist-info/NOTICE
+/usr/local/lib/python3.14/site-packages/botocore-1.42.80.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/botocore-1.42.80.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/botocore-1.42.80.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/botocore-1.42.80.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/botocore/__init__.py
 /usr/local/lib/python3.14/site-packages/botocore/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/botocore/__pycache__/args.cpython-314.pyc
@@ -1671,6 +1671,10 @@
 /usr/local/lib/python3.14/site-packages/botocore/data/security-ir/2018-05-10/paginators-1.sdk-extras.json
 /usr/local/lib/python3.14/site-packages/botocore/data/security-ir/2018-05-10/service-2.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/security-ir/2018-05-10/waiters-2.json
+/usr/local/lib/python3.14/site-packages/botocore/data/securityagent/2025-09-06/endpoint-rule-set-1.json.gz
+/usr/local/lib/python3.14/site-packages/botocore/data/securityagent/2025-09-06/paginators-1.json
+/usr/local/lib/python3.14/site-packages/botocore/data/securityagent/2025-09-06/service-2.json.gz
+/usr/local/lib/python3.14/site-packages/botocore/data/securityagent/2025-09-06/waiters-2.json
 /usr/local/lib/python3.14/site-packages/botocore/data/securityhub/2018-10-26/endpoint-rule-set-1.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/securityhub/2018-10-26/examples-1.json
 /usr/local/lib/python3.14/site-packages/botocore/data/securityhub/2018-10-26/paginators-1.json
@@ -1811,6 +1815,9 @@
 /usr/local/lib/python3.14/site-packages/botocore/data/support/2013-04-15/examples-1.json
 /usr/local/lib/python3.14/site-packages/botocore/data/support/2013-04-15/paginators-1.json
 /usr/local/lib/python3.14/site-packages/botocore/data/support/2013-04-15/service-2.json.gz
+/usr/local/lib/python3.14/site-packages/botocore/data/sustainability/2018-05-10/endpoint-rule-set-1.json.gz
+/usr/local/lib/python3.14/site-packages/botocore/data/sustainability/2018-05-10/paginators-1.json
+/usr/local/lib/python3.14/site-packages/botocore/data/sustainability/2018-05-10/service-2.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/swf/2012-01-25/endpoint-rule-set-1.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/swf/2012-01-25/examples-1.json
 /usr/local/lib/python3.14/site-packages/botocore/data/swf/2012-01-25/paginators-1.json
