@@ -17,8 +17,11 @@ class Usbutils < Meson
      x86_64: 'fe3326d1d91b055cb8985d04a424d6b31db45b7ad16927097aee4263f36064b7'
   })
 
+  depends_on 'eudev' => :executable
   depends_on 'eudev' => :library
+  depends_on 'glibc' => :executable
   depends_on 'glibc' => :library
+  depends_on 'libusb' => :executable
   depends_on 'libusb' => :library
 
   meson_install_extras do
