@@ -1,0 +1,8 @@
+#!/bin/bash
+vala --help | head
+vala --version
+valac --help | head
+valac --version
+vala-gen-introspect
+vapigen --help
+vapigen --version
