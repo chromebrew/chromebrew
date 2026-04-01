@@ -6,7 +6,7 @@ require 'package'
 class Tree_sitter < Package
   description 'An incremental parsing system for programming tools'
   homepage 'https://github.com/tree-sitter/tree-sitter'
-  version '0.26.7'
+  version '0.26.8'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/tree-sitter/tree-sitter.git'
@@ -14,15 +14,15 @@ class Tree_sitter < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '39a881de5c7d4f76e1ad9550694954bb5290bfae8025bef77e668c6368c06265',
-     armv7l: '39a881de5c7d4f76e1ad9550694954bb5290bfae8025bef77e668c6368c06265',
-       i686: '3efbbcb036d47130a024853262841faccba56ccbc7522786ba8d58ac0e164335',
-     x86_64: '4d07cb00080081ec554ae0e367458a00cb378d0446bc60c6d827e7084d306bda'
+    aarch64: '254d04b1e29a58015d0cd9efe605a4a0cbc1bf1c71371487f67f943f0021b5ba',
+     armv7l: '254d04b1e29a58015d0cd9efe605a4a0cbc1bf1c71371487f67f943f0021b5ba',
+       i686: 'ac35ef12ba48177bbc325e030cd4fc14b5729b5972e803ab983ee051be3f07d7',
+     x86_64: '4ff0ea218e624831f760be2c003683a724110f6dd278c84402a53c765dc97d05'
   })
 
   depends_on 'gcc_lib' => :executable
   depends_on 'git' => :build
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
   depends_on 'llvm' => :build
   depends_on 'rust' => :build
 
