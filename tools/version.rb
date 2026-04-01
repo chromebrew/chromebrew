@@ -335,9 +335,8 @@ def update_package_file(filename, upstream_version)
     FileUtils.rm "#{filename}.bak" if File.file?("#{filename}.bak")
   end
 
-  if pkg.binary_compression == 'tar.xz' && !pkg.no_zstd?
-    file = File.read(filename)
-    if file.sub!("binary_compression 'tar.xz'", "binary_compression 'tar.zst'").nil?
+  if %w[tar.xz tpxz].include?(pkg.binary_compression) && !pkg.no_zstd?
+    if file.sub!(/binary_compression '.*'/, "binary_compression 'tar.zst'").nil?
       bc_updated[pkg.name.to_sym] = false
     else
       File.write(filename, file)

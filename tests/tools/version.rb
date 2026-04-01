@@ -127,7 +127,7 @@ class VersionMonitorTest < Minitest::Test
     update_package_test_wrapper(input_file, '1.0', input_file.sub('1.16.1', '1.0'))
   end
 
-  def test_update_package_file_binary_compression
+  def test_update_package_file_xz_binary_compression
     input_file = <<~EOF
       class Bar < Package
         version '3.65.0'
@@ -136,6 +136,17 @@ class VersionMonitorTest < Minitest::Test
     EOF
 
     update_package_test_wrapper(input_file, '3.65.0', input_file.sub("binary_compression 'tar.xz'", "binary_compression 'tar.zst'"), bc_updated: true)
+  end
+
+  def test_update_package_file_tpxz_binary_compression
+    input_file = <<~EOF
+      class Frob < Package
+        version '1ca'
+        binary_compression 'tpxz'
+      end
+    EOF
+
+    update_package_test_wrapper(input_file, '1ca', input_file.sub("binary_compression 'tpxz'", "binary_compression 'tar.zst'"), bc_updated: true)
   end
 
   def test_update_package_file_version_source_sha256
