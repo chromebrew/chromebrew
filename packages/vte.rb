@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Vte < Meson
   description 'Virtual Terminal Emulator widget for use with GTK'
   homepage 'https://wiki.gnome.org/Apps/Terminal/VTE'
-  version "0.82.0-#{CREW_ICU_VER}"
+  version "0.84.0-#{CREW_ICU_VER}"
   license 'LGPL-2+ and GPL-3+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/vte.git'
@@ -11,28 +11,28 @@ class Vte < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5f897f03c1e388d754c0e74189acc163bbc0e1e0786f3255f37aac28015c7ece',
-     armv7l: '5f897f03c1e388d754c0e74189acc163bbc0e1e0786f3255f37aac28015c7ece',
-     x86_64: '613017679524ad6f196dd6e87f80d983c3ab292f46a4ed8582aefaca26a81b4a'
+    aarch64: '8e555a800b38dad49da00bdda322e76f4afb846d465955d0a96d3a6af3e08020',
+     armv7l: '8e555a800b38dad49da00bdda322e76f4afb846d465955d0a96d3a6af3e08020',
+     x86_64: '4da6b5d68e1e09115a01a1b9f9eab3f75e7ef187c80164dbfe53df9dd9bb4204'
   })
 
-  depends_on 'at_spi2_core' # R
-  depends_on 'cairo' # R
-  depends_on 'fribidi' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'gdk_pixbuf' # R
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
-  depends_on 'gnutls' # R
+  depends_on 'at_spi2_core' => :library
+  depends_on 'cairo' => :library
+  depends_on 'fribidi' => :library
+  depends_on 'gcc_lib' => :library
+  depends_on 'gdk_pixbuf' => :executable
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'gnutls' => :library
   depends_on 'gobject_introspection' => :build
-  depends_on 'graphene' # R
-  depends_on 'gtk3' # R
-  depends_on 'gtk4' # R
-  depends_on 'harfbuzz' # R
-  depends_on 'icu4c' # R
-  depends_on 'lz4' # R
-  depends_on 'pango' # R
-  depends_on 'pcre2' # R
+  depends_on 'graphene' => :library
+  depends_on 'gtk3' => :library
+  depends_on 'gtk4' => :library
+  depends_on 'harfbuzz' => :library
+  depends_on 'icu4c' => :library
+  depends_on 'lz4' => :library
+  depends_on 'pango' => :library
+  depends_on 'pcre2' => :library
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' => :build
   depends_on 'zlib' => :build
