@@ -259,13 +259,13 @@ end
 def update_package_file(filename, upstream_version)
   pkg = Package.load_package(filename)
 
-  versions_updated = {}
-  bc_updated = {}
+  version_updated = false
+  bc_updated = nil
 
   file = File.read(filename)
   FileUtils.cp filename, "#{filename}.bak"
   if file.sub!(PackageUtils.get_clean_version(pkg.version), upstream_version).nil?
-    versions_updated[pkg.name.to_sym] = false
+    version_updated = false
   else
     # Version update succeeded. Now check for a sha256 update.
     old_hash = {}
@@ -285,13 +285,12 @@ def update_package_file(filename, upstream_version)
         status = `curl -fsI #{pkg.source_url[arch.to_sym]}`.lines.first.split[1]
         puts "new source_url response status: #{status}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
         unless %w[200 302].include?(status)
-          versions_updated[pkg.name.to_sym] = 'Bad Source'
           puts "#{pkg.source_url[arch.to_sym]} is a bad source".lightred if CREW_VERBOSE && !CREW_OUTPUT_JSON
           if File.file?("#{filename}.bak")
             FileUtils.cp "#{filename}.bak", filename
             FileUtils.rm "#{filename}.bak"
           end
-          return versions_updated[pkg.name.to_sym], false
+          return 'Bad Source', false
         end
         new_hash[arch] = `curl -Ls #{pkg.source_url[arch.to_sym]} | sha256sum - | awk '{print $1}'`.chomp
         puts "new hash: #{new_hash[arch]}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
@@ -309,13 +308,12 @@ def update_package_file(filename, upstream_version)
       puts "new source_url: #{pkg.source_url}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
       status = `curl -fsI #{pkg.source_url}`.lines.first.split[1]
       unless %w[200 302].include?(status)
-        versions_updated[pkg.name.to_sym] = 'Bad Source'
         puts "#{pkg.source_url} is a bad source.".lightred if CREW_VERBOSE && !CREW_OUTPUT_JSON
         if File.file?("#{filename}.bak")
           FileUtils.cp "#{filename}.bak", filename
           FileUtils.rm "#{filename}.bak"
         end
-        return versions_updated[pkg.name.to_sym], false
+        return 'Bad Source', false
       end
       new_hash[arch] = `curl -Ls #{pkg.source_url} | sha256sum - | awk '{print $1}'`.chomp
       puts "new hash: #{new_hash[arch]}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
@@ -331,20 +329,20 @@ def update_package_file(filename, upstream_version)
       FileUtils.cp filename, "#{local_repo_root}/packages/#{pkg.name}.rb"
       puts "Successfully updated #{local_repo_root}/packages/#{pkg.name}.rb to version #{upstream_version}.".lightgreen
     end
-    versions_updated[pkg.name.to_sym] = true
+    version_updated = true
     FileUtils.rm "#{filename}.bak" if File.file?("#{filename}.bak")
   end
 
   if %w[tar.xz tpxz].include?(pkg.binary_compression) && !pkg.no_zstd?
     if file.sub!(/binary_compression '.*'/, "binary_compression 'tar.zst'").nil?
-      bc_updated[pkg.name.to_sym] = false
+      bc_updated = false
     else
       File.write(filename, file)
-      bc_updated[pkg.name.to_sym] = true
+      bc_updated = true
     end
   end
 
-  return versions_updated[pkg.name.to_sym], bc_updated[pkg.name.to_sym]
+  return version_updated, bc_updated
 end
 
 # If we have been required from another file (i.e. for testing) don't run any of this, as we're only interested in the functions up above.
