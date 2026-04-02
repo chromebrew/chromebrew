@@ -3,14 +3,18 @@ require 'package'
 class Wallstreet < Package
   description 'Fill your console with Wall Street-like news and stats.'
   homepage 'https://a.hollywood.computer/'
-  version '1.21'
+  version '1.25'
   license 'Apache-2.0'
-  compatibility 'aarch64 armv7l x86_64'
-  min_glibc '2.32'
-  source_url 'https://httpredir.debian.org/debian/pool/main/h/hollywood/hollywood_1.21.orig.tar.gz'
-  source_sha256 '793ef1f022b376e131c75e05ff1b55a010c0f4193225bb79018855cb9ab89acb'
+  compatibility 'aarch64 armv7l x86_64' # TODO: As a terminal-only application, this should work on i686.
+  source_url 'https://github.com/dustinkirkland/hollywood.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  # Wallstreet doesn't need binaries
+  binary_sha256({
+    aarch64: '146ccb4f0733b892c7458cf0ee39057c9150b3235d6b5a30c44470664e7e4123',
+     armv7l: '146ccb4f0733b892c7458cf0ee39057c9150b3235d6b5a30c44470664e7e4123',
+     x86_64: 'd62743dff4ca8b8ccd347a692e93f2281b9e88d380ee8c90bca7f34b5617fdb4'
+  })
 
   depends_on 'byobu'
   depends_on 'libcaca'
