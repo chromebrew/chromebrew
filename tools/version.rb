@@ -291,13 +291,19 @@ def update_package_file(filename, upstream_version)
     new_source_url = pkg.source_url.is_a?(Hash) ? pkg.source_url.values : [pkg.source_url]
     new_source_url.zip(old_source_sha256).each do |url, old_sha256|
       puts "new source_url: #{url}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
-      status = `curl -fsI #{url}`.lines.first.split[1]
-      puts "new source_url response status: #{status}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
-      unless %w[200 302].include?(status)
+      # Download the URL, following redirects until we reach the final destination.
+      response = Net::HTTP.get_response(URI.parse(url))
+      loop do
+        break unless response.is_a?(Net::HTTPRedirection)
+        url = response['location']
+        response = Net::HTTP.get_response(URI.parse(url))
+      end
+      puts "new source_url response status: #{response.code}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
+      unless response.code == '200'
         puts "#{url} is a bad source".lightred if CREW_VERBOSE && !CREW_OUTPUT_JSON
         return 'Bad Source', bc_updated
       end
-      new_sha256 = `curl -Ls #{url} | sha256sum - | awk '{print $1}'`.chomp
+      new_sha256 = Digest::SHA256.hexdigest(response.body)
       puts "new source_sha256: #{new_source_sha256}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
       file.sub!(old_sha256, new_sha256)
     end
