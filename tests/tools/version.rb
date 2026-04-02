@@ -208,15 +208,14 @@ class VersionMonitorTest < Minitest::Test
     update_package_test_wrapper(input_file, '9.1.8', input_file, version_updated: 'Bad Source', bc_updated: nil)
   end
 
-  # TODO: Why doesn't this have the same behavior as the single source_url case?
   def test_update_package_file_version_bad_multi_source_sha256
     input_file = <<~'EOF'
       class Quuuux < Package
         version '1.4.0'
         binary_compression 'tar.zst'
         source_url({
-          armv7l: "ftp://example.hats/ia32-#{version}.tar.bz3",
-            i686: "ftp://example.hats/strongarmv7-#{version}.tar.bz3"
+          armv7l: "http://example.net/ia32-#{version}.tar.bz3",
+            i686: "http://example.net/strongarmv7-#{version}.tar.bz3"
         })
         source_sha256({
           armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
@@ -225,6 +224,6 @@ class VersionMonitorTest < Minitest::Test
       end
     EOF
 
-    update_package_test_wrapper(input_file, '2.7.0', input_file.sub('1.4.0', '2.7.0'))
+    update_package_test_wrapper(input_file, '2.7.0', input_file, version_updated: 'Bad Source', bc_updated: nil)
   end
 end
