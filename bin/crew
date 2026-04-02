@@ -182,16 +182,14 @@ def check_load_package(pkg_path)
 end
 
 def search(pkg_name, pkg_path: File.join(CREW_PACKAGES_PATH, "#{pkg_name}.rb"), silent: false)
-  begin
-    if File.file?(pkg_path)
-      return check_load_package(pkg_path)
-    else
-      @pkg = nil
-      abort "Package #{pkg_name} not found. 😞".lightred unless silent
-    end
-  rescue StandardError => e
-    abort "Error with #{pkg_name}.rb: #{e}".lightred unless silent
+  if File.file?(pkg_path)
+    return check_load_package(pkg_path)
+  else
+    @pkg = nil
+    abort "Package #{pkg_name} not found. 😞".lightred unless silent
   end
+rescue StandardError => e
+  abort "Error with #{pkg_name}.rb: #{e}".lightred unless silent
 end
 
 def cache_build
