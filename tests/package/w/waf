@@ -1,0 +1,3 @@
+#!/bin/bash
+waf -h | head
+waf --version
