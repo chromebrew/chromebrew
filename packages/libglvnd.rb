@@ -22,4 +22,6 @@ class Libglvnd < Meson
   depends_on 'libxext' => :build
   depends_on 'python3' => :build
   depends_on 'xorg_proto' => :build
+
+  conflicts_with 'gstreamer'
 end
