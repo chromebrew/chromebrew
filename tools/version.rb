@@ -258,9 +258,6 @@ end
 
 def update_package_file(filename, upstream_version)
   pkg = Package.load_package(filename)
-
-  version_updated = false
-
   file = File.read(filename)
 
   # This doesn't handle the case where a package has a tpxz binary compression and is no_zstd and so we would want to change it to tar.xz, because we only have 61 packages with a tpxz binary compression and none of them are no_zstd.
@@ -273,68 +270,66 @@ def update_package_file(filename, upstream_version)
     end
   end
 
-  if file.sub!(PackageUtils.get_clean_version(pkg.version), upstream_version).nil?
-    version_updated = false
-  else
-    # Version update succeeded. Now check for a sha256 update.
-    old_hash = {}
-    new_hash = {}
-    # Handle source_url whether hash or not.
-    if !pkg.source_sha256.nil? && pkg.source_sha256.is_a?(Hash) && pkg.source_sha256&.key?(ARCH.to_sym)
-      # Get old hashes
-      (pkg.source_url.keys.map &:to_s).each do |arch|
-        puts "old source_url: #{pkg.source_url[arch.to_sym]}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
-        old_hash[arch] = pkg.source_sha256[arch.to_sym]
-        puts "old hash: #{old_hash[arch]}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
-      end
-      # This essentially replicates Package.load_package, but this way we don't have to make an early write to the actual package file before we confirm all the modifications are correct.
-      Package.class_eval(file)
-      pkg = Package.const_get(File.basename(filename, '.rb').capitalize)
-      (pkg.source_url.keys.map &:to_s).each do |arch|
-        puts "new source_url: #{pkg.source_url[arch.to_sym]}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
-        status = `curl -fsI #{pkg.source_url[arch.to_sym]}`.lines.first.split[1]
-        puts "new source_url response status: #{status}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
-        unless %w[200 302].include?(status)
-          puts "#{pkg.source_url[arch.to_sym]} is a bad source".lightred if CREW_VERBOSE && !CREW_OUTPUT_JSON
-          return 'Bad Source', bc_updated
-        end
-        new_hash[arch] = `curl -Ls #{pkg.source_url[arch.to_sym]} | sha256sum - | awk '{print $1}'`.chomp
-        puts "new hash: #{new_hash[arch]}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
-        file.sub!(old_hash[arch], new_hash[arch])
-      end
-    elsif !pkg.source_sha256.nil? && !pkg.source_sha256.is_a?(Hash)
-      arch = :all
-      # Get old hashes
-      old_hash[arch] = pkg.source_sha256
-      puts "old source_url: #{pkg.source_url}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
+  # Update the version in the loaded file, exiting early if it failed.
+  return false, bc_updated if file.sub!(PackageUtils.get_clean_version(pkg.version), upstream_version).nil?
+
+  # Version update succeeded. Now check for a sha256 update.
+  old_hash = {}
+  new_hash = {}
+  # Handle source_url whether hash or not.
+  if !pkg.source_sha256.nil? && pkg.source_sha256.is_a?(Hash) && pkg.source_sha256&.key?(ARCH.to_sym)
+    # Get old hashes
+    (pkg.source_url.keys.map &:to_s).each do |arch|
+      puts "old source_url: #{pkg.source_url[arch.to_sym]}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
+      old_hash[arch] = pkg.source_sha256[arch.to_sym]
       puts "old hash: #{old_hash[arch]}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
-      # Now get new hashes
-      Package.class_eval(file)
-      pkg = Package.const_get(File.basename(filename, '.rb').capitalize)
-      puts "new source_url: #{pkg.source_url}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
-      status = `curl -fsI #{pkg.source_url}`.lines.first.split[1]
+    end
+    # This essentially replicates Package.load_package, but this way we don't have to make an early write to the actual package file before we confirm all the modifications are correct.
+    Package.class_eval(file)
+    pkg = Package.const_get(File.basename(filename, '.rb').capitalize)
+    (pkg.source_url.keys.map &:to_s).each do |arch|
+      puts "new source_url: #{pkg.source_url[arch.to_sym]}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
+      status = `curl -fsI #{pkg.source_url[arch.to_sym]}`.lines.first.split[1]
+      puts "new source_url response status: #{status}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
       unless %w[200 302].include?(status)
-        puts "#{pkg.source_url} is a bad source.".lightred if CREW_VERBOSE && !CREW_OUTPUT_JSON
+        puts "#{pkg.source_url[arch.to_sym]} is a bad source".lightred if CREW_VERBOSE && !CREW_OUTPUT_JSON
         return 'Bad Source', bc_updated
       end
-      new_hash[arch] = `curl -Ls #{pkg.source_url} | sha256sum - | awk '{print $1}'`.chomp
+      new_hash[arch] = `curl -Ls #{pkg.source_url[arch.to_sym]} | sha256sum - | awk '{print $1}'`.chomp
       puts "new hash: #{new_hash[arch]}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
       file.sub!(old_hash[arch], new_hash[arch])
     end
-    File.write(filename, file)
-    puts "Successfully updated #{filename} to version #{upstream_version}.".lightgreen
-    local_repo_root = ''
-    Dir.chdir(ENV.fetch('PWD', nil)) do
-      local_repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp
+  elsif !pkg.source_sha256.nil? && !pkg.source_sha256.is_a?(Hash)
+    arch = :all
+    # Get old hashes
+    old_hash[arch] = pkg.source_sha256
+    puts "old source_url: #{pkg.source_url}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
+    puts "old hash: #{old_hash[arch]}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
+    # Now get new hashes
+    Package.class_eval(file)
+    pkg = Package.const_get(File.basename(filename, '.rb').capitalize)
+    puts "new source_url: #{pkg.source_url}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
+    status = `curl -fsI #{pkg.source_url}`.lines.first.split[1]
+    unless %w[200 302].include?(status)
+      puts "#{pkg.source_url} is a bad source.".lightred if CREW_VERBOSE && !CREW_OUTPUT_JSON
+      return 'Bad Source', bc_updated
     end
-    if local_repo_root && File.file?("#{local_repo_root}/packages/#{pkg.name}.rb") && (Pathname.new(filename).realpath.to_s != "#{local_repo_root}/packages/#{pkg.name}.rb")
-      FileUtils.cp filename, "#{local_repo_root}/packages/#{pkg.name}.rb"
-      puts "Successfully updated #{local_repo_root}/packages/#{pkg.name}.rb to version #{upstream_version}.".lightgreen
-    end
-    version_updated = true
+    new_hash[arch] = `curl -Ls #{pkg.source_url} | sha256sum - | awk '{print $1}'`.chomp
+    puts "new hash: #{new_hash[arch]}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
+    file.sub!(old_hash[arch], new_hash[arch])
+  end
+  File.write(filename, file)
+  puts "Successfully updated #{filename} to version #{upstream_version}.".lightgreen
+  local_repo_root = ''
+  Dir.chdir(ENV.fetch('PWD', nil)) do
+    local_repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp
+  end
+  if local_repo_root && File.file?("#{local_repo_root}/packages/#{pkg.name}.rb") && (Pathname.new(filename).realpath.to_s != "#{local_repo_root}/packages/#{pkg.name}.rb")
+    FileUtils.cp filename, "#{local_repo_root}/packages/#{pkg.name}.rb"
+    puts "Successfully updated #{local_repo_root}/packages/#{pkg.name}.rb to version #{upstream_version}.".lightgreen
   end
 
-  return version_updated, bc_updated
+  return true, bc_updated
 end
 
 # If we have been required from another file (i.e. for testing) don't run any of this, as we're only interested in the functions up above.
