@@ -1,0 +1,3 @@
+#!/bin/bash
+w3m -help | head
+w3m -version

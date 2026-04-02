@@ -1,4 +1,4 @@
-# Total size: 1926486
+# Total size: 1573264
 /usr/local/bin/w3m
 /usr/local/bin/w3mman
 /usr/local/libexec/w3m/cgi-bin/dirlist.cgi
@@ -12,12 +12,6 @@
 /usr/local/libexec/w3m/inflate
 /usr/local/libexec/w3m/w3mimgdisplay
 /usr/local/libexec/w3m/xface2xpm
-/usr/local/share/locale/de/LC_MESSAGES/w3m.mo
-/usr/local/share/locale/it/LC_MESSAGES/w3m.mo
-/usr/local/share/locale/ja/LC_MESSAGES/w3m.mo
-/usr/local/share/locale/sv_SE/LC_MESSAGES/w3m.mo
-/usr/local/share/locale/zh_CN/LC_MESSAGES/w3m.mo
-/usr/local/share/locale/zh_TW/LC_MESSAGES/w3m.mo
 /usr/local/share/man/de/man1/w3m.1.zst
 /usr/local/share/man/de/man1/w3mman.1.zst
 /usr/local/share/man/ja/man1/w3m.1.zst
