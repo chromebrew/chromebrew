@@ -1,9 +1,8 @@
-# Total size: 2404287
+# Total size: 1769139
 /usr/local/bin/vspipe
 /usr/local/include/vapoursynth/VSConstants4.h
 /usr/local/include/vapoursynth/VSHelper.h
 /usr/local/include/vapoursynth/VSHelper4.h
-/usr/local/include/vapoursynth/VSScript.h
 /usr/local/include/vapoursynth/VSScript4.h
 /usr/local/include/vapoursynth/VapourSynth.h
 /usr/local/include/vapoursynth/VapourSynth4.h
@@ -15,5 +14,5 @@
 /usr/local/lib/libvapoursynth.so
 /usr/local/lib/pkgconfig/vapoursynth-script.pc
 /usr/local/lib/pkgconfig/vapoursynth.pc
-/usr/local/lib/python3.13/site-packages/vapoursynth.la
-/usr/local/lib/python3.13/site-packages/vapoursynth.so
+/usr/local/lib/python3.14/site-packages/vapoursynth.la
+/usr/local/lib/python3.14/site-packages/vapoursynth.so

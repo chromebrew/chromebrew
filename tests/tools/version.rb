@@ -1,6 +1,21 @@
 require 'minitest/autorun'
 require_relative '../../tools/version'
 
+def update_package_test_wrapper(input_file, version, expected_pkg_file, version_updated: true, bc_updated: nil)
+  # Create a temporary file in the packages directory with the filename of the class name of the input package.
+  package_file_path = "#{CREW_LOCAL_REPO_ROOT}/packages/#{input_file.match('class ([A-z][a-z]*) < Package')[1]}.rb"
+  File.write(package_file_path, input_file)
+
+  # Update the temporary package file, checking that we get the right return values
+  assert_equal [version_updated, bc_updated], update_package_file(package_file_path, version)
+
+  # Check that the updated temporary package file matches our expectations.
+  assert_equal File.read(package_file_path), expected_pkg_file
+
+  # Delete the temporary package file.
+  FileUtils.rm(package_file_path)
+end
+
 class VersionMonitorTest < Minitest::Test
   def test_github_fallback
     assert_equal('2025-11-03', github_fallback(URI.parse('https://github.com/artichoke/nightly.git')))
@@ -99,5 +114,116 @@ class VersionMonitorTest < Minitest::Test
   def test_get_multi_homepage_ecosystem_anitya_id
     # There should be multiple candidates that survive the ecosystem check, but only one will pass the homepage check.
     assert_equal(247, get_anitya_id('cairo', 'https://www.cairographics.org', 'Meson'))
+  end
+
+  def test_update_package_file_version
+    input_file = <<~EOF
+      class Foo < Package
+        version '1.16.1'
+        binary_compression 'tar.zst'
+      end
+    EOF
+
+    update_package_test_wrapper(input_file, '1.0', input_file.sub('1.16.1', '1.0'))
+  end
+
+  def test_update_package_file_xz_binary_compression
+    input_file = <<~EOF
+      class Bar < Package
+        version '3.65.0'
+        binary_compression 'tar.xz'
+      end
+    EOF
+
+    update_package_test_wrapper(input_file, '3.65.0', input_file.sub("binary_compression 'tar.xz'", "binary_compression 'tar.zst'"), bc_updated: true)
+  end
+
+  def test_update_package_file_xz_binary_compression_no_zstd
+    input_file = <<~EOF
+      class Foobarr < Package
+        version '1.0.0'
+        binary_compression 'tar.xz'
+
+        no_zstd
+      end
+    EOF
+
+    update_package_test_wrapper(input_file, '1.0.0', input_file)
+  end
+
+  def test_update_package_file_tpxz_binary_compression
+    input_file = <<~EOF
+      class Frob < Package
+        version '1ca'
+        binary_compression 'tpxz'
+      end
+    EOF
+
+    update_package_test_wrapper(input_file, '1ca', input_file.sub("binary_compression 'tpxz'", "binary_compression 'tar.zst'"), bc_updated: true)
+  end
+
+  def test_update_package_file_version_source_sha256
+    input_file = <<~'EOF'
+      class Qux < Package
+        version '1.0.0'
+        binary_compression 'tar.zst'
+        source_url "https://www.samba.org/ftp/ldb/ldb-#{version}.tar.gz"
+        source_sha256 'c63eaca1f84d5149c38ff747f9ac83d05edcd0b5b5d7c0b836100685f968795d'
+      end
+    EOF
+
+    update_package_test_wrapper(input_file, '1.0.2', input_file.sub('1.0.0', '1.0.2').sub('c63eaca1f84d5149c38ff747f9ac83d05edcd0b5b5d7c0b836100685f968795d', '275a8c2ce111558d7ae573ee6922c86eda6d0df2280721e18b3aa8166e5ab3fb'))
+  end
+
+  def test_update_package_file_version_multi_source_sha256
+    input_file = <<~'EOF'
+      class Quux < Package
+        version '0.5.0'
+        binary_compression 'tar.zst'
+        source_url({
+          armv7l: "https://github.com/koalaman/shellcheck/releases/download/v#{version}/shellcheck-v#{version}.linux.armv6hf.tar.xz",
+          x86_64: "https://github.com/koalaman/shellcheck/releases/download/v#{version}/shellcheck-v#{version}.linux.x86_64.tar.xz"
+        })
+        source_sha256({
+          armv7l: '49a0a2c75a464f35b17c2254f979e48b460350ad3eccffdec53f9ee746950950',
+          x86_64: '7d4c073a0342cf39bdb99c32b4749f1c022cf2cffdfb080c12c106aa9d341708'
+        })
+
+      end
+    EOF
+
+    update_package_test_wrapper(input_file, '0.7.2', input_file.sub('0.5.0', '0.7.2').sub('49a0a2c75a464f35b17c2254f979e48b460350ad3eccffdec53f9ee746950950', '29c7291985ad391fc8af930ba89c7441d5764aa3415ef1d77171aea0b34d35b9').sub('7d4c073a0342cf39bdb99c32b4749f1c022cf2cffdfb080c12c106aa9d341708', '70423609f27b504d6c0c47e340f33652aea975e45f312324f2dbf91c95a3b188'))
+  end
+
+  def test_update_package_file_version_bad_source_sha256
+    input_file = <<~'EOF'
+      class Quuux < Package
+        version '3.56.0'
+        binary_compression 'tar.zst'
+        source_url "https://example.com/#{version}.tar.gz"
+        source_sha256 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii'
+      end
+    EOF
+
+    update_package_test_wrapper(input_file, '9.1.8', input_file, version_updated: 'Bad Source', bc_updated: nil)
+  end
+
+  def test_update_package_file_version_bad_multi_source_sha256
+    input_file = <<~'EOF'
+      class Quuuux < Package
+        version '1.4.0'
+        binary_compression 'tar.zst'
+        source_url({
+          armv7l: "http://example.net/ia32-#{version}.tar.bz3",
+            i686: "http://example.net/strongarmv7-#{version}.tar.bz3"
+        })
+        source_sha256({
+          armv7l: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+            i686: 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii'
+        })
+      end
+    EOF
+
+    update_package_test_wrapper(input_file, '2.7.0', input_file, version_updated: 'Bad Source', bc_updated: nil)
   end
 end

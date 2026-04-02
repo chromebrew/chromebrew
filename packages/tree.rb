@@ -3,7 +3,7 @@ require 'package'
 class Tree < Package
   description 'Tree is a recursive directory listing command that produces a depth indented listing of files, which is colorized ala dircolors if the LS_COLORS environment variable is set and output is to tty.'
   homepage 'https://github.com/Old-Man-Programmer/tree'
-  version '2.2.1'
+  version '2.3.2'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/Old-Man-Programmer/tree.git'
@@ -11,13 +11,13 @@ class Tree < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ee1ffe8304e20d04ab323c44c85956438d2478be886734bac9e3a90800cf0f1b',
-     armv7l: 'ee1ffe8304e20d04ab323c44c85956438d2478be886734bac9e3a90800cf0f1b',
-       i686: '61479f4b2831ec6927c4c81352988b2c0d20b1923667e605cb08bb41d6b98dd9',
-     x86_64: '1f1de80fc668ace74490a1a2ec74c6408de42223feb3ba7afbb11b4f0f6dc621'
+    aarch64: '84ff9b60bcede803498c651bccd3341ac0aa25be94c073432c3e8285e0d41c9a',
+     armv7l: '84ff9b60bcede803498c651bccd3341ac0aa25be94c073432c3e8285e0d41c9a',
+       i686: '8c6cde46e4f369914e8ef850d7538b5f57e5a268edd197085550be401a343f5c',
+     x86_64: 'dd260b9ffc4dc3a68c55ff723d70830217f65e537e3c30d2441be8c3197325af'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
 
   def self.build
     system 'make'

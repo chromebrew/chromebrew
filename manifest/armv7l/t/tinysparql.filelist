@@ -1,4 +1,4 @@
-# Total size: 3554337
+# Total size: 3600757
 /usr/local/bin/tinysparql
 /usr/local/include/tinysparql-3.0/libtracker-sparql/tracker-sparql.h
 /usr/local/include/tinysparql-3.0/tinysparql.h
@@ -23,10 +23,10 @@
 /usr/local/lib/girepository-1.0/Tsparql-3.0.typelib
 /usr/local/lib/libtinysparql-3.0.so
 /usr/local/lib/libtinysparql-3.0.so.0
-/usr/local/lib/libtinysparql-3.0.so.0.1000.0
+/usr/local/lib/libtinysparql-3.0.so.0.1100.0
 /usr/local/lib/libtracker-sparql-3.0.so
 /usr/local/lib/libtracker-sparql-3.0.so.0
-/usr/local/lib/libtracker-sparql-3.0.so.0.1000.0
+/usr/local/lib/libtracker-sparql-3.0.so.0.1100.0
 /usr/local/lib/pkgconfig/tinysparql-3.0.pc
 /usr/local/lib/pkgconfig/tracker-sparql-3.0.pc
 /usr/local/lib/tinysparql-3.0/libtracker-http-soup3.so
@@ -73,6 +73,7 @@
 /usr/local/share/locale/kab/LC_MESSAGES/tinysparql3.mo
 /usr/local/share/locale/kk/LC_MESSAGES/tinysparql3.mo
 /usr/local/share/locale/ko/LC_MESSAGES/tinysparql3.mo
+/usr/local/share/locale/kw/LC_MESSAGES/tinysparql3.mo
 /usr/local/share/locale/lt/LC_MESSAGES/tinysparql3.mo
 /usr/local/share/locale/lv/LC_MESSAGES/tinysparql3.mo
 /usr/local/share/locale/mk/LC_MESSAGES/tinysparql3.mo
@@ -98,6 +99,7 @@
 /usr/local/share/locale/tg/LC_MESSAGES/tinysparql3.mo
 /usr/local/share/locale/th/LC_MESSAGES/tinysparql3.mo
 /usr/local/share/locale/tr/LC_MESSAGES/tinysparql3.mo
+/usr/local/share/locale/ug/LC_MESSAGES/tinysparql3.mo
 /usr/local/share/locale/uk/LC_MESSAGES/tinysparql3.mo
 /usr/local/share/locale/uz/LC_MESSAGES/tinysparql3.mo
 /usr/local/share/locale/vi/LC_MESSAGES/tinysparql3.mo

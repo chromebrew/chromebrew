@@ -1,6 +1,10 @@
-# Total size: 379907
+# Total size: 390201
 /usr/local/include/utf8proc.h
+/usr/local/lib/cmake/utf8proc/utf8proc-config-version.cmake
+/usr/local/lib/cmake/utf8proc/utf8proc-config.cmake
+/usr/local/lib/cmake/utf8proc/utf8proc-targets-release.cmake
+/usr/local/lib/cmake/utf8proc/utf8proc-targets.cmake
 /usr/local/lib/libutf8proc.so
 /usr/local/lib/libutf8proc.so.3
-/usr/local/lib/libutf8proc.so.3.1.0
+/usr/local/lib/libutf8proc.so.3.2.3
 /usr/local/lib/pkgconfig/libutf8proc.pc

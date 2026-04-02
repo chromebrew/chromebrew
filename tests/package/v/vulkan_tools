@@ -1,0 +1,5 @@
+#!/bin/bash
+vkcube -h 2>&1 | head
+vkcube-wayland -h 2>&1 | head
+vkcubepp -h 2>&1 | head
+vulkaninfo -h | head

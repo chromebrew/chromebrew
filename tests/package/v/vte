@@ -1,0 +1,5 @@
+#!/bin/bash
+vte-2.91 -h | head
+vte-2.91 --version
+vte-2.91-gtk4 -h | head
+vte-2.91-gtk4 --version
