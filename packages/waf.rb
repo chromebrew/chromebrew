@@ -3,7 +3,7 @@ require 'package'
 class Waf < Package
   description 'The Waf build system'
   homepage 'https://waf.io/'
-  version '2.1.6'
+  version '2.1.9'
   license 'BSD-3'
   compatibility 'all'
   source_url 'https://gitlab.com/ita1024/waf.git'
@@ -11,13 +11,15 @@ class Waf < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6577ea095f3a72ccce555f9f7bea001dd5b69dca062bce08edc9b768cb30ea6c',
-     armv7l: '6577ea095f3a72ccce555f9f7bea001dd5b69dca062bce08edc9b768cb30ea6c',
-       i686: 'c3feb9fefebb75261438147a2645ab4cc6570794355f152e21854cad600def87',
-     x86_64: '8c9c541b7d8f7d637456572ffe8b3c88dc5135859d53653ced1e0c414559843b'
+    aarch64: '89c899a5ac1d2f6b90bbb55490979fee85f518f958baed25f53e20168fe72245',
+     armv7l: '89c899a5ac1d2f6b90bbb55490979fee85f518f958baed25f53e20168fe72245',
+       i686: 'd3bb67e707b227a0262e7f72e1a62d8bb922835d45f8c983430c271e1dd092f1',
+     x86_64: 'ad7d49cf50682f141085d1fd1b11be44d5d9c96ed884a655af0f0185c3cf8b35'
   })
 
-  depends_on 'help2man'
+  depends_on 'help2man' => :build
+
+  print_source_bashrc
 
   def self.build
     system './waf-light configure build'
@@ -38,10 +40,9 @@ class Waf < Package
     FileUtils.cp_r 'waflib', "#{CREW_DEST_LIB_PREFIX}/"
 
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
-    @wafenv = <<~WAFEOF
+    File.write "#{CREW_DEST_PREFIX}/etc/env.d/waf", <<~WAFEOF
       # waf build system configuration
       export WAFDIR=#{CREW_LIB_PREFIX}
     WAFEOF
-    File.write("#{CREW_DEST_PREFIX}/etc/env.d/waf", @wafenv)
   end
 end
