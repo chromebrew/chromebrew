@@ -440,16 +440,13 @@ if filelist.length.positive?
         crewlog "Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version): #{Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version)}"
         crewlog "Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version) >= 0: #{Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version) >= 0}"
       end
+      versions_updated[@pkg.name.to_sym], bc_updated[@pkg.name.to_sym] = update_package_file(filename, upstream_version) if (Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version) == -1) && UPDATE_PACKAGE_FILES && !CREW_UPDATER_EXCLUDED_PKGS.key?(@pkg.name) && updatable_pkg[@pkg.name.to_sym] == 'Yes'
+      versions_updated[@pkg.name.to_sym] = if UPDATE_PACKAGE_FILES && !CREW_UPDATER_EXCLUDED_PKGS.key?(@pkg.name) && versions_updated[@pkg.name.to_sym]
+                                             'Updated.'
+                                           else
+                                             CREW_UPDATER_EXCLUDED_PKGS.key?(@pkg.name) ? 'Update manually.' : 'Outdated.'
+                                           end
       versions_updated[@pkg.name.to_sym] = 'Up to date.' if Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version) >= 0
-      if (Libversion.version_compare2(PackageUtils.get_clean_version(@pkg.version), upstream_version) == -1) && UPDATE_PACKAGE_FILES && !CREW_UPDATER_EXCLUDED_PKGS.key?(@pkg.name) && updatable_pkg[@pkg.name.to_sym] == 'Yes'
-        versions_updated[@pkg.name.to_sym], bc_updated[@pkg.name.to_sym] = update_package_file(filename, upstream_version)
-
-        versions_updated[@pkg.name.to_sym] = if UPDATE_PACKAGE_FILES && !CREW_UPDATER_EXCLUDED_PKGS.key?(@pkg.name) && versions_updated[@pkg.name.to_sym]
-                                               'Updated.'
-                                             else
-                                               CREW_UPDATER_EXCLUDED_PKGS.key?(@pkg.name) ? 'Update manually.' : 'Outdated.'
-                                             end
-      end
     end
     version_status_string = ''.ljust(status_field_length)
     updatable_string = nil
