@@ -273,7 +273,6 @@ def update_package_file(filename, upstream_version)
     end
   end
 
-  FileUtils.cp filename, "#{filename}.bak"
   if file.sub!(PackageUtils.get_clean_version(pkg.version), upstream_version).nil?
     version_updated = false
   else
@@ -288,15 +287,15 @@ def update_package_file(filename, upstream_version)
         old_hash[arch] = pkg.source_sha256[arch.to_sym]
         puts "old hash: #{old_hash[arch]}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
       end
-      File.write(filename, file)
-      pkg = Package.load_package(filename, true)
+      # This essentially replicates Package.load_package, but this way we don't have to make an early write to the actual package file before we confirm all the modifications are correct.
+      Package.class_eval(file)
+      pkg = Package.const_get(File.basename(filename, '.rb').capitalize)
       (pkg.source_url.keys.map &:to_s).each do |arch|
         puts "new source_url: #{pkg.source_url[arch.to_sym]}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
         status = `curl -fsI #{pkg.source_url[arch.to_sym]}`.lines.first.split[1]
         puts "new source_url response status: #{status}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
         unless %w[200 302].include?(status)
           puts "#{pkg.source_url[arch.to_sym]} is a bad source".lightred if CREW_VERBOSE && !CREW_OUTPUT_JSON
-          FileUtils.mv "#{filename}.bak", filename
           return 'Bad Source', bc_updated
         end
         new_hash[arch] = `curl -Ls #{pkg.source_url[arch.to_sym]} | sha256sum - | awk '{print $1}'`.chomp
@@ -309,14 +308,13 @@ def update_package_file(filename, upstream_version)
       old_hash[arch] = pkg.source_sha256
       puts "old source_url: #{pkg.source_url}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
       puts "old hash: #{old_hash[arch]}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
-      File.write(filename, file)
       # Now get new hashes
-      pkg = Package.load_package(filename, true)
+      Package.class_eval(file)
+      pkg = Package.const_get(File.basename(filename, '.rb').capitalize)
       puts "new source_url: #{pkg.source_url}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
       status = `curl -fsI #{pkg.source_url}`.lines.first.split[1]
       unless %w[200 302].include?(status)
         puts "#{pkg.source_url} is a bad source.".lightred if CREW_VERBOSE && !CREW_OUTPUT_JSON
-        FileUtils.mv "#{filename}.bak", filename
         return 'Bad Source', bc_updated
       end
       new_hash[arch] = `curl -Ls #{pkg.source_url} | sha256sum - | awk '{print $1}'`.chomp
@@ -334,7 +332,6 @@ def update_package_file(filename, upstream_version)
       puts "Successfully updated #{local_repo_root}/packages/#{pkg.name}.rb to version #{upstream_version}.".lightgreen
     end
     version_updated = true
-    FileUtils.rm "#{filename}.bak" if File.file?("#{filename}.bak")
   end
 
   return version_updated, bc_updated
