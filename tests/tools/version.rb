@@ -138,6 +138,19 @@ class VersionMonitorTest < Minitest::Test
     update_package_test_wrapper(input_file, '3.65.0', input_file.sub("binary_compression 'tar.xz'", "binary_compression 'tar.zst'"), bc_updated: true)
   end
 
+  def test_update_package_file_xz_binary_compression_no_zstd
+    input_file = <<~EOF
+      class Foobarr < Package
+        version '1.0.0'
+        binary_compression 'tar.xz'
+
+        no_zstd
+      end
+    EOF
+
+    update_package_test_wrapper(input_file, '1.0.0', input_file)
+  end
+
   def test_update_package_file_tpxz_binary_compression
     input_file = <<~EOF
       class Frob < Package
@@ -182,7 +195,6 @@ class VersionMonitorTest < Minitest::Test
     update_package_test_wrapper(input_file, '0.7.2', input_file.sub('0.5.0', '0.7.2').sub('49a0a2c75a464f35b17c2254f979e48b460350ad3eccffdec53f9ee746950950', '29c7291985ad391fc8af930ba89c7441d5764aa3415ef1d77171aea0b34d35b9').sub('7d4c073a0342cf39bdb99c32b4749f1c022cf2cffdfb080c12c106aa9d341708', '70423609f27b504d6c0c47e340f33652aea975e45f312324f2dbf91c95a3b188'))
   end
 
-  # TODO: Why is this the only one that returns a false bc_updated value?
   def test_update_package_file_version_bad_source_sha256
     input_file = <<~'EOF'
       class Quuux < Package
@@ -193,7 +205,7 @@ class VersionMonitorTest < Minitest::Test
       end
     EOF
 
-    update_package_test_wrapper(input_file, '9.1.8', input_file, version_updated: 'Bad Source', bc_updated: false)
+    update_package_test_wrapper(input_file, '9.1.8', input_file, version_updated: 'Bad Source', bc_updated: nil)
   end
 
   # TODO: Why doesn't this have the same behavior as the single source_url case?

@@ -260,9 +260,19 @@ def update_package_file(filename, upstream_version)
   pkg = Package.load_package(filename)
 
   version_updated = false
-  bc_updated = nil
 
   file = File.read(filename)
+
+  # This doesn't handle the case where a package has a tpxz binary compression and is no_zstd and so we would want to change it to tar.xz, because we only have 61 packages with a tpxz binary compression and none of them are no_zstd.
+  if (pkg.binary_compression == 'tar.xz' && !pkg.no_zstd?) || pkg.binary_compression == 'tpxz'
+    if file.sub!(/binary_compression '.*'/, "binary_compression 'tar.zst'").nil?
+      bc_updated = false
+    else
+      File.write(filename, file)
+      bc_updated = true
+    end
+  end
+
   FileUtils.cp filename, "#{filename}.bak"
   if file.sub!(PackageUtils.get_clean_version(pkg.version), upstream_version).nil?
     version_updated = false
@@ -287,7 +297,7 @@ def update_package_file(filename, upstream_version)
         unless %w[200 302].include?(status)
           puts "#{pkg.source_url[arch.to_sym]} is a bad source".lightred if CREW_VERBOSE && !CREW_OUTPUT_JSON
           FileUtils.mv "#{filename}.bak", filename
-          return 'Bad Source', false
+          return 'Bad Source', bc_updated
         end
         new_hash[arch] = `curl -Ls #{pkg.source_url[arch.to_sym]} | sha256sum - | awk '{print $1}'`.chomp
         puts "new hash: #{new_hash[arch]}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
@@ -307,7 +317,7 @@ def update_package_file(filename, upstream_version)
       unless %w[200 302].include?(status)
         puts "#{pkg.source_url} is a bad source.".lightred if CREW_VERBOSE && !CREW_OUTPUT_JSON
         FileUtils.mv "#{filename}.bak", filename
-        return 'Bad Source', false
+        return 'Bad Source', bc_updated
       end
       new_hash[arch] = `curl -Ls #{pkg.source_url} | sha256sum - | awk '{print $1}'`.chomp
       puts "new hash: #{new_hash[arch]}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
@@ -325,15 +335,6 @@ def update_package_file(filename, upstream_version)
     end
     version_updated = true
     FileUtils.rm "#{filename}.bak" if File.file?("#{filename}.bak")
-  end
-
-  if %w[tar.xz tpxz].include?(pkg.binary_compression) && !pkg.no_zstd?
-    if file.sub!(/binary_compression '.*'/, "binary_compression 'tar.zst'").nil?
-      bc_updated = false
-    else
-      File.write(filename, file)
-      bc_updated = true
-    end
   end
 
   return version_updated, bc_updated
