@@ -6,7 +6,7 @@ require 'buildsystems/autotools'
 class Hwdata < Autotools
   description 'hardware identification databases'
   homepage 'https://github.com/vcrhonek/hwdata'
-  version '0.405'
+  version '0.406'
   license 'GPL2'
   compatibility 'all'
   source_url 'https://github.com/vcrhonek/hwdata.git'
