@@ -11,18 +11,18 @@ class Upower < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c65de3ca0d706636915d1f7527639802d47aed45782190fc7668be080937c7d4',
-     armv7l: 'c65de3ca0d706636915d1f7527639802d47aed45782190fc7668be080937c7d4',
-     x86_64: 'b2500fc970ef04493caae44b3e9ece890f19bd44370f285aea94e6bbc413a5b2'
+    aarch64: '6255eec40126dd106f84a392f3202da3096ac308d6d0b8ba0f392ffad2446ad9',
+     armv7l: '6255eec40126dd106f84a392f3202da3096ac308d6d0b8ba0f392ffad2446ad9',
+     x86_64: 'e5b20f46deaea68dafbe0a5ee17a4bd66d3b5aa09d0814fa00bf2131908b3b63'
   })
 
   depends_on 'docbook_xml' => :build
   depends_on 'gcc_lib' # R
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk_doc' => :build
-  depends_on 'libgudev' # R
+  depends_on 'libgudev' => :executable
   depends_on 'libusb' => :build
   depends_on 'libxslt' => :build
   depends_on 'py3_pygments' => :build
