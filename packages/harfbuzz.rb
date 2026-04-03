@@ -15,42 +15,43 @@ class Harfbuzz < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f6b7a88d2c977c4034945f3286753ad9e52e9e3c9ed57fb895e151555bd1bda3',
-     armv7l: 'f6b7a88d2c977c4034945f3286753ad9e52e9e3c9ed57fb895e151555bd1bda3',
-     x86_64: '266e1fdee66d7ab1726b44e928a13dcf91cea24d5dcb97fbb27d91f39dec4a81'
+    aarch64: '40cbd33527022977090ba39857d92188702681a38f7e3ada5fc8ca0a80018946',
+     armv7l: '40cbd33527022977090ba39857d92188702681a38f7e3ada5fc8ca0a80018946',
+     x86_64: 'd3e449038570e54ff548638f40713ba8dcc86cecb579da8a9a4465a4c8fff04c'
   })
 
-  depends_on 'brotli' # R
-  depends_on 'bzip2' # R
+  depends_on 'brotli' => :library
+  depends_on 'bzip2' => :library
   depends_on 'cairo' => :executable
   depends_on 'chafa' => :executable
-  depends_on 'expat' # R
+  depends_on 'expat' => :library
   # depends_on 'fontconfig' # This pulls in freetype.
   # depends_on 'freetype' # R harfbuzz provides this.
-  depends_on 'gcc_lib' # R
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
   depends_on 'gobject_introspection' => :build
   depends_on 'gperf' => :build
-  depends_on 'graphite' # R
-  depends_on 'icu4c' # R
+  depends_on 'graphite' => :library
+  depends_on 'icu4c' => :library
   depends_on 'json_c' => :build
   depends_on 'libffi' => :build
-  depends_on 'libpng' # R
-  depends_on 'libx11' # R
-  depends_on 'libxcb' # R
-  depends_on 'libxext' # R
-  depends_on 'libxrender' # R
+  depends_on 'libpng' => :library
+  depends_on 'libx11' => :library
+  depends_on 'libxcb' => :library
+  depends_on 'libxext' => :library
+  depends_on 'libxrender' => :library
   depends_on 'patchelf' => :build
   depends_on 'pcre' => :build
   depends_on 'perl_xml_namespacesupport' => :build
   depends_on 'perl_xml_sax' => :build
   depends_on 'perl_xml_sax_base' => :build
-  depends_on 'pixman' # R Needed for cairo subproject.
+  depends_on 'pixman' => :library
   depends_on 'ragel' => :build
-  depends_on 'zlib' # R
+  depends_on 'zlib' => :library
 
   # provides freetype (sans harfbuzz), ragel, and a non-x11 cairo stub
+  conflicts_ok # Conflicts expected with cairo fontconfig freetype
 
   pre_meson_options "CFLAGS+=' -Werror=uninitialized'"
   meson_options '--wrap-mode=default \
