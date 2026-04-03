@@ -1,12 +1,12 @@
-# Total size: 20787609
-/usr/local/lib/python3.14/site-packages/botocore-1.42.80.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/botocore-1.42.80.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/botocore-1.42.80.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/botocore-1.42.80.dist-info/NOTICE
-/usr/local/lib/python3.14/site-packages/botocore-1.42.80.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/botocore-1.42.80.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/botocore-1.42.80.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/botocore-1.42.80.dist-info/top_level.txt
+# Total size: 20820678
+/usr/local/lib/python3.14/site-packages/botocore-1.42.82.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/botocore-1.42.82.dist-info/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/botocore-1.42.82.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/botocore-1.42.82.dist-info/NOTICE
+/usr/local/lib/python3.14/site-packages/botocore-1.42.82.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/botocore-1.42.82.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/botocore-1.42.82.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/botocore-1.42.82.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/botocore/__init__.py
 /usr/local/lib/python3.14/site-packages/botocore/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/botocore/__pycache__/args.cpython-314.pyc
@@ -886,9 +886,11 @@
 /usr/local/lib/python3.14/site-packages/botocore/data/geo-places/2020-11-19/endpoint-rule-set-1.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/geo-places/2020-11-19/paginators-1.json
 /usr/local/lib/python3.14/site-packages/botocore/data/geo-places/2020-11-19/service-2.json.gz
+/usr/local/lib/python3.14/site-packages/botocore/data/geo-places/2020-11-19/waiters-2.json
 /usr/local/lib/python3.14/site-packages/botocore/data/geo-routes/2020-11-19/endpoint-rule-set-1.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/geo-routes/2020-11-19/paginators-1.json
 /usr/local/lib/python3.14/site-packages/botocore/data/geo-routes/2020-11-19/service-2.json.gz
+/usr/local/lib/python3.14/site-packages/botocore/data/geo-routes/2020-11-19/waiters-2.json
 /usr/local/lib/python3.14/site-packages/botocore/data/glacier/2012-06-01/endpoint-rule-set-1.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/glacier/2012-06-01/examples-1.json
 /usr/local/lib/python3.14/site-packages/botocore/data/glacier/2012-06-01/paginators-1.json
