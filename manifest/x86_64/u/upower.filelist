@@ -1,4 +1,4 @@
-# Total size: 1150769
+# Total size: 1153075
 /usr/local/bin/upower
 /usr/local/etc/UPower/UPower.conf
 /usr/local/etc/UPower/UPower.conf.d/README.md
@@ -72,4 +72,5 @@
 /usr/local/share/man/man1/upower.1.zst
 /usr/local/share/man/man7/UPower.7.zst
 /usr/local/share/man/man8/upowerd.8.zst
+/usr/local/share/polkit-1/rules.d/org.freedesktop.upower.rules
 /usr/local/share/zsh/site-functions/_upower
