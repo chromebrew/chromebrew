@@ -10,19 +10,19 @@ class Py3_pillow < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4b0ca3a39c2838ee7a6d6fcdf251f117e7f2364f98ef7f03a3169b0fb2272f26',
-     armv7l: '4b0ca3a39c2838ee7a6d6fcdf251f117e7f2364f98ef7f03a3169b0fb2272f26',
-     x86_64: '92c0402853e69b9ef5d04509880ce5720ccc464a3436ad5fa33de5dddc36c837'
+    aarch64: '3ab8dbe2ad43c9034e507500f255c0356115a35f42aceac2a06819bc1de59ac6',
+     armv7l: '3ab8dbe2ad43c9034e507500f255c0356115a35f42aceac2a06819bc1de59ac6',
+     x86_64: 'd0f81b84c3e50ce576f1fa3601a6a5e016e8250757454c4d81a61afe58ff22a7'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
   depends_on 'libjpeg_turbo' # R
   depends_on 'libxcb' # R
   depends_on 'py3_lxml'
   depends_on 'py3_xlsxwriter'
-  depends_on 'python3' # R
-  depends_on 'zlib' # R
+  depends_on 'python3' => :logical
+  depends_on 'zlib' => :library
 
   no_source_build
 end
