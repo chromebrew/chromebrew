@@ -17,8 +17,8 @@ class Py3_pillow < Pip
 
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
-  depends_on 'libjpeg_turbo' # R
-  depends_on 'libxcb' # R
+  depends_on 'libjpeg_turbo' => :library
+  depends_on 'libxcb' => :library
   depends_on 'py3_lxml'
   depends_on 'py3_xlsxwriter'
   depends_on 'python3' => :logical
