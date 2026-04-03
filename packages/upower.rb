@@ -23,6 +23,7 @@ class Upower < Meson
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk_doc' => :build
   depends_on 'libgudev' => :executable
+  depends_on 'libgudev' => :library
   depends_on 'libusb' => :build
   depends_on 'libxslt' => :build
   depends_on 'py3_pygments' => :build
