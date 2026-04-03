@@ -4,7 +4,7 @@ require 'buildsystems/meson'
 class Freetype < Meson
   description 'FreeType is a freely available software library to render fonts.'
   homepage 'https://freetype.org/'
-  version '2.14.1' # Update freetype in harfbuzz when updating freetype
+  version '2.14.3' # Update freetype in harfbuzz when updating freetype
   license 'FTL or GPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/freetype/freetype.git'
@@ -32,5 +32,5 @@ class Freetype < Meson
 
   conflicts_ok # Allow overwriting of harfbuzz freetype files.
 
-  meson_options '-Dharfbuzz=enabled'
+  meson_options '-Dharfbuzz=dynamic'
 end
