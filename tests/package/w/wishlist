@@ -1,0 +1,3 @@
+#!/bin/bash
+wishlist -h | head
+wishlist -v
