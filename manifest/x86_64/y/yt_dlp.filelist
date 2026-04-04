@@ -1,12 +1,12 @@
-# Total size: 22566532
+# Total size: 22797522
 /usr/local/bin/yt-dlp
-/usr/local/lib/python3.14/site-packages/yt_dlp-2025.11.12.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/yt_dlp-2025.11.12.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/yt_dlp-2025.11.12.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/yt_dlp-2025.11.12.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/yt_dlp-2025.11.12.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/yt_dlp-2025.11.12.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/yt_dlp-2025.11.12.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/yt_dlp-2026.3.17.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/yt_dlp-2026.3.17.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/yt_dlp-2026.3.17.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/yt_dlp-2026.3.17.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/yt_dlp-2026.3.17.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/yt_dlp-2026.3.17.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/yt_dlp-2026.3.17.dist-info/licenses/LICENSE
 /usr/local/lib/python3.14/site-packages/yt_dlp/YoutubeDL.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/__init__.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/__main__.py
@@ -68,6 +68,7 @@
 /usr/local/lib/python3.14/site-packages/yt_dlp/downloader/__pycache__/niconico.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/downloader/__pycache__/rtmp.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/downloader/__pycache__/rtsp.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/yt_dlp/downloader/__pycache__/soop.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/downloader/__pycache__/websocket.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/downloader/__pycache__/youtube_live_chat.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/downloader/bunnycdn.py
@@ -84,6 +85,7 @@
 /usr/local/lib/python3.14/site-packages/yt_dlp/downloader/niconico.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/downloader/rtmp.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/downloader/rtsp.py
+/usr/local/lib/python3.14/site-packages/yt_dlp/downloader/soop.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/downloader/websocket.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/downloader/youtube_live_chat.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__init__.py
@@ -104,9 +106,11 @@
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/aenetworks.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/aeonco.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/afreecatv.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/agalega.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/agora.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/airtv.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/aitube.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/alibaba.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/aliexpress.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/aljazeera.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/allocine.cpython-314.pyc
@@ -174,6 +178,7 @@
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/bilibili.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/biobiochiletv.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/bitchute.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/bitmovin.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/blackboardcollaborate.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/bleacherreport.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/blerp.cpython-314.pyc
@@ -258,6 +263,7 @@
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/cpac.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/cracked.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/craftsy.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/croatianfilm.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/crooksandliars.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/crowdbunker.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/crtvg.cpython-314.pyc
@@ -343,6 +349,7 @@
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/fc2.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/fczenit.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/fifa.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/filmarchiv.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/filmon.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/filmweb.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/firsttv.cpython-314.pyc
@@ -366,6 +373,7 @@
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/freespeech.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/freetv.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/frontendmasters.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/frontro.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/fujitv.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/funk.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/funker530.cpython-314.pyc
@@ -524,6 +532,7 @@
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/livestream.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/livestreamfails.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/lnk.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/locipo.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/loco.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/loom.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/lovehomeporn.cpython-314.pyc
@@ -537,12 +546,12 @@
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/mailru.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/mainstreaming.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/mangomolo.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/manoto.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/manyvids.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/maoritv.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/markiza.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/massengeschmacktv.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/masters.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/matchitv.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/matchtv.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/mave.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/mbn.cpython-314.pyc
@@ -613,13 +622,13 @@
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/nekohacker.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/nerdcubed.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/nest.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/netapp.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/neteasemusic.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/netverse.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/netzkino.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/newgrounds.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/newspicks.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/newsy.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/nextmedia.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/nexx.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/nfb.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/nfhsnetwork.cpython-314.pyc
@@ -643,6 +652,7 @@
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/nosnl.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/nova.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/novaplay.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/nowcanal.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/nowness.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/noz.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/npo.cpython-314.pyc
@@ -683,6 +693,7 @@
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/owncloud.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/packtpub.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/palcomp3.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/pandatv.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/panopto.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/parler.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/parlview.cpython-314.pyc
@@ -814,7 +825,6 @@
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/screenrec.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/scrippsnetworks.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/scrolller.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/scte.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/sejmpl.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/sen.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/senalcolombia.cpython-314.pyc
@@ -887,6 +897,7 @@
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/sztvhu.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/tagesschau.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/taptap.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/tarangplus.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/tass.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/tbs.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/tbsjp.cpython-314.pyc
@@ -915,6 +926,7 @@
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/testurl.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/tf1.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/tfo.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/thechosen.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/theguardian.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/thehighwire.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/theholetv.cpython-314.pyc
@@ -967,6 +979,7 @@
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/tviplayer.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/tvn24.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/tvnoe.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/tvo.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/tvopengr.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/tvp.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/tvplay.cpython-314.pyc
@@ -1025,6 +1038,7 @@
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/vimm.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/viously.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/viqeo.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/visir.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/viu.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/vk.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/vocaroo.cpython-314.pyc
@@ -1080,6 +1094,7 @@
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/yandexvideo.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/yapfiles.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/yappy.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/yfanefa.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/yle_areena.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/youjizz.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/__pycache__/youku.cpython-314.pyc
@@ -1113,9 +1128,11 @@
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/aenetworks.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/aeonco.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/afreecatv.py
+/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/agalega.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/agora.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/airtv.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/aitube.py
+/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/alibaba.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/aliexpress.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/aljazeera.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/allocine.py
@@ -1183,6 +1200,7 @@
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/bilibili.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/biobiochiletv.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/bitchute.py
+/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/bitmovin.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/blackboardcollaborate.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/bleacherreport.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/blerp.py
@@ -1267,6 +1285,7 @@
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/cpac.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/cracked.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/craftsy.py
+/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/croatianfilm.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/crooksandliars.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/crowdbunker.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/crtvg.py
@@ -1352,6 +1371,7 @@
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/fc2.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/fczenit.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/fifa.py
+/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/filmarchiv.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/filmon.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/filmweb.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/firsttv.py
@@ -1375,6 +1395,7 @@
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/freespeech.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/freetv.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/frontendmasters.py
+/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/frontro.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/fujitv.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/funk.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/funker530.py
@@ -1533,6 +1554,7 @@
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/livestream.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/livestreamfails.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/lnk.py
+/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/locipo.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/loco.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/loom.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/lovehomeporn.py
@@ -1546,12 +1568,12 @@
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/mailru.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/mainstreaming.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/mangomolo.py
-/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/manoto.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/manyvids.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/maoritv.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/markiza.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/massengeschmacktv.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/masters.py
+/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/matchitv.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/matchtv.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/mave.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/mbn.py
@@ -1622,13 +1644,13 @@
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/nekohacker.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/nerdcubed.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/nest.py
+/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/netapp.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/neteasemusic.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/netverse.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/netzkino.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/newgrounds.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/newspicks.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/newsy.py
-/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/nextmedia.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/nexx.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/nfb.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/nfhsnetwork.py
@@ -1652,6 +1674,7 @@
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/nosnl.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/nova.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/novaplay.py
+/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/nowcanal.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/nowness.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/noz.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/npo.py
@@ -1692,6 +1715,7 @@
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/owncloud.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/packtpub.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/palcomp3.py
+/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/pandatv.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/panopto.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/parler.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/parlview.py
@@ -1823,7 +1847,6 @@
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/screenrec.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/scrippsnetworks.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/scrolller.py
-/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/scte.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/sejmpl.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/sen.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/senalcolombia.py
@@ -1896,6 +1919,7 @@
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/sztvhu.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/tagesschau.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/taptap.py
+/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/tarangplus.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/tass.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/tbs.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/tbsjp.py
@@ -1924,6 +1948,7 @@
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/testurl.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/tf1.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/tfo.py
+/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/thechosen.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/theguardian.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/thehighwire.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/theholetv.py
@@ -1976,6 +2001,7 @@
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/tviplayer.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/tvn24.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/tvnoe.py
+/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/tvo.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/tvopengr.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/tvp.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/tvplay.py
@@ -2034,6 +2060,7 @@
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/vimm.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/viously.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/viqeo.py
+/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/visir.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/viu.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/vk.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/vocaroo.py
@@ -2089,6 +2116,7 @@
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/yandexvideo.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/yapfiles.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/yappy.py
+/usr/local/lib/python3.14/site-packages/yt_dlp/extractor/yfanefa.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/yle_areena.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/youjizz.py
 /usr/local/lib/python3.14/site-packages/yt_dlp/extractor/youku.py

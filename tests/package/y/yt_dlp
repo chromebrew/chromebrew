@@ -1,0 +1,3 @@
+#!/bin/bash
+yt-dlp -h | head
+yt-dlp --version
