@@ -1,4 +1,4 @@
-# Total size: 426241
+# Total size: 444719
 /usr/local/include/yaml-cpp/anchor.h
 /usr/local/include/yaml-cpp/binary.h
 /usr/local/include/yaml-cpp/contrib/anchordict.h
@@ -12,6 +12,7 @@
 /usr/local/include/yaml-cpp/emitterstyle.h
 /usr/local/include/yaml-cpp/eventhandler.h
 /usr/local/include/yaml-cpp/exceptions.h
+/usr/local/include/yaml-cpp/fptostring.h
 /usr/local/include/yaml-cpp/mark.h
 /usr/local/include/yaml-cpp/node/convert.h
 /usr/local/include/yaml-cpp/node/detail/impl.h
@@ -41,6 +42,6 @@
 /usr/local/lib64/cmake/yaml-cpp/yaml-cpp-targets-release.cmake
 /usr/local/lib64/cmake/yaml-cpp/yaml-cpp-targets.cmake
 /usr/local/lib64/libyaml-cpp.so
-/usr/local/lib64/libyaml-cpp.so.0.8
-/usr/local/lib64/libyaml-cpp.so.0.8.0
+/usr/local/lib64/libyaml-cpp.so.0.9
+/usr/local/lib64/libyaml-cpp.so.0.9.0
 /usr/local/lib64/pkgconfig/yaml-cpp.pc
