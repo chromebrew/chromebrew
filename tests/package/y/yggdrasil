@@ -1,0 +1,5 @@
+#!/bin//bash
+yggdrasil -help 2>&1 | head
+yggdrasil -version
+yggdrasilctl -help 2>&1 | head
+yggdrasilctl -version
