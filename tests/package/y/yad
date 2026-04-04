@@ -1,0 +1,5 @@
+#!/bin/bash
+yad --help | head
+yad --version
+yad-tools --help | head
+yad-tools --version
