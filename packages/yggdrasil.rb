@@ -3,7 +3,7 @@ require 'package'
 class Yggdrasil < Package
   description 'Overlay network implementation of a new routing scheme for mesh networks.'
   homepage 'https://yggdrasil-network.github.io/'
-  version '0.4.7'
+  version '0.5.13'
   license 'LGPLv3'
   compatibility 'all'
   source_url 'https://github.com/yggdrasil-network/yggdrasil-go.git'
@@ -11,12 +11,13 @@ class Yggdrasil < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '127c621b87747f904cc5abc6b50b58ad078fdb4ed628e6e13dd543c31536c766',
-     armv7l: '127c621b87747f904cc5abc6b50b58ad078fdb4ed628e6e13dd543c31536c766',
-       i686: '5e9c9a0883f3c10ecc781e7c9d1ce0dc7d23bbb6d2c5760d649bb9820950e605',
-     x86_64: '498a420d75649b961dc859b8de67d4850e0f2536de69ff609f71183ef0306dc6'
+    aarch64: 'ce7074d563bbe25a61582df619e4ffdf4591263ef0efc85fcd077dd626e272e7',
+     armv7l: 'ce7074d563bbe25a61582df619e4ffdf4591263ef0efc85fcd077dd626e272e7',
+       i686: '7e9ea0a875ab4b164f3e2a2aa1196611dc5a54fb519d941282113bae4ac7f60b',
+     x86_64: 'b97775ddc46eb1417099d8c8893ad4f0c4456f606ae016f1875d410d2d7f47d1'
   })
 
+  depends_on 'glibc' => :library
   depends_on 'go' => :build
 
   def self.patch
