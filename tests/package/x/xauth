@@ -1,0 +1,3 @@
+#!/bin/bash
+xauth --help 2>&1 | head
+xauth --version
