@@ -3,22 +3,22 @@ require 'buildsystems/cmake'
 class Yaml_cpp < CMake
   description 'A YAML parser and emitter in C++'
   homepage 'https://github.com/jbeder/yaml-cpp'
-  version '0.8.0'
+  version '0.9.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/jbeder/yaml-cpp.git'
-  git_hashtag version
+  git_hashtag "yaml-cpp-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5bc7476e4cec2138d7812598842f35cc75dab5153484d40b0b733b203b61a72c',
-     armv7l: '5bc7476e4cec2138d7812598842f35cc75dab5153484d40b0b733b203b61a72c',
-       i686: 'a7dd7c6ae9b83a6c0c46a74bf1566ac748502fafc9747dae05392e82f5497a1d',
-     x86_64: '9aa2f68e52ffda021f36b8df9bb5b6f4907ecc200e86cda819b2d985e6b8b4c3'
+    aarch64: '0a658ec4b90fe259a863944ac87025402458e6735e4b9f7c2bf662fd3db7abb2',
+     armv7l: '0a658ec4b90fe259a863944ac87025402458e6735e4b9f7c2bf662fd3db7abb2',
+       i686: '2eb0c207fc2796def012c09e6430549e65fbe97c786158cf834e7a18a09e1d81',
+     x86_64: 'd9d2286f669ef6fd0adcc9756bfcfe42194cf45bdd344f539700a9c00a487565'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
 
   cmake_options '-DBUILD_SHARED_LIBS=ON'
 end
