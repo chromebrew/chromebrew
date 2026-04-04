@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Xauth < Autotools
   description 'X authority file utility'
   homepage 'https://www.x.org/archive/X11R6.8.1/doc/xauth.1.html'
-  version '1.1.4'
+  version '1.1.5'
   license 'MIT-with-advertising'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/app/xauth.git'
@@ -11,16 +11,16 @@ class Xauth < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '562e0d8445ab4be079b36ea1182a8f02159f9b9e2fea68ca2408021fb7d84323',
-     armv7l: '562e0d8445ab4be079b36ea1182a8f02159f9b9e2fea68ca2408021fb7d84323',
-     x86_64: '4891ea00bf649cd7d9e85f63f8270ae81788f32691720f6a69edb8c3ec61a913'
+    aarch64: 'c775827ef0612000b0f1afb14e9477aac86c0776678a9670d534594ca4b7e963',
+     armv7l: 'c775827ef0612000b0f1afb14e9477aac86c0776678a9670d534594ca4b7e963',
+     x86_64: '71101012a3748d899bd245241690bff3ca67fa32a6a37907f9cae8b4a6e655e8'
   })
 
-  depends_on 'libx11' # R
-  depends_on 'libxau' # R
-  depends_on 'libxext' # R
-  depends_on 'libxmu' # R
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
+  depends_on 'libx11' => :library
+  depends_on 'libxau' => :library
+  depends_on 'libxext' => :library
+  depends_on 'libxmu' => :library
 
   autotools_configure_options '--enable-ipv6 \
            --enable-tcp-transport \

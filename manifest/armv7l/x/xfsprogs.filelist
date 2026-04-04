@@ -1,4 +1,4 @@
-# Total size: 4838176
+# Total size: 3796267
 /usr/local/include/xfs/handle.h
 /usr/local/include/xfs/jdm.h
 /usr/local/include/xfs/linux.h
@@ -118,5 +118,6 @@
 /usr/local/share/xfsprogs/mkfs/lts_5.4.conf
 /usr/local/share/xfsprogs/mkfs/lts_6.1.conf
 /usr/local/share/xfsprogs/mkfs/lts_6.12.conf
+/usr/local/share/xfsprogs/mkfs/lts_6.18.conf
 /usr/local/share/xfsprogs/mkfs/lts_6.6.conf
 /usr/local/share/xfsprogs/xfs_scrub_all.cron
