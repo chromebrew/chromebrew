@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
-# version.rb version 3.33 (for Chromebrew)
+# version.rb version 3.34 (for Chromebrew)
 
-OPTIONS = %w[-h --help -j --json -u --update-package-files -v --verbose -vv]
+OPTIONS = %w[-a --all -h --help -j --json -u --update-package-files -v --verbose -vv]
 
 if ARGV.include?('-h') || ARGV.include?('--help')
   abort <<~EOM
@@ -9,10 +9,9 @@ if ARGV.include?('-h') || ARGV.include?('--help')
     Example: ./version.rb abcde -v
     The <package> can contain '*': ./version.rb "xorg_*"
     If <package> is omitted, all packages will be processed.
-    Passing --update-package-files or -u will try to update the version
-    field in the package file.
+    Passing --all or -a will display output for all packages, not just updatable outdated ones.
+    Passing --update-package-files or -u will try to update the package version.
     Passing --json or -j will only give json output.
-    Passing --all or -a will output the versions of all packages, not just the outdated ones.
     Passing --verbose or -v will display verbose output.
     Passing -vv will display very verbose output.
   EOM

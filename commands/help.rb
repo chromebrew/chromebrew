@@ -161,7 +161,8 @@ class Command
     when 'upstream'
       puts <<~EOT
         Check if an upstream version is available for package(s).
-        Usage: crew upstream [-j|--json|-u|--update-package-files|-v|--verbose|-vv] [<package1> <package2> ...]
+        Usage: crew upstream [-a|--all|-j|--json|-u|--update-package-files|-v|--verbose|-vv] [<package1> <package2> ...]
+        If `-a` or `--all` is present, output will be displayed for all packages, not just updatable outdated ones.
         If `-j` or `--json` is present, output will be in json format.
         If `-u` or `--update-package-files` is present, it will attempt to update the package version.
         If `-v` or `--verbose` is present, extra information will be displayed.

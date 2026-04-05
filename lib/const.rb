@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION = defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION = '1.72.10' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION = '1.72.11' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH = Etc.uname[:machine]
@@ -523,11 +523,12 @@ CREW_DOCOPT = <<~DOCOPT
     crew update_package_file [options] [-v|--verbose] [<name> ...]
     crew upgrade [options] [-f|--force] [-k|--keep] [--regenerate-filelist] [-s|--source] [-v|--verbose] [<name> ...]
     crew upload [options] [-f|--force] [-v|--verbose] [<name> ...]
-    crew upstream [options] [-j|--json|-u|--update-package-files|-v|--verbose|-vv] <name> ...
+    crew upstream [options] [-a|--all|-j|--json|-u|--update-package-files|-v|--verbose|-vv] <name> ...
     crew version [options] [<name>]
     crew whatdepends <name> ...
     crew whatprovides [options] <pattern> ...
 
+    -a --all                   Include all output that is excluded by default.
     -b --include-build-deps    Include build dependencies in output.
     -c --color                 Use colors even if standard out is not a tty.
     -d --no-color              Disable colors even if standard out is a tty.
