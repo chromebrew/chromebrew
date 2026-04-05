@@ -14,9 +14,9 @@ class Sdl2_compat < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7d3f55fb10798ded67034c244d1e06eebf88650eb4e2fa0b8471a3cf373577ef',
-     armv7l: '7d3f55fb10798ded67034c244d1e06eebf88650eb4e2fa0b8471a3cf373577ef',
-     x86_64: 'f10ddb56780218a37398463979e9bd9025108a5a5f6544d4c683955554c931d4'
+    aarch64: 'f5b252d3900d9b84003ec35751452e7a18a57e6de2d27b3ee845e1f001527256',
+     armv7l: 'f5b252d3900d9b84003ec35751452e7a18a57e6de2d27b3ee845e1f001527256',
+     x86_64: '7e8bad62d022c932d6a47a7ef494d4985cfb57c1a134884b31047a546f7663fc'
   })
 
   depends_on 'glibc' => :library
