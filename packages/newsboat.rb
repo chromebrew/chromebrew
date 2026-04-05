@@ -11,10 +11,10 @@ class Newsboat < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9c4d9c323fe5e4bd22608edfd220a1ac1ce421fd79e0d9ede3b87b895ae1c294',
-     armv7l: '9c4d9c323fe5e4bd22608edfd220a1ac1ce421fd79e0d9ede3b87b895ae1c294',
-       i686: '1437b3103969bb432fe1b23263a83c2b0c8cdbefb532d81925864991f8aa6aa7',
-     x86_64: 'b74cf00b8080016eb459892dc6107d75d678a98ad413fefceb3a160f67b1c3d4'
+    aarch64: '48e85a6f7d5b6206905113f81207b0ff9cd5395b4acacde0793a5d39421a6ec1',
+     armv7l: '48e85a6f7d5b6206905113f81207b0ff9cd5395b4acacde0793a5d39421a6ec1',
+       i686: 'f0d3115574ecd796cb6c8b07aa22fb3195ae49f8f322de7fe6e827238578756d',
+     x86_64: '820160251ce1ba903ccdd6d8eeb50d37c78a4e948457e68dcaa42cef0c394f70'
   })
 
   depends_on 'curl' => :executable
