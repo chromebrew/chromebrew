@@ -1,0 +1,3 @@
+#!/bin/bash
+zellij -h | head
+zellij -V
