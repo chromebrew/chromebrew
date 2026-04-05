@@ -1,0 +1,5 @@
+#!/bin/bash
+zdump --help
+zdump --version
+zoneinfo_tzselect --help
+zoneinfo_tzselect --version
