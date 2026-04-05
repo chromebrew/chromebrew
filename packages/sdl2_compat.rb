@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Sdl2_compat < CMake
   description 'An SDL2 compatibility layer that uses SDL3 behind the scenes'
   homepage 'https://github.com/libsdl-org/sdl2-compat'
-  version '2.32.64'
+  version '2.32.66'
   license 'zlib'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/libsdl-org/sdl2-compat.git'
