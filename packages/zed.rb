@@ -3,7 +3,7 @@ require 'buildsystems/rust'
 class Zed < RUST
   description 'Zed is a high-performance, multiplayer code editor'
   homepage 'https://zed.dev/'
-  version '0.205.5'
+  version '0.230.1'
   license 'GPL-3, AGPL-3, Apache-2.0'
   compatibility 'x86_64'
   source_url 'https://github.com/zed-industries/zed.git'
@@ -11,20 +11,22 @@ class Zed < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: 'acd4fbb4a6266cf6157abbfd5fe1922189c88b4ac65ea4e391faa4ade71c9a0c'
+    x86_64: '0348c48b47a0ca4a233a15aa67cab0a3cc65872b19b267741a4a7d9492819c4c'
   })
 
-  depends_on 'alsa_lib' # R
+  depends_on 'alsa_lib' => :library
   depends_on 'cargo_about' => :build
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'libx11' # R
-  depends_on 'libxcb' # R
-  depends_on 'libxkbcommon' # R
+  depends_on 'dbus' => :executable
+  depends_on 'gcc_lib' => :library
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'libx11' => :library
+  depends_on 'libxcb' => :library
+  depends_on 'libxkbcommon' => :library
   depends_on 'llvm_dev' => :build
-  depends_on 'ruby_solargraph' # L
+  depends_on 'ruby_solargraph' => :logical
   depends_on 'rust' => :build
-  depends_on 'zlib' # R
+  depends_on 'zlib' => :library
 
   rust_flags '-C link-args=-Wl,--disable-new-dtags,-rpath,$ORIGIN/../lib -C symbol-mangling-version=v0 --cfg tokio_unstable'
   rust_packages 'zed'
