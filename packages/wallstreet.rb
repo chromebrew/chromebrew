@@ -16,19 +16,19 @@ class Wallstreet < Package
      x86_64: 'd62743dff4ca8b8ccd347a692e93f2281b9e88d380ee8c90bca7f34b5617fdb4'
   })
 
+  depends_on 'byobu' => :logical
   depends_on 'jp2a' => :logical
   depends_on 'libcaca' => :logical
-  depends_on 'newsboat' => :logical
   depends_on 'ncurses' => :logical
+  depends_on 'newsboat' => :logical
   depends_on 'perl' => :logical
   depends_on 'procps' => :logical
   depends_on 'python3' => :logical
   depends_on 'rsstail' => :logical
   depends_on 'ticker' => :logical
   depends_on 'tmux' => :logical
-  depends_on 'wget2' => :logical
   depends_on 'w3m' => :logical
-  depends_on 'byobu' => :logical
+  depends_on 'wget2' => :logical
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
