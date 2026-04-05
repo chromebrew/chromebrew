@@ -14,13 +14,13 @@ class Sdl3 < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '78585fda4af1898133b94e6111b3af4c93513301a3c82a3b02e2e1ab813ac276',
-     armv7l: '78585fda4af1898133b94e6111b3af4c93513301a3c82a3b02e2e1ab813ac276',
-     x86_64: '22025ac126f46b20948f333ee971f3ed64114bcb5af4486c1ac7b1782ee28e3e'
+    aarch64: '5e87a0a061a21a5c0b52f70bb67b9fe2212db11ddfc2fd406cdbf70852ffa3c7',
+     armv7l: '5e87a0a061a21a5c0b52f70bb67b9fe2212db11ddfc2fd406cdbf70852ffa3c7',
+     x86_64: '59ac532b5a706ff8f74d720164bdc581f6e6f776cbc4cc63f8865744b12c71e1'
   })
 
   depends_on 'alsa_lib' => :build
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
   depends_on 'libusb' => :build
   depends_on 'libx11' => :build
   depends_on 'libxcursor' => :build
