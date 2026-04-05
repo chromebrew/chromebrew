@@ -16,27 +16,28 @@ class Sommelier < Package
      x86_64: '143424c0763ac30e28e2085ff4c8eaaa869962a225eb3030ff5bd8d97cf09f5f'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'libdrm' # R
-  depends_on 'libxcb' # R
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'libdrm' => :executable
+  depends_on 'libfontenc' => :logical # As per https://github.com/chromebrew/chromebrew/issues/11959#issuecomment-4186891789
+  depends_on 'libxcb' => :executable
   depends_on 'libxcomposite' => :build
   depends_on 'libxfixes' => :build
-  depends_on 'libxkbcommon' # R
+  depends_on 'libxkbcommon' => :executable
   depends_on 'llvm_dev' => :build
-  depends_on 'mesa' # R
-  depends_on 'pixman' # R
+  depends_on 'mesa' => :executable
+  depends_on 'pixman' => :executable
   depends_on 'procps' # for pgrep in wrapper script
-  depends_on 'psmisc' # L
+  depends_on 'psmisc' => :logical
   depends_on 'py3_jinja2' => :build
-  depends_on 'wayland' # R
-  depends_on 'wayland_info' # L
-  depends_on 'xauth' # L
-  depends_on 'xhost' # for xhost in sommelierd script
-  depends_on 'xkbcomp' # The sommelier log complains if this isn't installed.
-  depends_on 'xorg_xset' # for xset in wrapper script
-  depends_on 'xsetroot' # for xsetroot in /usr/local/etc/sommelierrc script
-  depends_on 'xwayland' # L
+  depends_on 'wayland' => :executable
+  depends_on 'wayland_info' => :logical
+  depends_on 'xauth' => :logical
+  depends_on 'xhost' => :logical # for xhost in sommelierd script
+  depends_on 'xkbcomp' => :logical # The sommelier log complains if this isn't installed.
+  depends_on 'xorg_xset' => :logical # for xset in wrapper script
+  depends_on 'xsetroot' => :logical # for xsetroot in /usr/local/etc/sommelierrc script
+  depends_on 'xwayland' => :logical
 
   no_shrink
   print_source_bashrc
