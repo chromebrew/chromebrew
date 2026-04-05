@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Htop < Autotools
   description 'htop is an interactive process viewer for Unix systems.'
   homepage 'https://github.com/htop-dev/htop'
-  version '3.2.2'
+  version '3.4.1'
   license 'BSD and GPL-2'
   compatibility 'all'
   source_url 'https://github.com/htop-dev/htop.git'
