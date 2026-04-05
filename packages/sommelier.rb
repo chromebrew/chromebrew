@@ -3,17 +3,17 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 programs to the built-in ChromeOS Exo Wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
-  version "20250422-#{CREW_LLVM_VER}"
+  version "20260130-#{CREW_LLVM_VER}"
   license 'BSD-Google'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://chromium.googlesource.com/chromiumos/platform2.git'
-  git_hashtag '71fec9e3432237147309d9e2e82cf6841ba03d0f'
+  git_hashtag 'a7457a5d25ac64d9feb880c751cb76c21052620f'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '48b3b55b2806078091eaf7b4c81099d408590c21b01c75bd0386127eeac83b72',
-     armv7l: '48b3b55b2806078091eaf7b4c81099d408590c21b01c75bd0386127eeac83b72',
-     x86_64: '143424c0763ac30e28e2085ff4c8eaaa869962a225eb3030ff5bd8d97cf09f5f'
+    aarch64: 'fc451d5cfb4f23d145d873892eda9f7687228645d8d2ea48828b5a2772738bc4',
+     armv7l: 'fc451d5cfb4f23d145d873892eda9f7687228645d8d2ea48828b5a2772738bc4',
+     x86_64: 'e5370b33a471fea6735afd696a5ceb6d94ec924a292449051118601b38323189'
   })
 
   depends_on 'gcc_lib' => :executable
