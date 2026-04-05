@@ -1,0 +1,3 @@
+#!/bin/bash
+zenity -h | head
+zenity --version

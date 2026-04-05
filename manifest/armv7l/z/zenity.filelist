@@ -1,4 +1,4 @@
-# Total size: 10942727
+# Total size: 8788899
 /usr/local/bin/zenity
 /usr/local/share/applications/org.gnome.Zenity.desktop
 /usr/local/share/help/C/zenity/calendar.page
@@ -916,6 +916,7 @@
 /usr/local/share/locale/tr/LC_MESSAGES/zenity.mo
 /usr/local/share/locale/ug/LC_MESSAGES/zenity.mo
 /usr/local/share/locale/uk/LC_MESSAGES/zenity.mo
+/usr/local/share/locale/uz/LC_MESSAGES/zenity.mo
 /usr/local/share/locale/vi/LC_MESSAGES/zenity.mo
 /usr/local/share/locale/xh/LC_MESSAGES/zenity.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/zenity.mo
