@@ -11,17 +11,21 @@ class Htop < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '338489c46d466ee3fe7e98667fb4f580105d5dd7a7a97f12d9405ff15fa4657a',
-     armv7l: '338489c46d466ee3fe7e98667fb4f580105d5dd7a7a97f12d9405ff15fa4657a',
-       i686: '355a2351b50b0a69a08688ef995dfb8f1ac54b994c7d55a5417edf145b2387bc',
-     x86_64: 'c98dbc6b4834fa31fc8c6485844c5be340c3a8a9c23fe1974aa5d6087e0bcb19'
+    aarch64: '373d776a32588baa51bc834adf100958fbe7ecba9c4ac921c0753b2d4a87ee09',
+     armv7l: '373d776a32588baa51bc834adf100958fbe7ecba9c4ac921c0753b2d4a87ee09',
+       i686: '251e7dbdc819890ddcd2066c019e8010965c6aee63ae09db42ba0759b88126f4',
+     x86_64: '82424ae093bde8ef1f8dbbb09db90e6b4347b7203131766256e74a203ce31fab'
   })
 
   depends_on 'buildessential' => :build
+  depends_on 'glibc' => :executable
   depends_on 'glibc' => :library
+  depends_on 'libcap' => :executable
   depends_on 'libcap' => :library
   depends_on 'libnl3' => :library
+  depends_on 'libunwind' => :executable
   depends_on 'libunwind' => :library
+  depends_on 'ncurses' => :executable
   depends_on 'ncurses' => :library
 
   autotools_pre_configure_options "CPPFLAGS='-I#{CREW_PREFIX}/include/ncursesw'"
