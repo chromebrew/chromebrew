@@ -18,14 +18,10 @@ class Htop < Autotools
   })
 
   depends_on 'buildessential' => :build
-  depends_on 'glibc' => :executable
   depends_on 'glibc' => :library
-  depends_on 'libcap' => :executable
   depends_on 'libcap' => :library
   depends_on 'libnl3' => :library
-  depends_on 'libunwind' => :executable
   depends_on 'libunwind' => :library
-  depends_on 'ncurses' => :executable
   depends_on 'ncurses' => :library
 
   autotools_pre_configure_options "CPPFLAGS='-I#{CREW_PREFIX}/include/ncursesw'"
