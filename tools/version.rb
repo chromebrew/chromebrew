@@ -303,7 +303,7 @@ def update_package_file(filename, upstream_version)
         return 'Bad Source', bc_updated
       end
       new_sha256 = Digest::SHA256.hexdigest(response.body)
-      puts "new source_sha256: #{new_source_sha256}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
+      puts "new source_sha256: #{new_sha256}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
       file.sub!(old_sha256, new_sha256)
     end
   end
