@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Xrdb < Package
+class Xrdb < Autotools
   description 'xrdb - X server resource database utility'
   homepage 'https://x.org/wiki/'
-  version '1.2.1'
+  version '1.2.2'
   license 'custom'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/app/xrdb.git'
@@ -11,22 +11,13 @@ class Xrdb < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '547cb971355f8c3a3b4550fde0268150c1ab45cb818c42f21ad3d5bbb93329f8',
-     armv7l: '547cb971355f8c3a3b4550fde0268150c1ab45cb818c42f21ad3d5bbb93329f8',
-     x86_64: '5725f1b269c6ec44f0c975bed5575299f7896105637a7e34cd4f967cee808207'
+    aarch64: 'eb257fc3893fd675a1172698eb77af04bc125eaa7a4c60acd5bd90b6cfb2f175',
+     armv7l: 'eb257fc3893fd675a1172698eb77af04bc125eaa7a4c60acd5bd90b6cfb2f175',
+     x86_64: '58c2b739970d8895579598230fc6fab28744b590f2e50acdd11abc6c5159f0c8'
   })
 
-  depends_on 'libx11' # R
-  depends_on 'libxmu' # R
+  depends_on 'glibc' => :library
+  depends_on 'libx11' => :library
   depends_on 'libxdmcp' => :build
-
-  def self.build
-    system 'NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-  end
+  depends_on 'libxmu' => :library
 end

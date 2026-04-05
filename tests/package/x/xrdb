@@ -1,0 +1,3 @@
+#!/bin/bash
+xrdb -help 2>&1 | head
+xrdb -version

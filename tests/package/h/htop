@@ -1,0 +1,3 @@
+#!/bin/bash
+htop -h | head
+htop -V

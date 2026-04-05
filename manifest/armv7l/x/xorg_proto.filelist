@@ -1,4 +1,4 @@
-# Total size: 1656959
+# Total size: 1655000
 /usr/local/include/GL/glxint.h
 /usr/local/include/GL/glxmd.h
 /usr/local/include/GL/glxproto.h
@@ -42,7 +42,6 @@
 /usr/local/include/X11/extensions/XI2proto.h
 /usr/local/include/X11/extensions/XIproto.h
 /usr/local/include/X11/extensions/XKB.h
-/usr/local/include/X11/extensions/XKBgeom.h
 /usr/local/include/X11/extensions/XKBproto.h
 /usr/local/include/X11/extensions/XKBsrv.h
 /usr/local/include/X11/extensions/XKBstr.h

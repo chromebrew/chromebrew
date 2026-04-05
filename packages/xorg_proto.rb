@@ -3,20 +3,24 @@ require 'buildsystems/meson'
 class Xorg_proto < Meson
   description 'The xorgproto package provides the header files required to build the X Window system, and to allow other applications to build against the installed X Window system.'
   homepage 'https://www.x.org/wiki/'
-  version '2024.1'
+  version '2025.1'
   license 'MIT'
-  compatibility 'all'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/proto/xorgproto.git'
   git_hashtag "xorgproto-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '21d51df41e7ad8c3e1e82aa8a0adc59dd5474729623290471f0f8cfe1eb5bdf6',
-     armv7l: '21d51df41e7ad8c3e1e82aa8a0adc59dd5474729623290471f0f8cfe1eb5bdf6',
-       i686: 'e0769e918543e31cdcca830eda7bdaf0c99b37e06f1889fc7faa477c09d1d2d4',
-     x86_64: 'd78e9ab0fad59e59a520643d1809d188c1b65db23c3f13ffe728ec6a58a1c0dc'
+    aarch64: '1d6ba51b9c0a20f8a661708a1d535cb362efc3e97a46d9ea0ed080bb1a40a7c9',
+     armv7l: '1d6ba51b9c0a20f8a661708a1d535cb362efc3e97a46d9ea0ed080bb1a40a7c9',
+     x86_64: 'c9a68de6a297a2225059c7bbfe67d88757c958f668b06fdabce46da0ad4860d8'
   })
 
   # This is needed to provide the deprecated printproto specifications required to build libxp, which is itself deprecated.
   meson_options '-Dlegacy=true'
+
+  def self.postbuild
+    # Remove file that is included with libx11.
+    FileUtils.rm "#{CREW_DEST_PREFIX}/include/X11/extensions/XKBgeom.h"
+  end
 end

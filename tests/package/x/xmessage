@@ -1,0 +1,3 @@
+#!/bin/bash
+xmessage -help 2>&1
+xmessage -version 2>&1
