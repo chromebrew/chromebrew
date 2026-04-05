@@ -8,7 +8,6 @@ class Libnxml < Autotools
   compatibility 'all'
   source_url "https://salsa.debian.org/debian/libnxml/-/archive/debian/#{version}/libnxml-debian-#{version}.tar.bz2"
   source_sha256 'bae082f80d15488415d4e24f9938a568bb6669ee54288919ab0f9dc7be59fd77'
-  source_sha256 '2c3e910b591d8f2a4dde53874339ddf831cfcce4cfece429217b5a5b9f850a9d'
   binary_compression 'tar.zst'
 
   binary_sha256({
