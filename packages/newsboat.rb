@@ -3,12 +3,12 @@ require 'package'
 class Newsboat < Package
   description 'Newsboat is an RSS/Atom feed reader for the text console.'
   homepage 'https://newsboat.org/'
-  version '2.25'
+  version '2.43'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://newsboat.org/releases/2.25/newsboat-2.25.tar.xz'
-  source_sha256 '41aaab378f1dc9eff5094fc4a686a602c76497cb6c4b656c65e843a71fa6017e'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/newsboat/newsboat.git'
+  git_hashtag "r#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '9c4d9c323fe5e4bd22608edfd220a1ac1ce421fd79e0d9ede3b87b895ae1c294',
@@ -17,22 +17,25 @@ class Newsboat < Package
      x86_64: 'b74cf00b8080016eb459892dc6107d75d678a98ad413fefceb3a160f67b1c3d4'
   })
 
-  depends_on 'sqlite'
-  depends_on 'gettext'
-  depends_on 'curl'
-  depends_on 'libxml2'
-  depends_on 'libstfl'
-  depends_on 'json_c'
-  depends_on 'openssl'
+  depends_on 'curl' => :executable
+  depends_on 'gcc_lib' => :executable
+  depends_on 'gettext' => :build
+  depends_on 'glibc' => :executable
+  depends_on 'json_c' => :executable
+  depends_on 'libstfl' => :executable
+  depends_on 'libxml2' => :executable
+  depends_on 'ncurses' => :executable
+  depends_on 'openssl' => :executable
   depends_on 'ruby_asciidoctor' => :build
   depends_on 'rust' => :build
+  depends_on 'sqlite' => :executable
 
   def self.patch
     system "sed -i 's:prefix?=/usr/local:prefix?=#{CREW_PREFIX}:' Makefile"
   end
 
   def self.build
-    system 'make'
+    system "CXXFLAGS+=' -Wno-unused-function ' make"
   end
 
   def self.check
