@@ -4,7 +4,7 @@ Package.load_package("#{__dir__}/zlib.rb")
 class Minizip < Package
   description 'Minizip is a simple package to zip/unzip files, from zlib.'
   homepage Zlib.homepage
-  version '1.3.1'
+  version '1.3.2'
   # When upgrading minizip, be sure to upgrade zlib in tandem.
   puts "#{self} version differs from Zlib version #{Zlib.version.split('-').first}".orange if version != Zlib.version.split('-').first
   license Zlib.license
@@ -14,13 +14,14 @@ class Minizip < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd905ac78dcf4be301c0b03cd68b1d98fdfd4607c50a6e118ecd823708691640a',
-     armv7l: 'd905ac78dcf4be301c0b03cd68b1d98fdfd4607c50a6e118ecd823708691640a',
-       i686: '42fddacd0c45d8a290068b369bb4037dae00356b7037b7a05f7f13984535aa9f',
-     x86_64: 'fbdfaeb7561751925637c326da3e6a008cb65ce4918aff2151596d52058fa614'
+    aarch64: '1dd507a336eee780e3919360cd434165251a2d86f7b11561357660903e8278de',
+     armv7l: '1dd507a336eee780e3919360cd434165251a2d86f7b11561357660903e8278de',
+       i686: '34ea7026b146354b7f8adcbbd10cfd3b477f954ad7c151edd5382dcafe76b8bf',
+     x86_64: 'b1d8049921c59764d2173b0f83d73ba1328030442f2bf94ee55cdaee8457b76e'
   })
 
-  depends_on 'zlib' # R
+  depends_on 'glibc' => :library
+  depends_on 'zlib' => :library
 
   def self.build
     Dir.chdir 'contrib/minizip' do

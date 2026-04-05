@@ -1,8 +1,22 @@
-# Total size: 221641
+# Total size: 1549080
 /usr/local/include/zconf.h
 /usr/local/include/zlib.h
+/usr/local/lib/cmake/zlib/ZLIB-shared-release.cmake
+/usr/local/lib/cmake/zlib/ZLIB-shared.cmake
+/usr/local/lib/cmake/zlib/ZLIB-static-release.cmake
+/usr/local/lib/cmake/zlib/ZLIB-static.cmake
+/usr/local/lib/cmake/zlib/ZLIBConfig.cmake
+/usr/local/lib/cmake/zlib/ZLIBConfigVersion.cmake
+/usr/local/lib/libz.a
 /usr/local/lib/libz.so
 /usr/local/lib/libz.so.1
-/usr/local/lib/libz.so.1.3.1
+/usr/local/lib/libz.so.1.3.2
 /usr/local/lib/pkgconfig/zlib.pc
+/usr/local/share/doc/zlib/zlib/LICENSE
+/usr/local/share/doc/zlib/zlib/algorithm.txt
+/usr/local/share/doc/zlib/zlib/crc-doc.1.0.pdf
+/usr/local/share/doc/zlib/zlib/rfc1950.txt
+/usr/local/share/doc/zlib/zlib/rfc1951.txt
+/usr/local/share/doc/zlib/zlib/rfc1952.txt
+/usr/local/share/doc/zlib/zlib/txtvsbin.txt
 /usr/local/share/man/man3/zlib.3.zst
