@@ -1,4 +1,4 @@
-# Total size: 3307211
+# Total size: 3307370
 /usr/local/bin/sdl2-config
 /usr/local/include/SDL2/SDL.h
 /usr/local/include/SDL2/SDL_assert.h
@@ -104,7 +104,7 @@
 /usr/local/lib64/cmake/SDL2/sdl2-config.cmake
 /usr/local/lib64/libSDL2-2.0.so
 /usr/local/lib64/libSDL2-2.0.so.0
-/usr/local/lib64/libSDL2-2.0.so.0.3200.64
+/usr/local/lib64/libSDL2-2.0.so.0.3200.66
 /usr/local/lib64/libSDL2.so
 /usr/local/lib64/libSDL2_test.a
 /usr/local/lib64/libSDL2main.a
