@@ -27,7 +27,7 @@ class Sommelier < Package
   depends_on 'llvm_dev' => :build
   depends_on 'mesa' => :executable
   depends_on 'pixman' => :executable
-  depends_on 'procps' # for pgrep in wrapper script
+  depends_on 'procps' => :logical # for pgrep in wrapper script
   depends_on 'psmisc' => :logical
   depends_on 'py3_jinja2' => :build
   depends_on 'wayland' => :executable
