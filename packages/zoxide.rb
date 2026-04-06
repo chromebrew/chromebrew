@@ -3,7 +3,7 @@ require 'package'
 class Zoxide < Package
   description 'zoxide is a smarter cd command, inspired by z and autojump.'
   homepage 'https://github.com/ajeetdsouza/zoxide'
-  version '0.9.8'
+  version '0.9.9'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url({
@@ -12,12 +12,12 @@ class Zoxide < Package
      x86_64: "https://github.com/ajeetdsouza/zoxide/releases/download/v#{version}/zoxide-#{version}-x86_64-unknown-linux-musl.tar.gz"
   })
   source_sha256({
-    aarch64: 'cf8f35f703707a00d6636bbdfcf1636975bdf57162e2749dce0fc0cd09a31e2a',
-     armv7l: 'cf8f35f703707a00d6636bbdfcf1636975bdf57162e2749dce0fc0cd09a31e2a',
-     x86_64: '4092ee38aa1efde42e4efb2f9c872df5388198aacae7f1a74e5eb5c3cc7f531c'
+    aarch64: 'b9396f621a79bb65287341dd567a2263c0c9389d7238e762b1969104203038cf',
+     armv7l: 'b9396f621a79bb65287341dd567a2263c0c9389d7238e762b1969104203038cf',
+     x86_64: '4ff057d3c4d957946937274c2b8be7af2a9bbae7f90a1b5e9baaa7cb65a20caa'
   })
 
-  depends_on 'fzf'
+  depends_on 'fzf' => :executable
 
   no_compile_needed
   print_source_bashrc
