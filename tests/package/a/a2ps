@@ -1,0 +1,3 @@
+#!/bin/bash
+a2ps -h | head
+a2ps -V
