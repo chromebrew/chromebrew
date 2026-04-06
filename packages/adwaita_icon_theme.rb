@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Adwaita_icon_theme < Meson
   description 'Theme consisting of a set of icons for GTK+'
   homepage 'https://wiki.gnome.org/Design'
-  version '49.0'
+  version '50.0'
   license 'LGPL-3 and CC-BY-SA-4.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/adwaita-icon-theme.git'
@@ -11,9 +11,9 @@ class Adwaita_icon_theme < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '52883301b4615054f31d5fff23d0e518f05f506dbc29790b0f3f74078959d6bf',
-     armv7l: '52883301b4615054f31d5fff23d0e518f05f506dbc29790b0f3f74078959d6bf',
-     x86_64: '157920f95618f15e8ebcf7bc0416102dfed9365bced5b8dffb0bafd30eb9fc9f'
+    aarch64: '5eec5ea4caa7e47b213de5e2131009a1b1ae2795778751cdd1a7d648a1dfe3aa',
+     armv7l: '5eec5ea4caa7e47b213de5e2131009a1b1ae2795778751cdd1a7d648a1dfe3aa',
+     x86_64: 'ac5e811a399ac6975081848e51c08aa231ea4058c7d612baf9aad8f51287fdb7'
   })
 
   depends_on 'adwaita_fonts' # L

@@ -1,4 +1,4 @@
-# Total size: 13197034
+# Total size: 13222893
 /usr/local/share/icons/Adwaita/16x16/devices/audio-headphones.png
 /usr/local/share/icons/Adwaita/16x16/devices/audio-headset.png
 /usr/local/share/icons/Adwaita/16x16/emblems/emblem-readonly.png
@@ -491,6 +491,8 @@
 /usr/local/share/icons/Adwaita/symbolic/legacy/battery-good-charging-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/legacy/battery-good-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/legacy/battery-low-charging-symbolic.svg
+/usr/local/share/icons/Adwaita/symbolic/legacy/emblem-important-symbolic.svg
+/usr/local/share/icons/Adwaita/symbolic/legacy/emblem-system-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/legacy/gnome-power-manager-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/legacy/goa-panel-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/legacy/help-browser-symbolic.svg
