@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Groff < Autotools
   description 'Groff (GNU troff) is a typesetting system that reads plain text mixed with formatting commands and produces formatted output.'
   homepage 'https://www.gnu.org/software/groff/'
-  version '1.23.0-1'
+  version '1.24.1'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://git.savannah.gnu.org/git/groff.git'
