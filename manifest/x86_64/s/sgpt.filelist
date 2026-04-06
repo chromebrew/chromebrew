@@ -1,0 +1,7 @@
+# Total size: 15309745
+/usr/local/bin/sgpt
+/usr/local/etc/env.d/10-sgpt
+/usr/local/share/man/man1/sgpt.1.zst
+/usr/local/share/sgpt/completions/sgpt.bash
+/usr/local/share/sgpt/completions/sgpt.fish
+/usr/local/share/sgpt/completions/sgpt.zsh

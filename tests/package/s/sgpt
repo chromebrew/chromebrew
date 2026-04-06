@@ -1,0 +1,3 @@
+#!/bin/bash
+sgpt help | tail -20
+sgpt version

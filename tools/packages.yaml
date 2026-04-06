@@ -8950,6 +8950,11 @@ url: https://sourceware.org/ftp/docbook-tools/new-trials/SOURCES/
 activity: none
 ---
 kind: url
+name: sgpt
+url: https://github.com/tbckr/sgpt/releases
+activity: medium
+---
+kind: url
 name: shaderc
 url: https://github.com/google/shaderc/releases
 activity: low
