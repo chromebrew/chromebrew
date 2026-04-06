@@ -23,4 +23,11 @@ class Groff < Autotools
   depends_on 'uchardet' # R
 
   autotools_configure_options '--without-x'
+
+  def self.patch
+    # See https://lists.gnu.org/archive/html/groff/2024-11/msg00149.html
+    File.write '.tarball-version', <<~EOF
+      #{version}
+    EOF
+  end
 end
