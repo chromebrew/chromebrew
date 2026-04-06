@@ -271,7 +271,7 @@ activity: medium
 ---
 kind: url
 name: aribb24
-url: https://github.com/nkoriyama/aribb24/releases
+url: https://code.videolan.org/jeeb/aribb24/-/tags
 activity: none
 ---
 kind: url
@@ -8948,6 +8948,11 @@ kind: url
 name: sgml_common
 url: https://sourceware.org/ftp/docbook-tools/new-trials/SOURCES/
 activity: none
+---
+kind: url
+name: sgpt
+url: https://github.com/tbckr/sgpt/releases
+activity: medium
 ---
 kind: url
 name: shaderc
