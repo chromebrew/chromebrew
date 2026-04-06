@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.34 (for Chromebrew)
+# version.rb version 3.35 (for Chromebrew)
 
 OPTIONS = %w[-a --all -h --help -j --json -u --update-package-files -v --verbose -vv]
 
@@ -303,7 +303,7 @@ def update_package_file(filename, upstream_version)
         return 'Bad Source', bc_updated
       end
       new_sha256 = Digest::SHA256.hexdigest(response.body)
-      puts "new source_sha256: #{new_source_sha256}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
+      puts "new source_sha256: #{new_sha256}" if CREW_VERBOSE && !CREW_OUTPUT_JSON
       file.sub!(old_sha256, new_sha256)
     end
   end

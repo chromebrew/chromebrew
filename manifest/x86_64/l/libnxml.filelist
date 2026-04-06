@@ -1,8 +1,8 @@
-# Total size: 518610
+# Total size: 425620
 /usr/local/include/nxml.h
 /usr/local/lib64/libnxml.a
 /usr/local/lib64/libnxml.la
 /usr/local/lib64/libnxml.so
 /usr/local/lib64/libnxml.so.0
-/usr/local/lib64/libnxml.so.0.18.3
+/usr/local/lib64/libnxml.so.0.18.5
 /usr/local/lib64/pkgconfig/nxml.pc

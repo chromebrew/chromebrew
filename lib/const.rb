@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION = defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION = '1.72.11' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION = '1.73.0' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH = Etc.uname[:machine]
@@ -464,6 +464,7 @@ CREW_ANITYA_PACKAGE_NAME_MAPPINGS = Set[
   { pkg_name: 'upx', anitya_pkg: 'upx', comments: 'Prefer to GitHub' },
   { pkg_name: 'vidstab', anitya_pkg: 'vid.stab', comments: 'Prefer to GitHub' },
   { pkg_name: 'vim_runtime', anitya_pkg: 'vim', comments: '' },
+  { pkg_name: 'wallstreet', anitya_pkg: 'hollywood', comments: '' },
   { pkg_name: 'wayland_info', anitya_pkg: 'wayland-utils', comments: '' },
   { pkg_name: 'webkit2gtk_4_0', anitya_pkg: 'webkitgtk~stable', comments: '' },
   { pkg_name: 'webkit2gtk_4_1', anitya_pkg: 'webkitgtk~stable', comments: '' },

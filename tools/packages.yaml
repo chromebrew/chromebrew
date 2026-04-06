@@ -8475,6 +8475,11 @@ url: https://github.com/rqlite/rqlite/releases
 activity: high
 ---
 kind: url
+name: rsstail
+url: https://github.com/folkertvanheusden/rsstail/tags
+activity: low
+---
+kind: url
 name: rsu_client
 url: https://github.com/rsu-client/rsu-client/releases
 activity: low
