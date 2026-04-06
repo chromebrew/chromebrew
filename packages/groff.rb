@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Groff < Autotools
   description 'Groff (GNU troff) is a typesetting system that reads plain text mixed with formatting commands and produces formatted output.'
   homepage 'https://www.gnu.org/software/groff/'
-  version '1.23.0-1'
+  version '1.24.1'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://git.savannah.gnu.org/git/groff.git'
@@ -11,16 +11,23 @@ class Groff < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6c4051837c19bf45308d5f1afd113a14d03efe7479c115e6702e798efc671bb2',
-     armv7l: '6c4051837c19bf45308d5f1afd113a14d03efe7479c115e6702e798efc671bb2',
-       i686: '9d2cb7c9038714c158345a7f7979379c25ed9b78f13e517989887904c70557ee',
-     x86_64: 'c64d5b6b3ff5d80d021d81a35e1b7900e991551bf7b38660ccf3ad47f8b6984c'
+    aarch64: 'b9e70902dd906532b725da59ed259d50dd84b4420bf1b8d7a8fd463d37fdc64b',
+     armv7l: 'b9e70902dd906532b725da59ed259d50dd84b4420bf1b8d7a8fd463d37fdc64b',
+       i686: 'eedb9cc8a8e07e47cda56b5a70891a43402b4116915db04a2ef007ba77d3a06e',
+     x86_64: '00b78896e838583d62491f0114aa6ae4aae163c0f53510193eb7bbb78c8b6a64'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
   depends_on 'netpbm' => :build
-  depends_on 'uchardet' # R
+  depends_on 'uchardet' => :executable
 
   autotools_configure_options '--without-x'
+
+  def self.patch
+    # See https://lists.gnu.org/archive/html/groff/2024-11/msg00149.html
+    File.write '.tarball-version', <<~EOF
+      #{version}
+    EOF
+  end
 end
