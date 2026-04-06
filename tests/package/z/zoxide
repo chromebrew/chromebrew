@@ -1,0 +1,3 @@
+#!/bin/bash
+zoxide -h | head
+zoxide -V
