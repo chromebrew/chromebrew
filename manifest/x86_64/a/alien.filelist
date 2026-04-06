@@ -1,7 +1,7 @@
-# Total size: 107768
+# Total size: 120575
 /usr/local/bin/alien
-/usr/local/lib64/perl5/5.40.1/core_perl/perllocal.pod
-/usr/local/lib64/perl5/5.40.1/site_perl/auto/Alien/.packlist
+/usr/local/lib64/perl5/5.42/core_perl/perllocal.pod
+/usr/local/lib64/perl5/5.42/site_perl/auto/Alien/.packlist
 /usr/local/share/man/man1/alien.1.zst
 /usr/local/share/man/man3/Alien::Package.3.zst
 /usr/local/share/man/man3/Alien::Package::Deb.3.zst
