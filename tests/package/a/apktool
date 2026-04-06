@@ -1,0 +1,3 @@
+#!/bin/bash
+apktool -h | head
+apktool v
