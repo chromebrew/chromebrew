@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Adwaita_fonts < Meson
   description 'The typefaces for GNOME'
   homepage 'https://gitlab.gnome.org/GNOME/adwaita-fonts'
-  version '49.0'
+  version '50.0'
   license 'GPL-3.0-or-later'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/adwaita-fonts.git'
@@ -14,10 +14,10 @@ class Adwaita_fonts < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4ef41dd3868f85edac7b898b7b91fb90a5ab85906709ceff2a4de706ff7b4903',
-     armv7l: '4ef41dd3868f85edac7b898b7b91fb90a5ab85906709ceff2a4de706ff7b4903',
-       i686: '121e239c859ac43c0c139b1763b868d68af9e471f07e8262e3a4a791c52ebc85',
-     x86_64: '35ecfa1daf9e446c99d3855bc417ce39588ea186442476d8c6ba3fa7f855d580'
+    aarch64: '5cfa686675791adb6766b2db51682c9b332797bd26ee6840ebcec28505a244e9',
+     armv7l: '5cfa686675791adb6766b2db51682c9b332797bd26ee6840ebcec28505a244e9',
+       i686: '8b5abc70d5301f5240f7ed2d3427998335430e1e193ed20e3ddf1a54d205ab7d',
+     x86_64: 'e55f151952f36e7b31dfb0071417874f0987284f828878ff1b36240a96bf3b3e'
   })
 
   gnome
