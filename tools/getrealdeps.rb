@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# getrealdeps version 2.9 (for Chromebrew)
+# getrealdeps version 2.10 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 #
 # Dependencies in Chromebrew can be:
@@ -7,6 +7,8 @@
 # :executable (required only for the executables in the package to run.)
 # :library (required for libraries in the package, and thus also for downstream packages.)
 # :logical (required for the package to be useful, but not needed in build dependency calculations.)
+# The priority in which dependencies are classified is library, executable, logical, build.
+# For example, if python3 is both a build and executable dependency, it will be stored as an executable dependency.
 
 require 'fileutils'
 
@@ -127,7 +129,7 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
     puts "\n#{line.chomp} is either not necessary on #{ARCH} as a library dependency or is only a dependency for building or executables.".orange if label == 'library' && line.match(/  depends_on '(.*)'#{suffix}/) { |matchdata| pkgdeps.none?(matchdata[1]) && !privileged_deps.include?(matchdata[1]) }
   end
 
-  # If a dependency is both a build and a library dependency, we remove the build dependency.
+  # Build dependencies have the lowest priority, so no matter what label we have we want to remove duplicate build dependencies.
   pkgdepsblock.delete_if { it.match(/^  depends_on '(.*)' => :build/) { missingpkgdeps.include?(it[1]) } }
 
   # Remove runtime dependencies for libraries that already exist but
@@ -194,7 +196,7 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
 end
 
 def determine_dependencies(pkg, pkgfiles_to_check)
-  return if pkgfiles_to_check.empty?
+  return [] if pkgfiles_to_check.empty?
   # Use readelf to determine library dependencies, as
   # this doesn't almost run a program like using ldd would.
   pkgdepsfiles = pkgfiles_to_check.map do |i|
@@ -222,7 +224,7 @@ def determine_dependencies(pkg, pkgfiles_to_check)
   pkgdeps = pkgdeps.map { |i| i.gsub(/llvm(\d)+_dev/, 'llvm_dev') }.uniq
 
   if pkgdeps.blank?
-    return
+    return []
   else
     return pkgdeps
   end
@@ -295,33 +297,23 @@ def main(pkg)
   executable_pkgfiles = pkgfiles.reject { |p| library_pkgfiles.include?(p) }
 
   # Determine dependencies for each subset of files.
-  ((library_deps ||= []) << determine_dependencies(pkg, library_pkgfiles)).compact!
-  ((executable_deps ||= []) << determine_dependencies(pkg, executable_pkgfiles)).compact!
-  library_deps.flatten!
-  executable_deps.flatten!
-  executable_deps = if library_deps.nil?
-                      executable_deps
-                    else
-                      (executable_deps.nil? ? executable_deps : (executable_deps - library_deps))
-                    end
+  library_deps = determine_dependencies(pkg, library_pkgfiles).compact
+  executable_deps = determine_dependencies(pkg, executable_pkgfiles).compact
 
   # Add logical deps for perl, pip, python, and ruby gem packages.
-  logical_deps = []
-  case @pkg.superclass.to_s
-  when 'PERL'
-    logical_deps << 'perl'
-  when 'Pip', 'Python'
-    logical_deps << 'python3'
-  when 'RUBY'
-    logical_deps << 'ruby'
-  end
-  logical_deps.flatten!
+  buildsystem_dependencies = { PERL: 'perl', Pip: 'python3', Python: 'python3', RUBY: 'ruby' }
+  logical_deps = [buildsystem_dependencies[@pkg.superclass.to_s.to_sym]].compact
+
+  # Remove duplicate dependencies in the priority order of library, executable, logical, build.
+  # We currently handle duplicate build dependencies in write_deps.
+  logical_deps = logical_deps.difference(executable_deps, library_deps)
+  executable_deps = executable_deps.difference(library_deps)
 
   # Write the changed dependencies to the package file.
   # Note that most logical and all build dependencies are added manually.
-  write_deps(pkg_file, logical_deps, @pkg, 'logical') unless logical_deps.nil?
-  write_deps(pkg_file, executable_deps, @pkg, 'executable') unless executable_deps.nil?
-  write_deps(pkg_file, library_deps, @pkg, 'library') unless library_deps.nil?
+  write_deps(pkg_file, logical_deps, @pkg, 'logical') unless logical_deps.empty?
+  write_deps(pkg_file, executable_deps, @pkg, 'executable') unless executable_deps.empty?
+  write_deps(pkg_file, library_deps, @pkg, 'library') unless library_deps.empty?
   FileUtils.cp pkg_file, File.join(CREW_LOCAL_REPO_ROOT, "packages/#{pkg}.rb") unless FileUtils.identical?(pkg_file, File.join(CREW_LOCAL_REPO_ROOT, "packages/#{pkg}.rb"))
   FileUtils.cp pkg_file, File.join(CREW_PACKAGES_PATH, "#{pkg}.rb") unless FileUtils.identical?(pkg_file, File.join(CREW_PACKAGES_PATH, "#{pkg}.rb"))
 end
