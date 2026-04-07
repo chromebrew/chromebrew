@@ -14,21 +14,26 @@ class Vulkan_tools < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '29f897904fe7a3372c2e268a0aab76f19e47cd488994a88b863fbb995c191111',
-     armv7l: '29f897904fe7a3372c2e268a0aab76f19e47cd488994a88b863fbb995c191111',
-     x86_64: '5e12666c65e32a14323ecf185bb380d42f21d6fde2e5a611748000d67ff2dabd'
+    aarch64: 'dbb48f5c7244b12e6149e4bf85d89b6325e18ab7c8b8decadf66a8d387dd67ae',
+     armv7l: 'dbb48f5c7244b12e6149e4bf85d89b6325e18ab7c8b8decadf66a8d387dd67ae',
+     x86_64: '77d47b09aa435046116153c57c019a426af134ae14100335014eabc2875d8990'
   })
 
   depends_on 'gcc_dev' => :build
+  depends_on 'gcc_lib' => :executable
   depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :executable
   depends_on 'glibc' => :library
   depends_on 'glslang' => :build
+  depends_on 'libx11' => :executable
   depends_on 'libx11' => :library
+  depends_on 'libxcb' => :executable
   depends_on 'libxcb' => :library
   depends_on 'libxrandr' => :build
   depends_on 'python3' => :build
   depends_on 'spirv_tools' => :build
   depends_on 'vulkan_headers' => :build
+  depends_on 'wayland' => :executable
   depends_on 'wayland' => :library
   depends_on 'wayland_protocols' => :build
 
