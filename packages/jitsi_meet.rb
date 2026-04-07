@@ -3,11 +3,11 @@ require 'package'
 class Jitsi_meet < Package
   description 'Jitsi Meet video conferencing desktop application'
   homepage 'https://jitsi.org/jitsi-meet/'
-  version '2026.1.1'
+  version '2026.4.0'
   license 'Apache-2.0'
   compatibility 'x86_64'
   source_url "https://github.com/jitsi/jitsi-meet-electron/releases/download/v#{version}/jitsi-meet-x86_64.AppImage"
-  source_sha256 'f20f01e781b84ef6eb8771311343b03917ceccda3b7e4d9eb66a007716a03f30'
+  source_sha256 'ebd3c537ebcba93b5b184741d9e387f045eb6ac4cb2e035cee24945f9b3f36b1'
 
   depends_on 'gtk3'
   depends_on 'sommelier' => :logical
