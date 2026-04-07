@@ -5,7 +5,7 @@ class Openal < CMake
   homepage 'https://openal-soft.org/'
   version '1.25.1'
   license 'BSD'
-  compatibility 'all'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/kcat/openal-soft.git'
   git_hashtag version
   binary_compression 'tar.zst'
