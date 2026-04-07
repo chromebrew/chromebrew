@@ -15,6 +15,7 @@
 
 require 'English'
 require 'fileutils'
+require 'net/http'
 
 crew_local_repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp
 # When invoked from crew, pwd is CREW_DEST_DIR, so crew_local_repo_root
@@ -117,22 +118,18 @@ def self.check_build_uploads(pkg)
 
   architectures_to_check = pkg.compatibility == 'all' ? %w[armv7l i686 x86_64] : pkg.compatibility.split
 
+  # If we are rebuilding packages, we don't care if they already have builds uploaded to gitlab.
   return architectures_to_check if REBUILD_PACKAGES
 
-  remote_binary = { armv7l: nil, i686: nil, x86_64: nil }
-  remote_binary.keys.each do |arch|
+  # Delete every architecture that has a corresponding build already uploaded to gitlab.
+  architectures_to_check.delete_if do |arch|
     arch_specific_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{pkg.name}/#{pkg.version}_#{arch}/#{pkg.name}-#{pkg.version}-chromeos-#{arch}.#{pkg.binary_compression}"
-    puts "Checking: curl -sI #{arch_specific_url}" if VERBOSE
-    remote_binary[arch.to_sym] = `curl -sI #{arch_specific_url}`.lines.first.split[1] == '200'
-    puts "#{arch_specific_url} found!" if remote_binary[arch.to_sym] && VERBOSE
+
+    Net::HTTP.get_response(URI.parse(arch_specific_url)).code == '200'
   end
 
-  builds_needed = architectures_to_check.dup
-  architectures_to_check.each do |arch|
-    builds_needed.delete(arch) if remote_binary[arch.to_sym]
-    puts "builds_needed for #{pkg.name} is now #{builds_needed}" if VERBOSE
-  end
-  return builds_needed
+  # Return the architectures that do not have a corresponding build uploaded.
+  return architectures_to_check
 end
 
 def update_hashes_and_manifests(pkg)
