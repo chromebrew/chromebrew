@@ -126,7 +126,6 @@ def self.check_build_uploads(pkg)
     remote_binary[arch.to_sym] = `curl -sI #{arch_specific_url}`.lines.first.split[1] == '200'
     puts "#{arch_specific_url} found!" if remote_binary[arch.to_sym] && VERBOSE
   end
-  system "crew update_package_file #{pkg.name}" unless remote_binary.values.all?(nil)
 
   builds_needed = architectures_to_check.dup
   architectures_to_check.each do |arch|
@@ -138,15 +137,8 @@ end
 
 def update_hashes_and_manifests(pkg)
   unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES
-    remote_binary = { armv7l: nil, i686: nil, x86_64: nil }
-    remote_binary.keys.each do |arch|
-      arch_specific_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{pkg.name}/#{pkg.version}_#{arch}/#{pkg.name}-#{pkg.version}-chromeos-#{arch}.#{pkg.binary_compression}"
-      puts "Checking: curl -sI #{arch_specific_url}" if VERBOSE
-      remote_binary[arch.to_sym] = `curl -sI #{arch_specific_url}`.lines.first.split[1] == '200'
-      puts "#{arch_specific_url} found!" if remote_binary[arch.to_sym] && VERBOSE
-    end
     # Update/add build hashes if this package has builds.
-    system "crew update_package_file #{pkg.name}" unless remote_binary.values.all?(nil) || pkg.no_compile_needed?
+    system "crew update_package_file #{pkg.name}" unless pkg.no_compile_needed?
     # Add manifests if we are in the right architecture.
     if PackageUtils.compatible?(pkg)
       # Using crew reinstall -f package here updates the hashes for
