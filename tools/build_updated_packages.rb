@@ -112,10 +112,10 @@ rescue Timeout::Error
   return true
 end
 
-def self.check_build_uploads(architectures_to_check, pkg)
+def self.check_build_uploads(pkg)
   return [] if pkg.is_fake?
-  architectures_to_check.delete('aarch64')
-  architectures_to_check = %w[x86_64 armv7l i686] if (architectures_to_check & %w[x86_64 armv7l i686]).nil?
+
+  architectures_to_check = pkg.compatibility == 'all' ? %w[armv7l i686 x86_64] : pkg.compatibility.split
 
   return architectures_to_check if REBUILD_PACKAGES
 
@@ -368,9 +368,8 @@ updated_packages.each do |pkg|
       updated_packages.delete(pkg)
       next
     end
-    architectures_to_check = pkg_obj.compatibility == 'all' ? %w[x86_64 armv7l i686] : pkg_obj.compatibility.delete(',').split
     puts "#{name.capitalize} appears to need binaries. Checking to see if current binaries exist...".orange
-    builds_needed = check_build_uploads(architectures_to_check, pkg_obj)
+    builds_needed = check_build_uploads(pkg_obj)
     if builds_needed.empty?
       puts "No builds are needed for #{name} #{pkg_obj.version}.".lightgreen
       update_hashes_and_manifests(pkg_obj)
@@ -423,7 +422,7 @@ updated_packages.each do |pkg|
         abort "Failed: crew check #{name}".lightred
       end
       puts "Are builds still needed for #{name}?".orange
-      builds_still_needed = check_build_uploads(architectures_to_check, pkg_obj)
+      builds_still_needed = check_build_uploads(pkg_obj)
       puts "Built and Uploaded: #{name} for #{ARCH}" if builds_needed != builds_still_needed
       # next if builds_still_needed.empty? && system("grep -q binary_sha256 #{pkg}")
       next if builds_still_needed.empty?
