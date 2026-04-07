@@ -145,8 +145,8 @@ def update_hashes_and_manifests(pkg)
       remote_binary[arch.to_sym] = `curl -sI #{arch_specific_url}`.lines.first.split[1] == '200'
       puts "#{arch_specific_url} found!" if remote_binary[arch.to_sym] && VERBOSE
     end
-    # Add build hashes.
-    system "crew update_package_file #{pkg.name}" unless remote_binary.values.all?(nil)
+    # Update/add build hashes if this package has builds.
+    system "crew update_package_file #{pkg.name}" unless remote_binary.values.all?(nil) || pkg.no_compile_needed?
     # Add manifests if we are in the right architecture.
     if PackageUtils.compatible?(pkg)
       # Using crew reinstall -f package here updates the hashes for
@@ -353,15 +353,8 @@ updated_packages.each do |pkg|
   if !system("grep -q binary_sha256 #{pkg}") && !pkg_obj.no_compile_needed? && !pkg_obj.gem_compile_needed?
     puts "#{name.capitalize} #{pkg_obj.version} has no binaries and may not need them.".lightgreen
     next pkg
-  elsif pkg_obj.no_compile_needed? && PackageUtils.compatible?(pkg_obj)
-    # Using crew reinstall -f package here updates the hashes for
-    # binaries.
-    system "yes | crew reinstall #{'-f --regenerate-filelist' unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES} #{name}"
-    # Add manifests if we are in the right architecture.
-    if system("yes | crew reinstall #{'-f --regenerate-filelist' unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES} #{name}") && File.exist?("#{CREW_META_PATH}/#{name}.filelist") && File.directory?(CREW_LOCAL_REPO_ROOT)
-      puts 'Adding manifests.'
-      FileUtils.cp "#{CREW_META_PATH}/#{name}.filelist", "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{name.chr}/#{name}.filelist"
-    end
+  elsif pkg_obj.no_compile_needed?
+    update_hashes_and_manifests(pkg_obj)
   else
     puts "#{name.capitalize} appears to need binaries. Checking to see if current binaries exist...".orange
     builds_needed = check_build_uploads(pkg_obj)
