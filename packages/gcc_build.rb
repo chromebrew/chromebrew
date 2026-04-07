@@ -334,7 +334,7 @@ class Gcc_build < Package
       depends_on 'glibc' # R
       depends_on 'gmp' # R
       depends_on 'isl' # R
-      depends_on 'libssp' # L
+      depends_on 'libssp' => :logical
       depends_on 'mpc' # R
       depends_on 'mpfr' # R
       depends_on 'rust' => :build

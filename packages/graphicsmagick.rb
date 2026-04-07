@@ -49,7 +49,7 @@ class Graphicsmagick < Autotools
   depends_on 'libtiff' # R
   depends_on 'libtool' # R
   depends_on 'libxml2' # R
-  depends_on 'msttcorefonts' # L
+  depends_on 'msttcorefonts' => :logical
   depends_on 'py3_docutils' => :build
   depends_on 'util_linux' # R
   depends_on 'xzutils' # R

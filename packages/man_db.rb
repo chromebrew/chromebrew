@@ -22,7 +22,7 @@ class Man_db < Package
   depends_on 'gcc_lib' # R
   depends_on 'gdbm' # R
   depends_on 'glibc' # R
-  depends_on 'groff' # L
+  depends_on 'groff' => :logical
   depends_on 'libpipeline' # R
   depends_on 'libseccomp' # R
   depends_on 'zlib' # R

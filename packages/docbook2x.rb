@@ -18,7 +18,7 @@ class Docbook2x < Package
   })
 
   depends_on 'glibc' # R
-  depends_on 'libxslt' # L
+  depends_on 'libxslt' => :logical
   depends_on 'perl_xml_sax' # R
 
   def self.build

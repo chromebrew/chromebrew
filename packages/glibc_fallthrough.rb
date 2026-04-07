@@ -17,7 +17,7 @@ class Glibc_fallthrough < Package
   depends_on 'filecmd' => :logical # Fixes creating symlinks on a fresh install.
   depends_on 'libidn2' => :build
   depends_on 'texinfo' => :build
-  depends_on 'patchelf' # L
+  depends_on 'patchelf' => :logical
 
   conflicts_ok
   no_env_options

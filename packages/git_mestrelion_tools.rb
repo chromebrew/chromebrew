@@ -20,7 +20,7 @@ class Git_mestrelion_tools < Package
      x86_64: '28b264b6db79bb775854ab9614070bd2e5af02fb2e557b01f4dd6e6dfa1e7018'
   })
 
-  depends_on 'git' # L
+  depends_on 'git' => :logical
   depends_on 'python3' # R
 
   def self.install

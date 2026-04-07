@@ -37,7 +37,7 @@ class Python3 < Package
   depends_on 'util_linux' # R
   depends_on 'xzutils' # R
   depends_on 'zlib' # R
-  depends_on 'zoneinfo' # L
+  depends_on 'zoneinfo' => :logical
   depends_on 'zstd' # R
 
   no_env_options

@@ -18,7 +18,7 @@ class Flatpak < Meson
 
   depends_on 'appstream_glib' => :build
   depends_on 'appstream' # R
-  depends_on 'bubblewrap' # L
+  depends_on 'bubblewrap' => :logical
   depends_on 'curl' # R
   depends_on 'dconf' # R
   depends_on 'docbook_xml' => :build
@@ -39,7 +39,7 @@ class Flatpak < Meson
   depends_on 'polkit' => :build
   depends_on 'pulseaudio' => :build
   depends_on 'py3_pyparsing' => :build
-  depends_on 'socat' # L
+  depends_on 'socat' => :logical
   depends_on 'wayland' # R
   depends_on 'xdg_base' => :build
   depends_on 'xdg_dbus_proxy' => :build

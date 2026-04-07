@@ -26,11 +26,11 @@ class Filezilla < Autotools
   depends_on 'gdk_pixbuf' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
-  depends_on 'gnome_icon_theme' # L
+  depends_on 'gnome_icon_theme' => :logical
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
-  depends_on 'hicolor_icon_theme' # L
-  depends_on 'libfilezilla' # L
+  depends_on 'hicolor_icon_theme' => :logical
+  depends_on 'libfilezilla' => :logical
   depends_on 'libidn2' => :build
   depends_on 'libwebp' => :build
   depends_on 'mesa' => :build

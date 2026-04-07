@@ -18,7 +18,7 @@ class Alive < Autotools
   })
 
   depends_on 'guile' # R
-  depends_on 'inetutils' # L
+  depends_on 'inetutils' => :logical
 
   def self.preflight
     puts 'You need to be in the VT-2 shell for the install of alive to work.'.lightblue

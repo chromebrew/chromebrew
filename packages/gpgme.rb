@@ -19,7 +19,7 @@ class Gpgme < Autotools
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'gnupg' # L
+  depends_on 'gnupg' => :logical
   depends_on 'libassuan' # R
   depends_on 'libgpg_error' # R
 

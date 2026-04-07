@@ -23,7 +23,7 @@ class Conmon < Package
   depends_on 'glibc' => :executable
   depends_on 'go_md2man' => :build
   depends_on 'libseccomp' => :executable
-  depends_on 'runc' # L
+  depends_on 'runc' => :logical
 
   def self.patch
     system "sed -i 's,../tools/build/go-md2man,#{CREW_PREFIX}/bin/go-md2man,' docs/Makefile"

@@ -20,7 +20,7 @@ class Pax_utils < Package
   depends_on 'glibc' # R
   depends_on 'libcap' # R
   depends_on 'libseccomp' => :build
-  depends_on 'python3' # L
+  depends_on 'python3' => :logical
   depends_on 'xmlto' => :build
 
   def self.patch

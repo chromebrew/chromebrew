@@ -21,7 +21,7 @@ class Enchant < Autotools
   depends_on 'glib' # R
   depends_on 'glibc' # R
   depends_on 'gnupg'
-  depends_on 'hunspell' # L
+  depends_on 'hunspell' => :logical
   depends_on 'hunspell_base' # R
   depends_on 'ncurses' # R
   depends_on 'vala' => :build

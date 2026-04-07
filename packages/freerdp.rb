@@ -70,7 +70,7 @@ class Freerdp < CMake
   depends_on 'uriparser' # R
   depends_on 'wayland' # R
   depends_on 'webkit2gtk_4_1' # R
-  depends_on 'xdg_base' # L
+  depends_on 'xdg_base' => :logical
   depends_on 'xmlto' => :build
   depends_on 'xprop' => :build
   depends_on 'zlib' # R

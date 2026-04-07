@@ -36,13 +36,13 @@ class Jellyfin_media_player < Package
   depends_on 'qt5_base' # R
   depends_on 'qt5_declarative' # R
   depends_on 'qt5_location' # R
-  depends_on 'qt5_quickcontrols' # L
+  depends_on 'qt5_quickcontrols' => :logical
   depends_on 'qt5_wayland' => :build
   depends_on 'qt5_webchannel' # R
   depends_on 'qt5_webengine' # R
   depends_on 'qt5_x11extras' # R
   depends_on 'sdl2' # R
-  depends_on 'shaderc' # L
+  depends_on 'shaderc' => :logical
   depends_on 'sommelier' => :logical
   depends_on 'zlib' # R
 

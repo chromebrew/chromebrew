@@ -27,7 +27,7 @@ class Spacefm < Package
   depends_on 'glib' # R
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
-  depends_on 'hicolor_icon_theme' # L
+  depends_on 'hicolor_icon_theme' => :logical
   depends_on 'libx11' # R
   depends_on 'pango' # R
   depends_on 'shared_mime_info' => :build

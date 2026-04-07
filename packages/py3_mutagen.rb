@@ -16,7 +16,7 @@ class Py3_mutagen < Pip
      x86_64: '4a100d266c0c97a8fccd592a3185913c15bb762ac1fd2590ad248349b4fa244f'
   })
 
-  depends_on 'python3' # L
+  depends_on 'python3' => :logical
 
   no_source_build
 end

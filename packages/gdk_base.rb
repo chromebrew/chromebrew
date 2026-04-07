@@ -8,7 +8,7 @@ class Gdk_base < Package
   compatibility 'aarch64 armv7l x86_64'
   source_url 'SKIP'
 
-  depends_on 'wayland_info' # L
+  depends_on 'wayland_info' => :logical
 
   no_compile_needed
   print_source_bashrc

@@ -21,7 +21,7 @@ class Source_highlight < Autotools
   })
 
   depends_on 'boost' # R
-  depends_on 'ctags' # L
+  depends_on 'ctags' => :logical
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'texinfo' => :build

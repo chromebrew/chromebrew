@@ -16,7 +16,7 @@ class Unicode_emoji < Package
      x86_64: 'a665707e091a39e72da8221c6d17b3d44973b5484c05b21c1451cc8970e1f2ae'
   })
 
-  depends_on 'unicode_character_database' # L
+  depends_on 'unicode_character_database' => :logical
 
   no_source_build
 

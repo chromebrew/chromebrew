@@ -23,7 +23,7 @@ class Lilv < Meson
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libsndfile' # R
-  depends_on 'lv2' # L
+  depends_on 'lv2' => :logical
   depends_on 'python3' => :build
   depends_on 'serd' # R
   depends_on 'sord' # R

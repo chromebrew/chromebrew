@@ -19,7 +19,7 @@ class Wget2 < Autotools
 
   depends_on 'brotli' # R
   depends_on 'bzip2' # R
-  depends_on 'ca_certificates' # L
+  depends_on 'ca_certificates' => :logical
   depends_on 'glibc' # R
   depends_on 'gmp' # R
   depends_on 'gnutls' # R

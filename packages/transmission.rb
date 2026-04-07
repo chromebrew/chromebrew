@@ -25,17 +25,17 @@ class Transmission < Package
   depends_on 'glibc' # R
   depends_on 'glibmm_2_68' # R
   depends_on 'glib' # R
-  depends_on 'gnome_icon_theme' # L
+  depends_on 'gnome_icon_theme' => :logical
   depends_on 'graphene' # R
   depends_on 'gtk4' # R
   depends_on 'gtkmm4' # R
   depends_on 'harfbuzz' # R
-  depends_on 'hicolor_icon_theme' # L
+  depends_on 'hicolor_icon_theme' => :logical
   depends_on 'libdeflate' # R
   depends_on 'libevent' # R
   depends_on 'libpsl' # R
   depends_on 'libsigcplusplus3' # R
-  depends_on 'libutp' # L
+  depends_on 'libutp' => :logical
   depends_on 'miniupnpc' # R
   depends_on 'openssl' # R
   depends_on 'pangomm_2_48' # R
@@ -43,7 +43,7 @@ class Transmission < Package
   depends_on 'shared_mime_info'
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' # R
-  depends_on 'xdg_base' # L
+  depends_on 'xdg_base' => :logical
 
   print_source_bashrc
 

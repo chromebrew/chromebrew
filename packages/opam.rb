@@ -17,7 +17,7 @@ class Opam < Autotools
      x86_64: 'b29ed962d59e82b7b3000af31ad2edead24682720aff68c1a568ea301ca44302'
   })
 
-  depends_on 'bubblewrap' # L
+  depends_on 'bubblewrap' => :logical
   depends_on 'gcc_lib' => :executable
   depends_on 'glibc' => :executable
   depends_on 'ocaml' # R

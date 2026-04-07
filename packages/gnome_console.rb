@@ -36,7 +36,7 @@ class Gnome_console < Meson
   depends_on 'sassc' => :build
   depends_on 'vte' => :executable
   depends_on 'vulkan_headers' => :build
-  depends_on 'vulkan_icd_loader' # L
+  depends_on 'vulkan_icd_loader' => :logical
 
   gnome
 end

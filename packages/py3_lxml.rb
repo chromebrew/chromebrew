@@ -17,8 +17,8 @@ class Py3_lxml < Pip
   })
 
   depends_on 'glibc' # R
-  depends_on 'libxml2' # L
-  depends_on 'libxslt' # L
+  depends_on 'libxml2' => :logical
+  depends_on 'libxslt' => :logical
   depends_on 'py3_cython' => :build
   depends_on 'python3' # R
   depends_on 'zlib' # R

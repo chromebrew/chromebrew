@@ -20,7 +20,7 @@ class Typescript < Package
      x86_64: '9ad883af55bc37a4f65f4719333736b15d0cbe953683a3a07806420e431affdf'
   })
 
-  depends_on 'nodebrew' # L
+  depends_on 'nodebrew' => :logical
   depends_on 'rsync' => :build
 
   no_upstream_update # newer versions do not build with older node.

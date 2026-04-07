@@ -16,8 +16,8 @@ class Xinit < Package
      x86_64: '39b6cdc11b9bbef6850969fa9f9d1e445b5eee7f377658927818b371d4928dc0'
   })
 
-  depends_on 'xauth' # L
-  depends_on 'xterm' # L
+  depends_on 'xauth' => :logical
+  depends_on 'xterm' => :logical
   depends_on 'glibc' # R
   depends_on 'libx11' # R
 

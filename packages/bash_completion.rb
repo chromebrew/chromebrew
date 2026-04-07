@@ -17,7 +17,7 @@ class Bash_completion < Autotools
      x86_64: '123dc2a644005e0322c744edaf0330e9b5de1a4f59102105bca8bdd2086835f5'
   })
 
-  depends_on 'bash' # L
+  depends_on 'bash' => :logical
 
   # Handle conflicts with uutils_coreutils.
   autotools_install_extras do

@@ -148,9 +148,6 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
   pkgdepsblock.each { it.match(/(^  depends_on '(.*)' => ).*(:library.*)|(^  depends_on '(.*)' => ).*(:logical.*)/) { it[2].nil? ? runtime_deps_in_package_as_library_or_logical.push(it[5]) : runtime_deps_in_package_as_library_or_logical.push(it[2]) } }
   pkgdepsblock.delete_if { it.match(/(^  depends_on '(.*)' # R)/) { runtime_deps_in_package_as_library_or_logical.include?(it[2]) } }
 
-  # Change '# L' comments to be '=> :logical'.
-  pkgdepsblock.map! { |dep| dep.match(/(^  depends_on '(.*)' # L)/) ? dep.gsub('# L', '=> :logical') : dep }
-
   # Deduplicate for lines with comments.
   pkgdepsblock.delete_if { it.match(/(?<=^  depends_on ').*(?='#{suffix}$)/) { !pkg_file_lines.map(&:chomp).grep(/^  depends_on '.*#{it[0]}.*'#{suffix} \S/).blank? } }
 

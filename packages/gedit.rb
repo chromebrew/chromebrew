@@ -22,7 +22,7 @@ class Gedit < Meson
   depends_on 'gdk_pixbuf' # R
   depends_on 'glib' # R
   depends_on 'glibc' # R
-  depends_on 'gsettings_desktop_schemas' # L
+  depends_on 'gsettings_desktop_schemas' => :logical
   depends_on 'gspell' # R
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R

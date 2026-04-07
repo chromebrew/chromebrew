@@ -24,7 +24,7 @@ class Libavif < CMake
   depends_on 'libaom' => :build
   depends_on 'libjpeg_turbo' # R
   depends_on 'libpng' # R
-  depends_on 'libtiff' # L
+  depends_on 'libtiff' => :logical
   depends_on 'libwebp' => :build
   depends_on 'libxml2' # R
   depends_on 'libyuv' # R

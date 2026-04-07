@@ -18,7 +18,7 @@ class Gnutls < Autotools
   })
 
   depends_on 'brotli' # R
-  depends_on 'ca_certificates' # L
+  depends_on 'ca_certificates' => :logical
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'gmp' # R

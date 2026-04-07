@@ -22,9 +22,9 @@ class Bsdgames < Autotools
   depends_on 'flex' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'miscfiles' # L
+  depends_on 'miscfiles' => :logical
   depends_on 'ncurses' # R
-  depends_on 'words' # L
+  depends_on 'words' => :logical
 
   run_tests
 

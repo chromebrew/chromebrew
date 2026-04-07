@@ -17,8 +17,8 @@ class Ruby < Package
      x86_64: 'bf4d0a295a756de16751f4f2e9c88e4122e8251536faa7819529725fb6a6ea48'
   })
 
-  depends_on 'ca_certificates' # L
-  depends_on 'filecmd' # L (This is to enable file command use in package files.)
+  depends_on 'ca_certificates' => :logical
+  depends_on 'filecmd' => :logical # (This is to enable file command use in package files.)
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'gmp' # R

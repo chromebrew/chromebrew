@@ -16,8 +16,8 @@ class Gtk4 < Meson
      x86_64: 'b5f1c1d4e60d686e94f02e6026b23be9c9d98f21954999ee140526424157cb49'
   })
 
-  depends_on 'adwaita_fonts' # L
-  depends_on 'adwaita_icon_theme' # L
+  depends_on 'adwaita_fonts' => :logical
+  depends_on 'adwaita_icon_theme' => :logical
   depends_on 'cairo' # R
   depends_on 'cups' # R
   depends_on 'docbook' => :build
@@ -29,19 +29,19 @@ class Gtk4 < Meson
   depends_on 'glib' # R
   depends_on 'glibc' # R
   depends_on 'glslang' => :build
-  # depends_on 'gnome_icon_theme' # L
+  # depends_on 'gnome_icon_theme' => :logical
   depends_on 'gobject_introspection' => :build
   depends_on 'graphene' # R
   # depends_on 'gstreamer' # R Let's avoid the glibc 2.29 dep.
   depends_on 'harfbuzz' # R
-  depends_on 'hicolor_icon_theme' # L
+  depends_on 'hicolor_icon_theme' => :logical
   depends_on 'intel_media_sdk' => :build if ARCH.eql?('x86_64')
   depends_on 'iso_codes' => :build
   depends_on 'libcloudproviders' # R
   depends_on 'libepoxy' # R
   depends_on 'libjpeg_turbo' # R
   depends_on 'libpng' # R
-  depends_on 'librsvg' # L
+  depends_on 'librsvg' => :logical
   depends_on 'libsass' => :build
   depends_on 'libspectre' => :build
   depends_on 'libtiff' # R
@@ -61,13 +61,13 @@ class Gtk4 < Meson
   depends_on 'py3_pygments' => :build
   depends_on 'sassc' => :build
   depends_on 'shaderc' => :build
-  depends_on 'shared_mime_info' # L
+  depends_on 'shared_mime_info' => :logical
   depends_on 'sommelier' => :logical
   depends_on 'valgrind' => :build
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' # R
   depends_on 'wayland' # R
-  depends_on 'xdg_base' # L
+  depends_on 'xdg_base' => :logical
 
   # L = Logical Dependency, R = Runtime Dependency
 

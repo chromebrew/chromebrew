@@ -20,14 +20,14 @@ class Pulseaudio < Meson
   # depends_on 'alsa_plugins' => :build
   depends_on 'avahi' # R
   depends_on 'check' => :build
-  depends_on 'cras' # L
+  depends_on 'cras' => :logical
   depends_on 'dbus' # R
   depends_on 'elogind' # R
   depends_on 'eudev' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
-  # depends_on 'gsettings_desktop_schemas' # L
+  # depends_on 'gsettings_desktop_schemas' => :logical
   depends_on 'gstreamer' # R
   depends_on 'jack' # R
   depends_on 'json_c' => :build

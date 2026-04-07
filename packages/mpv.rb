@@ -64,9 +64,9 @@ class Mpv < Meson
   depends_on 'vapoursynth' # R
   depends_on 'vmaf' => :build
   depends_on 'vulkan_headers' => :build
-  depends_on 'vulkan_icd_loader' # L
+  depends_on 'vulkan_icd_loader' => :logical
   depends_on 'wayland' # R
-  depends_on 'xdg_base' # L
+  depends_on 'xdg_base' => :logical
   depends_on 'zimg' # R
   depends_on 'zlib' # R
 

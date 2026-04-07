@@ -16,7 +16,7 @@ class Adwaita_icon_theme < Meson
      x86_64: 'ac5e811a399ac6975081848e51c08aa231ea4058c7d612baf9aad8f51287fdb7'
   })
 
-  depends_on 'adwaita_fonts' # L
+  depends_on 'adwaita_fonts' => :logical
   depends_on 'gdk_pixbuf' => :build
   depends_on 'gtk3' => :build
   depends_on 'librsvg' => :build

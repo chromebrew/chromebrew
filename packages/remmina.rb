@@ -16,7 +16,7 @@ class Remmina < CMake
      x86_64: 'b814a4b745e2557720f1489c913ac15f7b9a544ea4d4b32c774ef7a690152081'
   })
 
-  depends_on 'avahi' # L
+  depends_on 'avahi' => :logical
   depends_on 'cairo' # R
   depends_on 'cups' # R
   depends_on 'curl' => :executable
@@ -45,7 +45,7 @@ class Remmina < CMake
   depends_on 'wayland' # R
   depends_on 'webkit2gtk_4_1' # R
   depends_on 'xdg_utils' => :build
-  depends_on 'xprop' # L
+  depends_on 'xprop' => :logical
 
   cmake_options '-DCMAKE_SKIP_INSTALL_RPATH=ON \
       -DWITH_FREERDP3:BOOL=ON \

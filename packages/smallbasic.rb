@@ -21,7 +21,7 @@ class Smallbasic < Autotools
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'harfbuzz' # R
-  depends_on 'msttcorefonts' # L
+  depends_on 'msttcorefonts' => :logical
   depends_on 'pcre' # R
   depends_on 'sdl2' => :build
   depends_on 'sommelier' => :logical

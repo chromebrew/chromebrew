@@ -25,8 +25,8 @@ class Geany < Meson
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
   depends_on 'pango' # R
-  depends_on 'vte' # L
-  depends_on 'xdg_base' # L
+  depends_on 'vte' => :logical
+  depends_on 'xdg_base' => :logical
 
   @xdg_config_home = ENV.fetch('XDG_CONFIG_HOME', nil)
   @xdg_config_home = "#{CREW_PREFIX}/.config" if @xdg_config_home.to_s.empty?

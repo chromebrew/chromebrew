@@ -19,15 +19,15 @@ class Docker < Package
      x86_64: '21f9db6ec0086ab6452be9cd50a6bc980eb00caafb439a3387802c5363085ec1'
   })
 
-  depends_on 'bridge_utils' # L
+  depends_on 'bridge_utils' => :logical
   depends_on 'btrfs_progs' => :build
-  depends_on 'containerd' # L
+  depends_on 'containerd' => :logical
   depends_on 'elogind' => :build
   depends_on 'eudev' => :build
   depends_on 'glibc' # R
   depends_on 'go' => :build
   depends_on 'go_md2man' => :build
-  depends_on 'iproute2' # L
+  depends_on 'iproute2' => :logical
   depends_on 'lvm2' # R
   depends_on 'sqlite' => :build
 

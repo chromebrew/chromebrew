@@ -17,7 +17,7 @@ class Dia < Meson
   })
 
   depends_on 'cairo' # R
-  depends_on 'desktop_file_utils' # L
+  depends_on 'desktop_file_utils' => :logical
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glibc' # R

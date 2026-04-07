@@ -16,13 +16,13 @@ class Meld < Package
      x86_64: '440e9fa0612eacc6e9b9ba8fd61aecc80136d12fc48ec848552d281389b71ceb'
   })
 
-  depends_on 'desktop_file_utils' # L
-  depends_on 'gtk3' # L
-  depends_on 'gtksourceview_4' # L
-  depends_on 'py3_libxml2' # L
-  depends_on 'py3_pycairo' # L
-  depends_on 'py3_pygobject' # L
-  depends_on 'python3' # L
+  depends_on 'desktop_file_utils' => :logical
+  depends_on 'gtk3' => :logical
+  depends_on 'gtksourceview_4' => :logical
+  depends_on 'py3_libxml2' => :logical
+  depends_on 'py3_pycairo' => :logical
+  depends_on 'py3_pygobject' => :logical
+  depends_on 'python3' => :logical
 
   gnome
 

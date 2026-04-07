@@ -9,7 +9,7 @@ class Neo_matrix < Package
   source_url 'https://github.com/st3w/neo.git'
   git_hashtag "v#{version}"
 
-  depends_on 'ttf_hanazono' # L
+  depends_on 'ttf_hanazono' => :logical
   depends_on 'glibc' # R
   depends_on 'ncurses' # R
 

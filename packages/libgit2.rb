@@ -21,7 +21,7 @@ class Libgit2 < CMake
   depends_on 'libssh2' # R
   depends_on 'openssl' # R
   depends_on 'pcre' # R
-  depends_on 'python3' # L
+  depends_on 'python3' => :logical
   depends_on 'zlib' # R
 
   cmake_options '-DUSE_SSH=ON -DUSE_BUNDLED_ZLIB=OFF'

@@ -13,7 +13,7 @@ class Qtcreator < Package
   depends_on 'xcb_util_keysyms' # R
   depends_on 'xcb_util_renderutil' # R
   depends_on 'xcb_util_wm' # R
-  depends_on 'xdg_base' # L
+  depends_on 'xdg_base' => :logical
 
   def self.install
     system "echo 'function Controller() {' > qt-installer-script.qs"

@@ -16,8 +16,8 @@ class Gnome_terminal < Meson
      x86_64: '272474ab973994b18cf260e77c3eed53456d99374f0f33081f7e3a52f8d6b30d'
   })
 
-  depends_on 'adobe_source_code_pro_fonts' # L (Needed for monospace fonts)
-  depends_on 'dbus' # L
+  depends_on 'adobe_source_code_pro_fonts' => :logical # (Needed for monospace fonts)
+  depends_on 'dbus' => :logical
   depends_on 'dconf' => :build
   depends_on 'desktop_file_utilities' => :build
   depends_on 'gcc_lib' # R

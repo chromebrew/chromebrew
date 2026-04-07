@@ -31,7 +31,7 @@ class Fragments < Meson
   depends_on 'openssl' # R
   depends_on 'pango' # R
   depends_on 'rust' => :build
-  depends_on 'transmission' # L
+  depends_on 'transmission' => :logical
   depends_on 'zlib' # R
 
   gnome

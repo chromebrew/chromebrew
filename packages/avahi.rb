@@ -25,7 +25,7 @@ class Avahi < Autotools
   depends_on 'libcap' # R
   depends_on 'libdaemon' # R
   depends_on 'libevent' # R
-  depends_on 'nss_mdns' # L
+  depends_on 'nss_mdns' => :logical
   depends_on 'libssp' # R
   depends_on 'xmltoman' => :build
 

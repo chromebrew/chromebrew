@@ -17,7 +17,7 @@ class Alsa_utils < Autotools
   })
 
   depends_on 'alsa_lib' # R
-  depends_on 'cras' # L
+  depends_on 'cras' => :logical
   depends_on 'glibc' # R
   depends_on 'libsamplerate' # R
   depends_on 'ncurses' # R

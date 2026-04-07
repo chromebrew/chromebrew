@@ -53,7 +53,7 @@ class Imagemagick7 < Autotools
   depends_on 'libxext' # R
   depends_on 'libxml2' # R
   depends_on 'libxt' # R
-  depends_on 'msttcorefonts' # L
+  depends_on 'msttcorefonts' => :logical
   depends_on 'openexr' # R
   depends_on 'openjpeg' # R
   depends_on 'pango' # R

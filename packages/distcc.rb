@@ -21,10 +21,10 @@ class Distcc < Autotools
   })
 
   depends_on 'avahi' # R
-  depends_on 'ccache' # L
-  depends_on 'gcc_dev' # L
+  depends_on 'ccache' => :logical
+  depends_on 'gcc_dev' => :logical
   depends_on 'glibc' # R
-  depends_on 'llvm_dev' # L
+  depends_on 'llvm_dev' => :logical
   depends_on 'popt' # R
   depends_on 'python3' => :build
 

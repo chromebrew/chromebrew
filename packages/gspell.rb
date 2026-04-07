@@ -25,7 +25,7 @@ class Gspell < Meson
   depends_on 'gobject_introspection' => :build
   depends_on 'graphite' => :build
   depends_on 'gtk3' # R
-  depends_on 'hunspell' # L
+  depends_on 'hunspell' => :logical
   depends_on 'icu4c' # R
   depends_on 'iso_codes' => :build
   depends_on 'libxml2' => :build
