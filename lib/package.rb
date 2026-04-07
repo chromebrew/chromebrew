@@ -37,7 +37,6 @@ class Package
                    :is_fake,
                    :is_musl,
                    :is_static,
-                   :no_binaries_needed,
                    :no_compile_needed,
                    :no_compress,
                    :no_env_options,

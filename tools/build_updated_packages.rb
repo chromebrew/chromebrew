@@ -363,11 +363,6 @@ updated_packages.each do |pkg|
       FileUtils.cp "#{CREW_META_PATH}/#{name}.filelist", "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{name.chr}/#{name}.filelist"
     end
   else
-    if pkg_obj.no_binaries_needed?
-      puts "no binaries needed for #{pkg}"
-      updated_packages.delete(pkg)
-      next
-    end
     puts "#{name.capitalize} appears to need binaries. Checking to see if current binaries exist...".orange
     builds_needed = check_build_uploads(pkg_obj)
     if builds_needed.empty?
