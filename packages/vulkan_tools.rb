@@ -20,20 +20,15 @@ class Vulkan_tools < CMake
   })
 
   depends_on 'gcc_dev' => :build
-  depends_on 'gcc_lib' => :executable
   depends_on 'gcc_lib' => :library
-  depends_on 'glibc' => :executable
   depends_on 'glibc' => :library
   depends_on 'glslang' => :build
-  depends_on 'libx11' => :executable
   depends_on 'libx11' => :library
-  depends_on 'libxcb' => :executable
   depends_on 'libxcb' => :library
   depends_on 'libxrandr' => :build
   depends_on 'python3' => :build
   depends_on 'spirv_tools' => :build
   depends_on 'vulkan_headers' => :build
-  depends_on 'wayland' => :executable
   depends_on 'wayland' => :library
   depends_on 'wayland_protocols' => :build
 
