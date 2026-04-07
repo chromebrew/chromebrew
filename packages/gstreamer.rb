@@ -16,8 +16,6 @@ class Gstreamer < Meson
      x86_64: '4fac6c28487630defd3daf9a86b70393cf59651117197ec6f059e48b51c9eb1a'
   })
 
-  # depends_on 'gsm' => :library
-  # depends_on 'libvpx' => :library
   depends_on 'alsa_lib' => :library
   depends_on 'bzip2' => :library
   depends_on 'ca_certificates' => :build
