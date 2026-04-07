@@ -1,34 +1,27 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Arping < Package
+class Arping < Autotools
   description 'ARP Ping'
   homepage 'https://www.habets.pp.se/synscan/programs_arping.html'
-  version '2.21'
+  version '2.28'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/ThomasHabets/arping/archive/arping-2.21.tar.gz'
-  source_sha256 '7bf550571aa1d4a2b00878bb2f6fb857a09d30bf65411c90d62afcd86755bd81'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/ThomasHabets/arping.git'
+  git_hashtag "arping-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e85f871e84dce5360c1b50eccaa3ae5a1beaea9f89120cf0da19ffcabcf19fa1',
-     armv7l: 'e85f871e84dce5360c1b50eccaa3ae5a1beaea9f89120cf0da19ffcabcf19fa1',
-       i686: 'b808583d44c865ac023986b02e4c1ad8d9fbdbd12540775f620953b01a810e50',
-     x86_64: '46c5c7e174bb800bb317e09df6f77448040c7aeda137a23e2b8ed85ecb852fcb'
+    aarch64: '093718d8c147470ee1c3935d23e80f237ab2047e88b269daa0797b5192319078',
+     armv7l: '093718d8c147470ee1c3935d23e80f237ab2047e88b269daa0797b5192319078',
+       i686: '1776a40819efb729991aa1f404b6bbe56d18e003cd7d7da8cb1334f6b4b46437',
+     x86_64: 'ce751dae17387cc0e42704b2596e9d0aa13b848e3a63db416745dfdfce27b188'
   })
 
-  depends_on 'libpcap'
-  depends_on 'libnet'
+  depends_on 'glibc' => :executable
+  depends_on 'libcap' => :executable
+  depends_on 'libnet' => :executable
+  depends_on 'libpcap' => :executable
+  depends_on 'libseccomp' => :executable
 
-  def self.build
-    system './bootstrap.sh'
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  autotools_configure_options "--prefix=#{CREW_PREFIX} --sbindir=#{CREW_PREFIX}/bin"
 end

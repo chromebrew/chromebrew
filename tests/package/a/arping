@@ -1,0 +1,3 @@
+#!/bin/bash
+arping 2>&1
+man arping | head

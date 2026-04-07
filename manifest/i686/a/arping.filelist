@@ -1,3 +1,4 @@
-# Total size: 113135
-/usr/local/sbin/arping
-/usr/local/share/man/man8/arping.8.gz
+# Total size: 53931
+/usr/local/bin/arping
+/usr/local/include/arping.h
+/usr/local/share/man/man8/arping.8.zst
