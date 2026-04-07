@@ -13,10 +13,10 @@ class Units < Autotools
   no_fhs
 
   binary_sha256({
-    aarch64: '8aae0e94c2c316c2262a2b4839df224c652442a75c6fa9813e57d202e12098fa',
-     armv7l: '8aae0e94c2c316c2262a2b4839df224c652442a75c6fa9813e57d202e12098fa',
-       i686: '6c9194fc3ac34da929729216c1ad3a9c5007ddfb013aaa3be76b1cedeb2236f0',
-     x86_64: 'ecc1f41a7148caa0f3c39f667cef5056d58858daec8beaef073c1db0131dbefd'
+    aarch64: '9a92b18e23b93a43885341c93f1e9a5665e4aaf7b6fac9c2846cdc976415afe1',
+     armv7l: '9a92b18e23b93a43885341c93f1e9a5665e4aaf7b6fac9c2846cdc976415afe1',
+       i686: 'a543ba6a7d8232810f1f17a7e923c36a82bf71b9df8fd6c93f29a18a41d9a798',
+     x86_64: '8c20fdbb82a4332d346aa10ea89d5a053f131cff9acb67daa095a0b33c4ce5fd'
   })
 
   depends_on 'glibc' => :executable
