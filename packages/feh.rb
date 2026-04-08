@@ -11,9 +11,9 @@ class Feh < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '705835dff83388989a8df7261bfdf2976756c9cdff75779099d371ff01b6caba',
-     armv7l: '705835dff83388989a8df7261bfdf2976756c9cdff75779099d371ff01b6caba',
-     x86_64: 'cfcaa5ce038db0b2a728ceb795385cf45b44b42ad0128441592fb3adc3c2a845'
+    aarch64: 'c3ae03c0832fabfc66ef789fdce672d7de4749e97a72b033022d1606ece83e30',
+     armv7l: 'c3ae03c0832fabfc66ef789fdce672d7de4749e97a72b033022d1606ece83e30',
+     x86_64: 'ba3500f7c2aa8f7f96d318a5ccfd8e84a8b0d4a1eeedbfd8452e1c6fc5c260b0'
   })
 
   depends_on 'curl'
