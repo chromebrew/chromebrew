@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Epiphany < Meson
   description 'A GNOME web browser based on the WebKit rendering engine'
   homepage 'https://wiki.gnome.org/Apps/Web'
-  version '49.2'
+  version '50.3'
   license 'GPL'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/epiphany.git'
