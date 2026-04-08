@@ -117,6 +117,7 @@ def self.check_build_uploads(pkg)
   return [] if pkg.is_fake?
 
   architectures_to_check = pkg.compatibility == 'all' ? %w[armv7l i686 x86_64] : pkg.compatibility.split
+  architectures_to_check.delete('aarch64')
 
   # If we are rebuilding packages, we don't care if they already have builds uploaded to gitlab.
   return architectures_to_check if REBUILD_PACKAGES
