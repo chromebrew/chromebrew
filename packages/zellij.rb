@@ -17,13 +17,10 @@ class Zellij < RUST
      x86_64: '267e04f5852cb4c078f43b4330c423356d9c2871acaa3a14484c64fb93c95fad'
   })
 
-  depends_on 'gcc_lib' => :executable
   depends_on 'gcc_lib' => :library
-  depends_on 'glibc' => :executable
   depends_on 'glibc' => :library
   depends_on 'protobuf' => :build
   depends_on 'rust' => :build
-  depends_on 'zlib' => :executable
   depends_on 'zlib' => :library
 
   rust_targets 'wasm32-wasip1'
