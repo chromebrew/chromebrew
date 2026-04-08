@@ -1,0 +1,3 @@
+#!/bin/bash
+alacritty -h | head
+alacritty -V

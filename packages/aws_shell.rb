@@ -1,25 +1,29 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Aws_shell < Package
+class Aws_shell < Pip
   description 'An integrated shell for working with the AWS CLI.'
   homepage 'https://github.com/awslabs/aws-shell'
-  version '0.2.1'
+  version '0.2.2'
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://github.com/awslabs/aws-shell/archive/0.2.1.tar.gz'
-  source_sha256 '84262f0ccba6757a318ce415d8a77026b43db958cfac9ef615e75c3515d78f78'
-  binary_compression 'tar.xz'
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7b973100dd69dc756fd4578fd8776670279f8dcbe086e9c3874997aa0f2425bb',
-     armv7l: '7b973100dd69dc756fd4578fd8776670279f8dcbe086e9c3874997aa0f2425bb',
-       i686: '69f956d76dd2c0acc500f2253310bb719c4b08573f72922d98fd9c0ebf1239e4',
-     x86_64: '41ad9b4fbe0104c4e7d48fb7b5c2469f89562f46c1184b985114da37bf0ed479'
+    aarch64: '0d42cc152c167d666135d73764fef7d7451b2d176f6049b6725769651406cbe6',
+     armv7l: '0d42cc152c167d666135d73764fef7d7451b2d176f6049b6725769651406cbe6',
+       i686: 'c0d8ef802d2e77523d85456e76461c7ecb43a4f1e337437a4a38127174827eb0',
+     x86_64: '44e131d748002783bd0f391c564901a145f19a95b8088d9f61dbd4be5ca5bd44'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'py3_docutils'
+  depends_on 'py3_markdown_it_py'
+  depends_on 'py3_nh3'
+  depends_on 'python3' => :logical
 
-  def self.install
-    system "python setup.py install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR}"
+  no_source_build
+
+  def self.postinstall
+    ExitMessage.add "\nType 'aws-shell' to get started.\n"
   end
 end

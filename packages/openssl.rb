@@ -3,7 +3,7 @@ require 'package'
 class Openssl < Package
   description 'The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
   homepage 'https://openssl-library.org'
-  version '3.5.5'
+  version '3.5.6'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/openssl/openssl.git'
@@ -11,14 +11,14 @@ class Openssl < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '81de041dc5fb355ceea5b8b8165bab3570d40b6e9585d29100e30b095f7a2b70',
-     armv7l: '81de041dc5fb355ceea5b8b8165bab3570d40b6e9585d29100e30b095f7a2b70',
-       i686: '777b5d043ed9f6466139a468cb49c30e72c435ffa7ff0750c0d4c165408a3713',
-     x86_64: 'f9c745693c8d597ef8134af995d13dcd912b4c84a37c42d67e5babbdb33cb051'
+    aarch64: '1dae571113e8f5d0f5c136d13587cecf09f5969f0d3cb1e2909cc898df3014b6',
+     armv7l: '1dae571113e8f5d0f5c136d13587cecf09f5969f0d3cb1e2909cc898df3014b6',
+       i686: 'bb819491882fa5cd4f08a3d8ebf6127765e8d66941e91ef1b2539614f90a5d3d',
+     x86_64: '480fd77c98be9edf01df2249d5a3a609e021dbbaa9cf1a3854f1e715e8d92bff'
   })
 
   depends_on 'ccache' => :build
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
 
   case ARCH
   when 'aarch64', 'armv7l'
