@@ -119,4 +119,10 @@ class Gstreamer < Meson
     -Dgtk_doc=disabled \
     -Dintrospection=disabled \
     -Dtests=disabled"
+
+  meson_install_extras do
+    # avoid conflicts from libglvnd
+    FileUtils.rm_f "#{CREW_DEST_PREFIX}/include/GL/glext.h"
+    FileUtils.rm_f "#{CREW_DEST_PREFIX}/include/KHR/khrplatform.h"
+  end
 end
