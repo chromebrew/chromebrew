@@ -1,0 +1,3 @@
+#!/bin/bash
+asdf -h | head
+asdf -v
