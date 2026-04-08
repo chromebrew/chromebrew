@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Ettercap < CMake
   description 'Network sniffer/interceptor/logger for ethernet LANs'
   homepage 'https://ettercap.github.com/ettercap/'
-  version '0.8.4'
+  version '0.8.4.1'
   license 'GPL'
   compatibility 'all'
   source_url 'https://github.com/Ettercap/ettercap.git'
@@ -11,10 +11,10 @@ class Ettercap < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '047e6e2bc4396bbf63e561650669259bdd157f58e88a565a55e730096e66d460',
-     armv7l: '047e6e2bc4396bbf63e561650669259bdd157f58e88a565a55e730096e66d460',
-       i686: '25b62a9151348f0e843961ce7df04869977ec56b4deab772a5d81d2dffab76bf',
-     x86_64: 'c9841dbdf5f864843d7b6ed513e8776c072973e8698944f853ceae07643f7312'
+    aarch64: '52693ccd24eed587a1bb4fcdb464012988b6095cdb3f4d12aaed9cadf813d86d',
+     armv7l: '52693ccd24eed587a1bb4fcdb464012988b6095cdb3f4d12aaed9cadf813d86d',
+       i686: 'f7bffa31e8ebe205b3aba0f2b45fd590b0720394c99101d348fe41504200e796',
+     x86_64: 'a1f64ec41ee31d71fd5bfbe65d536889b6ceeddad2a0bcca43b0b3df659d6dcf'
   })
 
   depends_on 'check' => :build
