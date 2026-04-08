@@ -1,0 +1,3 @@
+#!/bin/bash -ex
+# The stun binaries only start servers and have no help options.
+for b in $(crew files ${1} | grep /usr/local/bin | grep -v stun); do $b --help 2>&1 || $b -h 2>&1; done
