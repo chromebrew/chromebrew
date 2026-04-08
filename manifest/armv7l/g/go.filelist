@@ -1,4 +1,4 @@
-# Total size: 228371063
+# Total size: 228414294
 /usr/local/bin/go
 /usr/local/bin/gofmt
 /usr/local/share/go/CONTRIBUTING.md
@@ -1296,6 +1296,7 @@
 /usr/local/share/go/src/cmd/compile/internal/test/logic_test.go
 /usr/local/share/go/src/cmd/compile/internal/test/math_test.go
 /usr/local/share/go/src/cmd/compile/internal/test/memcombine_test.go
+/usr/local/share/go/src/cmd/compile/internal/test/memoverlap_test.go
 /usr/local/share/go/src/cmd/compile/internal/test/mergelocals_test.go
 /usr/local/share/go/src/cmd/compile/internal/test/move_test.go
 /usr/local/share/go/src/cmd/compile/internal/test/mulconst_test.go
@@ -7741,6 +7742,9 @@
 /usr/local/share/go/src/internal/syscall/unix/fallocate_bsd_386.go
 /usr/local/share/go/src/internal/syscall/unix/fallocate_bsd_64bit.go
 /usr/local/share/go/src/internal/syscall/unix/fallocate_bsd_arm.go
+/usr/local/share/go/src/internal/syscall/unix/fchmodat_linux.go
+/usr/local/share/go/src/internal/syscall/unix/fchmodat_other.go
+/usr/local/share/go/src/internal/syscall/unix/fchmodat_test.go
 /usr/local/share/go/src/internal/syscall/unix/fcntl_js.go
 /usr/local/share/go/src/internal/syscall/unix/fcntl_unix.go
 /usr/local/share/go/src/internal/syscall/unix/fcntl_wasip1.go
@@ -10073,6 +10077,7 @@
 /usr/local/share/go/src/runtime/preempt_xreg.go
 /usr/local/share/go/src/runtime/print.go
 /usr/local/share/go/src/runtime/print_quoted_test.go
+/usr/local/share/go/src/runtime/print_test.go
 /usr/local/share/go/src/runtime/proc.go
 /usr/local/share/go/src/runtime/proc_runtime_test.go
 /usr/local/share/go/src/runtime/proc_test.go
@@ -10083,24 +10088,33 @@
 /usr/local/share/go/src/runtime/race/README
 /usr/local/share/go/src/runtime/race/doc.go
 /usr/local/share/go/src/runtime/race/internal/amd64v1/doc.go
+/usr/local/share/go/src/runtime/race/internal/amd64v1/race_darwin.patch
 /usr/local/share/go/src/runtime/race/internal/amd64v1/race_darwin.syso
+/usr/local/share/go/src/runtime/race/internal/amd64v1/race_freebsd.patch
 /usr/local/share/go/src/runtime/race/internal/amd64v1/race_freebsd.syso
+/usr/local/share/go/src/runtime/race/internal/amd64v1/race_linux.patch
 /usr/local/share/go/src/runtime/race/internal/amd64v1/race_linux.syso
 /usr/local/share/go/src/runtime/race/internal/amd64v1/race_netbsd.syso
 /usr/local/share/go/src/runtime/race/internal/amd64v1/race_openbsd.syso
+/usr/local/share/go/src/runtime/race/internal/amd64v1/race_windows.patch
 /usr/local/share/go/src/runtime/race/internal/amd64v1/race_windows.syso
 /usr/local/share/go/src/runtime/race/internal/amd64v3/doc.go
+/usr/local/share/go/src/runtime/race/internal/amd64v3/race_linux.patch
 /usr/local/share/go/src/runtime/race/internal/amd64v3/race_linux.syso
 /usr/local/share/go/src/runtime/race/mkcgo.sh
 /usr/local/share/go/src/runtime/race/output_test.go
 /usr/local/share/go/src/runtime/race/race.go
 /usr/local/share/go/src/runtime/race/race_darwin_amd64.go
 /usr/local/share/go/src/runtime/race/race_darwin_arm64.go
+/usr/local/share/go/src/runtime/race/race_darwin_arm64.patch
 /usr/local/share/go/src/runtime/race/race_darwin_arm64.syso
+/usr/local/share/go/src/runtime/race/race_linux_arm64.patch
 /usr/local/share/go/src/runtime/race/race_linux_arm64.syso
+/usr/local/share/go/src/runtime/race/race_linux_loong64.patch
 /usr/local/share/go/src/runtime/race/race_linux_loong64.syso
 /usr/local/share/go/src/runtime/race/race_linux_ppc64le.syso
 /usr/local/share/go/src/runtime/race/race_linux_riscv64.syso
+/usr/local/share/go/src/runtime/race/race_linux_s390x.patch
 /usr/local/share/go/src/runtime/race/race_linux_s390x.syso
 /usr/local/share/go/src/runtime/race/race_linux_test.go
 /usr/local/share/go/src/runtime/race/race_test.go
@@ -14081,7 +14095,11 @@
 /usr/local/share/go/test/fixedbugs/issue7760.go
 /usr/local/share/go/test/fixedbugs/issue77604.go
 /usr/local/share/go/test/fixedbugs/issue77613.go
+/usr/local/share/go/test/fixedbugs/issue77635.go
+/usr/local/share/go/test/fixedbugs/issue77635b.go
 /usr/local/share/go/test/fixedbugs/issue77779.go
+/usr/local/share/go/test/fixedbugs/issue77815.go
+/usr/local/share/go/test/fixedbugs/issue77919.go
 /usr/local/share/go/test/fixedbugs/issue7794.go
 /usr/local/share/go/test/fixedbugs/issue7863.go
 /usr/local/share/go/test/fixedbugs/issue7867.go

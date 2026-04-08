@@ -3,42 +3,42 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  version '3.14.3'
+  version '3.14.4'
   license 'PSF-2.0'
   compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{version.split('-').first}/Python-#{version.split('-').first}.tar.xz"
-  source_sha256 'a97d5549e9ad81fe17159ed02c68774ad5d266c72f8d9a0b5a9c371fe85d902b'
+  source_sha256 'd923c51303e38e249136fc1bdf3568d56ecb03214efdef48516176d3d7faaef8'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '25102328e5ac11216175f0742d054ab1424524ce104af7d5aaec9a71954a8938',
-     armv7l: '25102328e5ac11216175f0742d054ab1424524ce104af7d5aaec9a71954a8938',
-       i686: '7f9de420fc900c36e4e441c04932e5819f6d6117703ddc9ac6e7d0c17437965a',
-     x86_64: '950aa984e6fd3832f1c704543ee19b50eb0d5b4e2af5f2b1722a8aa9c776d4b1'
+    aarch64: 'd7a9cf16ebe60179c16a7ee52dca4a233915e0781f75030c10a4c797ac6ebae3',
+     armv7l: 'd7a9cf16ebe60179c16a7ee52dca4a233915e0781f75030c10a4c797ac6ebae3',
+       i686: 'ea4ed1912ce0a42712266a788d9218c93ba844d7fe3f08e10876e10a5b3cd939',
+     x86_64: 'fb88a3d44ade247c822db8d1fe5e370484349c6f283046c0404f9505153b50b0'
   })
 
   depends_on 'autoconf_archive' => :build
-  depends_on 'bzip2' # R
-  depends_on 'expat' # R
+  depends_on 'bzip2' => :library
+  depends_on 'expat' => :library
   depends_on 'gcc_lib' # R
-  depends_on 'gdbm' # R
-  depends_on 'glibc' # R
+  depends_on 'gdbm' => :library
+  depends_on 'glibc' => :library
   depends_on 'krb5' => :build
-  depends_on 'libdb' # R
-  depends_on 'libffi' # R
+  depends_on 'libdb' => :library
+  depends_on 'libffi' => :library
   depends_on 'llvm_dev' => :build
-  depends_on 'mpdecimal' # R
-  depends_on 'ncurses' # R
-  depends_on 'openssl' # R
-  depends_on 'readline' # R
-  depends_on 'sqlite' # R
+  depends_on 'mpdecimal' => :library
+  depends_on 'ncurses' => :library
+  depends_on 'openssl' => :library
+  depends_on 'readline' => :library
+  depends_on 'sqlite' => :library
   depends_on 'tcl' => :build unless ARCH == 'i686' # Needed for tkinter support
   depends_on 'tk' => :build unless ARCH == 'i686' # Needed for tkinter support
-  depends_on 'util_linux' # R
-  depends_on 'xzutils' # R
-  depends_on 'zlib' # R
+  depends_on 'util_linux' => :library
+  depends_on 'xzutils' => :library
+  depends_on 'zlib' => :library
   depends_on 'zoneinfo' => :logical
-  depends_on 'zstd' # R
+  depends_on 'zstd' => :library
 
   no_env_options
   conflicts_ok
