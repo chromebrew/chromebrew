@@ -25,7 +25,7 @@ class Gstreamer < Meson
   depends_on 'elfutils' => :library
   depends_on 'faac' => :library
   depends_on 'faad2' => :library
-  depends_on 'ffmpeg' => :logical
+  depends_on 'ffmpeg' => :library
   depends_on 'flac' => :library
   depends_on 'gcc_lib' => :library
   depends_on 'gdk_pixbuf' => :library
@@ -41,7 +41,7 @@ class Gstreamer < Meson
   depends_on 'libaom' => :library
   depends_on 'libass' => :library
   depends_on 'libavc1394' => :library
-  depends_on 'libcap' => :library
+  depends_on 'libcap' => :build
   depends_on 'libdrm' => :library
   depends_on 'libdv' => :library
   depends_on 'libfdk_aac' => :library
@@ -86,7 +86,7 @@ class Gstreamer < Meson
   depends_on 'opus' => :library
   depends_on 'opusfile' => :build
   depends_on 'pango' => :library
-  depends_on 'pulseaudio' => :logical
+  depends_on 'pulseaudio' => :library
   depends_on 'py3_gitlint' => :build
   depends_on 'py3_setuptools' => :build
   depends_on 'qt5_base' => :library
