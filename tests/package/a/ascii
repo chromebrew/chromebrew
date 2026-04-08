@@ -1,0 +1,4 @@
+#!/bin/bash
+ascii -h | head
+man ascii | head
+ascii -v

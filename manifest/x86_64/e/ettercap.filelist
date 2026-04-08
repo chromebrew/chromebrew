@@ -1,4 +1,4 @@
-# Total size: 12178653
+# Total size: 12178929
 /usr/local/bin/ettercap
 /usr/local/bin/etterfilter
 /usr/local/bin/etterlog
@@ -42,10 +42,10 @@
 /usr/local/lib64/ettercap/ec_stp_mangler.so
 /usr/local/lib64/libettercap-ui.so
 /usr/local/lib64/libettercap-ui.so.0
-/usr/local/lib64/libettercap-ui.so.0.8.4
+/usr/local/lib64/libettercap-ui.so.0.8.4.1
 /usr/local/lib64/libettercap.so
 /usr/local/lib64/libettercap.so.0
-/usr/local/lib64/libettercap.so.0.8.4
+/usr/local/lib64/libettercap.so.0.8.4.1
 /usr/local/share/ettercap/AUTHORS
 /usr/local/share/ettercap/GeoLite2-Country.mmdb
 /usr/local/share/ettercap/LICENSE
