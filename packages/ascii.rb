@@ -3,29 +3,29 @@ require 'package'
 class Ascii < Package
   description 'List ASCII idiomatic names and octal/decimal code-point forms.'
   homepage 'http://www.catb.org/~esr/ascii/'
-  version '3.30'
+  version '3.32'
   license 'BSD'
   compatibility 'all'
   source_url "http://www.catb.org/~esr/ascii/ascii-#{version}.tar.gz"
-  source_sha256 '728422d5f4da61a37a17b4364d06708e543297de0a5f70305243236d80df072d'
+  source_sha256 '4a4d62bec25b3faea38b0a4ea2bc630e3393055c5f3ef197deee345de419b2a8'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8566ece437dabf1e626c61ec2033ae2f095ef1e867c44b5502d33204adb24007',
-     armv7l: '8566ece437dabf1e626c61ec2033ae2f095ef1e867c44b5502d33204adb24007',
-       i686: '60357de2943caef872b9baf79a80026adfd9ff6ae2f5939fb0973efd457540d2',
-     x86_64: '1b49f74a7def6f7fbbff90f8315378b78b43d91275684745bb0aa53f8b31e723'
+    aarch64: 'e3b9efce0b5fef983da30aad96c294238bd37aff5b93630d79b0558276b216f5',
+     armv7l: 'e3b9efce0b5fef983da30aad96c294238bd37aff5b93630d79b0558276b216f5',
+       i686: 'ebb0d101a9dd33ff323b6cacc21eb7d5f6ec75e8465be9ef41b0dca8d9861557',
+     x86_64: '8844ef50255fd938407da8d5927a019a711be792349342ec7f4767a4b8ecbff0'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'asciidoctor' => :library
+  depends_on 'glibc' => :executable
 
   def self.build
     system 'make'
   end
 
   def self.install
-    system 'gzip -9 ascii.1'
-    system "install -Dm755 ascii #{CREW_DEST_PREFIX}/bin/ascii"
-    system "install -Dm644 ascii.1.gz #{CREW_DEST_PREFIX}/man/man1/ascii.1.gz"
+    FileUtils.install 'ascii', "#{CREW_DEST_PREFIX}/bin/ascii", mode: 0o755
+    FileUtils.install 'ascii.1', "#{CREW_DEST_MAN_PREFIX}/man1/ascii.1", mode: 0o644
   end
 end

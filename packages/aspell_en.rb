@@ -3,21 +3,21 @@ require 'package'
 class Aspell_en < Package
   description 'English Aspell Dictionary'
   homepage 'https://aspell.net'
-  version '2020.12.07-0'
+  version '2026.02.25-0'
   license 'myspell-en_CA-KevinAtkinson, public-domain, Princeton, and Ispell'
   compatibility 'all'
-  source_url 'https://gnu.askapache.com/aspell/dict/en/aspell6-en-2020.12.07-0.tar.bz2'
-  source_sha256 '4c8f734a28a088b88bb6481fcf972d0b2c3dc8da944f7673283ce487eac49fb3'
-  binary_compression 'tar.xz'
+  source_url 'https://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-2026.02.25-0.tar.bz2'
+  source_sha256 '77a5cb437c45d1115f3b593802c20651d8c93803ed1073278dc1a1240016f10d'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a3f897c049eb4c7b6caf9c1d08c894b6f9541681a0ce9cd2b664226a1574d69d',
-     armv7l: 'a3f897c049eb4c7b6caf9c1d08c894b6f9541681a0ce9cd2b664226a1574d69d',
-       i686: 'ec4684e5665cf4ef98c90ac28567e2d5a6833c9468263486eb81e3fd2d1e27ca',
-     x86_64: '2b39dd619b454a9fcf4bad9b09b4a60163744209dc9dbad4c87c0971bca363f1'
+    aarch64: '0a61edf44cd24839e4d2e5c4733f7b62885e3a9d86506a93faf4c95c8f858b86',
+     armv7l: '0a61edf44cd24839e4d2e5c4733f7b62885e3a9d86506a93faf4c95c8f858b86',
+       i686: 'e7376b5493cc90788abbd684508fa11520ad34055ead2af34b8fc8ee035551bf',
+     x86_64: '8abaadca000f3ac762674273e1df173a2c4f0d6451da2db8f4656f3e09fd4b70'
   })
 
-  depends_on 'aspell'
+  depends_on 'aspell' => :logical
 
   def self.build
     system "env CFLAGS='-flto=auto -ltinfo' CXXFLAGS='-flto=auto' \

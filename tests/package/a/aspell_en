@@ -1,0 +1,2 @@
+#!/bin/bash
+echo 'tesst' | aspell -d en -l en soundslike
