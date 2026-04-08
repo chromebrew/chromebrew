@@ -6,7 +6,7 @@ require 'package'
 class Alacritty < Package
   description 'A cross-platform, GPU-accelerated terminal emulator'
   homepage 'https://github.com/alacritty/alacritty'
-  version '0.16.1'
+  version '0.17.0'
   license 'Apache'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/alacritty/alacritty.git'
@@ -14,21 +14,22 @@ class Alacritty < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'df3b70da55d7dd09a94c42838437b273079770f1ffba9b5a55defdc1ab4fa12c',
-     armv7l: 'df3b70da55d7dd09a94c42838437b273079770f1ffba9b5a55defdc1ab4fa12c',
-     x86_64: '61de08532a05773e63898bd9218ae7ede4f4bf6b81a81eac7cfa97e8d1690fec'
+    aarch64: '8942e6bc7e1cb072e749acabcd0ff1adec8c6d8a5e8926291206fe664a8217a0',
+     armv7l: '8942e6bc7e1cb072e749acabcd0ff1adec8c6d8a5e8926291206fe664a8217a0',
+     x86_64: '3dc9bd8900bbd4f8d52c85573233c66ebc86f149726a866a8a9702bf5be5b732'
   })
 
-  depends_on 'fontconfig' # R
-  depends_on 'freetype' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'harfbuzz' # R
-  depends_on 'libxcb' # R
-  depends_on 'libxcursor' # R
-  depends_on 'libxi' # R
-  depends_on 'libxkbcommon' # R
-  depends_on 'ncurses' # R
+  depends_on 'fontconfig' => :executable
+  depends_on 'freetype' => :executable
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'harfbuzz' => :executable
+  depends_on 'libxcb' => :library
+  depends_on 'libxcursor' => :library
+  depends_on 'libxi' => :library
+  depends_on 'libxkbcommon' => :library
+  depends_on 'mesa' => :executable
+  depends_on 'ncurses' => :library
   depends_on 'rust' => :build
 
   def self.build
