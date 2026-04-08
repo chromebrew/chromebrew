@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Ettercap < CMake
   description 'Network sniffer/interceptor/logger for ethernet LANs'
   homepage 'https://ettercap.github.com/ettercap/'
-  version '0.8.4'
+  version '0.8.4.1'
   license 'GPL'
   compatibility 'all'
   source_url 'https://github.com/Ettercap/ettercap.git'
