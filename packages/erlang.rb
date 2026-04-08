@@ -17,12 +17,12 @@ class Erlang < Autotools
   })
 
   depends_on 'gcc_lib' => :library
-  depends_on 'glib' # R
+  depends_on 'glib' => :build
   depends_on 'glibc' => :library
-  depends_on 'libglu' # R
+  depends_on 'libglu' => :build
   depends_on 'openssl' => :library
   depends_on 'unixodbc' => :library
-  depends_on 'wxwidgets' # R
+  depends_on 'wxwidgets' => :build
   depends_on 'zlib' => :library
 
   autotools_configure_options "ERL_OTP=#{Dir.pwd} #{'--disable-year2038' unless ARCH.eql?('x86_64')}"

@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gstreamer < Meson
   description 'GStreamer is a library for constructing graphs of media-handling components.'
   homepage 'https://gstreamer.freedesktop.org/'
-  version '1.28.1'
+  version '1.28.2'
   license 'LGPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/gstreamer/gstreamer.git'
@@ -11,9 +11,9 @@ class Gstreamer < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a69a2e38955364b72226072f10275fa41b6dc22a8a5f97320a0b8201e85d44fc',
-     armv7l: 'a69a2e38955364b72226072f10275fa41b6dc22a8a5f97320a0b8201e85d44fc',
-     x86_64: '4fac6c28487630defd3daf9a86b70393cf59651117197ec6f059e48b51c9eb1a'
+    aarch64: '3bb35875759bbb7ddead2f8b6701a329f01718fa64561ac9d2ff9ceda371d780',
+     armv7l: '3bb35875759bbb7ddead2f8b6701a329f01718fa64561ac9d2ff9ceda371d780',
+     x86_64: 'ba740b2a900714385216d69e7d4a7c72b0a6197144ab491e51e7ca0b9c774ecf'
   })
 
   depends_on 'alsa_lib' => :library
@@ -104,7 +104,6 @@ class Gstreamer < Meson
   depends_on 'zvbi' => :library
 
   # no_lto
-  conflicts_with 'libglvnd'
   gnome
 
   def self.prebuild
@@ -112,8 +111,10 @@ class Gstreamer < Meson
   end
 
   meson_options "#{CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
+    -Dbenchmarks=disabled \
     -Ddoc=disabled \
     -Dexamples=disabled \
+    -Dglib_debug=disabled \
     -Dgpl=enabled \
     -Dgtk_doc=disabled \
     -Dintrospection=disabled \
