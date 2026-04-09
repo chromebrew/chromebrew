@@ -1,4 +1,4 @@
-# Total size: 1502751
+# Total size: 1550667
 /usr/local/bin/baobab
 /usr/local/share/applications/org.gnome.baobab.desktop
 /usr/local/share/dbus-1/services/org.gnome.baobab.service
@@ -16,6 +16,19 @@
 /usr/local/share/help/C/baobab/scan-folder.page
 /usr/local/share/help/C/baobab/scan-home.page
 /usr/local/share/help/C/baobab/scan-remote.page
+/usr/local/share/help/bg/baobab/index.page
+/usr/local/share/help/bg/baobab/introduction.page
+/usr/local/share/help/bg/baobab/legal.xml
+/usr/local/share/help/bg/baobab/media/org.gnome.baobab.svg
+/usr/local/share/help/bg/baobab/pref-view-chart.page
+/usr/local/share/help/bg/baobab/problem-permissions.page
+/usr/local/share/help/bg/baobab/problem-slow-scan.page
+/usr/local/share/help/bg/baobab/question-open-folder.page
+/usr/local/share/help/bg/baobab/question-trash.page
+/usr/local/share/help/bg/baobab/scan-file-system.page
+/usr/local/share/help/bg/baobab/scan-folder.page
+/usr/local/share/help/bg/baobab/scan-home.page
+/usr/local/share/help/bg/baobab/scan-remote.page
 /usr/local/share/help/ca/baobab/index.page
 /usr/local/share/help/ca/baobab/introduction.page
 /usr/local/share/help/ca/baobab/legal.xml
@@ -198,6 +211,19 @@
 /usr/local/share/help/it/baobab/scan-folder.page
 /usr/local/share/help/it/baobab/scan-home.page
 /usr/local/share/help/it/baobab/scan-remote.page
+/usr/local/share/help/kk/baobab/index.page
+/usr/local/share/help/kk/baobab/introduction.page
+/usr/local/share/help/kk/baobab/legal.xml
+/usr/local/share/help/kk/baobab/media/org.gnome.baobab.svg
+/usr/local/share/help/kk/baobab/pref-view-chart.page
+/usr/local/share/help/kk/baobab/problem-permissions.page
+/usr/local/share/help/kk/baobab/problem-slow-scan.page
+/usr/local/share/help/kk/baobab/question-open-folder.page
+/usr/local/share/help/kk/baobab/question-trash.page
+/usr/local/share/help/kk/baobab/scan-file-system.page
+/usr/local/share/help/kk/baobab/scan-folder.page
+/usr/local/share/help/kk/baobab/scan-home.page
+/usr/local/share/help/kk/baobab/scan-remote.page
 /usr/local/share/help/ko/baobab/index.page
 /usr/local/share/help/ko/baobab/introduction.page
 /usr/local/share/help/ko/baobab/legal.xml
@@ -403,6 +429,7 @@
 /usr/local/share/locale/kn/LC_MESSAGES/baobab.mo
 /usr/local/share/locale/ko/LC_MESSAGES/baobab.mo
 /usr/local/share/locale/ku/LC_MESSAGES/baobab.mo
+/usr/local/share/locale/kw/LC_MESSAGES/baobab.mo
 /usr/local/share/locale/lt/LC_MESSAGES/baobab.mo
 /usr/local/share/locale/lv/LC_MESSAGES/baobab.mo
 /usr/local/share/locale/mai/LC_MESSAGES/baobab.mo

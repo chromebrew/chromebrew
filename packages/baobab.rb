@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Baobab < Meson
   description 'Disk Usage Analyzer (also known as baobab) scans folders, devices or remote locations and and reports on the disk space consumed by each element.'
   homepage 'https://wiki.gnome.org/Apps/DiskUsageAnalyzer'
-  version '49.1'
+  version '50.0'
   license 'GPL-2+ and FDL-1.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/baobab.git'
@@ -11,21 +11,21 @@ class Baobab < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '42da3000e8d0a049524ef6d1ff8301e8863ca4de85cb8bb559f8a7223468661f',
-     armv7l: '42da3000e8d0a049524ef6d1ff8301e8863ca4de85cb8bb559f8a7223468661f',
-     x86_64: '44a9de4d6996f24774035b5d534f9ac589b2c609be7eb89d4b1dd090f069c0a9'
+    aarch64: '6a8ad182e6796c284b310c26ca8b020482acaa479c14d0c1b44d6152ad890527',
+     armv7l: '6a8ad182e6796c284b310c26ca8b020482acaa479c14d0c1b44d6152ad890527',
+     x86_64: '41736886f91cae79d09b80ed52b49741bef2a10f73124b4e59af7e7e471d5509'
   })
 
-  depends_on 'cairo' # R
+  depends_on 'cairo' => :executable
   depends_on 'desktop_file_utils' => :build
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
-  depends_on 'graphene' # R
+  depends_on 'glib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'graphene' => :executable
   depends_on 'gsettings_desktop_schemas' => :build
-  depends_on 'gtk4' # R
-  depends_on 'harfbuzz' # R
-  depends_on 'libadwaita' # R
-  depends_on 'pango' # R
+  depends_on 'gtk4' => :executable
+  depends_on 'harfbuzz' => :executable
+  depends_on 'libadwaita' => :executable
+  depends_on 'pango' => :executable
   depends_on 'py3_itstool' => :build
   depends_on 'vala' => :build
   depends_on 'vulkan_headers' => :build
