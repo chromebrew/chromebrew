@@ -10,13 +10,13 @@ on:
         required: false
         type: string
     outputs:
-      glibc_227_compat:
+      glibc_227_compatible_packages:
         description: "The packages compatible with glibc 2.27"
         value: ${{ jobs.get-compatibility.outputs.GLIBC_227_COMPATIBLE_PACKAGES }}
-      glibc_232_compat:
+      glibc_232_compatible_packages:
         description: "The packages compatible with glibc 2.32"
         value: ${{ jobs.get-compatibility.outputs.GLIBC_232_COMPATIBLE_PACKAGES }}
-      glibc_237_compat:
+      glibc_237_compatible_packages:
         description: "The packages compatible with glibc 2.37"
         value: ${{ jobs.get-compatibility.outputs.GLIBC_237_COMPATIBLE_PACKAGES }}
       i686_packages:
