@@ -1,6 +1,7 @@
-# Total size: 44506751
+# Total size: 44806290
 /usr/local/bin/pea
 /usr/local/bin/peazip
+/usr/local/lib64/libpthread.so.0
 /usr/local/share/application/peazip.desktop
 /usr/local/share/peazip/pea
 /usr/local/share/peazip/peazip
