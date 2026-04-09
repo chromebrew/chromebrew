@@ -11,10 +11,10 @@ class Acpica < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '9c27c344d60ac98dbea070d64945c7b2cafa030f4e643648fca2e63715248d59'
+     x86_64: '444bc48db103c16a2951f19ba843a2537bc31f642ff2b1dcc075b741efef33d7'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :executable
 
   def self.build
     system 'make'
