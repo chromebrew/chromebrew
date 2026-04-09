@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Freerdp < CMake
   description 'FreeRDP is a free implementation of the Remote Desktop Protocol.'
   homepage 'https://www.freerdp.com/'
-  version "3.23.0-#{CREW_ICU_VER}"
+  version "3.24.2-#{CREW_ICU_VER}"
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/FreeRDP/FreeRDP.git'
@@ -11,69 +11,70 @@ class Freerdp < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cf8d67ed0d0add452221deb6e43758d764a2b4059c9ebd2701d7e2e77c930434',
-     armv7l: 'cf8d67ed0d0add452221deb6e43758d764a2b4059c9ebd2701d7e2e77c930434',
-     x86_64: '8a8f6665c2d22845b17b01d198f5f489ffd1fd6782e5854d904b586b28eb077a'
+    aarch64: 'dcc671906794cd38b8e8256ad0fcb7033bffd40cdf9e515038991236b3540b74',
+     armv7l: 'dcc671906794cd38b8e8256ad0fcb7033bffd40cdf9e515038991236b3540b74',
+     x86_64: '18dd37555199f4d06b5af183c8ee4c899b399ea181c939fc35c7d73a4b702a87'
   })
 
-  depends_on 'alsa_lib' # R
+  depends_on 'alsa_lib' => :library
   depends_on 'at_spi2_core' # R
-  depends_on 'cairo' # R
+  depends_on 'cairo' => :library
   depends_on 'cjson' # R
-  depends_on 'cups' # R
-  depends_on 'e2fsprogs' # R
-  depends_on 'faac' # R
-  depends_on 'faad2' # R
-  depends_on 'ffmpeg' # R
-  depends_on 'fuse3' # R
-  depends_on 'gcc_lib' # R
+  depends_on 'cups' => :library
+  depends_on 'e2fsprogs' => :library
+  depends_on 'faac' => :library
+  depends_on 'faad2' => :library
+  depends_on 'ffmpeg' => :library
+  depends_on 'fuse3' => :library
+  depends_on 'gcc_lib' => :library
   depends_on 'gdk_pixbuf' # R
   depends_on 'glib' # R
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
   depends_on 'gsm' # R
   depends_on 'gstreamer' => :build
   depends_on 'gtk3' # R
-  depends_on 'harfbuzz' # R
-  depends_on 'icu4c' # R
-  depends_on 'json_c' # R
-  depends_on 'krb5' # R
+  depends_on 'harfbuzz' => :library
+  depends_on 'icu4c' => :library
+  depends_on 'json_c' => :library
+  depends_on 'krb5' => :library
   depends_on 'libbacktrace' => :build
+  depends_on 'libbsd' => :library
   depends_on 'libfdk_aac' => :build
-  depends_on 'libice' # R
+  depends_on 'libice' => :library
   depends_on 'libjpeg_turbo' # R
-  depends_on 'libmp3lame' # R
-  depends_on 'libsm' # R
+  depends_on 'libmp3lame' => :library
+  depends_on 'libsm' => :library
   depends_on 'libsoup' # R
-  depends_on 'libsoxr' # R
-  depends_on 'libusb' # R
-  depends_on 'libx11' # R
+  depends_on 'libsoxr' => :library
+  depends_on 'libusb' => :library
+  depends_on 'libx11' => :library
   depends_on 'libxcursor' => :executable
-  depends_on 'libxdamage' # R
-  depends_on 'libxext' # R
-  depends_on 'libxfixes' # R
+  depends_on 'libxdamage' => :library
+  depends_on 'libxext' => :library
+  depends_on 'libxfixes' => :library
   depends_on 'libxi' => :executable
-  depends_on 'libxinerama' # R
-  depends_on 'libxkbcommon' # R
-  depends_on 'libxkbfile' # R
+  depends_on 'libxinerama' => :library
+  depends_on 'libxkbcommon' => :library
+  depends_on 'libxkbfile' => :library
   depends_on 'libxrandr' => :executable
   depends_on 'libxrender' => :executable
-  depends_on 'libxtst' # R
+  depends_on 'libxtst' => :library
   depends_on 'libxv' => :executable
-  depends_on 'linux_pam' # R
-  depends_on 'openh264' # R
-  depends_on 'openssl' # R
+  depends_on 'linux_pam' => :library
+  depends_on 'openh264' => :library
+  depends_on 'openssl' => :library
   depends_on 'pango' # R
-  depends_on 'pulseaudio' # R
+  depends_on 'pulseaudio' => :library
   depends_on 'sdl2' => :executable
   depends_on 'sdl2_ttf' => :executable
   depends_on 'sommelier' => :logical
-  depends_on 'uriparser' # R
-  depends_on 'wayland' # R
+  depends_on 'uriparser' => :library
+  depends_on 'wayland' => :library
   depends_on 'webkit2gtk_4_1' # R
   depends_on 'xdg_base' => :logical
   depends_on 'xmlto' => :build
   depends_on 'xprop' => :build
-  depends_on 'zlib' # R
+  depends_on 'zlib' => :library
 
   cmake_options "-DCMAKE_SKIP_INSTALL_RPATH=ON \
         -DDOCBOOKXSL_DIR=#{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-1.79.2 \
