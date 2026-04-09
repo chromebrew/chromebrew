@@ -780,6 +780,11 @@ url: https://github.com/c-ares/c-ares/releases
 activity: medium
 ---
 kind: url
+name: c11threads
+url: https://github.com/jtsiomb/c11threads/releases
+activity: low
+---
+kind: url
 name: c2x
 url: http://www.jens-goedeke.eu/tools/csv2xml/
 activity: none

@@ -196,10 +196,12 @@ else
       version Glibc_build223.version
       compatibility Glibc_build223.compatibility
       depends_on 'glibc_build223'
+      depends_on 'c11threads' => :logical
     when '2.27'
       version Glibc_build227.version
       compatibility Glibc_build227.compatibility
       depends_on 'glibc_build227'
+      depends_on 'c11threads' => :logical
     when '2.32'
       version Glibc_build232.version
       compatibility Glibc_build232.compatibility
