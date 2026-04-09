@@ -1649,6 +1649,119 @@ def archive_package(crew_archive_dest)
   end
 end
 
+# TODO: Ideally this wouldn't be a separate command, and certainly not implemented in bin/crew, but until the download and unpack methods are refactored out into commands/, the only practical way to access them is by being in bin/crew.
+def update_package_filelist(package)
+  # Load the package file into @pkg for the subsequent methods to use.
+  check_load_package("#{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb")
+
+  # Download and unpack the package installation file.
+  # This is usually the precompiled binary for the current architecture, although for some packages (i.e. appimage based) it may be the source archive.
+  meta = download
+  target_dir = unpack meta
+
+  Dir.chdir target_dir do
+    puts "Regenerating filelist for #{@pkg.name}...".orange
+    # Create file list and calculate file size
+    filelist = Dir[".{#{CREW_PREFIX}/**/{.*,*,.?*/**},#{HOME}}/**/{.*,*,.?*/**}"].select do |e|
+      File.file?(e) || File.symlink?(e)
+    end.to_h do |e|
+      # Ignore symlinks to prevent duplicating calculation.
+      [e[1..], File.symlink?(e) ? 0 : File.size(e)]
+    end
+
+    File.write 'filelist', <<~EOF
+      # Total size: #{filelist.values.sum}
+      #{filelist.keys.sort.join("\n")}
+    EOF
+
+    if Dir.exist?("#{CREW_LOCAL_REPO_ROOT}/manifest") && File.writable?("#{CREW_LOCAL_REPO_ROOT}/manifest")
+      puts "Updating manifest filelist for #{@pkg.name}...".orange
+      FileUtils.mkdir_p "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{@pkg.name.chr.downcase}"
+      FileUtils.cp 'filelist', "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{@pkg.name.chr.downcase}/#{@pkg.name}.filelist"
+    end
+  end
+end
+
+#   Dir.chdir pkgdir do
+#
+#     if @opt_regen_filelist
+#       puts "Regenerating filelist for #{@pkg.name}...".orange
+#       # Create file list and calculate file size
+#       filelist = Dir[".{#{CREW_PREFIX}/**/{.*,*,.?*/**},#{HOME}}/**/{.*,*,.?*/**}"].select do |e|
+#         File.file?(e) || File.symlink?(e)
+#       end.to_h do |e|
+#         # Ignore symlinks to prevent duplicating calculation.
+#         [e[1..], File.symlink?(e) ? 0 : File.size(e)]
+#       end
+#
+#       File.write 'filelist', <<~EOF
+#         # Total size: #{filelist.values.sum}
+#         #{filelist.keys.sort.join("\n")}
+#       EOF
+#
+#       if Dir.exist?("#{CREW_LOCAL_REPO_ROOT}/manifest") && File.writable?("#{CREW_LOCAL_REPO_ROOT}/manifest")
+#         puts "Updating manifest filelist for #{@pkg.name}...".orange
+#         FileUtils.mkdir_p "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{@pkg.name.chr.downcase}"
+#         FileUtils.cp 'filelist', "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{@pkg.name.chr.downcase}/#{@pkg.name}.filelist"
+#       end
+#     end
+#
+#     # FileUtils.cp 'dlist', File.join(CREW_META_PATH, "#{@pkg.name}.directorylist"), verbose: CREW_VERBOSE
+#     # FileUtils.cp 'filelist', File.join(CREW_META_PATH, "#{@pkg.name}.filelist"), verbose: CREW_VERBOSE
+#   end
+#
+
+  # check_load_package(pkg_path)
+
+  # check_load_package
+
+  # pkg_file = "#{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
+
+  # hats
+  # meta = download
+  # target_dir = unpack meta
+  # # use extracted binary directory
+  # dest_dir = target_dir
+  #
+  # # perform pre-install process
+  # pre_install dest_dir
+  #
+  # # perform install process
+  # install_package dest_dir
+  #
+  # # perform post-install process
+  # post_install unless skip_postinstall
+
+  # Dir.chdir pkgdir do
+  # install_package pkgdir
+
+  # if @opt_regen_filelist
+  #   puts "Regenerating filelist for #{@pkg.name}...".orange
+  #   # Create file list and calculate file size
+  #   filelist = Dir[".{#{CREW_PREFIX}/**/{.*,*,.?*/**},#{HOME}}/**/{.*,*,.?*/**}"].select do |e|
+  #     File.file?(e) || File.symlink?(e)
+  #   end.to_h do |e|
+  #     # Ignore symlinks to prevent duplicating calculation.
+  #     [e[1..], File.symlink?(e) ? 0 : File.size(e)]
+  #   end
+  #
+  #   File.write 'filelist', <<~EOF
+  #     # Total size: #{filelist.values.sum}
+  #     #{filelist.keys.sort.join("\n")}
+  #   EOF
+  #
+  #   if Dir.exist?("#{CREW_LOCAL_REPO_ROOT}/manifest") && File.writable?("#{CREW_LOCAL_REPO_ROOT}/manifest")
+  #     puts "Updating manifest filelist for #{@pkg.name}...".orange
+  #     FileUtils.mkdir_p "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{@pkg.name.chr.downcase}"
+  #     FileUtils.cp 'filelist', "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{@pkg.name.chr.downcase}/#{@pkg.name}.filelist"
+  #   end
+  # end
+  # FileUtils.cp 'dlist', File.join(CREW_META_PATH, "#{@pkg.name}.directorylist"), verbose: CREW_VERBOSE
+  # FileUtils.cp 'filelist', File.join(CREW_META_PATH, "#{@pkg.name}.filelist"), verbose: CREW_VERBOSE
+  # end
+
+# end
+
 def update_package_file(package = nil, pkg_version = nil, binary_compression = nil)
   pkg_file = "#{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
   binary_sha256_hash = { armv7l: nil, i686: nil, x86_64: nil }
@@ -2167,6 +2280,15 @@ def update_command(_args)
 end
 
 def upgrade_command(args) = upgrade(*args['<name>'], build_from_source: @opt_source)
+
+def update_package_filelist_command(args)
+  return if CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES
+  args = { '<name>' => args.split } if args.is_a? String
+  args['<name>'].each do |name|
+    search name
+    update_package_filelist(name)
+  end
+end
 
 def update_package_file_command(args)
   return if CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES

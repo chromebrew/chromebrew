@@ -135,23 +135,17 @@ def self.check_build_uploads(pkg)
   return architectures_to_check
 end
 
-def update_hashes_and_manifests(pkg)
+def update_manifests(pkg)
+  unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES
+    # Update
+    system "crew update_package_filelist #{pkg.name}"
+  end
+end
+
+def update_hashes(pkg)
   unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES
     # Update/add build hashes if this package has builds.
     system "crew update_package_file #{pkg.name}" unless pkg.no_compile_needed?
-    # Add manifests if we are in the right architecture.
-    if PackageUtils.compatible?(pkg)
-      # Using crew reinstall -f package here updates the hashes for
-      # binaries.
-      if system("yes | crew reinstall --regenerate-filelist #{'-f' unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES} #{pkg.name}") && File.exist?("#{CREW_META_PATH}/#{pkg.name}.filelist") && File.directory?(CREW_LOCAL_REPO_ROOT)
-        puts 'Adding manifests...'
-        FileUtils.cp "#{CREW_META_PATH}/#{pkg.name}.filelist", "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{pkg.name.chr}/#{pkg.name}.filelist"
-      end
-    else
-      puts PackageUtils.incompatible_reason(pkg).join("\n").orange
-      puts 'Manifests will not be added.'.lightred
-      return
-    end
   end
 end
 
@@ -348,13 +342,15 @@ updated_packages.each do |pkg|
     puts "#{name.capitalize} #{pkg_obj.version} has no binaries and may not need them.".lightgreen
     next pkg
   elsif pkg_obj.no_compile_needed?
-    update_hashes_and_manifests(pkg_obj)
+    update_hashes(pkg_obj)
+    update_manifests(pkg_obj)
   else
     puts "#{name.capitalize} appears to need binaries. Checking to see if current binaries exist...".orange
     builds_needed = check_build_uploads(pkg_obj)
     if builds_needed.empty?
       puts "No builds are needed for #{name} #{pkg_obj.version}.".lightgreen
-      update_hashes_and_manifests(pkg_obj)
+      update_hashes(pkg_obj)
+      update_manifests(pkg_obj)
       update_deps(pkg_obj)
       puts "Copying #{File.join(CREW_PACKAGES_PATH, pkg.sub('packages/', ''))} to #{pkg}".lightblue
       FileUtils.cp File.join(CREW_PACKAGES_PATH, pkg.sub('packages/', '')), pkg
