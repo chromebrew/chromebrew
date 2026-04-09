@@ -6,7 +6,7 @@ require 'buildsystems/rust'
 class Uutils_coreutils < RUST
   description 'Cross-platform Rust rewrite of the GNU coreutils'
   homepage 'https://github.com/uutils/coreutils'
-  version '0.8.0'
+  version '0.8.0-1'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/uutils/coreutils.git'
@@ -40,7 +40,7 @@ class Uutils_coreutils < RUST
     end
     `#{CREW_DEST_PREFIX}/bin/coreutils --list`.chomp.split.each do |coreutil|
       Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
-        FileUtils.ln_s 'coreutils', coreutil.to_s
+        FileUtils.link_entry 'coreutils', coreutil.to_s
       end
     end
   end
