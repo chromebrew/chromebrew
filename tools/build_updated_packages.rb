@@ -41,6 +41,7 @@ if ARGV.include?('-h') || ARGV.include?('--help')
     Example: ./build_updated_packages.rb abcde -v
     If <package> is omitted, recently updated files will be checked for needed builds.
     Passing --continue-after-failed-builds will continue if builds fail.
+    Passing --only-specified-packages will only build the packages given as arguments.
     Passing --ignore-changed-packages will not check packages git reports as having changed.
     Passing --rebuild will rebuild packages even if binaries already exist upstream.
     Passing --skip will skip update checks.
@@ -58,8 +59,9 @@ puts "Setting the CREW_AGREE_TIMEOUT_SECONDS environment variable to less than t
 
 CONTINUE_AFTER_FAILED_BUILDS = ARGV.include?('--continue-after-failed-builds')
 REBUILD_PACKAGES = ARGV.include?('--rebuild')
-IGNORE_CHANGED_PACKAGES = ARGV.include?('--ignore-changed-packages')
-SKIP_UPDATE_CHECKS = ARGV.include?('--skip')
+ONLY_SPECIFIED_PACKAGES = ARGV.include?('--only-specified-packages')
+IGNORE_CHANGED_PACKAGES = ARGV.include?('--ignore-changed-packages') || ARGV.include?('--only-specified-packages')
+SKIP_UPDATE_CHECKS = ARGV.include?('--skip') || ARGV.include?('--only-specified-packages')
 CHECK_ALL_PYTHON = ARGV.include?('--check-all-python')
 CHECK_ALL_RUBY = ARGV.include?('--check-all-ruby')
 VERBOSE = ARGV.include?('-v') || ARGV.include?('--verbose') || ARGV.include?('-vv')
@@ -267,17 +269,19 @@ else
   updated_packages.push(*changed_files_previous_commit.grep(%r{(packages/).*.*(\.rb$)}))
 end
 
-crew_update_packages = `CREW_NO_GIT=1 CREW_UNATTENDED=1 crew update | grep "\\[\\""  | jq -r '.[]'`.chomp.split.map(&'packages/'.method(:+)).map { |i| i.concat('.rb') }
-if CHECK_ALL_PYTHON
-  py_packages = `grep -l CREW_PY_VER packages/*`.chomp.split
-  updated_packages.push(*py_packages)
+unless ONLY_SPECIFIED_PACKAGES
+  crew_update_packages = `CREW_NO_GIT=1 CREW_UNATTENDED=1 crew update | grep "\\[\\""  | jq -r '.[]'`.chomp.split.map(&'packages/'.method(:+)).map { |i| i.concat('.rb') }
+  if CHECK_ALL_PYTHON
+    py_packages = `grep -l CREW_PY_VER packages/*`.chomp.split
+    updated_packages.push(*py_packages)
+  end
+  if CHECK_ALL_RUBY
+    ruby_packages = `grep -l CREW_RUBY_VER packages/*`.chomp.split
+    updated_packages.push(*ruby_packages)
+  end
+  updated_packages.push(*crew_update_packages)
+  updated_packages.uniq!
 end
-if CHECK_ALL_RUBY
-  ruby_packages = `grep -l CREW_RUBY_VER packages/*`.chomp.split
-  updated_packages.push(*ruby_packages)
-end
-updated_packages.push(*crew_update_packages)
-updated_packages.uniq!
 
 # Remove packages that don't need to be checked for updates from the
 # check list.
