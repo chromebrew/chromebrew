@@ -11,9 +11,9 @@ class Xkeyboard_config < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '61fd3305c9e783d87ee8343bf5293381153741b54a402fe7597fbcebfd39ba5b',
-     armv7l: '61fd3305c9e783d87ee8343bf5293381153741b54a402fe7597fbcebfd39ba5b',
-     x86_64: '95da16585d9974a05b5a23ae340f7c15ce4ae30b49949257a68c3f0c8efcb504'
+    aarch64: '2aeac8ebf7840a67cafe259927f81e05658570bc8b8e77a29ffb78215e6b95ea',
+     armv7l: '2aeac8ebf7840a67cafe259927f81e05658570bc8b8e77a29ffb78215e6b95ea',
+     x86_64: '64c0bf0cefb402f69b5d9b9616e794c49fd25a44ab3fcca571a40f230f84bbfc'
   })
 
   depends_on 'libx11' => :build
