@@ -17,7 +17,7 @@ class Expat < CMake
      x86_64: '51b51d8a05143122359ba2197011d99e78f8158d741b599557391c73ced2a5b4'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
   run_tests
 
   cmake_build_relative_dir 'expat'

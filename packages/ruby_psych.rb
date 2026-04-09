@@ -16,9 +16,9 @@ class Ruby_psych < RUBY
      x86_64: '0c4fae6b05bd50895eb878202c9b5d176f00aa28892298b3f01122e2cc5d978a'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'libyaml' # R
-  depends_on 'ruby' # R
+  depends_on 'glibc' => :library
+  depends_on 'libyaml' => :library
+  depends_on 'ruby' => :library
   depends_on 'ruby_stringio' # R
 
   conflicts_ok

@@ -20,8 +20,8 @@ class Ncurses < Autotools
      x86_64: '6520c65b81a9a60f7a7f0ba869007f366834bc9c2d7a9a427e3339d4b08550a5'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
 
   autotools_configure_options "--program-prefix='' \
           --program-suffix='' \

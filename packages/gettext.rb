@@ -19,14 +19,14 @@ class Gettext < Autotools
      x86_64: '51a3ac85d367f61ebb115acb4dfdfa592e1cdd2910245322c2ceedacd0fd4b86'
   })
 
-  depends_on 'acl' # R
-  depends_on 'attr' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'acl' => :library
+  depends_on 'attr' => :library
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
   depends_on 'gperf' => :build
-  depends_on 'libunistring' # R
-  depends_on 'libxml2' # R
-  depends_on 'ncurses' # R
+  depends_on 'libunistring' => :library
+  depends_on 'libxml2' => :library
+  depends_on 'ncurses' => :library
   depends_on 'openjdk8' => :build
   depends_on 'wget2' => :build
 

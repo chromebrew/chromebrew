@@ -16,8 +16,8 @@ class Ruby_io_console < RUBY
      x86_64: '416956a3e4a00890c0467ae382748a8958d14dc5e667d50111a646d74553246f'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'ruby' # R
+  depends_on 'glibc' => :library
+  depends_on 'ruby' => :library
 
   conflicts_ok
   gem_compile_needed

@@ -17,8 +17,8 @@ class Nettle < Autotools
      x86_64: '6728627c52997ea93fcdf36d277da373a5a6cc620aeefd4e44c5b6887663ce7b'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'gmp' # R
+  depends_on 'glibc' => :library
+  depends_on 'gmp' => :library
   depends_on 'm4' => :build
   depends_on 'openssl' => :build
 end

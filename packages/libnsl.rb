@@ -20,10 +20,10 @@ class Libnsl < Autotools
      x86_64: 'b941648127b3756d4e8ad781060d3c9a884bdf2b080d8971864c19863ea07283'
   })
 
-  depends_on 'e2fsprogs' # R
-  depends_on 'glibc' # R
-  depends_on 'krb5' # R
-  depends_on 'libtirpc' # R
+  depends_on 'e2fsprogs' => :library
+  depends_on 'glibc' => :library
+  depends_on 'krb5' => :library
+  depends_on 'libtirpc' => :library
 
   autotools_configure_options '--disable-static'
 end

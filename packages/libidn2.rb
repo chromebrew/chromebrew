@@ -17,6 +17,6 @@ class Libidn2 < Autotools
      x86_64: '1d57e7b2d3438cb1a912506621938bc7140876b9cf4e1b54f07c0761851aca98'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'libunistring' # R
+  depends_on 'glibc' => :library
+  depends_on 'libunistring' => :library
 end

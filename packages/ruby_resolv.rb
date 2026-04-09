@@ -16,6 +16,8 @@ class Ruby_resolv < RUBY
      x86_64: 'ad301b59ec471e674e42e1a528b1d13120658856c98a712dc099b81a3f3fb773'
   })
 
+  depends_on 'ruby' => :logical
+
   conflicts_ok
   gem_compile_needed
 end

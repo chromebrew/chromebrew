@@ -20,7 +20,7 @@ class Libtasn1 < Autotools
   # bison, diff, cmp are required at compile-time
   depends_on 'bison' => :build
   depends_on 'diffutils' => :build
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
 
   autotools_configure_options '--enable-shared \
       --enable-static \

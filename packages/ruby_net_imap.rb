@@ -8,6 +8,7 @@ class Ruby_net_imap < RUBY
   compatibility 'all'
   source_url 'SKIP'
 
+  depends_on 'ruby' => :logical
   depends_on 'ruby_date' # R
   depends_on 'ruby_net_protocol' # R
 

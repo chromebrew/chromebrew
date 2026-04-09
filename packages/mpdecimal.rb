@@ -20,6 +20,6 @@ class Mpdecimal < Autotools
      x86_64: 'e9b8b7699c8c1876f56033752b962165bc47d82b866ee9fbdfe31247a651b2d0'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
 end

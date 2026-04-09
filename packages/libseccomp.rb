@@ -17,7 +17,7 @@ class Libseccomp < Package
      x86_64: 'a5cb3ebe2ae90e90d090596d5fb37178a8a13e528fe47917608ad004a6a38f91'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
   depends_on 'gperf' => :build
 
   def self.build

@@ -16,9 +16,9 @@ class Ruby_fiddle < RUBY
      x86_64: 'a6bf9e0458ca281f659ae9969242cd32a0cf1b9458149cbcc1554a98006f1ce5'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'libffi' # R
-  depends_on 'ruby' # R
+  depends_on 'glibc' => :library
+  depends_on 'libffi' => :library
+  depends_on 'ruby' => :library
 
   conflicts_ok
   gem_compile_needed

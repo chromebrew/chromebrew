@@ -16,8 +16,8 @@ class Ruby_fcntl < RUBY
      x86_64: 'c124e7e0fde8831456c59101263283bd9cb3a3e8b3451d4f96bbcd413c45b700'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'ruby' # R
+  depends_on 'glibc' => :library
+  depends_on 'ruby' => :library
 
   conflicts_ok
   gem_compile_needed

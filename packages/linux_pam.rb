@@ -17,10 +17,10 @@ class Linux_pam < Meson
      x86_64: '9bb1165900b6bf5be8fac459ce3cee8f07c9b271dcae514a23f64ecd7dffcb3e'
   })
 
-  depends_on 'gdbm' # R
-  depends_on 'glibc' # R
-  depends_on 'libeconf' # R
-  depends_on 'libxcrypt' # R
+  depends_on 'gdbm' => :library
+  depends_on 'glibc' => :library
+  depends_on 'libeconf' => :library
+  depends_on 'libxcrypt' => :logical
 
   no_mold
 

@@ -18,7 +18,7 @@ class Attr < Autotools
      x86_64: 'eab11fd7c7b070b0bdaaa130ef733168481a25c05ec7b4c285a3dd893f33e947'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
   depends_on 'libcap' => :build
 
   no_filefix

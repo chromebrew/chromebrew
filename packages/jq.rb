@@ -17,8 +17,8 @@ class Jq < Autotools
      x86_64: '1c10b89e6e12e52466f1b4dabe999ba9d705c54bddc2b3258e13898103f83826'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'oniguruma' # R
+  depends_on 'glibc' => :library
+  depends_on 'oniguruma' => :library
 
   autotools_configure_options "--disable-maintainer-mode \
       --disable-docs \

@@ -16,8 +16,8 @@ class Ruby_cgi < RUBY
      x86_64: '4c0e2ff6099091acd23f8b5e4e3789e778a8ca9da68c9800b142971c54feb84c'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'ruby' # R
+  depends_on 'glibc' => :library
+  depends_on 'ruby' => :library
 
   conflicts_ok
   gem_compile_needed

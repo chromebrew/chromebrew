@@ -18,8 +18,8 @@ class Libxml2 < CMake
   })
 
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'icu4c' # R
+  depends_on 'glibc' => :library
+  depends_on 'icu4c' => :library
 
   conflicts_ok
   gnome

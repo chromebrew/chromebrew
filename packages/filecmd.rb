@@ -17,11 +17,12 @@ class Filecmd < Package
      x86_64: 'e5fe4216f9fd7d02d4b75f225fa5eb53fc4c6faca7df95416e27689136054470'
   })
 
-  depends_on 'bzip2' # R
-  depends_on 'glibc' # R
-  depends_on 'lzlib' # R Fixes checking lzlib.h usability... no
-  depends_on 'xzutils' # R
-  depends_on 'zstd' # R
+  depends_on 'bzip2' => :library
+  depends_on 'glibc' => :library
+  depends_on 'lzlib' => :library
+  depends_on 'xzutils' => :library
+  depends_on 'zlib' => :library
+  depends_on 'zstd' => :library
 
   def self.prebuild
     # The filefix command changes the full path of the file command in configure scripts.

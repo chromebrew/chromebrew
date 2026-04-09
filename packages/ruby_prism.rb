@@ -16,8 +16,8 @@ class Ruby_prism < RUBY
      x86_64: '8576c36f20e83890904d3e7b19d24fb4413259f69ec97b0c9107a19d59ced9b9'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'ruby' # R
+  depends_on 'glibc' => :library
+  depends_on 'ruby' => :library
 
   conflicts_ok
   gem_compile_needed

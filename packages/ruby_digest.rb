@@ -16,8 +16,8 @@ class Ruby_digest < RUBY
      x86_64: '1174e436f7c2b41f44e85cd1b521be28d399e8a58c36593c2e1137b5b3f26925'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'ruby' # R
+  depends_on 'glibc' => :library
+  depends_on 'ruby' => :library
 
   conflicts_ok
   gem_compile_needed

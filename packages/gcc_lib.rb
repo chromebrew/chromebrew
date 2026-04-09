@@ -20,7 +20,7 @@ class Gcc_lib < Package
   })
 
   depends_on 'gcc_build' => :build
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
 
   no_shrink
   no_source_build

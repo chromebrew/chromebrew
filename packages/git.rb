@@ -18,15 +18,15 @@ class Git < Meson
   })
 
   depends_on 'ca_certificates' => :build
-  depends_on 'curl' # R
-  depends_on 'expat' # R
-  depends_on 'glibc' # R
-  depends_on 'openssl' # R
-  depends_on 'pcre2' # R
+  depends_on 'curl' => :library
+  depends_on 'expat' => :library
+  depends_on 'glibc' => :library
+  depends_on 'openssl' => :library
+  depends_on 'pcre2' => :library
   depends_on 'py3_asciidoc' => :build
   depends_on 'ruby_asciidoctor' => :build
   depends_on 'xmlto' => :build
-  depends_on 'zlib_ng' # R
+  depends_on 'zlib_ng' => :library
 
   print_source_bashrc
   run_tests

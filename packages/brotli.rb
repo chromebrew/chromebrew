@@ -17,5 +17,5 @@ class Brotli < CMake
      x86_64: '0183cd16f1c20c73bbbad805801e4470bdf734759f5c376efa21cfa9b2e761f9'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
 end

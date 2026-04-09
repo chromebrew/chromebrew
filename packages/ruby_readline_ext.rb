@@ -16,10 +16,10 @@ class Ruby_readline_ext < RUBY
      x86_64: '045b680143d1fab63b63752c9ddc87957b4d5c2b089c63ce36c234047b7dbf18'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'ncurses' # R
-  depends_on 'readline' # R
-  depends_on 'ruby' # R
+  depends_on 'glibc' => :library
+  depends_on 'ncurses' => :library
+  depends_on 'readline' => :library
+  depends_on 'ruby' => :library
 
   conflicts_ok
   gem_compile_needed

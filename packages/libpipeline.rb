@@ -17,7 +17,7 @@ class Libpipeline < Autotools
      x86_64: 'f61c12d723d3353d685970bf07b1f10990fa589dfe013cd4a2c98cf6d0b79875'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
 
   run_tests
 end

@@ -24,10 +24,10 @@ class Gawk < Autotools
      x86_64: 'f792967a6c06e7ea70b1eb05c4fa68fa2ae6d9bc7876552f33a50a25fcb18523'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'gmp' # R
+  depends_on 'glibc' => :library
+  depends_on 'gmp' => :library
   depends_on 'libsigsegv' # R
-  depends_on 'mpfr' # R
+  depends_on 'mpfr' => :library
   depends_on 'ncurses' => :build
   depends_on 'readline' => :executable
 

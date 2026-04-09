@@ -18,7 +18,7 @@ class P11kit < Meson
   })
 
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'libffi' # R
-  depends_on 'libtasn1' # R
+  depends_on 'glibc' => :library
+  depends_on 'libffi' => :library
+  depends_on 'libtasn1' => :library
 end

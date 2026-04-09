@@ -8,6 +8,7 @@ class Ruby_net_ftp < RUBY
   compatibility 'all'
   source_url 'SKIP'
 
+  depends_on 'ruby' => :logical
   depends_on 'ruby_net_protocol' # R
   depends_on 'ruby_time' # R
 

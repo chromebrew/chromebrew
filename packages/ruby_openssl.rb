@@ -16,9 +16,9 @@ class Ruby_openssl < RUBY
      x86_64: '4f12e0815f7768dd533f3ccd009533d0698759724c032095c85b5c961d8b1fc2'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'openssl' # R
-  depends_on 'ruby' # R
+  depends_on 'glibc' => :library
+  depends_on 'openssl' => :library
+  depends_on 'ruby' => :library
 
   conflicts_ok
   gem_compile_needed

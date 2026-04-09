@@ -16,8 +16,8 @@ class Ruby_io_wait < RUBY
      x86_64: 'b67d1759d016850561239005b1c7ac396faf5459fc6dd1f166545f28613d81f0'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'ruby' # R
+  depends_on 'glibc' => :library
+  depends_on 'ruby' => :library
 
   conflicts_ok
   gem_compile_needed

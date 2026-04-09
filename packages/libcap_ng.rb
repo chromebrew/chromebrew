@@ -17,7 +17,7 @@ class Libcap_ng < Autotools
      x86_64: '3679b06d4b938cb6d513f2dde073a4068b140e1da07eb95a8980243a0095c3f4'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
   depends_on 'python3' => :build
   depends_on 'swig' => :build
 

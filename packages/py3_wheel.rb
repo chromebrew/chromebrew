@@ -16,8 +16,8 @@ class Py3_wheel < Pip
      x86_64: 'ad2baf22378fc4a7e5f0e6272bca009600ecfc7b9fb8a4497fa76a567b9a0f60'
   })
 
-  depends_on 'python3'
   depends_on 'py3_packaging'
+  depends_on 'python3' => :logical
 
   no_source_build
 end

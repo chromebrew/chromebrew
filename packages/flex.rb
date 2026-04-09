@@ -18,7 +18,7 @@ class Flex < Autotools
   })
 
   depends_on 'bison' => :build
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
   depends_on 'm4' => :build
 
   autotools_configure_options '--with-pic --disable-static --enable-shared'

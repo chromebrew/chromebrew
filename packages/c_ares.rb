@@ -18,7 +18,7 @@ class C_ares < CMake
   })
 
   depends_on 'docbook2x' => :build
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
 
   cmake_options '-DCARES_BUILD_TESTS=OFF \
       -DCARES_BUILD_TOOLS=ON'

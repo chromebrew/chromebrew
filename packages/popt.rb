@@ -17,5 +17,5 @@ class Popt < Autotools
      x86_64: 'ef8d69f383a22b36318ce097b0f953a0dd318dffa174acf645b0ac1342e346e1'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
 end

@@ -18,10 +18,10 @@ class Krb5 < Autotools
   })
 
   depends_on 'ccache' => :build
-  depends_on 'e2fsprogs' # R
+  depends_on 'e2fsprogs' => :library
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'openssl' # R
+  depends_on 'glibc' => :library
+  depends_on 'openssl' => :library
 
   autotools_build_relative_dir 'src'
 

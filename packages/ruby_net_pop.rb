@@ -8,6 +8,7 @@ class Ruby_net_pop < RUBY
   compatibility 'all'
   source_url 'SKIP'
 
+  depends_on 'ruby' => :logical
   depends_on 'ruby_net_protocol' # R
 
   conflicts_ok

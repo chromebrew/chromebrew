@@ -17,7 +17,7 @@ class Xxhash < CMake
      x86_64: '496635d53101cadaa23d7ca7467525a2762c755cbdef99bc9721fb17dd2ba856'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
 
   cmake_build_relative_dir 'cmake_unofficial'
 end

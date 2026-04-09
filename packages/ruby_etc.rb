@@ -16,8 +16,8 @@ class Ruby_etc < RUBY
      x86_64: 'c9e608243f39c6c1fc45c81f0b61ae8e8d2181e2d2cb6595fde44762524fa5af'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'ruby' # R
+  depends_on 'glibc' => :library
+  depends_on 'ruby' => :library
 
   conflicts_ok
   gem_compile_needed

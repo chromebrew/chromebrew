@@ -17,13 +17,13 @@ class Elfutils < Autotools
      x86_64: 'a1c3e80e55dffc3e1e9503a87552d38a34fbb3fc83bbf7eadf359c154a9bef2e'
   })
 
-  depends_on 'bzip2' # R
+  depends_on 'bzip2' => :library
   depends_on 'gcc_lib' => :executable
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
   depends_on 'libarchive' => :executable
-  depends_on 'xzutils' # R
-  depends_on 'zlib' # R
-  depends_on 'zstd' # R
+  depends_on 'xzutils' => :library
+  depends_on 'zlib' => :library
+  depends_on 'zstd' => :library
 
   # -D_FORTIFY_SOURCE=0 needed due to -O3 optimization.
   autotools_pre_configure_options "CFLAGS+=' -Wno-error -D_FORTIFY_SOURCE=0' CXXFLAGS+=' -Wno-error -D_FORTIFY_SOURCE=0'"

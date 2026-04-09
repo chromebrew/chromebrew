@@ -19,10 +19,10 @@ class Openldap < Autotools
 
   depends_on 'e2fsprogs' => :build
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
   depends_on 'krb5' => :build
-  depends_on 'libcyrussasl' # R
-  depends_on 'openssl' # R
+  depends_on 'libcyrussasl' => :library
+  depends_on 'openssl' => :library
   depends_on 'util_linux' => :executable
 
   autotools_configure_options '--disable-slapd'

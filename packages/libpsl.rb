@@ -17,9 +17,9 @@ class Libpsl < Meson
      x86_64: 'fd60346c566038b898a0deb19255fd0efbc4d5b33d8b3915abb89937c7cf624a'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'libidn2' # R
-  depends_on 'libunistring' # R
+  depends_on 'glibc' => :library
+  depends_on 'libidn2' => :library
+  depends_on 'libunistring' => :library
 
   def self.patch
     # Update the PSL during build.

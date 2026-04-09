@@ -17,5 +17,5 @@ class Libyaml < Autotools
      x86_64: 'fa9c1391a969c53c9bc6d1a67b60002bb162b840b2e7f47511c02e6819c67717'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
 end

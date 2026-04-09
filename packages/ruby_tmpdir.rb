@@ -8,6 +8,7 @@ class Ruby_tmpdir < RUBY
   compatibility 'all'
   source_url 'SKIP'
 
+  depends_on 'ruby' => :logical
   depends_on 'ruby_fileutils' # R
 
   conflicts_ok

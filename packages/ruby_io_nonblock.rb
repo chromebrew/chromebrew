@@ -16,8 +16,8 @@ class Ruby_io_nonblock < RUBY
      x86_64: '7b484765ba7da51a36a01f546fdd9c58d5704bcaaa086ec2e0a2f5bbda929c12'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'ruby' # R
+  depends_on 'glibc' => :library
+  depends_on 'ruby' => :library
 
   conflicts_ok
   gem_compile_needed

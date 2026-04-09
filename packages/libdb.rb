@@ -17,8 +17,8 @@ class Libdb < Package
      x86_64: 'aa805c343c1b791f8a6ffa024e43f209342a4fb51df0d30463441a913e8479df'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
 
   def self.patch
     system 'for i in $(cat debian/patches/series); do patch -Np1 -i debian/patches/${i}; done'

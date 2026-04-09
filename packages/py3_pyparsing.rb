@@ -16,8 +16,8 @@ class Py3_pyparsing < Pip
      x86_64: '78672f30aa562db72bb4f1330bde09dab05e856e8c824cff6e90c978fd915d84'
   })
 
-  depends_on 'python3'
   depends_on 'py3_flit_core'
+  depends_on 'python3' => :logical
 
   no_source_build
 end

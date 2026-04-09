@@ -8,6 +8,7 @@ class Ruby_weakref < RUBY
   compatibility 'all'
   source_url 'SKIP'
 
+  depends_on 'ruby' => :logical
   depends_on 'ruby_delegate' # R
 
   conflicts_ok

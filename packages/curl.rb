@@ -17,22 +17,22 @@ class Curl < Autotools
      x86_64: 'da8de400a86808e57e67c6ed0f32b4aec8a8a5646d7292aa8dfb829dac5928a8'
   })
 
-  depends_on 'brotli' # R
-  depends_on 'c_ares' # R
+  depends_on 'brotli' => :library
+  depends_on 'c_ares' => :library
   depends_on 'ca_certificates' => :build
-  depends_on 'glibc' # R
-  depends_on 'libidn2' # R
-  depends_on 'libnghttp2' # R
-  depends_on 'libnghttp3' # R
-  depends_on 'libngtcp2' # R
-  depends_on 'libpsl' # R
-  depends_on 'libssh' # R
-  depends_on 'openldap' # R
-  depends_on 'openssl' # R
+  depends_on 'glibc' => :library
+  depends_on 'libidn2' => :library
+  depends_on 'libnghttp2' => :library
+  depends_on 'libnghttp3' => :library
+  depends_on 'libngtcp2' => :library
+  depends_on 'libpsl' => :library
+  depends_on 'libssh' => :library
+  depends_on 'openldap' => :library
+  depends_on 'openssl' => :library
   depends_on 'python3' => :build
   depends_on 'valgrind' => :build
-  depends_on 'zlib' # R
-  depends_on 'zstd' # R
+  depends_on 'zlib' => :library
+  depends_on 'zstd' => :library
 
   autotools_configure_options "--disable-maintainer-mode \
       --enable-ares \

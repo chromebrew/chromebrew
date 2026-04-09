@@ -16,8 +16,8 @@ class Ruby_ruby_libversion < RUBY
      x86_64: '0d6e1186a3f70fb1ff561939d718aef9c29415751c29771a0a7f40fbc7ab898a'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'libversion' # R
-  depends_on 'ruby' # R
+  depends_on 'glibc' => :library
+  depends_on 'libversion' => :library
+  depends_on 'ruby' => :library
   gem_compile_needed
 end

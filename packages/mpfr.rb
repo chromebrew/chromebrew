@@ -18,8 +18,8 @@ class Mpfr < Autotools
   })
 
   depends_on 'autoconf_archive' => :build
-  depends_on 'glibc' # R
-  depends_on 'gmp' # R
+  depends_on 'glibc' => :library
+  depends_on 'gmp' => :library
 
   autotools_configure_options '--enable-shared'
 

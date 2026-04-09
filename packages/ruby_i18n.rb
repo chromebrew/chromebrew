@@ -8,6 +8,7 @@ class Ruby_i18n < RUBY
   compatibility 'all'
   source_url 'SKIP'
 
+  depends_on 'ruby' => :logical
   depends_on 'ruby_concurrent_ruby' # R
 
   conflicts_ok

@@ -8,6 +8,7 @@ class Ruby_net_protocol < RUBY
   compatibility 'all'
   source_url 'SKIP'
 
+  depends_on 'ruby' => :logical
   depends_on 'ruby_timeout' # R
 
   conflicts_ok

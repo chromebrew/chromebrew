@@ -8,6 +8,7 @@ class Ruby_xmlrpc < RUBY
   compatibility 'all'
   source_url 'SKIP'
 
+  depends_on 'ruby' => :logical
   depends_on 'ruby_webrick' # R
 
   conflicts_ok

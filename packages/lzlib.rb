@@ -17,7 +17,7 @@ class Lzlib < Autotools
      x86_64: '9058118a384e5ee7064d4a55981b722a5b3befd6b8fac16c66f052fdd6a14ef6'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
 
   autotools_configure_options '--enable-shared'
 end

@@ -17,6 +17,7 @@ class Zoneinfo < Package
      x86_64: '92c0953051b5ba5c17154b7e02aae6cd08e824a3799191db18ba8f94e7adc6af'
   })
 
+  depends_on 'glibc' => :executable
   depends_on 'glibc' => :library
 
   def self.patch

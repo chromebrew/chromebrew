@@ -8,6 +8,7 @@ class Ruby_thwait < RUBY
   compatibility 'all'
   source_url 'SKIP'
 
+  depends_on 'ruby' => :logical
   depends_on 'ruby_e2mmap' # R
 
   conflicts_ok

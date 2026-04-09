@@ -17,7 +17,7 @@ class Libsigsegv < Autotools
      x86_64: '1b56f3ef877e3e8962a5b4d42c80f2b5a456a252f6e435d81b0159c59c50bb71'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
 
   autotools_configure_options '--enable-shared \
     --enable-static \

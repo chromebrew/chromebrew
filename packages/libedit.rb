@@ -17,8 +17,8 @@ class Libedit < Autotools
      x86_64: '66475f8d1327be4a3492f3dc9e0e49a30a003e74cae6960e8699afc24863370e'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'ncurses' # R
+  depends_on 'glibc' => :library
+  depends_on 'ncurses' => :library
 
   autotools_configure_options "CPPFLAGS=-I#{CREW_PREFIX}/include/ncursesw"
   run_tests

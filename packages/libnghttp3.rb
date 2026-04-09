@@ -20,7 +20,7 @@ class Libnghttp3 < CMake
      x86_64: '61ca10a660aec6644e1c93ae4c116e03b4812adaa9363e1d4acf8c48401e090d'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
 
   cmake_options '-DENABLE_LIB_ONLY=ON'
 end

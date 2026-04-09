@@ -20,7 +20,7 @@ class Libgpg_error < Autotools
   })
 
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
 
   # Docs fail to build otherwise.
   autotools_configure_options '--enable-maintainer-mode'

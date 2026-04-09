@@ -8,6 +8,7 @@ class Ruby_rss < RUBY
   compatibility 'all'
   source_url 'SKIP'
 
+  depends_on 'ruby' => :logical
   depends_on 'ruby_rexml' # R
 
   conflicts_ok

@@ -17,7 +17,7 @@ class Lz4 < Meson
      x86_64: 'eb0777acb53c1e81e673e87648fdae53a0a05c5e463475e688e6633c27e5b195'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
 
   meson_options '-Dprograms=true'
 

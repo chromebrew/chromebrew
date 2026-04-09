@@ -20,14 +20,14 @@ class Ruby < Package
   depends_on 'ca_certificates' => :logical
   depends_on 'filecmd' => :logical # (This is to enable file command use in package files.)
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'gmp' # R
+  depends_on 'glibc' => :library
+  depends_on 'gmp' => :library
   depends_on 'libffi' # R
-  depends_on 'libxcrypt' # R
-  depends_on 'libyaml' # R
-  depends_on 'openssl' # R
+  depends_on 'libxcrypt' => :library
+  depends_on 'libyaml' => :library
+  depends_on 'openssl' => :library
   depends_on 'rust' => :build
-  depends_on 'zlib' # R
+  depends_on 'zlib' => :library
 
   conflicts_ok # Needed for successful build.
 

@@ -18,10 +18,10 @@ class Slang < Package
   })
 
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'libpng' # R
-  depends_on 'pcre' # R
-  depends_on 'zlib' # R
+  depends_on 'glibc' => :library
+  depends_on 'libpng' => :library
+  depends_on 'pcre' => :library
+  depends_on 'zlib' => :library
 
   def self.build
     system "./configure #{CREW_CONFIGURE_OPTIONS} --without-x"

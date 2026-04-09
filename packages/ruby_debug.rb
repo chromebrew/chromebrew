@@ -16,8 +16,8 @@ class Ruby_debug < RUBY
      x86_64: '12cf6ca041125b269134f00c594b3ecfcda9afdd3ad52661679708b1ab03f0bd'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'ruby' # R
+  depends_on 'glibc' => :library
+  depends_on 'ruby' => :library
   depends_on 'ruby_irb' # R
   depends_on 'ruby_reline' # R
 

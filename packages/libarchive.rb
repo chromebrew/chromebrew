@@ -17,19 +17,19 @@ class Libarchive < CMake
      x86_64: '939b2fe23b232a0b70dbb5432ec32de5aade50f63df56609e84cd449dbe38553'
   })
 
-  depends_on 'acl' # R
+  depends_on 'acl' => :library
   depends_on 'attr' # R
-  depends_on 'bzip2' # R
+  depends_on 'bzip2' => :library
   depends_on 'expat' # R
   depends_on 'gcc_lib' => :build
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
   depends_on 'icu4c' # R
-  depends_on 'libxml2' # R
-  depends_on 'lz4' # R
-  depends_on 'openssl' # R
-  depends_on 'xzutils' # R
-  depends_on 'zlib' # R
-  depends_on 'zstd' # R
+  depends_on 'libxml2' => :library
+  depends_on 'lz4' => :library
+  depends_on 'openssl' => :library
+  depends_on 'xzutils' => :library
+  depends_on 'zlib' => :library
+  depends_on 'zstd' => :library
 
   cmake_options '-DENABLE_TEST=OFF'
 

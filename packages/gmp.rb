@@ -17,8 +17,8 @@ class Gmp < Autotools
      x86_64: 'd4240bcc61b5901ab86c15b28e320c72ae470bfc20d415471d20cb90b2456753'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
 
   autotools_configure_options '--disable-maintainer-mode \
       --enable-cxx'

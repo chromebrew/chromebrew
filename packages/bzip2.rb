@@ -18,7 +18,7 @@ class Bzip2 < Package
   })
 
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
 
   def self.patch
     system "sed -i 's,^LDFLAGS=,LDFLAGS=-flto=auto,' Makefile"

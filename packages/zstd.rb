@@ -18,7 +18,7 @@ class Zstd < CMake
   })
 
   depends_on 'gcc_lib' => :executable
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
   depends_on 'lz4' => :executable
   depends_on 'xzutils' => :executable
   depends_on 'zlib' => :executable

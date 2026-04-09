@@ -16,8 +16,8 @@ class Ruby_racc < RUBY
      x86_64: '3f5522004826d0ef99e0f248812e80338d8c1deadd198c22fb062ceb82e872d3'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'ruby' # R
+  depends_on 'glibc' => :library
+  depends_on 'ruby' => :library
 
   conflicts_ok
   gem_compile_needed

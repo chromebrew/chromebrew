@@ -17,8 +17,8 @@ class Pcre < Autotools
      x86_64: 'ee4f6f40c9acfd64e9c93281d8a5a6b8ac1aab3da5f11c7bbf5bfddc2bedc2d3'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
   depends_on 'readline' => :executable
 
   autotools_configure_options '--enable-shared \

@@ -16,8 +16,8 @@ class Ruby_stringio < RUBY
      x86_64: 'c3ed8c25a806797449692fc00b8cf28efffbb1829d1b5283eae8466a5cf1d4ca'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'ruby' # R
+  depends_on 'glibc' => :library
+  depends_on 'ruby' => :library
 
   conflicts_ok
   gem_compile_needed

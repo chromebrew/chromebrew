@@ -16,8 +16,8 @@ class Ruby_nkf < RUBY
      x86_64: '10eb207d3456b09935161ca3caf5b3c397f35a1c945abb8fab119211a8e9abce'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'ruby' # R
+  depends_on 'glibc' => :library
+  depends_on 'ruby' => :library
 
   conflicts_ok
   gem_compile_needed

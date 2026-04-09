@@ -8,6 +8,7 @@ class Ruby_httparty < RUBY
   compatibility 'all'
   source_url 'SKIP'
 
+  depends_on 'ruby' => :logical
   depends_on 'ruby_csv' # R
   depends_on 'ruby_mini_mime' # R
   depends_on 'ruby_multi_xml' # R

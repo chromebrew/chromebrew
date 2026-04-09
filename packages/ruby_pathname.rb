@@ -16,8 +16,8 @@ class Ruby_pathname < RUBY
      x86_64: '874f4c9314e70e2a869532eda3f7f774568bf410489539e8f45b116420f4908f'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'ruby' # R
+  depends_on 'glibc' => :library
+  depends_on 'ruby' => :library
 
   conflicts_ok
   gem_compile_needed

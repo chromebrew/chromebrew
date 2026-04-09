@@ -8,6 +8,7 @@ class Ruby_un < RUBY
   compatibility 'all'
   source_url 'SKIP'
 
+  depends_on 'ruby' => :logical
   depends_on 'ruby_power_assert' # R
 
   conflicts_ok

@@ -8,6 +8,7 @@ class Ruby_rinda < RUBY
   compatibility 'all'
   source_url 'SKIP'
 
+  depends_on 'ruby' => :logical
   depends_on 'ruby_drb' # R
   depends_on 'ruby_forwardable' # R
   depends_on 'ruby_ipaddr' # R

@@ -19,8 +19,8 @@ class Libunbound < Autotools
 
   depends_on 'expat' => :executable
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'openssl' # R On i686 openssl needs to be installed before libunbound.
+  depends_on 'glibc' => :library
+  depends_on 'openssl' => :library
 
   autotools_configure_options '--enable-shared \
     --enable-static \

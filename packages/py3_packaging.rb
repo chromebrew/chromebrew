@@ -17,7 +17,7 @@ class Py3_packaging < Pip
   })
 
   depends_on 'py3_pyparsing'
-  depends_on 'python3'
+  depends_on 'python3' => :logical
 
   no_source_build
 end

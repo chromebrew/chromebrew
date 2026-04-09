@@ -16,8 +16,8 @@ class Ruby_date < RUBY
      x86_64: 'f2a51c6e0a68bf936b84097cd3b7b0c5a111fd78dcf5c3cc43040c15610b5865'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'ruby' # R
+  depends_on 'glibc' => :library
+  depends_on 'ruby' => :library
 
   conflicts_ok
   gem_compile_needed

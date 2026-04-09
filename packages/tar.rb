@@ -17,10 +17,10 @@ class Tar < Autotools
      x86_64: '860624ccd43ece3195914c147943241ccad087a9eefb44ddc32e4120454a871e'
   })
 
-  depends_on 'acl' # R
   depends_on 'acl' => :executable
-  depends_on 'glibc' # R
+  depends_on 'acl' => :library
   depends_on 'glibc' => :executable
+  depends_on 'glibc' => :library
 
   autotools_configure_options '--disable-year2038' unless ARCH == 'x86_64'
 end

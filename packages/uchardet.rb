@@ -17,6 +17,6 @@ class Uchardet < CMake
      x86_64: '4f101f07fc62f24e9a2777c6f0fc4e2106979edbe45721325c299208e7e9e5f7'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
 end

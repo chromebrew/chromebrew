@@ -18,5 +18,5 @@ class Libeconf < Meson
   })
 
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
 end

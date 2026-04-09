@@ -17,7 +17,7 @@ class Libxcrypt < Autotools
      x86_64: '1553a96a54eb3480a4906eec597178d9cce561f2417d78315fead429a45c5fd8'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
   depends_on 'llvm_dev' => :build
 
   conflicts_ok

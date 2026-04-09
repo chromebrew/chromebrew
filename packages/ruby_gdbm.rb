@@ -16,9 +16,9 @@ class Ruby_gdbm < RUBY
      x86_64: '3954165b9abf540336b2f0b8a541c65b94965d74897eb928e495735770e4e9eb'
   })
 
-  depends_on 'gdbm' # R
-  depends_on 'glibc' # R
-  depends_on 'ruby' # R
+  depends_on 'gdbm' => :library
+  depends_on 'glibc' => :library
+  depends_on 'ruby' => :library
 
   conflicts_ok
   gem_compile_needed

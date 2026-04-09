@@ -18,8 +18,8 @@ class Readline < Package
   })
 
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'ncurses' # R
+  depends_on 'glibc' => :library
+  depends_on 'ncurses' => :library
 
   def self.build
     system "./configure \

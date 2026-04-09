@@ -18,8 +18,8 @@ class E2fsprogs < Package
   })
 
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'util_linux' # R
+  depends_on 'glibc' => :library
+  depends_on 'util_linux' => :library
 
   def self.build
     system "./configure #{CREW_CONFIGURE_OPTIONS}\

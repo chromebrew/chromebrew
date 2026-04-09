@@ -18,8 +18,8 @@ class Libgcrypt < Autotools
   })
 
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'libgpg_error' # R
+  depends_on 'glibc' => :library
+  depends_on 'libgpg_error' => :library
 
   autotools_configure_options '--enable-static \
       --enable-shared'

@@ -17,5 +17,5 @@ class Oniguruma < Autotools
      x86_64: '59f7cf8d137cb10eb3dff51744cea72ee5575ea05c58f4c9d65fa073781ad95d'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
 end

@@ -16,8 +16,8 @@ class Ruby_syslog < RUBY
      x86_64: 'd66baa5fa2bdbd08f995f2d65657e5e68bfaa7abbc626fbdb61bac5539ff1844'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'ruby' # R
+  depends_on 'glibc' => :library
+  depends_on 'ruby' => :library
 
   conflicts_ok
   gem_compile_needed

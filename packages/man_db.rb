@@ -20,12 +20,12 @@ class Man_db < Package
   no_fhs
 
   depends_on 'gcc_lib' # R
-  depends_on 'gdbm' # R
-  depends_on 'glibc' # R
+  depends_on 'gdbm' => :library
+  depends_on 'glibc' => :library
   depends_on 'groff' => :logical
-  depends_on 'libpipeline' # R
-  depends_on 'libseccomp' # R
-  depends_on 'zlib' # R
+  depends_on 'libpipeline' => :library
+  depends_on 'libseccomp' => :library
+  depends_on 'zlib' => :library
 
   def self.patch
     system "for f in $(grep -lr '/usr/local' | xargs); do sed -i 's,/usr/local,#{CREW_PREFIX},g' $f; done"

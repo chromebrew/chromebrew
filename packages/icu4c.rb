@@ -17,8 +17,8 @@ class Icu4c < Autotools
      x86_64: 'e57e0d659d1729280e9f89835496e1776860acc4879614e65f534accebbb4c71'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
 
   ignore_updater # Handle updates manually since so many packages need to be rebuilt with an icu4c update.
 

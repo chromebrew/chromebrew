@@ -18,13 +18,13 @@ class Libcyrussasl < Autotools
   })
 
   depends_on 'diffutils' => :build
-  depends_on 'e2fsprogs' # R
-  depends_on 'glibc' # R
-  depends_on 'krb5' # R
-  depends_on 'libdb' # R
-  depends_on 'libxcrypt' # R
+  depends_on 'e2fsprogs' => :library
+  depends_on 'glibc' => :library
+  depends_on 'krb5' => :library
+  depends_on 'libdb' => :library
+  depends_on 'libxcrypt' => :library
   depends_on 'linux_pam' => :executable
-  depends_on 'openssl' # R
+  depends_on 'openssl' => :library
 
   autotools_configure_options "--enable-shared \
         --with-configdir=#{CREW_PREFIX}/etc/sasl2 \
