@@ -3,7 +3,7 @@ require 'package'
 class Rclone < Package
   description 'Rclone is a command-line program to manage files on cloud storage.'
   homepage 'https://rclone.org/'
-  version '1.73.3'
+  version '1.73.4'
   license 'MIT'
   compatibility 'all'
   source_url({
@@ -13,10 +13,10 @@ class Rclone < Package
      x86_64: "https://github.com/rclone/rclone/releases/download/v#{version}/rclone-v#{version}-linux-amd64.zip"
   })
   source_sha256({
-    aarch64: '92580ef335105c3cbb3d787a16928841fc1efb15c346d96852726195893a073c',
-     armv7l: '92580ef335105c3cbb3d787a16928841fc1efb15c346d96852726195893a073c',
-       i686: '75d5b5c5be8dcdafc7bf659e63405a761b9845afc3f786ac28110a8cd8289bba',
-     x86_64: '70278c22b98c7d02aed01828b70053904dbce4c8a1a15d7781d836c6fdb036ea'
+    aarch64: 'f8af5af148b038e54ee663ed4f93b4ab98c2069c09c482a9db9103e876de8128',
+     armv7l: 'f8af5af148b038e54ee663ed4f93b4ab98c2069c09c482a9db9103e876de8128',
+       i686: 'c5831c180a83345b41952be51aee2ad724a8c8621624dbb953048bd4e36de525',
+     x86_64: 'abc0e6e0f275a469d94645f7ef92c7c7673eed20b6558acec5ff48b74641213c'
   })
 
   no_compile_needed
