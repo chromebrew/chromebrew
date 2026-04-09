@@ -1,4 +1,5 @@
 ---
+# Version 1.0
 name: Unit Tests
 on:
   check_run:
@@ -21,7 +22,6 @@ jobs:
     if: ${{ ( github.repository_owner == 'chromebrew' ) }}
     runs-on: ubuntu-24.04
     outputs:
-      timestamp: ${{ steps.set-timestamp.outputs.TIMESTAMP }}  # https://stackoverflow.com/a/75142892
       current_head: ${{ steps.get-current-head.outputs.CURRENT_HEAD }}
       changed_packages: ${{ steps.changed-packages.outputs.CHANGED_PACKAGES }}
     steps:
@@ -132,7 +132,7 @@ jobs:
         env:
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
         run: echo "$MATRIX_CONTEXT"
-      - name: Export target docker container to github context
+      - name: Export target docker container environment to github context
         run: |
             case ${{ matrix.arch }} in
               x86_64)
@@ -146,6 +146,9 @@ jobs:
                 fi
                 echo "PLATFORM=linux/amd64" >> "$GITHUB_ENV"
                 echo "LIB_SUFFIX=64" >> "$GITHUB_ENV"
+                if [[ -n "${{ needs.get-compatibility.outputs.x86_64_packages }}" ]]; then
+                    echo "CHANGED_PACKAGES=${{ needs.get-compatibility.outputs.x86_64_packages }}" >> "$GITHUB_ENV"
+                fi
               ;;
               armv7l)
                 # Export the armv7l container depending on whether this branch updates packages with appropriate minimum glibc.
@@ -158,12 +161,18 @@ jobs:
                 fi
                 echo "PLATFORM=linux/arm/v7" >> "$GITHUB_ENV"
                 echo "LIB_SUFFIX=" >> "$GITHUB_ENV"
+                if [[ -n "${{ needs.get-compatibility.outputs.armv7l_packages }}" ]]; then
+                    echo "CHANGED_PACKAGES=${{ needs.get-compatibility.outputs.armv7l_packages }}" >> "$GITHUB_ENV"
+                fi
               ;;
               i686)
                 # There is only one i686 container based upon M58 with glibc 2.23.
                 echo "CONTAINER=satmandu/crew-pre-glibc-standalone:alex-i686.m58" >> "$GITHUB_ENV"
                 echo "PLATFORM=linux/386" >> "$GITHUB_ENV"
                 echo "LIB_SUFFIX=" >> "$GITHUB_ENV"
+                if [[ -n "${{ needs.get-compatibility.outputs.i686_packages }}" ]]; then
+                    echo "CHANGED_PACKAGES=${{ needs.get-compatibility.outputs.i686_packages }}" >> "$GITHUB_ENV"
+                fi
               ;;
             esac
       - name: Run unit tests
