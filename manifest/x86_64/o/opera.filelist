@@ -1,4 +1,4 @@
-# Total size: 363888495
+# Total size: 366782046
 /usr/local/bin/opera
 /usr/local/share/applications/opera.desktop
 /usr/local/share/doc/opera-stable/changelog.gz
@@ -116,7 +116,6 @@
 /usr/local/share/x86_64-linux-gnu/opera-stable/resources/doh_providers.json
 /usr/local/share/x86_64-linux-gnu/opera-stable/resources/domain_suggestions.json
 /usr/local/share/x86_64-linux-gnu/opera-stable/resources/ffmpeg_preload_config.json
-/usr/local/share/x86_64-linux-gnu/opera-stable/resources/keywords.json
 /usr/local/share/x86_64-linux-gnu/opera-stable/resources/opera_intro_extension/0428c5c7e6c4bbf91f69.png
 /usr/local/share/x86_64-linux-gnu/opera-stable/resources/opera_intro_extension/05fd1070863e289cb409.png
 /usr/local/share/x86_64-linux-gnu/opera-stable/resources/opera_intro_extension/0968ac62b8504efada7a.jpg
