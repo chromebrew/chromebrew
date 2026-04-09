@@ -38,6 +38,8 @@ class Uutils_coreutils < RUST
       system "#{CREW_DEST_PREFIX}/bin/uudoc completion #{utility} bash > #{CREW_DEST_PREFIX}/share/bash-completion/completions/#{utility}"
       system "#{CREW_DEST_PREFIX}/bin/uudoc manpage #{utility} > #{CREW_DEST_PREFIX}/share/man/man1/#{utility}.1"
     end
+    # The following can also be done if necessary  from the shell via:
+    # for i in $(coreutils --list) ; do /bin/ln -f /usr/local/bin/coreutils /usr/local/bin/$i ; done
     `#{CREW_DEST_PREFIX}/bin/coreutils --list`.chomp.split.each do |coreutil|
       Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
         FileUtils.link_entry 'coreutils', coreutil.to_s
