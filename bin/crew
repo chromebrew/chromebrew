@@ -92,6 +92,7 @@ String.use_color = args['--color'] || !args['--no-color']
 @opt_keep      = args['--keep']
 @opt_recursive = args['--recursive-build']
 @opt_regen_filelist = args['--regenerate-filelist']
+@opt_ignore_dependencies = args['--ignore-dependencies']
 @opt_source    = args['--source']
 @opt_update    = args['--update-package-files']
 @opt_version   = args['--version']
@@ -1232,13 +1233,17 @@ def install_package(pkgdir)
   end
 end
 
-def resolve_dependencies_and_install(no_advisory: false)
+def resolve_dependencies_and_install(no_advisory: false, ignore_dependencies: false)
   # Process preflight block to see if package should even
   # be downloaded or installed.
   pre_flight
 
   begin
-    to_install   = resolve_dependencies + [@pkg.name]
+    to_install = if ignore_dependencies
+                   [@pkg.name]
+                 else
+                   resolve_dependencies + [@pkg.name]
+                 end
     free_space   = `df --output=avail #{CREW_PREFIX}`.lines(chomp: true).last.to_i * 1024
     install_size = to_install.sum do |pkg|
       filelist = "#{CREW_LIB_PATH}/manifest/#{ARCH}/#{pkg[0]}/#{pkg}.filelist"
@@ -2094,7 +2099,7 @@ def install_command(args)
     next unless @pkg_name
 
     if PackageUtils.compatible?(@pkg)
-      resolve_dependencies_and_install
+      resolve_dependencies_and_install(ignore_dependencies: @opt_ignore_dependencies)
     else
       puts PackageUtils.incompatible_reason(@pkg).join("\n").to_s.lightred
       puts 'Skipping install.'.lightred
@@ -2135,7 +2140,7 @@ def reinstall_command(args)
 
     if PackageUtils.compatible?(@pkg)
       @pkg.in_upgrade = true
-      resolve_dependencies_and_install
+      resolve_dependencies_and_install(ignore_dependencies: @opt_ignore_dependencies)
       @pkg.in_upgrade = false
     else
       puts "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}). Skipping reinstall.".lightred

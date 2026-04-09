@@ -4,6 +4,7 @@ require_relative '../../commands/whatprovides'
 # Add lib to LOAD_PATH
 $LOAD_PATH << File.join(CREW_LIB_PATH, 'lib')
 
+# This is needed to force --no-color mode.
 String.use_color = false
 
 class WhatprovidesCommandTest < Minitest::Test

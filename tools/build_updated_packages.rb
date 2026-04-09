@@ -143,7 +143,7 @@ def update_hashes_and_manifests(pkg)
     if PackageUtils.compatible?(pkg)
       # Using crew reinstall -f package here updates the hashes for
       # binaries.
-      if system("yes | crew reinstall --regenerate-filelist #{'-f' unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES} #{pkg.name}") && File.exist?("#{CREW_META_PATH}/#{pkg.name}.filelist") && File.directory?(CREW_LOCAL_REPO_ROOT)
+      if system("yes | crew reinstall --regenerate-filelist --ignore-dependencies #{'-f' unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES} #{pkg.name}") && File.exist?("#{CREW_META_PATH}/#{pkg.name}.filelist") && File.directory?(CREW_LOCAL_REPO_ROOT)
         puts 'Adding manifests...'
         FileUtils.cp "#{CREW_META_PATH}/#{pkg.name}.filelist", "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{pkg.name.chr}/#{pkg.name}.filelist"
       end

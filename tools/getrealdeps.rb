@@ -43,14 +43,8 @@ if __FILE__ == $PROGRAM_NAME && (ARGV[0].nil? || ARGV[0].empty? || ARGV[0].inclu
 end
 
 # Search for which packages have a needed library in CREW_LIB_PREFIX.
-# This is a subset of what crew whatprovides gives.
 def whatprovidesfxn(pkgdepslcl, pkg)
-  filelcl = if pkgdepslcl.include?(CREW_LIB_PREFIX)
-              `#{@grep} --exclude #{pkg}.filelist --exclude #{pkgfilelist} --exclude={"#{CREW_PREFIX}/etc/crew/meta/*_build.filelist"} "#{pkgdepslcl}$" "#{CREW_PREFIX}"/etc/crew/meta/*.filelist`
-            else
-              `#{@grep} --exclude #{pkg}.filelist --exclude #{pkgfilelist} --exclude={"#{CREW_PREFIX}/etc/crew/meta/*_build.filelist"} "^#{CREW_LIB_PREFIX}.*#{pkgdepslcl}$" "#{CREW_PREFIX}"/etc/crew/meta/*.filelist`
-            end
-  filelcl.gsub(/.filelist.*/, '').gsub(%r{.*/}, '').split("\n").uniq.join("\n").gsub(':', '')
+  return `crew whatprovides --no-color "#{CREW_LIB_PREFIX}/#{pkgdepslcl}"`.lines[0...-2].flat_map { it.split(':')[0] }.uniq.delete_if { it == pkg }.sort.join(' ')
 end
 
 # Write the missing dependencies to the package file.
@@ -204,7 +198,7 @@ def determine_dependencies(pkg_name, pkgfiles_to_check)
   end.flatten.compact.uniq
 
   # Figure out which Chromebrew packages provide the relevant deps.
-  pkgdeps = pkgdepsfiles.map { |file| whatprovidesfxn(file, pkg_name) }.sort.reject { |i| i.include?(pkg_name) }.map { |i| i.split("\n") }.flatten.uniq
+  pkgdeps = pkgdepsfiles.map { |file| whatprovidesfxn(file, pkg_name) }
 
   # Massage the glibc entries in the dependency list.
   pkgdeps = pkgdeps.map { |i| i.gsub(/glibc_build.*/, 'glibc') }.uniq
@@ -218,6 +212,10 @@ def determine_dependencies(pkg_name, pkgfiles_to_check)
   pkgdeps = pkgdeps.map { |i| i.gsub(/llvm(\d)+_lib/, 'llvm_lib') }.uniq
   pkgdeps = pkgdeps.map { |i| i.gsub(/llvm(\d)+_dev/, 'llvm_dev') }.uniq
 
+  # Split any multi-dependency strings into individual array members.
+  pkgdeps = pkgdeps.flat_map(&:split).uniq
+
+  # TODO: Handle the situation where two conflicting packages provide the same library (i.e. jack and jack1)
   if pkgdeps.blank?
     return []
   else
@@ -226,26 +224,20 @@ def determine_dependencies(pkg_name, pkgfiles_to_check)
 end
 
 def main(pkg)
+  if pkg.is_fake?
+    puts "Cannot determine runtime dependencies of fake package #{pkg.name}!".lightred
+    return
+  end
+
   puts "Determining #{pkg.name}'s runtime dependencies...".lightblue
   pkg_file = Dir["{#{CREW_LOCAL_REPO_ROOT}/packages,#{CREW_PACKAGES_PATH}}/#{pkg.name}.rb"].max { |a, b| File.mtime(a) <=> File.mtime(b) }
   if @opt_use_crew_dest_dir
     define_singleton_method('pkgfilelist') { File.join(CREW_DEST_DIR, 'filelist') }
     abort('Pkg was not built.') unless File.exist?(pkgfilelist)
   else
-    # build_deps = `crew deps -b #{@pkg.name} | sort -u`.split
-    packages_which_need_to_be_installed = pkg.get_deps_list(include_build_deps: true)
-    # Add pkg to the list of packages we are going to install to make
-    # sure filelists are available.
-    packages_which_need_to_be_installed.push(pkg.name)
-    puts "Installing or reinstalling #{pkg.name} and its build dependencies.".orange
-    # Packages needs to be installed for package filelist to be populated.
-    packages_which_need_to_be_installed.each do |install_package|
-      install_pkg = Package.load_package("packages/#{install_package}")
-      next if PackageUtils.installed?(install_pkg.name)
-      define_singleton_method('pkgfilelist') { "#{CREW_PREFIX}/etc/crew/meta/#{install_package}.filelist" }
-      system("yes | crew install #{install_package}") unless File.exist?(pkgfilelist)
-      next if install_pkg.is_fake?
-      abort "Package #{install_package} either does not exist or does not contain any libraries.".lightred unless File.exist?(pkgfilelist)
+    unless PackageUtils.installed?(pkg.name)
+      puts "Installing #{pkg.name}.".orange
+      system("yes | crew install --ignore-dependencies #{pkg.name}")
     end
     define_singleton_method('pkgfilelist') { "#{CREW_PREFIX}/etc/crew/meta/#{pkg.name}.filelist" }
   end
@@ -281,6 +273,7 @@ def main(pkg)
   # was just built.
   pkgfiles.map! { |item| item.prepend(CREW_DEST_DIR) } if @opt_use_crew_dest_dir
 
+  # TODO: Does anything create this directory? If so, that should be documented more clearly, and if not, the line can be removed.
   FileUtils.rm_rf("/tmp/deps/#{pkg.name}")
   # Remove files we don't care about, such as man files and non-binaries.
   pkgfiles = pkgfiles.reject { |i| !File.file?(i.chomp) || File.read(i.chomp, 4) != "\x7FELF" || i.include?('.zst') }
