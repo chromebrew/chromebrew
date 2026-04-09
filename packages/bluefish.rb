@@ -6,7 +6,7 @@ class Bluefish < Autotools
   version '2.4.1'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://www.bennewitz.com/bluefish/stable/source/bluefish-2.4.1.tar.bz2'
+  source_url "https://www.bennewitz.com/bluefish/stable/source/bluefish-#{version}.tar.bz2"
   source_sha256 '540b0e4f5a595fc418c41125a6a282b69f10cf01513bedde80906d25a56d0cc9'
   binary_compression 'tar.zst'
 
