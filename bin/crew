@@ -1377,7 +1377,11 @@ def resolve_dependencies
 
   # abort & identify incompatible dependencies.
   dependencies.each do |dep|
-    abort "Some dependencies e.g., #{dep}, are not compatible with your device architecture (#{ARCH}). Unable to continue.".lightred unless PackageUtils.compatible?(Package.load_package("#{CREW_PACKAGES_PATH}/#{dep}.rb"))
+    dep_pkg = Package.load_package("#{CREW_PACKAGES_PATH}/#{dep}.rb")
+    next if PackageUtils.compatible?(dep_pkg)
+    puts "Some dependencies e.g., #{dep}, are not compatible:".lightred
+    puts PackageUtils.incompatible_reason(dep_pkg).join("\n").to_s.lightred
+    abort 'Unable to continue.'.lightred
   end
 
   # leave only not installed packages in dependencies
