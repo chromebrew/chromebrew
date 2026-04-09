@@ -5,7 +5,7 @@ class C11threads < Package
   homepage 'https://github.com/jtsiomb/c11threads'
   version '2.0'
   max_glibc '2.30'
-  license 'MIT'
+  license 'public-domain'
   compatibility 'all'
   source_url 'https://github.com/jtsiomb/c11threads.git'
   git_hashtag "v#{version}"
