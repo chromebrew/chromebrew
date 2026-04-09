@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION = defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION = '1.73.0' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION = '1.73.1' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH = Etc.uname[:machine]
@@ -512,11 +512,11 @@ CREW_DOCOPT = <<~DOCOPT
     crew download [options] [-s|--source] [-v|--verbose] <name> ...
     crew files [options] [-v|--verbose] <name> ...
     crew help [options] [<command>] [-v|--verbose] [<subcommand>]
-    crew install [options] [-f|--force] [-k|--keep] [--regenerate-filelist] [-s|--source] [-S|--recursive-build] [-v|--verbose] <name> ...
+    crew install [options] [-f|--force] [-k|--keep] [--regenerate-filelist] [--ignore-dependencies ][-s|--source] [-S|--recursive-build] [-v|--verbose] <name> ...
     crew list [options] [-v|--verbose] (available|compatible|incompatible|essential|installed)
     crew postinstall [options] [-v|--verbose] <name> ...
     crew prop [options] [<property>] [<name>]
-    crew reinstall [options] [-f|--force] [-k|--keep] [-s|--source] [--regenerate-filelist] [-S|--recursive-build] [-v|--verbose] <name> ...
+    crew reinstall [options] [-f|--force] [-k|--keep] [-s|--source] [--regenerate-filelist] [--ignore-dependencies] [-S|--recursive-build] [-v|--verbose] <name> ...
     crew remove [options] [-f|--force] [-v|--verbose] <name> ...
     crew search [options] [-v|--verbose] <name> ...
     crew sysinfo [options] [-v|--verbose]
@@ -542,6 +542,7 @@ CREW_DOCOPT = <<~DOCOPT
     -s --source                Build or download from source even if pre-compiled binary exists.
     -S --recursive-build       Build from source, including all dependencies, even if pre-compiled binaries exist.
     --regenerate-filelist      Force regeneration of package filelists on install.
+    --ignore-dependencies      Ignore dependencies when installing a package.
     -t --tree                  Print dependencies in a tree-structure format.
     -u --update-package-files  Attempt to update the package version.
     -v --verbose               Show extra information.

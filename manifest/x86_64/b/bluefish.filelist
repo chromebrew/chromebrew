@@ -1,4 +1,4 @@
-# Total size: 11833311
+# Total size: 11146745
 /usr/local/bin/bluefish
 /usr/local/etc/env.d/10-bluefish
 /usr/local/lib64/bluefish/about.la
@@ -9,14 +9,14 @@
 /usr/local/lib64/bluefish/entities.so
 /usr/local/lib64/bluefish/htmlbar.la
 /usr/local/lib64/bluefish/htmlbar.so
-/usr/local/lib64/bluefish/infbrowser.la
-/usr/local/lib64/bluefish/infbrowser.so
 /usr/local/lib64/bluefish/snippets.la
 /usr/local/lib64/bluefish/snippets.so
+/usr/local/lib64/bluefish/zencoding.la
+/usr/local/lib64/bluefish/zencoding.so
 /usr/local/share/applications/bluefish.desktop
-/usr/local/share/applications/mimeinfo.cache
 /usr/local/share/bluefish/bflang/JQuery.bfinc
 /usr/local/share/bluefish/bflang/ada.bflang2
+/usr/local/share/bluefish/bflang/all-css.bfinc
 /usr/local/share/bluefish/bflang/all-html.bfinc
 /usr/local/share/bluefish/bflang/all-html5.bfinc
 /usr/local/share/bluefish/bflang/all-javascript.bfinc
@@ -95,18 +95,38 @@
 /usr/local/share/bluefish/cssmin.py
 /usr/local/share/bluefish/default_accelmap
 /usr/local/share/bluefish/encodings
-/usr/local/share/bluefish/jsbeautifier/__init__.py
-/usr/local/share/bluefish/jsbeautifier/__version__.py
-/usr/local/share/bluefish/jsbeautifier/unpackers/__init__.py
-/usr/local/share/bluefish/jsbeautifier/unpackers/evalbased.py
-/usr/local/share/bluefish/jsbeautifier/unpackers/javascriptobfuscator.py
-/usr/local/share/bluefish/jsbeautifier/unpackers/myobfuscate.py
-/usr/local/share/bluefish/jsbeautifier/unpackers/packer.py
-/usr/local/share/bluefish/jsbeautifier/unpackers/urlencode.py
-/usr/local/share/bluefish/jsbeautify
 /usr/local/share/bluefish/jsmin.py
+/usr/local/share/bluefish/json_prettyprint.py
 /usr/local/share/bluefish/lorem-ipsum-generator
 /usr/local/share/bluefish/plugins/htmlbar/ui/htmlbar_menu_ui.xml
+/usr/local/share/bluefish/plugins/zencoding/__init__.py
+/usr/local/share/bluefish/plugins/zencoding/actions/__init__.py
+/usr/local/share/bluefish/plugins/zencoding/actions/basic.py
+/usr/local/share/bluefish/plugins/zencoding/actions/token.py
+/usr/local/share/bluefish/plugins/zencoding/actions/traverse.py
+/usr/local/share/bluefish/plugins/zencoding/filters/__init__.py
+/usr/local/share/bluefish/plugins/zencoding/filters/comment.py
+/usr/local/share/bluefish/plugins/zencoding/filters/css.py
+/usr/local/share/bluefish/plugins/zencoding/filters/escape.py
+/usr/local/share/bluefish/plugins/zencoding/filters/format-css.py
+/usr/local/share/bluefish/plugins/zencoding/filters/format.py
+/usr/local/share/bluefish/plugins/zencoding/filters/haml.py
+/usr/local/share/bluefish/plugins/zencoding/filters/html.py
+/usr/local/share/bluefish/plugins/zencoding/filters/single-line.py
+/usr/local/share/bluefish/plugins/zencoding/filters/trim.py
+/usr/local/share/bluefish/plugins/zencoding/filters/xsl.py
+/usr/local/share/bluefish/plugins/zencoding/html_matcher.py
+/usr/local/share/bluefish/plugins/zencoding/interface/__init__.py
+/usr/local/share/bluefish/plugins/zencoding/interface/editor.py
+/usr/local/share/bluefish/plugins/zencoding/interface/file.py
+/usr/local/share/bluefish/plugins/zencoding/parser/__init__.py
+/usr/local/share/bluefish/plugins/zencoding/parser/abbreviation.py
+/usr/local/share/bluefish/plugins/zencoding/parser/css.py
+/usr/local/share/bluefish/plugins/zencoding/parser/utils.py
+/usr/local/share/bluefish/plugins/zencoding/parser/xml.py
+/usr/local/share/bluefish/plugins/zencoding/resources.py
+/usr/local/share/bluefish/plugins/zencoding/utils.py
+/usr/local/share/bluefish/plugins/zencoding/zen_settings.py
 /usr/local/share/bluefish/snippets
 /usr/local/share/bluefish/templates/C_header
 /usr/local/share/bluefish/templates/C_header_GPL
@@ -114,6 +134,11 @@
 /usr/local/share/bluefish/templates/PHP
 /usr/local/share/bluefish/templates/XHTML_1.0
 /usr/local/share/bluefish/ui/bluefish_menu_ui.xml
+/usr/local/share/bluefish/ui_dev.png
+/usr/local/share/bluefish/ui_everything.png
+/usr/local/share/bluefish/ui_experienced.png
+/usr/local/share/bluefish/ui_minimal.png
+/usr/local/share/bluefish/ui_webdev.png
 /usr/local/share/doc/bluefish/bflang/sample.bflang2
 /usr/local/share/icons/hicolor/128x128/apps/bluefish.png
 /usr/local/share/icons/hicolor/128x128/mimetypes/application-x-bluefish-project.png
@@ -146,7 +171,6 @@
 /usr/local/share/locale/ar/LC_MESSAGES/bluefish_plugin_charmap.mo
 /usr/local/share/locale/ar/LC_MESSAGES/bluefish_plugin_entities.mo
 /usr/local/share/locale/ar/LC_MESSAGES/bluefish_plugin_htmlbar.mo
-/usr/local/share/locale/ar/LC_MESSAGES/bluefish_plugin_infbrowser.mo
 /usr/local/share/locale/ar/LC_MESSAGES/bluefish_plugin_snippets.mo
 /usr/local/share/locale/ar/LC_MESSAGES/bluefish_plugin_zencoding.mo
 /usr/local/share/locale/bg/LC_MESSAGES/bluefish.mo
@@ -154,7 +178,6 @@
 /usr/local/share/locale/bg/LC_MESSAGES/bluefish_plugin_charmap.mo
 /usr/local/share/locale/bg/LC_MESSAGES/bluefish_plugin_entities.mo
 /usr/local/share/locale/bg/LC_MESSAGES/bluefish_plugin_htmlbar.mo
-/usr/local/share/locale/bg/LC_MESSAGES/bluefish_plugin_infbrowser.mo
 /usr/local/share/locale/bg/LC_MESSAGES/bluefish_plugin_snippets.mo
 /usr/local/share/locale/bg/LC_MESSAGES/bluefish_plugin_zencoding.mo
 /usr/local/share/locale/ca/LC_MESSAGES/bluefish.mo
@@ -162,7 +185,6 @@
 /usr/local/share/locale/ca/LC_MESSAGES/bluefish_plugin_charmap.mo
 /usr/local/share/locale/ca/LC_MESSAGES/bluefish_plugin_entities.mo
 /usr/local/share/locale/ca/LC_MESSAGES/bluefish_plugin_htmlbar.mo
-/usr/local/share/locale/ca/LC_MESSAGES/bluefish_plugin_infbrowser.mo
 /usr/local/share/locale/ca/LC_MESSAGES/bluefish_plugin_snippets.mo
 /usr/local/share/locale/ca/LC_MESSAGES/bluefish_plugin_zencoding.mo
 /usr/local/share/locale/cs/LC_MESSAGES/bluefish.mo
@@ -170,7 +192,6 @@
 /usr/local/share/locale/cs/LC_MESSAGES/bluefish_plugin_charmap.mo
 /usr/local/share/locale/cs/LC_MESSAGES/bluefish_plugin_entities.mo
 /usr/local/share/locale/cs/LC_MESSAGES/bluefish_plugin_htmlbar.mo
-/usr/local/share/locale/cs/LC_MESSAGES/bluefish_plugin_infbrowser.mo
 /usr/local/share/locale/cs/LC_MESSAGES/bluefish_plugin_snippets.mo
 /usr/local/share/locale/cs/LC_MESSAGES/bluefish_plugin_zencoding.mo
 /usr/local/share/locale/da/LC_MESSAGES/bluefish.mo
@@ -178,7 +199,6 @@
 /usr/local/share/locale/da/LC_MESSAGES/bluefish_plugin_charmap.mo
 /usr/local/share/locale/da/LC_MESSAGES/bluefish_plugin_entities.mo
 /usr/local/share/locale/da/LC_MESSAGES/bluefish_plugin_htmlbar.mo
-/usr/local/share/locale/da/LC_MESSAGES/bluefish_plugin_infbrowser.mo
 /usr/local/share/locale/da/LC_MESSAGES/bluefish_plugin_snippets.mo
 /usr/local/share/locale/da/LC_MESSAGES/bluefish_plugin_zencoding.mo
 /usr/local/share/locale/de/LC_MESSAGES/bluefish.mo
@@ -186,7 +206,6 @@
 /usr/local/share/locale/de/LC_MESSAGES/bluefish_plugin_charmap.mo
 /usr/local/share/locale/de/LC_MESSAGES/bluefish_plugin_entities.mo
 /usr/local/share/locale/de/LC_MESSAGES/bluefish_plugin_htmlbar.mo
-/usr/local/share/locale/de/LC_MESSAGES/bluefish_plugin_infbrowser.mo
 /usr/local/share/locale/de/LC_MESSAGES/bluefish_plugin_snippets.mo
 /usr/local/share/locale/de/LC_MESSAGES/bluefish_plugin_zencoding.mo
 /usr/local/share/locale/el/LC_MESSAGES/bluefish.mo
@@ -194,7 +213,6 @@
 /usr/local/share/locale/el/LC_MESSAGES/bluefish_plugin_charmap.mo
 /usr/local/share/locale/el/LC_MESSAGES/bluefish_plugin_entities.mo
 /usr/local/share/locale/el/LC_MESSAGES/bluefish_plugin_htmlbar.mo
-/usr/local/share/locale/el/LC_MESSAGES/bluefish_plugin_infbrowser.mo
 /usr/local/share/locale/el/LC_MESSAGES/bluefish_plugin_snippets.mo
 /usr/local/share/locale/el/LC_MESSAGES/bluefish_plugin_zencoding.mo
 /usr/local/share/locale/en/LC_MESSAGES/bluefish.mo
@@ -202,7 +220,6 @@
 /usr/local/share/locale/en/LC_MESSAGES/bluefish_plugin_charmap.mo
 /usr/local/share/locale/en/LC_MESSAGES/bluefish_plugin_entities.mo
 /usr/local/share/locale/en/LC_MESSAGES/bluefish_plugin_htmlbar.mo
-/usr/local/share/locale/en/LC_MESSAGES/bluefish_plugin_infbrowser.mo
 /usr/local/share/locale/en/LC_MESSAGES/bluefish_plugin_snippets.mo
 /usr/local/share/locale/en/LC_MESSAGES/bluefish_plugin_zencoding.mo
 /usr/local/share/locale/es/LC_MESSAGES/bluefish.mo
@@ -210,7 +227,6 @@
 /usr/local/share/locale/es/LC_MESSAGES/bluefish_plugin_charmap.mo
 /usr/local/share/locale/es/LC_MESSAGES/bluefish_plugin_entities.mo
 /usr/local/share/locale/es/LC_MESSAGES/bluefish_plugin_htmlbar.mo
-/usr/local/share/locale/es/LC_MESSAGES/bluefish_plugin_infbrowser.mo
 /usr/local/share/locale/es/LC_MESSAGES/bluefish_plugin_snippets.mo
 /usr/local/share/locale/es/LC_MESSAGES/bluefish_plugin_zencoding.mo
 /usr/local/share/locale/eu/LC_MESSAGES/bluefish.mo
@@ -218,7 +234,6 @@
 /usr/local/share/locale/eu/LC_MESSAGES/bluefish_plugin_charmap.mo
 /usr/local/share/locale/eu/LC_MESSAGES/bluefish_plugin_entities.mo
 /usr/local/share/locale/eu/LC_MESSAGES/bluefish_plugin_htmlbar.mo
-/usr/local/share/locale/eu/LC_MESSAGES/bluefish_plugin_infbrowser.mo
 /usr/local/share/locale/eu/LC_MESSAGES/bluefish_plugin_snippets.mo
 /usr/local/share/locale/eu/LC_MESSAGES/bluefish_plugin_zencoding.mo
 /usr/local/share/locale/fa/LC_MESSAGES/bluefish.mo
@@ -226,7 +241,6 @@
 /usr/local/share/locale/fa/LC_MESSAGES/bluefish_plugin_charmap.mo
 /usr/local/share/locale/fa/LC_MESSAGES/bluefish_plugin_entities.mo
 /usr/local/share/locale/fa/LC_MESSAGES/bluefish_plugin_htmlbar.mo
-/usr/local/share/locale/fa/LC_MESSAGES/bluefish_plugin_infbrowser.mo
 /usr/local/share/locale/fa/LC_MESSAGES/bluefish_plugin_snippets.mo
 /usr/local/share/locale/fa/LC_MESSAGES/bluefish_plugin_zencoding.mo
 /usr/local/share/locale/fi/LC_MESSAGES/bluefish.mo
@@ -234,7 +248,6 @@
 /usr/local/share/locale/fi/LC_MESSAGES/bluefish_plugin_charmap.mo
 /usr/local/share/locale/fi/LC_MESSAGES/bluefish_plugin_entities.mo
 /usr/local/share/locale/fi/LC_MESSAGES/bluefish_plugin_htmlbar.mo
-/usr/local/share/locale/fi/LC_MESSAGES/bluefish_plugin_infbrowser.mo
 /usr/local/share/locale/fi/LC_MESSAGES/bluefish_plugin_snippets.mo
 /usr/local/share/locale/fi/LC_MESSAGES/bluefish_plugin_zencoding.mo
 /usr/local/share/locale/fr/LC_MESSAGES/bluefish.mo
@@ -242,7 +255,6 @@
 /usr/local/share/locale/fr/LC_MESSAGES/bluefish_plugin_charmap.mo
 /usr/local/share/locale/fr/LC_MESSAGES/bluefish_plugin_entities.mo
 /usr/local/share/locale/fr/LC_MESSAGES/bluefish_plugin_htmlbar.mo
-/usr/local/share/locale/fr/LC_MESSAGES/bluefish_plugin_infbrowser.mo
 /usr/local/share/locale/fr/LC_MESSAGES/bluefish_plugin_snippets.mo
 /usr/local/share/locale/fr/LC_MESSAGES/bluefish_plugin_zencoding.mo
 /usr/local/share/locale/gl/LC_MESSAGES/bluefish.mo
@@ -250,7 +262,6 @@
 /usr/local/share/locale/gl/LC_MESSAGES/bluefish_plugin_charmap.mo
 /usr/local/share/locale/gl/LC_MESSAGES/bluefish_plugin_entities.mo
 /usr/local/share/locale/gl/LC_MESSAGES/bluefish_plugin_htmlbar.mo
-/usr/local/share/locale/gl/LC_MESSAGES/bluefish_plugin_infbrowser.mo
 /usr/local/share/locale/gl/LC_MESSAGES/bluefish_plugin_snippets.mo
 /usr/local/share/locale/gl/LC_MESSAGES/bluefish_plugin_zencoding.mo
 /usr/local/share/locale/hu/LC_MESSAGES/bluefish.mo
@@ -258,7 +269,6 @@
 /usr/local/share/locale/hu/LC_MESSAGES/bluefish_plugin_charmap.mo
 /usr/local/share/locale/hu/LC_MESSAGES/bluefish_plugin_entities.mo
 /usr/local/share/locale/hu/LC_MESSAGES/bluefish_plugin_htmlbar.mo
-/usr/local/share/locale/hu/LC_MESSAGES/bluefish_plugin_infbrowser.mo
 /usr/local/share/locale/hu/LC_MESSAGES/bluefish_plugin_snippets.mo
 /usr/local/share/locale/hu/LC_MESSAGES/bluefish_plugin_zencoding.mo
 /usr/local/share/locale/it/LC_MESSAGES/bluefish.mo
@@ -266,7 +276,6 @@
 /usr/local/share/locale/it/LC_MESSAGES/bluefish_plugin_charmap.mo
 /usr/local/share/locale/it/LC_MESSAGES/bluefish_plugin_entities.mo
 /usr/local/share/locale/it/LC_MESSAGES/bluefish_plugin_htmlbar.mo
-/usr/local/share/locale/it/LC_MESSAGES/bluefish_plugin_infbrowser.mo
 /usr/local/share/locale/it/LC_MESSAGES/bluefish_plugin_snippets.mo
 /usr/local/share/locale/it/LC_MESSAGES/bluefish_plugin_zencoding.mo
 /usr/local/share/locale/ja/LC_MESSAGES/bluefish.mo
@@ -274,7 +283,6 @@
 /usr/local/share/locale/ja/LC_MESSAGES/bluefish_plugin_charmap.mo
 /usr/local/share/locale/ja/LC_MESSAGES/bluefish_plugin_entities.mo
 /usr/local/share/locale/ja/LC_MESSAGES/bluefish_plugin_htmlbar.mo
-/usr/local/share/locale/ja/LC_MESSAGES/bluefish_plugin_infbrowser.mo
 /usr/local/share/locale/ja/LC_MESSAGES/bluefish_plugin_snippets.mo
 /usr/local/share/locale/ja/LC_MESSAGES/bluefish_plugin_zencoding.mo
 /usr/local/share/locale/ko/LC_MESSAGES/bluefish.mo
@@ -282,7 +290,6 @@
 /usr/local/share/locale/ko/LC_MESSAGES/bluefish_plugin_charmap.mo
 /usr/local/share/locale/ko/LC_MESSAGES/bluefish_plugin_entities.mo
 /usr/local/share/locale/ko/LC_MESSAGES/bluefish_plugin_htmlbar.mo
-/usr/local/share/locale/ko/LC_MESSAGES/bluefish_plugin_infbrowser.mo
 /usr/local/share/locale/ko/LC_MESSAGES/bluefish_plugin_snippets.mo
 /usr/local/share/locale/ko/LC_MESSAGES/bluefish_plugin_zencoding.mo
 /usr/local/share/locale/nb/LC_MESSAGES/bluefish.mo
@@ -290,7 +297,6 @@
 /usr/local/share/locale/nb/LC_MESSAGES/bluefish_plugin_charmap.mo
 /usr/local/share/locale/nb/LC_MESSAGES/bluefish_plugin_entities.mo
 /usr/local/share/locale/nb/LC_MESSAGES/bluefish_plugin_htmlbar.mo
-/usr/local/share/locale/nb/LC_MESSAGES/bluefish_plugin_infbrowser.mo
 /usr/local/share/locale/nb/LC_MESSAGES/bluefish_plugin_snippets.mo
 /usr/local/share/locale/nb/LC_MESSAGES/bluefish_plugin_zencoding.mo
 /usr/local/share/locale/nl/LC_MESSAGES/bluefish.mo
@@ -298,7 +304,6 @@
 /usr/local/share/locale/nl/LC_MESSAGES/bluefish_plugin_charmap.mo
 /usr/local/share/locale/nl/LC_MESSAGES/bluefish_plugin_entities.mo
 /usr/local/share/locale/nl/LC_MESSAGES/bluefish_plugin_htmlbar.mo
-/usr/local/share/locale/nl/LC_MESSAGES/bluefish_plugin_infbrowser.mo
 /usr/local/share/locale/nl/LC_MESSAGES/bluefish_plugin_snippets.mo
 /usr/local/share/locale/nl/LC_MESSAGES/bluefish_plugin_zencoding.mo
 /usr/local/share/locale/nn/LC_MESSAGES/bluefish.mo
@@ -306,7 +311,6 @@
 /usr/local/share/locale/nn/LC_MESSAGES/bluefish_plugin_charmap.mo
 /usr/local/share/locale/nn/LC_MESSAGES/bluefish_plugin_entities.mo
 /usr/local/share/locale/nn/LC_MESSAGES/bluefish_plugin_htmlbar.mo
-/usr/local/share/locale/nn/LC_MESSAGES/bluefish_plugin_infbrowser.mo
 /usr/local/share/locale/nn/LC_MESSAGES/bluefish_plugin_snippets.mo
 /usr/local/share/locale/nn/LC_MESSAGES/bluefish_plugin_zencoding.mo
 /usr/local/share/locale/pl/LC_MESSAGES/bluefish.mo
@@ -314,7 +318,6 @@
 /usr/local/share/locale/pl/LC_MESSAGES/bluefish_plugin_charmap.mo
 /usr/local/share/locale/pl/LC_MESSAGES/bluefish_plugin_entities.mo
 /usr/local/share/locale/pl/LC_MESSAGES/bluefish_plugin_htmlbar.mo
-/usr/local/share/locale/pl/LC_MESSAGES/bluefish_plugin_infbrowser.mo
 /usr/local/share/locale/pl/LC_MESSAGES/bluefish_plugin_snippets.mo
 /usr/local/share/locale/pl/LC_MESSAGES/bluefish_plugin_zencoding.mo
 /usr/local/share/locale/pt/LC_MESSAGES/bluefish.mo
@@ -322,7 +325,6 @@
 /usr/local/share/locale/pt/LC_MESSAGES/bluefish_plugin_charmap.mo
 /usr/local/share/locale/pt/LC_MESSAGES/bluefish_plugin_entities.mo
 /usr/local/share/locale/pt/LC_MESSAGES/bluefish_plugin_htmlbar.mo
-/usr/local/share/locale/pt/LC_MESSAGES/bluefish_plugin_infbrowser.mo
 /usr/local/share/locale/pt/LC_MESSAGES/bluefish_plugin_snippets.mo
 /usr/local/share/locale/pt/LC_MESSAGES/bluefish_plugin_zencoding.mo
 /usr/local/share/locale/pt_BR/LC_MESSAGES/bluefish.mo
@@ -330,7 +332,6 @@
 /usr/local/share/locale/pt_BR/LC_MESSAGES/bluefish_plugin_charmap.mo
 /usr/local/share/locale/pt_BR/LC_MESSAGES/bluefish_plugin_entities.mo
 /usr/local/share/locale/pt_BR/LC_MESSAGES/bluefish_plugin_htmlbar.mo
-/usr/local/share/locale/pt_BR/LC_MESSAGES/bluefish_plugin_infbrowser.mo
 /usr/local/share/locale/pt_BR/LC_MESSAGES/bluefish_plugin_snippets.mo
 /usr/local/share/locale/pt_BR/LC_MESSAGES/bluefish_plugin_zencoding.mo
 /usr/local/share/locale/ro/LC_MESSAGES/bluefish.mo
@@ -338,7 +339,6 @@
 /usr/local/share/locale/ro/LC_MESSAGES/bluefish_plugin_charmap.mo
 /usr/local/share/locale/ro/LC_MESSAGES/bluefish_plugin_entities.mo
 /usr/local/share/locale/ro/LC_MESSAGES/bluefish_plugin_htmlbar.mo
-/usr/local/share/locale/ro/LC_MESSAGES/bluefish_plugin_infbrowser.mo
 /usr/local/share/locale/ro/LC_MESSAGES/bluefish_plugin_snippets.mo
 /usr/local/share/locale/ro/LC_MESSAGES/bluefish_plugin_zencoding.mo
 /usr/local/share/locale/ru/LC_MESSAGES/bluefish.mo
@@ -346,7 +346,6 @@
 /usr/local/share/locale/ru/LC_MESSAGES/bluefish_plugin_charmap.mo
 /usr/local/share/locale/ru/LC_MESSAGES/bluefish_plugin_entities.mo
 /usr/local/share/locale/ru/LC_MESSAGES/bluefish_plugin_htmlbar.mo
-/usr/local/share/locale/ru/LC_MESSAGES/bluefish_plugin_infbrowser.mo
 /usr/local/share/locale/ru/LC_MESSAGES/bluefish_plugin_snippets.mo
 /usr/local/share/locale/ru/LC_MESSAGES/bluefish_plugin_zencoding.mo
 /usr/local/share/locale/sk/LC_MESSAGES/bluefish.mo
@@ -354,7 +353,6 @@
 /usr/local/share/locale/sk/LC_MESSAGES/bluefish_plugin_charmap.mo
 /usr/local/share/locale/sk/LC_MESSAGES/bluefish_plugin_entities.mo
 /usr/local/share/locale/sk/LC_MESSAGES/bluefish_plugin_htmlbar.mo
-/usr/local/share/locale/sk/LC_MESSAGES/bluefish_plugin_infbrowser.mo
 /usr/local/share/locale/sk/LC_MESSAGES/bluefish_plugin_snippets.mo
 /usr/local/share/locale/sk/LC_MESSAGES/bluefish_plugin_zencoding.mo
 /usr/local/share/locale/sr/LC_MESSAGES/bluefish.mo
@@ -362,7 +360,6 @@
 /usr/local/share/locale/sr/LC_MESSAGES/bluefish_plugin_charmap.mo
 /usr/local/share/locale/sr/LC_MESSAGES/bluefish_plugin_entities.mo
 /usr/local/share/locale/sr/LC_MESSAGES/bluefish_plugin_htmlbar.mo
-/usr/local/share/locale/sr/LC_MESSAGES/bluefish_plugin_infbrowser.mo
 /usr/local/share/locale/sr/LC_MESSAGES/bluefish_plugin_snippets.mo
 /usr/local/share/locale/sr/LC_MESSAGES/bluefish_plugin_zencoding.mo
 /usr/local/share/locale/sv/LC_MESSAGES/bluefish.mo
@@ -370,7 +367,6 @@
 /usr/local/share/locale/sv/LC_MESSAGES/bluefish_plugin_charmap.mo
 /usr/local/share/locale/sv/LC_MESSAGES/bluefish_plugin_entities.mo
 /usr/local/share/locale/sv/LC_MESSAGES/bluefish_plugin_htmlbar.mo
-/usr/local/share/locale/sv/LC_MESSAGES/bluefish_plugin_infbrowser.mo
 /usr/local/share/locale/sv/LC_MESSAGES/bluefish_plugin_snippets.mo
 /usr/local/share/locale/sv/LC_MESSAGES/bluefish_plugin_zencoding.mo
 /usr/local/share/locale/ta/LC_MESSAGES/bluefish.mo
@@ -378,7 +374,6 @@
 /usr/local/share/locale/ta/LC_MESSAGES/bluefish_plugin_charmap.mo
 /usr/local/share/locale/ta/LC_MESSAGES/bluefish_plugin_entities.mo
 /usr/local/share/locale/ta/LC_MESSAGES/bluefish_plugin_htmlbar.mo
-/usr/local/share/locale/ta/LC_MESSAGES/bluefish_plugin_infbrowser.mo
 /usr/local/share/locale/ta/LC_MESSAGES/bluefish_plugin_snippets.mo
 /usr/local/share/locale/ta/LC_MESSAGES/bluefish_plugin_zencoding.mo
 /usr/local/share/locale/tr/LC_MESSAGES/bluefish.mo
@@ -386,7 +381,6 @@
 /usr/local/share/locale/tr/LC_MESSAGES/bluefish_plugin_charmap.mo
 /usr/local/share/locale/tr/LC_MESSAGES/bluefish_plugin_entities.mo
 /usr/local/share/locale/tr/LC_MESSAGES/bluefish_plugin_htmlbar.mo
-/usr/local/share/locale/tr/LC_MESSAGES/bluefish_plugin_infbrowser.mo
 /usr/local/share/locale/tr/LC_MESSAGES/bluefish_plugin_snippets.mo
 /usr/local/share/locale/tr/LC_MESSAGES/bluefish_plugin_zencoding.mo
 /usr/local/share/locale/uk/LC_MESSAGES/bluefish.mo
@@ -394,7 +388,6 @@
 /usr/local/share/locale/uk/LC_MESSAGES/bluefish_plugin_charmap.mo
 /usr/local/share/locale/uk/LC_MESSAGES/bluefish_plugin_entities.mo
 /usr/local/share/locale/uk/LC_MESSAGES/bluefish_plugin_htmlbar.mo
-/usr/local/share/locale/uk/LC_MESSAGES/bluefish_plugin_infbrowser.mo
 /usr/local/share/locale/uk/LC_MESSAGES/bluefish_plugin_snippets.mo
 /usr/local/share/locale/uk/LC_MESSAGES/bluefish_plugin_zencoding.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/bluefish.mo
@@ -402,7 +395,6 @@
 /usr/local/share/locale/zh_CN/LC_MESSAGES/bluefish_plugin_charmap.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/bluefish_plugin_entities.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/bluefish_plugin_htmlbar.mo
-/usr/local/share/locale/zh_CN/LC_MESSAGES/bluefish_plugin_infbrowser.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/bluefish_plugin_snippets.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/bluefish_plugin_zencoding.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/bluefish.mo
@@ -410,7 +402,6 @@
 /usr/local/share/locale/zh_TW/LC_MESSAGES/bluefish_plugin_charmap.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/bluefish_plugin_entities.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/bluefish_plugin_htmlbar.mo
-/usr/local/share/locale/zh_TW/LC_MESSAGES/bluefish_plugin_infbrowser.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/bluefish_plugin_snippets.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/bluefish_plugin_zencoding.mo
 /usr/local/share/man/man1/bluefish.1.zst

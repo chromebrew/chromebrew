@@ -43,20 +43,12 @@ if __FILE__ == $PROGRAM_NAME && (ARGV[0].nil? || ARGV[0].empty? || ARGV[0].inclu
 end
 
 # Search for which packages have a needed library in CREW_LIB_PREFIX.
-# This is a subset of what crew whatprovides gives.
 def whatprovidesfxn(pkgdepslcl, pkg)
-  filelcl = if pkgdepslcl.include?(CREW_LIB_PREFIX)
-              `#{@grep} --exclude #{pkg}.filelist --exclude #{pkgfilelist} --exclude={"#{CREW_PREFIX}/etc/crew/meta/*_build.filelist"} "#{pkgdepslcl}$" "#{CREW_PREFIX}"/etc/crew/meta/*.filelist`
-            else
-              `#{@grep} --exclude #{pkg}.filelist --exclude #{pkgfilelist} --exclude={"#{CREW_PREFIX}/etc/crew/meta/*_build.filelist"} "^#{CREW_LIB_PREFIX}.*#{pkgdepslcl}$" "#{CREW_PREFIX}"/etc/crew/meta/*.filelist`
-            end
-  filelcl.gsub(/.filelist.*/, '').gsub(%r{.*/}, '').split("\n").uniq.join("\n").gsub(':', '')
+  return `crew whatprovides --no-color "#{CREW_LIB_PREFIX}/#{pkgdepslcl}"`.lines[0...-2].flat_map { it.split(':')[0] }.uniq.delete_if { it == pkg }.sort.join(' ')
 end
 
 # Write the missing dependencies to the package file.
 def write_deps(pkg_file, pkgdeps, pkg, label)
-  # pkg is not pkg.name in this function.
-  # e.g., pkg is Package::Py3_pyyaml
   return if pkgdeps.empty?
   puts "Processing #{label} dependencies for #{pkg.name}...".orange
   suffix = " => :#{label}"
@@ -192,21 +184,21 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
   FileUtils.cp pkg_file, "#{CREW_LOCAL_REPO_ROOT}/packages/#{File.basename(pkg_file)}" if File.file?("#{CREW_LOCAL_REPO_ROOT}/packages/#{File.basename(pkg_file)}") && !FileUtils.identical?(pkg_file, "#{CREW_LOCAL_REPO_ROOT}/packages/#{File.basename(pkg_file)}")
 end
 
-def determine_dependencies(pkg, pkgfiles_to_check)
+def determine_dependencies(pkg_name, pkgfiles_to_check)
   return [] if pkgfiles_to_check.empty?
   # Use readelf to determine library dependencies, as
   # this doesn't almost run a program like using ldd would.
   pkgdepsfiles = pkgfiles_to_check.map do |i|
     system("upx -d #{i} > /dev/null 2>&1")
-    FileUtils.mkdir_p("/tmp/deps/#{pkg}/")
-    `readelf -d "#{i}" 2>/dev/null | #{@grep} NEEDED | awk '{print $5}' | sed 's/\\[//g' | sed 's/\\]//g' | awk '!x[$0]++' | tee /tmp/deps/#{pkg}/#{File.basename(i)}`
+    FileUtils.mkdir_p("/tmp/deps/#{pkg_name}/")
+    `readelf -d "#{i}" 2>/dev/null | #{@grep} NEEDED | awk '{print $5}' | sed 's/\\[//g' | sed 's/\\]//g' | awk '!x[$0]++' | tee /tmp/deps/#{pkg_name}/#{File.basename(i)}`
   end
   pkgdepsfiles = pkgdepsfiles.map do |filedeps|
     filedeps&.split("\n")
   end.flatten.compact.uniq
 
   # Figure out which Chromebrew packages provide the relevant deps.
-  pkgdeps = pkgdepsfiles.map { |file| whatprovidesfxn(file, pkg) }.sort.reject { |i| i.include?(pkg) }.map { |i| i.split("\n") }.flatten.uniq
+  pkgdeps = pkgdepsfiles.map { |file| whatprovidesfxn(file, pkg_name) }
 
   # Massage the glibc entries in the dependency list.
   pkgdeps = pkgdeps.map { |i| i.gsub(/glibc_build.*/, 'glibc') }.uniq
@@ -220,6 +212,10 @@ def determine_dependencies(pkg, pkgfiles_to_check)
   pkgdeps = pkgdeps.map { |i| i.gsub(/llvm(\d)+_lib/, 'llvm_lib') }.uniq
   pkgdeps = pkgdeps.map { |i| i.gsub(/llvm(\d)+_dev/, 'llvm_dev') }.uniq
 
+  # Split any multi-dependency strings into individual array members.
+  pkgdeps = pkgdeps.flat_map(&:split).uniq
+
+  # TODO: Handle the situation where two conflicting packages provide the same library (i.e. jack and jack1)
   if pkgdeps.blank?
     return []
   else
@@ -228,29 +224,22 @@ def determine_dependencies(pkg, pkgfiles_to_check)
 end
 
 def main(pkg)
-  # pkg is @pkg.name in this function.
-  puts "Determining #{pkg}'s runtime dependencies...".lightblue
-  pkg_file = Dir["{#{CREW_LOCAL_REPO_ROOT}/packages,#{CREW_PACKAGES_PATH}}/#{pkg}.rb"].max { |a, b| File.mtime(a) <=> File.mtime(b) }
+  if pkg.is_fake?
+    puts "Cannot determine runtime dependencies of fake package #{pkg.name}!".lightred
+    return
+  end
+
+  puts "Determining #{pkg.name}'s runtime dependencies...".lightblue
+  pkg_file = Dir["{#{CREW_LOCAL_REPO_ROOT}/packages,#{CREW_PACKAGES_PATH}}/#{pkg.name}.rb"].max { |a, b| File.mtime(a) <=> File.mtime(b) }
   if @opt_use_crew_dest_dir
     define_singleton_method('pkgfilelist') { File.join(CREW_DEST_DIR, 'filelist') }
     abort('Pkg was not built.') unless File.exist?(pkgfilelist)
   else
-    # build_deps = `crew deps -b #{pkg} | sort -u`.split
-    packages_which_need_to_be_installed = @pkg.get_deps_list(include_build_deps: true)
-    # Add pkg to the list of packages we are going to install to make
-    # sure filelists are available.
-    packages_which_need_to_be_installed.push(@pkg.name)
-    puts "Installing or reinstalling #{pkg} and its build dependencies.".orange
-    # Packages needs to be installed for package filelist to be populated.
-    packages_which_need_to_be_installed.each do |install_package|
-      @install_pkg = Package.load_package("packages/#{install_package}")
-      next if PackageUtils.installed?(@install_pkg.name)
-      define_singleton_method('pkgfilelist') { "#{CREW_PREFIX}/etc/crew/meta/#{install_package}.filelist" }
-      system("yes | crew install #{install_package}") unless File.exist?(pkgfilelist)
-      next if @install_pkg.is_fake?
-      abort "Package #{install_package} either does not exist or does not contain any libraries.".lightred unless File.exist?(pkgfilelist)
+    unless PackageUtils.installed?(pkg.name)
+      puts "Installing #{pkg.name}.".orange
+      system("yes | crew install --ignore-dependencies #{pkg.name}")
     end
-    define_singleton_method('pkgfilelist') { "#{CREW_PREFIX}/etc/crew/meta/#{pkg}.filelist" }
+    define_singleton_method('pkgfilelist') { "#{CREW_PREFIX}/etc/crew/meta/#{pkg.name}.filelist" }
   end
 
   # Speed up grep.
@@ -284,7 +273,8 @@ def main(pkg)
   # was just built.
   pkgfiles.map! { |item| item.prepend(CREW_DEST_DIR) } if @opt_use_crew_dest_dir
 
-  FileUtils.rm_rf("/tmp/deps/#{pkg}")
+  # TODO: Does anything create this directory? If so, that should be documented more clearly, and if not, the line can be removed.
+  FileUtils.rm_rf("/tmp/deps/#{pkg.name}")
   # Remove files we don't care about, such as man files and non-binaries.
   pkgfiles = pkgfiles.reject { |i| !File.file?(i.chomp) || File.read(i.chomp, 4) != "\x7FELF" || i.include?('.zst') }
 
@@ -294,12 +284,12 @@ def main(pkg)
   executable_pkgfiles = pkgfiles.reject { |p| library_pkgfiles.include?(p) }
 
   # Determine dependencies for each subset of files.
-  library_deps = determine_dependencies(pkg, library_pkgfiles).compact
-  executable_deps = determine_dependencies(pkg, executable_pkgfiles).compact
+  library_deps = determine_dependencies(pkg.name, library_pkgfiles).compact
+  executable_deps = determine_dependencies(pkg.name, executable_pkgfiles).compact
 
   # Add logical deps for perl, pip, python, and ruby gem packages.
   buildsystem_dependencies = { PERL: 'perl', Pip: 'python3', Python: 'python3', RUBY: 'ruby' }
-  logical_deps = [buildsystem_dependencies[@pkg.superclass.to_s.to_sym]].compact
+  logical_deps = [buildsystem_dependencies[pkg.superclass.to_s.to_sym]].compact
 
   # Remove duplicate dependencies in the priority order of library, executable, logical, build.
   # We currently handle duplicate build dependencies in write_deps.
@@ -308,14 +298,13 @@ def main(pkg)
 
   # Write the changed dependencies to the package file.
   # Note that most logical and all build dependencies are added manually.
-  write_deps(pkg_file, logical_deps, @pkg, 'logical') unless logical_deps.empty?
-  write_deps(pkg_file, executable_deps, @pkg, 'executable') unless executable_deps.empty?
-  write_deps(pkg_file, library_deps, @pkg, 'library') unless library_deps.empty?
-  FileUtils.cp pkg_file, File.join(CREW_LOCAL_REPO_ROOT, "packages/#{pkg}.rb") unless FileUtils.identical?(pkg_file, File.join(CREW_LOCAL_REPO_ROOT, "packages/#{pkg}.rb"))
-  FileUtils.cp pkg_file, File.join(CREW_PACKAGES_PATH, "#{pkg}.rb") unless FileUtils.identical?(pkg_file, File.join(CREW_PACKAGES_PATH, "#{pkg}.rb"))
+  write_deps(pkg_file, logical_deps, pkg, 'logical') unless logical_deps.empty?
+  write_deps(pkg_file, executable_deps, pkg, 'executable') unless executable_deps.empty?
+  write_deps(pkg_file, library_deps, pkg, 'library') unless library_deps.empty?
+  FileUtils.cp pkg_file, File.join(CREW_LOCAL_REPO_ROOT, "packages/#{pkg.name}.rb") unless FileUtils.identical?(pkg_file, File.join(CREW_LOCAL_REPO_ROOT, "packages/#{pkg.name}.rb"))
+  FileUtils.cp pkg_file, File.join(CREW_PACKAGES_PATH, "#{pkg.name}.rb") unless FileUtils.identical?(pkg_file, File.join(CREW_PACKAGES_PATH, "#{pkg.name}.rb"))
 end
 
 ARGV.each do |package|
-  @pkg = Package.load_package("packages/#{package}")
-  main(package.chomp('rb'))
+  main(Package.load_package("packages/#{package}"))
 end
