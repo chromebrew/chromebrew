@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Epiphany < Meson
   description 'A GNOME web browser based on the WebKit rendering engine'
   homepage 'https://wiki.gnome.org/Apps/Web'
-  version '49.2'
+  version '50.3'
   license 'GPL'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/epiphany.git'
@@ -14,9 +14,9 @@ class Epiphany < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4d53cdab0ab9e83d98d59f9fa03032668643cbab9ed1a056aa808eded25c8882',
-     armv7l: '4d53cdab0ab9e83d98d59f9fa03032668643cbab9ed1a056aa808eded25c8882',
-     x86_64: '5b036e71e2e083f720d08432798c0d5d96c91746341bf868733101bf1ab3ca63'
+    aarch64: '401276c879daeea2e680e2255f2ad4cdcc96653881a5127945170a723a0f6986',
+     armv7l: '401276c879daeea2e680e2255f2ad4cdcc96653881a5127945170a723a0f6986',
+     x86_64: '16ca64b584e1313a6388ce01abccbee66c6719ae557329cb818e306698c0ee07'
   })
 
   depends_on 'at_spi2_core' # R
