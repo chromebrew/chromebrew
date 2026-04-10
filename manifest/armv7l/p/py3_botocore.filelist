@@ -1,12 +1,12 @@
-# Total size: 20846029
-/usr/local/lib/python3.14/site-packages/botocore-1.42.85.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/botocore-1.42.85.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/botocore-1.42.85.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/botocore-1.42.85.dist-info/NOTICE
-/usr/local/lib/python3.14/site-packages/botocore-1.42.85.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/botocore-1.42.85.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/botocore-1.42.85.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/botocore-1.42.85.dist-info/top_level.txt
+# Total size: 20879018
+/usr/local/lib/python3.14/site-packages/botocore-1.42.87.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/botocore-1.42.87.dist-info/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/botocore-1.42.87.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/botocore-1.42.87.dist-info/NOTICE
+/usr/local/lib/python3.14/site-packages/botocore-1.42.87.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/botocore-1.42.87.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/botocore-1.42.87.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/botocore-1.42.87.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/botocore/__init__.py
 /usr/local/lib/python3.14/site-packages/botocore/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/botocore/__pycache__/args.cpython-314.pyc
@@ -1200,6 +1200,11 @@
 /usr/local/lib/python3.14/site-packages/botocore/data/marketplace-deployment/2023-01-25/endpoint-rule-set-1.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/marketplace-deployment/2023-01-25/paginators-1.json
 /usr/local/lib/python3.14/site-packages/botocore/data/marketplace-deployment/2023-01-25/service-2.json.gz
+/usr/local/lib/python3.14/site-packages/botocore/data/marketplace-discovery/2026-02-05/endpoint-rule-set-1.json.gz
+/usr/local/lib/python3.14/site-packages/botocore/data/marketplace-discovery/2026-02-05/paginators-1.json
+/usr/local/lib/python3.14/site-packages/botocore/data/marketplace-discovery/2026-02-05/paginators-1.sdk-extras.json
+/usr/local/lib/python3.14/site-packages/botocore/data/marketplace-discovery/2026-02-05/service-2.json.gz
+/usr/local/lib/python3.14/site-packages/botocore/data/marketplace-discovery/2026-02-05/waiters-2.json
 /usr/local/lib/python3.14/site-packages/botocore/data/marketplace-entitlement/2017-01-11/endpoint-rule-set-1.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/marketplace-entitlement/2017-01-11/examples-1.json
 /usr/local/lib/python3.14/site-packages/botocore/data/marketplace-entitlement/2017-01-11/paginators-1.json
