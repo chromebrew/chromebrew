@@ -1,4 +1,4 @@
-# Total size: 1538267
+# Total size: 1573893
 /usr/local/include/frei0r.h
 /usr/local/include/frei0r.hpp
 /usr/local/include/frei0r/blur.h
@@ -160,5 +160,6 @@
 /usr/local/lib/frei0r-1/value.so
 /usr/local/lib/frei0r-1/vertigo.so
 /usr/local/lib/frei0r-1/vignette.so
+/usr/local/lib/frei0r-1/water.so
 /usr/local/lib/frei0r-1/xfade0r.so
 /usr/local/lib/pkgconfig/frei0r.pc
