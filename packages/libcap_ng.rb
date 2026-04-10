@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Libcap_ng < Autotools
   description 'The libcap-ng library is intended to make programming with posix capabilities much easier than the traditional libcap library.'
   homepage 'https://people.redhat.com/sgrubb/libcap-ng/'
-  version "0.9.1-#{CREW_PY_VER}"
+  version "0.9.3-#{CREW_PY_VER}"
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://github.com/stevegrubb/libcap-ng.git'
@@ -11,10 +11,10 @@ class Libcap_ng < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '353196518b921cc15739c1986471ee2354346f117d2c59811b0dc3701b332428',
-     armv7l: '353196518b921cc15739c1986471ee2354346f117d2c59811b0dc3701b332428',
-       i686: '82d75a7d3e82df7a73f10a33eb38792bde58ace4a994080f7f2126da9c7b26de',
-     x86_64: '3679b06d4b938cb6d513f2dde073a4068b140e1da07eb95a8980243a0095c3f4'
+    aarch64: '60b87b152507693c26c35937658e92a3b7807582777fe3e4708dba33c0148119',
+     armv7l: '60b87b152507693c26c35937658e92a3b7807582777fe3e4708dba33c0148119',
+       i686: 'b1a5beec5bb2eff8bf6dd72ba4a1d16c979c37909a18169cf530c514970f531c',
+     x86_64: '4859ca3a65257063fd0099966e136de4aa6858b6de9f2104214e3143e7856199'
   })
 
   depends_on 'glibc' => :library
