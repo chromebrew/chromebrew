@@ -1,39 +1,28 @@
-require 'package'
+require 'buildsystems/rust'
 
-class Broot < Package
+class Broot < RUST
   description 'A new way to see and navigate directory trees'
   homepage 'https://dystroy.org/broot/'
-  version '1.11.1'
+  version '1.56.2'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/Canop/broot/archive/v1.11.1.tar.gz'
-  source_sha256 '0cc09d5bcc5c6b80d6161c2ba234df0332c1dabd6c3c9f2f6ebe2f82b8eef5c3'
+  source_url 'https://github.com/Canop/broot.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8d4aaa0b51e835863c4fe934958b295dcac68439d82b5dcef78f7939421cf131',
-     armv7l: '8d4aaa0b51e835863c4fe934958b295dcac68439d82b5dcef78f7939421cf131',
-       i686: 'aa70d49725d6c1010c2655e1065d7681f2f384daab534542d245423d074dfe4f',
-     x86_64: '5eed408affc3b87e22994370f0b21566bc05988ab43640c7d949e47cfb6567ec'
+    aarch64: 'f93addc4c88f46a300c9e7b4ab773863c2e5337d6194e4441436ae8687eb36e4',
+     armv7l: 'f93addc4c88f46a300c9e7b4ab773863c2e5337d6194e4441436ae8687eb36e4',
+       i686: '4d79b6ba3b6bcd8915d86dd74dc2994a84a3ecd549fe18fef42792b560b51449',
+     x86_64: '3fa5390bff6fa0b7bf81d47a802621107b2c54530ea475b5973a9a1e772c30c1'
   })
 
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
   depends_on 'rust' => :build
+  depends_on 'zlib' => :executable
 
-  def self.build
-    system 'cargo fetch \
-      --manifest-path Cargo.toml'
-    system 'cargo build \
-      --release \
-      --frozen \
-      --manifest-path Cargo.toml'
-  end
-
-  def self.install
-    system "cargo install \
-      --frozen \
-      --offline \
-      --no-track \
-      --path . \
-      --root #{CREW_DEST_PREFIX}"
+  def self.postremove
+    Package.agree_to_remove("#{CREW_PREFIX}/.config/broot")
   end
 end

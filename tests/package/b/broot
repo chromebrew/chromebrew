@@ -1,0 +1,3 @@
+#!/bin/bash
+broot --help | head
+broot --version
