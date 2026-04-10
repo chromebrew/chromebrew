@@ -1,4 +1,4 @@
-# Total size: 294566
+# Total size: 388308
 /usr/local/bin/filecap
 /usr/local/bin/netcap
 /usr/local/bin/pscap
@@ -21,6 +21,7 @@
 /usr/local/lib64/python3.14/site-packages/_capng.so
 /usr/local/lib64/python3.14/site-packages/capng.py
 /usr/local/share/aclocal/cap-ng.m4
+/usr/local/share/bash-completion/completions/libcap-ng.bash_completion
 /usr/local/share/man/man3/capng_apply.3.zst
 /usr/local/share/man/man3/capng_apply_caps_fd.3.zst
 /usr/local/share/man/man3/capng_capability_to_name.3.zst
@@ -40,6 +41,7 @@
 /usr/local/share/man/man3/capng_save_state.3.zst
 /usr/local/share/man/man3/capng_set_rootid.3.zst
 /usr/local/share/man/man3/capng_setpid.3.zst
+/usr/local/share/man/man3/capng_stage_additional_groups.3.zst
 /usr/local/share/man/man3/capng_update.3.zst
 /usr/local/share/man/man3/capng_updatev.3.zst
 /usr/local/share/man/man7/libdrop_ambient.7.zst
