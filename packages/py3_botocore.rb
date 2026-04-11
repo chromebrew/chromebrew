@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_botocore < Pip
   description 'Low-level, data-driven core of boto 3.'
   homepage 'https://github.com/boto/botocore'
-  version "1.42.87-#{CREW_PY_VER}"
+  version "1.42.88-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4ddc5f28bede689652fd827b1fc8a0f8e66ed8585d82d79d7e514246ba782071',
-     armv7l: '4ddc5f28bede689652fd827b1fc8a0f8e66ed8585d82d79d7e514246ba782071',
-       i686: '0cc8135034b19037e144c46583d3df85856c715be48917b80a11cb522ab4e9e4',
-     x86_64: '5779a4d5327ed72d72f71736acbc02bb73f5dc1e82b05359d9b619ed7fd0994e'
+    aarch64: '6025bce07a8639c8b2c02d6872fe3e6d9669acd1ea54d4e268ebf632c9695bb9',
+     armv7l: '6025bce07a8639c8b2c02d6872fe3e6d9669acd1ea54d4e268ebf632c9695bb9',
+       i686: 'ef9cf251971a01aac469100371ded06ee4b7e8b25d0c1516f723992dee3b614a',
+     x86_64: 'aafe888b43e202acb4620958c6ef3cdc7434cc109edbbde6d61e5d0bdced2da6'
   })
 
   depends_on 'python3' => :logical
