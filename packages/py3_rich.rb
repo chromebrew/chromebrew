@@ -13,16 +13,16 @@ class Py3_rich < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '190a38d56a4a4b8db4a6682e7b59179eebf25b9f62da78fe2e25afc751990fa2',
-     armv7l: '190a38d56a4a4b8db4a6682e7b59179eebf25b9f62da78fe2e25afc751990fa2',
-       i686: 'e013f62a5e61ce02f7544781e682bd5f6952cdde0309c22c26738f0fb6416175',
-     x86_64: '52c4c8a0c87204bc4964aad1a3db45395dc5015ab5b0513c62d6b4e57b6e71a0'
+    aarch64: 'e36e1ea199deb83ef98263a1c3990cfa48520004b22e1ed135fe17a5b59379a0',
+     armv7l: 'e36e1ea199deb83ef98263a1c3990cfa48520004b22e1ed135fe17a5b59379a0',
+       i686: '56b0ab2d4f3e8cd17fc6490c433ecebee29fcf5844152231af857a0530ae7c8a',
+     x86_64: '3f567350ca06b8bcfefb3ad46c37f526fd63059737d2249d3c41e66989e7d9ea'
   })
 
   depends_on 'py3_colorama'
   depends_on 'py3_markdown_it_py'
   depends_on 'py3_pygments'
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end
