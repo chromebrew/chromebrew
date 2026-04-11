@@ -17,6 +17,9 @@ class Unshield < Package
      x86_64: '15626e07093863254c8b3c1c264fa110416fbbe13952876ec2005ef47c46a366'
   })
 
+  depends_on 'glibc' => :library
+  depends_on 'zlib' => :library
+
   def self.build
     system 'cmake .'
     system 'make'
