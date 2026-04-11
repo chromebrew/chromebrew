@@ -1,4 +1,4 @@
-# Total size: 16113435
+# Total size: 15927055
 /usr/local/bin/cct
 /usr/local/bin/cs2cs
 /usr/local/bin/geod
@@ -38,7 +38,7 @@
 /usr/local/lib64/cmake/proj4/proj4-targets.cmake
 /usr/local/lib64/libproj.so
 /usr/local/lib64/libproj.so.25
-/usr/local/lib64/libproj.so.25.9.8.0
+/usr/local/lib64/libproj.so.25.9.8.1
 /usr/local/lib64/pkgconfig/proj.pc
 /usr/local/share/bash-completion/completions/projinfo
 /usr/local/share/doc/proj/AUTHORS.md
