@@ -1,12 +1,9 @@
-# Adapted from Arch Linux vapoursynth PKGBUILD at:
-# https://github.com/archlinux/svntogit-community/raw/packages/vapoursynth/trunk/PKGBUILD
+require 'buildsystems/meson'
 
-require 'buildsystems/autotools'
-
-class Vapoursynth < Autotools
+class Vapoursynth < Meson
   description 'A video processing framework with the future in mind'
   homepage 'http://www.vapoursynth.com/'
-  version '73'
+  version '74'
   license 'LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/vapoursynth/vapoursynth.git'
@@ -28,6 +25,4 @@ class Vapoursynth < Autotools
   depends_on 'python3' => :library
   depends_on 'tesseract' => :build
   depends_on 'zimg' => :library
-
-  autotools_configure_options '--disable-static'
 end
