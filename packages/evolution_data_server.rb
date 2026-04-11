@@ -11,46 +11,48 @@ class Evolution_data_server < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '02d96c1c716a9bf192841ec6e982c7f37dda2e2ae094aff289b3c30cc76b9af0',
-     armv7l: '02d96c1c716a9bf192841ec6e982c7f37dda2e2ae094aff289b3c30cc76b9af0',
-     x86_64: '4c127f6489de37551feb79a0236b75bce12d970954ea7b6abe9f9e710903de8a'
+    aarch64: 'a750e63e71089e5f909bfcebe32c5b9bed7809cfd4327689618927298b3cfbbd',
+     armv7l: 'a750e63e71089e5f909bfcebe32c5b9bed7809cfd4327689618927298b3cfbbd',
+     x86_64: '8284125ec28b9bc4452db33f625558a75cd6869adc0134f2f914d568d30b0ede'
   })
 
-  depends_on 'at_spi2_core' # R
-  depends_on 'cairo' # R
-  depends_on 'e2fsprogs' # R
-  depends_on 'gcc_lib' # R
+  depends_on 'at_spi2_core' => :library
+  depends_on 'cairo' => :library
+  depends_on 'e2fsprogs' => :library
+  depends_on 'gcc_lib' => :library
   depends_on 'gcr_3' # R
-  depends_on 'gdk_pixbuf' # R
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
+  depends_on 'gdk_pixbuf' => :library
+  depends_on 'glib' => :library
+  depends_on 'glib_stub' => :library
+  depends_on 'glibc' => :library
   depends_on 'gobject_introspection' => :build
   depends_on 'gperf' => :build
-  depends_on 'graphene' # R
-  depends_on 'gtk3' # R
-  depends_on 'gtk4' # R
+  depends_on 'graphene' => :library
+  depends_on 'gtk3' => :library
+  depends_on 'gtk4' => :library
   depends_on 'gtk_doc' => :build
-  depends_on 'harfbuzz' # R
-  depends_on 'icu4c' # R
-  depends_on 'json_glib' # R
-  depends_on 'krb5' # R
-  depends_on 'libdb' # R
-  depends_on 'libical' # R
-  depends_on 'libsecret' # R
-  depends_on 'libsoup' # R
+  depends_on 'harfbuzz' => :library
+  depends_on 'icu4c' => :library
+  depends_on 'json_glib' => :library
+  depends_on 'krb5' => :library
+  depends_on 'libdb' => :library
+  depends_on 'libical' => :library
+  depends_on 'libsecret' => :library
+  depends_on 'libsoup' => :library
   depends_on 'libsoup2' # R
-  depends_on 'libxml2' # R
-  depends_on 'nss' # R
+  depends_on 'libxml2' => :library
+  depends_on 'libxml2_autotools' => :library
+  depends_on 'nss' => :library
   depends_on 'p11kit' # R
-  depends_on 'pango' # R
-  depends_on 'sqlite' # R
-  depends_on 'util_linux' # R
+  depends_on 'pango' => :library
+  depends_on 'sqlite' => :library
+  depends_on 'util_linux' => :library
   depends_on 'vala' => :build
   depends_on 'vulkan_headers' => :build
-  depends_on 'vulkan_icd_loader' # R
-  depends_on 'webkit2gtk_4_1' # R
-  depends_on 'webkitgtk_6' # R
-  depends_on 'zlib' # R
+  depends_on 'vulkan_icd_loader' => :library
+  depends_on 'webkit2gtk_4_1' => :library
+  depends_on 'webkitgtk_6' => :library
+  depends_on 'zlib' => :library
 
   gnome
 

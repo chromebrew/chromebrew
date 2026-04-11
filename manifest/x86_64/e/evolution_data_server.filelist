@@ -1,4 +1,4 @@
-# Total size: 18806157
+# Total size: 19306798
 /usr/local/etc/xdg/autostart/org.gnome.Evolution-alarm-notify.desktop
 /usr/local/include/evolution-data-server/camel/camel-address.h
 /usr/local/include/evolution-data-server/camel/camel-async-closure.h
@@ -288,6 +288,7 @@
 /usr/local/include/evolution-data-server/libedataserver/e-source-calendar.h
 /usr/local/include/evolution-data-server/libedataserver/e-source-camel.h
 /usr/local/include/evolution-data-server/libedataserver/e-source-collection.h
+/usr/local/include/evolution-data-server/libedataserver/e-source-conflict-search.h
 /usr/local/include/evolution-data-server/libedataserver/e-source-contacts.h
 /usr/local/include/evolution-data-server/libedataserver/e-source-credentials-provider-impl-oauth2.h
 /usr/local/include/evolution-data-server/libedataserver/e-source-credentials-provider-impl-password.h
