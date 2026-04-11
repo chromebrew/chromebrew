@@ -20,7 +20,10 @@ class Usbredir < Package
      x86_64: '22a25352e6f452b061ed4350d72d06997c8032ce18f1976e8d21fab7e211d609'
   })
 
-  depends_on 'libusb'
+  depends_on 'glib' => :executable
+  depends_on 'glib_stub' => :executable
+  depends_on 'glibc' => :library
+  depends_on 'libusb' => :library
 
   def self.build
     system 'autoreconf -fi'
