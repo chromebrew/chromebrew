@@ -1,36 +1,25 @@
-# Adapted from Arch Linux usbredir PKGBUILD at:
-# https://github.com/archlinux/svntogit-community/raw/packages/usbredir/trunk/PKGBUILD
+require 'buildsystems/meson'
 
-require 'package'
-
-class Usbredir < Package
+class Usbredir < Meson
   description 'USB traffic redirection protocol'
-  homepage 'https://spice-space.org/page/UsbRedir'
-  version '0.9.0'
+  homepage 'https://www.spice-space.org/usbredir.html'
+  version '0.15.0'
   license 'GPL2 LGPL2.1'
   compatibility 'all'
-  source_url 'https://spice-space.org/download/usbredir/usbredir-0.9.0.tar.xz'
-  source_sha256 'a3e167bf42bc7fe02c3c9db27d7767f1b8ce41b99ad14a4b0d0a60abe8bf56a6'
-  binary_compression 'tar.xz'
+  source_url 'https://gitlab.freedesktop.org/spice/usbredir.git'
+  git_hashtag "usbredir-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f21a861ddc071fe6979a0d3d2241447b763e23a437c432b6b41c9e74ee0d2848',
-     armv7l: 'f21a861ddc071fe6979a0d3d2241447b763e23a437c432b6b41c9e74ee0d2848',
-       i686: 'ac66c1bf406fcfb0daf14133290b171598eed9100c457fa882f0cbdcc87d3860',
-     x86_64: '22a25352e6f452b061ed4350d72d06997c8032ce18f1976e8d21fab7e211d609'
+    aarch64: 'b02a1c24554836a2c3caaf0cd81e8b2cfb583bb289e6dfc58df9a64b54d8537c',
+     armv7l: 'b02a1c24554836a2c3caaf0cd81e8b2cfb583bb289e6dfc58df9a64b54d8537c',
+       i686: '2496b176ce1077771391664414f6e5ef3523495f75d0dcb711668dbbc5f1f4f1',
+     x86_64: '9a6c81034c2b0c1d2ee6348a51091c5e05084cb57781f71c40f9dcb9f4254db8'
   })
 
-  depends_on 'libusb'
+  depends_on 'glib' => :executable
+  depends_on 'glibc' => :library
+  depends_on 'libusb' => :library
 
-  def self.build
-    system 'autoreconf -fi'
-    system "env #{CREW_ENV_OPTIONS} \
-      ./configure #{CREW_CONFIGURE_OPTIONS} \
-      --sbindir=#{CREW_PREFIX}/bin"
-    system 'make'
-  end
-
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR}/ install"
-  end
+  run_tests
 end
