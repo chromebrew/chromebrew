@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Libgedit_gfls < Meson
   description 'A module dedicated to file loading and saving.'
   homepage 'https://gitlab.gnome.org/World/gedit/libgedit-gfls'
-  version '0.4.0'
+  version '0.4.1'
   license 'LGPL-3.0-or-later'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/World/gedit/libgedit-gfls.git'
