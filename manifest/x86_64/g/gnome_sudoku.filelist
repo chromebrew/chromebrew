@@ -1,4 +1,4 @@
-# Total size: 1563918
+# Total size: 1626967
 /usr/local/bin/gnome-sudoku
 /usr/local/share/applications/org.gnome.Sudoku.desktop
 /usr/local/share/dbus-1/services/org.gnome.Sudoku.service
@@ -231,6 +231,25 @@
 /usr/local/share/help/id/gnome-sudoku/save-resume.page
 /usr/local/share/help/id/gnome-sudoku/strategy.page
 /usr/local/share/help/id/gnome-sudoku/translate.page
+/usr/local/share/help/kk/gnome-sudoku/basics.page
+/usr/local/share/help/kk/gnome-sudoku/bug-filing.page
+/usr/local/share/help/kk/gnome-sudoku/develop.page
+/usr/local/share/help/kk/gnome-sudoku/documentation.page
+/usr/local/share/help/kk/gnome-sudoku/earmarks.page
+/usr/local/share/help/kk/gnome-sudoku/figures/org.gnome.Sudoku.svg
+/usr/local/share/help/kk/gnome-sudoku/figures/rowcolumnbox.png
+/usr/local/share/help/kk/gnome-sudoku/figures/strategy1.png
+/usr/local/share/help/kk/gnome-sudoku/figures/strategy2.png
+/usr/local/share/help/kk/gnome-sudoku/highlighting.page
+/usr/local/share/help/kk/gnome-sudoku/index.page
+/usr/local/share/help/kk/gnome-sudoku/legal.xml
+/usr/local/share/help/kk/gnome-sudoku/license.page
+/usr/local/share/help/kk/gnome-sudoku/print-blank-puzzles.page
+/usr/local/share/help/kk/gnome-sudoku/print-inprogress-game.page
+/usr/local/share/help/kk/gnome-sudoku/rules.page
+/usr/local/share/help/kk/gnome-sudoku/save-resume.page
+/usr/local/share/help/kk/gnome-sudoku/strategy.page
+/usr/local/share/help/kk/gnome-sudoku/translate.page
 /usr/local/share/help/ko/gnome-sudoku/basics.page
 /usr/local/share/help/ko/gnome-sudoku/bug-filing.page
 /usr/local/share/help/ko/gnome-sudoku/develop.page
@@ -307,6 +326,25 @@
 /usr/local/share/help/ru/gnome-sudoku/save-resume.page
 /usr/local/share/help/ru/gnome-sudoku/strategy.page
 /usr/local/share/help/ru/gnome-sudoku/translate.page
+/usr/local/share/help/sr/gnome-sudoku/basics.page
+/usr/local/share/help/sr/gnome-sudoku/bug-filing.page
+/usr/local/share/help/sr/gnome-sudoku/develop.page
+/usr/local/share/help/sr/gnome-sudoku/documentation.page
+/usr/local/share/help/sr/gnome-sudoku/earmarks.page
+/usr/local/share/help/sr/gnome-sudoku/figures/org.gnome.Sudoku.svg
+/usr/local/share/help/sr/gnome-sudoku/figures/rowcolumnbox.png
+/usr/local/share/help/sr/gnome-sudoku/figures/strategy1.png
+/usr/local/share/help/sr/gnome-sudoku/figures/strategy2.png
+/usr/local/share/help/sr/gnome-sudoku/highlighting.page
+/usr/local/share/help/sr/gnome-sudoku/index.page
+/usr/local/share/help/sr/gnome-sudoku/legal.xml
+/usr/local/share/help/sr/gnome-sudoku/license.page
+/usr/local/share/help/sr/gnome-sudoku/print-blank-puzzles.page
+/usr/local/share/help/sr/gnome-sudoku/print-inprogress-game.page
+/usr/local/share/help/sr/gnome-sudoku/rules.page
+/usr/local/share/help/sr/gnome-sudoku/save-resume.page
+/usr/local/share/help/sr/gnome-sudoku/strategy.page
+/usr/local/share/help/sr/gnome-sudoku/translate.page
 /usr/local/share/help/sv/gnome-sudoku/basics.page
 /usr/local/share/help/sv/gnome-sudoku/bug-filing.page
 /usr/local/share/help/sv/gnome-sudoku/develop.page
