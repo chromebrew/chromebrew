@@ -1,33 +1,26 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Byobu < Package
+class Byobu < Autotools
   description 'Byobu is a GPLv3 open source text-based window manager and terminal multiplexer.'
   homepage 'https://www.byobu.org'
-  version '5.125'
+  version '6.14'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://launchpad.net/byobu/trunk/5.125/+download/byobu_5.125.orig.tar.gz'
-  source_sha256 '5022c82705a5d57f1d4e8dcb1819fd04628af2d4b4618b7d44fa27ebfcdda9db'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/dustinkirkland/byobu.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b24959d0ad54aed9655241f9492aa63473503c5720cfc66574b306e8a79edcb6',
-     armv7l: 'b24959d0ad54aed9655241f9492aa63473503c5720cfc66574b306e8a79edcb6',
-       i686: 'c3ca28d2979e3d7a0086b03be5508cf30ae115b60d22284803a06a8b7d3fcb0c',
-     x86_64: 'f0a2933be3634409f9405e33979b06068f734d4a7b100dac01776a288fa3c843'
+    aarch64: '1b48527b4d5942fabe2345c6c89b72b053e9294f74192102f558a8fdf44fdbd4',
+     armv7l: '1b48527b4d5942fabe2345c6c89b72b053e9294f74192102f558a8fdf44fdbd4',
+       i686: 'dc3b2d01268dd250fe9c76121aab4afea810a84219e2ec57272a81021ac87437',
+     x86_64: '09722949ca77e1e6b9c25adc67254950fc557911a355bda739db160bbd44e850'
   })
 
   depends_on 'tmux' unless File.exist? "#{CREW_PREFIX}/bin/screen"
 
-  def self.build
-    system './configure'
-    system "sed -i '249d' Makefile && sed -i '262d' Makefile"
-    system "sed -i '242iprefix = #{CREW_PREFIX}' Makefile"
-    system "sed -i '243iexec_prefix = \${prefix}' Makefile"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  def self.patch
+    system "sed -i '318,328d' ./usr/lib/byobu/include/shutil"
+    system "sed -i '34,36d' ./usr/lib/byobu/release"
   end
 end
