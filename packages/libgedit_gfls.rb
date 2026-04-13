@@ -17,7 +17,6 @@ class Libgedit_gfls < Meson
   })
 
   depends_on 'glib' => :library
-  depends_on 'glib_stub' => :library
   depends_on 'glibc' => :library
   depends_on 'gobject_introspection'
   depends_on 'gtk3'

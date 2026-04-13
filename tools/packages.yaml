@@ -6415,6 +6415,11 @@ url: https://www.nano-editor.org/dist
 activity: high
 ---
 kind: url
+name: nanosvg
+url: https://github.com/memononen/nanosvg/releases
+activity: none
+---
+kind: url
 name: nanomsg
 url: https://github.com/nanomsg/nanomsg/releases
 activity: medium

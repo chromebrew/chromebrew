@@ -22,7 +22,6 @@ class Gnome_sudoku < Meson
   depends_on 'desktop_file_utils' => :build
   depends_on 'gcc_lib' => :executable
   depends_on 'glib' => :executable
-  depends_on 'glib_stub' => :executable
   depends_on 'glibc' => :executable
   depends_on 'gsound' => :build
   depends_on 'gtk4' => :executable

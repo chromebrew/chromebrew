@@ -25,13 +25,11 @@ class Pipewire < Meson
   depends_on 'eudev' => :library
   depends_on 'gcc_lib' => :library
   depends_on 'glib' => :library
-  depends_on 'glib_stub' => :library
   depends_on 'glibc' => :library
   depends_on 'gsettings_desktop_schemas' => :build
   depends_on 'gstreamer' => :library
   depends_on 'gstreamer' => :logical
   depends_on 'jack' => :library
-  depends_on 'jack1' => :library
   depends_on 'libdrm' => :library
   depends_on 'libmysofa' => :library
   depends_on 'libsndfile' => :library
