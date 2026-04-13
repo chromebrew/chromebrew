@@ -3,55 +3,58 @@ require 'buildsystems/cmake'
 class Wxwidgets < CMake
   description 'wxWidgets is a C++ library that lets developers create applications for Windows, macOS, Linux and other platforms with a single code base.'
   homepage 'https://www.wxwidgets.org/'
-  version '3.3.1-1'
+  version '3.3.2'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
-  source_url "https://github.com/wxWidgets/wxWidgets/releases/download/v#{version.split('-')[0]}/wxWidgets-#{version.split('-')[0]}.tar.bz2"
-  source_sha256 'f936c8d694f9c49a367a376f99c751467150a4ed7cbf8f4723ef19b2d2d9998d'
+  source_url 'https://github.com/wxWidgets/wxWidgets.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e9b9c9eb0e30a906bd2a80bcde9a43c7fe0588e9763f2f040d9dc42591e68805',
-     armv7l: 'e9b9c9eb0e30a906bd2a80bcde9a43c7fe0588e9763f2f040d9dc42591e68805',
-     x86_64: '407295bab738f459f781999b51215142fcdf73dfc67118276d6299e04b1946ab'
+    aarch64: '71a67c4702c781a8909cfcaa1d2232761a054c6d8c0a18e5e22693bf8cc8dba4',
+     armv7l: '71a67c4702c781a8909cfcaa1d2232761a054c6d8c0a18e5e22693bf8cc8dba4',
+     x86_64: 'f453b990265a984437373873055e71d78bba0ce92e3e21b1db979634bb7e3b89'
   })
 
-  depends_on 'at_spi2_core' # R
-  depends_on 'cairo' # R
-  depends_on 'curl' # R
-  depends_on 'expat' # R
-  depends_on 'fontconfig'
-  depends_on 'gcc_lib' # R
-  depends_on 'gdk_pixbuf' # R
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
-  depends_on 'gspell' # R
-  depends_on 'gstreamer' # R
-  depends_on 'gtk3' # R
-  depends_on 'harfbuzz' # R
-  depends_on 'libglu' # R
-  depends_on 'libglvnd' # R
-  depends_on 'libice' # R
-  depends_on 'libjpeg_turbo' # R
-  depends_on 'libmspack' # R
-  depends_on 'libnotify' # R
-  depends_on 'libpng' # R
+  depends_on 'at_spi2_core' => :library
+  depends_on 'cairo' => :library
+  depends_on 'curl' => :library
+  depends_on 'expat' => :library
+  depends_on 'fontconfig' => :library
+  depends_on 'gcc_lib' => :library
+  depends_on 'gdk_pixbuf' => :library
+  depends_on 'glib' => :library
+  depends_on 'glib_stub' => :library
+  depends_on 'glibc' => :library
+  depends_on 'gspell' => :library
+  depends_on 'gstreamer' => :library
+  depends_on 'gtk3' => :library
+  depends_on 'harfbuzz' => :library
+  depends_on 'libglu' => :library
+  depends_on 'libglvnd' => :library
+  depends_on 'libice' => :library
+  depends_on 'libjpeg_turbo' => :library
+  depends_on 'libmspack' => :library
+  depends_on 'libnotify' => :library
+  depends_on 'libpng' => :library
   depends_on 'libsdl' => :build
-  depends_on 'libsm' # R
-  depends_on 'libsoup' # R
-  depends_on 'libtiff' # R
-  depends_on 'libwebp' # R
-  depends_on 'libx11' # R
-  depends_on 'libxext' # R
-  depends_on 'libxkbcommon' # R
-  depends_on 'libxtst' # R
-  depends_on 'pango' # R
-  depends_on 'pcre2' # R
-  depends_on 'sdl2' # R
-  depends_on 'wayland' # R
-  depends_on 'webkit2gtk_4_1' # R
-  depends_on 'xzutils' # R
-  depends_on 'zlib' # R
+  depends_on 'libsm' => :library
+  depends_on 'libsoup' => :library
+  depends_on 'libtiff' => :library
+  depends_on 'libwebp' => :library
+  depends_on 'libx11' => :library
+  depends_on 'libxext' => :library
+  depends_on 'libxkbcommon' => :library
+  depends_on 'libxtst' => :library
+  depends_on 'nanosvg' => :library
+  depends_on 'pango' => :library
+  depends_on 'pcre2' => :library
+  depends_on 'sdl2' => :library
+  depends_on 'sdl2_compat' => :library
+  depends_on 'wayland' => :library
+  depends_on 'webkit2gtk_4_1' => :library
+  depends_on 'xzutils' => :library
+  depends_on 'zlib' => :library
 
   def self.preflight
     %w[wxwidgets30 wxwidgets31].each do |wxw|
@@ -102,7 +105,7 @@ class Wxwidgets < CMake
         end
       end
     end
-    FileUtils.ln_sf "#{CREW_LIB_PREFIX}/wx/config/gtk3-unicode-#{version.split('-')[0].sub(/\.\d+$/, '')}", "#{CREW_DEST_PREFIX}/bin/wx-config"
-    FileUtils.ln_sf "#{CREW_PREFIX}/bin/wxrc-#{version.split('-')[0].sub(/\.\d+$/, '')}", "#{CREW_DEST_PREFIX}/bin/wxrc"
+    FileUtils.ln_sf "#{CREW_LIB_PREFIX}/wx/config/gtk3-unicode-#{version.sub(/\.\d+$/, '')}", "#{CREW_DEST_PREFIX}/bin/wx-config"
+    FileUtils.ln_sf "#{CREW_PREFIX}/bin/wxrc-#{version.sub(/\.\d+$/, '')}", "#{CREW_DEST_PREFIX}/bin/wxrc"
   end
 end
