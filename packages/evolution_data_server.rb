@@ -23,7 +23,6 @@ class Evolution_data_server < CMake
   depends_on 'gcr_3' # R
   depends_on 'gdk_pixbuf' => :library
   depends_on 'glib' => :library
-  depends_on 'glib_stub' => :library
   depends_on 'glibc' => :library
   depends_on 'gobject_introspection' => :build
   depends_on 'gperf' => :build
@@ -41,7 +40,6 @@ class Evolution_data_server < CMake
   depends_on 'libsoup' => :library
   depends_on 'libsoup2' # R
   depends_on 'libxml2' => :library
-  depends_on 'libxml2_autotools' => :library
   depends_on 'nss' => :library
   depends_on 'p11kit' # R
   depends_on 'pango' => :library

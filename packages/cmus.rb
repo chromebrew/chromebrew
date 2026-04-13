@@ -23,7 +23,6 @@ class Cmus < Package
   depends_on 'flac' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'jack1' # R
   depends_on 'jack' # R
   depends_on 'libmodplug' # R
   depends_on 'libsamplerate' # R

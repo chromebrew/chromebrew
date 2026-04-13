@@ -212,10 +212,16 @@ def determine_dependencies(pkg_name, pkgfiles_to_check)
   pkgdeps = pkgdeps.map { |i| i.gsub(/llvm(\d)+_lib/, 'llvm_lib') }.uniq
   pkgdeps = pkgdeps.map { |i| i.gsub(/llvm(\d)+_dev/, 'llvm_dev') }.uniq
 
+  # If two packages both provide a library, use the regular one unless this is the specific package that needs the alternative.
+  # TODO: Are there more packages like this?
+  pkgdeps = pkgdeps.map { |i| i.gsub('glib_stub', 'glib') }.uniq unless %w[gobject_introspection glib].include?(pkg_name)
+  # TODO: Since these packages aren't needed by any specific package, do we need to package them at all?
+  pkgdeps = pkgdeps.map { |i| i.gsub('jack1', 'jack') }.uniq
+  pkgdeps = pkgdeps.map { |i| i.gsub('libxml2_autotools', 'libxml2') }.uniq
+
   # Split any multi-dependency strings into individual array members.
   pkgdeps = pkgdeps.flat_map(&:split).uniq
 
-  # TODO: Handle the situation where two conflicting packages provide the same library (i.e. jack and jack1)
   if pkgdeps.blank?
     return []
   else
@@ -273,7 +279,7 @@ def main(pkg)
   # was just built.
   pkgfiles.map! { |item| item.prepend(CREW_DEST_DIR) } if @opt_use_crew_dest_dir
 
-  # TODO: Does anything create this directory? If so, that should be documented more clearly, and if not, the line can be removed.
+  # Remove the temporary directory created in determine_dependencies.
   FileUtils.rm_rf("/tmp/deps/#{pkg.name}")
   # Remove files we don't care about, such as man files and non-binaries.
   pkgfiles = pkgfiles.reject { |i| !File.file?(i.chomp) || File.read(i.chomp, 4) != "\x7FELF" || i.include?('.zst') }

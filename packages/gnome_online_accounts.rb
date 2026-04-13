@@ -18,7 +18,6 @@ class Gnome_online_accounts < Meson
 
   depends_on 'gcr_4' => :library
   depends_on 'glib' => :library
-  depends_on 'glib_stub' => :library
   depends_on 'glibc' => :library
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk4' => :library
@@ -33,7 +32,6 @@ class Gnome_online_accounts < Meson
   depends_on 'libsecret' => :library
   depends_on 'libsoup' => :library
   depends_on 'libxml2' => :library
-  depends_on 'libxml2_autotools' => :library
   depends_on 'libxslt'
   depends_on 'rest' => :library
   depends_on 'vala' => :build

@@ -18,7 +18,6 @@ class Py3_lxml < Pip
 
   depends_on 'glibc' => :library
   depends_on 'libxml2' => :library
-  depends_on 'libxml2_autotools' => :library
   depends_on 'libxslt' => :library
   depends_on 'py3_cython' => :build
   depends_on 'python3' => :logical
