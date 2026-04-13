@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gnome_online_accounts < Meson
   description 'Single sign-on framework for GNOME'
   homepage 'https://wiki.gnome.org/Projects/GnomeOnlineAccounts'
-  version '3.58.0'
+  version '3.58.1'
   license 'LGPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-online-accounts.git'
@@ -11,13 +11,14 @@ class Gnome_online_accounts < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4f31e2917cd17396f8064bc612b0b3ea3bdfbad08d5cb8f386d0114eb63d311d',
-     armv7l: '4f31e2917cd17396f8064bc612b0b3ea3bdfbad08d5cb8f386d0114eb63d311d',
-     x86_64: '34e5e6e06416cd296a8cbda3f161cbe47e86026a55c18237f2e7f5b51b44f41f'
+    aarch64: '4a42eca99b8b1d0c4fc2e776f34e2936e23ac2e97a2d79deabb4cabd345e9f17',
+     armv7l: '4a42eca99b8b1d0c4fc2e776f34e2936e23ac2e97a2d79deabb4cabd345e9f17',
+     x86_64: 'a23de974cfb2506b614c2395b63f8ea0052ad4984b6a4193562715c76116538b'
   })
 
   depends_on 'gcr_4' => :library
   depends_on 'glib' => :library
+  depends_on 'glib_stub' => :library
   depends_on 'glibc' => :library
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk4' => :library
@@ -32,6 +33,7 @@ class Gnome_online_accounts < Meson
   depends_on 'libsecret' => :library
   depends_on 'libsoup' => :library
   depends_on 'libxml2' => :library
+  depends_on 'libxml2_autotools' => :library
   depends_on 'libxslt'
   depends_on 'rest' => :library
   depends_on 'vala' => :build

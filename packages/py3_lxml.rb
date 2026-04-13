@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_lxml < Pip
   description 'LXML is a Python library for processing XML and HTML.'
   homepage 'https://lxml.de/'
-  version "6.0.3-#{CREW_PY_VER}"
+  version "6.0.4-#{CREW_PY_VER}"
   license 'BSD-3'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0bbb5e0b15e017237c54c697f31749282242090755e459f914b6808fa7b0bfe7',
-     armv7l: '0bbb5e0b15e017237c54c697f31749282242090755e459f914b6808fa7b0bfe7',
-       i686: '2116d631789fd1862a665556f5a16d33c65e31233322b7af3c8fd8d5f9792808',
-     x86_64: '136bdcc44cf82cf7771f549aac4f714b838a3dd9124d24f00708744c478317d7'
+    aarch64: '45a1be8d07ce6c4b444dd5f72dce75c8942fa554c6b233646fe84c40ad2080f6',
+     armv7l: '45a1be8d07ce6c4b444dd5f72dce75c8942fa554c6b233646fe84c40ad2080f6',
+       i686: 'cc4c6f68415b73497c852b087802ef283df2126cb88e7de2230266c3105da9b8',
+     x86_64: '91f92967785652595448a73d6c41ca359ff683d480d420a9b6cc9afd0c64e1e5'
   })
 
   depends_on 'glibc' => :library
