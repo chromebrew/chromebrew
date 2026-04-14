@@ -1,0 +1,3 @@
+#!/bin/bash
+coin-config --help | head
+coin-config --version

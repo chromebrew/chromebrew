@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Mold < CMake
   description 'A Modern Linker'
   homepage 'https://github.com/rui314/mold'
-  version '2.40.4'
+  version '2.41.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/rui314/mold.git'
@@ -14,17 +14,17 @@ class Mold < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4a5f55f801de04d8339258b6d8af6a9b73b9714c8ed68722ea33b750271bf318',
-     armv7l: '4a5f55f801de04d8339258b6d8af6a9b73b9714c8ed68722ea33b750271bf318',
-       i686: '2716eee84ed34d89bedd5e6e2ade684afb1062ae11730305503a9b21a79a4920',
-     x86_64: '242683345b0f34efca645d37989bc903db613029082b8a70fc145ff79adfcf6f'
+    aarch64: '2c178126fb01b077b2b2b42cdf0bef03ca7c5125651379ac94ba3a7b74ee3ad0',
+     armv7l: '2c178126fb01b077b2b2b42cdf0bef03ca7c5125651379ac94ba3a7b74ee3ad0',
+       i686: '84f2eb3b2b972eeb5e890e6964f1fa4bedaedbfb3115877fb7cef59c02ef8fb9',
+     x86_64: 'c07531a67e75978a47e27a6a8765203fad31d2071b588e0dd6f58b15fff6ccfa'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
   depends_on 'xxhash' => :build
-  depends_on 'zlib' # R
-  depends_on 'zstd' # R
+  depends_on 'zlib' => :library
+  depends_on 'zstd' => :library
 
   no_env_options
   print_source_bashrc

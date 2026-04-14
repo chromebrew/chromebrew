@@ -1,9 +1,10 @@
-# Total size: 70748
+# Total size: 67956
 /usr/local/bin/unshield
 /usr/local/include/libunshield.h
+/usr/local/lib/cmake/unshield/unshieldConfig-release.cmake
+/usr/local/lib/cmake/unshield/unshieldConfig.cmake
 /usr/local/lib/libunshield.so
-/usr/local/lib/libunshield.so.0
-/usr/local/lib/libunshield.so.0.0.0
+/usr/local/lib/libunshield.so.1
+/usr/local/lib/libunshield.so.1.6.2
 /usr/local/lib/pkgconfig/libunshield.pc
-/usr/local/man/man1/unshield.1.gz
-/usr/local/share/man/man1/unshield.1.gz
+/usr/local/share/man/man1/unshield.1.zst

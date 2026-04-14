@@ -1,42 +1,27 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Vmaf < Package
+class Vmaf < Meson
   description 'Perceptual video quality assessment algorithm based on multi-method fusion'
-  homepage 'https://github.com/Netflix/vmaf/'
-  version '3.0.0'
+  homepage 'https://github.com/Netflix/vmaf'
+  version '3.1.0'
   license 'BSD-2'
   compatibility 'all'
-  source_url "https://github.com/Netflix/vmaf/archive/v#{version}.tar.gz"
-  source_sha256 '7178c4833639e6b989ecae73131d02f70735fdb3fc2c7d84bc36c9c3461d93b1'
+  source_url 'https://github.com/Netflix/vmaf.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '27223f17a875ef85c4d64bffe55f2e755b6657a51a64918a080722799fd34261',
-     armv7l: '27223f17a875ef85c4d64bffe55f2e755b6657a51a64918a080722799fd34261',
-       i686: '9f180b6295edecf76ce72fcd331693f833a8bc55d70dd6aec9c87563863b471e',
-     x86_64: '5379016438e0aaa04fc4da41673b583ae7b846adf360f71bbce318a67271984b'
+    aarch64: '0e877192cd4f51d3a4df46976474d892e2d3844cef013ede4ba58dbe0609498e',
+     armv7l: '0e877192cd4f51d3a4df46976474d892e2d3844cef013ede4ba58dbe0609498e',
+       i686: '60df638d8fae70d05b881d5ee3bc99e4f7b131f5694b9be8000dd69e36ea86ee',
+     x86_64: 'd60e09872021f6ebc7eb620b5622c28c040faca864cda594b523e9a86bdd2082'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'nasm' => :build
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'nasm' => :build if %w[x86_64 i686].include?(ARCH)
 
-  def self.build
-    @avx512 = ARCH == 'x86_64' ? 'true' : 'false'
-
-    Dir.chdir 'libvmaf' do
-      system "meson setup #{CREW_MESON_OPTIONS} \
-      -Denable_docs=false \
-      -Denable_tests=false \
-      -Denable_avx512=#{@avx512} \
-      -Denable_float=true \
-      builddir"
-    end
-    system 'meson configure libvmaf/builddir'
-    system 'ninja -C libvmaf/builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C libvmaf/builddir install"
-  end
+  meson_build_relative_dir 'libvmaf'
+  # vmaf currently fails to build with default configuration in i686: https://github.com/Netflix/vmaf/issues/1481
+  meson_options "-Denable_docs=false -Denable_tests=false -Denable_float=true #{'-Denable_asm=false' if ARCH == 'i686'}"
 end

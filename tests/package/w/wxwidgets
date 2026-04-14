@@ -1,2 +1,4 @@
 #!/bin/bash
-for b in $(crew files wxwidgets | grep /usr/local/bin); do $b -h 2>&1; done
+wx-config -h 2>&1 | head
+wx-config --version
+wxrc -h 2>&1

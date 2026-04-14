@@ -11,9 +11,9 @@ class Coin < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '47e2d1b797491b5792635c28ea95dedd6ba517bd7be015bdb9eed0ce95a1116c',
-     armv7l: '47e2d1b797491b5792635c28ea95dedd6ba517bd7be015bdb9eed0ce95a1116c',
-     x86_64: '03fb9edad151f6b418e39e98eb67a5945a28562892379ec46a10177d5c4c0e10'
+    aarch64: '07069eeab10177af002b2165c3e027d21e9d3b7e5d7d54b76a7e5e8b779d6c08',
+     armv7l: '07069eeab10177af002b2165c3e027d21e9d3b7e5d7d54b76a7e5e8b779d6c08',
+     x86_64: '73a69833e54066a8cc21bae31267fcc33b6a10bf8e17e7073048ef9a6be8a761'
   })
 
   depends_on 'boost' => :build

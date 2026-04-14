@@ -1,30 +1,23 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Unshield < Package
+class Unshield < CMake
   description 'Tool and library to extract CAB files from InstallShield installers.'
   homepage 'https://github.com/twogood/unshield'
-  version '1.4.2'
+  version '1.6.2'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/twogood/unshield/archive/1.4.2.tar.gz'
-  source_sha256 '5dd4ea0c7e97ad8e3677ff3a254b116df08a5d041c2df8859aad5c4f88d1f774'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/twogood/unshield.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c8e532b79f02553de261074d813e908288ba65c55787f83cda72d3af508e6a2b',
-     armv7l: 'c8e532b79f02553de261074d813e908288ba65c55787f83cda72d3af508e6a2b',
-       i686: '7cfcf019406bdaa22ae42431228f1529b886a3831021cc8eb1df4a2704ba6ca8',
-     x86_64: '15626e07093863254c8b3c1c264fa110416fbbe13952876ec2005ef47c46a366'
+    aarch64: '2e6005b7fe0eeb5a64c336af648e16d04207f9cdb6476a68f6a9c165dd3ab5ee',
+     armv7l: '2e6005b7fe0eeb5a64c336af648e16d04207f9cdb6476a68f6a9c165dd3ab5ee',
+       i686: 'fe3f598bedf0d4dc59c8febda66fa6ee542f9f6f3a8163a7f9a87ac27ccdef45',
+     x86_64: 'e7951ed96464f38e34982f08d212f29466e6f0040f3ee4afb411e67b9b5733c3'
   })
 
-  def self.build
-    system 'cmake .'
-    system 'make'
-  end
-
-  def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/man1"
-    FileUtils.cp Dir.glob('man/*'), "#{CREW_DEST_MAN_PREFIX}/man1"
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'glibc' => :library
+  depends_on 'openssl' => :library
+  depends_on 'zlib' => :library
 end

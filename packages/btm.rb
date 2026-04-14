@@ -3,7 +3,7 @@ require 'package'
 class Btm < Package
   description 'Yet another cross-platform graphical process/system monitor.'
   homepage 'https://clementtsang.github.io/bottom'
-  version '0.11.1'
+  version '0.12.3'
   license 'MIT'
   compatibility 'all'
   min_glibc '2.28' if ARCH.eql?('x86_64')
@@ -14,10 +14,10 @@ class Btm < Package
      x86_64: "https://github.com/ClementTsang/bottom/releases/download/#{version}/bottom_x86_64-unknown-linux-gnu.tar.gz"
   })
   source_sha256({
-    aarch64: '7746990396832690e97d465fd040dd4ed7a6ccf0d3db1bfe383a84feac982f4a',
-     armv7l: '7746990396832690e97d465fd040dd4ed7a6ccf0d3db1bfe383a84feac982f4a',
-       i686: 'b6fe94e41bde3f8b03cf06733a2005e38424ddfef934e6286369b97fe20f7537',
-     x86_64: 'b173d13b0206e941b1b646ac18756c63a18fbe8b07744ab8ee992807aa2bad8a'
+    aarch64: '42554905f61056d760206a466e3732b348f9fa78221f2dfdb0700d6707661938',
+     armv7l: '42554905f61056d760206a466e3732b348f9fa78221f2dfdb0700d6707661938',
+       i686: 'e479e7f6e4cfeb96bc6c9045e266e6f5fa1bcdf937fd53d9561171221fc95e24',
+     x86_64: '468131d586dee6f4cce23fae597646cfd032103ecf749a478acb9d236adab6d6'
   })
 
   no_compile_needed
@@ -30,6 +30,6 @@ class Btm < Package
   end
 
   def self.postinstall
-    ExitMessage.add "\nType 'btm' to get started.\n".lightblue
+    ExitMessage.add "\nType 'btm' to get started.\n"
   end
 end

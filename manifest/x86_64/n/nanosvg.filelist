@@ -1,0 +1,9 @@
+# Total size: 372439
+/usr/local/include/nanosvg/nanosvg.h
+/usr/local/include/nanosvg/nanosvgrast.h
+/usr/local/lib64/cmake/NanoSVG/NanoSVGConfig.cmake
+/usr/local/lib64/cmake/NanoSVG/NanoSVGConfigVersion.cmake
+/usr/local/lib64/cmake/NanoSVG/NanoSVGTargets-release.cmake
+/usr/local/lib64/cmake/NanoSVG/NanoSVGTargets.cmake
+/usr/local/lib64/libnanosvg.a
+/usr/local/lib64/libnanosvgrast.a

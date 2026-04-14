@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libfrei0r < CMake
   description 'Minimalistic API for a collection of free video effect plugins.'
   homepage 'https://frei0r.dyne.org/'
-  version '2.5.6'
+  version '3.0.1'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/dyne/frei0r.git'
@@ -11,9 +11,9 @@ class Libfrei0r < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1501a40474325902aa103b712eca13253e3ffe817ffe15c7fc91dbe965a707c1',
-     armv7l: '1501a40474325902aa103b712eca13253e3ffe817ffe15c7fc91dbe965a707c1',
-     x86_64: '04b4c16da5480d35cc4268e5cde4c4cb038f22aaaca05cea6f290f6d4045c56f'
+    aarch64: '3510440a9ca4c3a4740cb8713b28dbc5bd0b2e8258e242a34fbcdeb443c64ef5',
+     armv7l: '3510440a9ca4c3a4740cb8713b28dbc5bd0b2e8258e242a34fbcdeb443c64ef5',
+     x86_64: '8ca36c1ba1d0590371a3621ec7b2230a1413c11261f957b0e96a2207fc5e6f46'
   })
 
   depends_on 'cairo' => :library
