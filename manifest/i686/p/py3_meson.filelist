@@ -1,13 +1,13 @@
-# Total size: 10162381
+# Total size: 10359042
 /usr/local/bin/meson
-/usr/local/lib/python3.14/site-packages/meson-1.10.2.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/meson-1.10.2.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/meson-1.10.2.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/meson-1.10.2.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/meson-1.10.2.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/meson-1.10.2.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/meson-1.10.2.dist-info/licenses/COPYING
-/usr/local/lib/python3.14/site-packages/meson-1.10.2.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/meson-1.11.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/meson-1.11.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/meson-1.11.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/meson-1.11.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/meson-1.11.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/meson-1.11.0.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/meson-1.11.0.dist-info/licenses/COPYING
+/usr/local/lib/python3.14/site-packages/meson-1.11.0.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/mesonbuild/__init__.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/__pycache__/_pathlib.cpython-314.pyc
@@ -402,6 +402,7 @@
 /usr/local/lib/python3.14/site-packages/mesonbuild/scripts/__pycache__/pickle_env.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/scripts/__pycache__/pycompile.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/scripts/__pycache__/python_info.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/mesonbuild/scripts/__pycache__/rc.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/scripts/__pycache__/regen_checker.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/scripts/__pycache__/reprotest.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/scripts/__pycache__/run_tool.cpython-314.pyc
@@ -437,6 +438,7 @@
 /usr/local/lib/python3.14/site-packages/mesonbuild/scripts/pickle_env.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/scripts/pycompile.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/scripts/python_info.py
+/usr/local/lib/python3.14/site-packages/mesonbuild/scripts/rc.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/scripts/regen_checker.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/scripts/reprotest.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/scripts/run_tool.py
