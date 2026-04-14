@@ -6295,6 +6295,11 @@ url: https://sourceforge.net/projects/mpg123/files/mpg123/
 activity: none
 ---
 kind: url
+name: mpreal
+url: https://github.com/advanpix/mpreal/tags
+activity: low
+---
+kind: url
 name: mpv
 url: https://github.com/mpv-player/mpv/releases
 activity: high
