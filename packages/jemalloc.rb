@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Jemalloc < Autotools
   description 'jemalloc is a general purpose malloc(3) implementation that emphasizes fragmentation avoidance and scalable concurrency support.'
   homepage 'http://jemalloc.net/'
-  version '5.3.0'
+  version '5.3.1'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/jemalloc/jemalloc/releases/download/5.3.0/jemalloc-5.3.0.tar.bz2'
-  source_sha256 '2db82d1e7119df3e71b7640219b6dfe84789bc0537983c3b7ac4f7189aecfeaa'
+  source_url "https://github.com/jemalloc/jemalloc/releases/download/#{version}/jemalloc-#{version}.tar.bz2"
+  source_sha256 '3826bc80232f22ed5c4662f3034f799ca316e819103bdc7bb99018a421706f92'
   binary_compression 'tar.zst'
 
   binary_sha256({
