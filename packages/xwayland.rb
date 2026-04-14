@@ -22,7 +22,7 @@ class Xwayland < Meson
   depends_on 'dbus' => :build
   depends_on 'eudev' => :build
   depends_on 'font_util' => :build
-  depends_on 'gcc_lib' # R
+  depends_on 'gcc_lib' => :build
   depends_on 'glibc' => :executable
   depends_on 'graphite' => :build
   depends_on 'libbsd' => :executable
@@ -34,7 +34,7 @@ class Xwayland < Meson
   depends_on 'libmd' => :executable
   depends_on 'libminigbm' => :executable
   depends_on 'libtirpc' => :executable
-  depends_on 'libunwind' # Runtime dependency for sommelier
+  depends_on 'libunwind' => :logical # Runtime dependency for sommelier
   depends_on 'libxau' => :executable
   depends_on 'libxcvt' => :executable
   depends_on 'libxdmcp' => :executable
@@ -45,7 +45,7 @@ class Xwayland < Meson
   depends_on 'libxtrans' => :build
   depends_on 'mesa' => :executable
   depends_on 'pixman' => :executable
-  depends_on 'rendercheck' # R
+  depends_on 'rendercheck' => :build
   depends_on 'wayland' => :executable
   depends_on 'xkbcomp' => :build
   depends_on 'xmlto' => :build
