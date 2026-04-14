@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Libshumate < Meson
   description 'GTK toolkit providing widgets for embedded maps'
   homepage 'https://wiki.gnome.org/Projects/libshumate'
-  version '1.6.0'
+  version '1.6.1'
   license 'LGPL2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/libshumate.git'
