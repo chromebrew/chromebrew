@@ -1,40 +1,49 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Grive < Package
+class Grive < CMake
   description 'Google Drive client with support for new Drive REST API and partial sync'
   homepage 'https://github.com/vitalif/grive2'
-  version '0.5.3-648ff8e-1'
+  version '0.5.3-be52cb2'
   license 'GPL-2'
-  compatibility 'all'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/vitalif/grive2.git'
-  git_hashtag '648ff8eea1a3c7cac8bfba283f75717bf54c67eb'
+  git_hashtag 'be52cb21a7ea5c16db0d5f3b22f1864629ff36ae'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '65b144b2b0fd75508d0eefa17e85bfdf23543cfbfba6f76e03be05bd755861ce',
-     armv7l: '65b144b2b0fd75508d0eefa17e85bfdf23543cfbfba6f76e03be05bd755861ce',
-       i686: 'b79595e51ff95f77d8cc509d4e2e569f7ac42f63135aa7c9677e54dbe28adbd8',
-     x86_64: '339c28ec20a87c0a51d4ebe32c7606d50cc92b56dce27b996341e74ab210433e'
+    aarch64: '3c142f5806d8d3fecc0bb79b15773a9ea2de3db045722997c40f0e64f3f91291',
+     armv7l: '3c142f5806d8d3fecc0bb79b15773a9ea2de3db045722997c40f0e64f3f91291',
+     x86_64: '0bcda1451b828a83ae646376261de9b48c3e6d6d64e9a059eb2a6f46430b6c9e'
   })
 
-  depends_on 'binutils' # R
-  depends_on 'boost' # R
+  depends_on 'binutils' => :executable
+  depends_on 'boost' => :executable
   depends_on 'cppunit' => :build
+  depends_on 'curl' => :executable
   depends_on 'expat' => :build
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'curl' # R
-  depends_on 'libgcrypt' # R
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'libgcrypt' => :executable
   depends_on 'libgpg_error' # R
-  depends_on 'yajl' # R
+  depends_on 'yajl' => :executable
+  depends_on 'zlib' => :executable
+  depends_on 'zstd' => :executable
 
-  def self.build
-    system "cmake -B builddir #{CREW_CMAKE_OPTIONS} \
-            -G Ninja"
-    system "#{CREW_NINJA} -C builddir || ( sed -i 's/-fno-lto//g' builddir/libgrive/build.ninja && #{CREW_NINJA} -C builddir)"
-  end
+  cmake_options '-DCMAKE_POLICY_VERSION_MINIMUM=3.5'
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
+  def self.patch
+    patches = [
+      [
+        # Boost 1.89 Build Fix.
+        'https://patch-diff.githubusercontent.com/raw/vitalif/grive2/pull/410.diff',
+        '0142205b3892af8ad828436fa7e7077ee36aa890bfd0324102a95cf87ed86366'
+      ],
+      [
+        # Use pkg-config to find libgcrypt build configs.
+        'https://patch-diff.githubusercontent.com/raw/vitalif/grive2/pull/403.diff',
+        'a98767f63abbb930b738be081ab8a230926818f7a3e3bfa413876c1184a4be86'
+      ]
+    ]
+    ConvenienceFunctions.patch(patches)
   end
 end
