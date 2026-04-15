@@ -14,19 +14,19 @@ class Libcdr < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '16430abafda64b90c684917dafc091e836da7265f576e7b4a151db74714d5b6b',
-     armv7l: '16430abafda64b90c684917dafc091e836da7265f576e7b4a151db74714d5b6b',
-     x86_64: 'b93ddcae1693bc203f022747db8e189c2e4efc2752096882a7217460b26e7ba8'
+    aarch64: '1ff871b6dbc0e0d3f0a48542808841f6db25cdaf35b739e2733864176e523165',
+     armv7l: '1ff871b6dbc0e0d3f0a48542808841f6db25cdaf35b739e2733864176e523165',
+     x86_64: 'b111c185c46e9ae39e7f6475b11ca0cbf14c489ee54d085f1472a52180296e99'
   })
 
   depends_on 'boost' => :build
   depends_on 'cppunit' => :build
   depends_on 'doxygen' => :build
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'icu4c' # R
-  depends_on 'lcms' # R
-  depends_on 'librevenge' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'icu4c' => :library
+  depends_on 'lcms' => :library
+  depends_on 'librevenge' => :library
   depends_on 'libwpg' => :build
-  depends_on 'zlib' # R
+  depends_on 'zlib' => :library
 end

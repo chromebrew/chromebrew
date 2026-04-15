@@ -1,38 +1,33 @@
 # Adapted from Arch Linux librevenge PKGBUILD at:
 # https://github.com/archlinux/svntogit-packages/raw/packages/librevenge/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/autotools'
 
-class Librevenge < Package
+class Librevenge < Autotools
   description 'library for REVerses ENGineered formats filters'
   homepage 'https://sf.net/p/libwpd/librevenge/'
-  version '0.0.5-1'
+  version '0.0.5'
   license 'MPL'
-  compatibility 'all'
-  source_url 'https://sourceforge.net/projects/libwpd/files/librevenge/librevenge-0.0.5/librevenge-0.0.5.tar.xz'
+  compatibility 'aarch64 armv7l x86_64'
+  source_url "https://sourceforge.net/projects/libwpd/files/librevenge/librevenge-#{version}/librevenge-#{version}.tar.xz"
   source_sha256 '106d0c44bb6408b1348b9e0465666fa83b816177665a22cd017e886c1aaeeb34'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6421705364f2d4a215fc4054a0823bd1e54de3eb16655c3e1eb9d6c73a809b99',
-     armv7l: '6421705364f2d4a215fc4054a0823bd1e54de3eb16655c3e1eb9d6c73a809b99',
-       i686: '5d054402f5dea45a2d447d8061623b2e8cc78e2ac8930764237c1f3268b94e82',
-     x86_64: 'e901118ae6c6e85b788c76f2d3d6b304ede8e2d94484823e68487bb212a77720'
+    aarch64: '19cf4e4133e45e26146a614103ac2833a27cfd936dbd28c3cacd5083c8933200',
+     armv7l: '19cf4e4133e45e26146a614103ac2833a27cfd936dbd28c3cacd5083c8933200',
+       i686: '8d0cebf1ba4848e065265ba7fb4c858b94e92dc306ee5b68624db4b24aab1021',
+     x86_64: 'd4d98277ce9ae12577116597ef135c3a1cb623eda2d09a80e0e23ab94d4bf3e1'
   })
 
   depends_on 'boost' => :build
   depends_on 'cppunit' => :build
   depends_on 'doxygen' => :build
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'zlib' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'zlib' => :library
 
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS} --disable-werror"
-    system 'make'
-  end
+  autotools_configure_options '--disable-werror'
 
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR}/ install"
-  end
+  run_tests
 end

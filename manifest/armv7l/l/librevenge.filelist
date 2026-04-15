@@ -1,4 +1,4 @@
-# Total size: 9711134
+# Total size: 9469233
 /usr/local/include/librevenge-0.0/librevenge-generators/RVNGCSVSpreadsheetGenerator.h
 /usr/local/include/librevenge-0.0/librevenge-generators/RVNGHTMLTextGenerator.h
 /usr/local/include/librevenge-0.0/librevenge-generators/RVNGRawDrawingGenerator.h
@@ -146,8 +146,6 @@
 /usr/local/share/doc/librevenge/html/RVNGZipStream_8h.html
 /usr/local/share/doc/librevenge/html/RVNGZipStream_8h_source.html
 /usr/local/share/doc/librevenge/html/annotated.html
-/usr/local/share/doc/librevenge/html/bc_s.png
-/usr/local/share/doc/librevenge/html/bc_sd.png
 /usr/local/share/doc/librevenge/html/classGenericException.html
 /usr/local/share/doc/librevenge/html/classes.html
 /usr/local/share/doc/librevenge/html/classlibrevenge_1_1AllocTable-members.html
@@ -327,7 +325,6 @@
 /usr/local/share/doc/librevenge/html/classlibrevenge_1_1Storage.html
 /usr/local/share/doc/librevenge/html/classlibrevenge_1_1Stream-members.html
 /usr/local/share/doc/librevenge/html/classlibrevenge_1_1Stream.html
-/usr/local/share/doc/librevenge/html/closed.png
 /usr/local/share/doc/librevenge/html/dir_2c67228abf10103d96f8f7cba72481f0.html
 /usr/local/share/doc/librevenge/html/dir_3586be8273d7203aaf65216e50a51217.html
 /usr/local/share/doc/librevenge/html/dir_68267d1309a1af8e8297ef4c3efbcdba.html
@@ -335,6 +332,7 @@
 /usr/local/share/doc/librevenge/html/dir_c85d3e3c5052e9ad9ce18c6863244a25.html
 /usr/local/share/doc/librevenge/html/dir_e1884f9c1f80ae0cc5c47064f073876d.html
 /usr/local/share/doc/librevenge/html/doxygen.css
+/usr/local/share/doc/librevenge/html/doxygen_crawl.html
 /usr/local/share/doc/librevenge/html/files.html
 /usr/local/share/doc/librevenge/html/functions.html
 /usr/local/share/doc/librevenge/html/functions_b.html
@@ -392,7 +390,6 @@
 /usr/local/share/doc/librevenge/html/functions_~.html
 /usr/local/share/doc/librevenge/html/globals.html
 /usr/local/share/doc/librevenge/html/globals_defs.html
-/usr/local/share/doc/librevenge/html/globals_vars.html
 /usr/local/share/doc/librevenge/html/hierarchy.html
 /usr/local/share/doc/librevenge/html/index.html
 /usr/local/share/doc/librevenge/html/librevenge-api_8h.html
@@ -417,15 +414,7 @@
 /usr/local/share/doc/librevenge/html/namespacemembers_eval.html
 /usr/local/share/doc/librevenge/html/namespacemembers_func.html
 /usr/local/share/doc/librevenge/html/namespaces.html
-/usr/local/share/doc/librevenge/html/nav_f.png
-/usr/local/share/doc/librevenge/html/nav_fd.png
-/usr/local/share/doc/librevenge/html/nav_g.png
-/usr/local/share/doc/librevenge/html/nav_h.png
-/usr/local/share/doc/librevenge/html/nav_hd.png
 /usr/local/share/doc/librevenge/html/navtree.css
-/usr/local/share/doc/librevenge/html/open.png
-/usr/local/share/doc/librevenge/html/splitbar.png
-/usr/local/share/doc/librevenge/html/splitbard.png
 /usr/local/share/doc/librevenge/html/structlibrevenge_1_1DirTree_1_1CompareEntryName-members.html
 /usr/local/share/doc/librevenge/html/structlibrevenge_1_1DirTree_1_1CompareEntryName.html
 /usr/local/share/doc/librevenge/html/structlibrevenge_1_1DrawingSVG_1_1Table-members.html
@@ -474,14 +463,4 @@
 /usr/local/share/doc/librevenge/html/structlibrevenge_1_1RVNGTextSpreadsheetGeneratorImpl.html
 /usr/local/share/doc/librevenge/html/structlibrevenge_1_1RVNGTextTextGeneratorImpl-members.html
 /usr/local/share/doc/librevenge/html/structlibrevenge_1_1RVNGTextTextGeneratorImpl.html
-/usr/local/share/doc/librevenge/html/sync_off.png
-/usr/local/share/doc/librevenge/html/sync_on.png
-/usr/local/share/doc/librevenge/html/tab_a.png
-/usr/local/share/doc/librevenge/html/tab_ad.png
-/usr/local/share/doc/librevenge/html/tab_b.png
-/usr/local/share/doc/librevenge/html/tab_bd.png
-/usr/local/share/doc/librevenge/html/tab_h.png
-/usr/local/share/doc/librevenge/html/tab_hd.png
-/usr/local/share/doc/librevenge/html/tab_s.png
-/usr/local/share/doc/librevenge/html/tab_sd.png
 /usr/local/share/doc/librevenge/html/tabs.css
