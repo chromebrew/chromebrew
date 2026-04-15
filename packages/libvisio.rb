@@ -14,22 +14,22 @@ class Libvisio < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b71ebd6401037404223933521d8574bc2346479e1d93ef357e9d002b71942d19',
-     armv7l: 'b71ebd6401037404223933521d8574bc2346479e1d93ef357e9d002b71942d19',
-     x86_64: 'dcbcdcacbc28e9dc5fa511f9bc6b692865597c91da1cc187c535adfc5696d63e'
+    aarch64: 'e7105c9f8bd750041d506f0e88f6f7c31bf03a64f24552d107f58d5d557fa289',
+     armv7l: 'e7105c9f8bd750041d506f0e88f6f7c31bf03a64f24552d107f58d5d557fa289',
+     x86_64: '183a27721b9b1a6a7a28d8c0bd365e76e92221f4a8ba31787f45394163a517f4'
   })
 
   depends_on 'boost' => :build
   depends_on 'cppunit' => :build
   depends_on 'doxygen' => :build
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
   depends_on 'gperf' => :build
-  depends_on 'icu4c' # R
+  depends_on 'icu4c' => :library
   depends_on 'lcms' # R
-  depends_on 'librevenge' # R
+  depends_on 'librevenge' => :library
   depends_on 'libwpd' => :build
   depends_on 'libwpg' => :build
-  depends_on 'libxml2' # R
-  depends_on 'zlib' # R
+  depends_on 'libxml2' => :library
+  depends_on 'zlib' => :executable
 end
