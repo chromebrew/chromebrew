@@ -1,20 +1,22 @@
-# Total size: 605848
-/usr/local/lib/python3.14/site-packages/packaging-26.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/packaging-26.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/packaging-26.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/packaging-26.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/packaging-26.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/packaging-26.0.dist-info/licenses/LICENSE
-/usr/local/lib/python3.14/site-packages/packaging-26.0.dist-info/licenses/LICENSE.APACHE
-/usr/local/lib/python3.14/site-packages/packaging-26.0.dist-info/licenses/LICENSE.BSD
+# Total size: 801535
+/usr/local/lib/python3.14/site-packages/packaging-26.1.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/packaging-26.1.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/packaging-26.1.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/packaging-26.1.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/packaging-26.1.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/packaging-26.1.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/packaging-26.1.dist-info/licenses/LICENSE.APACHE
+/usr/local/lib/python3.14/site-packages/packaging-26.1.dist-info/licenses/LICENSE.BSD
 /usr/local/lib/python3.14/site-packages/packaging/__init__.py
 /usr/local/lib/python3.14/site-packages/packaging/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/packaging/__pycache__/_elffile.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/packaging/__pycache__/_manylinux.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/packaging/__pycache__/_musllinux.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/packaging/__pycache__/_parser.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/packaging/__pycache__/_structures.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/packaging/__pycache__/_tokenizer.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/packaging/__pycache__/dependency_groups.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/packaging/__pycache__/direct_url.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/packaging/__pycache__/errors.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/packaging/__pycache__/markers.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/packaging/__pycache__/metadata.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/packaging/__pycache__/pylock.cpython-314.pyc
@@ -27,8 +29,10 @@
 /usr/local/lib/python3.14/site-packages/packaging/_manylinux.py
 /usr/local/lib/python3.14/site-packages/packaging/_musllinux.py
 /usr/local/lib/python3.14/site-packages/packaging/_parser.py
-/usr/local/lib/python3.14/site-packages/packaging/_structures.py
 /usr/local/lib/python3.14/site-packages/packaging/_tokenizer.py
+/usr/local/lib/python3.14/site-packages/packaging/dependency_groups.py
+/usr/local/lib/python3.14/site-packages/packaging/direct_url.py
+/usr/local/lib/python3.14/site-packages/packaging/errors.py
 /usr/local/lib/python3.14/site-packages/packaging/licenses/__init__.py
 /usr/local/lib/python3.14/site-packages/packaging/licenses/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/packaging/licenses/__pycache__/_spdx.cpython-314.pyc
