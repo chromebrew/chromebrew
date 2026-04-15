@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_virtualenv < Pip
   description 'Virtualenv is a Virtual Environment builder for Python.'
   homepage 'https://virtualenv.pypa.io/'
-  version "21.2.2-#{CREW_PY_VER}"
+  version "21.2.4-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
