@@ -1,10 +1,10 @@
-# Total size: 21875
-/usr/local/lib/python3.14/site-packages/editables-0.5.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/editables-0.5.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/editables-0.5.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/editables-0.5.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/editables-0.5.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/editables-0.5.dist-info/WHEEL
+# Total size: 25487
+/usr/local/lib/python3.14/site-packages/editables-0.6.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/editables-0.6.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/editables-0.6.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/editables-0.6.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/editables-0.6.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/editables-0.6.dist-info/licenses/LICENSE.txt
 /usr/local/lib/python3.14/site-packages/editables/__init__.py
 /usr/local/lib/python3.14/site-packages/editables/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/editables/__pycache__/redirector.cpython-314.pyc
