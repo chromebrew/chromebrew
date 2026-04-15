@@ -11,10 +11,10 @@ class Nginx < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '89ddd2b1d4f39bd59be28f8cb6c46e9203e2cc5dc843fbc6b6b9b6ee532757e2',
-     armv7l: '89ddd2b1d4f39bd59be28f8cb6c46e9203e2cc5dc843fbc6b6b9b6ee532757e2',
-       i686: 'f4fe740a58681cca50aac1b7c7394e522d245e3ad99a9e1109097a3f9ab73090',
-     x86_64: 'da866509e9f2cf39aa863b96f69c4fec880415ccd0bb8dcc26357911598ddc5a'
+    aarch64: '7ceab551655f7cf21712a8ce589c8ab6f4155000cbbf7df2f321ca49cd502dd0',
+     armv7l: '7ceab551655f7cf21712a8ce589c8ab6f4155000cbbf7df2f321ca49cd502dd0',
+       i686: '1ed683639191792cd78159e46743a8e389308498dca788b51875ec3a56f96e47',
+     x86_64: '0135898b62b55cc2008a70a0e99332f09027e50bf2e285de936bd6e45cfced0e'
   })
 
   depends_on 'glibc' => :executable
