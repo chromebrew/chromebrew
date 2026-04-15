@@ -1,4 +1,4 @@
-# Total size: 15822136
+# Total size: 15450466
 /usr/local/bin/wpd2html
 /usr/local/bin/wpd2raw
 /usr/local/bin/wpd2text
@@ -518,9 +518,6 @@
 /usr/local/share/doc/libwpd/html/WPXTable_8h.html
 /usr/local/share/doc/libwpd/html/WPXTable_8h_source.html
 /usr/local/share/doc/libwpd/html/annotated.html
-/usr/local/share/doc/libwpd/html/bc_s.png
-/usr/local/share/doc/libwpd/html/bc_sd.png
-/usr/local/share/doc/libwpd/html/bdwn.png
 /usr/local/share/doc/libwpd/html/classFileException.html
 /usr/local/share/doc/libwpd/html/classGenericException.html
 /usr/local/share/doc/libwpd/html/classParseException.html
@@ -1181,17 +1178,13 @@
 /usr/local/share/doc/libwpd/html/classes.html
 /usr/local/share/doc/libwpd/html/classlibwpd_1_1WPDocument-members.html
 /usr/local/share/doc/libwpd/html/classlibwpd_1_1WPDocument.html
-/usr/local/share/doc/libwpd/html/closed.png
 /usr/local/share/doc/libwpd/html/dir_5467d6b3f6550ce9331bbd5c393c4ebb.html
 /usr/local/share/doc/libwpd/html/dir_68267d1309a1af8e8297ef4c3efbcdba.html
 /usr/local/share/doc/libwpd/html/dir_bfccd401955b95cf8c75461437045ac0.html
 /usr/local/share/doc/libwpd/html/dir_c85d3e3c5052e9ad9ce18c6863244a25.html
-/usr/local/share/doc/libwpd/html/doc.png
-/usr/local/share/doc/libwpd/html/docd.png
 /usr/local/share/doc/libwpd/html/doxygen.css
+/usr/local/share/doc/libwpd/html/doxygen_crawl.html
 /usr/local/share/doc/libwpd/html/files.html
-/usr/local/share/doc/libwpd/html/folderclosed.png
-/usr/local/share/doc/libwpd/html/folderopen.png
 /usr/local/share/doc/libwpd/html/functions.html
 /usr/local/share/doc/libwpd/html/functions_a.html
 /usr/local/share/doc/libwpd/html/functions_b.html
@@ -1301,15 +1294,7 @@
 /usr/local/share/doc/libwpd/html/namespacemembers_enum.html
 /usr/local/share/doc/libwpd/html/namespacemembers_eval.html
 /usr/local/share/doc/libwpd/html/namespaces.html
-/usr/local/share/doc/libwpd/html/nav_f.png
-/usr/local/share/doc/libwpd/html/nav_fd.png
-/usr/local/share/doc/libwpd/html/nav_g.png
-/usr/local/share/doc/libwpd/html/nav_h.png
-/usr/local/share/doc/libwpd/html/nav_hd.png
 /usr/local/share/doc/libwpd/html/navtree.css
-/usr/local/share/doc/libwpd/html/open.png
-/usr/local/share/doc/libwpd/html/splitbar.png
-/usr/local/share/doc/libwpd/html/splitbard.png
 /usr/local/share/doc/libwpd/html/structRGBSColor-members.html
 /usr/local/share/doc/libwpd/html/structRGBSColor.html
 /usr/local/share/doc/libwpd/html/structWP1ContentParsingState-members.html
@@ -1340,16 +1325,6 @@
 /usr/local/share/doc/libwpd/html/structWPXTableDefinition.html
 /usr/local/share/doc/libwpd/html/structlibwpd_1_1WPXDummyDeleter-members.html
 /usr/local/share/doc/libwpd/html/structlibwpd_1_1WPXDummyDeleter.html
-/usr/local/share/doc/libwpd/html/sync_off.png
-/usr/local/share/doc/libwpd/html/sync_on.png
-/usr/local/share/doc/libwpd/html/tab_a.png
-/usr/local/share/doc/libwpd/html/tab_ad.png
-/usr/local/share/doc/libwpd/html/tab_b.png
-/usr/local/share/doc/libwpd/html/tab_bd.png
-/usr/local/share/doc/libwpd/html/tab_h.png
-/usr/local/share/doc/libwpd/html/tab_hd.png
-/usr/local/share/doc/libwpd/html/tab_s.png
-/usr/local/share/doc/libwpd/html/tab_sd.png
 /usr/local/share/doc/libwpd/html/tabs.css
 /usr/local/share/doc/libwpd/libwpd.dia
 /usr/local/share/doc/libwpd/libwpd.png
