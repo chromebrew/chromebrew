@@ -5,16 +5,15 @@ class Ledger < CMake
   homepage 'https://ledger-cli.org/'
   version '3.4.1'
   license 'BSD'
-  compatibility 'all'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/ledger/ledger.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '735cea24777755df15458f1a8d7e0caaee5378e73d5f54bf1ae4af7d56e3e07a',
-     armv7l: '735cea24777755df15458f1a8d7e0caaee5378e73d5f54bf1ae4af7d56e3e07a',
-       i686: 'bf34721b05ff54338a43b4b017858d959036aad1a71d406767aa7860fd9a0bbd',
-     x86_64: 'a73f6db4aed788bd314c13ac8c4fe41d2b55f3ce8a6f45effb3e24552a54a196'
+    aarch64: '566d5cd7eb8041322e82f6175a3e1f87d4bbff5fcef68b0c7eafbca4992e4edd',
+     armv7l: '566d5cd7eb8041322e82f6175a3e1f87d4bbff5fcef68b0c7eafbca4992e4edd',
+     x86_64: '564ac4adf3b2b1e13d489daadec59ddd97a054dea8a622d8fc07f16696ae6a2d'
   })
 
   depends_on 'boost' => :library
