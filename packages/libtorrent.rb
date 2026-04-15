@@ -3,22 +3,21 @@ require 'buildsystems/cmake'
 class Libtorrent < CMake
   description 'Feature complete C++ bittorrent implementation focusing on efficiency and scalability.'
   homepage 'https://www.libtorrent.org/'
-  version '2.0.10'
+  version '2.0.12'
   license 'Unknown, BSD-3-Clause'
-  compatibility 'all'
-  source_url "https://github.com/arvidn/libtorrent/releases/download/v#{version}/libtorrent-rasterbar-#{version}.tar.gz"
-  source_sha256 '90cd92b6061c5b664840c3d5e151d43fedb24f5b2b24e14425ffbb884ef1798e'
+  compatibility 'aarch64 armv7l x86_64'
+  source_url 'https://github.com/arvidn/libtorrent.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cf3e30dd7fffa4a538d2d33ddc58fe939fb0bf09a483c0dbc1294f2c5aad49e3',
-     armv7l: 'cf3e30dd7fffa4a538d2d33ddc58fe939fb0bf09a483c0dbc1294f2c5aad49e3',
-       i686: '1c7df2be1186aa7d946fe462cebe6f1176ee15f907bd51ed681bfa95daf29546',
-     x86_64: '1b9aa2111346efb2f6fcdbcbecd5d1e01ede2c571c16cd4f36f72cb228099fe5'
+    aarch64: '816f7882c4248bcd023a83b51b326429348450a64f94c2fc9ea7803da4575770',
+     armv7l: '816f7882c4248bcd023a83b51b326429348450a64f94c2fc9ea7803da4575770',
+     x86_64: '043d9b622e92b2b802460f41c80a1bcad57a96c5cfafb18ee4958a9818b4be5c'
   })
 
   depends_on 'boost'
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'openssl' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'openssl' => :library
 end

@@ -1,4 +1,4 @@
-# Total size: 5349107
+# Total size: 5377102
 /usr/local/include/libtorrent/add_torrent_params.hpp
 /usr/local/include/libtorrent/address.hpp
 /usr/local/include/libtorrent/alert.hpp
@@ -6,7 +6,6 @@
 /usr/local/include/libtorrent/announce_entry.hpp
 /usr/local/include/libtorrent/assert.hpp
 /usr/local/include/libtorrent/aux_/alert_manager.hpp
-/usr/local/include/libtorrent/aux_/aligned_storage.hpp
 /usr/local/include/libtorrent/aux_/aligned_union.hpp
 /usr/local/include/libtorrent/aux_/alloca.hpp
 /usr/local/include/libtorrent/aux_/allocating_handler.hpp
@@ -279,6 +278,6 @@
 /usr/local/lib/cmake/LibtorrentRasterbar/LibtorrentRasterbarTargets.cmake
 /usr/local/lib/libtorrent-rasterbar.so
 /usr/local/lib/libtorrent-rasterbar.so.2.0
-/usr/local/lib/libtorrent-rasterbar.so.2.0.10
+/usr/local/lib/libtorrent-rasterbar.so.2.0.12
 /usr/local/lib/pkgconfig/libtorrent-rasterbar.pc
 /usr/local/share/cmake/Modules/FindLibtorrentRasterbar.cmake
