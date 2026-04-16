@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Opam < Autotools
   description 'OCaml package manager'
   homepage 'https://opam.ocaml.org/'
-  version '2.5.0'
+  version '2.5.1'
   license 'LGPL-2.1-with-linking-exception'
   compatibility 'all'
   source_url 'https://github.com/ocaml/opam.git'
@@ -11,10 +11,10 @@ class Opam < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '80f5390b1872e2dfc9423e5bee0d8dcced5b2b48d21fa4c7929bc3276972dbbe',
-     armv7l: '80f5390b1872e2dfc9423e5bee0d8dcced5b2b48d21fa4c7929bc3276972dbbe',
-       i686: '33f8fdead10669d19bc320c8d832a73a5fd3fe654720b818730a0d2b98f770d3',
-     x86_64: 'b29ed962d59e82b7b3000af31ad2edead24682720aff68c1a568ea301ca44302'
+    aarch64: 'cfe2bb9516ab2f0dc802d44d6b7661071ae5e315904abb10842fe1138434f883',
+     armv7l: 'cfe2bb9516ab2f0dc802d44d6b7661071ae5e315904abb10842fe1138434f883',
+       i686: '85931eb518630a22b9168521ac6c37c6b2dc7280e6145dec9e8f9a209228c028',
+     x86_64: '75610ba8c8a9fe2d687b5e44e7749dea16ea1a6affe0a84f1427718eb0f929a0'
   })
 
   depends_on 'bubblewrap' => :logical
