@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Editorconfig_core_c < CMake
   description 'EditorConfig core code written in C for use by plugins supporting EditorConfig parsing'
   homepage 'https://github.com/editorconfig/editorconfig-core-c'
-  version '0.12.10'
+  version '0.12.11'
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/editorconfig/editorconfig-core-c.git'
