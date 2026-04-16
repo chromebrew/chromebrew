@@ -1,15 +1,17 @@
-# Total size: 43287
-/usr/local/lib64/ruby/gems/4.0.0/gems/rubocop-chromebrew-0.0.4/CHANGELOG.md
-/usr/local/lib64/ruby/gems/4.0.0/gems/rubocop-chromebrew-0.0.4/LICENSE
-/usr/local/lib64/ruby/gems/4.0.0/gems/rubocop-chromebrew-0.0.4/README.md
-/usr/local/lib64/ruby/gems/4.0.0/gems/rubocop-chromebrew-0.0.4/config/default.yml
-/usr/local/lib64/ruby/gems/4.0.0/gems/rubocop-chromebrew-0.0.4/lib/rubocop-chromebrew.rb
-/usr/local/lib64/ruby/gems/4.0.0/gems/rubocop-chromebrew-0.0.4/lib/rubocop/chromebrew.rb
-/usr/local/lib64/ruby/gems/4.0.0/gems/rubocop-chromebrew-0.0.4/lib/rubocop/chromebrew/inject.rb
-/usr/local/lib64/ruby/gems/4.0.0/gems/rubocop-chromebrew-0.0.4/lib/rubocop/cop/chromebrew/compatibility_all.rb
-/usr/local/lib64/ruby/gems/4.0.0/gems/rubocop-chromebrew-0.0.4/lib/rubocop/cop/chromebrew/ordered_compatibility.rb
-/usr/local/lib64/ruby/gems/4.0.0/gems/rubocop-chromebrew-0.0.4/lib/rubocop/cop/chromebrew_cops.rb
-/usr/local/lib64/ruby/gems/4.0.0/gems/rubocop-chromebrew-0.0.4/rubocop-chromebrew.gemspec
-/usr/local/lib64/ruby/gems/4.0.0/gems/rubocop-chromebrew-0.0.4/spec/rubocop/cop/chromebrew/compatibility_all_spec.rb
-/usr/local/lib64/ruby/gems/4.0.0/gems/rubocop-chromebrew-0.0.4/spec/rubocop/cop/chromebrew/ordered_compatibility_spec.rb
-/usr/local/lib64/ruby/gems/4.0.0/gems/rubocop-chromebrew-0.0.4/spec/spec_helper.rb
+# Total size: 51565
+/usr/local/lib64/ruby/gems/4.0.0/gems/rubocop-chromebrew-0.0.5/CHANGELOG.md
+/usr/local/lib64/ruby/gems/4.0.0/gems/rubocop-chromebrew-0.0.5/LICENSE
+/usr/local/lib64/ruby/gems/4.0.0/gems/rubocop-chromebrew-0.0.5/README.md
+/usr/local/lib64/ruby/gems/4.0.0/gems/rubocop-chromebrew-0.0.5/config/default.yml
+/usr/local/lib64/ruby/gems/4.0.0/gems/rubocop-chromebrew-0.0.5/lib/rubocop-chromebrew.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/rubocop-chromebrew-0.0.5/lib/rubocop/chromebrew.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/rubocop-chromebrew-0.0.5/lib/rubocop/chromebrew/plugin.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/rubocop-chromebrew-0.0.5/lib/rubocop/cop/chromebrew/compatibility_all.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/rubocop-chromebrew-0.0.5/lib/rubocop/cop/chromebrew/ordered_compatibility.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/rubocop-chromebrew-0.0.5/lib/rubocop/cop/chromebrew/redundant_version_adjustment.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/rubocop-chromebrew-0.0.5/lib/rubocop/cop/chromebrew_cops.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/rubocop-chromebrew-0.0.5/rubocop-chromebrew.gemspec
+/usr/local/lib64/ruby/gems/4.0.0/gems/rubocop-chromebrew-0.0.5/spec/rubocop/cop/chromebrew/compatibility_all_spec.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/rubocop-chromebrew-0.0.5/spec/rubocop/cop/chromebrew/ordered_compatibility_spec.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/rubocop-chromebrew-0.0.5/spec/rubocop/cop/chromebrew/redundant_version_adjustment_spec.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/rubocop-chromebrew-0.0.5/spec/spec_helper.rb
