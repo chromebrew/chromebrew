@@ -11,9 +11,9 @@ class Mesa < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3f1213968be31866c51a56e30e13bb26233fe9c18213da9ff0a5a2ee39317698',
-     armv7l: '3f1213968be31866c51a56e30e13bb26233fe9c18213da9ff0a5a2ee39317698',
-     x86_64: '2d760e8d12cc4477f5a1272a96b5a8c8f43055bfb92b2bc33d9dc758ba169442'
+    aarch64: '670f02ee5a14601099deb2f0e5f577651ab7102f0f0bebda1b90ba098ed0dab3',
+     armv7l: '670f02ee5a14601099deb2f0e5f577651ab7102f0f0bebda1b90ba098ed0dab3',
+     x86_64: '6362ab7d19c7653d9fc074f2e14f6e7ec25df16586ab823a9d6c57f973ab3f9b'
   })
 
   depends_on 'elfutils' => :library
@@ -25,7 +25,9 @@ class Mesa < Meson
   depends_on 'glslang' => :build
   depends_on 'libclc' => :build
   depends_on 'libdrm' => :library
+  depends_on 'libminigbm' => :library
   depends_on 'libomxil_bellagio' => :build
+  depends_on 'libudev_stub' => :library
   depends_on 'libunwind' => :library
   depends_on 'libva' => :build
   depends_on 'libvdpau' => :build
@@ -47,6 +49,7 @@ class Mesa < Meson
   depends_on 'spirv_llvm_translator' => :build
   depends_on 'spirv_tools' => :library
   depends_on 'valgrind' => :build
+  depends_on 'vdev' => :library
   depends_on 'vulkan_headers' => :build
   depends_on 'wayland' => :library
   depends_on 'wayland_protocols' => :build
