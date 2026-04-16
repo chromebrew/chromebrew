@@ -22,11 +22,9 @@ class Btrfs_progs < Autotools
   depends_on 'glibc' => :library
   depends_on 'libgcrypt' => :library
   depends_on 'libsodium' => :library
-  depends_on 'libudev_stub' => :library
   depends_on 'libuuid' => :library
   depends_on 'lzo' => :executable
   depends_on 'util_linux' => :library
-  depends_on 'vdev' => :library
   depends_on 'zlib' => :executable
   depends_on 'zstd' => :executable
 

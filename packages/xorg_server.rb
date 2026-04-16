@@ -32,7 +32,6 @@ class Xorg_server < Meson
   depends_on 'libminigbm' => :library
   depends_on 'libpciaccess' => :executable
   depends_on 'libtirpc' => :executable
-  depends_on 'libudev_stub' => :library
   depends_on 'libunwind' => :build
   depends_on 'libx11' => :executable
   depends_on 'libxau' => :executable
@@ -48,7 +47,6 @@ class Xorg_server < Meson
   depends_on 'lzma' => :build
   depends_on 'mesa' => :library
   depends_on 'pixman' => :library
-  depends_on 'vdev' => :library
   depends_on 'xcb_util' => :executable
   depends_on 'xcb_util_cursor' => :build
   depends_on 'xcb_util_image' => :executable

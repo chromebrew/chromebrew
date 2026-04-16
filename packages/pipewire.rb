@@ -33,7 +33,6 @@ class Pipewire < Meson
   depends_on 'libdrm' => :library
   depends_on 'libmysofa' => :library
   depends_on 'libsndfile' => :library
-  depends_on 'libudev_stub' => :library
   depends_on 'lilv' => :library
   depends_on 'ncurses' => :executable
   depends_on 'openssl' => :library
@@ -41,7 +40,6 @@ class Pipewire < Meson
   depends_on 'pulseaudio' => :library
   depends_on 'py3_lxml' => :build
   depends_on 'readline' => :executable
-  depends_on 'vdev' => :library
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' => :library
   depends_on 'webrtc_audio_processing' => :library

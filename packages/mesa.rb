@@ -27,7 +27,6 @@ class Mesa < Meson
   depends_on 'libdrm' => :library
   depends_on 'libminigbm' => :library
   depends_on 'libomxil_bellagio' => :build
-  depends_on 'libudev_stub' => :library
   depends_on 'libunwind' => :library
   depends_on 'libva' => :build
   depends_on 'libvdpau' => :build
@@ -49,7 +48,6 @@ class Mesa < Meson
   depends_on 'spirv_llvm_translator' => :build
   depends_on 'spirv_tools' => :library
   depends_on 'valgrind' => :build
-  depends_on 'vdev' => :library
   depends_on 'vulkan_headers' => :build
   depends_on 'wayland' => :library
   depends_on 'wayland_protocols' => :build
