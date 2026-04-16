@@ -7,7 +7,7 @@ class Sqlite < Autotools
   license 'public-domain'
   compatibility 'all'
   source_url 'https://github.com/sqlite/sqlite.git'
-  git_hashtag "version-#{version.split('-').first}"
+  git_hashtag "version-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({

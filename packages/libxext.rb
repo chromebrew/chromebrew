@@ -7,7 +7,7 @@ class Libxext < Autotools
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxext.git'
-  git_hashtag "libXext-#{version.split('-').first}"
+  git_hashtag "libXext-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({

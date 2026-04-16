@@ -7,7 +7,7 @@ class Edit < RUST
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/microsoft/edit.git'
-  git_hashtag "v#{version.split('-').first}"
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({

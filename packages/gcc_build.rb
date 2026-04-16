@@ -8,7 +8,7 @@ class Gcc_build < Package
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
   source_url 'https://github.com/gcc-mirror/gcc.git'
-  git_hashtag "releases/gcc-#{version.split('-').first}"
+  git_hashtag "releases/gcc-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -20,7 +20,7 @@ class Gcc_build < Package
 
   conflicts_ok
 
-  @gcc_version = version.split('-')[0].partition('.')[0]
+  @gcc_version = version.partition('.')[0]
 
   @glibc_flags = "-L#{CREW_LIB_PREFIX}"
   @cflags = @cxxflags = "-fPIC -pipe #{@glibc_flags} -B#{CREW_LIB_PREFIX}"

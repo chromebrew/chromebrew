@@ -6,7 +6,7 @@ class Curl < Autotools
   version '8.19.0'
   license 'curl'
   compatibility 'all'
-  source_url "https://curl.se/download/curl-#{version.split('-').first}.tar.xz"
+  source_url "https://curl.se/download/curl-#{version}.tar.xz"
   source_sha256 '4eb41489790d19e190d7ac7e18e82857cdd68af8f4e66b292ced562d333f11df'
   binary_compression 'tar.zst'
 

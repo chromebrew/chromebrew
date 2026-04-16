@@ -7,7 +7,7 @@ class Xwayland < Meson
   license 'MIT-with-advertising, ISC, BSD-3, BSD and custom'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/xserver.git'
-  git_hashtag "xwayland-#{version.split('-').first}"
+  git_hashtag "xwayland-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({

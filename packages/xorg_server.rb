@@ -7,7 +7,7 @@ class Xorg_server < Meson
   license 'BSD-3, MIT, BSD-4, MIT-with-advertising, ISC and custom'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/xserver.git'
-  git_hashtag "xorg-server-#{version.split('-').first}"
+  git_hashtag "xorg-server-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({

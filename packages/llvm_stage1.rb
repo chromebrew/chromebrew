@@ -48,7 +48,7 @@ class Llvm_stage1 < Package
   # This may be patched upstream as per
   # https://reviews.llvm.org/rG1de56d6d13c083c996dfd44a32041dacae037d66
   LLVM_TARGETS_TO_BUILD = 'all'.freeze
-  LLVM_VERSION = version.split('-')[0]
+  LLVM_VERSION = version
 
   def self.build
     ############################################################

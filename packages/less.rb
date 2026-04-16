@@ -6,7 +6,7 @@ class Less < Autotools
   version '692'
   license 'GPL-3 or BSD-2'
   compatibility 'all'
-  source_url "https://www.greenwoodsoftware.com/less/less-#{version.split('-').first}.tar.gz"
+  source_url "https://www.greenwoodsoftware.com/less/less-#{version}.tar.gz"
   source_sha256 '61300f603798ecf1d7786570789f0ff3f5a1acf075a6fb9f756837d166e37d14'
   binary_compression 'tar.zst'
 

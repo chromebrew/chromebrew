@@ -7,7 +7,7 @@ class Filecmd < Package
   license 'BSD-2 and GPL-3+' # Chromebrew's filefix is GPL-3+, file itself is BSD-2
   compatibility 'all'
   source_url 'https://github.com/file/file.git'
-  git_hashtag "FILE#{version.split('-').first.gsub('.', '_')}"
+  git_hashtag "FILE#{version.gsub('.', '_')}"
   binary_compression 'tar.zst'
 
   binary_sha256({

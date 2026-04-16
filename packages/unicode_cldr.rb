@@ -7,7 +7,7 @@ class Unicode_cldr < Package
   license 'unicode'
   compatibility 'all'
   source_url 'https://github.com/unicode-org/cldr.git'
-  git_hashtag "release-#{version.gsub('.', '-')}"
+  git_hashtag "release-#{version}"
 
   no_compile_needed
 
