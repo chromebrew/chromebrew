@@ -11,7 +11,7 @@ class Rio < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '0cfc54fd0137ada0305a801e413cb6ee98a24c861cb976ece9b689dd86a892b5'
+     x86_64: 'aea0c7b83d1cf29de5bde2e64ab59e70f41665dbd41b737ba484e1aa806a9396'
   })
 
   depends_on 'fontconfig' => :executable
