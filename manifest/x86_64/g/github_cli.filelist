@@ -1,4 +1,4 @@
-# Total size: 39997017
+# Total size: 39794737
 /usr/local/bin/gh
 /usr/local/share/man/man1/gh-agent-task-create.1.zst
 /usr/local/share/man/man1/gh-agent-task-list.1.zst
@@ -197,6 +197,12 @@
 /usr/local/share/man/man1/gh-secret-list.1.zst
 /usr/local/share/man/man1/gh-secret-set.1.zst
 /usr/local/share/man/man1/gh-secret.1.zst
+/usr/local/share/man/man1/gh-skill-install.1.zst
+/usr/local/share/man/man1/gh-skill-preview.1.zst
+/usr/local/share/man/man1/gh-skill-publish.1.zst
+/usr/local/share/man/man1/gh-skill-search.1.zst
+/usr/local/share/man/man1/gh-skill-update.1.zst
+/usr/local/share/man/man1/gh-skill.1.zst
 /usr/local/share/man/man1/gh-ssh-key-add.1.zst
 /usr/local/share/man/man1/gh-ssh-key-delete.1.zst
 /usr/local/share/man/man1/gh-ssh-key-list.1.zst
