@@ -60,6 +60,102 @@ CREW_UPDATER_EXCLUDED_PKGS = Set[
   { pkg_name: 'util_linux', comments: 'Needs to be built with CREW_KERNEL_VERSION=5.10. See https://github.com/util-linux/util-linux/issues/3763' }
 ].to_h { |h| [h[:pkg_name], h[:comments]] }
 
+# Some packages have different names in anitya.
+# TODO: As per the section in CONTRIBUTING.md, most of these can be replaced with Anitya-side package mappings.
+CREW_ANITYA_PACKAGE_NAME_MAPPINGS = Set[
+  { pkg_name: 'alsa_lib', anitya_pkg: 'alsa-lib', comments: '' },
+  { pkg_name: 'asdf', anitya_pkg: 'asdf-vm', comments: '' },
+  { pkg_name: 'broadway', anitya_pkg: 'gtk+3.0~stable', comments: '' },
+  { pkg_name: 'cf', anitya_pkg: 'cf', comments: 'Prefer to GitHub' },
+  { pkg_name: 'cups', anitya_pkg: 'cups', comments: 'Prefer to GitHub' },
+  { pkg_name: 'cvs', anitya_pkg: 'cvs-stable', comments: '' },
+  { pkg_name: 'docbook_xml51', anitya_pkg: 'docbook-xml', comments: '' },
+  { pkg_name: 'doxygen', anitya_pkg: 'doxygen', comments: '' },
+  { pkg_name: 'filecmd', anitya_pkg: 'file', comments: '' },
+  { pkg_name: 'gcr_3', anitya_pkg: 'gcr~3', comments: '' },
+  { pkg_name: 'gcr_4', anitya_pkg: 'gcr', comments: '' },
+  { pkg_name: 'gemacs', anitya_pkg: 'emacs', comments: '' },
+  { pkg_name: 'gexiv2', anitya_pkg: 'gexiv2~14.x', comments: '' },
+  { pkg_name: 'gnome_docking_library', anitya_pkg: 'gdl', comments: '' },
+  { pkg_name: 'gnu_time', anitya_pkg: 'time', comments: '' },
+  { pkg_name: 'go_tools', anitya_pkg: 'golang-x-tools', comments: '' },
+  { pkg_name: 'gsfonts', anitya_pkg: 'gs-fonts', comments: '' },
+  { pkg_name: 'gtk3', anitya_pkg: 'gtk+3.0~stable', comments: '' },
+  { pkg_name: 'gtk4', anitya_pkg: 'gtk', comments: '' },
+  { pkg_name: 'gtkmm4', anitya_pkg: 'gtkmm', comments: '' },
+  { pkg_name: 'gtksharp2', anitya_pkg: 'gtk-sharp', comments: '' },
+  { pkg_name: 'gtksourceview_5', anitya_pkg: 'gtksourceview', comments: '' },
+  { pkg_name: 'gvim', anitya_pkg: 'vim', comments: '' },
+  { pkg_name: 'hunspell_en_us', anitya_pkg: 'LibreOffice', comments: '' },
+  { pkg_name: 'hunspell_es_any', anitya_pkg: 'LibreOffice', comments: '' },
+  { pkg_name: 'hunspell_es_us', anitya_pkg: 'LibreOffice', comments: '' },
+  { pkg_name: 'hunspell_fr_fr', anitya_pkg: 'LibreOffice', comments: '' },
+  { pkg_name: 'js91', anitya_pkg: 'spidermonkey~91', comments: '' },
+  { pkg_name: 'js102', anitya_pkg: 'spidermonkey~102', comments: '' },
+  { pkg_name: 'js115', anitya_pkg: 'spidermonkey~115', comments: '' },
+  { pkg_name: 'js140', anitya_pkg: 'spidermonkey~140', comments: '' },
+  { pkg_name: 'libappindicator_gtk3', anitya_pkg: 'libappindicator', comments: '' },
+  { pkg_name: 'libcom_err', anitya_pkg: 'e2fsprogs', comments: '' },
+  { pkg_name: 'libdbusmenu_gtk3', anitya_pkg: 'libdbusmenu', comments: '' },
+  { pkg_name: 'libgedit_amtk', anitya_pkg: 'libgedit-amtk', comments: 'Prefer to GitHub' },
+  { pkg_name: 'libgedit_gtksourceview', anitya_pkg: 'libgedit-gtksourceview', comments: 'Prefer to GitHub' },
+  { pkg_name: 'libgconf', anitya_pkg: 'gconf', comments: '' },
+  { pkg_name: 'libhubbub', anitya_pkg: 'hubbub', comments: '' },
+  { pkg_name: 'libindicator_gtk3', anitya_pkg: 'libindicator', comments: '' },
+  { pkg_name: 'libkmod', anitya_pkg: 'kmod', comments: '' },
+  { pkg_name: 'libmediainfo', anitya_pkg: 'mediainfo', comments: '' },
+  { pkg_name: 'libnghttp3', anitya_pkg: 'nghttp3', comments: '' },
+  { pkg_name: 'libngtcp2', anitya_pkg: 'ngtcp2', comments: '' },
+  { pkg_name: 'libpeas2', anitya_pkg: 'libpeas', comments: '' },
+  { pkg_name: 'libpth', anitya_pkg: 'pth', comments: '' },
+  { pkg_name: 'libsdl', anitya_pkg: 'sdl', comments: '' },
+  { pkg_name: 'libsoup2', anitya_pkg: 'libsoup2~stable', comments: '' },
+  { pkg_name: 'libstfl', anitya_pkg: 'stfl', comments: '' },
+  { pkg_name: 'libtinfo', anitya_pkg: 'ncurses', comments: '' },
+  { pkg_name: 'libunbound', anitya_pkg: 'unbound', comments: '' },
+  { pkg_name: 'libx264', anitya_pkg: 'x264', comments: '' },
+  { pkg_name: 'linux_pam', anitya_pkg: 'pam', comments: '' },
+  { pkg_name: "#{CREW_LLVM_VER}_build", anitya_pkg: 'llvm', comments: '' },
+  { pkg_name: "#{CREW_LLVM_VER}_dev", anitya_pkg: 'llvm', comments: '' },
+  { pkg_name: "#{CREW_LLVM_VER}_lib", anitya_pkg: 'llvm', comments: '' },
+  { pkg_name: 'mediainfo_gui', anitya_pkg: 'mediainfo', comments: '' },
+  { pkg_name: 'mold', anitya_pkg: 'mold', comments: 'Prefer to GitHub' },
+  { pkg_name: 'ninja', anitya_pkg: 'ninja-build', comments: '' },
+  { pkg_name: 'nnn', anitya_pkg: 'nnn', comments: 'Prefer to GitHub' },
+  { pkg_name: 'openssl', anitya_pkg: 'openssl-3.5-LTS', comments: 'Prefer to GitHub' },
+  { pkg_name: 'owl', anitya_pkg: 'Owl Lisp', comments: '' },
+  { pkg_name: 'pcre2', anitya_pkg: 'pcre2', comments: 'Prefer to GitHub' },
+  { pkg_name: 'pkg_7_zip', anitya_pkg: '7zip~stable', comments: 'Prefer to GitHub' },
+  { pkg_name: 'procps', anitya_pkg: 'procps-ng', comments: '' },
+  { pkg_name: 'pthread_stubs', anitya_pkg: 'libpthread-stubs', comments: '' },
+  { pkg_name: 'py3_atspi', anitya_pkg: 'pyatspi', comments: '' },
+  { pkg_name: 'python3', anitya_pkg: 'python314', comments: '' },
+  { pkg_name: 'rdfind', anitya_pkg: 'rdfind', comments: 'Prefer to GitHub' },
+  { pkg_name: 'rest', anitya_pkg: 'librest', comments: 'Anitya has a package called rest, but we want librest.' },
+  { pkg_name: 'selenium_server_standalone', anitya_pkg: 'selenium', comments: '' },
+  { pkg_name: 'signal_desktop', anitya_pkg: 'signal', comments: '' },
+  { pkg_name: 'smbclient', anitya_pkg: 'samba', comments: '' },
+  { pkg_name: 'snowflake', anitya_pkg: 'Muon', comments: 'Renamed to muon upstream' },
+  { pkg_name: 'tcpwrappers', anitya_pkg: 'tcp_wrappers', comments: '' },
+  { pkg_name: 'tepl_6', anitya_pkg: 'libgedit-tepl', comments: '' },
+  { pkg_name: 'upx', anitya_pkg: 'upx', comments: 'Prefer to GitHub' },
+  { pkg_name: 'vidstab', anitya_pkg: 'vid.stab', comments: 'Prefer to GitHub' },
+  { pkg_name: 'vim_runtime', anitya_pkg: 'vim', comments: '' },
+  { pkg_name: 'wallstreet', anitya_pkg: 'hollywood', comments: '' },
+  { pkg_name: 'wayland_info', anitya_pkg: 'wayland-utils', comments: '' },
+  { pkg_name: 'webkit2gtk_4_0', anitya_pkg: 'webkitgtk~stable', comments: '' },
+  { pkg_name: 'webkit2gtk_4_1', anitya_pkg: 'webkitgtk~stable', comments: '' },
+  { pkg_name: 'webkitgtk_6', anitya_pkg: 'webkitgtk~stable', comments: '' },
+  { pkg_name: 'xauth', anitya_pkg: 'xorg-x11-xauth', comments: '' },
+  { pkg_name: 'xercesc', anitya_pkg: 'xerces-c', comments: 'Prefer to GitHub' },
+  { pkg_name: 'xorg_proto', anitya_pkg: 'xorgproto', comments: '' },
+  { pkg_name: 'xxd_standalone', anitya_pkg: 'vim', comments: '' },
+  { pkg_name: 'yad', anitya_pkg: 'yad', comments: 'Prefer to GitHub' },
+  { pkg_name: 'zig13', anitya_pkg: 'zig', comments: '' },
+  { pkg_name: 'zimg', anitya_pkg: 'zimg', comments: 'Prefer to GitHub' },
+  { pkg_name: 'zoneinfo', anitya_pkg: 'tzdata', comments: '' }
+].to_h { |h| [h[:pkg_name], h[:anitya_pkg]] }
+
 def get_version(name, homepage, source)
   anitya_id = get_anitya_id(name, homepage, @pkg.superclass.to_s)
   # We return nil if anitya_id cannot be determined.
@@ -175,6 +271,7 @@ def pagure_fallback(url)
   end
 end
 
+# For more information about working with Anitya, see the relevant section in CONTRIBUTING.md
 def get_anitya_id(name, homepage, buildsystem)
   # Ignore python pip and ruby gem packages with the Pip and RUBY buildsystems.
   return if %w[Pip RUBY].include?(buildsystem)
@@ -199,17 +296,22 @@ def get_anitya_id(name, homepage, buildsystem)
     return json['items'][0]['id']
   elsif number_of_packages.zero? # Anitya either doesn't have this package, or has it under a different name.
     # The most likely scenario is that the correct name is the current one with underscores converted to dashes.
-    # This is also currently the only scenario we handle here.
-    return unless anitya_name.include?('_')
-
-    anitya_name_candidate = anitya_name.tr('_', '-')
-    if CREW_VERY_VERBOSE
-      puts "No Anitya package found with #{anitya_name}. Attempting a new search with #{anitya_name_candidate}."
-      puts "url is https://release-monitoring.org/api/v2/projects/?name=#{anitya_name_candidate}"
+    if anitya_name.include?('_')
+      prospective_anitya_id = get_anitya_id(anitya_name.tr('_', '-'), homepage, buildsystem)
+      # If that is the case, return the Anitya ID we found, and if not, proceed to the next approach.
+      return prospective_anitya_id unless prospective_anitya_id.nil?
     end
 
-    # We can just call ourselves, with no fear of infinite recursion because we replaced all the underscores.
-    return get_anitya_id(anitya_name_candidate, homepage, buildsystem)
+    # If it has it under a different name, check if it has the name used by Chromebrew.
+    json2 = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/packages/?name=#{name}")))
+    return if json2['total_items'].zero?
+
+    # This checks if the Anitya project has a Chromebrew distribution mapping for this package.
+    # The process of creating such a mapping is outlined in CONTRIBUTING.md
+    (0..(json2['total_items'] - 1)).each do |i|
+      next unless json2['items'][i]['distribution'] == 'Chromebrew'
+      return get_anitya_id(json2['items'][i]['project'], homepage, buildsystem) if json2['items'][i]['name'] == name
+    end
   else # Anitya has more than one package with this exact name.
     candidates = json['items']
 

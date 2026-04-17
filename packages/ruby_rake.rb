@@ -3,7 +3,7 @@ require 'buildsystems/ruby'
 class Ruby_rake < RUBY
   description 'Rake is a Make-like program implemented in Ruby.'
   homepage 'https://github.com/ruby/rake'
-  version "13.4.1-#{CREW_RUBY_VER}"
+  version "13.4.2-#{CREW_RUBY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'

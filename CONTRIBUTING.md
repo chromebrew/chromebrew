@@ -110,3 +110,37 @@ Chromebrew has pre-commit hooks to catch errors before they make it to CI.
 To install them, run `pre-commit install` in the root of the repository.
 
 You will first need to install the pre-commit tool, which can be done via `crew install py3_pre_commit` on ChromeOS.
+
+## Anitya
+
+Chromebrew predominantly uses the [Anitya project](https://release-monitoring.org/) for monitoring upstream releases in `tools/version.rb`.
+
+While Anitya runs on Red Hat infrastructure and is primarily used by Fedora, it is a cross-distribution project which goes a long way towards deduplicating work and strengthening the ecosystem.
+
+We benefit a huge amount from the work already done and the freely available API, so be mindful when making changes and ensure that everyone benefits.
+
+With that said, here are the common scenarios where changes to Anitya are required:
+- Anitya is missing a package Chromebrew provides
+- Anitya's package has broken upstream version detection
+- `tools/version.rb` is not finding the Anitya package for the Chromebrew package
+- `tools/version.rb` is finding the wrong Anitya package for the Chromebrew package
+
+### Anitya is missing a package Chromebrew provides
+
+Add the package to Anitya. Make an account, log in, and click the [Add Project](https://release-monitoring.org/project/new) button at the top. Anitya has its own documentation on how to do this, and you should follow that.
+
+This will benefit not just Chromebrew, but any distribution shipping that package that uses Anitya.
+
+### Anitya's package has broken upstream version detection
+
+Fix the version detection. There is a large `Edit` button visible on each package page when you are logged in. Click that, and fix the issue. Maybe the project has switched websites, or the old regex has broken. Once you've fixed the issue, test that the check works as intended, and the submit the new version check.
+
+Again, this will benefit Chromebrew as well as everyone else using Anitya.
+
+### `tools/version.rb` is not finding the Anitya package for the Chromebrew package
+
+Add a distribution mapping to the project. Towards the bottom of each package page is a button titled `Add new distribution mapping`. Click on that, select Chromebrew, and enter the filename of the Chromebrew package in the package name field. For an example, you can look at [this mapping](https://release-monitoring.org/project/13824/), which is mapping the `mbedtls` Anitya package to the `libmbedtls` Chromebrew package.
+
+### `tools/version.rb` is finding the wrong Anitya package for the Chromebrew package
+
+This can happen for a number of reasons. `tools/version.rb` does its best to filter out incorrect packages by ecosystem and homepage, but this doesn't always succeed. Try and find the specific discrepancy between the Anitya and Chromebrew package that is causing them to not match, and fix it on the Chromebrew side. Anitya is used by many more people than just us, so we should change to match it, and not the other way around. If that isn't possible, you can add a hardcoded mapping to `CREW_ANITYA_PACKAGE_NAME_MAPPINGS` in `tools/version.rb` as a last resort.

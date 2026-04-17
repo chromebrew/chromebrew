@@ -12,14 +12,14 @@ class Py3_libxml2 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e1dd747f212b147709fd87bf56d2141bd00f05483039a41ce61d8c865f2eda2b',
-     armv7l: 'e1dd747f212b147709fd87bf56d2141bd00f05483039a41ce61d8c865f2eda2b',
-       i686: 'eb5b92b370510e40bdb0ed4784fb1a95f89480770d45e29fe6300d1c2162a774',
-     x86_64: '4fa9051647b0281a70cdac98bc02dca0043473b05216527fab4f73c50d50f1b6'
+    aarch64: '42fcc6365737c1c8f7bd41f78c51b3afcc5d7e139966ea46f6fc1c2166e2df94',
+     armv7l: '42fcc6365737c1c8f7bd41f78c51b3afcc5d7e139966ea46f6fc1c2166e2df94',
+       i686: '762928a03769218a8138da799482e389011f72c9bf54ae4faf116a9f9b7d047d',
+     x86_64: 'ac24ebb8473a17929e54ed6b8af24d030b2af63b1050939657fd846adc784f53'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'libxml2' # R
+  depends_on 'glibc' => :library
+  depends_on 'libxml2' => :library
   depends_on 'py3_setuptools' => :build
   depends_on 'python3' # R
 
