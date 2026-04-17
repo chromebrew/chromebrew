@@ -1,0 +1,20 @@
+#!/bin/bash
+comp_err --version
+ibd2sdi --version
+innochecksum --version
+my_print_defaults --version
+myisam_ftdump --version
+myisamchk --version
+myisampack --version
+mysqladmin --version
+mysqlbinlog --version
+mysqlcheck --version
+mysqldump --version
+mysqldumpslow --version
+mysqlimport --version
+mysqlshow --version
+mysqlslap --version
+mysqltest --version
+mysqltest_safe_process --version
+mysqlxtest --version
+perror --version
