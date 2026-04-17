@@ -11,11 +11,12 @@ class Flutter < Package
 
   depends_on 'libglu'
 
+  conflicts_with 'dart'
   no_compile_needed
   no_shrink
 
   def self.preflight
-    # Need at least 3.65 gb of free disk space to install.
+    # Need at least 3.65 GB of free disk space to install.
     MiscFunctions.check_free_disk_space(3919157657)
   end
 
