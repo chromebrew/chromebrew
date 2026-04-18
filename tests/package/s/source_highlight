@@ -1,0 +1,6 @@
+#!/bin/bash
+check-regexp --version
+cpp2html --version
+java2html --version
+source-highlight --version
+source-highlight-settings --version
