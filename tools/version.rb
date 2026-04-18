@@ -63,29 +63,15 @@ CREW_UPDATER_EXCLUDED_PKGS = Set[
 # Some packages have different names in anitya.
 # TODO: As per the section in CONTRIBUTING.md, most of these can be replaced with Anitya-side package mappings.
 CREW_ANITYA_PACKAGE_NAME_MAPPINGS = Set[
-  { pkg_name: 'alsa_lib', anitya_pkg: 'alsa-lib', comments: '' },
-  { pkg_name: 'asdf', anitya_pkg: 'asdf-vm', comments: '' },
-  { pkg_name: 'broadway', anitya_pkg: 'gtk+3.0~stable', comments: '' },
-  { pkg_name: 'cf', anitya_pkg: 'cf', comments: 'Prefer to GitHub' },
-  { pkg_name: 'cups', anitya_pkg: 'cups', comments: 'Prefer to GitHub' },
-  { pkg_name: 'cvs', anitya_pkg: 'cvs-stable', comments: '' },
-  { pkg_name: 'docbook_xml51', anitya_pkg: 'docbook-xml', comments: '' },
-  { pkg_name: 'doxygen', anitya_pkg: 'doxygen', comments: '' },
-  { pkg_name: 'filecmd', anitya_pkg: 'file', comments: '' },
-  { pkg_name: 'gcr_3', anitya_pkg: 'gcr~3', comments: '' },
-  { pkg_name: 'gcr_4', anitya_pkg: 'gcr', comments: '' },
-  { pkg_name: 'gemacs', anitya_pkg: 'emacs', comments: '' },
-  { pkg_name: 'gexiv2', anitya_pkg: 'gexiv2~14.x', comments: '' },
-  { pkg_name: 'gnome_docking_library', anitya_pkg: 'gdl', comments: '' },
-  { pkg_name: 'gnu_time', anitya_pkg: 'time', comments: '' },
-  { pkg_name: 'go_tools', anitya_pkg: 'golang-x-tools', comments: '' },
-  { pkg_name: 'gsfonts', anitya_pkg: 'gs-fonts', comments: '' },
-  { pkg_name: 'gtk3', anitya_pkg: 'gtk+3.0~stable', comments: '' },
-  { pkg_name: 'gtk4', anitya_pkg: 'gtk', comments: '' },
-  { pkg_name: 'gtkmm4', anitya_pkg: 'gtkmm', comments: '' },
-  { pkg_name: 'gtksharp2', anitya_pkg: 'gtk-sharp', comments: '' },
-  { pkg_name: 'gtksourceview_5', anitya_pkg: 'gtksourceview', comments: '' },
-  { pkg_name: 'gvim', anitya_pkg: 'vim', comments: '' },
+  { pkg_name: 'alsa_lib', anitya_pkg: 'alsa-lib', comments: 'PackageUtils.get_clean_name mistakenly removes the _lib from the name' },
+  { pkg_name: 'asdf', anitya_pkg: 'asdf-vm', comments: 'Anitya has a pip package named asdf' },
+  { pkg_name: 'cvs', anitya_pkg: 'cvs-stable', comments: 'Anitya has a pip package named cvs' },
+  { pkg_name: 'gexiv2', anitya_pkg: 'gexiv2~14.x', comments: 'TODO: Why are we sticking to the 0.14.x release series?' },
+  { pkg_name: 'gnome_docking_library', anitya_pkg: 'gdl', comments: 'Anitya has two gdl packages, so this mapping doesnt work' },
+  { pkg_name: 'go_tools', anitya_pkg: 'golang-tools', comments: 'Anitya has a different package named go-tools' },
+  { pkg_name: 'gtk3', anitya_pkg: 'gtk+3.0~stable', comments: 'Anitya has Hackage, Rubygems, and CPAN (Perl) packages named gtk3' },
+  { pkg_name: 'gtk4', anitya_pkg: 'gtk', comments: 'Anitya has Rubygems and crate.io packages named gtk3' },
+  { pkg_name: 'gtksharp2', anitya_pkg: 'gtk-sharp', comments: 'The upstream Anitya package is mapped to gtk-sharp3 in other distros, but it is using the outdated mono/gtk-sharp repository so it is only getting the 2.x versions. Not sure what to do here.' },
   { pkg_name: 'hunspell_en_us', anitya_pkg: 'LibreOffice', comments: '' },
   { pkg_name: 'hunspell_es_any', anitya_pkg: 'LibreOffice', comments: '' },
   { pkg_name: 'hunspell_es_us', anitya_pkg: 'LibreOffice', comments: '' },
@@ -312,6 +298,9 @@ def get_anitya_id(name, homepage, buildsystem)
       next unless json2['items'][i]['distribution'] == 'Chromebrew'
       return get_anitya_id(json2['items'][i]['project'], homepage, buildsystem) if json2['items'][i]['name'] == name
     end
+
+    # We have an explicit return here so we don't end up returning 0..0 if that is the outcome of the loop above.
+    return
   else # Anitya has more than one package with this exact name.
     candidates = json['items']
 
