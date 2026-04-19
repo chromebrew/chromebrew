@@ -5,16 +5,15 @@ class Taglib < CMake
   homepage 'https://taglib.org'
   version '2.2.1'
   license 'LGPL-2.1 and MPL-1.1'
-  compatibility 'all'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://taglib.org/releases/taglib-#{version}.tar.gz"
   source_sha256 '7e76b5299dcef427c486bffe455098470c8da91cf3ccb9ea804893df57389b5e'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5e7c62cd76eb51e7e72e9ca2a51222f25d1ba0162279819c1bb217b8e3c1b682',
-     armv7l: '5e7c62cd76eb51e7e72e9ca2a51222f25d1ba0162279819c1bb217b8e3c1b682',
-       i686: '899332f0dd2d8c962fe8aa97af7cab8dda83ce131ae5f141fe9acf73e209e007',
-     x86_64: 'edda8b6900ca4bc2f56ebe0ab784596afbc8b77edc1a8540e8810c276df349c3'
+    aarch64: '54a5afe451decafc4135b1b03b6a7c8a4cd66169bf94b884dfaaf98df34ccecf',
+     armv7l: '54a5afe451decafc4135b1b03b6a7c8a4cd66169bf94b884dfaaf98df34ccecf',
+     x86_64: '2cba9bc7c5d60d02314fbcdceeb21b1763f41447aa772cb1f32d1542b64f17aa'
   })
 
   depends_on 'boost' => :build

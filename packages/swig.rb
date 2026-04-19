@@ -5,16 +5,15 @@ class Swig < Autotools
   homepage 'https://www.swig.org/'
   version '4.4.1'
   license 'GPL-3, BSD and BSD-2'
-  compatibility 'all'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/swig/swig'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '50e1d502886d1c6d2e995d3c92005a3f7249edbb4dd1d2e59a3e85854db62c68',
-     armv7l: '50e1d502886d1c6d2e995d3c92005a3f7249edbb4dd1d2e59a3e85854db62c68',
-       i686: 'b42de3edf3f7d194329a6407239ca042386f9d8adfe5b631460cc661dce05836',
-     x86_64: 'c5091251c3d1f0793e4bd4b6ef2293bc1f92d2790dd3126b52b80179bb858262'
+    aarch64: '459d6b472eb99251302a18a29252b5f4848451c017826f87a17d3d2e0aaf59c6',
+     armv7l: '459d6b472eb99251302a18a29252b5f4848451c017826f87a17d3d2e0aaf59c6',
+     x86_64: 'fa39c67ebff03a231b33a00087c6ced2248848cf8c2432096781d4adbef717f3'
   })
 
   depends_on 'boost' => :build

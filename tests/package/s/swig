@@ -1,0 +1,5 @@
+#!/bin/bash
+ccache-swig -h
+ccache-swig -V
+swig -help | head
+swig --version

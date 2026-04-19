@@ -1,46 +1,35 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Tcpflow < Package
+class Tcpflow < Autotools
   description 'TCP/IP packet demultiplexer'
   homepage 'https://github.com/simsong/tcpflow'
-  version '1.6.1-b1479db'
+  version '1.6.1-8d47b53'
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/simsong/tcpflow.git'
-  git_hashtag 'b1479db14b1604e00d35c2d39566c54e8b1785d0'
+  git_hashtag '8d47b53a54da58e9c9b78efed8b379d98c6113e4'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '13f7de4e37ae24a3969a87b8748e01fc6a5becd4f5c28c74fafcf9eaf3be4afb',
-     armv7l: '13f7de4e37ae24a3969a87b8748e01fc6a5becd4f5c28c74fafcf9eaf3be4afb',
-     x86_64: '21d9e46128c7c1d7767cf79c53448c7e989e308fcefa579f97f04debb35069de'
+    aarch64: 'aaae1be015e7acf78b6c4e94f66d1ddb89ef638ea3037ec9d15c001a66bf51a9',
+     armv7l: 'aaae1be015e7acf78b6c4e94f66d1ddb89ef638ea3037ec9d15c001a66bf51a9',
+     x86_64: 'e7599e3d79fa5dd2592316919d088eaa36c19ed43c075a952781f4e9a9b8441b'
   })
 
   depends_on 'boost' => :build
-  depends_on 'bzip2' # R
-  depends_on 'cairo' => :build
-  depends_on 'cairo' # R
-  depends_on 'expat' # R
-  depends_on 'fontconfig' # R
-  depends_on 'freetype' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'bzip2' => :executable
+  depends_on 'cairo' => :executable
+  depends_on 'expat' => :executable
+  depends_on 'fontconfig' => :executable
+  depends_on 'freetype' => :executable
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
   depends_on 'harfbuzz' # R
-  depends_on 'libcap_ng' # R
-  depends_on 'libmd' # R
-  depends_on 'libpcap' # R
-  depends_on 'openssl' # R
-  depends_on 'pixman' # R
-  depends_on 'sqlite' # R
-  depends_on 'zlib' # R
-
-  def self.build
-    system 'bash bootstrap.sh'
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} make install"
-  end
+  depends_on 'libcap_ng' => :executable
+  depends_on 'libmd' => :executable
+  depends_on 'libpcap' => :executable
+  depends_on 'openssl' => :executable
+  depends_on 'pixman' => :executable
+  depends_on 'sqlite' => :executable
+  depends_on 'zlib' => :executable
 end
