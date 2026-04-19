@@ -28,6 +28,7 @@ class At_spi2_core < Meson
   depends_on 'libxfixes' => :build
   depends_on 'libxi' => :library
   depends_on 'libxtst' => :executable
+  depends_on 'libxtst' => :library
 
   gnome
 end
