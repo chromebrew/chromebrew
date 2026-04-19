@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class At_spi2_core < Meson
   description 'This is over DBus, tookit widgets provide their content to screen readers such as Orca'
   homepage 'https://ftp.gnome.org/pub/gnome/sources/at-spi2-core'
-  version '2.60.0'
+  version '2.60.1'
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/at-spi2-core.git'
@@ -11,24 +11,24 @@ class At_spi2_core < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b9cdb0c33062bbb20b6c88a74f7a3afe49c420c91c4e2853081b4211af87fb68',
-     armv7l: 'b9cdb0c33062bbb20b6c88a74f7a3afe49c420c91c4e2853081b4211af87fb68',
-     x86_64: '9518405d9121068866e562178be368b757d3735f9a7670e8954b19440ef46d6c'
+    aarch64: 'a48ea2424c5252cafd3dba6ed582c77e8fa125c5b408b4243ddad665aba94404',
+     armv7l: 'a48ea2424c5252cafd3dba6ed582c77e8fa125c5b408b4243ddad665aba94404',
+     x86_64: '51577068ede69f97c491864ac7af2b6cb21aec8813ba4c1d3d84edc10faf6b52'
   })
 
-  depends_on 'dbus' # R
+  depends_on 'dbus' => :library
   depends_on 'gcc_lib' # R
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk_doc' => :build
-  depends_on 'libx11' # R
+  depends_on 'libx11' => :library
   depends_on 'libxcb' => :build
   depends_on 'libxext' => :build
   depends_on 'libxfixes' => :build
-  depends_on 'libxi' # R
-  depends_on 'libxtst' # R
+  depends_on 'libxi' => :library
   depends_on 'libxtst' => :executable
+  depends_on 'libxtst' => :library
 
   gnome
 end
