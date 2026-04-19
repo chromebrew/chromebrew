@@ -3,11 +3,11 @@ require 'package'
 class Crystal < Package
   description 'A language for humans and computers'
   homepage 'https://crystal-lang.org/'
-  version '1.19.1'
+  version '1.20.0'
   license 'Apache-2.0'
   compatibility 'x86_64'
   source_url "https://github.com/crystal-lang/crystal/releases/download/#{version}/crystal-#{version}-1-linux-x86_64-bundled.tar.gz"
-  source_sha256 'b36c64a621d95308e5b010371c97783567441f33bd9a1a0c6f04de32855225ef'
+  source_sha256 '9f6fb0dd6b38daa22b6fba07342ff72390efe533639d181360793a218ca164c9'
 
   no_compile_needed
   print_source_bashrc
