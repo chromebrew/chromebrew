@@ -218,6 +218,8 @@ def determine_dependencies(pkg_name, pkgfiles_to_check)
   # TODO: Since these packages aren't needed by any specific package, do we need to package them at all?
   pkgdeps = pkgdeps.map { |i| i.gsub('jack1', 'jack') }.uniq
   pkgdeps = pkgdeps.map { |i| i.gsub('libxml2_autotools', 'libxml2') }.uniq
+  pkgdeps = pkgdeps.map { |i| i.gsub('vdev', 'eudev') }.uniq
+  pkgdeps = pkgdeps.map { |i| i.gsub('libudev_stub', 'eudev') }.uniq
 
   # Split any multi-dependency strings into individual array members.
   pkgdeps = pkgdeps.flat_map(&:split).uniq

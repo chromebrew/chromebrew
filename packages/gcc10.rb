@@ -33,7 +33,7 @@ class Gcc10 < Package
   no_env_options
   no_patchelf
 
-  @gcc_version = version.split('-')[0].partition('.')[0]
+  @gcc_version = version.partition('.')[0]
 
   def self.patch
     # This fixes a PATH_MAX undefined error which breaks libsanitizer

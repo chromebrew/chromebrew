@@ -7,8 +7,8 @@ class Glibc_lib235 < Package
   version '2.35' # Do not use @_ver here, it will break the installer.
   license Glibc_build235.license
   compatibility 'aarch64 armv7l x86_64'
-  min_glibc version.split('-').first
-  max_glibc version.split('-').first
+  min_glibc version
+  max_glibc version
   source_url 'SKIP'
   binary_compression 'tar.zst'
 

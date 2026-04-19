@@ -1,10 +1,10 @@
-# Total size: 191701
-/usr/local/lib/python3.14/site-packages/filelock-3.25.2.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/filelock-3.25.2.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/filelock-3.25.2.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/filelock-3.25.2.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/filelock-3.25.2.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/filelock-3.25.2.dist-info/licenses/LICENSE
+# Total size: 302219
+/usr/local/lib/python3.14/site-packages/filelock-3.28.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/filelock-3.28.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/filelock-3.28.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/filelock-3.28.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/filelock-3.28.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/filelock-3.28.0.dist-info/licenses/LICENSE
 /usr/local/lib/python3.14/site-packages/filelock/__init__.py
 /usr/local/lib/python3.14/site-packages/filelock/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/filelock/__pycache__/_api.cpython-314.pyc
@@ -22,6 +22,12 @@
 /usr/local/lib/python3.14/site-packages/filelock/_error.py
 /usr/local/lib/python3.14/site-packages/filelock/_read_write.py
 /usr/local/lib/python3.14/site-packages/filelock/_soft.py
+/usr/local/lib/python3.14/site-packages/filelock/_soft_rw/__init__.py
+/usr/local/lib/python3.14/site-packages/filelock/_soft_rw/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/filelock/_soft_rw/__pycache__/_async.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/filelock/_soft_rw/__pycache__/_sync.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/filelock/_soft_rw/_async.py
+/usr/local/lib/python3.14/site-packages/filelock/_soft_rw/_sync.py
 /usr/local/lib/python3.14/site-packages/filelock/_unix.py
 /usr/local/lib/python3.14/site-packages/filelock/_util.py
 /usr/local/lib/python3.14/site-packages/filelock/_windows.py

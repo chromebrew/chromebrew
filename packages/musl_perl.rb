@@ -79,7 +79,7 @@ EOF'
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     FileUtils.mkdir_p "#{CREW_DEST_MUSL_PREFIX}/lib"
-    FileUtils.ln_sf "#{CREW_MUSL_PREFIX}/lib/perl5/#{version.split('-')[0]}/#{ARCH}-linux-thread-multi/CORE/libperl.so",
+    FileUtils.ln_sf "#{CREW_MUSL_PREFIX}/lib/perl5/#{version}/#{ARCH}-linux-thread-multi/CORE/libperl.so",
                     "#{CREW_DEST_MUSL_PREFIX}/lib/libperl.so"
     FileUtils.ln_sf "#{CREW_MUSL_PREFIX}/lib/libnsl.so.1", "#{CREW_DEST_MUSL_PREFIX}/lib/libnsl.so"
     system "install -Dm755 cpanm #{CREW_DEST_MUSL_PREFIX}/bin/cpanm"

@@ -6,7 +6,7 @@ class Manpages < Package
   version '6.15'
   license 'man-pages, GPL-2+ and BSD'
   compatibility 'all'
-  source_url "https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/man-pages-#{version.split('-').first}.tar.xz"
+  source_url "https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/man-pages-#{version}.tar.xz"
   source_sha256 '03d8ebf618bd5df57cb4bf355efa3f4cd3a00b771efd623d4fd042b5dceb4465'
   binary_compression 'tar.zst'
 

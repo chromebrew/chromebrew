@@ -6,7 +6,7 @@ class Libxcrypt < Autotools
   version '4.5.2'
   license 'LGPL-2.1+, public-domain, BSD and BSD-2'
   compatibility 'all'
-  source_url "https://github.com/besser82/libxcrypt/releases/download/v#{version.split('-').first}/libxcrypt-#{version.split('-').first}.tar.xz"
+  source_url "https://github.com/besser82/libxcrypt/releases/download/v#{version}/libxcrypt-#{version}.tar.xz"
   source_sha256 '71513a31c01a428bccd5367a32fd95f115d6dac50fb5b60c779d5c7942aec071'
   binary_compression 'tar.zst'
 

@@ -10,7 +10,7 @@ class Js115 < Package
   # version '115.14.0'
   license 'MPL-2.0'
   compatibility 'aarch64 armv7l x86_64'
-  source_url "https://archive.mozilla.org/pub/firefox/releases/#{version.split('-').first}esr/source/firefox-#{version.split('-').first}esr.source.tar.xz"
+  source_url "https://archive.mozilla.org/pub/firefox/releases/#{version}esr/source/firefox-#{version}esr.source.tar.xz"
   source_sha256 'af8086f23efc8492d286671f6035b1a915de6f4ed5c7897e40be0e1cb6b895ea'
   # source_sha256 '8955e1b5db83200a70c6dea4b614e19328d92b406ec9a1bde2ea86333a74dab4'
   binary_compression 'tar.zst'

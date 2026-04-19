@@ -39,7 +39,7 @@ class Openssl < Package
   @ARCH_CXX_LTO_FLAGS = "#{@arch_cxx_flags} -flto=auto"
 
   def self.build
-    @no_tests_target = `openssl version | awk '{print $2}'`.chomp == version.to_s ? 'no-tests' : ''
+    @no_tests_target = `openssl version | awk '{print $2}'`.chomp == version ? 'no-tests' : ''
 
     # This gives you the list of OpenSSL configure targets
     system './Configure LIST'
@@ -61,7 +61,7 @@ class Openssl < Package
     return if ARCH == 'i686' || ARCH == 'x86_64'
 
     # Don't run tests if we are just rebuilding the same version of openssl.
-    system 'make test' unless `openssl version | awk '{print $2}'`.chomp == version.to_s
+    system 'make test' unless `openssl version | awk '{print $2}'`.chomp == version
   end
 
   def self.install

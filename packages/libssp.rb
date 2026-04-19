@@ -7,7 +7,7 @@ class Libssp < Package
   version '15.2.0'
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   # When upgrading gcc_build, be sure to upgrade gcc_lib, gcc_dev, libssp, and then binutils in tandem.
-  puts "#{self} version (#{version}) differs from gcc version #{Gcc_build.version}".orange if version.to_s != Gcc_build.version
+  puts "#{self} version (#{version}) differs from gcc version #{Gcc_build.version}".orange if version != Gcc_build.version
   compatibility 'all'
   source_url 'https://github.com/gcc-mirror/gcc.git'
   git_hashtag '69eb1716b884f6213aef30194390d7741af97c80'
@@ -76,7 +76,7 @@ class Libssp < Package
   end
 
   def self.build
-    gcc_version = version.split('-')[0]
+    gcc_version = version
 
     Dir.mkdir "#{@gcc_name}-builddir"
     Dir.chdir "#{@gcc_name}-builddir" do

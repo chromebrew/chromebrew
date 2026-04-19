@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Mimalloc < CMake
   description 'General-purpose allocator with excellent performance characteristics'
   homepage 'https://github.com/microsoft/mimalloc'
-  version '3.2.8'
+  version '3.3.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/microsoft/mimalloc.git'
@@ -11,14 +11,14 @@ class Mimalloc < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2c85eb723306bb5051035f834723b2a1e9259ff9da7b280f1697489c22025f4e',
-     armv7l: '2c85eb723306bb5051035f834723b2a1e9259ff9da7b280f1697489c22025f4e',
-       i686: 'e8f1cc7fce4522538fe71cd6424f4539ce463d2bd399fedea5cd91ef4cabdfba',
-     x86_64: '6695192c7c5599f5c5f38b7aa3cad377a888f9854e8c2739cea346da1db69227'
+    aarch64: 'd23db777d6a4c8d6cb8df6df74de73fc0f877fd55c9286190fa101677f4c526c',
+     armv7l: 'd23db777d6a4c8d6cb8df6df74de73fc0f877fd55c9286190fa101677f4c526c',
+       i686: '5ca518fb461f58a2221cb972b351338a3e32c869125a53c3d53a2166a4476fce',
+     x86_64: '10de64314a001a19bd9150b4ced89639d726186f9ce7b3f4ccc1dbabebfc15ec'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
 
   cmake_options '-DMI_BUILD_TESTS=OFF'
 end

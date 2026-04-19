@@ -13,7 +13,7 @@ class Gawk < Autotools
   version '5.4.0'
   license 'GPL-2'
   compatibility 'all'
-  source_url "https://ftp.gnu.org/gnu/gawk/gawk-#{version.split('-').first}.tar.xz"
+  source_url "https://ftp.gnu.org/gnu/gawk/gawk-#{version}.tar.xz"
   source_sha256 'ca9c16d3d11d0ff8c69d79dc0b47267e1329a69b39b799895604ed447d3ca90b'
   binary_compression 'tar.zst'
 

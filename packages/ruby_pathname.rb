@@ -3,17 +3,17 @@ require 'buildsystems/ruby'
 class Ruby_pathname < RUBY
   description 'Representation of the name of a file or directory on the filesystem.'
   homepage 'https://github.com/ruby/pathname'
-  version "0.4.0-#{CREW_RUBY_VER}"
+  version "0.5.0-#{CREW_RUBY_VER}"
   license 'Ruby'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: 'fa49f2fdb19b89834738270e09072046416a04af54dd07c6abf59053e29b264b',
-     armv7l: 'fa49f2fdb19b89834738270e09072046416a04af54dd07c6abf59053e29b264b',
-       i686: 'b34fadbfe70932a3e0c31394bc27a90ffa737e827c1d3854cc486037d5bdc50c',
-     x86_64: '874f4c9314e70e2a869532eda3f7f774568bf410489539e8f45b116420f4908f'
+    aarch64: '0103a8cf67061c6406844c6471aa3b057668f8e9903331396c33a5e84cc48895',
+     armv7l: '0103a8cf67061c6406844c6471aa3b057668f8e9903331396c33a5e84cc48895',
+       i686: 'd436b0448b8ebce2501e36be9a5224eaeef94479a934bea78df997b6d77a02f0',
+     x86_64: '02f0529825126878ebb1dca4d0330fb1de772993479c6d4c64a201db8b407329'
   })
 
   depends_on 'glibc' => :library

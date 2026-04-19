@@ -1,0 +1,5 @@
+#!/bin/bash
+uv -h | head
+uv -V
+uvx -h | head
+uvx -V

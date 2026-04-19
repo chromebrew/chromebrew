@@ -3,7 +3,7 @@ require 'package'
 class Wget_static < Package
   description 'Static wget 1.x via alpine build'
   homepage 'https://github.com/chromebrew/static-binaries/'
-  version '20251015.1'
+  version '20260301.1'
   license 'GPL-3'
   compatibility 'all'
   source_url({
@@ -13,10 +13,10 @@ class Wget_static < Package
        x86_64: "https://github.com/chromebrew/static-binaries/releases/download/v#{version}/wget_v#{version}_linux_amd64"
     })
   source_sha256({
-      aarch64: '1992d1929ccc4d7f142a81ae9a9f15193c2340347fa0e8b6620113d2e2000e51',
-       armv7l: '17ecea3d89abf1573ebede36ec43259ad1129a047e264d5d43e4421105d113a1',
-         i686: 'd1cb28ac167a2e108aaf5df2ffd13ffaaa398394c97326e97b671708ee366d4e',
-       x86_64: 'b8a286b93cb70d16b5f63ec362193730ddb10ae96c6ec889b6b1923be6cc10c9'
+      aarch64: '2a7cdfae68e5a001e28d2749002ec7dc6ebd8c5401d58803d39c88b836d817bb',
+       armv7l: '02452458055730b45d95c789521e423d2b04e322fcbe4e75a3a6e25a2a6c15db',
+         i686: '806a8f0f6aa843275a2f11876f54fea747148d0d188cd655ff6557420d934a1c',
+       x86_64: '114105ee626367833f3f70410fb639ce54e09cecc0ca864eeae0938cbff1b2a4'
     })
 
   conflicts_with 'wget2'

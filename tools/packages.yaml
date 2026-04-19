@@ -9985,6 +9985,11 @@ url: https://github.com/uutils/coreutils/releases
 activity: medium
 ---
 kind: url
+name: uv
+url: https://github.com/astral-sh/uv/releases
+activity: high
+---
+kind: url
 name: uwsgi
 url: https://github.com/unbit/uwsgi/releases
 activity: medium

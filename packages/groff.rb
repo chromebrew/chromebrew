@@ -7,7 +7,7 @@ class Groff < Autotools
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://git.savannah.gnu.org/git/groff.git'
-  git_hashtag version.split('-').first
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({

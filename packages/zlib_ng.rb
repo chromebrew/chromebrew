@@ -10,7 +10,7 @@ class Zlib_ng < CMake
   license 'Zlib'
   compatibility 'all'
   source_url 'https://github.com/zlib-ng/zlib-ng.git'
-  git_hashtag version.split('-').first
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({

@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Tinysparql < Meson
   description 'Low-footprint RDF triple store library with SPARQL 1.1 interface'
   homepage 'https://gitlab.gnome.org/GNOME/tinysparql'
-  version "3.11.0-#{CREW_ICU_VER}"
+  version "3.11.1-#{CREW_ICU_VER}"
   license 'GPLv2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/tinysparql.git'
@@ -11,9 +11,9 @@ class Tinysparql < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4b403a9e1bd2fa5236222b26716e0ba8e4133dddfb9ab2a96f236179688b9f16',
-     armv7l: '4b403a9e1bd2fa5236222b26716e0ba8e4133dddfb9ab2a96f236179688b9f16',
-     x86_64: '3961456e657c11f9a123ecb58004b2295d117df2e6122eee7c8f005a10bf8504'
+    aarch64: 'e02e5e0b7666b3370cc736eb56df1b47c7954d063355897571db61c306305094',
+     armv7l: 'e02e5e0b7666b3370cc736eb56df1b47c7954d063355897571db61c306305094',
+     x86_64: 'c77c1bf0879cfddf53757ec5a052b35d3e910761c339dbd882e214722442b9e2'
   })
 
   depends_on 'avahi' => :library

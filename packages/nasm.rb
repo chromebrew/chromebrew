@@ -7,7 +7,7 @@ class Nasm < Autotools
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/netwide-assembler/nasm.git'
-  git_hashtag "nasm-#{version.split('-').first}"
+  git_hashtag "nasm-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({

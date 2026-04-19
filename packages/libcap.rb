@@ -7,7 +7,7 @@ class Libcap < Package
   license 'GPL-2 or BSD'
   compatibility 'all'
   source_url 'https://git.kernel.org/pub/scm/libs/libcap/libcap.git'
-  git_hashtag "libcap-#{version.split('-').first}"
+  git_hashtag "libcap-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({

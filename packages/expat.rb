@@ -7,7 +7,7 @@ class Expat < CMake
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/libexpat/libexpat.git'
-  git_hashtag "R_#{version.split('-').first.gsub('.', '_')}"
+  git_hashtag "R_#{version.gsub('.', '_')}"
   binary_compression 'tar.zst'
 
   binary_sha256({
