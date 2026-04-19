@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Finch < Autotools
   description 'Finch is a chat program which lets you log in to accounts on multiple chat networks simultaneously.'
   homepage 'https://pidgin.im/'
-  version '2.14.13'
+  version '2.14.14'
   license 'GPL-2'
   compatibility 'all'
   source_url "https://downloads.sourceforge.net/project/pidgin/Pidgin/#{version}/pidgin-#{version}.tar.bz2"
-  source_sha256 '120049dc8e17e09a2a7d256aff2191ff8491abb840c8c7eb319a161e2df16ba8'
+  source_sha256 '0ffc9994def10260f98a55cd132deefa8dc4a9835451cc0e982747bd458e2356'
   binary_compression 'tar.zst'
 
   binary_sha256({
