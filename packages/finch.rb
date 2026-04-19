@@ -29,6 +29,7 @@ class Finch < Autotools
   depends_on 'ncurses'
   depends_on 'ncurses' => :executable
   depends_on 'perl' => :library
+  depends_on 'pidgin' => :executable
   depends_on 'tcl'
 
   autotools_configure_options "--disable-avahi \
