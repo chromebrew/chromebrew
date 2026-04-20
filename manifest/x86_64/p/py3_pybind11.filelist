@@ -1,12 +1,12 @@
-# Total size: 1190935
+# Total size: 1192814
 /usr/local/bin/pybind11-config
-/usr/local/lib/python3.14/site-packages/pybind11-3.0.3.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/pybind11-3.0.3.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/pybind11-3.0.3.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/pybind11-3.0.3.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/pybind11-3.0.3.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/pybind11-3.0.3.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/pybind11-3.0.3.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/pybind11-3.0.4.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/pybind11-3.0.4.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/pybind11-3.0.4.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/pybind11-3.0.4.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/pybind11-3.0.4.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/pybind11-3.0.4.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/pybind11-3.0.4.dist-info/licenses/LICENSE
 /usr/local/lib/python3.14/site-packages/pybind11/__init__.py
 /usr/local/lib/python3.14/site-packages/pybind11/__main__.py
 /usr/local/lib/python3.14/site-packages/pybind11/__pycache__/__init__.cpython-314.pyc
