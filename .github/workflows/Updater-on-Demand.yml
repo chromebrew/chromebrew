@@ -1,5 +1,5 @@
 ---
-# Version 1.4
+# Version 1.5
 name: Generate Updates PRs on Demand
 run-name: Generating Updates PRs on Demand using ${{ inputs.version_cmd_input }}
 on:
@@ -98,6 +98,14 @@ jobs:
               export updater_branch="${{ github.ref_name }}"
             fi
             echo "Updater branch: ${updater_branch}"
+            PR_NUMBER=$(gh pr list -L 1 -s open -H ${updater_branch} | cut -f1)
+            if [[ -n ${PR_NUMBER} ]]; then
+              if gh pr list -l "block-updater-workflow" --json number | jq --arg PR_NUMBER "$PR_NUMBER"  -e -r '.[]|select(.number=='$PR_NUMBER')' &>/dev/null; then
+                # Abort if we don't want the updater workflow to run on this branch with a PR already.
+                echo "This PR has block-updater-workflow set."
+                exit 1
+              fi
+            fi
             if [[ "$(git branch -a --list ${updater_branch} | wc -l)" != '0' ]]; then
               echo "Attempting rebase and build of existing ${updater_branch} branch."
               if gh pr update-branch --rebase; then
