@@ -3,11 +3,11 @@ require 'package'
 class Acquia_cli < Package
   description 'Acquia CLI - The official command-line tool for interacting with the Drupal Cloud Platform and services.'
   homepage 'https://github.com/acquia/cli'
-  version '2.60.0'
+  version '2.61.0'
   license 'GPL-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://github.com/acquia/cli/releases/download/#{version}/acli.phar"
-  source_sha256 'dfb4e2c724570940e4f187c73ee32816003b1d6d0f38bde73af983559e1daedc'
+  source_sha256 '200afc78f143d3772db6fff5b3ea3b15803edf350e4f5639d9f1c252d7aa1d28'
 
   depends_on 'php83' unless File.exist? "#{CREW_PREFIX}/bin/php"
 
