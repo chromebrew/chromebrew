@@ -1,4 +1,4 @@
-# Total size: 309569908
+# Total size: 315104464
 /usr/local/bin/firefox
 /usr/local/share/applications/firefox.desktop
 /usr/local/share/firefox/application.ini
@@ -12,6 +12,7 @@
 /usr/local/share/firefox/crashreporter
 /usr/local/share/firefox/defaults/pref/channel-prefs.js
 /usr/local/share/firefox/dependentlibs.list
+/usr/local/share/firefox/distribution/distribution.ini
 /usr/local/share/firefox/firefox
 /usr/local/share/firefox/firefox-bin
 /usr/local/share/firefox/firefox-bin.sig
