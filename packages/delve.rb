@@ -3,7 +3,7 @@ require 'package'
 class Delve < Package
   description 'Debugger for the Go programming language'
   homepage 'https://github.com/go-delve/delve'
-  version '1.26.1'
+  version '1.26.2'
   license 'MIT'
   compatibility 'i686 x86_64'
   source_url 'SKIP'
