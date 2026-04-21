@@ -1,10 +1,13 @@
-# Total size: 1460622
+# Total size: 1900536
 /usr/local/include/wlroots-0.20/wlr/backend.h
+/usr/local/include/wlroots-0.20/wlr/backend/drm.h
 /usr/local/include/wlroots-0.20/wlr/backend/headless.h
 /usr/local/include/wlroots-0.20/wlr/backend/interface.h
+/usr/local/include/wlroots-0.20/wlr/backend/libinput.h
 /usr/local/include/wlroots-0.20/wlr/backend/multi.h
 /usr/local/include/wlroots-0.20/wlr/backend/session.h
 /usr/local/include/wlroots-0.20/wlr/backend/wayland.h
+/usr/local/include/wlroots-0.20/wlr/backend/x11.h
 /usr/local/include/wlroots-0.20/wlr/config.h
 /usr/local/include/wlroots-0.20/wlr/interfaces/wlr_buffer.h
 /usr/local/include/wlroots-0.20/wlr/interfaces/wlr_ext_image_capture_source_v1.h
@@ -26,6 +29,7 @@
 /usr/local/include/wlroots-0.20/wlr/render/pass.h
 /usr/local/include/wlroots-0.20/wlr/render/pixman.h
 /usr/local/include/wlroots-0.20/wlr/render/swapchain.h
+/usr/local/include/wlroots-0.20/wlr/render/vulkan.h
 /usr/local/include/wlroots-0.20/wlr/render/wlr_renderer.h
 /usr/local/include/wlroots-0.20/wlr/render/wlr_texture.h
 /usr/local/include/wlroots-0.20/wlr/types/wlr_alpha_modifier_v1.h
@@ -40,6 +44,7 @@
 /usr/local/include/wlroots-0.20/wlr/types/wlr_data_control_v1.h
 /usr/local/include/wlroots-0.20/wlr/types/wlr_data_device.h
 /usr/local/include/wlroots-0.20/wlr/types/wlr_drm.h
+/usr/local/include/wlroots-0.20/wlr/types/wlr_drm_lease_v1.h
 /usr/local/include/wlroots-0.20/wlr/types/wlr_export_dmabuf_v1.h
 /usr/local/include/wlroots-0.20/wlr/types/wlr_ext_data_control_v1.h
 /usr/local/include/wlroots-0.20/wlr/types/wlr_ext_foreign_toplevel_list_v1.h

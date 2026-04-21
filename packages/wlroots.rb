@@ -11,24 +11,32 @@ class Wlroots < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '219894cf67dba2b4e30eb0016feb2809029f9704435abf35c4f55f4d2f3310f6',
-     armv7l: '219894cf67dba2b4e30eb0016feb2809029f9704435abf35c4f55f4d2f3310f6',
-     x86_64: 'b3fc40d28afc2ba1e168983b738c3865529914338737924783f9b936a26f807d'
+    aarch64: '8068a8b2872284c4354de03975645b4504d233fb128e8f08a1f95b5b9d95cf07',
+     armv7l: '8068a8b2872284c4354de03975645b4504d233fb128e8f08a1f95b5b9d95cf07',
+     x86_64: '11cf22ed2e2738e6a6eee06fc1364597ced793378a8d27267b32edea40851da0'
   })
 
   depends_on 'eudev' => :library
   depends_on 'gcc_lib' # R
   depends_on 'glibc' => :library
+  depends_on 'glslang' => :library
   depends_on 'hwdata' => :build
+  depends_on 'lcms' => :library
   depends_on 'libdrm' => :library
   depends_on 'libglvnd' => :library
+  depends_on 'libinput' => :library
+  depends_on 'libliftoff' => :library
+  depends_on 'libminigbm' => :library
   depends_on 'libxcb' => :library
   depends_on 'libxkbcommon' => :library
   depends_on 'mesa' => :library
   depends_on 'pixman' => :library
   depends_on 'seatd' => :library
   depends_on 'vulkan_headers' => :build
+  depends_on 'vulkan_icd_loader' => :library
   depends_on 'wayland' => :library
+  depends_on 'weston' => :library
+  depends_on 'xcb_util_renderutil' => :library
   depends_on 'xcb_util_wm' => :library
   depends_on 'xwayland'
 end

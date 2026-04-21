@@ -1,0 +1,3 @@
+#!/bin/bash
+cage -h 2>&1
+cage -v

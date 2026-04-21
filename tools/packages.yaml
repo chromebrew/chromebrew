@@ -4715,6 +4715,11 @@ url: https://www.gnupg.org/ftp/gcrypt/libksba
 activity: none
 ---
 kind: url
+name: libliftoff
+url: https://gitlab.freedesktop.org/emersion/libliftoff/-/tags
+activity: none
+---
+kind: url
 name: libluv
 url: https://github.com/luvit/luv/releases
 activity: low

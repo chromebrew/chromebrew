@@ -3,31 +3,24 @@ require 'buildsystems/meson'
 class Cage < Meson
   description 'A kiosk compositor for Wayland'
   homepage 'https://www.hjdskes.nl/projects/cage/'
-  version '0.1.5-eaeab71'
+  version '0.3.0'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/Hjdskes/cage.git'
-  git_hashtag 'eaeab71ffa3ab5884df09c5664c00e368ca2585e'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9483e30cac7109814dd26487d318bcea15cf606dcba2ee8969255d670ea469cb',
-     armv7l: '9483e30cac7109814dd26487d318bcea15cf606dcba2ee8969255d670ea469cb',
-     x86_64: 'f97c9782490a2c82603b8f727eca3fff73695e1985e02e11a3dbc3ec45b01798'
+    aarch64: '8cd15519f33254830ea5a0dd25e3b721240e92f7a15d6de9039a9950ff92f316',
+     armv7l: '8cd15519f33254830ea5a0dd25e3b721240e92f7a15d6de9039a9950ff92f316',
+     x86_64: '19e2760310d262b1579ba210aa917fb15961cb3cc09a2a539c6f0f7bf15d82f7'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'libxkbcommon' # R
+  depends_on 'glibc' => :executable
+  depends_on 'libxkbcommon' => :executable
   depends_on 'pixman' => :build
   depends_on 'scdoc' => :build
-  depends_on 'wayland' # R
+  depends_on 'wayland' => :executable
   depends_on 'wayland_protocols' => :build
-  depends_on 'wlroots' # R
-
-  # https://github.com/cage-kiosk/cage/pull/313
-  # Add support for wlroots v0.18
-  def self.patch
-    downloader 'https://patch-diff.githubusercontent.com/raw/cage-kiosk/cage/pull/313.patch', 'a953e61c3833cbde3df99f52aa1cb8b26020b871b0f85d9b874ebdd4640901b6'
-    system 'git apply 313.patch'
-  end
+  depends_on 'wlroots' => :executable
 end
