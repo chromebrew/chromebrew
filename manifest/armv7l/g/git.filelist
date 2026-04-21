@@ -1,4 +1,4 @@
-# Total size: 25807675
+# Total size: 26331019
 /usr/local/bin/git
 /usr/local/bin/git-cvsserver
 /usr/local/bin/git-receive-pack
@@ -176,6 +176,7 @@
 /usr/local/share/man/man1/git-gui.1.zst
 /usr/local/share/man/man1/git-hash-object.1.zst
 /usr/local/share/man/man1/git-help.1.zst
+/usr/local/share/man/man1/git-history.1.zst
 /usr/local/share/man/man1/git-hook.1.zst
 /usr/local/share/man/man1/git-http-backend.1.zst
 /usr/local/share/man/man1/git-http-fetch.1.zst
