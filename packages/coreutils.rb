@@ -11,15 +11,16 @@ class Coreutils < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f5a2ea0f371e15d54b0ceb6b01a896faa13e32041c24a423cd062d1b9ab66456',
-     armv7l: 'f5a2ea0f371e15d54b0ceb6b01a896faa13e32041c24a423cd062d1b9ab66456',
-       i686: 'f50db114f6299bf933d426b02b410302fb42052a400b085b04bfb9b6362d475d',
-     x86_64: 'fb1c417e9691075be0baeaca6bf29d672b43d29af14156c3820260de0c53c9f6'
+    aarch64: 'fa39da43df4459a4a591211c50b465b449c9ecc0b6e1c0ca5ce0281a34e76ed3',
+     armv7l: 'fa39da43df4459a4a591211c50b465b449c9ecc0b6e1c0ca5ce0281a34e76ed3',
+       i686: '5ebefc26d69481ed2541fc5da8b272f891d24ecfffcf2ad2cd1d56ede2ac6a38',
+     x86_64: 'b448f293e47b1fce2a9d7ab1e10d4c05f580168bd1da31e50d4dcd2112bd4adb'
   })
 
   depends_on 'acl' => :executable
   depends_on 'attr' => :executable
   depends_on 'glibc' => :executable
+  depends_on 'glibc' => :library
   depends_on 'gmp' => :executable
   depends_on 'libcap' => :executable
   depends_on 'openssl' => :executable
