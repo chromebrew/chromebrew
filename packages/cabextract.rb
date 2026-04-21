@@ -1,28 +1,32 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Cabextract < Package
+class Cabextract < Autotools
   description 'cabextract is Free Software for extracting Microsoft cabinet files, also called .CAB files.'
   homepage 'https://www.cabextract.org.uk/'
-  version '1.9.1'
+  version '1.11'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://www.cabextract.org.uk/cabextract-1.9.1.tar.gz'
-  source_sha256 'afc253673c8ef316b4d5c29cc4aa8445844bee14afffbe092ee9469405851ca7'
-  binary_compression 'tar.xz'
+  source_url "https://www.cabextract.org.uk/cabextract-#{version}.tar.gz"
+  source_sha256 'b5546db1155e4c718ff3d4b278573604f30dd64c3c5bfd4657cd089b823a3ac6'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e3e343dc5e467c5ae85b2ad35aa8328c0aba6a16d31cc446cf315f14b679a3b0',
-     armv7l: 'e3e343dc5e467c5ae85b2ad35aa8328c0aba6a16d31cc446cf315f14b679a3b0',
-       i686: '9b29b9f805f70eff97e123195ad3c02cffab758df4e50b4ece27dd3a8d48d42b',
-     x86_64: 'e16f2d0c9b9d4306a254bd575e8453d8215e8ec50172d4483cce1a92bfda437c'
+    aarch64: '6cf8af8bac1a92655c65158f8bdec79dc42918ac8d76f1fafa3aaf055ad8c6b0',
+     armv7l: '6cf8af8bac1a92655c65158f8bdec79dc42918ac8d76f1fafa3aaf055ad8c6b0',
+       i686: 'c17e71b9dba34b23265633dc62550c0b71f95b3679c21bf843370a64c5d72aee',
+     x86_64: '3c3ab8430290ca29532772c4626685b250ceb58ad5980bd885c1b328dafac0f9'
   })
 
-  def self.build
-    system './configure', "--prefix=#{CREW_PREFIX}"
-    system 'make'
+  depends_on 'glibc' => :executable
+
+  def self.patch
+    # The aclocal and automake versions are hardcoded.
+    aclocal_version = `aclocal --version|head -1|cut -d' ' -f4`.chomp.gsub(/\.\d+$/, '')
+    automake_version = `automake --version|head -1|cut -d' ' -f4`.chomp
+    system "sed -i 's,1.16.5,#{automake_version},g' aclocal.m4"
+    system "sed -i 's,1.16,#{aclocal_version},g' aclocal.m4"
+    system "sed -i 's,1.16,#{aclocal_version},g' configure"
   end
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  run_tests
 end

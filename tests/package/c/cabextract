@@ -1,0 +1,3 @@
+#!/bin/bash
+cabextract -h 2>&1 | head
+cabextract -v
