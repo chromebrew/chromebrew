@@ -102,7 +102,7 @@ jobs:
             if [[ -n ${PR_NUMBER} ]]; then
               if gh pr list -l "block-updater-workflow" --json number | jq --arg PR_NUMBER "$PR_NUMBER"  -e -r '.[]|select(.number=='$PR_NUMBER')' &>/dev/null; then
                 # Abort if we don't want the updater workflow to run on this branch with a PR already.
-                echo "This PR has block-updater-workflow set."
+                echo "PR #${PR_NUMBER} for branch ${updater_branch} has the block-updater-workflow label set."
                 exit 1
               fi
             fi
