@@ -5,7 +5,7 @@ class Cantarell_fonts < Meson
   homepage 'https://cantarell.gnome.org/'
   version '0.311'
   license 'OFL-1.1'
-  compatibility 'all'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://cantarell.gnome.org/releases/cantarell-fonts-#{version}.tar.xz"
   source_sha256 'f9463a0659c63e57e381fdd753cf1929225395c5b49135989424761830530411'
   binary_compression 'tar.zst'
