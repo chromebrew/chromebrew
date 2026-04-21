@@ -11,10 +11,10 @@ class Mimalloc < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd23db777d6a4c8d6cb8df6df74de73fc0f877fd55c9286190fa101677f4c526c',
-     armv7l: 'd23db777d6a4c8d6cb8df6df74de73fc0f877fd55c9286190fa101677f4c526c',
-       i686: '5ca518fb461f58a2221cb972b351338a3e32c869125a53c3d53a2166a4476fce',
-     x86_64: '10de64314a001a19bd9150b4ced89639d726186f9ce7b3f4ccc1dbabebfc15ec'
+    aarch64: '80ba75f499fa32568b8da3e71ed17de1bd9ef38cb3a0a6845cbe7ffdf711484a',
+     armv7l: '80ba75f499fa32568b8da3e71ed17de1bd9ef38cb3a0a6845cbe7ffdf711484a',
+       i686: '5f8a10a924b8314910c6e70f93b533643fa347d1475626f038b1ac6ed605e7fc',
+     x86_64: 'dce58d93620b0f6193e1d5f7edafe203f17adcf44672199950ee1660efb96236'
   })
 
   depends_on 'gcc_lib' => :library
