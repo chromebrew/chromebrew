@@ -17,12 +17,12 @@ class Coreutils < Autotools
      x86_64: 'fb1c417e9691075be0baeaca6bf29d672b43d29af14156c3820260de0c53c9f6'
   })
 
-  depends_on 'acl' # R
-  depends_on 'attr' # R
-  depends_on 'glibc' # R
-  depends_on 'gmp' # R
-  depends_on 'libcap' # R
-  depends_on 'openssl' # R
+  depends_on 'acl' => :executable
+  depends_on 'attr' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'gmp' => :executable
+  depends_on 'libcap' => :executable
+  depends_on 'openssl' => :executable
 
   CREW_IN_CONTAINER ? conflicts_ok : (conflicts_with 'uutils_coreutils')
 
@@ -31,6 +31,12 @@ class Coreutils < Autotools
       #!/bin/bash
       echo #{ARCH}
     EOF
+    if LIBC_VERSION.to_f < 2.29
+      # The fallback threads.h from the c11threads package does not work
+      # here. See https://github.com/jtsiomb/c11threads/issues/29
+      FileUtils.rm_f "#{CREW_PREFIX}/include/threads.h"
+      puts 'Please reinstall c11threads after this build'.lightblue unless CREW_IN_CONTAINER
+    end
   end
 
   autotools_configure_options '--disable-year2038' unless ARCH.include?('x86_64')
