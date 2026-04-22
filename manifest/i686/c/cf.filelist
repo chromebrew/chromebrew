@@ -1,4 +1,4 @@
-# Total size: 25657402
+# Total size: 25473688
 /usr/local/bin/cf
-/usr/local/etc/bash.d/cf
+/usr/local/etc/bash.d/10-cf
 /usr/local/share/cf/bash-completion/cf.bash

@@ -1,0 +1,3 @@
+#!/bin/bash
+cf -h | head
+cf -v
