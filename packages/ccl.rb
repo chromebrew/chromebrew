@@ -3,41 +3,38 @@ require 'package'
 class Ccl < Package
   description 'Clozure CL is a fast, mature, open source Common Lisp implementation.'
   homepage 'https://ccl.clozure.com'
-  version '1.11.5'
+  version '1.13'
   license 'Apache-2.0'
-  compatibility 'all'
-  binary_compression 'tar.xz'
-
+  compatibility 'aarch64 armv7l x86_64'
+  min_glibc '2.32'
   # arm only has a 32-bit build in the archive
   # intel has both 32-bit and 64-bit in the archive
-  case ARCH
-  when 'aarch64', 'armv7l'
-    source_url 'https://github.com/Clozure/ccl/releases/download/v1.11.5/ccl-1.11.5-linuxarm.tar.gz'
-    source_sha256 'c2e449512717e3a01e192a902a0786dd103bfb9537aed77b88663daf7f0b145c'
-  when 'i686', 'x86_64'
-    source_url 'https://github.com/Clozure/ccl/releases/download/v1.11.5/ccl-1.11.5-linuxx86.tar.gz'
-    source_sha256 'b80850d8d6ca8662499975f1cd76bf51affdd29e2025796ddcff6576fe704143'
-  end
-
-  binary_sha256({
-    aarch64: 'c76d7ef3a190d6f5df52b00de5b520e96c63e07d1703bc5325a8f692dc85342c',
-     armv7l: 'c76d7ef3a190d6f5df52b00de5b520e96c63e07d1703bc5325a8f692dc85342c',
-       i686: '57617fc472305b926781c61248fb10e6732454eaf89022e0583d7f1cea42a87f',
-     x86_64: '3d2632f8390c449f3ecee54d9101e4779590b676533d2b17b759e37db815a275'
+  source_url({
+    aarch64: "https://github.com/Clozure/ccl/releases/download/v#{version}/ccl-#{version}-linuxarm.tar.gz",
+     armv7l: "https://github.com/Clozure/ccl/releases/download/v#{version}/ccl-#{version}-linuxarm.tar.gz",
+     x86_64: "https://github.com/Clozure/ccl/releases/download/v#{version}/ccl-#{version}-linuxx86.tar.gz"
   })
+  source_sha256({
+    aarch64: '8b250c4c3b876f27c40310008635c036387a1e1a4b9161b9f9d89723a6855147',
+     armv7l: '8b250c4c3b876f27c40310008635c036387a1e1a4b9161b9f9d89723a6855147',
+     x86_64: '70069ee74c6f0685df83eb6224ce22f3e7919e17b233476c784e440d60e26bf1'
+  })
+
+  no_compile_needed
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/ccl"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.cp_r Dir.pwd, "#{CREW_DEST_PREFIX}/share"
+    FileUtils.rm_rf "#{CREW_DEST_PREFIX}/share/ccl/.git"
     # the name of the repl binary and kernel image are different for each arch
     case ARCH
     when 'aarch64', 'armv7l'
-      system "ln -s #{CREW_PREFIX}/share/ccl/armcl #{CREW_DEST_PREFIX}/bin/ccl"
+      FileUtils.ln_s "#{CREW_PREFIX}/share/ccl/armcl", "#{CREW_DEST_PREFIX}/bin/ccl"
     when 'i686'
-      system "ln -s #{CREW_PREFIX}/share/ccl/lx86cl #{CREW_DEST_PREFIX}/bin/ccl"
+      FileUtils.ln_s "#{CREW_PREFIX}/share/ccl/lx86cl", "#{CREW_DEST_PREFIX}/bin/ccl"
     when 'x86_64'
-      system "ln -s #{CREW_PREFIX}/share/ccl/lx86cl64 #{CREW_DEST_PREFIX}/bin/ccl"
+      FileUtils.ln_s "#{CREW_PREFIX}/share/ccl/lx86cl64", "#{CREW_DEST_PREFIX}/bin/ccl"
     end
   end
 end
