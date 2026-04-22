@@ -1,0 +1,6 @@
+#!/bin/bash
+fitsverify -h | head
+fpack -H | head
+fpack -V
+funpack -H | head
+funpack -V

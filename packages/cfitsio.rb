@@ -1,33 +1,23 @@
-require 'buildsystems/autotools'
+require 'buildsystems/cmake'
 
-class Cfitsio < Autotools
+class Cfitsio < CMake
   description 'A library of C and Fortran subroutines for reading and writing data files in FITS Flexible Image Transport System data format'
   homepage 'https://heasarc.gsfc.nasa.gov/fitsio/'
-  version '4.3.0'
+  version '4.6.3'
   license 'ISC'
   compatibility 'all'
-  source_url 'https://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/cfitsio-4.3.0.tar.gz'
-  source_sha256 '734ab0198714fe43eab94a67d6987085bde5573e6babde4d05799a8d04ebb04c'
+  source_url "https://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/cfitsio-#{version}.tar.gz"
+  source_sha256 'fad44fff274fdda5ffcc0c0fff3bc3c596362722b9292fc8944db91187813600'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e20497a3684e21bf81000fc303fb0ade188df0f2068cc7918e0a534732d37a40',
-     armv7l: 'e20497a3684e21bf81000fc303fb0ade188df0f2068cc7918e0a534732d37a40',
-       i686: '8dadcdebac97e67bfe8f6f5fa8cfbc2cdf5a90e76015b69b0c47bd649f1d53bb',
-     x86_64: 'ff5400768a004da517c07aa25334aec8e4caf4b7cc761202dba3b068913baf2b'
+    aarch64: '893c4305e83b2257ccae7a7695a7816a4b6b66960eb6f43136e230002d3713cf',
+     armv7l: '893c4305e83b2257ccae7a7695a7816a4b6b66960eb6f43136e230002d3713cf',
+       i686: '60c458e9588a54b77128f2021d246415bfe6c72484bd45733f01bb492f9ca29f',
+     x86_64: '2bf2f306ed51f38e1a544da2dc6bdae4b79538bec181bdc13e70e0cca8619bbe'
   })
 
-  def self.patch
-    system "sed -e 's|LDFLAGS=.*|LDFLAGS=$LDFLAGS|g' -i configure.in" # Fix LDFLAGS
-  end
-
-  def self.build
-    system 'autoreconf -vi'
-    system "CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      ./configure #{CREW_CONFIGURE_OPTIONS} --enable-reentrant"
-    system 'make shared'
-    system 'make utils'
-  end
+  depends_on 'curl' => :library
+  depends_on 'glibc' => :library
+  depends_on 'zlib' => :library
 end
