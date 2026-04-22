@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Ugrep < Autotools
   description 'A more powerful, ultra fast, user-friendly, compatible grep'
   homepage 'https://ugrep.com/'
-  version '7.6.0'
+  version '7.7.0'
   license 'BSD-3 Clause'
   compatibility 'x86_64'
   source_url 'https://github.com/Genivia/ugrep.git'
