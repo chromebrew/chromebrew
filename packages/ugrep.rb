@@ -17,14 +17,11 @@ class Ugrep < Autotools
   depends_on 'brotli' => :executable
   depends_on 'bzip2' => :executable
   depends_on 'gcc_lib' => :executable
-  depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :executable
-  depends_on 'glibc' => :library
   depends_on 'lz4' => :executable
   depends_on 'pcre2' => :executable
   depends_on 'xzutils' => :executable
   depends_on 'zlib' => :executable
-  depends_on 'zlib' => :library
   depends_on 'zstd' => :executable
 
   def self.patch
