@@ -19,7 +19,7 @@ class Ruby < Package
 
   depends_on 'ca_certificates' => :logical
   depends_on 'filecmd' => :logical # (This is to enable file command use in package files.)
-  depends_on 'gcc_lib' # R
+  depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
   depends_on 'gmp' => :library
   depends_on 'libffi' # R
