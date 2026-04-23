@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_wheel < Pip
   description 'Wheel is the binary package format for python.'
   homepage 'https://wheel.readthedocs.io/'
-  version "0.46.3-#{CREW_PY_VER}"
+  version "0.47.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '26cc86d4d9e88e580995b488a33b70b9f8bdbe49923abed3ae943ceafdabfdd3',
-     armv7l: '26cc86d4d9e88e580995b488a33b70b9f8bdbe49923abed3ae943ceafdabfdd3',
-       i686: 'eb461f63889d77ad92cdb33085e7c762e8e40958c20ade7c4c3a068269cdd967',
-     x86_64: 'ad2baf22378fc4a7e5f0e6272bca009600ecfc7b9fb8a4497fa76a567b9a0f60'
+    aarch64: '5a0caaff9172505342757357c7c7f1dc69ca7b41446277ae4d304703f2d49a02',
+     armv7l: '5a0caaff9172505342757357c7c7f1dc69ca7b41446277ae4d304703f2d49a02',
+       i686: '705467d1744116383410792ca8939ff5c0957b79c448ef18deab9a0412206445',
+     x86_64: '0dd2f5ed4c4b00dcc3c56816704b37c6e7d58200b63b7afe221c6e2af53825a8'
   })
 
   depends_on 'py3_packaging'

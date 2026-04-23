@@ -3,20 +3,20 @@ require 'buildsystems/pip'
 class Py3_s3transfer < Pip
   description 'An Amazon S3 Transfer Manager'
   homepage 'https://github.com/boto/s3transfer'
-  version "0.16.0-#{CREW_PY_VER}"
+  version "0.16.1-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3d27b10fe7ef65bb1943b2107291b4ba69cd3a96642620fe1dfef81c6e537aad',
-     armv7l: '3d27b10fe7ef65bb1943b2107291b4ba69cd3a96642620fe1dfef81c6e537aad',
-       i686: 'de029be1adea07d327a839d35798e42e5bf5e7480a2c0852a0ce2d4b486c32ca',
-     x86_64: 'cd82dcd71046d749ad4244442def4c4fc4815a14887ce51a1a3dd3a8d78a5a66'
+    aarch64: 'ad9f404135b54c37161a5450bf1f1aeeef914b4c1005b2b494cd348e261968d3',
+     armv7l: 'ad9f404135b54c37161a5450bf1f1aeeef914b4c1005b2b494cd348e261968d3',
+       i686: 'dce10ff6cf298e3ce492c90cdc753a6461c63b23378cc626900b5ad95f6151fb',
+     x86_64: 'd518a3cdb919bf399a57661d235f4b2d464f6d97623ea0b2deb452afc85fc6e3'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

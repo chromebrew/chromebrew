@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_certifi < Pip
   description 'Certifi provides Mozilla\'s CA Bundle.'
   homepage 'https://certifi.io/'
-  version "2026.2.25-#{CREW_PY_VER}"
+  version "2026.4.22-#{CREW_PY_VER}"
   license 'MPL-2.0'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a64f31528375450bcd969334991320991d163678023fdeae7069d9f30bed3934',
-     armv7l: 'a64f31528375450bcd969334991320991d163678023fdeae7069d9f30bed3934',
-       i686: 'cb5c709e6b261588586945424463a23c1fd6475e53e547155b654e4a2db55093',
-     x86_64: 'fd05a74b68bc4c0543543b2802e91308b86b7b3893d5abaeaeaaf9ac78945731'
+    aarch64: '8b8cce9425c7873da4a5076787a4bc7a39c69f47c6e436b1b13b2d50977be1c0',
+     armv7l: '8b8cce9425c7873da4a5076787a4bc7a39c69f47c6e436b1b13b2d50977be1c0',
+       i686: '0cf4e110526ca29813e2a0ac3bd386ab057b36436d033c021372c61d259301ab',
+     x86_64: 'c38c9067a647dbe9d63227e4f4533e904ab2e78cac9d5e38f71338df5bb0cc02'
   })
 
   depends_on 'python3' => :logical
