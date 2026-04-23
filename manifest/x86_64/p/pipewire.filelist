@@ -1,4 +1,4 @@
-# Total size: 15199939
+# Total size: 15199861
 /usr/local/bin/pipewire
 /usr/local/bin/pipewire-aes67
 /usr/local/bin/pipewire-avb
@@ -513,16 +513,16 @@
 /usr/local/lib64/gstreamer-1.0/libgstpipewire.so
 /usr/local/lib64/libpipewire-0.3.so
 /usr/local/lib64/libpipewire-0.3.so.0
-/usr/local/lib64/libpipewire-0.3.so.0.1603.0
+/usr/local/lib64/libpipewire-0.3.so.0.1604.0
 /usr/local/lib64/pipewire-0.3/jack/libjack.so
 /usr/local/lib64/pipewire-0.3/jack/libjack.so.0
-/usr/local/lib64/pipewire-0.3/jack/libjack.so.0.3.1603
+/usr/local/lib64/pipewire-0.3/jack/libjack.so.0.3.1604
 /usr/local/lib64/pipewire-0.3/jack/libjacknet.so
 /usr/local/lib64/pipewire-0.3/jack/libjacknet.so.0
-/usr/local/lib64/pipewire-0.3/jack/libjacknet.so.0.3.1603
+/usr/local/lib64/pipewire-0.3/jack/libjacknet.so.0.3.1604
 /usr/local/lib64/pipewire-0.3/jack/libjackserver.so
 /usr/local/lib64/pipewire-0.3/jack/libjackserver.so.0
-/usr/local/lib64/pipewire-0.3/jack/libjackserver.so.0.3.1603
+/usr/local/lib64/pipewire-0.3/jack/libjackserver.so.0.3.1604
 /usr/local/lib64/pipewire-0.3/libpipewire-module-access.so
 /usr/local/lib64/pipewire-0.3/libpipewire-module-adapter.so
 /usr/local/lib64/pipewire-0.3/libpipewire-module-avb.so
