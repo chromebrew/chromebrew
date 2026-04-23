@@ -17,16 +17,12 @@ class Openssh < Autotools
      x86_64: '2e9ca10c0f21a2121b468a2205f57e33a4c77f426eb310d0433990c664b8311a'
   })
 
-  depends_on 'gcc_lib' # R
+  depends_on 'gcc_lib' => :executable 
   depends_on 'glibc' => :executable
-  depends_on 'glibc' => :library
   depends_on 'libmd' => :executable
-  depends_on 'libmd' => :library
-  depends_on 'libxcrypt' # R
+  depends_on 'libxcrypt' => :logical
   depends_on 'openssl' => :executable
-  depends_on 'openssl' => :library
   depends_on 'zlib' => :executable
-  depends_on 'zlib' => :library
 
   autotools_configure_options '--enable-year2038 --without-hardening --without-retpoline'
 end
