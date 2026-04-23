@@ -18,10 +18,14 @@ class Openssh < Autotools
   })
 
   depends_on 'gcc_lib' # R
+  depends_on 'glibc' => :executable
   depends_on 'glibc' => :library
+  depends_on 'libmd' => :executable
   depends_on 'libmd' => :library
   depends_on 'libxcrypt' # R
+  depends_on 'openssl' => :executable
   depends_on 'openssl' => :library
+  depends_on 'zlib' => :executable
   depends_on 'zlib' => :library
 
   autotools_configure_options '--enable-year2038 --without-hardening --without-retpoline'
