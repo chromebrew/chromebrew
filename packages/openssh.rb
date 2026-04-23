@@ -11,18 +11,18 @@ class Openssh < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9e14a79589cb3c738770a6e3d03019d1c880b0030bde68004d2779a5afea21de',
-     armv7l: '9e14a79589cb3c738770a6e3d03019d1c880b0030bde68004d2779a5afea21de',
-       i686: 'c7836dcdad15a429d57e9825f55a983fcc5066a6a038c4749348891a7913879e',
-     x86_64: '4b5ea1a24f307f040e3e6a4d6f59b0490887faa8431126a045e0ddfb30095687'
+    aarch64: '908c3b1ae3e8d91caf33d570aa90d06004705ecd2120f43e26a88d3d66a5d462',
+     armv7l: '908c3b1ae3e8d91caf33d570aa90d06004705ecd2120f43e26a88d3d66a5d462',
+       i686: 'ebde2c74539a3a8e767f50ea83267cbbc4b2f28b657699846a4aafb01a5ac318',
+     x86_64: '2e9ca10c0f21a2121b468a2205f57e33a4c77f426eb310d0433990c664b8311a'
   })
 
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'libmd' # R
+  depends_on 'glibc' => :library
+  depends_on 'libmd' => :library
   depends_on 'libxcrypt' # R
-  depends_on 'openssl' # R
-  depends_on 'zlib' # R
+  depends_on 'openssl' => :library
+  depends_on 'zlib' => :library
 
   autotools_configure_options '--enable-year2038 --without-hardening --without-retpoline'
 end
