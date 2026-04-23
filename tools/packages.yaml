@@ -7990,6 +7990,11 @@ url: https://github.com/RobertCraigie/pyright-python/releases
 activity: high
 ---
 kind: url
+name: py3_python_discovery
+url: https://github.com/tox-dev/python-discovery/releases
+activity: medium
+---
+kind: url
 name: py3_readme_renderer
 url: https://github.com/pypa/readme_renderer/releases
 activity: medium

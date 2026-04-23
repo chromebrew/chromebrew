@@ -17,6 +17,7 @@ class Py3_pre_commit < Pip
   })
 
   depends_on 'py3_cfgv'
+  depends_on 'py3_filelock' # Fixes ModuleNotFoundError: No module named 'filelock'
   depends_on 'py3_identify' => :logical
   depends_on 'py3_nodeenv' => :logical
   depends_on 'py3_pyyaml' => :logical
