@@ -17,7 +17,7 @@ class Openssh < Autotools
      x86_64: '2e9ca10c0f21a2121b468a2205f57e33a4c77f426eb310d0433990c664b8311a'
   })
 
-  depends_on 'gcc_lib' => :executable 
+  depends_on 'gcc_lib' => :executable
   depends_on 'glibc' => :executable
   depends_on 'libmd' => :executable
   depends_on 'libxcrypt' => :logical
