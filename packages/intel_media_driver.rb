@@ -11,13 +11,13 @@ class Intel_media_driver < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '00b1a76c27572a710ee2f20bd073c9250493be1661f75dd781ef05c14cc929dc'
+     x86_64: '848b3e8a1de2da00779d14a90465db7fd8c2d09758a1d8c91fc3d0e73420e632'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'gmmlib' # R
-  depends_on 'libva' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'gmmlib' => :library
+  depends_on 'libva' => :library
 
   cmake_options '-DCMAKE_POLICY_VERSION_MINIMUM=3.5.0 -DINSTALL_DRIVER_SYSCONF=OFF -DMEDIA_BUILD_FATAL_WARNINGS=OFF'
 
