@@ -1,4 +1,4 @@
-# Total size: 11625499
+# Total size: 11835413
 /usr/local/bin/pipewire
 /usr/local/bin/pipewire-aes67
 /usr/local/bin/pipewire-avb
@@ -513,16 +513,16 @@
 /usr/local/lib/gstreamer-1.0/libgstpipewire.so
 /usr/local/lib/libpipewire-0.3.so
 /usr/local/lib/libpipewire-0.3.so.0
-/usr/local/lib/libpipewire-0.3.so.0.1603.0
+/usr/local/lib/libpipewire-0.3.so.0.1604.0
 /usr/local/lib/pipewire-0.3/jack/libjack.so
 /usr/local/lib/pipewire-0.3/jack/libjack.so.0
-/usr/local/lib/pipewire-0.3/jack/libjack.so.0.3.1603
+/usr/local/lib/pipewire-0.3/jack/libjack.so.0.3.1604
 /usr/local/lib/pipewire-0.3/jack/libjacknet.so
 /usr/local/lib/pipewire-0.3/jack/libjacknet.so.0
-/usr/local/lib/pipewire-0.3/jack/libjacknet.so.0.3.1603
+/usr/local/lib/pipewire-0.3/jack/libjacknet.so.0.3.1604
 /usr/local/lib/pipewire-0.3/jack/libjackserver.so
 /usr/local/lib/pipewire-0.3/jack/libjackserver.so.0
-/usr/local/lib/pipewire-0.3/jack/libjackserver.so.0.3.1603
+/usr/local/lib/pipewire-0.3/jack/libjackserver.so.0.3.1604
 /usr/local/lib/pipewire-0.3/libpipewire-module-access.so
 /usr/local/lib/pipewire-0.3/libpipewire-module-adapter.so
 /usr/local/lib/pipewire-0.3/libpipewire-module-avb.so
@@ -532,6 +532,8 @@
 /usr/local/lib/pipewire-0.3/libpipewire-module-echo-cancel.so
 /usr/local/lib/pipewire-0.3/libpipewire-module-fallback-sink.so
 /usr/local/lib/pipewire-0.3/libpipewire-module-filter-chain.so
+/usr/local/lib/pipewire-0.3/libpipewire-module-jack-tunnel.so
+/usr/local/lib/pipewire-0.3/libpipewire-module-jackdbus-detect.so
 /usr/local/lib/pipewire-0.3/libpipewire-module-link-factory.so
 /usr/local/lib/pipewire-0.3/libpipewire-module-loopback.so
 /usr/local/lib/pipewire-0.3/libpipewire-module-metadata.so
@@ -578,6 +580,7 @@
 /usr/local/lib/spa-0.2/filter-graph/libspa-filter-graph-plugin-lv2.so
 /usr/local/lib/spa-0.2/filter-graph/libspa-filter-graph-plugin-sofa.so
 /usr/local/lib/spa-0.2/filter-graph/libspa-filter-graph.so
+/usr/local/lib/spa-0.2/jack/libspa-jack.so
 /usr/local/lib/spa-0.2/libspa.so
 /usr/local/lib/spa-0.2/support/libspa-dbus.so
 /usr/local/lib/spa-0.2/support/libspa-support.so
