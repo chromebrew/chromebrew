@@ -1,4 +1,4 @@
-# Total size: 17431424
+# Total size: 17497766
 /usr/local/bin/epiphany
 /usr/local/lib64/epiphany/libephyautofill.so
 /usr/local/lib64/epiphany/libephymain.so
@@ -609,6 +609,33 @@
 /usr/local/share/help/sl/epiphany/pref-passwords.page
 /usr/local/share/help/sl/epiphany/prob-restore-closed-page.page
 /usr/local/share/help/sl/epiphany/proxy.page
+/usr/local/share/help/sr/epiphany/browse-local.page
+/usr/local/share/help/sr/epiphany/browse-private.page
+/usr/local/share/help/sr/epiphany/browse-tab.page
+/usr/local/share/help/sr/epiphany/browse-web.page
+/usr/local/share/help/sr/epiphany/browse-webapps-del.page
+/usr/local/share/help/sr/epiphany/browse-webapps.page
+/usr/local/share/help/sr/epiphany/cert.page
+/usr/local/share/help/sr/epiphany/cookies.xml
+/usr/local/share/help/sr/epiphany/data-cookies.page
+/usr/local/share/help/sr/epiphany/data-passwords.page
+/usr/local/share/help/sr/epiphany/data-personal-data.page
+/usr/local/share/help/sr/epiphany/history-delete.page
+/usr/local/share/help/sr/epiphany/history.page
+/usr/local/share/help/sr/epiphany/index.page
+/usr/local/share/help/sr/epiphany/introduction.page
+/usr/local/share/help/sr/epiphany/legal.xml
+/usr/local/share/help/sr/epiphany/media/epiphany-plain-3-36.png
+/usr/local/share/help/sr/epiphany/media/epiphany-private-3-36.png
+/usr/local/share/help/sr/epiphany/media/org.gnome.Epiphany.svg
+/usr/local/share/help/sr/epiphany/pref-cookies.page
+/usr/local/share/help/sr/epiphany/pref-css.page
+/usr/local/share/help/sr/epiphany/pref-downloads.page
+/usr/local/share/help/sr/epiphany/pref-font.page
+/usr/local/share/help/sr/epiphany/pref-mouse-gestures.page
+/usr/local/share/help/sr/epiphany/pref-passwords.page
+/usr/local/share/help/sr/epiphany/prob-restore-closed-page.page
+/usr/local/share/help/sr/epiphany/proxy.page
 /usr/local/share/help/sv/epiphany/browse-local.page
 /usr/local/share/help/sv/epiphany/browse-private.page
 /usr/local/share/help/sv/epiphany/browse-tab.page
