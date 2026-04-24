@@ -1,4 +1,4 @@
-# Total size: 55530
+# Total size: 59619
 /usr/local/include/cjson/cJSON.h
 /usr/local/lib64/cmake/cJSON/cJSONConfig.cmake
 /usr/local/lib64/cmake/cJSON/cJSONConfigVersion.cmake
@@ -6,5 +6,5 @@
 /usr/local/lib64/cmake/cJSON/cjson.cmake
 /usr/local/lib64/libcjson.so
 /usr/local/lib64/libcjson.so.1
-/usr/local/lib64/libcjson.so.1.7.15
+/usr/local/lib64/libcjson.so.1.7.19
 /usr/local/lib64/pkgconfig/libcjson.pc
