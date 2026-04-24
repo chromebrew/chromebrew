@@ -1,9 +1,11 @@
-# Total size: 909733
+# Total size: 953986
 /usr/local/bin/zdump
+/usr/local/bin/zoneinfo_date
 /usr/local/bin/zoneinfo_tzselect
 /usr/local/etc/localtime
 /usr/local/lib/libtz.a
 /usr/local/sbin/zoneinfo_zic
+/usr/local/share/man/man1/zoneinfo_date.1.zst
 /usr/local/share/man/man3/newctime.3.zst
 /usr/local/share/man/man3/newtzset.3.zst
 /usr/local/share/man/man5/zoneinfo_tzfile.5.zst
