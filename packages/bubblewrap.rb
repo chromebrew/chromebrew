@@ -3,18 +3,18 @@ require 'buildsystems/meson'
 class Bubblewrap < Meson
   description 'bubblewrap works by creating a new, completely empty, mount namespace'
   homepage 'https://github.com/containers/bubblewrap'
-  version '0.11.1'
+  version '0.11.2'
   license 'LGPL-2+'
   compatibility 'all'
   source_url "https://github.com/containers/bubblewrap/releases/download/v#{version}/bubblewrap-#{version}.tar.xz"
-  source_sha256 'c1b7455a1283b1295879a46d5f001dfd088c0bb0f238abb5e128b3583a246f71'
+  source_sha256 '69abc30005d2186baf7737feacd8da35633b93cf5af38838ecff17c5f8e924f6'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0c0086c78e562a6fe025ecc5a1907a86c65be1897fe40c654456a02c687fe6ca',
-     armv7l: '0c0086c78e562a6fe025ecc5a1907a86c65be1897fe40c654456a02c687fe6ca',
-       i686: '03101523d589234d8698f67fc9c16bc9960fbaa62ac67288981f03610b9931fe',
-     x86_64: '913623af164bf957debeaa12feb862ffb74183e76ae043422820814a7105d7a1'
+    aarch64: 'd243f81547417528cc1162bd2eca1148b0bb3349ef5d822684c59c363fc0ca2e',
+     armv7l: 'd243f81547417528cc1162bd2eca1148b0bb3349ef5d822684c59c363fc0ca2e',
+       i686: 'd456c9bd0a57f698cc7543d69daedd54af13c79954a3609ba97c9e56336a8557',
+     x86_64: '8b587954c872a370b66484eb611e6aa28b06df33be2866fb930e7d2e7f47c06d'
   })
 
   depends_on 'dconf' => :build
