@@ -1,12 +1,17 @@
-# Total size: 366592
+# Total size: 349059
 /usr/local/bin/civetweb
 /usr/local/include/CivetServer.h
 /usr/local/include/civetweb.h
+/usr/local/lib64/cmake/civetweb/FindLibDl.cmake
+/usr/local/lib64/cmake/civetweb/FindLibRt.cmake
+/usr/local/lib64/cmake/civetweb/FindWinSock.cmake
 /usr/local/lib64/cmake/civetweb/civetweb-config-version.cmake
 /usr/local/lib64/cmake/civetweb/civetweb-config.cmake
 /usr/local/lib64/cmake/civetweb/civetweb-targets-release.cmake
 /usr/local/lib64/cmake/civetweb/civetweb-targets.cmake
 /usr/local/lib64/libcivetweb-cpp.so
-/usr/local/lib64/libcivetweb-cpp.so.1.13.0
+/usr/local/lib64/libcivetweb-cpp.so.1.15.0
 /usr/local/lib64/libcivetweb.so
-/usr/local/lib64/libcivetweb.so.1.13.0
+/usr/local/lib64/libcivetweb.so.1.15.0
+/usr/local/share/pkgconfig/civetweb-cpp.pc
+/usr/local/share/pkgconfig/civetweb.pc
