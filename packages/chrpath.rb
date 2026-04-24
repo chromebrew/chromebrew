@@ -1,28 +1,25 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Chrpath < Package
+class Chrpath < Autotools
   description 'Change or delete the rpath or runpath in ELF files'
-  homepage 'https://directory.fsf.org/wiki/Chrpath'
-  version '0.16'
+  homepage 'https://codeberg.org/pere/chrpath'
+  version '0.18'
   license 'GPL-2+'
   compatibility 'all'
-  source_url 'https://httpredir.debian.org/debian/pool/main/c/chrpath/chrpath_0.16.orig.tar.gz'
-  source_sha256 'bb0d4c54bac2990e1bdf8132f2c9477ae752859d523e141e72b3b11a12c26e7b'
-  binary_compression 'tar.xz'
+  source_url 'https://codeberg.org/pere/chrpath.git'
+  git_hashtag "release-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '90a116020875ffc085d1da9352d6fadb08cedf5e50e73b296380e00d061d82f1',
-     armv7l: '90a116020875ffc085d1da9352d6fadb08cedf5e50e73b296380e00d061d82f1',
-       i686: 'af52c7da43448bb4ea99e96dd28534627cfc1665273fcfa5ecbba6093956f91c',
-     x86_64: '620cedb1453b3b30fa23d036708956dbadbf8dda7f1afd470c8bcfe2bba56f07'
+    aarch64: '34bfc9c812f5f2a307943ce02a62c21877a71224d2e0b1fc4e130789ccefad3f',
+     armv7l: '34bfc9c812f5f2a307943ce02a62c21877a71224d2e0b1fc4e130789ccefad3f',
+       i686: 'ca41ca56d462b3ae1ea3d61ccd0a134ae5eb7eee20c767f5c398b7a226f7cfdf',
+     x86_64: '5636d867e8c09cde4a7dfccd3f518af7d8dbdf7d9a2ba483a5dc0cd3765bd772'
   })
 
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
+  depends_on 'glibc' => :executable
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  autotools_install_extras do
+    FileUtils.rm_rf "#{CREW_DEST_PREFIX}/doc"
   end
 end

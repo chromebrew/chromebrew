@@ -1,0 +1,3 @@
+#!/bin/bash
+chrpath -h
+chrpath -v
