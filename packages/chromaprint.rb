@@ -1,37 +1,26 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Chromaprint < Package
+class Chromaprint < CMake
   description 'Chromaprint is a client-side library that implements a custom algorithm for extracting fingerprints from any audio source.'
   homepage 'https://acoustid.org/chromaprint'
-  version '1.5.1-aa67c95-1'
+  version '1.6.0'
   license 'LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/acoustid/chromaprint.git'
-  git_hashtag 'aa67c95b9e486884a6d3ee8b0c91207d8c2b0551'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '50ac01fa69b92c8a140a3ab02c26cfcb9974a2e4917d626ca523a2b22edb775f',
-     armv7l: '50ac01fa69b92c8a140a3ab02c26cfcb9974a2e4917d626ca523a2b22edb775f',
-     x86_64: '05f5a2e30fcbd6ccc344388701b9b2e27a867d2d7e0fe39f71a9a989cee7aa23'
+    aarch64: '0ec5001fb45e2c2c422c1237459649c4ba030af3391927d20f9bb92f115f555e',
+     armv7l: '0ec5001fb45e2c2c422c1237459649c4ba030af3391927d20f9bb92f115f555e',
+     x86_64: '8dd5d84eecb9076122aa19f63e324c5fbc97e9bd97809f1f849e93f3637ed802'
   })
 
-  depends_on 'ffmpeg' => :build
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'ffmpeg' => :library
+  depends_on 'fftw' => :library
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'libvpx' => :library
 
-  def self.build
-    system "cmake -B builddir -G Ninja #{CREW_CMAKE_LIBSUFFIX_OPTIONS} \
-      -DBUILD_TOOLS=ON \
-      -DBUILD_TESTS=ON"
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.check
-    system "#{CREW_NINJA} -C builddir check"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+  cmake_options '-DBUILD_TOOLS=ON -DBUILD_TESTS=ON'
 end

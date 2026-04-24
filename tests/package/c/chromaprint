@@ -1,0 +1,3 @@
+#!/bin/bash
+fpcalc -h | head
+fpcalc -version
