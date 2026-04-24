@@ -3,7 +3,7 @@ require 'package'
 class Cheat < Package
   description 'Create and view interactive cheatsheets on the command-line.'
   homepage 'https://github.com/cheat/cheat'
-  version '4.4.2'
+  version '5.1.0'
   license 'MIT'
   compatibility 'all'
   min_glibc '2.32' if ARCH.eql?('x86_64')
@@ -14,10 +14,10 @@ class Cheat < Package
      x86_64: "https://github.com/cheat/cheat/releases/download/#{version}/cheat-linux-amd64.gz"
   })
   source_sha256({
-    aarch64: '52ca1e355f46ae36b04717e431ef03b6158e41d1df0c3cf381abe36a147dfe43',
-     armv7l: '52ca1e355f46ae36b04717e431ef03b6158e41d1df0c3cf381abe36a147dfe43',
-       i686: '1ee7f6b4b40447684c80f3920b1841cb54d9f3f8cd543671c2453c34769cdde1',
-     x86_64: 'b81f5ba21f134087c0294d809f89e5442d641d7be297bb128807cbce00849e9b'
+    aarch64: '1b01797e1ccb482562eaa1b704379373f1fec12657c142443467fefcda09826d',
+     armv7l: '1b01797e1ccb482562eaa1b704379373f1fec12657c142443467fefcda09826d',
+       i686: '586794f83d13fbb08c47bce47ecdba2e6934becd6bbcfe34e10b584ef5a0c758',
+     x86_64: '8c8405574d51d63ee89594bfed241f478d507d96af78e5c370dcbe65633d7b34'
   })
 
   depends_on 'xdg_base'
