@@ -3,11 +3,11 @@ require 'package'
 class Zoneinfo < Package
   description 'Code and data that represent the history of local time for many representative locations around the globe.'
   homepage 'https://www.iana.org/time-zones'
-  version '2026a'
+  version '2026b'
   license 'public-domain'
   compatibility 'all'
   source_url "https://data.iana.org/time-zones/releases/tzdb-#{version}.tar.lz"
-  source_sha256 '0913509a37f26b81bb6396018ad5cdf32065374ed36e82cceb61b2ee57a94b7c'
+  source_sha256 'ffad46a04c8d1624197056630af475a35f3556d0887f028ac1bd33b7d47dc653'
   binary_compression 'tar.zst'
 
   binary_sha256({
