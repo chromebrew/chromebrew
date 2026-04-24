@@ -1,4 +1,4 @@
-# Total size: 12071229
+# Total size: 12073828
 /usr/local/bin/aws
 /usr/local/bin/aws.cmd
 /usr/local/bin/aws_bash_completer
@@ -6,13 +6,13 @@
 /usr/local/bin/aws_zsh_completer.sh
 /usr/local/etc/bash.d/aws
 /usr/local/etc/zsh.d/aws
-/usr/local/lib/python3.14/site-packages/awscli-1.44.84.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/awscli-1.44.84.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/awscli-1.44.84.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/awscli-1.44.84.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/awscli-1.44.84.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/awscli-1.44.84.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/awscli-1.44.84.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/awscli-1.44.85.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/awscli-1.44.85.dist-info/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/awscli-1.44.85.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/awscli-1.44.85.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/awscli-1.44.85.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/awscli-1.44.85.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/awscli-1.44.85.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/awscli/__init__.py
 /usr/local/lib/python3.14/site-packages/awscli/__main__.py
 /usr/local/lib/python3.14/site-packages/awscli/__pycache__/__init__.cpython-314.pyc
@@ -72,6 +72,7 @@
 /usr/local/lib/python3.14/site-packages/awscli/customizations/__pycache__/cloudfront.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/awscli/customizations/__pycache__/cloudsearch.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/awscli/customizations/__pycache__/cloudsearchdomain.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/awscli/customizations/__pycache__/cloudwatch.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/awscli/customizations/__pycache__/codecommit.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/awscli/customizations/__pycache__/commands.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/awscli/customizations/__pycache__/dynamodb.cpython-314.pyc
@@ -141,6 +142,7 @@
 /usr/local/lib/python3.14/site-packages/awscli/customizations/cloudtrail/subscribe.py
 /usr/local/lib/python3.14/site-packages/awscli/customizations/cloudtrail/utils.py
 /usr/local/lib/python3.14/site-packages/awscli/customizations/cloudtrail/validation.py
+/usr/local/lib/python3.14/site-packages/awscli/customizations/cloudwatch.py
 /usr/local/lib/python3.14/site-packages/awscli/customizations/codeartifact/__init__.py
 /usr/local/lib/python3.14/site-packages/awscli/customizations/codeartifact/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/awscli/customizations/codeartifact/__pycache__/login.cpython-314.pyc
