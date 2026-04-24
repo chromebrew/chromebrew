@@ -11,10 +11,10 @@ class Zoneinfo < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3bd3779f7cf7ccc75005ae17c08e09b12c7d72bb4287ecc7e89b0c0723625fdb',
-     armv7l: '3bd3779f7cf7ccc75005ae17c08e09b12c7d72bb4287ecc7e89b0c0723625fdb',
-       i686: 'bdc41a48fee778d6395daf9bd8fd92070f39262705e96b22a7c22adf5b241c2a',
-     x86_64: '92c0953051b5ba5c17154b7e02aae6cd08e824a3799191db18ba8f94e7adc6af'
+    aarch64: 'a9ed89b078b42b0b79c9f02957bf972ea7de3fa66aa5a2d0846ec82b93917990',
+     armv7l: 'a9ed89b078b42b0b79c9f02957bf972ea7de3fa66aa5a2d0846ec82b93917990',
+       i686: '22df929f5026f929a43e77ae96cecdb3ab78850de1fdbd9eb8b421ecc21cf91d',
+     x86_64: 'b8b3505a015a865b8ddab12640c35c588e999a8a951bee1e78f74c325aefd25a'
   })
 
   depends_on 'glibc' => :executable
