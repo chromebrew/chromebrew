@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Openblas < CMake
   description 'OpenBLAS is an optimized BLAS library'
   homepage 'http://www.openblas.net/'
-  version '0.3.32'
+  version '0.3.33'
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/OpenMathLib/OpenBLAS.git'
@@ -11,10 +11,10 @@ class Openblas < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8b2b14a6c57e22afca4a0c530e551b8bdf573c57c1ad61c6db7d83cf9edc069a',
-     armv7l: '8b2b14a6c57e22afca4a0c530e551b8bdf573c57c1ad61c6db7d83cf9edc069a',
-       i686: '66ef405e7ac491e7144be99f1cc8ff90f4684df6dc6058b8cebcafce961eab44',
-     x86_64: '44002f3366754fd9867b1183858689dbe96fc58f91d1292b8d59cf7ab18517e2'
+    aarch64: '57074b69c26d6f9d39de51b3c48d232899bf52cba161920d5e07b3c3fc8731f3',
+     armv7l: '57074b69c26d6f9d39de51b3c48d232899bf52cba161920d5e07b3c3fc8731f3',
+       i686: 'f578bfeb86a0315dd05f49c877c1bb46981372c461ab32b6653e7fde421efa3f',
+     x86_64: '5e957ac7b6041e4a7958a781d100e52b0678614cb703346ddf23bb348f7dcffd'
   })
 
   depends_on 'gcc_lib' => :library

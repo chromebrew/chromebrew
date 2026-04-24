@@ -1,4 +1,4 @@
-# Total size: 10122034
+# Total size: 10153333
 /usr/local/bin/freerdp-proxy
 /usr/local/bin/freerdp-shadow-cli
 /usr/local/bin/sdl-freerdp
@@ -70,6 +70,7 @@
 /usr/local/include/freerdp3/freerdp/client/utils/smartcard_cli.h
 /usr/local/include/freerdp3/freerdp/client/video.h
 /usr/local/include/freerdp3/freerdp/codec/audio.h
+/usr/local/include/freerdp3/freerdp/codec/av1.h
 /usr/local/include/freerdp3/freerdp/codec/bitmap.h
 /usr/local/include/freerdp3/freerdp/codec/bulk.h
 /usr/local/include/freerdp3/freerdp/codec/clear.h
@@ -309,31 +310,31 @@
 /usr/local/lib64/freerdp3/proxy/libproxy-dyn-channel-dump-plugin.so
 /usr/local/lib64/libfreerdp-client3.so
 /usr/local/lib64/libfreerdp-client3.so.3
-/usr/local/lib64/libfreerdp-client3.so.3.24.2
+/usr/local/lib64/libfreerdp-client3.so.3.25.0
 /usr/local/lib64/libfreerdp-server-proxy3.so
 /usr/local/lib64/libfreerdp-server-proxy3.so.3
-/usr/local/lib64/libfreerdp-server-proxy3.so.3.24.2
+/usr/local/lib64/libfreerdp-server-proxy3.so.3.25.0
 /usr/local/lib64/libfreerdp-server3.so
 /usr/local/lib64/libfreerdp-server3.so.3
-/usr/local/lib64/libfreerdp-server3.so.3.24.2
+/usr/local/lib64/libfreerdp-server3.so.3.25.0
 /usr/local/lib64/libfreerdp-shadow-subsystem3.so
 /usr/local/lib64/libfreerdp-shadow-subsystem3.so.3
-/usr/local/lib64/libfreerdp-shadow-subsystem3.so.3.24.2
+/usr/local/lib64/libfreerdp-shadow-subsystem3.so.3.25.0
 /usr/local/lib64/libfreerdp-shadow3.so
 /usr/local/lib64/libfreerdp-shadow3.so.3
-/usr/local/lib64/libfreerdp-shadow3.so.3.24.2
+/usr/local/lib64/libfreerdp-shadow3.so.3.25.0
 /usr/local/lib64/libfreerdp3.so
 /usr/local/lib64/libfreerdp3.so.3
-/usr/local/lib64/libfreerdp3.so.3.24.2
+/usr/local/lib64/libfreerdp3.so.3.25.0
 /usr/local/lib64/libuwac0.so
 /usr/local/lib64/libuwac0.so.0
 /usr/local/lib64/libuwac0.so.0.2.0
 /usr/local/lib64/libwinpr-tools3.so
 /usr/local/lib64/libwinpr-tools3.so.3
-/usr/local/lib64/libwinpr-tools3.so.3.24.2
+/usr/local/lib64/libwinpr-tools3.so.3.25.0
 /usr/local/lib64/libwinpr3.so
 /usr/local/lib64/libwinpr3.so.3
-/usr/local/lib64/libwinpr3.so.3.24.2
+/usr/local/lib64/libwinpr3.so.3.25.0
 /usr/local/lib64/pkgconfig/freerdp-client3.pc
 /usr/local/lib64/pkgconfig/freerdp-server-proxy3.pc
 /usr/local/lib64/pkgconfig/freerdp-server3.pc

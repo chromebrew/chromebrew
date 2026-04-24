@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Freerdp < CMake
   description 'FreeRDP is a free implementation of the Remote Desktop Protocol.'
   homepage 'https://www.freerdp.com/'
-  version "3.24.2-#{CREW_ICU_VER}"
+  version "3.25.0-#{CREW_ICU_VER}"
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/FreeRDP/FreeRDP.git'
@@ -11,9 +11,9 @@ class Freerdp < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'dcc671906794cd38b8e8256ad0fcb7033bffd40cdf9e515038991236b3540b74',
-     armv7l: 'dcc671906794cd38b8e8256ad0fcb7033bffd40cdf9e515038991236b3540b74',
-     x86_64: '18dd37555199f4d06b5af183c8ee4c899b399ea181c939fc35c7d73a4b702a87'
+    aarch64: '39548a8901a1605d737078a45fb35c4d44a954b24d41941d72f2d022c974ce1a',
+     armv7l: '39548a8901a1605d737078a45fb35c4d44a954b24d41941d72f2d022c974ce1a',
+     x86_64: '2ac1683873fd0f5d948d2c8192b030e820c8244e6209d1bc58e4dd108b90c870'
   })
 
   depends_on 'alsa_lib' => :library
@@ -66,6 +66,7 @@ class Freerdp < CMake
   depends_on 'pango' # R
   depends_on 'pulseaudio' => :library
   depends_on 'sdl2' => :executable
+  depends_on 'sdl2_compat' => :executable
   depends_on 'sdl2_ttf' => :executable
   depends_on 'sommelier' => :logical
   depends_on 'uriparser' => :library
