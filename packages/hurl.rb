@@ -3,7 +3,7 @@ require 'buildsystems/rust'
 class Hurl < RUST
   description 'Hurl is a command line tool that runs HTTP requests defined in a simple plain text format.'
   homepage 'https://hurl.dev/'
-  version '7.1.0'
+  version '8.0.0'
   license 'Apache-2.0'
   compatibility 'x86_64'
   source_url 'https://github.com/Orange-OpenSource/hurl.git'
