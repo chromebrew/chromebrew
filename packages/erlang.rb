@@ -11,9 +11,9 @@ class Erlang < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3e6fcae0373f4c4a72b384c87942ecac64480f867b419462776c11dce8321afa',
-     armv7l: '3e6fcae0373f4c4a72b384c87942ecac64480f867b419462776c11dce8321afa',
-     x86_64: '6d8ea1c20c79dd43188b79aa6e275d01bbf293d7f8a3a4eeb04a18de67351eec'
+    aarch64: '947ce63b33018ac1a4fc19ffc13abb0218cbb9f636a2192b75e287b0c3facc28',
+     armv7l: '947ce63b33018ac1a4fc19ffc13abb0218cbb9f636a2192b75e287b0c3facc28',
+     x86_64: '03f01ef94fa327b9fa5c501b6249c8a27d19dcae6315f5cf36e601713a4483c8'
   })
 
   depends_on 'gcc_lib' => :library
