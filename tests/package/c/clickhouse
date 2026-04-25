@@ -1,0 +1,3 @@
+#!/bin/bash
+clickhouse --help 2>&1 | head
+clickhouse -V
