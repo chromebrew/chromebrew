@@ -1,4 +1,4 @@
-# Total size: 186825785
+# Total size: 189124227
 /usr/local/bin/ffmpeg
 /usr/local/bin/ffplay
 /usr/local/bin/ffprobe
@@ -17,6 +17,7 @@
 /usr/local/include/libavcodec/dirac.h
 /usr/local/include/libavcodec/dv_profile.h
 /usr/local/include/libavcodec/dxva2.h
+/usr/local/include/libavcodec/exif.h
 /usr/local/include/libavcodec/jni.h
 /usr/local/include/libavcodec/mediacodec.h
 /usr/local/include/libavcodec/packet.h
@@ -149,31 +150,31 @@
 /usr/local/lib64/libavcodec.a
 /usr/local/lib64/libavcodec.so
 /usr/local/lib64/libavcodec.so.62
-/usr/local/lib64/libavcodec.so.62.11.100
+/usr/local/lib64/libavcodec.so.62.28.100
 /usr/local/lib64/libavdevice.a
 /usr/local/lib64/libavdevice.so
 /usr/local/lib64/libavdevice.so.62
-/usr/local/lib64/libavdevice.so.62.1.100
+/usr/local/lib64/libavdevice.so.62.3.100
 /usr/local/lib64/libavfilter.a
 /usr/local/lib64/libavfilter.so
 /usr/local/lib64/libavfilter.so.11
-/usr/local/lib64/libavfilter.so.11.4.100
+/usr/local/lib64/libavfilter.so.11.14.100
 /usr/local/lib64/libavformat.a
 /usr/local/lib64/libavformat.so
 /usr/local/lib64/libavformat.so.62
-/usr/local/lib64/libavformat.so.62.3.100
+/usr/local/lib64/libavformat.so.62.12.100
 /usr/local/lib64/libavutil.a
 /usr/local/lib64/libavutil.so
 /usr/local/lib64/libavutil.so.60
-/usr/local/lib64/libavutil.so.60.8.100
+/usr/local/lib64/libavutil.so.60.26.100
 /usr/local/lib64/libswresample.a
 /usr/local/lib64/libswresample.so
 /usr/local/lib64/libswresample.so.6
-/usr/local/lib64/libswresample.so.6.1.100
+/usr/local/lib64/libswresample.so.6.3.100
 /usr/local/lib64/libswscale.a
 /usr/local/lib64/libswscale.so
 /usr/local/lib64/libswscale.so.9
-/usr/local/lib64/libswscale.so.9.1.100
+/usr/local/lib64/libswscale.so.9.5.100
 /usr/local/lib64/pkgconfig/libavcodec.pc
 /usr/local/lib64/pkgconfig/libavdevice.pc
 /usr/local/lib64/pkgconfig/libavfilter.pc
