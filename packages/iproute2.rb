@@ -14,20 +14,21 @@ class Iproute2 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6c31cfe2b335386ff6e9c431eec458d635c0e534eae5a6e1022c0fc5bfac0c58',
-     armv7l: '6c31cfe2b335386ff6e9c431eec458d635c0e534eae5a6e1022c0fc5bfac0c58',
-     x86_64: 'b847e2299f9f5b41005bdbc9e6a235eda8c1fb3d50d829ef453ddc951412cf12'
+    aarch64: 'ae57b3e5b95611297c91b277441b424662cbf12b07c90d319f0809a3e5de25f4',
+     armv7l: 'ae57b3e5b95611297c91b277441b424662cbf12b07c90d319f0809a3e5de25f4',
+     x86_64: 'f20c6ef4e3353dc90e8deead244594ae4af2e5667761d4c863e8e2411eb2e8be'
   })
 
-  depends_on 'elfutils' # R
+  depends_on 'elfutils' => :executable
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'iptables' # R
+  depends_on 'glibc' => :executable
+  depends_on 'iptables' => :executable
+  depends_on 'libbpf' => :executable
   depends_on 'libbpf' unless ARCH == 'i686'
-  depends_on 'libbsd' # R
-  depends_on 'libcap' # R
-  depends_on 'libdb' # R
-  depends_on 'libtirpc' # R
+  depends_on 'libbsd' => :executable
+  depends_on 'libcap' => :executable
+  depends_on 'libdb' => :executable
+  depends_on 'libtirpc' => :executable
 
   def self.patch
     system "sed -i 's/-Werror//' Makefile"
