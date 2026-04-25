@@ -3,7 +3,7 @@ require 'package'
 class Packer < Package
   description 'Packer is an open source tool for creating identical machine images for multiple platforms from a single source configuration.'
   homepage 'https://www.packer.io/'
-  version '1.15.1'
+  version '1.15.2'
   license 'Apache-2.0, BSD-2, BSD-4, MIT, MPL-2.0 and unicode'
   compatibility 'all'
   source_url({
@@ -13,10 +13,10 @@ class Packer < Package
      x86_64: "https://releases.hashicorp.com/packer/#{version}/packer_#{version}_linux_amd64.zip"
   })
   source_sha256({
-    aarch64: 'b2f3b0d138f78c4ced18f63e92e78944f71466b2c23ee2c082d2dacf1f76391f',
-     armv7l: 'b2f3b0d138f78c4ced18f63e92e78944f71466b2c23ee2c082d2dacf1f76391f',
-       i686: 'c6a89998d0f87d60a43c110ba22c57d270b3a083ac480f9e0579b042ff15d2bc',
-     x86_64: '648d704bec73805a5508ed612185a9e5858ca7d57b730b88b1a54c3af3a91f5f'
+    aarch64: '6624ff7bf81e1eeb18367704849c7b78b9c14625581da9a83c534c2a961b7e16',
+     armv7l: '6624ff7bf81e1eeb18367704849c7b78b9c14625581da9a83c534c2a961b7e16',
+       i686: '5dc76e9eaf8fa7fd7453f35bf6cee20bcd907f5c02b891d7c1c4a0e9f5a193e8',
+     x86_64: '8cc4bc94a7e6d8806dd754869945287918aaa3c55bebdfa5169e33cd1dcf35c6'
   })
 
   no_compile_needed
