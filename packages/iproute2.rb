@@ -6,28 +6,29 @@ require 'package'
 class Iproute2 < Package
   description 'IP Routing Utilities'
   homepage 'https://git.kernel.org/pub/scm/network/iproute2/iproute2.git'
-  version '6.18.0'
+  version '7.0.0'
   license 'GPL2'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-#{version}.tar.xz"
-  source_sha256 '6ba520e1975e4c50dc931eeae91ea37c198b8a173744885f8895b84325f9d456'
+  source_sha256 'e62890f7b5de63c05a3bf331dc8deb4c015c336013f341a4edf46969797f2f4e'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6c31cfe2b335386ff6e9c431eec458d635c0e534eae5a6e1022c0fc5bfac0c58',
-     armv7l: '6c31cfe2b335386ff6e9c431eec458d635c0e534eae5a6e1022c0fc5bfac0c58',
-     x86_64: 'b847e2299f9f5b41005bdbc9e6a235eda8c1fb3d50d829ef453ddc951412cf12'
+    aarch64: 'ae57b3e5b95611297c91b277441b424662cbf12b07c90d319f0809a3e5de25f4',
+     armv7l: 'ae57b3e5b95611297c91b277441b424662cbf12b07c90d319f0809a3e5de25f4',
+     x86_64: 'f20c6ef4e3353dc90e8deead244594ae4af2e5667761d4c863e8e2411eb2e8be'
   })
 
-  depends_on 'elfutils' # R
+  depends_on 'elfutils' => :executable
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'iptables' # R
+  depends_on 'glibc' => :executable
+  depends_on 'iptables' => :executable
+  depends_on 'libbpf' => :executable
   depends_on 'libbpf' unless ARCH == 'i686'
-  depends_on 'libbsd' # R
-  depends_on 'libcap' # R
-  depends_on 'libdb' # R
-  depends_on 'libtirpc' # R
+  depends_on 'libbsd' => :executable
+  depends_on 'libcap' => :executable
+  depends_on 'libdb' => :executable
+  depends_on 'libtirpc' => :executable
 
   def self.patch
     system "sed -i 's/-Werror//' Makefile"

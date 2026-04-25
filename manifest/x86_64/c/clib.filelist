@@ -1,5 +1,11 @@
-# Total size: 977488
+# Total size: 694720
 /usr/local/bin/clib
+/usr/local/bin/clib-build
+/usr/local/bin/clib-configure
+/usr/local/bin/clib-init
 /usr/local/bin/clib-install
 /usr/local/bin/clib-search
+/usr/local/bin/clib-uninstall
+/usr/local/bin/clib-update
+/usr/local/bin/clib-upgrade
 /usr/local/bin/cpm

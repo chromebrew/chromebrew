@@ -3,7 +3,7 @@ require 'package'
 class Ffmpeg < Package
   description 'Complete solution to record, convert and stream audio and video'
   homepage 'https://ffmpeg.org/'
-  version '8.0.1'
+  version '8.1'
   license 'LGPL-2,1, GPL-2, GPL-3, and LGPL-3' # When changing ffmpeg's configure options, make sure this variable is still accurate.
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://git.ffmpeg.org/ffmpeg.git'
@@ -11,79 +11,82 @@ class Ffmpeg < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7713bbd72baeaf21c34eacf30e18c49f5a628ce66665fa8b7925e006016c4276',
-     armv7l: '7713bbd72baeaf21c34eacf30e18c49f5a628ce66665fa8b7925e006016c4276',
-     x86_64: '1497dc3a88dac075c616b987908fbc138263f7ac8d413a33fda579e5db9904a2'
+    aarch64: '3241f82dacae7ea6ffae1e1941453f178b0dc4e59a70b450a3680127d6a32c4c',
+     armv7l: '3241f82dacae7ea6ffae1e1941453f178b0dc4e59a70b450a3680127d6a32c4c',
+     x86_64: '8555634b44f0ac4c71a61c2ffd9890acd511300c0b027ae05729a5d0f6da18c9'
   })
 
-  depends_on 'alsa_lib' # R
+  depends_on 'alsa_lib' => :library
   depends_on 'avisynthplus' => :build
-  depends_on 'bzip2' # R
+  depends_on 'bzip2' => :library
   depends_on 'ccache' => :build
-  depends_on 'dav1d' # R
-  depends_on 'fontconfig' # R
-  depends_on 'freetype' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'dav1d' => :library
+  depends_on 'fontconfig' => :library
+  depends_on 'freetype' => :library
+  depends_on 'gcc_lib' => :executable
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
   depends_on 'gsm' => :build
-  depends_on 'gstreamer' # R
+  depends_on 'gstreamer' => :library
   depends_on 'harfbuzz' # R
   depends_on 'intel_media_sdk' if ARCH == 'x86_64' && CREW_IS_INTEL # R
-  depends_on 'jack' # R
-  depends_on 'libaom' # R
-  depends_on 'libass' # R
-  depends_on 'libavc1394' # R
-  depends_on 'libbluray' # R
+  depends_on 'jack' => :library
+  depends_on 'libaom' => :library
+  depends_on 'libass' => :library
+  depends_on 'libavc1394' => :library
+  depends_on 'libbluray' => :library
   depends_on 'libdc1394' => :build
-  depends_on 'libdrm' # R
-  depends_on 'libfdk_aac' # R
+  depends_on 'libdrm' => :library
+  depends_on 'libfdk_aac' => :library
   depends_on 'libfrei0r' => :build
   depends_on 'libglvnd' # R
-  depends_on 'libiec61883' # R
-  depends_on 'libjxl' # R
-  depends_on 'libmodplug' # R
-  depends_on 'libmp3lame' # R
-  depends_on 'libopencoreamr' # R
-  depends_on 'libraw1394' # R
-  depends_on 'libsoxr' # R
-  depends_on 'libssh' # R
-  depends_on 'libtheora' => :build
-  depends_on 'libva' # R
-  depends_on 'libvdpau' # R
+  depends_on 'libiec61883' => :library
+  depends_on 'libjxl' => :library
+  depends_on 'libmodplug' => :library
+  depends_on 'libmp3lame' => :library
+  depends_on 'libopencoreamr' => :library
+  depends_on 'libraw1394' => :library
+  depends_on 'libsoxr' => :library
+  depends_on 'libssh' => :library
+  depends_on 'libtheora' => :library
+  depends_on 'libva' => :library
+  depends_on 'libvdpau' => :library
   depends_on 'libvoamrwbenc' => :build
-  depends_on 'libvorbis' # R
-  depends_on 'libwebp' # R
-  depends_on 'libx11' # R
-  depends_on 'libx264' # R
-  depends_on 'libx265' # R
-  depends_on 'libxcb' # R
-  depends_on 'libxext' # R
-  depends_on 'libxml2' # R
-  depends_on 'libxv' # R
-  depends_on 'libxvid' # R
-  depends_on 'lilv' # R
+  depends_on 'libvorbis' => :library
+  depends_on 'libvpx' => :library
+  depends_on 'libwebp' => :library
+  depends_on 'libx11' => :library
+  depends_on 'libx264' => :library
+  depends_on 'libx265' => :library
+  depends_on 'libxcb' => :library
+  depends_on 'libxext' => :library
+  depends_on 'libxml2' => :library
+  depends_on 'libxv' => :library
+  depends_on 'libxvid' => :library
+  depends_on 'lilv' => :library
   depends_on 'nasm' => :build
-  depends_on 'openjpeg' # R
-  depends_on 'openssl' # R
-  depends_on 'opus' # R
+  depends_on 'openjpeg' => :library
+  depends_on 'openssl' => :library
+  depends_on 'opus' => :library
   depends_on 'pipewire' # R
-  depends_on 'pulseaudio' # R
-  depends_on 'rav1e' # R
-  depends_on 'rtmpdump' # R
-  depends_on 'rubberband' # R
-  depends_on 'sdl2' # R
-  depends_on 'snappy' # R
-  depends_on 'speex' # R
-  depends_on 'srt' # R
-  depends_on 'tesseract' # R
-  depends_on 'v4l_utils' # R
-  depends_on 'vidstab' # R
-  depends_on 'vmaf' => :build
-  depends_on 'xzutils' # R
-  depends_on 'zeromq' # R
-  depends_on 'zimg' # R
-  depends_on 'zlib' # R
-  depends_on 'zvbi' # R
+  depends_on 'pulseaudio' => :library
+  depends_on 'rav1e' => :library
+  depends_on 'rtmpdump' => :library
+  depends_on 'rubberband' => :library
+  depends_on 'sdl2' => :executable
+  depends_on 'sdl2_compat' => :executable
+  depends_on 'snappy' => :library
+  depends_on 'speex' => :library
+  depends_on 'srt' => :library
+  depends_on 'tesseract' => :library
+  depends_on 'v4l_utils' => :library
+  depends_on 'vidstab' => :library
+  depends_on 'vmaf' => :library
+  depends_on 'xzutils' => :library
+  depends_on 'zeromq' => :library
+  depends_on 'zimg' => :library
+  depends_on 'zlib' => :library
+  depends_on 'zvbi' => :library
 
   no_env_options if %w[aarch64 armv7l].include? ARCH
 
