@@ -24,9 +24,10 @@ class Ffmpeg < Package
   depends_on 'fontconfig' => :library
   depends_on 'freetype' => :library
   depends_on 'gcc_lib' => :executable
+  depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
   depends_on 'gsm' => :build
-  depends_on 'gstreamer' # R
+  depends_on 'gstreamer' => :library
   depends_on 'harfbuzz' # R
   depends_on 'intel_media_sdk' if ARCH == 'x86_64' && CREW_IS_INTEL # R
   depends_on 'jack' => :library
