@@ -1,4 +1,4 @@
-# Total size: 77593984
+# Total size: 79371777
 /usr/local/bin/R
 /usr/local/bin/Rscript
 /usr/local/lib/R/COPYING
@@ -173,9 +173,9 @@
 /usr/local/lib/R/include/R_ext/Linpack.h
 /usr/local/lib/R/include/R_ext/MathThreads.h
 /usr/local/lib/R/include/R_ext/Memory.h
+/usr/local/lib/R/include/R_ext/ObjectTable.h
 /usr/local/lib/R/include/R_ext/Parse.h
 /usr/local/lib/R/include/R_ext/Print.h
-/usr/local/lib/R/include/R_ext/PrtUtil.h
 /usr/local/lib/R/include/R_ext/QuartzDevice.h
 /usr/local/lib/R/include/R_ext/RS.h
 /usr/local/lib/R/include/R_ext/RStartup.h
@@ -852,6 +852,7 @@
 /usr/local/lib/R/library/lattice/R/lattice
 /usr/local/lib/R/library/lattice/R/lattice.rdb
 /usr/local/lib/R/library/lattice/R/lattice.rdx
+/usr/local/lib/R/library/lattice/README.md
 /usr/local/lib/R/library/lattice/data/Rdata.rdb
 /usr/local/lib/R/library/lattice/data/Rdata.rds
 /usr/local/lib/R/library/lattice/data/Rdata.rdx
@@ -1043,6 +1044,7 @@
 /usr/local/lib/R/library/rpart/R/rpart
 /usr/local/lib/R/library/rpart/R/rpart.rdb
 /usr/local/lib/R/library/rpart/R/rpart.rdx
+/usr/local/lib/R/library/rpart/README.md
 /usr/local/lib/R/library/rpart/data/Rdata.rdb
 /usr/local/lib/R/library/rpart/data/Rdata.rds
 /usr/local/lib/R/library/rpart/data/Rdata.rdx
@@ -1326,7 +1328,8 @@
 /usr/local/lib/R/library/tools/html/00Index.html
 /usr/local/lib/R/library/tools/html/R.css
 /usr/local/lib/R/library/tools/libs/tools.so
-/usr/local/lib/R/library/tools/wre.txt
+/usr/local/lib/R/library/tools/misc/top.txt
+/usr/local/lib/R/library/tools/misc/wre.txt
 /usr/local/lib/R/library/translations/DESCRIPTION
 /usr/local/lib/R/library/translations/ar/LC_MESSAGES/R-base.mo
 /usr/local/lib/R/library/translations/ar/LC_MESSAGES/R-methods.mo
@@ -1828,6 +1831,9 @@
 /usr/local/lib/R/library/utils/R/utils.rdx
 /usr/local/lib/R/library/utils/Sweave/Sweave-test-1.Rnw
 /usr/local/lib/R/library/utils/Sweave/example-1.Rnw
+/usr/local/lib/R/library/utils/Sweave/example-2.Rnw
+/usr/local/lib/R/library/utils/Sweave/example-3.Rnw
+/usr/local/lib/R/library/utils/Sweave/example-4.Rnw
 /usr/local/lib/R/library/utils/doc/Sweave.pdf
 /usr/local/lib/R/library/utils/help/AnIndex
 /usr/local/lib/R/library/utils/help/aliases.rds
@@ -1850,18 +1856,35 @@
 /usr/local/lib/R/share/R/nspackloader.R
 /usr/local/lib/R/share/R/tests-startup.R
 /usr/local/lib/R/share/Rd/macros/system.Rd
+/usr/local/lib/R/share/bibliographies/R.rds
+/usr/local/lib/R/share/bibliographies/base.R
+/usr/local/lib/R/share/bibliographies/datasets.R
+/usr/local/lib/R/share/bibliographies/grDevices.R
+/usr/local/lib/R/share/bibliographies/graphics.R
+/usr/local/lib/R/share/bibliographies/grid.R
+/usr/local/lib/R/share/bibliographies/methods.R
+/usr/local/lib/R/share/bibliographies/parallel.R
+/usr/local/lib/R/share/bibliographies/splines.R
+/usr/local/lib/R/share/bibliographies/stats.R
+/usr/local/lib/R/share/bibliographies/utils.R
 /usr/local/lib/R/share/dictionaries/R_Rd_files.rds
+/usr/local/lib/R/share/dictionaries/R_Rd_files.txt
 /usr/local/lib/R/share/dictionaries/R_manuals.rds
+/usr/local/lib/R/share/dictionaries/R_manuals.txt
 /usr/local/lib/R/share/dictionaries/R_vignettes.rds
+/usr/local/lib/R/share/dictionaries/R_vignettes.txt
 /usr/local/lib/R/share/dictionaries/en_stats.rds
+/usr/local/lib/R/share/dictionaries/en_stats.txt
 /usr/local/lib/R/share/encodings/Adobe-glyphlist
 /usr/local/lib/R/share/encodings/character-sets
 /usr/local/lib/R/share/java/README
 /usr/local/lib/R/share/java/getsp.class
 /usr/local/lib/R/share/licenses/AGPL-3
+/usr/local/lib/R/share/licenses/Apache-2.0
 /usr/local/lib/R/share/licenses/Artistic-2.0
 /usr/local/lib/R/share/licenses/BSD_2_clause
 /usr/local/lib/R/share/licenses/BSD_3_clause
+/usr/local/lib/R/share/licenses/CC0-1.0
 /usr/local/lib/R/share/licenses/GPL-2
 /usr/local/lib/R/share/licenses/GPL-3
 /usr/local/lib/R/share/licenses/LGPL-2
