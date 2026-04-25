@@ -1,4 +1,4 @@
-# Total size: 41836126
+# Total size: 41836177
 /usr/local/bin/sprc
 /usr/local/lib/python3.14/site-packages/speech_recognition/__init__.py
 /usr/local/lib/python3.14/site-packages/speech_recognition/__main__.py
@@ -54,12 +54,12 @@
 /usr/local/lib/python3.14/site-packages/speech_recognition/recognizers/whisper_local/faster_whisper.py
 /usr/local/lib/python3.14/site-packages/speech_recognition/recognizers/whisper_local/whisper.py
 /usr/local/lib/python3.14/site-packages/speech_recognition/version.txt
-/usr/local/lib/python3.14/site-packages/speechrecognition-3.16.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/speechrecognition-3.16.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/speechrecognition-3.16.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/speechrecognition-3.16.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/speechrecognition-3.16.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/speechrecognition-3.16.0.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/speechrecognition-3.16.0.dist-info/licenses/LICENSE-FLAC.txt
-/usr/local/lib/python3.14/site-packages/speechrecognition-3.16.0.dist-info/licenses/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/speechrecognition-3.16.0.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/speechrecognition-3.16.1.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/speechrecognition-3.16.1.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/speechrecognition-3.16.1.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/speechrecognition-3.16.1.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/speechrecognition-3.16.1.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/speechrecognition-3.16.1.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/speechrecognition-3.16.1.dist-info/licenses/LICENSE-FLAC.txt
+/usr/local/lib/python3.14/site-packages/speechrecognition-3.16.1.dist-info/licenses/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/speechrecognition-3.16.1.dist-info/top_level.txt
