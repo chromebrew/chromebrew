@@ -1,4 +1,4 @@
-# Total size: 2905306
+# Total size: 2415307
 /usr/local/bin/arpd
 /usr/local/bin/bridge
 /usr/local/bin/ctstat
@@ -21,6 +21,7 @@
 /usr/local/lib/tc/pareto.dist
 /usr/local/lib/tc/paretonormal.dist
 /usr/local/share/bash-completion/completions/devlink
+/usr/local/share/bash-completion/completions/dpll
 /usr/local/share/bash-completion/completions/tc
 /usr/local/share/iproute2/bpf_pinning
 /usr/local/share/iproute2/ematch_map
@@ -57,6 +58,7 @@
 /usr/local/share/man/man8/devlink-sb.8.zst
 /usr/local/share/man/man8/devlink-trap.8.zst
 /usr/local/share/man/man8/devlink.8.zst
+/usr/local/share/man/man8/dpll.8.zst
 /usr/local/share/man/man8/genl.8.zst
 /usr/local/share/man/man8/ifstat.8.zst
 /usr/local/share/man/man8/ip-address.8.zst
