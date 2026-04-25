@@ -1,4 +1,4 @@
-# Total size: 6602812
+# Total size: 6616452
 /home/chronos/user/.config/weston.ini
 /usr/local/bin/di-edid-decode
 /usr/local/bin/edid-decode
@@ -77,7 +77,7 @@
 /usr/local/lib64/libdisplay-info.so.2
 /usr/local/lib64/libweston-15.so
 /usr/local/lib64/libweston-15.so.0
-/usr/local/lib64/libweston-15.so.0.0.0
+/usr/local/lib64/libweston-15.so.0.0.1
 /usr/local/lib64/libweston-15/drm-backend.so
 /usr/local/lib64/libweston-15/gl-renderer.so
 /usr/local/lib64/libweston-15/headless-backend.so
