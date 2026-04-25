@@ -1,30 +1,30 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Cmatrix < Package
+class Cmatrix < CMake
   description "CMatrix is a program to see the cool scrolling lines from 'The Matrix' movie."
   homepage 'https://www.asty.org/cmatrix/'
-  version '1.2'
+  version '2.0'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/abishekvashok/cmatrix/archive/1.2.tar.gz'
-  source_sha256 '6b0b9aff4585147843c4cf8a8c9c6048500f66dc4887a38922197dfa326b57c8'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/abishekvashok/cmatrix.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '370bcaf095ffc55515a98a1e6e3be9c4f47c0eab4d4b71893984a520873cd35e',
-     armv7l: '370bcaf095ffc55515a98a1e6e3be9c4f47c0eab4d4b71893984a520873cd35e',
-       i686: '8ea2065704befa25c4db8dbf394553dc7a4eac6457242fa0e85be77d733b7f24',
-     x86_64: '0aee56b9ea46a56508c44cb47e12308907aef1a9cf2c748f720c4d6cf21fe503'
+    aarch64: 'fb874a1b94b55d11ed55c2ca0888985665cd3be72ef117990e880757a8ca47ba',
+     armv7l: 'fb874a1b94b55d11ed55c2ca0888985665cd3be72ef117990e880757a8ca47ba',
+       i686: '51989536aee6a1880ed03c265c15f184ceedcddeaf449388dddd0eb68ea33b40',
+     x86_64: '156d620422b9c6e225d7b66b9dcaa002e760e1a9e0a7e4a70628e32a3856db37'
   })
 
-  depends_on 'ncurses'
+  depends_on 'glibc' => :executable
+  depends_on 'kbd' => :executable
+  depends_on 'ncurses' => :executable
 
-  def self.build
-    system "CPPFLAGS=-I#{CREW_PREFIX}/include/ncurses ./configure --prefix=#{CREW_PREFIX}"
-    system 'make'
-  end
+  cmake_options "-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    -DCMAKE_C_FLAGS='-I#{CREW_PREFIX}/include/ncursesw'"
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  cmake_install_extras do
+    FileUtils.install 'cmatrix.1', "#{CREW_DEST_MAN_PREFIX}/man1/cmatrix.1", mode: 0o644
   end
 end
