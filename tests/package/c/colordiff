@@ -1,0 +1,5 @@
+#!/bin/bash
+cdiff --help | head
+cdiff --version
+colordiff --help
+colordiff --version

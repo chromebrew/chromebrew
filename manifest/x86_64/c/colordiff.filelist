@@ -1,7 +1,7 @@
-# Total size: 24273
+# Total size: 28504
 /home/chronos/user/.colordiffrc
 /usr/local/bin/cdiff
 /usr/local/bin/colordiff
 /usr/local/etc/colordiffrc
-/usr/local/man/man1/cdiff.1.gz
-/usr/local/man/man1/colordiff.1.gz
+/usr/local/share/man/man1/cdiff.1.zst
+/usr/local/share/man/man1/colordiff.1.zst
