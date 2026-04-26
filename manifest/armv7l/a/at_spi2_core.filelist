@@ -1,4 +1,4 @@
-# Total size: 4052438
+# Total size: 4053590
 /usr/local/etc/xdg/Xwayland-session.d/00-at-spi
 /usr/local/etc/xdg/autostart/at-spi-dbus-bus.desktop
 /usr/local/include/at-spi-2.0/atspi/atspi-accessible.h
@@ -75,7 +75,7 @@
 /usr/local/lib/gtk-2.0/modules/libatk-bridge.so
 /usr/local/lib/libatk-1.0.so
 /usr/local/lib/libatk-1.0.so.0
-/usr/local/lib/libatk-1.0.so.0.26010.1
+/usr/local/lib/libatk-1.0.so.0.26011.1
 /usr/local/lib/libatk-bridge-2.0.so
 /usr/local/lib/libatk-bridge-2.0.so.0
 /usr/local/lib/libatk-bridge-2.0.so.0.0.0
