@@ -1,4 +1,4 @@
-# Total size: 2340219
+# Total size: 2437759
 /usr/local/bin/rdoc
 /usr/local/bin/ri
 /usr/local/lib64/ruby/gems/4.0.0/gems/rdoc-7.2.0/CONTRIBUTING.md
@@ -183,6 +183,7 @@
 /usr/local/lib64/ruby/gems/4.0.0/gems/rdoc-7.2.0/lib/rdoc/parser/markdown.rb
 /usr/local/lib64/ruby/gems/4.0.0/gems/rdoc-7.2.0/lib/rdoc/parser/prism_ruby.rb
 /usr/local/lib64/ruby/gems/4.0.0/gems/rdoc-7.2.0/lib/rdoc/parser/rd.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/rdoc-7.2.0/lib/rdoc/parser/ripper_ruby.rb
 /usr/local/lib64/ruby/gems/4.0.0/gems/rdoc-7.2.0/lib/rdoc/parser/ripper_state_lex.rb
 /usr/local/lib64/ruby/gems/4.0.0/gems/rdoc-7.2.0/lib/rdoc/parser/ruby.rb
 /usr/local/lib64/ruby/gems/4.0.0/gems/rdoc-7.2.0/lib/rdoc/parser/ruby_tools.rb
@@ -199,9 +200,11 @@
 /usr/local/lib64/ruby/gems/4.0.0/gems/rdoc-7.2.0/lib/rdoc/ri/driver.rb
 /usr/local/lib64/ruby/gems/4.0.0/gems/rdoc-7.2.0/lib/rdoc/ri/formatter.rb
 /usr/local/lib64/ruby/gems/4.0.0/gems/rdoc-7.2.0/lib/rdoc/ri/paths.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/rdoc-7.2.0/lib/rdoc/ri/servlet.rb
 /usr/local/lib64/ruby/gems/4.0.0/gems/rdoc-7.2.0/lib/rdoc/ri/store.rb
 /usr/local/lib64/ruby/gems/4.0.0/gems/rdoc-7.2.0/lib/rdoc/ri/task.rb
 /usr/local/lib64/ruby/gems/4.0.0/gems/rdoc-7.2.0/lib/rdoc/rubygems_hook.rb
+/usr/local/lib64/ruby/gems/4.0.0/gems/rdoc-7.2.0/lib/rdoc/server.rb
 /usr/local/lib64/ruby/gems/4.0.0/gems/rdoc-7.2.0/lib/rdoc/servlet.rb
 /usr/local/lib64/ruby/gems/4.0.0/gems/rdoc-7.2.0/lib/rdoc/stats.rb
 /usr/local/lib64/ruby/gems/4.0.0/gems/rdoc-7.2.0/lib/rdoc/stats/normal.rb
