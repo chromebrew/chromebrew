@@ -3,40 +3,45 @@ require 'package'
 class Cmus < Package
   description 'cmus is a small, fast and powerful console music player for Unix-like operating systems.'
   homepage 'https://cmus.github.io/'
-  version '2.10.0'
+  version '2.12.0'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://github.com/cmus/cmus/archive/v2.10.0.tar.gz'
-  source_sha256 'ff40068574810a7de3990f4f69c9c47ef49e37bd31d298d372e8bcdafb973fff'
+  source_url 'https://github.com/cmus/cmus.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '44d2cc05f52b7558ab1140af0d626b8a260e88f1a5be327c4ac83da679b0e02e',
-     armv7l: '44d2cc05f52b7558ab1140af0d626b8a260e88f1a5be327c4ac83da679b0e02e',
-     x86_64: '2849c3c96b2e76bbce4f4339e9baedf724c5be01374ef301727cf815f6a3d19a'
+    aarch64: '79550c539d88c03b0765b4db5bc23265f3ac95e662cda0d5af18a80b2605809c',
+     armv7l: '79550c539d88c03b0765b4db5bc23265f3ac95e662cda0d5af18a80b2605809c',
+     x86_64: '20e03242b32b66dd155acfeee8d5a693ef2d5f26099ff54a3163c2887adaf0c9'
   })
 
-  depends_on 'alsa_lib' # R
-  depends_on 'elogind' # R
-  depends_on 'faad2' # R
+  depends_on 'alsa_lib' => :library
+  depends_on 'audiofile' => :library
+  depends_on 'elogind' => :executable
+  depends_on 'faad2' => :library
   depends_on 'ffmpeg' => :build
-  depends_on 'flac' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'jack' # R
-  depends_on 'libmodplug' # R
-  depends_on 'libsamplerate' # R
-  depends_on 'libvorbis' # R
-  depends_on 'ncurses' # R
-  depends_on 'opusfile' # R
-  depends_on 'pipewire' # R
-  depends_on 'pulseaudio' # R
-  depends_on 'wavpack' # R
+  depends_on 'flac' => :library
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'jack' => :library
+  depends_on 'libao' => :library
+  depends_on 'libmodplug' => :library
+  depends_on 'libsamplerate' => :library
+  depends_on 'libvorbis' => :library
+  depends_on 'ncurses' => :executable
+  depends_on 'opusfile' => :library
+  depends_on 'pipewire' => :executable
+  depends_on 'pulseaudio' => :library
+  depends_on 'wavpack' => :library
+
+  def self.patch
+    system "sed -i 's,/usr/include,#{CREW_PREFIX}/include,g' configure"
+  end
 
   def self.build
-    system "sed -i 's,/usr/include,#{CREW_PREFIX}/include,g' configure"
     system "./configure prefix=#{CREW_PREFIX} libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
+    system 'CONFIG_OPUS=y make'
   end
 
   def self.install

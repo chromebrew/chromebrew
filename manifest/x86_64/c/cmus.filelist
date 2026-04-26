@@ -1,4 +1,4 @@
-# Total size: 398842
+# Total size: 816280
 /usr/local/bin/cmus
 /usr/local/bin/cmus-remote
 /usr/local/lib64/cmus/ip/aac.so
@@ -10,6 +10,7 @@
 /usr/local/lib64/cmus/ip/wav.so
 /usr/local/lib64/cmus/ip/wavpack.so
 /usr/local/lib64/cmus/op/alsa.so
+/usr/local/lib64/cmus/op/ao.so
 /usr/local/lib64/cmus/op/jack.so
 /usr/local/lib64/cmus/op/oss.so
 /usr/local/lib64/cmus/op/pulse.so

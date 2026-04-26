@@ -405,6 +405,11 @@ url: https://distfiles.audacious-media-player.org/
 activity: low
 ---
 kind: url
+name: audiofile
+url: https://download.gnome.org/sources/audiofile/0.3/
+activity: none
+---
+kind: url
 name: augeas
 url: http://download.augeas.net/
 activity: medium
@@ -4048,6 +4053,11 @@ kind: url
 name: libaio
 url: http://libaio.sourcearchive.com/downloads/
 activity: low
+---
+kind: url
+name: libao
+url: https://gitlab.xiph.org/xiph/libao/-/tags
+activity: none
 ---
 kind: url
 name: libaom
