@@ -1,4 +1,4 @@
-# Total size: 1637530
+# Total size: 1642088
 /usr/local/bin/collectl
 /usr/local/bin/colmux
 /usr/local/etc/collectl.conf
@@ -77,5 +77,5 @@
 /usr/local/share/doc/collectl/colmux.html
 /usr/local/share/doc/collectl/slub.jpg
 /usr/local/share/doc/collectl/style.css
-/usr/local/share/man/man1/collectl.1.gz
-/usr/local/share/man/man1/colmux.1.gz
+/usr/local/share/man/man1/collectl.1.zst
+/usr/local/share/man/man1/colmux.1.zst

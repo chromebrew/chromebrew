@@ -1,0 +1,5 @@
+#!/bin/bash
+collectl -h | head
+collectl -v
+colmux -help | head
+colmux -v
