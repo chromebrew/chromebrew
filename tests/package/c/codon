@@ -1,0 +1,3 @@
+#!/bin/bash
+codon --help | head
+codon --version
