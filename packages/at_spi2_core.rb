@@ -11,9 +11,9 @@ class At_spi2_core < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a48ea2424c5252cafd3dba6ed582c77e8fa125c5b408b4243ddad665aba94404',
-     armv7l: 'a48ea2424c5252cafd3dba6ed582c77e8fa125c5b408b4243ddad665aba94404',
-     x86_64: '51577068ede69f97c491864ac7af2b6cb21aec8813ba4c1d3d84edc10faf6b52'
+    aarch64: '340968072ffbb30df7b3f27ad0686ebf2657b114e359c13841ce3e46bf383f1d',
+     armv7l: '340968072ffbb30df7b3f27ad0686ebf2657b114e359c13841ce3e46bf383f1d',
+     x86_64: '2186ab35e65bdbf44308eb548d085ca99beb5a36fea1f453e579470a80623851'
   })
 
   depends_on 'dbus' => :library
