@@ -2078,6 +2078,7 @@ def files_command(args)
   args = { '<name>' => args.split } if args.is_a? String
   args['<name>'].each do |name|
     search name
+    Command.check(name, @opt_force)
     Command.files(@pkg)
   end
 end
@@ -2198,6 +2199,9 @@ end
 def upstream_command(args)
   # Pass the whole argument input to tools/version.rb, stripping out any file extensions that occur as a result of using a wildcard argument in a directory where it matches files.
   args = { '<name>' => args.split } if args.is_a? String
+  args['<name>'].each do |name|
+    Command.check(name, @opt_force)
+  end
   Dir.chdir CREW_PACKAGES_PATH do
     system "../tools/version.rb #{args['<name>'].join(' ').gsub('.rb', '')} #{'-j' if CREW_OUTPUT_JSON} #{@update} #{@short_verbose} #{@very_verbose} #{@all}"
   end
