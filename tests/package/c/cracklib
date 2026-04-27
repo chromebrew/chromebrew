@@ -1,0 +1,5 @@
+#!/bin/bash
+/usr/local/sbin/cracklib-check -h 2>&1
+/usr/local/sbin/cracklib-format -h 2>&1 | head
+/usr/local/sbin/cracklib-format -V
+/usr/local/sbin/cracklib-packer -h 2>&1
