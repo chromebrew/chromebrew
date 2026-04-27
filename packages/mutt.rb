@@ -11,10 +11,10 @@ class Mutt < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e852121f662c37dd6202ef7ecba96361b7bacc2a7b89341326cacc21f4ca376c',
-     armv7l: 'e852121f662c37dd6202ef7ecba96361b7bacc2a7b89341326cacc21f4ca376c',
-       i686: '439e2fcc00a279dd2d5bf1582fe190b0a192e8c7a26978d20d8d67ae162ebe8b',
-     x86_64: '2ed04ae176c92a5201987559e31e80764ab28f36a878f5dcd8bcbcb426990274'
+    aarch64: 'c7f41cd6237571c9efffd38840055a47127fd9bdb8be63d856b426957aa644c6',
+     armv7l: 'c7f41cd6237571c9efffd38840055a47127fd9bdb8be63d856b426957aa644c6',
+       i686: 'cc14601c52e39d2f9d335e68bb2c56ec9c7993ddb1c77883e69931721615ebe6',
+     x86_64: '304eb6204e32e75e303abf0fe76930935ee5ece78495d67ede782d039a19bb1f'
   })
 
   depends_on 'gdbm' => :executable
