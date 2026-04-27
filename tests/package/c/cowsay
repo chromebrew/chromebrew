@@ -1,0 +1,5 @@
+#!/bin/bash
+cowsay -h | head
+cowsay --version
+cowthink -h | head
+cowthink --version
