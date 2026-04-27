@@ -3,7 +3,7 @@ require 'package'
 class Sgpt < Package
   description 'SGPT is a command-line tool that provides a convenient way to interact with OpenAI models'
   homepage 'https://github.com/tbckr/sgpt'
-  version '2.19.0'
+  version '2.20.0'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url({
@@ -12,9 +12,9 @@ class Sgpt < Package
      x86_64: "https://github.com/tbckr/sgpt/releases/download/v#{version}/sgpt_Linux_x86_64.tar.gz"
   })
   source_sha256({
-    aarch64: '157b51237f0798e768beed5e48827c735c3124b0fdc03ab9ad16db5fd826dffa',
-     armv7l: '157b51237f0798e768beed5e48827c735c3124b0fdc03ab9ad16db5fd826dffa',
-     x86_64: '51f7c8b6cc9a1871ef5c6dd5e31292524bf8345c6f2d01cf8832da3ce2c7f951'
+    aarch64: '884e3471a774f2765dfd615b23c63444662fc0c8c3c4f233f1197c51d9b35bd2',
+     armv7l: '884e3471a774f2765dfd615b23c63444662fc0c8c3c4f233f1197c51d9b35bd2',
+     x86_64: '4d1d4bfd726f0df9bab6fe9fc295aee4a23e268b9ab07faa0b466b18083874e5'
   })
 
   no_compile_needed
