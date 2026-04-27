@@ -17,7 +17,6 @@ class Py3_pip < Python
      x86_64: '0c41d2fece186e4991e775da059efd9b473fe18763ee91a91b3593775b70b4cc'
   })
 
-  depends_on 'python3'
   depends_on 'python3' => :logical
   conflicts_ok
 
