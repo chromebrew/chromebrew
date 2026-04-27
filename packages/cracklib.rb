@@ -3,19 +3,22 @@ require 'package'
 class Cracklib < Package
   description 'The CrackLib package contains a library used to enforce strong passwords by comparing user selected passwords to words in chosen word lists.'
   homepage 'https://github.com/cracklib/cracklib'
-  version '2.9.7'
+  version '2.10.3'
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url 'https://github.com/cracklib/cracklib/archive/v2.9.7.tar.gz'
-  source_sha256 'ff4e6c3f86494c93719f5e4186e2c3ea9e265f41972ec21f7b87852aced704e6'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/cracklib/cracklib.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '53128dc07f528b00c3ebde2c90013ce35a66c61cf7128edacc9550902702c6f8',
-     armv7l: '53128dc07f528b00c3ebde2c90013ce35a66c61cf7128edacc9550902702c6f8',
-       i686: '9c0a651720f0bfc02fa666ff0cd6197e64dc484fc28e75eae0157696dd94e557',
-     x86_64: 'dc987bfbb219cee1b5b09bf5fff728e312851a185635fd927455886cee8d0ec2'
+    aarch64: '26f166493cc8af576ac1c0a101d7fead20aa211f7da59a19349446bd814fbc8d',
+     armv7l: '26f166493cc8af576ac1c0a101d7fead20aa211f7da59a19349446bd814fbc8d',
+       i686: '2decf564080f0f40515ac4cf11f93129dd0ba8852d45e01fc59ddadc360d3973',
+     x86_64: 'a44522bfeaa1a8247e686c05b9b11d394cbe7d673105ebae9b1348c9c0edf17e'
   })
+
+  depends_on 'glibc' => :library
+  depends_on 'zlib' => :library
 
   def self.build
     Dir.chdir 'src' do
