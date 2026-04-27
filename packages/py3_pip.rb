@@ -11,13 +11,14 @@ class Py3_pip < Python
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5c4bac807286b525af1ddcfc555261668ee76b0f510d02375d389037cf3c9d34',
-     armv7l: '5c4bac807286b525af1ddcfc555261668ee76b0f510d02375d389037cf3c9d34',
-       i686: '2d9b86688c46221cb745b9125174f500219f527177b37e0deac43ad6781ec2eb',
-     x86_64: '1ec865cb00ebdc41263d2d86586a0f9e1fe824359d48de6507dd2d73661b1e27'
+    aarch64: '19356da1c98c4c2bcb7dfb1a9fd3b5218dd7981d4d9b14c4a131a5ea25be3a5b',
+     armv7l: '19356da1c98c4c2bcb7dfb1a9fd3b5218dd7981d4d9b14c4a131a5ea25be3a5b',
+       i686: 'f6ce5f3a77db7e13dd8352bc3e8778d4da69f591593d86b16f431863792e4799',
+     x86_64: '0c41d2fece186e4991e775da059efd9b473fe18763ee91a91b3593775b70b4cc'
   })
 
   depends_on 'python3'
+  depends_on 'python3' => :logical
   conflicts_ok
 
   def self.postinstall
