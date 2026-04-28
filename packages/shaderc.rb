@@ -25,7 +25,6 @@ class Shaderc < CMake
   depends_on 'ruby_asciidoctor' => :build
   depends_on 'spirv_headers' => :build
   depends_on 'spirv_tools' => :library
-  depends_on 'vulkansdk' => :library
 
   conflicts_ok # conflicts with glslang
 
