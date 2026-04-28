@@ -1,0 +1,3 @@
+#!/bin/bash
+protoc-c --help | head
+protoc-c --version
