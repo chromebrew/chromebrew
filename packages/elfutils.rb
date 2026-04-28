@@ -30,6 +30,15 @@ class Elfutils < Autotools
   autotools_configure_options "#{'--disable-libdebuginfod --disable-debuginfod' if ARCH == 'i686'} --enable-maintainer-mode --program-prefix='eu-'"
 
   def self.patch
+    if version == '0.195'
+      patches = [
+        # gawk 5.4 doesn't like C++ style comments.
+        # https://sourceware.org/git/?p=elfutils.git;a=commitdiff_plain;h=c1b0ff9d92b08397b0e653a8ccefe1d1248cba57
+        ['https://sourceware.org/git/?p=elfutils.git;a=commitdiff_plain;h=c1b0ff9d92b08397b0e653a8ccefe1d1248cba57',
+         'ef20423278ad0330a7031e4aa7aee39fbb908ff24cfb0b690e967824645ac9c2']
+      ]
+      ConvenienceFunctions.patch(patches)
+    end
     return unless ARCH == 'i686'
 
     # https://sourceware.org/git/?p=glibc.git;a=commit;h=0be74c5c7cb239e4884d1ee0fd48c746a0bd1a65
