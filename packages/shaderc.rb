@@ -14,9 +14,9 @@ class Shaderc < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd6b0ba5835b5b2d69d8aed52f1e6c3756fdb91087893a9b3697f963d260d1d16',
-     armv7l: 'd6b0ba5835b5b2d69d8aed52f1e6c3756fdb91087893a9b3697f963d260d1d16',
-     x86_64: 'c7115e3ce3dcefa529e96cb5e79d642f8109454a78adc097bc00feb115c8b60e'
+    aarch64: 'd2685cf0ed8a5b820c321d0470b56153a4f7df9dd1bd2796456c1f243a888a02',
+     armv7l: 'd2685cf0ed8a5b820c321d0470b56153a4f7df9dd1bd2796456c1f243a888a02',
+     x86_64: '34bc32b9cdd6cba70007050e8a83daa467ac8fcafb7eeed9bc7005028fd887a3'
   })
 
   depends_on 'gcc_lib' => :library
@@ -25,6 +25,7 @@ class Shaderc < CMake
   depends_on 'ruby_asciidoctor' => :build
   depends_on 'spirv_headers' => :build
   depends_on 'spirv_tools' => :library
+  depends_on 'vulkansdk' => :library
 
   conflicts_ok # conflicts with glslang
 
