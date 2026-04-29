@@ -3,26 +3,27 @@ require 'package'
 class Darkhttpd < Package
   description 'Minimal webserver written by Emil Mikulic'
   homepage 'https://unix4lyfe.org/darkhttpd/'
-  version '1.12'
+  version '1.17'
   license 'ISC'
   compatibility 'all'
-  source_url 'https://unix4lyfe.org/darkhttpd/darkhttpd-1.12.tar.bz2'
-  source_sha256 'a50417b622b32b5f421b3132cb94ebeff04f02c5fb87fba2e31147d23de50505'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/emikulic/darkhttpd.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2e0d63b59129bae92d3d957b655a9d4bf07a66586d5427f8fbe1b0d181541b0f',
-     armv7l: '2e0d63b59129bae92d3d957b655a9d4bf07a66586d5427f8fbe1b0d181541b0f',
-       i686: '56f4e98ccfe4f04ca4fd7bf3c1268de0dc44600da4b4257d32cc0cfe634485c9',
-     x86_64: 'c60d1cb89689bd4ecbe0503b37cfeefa7b64a0db310644fbe4e987bfd3f6699e'
+    aarch64: '59fd02af9dd5e20d656d3b8e0bef55eeea072c1b9d20aaf42517842a6c78cd38',
+     armv7l: '59fd02af9dd5e20d656d3b8e0bef55eeea072c1b9d20aaf42517842a6c78cd38',
+       i686: '1a66fb3d85ea1771b77b3fe58421b194a5ede18b151dead9105da58cbce0bf04',
+     x86_64: '1a100d14938b55db98f78001b07cc555019cb7582a77dff0106ab505a573b99b'
   })
+
+  depends_on 'glibc' => :executable
 
   def self.build
     system 'make'
   end
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.cp 'darkhttpd', "#{CREW_DEST_PREFIX}/bin/"
+    FileUtils.install 'darkhttpd', "#{CREW_DEST_PREFIX}/bin/darkhttpd", mode: 0o755
   end
 end
