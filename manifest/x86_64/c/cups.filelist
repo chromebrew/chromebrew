@@ -1,4 +1,4 @@
-# Total size: 13722042
+# Total size: 13726067
 /usr/local/bin/cancel
 /usr/local/bin/cups-config
 /usr/local/bin/cupstestppd
@@ -47,11 +47,11 @@
 /usr/local/include/cups/sidechannel.h
 /usr/local/include/cups/transcode.h
 /usr/local/include/cups/versioning.h
-/usr/local/lib/pkgconfig/cups.pc
 /usr/local/lib64/libcups.so
 /usr/local/lib64/libcups.so.2
 /usr/local/lib64/libcupsimage.so
 /usr/local/lib64/libcupsimage.so.2
+/usr/local/lib64/pkgconfig/cups.pc
 /usr/local/libexec/cups/backend/http
 /usr/local/libexec/cups/backend/https
 /usr/local/libexec/cups/backend/ipp

@@ -1,0 +1,8 @@
+#!/bin/bash
+cups-config -h | head
+cups-config --version
+cupstestppd -h | head
+ippeveprinter -h | head
+ippeveprinter --version
+ipptool 2>&1 | head
+ipptool --version

@@ -3,7 +3,7 @@ require 'package'
 class Cups < Package
   description 'CUPS is the standards-based, open source printing system'
   homepage 'https://openprinting.github.io/cups'
-  version '2.4.16'
+  version '2.4.19'
   compatibility 'all'
   license 'Apache-2.0'
   source_url 'https://github.com/OpenPrinting/cups.git'
@@ -11,25 +11,24 @@ class Cups < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6bbdf0724f81cc53ac11dafd93e9868d80237068286fb9a8486bfc0b87b828e4',
-     armv7l: '6bbdf0724f81cc53ac11dafd93e9868d80237068286fb9a8486bfc0b87b828e4',
-       i686: '1c3ffa0b2ce21adb59b4a45491f3a7f8946f6ea5df60efa0733a93ae712727f5',
-     x86_64: 'd904885d6529dba0b2ce8d22191dad1e89b18e3ea077f84a6fe320e352d90bee'
+    aarch64: '317969e2827c1702e7b44dd800727bf3ac25b5b2193245c96d13ad48a6fcda7c',
+     armv7l: '317969e2827c1702e7b44dd800727bf3ac25b5b2193245c96d13ad48a6fcda7c',
+       i686: '86a86eee0cfce1a285a63dfc33ad3d0114893ff3a85989f6ae95b47a9125ba68',
+     x86_64: '057d17a9bccdd8daba89a20a4158865061180bc0b8908e77b784e8df1b6671b1'
   })
 
-  depends_on 'acl' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'libusb' # R
-  depends_on 'libxcrypt' # R
-  depends_on 'linux_pam' # R
+  depends_on 'acl' => :executable
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'libusb' => :library
+  depends_on 'libxcrypt' => :library
+  depends_on 'linux_pam' => :executable
   depends_on 'llvm_dev' => :build if %w[armv7l aarch64].include?(ARCH)
-  depends_on 'openssl' # R
+  depends_on 'openssl' => :library
   depends_on 'psmisc' => :logical
-  depends_on 'zlib' # R
+  depends_on 'zlib' => :library
 
   no_env_options
-  no_fhs
 
   def self.build
     @buildoverride = %w[armv7l aarch64].include?(ARCH) ? 'CC=clang CXX=clang++ LD=mold CUPS_LINKER=mold' : ''
@@ -72,7 +71,9 @@ class Cups < Package
 
   def self.install
     system 'make',
+           "PREFIX=#{CREW_PREFIX}",
            "DESTDIR=#{CREW_DEST_DIR}",
+           "LIBDIR=#{CREW_DEST_LIB_PREFIX}",
            "DATADIR=#{CREW_DEST_PREFIX}/share/cups",
            "DOCDIR=#{CREW_DEST_PREFIX}/share/doc/cups",
            "MANDIR=#{CREW_DEST_MAN_PREFIX}",
@@ -83,8 +84,8 @@ class Cups < Package
            "SERVERBIN=#{CREW_DEST_PREFIX}/libexec/cups",
            "CACHEDIR=#{CREW_DEST_PREFIX}/var/cache/cups",
            "LOCALEDIR=#{CREW_DEST_PREFIX}/share/locale",
+           "CUPS_PKGCONFPATH=#{CREW_DEST_LIB_PREFIX}/pkgconfig",
            'install'
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.install 'startcupsd', "#{CREW_DEST_PREFIX}/bin/startcupsd", mode: 0o755
     FileUtils.install 'stopcupsd', "#{CREW_DEST_PREFIX}/bin/stopcupsd", mode: 0o755
     if File.exist?("#{CREW_DEST_DIR}/etc/dbus-1/system.d/cups.conf")
@@ -103,7 +104,6 @@ class Cups < Package
       To start the cups daemon, run 'startcupsd'
       To stop the cups daemon, run 'stopcupsd'
       For more information, see https://www.cups.org/doc/admin.html.
-
     EOM
   end
 end
