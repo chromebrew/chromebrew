@@ -44,7 +44,9 @@ end
 
 # Search for which packages have a needed library in CREW_LIB_PREFIX.
 def whatprovidesfxn(pkgdepslcl, pkg)
-  return `crew whatprovides --no-color "#{CREW_LIB_PREFIX}/#{pkgdepslcl}"`.lines[0...-2].flat_map { it.split(':')[0] }.uniq.delete_if { it == pkg }.sort.join(' ')
+  packages = `crew whatprovides --no-color "#{CREW_LIB_PREFIX}/#{pkgdepslcl}"`.lines[0...-2].flat_map { it.split(':')[0] }.uniq.sort.join(' ')
+  # If the package we're finding the dependencies for already provides this file, we don't need any of the packages that provide this file as dependencies.
+  return packages.include?(pkg) ? '' : packages
 end
 
 # Write the missing dependencies to the package file.
