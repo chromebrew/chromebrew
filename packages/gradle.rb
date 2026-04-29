@@ -3,11 +3,11 @@ require 'package'
 class Gradle < Package
   description 'From mobile apps to microservices, from small startups to big enterprises, Gradle helps teams build, automate and deliver better software, faster.'
   homepage 'https://gradle.org/'
-  version '9.4.1'
+  version '9.5.0'
   license 'Apache-2.0'
   compatibility 'all'
   source_url "https://github.com/gradle/gradle-distributions/releases/download/v#{version}/gradle-#{version}-bin.zip"
-  source_sha256 '2ab2958f2a1e51120c326cad6f385153bb11ee93b3c216c5fccebfdfbb7ec6cb'
+  source_sha256 '553c78f50dafcd54d65b9a444649057857469edf836431389695608536d6b746'
 
   depends_on 'openjdk8' unless File.exist? "#{CREW_PREFIX}/bin/java"
 
