@@ -1,0 +1,3 @@
+#!/bin/bash
+crun --help | head
+crun --version
