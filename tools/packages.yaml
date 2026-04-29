@@ -8765,8 +8765,13 @@ url: https://github.com/castwide/yard-solargraph/tags
 activity: medium
 ---
 kind: url
+name: rubymine
+url: https://www.jetbrains.com/ruby/download/?section=linux
+activity: low
+---
+kind: url
 name: runc
-url: hhttps://github.com/opencontainers/runc/releases
+url: https://github.com/opencontainers/runc/releases
 activity: medium
 ---
 kind: url
