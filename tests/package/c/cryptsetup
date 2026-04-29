@@ -1,0 +1,9 @@
+#!/bin/bash
+/usr/local/sbin/cryptsetup --help | head
+/usr/local/sbin/cryptsetup -V
+/usr/local/sbin/cryptsetup-ssh --help | head
+/usr/local/sbin/cryptsetup-ssh -V
+/usr/local/sbin/integritysetup --help | head
+/usr/local/sbin/integritysetup -V
+/usr/local/sbin/veritysetup --help | head
+/usr/local/sbin/veritysetup -V
