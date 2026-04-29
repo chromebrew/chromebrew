@@ -17,16 +17,11 @@ class Htop < Autotools
      x86_64: '11f99378be6f5e439fa66baae3ca77f152cf89cd1b484931a6b69e126688b102'
   })
 
-  depends_on 'buildessential' => :build
   depends_on 'glibc' => :executable
-  depends_on 'glibc' => :library
   depends_on 'libcap' => :executable
-  depends_on 'libcap' => :library
-  depends_on 'libnl3' => :library
+  depends_on 'libnl3' => :build
   depends_on 'libunwind' => :executable
-  depends_on 'libunwind' => :library
   depends_on 'ncurses' => :executable
-  depends_on 'ncurses' => :library
 
   autotools_pre_configure_options "CPPFLAGS='-I#{CREW_PREFIX}/include/ncursesw'"
   autotools_configure_options '--disable-unicode'
