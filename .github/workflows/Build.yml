@@ -425,7 +425,7 @@ jobs:
             ruby bin/crew prop ignore_updater ${file}
             [[ "$(ruby bin/crew prop ignore_updater ${file})" == "false" ]] && touch tools/automatically_updatable_packages/${file} || true
           done
-      - uses: EndBug/add-and-commit@v9
+      - uses: EndBug/add-and-commit@v10
         if: ${{ contains(needs.generate.result, 'success') }}
         env:
           GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
