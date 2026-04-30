@@ -1,4 +1,4 @@
-# Total size: 1754684
+# Total size: 1903732
 /usr/local/include/xsimd/arch/common/xsimd_common_arithmetic.hpp
 /usr/local/include/xsimd/arch/common/xsimd_common_bit.hpp
 /usr/local/include/xsimd/arch/common/xsimd_common_cast.hpp
@@ -46,12 +46,19 @@
 /usr/local/include/xsimd/arch/xsimd_ssse3.hpp
 /usr/local/include/xsimd/arch/xsimd_sve.hpp
 /usr/local/include/xsimd/arch/xsimd_vsx.hpp
+/usr/local/include/xsimd/arch/xsimd_vxe.hpp
 /usr/local/include/xsimd/arch/xsimd_wasm.hpp
 /usr/local/include/xsimd/config/xsimd_arch.hpp
 /usr/local/include/xsimd/config/xsimd_config.hpp
+/usr/local/include/xsimd/config/xsimd_cpu_features.hpp
+/usr/local/include/xsimd/config/xsimd_cpu_features_arm.hpp
+/usr/local/include/xsimd/config/xsimd_cpu_features_ppc.hpp
+/usr/local/include/xsimd/config/xsimd_cpu_features_riscv.hpp
+/usr/local/include/xsimd/config/xsimd_cpu_features_s390x.hpp
 /usr/local/include/xsimd/config/xsimd_cpu_features_x86.hpp
 /usr/local/include/xsimd/config/xsimd_cpuid.hpp
-/usr/local/include/xsimd/config/xsimd_inline.hpp
+/usr/local/include/xsimd/config/xsimd_getauxval.hpp
+/usr/local/include/xsimd/config/xsimd_macros.hpp
 /usr/local/include/xsimd/math/xsimd_rem_pio2.hpp
 /usr/local/include/xsimd/memory/xsimd_aligned_allocator.hpp
 /usr/local/include/xsimd/memory/xsimd_alignment.hpp
@@ -73,6 +80,7 @@
 /usr/local/include/xsimd/types/xsimd_avxvnni_register.hpp
 /usr/local/include/xsimd/types/xsimd_batch.hpp
 /usr/local/include/xsimd/types/xsimd_batch_constant.hpp
+/usr/local/include/xsimd/types/xsimd_batch_fwd.hpp
 /usr/local/include/xsimd/types/xsimd_common_arch.hpp
 /usr/local/include/xsimd/types/xsimd_emulated_register.hpp
 /usr/local/include/xsimd/types/xsimd_fma3_avx2_register.hpp
@@ -93,8 +101,10 @@
 /usr/local/include/xsimd/types/xsimd_traits.hpp
 /usr/local/include/xsimd/types/xsimd_utils.hpp
 /usr/local/include/xsimd/types/xsimd_vsx_register.hpp
+/usr/local/include/xsimd/types/xsimd_vxe_register.hpp
 /usr/local/include/xsimd/types/xsimd_wasm_register.hpp
 /usr/local/include/xsimd/utils/bits.hpp
+/usr/local/include/xsimd/utils/xsimd_type_traits.hpp
 /usr/local/include/xsimd/xsimd.hpp
 /usr/local/share/cmake/xsimd/xsimdConfig.cmake
 /usr/local/share/cmake/xsimd/xsimdConfigVersion.cmake
