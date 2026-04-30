@@ -1,4 +1,4 @@
-# Total size: 161156712
+# Total size: 161077171
 /usr/local/bin/crystal
 /usr/local/bin/shards
 /usr/local/etc/bash.d/10-crystal
@@ -517,6 +517,7 @@
 /usr/local/share/crystal/src/exception/call_stack/libunwind.cr
 /usr/local/share/crystal/src/exception/call_stack/mach_o.cr
 /usr/local/share/crystal/src/exception/call_stack/null.cr
+/usr/local/share/crystal/src/exception/call_stack/pe.cr
 /usr/local/share/crystal/src/exception/call_stack/stackwalk.cr
 /usr/local/share/crystal/src/exception/lib_unwind.cr
 /usr/local/share/crystal/src/fiber.cr
