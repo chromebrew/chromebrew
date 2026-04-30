@@ -11,16 +11,16 @@ class Chafa < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f6d9dc18294c7c2a00d888cf4eedf1c3a415625625c60ef32e50d09f046aacfe',
-     armv7l: 'f6d9dc18294c7c2a00d888cf4eedf1c3a415625625c60ef32e50d09f046aacfe',
-     x86_64: 'bb460334e3a93e55c323b9d3269558b1c62071291950b2a924e4ef6d5764ec3c'
+    aarch64: '91eb0c4c5e0ca7d9c618dbb386f8122fc2bb56dcb5c137f1d267951f47a21632',
+     armv7l: '91eb0c4c5e0ca7d9c618dbb386f8122fc2bb56dcb5c137f1d267951f47a21632',
+     x86_64: 'cd015e9ee7cb4f2e9c496b04f0623a492a89b2e4b6fb43cea483fd16366ae8f5'
   })
 
   depends_on 'cairo' => :executable
   depends_on 'freetype' => :executable
   depends_on 'gdk_pixbuf' => :executable
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
   depends_on 'harfbuzz' => :executable
   depends_on 'libjpeg_turbo' => :executable
   depends_on 'librsvg' => :executable

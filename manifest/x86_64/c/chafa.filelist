@@ -1,4 +1,4 @@
-# Total size: 4779547
+# Total size: 4778416
 /usr/local/bin/chafa
 /usr/local/include/chafa/chafa-canvas-config.h
 /usr/local/include/chafa/chafa-canvas.h
@@ -19,7 +19,7 @@
 /usr/local/lib64/libchafa.la
 /usr/local/lib64/libchafa.so
 /usr/local/lib64/libchafa.so.0
-/usr/local/lib64/libchafa.so.0.11.1
+/usr/local/lib64/libchafa.so.0.11.2
 /usr/local/lib64/pkgconfig/chafa.pc
 /usr/local/share/gtk-doc/html/chafa/api-index-deprecated.html
 /usr/local/share/gtk-doc/html/chafa/api-index-full.html
