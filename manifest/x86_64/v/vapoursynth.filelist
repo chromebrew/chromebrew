@@ -1,13 +1,20 @@
-# Total size: 4784720
-/usr/local/include/vapoursynth/VSConstants4.h
-/usr/local/include/vapoursynth/VSHelper.h
-/usr/local/include/vapoursynth/VSHelper4.h
-/usr/local/include/vapoursynth/VSScript4.h
-/usr/local/include/vapoursynth/VapourSynth.h
-/usr/local/include/vapoursynth/VapourSynth4.h
-/usr/local/lib64/libvapoursynth.so
-/usr/local/lib64/libvapoursynth.so.4
-/usr/local/lib64/libvsscript.so
-/usr/local/lib64/libvsscript.so.4
-/usr/local/lib64/pkgconfig/vapoursynth.pc
-/usr/local/lib64/pkgconfig/vsscript.pc
+# Total size: 6097296
+/usr/local/lib64/python3.14/site-packages/vapoursynth/__init__.py
+/usr/local/lib64/python3.14/site-packages/vapoursynth/__main__.py
+/usr/local/lib64/python3.14/site-packages/vapoursynth/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib64/python3.14/site-packages/vapoursynth/__pycache__/__main__.cpython-314.pyc
+/usr/local/lib64/python3.14/site-packages/vapoursynth/__pycache__/_cli.cpython-314.pyc
+/usr/local/lib64/python3.14/site-packages/vapoursynth/__pycache__/_utils.cpython-314.pyc
+/usr/local/lib64/python3.14/site-packages/vapoursynth/_cli.py
+/usr/local/lib64/python3.14/site-packages/vapoursynth/_utils.py
+/usr/local/lib64/python3.14/site-packages/vapoursynth/include/VSConstants4.h
+/usr/local/lib64/python3.14/site-packages/vapoursynth/include/VSHelper4.h
+/usr/local/lib64/python3.14/site-packages/vapoursynth/include/VSScript4.h
+/usr/local/lib64/python3.14/site-packages/vapoursynth/include/VapourSynth4.h
+/usr/local/lib64/python3.14/site-packages/vapoursynth/libvapoursynth.so
+/usr/local/lib64/python3.14/site-packages/vapoursynth/libvapoursynth.so.4
+/usr/local/lib64/python3.14/site-packages/vapoursynth/libvsscript.so
+/usr/local/lib64/python3.14/site-packages/vapoursynth/pkgconfig/vapoursynth.pc
+/usr/local/lib64/python3.14/site-packages/vapoursynth/vapoursynth.abi3.so
+/usr/local/lib64/python3.14/site-packages/vapoursynth/vapoursynth.pyi
+/usr/local/lib64/python3.14/site-packages/vapoursynth/vspipe
