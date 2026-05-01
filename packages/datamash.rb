@@ -1,30 +1,32 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Datamash < Package
+class Datamash < Autotools
   description 'GNU Datamash is a command-line program which performs basic numeric, textual and statistical operations on input textual data files.'
   homepage 'https://www.gnu.org/software/datamash/'
-  version '1.8'
+  version '1.9'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://ftp.gnu.org/gnu/datamash/datamash-1.8.tar.gz'
-  source_sha256 '7ad97e8c7ef616dd03aa5bd67ae24c488272db3e7d1f5774161c18b75f29f6fd'
+  source_url "https://ftp.gnu.org/gnu/datamash/datamash-#{version}.tar.gz"
+  source_sha256 'f382ebda03650dd679161f758f9c0a6cc9293213438d4a77a8eda325aacb87d2'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0ccf1a94c18095f1b5c84725da2eed415b10d307b1c5f15bbef764d81df336e8',
-     armv7l: '0ccf1a94c18095f1b5c84725da2eed415b10d307b1c5f15bbef764d81df336e8',
-       i686: 'fc99683d9d77b22ae45485acf94c8bc51f85cae2177f052f96b625bdbaacb7ba',
-     x86_64: '2ef1f4edaa2a041b70fc20c5e3f46576e9bd4b9ac6418d6a4702c756a5d6e088'
+    aarch64: 'fb73f1f049abf4858255eb006d3d1763200bfd4a6bbdc3acc5eb8c1bfe956dbd',
+     armv7l: 'fb73f1f049abf4858255eb006d3d1763200bfd4a6bbdc3acc5eb8c1bfe956dbd',
+       i686: 'c0b80773a9166876c853877d5859548d193f8d3c7131152319c69456aefb7164',
+     x86_64: '5572020a7641d3d03ee7cbcc58b9dfba05a235a941e2b9efcd67c019c2230987'
   })
 
   depends_on 'glibc' => :executable
 
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
+  def self.patch
+    # The aclocal version is hardcoded.
+    aclocal_version = `aclocal --version|head -1|cut -d' ' -f4`.chomp.gsub(/\.\d+$/, '')
+    system "sed -i 's,1.17,#{aclocal_version},g' configure"
   end
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  # Fix error: weak declaration of 'thrd_exit' must be public
+  autotools_configure_options '--disable-threads'
+
+  run_tests
 end
