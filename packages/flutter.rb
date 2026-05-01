@@ -3,11 +3,11 @@ require 'package'
 class Flutter < Package
   description "Flutter is Google's UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase."
   homepage 'https://flutter.dev/'
-  version '3.41.8'
+  version '3.41.9'
   license 'BSD-3'
   compatibility 'x86_64'
   source_url "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_#{version}-stable.tar.xz"
-  source_sha256 '0c7e47fc39ef86290b41707d687bdca7f82b277267a6ef74717f8e88ac423de1'
+  source_sha256 'cf2631dde02570733921a530f47a96abe896b5e334682d2743c29530ea88bb2e'
 
   depends_on 'libglu'
 
