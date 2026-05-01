@@ -1,4 +1,4 @@
-# Total size: 1821298
+# Total size: 1896262
 /usr/local/bin/dbus-binding-tool
 /usr/local/etc/bash_completion.d/dbus-bash-completion.sh
 /usr/local/include/dbus-1.0/dbus/dbus-glib-bindings.h
@@ -10,7 +10,7 @@
 /usr/local/lib64/libdbus-glib-1.la
 /usr/local/lib64/libdbus-glib-1.so
 /usr/local/lib64/libdbus-glib-1.so.2
-/usr/local/lib64/libdbus-glib-1.so.2.3.5
+/usr/local/lib64/libdbus-glib-1.so.2.3.6
 /usr/local/lib64/pkgconfig/dbus-glib-1.pc
 /usr/local/libexec/dbus-bash-completion-helper
 /usr/local/share/gtk-doc/html/dbus-glib/api-index-full.html
@@ -36,4 +36,4 @@
 /usr/local/share/gtk-doc/html/dbus-glib/style.css
 /usr/local/share/gtk-doc/html/dbus-glib/up-insensitive.png
 /usr/local/share/gtk-doc/html/dbus-glib/up.png
-/usr/local/share/man/man1/dbus-binding-tool.1.gz
+/usr/local/share/man/man1/dbus-binding-tool.1.zst
