@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Vapoursynth < Meson
   description 'A video processing framework with the future in mind'
   homepage 'http://www.vapoursynth.com/'
-  version '74'
+  version '75'
   license 'LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/vapoursynth/vapoursynth.git'
@@ -11,9 +11,9 @@ class Vapoursynth < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f96a42a9bc15b3af44077752317bc5d6e0d6be0b68ba5ac6c115a058e3130420',
-     armv7l: 'f96a42a9bc15b3af44077752317bc5d6e0d6be0b68ba5ac6c115a058e3130420',
-     x86_64: 'd2a8810fdfa8b43553ba9506c7f35d0c9fa0795772009b2581d4fe360c258aa2'
+    aarch64: '2a589a22f1fdc620ba67c394fde1d673cec84949d7e59c73126c3944a3fb4032',
+     armv7l: '2a589a22f1fdc620ba67c394fde1d673cec84949d7e59c73126c3944a3fb4032',
+     x86_64: '7e2f01b599316ce76b0b6cb896a8277ac37ff3a56c39c93b056e63e847ab9dfa'
   })
 
   depends_on 'ffmpeg' => :build

@@ -1,0 +1,3 @@
+#!/bin/bash
+dbus-binding-tool --help 2>&1
+dbus-binding-tool --version

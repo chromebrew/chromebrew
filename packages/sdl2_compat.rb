@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Sdl2_compat < CMake
   description 'An SDL2 compatibility layer that uses SDL3 behind the scenes'
   homepage 'https://github.com/libsdl-org/sdl2-compat'
-  version '2.32.66'
+  version '2.32.68'
   license 'zlib'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/libsdl-org/sdl2-compat.git'
@@ -14,9 +14,9 @@ class Sdl2_compat < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f5b252d3900d9b84003ec35751452e7a18a57e6de2d27b3ee845e1f001527256',
-     armv7l: 'f5b252d3900d9b84003ec35751452e7a18a57e6de2d27b3ee845e1f001527256',
-     x86_64: '7e8bad62d022c932d6a47a7ef494d4985cfb57c1a134884b31047a546f7663fc'
+    aarch64: 'b68823b2a5ec2abdace3fe303d7cf7fbe363510f8bea30fcd258191dd765ef71',
+     armv7l: 'b68823b2a5ec2abdace3fe303d7cf7fbe363510f8bea30fcd258191dd765ef71',
+     x86_64: 'e872d75a9ec7b32242c11833098561e55b4863c862b24aa233fc65764e600a1c'
   })
 
   depends_on 'glibc' => :library

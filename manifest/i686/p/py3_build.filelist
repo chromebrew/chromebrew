@@ -1,12 +1,12 @@
-# Total size: 174513
+# Total size: 175834
 /usr/local/bin/pyproject-build
-/usr/local/lib/python3.14/site-packages/build-1.4.4.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/build-1.4.4.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/build-1.4.4.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/build-1.4.4.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/build-1.4.4.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/build-1.4.4.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/build-1.4.4.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/build-1.5.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/build-1.5.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/build-1.5.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/build-1.5.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/build-1.5.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/build-1.5.0.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/build-1.5.0.dist-info/licenses/LICENSE
 /usr/local/lib/python3.14/site-packages/build/__init__.py
 /usr/local/lib/python3.14/site-packages/build/__main__.py
 /usr/local/lib/python3.14/site-packages/build/__pycache__/__init__.cpython-314.pyc
