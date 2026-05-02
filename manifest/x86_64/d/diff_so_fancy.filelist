@@ -1,1 +1,6 @@
+# Total size: 48900
+/usr/local/bin/d-s-f
 /usr/local/bin/diff-so-fancy
+/usr/local/bin/dsf
+/usr/local/share/diff-so-fancy/diff-so-fancy
+/usr/local/share/diff-so-fancy/lib/DiffHighlight.pm
