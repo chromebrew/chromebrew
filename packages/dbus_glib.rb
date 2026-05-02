@@ -17,6 +17,7 @@ class Dbus_glib < Autotools
   })
 
   depends_on 'dbus' => :library
+  depends_on 'expat' => :executable
   depends_on 'expat' => :library
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
