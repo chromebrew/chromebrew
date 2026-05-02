@@ -18,7 +18,6 @@ class Dfu_util < Autotools
   })
 
   depends_on 'glibc' => :executable
-  depends_on 'libusb'
   depends_on 'libusb' => :executable
 
   run_tests
