@@ -1,5 +1,7 @@
-# Total size: 258102
+# Total size: 71720
 /usr/local/bin/dfu-prefix
 /usr/local/bin/dfu-suffix
 /usr/local/bin/dfu-util
-/usr/local/share/man/man1/dfu-util.1.gz
+/usr/local/share/man/man1/dfu-prefix.1.zst
+/usr/local/share/man/man1/dfu-suffix.1.zst
+/usr/local/share/man/man1/dfu-util.1.zst

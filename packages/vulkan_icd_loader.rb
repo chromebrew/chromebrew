@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Vulkan_icd_loader < CMake
   description 'Vulkan Installable Client Driver ICD Loader'
   homepage 'https://github.com/KhronosGroup/Vulkan-Loader'
-  version '1.4.349'
+  version '1.4.350'
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/KhronosGroup/Vulkan-Loader.git'
@@ -11,9 +11,9 @@ class Vulkan_icd_loader < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2adb0e1aa809b464bd004f9628cc9f1ad2f16b3fad7f02090e6b6095d51cae14',
-     armv7l: '2adb0e1aa809b464bd004f9628cc9f1ad2f16b3fad7f02090e6b6095d51cae14',
-     x86_64: '5e23dade28d8fad2e50d6f3f44167d0d242fc9d7a702e22c7b8654de9c57dde1'
+    aarch64: 'ad55db560850fb86920fa23ce0bb53a8ac3cabc0cdddd82a2babb5f036c2d7aa',
+     armv7l: 'ad55db560850fb86920fa23ce0bb53a8ac3cabc0cdddd82a2babb5f036c2d7aa',
+     x86_64: 'f7969b06b3513f22a6bfebdf3cba93a8abaec294b363314c69b6811ed62ed0c0'
   })
 
   depends_on 'glibc' => :library
