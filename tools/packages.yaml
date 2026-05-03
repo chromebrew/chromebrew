@@ -5340,6 +5340,11 @@ url: https://sourceforge.net/projects/libtirpc/files/libtirpc/
 activity: low
 ---
 kind: url
+name: libtommath
+url: https://github.com/libtom/libtommath/releases
+activity: none
+---
+kind: url
 name: libtool
 url: https://ftp.gnu.org/gnu/libtool
 activity: none
