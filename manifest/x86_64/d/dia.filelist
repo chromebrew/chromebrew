@@ -1,5 +1,6 @@
-# Total size: 19260247
+# Total size: 20630039
 /usr/local/bin/dia
+/usr/local/include/xpm-pixbuf.h
 /usr/local/lib64/dia/libaadl_objects.so
 /usr/local/lib64/dia/libcairo_filter.so
 /usr/local/lib64/dia/libcgm_filter.so
@@ -31,10 +32,14 @@
 /usr/local/lib64/dia/libsvg_filter.so
 /usr/local/lib64/dia/libuml_objects.so
 /usr/local/lib64/dia/libvdx_filter.so
+/usr/local/lib64/dia/libwmf_filter.so
 /usr/local/lib64/dia/libwpg_filter.so
 /usr/local/lib64/dia/libxfig_filter.so
 /usr/local/lib64/dia/libxslt_filter.so
 /usr/local/lib64/libdia.so
+/usr/local/lib64/libxpm-pixbuf.so
+/usr/local/lib64/libxpm-pixbuf.so.0
+/usr/local/lib64/pkgconfig/xpm-pixbuf.pc
 /usr/local/share/applications/org.gnome.Dia.desktop
 /usr/local/share/dia/python-startup.py
 /usr/local/share/dia/python/allprops.py
@@ -1745,5 +1750,5 @@
 /usr/local/share/locale/zh_CN/LC_MESSAGES/dia.mo
 /usr/local/share/locale/zh_HK/LC_MESSAGES/dia.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/dia.mo
-/usr/local/share/metainfo/org.gnome.Dia.appdata.xml
+/usr/local/share/metainfo/org.gnome.Dia.metainfo.xml
 /usr/local/share/thumbnailers/org.gnome.Dia.thumbnailer

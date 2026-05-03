@@ -1,0 +1,3 @@
+#!/bin/bash
+dia -h | head
+dia -v 2>&1
