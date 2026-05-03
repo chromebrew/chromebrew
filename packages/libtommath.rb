@@ -16,4 +16,6 @@ class Libtommath < CMake
        i686: '4ffacf3d28bb9b3cec987b382c727f77a85c7799364de369acf0a785006b3e48',
      x86_64: '96802e0c96a914ef2b1ef8dbcedb346678f79bf3fffcff220c85af8704e6dc58'
   })
+
+  cmake_options '-DBUILD_SHARED_LIBS=ON'
 end
