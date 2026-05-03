@@ -1,12 +1,12 @@
-# Total size: 1660626
+# Total size: 1671359
 /usr/local/bin/tox
-/usr/local/lib/python3.14/site-packages/tox-4.53.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/tox-4.53.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/tox-4.53.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/tox-4.53.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/tox-4.53.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/tox-4.53.0.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/tox-4.53.0.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/tox-4.53.1.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/tox-4.53.1.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/tox-4.53.1.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/tox-4.53.1.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/tox-4.53.1.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/tox-4.53.1.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/tox-4.53.1.dist-info/licenses/LICENSE
 /usr/local/lib/python3.14/site-packages/tox/__init__.py
 /usr/local/lib/python3.14/site-packages/tox/__main__.py
 /usr/local/lib/python3.14/site-packages/tox/__pycache__/__init__.cpython-314.pyc
@@ -251,12 +251,14 @@
 /usr/local/lib/python3.14/site-packages/tox/util/__pycache__/file_view.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tox/util/__pycache__/graph.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tox/util/__pycache__/path.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/tox/util/__pycache__/redact.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tox/util/__pycache__/spinner.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tox/util/ci.py
 /usr/local/lib/python3.14/site-packages/tox/util/cpu.py
 /usr/local/lib/python3.14/site-packages/tox/util/file_view.py
 /usr/local/lib/python3.14/site-packages/tox/util/graph.py
 /usr/local/lib/python3.14/site-packages/tox/util/path.py
+/usr/local/lib/python3.14/site-packages/tox/util/redact.py
 /usr/local/lib/python3.14/site-packages/tox/util/spinner.py
 /usr/local/lib/python3.14/site-packages/tox/version.py
 /usr/local/share/man/man1/tox.1.zst
