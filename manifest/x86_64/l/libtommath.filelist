@@ -1,6 +1,9 @@
-# Total size: 1048285
+# Total size: 181682
 /usr/local/include/tommath.h
 /usr/local/lib64/cmake/libtommath/libtommath-config-release.cmake
 /usr/local/lib64/cmake/libtommath/libtommath-config-version.cmake
 /usr/local/lib64/cmake/libtommath/libtommath-config.cmake
-/usr/local/lib64/libtommath.a
+/usr/local/lib64/libtommath.so
+/usr/local/lib64/libtommath.so.1
+/usr/local/lib64/libtommath.so.1.3.0
+/usr/local/lib64/pkgconfig/libtommath.pc
