@@ -1,12 +1,12 @@
-# Total size: 15094112
+# Total size: 15133510
 /usr/local/bin/sqlmap
-/usr/local/lib/python3.14/site-packages/sqlmap-1.10.3.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/sqlmap-1.10.3.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/sqlmap-1.10.3.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/sqlmap-1.10.3.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/sqlmap-1.10.3.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/sqlmap-1.10.3.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/sqlmap-1.10.3.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/sqlmap-1.10.5.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/sqlmap-1.10.5.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/sqlmap-1.10.5.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/sqlmap-1.10.5.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/sqlmap-1.10.5.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/sqlmap-1.10.5.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/sqlmap-1.10.5.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/sqlmap/.gitattributes
 /usr/local/lib/python3.14/site-packages/sqlmap/.github/CODE_OF_CONDUCT.md
 /usr/local/lib/python3.14/site-packages/sqlmap/.github/CONTRIBUTING.md
@@ -753,6 +753,20 @@
 /usr/local/lib/python3.14/site-packages/sqlmap/plugins/dbms/snowflake/fingerprint.py
 /usr/local/lib/python3.14/site-packages/sqlmap/plugins/dbms/snowflake/syntax.py
 /usr/local/lib/python3.14/site-packages/sqlmap/plugins/dbms/snowflake/takeover.py
+/usr/local/lib/python3.14/site-packages/sqlmap/plugins/dbms/spanner/__init__.py
+/usr/local/lib/python3.14/site-packages/sqlmap/plugins/dbms/spanner/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/sqlmap/plugins/dbms/spanner/__pycache__/connector.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/sqlmap/plugins/dbms/spanner/__pycache__/enumeration.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/sqlmap/plugins/dbms/spanner/__pycache__/filesystem.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/sqlmap/plugins/dbms/spanner/__pycache__/fingerprint.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/sqlmap/plugins/dbms/spanner/__pycache__/syntax.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/sqlmap/plugins/dbms/spanner/__pycache__/takeover.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/sqlmap/plugins/dbms/spanner/connector.py
+/usr/local/lib/python3.14/site-packages/sqlmap/plugins/dbms/spanner/enumeration.py
+/usr/local/lib/python3.14/site-packages/sqlmap/plugins/dbms/spanner/filesystem.py
+/usr/local/lib/python3.14/site-packages/sqlmap/plugins/dbms/spanner/fingerprint.py
+/usr/local/lib/python3.14/site-packages/sqlmap/plugins/dbms/spanner/syntax.py
+/usr/local/lib/python3.14/site-packages/sqlmap/plugins/dbms/spanner/takeover.py
 /usr/local/lib/python3.14/site-packages/sqlmap/plugins/dbms/sqlite/__init__.py
 /usr/local/lib/python3.14/site-packages/sqlmap/plugins/dbms/sqlite/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/sqlmap/plugins/dbms/sqlite/__pycache__/connector.cpython-314.pyc
