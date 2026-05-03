@@ -1,8 +1,8 @@
 require 'package'
 
 class Tssh < Package
-  description 'Alternative ssh client with additional features.'
-  homepage 'https://trzsz.github.io/ssh'
+  description 'Highly OpenSSH-compatible client with extended features.'
+  homepage 'https://trzsz.github.io/tssh'
   version '0.1.24'
   license 'MIT'
   compatibility 'all'
