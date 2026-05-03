@@ -6770,6 +6770,11 @@ url: https://github.com/CoolerVoid/0d1n/releases
 activity: low
 ---
 kind: url
+name: ogdf
+url: https://github.com/ogdf/ogdf/releases
+activity: low
+---
+kind: url
 name: ollama
 url: https://github.com/ollama/ollama/releases
 activity: high

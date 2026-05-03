@@ -1,0 +1,5 @@
+#!/bin/bash
+dfu-prefix -h 2>&1 | head
+dfu-suffix -h 2>&1 | head
+dfu-util -V
+dfu-util -h 2>&1 | head -5

@@ -1,32 +1,24 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Dfu_util < Package
+class Dfu_util < Autotools
   description 'DFU is intended to download and upload firmware to/from devices connected over USB.'
   homepage 'http://dfu-util.gnumonks.org/'
-  version '0.9'
+  version '0.11'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'http://dfu-util.sourceforge.net/releases/dfu-util-0.9.tar.gz'
-  source_sha256 '36428c6a6cb3088cad5a3592933385253da5f29f2effa61518ee5991ea38f833'
-  binary_compression 'tar.xz'
+  source_url "http://dfu-util.sourceforge.net/releases/dfu-util-#{version}.tar.gz"
+  source_sha256 'b4b53ba21a82ef7e3d4c47df2952adf5fa494f499b6b0b57c58c5d04ae8ff19e'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9f15f808d4e10bce99419bd7330f17af265be7db6b21919497aa1df2b235259a',
-     armv7l: '9f15f808d4e10bce99419bd7330f17af265be7db6b21919497aa1df2b235259a',
-       i686: '9a3d7b20e130741f7182f124fac70e458ccf7293848373bfd1808b147062fe63',
-     x86_64: '0293dd440c43ca3c89f8a83c8127de0a37a1357c6515f2933f94ab1b29b5322d'
+    aarch64: '393f127d2761c1e4eeb7e62f06f563197d4030fea12d67179a7993ee8d9ccb19',
+     armv7l: '393f127d2761c1e4eeb7e62f06f563197d4030fea12d67179a7993ee8d9ccb19',
+       i686: '1735c55bf504f8741177c9ce7e28fc4078abbf07721de8cc6e32d5b40679a28c',
+     x86_64: '81c4ac4962732bdc6dd214e44f2f16e32dd5e4e79602bf46dab18a6e911e48de'
   })
 
-  depends_on 'libusb'
+  depends_on 'glibc' => :executable
+  depends_on 'libusb' => :executable
 
-  def self.build
-    system "./configure \
-      --prefix=#{CREW_PREFIX} \
-      --libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  run_tests
 end
