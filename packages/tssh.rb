@@ -3,7 +3,7 @@ require 'package'
 class Tssh < Package
   description 'Highly OpenSSH-compatible client with extended features.'
   homepage 'https://trzsz.github.io/tssh'
-  version '0.1.24'
+  version '0.1.25'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/trzsz/trzsz-ssh.git'
