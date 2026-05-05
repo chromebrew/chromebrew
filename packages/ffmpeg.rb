@@ -3,7 +3,7 @@ require 'package'
 class Ffmpeg < Package
   description 'Complete solution to record, convert and stream audio and video'
   homepage 'https://ffmpeg.org/'
-  version '8.1'
+  version '8.1.1'
   license 'LGPL-2,1, GPL-2, GPL-3, and LGPL-3' # When changing ffmpeg's configure options, make sure this variable is still accurate.
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://git.ffmpeg.org/ffmpeg.git'
@@ -11,9 +11,9 @@ class Ffmpeg < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3241f82dacae7ea6ffae1e1941453f178b0dc4e59a70b450a3680127d6a32c4c',
-     armv7l: '3241f82dacae7ea6ffae1e1941453f178b0dc4e59a70b450a3680127d6a32c4c',
-     x86_64: '8555634b44f0ac4c71a61c2ffd9890acd511300c0b027ae05729a5d0f6da18c9'
+    aarch64: 'c7e79e79d90d05f9dd9c2ce3ca4118a85d436411f3865cae5ed209d10f6a5580',
+     armv7l: 'c7e79e79d90d05f9dd9c2ce3ca4118a85d436411f3865cae5ed209d10f6a5580',
+     x86_64: '034ef894a20f8be6a2ff09180d70b1cb9c8f9b827a1e9a2cd21e3f18e6facaea'
   })
 
   depends_on 'alsa_lib' => :library

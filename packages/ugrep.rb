@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Ugrep < Autotools
   description 'A more powerful, ultra fast, user-friendly, compatible grep'
   homepage 'https://ugrep.com/'
-  version '7.8.0'
+  version '7.8.1'
   license 'BSD-3 Clause'
   compatibility 'x86_64'
   source_url 'https://github.com/Genivia/ugrep.git'
@@ -11,7 +11,7 @@ class Ugrep < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '9698295a575a0e301c1fb61ea0973d1be9717db127233e83b4ea63ca72393daf'
+     x86_64: 'b74e13cccd142efadb43c2ff8f2cbbceebe5489bbfa34edd884b04728b644619'
   })
 
   depends_on 'brotli' => :executable

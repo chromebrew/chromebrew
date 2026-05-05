@@ -3,7 +3,7 @@ require 'package'
 class Tabby < Package
   description 'Tabby is an infinitely customizable cross-platform terminal app for local shells, serial, SSH and Telnet connections.'
   homepage 'https://tabby.sh/'
-  version '1.0.231'
+  version '1.0.232'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url({
@@ -12,9 +12,9 @@ class Tabby < Package
      x86_64: "https://github.com/Eugeny/tabby/releases/download/v#{version}/tabby-#{version}-linux-x64.tar.gz"
   })
   source_sha256({
-    aarch64: '83b0cb2fbf73e270a61b9c3b7e9a806ce212e7b2f9e15b3b6f95380308f3d85c',
-     armv7l: '83b0cb2fbf73e270a61b9c3b7e9a806ce212e7b2f9e15b3b6f95380308f3d85c',
-     x86_64: '4e135950333fd7629d2e0c0bb7fef9b656f4beb0440015e31b2dc75658881251'
+    aarch64: '8915243031bab8f94f128fa5ed4da03bf3aca64cc138738964db391f9fb3b13a',
+     armv7l: '8915243031bab8f94f128fa5ed4da03bf3aca64cc138738964db391f9fb3b13a',
+     x86_64: '50f582686d25f0a3504c3cdd7ce5b33a0a0ce822a8c669eea0f7a4e464d8635c'
   })
 
   depends_on 'alsa_lib' # R
