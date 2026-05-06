@@ -1,4 +1,4 @@
-# Total size: 37636139
+# Total size: 37499542
 /usr/local/bin/fish
 /usr/local/bin/fish_indent
 /usr/local/bin/fish_key_reader
@@ -1113,6 +1113,7 @@
 /usr/local/share/fish/functions/__fish_complete_proc.fish
 /usr/local/share/fish/functions/__fish_complete_ssh.fish
 /usr/local/share/fish/functions/__fish_complete_subcommand.fish
+/usr/local/share/fish/functions/__fish_complete_sudo.fish
 /usr/local/share/fish/functions/__fish_complete_suffix.fish
 /usr/local/share/fish/functions/__fish_complete_user_at_hosts.fish
 /usr/local/share/fish/functions/__fish_complete_user_ids.fish
@@ -1131,6 +1132,7 @@
 /usr/local/share/fish/functions/__fish_crux_packages.fish
 /usr/local/share/fish/functions/__fish_cursor_konsole.fish
 /usr/local/share/fish/functions/__fish_cursor_xterm.fish
+/usr/local/share/fish/functions/__fish_cygwin_noacl.fish
 /usr/local/share/fish/functions/__fish_data_with_directory.fish
 /usr/local/share/fish/functions/__fish_describe_command.fish
 /usr/local/share/fish/functions/__fish_echo.fish
@@ -1140,6 +1142,7 @@
 /usr/local/share/fish/functions/__fish_gnu_complete.fish
 /usr/local/share/fish/functions/__fish_hg_prompt.fish
 /usr/local/share/fish/functions/__fish_indent.fish
+/usr/local/share/fish/functions/__fish_is_cygwin.fish
 /usr/local/share/fish/functions/__fish_is_first_arg.fish
 /usr/local/share/fish/functions/__fish_is_first_token.fish
 /usr/local/share/fish/functions/__fish_is_git_repository.fish

@@ -11,10 +11,10 @@ class Fish < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '91335854fb8d5e06a519185b0fa27d1b9aad728e6fd5b2c0b82bb6bc4608158c',
-     armv7l: '91335854fb8d5e06a519185b0fa27d1b9aad728e6fd5b2c0b82bb6bc4608158c',
-       i686: '625e12715ca9355bfd8a8c137063df5a8c865f41bd84c3b4497ff1c67e3fd5de',
-     x86_64: '1b006909f522ab653538cfd41ad87030c0995073fbeb94465ffd63cf3418ea34'
+    aarch64: '344c1bae8b6b28915fd860d89ef508c216b71bc1bf08f32e23bfe2a53901b7cc',
+     armv7l: '344c1bae8b6b28915fd860d89ef508c216b71bc1bf08f32e23bfe2a53901b7cc',
+       i686: 'ec8e8cf814f4bbe9518ce724989093805538171e8270b42b77c3b678a68ecea1',
+     x86_64: 'a65cc40effdb0918d9ea0642e26160cff2c1a564de221ada405de5ee99be188c'
   })
 
   depends_on 'gcc_lib' => :executable
