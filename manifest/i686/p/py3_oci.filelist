@@ -1,12 +1,12 @@
-# Total size: 397926159
-/usr/local/lib/python3.14/site-packages/oci-2.173.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/oci-2.173.0.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/oci-2.173.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/oci-2.173.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/oci-2.173.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/oci-2.173.0.dist-info/THIRD_PARTY_LICENSES.txt
-/usr/local/lib/python3.14/site-packages/oci-2.173.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/oci-2.173.0.dist-info/top_level.txt
+# Total size: 397926919
+/usr/local/lib/python3.14/site-packages/oci-2.173.1.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/oci-2.173.1.dist-info/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/oci-2.173.1.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/oci-2.173.1.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/oci-2.173.1.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/oci-2.173.1.dist-info/THIRD_PARTY_LICENSES.txt
+/usr/local/lib/python3.14/site-packages/oci-2.173.1.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/oci-2.173.1.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/oci/__init__.py
 /usr/local/lib/python3.14/site-packages/oci/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/__pycache__/base_client.cpython-314.pyc
