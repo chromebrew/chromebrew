@@ -1,4 +1,4 @@
-# Total size: 412637610
+# Total size: 424718470
 /usr/local/bin/google-chrome
 /usr/local/share/appdata/google-chrome.appdata.xml
 /usr/local/share/applications/com.google.Chrome.desktop
@@ -259,8 +259,6 @@
 /usr/local/share/chrome/resources.pak
 /usr/local/share/chrome/v8_context_snapshot.bin
 /usr/local/share/chrome/vk_swiftshader_icd.json
-/usr/local/share/chrome/xdg-mime
-/usr/local/share/chrome/xdg-settings
 /usr/local/share/doc/google-chrome-stable/changelog.gz
 /usr/local/share/gnome-control-center/default-apps/google-chrome.xml
 /usr/local/share/man/man1/google-chrome-stable.1.zst
