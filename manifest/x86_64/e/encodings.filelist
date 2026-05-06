@@ -1,4 +1,4 @@
-# Total size: 642751
+# Total size: 646891
 /usr/local/share/fonts/encodings/adobe-dingbats.enc.gz
 /usr/local/share/fonts/encodings/adobe-standard.enc.gz
 /usr/local/share/fonts/encodings/adobe-symbol.enc.gz
@@ -12,6 +12,7 @@
 /usr/local/share/fonts/encodings/ibm-cp866.enc.gz
 /usr/local/share/fonts/encodings/iso8859-11.enc.gz
 /usr/local/share/fonts/encodings/iso8859-13.enc.gz
+/usr/local/share/fonts/encodings/iso8859-14.enc.gz
 /usr/local/share/fonts/encodings/iso8859-16.enc.gz
 /usr/local/share/fonts/encodings/iso8859-6.16.enc.gz
 /usr/local/share/fonts/encodings/iso8859-6.8x.enc.gz
