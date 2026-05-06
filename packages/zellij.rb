@@ -14,14 +14,14 @@ class Zellij < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '267e04f5852cb4c078f43b4330c423356d9c2871acaa3a14484c64fb93c95fad'
+    x86_64: '95b27e61fdd70105f1c95ace6e7b2ff5e85feb8389719ba99b28f508c59d9382'
   })
 
-  depends_on 'gcc_lib' => :library
-  depends_on 'glibc' => :library
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
   depends_on 'protobuf' => :build
   depends_on 'rust' => :build
-  depends_on 'zlib' => :library
+  depends_on 'zlib' => :executable
 
   rust_targets 'wasm32-wasip1'
 
