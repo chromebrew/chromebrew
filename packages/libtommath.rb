@@ -11,9 +11,13 @@ class Libtommath < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7bea253ed5d15167572dc66a386df0ad0b8a185a9116db926f3d892feae0079e',
-     armv7l: '7bea253ed5d15167572dc66a386df0ad0b8a185a9116db926f3d892feae0079e',
-       i686: '4ffacf3d28bb9b3cec987b382c727f77a85c7799364de369acf0a785006b3e48',
-     x86_64: '96802e0c96a914ef2b1ef8dbcedb346678f79bf3fffcff220c85af8704e6dc58'
+    aarch64: '6ecd409dd58b273ca59841f90f81652bada2c21a1234e8fd88b7516d3a4788ed',
+     armv7l: '6ecd409dd58b273ca59841f90f81652bada2c21a1234e8fd88b7516d3a4788ed',
+       i686: '29af46e3d69b34e226f7c3ae7567ab964cf810f299ac7a04fdf18f37fc988a90',
+     x86_64: '3e6c9e04a3cb63f2d9f1cf98a1db575a6c46df08b30b022c4389dd4059d83a04'
   })
+
+  depends_on 'glibc' => :library
+
+  cmake_options '-DBUILD_SHARED_LIBS=ON'
 end
