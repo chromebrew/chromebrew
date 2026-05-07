@@ -10,6 +10,13 @@ class Diskscan < CMake
   git_hashtag version
   binary_compression 'tar.zst'
 
+  binary_sha256({
+    aarch64: 'a135d565fc00c1acd80a7c64b161bddf3670462d88a4eb757cdbc339a83b95ba',
+     armv7l: 'a135d565fc00c1acd80a7c64b161bddf3670462d88a4eb757cdbc339a83b95ba',
+       i686: '4fce0b84cbdc9ff7a1452e60f2a4b790475b41652871a575ab2134bb93a9584d',
+     x86_64: 'eb91f270091e9e326f137ca3b3cb7cce1dfbfb9d061e99c14ba36781f63ac013'
+  })
+
   depends_on 'glibc' => :executable
   depends_on 'ncurses' => :executable
   depends_on 'termcap' => :library
