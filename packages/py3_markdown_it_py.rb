@@ -13,14 +13,14 @@ class Py3_markdown_it_py < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a75e4a66ae155dd2add2e25efc1f1a0b5d901e4ae8f7667e08f6c56e0fa4f0a4',
-     armv7l: 'a75e4a66ae155dd2add2e25efc1f1a0b5d901e4ae8f7667e08f6c56e0fa4f0a4',
-       i686: '860d100be6377f1f40c54009f114480e3da7822bd6cd7fdebef7829f40b1b107',
-     x86_64: '11f42d89684e6d6a0d06eadf61bbf6c048aa7afb79b838ae91de91c11df66c90'
+    aarch64: '5be2c7aead62266b8c250b8ac1ccf67b6844ac90a432ca132e11f1c6eaa8b24e',
+     armv7l: '5be2c7aead62266b8c250b8ac1ccf67b6844ac90a432ca132e11f1c6eaa8b24e',
+       i686: 'd6d123239a3fab9f180975dae10a333eb75d0de84fa03e570f1b933987e70e4e',
+     x86_64: '6a313b56f05037868e30bc06c97ec3568caf80bd1285d14b0ff9076cdcbcbead'
   })
 
   depends_on 'py3_mdurl'
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end
