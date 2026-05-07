@@ -1,31 +1,24 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Di < Package
+class Di < CMake
   description 'DI is a disk information utility, displaying everything (and more) that your \'df\' command does.'
   homepage 'https://diskinfo-di.sourceforge.io/'
-  version '4.47.1'
+  version '6.2.2.2'
   license 'ZLIB'
   compatibility 'all'
-  source_url 'https://gentoo.com/di/di-4.47.1.tar.gz'
-  source_sha256 'eea8ad94197d9f11790afea0924d8bf29ec001c32eb6209e81c4e13766a2abad'
-  binary_compression 'tar.xz'
+  source_url "https://downloads.sourceforge.net/project/diskinfo-di/di-#{version}.tar.gz"
+  source_sha256 '19eeeb7ebcad3061ae7814cdae5593accfb2bb261ce24795a604a282cbfc60fe'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7f6339ca083956c06ae62710e486cdb49a9fb9d5448ca1332fea57fe0d29a029',
-     armv7l: '7f6339ca083956c06ae62710e486cdb49a9fb9d5448ca1332fea57fe0d29a029',
-       i686: '3f3972ee14f7d38953afe50f6b5889cabad4e532264df79ab47c83ce62775874',
-     x86_64: '38e6c521776e089729a29b43dbb24e142614edb7e88e077cc69f81dbe0136ff7'
+    aarch64: '9652e3807cd9da2ec73a1c66b72f24da7b7fc8f9056d2b9c3de33b4e890ab417',
+     armv7l: '9652e3807cd9da2ec73a1c66b72f24da7b7fc8f9056d2b9c3de33b4e890ab417',
+       i686: '395ae0a7f3c58ad4a6e2520d17bfc11a6e5695ef55fca5e2ed59082387984c64',
+     x86_64: 'ca094336b13d7fb906ba9ac61a000659d680d3e97dc14506e45506ab883243d8'
   })
 
-  def self.build
-    system "sed -i 's,prefix = /usr/local,prefix = #{CREW_DEST_PREFIX},' Makefile"
-    system "sed -i 's,USER = root,USER = #{USER},' Makefile" # set correct owner
-    system "sed -i 's,GROUP = bin,GROUP = #{USER},' Makefile" # set correct group
-    system 'make -e dioptions.dat'
-    system 'make -e'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", '-e', 'install'
-  end
+  depends_on 'glibc' => :library
+  depends_on 'libtirpc' => :library
+  depends_on 'libtommath' => :library
+  depends_on 'mpdecimal' => :library
 end
