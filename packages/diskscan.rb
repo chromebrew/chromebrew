@@ -1,30 +1,26 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Diskscan < Package
+class Diskscan < CMake
   description 'diskscan is intended to find sectors of a storage medium (hard disk, flash drive or pendrive, etc.) which are bad or in the process of going bad.'
   homepage 'http://blog.disksurvey.org/proj/diskscan/'
-  version '0.20'
+  version '0.21'
   license 'GPL-3+'
   compatibility 'all'
-  source_url 'https://github.com/baruch/diskscan/archive/0.20.tar.gz'
-  source_sha256 '86038b3eb45fd4b2485a4ffba1949c68bea66f13a4c991265e3d527f022ed966'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/baruch/diskscan.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '018a45cad7c7409280a44bbc59ca464cde36eb687d0795ed978d5a69dee93683',
-     armv7l: '018a45cad7c7409280a44bbc59ca464cde36eb687d0795ed978d5a69dee93683',
-       i686: 'fb05ea4842dc5d97f6359b0c891102e3e495c25db67f768e9b9fce83972e0c4a',
-     x86_64: 'e56c72291e6dbb53b30e41a227404e6b446a37e112442d2d7463a609d577170c'
+    aarch64: 'a135d565fc00c1acd80a7c64b161bddf3670462d88a4eb757cdbc339a83b95ba',
+     armv7l: 'a135d565fc00c1acd80a7c64b161bddf3670462d88a4eb757cdbc339a83b95ba',
+       i686: '4fce0b84cbdc9ff7a1452e60f2a4b790475b41652871a575ab2134bb93a9584d',
+     x86_64: 'eb91f270091e9e326f137ca3b3cb7cce1dfbfb9d061e99c14ba36781f63ac013'
   })
 
-  depends_on 'termcap'
+  depends_on 'glibc' => :executable
+  depends_on 'ncurses' => :executable
+  depends_on 'termcap' => :library
+  depends_on 'zlib' => :executable
 
-  def self.build
-    system "cmake . -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  cmake_options '-DCMAKE_POLICY_VERSION_MINIMUM=3.5'
 end
