@@ -6,7 +6,7 @@ require 'buildsystems/pip'
 class Py3_markdown_it_py < Pip
   description 'Python port of markdown-it. Markdown parsing, done right!'
   homepage 'https://github.com/executablebooks/markdown-it-py'
-  version '4.0.0'
+  version '4.1.0'
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
