@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Inetutils < Autotools
   description 'The Inetutils package contains programs for basic networking. Such as dnsdomainname, ftp, hostname, ifconfig, ping, ping6, talk, telnet, tftp, traceroute'
   homepage 'https://www.gnu.org/software/inetutils/'
-  version '2.7'
+  version '2.8'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://git.savannah.gnu.org/git/inetutils.git'
