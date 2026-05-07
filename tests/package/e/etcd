@@ -1,2 +1,7 @@
 #!/bin/bash
+etcd -h 2>&1 | head
 etcd --version
+etcdctl -h 2>&1 | head
+etcdctl version
+etcdutl -h 2>&1 | head
+etcdutl version
