@@ -1,30 +1,27 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Encodings < Package
+class Encodings < Autotools
   description 'X11 Font Index Generator'
   homepage 'https://xorg.freedesktop.org/wiki/'
-  version '1.0.5'
+  version '1.1.0'
   license 'custom'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://www.x.org/releases/individual/font/encodings-1.0.5.tar.bz2'
-  source_sha256 'bd96e16143a044b19e87f217cf6a3763a70c561d1076aad6f6d862ec41774a31'
-  binary_compression 'tar.xz'
+  source_url 'https://gitlab.freedesktop.org/xorg/font/encodings.git'
+  git_hashtag "encodings-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'eaa062b2b7fb598e9f08c6c3a17cac90d216af00da3a53d345fa1c9b25acf00c',
-     armv7l: 'eaa062b2b7fb598e9f08c6c3a17cac90d216af00da3a53d345fa1c9b25acf00c',
-     x86_64: '7571507bb292543e9a4fabb77eb51713403983c04bab5b5b1593946f4a07a00a'
+    aarch64: 'ef6928a60a5750579fdb73aeb19f7fda8dc5482b3971d0e9eb4d2c8ced917028',
+     armv7l: 'ef6928a60a5750579fdb73aeb19f7fda8dc5482b3971d0e9eb4d2c8ced917028',
+     x86_64: '4afda61a6d7ea03e7df01078f7aa7c40e00d0865328ac77be45e9123f3d7b095'
   })
 
-  depends_on 'mkfontscale'
+  depends_on 'font_util' => :executable
+  depends_on 'mkfontscale' => :executable
 
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS} --with-fontrootdir=#{CREW_PREFIX}/share/fonts"
+  autotools_configure_options "--with-fontrootdir=#{CREW_PREFIX}/share/fonts"
+
+  autotools_pre_make_options do
     system "sed -e 's|^\(encodings_DATA = $(DATA_FILES)\).*|\1|' -i Makefile" # Found in xbps-src
-    system 'make'
-  end
-
-  def self.install
-    system "make install DESTDIR=#{CREW_DEST_DIR}"
   end
 end
