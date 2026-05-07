@@ -3,17 +3,22 @@ require 'package'
 class Diff_so_fancy < Package
   description 'diff-so-fancy strives to make your diffs human readable instead of machine readable.'
   homepage 'https://github.com/so-fancy/diff-so-fancy'
-  version '1.4.4'
+  version '1.4.10'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/so-fancy/diff-so-fancy/releases/download/v1.4.4/diff-so-fancy'
-  source_sha256 '14ded2376a20ce089952c64a2894afeb70ff0b77e5d7b661eb1c973820208e59'
+  source_url 'https://github.com/so-fancy/diff-so-fancy.git'
+  git_hashtag "v#{version}"
 
-  depends_on 'perl' # R
+  depends_on 'perl' => :logical
 
   no_compile_needed
 
   def self.install
-    FileUtils.install 'diff-so-fancy', "#{CREW_DEST_PREFIX}/bin/diff-so-fancy", mode: 0o755
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    FileUtils.install 'diff-so-fancy', "#{CREW_DEST_PREFIX}/share/diff-so-fancy/diff-so-fancy", mode: 0o755
+    FileUtils.ln_s "#{CREW_PREFIX}/share/diff-so-fancy/diff-so-fancy", "#{CREW_DEST_PREFIX}/bin/diff-so-fancy"
+    FileUtils.ln_s "#{CREW_PREFIX}/share/diff-so-fancy/diff-so-fancy", "#{CREW_DEST_PREFIX}/bin/d-s-f"
+    FileUtils.ln_s "#{CREW_PREFIX}/share/diff-so-fancy/diff-so-fancy", "#{CREW_DEST_PREFIX}/bin/dsf"
+    FileUtils.mv 'lib', "#{CREW_DEST_PREFIX}/share/diff-so-fancy"
   end
 end
