@@ -1,0 +1,3 @@
+#!/bin/bash
+man di | head
+di --version

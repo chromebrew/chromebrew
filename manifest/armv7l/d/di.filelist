@@ -1,7 +1,14 @@
-# Total size: 83976
+# Total size: 81115
 /usr/local/bin/di
-/usr/local/bin/mi
+/usr/local/include/di.h
+/usr/local/lib/libdi.so
+/usr/local/lib/libdi.so.6
+/usr/local/lib/libdi.so.6.2.2
+/usr/local/lib/pkgconfig/di.pc
+/usr/local/share/di/examples/build.sh
+/usr/local/share/di/examples/diex.c
 /usr/local/share/locale/de/LC_MESSAGES/di.mo
 /usr/local/share/locale/en/LC_MESSAGES/di.mo
 /usr/local/share/locale/es/LC_MESSAGES/di.mo
-/usr/local/share/man/man1/di.1.gz
+/usr/local/share/man/man1/di.1.zst
+/usr/local/share/man/man3/libdi.3.zst
