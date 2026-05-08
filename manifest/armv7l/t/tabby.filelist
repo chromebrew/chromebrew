@@ -1,4 +1,4 @@
-# Total size: 359505675
+# Total size: 358202912
 /usr/local/bin/tabby
 /usr/local/share/tabby/LICENSE.electron.txt
 /usr/local/share/tabby/LICENSES.chromium.html
@@ -1450,6 +1450,7 @@
 /usr/local/share/tabby/resources/builtin-plugins/tabby-terminal/src/frontends/frontend.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-terminal/src/frontends/xterm.css
 /usr/local/share/tabby/resources/builtin-plugins/tabby-terminal/src/frontends/xtermFrontend.ts
+/usr/local/share/tabby/resources/builtin-plugins/tabby-terminal/src/generatePalette.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-terminal/src/helpers.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-terminal/src/hotkeys.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-terminal/src/icons/arrow-down.svg
@@ -1496,6 +1497,7 @@
 /usr/local/share/tabby/resources/builtin-plugins/tabby-terminal/typings/features/zmodem.d.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-terminal/typings/frontends/frontend.d.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-terminal/typings/frontends/xtermFrontend.d.ts
+/usr/local/share/tabby/resources/builtin-plugins/tabby-terminal/typings/generatePalette.d.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-terminal/typings/helpers.d.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-terminal/typings/hotkeys.d.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-terminal/typings/index.d.ts
