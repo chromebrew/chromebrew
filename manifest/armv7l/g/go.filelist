@@ -1,4 +1,4 @@
-# Total size: 228414294
+# Total size: 228446858
 /usr/local/bin/go
 /usr/local/bin/gofmt
 /usr/local/share/go/CONTRIBUTING.md
@@ -56,6 +56,7 @@
 /usr/local/share/go/go.env
 /usr/local/share/go/lib/fips140/Makefile
 /usr/local/share/go/lib/fips140/README.md
+/usr/local/share/go/lib/fips140/certified.txt
 /usr/local/share/go/lib/fips140/fips140.sum
 /usr/local/share/go/lib/fips140/inprocess.txt
 /usr/local/share/go/lib/fips140/v1.0.0-c2097c7c.zip
@@ -937,6 +938,7 @@
 /usr/local/share/go/src/cmd/compile/internal/loopvar/testdata/opt.go
 /usr/local/share/go/src/cmd/compile/internal/loopvar/testdata/range_esc_address.go
 /usr/local/share/go/src/cmd/compile/internal/loopvar/testdata/range_esc_closure.go
+/usr/local/share/go/src/cmd/compile/internal/loopvar/testdata/range_esc_closure_linedir.go
 /usr/local/share/go/src/cmd/compile/internal/loopvar/testdata/range_esc_method.go
 /usr/local/share/go/src/cmd/compile/internal/loopvar/testdata/range_esc_minimal_closure.go
 /usr/local/share/go/src/cmd/compile/internal/mips/galign.go
@@ -2290,6 +2292,7 @@
 /usr/local/share/go/src/cmd/go/testdata/script/cover_single_vs_multiple.txt
 /usr/local/share/go/src/cmd/go/testdata/script/cover_statements.txt
 /usr/local/share/go/src/cmd/go/testdata/script/cover_swig.txt
+/usr/local/share/go/src/cmd/go/testdata/script/cover_switch_toolchain.txt
 /usr/local/share/go/src/cmd/go/testdata/script/cover_sync_atomic_import.txt
 /usr/local/share/go/src/cmd/go/testdata/script/cover_test_localpkg_filepath.txt
 /usr/local/share/go/src/cmd/go/testdata/script/cover_test_pkgselect.txt
@@ -2317,6 +2320,7 @@
 /usr/local/share/go/src/cmd/go/testdata/script/fileline.txt
 /usr/local/share/go/src/cmd/go/testdata/script/fips.txt
 /usr/local/share/go/src/cmd/go/testdata/script/fipssnap.txt
+/usr/local/share/go/src/cmd/go/testdata/script/fix_diff_exitcode.txt
 /usr/local/share/go/src/cmd/go/testdata/script/fix_suite.txt
 /usr/local/share/go/src/cmd/go/testdata/script/fix_vendor.txt
 /usr/local/share/go/src/cmd/go/testdata/script/fmt_load_errors.txt
@@ -2730,6 +2734,7 @@
 /usr/local/share/go/src/cmd/go/testdata/script/mod_stale.txt
 /usr/local/share/go/src/cmd/go/testdata/script/mod_std_vendor.txt
 /usr/local/share/go/src/cmd/go/testdata/script/mod_string_alias.txt
+/usr/local/share/go/src/cmd/go/testdata/script/mod_sum_absent.txt
 /usr/local/share/go/src/cmd/go/testdata/script/mod_sum_ambiguous.txt
 /usr/local/share/go/src/cmd/go/testdata/script/mod_sum_issue56222.txt
 /usr/local/share/go/src/cmd/go/testdata/script/mod_sum_lookup.txt
@@ -2843,6 +2848,8 @@
 /usr/local/share/go/src/cmd/go/testdata/script/test_buildinfo.txt
 /usr/local/share/go/src/cmd/go/testdata/script/test_buildinfo_godebug_issue68053.txt
 /usr/local/share/go/src/cmd/go/testdata/script/test_buildvcs.txt
+/usr/local/share/go/src/cmd/go/testdata/script/test_cache_coverpkg_bug.txt
+/usr/local/share/go/src/cmd/go/testdata/script/test_cache_coverpkg_no_profile.txt
 /usr/local/share/go/src/cmd/go/testdata/script/test_cache_inputs.txt
 /usr/local/share/go/src/cmd/go/testdata/script/test_chatty_fail.txt
 /usr/local/share/go/src/cmd/go/testdata/script/test_chatty_parallel_fail.txt
@@ -4907,6 +4914,8 @@
 /usr/local/share/go/src/crypto/internal/fips140/check/checktest/test.go
 /usr/local/share/go/src/crypto/internal/fips140/drbg/cast.go
 /usr/local/share/go/src/crypto/internal/fips140/drbg/ctrdrbg.go
+/usr/local/share/go/src/crypto/internal/fips140/drbg/entropy_fips140.go
+/usr/local/share/go/src/crypto/internal/fips140/drbg/entropy_wasm.go
 /usr/local/share/go/src/crypto/internal/fips140/drbg/rand.go
 /usr/local/share/go/src/crypto/internal/fips140/drbg/rand_test.go
 /usr/local/share/go/src/crypto/internal/fips140/ecdh/cast.go
@@ -8339,6 +8348,7 @@
 /usr/local/share/go/src/internal/types/testdata/fixedbugs/issue76383.go
 /usr/local/share/go/src/internal/types/testdata/fixedbugs/issue76384.go
 /usr/local/share/go/src/internal/types/testdata/fixedbugs/issue76478.go
+/usr/local/share/go/src/internal/types/testdata/fixedbugs/issue78163.go
 /usr/local/share/go/src/internal/types/testdata/spec/assignability.go
 /usr/local/share/go/src/internal/types/testdata/spec/comparable.go
 /usr/local/share/go/src/internal/types/testdata/spec/comparable1.19.go
@@ -14101,7 +14111,9 @@
 /usr/local/share/go/test/fixedbugs/issue77815.go
 /usr/local/share/go/test/fixedbugs/issue77919.go
 /usr/local/share/go/test/fixedbugs/issue7794.go
+/usr/local/share/go/test/fixedbugs/issue78404.go
 /usr/local/share/go/test/fixedbugs/issue7863.go
+/usr/local/share/go/test/fixedbugs/issue78641.go
 /usr/local/share/go/test/fixedbugs/issue7867.go
 /usr/local/share/go/test/fixedbugs/issue7884.go
 /usr/local/share/go/test/fixedbugs/issue7921.go
