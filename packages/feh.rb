@@ -3,7 +3,7 @@ require 'package'
 class Feh < Package
   description 'feh is an X11 image viewer aimed mostly at console users.'
   homepage 'https://feh.finalrewind.org/'
-  version '3.12.1'
+  version '3.12.2'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/derf/feh.git'
@@ -11,9 +11,9 @@ class Feh < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c3ae03c0832fabfc66ef789fdce672d7de4749e97a72b033022d1606ece83e30',
-     armv7l: 'c3ae03c0832fabfc66ef789fdce672d7de4749e97a72b033022d1606ece83e30',
-     x86_64: 'ba3500f7c2aa8f7f96d318a5ccfd8e84a8b0d4a1eeedbfd8452e1c6fc5c260b0'
+    aarch64: 'ede6b228b2378119c56faa7954083f0ea833748f5595d0671c9841902864c4ee',
+     armv7l: 'ede6b228b2378119c56faa7954083f0ea833748f5595d0671c9841902864c4ee',
+     x86_64: '39210471ede6306c795906607c7a121199275dda0dd20b96f9f5c761406931ee'
   })
 
   depends_on 'curl'
