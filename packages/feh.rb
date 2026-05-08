@@ -3,7 +3,7 @@ require 'package'
 class Feh < Package
   description 'feh is an X11 image viewer aimed mostly at console users.'
   homepage 'https://feh.finalrewind.org/'
-  version '3.12.1'
+  version '3.12.2'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/derf/feh.git'
