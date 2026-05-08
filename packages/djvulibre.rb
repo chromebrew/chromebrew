@@ -1,40 +1,33 @@
 # Adapted from Arch Linux djvulibre PKGBUILD at:
 # https://github.com/archlinux/svntogit-packages/raw/packages/djvulibre/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/autotools'
 
-class Djvulibre < Package
+class Djvulibre < Autotools
   description 'Suite to create, manipulate and view DjVu déjà vu documents'
   homepage 'https://djvu.sourceforge.net/'
-  @_ver = '3.5.28'
-  version "#{@_ver}-1"
+  version '3.5.30'
   license 'GPL2'
-  compatibility 'all'
-  source_url "https://downloads.sourceforge.net/project/djvu/DjVuLibre/#{@_ver}/djvulibre-#{@_ver}.tar.gz"
-  source_sha256 'fcd009ea7654fde5a83600eb80757bd3a76998e47d13c66b54c8db849f8f2edc'
+  compatibility 'aarch64 armv7l x86_64'
+  source_url "https://downloads.sourceforge.net/project/djvu/DjVuLibre/#{version}/djvulibre-#{version}.tar.gz"
+  source_sha256 'ee5e457d4cfebe566f94b99e5e3d3cc7f5c79ddb741c2ac2ba2e456f00329644'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '48a4422a5608c30ca64ee39e5def5889b39fb0a8baa21bea2e4a1a71732e4807',
-     armv7l: '48a4422a5608c30ca64ee39e5def5889b39fb0a8baa21bea2e4a1a71732e4807',
-       i686: '72dc698bb4e83cfa4b745005daea4ab7f877477e307462df26940b0404bb851c',
-     x86_64: '2d7e552fb69f2f0065b149be8046aaed7e6db3094b1f827fdd24454c2d5ddc9a'
+    aarch64: 'f1d04b1c42e9a5648a29701f2775e98d34438c62ff18195c467ece10f01230b1',
+     armv7l: 'f1d04b1c42e9a5648a29701f2775e98d34438c62ff18195c467ece10f01230b1',
+     x86_64: '857afb66dcafcf74104ff7ca6fbaac50b03623075f20e08c0b14c572f370b3c7'
   })
 
-  depends_on 'libjpeg_turbo'
-  depends_on 'libtiff'
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'libjpeg_turbo' => :library
   depends_on 'librsvg' => :build
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'libtiff' => :executable
 
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS} \
-      --disable-desktopfiles"
-    system 'make'
-  end
+  autotools_configure_options '--disable-desktopfiles'
 
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
+  autotools_install_extras do
     @desktopfiles = %w[22 32 48 64]
     @desktopfiles.each do |item|
       FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/icons/hicolor/#{item}x#{item}/mimetypes"

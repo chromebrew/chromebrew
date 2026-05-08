@@ -1,0 +1,19 @@
+#!/bin/bash
+any2djvu -h | head -3
+bzz 2>&1 | head -3
+c44 2>&1 | head -3
+cjb2 2>&1 | head -3
+cpaldjvu 2>&1 | head -3
+csepdjvu 2>&1 | head -3
+ddjvu --help 2>&1 | head -3
+djvm 2>&1 | head -3
+djvmcvt 2>&1 | head -3
+djvudump 2>&1
+djvuextract 2>&1
+djvumake 2>&1 | head -3
+djvups -help 2>&1 | head -3
+djvused -help 2>&1 | head -3
+djvuserve 2>&1 | head -3
+djvutoxml --help 2>&1
+djvutxt 2>&1 | head -3
+djvuxmlparser 2>&1
