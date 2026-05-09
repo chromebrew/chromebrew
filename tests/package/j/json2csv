@@ -1,0 +1,3 @@
+#!/bin/bash
+json2csv -h 2>&1
+json2csv -version

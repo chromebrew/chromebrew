@@ -3765,6 +3765,11 @@ url: https://download.gnome.org/sources/json-glib/
 activity: low
 ---
 kind: url
+name: json2csv
+url: https://github.com/jehiah/json2csv/releases
+activity: none
+---
+kind: url
 name: jsonc
 url: https://github.com/json-c/json-c/releases
 activity: low
