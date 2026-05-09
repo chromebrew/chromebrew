@@ -1,4 +1,4 @@
-# Total size: 1100691
+# Total size: 641634
 /usr/local/bin/convert-dtsv0
 /usr/local/bin/dtc
 /usr/local/bin/dtdiff
@@ -9,18 +9,14 @@
 /usr/local/include/fdt.h
 /usr/local/include/libfdt.h
 /usr/local/include/libfdt_env.h
-/usr/local/lib/libfdt-1.6.1.so
-/usr/local/lib/libfdt.a
-/usr/local/lib/libfdt.so
-/usr/local/lib/libfdt.so.1
-/usr/local/lib64/python3.10/site-packages/libfdt-1.6.1-py3.10-linux-x86_64.egg/EGG-INFO/PKG-INFO
-/usr/local/lib64/python3.10/site-packages/libfdt-1.6.1-py3.10-linux-x86_64.egg/EGG-INFO/SOURCES.txt
-/usr/local/lib64/python3.10/site-packages/libfdt-1.6.1-py3.10-linux-x86_64.egg/EGG-INFO/dependency_links.txt
-/usr/local/lib64/python3.10/site-packages/libfdt-1.6.1-py3.10-linux-x86_64.egg/EGG-INFO/native_libs.txt
-/usr/local/lib64/python3.10/site-packages/libfdt-1.6.1-py3.10-linux-x86_64.egg/EGG-INFO/not-zip-safe
-/usr/local/lib64/python3.10/site-packages/libfdt-1.6.1-py3.10-linux-x86_64.egg/EGG-INFO/top_level.txt
-/usr/local/lib64/python3.10/site-packages/libfdt-1.6.1-py3.10-linux-x86_64.egg/__pycache__/_libfdt.cpython-310.pyc
-/usr/local/lib64/python3.10/site-packages/libfdt-1.6.1-py3.10-linux-x86_64.egg/__pycache__/libfdt.cpython-310.pyc
-/usr/local/lib64/python3.10/site-packages/libfdt-1.6.1-py3.10-linux-x86_64.egg/_libfdt.cpython-310-x86_64-linux-gnu.so
-/usr/local/lib64/python3.10/site-packages/libfdt-1.6.1-py3.10-linux-x86_64.egg/_libfdt.py
-/usr/local/lib64/python3.10/site-packages/libfdt-1.6.1-py3.10-linux-x86_64.egg/libfdt.py
+/usr/local/lib64/libfdt.a
+/usr/local/lib64/libfdt.so
+/usr/local/lib64/libfdt.so.1
+/usr/local/lib64/libfdt.so.1.7.2
+/usr/local/lib64/python3.14/site-packages/__pycache__/libfdt.cpython-314.pyc
+/usr/local/lib64/python3.14/site-packages/_libfdt.cpython-314-x86_64-linux-gnu.so
+/usr/local/lib64/python3.14/site-packages/libfdt-1.7.2-py3.14.egg-info/PKG-INFO
+/usr/local/lib64/python3.14/site-packages/libfdt-1.7.2-py3.14.egg-info/SOURCES.txt
+/usr/local/lib64/python3.14/site-packages/libfdt-1.7.2-py3.14.egg-info/dependency_links.txt
+/usr/local/lib64/python3.14/site-packages/libfdt-1.7.2-py3.14.egg-info/top_level.txt
+/usr/local/lib64/python3.14/site-packages/libfdt.py

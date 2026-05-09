@@ -1,0 +1,14 @@
+#!/bin/bash
+dtc -h | head -5
+dtc -v
+dtsv0 -h
+dtsv0 -V
+dtdiff -h
+fdtdump -h | head -5
+fdtdump -V
+fdtget -h | head -5
+fdtget -V
+fdtoverlay -h | head -5
+fdtoverlay -V
+fdtput -h | head -5
+fdtput -V
