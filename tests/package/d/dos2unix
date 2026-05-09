@@ -1,0 +1,9 @@
+#!/bin/bash
+dos2unix -h | head -5
+dos2unix -V
+mac2unix -h | head -5
+mac2unix -V
+unix2dos -h | head -5
+unix2dos -V
+unix2mac -h | head -5
+unix2mac -V
