@@ -3,25 +3,31 @@ require 'buildsystems/meson'
 class Dconf < Meson
   description 'The DConf package contains a low-level configuration system.'
   homepage 'https://wiki.gnome.org/Projects/dconf'
-  version '0.40.0'
+  version '0.49.0'
   license 'LGPL-2.1+'
-  compatibility 'all'
-  source_url 'https://download.gnome.org/core/40/40.rc/sources/dconf-0.40.0.tar.xz'
-  source_sha256 'cf7f22a4c9200421d8d3325c5c1b8b93a36843650c9f95d6451e20f0bcb24533'
-  binary_compression 'tar.xz'
+  compatibility 'aarch64 armv7l x86_64'
+  source_url 'https://gitlab.gnome.org/GNOME/dconf.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2d1df99cdc3536a8e44f679c78adcb54030c2dc84fc806da32f68f49172960b4',
-     armv7l: '2d1df99cdc3536a8e44f679c78adcb54030c2dc84fc806da32f68f49172960b4',
-       i686: '1f17e19357695ff97dbe37aba82c5a3c40b138bba6e2acb18986b103e3d8832a',
-     x86_64: '4362ea8fa70e02799dc148f97891c30787f311ebfda78ccf0966d3843b9dc173'
+    aarch64: 'f415cdeda2116ba03a4ef6ea72cd4db30677240f9bce632aa49e80466e824e39',
+     armv7l: 'f415cdeda2116ba03a4ef6ea72cd4db30677240f9bce632aa49e80466e824e39',
+     x86_64: '8159f9ea61b1f469049e292cbf1732631b2a723343e14736079880062b77c1f5'
   })
 
-  depends_on 'dbus' => :build
-  depends_on 'gtk_doc' => :build
-  depends_on 'glib'
-  depends_on 'vala' => :build
   depends_on 'bash_completion' => :build
+  depends_on 'dbus' => :build
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'gtk_doc' => :build
+  depends_on 'libxslt' => :library
+  depends_on 'py3_gvdb' => :library
+  depends_on 'vala' => :build
 
   gnome
+
+  meson_install_extras do
+    FileUtils.rm_rf "#{CREW_DEST_PREFIX}/lib/systemd"
+  end
 end

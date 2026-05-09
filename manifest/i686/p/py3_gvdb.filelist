@@ -1,0 +1,18 @@
+# Total size: 195448
+/usr/local/lib/python3.14/site-packages/gvdb-0.30.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/gvdb-0.30.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/gvdb-0.30.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/gvdb-0.30.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/gvdb-0.30.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/gvdb/__init__.py
+/usr/local/lib/python3.14/site-packages/gvdb/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/gvdb/__pycache__/client.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/gvdb/__pycache__/importers.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/gvdb/client.py
+/usr/local/lib/python3.14/site-packages/gvdb/importers.py
+/usr/local/lib/python3.14/site-packages/gvdb/pb/__init__.py
+/usr/local/lib/python3.14/site-packages/gvdb/pb/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/gvdb/pb/__pycache__/vectordb_pb2.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/gvdb/pb/__pycache__/vectordb_pb2_grpc.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/gvdb/pb/vectordb_pb2.py
+/usr/local/lib/python3.14/site-packages/gvdb/pb/vectordb_pb2_grpc.py
