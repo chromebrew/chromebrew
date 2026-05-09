@@ -7885,6 +7885,11 @@ url: https://github.com/assafelovic/gpt-researcher/releases
 activity: high
 ---
 kind: url
+name: py3_gvdb
+url: https://github.com/JonathanBerhe/gvdb/releases
+activity: high
+---
+kind: url
 name: py3_hatch_vcs
 url: https://github.com/ofek/hatch-vcs/releases
 activity: medium
