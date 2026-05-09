@@ -3,31 +3,31 @@ require 'package'
 class Dos2unix < Package
   description 'dos2unix includes utilities to convert text files with DOS or Mac line endings to Unix line endings and vice versa.'
   homepage 'http://freecode.com/projects/dos2unix'
-  version '7.4.0'
+  version '7.5.5'
   license 'BSD-2'
   compatibility 'all'
-  source_url 'https://downloads.sourceforge.net/project/dos2unix/dos2unix/7.4.0/dos2unix-7.4.0.tar.gz'
-  source_sha256 'bac765abdbd95cdd87a71989d4382c32cf3cbfeee2153f0086cb9cf18261048a'
-  binary_compression 'tar.xz'
+  source_url "https://downloads.sourceforge.net/project/dos2unix/dos2unix/#{version}/dos2unix-#{version}.tar.gz"
+  source_sha256 '75f692b8484c8c24579a2ffd87df16b9c9428ed95497e3393a21d1ba0697ac33'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e485cc2a80abbd3f47110cca664d8e61ad17916fadbbf87012aa2b7baaeffaf3',
-     armv7l: 'e485cc2a80abbd3f47110cca664d8e61ad17916fadbbf87012aa2b7baaeffaf3',
-       i686: 'c93d6c2a9c908612c827f5361caa44c9c615bce5403ba1233eb90adb10173ece',
-     x86_64: '249077651ae479e1888742a2925d41e003331f8836392986ed58b3fd18a6d123'
+    aarch64: '832fd860faaf42e6ebd4b35bd32a780c3fcc93b6e2e3a3aa4feb26b458422066',
+     armv7l: '832fd860faaf42e6ebd4b35bd32a780c3fcc93b6e2e3a3aa4feb26b458422066',
+       i686: '1d8efc912cd7f7cadaca2c53aca83090615b42d446c6a9b34dab0c1ee56a94c4',
+     x86_64: '2b79835d7d6633fac664f3a6c2ff65284cea523de29400a03491cd4f6b7ccf4b'
   })
 
   depends_on 'gettext' => :build
+  depends_on 'glibc' => :executable
 
   def self.build
     system 'make'
   end
 
   def self.install
-    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
-    system "cp dos2unix #{CREW_DEST_PREFIX}/bin"
-    system "cp mac2unix #{CREW_DEST_PREFIX}/bin"
-    system "cp unix2dos #{CREW_DEST_PREFIX}/bin"
-    system "cp unix2mac #{CREW_DEST_PREFIX}/bin"
+    FileUtils.install 'dos2unix', "#{CREW_DEST_PREFIX}/bin/dos2unix", mode: 0o755
+    FileUtils.install 'mac2unix', "#{CREW_DEST_PREFIX}/bin/mac2unix", mode: 0o755
+    FileUtils.install 'unix2dos', "#{CREW_DEST_PREFIX}/bin/unix2dos", mode: 0o755
+    FileUtils.install 'unix2mac', "#{CREW_DEST_PREFIX}/bin/unix2mac", mode: 0o755
   end
 end
