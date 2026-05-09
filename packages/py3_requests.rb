@@ -16,7 +16,7 @@ class Py3_requests < Pip
      x86_64: 'e905fac91e6231860b4e97ddb47befbd3a603da872448aaabb2521a63109f863'
   })
 
-  depends_on 'py3_chardet'
+  depends_on 'py3_charset_normalizer'
   depends_on 'py3_idna'
   depends_on 'py3_urllib3'
   depends_on 'python3' => :logical
