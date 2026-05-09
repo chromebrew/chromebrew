@@ -7855,6 +7855,11 @@ url: https://github.com/asottile/cfgv/tags
 activity: low
 ---
 kind: url
+name: py3_charset_normalizer
+url: https://github.com/jawah/charset_normalizer/releases
+activity: medium
+---
+kind: url
 name: py3_devedeng
 url: https://gitlab.com/rastersoft/devedeng/-/tags
 activity: low
