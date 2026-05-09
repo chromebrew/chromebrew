@@ -1,4 +1,4 @@
-# Total size: 487605
+# Total size: 420846
 /usr/local/sbin/dosfsck
 /usr/local/sbin/dosfslabel
 /usr/local/sbin/fatlabel
@@ -10,20 +10,24 @@
 /usr/local/sbin/mkfs.msdos
 /usr/local/sbin/mkfs.vfat
 /usr/local/share/doc/dosfstools/ANNOUNCE.mkdosfs
+/usr/local/share/doc/dosfstools/COPYING
+/usr/local/share/doc/dosfstools/ChangeLog
 /usr/local/share/doc/dosfstools/ChangeLog.dosfsck
 /usr/local/share/doc/dosfstools/ChangeLog.dosfstools-2.x
 /usr/local/share/doc/dosfstools/ChangeLog.mkdosfs
+/usr/local/share/doc/dosfstools/NEWS
+/usr/local/share/doc/dosfstools/README
 /usr/local/share/doc/dosfstools/README.dosfsck
 /usr/local/share/doc/dosfstools/README.dosfstools-2.x
 /usr/local/share/doc/dosfstools/README.mkdosfs
 /usr/local/share/doc/dosfstools/TODO.dosfstools-2.x
-/usr/local/share/man/man8/dosfsck.8.gz
-/usr/local/share/man/man8/dosfslabel.8.gz
-/usr/local/share/man/man8/fatlabel.8.gz
-/usr/local/share/man/man8/fsck.fat.8.gz
-/usr/local/share/man/man8/fsck.msdos.8.gz
-/usr/local/share/man/man8/fsck.vfat.8.gz
-/usr/local/share/man/man8/mkdosfs.8.gz
-/usr/local/share/man/man8/mkfs.fat.8.gz
-/usr/local/share/man/man8/mkfs.msdos.8.gz
-/usr/local/share/man/man8/mkfs.vfat.8.gz
+/usr/local/share/man/man8/dosfsck.8.zst
+/usr/local/share/man/man8/dosfslabel.8.zst
+/usr/local/share/man/man8/fatlabel.8.zst
+/usr/local/share/man/man8/fsck.fat.8.zst
+/usr/local/share/man/man8/fsck.msdos.8.zst
+/usr/local/share/man/man8/fsck.vfat.8.zst
+/usr/local/share/man/man8/mkdosfs.8.zst
+/usr/local/share/man/man8/mkfs.fat.8.zst
+/usr/local/share/man/man8/mkfs.msdos.8.zst
+/usr/local/share/man/man8/mkfs.vfat.8.zst

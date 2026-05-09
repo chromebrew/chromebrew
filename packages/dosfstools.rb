@@ -1,28 +1,23 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Dosfstools < Package
+class Dosfstools < Autotools
   description 'dosfstools consists of the programs mkfs.fat, fsck.fat and fatlabel to create, check and label file systems of the FAT family.'
   homepage 'https://github.com/dosfstools/dosfstools'
-  version '4.1'
+  version '4.2'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://github.com/dosfstools/dosfstools/releases/download/v4.1/dosfstools-4.1.tar.xz'
-  source_sha256 'e6b2aca70ccc3fe3687365009dd94a2e18e82b688ed4e260e04b7412471cc173'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/dosfstools/dosfstools.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a2fa41c25a7aee9ae85cd1b7759d3de0f89c6e3863ab26b7959d0b7f7c4acae6',
-     armv7l: 'a2fa41c25a7aee9ae85cd1b7759d3de0f89c6e3863ab26b7959d0b7f7c4acae6',
-       i686: '5e71d1e528360ce349a3a609ffad1d5723a91fc2687a76b8fe5f2a8c8437665c',
-     x86_64: '430a5579234dd68276ecb94cd24c0e5b894b26f04e76b09d2268aeaef7467046'
+    aarch64: 'bccc3d266c65d5fda76a4694a49afe9a580633ae911d1af23c52f1d6ef69220b',
+     armv7l: 'bccc3d266c65d5fda76a4694a49afe9a580633ae911d1af23c52f1d6ef69220b',
+       i686: '72d1784288c75e9cdafa4b56e31bd9c02b33fc4a17ea922200a5fa676979e1cb',
+     x86_64: 'f63c26700393920c65db0cd4dc9d5d071c444472fb99ae84b16759714db40e53'
   })
 
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS} --enable-compat-symlinks"
-    system 'make'
-  end
+  depends_on 'glibc' => :executable
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  autotools_configure_options '--enable-compat-symlinks'
 end
