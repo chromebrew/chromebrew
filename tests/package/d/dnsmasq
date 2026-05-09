@@ -1,0 +1,4 @@
+#!/bin/bash
+man dnsmasq | head
+dnsmasq --help | head
+dnsmasq --version
