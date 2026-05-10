@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Lzip < Autotools
   description 'Lzip is a lossless data compressor with a user interface similar to the one of gzip or bzip2.'
   homepage 'https://www.nongnu.org/lzip/lzip.html'
-  version '1.25'
+  version '1.26'
   license 'GPL-2+'
   compatibility 'all'
   source_url "https://download.savannah.gnu.org/releases/lzip/lzip-#{version}.tar.gz"
-  source_sha256 'd42659229b10e066eeb6e81eb673cdd893b672e512d26719c2d95975556ca56c'
+  source_sha256 '641cf30961525cbe3b340cc883436c8854e9f5032f459f444de4782b621e6572'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b3fa9f7501ba5447bc11b661ac74d34294e493c2f84f43a4d81e02519bae4015',
-     armv7l: 'b3fa9f7501ba5447bc11b661ac74d34294e493c2f84f43a4d81e02519bae4015',
-       i686: '1f161ed81eea70d22a37ab7306e6366e3b661710654cace96f73c6cfc9ce49e3',
-     x86_64: 'f9e9a6ea29a9bdfafb24c5eb5ca72e60ac8b6470ecec545a647667bc84630204'
+    aarch64: '11ad7fce088da6b2878e4dc871722b801016664e476725b51faf1dfdbb822dc2',
+     armv7l: '11ad7fce088da6b2878e4dc871722b801016664e476725b51faf1dfdbb822dc2',
+       i686: 'b76a19f8912f0aa5a28a4b6a023d658135987eeb1ae823ca37f9c50be604591a',
+     x86_64: 'b5e130db332f424bf4297e0dcee8df1af2c96a437d7122b8be730fe7f7cd5db5'
   })
 
   depends_on 'gcc_lib' => :executable

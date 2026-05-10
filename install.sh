@@ -1,5 +1,5 @@
 #!/bin/bash
-CREW_INSTALLER_VERSION=2026021201
+CREW_INSTALLER_VERSION=2026050901
 export CREW_INSTALLER_RUNNING=1
 # Exit on fail.
 set -eE
@@ -601,7 +601,7 @@ export CREW_LOCAL_REPO_ROOT="${CREW_PREFIX}/lib/crew"
 # This is needed for SSL env variables to be populated so ruby doesn't
 # complain about missing certs, resulting in failed https connections.
 echo_info "Installing crew_profile_base...\n"
-yes | ${PREFIX_CMD} crew install crew_profile_base
+yes | ${PREFIX_CMD} crew install crew_profile_base curl_static
 
 # shellcheck disable=SC1090
 trap - ERR && source ~/.bashrc && set_trap

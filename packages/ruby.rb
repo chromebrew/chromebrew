@@ -3,18 +3,18 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '4.0.3'
+  version '4.0.3-1'
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
   source_url 'https://github.com/ruby/ruby.git'
-  git_hashtag "v#{version}"
+  git_hashtag "v#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '18e50ee30327b8e72da4361a8123ee6d9c68e9ab22a0bd111e63a2c1a05f34dc',
-     armv7l: '18e50ee30327b8e72da4361a8123ee6d9c68e9ab22a0bd111e63a2c1a05f34dc',
-       i686: '7553459f4f3681058147d4da2f29bb8da0f21929489469aab7485c46be7cf44e',
-     x86_64: '12d8c79c90c79ae9a50b94f47036b9ab3cea3d7ba518620fd9e867119d9f28e0'
+    aarch64: '065d9e44a63bb1d3d6c891a11016c3afea2c6d87f0bfac796037c990ac57199c',
+     armv7l: '065d9e44a63bb1d3d6c891a11016c3afea2c6d87f0bfac796037c990ac57199c',
+       i686: '06a6a0e22acfa99cc4a9fcdaccd36b94cc47bdbfb73a86eded91495ffabc381d',
+     x86_64: '3b9d82f98e805efd35d1a14b21be77d2887ea2ce34e11d4b0b417c3e527ea6db'
   })
 
   depends_on 'ca_certificates' => :logical
@@ -57,7 +57,7 @@ class Ruby < Package
   def self.check
     # Do not run checks if rebuilding current ruby version.
     # RUBY_VERSION is a built-in ruby constant.
-    system "MAKEFLAGS='--jobs #{CREW_NPROC}' make check || true" unless version == RUBY_VERSION
+    system "MAKEFLAGS='--jobs #{CREW_NPROC}' make check || true" unless version.split('-').first == RUBY_VERSION
   end
 
   def self.install
