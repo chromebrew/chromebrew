@@ -1345,6 +1345,11 @@ url: https://github.com/curl/curl/releases
 activity: high
 ---
 kind: url
+name: curl_static
+url: https://curl.se/
+activity: none
+---
+kind: url
 name: cursor
 url: https://www.cursor.com/downloads
 activity: medium
