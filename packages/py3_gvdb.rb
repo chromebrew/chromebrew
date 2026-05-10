@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_gvdb < Pip
   description 'Python client for GVDB distributed vector database'
   homepage 'https://github.com/JonathanBerhe/gvdb'
-  version "0.30.0-#{CREW_PY_VER}"
+  version "0.32.1-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'
