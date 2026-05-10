@@ -1,5 +1,5 @@
 ---
-# Version 1.0
+# Version 1.1
 name: Set Reviewers
 run-name: Set Reviewers for PR for ${{ github.head_ref || github.ref_name }}
 on:
@@ -41,12 +41,19 @@ jobs:
           application_private_key: ${{ secrets.APPLICATION_PRIVATE_KEY }}
           organization: chromebrew
           revoke_token: true
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+          ref: ${{ github.sha }}
       - name: Get Status of current ref
         id: get-status
-        uses: danieldeichfuss/get-status@v0.10
+        uses: danieldeichfuss/get-status@v0.0.10
         with:
           ref: ${{ github.sha }}
       - name: Set Reviewers
+        env:
+          GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
         if: ${{steps.get-status.outputs.all-checks-completed == 'true' &&  steps.get-status.outputs.all-checks-passed == 'true'}}
         run: |
           gh pr edit --add-reviewer chromebrew/active
