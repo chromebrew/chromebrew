@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_cryptography < Pip
   description 'Cryptography provides cryptographic recipes and primitives to Python developers.'
   homepage 'https://cryptography.io/'
-  version "47.0.0-#{CREW_PY_VER}"
+  version "48.0.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
