@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_cryptography < Pip
   description 'Cryptography provides cryptographic recipes and primitives to Python developers.'
   homepage 'https://cryptography.io/'
-  version "47.0.0-#{CREW_PY_VER}"
+  version "48.0.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '04d60d2a669a96b55cd44c58430c74bb32d78451308590bfcbd77456520ad6b9',
-     armv7l: '04d60d2a669a96b55cd44c58430c74bb32d78451308590bfcbd77456520ad6b9',
-       i686: '00bdff2601a7ddaedccdf3edbe54f97ecff19dbdd098210f93703dcd64a357b8',
-     x86_64: '513007e6d3f8749b5b2faf3d3a539f10c407534cfb9716efb8a0367f08eef548'
+    aarch64: 'a03a75451b80e3c2f6bbc479a6e7aa385eb839a7f50f4990d0b2e20dcd13fc6e',
+     armv7l: 'a03a75451b80e3c2f6bbc479a6e7aa385eb839a7f50f4990d0b2e20dcd13fc6e',
+       i686: '70cb905bacb2c9ae5a854fc0d7f93551a0dac1763dd50c01b898734c3ec03324',
+     x86_64: 'd5da532912f83f076b0ae3e190424a81e30242e8b79882dd216be50bd0497977'
   })
 
   depends_on 'gcc_lib' => :library
