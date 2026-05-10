@@ -16,7 +16,7 @@ class Py3_distlib < Pip
      x86_64: 'eb0bf8476b9c6b4927fb2343a97776be6daded1c7e18b734d1106bcc9c6dd19d'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

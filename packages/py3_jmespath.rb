@@ -16,7 +16,7 @@ class Py3_jmespath < Pip
      x86_64: 'ad13f08015ae5030415dd26f6464cc8602185ab56d6ecd25b65d79d84420af87'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

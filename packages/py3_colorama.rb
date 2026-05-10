@@ -16,7 +16,7 @@ class Py3_colorama < Pip
      x86_64: '85fd98c9105015143457c3464f92fb691930d48d8c40c316b929ce9b6fa056b2'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

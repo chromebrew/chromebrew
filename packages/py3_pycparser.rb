@@ -16,7 +16,7 @@ class Py3_pycparser < Pip
      x86_64: 'aebd0fc2fad20352737217f6dbb04480bde9d8cf7aad41d47fdbd172cbed503d'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

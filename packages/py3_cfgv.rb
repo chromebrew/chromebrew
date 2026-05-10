@@ -16,7 +16,7 @@ class Py3_cfgv < Pip
      x86_64: '21dd30e371dbfda49ae840a55be4f1fafbce4e03233c54318fde1f512c87c94e'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

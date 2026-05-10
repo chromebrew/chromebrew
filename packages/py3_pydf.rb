@@ -10,13 +10,13 @@ class Py3_pydf < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '98dacc9c63ac7748a590a85f9fd262443480459ad105a0594b5658470f70056d',
-     armv7l: '98dacc9c63ac7748a590a85f9fd262443480459ad105a0594b5658470f70056d',
-       i686: '668ac069f4b08722a586116c1b09ab9fbbb2e96dae53d7c7e78864348d34c150',
-     x86_64: '736cfd6c5b6fcd8cfeca6053c09bffee0391a0b86bca63a0c27c4b4236752030'
+    aarch64: 'ea6602b6a7de2845be627f377c33ea003269c2176bceb8416c32d5db426dcb87',
+     armv7l: 'ea6602b6a7de2845be627f377c33ea003269c2176bceb8416c32d5db426dcb87',
+       i686: 'c3fae35e95b02b3ea194569048cfb00c9c963bd8d938d4532eb06663ffcb906c',
+     x86_64: '83efb645f2c2ebc7d00286db742d2587d5b146a8b7c767807ab089f39757bec5'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

@@ -16,7 +16,7 @@ class Py3_cssselect < Pip
      x86_64: '7771f35bfeb0b0cd6b0ac603b208a858f4e45bfb5efa54e63d0f243920816084'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

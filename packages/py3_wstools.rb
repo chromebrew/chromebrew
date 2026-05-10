@@ -16,7 +16,7 @@ class Py3_wstools < Pip
      x86_64: 'f10586fe6014995c80bdbb48e965d902a526744bd87f6f72caeffd489c41e4a0'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

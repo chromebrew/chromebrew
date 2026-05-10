@@ -16,11 +16,11 @@ class Py3_agate_excel < Pip
      x86_64: 'c328d5b3bcb2eca0d097105f96c6194c1cb66c031070f67e0ec10ebf91c2cf2d'
   })
 
-  depends_on 'py3_xlrd'
-  depends_on 'py3_openpyxl'
-  depends_on 'py3_olefile'
   depends_on 'py3_agate'
-  depends_on 'python3' => :build
+  depends_on 'py3_olefile'
+  depends_on 'py3_openpyxl'
+  depends_on 'py3_xlrd'
+  depends_on 'python3' => :logical
 
   no_source_build
 end

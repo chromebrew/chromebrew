@@ -23,7 +23,7 @@ class Py3_jsonschema < Pip
   depends_on 'py3_jsonschema_specifications' # R
   depends_on 'py3_referencing' # R
   depends_on 'py3_rpds_py' # R
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

@@ -16,7 +16,7 @@ class Py3_jeepney < Pip
      x86_64: 'a5c8ecb0b96b57984e0b9d77f35503597b56f0acc6ca649f237f7535ad1ab894'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

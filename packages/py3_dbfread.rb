@@ -16,7 +16,7 @@ class Py3_dbfread < Pip
      x86_64: 'd54736d4025b2e4510891369280a96f0b9aec22beb12560ff4acdbee11d78426'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

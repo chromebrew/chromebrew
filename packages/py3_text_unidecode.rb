@@ -10,13 +10,13 @@ class Py3_text_unidecode < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '246d72090a1770c638ffe4a7291805d6e869bff4d5fdcdf4d602c7b32a4c2644',
-     armv7l: '246d72090a1770c638ffe4a7291805d6e869bff4d5fdcdf4d602c7b32a4c2644',
-       i686: '360d83586d770f6be85aacb856c48c9c7ca75b3eef1770dde13a3fe4029d68ad',
-     x86_64: 'a2fc5c17aeebc8ce4a29a26a5f1962f6160628de5b6d30ede47dd557d69e27d9'
+    aarch64: '965f2efe1a809fbf3216b47b4feef6732b78305f84f2819ee495281599760605',
+     armv7l: '965f2efe1a809fbf3216b47b4feef6732b78305f84f2819ee495281599760605',
+       i686: 'e4ca8970ade7d7707c7c6d6692cff8802716cbba03d44355a7a02011bf1d5d02',
+     x86_64: '50e8fc5d0391bb71b1ec60b949a4f92611fae4d731f0e6c97ee308fbbbccaf72'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

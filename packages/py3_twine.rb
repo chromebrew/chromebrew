@@ -25,7 +25,7 @@ class Py3_twine < Pip
   depends_on 'py3_rfc3986'
   depends_on 'py3_rich'
   depends_on 'py3_setuptools'
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
   depends_on 'rust' => :build
 
   no_source_build

@@ -10,14 +10,14 @@ class Py3_jinja2 < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2e881b05b2112a1535b77be62a7992712b90b672a5c5be6be5444ac6b0d079ac',
-     armv7l: '2e881b05b2112a1535b77be62a7992712b90b672a5c5be6be5444ac6b0d079ac',
-       i686: 'cb82661f033e6712caa0c3809bf2cf422e0a34097cd5b3edcc31c8e3b549a4a2',
-     x86_64: '2248ef812d43be90339a5fe82479b942107853a8b2764777b54ee6e792a30f46'
+    aarch64: 'cf2854d6c90ae17f56cddd141bee6ebdef5bb6a8ae64a0d5fdfe638b6a61950f',
+     armv7l: 'cf2854d6c90ae17f56cddd141bee6ebdef5bb6a8ae64a0d5fdfe638b6a61950f',
+       i686: '8e2b1f1565af987f9e8f9e22db94a1d231c4994fd88b4070a3c80db9ee83bafb',
+     x86_64: 'b1364a868ef41931acbf89d02d1d30d85f9fa01bee6c4711ed3233ac2ef794e9'
   })
 
   depends_on 'py3_markupsafe'
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

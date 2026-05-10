@@ -21,7 +21,7 @@ class Py3_referencing < Pip
 
   depends_on 'py3_attrs' # R
   depends_on 'py3_rpds_py' # R
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

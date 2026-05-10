@@ -16,7 +16,7 @@ class Py3_iniconfig < Pip
      x86_64: '4c2fbdb432cb29b095b226abf358069676524625233344a6e9e1e1e89ec6eb5f'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

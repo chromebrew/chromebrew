@@ -1,2 +1,3 @@
 #!/bin/bash -ex
-for b in $(crew files ${1} | grep /usr/local/bin); do $b -v 2>&1 || $b -h 2>&1; done
+# Ignore __pycache__ from python packages.
+crew files ${1} | grep /usr/local/bin | grep -v __pycache__ | xargs --no-run-if-empty -I % sh -c '% -v 2>&1 || % -h 2>&1 || % --version 2>&1 || % --help 2>&1'

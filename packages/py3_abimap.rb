@@ -16,7 +16,7 @@ class Py3_abimap < Pip
      x86_64: 'bd21b3a690d51789bbe4e02e47201a7d6ca3ec9e2a68f0e69d1aa0c27e926eb0'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

@@ -16,7 +16,7 @@ class Py3_six < Pip
      x86_64: '396e08d33183e11ebe309a64c8c45d5b0f7cd2898a60c60203a7521c9741cd7a'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

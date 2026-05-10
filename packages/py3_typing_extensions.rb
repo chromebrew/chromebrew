@@ -16,7 +16,7 @@ class Py3_typing_extensions < Pip
      x86_64: '014fca72fe3c174dad3ccd46ab44cdb19f16ca375beae52578ebe557b1a54879'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

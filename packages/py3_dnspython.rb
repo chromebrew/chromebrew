@@ -16,7 +16,7 @@ class Py3_dnspython < Pip
      x86_64: '6460b3c785604b1c32f9c19bd68cc2122ddaf11716cc437d427a6117c99382d4'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

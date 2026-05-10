@@ -16,7 +16,7 @@ class Py3_argcomplete < Pip
      x86_64: '26926e3476cf98219b720588b109c871c0345918cac5539fb04263ba99239b30'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

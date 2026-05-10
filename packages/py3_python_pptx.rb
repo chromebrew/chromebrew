@@ -10,15 +10,15 @@ class Py3_python_pptx < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6f32d17816010212cdd08e966871130c4dbea8fdefec501fe0fde31ea805afd3',
-     armv7l: '6f32d17816010212cdd08e966871130c4dbea8fdefec501fe0fde31ea805afd3',
-     x86_64: '6f4d9ebf55835ab3418ccf57cd7ebd110c25fbabe1f5f0542e18c9abe7487df2'
+    aarch64: '2aa6a7956ad167a7d87a1339a0d6fe50cc957176df9f3bf9cee05f1408a253bd',
+     armv7l: '2aa6a7956ad167a7d87a1339a0d6fe50cc957176df9f3bf9cee05f1408a253bd',
+     x86_64: '7f9a325ed3bf016f0113f604d869807839821eaddd5504cb704069394d3008b0'
   })
 
   depends_on 'py3_lxml'
   depends_on 'py3_pillow'
   depends_on 'py3_xlsxwriter'
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

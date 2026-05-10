@@ -16,7 +16,7 @@ class Py3_rfc3986 < Pip
      x86_64: 'a62aea344cd039edfe4ddd093d63f91f71bd262cd4a58f6f028e88b9a648e039'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

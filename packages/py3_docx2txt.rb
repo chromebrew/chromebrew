@@ -16,7 +16,7 @@ class Py3_docx2txt < Pip
      x86_64: 'd5512d0350db3e75bbc870698a434f0d4b1c81d176534623fcb93e28189a301d'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

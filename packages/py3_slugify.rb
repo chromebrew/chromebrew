@@ -10,14 +10,14 @@ class Py3_slugify < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8bc7d2ea3ab799c2153922a5bdcd8b2ace9a1520f12b1092f2500cec45105090',
-     armv7l: '8bc7d2ea3ab799c2153922a5bdcd8b2ace9a1520f12b1092f2500cec45105090',
-       i686: 'fdeceb5b3c84b475e07782e45600f677394606c781fa952c0d4213930b7aee8d',
-     x86_64: '7723047cd546b00fc1b5a43448dad55669aacdf3ff7559515f6db87eacdb8ee4'
+    aarch64: 'b7d6bd595dcec754410221adeb53b808ad731557d4e3de8556cba339ed507cad',
+     armv7l: 'b7d6bd595dcec754410221adeb53b808ad731557d4e3de8556cba339ed507cad',
+       i686: '926ab96dfbaf5b60088ae831a5ac02c8d4c9e271e0fe9c5fd24e5f7a6273e510',
+     x86_64: '19b65d375f8a4ff6e4e5ab6b7e5686aee638a306e7a6d33db200f06abd43141f'
   })
 
   depends_on 'py3_text_unidecode'
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

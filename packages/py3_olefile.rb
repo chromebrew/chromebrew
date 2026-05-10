@@ -10,13 +10,13 @@ class Py3_olefile < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aca8874d91d4702044720873773c28a2c9daf0de07dcd8a224a7f526a53d3e2b',
-     armv7l: 'aca8874d91d4702044720873773c28a2c9daf0de07dcd8a224a7f526a53d3e2b',
-       i686: '6a6dc1e2c93585795ffcb3a676f5f81cc4ffb6c62088997de14e5bcb2f89a3cc',
-     x86_64: 'fe2d19153c3ca2887f51598a724df75017f71f0f096334063dca00e654758bdf'
+    aarch64: '9085947cb9c00c3bcb56d5c4b53c3478709f2c8e068faeb0893f88e671862dd1',
+     armv7l: '9085947cb9c00c3bcb56d5c4b53c3478709f2c8e068faeb0893f88e671862dd1',
+       i686: '8280c9a7aca4b7f1923b1f7a0d7bf83304130840e568f891aebbb56cef4d0daf',
+     x86_64: 'e4c777ff873338e26289f30a90ce069550232e85ed721f9bfe6c84d6f21abd41'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

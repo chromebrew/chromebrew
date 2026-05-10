@@ -10,17 +10,17 @@ class Py3_pycairo < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '341c40365f3d5b81677a954024c04c047d266c4b35b5763d22b2741e44b233e6',
-     armv7l: '341c40365f3d5b81677a954024c04c047d266c4b35b5763d22b2741e44b233e6',
-     x86_64: 'd34a6b061b17238aadb21d6494421e2c55c05dc40a5f9c1e55725ae5af96bc1a'
+    aarch64: 'dbb506e2a2965ce42a3f6b9d354209619acd57d51aef7331b64fd25996d8b30c',
+     armv7l: 'dbb506e2a2965ce42a3f6b9d354209619acd57d51aef7331b64fd25996d8b30c',
+     x86_64: 'b4f5f94991486308cb17e911a3d69a9621689d5f90e961d154cbd7a4f43a5dd0'
   })
 
-  depends_on 'cairo'
-  depends_on 'libxxf86vm'
-  depends_on 'libxrender'
-  depends_on 'python3' => :build
-  depends_on 'glibc' # R
+  depends_on 'cairo' => :library
+  depends_on 'glibc' => :library
   depends_on 'harfbuzz' # R
+  depends_on 'libxrender'
+  depends_on 'libxxf86vm'
+  depends_on 'python3' => :logical
 
   no_source_build
 end

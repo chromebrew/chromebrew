@@ -16,7 +16,7 @@ class Py3_roman_numerals < Pip
      x86_64: 'dc10a19b453f5fcbff8d8c39f03f52c3ac6e98aa79033cb529c7e9f6c078289a'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

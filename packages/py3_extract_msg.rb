@@ -19,7 +19,7 @@ class Py3_extract_msg < Pip
   depends_on 'py3_imapclient'
   depends_on 'py3_olefile'
   depends_on 'py3_tzlocal'
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

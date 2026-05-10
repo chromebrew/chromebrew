@@ -16,7 +16,7 @@ class Py3_itsdangerous < Pip
      x86_64: '1c7334ddf64487e196e5b0df8f4c3a932d8873607a2dea9ce39396c921f602cb'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

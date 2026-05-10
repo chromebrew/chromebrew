@@ -10,13 +10,13 @@ class Py3_minidb < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a92de47d57a9c9d5048b057f87713c14e91ea65adfb2c36828c9f9ce5e2d7524',
-     armv7l: 'a92de47d57a9c9d5048b057f87713c14e91ea65adfb2c36828c9f9ce5e2d7524',
-       i686: '91eb38dc1ba5b4475718c4a3bc5bee5a8d35c58ef488578830d612c6e0c269fa',
-     x86_64: '24d173b1879a4866d67236c07c36f34ff2b0699eeb17ed0a15af3fecf9e55b19'
+    aarch64: '15ed025630a1641e898647aad3eb43df6af8d0aa9fe473926b0a2b842e6cf568',
+     armv7l: '15ed025630a1641e898647aad3eb43df6af8d0aa9fe473926b0a2b842e6cf568',
+       i686: '916d635b5a4956a6b71246c440fd45c970dad52c225c12feba28353f99414d7f',
+     x86_64: 'cd1befa2c3815b0628521f051539432649cfe0e169733849254bd340ac2d0b2b'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

@@ -20,7 +20,7 @@ class Py3_mdurl < Pip
   })
 
   depends_on 'py3_uc_micro_py'
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

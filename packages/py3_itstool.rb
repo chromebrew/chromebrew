@@ -19,7 +19,7 @@ class Py3_itstool < Pip
   depends_on 'coreutils' if ARCH == 'i686'
   depends_on 'py3_libxml2'
   depends_on 'py3_setuptools' => :build
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 

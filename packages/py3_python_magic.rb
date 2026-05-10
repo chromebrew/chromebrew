@@ -10,14 +10,14 @@ class Py3_python_magic < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2a214a81f34130f350bae28fd83dce092b8de9c95785022c7d8735ef1b0566fe',
-     armv7l: '2a214a81f34130f350bae28fd83dce092b8de9c95785022c7d8735ef1b0566fe',
-       i686: 'b168fc8ba04d29be58900c285c34c007f4324eb234090db44a2868643b645339',
-     x86_64: '40fb8e9912aaee7c06a0c797fb3182641256742c1eb1847403e77aef7c3844ec'
+    aarch64: 'e7e338d0340ab76592378569e5236094edc9495e1abfd479022b0121a26938a1',
+     armv7l: 'e7e338d0340ab76592378569e5236094edc9495e1abfd479022b0121a26938a1',
+       i686: 'e486b92745fa9dc71bd7dc0728c37025cb2975a97356f38cf953497763fa71ed',
+     x86_64: '24e8817c2008b0a7b882893150588493e6fe40f61e60138d1234911958739f69'
   })
 
   depends_on 'filecmd'
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

@@ -16,9 +16,9 @@ class Py3_agate_dbf < Pip
      x86_64: '8a53e4d0e6d93ae9d504c1d02070cc8126f8d8ca7c1522e9dc5bbf633a46185e'
   })
 
-  depends_on 'py3_dbfread'
   depends_on 'py3_agate'
-  depends_on 'python3' => :build
+  depends_on 'py3_dbfread'
+  depends_on 'python3' => :logical
 
   no_source_build
 end

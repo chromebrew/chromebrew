@@ -18,7 +18,7 @@ class Py3_yamllint < Pip
 
   depends_on 'py3_pathspec'
   depends_on 'py3_pyyaml'
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

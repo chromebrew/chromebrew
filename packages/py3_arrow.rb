@@ -10,13 +10,13 @@ class Py3_arrow < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '615a8073c4198c588504dfaf348d79b820bb5a681ffc009f033d53350b524d61',
-     armv7l: '615a8073c4198c588504dfaf348d79b820bb5a681ffc009f033d53350b524d61',
-     x86_64: '54a5ac57601a2ebd5e388f005fdc17a79f0c83e681e979b3ef0eb0a4a041117e'
+    aarch64: '8508156859a98c5f551d3346a3be987808cb1384d9a4d6620066cc083b47a617',
+     armv7l: '8508156859a98c5f551d3346a3be987808cb1384d9a4d6620066cc083b47a617',
+     x86_64: 'd30b13a067b6cdf36fcb065b610ce59397393657824e52364c641a8dc07cb04f'
   })
 
   depends_on 'py3_python_dateutil'
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

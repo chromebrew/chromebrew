@@ -10,14 +10,14 @@ class Py3_pystemmer < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a8f563d3639047dca55684b2ad838b4e394a158aa97fd52335acb41f57100ab7',
-     armv7l: 'a8f563d3639047dca55684b2ad838b4e394a158aa97fd52335acb41f57100ab7',
-       i686: 'b208e6e20abd18baab0657120420c051dbcb1e80b372a72beb8e17d0c5ed7d03',
-     x86_64: 'f77a7d9c2e2f0dfe28e4fd0bdfad90c170e4253700274f3b8f5aa03951c1a645'
+    aarch64: '8d59d90604f452d5a6c46fc222370da78b120ece0089b1bfb7a859c7c89cec8f',
+     armv7l: '8d59d90604f452d5a6c46fc222370da78b120ece0089b1bfb7a859c7c89cec8f',
+       i686: '15241b661584f4f39f9394d5c556ce3980bd1a611bdc8bd97efa755663194740',
+     x86_64: '63faa6a867abfdfe95298afe65bdc635d099133c6a4c2336c8a64712896e49de'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'python3' => :build
+  depends_on 'glibc' => :library
+  depends_on 'python3' => :logical
 
   no_source_build
 end

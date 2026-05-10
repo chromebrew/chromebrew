@@ -16,7 +16,7 @@ class Py3_dicttoxml < Pip
      x86_64: '45b7f57011dd2b74cd8a95c9f2d77fc769703b7f10f2b2b3eaabecf9a34bcf45'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end
