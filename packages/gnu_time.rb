@@ -6,11 +6,11 @@ require 'package'
 class Gnu_time < Package
   description 'Utility for monitoring a programs use of system resources'
   homepage 'https://www.gnu.org/software/time'
-  version '1.9-59f462a'
+  version '1.10'
   license 'GPL'
   compatibility 'all'
   source_url 'https://git.savannah.gnu.org/git/time.git'
-  git_hashtag '59f462a2ed5e7f073cfc9c509d3e2dec438b2681'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
