@@ -16,14 +16,14 @@ class Py3_impacket < Pip
      x86_64: '02ea1096d99a8707bad27c53605f925e9730ce4b2c55be3dbf96eb0c2c9bcaf7'
   })
 
-  depends_on 'py3_pycryptodomex'
   depends_on 'py3_cryptography'
   depends_on 'py3_flask'
-  depends_on 'py3_pyasn1'
-  depends_on 'py3_pyopenssl'
-  depends_on 'py3_six'
   depends_on 'py3_ldap3'
   depends_on 'py3_ldapdomaindump'
+  depends_on 'py3_pyasn1'
+  depends_on 'py3_pycryptodomex'
+  depends_on 'py3_pyopenssl'
+  depends_on 'py3_six'
   depends_on 'python3' => :logical
   depends_on 'rust' => :build
 

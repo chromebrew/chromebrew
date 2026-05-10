@@ -16,8 +16,8 @@ class Py3_secretstorage < Pip
      x86_64: '950429062f49cdeb1b5039606e327f755871581f3ff614211475eb90bb729f32'
   })
 
-  depends_on 'py3_jeepney'
   depends_on 'py3_cryptography'
+  depends_on 'py3_jeepney'
   depends_on 'python3' => :logical
 
   no_source_build

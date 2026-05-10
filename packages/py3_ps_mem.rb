@@ -10,10 +10,10 @@ class Py3_ps_mem < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '55f2c8017ab0a93deb44c63626126db600a9e5cbe83603ce5f4cf312f240d035',
-     armv7l: '55f2c8017ab0a93deb44c63626126db600a9e5cbe83603ce5f4cf312f240d035',
-       i686: '2b7a74fc58e0b99c9c9463f48aa261e7d5d4924fe7d63772d837ad9a6eb47150',
-     x86_64: '823faa9f7f50dd04f9a33d92edab8f4a027854ccf3827e59542d13633fbb3554'
+    aarch64: 'f88fb2f8b7ea31fb12974b1eea67acece0a74e672efd057e56d78dcb8e7d0de9',
+     armv7l: 'f88fb2f8b7ea31fb12974b1eea67acece0a74e672efd057e56d78dcb8e7d0de9',
+       i686: '5e53f5899f098d0752733ef4f0bb3b5c1d9e1833f3be043357c7b62d5a2537b4',
+     x86_64: 'ff441ec429c6365c9194e99bbd14ff1ab3b7ffdda0e5c99e0e4c5cd19f6e54f4'
   })
 
   depends_on 'python3' => :logical

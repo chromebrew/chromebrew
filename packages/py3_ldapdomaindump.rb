@@ -16,8 +16,8 @@ class Py3_ldapdomaindump < Pip
      x86_64: '2e590e1041a1b43aa4bb6caa372851307b55408e9ab4ca7d2d26f16240e8a26e'
   })
 
-  depends_on 'py3_future'
   depends_on 'py3_dnspython'
+  depends_on 'py3_future'
   depends_on 'py3_ldap3'
   depends_on 'python3' => :logical
 

@@ -10,10 +10,10 @@ class Py3_ldap3 < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3cdf77fb19eb04a8cbaed5b623ae45762c0663939c6528711cfa19070bae8dd3',
-     armv7l: '3cdf77fb19eb04a8cbaed5b623ae45762c0663939c6528711cfa19070bae8dd3',
-       i686: 'ad6172927643ddb11828a4e6e5384f7303bbda14b80f837e87ffb642f20e1dd8',
-     x86_64: '790978ce38b8e1e7f18fac1915520edd83c2e93eab0120238feac7cf6145bea0'
+    aarch64: 'f9ec68ada426babbdb1e64013e068816af388e6d4d409480bb1f9acf777f9e8e',
+     armv7l: 'f9ec68ada426babbdb1e64013e068816af388e6d4d409480bb1f9acf777f9e8e',
+       i686: '60bab60b7cc6dcec847d99bfc46e73c90f653431f6988e5822358296d2b58e5c',
+     x86_64: 'fda9374969a7d993aaad53bc46e9821e9d515c8ef97ce598bb1ff45bf94f4bd2'
   })
 
   depends_on 'py3_pyasn1'

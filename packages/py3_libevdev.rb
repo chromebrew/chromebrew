@@ -10,10 +10,10 @@ class Py3_libevdev < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '112683492bc39bda0ba1f3c1537c3a6108f123f89ed3d37ca284ec5ca13262a4',
-     armv7l: '112683492bc39bda0ba1f3c1537c3a6108f123f89ed3d37ca284ec5ca13262a4',
-       i686: '26cc8d92f25b555133e8321ecff4d20038ae93c7496687ee2b2c3c59225cc644',
-     x86_64: 'b4dc771ec18fb3baa514fdc2d8660cd41586ccc2c27e95d9c0883dd99fc587fb'
+    aarch64: 'e07ac43415cb9bda35312628c60db8f18d4215a283df3f47a3ab95cdf4d9add4',
+     armv7l: 'e07ac43415cb9bda35312628c60db8f18d4215a283df3f47a3ab95cdf4d9add4',
+       i686: 'ee52a4a09e5f6ee95c2c1ba3c2a05d88a888dcdfe5d0f804d0bbb2e6e0da051b',
+     x86_64: '3bdf6dc8630d8e483c6a36a69f71598af40a86bbf3614d45269824f7851434b4'
   })
 
   depends_on 'python3' => :logical
