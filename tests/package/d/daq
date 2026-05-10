@@ -1,0 +1,3 @@
+#!/bin/bash
+daqtest -h | head
+daqtest-static -h | head
