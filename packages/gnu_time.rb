@@ -20,7 +20,6 @@ class Gnu_time < Package
      x86_64: '162374ee89f3ed9b17a91e4f72701b6695de039184af87452528e62f3380c25a'
   })
 
-  depends_on 'glibc'
   depends_on 'glibc' => :executable
 
   def self.patch
