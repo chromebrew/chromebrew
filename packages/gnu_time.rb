@@ -14,13 +14,14 @@ class Gnu_time < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '08d1098eaa5dffcbd0d9931cae419f0f42a225f6cd275b5f59f07552bfd5cafa',
-     armv7l: '08d1098eaa5dffcbd0d9931cae419f0f42a225f6cd275b5f59f07552bfd5cafa',
-       i686: '0dd61bd97400d05ad8a99ce53f2e7184a9f0404b268ed5ab565167f2aaee162e',
-     x86_64: 'a2d83343217b858ebed7e290af9df06338fa30111f5ef6afdd3473046f631242'
+    aarch64: '8017ea28ece3abc79c1410a73f93668bd9a39f789059acad0952c44c5a4610a2',
+     armv7l: '8017ea28ece3abc79c1410a73f93668bd9a39f789059acad0952c44c5a4610a2',
+       i686: '1f58fa63eab4d9b7777f49ac8516797b221e349637796c2ca7cf0a3d2a420bf5',
+     x86_64: '162374ee89f3ed9b17a91e4f72701b6695de039184af87452528e62f3380c25a'
   })
 
   depends_on 'glibc'
+  depends_on 'glibc' => :executable
 
   def self.patch
     system "sed -i 's,/build-aux,,' .gitignore"
