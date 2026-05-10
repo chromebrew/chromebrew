@@ -16,7 +16,7 @@ class Py3_pluggy < Pip
      x86_64: '6084a5525e4bdbfc9c13fe432d2c729a1a686cc1bcfd42c1cb1f5c0a40299267'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

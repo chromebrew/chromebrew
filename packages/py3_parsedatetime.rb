@@ -16,7 +16,7 @@ class Py3_parsedatetime < Pip
      x86_64: '633f755ee02d1df038de811e08881d2cacf1174dc3358a6cb2c32b7dcf7e7e2e'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

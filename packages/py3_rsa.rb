@@ -16,7 +16,7 @@ class Py3_rsa < Pip
      x86_64: '95fc6e372345a9e22ad6f352e838b5d0af6df01412854789a49d4c82b6b30a77'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

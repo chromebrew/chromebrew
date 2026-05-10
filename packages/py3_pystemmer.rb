@@ -17,7 +17,7 @@ class Py3_pystemmer < Pip
   })
 
   depends_on 'glibc' # R
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

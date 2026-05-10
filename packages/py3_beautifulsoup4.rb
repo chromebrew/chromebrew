@@ -18,7 +18,7 @@ class Py3_beautifulsoup4 < Pip
 
   depends_on 'py3_hatchling' => :build
   depends_on 'py3_soupsieve'
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

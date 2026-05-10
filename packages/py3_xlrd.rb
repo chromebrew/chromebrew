@@ -16,7 +16,7 @@ class Py3_xlrd < Pip
      x86_64: '266992051bbe6a0d383c9544d4173cd99b0e1342598d8ccd83315590898ed979'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

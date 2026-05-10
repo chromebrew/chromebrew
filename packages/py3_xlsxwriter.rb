@@ -16,7 +16,7 @@ class Py3_xlsxwriter < Pip
      x86_64: 'd7d5b55d87548c71d6df707a42eb94ab02aa6cdbfc5d8937c7b878d26b3b04b5'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

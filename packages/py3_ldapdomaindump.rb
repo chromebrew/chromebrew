@@ -19,7 +19,7 @@ class Py3_ldapdomaindump < Pip
   depends_on 'py3_future'
   depends_on 'py3_dnspython'
   depends_on 'py3_ldap3'
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

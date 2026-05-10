@@ -16,7 +16,7 @@ class Py3_pydf < Pip
      x86_64: '736cfd6c5b6fcd8cfeca6053c09bffee0391a0b86bca63a0c27c4b4236752030'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

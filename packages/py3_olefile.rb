@@ -16,7 +16,7 @@ class Py3_olefile < Pip
      x86_64: 'fe2d19153c3ca2887f51598a724df75017f71f0f096334063dca00e654758bdf'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

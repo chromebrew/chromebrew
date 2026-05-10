@@ -21,7 +21,7 @@ class Py3_dbus_python < Pip
   depends_on 'glib' # R
   depends_on 'py3_meson_python' => :build
   depends_on 'py3_patchelf' => :build
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

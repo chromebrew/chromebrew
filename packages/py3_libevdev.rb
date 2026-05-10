@@ -16,7 +16,7 @@ class Py3_libevdev < Pip
      x86_64: 'b4dc771ec18fb3baa514fdc2d8660cd41586ccc2c27e95d9c0883dd99fc587fb'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

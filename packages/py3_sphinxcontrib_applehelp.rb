@@ -8,7 +8,7 @@ class Py3_sphinxcontrib_applehelp < Pip
   compatibility 'all'
   source_url 'SKIP'
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_compile_needed
 end

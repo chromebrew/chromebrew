@@ -16,7 +16,7 @@ class Py3_et_xmlfile < Pip
      x86_64: 'c370592e83137d9a1cac18eb2c11a4e1208e6c4ed5d3cd2b6daf048812908f62'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

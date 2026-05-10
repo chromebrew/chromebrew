@@ -18,7 +18,7 @@ class Py3_pycairo < Pip
   depends_on 'cairo'
   depends_on 'libxxf86vm'
   depends_on 'libxrender'
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
   depends_on 'glibc' # R
   depends_on 'harfbuzz' # R
 

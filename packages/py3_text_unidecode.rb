@@ -16,7 +16,7 @@ class Py3_text_unidecode < Pip
      x86_64: 'a2fc5c17aeebc8ce4a29a26a5f1962f6160628de5b6d30ede47dd557d69e27d9'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

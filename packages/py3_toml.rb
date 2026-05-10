@@ -16,7 +16,7 @@ class Py3_toml < Pip
      x86_64: '11ff69452d7b37c7082bd5f25575ba403dd9336df8e36d84f718bdf88f37ca0b'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

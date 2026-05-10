@@ -24,7 +24,7 @@ class Py3_impacket < Pip
   depends_on 'py3_six'
   depends_on 'py3_ldap3'
   depends_on 'py3_ldapdomaindump'
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
   depends_on 'rust' => :build
 
   no_source_build

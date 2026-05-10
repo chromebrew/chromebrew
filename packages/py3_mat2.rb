@@ -9,7 +9,7 @@ class Py3_mat2 < Pip
   source_url 'SKIP'
 
   depends_on 'py3_pycairo' # R
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_compile_needed
 end

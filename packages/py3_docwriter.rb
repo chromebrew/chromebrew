@@ -16,7 +16,7 @@ class Py3_docwriter < Pip
      x86_64: '071daa228e1182d6e52a3b9fbc9ab8573043b717235eb717ae5f9822f56e5744'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

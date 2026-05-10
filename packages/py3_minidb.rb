@@ -16,7 +16,7 @@ class Py3_minidb < Pip
      x86_64: '24d173b1879a4866d67236c07c36f34ff2b0699eeb17ed0a15af3fecf9e55b19'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

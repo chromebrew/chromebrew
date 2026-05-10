@@ -16,7 +16,7 @@ class Py3_soupsieve < Pip
      x86_64: '7695d0c8adf1e23499762a7a7364634e84363675c3d6dfdbb677dbf0130d599a'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

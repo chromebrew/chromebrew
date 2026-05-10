@@ -16,7 +16,7 @@ class Py3_hatch_vcs < Pip
      x86_64: 'c1907fff5322bc662fc1aeff5c80b344fd81d77f56467334d911d921b9cfdb81'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

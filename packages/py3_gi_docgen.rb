@@ -23,7 +23,7 @@ class Py3_gi_docgen < Pip
   depends_on 'py3_markdown'
   depends_on 'py3_markupsafe'
   depends_on 'py3_pygments'
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
   depends_on 'py3_toml'

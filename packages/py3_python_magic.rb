@@ -17,7 +17,7 @@ class Py3_python_magic < Pip
   })
 
   depends_on 'filecmd'
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

@@ -21,5 +21,5 @@ class Py3_atspi < Meson
 
   depends_on 'py3_pygobject'
   depends_on 'at_spi2_core'
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 end

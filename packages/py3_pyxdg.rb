@@ -16,7 +16,7 @@ class Py3_pyxdg < Pip
      x86_64: 'd2a2cbb926226a5096f02b4191c540d1897ed339805c2a4fd9997d56e5f1c4d6'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

@@ -19,7 +19,7 @@ class Py3_catkin_tools < Pip
   depends_on 'py3_catkin_pkg'
   depends_on 'py3_nh3'
   depends_on 'py3_osrf_pycommon'
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

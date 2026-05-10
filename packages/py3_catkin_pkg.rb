@@ -16,7 +16,7 @@ class Py3_catkin_pkg < Pip
      x86_64: 'ff232f5078497fa29a4c9a849476a55bc79dccf2e1bbd22fa99d16bb1c0b57ca'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

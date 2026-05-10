@@ -17,7 +17,7 @@ class Py3_pyte < Pip
   })
 
   depends_on 'py3_wcwidth'
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

@@ -16,7 +16,7 @@ class Py3_ps_mem < Pip
      x86_64: '823faa9f7f50dd04f9a33d92edab8f4a027854ccf3827e59542d13633fbb3554'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

@@ -18,7 +18,7 @@ class Py3_agate_dbf < Pip
 
   depends_on 'py3_dbfread'
   depends_on 'py3_agate'
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

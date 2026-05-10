@@ -16,7 +16,7 @@ class Py3_decorator < Pip
      x86_64: 'bf9da39cc0eb0144c0ac8fe8474fe5dc70266b62b7e26ba4e0b7d028f17fd3bd'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

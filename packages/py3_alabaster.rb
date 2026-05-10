@@ -16,7 +16,7 @@ class Py3_alabaster < Pip
      x86_64: '133a5f452953bdabe49fde5e0e9b98b7fa4b4bd00e6a7d5ed00bd07068f0f199'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

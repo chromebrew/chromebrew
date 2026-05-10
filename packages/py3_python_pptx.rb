@@ -18,7 +18,7 @@ class Py3_python_pptx < Pip
   depends_on 'py3_lxml'
   depends_on 'py3_pillow'
   depends_on 'py3_xlsxwriter'
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

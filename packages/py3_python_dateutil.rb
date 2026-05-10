@@ -16,7 +16,7 @@ class Py3_python_dateutil < Pip
      x86_64: 'd1729d6c9daf3e3e5f6ea13bc86e332b417835c6f934ce7ebe91fb50154cb5aa'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

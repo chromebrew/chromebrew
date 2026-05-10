@@ -16,7 +16,7 @@ class Py3_pytimeparse < Pip
      x86_64: 'ce17f5826c782eac297afdd17a2b005792012840c42d973a63108672146ab079'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

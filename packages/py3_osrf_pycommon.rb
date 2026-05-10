@@ -16,7 +16,7 @@ class Py3_osrf_pycommon < Pip
      x86_64: '668ccfc35248b38ddd404a110a8e93a854411239c46d5c4f372a20353744e87a'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

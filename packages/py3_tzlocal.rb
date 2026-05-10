@@ -17,7 +17,7 @@ class Py3_tzlocal < Pip
   })
 
   depends_on 'py3_pytz'
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end

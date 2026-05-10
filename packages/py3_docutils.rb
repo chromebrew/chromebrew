@@ -16,7 +16,7 @@ class Py3_docutils < Pip
      x86_64: 'cee31bdb90c63edf16286b7f320c0e427850c217cee41f15f6a933780c2ac27a'
   })
 
-  depends_on 'python3' => :build
+  depends_on 'python3' => :logical
 
   no_source_build
 end
