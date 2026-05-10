@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Btrfs_progs < Autotools
   description 'BTRFS is a modern copy on write filesystem for Linux aimed at implementing advanced features while also focusing on fault tolerance, repair and easy administration.'
   homepage 'https://btrfs.readthedocs.io/en/latest/'
-  version '6.19.1'
+  version '7.0'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/kdave/btrfs-progs.git'
@@ -11,9 +11,9 @@ class Btrfs_progs < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '110813d0c17f56cb6e0d58b404d756bcce56cb8b5c986abfc29c1028069cb30f',
-     armv7l: '110813d0c17f56cb6e0d58b404d756bcce56cb8b5c986abfc29c1028069cb30f',
-     x86_64: '4bd86d3a76d2c747dc22d0466cc6fd5b011738ff06253b186a1157ce298004a7'
+    aarch64: 'ad8fa8a6eebc641abfbe7b830c4c75b690d8f0cb89c8f7f5225ca5c176303e42',
+     armv7l: 'ad8fa8a6eebc641abfbe7b830c4c75b690d8f0cb89c8f7f5225ca5c176303e42',
+     x86_64: 'bdc6b814c42065e19b3f795dd1ab43bdcebd4c504ca0ac7dcc1593db2a5fd49e'
   })
 
   depends_on 'e2fsprogs'
