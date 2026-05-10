@@ -44,6 +44,10 @@ Layout/FirstHashElementIndentation:
 Layout/LineLength:
   Enabled: false
 
+Style/FileOpen:
+ Exclude:
+  - 'lib/crew_lockfile.rb'
+
 # Having an explicit return can often improve readability.
 Style/RedundantReturn:
   Enabled: false
