@@ -1,5 +1,5 @@
 ---
-# Version 1.7
+# Version 1.8
 name: Generate PR
 run-name: Generate PR for ${{ inputs.branch || github.head_ref || github.ref_name }} by @${{ github.actor }}
 on:
@@ -576,9 +576,9 @@ jobs:
             FINAL_PR_TITLE="${TITLE}"
           fi
           if [[ -z ${PR_NUMBER} ]]; then
-            PR_NUMBER=$(gh pr create -d --reviewer chromebrew/active $PR_CREATE_LABEL_FLAG --title "${FINAL_PR_TITLE}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
+            PR_NUMBER=$(gh pr create -d $PR_CREATE_LABEL_FLAG --title "${FINAL_PR_TITLE}" -F /tmp/pr.txt | rev | cut -d"/" -f1  | rev)
           else
-            gh pr edit --add-reviewer chromebrew/active $PR_EDIT_LABEL_FLAG --title "${FINAL_PR_TITLE}" -F /tmp/pr.txt
+            gh pr edit $PR_EDIT_LABEL_FLAG --title "${FINAL_PR_TITLE}" -F /tmp/pr.txt
           fi
           # Try to update branch before finishing.
           gh pr update-branch --rebase || true

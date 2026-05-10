@@ -1,0 +1,53 @@
+---
+# Version 1.0
+name: Set Reviewers
+run-name: Set Reviewers for PR for ${{ github.head_ref || github.ref_name }}
+on:
+  pull_request:
+    types: [review_requested, ready_for_review]
+  workflow_dispatch:
+permissions:
+  actions: write
+  contents: write
+  packages: write
+  pull-requests: write
+  repository-projects: read
+jobs:
+  debug:
+    if: ${{ github.repository_owner == 'chromebrew' && github.event.pull_request.draft == false }}
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - name: Dump job context
+        env:
+          JOB_CONTEXT: ${{ toJson(job) }}
+        run: echo "$JOB_CONTEXT"
+      - name: Dump steps context
+        env:
+          STEPS_CONTEXT: ${{ toJson(steps) }}
+        run: echo "$STEPS_CONTEXT"
+  setup:
+    if: ${{  github.repository_owner == 'chromebrew' && github.event.pull_request.draft == false  }}
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Get GH Token
+        id: get_workflow_token
+        uses: peter-murray/workflow-application-token-action@v4
+        with:
+          application_id: ${{ secrets.APPLICATION_ID }}
+          application_private_key: ${{ secrets.APPLICATION_PRIVATE_KEY }}
+          organization: chromebrew
+          revoke_token: true
+      - name: Get Status of current ref
+        id: get-status
+        uses: danieldeichfuss/get-status@v0.10
+        with:
+          ref: ${{ github.sha }}
+      - name: Set Reviewers
+        if: ${{steps.get-status.outputs.all-checks-completed == 'true' &&  steps.get-status.outputs.all-checks-passed == 'true'}}
+        run: |
+          gh pr edit --add-reviewer chromebrew/active
+          echo "Asking Chromebrew/active for review."
