@@ -6,6 +6,10 @@ on:
   pull_request:
     types: [review_requested, ready_for_review]
   workflow_dispatch:
+    inputs:
+      branch:
+        description: "Branch of chromebrew/chromebrew to run on, if different from this branch."
+        required: false
 permissions:
   actions: write
   contents: write
@@ -45,7 +49,7 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: true
-          ref: ${{ github.sha }}
+          ref: ${{ inputs.branch || github.head_ref || github.ref_name }}
       - name: Get Status of current ref
         id: get-status
         uses: danieldeichfuss/get-status@v0.0.10
