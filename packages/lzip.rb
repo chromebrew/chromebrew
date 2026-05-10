@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Lzip < Autotools
   description 'Lzip is a lossless data compressor with a user interface similar to the one of gzip or bzip2.'
   homepage 'https://www.nongnu.org/lzip/lzip.html'
-  version '1.25'
+  version '1.26'
   license 'GPL-2+'
   compatibility 'all'
   source_url "https://download.savannah.gnu.org/releases/lzip/lzip-#{version}.tar.gz"
-  source_sha256 'd42659229b10e066eeb6e81eb673cdd893b672e512d26719c2d95975556ca56c'
+  source_sha256 '641cf30961525cbe3b340cc883436c8854e9f5032f459f444de4782b621e6572'
   binary_compression 'tar.zst'
 
   binary_sha256({
