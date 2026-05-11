@@ -24,6 +24,7 @@ class Php83 < Package
   depends_on 'curl' => :executable
   depends_on 'e2fsprogs' => :executable
   depends_on 'freetype' => :executable
+  depends_on 'gcc_lib' => :executable
   depends_on 'gcc_lib' => :library
   depends_on 'gdbm' => :library
   depends_on 'glibc' => :library
