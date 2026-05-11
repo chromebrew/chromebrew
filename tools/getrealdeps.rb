@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# getrealdeps version 2.10 (for Chromebrew)
+# getrealdeps version 2.11 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 #
 # Dependencies in Chromebrew can be:
@@ -191,7 +191,7 @@ def determine_dependencies(pkg_name, pkgfiles_to_check)
   # Use readelf to determine library dependencies, as
   # this doesn't almost run a program like using ldd would.
   pkgdepsfiles = pkgfiles_to_check.map do |i|
-    system("upx -d #{i} > /dev/null 2>&1")
+    system "upx -qq -d #{i}", %i[err] => File::NULL, %i[out] => File::NULL
     FileUtils.mkdir_p("/tmp/deps/#{pkg_name}/")
     `readelf -d "#{i}" 2>/dev/null | #{@grep} NEEDED | awk '{print $5}' | sed 's/\\[//g' | sed 's/\\]//g' | awk '!x[$0]++' | tee /tmp/deps/#{pkg_name}/#{File.basename(i)}`
   end
@@ -256,7 +256,7 @@ def main(pkg)
   ENV['LC_ALL'] = 'C'
 
   # Install grep if a functional local copy does not exist.
-  if system('grep --version > /dev/null 2>&1')
+  if system 'grep --version', %i[err] => File::NULL, %i[out] => File::NULL
     @grep = 'grep'
   else
     system('crew install grep')
@@ -264,13 +264,13 @@ def main(pkg)
   end
 
   # Gawk is needed for adding dependencies.
-  unless system('gawk -W version > /dev/null 2>&1')
+  unless system 'gawk -W version', %i[err] => File::NULL, %i[out] => File::NULL
     puts "\nThe inplace replacement functionality of gawk is used to add missing dependencies to package files."
     system('crew install gawk')
   end
 
   # upx is needed to expand compressed binaries to check for dependencies.
-  unless system('upx --version > /dev/null 2>&1')
+  unless system 'upx --version', %i[err] => File::NULL, %i[out] => File::NULL
     puts "\nUpx is needed to expand compressed binaries."
     system('crew install upx')
   end

@@ -1036,7 +1036,10 @@ end
 def expand_binaries_and_fix_interpreter_path(dir)
   # Do not set interpreter for non-musl, as this can break apps if there
   # is an issue with the crew glibc.
-  return if !@pkg.nil? && (@pkg.is_musl? || %w[crew_preload patchelf upx].include?(@pkg.name))
+  # Also skip if we don't need to fix the interpreteter path and we are
+  # in a container since that will subsequently use patchelf after upx
+  # to patch the binaries.
+  return if (!@pkg.nil? && (@pkg.is_musl? || %w[crew_preload patchelf upx].include?(@pkg.name))) || (CREW_GLIBC_INTERPRETER.blank? && ENV.fetch('NESTED_CI', nil))
 
   Dir.chdir dir do
     # Look for installed binaries and libraries in the package install
@@ -1060,7 +1063,7 @@ def expand_binaries_and_fix_interpreter_path(dir)
 
       pool.post do
         # Decompress the binary if compressed.
-        system "upx -qq -d #{execfiletopatch}", %i[err] => File::NULL, exception: false if File.file?("#{CREW_PREFIX}/bin/upx")
+        system "upx -qq -d #{execfiletopatch}", %i[err] => File::NULL, %i[out] => File::NULL, exception: false if File.file?("#{CREW_PREFIX}/bin/upx")
 
         # Check for existing interpreter.
         next if CREW_GLIBC_INTERPRETER.blank?
