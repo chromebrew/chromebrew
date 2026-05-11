@@ -1,5 +1,5 @@
 ---
-# Version 1.2
+# Version 1.3
 name: Unit Tests
 on:
   check_run:
@@ -22,8 +22,24 @@ on:
     types:
       - completed
 jobs:
+  debug:
+    if: ${{ github.repository_owner == 'chromebrew' }}
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - name: Dump job context
+        env:
+          JOB_CONTEXT: ${{ toJson(job) }}
+        run: echo "$JOB_CONTEXT"
+      - name: Dump steps context
+        env:
+          STEPS_CONTEXT: ${{ toJson(steps) }}
+        run: echo "$STEPS_CONTEXT"
   setup:
-    if: ${{ ( github.repository_owner == 'chromebrew' ) }}
+    if: ${{ github.repository_owner == 'chromebrew' }}
     runs-on: ubuntu-24.04
     outputs:
       current_head: ${{ steps.get-current-head.outputs.CURRENT_HEAD }}
