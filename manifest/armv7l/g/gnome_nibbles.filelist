@@ -1,4 +1,4 @@
-# Total size: 2300329
+# Total size: 2366621
 /usr/local/bin/gnome-nibbles
 /usr/local/share/applications/org.gnome.Nibbles.desktop
 /usr/local/share/dbus-1/services/org.gnome.Nibbles.service
@@ -232,6 +232,23 @@
 /usr/local/share/help/hu/gnome-nibbles/scores.page
 /usr/local/share/help/hu/gnome-nibbles/sound-change.page
 /usr/local/share/help/hu/gnome-nibbles/speed-change.page
+/usr/local/share/help/kk/gnome-nibbles/basics.page
+/usr/local/share/help/kk/gnome-nibbles/controls-change.page
+/usr/local/share/help/kk/gnome-nibbles/controls-default.page
+/usr/local/share/help/kk/gnome-nibbles/fake-bonus.page
+/usr/local/share/help/kk/gnome-nibbles/figures/apple.svg
+/usr/local/share/help/kk/gnome-nibbles/figures/banana.svg
+/usr/local/share/help/kk/gnome-nibbles/figures/cherry.svg
+/usr/local/share/help/kk/gnome-nibbles/figures/diamond.svg
+/usr/local/share/help/kk/gnome-nibbles/figures/emblem-system-symbolic.svg
+/usr/local/share/help/kk/gnome-nibbles/figures/life.svg
+/usr/local/share/help/kk/gnome-nibbles/figures/nibbles.svg
+/usr/local/share/help/kk/gnome-nibbles/index.page
+/usr/local/share/help/kk/gnome-nibbles/legal.xml
+/usr/local/share/help/kk/gnome-nibbles/multi-player.page
+/usr/local/share/help/kk/gnome-nibbles/scores.page
+/usr/local/share/help/kk/gnome-nibbles/sound-change.page
+/usr/local/share/help/kk/gnome-nibbles/speed-change.page
 /usr/local/share/help/ko/gnome-nibbles/basics.page
 /usr/local/share/help/ko/gnome-nibbles/controls-change.page
 /usr/local/share/help/ko/gnome-nibbles/controls-default.page
@@ -300,6 +317,23 @@
 /usr/local/share/help/ru/gnome-nibbles/scores.page
 /usr/local/share/help/ru/gnome-nibbles/sound-change.page
 /usr/local/share/help/ru/gnome-nibbles/speed-change.page
+/usr/local/share/help/sr/gnome-nibbles/basics.page
+/usr/local/share/help/sr/gnome-nibbles/controls-change.page
+/usr/local/share/help/sr/gnome-nibbles/controls-default.page
+/usr/local/share/help/sr/gnome-nibbles/fake-bonus.page
+/usr/local/share/help/sr/gnome-nibbles/figures/apple.svg
+/usr/local/share/help/sr/gnome-nibbles/figures/banana.svg
+/usr/local/share/help/sr/gnome-nibbles/figures/cherry.svg
+/usr/local/share/help/sr/gnome-nibbles/figures/diamond.svg
+/usr/local/share/help/sr/gnome-nibbles/figures/emblem-system-symbolic.svg
+/usr/local/share/help/sr/gnome-nibbles/figures/life.svg
+/usr/local/share/help/sr/gnome-nibbles/figures/nibbles.svg
+/usr/local/share/help/sr/gnome-nibbles/index.page
+/usr/local/share/help/sr/gnome-nibbles/legal.xml
+/usr/local/share/help/sr/gnome-nibbles/multi-player.page
+/usr/local/share/help/sr/gnome-nibbles/scores.page
+/usr/local/share/help/sr/gnome-nibbles/sound-change.page
+/usr/local/share/help/sr/gnome-nibbles/speed-change.page
 /usr/local/share/help/sv/gnome-nibbles/basics.page
 /usr/local/share/help/sv/gnome-nibbles/controls-change.page
 /usr/local/share/help/sv/gnome-nibbles/controls-default.page
