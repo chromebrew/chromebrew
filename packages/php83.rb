@@ -30,7 +30,7 @@ class Php83 < Package
   depends_on 'glibc' => :library
   depends_on 'gmp' => :executable
   depends_on 'icu4c' => :executable
-  depends_on 'jq' # R
+  depends_on 'jq' => :build
   depends_on 'krb5' => :executable
   depends_on 'libcyrussasl' => :executable
   depends_on 'libedit' => :executable
