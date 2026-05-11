@@ -11,9 +11,9 @@ class Gnome_nibbles < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7854676bf4fc83e2e08a66592d1470a3cc634f7e583792f93ffe0d6731eda391',
-     armv7l: '7854676bf4fc83e2e08a66592d1470a3cc634f7e583792f93ffe0d6731eda391',
-     x86_64: '323fcf07c08a8c78a54d19f16bf7da536629814f947259056ea4698ff319a081'
+    aarch64: '9660e5c1b93a8b4f27942938aabf4c0dc966f4ac6a75a03e21592ffaba00193d',
+     armv7l: '9660e5c1b93a8b4f27942938aabf4c0dc966f4ac6a75a03e21592ffaba00193d',
+     x86_64: '50bec6ffffb038aebc848e1dee9b649c22b57e82950ace8dcd543e7ecb0acf10'
   })
 
   depends_on 'cairo' # R
