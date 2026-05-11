@@ -22,6 +22,7 @@ class Php84 < Package
   depends_on 'c_ares' => :executable
   depends_on 'curl' => :executable
   depends_on 'freetype' => :executable
+  depends_on 'gcc_lib' => :executable
   depends_on 'gcc_lib' => :library
   depends_on 'gdbm' => :library
   depends_on 'glibc' => :library
