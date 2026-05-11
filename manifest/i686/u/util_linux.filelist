@@ -1,4 +1,4 @@
-# Total size: 26838021
+# Total size: 28324890
 /usr/local/bin/bits
 /usr/local/bin/cal
 /usr/local/bin/chfn
@@ -126,6 +126,7 @@
 /usr/local/sbin/agetty
 /usr/local/sbin/blkdiscard
 /usr/local/sbin/blkid
+/usr/local/sbin/blkpr
 /usr/local/sbin/blockdev
 /usr/local/sbin/cfdisk
 /usr/local/sbin/chcpu
@@ -167,6 +168,7 @@
 /usr/local/share/bash-completion/completions/bits
 /usr/local/share/bash-completion/completions/blkdiscard
 /usr/local/share/bash-completion/completions/blkid
+/usr/local/share/bash-completion/completions/blkpr
 /usr/local/share/bash-completion/completions/blockdev
 /usr/local/share/bash-completion/completions/cal
 /usr/local/share/bash-completion/completions/cfdisk
@@ -281,6 +283,7 @@
 /usr/local/share/bash-completion/completions/zramctl
 /usr/local/share/doc/util-linux/getopt-example.bash
 /usr/local/share/doc/util-linux/getopt-example.tcsh
+/usr/local/share/locale/ar/LC_MESSAGES/util-linux.mo
 /usr/local/share/locale/ca/LC_MESSAGES/util-linux.mo
 /usr/local/share/locale/cs/LC_MESSAGES/util-linux.mo
 /usr/local/share/locale/da/LC_MESSAGES/util-linux.mo
@@ -386,10 +389,12 @@
 /usr/local/share/man/man3/lastlog2.3.zst
 /usr/local/share/man/man3/libblkid.3.zst
 /usr/local/share/man/man3/ll2_import_lastlog.3.zst
+/usr/local/share/man/man3/ll2_new_context.3.zst
 /usr/local/share/man/man3/ll2_read_all.3.zst
 /usr/local/share/man/man3/ll2_read_entry.3.zst
 /usr/local/share/man/man3/ll2_remove_entry.3.zst
 /usr/local/share/man/man3/ll2_rename_user.3.zst
+/usr/local/share/man/man3/ll2_unref_context.3.zst
 /usr/local/share/man/man3/ll2_update_login_time.3.zst
 /usr/local/share/man/man3/ll2_write_entry.3.zst
 /usr/local/share/man/man3/uuid.3.zst
@@ -412,6 +417,7 @@
 /usr/local/share/man/man8/agetty.8.zst
 /usr/local/share/man/man8/blkdiscard.8.zst
 /usr/local/share/man/man8/blkid.8.zst
+/usr/local/share/man/man8/blkpr.8.zst
 /usr/local/share/man/man8/blockdev.8.zst
 /usr/local/share/man/man8/cfdisk.8.zst
 /usr/local/share/man/man8/chcpu.8.zst
@@ -439,6 +445,8 @@
 /usr/local/share/man/man8/lsns.8.zst
 /usr/local/share/man/man8/mkfs.8.zst
 /usr/local/share/man/man8/mkfs.bfs.8.zst
+/usr/local/share/man/man8/mkfs.cramfs.8.zst
+/usr/local/share/man/man8/mkfs.minix.8.zst
 /usr/local/share/man/man8/mkswap.8.zst
 /usr/local/share/man/man8/mount.8.zst
 /usr/local/share/man/man8/nologin.8.zst
