@@ -249,5 +249,5 @@ jobs:
           BRANCH: ${{ inputs.branch || github.head_ref || github.ref_name }}
           GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
         run: |
-          echo "Container test jobs succeeded."
+          echo "Container test jobs succeeded. Triggering Set Reviewers workflow for ${BRANCH}."
           gh workflow run Set-Reviewers.yml -R ${{ github.repository }} -r ${BRANCH} -f branch=${BRANCH}

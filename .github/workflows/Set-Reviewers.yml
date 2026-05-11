@@ -1,5 +1,5 @@
 ---
-# Version 1.3
+# Version 1.4
 name: Set Reviewers
 run-name: Set Reviewers for PR for ${{ github.head_ref || github.ref_name }}
 on:
@@ -10,10 +10,6 @@ on:
       branch:
         description: "Branch of chromebrew/chromebrew to run on, if different from this branch."
         required: false
-  workflow_run:
-    workflows: ["Unit Tests"]
-    types:
-      - completed
 permissions:
   actions: write
   contents: write
@@ -22,7 +18,7 @@ permissions:
   repository-projects: read
 jobs:
   debug:
-    if: ${{ github.repository_owner == 'chromebrew' && inputs.branch != 'master' && github.ref_name != 'master' && github.event.pull_request.draft == false }}
+    if: ${{ github.repository_owner == 'chromebrew' && github.event.pull_request.draft == false }}
     runs-on: ubuntu-24.04
     steps:
       - name: Dump GitHub context
@@ -38,8 +34,7 @@ jobs:
           STEPS_CONTEXT: ${{ toJson(steps) }}
         run: echo "$STEPS_CONTEXT"
   setup:
-    needs: debug
-    if: ${{  github.repository_owner == 'chromebrew' && inputs.branch != 'master' && github.ref_name != 'master' && github.event.pull_request.draft == false && github.event.workflow_run.conclusion == 'success' }}
+    if: ${{  github.repository_owner == 'chromebrew' && inputs.branch != 'master' && github.ref_name != 'master' && github.event.pull_request.draft == false }}
     runs-on: ubuntu-24.04
     steps:
       - name: Get GH Token
