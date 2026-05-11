@@ -3,11 +3,11 @@ require 'package'
 class Php83 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'https://www.php.net/'
-  version '8.3.29'
+  version '8.3.31'
   license 'PHP-3.01'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.php.net/distributions/php-#{version}.tar.xz"
-  source_sha256 '25e3860f30198a386242891c0bf9e2955931f7b666b96c3e3103d36a2a322326'
+  source_sha256 '66410cee07f4b2baeb0843140bb2a2b52ef930b5cf9b3d6e6d158b33aae8fa37'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -16,47 +16,47 @@ class Php83 < Package
      x86_64: '87b5ff84593b7209b55cfbb512b673c4f4fe4c2e413dbfb6d4984a553e34c9dc'
   })
 
-  depends_on 'aspell' # R
+  depends_on 'aspell' => :executable
   depends_on 'aspell_en' => :build
-  depends_on 'brotli' # R
-  depends_on 'bzip2' # R
-  depends_on 'c_ares' # R
-  depends_on 'curl' # R
-  depends_on 'e2fsprogs' # R
-  depends_on 'freetype' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'gdbm' # R
-  depends_on 'glibc' # R
-  depends_on 'gmp' # R
-  depends_on 'icu4c' # R
+  depends_on 'brotli' => :executable
+  depends_on 'bzip2' => :executable
+  depends_on 'c_ares' => :executable
+  depends_on 'curl' => :executable
+  depends_on 'e2fsprogs' => :executable
+  depends_on 'freetype' => :executable
+  depends_on 'gcc_lib' => :library
+  depends_on 'gdbm' => :library
+  depends_on 'glibc' => :library
+  depends_on 'gmp' => :executable
+  depends_on 'icu4c' => :executable
   depends_on 'jq' # R
-  depends_on 'krb5' # R
-  depends_on 'libcyrussasl' # R
-  depends_on 'libedit' # R
-  depends_on 'libffi' # R
-  depends_on 'libidn2' # R
-  depends_on 'libjpeg_turbo' # R
-  depends_on 'libnghttp2' # R
-  depends_on 'libnghttp3' # R
-  depends_on 'libngtcp2' # R
-  depends_on 'libpng' # R
-  depends_on 'libpsl' # R
-  depends_on 'libsodium' # R
-  depends_on 'libssh' # R
-  depends_on 'libtool' # R
-  depends_on 'libunistring' # R
-  depends_on 'libxml2' # R
-  depends_on 'libxslt' # R
-  depends_on 'libzip' # R
-  depends_on 'ncurses' # R
-  depends_on 'oniguruma' # R
-  depends_on 'openldap' # R
-  depends_on 'openssl' # R
-  depends_on 'sqlite' # R
-  depends_on 'tidy' # R
-  depends_on 'unixodbc' # R
-  depends_on 'zlib' # R
-  depends_on 'zstd' # R
+  depends_on 'krb5' => :executable
+  depends_on 'libcyrussasl' => :executable
+  depends_on 'libedit' => :executable
+  depends_on 'libffi' => :executable
+  depends_on 'libidn2' => :executable
+  depends_on 'libjpeg_turbo' => :executable
+  depends_on 'libnghttp2' => :executable
+  depends_on 'libnghttp3' => :executable
+  depends_on 'libngtcp2' => :executable
+  depends_on 'libpng' => :executable
+  depends_on 'libpsl' => :executable
+  depends_on 'libsodium' => :executable
+  depends_on 'libssh' => :executable
+  depends_on 'libtool' => :executable
+  depends_on 'libunistring' => :executable
+  depends_on 'libxml2' => :executable
+  depends_on 'libxslt' => :executable
+  depends_on 'libzip' => :executable
+  depends_on 'ncurses' => :executable
+  depends_on 'oniguruma' => :executable
+  depends_on 'openldap' => :executable
+  depends_on 'openssl' => :executable
+  depends_on 'sqlite' => :executable
+  depends_on 'tidy' => :executable
+  depends_on 'unixodbc' => :executable
+  depends_on 'zlib' => :executable
+  depends_on 'zstd' => :executable
 
   no_fhs
 
