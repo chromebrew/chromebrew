@@ -1,41 +1,27 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Libzip < Package
+class Libzip < CMake
   description 'libzip is a C library for reading, creating, and modifying zip archives.'
   homepage 'https://libzip.org/'
-  version '1.7.3-1'
+  version '1.11.4'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://libzip.org/download/libzip-1.7.3.tar.xz'
-  source_sha256 'a60473ffdb7b4260c08bfa19c2ccea0438edac11193c3afbbb1f17fbcf6c6132'
-  binary_compression 'tar.xz'
+  source_url "https://libzip.org/download/libzip-#{version}.tar.xz"
+  source_sha256 '8a247f57d1e3e6f6d11413b12a6f28a9d388de110adc0ec608d893180ed7097b'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '816fc0aa5940b01c94631f6d4215b2e8990738a51022fe7e7094fa471afd50ff',
-     armv7l: '816fc0aa5940b01c94631f6d4215b2e8990738a51022fe7e7094fa471afd50ff',
-       i686: '75cd419eba9935ab1d6580fce78788b1564099f0443ad611de3e236c3b02981a',
-     x86_64: 'dd16146327e8c8a91d0cdd5b1f2c776657bda33697c2a9e216e6804c115ac06c'
+    aarch64: 'bf53b740f331983c09489712055203ff758c0dd8beaa1f84c5b5213d646d92f8',
+     armv7l: 'bf53b740f331983c09489712055203ff758c0dd8beaa1f84c5b5213d646d92f8',
+       i686: 'be6a5375a64f5ca4075c52268be1392f16c10f76faf2146a5f15843063a946bb',
+     x86_64: 'c7478e3c8f23747e674c03a0205a191dea0725f7013177d1edee1506b26af2bf'
   })
 
-  depends_on 'bzip2'
-
-  def self.build
-    Dir.mkdir 'builddir'
-    Dir.chdir 'builddir' do
-      system "env #{CREW_ENV_OPTIONS} \
-        cmake \
-        -G Ninja \
-        #{CREW_CMAKE_OPTIONS} \
-        .."
-      system 'ninja'
-    end
-  end
-
-  def self.check
-    system 'ninja -C builddir test'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  depends_on 'bzip2' => :library
+  depends_on 'glibc' => :library
+  depends_on 'libmbedtls' => :library
+  depends_on 'openssl' => :library
+  depends_on 'xzutils' => :library
+  depends_on 'zlib' => :library
+  depends_on 'zstd' => :library
 end

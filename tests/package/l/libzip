@@ -1,0 +1,4 @@
+#!/bin/bash
+zipcmp -V
+zipmerge -V
+ziptool -h | head
