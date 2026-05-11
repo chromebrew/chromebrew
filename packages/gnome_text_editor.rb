@@ -11,9 +11,9 @@ class Gnome_text_editor < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '052cdb67487e3c3a9ac8d4f48f5ad2fdd6b4c73b424ac8b21c0b83e5e4098d8b',
-     armv7l: '052cdb67487e3c3a9ac8d4f48f5ad2fdd6b4c73b424ac8b21c0b83e5e4098d8b',
-     x86_64: 'aa742ff8c9c4886f889714ce9c50d5831204accc3e06aa4eefd4aba294929277'
+    aarch64: '5c7f402fbd248df8b88c84dd2b0f98b0eaf5dfc00eafcc08b5de1d87ef778946',
+     armv7l: '5c7f402fbd248df8b88c84dd2b0f98b0eaf5dfc00eafcc08b5de1d87ef778946',
+     x86_64: '2fcde5047701b79c273d81762293903b174918e8c86dbee68f4b284ec3268bd6'
   })
 
   depends_on 'desktop_file_utils' => :build
