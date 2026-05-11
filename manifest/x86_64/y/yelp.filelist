@@ -1,4 +1,4 @@
-# Total size: 2569807
+# Total size: 2586921
 /usr/local/bin/gnome-help
 /usr/local/bin/yelp
 /usr/local/include/libyelp-1/yelp-bookmarks.h
@@ -84,6 +84,7 @@
 /usr/local/share/locale/ko/LC_MESSAGES/yelp.mo
 /usr/local/share/locale/ks/LC_MESSAGES/yelp.mo
 /usr/local/share/locale/ku/LC_MESSAGES/yelp.mo
+/usr/local/share/locale/kw/LC_MESSAGES/yelp.mo
 /usr/local/share/locale/ky/LC_MESSAGES/yelp.mo
 /usr/local/share/locale/la/LC_MESSAGES/yelp.mo
 /usr/local/share/locale/li/LC_MESSAGES/yelp.mo
