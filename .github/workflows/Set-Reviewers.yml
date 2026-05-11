@@ -1,15 +1,19 @@
 ---
-# Version 1.1
+# Version 1.2
 name: Set Reviewers
 run-name: Set Reviewers for PR for ${{ github.head_ref || github.ref_name }}
 on:
   pull_request:
-    types: [review_requested, ready_for_review]
+    types: [ready_for_review]
   workflow_dispatch:
     inputs:
       branch:
         description: "Branch of chromebrew/chromebrew to run on, if different from this branch."
         required: false
+  workflow_run:
+    workflows: ["Unit Tests"]
+    types:
+      - completed
 permissions:
   actions: write
   contents: write
@@ -34,7 +38,7 @@ jobs:
           STEPS_CONTEXT: ${{ toJson(steps) }}
         run: echo "$STEPS_CONTEXT"
   setup:
-    if: ${{  github.repository_owner == 'chromebrew' && github.event.pull_request.draft == false  }}
+    if: ${{  github.repository_owner == 'chromebrew' && github.event.pull_request.draft == false && github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-24.04
     steps:
       - name: Get GH Token
