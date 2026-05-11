@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Util_linux < Meson
   description 'essential linux tools'
   homepage 'https://www.kernel.org/pub/linux/utils/util-linux/'
-  version "2.41.3-#{CREW_PY_VER}"
+  version "2.42-#{CREW_PY_VER}"
   license 'GPL-2, LGPL-2.1, BSD-4, MIT and public-domain'
   compatibility 'all'
   source_url 'https://github.com/util-linux/util-linux.git'
@@ -11,10 +11,10 @@ class Util_linux < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0ca17519ba5227b3c81fee800ed2078d79671ee9f10cf6af08580ab6081c177f',
-     armv7l: '0ca17519ba5227b3c81fee800ed2078d79671ee9f10cf6af08580ab6081c177f',
-       i686: '6ee516c2cace06a6fd13f46376424a01847024979266cfc5fa8cac7f704ad167',
-     x86_64: 'e2b44a21ff4c93f2e99496d087a0989fae42eff2da84a020e3f4f4c40d9ab5f8'
+    aarch64: '0fc647511249286521d9123e96e534c3020d682f56fe3f27cb47798750e572bd',
+     armv7l: '0fc647511249286521d9123e96e534c3020d682f56fe3f27cb47798750e572bd',
+       i686: '994d79450826fc892e094b9d50e6a0f5d8d2a3f6fcad30e04aa61b87495ecfb0',
+     x86_64: 'd5f9ee0e33ed5b6613115d979f390bc7926941fa4ea15b6b1cc1a3e2efdfb159'
   })
 
   depends_on 'eudev_header' => :build if ARCH == 'x86_64' # (for libudev.h)
