@@ -1,6 +1,7 @@
 Encoding.default_external = Encoding::UTF_8
 Encoding.default_internal = Encoding::UTF_8
 require 'json'
+require 'open3'
 require_relative '../package'
 require_relative '../require_gem'
 require_relative '../report_buildsystem_methods'
@@ -30,7 +31,8 @@ def pip_hard_reinstall
   pip_site_packages_folder = `python3 -c "import sysconfig; print(sysconfig.get_paths()['purelib'])"`.chomp
   Kernel.system "python3 -m pip install #{@pip_resume_retries} trash-cli"
   Kernel.system "trash-put #{pip_site_packages_folder}/#{@py_pkg}*"
-  system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -m pip install #{@pip_resume_retries} --force-reinstall --upgrade '#{@py_pkg}==#{@py_pkg_chromebrew_version}'"
+  @pip_hard_install_out, _read_pip_hard_install_stderr_s, @read_pip_hard_install_status = Open3.capture3("PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -m pip install #{@pip_resume_retries} --ignore-installed --force-reinstall --upgrade '#{@py_pkg}==#{@py_pkg_chromebrew_version}'")
+  puts @read_pip_hard_install_status ? @pip_hard_install_out.green : @pip_hard_install_out.red
   get_pip_info(@py_pkg)
 end
 
@@ -74,7 +76,8 @@ class Pip < Package
       @py_pkg_deps.each do |pip_dep|
         @cleaned_py_dep = pip_dep[/[^;]+/]
         puts "——Installing: #{@cleaned_py_dep}".gray
-        system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -s -m pip install #{@pip_resume_retries} #{'--pre' if prerelease?} --ignore-installed -U \"#{@cleaned_py_dep}\" | grep -v 'Requirement already satisfied'", exception: false
+        @pip_dep_install_out, _read_pip_dep_install_stderr_s, @read_pip_dep_install_status = Open3.capture3("PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -s -m pip install #{@pip_resume_retries} #{'--pre' if prerelease?} --ignore-installed -U \"#{@cleaned_py_dep}\" | grep -v 'Requirement already satisfied'")
+        puts @read_pip_dep_install_status ? @pip_dep_install_out.green : @pip_dep_install_out.red
       end
     end
     puts "Installing #{@py_pkg} python module. This may take a while...".lightblue
@@ -93,7 +96,8 @@ class Pip < Package
       puts "A wheel for #{@py_pkg}==#{@py_pkg_chromebrew_version} was found!".lightblue
     else
       puts "A wheel for #{@py_pkg}==#{@py_pkg_chromebrew_version} was unavailable, so we will build a wheel.".orange
-      system "PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -m pip install #{@pip_resume_retries} #{'--pre' if prerelease?} --force-reinstall --upgrade '#{@py_pkg}==#{@py_pkg_chromebrew_version}'" unless prerelease?
+      @pip_no_wheel_found_install_out, _read_pip_no_wheel_found_install_stderr_s, @read_pip_no_wheel_found_install_status = Open3.capture3("PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -m pip install #{@pip_resume_retries} #{'--pre' if prerelease?} --ignore-installed --force-reinstall --upgrade '#{@py_pkg}==#{@py_pkg_chromebrew_version}'")
+      puts @read_pip_no_wheel_found_install_status ? @pip_no_wheel_found_install_out.green : @pip_no_wheel_found_install_out.red
       # Assume all pip non-SKIP sources are git.
       @pip_wheel = if @source_url == 'SKIP'
                      `PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 MAKEFLAGS=-j#{CREW_NPROC} #{@pip_pre_configure_options} python3 -m pip wheel #{'--pre' if prerelease?} -w #{@pip_cache_dir} #{@py_pkg}==#{@py_pkg_version}`[/(?<=filename=)(.*)*?(\S+)/, 0]
