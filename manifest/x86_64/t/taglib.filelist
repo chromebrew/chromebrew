@@ -1,4 +1,4 @@
-# Total size: 15083955
+# Total size: 15752720
 /usr/local/bin/taglib-config
 /usr/local/include/taglib/aifffile.h
 /usr/local/include/taglib/aiffproperties.h
@@ -51,16 +51,21 @@
 /usr/local/include/taglib/matroskaproperties.h
 /usr/local/include/taglib/matroskasimpletag.h
 /usr/local/include/taglib/matroskatag.h
+/usr/local/include/taglib/matroskawritestyle.h
 /usr/local/include/taglib/modfile.h
 /usr/local/include/taglib/modfilebase.h
 /usr/local/include/taglib/modproperties.h
 /usr/local/include/taglib/modtag.h
 /usr/local/include/taglib/mp4atom.h
+/usr/local/include/taglib/mp4chapter.h
+/usr/local/include/taglib/mp4chapterholder.h
 /usr/local/include/taglib/mp4coverart.h
 /usr/local/include/taglib/mp4file.h
 /usr/local/include/taglib/mp4item.h
 /usr/local/include/taglib/mp4itemfactory.h
+/usr/local/include/taglib/mp4nerochapterlist.h
 /usr/local/include/taglib/mp4properties.h
+/usr/local/include/taglib/mp4qtchapterlist.h
 /usr/local/include/taglib/mp4stem.h
 /usr/local/include/taglib/mp4tag.h
 /usr/local/include/taglib/mpcfile.h
