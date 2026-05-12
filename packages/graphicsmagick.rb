@@ -23,6 +23,7 @@ class Graphicsmagick < Autotools
     depends_on 'ghostscript' => :build
     depends_on 'harfbuzz' => :build
     depends_on 'jasper' # R
+    depends_on 'lcms' # R
     depends_on 'libbsd' # R
     depends_on 'libde265' => :build
     depends_on 'libdeflate' # R
@@ -43,7 +44,6 @@ class Graphicsmagick < Autotools
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'jbigkit' # R
-  depends_on 'lcms' # R
   depends_on 'libjpeg_turbo' # R
   depends_on 'libpng' # R
   depends_on 'libtiff' # R
