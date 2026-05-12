@@ -102,6 +102,7 @@ end
 def get_http_response(uri)
   uri             = URI(uri) if uri.is_a?(String)
   ssl_error_retry = 0
+  ssl_cert_verification_bypass_threshold = 3
 
   # open http connection
   Net::HTTP.start(uri.host, uri.port, {
@@ -109,14 +110,17 @@ def get_http_response(uri)
     use_ssl:     uri.scheme.eql?('https'),
     min_version: :TLS1_2,
     ca_file:     SSL_CERT_FILE,
-    ca_path:     SSL_CERT_DIR
+    ca_path:     SSL_CERT_DIR,
+    verify_depth: 5,
+    verify_mode: ssl_error_retry <= ssl_cert_verification_bypass_threshold ? OpenSSL::SSL::VERIFY_PEER : OpenSSL::SSL::VERIFY_NONE
   }) do |http|
     return http.get(uri)
   end
 rescue OpenSSL::SSL::SSLError
   # handle SSL errors
   ssl_error_retry += 1
-  ssl_error_retry <= 3 ? retry : raise
+  puts 'Attempting https without ssl cert verification as a fallback.'.lightred if ssl_error_retry > ssl_cert_verification_bypass_threshold
+  ssl_error_retry <= 8 ? retry : raise
 end
 
 def http_downloader(uri, filename = File.basename(url), verbose: false)

@@ -1,6 +1,7 @@
 # lib/package_utils.rb
 # Utility functions that take either a package object or a component of a package object as primary input.
 require 'json'
+require_relative 'color'
 require_relative 'const'
 require_relative 'downloader'
 
@@ -127,7 +128,28 @@ class PackageUtils
     # The package name probably just used dashes as separators, but if it didn't then the correct name is in the upstream_name argument.
     ruby_gem_name = upstream_name.nil? ? passed_name.delete_prefix('ruby_').delete_prefix('Ruby_').gsub('_', '-') : upstream_name
 
-    ruby_gem_json = JSON.parse(Net::HTTP.get(URI("https://rubygems.org/api/v1/gems/#{ruby_gem_name}.json")))
+    # As per https://stackoverflow.com/a/2627836
+    # try to handle breakage with OpenSSL.
+
+    url = URI("https://rubygems.org/api/v1/gems/#{ruby_gem_name}.json")
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+    if File.directory?(SSL_CERT_DIR) && http.use_ssl?
+      http.ca_path = SSL_CERT_DIR
+      http.verify_mode = OpenSSL::SSL::VERIFY_PEER
+      http.verify_depth = 5
+    else
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    end
+    request = Net::HTTP::Get.new(url.path)
+    begin
+      response = http.request(request)
+    rescue OpenSSL::SSL::SSLError
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      puts "SSL error for https://rubygems.org with SSL_CERT_DIR #{SSL_CERT_DIR}.".lightred
+      response = http.request(request)
+    end
+    ruby_gem_json = JSON.parse(response.body)
 
     # Use the latest gem version.
     remote_ruby_gem_version = ruby_gem_json['version']
