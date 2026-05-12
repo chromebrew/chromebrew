@@ -17,6 +17,7 @@ class Zed < RUST
   depends_on 'alsa_lib' => :library
   depends_on 'cargo_about' => :build
   depends_on 'dbus' => :executable
+  depends_on 'fontconfig' => :build
   depends_on 'gcc_lib' => :library
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
