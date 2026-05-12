@@ -1,4 +1,5 @@
 ---
+# Version 1.1
 name: Determine glibc and architecture package compatibility
 on:
   workflow_call:
@@ -41,7 +42,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with:
-          ref: ${{ inputs.branch || github.ref }}
+          ref: ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
       - name: Determine glibc and architecture package compatibility
         id: get-compatibility
         env:
@@ -59,7 +60,7 @@ jobs:
             export GLIBC_232_COMPATIBLE_PACKAGES
             if [[ -n ${GLIBC_232_COMPATIBLE_PACKAGES} ]]; then
               echo "GLIBC_232_COMPATIBLE_PACKAGES=${GLIBC_232_COMPATIBLE_PACKAGES}" >> "$GITHUB_OUTPUT"
-              echo "Branch ${{ github.ref_name }} has these possibly Glibc 2.32 compatible packages: ${GLIBC_232_COMPATIBLE_PACKAGES}"
+              echo "Branch ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}has these possibly Glibc 2.32 compatible packages: ${GLIBC_232_COMPATIBLE_PACKAGES}"
             fi
 
             # If a package has a min_glibc value below 2.37, add it to GLIBC_237_COMPATIBLE_PACKAGES.
@@ -67,7 +68,7 @@ jobs:
             export GLIBC_237_COMPATIBLE_PACKAGES
             if [[ -n ${GLIBC_237_COMPATIBLE_PACKAGES} ]]; then
               echo "GLIBC_237_COMPATIBLE_PACKAGES=${GLIBC_237_COMPATIBLE_PACKAGES}" >> "$GITHUB_OUTPUT"
-              echo "Branch ${{ github.ref_name }} has these possibly Glibc 2.37 compatible packages: ${GLIBC_237_COMPATIBLE_PACKAGES}"
+              echo "Branch ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}has these possibly Glibc 2.37 compatible packages: ${GLIBC_237_COMPATIBLE_PACKAGES}"
             fi
 
             # If a package has a compatibility of 'all' or one that includes 'x86_64', add it to x86_64_PACKAGES.
@@ -75,7 +76,7 @@ jobs:
             export x86_64_PACKAGES
             if [[ -n ${x86_64_PACKAGES} ]]; then
               echo "x86_64_PACKAGES=${x86_64_PACKAGES}" >> "$GITHUB_OUTPUT"
-              echo "Branch ${{ github.ref_name }} has these x86_64 compatible packages: ${x86_64_PACKAGES}"
+              echo "Branch ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}has these x86_64 compatible packages: ${x86_64_PACKAGES}"
             fi
 
             # If a package has a compatibility of 'all' or one that includes 'armv7l', add it to armv7l_PACKAGES.
@@ -83,7 +84,7 @@ jobs:
             export armv7l_PACKAGES
             if [[ -n ${armv7l_PACKAGES} ]]; then
               echo "armv7l_PACKAGES=${armv7l_PACKAGES}" >> "$GITHUB_OUTPUT"
-              echo "Branch ${{ github.ref_name }} has these armv7l compatible packages: ${armv7l_PACKAGES}"
+              echo "Branch ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}has these armv7l compatible packages: ${armv7l_PACKAGES}"
             fi
 
             # If a package has a compatibility of 'all' or one that includes 'i686', add it to i686_PACKAGES.
@@ -91,5 +92,5 @@ jobs:
             export i686_PACKAGES
             if [[ -n ${i686_PACKAGES} ]]; then
               echo "i686_PACKAGES=${i686_PACKAGES}" >> "$GITHUB_OUTPUT"
-              echo "Branch ${{ github.ref_name }} has these i686 compatible packages: ${i686_PACKAGES}"
+              echo "Branch ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}has these i686 compatible packages: ${i686_PACKAGES}"
             fi

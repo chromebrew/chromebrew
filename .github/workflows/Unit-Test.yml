@@ -1,5 +1,5 @@
 ---
-# Version 1.4
+# Version 1.5
 name: Unit Tests
 on:
   check_run:
@@ -129,6 +129,7 @@ jobs:
       - uses: actions/checkout@v6
         with:
           persist-credentials: true
+          ref: ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
