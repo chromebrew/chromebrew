@@ -1,4 +1,4 @@
-# Total size: 36915858
+# Total size: 36934600
 /home/chronos/user/.gemrc
 /usr/local/bin/bundle
 /usr/local/bin/bundler
@@ -209,7 +209,7 @@
 /usr/local/include/ruby-4.0.0/ruby/vm.h
 /usr/local/lib/libruby.so
 /usr/local/lib/libruby.so.4.0
-/usr/local/lib/libruby.so.4.0.3
+/usr/local/lib/libruby.so.4.0.4
 /usr/local/lib/pkgconfig/ruby-4.0.pc
 /usr/local/lib/ruby/4.0.0/English.rb
 /usr/local/lib/ruby/4.0.0/armv8l-linux-eabihf/cgi/escape.so
@@ -508,6 +508,7 @@
 /usr/local/lib/ruby/4.0.0/bundler/templates/newgem/circleci/config.yml.tt
 /usr/local/lib/ruby/4.0.0/bundler/templates/newgem/exe/newgem.tt
 /usr/local/lib/ruby/4.0.0/bundler/templates/newgem/ext/newgem/Cargo.toml.tt
+/usr/local/lib/ruby/4.0.0/bundler/templates/newgem/ext/newgem/build.rs.tt
 /usr/local/lib/ruby/4.0.0/bundler/templates/newgem/ext/newgem/extconf-c.rb.tt
 /usr/local/lib/ruby/4.0.0/bundler/templates/newgem/ext/newgem/extconf-go.rb.tt
 /usr/local/lib/ruby/4.0.0/bundler/templates/newgem/ext/newgem/extconf-rust.rb.tt
@@ -517,6 +518,7 @@
 /usr/local/lib/ruby/4.0.0/bundler/templates/newgem/ext/newgem/newgem.go.tt
 /usr/local/lib/ruby/4.0.0/bundler/templates/newgem/ext/newgem/newgem.h.tt
 /usr/local/lib/ruby/4.0.0/bundler/templates/newgem/ext/newgem/src/lib.rs.tt
+/usr/local/lib/ruby/4.0.0/bundler/templates/newgem/github/workflows/build-gems.yml.tt
 /usr/local/lib/ruby/4.0.0/bundler/templates/newgem/github/workflows/main.yml.tt
 /usr/local/lib/ruby/4.0.0/bundler/templates/newgem/gitignore.tt
 /usr/local/lib/ruby/4.0.0/bundler/templates/newgem/gitlab-ci.yml.tt
@@ -1183,8 +1185,8 @@
 /usr/local/lib/ruby/gems/4.0.0/gems/benchmark-0.5.0/bin/console
 /usr/local/lib/ruby/gems/4.0.0/gems/benchmark-0.5.0/bin/setup
 /usr/local/lib/ruby/gems/4.0.0/gems/benchmark-0.5.0/lib/benchmark.rb
-/usr/local/lib/ruby/gems/4.0.0/gems/bundler-4.0.6/exe/bundle
-/usr/local/lib/ruby/gems/4.0.0/gems/bundler-4.0.6/exe/bundler
+/usr/local/lib/ruby/gems/4.0.0/gems/bundler-4.0.10/exe/bundle
+/usr/local/lib/ruby/gems/4.0.0/gems/bundler-4.0.10/exe/bundler
 /usr/local/lib/ruby/gems/4.0.0/gems/csv-3.3.5/LICENSE.txt
 /usr/local/lib/ruby/gems/4.0.0/gems/csv-3.3.5/NEWS.md
 /usr/local/lib/ruby/gems/4.0.0/gems/csv-3.3.5/README.md
@@ -2113,7 +2115,7 @@
 /usr/local/lib/ruby/gems/4.0.0/specifications/base64-0.3.0.gemspec
 /usr/local/lib/ruby/gems/4.0.0/specifications/benchmark-0.5.0.gemspec
 /usr/local/lib/ruby/gems/4.0.0/specifications/csv-3.3.5.gemspec
-/usr/local/lib/ruby/gems/4.0.0/specifications/default/bundler-4.0.6.gemspec
+/usr/local/lib/ruby/gems/4.0.0/specifications/default/bundler-4.0.10.gemspec
 /usr/local/lib/ruby/gems/4.0.0/specifications/default/date-3.5.1.gemspec
 /usr/local/lib/ruby/gems/4.0.0/specifications/default/delegate-0.6.1.gemspec
 /usr/local/lib/ruby/gems/4.0.0/specifications/default/did_you_mean-2.0.0.gemspec
@@ -4071,6 +4073,8 @@
 /usr/local/share/ri/4.0.0/system/Gem/Commands/SignoutCommand/cdesc-SignoutCommand.ri
 /usr/local/share/ri/4.0.0/system/Gem/Commands/SignoutCommand/execute-i.ri
 /usr/local/share/ri/4.0.0/system/Gem/Commands/SignoutCommand/new-c.ri
+/usr/local/share/ri/4.0.0/system/Gem/Commands/SourcesCommand/build_new_source-i.ri
+/usr/local/share/ri/4.0.0/system/Gem/Commands/SourcesCommand/build_source-i.ri
 /usr/local/share/ri/4.0.0/system/Gem/Commands/SourcesCommand/cdesc-SourcesCommand.ri
 /usr/local/share/ri/4.0.0/system/Gem/Commands/SourcesCommand/check_typo_squatting-i.ri
 /usr/local/share/ri/4.0.0/system/Gem/Commands/SourcesCommand/config_file_name-i.ri
@@ -5714,6 +5718,7 @@
 /usr/local/share/ri/4.0.0/system/Gem/Version/bump-i.ri
 /usr/local/share/ri/4.0.0/system/Gem/Version/canonical_segments-i.ri
 /usr/local/share/ri/4.0.0/system/Gem/Version/cdesc-Version.ri
+/usr/local/share/ri/4.0.0/system/Gem/Version/compute_sort_key-i.ri
 /usr/local/share/ri/4.0.0/system/Gem/Version/correct%3f-c.ri
 /usr/local/share/ri/4.0.0/system/Gem/Version/create-c.ri
 /usr/local/share/ri/4.0.0/system/Gem/Version/eql%3f-i.ri
@@ -7178,7 +7183,6 @@
 /usr/local/share/ri/4.0.0/system/Object/remove_instance_variable-i.ri
 /usr/local/share/ri/4.0.0/system/Object/respond_to%3f-i.ri
 /usr/local/share/ri/4.0.0/system/Object/respond_to_missing%3f-i.ri
-/usr/local/share/ri/4.0.0/system/Object/rubygems%2fdefaults%2foperating_system-i.ri
 /usr/local/share/ri/4.0.0/system/Object/send-i.ri
 /usr/local/share/ri/4.0.0/system/Object/singleton_class-i.ri
 /usr/local/share/ri/4.0.0/system/Object/singleton_method-i.ri
