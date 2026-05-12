@@ -1,0 +1,5 @@
+#!/bin/bash
+dep -h | head
+dep -V
+docgen -h | head
+docgen -V
