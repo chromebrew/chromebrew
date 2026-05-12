@@ -1,5 +1,5 @@
 ---
-# Version 1.4
+# Version 1.5
 name: Set Reviewers
 run-name: Set Reviewers for PR for ${{ github.head_ref || github.ref_name }}
 on:
@@ -49,7 +49,7 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: true
-          ref: ${{ inputs.branch || github.head_ref || github.ref_name }}
+          ref: ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
       - name: Get Status of current ref
         id: get-status
         uses: danieldeichfuss/get-status@v0.0.10
