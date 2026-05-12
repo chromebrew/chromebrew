@@ -44,6 +44,7 @@ jobs:
     outputs:
       current_head: ${{ steps.get-current-head.outputs.CURRENT_HEAD }}
       changed_packages: ${{ steps.changed-packages.outputs.CHANGED_PACKAGES }}
+      non_changed_packages: ${{ steps.changed-files.outputs.non-package_all_changed_files }}
     steps:
       - uses: actions/checkout@v6
         with:
@@ -60,20 +61,22 @@ jobs:
         uses: tj-actions/changed-files@v47
         with:
           base_sha: ${{ steps.get-current-head.outputs.CURRENT_HEAD }}
-          files_yaml: |
-            packages:
-              - packages/*.rb
           since_last_remote_commit: true
-      - name: Export variables to github context
+          files_yaml: |
+            non-package:
+              - '**'
+              - '!packages/**.rb'
+            packages:
+              - packages/**.rb
+      - name: Sanitize and export changed packages to github context.
         id: changed-packages
         run: |
             if [[ -z "${{ steps.changed-files.outputs.packages_all_changed_files }}" ]]; then
               echo "Branch ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} has no changed package files."
             fi
             # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-files.outputs.packages_all_changed_files) into "foo bar"
-            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-files.outputs.packages_all_changed_files }}" | xargs basename -s .rb | xargs)" >> "$GITHUB_ENV"
-            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-files.outputs.packages_all_changed_files }}" | xargs basename -s .rb | xargs)" >> "$GITHUB_OUTPUT"
-
+            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-files.outputs.packages_all_changed_files }}" | xargs --no-run-if-empty basename -s .rb | xargs --no-run-if-empty)" >> "$GITHUB_ENV"
+            echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-files.outputs.packages_all_changed_files }}" | xargs --no-run-if-empty basename -s .rb | xargs --no-run-if-empty)" >> "$GITHUB_OUTPUT"
   get-compatibility:
     needs: setup
     uses: ./.github/workflows/Determine-Compatibility.yml
@@ -105,6 +108,7 @@ jobs:
   container_tests:
     if: ${{ github.repository_owner == 'chromebrew' }}
     needs:
+      - setup
       - gen-matrix
       - get-compatibility
     strategy:
@@ -201,6 +205,7 @@ jobs:
         env:
           GITHUB_EVENT: ${{ github.event_name }}
           HEAD_REF: ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
+          NON_PKG_CHANGED_FILES: ${{ needs.setup.outputs.non_changed_packages }}
         run: |
             case $GITHUB_EVENT in
               check_run | merge_group | push | workflow_run | workflow_dispatch)
