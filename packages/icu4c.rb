@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Icu4c < Autotools
   description 'ICU is a mature, widely used set of C/C++ and Java libraries providing Unicode and Globalization support for software applications.'
   homepage 'https://icu.unicode.org/'
-  version '77.1'
+  version '78.3'
   license 'BSD'
   compatibility 'all'
-  source_url "https://github.com/unicode-org/icu/releases/download/release-#{version.gsub('.', '-')}/icu4c-#{version.gsub('.', '_')}-src.tgz"
-  source_sha256 '588e431f77327c39031ffbb8843c0e3bc122c211374485fa87dc5f3faff24061'
+  source_url "https://github.com/unicode-org/icu/releases/download/release-#{version}/icu4c-#{version}-sources.tgz"
+  source_sha256 '3a2e7a47604ba702f345878308e6fefeca612ee895cf4a5f222e7955fabfe0c0'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -35,7 +35,7 @@ class Icu4c < Autotools
     return if CREW_IN_CONTAINER
 
     Dir.chdir CREW_LIB_PREFIX do
-      @oldicuver = %w[75.1]
+      @oldicuver = %w[77.1]
       @oldicuver.each do |oldver|
         puts "Finding Packages expecting icu4c version #{oldver} that may need updating:".lightgreen
         @file_array = []
