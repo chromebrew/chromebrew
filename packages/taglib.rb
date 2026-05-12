@@ -11,9 +11,9 @@ class Taglib < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '54a5afe451decafc4135b1b03b6a7c8a4cd66169bf94b884dfaaf98df34ccecf',
-     armv7l: '54a5afe451decafc4135b1b03b6a7c8a4cd66169bf94b884dfaaf98df34ccecf',
-     x86_64: '2cba9bc7c5d60d02314fbcdceeb21b1763f41447aa772cb1f32d1542b64f17aa'
+    aarch64: 'a30827d281dcca835f3a590cf53dab5b2d7c346c758cca0416b13c63104632b0',
+     armv7l: 'a30827d281dcca835f3a590cf53dab5b2d7c346c758cca0416b13c63104632b0',
+     x86_64: 'fef549a7cbd5a566ec33638425200f20b26c5058e3764deba4fd6fc3fc10f132'
   })
 
   depends_on 'boost' => :build
