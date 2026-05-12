@@ -1,0 +1,3 @@
+#!/bin/bash
+editres -help 2>&1
+editres -version 2>&1

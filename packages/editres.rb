@@ -1,28 +1,28 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Editres < Package
+class Editres < Autotools
   description 'Editres is a tool that allows users and application developers to view the full widget hierarchy of any Xt Toolkit application that speaks the Editres protocol.'
   homepage 'https://www.x.org/wiki/'
-  version '1.0.7'
+  version '1.1.1'
   license 'custom'
-  compatibility 'all'
-  source_url 'https://x.org/archive/individual/app/editres-1.0.7.tar.bz2'
-  source_sha256 '089ad34628e55a779b97e369f55fb12caefc96d684b508d9022eb9e12b775c11'
-  binary_compression 'tar.xz'
+  compatibility 'aarch64 armv7l x86_64'
+  source_url "https://x.org/archive/individual/app/editres-#{version}.tar.xz"
+  source_sha256 'e0a29b2f5e178362f71950c45ec49b43ccc75cacf44356948377e71cdfee119b'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a0d58ce9b3c97f216a4f44b41b0597d434609db993f623ad2679f83eda9647e5',
-     armv7l: 'a0d58ce9b3c97f216a4f44b41b0597d434609db993f623ad2679f83eda9647e5',
-       i686: 'e631c24169d134eb2a467c0a435223512120c3c9aa9ebf770e3a33cfd4cb2232',
-     x86_64: '33bc1a315e539c110dcaf04b0b89eb1da83dc14b3c568d2fac25982e248f1869'
+    aarch64: '055f1e4ac9ccc05d918abe12f6d8159c5f16dbb17701293fc9e6ce33afacda98',
+     armv7l: '055f1e4ac9ccc05d918abe12f6d8159c5f16dbb17701293fc9e6ce33afacda98',
+     x86_64: 'b4d64fdf5d723ae9dcb19ec69a6f9372664d12ba4b5969d7b42462886aa6ab25'
   })
 
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
+  depends_on 'glibc' => :executable
+  depends_on 'libx11' => :executable
+  depends_on 'libxaw' => :executable
+  depends_on 'libxkbfile' => :executable
+  depends_on 'libxmu' => :executable
+  depends_on 'libxt' => :executable
+  depends_on 'xorg_proto' => :executable
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  run_tests
 end

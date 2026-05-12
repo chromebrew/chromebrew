@@ -1,5 +1,5 @@
-# Total size: 318176
+# Total size: 94736
 /usr/local/bin/editres
 /usr/local/share/X11/app-defaults/Editres
 /usr/local/share/X11/app-defaults/Editres-color
-/usr/local/share/man/man1/editres.1.gz
+/usr/local/share/man/man1/editres.1.zst
