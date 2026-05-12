@@ -11,22 +11,30 @@ class Zed < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-    x86_64: '0348c48b47a0ca4a233a15aa67cab0a3cc65872b19b267741a4a7d9492819c4c'
+     x86_64: '60675b221954df44e99b92c115fee7ec6f5dae95333cb173ae5b627ebd267145'
   })
 
+  depends_on 'alsa_lib' => :executable
   depends_on 'alsa_lib' => :library
   depends_on 'cargo_about' => :build
   depends_on 'dbus' => :executable
   depends_on 'fontconfig' => :build
+  depends_on 'gcc_lib' => :executable
   depends_on 'gcc_lib' => :library
+  depends_on 'glib' => :executable
   depends_on 'glib' => :library
+  depends_on 'glibc' => :executable
   depends_on 'glibc' => :library
+  depends_on 'libx11' => :executable
   depends_on 'libx11' => :library
+  depends_on 'libxcb' => :executable
   depends_on 'libxcb' => :library
+  depends_on 'libxkbcommon' => :executable
   depends_on 'libxkbcommon' => :library
   depends_on 'llvm_dev' => :build
   depends_on 'ruby_solargraph' => :logical
   depends_on 'rust' => :build
+  depends_on 'zlib' => :executable
   depends_on 'zlib' => :library
 
   rust_flags '-C link-args=-Wl,--disable-new-dtags,-rpath,$ORIGIN/../lib -C symbol-mangling-version=v0 --cfg tokio_unstable'
