@@ -7870,6 +7870,11 @@ url: https://gitlab.com/rastersoft/devedeng/-/tags
 activity: low
 ---
 kind: url
+name: py3_diff_highlight
+url: https://github.com/tk0miya/diff-highlight/tags
+activity: none
+---
+kind: url
 name: py3_dool
 url: https://github.com/scottchiefbaker/dool
 activity: low
