@@ -11,9 +11,9 @@ class Gstreamer < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '472e8456eea6ae4f5fda59ed5c9c1acef50b6fb397c8751a4d841b04f354e14f',
-     armv7l: '472e8456eea6ae4f5fda59ed5c9c1acef50b6fb397c8751a4d841b04f354e14f',
-     x86_64: 'fb42eecf9cbf137362098116dc6736d4d1fedb65ee0151fa402aaa59d4c2d75f'
+    aarch64: 'f12f4cc108abbe74fcdff89bd1a7bfd378e3cb73dca582e858dac9a3977bf6a2',
+     armv7l: 'f12f4cc108abbe74fcdff89bd1a7bfd378e3cb73dca582e858dac9a3977bf6a2',
+     x86_64: '910462bcfa2d674e6b9f45e663ef042c263eb9a5ac3d2996357abcdbf7f63644'
   })
 
   depends_on 'alsa_lib' => :library
@@ -41,6 +41,7 @@ class Gstreamer < Meson
   depends_on 'libaom' => :library
   depends_on 'libass' => :library
   depends_on 'libavc1394' => :library
+  depends_on 'libcap' => :executable
   depends_on 'libcap' => :library
   depends_on 'libdrm' => :library
   depends_on 'libdv' => :library
@@ -49,6 +50,7 @@ class Gstreamer < Meson
   depends_on 'libgudev' => :library
   depends_on 'libiec61883' => :library
   depends_on 'libjpeg_turbo' => :library
+  depends_on 'libminigbm' => :library
   depends_on 'libmodplug' => :library
   depends_on 'libmp3lame' => :library
   depends_on 'libogg' => :library
@@ -62,6 +64,7 @@ class Gstreamer < Meson
   depends_on 'libusb' => :library
   depends_on 'libva' => :library
   depends_on 'libvorbis' => :library
+  depends_on 'libvpx' => :library
   depends_on 'libwebp' => :library
   depends_on 'libx11' => :library
   depends_on 'libx264' => :library
@@ -97,6 +100,7 @@ class Gstreamer < Meson
   depends_on 'srt' => :library
   depends_on 'svt_av1' => :library
   depends_on 'v4l_utils' => :library
+  depends_on 'vmaf' => :library
   depends_on 'wavpack' => :library
   depends_on 'wayland' => :library
   depends_on 'webrtc_audio_processing' => :library
