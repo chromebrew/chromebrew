@@ -3,7 +3,7 @@ require 'package'
 class Entr < Package
   description 'Run arbitrary commands when files change'
   homepage 'https://eradman.com/entrproject/'
-  version '5.7'
+  version '5.8'
   license 'ISC'
   compatibility 'all'
   source_url 'https://github.com/eradman/entr.git'
@@ -11,13 +11,13 @@ class Entr < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fc219af7c71433e90fbd4d94386205188fff62731e7ad3e4ef13195533aa5da7',
-     armv7l: 'fc219af7c71433e90fbd4d94386205188fff62731e7ad3e4ef13195533aa5da7',
-       i686: '1bcccb6bb885cfef5742ef86e7899fb45e01aadab843295fa0df65f352499359',
-     x86_64: '687b29d4ac0f1975eb0fc0401e6732d8007f6f81794eb90e515da13cd68a7af7'
+    aarch64: '53ae3ab1123a429789ab0bad3eb397805fb389a912f95d0fece345e39024046f',
+     armv7l: '53ae3ab1123a429789ab0bad3eb397805fb389a912f95d0fece345e39024046f',
+       i686: 'bebd1e8e021e67aa6744f86f2014aeb0cf4f9d2e8f68271590c92322c2599b61',
+     x86_64: '9f341edb971b00389b2acdb0a1d21ccd2a523f0f1a78a9a0481e96244ff35133'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :executable
 
   def self.build
     system './configure' # Not an autotools script, despite appearances.
