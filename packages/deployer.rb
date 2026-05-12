@@ -3,33 +3,28 @@ require 'package'
 class Deployer < Package
   description 'A deployment tool for PHP'
   homepage 'https://deployer.org/'
-  version '6.7.3'
+  version '8.0.3'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://github.com/deployphp/deployer/archive/v6.7.3.tar.gz'
-  source_sha256 '81e5cea09f68b898d72a52ea6c4401fbc4cc1bc2fc30d488acce6e8fdef59d79'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/deployphp/deployer.git'
+  git_hashtag "v#{version}"
 
-  binary_sha256({
-    aarch64: 'e5a87eefab63f035398a2cfd2d4682ae6e95dc608c405242da8c60bcce2798db',
-     armv7l: 'e5a87eefab63f035398a2cfd2d4682ae6e95dc608c405242da8c60bcce2798db',
-     x86_64: '57f072d4617d8dae9ab0d071aa5a29c66fb8453d08e9559a658d7c450a82f2dd'
-  })
-
-  depends_on 'php74' unless File.exist? "#{CREW_PREFIX}/bin/php"
+  depends_on 'php84' unless File.exist? "#{CREW_PREFIX}/bin/php"
   depends_on 'composer' => :build
+
+  no_compile_needed
 
   def self.install
     system 'composer install'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share"
-    FileUtils.cp_r Dir.pwd, "#{CREW_DEST_PREFIX}/share"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/deployer-#{version}"
+    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/deployer-#{version}"
+    FileUtils.ln_s "#{CREW_PREFIX}/share/deployer-#{version}/bin/build", "#{CREW_DEST_PREFIX}/bin/build"
     FileUtils.ln_s "#{CREW_PREFIX}/share/deployer-#{version}/bin/dep", "#{CREW_DEST_PREFIX}/bin/dep"
+    FileUtils.ln_s "#{CREW_PREFIX}/share/deployer-#{version}/bin/docgen", "#{CREW_DEST_PREFIX}/bin/docgen"
   end
 
   def self.postinstall
-    puts
-    puts "To get started, execute 'dep'".lightblue
-    puts
+    ExitMessage.add "\nType 'dep' to get started.\n"
   end
 end
