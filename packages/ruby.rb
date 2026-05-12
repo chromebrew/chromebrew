@@ -7,14 +7,14 @@ class Ruby < Package
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
   source_url 'https://github.com/ruby/ruby.git'
-  git_hashtag "v#{version.split('-').first}"
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '065d9e44a63bb1d3d6c891a11016c3afea2c6d87f0bfac796037c990ac57199c',
-     armv7l: '065d9e44a63bb1d3d6c891a11016c3afea2c6d87f0bfac796037c990ac57199c',
-       i686: '06a6a0e22acfa99cc4a9fcdaccd36b94cc47bdbfb73a86eded91495ffabc381d',
-     x86_64: '3b9d82f98e805efd35d1a14b21be77d2887ea2ce34e11d4b0b417c3e527ea6db'
+    aarch64: '4a9a8796ce502e01d7827210ea9cbd11d0cdda5fdc02067321d0ecbc6e53db7f',
+     armv7l: '4a9a8796ce502e01d7827210ea9cbd11d0cdda5fdc02067321d0ecbc6e53db7f',
+       i686: '9bdd0fd129b8e454645b2f2ebd4572f6f5362eb973be20b7e58583c36a417eb8',
+     x86_64: 'd0299b78d169ecb6a5dcd0c2d9b18461ac7b79a367bfb3bf890623cfc537952f'
   })
 
   depends_on 'ca_certificates' => :logical
@@ -57,7 +57,7 @@ class Ruby < Package
   def self.check
     # Do not run checks if rebuilding current ruby version.
     # RUBY_VERSION is a built-in ruby constant.
-    system "MAKEFLAGS='--jobs #{CREW_NPROC}' make check || true" unless version.split('-').first == RUBY_VERSION
+    system "MAKEFLAGS='--jobs #{CREW_NPROC}' make check || true" unless version == RUBY_VERSION
   end
 
   def self.install
