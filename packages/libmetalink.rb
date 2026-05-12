@@ -11,10 +11,10 @@ class Libmetalink < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a7ef0904fae0ccd7aa2ef6978e0030dbf33a5989adc56425e4c59e204be287d1',
-     armv7l: 'a7ef0904fae0ccd7aa2ef6978e0030dbf33a5989adc56425e4c59e204be287d1',
-       i686: '7abf912d9dec883ab4a3fa518dfe0fadc0c361cbb54c05bf6cc8e3e3cf747b91',
-     x86_64: 'f8a09e641fedde3bac45796ad978d477cb54adfadbe6963ebe6943810b5647d6'
+    aarch64: 'ae3f5041008e14ec38be0a14cb1797d0a5df289d7d1ebd482bddc1dabda2249e',
+     armv7l: 'ae3f5041008e14ec38be0a14cb1797d0a5df289d7d1ebd482bddc1dabda2249e',
+       i686: '63fc3bfa83e6b8f3c946f24c000c76c49d5e2401f51de274cc68dbe9b87d0030',
+     x86_64: '51c357614dd3c43c8b3a7513106c82bb3436a85d1a4c2a22afdd7e204be51675'
   })
 
   depends_on 'glibc' # R

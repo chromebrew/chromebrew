@@ -11,10 +11,10 @@ class Wayland < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd7d7b8a3293dab8ac9b7daf4bc7d46f88c3a9c863f4f0b75ec85ed0c584afe80',
-     armv7l: 'd7d7b8a3293dab8ac9b7daf4bc7d46f88c3a9c863f4f0b75ec85ed0c584afe80',
-       i686: '3722084a585711b9dc9785625c257fedbac4c13dea25e3ac91f59616d466858e',
-     x86_64: '8c2b17c21815ce678a5a3c4d3d52afd2fde10466a6b60858507a9fc6c5a2b59e'
+    aarch64: '404183f9b015460fa3834d76a7300ac7659de089625ffcf56a8e043a5aafd77d',
+     armv7l: '404183f9b015460fa3834d76a7300ac7659de089625ffcf56a8e043a5aafd77d',
+       i686: 'a3ac75e8648f76f6357e115369e1849ee0486b53becd3a98062f84d3b6bf8af0',
+     x86_64: '274b8a03df309c7883b3510bb1b36a017f502836c070e22af3e7e2a0184a8a37'
   })
 
   depends_on 'expat' => :executable

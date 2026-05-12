@@ -14,9 +14,9 @@ class Libcdr < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1ff871b6dbc0e0d3f0a48542808841f6db25cdaf35b739e2733864176e523165',
-     armv7l: '1ff871b6dbc0e0d3f0a48542808841f6db25cdaf35b739e2733864176e523165',
-     x86_64: 'b111c185c46e9ae39e7f6475b11ca0cbf14c489ee54d085f1472a52180296e99'
+    aarch64: '5a3bbb00baf8dd6067992fe59673b3375e63e68ca7bab334787a3af6e3cae2ec',
+     armv7l: '5a3bbb00baf8dd6067992fe59673b3375e63e68ca7bab334787a3af6e3cae2ec',
+     x86_64: '181ba9ea38edbbf49ba3136124f1aab83b3a7f669b45a037dde305ef1d08f17e'
   })
 
   depends_on 'boost' => :build

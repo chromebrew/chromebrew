@@ -11,8 +11,8 @@ class Libical < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5336ec84daba02741c0b7763c68f5c5c3b70764c66a899f6636106d4632a4f0f',
-     armv7l: '5336ec84daba02741c0b7763c68f5c5c3b70764c66a899f6636106d4632a4f0f',
+    aarch64: 'a5d7ad1b38b3ae0bd6b418c993b102fa6e7b3c9707c1d4768921d8a321d3dba5',
+     armv7l: 'a5d7ad1b38b3ae0bd6b418c993b102fa6e7b3c9707c1d4768921d8a321d3dba5',
      x86_64: 'cf1c8d63e3dc53d1a013472ebe8643374d96b48006efc22d094b5e03d048ed5a'
   })
 

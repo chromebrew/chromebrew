@@ -11,8 +11,8 @@ class Postgresql < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '98260cc3aa908dd412715f01706df848c14513b84208ef3320c39e9b3a8c3aa0',
-     armv7l: '98260cc3aa908dd412715f01706df848c14513b84208ef3320c39e9b3a8c3aa0',
+    aarch64: 'f8ec04a108bdebc062746e275879f4f069b7943cf095fe17e4dd976197226e98',
+     armv7l: 'f8ec04a108bdebc062746e275879f4f069b7943cf095fe17e4dd976197226e98',
      x86_64: 'a43dd827d31b6be6fc8b1d0ef3e147f6292cc87a7498b57d025c913eef24edb2'
   })
 
