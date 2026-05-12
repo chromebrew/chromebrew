@@ -1,15 +1,17 @@
 ---
-# Version 1.5
+# Version 1.6
 name: Set Reviewers
 run-name: Set Reviewers for PR for ${{ github.head_ref || github.ref_name }}
 on:
-  pull_request:
-    types: [ready_for_review]
   workflow_dispatch:
     inputs:
       branch:
         description: "Branch of chromebrew/chromebrew to run on, if different from this branch."
         required: false
+  workflow_run:
+    workflows: [Unit Tests]
+    types:
+      - completed
 permissions:
   actions: write
   contents: write
@@ -34,7 +36,7 @@ jobs:
           STEPS_CONTEXT: ${{ toJson(steps) }}
         run: echo "$STEPS_CONTEXT"
   setup:
-    if: ${{  github.repository_owner == 'chromebrew' && inputs.branch != 'master' && github.ref_name != 'master' && github.event.pull_request.draft == false }}
+    if: ${{ github.repository_owner == 'chromebrew' && inputs.branch != 'master' && github.ref_name != 'master' && github.event.pull_request.draft == false && github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-24.04
     steps:
       - name: Get GH Token
@@ -58,7 +60,7 @@ jobs:
       - name: Set Reviewers
         env:
           GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
-        if: ${{steps.get-status.outputs.all-checks-completed == 'true' &&  steps.get-status.outputs.all-checks-passed == 'true'}}
+        if: ${{ steps.get-status.outputs.all-checks-completed == 'true' &&  steps.get-status.outputs.all-checks-passed == 'true' }}
         run: |
           gh pr edit --add-reviewer chromebrew/active
           echo "Asking Chromebrew/active for review."
