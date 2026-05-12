@@ -1,5 +1,5 @@
 ---
-# Version 1.9
+# Version 2.0
 name: Generate PR
 run-name: Generate PR for ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} by @${{ github.actor }}
 on:
@@ -360,7 +360,7 @@ jobs:
             git config user.email "${{ github.actor }}@users.noreply.github.com"
             git add .
             git stash || true
-            git fetch origin${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
+            git fetch origin ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
             git stash pop || true
             git commit -am "${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}: Package File Update Run on ${PLATFORM} container." && git push origin ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
             git log --oneline -10
@@ -598,6 +598,3 @@ jobs:
           echo "PR_NUMBER=${PR_NUMBER}" >> "$GITHUB_ENV"
           # Remove the regenerate_pr label if set.
           gh pr edit --remove-label regenerate_pr || true
-          # Trigger workflow runs:
-          # gh workflow run Unit-Test.yml -R ${{ github.repository }} -r ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
-          # gh workflow run Linter-Handoff.yml -R ${{ github.repository }} -r ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
