@@ -1,7 +1,7 @@
 ---
-# Version 1.4
+# Version 1.5
 name: Build
-run-name: Build ${{ inputs.packages_to_build }} for ${{ inputs.build-on }} on branch ${{ inputs.branch || github.head_ref || github.ref_name }} requested by @${{ github.actor }}
+run-name: Build ${{ inputs.packages_to_build }} for ${{ inputs.build-on }} on branch ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} requested by @${{ github.actor }}
 on:
   workflow_dispatch:
     inputs:
@@ -52,7 +52,7 @@ on:
         type: string
         required: false
 env:
-  BRANCH: ${{ inputs.branch || github.head_ref || github.ref_name }}
+  BRANCH: ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
 permissions:
   actions: write
   contents: write
@@ -95,13 +95,13 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: true
-          ref: ${{ inputs.branch || github.head_ref || github.ref_name }}
+          ref: ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
       - name: Set PR to Draft
         id: set-to-draft
         env:
           GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
         run: |
-          PR_NUMBER=$(gh pr list -L 1 -s open -H ${{ inputs.branch || github.head_ref || github.ref_name }} | cut -f1)
+          PR_NUMBER=$(gh pr list -L 1 -s open -H ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} | cut -f1)
           if [[ -n ${PR_NUMBER} ]]; then
             echo "Setting ${PR_NUMBER} to Draft while workflow runs."
             gh pr ready --undo || true
@@ -129,7 +129,7 @@ jobs:
             # Add inputs.packages_to_build to the packages we will
             # check for architecture and glibc compatibility.
             if [[ -z "${{ steps.changed-files.outputs.packages_all_changed_files }} ${{ inputs.packages_to_build }}" ]]; then
-              echo "Branch ${{ inputs.branch || github.head_ref || github.ref_name }} has no changed package files."
+              echo "Branch ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} has no changed package files."
               exit 1
             fi
             # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-files.outputs.packages_all_changed_files) into "foo bar"
@@ -141,7 +141,7 @@ jobs:
     uses: ./.github/workflows/Determine-Compatibility.yml
     with:
       changed_packages: ${{ needs.setup.outputs.changed_packages }}
-      branch: ${{ inputs.branch || github.head_ref || github.ref_name }}
+      branch: ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
 
   gen-matrix:
     needs: get-compatibility
@@ -188,7 +188,7 @@ jobs:
     env:
       CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES: 1
       CREW_REPO: ${{ github.event.repository.clone_url }}
-      CREW_BRANCH: ${{ inputs.branch || github.head_ref || github.ref_name }}
+      CREW_BRANCH: ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
       TARGET_ARCH: ${{ matrix.arch }}
       TIMESTAMP: ${{ needs.setup.outputs.timestamp }}
       GLIBC_232_COMPATIBLE_PACKAGES: ${{ needs.get-compatibility.outputs.GLIBC_232_COMPATIBLE_PACKAGES }}
@@ -198,7 +198,7 @@ jobs:
       armv7l_PACKAGES: ${{ needs.get-compatibility.outputs.armv7l_PACKAGES }}
     if: ${{ !cancelled() }}
     concurrency:
-      group: ${{ matrix.arch }}-${{ github.workflow }}-${{ inputs.branch || github.head_ref || github.ref_name }}
+      group: ${{ matrix.arch }}-${{ github.workflow }}-${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
     steps:
       - name: Dump GitHub context
         env:
@@ -303,8 +303,8 @@ jobs:
             sudo apt-get autoremove -qq -o=Dpkg::Use-Pty=0 -y &>/dev/null) &
 
             git fetch origin
-            git checkout "${{ inputs.branch || github.head_ref || github.ref_name }}"
-            git reset --hard "origin/${{ inputs.branch || github.head_ref || github.ref_name }}"
+            git checkout "${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}"
+            git reset --hard "origin/${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}"
             git log --oneline -10
             docker pull --platform "${PLATFORM}" "${CONTAINER}"
             # Detection of /output/pkg_cache dir triggers setting
@@ -345,7 +345,7 @@ jobs:
               -e GCONV_PATH="/usr/local/lib${LIB_SUFFIX}/gconv" \
               -e CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES="${CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES}" \
               -e CREW_REPO="${CREW_REPO}" \
-              -e CREW_BRANCH="${{ inputs.branch || github.head_ref || github.ref_name }}" \
+              -e CREW_BRANCH="${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}" \
               -e GITLAB_TOKEN="${{ secrets.GITLAB_TOKEN }}" \
               -e GITLAB_TOKEN_USERNAME="${{ secrets.GITLAB_TOKEN_USERNAME }}" \
               ${CI_PASSTHROUGH} \
@@ -387,7 +387,7 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: true
-          ref: ${{ inputs.branch || github.head_ref || github.ref_name }}
+          ref: ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '4.0.1'
@@ -438,7 +438,7 @@ jobs:
         id: trigger-pr-workflow
         env:
           GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
-          PR_TITLE: ${{ inputs.pr_title || inputs.branch || github.ref_name }}
+          PR_TITLE: ${{ inputs.pr_title || inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
         run: |
-            echo "PR title being passed to the Generate PR workflow is: ${{ inputs.pr_title || inputs.branch || github.ref_name }}"
-            gh workflow run Generate-PR.yml -R ${{ github.repository }} -r ${{ inputs.branch || github.head_ref || github.ref_name }} -f branch="${{ inputs.branch || github.head_ref || github.ref_name }}" -f packages_to_check_for_build="${{ inputs.packages_to_build }}" -f pr_label="${{ inputs.pr_label }}" -f draft_pr="${{ github.event.inputs.with_pr == 'Draft Pull Request' }}" -f pr_title="$(echo "${{ inputs.pr_title || inputs.branch || github.ref_name }}" | ( read -rsd '' x; echo ${x@Q} ))"
+            echo "PR title being passed to the Generate PR workflow is: ${{ inputs.pr_title || inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}"
+            gh workflow run Generate-PR.yml -R ${{ github.repository }} -r ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} -f branch="${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}" -f packages_to_check_for_build="${{ inputs.packages_to_build }}" -f pr_label="${{ inputs.pr_label }}" -f draft_pr="${{ github.event.inputs.with_pr == 'Draft Pull Request' }}" -f pr_title="$(echo "${{ inputs.pr_title || inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}" | ( read -rsd '' x; echo ${x@Q} ))"
