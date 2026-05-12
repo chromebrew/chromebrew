@@ -1,7 +1,7 @@
 ---
-# Version 1.6
+# Version 1.7
 name: Set Reviewers
-run-name: Set Reviewers for PR for ${{ github.head_ref || github.ref_name }}
+run-name: Set Reviewers for PR for ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
 on:
   workflow_dispatch:
     inputs:
