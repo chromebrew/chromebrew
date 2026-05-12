@@ -2014,18 +2014,23 @@ end
 
 def deps_command(args)
   args = { '<name>' => args.split } if args.is_a? String
-  args['<name>'].each do |name|
-    @pkg_name = name
-    search @pkg_name
+  if args['--ordered']
+    packages_reordered = ConvenienceFunctions.order_recursive_deps(args['<name>'].map { it.sub('packages/', '').sub('.rb', '') }).map { "packages/#{it}.rb" }
+    packages_reordered.each { puts " #{it.sub('packages/', '').sub('.rb', '').to_s.lightblue}" }
+  else
+    args['<name>'].each do |name|
+      @pkg_name = name
+      search @pkg_name
 
-    if args['--tree']
-      # call `print_deps_tree` (print dependency tree) if --tree is specified
-      @pkg.print_deps_tree(args)
-    elsif args['--deep']
-      system "#{CREW_LIB_PATH}/tools/getrealdeps.rb #{name}"
-    else
-      # print dependencies according to the install order if --tree is not specified
-      puts @pkg.get_deps_list(include_build_deps: args['--include-build-deps'] || 'auto', exclude_buildessential: args['--exclude-buildessential'])
+      if args['--tree']
+        # call `print_deps_tree` (print dependency tree) if --tree is specified
+        @pkg.print_deps_tree(args)
+      elsif args['--deep']
+        system "#{CREW_LIB_PATH}/tools/getrealdeps.rb #{name}"
+      else
+        # print dependencies according to the install order if --tree is not specified
+        puts @pkg.get_deps_list(include_build_deps: args['--include-build-deps'] || 'auto', exclude_buildessential: args['--exclude-buildessential'])
+      end
     end
   end
 end
