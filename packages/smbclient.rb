@@ -3,11 +3,11 @@ require 'package'
 class Smbclient < Package
   description 'Tools to access a servers filespace and printers via SMB'
   homepage 'https://www.samba.org'
-  version "4.23.3-#{CREW_ICU_VER}"
+  version "4.24.2-#{CREW_ICU_VER}"
   license 'GPLv3'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://download.samba.org/pub/samba/stable/samba-#{version.split('-').first}.tar.gz"
-  source_sha256 '06cdbb27a6956978b045455fe0696d998ffbac8d24ba24de87a4ef8200813320'
+  source_sha256 'ac24583f271a82ac324f7c6fad7327f65b591ad3492e1dccfee988e2c1c81dd1'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -41,7 +41,6 @@ class Smbclient < Package
   depends_on 'linux_pam' => :library
   depends_on 'lmdb' => :library
   depends_on 'ncurses' => :build
-  depends_on 'nethack4' => :library
   depends_on 'openldap' => :library
   depends_on 'perl_json' => :build
   depends_on 'perl_parse_yapp' => :build

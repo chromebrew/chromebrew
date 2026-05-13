@@ -1,4 +1,4 @@
-# Total size: 17708913
+# Total size: 17508666
 /usr/local/bin/caja
 /usr/local/bin/caja-autorun-software
 /usr/local/bin/caja-connect-server
@@ -83,31 +83,6 @@
 /usr/local/share/gir-1.0/Caja-2.0.gir
 /usr/local/share/glib-2.0/schemas/org.mate.caja.gschema.xml
 /usr/local/share/glib-2.0/schemas/org.mate.media-handling.gschema.xml
-/usr/local/share/gtk-doc/html/libcaja-extension/CajaColumn.html
-/usr/local/share/gtk-doc/html/libcaja-extension/CajaColumnProvider.html
-/usr/local/share/gtk-doc/html/libcaja-extension/CajaFileInfo.html
-/usr/local/share/gtk-doc/html/libcaja-extension/CajaInfoProvider.html
-/usr/local/share/gtk-doc/html/libcaja-extension/CajaLocationWidgetProvider.html
-/usr/local/share/gtk-doc/html/libcaja-extension/CajaMenu.html
-/usr/local/share/gtk-doc/html/libcaja-extension/CajaMenuItem.html
-/usr/local/share/gtk-doc/html/libcaja-extension/CajaMenuProvider.html
-/usr/local/share/gtk-doc/html/libcaja-extension/CajaPropertyPage.html
-/usr/local/share/gtk-doc/html/libcaja-extension/CajaPropertyPageProvider.html
-/usr/local/share/gtk-doc/html/libcaja-extension/CajaWidgetViewProvider.html
-/usr/local/share/gtk-doc/html/libcaja-extension/ch01.html
-/usr/local/share/gtk-doc/html/libcaja-extension/home.png
-/usr/local/share/gtk-doc/html/libcaja-extension/index.html
-/usr/local/share/gtk-doc/html/libcaja-extension/ix01.html
-/usr/local/share/gtk-doc/html/libcaja-extension/left-insensitive.png
-/usr/local/share/gtk-doc/html/libcaja-extension/left.png
-/usr/local/share/gtk-doc/html/libcaja-extension/libcaja-extension-CajaModule.html
-/usr/local/share/gtk-doc/html/libcaja-extension/libcaja-extension.devhelp2
-/usr/local/share/gtk-doc/html/libcaja-extension/pt01.html
-/usr/local/share/gtk-doc/html/libcaja-extension/right-insensitive.png
-/usr/local/share/gtk-doc/html/libcaja-extension/right.png
-/usr/local/share/gtk-doc/html/libcaja-extension/style.css
-/usr/local/share/gtk-doc/html/libcaja-extension/up-insensitive.png
-/usr/local/share/gtk-doc/html/libcaja-extension/up.png
 /usr/local/share/icons/hicolor/16x16/emblems/emblem-note.png
 /usr/local/share/icons/hicolor/24x24/emblems/emblem-note.png
 /usr/local/share/icons/hicolor/48x48/emblems/emblem-note.png
