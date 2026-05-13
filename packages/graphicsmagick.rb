@@ -11,8 +11,8 @@ class Graphicsmagick < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd8948d929ef544c55b419425c1b4a31241dd08158d92d736cc4cfa07df1a3a3d',
-     armv7l: 'd8948d929ef544c55b419425c1b4a31241dd08158d92d736cc4cfa07df1a3a3d',
+    aarch64: '243fc38e72b24b276e626514cb68730a6eeb526480fb0c8acaca880b3bf00c1c',
+     armv7l: '243fc38e72b24b276e626514cb68730a6eeb526480fb0c8acaca880b3bf00c1c',
        i686: '7a2577c920929732ea642265ed7d0bdd39aae442ecd1cb7c423be748523be7a8',
      x86_64: 'a7830399756d05b03fd960259a3df5c590f43f4a2eaa07864ece9a1112a5c9a4'
   })
