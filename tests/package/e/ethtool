@@ -1,0 +1,3 @@
+#!/bin/bash
+ethtool -h | head
+ethtool --version
