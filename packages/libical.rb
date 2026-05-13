@@ -24,6 +24,7 @@ class Libical < CMake
   depends_on 'icu4c' => :library
   depends_on 'libdb' => :library
   depends_on 'libxml2' => :executable
+  depends_on 'libxml2' => :library
   depends_on 'vala' => :build
 
   cmake_options '-DGOBJECT_INTROSPECTION=true \
