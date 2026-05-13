@@ -127,7 +127,7 @@ class ConvenienceFunctions
     return package_deps_build_order.delete_if { |p| !input_pkgs.include? p }.to_a
   end
 
-  def self.print_recursive_deps(d_pkg_input, dependency_graphs)
+  def self.print_recursive_deps(d_pkg_input, dependency_graphs: {})
     [d_pkg_input].flatten.each do |p|
       abort "@#{p}_graph does not exist!".lightred unless !dependency_graphs[p].nil? && !dependency_graphs[p].dependencies.nil?
       deps = dependency_graphs[p].dependencies
