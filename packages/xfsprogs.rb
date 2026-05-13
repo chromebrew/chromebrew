@@ -30,6 +30,10 @@ class Xfsprogs < Package
   depends_on 'lvm2' => :library
   depends_on 'util_linux' => :executable
 
+  def self.prebuild
+    ConvenienceFunctions.libtoolize('libuuid', 'util_linux')
+  end
+
   def self.build
     system 'make configure'
     system "DEBUG=-DNDEBUG ./configure #{CREW_CONFIGURE_OPTIONS}"

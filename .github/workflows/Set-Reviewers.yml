@@ -52,7 +52,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: true
           ref: ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
-       - name: Set Reviewers
+      - name: Set Reviewers
         env:
           GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
         if: ${{ github.event.workflow_run.conclusion == 'success' }}

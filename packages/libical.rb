@@ -11,9 +11,9 @@ class Libical < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a5d7ad1b38b3ae0bd6b418c993b102fa6e7b3c9707c1d4768921d8a321d3dba5',
-     armv7l: 'a5d7ad1b38b3ae0bd6b418c993b102fa6e7b3c9707c1d4768921d8a321d3dba5',
-     x86_64: '7fb99376b41d44af2c04932202e09d63dbbdfde718cf7c8c37a7f2fd0bb5c949'
+    aarch64: '9c9ba6313b298d512747544e0fed79d4b41ca6b46a3d15a20a87cc2ac55ecd0b',
+     armv7l: '9c9ba6313b298d512747544e0fed79d4b41ca6b46a3d15a20a87cc2ac55ecd0b',
+     x86_64: '5e6cf916124e6ed0dd12c07944ec5d803882aca393d84db7f8a9715a4711ff77'
   })
 
   depends_on 'gcc_lib' => :library
@@ -27,8 +27,9 @@ class Libical < CMake
   depends_on 'libxml2' => :library
   depends_on 'vala' => :build
 
-  cmake_options '-DGOBJECT_INTROSPECTION=true \
-      -DICAL_GLIB_VAPI=true \
-      -DICAL_BUILD_DOCS=false \
-      -DLIBICAL_BUILD_TESTING=false'
+  cmake_options '-DLIBICAL_BUILD_DOCS=false \
+      -DLIBICAL_BUILD_TESTING=false \
+      -DLIBICAL_GLIB_VAPI=true \
+      -DLIBICAL_GOBJECT_INTROSPECTION=true \
+      -DLIBICAL_JAVA_BINDINGS=false'
 end
