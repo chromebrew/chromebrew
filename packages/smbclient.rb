@@ -13,7 +13,7 @@ class Smbclient < Package
   binary_sha256({
     aarch64: '23880eb1969fbc516f1ddfd99a6af8353d6e2f0cafa27b7cb19f372287dec1ac',
      armv7l: '23880eb1969fbc516f1ddfd99a6af8353d6e2f0cafa27b7cb19f372287dec1ac',
-     x86_64: '5146cf7fdb8b78f29d9d99eda73f542917766d09c0e0fb45c16014705032f618'
+     x86_64: '6b88d046b0a71eaaaa7ca23aecfd3af06e57ef99291fdfb015ab09f9fcdc812c'
   })
 
   depends_on 'acl' => :library
