@@ -7,7 +7,7 @@ Package.load_package("#{__dir__}/freetype.rb")
 class Harfbuzz < Meson
   description 'HarfBuzz is an OpenType text shaping engine.'
   homepage 'https://harfbuzz.github.io/'
-  version "14.0.0-#{CREW_ICU_VER}"
+  version "14.2.0-#{CREW_ICU_VER}"
   license 'Old-MIT, ISC and icu'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/harfbuzz/harfbuzz.git'
@@ -17,13 +17,13 @@ class Harfbuzz < Meson
   binary_sha256({
     aarch64: '40cbd33527022977090ba39857d92188702681a38f7e3ada5fc8ca0a80018946',
      armv7l: '40cbd33527022977090ba39857d92188702681a38f7e3ada5fc8ca0a80018946',
-     x86_64: 'd3e449038570e54ff548638f40713ba8dcc86cecb579da8a9a4465a4c8fff04c'
+     x86_64: 'ae4bfc2c8f824d30b99e027b009042516bcf4242ea27afa7f446857f40a174fe'
   })
 
   depends_on 'brotli' => :library
   depends_on 'bzip2' => :library
-  depends_on 'cairo' => :executable
-  depends_on 'chafa' => :executable
+  # depends_on 'cairo' => :executable # Creates a loop.
+  # depends_on 'chafa' => :executable # Creates a loop.
   depends_on 'expat' => :library
   # depends_on 'fontconfig' # This pulls in freetype.
   # depends_on 'freetype' # R harfbuzz provides this.

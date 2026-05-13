@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# getrealdeps version 2.11 (for Chromebrew)
+# getrealdeps version 2.12 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 #
 # Dependencies in Chromebrew can be:
@@ -59,7 +59,7 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
 
   # Special cases where dependencies should not be automatically added:
   dependency_exceptions = Set[
-    { name_regex: 'harfbuzz', exclusion_regex: '(fontconfig|freetype)', comments: 'fontconfig overwrites parts of harfbuzz, and harfbuzz provides a freetype stub that is overwritten' },
+    { name_regex: 'harfbuzz', exclusion_regex: '(cairo|chafa|fontconfig|freetype)', comments: 'chafa pulls in cairo, which is built internally. fontconfig overwrites parts of harfbuzz, and harfbuzz provides a freetype stub that is overwritten' },
     { name_regex: 'llvm.*_build', exclusion_regex: 'llvm.*_*', comments: 'created from the llvm build package.' },
     { name_regex: '(llvm.*_dev|llvm.*_lib|libclc|openmp)', exclusion_regex: 'llvm.*_build', comments: 'should only be a build dep.' },
     { name_regex: 'llvm.*_lib', exclusion_regex: 'llvm_lib', comments: 'should only be a build dep.' },
