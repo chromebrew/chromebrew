@@ -16,14 +16,14 @@ class Libical < CMake
      x86_64: '7fb99376b41d44af2c04932202e09d63dbbdfde718cf7c8c37a7f2fd0bb5c949'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk_doc' => :build
-  depends_on 'icu4c' # R
-  depends_on 'libdb' # R
-  depends_on 'libxml2' # R
+  depends_on 'icu4c' => :library
+  depends_on 'libdb' => :library
+  depends_on 'libxml2' => :executable
   depends_on 'vala' => :build
 
   cmake_options '-DGOBJECT_INTROSPECTION=true \

@@ -11,9 +11,9 @@ class Tesseract < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '52e0ecc86d3d72d355b1123e680aeb26f4ec8290f6f329dd0a9786f7e7f0013b',
-     armv7l: '52e0ecc86d3d72d355b1123e680aeb26f4ec8290f6f329dd0a9786f7e7f0013b',
-     x86_64: 'c590623f031829624f87a7373e7b3a34aaa63c4d6368df35069b28c37eb2a486'
+    aarch64: 'a5cbcd2f6f5720300f973d75d1d990c2bb8754e1ed34dd02f3d092fa10978f17',
+     armv7l: 'a5cbcd2f6f5720300f973d75d1d990c2bb8754e1ed34dd02f3d092fa10978f17',
+     x86_64: '3b7d9afe7ce9e0f97f821fdbd0beb2b9f7016567c41f8a481c5b1c13328480c6'
   })
 
   depends_on 'acl' => :build
@@ -21,22 +21,22 @@ class Tesseract < CMake
   depends_on 'brotli' => :build
   depends_on 'bzip2' => :build
   depends_on 'c_ares' => :build
-  depends_on 'cairo' # R
-  depends_on 'curl' # R
+  depends_on 'cairo' => :executable
+  depends_on 'curl' => :library
   depends_on 'docbook_xml' => :build
   depends_on 'e2fsprogs' => :build
   depends_on 'expat' => :build
-  depends_on 'fontconfig' # R
-  depends_on 'freetype' # R
-  depends_on 'gcc_lib' # R
+  depends_on 'fontconfig' => :executable
+  depends_on 'freetype' => :executable
+  depends_on 'gcc_lib' => :library
   depends_on 'giflib' # R
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
-  depends_on 'harfbuzz' # R
-  depends_on 'icu4c' # R
+  depends_on 'glib' => :executable
+  depends_on 'glibc' => :library
+  depends_on 'harfbuzz' => :executable
+  depends_on 'icu4c' => :library
   depends_on 'krb5' => :build
-  depends_on 'leptonica' # R
-  depends_on 'libarchive' # R
+  depends_on 'leptonica' => :library
+  depends_on 'libarchive' => :library
   depends_on 'libcyrussasl' => :build
   depends_on 'libdeflate' => :build
   depends_on 'libidn2' => :build
@@ -54,7 +54,7 @@ class Tesseract < CMake
   depends_on 'openldap' => :build
   depends_on 'openmp' => :build
   depends_on 'openssl' => :build
-  depends_on 'pango' # R
+  depends_on 'pango' => :executable
   depends_on 'py3_asciidoc' => :build
   depends_on 'xzutils' => :build
   depends_on 'zlib' # R

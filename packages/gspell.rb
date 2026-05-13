@@ -11,27 +11,27 @@ class Gspell < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd7135d2f5af0d2878628eb9e8c485a43337723dcd2ad466cd64d4806a6d59322',
-     armv7l: 'd7135d2f5af0d2878628eb9e8c485a43337723dcd2ad466cd64d4806a6d59322',
-     x86_64: '158a54386f25e8ca605d30d854a012321dc925b8261874d29f71687f43826185'
+    aarch64: '852d48ba805102dfd1b9e329cf01cdf7d5eb4bb3b8e4de1aa36a533c03b12a13',
+     armv7l: '852d48ba805102dfd1b9e329cf01cdf7d5eb4bb3b8e4de1aa36a533c03b12a13',
+     x86_64: '257be3c6fa715135dabf9fb0247a2da200375943a332007f13b0a6847815a8a8'
   })
 
   depends_on 'aspell' => :build
   depends_on 'autoconf_archive' => :build
-  depends_on 'enchant' # R
+  depends_on 'enchant' => :library
   depends_on 'gcc_lib' => :build
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
   depends_on 'gobject_introspection' => :build
   depends_on 'graphite' => :build
-  depends_on 'gtk3' # R
+  depends_on 'gtk3' => :library
   depends_on 'hunspell' => :logical
-  depends_on 'icu4c' # R
+  depends_on 'icu4c' => :library
   depends_on 'iso_codes' => :build
   depends_on 'libxml2' => :build
   depends_on 'llvm_lib' => :build
   depends_on 'ncurses' => :build
-  depends_on 'pango' # R
+  depends_on 'pango' => :library
   depends_on 'vala' => :build
 
   gnome

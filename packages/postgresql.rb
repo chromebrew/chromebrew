@@ -17,31 +17,31 @@ class Postgresql < Meson
   })
 
   depends_on 'brotli' => :build
-  depends_on 'curl' # R
+  depends_on 'curl' => :library
   depends_on 'docbook_xml45' => :build
   depends_on 'expat' => :build
   depends_on 'fop' # R
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
   depends_on 'icu4c' => :executable
-  depends_on 'krb5' # R
+  depends_on 'krb5' => :library
   depends_on 'libcyrussasl' => :build
   depends_on 'liburing' => :executable
-  depends_on 'libxml2' # R
-  depends_on 'libxslt' # R
+  depends_on 'libxml2' => :library
+  depends_on 'libxslt' => :library
   depends_on 'linux_pam' => :executable
   depends_on 'llvm_dev' => :build
   depends_on 'lz4' => :executable
   depends_on 'numactl' => :executable
-  depends_on 'openldap' # R
-  depends_on 'openssl' # R
+  depends_on 'openldap' => :library
+  depends_on 'openssl' => :library
   depends_on 'pandoc' => :build
-  depends_on 'perl' # R
-  depends_on 'python3' # R
+  depends_on 'perl' => :library
+  depends_on 'python3' => :library
   depends_on 'readline' => :executable
   depends_on 'tcl' # R
   depends_on 'wget2' # R
-  depends_on 'zlib' # R
+  depends_on 'zlib' => :library
   depends_on 'zstd' => :executable
 
   print_source_bashrc

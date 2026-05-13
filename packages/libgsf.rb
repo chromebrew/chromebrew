@@ -17,15 +17,15 @@ class Libgsf < Autotools
      x86_64: '1a3cd786788e74a9c3c58cdb8469370ecbcd727e95a8442bfa8fce66df69262d'
   })
 
-  depends_on 'bzip2' # R
+  depends_on 'bzip2' => :library
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' => :executable
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
   depends_on 'gtk_doc' => :build
-  depends_on 'icu4c' # R
-  depends_on 'libxml2' # R
-  depends_on 'zlib' # R
+  depends_on 'icu4c' => :library
+  depends_on 'libxml2' => :library
+  depends_on 'zlib' => :library
 
   gnome
 

@@ -11,9 +11,9 @@ class Vte < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8e555a800b38dad49da00bdda322e76f4afb846d465955d0a96d3a6af3e08020',
-     armv7l: '8e555a800b38dad49da00bdda322e76f4afb846d465955d0a96d3a6af3e08020',
-     x86_64: '4da6b5d68e1e09115a01a1b9f9eab3f75e7ef187c80164dbfe53df9dd9bb4204'
+    aarch64: '9008f1a2ccf84cd59948dc0463529dcc013f97ca95aeae2052c8f296a8fc796b',
+     armv7l: '9008f1a2ccf84cd59948dc0463529dcc013f97ca95aeae2052c8f296a8fc796b',
+     x86_64: '7f4b390395674134b778a1f6a7907929b7283077dbb4c84c68ee1d6301c8698a'
   })
 
   depends_on 'at_spi2_core' => :library

@@ -13,16 +13,20 @@ class Xfsprogs < Package
   binary_sha256({
     aarch64: 'b54265ed3156675335f5bc43f0bfcac68da397864ecdaa3dae9e269b920b15c8',
      armv7l: 'b54265ed3156675335f5bc43f0bfcac68da397864ecdaa3dae9e269b920b15c8',
-     x86_64: '950bbf87240e82b35d880e047199cc9622d28c8eb4690cd254fe088b59c57e99'
+     x86_64: 'ee47512b039030603dcd058a4d4a73aae6163664e4b4b51aa34143cb096edbe4'
   })
 
   depends_on 'gcc_lib' => :library
   depends_on 'gettext' => :build
   depends_on 'glibc' => :library
+  depends_on 'icu4c' => :executable
   depends_on 'icu4c' => :library
   depends_on 'libeconf' => :library
+  depends_on 'libinih' => :executable
   depends_on 'libinih' => :library
+  depends_on 'liburcu' => :executable
   depends_on 'liburcu' => :library
+  depends_on 'lvm2' => :executable
   depends_on 'lvm2' => :library
   depends_on 'util_linux' => :executable
 

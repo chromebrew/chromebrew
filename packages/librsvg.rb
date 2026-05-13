@@ -16,12 +16,6 @@ class Librsvg < Meson
      x86_64: '642dcd58a3efec27ae9f1fc4b1b5afc9c2828f669b298f1fdac3ae0d214bab47'
   })
 
-  binary_sha256({
-    aarch64: '3308157ee7b14a2d042ea8b01f9fe8360d7ec42ef36146026a2996dc74b9a1f9',
-     armv7l: '3308157ee7b14a2d042ea8b01f9fe8360d7ec42ef36146026a2996dc74b9a1f9',
-     x86_64: '642dcd58a3efec27ae9f1fc4b1b5afc9c2828f669b298f1fdac3ae0d214bab47'
-  })
-
   depends_on 'cairo' => :library
   depends_on 'cargo_c' => :build
   depends_on 'dav1d' => :library

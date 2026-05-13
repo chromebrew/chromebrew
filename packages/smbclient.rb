@@ -16,43 +16,44 @@ class Smbclient < Package
      x86_64: '5146cf7fdb8b78f29d9d99eda73f542917766d09c0e0fb45c16014705032f618'
   })
 
-  depends_on 'acl' # R
-  depends_on 'avahi' # R
+  depends_on 'acl' => :library
+  depends_on 'avahi' => :library
   depends_on 'cmocka' => :build
   depends_on 'cups' => :build
   depends_on 'docbook' => :build # We still need to set @xml_catalog_files since the XML_CATALOG_FILES env variable might not get picked up before the build.
   depends_on 'gcc_lib' # R
   depends_on 'gdb' => :build
-  depends_on 'glibc' # R
-  depends_on 'gnutls' # R
+  depends_on 'glibc' => :library
+  depends_on 'gnutls' => :library
   depends_on 'gpgme' => :build
-  depends_on 'icu4c' # R
-  depends_on 'jansson' # R
+  depends_on 'icu4c' => :library
+  depends_on 'jansson' => :library
   depends_on 'ldb' => :build
-  depends_on 'libarchive' # R
-  depends_on 'libbsd' # R
-  depends_on 'libcap' # R
-  depends_on 'libngtcp2' # R
-  depends_on 'libtasn1' # R
+  depends_on 'libarchive' => :executable
+  depends_on 'libbsd' => :library
+  depends_on 'libcap' => :library
+  depends_on 'libngtcp2' => :library
+  depends_on 'libtasn1' => :library
   depends_on 'libtirpc' => :build
   depends_on 'libunwind' => :build
   depends_on 'liburing' => :build
   depends_on 'libxcrypt' # R
-  depends_on 'linux_pam' # R
-  depends_on 'lmdb' # R
+  depends_on 'linux_pam' => :library
+  depends_on 'lmdb' => :library
   depends_on 'ncurses' => :build
-  depends_on 'openldap' # R
+  depends_on 'nethack4' => :library
+  depends_on 'openldap' => :library
   depends_on 'perl_json' => :build
   depends_on 'perl_parse_yapp' => :build
-  depends_on 'popt' # R
+  depends_on 'popt' => :library
   depends_on 'py3_dnspython' => :build
   depends_on 'py3_markdown' => :build
-  depends_on 'readline' # R
-  depends_on 'talloc' # R
-  depends_on 'tdb' # R
-  depends_on 'tevent' # R
+  depends_on 'readline' => :executable
+  depends_on 'talloc' => :library
+  depends_on 'tdb' => :library
+  depends_on 'tevent' => :library
   depends_on 'xmlto' => :build
-  depends_on 'zlib' # R
+  depends_on 'zlib' => :library
 
   @samba4_idmap_modules = 'idmap_ad,idmap_rid,idmap_adex,idmap_hash,idmap_tdb2'
   @samba4_pdb_modules = 'pdb_tdbsam,pdb_ldap,pdb_ads,pdb_smbpasswd,pdb_wbc_sam,pdb_samba4'
