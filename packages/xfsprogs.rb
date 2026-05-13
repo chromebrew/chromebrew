@@ -11,8 +11,8 @@ class Xfsprogs < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '426217685ae0316b24e6611dfd3aaeef1a43acf89d7a589da226f827cc04925a',
-     armv7l: '426217685ae0316b24e6611dfd3aaeef1a43acf89d7a589da226f827cc04925a',
+    aarch64: 'b54265ed3156675335f5bc43f0bfcac68da397864ecdaa3dae9e269b920b15c8',
+     armv7l: 'b54265ed3156675335f5bc43f0bfcac68da397864ecdaa3dae9e269b920b15c8',
      x86_64: '950bbf87240e82b35d880e047199cc9622d28c8eb4690cd254fe088b59c57e99'
   })
 

@@ -11,9 +11,15 @@ class Librsvg < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '25e1e877a5bbfa2d4b306b9e3f8a97c909edef1e3157948143d239afe751cdda',
-     armv7l: '25e1e877a5bbfa2d4b306b9e3f8a97c909edef1e3157948143d239afe751cdda',
-     x86_64: '4f5663afdf20b89fc4bb8950fbb3ebcea1455ade3a22b98f05a62ba208cef484'
+    aarch64: '3308157ee7b14a2d042ea8b01f9fe8360d7ec42ef36146026a2996dc74b9a1f9',
+     armv7l: '3308157ee7b14a2d042ea8b01f9fe8360d7ec42ef36146026a2996dc74b9a1f9',
+     x86_64: '642dcd58a3efec27ae9f1fc4b1b5afc9c2828f669b298f1fdac3ae0d214bab47'
+  })
+
+  binary_sha256({
+    aarch64: '3308157ee7b14a2d042ea8b01f9fe8360d7ec42ef36146026a2996dc74b9a1f9',
+     armv7l: '3308157ee7b14a2d042ea8b01f9fe8360d7ec42ef36146026a2996dc74b9a1f9',
+     x86_64: '642dcd58a3efec27ae9f1fc4b1b5afc9c2828f669b298f1fdac3ae0d214bab47'
   })
 
   depends_on 'cairo' => :library
@@ -26,6 +32,7 @@ class Librsvg < Meson
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
   depends_on 'gobject_introspection' => :build
+  depends_on 'harfbuzz' => :executable
   depends_on 'harfbuzz' => :library
   depends_on 'libcroco' => :build
   depends_on 'libjpeg_turbo' => :build

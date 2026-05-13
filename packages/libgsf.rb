@@ -14,7 +14,7 @@ class Libgsf < Autotools
   binary_sha256({
     aarch64: '4dafa24252971d9206babe036467102a65ed26bff990e06ed6a95779c00c93fe',
      armv7l: '4dafa24252971d9206babe036467102a65ed26bff990e06ed6a95779c00c93fe',
-     x86_64: '39d75477e83bbfe3b0c595eb98acb2059212dd1bbafd340462f8d783f7e33304'
+     x86_64: '1a3cd786788e74a9c3c58cdb8469370ecbcd727e95a8442bfa8fce66df69262d'
   })
 
   depends_on 'bzip2' # R

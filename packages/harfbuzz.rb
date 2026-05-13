@@ -15,9 +15,9 @@ class Harfbuzz < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '40cbd33527022977090ba39857d92188702681a38f7e3ada5fc8ca0a80018946',
-     armv7l: '40cbd33527022977090ba39857d92188702681a38f7e3ada5fc8ca0a80018946',
-     x86_64: 'ae4bfc2c8f824d30b99e027b009042516bcf4242ea27afa7f446857f40a174fe'
+    aarch64: '04cc937f4c3d667241d10bb8b348ecccd66331ce3b7a859a750bb083f94080f1',
+     armv7l: '04cc937f4c3d667241d10bb8b348ecccd66331ce3b7a859a750bb083f94080f1',
+     x86_64: 'c34ecf009a8e104c8d2d8fa4bd5a06db0acc9b9cf6df3633cea4d877d6489670'
   })
 
   depends_on 'brotli' => :library
@@ -54,6 +54,7 @@ class Harfbuzz < Meson
   conflicts_ok # Conflicts expected with cairo fontconfig freetype
 
   pre_meson_options "CFLAGS+=' -Werror=uninitialized'"
+  # Utility inclusion leads to dependency loops due to system libcairo.so.2 usage.
   meson_options '--wrap-mode=default \
       --default-library=both \
       -Dbenchmark=disabled \
@@ -63,7 +64,8 @@ class Harfbuzz < Meson
       -Dgraphite2=enabled \
       -Dintrospection=enabled \
       -Dragel_subproject=false \
-      -Dtests=disabled'
+      -Dtests=disabled \
+      -Dutilities=disabled'
 
   def self.prebuild
     %w[fontconfig freetype].each do |build_exclusion|
@@ -77,7 +79,7 @@ class Harfbuzz < Meson
   def self.patch
     File.write 'subprojects/freetype2.wrap', <<~FREETYPE2_WRAP_EOF
       [wrap-git]
-      directory = freetype-#{Freetype.version}
+      directory = freetype-#{Freetype.version.split('-').first}
       url=https://gitlab.freedesktop.org/freetype/freetype.git
       revision=#{Freetype.git_hashtag}
       depth=1

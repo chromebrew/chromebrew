@@ -13,7 +13,7 @@ class Libical < CMake
   binary_sha256({
     aarch64: 'a5d7ad1b38b3ae0bd6b418c993b102fa6e7b3c9707c1d4768921d8a321d3dba5',
      armv7l: 'a5d7ad1b38b3ae0bd6b418c993b102fa6e7b3c9707c1d4768921d8a321d3dba5',
-     x86_64: 'cf1c8d63e3dc53d1a013472ebe8643374d96b48006efc22d094b5e03d048ed5a'
+     x86_64: '7fb99376b41d44af2c04932202e09d63dbbdfde718cf7c8c37a7f2fd0bb5c949'
   })
 
   depends_on 'gcc_lib' # R

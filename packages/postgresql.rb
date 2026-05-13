@@ -13,7 +13,7 @@ class Postgresql < Meson
   binary_sha256({
     aarch64: 'f8ec04a108bdebc062746e275879f4f069b7943cf095fe17e4dd976197226e98',
      armv7l: 'f8ec04a108bdebc062746e275879f4f069b7943cf095fe17e4dd976197226e98',
-     x86_64: 'a43dd827d31b6be6fc8b1d0ef3e147f6292cc87a7498b57d025c913eef24edb2'
+     x86_64: '26f22b65c13c6b5a6a74d8c8f2864fbe7b30562569c6a24c4548adb13b149218'
   })
 
   depends_on 'brotli' => :build

@@ -1,10 +1,4 @@
-# Total size: 84630844
-/usr/local/bin/hb-info
-/usr/local/bin/hb-raster
-/usr/local/bin/hb-shape
-/usr/local/bin/hb-subset
-/usr/local/bin/hb-vector
-/usr/local/bin/hb-view
+# Total size: 84233452
 /usr/local/etc/fonts/conf.d/10-hinting-slight.conf
 /usr/local/etc/fonts/conf.d/10-scale-bitmap-fonts.conf
 /usr/local/etc/fonts/conf.d/10-sub-pixel-none.conf
