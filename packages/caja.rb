@@ -56,4 +56,8 @@ class Caja < Autotools
   gnome
 
   autotools_configure_options '--enable-wayland'
+
+  def self.prebuild
+    ConvenienceFunctions.libtoolize('libuuid', 'util_linux')
+  end
 end
