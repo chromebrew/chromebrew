@@ -11,15 +11,15 @@ class Mediainfo < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '000fcaa113229907000108b0a3517dcde430522d6f0adc758723f57985eaa78c',
-     armv7l: '000fcaa113229907000108b0a3517dcde430522d6f0adc758723f57985eaa78c',
-       i686: '494230bf40c52592be93da5c905f4b24fda4075906cc978f9e2a35e786b5d8a0',
-     x86_64: '334d50dcf39783cfebc157e406e128dca3c74da0222552ee98635a422430c02c'
+    aarch64: 'a3a7db2e5617200fc4fb4222a201c13049624312c584f9b656e3b538b8955273',
+     armv7l: 'a3a7db2e5617200fc4fb4222a201c13049624312c584f9b656e3b538b8955273',
+       i686: 'acc1ee3be53b92701f9045e0ccedebc0fec26df34315ad9aa92be10315d79f53',
+     x86_64: '358f9dc0337d8577a4a4f62b0415c995e0ad1720e934886ae2bc74c4f21b16bf'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'zlib' # R
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'zlib' => :executable
 
   def self.patch
     # Fix /usr/bin/file: No such file or directory
