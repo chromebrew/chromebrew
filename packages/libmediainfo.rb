@@ -11,15 +11,15 @@ class Libmediainfo < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8bdd695c51d149d5378c66f212ccdda07ee738cf9d095178dc03a506167cb33c',
-     armv7l: '8bdd695c51d149d5378c66f212ccdda07ee738cf9d095178dc03a506167cb33c',
-       i686: '01ea558574f7dde30d95d0c4316fc108d4eb87bee8f3665bc445d2b34fd50167',
-     x86_64: '4641bfa132c5c78704f235172db7a9136205f303f77b665d5eed4676b12d78cd'
+    aarch64: '62a56e7417a6a0bea4f27e00b117f969104c25a1f2f3e0c318a55d8684f116c5',
+     armv7l: '62a56e7417a6a0bea4f27e00b117f969104c25a1f2f3e0c318a55d8684f116c5',
+       i686: '97c80197a936d0068dce0b2b4020aea898a330ef5df0e651a4fb44393fced98d',
+     x86_64: 'afeb58f4ed4726f581d1bd9570609d27e6918614a3b04faf5a8b70e8b4763040'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'zlib' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'zlib' => :library
 
   def self.patch
     # Fix /usr/bin/file: No such file or directory
