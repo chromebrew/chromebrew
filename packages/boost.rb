@@ -7,7 +7,7 @@ class Boost < Package
   license 'Boost-1.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/boostorg/boost.git'
-  git_hashtag version.sub("-#{CREW_ICU_VER}-#{CREW_PY_VER}", '')
+  git_hashtag "boost-#{version.sub("-#{CREW_ICU_VER}-#{CREW_PY_VER}", '')}"
   binary_compression 'tar.zst'
 
   binary_sha256({
