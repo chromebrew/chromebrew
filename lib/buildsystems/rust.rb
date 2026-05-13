@@ -37,11 +37,14 @@ class RUST < Package
     end
     system rust_env, "rustup target add #{@rust_targets}" unless @rust_targets.to_s.empty?
     system rust_env, "#{@pre_rust_options} cargo #{@channel_flag} fetch"
-    system rust_env, "#{@pre_rust_options} cargo #{@channel_flag} build \
-      --profile=#{@profile} \
-      #{@packages} \
-      #{@features} \
-      #{@rust_options}"
+    @rust_install_path.split.each do |path|
+      system rust_env, "#{@pre_rust_options} cargo #{@channel_flag} build \
+        --profile=#{@profile} \
+        --manifest-path #{path}/Cargo.toml \
+        #{@packages} \
+        #{@features} \
+        #{@rust_options}"
+    end
     @rust_build_extras&.call
   end
 
