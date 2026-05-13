@@ -27,7 +27,6 @@ class Librsvg < Meson
   depends_on 'glibc' => :library
   depends_on 'gobject_introspection' => :build
   depends_on 'harfbuzz' => :executable
-  depends_on 'harfbuzz' => :library
   depends_on 'libcroco' => :build
   depends_on 'libjpeg_turbo' => :build
   depends_on 'libxml2' => :library
