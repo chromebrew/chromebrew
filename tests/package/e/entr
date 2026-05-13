@@ -1,0 +1,2 @@
+#!/bin/bash
+entr -h 2>&1
