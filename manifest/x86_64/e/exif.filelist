@@ -1,3 +1,34 @@
-# Total size: 128193
+# Total size: 224418
 /usr/local/bin/exif
-/usr/local/share/man/man1/exif.1.gz
+/usr/local/share/locale/ast/LC_MESSAGES/exif.mo
+/usr/local/share/locale/cs/LC_MESSAGES/exif.mo
+/usr/local/share/locale/da/LC_MESSAGES/exif.mo
+/usr/local/share/locale/de/LC_MESSAGES/exif.mo
+/usr/local/share/locale/eo/LC_MESSAGES/exif.mo
+/usr/local/share/locale/es/LC_MESSAGES/exif.mo
+/usr/local/share/locale/fi/LC_MESSAGES/exif.mo
+/usr/local/share/locale/fr/LC_MESSAGES/exif.mo
+/usr/local/share/locale/fur/LC_MESSAGES/exif.mo
+/usr/local/share/locale/gl/LC_MESSAGES/exif.mo
+/usr/local/share/locale/hr/LC_MESSAGES/exif.mo
+/usr/local/share/locale/id/LC_MESSAGES/exif.mo
+/usr/local/share/locale/is/LC_MESSAGES/exif.mo
+/usr/local/share/locale/it/LC_MESSAGES/exif.mo
+/usr/local/share/locale/ja/LC_MESSAGES/exif.mo
+/usr/local/share/locale/ko/LC_MESSAGES/exif.mo
+/usr/local/share/locale/lv/LC_MESSAGES/exif.mo
+/usr/local/share/locale/ms/LC_MESSAGES/exif.mo
+/usr/local/share/locale/nl/LC_MESSAGES/exif.mo
+/usr/local/share/locale/pl/LC_MESSAGES/exif.mo
+/usr/local/share/locale/pt/LC_MESSAGES/exif.mo
+/usr/local/share/locale/pt_BR/LC_MESSAGES/exif.mo
+/usr/local/share/locale/ro/LC_MESSAGES/exif.mo
+/usr/local/share/locale/ru/LC_MESSAGES/exif.mo
+/usr/local/share/locale/sk/LC_MESSAGES/exif.mo
+/usr/local/share/locale/sr/LC_MESSAGES/exif.mo
+/usr/local/share/locale/sv/LC_MESSAGES/exif.mo
+/usr/local/share/locale/tr/LC_MESSAGES/exif.mo
+/usr/local/share/locale/uk/LC_MESSAGES/exif.mo
+/usr/local/share/locale/vi/LC_MESSAGES/exif.mo
+/usr/local/share/locale/zh_CN/LC_MESSAGES/exif.mo
+/usr/local/share/man/man1/exif.1.zst
