@@ -11,26 +11,26 @@ class Mediainfo_gui < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '19131933a4c7d4f4e4dfab3eb2e35ac7143a0212037133a33fc75a6b280bff94',
-     armv7l: '19131933a4c7d4f4e4dfab3eb2e35ac7143a0212037133a33fc75a6b280bff94',
-     x86_64: '90f147b4ec7ed5d0a7d6f8734083f1ea1bda5b490ca08149be503da649b13ba1'
+    aarch64: '6a03c6721e7564560c469932f6819451da1cfb2658faf5e89fd906b03d63f51f',
+     armv7l: '6a03c6721e7564560c469932f6819451da1cfb2658faf5e89fd906b03d63f51f',
+     x86_64: 'ab3450ee6ba92e332dc3ac57ebd1d2af0e639120e2f9285072078763155ba968'
   })
 
-  depends_on 'at_spi2_core' # R
-  depends_on 'cairo' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'gdk_pixbuf' # R
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
-  depends_on 'gtk3' # R
-  depends_on 'harfbuzz' # R
-  depends_on 'libjpeg_turbo' # R
-  depends_on 'libsm' # R
-  depends_on 'libtiff' # R
-  depends_on 'libx11' # R
-  depends_on 'libxxf86vm' # R
-  depends_on 'pango' # R
-  depends_on 'zlib' # R
+  depends_on 'at_spi2_core' => :executable
+  depends_on 'cairo' => :executable
+  depends_on 'gcc_lib' => :executable
+  depends_on 'gdk_pixbuf' => :executable
+  depends_on 'glib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'gtk3' => :executable
+  depends_on 'harfbuzz' => :executable
+  depends_on 'libjpeg_turbo' => :executable
+  depends_on 'libsm' => :executable
+  depends_on 'libtiff' => :executable
+  depends_on 'libx11' => :executable
+  depends_on 'libxxf86vm' => :executable
+  depends_on 'pango' => :executable
+  depends_on 'zlib' => :executable
 
   gnome
 
