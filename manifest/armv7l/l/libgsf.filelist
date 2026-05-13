@@ -1,4 +1,4 @@
-# Total size: 3581478
+# Total size: 3630576
 /usr/local/bin/gsf
 /usr/local/bin/gsf-office-thumbnailer
 /usr/local/bin/gsf-vba-dump
@@ -56,7 +56,7 @@
 /usr/local/lib/libgsf-1.la
 /usr/local/lib/libgsf-1.so
 /usr/local/lib/libgsf-1.so.114
-/usr/local/lib/libgsf-1.so.114.0.53
+/usr/local/lib/libgsf-1.so.114.0.58
 /usr/local/lib/pkgconfig/libgsf-1.pc
 /usr/local/share/gir-1.0/Gsf-1.gir
 /usr/local/share/locale/as/LC_MESSAGES/libgsf.mo
@@ -82,6 +82,7 @@
 /usr/local/share/locale/it/LC_MESSAGES/libgsf.mo
 /usr/local/share/locale/ja/LC_MESSAGES/libgsf.mo
 /usr/local/share/locale/ka/LC_MESSAGES/libgsf.mo
+/usr/local/share/locale/kk/LC_MESSAGES/libgsf.mo
 /usr/local/share/locale/ko/LC_MESSAGES/libgsf.mo
 /usr/local/share/locale/lt/LC_MESSAGES/libgsf.mo
 /usr/local/share/locale/lv/LC_MESSAGES/libgsf.mo
