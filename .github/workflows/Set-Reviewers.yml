@@ -52,15 +52,10 @@ jobs:
           fetch-depth: 0
           persist-credentials: true
           ref: ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
-      - name: Get Status of current ref
-        id: get-status
-        uses: danieldeichfuss/get-status@v0.0.10
-        with:
-          ref: ${{ github.sha }}
-      - name: Set Reviewers
+       - name: Set Reviewers
         env:
           GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
-        if: ${{ steps.get-status.outputs.all-checks-completed == 'true' &&  steps.get-status.outputs.all-checks-passed == 'true' }}
+        if: ${{ github.event.workflow_run.conclusion == 'success' }}
         run: |
           gh pr edit --add-reviewer chromebrew/active
           echo "Asking Chromebrew/active for review."
