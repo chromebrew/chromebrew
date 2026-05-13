@@ -4,11 +4,11 @@ require 'misc_functions'
 class Monero_gui < Package
   description 'Private, decentralized cryptocurrency that keeps your finances confidential and secure.'
   homepage 'https://www.getmonero.org/'
-  version '0.18.4.7'
+  version '0.18.5.0'
   license 'The Cryptonote developers,The Boolberry developers,MIT'
   compatibility 'x86_64'
   source_url "https://downloads.getmonero.org/gui/monero-gui-linux-x64-v#{version}.tar.bz2"
-  source_sha256 '4573defcf21b0daeea0e9c7213540012c7d1186e829daf991fa8edfc5033dc08'
+  source_sha256 '99d7e9b1e8084f09bdf837dd862ad96c47a86292bdbd6c2f6b3aaa46ff510b62'
 
   depends_on 'monero' # R
   depends_on 'xcb_util' # R
