@@ -3,12 +3,12 @@ require 'buildsystems/autotools'
 class Libgsf < Autotools
   description 'The G Structured File Library'
   homepage 'https://gitlab.gnome.org/GNOME/libgsf'
-  version "1.14.52-634340d-#{CREW_ICU_VER}"
+  version "1.14.58-#{CREW_ICU_VER}"
   license 'GPL-2 and LGPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/libgsf.git'
   git_hashtag '634340d31177c02ccdb43171e37291948e7f8974'
-  # git_hashtag "LIBGSF_#{version.split('-').first.gsub('.', '_')}"
+  git_hashtag "LIBGSF_#{version.sub("-#{CREW_ICU_VER}", '').gsub('.', '_')}"
   binary_compression 'tar.zst'
 
   binary_sha256({

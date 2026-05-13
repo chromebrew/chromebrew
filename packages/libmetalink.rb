@@ -2,12 +2,12 @@ require 'buildsystems/autotools'
 
 class Libmetalink < Autotools
   description 'libmetalink is a Metalink library written in C language.'
-  homepage 'https://launchpad.net/libmetalink/'
+  homepage 'https://github.com/metalink-dev/libmetalink'
   version "0.1.3-#{CREW_ICU_VER}"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://launchpad.net/libmetalink/trunk/libmetalink-0.1.3/+download/libmetalink-0.1.3.tar.xz'
-  source_sha256 '86312620c5b64c694b91f9cc355eabbd358fa92195b3e99517504076bf9fe33a'
+  source_url 'https://github.com/metalink-dev/libmetalink'
+  git_hashtag version.sub("-#{CREW_ICU_VER}", '')
   binary_compression 'tar.zst'
 
   binary_sha256({
