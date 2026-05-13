@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Util_linux < Meson
   description 'essential linux tools'
   homepage 'https://www.kernel.org/pub/linux/utils/util-linux/'
-  version "2.42-#{CREW_PY_VER}"
+  version "2.42-1-#{CREW_PY_VER}"
   license 'GPL-2, LGPL-2.1, BSD-4, MIT and public-domain'
   compatibility 'all'
   source_url 'https://github.com/util-linux/util-linux.git'
@@ -11,10 +11,10 @@ class Util_linux < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0fc647511249286521d9123e96e534c3020d682f56fe3f27cb47798750e572bd',
-     armv7l: '0fc647511249286521d9123e96e534c3020d682f56fe3f27cb47798750e572bd',
-       i686: '994d79450826fc892e094b9d50e6a0f5d8d2a3f6fcad30e04aa61b87495ecfb0',
-     x86_64: 'd5f9ee0e33ed5b6613115d979f390bc7926941fa4ea15b6b1cc1a3e2efdfb159'
+    aarch64: 'c90a874b1f9b365c69a9d29286d6e8461971e19eda2572b9572f67e44a01f664',
+     armv7l: 'c90a874b1f9b365c69a9d29286d6e8461971e19eda2572b9572f67e44a01f664',
+       i686: '529ae5ff5efbaf728fc90b0347ee350c9af1f2f17ef3d5abf5d9f4fcc31e23d8',
+     x86_64: '3ee8d4b3acf237c771fda73255b614423f57970feb833ab80ac8c8958cd08c71'
   })
 
   depends_on 'eudev_header' => :build if ARCH == 'x86_64' # (for libudev.h)
@@ -36,9 +36,12 @@ class Util_linux < Meson
 
   # Needs to be built with CREW_KERNEL_VERSION=5.10 for the build to
   # succeed on x86_64 and armv7l.
+  # Need -Ddefault_libraru=both to get the static libuuid.a,
+  # which is needed by xfsprogs.
   year2038 = '-Dallow-32bit-time=true'
   i686_disabled_builds = '-Dbuild-blkzone=disabled -Dbuild-lsfd=disabled'
-  meson_options "-Dbuild-kill=disabled \
+  meson_options "-Ddefault_library=both \
+                 -Dbuild-kill=disabled \
                  -Dbuild-uuidd=disabled \
                  -Dprogram-tests=false \
                  -Dsystemd=disabled \
