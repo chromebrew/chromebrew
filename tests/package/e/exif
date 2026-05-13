@@ -1,0 +1,3 @@
+#!/bin/bash
+exif | head
+exif -v
