@@ -21,12 +21,12 @@ class Libxml2_autotools < Autotools
   })
 
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'icu4c' # R
+  depends_on 'glibc' => :library
+  depends_on 'icu4c' => :library
+  depends_on 'libxml2' # R
   depends_on 'ncurses' # R
   depends_on 'readline' # R
   depends_on 'zlib' # R
-  depends_on 'libxml2' # R
 
   conflicts_ok
   gnome

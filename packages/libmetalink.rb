@@ -17,9 +17,9 @@ class Libmetalink < Autotools
      x86_64: '51c357614dd3c43c8b3a7513106c82bb3436a85d1a4c2a22afdd7e204be51675'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'icu4c' # R
-  depends_on 'libxml2' # R
+  depends_on 'glibc' => :library
+  depends_on 'icu4c' => :library
+  depends_on 'libxml2' => :library
   depends_on 'zlib' # R
 
   def self.patch
