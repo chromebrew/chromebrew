@@ -3,11 +3,11 @@ require 'package'
 class Nginx < Package
   description 'nginx [engine x] is an HTTP and reverse proxy server, a mail proxy server, and a generic TCP/UDP proxy server, originally written by Igor Sysoev.'
   homepage 'http://nginx.org/'
-  version '1.30.0'
+  version '1.31.0'
   license 'BSD-2, BSD, SSLeay, MIT, GPL-2 and GPL-2+'
   compatibility 'all'
   source_url "http://nginx.org/download/nginx-#{version}.tar.gz"
-  source_sha256 '058188c64bf22baecaa72b809a6318a4f9ba623889c554feab03f7cb853ab31b'
+  source_sha256 '6d5b00d45393af2e4e7c52a442d2a198f0ccbc7678ed062a46f403edd833ebaa'
   binary_compression 'tar.zst'
 
   binary_sha256({
