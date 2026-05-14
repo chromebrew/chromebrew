@@ -36,7 +36,7 @@ jobs:
           STEPS_CONTEXT: ${{ toJson(steps) }}
         run: echo "$STEPS_CONTEXT"
   setup:
-    if: ${{ github.repository_owner == 'chromebrew' && inputs.branch != 'master' && github.ref_name != 'master' && github.event.pull_request.draft == false && github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.repository_owner == 'chromebrew' && inputs.branch != 'master' && github.event.pull_request.draft == false && github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-24.04
     steps:
       - name: Get GH Token
