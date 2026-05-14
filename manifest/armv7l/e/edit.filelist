@@ -1,2 +1,6 @@
-# Total size: 551880
+# Total size: 637501
 /usr/local/bin/edit
+/usr/local/bin/msedit
+/usr/local/share/applications/com.microsoft.edit.desktop
+/usr/local/share/icons/edit.ico
+/usr/local/share/man/man1/edit.1.zst
