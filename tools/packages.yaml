@@ -8820,6 +8820,11 @@ url: https://github.com/rust-lang/rust/releases
 activity: high
 ---
 kind: url
+name: rust_bindgen
+url: https://github.com/rust-lang/rust-bindgen/releases
+activity: medium
+---
+kind: url
 name: rxvt_unicode
 url: http://dist.schmorp.de/rxvt-unicode/
 activity: low

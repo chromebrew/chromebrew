@@ -11,9 +11,9 @@ class Evolution_data_server < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a750e63e71089e5f909bfcebe32c5b9bed7809cfd4327689618927298b3cfbbd',
-     armv7l: 'a750e63e71089e5f909bfcebe32c5b9bed7809cfd4327689618927298b3cfbbd',
-     x86_64: '8284125ec28b9bc4452db33f625558a75cd6869adc0134f2f914d568d30b0ede'
+    aarch64: '49c76139abeb2a28b7b135d6331b8fc8399269905e6007d1cc0a75a0fcb2f523',
+     armv7l: '49c76139abeb2a28b7b135d6331b8fc8399269905e6007d1cc0a75a0fcb2f523',
+     x86_64: '0dd5f19412d7c9fd6ebcdef5d75ec78c7bc86a304aae0adbf151a3cb30dc3214'
   })
 
   depends_on 'at_spi2_core' => :library

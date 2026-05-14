@@ -1,4 +1,4 @@
-# Total size: 10156764
+# Total size: 10245428
 /usr/local/bin/vsd2raw
 /usr/local/bin/vsd2text
 /usr/local/bin/vsd2xhtml
@@ -438,6 +438,7 @@
 /usr/local/share/doc/libvisio/html/classlibvisio_1_1XMLErrorWatcher.js
 /usr/local/share/doc/libvisio/html/classlibvisio_1_1XmlParserException.html
 /usr/local/share/doc/libvisio/html/clipboard.js
+/usr/local/share/doc/libvisio/html/codefolding.js
 /usr/local/share/doc/libvisio/html/cookie.js
 /usr/local/share/doc/libvisio/html/dir_68267d1309a1af8e8297ef4c3efbcdba.html
 /usr/local/share/doc/libvisio/html/dir_68267d1309a1af8e8297ef4c3efbcdba.js
@@ -450,7 +451,6 @@
 /usr/local/share/doc/libvisio/html/doxygen.css
 /usr/local/share/doc/libvisio/html/doxygen.svg
 /usr/local/share/doc/libvisio/html/doxygen_crawl.html
-/usr/local/share/doc/libvisio/html/dynsections.js
 /usr/local/share/doc/libvisio/html/files.html
 /usr/local/share/doc/libvisio/html/files_dup.js
 /usr/local/share/doc/libvisio/html/functions.html
@@ -555,7 +555,6 @@
 /usr/local/share/doc/libvisio/html/hierarchy.html
 /usr/local/share/doc/libvisio/html/hierarchy.js
 /usr/local/share/doc/libvisio/html/index.html
-/usr/local/share/doc/libvisio/html/jquery.js
 /usr/local/share/doc/libvisio/html/libvisio_8h.html
 /usr/local/share/doc/libvisio/html/libvisio_8h_source.html
 /usr/local/share/doc/libvisio/html/libvisio__utils_8cpp.html

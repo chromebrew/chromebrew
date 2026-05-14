@@ -11,37 +11,37 @@ class Postgresql < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '98260cc3aa908dd412715f01706df848c14513b84208ef3320c39e9b3a8c3aa0',
-     armv7l: '98260cc3aa908dd412715f01706df848c14513b84208ef3320c39e9b3a8c3aa0',
-     x86_64: 'a43dd827d31b6be6fc8b1d0ef3e147f6292cc87a7498b57d025c913eef24edb2'
+    aarch64: 'f8ec04a108bdebc062746e275879f4f069b7943cf095fe17e4dd976197226e98',
+     armv7l: 'f8ec04a108bdebc062746e275879f4f069b7943cf095fe17e4dd976197226e98',
+     x86_64: '26f22b65c13c6b5a6a74d8c8f2864fbe7b30562569c6a24c4548adb13b149218'
   })
 
   depends_on 'brotli' => :build
-  depends_on 'curl' # R
+  depends_on 'curl' => :library
   depends_on 'docbook_xml45' => :build
   depends_on 'expat' => :build
   depends_on 'fop' # R
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
   depends_on 'icu4c' => :executable
-  depends_on 'krb5' # R
+  depends_on 'krb5' => :library
   depends_on 'libcyrussasl' => :build
   depends_on 'liburing' => :executable
-  depends_on 'libxml2' # R
-  depends_on 'libxslt' # R
+  depends_on 'libxml2' => :library
+  depends_on 'libxslt' => :library
   depends_on 'linux_pam' => :executable
   depends_on 'llvm_dev' => :build
   depends_on 'lz4' => :executable
   depends_on 'numactl' => :executable
-  depends_on 'openldap' # R
-  depends_on 'openssl' # R
+  depends_on 'openldap' => :library
+  depends_on 'openssl' => :library
   depends_on 'pandoc' => :build
-  depends_on 'perl' # R
-  depends_on 'python3' # R
+  depends_on 'perl' => :library
+  depends_on 'python3' => :library
   depends_on 'readline' => :executable
   depends_on 'tcl' # R
   depends_on 'wget2' # R
-  depends_on 'zlib' # R
+  depends_on 'zlib' => :library
   depends_on 'zstd' => :executable
 
   print_source_bashrc

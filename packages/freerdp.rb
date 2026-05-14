@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Freerdp < CMake
   description 'FreeRDP is a free implementation of the Remote Desktop Protocol.'
   homepage 'https://www.freerdp.com/'
-  version "3.25.0-#{CREW_ICU_VER}"
+  version "3.26.0-#{CREW_ICU_VER}"
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/FreeRDP/FreeRDP.git'
@@ -11,15 +11,15 @@ class Freerdp < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '39548a8901a1605d737078a45fb35c4d44a954b24d41941d72f2d022c974ce1a',
-     armv7l: '39548a8901a1605d737078a45fb35c4d44a954b24d41941d72f2d022c974ce1a',
-     x86_64: '2ac1683873fd0f5d948d2c8192b030e820c8244e6209d1bc58e4dd108b90c870'
+    aarch64: '9bc4f9edbb7ca06c62b40b8cbedf228100a7f887d5052cad6f8ec5e7303a93f6',
+     armv7l: '9bc4f9edbb7ca06c62b40b8cbedf228100a7f887d5052cad6f8ec5e7303a93f6',
+     x86_64: 'b1fa857211d6506d829dd0d3b4b4ce99b92f8c6012e4a9997faf83d16397f10e'
   })
 
   depends_on 'alsa_lib' => :library
-  depends_on 'at_spi2_core' # R
+  depends_on 'at_spi2_core' => :build
   depends_on 'cairo' => :library
-  depends_on 'cjson' # R
+  depends_on 'cjson' => :build
   depends_on 'cups' => :library
   depends_on 'e2fsprogs' => :library
   depends_on 'faac' => :library
@@ -27,24 +27,25 @@ class Freerdp < CMake
   depends_on 'ffmpeg' => :library
   depends_on 'fuse3' => :library
   depends_on 'gcc_lib' => :library
-  depends_on 'gdk_pixbuf' # R
-  depends_on 'glib' # R
+  depends_on 'gdk_pixbuf' => :build
+  depends_on 'glib' => :build
   depends_on 'glibc' => :library
-  depends_on 'gsm' # R
+  depends_on 'gsm' => :build
   depends_on 'gstreamer' => :build
-  depends_on 'gtk3' # R
-  depends_on 'harfbuzz' => :library
+  depends_on 'gtk3' => :build
+  depends_on 'harfbuzz' => :build
   depends_on 'icu4c' => :library
-  depends_on 'json_c' => :library
+  depends_on 'jansson' => :library
+  depends_on 'json_c' => :build
   depends_on 'krb5' => :library
   depends_on 'libbacktrace' => :build
-  depends_on 'libbsd' => :library
+  depends_on 'libbsd' => :build
   depends_on 'libfdk_aac' => :build
   depends_on 'libice' => :library
-  depends_on 'libjpeg_turbo' # R
+  depends_on 'libjpeg_turbo' => :build
   depends_on 'libmp3lame' => :library
   depends_on 'libsm' => :library
-  depends_on 'libsoup' # R
+  depends_on 'libsoup' => :build
   depends_on 'libsoxr' => :library
   depends_on 'libusb' => :library
   depends_on 'libx11' => :library
@@ -63,15 +64,17 @@ class Freerdp < CMake
   depends_on 'linux_pam' => :library
   depends_on 'openh264' => :library
   depends_on 'openssl' => :library
-  depends_on 'pango' # R
+  depends_on 'pango' => :build
   depends_on 'pulseaudio' => :library
   depends_on 'sdl2' => :executable
   depends_on 'sdl2_compat' => :executable
   depends_on 'sdl2_ttf' => :executable
+  depends_on 'sdl3' => :executable
+  depends_on 'sdl3_ttf' => :executable
   depends_on 'sommelier' => :logical
   depends_on 'uriparser' => :library
   depends_on 'wayland' => :library
-  depends_on 'webkit2gtk_4_1' # R
+  depends_on 'webkit2gtk_4_1' => :build
   depends_on 'xdg_base' => :logical
   depends_on 'xmlto' => :build
   depends_on 'xprop' => :build

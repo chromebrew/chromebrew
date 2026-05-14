@@ -1,4 +1,4 @@
-# Total size: 28324890
+# Total size: 31973562
 /usr/local/bin/bits
 /usr/local/bin/cal
 /usr/local/bin/chfn
@@ -99,9 +99,11 @@
 /usr/local/lib/libfdisk.so
 /usr/local/lib/libfdisk.so.1
 /usr/local/lib/libfdisk.so.1.1.0
+/usr/local/lib/liblastlog2.a
 /usr/local/lib/liblastlog2.so
 /usr/local/lib/liblastlog2.so.2
 /usr/local/lib/liblastlog2.so.2.0.0
+/usr/local/lib/libmount.a
 /usr/local/lib/libmount.so
 /usr/local/lib/libmount.so.1
 /usr/local/lib/libmount.so.1.1.0
@@ -109,6 +111,7 @@
 /usr/local/lib/libsmartcols.so
 /usr/local/lib/libsmartcols.so.1
 /usr/local/lib/libsmartcols.so.1.1.0
+/usr/local/lib/libuuid.a
 /usr/local/lib/libuuid.so
 /usr/local/lib/libuuid.so.1
 /usr/local/lib/libuuid.so.1.3.0

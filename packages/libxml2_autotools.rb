@@ -14,19 +14,19 @@ class Libxml2_autotools < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '90329ad261162fa53deb07bf04fbbfd5e2c4ce466b4b868e29fbf2fffcb1551a',
-     armv7l: '90329ad261162fa53deb07bf04fbbfd5e2c4ce466b4b868e29fbf2fffcb1551a',
-       i686: '07569ac9ce0e961550e3f00e53c84c270577cf001ec50534f018c756cf0e3e47',
-     x86_64: '93d41d6a6de1ed07c18d1e271114e5239f198244e2610353d8f258f671191460'
+    aarch64: '9354f48a6b692dab62855f510a90b362bdc5565b85daa5cea79eea36b2d9abd6',
+     armv7l: '9354f48a6b692dab62855f510a90b362bdc5565b85daa5cea79eea36b2d9abd6',
+       i686: 'a04f24e2725c13bdd61c618603f7e1cea10e2f01b0116e0e4658e9af9996ba88',
+     x86_64: '31e2112b80a4d5577a2123fe2d36d3a8b3f15fc7d2b3519a84325682f07d8198'
   })
 
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'icu4c' # R
+  depends_on 'glibc' => :library
+  depends_on 'icu4c' => :library
+  depends_on 'libxml2' # R
   depends_on 'ncurses' # R
   depends_on 'readline' # R
   depends_on 'zlib' # R
-  depends_on 'libxml2' # R
 
   conflicts_ok
   gnome

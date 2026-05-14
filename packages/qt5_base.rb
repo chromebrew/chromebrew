@@ -12,62 +12,67 @@ class Qt5_base < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cc141048d09d5c7f078c3ae8f337e0a2875ddc2a79d38a14811d4b1b1a9a1d74',
-     armv7l: 'cc141048d09d5c7f078c3ae8f337e0a2875ddc2a79d38a14811d4b1b1a9a1d74',
-     x86_64: '0a2b41e160c3cb652827a4627256f8de4b1e2b9fa2c8180695fca910b715b4d3'
+    aarch64: '52a076cad63deec005e5ca947c54410494d9a8e77f9d26754628cace10bb304e',
+     armv7l: '52a076cad63deec005e5ca947c54410494d9a8e77f9d26754628cace10bb304e',
+     x86_64: '4d3f4459f9ca3f5c76932da91a2992037e03c138185fc91f0cef7cb96529ceb3'
   })
 
   depends_on 'alsa_plugins' => :build
-  depends_on 'at_spi2_core' # R
-  depends_on 'cairo' # R
-  depends_on 'cups' # R
-  depends_on 'dbus' # R
-  depends_on 'eudev' # R
+  depends_on 'at_spi2_core' => :library
+  depends_on 'cairo' => :library
+  depends_on 'cups' => :library
+  depends_on 'dbus' => :library
+  depends_on 'eudev' => :library
   depends_on 'ffmpeg' => :build
-  depends_on 'fontconfig' # R
-  depends_on 'freetds' # R
-  depends_on 'freetype' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'gdk_pixbuf' # R
-  depends_on 'glibc' # R
-  depends_on 'glib' # R
+  depends_on 'fontconfig' => :library
+  depends_on 'freetds' => :library
+  depends_on 'freetype' => :library
+  depends_on 'gcc_lib' => :library
+  depends_on 'gdk_pixbuf' => :library
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
   depends_on 'gstreamer' => :build
-  depends_on 'gtk3' # R
-  depends_on 'harfbuzz' # R
-  depends_on 'icu4c' # R
+  depends_on 'gtk3' => :library
+  depends_on 'harfbuzz' => :library
+  depends_on 'icu4c' => :library
   depends_on 'jsoncpp' => :build
-  depends_on 'krb5' # R
+  depends_on 'krb5' => :library
   depends_on 'lcms' => :build
-  depends_on 'libdrm' # R
+  depends_on 'libdrm' => :library
   depends_on 'libevent' => :build
-  depends_on 'libglvnd' # R
-  depends_on 'libice' # R
-  depends_on 'libinput' # R
-  depends_on 'libjpeg_turbo' # R
-  depends_on 'libpng' # R
-  depends_on 'libsm' # R
+  depends_on 'libglvnd' => :library
+  depends_on 'libice' => :library
+  depends_on 'libinput' => :library
+  depends_on 'libjpeg_turbo' => :library
+  depends_on 'libminigbm' => :library
+  depends_on 'libpng' => :library
+  depends_on 'libsm' => :library
   depends_on 'libvpx' => :build
-  depends_on 'libx11' # R
-  depends_on 'libxcb' # R
-  depends_on 'libxext' # R
-  depends_on 'libxkbcommon' # R
-  depends_on 'mesa' # R
-  depends_on 'mtdev' # R
-  depends_on 'mysql' if ARCH.eql?('x86_64')
-  depends_on 'pango' # R
-  depends_on 'pcre2' # R
+  depends_on 'libx11' => :library
+  depends_on 'libxcb' => :library
+  depends_on 'libxext' => :library
+  depends_on 'libxkbcommon' => :library
+  depends_on 'mesa' => :library
+  depends_on 'mtdev' => :library
+  depends_on 'pango' => :library
+  depends_on 'pcre2' => :library
   depends_on 'protobuf' => :build
-  depends_on 'unixodbc' # R
-  depends_on 'xcb_proto' # R
-  depends_on 'xcb_util_cursor' # R
-  depends_on 'xcb_util_image' # R
-  depends_on 'xcb_util_keysyms' # R
-  depends_on 'xcb_util' # R
-  depends_on 'xcb_util_renderutil' # R
-  depends_on 'xcb_util_wm' # R
-  depends_on 'xcb_util_xrm' # R
-  depends_on 'zlib' # R
-  depends_on 'zstd' # R
+  depends_on 'unixodbc' => :library
+  depends_on 'xcb_proto' => :build
+  depends_on 'xcb_util' => :build
+  depends_on 'xcb_util_cursor' => :build
+  depends_on 'xcb_util_image' => :library
+  depends_on 'xcb_util_keysyms' => :library
+  depends_on 'xcb_util_renderutil' => :library
+  depends_on 'xcb_util_wm' => :library
+  depends_on 'xcb_util_xrm' => :build
+  depends_on 'zlib' => :library
+  depends_on 'zstd' => :library
+  if ARCH.eql?('x86_64')
+    # Note that mysql can't be built for 32-bit arm, so we do
+    # not want that dependency from preventing arm builds here.
+    depends_on 'mysql' => :library
+  end
 
   def self.build
     system "./configure \

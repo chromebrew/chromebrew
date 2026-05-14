@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION = defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION = '1.73.7' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION = '1.73.8' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH = Etc.uname[:machine]
@@ -354,7 +354,7 @@ PY3_PIP_RETRIES                  = ENV.fetch('PY3_PIP_RETRIES', '5')
 # we are checking versions from outside Chromebrew, such as in CI.
 # Do adjust necessary variables in install.sh when changed here.
 crew_gcc_ver_default = '15'
-crew_icu_ver_default = '77.1'
+crew_icu_ver_default = '78.3'
 crew_llvm_ver_default = '21'
 crew_perl_ver_default = '5.42'
 crew_py_ver_default = '3.14'

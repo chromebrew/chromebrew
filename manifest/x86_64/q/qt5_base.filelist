@@ -1,4 +1,4 @@
-# Total size: 70000913
+# Total size: 70615618
 /usr/local/bin/fixqt4headers.pl
 /usr/local/bin/moc
 /usr/local/bin/qdbuscpp2xml
@@ -63,6 +63,7 @@
 /usr/local/lib64/cmake/Qt5Gui/Qt5Gui_QICOPlugin.cmake
 /usr/local/lib64/cmake/Qt5Gui/Qt5Gui_QIbusPlatformInputContextPlugin.cmake
 /usr/local/lib64/cmake/Qt5Gui/Qt5Gui_QJpegPlugin.cmake
+/usr/local/lib64/cmake/Qt5Gui/Qt5Gui_QLibInputPlugin.cmake
 /usr/local/lib64/cmake/Qt5Gui/Qt5Gui_QLinuxFbIntegrationPlugin.cmake
 /usr/local/lib64/cmake/Qt5Gui/Qt5Gui_QMinimalEglIntegrationPlugin.cmake
 /usr/local/lib64/cmake/Qt5Gui/Qt5Gui_QMinimalIntegrationPlugin.cmake
@@ -106,6 +107,8 @@
 /usr/local/lib64/cmake/Qt5Test/Qt5TestConfigVersion.cmake
 /usr/local/lib64/cmake/Qt5ThemeSupport/Qt5ThemeSupportConfig.cmake
 /usr/local/lib64/cmake/Qt5ThemeSupport/Qt5ThemeSupportConfigVersion.cmake
+/usr/local/lib64/cmake/Qt5VulkanSupport/Qt5VulkanSupportConfig.cmake
+/usr/local/lib64/cmake/Qt5VulkanSupport/Qt5VulkanSupportConfigVersion.cmake
 /usr/local/lib64/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake
 /usr/local/lib64/cmake/Qt5Widgets/Qt5WidgetsConfigExtras.cmake
 /usr/local/lib64/cmake/Qt5Widgets/Qt5WidgetsConfigVersion.cmake
@@ -230,6 +233,9 @@
 /usr/local/lib64/libQt5ThemeSupport.a
 /usr/local/lib64/libQt5ThemeSupport.la
 /usr/local/lib64/libQt5ThemeSupport.prl
+/usr/local/lib64/libQt5VulkanSupport.a
+/usr/local/lib64/libQt5VulkanSupport.la
+/usr/local/lib64/libQt5VulkanSupport.prl
 /usr/local/lib64/libQt5Widgets.la
 /usr/local/lib64/libQt5Widgets.prl
 /usr/local/lib64/libQt5Widgets.so
@@ -2419,6 +2425,12 @@
 /usr/local/share/Qt-5/include/QtThemeSupport/QtThemeSupportDepends
 /usr/local/share/Qt-5/include/QtThemeSupport/QtThemeSupportVersion
 /usr/local/share/Qt-5/include/QtThemeSupport/qtthemesupportversion.h
+/usr/local/share/Qt-5/include/QtVulkanSupport/5.15.16/QtVulkanSupport/private/qbasicvulkanplatforminstance_p.h
+/usr/local/share/Qt-5/include/QtVulkanSupport/5.15.16/QtVulkanSupport/private/qvkconvenience_p.h
+/usr/local/share/Qt-5/include/QtVulkanSupport/QtVulkanSupport
+/usr/local/share/Qt-5/include/QtVulkanSupport/QtVulkanSupportDepends
+/usr/local/share/Qt-5/include/QtVulkanSupport/QtVulkanSupportVersion
+/usr/local/share/Qt-5/include/QtVulkanSupport/qtvulkansupportversion.h
 /usr/local/share/Qt-5/include/QtWidgets/5.15.16/QtWidgets/private/complexwidgets_p.h
 /usr/local/share/Qt-5/include/QtWidgets/5.15.16/QtWidgets/private/itemviews_p.h
 /usr/local/share/Qt-5/include/QtWidgets/5.15.16/QtWidgets/private/qabstractbutton_p.h
@@ -3410,6 +3422,7 @@
 /usr/local/share/Qt-5/mkspecs/modules/qt_lib_testlib.pri
 /usr/local/share/Qt-5/mkspecs/modules/qt_lib_testlib_private.pri
 /usr/local/share/Qt-5/mkspecs/modules/qt_lib_theme_support_private.pri
+/usr/local/share/Qt-5/mkspecs/modules/qt_lib_vulkan_support_private.pri
 /usr/local/share/Qt-5/mkspecs/modules/qt_lib_widgets.pri
 /usr/local/share/Qt-5/mkspecs/modules/qt_lib_widgets_private.pri
 /usr/local/share/Qt-5/mkspecs/modules/qt_lib_xcb_qpa_lib_private.pri
@@ -3510,6 +3523,7 @@
 /usr/local/share/Qt-5/plugins/generic/libqevdevmouseplugin.so
 /usr/local/share/Qt-5/plugins/generic/libqevdevtabletplugin.so
 /usr/local/share/Qt-5/plugins/generic/libqevdevtouchplugin.so
+/usr/local/share/Qt-5/plugins/generic/libqlibinputplugin.so
 /usr/local/share/Qt-5/plugins/generic/libqtuiotouchplugin.so
 /usr/local/share/Qt-5/plugins/imageformats/libqgif.so
 /usr/local/share/Qt-5/plugins/imageformats/libqico.so

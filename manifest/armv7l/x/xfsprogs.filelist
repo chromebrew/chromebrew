@@ -1,4 +1,4 @@
-# Total size: 3796267
+# Total size: 3869000
 /usr/local/include/xfs/handle.h
 /usr/local/include/xfs/jdm.h
 /usr/local/include/xfs/linux.h
@@ -16,7 +16,6 @@
 /usr/local/lib/libhandle.so
 /usr/local/lib/libhandle.so.1
 /usr/local/lib/libhandle.so.1.0.3
-/usr/local/lib/udev/rules.d/64-xfs.rules
 /usr/local/sbin/fsck.xfs
 /usr/local/sbin/mkfs.xfs
 /usr/local/sbin/xfs_admin

@@ -1,7 +1,7 @@
 ---
-# Version 1.7
+# Version 1.8
 name: Set Reviewers
-run-name: Set Reviewers for PR for ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
+run-name: Set Reviewers for PR from ${{ github.event.workflow_run.display_title }} ${{ inputs.branch || github.event.workflow_run.head_commit.message || github.head_ref || github.ref_name }}
 on:
   workflow_dispatch:
     inputs:
@@ -36,7 +36,7 @@ jobs:
           STEPS_CONTEXT: ${{ toJson(steps) }}
         run: echo "$STEPS_CONTEXT"
   setup:
-    if: ${{ github.repository_owner == 'chromebrew' && inputs.branch != 'master' && github.ref_name != 'master' && github.event.pull_request.draft == false && github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.repository_owner == 'chromebrew' && inputs.branch != 'master' && github.event.workflow_run.head_branch != 'master' && github.event.pull_request.draft == false && github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-24.04
     steps:
       - name: Get GH Token
@@ -52,15 +52,10 @@ jobs:
           fetch-depth: 0
           persist-credentials: true
           ref: ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
-      - name: Get Status of current ref
-        id: get-status
-        uses: danieldeichfuss/get-status@v0.0.10
-        with:
-          ref: ${{ github.sha }}
       - name: Set Reviewers
         env:
           GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
-        if: ${{ steps.get-status.outputs.all-checks-completed == 'true' &&  steps.get-status.outputs.all-checks-passed == 'true' }}
+        if: ${{ github.event.workflow_run.conclusion == 'success' }}
         run: |
           gh pr edit --add-reviewer chromebrew/active
           echo "Asking Chromebrew/active for review."

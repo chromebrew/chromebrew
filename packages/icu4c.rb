@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Icu4c < Autotools
   description 'ICU is a mature, widely used set of C/C++ and Java libraries providing Unicode and Globalization support for software applications.'
   homepage 'https://icu.unicode.org/'
-  version '77.1'
+  version '78.3'
   license 'BSD'
   compatibility 'all'
-  source_url "https://github.com/unicode-org/icu/releases/download/release-#{version.gsub('.', '-')}/icu4c-#{version.gsub('.', '_')}-src.tgz"
-  source_sha256 '588e431f77327c39031ffbb8843c0e3bc122c211374485fa87dc5f3faff24061'
+  source_url "https://github.com/unicode-org/icu/releases/download/release-#{version}/icu4c-#{version}-sources.tgz"
+  source_sha256 '3a2e7a47604ba702f345878308e6fefeca612ee895cf4a5f222e7955fabfe0c0'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c9bd508bd52785175f4584b55d42e0da014065f5605be59f7896a89170a141cb',
-     armv7l: 'c9bd508bd52785175f4584b55d42e0da014065f5605be59f7896a89170a141cb',
-       i686: '88f8dec20c7f5135ac70be3bbb07f61d7bcab2880d098ae68d2c63cbfe45699b',
-     x86_64: 'e57e0d659d1729280e9f89835496e1776860acc4879614e65f534accebbb4c71'
+    aarch64: 'a759777861ab3b14901acb532a07d9efc344768bd729aede94ba9924003257c8',
+     armv7l: 'a759777861ab3b14901acb532a07d9efc344768bd729aede94ba9924003257c8',
+       i686: '7615674fb743dc440020dfd6f998c9ff44a2ce4f96157c9ed4d4ab688314d903',
+     x86_64: '4d43cb6d435d62cd0962ba37d286f73f23d45096ab5f127450b7f40470ceb16d'
   })
 
   depends_on 'gcc_lib' => :library
@@ -35,7 +35,7 @@ class Icu4c < Autotools
     return if CREW_IN_CONTAINER
 
     Dir.chdir CREW_LIB_PREFIX do
-      @oldicuver = %w[75.1]
+      @oldicuver = %w[77.1]
       @oldicuver.each do |oldver|
         puts "Finding Packages expecting icu4c version #{oldver} that may need updating:".lightgreen
         @file_array = []

@@ -14,9 +14,9 @@ class Libvisio < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e7105c9f8bd750041d506f0e88f6f7c31bf03a64f24552d107f58d5d557fa289',
-     armv7l: 'e7105c9f8bd750041d506f0e88f6f7c31bf03a64f24552d107f58d5d557fa289',
-     x86_64: '183a27721b9b1a6a7a28d8c0bd365e76e92221f4a8ba31787f45394163a517f4'
+    aarch64: 'e6af1bda9a95c61cdee8c318407a78f186d9ede9567e3fa7fd7f9ead5587355a',
+     armv7l: 'e6af1bda9a95c61cdee8c318407a78f186d9ede9567e3fa7fd7f9ead5587355a',
+     x86_64: 'a8dbbbbdf8e2bad59322c470ecf497c179c618c4f06b95758d53f2252f6536c0'
   })
 
   depends_on 'boost' => :build

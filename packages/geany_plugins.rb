@@ -11,30 +11,31 @@ class Geany_plugins < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bfc23b06fab6e5ae40b1953fa97a3dad60fdb68b39d831f1fa81e66aa6881bde',
-     armv7l: 'bfc23b06fab6e5ae40b1953fa97a3dad60fdb68b39d831f1fa81e66aa6881bde',
-     x86_64: 'cc817de7a91b6a145e94c9699ecfd18cb5c8fdd10f03a0fe04a555d3a8792339'
+    aarch64: '84e76998715b2cbbe913617fda49fd58858aa543a534ae72d88392c9b37a0a39',
+     armv7l: '84e76998715b2cbbe913617fda49fd58858aa543a534ae72d88392c9b37a0a39',
+     x86_64: '2da60bcbe8f83b1efb8c6ba7e99ea3224c4dac8f352a7893d8061105c4c4e892'
   })
 
-  depends_on 'aspell' # R
-  depends_on 'at_spi2_core' # R
-  depends_on 'cairo' # R
-  depends_on 'enchant' # R
+  depends_on 'aspell' => :library
+  depends_on 'at_spi2_core' => :library
+  depends_on 'cairo' => :library
+  depends_on 'enchant' => :library
   depends_on 'gcc_lib' # R
-  depends_on 'gdk_pixbuf' # R
-  depends_on 'geany' # R
-  depends_on 'glibc' # R
-  depends_on 'glib' # R
-  depends_on 'gtk3' # R
-  depends_on 'harfbuzz' # R
-  depends_on 'libgit2' # R
-  depends_on 'libsoup' # R
+  depends_on 'gdk_pixbuf' => :library
+  depends_on 'geany' => :library
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'gtk3' => :library
+  depends_on 'harfbuzz' => :library
+  depends_on 'libgit2' => :library
+  depends_on 'libsoup' => :library
   depends_on 'libsoup2' # R
-  depends_on 'libxml2' # R
+  depends_on 'libxml2' => :library
   depends_on 'ncurses' # R
-  depends_on 'pango' # R
+  depends_on 'pango' => :library
   depends_on 'valgrind' => :build
-  depends_on 'vte' # R
+  depends_on 'vte' => :library
   depends_on 'webkit2gtk_4' # R
-  depends_on 'zlib' # R
+  depends_on 'webkit2gtk_4_1' => :library
+  depends_on 'zlib' => :library
 end

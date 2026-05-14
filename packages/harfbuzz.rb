@@ -7,7 +7,7 @@ Package.load_package("#{__dir__}/freetype.rb")
 class Harfbuzz < Meson
   description 'HarfBuzz is an OpenType text shaping engine.'
   homepage 'https://harfbuzz.github.io/'
-  version "14.0.0-#{CREW_ICU_VER}"
+  version "14.2.0-#{CREW_ICU_VER}"
   license 'Old-MIT, ISC and icu'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/harfbuzz/harfbuzz.git'
@@ -15,15 +15,15 @@ class Harfbuzz < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '40cbd33527022977090ba39857d92188702681a38f7e3ada5fc8ca0a80018946',
-     armv7l: '40cbd33527022977090ba39857d92188702681a38f7e3ada5fc8ca0a80018946',
-     x86_64: 'd3e449038570e54ff548638f40713ba8dcc86cecb579da8a9a4465a4c8fff04c'
+    aarch64: '04cc937f4c3d667241d10bb8b348ecccd66331ce3b7a859a750bb083f94080f1',
+     armv7l: '04cc937f4c3d667241d10bb8b348ecccd66331ce3b7a859a750bb083f94080f1',
+     x86_64: 'c34ecf009a8e104c8d2d8fa4bd5a06db0acc9b9cf6df3633cea4d877d6489670'
   })
 
   depends_on 'brotli' => :library
   depends_on 'bzip2' => :library
-  depends_on 'cairo' => :executable
-  depends_on 'chafa' => :executable
+  # depends_on 'cairo' => :executable # Creates a loop.
+  # depends_on 'chafa' => :executable # Creates a loop.
   depends_on 'expat' => :library
   # depends_on 'fontconfig' # This pulls in freetype.
   # depends_on 'freetype' # R harfbuzz provides this.
@@ -54,6 +54,7 @@ class Harfbuzz < Meson
   conflicts_ok # Conflicts expected with cairo fontconfig freetype
 
   pre_meson_options "CFLAGS+=' -Werror=uninitialized'"
+  # Utility inclusion leads to dependency loops due to system libcairo.so.2 usage.
   meson_options '--wrap-mode=default \
       --default-library=both \
       -Dbenchmark=disabled \
@@ -63,7 +64,8 @@ class Harfbuzz < Meson
       -Dgraphite2=enabled \
       -Dintrospection=enabled \
       -Dragel_subproject=false \
-      -Dtests=disabled'
+      -Dtests=disabled \
+      -Dutilities=disabled'
 
   def self.prebuild
     %w[fontconfig freetype].each do |build_exclusion|
@@ -77,7 +79,7 @@ class Harfbuzz < Meson
   def self.patch
     File.write 'subprojects/freetype2.wrap', <<~FREETYPE2_WRAP_EOF
       [wrap-git]
-      directory = freetype-#{Freetype.version}
+      directory = freetype-#{Freetype.version.split('-').first}
       url=https://gitlab.freedesktop.org/freetype/freetype.git
       revision=#{Freetype.git_hashtag}
       depth=1

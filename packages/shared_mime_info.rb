@@ -11,17 +11,17 @@ class Shared_mime_info < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7f3922b4fee143ae61619de98dec401e9958ecefbc5c96f0e26dadcc7b872811',
-     armv7l: '7f3922b4fee143ae61619de98dec401e9958ecefbc5c96f0e26dadcc7b872811',
-       i686: 'e6a71391c0ccfeae8d8c77fe7c966e8f1320d74ff0d97a842e57938f4f851154',
-     x86_64: '13d8b12fa4f58e8d5e72ce872388b359637517bba20c766f8b12a97f42c75f51'
+    aarch64: 'f44c8dcbed47cad416f9a85537672b76d4589afe17c200e86b689f533c934351',
+     armv7l: 'f44c8dcbed47cad416f9a85537672b76d4589afe17c200e86b689f533c934351',
+       i686: '7f27204235a196acd78790949c5ca13a4db2d9dac7b9f007135538baf3afeb73',
+     x86_64: '3723dd862e10c39a982928773129aca53683c11571caf5360831ab7d2a5486d0'
   })
 
-  depends_on 'gcc_lib' # R
+  depends_on 'gcc_lib' => :executable
   depends_on 'gettext' => :build
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
-  depends_on 'libxml2' # R
+  depends_on 'glib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'libxml2' => :executable
 
   meson_options '-Dbuild-tests=false'
 

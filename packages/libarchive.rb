@@ -11,10 +11,10 @@ class Libarchive < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a6f0be7e1f42ebaa1c247acdeb215f51a10681b76d3b5eee6cae3888f2b2fd8e',
-     armv7l: 'a6f0be7e1f42ebaa1c247acdeb215f51a10681b76d3b5eee6cae3888f2b2fd8e',
-       i686: '939a4e51c0371e3184cd43d4e712a33d8fe884c40416374d2c015a10464c075a',
-     x86_64: 'c27a691a93355dcd6206d8d84e0af5f78c70ad09ad76fe60fcdaddc51aa8d590'
+    aarch64: '06dc0de7da751898b5b6da0325de779c1077b5fdf13ef8daf9fff89178f4e292',
+     armv7l: '06dc0de7da751898b5b6da0325de779c1077b5fdf13ef8daf9fff89178f4e292',
+       i686: '295e8d2b146f1ca8ed1e48d8979c153b710fa83c6f5af197b053af46a405796e',
+     x86_64: 'a4faa2cc8f9f3b6590d765a001c5bd04bf738ddef65281018cbf5a7835c91eaa'
   })
 
   depends_on 'acl' => :library

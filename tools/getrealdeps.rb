@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# getrealdeps version 2.11 (for Chromebrew)
+# getrealdeps version 2.12 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 #
 # Dependencies in Chromebrew can be:
@@ -59,7 +59,8 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
 
   # Special cases where dependencies should not be automatically added:
   dependency_exceptions = Set[
-    { name_regex: 'harfbuzz', exclusion_regex: '(fontconfig|freetype)', comments: 'fontconfig overwrites parts of harfbuzz, and harfbuzz provides a freetype stub that is overwritten' },
+    { name_regex: 'harfbuzz', exclusion_regex: '(cairo|chafa|fontconfig|freetype)', comments: 'chafa pulls in cairo, which is built internally. fontconfig overwrites parts of harfbuzz, and harfbuzz provides a freetype stub that is overwritten' },
+    { name_regex: 'freerdp', exclusion_regex: 'nethack4', comments: 'We want libjansson.so.4 to be pulled from the jansson package.' },
     { name_regex: 'llvm.*_build', exclusion_regex: 'llvm.*_*', comments: 'created from the llvm build package.' },
     { name_regex: '(llvm.*_dev|llvm.*_lib|libclc|openmp)', exclusion_regex: 'llvm.*_build', comments: 'should only be a build dep.' },
     { name_regex: 'llvm.*_lib', exclusion_regex: 'llvm_lib', comments: 'should only be a build dep.' },
@@ -67,6 +68,8 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
     { name_regex: '(gcc_dev|gcc_lib|libssp)', exclusion_regex: 'gcc_build', comments: 'should only be a build dep.' },
     { name_regex: 'gcc_lib', exclusion_regex: 'gcc_lib', comments: 'should only be a build dep.' },
     { name_regex: 'python3', exclusion_regex: '(tcl|tk)', comments: 'optional for i686, which does not have gui libraries.' },
+    { name_regex: 'qt5_base', exclusion_regex: 'mysql', comments: 'Do not want dep for armv7l, since mysql us 64 bit only.' },
+    { name_regex: 'smbclient', exclusion_regex: 'nethack4', comments: 'We want libjansson.so.4 to be pulled from the jansson package.' },
     { name_regex: 'util_linux', exclusion_regex: 'python3', comments: 'Avoid circular dependency.' }
   ]
 
