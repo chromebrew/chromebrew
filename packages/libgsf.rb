@@ -7,14 +7,13 @@ class Libgsf < Autotools
   license 'GPL-2 and LGPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/libgsf.git'
-  git_hashtag '634340d31177c02ccdb43171e37291948e7f8974'
   git_hashtag "LIBGSF_#{version.gsub('.', '_')}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '29cb237c54636c5f6b216dd7d54f8c1f03a18cbffd904529872e669e43cba47d',
-     armv7l: '29cb237c54636c5f6b216dd7d54f8c1f03a18cbffd904529872e669e43cba47d',
-     x86_64: '56074ce1254dd7275a4bfc71ccc223d8ff68635d14dd4d9935a00dd48b001ecc'
+    aarch64: '653a448470c28b6ed48d0e5d5e8f322e6c7ae848972764329228324c20ea72f0',
+     armv7l: '653a448470c28b6ed48d0e5d5e8f322e6c7ae848972764329228324c20ea72f0',
+     x86_64: 'b0883820306e1c43e32f358f6050decad68b675c8e291c65d164f41176d4d83e'
   })
 
   depends_on 'bzip2' => :library
