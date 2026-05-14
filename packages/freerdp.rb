@@ -13,7 +13,7 @@ class Freerdp < CMake
   binary_sha256({
     aarch64: '9bc4f9edbb7ca06c62b40b8cbedf228100a7f887d5052cad6f8ec5e7303a93f6',
      armv7l: '9bc4f9edbb7ca06c62b40b8cbedf228100a7f887d5052cad6f8ec5e7303a93f6',
-     x86_64: '13361d0e0b6460fe7b6d98d1bf8bd5ecc547ed02227317275467fd7e76345df2'
+     x86_64: 'b1fa857211d6506d829dd0d3b4b4ce99b92f8c6012e4a9997faf83d16397f10e'
   })
 
   depends_on 'alsa_lib' => :library
