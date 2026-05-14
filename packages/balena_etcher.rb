@@ -3,12 +3,12 @@ require 'package'
 class Balena_etcher < Package
   description 'Flash OS images to SD cards & USB drives, safely and easily.'
   homepage 'https://etcher.balena.io'
-  version '2.1.5'
+  version '2.1.6'
   license 'Apache-2.0'
   compatibility 'x86_64'
   min_glibc '2.33'
   source_url "https://github.com/balena-io/etcher/releases/download/v#{version}/balenaEtcher-linux-x64-#{version}.zip"
-  source_sha256 '643b89b525b667275f6931c0d2eadf22175ce07ae06e6bddaa22ee7d2ba2b196'
+  source_sha256 '31755fc7992058738297ab633bc60f75999f34db94680cd6ca4c9da222bd4f75'
 
   depends_on 'gtk3'
   depends_on 'freetype'
