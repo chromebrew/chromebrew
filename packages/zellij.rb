@@ -14,7 +14,7 @@ class Zellij < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-    x86_64: '95b27e61fdd70105f1c95ace6e7b2ff5e85feb8389719ba99b28f508c59d9382'
+     x86_64: 'f12397337429e2e5e020d8f02e57eed7620ab687f93c8b3ad6075f2623385fa6'
   })
 
   depends_on 'gcc_lib' => :executable
