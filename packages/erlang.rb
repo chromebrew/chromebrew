@@ -11,8 +11,8 @@ class Erlang < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aebe158f3695d08cd9224f04587505325accd12b6d081c68dc41b29b1d64786d',
-     armv7l: 'aebe158f3695d08cd9224f04587505325accd12b6d081c68dc41b29b1d64786d',
+    aarch64: '',
+     armv7l: '',
      x86_64: 'b8acf160710ca49dfc5132ddd8dc09bae88a7a55802890a6b6ec1f8c42f6a85e'
   })
 
