@@ -3,12 +3,12 @@ require 'package'
 class Copilot < Package
   description 'AI coding assistant that helps you write code faster and with less effort.'
   homepage 'https://github.com/github/copilot-cli'
-  version '1.0.46'
+  version '1.0.47'
   license 'GitHub Copilot CLI License'
   compatibility 'x86_64'
   min_glibc '2.28'
   source_url "https://github.com/github/copilot-cli/releases/download/v#{version}/copilot-linux-x64.tar.gz"
-  source_sha256 '5bd3edd01981b412c705014427ba1d1d545349590c0ecfdba9c7070032fbc907'
+  source_sha256 '3188d30786b18ef02d907596db0b3b65c9cad2039b8a212bd045d44a3db32ecd'
 
   depends_on 'nodebrew' # R
 
