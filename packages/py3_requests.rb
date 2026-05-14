@@ -10,10 +10,10 @@ class Py3_requests < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9527de3f1eb0ba598a9fa4c9fc5cdee1d5ba752f8397a3cd567334d3a0a75fe2',
-     armv7l: '9527de3f1eb0ba598a9fa4c9fc5cdee1d5ba752f8397a3cd567334d3a0a75fe2',
-       i686: 'eb820740a5bfc216cf743a81aa1b0a3800147c1ae5502ae24c0f97b37f396cd7',
-     x86_64: '22f1a8c3e0e99f1624aa95967611ab3ab855894549319b62f11f0838311e4289'
+    aarch64: '0aaf573b9b5cdb8162c9b4de3c2bea374f8d8c00341f1967f28fdfa1c62f8926',
+     armv7l: '0aaf573b9b5cdb8162c9b4de3c2bea374f8d8c00341f1967f28fdfa1c62f8926',
+       i686: '87e2f0a635a0e1a2bb4f2efe30e18fa4a4ce9d030a9027e3ed3f7cbabd3e92a3',
+     x86_64: '424cb00fc52aa100d9d1b3555b83c86bba4c71cef0fd113d1276d5e3c2e25b24'
   })
 
   depends_on 'py3_charset_normalizer'
