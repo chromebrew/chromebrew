@@ -17,9 +17,9 @@ class Freerdp < CMake
   })
 
   depends_on 'alsa_lib' => :library
-  depends_on 'at_spi2_core' # R
+  depends_on 'at_spi2_core' => :build
   depends_on 'cairo' => :library
-  depends_on 'cjson' # R
+  depends_on 'cjson' => :build
   depends_on 'cups' => :library
   depends_on 'e2fsprogs' => :library
   depends_on 'faac' => :library
@@ -27,12 +27,12 @@ class Freerdp < CMake
   depends_on 'ffmpeg' => :library
   depends_on 'fuse3' => :library
   depends_on 'gcc_lib' => :library
-  depends_on 'gdk_pixbuf' # R
-  depends_on 'glib' # R
+  depends_on 'gdk_pixbuf' => :build
+  depends_on 'glib' => :build
   depends_on 'glibc' => :library
-  depends_on 'gsm' # R
+  depends_on 'gsm' => :build
   depends_on 'gstreamer' => :build
-  depends_on 'gtk3' # R
+  depends_on 'gtk3' => :build
   depends_on 'harfbuzz' => :build
   depends_on 'icu4c' => :library
   depends_on 'jansson' => :library
@@ -42,10 +42,10 @@ class Freerdp < CMake
   depends_on 'libbsd' => :build
   depends_on 'libfdk_aac' => :build
   depends_on 'libice' => :library
-  depends_on 'libjpeg_turbo' # R
+  depends_on 'libjpeg_turbo' => :build
   depends_on 'libmp3lame' => :library
   depends_on 'libsm' => :library
-  depends_on 'libsoup' # R
+  depends_on 'libsoup' => :build
   depends_on 'libsoxr' => :library
   depends_on 'libusb' => :library
   depends_on 'libx11' => :library
@@ -64,7 +64,7 @@ class Freerdp < CMake
   depends_on 'linux_pam' => :library
   depends_on 'openh264' => :library
   depends_on 'openssl' => :library
-  depends_on 'pango' # R
+  depends_on 'pango' => :build
   depends_on 'pulseaudio' => :library
   depends_on 'sdl2' => :executable
   depends_on 'sdl2_compat' => :executable
@@ -74,7 +74,7 @@ class Freerdp < CMake
   depends_on 'sommelier' => :logical
   depends_on 'uriparser' => :library
   depends_on 'wayland' => :library
-  depends_on 'webkit2gtk_4_1' # R
+  depends_on 'webkit2gtk_4_1' => :build
   depends_on 'xdg_base' => :logical
   depends_on 'xmlto' => :build
   depends_on 'xprop' => :build
