@@ -6010,6 +6010,11 @@ url: https://ftp.gnu.org/gnu/make
 activity: none
 ---
 kind: url
+name: make_cli
+url: https://github.com/integromat/make-cli/releases
+activity: high
+---
+kind: url
 name: makedepend
 url: https://www.x.org/releases/individual/util/
 activity: none
