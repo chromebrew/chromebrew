@@ -11,15 +11,16 @@ class Erlang < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '947ce63b33018ac1a4fc19ffc13abb0218cbb9f636a2192b75e287b0c3facc28',
-     armv7l: '947ce63b33018ac1a4fc19ffc13abb0218cbb9f636a2192b75e287b0c3facc28',
-     x86_64: '03f01ef94fa327b9fa5c501b6249c8a27d19dcae6315f5cf36e601713a4483c8'
+    aarch64: 'aebe158f3695d08cd9224f04587505325accd12b6d081c68dc41b29b1d64786d',
+     armv7l: 'aebe158f3695d08cd9224f04587505325accd12b6d081c68dc41b29b1d64786d',
+     x86_64: 'b8acf160710ca49dfc5132ddd8dc09bae88a7a55802890a6b6ec1f8c42f6a85e'
   })
 
   depends_on 'gcc_lib' => :library
   depends_on 'glib' => :build
   depends_on 'glibc' => :library
   depends_on 'libglu' => :build
+  depends_on 'ncurses' => :library
   depends_on 'openssl' => :library
   depends_on 'unixodbc' => :library
   depends_on 'wxwidgets' => :build
