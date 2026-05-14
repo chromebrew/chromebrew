@@ -1,0 +1,11 @@
+#!/bin/bash
+f3brew --help | head -5
+f3brew --version
+f3fix --help | head -5
+f3fix --version
+f3probe --help | head -5
+f3probe --version
+f3read --help | head -5
+f3read -version
+f3write --help | head -5
+f3write --version
