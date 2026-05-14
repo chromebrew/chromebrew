@@ -3,11 +3,11 @@ require 'package'
 class Ollama < Package
   description 'Get up and running with large language models.'
   homepage 'https://ollama.com/'
-  version '0.23.2'
+  version '0.23.3'
   license 'MIT'
   compatibility 'x86_64'
   source_url "https://github.com/ollama/ollama/releases/download/v#{version}/ollama-linux-amd64.tar.zst"
-  source_sha256 '11a333b59b4f47d572dbda4ddf6d58099c9d3a37dae399aba7e064da2891b61c'
+  source_sha256 '54a28dbc5266d0e6b514e8436d6cedf1bdd40902139b2a1945f6c2348d0ab8df'
 
   no_compile_needed
   no_shrink
