@@ -11,9 +11,9 @@ class Freerdp < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '39548a8901a1605d737078a45fb35c4d44a954b24d41941d72f2d022c974ce1a',
-     armv7l: '39548a8901a1605d737078a45fb35c4d44a954b24d41941d72f2d022c974ce1a',
-     x86_64: '2ac1683873fd0f5d948d2c8192b030e820c8244e6209d1bc58e4dd108b90c870'
+    aarch64: '9bc4f9edbb7ca06c62b40b8cbedf228100a7f887d5052cad6f8ec5e7303a93f6',
+     armv7l: '9bc4f9edbb7ca06c62b40b8cbedf228100a7f887d5052cad6f8ec5e7303a93f6',
+     x86_64: '13361d0e0b6460fe7b6d98d1bf8bd5ecc547ed02227317275467fd7e76345df2'
   })
 
   depends_on 'alsa_lib' => :library
@@ -33,12 +33,13 @@ class Freerdp < CMake
   depends_on 'gsm' # R
   depends_on 'gstreamer' => :build
   depends_on 'gtk3' # R
-  depends_on 'harfbuzz' => :library
+  depends_on 'harfbuzz' => :build
   depends_on 'icu4c' => :library
-  depends_on 'json_c' => :library
+  depends_on 'jansson' => :library
+  depends_on 'json_c' => :build
   depends_on 'krb5' => :library
   depends_on 'libbacktrace' => :build
-  depends_on 'libbsd' => :library
+  depends_on 'libbsd' => :build
   depends_on 'libfdk_aac' => :build
   depends_on 'libice' => :library
   depends_on 'libjpeg_turbo' # R
@@ -68,6 +69,8 @@ class Freerdp < CMake
   depends_on 'sdl2' => :executable
   depends_on 'sdl2_compat' => :executable
   depends_on 'sdl2_ttf' => :executable
+  depends_on 'sdl3' => :executable
+  depends_on 'sdl3_ttf' => :executable
   depends_on 'sommelier' => :logical
   depends_on 'uriparser' => :library
   depends_on 'wayland' => :library
