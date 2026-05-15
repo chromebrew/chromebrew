@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Vapoursynth < Meson
   description 'A video processing framework with the future in mind'
   homepage 'http://www.vapoursynth.com/'
-  version '75'
+  version '76'
   license 'LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/vapoursynth/vapoursynth.git'
