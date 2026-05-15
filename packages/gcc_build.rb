@@ -12,10 +12,10 @@ class Gcc_build < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '23be50500a3c5798f8bd1dc9677d2f20454e499c073d93419bdb43558319f4c3',
-     armv7l: '23be50500a3c5798f8bd1dc9677d2f20454e499c073d93419bdb43558319f4c3',
-       i686: '241b57db6a445badecc423250b1df29f6443c580e425f736e6b83a986489ff2c',
-     x86_64: '820d2a79e15e48e96a0d0f240dc475f646bb47591edd79eaa25d249260e4924d'
+    aarch64: '0df3d7522fc94ef13e4cad464e6ff59414d386f3084bae8a9f3932f3079aafad',
+     armv7l: '0df3d7522fc94ef13e4cad464e6ff59414d386f3084bae8a9f3932f3079aafad',
+       i686: '61e340b41b07655c0c078ea7534ddf818e7ebb195a1002afdbae5b5b31d3c951',
+     x86_64: 'e6de02e80ccfa49ff7c5ad3ba8d175bdb6f5153fe7f811aea4a6fd118450d8c1'
   })
 
   conflicts_ok
@@ -340,6 +340,13 @@ class Gcc_build < Package
       depends_on 'rust' => :build
       depends_on 'zlib' # R
       depends_on 'zstd' # R
+      depends_on 'glibc' => :library
+      depends_on 'gmp' => :library
+      depends_on 'isl' => :library
+      depends_on 'mpc' => :library
+      depends_on 'mpfr' => :library
+      depends_on 'zlib' => :library
+      depends_on 'zstd' => :library
 
       # remove filelist and directorylist
       FileUtils.rm_f(["#{CREW_META_PATH}/#{gcc_pkg[:name]}.filelist",
