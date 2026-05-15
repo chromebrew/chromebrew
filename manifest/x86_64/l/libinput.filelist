@@ -1,4 +1,4 @@
-# Total size: 1257918
+# Total size: 1262193
 /usr/local/bin/libinput
 /usr/local/include/libinput.h
 /usr/local/lib/udev/libinput-device-group
@@ -36,6 +36,7 @@
 /usr/local/share/libinput/30-vendor-a4tech.quirks
 /usr/local/share/libinput/30-vendor-aiptek.quirks
 /usr/local/share/libinput/30-vendor-alps.quirks
+/usr/local/share/libinput/30-vendor-clevetura.quirks
 /usr/local/share/libinput/30-vendor-contour.quirks
 /usr/local/share/libinput/30-vendor-cypress.quirks
 /usr/local/share/libinput/30-vendor-elantech.quirks
@@ -75,10 +76,12 @@
 /usr/local/share/libinput/50-system-lg.quirks
 /usr/local/share/libinput/50-system-minisforum.quirks
 /usr/local/share/libinput/50-system-pine64.quirks
+/usr/local/share/libinput/50-system-positivo.quirks
 /usr/local/share/libinput/50-system-sony.quirks
 /usr/local/share/libinput/50-system-starlabs.quirks
 /usr/local/share/libinput/50-system-system76.quirks
 /usr/local/share/libinput/50-system-toshiba.quirks
+/usr/local/share/libinput/50-system-wareus.quirks
 /usr/local/share/man/man1/libinput-analyze-buttons.1.zst
 /usr/local/share/man/man1/libinput-analyze-per-slot-delta.1.zst
 /usr/local/share/man/man1/libinput-analyze-recording.1.zst
