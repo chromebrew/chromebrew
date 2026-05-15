@@ -11,10 +11,10 @@ class Graphicsmagick < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '243fc38e72b24b276e626514cb68730a6eeb526480fb0c8acaca880b3bf00c1c',
-     armv7l: '243fc38e72b24b276e626514cb68730a6eeb526480fb0c8acaca880b3bf00c1c',
-       i686: '7a2577c920929732ea642265ed7d0bdd39aae442ecd1cb7c423be748523be7a8',
-     x86_64: 'a7830399756d05b03fd960259a3df5c590f43f4a2eaa07864ece9a1112a5c9a4'
+    aarch64: '159b74b99d80db7f7994726d4e2f4e16ffd57ad6f7dc7aee7ecf48e95df4ff72',
+     armv7l: '159b74b99d80db7f7994726d4e2f4e16ffd57ad6f7dc7aee7ecf48e95df4ff72',
+       i686: '9cca73b6a72c8d1824eb481bd4d27c66e779192c3a4e98553f44b2ee07e98f0a',
+     x86_64: '3ad8b2bc8b8f6c015db2cd4448b49f2cfed3cbc50f50b8dfda39e8db3fa8e6de'
   })
 
   if %w[x86_64 aarch64 armv7l].include?(ARCH)
@@ -39,39 +39,22 @@ class Graphicsmagick < Autotools
     depends_on 'libxdmcp' => :library
     depends_on 'libxext' => :library
     depends_on 'xzutils' => :library
-    depends_on 'freetype' => :library
+    depends_on 'bzip2' => :library
     depends_on 'gcc_lib' => :library
-    depends_on 'jasper' => :library
-    depends_on 'lcms' => :library
-    depends_on 'libbsd' => :library
-    depends_on 'libheif' => :library
-    depends_on 'libice' => :library
-    depends_on 'libjxl' => :library
-    depends_on 'libsm' => :library
-    depends_on 'libwebp' => :library
-    depends_on 'libwmf' => :library
-    depends_on 'libx11' => :library
-    depends_on 'libxau' => :library
-    depends_on 'libxcb' => :library
-    depends_on 'libxdmcp' => :library
-    depends_on 'libxext' => :library
+    depends_on 'glibc' => :library
+    depends_on 'jbigkit' => :library
+    depends_on 'libjpeg_turbo' => :library
+    depends_on 'libpng' => :library
+    depends_on 'libtiff' => :library
+    depends_on 'libtool' => :library
+    depends_on 'libxml2' => :library
+    depends_on 'msttcorefonts' => :logical
+    depends_on 'py3_docutils' => :build
+    depends_on 'util_linux' => :library
+    depends_on 'xzutils' => :library
+    depends_on 'zlib' => :library
+    depends_on 'zstd' => :library
   end
-  depends_on 'py3_docutils' => :build
-  depends_on 'bzip2' => :library
-  depends_on 'gcc_lib' => :library
-  depends_on 'glibc' => :library
-  depends_on 'jbigkit' => :library
-  depends_on 'libjpeg_turbo' => :library
-  depends_on 'libpng' => :library
-  depends_on 'libtiff' => :library
-  depends_on 'libtool' => :library
-  depends_on 'libxml2' => :library
-  depends_on 'msttcorefonts' => :logical
-  depends_on 'py3_docutils' => :build
-  depends_on 'util_linux' => :library
-  depends_on 'xzutils' => :library
-  depends_on 'zlib' => :library
-  depends_on 'zstd' => :library
 
   no_env_options
 
