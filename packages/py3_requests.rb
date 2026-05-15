@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_requests < Pip
   description 'Requests is a simple, yet elegant, HTTP library.'
   homepage 'https://docs.python-requests.org/'
-  version "2.34.1-#{CREW_PY_VER}"
+  version "2.34.2-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0aaf573b9b5cdb8162c9b4de3c2bea374f8d8c00341f1967f28fdfa1c62f8926',
-     armv7l: '0aaf573b9b5cdb8162c9b4de3c2bea374f8d8c00341f1967f28fdfa1c62f8926',
-       i686: '87e2f0a635a0e1a2bb4f2efe30e18fa4a4ce9d030a9027e3ed3f7cbabd3e92a3',
-     x86_64: '424cb00fc52aa100d9d1b3555b83c86bba4c71cef0fd113d1276d5e3c2e25b24'
+    aarch64: 'ea4311726262024efcf0e1242eb0fa6dcad96d400b67aeea122c7be60e1ea1cb',
+     armv7l: 'ea4311726262024efcf0e1242eb0fa6dcad96d400b67aeea122c7be60e1ea1cb',
+       i686: 'd0202b15e43e3e9f8dcec6833666660117edc2d2414951c3f1a5e9934a6aa9a0',
+     x86_64: '273a55203c94eb2ce8136e3014f46aea584b8871e14f90311a009d8e67662bfb'
   })
 
   depends_on 'py3_charset_normalizer'
