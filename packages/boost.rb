@@ -5,7 +5,7 @@ class Boost < Package
   homepage 'https://www.boost.org/'
   version "1.91.0-1-#{CREW_ICU_VER}-#{CREW_PY_VER}"
   license 'Boost-1.0'
-  compatibility 'aarch64 armv7l x86_64'
+  compatibility 'all'
   source_url 'https://github.com/boostorg/boost.git'
   git_hashtag "boost-#{version.sub("-#{CREW_ICU_VER}-#{CREW_PY_VER}", '')}"
   binary_compression 'tar.zst'
@@ -13,6 +13,7 @@ class Boost < Package
   binary_sha256({
     aarch64: '57f1cb7e2c26a85afbe422453e7c904c448b04e6f8faf6b4f40f47b650d2f3cc',
      armv7l: '57f1cb7e2c26a85afbe422453e7c904c448b04e6f8faf6b4f40f47b650d2f3cc',
+       i686: 'a82689691f10191896b421fa6995a9b7a26052ee2361f43c38b7d1236d83f24b',
      x86_64: '5720a6f3d8e325c5a413ff4f2b3eaac5909a7a71ebd4631a2321ac24b7fe438b'
   })
 
