@@ -1,3 +1,8 @@
+# The c11threads threads.h breaks builds on software that uses gnulib.
+# See: https://github.com/jtsiomb/c11threads/issues/19
+# Note that c11threads is a workaround for C11 Threads only being
+# introduced in Glibc 2.28 as per:
+# https://sourceware.org/bugzilla/show_bug.cgi?id=14092#c10
 require 'package'
 
 class C11threads < Package
