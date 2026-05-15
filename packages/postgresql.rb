@@ -11,9 +11,9 @@ class Postgresql < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f8ec04a108bdebc062746e275879f4f069b7943cf095fe17e4dd976197226e98',
-     armv7l: 'f8ec04a108bdebc062746e275879f4f069b7943cf095fe17e4dd976197226e98',
-     x86_64: '26f22b65c13c6b5a6a74d8c8f2864fbe7b30562569c6a24c4548adb13b149218'
+    aarch64: 'e26d3d2b33fb86d939295a6e40aaa6166d2b4058aa1499ada914f742af8d27a2',
+     armv7l: 'e26d3d2b33fb86d939295a6e40aaa6166d2b4058aa1499ada914f742af8d27a2',
+     x86_64: '02d866fa34ded9e26f7a263d87fcf6e2c242e56de3d21783da707a2fd4f4aeb2'
   })
 
   depends_on 'brotli' => :build
