@@ -21,6 +21,7 @@ class Gcc_lib < Package
 
   depends_on 'gcc_build' => :build
   depends_on 'glibc' => :library
+  depends_on 'glibc_fallthrough' => :library
   depends_on 'glibc_lib' => :library
 
   no_shrink
