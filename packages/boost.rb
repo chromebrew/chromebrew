@@ -20,6 +20,7 @@ class Boost < Package
   depends_on 'bzip2' => :library
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'icu4c' => :library
   depends_on 'openssl' => :library
   depends_on 'python3' => :build
