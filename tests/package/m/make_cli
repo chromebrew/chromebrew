@@ -1,0 +1,3 @@
+#!/bin/bash
+make-cli -h | head
+make-cli -V
