@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Awscli < Pip
   description 'Universal Command Line Interface for Amazon Web Services'
   homepage 'https://github.com/aws/aws-cli'
-  version "1.45.7-#{CREW_PY_VER}"
+  version "1.45.8-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'
@@ -17,10 +17,10 @@ class Awscli < Pip
   })
 
   binary_sha256({
-    aarch64: 'bf7ce5e7ae7c502298746558e1f9628aa1943329ec64814a84032c1cc54e2c70',
-     armv7l: 'bf7ce5e7ae7c502298746558e1f9628aa1943329ec64814a84032c1cc54e2c70',
-       i686: 'a42cbc2f61670902e97573846e2d4c6f84d6b7c6d98a9296cde2d6e1416f9050',
-     x86_64: '1833f7b4a49a747eced9b03cad9c33837e9a1559f4489997c9a87c712f53a9dd'
+    aarch64: 'e20f5ec5609c2d1e807d015d2a21cd226af74ed41eac0d2844f7612fad532e58',
+     armv7l: 'e20f5ec5609c2d1e807d015d2a21cd226af74ed41eac0d2844f7612fad532e58',
+       i686: '1578598bbe482a079863197e26db5d31c18deaf51a336a4ccfa72aa6aad21db0',
+     x86_64: 'a90d4675bb825cf906662e83f26b656b6f62eb29878b05ad59255652d40ee072'
   })
 
   depends_on 'groff' # R

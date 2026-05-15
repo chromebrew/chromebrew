@@ -1,35 +1,24 @@
 # Adapted from Arch Linux faac PKGBUILD at:
 # https://github.com/archlinux/svntogit-packages/raw/packages/faac/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/meson'
 
-class Faac < Package
+class Faac < Meson
   description 'Freeware Advanced Audio Coder'
   homepage 'https://www.audiocoding.com/'
-  version '1.30'
+  version '1.50'
   license 'GPL2 custom'
   compatibility 'all'
-  source_url 'https://github.com/knik0/faac/archive/refs/tags/1_30.tar.gz'
-  source_sha256 'adc387ce588cca16d98c03b6ec1e58f0ffd9fc6eadb00e254157d6b16203b2d2'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/knik0/faac.git'
+  git_hashtag "faac-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0964049377f4cb3a818b5448e0e072dffeae95919261837ad28c7135db9a441a',
-     armv7l: '0964049377f4cb3a818b5448e0e072dffeae95919261837ad28c7135db9a441a',
-       i686: 'f3e919c4f4f06777d43b3d02a6cf3a12b162440b40243de24383730ad308a182',
-     x86_64: 'fdea955a9dfd5732dc22a40ec8ff8aef47c153b5f34b7cff7f2aa9d6e0e3f05a'
+    aarch64: '6249a7bbe2590c48ce8070823ca34d4ea03f315f38ef17d7e5b292ecefc05ac2',
+     armv7l: '6249a7bbe2590c48ce8070823ca34d4ea03f315f38ef17d7e5b292ecefc05ac2',
+       i686: '3332dc511f6ed2ce0737dce54ea0bdb023f29b714e8902a5c37d1bdb1bdeaf54',
+     x86_64: '9f9a9dce35bd56d5794aed6496482cef46aacd8f5b0ce05124a29248e1940101'
   })
 
-  depends_on 'glibc'
-
-  def self.build
-    system 'autoreconf -vfi'
-    system "env #{CREW_ENV_OPTIONS} \
-      ./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-  end
+  depends_on 'glibc' => :library
 end
