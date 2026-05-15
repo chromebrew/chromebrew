@@ -40,6 +40,9 @@ jobs:
   setup:
     if: ${{ github.repository_owner == 'chromebrew' && inputs.branch != 'master' && github.event.workflow_run.head_branch != 'master' && github.event.pull_request.draft == false && github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-24.04
+    concurrency:
+      group: ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}-${{ github.sha }}
+      cancel-in-progress: true
     steps:
       - name: Get GH Token
         id: get_workflow_token
