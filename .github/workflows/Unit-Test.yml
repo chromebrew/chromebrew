@@ -1,5 +1,5 @@
 ---
-# Version 1.5
+# Version 1.6
 name: Unit Tests
 on:
   check_run:
@@ -21,6 +21,8 @@ on:
     workflows: [Generate PR]
     types:
       - completed
+env:
+  BRANCH: ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
 jobs:
   debug:
     if: ${{ github.repository_owner == 'chromebrew' }}
@@ -46,11 +48,25 @@ jobs:
       changed_packages: ${{ steps.changed-packages.outputs.CHANGED_PACKAGES }}
       non_changed_packages: ${{ steps.changed-files.outputs.non-package_all_changed_files }}
     steps:
+      - name: Get GH Token
+        id: get_workflow_token
+        uses: peter-murray/workflow-application-token-action@v4
+        with:
+          application_id: ${{ secrets.APPLICATION_ID }}
+          application_private_key: ${{ secrets.APPLICATION_PRIVATE_KEY }}
+          organization: chromebrew
+          revoke_token: true
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           persist-credentials: true
           ref: ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
+      - name: Remove Reviewers
+        env:
+          GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
+        run: |
+          echo "Removing chromebew/active from requested reviewers while Unit Tests are run on ${BRANCH}."
+          gh pr edit ${BRANCH} --remove-reviewer chromebrew/active || true
       - name: Get Current HEAD hash
         id: get-current-head
         run: |
@@ -72,7 +88,7 @@ jobs:
         id: changed-packages
         run: |
             if [[ -z "${{ steps.changed-files.outputs.packages_all_changed_files }}" ]]; then
-              echo "Branch ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} has no changed package files."
+              echo "Branch ${BRANCH} has no changed package files."
             fi
             # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-files.outputs.packages_all_changed_files) into "foo bar"
             echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-files.outputs.packages_all_changed_files }}" | xargs --no-run-if-empty basename -s .rb | xargs --no-run-if-empty)" >> "$GITHUB_ENV"
@@ -204,20 +220,19 @@ jobs:
       - name: Run unit tests
         env:
           GITHUB_EVENT: ${{ github.event_name }}
-          HEAD_REF: ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
           NON_PKG_CHANGED_FILES: ${{ needs.setup.outputs.non_changed_packages }}
         run: |
             case $GITHUB_EVENT in
               check_run | merge_group | push | workflow_run | workflow_dispatch)
                 CREW_REPO="${{ github.event.repository.clone_url }}"
                 export CREW_REPO
-                CREW_BRANCH="${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}"
+                CREW_BRANCH="${BRANCH}"
                 export CREW_BRANCH
                 ;;
               pull_request)
                 CREW_REPO="${{ github.event.pull_request.head.repo.clone_url }}"
                 export CREW_REPO
-                CREW_BRANCH="${HEAD_REF}"
+                CREW_BRANCH="${BRANCH}"
                 export CREW_BRANCH
                 ;;
             esac

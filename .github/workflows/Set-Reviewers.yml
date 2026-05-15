@@ -1,5 +1,5 @@
 ---
-# Version 1.8
+# Version 1.9
 name: Set Reviewers
 run-name: Set Reviewers for PR from ${{ github.event.workflow_run.display_title }} ${{ inputs.branch || github.event.workflow_run.head_commit.message || github.head_ref || github.ref_name }}
 on:
@@ -12,6 +12,8 @@ on:
     workflows: [Unit Tests]
     types:
       - completed
+env:
+  BRANCH: ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
 permissions:
   actions: write
   contents: write
@@ -38,6 +40,9 @@ jobs:
   setup:
     if: ${{ github.repository_owner == 'chromebrew' && inputs.branch != 'master' && github.event.workflow_run.head_branch != 'master' && github.event.pull_request.draft == false && github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-24.04
+    concurrency:
+      group: ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}-${{ github.sha }}
+      cancel-in-progress: true
     steps:
       - name: Get GH Token
         id: get_workflow_token
@@ -57,5 +62,5 @@ jobs:
           GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
         if: ${{ github.event.workflow_run.conclusion == 'success' }}
         run: |
-          gh pr edit --add-reviewer chromebrew/active
-          echo "Asking Chromebrew/active for review."
+          gh pr edit ${BRANCH} --add-reviewer chromebrew/active
+          echo "Asking chromebrew/active for review on ${BRANCH}."
