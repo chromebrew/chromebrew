@@ -23,7 +23,6 @@ class Libssp < Package
 
   depends_on 'dejagnu' => :build # for test
   depends_on 'glibc' => :library
-  depends_on 'glibc_fallthrough' => :library
   depends_on 'glibc_lib' => :library
 
   @gcc_name = 'libssp'

@@ -22,7 +22,6 @@ class Gcc_dev < Package
   depends_on 'gcc_build' => :build
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
-  depends_on 'glibc_fallthrough' => :library
   depends_on 'glibc_lib' => :library
   depends_on 'gmp' => :library
   depends_on 'isl' => :library

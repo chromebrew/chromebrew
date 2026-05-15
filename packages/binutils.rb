@@ -26,7 +26,6 @@ class Binutils < Package
   depends_on 'flex' => :executable
   depends_on 'gcc_lib' => :executable
   depends_on 'glibc' => :library
-  depends_on 'glibc_fallthrough' => :library
   depends_on 'glibc_lib' => :library
   depends_on 'zlib' => :library
   depends_on 'zstd' => :library
