@@ -23,6 +23,8 @@ class Graphicsmagick < Autotools
     depends_on 'gcc_lib' => :library
     depends_on 'ghostscript' => :build
     depends_on 'glibc' => :library
+    depends_on 'glibc_fallthrough' => :library
+    depends_on 'glibc_lib' => :library
     depends_on 'harfbuzz' => :build
     depends_on 'jasper' => :library
     depends_on 'jbigkit' => :library
@@ -56,7 +58,6 @@ class Graphicsmagick < Autotools
     depends_on 'freetype' => :library
     depends_on 'gcc_lib' => :library
     depends_on 'glibc' => :library
-    depends_on 'glibc_fallthrough' => :library
     depends_on 'glibc_lib' => :library
     depends_on 'jasper' => :library
     depends_on 'jbigkit' => :library
