@@ -3,25 +3,27 @@ require 'buildsystems/cmake'
 class Ffmpegthumbnailer < CMake
   description 'FFmpegthumbnailer is a lightweight video thumbnailer that can be used by file managers to create thumbnails for your video files.'
   homepage 'https://github.com/dirkvdb/ffmpegthumbnailer'
-  version '2.2.2-1b5a779'
+  version '2.3.0'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/dirkvdb/ffmpegthumbnailer.git'
-  git_hashtag '1b5a77983240bcf00a4ef7702c07bcd8f4e5f97c'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fd757ed0f568529db3b8cf0fa804fef50710f00a513ccc5dc85c940d4f400342',
-     armv7l: 'fd757ed0f568529db3b8cf0fa804fef50710f00a513ccc5dc85c940d4f400342',
-     x86_64: 'e3093743ca3ecdc3b0638aac7c12d94bb7ec450fc07696ec20d155151f370ffb'
+    aarch64: '30ea82b1f97dc3f1c80582a731d8522d186b29c99caa5eb5216cac873cd7e525',
+     armv7l: '30ea82b1f97dc3f1c80582a731d8522d186b29c99caa5eb5216cac873cd7e525',
+     x86_64: 'c4ff9cbb3798843b2326fb9d6b2de498899eb41e568e7446d22b01fcf3f8b408'
   })
 
-  depends_on 'ffmpeg' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'libjpeg_turbo' # R
-  depends_on 'libpng' # R
-  depends_on 'zlib' # R
+  depends_on 'ffmpeg' => :library
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_fallthrough' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'libjpeg_turbo' => :library
+  depends_on 'libpng' => :library
+  depends_on 'zlib' => :library
 
   cmake_options '-DENABLE_GIO=ON -DENABLE_THUMBNAILER=ON'
 end
