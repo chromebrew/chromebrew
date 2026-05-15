@@ -19,9 +19,9 @@ class Libinput < Meson
   depends_on 'check' => :build
   depends_on 'eudev' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   # depends_on 'graphviz' => :build
   # depends_on 'gtk3' => :build
-  depends_on 'libeeudev' => :library
   depends_on 'libevdev' => :library
   depends_on 'libunwind' => :build
   depends_on 'libwacom' => :library
