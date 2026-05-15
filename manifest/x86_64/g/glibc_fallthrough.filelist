@@ -1,1 +1,23 @@
-
+# Total size: 0
+/usr/local/lib64/ld-linux-x86-64.so.2
+/usr/local/lib64/libanl.so
+/usr/local/lib64/libanl.so.1
+/usr/local/lib64/libc.so.6
+/usr/local/lib64/libcrypt.so
+/usr/local/lib64/libcrypt.so.1
+/usr/local/lib64/libcrypt.so.1.1.0
+/usr/local/lib64/libcrypt.so.2
+/usr/local/lib64/libcrypt.so.2.0.0
+/usr/local/lib64/libdl.so.2
+/usr/local/lib64/libm.so.6
+/usr/local/lib64/libmvec.so
+/usr/local/lib64/libmvec.so.1
+/usr/local/lib64/libnsl.so.1
+/usr/local/lib64/libnss_dns.so.2
+/usr/local/lib64/libnss_files.so.2
+/usr/local/lib64/libresolv.so
+/usr/local/lib64/libresolv.so.2
+/usr/local/lib64/librt.so.1
+/usr/local/lib64/libthread_db.so
+/usr/local/lib64/libthread_db.so.1
+/usr/local/lib64/libutil.so.1

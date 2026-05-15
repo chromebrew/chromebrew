@@ -24,14 +24,14 @@ class Weston < Meson
   depends_on 'gcc_lib' => :executable
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'glslang' => :build
   depends_on 'graphite' => :build
   depends_on 'gstreamer' => :library
   depends_on 'harfbuzz' # R
   depends_on 'hwdata' => :build
   depends_on 'libdrm' => :library
-  depends_on 'libeeudev' => :library
-  depends_on 'libevdev' # R
+  depends_on 'libevdev' => :library
   depends_on 'libglvnd' => :library
   depends_on 'libinput' => :library
   depends_on 'libjpeg_turbo' => :library
