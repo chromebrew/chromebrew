@@ -51,7 +51,6 @@ class Weston < Meson
   depends_on 'mesa' => :library
   depends_on 'neatvnc' => :library
   depends_on 'pango' => :library
-  depends_on 'peazip' => :library
   depends_on 'pipewire' => :library
   depends_on 'pixman' => :library
   depends_on 'seatd' => :library

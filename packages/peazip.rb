@@ -39,14 +39,7 @@ class Peazip < Package
     FileUtils.mv 'peazip', "#{CREW_DEST_PREFIX}/share/peazip/"
     FileUtils.mv 'res/', "#{CREW_DEST_PREFIX}/share/peazip/"
     FileUtils.ln_s "#{CREW_PREFIX}/share/peazip/peazip", "#{CREW_DEST_PREFIX}/bin/peazip"
-    if File.exist?("#{CREW_PREFIX}/opt/glibc-libs/libm.so.6") && !File.exist?("#{CREW_LIB_PREFIX}/libm.so.6")
-      FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
-      FileUtils.ln_s "#{CREW_PREFIX}/opt/glibc-libs/libm.so.6", "#{CREW_DEST_LIB_PREFIX}/libm.so.6"
-    end
-    if File.exist?("#{CREW_PREFIX}/opt/glibc-libs/libpthread.so.0") && !File.exist?("#{CREW_LIB_PREFIX}/libpthread.so.0")
-      FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
-      FileUtils.ln_s "#{CREW_PREFIX}/opt/glibc-libs/libpthread.so.0", "#{CREW_DEST_LIB_PREFIX}/libpthread.so.0"
-    end
+    # Never install glibc libraries such as libm.so.6 or libpthread.so.0 from peazip.
   end
 
   def self.postinstall

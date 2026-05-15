@@ -20,10 +20,12 @@ class Glibc_fallthrough < Package
   depends_on 'patchelf' => :logical
 
   conflicts_ok
+  no_compile_needed
   no_env_options
   no_upstream_update
 
-  def self.postinstall
+  def self.install
+    FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
     if File.exist?("#{CREW_LIB_PREFIX}/libc.so.6")
       FileUtils.chmod 'u=wrx', "#{CREW_LIB_PREFIX}/libc.so.6"
       @crew_libcvertokens = `#{CREW_LIB_PREFIX}/libc.so.6`.lines.first.chomp.split(/\s/)
@@ -44,16 +46,16 @@ class Glibc_fallthrough < Package
       puts 'Creating symlinks to system glibc version to prevent breakage.'.lightblue
       case ARCH
       when 'aarch64', 'armv7l'
-        FileUtils.ln_sf File.realpath('/lib/ld-linux-armhf.so.3'), 'ld-linux-armhf.so.3'
+        FileUtils.ln_sf File.realpath('/lib/ld-linux-armhf.so.3'), "#{CREW_DEST_LIB_PREFIX}/ld-linux-armhf.so.3"
       when 'x86_64'
-        FileUtils.ln_sf File.realpath('/lib64/ld-linux-x86-64.so.2'), 'ld-linux-x86-64.so.2'
+        FileUtils.ln_sf File.realpath('/lib64/ld-linux-x86-64.so.2'), "#{CREW_DEST_LIB_PREFIX}/ld-linux-x86-64.so.2"
       end
       @libraries.each do |lib|
         # Reject entries which aren't libraries ending in .so, and which aren't files.
         # Reject text files such as libc.so because they points to files like
         # libc_nonshared.a, which are not provided by ChromeOS
         Dir["{,/usr}/#{ARCH_LIB}/#{lib}.so*"].compact.select { |i| ['shared object', 'symbolic link'].any? { |j| `file #{i}`.chomp.include? j } }.each do |k|
-          FileUtils.ln_sf k, File.join(CREW_LIB_PREFIX, File.basename(k))
+          FileUtils.ln_sf k, File.join(CREW_DEST_LIB_PREFIX, File.basename(k))
         end
       end
     end
