@@ -1,0 +1,3 @@
+#!/bin/bash
+ffmpegthumbnailer -h | head
+ffmpegthumbnailer -v
