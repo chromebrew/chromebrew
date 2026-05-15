@@ -1,10 +1,10 @@
-# Total size: 428440
+# Total size: 415362
 /usr/local/bin/faac
 /usr/local/include/faac.h
 /usr/local/include/faaccfg.h
 /usr/local/lib/libfaac.a
-/usr/local/lib/libfaac.la
 /usr/local/lib/libfaac.so
 /usr/local/lib/libfaac.so.0
 /usr/local/lib/libfaac.so.0.0.0
-/usr/local/share/man/man1/faac.1.gz
+/usr/local/lib/pkgconfig/faac.pc
+/usr/local/share/man/man1/faac.1.zst
