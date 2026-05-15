@@ -4,7 +4,7 @@ Package.load_package("#{__dir__}/gcc_build.rb")
 class Libssp < Package
   description 'Libssp is a part of the GCC toolkit.'
   homepage 'https://gcc.gnu.org/'
-  version '15.2.0'
+  version '16.1.0'
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   # When upgrading gcc_build, be sure to upgrade gcc_lib, gcc_dev, libssp, and then binutils in tandem.
   puts "#{self} version (#{version}) differs from gcc version #{Gcc_build.version}".orange if version != Gcc_build.version
@@ -15,14 +15,15 @@ class Libssp < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '57a18124c2967e8ce37665d5c909474d71dc790d19cc0f5931b5938acb51439e',
-     armv7l: '57a18124c2967e8ce37665d5c909474d71dc790d19cc0f5931b5938acb51439e',
-       i686: '891c7a272a3a703268c12cf3c7e5f9914afdd219b1f398bea794af4fcd7934d8',
-     x86_64: '362ae5547b24d392f99e5cc19c84c55cdc841a6418c7fc55b6ca50be63792d24'
+    aarch64: '24d7ef57179d128ecb566388670cc7a893b76f145e17bb48dc298f2f4f614437',
+     armv7l: '24d7ef57179d128ecb566388670cc7a893b76f145e17bb48dc298f2f4f614437',
+       i686: 'c401e05adb5b4fb0e5b61c425d292c35d024155020392a7a4fd3f257ceb37838',
+     x86_64: '5f803a6cc396d677cdb64f4ade69f0f179631baa8f3a55fe2dcc3b5fcbe89661'
   })
 
   depends_on 'dejagnu' => :build # for test
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 
   @gcc_name = 'libssp'
 

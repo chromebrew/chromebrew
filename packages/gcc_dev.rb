@@ -4,7 +4,7 @@ Package.load_package("#{__dir__}/gcc_build.rb")
 class Gcc_dev < Package
   description 'The GNU Compiler Collection: Everything (excepting libraries aside from libgccjit)'
   homepage Gcc_build.homepage
-  version '15.2.0'
+  version '16.1.0'
   license Gcc_build.license
   # When upgrading gcc_build, be sure to upgrade gcc_lib, gcc_dev, libssp, and then binutils in tandem.
   puts "#{self} version (#{version}) differs from gcc version #{Gcc_build.version}".orange if version != Gcc_build.version
@@ -13,15 +13,16 @@ class Gcc_dev < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3bd2dcdd1ea789239d37edd8f434a0512e0c4aab931cf769eb6f5a9532721e22',
-     armv7l: '3bd2dcdd1ea789239d37edd8f434a0512e0c4aab931cf769eb6f5a9532721e22',
-       i686: '499c3294e462c9dd5841a0997151f828aac6b093847b16eacbfeb6220315d1ea',
-     x86_64: '4c6f4cc707b4ac257c97a7c7cf091c4806971210f30d3f15a65b41aa7dc23e2b'
+    aarch64: 'd18c1aa9d6c9c00d9a181fed7aef6cf96ae4585ef00698993d53c129a903ce20',
+     armv7l: 'd18c1aa9d6c9c00d9a181fed7aef6cf96ae4585ef00698993d53c129a903ce20',
+       i686: 'a61ffc3138a97ce47eb984333cb4c8b6c4ed37d1ac00ade1864daa48b459d5e6',
+     x86_64: '3c06fa45d968c0e56f73800f8276dfa28d4c96967ab98f155dd3f02f8a16811b'
   })
 
   depends_on 'gcc_build' => :build
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gmp' => :library
   depends_on 'isl' => :library
   depends_on 'libssp' => :logical

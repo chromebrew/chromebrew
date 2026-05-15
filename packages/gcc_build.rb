@@ -18,6 +18,19 @@ class Gcc_build < Package
      x86_64: 'e6de02e80ccfa49ff7c5ad3ba8d175bdb6f5153fe7f811aea4a6fd118450d8c1'
   })
 
+  depends_on 'binutils' => :build
+  depends_on 'dejagnu' => :build # for test
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'gmp' => :library
+  depends_on 'isl' => :library
+  depends_on 'libssp' => :logical
+  depends_on 'mpc' => :library
+  depends_on 'mpfr' => :library
+  depends_on 'rust' => :build
+  depends_on 'zlib' => :library
+  depends_on 'zstd' => :library
+
   conflicts_ok
 
   @gcc_version = version.partition('.')[0]
@@ -328,25 +341,6 @@ class Gcc_build < Package
 
     installed_gcc.each do |gcc_pkg|
       puts "Removing previous version of gcc (#{gcc_pkg[:name]})...".yellow
-
-      depends_on 'binutils' => :build
-      depends_on 'dejagnu' => :build # for test
-      depends_on 'glibc' # R
-      depends_on 'gmp' # R
-      depends_on 'isl' # R
-      depends_on 'libssp' => :logical
-      depends_on 'mpc' # R
-      depends_on 'mpfr' # R
-      depends_on 'rust' => :build
-      depends_on 'zlib' # R
-      depends_on 'zstd' # R
-      depends_on 'glibc' => :library
-      depends_on 'gmp' => :library
-      depends_on 'isl' => :library
-      depends_on 'mpc' => :library
-      depends_on 'mpfr' => :library
-      depends_on 'zlib' => :library
-      depends_on 'zstd' => :library
 
       # remove filelist and directorylist
       FileUtils.rm_f(["#{CREW_META_PATH}/#{gcc_pkg[:name]}.filelist",
