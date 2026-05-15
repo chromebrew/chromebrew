@@ -19,7 +19,6 @@ class Graphicsmagick < Autotools
 
   if %w[x86_64 aarch64 armv7l].include?(ARCH)
     depends_on 'freetype' => :library
-    depends_on 'gcc_lib' => :library
     depends_on 'ghostscript' => :build
     depends_on 'harfbuzz' => :build
     depends_on 'jasper' => :library
@@ -60,6 +59,7 @@ class Graphicsmagick < Autotools
   depends_on 'bzip2' => :library
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'jbigkit' => :library
   depends_on 'libjpeg_turbo' => :library
   depends_on 'libpng' => :library
