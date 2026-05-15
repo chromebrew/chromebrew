@@ -9,7 +9,6 @@ class Glibc_fallthrough < Package
   min_glibc version.split('-').first
   max_glibc version.split('-').first
   source_url 'SKIP'
-  binary_compression 'tar.zst'
 
   binary_sha256({})
 
