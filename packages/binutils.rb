@@ -16,18 +16,18 @@ class Binutils < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '93b7673160c21952ce45e33f31aeaa69c53d5292ddfb66aa58d42fd42075e0ee',
-     armv7l: '93b7673160c21952ce45e33f31aeaa69c53d5292ddfb66aa58d42fd42075e0ee',
-       i686: '1f6e51157b26ac42906de582173f743e16ad18c5594ae4ffd4dbb78abf98a10b',
-     x86_64: '1a84a89cded9e65552e0e531d7a84eb363f7c1d0648b2b68214dfee06644fc96'
+    aarch64: '433713f788e8e227491710b36908b155162d21c17f10448fd6c78086db32b673',
+     armv7l: '433713f788e8e227491710b36908b155162d21c17f10448fd6c78086db32b673',
+       i686: '27de468f55294eec86b192996c53c06b11bb47a00e2118f83b7e00265f9e76d4',
+     x86_64: 'a45330405c3d8482b2d8331dfc0be0ddc50360f32c84dfb63f36fc5686f75bff'
   })
 
   depends_on 'elfutils' # R
-  depends_on 'flex' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'zlib' # R
-  depends_on 'zstd' # R
+  depends_on 'flex' => :executable
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :library
+  depends_on 'zlib' => :library
+  depends_on 'zstd' => :library
 
   def self.prebuild
     FileUtils.rm_f "#{CREW_LIB_PREFIX}/libiberty.a"
