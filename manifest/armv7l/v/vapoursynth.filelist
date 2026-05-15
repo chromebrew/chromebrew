@@ -1,11 +1,13 @@
-# Total size: 3454304
+# Total size: 3478712
 /usr/local/lib/python3.14/site-packages/vapoursynth/__init__.py
 /usr/local/lib/python3.14/site-packages/vapoursynth/__main__.py
 /usr/local/lib/python3.14/site-packages/vapoursynth/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/vapoursynth/__pycache__/__main__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/vapoursynth/__pycache__/_cli.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/vapoursynth/__pycache__/_shell.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/vapoursynth/__pycache__/_utils.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/vapoursynth/_cli.py
+/usr/local/lib/python3.14/site-packages/vapoursynth/_shell.py
 /usr/local/lib/python3.14/site-packages/vapoursynth/_utils.py
 /usr/local/lib/python3.14/site-packages/vapoursynth/include/VSConstants4.h
 /usr/local/lib/python3.14/site-packages/vapoursynth/include/VSHelper4.h
