@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Plasma_wayland_protocols < CMake
   description 'Plasma-specific protocols for Wayland.'
   homepage 'https://invent.kde.org/libraries/plasma-wayland-protocols'
-  version '1.20.0'
+  version '1.21.0'
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://invent.kde.org/libraries/plasma-wayland-protocols.git'
@@ -11,9 +11,9 @@ class Plasma_wayland_protocols < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ba2b6439700166eb98eeb0a8b4df7ba4ca9854d60420064e11911c3e30e29399',
-     armv7l: 'ba2b6439700166eb98eeb0a8b4df7ba4ca9854d60420064e11911c3e30e29399',
-     x86_64: '1b599b93777dffa4e3b938c4c55893e3ac55afb456c31c48c5543fe5395a3a26'
+    aarch64: '5a646fcc8105c80ce625546daf39821082e5ffbb2a2fb5c08ece9d1801c483fa',
+     armv7l: '5a646fcc8105c80ce625546daf39821082e5ffbb2a2fb5c08ece9d1801c483fa',
+     x86_64: '717e7ecc0fb2e7e4ebeef1d0c80f9a118967ab2326f9026ed77e5c3f692c3559'
   })
 
   depends_on 'extra_cmake_modules'
