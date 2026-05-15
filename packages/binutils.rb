@@ -22,7 +22,7 @@ class Binutils < Package
      x86_64: 'a45330405c3d8482b2d8331dfc0be0ddc50360f32c84dfb63f36fc5686f75bff'
   })
 
-  depends_on 'elfutils' # R
+  depends_on 'elfutils' => :build
   depends_on 'flex' => :executable
   depends_on 'gcc_lib' => :executable
   depends_on 'glibc' => :library
