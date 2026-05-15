@@ -4,7 +4,7 @@ require 'package'
 class Gcc_build < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '15.2.0'
+  version '16.1.0'
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
   source_url 'https://github.com/gcc-mirror/gcc.git'
