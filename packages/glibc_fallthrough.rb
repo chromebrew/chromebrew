@@ -10,8 +10,6 @@ class Glibc_fallthrough < Package
   max_glibc version.split('-').first
   source_url 'SKIP'
 
-  binary_sha256({})
-
   depends_on 'gawk' => :build
   depends_on 'filecmd' => :logical # Fixes creating symlinks on a fresh install.
   depends_on 'libidn2' => :build
