@@ -11,9 +11,9 @@ class Vapoursynth < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2a589a22f1fdc620ba67c394fde1d673cec84949d7e59c73126c3944a3fb4032',
-     armv7l: '2a589a22f1fdc620ba67c394fde1d673cec84949d7e59c73126c3944a3fb4032',
-     x86_64: '7e2f01b599316ce76b0b6cb896a8277ac37ff3a56c39c93b056e63e847ab9dfa'
+    aarch64: '9cd3bf0e1a671aae64491d9590f1aa8602b59a514e4de40e430c07edc71b3996',
+     armv7l: '9cd3bf0e1a671aae64491d9590f1aa8602b59a514e4de40e430c07edc71b3996',
+     x86_64: '47372f462a5af96088d1d771cf15878b2b7e8e42debac8d9638c6532acc6b4ee'
   })
 
   depends_on 'ffmpeg' => :build
