@@ -19,7 +19,6 @@ class Gcc_dev < Package
      x86_64: '4c6f4cc707b4ac257c97a7c7cf091c4806971210f30d3f15a65b41aa7dc23e2b'
   })
 
-  depends_on 'Package' => :library
   depends_on 'gcc_build' => :build
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
