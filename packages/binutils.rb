@@ -31,6 +31,12 @@ class Binutils < Package
 
   def self.prebuild
     FileUtils.rm_f "#{CREW_LIB_PREFIX}/libiberty.a"
+    # C11threads breaks builds on software that uses gnulib.
+    # See: https://github.com/jtsiomb/c11threads/issues/19
+    if LIBC_VERSION < 2.28 && ENV['NESTED_CI']
+      puts 'Removing the c11threads include/threads.h from the c11threads package to prevent build failures.'.orange
+      FileUtils.rm_f "#{CREW_PREFIX}/include/threads.h" if LIBC_VERSION < 2.28 && ENV['NESTED_CI']
+    end
   end
 
   def self.patch
