@@ -18,6 +18,7 @@ class Py3_numpy < Pip
 
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'lapack' => :library
   depends_on 'py3_cython' => :build
   depends_on 'py3_setuptools' => :build
