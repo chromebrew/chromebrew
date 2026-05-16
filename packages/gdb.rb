@@ -16,16 +16,17 @@ class Gdb < Autotools
   binary_sha256({
     aarch64: 'bc49e940c4849b860d3a18303d02d56c72439790926ce7063f7471b9b26ed3e2',
      armv7l: 'bc49e940c4849b860d3a18303d02d56c72439790926ce7063f7471b9b26ed3e2',
-       i686: 'a82689691f10191896b421fa6995a9b7a26052ee2361f43c38b7d1236d83f24b',
+       i686: 'a865093e3d62636aa637191eb315920d1f0d71c9c919e336d958da0920cd8753',
      x86_64: '908e778676a2d17774aec085e1d516989f25396bf768c133809c3c21395a804c'
   })
 
   depends_on 'binutils' => :executable
+  depends_on 'binutils' => :library
   depends_on 'boost' => :executable
   depends_on 'elfutils' # R
   depends_on 'expat' => :executable
   depends_on 'gcc_lib' => :executable
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
   depends_on 'gmp' => :executable
   depends_on 'mpfr' => :executable
   depends_on 'ncurses' => :executable
@@ -35,8 +36,8 @@ class Gdb < Autotools
   depends_on 'texinfo' => :build
   depends_on 'xxhash' => :executable
   depends_on 'xzutils' => :executable
-  depends_on 'zlib' # R
-  depends_on 'zstd' # R
+  depends_on 'zlib' => :library
+  depends_on 'zstd' => :library
 
   conflicts_ok # binutils conflicts
 
