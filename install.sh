@@ -1,5 +1,5 @@
 #!/bin/bash
-CREW_INSTALLER_VERSION=2026050901
+CREW_INSTALLER_VERSION=2026051601
 export CREW_INSTALLER_RUNNING=1
 # Exit on fail.
 set -eE
@@ -89,13 +89,17 @@ set -a
 : "${CREW_REPO:=https://github.com/${OWNER}/${REPO}.git}"
 set +a
 
-# Check if the user owns the CREW_PREFIX directory, as sudo is unnecessary if this is the case.
-# Check if the user is on ChromeOS v117+ and not in the VT-2 console, as sudo will not work.
 : "${CREW_PREFIX:=/usr/local}"
-if [[ "$(stat -c '%u' "${CREW_PREFIX}")" == "$(id -u)" ]] && sudo 2>&1 | grep -q 'no new privileges'; then
-  echo_error "Please run the installer in the VT-2 shell."
-  echo_info "To start the VT-2 session, type Ctrl + Alt + ->"
-  exit 1
+# sudo is only necessary when ${CREW_PREFIX} is not owned by the user.
+if [[ "$(stat -c '%u' "${CREW_PREFIX}")" != "$(id -u)" ]]; then
+  if sudo 2>&1 | grep -q 'no new privileges'; then
+    echo_error "Please run the installer in the VT-2 shell."
+    echo_info "To start the VT-2 session, type Ctrl + Alt + ->"
+    exit 1
+  else
+    # This will allow things to work without sudo.
+    sudo chown "$(id -u)":"$(id -g)" "${CREW_PREFIX}"
+  fi
 fi
 
 # Make sure installation directory is clean.
@@ -103,24 +107,16 @@ if [ -d "${CREW_PREFIX}" ]; then
   if [ "$(ls -A "${CREW_PREFIX}")" ]; then
     echo_error "${CREW_PREFIX} is not empty, would you like it to be cleared?"
     echo_info "This will delete ALL files in ${CREW_PREFIX}!"
-    echo_info "Continue?"
-    select continue in "Yes" "No"; do
-      if [[ "${continue}" == "Yes" ]]; then
-        sudo find "${CREW_PREFIX}" -mindepth 1 -delete
-        break 2
-      else
-        exit 1
-      fi
-    done
+    read -n1 -p "Continue? [y/N]: " answer
+    case ${answer} in
+      y|Y)
+        find "${CREW_PREFIX}" -mindepth 1 -delete ;;
+      *)
+        exit 1 ;;
+    esac
   fi
 else
-  sudo mkdir -p "${CREW_PREFIX}"
-fi
-
-# Do not redundantly use sudo if the user already owns the directory.
-if [ "$(stat -c '%u' "${CREW_PREFIX}")" != "$(id -u)" ]; then
-  # This will allow things to work without sudo.
-  sudo chown "$(id -u)":"$(id -g)" "${CREW_PREFIX}"
+  mkdir -p "${CREW_PREFIX}"
 fi
 
 # Chromebrew directories.
@@ -134,7 +130,7 @@ CREW_DEST_DIR="${CREW_BREW_DIR}/dest"
 if [ -n "$CREW_CACHE_ENABLED" ]; then
   echo_intra "Verifying setup of ${CREW_CACHE_DIR} since CREW_CACHE_ENABLED is set..."
   mkdir -p "${CREW_CACHE_DIR}"
-  sudo chown -R "$(id -u)":"$(id -g)" "${CREW_CACHE_DIR}" || true
+  chown -R "$(id -u)":"$(id -g)" "${CREW_CACHE_DIR}" || true
 fi
 
 # Architecture
@@ -142,6 +138,8 @@ fi
 # For container usage, where we want to specify i686 arch
 # on a x86_64 host by setting ARCH=i686.
 : "${ARCH:=$(uname -m)}"
+
+PATH="${CREW_PREFIX}/bin:/usr/bin:/bin"
 
 if [[ "$ARCH" == "x86_64" ]] || [[ "$ARCH" == "aarch64" ]]; then
   SYSTEM_LIB_SUFFIX='64'
@@ -298,11 +296,9 @@ else
   [[ "${ARCH}" == 'i686' ]] || BOOTSTRAP_PACKAGES+=' uutils_coreutils'
 fi
 
-if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
-  # Recent Arm systems have a cut down system.
-  # Tar breaks during install on multiarch systems.
-  (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )) && [[ "${ARCH}" == "armv7l" ]] && BOOTSTRAP_PACKAGES+=' bzip2 attr acl tar'
-fi
+# Tar, gzip and grep break during install on multiple systems.
+BOOTSTRAP_PACKAGES+=' grep bzip2 gzip attr acl tar'
+
 # Add git dependencies except curl to BOOTSTRAP_PACKAGES.
 BOOTSTRAP_PACKAGES+=' pcre2 expat git'
 
@@ -314,10 +310,8 @@ if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]] && [[ -n "${CREW_PRE_GLIBC_ST
   # shellcheck disable=SC2231
   for i in /lib${CREW_LIB_SUFFIX}/libc.so*
   do
-    sudo cp "$i" "$CREW_PREFIX/lib${CREW_LIB_SUFFIX}/"
+    cp "$i" "$CREW_PREFIX/lib${CREW_LIB_SUFFIX}/"
     libcname=$(basename "$i")
-    sudo chown chronos "$CREW_PREFIX/lib${CREW_LIB_SUFFIX}/${libcname}"
-    sudo chmod 644 "$CREW_PREFIX/lib${CREW_LIB_SUFFIX}/${libcname}"
   done
 fi
 
@@ -437,7 +431,7 @@ function extract_install () {
     if [[ "${1}" == 'glibc' ]] || [[ "${1}" == 'crew_preload' ]]; then
       # Update ld.so cache.
       if [[ "$ARCH" == "i686" ]] || [[ "$ARCH" == "armv7l" ]]; then
-        (sudo "${CREW_PREFIX}/bin/ldconfig" | tee /tmp/crew_ldconfig) || true
+        ("${CREW_PREFIX}/bin/ldconfig" | tee /tmp/crew_ldconfig) || true
       else
       "${CREW_PREFIX}/bin/ldconfig" || true
       fi
@@ -575,7 +569,7 @@ done
 # Work around https://github.com/chromebrew/chromebrew/issues/3305.
 # shellcheck disable=SC2024
 if [[ -n "${CREW_PRE_GLIBC_STANDALONE}" ]] && { [[ "$ARCH" == "i686" ]] || [[ "$ARCH" == "armv7l" ]]; }; then
-  sudo "${CREW_PREFIX}/bin/ldconfig" &> /tmp/crew_ldconfig || true
+  "${CREW_PREFIX}/bin/ldconfig" &> /tmp/crew_ldconfig || true
 fi
 
 echo_out "\nCreating symlink to 'crew' in ${CREW_PREFIX}/bin/"
@@ -598,19 +592,20 @@ fi
 # Set CREW_LOCAL_REPO_ROOT since git rev-parse --show-toplevel will not
 # work until the git clone is setup.
 export CREW_LOCAL_REPO_ROOT="${CREW_PREFIX}/lib/crew"
+
 # This is needed for SSL env variables to be populated so ruby doesn't
 # complain about missing certs, resulting in failed https connections.
 echo_info "Installing crew_profile_base...\n"
-yes | ${PREFIX_CMD} crew install crew_profile_base curl_static
+${PREFIX_CMD} crew install crew_profile_base curl_static -f
 
 # shellcheck disable=SC1090
 trap - ERR && source ~/.bashrc && set_trap
 
 echo_info "Installing core Chromebrew packages...\n"
-yes | ${PREFIX_CMD} crew install core || (yes | ${PREFIX_CMD} crew install core)
+${PREFIX_CMD} crew install core -f || (${PREFIX_CMD} crew install core -f)
 
 echo_info "Installing buildessential...\n"
-yes | ${PREFIX_CMD} crew install buildessential
+${PREFIX_CMD} crew install buildessential -f
 
 # Ensure installed binaries have correct execute permissions.
 chmod +x "${CREW_PREFIX}"/bin/* 2>/dev/null || true
