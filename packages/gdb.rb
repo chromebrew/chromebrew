@@ -27,6 +27,7 @@ class Gdb < Autotools
   depends_on 'expat' => :executable
   depends_on 'gcc_lib' => :executable
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gmp' => :executable
   depends_on 'mpfr' => :executable
   depends_on 'ncurses' => :executable
