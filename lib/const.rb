@@ -362,7 +362,7 @@ crew_py_ver_default = '3.14'
 crew_ruby_ver_default = '4.0'
 crew_rust_ver_default = '1.94'
 if ENV['CI']
-  CREW_BOOST_VER  = "boost#{crew_boost_ver_default}"
+  CREW_BOOST_VER = "boost#{crew_boost_ver_default}"
   CREW_GCC_VER  = "gcc#{crew_gcc_ver_default}"
   CREW_ICU_VER  = "icu#{crew_icu_ver_default}"
   CREW_LLVM_VER = "llvm#{crew_llvm_ver_default}"
@@ -371,8 +371,9 @@ if ENV['CI']
   CREW_RUBY_VER = "ruby#{crew_ruby_ver_default}"
   CREW_RUST_VER = "rust#{crew_rust_ver_default}"
 else
-  boost_version = `echo -e '#include <boost/version.hpp>\nBOOST_LIB_VERSION' | gcc -s -x c++ -E - 2>/dev/null| grep \"^[^#;]\"`.chomp.gsub('"', '').gsub('_', '.')
-  CREW_BOOST_VER  = boost_version.empty? ? "boost#{crew_boost_ver_default}" : "boost#{boost_version}"
+  # Need to use bash -c to keep the pipe from failing.
+  boost_version = `bash -c 'echo -e "#include <boost/version.hpp>\nBOOST_LIB_VERSION" | gcc -s -x c++ -E - 2>/dev/null| grep "^[^#;]"'`.chomp.gsub('"', '').gsub('_', '.')
+  CREW_BOOST_VER = boost_version.empty? ? "boost#{crew_boost_ver_default}" : "boost#{boost_version}"
   CREW_GCC_VER  = Kernel.system('command -v gcc', %i[out err] => File::NULL) ? "gcc#{`gcc -dumpversion`.chomp}" : "gcc#{crew_gcc_ver_default}"
   CREW_ICU_VER  = Kernel.system('command -v uconv', %i[out err] => File::NULL) ? "icu#{`uconv --version`.chomp.split[3]}" : "icu#{crew_icu_ver_default}"
   CREW_LLVM_VER = Kernel.system('command -v llvm-config', %i[out err] => File::NULL) ? "llvm#{`llvm-config --version`.chomp.split('.')[0]}" : "llvm#{crew_llvm_ver_default}"
