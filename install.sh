@@ -107,7 +107,7 @@ if [ -d "${CREW_PREFIX}" ]; then
   if [ "$(ls -A "${CREW_PREFIX}")" ]; then
     echo_error "${CREW_PREFIX} is not empty, would you like it to be cleared?"
     echo_info "This will delete ALL files in ${CREW_PREFIX}!"
-    read -n1 -p "Continue? [y/N]: " answer
+    read -r -n1 -p "Continue? [y/N]: " answer
     case ${answer} in
       y|Y)
         find "${CREW_PREFIX}" -mindepth 1 -delete ;;
@@ -130,7 +130,6 @@ CREW_DEST_DIR="${CREW_BREW_DIR}/dest"
 if [ -n "$CREW_CACHE_ENABLED" ]; then
   echo_intra "Verifying setup of ${CREW_CACHE_DIR} since CREW_CACHE_ENABLED is set..."
   mkdir -p "${CREW_CACHE_DIR}"
-  chown -R "$(id -u)":"$(id -g)" "${CREW_CACHE_DIR}" || true
 fi
 
 # Architecture
@@ -311,7 +310,6 @@ if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]] && [[ -n "${CREW_PRE_GLIBC_ST
   for i in /lib${CREW_LIB_SUFFIX}/libc.so*
   do
     cp "$i" "$CREW_PREFIX/lib${CREW_LIB_SUFFIX}/"
-    libcname=$(basename "$i")
   done
 fi
 
