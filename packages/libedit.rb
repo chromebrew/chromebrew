@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Libedit < Autotools
   description 'An autotooled and libtoolized port of the NetBSD Editline library (libedit).'
   homepage 'https://thrysoee.dk/editline/'
-  version '20251016-3.1'
+  version '20260512-3.1'
   compatibility 'all'
   license 'BSD-2'
   source_url "https://thrysoee.dk/editline/libedit-#{version}.tar.gz"
-  source_sha256 '21362b00653bbfc1c71f71a7578da66b5b5203559d43134d2dd7719e313ce041'
+  source_sha256 '432d5e7ea8b0116dd39f2eca7bc11d0eed77faa6b77ea526ace89907c23ea4a0'
   binary_compression 'tar.zst'
 
   binary_sha256({
