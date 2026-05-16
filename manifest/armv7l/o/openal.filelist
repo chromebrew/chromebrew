@@ -1,10 +1,9 @@
-# Total size: 2047556
+# Total size: 2143194
 /usr/local/bin/makemhr
 /usr/local/bin/openal-info
 /usr/local/include/AL/al.h
 /usr/local/include/AL/alc.h
 /usr/local/include/AL/alext.h
-/usr/local/include/AL/efx-creative.h
 /usr/local/include/AL/efx-presets.h
 /usr/local/include/AL/efx.h
 /usr/local/lib/cmake/OpenAL/OpenALConfig.cmake
@@ -12,7 +11,7 @@
 /usr/local/lib/cmake/OpenAL/OpenALTargets.cmake
 /usr/local/lib/libopenal.so
 /usr/local/lib/libopenal.so.1
-/usr/local/lib/libopenal.so.1.25.1
+/usr/local/lib/libopenal.so.1.25.2
 /usr/local/lib/pkgconfig/openal.pc
 /usr/local/share/openal/alsoftrc.sample
 /usr/local/share/openal/hrtf/Default HRTF.mhr
