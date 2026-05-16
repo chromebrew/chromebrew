@@ -18,6 +18,7 @@ class Remind < Autotools
   })
 
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'readline' => :executable
   depends_on 'tk' unless ARCH.eql?('i686') # Needed for tkremind.
 
