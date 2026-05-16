@@ -3,19 +3,22 @@ require 'buildsystems/autotools'
 class Fftw < Autotools
   description 'FFTW is a C subroutine library for computing the discrete Fourier transform (DFT) in one or more dimensions, of arbitrary input size, and of both real and complex data (as well as of even/odd data, i.e. the discrete cosine/sine transforms or DCT/DST).'
   homepage 'https://www.fftw.org/'
-  version '3.3.10'
+  version '3.3.11'
   license 'GPL-2+'
   compatibility 'all'
   source_url "https://fftw.org/fftw-#{version}.tar.gz"
-  source_sha256 '56c932549852cddcfafdab3820b0200c7742675be92179e59e6215b340e26467'
+  source_sha256 '5630c24cdeb33b131612f7eb4b1a9934234754f9f388ff8617458d0be6f239a1'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '104ed5989de12cd2edddc03978cd1cba48e503d50eba8f4de5e63d5e44c3ec92',
-     armv7l: '104ed5989de12cd2edddc03978cd1cba48e503d50eba8f4de5e63d5e44c3ec92',
-       i686: '8bb8ff951cf62a5f339b37cdadd21836ee6499a054eceb7c7acfa19f4789896d',
-     x86_64: '3de2966c788cbd46d2c74cf010f781337651b5f7086d7b0b9c5117e131025819'
+    aarch64: '967ee876b47a3f0a8354fa5587a9cd6103cd6629a908ded148b69634cef47839',
+     armv7l: '967ee876b47a3f0a8354fa5587a9cd6103cd6629a908ded148b69634cef47839',
+       i686: '8ef033f81a7398024a7a757187bb5e259562d472752e7680746afd1cbb692ebc',
+     x86_64: '27e304bd4022d580dbc181e5f08f250179c80cd2c109639dd7e2ab619fc4e136'
   })
+
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 
   # We'd need to build fftw three times with each precision option in order to support things properly.
   # https://www.linuxfromscratch.org/blfs/view/cvs/general/fftw.html
