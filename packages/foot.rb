@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Foot < Meson
   description 'Wayland terminal emulator - fast, lightweight and minimalistic'
   homepage 'https://codeberg.org/dnkl/foot'
-  version '1.26.1'
+  version '1.27.0'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://codeberg.org/dnkl/foot.git'
@@ -11,9 +11,9 @@ class Foot < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b2884de51d076dfc42d4087470fd14939fde6ea03988f2dfbd903190dc627ff1',
-     armv7l: 'b2884de51d076dfc42d4087470fd14939fde6ea03988f2dfbd903190dc627ff1',
-     x86_64: '315b809f64d38ef42cc2a01add728c3914eb7a52f1927f2fe29a4095a3944374'
+    aarch64: '26d52ca46e8b7fc8bdef35dd901845c282ef56ca2811af145269f05b510575a0',
+     armv7l: '26d52ca46e8b7fc8bdef35dd901845c282ef56ca2811af145269f05b510575a0',
+     x86_64: 'ffff4b5d38e55802afbeed2241d8f0d01a86a3419abbb7d2fdf1110d81b7ee1c'
   })
 
   def self.patch
@@ -26,6 +26,7 @@ class Foot < Meson
   depends_on 'fcft' => :executable
   depends_on 'fontconfig' => :executable
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'harfbuzz' => :executable
   depends_on 'libxkbcommon' => :executable
   depends_on 'pixman' => :executable

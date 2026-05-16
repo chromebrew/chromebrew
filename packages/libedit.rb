@@ -3,21 +3,22 @@ require 'buildsystems/autotools'
 class Libedit < Autotools
   description 'An autotooled and libtoolized port of the NetBSD Editline library (libedit).'
   homepage 'https://thrysoee.dk/editline/'
-  version '20251016-3.1'
+  version '20260512-3.1'
   compatibility 'all'
   license 'BSD-2'
   source_url "https://thrysoee.dk/editline/libedit-#{version}.tar.gz"
-  source_sha256 '21362b00653bbfc1c71f71a7578da66b5b5203559d43134d2dd7719e313ce041'
+  source_sha256 '432d5e7ea8b0116dd39f2eca7bc11d0eed77faa6b77ea526ace89907c23ea4a0'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd1d1bff30aa008299109755393a5181bf1e8e5ee97cdc113e35b02b5e4646902',
-     armv7l: 'd1d1bff30aa008299109755393a5181bf1e8e5ee97cdc113e35b02b5e4646902',
-       i686: '3d6a09ba23138e49a60d28ac5bdcac03c7d4dbbb7f38f8a1b5efa3e1bcc74214',
-     x86_64: '66475f8d1327be4a3492f3dc9e0e49a30a003e74cae6960e8699afc24863370e'
+    aarch64: '46e8ef37ccba9429253ecad8f6cf6c6103c54714448ece580a9b6b66724cc626',
+     armv7l: '46e8ef37ccba9429253ecad8f6cf6c6103c54714448ece580a9b6b66724cc626',
+       i686: '5c361a625d545db25be17736ea2de9adb5daa8283b890848621909fc06e0540b',
+     x86_64: 'a224782e90402560c72e5df9873c10c6e0eeca0d1791139154827c0580166b28'
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'ncurses' => :library
 
   autotools_configure_options "CPPFLAGS=-I#{CREW_PREFIX}/include/ncursesw"
