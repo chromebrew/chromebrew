@@ -1,4 +1,4 @@
-# Total size: 12111671
+# Total size: 12111663
 /usr/local/bin/aws
 /usr/local/bin/aws.cmd
 /usr/local/bin/aws_bash_completer
@@ -6,13 +6,13 @@
 /usr/local/bin/aws_zsh_completer.sh
 /usr/local/etc/bash.d/aws
 /usr/local/etc/zsh.d/aws
-/usr/local/lib/python3.14/site-packages/awscli-1.45.8.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/awscli-1.45.8.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/awscli-1.45.8.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/awscli-1.45.8.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/awscli-1.45.8.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/awscli-1.45.8.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/awscli-1.45.8.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/awscli-1.45.9.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/awscli-1.45.9.dist-info/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/awscli-1.45.9.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/awscli-1.45.9.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/awscli-1.45.9.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/awscli-1.45.9.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/awscli-1.45.9.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/awscli/__init__.py
 /usr/local/lib/python3.14/site-packages/awscli/__main__.py
 /usr/local/lib/python3.14/site-packages/awscli/__pycache__/__init__.cpython-314.pyc
@@ -4216,12 +4216,12 @@
 /usr/local/lib/python3.14/site-packages/awscli/examples/lakeformation/get-lf-tag.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/lakeformation/get-query-state.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/lakeformation/get-query-statistics.rst
-/usr/local/lib/python3.14/site-packages/awscli/examples/lakeformation/get-resource-lf-tags.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/lakeformation/get-table-objects.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/lakeformation/get-work-unit-results.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/lakeformation/get-work-units.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/lakeformation/grant-permissions.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/lakeformation/list-data-cells-filter.rst
+/usr/local/lib/python3.14/site-packages/awscli/examples/lakeformation/list-lf-tags.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/lakeformation/list-permissions.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/lakeformation/list-resources.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/lakeformation/list-transactions.rst
