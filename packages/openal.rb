@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Openal < CMake
   description 'OpenAL Soft is a software implementation of the cross-platform OpenAL 3D audio API appropriate for use with gaming applications and many other types of audio applications.'
   homepage 'https://openal-soft.org/'
-  version '1.25.1'
+  version '1.25.2'
   license 'BSD'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/kcat/openal-soft.git'
