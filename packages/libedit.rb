@@ -18,6 +18,7 @@ class Libedit < Autotools
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'ncurses' => :library
 
   autotools_configure_options "CPPFLAGS=-I#{CREW_PREFIX}/include/ncursesw"
