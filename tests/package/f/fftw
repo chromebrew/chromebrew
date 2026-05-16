@@ -1,0 +1,5 @@
+#!/bin/bash
+fftw-wisdom -h | head -5
+fftw-wisdom -V
+fftw-wisdom-to-conf -h | head -5
+fftw-wisdom-to-conf -V
