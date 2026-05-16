@@ -7515,6 +7515,11 @@ url: https://github.com/phar-io/phive/releases
 activity: medium
 ---
 kind: url
+name: photogimp
+url: https://github.com/Diolinux/PhotoGIMP/releases
+activity: none
+---
+kind: url
 name: php
 url: https://php.net/distributions
 activity: high
