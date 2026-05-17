@@ -14,9 +14,9 @@ class Vulkan_tools < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c06195cf0334afbbb7be5542fc5f7c8a0505533cda19ad97c2f3c0add042f3b1',
-     armv7l: 'c06195cf0334afbbb7be5542fc5f7c8a0505533cda19ad97c2f3c0add042f3b1',
-     x86_64: '18857b64cefb0261b199dc94ca9c7d80105f6c2d55dee6c4385a31ab494e50ab'
+    aarch64: '320d5ff2c810eba88884118ecbe691dc2f02c9263c61d163210a3d695a642fc7',
+     armv7l: '320d5ff2c810eba88884118ecbe691dc2f02c9263c61d163210a3d695a642fc7',
+     x86_64: '688f62fa4275623754a7a378da1249cf278fad7e65444ca71a326866140e2ef2'
   })
 
   depends_on 'gcc_dev' => :build
@@ -24,6 +24,7 @@ class Vulkan_tools < CMake
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :executable
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :executable
   depends_on 'glslang' => :build
   depends_on 'libx11' => :executable
   depends_on 'libx11' => :library
