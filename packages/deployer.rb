@@ -3,7 +3,7 @@ require 'package'
 class Deployer < Package
   description 'A deployment tool for PHP'
   homepage 'https://deployer.org/'
-  version '8.0.3'
+  version '8.0.4'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/deployphp/deployer.git'
