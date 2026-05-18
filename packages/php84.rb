@@ -11,9 +11,9 @@ class Php84 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '35714ff76bf211941e1531d29a935d5847644445f6c0ef6c487a93a225235b69',
-     armv7l: '35714ff76bf211941e1531d29a935d5847644445f6c0ef6c487a93a225235b69',
-     x86_64: 'dc8e36684547a7cb26b28572bcecf2bff83e818c27c3ab7a9f5fe83f893dbe05'
+    aarch64: 'ffad53c4629b416bbcacdb1a84e52a1e8b303b15b0879e92164740efbd18f496',
+     armv7l: 'ffad53c4629b416bbcacdb1a84e52a1e8b303b15b0879e92164740efbd18f496',
+     x86_64: '30003bcc839bf2c1e1aa026860cbeb1a823495d6d01dbb65d1448ad1f28a32a5'
   })
 
   depends_on 'aspell_en' => :build
@@ -26,6 +26,7 @@ class Php84 < Package
   depends_on 'gcc_lib' => :library
   depends_on 'gdbm' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gmp' => :executable
   depends_on 'icu4c' => :executable
   depends_on 'jq' => :build
