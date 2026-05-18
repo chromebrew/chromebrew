@@ -11,14 +11,15 @@ class Libical < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9c9ba6313b298d512747544e0fed79d4b41ca6b46a3d15a20a87cc2ac55ecd0b',
-     armv7l: '9c9ba6313b298d512747544e0fed79d4b41ca6b46a3d15a20a87cc2ac55ecd0b',
-     x86_64: '5e6cf916124e6ed0dd12c07944ec5d803882aca393d84db7f8a9715a4711ff77'
+    aarch64: '91d638ec936fcc144abfb0ea15070e18cc0b9db5466e75370d593dfd741c9a39',
+     armv7l: '91d638ec936fcc144abfb0ea15070e18cc0b9db5466e75370d593dfd741c9a39',
+     x86_64: 'cf0d274070a313e829496056793bc8b5c30640e3cac6c25112b8c13c6d758660'
   })
 
   depends_on 'gcc_lib' => :library
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk_doc' => :build
   depends_on 'icu4c' => :library
