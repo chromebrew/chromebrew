@@ -25,6 +25,7 @@ class Libical < CMake
   depends_on 'libdb' => :library
   depends_on 'libxml2' => :executable
   depends_on 'libxml2' => :library
+  depends_on 'llvm_dev' => :build
   depends_on 'vala' => :build
 
   cmake_options '-DLIBICAL_BUILD_DOCS=false \
