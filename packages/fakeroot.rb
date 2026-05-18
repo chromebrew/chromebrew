@@ -11,13 +11,13 @@ class Fakeroot < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '29312d3f89552a9876c215b7c0dfb2d9b4e34639c5ce3a0d0bd6c687bf0f9868',
-     armv7l: '29312d3f89552a9876c215b7c0dfb2d9b4e34639c5ce3a0d0bd6c687bf0f9868',
-       i686: '5f31abf62547f183d5db5f5c138cf24ba8ab907dcf6145b2e0a6fd406d288e80',
-     x86_64: 'fa89066a514460c8bf00e77b02f7bf1a07e7152be920ede97fce767916c86c65'
+    aarch64: '5a11831f227bab699b3398ca1dcffbf72a2a9c2274e1d1f44813f6d5bdc14842',
+     armv7l: '5a11831f227bab699b3398ca1dcffbf72a2a9c2274e1d1f44813f6d5bdc14842',
+       i686: '7b96a5f92f8b6260203f7c34d71c07266e37e21a75a089bea3620578f3574bae',
+     x86_64: '08c97f2533ad57f2d398bc58605e8812dff1d08d17b58e515e2f7218920df0bf'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
   depends_on 'libcap'
 
   # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1074945
