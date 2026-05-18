@@ -18,6 +18,7 @@ class Fakeroot < Autotools
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'libcap'
 
   # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1074945
