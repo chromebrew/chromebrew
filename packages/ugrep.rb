@@ -11,13 +11,14 @@ class Ugrep < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: 'b74e13cccd142efadb43c2ff8f2cbbceebe5489bbfa34edd884b04728b644619'
+     x86_64: '89b8788eedd50cbe66c8626a1db37a84af7cb873ee729cad021e6e579366e19a'
   })
 
   depends_on 'brotli' => :executable
   depends_on 'bzip2' => :executable
   depends_on 'gcc_lib' => :executable
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'lz4' => :executable
   depends_on 'pcre2' => :executable
   depends_on 'xzutils' => :executable
