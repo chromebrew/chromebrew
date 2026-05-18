@@ -1,4 +1,4 @@
-# Total size: 2525176
+# Total size: 2326574
 /usr/local/bin/firecfg
 /usr/local/bin/firejail
 /usr/local/bin/firemon
@@ -394,6 +394,7 @@
 /usr/local/etc/firejail/fossamail.profile
 /usr/local/etc/firejail/four-in-a-row.profile
 /usr/local/etc/firejail/fractal.profile
+/usr/local/etc/firejail/fragments.profile
 /usr/local/etc/firejail/franz.profile
 /usr/local/etc/firejail/freecad.profile
 /usr/local/etc/firejail/freecadcmd.profile
@@ -550,6 +551,7 @@
 /usr/local/etc/firejail/gzdoom.profile
 /usr/local/etc/firejail/gzexe.profile
 /usr/local/etc/firejail/gzip.profile
+/usr/local/etc/firejail/halloy.profile
 /usr/local/etc/firejail/handbrake-gtk.profile
 /usr/local/etc/firejail/handbrake.profile
 /usr/local/etc/firejail/hashcat.profile
@@ -1065,6 +1067,7 @@
 /usr/local/etc/firejail/spectre-meltdown-checker.profile
 /usr/local/etc/firejail/spotify.profile
 /usr/local/etc/firejail/sqlitebrowser.profile
+/usr/local/etc/firejail/srb2.profile
 /usr/local/etc/firejail/ssh-agent.profile
 /usr/local/etc/firejail/ssh.profile
 /usr/local/etc/firejail/ssmtp.profile
@@ -1362,6 +1365,9 @@
 /usr/local/etc/firejail/zdiff.profile
 /usr/local/etc/firejail/zeal.profile
 /usr/local/etc/firejail/zegrep.profile
+/usr/local/etc/firejail/zen-bin.profile
+/usr/local/etc/firejail/zen-browser.profile
+/usr/local/etc/firejail/zen.profile
 /usr/local/etc/firejail/zfgrep.profile
 /usr/local/etc/firejail/zforce.profile
 /usr/local/etc/firejail/zgrep.profile
