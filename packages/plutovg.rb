@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Plutovg < Meson
   description 'Tiny 2D vector graphics library in C'
   homepage 'https://github.com/sammycage/plutovg'
-  version '1.3.2'
+  version '1.3.3'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/sammycage/plutovg.git'
