@@ -11,14 +11,15 @@ class Pkg_7_zip < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '265a5acf546bddd5562539d675bddcfddb224d268371fde4d55a012ea2ac8862',
-     armv7l: '265a5acf546bddd5562539d675bddcfddb224d268371fde4d55a012ea2ac8862',
-     x86_64: '68e0f4702cffd908bf24dcd84036e7093a2c0e882256f17992785f50178fa0cc'
+    aarch64: '146ba0924cccdbc1802b79f58328856a33ecea724ebca0effe63a68497dc1c21',
+     armv7l: '146ba0924cccdbc1802b79f58328856a33ecea724ebca0effe63a68497dc1c21',
+     x86_64: 'e5296c9c59d9b6570160c4f0c62678b87c2c63c44d7c00fa4ac5150a5ed805dc'
   })
 
   depends_on 'asmc' => :build
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'uasm' => :build
 
   no_env_options
