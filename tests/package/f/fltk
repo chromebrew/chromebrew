@@ -1,0 +1,5 @@
+#!/bin/bash
+fltk-config --help | head -5
+fltk-config --version
+fluid --help 2>&1 | head -5
+fluid --version
