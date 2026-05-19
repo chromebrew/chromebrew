@@ -6125,6 +6125,11 @@ url: https://gitlab.freedesktop.org/mesa/demos/-/tags
 activity: none
 ---
 kind: url
+name: mesen
+url: https://github.com/SourMesen/Mesen2/releases
+activity: low
+---
+kind: url
 name: metadata_cleaner
 url: https://gitlab.com/rmnvgr/metadata-cleaner/-/tags
 activity: low
