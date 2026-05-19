@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_decorator < Pip
   description 'define signature-preserving function decorators and decorator factories'
   homepage 'https://github.com/micheles/decorator/'
-  version "5.3.0-#{CREW_PY_VER}"
+  version "5.3.1-#{CREW_PY_VER}"
   license 'BSD-2'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6ea9540bedcdbb925782db92a59fad2157c6fd382790babca2175232efd7ebab',
-     armv7l: '6ea9540bedcdbb925782db92a59fad2157c6fd382790babca2175232efd7ebab',
-       i686: '7b417497e66bb921f8bf601aab11f8ce7ee661e7b157e319f3c36215639c4432',
-     x86_64: '7ec9d2247706b5649537c6714833505242f110e49f83b90c1977a76026f6c899'
+    aarch64: '12eeb4c9772dc115afab9e157fe1c6231e417f46d7296073f511d0f14645e0da',
+     armv7l: '12eeb4c9772dc115afab9e157fe1c6231e417f46d7296073f511d0f14645e0da',
+       i686: '7200785cb5b1fb46f2feb02ac103af5a6f23d38c047688dc3ef97739cf5a2c2d',
+     x86_64: '905276b9c655d1a63183dde9a2917152a0c8a00d981553a964f524e6a4444e64'
   })
 
   depends_on 'python3' => :logical
