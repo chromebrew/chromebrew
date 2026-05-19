@@ -11,9 +11,9 @@ class Fltk < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'dba8dab43b88e317c70b674d84cf787ed56f5e7ff81e66b51056be549a85bcec',
-     armv7l: 'dba8dab43b88e317c70b674d84cf787ed56f5e7ff81e66b51056be549a85bcec',
-     x86_64: '3f46ea64f96026a3b8c62f4ea8951a69365c7c2340e9d3c64885978980946159'
+    aarch64: '9fdb56ca9d0d78c2087fab706c1d6e595420eb5a116c18f74ed5faf16edcb5c8',
+     armv7l: '9fdb56ca9d0d78c2087fab706c1d6e595420eb5a116c18f74ed5faf16edcb5c8',
+     x86_64: '75d71737e456b6291cbf063c9ce630775271912bfa6e19993dd1877e7dea6ab4'
   })
 
   depends_on 'cairo' => :library
