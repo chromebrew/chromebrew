@@ -14,12 +14,13 @@ class Plutovg < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8565937159b8db6fe74228ce8fab549bd7958ca62b8785749229e586d4f6ae4d',
-     armv7l: '8565937159b8db6fe74228ce8fab549bd7958ca62b8785749229e586d4f6ae4d',
-     x86_64: '117e32962fb572947e1dc008191f1925e5563e88ebba105a27785463437aaa51'
+    aarch64: '2898d3370a304bda26d0c7f63e26f1f53f9fc9c55e4f765fb02ffe899c778546',
+     armv7l: '2898d3370a304bda26d0c7f63e26f1f53f9fc9c55e4f765fb02ffe899c778546',
+     x86_64: 'd14e5da6636e2fc1ca5195ee2e830efa3a0948474477ae24537def753e4ae67f'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 
   meson_options '-Dexamples=disabled \
                  -Dtests=disabled'
