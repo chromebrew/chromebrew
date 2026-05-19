@@ -1,0 +1,5 @@
+#!/bin/bash
+bdftruncate --help 2>&1 | head -5
+bdftruncate --version
+ucs2any --help | head -5
+ucs2any --version
