@@ -20,6 +20,7 @@ class Pkg_7_zip < Package
   depends_on 'asmc' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
+  depends_on 'uasm' => :build
 
   no_env_options
 
