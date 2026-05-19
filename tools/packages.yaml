@@ -9900,6 +9900,11 @@ url: https://github.com/microsoft/TypeScript/releases
 activity: high
 ---
 kind: url
+name: uasm
+url: https://github.com/Terraspace/UASM/releases
+activity: low
+---
+kind: url
 name: uchardet
 url: https://www.freedesktop.org/software/uchardet/releases/
 activity: none
