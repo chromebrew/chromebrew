@@ -1,0 +1,5 @@
+#!/bin/bash
+flac --help | head
+flac --version
+metaflac --help | head
+metaflac --version

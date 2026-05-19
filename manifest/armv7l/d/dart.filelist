@@ -1,4 +1,4 @@
-# Total size: 425445830
+# Total size: 434532024
 /usr/local/bin/dart
 /usr/local/lib/dart/LICENSE
 /usr/local/lib/dart/README
@@ -15,6 +15,7 @@
 /usr/local/lib/dart/bin/resources/dartdoc/resources/play_button.svg
 /usr/local/lib/dart/bin/resources/dartdoc/resources/readme.md
 /usr/local/lib/dart/bin/resources/dartdoc/resources/search.svg
+/usr/local/lib/dart/bin/resources/dartdoc/resources/search_dark.svg
 /usr/local/lib/dart/bin/resources/dartdoc/resources/styles.css
 /usr/local/lib/dart/bin/resources/dartdoc/templates/404error.html
 /usr/local/lib/dart/bin/resources/dartdoc/templates/_accessor_getter.html
@@ -485,6 +486,9 @@
 /usr/local/lib/dart/bin/resources/devtools/canvaskit/chromium/canvaskit.js
 /usr/local/lib/dart/bin/resources/devtools/canvaskit/chromium/canvaskit.js.symbols
 /usr/local/lib/dart/bin/resources/devtools/canvaskit/chromium/canvaskit.wasm
+/usr/local/lib/dart/bin/resources/devtools/canvaskit/experimental_webparagraph/canvaskit.js
+/usr/local/lib/dart/bin/resources/devtools/canvaskit/experimental_webparagraph/canvaskit.js.symbols
+/usr/local/lib/dart/bin/resources/devtools/canvaskit/experimental_webparagraph/canvaskit.wasm
 /usr/local/lib/dart/bin/resources/devtools/canvaskit/skwasm.js
 /usr/local/lib/dart/bin/resources/devtools/canvaskit/skwasm.js.symbols
 /usr/local/lib/dart/bin/resources/devtools/canvaskit/skwasm.wasm
@@ -650,6 +654,7 @@
 /usr/local/lib/dart/lib/_internal/js_runtime/lib/typed_data_patch.dart
 /usr/local/lib/dart/lib/_internal/js_shared/lib/convert_utf_patch.dart
 /usr/local/lib/dart/lib/_internal/js_shared/lib/date_time_patch.dart
+/usr/local/lib/dart/lib/_internal/js_shared/lib/http_patch.dart
 /usr/local/lib/dart/lib/_internal/js_shared/lib/js_interop_patch.dart
 /usr/local/lib/dart/lib/_internal/js_shared/lib/js_interop_unsafe_patch.dart
 /usr/local/lib/dart/lib/_internal/js_shared/lib/js_types.dart
@@ -682,6 +687,7 @@
 /usr/local/lib/dart/lib/_internal/vm/lib/array.dart
 /usr/local/lib/dart/lib/_internal/vm/lib/array_patch.dart
 /usr/local/lib/dart/lib/_internal/vm/lib/async_patch.dart
+/usr/local/lib/dart/lib/_internal/vm/lib/bigint_patch_patch.dart
 /usr/local/lib/dart/lib/_internal/vm/lib/class_id_fasta.dart
 /usr/local/lib/dart/lib/_internal/vm/lib/concurrent_patch.dart
 /usr/local/lib/dart/lib/_internal/vm/lib/convert_patch.dart
@@ -703,6 +709,7 @@
 /usr/local/lib/dart/lib/_internal/vm/lib/function_patch.dart
 /usr/local/lib/dart/lib/_internal/vm/lib/growable_array.dart
 /usr/local/lib/dart/lib/_internal/vm/lib/hash_factories.dart
+/usr/local/lib/dart/lib/_internal/vm/lib/http_patch.dart
 /usr/local/lib/dart/lib/_internal/vm/lib/identical_patch.dart
 /usr/local/lib/dart/lib/_internal/vm/lib/immutable_map.dart
 /usr/local/lib/dart/lib/_internal/vm/lib/integers.dart
@@ -746,6 +753,7 @@
 /usr/local/lib/dart/lib/_internal/wasm/OWNERS
 /usr/local/lib/dart/lib/_internal/wasm/lib/array_patch.dart
 /usr/local/lib/dart/lib/_internal/wasm/lib/async_patch.dart
+/usr/local/lib/dart/lib/_internal/wasm/lib/bigint_patch_patch.dart
 /usr/local/lib/dart/lib/_internal/wasm/lib/boxed_bool.dart
 /usr/local/lib/dart/lib/_internal/wasm/lib/boxed_double.dart
 /usr/local/lib/dart/lib/_internal/wasm/lib/boxed_int.dart
@@ -810,8 +818,12 @@
 /usr/local/lib/dart/lib/_internal/wasm_js_compatibility/lib/string_buffer_patch.dart
 /usr/local/lib/dart/lib/_internal/wasm_js_compatibility/lib/string_patch.dart
 /usr/local/lib/dart/lib/_internal/wasm_js_compatibility/lib/typed_data_patch.dart
+/usr/local/lib/dart/lib/_internal/wasm_standalone/OWNERS
+/usr/local/lib/dart/lib/_internal/wasm_standalone/lib/embedder.dart
+/usr/local/lib/dart/lib/_internal/wasm_standalone/lib/timer_patch.dart
 /usr/local/lib/dart/lib/_vm/_vm.dart
 /usr/local/lib/dart/lib/_wasm/OWNERS
+/usr/local/lib/dart/lib/_wasm/memory.dart
 /usr/local/lib/dart/lib/_wasm/wasm_types.dart
 /usr/local/lib/dart/lib/api_readme.md
 /usr/local/lib/dart/lib/async/async.dart
