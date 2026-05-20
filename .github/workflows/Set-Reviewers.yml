@@ -1,5 +1,5 @@
 ---
-# Version 1.9
+# Version 2.0
 name: Set Reviewers
 run-name: Set Reviewers for PR from ${{ github.event.workflow_run.display_title }} ${{ inputs.branch || github.event.workflow_run.head_commit.message || github.head_ref || github.ref_name }}
 on:
@@ -37,6 +37,19 @@ jobs:
         env:
           STEPS_CONTEXT: ${{ toJson(steps) }}
         run: echo "$STEPS_CONTEXT"
+      - name: Dump setup job go/no-go variables
+        env:
+          REPO_OWNER: ${{ github.repository_owner == 'chromebrew' }}
+          INPUTS_BRANCH_NOT_MASTER: ${{ inputs.branch != 'master' }}
+          EVENT_WORKFLOW_RUN_HEAD_BRANCH_NOT_MASTER: ${{ github.event.workflow_run.head_branch != 'master' }}
+          EVENT_PULL_REQUEST_DRAFT_FALSE: ${{ github.event.pull_request.draft == false }}
+          EVENT_WORKFLOW_RUN_CONCLUSION_SUCCESS: ${{ github.event.workflow_run.conclusion == 'success' }}
+        run: |
+          echo "github.repository_owner == 'chromebrew' : ${OWNER}"
+          echo "inputs.branch != 'master' : ${INPUTS_BRANCH_NOT_MASTER}"
+          echo "github.event.workflow_run.head_branch != 'master' : ${EVENT_WORKFLOW_RUN_HEAD_BRANCH_NOT_MASTER}"
+          echo "github.event.pull_request.draft == false : ${EVENT_PULL_REQUEST_DRAFT_FALSE}"
+          echo "github.event.workflow_run.conclusion == 'success' : ${EVENT_WORKFLOW_RUN_CONCLUSION_SUCCESS}"
   setup:
     if: ${{ github.repository_owner == 'chromebrew' && inputs.branch != 'master' && github.event.workflow_run.head_branch != 'master' && github.event.pull_request.draft == false && github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-24.04
