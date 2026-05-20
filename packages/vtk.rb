@@ -11,12 +11,13 @@ class Vtk < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e0df4cf3d27adf7dcf0a9d36ceac2da27f81dfb451672ce68698b7b7b9324823',
-     armv7l: 'e0df4cf3d27adf7dcf0a9d36ceac2da27f81dfb451672ce68698b7b7b9324823',
-     x86_64: '03c2031d80010fc06e9383c3d306727fe904753c3695b30f1f8c727540fe5495'
+    aarch64: '6df16cb7af4e50909b500edd35944b7a5cb697c67ef21c56fbf93ad994552ac9',
+     armv7l: '6df16cb7af4e50909b500edd35944b7a5cb697c67ef21c56fbf93ad994552ac9',
+     x86_64: 'a66010a1c60d3c8457911365bb96ae606a3f45f0233a6782a26e2095595d95c8'
   })
 
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'libx11' => :build
 end
