@@ -44,7 +44,6 @@ class Qt5_base < Package
   depends_on 'libice' => :library
   depends_on 'libinput' => :library
   depends_on 'libjpeg_turbo' => :library
-  depends_on 'libminigbm' => :library
   depends_on 'libpng' => :library
   depends_on 'libsm' => :library
   depends_on 'libvpx' => :build

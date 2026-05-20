@@ -50,7 +50,6 @@ class Gstreamer < Meson
   depends_on 'libgudev' => :library
   depends_on 'libiec61883' => :library
   depends_on 'libjpeg_turbo' => :library
-  depends_on 'libminigbm' => :library
   depends_on 'libmodplug' => :library
   depends_on 'libmp3lame' => :library
   depends_on 'libogg' => :library

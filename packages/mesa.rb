@@ -25,7 +25,6 @@ class Mesa < Meson
   depends_on 'glslang' => :build
   depends_on 'libclc' => :build
   depends_on 'libdrm' => :library
-  depends_on 'libminigbm' => :library
   depends_on 'libomxil_bellagio' => :build
   depends_on 'libunwind' => :library
   depends_on 'libva' => :build

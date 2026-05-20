@@ -29,7 +29,6 @@ class Xorg_server < Meson
   depends_on 'libglvnd' => :library
   depends_on 'libinput' => :build
   depends_on 'libmd' => :executable
-  depends_on 'libminigbm' => :library
   depends_on 'libpciaccess' => :executable
   depends_on 'libtirpc' => :executable
   depends_on 'libunwind' => :build

@@ -32,7 +32,6 @@ class Xwayland < Meson
   depends_on 'libfontenc' => :build
   depends_on 'libglvnd' => :executable
   depends_on 'libmd' => :executable
-  depends_on 'libminigbm' => :executable
   depends_on 'libtirpc' => :executable
   depends_on 'libunwind' => :logical # Runtime dependency for sommelier
   depends_on 'libxau' => :executable
