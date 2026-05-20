@@ -21,6 +21,7 @@ class Ruby < Package
   depends_on 'filecmd' => :logical # (This is to enable file command use in package files.)
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gmp' => :library
   depends_on 'libffi' # R
   depends_on 'libxcrypt' => :library
@@ -37,7 +38,7 @@ class Ruby < Package
     # Download bundled gems version from Top of Tree. Otherwise outdated
     # compile needed gems during install can cause issues when updates
     # are attempted.
-    downloader 'https://github.com/ruby/ruby/raw/refs/heads/master/gems/bundled_gems', 'SKIP', 'gems/bundled_gems'
+    downloader 'https://github.com/ruby/ruby/raw/refs/heads/master/gems/bundled_gems', 'SKIP', 'gems/bundled_gems' unless version == '4.0.5'
   end
 
   def self.build
