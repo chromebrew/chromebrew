@@ -10,10 +10,10 @@ class Py3_impacket < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1117db9e8cdee4c90401f25893c719a484e2a5f2095b494035ebd7d91dc4a3d2',
-     armv7l: '1117db9e8cdee4c90401f25893c719a484e2a5f2095b494035ebd7d91dc4a3d2',
-       i686: '8af047d0acfe121e4851f6da2be737df2039a1cc12255db4b95543c6c57dcc66',
-     x86_64: '02ea1096d99a8707bad27c53605f925e9730ce4b2c55be3dbf96eb0c2c9bcaf7'
+    aarch64: '189a3d646c26d6378d44cac97d608141ae2b5be1cde8b30d80613ffbeb7241aa',
+     armv7l: '189a3d646c26d6378d44cac97d608141ae2b5be1cde8b30d80613ffbeb7241aa',
+       i686: '77ed829ebff5adac5b9b406030a61688c70b1aef69d3d46558056e7977192845',
+     x86_64: 'eb6805e84ee24ddb9adacd58fa5cdbd83d5a921a965236f477cce2b5bff23327'
   })
 
   depends_on 'py3_cryptography'

@@ -1,4 +1,4 @@
-# Total size: 15627858
+# Total size: 16159984
 /usr/local/bin/CheckLDAPStatus.py
 /usr/local/bin/DumpNTLMInfo.py
 /usr/local/bin/Get-GPPPassword.py
@@ -20,10 +20,12 @@
 /usr/local/bin/__pycache__/attrib.cpython-314.pyc
 /usr/local/bin/__pycache__/badsuccessor.cpython-314.pyc
 /usr/local/bin/__pycache__/changepasswd.cpython-314.pyc
+/usr/local/bin/__pycache__/checkMSSQLStatus.cpython-314.pyc
 /usr/local/bin/__pycache__/dacledit.cpython-314.pyc
 /usr/local/bin/__pycache__/dcomexec.cpython-314.pyc
 /usr/local/bin/__pycache__/describeTicket.cpython-314.pyc
 /usr/local/bin/__pycache__/dpapi.cpython-314.pyc
+/usr/local/bin/__pycache__/dpapidump.cpython-314.pyc
 /usr/local/bin/__pycache__/esentutl.cpython-314.pyc
 /usr/local/bin/__pycache__/exchanger.cpython-314.pyc
 /usr/local/bin/__pycache__/filetime.cpython-314.pyc
@@ -80,10 +82,12 @@
 /usr/local/bin/attrib.py
 /usr/local/bin/badsuccessor.py
 /usr/local/bin/changepasswd.py
+/usr/local/bin/checkMSSQLStatus.py
 /usr/local/bin/dacledit.py
 /usr/local/bin/dcomexec.py
 /usr/local/bin/describeTicket.py
 /usr/local/bin/dpapi.py
+/usr/local/bin/dpapidump.py
 /usr/local/bin/esentutl.py
 /usr/local/bin/exchanger.py
 /usr/local/bin/filetime.py
@@ -135,13 +139,13 @@
 /usr/local/bin/wmiexec.py
 /usr/local/bin/wmipersist.py
 /usr/local/bin/wmiquery.py
-/usr/local/lib/python3.14/site-packages/impacket-0.13.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/impacket-0.13.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/impacket-0.13.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/impacket-0.13.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/impacket-0.13.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/impacket-0.13.0.dist-info/licenses/LICENSE
-/usr/local/lib/python3.14/site-packages/impacket-0.13.0.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/impacket-0.13.1.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/impacket-0.13.1.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/impacket-0.13.1.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/impacket-0.13.1.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/impacket-0.13.1.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/impacket-0.13.1.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/impacket-0.13.1.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/impacket/Dot11Crypto.py
 /usr/local/lib/python3.14/site-packages/impacket/Dot11KeyManager.py
 /usr/local/lib/python3.14/site-packages/impacket/ICMP6.py
@@ -162,6 +166,7 @@
 /usr/local/lib/python3.14/site-packages/impacket/__pycache__/ImpactPacket.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/impacket/__pycache__/NDP.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/impacket/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/impacket/__pycache__/acl.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/impacket/__pycache__/cdp.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/impacket/__pycache__/crypto.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/impacket/__pycache__/dhcp.cpython-314.pyc
@@ -195,6 +200,7 @@
 /usr/local/lib/python3.14/site-packages/impacket/__pycache__/version.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/impacket/__pycache__/winregistry.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/impacket/__pycache__/wps.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/impacket/acl.py
 /usr/local/lib/python3.14/site-packages/impacket/cdp.py
 /usr/local/lib/python3.14/site-packages/impacket/crypto.py
 /usr/local/lib/python3.14/site-packages/impacket/dcerpc/__init__.py
@@ -357,7 +363,9 @@
 /usr/local/lib/python3.14/site-packages/impacket/examples/ntlmrelayx/servers/__init__.py
 /usr/local/lib/python3.14/site-packages/impacket/examples/ntlmrelayx/servers/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/impacket/examples/ntlmrelayx/servers/__pycache__/httprelayserver.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/impacket/examples/ntlmrelayx/servers/__pycache__/mssqlrelayserver.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/impacket/examples/ntlmrelayx/servers/__pycache__/rawrelayserver.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/impacket/examples/ntlmrelayx/servers/__pycache__/rdprelayserver.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/impacket/examples/ntlmrelayx/servers/__pycache__/rpcrelayserver.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/impacket/examples/ntlmrelayx/servers/__pycache__/smbrelayserver.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/impacket/examples/ntlmrelayx/servers/__pycache__/socksserver.cpython-314.pyc
@@ -365,7 +373,9 @@
 /usr/local/lib/python3.14/site-packages/impacket/examples/ntlmrelayx/servers/__pycache__/winrmrelayserver.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/impacket/examples/ntlmrelayx/servers/__pycache__/winrmsrelayserver.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/impacket/examples/ntlmrelayx/servers/httprelayserver.py
+/usr/local/lib/python3.14/site-packages/impacket/examples/ntlmrelayx/servers/mssqlrelayserver.py
 /usr/local/lib/python3.14/site-packages/impacket/examples/ntlmrelayx/servers/rawrelayserver.py
+/usr/local/lib/python3.14/site-packages/impacket/examples/ntlmrelayx/servers/rdprelayserver.py
 /usr/local/lib/python3.14/site-packages/impacket/examples/ntlmrelayx/servers/rpcrelayserver.py
 /usr/local/lib/python3.14/site-packages/impacket/examples/ntlmrelayx/servers/smbrelayserver.py
 /usr/local/lib/python3.14/site-packages/impacket/examples/ntlmrelayx/servers/socksplugins/__init__.py
@@ -397,6 +407,7 @@
 /usr/local/lib/python3.14/site-packages/impacket/examples/ntlmrelayx/utils/__pycache__/config.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/impacket/examples/ntlmrelayx/utils/__pycache__/enum.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/impacket/examples/ntlmrelayx/utils/__pycache__/identity_log.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/impacket/examples/ntlmrelayx/utils/__pycache__/rdp_ssl.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/impacket/examples/ntlmrelayx/utils/__pycache__/shadow_credentials.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/impacket/examples/ntlmrelayx/utils/__pycache__/ssl.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/impacket/examples/ntlmrelayx/utils/__pycache__/targetsutils.cpython-314.pyc
@@ -404,6 +415,7 @@
 /usr/local/lib/python3.14/site-packages/impacket/examples/ntlmrelayx/utils/config.py
 /usr/local/lib/python3.14/site-packages/impacket/examples/ntlmrelayx/utils/enum.py
 /usr/local/lib/python3.14/site-packages/impacket/examples/ntlmrelayx/utils/identity_log.py
+/usr/local/lib/python3.14/site-packages/impacket/examples/ntlmrelayx/utils/rdp_ssl.py
 /usr/local/lib/python3.14/site-packages/impacket/examples/ntlmrelayx/utils/shadow_credentials.py
 /usr/local/lib/python3.14/site-packages/impacket/examples/ntlmrelayx/utils/ssl.py
 /usr/local/lib/python3.14/site-packages/impacket/examples/ntlmrelayx/utils/targetsutils.py
