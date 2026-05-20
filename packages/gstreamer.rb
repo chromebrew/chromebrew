@@ -31,6 +31,7 @@ class Gstreamer < Meson
   depends_on 'gdk_pixbuf' => :library
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gnutls' => :library
   depends_on 'graphene' => :library
   depends_on 'gtk3' => :library

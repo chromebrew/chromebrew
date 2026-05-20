@@ -17,6 +17,7 @@ class Qt5_base < Package
      x86_64: '4d3f4459f9ca3f5c76932da91a2992037e03c138185fc91f0cef7cb96529ceb3'
   })
 
+  depends_on 'mysql' => :library
   depends_on 'alsa_plugins' => :build
   depends_on 'at_spi2_core' => :library
   depends_on 'cairo' => :library
@@ -31,6 +32,7 @@ class Qt5_base < Package
   depends_on 'gdk_pixbuf' => :library
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gstreamer' => :build
   depends_on 'gtk3' => :library
   depends_on 'harfbuzz' => :library
@@ -70,7 +72,6 @@ class Qt5_base < Package
   if ARCH.eql?('x86_64')
     # Note that mysql can't be built for 32-bit arm, so we do
     # not want that dependency from preventing arm builds here.
-    depends_on 'mysql' => :library
   end
 
   def self.build

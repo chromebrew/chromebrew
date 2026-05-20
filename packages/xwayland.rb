@@ -24,6 +24,7 @@ class Xwayland < Meson
   depends_on 'font_util' => :build
   depends_on 'gcc_lib' => :build
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'graphite' => :build
   depends_on 'libbsd' => :executable
   depends_on 'libdecor' => :executable
