@@ -57,8 +57,7 @@ class Mesa < Meson
 
   no_lto # As per https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/39671
 
-  meson_options "#{CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
-    -Db_asneeded=false \
+  meson_options "-Db_asneeded=false \
     -Degl=enabled \
     -Dgbm=enabled \
     -Dgles1=disabled \
