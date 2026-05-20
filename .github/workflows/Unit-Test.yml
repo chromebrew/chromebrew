@@ -1,5 +1,5 @@
 ---
-# Version 1.7
+# Version 1.8
 name: Unit Tests
 on:
   check_run:
@@ -43,11 +43,19 @@ jobs:
   setup:
     if: ${{ github.repository_owner == 'chromebrew' }}
     runs-on: ubuntu-24.04
+    concurrency:
+      group: ${{ github.workflow }}-${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}-${{ github.sha }}
+      cancel-in-progress: true
     outputs:
       current_head: ${{ steps.get-current-head.outputs.CURRENT_HEAD }}
       changed_packages: ${{ steps.changed-packages.outputs.CHANGED_PACKAGES }}
       non_changed_packages: ${{ steps.changed-files.outputs.non-package_all_changed_files }}
     steps:
+      - name: Dump Concurrency Group
+        env:
+          CONCURRENCY_GROUP: ${{ github.workflow }}-${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}-${{ github.sha }}
+        run: |
+          echo "Concurrency Group: ${CONCURRENCY_GROUP}"
       - name: Get GH Token
         id: get_workflow_token
         uses: peter-murray/workflow-application-token-action@v4
@@ -146,6 +154,11 @@ jobs:
       group: ${{ matrix.arch }}-${{ github.workflow }}-${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}-${{ github.sha }}
       cancel-in-progress: true
     steps:
+      - name: Dump Concurrency Group
+        env:
+          CONCURRENCY_GROUP: $${{ matrix.arch }}-{{ github.workflow }}-${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}-${{ github.sha }}
+        run: |
+          echo "Concurrency Group: ${CONCURRENCY_GROUP}"
       - uses: actions/checkout@v6
         with:
           persist-credentials: true
