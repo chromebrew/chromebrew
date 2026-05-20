@@ -38,7 +38,7 @@ jobs:
           git config user.email "${{ github.actor }}@users.noreply.github.com"
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '4.0.1'
+          ruby-version: '4.0.4'
       - name: Install bin/crew gem dependencies
         run: |
           # Install required gems.

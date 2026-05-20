@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v6
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '4.0.1'
+          ruby-version: '4.0.4'
       - name: Install highline
         run: sudo apt install -y ruby-highline
       - name: Install activesupport

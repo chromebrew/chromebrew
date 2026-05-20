@@ -1,11 +1,11 @@
 #!/bin/bash
 # This is for use as a Github CI Unit Test.
-# Version 1.8
+# Version 1.9
 set -e
 cd /usr/local/lib/crew/packages/
 
 # We have some tests for specific files that aren't run as part of our general testsuite, but we should run those tests if those files are changed.
-for file in ${NON_PKG_CHANGED_FILES}; do
+for file in ${NON_PKG_NON_WORKFLOW_CHANGED_FILES}; do
   # The only files with direct corresponding tests are located in the root of the commands, lib, and tools directories.
   echo "commands lib tools" | grep -q "$(dirname "${file}")" || continue
   # If we have modified a file that has a direct corresponding test, run that test.
@@ -47,7 +47,7 @@ yes | crew remove vim
 # This fails due to glibc changes since the older git tag we are testing
 # against.
 ## Only test the core functionality of crew if non-package files were modified.
-#if [[ -n ${NON_PKG_CHANGED_FILES-} ]]; then
+#if [[ -n ${NON_PKG_NON_WORKFLOW_CHANGED_FILES-} ]]; then
   ## Check if rake is installed and working, and if not install it.
   #rake --help &>/dev/null || gem install rake
   ## This runs the default rake action, which in our case runs the tests for commands and libraries.
