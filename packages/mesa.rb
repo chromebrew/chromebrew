@@ -55,6 +55,7 @@ class Mesa < Meson
   depends_on 'zlib' => :library
   depends_on 'zstd' => :library
 
+  conflicts_with 'libminigbm'
   no_lto # As per https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/39671
 
   meson_options "-Db_asneeded=false \
