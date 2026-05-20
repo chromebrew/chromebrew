@@ -1,0 +1,29 @@
+---
+# Version 1.0
+name: Actions Updater
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+env:
+  GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
+permissions:
+  actions: write
+  contents: write
+  packages: write
+  pull-requests: write
+  repository-projects: read
+jobs:
+  autocheck:
+    if: ${{ github.repository_owner == 'chromebrew' }}
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: true
+      - name: Run GitHub Actions Version Updater
+        uses: saadmk11/github-actions-version-updater@v0.9.0
+        with:
+          token: ${{ secrets.CREW_PR_TOKEN}}
+          pull_request_team_reviewers: chromebrew/active
+          pull_request_labels: updater
