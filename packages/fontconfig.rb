@@ -19,7 +19,7 @@ class Fontconfig < Meson
 
   depends_on 'expat' => :library
   depends_on 'freetype' => :library
-  depends_on 'gcc_lib' # R
+  depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
   depends_on 'gperf' => :build
