@@ -1,0 +1,4 @@
+#!/bin/bash
+man fbc | head
+fbc --help | head
+fbc --version 2>&1
