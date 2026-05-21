@@ -31,6 +31,7 @@ class Qt5_base < Package
   depends_on 'gdk_pixbuf' => :library
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gstreamer' => :build
   depends_on 'gtk3' => :library
   depends_on 'harfbuzz' => :library
@@ -44,7 +45,6 @@ class Qt5_base < Package
   depends_on 'libice' => :library
   depends_on 'libinput' => :library
   depends_on 'libjpeg_turbo' => :library
-  depends_on 'libminigbm' => :library
   depends_on 'libpng' => :library
   depends_on 'libsm' => :library
   depends_on 'libvpx' => :build

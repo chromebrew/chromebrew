@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Mesa < Meson
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  version "26.0.5-#{CREW_LLVM_VER}"
+  version "26.1.1-#{CREW_LLVM_VER}"
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/mesa/mesa.git'
@@ -11,9 +11,9 @@ class Mesa < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '670f02ee5a14601099deb2f0e5f577651ab7102f0f0bebda1b90ba098ed0dab3',
-     armv7l: '670f02ee5a14601099deb2f0e5f577651ab7102f0f0bebda1b90ba098ed0dab3',
-     x86_64: '6362ab7d19c7653d9fc074f2e14f6e7ec25df16586ab823a9d6c57f973ab3f9b'
+    aarch64: '16327e1161cc0a14883905be60788b3550497423c8786bbe316d0aa574e7dd9a',
+     armv7l: '16327e1161cc0a14883905be60788b3550497423c8786bbe316d0aa574e7dd9a',
+     x86_64: '5e049f471424d254da3720c59a1e9eb39d4c2b80b5ee50a85f81599986bb8c45'
   })
 
   depends_on 'elfutils' => :library
@@ -22,10 +22,10 @@ class Mesa < Meson
   depends_on 'gcc_dev' => :build
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'glslang' => :build
   depends_on 'libclc' => :build
   depends_on 'libdrm' => :library
-  depends_on 'libminigbm' => :library
   depends_on 'libomxil_bellagio' => :build
   depends_on 'libunwind' => :library
   depends_on 'libva' => :build
@@ -55,10 +55,10 @@ class Mesa < Meson
   depends_on 'zlib' => :library
   depends_on 'zstd' => :library
 
+  conflicts_with 'libminigbm'
   no_lto # As per https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/39671
 
-  meson_options "#{CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
-    -Db_asneeded=false \
+  meson_options "-Db_asneeded=false \
     -Degl=enabled \
     -Dgbm=enabled \
     -Dgles1=disabled \

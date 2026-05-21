@@ -1,5 +1,5 @@
 ---
-# Version 1.7
+# Version 1.9
 name: Unit Tests
 on:
   check_run:
@@ -43,11 +43,20 @@ jobs:
   setup:
     if: ${{ github.repository_owner == 'chromebrew' }}
     runs-on: ubuntu-24.04
+    concurrency:
+      group: ${{ github.workflow }}-${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}-${{ github.sha }}
+      cancel-in-progress: true
     outputs:
       current_head: ${{ steps.get-current-head.outputs.CURRENT_HEAD }}
       changed_packages: ${{ steps.changed-packages.outputs.CHANGED_PACKAGES }}
-      non_changed_packages: ${{ steps.changed-files.outputs.non-package_all_changed_files }}
+      non_package_non_workflow_files: ${{ steps.changed-files.outputs.non-package-non-workflow_all_changed_files }}
+      changed_workflow_files: ${{ steps.changed-files.outputs.workflows_all_changed_files }}
     steps:
+      - name: Dump Concurrency Group
+        env:
+          CONCURRENCY_GROUP: ${{ github.workflow }}-${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}-${{ github.sha }}
+        run: |
+          echo "Concurrency Group: ${CONCURRENCY_GROUP}"
       - name: Get GH Token
         id: get_workflow_token
         uses: peter-murray/workflow-application-token-action@v4
@@ -79,11 +88,14 @@ jobs:
           base_sha: ${{ steps.get-current-head.outputs.CURRENT_HEAD }}
           since_last_remote_commit: true
           files_yaml: |
-            non-package:
+            non-package-non-workflow:
               - '**'
+              - '!.github/workflows/*.yml'
               - '!packages/**.rb'
             packages:
               - packages/**.rb
+            workflows:
+              - '.github/workflows/*.yml'
       - name: Sanitize and export changed packages to github context.
         id: changed-packages
         run: |
@@ -93,8 +105,18 @@ jobs:
             # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-files.outputs.packages_all_changed_files) into "foo bar"
             echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-files.outputs.packages_all_changed_files }}" | xargs --no-run-if-empty basename -s .rb | xargs --no-run-if-empty)" >> "$GITHUB_ENV"
             echo "CHANGED_PACKAGES=$(echo "${{ steps.changed-files.outputs.packages_all_changed_files }}" | xargs --no-run-if-empty basename -s .rb | xargs --no-run-if-empty)" >> "$GITHUB_OUTPUT"
+      - name: Check Setup Outputs
+        env:
+          STEPS_CHANGED_PACKAGES_EMPTY: ${{ steps.changed-packages.outputs.CHANGED_PACKAGES != '' }}
+          STEPS_NON_PKG_NON_WORKFLOW_CHANGED_FILES_EMPTY: ${{ steps.changed-files.outputs.non-package-non-workflow_all_changed_files != '' }}
+          NON_PKG_NON_WORKFLOW_CHANGED_FILES: ${{ steps.changed-files.outputs.non-package-non-workflow_all_changed_files }}
+        run: |
+          echo "steps.changed-packages.outputs.CHANGED_PACKAGES != '' : ${STEPS_CHANGED_PACKAGES_EMPTY}"
+          echo "steps.changed-files.outputs.non-package-non-workflow_all_changed_files != '' : ${STEPS_NON_PKG_NON_WORKFLOW_CHANGED_FILES_EMPTY}"
+          [[ -n ${NON_PKG_NON_WORKFLOW_CHANGED_FILES} ]] && echo "NON_PKG_NON_WORKFLOW_CHANGED_FILES: ${NON_PKG_NON_WORKFLOW_CHANGED_FILES}" || true
   get-compatibility:
     needs: setup
+    if: ${{ ( needs.setup.outputs.changed_packages != '' ) || ( needs.setup.outputs.non_package_non_workflow_files != '' ) }}
     uses: ./.github/workflows/Determine-Compatibility.yml
     with:
       changed_packages: ${{ needs.setup.outputs.changed_packages }}
@@ -146,6 +168,11 @@ jobs:
       group: ${{ matrix.arch }}-${{ github.workflow }}-${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}-${{ github.sha }}
       cancel-in-progress: true
     steps:
+      - name: Dump Concurrency Group
+        env:
+          CONCURRENCY_GROUP: $${{ matrix.arch }}-{{ github.workflow }}-${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}-${{ github.sha }}
+        run: |
+          echo "Concurrency Group: ${CONCURRENCY_GROUP}"
       - uses: actions/checkout@v6
         with:
           persist-credentials: true
@@ -220,7 +247,7 @@ jobs:
       - name: Run unit tests
         env:
           GITHUB_EVENT: ${{ github.event_name }}
-          NON_PKG_CHANGED_FILES: ${{ needs.setup.outputs.non_changed_packages }}
+          NON_PKG_NON_WORKFLOW_CHANGED_FILES: ${{ needs.setup.outputs.non_package_non_workflow_files }}
         run: |
             case $GITHUB_EVENT in
               check_run | merge_group | push | workflow_run | workflow_dispatch)
@@ -236,15 +263,15 @@ jobs:
                 export CREW_BRANCH
                 ;;
             esac
-            if [ -z "${NON_PKG_CHANGED_FILES}" ] && { [ "$PLATFORM" == 'linux/arm/v7'  ] && [ -z "${{ needs.get-compatibility.outputs.armv7l_packages }}" ]; }; then
+            if [ -z "${NON_PKG_NON_WORKFLOW_CHANGED_FILES}" ] && { [ "$PLATFORM" == 'linux/arm/v7'  ] && [ -z "${{ needs.get-compatibility.outputs.armv7l_packages }}" ]; }; then
               # Exit the arm container if there are neither non-package changed files nor armv7l compatible packages.
               echo "Skipping armv7l container unit tests."
               exit 0
-            elif [ -z "${NON_PKG_CHANGED_FILES}" ] && { [ "$PLATFORM" == 'linux/amd64' ] && [ -z "${{ needs.get-compatibility.outputs.x86_64_packages }}" ]; }; then
+            elif [ -z "${NON_PKG_NON_WORKFLOW_CHANGED_FILES}" ] && { [ "$PLATFORM" == 'linux/amd64' ] && [ -z "${{ needs.get-compatibility.outputs.x86_64_packages }}" ]; }; then
               # Exit the x86_64 container if there are neither non-package changed files nor x86_64 compatible packages.
               echo "Skipping x86_64 container unit tests."
               exit 0
-            elif [ -z "${NON_PKG_CHANGED_FILES}" ] && { [ "$PLATFORM" == 'linux/386' ] && [ -z "${{ needs.get-compatibility.outputs.i686_packages }}" ]; }; then
+            elif [ -z "${NON_PKG_NON_WORKFLOW_CHANGED_FILES}" ] && { [ "$PLATFORM" == 'linux/386' ] && [ -z "${{ needs.get-compatibility.outputs.i686_packages }}" ]; }; then
               # Exit the i686 container if there are neither non-package changed files nor i686 compatible packages.
               echo "Skipping i686 container unit tests."
               exit 0
@@ -255,7 +282,7 @@ jobs:
                 --rm \
                 --platform "${PLATFORM}" \
                 -e CHANGED_PACKAGES="${CHANGED_PACKAGES}" \
-                -e NON_PKG_CHANGED_FILES="${NON_PKG_CHANGED_FILES}" \
+                -e NON_PKG_NON_WORKFLOW_CHANGED_FILES="${NON_PKG_NON_WORKFLOW_CHANGED_FILES}" \
                 -e GCONV_PATH="/usr/local/lib${LIB_SUFFIX}/gconv" \
                 -e CREW_REPO="${CREW_REPO}" \
                 -e CREW_BRANCH="${CREW_BRANCH}" \

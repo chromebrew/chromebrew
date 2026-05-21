@@ -27,7 +27,6 @@ class Wlroots < Meson
   depends_on 'libglvnd' => :library
   depends_on 'libinput' => :library
   depends_on 'libliftoff' => :library
-  depends_on 'libminigbm' => :library
   depends_on 'libxcb' => :library
   depends_on 'libxkbcommon' => :library
   depends_on 'mesa' => :library
