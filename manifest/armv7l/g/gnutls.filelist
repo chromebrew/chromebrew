@@ -1,4 +1,4 @@
-# Total size: 4023837
+# Total size: 4202483
 /usr/local/bin/certtool
 /usr/local/bin/danetool
 /usr/local/bin/gnutls-cli
@@ -15,6 +15,7 @@
 /usr/local/include/gnutls/dtls.h
 /usr/local/include/gnutls/gnutls.h
 /usr/local/include/gnutls/gnutlsxx.h
+/usr/local/include/gnutls/hpke.h
 /usr/local/include/gnutls/ocsp.h
 /usr/local/include/gnutls/openpgp.h
 /usr/local/include/gnutls/pkcs11.h
@@ -34,7 +35,7 @@
 /usr/local/lib/libgnutls.la
 /usr/local/lib/libgnutls.so
 /usr/local/lib/libgnutls.so.30
-/usr/local/lib/libgnutls.so.30.41.1
+/usr/local/lib/libgnutls.so.30.42.0
 /usr/local/lib/libgnutlsxx.la
 /usr/local/lib/libgnutlsxx.so
 /usr/local/lib/libgnutlsxx.so.30
