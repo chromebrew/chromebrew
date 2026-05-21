@@ -1,13 +1,15 @@
-# Total size: 763831
+# Total size: 776377
 /usr/local/bin/fc-cache
 /usr/local/bin/fc-cat
 /usr/local/bin/fc-conflist
+/usr/local/bin/fc-genconf
 /usr/local/bin/fc-list
 /usr/local/bin/fc-match
 /usr/local/bin/fc-pattern
 /usr/local/bin/fc-query
 /usr/local/bin/fc-scan
 /usr/local/bin/fc-validate
+/usr/local/etc/fonts/conf.d/05-macos.conf
 /usr/local/etc/fonts/conf.d/10-hinting-slight.conf
 /usr/local/etc/fonts/conf.d/10-scale-bitmap-fonts.conf
 /usr/local/etc/fonts/conf.d/10-sub-pixel-none.conf
@@ -18,6 +20,7 @@
 /usr/local/etc/fonts/conf.d/40-nonlatin.conf
 /usr/local/etc/fonts/conf.d/45-generic.conf
 /usr/local/etc/fonts/conf.d/45-latin.conf
+/usr/local/etc/fonts/conf.d/48-guessfamily.conf
 /usr/local/etc/fonts/conf.d/48-spacing.conf
 /usr/local/etc/fonts/conf.d/49-sansserif.conf
 /usr/local/etc/fonts/conf.d/50-user.conf
@@ -37,8 +40,9 @@
 /usr/local/include/fontconfig/fontconfig.h
 /usr/local/lib64/libfontconfig.so
 /usr/local/lib64/libfontconfig.so.1
-/usr/local/lib64/libfontconfig.so.1.16.0
+/usr/local/lib64/libfontconfig.so.1.17.0
 /usr/local/lib64/pkgconfig/fontconfig.pc
+/usr/local/share/fontconfig/conf.avail/05-macos.conf
 /usr/local/share/fontconfig/conf.avail/05-reset-dirs-sample.conf
 /usr/local/share/fontconfig/conf.avail/09-autohint-if-no-hinting.conf
 /usr/local/share/fontconfig/conf.avail/10-autohint.conf

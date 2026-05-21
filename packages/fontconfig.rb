@@ -8,19 +8,20 @@ class Fontconfig < Meson
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/fontconfig/fontconfig.git'
-  git_hashtag version.split('-').first
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0ee8249b0067ddcc372a65b66fa0a0b8d08646033ccafa0cad4e92ae0661e1bf',
-     armv7l: '0ee8249b0067ddcc372a65b66fa0a0b8d08646033ccafa0cad4e92ae0661e1bf',
-     x86_64: 'c58ec272425563fe76cc28662ff3682b36c0499660b142bc53144f967b39b307'
+    aarch64: 'fe6770d0db39be7c3f5e33e926f121451c4242056634f4e728d07440ed917173',
+     armv7l: 'fe6770d0db39be7c3f5e33e926f121451c4242056634f4e728d07440ed917173',
+     x86_64: 'a98c68a30a64bfefa70f2a22b0162c3a2ea6428f049231a55020dec2a6785537'
   })
 
-  depends_on 'expat' # R
-  depends_on 'freetype' # R
+  depends_on 'expat' => :library
+  depends_on 'freetype' => :library
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gperf' => :build
   depends_on 'graphite' => :build
   depends_on 'harfbuzz' => :executable
