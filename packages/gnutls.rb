@@ -11,31 +11,31 @@ class Gnutls < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7e5d7741139db8e2c9614fa662663b2e003ee8a68319ae99bd909a243971754d',
-     armv7l: '7e5d7741139db8e2c9614fa662663b2e003ee8a68319ae99bd909a243971754d',
-       i686: 'c8c5e45df68e6d3c7c38b66fd54990c3cfd6a5bed3e78d3cd765c4b55a4d9231',
-     x86_64: 'c99a27294d0833284c23a77c800a3ca9e7f769d122a6ea7a95db6e68ed7e1d2b'
+    aarch64: '9b486eb64ad4903aa450999d6cd2c7226d593dffc4d9afdcc2129a143b05d791',
+     armv7l: '9b486eb64ad4903aa450999d6cd2c7226d593dffc4d9afdcc2129a143b05d791',
+       i686: '4bb5143d70e669b802285171092e42a013d8c3848f002a44d6739601c36462a4',
+     x86_64: '90cf5b62ab2bbe170f2c372b49237178e0c370adc4b7539cfc69eecd330c3cca'
   })
 
-  depends_on 'brotli' # R
+  depends_on 'brotli' => :library
   depends_on 'ca_certificates' => :logical
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'gmp' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'gmp' => :library
   depends_on 'gperf' => :build
   depends_on 'libev' => :build
   depends_on 'libffi' => :build
-  depends_on 'libidn2' # R
-  depends_on 'libtasn1' # R
-  depends_on 'libunbound' # R
-  depends_on 'libunistring' # R
-  depends_on 'nettle' # R
-  depends_on 'openssl' # R
-  depends_on 'p11kit' # R
+  depends_on 'libidn2' => :library
+  depends_on 'libtasn1' => :library
+  depends_on 'libunbound' => :library
+  depends_on 'libunistring' => :library
+  depends_on 'nettle' => :library
+  depends_on 'openssl' => :library
+  depends_on 'p11kit' => :library
   depends_on 'trousers' => :build
   depends_on 'wget_static' => :build
-  depends_on 'zlib' # R
-  depends_on 'zstd' # R
+  depends_on 'zlib' => :library
+  depends_on 'zstd' => :library
 
   no_lto
 
