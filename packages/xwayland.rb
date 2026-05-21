@@ -24,6 +24,7 @@ class Xwayland < Meson
   depends_on 'font_util' => :build
   depends_on 'gcc_lib' => :build
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'graphite' => :build
   depends_on 'libbsd' => :executable
   depends_on 'libdecor' => :executable
@@ -32,7 +33,6 @@ class Xwayland < Meson
   depends_on 'libfontenc' => :build
   depends_on 'libglvnd' => :executable
   depends_on 'libmd' => :executable
-  depends_on 'libminigbm' => :executable
   depends_on 'libtirpc' => :executable
   depends_on 'libunwind' => :logical # Runtime dependency for sommelier
   depends_on 'libxau' => :executable

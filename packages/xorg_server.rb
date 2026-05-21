@@ -21,6 +21,7 @@ class Xorg_server < Meson
   depends_on 'font_util' => :build
   depends_on 'gcc_lib' => :build
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'graphite' => :build
   depends_on 'libbsd' => :library
   depends_on 'libdrm' => :library
@@ -29,7 +30,6 @@ class Xorg_server < Meson
   depends_on 'libglvnd' => :library
   depends_on 'libinput' => :build
   depends_on 'libmd' => :executable
-  depends_on 'libminigbm' => :library
   depends_on 'libpciaccess' => :executable
   depends_on 'libtirpc' => :executable
   depends_on 'libunwind' => :build

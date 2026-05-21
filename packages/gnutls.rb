@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Gnutls < Autotools
   description 'GnuTLS is a secure communications library implementing the SSL, TLS and DTLS protocols and technologies around them.'
   homepage 'https://gnutls.org/'
-  version '3.8.12'
+  version '3.8.13'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://gitlab.com/gnutls/gnutls.git'
@@ -11,47 +11,49 @@ class Gnutls < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7e5d7741139db8e2c9614fa662663b2e003ee8a68319ae99bd909a243971754d',
-     armv7l: '7e5d7741139db8e2c9614fa662663b2e003ee8a68319ae99bd909a243971754d',
-       i686: 'c8c5e45df68e6d3c7c38b66fd54990c3cfd6a5bed3e78d3cd765c4b55a4d9231',
-     x86_64: 'c99a27294d0833284c23a77c800a3ca9e7f769d122a6ea7a95db6e68ed7e1d2b'
+    aarch64: '9b486eb64ad4903aa450999d6cd2c7226d593dffc4d9afdcc2129a143b05d791',
+     armv7l: '9b486eb64ad4903aa450999d6cd2c7226d593dffc4d9afdcc2129a143b05d791',
+       i686: '4bb5143d70e669b802285171092e42a013d8c3848f002a44d6739601c36462a4',
+     x86_64: '90cf5b62ab2bbe170f2c372b49237178e0c370adc4b7539cfc69eecd330c3cca'
   })
 
-  depends_on 'brotli' # R
+  depends_on 'brotli' => :library
   depends_on 'ca_certificates' => :logical
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'gmp' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'gmp' => :library
   depends_on 'gperf' => :build
   depends_on 'libev' => :build
   depends_on 'libffi' => :build
-  depends_on 'libidn2' # R
-  depends_on 'libtasn1' # R
-  depends_on 'libunbound' # R
-  depends_on 'libunistring' # R
-  depends_on 'nettle' # R
-  depends_on 'openssl' # R
-  depends_on 'p11kit' # R
+  depends_on 'libidn2' => :library
+  depends_on 'libtasn1' => :library
+  depends_on 'libunbound' => :library
+  depends_on 'libunistring' => :library
+  depends_on 'nettle' => :library
+  depends_on 'openssl' => :library
+  depends_on 'p11kit' => :library
   depends_on 'trousers' => :build
   depends_on 'wget_static' => :build
-  depends_on 'zlib' # R
-  depends_on 'zstd' # R
+  depends_on 'zlib' => :library
+  depends_on 'zstd' => :library
 
   no_lto
 
   def self.prebuild
+    # The c11threads threads.h breaks builds on software that uses gnulib.
+    # See: https://github.com/jtsiomb/c11threads/issues/19
+    # Note that c11threads is a workaround for C11 Threads only being
+    # introduced in Glibc 2.28 as per:
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=14092#c10
+    if LIBC_VERSION.to_f < 2.28 && ENV['NESTED_CI']
+      puts 'Removing the c11threads include/threads.h from the c11threads package to prevent build failures.'.orange
+      FileUtils.rm_f "#{CREW_PREFIX}/include/threads.h"
+    end
     # Use IPv4 fallback if default connection fails.
     system "#{CREW_PREFIX}/sbin/unbound-anchor -a '#{CREW_PREFIX}/etc/unbound/root.key' || #{CREW_PREFIX}/sbin/unbound-anchor -4 -a '#{CREW_PREFIX}/etc/unbound/root.key'"
     # Rebuild ca-certificates.
     system "#{CREW_PREFIX}/bin/update-ca-certificates --fresh --certsconf #{CREW_PREFIX}/etc/ca-certificates.conf"
-  end
-
-  def self.patch
-    patches = [
-      # nettle 4.0 patch
-      ['https://gitlab.com/gnutls/gnutls/-/merge_requests/2075.diff', '890a5b576253d1088f91e187e0a2979283d034b7d5f41eca13c0e857f37e61f3']
-    ]
-    ConvenienceFunctions.patch(patches) if version == '3.8.12'
   end
 
   autotools_configure_options "--disable-doc \

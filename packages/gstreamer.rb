@@ -31,6 +31,7 @@ class Gstreamer < Meson
   depends_on 'gdk_pixbuf' => :library
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gnutls' => :library
   depends_on 'graphene' => :library
   depends_on 'gtk3' => :library
@@ -50,7 +51,6 @@ class Gstreamer < Meson
   depends_on 'libgudev' => :library
   depends_on 'libiec61883' => :library
   depends_on 'libjpeg_turbo' => :library
-  depends_on 'libminigbm' => :library
   depends_on 'libmodplug' => :library
   depends_on 'libmp3lame' => :library
   depends_on 'libogg' => :library
