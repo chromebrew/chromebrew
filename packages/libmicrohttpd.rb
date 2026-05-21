@@ -22,5 +22,5 @@ class Libmicrohttpd < Autotools
   depends_on 'glibc_lib' => :library
   depends_on 'gnutls' => :library
 
-  autotools_configure_options "--disable-examples #{'--disable-year2038' unless 'x86_64'.include?(ARCH)}"
+  autotools_configure_options "--disable-examples #{'--disable-year2038' unless ARCH.eql?('x86_64')}"
 end
