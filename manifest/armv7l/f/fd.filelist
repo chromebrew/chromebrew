@@ -1,5 +1,4 @@
-# Total size: 2424040
+# Total size: 3277606
+/home/chronos/user/.zfunc/_fd
 /usr/local/bin/fd
-/usr/local/share/bash-completion/completions/fd
-/usr/local/share/man/man1/fd.1.gz
-/usr/local/share/zsh/site-functions/_fd
+/usr/local/share/man/man1/fd.1.zst

@@ -1,39 +1,32 @@
-require 'package'
+require 'buildsystems/rust'
 
-class Fd < Package
+class Fd < RUST
   description "A simple, fast and user-friendly alternative to 'find'."
   homepage 'https://github.com/sharkdp/fd/'
-  @_ver = '8.3.0'
-  version "#{@_ver}-1"
+  version '10.4.2'
   license 'Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/sharkdp/fd.git'
-  git_hashtag "v#{@_ver}"
-  binary_compression 'tpxz'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1325765ea06369318274a4c9432b22cff9a6714b15afd7c6d61ab833166852f3',
-     armv7l: '1325765ea06369318274a4c9432b22cff9a6714b15afd7c6d61ab833166852f3',
-       i686: '7c39bc4ee7d48d65baea2e20a5573ba48a285c00a6e1816809a04749f657a15a',
-     x86_64: '076f8e237125bcd488bdcf72a4f6a6f3e0786de795fb19444ec30c288f421965'
+    aarch64: 'f73056ff720be22f16bd56e7a0aa9a98f05f199f5555ad1316d2dbd87713433c',
+     armv7l: 'f73056ff720be22f16bd56e7a0aa9a98f05f199f5555ad1316d2dbd87713433c',
+       i686: '904f6f2e266e7a82d10e84e2d09fc17ebbe60e61d25f82414fb428ac771f1127',
+     x86_64: '66bca1a50dd1abc3f7c55607cc3a438b2c7e4a6904e3c0a1c6a2e2e457ef012f'
   })
 
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'rust' => :build
 
-  def self.build
-    system 'cargo build --release'
-  end
-
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin/"
-    FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/man1/"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/bash-completion/completions/"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/zsh/site-functions/"
     FileUtils.install 'target/release/fd', "#{CREW_DEST_PREFIX}/bin/fd", mode: 0o755
-    FileUtils.install `find . -name 'fd.bash' -type f`.to_s.chomp,
-                      "#{CREW_DEST_PREFIX}/share/bash-completion/completions/fd"
-    FileUtils.install 'doc/fd.1', "#{CREW_DEST_MAN_PREFIX}/man1/fd.1"
-    FileUtils.install 'contrib/completion/_fd', "#{CREW_DEST_PREFIX}/share/zsh/site-functions/_fd"
+    FileUtils.install 'doc/fd.1', "#{CREW_DEST_MAN_PREFIX}/man1/fd.1", mode: 0o644
+    # FileUtils.install 'fd.bash', "#{CREW_DEST_PREFIX}/etc/env.d/10-fd", mode: 0o644
+    FileUtils.install 'contrib/completion/_fd', "#{CREW_DEST_HOME}/.zfunc/_fd", mode: 0o644
   end
 
   def self.check
