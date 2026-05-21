@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# getrealdeps version 2.14 (for Chromebrew)
+# getrealdeps version 2.15 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 #
 # Dependencies in Chromebrew can be:
@@ -67,6 +67,7 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
     { name_regex: 'gcc_build', exclusion_regex: 'gcc.*_*', comments: 'created from the gcc_build package.' },
     { name_regex: '(gcc_dev|gcc_lib|libssp)', exclusion_regex: 'gcc_build', comments: 'should only be a build dep.' },
     { name_regex: 'gcc_lib', exclusion_regex: 'gcc_lib', comments: 'should only be a build dep.' },
+    { name_regex: 'mesa', exclusion_regex: 'libminigbm', comments: 'Conflicts with mesa' },
     { name_regex: 'python3', exclusion_regex: '(tcl|tk)', comments: 'optional for i686, which does not have gui libraries.' },
     { name_regex: 'qt5_base', exclusion_regex: 'mysql', comments: 'Do not want dep for armv7l, since mysql us 64 bit only.' },
     { name_regex: 'smbclient', exclusion_regex: 'nethack4', comments: 'We want libjansson.so.4 to be pulled from the jansson package.' },
@@ -213,6 +214,8 @@ def determine_dependencies(pkg_name, pkgfiles_to_check)
   pkgdeps = pkgdeps.map { |i| i.gsub('glibc_fallthrough', 'glibc') }.uniq
   pkgdeps = pkgdeps.map { |i| i.gsub(/glibc_lib.*/, 'glibc_lib') }.uniq.map(&:strip).reject(&:empty?)
 
+  # Prefer mesa to libminigbm
+  pkgdeps = pkgdeps.map { it.gsub('libminigbm', 'mesa') }.uniq
   # Massage the gcc entries in the dependency list.
   pkgdeps = pkgdeps.map { |i| i.gsub('gcc_build', 'gcc_lib') }.uniq
 

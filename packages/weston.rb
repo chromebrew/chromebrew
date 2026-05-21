@@ -35,7 +35,6 @@ class Weston < Meson
   depends_on 'libglvnd' => :library
   depends_on 'libinput' => :library
   depends_on 'libjpeg_turbo' => :library
-  depends_on 'libminigbm' => :library
   depends_on 'libpng' => :library
   depends_on 'libunwind'
   depends_on 'libva' # R

@@ -1004,18 +1004,12 @@ def prepare_package(destdir)
     conflicts = ConvenienceFunctions.determine_conflicts(@pkg.name, File.join(Dir.pwd, 'filelist'), '_build', verbose: CREW_VERBOSE)
 
     if conflicts.any?
-      if CREW_CONFLICTS_ONLY_ADVISORY || @pkg.conflicts_ok?
-        puts "Warning: There is a conflict with the same file in another package:\n".orange
-      else
-        puts "Error: There is a conflict with the same file in another package:\n".lightred
-        errors = true
-      end
-
       conflicts.each_pair do |pkg_name, conflict_files|
-        if errors
-          conflict_files.each { |file| puts "#{pkg_name}: #{file}".lightred }
+        if pkg_name == @pkg.conflicts_with || CREW_CONFLICTS_ONLY_ADVISORY || @pkg.conflicts_ok?
+          conflict_files.each { |file| puts "Warning: There is a conflict with the same file in another package:\n#{pkg_name}: #{file}".orange }
         else
-          conflict_files.each { |file| puts "#{pkg_name}: #{file}".orange }
+          conflict_files.each { |file| puts "Error: There is a conflict with the same file in another package:\n#{pkg_name}: #{file}".lightred }
+          errors = true
         end
         puts
       end
