@@ -19,11 +19,11 @@ class Cairo < Meson
 
   depends_on 'fontconfig' => :library
   depends_on 'freetype' => :library
-  depends_on 'gcc_lib' # R
+  depends_on 'gcc_lib' => :library
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
-  depends_on 'harfbuzz' # R
+  depends_on 'harfbuzz' => :build
   depends_on 'libpng' => :library
   depends_on 'libx11' => :library
   depends_on 'libxcb' => :library
