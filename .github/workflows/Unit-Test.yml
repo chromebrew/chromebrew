@@ -1,5 +1,5 @@
 ---
-# Version 1.8
+# Version 1.9
 name: Unit Tests
 on:
   check_run:
@@ -113,7 +113,7 @@ jobs:
         run: |
           echo "steps.changed-packages.outputs.CHANGED_PACKAGES != '' : ${STEPS_CHANGED_PACKAGES_EMPTY}"
           echo "steps.changed-files.outputs.non-package-non-workflow_all_changed_files != '' : ${STEPS_NON_PKG_NON_WORKFLOW_CHANGED_FILES_EMPTY}"
-          [[ -n ${NON_PKG_NON_WORKFLOW_CHANGED_FILES} ]] && echo "NON_PKG_NON_WORKFLOW_CHANGED_FILES: ${NON_PKG_NON_WORKFLOW_CHANGED_FILES}"
+          [[ -n ${NON_PKG_NON_WORKFLOW_CHANGED_FILES} ]] && echo "NON_PKG_NON_WORKFLOW_CHANGED_FILES: ${NON_PKG_NON_WORKFLOW_CHANGED_FILES}" || true
   get-compatibility:
     needs: setup
     if: ${{ ( needs.setup.outputs.changed_packages != '' ) || ( needs.setup.outputs.non_package_non_workflow_files != '' ) }}
