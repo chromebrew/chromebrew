@@ -4,32 +4,33 @@ require 'buildsystems/meson'
 class Pango < Meson
   description 'Pango is a library for laying out and rendering of text, with an emphasis on internationalization.'
   homepage 'https://www.pango.org/'
-  version '1.56.4-1'
+  version '1.57.1'
   license 'LGPL-2+ and FTL'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/pango.git'
-  git_hashtag version.split('-').first
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8f88149956e9f63b02e2a7c1703252fd2e644a05b6a6bba8435b8ee9f7bcc7bd',
-     armv7l: '8f88149956e9f63b02e2a7c1703252fd2e644a05b6a6bba8435b8ee9f7bcc7bd',
-     x86_64: 'a161560799003988efa256a9cdb4b724967228de7c17ecc515ef89b058bc55dc'
+    aarch64: '99a46a9dc8a7becd264e77626144bbccc57590582e35e3c7ab59190a5370d396',
+     armv7l: '99a46a9dc8a7becd264e77626144bbccc57590582e35e3c7ab59190a5370d396',
+     x86_64: '1c9bd397e131506cc4025416b44f937c9003d3511e7e93d356f9432b743dbb19'
   })
 
-  depends_on 'cairo' # R
-  depends_on 'fontconfig' # R
-  depends_on 'freetype' # R
-  depends_on 'fribidi' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
+  depends_on 'cairo' => :library
+  depends_on 'fontconfig' => :library
+  depends_on 'freetype' => :library
+  depends_on 'fribidi' => :library
+  depends_on 'gcc_lib' => :library
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gobject_introspection' => :build # add this package to build gtk+, avoid compilation error
-  depends_on 'harfbuzz' # R
-  depends_on 'libx11' # R
+  depends_on 'harfbuzz' => :library
+  depends_on 'libx11' => :library
   depends_on 'libxdmcp' => :build
-  depends_on 'libxft' # R
-  depends_on 'libxrender' # R
+  depends_on 'libxft' => :library
+  depends_on 'libxrender' => :library
   depends_on 'xorg_proto' => :build
 
   meson_options '-Dbuild-examples=false \
