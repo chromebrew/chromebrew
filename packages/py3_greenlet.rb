@@ -18,6 +18,7 @@ class Py3_greenlet < Pip
 
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'py3_agate'
   depends_on 'py3_sqlalchemy'
   depends_on 'python3' => :logical
