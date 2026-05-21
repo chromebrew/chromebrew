@@ -19,6 +19,7 @@ class Inetutils < Autotools
 
   depends_on 'e2fsprogs' => :executable
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'krb5' => :executable
   depends_on 'libxcrypt' => :executable
   depends_on 'ncurses' => :executable
