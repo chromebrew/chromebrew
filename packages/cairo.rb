@@ -12,25 +12,26 @@ class Cairo < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '973f04fbac5a180e63be43fc5483ed8238304e2dd3b87a971e441138bc4a7dd0',
-     armv7l: '973f04fbac5a180e63be43fc5483ed8238304e2dd3b87a971e441138bc4a7dd0',
-     x86_64: '1bb2ecf6c299d59c546a6adfdcaba1a4ad6047e525e2e55b0447094d09aebec8'
+    aarch64: 'ddba0f894e1d252a70e66c24e12cf6d08163b8b574440f287b0bf8249173c2bb',
+     armv7l: 'ddba0f894e1d252a70e66c24e12cf6d08163b8b574440f287b0bf8249173c2bb',
+     x86_64: 'e0ae01aa2286cd2b69074074ca6ec5981da6d07eb35304003f09ab197cce8f04'
   })
 
-  depends_on 'fontconfig' # R
-  depends_on 'freetype' # R
+  depends_on 'fontconfig' => :library
+  depends_on 'freetype' => :library
   depends_on 'gcc_lib' # R
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'harfbuzz' # R
-  depends_on 'libpng' # R
-  depends_on 'libx11' # R
-  depends_on 'libxcb' # R
+  depends_on 'libpng' => :library
+  depends_on 'libx11' => :library
+  depends_on 'libxcb' => :library
   depends_on 'libxrender' => :build
-  depends_on 'lzo' # R
+  depends_on 'lzo' => :library
   depends_on 'mesa' => :build
-  depends_on 'pixman' # R
-  depends_on 'zlib' # R
+  depends_on 'pixman' => :library
+  depends_on 'zlib' => :library
 
   conflicts_ok # because this overwrites the limited cairo from harfbuzz
 
