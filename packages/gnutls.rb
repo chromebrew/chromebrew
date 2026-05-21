@@ -40,18 +40,19 @@ class Gnutls < Autotools
   no_lto
 
   def self.prebuild
+    # The c11threads threads.h breaks builds on software that uses gnulib.
+    # See: https://github.com/jtsiomb/c11threads/issues/19
+    # Note that c11threads is a workaround for C11 Threads only being
+    # introduced in Glibc 2.28 as per:
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=14092#c10
+    if LIBC_VERSION.to_f < 2.28 && ENV['NESTED_CI']
+      puts 'Removing the c11threads include/threads.h from the c11threads package to prevent build failures.'.orange
+      FileUtils.rm_f "#{CREW_PREFIX}/include/threads.h"
+    end
     # Use IPv4 fallback if default connection fails.
     system "#{CREW_PREFIX}/sbin/unbound-anchor -a '#{CREW_PREFIX}/etc/unbound/root.key' || #{CREW_PREFIX}/sbin/unbound-anchor -4 -a '#{CREW_PREFIX}/etc/unbound/root.key'"
     # Rebuild ca-certificates.
     system "#{CREW_PREFIX}/bin/update-ca-certificates --fresh --certsconf #{CREW_PREFIX}/etc/ca-certificates.conf"
-  end
-
-  def self.patch
-    patches = [
-      # nettle 4.0 patch
-      ['https://gitlab.com/gnutls/gnutls/-/merge_requests/2075.diff', '890a5b576253d1088f91e187e0a2979283d034b7d5f41eca13c0e857f37e61f3']
-    ]
-    ConvenienceFunctions.patch(patches) if version == '3.8.12'
   end
 
   autotools_configure_options "--disable-doc \
