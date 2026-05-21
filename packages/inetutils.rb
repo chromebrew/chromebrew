@@ -11,18 +11,18 @@ class Inetutils < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f777bafbe05d22eb95a209022240480d8e0035a1c679a3ae7f69b8c3fca11c51',
-     armv7l: 'f777bafbe05d22eb95a209022240480d8e0035a1c679a3ae7f69b8c3fca11c51',
-       i686: '8132b26c8d8bf555fe5b101760c5e9e5574dc1a397cd0d9398b205c9d9dda629',
-     x86_64: '515af1f9004aaf426c1f5d280144c75537174aa221c3e4e9cddd81bdc2e42f18'
+    aarch64: '51fc881644bb25560108bc7f789d03d4412d7520a492a1b398b00e225b04fb11',
+     armv7l: '51fc881644bb25560108bc7f789d03d4412d7520a492a1b398b00e225b04fb11',
+       i686: '0c3cc5528226d99f3fc09f684432f84a8146c97004528bb71fbbc59b5ceff596',
+     x86_64: '72d7732a76dcc0a3b82b292f63d72e4fc954265847001078fa5388fd688aa186'
   })
 
-  depends_on 'e2fsprogs' # R
-  depends_on 'glibc' # R
-  depends_on 'krb5' # R
-  depends_on 'libxcrypt' # R
-  depends_on 'ncurses' # R
-  depends_on 'readline' # R
+  depends_on 'e2fsprogs' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'krb5' => :executable
+  depends_on 'libxcrypt' => :executable
+  depends_on 'ncurses' => :executable
+  depends_on 'readline' => :executable
 
   conflicts_ok # Some executables such as hostname are also found in uutils_coreutils.
 
