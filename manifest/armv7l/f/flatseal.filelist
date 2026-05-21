@@ -1,4 +1,4 @@
-# Total size: 566354
+# Total size: 593279
 /usr/local/bin/com.github.tchx84.Flatseal
 /usr/local/bin/flatseal
 /usr/local/share/applications/com.github.tchx84.Flatseal.desktop
@@ -25,6 +25,7 @@
 /usr/local/share/locale/hu/LC_MESSAGES/flatseal.mo
 /usr/local/share/locale/id/LC_MESSAGES/flatseal.mo
 /usr/local/share/locale/it/LC_MESSAGES/flatseal.mo
+/usr/local/share/locale/ja/LC_MESSAGES/flatseal.mo
 /usr/local/share/locale/nb/LC_MESSAGES/flatseal.mo
 /usr/local/share/locale/nl/LC_MESSAGES/flatseal.mo
 /usr/local/share/locale/pl/LC_MESSAGES/flatseal.mo
@@ -34,5 +35,6 @@
 /usr/local/share/locale/ta/LC_MESSAGES/flatseal.mo
 /usr/local/share/locale/tr/LC_MESSAGES/flatseal.mo
 /usr/local/share/locale/uk/LC_MESSAGES/flatseal.mo
+/usr/local/share/locale/vi/LC_MESSAGES/flatseal.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/flatseal.mo
 /usr/local/share/metainfo/com.github.tchx84.Flatseal.metainfo.xml
