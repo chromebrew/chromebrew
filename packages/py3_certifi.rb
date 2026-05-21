@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_certifi < Pip
   description 'Certifi provides Mozilla\'s CA Bundle.'
   homepage 'https://certifi.io/'
-  version "2026.4.22-#{CREW_PY_VER}"
+  version "2026.5.20-#{CREW_PY_VER}"
   license 'MPL-2.0'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8b8cce9425c7873da4a5076787a4bc7a39c69f47c6e436b1b13b2d50977be1c0',
-     armv7l: '8b8cce9425c7873da4a5076787a4bc7a39c69f47c6e436b1b13b2d50977be1c0',
-       i686: '0cf4e110526ca29813e2a0ac3bd386ab057b36436d033c021372c61d259301ab',
-     x86_64: 'c38c9067a647dbe9d63227e4f4533e904ab2e78cac9d5e38f71338df5bb0cc02'
+    aarch64: 'ea354d3ca5d71ce9c4b4fcfd20f0c7039b03a5f4c9842abdac6073e1699fda4d',
+     armv7l: 'ea354d3ca5d71ce9c4b4fcfd20f0c7039b03a5f4c9842abdac6073e1699fda4d',
+       i686: 'dce0a98a419d7ccd027dceb29d6f0760930d70728f770e9a2453e60e853a0bbd',
+     x86_64: '65d956b435080c8c7745b750a690812cd31a79df318775f0ad7ea1f3d4daa08b'
   })
 
   depends_on 'python3' => :logical
