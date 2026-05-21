@@ -1,5 +1,5 @@
 ---
-# Version 2.0
+# Version 2.1
 name: Generate PR
 run-name: Generate PR for ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} by @${{ github.actor }}
 on:
@@ -83,7 +83,7 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
         run: |
-          PR_NUMBER=$(gh pr list -L 1 -s open -H ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} | cut -f1)
+          PR_NUMBER=$(gh pr list -L 1 -s open -H ${BRANCH} | cut -f1)
           if [[ -n ${PR_NUMBER} ]]; then
             echo "Setting ${PR_NUMBER} to Draft while workflow runs."
             gh pr ready --undo || true
@@ -93,9 +93,9 @@ jobs:
             gh pr update-branch || true
           else
             echo -e "##\n### Run the following to get this pull request's changes locally for testing.\n\`\`\`bash" >> /tmp/wip_pr.txt
-            echo -e "CREW_REPO=https://github.com/${{ github.repository }}.git CREW_BRANCH=${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} crew update \\" >> /tmp/wip_pr.txt
+            echo -e "CREW_REPO=https://github.com/${{ github.repository }}.git CREW_BRANCH=${BRANCH} crew update \\" >> /tmp/wip_pr.txt
             echo -e "&& yes | crew upgrade\n\`\`\`" >> /tmp/wip_pr.txt
-            gh pr create -d -b WIP -t "WIP ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}" -F /tmp/wip_pr.txt
+            gh pr create -d -b WIP -t "WIP ${BRANCH}" -F /tmp/wip_pr.txt
             # Create a draft PR and immediately try to update the branch
             # before continuing.
             gh pr update-branch || true
@@ -120,7 +120,7 @@ jobs:
             # Add inputs.packages_to_check_for_build to the packages we
             # will check for architecture and glibc compatibility.
             if [[ -z "${{ steps.changed-files.outputs.packages_all_changed_files }} ${{ inputs.packages_to_check_for_build }}" ]]; then
-              echo "Branch ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} has no changed package files."
+              echo "Branch ${BRANCH} has no changed package files."
               exit 1
             fi
             # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-files.outputs.packages_all_changed_files) into "foo bar"
@@ -295,8 +295,8 @@ jobs:
             sudo apt-get autoremove -qq -o=Dpkg::Use-Pty=0 -y &>/dev/null) &
 
             git fetch origin
-            git checkout "${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}"
-            git reset --hard "origin/${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}"
+            git checkout "${BRANCH}"
+            git reset --hard "origin/${BRANCH}"
             git log --oneline -10
             docker pull --platform "${PLATFORM}" "${CONTAINER}"
             # Detection of /output/pkg_cache dir triggers setting
@@ -337,7 +337,7 @@ jobs:
               -e GCONV_PATH="/usr/local/lib${LIB_SUFFIX}/gconv" \
               -e CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES="${CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES}" \
               -e CREW_REPO="${CREW_REPO}" \
-              -e CREW_BRANCH="${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}" \
+              -e CREW_BRANCH="${BRANCH}" \
               -e GITLAB_TOKEN="${{ secrets.GITLAB_TOKEN }}" \
               -e GITLAB_TOKEN_USERNAME="${{ secrets.GITLAB_TOKEN_USERNAME }}" \
               ${CI_PASSTHROUGH} \
@@ -360,15 +360,16 @@ jobs:
             git config user.email "${{ github.actor }}@users.noreply.github.com"
             git add .
             git stash || true
-            git fetch origin ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
+            git fetch origin ${BRANCH}
             git stash pop || true
-            git commit -am "${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}: Package File Update Run on ${PLATFORM} container." && git push origin ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
+            git commit -am "${BRANCH}: Package File Update Run on ${PLATFORM} container." && git push origin ${BRANCH}
             git log --oneline -10
           fi
   build-check:
     runs-on: ubuntu-24.04-arm
     needs:
       - setup
+      - get-compatibility
       - update-package-files
     if: ${{ ( always() && !cancelled() ) && needs.setup.result == 'success' && ((( inputs.update_package_files ) && needs.update-package-files.result == 'success') || !( inputs.update_package_files )) }}
     outputs:
@@ -397,12 +398,12 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
         run: |
-          PR_NUMBER=$(gh pr list -L 1 -s open -H ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} | cut -f1)
+          PR_NUMBER=$(gh pr list -L 1 -s open -H ${BRANCH} | cut -f1)
           if [[ -n ${PR_NUMBER} ]]; then
             # Try to update branch immediately.
             gh pr update-branch --rebase || true
           else
-            gh pr create -d -b WIP -t "WIP ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}"
+            gh pr create -d -b WIP -t "WIP ${BRANCH}"
             # Create a draft PR and immediately try to update the branch
             # before continuing.
             gh pr update-branch --rebase || true
@@ -410,10 +411,10 @@ jobs:
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
           git checkout master && git fetch origin master
-          git checkout "${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}"
-          git fetch origin "${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}"
+          git checkout "${BRANCH}"
+          git fetch origin "${BRANCH}"
           git log --no-merges --oneline -10
-          git log --no-merges --oneline master..${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} | grep -v "Merge branch 'master'\|Build Run on\|Package File Update Run on\|lint$" | tr '\n' '\0' | xargs -0 -n1 echo "- $*" >> /tmp/commits.txt
+          git log --no-merges --oneline master..${BRANCH} | grep -v "Merge branch 'master'\|Build Run on\|Package File Update Run on\|lint$" | tr '\n' '\0' | xargs -0 -n1 echo "- $*" >> /tmp/commits.txt
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v47
@@ -440,10 +441,10 @@ jobs:
             git config user.name "${{ github.actor }}"
             git config user.email "${{ github.actor }}@users.noreply.github.com"
             git checkout master && git fetch origin master
-            git checkout "${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}"
-            git fetch origin "${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}"
+            git checkout "${BRANCH}"
+            git fetch origin "${BRANCH}"
             set +e
-            CHANGED_PACKAGE_FILES=$(git diff --name-only master..${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} | grep '^packages/')
+            CHANGED_PACKAGE_FILES=$(git diff --name-only master..${BRANCH} | grep '^packages/')
             set -e
             if [[ -n "${CHANGED_PACKAGE_FILES}" ]]; then
               # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-files.outputs.packages_all_changed_files) into "foo bar"
@@ -466,9 +467,9 @@ jobs:
           GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
           PR_LABEL: ${{ inputs.pr_label }}
           PR_TITLE: ${{ inputs.pr_title }}
-          i686_PACKAGES: ${{ needs.setup.outputs.i686_packages }}
-          x86_64_PACKAGES: ${{ needs.setup.outputs.x86_64_packages }}
-          armv7l_PACKAGES: ${{ needs.setup.outputs.armv7l_packages }}
+          i686_PACKAGES: ${{ needs.get-compatibility.outputs.i686_PACKAGES }}
+          x86_64_PACKAGES: ${{ needs.get-compatibility.outputs.x86_64_PACKAGES }}
+          armv7l_PACKAGES: ${{ needs.get-compatibility.outputs.armv7l_PACKAGES }}
         run: |
           # Make untouched clone of repo so we can get the existing versions of packages.
           (cd /tmp ; git clone --depth=1 https://github.com/${{ github.repository }}.git chromebrew_main )
@@ -537,22 +538,22 @@ jobs:
             echo -e "##\n- [x] This PR has no manifest .filelist changes. _(Package changes have neither added nor removed files.)_" >> /tmp/pr.txt
           fi
           echo -e "##\n### Run the following to get this pull request's changes locally for testing.\n\`\`\`bash" >> /tmp/pr.txt
-          echo -e "CREW_REPO=https://github.com/${{ github.repository }}.git CREW_BRANCH=${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} crew update \\" >> /tmp/pr.txt
+          echo -e "CREW_REPO=https://github.com/${{ github.repository }}.git CREW_BRANCH=${BRANCH} crew update \\" >> /tmp/pr.txt
           echo -e "&& yes | crew upgrade\n\`\`\`" >> /tmp/pr.txt
           [[ -n "${PKG_DELTA[*]}" ]] && PKG_DELTAS="$(join_by , "${PKG_DELTA[@]}")"
           echo "PKG_DELTAS: $PKG_DELTAS"
           cat /tmp/pr.txt
-          PR_NUMBER=$(gh pr list -L 1 -s open -H ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} | cut -f1)
+          PR_NUMBER=$(gh pr list -L 1 -s open -H ${BRANCH} | cut -f1)
           PR_TITLE_INPUT="${{ inputs.pr_title }}"
           if [[ -z ${PR_TITLE_INPUT} ]]; then
-            PR_TITLE="$(git log --oneline master..${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} | grep -v "Merge branch 'master'\|Build Run on\|Package File Update Run on" | tail -n 1 | cut -c 11-)"
+            PR_TITLE="$(git log --oneline master..${BRANCH} | grep -v "Merge branch 'master'\|Build Run on\|Package File Update Run on" | tail -n 1 | cut -c 11-)"
             if [[ -z ${PKG_DELTAS} ]]; then
               TITLE="$(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//")"
             else
               TITLE="$(echo "${PR_TITLE}" | sed -e "s/^'//" -e "s/'$//") — ${PKG_DELTAS}"
             fi
           else
-            if [[ "${PR_TITLE_INPUT}" == *"${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}"* ]]; then
+            if [[ "${PR_TITLE_INPUT}" == *"${BRANCH}"* ]]; then
               PR_TITLE="${PKG_DELTAS}"
               TITLE="${PR_TITLE}"
             else
@@ -580,13 +581,17 @@ jobs:
           else
             gh pr edit $PR_EDIT_LABEL_FLAG --title "${FINAL_PR_TITLE}" -F /tmp/pr.txt
           fi
-          # Try to update branch before finishing.
-          gh pr update-branch --rebase || true
+          # If DRAFT_PR is true, then it was passed in as an option
+          # so set the WIP label on the PR.
+          if [[ ${DRAFT_PR} == 'true' ]]; then
+            gh pr edit --add-label "wip 🚧"|| true
+          elif gh pr list -l "wip 🚧" --json number | jq --arg PR_NUMBER "$PR_NUMBER"  -e -r '.[]|select(.number=='$PR_NUMBER')' &>/dev/null; then
           # Check to see if the PR is marked as WIP, in which case it should stay as draft.
-          if gh pr list -l "wip 🚧" --json number | jq --arg PR_NUMBER "$PR_NUMBER"  -e -r '.[]|select(.number=='$PR_NUMBER')' &>/dev/null; then
             echo "PR ${PR_NUMBER} is set as WIP, so will be set or kept as Draft."
             export DRAFT_PR=true
           fi
+          # Try to update branch before finishing.
+          gh pr update-branch --rebase || true
           # Draft PRs can not be set to automerge.
           if [[ ${DRAFT_PR} == 'true' ]]; then
             gh pr ready --undo || true
