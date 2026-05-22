@@ -24,6 +24,7 @@ class Xfsprogs < Autotools
   depends_on 'libeconf' => :build
   depends_on 'libinih' => :executable
   depends_on 'liburcu' => :executable
+  depends_on 'liburcu' => :library
   depends_on 'lvm2' => :executable
   depends_on 'util_linux' => :executable
 
