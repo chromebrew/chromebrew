@@ -23,6 +23,7 @@ class Cmake < Package
   depends_on 'expat' => :build
   depends_on 'gcc_lib' => :executable
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'jsoncpp' => :build
   depends_on 'libarchive' => :build
   depends_on 'libidn2' => :executable
