@@ -14,10 +14,10 @@ class Protobuf < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd1b61b0a83915ba73db53ed4d5502c6cf9cc4d830d224cf095a978fe26b1edcc',
-     armv7l: 'd1b61b0a83915ba73db53ed4d5502c6cf9cc4d830d224cf095a978fe26b1edcc',
-       i686: 'a174175902325e6d5e0f075eefdc952ecb5572aa77c9942d6709a92ac5e55bdb',
-     x86_64: '4ccf08220f92413e8e38b415e6ba457fc7c290e50588707b8cc03683920b56bb'
+    aarch64: 'a0625337f2e7b87d4e788d5fc01497f47b45cdc93548509d17517f767b9c027e',
+     armv7l: 'a0625337f2e7b87d4e788d5fc01497f47b45cdc93548509d17517f767b9c027e',
+       i686: '6f9ff99791e646b0ac6740330f30bdf42ed500a3a3eea5cc2b82234abd8e05ae',
+     x86_64: '35fb6139efb5f82631ec075e1dd09ef20585927cd9fc9e7eced178738b0a1d11'
   })
 
   depends_on 'abseil_cpp' => :library
