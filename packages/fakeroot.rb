@@ -14,7 +14,7 @@ class Fakeroot < Autotools
     aarch64: '1274e476209268870ada3efd8286adad121f74e87964299dbb617d9a46eb5348',
      armv7l: '1274e476209268870ada3efd8286adad121f74e87964299dbb617d9a46eb5348',
        i686: 'bdc9cc24c2904b5b3017fb95e195ddceaaa9a00716019ac8d9da762fb946e7df',
-     x86_64: ''
+     x86_64: '3db8db85bb9939d603e0fa1a8f4bc045aab34d1807b5a2a81f1f602023126f1a'
   })
 
   depends_on 'glibc' => :library
