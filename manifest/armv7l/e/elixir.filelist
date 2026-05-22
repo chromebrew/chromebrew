@@ -1,4 +1,4 @@
-# Total size: 895188
+# Total size: 913681
 /usr/local/bin/elixir
 /usr/local/bin/elixirc
 /usr/local/bin/iex
@@ -92,6 +92,7 @@
 /usr/local/lib/mix/tasks/release.ex
 /usr/local/lib/mix/tasks/release.init.ex
 /usr/local/lib/mix/tasks/run.ex
+/usr/local/lib/mix/tasks/source.ex
 /usr/local/lib/mix/tasks/test.coverage.ex
 /usr/local/lib/mix/tasks/test.ex
 /usr/local/lib/mix/tasks/will_recompile.ex

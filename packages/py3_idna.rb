@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_idna < Pip
   description 'IDNA provides internationalized domain names for Python.'
   homepage 'https://github.com/kjd/idna/'
-  version "3.15-#{CREW_PY_VER}"
+  version "3.16-#{CREW_PY_VER}"
   license 'BSD-3'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'eccbedf4f5ced9761384170ec4b1cca39460c64d743bda3f6d32bf8fff749bda',
-     armv7l: 'eccbedf4f5ced9761384170ec4b1cca39460c64d743bda3f6d32bf8fff749bda',
-       i686: '9230c75dd320f6a6681a0596c26caee73d77c88004a6cb61cac249b7494661d1',
-     x86_64: 'bf5e3f83aac32a4ef03d1329ce18733957110fc0deb4c64b9b5a80db207d52d9'
+    aarch64: '0a2b75a6235ba02b7d94b693e352310fe5a7b51322d75b7fac6c8703f2ae6e76',
+     armv7l: '0a2b75a6235ba02b7d94b693e352310fe5a7b51322d75b7fac6c8703f2ae6e76',
+       i686: '6f0235ea7fab7b527432926c1411a01c3d21eac874007e2cadea89c341c7432a',
+     x86_64: 'b8abb66c5c50d285f9872c5475ebd39901c0fd337a4658599453be5077e8c24d'
   })
 
   depends_on 'python3' => :logical
