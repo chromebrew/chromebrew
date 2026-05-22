@@ -3,7 +3,7 @@ require 'package'
 class Frp < Package
   description 'A fast reverse proxy'
   homepage 'https://github.com/fatedier/frp'
-  version '0.68.1'
+  version '0.69.0'
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url({
@@ -12,9 +12,9 @@ class Frp < Package
      x86_64: "https://github.com/fatedier/frp/releases/download/v#{version}/frp_#{version}_linux_amd64.tar.gz"
   })
   source_sha256({
-    aarch64: '50b187e66c1b9366532bda25326ca75e2f0dffbb474431310321a705cea9810f',
-     armv7l: '50b187e66c1b9366532bda25326ca75e2f0dffbb474431310321a705cea9810f',
-     x86_64: '4a4e88987d39561e1b3b3b23d0ede48a457eebf76a87231999957e870f5f02b6'
+    aarch64: '8ee99ad9b09eafe5f77fea7cbd9db15deb056dc2857955477972ccb31a74e708',
+     armv7l: '8ee99ad9b09eafe5f77fea7cbd9db15deb056dc2857955477972ccb31a74e708',
+     x86_64: '6b90d1cd28fc661f170c0de90dde03d2c63e4fd7ce0ae2da2ca1c28014b8146e'
   })
 
   no_compile_needed

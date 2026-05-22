@@ -1,4 +1,4 @@
-# Total size: 4670638
+# Total size: 4864235
 /usr/local/include/xfs/handle.h
 /usr/local/include/xfs/jdm.h
 /usr/local/include/xfs/linux.h
@@ -16,6 +16,7 @@
 /usr/local/lib64/libhandle.so
 /usr/local/lib64/libhandle.so.1
 /usr/local/lib64/libhandle.so.1.0.3
+/usr/local/libexec/xfsprogs/xfs_healer
 /usr/local/sbin/fsck.xfs
 /usr/local/sbin/mkfs.xfs
 /usr/local/sbin/xfs_admin
@@ -63,12 +64,15 @@
 /usr/local/share/man/man2/ioctl_xfs_getparents.2.zst
 /usr/local/share/man/man2/ioctl_xfs_getresblks.2.zst
 /usr/local/share/man/man2/ioctl_xfs_goingdown.2.zst
+/usr/local/share/man/man2/ioctl_xfs_health_fd_on_monitored_fs.2.zst
+/usr/local/share/man/man2/ioctl_xfs_health_monitor.2.zst
 /usr/local/share/man/man2/ioctl_xfs_inumbers.2.zst
 /usr/local/share/man/man2/ioctl_xfs_rtgroup_geometry.2.zst
 /usr/local/share/man/man2/ioctl_xfs_scrub_metadata.2.zst
 /usr/local/share/man/man2/ioctl_xfs_scrubv_metadata.2.zst
 /usr/local/share/man/man2/ioctl_xfs_setresblks.2.zst
 /usr/local/share/man/man2/ioctl_xfs_start_commit.2.zst
+/usr/local/share/man/man2/ioctl_xfs_verify_media.2.zst
 /usr/local/share/man/man3/attr_list_by_handle.3.zst
 /usr/local/share/man/man3/attr_multi_by_handle.3.zst
 /usr/local/share/man/man3/fd_to_handle.3.zst
@@ -95,6 +99,7 @@
 /usr/local/share/man/man8/xfs_freeze.8.zst
 /usr/local/share/man/man8/xfs_fsr.8.zst
 /usr/local/share/man/man8/xfs_growfs.8.zst
+/usr/local/share/man/man8/xfs_healer.8.zst
 /usr/local/share/man/man8/xfs_info.8.zst
 /usr/local/share/man/man8/xfs_io.8.zst
 /usr/local/share/man/man8/xfs_logprint.8.zst
