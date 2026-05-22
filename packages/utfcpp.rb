@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Utfcpp < CMake
   description 'UTF-8 with C++ in a Portable Way'
   homepage 'https://github.com/nemtrif/utfcpp'
-  version '4.1.0'
+  version '4.1.1'
   license 'BSL-1.0'
   compatibility 'all'
   source_url 'https://github.com/nemtrif/utfcpp.git'
