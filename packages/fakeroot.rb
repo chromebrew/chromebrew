@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Fakeroot < Autotools
   description 'Run a command in an environment faking root privileges for file manipulation.'
   homepage 'https://wiki.debian.org/FakeRoot'
-  version '1.38'
+  version '1.38.1'
   license 'GPL-3'
   compatibility 'all'
   source_url "https://deb.debian.org/debian/pool/main/f/fakeroot/fakeroot_#{version}.orig.tar.gz"
-  source_sha256 '37504619270923546f36d98107f44a3c3be41c8ccd57dfd722311819623fe002'
+  source_sha256 '37c5063942efe2e2aeefd6e71ae2690bcb9b7d512c53bc6409b54d0730cbdac1'
   binary_compression 'tar.zst'
 
   binary_sha256({
