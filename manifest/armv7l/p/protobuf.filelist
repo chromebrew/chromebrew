@@ -1,12 +1,12 @@
-# Total size: 13374739
+# Total size: 13534355
 /usr/local/bin/protoc
-/usr/local/bin/protoc-34.1.0
+/usr/local/bin/protoc-35.0.0
 /usr/local/bin/protoc-gen-upb
-/usr/local/bin/protoc-gen-upb-34.1.0
+/usr/local/bin/protoc-gen-upb-35.0.0
 /usr/local/bin/protoc-gen-upb_minitable
-/usr/local/bin/protoc-gen-upb_minitable-34.1.0
+/usr/local/bin/protoc-gen-upb_minitable-35.0.0
 /usr/local/bin/protoc-gen-upbdefs
-/usr/local/bin/protoc-gen-upbdefs-34.1.0
+/usr/local/bin/protoc-gen-upbdefs-35.0.0
 /usr/local/include/google/protobuf/any.h
 /usr/local/include/google/protobuf/any.pb.h
 /usr/local/include/google/protobuf/any.proto
@@ -18,6 +18,7 @@
 /usr/local/include/google/protobuf/arena_cleanup.h
 /usr/local/include/google/protobuf/arenastring.h
 /usr/local/include/google/protobuf/arenaz_sampler.h
+/usr/local/include/google/protobuf/c_sharp_features.proto
 /usr/local/include/google/protobuf/compiler/code_generator.h
 /usr/local/include/google/protobuf/compiler/code_generator_lite.h
 /usr/local/include/google/protobuf/compiler/command_line_interface.h
@@ -135,6 +136,9 @@
 /usr/local/include/google/protobuf/reflection_visit_field_info.h
 /usr/local/include/google/protobuf/reflection_visit_fields.h
 /usr/local/include/google/protobuf/repeated_field.h
+/usr/local/include/google/protobuf/repeated_field_proxy.h
+/usr/local/include/google/protobuf/repeated_field_proxy_iterator.h
+/usr/local/include/google/protobuf/repeated_field_proxy_traits.h
 /usr/local/include/google/protobuf/repeated_ptr_field.h
 /usr/local/include/google/protobuf/runtime_version.h
 /usr/local/include/google/protobuf/serial_arena.h
@@ -181,6 +185,7 @@
 /usr/local/include/upb/base/upcast.h
 /usr/local/include/upb/generated_code_support.h
 /usr/local/include/upb/hash/common.h
+/usr/local/include/upb/hash/ext_table.h
 /usr/local/include/upb/hash/int_table.h
 /usr/local/include/upb/hash/str_table.h
 /usr/local/include/upb/json/decode.h
@@ -310,16 +315,16 @@
 /usr/local/lib/cmake/utf8_range/utf8_range-targets-release.cmake
 /usr/local/lib/cmake/utf8_range/utf8_range-targets.cmake
 /usr/local/lib/libprotobuf-lite.so
-/usr/local/lib/libprotobuf-lite.so.34.1.0
+/usr/local/lib/libprotobuf-lite.so.35.0.0
 /usr/local/lib/libprotobuf.so
-/usr/local/lib/libprotobuf.so.34.1.0
+/usr/local/lib/libprotobuf.so.35.0.0
 /usr/local/lib/libprotoc.so
-/usr/local/lib/libprotoc.so.34.1.0
+/usr/local/lib/libprotoc.so.35.0.0
 /usr/local/lib/libupb.a
 /usr/local/lib/libutf8_range.so
-/usr/local/lib/libutf8_range.so.34.1.0
+/usr/local/lib/libutf8_range.so.35.0.0
 /usr/local/lib/libutf8_validity.so
-/usr/local/lib/libutf8_validity.so.34.1.0
+/usr/local/lib/libutf8_validity.so.35.0.0
 /usr/local/lib/pkgconfig/protobuf-lite.pc
 /usr/local/lib/pkgconfig/protobuf.pc
 /usr/local/lib/pkgconfig/upb.pc
