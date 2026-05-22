@@ -23,6 +23,7 @@ class Protobuf < CMake
   depends_on 'abseil_cpp' => :library
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'zlib' => :library
 
   cmake_options '-Dprotobuf_BUILD_SHARED_LIBS=ON \
