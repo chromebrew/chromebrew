@@ -3,7 +3,7 @@ require 'package'
 class Cmake < Package
   description 'CMake is an open-source, cross-platform family of tools designed to build, test and package software.'
   homepage 'https://cmake.org/'
-  version '4.3.2'
+  version '4.3.3'
   license 'CMake'
   compatibility 'all'
   source_url 'https://gitlab.kitware.com/cmake/cmake.git'
@@ -11,10 +11,10 @@ class Cmake < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a350a900c25972773663fb6cad266561de89432c35ee7abd3351e73e8aa21e31',
-     armv7l: 'a350a900c25972773663fb6cad266561de89432c35ee7abd3351e73e8aa21e31',
-       i686: 'd30a3f2bf7b82e227da1870f9e160295df60c161f23758a550dd4c2d709cfe8a',
-     x86_64: '83da59d5d81a59ab543f0b749f0b25d7241406106bacaa02548293d2f174f0ff'
+    aarch64: '5d6ac061eeb136e5b6f1a138b57fe5fe34e889dea6b7fa33cf3c6f8bd010d80f',
+     armv7l: '5d6ac061eeb136e5b6f1a138b57fe5fe34e889dea6b7fa33cf3c6f8bd010d80f',
+       i686: '1fa128265fc86d7205fd31c7786c5f5efbfc58dba0b8e7f71891916bcd199353',
+     x86_64: 'ec343f8918edc93bf114fcf3ef405a1cad7a1688ba4e91e1ceb3309def8885de'
   })
 
   depends_on 'bzip2' => :build
@@ -23,6 +23,7 @@ class Cmake < Package
   depends_on 'expat' => :build
   depends_on 'gcc_lib' => :executable
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'jsoncpp' => :build
   depends_on 'libarchive' => :build
   depends_on 'libidn2' => :executable
