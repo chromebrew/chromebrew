@@ -1,12 +1,12 @@
-# Total size: 21084927
-/usr/local/lib/python3.14/site-packages/botocore-1.43.12.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/botocore-1.43.12.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/botocore-1.43.12.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/botocore-1.43.12.dist-info/NOTICE
-/usr/local/lib/python3.14/site-packages/botocore-1.43.12.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/botocore-1.43.12.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/botocore-1.43.12.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/botocore-1.43.12.dist-info/top_level.txt
+# Total size: 21097107
+/usr/local/lib/python3.14/site-packages/botocore-1.43.13.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/botocore-1.43.13.dist-info/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/botocore-1.43.13.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/botocore-1.43.13.dist-info/NOTICE
+/usr/local/lib/python3.14/site-packages/botocore-1.43.13.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/botocore-1.43.13.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/botocore-1.43.13.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/botocore-1.43.13.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/botocore/__init__.py
 /usr/local/lib/python3.14/site-packages/botocore/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/botocore/__pycache__/args.cpython-314.pyc
@@ -254,6 +254,7 @@
 /usr/local/lib/python3.14/site-packages/botocore/data/bedrock-agent/2023-06-05/waiters-2.json
 /usr/local/lib/python3.14/site-packages/botocore/data/bedrock-agentcore-control/2023-06-05/endpoint-rule-set-1.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/bedrock-agentcore-control/2023-06-05/paginators-1.json
+/usr/local/lib/python3.14/site-packages/botocore/data/bedrock-agentcore-control/2023-06-05/paginators-1.sdk-extras.json
 /usr/local/lib/python3.14/site-packages/botocore/data/bedrock-agentcore-control/2023-06-05/service-2.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/bedrock-agentcore-control/2023-06-05/waiters-2.json
 /usr/local/lib/python3.14/site-packages/botocore/data/bedrock-agentcore/2024-02-28/endpoint-rule-set-1.json.gz
