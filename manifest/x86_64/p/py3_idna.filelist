@@ -1,12 +1,17 @@
-# Total size: 629764
-/usr/local/lib/python3.14/site-packages/idna-3.15.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/idna-3.15.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/idna-3.15.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/idna-3.15.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/idna-3.15.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/idna-3.15.dist-info/licenses/LICENSE.md
+# Total size: 639775
+/usr/local/bin/idna
+/usr/local/lib/python3.14/site-packages/idna-3.16.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/idna-3.16.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/idna-3.16.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/idna-3.16.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/idna-3.16.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/idna-3.16.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/idna-3.16.dist-info/licenses/LICENSE.md
 /usr/local/lib/python3.14/site-packages/idna/__init__.py
+/usr/local/lib/python3.14/site-packages/idna/__main__.py
 /usr/local/lib/python3.14/site-packages/idna/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/idna/__pycache__/__main__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/idna/__pycache__/cli.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/idna/__pycache__/codec.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/idna/__pycache__/compat.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/idna/__pycache__/core.cpython-314.pyc
@@ -14,6 +19,7 @@
 /usr/local/lib/python3.14/site-packages/idna/__pycache__/intranges.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/idna/__pycache__/package_data.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/idna/__pycache__/uts46data.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/idna/cli.py
 /usr/local/lib/python3.14/site-packages/idna/codec.py
 /usr/local/lib/python3.14/site-packages/idna/compat.py
 /usr/local/lib/python3.14/site-packages/idna/core.py
