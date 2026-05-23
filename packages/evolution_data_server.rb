@@ -11,9 +11,9 @@ class Evolution_data_server < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '49c76139abeb2a28b7b135d6331b8fc8399269905e6007d1cc0a75a0fcb2f523',
-     armv7l: '49c76139abeb2a28b7b135d6331b8fc8399269905e6007d1cc0a75a0fcb2f523',
-     x86_64: '0dd5f19412d7c9fd6ebcdef5d75ec78c7bc86a304aae0adbf151a3cb30dc3214'
+    aarch64: 'e6a82894fb31257f4d5aa346ce1458b21d6dc7ba3ff2d2ae4f104c56d78380f2',
+     armv7l: 'e6a82894fb31257f4d5aa346ce1458b21d6dc7ba3ff2d2ae4f104c56d78380f2',
+     x86_64: '07ff46ba7b5718d3fd7ae4abb950324ba354afc3e01a21559836a0d91554131f'
   })
 
   depends_on 'at_spi2_core' => :library
@@ -24,6 +24,7 @@ class Evolution_data_server < CMake
   depends_on 'gdk_pixbuf' => :library
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gobject_introspection' => :build
   depends_on 'gperf' => :build
   depends_on 'graphene' => :library
