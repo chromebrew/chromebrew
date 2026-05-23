@@ -11,15 +11,17 @@ class Less < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b0a31e18bf77ce4a6e64dbda41740cc5fe157eef9e1b33905bbff55d797c8b17',
-     armv7l: 'b0a31e18bf77ce4a6e64dbda41740cc5fe157eef9e1b33905bbff55d797c8b17',
-       i686: 'aec31e2d7f3ca38797fadbcfafdae4f5c6a40692787273fde43ab1a125db3421',
-     x86_64: 'dcf8cb37f27844c4010e3435aad894c0c715813afd8b1275f6dd9b4e455b47df'
+    aarch64: '8e1f59a74d88b4d7252fff7c0d1a67207166114f101566da4e61f2e24846f631',
+     armv7l: '8e1f59a74d88b4d7252fff7c0d1a67207166114f101566da4e61f2e24846f631',
+       i686: '3f232a854176431f1305e63aad0f479a520f6db1a4444f071c0e87e580d87405',
+     x86_64: '66637d896e36f3cd26c77604c576b3d8834d0df99aad52aacd6c8e3fdfd5fd3b'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' => :executable
+  depends_on 'glibc' => :library
   depends_on 'ncurses' => :executable
+  depends_on 'ncurses' => :library
   depends_on 'patch' => :build
 
   autotools_configure_options '--with-regex=posix'
