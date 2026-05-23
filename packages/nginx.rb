@@ -18,6 +18,7 @@ class Nginx < Package
   })
 
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'libxcrypt' => :executable
   depends_on 'pcre'
   depends_on 'pcre2' => :executable
