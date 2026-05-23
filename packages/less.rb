@@ -20,6 +20,7 @@ class Less < Autotools
   depends_on 'gcc_lib' # R
   depends_on 'glibc' => :executable
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :executable
   depends_on 'ncurses' => :executable
   depends_on 'ncurses' => :library
   depends_on 'patch' => :build
