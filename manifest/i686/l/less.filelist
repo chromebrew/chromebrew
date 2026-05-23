@@ -1,8 +1,9 @@
-# Total size: 375354
+# Total size: 397814
 /usr/local/bin/less
-/usr/local/bin/lessecho
 /usr/local/bin/lesskey
 /usr/local/etc/env.d/less
+/usr/local/libexec/less-osc8-open
+/usr/local/libexec/lessecho
 /usr/local/share/man/man1/less.1.zst
 /usr/local/share/man/man1/lessecho.1.zst
 /usr/local/share/man/man1/lesskey.1.zst
