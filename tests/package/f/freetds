@@ -1,0 +1,10 @@
+#!/bin/bash
+bsqldb -h 2>&1
+bsqlodbc -h 2>&1
+datacopy 2>&1 | head -5
+defncopy 2>&1 | head -5
+fisql -h 2>&1 | head -5
+freebcp -h 2>&1 | head -5
+osql
+tdspool
+tsql -C
