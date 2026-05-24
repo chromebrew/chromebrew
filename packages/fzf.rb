@@ -18,6 +18,7 @@ class Fzf < Package
   })
 
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'go' => :build
   depends_on 'tmux' # R - Needed for tmux integration
 
