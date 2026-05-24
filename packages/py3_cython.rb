@@ -3,21 +3,22 @@ require 'buildsystems/pip'
 class Py3_cython < Pip
   description 'The Cython language makes writing C extensions for the Python language as easy as Python itself.'
   homepage 'https://cython.org/'
-  version "3.2.4-#{CREW_PY_VER}"
+  version "3.2.5-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b35b05fd372f4c035c7a351aa5d4995afd81999242124305a341ddb59407227b',
-     armv7l: 'b35b05fd372f4c035c7a351aa5d4995afd81999242124305a341ddb59407227b',
-       i686: 'cfbc409a79d4326ab09d8a2e22a604fbe0f757f4dddb399f1fbafad80d7f7733',
-     x86_64: '4a962615d77af44dea7db351bdfaa8c45766ce5fa60fc80a00489fac3690e5ed'
+    aarch64: '86106376276bcf668e9b3e980f9e7bd29894fdc4455c2def66470af09edbe37d',
+     armv7l: '86106376276bcf668e9b3e980f9e7bd29894fdc4455c2def66470af09edbe37d',
+       i686: '33474ee15de63f33d60ad95b39eacf7d3f28e6c7a7d66012e171639cff6bca99',
+     x86_64: '79ed7dfdcbf707a086cc78625b17e46bbd997cd1f0a35998d875427217b85b0d'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'python3' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'python3' => :logical
 
   no_source_build
 end
