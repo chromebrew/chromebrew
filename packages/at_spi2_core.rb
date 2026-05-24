@@ -11,15 +11,16 @@ class At_spi2_core < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a5bcf1355c80dbfdb82d9057eb8fb8b4f285951360eed34b0d50748e4c6f21d2',
-     armv7l: 'a5bcf1355c80dbfdb82d9057eb8fb8b4f285951360eed34b0d50748e4c6f21d2',
-     x86_64: '0323e9a841906b833f77a2d5b909e87051df5082a635a2825b9dd45b262db1e7'
+    aarch64: 'bd7eed12f230a9100576a25eaa44d9eb50791b20489b5154fed22dbbcedb9f0a',
+     armv7l: 'bd7eed12f230a9100576a25eaa44d9eb50791b20489b5154fed22dbbcedb9f0a',
+     x86_64: '0d653c6bf1c05ffeb7651c925f9355a4861dd81fa1454b27c2d0e58476207850'
   })
 
   depends_on 'dbus' => :library
   depends_on 'gcc_lib' # R
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk_doc' => :build
   depends_on 'libx11' => :library
