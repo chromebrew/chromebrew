@@ -1,11 +1,10 @@
-# Total size: 5214424
+# Total size: 675043
 /usr/local/bin/fswatch
 /usr/local/include/libfswatch/c++/event.hpp
+/usr/local/include/libfswatch/c++/fanotify_monitor.hpp
 /usr/local/include/libfswatch/c++/filter.hpp
 /usr/local/include/libfswatch/c++/inotify_monitor.hpp
 /usr/local/include/libfswatch/c++/libfswatch_exception.hpp
-/usr/local/include/libfswatch/c++/libfswatch_map.hpp
-/usr/local/include/libfswatch/c++/libfswatch_set.hpp
 /usr/local/include/libfswatch/c++/monitor.hpp
 /usr/local/include/libfswatch/c++/monitor_factory.hpp
 /usr/local/include/libfswatch/c++/path_utils.hpp
@@ -18,11 +17,10 @@
 /usr/local/include/libfswatch/c/libfswatch.h
 /usr/local/include/libfswatch/c/libfswatch_log.h
 /usr/local/include/libfswatch/c/libfswatch_types.h
-/usr/local/lib64/libfswatch.a
 /usr/local/lib64/libfswatch.la
 /usr/local/lib64/libfswatch.so
-/usr/local/lib64/libfswatch.so.13
-/usr/local/lib64/libfswatch.so.13.0.0
+/usr/local/lib64/libfswatch.so.15
+/usr/local/lib64/libfswatch.so.15.0.0
 /usr/local/lib64/pkgconfig/libfswatch.pc
 /usr/local/share/doc/fswatch/ABOUT-NLS
 /usr/local/share/doc/fswatch/AUTHORS
