@@ -1,15 +1,14 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libnfs < Package
+class Libnfs < Autotools
   description 'client library for accessing NFS shares'
   homepage 'https://github.com/sahlberg/libnfs'
-  @_ver = '4.0.0'
-  version "#{@_ver}-1"
+  version '6.0.2'
   compatibility 'all'
   license 'GPL-3, LGPL-2.1 and BSD'
   source_url 'https://github.com/sahlberg/libnfs.git'
-  git_hashtag "libnfs-#{@_ver}"
-  binary_compression 'tpxz'
+  git_hashtag "libnfs-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '93c8332ed7a11e62196a451206a1bb01f5c8d1bba0c860fdf08a6ee52638748f',
@@ -18,18 +17,9 @@ class Libnfs < Package
      x86_64: '8ff8bdbe19ee2c2bafe7ca410729eb30fc1195de1c3cab48867375752ad59299'
   })
 
-  def self.build
-    system 'autoreconf -fiv'
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_CONFIGURE_OPTIONS} \
-            --enable-utils"
-    system 'make'
-  end
+  depends_on 'krb5' => :library
+  depends_on 'glibc' => :library
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
-
-  def self.check
-    system 'make', 'check'
-  end
+  autotools_configure_options '--enable-utils'
+  autotools_pre_configure_options "#{'CFLAGS="$CFLAGS -Wno-cast-align"' if ARCH.include?('armv7l')}"
 end
