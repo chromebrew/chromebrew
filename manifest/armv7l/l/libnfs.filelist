@@ -1,7 +1,8 @@
-# Total size: 2910636
+# Total size: 3424500
 /usr/local/bin/nfs-cat
 /usr/local/bin/nfs-cp
 /usr/local/bin/nfs-ls
+/usr/local/bin/nfs-stat
 /usr/local/include/nfsc/libnfs-raw-mount.h
 /usr/local/include/nfsc/libnfs-raw-nfs.h
 /usr/local/include/nfsc/libnfs-raw-nfs4.h
@@ -15,9 +16,9 @@
 /usr/local/lib/libnfs.a
 /usr/local/lib/libnfs.la
 /usr/local/lib/libnfs.so
-/usr/local/lib/libnfs.so.13
-/usr/local/lib/libnfs.so.13.0.0
+/usr/local/lib/libnfs.so.16
+/usr/local/lib/libnfs.so.16.0.2
 /usr/local/lib/pkgconfig/libnfs.pc
-/usr/local/share/man/man1/nfs-cat.1.gz
-/usr/local/share/man/man1/nfs-cp.1.gz
-/usr/local/share/man/man1/nfs-ls.1.gz
+/usr/local/share/man/man1/nfs-cat.1.zst
+/usr/local/share/man/man1/nfs-cp.1.zst
+/usr/local/share/man/man1/nfs-ls.1.zst
