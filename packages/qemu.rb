@@ -23,7 +23,6 @@ class Qemu < Autotools
   depends_on 'eudev' => :executable
   depends_on 'fftw' => :build
   depends_on 'fontconfig' => :build
-  depends_on 'fuse3' => :build
   depends_on 'fuse3' => :executable
   depends_on 'gcc_lib' => :executable
   depends_on 'gdk_pixbuf' => :executable
