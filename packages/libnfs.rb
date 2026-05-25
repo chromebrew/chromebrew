@@ -17,8 +17,19 @@ class Libnfs < Autotools
      x86_64: '28e4008977ca30b2bc74c8cdec9ca5cdc9933aa998da8f62a2b343ab9a0517a3'
   })
 
+  depends_on 'brotli' => :executable
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'gmp' => :executable
+  depends_on 'gnutls' => :executable
   depends_on 'krb5' => :library
+  depends_on 'libidn2' => :executable
+  depends_on 'libtasn1' => :executable
+  depends_on 'libunistring' => :executable
+  depends_on 'nettle' => :executable
+  depends_on 'p11kit' => :executable
+  depends_on 'zlib' => :executable
+  depends_on 'zstd' => :executable
 
   autotools_configure_options '--enable-utils'
   autotools_pre_configure_options ('CFLAGS="$CFLAGS -Wno-cast-align"' if ARCH.include?('armv7l')).to_s
