@@ -17,6 +17,7 @@ class Py3_sqlalchemy < Pip
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'python3' => :logical
 
   no_source_build
