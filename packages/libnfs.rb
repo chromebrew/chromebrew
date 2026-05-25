@@ -11,15 +11,15 @@ class Libnfs < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '93c8332ed7a11e62196a451206a1bb01f5c8d1bba0c860fdf08a6ee52638748f',
-     armv7l: '93c8332ed7a11e62196a451206a1bb01f5c8d1bba0c860fdf08a6ee52638748f',
-       i686: 'd838e8f83938d1621884496bcc226b33c61b5d20a1c45496d98733cde4c2505c',
-     x86_64: '8ff8bdbe19ee2c2bafe7ca410729eb30fc1195de1c3cab48867375752ad59299'
+    aarch64: '6767c33c704f4240a9ad5a72c656f491696f7ff54a40ffc22adef5302ef1ddde',
+     armv7l: '6767c33c704f4240a9ad5a72c656f491696f7ff54a40ffc22adef5302ef1ddde',
+       i686: '6883e2ab1e6b20dc688eb5b4e000407d19e7f9738c9aba8d344d9af48a41a620',
+     x86_64: '28e4008977ca30b2bc74c8cdec9ca5cdc9933aa998da8f62a2b343ab9a0517a3'
   })
 
-  depends_on 'krb5' => :library
   depends_on 'glibc' => :library
+  depends_on 'krb5' => :library
 
   autotools_configure_options '--enable-utils'
-  autotools_pre_configure_options "#{'CFLAGS="$CFLAGS -Wno-cast-align"' if ARCH.include?('armv7l')}"
+  autotools_pre_configure_options ('CFLAGS="$CFLAGS -Wno-cast-align"' if ARCH.include?('armv7l')).to_s
 end
