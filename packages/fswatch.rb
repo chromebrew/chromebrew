@@ -1,27 +1,27 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Fswatch < Package
+class Fswatch < Autotools
   description 'fswatch is a file change monitor that receives notifications when the contents of the specified files or directories are modified.'
   homepage 'https://github.com/emcrisostomo/fswatch'
-  version '1.17.1'
+  version '1.21.0'
   license 'GPL-3+'
-  compatibility 'all'
-  source_url 'https://github.com/emcrisostomo/fswatch/releases/download/1.17.1/fswatch-1.17.1.tar.gz'
-  source_sha256 'c38e341c567f5f16bfa64b72fc48bba5e93873d8572522e670e6f320bbc2122f'
+  compatibility 'aarch64 armv7l x86_64'
+  min_glibc '2.41'
+  source_url 'https://github.com/emcrisostomo/fswatch.git'
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c7aa03d97680a5eb2b74a62a6f4de45ee1f901625ce133f4226e89e3ca3875f8',
-     armv7l: 'c7aa03d97680a5eb2b74a62a6f4de45ee1f901625ce133f4226e89e3ca3875f8',
-     x86_64: '3067616e2a4e9d0e6286398392e6f6d97b1b30b355a9f9279bdb96b08a227da9'
+    aarch64: 'f389a976f06ca857551fc2cd587f1cbec578a8f63d82f0231e3c576283c6ef5c',
+     armv7l: 'f389a976f06ca857551fc2cd587f1cbec578a8f63d82f0231e3c576283c6ef5c',
+     x86_64: '9446f340de6c2319824b27357c3b2216b88af76662a182bdd512eaf3d742c7be'
   })
 
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  autotools_configure_options '--disable-static'
+
+  run_tests
 end

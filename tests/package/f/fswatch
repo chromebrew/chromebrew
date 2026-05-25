@@ -1,0 +1,3 @@
+#!/bin/bash
+fswatch -h | head
+fswatch --version
