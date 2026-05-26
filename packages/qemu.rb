@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Qemu < Autotools
   description 'QEMU is a generic and open source machine emulator and virtualizer.'
   homepage 'https://www.qemu.org/'
-  version '11.0.0'
+  version '11.0.1'
   license 'GPL-2'
   compatibility 'x86_64'
   source_url 'https://github.com/qemu/qemu.git'
