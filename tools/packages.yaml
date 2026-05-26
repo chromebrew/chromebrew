@@ -685,6 +685,11 @@ url: https://github.com/tgraf/bmon/releases
 activity: none
 ---
 kind: url
+name: bochs
+url: https://sourceforge.net/projects/bochs/files/bochs/
+activity: none
+---
+kind: url
 name: boost
 url: https://sourceforge.net/projects/boost/files/boost/
 activity: medium
