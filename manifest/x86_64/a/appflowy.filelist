@@ -1,10 +1,10 @@
-# Total size: 223254172
+# Total size: 230445669
 /usr/local/bin/appflowy
 /usr/local/share/AppFlowy/AppFlowy
 /usr/local/share/AppFlowy/data/flutter_assets/AssetManifest.bin
-/usr/local/share/AppFlowy/data/flutter_assets/AssetManifest.json
 /usr/local/share/AppFlowy/data/flutter_assets/FontManifest.json
 /usr/local/share/AppFlowy/data/flutter_assets/NOTICES.Z
+/usr/local/share/AppFlowy/data/flutter_assets/NativeAssetsManifest.json
 /usr/local/share/AppFlowy/data/flutter_assets/assets/built_in_prompts.json
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/2_columns.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/3_columns.svg
@@ -1120,6 +1120,7 @@
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/40x/discord_mark_blurple.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/40x/discord_mark_white.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/40x/embed_error.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/40x/empty_comment.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/40x/favorite_active.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/40x/favorite_inactive.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/40x/github-mark-black.svg
@@ -1326,6 +1327,7 @@
 /usr/local/share/AppFlowy/data/flutter_assets/packages/media_kit/assets/web/hls1.4.10.js
 /usr/local/share/AppFlowy/data/flutter_assets/packages/wakelock_plus/assets/no_sleep.js
 /usr/local/share/AppFlowy/data/flutter_assets/shaders/ink_sparkle.frag
+/usr/local/share/AppFlowy/data/flutter_assets/shaders/stretch_effect.frag
 /usr/local/share/AppFlowy/data/flutter_assets/version.json
 /usr/local/share/AppFlowy/data/icudtl.dat
 /usr/local/share/AppFlowy/lib/libapp.so
@@ -1342,9 +1344,6 @@
 /usr/local/share/AppFlowy/lib/libirondash_engine_context_plugin.so
 /usr/local/share/AppFlowy/lib/libmedia_kit_libs_linux_plugin.so
 /usr/local/share/AppFlowy/lib/libmedia_kit_video_plugin.so
-/usr/local/share/AppFlowy/lib/libmpv.so.2
-/usr/local/share/AppFlowy/lib/libpdfium.so
-/usr/local/share/AppFlowy/lib/libpdfrx.so
 /usr/local/share/AppFlowy/lib/libscreen_retriever_linux_plugin.so
 /usr/local/share/AppFlowy/lib/libsuper_native_extensions.so
 /usr/local/share/AppFlowy/lib/libsuper_native_extensions_plugin.so
