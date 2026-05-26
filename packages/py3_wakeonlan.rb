@@ -10,13 +10,14 @@ class Py3_wakeonlan < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6460f7e3005390155b87eaf5071c030c7faf3771f8b349bd88930d09cfa1a283',
-     armv7l: '6460f7e3005390155b87eaf5071c030c7faf3771f8b349bd88930d09cfa1a283',
-       i686: '9a026c39743053001ba6cc63f999dc3a29744e9d5d97d0dd4ade747a7c5e7c2e',
-     x86_64: '37463fc98f07c6235535a368821d8d9595e2638f3a90af860b5d2063609d9e8a'
+    aarch64: '194404ee96f0c6baa4a358c6dd870a14d38810b4669a4763b7b90e8e4cc24f15',
+     armv7l: '194404ee96f0c6baa4a358c6dd870a14d38810b4669a4763b7b90e8e4cc24f15',
+       i686: '88de676aeb5a38020dbab99c3704896ab734b0586bfed4888d1f772b04b2827d',
+     x86_64: 'da171717c6996f3493f4574ccfcc4b3fd2cf5bda161070e0d0d535d4e082cb3e'
   })
 
   depends_on 'python3'
+  depends_on 'python3' => :logical
 
   no_source_build
 end
