@@ -3,47 +3,67 @@ require 'package'
 class Freedos < Package
   description 'FreeDOS is a free DOS-compatible operating system.'
   homepage 'https://www.freedos.org/'
-  version '1.2'
+  version '1.4'
   license 'GPL-2'
-  compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://downloads.sourceforge.net/project/freedos/Kernel/2042/ke2042_86f32.zip'
-  source_sha256 '460a6be669a24223e0b0ff7a92502624eb45d1271a535f345b24d5562b29b467'
+  compatibility 'x86_64'
+  source_url "https://download.freedos.org/#{version}/FD#{version.sub('.', '')}-LiveCD.zip"
+  source_sha256 '2020ff6bb681967fd6eff8f51ad2e5cd5ab4421165948cef4246e4f7fcaf6339'
 
   depends_on 'libjpeg_turbo'
+  depends_on 'libsamplerate'
   depends_on 'wayland_protocols'
   depends_on 'hicolor_icon_theme'
   depends_on 'gtk3'
   depends_on 'qemu'
 
+  no_compile_needed
+
+  def self.preflight
+    # Need 5 gb for x86_64 and 3.5 gb for arm.
+    min_size = ARCH.eql?('x86_64') ? 5368709120 : 3758096384
+    MiscFunctions.check_free_disk_space(min_size)
+  end
+
   def self.build
     mb = nil
     loop do
-      puts 'Enter the drive C: partition size (in MB):'
+      print "\nEnter the drive C: partition size (in MB): ".yellow
       mb = $stdin.gets.chomp.to_i
       break unless mb < 100
 
-      puts 'Enter a number greater than or equal to 100.'
+      puts 'Enter a number greater than or equal to 100.'.lightred
     end
 
     # See https://opensource.com/article/17/10/run-dos-applications-linux.
     FileUtils.mkdir_p "#{CREW_DEST_HOME}/dosfiles"
-    downloader 'https://www.ibiblio.org/pub/micro/pc-stuff/freedos/files/distributions/1.2/FD12CD.iso', '6c7f6aad72ab16c592e879367d1ed463047e3b7c94e1828e1ddadb680d461bc3'
     system "qemu-img create freedos.img #{mb}M"
-    system 'qemu-system-i386 -m 16 -k en-us -rtc base=localtime -soundhw all -device cirrus-vga -display gtk -hda freedos.img -cdrom FD12CD.iso -boot order=d'
-    system "echo '#!/bin/bash' > freedos"
-    system "echo 'qemu-system-i386 -m 16 -k en-us -rtc base=localtime -soundhw all -device cirrus-vga -display gtk -hda $HOME/freedos.img -drive file=fat:rw:$HOME/dosfiles/ -boot order=c' >> freedos"
+    system "qemu-system-i386 -m 16 -k en-us -rtc base=localtime -device cirrus-vga -display gtk -hda freedos.img -cdrom FD#{version.sub('.', '')}LIVE.iso -boot order=d"
+    File.write 'freedos', <<~EOF
+      #!/bin/bash
+      qemu-system-i386 -m 16 -k en-us -rtc base=localtime -device cirrus-vga -display gtk -hda $HOME/freedos.img -drive file=fat:rw:$HOME/dosfiles/ -boot order=c
+    EOF
   end
 
   def self.install
+    FileUtils.mkdir_p "#{CREW_DEST_HOME}/dosfiles"
+    File.write "#{CREW_DEST_HOME}/dosfiles/README", <<~EOF
+      Add freedos files in this directory.
+    EOF
     FileUtils.install 'freedos', "#{CREW_DEST_PREFIX}/bin/freedos", mode: 0o755
     FileUtils.install 'freedos.img', "#{CREW_DEST_HOME}/freedos.img", mode: 0o644
+    FileUtils.install "FD#{version.sub('.', '')}LIVE.iso", "#{CREW_DEST_HOME}/FD#{version.sub('.', '')}LIVE.iso", mode: 0o644
   end
 
   def self.postinstall
-    puts
-    puts "Type 'freedos' to start.".lightblue
-    puts
-    puts "Add files to #{HOME}/dosfiles.".lightblue
-    puts
+    ExitMessage.add <<~EOM
+
+      Type 'freedos' to start.
+
+      Add files to #{HOME}/dosfiles.
+    EOM
+  end
+
+  def self.postremove
+    Package.agree_to_remove("#{HOME}/dosfiles")
   end
 end
