@@ -1,0 +1,11 @@
+#!/bin/bash
+sndfile-cmp | head -5
+sndfile-concat | head -5
+sndfile-convert | head -5
+sndfile-deinterleave | head -5
+sndfile-info | head -5
+sndfile-interleave | head -5
+sndfile-metadata-get | head -5
+sndfile-metadata-set | head -5
+sndfile-play | head -5
+sndfile-salvage | head -5

@@ -1,4 +1,4 @@
-# Total size: 850039
+# Total size: 1076513
 /usr/local/bin/sndfile-cmp
 /usr/local/bin/sndfile-concat
 /usr/local/bin/sndfile-convert
@@ -11,7 +11,10 @@
 /usr/local/bin/sndfile-salvage
 /usr/local/include/sndfile.h
 /usr/local/include/sndfile.hh
-/usr/local/lib64/libsndfile.la
+/usr/local/lib64/cmake/SndFile/SndFileConfig.cmake
+/usr/local/lib64/cmake/SndFile/SndFileConfigVersion.cmake
+/usr/local/lib64/cmake/SndFile/SndFileTargets-release.cmake
+/usr/local/lib64/cmake/SndFile/SndFileTargets.cmake
 /usr/local/lib64/libsndfile.so
 /usr/local/lib64/libsndfile.so.1
 /usr/local/lib64/libsndfile.so.1.0.37

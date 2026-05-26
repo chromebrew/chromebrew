@@ -1,29 +1,35 @@
-require 'buildsystems/autotools'
+require 'buildsystems/cmake'
 
-class Libsndfile < Autotools
+class Libsndfile < CMake
   description 'Libsndfile is a C library for reading and writing files containing sampled sound (such as MS Windows WAV and the Apple/SGI AIFF format) through one standard library interface.'
   homepage 'https://github.com/libsndfile/libsndfile'
-  version '1.2.2'
+  version '1.2.2-68f6c16f'
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url 'https://github.com/libsndfile/libsndfile/releases/download/1.2.2/libsndfile-1.2.2.tar.xz'
-  source_sha256 '3799ca9924d3125038880367bf1468e53a1b7e3686a934f098b7e1d286cdb80e'
+  source_url 'https://github.com/libsndfile/libsndfile.git'
+  git_hashtag '68f6c16fe1407eff4cdde158566694c3ed666c2f'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e64d75555b4ff9383478bbe2588693ba41a024b281a64a8de47ee0cf03e0f2f6',
-     armv7l: 'e64d75555b4ff9383478bbe2588693ba41a024b281a64a8de47ee0cf03e0f2f6',
-       i686: '6d28a661b4ec8e0c85db4b57902aef01b253edfc633b3f9d791d53ffbbe31278',
-     x86_64: 'be7071f6c235ed413cda0f328506a3661e513c7053882c8ef7fbe8426a9047e8'
+    aarch64: '2d0471943a1768ec65ce97a472a0abe9fc1c45167bebadf36702068b759716a5',
+     armv7l: '2d0471943a1768ec65ce97a472a0abe9fc1c45167bebadf36702068b759716a5',
+       i686: '3222e03b9e2be06aa7e9434675bb227b09581552b78698be1654a11b846e285c',
+     x86_64: 'fd1387be738c0d74d05633da1c0449d08dcead3170cd7b38b3572ebbaea6b352'
   })
 
-  depends_on 'alsa_lib' # R
-  depends_on 'flac' # R
-  depends_on 'glibc' # R
-  depends_on 'libogg' # R
-  depends_on 'libvorbis' # R
+  depends_on 'alsa_lib' => :executable
+  depends_on 'flac' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'libmp3lame' => :library
+  depends_on 'libogg' => :library
+  depends_on 'libvorbis' => :library
+  depends_on 'mpg123' => :library
   depends_on 'nasm' => :build
-  depends_on 'opus' # R
+  depends_on 'opus' => :library
+  depends_on 'sane_backends' => :library
   depends_on 'speex' => :build
   depends_on 'sqlite' => :build
+
+  cmake_options '-DBUILD_SHARED_LIBS=ON'
 end
