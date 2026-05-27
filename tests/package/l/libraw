@@ -1,0 +1,12 @@
+#!/bin/bash
+4channels | head -5
+dcraw_emu | head -5
+dcraw_half | head -5
+half_mt | head -5
+mem_image | head -5
+multirender_test | head -5
+postprocessing_benchmark | head -5
+raw-identify | head -5
+rawtextdump | head -5
+simple_dcraw | head -5
+unprocessed_raw | head -5

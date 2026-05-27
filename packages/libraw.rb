@@ -1,37 +1,27 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libraw < Package
+class Libraw < Autotools
   description 'Raw image decoder library'
   homepage 'https://www.libraw.org'
-  version '0.20.2'
+  version '0.22.1'
   license 'LGPL-2.1 and CDDL'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://www.libraw.org/data/LibRaw-0.20.2.tar.gz'
-  source_sha256 'dc1b486c2003435733043e4e05273477326e51c3ea554c6864a4eafaff1004a6'
+  source_url "https://www.libraw.org/data/LibRaw-#{version}.tar.gz"
+  source_sha256 'a789dc4e2409e2901d93793a4e0b80c7b49d0d97cf6ad71c850eb7616acfd786'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8c49ae291667a77b2656a9530f7aa3afcc5ba60849b421c122384c9be24fb80b',
-     armv7l: '8c49ae291667a77b2656a9530f7aa3afcc5ba60849b421c122384c9be24fb80b',
-     x86_64: 'e73d06cfb8317be20e801930eba8b4f96c9e0d1a021594f66164972441e600d1'
+    aarch64: 'e76ea68b2b0411fa84e81dcdbd6d5a9c5a6d0d05379c6e5b212924fbfa5b0067',
+     armv7l: 'e76ea68b2b0411fa84e81dcdbd6d5a9c5a6d0d05379c6e5b212924fbfa5b0067',
+     x86_64: '848f56c2d17585c7d9fdc2408e9e6753535a0efd9ceb513e685a2ce0a3f1d438'
   })
 
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'jasper'
-  depends_on 'lcms'
+  depends_on 'lcms' => :library
+  depends_on 'libjpeg_turbo' => :library
   depends_on 'openmp'
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'libjpeg_turbo' # R
-  depends_on 'zlib' # R
-
-  def self.build
-    system 'autoreconf -fiv'
-    system 'filefix'
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system "make install DESTDIR=#{CREW_DEST_DIR}"
-  end
+  depends_on 'zlib' => :library
 end
