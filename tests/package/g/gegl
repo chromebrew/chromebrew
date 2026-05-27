@@ -1,0 +1,2 @@
+#!/bin/bash
+gegl -h 2>&1 | head
