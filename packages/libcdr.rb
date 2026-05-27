@@ -14,9 +14,9 @@ class Libcdr < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5a3bbb00baf8dd6067992fe59673b3375e63e68ca7bab334787a3af6e3cae2ec',
-     armv7l: '5a3bbb00baf8dd6067992fe59673b3375e63e68ca7bab334787a3af6e3cae2ec',
-     x86_64: '181ba9ea38edbbf49ba3136124f1aab83b3a7f669b45a037dde305ef1d08f17e'
+    aarch64: '7a620757a50e4b04c61770defbb111299e903767fc1a4fedb7657525bb9942f8',
+     armv7l: '7a620757a50e4b04c61770defbb111299e903767fc1a4fedb7657525bb9942f8',
+     x86_64: '02a0ac69218f22a9be1b80feeb9690acd5517475b8ba3da1b0db1feeb6384174'
   })
 
   depends_on 'boost' => :build
@@ -24,6 +24,7 @@ class Libcdr < Autotools
   depends_on 'doxygen' => :build
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'icu4c' => :library
   depends_on 'lcms' => :library
   depends_on 'librevenge' => :library
