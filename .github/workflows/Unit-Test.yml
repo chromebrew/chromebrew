@@ -1,5 +1,5 @@
 ---
-# Version 1.9
+# Version 2.0
 name: Unit Tests
 on:
   check_run:
@@ -49,7 +49,7 @@ jobs:
     outputs:
       current_head: ${{ steps.get-current-head.outputs.CURRENT_HEAD }}
       changed_packages: ${{ steps.changed-packages.outputs.CHANGED_PACKAGES }}
-      non_package_non_workflow_files: ${{ steps.changed-files.outputs.non-package-non-workflow_all_changed_files }}
+      non-package-non-workflow-non-manifest_files: ${{ steps.changed-files.outputs.non-package-non-workflow-non-manifest_all_changed_files }}
       changed_workflow_files: ${{ steps.changed-files.outputs.workflows_all_changed_files }}
     steps:
       - name: Dump Concurrency Group
@@ -88,10 +88,11 @@ jobs:
           base_sha: ${{ steps.get-current-head.outputs.CURRENT_HEAD }}
           since_last_remote_commit: true
           files_yaml: |
-            non-package-non-workflow:
+            non-package-non-workflow-non-manifest:
               - '**'
               - '!.github/workflows/*.yml'
               - '!packages/**.rb'
+              - '!manifest/**'
             packages:
               - packages/**.rb
             workflows:
@@ -108,15 +109,15 @@ jobs:
       - name: Check Setup Outputs
         env:
           STEPS_CHANGED_PACKAGES_EMPTY: ${{ steps.changed-packages.outputs.CHANGED_PACKAGES != '' }}
-          STEPS_NON_PKG_NON_WORKFLOW_CHANGED_FILES_EMPTY: ${{ steps.changed-files.outputs.non-package-non-workflow_all_changed_files != '' }}
-          NON_PKG_NON_WORKFLOW_CHANGED_FILES: ${{ steps.changed-files.outputs.non-package-non-workflow_all_changed_files }}
+          STEPS_NON_PKG_NON_WORKFLOW_CHANGED_FILES_EMPTY: ${{ steps.changed-files.outputs.non-package-non-workflow-non-manifest_all_changed_files != '' }}
+          NON_PKG_NON_WORKFLOW_CHANGED_FILES: ${{ steps.changed-files.outputs.non-package-non-workflow-non-manifest_all_changed_files }}
         run: |
           echo "steps.changed-packages.outputs.CHANGED_PACKAGES != '' : ${STEPS_CHANGED_PACKAGES_EMPTY}"
-          echo "steps.changed-files.outputs.non-package-non-workflow_all_changed_files != '' : ${STEPS_NON_PKG_NON_WORKFLOW_CHANGED_FILES_EMPTY}"
+          echo "steps.changed-files.outputs.non-package-non-workflow-non-manifest_all_changed_files != '' : ${STEPS_NON_PKG_NON_WORKFLOW_CHANGED_FILES_EMPTY}"
           [[ -n ${NON_PKG_NON_WORKFLOW_CHANGED_FILES} ]] && echo "NON_PKG_NON_WORKFLOW_CHANGED_FILES: ${NON_PKG_NON_WORKFLOW_CHANGED_FILES}" || true
   get-compatibility:
     needs: setup
-    if: ${{ ( needs.setup.outputs.changed_packages != '' ) || ( needs.setup.outputs.non_package_non_workflow_files != '' ) }}
+    if: ${{ ( needs.setup.outputs.changed_packages != '' ) || ( needs.setup.outputs.non-package-non-workflow-non-manifest_files != '' ) }}
     uses: ./.github/workflows/Determine-Compatibility.yml
     with:
       changed_packages: ${{ needs.setup.outputs.changed_packages }}
@@ -247,7 +248,7 @@ jobs:
       - name: Run unit tests
         env:
           GITHUB_EVENT: ${{ github.event_name }}
-          NON_PKG_NON_WORKFLOW_CHANGED_FILES: ${{ needs.setup.outputs.non_package_non_workflow_files }}
+          NON_PKG_NON_WORKFLOW_CHANGED_FILES: ${{ needs.setup.outputs.non-package-non-workflow-non-manifest_files }}
         run: |
             case $GITHUB_EVENT in
               check_run | merge_group | push | workflow_run | workflow_dispatch)
