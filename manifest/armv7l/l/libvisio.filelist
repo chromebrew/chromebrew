@@ -1,4 +1,4 @@
-# Total size: 9957548
+# Total size: 9975770
 /usr/local/bin/vsd2raw
 /usr/local/bin/vsd2text
 /usr/local/bin/vsd2xhtml
@@ -10,7 +10,7 @@
 /usr/local/lib/libvisio-0.1.la
 /usr/local/lib/libvisio-0.1.so
 /usr/local/lib/libvisio-0.1.so.1
-/usr/local/lib/libvisio-0.1.so.1.0.10
+/usr/local/lib/libvisio-0.1.so.1.0.11
 /usr/local/lib/pkgconfig/libvisio-0.1.pc
 /usr/local/share/doc/libvisio/html/VDXParser_8cpp.html
 /usr/local/share/doc/libvisio/html/VDXParser_8h.html
