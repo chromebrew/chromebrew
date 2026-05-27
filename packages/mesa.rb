@@ -7,13 +7,13 @@ class Mesa < Meson
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/mesa/mesa.git'
-  git_hashtag "mesa-#{version.split('-')[0..-2].join('-')}"
+  git_hashtag "mesa-#{version.gsub("-#{CREW_LLVM_VER}", '')}"
   binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '16327e1161cc0a14883905be60788b3550497423c8786bbe316d0aa574e7dd9a',
      armv7l: '16327e1161cc0a14883905be60788b3550497423c8786bbe316d0aa574e7dd9a',
-     x86_64: '5e049f471424d254da3720c59a1e9eb39d4c2b80b5ee50a85f81599986bb8c45'
+     x86_64: '536038f6f433b671baaaeed1259e07659aecc8f47de3e1288e58fa286ade4314'
   })
 
   depends_on 'elfutils' => :library
@@ -94,5 +94,16 @@ class Mesa < Meson
   def self.patch
     # Currently build is locked to use the older version of the spirv_llvm_translator.
     system "sed -i \"s#'< @0@.@1@'.format(chosen_llvm_version_major, chosen_llvm_version_minor + 1) ]#'< @0@.@1@'.format(chosen_llvm_version_major + 1, chosen_llvm_version_minor + 1) ]#\" meson.build"
+
+    if version.gsub("-#{CREW_LLVM_VER}", '') == '26.1.1' && ARCH.include?('armv7l')
+      patch = [
+        [
+          # See https://gitlab.freedesktop.org/mesa/mesa/-/work_items/15553
+          'https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/40161.diff',
+          '48c53f970da3efb91b573f8e8b03b71c2c3adfb2f73140c10aec72e52477dbb8'
+        ]
+      ]
+      ConvenienceFunctions.patch(patch)
+    end
   end
 end
