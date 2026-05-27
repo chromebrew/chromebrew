@@ -1,12 +1,12 @@
-# Total size: 21101724
-/usr/local/lib/python3.14/site-packages/botocore-1.43.14.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/botocore-1.43.14.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/botocore-1.43.14.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/botocore-1.43.14.dist-info/NOTICE
-/usr/local/lib/python3.14/site-packages/botocore-1.43.14.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/botocore-1.43.14.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/botocore-1.43.14.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/botocore-1.43.14.dist-info/top_level.txt
+# Total size: 21103320
+/usr/local/lib/python3.14/site-packages/botocore-1.43.15.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/botocore-1.43.15.dist-info/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/botocore-1.43.15.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/botocore-1.43.15.dist-info/NOTICE
+/usr/local/lib/python3.14/site-packages/botocore-1.43.15.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/botocore-1.43.15.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/botocore-1.43.15.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/botocore-1.43.15.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/botocore/__init__.py
 /usr/local/lib/python3.14/site-packages/botocore/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/botocore/__pycache__/args.cpython-314.pyc
