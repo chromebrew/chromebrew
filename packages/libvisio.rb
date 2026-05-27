@@ -6,7 +6,7 @@ require 'buildsystems/autotools'
 class Libvisio < Autotools
   description 'Library providing ability to interpret and import visio diagrams'
   homepage 'https://wiki.documentfoundation.org/DLP/Libraries/libvisio'
-  version "0.1.10-#{CREW_ICU_VER}"
+  version "0.1.11-#{CREW_ICU_VER}"
   license 'LGPL'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://git.libreoffice.org/libvisio'
