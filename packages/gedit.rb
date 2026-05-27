@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gedit < Meson
   description 'GNOME Text Editor'
   homepage 'https://wiki.gnome.org/Apps/Gedit'
-  version '49.0'
+  version '50.0'
   license 'GPL-2+ CC-BY-SA-3.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gedit.git'
@@ -11,27 +11,29 @@ class Gedit < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ac6287afc679ad75a753df15741126b4be8fc650bfcaeea1f4cf47c77467ef5c',
-     armv7l: 'ac6287afc679ad75a753df15741126b4be8fc650bfcaeea1f4cf47c77467ef5c',
-     x86_64: 'b66022b46a4f7dee6db5d51bba361ce0ab25d25a526dbfe55b6c12b1b8c7b811'
+    aarch64: '048b11ecd7b84717a756452a9e1deb178595e3dedc48cbee122847e566ac68cc',
+     armv7l: '048b11ecd7b84717a756452a9e1deb178595e3dedc48cbee122847e566ac68cc',
+     x86_64: 'd227bea215ada7d86ce6acaf9b0a6759bf71410da97436b6d4c79ef35c4ba69b'
   })
 
-  depends_on 'cairo' # R
+  depends_on 'appstream' => :executable
+  depends_on 'cairo' => :library
   depends_on 'desktop_file_utils' => :build
-  depends_on 'gcc_lib' # R
-  depends_on 'gdk_pixbuf' # R
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'gdk_pixbuf' => :library
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gsettings_desktop_schemas' => :logical
-  depends_on 'gspell' # R
-  depends_on 'gtk3' # R
-  depends_on 'harfbuzz' # R
-  depends_on 'libgedit_gtksourceview' # R
-  depends_on 'libpeas' # R
-  depends_on 'pango' # R
+  depends_on 'gspell' => :library
+  depends_on 'gtk3' => :library
+  depends_on 'harfbuzz' => :library
+  depends_on 'libgedit_gtksourceview' => :library
+  depends_on 'libpeas' => :library
+  depends_on 'pango' => :library
   depends_on 'py3_lxml' => :build
   depends_on 'py3_pygobject' => :build
-  depends_on 'tepl_6' # R
+  depends_on 'tepl_6' => :library
   depends_on 'vala' => :build
   depends_on 'yelp_tools' => :build
 

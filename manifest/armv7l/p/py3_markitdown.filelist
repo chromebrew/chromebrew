@@ -1,11 +1,11 @@
-# Total size: 432281
+# Total size: 483911
 /usr/local/bin/markitdown
-/usr/local/lib/python3.14/site-packages/markitdown-0.1.5.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/markitdown-0.1.5.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/markitdown-0.1.5.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/markitdown-0.1.5.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/markitdown-0.1.5.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/markitdown-0.1.5.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/markitdown-0.1.6.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/markitdown-0.1.6.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/markitdown-0.1.6.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/markitdown-0.1.6.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/markitdown-0.1.6.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/markitdown-0.1.6.dist-info/entry_points.txt
 /usr/local/lib/python3.14/site-packages/markitdown/__about__.py
 /usr/local/lib/python3.14/site-packages/markitdown/__init__.py
 /usr/local/lib/python3.14/site-packages/markitdown/__main__.py
@@ -39,6 +39,7 @@
 /usr/local/lib/python3.14/site-packages/markitdown/converters/__pycache__/_audio_converter.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/markitdown/converters/__pycache__/_bing_serp_converter.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/markitdown/converters/__pycache__/_csv_converter.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/markitdown/converters/__pycache__/_cu_converter.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/markitdown/converters/__pycache__/_doc_intel_converter.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/markitdown/converters/__pycache__/_docx_converter.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/markitdown/converters/__pycache__/_epub_converter.cpython-314.pyc
@@ -61,6 +62,7 @@
 /usr/local/lib/python3.14/site-packages/markitdown/converters/_audio_converter.py
 /usr/local/lib/python3.14/site-packages/markitdown/converters/_bing_serp_converter.py
 /usr/local/lib/python3.14/site-packages/markitdown/converters/_csv_converter.py
+/usr/local/lib/python3.14/site-packages/markitdown/converters/_cu_converter.py
 /usr/local/lib/python3.14/site-packages/markitdown/converters/_doc_intel_converter.py
 /usr/local/lib/python3.14/site-packages/markitdown/converters/_docx_converter.py
 /usr/local/lib/python3.14/site-packages/markitdown/converters/_epub_converter.py
