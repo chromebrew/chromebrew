@@ -1,5 +1,5 @@
-# Total size: 73654414
-/usr/local/share/clc/amdgcn--amdhsa.bc
+# Total size: 63330102
+/usr/local/share/clc/amdgcn-amd-amdhsa.bc
 /usr/local/share/clc/aruba-r600--.bc
 /usr/local/share/clc/barts-r600--.bc
 /usr/local/share/clc/bonaire-amdgcn--.bc
@@ -56,6 +56,10 @@
 /usr/local/share/clc/gfx1200-amdgcn-mesa-mesa3d.bc
 /usr/local/share/clc/gfx1201-amdgcn--.bc
 /usr/local/share/clc/gfx1201-amdgcn-mesa-mesa3d.bc
+/usr/local/share/clc/gfx1250-amdgcn--.bc
+/usr/local/share/clc/gfx1250-amdgcn-mesa-mesa3d.bc
+/usr/local/share/clc/gfx1251-amdgcn--.bc
+/usr/local/share/clc/gfx1251-amdgcn-mesa-mesa3d.bc
 /usr/local/share/clc/gfx602-amdgcn--.bc
 /usr/local/share/clc/gfx602-amdgcn-mesa-mesa3d.bc
 /usr/local/share/clc/gfx705-amdgcn--.bc
@@ -96,10 +100,9 @@
 /usr/local/share/clc/kaveri-amdgcn-mesa-mesa3d.bc
 /usr/local/share/clc/mullins-amdgcn--.bc
 /usr/local/share/clc/mullins-amdgcn-mesa-mesa3d.bc
-/usr/local/share/clc/nvptx--.bc
-/usr/local/share/clc/nvptx--nvidiacl.bc
 /usr/local/share/clc/nvptx64--.bc
 /usr/local/share/clc/nvptx64--nvidiacl.bc
+/usr/local/share/clc/nvptx64-nvidia-cuda.bc
 /usr/local/share/clc/oland-amdgcn--.bc
 /usr/local/share/clc/oland-amdgcn-mesa-mesa3d.bc
 /usr/local/share/clc/palm-r600--.bc

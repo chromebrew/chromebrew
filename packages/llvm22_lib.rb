@@ -4,7 +4,7 @@ Package.load_package("#{__dir__}/llvm22_build.rb")
 class Llvm22_lib < Package
   description 'LibLLVM and llvm-strip'
   homepage Llvm22_build.homepage
-  version '22.1.0'
+  version '22.1.6'
   # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
   puts "#{self} version differs from llvm version #{Llvm22_build.version}".orange if version != Llvm22_build.version && !ENV['NESTED_CI']
   license Llvm22_build.license
@@ -13,20 +13,21 @@ class Llvm22_lib < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '43cbd1aee5623a1088922e714e2382c321ced2e300c5d66cf83273751d6c684b',
-     armv7l: '43cbd1aee5623a1088922e714e2382c321ced2e300c5d66cf83273751d6c684b',
-       i686: '031ebdcdc264056e539c5c83244827d0ab46d13f3ae8b00f8908c3c00912c9a8',
-     x86_64: '70fb7d1102537283f447dba29584dc538262cc3cbfa5fbe1019f3b5b46856013'
+    aarch64: '0fa55943ae34ff5e6971973e031af63597e43b5a82f52d38677be1d8f037d403',
+     armv7l: '0fa55943ae34ff5e6971973e031af63597e43b5a82f52d38677be1d8f037d403',
+       i686: '6203a0326ae1ad90ed9fe784166aabb863877398c4e7d6fe1683aab7e21b48ce',
+     x86_64: '9014947d8a620e25b6675ee3fa8be96246b00783de4199a63d80418f84367e13'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'libedit' # R
-  depends_on 'libffi' # R
-  depends_on 'libxml2' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'libedit' => :library
+  depends_on 'libffi' => :library
+  depends_on 'libxml2' => :library
   depends_on 'llvm22_build' => :build
-  depends_on 'zlib' # R
-  depends_on 'zstd' # R
+  depends_on 'zlib' => :library
+  depends_on 'zstd' => :library
 
   conflicts_ok
   no_shrink
@@ -34,7 +35,7 @@ class Llvm22_lib < Package
   no_strip
 
   def self.preflight
-    abort "Update #{CREW_LLVM_VER} first.".lightred if Gem::Version.new(version.split('-').first) < Gem::Version.new(Llvm22_build.version.split('-').first)
+    abort "Update #{CREW_LLVM_VER} first.".lightred if Gem::Version.new(version) < Gem::Version.new(Llvm22_build.version.split('-').first)
   end
 
   def self.install

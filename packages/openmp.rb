@@ -12,21 +12,22 @@ class Openmp < Package
   puts "#{self} version differs from llvm version #{llvm_build_obj.version}".orange if version != llvm_build_obj.version && !ENV['NESTED_CI']
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
-  source_url 'https://github.com/llvm/llvm-project.git'
-  git_hashtag llvm_build_obj.git_hashtag.to_s
+  source_url llvm_build_obj.source_url
+  source_sha256 llvm_build_obj.source_sha256
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5fee78b3610ff8f50f398b23286750d2eb5b47bf0cbcd305669c29295102115c',
-     armv7l: '5fee78b3610ff8f50f398b23286750d2eb5b47bf0cbcd305669c29295102115c',
-       i686: 'edb2ec8a3e468569c2fc7e1ec72df9ca32ffdfebfdbd451f92782435e8792773',
-     x86_64: '53b68d04fe232a889093dee0c778ede3e449e63d56423106ed71c294f474e2dd'
+    aarch64: 'b96b4b9e16d6b3b233f342a09600c5bed278bfe66ac6dafd6de7e2ba15dce08a',
+     armv7l: 'b96b4b9e16d6b3b233f342a09600c5bed278bfe66ac6dafd6de7e2ba15dce08a',
+       i686: '68875a784c00aa03408e43db57932b69e113597f558e21186bea74133af34293',
+     x86_64: '5af659e5b4dd8c8e32ca84e9eb4a91be4814c98f1177b7da6a73386e85ed343c'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'llvm_dev' => :build
-  depends_on 'python3' # R
+  depends_on 'python3' => :library
 
   no_env_options
 
@@ -41,8 +42,8 @@ class Openmp < Package
 
     # Patch for LLVM 15+ because of https://github.com/llvm/llvm-project/issues/58851
     File.write 'llvm_crew_lib_prefix.patch', <<~LLVM_PATCH_EOF
-      --- a/clang/lib/Driver/ToolChains/Linux.cpp	2022-11-30 15:50:36.777754608 -0500
-      +++ b/clang/lib/Driver/ToolChains/Linux.cpp	2022-11-30 15:51:57.004417484 -0500
+      --- a/clang/lib/Driver/ToolChains/Linux.cpp       2022-11-30 15:50:36.777754608 -0500
+      +++ b/clang/lib/Driver/ToolChains/Linux.cpp       2022-11-30 15:51:57.004417484 -0500
       @@ -314,6 +314,7 @@ Linux::Linux(const Driver &D, const llvm
              D.getVFS().exists(D.Dir + "/../lib/libc++.so"))
            addPathIfExists(D, D.Dir + "/../lib", Paths);

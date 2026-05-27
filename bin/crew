@@ -493,7 +493,7 @@ end
 
 def download
   test_url = PackageUtils.get_url(@pkg, build_from_source: @opt_source || @pkg.build_from_source)
-  puts "#{__LINE__}: #{@pkg.name} test_url: #{test_url} test_url.casecmp?('SKIP'): #{test_url.casecmp?('SKIP')}"
+  puts "#{__LINE__}: #{@pkg.name} test_url: #{test_url} test_url.casecmp?('SKIP'): #{test_url.casecmp?('SKIP')}" if CREW_VERBOSE
   sha256sum = PackageUtils.get_sha256(@pkg, build_from_source: @opt_source || @pkg.build_from_source)
 
   # Do an early check for a missing binary package and if so rebuild.
@@ -505,7 +505,7 @@ def download
       @pkg.missing_binaries = true
       puts "#{__LINE__}: Binaries are missing at #{test_url}".lightpurple
     end
-  elsif test_url.casecmp?('SKIP') || (!test_url.nil? && `curl -sI #{test_url}`.lines.first.split[1] != '200')
+  elsif test_url.casecmp?('SKIP') || (!test_url.nil? && `curl -sI #{test_url}`.lines.first.split[1] == '200')
     url = test_url
   else
     @pkg.missing_binaries = true
@@ -1295,8 +1295,12 @@ def resolve_dependencies_and_install(no_advisory: false, ignore_dependencies: fa
       # Only install dependencies from source if recursive or if
       # binaries are unavailable.
       test_url = PackageUtils.get_url(@pkg, build_from_source: @opt_source || @pkg.build_from_source)
-      puts "#{__LINE__}: test_url: #{test_url}"
-      @pkg.missing_binaries = test_url.casecmp?('SKIP') || test_url.nil? ? false : `curl -sI #{test_url}`.lines.first.split[1] != '200'
+      puts "#{__LINE__}: test_url: #{test_url}" if CREW_VERBOSE
+      @pkg.missing_binaries = if test_url.nil?
+                                false
+                              else
+                                `curl -sI #{test_url}`.lines.first.split[1] != '200' || test_url.casecmp?('SKIP')
+                              end
       @opt_source = @opt_recursive || @pkg.missing_binaries
       install(skip_postinstall: true)
     end
@@ -1562,7 +1566,11 @@ def resolve_dependencies_and_build
       # binaries are unavailable.
       test_url = PackageUtils.get_url(@pkg, build_from_source: @opt_source || @pkg.build_from_source)
       puts "#{__LINE__}: test_url: #{test_url}"
-      @pkg.missing_binaries = test_url.casecmp?('SKIP') || test_url.nil? ? false : `curl -sI #{test_url}`.lines.first.split[1] != '200'
+      @pkg.missing_binaries = if test_url.nil?
+                                false
+                              else
+                                `curl -sI #{test_url}`.lines.first.split[1] != '200' || test_url.casecmp?('SKIP')
+                              end
       @opt_source = @opt_recursive || @pkg.missing_binaries
       install(skip_postinstall: true)
     end

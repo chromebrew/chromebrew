@@ -1,36 +1,40 @@
 require 'package'
 
 class Llvm22_build < Package
-  @llvm_projects_to_build = ARCH == 'x86_64' ? 'bolt;clang;clang-tools-extra;compiler-rt;lld;lldb;polly' : 'clang;clang-tools-extra;compiler-rt;lld;lldb;polly'
+  # Note that compiler-rt cannot be removed from @llvm_projects_to_build
+  # due to https://github.com/llvm/llvm-project/issues/141329
+  @llvm_projects_to_build = ARCH == 'x86_64' ? 'bolt;clang;clang-tools-extra;lld;lldb;compiler-rt;polly' : 'clang;clang-tools-extra;lld;lldb;compiler-rt;polly'
   description "The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The packages included are: #{@llvm_projects_to_build.gsub(';', ' ')}"
   homepage 'https://llvm.org/'
-  version '22.1.2'
+  version '22.1.6'
   # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
-  source_url 'https://github.com/llvm/llvm-project.git'
-  git_hashtag "llvmorg-#{version}"
+  source_url "https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-#{version}.tar.gz"
+  source_sha256 'ba534c6835a5b9c2162c806e269799fe41fca952a3c25baff1afcff23841ec2b'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f5203f66177b18a12324fc6adfd037072165243b62ca567e16c2d2ed3f45e7d7',
-     armv7l: 'f5203f66177b18a12324fc6adfd037072165243b62ca567e16c2d2ed3f45e7d7',
-       i686: 'e569f5a490ed7208e7f0e33db33a5af6f0525f76af5175b1717358889f4f7725',
-     x86_64: '7bf5a128e2ba6fda03bb295b35b1c768fbec072b4b4edf9036a226df4075b38c'
+    aarch64: '85008a7b0ffe932cc62ddf06eeabf9eff252e42464b7c9820b86fd4f5f56e072',
+     armv7l: '85008a7b0ffe932cc62ddf06eeabf9eff252e42464b7c9820b86fd4f5f56e072',
+       i686: '7c25fbd97c3898e5e1f2dbdcca242c2e8900f5318f25dc2b8cfe263b04e9c423',
+     x86_64: '3d4e11b0a101317d1bfe6a8bb02065bb1c47ed3935a93e0027e788982b7e57e4'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'libedit' # R
-  depends_on 'libffi' # R
-  depends_on 'libxml2' # R
-  depends_on 'llvm22_dev' => :build
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'graphviz' => :build
+  depends_on 'libedit' => :library
+  depends_on 'libffi' => :library
+  depends_on 'libxml2' => :library
+  depends_on 'llvm_dev' => :build
   depends_on 'ocaml' => :build
   depends_on 'py3_pygments' => :build
   depends_on 'py3_pyyaml' => :build
-  depends_on 'xzutils' # R
-  depends_on 'zlib' # R
-  depends_on 'zstd' # R
+  depends_on 'xzutils' => :library
+  depends_on 'zlib' => :library
+  depends_on 'zstd' => :library
 
   conflicts_ok
   no_env_options
@@ -39,8 +43,8 @@ class Llvm22_build < Package
   when 'aarch64', 'armv7l'
     # LLVM_TARGETS_TO_BUILD = 'ARM;AArch64;AMDGPU'
     # LLVM_TARGETS_TO_BUILD = 'all'.freeze
-    @ARCH_C_FLAGS = "-mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp -ccc-gcc-name #{CREW_TARGET}"
-    @ARCH_CXX_FLAGS = "-mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp -ccc-gcc-name #{CREW_TARGET}"
+    @ARCH_C_FLAGS = "-mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp -ccc-gcc-name #{CREW_TARGET} -I#{CREW_LIB_PREFIX}/clang/#{`clang -dumpversion`.split('.').first}/include"
+    @ARCH_CXX_FLAGS = "-mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp -ccc-gcc-name #{CREW_TARGET} -I#{CREW_LIB_PREFIX}/clang/#{`clang -dumpversion`.split('.').first}/include"
     @ARCH_LDFLAGS = ''
   when 'i686'
     # LLVM_TARGETS_TO_BUILD = 'X86'.freeze
@@ -78,8 +82,8 @@ class Llvm22_build < Package
 
     # Patch for LLVM 15+ because of https://github.com/llvm/llvm-project/issues/58851
     File.write 'llvm_crew_lib_prefix.patch', <<~LLVM_PATCH_EOF
-      --- a/clang/lib/Driver/ToolChains/Linux.cpp	2022-11-30 15:50:36.777754608 -0500
-      +++ b/clang/lib/Driver/ToolChains/Linux.cpp	2022-11-30 15:51:57.004417484 -0500
+      --- a/clang/lib/Driver/ToolChains/Linux.cpp       2022-11-30 15:50:36.777754608 -0500
+      +++ b/clang/lib/Driver/ToolChains/Linux.cpp       2022-11-30 15:51:57.004417484 -0500
       @@ -314,6 +314,7 @@ Linux::Linux(const Driver &D, const llvm
              D.getVFS().exists(D.Dir + "/../lib/libc++.so"))
            addPathIfExists(D, D.Dir + "/../lib", Paths);
@@ -123,6 +127,7 @@ class Llvm22_build < Package
             -DCMAKE_C_COMPILER=$(which clang) \
             -DCMAKE_C_COMPILER_TARGET=#{CREW_TARGET} \
             -DCMAKE_C_FLAGS='#{@ARCH_C_LTO_FLAGS}' \
+            -DC_INCLUDE_DIRS='#{CREW_LIB_PREFIX}/clang/#{`clang -dumpversion`.split('.').first}/include' \
             -DCMAKE_CXX_COMPILER=$(which clang++) \
             -DCMAKE_CXX_FLAGS='#{@ARCH_CXX_LTO_FLAGS}' \
             -DCMAKE_EXE_LINKER_FLAGS='#{@ARCH_LTO_LDFLAGS}' \
