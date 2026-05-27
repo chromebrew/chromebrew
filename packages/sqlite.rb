@@ -11,20 +11,22 @@ class Sqlite < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a5dfbcca60f0b38ef01e7df644d36384f109ed9ca7cb09c94f71bdc93f7a9f9f',
-     armv7l: 'a5dfbcca60f0b38ef01e7df644d36384f109ed9ca7cb09c94f71bdc93f7a9f9f',
-       i686: '6d1208e0a0c1eea69e9357652acd1052eb76b5d9bc948df10cc46717438a61d3',
-     x86_64: 'f649cdc852be03ed6891a66d20274fc8bc31349caad0caa23173346912551ad7'
+    aarch64: 'a04f32e410a978fe63d56adb467675ff712253bec97b276fb0adee659ebf0705',
+     armv7l: 'a04f32e410a978fe63d56adb467675ff712253bec97b276fb0adee659ebf0705',
+       i686: 'c7597a3a9b32af7366ac17d3d4d5031ed11edfdb1f6e297cf1fb5fa51a75129a',
+     x86_64: 'f2376b78b38299979fa68112ab8ca04071a41db101b04b7d2a47ef36e8539a49'
   })
 
-  depends_on 'gcc_lib' # R
+  depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'libedit' => :executable
   depends_on 'ncurses' => :executable
   depends_on 'readline' => :build
   depends_on 'zlib' => :library
 
-  autotools_configure_options '--enable-shared \
+  autotools_configure_options '--enable-rtree \
+    --enable-shared \
     --enable-editline \
     --enable-readline \
     --enable-fts3 \
