@@ -1,0 +1,3 @@
+#!/bin/bash
+get_iplayer -h | head
+get_iplayer -V
