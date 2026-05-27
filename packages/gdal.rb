@@ -3,11 +3,11 @@ require 'buildsystems/cmake'
 class Gdal < CMake
   description 'The Geospatial Data Abstraction Library is a translator for raster and vector geospatial data formats.'
   homepage 'https://gdal.org/'
-  version '3.7.3'
+  version '3.13.0'
   license 'BSD, Info-ZIP and MIT'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://download.osgeo.org/gdal/3.7.3/gdal-3.7.3.tar.xz'
-  source_sha256 'e0a6f0c453ea7eb7c09967f50ac49426808fcd8f259dbc9888140eb69d7ffee6'
+  source_url "https://download.osgeo.org/gdal/#{version}/gdal-#{version}.tar.xz"
+  source_sha256 '1c537dd2f4d66f05534ae419bc2af495c2204ce13bb266c8cbd867dd6705f0c7'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -34,6 +34,7 @@ class Gdal < CMake
   depends_on 'libwebp' # R
   depends_on 'libxml2' # R
   depends_on 'lz4' # R
+  depends_on 'muparser' # R
   depends_on 'openexr' # R
   depends_on 'openjpeg' # R
   depends_on 'openssl' # R
@@ -50,6 +51,5 @@ class Gdal < CMake
   depends_on 'zlib' # R
   depends_on 'zstd' # R
 
-  cmake_options '-DGDAL_USE_TIFF_INTERNAL=ON \
-    -DGDAL_USE_GEOTIFF_INTERNAL=ON'
+  cmake_options '-DGDAL_USE_TIFF_INTERNAL=ON -DGDAL_USE_GEOTIFF_INTERNAL=ON'
 end
