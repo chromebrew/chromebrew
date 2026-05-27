@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Pipewire < Meson
   description 'PipeWire is a project that aims to greatly improve handling of audio and video under Linux.'
   homepage 'https://pipewire.org'
-  version '1.6.5'
+  version '1.6.6'
   compatibility 'aarch64 armv7l x86_64'
   license 'LGPL-2.1+'
   source_url 'https://gitlab.freedesktop.org/pipewire/pipewire.git'
@@ -11,9 +11,9 @@ class Pipewire < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8b824f64cc57b6854183faac72b7eb9969866b2eb88502aa9df59aaa7bbd3326',
-     armv7l: '8b824f64cc57b6854183faac72b7eb9969866b2eb88502aa9df59aaa7bbd3326',
-     x86_64: '311693735413c90928b99a8b0c131e1b76239546a78e97bd6f518e2d9249db6b'
+    aarch64: '1f8a2bb0240c98137fbd0b017b80e49a5e9f5f7ceab502a860c7821f69040875',
+     armv7l: '1f8a2bb0240c98137fbd0b017b80e49a5e9f5f7ceab502a860c7821f69040875',
+     x86_64: '9eed3cb4ec90e62247c2e4db04d0affc279883cc8c046bd4006257372bb1ba7d'
   })
 
   depends_on 'alsa_lib' => :library
@@ -26,6 +26,7 @@ class Pipewire < Meson
   depends_on 'gcc_lib' => :library
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gsettings_desktop_schemas' => :build
   depends_on 'gstreamer' => :library
   depends_on 'gstreamer' => :logical
