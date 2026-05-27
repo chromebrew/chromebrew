@@ -1,4 +1,4 @@
-# Total size: 8402268
+# Total size: 8421281
 /usr/local/bin/cdr2raw
 /usr/local/bin/cdr2text
 /usr/local/bin/cdr2xhtml
@@ -12,7 +12,7 @@
 /usr/local/lib64/libcdr-0.1.la
 /usr/local/lib64/libcdr-0.1.so
 /usr/local/lib64/libcdr-0.1.so.1
-/usr/local/lib64/libcdr-0.1.so.1.0.8
+/usr/local/lib64/libcdr-0.1.so.1.0.9
 /usr/local/lib64/pkgconfig/libcdr-0.1.pc
 /usr/local/share/doc/libcdr/html/CDRCollector_8cpp.html
 /usr/local/share/doc/libcdr/html/CDRCollector_8h.html
