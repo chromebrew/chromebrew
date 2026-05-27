@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# build_updated_packages version 5.2 (for Chromebrew)
+# build_updated_packages version 5.3 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any

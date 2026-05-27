@@ -1,7 +1,7 @@
 #!/bin/bash
 # This is for use as a Github CI Unit Test.
-# Version 1.9.1
-set -ex
+# Version 1.9
+set -e
 cd /usr/local/lib/crew/packages/
 
 # We have some tests for specific files that aren't run as part of our general testsuite, but we should run those tests if those files are changed.

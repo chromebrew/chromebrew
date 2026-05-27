@@ -39,51 +39,14 @@ class Llvm22_build < Package
   conflicts_ok
   no_env_options
 
-  case ARCH
-  when 'aarch64', 'armv7l'
-    # LLVM_TARGETS_TO_BUILD = 'ARM;AArch64;AMDGPU'
-    # LLVM_TARGETS_TO_BUILD = 'all'.freeze
-    @ARCH_C_FLAGS = "-mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp -ccc-gcc-name #{CREW_TARGET} -I#{CREW_LIB_PREFIX}/clang/#{`clang -dumpversion`.split('.').first}/include"
-    @ARCH_CXX_FLAGS = "-mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp -ccc-gcc-name #{CREW_TARGET} -I#{CREW_LIB_PREFIX}/clang/#{`clang -dumpversion`.split('.').first}/include"
-    @ARCH_LDFLAGS = ''
-  when 'i686'
-    # LLVM_TARGETS_TO_BUILD = 'X86'.freeze
-    # Because ld.lld: error: undefinler-rt;libc;libcxx;libcxxabi;libunwind;openmped symbol: __atomic_store
-    # Polly demands fPIC
-    @ARCH_C_FLAGS = '-latomic'
-    @ARCH_CXX_FLAGS = '-latomic'
-    # Because getting this error:
-    # ld.lld: error: relocation R_386_PC32 cannot be used against symbol isl_map_fix_si; recompile with -fPIC
-    # So as per https://github.com/openssl/openssl/issues/11305#issuecomment-602003528
-    @ARCH_LDFLAGS = '-Wl,-znotext'
-    # lldb fails on i686 due to requirement for a kernel > 4.1.
-    # See https://github.com/llvm/llvm-project/issues/57594
-  when 'x86_64'
-    # LLVM_TARGETS_TO_BUILD = 'X86;AMDGPU'
-    # LLVM_TARGETS_TO_BUILD = 'all'.freeze
-    @ARCH_C_FLAGS = ''
-    @ARCH_CXX_FLAGS = ''
-    @ARCH_LDFLAGS = ''
-  end
-  @ARCH_C_LTO_FLAGS = "#{@ARCH_C_FLAGS} -fPIC -flto=thin #{CREW_LINKER_FLAGS}"
-  @ARCH_CXX_LTO_FLAGS = "#{@ARCH_CXX_FLAGS} -fPIC -flto=thin #{CREW_LINKER_FLAGS}"
-  @ARCH_LTO_LDFLAGS = "#{@ARCH_LDFLAGS} -flto=thin #{CREW_LINKER_FLAGS}"
-  # flang isn't supported on 32-bit architectures.
-  # openmp is its own package.
-
-  # Using Targets 'all' for non-i686 because otherwise mesa complains.
-  # This may be patched upstream as per
-  # https://reviews.llvm.org/rG1de56d6d13c083c996dfd44a32041dacae037d66
-  LLVM_TARGETS_TO_BUILD = 'all'.freeze
-
   def self.patch
     # Remove rc suffix on final release.
     system "sed -i 's,set(LLVM_VERSION_SUFFIX rc),,' llvm/CMakeLists.txt"
 
     # Patch for LLVM 15+ because of https://github.com/llvm/llvm-project/issues/58851
     File.write 'llvm_crew_lib_prefix.patch', <<~LLVM_PATCH_EOF
-      --- a/clang/lib/Driver/ToolChains/Linux.cpp	2022-11-30 15:50:36.777754608 -0500
-      +++ b/clang/lib/Driver/ToolChains/Linux.cpp	2022-11-30 15:51:57.004417484 -0500
+      --- a/clang/lib/Driver/ToolChains/Linux.cpp       2022-11-30 15:50:36.777754608 -0500
+      +++ b/clang/lib/Driver/ToolChains/Linux.cpp       2022-11-30 15:51:57.004417484 -0500
       @@ -314,6 +314,7 @@ Linux::Linux(const Driver &D, const llvm
              D.getVFS().exists(D.Dir + "/../lib/libc++.so"))
            addPathIfExists(D, D.Dir + "/../lib", Paths);
@@ -97,8 +60,45 @@ class Llvm22_build < Package
   end
 
   def self.build
+    case ARCH
+    when 'aarch64', 'armv7l'
+      # @llvm_targets_to_build = 'ARM;AArch64;AMDGPU'
+      # @llvm_targets_to_build = 'all'.freeze
+      @ARCH_C_FLAGS = "-mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp -ccc-gcc-name #{CREW_TARGET} -I#{CREW_LIB_PREFIX}/clang/#{`clang -dumpversion`.split('.').first}/include"
+      @ARCH_CXX_FLAGS = "-mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp -ccc-gcc-name #{CREW_TARGET} -I#{CREW_LIB_PREFIX}/clang/#{`clang -dumpversion`.split('.').first}/include"
+      @ARCH_LDFLAGS = ''
+    when 'i686'
+      # @llvm_targets_to_build = 'X86'.freeze
+      # Because ld.lld: error: undefinler-rt;libc;libcxx;libcxxabi;libunwind;openmped symbol: __atomic_store
+      # Polly demands fPIC
+      @ARCH_C_FLAGS = '-latomic'
+      @ARCH_CXX_FLAGS = '-latomic'
+      # Because getting this error:
+      # ld.lld: error: relocation R_386_PC32 cannot be used against symbol isl_map_fix_si; recompile with -fPIC
+      # So as per https://github.com/openssl/openssl/issues/11305#issuecomment-602003528
+      @ARCH_LDFLAGS = '-Wl,-znotext'
+      # lldb fails on i686 due to requirement for a kernel > 4.1.
+      # See https://github.com/llvm/llvm-project/issues/57594
+    when 'x86_64'
+      # @llvm_targets_to_build = 'X86;AMDGPU'
+      # @llvm_targets_to_build = 'all'.freeze
+      @ARCH_C_FLAGS = ''
+      @ARCH_CXX_FLAGS = ''
+      @ARCH_LDFLAGS = ''
+    end
+    @ARCH_C_LTO_FLAGS = "#{@ARCH_C_FLAGS} -fPIC -flto=thin #{CREW_LINKER_FLAGS}"
+    @ARCH_CXX_LTO_FLAGS = "#{@ARCH_CXX_FLAGS} -fPIC -flto=thin #{CREW_LINKER_FLAGS}"
+    @ARCH_LTO_LDFLAGS = "#{@ARCH_LDFLAGS} -flto=thin #{CREW_LINKER_FLAGS}"
+    # flang isn't supported on 32-bit architectures.
+    # openmp is its own package.
+
+    # Using Targets 'all' for non-i686 because otherwise mesa complains.
+    # This may be patched upstream as per
+    # https://reviews.llvm.org/rG1de56d6d13c083c996dfd44a32041dacae037d66
+    @llvm_targets_to_build = 'all'.freeze
+
     ############################################################
-    puts "Building LLVM Targets: #{LLVM_TARGETS_TO_BUILD}".lightgreen
+    puts "Building LLVM Targets: #{@llvm_targets_to_build}".lightgreen
     puts "Building LLVM Projects: #{@llvm_projects_to_build}".lightgreen
     ############################################################
 
@@ -153,7 +153,7 @@ class Llvm22_build < Package
             -DLLVM_LIBDIR_SUFFIX='#{CREW_LIB_SUFFIX}' \
             -DLLVM_LINK_LLVM_DYLIB=ON \
             -DLLVM_OPTIMIZED_TABLEGEN=ON \
-            -DLLVM_TARGETS_TO_BUILD='#{LLVM_TARGETS_TO_BUILD}' \
+            -DLLVM_TARGETS_TO_BUILD='#{@llvm_targets_to_build}' \
             -Wno-dev"
     end
     system "#{CREW_NINJA} -C builddir -j #{CREW_NPROC}"
