@@ -19,19 +19,31 @@ class Freedos < Package
   no_compile_needed
 
   def self.preflight
-    # Need 5 gb for x86_64 and 3.5 gb for arm.
-    min_size = ARCH.eql?('x86_64') ? 5368709120 : 3758096384
-    MiscFunctions.check_free_disk_space(min_size)
+    # Need 5 gb.
+    MiscFunctions.check_free_disk_space(5368709120)
   end
 
   def self.build
-    mb = nil
-    loop do
-      print "\nEnter the drive C: partition size (in MB): ".yellow
-      mb = $stdin.gets.chomp.to_i
-      break unless mb < 100
+    mb = 100
+    begin
+      Timeout.timeout(CREW_AGREE_TIMEOUT_SECONDS) do
+        loop do
+          print "\nEnter the drive C: partition size (in MB) [#{mb}]: ".yellow
+          size = $stdin.gets.chomp
+          case size
+          when ''
+            break
+          else
+            mb = size.to_i
+          end
+          break unless mb < 100
 
-      puts 'Enter a number greater than or equal to 100.'.lightred
+          puts 'Enter a number greater than or equal to 100.'.lightred
+          mb = 100
+        end
+      end
+    rescue Timeout::Error
+      # Do nothing.
     end
 
     # See https://opensource.com/article/17/10/run-dos-applications-linux.
