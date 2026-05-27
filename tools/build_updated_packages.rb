@@ -176,12 +176,12 @@ def determine_recursive_deps(d_pkg_input, dependency_graphs: {})
   # @gcc_lib_graph.merge(@glibc_graph)
   [d_pkg_input].flatten.each do |d_pkg|
     d_pkg_obj = Package.load_package("packages/#{d_pkg}.rb")
-    d_pkg_deps = d_pkg_obj.dependencies.map { |key, value| key.to_s if value == [[], nil] }.compact
+    d_pkg_deps = d_pkg_obj.dependencies.map { |key, value| key.to_s if value == [[], nil] }.compact.map { |key, _value| key.to_s }.compact.delete_if { it.include?('glibc_') }
     # Pull in build dependencies if necessary.
     if (d_pkg.include?('_lib') || d_pkg.include?('_dev')) && !d_pkg.include?('gcc_lib')
       puts "#{"#{__LINE__}: " if CREW_VERBOSE}#{d_pkg} includes _dev || _lib, pulling build deps.".orange
       # d_pkg_deps = d_pkg_obj.get_deps_list(exclude_buildessential: false).delete_if { |d| ( d == 'glibc' || d == 'gcc_lib' ) }
-      d_pkg_deps = d_pkg_obj.dependencies.map { |key, _value| key.to_s }.compact.delete_if { |d| %w[glibc gcc_lib].include?(d) }
+      d_pkg_deps = d_pkg_obj.dependencies.map { |key, _value| key.to_s }.compact.delete_if { %w[glibc gcc_lib].include?(it) }
     end
     dependency_graphs[d_pkg] = Dagwood::DependencyGraph.new({ d_pkg.to_sym => (d_pkg_deps.map &:to_sym) }) if dependency_graphs[d_pkg].nil?
 
