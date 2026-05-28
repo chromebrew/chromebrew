@@ -1,10 +1,18 @@
-# Total size: 189294
+# Total size: 277464
+/usr/local/libexec/exfat-uctbl2bin.sh
+/usr/local/sbin/chdosattr
 /usr/local/sbin/dump.exfat
 /usr/local/sbin/exfat2img
 /usr/local/sbin/exfatlabel
 /usr/local/sbin/fsck.exfat
+/usr/local/sbin/lsdosattr
 /usr/local/sbin/mkfs.exfat
 /usr/local/sbin/tune.exfat
+/usr/local/share/doc/exfatprogs/upcase-mandatory.txt
+/usr/local/share/doc/exfatprogs/upcase-null.txt
+/usr/local/share/doc/exfatprogs/upcase-recommended.txt
+/usr/local/share/man/man1/chdosattr.1.zst
+/usr/local/share/man/man1/lsdosattr.1.zst
 /usr/local/share/man/man8/dump.exfat.8.zst
 /usr/local/share/man/man8/exfat2img.8.zst
 /usr/local/share/man/man8/exfatlabel.8.zst
