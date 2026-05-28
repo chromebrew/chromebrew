@@ -498,14 +498,14 @@ def download
 
   # Do an early check for a missing binary package and if so rebuild.
   if !@pkg.source?(@device[:architecture]) && @pkg.superclass.to_s == 'Pip'
-    if `curl -sI #{test_url}`.lines.first.split[1] == '200' && PackageUtils.get_gitlab_pkginfo(@pkg.name, @pkg.version, ARCH, false, false)[:pkg_sha256] == sha256sum
+    if `#{CREW_PREFIX}/bin/curl -sI #{test_url}`.lines.first.split[1] == '200' && PackageUtils.get_gitlab_pkginfo(@pkg.name, @pkg.version, ARCH, false, false)[:pkg_sha256] == sha256sum
       url = test_url
     else
       url = 'SKIP'
       @pkg.missing_binaries = true
       puts "#{__LINE__}: Binaries are missing at #{test_url}".lightpurple
     end
-  elsif test_url.casecmp?('SKIP') || (!test_url.nil? && `curl -sI #{test_url}`.lines.first.split[1] == '200')
+  elsif test_url.casecmp?('SKIP') || (!test_url.nil? && `#{CREW_PREFIX}/bin/curl -sI #{test_url}`.lines.first.split[1] == '200')
     url = test_url
   else
     @pkg.missing_binaries = true
@@ -540,7 +540,7 @@ def download
   git = true unless @pkg.git_hashtag.to_s.empty?
   gitlab_binary_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{@pkg.name}/#{@pkg.version}_#{@device[:architecture]}/#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.#{@pkg.binary_compression}"
   # Do a quick check to see if the binaries are available.
-  # @pkg.missing_binaries = true unless `curl -sI #{gitlab_binary_url}`.lines.first.split[1] == '200'
+  # @pkg.missing_binaries = true unless `#{CREW_PREFIX}/bin/curl -sI #{gitlab_binary_url}`.lines.first.split[1] == '200'
 
   if (@pkg.cache_build? || CREW_CACHE_BUILD) && !File.file?(build_cachefile) && !@pkg.no_source_build? && !File.file?(File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.#{@pkg.binary_compression}")) && `curl -fsI #{gitlab_binary_url}`.lines.first.split[1] != '200'
 
@@ -1296,13 +1296,11 @@ def resolve_dependencies_and_install(no_advisory: false, ignore_dependencies: fa
       # binaries are unavailable.
       test_url = PackageUtils.get_url(@pkg, build_from_source: @opt_source || @pkg.build_from_source)
       puts "#{__LINE__}: test_url: #{test_url}" if CREW_VERBOSE
-      if test_url.nil? || test_url.casecmp?('SKIP')
-        @pkg.missing_binaries = false
-      else
-        # If curl is broken then ignore output.
-        @missing_binaries_check_stdout_s, @missing_binaries_check_stderr_s, @missing_binaries_check_status = Open3.capture3("curl -sI #{test_url}`")
-        @pkg.missing_binaries = @missing_binaries_check_status ? (@missing_binaries_check_stdout_s != '200') : false
-      end
+      @pkg.missing_binaries = if test_url.nil? || test_url.casecmp?('SKIP')
+                                false
+                              else
+                                `#{CREW_PREFIX}/bin/curl -sI #{test_url}`.lines.first.split[1] != '200'
+                              end
       @opt_source = @opt_recursive || @pkg.missing_binaries
       install(skip_postinstall: true)
     end
@@ -1571,7 +1569,7 @@ def resolve_dependencies_and_build
       @pkg.missing_binaries = if test_url.nil?
                                 false
                               else
-                                `curl -sI #{test_url}`.lines.first.split[1] != '200' || test_url.casecmp?('SKIP')
+                                `#{CREW_PREFIX}/bin/curl -sI #{test_url}`.lines.first.split[1] != '200' || test_url.casecmp?('SKIP')
                               end
       @opt_source = @opt_recursive || @pkg.missing_binaries
       install(skip_postinstall: true)
