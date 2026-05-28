@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Qemu < Autotools
   description 'QEMU is a generic and open source machine emulator and virtualizer.'
   homepage 'https://www.qemu.org/'
-  version '11.0.0'
+  version '11.0.1'
   license 'GPL-2'
   compatibility 'x86_64'
   source_url 'https://github.com/qemu/qemu.git'
@@ -11,7 +11,7 @@ class Qemu < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: 'd833a577771fdb031aad0ca76ed0100203fb4231abc543b8da7d23f0f67ef6f3'
+     x86_64: '2df6984d580a95836093ca25ccd234ed7c1f6f9291a2eee56bd9657dda712280'
   })
 
   depends_on 'alsa_lib' => :executable
