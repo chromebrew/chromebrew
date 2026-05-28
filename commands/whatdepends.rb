@@ -1,8 +1,6 @@
 class Command
   def self.whatdepends(pkg_names)
-    crew_local_repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp
-    crew_local_repo_root = '../' if crew_local_repo_root.to_s.empty?
-    $LOAD_PATH.unshift File.join(crew_local_repo_root, 'lib')
+    $LOAD_PATH.unshift File.join(CREW_LOCAL_REPO_ROOT, 'lib')
     require 'json' if CREW_OUTPUT_JSON
     # Do json reporting of all packages at end, otherwise report per
     # package.
@@ -10,9 +8,9 @@ class Command
     pkg_names.each do |pkg|
       pkg_count = 0
       puts "#{pkg.lightgreen} is a dependency of:" unless CREW_OUTPUT_JSON
-      `grep -lER "depends_on '#{pkg}'" #{File.join(crew_local_repo_root, 'packages/')}/*.rb`.lines(chomp: true).flat_map do |result|
+      `grep -lER "depends_on '#{pkg}'" #{File.join(CREW_LOCAL_REPO_ROOT, 'packages/')}/*.rb`.lines(chomp: true).flat_map do |result|
         pkg_name = File.basename(result, '.rb')
-        if PackageUtils.compatible?(Package.load_package(File.join("#{crew_local_repo_root}/packages/", "#{pkg_name}.rb")))
+        if PackageUtils.compatible?(Package.load_package(File.join("#{CREW_LOCAL_REPO_ROOT}/packages/", "#{pkg_name}.rb")))
           json_depends.push(pkg_name)
           if PackageUtils.installed?(pkg_name)
             puts pkg_name.lightgreen unless CREW_OUTPUT_JSON
