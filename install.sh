@@ -1,5 +1,5 @@
 #!/bin/bash
-CREW_INSTALLER_VERSION=2026052301
+CREW_INSTALLER_VERSION=2026052801
 export CREW_INSTALLER_RUNNING=1
 # Exit on fail.
 set -eE
@@ -119,18 +119,22 @@ else
   mkdir -p "${CREW_PREFIX}"
 fi
 
-# Prompt to install buildessential package.
-echo_info "\nNotice: Unless you plan to compile, it is recommended to answer 'N'"
-echo_info "to the following prompt. There is significant additional space required"
-echo_info "to install and if it is needed later, you will be prompted to install"
-echo_info "the required packages anyway."
-read -r -n1 -p "Do you wish to install essential build tools? [y/N]: " answer
-case ${answer} in
-  y|Y)
-    BUILDESSENTIALS=1 ;;
-  *)
-    BUILDESSENTIALS= ;;
-esac
+if [[ -n $CREW_FORCE_INSTALL ]]; then
+    BUILDESSENTIALS=1
+else
+  # Prompt to install buildessential package.
+  echo_info "\nNotice: Unless you plan to compile, it is recommended to answer 'N'"
+  echo_info "to the following prompt. There is significant additional space required"
+  echo_info "to install and if it is needed later, you will be prompted to install"
+  echo_info "the required packages anyway."
+  read -r -n1 -p "Do you wish to install essential build tools? [y/N]: " answer
+  case ${answer} in
+    y|Y)
+      BUILDESSENTIALS=1 ;;
+    *)
+      BUILDESSENTIALS= ;;
+  esac
+fi
 
 # Chromebrew directories.
 CREW_LIB_PATH="${CREW_PREFIX}/lib/crew"
