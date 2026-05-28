@@ -3,35 +3,47 @@ require 'package'
 class Ghidra < Package
   description "A software reverse engineering (SRE) suite of tools developed by NSA's Research Directorate in support of the Cybersecurity mission."
   homepage 'https://ghidra-sre.org/'
-  version '11.0.3'
+  version '12.1-20260513'
   license 'Apache 2.0'
   compatibility 'x86_64'
-  source_url 'https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_11.0.3_build/ghidra_11.0.3_PUBLIC_20240410.zip'
-  source_sha256 '2462a2d0ab11e30f9e907cd3b4aa6b48dd2642f325617e3d922c28e752be6761'
+  source_url "https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_#{version.split('-')[0]}_build/ghidra_#{version.split('-')[0]}_PUBLIC_#{version.split('-')[1]}.zip"
+  source_sha256 'aa5cbcbbf48f41ca185fce900e19592f1ade4cd5994eb6e0ede468dac8a6f302'
 
-  depends_on 'libbsd' # R
-  depends_on 'libmd' # R
-  depends_on 'libx11' # R
-  depends_on 'libxau' # R
-  depends_on 'libxcb' # R
-  depends_on 'libxdmcp' # R
-  depends_on 'libxext' # R
-  depends_on 'libxi' # R
-  depends_on 'libxrender' # R
-  depends_on 'libxtst' # R
-  depends_on 'openjdk17' # R
-  depends_on 'pthread_stubs' # R
-  depends_on 'xcb_proto' # R
-  depends_on 'xorg_proto' # R
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'libbsd' => :library
+  depends_on 'libmd' => :library
+  depends_on 'libx11' => :library
+  depends_on 'libxau' => :library
+  depends_on 'libxcb' => :library
+  depends_on 'libxdmcp' => :library
+  depends_on 'libxext' => :library
+  depends_on 'libxi' => :library
+  depends_on 'libxrender' => :library
+  depends_on 'libxtst' => :library
+  depends_on 'openjdk21' => :executable
+  depends_on 'pthread_stubs' => :library
+  depends_on 'xcb_proto' => :library
+  depends_on 'xorg_proto' => :library
+
+  no_compile_needed
+
+  def self.preflight
+    # Need at least 1.2 gb.
+    MiscFunctions.check_free_disk_space(1288490188)
+  end
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/ghidra"
     FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/ghidra"
     FileUtils.ln_s "#{CREW_PREFIX}/share/ghidra/ghidraRun", "#{CREW_DEST_PREFIX}/bin/ghidra"
+    # Remove batch files that only work on Windows.
+    system "find #{CREW_DEST_PREFIX}/share/ghidra -name '*.bat' -exec rm {} +"
   end
 
   def self.postinstall
-    ExitMessage.add "\nType 'ghidra' to get started.\n".lightblue
+    ExitMessage.add "\nType 'ghidra' to get started.\n"
   end
 end
