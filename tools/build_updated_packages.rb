@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# build_updated_packages version 5.2 (for Chromebrew)
+# build_updated_packages version 5.3 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -8,8 +8,8 @@
 #
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 # Usage in root of cloned chromebrew repo with a new branch checked out:
-# tools/build_updated_packages.rb [--skip]
-# Pass '--skip' as an argument to avoid running the pip and gen update scripts.
+# tools/build_updated_packages.rb [-h] [--help] [--check-all-python] [--check-all-ruby] [--continue-after-failed-builds] [--ignore-changed-packages] [--rebuild] [--skip-update-checks] [--skip-builds] [-v] [--verbose] [-vv]
+# Pass '--skip-update-checks' as an argument to avoid running the pip and gen update scripts.
 # This is useful if you have already run this (and thus the update scripts)
 # from another container for the same cloned repo.
 
@@ -23,17 +23,17 @@ crew_local_repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp
 crew_local_repo_root = '../' if crew_local_repo_root.to_s.empty?
 require File.join(crew_local_repo_root, 'lib/color')
 require File.join(crew_local_repo_root, 'lib/const')
+require File.join(crew_local_repo_root, 'lib/convenience_functions')
 require File.join(crew_local_repo_root, 'lib/package')
 require File.join(crew_local_repo_root, 'lib/package_utils')
 require File.join(crew_local_repo_root, 'lib/require_gem')
-require_gem 'dagwood'
 require_gem 'highline'
 require_gem 'timeout'
 
 # Add >LOCAL< lib to LOAD_PATH
 $LOAD_PATH.unshift File.join(crew_local_repo_root, 'lib')
 
-OPTIONS = %w[-h --help --check-all-python --check-all-ruby --continue-after-failed-builds --ignore-changed-packages --rebuild --skip -v --verbose -vv]
+OPTIONS = %w[-h --help --check-all-python --check-all-ruby --continue-after-failed-builds --ignore-changed-packages --rebuild --skip-update-checks --skip-builds -v --verbose -vv]
 
 if ARGV.include?('-h') || ARGV.include?('--help')
   abort <<~EOM
@@ -44,7 +44,8 @@ if ARGV.include?('-h') || ARGV.include?('--help')
     Passing --only-specified-packages will only build the packages given as arguments.
     Passing --ignore-changed-packages will not check packages git reports as having changed.
     Passing --rebuild will rebuild packages even if binaries already exist upstream.
-    Passing --skip will skip update checks.
+    Passing --skip-update-checks will skip update checks.
+    Passing --skip-builds will skip the package build.
     Passing --check-all-python will check py3_ pip packages for updates.
     Passing --check-all-ruby will check ruby_ gem packages for updates.
     Passing --verbose or -v will display verbose output.
@@ -61,7 +62,8 @@ CONTINUE_AFTER_FAILED_BUILDS = ARGV.include?('--continue-after-failed-builds')
 REBUILD_PACKAGES = ARGV.include?('--rebuild')
 ONLY_SPECIFIED_PACKAGES = ARGV.include?('--only-specified-packages')
 IGNORE_CHANGED_PACKAGES = ARGV.include?('--ignore-changed-packages') || ARGV.include?('--only-specified-packages')
-SKIP_UPDATE_CHECKS = ARGV.include?('--skip') || ARGV.include?('--only-specified-packages')
+SKIP_BUILDS = ARGV.include?('--skip-builds')
+SKIP_UPDATE_CHECKS = ARGV.include?('--skip-update-checks') || ARGV.include?('--only-specified-packages')
 CHECK_ALL_PYTHON = ARGV.include?('--check-all-python')
 CHECK_ALL_RUBY = ARGV.include?('--check-all-ruby')
 VERBOSE = ARGV.include?('-v') || ARGV.include?('--verbose') || ARGV.include?('-vv')
@@ -167,86 +169,6 @@ def update_deps(pkg)
   end
 end
 
-def determine_recursive_deps(d_pkg_input, dependency_graphs: {})
-  # How to hardcode a dependency:
-  # @gcc_lib_graph = Dagwood::DependencyGraph.new(gcc_lib: %i[glibc])
-  # @glibc_graph = Dagwood::DependencyGraph.new(glibc: nil)
-  # @glibc_build227_graph = Dagwood::DependencyGraph.new(glibc_build227: %i[glibc])
-  # @glibc_build227_graph.merge(@glibc_graph)
-  # @gcc_lib_graph.merge(@glibc_graph)
-  [d_pkg_input].flatten.each do |d_pkg|
-    d_pkg_obj = Package.load_package("packages/#{d_pkg}.rb")
-    d_pkg_deps = d_pkg_obj.dependencies.map { |key, value| key.to_s if value == [[], nil] }.compact
-    # Pull in build dependencies if necessary.
-    if (d_pkg.include?('_lib') || d_pkg.include?('_dev')) && !d_pkg.include?('gcc_lib')
-      puts "#{"#{__LINE__}: " if CREW_VERBOSE}#{d_pkg} includes _dev || _lib, pulling build deps.".orange
-      # d_pkg_deps = d_pkg_obj.get_deps_list(exclude_buildessential: false).delete_if { |d| ( d == 'glibc' || d == 'gcc_lib' ) }
-      d_pkg_deps = d_pkg_obj.dependencies.map { |key, _value| key.to_s }.compact.delete_if { |d| %w[glibc gcc_lib].include?(d) }
-    end
-    dependency_graphs[d_pkg] = Dagwood::DependencyGraph.new({ d_pkg.to_sym => (d_pkg_deps.map &:to_sym) }) if dependency_graphs[d_pkg].nil?
-
-    next unless !dependency_graphs[d_pkg].nil? && !dependency_graphs[d_pkg].dependencies.nil?
-
-    next if d_pkg_deps.empty?
-    d_pkg_deps.each do |d|
-      dependency_graphs = determine_recursive_deps(d, dependency_graphs:) if dependency_graphs[d].nil?
-      begin
-        # puts "#{"#{__LINE__}: " if CREW_VERBOSE}order for #{d} is #{instance_variable_get("@#{d}_graph").order}".lightpurple
-        # puts "#{"#{__LINE__}: " if CREW_VERBOSE}order for #{d} is #{dependency_graphs[d_pkg].order}".lightpurple
-        # Make sure that the dependency tree for each d_pkg dependency
-        # d is copacetic. If not error out with a complaint.
-        dependency_graphs[d_pkg].order
-      rescue TSort::Cyclic => e
-        puts "#{"#{__LINE__}: " if CREW_VERBOSE}Error processing dependencies for #{d_pkg}:".lightred
-        puts "#{"#{__LINE__}: " if CREW_VERBOSE}Circular dependency detected from #{dependency_graphs[d].dependencies}:".lightred
-        abort "#{"#{__LINE__}: " if CREW_VERBOSE}#{e.message}".lightred
-      end
-      dependency_graphs[d_pkg] = dependency_graphs[d_pkg].merge(dependency_graphs[d]) unless dependency_graphs[d].dependencies.nil?
-    end
-  end
-
-  return dependency_graphs
-end
-
-def print_recursive_deps(d_pkg_input, dependency_graphs)
-  [d_pkg_input].flatten.each do |p|
-    abort "@#{p}_graph does not exist!".lightred unless !dependency_graphs[p].nil? && !dependency_graphs[p].dependencies.nil?
-    deps = dependency_graphs[p].dependencies
-    puts deps.to_s.lightblue
-
-    begin
-      puts dependency_graphs[p].order
-    rescue RuntimeError => e
-      puts e.message.lightred
-    rescue TSort::Cyclic => e
-      puts "Circular dependency detected: #{e.message}".lightred
-    end
-  end
-end
-
-def order_recursive_deps(d_pkg_input)
-  d_pkgs = [d_pkg_input].flatten
-  puts "#{"#{__LINE__}: " if CREW_VERBOSE}Processing dependencies...".lightpurple
-  dependency_graphs = determine_recursive_deps(d_pkgs)
-  input_pkgs = d_pkgs.to_set
-  merge_base = dependency_graphs[d_pkgs.pop]
-
-  d_pkgs.each do |p|
-    begin
-      merge_base.order
-    rescue TSort::Cyclic => e
-      puts "#{"#{__LINE__}: " if CREW_VERBOSE}Circular dependency detected from #{merge_base.dependencies}:".lightpurple
-      abort e.message.to_s.lightred
-    end
-    merge_base = merge_base.merge(dependency_graphs[p])
-    # puts "#{"#{__LINE__}: " if CREW_VERBOSE}merge_base.order is now #{merge_base.order}".lightpurple
-  end
-  package_deps_build_order = merge_base.order.to_set(&:to_s)
-  # Want the intersection of these sets, but the intersection appears
-  # to reorder the result, which isn't what we want.
-  return package_deps_build_order.delete_if { |p| !input_pkgs.include? p }.to_a
-end
-
 # Do not execute anything if we are required as a library rather than being run as a script.
 return unless __FILE__ == $PROGRAM_NAME
 
@@ -305,7 +227,7 @@ if updated_packages.empty?
   puts 'No packages need to be updated.'.orange
 else
   updated_packages.uniq!
-  updated_packages_reordered = order_recursive_deps(updated_packages.map { |p| p.sub('packages/', '').sub('.rb', '') }).map { |p| "packages/#{p}.rb" }
+  updated_packages_reordered = ConvenienceFunctions.order_recursive_deps(updated_packages.map { |p| p.sub('packages/', '').sub('.rb', '') }).map { |p| "packages/#{p}.rb" }
   puts 'These packages will be checked to see if they need updated binaries:'.orange
   unless updated_packages == updated_packages_reordered
     puts "#{"#{__LINE__}: " if CREW_VERBOSE}Packages to check have been reordered!".lightpurple
@@ -363,6 +285,7 @@ updated_packages.each do |pkg|
       puts "#{name.capitalize} #{pkg_obj.version} needs builds uploaded for: #{builds_needed.join(' ')}".lightblue
 
       if builds_needed.include?(ARCH) && !File.file?("release/#{ARCH}/#{name}-#{pkg_obj.version}-chromeos-#{ARCH}.#{pkg_obj.binary_compression}") && agree_default_yes("\nWould you like to build #{name} #{pkg_obj.version}")
+        next pkg if SKIP_BUILDS
         # GitHub actions are killed after 6 hours, so  eed to force
         # creation of build artifacts for long-running builds.
         if ENV['NESTED_CI']
