@@ -1,0 +1,7 @@
+#!/bin/bash
+msgfmt -h
+msgfmt --version
+msgmerge -h
+msgmerge --version
+xgettext -h
+xgettext --version
