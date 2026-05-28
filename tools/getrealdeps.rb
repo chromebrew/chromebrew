@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# getrealdeps version 2.15 (for Chromebrew)
+# getrealdeps version 2.16 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 #
 # Dependencies in Chromebrew can be:
@@ -174,10 +174,20 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
   # First remove all dependencies.
   pkg_file_lines.reject! { it.include?("depends_on '") }
 
-  # Now add back our sorted dependencies.
+  # Add back our sorted dependencies.
   pkg_file_lines.insert(dependency_insert, pkgdepsblock)
-  File.write(pkg_file, pkg_file_lines.join("\n").gsub("\n\n", "\n"))
 
+  # Only write back sorted dependencies if ARCH.include lines do not
+  # appear on or around dependency lines.
+  if `grep -B1 'depends_on ' #{pkg_file}`.chomp.include?('ARCH.include')
+    puts 'Not swapping in this revised dependency block because an ARCH.include line was detected around the block.'.orange
+    puts 'Revised block:'.orange
+    puts
+    puts pkgdepsblock
+    puts
+  else
+    File.write(pkg_file, pkg_file_lines.join("\n").gsub("\n\n", "\n"))
+  end
   # Find the location of the rubocop configuration.
   rubocop_config = if File.file?("#{CREW_LOCAL_REPO_ROOT}/packages/#{File.basename(pkg_file)}")
                      FileUtils.identical?(pkg_file, "#{CREW_LOCAL_REPO_ROOT}/packages/#{File.basename(pkg_file)}") ? "#{CREW_LIB_PATH}/.rubocop.yml" : File.join(CREW_LOCAL_REPO_ROOT, '.rubocop.yml')

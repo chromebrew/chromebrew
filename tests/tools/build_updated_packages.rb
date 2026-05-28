@@ -11,10 +11,9 @@ String.use_color = false
 class BuildUpdatedPackagesTest < Minitest::Test
   # To avoid having to update these tests frequently, the only packages currently tested are those tagged with no_upstream_update.
   def test_multiple_dependencies
-    expected_output = '{:js78=>[:nss], :nss=>[:gcc_lib, :glibc, :sqlite, :zlib], :gcc_lib=>[:glibc], :glibc=>[:crew_preload], :crew_preload=>[], :sqlite=>[:gcc_lib], :zlib=>[:glibc]}
-crew_preload
-glibc
+    expected_output = '{js78: [:nss], nss: [:gcc_lib, :glibc, :sqlite, :zlib], gcc_lib: [], glibc: [], sqlite: [], zlib: []}
 gcc_lib
+glibc
 sqlite
 zlib
 nss
@@ -26,7 +25,7 @@ js78
   end
 
   def test_no_dependencies
-    assert_output("{:clear_cache=>[]}\nclear_cache\n", nil) do
+    assert_output("{clear_cache: []}\nclear_cache\n", nil) do
       print_recursive_deps 'clear_cache', determine_recursive_deps('clear_cache')
     end
   end
@@ -34,7 +33,7 @@ js78
   def test_multiple_inputs
     assert_equal(%w[autoconf213 clear_cache], order_recursive_deps(%w[clear_cache autoconf213]))
 
-    assert_output("{:autoconf213=>[]}\nautoconf213\n{:clear_cache=>[]}\nclear_cache\n", nil) do
+    assert_output("{autoconf213: []}\nautoconf213\n{clear_cache: []}\nclear_cache\n", nil) do
       print_recursive_deps %w[autoconf213 clear_cache], determine_recursive_deps(%w[autoconf213 clear_cache])
     end
   end

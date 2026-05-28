@@ -12,14 +12,14 @@ class Libclc < Package
   puts "#{self} version differs from llvm version #{llvm_build_obj.version}".orange if version != llvm_build_obj.version && !ENV['NESTED_CI']
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://github.com/llvm/llvm-project.git'
-  git_hashtag llvm_build_obj.git_hashtag.to_s
+  source_url llvm_build_obj.source_url
+  source_sha256 llvm_build_obj.source_sha256
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e3371eefd8f1b4b9a126d3836be5a02d321c41fe36b2cfd7163e95f10f76a97e',
-     armv7l: 'e3371eefd8f1b4b9a126d3836be5a02d321c41fe36b2cfd7163e95f10f76a97e',
-     x86_64: '0b85783f9823786516c2558251565ed4592b5b60cf4c61b14d5c413065253048'
+    aarch64: 'f8d2760f82d40a2ed4282cca414eec84b56921fcb683aeb004f92528dd64b03b',
+     armv7l: 'f8d2760f82d40a2ed4282cca414eec84b56921fcb683aeb004f92528dd64b03b',
+     x86_64: '90fb28d448bee63d6503eeaea5735e8cd52537cbe366ec6d6a8795d16cbe2602'
   })
 
   depends_on 'llvm_dev' => :build

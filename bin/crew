@@ -493,6 +493,7 @@ end
 
 def download
   test_url = PackageUtils.get_url(@pkg, build_from_source: @opt_source || @pkg.build_from_source)
+  puts "#{__LINE__}: #{@pkg.name} test_url: #{test_url} test_url.casecmp?('SKIP'): #{test_url.casecmp?('SKIP')}" if CREW_VERBOSE
   sha256sum = PackageUtils.get_sha256(@pkg, build_from_source: @opt_source || @pkg.build_from_source)
 
   # Do an early check for a missing binary package and if so rebuild.
@@ -502,9 +503,15 @@ def download
     else
       url = 'SKIP'
       @pkg.missing_binaries = true
+      puts "#{__LINE__}: Binaries are missing at #{test_url}".lightpurple
     end
-  else
+  elsif test_url.casecmp?('SKIP') || (!test_url.nil? && `curl -sI #{test_url}`.lines.first.split[1] == '200')
     url = test_url
+  else
+    @pkg.missing_binaries = true
+    puts "#{__LINE__}: Binaries are missing at #{test_url}".lightpurple
+    url = PackageUtils.get_url(@pkg, build_from_source: true)
+    sha256sum = PackageUtils.get_sha256(@pkg, build_from_source: true)
   end
 
   source = @pkg.source?(@device[:architecture])
@@ -532,6 +539,8 @@ def download
 
   git = true unless @pkg.git_hashtag.to_s.empty?
   gitlab_binary_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{@pkg.name}/#{@pkg.version}_#{@device[:architecture]}/#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.#{@pkg.binary_compression}"
+  # Do a quick check to see if the binaries are available.
+  # @pkg.missing_binaries = true unless `curl -sI #{gitlab_binary_url}`.lines.first.split[1] == '200'
 
   if (@pkg.cache_build? || CREW_CACHE_BUILD) && !File.file?(build_cachefile) && !@pkg.no_source_build? && !File.file?(File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.#{@pkg.binary_compression}")) && `curl -fsI #{gitlab_binary_url}`.lines.first.split[1] != '200'
 
@@ -606,6 +615,9 @@ def download
         else
           puts "Cannot find cached archive at #{cachefile}. 😔 Will download.".orange
           cachefile = ''
+          # If binaries are unavailable and there is no cached file,
+          # skip to next.
+          next if @pkg.missing_binaries
         end
       end
       # Download file if not cached.
@@ -1277,12 +1289,19 @@ def resolve_dependencies_and_install(no_advisory: false, ignore_dependencies: fa
       end
     end
 
-    # Only install dependencies from source if recursive.
-    @opt_source = false unless @opt_recursive
-
     to_install.each do |pkg_to_install|
       search pkg_to_install
       print_current_package
+      # Only install dependencies from source if recursive or if
+      # binaries are unavailable.
+      test_url = PackageUtils.get_url(@pkg, build_from_source: @opt_source || @pkg.build_from_source)
+      puts "#{__LINE__}: test_url: #{test_url}" if CREW_VERBOSE
+      @pkg.missing_binaries = if test_url.nil?
+                                false
+                              else
+                                `curl -sI #{test_url}`.lines.first.split[1] != '200' || test_url.casecmp?('SKIP')
+                              end
+      @opt_source = @opt_recursive || @pkg.missing_binaries
       install(skip_postinstall: true)
     end
 
@@ -1543,6 +1562,16 @@ def resolve_dependencies_and_build
     dependencies.each do |dep_to_install|
       search dep_to_install
       print_current_package
+      # Only install dependencies from source if recursive or if
+      # binaries are unavailable.
+      test_url = PackageUtils.get_url(@pkg, build_from_source: @opt_source || @pkg.build_from_source)
+      puts "#{__LINE__}: test_url: #{test_url}"
+      @pkg.missing_binaries = if test_url.nil?
+                                false
+                              else
+                                `curl -sI #{test_url}`.lines.first.split[1] != '200' || test_url.casecmp?('SKIP')
+                              end
+      @opt_source = @opt_recursive || @pkg.missing_binaries
       install(skip_postinstall: true)
     end
 
@@ -2217,9 +2246,7 @@ def version_command(args)
 end
 
 def whatdepends_command(args)
-  args['<name>'].each do |pkg|
-    Command.whatdepends(pkg)
-  end
+  Command.whatdepends(args['<name>'])
 end
 
 def whatprovides_command(args)

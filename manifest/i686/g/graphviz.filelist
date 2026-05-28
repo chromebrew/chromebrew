@@ -1,4 +1,4 @@
-# Total size: 2950749
+# Total size: 3596409
 /usr/local/bin/acyclic
 /usr/local/bin/bcomps
 /usr/local/bin/ccomps
@@ -17,7 +17,6 @@
 /usr/local/bin/gv2gml
 /usr/local/bin/gv2gxl
 /usr/local/bin/gvcolor
-/usr/local/bin/gvedit
 /usr/local/bin/gvgen
 /usr/local/bin/gvmap
 /usr/local/bin/gvmap.sh
@@ -36,7 +35,6 @@
 /usr/local/bin/tred
 /usr/local/bin/twopi
 /usr/local/bin/unflatten
-/usr/local/bin/vimdot
 /usr/local/include/graphviz/arith.h
 /usr/local/include/graphviz/cdt.h
 /usr/local/include/graphviz/cgraph.h
@@ -75,33 +73,12 @@
 /usr/local/lib/graphviz/libgvplugin_gd.so
 /usr/local/lib/graphviz/libgvplugin_gd.so.8
 /usr/local/lib/graphviz/libgvplugin_gd.so.8.0.11
-/usr/local/lib/graphviz/libgvplugin_gdk.so
-/usr/local/lib/graphviz/libgvplugin_gdk.so.8
-/usr/local/lib/graphviz/libgvplugin_gdk.so.8.0.11
-/usr/local/lib/graphviz/libgvplugin_gs.so
-/usr/local/lib/graphviz/libgvplugin_gs.so.8
-/usr/local/lib/graphviz/libgvplugin_gs.so.8.0.11
-/usr/local/lib/graphviz/libgvplugin_kitty.so
-/usr/local/lib/graphviz/libgvplugin_kitty.so.8
-/usr/local/lib/graphviz/libgvplugin_kitty.so.8.0.11
 /usr/local/lib/graphviz/libgvplugin_neato_layout.so
 /usr/local/lib/graphviz/libgvplugin_neato_layout.so.8
 /usr/local/lib/graphviz/libgvplugin_neato_layout.so.8.0.11
-/usr/local/lib/graphviz/libgvplugin_pango.so
-/usr/local/lib/graphviz/libgvplugin_pango.so.8
-/usr/local/lib/graphviz/libgvplugin_pango.so.8.0.11
-/usr/local/lib/graphviz/libgvplugin_rsvg.so
-/usr/local/lib/graphviz/libgvplugin_rsvg.so.8
-/usr/local/lib/graphviz/libgvplugin_rsvg.so.8.0.11
 /usr/local/lib/graphviz/libgvplugin_vt.so
 /usr/local/lib/graphviz/libgvplugin_vt.so.8
 /usr/local/lib/graphviz/libgvplugin_vt.so.8.0.11
-/usr/local/lib/graphviz/libgvplugin_webp.so
-/usr/local/lib/graphviz/libgvplugin_webp.so.8
-/usr/local/lib/graphviz/libgvplugin_webp.so.8.0.11
-/usr/local/lib/graphviz/libgvplugin_xlib.so
-/usr/local/lib/graphviz/libgvplugin_xlib.so.8
-/usr/local/lib/graphviz/libgvplugin_xlib.so.8.0.11
 /usr/local/lib/libcdt.so
 /usr/local/lib/libcdt.so.6
 /usr/local/lib/libcdt.so.6.0.3
@@ -186,7 +163,6 @@
 /usr/local/share/graphviz/graphs/undirected/Petersen.gv
 /usr/local/share/graphviz/graphs/undirected/ngk10_4.gv
 /usr/local/share/graphviz/graphs/undirected/process.gv
-/usr/local/share/graphviz/gvedit/attrs.txt
 /usr/local/share/graphviz/gvpr/addedges
 /usr/local/share/graphviz/gvpr/addranks
 /usr/local/share/graphviz/gvpr/addrings
@@ -241,7 +217,6 @@
 /usr/local/share/man/man1/gv2gml.1.zst
 /usr/local/share/man/man1/gv2gxl.1.zst
 /usr/local/share/man/man1/gvcolor.1.zst
-/usr/local/share/man/man1/gvedit.1.zst
 /usr/local/share/man/man1/gvgen.1.zst
 /usr/local/share/man/man1/gvmap.1.zst
 /usr/local/share/man/man1/gvmap.sh.1.zst
@@ -260,7 +235,6 @@
 /usr/local/share/man/man1/tred.1.zst
 /usr/local/share/man/man1/twopi.1.zst
 /usr/local/share/man/man1/unflatten.1.zst
-/usr/local/share/man/man1/vimdot.1.zst
 /usr/local/share/man/man3/cdt.3.zst
 /usr/local/share/man/man3/cgraph.3.zst
 /usr/local/share/man/man3/gvc.3.zst

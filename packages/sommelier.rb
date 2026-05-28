@@ -11,13 +11,14 @@ class Sommelier < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fc451d5cfb4f23d145d873892eda9f7687228645d8d2ea48828b5a2772738bc4',
-     armv7l: 'fc451d5cfb4f23d145d873892eda9f7687228645d8d2ea48828b5a2772738bc4',
-     x86_64: 'e5370b33a471fea6735afd696a5ceb6d94ec924a292449051118601b38323189'
+    aarch64: 'fd39883a85af2a675ca599cfcd1cc5337662c6bf836beb651856f7457b53c1fe',
+     armv7l: 'fd39883a85af2a675ca599cfcd1cc5337662c6bf836beb651856f7457b53c1fe',
+     x86_64: 'e8993264f70fe280ec184810ec11f8803ead33fbcf24377c7a158d914637912f'
   })
 
   depends_on 'gcc_lib' => :executable
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'libdrm' => :executable
   depends_on 'libfontenc' => :logical # As per https://github.com/chromebrew/chromebrew/issues/11959#issuecomment-4186891789
   depends_on 'libxcb' => :executable
