@@ -1,4 +1,4 @@
-# Total size: 38163
+# Total size: 36773
 /usr/local/lib64/ruby/gems/4.0.0/gems/rinda-0.2.0/Gemfile
 /usr/local/lib64/ruby/gems/4.0.0/gems/rinda-0.2.0/LICENSE.txt
 /usr/local/lib64/ruby/gems/4.0.0/gems/rinda-0.2.0/README.md
@@ -8,4 +8,3 @@
 /usr/local/lib64/ruby/gems/4.0.0/gems/rinda-0.2.0/lib/rinda/rinda.rb
 /usr/local/lib64/ruby/gems/4.0.0/gems/rinda-0.2.0/lib/rinda/ring.rb
 /usr/local/lib64/ruby/gems/4.0.0/gems/rinda-0.2.0/lib/rinda/tuplespace.rb
-/usr/local/lib64/ruby/gems/4.0.0/gems/rinda-0.2.0/rinda.gemspec
