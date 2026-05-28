@@ -96,7 +96,6 @@ class Package
                   :in_build,
                   :in_install,
                   :in_upgrade,
-                  :missing_binaries,
                   :name
   end
 
@@ -375,7 +374,21 @@ class Package
   end
 
   def self.binary?(architecture) = !@build_from_source && @binary_sha256&.key?(architecture)
-  def self.source?(architecture) = missing_binaries ? true : !(binary?(architecture) || is_fake?)
+
+  def self.missing_binaries?
+    pkg_obj = load_package("#{name}.rb")
+    filename = "#{name}-#{version}-chromeos-#{@device[:architecture]}.#{@binary_compression}"
+    test_url = PackageUtils.get_url(pkg_obj, build_from_source: @opt_source || @build_from_source)
+    puts "#{__LINE__}: test_url: #{test_url}"
+    if !test_url.nil? && (`#{CREW_CURL} -fsI #{test_url}`.lines.first.split[1] != '200' || test_url.casecmp?('SKIP') || ((CREW_CACHE_ENABLED || CREW_CACHE_BUILD || @cached_build || @built || !@build_from_source) && (File.file?(File.join(CREW_LOCAL_BUILD_DIR, filename)) || File.file?(File.join(CREW_CACHE_DIR, filename)))))
+      puts "#{__LINE__}: Binaries are missing at #{test_url}".lightpurple
+      return true
+    else
+      return false
+    end
+  end
+
+  def self.source?(architecture) = missing_binaries? || !(binary?(architecture) || is_fake?)
 
   def self.system(*args, **opt_args)
     crew_env_options_hash = if no_env_options?

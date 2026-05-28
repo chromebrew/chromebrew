@@ -495,20 +495,20 @@ def download
   test_url = PackageUtils.get_url(@pkg, build_from_source: @opt_source || @pkg.build_from_source)
   puts "#{__LINE__}: #{@pkg.name} test_url: #{test_url} test_url.casecmp?('SKIP'): #{test_url.casecmp?('SKIP')}" if CREW_VERBOSE
   sha256sum = PackageUtils.get_sha256(@pkg, build_from_source: @opt_source || @pkg.build_from_source)
+  # What the filename is if we do not download from the API.
+  filename = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.#{@pkg.binary_compression}"
 
   # Do an early check for a missing binary package and if so rebuild.
   if !@pkg.source?(@device[:architecture]) && @pkg.superclass.to_s == 'Pip'
-    if `#{CREW_PREFIX}/bin/curl -sI #{test_url}`.lines.first.split[1] == '200' && PackageUtils.get_gitlab_pkginfo(@pkg.name, @pkg.version, ARCH, false, false)[:pkg_sha256] == sha256sum
+    if !@pkg.missing_binaries? && PackageUtils.get_gitlab_pkginfo(@pkg.name, @pkg.version, ARCH, false, false)[:pkg_sha256] == sha256sum
       url = test_url
     else
       url = 'SKIP'
-      @pkg.missing_binaries = true
       puts "#{__LINE__}: Binaries are missing at #{test_url}".lightpurple
     end
-  elsif test_url.casecmp?('SKIP') || (!test_url.nil? && `#{CREW_PREFIX}/bin/curl -sI #{test_url}`.lines.first.split[1] == '200')
+  elsif !@pkg.missing_binaries?
     url = test_url
   else
-    @pkg.missing_binaries = true
     puts "#{__LINE__}: Binaries are missing at #{test_url}".lightpurple
     url = PackageUtils.get_url(@pkg, build_from_source: true)
     sha256sum = PackageUtils.get_sha256(@pkg, build_from_source: true)
@@ -517,9 +517,7 @@ def download
   source = @pkg.source?(@device[:architecture])
 
   uri = URI.parse url
-  filename = File.basename(uri.path)
-  # # If we're downloading a binary, reset the filename to what it would have been if we didn't download from the API.
-  filename = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.#{@pkg.binary_compression}" if filename.eql?('download')
+  filename = File.basename(uri.path) unless filename.eql?('download')
   @extract_dir = "#{@pkg.name}.#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.dir"
 
   build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
@@ -533,23 +531,22 @@ def download
     puts 'Downloading source...'
   elsif !source
     puts 'Precompiled binary available, downloading...'
+  elsif !@pkg.missing_binaries?
+    puts 'Precompiled cached binary available...'
   else
     puts 'No precompiled binary available for your platform, downloading source...'
   end
 
   git = true unless @pkg.git_hashtag.to_s.empty?
-  gitlab_binary_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{@pkg.name}/#{@pkg.version}_#{@device[:architecture]}/#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.#{@pkg.binary_compression}"
-  # Do a quick check to see if the binaries are available.
-  # @pkg.missing_binaries = true unless `#{CREW_PREFIX}/bin/curl -sI #{gitlab_binary_url}`.lines.first.split[1] == '200'
 
-  if (@pkg.cache_build? || CREW_CACHE_BUILD) && !File.file?(build_cachefile) && !@pkg.no_source_build? && !File.file?(File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.#{@pkg.binary_compression}")) && `curl -fsI #{gitlab_binary_url}`.lines.first.split[1] != '200'
+  if (@pkg.cache_build? || CREW_CACHE_BUILD) && !File.file?(build_cachefile) && !@pkg.no_source_build? && !File.file?(File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.#{@pkg.binary_compression}")) && !@pkg.missing_binaries?
 
     build_cache_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{@pkg.name}/#{@pkg.version}_#{@device[:architecture]}_build/#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst"
     puts 'Checking for cached build...'.orange
     # Does a remote build artifact exist?
     puts build_cache_url if CREW_VERBOSE
     puts "curl -fsI #{build_cache_url}" if CREW_VERBOSE
-    if `curl -fsI #{build_cache_url}`.lines.first.split[1] == '200'
+    if `#{CREW_CURL} -fsI#{build_cache_url}`.lines.first.split[1] == '200'
       gitlab_pkginfo = PackageUtils.get_gitlab_pkginfo(@pkg.name, @pkg.version, @device[:architecture], true, true)
       gitlab_build_artifact_sha256 = gitlab_pkginfo[:pkg_sha256]
       gitlab_build_artifact_date = gitlab_pkginfo[:pkg_upload_date]
@@ -617,7 +614,7 @@ def download
           cachefile = ''
           # If binaries are unavailable and there is no cached file,
           # skip to next.
-          next if @pkg.missing_binaries
+          next if @pkg.missing_binaries?
         end
       end
       # Download file if not cached.
@@ -1294,14 +1291,7 @@ def resolve_dependencies_and_install(no_advisory: false, ignore_dependencies: fa
       print_current_package
       # Only install dependencies from source if recursive or if
       # binaries are unavailable.
-      test_url = PackageUtils.get_url(@pkg, build_from_source: @opt_source || @pkg.build_from_source)
-      puts "#{__LINE__}: test_url: #{test_url}" if CREW_VERBOSE
-      @pkg.missing_binaries = if test_url.nil? || test_url.casecmp?('SKIP')
-                                false
-                              else
-                                `#{CREW_PREFIX}/bin/curl -sI #{test_url}`.lines.first.split[1] != '200'
-                              end
-      @opt_source = @opt_recursive || @pkg.missing_binaries
+      @opt_source = @opt_recursive || @pkg.missing_binaries?
       install(skip_postinstall: true)
     end
 
@@ -1564,14 +1554,7 @@ def resolve_dependencies_and_build
       print_current_package
       # Only install dependencies from source if recursive or if
       # binaries are unavailable.
-      test_url = PackageUtils.get_url(@pkg, build_from_source: @opt_source || @pkg.build_from_source)
-      puts "#{__LINE__}: test_url: #{test_url}"
-      @pkg.missing_binaries = if test_url.nil?
-                                false
-                              else
-                                `#{CREW_PREFIX}/bin/curl -sI #{test_url}`.lines.first.split[1] != '200' || test_url.casecmp?('SKIP')
-                              end
-      @opt_source = @opt_recursive || @pkg.missing_binaries
+      @opt_source = @opt_recursive || @pkg.missing_binaries?
       install(skip_postinstall: true)
     end
 
@@ -1692,7 +1675,7 @@ def update_package_file(package = nil, pkg_version = nil, binary_compression = n
     binary_sha256_hash[arch.to_sym] = @pkg.binary_sha256[arch.to_sym] if @pkg.binary_sha256&.key?(arch.to_sym)
     starting_binary_sha256_hash[arch.to_sym] = @pkg.binary_sha256[arch.to_sym] if @pkg.binary_sha256&.key?(arch.to_sym)
     remote_binary_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{package}/#{pkg_version}_#{arch}/#{package}-#{pkg_version}-chromeos-#{arch}.#{binary_compression}"
-    remote_binary = `curl -fsI #{remote_binary_url}`.lines.first.split[1] == '200'
+    remote_binary = `#{CREW_CURL} -fsI#{remote_binary_url}`.lines.first.split[1] == '200'
     next unless remote_binary
     puts "\e[1A\e[KRemote #{package} package binary exists for #{arch}.\r".green
     binary_sha256_hash[arch.to_sym] = PackageUtils.get_gitlab_pkginfo(package, pkg_version, arch, false, true)[:pkg_sha256]
@@ -1873,7 +1856,7 @@ def upload(pkg_name = nil, pkg_version = nil, binary_compression = nil)
 
       # 3c. Check to see if an existing upload exists.
       puts "\e[1A\e[KChecking for existing upload ...\r".orange
-      remote_binary = `curl -fsI #{new_url}`.lines.first.split[1] == '200'
+      remote_binary = `#{CREW_CURL} -fsI#{new_url}`.lines.first.split[1] == '200'
       gitlab_remote_binary_sha256 = PackageUtils.get_gitlab_pkginfo(package, new_version, arch, false, true)[:pkg_sha256] if remote_binary
 
       # 3d. Check for local binary.
