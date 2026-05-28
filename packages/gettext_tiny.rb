@@ -3,19 +3,22 @@ require 'package'
 class Gettext_tiny < Package
   description 'gettext-tiny provides lightweight replacements for tools typically used from the GNU gettext suite.'
   homepage 'https://github.com/sabotage-linux/gettext-tiny'
-  version '0.3.2'
+  version '0.3.3'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://ftp.barfooze.de/pub/sabotage/tarballs/gettext-tiny-0.3.2.tar.xz'
-  source_sha256 'a9a72cfa21853f7d249592a3c6f6d36f5117028e24573d092f9184ab72bbe187'
-  binary_compression 'tar.xz'
+  source_url "https://ftp.barfooze.de/pub/sabotage/tarballs/gettext-tiny-#{version}.tar.xz"
+  source_sha256 '6715234941fed4f3694d6b56c18f3f20053fe344fce15ab148906036caa24dc7'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9d39913a3848c22756d4251ac805eead5f2337fbc173766a442bfedd1a46ccf0',
-     armv7l: '9d39913a3848c22756d4251ac805eead5f2337fbc173766a442bfedd1a46ccf0',
-       i686: '4790961c57b8e32388002ffa1c661aae1269bf36812e4c00afadd46fbb2042f0',
-     x86_64: '9435867e7adfa4f9906a89de80288cc59d014ee7dab19ef764ce18c2a7ad7fcd'
+    aarch64: 'fb74752838dc56bca3e5bd68bf1515feae541e5ce4318d5862806f59e2ff3dcb',
+     armv7l: 'fb74752838dc56bca3e5bd68bf1515feae541e5ce4318d5862806f59e2ff3dcb',
+       i686: 'cd369725539644f89a2b691fe52fa1a4a7a264d7cf42c5ca93113c559af25920',
+     x86_64: 'a638eaab1a250a5a4dac7434c20ad954c83a4160d465b4acbd480d0ca88817ef'
   })
+
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
 
   conflicts_with 'gettext'
 
