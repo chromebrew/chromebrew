@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Erlang < Autotools
   description 'Erlang is a programming language used to build massively scalable soft real-time systems with requirements on high availability.'
   homepage 'https://www.erlang.org/'
-  version '29.0'
+  version '29.0.1'
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/erlang/otp.git'
@@ -11,14 +11,15 @@ class Erlang < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aebe158f3695d08cd9224f04587505325accd12b6d081c68dc41b29b1d64786d',
-     armv7l: 'aebe158f3695d08cd9224f04587505325accd12b6d081c68dc41b29b1d64786d',
-     x86_64: 'b8acf160710ca49dfc5132ddd8dc09bae88a7a55802890a6b6ec1f8c42f6a85e'
+    aarch64: '8b0e87f134afc3fbf24f6fd781bf3639b7f34d97c08af3cd86cefa0458d119dc',
+     armv7l: '8b0e87f134afc3fbf24f6fd781bf3639b7f34d97c08af3cd86cefa0458d119dc',
+     x86_64: 'cc61182cf3ada008846bf383458a4151f00d3567221d5920c66bd20a9e3c43a1'
   })
 
   depends_on 'gcc_lib' => :library
   depends_on 'glib' => :build
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'libglu' => :build
   depends_on 'ncurses' => :library
   depends_on 'openssl' => :library
