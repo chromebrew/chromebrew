@@ -1296,11 +1296,13 @@ def resolve_dependencies_and_install(no_advisory: false, ignore_dependencies: fa
       # binaries are unavailable.
       test_url = PackageUtils.get_url(@pkg, build_from_source: @opt_source || @pkg.build_from_source)
       puts "#{__LINE__}: test_url: #{test_url}" if CREW_VERBOSE
-      @pkg.missing_binaries = if test_url.nil? || test_url.casecmp?('SKIP')
-                                false
-                              else
-                                `curl -sI #{test_url}`.lines.first.split[1] != '200'
-                              end
+      if test_url.nil? || test_url.casecmp?('SKIP')
+        @pkg.missing_binaries = false
+      else
+        # If curl is broken then ignore output.
+        @missing_binaries_check_stdout_s, @missing_binaries_check_stderr_s, @missing_binaries_check_status = Open3.capture3("curl -sI #{test_url}`")
+        @pkg.missing_binaries = @missing_binaries_check_status ? (@missing_binaries_check_stdout_s != '200') : false
+      end
       @opt_source = @opt_recursive || @pkg.missing_binaries
       install(skip_postinstall: true)
     end
