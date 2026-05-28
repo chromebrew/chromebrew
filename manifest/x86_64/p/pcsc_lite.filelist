@@ -1,4 +1,4 @@
-# Total size: 308730
+# Total size: 319041
 /usr/local/bin/pcsc-spy
 /usr/local/etc/default/pcscd
 /usr/local/etc/sysusers.d/pcscd-sysusers.conf
@@ -15,6 +15,8 @@
 /usr/local/lib64/libpcscspy.so
 /usr/local/lib64/libpcscspy.so.0
 /usr/local/lib64/pkgconfig/libpcsclite.pc
+/usr/local/lib64/systemd/user/pcscd.service
+/usr/local/lib64/systemd/user/pcscd.socket
 /usr/local/sbin/pcscd
 /usr/local/share/doc/pcsc-lite/setup_spy.sh
 /usr/local/share/man/man1/pcsc-spy.1.zst
