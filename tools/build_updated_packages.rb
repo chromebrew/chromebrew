@@ -244,7 +244,7 @@ def order_recursive_deps(d_pkg_input)
   package_deps_build_order = merge_base.order.to_set(&:to_s)
   # Want the intersection of these sets, but the intersection appears
   # to reorder the result, which isn't what we want.
-  return package_deps_build_order.delete_if { |p| !input_pkgs.include? p }.to_a
+  return package_deps_build_order.delete_if { !input_pkgs.include? it }.to_a
 end
 
 # Do not execute anything if we are required as a library rather than being run as a script.
@@ -270,7 +270,7 @@ else
 end
 
 unless ONLY_SPECIFIED_PACKAGES
-  crew_update_packages = `CREW_NO_GIT=1 CREW_UNATTENDED=1 crew update | grep "\\[\\""  | jq -r '.[]'`.chomp.split.map(&'packages/'.method(:+)).map { |i| i.concat('.rb') }
+  crew_update_packages = `CREW_NO_GIT=1 CREW_UNATTENDED=1 crew update | grep "\\[\\""  | jq -r '.[]'`.chomp.split.map(&'packages/'.method(:+)).map { it.concat('.rb') }
   if CHECK_ALL_PYTHON
     py_packages = `grep -l CREW_PY_VER packages/*`.chomp.split
     updated_packages.push(*py_packages)
@@ -286,7 +286,7 @@ end
 # Remove packages that don't need to be checked for updates from the
 # check list.
 exclusion_regex = "(#{excluded_pkgs.join('|')})"
-updated_packages.delete_if { |d| /#{exclusion_regex}/.match(d) }
+updated_packages.delete_if { /#{exclusion_regex}/.match(it) }
 
 # Add additional packages that need to be checked for updates.
 inclusion_regex = "(#{dependent_pkgs.keys.join('|')})"
@@ -306,13 +306,13 @@ if updated_packages.empty?
 else
   updated_packages.uniq!
   updated_packages.delete_if { !PackageUtils.compatible?(Package.load_package(File.join(crew_local_repo_root, it.downcase))) }
-  updated_packages_reordered = order_recursive_deps(updated_packages.map { |p| p.sub('packages/', '').sub('.rb', '') }).map { |p| "packages/#{p}.rb" }
+  updated_packages_reordered = order_recursive_deps(updated_packages.map { it.sub('packages/', '').sub('.rb', '') }).map { "packages/#{it}.rb" }
   puts 'These packages will be checked to see if they need updated binaries:'.orange
   unless updated_packages == updated_packages_reordered
     puts "#{"#{__LINE__}: " if CREW_VERBOSE}Packages to check have been reordered!".lightpurple
     updated_packages = updated_packages_reordered
   end
-  updated_packages.each { |p| puts " #{p.sub('packages/', '').sub('.rb', '').to_s.lightblue}" }
+  updated_packages.each { puts " #{it.sub('packages/', '').sub('.rb', '').to_s.lightblue}" }
 end
 
 updated_packages.each do |pkg|
