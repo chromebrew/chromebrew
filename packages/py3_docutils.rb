@@ -10,10 +10,10 @@ class Py3_docutils < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c0aabb830bfc67eb279b0b3d71c6c1fea3656714b438333b100142ed64864939',
-     armv7l: 'c0aabb830bfc67eb279b0b3d71c6c1fea3656714b438333b100142ed64864939',
-       i686: 'be2a60b8cd3b72e68f0c29e2899c04d76a0425bdd9955420ea2ae376813edd74',
-     x86_64: 'cee31bdb90c63edf16286b7f320c0e427850c217cee41f15f6a933780c2ac27a'
+    aarch64: 'ef04767f5e290aa58388b274b1bf8c8ef083508e1dc6c9a97b70b5fd856d4fd9',
+     armv7l: 'ef04767f5e290aa58388b274b1bf8c8ef083508e1dc6c9a97b70b5fd856d4fd9',
+       i686: '582885adb10b0982e851ef973080f253895627fac60c8e6f10890bd59e4bb11e',
+     x86_64: 'fbc85e5c86232d4aaec98b24a22740874c51854cc0af7df6af02bb6fd9e04bf0'
   })
 
   depends_on 'python3' => :logical
