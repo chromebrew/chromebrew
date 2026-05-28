@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Pcsc_lite < Meson
   description 'PCSC is middleware to access a smart card using SCard API (PC/SC).'
   homepage 'https://pcsclite.apdu.fr/'
-  version '2.4.1'
+  version '2.5.0'
   compatibility 'aarch64 armv7l x86_64'
   license 'BSD, ISC, MIT, GPL-3+ and GPL-2'
   source_url 'https://salsa.debian.org/debian/pcsc-lite.git'
@@ -11,15 +11,16 @@ class Pcsc_lite < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4f6d708ac392d22ce6a00a1275b044abad44816b9554994d45f30a47b89c65fe',
-     armv7l: '4f6d708ac392d22ce6a00a1275b044abad44816b9554994d45f30a47b89c65fe',
-     x86_64: '69807f2673beff3c950149a6b58c5e1015c82adfff3c05c581b3407de7b7ae1c'
+    aarch64: '76392c92d66f23aabca338058fd97ce2885e65b8ef4609f88f3ddff73200e01b',
+     armv7l: '76392c92d66f23aabca338058fd97ce2885e65b8ef4609f88f3ddff73200e01b',
+     x86_64: '801ef40abe5c47103d8449409977b7498fcc6268e22345ef5e3112bc74087759'
   })
 
   depends_on 'elogind'
   depends_on 'eudev' => :executable
   depends_on 'glib' => :executable
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'polkit' => :executable
 
   def self.patch
