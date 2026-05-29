@@ -1,5 +1,5 @@
 ---
-# Version 2.1
+# Version 2.2
 name: Generate PR
 run-name: Generate PR for ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} by @${{ github.actor }}
 on:
@@ -44,7 +44,7 @@ permissions:
   repository-projects: read
 jobs:
   debug:
-    if: ${{ ( github.repository_owner == 'chromebrew' ) || ( github.repository_owner == 'chromebrew' && github.event.action  == 'labeled' && github.event.label.name == 'regenerate_pr' ) }}
+    if: ${{ ( github.repository_owner == 'chromebrew' ) || ( github.repository_owner == 'chromebrew' && github.event.action  == 'labeled' && github.event.label.name == 'regenerate_pr' ) || ( github.repository_owner == 'chromebrew' && github.event.action  == 'labeled' && github.event.label.name == 'update-package-files' ) }}
     runs-on: ubuntu-24.04
     steps:
       - name: Dump GitHub context
@@ -185,7 +185,7 @@ jobs:
       i686_PACKAGES: ${{ needs.get-compatibility.outputs.i686_PACKAGES }}
       x86_64_PACKAGES: ${{ needs.get-compatibility.outputs.x86_64_PACKAGES }}
       armv7l_PACKAGES: ${{ needs.get-compatibility.outputs.armv7l_PACKAGES }}
-    if: ${{ !cancelled() && ( inputs.update_package_files ) && needs.setup.outputs.changed_packages }}
+    if: ${{ !cancelled() && ( inputs.update_package_files || ( github.event.action  == 'labeled' && github.event.label.name == 'update-package-files' ) ) && needs.setup.outputs.changed_packages }}
     concurrency:
       group: ${{ matrix.arch }}-${{ github.workflow }}-${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
       cancel-in-progress: true
@@ -260,7 +260,7 @@ jobs:
         if: ${{ ( inputs.update_package_files ) && ( contains(needs.*.result, 'failure') ||  !cancelled() ) }}
         env:
           CREW_MAX_BUILD_TIME_INPUT: ${{ inputs.max_build_time }}
-          UPDATE_PACKAGE_FILES: ${{ github.event.inputs.update_package_files }}
+          UPDATE_PACKAGE_FILES: ${{ github.event.inputs.update_package_files || ( github.event.action  == 'labeled' && github.event.label.name == 'update-package-files' ) }}
         run: |
             [[ "$UPDATE_PACKAGE_FILES" == 'false' ]] && exit 0
             if [[ -n ${CREW_MAX_BUILD_TIME_INPUT} ]]; then
@@ -371,7 +371,7 @@ jobs:
       - setup
       - get-compatibility
       - update-package-files
-    if: ${{ ( always() && !cancelled() ) && needs.setup.result == 'success' && ((( inputs.update_package_files ) && needs.update-package-files.result == 'success') || !( inputs.update_package_files )) }}
+    if: ${{ ( always() && !cancelled() ) && needs.setup.result == 'success' && ((( inputs.update_package_files || ( github.event.action  == 'labeled' && github.event.label.name == 'update-package-files' ) ) && needs.update-package-files.result == 'success') || !( inputs.update_package_files )) }}
     outputs:
       changed_packages: ${{ steps.changed-packages.outputs.CHANGED_PACKAGES }}
     steps:
