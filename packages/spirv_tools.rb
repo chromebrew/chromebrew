@@ -19,6 +19,7 @@ class Spirv_tools < CMake
 
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   # depends_on 'spirv_headers' => :build
 
   # https://github.com/KhronosGroup/SPIRV-Tools/issues/5728
