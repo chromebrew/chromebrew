@@ -18,6 +18,7 @@ class Rio < Package
   depends_on 'freetype' => :executable
   depends_on 'gcc_lib' => :executable
   depends_on 'glibc' => :executable
+  depends_on 'glslang' => :build
   depends_on 'harfbuzz' => :executable
   depends_on 'rust' => :build
   depends_on 'sommelier' => :logical
