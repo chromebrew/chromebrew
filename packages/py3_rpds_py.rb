@@ -21,6 +21,7 @@ class Py3_rpds_py < Pip
 
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'python3' => :logical
   depends_on 'rust' => :build
 
