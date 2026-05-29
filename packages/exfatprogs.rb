@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Exfatprogs < Autotools
   description 'exFAT filesystem userspace utilities for the Linux Kernel exfat driver.'
   homepage 'https://github.com/exfatprogs/exfatprogs'
-  version '1.4.0'
+  version '1.4.1'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/exfatprogs/exfatprogs.git'
@@ -11,10 +11,10 @@ class Exfatprogs < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1091f1a86c5d70c2150f3de1f802e338c93a7d5022c131822353b393b0bbeafe',
-     armv7l: '1091f1a86c5d70c2150f3de1f802e338c93a7d5022c131822353b393b0bbeafe',
-       i686: 'f845d7d9d866e3bfd70f13eb3fe948c7593f70afad6653bb50402b0992320cff',
-     x86_64: 'a72639040f5325b08388be0db95e7cf0e000d205fb857d3b47a19ad4fe2abdb7'
+    aarch64: '5ac71aca6d70c6cf33ca5209cb404c13d1752b89f72996bc2c5aa475aca2dc0b',
+     armv7l: '5ac71aca6d70c6cf33ca5209cb404c13d1752b89f72996bc2c5aa475aca2dc0b',
+       i686: '04affac59a8073de7780377b4e581a74f05e02b13baa775f8b2992469195b179',
+     x86_64: '00cacfd49ca3889ca0e723b94440d47f183153ce6c5c829ec4797c8b07c616df'
   })
 
   depends_on 'glibc' => :executable
