@@ -1,4 +1,4 @@
-# Total size: 1723058
+# Total size: 1767296
 /usr/local/lib/python3.14/site-packages/backend/__init__.py
 /usr/local/lib/python3.14/site-packages/backend/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/backend/__pycache__/run_server.cpython-314.pyc
@@ -34,11 +34,13 @@
 /usr/local/lib/python3.14/site-packages/backend/server/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/backend/server/__pycache__/app.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/backend/server/__pycache__/logging_config.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/backend/server/__pycache__/multi_agent_runner.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/backend/server/__pycache__/report_store.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/backend/server/__pycache__/server_utils.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/backend/server/__pycache__/websocket_manager.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/backend/server/app.py
 /usr/local/lib/python3.14/site-packages/backend/server/logging_config.py
+/usr/local/lib/python3.14/site-packages/backend/server/multi_agent_runner.py
 /usr/local/lib/python3.14/site-packages/backend/server/report_store.py
 /usr/local/lib/python3.14/site-packages/backend/server/server_utils.py
 /usr/local/lib/python3.14/site-packages/backend/server/websocket_manager.py
@@ -51,13 +53,13 @@
 /usr/local/lib/python3.14/site-packages/evals/simple_evals/__pycache__/simpleqa_eval.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/evals/simple_evals/run_eval.py
 /usr/local/lib/python3.14/site-packages/evals/simple_evals/simpleqa_eval.py
-/usr/local/lib/python3.14/site-packages/gpt_researcher-0.14.8.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/gpt_researcher-0.14.8.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/gpt_researcher-0.14.8.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/gpt_researcher-0.14.8.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/gpt_researcher-0.14.8.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/gpt_researcher-0.14.8.dist-info/licenses/LICENSE
-/usr/local/lib/python3.14/site-packages/gpt_researcher-0.14.8.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/gpt_researcher-0.15.1.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/gpt_researcher-0.15.1.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/gpt_researcher-0.15.1.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/gpt_researcher-0.15.1.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/gpt_researcher-0.15.1.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/gpt_researcher-0.15.1.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/gpt_researcher-0.15.1.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/gpt_researcher/__init__.py
 /usr/local/lib/python3.14/site-packages/gpt_researcher/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/gpt_researcher/__pycache__/agent.cpython-314.pyc
@@ -196,6 +198,10 @@
 /usr/local/lib/python3.14/site-packages/gpt_researcher/retrievers/tavily/__pycache__/tavily_search.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/gpt_researcher/retrievers/tavily/tavily_search.py
 /usr/local/lib/python3.14/site-packages/gpt_researcher/retrievers/utils.py
+/usr/local/lib/python3.14/site-packages/gpt_researcher/retrievers/xquik/__init__.py
+/usr/local/lib/python3.14/site-packages/gpt_researcher/retrievers/xquik/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/gpt_researcher/retrievers/xquik/__pycache__/xquik.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/gpt_researcher/retrievers/xquik/xquik.py
 /usr/local/lib/python3.14/site-packages/gpt_researcher/scraper/__init__.py
 /usr/local/lib/python3.14/site-packages/gpt_researcher/scraper/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/gpt_researcher/scraper/__pycache__/scraper.cpython-314.pyc
@@ -346,6 +352,7 @@
 /usr/local/lib/python3.14/site-packages/tests/__pycache__/test_quick_search.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tests/__pycache__/test_researcher_logging.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tests/__pycache__/test_security_fix.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/tests/__pycache__/test_websocket_manager.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tests/__pycache__/vector-store.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tests/documents-report-source.py
 /usr/local/lib/python3.14/site-packages/tests/gptr-logs-handler.py
@@ -363,4 +370,5 @@
 /usr/local/lib/python3.14/site-packages/tests/test_quick_search.py
 /usr/local/lib/python3.14/site-packages/tests/test_researcher_logging.py
 /usr/local/lib/python3.14/site-packages/tests/test_security_fix.py
+/usr/local/lib/python3.14/site-packages/tests/test_websocket_manager.py
 /usr/local/lib/python3.14/site-packages/tests/vector-store.py
