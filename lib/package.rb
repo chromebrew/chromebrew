@@ -376,6 +376,7 @@ class Package
   def self.binary?(architecture) = !@build_from_source && @binary_sha256&.key?(architecture)
 
   def self.missing_binaries?
+    puts caller
     return false if no_compile_needed? || is_fake?
     return true if @opt_source || @build_from_source
     puts '$binaries_found:'

@@ -495,7 +495,7 @@ end
 
 def download
   test_url = PackageUtils.get_url(@pkg, build_from_source: @opt_source || @pkg.build_from_source)
-  puts "#{__LINE__}: #{@pkg.name} test_url: #{test_url} test_url.casecmp?('SKIP'): #{test_url.casecmp?('SKIP')}" if CREW_VERBOSE
+  puts "#{__LINE__}: #{@pkg.name} test_url: #{test_url} test_url.casecmp?('SKIP'): #{test_url.casecmp?('SKIP')}"
   sha256sum = PackageUtils.get_sha256(@pkg, build_from_source: @opt_source || @pkg.build_from_source)
   # What the filename is if we do not download from the API.
   filename = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.#{@pkg.binary_compression}"
