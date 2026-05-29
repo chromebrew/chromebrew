@@ -31,7 +31,7 @@ class Rsync < Autotools
   depends_on 'zstd' => :executable
 
   # tests broken by https://github.com/RsyncProject/rsync/pull/925.diff"
-  # run_tests
+  run_tests unless version.include?('3.4.3')
 
   def self.patch
     patch = [
