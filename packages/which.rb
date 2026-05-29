@@ -18,4 +18,5 @@ class Which < Autotools
   })
 
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
 end
