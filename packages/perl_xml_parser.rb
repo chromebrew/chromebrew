@@ -17,8 +17,9 @@ class Perl_xml_parser < PERL
      x86_64: '75ccb2d4c7fa6e6dd0a6f415bb0d72191a91792d9c0b109cdf20f7c5e8000b5e'
   })
 
-  depends_on 'expat' # R
-  depends_on 'glibc' # R
+  depends_on 'expat' => :build
+  depends_on 'glibc' => :library
+  depends_on 'perl_file_sharedir_install' => :build
 
   conflicts_ok # conflicts with perl_date_format
 end
