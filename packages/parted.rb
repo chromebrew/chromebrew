@@ -17,9 +17,16 @@ class Parted < Autotools
      x86_64: '6c90b4c01a6275e5f09438a80c7f973042834fb801bd18cbd6dade603a843a9f'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'lvm2' # R
+  depends_on 'glibc' => :library
+  depends_on 'lvm2' => :build
   depends_on 'ncurses' => :executable
   depends_on 'readline' => :executable
-  depends_on 'util_linux' # R
+  depends_on 'util_linux' => :build
+
+  def self.patch
+    # The aclocal version is hardcoded.
+    aclocal_version = `aclocal --version|head -1|cut -d' ' -f4`.chomp
+    system "sed -i 's,1.17,#{aclocal_version},g' aclocal.m4"
+    system "sed -i 's,1.17,#{aclocal_version},g' configure"
+  end
 end
