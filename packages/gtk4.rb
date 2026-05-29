@@ -30,7 +30,6 @@ class Gtk4 < Meson
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
   depends_on 'glslang' => :build
-  # depends_on 'gnome_icon_theme' => :logical
   depends_on 'gobject_introspection' => :build
   depends_on 'graphene' => :library
   # depends_on 'gstreamer' # R Let's avoid the glibc 2.29 dep.
@@ -70,8 +69,6 @@ class Gtk4 < Meson
   depends_on 'wayland' => :library
   depends_on 'xdg_base' => :logical
 
-  # L = Logical Dependency, R = Runtime Dependency
-
   gnome
   no_fhs
 
@@ -83,6 +80,7 @@ class Gtk4 < Meson
     end
 
     patches = [
+      # Fix armv7l build.
       # https://gitlab.gnome.org/GNOME/gtk/-/work_items/8222
       ['https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/9745.diff',
        'ef266dab0038693a26723f438bb40af0c8f0577f4ea817b513ff22b94070eec7']
