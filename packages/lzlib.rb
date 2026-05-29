@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Lzlib < Autotools
   description 'Lzlib is a data compression library providing in-memory LZMA compression and decompression functions, including integrity checking of the decompressed data.'
   homepage 'https://www.nongnu.org/lzip/lzlib.html'
-  version '1.15'
+  version '1.16'
   license 'BSD-2'
   compatibility 'all'
   source_url "https://download.savannah.gnu.org/releases/lzip/lzlib/lzlib-#{version}.tar.lz"
-  source_sha256 '9d45480e7c8171c64fa1d5beee2cbd82e69febe910f0ce628b876a8fe2141534'
+  source_sha256 'cd2a96fbc685f7e3dc32b9f0e5e34046a77e3c10fcfebe62f9951e317d0a8cf4'
   binary_compression 'tar.zst'
 
   binary_sha256({
