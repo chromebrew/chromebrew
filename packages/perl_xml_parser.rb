@@ -19,6 +19,7 @@ class Perl_xml_parser < PERL
 
   depends_on 'expat' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'perl' => :logical
   depends_on 'perl_file_sharedir_install' => :build
 
