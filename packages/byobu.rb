@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Byobu < Autotools
   description 'Byobu is a GPLv3 open source text-based window manager and terminal multiplexer.'
   homepage 'https://www.byobu.org'
-  version '6.16'
+  version '7.0'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/dustinkirkland/byobu.git'
