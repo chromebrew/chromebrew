@@ -18,6 +18,7 @@ class Py3_ruff < Pip
 
   depends_on 'gcc_lib' => :executable
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'llvm_dev' => :build
   depends_on 'py3_maturin' => :build
   depends_on 'python3' => :logical
