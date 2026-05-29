@@ -17,7 +17,9 @@ class Valgrind < Autotools
      x86_64: 'f12e9c38280dec3017364e8716fa70f8963dde013c10e0aa912de5437d77eda6'
   })
 
+  depends_on 'glibc' => :executable
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :executable
   no_lto
   case ARCH
   when 'aarch64', 'armv7l'
