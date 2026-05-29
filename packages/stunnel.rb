@@ -22,8 +22,11 @@ class Stunnel < Autotools
   depends_on 'tcpwrappers' => :library
 
   def self.patch
-    # The aclocal version is hardcoded.
+    # The aclocal & automake versions are hardcoded.
     aclocal_version = `aclocal --version|head -1|cut -d' ' -f4`.chomp
+    automake_version = `automake --version|head -1|cut -d' ' -f4`.chomp.gsub(/\.\d+$/, '')
+    system "sed -i \"s,am__api_version='1.17',am__api_version='#{automake_version}',g\" aclocal.m4"
+    system "sed -i 's/m4_if([$1], [1.17]/m4_if([$1], [#{automake_version}]/g' aclocal.m4"
     system "sed -i 's,1.17,#{aclocal_version},g' aclocal.m4"
     system "sed -i 's,1.17,#{aclocal_version},g' configure"
   end
