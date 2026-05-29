@@ -7,7 +7,7 @@ class Blueprint_compiler < Meson
   license 'LGPL'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/blueprint-compiler.git'
-  git_hashtag 'v' + version.gsub("-#{CREW_PY_VER}", '')
+  git_hashtag "v#{version.gsub("-#{CREW_PY_VER}", '')}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -18,12 +18,12 @@ class Blueprint_compiler < Meson
 
   depends_on 'py3_pygobject' # R
 
-    def self.patch
-      patches = [
-        # https://gitlab.gnome.org/GNOME/blueprint-compiler/-/work_items/254
-        ['https://gitlab.gnome.org/GNOME/blueprint-compiler/-/merge_requests/314.diff',
-         'f42df751f5a8bfc853faf67fddac33fe162afae71e9212021e1595b558c9d556']
-      ]
-      ConvenienceFunctions.patch(patches) if version.include?('0.20.4')
+  def self.patch
+    patches = [
+      # https://gitlab.gnome.org/GNOME/blueprint-compiler/-/work_items/254
+      ['https://gitlab.gnome.org/GNOME/blueprint-compiler/-/merge_requests/314.diff',
+       'f42df751f5a8bfc853faf67fddac33fe162afae71e9212021e1595b558c9d556']
+    ]
+    ConvenienceFunctions.patch(patches) if version.include?('0.20.4')
   end
 end
