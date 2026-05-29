@@ -13,15 +13,15 @@ class Py3_rpds_py < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ae4e9c5131bbd302e75b6658168d9e64356184d4be440a54e46c43cc5698c49b',
-     armv7l: 'ae4e9c5131bbd302e75b6658168d9e64356184d4be440a54e46c43cc5698c49b',
-       i686: '1febb1c7a436e22d22775e023a8b887a36e121d209b0891aa5c5c95edb94cbe3',
-     x86_64: 'f59a3a5d91befbbb8dd9deb7f7010755bb45ea3530ea4558ca5c2eae7ebff363'
+    aarch64: '0deb8774da4548c4b10ba811fe0e423b2260578be523c0e1dccf1e932eb4b577',
+     armv7l: '0deb8774da4548c4b10ba811fe0e423b2260578be523c0e1dccf1e932eb4b577',
+       i686: '3049e4b3fd211d34070ff670eb255ec6fa38e7bc0fc2fbe9bd0a8f8e31b893b0',
+     x86_64: 'ad51a98eb84f5a19f250270e55b35c2027c7c11bee45adbb48b5dddfdd5b87e8'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'python3' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'python3' => :logical
   depends_on 'rust' => :build
 
   no_source_build
