@@ -96,7 +96,6 @@ class Package
                   :in_build,
                   :in_install,
                   :in_upgrade,
-                  :missing_binaries,
                   :name
   end
 
@@ -375,7 +374,62 @@ class Package
   end
 
   def self.binary?(architecture) = !@build_from_source && @binary_sha256&.key?(architecture)
-  def self.source?(architecture) = missing_binaries ? true : !(binary?(architecture) || is_fake?)
+
+  def self.missing_binaries?
+    puts caller
+    return false if no_compile_needed? || is_fake?
+    return true if @opt_source || @build_from_source
+    puts '$binaries_found:'
+    puts $binaries_found
+    if $binaries_found.include?(name)
+      puts "binaries_found for #{name}"
+      return false
+    end
+    pkg_obj = load_package("#{name}.rb")
+    @binary_compression ||= 'tar.zst'
+    puts "name is #{name}"
+    puts "version is #{version}"
+    puts "ARCH is #{ARCH}"
+    puts "@binary_compression is #{@binary_compression}"
+    filename = "#{name}-#{version}-chromeos-#{ARCH}.#{@binary_compression}"
+
+    test_url = PackageUtils.get_url(pkg_obj, build_from_source: @opt_source || @build_from_source)
+    puts "#{__LINE__}: test_url: #{test_url}"
+    puts "name #{name}"
+    puts "!test_url.nil? #{!test_url.nil?}"
+    puts "!test_url.casecmp?('SKIP') #{!test_url.casecmp?('SKIP')}"
+    puts `#{CREW_CURL} -fsI #{test_url}`.lines.first.split[1] != '200'
+    puts "(!test_url.nil? && !test_url.casecmp?('SKIP') && `#{CREW_CURL} -fsI #{test_url}`.lines.first.split[1] != '200') #{!test_url.nil? && !test_url.casecmp?('SKIP') && `#{CREW_CURL} -fsI #{test_url}`.lines.first.split[1] != '200'}"
+    puts "(CREW_CACHE_ENABLED || CREW_CACHE_BUILD) #{CREW_CACHE_ENABLED || CREW_CACHE_BUILD}"
+    puts "CREW_CACHE_ENABLED #{CREW_CACHE_ENABLED}"
+    puts "CREW_CACHE_BUILD #{CREW_CACHE_BUILD}"
+    puts "!File.file?(File.join(CREW_LOCAL_BUILD_DIR, filename)) #{!File.file?(File.join(CREW_LOCAL_BUILD_DIR, filename))}"
+    puts "!File.file?(File.join(CREW_CACHE_DIR, filename)) #{!File.file?(File.join(CREW_CACHE_DIR, filename))}"
+    if (CREW_CACHE_ENABLED || CREW_CACHE_BUILD) && !File.file?(File.join(CREW_LOCAL_BUILD_DIR, filename)) && !File.file?(File.join(CREW_CACHE_DIR, filename))
+      $binaries_found << name
+      puts '$binaries_found:'
+      puts $binaries_found
+      return false
+    elsif !test_url.nil? && !test_url.casecmp?('SKIP') && `#{CREW_CURL} -fsI #{test_url}`.lines.first.split[1] != '200'
+      puts "#{__LINE__}: Binaries are missing at #{test_url} for #{name}".lightpurple
+      puts "!test_url.nil? #{!test_url.nil?}"
+      puts "!test_url.casecmp?('SKIP') #{!test_url.casecmp?('SKIP')}"
+      puts "`#{CREW_CURL} -fsI #{test_url}`.lines.first.split[1] != '200' #{`#{CREW_CURL} -fsI #{test_url}`.lines.first.split[1] != '200'}"
+      puts "(CREW_CACHE_ENABLED || CREW_CACHE_BUILD) #{CREW_CACHE_ENABLED || CREW_CACHE_BUILD}"
+      puts "CREW_CACHE_ENABLED #{CREW_CACHE_ENABLED}"
+      puts "CREW_CACHE_BUILD #{CREW_CACHE_BUILD}"
+      puts "!File.file?(File.join(CREW_LOCAL_BUILD_DIR, filename)) #{!File.file?(File.join(CREW_LOCAL_BUILD_DIR, filename))}"
+      puts "!File.file?(File.join(CREW_CACHE_DIR, filename)) #{!File.file?(File.join(CREW_CACHE_DIR, filename))}"
+      return true
+    else
+      $binaries_found << name
+      puts '$binaries_found:'
+      puts $binaries_found
+    end
+    return false
+  end
+
+  def self.source?(architecture) = missing_binaries? || !(binary?(architecture) || is_fake?)
 
   def self.system(*args, **opt_args)
     crew_env_options_hash = if no_env_options?

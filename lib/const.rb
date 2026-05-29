@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION = defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION = '1.74.3' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION = '1.74.4' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH = Etc.uname[:machine]
@@ -55,6 +55,8 @@ else
   CREW_BUILD_FROM_SOURCE = true
   HOME = File.join(CREW_PREFIX, Dir.home)
 end
+
+CREW_CURL = File.file?("#{CREW_PREFIX}/bin/curl_static") ? "#{CREW_PREFIX}/bin/curl_static" : 'curl'
 
 # These are packages that crew needs to run-- only packages that the bin/crew needs should be required here.
 # lz4, for example, is required for zstd to have lz4 support, but this is not required to run bin/crew.
