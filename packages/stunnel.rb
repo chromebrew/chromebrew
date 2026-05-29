@@ -11,13 +11,14 @@ class Stunnel < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1ae4abb77054bd08932698e9b21644cb47465d210d69a0ddc96c4a510cc22915',
-     armv7l: '1ae4abb77054bd08932698e9b21644cb47465d210d69a0ddc96c4a510cc22915',
-       i686: 'de106a125e6086200e35deccb4760614484a54f30441c3b749163d72bac3a703',
-     x86_64: 'ca239963a16af6d9c4af777b6d5cc8a3e722c15e0324e8f6d68b056f7d2678ac'
+    aarch64: '9a80a9dd3a7f31a740ed926adaf41867f01175218417e5c5e37d989dfcfde0dd',
+     armv7l: '9a80a9dd3a7f31a740ed926adaf41867f01175218417e5c5e37d989dfcfde0dd',
+       i686: '45e5a3b88201859af59e8fb9f2334e890ad0d76e3e3944f3a73f7c7776144aa1',
+     x86_64: '2a1faf8c8a4e10a4fa483b9116a8462747d6983cc2ae097aca4d2b63400a4d57'
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'openssl' => :executable
   depends_on 'tcpwrappers' => :library
 
@@ -29,6 +30,7 @@ class Stunnel < Autotools
     system "sed -i 's/m4_if([$1], [1.17]/m4_if([$1], [#{automake_version}]/g' aclocal.m4"
     system "sed -i 's,1.17,#{aclocal_version},g' aclocal.m4"
     system "sed -i 's,1.17,#{aclocal_version},g' configure"
+    system 'automake'
   end
 
   def self.postbuild
