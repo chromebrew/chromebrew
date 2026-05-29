@@ -11,10 +11,10 @@ class Parted < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'dec111ce508f4446d74dcbefa2e2ccb7c9424a8e651f4a75b0091ebc5cd0c45b',
-     armv7l: 'dec111ce508f4446d74dcbefa2e2ccb7c9424a8e651f4a75b0091ebc5cd0c45b',
+    aarch64: 'a7315fbe718042fb5bd6baa51ff6feb5ff38356e8035f8d8957d72bc60b72136',
+     armv7l: 'a7315fbe718042fb5bd6baa51ff6feb5ff38356e8035f8d8957d72bc60b72136',
        i686: 'c3ebda11ea88c528434af9617387479ff6c070fb2c7c2eac67e12aa25cba43a5',
-     x86_64: '6c90b4c01a6275e5f09438a80c7f973042834fb801bd18cbd6dade603a843a9f'
+     x86_64: '07539adee486cb85a5a29b8a59b6c4cd32c62185822ce558defc33a7ebc2e68c'
   })
 
   depends_on 'glibc' => :library
