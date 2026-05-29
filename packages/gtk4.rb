@@ -82,13 +82,11 @@ class Gtk4 < Meson
     end
 
     patches = [
-      # These fix the 32-bit build.
-      ['https://gitlab.gnome.org/GNOME/gtk/-/commit/1f9e80c8c0e7440f6d2256fbf8ead29c44a83b90.patch',
-       '130071ac28e4fca222915a232b754dafcaf2a6b937634ab7da1383dbc3f10429'],
-      ['https://gitlab.gnome.org/GNOME/gtk/-/commit/af9440dea029d225adcfc1f9024a1122e9abb006.patch',
-       '6ff8f4264ec92ffc2922c0c7c3b9bd52293d62aa553aec27146dcda9a64b072f']
+      # https://gitlab.gnome.org/GNOME/gtk/-/work_items/8222
+      ['https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/9745.diff',
+       'ef266dab0038693a26723f438bb40af0c8f0577f4ea817b513ff22b94070eec7']
     ]
-    ConvenienceFunctions.patch(patches) if ARCH != 'x86_64' && version == '4.20.3'
+    ConvenienceFunctions.patch(patches) if ARCH != 'x86_64' && version == '4.22.4'
   end
 
   meson_options '-Dbroadway-backend=true \
