@@ -13,8 +13,8 @@ class Aliyun_cli < Package
   binary_sha256({
     aarch64: '99ad3261b65fee22bd6f2082fa0c11246ac9adc682cdc1467bd7f81144e1d9cd',
      armv7l: '99ad3261b65fee22bd6f2082fa0c11246ac9adc682cdc1467bd7f81144e1d9cd',
-       i686: '17f9d4fe4eba781daf0144bde66a3e0488e84bd1a4ceb25830bf99faf6e9ffb8',
-     x86_64: '95742a3f138b9d3e6bfff77e8163e6a07f79c411e48033667f0be2ae5d151fa3'
+       i686: '12b164c8b1bbf66b5aff0774d755a6b1b58ff0ee760887748d2564d6345fc6c3',
+     x86_64: 'f07ebaf5bb5d6504ec2a347476a64a1dfb6790658603b146668a03cee0c3dc62'
   })
 
   depends_on 'glibc' => :executable
