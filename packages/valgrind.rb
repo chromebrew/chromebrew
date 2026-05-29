@@ -20,6 +20,7 @@ class Valgrind < Autotools
   depends_on 'glibc' => :executable
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :executable
+  depends_on 'glibc_lib' => :library
   no_lto
   case ARCH
   when 'aarch64', 'armv7l'
