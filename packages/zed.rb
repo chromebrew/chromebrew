@@ -3,7 +3,7 @@ require 'buildsystems/rust'
 class Zed < RUST
   description 'Zed is a high-performance, multiplayer code editor'
   homepage 'https://zed.dev/'
-  version '1.4.2'
+  version '1.4.4'
   license 'GPL-3, AGPL-3, Apache-2.0'
   compatibility 'x86_64'
   source_url 'https://github.com/zed-industries/zed.git'
@@ -11,7 +11,7 @@ class Zed < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: 'db9fd018a3c00b0c4192bd79ba680f00c74b5c5dfde9f73ae4c55adc86c125a9'
+     x86_64: 'd20922b4e41f7353c0d932fb3af32d9c4ecc60be82f026701a34e507cdcd2501'
   })
 
   depends_on 'alsa_lib' => :executable
