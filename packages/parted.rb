@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Parted < Autotools
   description 'Create, destroy, resize, check, copy partitions and file systems.'
   homepage 'https://www.gnu.org/software/parted/'
-  version '3.6-2'
+  version '3.7'
   license 'GPL-3'
   compatibility 'all'
   source_url "https://ftp.gnu.org/gnu/parted/parted-#{version.split('-').first}.tar.xz"
-  source_sha256 '3b43dbe33cca0f9a18601ebab56b7852b128ec1a3df3a9b30ccde5e73359e612'
+  source_sha256 '008de57561a4f3c25a0648e66ed11e7b30be493889b64334a6d70f2c1951ef7b'
   binary_compression 'tar.zst'
 
   binary_sha256({
