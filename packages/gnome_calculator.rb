@@ -16,6 +16,7 @@ class Gnome_calculator < Meson
      x86_64: 'd6a6c62ffcff637fe5ea2e90328ba798856041a4885ec75c53db9b227308ed6d'
   })
 
+  depends_on 'blueprint_compiler' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glib' # R
   depends_on 'glibc' # R
