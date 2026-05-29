@@ -14,16 +14,18 @@ class Wireshark < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ffba04ac791f0a7b4996dab77c4e2eb3d2a2684c909f4d3bda4d20b678468f12',
-     armv7l: 'ffba04ac791f0a7b4996dab77c4e2eb3d2a2684c909f4d3bda4d20b678468f12',
-     x86_64: 'b7903b1831d30ba4a5a8e0dc6fe4b0582b8b9e0055b8ca35d054331a21bee5eb'
+    aarch64: '0d10bff7f1f49d26e7e63b90f9148703edb27f172ac96d115e73aa17e8e9230a',
+     armv7l: '0d10bff7f1f49d26e7e63b90f9148703edb27f172ac96d115e73aa17e8e9230a',
+     x86_64: '1bbb5367771f16602b26d6a0cd2171390c48c99e957018ae72053b8f83692989'
   })
 
   depends_on 'brotli' => :library
   depends_on 'c_ares' => :library
+  depends_on 'gcc_lib' => :executable
   depends_on 'gcc_lib' => :library
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gnutls' => :library
   depends_on 'krb5' => :library
   depends_on 'libcap' => :executable
@@ -31,17 +33,19 @@ class Wireshark < CMake
   depends_on 'libmaxminddb' => :executable
   depends_on 'libnghttp2' => :library
   depends_on 'libnghttp3' => :library
+  depends_on 'libnl3' => :executable
   depends_on 'libnl3' => :library
   depends_on 'libopencoreamr' => :library
   depends_on 'libpcap' => :executable
   depends_on 'libsmi' => :library
+  depends_on 'libssh' => :executable
   depends_on 'libssh' => :library
   depends_on 'libxml2' => :library
   depends_on 'lz4' => :library
   depends_on 'opus' => :library
   depends_on 'pcre2' => :library
-  depends_on 'qt5_base' => :build
-  depends_on 'qt5_multimedia' => :build
+  depends_on 'qt5_base' => :executable
+  depends_on 'qt5_multimedia' => :executable
   depends_on 'qt5_svg' => :build
   depends_on 'qt5_tools' => :build
   depends_on 'ruby_asciidoctor' => :build

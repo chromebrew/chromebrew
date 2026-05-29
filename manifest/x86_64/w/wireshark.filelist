@@ -1,4 +1,4 @@
-# Total size: 157072136
+# Total size: 163688409
 /usr/local/bin/capinfos
 /usr/local/bin/captype
 /usr/local/bin/dumpcap
@@ -14,10 +14,10 @@
 /usr/local/bin/wireshark
 /usr/local/lib64/libwireshark.so
 /usr/local/lib64/libwireshark.so.19
-/usr/local/lib64/libwireshark.so.19.0.4
+/usr/local/lib64/libwireshark.so.19.0.6
 /usr/local/lib64/libwiretap.so
 /usr/local/lib64/libwiretap.so.16
-/usr/local/lib64/libwiretap.so.16.0.4
+/usr/local/lib64/libwiretap.so.16.0.6
 /usr/local/lib64/libwsutil.so
 /usr/local/lib64/libwsutil.so.17
 /usr/local/lib64/libwsutil.so.17.0.0
@@ -69,6 +69,7 @@
 /usr/local/share/doc/wireshark/randpktdump.html
 /usr/local/share/doc/wireshark/rawshark.html
 /usr/local/share/doc/wireshark/reordercap.html
+/usr/local/share/doc/wireshark/sharkd.html
 /usr/local/share/doc/wireshark/sshdig.html
 /usr/local/share/doc/wireshark/sshdump.html
 /usr/local/share/doc/wireshark/strato.html
@@ -109,6 +110,7 @@
 /usr/local/share/man/man1/randpktdump.1.zst
 /usr/local/share/man/man1/rawshark.1.zst
 /usr/local/share/man/man1/reordercap.1.zst
+/usr/local/share/man/man1/sharkd.1.zst
 /usr/local/share/man/man1/sshdig.1.zst
 /usr/local/share/man/man1/sshdump.1.zst
 /usr/local/share/man/man1/strato.1.zst
