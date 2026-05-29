@@ -22,6 +22,7 @@ class Rsync < Autotools
   depends_on 'acl' => :executable
   depends_on 'attr' => :executable
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'lz4' => :executable
   depends_on 'openssl' => :executable
   depends_on 'popt' => :executable
