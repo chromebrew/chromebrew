@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Which < Autotools
   description 'which shows the full path of (shell) commands.'
   homepage 'https://carlowood.github.io/which/'
-  version '2.23'
+  version '2.25'
   license 'GPL-3'
   compatibility 'all'
   source_url "https://ftp.gnu.org/gnu/which/which-#{version}.tar.gz"
-  source_sha256 'b620507312c5e97566a3c6cfaf99144fefc18a0da7d941401dfa0f5f58fb0368'
+  source_sha256 '1cb83e4f702e60b8211ab5ec4c2afbab1b1dec80209456a7d2faf7584ed225ea'
   binary_compression 'tar.zst'
 
   binary_sha256({
