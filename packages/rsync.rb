@@ -7,16 +7,16 @@ class Rsync < Autotools
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/RsyncProject/rsync'
-  git_hashtag "907505c004ed6e43def6df657912158c597a0b63"
+  git_hashtag '907505c004ed6e43def6df657912158c597a0b63'
   # source_url "https://rsync.samba.org/ftp/rsync/src/rsync-#{version}.tar.gz"
   # source_sha256 'c72e63ca3021cbc80ba86ec30102773f4c5631fbc492b52e773b3958f82a53d3'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3f784635c565a41eaf08db4642380bfdca20475162aa9cb618cbe2dbc3d28735',
-     armv7l: '3f784635c565a41eaf08db4642380bfdca20475162aa9cb618cbe2dbc3d28735',
-       i686: 'a9cf7e10199a2ef329b39d5b15118e0cda2a27876bd31f2438010335116b3bfe',
-     x86_64: 'e1cf690b2a42be06b5d85d40cbf1fede1b1f15a70f783578742e38bd2f3b2c23'
+    aarch64: '2e1652281b3489309385aede912c5bbd4299bf22f6b06b72200c32c9881cb208',
+     armv7l: '2e1652281b3489309385aede912c5bbd4299bf22f6b06b72200c32c9881cb208',
+       i686: 'e7707617af4f593a3cc8e369b1a29fd7cc5b87b40853c2fb086fdbe7c5cbd13e',
+     x86_64: '0efdd728cf3befef029e23f853435a988c7f4333c21ed86246520ba760263665'
   })
 
   depends_on 'acl' => :executable
@@ -34,16 +34,14 @@ class Rsync < Autotools
 
   def self.patch
     patch = [
-    # Fixes requirement of post kernel 5.6 linux/openat2.h
-    # introduced by https://github.com/RsyncProject/rsync/pull/887
-    # See https://github.com/RsyncProject/rsync/issues/924
-    [
-        "https://github.com/RsyncProject/rsync/pull/925.diff",
-        'f84957e50a52b3580af8727b81b130db60c39024541c67b7c62a6d60c7514a1c',
+      # Fixes requirement of post kernel 5.6 linux/openat2.h
+      # introduced by https://github.com/RsyncProject/rsync/pull/887
+      # See https://github.com/RsyncProject/rsync/issues/924
+      [
+        'https://github.com/RsyncProject/rsync/pull/925.diff',
+        'f84957e50a52b3580af8727b81b130db60c39024541c67b7c62a6d60c7514a1c'
       ]
     ]
-    if version.include?('3.4.3')
-      ConvenienceFunctions.patch(patch)
-    end
+    ConvenienceFunctions.patch(patch) if version.include?('3.4.3')
   end
 end
