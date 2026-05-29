@@ -1,17 +1,17 @@
-# Total size: 29549950
+# Total size: 29579408
 /usr/local/bin/compile-python-for-nuitka-linux.sh
 /usr/local/bin/nuitka
 /usr/local/bin/nuitka-run
-/usr/local/lib/python3.14/site-packages/nuitka-4.1.1.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/nuitka-4.1.1.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/nuitka-4.1.1.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/nuitka-4.1.1.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/nuitka-4.1.1.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/nuitka-4.1.1.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/nuitka-4.1.1.dist-info/licenses/LICENSE-RUNTIME.txt
-/usr/local/lib/python3.14/site-packages/nuitka-4.1.1.dist-info/licenses/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/nuitka-4.1.1.dist-info/licenses/NOTICE.txt
-/usr/local/lib/python3.14/site-packages/nuitka-4.1.1.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/nuitka-4.1.2.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/nuitka-4.1.2.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/nuitka-4.1.2.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/nuitka-4.1.2.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/nuitka-4.1.2.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/nuitka-4.1.2.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/nuitka-4.1.2.dist-info/licenses/LICENSE-RUNTIME.txt
+/usr/local/lib/python3.14/site-packages/nuitka-4.1.2.dist-info/licenses/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/nuitka-4.1.2.dist-info/licenses/NOTICE.txt
+/usr/local/lib/python3.14/site-packages/nuitka-4.1.2.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/nuitka/Builtins.py
 /usr/local/lib/python3.14/site-packages/nuitka/BytecodeCaching.py
 /usr/local/lib/python3.14/site-packages/nuitka/Bytecodes.py

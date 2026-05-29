@@ -3,21 +3,22 @@ require 'buildsystems/pip'
 class Py3_ruff < Pip
   description 'An extremely fast Python linter, written in Rust.'
   homepage 'https://docs.astral.sh/ruff'
-  version "0.15.10-#{CREW_PY_VER}"
+  version "0.15.15-#{CREW_PY_VER}"
   license 'GPL-2.0'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '68bc00c85e0228f5b5da7f68332a7bcd177ede0fc2ba94ec25796aeba1b7e8bd',
-     armv7l: '68bc00c85e0228f5b5da7f68332a7bcd177ede0fc2ba94ec25796aeba1b7e8bd',
-       i686: 'd2e591bb01e5e4156cf34f43bff23bb62b76e986d441e8ad584980f67a7ea718',
-     x86_64: '42430211f179128b0c2e96e95e1efcc903baea969f94255d7c1e3ef0afb67451'
+    aarch64: 'fbd988d8369dabb000233489bb74e124b40432b3685e745a59c75a34ee8ebd58',
+     armv7l: 'fbd988d8369dabb000233489bb74e124b40432b3685e745a59c75a34ee8ebd58',
+       i686: '45d8fc4c0e6a028e009d1b2bf5b75a61980acadc9a07ca771d3763bd2323b48e',
+     x86_64: '67fffe37d0449c32625f30ea79f2396b888616eb65f8e6cd18efa9cb617ba279'
   })
 
   depends_on 'gcc_lib' => :executable
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'llvm_dev' => :build
   depends_on 'py3_maturin' => :build
   depends_on 'python3' => :logical
