@@ -3,11 +3,11 @@ require 'buildsystems/perl'
 class Perl_xml_parser < PERL
   description 'Perl XML::Parser - A perl module for parsing XML documents'
   homepage 'https://metacpan.org/pod/XML::Parser'
-  version "2.47-#{CREW_PERL_VER}"
+  version "2.59-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url "https://cpan.metacpan.org/authors/id/T/TO/TODDR/XML-Parser-#{version.split('-').first}.tar.gz"
-  source_sha256 'ad4aae643ec784f489b956abe952432871a622d4e2b5c619e8855accbfc4d1d8'
+  source_sha256 'a358fd7c49f5e27717a644a9102bd21dc7fc25a415983279c59b1580e2b62a58'
   binary_compression 'tar.zst'
 
   binary_sha256({
