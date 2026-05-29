@@ -21,6 +21,13 @@ class Stunnel < Autotools
   depends_on 'openssl' => :executable
   depends_on 'tcpwrappers' => :library
 
+  def self.patch
+    # The aclocal version is hardcoded.
+    aclocal_version = `aclocal --version|head -1|cut -d' ' -f4`.chomp
+    system "sed -i 's,1.17,#{aclocal_version},g' aclocal.m4"
+    system "sed -i 's,1.17,#{aclocal_version},g' configure"
+  end
+
   def self.postbuild
     # Fix bash: /usr/local/bin/stunnel3: /usr/bin/perl: bad interpreter: No such file or directory
     system "sed -i 's,/usr/bin/perl,#{CREW_PREFIX}/bin/perl,' #{CREW_DEST_PREFIX}/bin/stunnel3"
