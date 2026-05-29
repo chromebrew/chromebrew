@@ -10,10 +10,10 @@ class Py3_s3transfer < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0fbf5773f386e7405bb668a0528a7d5e7f916e0fc8aef53ef581f66808788eae',
-     armv7l: '0fbf5773f386e7405bb668a0528a7d5e7f916e0fc8aef53ef581f66808788eae',
-       i686: '93284f2ca8e4055963d0b2e6e4c9a08d5bc63e22d73addae81e68162fdb2842e',
-     x86_64: '210c4f1ca2a482dc9866f8614120473a39aa4f1104125295095fd20f5cb6dd06'
+    aarch64: '8059772deb45350fff9d9fca21e8f16191d8e19b60c3ba9d10d7ff730b8a552f',
+     armv7l: '8059772deb45350fff9d9fca21e8f16191d8e19b60c3ba9d10d7ff730b8a552f',
+       i686: '53b30e44d17d7d21ec63048020e5d49d7478f7dcc8bb4e9fe5f06e7d7746e341',
+     x86_64: 'b304821b8ef996c06ebdd6a13b32c5e6008ff28cd29d44caf1bebc38f54c1521'
   })
 
   depends_on 'python3' => :logical
