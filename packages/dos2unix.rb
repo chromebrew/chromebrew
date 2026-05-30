@@ -3,11 +3,11 @@ require 'package'
 class Dos2unix < Package
   description 'dos2unix includes utilities to convert text files with DOS or Mac line endings to Unix line endings and vice versa.'
   homepage 'http://freecode.com/projects/dos2unix'
-  version '7.5.5'
+  version '7.5.6'
   license 'BSD-2'
   compatibility 'all'
   source_url "https://downloads.sourceforge.net/project/dos2unix/dos2unix/#{version}/dos2unix-#{version}.tar.gz"
-  source_sha256 '75f692b8484c8c24579a2ffd87df16b9c9428ed95497e3393a21d1ba0697ac33'
+  source_sha256 '63650acbd0c7fa8623429bcbf93a888e3351a1cad0f556cf41876f5673dd7d0b'
   binary_compression 'tar.zst'
 
   binary_sha256({
