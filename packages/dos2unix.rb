@@ -19,6 +19,7 @@ class Dos2unix < Package
 
   depends_on 'gettext' => :build
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
 
   def self.build
     system 'make'
