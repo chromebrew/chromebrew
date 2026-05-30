@@ -1,0 +1,3 @@
+#!/bin/bash
+gimp -v | head -5
+gimp -h | head -5
