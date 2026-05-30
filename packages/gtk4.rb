@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gtk4 < Meson
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://www.gtk.org/'
-  version '4.22.1'
+  version '4.22.4'
   license 'LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
@@ -11,51 +11,51 @@ class Gtk4 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '511831e770368476f3ca1184f4e8d008446a7d9681661035cabc6455e1ad8df2',
-     armv7l: '511831e770368476f3ca1184f4e8d008446a7d9681661035cabc6455e1ad8df2',
-     x86_64: 'b5f1c1d4e60d686e94f02e6026b23be9c9d98f21954999ee140526424157cb49'
+    aarch64: '5f39f3e82535eb9eb8489750d79cbd9a38dc7a3e8324aa7d4b408748888006ad',
+     armv7l: '5f39f3e82535eb9eb8489750d79cbd9a38dc7a3e8324aa7d4b408748888006ad',
+     x86_64: '2b2886dd64424f4db00bf1fa5c7a99a4cff7ac9377c42f0a53518b60f1189b2d'
   })
 
   depends_on 'adwaita_fonts' => :logical
   depends_on 'adwaita_icon_theme' => :logical
-  depends_on 'cairo' # R
+  depends_on 'cairo' => :library
   depends_on 'cups' # R
   depends_on 'docbook' => :build
-  depends_on 'fontconfig' # R
-  depends_on 'fribidi' # R
+  depends_on 'fontconfig' => :library
+  depends_on 'fribidi' => :library
   depends_on 'gcc_lib' # R
-  depends_on 'gdk_pixbuf' # R
+  depends_on 'gdk_pixbuf' => :library
   depends_on 'ghostscript' => :build
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'glslang' => :build
-  # depends_on 'gnome_icon_theme' => :logical
   depends_on 'gobject_introspection' => :build
-  depends_on 'graphene' # R
+  depends_on 'graphene' => :library
   # depends_on 'gstreamer' # R Let's avoid the glibc 2.29 dep.
-  depends_on 'harfbuzz' # R
+  depends_on 'harfbuzz' => :library
   depends_on 'hicolor_icon_theme' => :logical
   depends_on 'intel_media_sdk' => :build if ARCH.eql?('x86_64')
   depends_on 'iso_codes' => :build
-  depends_on 'libcloudproviders' # R
-  depends_on 'libepoxy' # R
-  depends_on 'libjpeg_turbo' # R
-  depends_on 'libpng' # R
+  depends_on 'libcloudproviders' => :library
+  depends_on 'libepoxy' => :library
+  depends_on 'libjpeg_turbo' => :library
+  depends_on 'libpng' => :library
   depends_on 'librsvg' => :logical
   depends_on 'libsass' => :build
   depends_on 'libspectre' => :build
-  depends_on 'libtiff' # R
-  depends_on 'libx11' # R
-  depends_on 'libxcursor' # R
-  depends_on 'libxdamage' # R
-  depends_on 'libxext' # R
-  depends_on 'libxfixes' # R
-  depends_on 'libxi' # R
-  depends_on 'libxinerama' # R
-  depends_on 'libxkbcommon' # R
-  depends_on 'libxrandr' # R
+  depends_on 'libtiff' => :library
+  depends_on 'libx11' => :library
+  depends_on 'libxcursor' => :library
+  depends_on 'libxdamage' => :library
+  depends_on 'libxext' => :library
+  depends_on 'libxfixes' => :library
+  depends_on 'libxi' => :library
+  depends_on 'libxinerama' => :library
+  depends_on 'libxkbcommon' => :library
+  depends_on 'libxrandr' => :library
   depends_on 'mesa' => :build
-  depends_on 'pango' # R
+  depends_on 'pango' => :library
   depends_on 'py3_docutils' => :build
   depends_on 'py3_gi_docgen' => :build
   depends_on 'py3_pygments' => :build
@@ -65,11 +65,9 @@ class Gtk4 < Meson
   depends_on 'sommelier' => :logical
   depends_on 'valgrind' => :build
   depends_on 'vulkan_headers' => :build
-  depends_on 'vulkan_icd_loader' # R
-  depends_on 'wayland' # R
+  depends_on 'vulkan_icd_loader' => :library
+  depends_on 'wayland' => :library
   depends_on 'xdg_base' => :logical
-
-  # L = Logical Dependency, R = Runtime Dependency
 
   gnome
   no_fhs
@@ -82,13 +80,12 @@ class Gtk4 < Meson
     end
 
     patches = [
-      # These fix the 32-bit build.
-      ['https://gitlab.gnome.org/GNOME/gtk/-/commit/1f9e80c8c0e7440f6d2256fbf8ead29c44a83b90.patch',
-       '130071ac28e4fca222915a232b754dafcaf2a6b937634ab7da1383dbc3f10429'],
-      ['https://gitlab.gnome.org/GNOME/gtk/-/commit/af9440dea029d225adcfc1f9024a1122e9abb006.patch',
-       '6ff8f4264ec92ffc2922c0c7c3b9bd52293d62aa553aec27146dcda9a64b072f']
+      # Fix armv7l build.
+      # https://gitlab.gnome.org/GNOME/gtk/-/work_items/8222
+      ['https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/9745.diff',
+       'ef266dab0038693a26723f438bb40af0c8f0577f4ea817b513ff22b94070eec7']
     ]
-    ConvenienceFunctions.patch(patches) if ARCH != 'x86_64' && version == '4.20.3'
+    ConvenienceFunctions.patch(patches) if ARCH != 'x86_64' && version == '4.22.4'
   end
 
   meson_options '-Dbroadway-backend=true \
