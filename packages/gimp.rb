@@ -3,77 +3,79 @@ require 'buildsystems/meson'
 class Gimp < Meson
   description 'GIMP is a cross-platform image editor available for GNU/Linux, OS X, Windows and more operating systems.'
   homepage 'https://www.gimp.org/'
-  version '3.2.0-RC1'
+  version '3.2.4'
   license 'GPL-3 and LGPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gimp.git'
-  git_hashtag "GIMP_#{version.gsub('-', '_').gsub('.', '_')}"
+  git_hashtag "GIMP_#{version.gsub('.', '_')}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1169ecf7225130a27a03f0ba829361b748bc2953411066249b25c149c6b33841',
-     armv7l: '1169ecf7225130a27a03f0ba829361b748bc2953411066249b25c149c6b33841',
-     x86_64: '2404a3227948255f7127a6bb803d8588af30d1126db9333dd39230f737e4fd96'
+    aarch64: '95d67ff810d279b90220cd069fb93619e4c38f5addc90290a83c010c1e241a27',
+     armv7l: '95d67ff810d279b90220cd069fb93619e4c38f5addc90290a83c010c1e241a27',
+     x86_64: 'fe8a6e034c3f25ac41b1605d0dd146edc778a9b48797033a28ae6d76614aa92c'
   })
 
-  depends_on 'aalib' # R
+  depends_on 'aalib' => :library
   depends_on 'adwaita_icon_theme' => :logical
-  depends_on 'alsa_lib' # R
-  depends_on 'appstream' # R
+  depends_on 'alsa_lib' => :library
+  depends_on 'appstream' => :executable
   depends_on 'at_spi2_core' => :build
-  depends_on 'babl' # R
-  depends_on 'bzip2' # R
-  depends_on 'cairo' # R
+  depends_on 'babl' => :library
+  depends_on 'bzip2' => :library
+  depends_on 'cairo' => :library
   depends_on 'desktop_file_utils' => :logical
   depends_on 'ffmpeg' => :build
-  depends_on 'fontconfig' # R
-  depends_on 'freetype' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'gdk_pixbuf' # R
-  depends_on 'gegl' # R
-  depends_on 'gexiv2' # R
-  depends_on 'ghostscript' # R
+  depends_on 'fontconfig' => :library
+  depends_on 'freetype' => :executable
+  depends_on 'gcc_lib' => :library
+  depends_on 'gdk_pixbuf' => :library
+  depends_on 'gegl' => :library
+  depends_on 'gexiv2' => :library
+  depends_on 'ghostscript' => :library
   depends_on 'gjs' => :logical
-  depends_on 'glib' # R
+  depends_on 'glib' => :library
   depends_on 'glib_networking'
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gnome_icon_theme' => :logical
-  depends_on 'gobject_introspection' # R
-  depends_on 'gtk3' # R
-  depends_on 'harfbuzz' # R
-  depends_on 'json_glib' # R
-  depends_on 'lcms' # R
-  depends_on 'libarchive' # R
+  depends_on 'gobject_introspection' => :library
+  depends_on 'gtk3' => :library
+  depends_on 'harfbuzz' => :executable
+  depends_on 'json_glib' => :executable
+  depends_on 'lcms' => :library
+  depends_on 'libarchive' => :library
   depends_on 'libavif' => :build
-  depends_on 'libbacktrace' # R
+  depends_on 'libbacktrace' => :executable
   depends_on 'libexif' => :build
-  depends_on 'libgudev' # R
-  depends_on 'libheif' # R
+  depends_on 'libgudev' => :library
+  depends_on 'libheif' => :library
   depends_on 'libice' => :build
-  depends_on 'libjpeg_turbo' # R
-  depends_on 'libjxl' # R
-  depends_on 'libmng' # R
-  depends_on 'libmypaint' # R
-  depends_on 'libpng' # R
-  depends_on 'librsvg' # R
+  depends_on 'libjpeg_turbo' => :library
+  depends_on 'libjxl' => :library
+  depends_on 'libmng' => :library
+  depends_on 'libmypaint' => :executable
+  depends_on 'libpng' => :library
+  depends_on 'librsvg' => :library
   depends_on 'libsm' => :build
-  depends_on 'libtiff' # R
-  depends_on 'libunwind' # R
-  depends_on 'libwebp' # R
-  depends_on 'libwmf' # R
-  depends_on 'libx11' # R
-  depends_on 'libxcursor' # R
-  depends_on 'libxext' # R
-  depends_on 'libxfixes' # R
-  depends_on 'libxmu' # R
-  depends_on 'libxpm' # R
+  depends_on 'libtiff' => :library
+  depends_on 'libunwind' => :executable
+  depends_on 'libwebp' => :library
+  depends_on 'libwmf' => :library
+  depends_on 'libx11' => :library
+  depends_on 'libxcursor' => :library
+  depends_on 'libxext' => :library
+  depends_on 'libxfixes' => :library
+  depends_on 'libxmu' => :library
+  depends_on 'libxpm' => :library
+  depends_on 'libxslt' # R
   depends_on 'luajit' => :logical
   depends_on 'luajit_lgi' => :logical
   depends_on 'mypaint_brushes' => :build
-  depends_on 'openexr' # R
-  depends_on 'openjpeg' # R
-  depends_on 'pango' # R
-  depends_on 'poppler' # R
+  depends_on 'openexr' => :library
+  depends_on 'openjpeg' => :library
+  depends_on 'pango' => :library
+  depends_on 'poppler' => :library
   depends_on 'poppler_data'
   depends_on 'py3_gi_docgen' => :build
   depends_on 'py3_pycairo' => :logical
@@ -82,8 +84,8 @@ class Gimp < Meson
   depends_on 'shared_mime_info' => :build
   depends_on 'vala' => :build
   depends_on 'xdg_base' => :build
-  depends_on 'xzutils' # R
-  depends_on 'zlib' # R
+  depends_on 'xzutils' => :library
+  depends_on 'zlib' => :library
 
   gnome
 
