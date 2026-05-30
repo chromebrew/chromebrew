@@ -1,4 +1,4 @@
-# Total size: 1575215
+# Total size: 1821585
 /usr/local/bin/__pycache__/readelf.cpython-314.pyc
 /usr/local/bin/readelf.py
 /usr/local/lib/python3.14/site-packages/elftools/__init__.py
@@ -26,12 +26,10 @@
 /usr/local/lib/python3.14/site-packages/elftools/construct/lib/__pycache__/bitstream.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/elftools/construct/lib/__pycache__/container.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/elftools/construct/lib/__pycache__/hex.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/elftools/construct/lib/__pycache__/py3compat.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/elftools/construct/lib/binary.py
 /usr/local/lib/python3.14/site-packages/elftools/construct/lib/bitstream.py
 /usr/local/lib/python3.14/site-packages/elftools/construct/lib/container.py
 /usr/local/lib/python3.14/site-packages/elftools/construct/lib/hex.py
-/usr/local/lib/python3.14/site-packages/elftools/construct/lib/py3compat.py
 /usr/local/lib/python3.14/site-packages/elftools/construct/macros.py
 /usr/local/lib/python3.14/site-packages/elftools/dwarf/__init__.py
 /usr/local/lib/python3.14/site-packages/elftools/dwarf/__pycache__/__init__.cpython-314.pyc
@@ -108,10 +106,10 @@
 /usr/local/lib/python3.14/site-packages/elftools/elf/segments.py
 /usr/local/lib/python3.14/site-packages/elftools/elf/structs.py
 /usr/local/lib/python3.14/site-packages/elftools/py.typed
-/usr/local/lib/python3.14/site-packages/pyelftools-0.32.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/pyelftools-0.32.dist-info/LICENSE
-/usr/local/lib/python3.14/site-packages/pyelftools-0.32.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/pyelftools-0.32.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/pyelftools-0.32.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/pyelftools-0.32.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/pyelftools-0.32.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/pyelftools-0.33.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/pyelftools-0.33.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/pyelftools-0.33.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/pyelftools-0.33.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/pyelftools-0.33.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/pyelftools-0.33.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/pyelftools-0.33.dist-info/top_level.txt
