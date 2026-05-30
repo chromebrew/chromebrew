@@ -84,10 +84,9 @@ class ConvenienceFunctions
     FileUtils.cp("#{CREW_CONFIG_PATH}/device.json.tmp", File.join(CREW_CONFIG_PATH, 'device.json')) && FileUtils.rm("#{CREW_CONFIG_PATH}/device.json.tmp")
   end
 
-  def self.libtoolize(library, lib_pkg_name = nil, install_dest = nil)
-    install_dest = false if install_dest.nil?
+  def self.libtoolize(library, lib_pkg_name = nil, install_dest: false)
     lib_pkg_name = library if lib_pkg_name.nil?
-    libname = library.to_s.start_with?('lib') ? library.downcase : "lib#{library.downcase}"
+    libname = library.to_s.start_with?('lib') ? library : "lib#{library}"
     puts "Generating libtool file for #{lib_pkg_name}".orange
     puts "grep \"#{CREW_LIB_PREFIX}/#{libname}.so\\\|#{CREW_DEST_LIB_PREFIX}/#{libname}-*.so\" #{CREW_META_PATH}/#{lib_pkg_name}.filelist" if CREW_VERBOSE
     libnames = `grep "#{CREW_LIB_PREFIX}/#{libname}.so\\\|#{CREW_DEST_LIB_PREFIX}/#{libname}-*.so*" #{CREW_META_PATH}/#{lib_pkg_name}.filelist`.chomp.split(/$/).map(&:strip)
