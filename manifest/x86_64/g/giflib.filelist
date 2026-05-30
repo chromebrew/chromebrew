@@ -1,4 +1,4 @@
-# Total size: 327951
+# Total size: 530844
 /usr/local/bin/gif2rgb
 /usr/local/bin/gifbg
 /usr/local/bin/gifbuild
@@ -18,17 +18,28 @@
 /usr/local/lib64/libgif.so
 /usr/local/lib64/libgif.so.7
 /usr/local/lib64/libgif.so.7.2.0
-/usr/local/share/man/man1/gif2rgb.1.zst
-/usr/local/share/man/man1/gifbg.1.zst
+/usr/local/share/doc/giflib/html/gif2rgb.html
+/usr/local/share/doc/giflib/html/gif_lib.html
+/usr/local/share/doc/giflib/html/gifbg.html
+/usr/local/share/doc/giflib/html/gifbuild.html
+/usr/local/share/doc/giflib/html/gifclrmp.html
+/usr/local/share/doc/giflib/html/gifcolor.html
+/usr/local/share/doc/giflib/html/gifecho.html
+/usr/local/share/doc/giflib/html/giffilter.html
+/usr/local/share/doc/giflib/html/giffix.html
+/usr/local/share/doc/giflib/html/gifhisto.html
+/usr/local/share/doc/giflib/html/gifinto.html
+/usr/local/share/doc/giflib/html/giflib-logo.gif
+/usr/local/share/doc/giflib/html/giflib.html
+/usr/local/share/doc/giflib/html/gifsponge.html
+/usr/local/share/doc/giflib/html/giftext.html
+/usr/local/share/doc/giflib/html/giftool.html
+/usr/local/share/doc/giflib/html/gifwedge.html
+/usr/local/share/doc/giflib/html/index.html
+/usr/local/share/doc/giflib/html/intro.html
 /usr/local/share/man/man1/gifbuild.1.zst
 /usr/local/share/man/man1/gifclrmp.1.zst
-/usr/local/share/man/man1/gifcolor.1.zst
-/usr/local/share/man/man1/gifecho.1.zst
-/usr/local/share/man/man1/giffilter.1.zst
 /usr/local/share/man/man1/giffix.1.zst
-/usr/local/share/man/man1/gifhisto.1.zst
-/usr/local/share/man/man1/gifinto.1.zst
-/usr/local/share/man/man1/gifsponge.1.zst
 /usr/local/share/man/man1/giftext.1.zst
 /usr/local/share/man/man1/giftool.1.zst
-/usr/local/share/man/man1/gifwedge.1.zst
+/usr/local/share/man/man7/giflib.7.zst

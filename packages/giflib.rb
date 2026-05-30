@@ -3,20 +3,21 @@ require 'package'
 class Giflib < Package
   description 'giflib is a library for reading and writing gif images.'
   homepage 'https://giflib.sourceforge.net/'
-  version '5.2.2'
+  version '6.1.3'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://downloads.sourceforge.net/project/giflib/giflib-5.2.2.tar.gz'
-  source_sha256 'be7ffbd057cadebe2aa144542fd90c6838c6a083b5e8a9048b8ee3b66b29d5fb'
+  source_url "https://downloads.sourceforge.net/project/giflib/giflib-#{version.split('.')[0]}.x/giflib-#{version}.tar.gz"
+  source_sha256 'b65b66b99f0424b93525f987386f22fc5efb9da2bfc92ad4a532249aaffbab0e'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '73bc9172813f7d8637e5448d7c80a12270224bba12fb6f76604a9a11cc895f81',
-     armv7l: '73bc9172813f7d8637e5448d7c80a12270224bba12fb6f76604a9a11cc895f81',
-     x86_64: 'c7e4b56340c481f7007e459010ebd126b8401d8511d6e4045b4b6245c4115941'
+    aarch64: '524b6919b04736d4b72612cd27e5791dc67977f152984da2d39cc97dec9b718d',
+     armv7l: '524b6919b04736d4b72612cd27e5791dc67977f152984da2d39cc97dec9b718d',
+     x86_64: '300bdee898955cfc57d005a610f25e5b0611e941b104c04800fe2103424be8bb'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'imagemagick7' => :build
 
   no_env_options
