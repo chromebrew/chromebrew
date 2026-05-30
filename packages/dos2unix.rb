@@ -3,22 +3,23 @@ require 'package'
 class Dos2unix < Package
   description 'dos2unix includes utilities to convert text files with DOS or Mac line endings to Unix line endings and vice versa.'
   homepage 'http://freecode.com/projects/dos2unix'
-  version '7.5.5'
+  version '7.5.6'
   license 'BSD-2'
   compatibility 'all'
   source_url "https://downloads.sourceforge.net/project/dos2unix/dos2unix/#{version}/dos2unix-#{version}.tar.gz"
-  source_sha256 '75f692b8484c8c24579a2ffd87df16b9c9428ed95497e3393a21d1ba0697ac33'
+  source_sha256 '63650acbd0c7fa8623429bcbf93a888e3351a1cad0f556cf41876f5673dd7d0b'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '832fd860faaf42e6ebd4b35bd32a780c3fcc93b6e2e3a3aa4feb26b458422066',
-     armv7l: '832fd860faaf42e6ebd4b35bd32a780c3fcc93b6e2e3a3aa4feb26b458422066',
-       i686: '1d8efc912cd7f7cadaca2c53aca83090615b42d446c6a9b34dab0c1ee56a94c4',
-     x86_64: '2b79835d7d6633fac664f3a6c2ff65284cea523de29400a03491cd4f6b7ccf4b'
+    aarch64: '1f0e89fc7dbcba536fd04206cb48505a6fcfec1a2bb86bb7c6c80d54566c58e3',
+     armv7l: '1f0e89fc7dbcba536fd04206cb48505a6fcfec1a2bb86bb7c6c80d54566c58e3',
+       i686: 'ea5232af84ba74e325dab5eea6f39cb0af10e5c4bf46c0f8488e13e4a7aa3427',
+     x86_64: '5d099d6e4a599311e3f94c7c51765ee1e391db717a3fd0129112be671c388b11'
   })
 
   depends_on 'gettext' => :build
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
 
   def self.build
     system 'make'
