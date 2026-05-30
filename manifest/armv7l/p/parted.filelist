@@ -1,4 +1,4 @@
-# Total size: 6236008
+# Total size: 6634485
 /usr/local/include/parted/constraint.h
 /usr/local/include/parted/debug.h
 /usr/local/include/parted/device.h
@@ -30,6 +30,7 @@
 /usr/local/share/locale/da/LC_MESSAGES/parted.mo
 /usr/local/share/locale/de/LC_MESSAGES/parted.mo
 /usr/local/share/locale/es/LC_MESSAGES/parted.mo
+/usr/local/share/locale/fi/LC_MESSAGES/parted.mo
 /usr/local/share/locale/fr/LC_MESSAGES/parted.mo
 /usr/local/share/locale/fur/LC_MESSAGES/parted.mo
 /usr/local/share/locale/gl/LC_MESSAGES/parted.mo
