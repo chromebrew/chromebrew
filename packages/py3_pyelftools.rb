@@ -3,21 +3,21 @@ require 'buildsystems/pip'
 class Py3_pyelftools < Pip
   description 'Pure-Python library for parsing and analyzing ELF files and DWARF debugging information.'
   homepage 'https://github.com/eliben/pyelftools/'
-  version "0.32-#{CREW_PY_VER}"
+  version "0.33-#{CREW_PY_VER}"
   license 'public-domain'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bfe9fda374c41ce9a192c09ded46cfe7d0adc4bfc16968aecaca2a207e0d03b4',
-     armv7l: 'bfe9fda374c41ce9a192c09ded46cfe7d0adc4bfc16968aecaca2a207e0d03b4',
-       i686: '5c1372f5216db83b45eaff6f145d4a41724a78156b72d015f6245b8b287b168e',
-     x86_64: '0601c29846d4b34f9ffa4302538e7fe51d8b9b6e3efad342e14d3f09b0557869'
+    aarch64: '333211d83f73d1d010e18294109bbb4a0007b1d176c56d3b08b4f6ba286ad147',
+     armv7l: '333211d83f73d1d010e18294109bbb4a0007b1d176c56d3b08b4f6ba286ad147',
+       i686: '184c87429286fe58eaff436fd05537cd2e1f61c47df12b3edfdea7562ce5e451',
+     x86_64: '9b372a8182c9350fd4642acfa108f87d9063f3a873731d16dd5ee41d0065d660'
   })
 
   depends_on 'glibc' # R
-  depends_on 'python3' # R
+  depends_on 'python3' => :logical
 
   no_source_build
 end
