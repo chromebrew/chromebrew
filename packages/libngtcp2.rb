@@ -21,6 +21,7 @@ class Libngtcp2 < CMake
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gnutls' => :library
   depends_on 'openssl' => :library
 
