@@ -10,18 +10,19 @@ class Uutils_coreutils < RUST
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/uutils/coreutils.git'
-  git_hashtag version.split('-').first
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6a58dc57fd9b9b580e0548cb21327326ba179f274b9d047cb8f78b5c28c76d56',
-     armv7l: '6a58dc57fd9b9b580e0548cb21327326ba179f274b9d047cb8f78b5c28c76d56',
-     x86_64: '08afe67a922756d1f76c21479a4b9149a47f92c5cc0fa37eea1fbcbedc95cb33'
+    aarch64: 'd57e797e41909858c5d99109636b0cbe3dd19a40c7dfe3482949f60f38aaac19',
+     armv7l: 'd57e797e41909858c5d99109636b0cbe3dd19a40c7dfe3482949f60f38aaac19',
+     x86_64: '367fec4dfb705dba0ab6448da4cccf51f66ddb8291f920ace34a8983592675d8'
   })
 
   depends_on 'acl' => :build
   depends_on 'gcc_lib' => :executable
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'llvm_dev' => :build
   depends_on 'rust' => :build
   depends_on 'sphinx' => :build
