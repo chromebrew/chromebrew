@@ -1,0 +1,5 @@
+#!/bin/bash
+gnupg-key-manage -h | head -5
+gpgme-json -h | head -5
+gpgme-tool -h | head -5
+gpgme-tool --lib-version | head -5
