@@ -3,48 +3,24 @@ require 'buildsystems/autotools'
 class Gpgme < Autotools
   description 'GnuPG Made Easy (GPGME) is a library designed to make access to GnuPG easier for applications.'
   homepage 'https://www.gnupg.org/related_software/gpgme/index.html'
-  version '2.0.1'
+  version '2.1.0'
   license 'GPL-2 and LGPL-2.1'
   compatibility 'all'
   source_url "https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-#{version}.tar.bz2"
-  source_sha256 '821ab0695c842eab51752a81980c92b0410c7eadd04103f791d5d2a526784966'
+  source_sha256 '841c5ea53fc26259f4fbf0e8bde982dea1b8a1ca0cb77e681c82b050566bf92b'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0b5f52f208f9796617389bfc2d1aaa78f19ebba26ba5d6f458a57dc78ee3e338',
-     armv7l: '0b5f52f208f9796617389bfc2d1aaa78f19ebba26ba5d6f458a57dc78ee3e338',
-       i686: '5d59d63943df6e0beec7ea5402cb17fdc4544c6838b97d1b89a5248816f9bb28',
-     x86_64: '4504ee8bf42fcf86d9fe5a06679f9f6b221b40a69bf537d710a09ca002cef7e9'
+    aarch64: '862bf548f985881713c690b46cca6178d0b4a10f94c863d0b738f344c6df53d3',
+     armv7l: '862bf548f985881713c690b46cca6178d0b4a10f94c863d0b738f344c6df53d3',
+       i686: '9e5ad96650d775cfd6d2d67b234119da60af76e93110e6370ad72cc38c417145',
+     x86_64: 'ac257a9d9b0086fdbaa0bc50d21a83cae171983821c76d1e12ffd4090600e3d1'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gnupg' => :logical
-  depends_on 'libassuan' # R
-  depends_on 'libgpg_error' # R
-
-  def self.patch
-    Dir.chdir('src') do
-      File.write 'gettid_wrapper', <<~GETTID_WRAPPER_EOF
-        #if __GLIBC_PREREQ(2,30)
-        #define _GNU_SOURCE
-        #include <unistd.h>
-
-        #else
-
-        #include <unistd.h>
-        #include <sys/syscall.h>
-
-        pid_t
-        gettid(void)
-        {
-
-            return syscall(SYS_gettid);
-        }
-        #endif
-      GETTID_WRAPPER_EOF
-      system "sed -i '/# include <unistd.h>/d' debug.c"
-      system "sed -i '/#ifdef HAVE_UNISTD_H/r gettid_wrapper' debug.c"
-    end
-  end
+  depends_on 'libassuan' => :library
+  depends_on 'libgpg_error' => :library
 end
