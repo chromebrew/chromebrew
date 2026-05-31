@@ -1,5 +1,5 @@
 ---
-# Version 2.3
+# Version 2.4
 name: Generate PR
 run-name: Generate PR for ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} by @${{ github.actor }}
 on:
@@ -44,7 +44,6 @@ permissions:
   repository-projects: read
 jobs:
   debug:
-    if: ${{ ( github.repository_owner == 'chromebrew' ) && ( ( github.event.action  == 'labeled' && github.event.label.name == 'regenerate_pr' ) || ( github.repository_owner == 'chromebrew' && github.event.action  == 'labeled' && github.event.label.name == 'update-package-files' ) || github.event.action  == 'workflow_dispatch') }}
     runs-on: ubuntu-24.04
     steps:
       - name: Dump GitHub context
