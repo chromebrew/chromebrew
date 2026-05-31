@@ -1,0 +1,12 @@
+#!/bin/bash
+gif2rgb -h 2>&1
+gifbg -h 2>&1
+gifbuild -h 2>&1
+gifclrmp -h 2>&1
+gifcolor -h 2>&1
+gifecho -h 2>&1
+giffix -h 2>&1
+gifhisto -h 2>&1
+gifinto -h 2>&1
+giftext -h 2>&1
+gifwedge -h 2>&1
