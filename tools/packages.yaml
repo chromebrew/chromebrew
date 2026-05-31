@@ -2990,6 +2990,11 @@ url: https://www.gnupg.org/ftp/gcrypt/gpgme
 activity: low
 ---
 kind: url
+name: gpgmepp
+url: https://www.gnupg.org/ftp/gcrypt/gpgmepp/
+activity: low
+---
+kind: url
 name: gphoto
 url: https://github.com/gphoto/gphoto2/releases
 activity: low
