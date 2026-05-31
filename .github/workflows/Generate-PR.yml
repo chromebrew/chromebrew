@@ -256,7 +256,7 @@ jobs:
             esac
       - name: Run Updater in container
         id: run-updater
-        if: ${{ ( inputs.update_package_files ) && ( contains(needs.*.result, 'failure') ||  !cancelled() ) }}
+        if: ${{ ( inputs.update_package_files ) && ( contains(needs.*.result, 'failure') ||  !cancelled() ) || (( inputs.update_package_files || ( github.event.action  == 'labeled' && github.event.label.name == 'update-package-files' ) ) && needs.update-package-files.result == 'success') }}
         env:
           CREW_MAX_BUILD_TIME_INPUT: ${{ inputs.max_build_time }}
           UPDATE_PACKAGE_FILES: ${{ github.event.inputs.update_package_files || ( github.event.action  == 'labeled' && github.event.label.name == 'update-package-files' ) }}
@@ -370,7 +370,7 @@ jobs:
       - setup
       - get-compatibility
       - update-package-files
-    if: ${{ ( always() && !cancelled() ) && needs.setup.result == 'success' && ((( inputs.update_package_files || ( github.event.action  == 'labeled' && github.event.label.name == 'update-package-files' ) ) && needs.update-package-files.result == 'success') || !( inputs.update_package_files )) }}
+    if: ${{ ( always() && !cancelled() ) && needs.setup.result == 'success' }}
     outputs:
       changed_packages: ${{ steps.changed-packages.outputs.CHANGED_PACKAGES }}
     steps:
