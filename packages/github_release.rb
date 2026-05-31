@@ -3,28 +3,30 @@ require 'package'
 class Github_release < Package
   description 'Commandline app to create and edit releases on Github (and upload artifacts)'
   homepage 'https://github.com/github-release/github-release'
-  version '0.7.2'
+  version '0.11.0'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/github-release/github-release/archive/v0.7.2.tar.gz'
-  source_sha256 '057d57b01cd45d0316e2d32b7593ff0f4bb493d4767b5701b21b54301d74ff48'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/github-release/github-release.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5877bb08e32cc5f7c53bddf4049a530d4ae277c991b3f38dec1def084c2ab212',
-     armv7l: '5877bb08e32cc5f7c53bddf4049a530d4ae277c991b3f38dec1def084c2ab212',
-       i686: 'd455a96fce6edcf315d89e53495f9b1704d1e4f9dfdeaa00c58e6e28facdb874',
-     x86_64: 'f67e4d789cc86cf88c1aeb9dba109a935e07ad12f58ca3a5ab74d2e8bbb981e1'
+    aarch64: '383252ce685eabad35735b04937d0630985666d79aaeb86aee51e18bd33b5ecf',
+     armv7l: '383252ce685eabad35735b04937d0630985666d79aaeb86aee51e18bd33b5ecf',
+       i686: 'b39c66a764e5bca4671a29098bd78bb020baa93c8ebfde24def63c0aad2dac7c',
+     x86_64: 'd9ddad3199ea93c86e41bb7e9288d13e00a85c1bc212c07ec453929df3062cfb'
   })
 
-  depends_on 'go'
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'go' => :build
 
   def self.build
     system 'make'
   end
 
   def self.install
-    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
-    system "cp github-release #{CREW_DEST_PREFIX}/bin"
+    FileUtils.install 'github-release', "#{CREW_DEST_PREFIX}/bin/github-release", mode: 0o755
+    FileUtils.ln_s "#{CREW_PREFIX}/bin/github-release", "#{CREW_DEST_PREFIX}/bin/gh-release"
   end
 end
