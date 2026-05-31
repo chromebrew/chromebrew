@@ -38,6 +38,9 @@ class Gnome_calculator < Meson
 
   gnome
 
+  # See https://gitlab.gnome.org/GNOME/blueprint-compiler/-/work_items/254
+  meson_options '-Ddisable-introspection=true'
+
   def self.postinstall
     puts <<~EOT.lightblue
 
