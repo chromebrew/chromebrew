@@ -6,18 +6,18 @@ require 'package'
 class Go_md2man < Package
   description 'A markdown to manpage generator'
   homepage 'https://github.com/cpuguy83/go-md2man'
-  version '2.0.2'
+  version '2.0.7'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/cpuguy83/go-md2man/archive/v2.0.2.tar.gz'
-  source_sha256 '2f52e37101ea2734b02f2b54a53c74305b95b3a9a27792fdac962b5354aa3e4a'
+  source_url 'https://github.com/cpuguy83/go-md2man.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8751befe1a9d1dbc4c69cb44a5fc4a91c8ef6b50ad8393e9b0f62acf101e56ae',
-     armv7l: '8751befe1a9d1dbc4c69cb44a5fc4a91c8ef6b50ad8393e9b0f62acf101e56ae',
-       i686: '089a75730ade35a9e5fdbbf0dce36b00d8561f8110ed39f99d4537deaf1e7f63',
-     x86_64: 'd498f230de0b11cffdb3399d38de32ced680350477baa14bbccea07316aff083'
+    aarch64: '4c797ea4bde34213f667d64de5d54e38009cb1362e7eedf7f209a983c952ae9e',
+     armv7l: '4c797ea4bde34213f667d64de5d54e38009cb1362e7eedf7f209a983c952ae9e',
+       i686: '158e87ea00279b74b886e43107aed401822824f05dec239d7e7c6c49e641a43e',
+     x86_64: 'ef3804479d9b329807f3a8ddb02ce109265f7f48154a64ced4ba7c12a6197148'
   })
 
   depends_on 'go' => :build

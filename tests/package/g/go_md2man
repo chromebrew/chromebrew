@@ -1,0 +1,2 @@
+#!/bin/bash
+go-md2man -h 2>&1
