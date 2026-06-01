@@ -1,0 +1,3 @@
+#!/bin/bash
+glide -h | head -5
+glide -v

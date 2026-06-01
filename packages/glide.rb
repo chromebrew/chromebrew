@@ -3,33 +3,25 @@ require 'package'
 class Glide < Package
   description 'Package Management for Golang'
   homepage 'https://glide.sh/'
-  version '0.12.3'
+  version %w[i686 x86_64].include?(ARCH) ? '0.13.3' : '0.13.2'
   license 'MIT'
   compatibility 'all'
-  case ARCH
-  when 'aarch64', 'armv7l'
-    source_url 'https://github.com/Masterminds/glide/releases/download/v0.12.3/glide-v0.12.3-linux-armv7.tar.gz'
-    source_sha256 'cce4242c11d084f99087caaa0a42c8476a81db0cbcc83932f5821e1f29b7edb2'
-  when 'i686'
-    source_url 'https://github.com/Masterminds/glide/releases/download/v0.12.3/glide-v0.12.3-linux-386.tar.gz'
-    source_sha256 '1f6fbcd84213c7c11a778ecd36d326d012f1a0555e6c0d6bf572dac7b80e8622'
-  when 'x86_64'
-    source_url 'https://github.com/Masterminds/glide/releases/download/v0.12.3/glide-v0.12.3-linux-amd64.tar.gz'
-    source_sha256 '0e2be5e863464610ebc420443ccfab15cdfdf1c4ab63b5eb25d1216900a75109'
-  end
-  binary_compression 'tar.xz'
-
-  binary_sha256({
-    aarch64: 'e7ffa620825012210d2c01a0c2b4480cbcdea58e03b9aee4e62e012396924334',
-     armv7l: 'e7ffa620825012210d2c01a0c2b4480cbcdea58e03b9aee4e62e012396924334',
-       i686: '12a1e5bc8ddd611d9ea52575e27d4b6e37363a0ac4df546c8d9d9398008c06a8',
-     x86_64: '00b2581e5d851bb92ba622e73ffce9f5c73e65e94a53a284f08d798a0b76a025'
+  source_url({
+    aarch64: "https://github.com/Masterminds/glide/releases/download/v#{version}/glide-v#{version}-linux-armv7.tar.gz",
+     armv7l: "https://github.com/Masterminds/glide/releases/download/v#{version}/glide-v#{version}-linux-armv7.tar.gz",
+       i686: "https://github.com/Masterminds/glide/releases/download/v#{version}/glide-v#{version}-linux-386.tar.gz",
+     x86_64: "https://github.com/Masterminds/glide/releases/download/v#{version}/glide-v#{version}-linux-amd64.tar.gz"
+  })
+  source_sha256({
+    aarch64: 'f24ee06dc1bfaf8e2651f65845efa80991498b91602c8f7f04f628d2995b2163',
+     armv7l: 'f24ee06dc1bfaf8e2651f65845efa80991498b91602c8f7f04f628d2995b2163',
+       i686: 'cb1a707a83a63b26cf6d4d911925046e251dd358b4045731c041521ee19b9e77',
+     x86_64: 'ba5619955a28d7931a9ae38d095fc5fa5acc28e77abc8737a8136c652d9cbb38'
   })
 
-  depends_on 'go'
+  no_compile_needed
 
   def self.install
-    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
-    system "cp glide #{CREW_DEST_PREFIX}/bin"
+    FileUtils.install 'glide', "#{CREW_DEST_PREFIX}/bin/glide", mode: 0o755
   end
 end
