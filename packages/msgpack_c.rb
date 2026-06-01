@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Msgpack_c < CMake
   description 'An efficient object serialization library'
   homepage 'https://github.com/msgpack/msgpack-c'
-  version '6.1.0'
+  version '7.0.0'
   license 'BSL-1.0'
   compatibility 'all'
   source_url 'https://github.com/msgpack/msgpack-c.git'
@@ -11,14 +11,15 @@ class Msgpack_c < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '25871fb0aff5a17a2d0fbddc41323d49fce7f4172fccb85ff48c570b1577897c',
-     armv7l: '25871fb0aff5a17a2d0fbddc41323d49fce7f4172fccb85ff48c570b1577897c',
-       i686: 'c15170bb6dd6d3e1b352e6ce79c989d091cf81dbcf76aaf2dc67f7f8759e8b03',
-     x86_64: '50f238300cb00c810d89b0557e8298f9075436fd2f84859db7d2b5603e2b1132'
+    aarch64: '9b61bf97d248985f8505f8687af24fc17a918d2267507891f9769c5aed76cb57',
+     armv7l: '9b61bf97d248985f8505f8687af24fc17a918d2267507891f9769c5aed76cb57',
+       i686: '614ad290eede0483442431011b9feff614db38ee62a365a6ee8ab1480b4d1040',
+     x86_64: 'd2dc49fa5ffda6e7e868b8c9247980c65e4a5558e527aba7a3abab8c8bb1b482'
   })
 
   depends_on 'doxygen' => :build
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'graphviz' => :build
   depends_on 'gtest' => :build
 

@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_hatchling < Pip
   description 'The extensible, standards compliant build backend used by Hatch.'
   homepage 'https://hatch.pypa.io/latest'
-  version "1.29.0-#{CREW_PY_VER}"
+  version "1.30.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5fa9a5ad96b8de23be42551ea25a7af330503cce73f36ebc7320501be057adc7',
-     armv7l: '5fa9a5ad96b8de23be42551ea25a7af330503cce73f36ebc7320501be057adc7',
-       i686: 'c60ec91cade3110de15eb3e3e7d7745f1fbb252e1beb59e50e4b252db2e043c2',
-     x86_64: '4bcd66a8a6ae9331f023f1e31e33a7a35bb534610b1daf2aa384bc6961bb45cf'
+    aarch64: '0f70180ad3d8ca8ab29c0efcbf861beaf35f7dfa11f52ac95e1b56822f780a13',
+     armv7l: '0f70180ad3d8ca8ab29c0efcbf861beaf35f7dfa11f52ac95e1b56822f780a13',
+       i686: '14590c41382627c252e72dcd0a400f5bc5c42322663a4e6bdcc80127a3a970a5',
+     x86_64: '3c919957255b8c887210df621ce4d05a3460cd720101b24ac5d62b1909f75499'
   })
 
   depends_on 'py3_editables'
