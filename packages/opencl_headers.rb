@@ -11,9 +11,9 @@ class Opencl_headers < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '51b119085b6e69a18adb3fe7161abe8260266b1a11d305c9c684902f92eb7fa4',
-     armv7l: '51b119085b6e69a18adb3fe7161abe8260266b1a11d305c9c684902f92eb7fa4',
-       i686: '41ea1de6261d31385d48caf55e94819986ab201bbad1f446299ea574082792b8',
-     x86_64: '7d0b762685e75ce2617145b5c6d58d4b871dfdd6f0edafeadb672e8cc98e7f6c'
+    aarch64: '36148ca22d9d64e32485a61e8b5b378ae0f8b72e08ab7b2e2030bec00058fed3',
+     armv7l: '36148ca22d9d64e32485a61e8b5b378ae0f8b72e08ab7b2e2030bec00058fed3',
+       i686: '876fa729669cb4b0b03f65aa5d5567cde6cd75c03bbba6df1cf5cf0a2c31ad08',
+     x86_64: '36e36e21b35cf17676625f7bd88d595ef485a17ca17dbc95fcda00c3f0f59bc3'
   })
 end
