@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Msgpack_c < CMake
   description 'An efficient object serialization library'
   homepage 'https://github.com/msgpack/msgpack-c'
-  version '6.1.0'
+  version '7.0.0'
   license 'BSL-1.0'
   compatibility 'all'
   source_url 'https://github.com/msgpack/msgpack-c.git'
