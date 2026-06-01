@@ -1,0 +1,3 @@
+#!/bin/bash
+gnome-mines -h | head
+gnome-mines -v
