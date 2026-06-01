@@ -19,6 +19,7 @@ class Msgpack_c < CMake
 
   depends_on 'doxygen' => :build
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'graphviz' => :build
   depends_on 'gtest' => :build
 
