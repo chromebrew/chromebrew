@@ -1,0 +1,3 @@
+#!/bin/bash
+goaccess -h | head
+goaccess -V
