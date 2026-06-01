@@ -2535,6 +2535,11 @@ url: https://gitlab.gnome.org/GNOME/libgfbgraph/-/tags
 activity: low
 ---
 kind: url
+name: gflags
+url: https://github.com/gflags/gflags/releases
+activity: low
+---
+kind: url
 name: ghc
 url: https://www.haskell.org/ghc/
 activity: medium

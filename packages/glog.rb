@@ -1,34 +1,28 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Glog < Package
+class Glog < CMake
   description 'A C++ implementation of the Google logging module.'
   homepage 'https://github.com/google/glog'
-  version '0.3.5'
+  version '0.7.1'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/google/glog/archive/v0.3.5.zip'
-  source_sha256 '267103f8a1e9578978aa1dc256001e6529ef593e5aea38193d31c2872ee025e8'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/google/glog.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bd0c7e649bb6e1128e44c8989ab4182f60665e50e5d992341d8bf19235a6dd2e',
-     armv7l: 'bd0c7e649bb6e1128e44c8989ab4182f60665e50e5d992341d8bf19235a6dd2e',
-       i686: '0ae1c98ddcbf078e0a7c63e38d8f1c993f2b1d80956b1e208490ad62f687a917',
-     x86_64: '978c0906643f11a9c53c1a523a5d6824e948edb9ebb89cbfa24395486f435f87'
+    aarch64: 'c07ece254b3993f76859a9dd526fc27a74e6f93fa15703afdb7923ce51ec994f',
+     armv7l: 'c07ece254b3993f76859a9dd526fc27a74e6f93fa15703afdb7923ce51ec994f',
+       i686: '74b692b165ed385418b6a5e426404f3e0b7ae95dc3615358c5db6cc49aea8a07',
+     x86_64: 'ada23d70ad1f16e1aeb701cf76ea0c12bcbe932f7cc92bd66f8d3e99a16a01db'
   })
 
-  depends_on 'unzip' => :build
+  depends_on 'gcc_lib' => :library
+  depends_on 'gflags' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'libunwind' => :library
 
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make',
-           "DESTDIR=#{CREW_DEST_DIR}",
-           'install'
-  end
+  cmake_options '-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    -DBUILD_SHARED_LIBS=ON -DBUILD_TESTING=OFF'
 end
