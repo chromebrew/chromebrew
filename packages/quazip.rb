@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Quazip < CMake
   description 'Qt/C++ wrapper over minizip'
   homepage 'https://github.com/stachenov/quazip'
-  version '1.7.0'
+  version '1.7.1'
   license 'LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/stachenov/quazip.git'
