@@ -3,41 +3,39 @@ require 'package'
 class Glew < Package
   description 'GLEW provides efficient run-time mechanisms for determining which OpenGL extensions are supported on the target platform'
   homepage 'https://glew.sourceforge.net/'
-  version '2.2.0'
+  version '2.3.1'
   license 'BSD and MIT'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://sourceforge.net/projects/glew/files/glew/2.2.0/glew-2.2.0.tgz/download'
-  source_sha256 'd4fc82893cfb00109578d0a1a2337fb8ca335b3ceccf97b97e5cc7f08e4353e1'
+  source_url "https://downloads.sourceforge.net/project/glew/glew/#{version}/glew-#{version}.tgz"
+  source_sha256 'b64790f94b926acd7e8f84c5d6000a86cb43967bd1e688b03089079799c9e889'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '20c0ed7ae6a12d3a3b852d7d3b9f27bb9bcc9eeb13843767a599b055cde8f77e',
-     armv7l: '20c0ed7ae6a12d3a3b852d7d3b9f27bb9bcc9eeb13843767a599b055cde8f77e',
-     x86_64: '4ac9705c4f6836b04286e85d8e0da547c59de28c98119e3654358f27c1b387a3'
+    aarch64: 'b30d6ac674aa194df1fb3b1eacc4242a75fd4918c51595a152c289fb3b4c3b92',
+     armv7l: 'b30d6ac674aa194df1fb3b1eacc4242a75fd4918c51595a152c289fb3b4c3b92',
+     x86_64: '901ed95975a37d1e2560c991db5624ef6917fce46d13c873bf8088e2b38401c6'
   })
 
-  depends_on 'mesa'
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'libglvnd' => :library
+  depends_on 'libx11' => :library
+  depends_on 'mesa' => :library
 
   def self.patch
-    system 'tar fxv download'
-    Dir.chdir 'glew-2.2.0/build' do
-      # As per https://github.com/nigels-com/glew/pull/268
-      system "sed -i 's/OpenGL::EGL/NOT OpenGL_EGL_FOUND/' cmake/CMakeLists.txt"
-      system "sed -i 's/endif()/endif ()/g' cmake/CMakeLists.txt"
+    # The library path is hardcoded.
+    if ARCH.eql?('x86_64')
+      system "sed -i 's,/usr/lib64,#{CREW_LIB_PREFIX},' config/Makefile.linux"
+    else
+      system "sed -i 's,/usr/lib,#{CREW_LIB_PREFIX},' config/Makefile.linux"
     end
   end
 
   def self.build
-    ENV['GLEW_DEST'] = CREW_PREFIX
-    Dir.chdir 'glew-2.2.0/build' do
-      system "cmake #{CREW_CMAKE_OPTIONS} cmake"
-      system 'make', 'SYSTEM=linux-egl'
-    end
+    system 'make', "GLEW_PREFIX=#{CREW_PREFIX}", "DESTDIR=#{CREW_DEST_DIR}", "LIBDIR=#{CREW_LIB_PREFIX}", "PKGDIR=#{CREW_LIB_PREFIX}/pkgconfig"
   end
 
   def self.install
-    Dir.chdir 'glew-2.2.0/build' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    end
+    system 'make', "GLEW_PREFIX=#{CREW_PREFIX}", "DESTDIR=#{CREW_DEST_DIR}", "LIBDIR=#{CREW_LIB_PREFIX}", "PKGDIR=#{CREW_LIB_PREFIX}/pkgconfig", 'install'
   end
 end
