@@ -1,43 +1,35 @@
 # Adapted from Arch Linux glmark2 PKGBUILD at:
 # https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=glmark2
 
-require 'package'
+require 'buildsystems/meson'
 
-class Glmark2 < Package
+class Glmark2 < Meson
   description 'OpenGL ES 2.0 benchmark'
   homepage 'https://github.com/glmark2/glmark2'
-  version '2021.12-9057c05'
+  version '2023.01'
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://github.com/glmark2/glmark2/archive/9057c056b6e72d156c0bc7e4b52658e155760222.zip'
-  source_sha256 'fd37e6360f03f8ffcd236eb39ee1cb42c487edd0418441c22e375ec5e499297d'
+  source_url 'https://github.com/glmark2/glmark2.git'
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6faaae26b628926374967d5a9b77e0e137af8403608c3a2eb191807b140a2418',
-     armv7l: '6faaae26b628926374967d5a9b77e0e137af8403608c3a2eb191807b140a2418',
-     x86_64: '8343d0404f69f2b1e064fdd7d8c4675bd2600b8d30cbb6cdaae99f207a6594e3'
+    aarch64: '6df352d5fbc555bbaa9c7b8e086bfb3f2dc9dfdb0b3a3779a55856b81bc1aaaa',
+     armv7l: '6df352d5fbc555bbaa9c7b8e086bfb3f2dc9dfdb0b3a3779a55856b81bc1aaaa',
+     x86_64: 'fa66ccadcf21ea75a81564e98ae7ec8df4bd56a77000c5067d6de753bc4a114e'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'libdrm'
-  depends_on 'libjpeg_turbo'
-  depends_on 'libpng'
-  depends_on 'libx11'
-  depends_on 'libxcb'
-  depends_on 'wayland'
+  depends_on 'eudev' => :executable
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'libdrm' => :executable
+  depends_on 'libjpeg_turbo' => :executable
+  depends_on 'libpng' => :executable
+  depends_on 'libx11' => :executable
+  depends_on 'libxcb' => :executable
+  depends_on 'mesa' => :executable
+  depends_on 'wayland' => :executable
 
-  def self.build
-    system "meson \
-      #{CREW_MESON_OPTIONS} \
-      -Dflavors=drm-gl,drm-glesv2,wayland-gl,wayland-glesv2,x11-gl,x11-glesv2 \
-      builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  meson_options '-Dflavors=drm-gl,drm-glesv2,wayland-gl,wayland-glesv2,x11-gl,x11-glesv2'
 end

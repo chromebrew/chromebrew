@@ -1,4 +1,4 @@
-# Total size: 10496855
+# Total size: 14350367
 /usr/local/bin/glmark2
 /usr/local/bin/glmark2-drm
 /usr/local/bin/glmark2-es2
@@ -139,9 +139,9 @@
 /usr/local/share/glmark2/textures/terrain-backgrounddetailed6.jpg
 /usr/local/share/glmark2/textures/terrain-grasslight-512-nm.jpg
 /usr/local/share/glmark2/textures/terrain-grasslight-512.jpg
-/usr/local/share/man/man1/glmark2-drm.1.gz
-/usr/local/share/man/man1/glmark2-es2-drm.1.gz
-/usr/local/share/man/man1/glmark2-es2-wayland.1.gz
-/usr/local/share/man/man1/glmark2-es2.1.gz
-/usr/local/share/man/man1/glmark2-wayland.1.gz
-/usr/local/share/man/man1/glmark2.1.gz
+/usr/local/share/man/man1/glmark2-drm.1.zst
+/usr/local/share/man/man1/glmark2-es2-drm.1.zst
+/usr/local/share/man/man1/glmark2-es2-wayland.1.zst
+/usr/local/share/man/man1/glmark2-es2.1.zst
+/usr/local/share/man/man1/glmark2-wayland.1.zst
+/usr/local/share/man/man1/glmark2.1.zst
