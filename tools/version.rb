@@ -133,6 +133,7 @@ CREW_ANITYA_PACKAGE_NAME_MAPPINGS = Set[
   { pkg_name: 'webkitgtk_6', anitya_pkg: 'webkitgtk~stable', comments: '' },
   { pkg_name: 'xauth', anitya_pkg: 'xorg-x11-xauth', comments: '' },
   { pkg_name: 'xercesc', anitya_pkg: 'xerces-c', comments: 'Prefer to GitHub' },
+  { pkg_name: 'xvfb', anitya_pkg: 'xorg_server', comments: 'Built from xorg_server'},
   { pkg_name: 'xorg_proto', anitya_pkg: 'xorgproto', comments: '' },
   { pkg_name: 'xxd_standalone', anitya_pkg: 'vim', comments: '' },
   { pkg_name: 'yad', anitya_pkg: 'yad', comments: 'Prefer to GitHub' },

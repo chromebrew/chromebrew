@@ -10780,6 +10780,11 @@ url: https://invisible-mirror.net/archives/xterm/
 activity: medium
 ---
 kind: url
+name: xvfb
+url: https://github.com/freedesktop/xorg-xserver/releases
+activity: medium
+---
+kind: url
 name: xwayland
 url: https://github.com/freedesktop/xorg-xserver/releases
 activity: medium
