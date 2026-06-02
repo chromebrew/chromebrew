@@ -6,7 +6,7 @@ require 'buildsystems/autotools'
 class Crun < Autotools
   description 'A fast and lightweight fully featured OCI runtime and C library for running containers'
   homepage 'https://github.com/containers/crun'
-  version '1.27.1'
+  version '1.28'
   license 'LGPL'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/containers/crun.git'
