@@ -3,17 +3,17 @@ require 'buildsystems/meson'
 class Gtk4 < Meson
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://www.gtk.org/'
-  version '4.22.4'
+  version '4.22.4-1'
   license 'LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
-  git_hashtag version
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5f39f3e82535eb9eb8489750d79cbd9a38dc7a3e8324aa7d4b408748888006ad',
-     armv7l: '5f39f3e82535eb9eb8489750d79cbd9a38dc7a3e8324aa7d4b408748888006ad',
-     x86_64: '2b2886dd64424f4db00bf1fa5c7a99a4cff7ac9377c42f0a53518b60f1189b2d'
+    aarch64: '25e0f673c9ff2507edd2a29be5f3beb8dee9e05b173d09889856c03f6391e9f3',
+     armv7l: '25e0f673c9ff2507edd2a29be5f3beb8dee9e05b173d09889856c03f6391e9f3',
+     x86_64: '2dbaae2e2265a8727bbb39a9a39261b0eccbbbed0eb475077b2c7768ff133358'
   })
 
   depends_on 'adwaita_fonts' => :logical
@@ -68,6 +68,7 @@ class Gtk4 < Meson
   depends_on 'vulkan_icd_loader' => :library
   depends_on 'wayland' => :library
   depends_on 'xdg_base' => :logical
+  depends_on 'xvfb' => :build
 
   gnome
   no_fhs
@@ -85,7 +86,7 @@ class Gtk4 < Meson
       ['https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/9745.diff',
        'ef266dab0038693a26723f438bb40af0c8f0577f4ea817b513ff22b94070eec7']
     ]
-    ConvenienceFunctions.patch(patches) if ARCH != 'x86_64' && version == '4.22.4'
+    ConvenienceFunctions.patch(patches) if ARCH != 'x86_64' && version.split('-').first.eql?('4.22.4')
   end
 
   meson_options '-Dbroadway-backend=true \

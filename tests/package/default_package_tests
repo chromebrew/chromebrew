@@ -1,3 +1,5 @@
 #!/bin/bash -ex
 # Ignore __pycache__ from python packages.
-crew files ${1} | grep /usr/local/bin | grep -v __pycache__ | xargs --no-run-if-empty -I % sh -c '% -v 2>&1 || % -h 2>&1 || % --version 2>&1 || % --help 2>&1'
+XVFB_PREFIX=
+[[ $(command -v xvfb-run) ]] && XVFB_PREFIX='xvfb-run'
+crew files ${1} | grep /usr/local/bin | grep -v __pycache__ | xargs --no-run-if-empty -I % sh -c '$XVFB_PREFIX % -v 2>&1 || $XVFB_PREFIX % -h 2>&1 || $XVFB_PREFIX % --version 2>&1 || $XVFB_PREFIX % --help 2>&1'
