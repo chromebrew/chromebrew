@@ -1,9 +1,6 @@
-# Adapted from Arch Linux dtc PKGBUILD at:
-# https://github.com/archlinux/svntogit-community/raw/packages/dtc/trunk/PKGBUILD
+require 'buildsystems/meson'
 
-require 'package'
-
-class Dtc < Package
+class Dtc < Meson
   description 'Device Tree Compiler'
   homepage 'https://www.devicetree.org/'
   version '1.8.1'
@@ -24,15 +21,4 @@ class Dtc < Package
   depends_on 'llvm' => :build
   depends_on 'python3' => :build
   depends_on 'swig' => :build
-
-  def self.build
-    system 'make'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} make \
-      PREFIX=#{CREW_DEST_PREFIX} \
-      SETUP_PREFIX=#{CREW_DEST_PREFIX} \
-      LIBDIR=#{CREW_DEST_LIB_PREFIX} install"
-  end
 end
