@@ -1,5 +1,5 @@
 ---
-# Version 2.4
+# Version 2.5
 name: Generate PR
 run-name: Generate PR for ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} by @${{ github.actor }}
 on:
@@ -256,7 +256,7 @@ jobs:
             esac
       - name: Run Updater in container
         id: run-updater
-        if: ${{ ( inputs.update_package_files ) && ( contains(needs.*.result, 'failure') ||  !cancelled() ) || (( inputs.update_package_files || ( github.event.action  == 'labeled' && github.event.label.name == 'update-package-files' ) ) && needs.update-package-files.result == 'success') }}
+        if: ${{ ( inputs.update_package_files ) && ( contains(needs.*.result, 'failure') ||  !cancelled() ) || (( inputs.update_package_files || ( github.event.action  == 'labeled' && github.event.label.name == 'update-package-files' ) ) ) }}
         env:
           CREW_MAX_BUILD_TIME_INPUT: ${{ inputs.max_build_time }}
           UPDATE_PACKAGE_FILES: ${{ github.event.inputs.update_package_files || ( github.event.action  == 'labeled' && github.event.label.name == 'update-package-files' ) }}
@@ -602,3 +602,5 @@ jobs:
           echo "PR_NUMBER=${PR_NUMBER}" >> "$GITHUB_ENV"
           # Remove the regenerate_pr label if set.
           gh pr edit --remove-label regenerate_pr || true
+          # Remove the update-package-files label if set.
+          gh pr edit --remove-label update-package-files || true

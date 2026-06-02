@@ -1,16 +1,16 @@
-# Total size: 19957896
+# Total size: 19854179
 /usr/local/bin/pyright
 /usr/local/bin/pyright-langserver
 /usr/local/bin/pyright-python
 /usr/local/bin/pyright-python-langserver
-/usr/local/lib/python3.14/site-packages/pyright-1.1.409.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/pyright-1.1.409.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/pyright-1.1.409.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/pyright-1.1.409.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/pyright-1.1.409.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/pyright-1.1.409.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/pyright-1.1.409.dist-info/licenses/LICENSE
-/usr/local/lib/python3.14/site-packages/pyright-1.1.409.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/pyright-1.1.410.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/pyright-1.1.410.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/pyright-1.1.410.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/pyright-1.1.410.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/pyright-1.1.410.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/pyright-1.1.410.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/pyright-1.1.410.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/pyright-1.1.410.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/pyright/__init__.py
 /usr/local/lib/python3.14/site-packages/pyright/__main__.py
 /usr/local/lib/python3.14/site-packages/pyright/__pycache__/__init__.cpython-314.pyc
@@ -46,7 +46,6 @@
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/_asyncio.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/_bisect.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/_blake2.pyi
-/usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/_bootlocale.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/_bz2.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/_codecs.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/_collections_abc.pyi
@@ -84,6 +83,7 @@
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/_pydecimal.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/_queue.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/_random.pyi
+/usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/_remote_debugging.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/_sitebuiltins.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/_socket.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/_sqlite3.pyi
@@ -231,7 +231,6 @@
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/distutils/command/bdist_msi.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/distutils/command/bdist_packager.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/distutils/command/bdist_rpm.pyi
-/usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/distutils/command/bdist_wininst.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/distutils/command/build.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/distutils/command/build_clib.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/distutils/command/build_ext.pyi
@@ -427,7 +426,6 @@
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/filecmp.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/fileinput.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/fnmatch.pyi
-/usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/formatter.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/fractions.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/ftplib.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/functools.pyi
@@ -559,7 +557,8 @@
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/mailbox.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/mailcap.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/marshal.pyi
-/usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/math.pyi
+/usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/math/__init__.pyi
+/usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/math/integer.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/mimetypes.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/mmap.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/modulefinder.pyi
@@ -604,7 +603,6 @@
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/os/__init__.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/os/path.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/ossaudiodev.pyi
-/usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/parser.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/pathlib/__init__.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/pathlib/types.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/pdb.pyi
@@ -619,6 +617,16 @@
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/posixpath.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/pprint.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/profile.pyi
+/usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/profiling/__init__.pyi
+/usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/profiling/sampling/__init__.pyi
+/usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/profiling/sampling/collector.pyi
+/usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/profiling/sampling/gecko_collector.pyi
+/usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/profiling/sampling/heatmap_collector.pyi
+/usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/profiling/sampling/jsonl_collector.pyi
+/usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/profiling/sampling/pstats_collector.pyi
+/usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/profiling/sampling/stack_collector.pyi
+/usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/profiling/sampling/string_table.pyi
+/usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/profiling/tracing.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/pstats.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/pty.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/pwd.pyi
@@ -670,9 +678,9 @@
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/struct.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/subprocess.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/sunau.pyi
-/usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/symbol.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/symtable.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/sys/__init__.pyi
+/usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/sys/__jit.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/sys/_monitoring.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/sysconfig.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/syslog.pyi
@@ -770,6 +778,7 @@
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/xml/sax/handler.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/xml/sax/saxutils.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/xml/sax/xmlreader.pyi
+/usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/xml/utils.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/xmlrpc/__init__.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/xmlrpc/client.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stdlib/xmlrpc/server.pyi
@@ -1597,13 +1606,17 @@
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/graphql/enums/recommendations.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/graphql/enums/recommended_payment_option.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/graphql/inputs/__init__.pyi
+/usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/graphql/inputs/billing_address_input.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/graphql/inputs/create_customer_session_input.pyi
+/usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/graphql/inputs/create_local_payment_context_input.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/graphql/inputs/customer_recommendations_input.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/graphql/inputs/customer_session_input.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/graphql/inputs/monetary_amount_input.pyi
+/usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/graphql/inputs/payer_info_input.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/graphql/inputs/paypal_payee_input.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/graphql/inputs/paypal_purchase_unit_input.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/graphql/inputs/phone_input.pyi
+/usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/graphql/inputs/shipping_address_input.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/graphql/inputs/update_customer_session_input.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/graphql/types/__init__.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/graphql/types/customer_recommendations_payload.pyi
@@ -1616,9 +1629,12 @@
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/liability_shift.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/local_payment.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/local_payment_completed.pyi
+/usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/local_payment_context.pyi
+/usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/local_payment_context_gateway.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/local_payment_expired.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/local_payment_funded.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/local_payment_reversed.pyi
+/usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/local_payment_type.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/masterpass_card.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/merchant.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/braintree/braintree/merchant_account/__init__.pyi
@@ -2529,7 +2545,6 @@
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/gunicorn/gunicorn/workers/base.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/gunicorn/gunicorn/workers/base_async.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/gunicorn/gunicorn/workers/gasgi.pyi
-/usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/gunicorn/gunicorn/workers/geventlet.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/gunicorn/gunicorn/workers/ggevent.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/gunicorn/gunicorn/workers/gthread.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/gunicorn/gunicorn/workers/gtornado.pyi
@@ -3843,6 +3858,8 @@
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/pynput/pynput/mouse/_dummy.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/pyperclip/METADATA.toml
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/pyperclip/pyperclip/__init__.pyi
+/usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/pyphen/METADATA.toml
+/usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/pyphen/pyphen/__init__.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/pyserial/METADATA.toml
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/pyserial/serial/__init__.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/pyserial/serial/__main__.pyi
@@ -5296,7 +5313,6 @@
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/zxcvbn/zxcvbn/scoring.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/typeshed-fallback/stubs/zxcvbn/zxcvbn/time_estimates.pyi
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/vendor.js
-/usr/local/lib/python3.14/site-packages/pyright/dist/dist/vendor.js.LICENSE.txt
 /usr/local/lib/python3.14/site-packages/pyright/dist/dist/vendor.js.map
 /usr/local/lib/python3.14/site-packages/pyright/dist/index.js
 /usr/local/lib/python3.14/site-packages/pyright/dist/langserver.index.js
