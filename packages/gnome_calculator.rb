@@ -17,7 +17,7 @@ class Gnome_calculator < Meson
   })
 
   depends_on 'blueprint_compiler' => :build
-  depends_on 'gcc_lib' # R
+  depends_on 'gcc_lib' => :library
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
