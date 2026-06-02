@@ -35,6 +35,6 @@ class Xauth < Meson
       # Add Meson support
       ['https://gitlab.freedesktop.org/xorg/app/xauth/-/merge_requests/30.diff', '4c60f1f0e0297f54c253aace39750688636a96d85323dd3868f67ad81f6ce83e']
     ]
-    ConvenienceFunctions.patch(patches) if version.include?('1.1.5')
+    ConvenienceFunctions.patch(patches) if version.split('-').first.eql?('1.1.5')
   end
 end
