@@ -11,14 +11,8 @@ class Gnome_calculator < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '54291f6315978b770b449cca3acd3525cc8da8a0526e2344ba73300f6daea131',
-     armv7l: '54291f6315978b770b449cca3acd3525cc8da8a0526e2344ba73300f6daea131',
-     x86_64: 'd6a6c62ffcff637fe5ea2e90328ba798856041a4885ec75c53db9b227308ed6d'
-  })
-
-  binary_sha256({
-    aarch64: '54291f6315978b770b449cca3acd3525cc8da8a0526e2344ba73300f6daea131',
-     armv7l: '54291f6315978b770b449cca3acd3525cc8da8a0526e2344ba73300f6daea131',
+    aarch64: 'faa5b4beaa3598fb7921e9a6e2aa4d1937d6e44c6b79dabe930093af5b056f39',
+     armv7l: 'faa5b4beaa3598fb7921e9a6e2aa4d1937d6e44c6b79dabe930093af5b056f39',
      x86_64: '989910832901867cfb0a0baf96450e305c6663ac0a6bd830dc9b28a1e2b160cc'
   })
 
