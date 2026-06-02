@@ -22,6 +22,7 @@ class Crun < Autotools
   depends_on 'criu' if ARCH.eql?('x86_64')
   depends_on 'glibc' => :library
   depends_on 'go_md2man' => :build
+  depends_on 'json_c' => :build
   depends_on 'libbpf' => :build
   depends_on 'libcap' => :library
   depends_on 'libgcrypt' => :library
