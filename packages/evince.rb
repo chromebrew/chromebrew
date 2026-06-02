@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Evince < Meson
   description 'Document viewer PDF, PostScript, XPS, djvu, dvi, tiff, cbr, cbz, cb7, cbt'
   homepage 'https://wiki.gnome.org/Apps/Evince'
-  version '48.1'
+  version '48.4'
   license 'GPL'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/evince.git'
@@ -14,38 +14,41 @@ class Evince < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '74d656129feb4be560d3f0796238c9436f610f63fd2df7b78422cae392cd88d7',
-     armv7l: '74d656129feb4be560d3f0796238c9436f610f63fd2df7b78422cae392cd88d7',
-     x86_64: '305b088604804d6e8da83e1f8936610199aab024a8de87d39ada08f59b9026e6'
+    aarch64: '233e5205df5aa2ae3514847633815b8c747e6d1808121a1f01ee24cda256a8bd',
+     armv7l: '233e5205df5aa2ae3514847633815b8c747e6d1808121a1f01ee24cda256a8bd',
+     x86_64: 'a9e1fe4faea05591a79687ff2d211736ded1a2378ad8195ac3119d543ebea013'
   })
 
-  depends_on 'at_spi2_core' # R
-  depends_on 'cairo' # R
-  depends_on 'djvulibre' # R
+  depends_on 'at_spi2_core' => :library
+  depends_on 'cairo' => :library
+  depends_on 'desktop_file_utils' => :build
+  depends_on 'djvulibre' => :library
   depends_on 'docbook_xml' => :build
-  depends_on 'gcc_lib' # R
-  depends_on 'gdk_pixbuf' # R
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
-  depends_on 'gnome_desktop' # R
-  depends_on 'gspell' # R
-  depends_on 'gstreamer' # R
-  depends_on 'gtk3' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'gdk_pixbuf' => :library
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'gnome_desktop' => :build
+  depends_on 'gspell' => :library
+  depends_on 'gstreamer' => :library
+  depends_on 'gtk3' => :library
   depends_on 'gtk_doc' => :build
-  depends_on 'harfbuzz' # R
-  depends_on 'libarchive' # R
-  depends_on 'libgxps' # R
-  depends_on 'libhandy' # R
-  depends_on 'libsecret' # R
-  depends_on 'libspectre' # R
-  depends_on 'libtiff' # R
-  depends_on 'libxml2' # R
+  depends_on 'harfbuzz' => :build
+  depends_on 'libarchive' => :library
+  depends_on 'libgxps' => :build
+  depends_on 'libhandy' => :executable
+  depends_on 'libsecret' => :executable
+  depends_on 'libspectre' => :library
+  depends_on 'libtiff' => :library
+  depends_on 'libxml2' => :library
   depends_on 'nautilus' => :build
-  depends_on 'pango' # R
-  depends_on 'poppler' # R
+  depends_on 'pango' => :library
+  depends_on 'poppler' => :library
   depends_on 'py3_gi_docgen' => :build
+  depends_on 'py3_itstool' => :build
   depends_on 'valgrind' => :build
-  depends_on 'zlib' # R
+  depends_on 'zlib' => :library
 
   gnome
 
