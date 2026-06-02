@@ -18,6 +18,7 @@ class Opencl_icd_loader < CMake
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'opencl_headers' => :build
 
   cmake_options '-DOPENCL_ICD_LOADER_BUILD_TESTING=ON'
