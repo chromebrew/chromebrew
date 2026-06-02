@@ -1,4 +1,4 @@
-# Total size: 641634
+# Total size: 986218
 /usr/local/bin/convert-dtsv0
 /usr/local/bin/dtc
 /usr/local/bin/dtdiff
@@ -12,11 +12,8 @@
 /usr/local/lib64/libfdt.a
 /usr/local/lib64/libfdt.so
 /usr/local/lib64/libfdt.so.1
-/usr/local/lib64/libfdt.so.1.7.2
+/usr/local/lib64/libfdt.so.1.8.1
+/usr/local/lib64/pkgconfig/libfdt.pc
 /usr/local/lib64/python3.14/site-packages/__pycache__/libfdt.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/_libfdt.cpython-314-x86_64-linux-gnu.so
-/usr/local/lib64/python3.14/site-packages/libfdt-1.7.2-py3.14.egg-info/PKG-INFO
-/usr/local/lib64/python3.14/site-packages/libfdt-1.7.2-py3.14.egg-info/SOURCES.txt
-/usr/local/lib64/python3.14/site-packages/libfdt-1.7.2-py3.14.egg-info/dependency_links.txt
-/usr/local/lib64/python3.14/site-packages/libfdt-1.7.2-py3.14.egg-info/top_level.txt
 /usr/local/lib64/python3.14/site-packages/libfdt.py
