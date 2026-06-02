@@ -3,28 +3,31 @@ require 'package'
 class Texlive < Package
   description 'TeX Live is an easy way to get up and running with the TeX document production system.'
   homepage 'https://www.tug.org/texlive/'
-  version '20250308'
+  version '20260301'
   license 'GPL-2 and GPL-3'
   compatibility 'aarch64 armv7l x86_64'
+  min_glibc '2.28'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '05230f304f770a1a3935af99ac87dec46e46e7fbbc1e564e26bc4b477cb1ac01',
-     armv7l: '05230f304f770a1a3935af99ac87dec46e46e7fbbc1e564e26bc4b477cb1ac01',
-     x86_64: '84f29639d020300c2525585fcd6f0c9fdeb118ccabc4705db2bb9069615c4302'
+    aarch64: '6917ab894942b7f93d9874eec5a517308f919a4ee921d96c9219652ba0bfd841',
+     armv7l: '6917ab894942b7f93d9874eec5a517308f919a4ee921d96c9219652ba0bfd841',
+     x86_64: '0e83582364c12a63c9f20c0d8259fe62db28fac2c4ef9a3e164b8c80d65fdc0d'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'libice' # R
-  depends_on 'libsm' # R
-  depends_on 'libx11' # R
-  depends_on 'libxext' # R
-  depends_on 'libxmu' # R
-  depends_on 'libxt' # R
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'libice' => :executable
+  depends_on 'libsm' => :executable
+  depends_on 'libx11' => :executable
+  depends_on 'libxaw' => :executable
+  depends_on 'libxext' => :executable
+  depends_on 'libxmu' => :executable
+  depends_on 'libxpm' => :executable
+  depends_on 'libxt' => :executable
 
   no_source_build
-  print_source_bashrc
 
   def self.build
     downloader 'https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz', 'SKIP'
@@ -50,14 +53,26 @@ class Texlive < Package
     when 'x86_64'
       archpath = 'x86_64-linux'
     end
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
-    destpath = `echo #{dir}/20*`.chomp
-    path = destpath.gsub(CREW_DEST_PREFIX, CREW_PREFIX)
-    File.write "#{CREW_DEST_PREFIX}/etc/env.d/texlive", <<~TEXLIVEEOF
-      # texlive configuration
-      export PATH="$PATH:#{path}/bin/#{archpath}"
-      export MANPATH="$MANPATH:#{path}/bin/#{archpath}/man"
-    TEXLIVEEOF
+    texyear = version[0..3]
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    Dir["#{CREW_DEST_PREFIX}/share/texlive/#{texyear}/bin/#{archpath}/*"].each do |binary|
+      bin = File.basename(binary)
+      if bin.eql?('man')
+        FileUtils.rm binary
+      else
+        FileUtils.ln_s "#{CREW_PREFIX}/share/texlive/#{texyear}/bin/#{archpath}/#{bin}", "#{CREW_DEST_PREFIX}/bin/#{bin}"
+      end
+    end
+    FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/man1"
+    Dir["#{CREW_DEST_PREFIX}/share/texlive/#{texyear}/bin/#{archpath}/man/man1/*"].each do |manpage|
+      man = File.basename(manpage)
+      FileUtils.ln_s "#{CREW_PREFIX}/share/texlive/#{texyear}/bin/#{archpath}/man/man1/#{man}", "#{CREW_DEST_MAN_PREFIX}/man1/#{man}"
+    end
+    FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/man5"
+    Dir["#{CREW_DEST_PREFIX}/share/texlive/#{texyear}/bin/#{archpath}/man/man5/*"].each do |manpage|
+      man = File.basename(manpage)
+      FileUtils.ln_s "#{CREW_PREFIX}/share/texlive/#{texyear}/bin/#{archpath}/man/man5/#{man}", "#{CREW_DEST_MAN_PREFIX}/man5/#{man}"
+    end
   end
 
   def self.postinstall

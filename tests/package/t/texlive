@@ -1,3 +1,5 @@
 #!/bin/bash
-tex --version
-texconfig --version
+tex -help | head
+tex -version
+texconfig help | head
+texconfig version
