@@ -1,0 +1,2 @@
+#!/bin/bash
+gopeed -h 2>&1
