@@ -1,4 +1,5 @@
-# Total size: 1163778
+# Total size: 906432
+/usr/local/bin/gphoto
 /usr/local/bin/gphoto2
 /usr/local/share/doc/gphoto2/test-hook.sh
 /usr/local/share/locale/az/LC_MESSAGES/gphoto2.mo
@@ -29,4 +30,4 @@
 /usr/local/share/locale/vi/LC_MESSAGES/gphoto2.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/gphoto2.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/gphoto2.mo
-/usr/local/share/man/man1/gphoto2.1.gz
+/usr/local/share/man/man1/gphoto2.1.zst

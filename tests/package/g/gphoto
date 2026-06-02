@@ -1,0 +1,3 @@
+#!/bin/bash
+gphoto2 -h
+gphoto2 -v
