@@ -35,4 +35,12 @@ class Crun < Autotools
     --enable-shared \
     --enable-dynamic \
     --with-python-bindings"
+
+  def self.patch
+    patches = [
+      # Fix for json_c link error.
+      ['https://github.com/containers/crun/pull/2102.diff', '1bd303ce60efd77ef20927a1fbfa65e2cab84a41f9e927f2ad1e3f47c7d85a8f']
+    ]
+    ConvenienceFunctions.patch(patches) if version == '1.28'
+  end
 end
