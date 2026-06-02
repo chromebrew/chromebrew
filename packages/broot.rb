@@ -3,7 +3,7 @@ require 'buildsystems/rust'
 class Broot < RUST
   description 'A new way to see and navigate directory trees'
   homepage 'https://dystroy.org/broot/'
-  version '1.56.4'
+  version '1.57.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/Canop/broot.git'
@@ -11,14 +11,15 @@ class Broot < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '884c7951f8bc7c7b0644efe788d9a06aab7fea0040d20f5f6fd883465b8ed7ef',
-     armv7l: '884c7951f8bc7c7b0644efe788d9a06aab7fea0040d20f5f6fd883465b8ed7ef',
-       i686: '742a37c84d4678c4c56e56585760f4527988b789da39bef4fbc95e9860ac5279',
-     x86_64: 'd6a64dc911bd31ef25f6f19d7a4b71796af26a29a4a1045ddf28bb0082b04c69'
+    aarch64: 'e281e8fa50a5d863397b915fa77f59226e7dacb254a410ea0547340c9b1dbba8',
+     armv7l: 'e281e8fa50a5d863397b915fa77f59226e7dacb254a410ea0547340c9b1dbba8',
+       i686: '4419a608bd2038e4fd4068731484fe3fd65c0e8d6dd7849e125ea93a62f1d399',
+     x86_64: '9b2ec3eff8ac2dc77f9fecd7f01b6d72a7ecc1185f1d2500405cd161ce4d3970'
   })
 
   depends_on 'gcc_lib' => :executable
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'rust' => :build
   depends_on 'zlib' => :executable
 
