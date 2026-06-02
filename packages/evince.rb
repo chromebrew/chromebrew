@@ -44,6 +44,7 @@ class Evince < Meson
   depends_on 'pango' # R
   depends_on 'poppler' # R
   depends_on 'py3_gi_docgen' => :build
+  depends_on 'py3_itstool' => :build
   depends_on 'valgrind' => :build
   depends_on 'zlib' # R
 
