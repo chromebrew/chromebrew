@@ -86,7 +86,7 @@ class Gtk4 < Meson
       ['https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/9745.diff',
        'ef266dab0038693a26723f438bb40af0c8f0577f4ea817b513ff22b94070eec7']
     ]
-    ConvenienceFunctions.patch(patches) if ARCH != 'x86_64' && version.include?('4.22.4')
+    ConvenienceFunctions.patch(patches) if ARCH != 'x86_64' && version.split('-').first.eql?('4.22.4')
   end
 
   meson_options '-Dbroadway-backend=true \
