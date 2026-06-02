@@ -11,16 +11,17 @@ class Alsa_utils < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c6e3af9391c3594dc1c277cd94f8676894fc47f5f41b13ad4cd13d1ee31aed4a',
-     armv7l: 'c6e3af9391c3594dc1c277cd94f8676894fc47f5f41b13ad4cd13d1ee31aed4a',
-     x86_64: '2f574896d2f74faa8fb668190d56ed6801310d67ea8d863ca8b73504689dc467'
+    aarch64: '6b559d7dbbff71cb04fc6639e623bb3648d6055c73f7c6ed3dd7ed38ad58dc70',
+     armv7l: '6b559d7dbbff71cb04fc6639e623bb3648d6055c73f7c6ed3dd7ed38ad58dc70',
+     x86_64: 'eb958ba2ba71b5f41cbe19a557a756a204b0d8ad095362efcaf63a3c1c0d2812'
   })
 
-  depends_on 'alsa_lib' # R
+  depends_on 'alsa_lib' => :library
   depends_on 'cras' => :logical
-  depends_on 'glibc' # R
-  depends_on 'libsamplerate' # R
-  depends_on 'ncurses' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'libsamplerate' => :executable
+  depends_on 'ncurses' => :executable
 
   def self.patch
     # downloader 'https://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/config/config/config.guess', 'SKIP'
