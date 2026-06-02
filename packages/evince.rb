@@ -24,19 +24,19 @@ class Evince < Meson
   depends_on 'desktop_file_utils' => :build
   depends_on 'djvulibre' => :library
   depends_on 'docbook_xml' => :build
-  depends_on 'gcc_lib' # R
+  depends_on 'gcc_lib' => :library
   depends_on 'gdk_pixbuf' => :library
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
-  depends_on 'gnome_desktop' # R
+  depends_on 'gnome_desktop' => :build
   depends_on 'gspell' => :library
   depends_on 'gstreamer' => :library
   depends_on 'gtk3' => :library
   depends_on 'gtk_doc' => :build
-  depends_on 'harfbuzz' # R
+  depends_on 'harfbuzz' => :build
   depends_on 'libarchive' => :library
-  depends_on 'libgxps' # R
+  depends_on 'libgxps' => :build
   depends_on 'libhandy' => :executable
   depends_on 'libsecret' => :executable
   depends_on 'libspectre' => :library
