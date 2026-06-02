@@ -6,11 +6,11 @@ require 'package'
 class Dtc < Package
   description 'Device Tree Compiler'
   homepage 'https://www.devicetree.org/'
-  version '1.7.2'
+  version '1.8.1'
   license 'GPL2'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.kernel.org/pub/software/utils/dtc/dtc-#{version}.tar.xz"
-  source_sha256 '92d8ca769805ae1f176204230438fe52808f4e1c7944053c9eec0e649b237539'
+  source_sha256 '23526015a6f1550e0541a53fe7acea1b5a11e3697cdf3a3bdc076abc38f6045d'
   binary_compression 'tar.zst'
 
   binary_sha256({
