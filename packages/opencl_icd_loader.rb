@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Opencl_icd_loader < CMake
   description 'OpenCL Installable Client Driver ICD Loader'
   homepage 'https://github.com/KhronosGroup/OpenCL-ICD-Loader'
-  version '2025.07.22'
+  version '2026.05.29'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/KhronosGroup/OpenCL-ICD-Loader.git'
