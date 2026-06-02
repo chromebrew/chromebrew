@@ -25,7 +25,7 @@ class Blueprint_compiler < Meson
       ['https://gitlab.gnome.org/GNOME/blueprint-compiler/-/merge_requests/314.diff',
        'f42df751f5a8bfc853faf67fddac33fe162afae71e9212021e1595b558c9d556']
     ]
-    ConvenienceFunctions.patch(patches) if version.gsub("-#{CREW_PY_VER}".eql?('0.20.4')
+    ConvenienceFunctions.patch(patches) if version.gsub("-#{CREW_PY_VER}").eql?('0.20.4')
   end
 
   def self.check
