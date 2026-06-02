@@ -14,15 +14,16 @@ class Crun < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c1aef817d9cfcc6b170260b55887f7c6bc723460585036e40a55fd4d386a04da',
-     armv7l: 'c1aef817d9cfcc6b170260b55887f7c6bc723460585036e40a55fd4d386a04da',
-     x86_64: '7239e82f6029e60e71e7207d94b94d985fc954fcbc04b400c8ee6d8397731aa3'
+    aarch64: '08a77ac558a26273356753fc9af72fe1f3065a2d36cfe5c23e131357827eccaf',
+     armv7l: '08a77ac558a26273356753fc9af72fe1f3065a2d36cfe5c23e131357827eccaf',
+     x86_64: '1f0570508295afd42566cc65ac9bf43764003170c72800e93fb6e8d5fa08cb38'
   })
 
   depends_on 'criu' if ARCH.eql?('x86_64')
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'go_md2man' => :build
-  depends_on 'json_c' => :build
+  depends_on 'json_c' => :library
   depends_on 'libbpf' => :build
   depends_on 'libcap' => :library
   depends_on 'libgcrypt' => :library
