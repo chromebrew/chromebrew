@@ -67,8 +67,8 @@ class Gtk4 < Meson
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' => :library
   depends_on 'wayland' => :library
-  depends_on 'xvfb' => :build
   depends_on 'xdg_base' => :logical
+  depends_on 'xvfb' => :build
 
   gnome
   no_fhs
