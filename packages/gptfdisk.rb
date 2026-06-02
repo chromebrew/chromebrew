@@ -3,33 +3,34 @@ require 'package'
 class Gptfdisk < Package
   description 'GPT fdisk is a disk partitioning tool loosely modeled on Linux fdisk, but used for modifying GUID Partition Table (GPT) disks.'
   homepage 'https://sourceforge.net/projects/gptfdisk/'
-  version '1.0.4'
+  version '1.0.10'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://sourceforge.net/projects/gptfdisk/files/gptfdisk/1.0.4/gptfdisk-1.0.4.tar.gz'
-  source_sha256 'b663391a6876f19a3cd901d862423a16e2b5ceaa2f4a3b9bb681e64b9c7ba78d'
-  binary_compression 'tar.xz'
+  source_url "https://sourceforge.net/projects/gptfdisk/files/gptfdisk/#{version}/gptfdisk-#{version}.tar.gz"
+  source_sha256 '2abed61bc6d2b9ec498973c0440b8b804b7a72d7144069b5a9209b2ad693a282'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e3374328c3134de08eae9bba3b47b18d8dc8198713105c32fb46e20e4bef0c0f',
-     armv7l: 'e3374328c3134de08eae9bba3b47b18d8dc8198713105c32fb46e20e4bef0c0f',
-       i686: '8293f7b22532b9328920b91e51ead9ec9f8b1575a4a51860b4d71785fde90218',
-     x86_64: '94694d8c2f36d696c043bc1eb263f8baed2f05b419974aefeb70510d0980a058'
+    aarch64: 'a061994a24c5f97f6633828ca6a3ebe9a9e263502023a716c0c1e0b704b28aea',
+     armv7l: 'a061994a24c5f97f6633828ca6a3ebe9a9e263502023a716c0c1e0b704b28aea',
+       i686: '5b01459588cc91a4baab210b70c25bd93fc9c2be5a1bcaf059eaa2b211b07743',
+     x86_64: 'd24b31bd6a290c9eb293ae913aeb2cc281bcb1e27f67da4f1076d41bc39a71bb'
   })
 
-  depends_on 'util_linux'
-  depends_on 'popt'
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'ncurses' => :executable
+  depends_on 'popt' => :executable
+  depends_on 'util_linux' => :executable
 
   def self.build
-    system "CPPFLAGS=-I#{CREW_PREFIX}/include/ncurses make"
+    system "CPPFLAGS=-I#{CREW_PREFIX}/include/ncursesw make"
   end
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin/"
-    FileUtils.install Dir.glob('*gdisk'), "#{CREW_DEST_PREFIX}/bin/", mode: 0o755
+    FileUtils.install Dir['*gdisk'], "#{CREW_DEST_PREFIX}/bin/", mode: 0o755
     FileUtils.install 'fixparts', "#{CREW_DEST_PREFIX}/bin/fixparts", mode: 0o755
-    system 'gzip -9 cgdisk.8 fixparts.8 gdisk.8 sgdisk.8'
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/man/man8/"
-    FileUtils.install Dir.glob('*.8.gz'), "#{CREW_DEST_PREFIX}/share/man/man8/", mode: 0o644
+    FileUtils.install Dir['*.8'], "#{CREW_DEST_MAN_PREFIX}/man8/", mode: 0o644
   end
 end
