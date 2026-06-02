@@ -3,23 +3,26 @@ require 'package'
 class Gopeed < Package
   description 'A modern download manager built with Golang and Flutter.'
   homepage 'https://gopeed.com/'
-  version '1.5.6'
+  version '1.9.3'
   license 'GPL-3.0'
   compatibility 'all'
-  source_url 'https://raw.githubusercontent.com/GopeedLab/gopeed/v1.5.6/README.md'
-  source_sha256 '2bdd36245d85f95c86a540e9602e47550571b753e2563c28952d009b2d0804fc'
+  source_url 'https://github.com/GopeedLab/gopeed.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '58b7d1e4c821d1ddf44e579f1bc810aba61c0b4a52199281d7f89a6cb587cee4',
-     armv7l: '58b7d1e4c821d1ddf44e579f1bc810aba61c0b4a52199281d7f89a6cb587cee4',
-       i686: 'ecd62ca0b1b2e2443e5ad1fc462aaa5f6958dd749d674aff8eaecf2c8d3349a8',
-     x86_64: 'dbd4c5f56f388859dea97d1a693291cb5e3c6c43309bc85c80c61d956deb97f2'
+    aarch64: '3f0999e2f90a1fce01a546531318ca1d4099694c790d27f32c72f7deff4bf006',
+     armv7l: '3f0999e2f90a1fce01a546531318ca1d4099694c790d27f32c72f7deff4bf006',
+       i686: '28452e85ec958e49a5dc2ca5880367182e104b08478c2aaa17bc933cbf876c9c',
+     x86_64: 'ea380ec06d2f15ef422b974c82cd04bd8c1b239eb64c01c552a87216ae273109'
   })
 
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'go' => :build
 
   def self.install
-    system "GOBIN=#{CREW_DEST_PREFIX}/bin go install github.com/GopeedLab/gopeed/cmd/gopeed@v#{version}"
+    system "go build -C cmd/gopeed -o #{CREW_DEST_PREFIX}/bin/gopeed"
   end
 end
