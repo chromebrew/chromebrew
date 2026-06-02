@@ -1,4 +1,4 @@
-# Total size: 784001
+# Total size: 808458
 /usr/local/bin/gnome-weather
 /usr/local/share/applications/org.gnome.Weather.desktop
 /usr/local/share/dbus-1/services/org.gnome.Weather.BackgroundService.service
@@ -69,6 +69,7 @@
 /usr/local/share/locale/ga/LC_MESSAGES/org.gnome.Weather.mo
 /usr/local/share/locale/gd/LC_MESSAGES/org.gnome.Weather.mo
 /usr/local/share/locale/gl/LC_MESSAGES/org.gnome.Weather.mo
+/usr/local/share/locale/gu/LC_MESSAGES/org.gnome.Weather.mo
 /usr/local/share/locale/he/LC_MESSAGES/org.gnome.Weather.mo
 /usr/local/share/locale/hi/LC_MESSAGES/org.gnome.Weather.mo
 /usr/local/share/locale/hr/LC_MESSAGES/org.gnome.Weather.mo
@@ -83,6 +84,7 @@
 /usr/local/share/locale/kk/LC_MESSAGES/org.gnome.Weather.mo
 /usr/local/share/locale/kn/LC_MESSAGES/org.gnome.Weather.mo
 /usr/local/share/locale/ko/LC_MESSAGES/org.gnome.Weather.mo
+/usr/local/share/locale/kw/LC_MESSAGES/org.gnome.Weather.mo
 /usr/local/share/locale/lo/LC_MESSAGES/org.gnome.Weather.mo
 /usr/local/share/locale/lt/LC_MESSAGES/org.gnome.Weather.mo
 /usr/local/share/locale/lv/LC_MESSAGES/org.gnome.Weather.mo
