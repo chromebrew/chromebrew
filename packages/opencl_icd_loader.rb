@@ -11,13 +11,13 @@ class Opencl_icd_loader < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0d70d13dc355ab2f0776ae4bfe781d4620de3259e204c58710c3ee2571e545e8',
-     armv7l: '0d70d13dc355ab2f0776ae4bfe781d4620de3259e204c58710c3ee2571e545e8',
-       i686: 'ffc72d971973a57978d056f3e2b85f06ffa2632299e5dad4fe9d7be7f32101d7',
-     x86_64: '0f11157feadd877d6ec72ab35aeb38cbfbe638abec95bc2bd1f4111721bde1b6'
+    aarch64: '02c902d4df8b3a58712a10a1c44f4323081a152906bfcf1f325e91a1aa52644e',
+     armv7l: '02c902d4df8b3a58712a10a1c44f4323081a152906bfcf1f325e91a1aa52644e',
+       i686: 'f4e3aefc62cc45b1123d63b3046dac959bbdb0514376a31fbdc2c2edb2388e85',
+     x86_64: 'ee654e55988429a68abdf7418f290e26d80dabc798f830f754b51319c77ecd93'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
   depends_on 'opencl_headers' => :build
 
   cmake_options '-DOPENCL_ICD_LOADER_BUILD_TESTING=ON'
