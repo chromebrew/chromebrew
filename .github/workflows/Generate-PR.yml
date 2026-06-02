@@ -1,5 +1,5 @@
 ---
-# Version 2.4
+# Version 2.5
 name: Generate PR
 run-name: Generate PR for ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} by @${{ github.actor }}
 on:
@@ -59,7 +59,7 @@ jobs:
           STEPS_CONTEXT: ${{ toJson(steps) }}
         run: echo "$STEPS_CONTEXT"
   setup:
-    if: ${{ ( github.repository_owner == 'chromebrew' ) && ( inputs.branch != 'master' ) && ( ( github.event.action  == 'labeled' && github.event.label.name == 'regenerate_pr' ) || ( github.repository_owner == 'chromebrew' && github.event.action  == 'labeled' && github.event.label.name == 'update-package-files' ) || github.event_name  == 'workflow_dispatch' ) }}
+    if: ${{ ( github.repository_owner == 'chromebrew' ) && ( inputs.branch != 'master' ) && ( ( github.event.action  == 'labeled' && github.event.label.name == 'updater' ) || ( github.event.action  == 'labeled' && github.event.label.name == 'regenerate_pr' ) || ( github.repository_owner == 'chromebrew' && github.event.action  == 'labeled' && github.event.label.name == 'update-package-files' ) || github.event_name  == 'workflow_dispatch' ) }}
     runs-on: ubuntu-24.04
     outputs:
       changed_packages: ${{ steps.changed-packages.outputs.CHANGED_PACKAGES }}
@@ -184,7 +184,7 @@ jobs:
       i686_PACKAGES: ${{ needs.get-compatibility.outputs.i686_PACKAGES }}
       x86_64_PACKAGES: ${{ needs.get-compatibility.outputs.x86_64_PACKAGES }}
       armv7l_PACKAGES: ${{ needs.get-compatibility.outputs.armv7l_PACKAGES }}
-    if: ${{ !cancelled() && ( inputs.update_package_files || ( github.event.action  == 'labeled' && github.event.label.name == 'update-package-files' ) ) && needs.setup.outputs.changed_packages }}
+    if: ${{ !cancelled() && ( inputs.update_package_files || ( github.event.action  == 'labeled' && github.event.label.name == 'updater' ) || ( github.event.action  == 'labeled' && github.event.label.name == 'update-package-files' ) ) && needs.setup.outputs.changed_packages }}
     concurrency:
       group: ${{ matrix.arch }}-${{ github.workflow }}-${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
       cancel-in-progress: true
@@ -256,7 +256,7 @@ jobs:
             esac
       - name: Run Updater in container
         id: run-updater
-        if: ${{ ( inputs.update_package_files ) && ( contains(needs.*.result, 'failure') ||  !cancelled() ) || (( inputs.update_package_files || ( github.event.action  == 'labeled' && github.event.label.name == 'update-package-files' ) ) && needs.update-package-files.result == 'success') }}
+        if: ${{ ( inputs.update_package_files ) && ( contains(needs.*.result, 'failure') || !cancelled() ) || ( ( inputs.update_package_files ) || ( github.event.action  == 'labeled' ) && ( github.event.label.name == 'updater' || github.event.label.name == 'update-package-files' ) )}}
         env:
           CREW_MAX_BUILD_TIME_INPUT: ${{ inputs.max_build_time }}
           UPDATE_PACKAGE_FILES: ${{ github.event.inputs.update_package_files || ( github.event.action  == 'labeled' && github.event.label.name == 'update-package-files' ) }}
@@ -602,3 +602,5 @@ jobs:
           echo "PR_NUMBER=${PR_NUMBER}" >> "$GITHUB_ENV"
           # Remove the regenerate_pr label if set.
           gh pr edit --remove-label regenerate_pr || true
+          # Remove the update-package-files label if set.
+          gh pr edit --remove-label update-package-files || true
