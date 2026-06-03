@@ -4,7 +4,7 @@ Package.load_package("#{__dir__}/llvm22_build.rb")
 class Llvm22_lib < Package
   description 'LibLLVM and llvm-strip'
   homepage Llvm22_build.homepage
-  version '22.1.6'
+  version '22.1.7'
   # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
   puts "#{self} version differs from llvm version #{Llvm22_build.version}".orange if version != Llvm22_build.version && !ENV['NESTED_CI']
   license Llvm22_build.license
@@ -13,10 +13,10 @@ class Llvm22_lib < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0fa55943ae34ff5e6971973e031af63597e43b5a82f52d38677be1d8f037d403',
-     armv7l: '0fa55943ae34ff5e6971973e031af63597e43b5a82f52d38677be1d8f037d403',
-       i686: '6203a0326ae1ad90ed9fe784166aabb863877398c4e7d6fe1683aab7e21b48ce',
-     x86_64: '9014947d8a620e25b6675ee3fa8be96246b00783de4199a63d80418f84367e13'
+    aarch64: '896b569da3380941cc156a5ea9fea0d51fb266870598ae1a3c41f5ad375b7001',
+     armv7l: '896b569da3380941cc156a5ea9fea0d51fb266870598ae1a3c41f5ad375b7001',
+       i686: 'fa4fa09f25d766239103afb90a18aa8150fe7747cbc74bb6f10859d40c061331',
+     x86_64: '310ce39dcb141027e991597553a4c6d04d8cda01f0763a2bcb29124943274ecc'
   })
 
   depends_on 'gcc_lib' => :library
