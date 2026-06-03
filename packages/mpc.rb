@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Mpc < Autotools
   description 'Gnu Mpc is a C library for the arithmetic of complex numbers with arbitrarily high precision and correct rounding of the result.'
   homepage 'https://www.multiprecision.org'
-  version '1.3.1'
+  version '1.4.1'
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url "https://ftp.gnu.org/gnu/mpc/mpc-#{version}.tar.gz"
-  source_sha256 '17503d2c395dfcf106b622dc142683c1199431d095367c6aacba6eec30340459'
+  source_url "https://ftp.gnu.org/gnu/mpc/mpc-#{version}.tar.xz"
+  source_sha256 '91204cd32f164bd3b7c992d4a6a8ce6519511aadab30f78b6982d0bf8d73e931'
   binary_compression 'tar.zst'
 
   binary_sha256({
