@@ -3,13 +3,14 @@ require 'package'
 class Freebasic < Package
   description 'FreeBASIC is a free and open source, BASIC compiler for Microsoft Windows, DOS and Linux.'
   homepage 'https://www.freebasic.net/'
-  version %w[i686 x86_64].include?(ARCH) ? '1.10.1' : '1.09.0'
+  # Releases appear to be misnumbered...
+  version %w[i686 x86_64].include?(ARCH) ? '1.10.1' : '1.10.1'
   license 'LGPL-2 and GPL-2'
   compatibility 'all'
   case ARCH
   when 'aarch64', 'armv7l'
-    source_url "https://downloads.sourceforge.net/project/fbc/FreeBASIC-#{version}/Binaries-Linux/FreeBASIC-#{version}-linux-arm.tar.xz"
-    source_sha256 '7e75720f3f1b706a8d0d99d0fefbfffcf08305b7801083443c2aa58f4bc8a41e'
+    source_url 'https://sourceforge.net/projects/fbc/files/FreeBASIC-1.10.1/Binaries-Linux/FreeBASIC-1.10.2-debian12-armhf.tar.xz'
+    source_sha256 '753c82544212744948d7e28f16c7eca8e23cfc7e0ef6fec2d567b5cdf0cbcc92'
   when 'i686'
     source_url "https://downloads.sourceforge.net/project/fbc/FreeBASIC-#{version}/Binaries-Linux/FreeBASIC-#{version}-linux-x86.tar.xz"
     source_sha256 'ff811caa5a25f5e6eba02dac42f0d01a8ea6d07d2c678fb71c56c1d2f5c2a4f3'
