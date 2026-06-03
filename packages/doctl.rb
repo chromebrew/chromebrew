@@ -17,6 +17,7 @@ class Doctl < Package
   })
 
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'go' => :build
 
   no_source_build
