@@ -31,6 +31,7 @@ class Freerdp < CMake
   depends_on 'gdk_pixbuf' => :build
   depends_on 'glib' => :build
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gsm' => :build
   depends_on 'gstreamer' => :build
   depends_on 'gtk3' => :build
