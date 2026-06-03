@@ -11,13 +11,13 @@ class Alsa_lib < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7aa6f2ff6da65eba5bc580da449538807ca09118dfb41315549e7f116945e755',
-     armv7l: '7aa6f2ff6da65eba5bc580da449538807ca09118dfb41315549e7f116945e755',
-       i686: '9fd0d3e1fff2ea531ed7265280beafc06b7388f64f7f6c191b091c09bf2f5487',
-     x86_64: '1c76976bf5cfd82a11bb33a9c396573e3d441b4fce564cdcd6759988259de1c0'
+    aarch64: 'b9b6f1f3a768f82583c17850bc85268b98915f0f48e4a7b93caaa05d590a6d93',
+     armv7l: 'b9b6f1f3a768f82583c17850bc85268b98915f0f48e4a7b93caaa05d590a6d93',
+       i686: '3eefe87db859eb1ce1af226f0515ba452712d5a6711621c9a60ba0868a786106',
+     x86_64: '9fedb50d0c9cd71681a8d46100047de35199b725b5c1394dec3e225b004bfd0e'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
   depends_on 'python3' => :logical
 
   def self.patch
