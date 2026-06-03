@@ -1,4 +1,5 @@
-# Total size: 84233452
+# Total size: 83750217
+/usr/local/etc/fonts/conf.d/05-macos.conf
 /usr/local/etc/fonts/conf.d/10-hinting-slight.conf
 /usr/local/etc/fonts/conf.d/10-scale-bitmap-fonts.conf
 /usr/local/etc/fonts/conf.d/10-sub-pixel-none.conf
@@ -9,6 +10,7 @@
 /usr/local/etc/fonts/conf.d/40-nonlatin.conf
 /usr/local/etc/fonts/conf.d/45-generic.conf
 /usr/local/etc/fonts/conf.d/45-latin.conf
+/usr/local/etc/fonts/conf.d/48-guessfamily.conf
 /usr/local/etc/fonts/conf.d/48-spacing.conf
 /usr/local/etc/fonts/conf.d/49-sansserif.conf
 /usr/local/etc/fonts/conf.d/50-user.conf
@@ -132,11 +134,11 @@
 /usr/local/lib64/harfbuzz-libfontconfig.a
 /usr/local/lib64/harfbuzz-libfontconfig.so
 /usr/local/lib64/harfbuzz-libfontconfig.so.1
-/usr/local/lib64/harfbuzz-libfontconfig.so.1.16.0
+/usr/local/lib64/harfbuzz-libfontconfig.so.1.17.0
 /usr/local/lib64/libharfbuzz-cairo.a
 /usr/local/lib64/libharfbuzz-cairo.so
 /usr/local/lib64/libharfbuzz-cairo.so.0
-/usr/local/lib64/libharfbuzz-cairo.so.0.61420.0
+/usr/local/lib64/libharfbuzz-cairo.so.0.61421.0
 /usr/local/lib64/libharfbuzz-freetype.a
 /usr/local/lib64/libharfbuzz-freetype.so
 /usr/local/lib64/libharfbuzz-freetype.so.6
@@ -144,31 +146,31 @@
 /usr/local/lib64/libharfbuzz-gobject.a
 /usr/local/lib64/libharfbuzz-gobject.so
 /usr/local/lib64/libharfbuzz-gobject.so.0
-/usr/local/lib64/libharfbuzz-gobject.so.0.61420.0
+/usr/local/lib64/libharfbuzz-gobject.so.0.61421.0
 /usr/local/lib64/libharfbuzz-gpu.a
 /usr/local/lib64/libharfbuzz-gpu.so
 /usr/local/lib64/libharfbuzz-gpu.so.0
-/usr/local/lib64/libharfbuzz-gpu.so.0.61420.0
+/usr/local/lib64/libharfbuzz-gpu.so.0.61421.0
 /usr/local/lib64/libharfbuzz-icu.a
 /usr/local/lib64/libharfbuzz-icu.so
 /usr/local/lib64/libharfbuzz-icu.so.0
-/usr/local/lib64/libharfbuzz-icu.so.0.61420.0
+/usr/local/lib64/libharfbuzz-icu.so.0.61421.0
 /usr/local/lib64/libharfbuzz-raster.a
 /usr/local/lib64/libharfbuzz-raster.so
 /usr/local/lib64/libharfbuzz-raster.so.0
-/usr/local/lib64/libharfbuzz-raster.so.0.61420.0
+/usr/local/lib64/libharfbuzz-raster.so.0.61421.0
 /usr/local/lib64/libharfbuzz-subset.a
 /usr/local/lib64/libharfbuzz-subset.so
 /usr/local/lib64/libharfbuzz-subset.so.0
-/usr/local/lib64/libharfbuzz-subset.so.0.61420.0
+/usr/local/lib64/libharfbuzz-subset.so.0.61421.0
 /usr/local/lib64/libharfbuzz-vector.a
 /usr/local/lib64/libharfbuzz-vector.so
 /usr/local/lib64/libharfbuzz-vector.so.0
-/usr/local/lib64/libharfbuzz-vector.so.0.61420.0
+/usr/local/lib64/libharfbuzz-vector.so.0.61421.0
 /usr/local/lib64/libharfbuzz.a
 /usr/local/lib64/libharfbuzz.so
 /usr/local/lib64/libharfbuzz.so.0
-/usr/local/lib64/libharfbuzz.so.0.61420.0
+/usr/local/lib64/libharfbuzz.so.0.61421.0
 /usr/local/lib64/pkgconfig/cairo.pc
 /usr/local/lib64/pkgconfig/freetype2.pc
 /usr/local/lib64/pkgconfig/harfbuzz-cairo.pc
