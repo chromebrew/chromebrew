@@ -22,6 +22,7 @@ class Spirv_llvm_translator < CMake
   depends_on 'glibc_lib' => :library
   depends_on 'llvm_dev' => :build
   depends_on 'llvm_lib' => :library
+  depends_on 'spirv_tools' => :build
 
   cmake_options '-DBUILD_SHARED_LIBS=ON'
 end
