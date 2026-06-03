@@ -1,6 +1,6 @@
-require 'buildsystems/autotools'
+require 'buildsystems/meson'
 
-class Audacious < Autotools
+class Audacious < Meson
   description 'Audacious is an open source audio player.'
   homepage 'https://audacious-media-player.org/'
   version '4.6'
@@ -30,8 +30,7 @@ class Audacious < Autotools
   depends_on 'xdg_base'
   depends_on 'zlib' # R
 
-  autotools_configure_options '--disable-dbus \
-                               --disable-qt'
+  meson_options '-Ddbus=false -Dqt=false'
 
   def self.postinstall
     ExitMessage.add <<~EOM
