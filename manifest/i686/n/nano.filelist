@@ -1,4 +1,4 @@
-# Total size: 2981869
+# Total size: 3081434
 /home/chronos/user/.nanorc
 /usr/local/bin/nano
 /usr/local/bin/rnano
@@ -28,6 +28,7 @@
 /usr/local/share/locale/it/LC_MESSAGES/nano.mo
 /usr/local/share/locale/ja/LC_MESSAGES/nano.mo
 /usr/local/share/locale/ka/LC_MESSAGES/nano.mo
+/usr/local/share/locale/kk/LC_MESSAGES/nano.mo
 /usr/local/share/locale/ko/LC_MESSAGES/nano.mo
 /usr/local/share/locale/ms/LC_MESSAGES/nano.mo
 /usr/local/share/locale/nb/LC_MESSAGES/nano.mo
@@ -58,7 +59,6 @@
 /usr/local/share/nano/cmake.nanorc
 /usr/local/share/nano/css.nanorc
 /usr/local/share/nano/default.nanorc
-/usr/local/share/nano/elisp.nanorc
 /usr/local/share/nano/email.nanorc
 /usr/local/share/nano/extra/ada.nanorc
 /usr/local/share/nano/extra/fortran.nanorc
