@@ -10,9 +10,9 @@ class Py3_oci_cli < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3b4b8c3c4357996f60b843a684024b3515feee246e163e8dcf5f2bcddd8c9f7c',
-     armv7l: '3b4b8c3c4357996f60b843a684024b3515feee246e163e8dcf5f2bcddd8c9f7c',
-     x86_64: '3a4eb7172363030ad22ab7b7829fbe12db532e3b80003885d88229a5583cd05a'
+    aarch64: '0257e2512d581a01e81f40dc998caf39960d4eacf676e8c528e7f2794c555081',
+     armv7l: '0257e2512d581a01e81f40dc998caf39960d4eacf676e8c528e7f2794c555081',
+     x86_64: '3159db5a8bda831128b2e90484bf2e9ccc15183f4fe8de7ddb0578ff51422f22'
   })
 
   depends_on 'py3_arrow'
