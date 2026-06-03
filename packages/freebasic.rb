@@ -3,8 +3,8 @@ require 'package'
 class Freebasic < Package
   description 'FreeBASIC is a free and open source, BASIC compiler for Microsoft Windows, DOS and Linux.'
   homepage 'https://www.freebasic.net/'
-  # Releases appear to be misnumbered...
-  version %w[i686 x86_64].include?(ARCH) ? '1.10.1' : '1.10.1'
+  # Releases appear to be misnumbered for the arm version.
+  version '1.10.1'
   license 'LGPL-2 and GPL-2'
   compatibility 'all'
   case ARCH
