@@ -1,4 +1,4 @@
-# Total size: 423630823
+# Total size: 421496607
 /usr/local/bin/google-chrome
 /usr/local/share/appdata/google-chrome.appdata.xml
 /usr/local/share/applications/com.google.Chrome.desktop
@@ -11,6 +11,7 @@
 /usr/local/share/chrome/WidevineCdm/LICENSE
 /usr/local/share/chrome/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so
 /usr/local/share/chrome/WidevineCdm/manifest.json
+/usr/local/share/chrome/apparmor.d/google-chrome-stable
 /usr/local/share/chrome/chrome
 /usr/local/share/chrome/chrome-management-service
 /usr/local/share/chrome/chrome-sandbox
