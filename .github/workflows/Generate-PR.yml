@@ -1,5 +1,5 @@
 ---
-# Version 2.5
+# Version 2.6
 name: Generate PR
 run-name: Generate PR for ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} by @${{ github.actor }}
 on:
@@ -142,15 +142,25 @@ jobs:
       - name: Generate Creation Matrix
         id: set-generate-matrix
         env:
+          i686_MIN_GLIBC: ${{ needs.get-compatibility.outputs.i686_min_glibc }}
           i686_PACKAGES: ${{ needs.get-compatibility.outputs.i686_PACKAGES }}
+          x86_64_MIN_GLIBC: ${{ needs.get-compatibility.outputs.x86_64_min_glibc }}
           x86_64_PACKAGES: ${{ needs.get-compatibility.outputs.x86_64_PACKAGES }}
+          armv7l_MIN_GLIBC: ${{ needs.get-compatibility.outputs.armv7l_min_glibc }}
           armv7l_PACKAGES: ${{ needs.get-compatibility.outputs.armv7l_PACKAGES }}
         run: |
           function join_by { local IFS="$1"; shift; echo "$*"; }
-          [[ -n "${i686_PACKAGES}" ]] && export CONTAINER_ARCH+=( "\"i686\"" )
+          if [[ -n "${i686_PACKAGES}" ]]; then
+            export CONTAINER_ARCH+=( "\"i686\"" )
+            export i686_MIN_GLIBC+=( "\"$i686_MIN_GLIBC\"" )
+          fi
           # Always run on x86_64
           export CONTAINER_ARCH+=( "\"x86_64\"" )
-          [[ -n "${armv7l_PACKAGES}" ]] && export CONTAINER_ARCH+=( "\"armv7l\"" )
+          export x86_64_MIN_GLIBC+=( "\"$x86_64_MIN_GLIBC\"" )
+          if [[ -n "${armv7l_PACKAGES}" ]]; then
+            export CONTAINER_ARCH+=( "\"armv7l\"" )
+            export armv7l_MIN_GLIBC+=( "\"$armv7l_MIN_GLIBC\"" )
+          fi
           export ARCHES="$(join_by , "${CONTAINER_ARCH[@]}")"
           echo "matrix=[${ARCHES}]" >> $GITHUB_OUTPUT
           echo "matrix=[${ARCHES}]"
@@ -175,14 +185,19 @@ jobs:
           - arch: armv7l
             runner: ubuntu-24.04
     runs-on: ${{ matrix.runner }}
+    outputs:
+      runner_glibc: ${{ steps.set-container-by-glibc.outputs.runner_glibc }}
     env:
       CREW_REPO: ${{ github.event.repository.clone_url }}
       CREW_BRANCH: ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
       TARGET_ARCH: ${{ matrix.arch }}
       GLIBC_232_COMPATIBLE_PACKAGES: ${{ needs.get-compatibility.outputs.GLIBC_232_COMPATIBLE_PACKAGES }}
       GLIBC_237_COMPATIBLE_PACKAGES: ${{ needs.get-compatibility.outputs.GLIBC_237_COMPATIBLE_PACKAGES }}
+      i686_MIN_GLIBC: ${{ needs.get-compatibility.outputs.i686_min_glibc }}
       i686_PACKAGES: ${{ needs.get-compatibility.outputs.i686_PACKAGES }}
+      x86_64_MIN_GLIBC: ${{ needs.get-compatibility.outputs.x86_64_min_glibc }}
       x86_64_PACKAGES: ${{ needs.get-compatibility.outputs.x86_64_PACKAGES }}
+      armv7l_MIN_GLIBC: ${{ needs.get-compatibility.outputs.armv7l_min_glibc }}
       armv7l_PACKAGES: ${{ needs.get-compatibility.outputs.armv7l_PACKAGES }}
     if: ${{ !cancelled() && ( inputs.update_package_files || ( github.event.action  == 'labeled' && github.event.label.name == 'update-package-files' ) ) && needs.setup.outputs.changed_packages }}
     concurrency:
@@ -221,39 +236,48 @@ jobs:
           fetch-depth: 0
           persist-credentials: true
       - name: Export target docker container to github context
+        id: set-container-by-glibc
         run: |
           case $TARGET_ARCH in
-              x86_64)
-                # Export the x86_64 container depending on whether this branch updates packages with appropriate minimum glibc.
-                if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=satmandu/crewbuild:nocturne-x86_64.m97" >> "$GITHUB_ENV"
-                elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=satmandu/crewbuild:hatch-x86_64.m148" >> "$GITHUB_ENV"
-                else
-                    echo "CONTAINER=satmandu/crew-pre-glibc-standalone:nocturne-x86_64.m90" >> "$GITHUB_ENV"
-                fi
-                echo "PLATFORM=linux/amd64" >> "$GITHUB_ENV"
-                echo "LIB_SUFFIX=64" >> "$GITHUB_ENV"
+            x86_64)
+              case $x86_64_MIN_GLIBC in
+                2.32)
+                  echo "CONTAINER=satmandu/crewbuild:nocturne-x86_64.m97" >> "$GITHUB_ENV"
+                  ;;
+                2.37)
+                  echo "CONTAINER=satmandu/crewbuild:nocturne-x86_64.m97" >> "$GITHUB_ENV"
+                  ;;
+                *)
+                  # Fallback/default is the M90 Glibc 2.27 container.
+                  echo "CONTAINER=satmandu/crew-pre-glibc-standalone:nocturne-x86_64.m90" >> "$GITHUB_ENV"
+                  ;;
+              esac
+              echo "PLATFORM=linux/amd64" >> "$GITHUB_ENV"
+              echo "LIB_SUFFIX=64" >> "$GITHUB_ENV"
               ;;
-              armv7l)
-                # Export the armv7l container depending on whether this branch updates packages with appropriate minimum glibc.
-                if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=satmandu/crewbuild:fievel-armv7l.m97" >> "$GITHUB_ENV"
-                elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=satmandu/crewbuild:strongbad-armv7l.m148" >> "$GITHUB_ENV"
-                else
-                    echo "CONTAINER=satmandu/crew-pre-glibc-standalone:fievel-armv7l.m91" >> "$GITHUB_ENV"
-                fi
-                echo "PLATFORM=linux/arm/v7" >> "$GITHUB_ENV"
-                echo "LIB_SUFFIX=" >> "$GITHUB_ENV"
+            armv7l)
+              case $armv7l_64_MIN_GLIBC in
+                2.32)
+                  echo "CONTAINER=satmandu/crewbuild:fievel-armv7l.m97" >> "$GITHUB_ENV"
+                  ;;
+                2.37)
+                  echo "CONTAINER=satmandu/crewbuild:strongbad-armv7l.m148" >> "$GITHUB_ENV"
+                  ;;
+                *)
+                  # Fallback/default is the M91 Glibc 2.27 container.
+                  echo "CONTAINER=satmandu/crew-pre-glibc-standalone:fievel-armv7l.m91" >> "$GITHUB_ENV"
+                  ;;
+              esac
+              echo "PLATFORM=linux/arm/v7" >> "$GITHUB_ENV"
+              echo "LIB_SUFFIX=" >> "$GITHUB_ENV"
               ;;
-              i686)
-                # There is only one i686 container based upon M58 with glibc 2.23.
-                echo "CONTAINER=satmandu/crew-pre-glibc-standalone:alex-i686.m58" >> "$GITHUB_ENV"
-                echo "PLATFORM=linux/386" >> "$GITHUB_ENV"
-                echo "LIB_SUFFIX=" >> "$GITHUB_ENV"
+            i686)
+              # There is only one i686 container based upon M58 with glibc 2.23.
+              echo "CONTAINER=satmandu/crew-pre-glibc-standalone:alex-i686.m58" >> "$GITHUB_ENV"
+              echo "PLATFORM=linux/386" >> "$GITHUB_ENV"
+              echo "LIB_SUFFIX=" >> "$GITHUB_ENV"
               ;;
-            esac
+          esac
       - name: Run Updater in container
         id: run-updater
         if: ${{ ( inputs.update_package_files ) && ( contains(needs.*.result, 'failure') ||  !cancelled() ) || (( inputs.update_package_files || ( github.event.action  == 'labeled' && github.event.label.name == 'update-package-files' ) ) ) }}
