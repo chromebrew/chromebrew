@@ -19,6 +19,7 @@ class Nano < Autotools
 
   depends_on 'filecmd' => :executable
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'ncurses' => :executable
   depends_on 'zlib' => :executable
 
