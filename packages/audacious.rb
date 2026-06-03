@@ -16,19 +16,20 @@ class Audacious < Meson
      x86_64: '7ed6d408a8c11c0f0a0b5e6a54c295ce4c8c80eae10676d0c6b91dda9caf96dd'
   })
 
+  depends_on 'at_spi2_core' => :build
   # depends_on 'audacious_plugins' => :runtime
-  depends_on 'at_spi2_core' # R
-  depends_on 'cairo' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'gdk_pixbuf' # R
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
-  depends_on 'gtk3' # R
+  depends_on 'cairo' => :library
+  depends_on 'gcc_lib' => :library
+  depends_on 'gdk_pixbuf' => :library
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'gtk3' => :library
   depends_on 'harfbuzz' # R
-  depends_on 'pango' # R
+  depends_on 'pango' => :library
   depends_on 'sommelier' => :logical
-  depends_on 'xdg_base'
-  depends_on 'zlib' # R
+  depends_on 'xdg_base' => :logical
+  depends_on 'zlib' => :build
 
   meson_options '-Ddbus=false -Dqt=false'
 
