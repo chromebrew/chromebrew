@@ -11,9 +11,9 @@ class Librsvg < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3850328070e17a52e8397813477baff28905a9b1db04984cc3b5e8f19ce1e708',
-     armv7l: '3850328070e17a52e8397813477baff28905a9b1db04984cc3b5e8f19ce1e708',
-     x86_64: '422f2cde1ad4be46461780d5fbcdd606b57ba37675c90ae30d86667e63daa1f4'
+    aarch64: '8d44e13730b0e1b572eb1fa44a2a31a69087540d07c591abdac3016dbca798c8',
+     armv7l: '8d44e13730b0e1b572eb1fa44a2a31a69087540d07c591abdac3016dbca798c8',
+     x86_64: '21d5b4268e8170e0d5c765975110d8386160a677a3b29073126b357a6cde5acc'
   })
 
   depends_on 'cairo' => :library
