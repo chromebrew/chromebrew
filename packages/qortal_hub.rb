@@ -3,11 +3,11 @@ require 'package'
 class Qortal_hub < Package
   description 'Desktop interface for Qortal'
   homepage 'https://qortal.dev/'
-  version '0.5.2'
+  version '1.0.1'
   license 'MIT'
   compatibility 'x86_64'
-  source_url "https://github.com/Qortal/Qortal-Hub/releases/download/v#{version}/Qortal-Hub_#{version}.AppImage"
-  source_sha256 'b52e920dfd48edd57e07befee5cd9d3a930d49c9a3d52509afef7726a234ec35'
+  source_url "https://github.com/Qortal/Qortal-Hub/releases/download/v#{version}/Qortal-Hub.AppImage"
+  source_sha256 '92391ec6fdf3941a9bd2f047900ff073838d93fcf0ae5f78032a1ccf3eeffeb9'
 
   depends_on 'gtk3'
   depends_on 'sommelier' => :logical
@@ -30,7 +30,7 @@ class Qortal_hub < Package
     FileUtils.mv 'usr/share', CREW_DEST_PREFIX.to_s
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/qortal_hub"
     FileUtils.install 'qortal_hub.sh', "#{CREW_DEST_PREFIX}/bin/qortal-hub", mode: 0o755
-    FileUtils.install 'Qortal Hub.desktop', "#{CREW_DEST_PREFIX}/share/applications/Qortal Hub.desktop", mode: 0o644
+    FileUtils.install 'qortal-hub.desktop', "#{CREW_DEST_PREFIX}/share/applications/qortal-hub.desktop", mode: 0o644
     FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/qortal_hub"
   end
 
