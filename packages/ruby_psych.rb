@@ -17,6 +17,7 @@ class Ruby_psych < RUBY
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'libyaml' => :library
   depends_on 'ruby' => :library
   depends_on 'ruby_stringio' # R
