@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Ansible < Pip
   description 'Ansible is a radically simple IT automation engine that automates cloud provisioning, configuration management, application deployment, intra-service orchestration, and many other IT needs.'
   homepage 'https://www.ansible.com/'
-  version "13.7.0-#{CREW_PY_VER}"
+  version "14.0.0-#{CREW_PY_VER}"
   license 'GPL-3'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7ab9d2e64d78e3d556f44b4aa9749f161b71f441435e4ca312f1448be3d32bf9',
-     armv7l: '7ab9d2e64d78e3d556f44b4aa9749f161b71f441435e4ca312f1448be3d32bf9',
-       i686: '53137bf7202abc3711ab7dffa9834ad385e60a5e9147b1a8107459d3ace29fc7',
-     x86_64: '077c08ca7fa35961a88a387a5bac420895046cbdaea7ab1e28c5bf746aa606bd'
+    aarch64: '97ea10fe54a6f319de16585f07670557a60ed83bb08cf5b450678623846a77ed',
+     armv7l: '97ea10fe54a6f319de16585f07670557a60ed83bb08cf5b450678623846a77ed',
+       i686: 'e2ee9fa8d4ff98aceb0710b530c34a5b5ae912f470b00ceeef23c37cd785494c',
+     x86_64: '049f72e540547e7074a62204feb089daae287484ee34b9cf12c86c5727460347'
   })
 
   depends_on 'py3_cryptography'
