@@ -18,23 +18,23 @@ class Gtksourceview_4 < Meson
 
   depends_on 'at_spi2_core' => :library
   depends_on 'cairo' => :library
-  depends_on 'fontconfig'
-  depends_on 'freetype'
+  depends_on 'fontconfig' => :build
+  depends_on 'freetype' => :build
   depends_on 'fribidi' => :library
   depends_on 'gdk_pixbuf' => :library
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
-  depends_on 'graphene'
+  depends_on 'graphene' => :build
   depends_on 'gtk3' => :library
-  depends_on 'gtk4'
+  depends_on 'gtk4' => :build
   depends_on 'harfbuzz' => :library
-  depends_on 'libsoup'
+  depends_on 'libsoup' => :build
   depends_on 'libxml2' => :library
   depends_on 'pango' => :library
-  depends_on 'vala'
+  depends_on 'vala' => :build
   depends_on 'vulkan_headers' => :build
-  depends_on 'vulkan_icd_loader'
+  depends_on 'vulkan_icd_loader' => :build
   depends_on 'zlib' => :library
 
   gnome
