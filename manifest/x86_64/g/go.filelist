@@ -1,4 +1,4 @@
-# Total size: 232365810
+# Total size: 232354977
 /usr/local/bin/go
 /usr/local/bin/gofmt
 /usr/local/share/go/CONTRIBUTING.md
@@ -14116,6 +14116,7 @@
 /usr/local/share/go/test/fixedbugs/issue78641.go
 /usr/local/share/go/test/fixedbugs/issue7867.go
 /usr/local/share/go/test/fixedbugs/issue7884.go
+/usr/local/share/go/test/fixedbugs/issue79182.go
 /usr/local/share/go/test/fixedbugs/issue7921.go
 /usr/local/share/go/test/fixedbugs/issue7944.go
 /usr/local/share/go/test/fixedbugs/issue7995.go
