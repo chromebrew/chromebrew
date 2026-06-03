@@ -7,7 +7,7 @@ Package.load_package("#{__dir__}/freetype.rb")
 class Harfbuzz < Meson
   description 'HarfBuzz is an OpenType text shaping engine.'
   homepage 'https://harfbuzz.github.io/'
-  version "14.2.0-#{CREW_ICU_VER}"
+  version "14.2.1-#{CREW_ICU_VER}"
   license 'Old-MIT, ISC and icu'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/harfbuzz/harfbuzz.git'
@@ -15,9 +15,9 @@ class Harfbuzz < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '04cc937f4c3d667241d10bb8b348ecccd66331ce3b7a859a750bb083f94080f1',
-     armv7l: '04cc937f4c3d667241d10bb8b348ecccd66331ce3b7a859a750bb083f94080f1',
-     x86_64: 'c34ecf009a8e104c8d2d8fa4bd5a06db0acc9b9cf6df3633cea4d877d6489670'
+    aarch64: '59bc51e47c0aa940a8f73e7e03802f4f95e95cefc1e82097c878fff3094a94c7',
+     armv7l: '59bc51e47c0aa940a8f73e7e03802f4f95e95cefc1e82097c878fff3094a94c7',
+     x86_64: '35c265c97008ed807231d17a678e8306278c30378260a8e43d4140f948f2e79b'
   })
 
   depends_on 'brotli' => :library
@@ -30,6 +30,7 @@ class Harfbuzz < Meson
   depends_on 'gcc_lib' => :executable
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gobject_introspection' => :build
   depends_on 'gperf' => :build
   depends_on 'graphite' => :library
