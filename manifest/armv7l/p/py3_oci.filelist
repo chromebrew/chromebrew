@@ -1,12 +1,12 @@
-# Total size: 404824116
-/usr/local/lib/python3.14/site-packages/oci-2.176.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/oci-2.176.0.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/oci-2.176.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/oci-2.176.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/oci-2.176.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/oci-2.176.0.dist-info/THIRD_PARTY_LICENSES.txt
-/usr/local/lib/python3.14/site-packages/oci-2.176.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/oci-2.176.0.dist-info/top_level.txt
+# Total size: 405005217
+/usr/local/lib/python3.14/site-packages/oci-2.177.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/oci-2.177.0.dist-info/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/oci-2.177.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/oci-2.177.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/oci-2.177.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/oci-2.177.0.dist-info/THIRD_PARTY_LICENSES.txt
+/usr/local/lib/python3.14/site-packages/oci-2.177.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/oci-2.177.0.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/oci/__init__.py
 /usr/local/lib/python3.14/site-packages/oci/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/__pycache__/base_client.cpython-314.pyc
@@ -20328,6 +20328,8 @@
 /usr/local/lib/python3.14/site-packages/oci/generative_ai_inference/models/__pycache__/guardrail_version_config.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/generative_ai_inference/models/__pycache__/guardrail_version_response.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/generative_ai_inference/models/__pycache__/guardrail_version_summary.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/generative_ai_inference/models/__pycache__/guardrails_image_input.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/generative_ai_inference/models/__pycache__/guardrails_image_url.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/generative_ai_inference/models/__pycache__/guardrails_input.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/generative_ai_inference/models/__pycache__/guardrails_results.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/generative_ai_inference/models/__pycache__/guardrails_text_input.cpython-314.pyc
@@ -20464,6 +20466,8 @@
 /usr/local/lib/python3.14/site-packages/oci/generative_ai_inference/models/guardrail_version_config.py
 /usr/local/lib/python3.14/site-packages/oci/generative_ai_inference/models/guardrail_version_response.py
 /usr/local/lib/python3.14/site-packages/oci/generative_ai_inference/models/guardrail_version_summary.py
+/usr/local/lib/python3.14/site-packages/oci/generative_ai_inference/models/guardrails_image_input.py
+/usr/local/lib/python3.14/site-packages/oci/generative_ai_inference/models/guardrails_image_url.py
 /usr/local/lib/python3.14/site-packages/oci/generative_ai_inference/models/guardrails_input.py
 /usr/local/lib/python3.14/site-packages/oci/generative_ai_inference/models/guardrails_results.py
 /usr/local/lib/python3.14/site-packages/oci/generative_ai_inference/models/guardrails_text_input.py
@@ -27107,15 +27111,19 @@
 /usr/local/lib/python3.14/site-packages/oci/object_storage/transfer/constants.py
 /usr/local/lib/python3.14/site-packages/oci/object_storage/transfer/internal/__init__.py
 /usr/local/lib/python3.14/site-packages/oci/object_storage/transfer/internal/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/object_storage/transfer/internal/__pycache__/additional_checksum.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/object_storage/transfer/internal/__pycache__/buffered_part_reader.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/object_storage/transfer/internal/__pycache__/file_read_callback_stream.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/object_storage/transfer/internal/__pycache__/md5.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/object_storage/transfer/internal/__pycache__/multipart_object_assembler.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/object_storage/transfer/internal/additional_checksum.py
 /usr/local/lib/python3.14/site-packages/oci/object_storage/transfer/internal/buffered_part_reader.py
+/usr/local/lib/python3.14/site-packages/oci/object_storage/transfer/internal/download/DownloadChecksumVerifier.py
 /usr/local/lib/python3.14/site-packages/oci/object_storage/transfer/internal/download/DownloadConfiguration.py
 /usr/local/lib/python3.14/site-packages/oci/object_storage/transfer/internal/download/DownloadManager.py
 /usr/local/lib/python3.14/site-packages/oci/object_storage/transfer/internal/download/DownloadThread.py
 /usr/local/lib/python3.14/site-packages/oci/object_storage/transfer/internal/download/__init__.py
+/usr/local/lib/python3.14/site-packages/oci/object_storage/transfer/internal/download/__pycache__/DownloadChecksumVerifier.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/object_storage/transfer/internal/download/__pycache__/DownloadConfiguration.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/object_storage/transfer/internal/download/__pycache__/DownloadManager.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/object_storage/transfer/internal/download/__pycache__/DownloadThread.cpython-314.pyc
@@ -27264,6 +27272,7 @@
 /usr/local/lib/python3.14/site-packages/oci/ocvp/models/__pycache__/hcx_license_summary.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/ocvp/models/__pycache__/initial_cluster_configuration.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/ocvp/models/__pycache__/initial_configuration.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/ocvp/models/__pycache__/inplace_upgrade_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/ocvp/models/__pycache__/management_appliance.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/ocvp/models/__pycache__/management_appliance_collection.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/ocvp/models/__pycache__/management_appliance_configuration.cpython-314.pyc
@@ -27350,6 +27359,7 @@
 /usr/local/lib/python3.14/site-packages/oci/ocvp/models/hcx_license_summary.py
 /usr/local/lib/python3.14/site-packages/oci/ocvp/models/initial_cluster_configuration.py
 /usr/local/lib/python3.14/site-packages/oci/ocvp/models/initial_configuration.py
+/usr/local/lib/python3.14/site-packages/oci/ocvp/models/inplace_upgrade_details.py
 /usr/local/lib/python3.14/site-packages/oci/ocvp/models/management_appliance.py
 /usr/local/lib/python3.14/site-packages/oci/ocvp/models/management_appliance_collection.py
 /usr/local/lib/python3.14/site-packages/oci/ocvp/models/management_appliance_configuration.py
