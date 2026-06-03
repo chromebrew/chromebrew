@@ -25,9 +25,8 @@ class Uriparser < CMake
 
   def self.patch
     patches = [
-      ['https://github.com/uriparser/uriparser/pull/316.diff', 'ae7f8880a6e7206a5e6492550217493c3b3a7e9e45e4f1d9c263870857dbe4b8'],
+      ['https://github.com/uriparser/uriparser/pull/316.diff', 'ae7f8880a6e7206a5e6492550217493c3b3a7e9e45e4f1d9c263870857dbe4b8']
     ]
     ConvenienceFunctions.patch(patches)
   end
-
 end
