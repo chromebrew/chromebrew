@@ -11,16 +11,16 @@ class Nano < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b77bd21b3d13314b479c5c3dde79e80adf0f150f829f2a9441cc77a8ad71f7f3',
-     armv7l: 'b77bd21b3d13314b479c5c3dde79e80adf0f150f829f2a9441cc77a8ad71f7f3',
-       i686: '6fe3e4b93f80ea64babde96c4ba7a3485bd29ceb6e8468e03ec6d005195d6614',
-     x86_64: '146bab1540de95d986b4f993d793eb61e7e0b4fc50cac40cc8d13dc2ad4853b6'
+    aarch64: '530f1c10941d636d7cc1e121a411186bfcb440dfe98c89cd1a469ec349a6af61',
+     armv7l: '530f1c10941d636d7cc1e121a411186bfcb440dfe98c89cd1a469ec349a6af61',
+       i686: '816d0643a4f8b037c1fcc5f8c18295c0c06a8ee382ac6319c224df5440b74d7a',
+     x86_64: 'ac1cf955b37fc1b1a235589e27a859d2aa45e2cff43e7ae38bb71a868c5e61e1'
   })
 
-  depends_on 'filecmd' # R
-  depends_on 'glibc' # R
-  depends_on 'ncurses' # R
-  depends_on 'zlib' # R
+  depends_on 'filecmd' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'ncurses' => :executable
+  depends_on 'zlib' => :executable
 
   autotools_configure_options '--enable-browser \
       --enable-color \
