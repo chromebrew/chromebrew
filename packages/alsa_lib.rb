@@ -18,6 +18,7 @@ class Alsa_lib < Autotools
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'python3' => :logical
 
   def self.patch
