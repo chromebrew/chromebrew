@@ -1,4 +1,4 @@
-# Total size: 2031292
+# Total size: 2107076
 /usr/local/bin/btop
 /usr/local/share/applications/btop.desktop
 /usr/local/share/btop/README.md
@@ -15,6 +15,8 @@
 /usr/local/share/btop/themes/everforest-light-medium.theme
 /usr/local/share/btop/themes/flat-remix-light.theme
 /usr/local/share/btop/themes/flat-remix.theme
+/usr/local/share/btop/themes/flexoki-dark.theme
+/usr/local/share/btop/themes/flexoki-light.theme
 /usr/local/share/btop/themes/gotham.theme
 /usr/local/share/btop/themes/greyscale.theme
 /usr/local/share/btop/themes/gruvbox_dark.theme
@@ -22,6 +24,7 @@
 /usr/local/share/btop/themes/gruvbox_light.theme
 /usr/local/share/btop/themes/gruvbox_material_dark.theme
 /usr/local/share/btop/themes/horizon.theme
+/usr/local/share/btop/themes/kanagawa-dragon.theme
 /usr/local/share/btop/themes/kanagawa-lotus.theme
 /usr/local/share/btop/themes/kanagawa-wave.theme
 /usr/local/share/btop/themes/kyli0x.theme
@@ -30,6 +33,7 @@
 /usr/local/share/btop/themes/night-owl.theme
 /usr/local/share/btop/themes/nord.theme
 /usr/local/share/btop/themes/onedark.theme
+/usr/local/share/btop/themes/orange.theme
 /usr/local/share/btop/themes/paper.theme
 /usr/local/share/btop/themes/phoenix-night.theme
 /usr/local/share/btop/themes/solarized_dark.theme
@@ -37,6 +41,7 @@
 /usr/local/share/btop/themes/tokyo-night.theme
 /usr/local/share/btop/themes/tokyo-storm.theme
 /usr/local/share/btop/themes/tomorrow-night.theme
+/usr/local/share/btop/themes/twilight.theme
 /usr/local/share/btop/themes/whiteout.theme
 /usr/local/share/icons/hicolor/48x48/apps/btop.png
 /usr/local/share/icons/hicolor/scalable/apps/btop.svg
