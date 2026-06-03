@@ -1,4 +1,4 @@
-# Total size: 776377
+# Total size: 777714
 /usr/local/bin/fc-cache
 /usr/local/bin/fc-cat
 /usr/local/bin/fc-conflist
@@ -9,7 +9,6 @@
 /usr/local/bin/fc-query
 /usr/local/bin/fc-scan
 /usr/local/bin/fc-validate
-/usr/local/etc/fonts/conf.d/05-macos.conf
 /usr/local/etc/fonts/conf.d/10-hinting-slight.conf
 /usr/local/etc/fonts/conf.d/10-scale-bitmap-fonts.conf
 /usr/local/etc/fonts/conf.d/10-sub-pixel-none.conf
@@ -42,7 +41,6 @@
 /usr/local/lib64/libfontconfig.so.1
 /usr/local/lib64/libfontconfig.so.1.17.0
 /usr/local/lib64/pkgconfig/fontconfig.pc
-/usr/local/share/fontconfig/conf.avail/05-macos.conf
 /usr/local/share/fontconfig/conf.avail/05-reset-dirs-sample.conf
 /usr/local/share/fontconfig/conf.avail/09-autohint-if-no-hinting.conf
 /usr/local/share/fontconfig/conf.avail/10-autohint.conf
