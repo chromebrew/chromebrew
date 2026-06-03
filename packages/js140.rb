@@ -9,32 +9,33 @@ class Js140 < Package
   version '140.11.0'
   license 'MPL-2.0'
   compatibility 'aarch64 armv7l x86_64'
-  source_url "https://archive.mozilla.org/pub/firefox/releases/#{version.split('-').first}esr/source/firefox-#{version.split('-').first}esr.source.tar.xz"
+  source_url "https://archive.mozilla.org/pub/firefox/releases/#{version}esr/source/firefox-#{version}esr.source.tar.xz"
   source_sha256 '1b034d2117356fda24807a151055132315c6ba58ad2bdf7ec71ee707fac5e028'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '20cc7045e2f2d41d8db93eaf8e7b78ce5ff77c51557e0a8e365bf4855751d4cd',
-     armv7l: '20cc7045e2f2d41d8db93eaf8e7b78ce5ff77c51557e0a8e365bf4855751d4cd',
-     x86_64: '733f2b3cf638515f8236465372e8d69585666dfbc46e48b4bc8a6d30072f92d4'
+    aarch64: 'e91f9878b75f8c934e271512ddb36e86c14675b4c1d89f236ba18b7ebbf0b487',
+     armv7l: 'e91f9878b75f8c934e271512ddb36e86c14675b4c1d89f236ba18b7ebbf0b487',
+     x86_64: '47f7228cefcdf8fdffcf80e66b00736b8d7929d3d4dfc90eb5282f204c6e34c3'
   })
 
   depends_on 'autoconf213' => :build
   depends_on 'cbindgen' => :build
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'icu4c' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'icu4c' => :library
   depends_on 'libnotify' => :build
   depends_on 'llvm_dev' => :build # llvm-objdump is needed.
-  depends_on 'ncurses' # R
-  depends_on 'nss' # R
+  depends_on 'ncurses' => :library
+  depends_on 'nss' => :library
   depends_on 'py3_maturin' => :build
   depends_on 'py3_pre_commit' => :build
   depends_on 'py3_pycairo' => :build
-  depends_on 'readline' # R
+  depends_on 'readline' => :library
   depends_on 'rust' => :build
   depends_on 'wget2' => :build
-  depends_on 'zlib' # R
+  depends_on 'zlib' => :library
 
   def self.patch
     patches = [
