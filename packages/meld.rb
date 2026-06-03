@@ -11,18 +11,24 @@ class Meld < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fd827ed76aceb0b6ce8b9966e045e28c8d331ec8b9e951a0df4267f46c34ed63',
-     armv7l: 'fd827ed76aceb0b6ce8b9966e045e28c8d331ec8b9e951a0df4267f46c34ed63',
-     x86_64: '440e9fa0612eacc6e9b9ba8fd61aecc80136d12fc48ec848552d281389b71ceb'
+    aarch64: '967dbdc9fb8254e73b47d8d426303c8cd578a9b0ba9e72ea19c217eb56b9d3b7',
+     armv7l: '967dbdc9fb8254e73b47d8d426303c8cd578a9b0ba9e72ea19c217eb56b9d3b7',
+     x86_64: 'cb3c04c221d83be9ecf6d8aa3bb8b427454cee1edc17be256a59c0d3920aed95'
   })
 
   depends_on 'desktop_file_utils' => :logical
   depends_on 'gtk3' => :build
   depends_on 'gtksourceview_4' => :logical
+  depends_on 'xvfb' => :build
+  depends_on 'py3_itstool' => :build
   depends_on 'py3_libxml2' => :logical
-  depends_on 'py3_pycairo' => :logical
+  depends_on 'py3cairo' => :logical
   depends_on 'py3_pygobject' => :logical
   depends_on 'python3' => :logical
 
   gnome
+
+  def self.patch
+    system "sed -i 's,/usr,#{CREW_PREFIX},g' bin/meld"
+  end
 end

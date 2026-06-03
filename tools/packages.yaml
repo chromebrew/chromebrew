@@ -8180,6 +8180,11 @@ url: https://github.com/pypa/wheel/releases
 activity: low
 ---
 kind: url
+name: py3cairo
+url: https://github.com/pygobject/pycairo/releases
+activity: medium
+---
+kind: url
 name: pycharm
 url: https://www.jetbrains.com/pycharm/download/other.html
 activity: medium

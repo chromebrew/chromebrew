@@ -3,17 +3,17 @@ require 'buildsystems/meson'
 class Gtk3 < Meson
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://docs.gtk.org/gtk3/'
-  version '3.24.52'
+  version '3.24.52-1'
   license 'LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
-  git_hashtag version
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd9fa44b3c2edc9e189c61cecbb674d825cafdf67f3b0f84a0275fe87b907ddcd',
-     armv7l: 'd9fa44b3c2edc9e189c61cecbb674d825cafdf67f3b0f84a0275fe87b907ddcd',
-     x86_64: '7e0d065cec961d5c5eddf20000beab56972b3c4d75714b012d3222cdca0d0b23'
+    aarch64: '6f247a1052a064b705eaf7c9667c9dc8dbcd0c11858424bb00277d9ca7a22e97',
+     armv7l: '6f247a1052a064b705eaf7c9667c9dc8dbcd0c11858424bb00277d9ca7a22e97',
+     x86_64: '3ac65210c8dd54e07ae3f20c8be6ef3b957a16ccb2ee53175b6c964052cb510c'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
@@ -30,6 +30,7 @@ class Gtk3 < Meson
   depends_on 'ghostscript' => :build
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gobject_introspection' => :build
   depends_on 'graphene' => :build # Do we need this?
   depends_on 'graphite' => :build # Do we need this?
@@ -55,6 +56,7 @@ class Gtk3 < Meson
   depends_on 'libxrandr' => :library
   depends_on 'mesa' => :build
   depends_on 'pango' => :library
+  depends_on 'py3cairo' => :logical
   depends_on 'rest' => :build
   depends_on 'shaderc' => :build
   depends_on 'shared_mime_info' => :logical

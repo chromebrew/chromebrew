@@ -114,6 +114,7 @@ CREW_ANITYA_PACKAGE_NAME_MAPPINGS = Set[
   { pkg_name: 'procps', anitya_pkg: 'procps-ng', comments: '' },
   { pkg_name: 'pthread_stubs', anitya_pkg: 'libpthread-stubs', comments: '' },
   { pkg_name: 'py3_atspi', anitya_pkg: 'pyatspi', comments: '' },
+  { pkg_name: 'py3cairo', anitya_pkg: 'pycairo', comments: '' },
   { pkg_name: 'python3', anitya_pkg: 'python314', comments: '' },
   { pkg_name: 'rdfind', anitya_pkg: 'rdfind', comments: 'Prefer to GitHub' },
   { pkg_name: 'rest', anitya_pkg: 'librest', comments: 'Anitya has a package called rest, but we want librest.' },
