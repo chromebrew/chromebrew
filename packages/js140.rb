@@ -6,11 +6,11 @@ require 'package'
 class Js140 < Package
   description 'JavaScript interpreter and libraries - Version 140'
   homepage 'https://spidermonkey.dev/'
-  version '140.4.0-1'
+  version '140.11.0'
   license 'MPL-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://archive.mozilla.org/pub/firefox/releases/#{version.split('-').first}esr/source/firefox-#{version.split('-').first}esr.source.tar.xz"
-  source_sha256 '49f20673171046bc7b64f4caa340c46e1e105b9107f0ef68b7a94f379bcea4f7'
+  source_sha256 '1b034d2117356fda24807a151055132315c6ba58ad2bdf7ec71ee707fac5e028'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -37,9 +37,14 @@ class Js140 < Package
   depends_on 'zlib' # R
 
   def self.patch
-    # As per https://bugzilla.mozilla.org/show_bug.cgi?id=1973994
-    system "sed -i '/* js_config_h */i #undef XP_UNIX' js/src/js-config.h.in"
-    system "sed -i '/* js_config_h */i #undef XP_WIN' js/src/js-config.h.in"
+    patches = [
+      ['https://gitlab.archlinux.org/archlinux/packaging/packages/js140/-/raw/main/0001-Bug-1973994-mozjs-140.pc-does-not-contain-DXP_UNIX-o.patch?ref_type=heads&inline=false', 'b5178a7b8a603b645cbae61467f3fa1fef6e9f34c90e4a22faf4ea2152a50fba'],
+      ['https://gitlab.archlinux.org/archlinux/packaging/packages/js140/-/raw/main/0002-Bug-1969769-Change-uses-of-ast.Str-with-ast.Constant.patch?ref_type=heads&inline=false', '941db682a37888582eb1608b936d57c73d7ce4377f4831c73cabb56745734013'],
+      ['https://gitlab.archlinux.org/archlinux/packaging/packages/js140/-/raw/main/0003-Bug-1983713-Use-non-deprecated-ast-value.-r-firefox-.patch?ref_type=heads&inline=false', 'a8ed1bf4a0e17118fe6e11b33840d9a2ab7023deb377c44d23a51f9daad06d1e'],
+      ['https://gitlab.archlinux.org/archlinux/packaging/packages/js140/-/raw/main/0004-Bug-1983736-Patch-jsonschema-to-work-with-Python-3.1.patch?ref_type=heads&inline=false', '5173051257f4fd8ed7c0811f01126a6a0f17c9ab6e561b4e0a89cc67509ccdc5'],
+      ['https://gitlab.archlinux.org/archlinux/packaging/packages/js140/-/raw/main/0005-Bug-1993797-Fix-AST-parsing-in-DecoratorVisitor-for-.patch?ref_type=heads&inline=false', 'ab43fa4fc086926e03bb0fcd2e7a0fac16a9f498461661951d043dc2ba41ca33']
+    ]
+    ConvenienceFunctions.patch(patches)
   end
 
   def self.build
@@ -71,7 +76,7 @@ class Js140 < Package
       # note: Crates cannot set `RUSTC_BOOTSTRAP` themselves, as doing so would subvert the stability guarantees of Rust for your project.
       # help: If you're sure you want to do this in your project, set the environment variable `RUSTC_BOOTSTRAP=packed_simd` before running cargo instead.
       #
-      ENV['RUSTC_BOOTSTRAP'] = 'packed_simd,packed_simd_2,encoding_rs'
+      # ENV['RUSTC_BOOTSTRAP'] = 'packed_simd,packed_simd_2,encoding_rs'
       system "CFLAGS='-fcf-protection=none' \
             CXXFLAGS='-fcf-protection=none' \
             CC=gcc \
@@ -81,6 +86,8 @@ class Js140 < Package
             CARGO_HOME='#{CREW_PREFIX}/share/cargo' \
             LDFLAGS='-lreadline -ltinfo' \
             MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip \
+            MOZ_BUILD_DATE=#{`date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%Y%m%d%H%M%S)`.chomp} \
+            MOZ_NOSPAM=1 \
             MOZCONFIG=../.mozconfig \
             ../mach build"
     end
