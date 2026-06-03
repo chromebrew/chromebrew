@@ -1,37 +1,37 @@
-require 'buildsystems/autotools'
+require 'buildsystems/meson'
 
-class Audacious < Autotools
+class Audacious < Meson
   description 'Audacious is an open source audio player.'
   homepage 'https://audacious-media-player.org/'
-  version '4.5.1'
+  version '4.6'
   license 'BSD-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://distfiles.audacious-media-player.org/audacious-#{version}.tar.bz2"
-  source_sha256 '1ea5e0f871c6a8b2318e09a9d58fc573fe3f117ae0d8d163b60cc05b2ce7c405'
+  source_sha256 '03988a6a114e46f91dabcd4d0dae29fcad19f6029e3c28737938d1bd525979dd'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6fc8c8358b4376cd4b3d7953e2287e0c1b63e6e8ef6b0ac009f43ba6dca9b439',
-     armv7l: '6fc8c8358b4376cd4b3d7953e2287e0c1b63e6e8ef6b0ac009f43ba6dca9b439',
-     x86_64: 'a67a555c3517b4497e556c0737412581dc64c7a06f6c7b91c3adae4bd30cc681'
+    aarch64: 'c9ce972c1c0c2c55a3aced050ec028bf52b3a7d466f6bc09839782a6c913d65a',
+     armv7l: 'c9ce972c1c0c2c55a3aced050ec028bf52b3a7d466f6bc09839782a6c913d65a',
+     x86_64: '7ed6d408a8c11c0f0a0b5e6a54c295ce4c8c80eae10676d0c6b91dda9caf96dd'
   })
 
+  depends_on 'at_spi2_core' => :build
   # depends_on 'audacious_plugins' => :runtime
-  depends_on 'at_spi2_core' # R
-  depends_on 'cairo' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'gdk_pixbuf' # R
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
-  depends_on 'gtk3' # R
-  depends_on 'harfbuzz' # R
-  depends_on 'pango' # R
+  depends_on 'cairo' => :library
+  depends_on 'gcc_lib' => :library
+  depends_on 'gdk_pixbuf' => :library
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'gtk3' => :library
+  depends_on 'harfbuzz' => :build
+  depends_on 'pango' => :library
   depends_on 'sommelier' => :logical
-  depends_on 'xdg_base'
-  depends_on 'zlib' # R
+  depends_on 'xdg_base' => :logical
+  depends_on 'zlib' => :build
 
-  autotools_configure_options '--disable-dbus \
-                               --disable-qt'
+  meson_options '-Ddbus=false -Dqt=false'
 
   def self.postinstall
     ExitMessage.add <<~EOM

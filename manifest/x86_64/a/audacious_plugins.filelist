@@ -1,4 +1,4 @@
-# Total size: 6598136
+# Total size: 6721584
 /usr/local/lib64/audacious/Container/asx.so
 /usr/local/lib64/audacious/Container/asx3.so
 /usr/local/lib64/audacious/Container/audpl.so
@@ -19,10 +19,12 @@
 /usr/local/lib64/audacious/General/albumart.so
 /usr/local/lib64/audacious/General/aosd.so
 /usr/local/lib64/audacious/General/delete-files.so
+/usr/local/lib64/audacious/General/filebrowser.so
 /usr/local/lib64/audacious/General/gtkui.so
 /usr/local/lib64/audacious/General/hotkey.so
 /usr/local/lib64/audacious/General/lyrics-gtk.so
 /usr/local/lib64/audacious/General/mpris2.so
+/usr/local/lib64/audacious/General/playback-history.so
 /usr/local/lib64/audacious/General/playlist-manager.so
 /usr/local/lib64/audacious/General/scrobbler.so
 /usr/local/lib64/audacious/General/search-tool.so
@@ -95,6 +97,7 @@
 /usr/local/share/audacious/Skins/Default/pledit.txt
 /usr/local/share/audacious/Skins/Default/posbar.png
 /usr/local/share/audacious/Skins/Default/shufrep.png
+/usr/local/share/audacious/Skins/Default/skin-classic.hints
 /usr/local/share/audacious/Skins/Default/skin.hints
 /usr/local/share/audacious/Skins/Default/text.png
 /usr/local/share/audacious/Skins/Default/titlebar.png

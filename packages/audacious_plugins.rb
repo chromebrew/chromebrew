@@ -1,46 +1,47 @@
-require 'buildsystems/autotools'
+require 'buildsystems/meson'
 
-class Audacious_plugins < Autotools
+class Audacious_plugins < Meson
   description 'Audacious is an open source audio player.'
   homepage 'https://github.com/audacious-media-player/audacious-plugins'
-  version '4.5.1'
+  version '4.6'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://distfiles.audacious-media-player.org/audacious-plugins-#{version}.tar.bz2"
-  source_sha256 'f4feedc32776acfa9d24701d3b794fc97822f76da6991e91e627e70e561fdd3b'
+  source_sha256 'ce708bca0194d3a1b2b8a89a2892e1c7798f374593563fb21c4c64b24ab8d83a'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4590895debbab7dff1a6cfeae080d2b77a8ac15afcfc1872685ecbe60b650aac',
-     armv7l: '4590895debbab7dff1a6cfeae080d2b77a8ac15afcfc1872685ecbe60b650aac',
-     x86_64: 'cb2ebdf7ff22f173a9ac532017013496d5f7f2367edd2e3eef2e4673ae06f3c8'
+    aarch64: 'f60e95c190df4badde9f8957607b6e368274adc175dfcded30d7df083f06ba1e',
+     armv7l: 'f60e95c190df4badde9f8957607b6e368274adc175dfcded30d7df083f06ba1e',
+     x86_64: 'bdf6ba5ef9442bfcd907b6493b0ec5f68f45e89dd13d4e2901366e8cc0457eb7'
   })
 
-  depends_on 'alsa_lib' # R
-  depends_on 'at_spi2_core' # R
-  depends_on 'audacious' # R
-  depends_on 'cairo' # R
-  depends_on 'curl' # R
-  depends_on 'flac' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'gdk_pixbuf' # R
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
-  depends_on 'gtk3' # R
-  depends_on 'harfbuzz' # R
-  depends_on 'json_glib' # R
-  depends_on 'libglvnd' # R
-  depends_on 'libogg' # R
-  depends_on 'libvorbis' # R
-  depends_on 'libx11' # R
-  depends_on 'libxcomposite' # R
-  depends_on 'libxml2' # R
-  depends_on 'libxrender' # R
-  depends_on 'mpg123' # R
-  depends_on 'neon' # R
-  depends_on 'pango' # R
-  depends_on 'wavpack'
-  depends_on 'zlib' # R
+  depends_on 'alsa_lib' => :library
+  depends_on 'at_spi2_core' => :build
+  depends_on 'audacious' => :library
+  depends_on 'cairo' => :library
+  depends_on 'curl' => :library
+  depends_on 'flac' => :library
+  depends_on 'gcc_lib' => :library
+  depends_on 'gdk_pixbuf' => :library
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'gtk3' => :library
+  depends_on 'harfbuzz' => :build
+  depends_on 'json_glib' => :library
+  depends_on 'libglvnd' => :library
+  depends_on 'libogg' => :library
+  depends_on 'libvorbis' => :library
+  depends_on 'libx11' => :library
+  depends_on 'libxcomposite' => :library
+  depends_on 'libxml2' => :library
+  depends_on 'libxrender' => :library
+  depends_on 'mpg123' => :library
+  depends_on 'neon' => :library
+  depends_on 'pango' => :library
+  depends_on 'wavpack' => :library
+  depends_on 'zlib' => :library
 
-  autotools_configure_options '--disable-opus --disable-qt'
+  meson_options '-Dopus=false -Dqt=false'
 end
