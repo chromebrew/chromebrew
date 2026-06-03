@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Audacious < Autotools
   description 'Audacious is an open source audio player.'
   homepage 'https://audacious-media-player.org/'
-  version '4.5.1'
+  version '4.6'
   license 'BSD-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://distfiles.audacious-media-player.org/audacious-#{version}.tar.bz2"
-  source_sha256 '1ea5e0f871c6a8b2318e09a9d58fc573fe3f117ae0d8d163b60cc05b2ce7c405'
+  source_sha256 '03988a6a114e46f91dabcd4d0dae29fcad19f6029e3c28737938d1bd525979dd'
   binary_compression 'tar.zst'
 
   binary_sha256({
