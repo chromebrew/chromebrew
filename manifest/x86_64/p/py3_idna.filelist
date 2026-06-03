@@ -1,12 +1,12 @@
-# Total size: 498163
+# Total size: 499361
 /usr/local/bin/idna
-/usr/local/lib/python3.14/site-packages/idna-3.17.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/idna-3.17.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/idna-3.17.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/idna-3.17.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/idna-3.17.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/idna-3.17.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/idna-3.17.dist-info/licenses/LICENSE.md
+/usr/local/lib/python3.14/site-packages/idna-3.18.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/idna-3.18.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/idna-3.18.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/idna-3.18.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/idna-3.18.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/idna-3.18.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/idna-3.18.dist-info/licenses/LICENSE.md
 /usr/local/lib/python3.14/site-packages/idna/__init__.py
 /usr/local/lib/python3.14/site-packages/idna/__main__.py
 /usr/local/lib/python3.14/site-packages/idna/__pycache__/__init__.cpython-314.pyc
