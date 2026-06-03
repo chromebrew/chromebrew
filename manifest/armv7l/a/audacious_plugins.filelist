@@ -1,4 +1,4 @@
-# Total size: 6059624
+# Total size: 5793112
 /usr/local/lib/audacious/Container/asx.so
 /usr/local/lib/audacious/Container/asx3.so
 /usr/local/lib/audacious/Container/audpl.so
@@ -19,10 +19,12 @@
 /usr/local/lib/audacious/General/albumart.so
 /usr/local/lib/audacious/General/aosd.so
 /usr/local/lib/audacious/General/delete-files.so
+/usr/local/lib/audacious/General/filebrowser.so
 /usr/local/lib/audacious/General/gtkui.so
 /usr/local/lib/audacious/General/hotkey.so
 /usr/local/lib/audacious/General/lyrics-gtk.so
 /usr/local/lib/audacious/General/mpris2.so
+/usr/local/lib/audacious/General/playback-history.so
 /usr/local/lib/audacious/General/playlist-manager.so
 /usr/local/lib/audacious/General/scrobbler.so
 /usr/local/lib/audacious/General/search-tool.so
@@ -95,6 +97,7 @@
 /usr/local/share/audacious/Skins/Default/pledit.txt
 /usr/local/share/audacious/Skins/Default/posbar.png
 /usr/local/share/audacious/Skins/Default/shufrep.png
+/usr/local/share/audacious/Skins/Default/skin-classic.hints
 /usr/local/share/audacious/Skins/Default/skin.hints
 /usr/local/share/audacious/Skins/Default/text.png
 /usr/local/share/audacious/Skins/Default/titlebar.png
