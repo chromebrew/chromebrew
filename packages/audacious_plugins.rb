@@ -17,7 +17,7 @@ class Audacious_plugins < Meson
   })
 
   depends_on 'alsa_lib' => :library
-  depends_on 'at_spi2_core' # R
+  depends_on 'at_spi2_core' => :build
   depends_on 'audacious' => :library
   depends_on 'cairo' => :library
   depends_on 'curl' => :library
@@ -28,7 +28,7 @@ class Audacious_plugins < Meson
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
   depends_on 'gtk3' => :library
-  depends_on 'harfbuzz' # R
+  depends_on 'harfbuzz' => :build
   depends_on 'json_glib' => :library
   depends_on 'libglvnd' => :library
   depends_on 'libogg' => :library

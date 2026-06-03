@@ -25,7 +25,7 @@ class Audacious < Meson
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
   depends_on 'gtk3' => :library
-  depends_on 'harfbuzz' # R
+  depends_on 'harfbuzz' => :build
   depends_on 'pango' => :library
   depends_on 'sommelier' => :logical
   depends_on 'xdg_base' => :logical
