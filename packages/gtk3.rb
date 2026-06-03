@@ -16,7 +16,6 @@ class Gtk3 < Meson
      x86_64: '3ac65210c8dd54e07ae3f20c8be6ef3b957a16ccb2ee53175b6c964052cb510c'
   })
 
-  # L = Logical Dependency, R = Runtime Dependency
   depends_on 'adwaita_fonts' => :logical
   depends_on 'adwaita_icon_theme' => :logical
   depends_on 'at_spi2_core' => :library
@@ -25,7 +24,7 @@ class Gtk3 < Meson
   depends_on 'docbook' => :build
   depends_on 'fontconfig' => :library
   depends_on 'fribidi' => :library
-  depends_on 'gcc_lib' # R
+  depends_on 'gcc_lib' => :library
   depends_on 'gdk_pixbuf' => :library
   depends_on 'ghostscript' => :build
   depends_on 'glib' => :library
