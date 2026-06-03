@@ -1,13 +1,13 @@
-require 'buildsystems/autotools'
+require 'buildsystems/meson'
 
-class Audacious_plugins < Autotools
+class Audacious_plugins < Meson
   description 'Audacious is an open source audio player.'
   homepage 'https://github.com/audacious-media-player/audacious-plugins'
-  version '4.5.1'
+  version '4.6'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://distfiles.audacious-media-player.org/audacious-plugins-#{version}.tar.bz2"
-  source_sha256 'f4feedc32776acfa9d24701d3b794fc97822f76da6991e91e627e70e561fdd3b'
+  source_sha256 'ce708bca0194d3a1b2b8a89a2892e1c7798f374593563fb21c4c64b24ab8d83a'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -42,5 +42,5 @@ class Audacious_plugins < Autotools
   depends_on 'wavpack'
   depends_on 'zlib' # R
 
-  autotools_configure_options '--disable-opus --disable-qt'
+  meson_options '-Dopus=false -Dqt=false'
 end
