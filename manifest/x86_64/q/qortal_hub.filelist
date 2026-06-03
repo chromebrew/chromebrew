@@ -1,22 +1,19 @@
-# Total size: 305276810
+# Total size: 312893262
 /usr/local/bin/qortal-hub
-/usr/local/share/applications/Qortal Hub.desktop
-/usr/local/share/icons/hicolor/1024x1024/apps/Qortal Hub.png
-/usr/local/share/icons/hicolor/128x128/apps/Qortal Hub.png
-/usr/local/share/icons/hicolor/16x16/apps/Qortal Hub.png
-/usr/local/share/icons/hicolor/24x24/apps/Qortal Hub.png
-/usr/local/share/icons/hicolor/256x256/apps/Qortal Hub.png
-/usr/local/share/icons/hicolor/32x32/apps/Qortal Hub.png
-/usr/local/share/icons/hicolor/48x48/apps/Qortal Hub.png
-/usr/local/share/icons/hicolor/512x512/apps/Qortal Hub.png
-/usr/local/share/icons/hicolor/64x64/apps/Qortal Hub.png
-/usr/local/share/icons/hicolor/96x96/apps/Qortal Hub.png
+/usr/local/share/applications/qortal-hub.desktop
+/usr/local/share/icons/hicolor/1024x1024/apps/qortal-hub.png
+/usr/local/share/icons/hicolor/128x128/apps/qortal-hub.png
+/usr/local/share/icons/hicolor/16x16/apps/qortal-hub.png
+/usr/local/share/icons/hicolor/24x24/apps/qortal-hub.png
+/usr/local/share/icons/hicolor/256x256/apps/qortal-hub.png
+/usr/local/share/icons/hicolor/32x32/apps/qortal-hub.png
+/usr/local/share/icons/hicolor/48x48/apps/qortal-hub.png
+/usr/local/share/icons/hicolor/512x512/apps/qortal-hub.png
+/usr/local/share/icons/hicolor/64x64/apps/qortal-hub.png
+/usr/local/share/icons/hicolor/96x96/apps/qortal-hub.png
 /usr/local/share/qortal_hub/AppRun
 /usr/local/share/qortal_hub/LICENSE.electron.txt
 /usr/local/share/qortal_hub/LICENSES.chromium.html
-/usr/local/share/qortal_hub/Qortal Hub
-/usr/local/share/qortal_hub/Qortal Hub.desktop
-/usr/local/share/qortal_hub/Qortal Hub.png
 /usr/local/share/qortal_hub/chrome-sandbox
 /usr/local/share/qortal_hub/chrome_100_percent.pak
 /usr/local/share/qortal_hub/chrome_200_percent.pak
@@ -82,6 +79,9 @@
 /usr/local/share/qortal_hub/locales/vi.pak
 /usr/local/share/qortal_hub/locales/zh-CN.pak
 /usr/local/share/qortal_hub/locales/zh-TW.pak
+/usr/local/share/qortal_hub/qortal-hub
+/usr/local/share/qortal_hub/qortal-hub.desktop
+/usr/local/share/qortal_hub/qortal-hub.png
 /usr/local/share/qortal_hub/qortal_hub.sh
 /usr/local/share/qortal_hub/resources.pak
 /usr/local/share/qortal_hub/resources/app-update.yml
