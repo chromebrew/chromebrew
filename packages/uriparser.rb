@@ -1,6 +1,3 @@
-# Adapted from Arch Linux uriparser PKGBUILD at:
-# https://gitlab.archlinux.org/archlinux/packaging/packages/uriparser/-/blob/main/PKGBUILD?ref_type=heads
-
 require 'buildsystems/cmake'
 
 class Uriparser < CMake
@@ -8,7 +5,8 @@ class Uriparser < CMake
   homepage 'https://github.com/uriparser/uriparser'
   version '1.0.2'
   license 'BSD-3'
-  compatibility 'all'
+  compatibility 'aarch64 armv7l x86_64'
+  min_glibc '2.29'
   source_url 'https://github.com/uriparser/uriparser.git'
   git_hashtag "uriparser-#{version}"
   binary_compression 'tar.zst'
@@ -16,12 +14,20 @@ class Uriparser < CMake
   binary_sha256({
     aarch64: '0c5e487a16d9f039f16ef94210342a6dfadd24e4c91775ce5207718890cb7127',
      armv7l: '0c5e487a16d9f039f16ef94210342a6dfadd24e4c91775ce5207718890cb7127',
-       i686: '00899aeb7218e127443df16e1a9c0dabbc96cfcb2a495a62a2e1109a2d8baaad',
      x86_64: '6d588afa003c86a827127f1e62761775bebf361a83247726bad57df3d839e543'
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 
   cmake_options '-DURIPARSER_BUILD_DOCS=OFF \
     -DURIPARSER_BUILD_TESTS=OFF'
+
+  def self.patch
+    patches = [
+      ['https://github.com/uriparser/uriparser/pull/316.diff', 'ae7f8880a6e7206a5e6492550217493c3b3a7e9e45e4f1d9c263870857dbe4b8'],
+    ]
+    ConvenienceFunctions.patch(patches)
+  end
+
 end
