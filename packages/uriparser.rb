@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Uriparser < CMake
   description 'uriparser is a strictly RFC 3986 compliant URI parsing library. uriparser is cross-platform, fast, supports Unicode'
   homepage 'https://github.com/uriparser/uriparser'
-  version '1.0.0'
+  version '1.0.2'
   license 'BSD-3'
   compatibility 'all'
   source_url 'https://github.com/uriparser/uriparser.git'
