@@ -3,11 +3,11 @@ require 'package'
 class Tika < Package
   description 'The Apache Tika™ toolkit detects and extracts metadata and text from over a thousand different file types (such as PPT, XLS, and PDF).'
   homepage 'https://tika.apache.org/'
-  version '3.3.0'
+  version '3.3.1'
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://dlcdn.apache.org/tika/#{version}/tika-app-#{version}.jar"
-  source_sha256 'df2d3013dc66ce6afcf3657046bbdd53145f90d30a645897ac43cd7de5528c4c'
+  source_sha256 '0e8ee9795ac4244feab466f4a5a9c3b94675af392848243842cb6e1e69d27103'
 
   depends_on 'openjdk17'
   depends_on 'libx11'
