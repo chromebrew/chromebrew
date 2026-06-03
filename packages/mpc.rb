@@ -11,15 +11,15 @@ class Mpc < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e2083196d2ce35edf739c9a324f3fb73474de7bff8a8c9446d05b0d53f465b9b',
-     armv7l: 'e2083196d2ce35edf739c9a324f3fb73474de7bff8a8c9446d05b0d53f465b9b',
-       i686: 'a9ffe02042d34189cee4e4015be7ab3c3541c0db15ad4c7e27ee57bd0314cbe4',
-     x86_64: '57493dcf7256ec86735f554da1bdb1255c7c46329cf4d52cbbd44cd74f6326c3'
+    aarch64: '79810ccbd42e9b9ba49116131662278b50b8745b595a8af6a5cf8eb596d8d3c4',
+     armv7l: '79810ccbd42e9b9ba49116131662278b50b8745b595a8af6a5cf8eb596d8d3c4',
+       i686: '64e3b21c1c5863a658f0643487e47b1309108c2723777dee55e096ebf176d7cd',
+     x86_64: 'c92f5d28994238579c9c812168a6cafd644cc486842d1b70938b391222f59131'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'gmp' # R
-  depends_on 'mpfr' # R
+  depends_on 'glibc' => :library
+  depends_on 'gmp' => :library
+  depends_on 'mpfr' => :library
 
   autotools_configure_options '--disable-maintainer-mode \
       --enable-shared'
