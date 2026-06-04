@@ -65,6 +65,7 @@ jobs:
             GLIBC_227_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do if grep -q min_glibc packages/"${i}".rb; then grep min_glibc packages/"${i}".rb | tr -d \' | awk '{exit $2 <= 2.27}' || echo "${i}" ; else echo "${i}" ; fi ; done | xargs -r)"
             if [[ -n ${GLIBC_227_COMPATIBLE_PACKAGES} ]]; then
               echo "GLIBC_227_COMPATIBLE_PACKAGES=${GLIBC_227_COMPATIBLE_PACKAGES}" >> "$GITHUB_ENV"
+              echo "GLIBC_227_COMPATIBLE_PACKAGES=${GLIBC_227_COMPATIBLE_PACKAGES}" >> "$GITHUB_OUTPUT"
               echo "PR #${{ github.event.pull_request.number }} has these possibly Glibc 2.27 compatible packages: ${GLIBC_227_COMPATIBLE_PACKAGES}"
             fi
 
@@ -117,7 +118,6 @@ jobs:
         run: |
           if [[ -n ${i686_PACKAGES} ]]; then
             echo "i686_min_glibc=2.23" >> "$GITHUB_OUTPUT"
-            echo "i686_min_glibc=2.23"
           fi
           if [[ -n ${x86_64_PACKAGES} ]]; then
             if [[ -n ${GLIBC_232_COMPATIBLE_PACKAGES} ]]; then
@@ -125,21 +125,16 @@ jobs:
               echo "x86_64_min_glibc=2.32"
             elif [[ -n ${GLIBC_237_COMPATIBLE_PACKAGES} ]]; then
               echo "x86_64_min_glibc=2.37" >> "$GITHUB_OUTPUT"
-              echo "x86_64_min_glibc=2.37"
             else
               echo "x86_64_min_glibc=2.27" >> "$GITHUB_OUTPUT"
-              echo "x86_64_min_glibc=2.27"
             fi
           fi
           if [[ -n ${armv7l_PACKAGES} ]]; then
             if [[ -n ${GLIBC_232_COMPATIBLE_PACKAGES} ]]; then
               echo "armv7l_min_glibc=2.32" >> "$GITHUB_OUTPUT"
-              echo "armv7l_min_glibc=2.32"
             elif [[ -n ${GLIBC_237_COMPATIBLE_PACKAGES} ]]; then
               echo "armv7l_min_glibc=2.37" >> "$GITHUB_OUTPUT"
-              echo "armv7l_min_glibc=2.37"
             else
               echo "armv7l_min_glibc=2.27" >> "$GITHUB_OUTPUT"
-              echo "armv7l_min_glibc=2.27"
             fi
           fi
