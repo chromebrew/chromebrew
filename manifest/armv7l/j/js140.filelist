@@ -1,4 +1,4 @@
-# Total size: 45817343
+# Total size: 45839159
 /usr/local/bin/js140
 /usr/local/bin/js140-config
 /usr/local/include/mozjs-140/BaseProfiler.h
@@ -149,6 +149,7 @@
 /usr/local/include/mozjs-140/js/experimental/PCCountProfiling.h
 /usr/local/include/mozjs-140/js/experimental/SourceHook.h
 /usr/local/include/mozjs-140/js/experimental/TypedData.h
+/usr/local/include/mozjs-140/js/friend/CycleCollector.h
 /usr/local/include/mozjs-140/js/friend/DOMProxy.h
 /usr/local/include/mozjs-140/js/friend/DumpFunctions.h
 /usr/local/include/mozjs-140/js/friend/ErrorMessages.h
