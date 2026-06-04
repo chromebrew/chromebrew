@@ -238,9 +238,9 @@ jobs:
       - name: Export target docker container to github context
         id: set-container-by-glibc
         run: |
-          case $TARGET_ARCH in
+          case "${TARGET_ARCH}" in
             x86_64)
-              case $x86_64_MIN_GLIBC in
+              case "${x86_64_MIN_GLIBC}" in
                 2.32)
                   echo "CONTAINER=satmandu/crewbuild:nocturne-x86_64.m97" >> "$GITHUB_ENV"
                   ;;
@@ -256,7 +256,7 @@ jobs:
               echo "LIB_SUFFIX=64" >> "$GITHUB_ENV"
               ;;
             armv7l)
-              case $armv7l_64_MIN_GLIBC in
+              case "${armv7l_64_MIN_GLIBC}" in
                 2.32)
                   echo "CONTAINER=satmandu/crewbuild:fievel-armv7l.m97" >> "$GITHUB_ENV"
                   ;;

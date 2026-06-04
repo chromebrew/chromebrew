@@ -1,5 +1,5 @@
 ---
-# Version 1.5
+# Version 1.6
 name: Build
 run-name: Build ${{ inputs.packages_to_build }} for ${{ inputs.build-on }} on branch ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} requested by @${{ github.actor }}
 on:
@@ -83,7 +83,6 @@ jobs:
       timestamp: ${{ steps.set-timestamp.outputs.TIMESTAMP }}  # https://stackoverflow.com/a/75142892
       current_head: ${{ steps.get-current-head.outputs.CURRENT_HEAD }}
       changed_packages: ${{ steps.changed-packages.outputs.CHANGED_PACKAGES }}
-      matrix: ${{ steps.set-generate-matrix.outputs.matrix }}
     steps:
       - name: Set Timestamp
         id: set-timestamp
@@ -101,7 +100,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
         run: |
-          PR_NUMBER=$(gh pr list -L 1 -s open -H ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} | cut -f1)
+          PR_NUMBER=$(gh pr list -L 1 -s open -H ${BRANCH} | cut -f1)
           if [[ -n ${PR_NUMBER} ]]; then
             echo "Setting ${PR_NUMBER} to Draft while workflow runs."
             gh pr ready --undo || true
@@ -129,7 +128,7 @@ jobs:
             # Add inputs.packages_to_build to the packages we will
             # check for architecture and glibc compatibility.
             if [[ -z "${{ steps.changed-files.outputs.packages_all_changed_files }} ${{ inputs.packages_to_build }}" ]]; then
-              echo "Branch ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} has no changed package files."
+              echo "Branch ${BRANCH} has no changed package files."
               exit 1
             fi
             # Convert "packages/foo.rb packages/bar.rb" (from steps.changed-files.outputs.packages_all_changed_files) into "foo bar"
@@ -152,15 +151,25 @@ jobs:
       - name: Generate Creation Matrix
         id: set-generate-matrix
         env:
+          i686_MIN_GLIBC: ${{ needs.get-compatibility.outputs.i686_min_glibc }}
           i686_PACKAGES: ${{ needs.get-compatibility.outputs.i686_PACKAGES }}
+          x86_64_MIN_GLIBC: ${{ needs.get-compatibility.outputs.x86_64_min_glibc }}
           x86_64_PACKAGES: ${{ needs.get-compatibility.outputs.x86_64_PACKAGES }}
+          armv7l_MIN_GLIBC: ${{ needs.get-compatibility.outputs.armv7l_min_glibc }}
           armv7l_PACKAGES: ${{ needs.get-compatibility.outputs.armv7l_PACKAGES }}
         run: |
           function join_by { local IFS="$1"; shift; echo "$*"; }
-          [[ -n "${i686_PACKAGES}" ]] && export CONTAINER_ARCH+=( "\"i686\"" )
+          if [[ -n "${i686_PACKAGES}" ]]; then
+            export CONTAINER_ARCH+=( "\"i686\"" )
+            export i686_MIN_GLIBC+=( "\"$i686_MIN_GLIBC\"" )
+          fi
           # Always run on x86_64
           export CONTAINER_ARCH+=( "\"x86_64\"" )
-          [[ -n "${armv7l_PACKAGES}" ]] && export CONTAINER_ARCH+=( "\"armv7l\"" )
+          export x86_64_MIN_GLIBC+=( "\"$x86_64_MIN_GLIBC\"" )
+          if [[ -n "${armv7l_PACKAGES}" ]]; then
+            export CONTAINER_ARCH+=( "\"armv7l\"" )
+            export armv7l_MIN_GLIBC+=( "\"$armv7l_MIN_GLIBC\"" )
+          fi
           export ARCHES="$(join_by , "${CONTAINER_ARCH[@]}")"
           echo "matrix=[${ARCHES}]" >> $GITHUB_OUTPUT
           echo "matrix=[${ARCHES}]"
@@ -188,7 +197,6 @@ jobs:
     env:
       CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES: 1
       CREW_REPO: ${{ github.event.repository.clone_url }}
-      CREW_BRANCH: ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
       TARGET_ARCH: ${{ matrix.arch }}
       TIMESTAMP: ${{ needs.setup.outputs.timestamp }}
       GLIBC_232_COMPATIBLE_PACKAGES: ${{ needs.get-compatibility.outputs.GLIBC_232_COMPATIBLE_PACKAGES }}
@@ -232,39 +240,48 @@ jobs:
           fetch-depth: 0
           persist-credentials: true
       - name: Export target docker container to github context
+        id: set-container-by-glibc
         run: |
-          case $TARGET_ARCH in
-              x86_64)
-                # Export the x86_64 container depending on whether this branch updates packages with appropriate minimum glibc.
-                if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=satmandu/crewbuild:nocturne-x86_64.m97" >> "$GITHUB_ENV"
-                elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=satmandu/crewbuild:hatch-x86_64.m148" >> "$GITHUB_ENV"
-                else
-                    echo "CONTAINER=satmandu/crew-pre-glibc-standalone:nocturne-x86_64.m90" >> "$GITHUB_ENV"
-                fi
-                echo "PLATFORM=linux/amd64" >> "$GITHUB_ENV"
-                echo "LIB_SUFFIX=64" >> "$GITHUB_ENV"
+          case "${TARGET_ARCH}" in
+            x86_64)
+              case "${x86_64_MIN_GLIBC}" in
+                2.32)
+                  echo "CONTAINER=satmandu/crewbuild:nocturne-x86_64.m97" >> "$GITHUB_ENV"
+                  ;;
+                2.37)
+                  echo "CONTAINER=satmandu/crewbuild:nocturne-x86_64.m97" >> "$GITHUB_ENV"
+                  ;;
+                *)
+                  # Fallback/default is the M90 Glibc 2.27 container.
+                  echo "CONTAINER=satmandu/crew-pre-glibc-standalone:nocturne-x86_64.m90" >> "$GITHUB_ENV"
+                  ;;
+              esac
+              echo "PLATFORM=linux/amd64" >> "$GITHUB_ENV"
+              echo "LIB_SUFFIX=64" >> "$GITHUB_ENV"
               ;;
-              armv7l)
-                # Export the armv7l container depending on whether this branch updates packages with appropriate minimum glibc.
-                if [[ $GLIBC_232_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=satmandu/crewbuild:fievel-armv7l.m97" >> "$GITHUB_ENV"
-                elif [[ $GLIBC_237_COMPATIBLE_PACKAGES ]]; then
-                    echo "CONTAINER=satmandu/crewbuild:strongbad-armv7l.m148" >> "$GITHUB_ENV"
-                else
-                    echo "CONTAINER=satmandu/crew-pre-glibc-standalone:fievel-armv7l.m91" >> "$GITHUB_ENV"
-                fi
-                echo "PLATFORM=linux/arm/v7" >> "$GITHUB_ENV"
-                echo "LIB_SUFFIX=" >> "$GITHUB_ENV"
+            armv7l)
+              case "${armv7l_64_MIN_GLIBC}" in
+                2.32)
+                  echo "CONTAINER=satmandu/crewbuild:fievel-armv7l.m97" >> "$GITHUB_ENV"
+                  ;;
+                2.37)
+                  echo "CONTAINER=satmandu/crewbuild:strongbad-armv7l.m148" >> "$GITHUB_ENV"
+                  ;;
+                *)
+                  # Fallback/default is the M91 Glibc 2.27 container.
+                  echo "CONTAINER=satmandu/crew-pre-glibc-standalone:fievel-armv7l.m91" >> "$GITHUB_ENV"
+                  ;;
+              esac
+              echo "PLATFORM=linux/arm/v7" >> "$GITHUB_ENV"
+              echo "LIB_SUFFIX=" >> "$GITHUB_ENV"
               ;;
-              i686)
-                # There is only one i686 container based upon M58 with glibc 2.23.
-                echo "CONTAINER=satmandu/crew-pre-glibc-standalone:alex-i686.m58" >> "$GITHUB_ENV"
-                echo "PLATFORM=linux/386" >> "$GITHUB_ENV"
-                echo "LIB_SUFFIX=" >> "$GITHUB_ENV"
+            i686)
+              # There is only one i686 container based upon M58 with glibc 2.23.
+              echo "CONTAINER=satmandu/crew-pre-glibc-standalone:alex-i686.m58" >> "$GITHUB_ENV"
+              echo "PLATFORM=linux/386" >> "$GITHUB_ENV"
+              echo "LIB_SUFFIX=" >> "$GITHUB_ENV"
               ;;
-            esac
+          esac
       - name: Run Updater in container
         id: run-updater
         if: ${{ !cancelled() }}
@@ -303,8 +320,8 @@ jobs:
             sudo apt-get autoremove -qq -o=Dpkg::Use-Pty=0 -y &>/dev/null) &
 
             git fetch origin
-            git checkout "${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}"
-            git reset --hard "origin/${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}"
+            git checkout "${BRANCH}"
+            git reset --hard "origin/${BRANCH}"
             git log --oneline -10
             docker pull --platform "${PLATFORM}" "${CONTAINER}"
             # Detection of /output/pkg_cache dir triggers setting
@@ -345,7 +362,7 @@ jobs:
               -e GCONV_PATH="/usr/local/lib${LIB_SUFFIX}/gconv" \
               -e CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES="${CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES}" \
               -e CREW_REPO="${CREW_REPO}" \
-              -e CREW_BRANCH="${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}" \
+              -e CREW_BRANCH="${BRANCH}" \
               -e GITLAB_TOKEN="${{ secrets.GITLAB_TOKEN }}" \
               -e GITLAB_TOKEN_USERNAME="${{ secrets.GITLAB_TOKEN_USERNAME }}" \
               ${CI_PASSTHROUGH} \
@@ -440,5 +457,5 @@ jobs:
           GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
           PR_TITLE: ${{ inputs.pr_title || inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
         run: |
-            echo "PR title being passed to the Generate PR workflow is: ${{ inputs.pr_title || inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}"
-            gh workflow run Generate-PR.yml -R ${{ github.repository }} -r ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} -f branch="${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}" -f packages_to_check_for_build="${{ inputs.packages_to_build }}" -f pr_label="${{ inputs.pr_label }}" -f draft_pr="${{ github.event.inputs.with_pr == 'Draft Pull Request' }}" -f pr_title="$(echo "${{ inputs.pr_title || inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}" | ( read -rsd '' x; echo ${x@Q} ))"
+            echo "PR title being passed to the Generate PR workflow is: ${BRANCH}"
+            gh workflow run Generate-PR.yml -R ${{ github.repository }} -r ${BRANCH} -f branch="${BRANCH}" -f packages_to_check_for_build="${{ inputs.packages_to_build }}" -f pr_label="${{ inputs.pr_label }}" -f draft_pr="${{ github.event.inputs.with_pr == 'Draft Pull Request' }}" -f pr_title="$(echo "${PR_TITLE}" | ( read -rsd '' x; echo ${x@Q} ))"
