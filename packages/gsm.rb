@@ -3,21 +3,22 @@ require 'package'
 class Gsm < Package
   description 'Shared libraries for GSM 06.10 lossy speech compression'
   homepage 'https://www.quut.com/gsm/'
-  version '1.0.23'
+  version '1.0.24'
   license 'gsm'
   compatibility 'all'
   source_url "https://www.quut.com/gsm/gsm-#{version}.tar.gz"
-  source_sha256 '8b7591a85ac9adce858f2053005e6b2eb20c23b8b8a868dffb2969645fa323c0'
+  source_sha256 'a3c40c6471928383f4abfcb2e8f24012a1f562be2f17b8d672145d5986681a92'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '659c0eb1a7140734d4c6cfbfedae38fd616956901f2d69530a01ff7169adb279',
-     armv7l: '659c0eb1a7140734d4c6cfbfedae38fd616956901f2d69530a01ff7169adb279',
-       i686: 'e48c6609c640a88d5eccc20dc9c44ebdeba8ff835d1b5bf94739bd5547db0547',
-     x86_64: 'bb114f37bbd159fbd29c473891b4f8ac3f8665dc0697a158f1508c02021e96e3'
+    aarch64: 'a692a3c60d8d84d3b7057180a826335df9e1a7e35662361e69954e50ecde2866',
+     armv7l: 'a692a3c60d8d84d3b7057180a826335df9e1a7e35662361e69954e50ecde2866',
+       i686: '518f2c55d8c5f7a2485cbff3c4929f28ce390cdbbc1d964b2f4fc69b4f6f6f55',
+     x86_64: '8031da6c2168e2d3f54b43b413c700d82f7d03158a4d6cc5cc3af4505dd829c0'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
 
   def self.build
     system "env CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
