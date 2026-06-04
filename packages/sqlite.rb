@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Sqlite < Autotools
   description 'SQLite is a self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine.'
   homepage 'https://www.sqlite.org/'
-  version '3.53.1'
+  version '3.53.2'
   license 'public-domain'
   compatibility 'all'
   source_url 'https://github.com/sqlite/sqlite.git'
@@ -11,10 +11,10 @@ class Sqlite < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a04f32e410a978fe63d56adb467675ff712253bec97b276fb0adee659ebf0705',
-     armv7l: 'a04f32e410a978fe63d56adb467675ff712253bec97b276fb0adee659ebf0705',
-       i686: 'c7597a3a9b32af7366ac17d3d4d5031ed11edfdb1f6e297cf1fb5fa51a75129a',
-     x86_64: 'f2376b78b38299979fa68112ab8ca04071a41db101b04b7d2a47ef36e8539a49'
+    aarch64: '7ef95626b603791b3986740e7ea6ebe7a9fef79843b745ceebdc679cf55e7571',
+     armv7l: '7ef95626b603791b3986740e7ea6ebe7a9fef79843b745ceebdc679cf55e7571',
+       i686: 'b104c8f6d769ed7d123acef05028df3a84de47935a8c68a312233fae4eb01f62',
+     x86_64: '081e9a2b68552a499351f145c37bd955acdebd9044e3548f9169b0c81e70b6a9'
   })
 
   depends_on 'gcc_lib' => :library
