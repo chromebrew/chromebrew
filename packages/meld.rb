@@ -1,36 +1,34 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Meld < Package
+class Meld < Meson
   description 'Meld is a visual diff and merge tool targeted at developers.'
   homepage 'https://meldmerge.org/'
-  version "3.23.0-#{CREW_PY_VER}"
+  version "3.23.1-#{CREW_PY_VER}"
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/meld.git'
-  git_hashtag '16224fb03d1652e2a5dc75e491719db539a106a0'
+  git_hashtag version.gsub("-#{CREW_PY_VER}", '')
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fd827ed76aceb0b6ce8b9966e045e28c8d331ec8b9e951a0df4267f46c34ed63',
-     armv7l: 'fd827ed76aceb0b6ce8b9966e045e28c8d331ec8b9e951a0df4267f46c34ed63',
-     x86_64: '440e9fa0612eacc6e9b9ba8fd61aecc80136d12fc48ec848552d281389b71ceb'
+    aarch64: '967dbdc9fb8254e73b47d8d426303c8cd578a9b0ba9e72ea19c217eb56b9d3b7',
+     armv7l: '967dbdc9fb8254e73b47d8d426303c8cd578a9b0ba9e72ea19c217eb56b9d3b7',
+     x86_64: 'cb3c04c221d83be9ecf6d8aa3bb8b427454cee1edc17be256a59c0d3920aed95'
   })
 
   depends_on 'desktop_file_utils' => :logical
-  depends_on 'gtk3' => :logical
+  depends_on 'gtk3' => :build
   depends_on 'gtksourceview_4' => :logical
+  depends_on 'xvfb' => :build
+  depends_on 'py3_itstool' => :build
   depends_on 'py3_libxml2' => :logical
-  depends_on 'py3_pycairo' => :logical
+  depends_on 'py3cairo' => :logical
   depends_on 'py3_pygobject' => :logical
   depends_on 'python3' => :logical
 
   gnome
 
-  def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/meld"
-    FileUtils.cp_r Dir['*'], "#{CREW_DEST_PREFIX}/share/meld"
-    FileUtils.install 'data/meld.1', "#{CREW_DEST_MAN_PREFIX}/man1/meld.1", mode: 0o644
-    FileUtils.ln_s "#{CREW_PREFIX}/share/meld/bin/meld", "#{CREW_DEST_PREFIX}/bin/meld"
+  def self.patch
+    system "sed -i 's,/usr,#{CREW_PREFIX},g' bin/meld"
   end
 end

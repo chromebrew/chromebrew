@@ -1,14 +1,14 @@
 require 'package'
-Package.load_package("#{__dir__}/py3_pycairo.rb")
+Package.load_package("#{__dir__}/py3cairo.rb")
 
 class Pycairo < Package
-  description Py3_pycairo.description
-  homepage Py3_pycairo.homepage
-  version Py3_pycairo.version
-  license Py3_pycairo.license
-  compatibility Py3_pycairo.compatibility
+  description Py3cairo.description
+  homepage Py3cairo.homepage
+  version Py3cairo.version
+  license Py3cairo.license
+  compatibility Py3cairo.compatibility
 
   is_fake
 
-  depends_on 'py3_pycairo'
+  depends_on 'py3cairo'
 end

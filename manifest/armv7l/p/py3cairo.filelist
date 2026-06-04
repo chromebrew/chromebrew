@@ -1,12 +1,10 @@
-# Total size: 426926
+# Total size: 403797
+/usr/local/include/pycairo/py3cairo.h
+/usr/local/lib/pkgconfig/py3cairo.pc
 /usr/local/lib/python3.14/site-packages/cairo/__init__.py
 /usr/local/lib/python3.14/site-packages/cairo/__init__.pyi
 /usr/local/lib/python3.14/site-packages/cairo/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/cairo/_cairo.cpython-314-arm-linux-gnueabihf.so
 /usr/local/lib/python3.14/site-packages/cairo/include/py3cairo.h
 /usr/local/lib/python3.14/site-packages/cairo/py.typed
-/usr/local/lib/python3.14/site-packages/pycairo-1.29.0.dist-info/INSTALLER
 /usr/local/lib/python3.14/site-packages/pycairo-1.29.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/pycairo-1.29.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/pycairo-1.29.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/pycairo-1.29.0.dist-info/WHEEL
