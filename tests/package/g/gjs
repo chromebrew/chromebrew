@@ -1,0 +1,5 @@
+#!/bin/bash
+gjs --help | head
+gjs --version
+gjs-console --help | head
+gjs-console --version
