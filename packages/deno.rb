@@ -6,7 +6,7 @@ require 'buildsystems/rust'
 class Deno < RUST
   description 'A secure runtime for JavaScript and TypeScript'
   homepage 'https://deno.land'
-  version '2.8.1'
+  version '2.8.2'
   license 'MIT'
   compatibility 'x86_64'
   source_url 'https://github.com/denoland/deno.git'
