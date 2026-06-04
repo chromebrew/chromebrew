@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Libmd < Autotools
   description 'libmd provides message digest functions found on BSD systems.'
   homepage 'https://www.hadrons.org/software/libmd/'
-  version '1.1.0'
+  version '1.2.0'
   license 'BSD-3, BSD-2, ISC, Beerware, public-domain'
   compatibility 'all'
   source_url 'https://git.hadrons.org/git/libmd.git'
