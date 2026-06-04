@@ -1,5 +1,5 @@
 ---
-# Version 1.3
+# Version 1.4
 name: Determine glibc and architecture package compatibility
 on:
   workflow_call:
@@ -72,6 +72,7 @@ jobs:
             GLIBC_232_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do grep min_glibc packages/"${i}".rb | tr -d \' | awk '{exit $2 <= 2.32}' || echo "${i}" ; done | xargs)"
             export GLIBC_232_COMPATIBLE_PACKAGES
             if [[ -n ${GLIBC_232_COMPATIBLE_PACKAGES} ]]; then
+              echo "GLIBC_232_COMPATIBLE_PACKAGES=${GLIBC_232_COMPATIBLE_PACKAGES}" >> "$GITHUB_ENV"
               echo "GLIBC_232_COMPATIBLE_PACKAGES=${GLIBC_232_COMPATIBLE_PACKAGES}" >> "$GITHUB_OUTPUT"
               echo "Branch ${CREW_BRANCH} has these possibly Glibc 2.32 compatible packages: ${GLIBC_232_COMPATIBLE_PACKAGES}"
             fi
@@ -80,6 +81,7 @@ jobs:
             GLIBC_237_COMPATIBLE_PACKAGES="$(for i in ${CHANGED_PACKAGES} ; do grep min_glibc packages/"${i}".rb | tr -d \' | awk '{exit $2 <= 2.37}' || echo "${i}" ; done | xargs)"
             export GLIBC_237_COMPATIBLE_PACKAGES
             if [[ -n ${GLIBC_237_COMPATIBLE_PACKAGES} ]]; then
+              echo "GLIBC_237_COMPATIBLE_PACKAGES=${GLIBC_237_COMPATIBLE_PACKAGES}" >> "$GITHUB_ENV"
               echo "GLIBC_237_COMPATIBLE_PACKAGES=${GLIBC_237_COMPATIBLE_PACKAGES}" >> "$GITHUB_OUTPUT"
               echo "Branch ${CREW_BRANCH} has these possibly Glibc 2.37 compatible packages: ${GLIBC_237_COMPATIBLE_PACKAGES}"
             fi
@@ -88,6 +90,7 @@ jobs:
             x86_64_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*x86_64" packages/"${i}".rb && echo "${i}"; done | xargs)"
             export x86_64_PACKAGES
             if [[ -n ${x86_64_PACKAGES} ]]; then
+              echo "x86_64_PACKAGES=${x86_64_PACKAGES}" >> "$GITHUB_ENV"
               echo "x86_64_PACKAGES=${x86_64_PACKAGES}" >> "$GITHUB_OUTPUT"
               echo "Branch ${CREW_BRANCH} has these x86_64 compatible packages: ${x86_64_PACKAGES}"
             fi
@@ -96,6 +99,7 @@ jobs:
             armv7l_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*armv7l" packages/"${i}".rb && echo "${i}"; done | xargs)"
             export armv7l_PACKAGES
             if [[ -n ${armv7l_PACKAGES} ]]; then
+              echo "armv7l_PACKAGES=${armv7l_PACKAGES}" >> "$GITHUB_ENV"
               echo "armv7l_PACKAGES=${armv7l_PACKAGES}" >> "$GITHUB_OUTPUT"
               echo "Branch ${CREW_BRANCH} has these armv7l compatible packages: ${armv7l_PACKAGES}"
             fi
@@ -104,6 +108,7 @@ jobs:
             i686_PACKAGES="$(for i in ${CHANGED_PACKAGES}; do grep -q "[[:space:]]compatibility.*all\|[[:space:]]compatibility.*i686" packages/"${i}".rb && echo "${i}"; done | xargs)"
             export i686_PACKAGES
             if [[ -n ${i686_PACKAGES} ]]; then
+              echo "i686_PACKAGES=${i686_PACKAGES}" >> "$GITHUB_ENV"
               echo "i686_PACKAGES=${i686_PACKAGES}" >> "$GITHUB_OUTPUT"
               echo "Branch ${CREW_BRANCH} has these i686 compatible packages: ${i686_PACKAGES}"
             fi
@@ -112,22 +117,29 @@ jobs:
         run: |
           if [[ -n ${i686_PACKAGES} ]]; then
             echo "i686_min_glibc=2.23" >> "$GITHUB_OUTPUT"
+            echo "i686_min_glibc=2.23"
           fi
           if [[ -n ${x86_64_PACKAGES} ]]; then
             if [[ -n ${GLIBC_232_COMPATIBLE_PACKAGES} ]]; then
               echo "x86_64_min_glibc=2.32" >> "$GITHUB_OUTPUT"
+              echo "x86_64_min_glibc=2.32"
             elif [[ -n ${GLIBC_237_COMPATIBLE_PACKAGES} ]]; then
               echo "x86_64_min_glibc=2.37" >> "$GITHUB_OUTPUT"
+              echo "x86_64_min_glibc=2.37"
             else
               echo "x86_64_min_glibc=2.27" >> "$GITHUB_OUTPUT"
+              echo "x86_64_min_glibc=2.27"
             fi
           fi
           if [[ -n ${armv7l_PACKAGES} ]]; then
             if [[ -n ${GLIBC_232_COMPATIBLE_PACKAGES} ]]; then
               echo "armv7l_min_glibc=2.32" >> "$GITHUB_OUTPUT"
+              echo "armv7l_min_glibc=2.32"
             elif [[ -n ${GLIBC_237_COMPATIBLE_PACKAGES} ]]; then
               echo "armv7l_min_glibc=2.37" >> "$GITHUB_OUTPUT"
+              echo "armv7l_min_glibc=2.37"
             else
               echo "armv7l_min_glibc=2.27" >> "$GITHUB_OUTPUT"
+              echo "armv7l_min_glibc=2.27"
             fi
           fi
