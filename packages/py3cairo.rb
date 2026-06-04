@@ -1,12 +1,11 @@
 require 'buildsystems/meson'
-Package.load_package("#{__dir__}/py3_pycairo.rb")
 
 class Py3cairo < Meson
-  description Py3_pycairo.description
-  homepage Py3_pycairo.homepage
-  version Py3_pycairo.version
-  license Py3_pycairo.license
-  compatibility Py3_pycairo.compatibility
+  description 'Pycairo is a provides bindings for the cairo graphics library.'
+  homepage 'https://cairographics.org/pycairo/'
+  version "1.29.0-#{CREW_PY_VER}"
+  license 'LGPL-2.1 or MPL-1.1'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/pygobject/pycairo.git'
   git_hashtag "v#{version.gsub("-#{CREW_PY_VER}", '')}"
   binary_compression 'tar.zst'
@@ -14,7 +13,11 @@ class Py3cairo < Meson
   depends_on 'cairo' => :library
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
+  depends_on 'harfbuzz' => :build
+  depends_on 'libxrender' => :build
+  depends_on 'libxxf86vm' => :build
   depends_on 'py3_pycairo' => :logical
+  depends_on 'python3' => :logical
 
   conflicts_ok
 end
