@@ -14,14 +14,15 @@ class Fastfetch < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e95bebd8f1403d93aa2b99d432141ab079b4534515838af7c0182bb0f1e9d91f',
-     armv7l: 'e95bebd8f1403d93aa2b99d432141ab079b4534515838af7c0182bb0f1e9d91f',
-     x86_64: '0b3a75500fefcbdaaa495bc31dcc1d29cac579a05c5c597ebd0aa730b0620e9a'
+    aarch64: '02626b346785704d3e9d18f7a3f2cc081e912220d876e0d3ae977b803051b4fd',
+     armv7l: '02626b346785704d3e9d18f7a3f2cc081e912220d876e0d3ae977b803051b4fd',
+     x86_64: 'b2e321d3faa2b15c11c4af6af10d12891dd98477b615f7ac72a46a715cbde60d'
   })
 
   depends_on 'chafa' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'sqlite' => :build
   depends_on 'yyjson' => :executable
 
