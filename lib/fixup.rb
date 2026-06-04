@@ -55,6 +55,7 @@ renamed_packages = Set[
   { pkg_name: 'asciidoc', pkg_rename: 'py3_asciidoc', comments: 'Renamed as a pip package.' },
   { pkg_name: 'aws', pkg_rename: 'aws_cli', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'aws_cli', pkg_rename: 'awscli', comments: 'Renamed to match pip package name.' },
+  { pkg_name: 'btm', pkg_rename: 'bottom', comments: 'Renamed to match github package name.' },
   { pkg_name: 'btrfsprogs', pkg_rename: 'btrfs_progs', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'bz2', pkg_rename: 'bzip2', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'bz3', pkg_rename: 'bzip3', comments: 'Renamed to better match upstream.' },
