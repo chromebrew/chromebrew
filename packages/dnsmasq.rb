@@ -3,11 +3,11 @@ require 'package'
 class Dnsmasq < Package
   description 'Lightweight, easy to configure DNS forward ,TFTP server and DHCP server'
   homepage 'https://thekelleys.org.uk/dnsmasq/doc.html'
-  version '2.92'
+  version '2.93'
   license 'GPL-2 or GPL-3'
   compatibility 'all'
   source_url "https://thekelleys.org.uk/dnsmasq/dnsmasq-#{version}.tar.xz"
-  source_sha256 '4bf50c2c1018f9fbc26037df51b90ecea0cb73d46162846763b92df0d6c3a458'
+  source_sha256 '0c00d4e5c97c8306e5fb932b348b34269c9c29a0e7df0e8e82958b407092bc19'
   binary_compression 'tar.zst'
 
   binary_sha256({
