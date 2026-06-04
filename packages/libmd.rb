@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Libmd < Autotools
   description 'libmd provides message digest functions found on BSD systems.'
   homepage 'https://www.hadrons.org/software/libmd/'
-  version '1.1.0'
+  version '1.2.0'
   license 'BSD-3, BSD-2, ISC, Beerware, public-domain'
   compatibility 'all'
   source_url 'https://git.hadrons.org/git/libmd.git'
@@ -11,11 +11,12 @@ class Libmd < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ce3644f76c0f6aea9b942e491f24705f7894546a0fa910a7558b95c0fe3f3680',
-     armv7l: 'ce3644f76c0f6aea9b942e491f24705f7894546a0fa910a7558b95c0fe3f3680',
-       i686: '86b5f02127f17691f83745eb8ca16014342e170fdfc6010a06fe69f0f701a847',
-     x86_64: 'c3686286a0de8dae5b6059ef30a262f4586fae65e3196a1b379c840e915b87cd'
+    aarch64: '4420e98e843d87743e72c1a65bd44661b65248e02cf7c61e016215c9be73e53a',
+     armv7l: '4420e98e843d87743e72c1a65bd44661b65248e02cf7c61e016215c9be73e53a',
+       i686: '1b2d97d8a5dab22921f831040dafbaf2b6f6c2b1c89095534afb8a0c430badfc',
+     x86_64: '631ecf25882cd2cf44a5be2727b45b94f7a32588cfda6249d13536c7e6efa49a'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 end
