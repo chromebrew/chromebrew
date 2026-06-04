@@ -10,6 +10,12 @@ class Py3cairo < Meson
   git_hashtag "v#{version.gsub("-#{CREW_PY_VER}", '')}"
   binary_compression 'tar.zst'
 
+  binary_sha256({
+    aarch64: '0c4dabe05355a5753cdb449584f81093aad714aae34e5e507759b616bd24ad59',
+     armv7l: '0c4dabe05355a5753cdb449584f81093aad714aae34e5e507759b616bd24ad59',
+     x86_64: '57ab0997fcf80d0855dba1483cc17a89f33bdc2bab7a02b302caab9a8bc96faf'
+  })
+
   depends_on 'cairo' => :library
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
