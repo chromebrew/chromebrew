@@ -1,0 +1,2 @@
+#!/bin/bash
+gnome-weather -h
