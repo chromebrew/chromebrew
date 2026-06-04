@@ -18,6 +18,7 @@ class Dnsmasq < Package
   })
 
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
 
   def self.build
     system 'make'
