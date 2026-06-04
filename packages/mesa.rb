@@ -95,7 +95,7 @@ class Mesa < Meson
     # Currently build is locked to use the older version of the spirv_llvm_translator.
     system "sed -i \"s#'< @0@.@1@'.format(chosen_llvm_version_major, chosen_llvm_version_minor + 1) ]#'< @0@.@1@'.format(chosen_llvm_version_major + 1, chosen_llvm_version_minor + 1) ]#\" meson.build"
 
-    if version.gsub("-#{CREW_LLVM_VER}", '') == '26.1.1' && ARCH.include?('armv7l')
+    if version.gsub("-#{CREW_LLVM_VER}", '') == '26.1.2' && ARCH.include?('armv7l')
       patch = [
         [
           # See https://gitlab.freedesktop.org/mesa/mesa/-/work_items/15553
