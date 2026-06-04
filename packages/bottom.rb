@@ -1,8 +1,8 @@
 require 'package'
 
-class Btm < Package
+class Bottom < Package
   description 'Yet another cross-platform graphical process/system monitor.'
-  homepage 'https://clementtsang.github.io/bottom'
+  homepage 'https://github.com/ClementTsang/bottom'
   version '0.12.3'
   license 'MIT'
   compatibility 'all'
