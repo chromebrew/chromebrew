@@ -13,7 +13,7 @@ class Libinput < Meson
   binary_sha256({
     aarch64: '9e4e62ac029c12cc62721f3b8d456a1aa68948ffd1f55f7dbb77709e22df683a',
      armv7l: '9e4e62ac029c12cc62721f3b8d456a1aa68948ffd1f55f7dbb77709e22df683a',
-     x86_64: 'e199cf4bd49a86594120dd2455f1022a994478e59487ea7a427962c3529126b5'
+     x86_64: '22ea78e69136b1bf0f29136c3b059f889dc7272c0103c83488c658159fbd96cb'
   })
 
   depends_on 'check' => :build
