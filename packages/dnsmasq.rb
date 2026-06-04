@@ -3,21 +3,22 @@ require 'package'
 class Dnsmasq < Package
   description 'Lightweight, easy to configure DNS forward ,TFTP server and DHCP server'
   homepage 'https://thekelleys.org.uk/dnsmasq/doc.html'
-  version '2.92'
+  version '2.93'
   license 'GPL-2 or GPL-3'
   compatibility 'all'
   source_url "https://thekelleys.org.uk/dnsmasq/dnsmasq-#{version}.tar.xz"
-  source_sha256 '4bf50c2c1018f9fbc26037df51b90ecea0cb73d46162846763b92df0d6c3a458'
+  source_sha256 '0c00d4e5c97c8306e5fb932b348b34269c9c29a0e7df0e8e82958b407092bc19'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '909462504985225785fe23c88806120a7f1a544b2ce47ff221e4d2cd3fc28f57',
-     armv7l: '909462504985225785fe23c88806120a7f1a544b2ce47ff221e4d2cd3fc28f57',
-       i686: 'c76c7b8bad418e3f64b8fca2eab47d64a1ac5b21cf06b948f0ea19a8c0985607',
-     x86_64: '9670b1ee33df42da9078e77b568f3edacaf994c9d326b48bea53114a708bb758'
+    aarch64: '702292824296ccc79a9b8f31c035ca0ae7791ece642d3602843caa56b2477a5c',
+     armv7l: '702292824296ccc79a9b8f31c035ca0ae7791ece642d3602843caa56b2477a5c',
+       i686: '3998248188e21b0dd99c6c9352379df918e0c92b756bdff274958219c2fd8b96',
+     x86_64: '96843f71acbb663b27e93d6ba6655ea34ec2b73a4c8ccbd7fb2f79ad2411ad75'
   })
 
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
 
   def self.build
     system 'make'
