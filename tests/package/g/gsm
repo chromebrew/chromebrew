@@ -1,0 +1,7 @@
+#!/bin/bash
+tcat -h | head -5
+tcat -v
+toast -h | head -5
+toast -v
+untoast -h | head -5
+untoast -v
