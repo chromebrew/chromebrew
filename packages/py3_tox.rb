@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_tox < Pip
   description 'Command line driven CI frontend and development task automation tool.'
   homepage 'https://tox.readthedocs.io/'
-  version "4.55.0-#{CREW_PY_VER}"
+  version "4.55.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5078e5311f85c1a3e90306410c63eaf9fb7bcee0f02a77e0bd62ed223710660c',
-     armv7l: '5078e5311f85c1a3e90306410c63eaf9fb7bcee0f02a77e0bd62ed223710660c',
-       i686: '6ba6d9c84a5345b244bbb7c94990677d519a20133abfcb8daf663df505b93972',
-     x86_64: '899832a2249a08d039045d7ee2761b9284e2ffe2c07098adfc8c27cf1f2a6910'
+    aarch64: 'dd92a3f20af53f0ba173ca3e8245c7b075a1fd9da66a1f95de49ea4e95925dea',
+     armv7l: 'dd92a3f20af53f0ba173ca3e8245c7b075a1fd9da66a1f95de49ea4e95925dea',
+       i686: 'e199b73852e54d11cdc8a8c69289c95faec16316c07c107fad8fe54d5b12a626',
+     x86_64: '9204a6b27dea62d5112875a11956e0bc75e9b7b1616a806fa54211af9b745663'
   })
 
   depends_on 'py3_filelock'
