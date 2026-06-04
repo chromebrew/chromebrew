@@ -11,14 +11,14 @@ class Abseil_cpp < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cdcd076ce54bd07dbc52a2cc138ed14646fd93e8f7a1f4f88a8d0fc4ef51fced',
-     armv7l: 'cdcd076ce54bd07dbc52a2cc138ed14646fd93e8f7a1f4f88a8d0fc4ef51fced',
-       i686: '7c2d3bbe606941acbf0980f1ffa493ea93684a47e403a3588845884818050804',
-     x86_64: '548b1c0158896314545442212543cf304fc582e27fe3eb60f54c8695035f8791'
+    aarch64: 'a2405bafbac0153884d3514b6a5fb30b6a03fc29edc95f63b5e1f404267ff963',
+     armv7l: 'a2405bafbac0153884d3514b6a5fb30b6a03fc29edc95f63b5e1f404267ff963',
+       i686: 'd9aa0741924b4d37a2905ed160dd8f7eb3cd8e4dbb34fe40fd6d709b0af8061a',
+     x86_64: '5d06a71cd98873472fd2432fe3cd94ffd0e238e3c0a4442fc749129d57d0f06b'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
 
   cmake_options '-DBUILD_SHARED_LIBS=ON'
 end
