@@ -1,2 +1,24 @@
-# Total size: 108
+# Total size: 281252
 /usr/local/etc/bash.d/10-nvm.sh
+/usr/local/share/nvm/.dockerignore
+/usr/local/share/nvm/.editorconfig
+/usr/local/share/nvm/.mailmap
+/usr/local/share/nvm/.npmrc
+/usr/local/share/nvm/AGENTS.md
+/usr/local/share/nvm/CLAUDE.md
+/usr/local/share/nvm/CODE_OF_CONDUCT.md
+/usr/local/share/nvm/CONTRIBUTING.md
+/usr/local/share/nvm/Dockerfile
+/usr/local/share/nvm/GOVERNANCE.md
+/usr/local/share/nvm/LICENSE.md
+/usr/local/share/nvm/Makefile
+/usr/local/share/nvm/PROJECT_CHARTER.md
+/usr/local/share/nvm/README.md
+/usr/local/share/nvm/ROADMAP.md
+/usr/local/share/nvm/bash_completion
+/usr/local/share/nvm/install.sh
+/usr/local/share/nvm/nvm-exec
+/usr/local/share/nvm/nvm.sh
+/usr/local/share/nvm/package.json
+/usr/local/share/nvm/rename_test.sh
+/usr/local/share/nvm/update_test_mocks.sh

@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# build_updated_packages version 5.3 (for Chromebrew)
+# build_updated_packages version 5.4 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -241,10 +241,14 @@ def order_recursive_deps(d_pkg_input)
     merge_base = merge_base.merge(dependency_graphs[p])
     # puts "#{"#{__LINE__}: " if CREW_VERBOSE}merge_base.order is now #{merge_base.order}".lightpurple
   end
-  package_deps_build_order = merge_base.order.to_set(&:to_s)
-  # Want the intersection of these sets, but the intersection appears
-  # to reorder the result, which isn't what we want.
-  return package_deps_build_order.delete_if { !input_pkgs.include? it }.to_a
+  if merge_base.nil?
+    return p
+  else
+    package_deps_build_order = merge_base.order.to_set(&:to_s)
+    # Want the intersection of these sets, but the intersection appears
+    # to reorder the result, which isn't what we want.
+    return package_deps_build_order.delete_if { !input_pkgs.include? it }.to_a
+  end
 end
 
 # Do not execute anything if we are required as a library rather than being run as a script.
@@ -306,7 +310,8 @@ if updated_packages.empty?
 else
   updated_packages.uniq!
   updated_packages.delete_if { !PackageUtils.compatible?(Package.load_package(File.join(crew_local_repo_root, it.downcase))) }
-  updated_packages_reordered = order_recursive_deps(updated_packages.map { it.sub('packages/', '').sub('.rb', '') }).map { "packages/#{it}.rb" }
+  cleaned_updated_packages = updated_packages.map { it.sub('packages/', '').sub('.rb', '') }
+  updated_packages_reordered = cleaned_updated_packages.nil? ? updated_packages.map { "packages/#{it}.rb" } : order_recursive_deps(cleaned_updated_packages).map { "packages/#{it}.rb" }
   puts 'These packages will be checked to see if they need updated binaries:'.orange
   unless updated_packages == updated_packages_reordered
     puts "#{"#{__LINE__}: " if CREW_VERBOSE}Packages to check have been reordered!".lightpurple
