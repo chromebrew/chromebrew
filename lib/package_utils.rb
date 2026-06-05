@@ -144,9 +144,12 @@ class PackageUtils
     request = Net::HTTP::Get.new(url.path)
     begin
       response = http.request(request)
-    rescue OpenSSL::SSL::SSLError
-      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-      puts "SSL error for https://rubygems.org with SSL_CERT_DIR #{SSL_CERT_DIR}.".lightred
+    rescue OpenSSL::SSL::SSLError => e
+      # See https://github.com/ruby/openssl/issues/949 for some
+      # discussion of this error.
+      # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      puts "SSL error for https://rubygems.org with SSL_CERT_DIR #{SSL_CERT_DIR}:\n#{e}\n Using /et/ssl/certs SSL_CERT_DIR fallback.".lightred if CREW_VERBOSE
+      http.ca_path = '/etc/ssl/certs'
       response = http.request(request)
     end
     ruby_gem_json = JSON.parse(response.body)

@@ -93,7 +93,7 @@ class Command
 
     return false if !force && to_copy_filelist && !Package.agree_default_yes("\nWould you like to copy #{local_filelist} to crew and start the #{operation}")
 
-    if to_copy_package && File.file?(local_package)
+    if to_copy_package && File.file?(local_package) && !FileUtils.compare_file(local_package, crew_package)
       FileUtils.copy_file(local_package, crew_package)
       puts "Copied #{local_package} to #{CREW_PACKAGES_PATH}".lightgreen
     end
