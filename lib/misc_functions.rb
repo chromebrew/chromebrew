@@ -5,6 +5,9 @@ require_relative 'color'
 
 class MiscFunctions
   def self.human_size(bytes)
+    # Handle if function is passed nil because disk space can not be
+    # determined.
+    return 'Unknown YB' if bytes.nil?
     kilobyte = 1024.0
     megabyte = kilobyte * kilobyte
     gigabyte = megabyte * kilobyte

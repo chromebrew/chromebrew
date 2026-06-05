@@ -1247,7 +1247,8 @@ def resolve_dependencies_and_install(no_advisory: false, ignore_dependencies: fa
                  else
                    resolve_dependencies + [@pkg.name]
                  end
-    free_space   = `df --output=avail #{CREW_PREFIX}`.lines(chomp: true).last.to_i * 1024
+    df_free_space, = Open3.capture3("df --output=avail #{CREW_PREFIX}")
+    free_space = df_free_space.empty? ? nil : df_free_space.lines(chomp: true).last.to_i * 1024
     install_size = to_install.sum do |pkg|
       filelist = "#{CREW_LIB_PATH}/manifest/#{ARCH}/#{pkg[0]}/#{pkg}.filelist"
       if File.exist?(filelist)
@@ -1257,7 +1258,7 @@ def resolve_dependencies_and_install(no_advisory: false, ignore_dependencies: fa
       end
     end
 
-    if free_space < install_size
+    if !free_space.nil? && free_space < install_size
       abort <<~EOT.chomp.lightred
         #{@pkg.name.capitalize} needs #{MiscFunctions.human_size(install_size)} of disk space to install.
 
@@ -1272,7 +1273,7 @@ def resolve_dependencies_and_install(no_advisory: false, ignore_dependencies: fa
 
         #{to_install.join(' ')}
 
-        After installation, #{MiscFunctions.human_size(install_size)} of extra disk space will be taken. (#{MiscFunctions.human_size(free_space)} of free disk space available)
+        After installation, #{MiscFunctions.human_size(install_size)} of extra disk space will be taken. (#{MiscFunctions.human_size(free_space)} of free disk space available.)
 
       EOT
 
