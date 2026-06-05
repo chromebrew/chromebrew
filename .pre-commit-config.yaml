@@ -14,7 +14,7 @@ repos:
       - id: shellcheck
         exclude: tools
   - repo: https://github.com/markdownlint/markdownlint
-    rev: v0.13.0
+    rev: v0.17.0
     hooks:
       - id: markdownlint
         args: [-s.mdl_style.rb]
