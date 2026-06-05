@@ -23,6 +23,7 @@ class Py3_pre_commit < Pip
   depends_on 'py3_pyyaml' => :logical
   depends_on 'py3_virtualenv' => :logical
   depends_on 'python3' => :logical
+  depends_on 'shellcheck' => :executable
 
   no_source_build
 
