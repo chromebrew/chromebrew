@@ -1,5 +1,5 @@
 ---
-# Version 2.0
+# Version 2.1
 name: Unit Tests
 on:
   check_run:
@@ -59,6 +59,7 @@ jobs:
           echo "Concurrency Group: ${CONCURRENCY_GROUP}"
       - name: Get GH Token
         id: get_workflow_token
+        if: ${{ github.repository_owner == 'chromebrew' }}
         uses: peter-murray/workflow-application-token-action@v4
         with:
           application_id: ${{ secrets.APPLICATION_ID }}
@@ -72,7 +73,7 @@ jobs:
           ref: ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
       - name: Remove Reviewers
         env:
-          GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
+          GH_TOKEN: ${{ steps.get_workflow_token.outputs.token || secrets.CREW_PR_TOKEN || secrets.GITHUB_TOKEN }}
         run: |
           echo "Removing chromebew/active from requested reviewers while Unit Tests are run on ${BRANCH}."
           gh pr edit ${BRANCH} --remove-reviewer chromebrew/active || true
@@ -300,6 +301,7 @@ jobs:
     steps:
       - name: Get GH Token
         id: get_workflow_token
+        if: ${{ github.repository_owner == 'chromebrew' }}
         uses: peter-murray/workflow-application-token-action@v4
         with:
           application_id: ${{ secrets.APPLICATION_ID }}
@@ -314,7 +316,7 @@ jobs:
       - name: fail and convert to draft if container_test jobs failed
         if: ${{ contains(needs.*.result, 'failure') }}
         env:
-          GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
+          GH_TOKEN: ${{ steps.get_workflow_token.outputs.token || secrets.CREW_PR_TOKEN || secrets.GITHUB_TOKEN }}
         run: |
           gh pr ready --undo || true
           exit 1
