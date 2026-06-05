@@ -1,5 +1,5 @@
 ---
-# Version 2.2
+# Version 2.1
 name: Unit Tests
 on:
   check_run:
@@ -56,8 +56,8 @@ jobs:
         run: |
           echo "Concurrency Group: ${CONCURRENCY_GROUP}"
       - name: Get GH Token
+        if: github.event.pull_request.base.repo.full_name == 'chromebrew/chromebrew'
         id: get_workflow_token
-        if: ${{ github.repository_owner == 'chromebrew' }}
         uses: peter-murray/workflow-application-token-action@v4
         with:
           application_id: ${{ secrets.APPLICATION_ID }}
@@ -297,8 +297,8 @@ jobs:
     if: ${{ !cancelled() }}
     steps:
       - name: Get GH Token
+        if: github.event.pull_request.base.repo.full_name == 'chromebrew/chromebrew'
         id: get_workflow_token
-        if: ${{ github.repository_owner == 'chromebrew' }}
         uses: peter-murray/workflow-application-token-action@v4
         with:
           application_id: ${{ secrets.APPLICATION_ID }}
