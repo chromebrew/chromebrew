@@ -148,7 +148,7 @@ class PackageUtils
       # See https://github.com/ruby/openssl/issues/949 for some
       # discussion of this error.
       # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-      puts "SSL error for https://rubygems.org with SSL_CERT_DIR #{SSL_CERT_DIR}:\n#{e}\n Using /et/ssl/certs SSL_CERT_DIR fallback.".lightred if CREW_VERBOSE
+      puts "SSL error for https://rubygems.org with SSL_CERT_DIR #{SSL_CERT_DIR}:\n#{e}\n Using /etc/ssl/certs SSL_CERT_DIR fallback.".lightred if CREW_VERBOSE
       http.ca_path = '/etc/ssl/certs'
       response = http.request(request)
     end
