@@ -68,6 +68,7 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: true
+          repository: ${{ github.event.pull_request.head.repo.full_name || github.event.repository.full_name }}
           ref: ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
       - name: Remove Reviewers
         env:
@@ -309,6 +310,7 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: true
+          repository: ${{ github.event.pull_request.head.repo.full_name || github.event.repository.full_name }}
           ref: ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
       - name: fail and convert to draft if container_test jobs failed
         if: ${{ contains(needs.*.result, 'failure') }}
