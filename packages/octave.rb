@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Octave < Autotools
   description 'Scientific Programming Language'
   homepage 'https://octave.org/'
-  version '9.4.0'
+  version '11.3.0'
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://ftp.gnu.org/gnu/octave/octave-#{version}.tar.lz"
-  source_sha256 'dcb2c098701cfcbc083f07e90e146261d15cdbf5e89c031032422112c89b47da'
+  source_sha256 '4057e37ec2cbf98a78ca3412e56718ba567c3797a77b9bfd8cb2c2b8e044b270'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -35,7 +35,21 @@ class Octave < Autotools
   depends_on 'openblas' # R
   depends_on 'pcre2' # R
   depends_on 'readline' # R
+  depends_on 'texinfo' => :build
+  depends_on 'texlive_bin' => :build
   depends_on 'zlib' # R
 
   run_tests
+
+  def self.prebuild
+    # The c11threads threads.h breaks builds on software that uses gnulib.
+    # See: https://github.com/jtsiomb/c11threads/issues/19
+    # Note that c11threads is a workaround for C11 Threads only being
+    # introduced in Glibc 2.28 as per:
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=14092#c10
+    if LIBC_VERSION.to_f < 2.28 && ENV['NESTED_CI']
+      puts 'Removing the c11threads include/threads.h from the c11threads package to prevent build failures.'.orange
+      FileUtils.rm_f "#{CREW_PREFIX}/include/threads.h"
+    end
+  end
 end
