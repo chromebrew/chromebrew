@@ -1,5 +1,5 @@
 ---
-# Version 2.1
+# Version 2.2
 name: Unit Tests
 on:
   check_run:
@@ -25,7 +25,6 @@ env:
   BRANCH: ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
 jobs:
   debug:
-    if: ${{ github.repository_owner == 'chromebrew' }}
     runs-on: ubuntu-24.04
     steps:
       - name: Dump GitHub context
@@ -41,7 +40,6 @@ jobs:
           STEPS_CONTEXT: ${{ toJson(steps) }}
         run: echo "$STEPS_CONTEXT"
   setup:
-    if: ${{ github.repository_owner == 'chromebrew' }}
     runs-on: ubuntu-24.04
     concurrency:
       group: ${{ github.workflow }}-${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}-${{ github.sha }}
@@ -146,7 +144,6 @@ jobs:
           echo "matrix=[${ARCHES}]"
 
   container_tests:
-    if: ${{ github.repository_owner == 'chromebrew' }}
     needs:
       - setup
       - gen-matrix
