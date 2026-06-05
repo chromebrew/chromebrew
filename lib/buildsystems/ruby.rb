@@ -128,7 +128,7 @@ def install_gem_deps(gem_name = nil, gem_version = nil, gem_deps = nil)
       else
         install_pkg = Package.load_package("packages/#{gem_dep}.rb")
         crewlog "#{install_pkg.name} installed".orange if PackageUtils.installed?(install_pkg.name)
-        system("yes | crew install #{gem_dep}")
+        system("crew install -f #{gem_dep}")
       end
     else
       puts "Will not install #{gem_dep} from a Chromebrew package, as one does not exist.".orange
@@ -187,7 +187,7 @@ class RUBY < Package
 
     Kernel.system "gem fetch #{@ruby_gem_name} --platform=ruby --version=#{@ruby_gem_version}"
     Kernel.system "gem unpack #{@ruby_gem_name}-#{@ruby_gem_version}.gem"
-    system 'gem install --no-update-sources -N gem-compiler --conservative' unless Kernel.system('gem compile --help 2>/dev/null', %i[out err] => File::NULL)
+    system 'gem install --ignore-dependencies --no-update-sources -N gem-compiler --conservative' unless Kernel.system('gem compile --help 2>/dev/null', %i[out err] => File::NULL)
     system "gem compile --strip --prune #{@ruby_gem_name}-#{@ruby_gem_version}.gem -O #{CREW_DEST_DIR}/ -- --build-flags --with-cflags='#{CREW_LINKER_FLAGS}' --with-ldflags='#{CREW_LINKER_FLAGS}'"
     @just_built_gem = true
   end
@@ -219,7 +219,7 @@ class RUBY < Package
       end
       if File.file?("#{CREW_DEST_DIR}/#{@ruby_gem_name}-#{@ruby_gem_version}-#{GEM_ARCH}.gem") && (gem_sha256 == gem_pkg_sha256sum || @just_built_gem)
         puts "Installing #{@ruby_gem_name} gem #{@ruby_gem_version}...".orange
-        Kernel.system "gem install --no-update-sources -N --local #{CREW_DEST_DIR}/#{@ruby_gem_name}-#{@ruby_gem_version}-#{GEM_ARCH}.gem --conservative"
+        Kernel.system "gem install --ignore-dependencies --no-update-sources -N --local #{CREW_DEST_DIR}/#{@ruby_gem_name}-#{@ruby_gem_version}-#{GEM_ARCH}.gem --conservative"
       end
     elsif !@gem_latest_version_installed || Gem::Version.new(@ruby_gem_version) <= Gem::Version.new(@json_gem_pkg_version)
       puts "Updating #{@ruby_gem_name} gem: #{@gem_installed_version} 🔜 #{@ruby_gem_version} ...".orange
