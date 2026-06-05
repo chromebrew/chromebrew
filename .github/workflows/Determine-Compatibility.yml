@@ -1,5 +1,5 @@
 ---
-# Version 1.4
+# Version 1.5
 name: Determine glibc and architecture package compatibility
 on:
   workflow_call:
@@ -54,6 +54,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with:
+          repository: ${{ github.event.pull_request.head.repo.full_name || github.event.repository.full_name }}
           ref: ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
       - name: Determine glibc and architecture package compatibility
         id: get-compatibility
