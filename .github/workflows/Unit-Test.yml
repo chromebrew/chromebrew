@@ -25,7 +25,6 @@ env:
   BRANCH: ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
 jobs:
   debug:
-    if: ${{ github.repository_owner == 'chromebrew' }}
     runs-on: ubuntu-24.04
     steps:
       - name: Dump GitHub context
@@ -41,7 +40,6 @@ jobs:
           STEPS_CONTEXT: ${{ toJson(steps) }}
         run: echo "$STEPS_CONTEXT"
   setup:
-    if: ${{ github.repository_owner == 'chromebrew' }}
     runs-on: ubuntu-24.04
     concurrency:
       group: ${{ github.workflow }}-${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}-${{ github.sha }}
@@ -58,8 +56,8 @@ jobs:
         run: |
           echo "Concurrency Group: ${CONCURRENCY_GROUP}"
       - name: Get GH Token
+        if: github.event.pull_request.head.repo.full_name == 'chromebrew/chromebrew'
         id: get_workflow_token
-        if: ${{ github.repository_owner == 'chromebrew' }}
         uses: peter-murray/workflow-application-token-action@v4
         with:
           application_id: ${{ secrets.APPLICATION_ID }}
@@ -70,6 +68,7 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: true
+          repository: ${{ github.event.pull_request.head.repo.full_name || github.event.repository.full_name }}
           ref: ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
       - name: Remove Reviewers
         env:
@@ -146,7 +145,6 @@ jobs:
           echo "matrix=[${ARCHES}]"
 
   container_tests:
-    if: ${{ github.repository_owner == 'chromebrew' }}
     needs:
       - setup
       - gen-matrix
@@ -178,6 +176,7 @@ jobs:
       - uses: actions/checkout@v6
         with:
           persist-credentials: true
+          repository: ${{ github.event.pull_request.head.repo.full_name || github.event.repository.full_name }}
           ref: ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
       - name: Dump GitHub context
         env:
@@ -300,8 +299,8 @@ jobs:
     if: ${{ !cancelled() }}
     steps:
       - name: Get GH Token
+        if: github.event.pull_request.head.repo.full_name == 'chromebrew/chromebrew'
         id: get_workflow_token
-        if: ${{ github.repository_owner == 'chromebrew' }}
         uses: peter-murray/workflow-application-token-action@v4
         with:
           application_id: ${{ secrets.APPLICATION_ID }}
@@ -312,6 +311,7 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: true
+          repository: ${{ github.event.pull_request.head.repo.full_name || github.event.repository.full_name }}
           ref: ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
       - name: fail and convert to draft if container_test jobs failed
         if: ${{ contains(needs.*.result, 'failure') }}
