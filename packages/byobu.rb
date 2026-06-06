@@ -11,10 +11,10 @@ class Byobu < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7e6994e2ef1258bf6ca61a9cedcb54f04400e9a861178f9a99ce8e80c9e81a97',
-     armv7l: '7e6994e2ef1258bf6ca61a9cedcb54f04400e9a861178f9a99ce8e80c9e81a97',
-       i686: 'dd31c5606e9e59e731b129e7263616ea069ea4812b6d553d1e14ee37279171f6',
-     x86_64: '09c1e69468bfe01f99f59bb9535f3321ac4072855b4d964c1e8a7b6f9f704fb8'
+    aarch64: 'fae97c2055e22f1c7426b2ee58592c2cd1649e904c552d1c4254479a06a2608d',
+     armv7l: 'fae97c2055e22f1c7426b2ee58592c2cd1649e904c552d1c4254479a06a2608d',
+       i686: 'a5ca3b37b3e230b845cd15754e91d189b5e59039dfe74ecbc5e734d75351b125',
+     x86_64: 'bafe968bd5150b1c2c66f06e9bcceeaaafdd89b14e92cdc7d5740d3542e9812b'
   })
 
   depends_on 'tmux' unless File.exist? "#{CREW_PREFIX}/bin/screen"
