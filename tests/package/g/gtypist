@@ -1,0 +1,3 @@
+#!/bin/bash
+gtypist -h | head
+gtypist -V
