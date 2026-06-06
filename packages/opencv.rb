@@ -14,39 +14,40 @@ class Opencv < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4936c541862b0886a0f0e8ee99732420c42079f65f0f0ba7eedf844bfabaa4e2',
-     armv7l: '4936c541862b0886a0f0e8ee99732420c42079f65f0f0ba7eedf844bfabaa4e2',
-     x86_64: 'f5e59a546262219b0e30ff490a8eed7b9667f813729f4dc5a0701003603a20ca'
+    aarch64: 'ec7a825c824df5956f3bc316668b4da650938504b9439674d2d94981244fdd5f',
+     armv7l: 'ec7a825c824df5956f3bc316668b4da650938504b9439674d2d94981244fdd5f',
+     x86_64: 'b0ecd17df0ae8182447888e68765314f4acaa7e3193042c54951caef9be9e6de'
   })
 
   depends_on 'ant' => :build
-  depends_on 'cairo' # R
+  depends_on 'cairo' => :library
   depends_on 'eigen' => :build
-  depends_on 'ffmpeg' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'gdk_pixbuf' # R
+  depends_on 'ffmpeg' => :library
+  depends_on 'gcc_lib' => :library
+  depends_on 'gdk_pixbuf' => :library
   depends_on 'glew' => :build
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
-  depends_on 'gstreamer' # R
-  depends_on 'gtk3' # R
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'gstreamer' => :library
+  depends_on 'gtk3' => :library
   depends_on 'harfbuzz' # R
   depends_on 'hdf5' => :build
   depends_on 'lapack' => :build
-  depends_on 'libavif' # R
+  depends_on 'libavif' => :library
   depends_on 'libdc1394' => :build
   depends_on 'libgphoto' => :build
-  depends_on 'libjpeg_turbo' # R
-  depends_on 'libpng' # R
-  depends_on 'libtiff' # R
-  depends_on 'libwebp' # R
+  depends_on 'libjpeg_turbo' => :library
+  depends_on 'libpng' => :library
+  depends_on 'libtiff' => :library
+  depends_on 'libwebp' => :library
   depends_on 'mesa' => :build
-  depends_on 'openexr' # R
+  depends_on 'openexr' => :library
   depends_on 'openjdk' => :build
-  depends_on 'openjpeg' # R
+  depends_on 'openjpeg' => :library
   depends_on 'protobuf' => :build
   depends_on 'py3_numpy' => :build
   depends_on 'py3_setuptools' => :build
   depends_on 'tbb' => :build
-  depends_on 'zlib' # R
+  depends_on 'zlib' => :library
 end
