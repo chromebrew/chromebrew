@@ -14,9 +14,9 @@ class Fastfetch < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7397094b8dc31c9396c904ffc8dc60765baaa4737d9279a85f145f3a9338f854',
-     armv7l: '7397094b8dc31c9396c904ffc8dc60765baaa4737d9279a85f145f3a9338f854',
-     x86_64: '35fa4ae51319337eaf84520a3c70badd5abad0d8ad04640fecab6adbf171c982'
+    aarch64: '20fdcdc23a66603b32876a995753feef4049932ebde3aaafa63560dc6de1983c',
+     armv7l: '20fdcdc23a66603b32876a995753feef4049932ebde3aaafa63560dc6de1983c',
+     x86_64: 'fb1a4886471e3167aa89316c5a1d8f68774173066275403c5b6fab4778ccac2c'
   })
 
   depends_on 'chafa' => :build
