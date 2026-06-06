@@ -1,5 +1,5 @@
 ---
-# Version 2.6
+# Version 2.8
 name: Generate PR
 run-name: Generate PR for ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} by @${{ github.actor }}
 on:
@@ -59,7 +59,7 @@ jobs:
           STEPS_CONTEXT: ${{ toJson(steps) }}
         run: echo "$STEPS_CONTEXT"
   setup:
-    if: ${{ ( github.repository_owner == 'chromebrew' ) && ( inputs.branch != 'master' ) && ( ( github.event.action  == 'labeled' && github.event.label.name == 'regenerate_pr' ) || ( github.repository_owner == 'chromebrew' && github.event.action  == 'labeled' && github.event.label.name == 'update-package-files' ) || github.event_name  == 'workflow_dispatch' ) }}
+    if: ${{ ( github.repository_owner == 'chromebrew' ) && ( inputs.branch != 'master' ) && ( ( github.event.action  == 'labeled' && github.event.label.name == 'regenerate_pr' ) || ( github.repository_owner == 'chromebrew' && github.event.action  == 'labeled' && github.event.label.name == 'update-package-files' ) || ( github.repository_owner == 'chromebrew' && github.event.action  == 'labeled' && github.event.label.name == 'updater' ) || github.event_name  == 'workflow_dispatch' ) }}
     runs-on: ubuntu-24.04
     outputs:
       changed_packages: ${{ steps.changed-packages.outputs.CHANGED_PACKAGES }}
@@ -256,7 +256,7 @@ jobs:
               echo "LIB_SUFFIX=64" >> "$GITHUB_ENV"
               ;;
             armv7l)
-              case "${armv7l_64_MIN_GLIBC}" in
+              case "${armv7l_MIN_GLIBC}" in
                 2.32)
                   echo "CONTAINER=satmandu/crewbuild:fievel-armv7l.m97" >> "$GITHUB_ENV"
                   ;;
