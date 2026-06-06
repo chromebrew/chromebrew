@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Opencv < CMake
   description 'Open Source Computer Vision Library'
   homepage 'https://opencv.org/'
-  version '4.13.0'
+  version '5.0.0'
   license 'BSD'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/opencv/opencv.git'
