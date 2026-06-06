@@ -11,10 +11,10 @@ class Remind < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '80a186ca12728200b8816316b055e21cec242322cb5a20e9555977d33004af6a',
-     armv7l: '80a186ca12728200b8816316b055e21cec242322cb5a20e9555977d33004af6a',
-       i686: '2e8b7e372405d98e825ebb53761b6ebf3d80272f918dcd27b8a5ec9f73e26543',
-     x86_64: '4ace35ae190f5ec81c295ea27ae01ce5f3effe6945954efc0b71f8776ce314f0'
+    aarch64: 'e1761bcd76f4dac9efe9a85c6295d1a27b079cf6fa854290656114ea3fa35b59',
+     armv7l: 'e1761bcd76f4dac9efe9a85c6295d1a27b079cf6fa854290656114ea3fa35b59',
+       i686: '31a1d0657266976b814aafa7c32db8b52b3d2a636b069ee0b1a18658bbe9d323',
+     x86_64: 'b34d04b2c54b3bfe35659f71d9f724d7a92bc8cc755dd8cc3624c5335fde2a5d'
   })
 
   depends_on 'glibc' => :executable
