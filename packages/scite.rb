@@ -11,9 +11,9 @@ class Scite < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '53aa0c12c96e1c16b0392305c042d59d3f1258b5fdf19ab5f269bc8169ae976f',
-     armv7l: '53aa0c12c96e1c16b0392305c042d59d3f1258b5fdf19ab5f269bc8169ae976f',
-     x86_64: '316d3279a4bbf0bd25ce60dbde972d6dba95719acc9fb5a5c9c413633819ab65'
+    aarch64: '0940bd814e2c9633ceb3e7fee3139f21ef93955fac4a27a468629335fd8b224c',
+     armv7l: '0940bd814e2c9633ceb3e7fee3139f21ef93955fac4a27a468629335fd8b224c',
+     x86_64: 'fe46107de0f4bd1e73620bfcb5c2482082057a4c2a952cf25db5a1e9398e8251'
   })
 
   depends_on 'at_spi2_core' => :library
@@ -22,6 +22,7 @@ class Scite < Package
   depends_on 'gdk_pixbuf' => :library
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gnome_icon_theme'
   depends_on 'gtk3' => :library
   depends_on 'harfbuzz' => :library
