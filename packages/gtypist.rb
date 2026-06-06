@@ -1,34 +1,30 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Gtypist < Package
+class Gtypist < Autotools
   description 'Universal typing tutor.'
   homepage 'https://www.gnu.org/software/gtypist/index.html'
-  version '2.9.5'
+  version '2.10.1'
   license 'GPL-2 and public-domain'
-  compatibility 'all'
-  source_url 'http://ftp.gnu.org/gnu/gtypist/gtypist-2.9.5.tar.xz'
-  source_sha256 'c13af40b12479f8219ffa6c66020618c0ce305ad305590fde02d2c20eb9cf977'
-  binary_compression 'tar.xz'
+  compatibility 'aarch64 armv7l x86_64'
+  source_url "https://ftp.gnu.org/gnu/gtypist/gtypist-#{version}.tar.xz"
+  source_sha256 'ca618054e91f1ed5ef043fcc43500bbad701c959c31844d4688ff22849ac252d'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '270d48de1bc66a8ef39e8d72435aa2c1528b4a8512a791817e44c8d64ebfc0e0',
-     armv7l: '270d48de1bc66a8ef39e8d72435aa2c1528b4a8512a791817e44c8d64ebfc0e0',
-       i686: '90b43aa2ee81dfc1005b15a04fea0cb302cbc22a14915a8b2eea069caf328603',
-     x86_64: '6ff05a34f4ce9f20bb6dbaef93ff55ecdee9fe9c5ede12d39e561886469a4b7d'
+    aarch64: '05636c190caa54623cf8d55bb55285d599b586ceb5330c0a8cc8d3dc3d295398',
+     armv7l: '05636c190caa54623cf8d55bb55285d599b586ceb5330c0a8cc8d3dc3d295398',
+     x86_64: '004e0982f8e20a9f7c5d2cb7cbe813aebfa655058db864d9f08a6a92721f93af'
   })
 
   depends_on 'emacs' => :build
-  depends_on 'ncurses'
-  depends_on 'perl'
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'ncurses' => :executable
+  depends_on 'perl' => :logical
 
-  def self.build
-    system 'autoreconf'
-    system './configure', "--prefix=#{CREW_PREFIX}"
-    system 'make'
-  end
+  run_tests
 
-  def self.install
-    system 'make', "prefix=#{CREW_DEST_PREFIX}", 'install'
-    system 'rm', '-f', "#{CREW_DEST_PREFIX}/share/info/dir"
+  def self.prebuild
+    system 'autoreconf -fiv'
   end
 end
