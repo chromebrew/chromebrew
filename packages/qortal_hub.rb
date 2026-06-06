@@ -3,11 +3,11 @@ require 'package'
 class Qortal_hub < Package
   description 'Desktop interface for Qortal'
   homepage 'https://qortal.dev/'
-  version '1.0.1'
+  version '2.0.0'
   license 'MIT'
   compatibility 'x86_64'
   source_url "https://github.com/Qortal/Qortal-Hub/releases/download/v#{version}/Qortal-Hub.AppImage"
-  source_sha256 '92391ec6fdf3941a9bd2f047900ff073838d93fcf0ae5f78032a1ccf3eeffeb9'
+  source_sha256 '94874dfb037ac6abb3c2df7169a4bb8fdfca6fc845f8a6a1a942ecdb7626b337'
 
   depends_on 'gtk3'
   depends_on 'sommelier' => :logical
