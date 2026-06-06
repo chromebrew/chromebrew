@@ -1,5 +1,5 @@
 ---
-# Version 1.6
+# Version 1.7
 name: Build
 run-name: Build ${{ inputs.packages_to_build }} for ${{ inputs.build-on }} on branch ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} requested by @${{ github.actor }}
 on:
@@ -201,8 +201,11 @@ jobs:
       TIMESTAMP: ${{ needs.setup.outputs.timestamp }}
       GLIBC_232_COMPATIBLE_PACKAGES: ${{ needs.get-compatibility.outputs.GLIBC_232_COMPATIBLE_PACKAGES }}
       GLIBC_237_COMPATIBLE_PACKAGES: ${{ needs.get-compatibility.outputs.GLIBC_237_COMPATIBLE_PACKAGES }}
+      i686_MIN_GLIBC: ${{ needs.get-compatibility.outputs.i686_min_glibc }}
       i686_PACKAGES: ${{ needs.get-compatibility.outputs.i686_PACKAGES }}
+      x86_64_MIN_GLIBC: ${{ needs.get-compatibility.outputs.x86_64_min_glibc }}
       x86_64_PACKAGES: ${{ needs.get-compatibility.outputs.x86_64_PACKAGES }}
+      armv7l_MIN_GLIBC: ${{ needs.get-compatibility.outputs.armv7l_min_glibc }}
       armv7l_PACKAGES: ${{ needs.get-compatibility.outputs.armv7l_PACKAGES }}
     if: ${{ !cancelled() }}
     concurrency:
@@ -260,7 +263,7 @@ jobs:
               echo "LIB_SUFFIX=64" >> "$GITHUB_ENV"
               ;;
             armv7l)
-              case "${armv7l_64_MIN_GLIBC}" in
+              case "${armv7l_MIN_GLIBC}" in
                 2.32)
                   echo "CONTAINER=satmandu/crewbuild:fievel-armv7l.m97" >> "$GITHUB_ENV"
                   ;;
