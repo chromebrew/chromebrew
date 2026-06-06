@@ -14,13 +14,14 @@ class Nlopt < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'dfc04694a16c0d3f268e2535cb751985aeea7b67d5fa3c12d0bbef052f1f4eec',
-     armv7l: 'dfc04694a16c0d3f268e2535cb751985aeea7b67d5fa3c12d0bbef052f1f4eec',
-     x86_64: '403aad9d25a98ee35f9bd9f9e0d28d43f1f879bb62d81ea743ff0155a9574d3c'
+    aarch64: '8ddeeda1794ff2d065d79b2d55c0acd712244fde7268e540a14074c951181468',
+     armv7l: '8ddeeda1794ff2d065d79b2d55c0acd712244fde7268e540a14074c951181468',
+     x86_64: '1dcce44b4c7eaa38a9478a597215404c02e0a408c267e0d0dc4caaa712151281'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'guile' => :build
   depends_on 'octave' # R
   depends_on 'openjdk11' => :build
