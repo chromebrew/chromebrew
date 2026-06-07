@@ -402,7 +402,7 @@ class Package
                             else
                               CREW_LINKER
                             end
-    puts "specified_crew_linker: #{specified_crew_linker}" if @no_mold
+    puts "specified_crew_linker: #{specified_crew_linker}".orange if @no_mold
     no_mold_crew_env_options_hash = crew_env_options_hash.transform_values { |v| v.gsub('-fuse-ld=mold', "-fuse-ld=#{specified_crew_linker}") }
     # Extract env hash.
     if args[0].is_a?(Hash)

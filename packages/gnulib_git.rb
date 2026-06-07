@@ -32,7 +32,7 @@ class Gnulib_git < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.ln "#{CREW_DEST_PREFIX}/share/gnulib-git/gnulib-tool", "#{CREW_DEST_PREFIX}/bin/"
     FileUtils.ln "#{CREW_DEST_PREFIX}/share/gnulib-git/check-module", "#{CREW_DEST_PREFIX}/bin/"
-    
+
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
     File.write "#{CREW_DEST_PREFIX}/etc/env.d/gnulib", <<~GNULIB_ENV_EOF
       ACLOCAL_PATH=#{CREW_PREFIX}/share/gnulib-git/m4
