@@ -1,33 +1,24 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Halibut < Package
+class Halibut < CMake
   description 'Halibut is a documentation production system, with elements similar to TeX, debiandoc-sgml, TeXinfo, and others.'
   homepage 'https://www.chiark.greenend.org.uk/~sgtatham/halibut/'
-  version '1.2'
+  version '1.3'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://www.chiark.greenend.org.uk/~sgtatham/halibut/halibut-1.2/halibut-1.2.tar.gz'
-  source_sha256 '1aedfb6240f27190c36a390fcac9ce732edbdbaa31c85ee675b994e2b083163f'
-  binary_compression 'tar.xz'
+  source_url "https://www.chiark.greenend.org.uk/~sgtatham/halibut/halibut-#{version}/halibut-#{version}.tar.gz"
+  source_sha256 'aaa0f7696f17f74f42d97d0880aa088f5d68ed3079f3ed15d13b6e74909d3132'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '04f12bb5ff68ea5c4c279f98591f8b98e07ec60286dff0bcadf5c20a5a42e257',
-     armv7l: '04f12bb5ff68ea5c4c279f98591f8b98e07ec60286dff0bcadf5c20a5a42e257',
-       i686: '8281a31fe9ebfe71053d6a219064714470fe1e8261ab6483a85e731604e64d1b',
-     x86_64: '93bd79b97de9b7be01ccbe82ab3272ad9be6ead4e26376ac2ce4529e5b50a9dc'
+    aarch64: '6fca8d925335afcce21b9d8259602c8fafdc10549b6501fcb2b35f2dace995e2',
+     armv7l: '6fca8d925335afcce21b9d8259602c8fafdc10549b6501fcb2b35f2dace995e2',
+       i686: 'c2d2b3455e26ec0272d473d868f5d49dcc4ae37ce10bc7dd7aefcbfb2059cf67',
+     x86_64: 'b39d24f538cb1ed90c436b0d5479e7d6fed08266378f218773c977fc5290dc40'
   })
 
-  def self.build
-    system 'make'
-    FileUtils.cd('doc') do
-      system 'make'
-    end
-  end
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
 
-  def self.install
-    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
-    system "mkdir -p #{CREW_DEST_PREFIX}/man/man1"
-    system "cp build/halibut #{CREW_DEST_PREFIX}/bin"
-    system "cp doc/halibut.1 #{CREW_DEST_PREFIX}/man/man1"
-  end
+  cmake_options '-DCMAKE_POLICY_VERSION_MINIMUM=3.5'
 end

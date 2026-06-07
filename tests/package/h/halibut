@@ -1,0 +1,3 @@
+#!/bin/bash
+halibut --help | head
+halibut --version
