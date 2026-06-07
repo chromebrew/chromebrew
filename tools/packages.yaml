@@ -6340,6 +6340,11 @@ url: https://www.bytereef.org/mpdecimal/download.html
 activity: none
 ---
 kind: url
+name: mpfi
+url: https://github.com/arpra-project/mpfi/releases
+activity: none
+---
+kind: url
 name: mpfr
 url: http://www.mpfr.org/mpfr-current/#download
 activity: low

@@ -1,24 +1,23 @@
-# Adapted from Arch Linux gnulib-git PKGBUILD at:
-# https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=gnulib-git
-
 require 'package'
 
 class Gnulib_git < Package
   description 'GNU Portability Library'
   homepage 'http://www.gnu.org/software/gnulib/'
-  version 'v0.1-96ad66e'
+  version 'v0.1-8724b44'
   license 'custom'
   compatibility 'all'
   source_url 'https://git.savannah.gnu.org/git/gnulib.git'
-  git_hashtag '96ad66ea76f65e6cf78c638b85696157ea6141df'
+  git_hashtag '8724b4400aacd18cbf9697aec79e1e94a081ddd9'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '46a09e50986f6c5b6620c31a59f305249bd512130b8f56c55637fc1e3959a38b',
-     armv7l: '46a09e50986f6c5b6620c31a59f305249bd512130b8f56c55637fc1e3959a38b',
-       i686: '9af10ea0d5fad6815cf4003ed0a7b087dc74ece726e0d8259016d5430a083bcf',
-     x86_64: 'b3859447efe90847f53e127c688609aa26bffa5de654402a5ef82924a11e2519'
+    aarch64: '4490352f727555b64f7452b45918cc6617f80ee5df5b0963e4be11ed78556073',
+     armv7l: '4490352f727555b64f7452b45918cc6617f80ee5df5b0963e4be11ed78556073',
+       i686: 'bc1aa4bcb0695201534d506f4c60d03d10de0d0c7872b98f438eb7a85e32ee04',
+     x86_64: '1fd7cdfdc6f82a9557f67ee61f478bec0fb2a7fd7dff6b4bcbe0b5096996d1b2'
   })
+
+  print_source_bashrc
 
   def self.patch
     system "sed -i \"/^[ ]*gnulib_dir=/s,\\`[^\\`]*\\`,#{CREW_PREFIX}/share/gnulib-git,\" gnulib-tool"
@@ -33,5 +32,12 @@ class Gnulib_git < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.ln "#{CREW_DEST_PREFIX}/share/gnulib-git/gnulib-tool", "#{CREW_DEST_PREFIX}/bin/"
     FileUtils.ln "#{CREW_DEST_PREFIX}/share/gnulib-git/check-module", "#{CREW_DEST_PREFIX}/bin/"
+
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+    # Found the suggestion for setting ACLOCAL_PATH in:
+    # https://salsa.debian.org/science-team/mpfi/-/blob/master/debian/rules?ref_type=heads
+    File.write "#{CREW_DEST_PREFIX}/etc/env.d/gnulib", <<~GNULIB_ENV_EOF
+      ACLOCAL_PATH=#{CREW_PREFIX}/share/gnulib-git/m4
+    GNULIB_ENV_EOF
   end
 end

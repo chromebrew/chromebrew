@@ -67,13 +67,16 @@ def downloader(url, sha256sum, filename = File.basename(url).gsub(/\s+/, ''), no
   # Verify with given checksum, using the external sha256sum binary so
   # we do not load the entire file into ruby's process, which throws
   # errors with large files on 32-bit architectures.
-  puts "Calculating checksum for #{filename}...".lightblue
+  puts "Calculating checksum for #{filename} from #{url}...".lightblue
   sha256sum_out, _stderr, _status = Open3.capture3("sha256sum #{filename}")
   calc_sha256sum = sha256sum_out.split[0]
 
   unless (sha256sum =~ /^SKIP$/i) || (calc_sha256sum == sha256sum)
     if CREW_FORCE && !no_update_hash
-      pkg_name = @pkg_name.blank? ? name : @pkg_name
+      # When called from Convenience_functions, name ends up as
+      # Convenience_functions, so we do not want to use it as a backstop
+      # for a missing @pkg_name.
+      pkg_name = @pkg_name.blank? ? caller.select { it.include?('Package::') }.to_s.split('::').last.split('.').first.downcase : @pkg_name
       puts "Updating checksum for #{filename}".lightblue
       puts "from #{sha256sum} to #{calc_sha256sum}".lightblue
       puts "in #{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb .".lightblue
