@@ -392,7 +392,8 @@ class Package
     opt_args.merge!(exception: true) unless opt_args.key?(:exception)
 
     # Allow @no_mold to change the linker specified.
-    # Use lld instead of bfd if available, i.e, llvm_dev is installed.
+    # Use lld instead of bfd if available, e.g, when llvm_dev is
+    # installed.
     specified_crew_linker = if @no_mold
                               if CREW_LINKER == 'mold'
                                 File.file?("#{CREW_PREFIX}/bin/lld") ? 'lld' : 'bfd'
