@@ -14,10 +14,10 @@ class Tex_fmt < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '580c0f4bbfe3e40996d55cf67cdb0d1e7ace7cd41f656681aea1a2dac56354cb',
-     armv7l: '580c0f4bbfe3e40996d55cf67cdb0d1e7ace7cd41f656681aea1a2dac56354cb',
+    aarch64: 'f218a357fe7ae26a9dbbc4dd6d5275ff1e2932d70fc33eb432161e8d96f876ed',
+     armv7l: 'f218a357fe7ae26a9dbbc4dd6d5275ff1e2932d70fc33eb432161e8d96f876ed',
        i686: '64e77d9799c0ab41113cd14e51c8b1bf2dbb4e91ff482c87d3d64c8b437e4c2f',
-     x86_64: '0567105c3962e72215185d8e638dc7036de7dd1b57de0b7f870e14df7a1a657f'
+     x86_64: 'b87fe3ab4130e9ed230b3684fcde6a64d451f642f66081a66ee32f8aec975cbc'
   })
 
   depends_on 'gcc_lib' => :executable
