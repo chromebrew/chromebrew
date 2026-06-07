@@ -3,28 +3,30 @@ require 'package'
 class Gzsize < Package
   description 'Print the uncompressed size of a GZipped file.'
   homepage 'https://bfontaine.github.io/gzsize/'
-  version '0.1.1'
+  version '0.1.4'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/bfontaine/gzsize/archive/0.1.1.tar.gz'
-  source_sha256 'ffb9cc1e5ed10443b1bcf2f711787bc7f69eee27ed83b48f2ccf9d80e39554dd'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/bfontaine/gzsize.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd4a24b086e172b771b389d5ce421877e5c3763dc66731cbbfa3bfe2fc40b66c6',
-     armv7l: 'd4a24b086e172b771b389d5ce421877e5c3763dc66731cbbfa3bfe2fc40b66c6',
-       i686: 'e8bbc0b2342a40b5c6cb231d61425a78e2804df614bd34bfe37ffc0cb2659c84',
-     x86_64: '5da9324de5a8799dad4cc5126033eefbed40aeb5c2e5616aede325010f500b91'
+    aarch64: '8add72675046e4794dc152997733bb28c3d82971ee9fbb53971356f3e61761f5',
+     armv7l: '8add72675046e4794dc152997733bb28c3d82971ee9fbb53971356f3e61761f5',
+       i686: 'f3ce17be0ac1514aa31ef28f8602ac60c4bdb9b5a2dca4537b14da0b53ce7e26',
+     x86_64: '823ee25dfafac7fd9a24963f657713d9c84d1016d064fd3a26ba890f57005ea2'
   })
+
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'zlib' => :executable
 
   def self.build
     system 'make'
   end
 
   def self.install
-    system 'mkdir', '-p', "#{CREW_DEST_PREFIX}/bin"
-    system 'mkdir', '-p', "#{CREW_DEST_PREFIX}/man/man1"
-    FileUtils.cp 'gzsize', "#{CREW_DEST_PREFIX}/bin/gzsize"
-    FileUtils.cp 'man/gzsize.1', "#{CREW_DEST_PREFIX}/man/man1/gzsize.1"
+    FileUtils.install 'gzsize', "#{CREW_DEST_PREFIX}/bin/gzsize", mode: 0o755
+    FileUtils.install 'man/gzsize.1', "#{CREW_DEST_PREFIX}/man/man1/gzsize.1", mode: 0o644
   end
 end
