@@ -34,6 +34,8 @@ class Gnulib_git < Package
     FileUtils.ln "#{CREW_DEST_PREFIX}/share/gnulib-git/check-module", "#{CREW_DEST_PREFIX}/bin/"
 
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+    # Found the suggestion for setting ACLOCAL_PATH in:
+    # https://salsa.debian.org/science-team/mpfi/-/blob/master/debian/rules?ref_type=heads
     File.write "#{CREW_DEST_PREFIX}/etc/env.d/gnulib", <<~GNULIB_ENV_EOF
       ACLOCAL_PATH=#{CREW_PREFIX}/share/gnulib-git/m4
     GNULIB_ENV_EOF
