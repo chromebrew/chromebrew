@@ -82,4 +82,7 @@ class Texlive_bin < Autotools
                               --disable-dvisvgm \
                               --enable-ttf2pk2 \
                               --enable-ipc"
+  def self.prebuild
+    ConvenienceFunctions.libtoolize('libuuid', 'util_linux')
+  end
 end
