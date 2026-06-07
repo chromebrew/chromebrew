@@ -9700,6 +9700,11 @@ url: https://www.samba.org/ftp/tevent/
 activity: none
 ---
 kind: url
+name: tex_fmt
+url: https://github.com/WGUNDERWOOD/tex-fmt/releases
+activity: medium
+---
+kind: url
 name: texinfo
 url: http://ftp.gnu.org/gnu/texinfo
 activity: low
