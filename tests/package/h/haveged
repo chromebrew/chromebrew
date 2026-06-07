@@ -1,0 +1,3 @@
+#!/bin/bash
+haveged -h 2>&1 | head
+haveged -V
