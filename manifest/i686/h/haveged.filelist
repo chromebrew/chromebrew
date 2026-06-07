@@ -1,4 +1,4 @@
-# Total size: 700623
+# Total size: 619195
 /usr/local/bin/haveged
 /usr/local/include/haveged/havege.h
 /usr/local/lib/libhavege.a
@@ -6,5 +6,5 @@
 /usr/local/lib/libhavege.so
 /usr/local/lib/libhavege.so.2
 /usr/local/lib/libhavege.so.2.0.0
-/usr/local/share/man/man3/libhavege.3.gz
-/usr/local/share/man/man8/haveged.8.gz
+/usr/local/share/man/man3/libhavege.3.zst
+/usr/local/share/man/man8/haveged.8.zst
