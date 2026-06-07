@@ -41,6 +41,7 @@ class Texlive_bin < Autotools
   depends_on 'potrace' => :build
   depends_on 'zlib' => :build
 
+  autotools_pre_configure_options "CXXFLAGS+=' -std=c++17 '"
   autotools_configure_options "--enable-build-in-source-tree \
                               --datarootdir=#{CREW_PREFIX}/share/texlive \
                               --disable-native-texlive-build \
