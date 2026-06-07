@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Wayland_protocols < Meson
   description 'Wayland is a protocol for a compositor to talk to its clients.'
   homepage 'https://wayland.freedesktop.org/'
-  version '1.48'
+  version '1.49'
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/wayland/wayland-protocols.git'
@@ -11,10 +11,10 @@ class Wayland_protocols < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a4cdb07ea1787c35a2aeec097b1c652a28134543c2920a7bacaeaff86ab81ec6',
-     armv7l: 'a4cdb07ea1787c35a2aeec097b1c652a28134543c2920a7bacaeaff86ab81ec6',
-       i686: 'c1f2a878af0f31c914584c0d0fa93839632768bad1bb83ca32413e5db46829de',
-     x86_64: '2d0064564245a9a15e4af9d93fc7fd7ac5c9c922f49a43b9a66695131aa5f030'
+    aarch64: '6b2712928a2deea8e46e70a3c9d65428283672b6eb12c4b70bc622baf558f197',
+     armv7l: '6b2712928a2deea8e46e70a3c9d65428283672b6eb12c4b70bc622baf558f197',
+       i686: 'e6d96189e7ce151235a5340d4575b376547cbb2a6b6dc542ca54397a2fd5c0b1',
+     x86_64: 'fa96efe16905d25ac3954503d8f2be908b8ab56d414ba4e6dae517fece950f21'
   })
 
   depends_on 'wayland' => :logical
