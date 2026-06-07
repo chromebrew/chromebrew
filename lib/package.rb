@@ -391,34 +391,39 @@ class Package
     # Add exception option to opt_args.
     opt_args.merge!(exception: true) unless opt_args.key?(:exception)
 
+    # Allow @no_mold to change the linker specified.
+    # Use lld instead of bfd if available, i.e, llvm_dev is installed.
+    specified_crew_linker = if @no_mold
+                              if CREW_LINKER == 'mold'
+                                File.file?("#{CREW_PREFIX}/bin/lld") ? 'lld' : 'bfd'
+                              else
+                                CREW_LINKER
+                              end
+                            else
+                              CREW_LINKER
+                            end
+    puts "specified_crew_linker: #{specified_crew_linker}" if @no_mold
+    no_mold_crew_env_options_hash = crew_env_options_hash.transform_values { |v| v.gsub('-fuse-ld=mold', "-fuse-ld=#{specified_crew_linker}") }
     # Extract env hash.
     if args[0].is_a?(Hash)
-      env = @no_mold ? crew_env_options_hash.merge(args[0]).transform_values { |v| v.gsub('-fuse-ld=mold', '') } : crew_env_options_hash.merge(args[0])
+      env = @no_mold ?  no_mold_crew_env_options_hash.merge(args[0]) : crew_env_options_hash.merge(args[0])
       args.delete_at(0) # Remove env hash from args array.
     else
-      env = @no_mold ? crew_env_options_hash.transform_values { |v| v.gsub('-fuse-ld=mold', '') } : crew_env_options_hash
+      env = @no_mold ?  no_mold_crew_env_options_hash : crew_env_options_hash
     end
 
     env['CREW_PRELOAD_ENABLE_COMPILE_HACKS'] = opt_args.delete(:no_preload_hacks) ? '0' : '1'
     # CC_LD and CXX_LD are needed by meson to override mold being
     # detected and used by default.
-    env['CC_LD']                             = if @no_mold
-                                                 CREW_LINKER == 'mold' ? 'bfd' : CREW_LINKER
-                                               else
-                                                 CREW_LINKER
-                                               end
-    env['CXX_LD']                            = if @no_mold
-                                                 CREW_LINKER == 'mold' ? 'bfd' : CREW_LINKER
-                                               else
-                                                 CREW_LINKER
-                                               end
+    env['CC_LD'] = specified_crew_linker
+    env['CXX_LD'] = specified_crew_linker
+
     env['CREW_PRELOAD_NO_MOLD']              = @no_mold ? '1' : '0'
     # Cannot use a ternary with nil here, as putting a nil into the hash can break
     # crew_env_options_hash.transform_values!
     env['LD_PRELOAD']                        = File.join(CREW_LIB_PREFIX, 'crew-preload.so') if File.exist?("#{CREW_LIB_PREFIX}/crew-preload.so")
 
     # After removing the env hash, all remaining args must be command args.
-
     begin
       Kernel.system(env, *args, **opt_args)
     rescue RuntimeError => e
