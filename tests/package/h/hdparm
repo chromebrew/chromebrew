@@ -1,0 +1,3 @@
+#!/bin/bash
+hdparm -h | head
+hdparm -V
