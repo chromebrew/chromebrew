@@ -9,14 +9,15 @@ class Healthcheck < Package
   source_url 'https://github.com/SimplyLinuxFAQ/health-check-script.git'
   git_hashtag "v#{version}"
 
-  depends_on 'lsb_release'
-  depends_on 'dmidecode'
-  depends_on 'sysstat'
+  depends_on 'lsb_release' => :executable
+  depends_on 'dmidecode' => :executable
+  depends_on 'sysstat' => :executable
+  depends_on 'util_linux' => :executable
 
   no_compile_needed
 
   def self.patch
-    system "sed -i 's,usr/bin,usr/local/bin,' health-check.sh"
+    system "sed -i 's,/usr/bin,#{CREW_PREFIX}/bin,g' health-check.sh"
   end
 
   def self.install
