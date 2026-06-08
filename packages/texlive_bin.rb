@@ -11,35 +11,46 @@ class Texlive_bin < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6917ab894942b7f93d9874eec5a517308f919a4ee921d96c9219652ba0bfd841',
-     armv7l: '6917ab894942b7f93d9874eec5a517308f919a4ee921d96c9219652ba0bfd841',
-     x86_64: '0e83582364c12a63c9f20c0d8259fe62db28fac2c4ef9a3e164b8c80d65fdc0d'
+    aarch64: 'c4cce4364076946c551582b29788b747681d5c1826973dbbba97df3d03254530',
+     armv7l: 'c4cce4364076946c551582b29788b747681d5c1826973dbbba97df3d03254530',
+     x86_64: '7b295f7769a64a85a8c8f1bcfe3330181ab43263f8501692926c94db793ba67e'
   })
 
-  depends_on 'glibc' => :executable
-  depends_on 'glibc_lib' => :executable
-  depends_on 'cairo' => :build
-  depends_on 'freetype' => :build
+  depends_on 'cairo' => :executable
+  depends_on 'fontconfig' => :executable
+  depends_on 'freetype' => :executable
+  depends_on 'gcc_lib' => :library
   depends_on 'ghostscript' => :build
-  depends_on 'graphite' => :build
-  depends_on 'harfbuzz' => :build
+  depends_on 'glibc' => :executable
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :executable
+  depends_on 'glibc_lib' => :library
+  depends_on 'gmp' => :executable
+  depends_on 'graphite' => :executable
+  depends_on 'harfbuzz' => :executable
+  depends_on 'icu4c' => :executable
+  depends_on 'libbsd' => :executable
   depends_on 'libgd' => :build
-  depends_on 'libice' => :build
-  depends_on 'libpaper' => :build
-  depends_on 'libpng' => :build
-  depends_on 'libsm' => :build
-  depends_on 'libx11' => :build
-  depends_on 'libxaw' => :build
-  depends_on 'libxext' => :build
-  depends_on 'libxi' => :build
-  depends_on 'libxmu' => :build
-  depends_on 'libxpm' => :build
-  depends_on 'libxt' => :build
-  depends_on 'mpfi' => :build
-  depends_on 'mpfr' => :build
-  depends_on 'pixman' => :build
-  depends_on 'potrace' => :build
-  depends_on 'zlib' => :build
+  depends_on 'libice' => :executable
+  depends_on 'libpaper' => :executable
+  depends_on 'libpng' => :executable
+  depends_on 'libsm' => :executable
+  depends_on 'libx11' => :executable
+  depends_on 'libxau' => :executable
+  depends_on 'libxaw' => :executable
+  depends_on 'libxcb' => :executable
+  depends_on 'libxdmcp' => :executable
+  depends_on 'libxext' => :executable
+  depends_on 'libxi' => :executable
+  depends_on 'libxmu' => :executable
+  depends_on 'libxpm' => :executable
+  depends_on 'libxt' => :executable
+  depends_on 'mpfi' => :executable
+  depends_on 'mpfr' => :executable
+  depends_on 'pixman' => :executable
+  depends_on 'potrace' => :executable
+  depends_on 'util_linux' => :executable
+  depends_on 'zlib' => :library
 
   autotools_pre_configure_options "CXXFLAGS+=' -std=c++17 '"
   autotools_configure_options "--enable-build-in-source-tree \
