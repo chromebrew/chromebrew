@@ -1,9 +1,10 @@
-# Total size: 111751
+# Total size: 192524
 /usr/local/bin/hello
-/usr/local/share/info/hello.info.gz
+/usr/local/share/info/hello.info.zst
 /usr/local/share/locale/ast/LC_MESSAGES/hello.mo
 /usr/local/share/locale/bg/LC_MESSAGES/hello.mo
 /usr/local/share/locale/ca/LC_MESSAGES/hello.mo
+/usr/local/share/locale/cs/LC_MESSAGES/hello.mo
 /usr/local/share/locale/da/LC_MESSAGES/hello.mo
 /usr/local/share/locale/de/LC_MESSAGES/hello.mo
 /usr/local/share/locale/el/LC_MESSAGES/hello.mo
@@ -34,6 +35,7 @@
 /usr/local/share/locale/pt_BR/LC_MESSAGES/hello.mo
 /usr/local/share/locale/ro/LC_MESSAGES/hello.mo
 /usr/local/share/locale/ru/LC_MESSAGES/hello.mo
+/usr/local/share/locale/scn/LC_MESSAGES/hello.mo
 /usr/local/share/locale/sk/LC_MESSAGES/hello.mo
 /usr/local/share/locale/sl/LC_MESSAGES/hello.mo
 /usr/local/share/locale/sr/LC_MESSAGES/hello.mo
@@ -45,4 +47,4 @@
 /usr/local/share/locale/vi/LC_MESSAGES/hello.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/hello.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/hello.mo
-/usr/local/share/man/man1/hello.1.gz
+/usr/local/share/man/man1/hello.1.zst
