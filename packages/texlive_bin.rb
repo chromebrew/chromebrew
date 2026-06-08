@@ -1,7 +1,7 @@
 require 'buildsystems/autotools'
 
 class Texlive_bin < Autotools
-  description 'All the binaries of TeX Live packages..'
+  description 'All the binaries of TeX Live packages.'
   homepage 'https://github.com/TeX-Live/texlive-source'
   version '78399'
   license 'GPL-2 and GPL-3'
