@@ -4,7 +4,7 @@ require 'convenience_functions'
 class Handbrake < Package
   description 'HandBrake is a tool for converting video from nearly any format to a selection of modern, widely supported codecs.'
   homepage 'https://handbrake.fr/'
-  version '1.10.2'
+  version '1.11.2'
   license 'GPL-2'
   compatibility 'x86_64'
   source_url 'https://github.com/HandBrake/HandBrake.git'
@@ -12,40 +12,42 @@ class Handbrake < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: 'f2da06aa36d6b669142cb15eaf36bd276ff13b8600c06a20fc1801fcf7b65eaa'
+     x86_64: '1d9fdaf5a57b94b81bdd1889922f9fba8f7e094ce5b877939e57828f3ecbcfa2'
   })
 
-  depends_on 'bzip2' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'gdk_pixbuf' # R
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
-  depends_on 'gtk4' # R
-  depends_on 'intel_media_sdk'
-  depends_on 'jansson' # R
-  depends_on 'libass' # R
-  depends_on 'libdrm' # R
-  depends_on 'libdvdcss'
-  depends_on 'libjpeg_turbo' # R
-  depends_on 'libmp3lame' # R
-  depends_on 'libogg' # R
-  depends_on 'libtheora' # R
-  depends_on 'libva' # R
-  depends_on 'libvorbis' # R
-  depends_on 'libvpx' # R
-  depends_on 'libx264' # R
-  depends_on 'libxml2' # R
+  depends_on 'bzip2' => :executable
+  depends_on 'gcc_lib' => :executable
+  depends_on 'gdk_pixbuf' => :executable
+  depends_on 'glib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'gtk4' => :executable
+  depends_on 'intel_media_sdk' => :executable
+  depends_on 'jansson' => :executable
+  depends_on 'libass' => :executable
+  depends_on 'libdrm' => :executable
+  depends_on 'libdvdcss' => :executable
+  depends_on 'libjpeg_turbo' => :executable
+  depends_on 'libmp3lame' => :executable
+  depends_on 'libogg' => :executable
+  depends_on 'libtheora' => :executable
+  depends_on 'libva' => :executable
+  depends_on 'libvorbis' => :executable
+  depends_on 'libvpx' => :executable
+  depends_on 'libx264' => :executable
+  depends_on 'libxml2' => :executable
   depends_on 'nasm' => :build
-  depends_on 'numactl' # R
-  depends_on 'opus' # R
-  depends_on 'pango' # R
+  depends_on 'nethack4' => :executable
+  depends_on 'numactl' => :executable
+  depends_on 'opus' => :executable
+  depends_on 'pango' => :executable
   depends_on 'rust' => :build
-  depends_on 'speex' # R
+  depends_on 'speex' => :executable
   depends_on 'vulkan_headers' => :build
   depends_on 'wayland_protocols' => :build
   depends_on 'xcb_util' => :build
-  depends_on 'xzutils' # R
-  depends_on 'zlib' # R
+  depends_on 'xzutils' => :executable
+  depends_on 'zlib' => :executable
 
   no_lto
 
@@ -99,7 +101,7 @@ class Handbrake < Package
   end
 
   def self.postinstall
-    ExitMessage.add <<~EOT1.lightblue
+    ExitMessage.add <<~EOT1
       To get started, type 'ghb'.
       Type 'hb' for the command line.
     EOT1
