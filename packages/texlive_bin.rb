@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Texlive_bin < Autotools
   description 'All the binaries of TeX Live packages..'
   homepage 'https://github.com/TeX-Live/texlive-source'
-  version 'svn78399'
+  version '78399'
   license 'GPL-2 and GPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/TeX-Live/texlive-source.git'
-  git_hashtag version
+  git_hashtag "svn#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -51,6 +51,8 @@ class Texlive_bin < Autotools
   depends_on 'potrace' => :executable
   depends_on 'util_linux' => :executable
   depends_on 'zlib' => :library
+
+  prerelease
 
   autotools_pre_configure_options "CXXFLAGS+=' -std=c++17 '"
   autotools_configure_options "--enable-build-in-source-tree \
