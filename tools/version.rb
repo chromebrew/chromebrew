@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.36 (for Chromebrew)
+# version.rb version 3.37 (for Chromebrew)
 
 OPTIONS = %w[-a --all -h --help -j --json -u --update-package-files -v --verbose -vv]
 
@@ -124,6 +124,7 @@ CREW_ANITYA_PACKAGE_NAME_MAPPINGS = Set[
   { pkg_name: 'snowflake', anitya_pkg: 'Muon', comments: 'Renamed to muon upstream' },
   { pkg_name: 'tcpwrappers', anitya_pkg: 'tcp_wrappers', comments: '' },
   { pkg_name: 'tepl_6', anitya_pkg: 'libgedit-tepl', comments: '' },
+  { pkg_name: 'texlive_bin', anitya_pkg: 'texlive-source', comments: '' },
   { pkg_name: 'upx', anitya_pkg: 'upx', comments: 'Prefer to GitHub' },
   { pkg_name: 'vidstab', anitya_pkg: 'vid.stab', comments: 'Prefer to GitHub' },
   { pkg_name: 'vim_runtime', anitya_pkg: 'vim', comments: '' },
@@ -178,16 +179,24 @@ def github_fallback(url)
   repo = "#{url_parts[1]}/#{url_parts[2].delete_suffix('.git')}"
   puts "GitHub repo is #{repo}" if CREW_VERY_VERBOSE
 
-  releases_json = JSON.parse(Net::HTTP.get(URI("https://api.github.com/repos/#{repo}/releases/latest")))
-  tags_json = JSON.parse(Net::HTTP.get(URI("https://api.github.com/repos/#{repo}/tags")))
+  if File.which('gh')
+    github_ver = if @pkg.prerelease?
+                   `gh release list -R #{repo} --json tagName,isPrerelease --jq '.[] | select(.isPrerelease)|.tagName' | head -n 1`.chomp
+                 else
+                   `gh release list -R #{repo} --json tagName,isLatest --jq '.[] | select(.isLatest)|.tagName' | head -n 1`.chomp
+                 end
+  else
+    releases_json = JSON.parse(Net::HTTP.get(URI("https://api.github.com/repos/#{repo}/releases/latest")))
+    tags_json = JSON.parse(Net::HTTP.get(URI("https://api.github.com/repos/#{repo}/tags")))
 
-  # We check for the prescence of a message here because this will also gracefully handle rate limiting.
-  if releases_json.include?('message') && (tags_json.empty? || tags_json.include?('message'))
-    puts 'GitHub repo not found or no release/tag available.' if CREW_VERBOSE
-    return
+    # We check for the prescence of a message here because this will also gracefully handle rate limiting.
+    if releases_json.include?('message') && (tags_json.empty? || tags_json.include?('message'))
+      puts 'GitHub repo not found or no release/tag available.' if CREW_VERBOSE
+      return
+    end
+    github_ver = releases_json['tag_name'].nil? ? tags_json[0]['name'] : releases_json['tag_name']
   end
 
-  github_ver = releases_json['tag_name'].nil? ? tags_json[0]['name'] : releases_json['tag_name']
   puts "github_ver = #{github_ver}" if CREW_VERY_VERBOSE
   # Strip off any leading non-numeric characters.
   return github_ver.sub(/.*?(?=[0-9].)/im, '')
