@@ -1,30 +1,30 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Hexedit < Package
-  version '1.2.13'
+class Hexedit < Autotools
+  version '1.6'
   description 'Hex Editor for Linux.'
   homepage 'http://rigaux.org/hexedit.html'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'http://rigaux.org/hexedit-1.2.13.src.tgz'
-  source_sha256 '6a126da30a77f5c0b08038aa7a881d910e3b65d13767fb54c58c983963b88dd7'
-  binary_compression 'tar.xz'
+  source_url "http://rigaux.org/hexedit-#{version}.src.tgz"
+  source_sha256 '9fc7c8eb7002302612a0e4915f924cfcb83f042105861aa8dae234bd9bf8cc2d'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f241f818b97690420d56e6efac8126e637ccaaac6adbea877ba31a846f56f4c0',
-     armv7l: 'f241f818b97690420d56e6efac8126e637ccaaac6adbea877ba31a846f56f4c0',
-       i686: 'cc48b59ad9eb13df2404eccfefa7bbb002eaa2c232212d159188ae12354e2b4a',
-     x86_64: 'ff405baf2783242b6af5d3e7a86268ebbe51ab3cf1a3dedd33e1fe1e46dcd74b'
+    aarch64: 'b270260b8d198108cd7ceb77635bbe1cea82845954c7bea59d412fa76f50b43c',
+     armv7l: 'b270260b8d198108cd7ceb77635bbe1cea82845954c7bea59d412fa76f50b43c',
+       i686: '7bac8b5d6b4b73ee5a4ebc408ee19282490aeae415b5a611854685ba2ef45731',
+     x86_64: '030c8807205f10df62e21c518e898fe57bf18f1b1b6a310801eb18a7df9d28eb'
   })
 
-  depends_on 'ncurses'
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'ncurses' => :executable
 
-  def self.build
-    system './configure', "--prefix=#{CREW_PREFIX}"
-    system 'make', "CFLAGS=-I#{CREW_PREFIX}/include/ncurses"
-  end
+  autotools_pre_configure_options "CFLAGS=-I#{CREW_PREFIX}/include/ncursesw"
 
-  def self.install
-    system 'make', "prefix=#{CREW_DEST_PREFIX}", 'install'
+  def self.patch
+    # Fix error: cannot find input file: 'hexedit.1.in'
+    system "sed -i 's, hexedit.1,,g' configure"
   end
 end

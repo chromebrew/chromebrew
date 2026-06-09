@@ -1,0 +1,3 @@
+#!/bin/bash
+hexedit -h 2>&1
+man hexedit | head
