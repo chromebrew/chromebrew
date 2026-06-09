@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_distlib < Pip
   description 'Distlib provides distribution utilities for Python packages.'
   homepage 'https://bitbucket.org/pypa/distlib/'
-  version "0.4.1-#{CREW_PY_VER}"
+  version "0.4.2-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
