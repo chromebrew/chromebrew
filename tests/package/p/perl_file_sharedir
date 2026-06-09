@@ -1,0 +1,2 @@
+#!/bin/bash
+perl -e "require File::ShareDir"

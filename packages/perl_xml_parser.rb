@@ -21,7 +21,8 @@ class Perl_xml_parser < PERL
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
   depends_on 'perl' => :logical
-  depends_on 'perl_file_sharedir_install' => :build
+  depends_on 'perl_file_sharedir' => :executable
+  depends_on 'perl_class_inspector' => :executable
 
   conflicts_ok # conflicts with perl_date_format
 end

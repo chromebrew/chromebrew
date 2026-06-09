@@ -1,41 +1,51 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Homebank < Package
+class Homebank < Autotools
   description 'HomeBank is a free software that will assist you to manage your personal accounting.'
   homepage 'https://www.gethomebank.org/en/index.php'
-  version '5.4.3'
+  version '5.10.1'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'http://homebank.free.fr/public/homebank-5.4.3.tar.gz'
-  source_sha256 '9222d7ed7cc44fcfff3f1fe20935a1b7fe91bb4d9f90003cb3c6f3b893298d0b'
-  binary_compression 'tar.xz'
+  source_url "https://www.gethomebank.org/public/sources/homebank-#{version}.tar.gz"
+  source_sha256 '67512d3188ea45f92a6f9326e829c142af5ad509306702f3b0457a1ab611d42a'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9d0b46459cfd423490481d5e136a1adcdd5c0e7f4de21f789e6d12285f88208b',
-     armv7l: '9d0b46459cfd423490481d5e136a1adcdd5c0e7f4de21f789e6d12285f88208b',
-     x86_64: 'c8d1b25d778c7bfbecc9b2704e1e5d166213be5d6fe760c624f1adf86df327de'
+    aarch64: '5fb02684da534ef28f4948b7eab06d7b47d65bb4b1d4c32623ea233fbdb69b42',
+     armv7l: '5fb02684da534ef28f4948b7eab06d7b47d65bb4b1d4c32623ea233fbdb69b42',
+     x86_64: '14978d365e014c14c0ca4e6f65288415a7cf3276f13d58093c8734db9c25a2b1'
   })
 
-  depends_on 'libofx'
-  depends_on 'libsoup'
-  depends_on 'gtk3'
-  depends_on 'xdg_base'
-  depends_on 'wayland_protocols'
-  depends_on 'mesa'
-  depends_on 'xcb_util'
+  depends_on 'at_spi2_core' => :executable
+  depends_on 'cairo' => :executable
+  depends_on 'gdk_pixbuf' => :executable
+  depends_on 'glib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'gtk3' => :executable
+  depends_on 'harfbuzz' => :executable
+  depends_on 'libofx' => :executable
+  depends_on 'libsoup' => :executable
+  depends_on 'pango' => :executable
+  depends_on 'perl_xml_parser' => :executable
+  depends_on 'wayland_protocols' => :executable
+  depends_on 'xcb_util' => :executable
+  depends_on 'xdg_base' => :executable
+  depends_on 'zlib' => :executable
 
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
+  print_source_bashrc
+
+  # autotools_pre_configure_options "INTLTOOL_PERL=#{CREW_LIB_PREFIX}/#{CREW_PERL_VER.split('.')[0]}/#{CREW_PERL_VER.split('l')[1]}/site_perl/XML"
+  autotools_pre_configure_options "INTLTOOL_PERL=#{CREW_PREFIX}/bin/perl"
+
+  autotools_build_extras do
+    File.write '10-homebank', <<~EOF
+      #!/bin/bash
+      alias homebank="WAYLAND_DISPLAY=wayland-0 DISPLAY='0:0' GDK_BACKEND=x11 homebank"
+    EOF
   end
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
-
-  def self.postinstall
-    puts
-    puts 'To complete the installation, execute the following:'.lightblue
-    puts "echo 'alias homebank=\"WAYLAND_DISPLAY=wayland-0 DISPLAY=\'\' GDK_BACKEND=wayland homebank\"' >> ~/.bashrc".lightblue
+  autotools_install_extras do
+    FileUtils.install '10-homebank', "#{CREW_DEST_PREFIX}/etc/env.d/10-homebank", mode: 0o644
   end
 end

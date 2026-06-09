@@ -7270,6 +7270,11 @@ url: https://metacpan.org/pod/Carp::Clan
 activity: low
 ---
 kind: url
+name: perl_class_inspector
+url: https://metacpan.org/pod/Class::Inspector
+activity: low
+---
+kind: url
 name: perl_clone
 url: https://metacpan.org/pod/Clone
 activity: low
@@ -7307,6 +7312,11 @@ activity: low
 kind: url
 name: perl_extutils_pkgconfig
 url: https://metacpan.org/pod/ExtUtils::PkgConfig
+activity: low
+---
+kind: url
+name: perl_file_sharedir
+url: https://metacpan.org/pod/File::ShareDir
 activity: low
 ---
 kind: url
