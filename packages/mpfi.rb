@@ -24,10 +24,7 @@ class Mpfi < Autotools
   depends_on 'glibc_lib' => :library
   depends_on 'gmp' => :library
   depends_on 'gnulib_git' => :build
-  depends_on 'llvm_dev' => :build
   depends_on 'mpfr' => :library
-
-  no_mold # See https://github.com/rui314/mold/issues/1604
 
   def self.patch
     patches = [
@@ -39,4 +36,6 @@ class Mpfi < Autotools
     ]
     ConvenienceFunctions.patch(patches)
   end
+
+  autotools_configure_options '--enable-maintainer-mode'
 end
