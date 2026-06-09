@@ -52,4 +52,12 @@ class Octave < Autotools
       FileUtils.rm_f "#{CREW_PREFIX}/include/threads.h"
     end
   end
+
+  # docs build fails with this error:
+  # "texi2dvi: Your TeX installation appears to be broken" error.
+  # See https://savannah.gnu.org/bugs/index.php?68437
+  autotools_configure_options '--disable-docs \
+                               --disable-rpath \
+                               --disable-static \
+                               --enable-shared'
 end
