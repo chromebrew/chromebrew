@@ -20,7 +20,28 @@ class Byobu < Autotools
   depends_on 'tmux' unless File.exist? "#{CREW_PREFIX}/bin/screen"
 
   def self.patch
-    system "sed -i '318,328d' ./usr/lib/byobu/include/shutil"
-    system "sed -i '34,36d' ./usr/lib/byobu/release"
+    # Fix /usr/local/lib/byobu/include/common: line 52: get_distro: command not found
+    system "sed -i 's,get_distro,echo ChromeOS,' ./usr/lib/byobu/include/common"
+    # Fix for fhs compliance.
+    if ARCH.eql?('x86_64')
+      Dir['./usr/lib/byobu/*/**'].each do |file|
+        system "sed -i 's,/lib/,/lib#{CREW_LIB_SUFFIX}/,g' #{file}" unless Dir.exist?(file)
+      end
+    end
+  end
+
+  autotools_install_extras do
+    # Fix for fhs compliance.
+    if ARCH.eql?('x86_64')
+      Dir["#{CREW_DEST_PREFIX}/lib/byobu/*"].each do |lib|
+        FileUtils.mv lib, "#{CREW_DEST_LIB_PREFIX}/byobu"
+      end
+      Dir["#{CREW_DEST_PREFIX}/lib/trustmux/*"].each do |lib|
+        FileUtils.mv lib, "#{CREW_DEST_LIB_PREFIX}/trustmux"
+      end
+      Dir["#{CREW_DEST_PREFIX}/bin/*"].each do |bin|
+        system "sed -i 's,/lib/,/lib#{CREW_LIB_SUFFIX}/,g' #{bin}"
+      end
+    end
   end
 end
