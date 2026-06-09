@@ -1,4 +1,4 @@
-# Total size: 52519360
+# Total size: 52521087
 /usr/local/bin/addr2line
 /usr/local/bin/ar
 /usr/local/bin/as
@@ -169,7 +169,7 @@
 /usr/local/lib64/ldscripts/elf_x86_64.xwer
 /usr/local/lib64/ldscripts/stamp
 /usr/local/lib64/libbfd-2.39.50.so
-/usr/local/lib64/libbfd-2.46.so
+/usr/local/lib64/libbfd-2.46.1.so
 /usr/local/lib64/libbfd.a
 /usr/local/lib64/libbfd.la
 /usr/local/lib64/libbfd.so
@@ -185,7 +185,7 @@
 /usr/local/lib64/libctf.so.0.0.0
 /usr/local/lib64/libiberty.a
 /usr/local/lib64/libopcodes-2.39.50.so
-/usr/local/lib64/libopcodes-2.46.so
+/usr/local/lib64/libopcodes-2.46.1.so
 /usr/local/lib64/libopcodes.a
 /usr/local/lib64/libopcodes.la
 /usr/local/lib64/libopcodes.so
