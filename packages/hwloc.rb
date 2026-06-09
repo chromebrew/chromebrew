@@ -19,6 +19,7 @@ class Hwloc < Autotools
 
   depends_on 'eudev' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'libpciaccess' => :library
   depends_on 'libxml2' => :library
   depends_on 'pciutils' => :build
