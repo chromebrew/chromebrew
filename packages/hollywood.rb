@@ -6,10 +6,8 @@ class Hollywood < Package
   version '1.21'
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://httpredir.debian.org/debian/pool/main/h/hollywood/hollywood_1.21.orig.tar.gz'
+  source_url "https://httpredir.debian.org/debian/pool/main/h/hollywood/hollywood_#{version}.orig.tar.gz"
   source_sha256 '793ef1f022b376e131c75e05ff1b55a010c0f4193225bb79018855cb9ab89acb'
-
-  # Hollywood doesn't need binaries
 
   depends_on 'byobu'
   depends_on 'apg'
@@ -23,13 +21,22 @@ class Hollywood < Package
   depends_on 'tree'
   depends_on 'util_linux'
 
+  # Hollywood doesn't need binaries
+  no_compile_needed
+
+  def self.patch
+    # Fix ls: cannot access '/usr/local/bin/../lib/hollywood': No such file or directory
+    system "sed -i 's,lib/,lib#{CREW_LIB_SUFFIX}/,g' ./bin/hollywood"
+    # Fix ls: cannot access '/usr/local/bin/../lib/wallstreet/': No such file or directory
+    system "sed -i 's,lib/,lib#{CREW_LIB_SUFFIX}/,g' ./bin/wallstreet"
+  end
+
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/lib"
-    FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/man1"
-    FileUtils.cp './bin/hollywood', "#{CREW_DEST_PREFIX}/bin/"
-    FileUtils.cp_r './lib/hollywood/', "#{CREW_DEST_PREFIX}/lib/"
-    FileUtils.cp_r './share/hollywood/', "#{CREW_DEST_PREFIX}/share/"
-    FileUtils.cp './share/man/man1/hollywood.1', "#{CREW_DEST_MAN_PREFIX}/man1/"
+    FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
+    FileUtils.cp_r './share/', CREW_DEST_PREFIX
+    FileUtils.cp_r './lib/hollywood/', CREW_DEST_LIB_PREFIX
+    FileUtils.cp_r './lib/wallstreet/', CREW_DEST_LIB_PREFIX
+    FileUtils.install './bin/hollywood', "#{CREW_DEST_PREFIX}/bin/hollywood", mode: 0o755
+    FileUtils.install './bin/wallstreet', "#{CREW_DEST_PREFIX}/bin/wallstreet", mode: 0o755
   end
 end
