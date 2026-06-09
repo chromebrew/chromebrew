@@ -1,4 +1,4 @@
-# Total size: 1580512
+# Total size: 1590012
 /usr/local/include/frei0r.h
 /usr/local/include/frei0r.hpp
 /usr/local/include/frei0r/blur.h
@@ -44,6 +44,7 @@
 /usr/local/lib/frei0r-1/color_only.so
 /usr/local/lib/frei0r-1/coloradj_RGB.so
 /usr/local/lib/frei0r-1/colordistance.so
+/usr/local/lib/frei0r-1/colorenhance.so
 /usr/local/lib/frei0r-1/colorhalftone.so
 /usr/local/lib/frei0r-1/colorize.so
 /usr/local/lib/frei0r-1/colortap.so

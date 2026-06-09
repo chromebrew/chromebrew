@@ -1,4 +1,4 @@
-# Total size: 1615011
+# Total size: 1659999
 /usr/local/bin/hwloc-annotate
 /usr/local/bin/hwloc-bind
 /usr/local/bin/hwloc-calc
@@ -14,6 +14,7 @@
 /usr/local/bin/lstopo
 /usr/local/bin/lstopo-no-graphics
 /usr/local/include/hwloc.h
+/usr/local/include/hwloc/amdsmi.h
 /usr/local/include/hwloc/autogen/config.h
 /usr/local/include/hwloc/bitmap.h
 /usr/local/include/hwloc/cpukinds.h
@@ -45,7 +46,7 @@
 /usr/local/lib/libhwloc.la
 /usr/local/lib/libhwloc.so
 /usr/local/lib/libhwloc.so.15
-/usr/local/lib/libhwloc.so.15.10.2
+/usr/local/lib/libhwloc.so.15.10.3
 /usr/local/lib/pkgconfig/hwloc.pc
 /usr/local/sbin/hwloc-dump-hwdata
 /usr/local/share/bash-completion/completions/hwloc
