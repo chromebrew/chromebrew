@@ -11,33 +11,36 @@ class Octave < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bd9708082a6f4c3052e073bf9642c2b54d2e0bcc95aa305d6bc99676894b2e3a',
-     armv7l: 'bd9708082a6f4c3052e073bf9642c2b54d2e0bcc95aa305d6bc99676894b2e3a',
-     x86_64: '393c3e8cf5f81936be330275e7d4439fbd2da85bca44b3a69ec407a8273d106a'
+    aarch64: 'c1cfc5fc1e2f26950ce3c8a5f5e1a511114b09041157b92304f65b7e9a107f2e',
+     armv7l: 'c1cfc5fc1e2f26950ce3c8a5f5e1a511114b09041157b92304f65b7e9a107f2e',
+     x86_64: '6a6ff0554a580b12bd306914d7b3d53d91e8362b366101b2413a1a34d4b46e00'
   })
 
-  depends_on 'bzip2' # R
-  depends_on 'curl' # R
-  depends_on 'fontconfig' # R
-  depends_on 'freetype' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'bzip2' => :library
+  depends_on 'curl' => :library
+  depends_on 'fftw' => :library
+  depends_on 'fontconfig' => :library
+  depends_on 'freetype' => :library
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gnuplot' => :build
   depends_on 'gperf' => :build
   depends_on 'harfbuzz' # R
   depends_on 'icoutils' => :build
   depends_on 'lapack' => :build
-  depends_on 'libglu' # R
-  depends_on 'libglvnd' # R
+  depends_on 'libglu' => :library
+  depends_on 'libglvnd' => :library
   depends_on 'librsvg' => :build
-  depends_on 'libsndfile' # R
-  depends_on 'libx11' # R
-  depends_on 'openblas' # R
-  depends_on 'pcre2' # R
-  depends_on 'readline' # R
+  depends_on 'libsndfile' => :library
+  depends_on 'libx11' => :library
+  depends_on 'openblas' => :library
+  depends_on 'pcre2' => :library
+  depends_on 'readline' => :library
   depends_on 'texinfo' => :build
   depends_on 'texlive_bin' => :build
-  depends_on 'zlib' # R
+  depends_on 'wayland' => :library
+  depends_on 'zlib' => :library
 
   run_tests
 
