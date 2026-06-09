@@ -3,13 +3,13 @@ require 'buildsystems/autotools'
 class Rsync < Autotools
   description 'rsync is an open source utility that provides fast incremental file transfer.'
   homepage 'https://rsync.samba.org/'
-  version '3.4.3-907505c'
+  version '3.4.4'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://github.com/RsyncProject/rsync'
-  git_hashtag '907505c004ed6e43def6df657912158c597a0b63'
-  # source_url "https://rsync.samba.org/ftp/rsync/src/rsync-#{version}.tar.gz"
-  # source_sha256 'c72e63ca3021cbc80ba86ec30102773f4c5631fbc492b52e773b3958f82a53d3'
+  # source_url 'https://github.com/RsyncProject/rsync'
+  # git_hashtag "v#{version}"
+  source_url "https://rsync.samba.org/ftp/rsync/src/rsync-#{version}.tar.gz"
+  source_sha256 'bd88cf82fa653da32314fb229136407c5c90f80d1758d8f4b091767877d8fa96'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -30,19 +30,5 @@ class Rsync < Autotools
   depends_on 'xxhash' => :executable
   depends_on 'zstd' => :executable
 
-  # tests broken by https://github.com/RsyncProject/rsync/pull/925.diff"
-  run_tests unless version.include?('3.4.3')
-
-  def self.patch
-    patch = [
-      # Fixes requirement of post kernel 5.6 linux/openat2.h
-      # introduced by https://github.com/RsyncProject/rsync/pull/887
-      # See https://github.com/RsyncProject/rsync/issues/924
-      [
-        'https://github.com/RsyncProject/rsync/pull/925.diff',
-        'f84957e50a52b3580af8727b81b130db60c39024541c67b7c62a6d60c7514a1c'
-      ]
-    ]
-    ConvenienceFunctions.patch(patch) if version.include?('3.4.3')
-  end
+  autotools_configure_options '--disable-openat2'
 end
