@@ -10,10 +10,10 @@ class Py3_distlib < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ef1a03136c4b063003ee304097e4e296454c5188bf92141a3de4fa86c2033912',
-     armv7l: 'ef1a03136c4b063003ee304097e4e296454c5188bf92141a3de4fa86c2033912',
-       i686: '26b3cf200c7b7c2ea6d9be9c0f5e21b398c7fef55af0d24752e542d030a0ab3f',
-     x86_64: 'b577f8ee85a179db2701626da60041b914fd48b8f556cd944156143d36703e6f'
+    aarch64: 'd030964273b67c17b8f95dbfe31c3df4dd5b4766b5556699fe4de5d6a04d454c',
+     armv7l: 'd030964273b67c17b8f95dbfe31c3df4dd5b4766b5556699fe4de5d6a04d454c',
+       i686: 'f244622fa0ca6bf9841e39d8afb1373cbd1dfa0bd4e0d2a04d526d9f0c46a8c0',
+     x86_64: '7a2d8f3fecfca05b62f40e2a58ef9bab55853cac741b6166827f42ac83779c1d'
   })
 
   depends_on 'python3' => :logical
