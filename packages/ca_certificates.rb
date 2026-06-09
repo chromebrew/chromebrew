@@ -3,18 +3,18 @@ require 'package'
 class Ca_certificates < Package
   description 'Common CA Certificates PEM files'
   homepage 'https://packages.debian.org/sid/ca-certificates'
-  version '20260224-0ba2e089'
-  license 'MPL-1.1'
+  version '20260601-0e5c792'
+  license 'GPL-2.0-or-later MPL-2.0'
   compatibility 'all'
   source_url 'https://salsa.debian.org/debian/ca-certificates.git'
-  git_hashtag '0ba2e089daf128206b0a13423ceede612bb60270'
+  git_hashtag '0e5c792b46e3331aedcd27bfa49792abf98c5c76'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3dfa342b03229090d0afe614fed6b7464f6192eb5c97ce637e5960b1440f3a5a',
-     armv7l: '3dfa342b03229090d0afe614fed6b7464f6192eb5c97ce637e5960b1440f3a5a',
-       i686: '3b36031d6403f644821725a01899dcbad53b4055a6b710f0a1026b4cb0552f65',
-     x86_64: '5e90c4bcab171ce630862f9010d2241f82b00b5765f10d804723836c38836a71'
+    aarch64: '1427dcbc437570a4599171eae47aae5418f522356272fb1a0726cc19d5f121fa',
+     armv7l: '1427dcbc437570a4599171eae47aae5418f522356272fb1a0726cc19d5f121fa',
+       i686: '35b238aa9f20031e8c02b1b7487472baa6e3f286a5c3f7185a69d3143b9a027e',
+     x86_64: 'fa95e2c4b70e5edc9e852e1f71caabee0deaeaf2f95c434d4b1ecfe9b8047129'
   })
 
   depends_on 'py3_cryptography' => :build
@@ -113,23 +113,19 @@ class Ca_certificates < Package
     CA_CERT_ENVD_HEREDOC
     FileUtils.install '08-ca-certificates', "#{CREW_DEST_PREFIX}/etc/env.d/08-ca-certificates", mode: 0o644
 
-    system "find * -name '*.crt' | LC_ALL=C sort | sed '/examples/d' >> #{CREW_DEST_PREFIX}/etc/ca-certificates.conf", chdir: "#{CREW_DEST_PREFIX}/share/ca-certificates"
-
     system "sbin/update-ca-certificates --hooksdir '' --root #{CREW_DEST_DIR} --certsconf #{CREW_PREFIX}/etc/ca-certificates.conf"
     Dir.glob("#{CREW_DEST_PREFIX}/share/ca-certificates/mozilla/*.crt") do |cert_file|
       cert_basename = File.basename(cert_file, '.crt')
       FileUtils.ln_sf "#{CREW_PREFIX}/share/ca-certificates/mozilla/#{cert_basename}.crt",
                       "#{CREW_DEST_PREFIX}/etc/ssl/certs/#{cert_basename}.pem"
     end
-  end
-
-  def self.postinstall
-    # Do not call system update-ca-certificates as that tries to update certs in /etc .
-    if File.file?("#{CREW_PREFIX}/bin/update-ca-certificates")
-      FileUtils.chmod(0o755, "#{CREW_PREFIX}/bin/update-ca-certificates")
-      system "#{CREW_PREFIX}/bin/update-ca-certificates --fresh --certsconf #{CREW_PREFIX}/etc/ca-certificates.conf"
-    else
-      puts "#{CREW_PREFIX}/bin/update-ca-certificates is missing!".lightred
+    File.open("#{CREW_DEST_PREFIX}/etc/ssl/certs/ca-certificates.crt", 'a') do |mergedcerts|
+      Dir["#{CREW_DEST_PREFIX}/share/ca-certificates/**/*.{crt}"] do |cert_file|
+        File.foreach(cert_file) do |li|
+          mergedcerts.write(li)
+        end
+      end
     end
+    FileUtils.ln_sf "#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt", "#{CREW_DEST_PREFIX}/etc/ssl/cert.pem"
   end
 end
