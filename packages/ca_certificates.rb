@@ -3,11 +3,11 @@ require 'package'
 class Ca_certificates < Package
   description 'Common CA Certificates PEM files'
   homepage 'https://packages.debian.org/sid/ca-certificates'
-  version '20260224-0ba2e089'
-  license 'MPL-1.1'
+  version '20260601-0e5c792'
+  license 'GPL-2.0-or-later MPL-2.0'
   compatibility 'all'
   source_url 'https://salsa.debian.org/debian/ca-certificates.git'
-  git_hashtag '0ba2e089daf128206b0a13423ceede612bb60270'
+  git_hashtag '0e5c792b46e3331aedcd27bfa49792abf98c5c76'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -113,23 +113,19 @@ class Ca_certificates < Package
     CA_CERT_ENVD_HEREDOC
     FileUtils.install '08-ca-certificates', "#{CREW_DEST_PREFIX}/etc/env.d/08-ca-certificates", mode: 0o644
 
-    system "find * -name '*.crt' | LC_ALL=C sort | sed '/examples/d' >> #{CREW_DEST_PREFIX}/etc/ca-certificates.conf", chdir: "#{CREW_DEST_PREFIX}/share/ca-certificates"
-
     system "sbin/update-ca-certificates --hooksdir '' --root #{CREW_DEST_DIR} --certsconf #{CREW_PREFIX}/etc/ca-certificates.conf"
     Dir.glob("#{CREW_DEST_PREFIX}/share/ca-certificates/mozilla/*.crt") do |cert_file|
       cert_basename = File.basename(cert_file, '.crt')
       FileUtils.ln_sf "#{CREW_PREFIX}/share/ca-certificates/mozilla/#{cert_basename}.crt",
                       "#{CREW_DEST_PREFIX}/etc/ssl/certs/#{cert_basename}.pem"
     end
-  end
-
-  def self.postinstall
-    # Do not call system update-ca-certificates as that tries to update certs in /etc .
-    if File.file?("#{CREW_PREFIX}/bin/update-ca-certificates")
-      FileUtils.chmod(0o755, "#{CREW_PREFIX}/bin/update-ca-certificates")
-      system "#{CREW_PREFIX}/bin/update-ca-certificates --fresh --certsconf #{CREW_PREFIX}/etc/ca-certificates.conf"
-    else
-      puts "#{CREW_PREFIX}/bin/update-ca-certificates is missing!".lightred
+    File.open("#{CREW_DEST_PREFIX}/etc/ssl/certs/ca-certificates.crt", 'a') do |mergedcerts|
+      Dir["#{CREW_DEST_PREFIX}/share/ca-certificates/**/*.{crt}"] do |cert_file|
+        File.foreach(cert_file) do |li|
+          mergedcerts.write(li)
+        end
+      end
     end
+    FileUtils.ln_sf "#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt", "#{CREW_DEST_PREFIX}/etc/ssl/cert.pem"
   end
 end
