@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Hwloc < Autotools
   description 'Portable Hardware Locality is a portable abstraction of hierarchical architectures'
   homepage 'https://www.open-mpi.org/projects/hwloc/'
-  version '2.13.0'
+  version '2.14.0'
   license 'BSD-3 Clause'
   compatibility 'all'
   source_url 'https://github.com/open-mpi/hwloc.git'
