@@ -14,14 +14,14 @@ class Highway < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cf2f510bb35f5e84766041262e516b4af07143e5251018ca477a4b8e3c07e2d0',
-     armv7l: 'cf2f510bb35f5e84766041262e516b4af07143e5251018ca477a4b8e3c07e2d0',
-       i686: '2fd63b9abfd4b729dd9d88d800d409f71407a89a4aca68109ec3dc873903b91f',
-     x86_64: 'cde6053aa43220780269a00920e555d1665b3dd72b724877ba58191bf4799933'
+    aarch64: 'c007b93d078a4e8ba6a9f7ebfa065065a3167a548ba3f1564a62791f5e37afe8',
+     armv7l: 'c007b93d078a4e8ba6a9f7ebfa065065a3167a548ba3f1564a62791f5e37afe8',
+       i686: 'd9f55dcfef31f1aea0a97d86277cda36bc136ab608378f8ec9293674b6a00b7a',
+     x86_64: '7fdc91f24c796df54a4ef45004f6aafa07b99f82c245f05569d22d59eb65e307'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
 
   cmake_options "-DBUILD_SHARED_LIBS:BOOL='ON' \
           -DHWY_ENABLE_TESTS:BOOL='ON' \
