@@ -11,13 +11,14 @@ class Libtorrent < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '816f7882c4248bcd023a83b51b326429348450a64f94c2fc9ea7803da4575770',
-     armv7l: '816f7882c4248bcd023a83b51b326429348450a64f94c2fc9ea7803da4575770',
-     x86_64: '043d9b622e92b2b802460f41c80a1bcad57a96c5cfafb18ee4958a9818b4be5c'
+    aarch64: 'e10f8410b71dc1c46a800de1af6d491ba780c53f870fd4eb2b12a6e7b5e39835',
+     armv7l: 'e10f8410b71dc1c46a800de1af6d491ba780c53f870fd4eb2b12a6e7b5e39835',
+     x86_64: '627ff09c68e4d82df66815b7cb0c59c05e06cb0c8b5a8206d68d9855546d8203'
   })
 
   depends_on 'boost'
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'openssl' => :library
 end
