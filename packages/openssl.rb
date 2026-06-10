@@ -19,6 +19,7 @@ class Openssl < Package
 
   depends_on 'ccache' => :build
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 
   case ARCH
   when 'aarch64', 'armv7l'
