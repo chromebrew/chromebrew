@@ -5,7 +5,7 @@ class Vivaldi < Package
   description 'Vivaldi is a new browser that blocks unwanted ads, protects you from trackers, and puts you in control with unique built-in features.'
   homepage 'https://vivaldi.com/'
   # The project stopped supporting armv7l after the 7.5 release.
-  version ARCH.eql?('x86_64') ? '8.0.4033.42' : '7.5.3735.74-1'
+  version ARCH.eql?('x86_64') ? '8.0.4033.44' : '7.5.3735.74-1'
   license 'Vivaldi'
   compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.37'
@@ -46,7 +46,7 @@ class Vivaldi < Package
     source_sha256 '9017e6327c140ad9a9e1f0ce450681a729a15ea764337c30226f51c042ff7e62'
   when 'x86_64'
     arch = 'amd64'
-    source_sha256 '69b694dcf89440d8699620a79a287dea9914e82816fd2d4683114a168f0f066a'
+    source_sha256 '2b30da3a7b51cfc0ce7165f9f8684cc8602bf85221d910b74ba24420668141f1'
   end
 
   case ARCH
