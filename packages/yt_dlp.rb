@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Yt_dlp < Pip
   description 'A fork of youtube-dl with additional features and patches'
   homepage 'https://github.com/yt-dlp/yt-dlp'
-  version "2026.3.17-#{CREW_PY_VER}"
+  version "2026.6.9-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
