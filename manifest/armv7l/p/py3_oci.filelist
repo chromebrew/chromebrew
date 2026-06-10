@@ -1,12 +1,12 @@
-# Total size: 405005217
-/usr/local/lib/python3.14/site-packages/oci-2.177.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/oci-2.177.0.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/oci-2.177.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/oci-2.177.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/oci-2.177.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/oci-2.177.0.dist-info/THIRD_PARTY_LICENSES.txt
-/usr/local/lib/python3.14/site-packages/oci-2.177.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/oci-2.177.0.dist-info/top_level.txt
+# Total size: 405476895
+/usr/local/lib/python3.14/site-packages/oci-2.178.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/oci-2.178.0.dist-info/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/oci-2.178.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/oci-2.178.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/oci-2.178.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/oci-2.178.0.dist-info/THIRD_PARTY_LICENSES.txt
+/usr/local/lib/python3.14/site-packages/oci-2.178.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/oci-2.178.0.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/oci/__init__.py
 /usr/local/lib/python3.14/site-packages/oci/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/__pycache__/base_client.cpython-314.pyc
@@ -11424,6 +11424,11 @@
 /usr/local/lib/python3.14/site-packages/oci/database/models/__pycache__/maintenance_run_summary.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/database/models/__pycache__/maintenance_version_preference_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/database/models/__pycache__/maintenance_window.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/database/models/__pycache__/managed_software_update_day_of_week.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/database/models/__pycache__/managed_software_update_details.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/database/models/__pycache__/managed_software_update_input_details.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/database/models/__pycache__/managed_software_update_maintenance_details.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/database/models/__pycache__/managed_software_update_preference_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/database/models/__pycache__/migrate_vault_key_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/database/models/__pycache__/modify_database_management_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/database/models/__pycache__/modify_pluggable_database_management_details.cpython-314.pyc
@@ -11572,6 +11577,8 @@
 /usr/local/lib/python3.14/site-packages/oci/database/models/__pycache__/upgrade_database_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/database/models/__pycache__/upgrade_db_system_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/database/models/__pycache__/vanity_url_details.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/database/models/__pycache__/version_scheme_details.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/database/models/__pycache__/version_scheme_from_version_series_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/database/models/__pycache__/vm_cluster.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/database/models/__pycache__/vm_cluster_network.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/database/models/__pycache__/vm_cluster_network_details.cpython-314.pyc
@@ -11977,6 +11984,11 @@
 /usr/local/lib/python3.14/site-packages/oci/database/models/maintenance_run_summary.py
 /usr/local/lib/python3.14/site-packages/oci/database/models/maintenance_version_preference_details.py
 /usr/local/lib/python3.14/site-packages/oci/database/models/maintenance_window.py
+/usr/local/lib/python3.14/site-packages/oci/database/models/managed_software_update_day_of_week.py
+/usr/local/lib/python3.14/site-packages/oci/database/models/managed_software_update_details.py
+/usr/local/lib/python3.14/site-packages/oci/database/models/managed_software_update_input_details.py
+/usr/local/lib/python3.14/site-packages/oci/database/models/managed_software_update_maintenance_details.py
+/usr/local/lib/python3.14/site-packages/oci/database/models/managed_software_update_preference_details.py
 /usr/local/lib/python3.14/site-packages/oci/database/models/migrate_vault_key_details.py
 /usr/local/lib/python3.14/site-packages/oci/database/models/modify_database_management_details.py
 /usr/local/lib/python3.14/site-packages/oci/database/models/modify_pluggable_database_management_details.py
@@ -12125,6 +12137,8 @@
 /usr/local/lib/python3.14/site-packages/oci/database/models/upgrade_database_details.py
 /usr/local/lib/python3.14/site-packages/oci/database/models/upgrade_db_system_details.py
 /usr/local/lib/python3.14/site-packages/oci/database/models/vanity_url_details.py
+/usr/local/lib/python3.14/site-packages/oci/database/models/version_scheme_details.py
+/usr/local/lib/python3.14/site-packages/oci/database/models/version_scheme_from_version_series_details.py
 /usr/local/lib/python3.14/site-packages/oci/database/models/vm_cluster.py
 /usr/local/lib/python3.14/site-packages/oci/database/models/vm_cluster_network.py
 /usr/local/lib/python3.14/site-packages/oci/database/models/vm_cluster_network_details.py
@@ -21924,6 +21938,8 @@
 /usr/local/lib/python3.14/site-packages/oci/identity_domains/models/__pycache__/identity_proofing_provider_templates.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/identity_domains/models/__pycache__/identity_proofing_providers.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/identity_domains/models/__pycache__/identity_propagation_trust.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/identity_domains/models/__pycache__/identity_propagation_trust_ca_cert_chain.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/identity_domains/models/__pycache__/identity_propagation_trust_claim_validations.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/identity_domains/models/__pycache__/identity_propagation_trust_impersonation_service_users.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/identity_domains/models/__pycache__/identity_propagation_trust_keytab.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/identity_domains/models/__pycache__/identity_propagation_trusts.cpython-314.pyc
@@ -22405,6 +22421,8 @@
 /usr/local/lib/python3.14/site-packages/oci/identity_domains/models/identity_proofing_provider_templates.py
 /usr/local/lib/python3.14/site-packages/oci/identity_domains/models/identity_proofing_providers.py
 /usr/local/lib/python3.14/site-packages/oci/identity_domains/models/identity_propagation_trust.py
+/usr/local/lib/python3.14/site-packages/oci/identity_domains/models/identity_propagation_trust_ca_cert_chain.py
+/usr/local/lib/python3.14/site-packages/oci/identity_domains/models/identity_propagation_trust_claim_validations.py
 /usr/local/lib/python3.14/site-packages/oci/identity_domains/models/identity_propagation_trust_impersonation_service_users.py
 /usr/local/lib/python3.14/site-packages/oci/identity_domains/models/identity_propagation_trust_keytab.py
 /usr/local/lib/python3.14/site-packages/oci/identity_domains/models/identity_propagation_trusts.py
@@ -25080,6 +25098,10 @@
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/kafka_cluster_client_composite_operations.py
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/__init__.py
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/__pycache__/addon_collection.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/__pycache__/addon_option_collection.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/__pycache__/addon_option_summary.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/__pycache__/addon_summary.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/__pycache__/bootstrap_url.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/__pycache__/broker_shape.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/__pycache__/change_kafka_cluster_compartment_details.cpython-314.pyc
@@ -25087,7 +25109,10 @@
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/__pycache__/create_kafka_cluster_config_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/__pycache__/create_kafka_cluster_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/__pycache__/enable_superuser_details.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/__pycache__/install_addon_details.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/__pycache__/install_public_connectivity_addon_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/__pycache__/kafka_cluster.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/__pycache__/kafka_cluster_addon.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/__pycache__/kafka_cluster_collection.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/__pycache__/kafka_cluster_config.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/__pycache__/kafka_cluster_config_collection.cpython-314.pyc
@@ -25098,9 +25123,12 @@
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/__pycache__/kafka_cluster_summary.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/__pycache__/node_shape_collection.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/__pycache__/node_shape_summary.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/__pycache__/public_connectivity_addon.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/__pycache__/subnet_set.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/__pycache__/update_addon_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/__pycache__/update_kafka_cluster_config_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/__pycache__/update_kafka_cluster_details.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/__pycache__/update_public_connectivity_addon_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/__pycache__/work_request.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/__pycache__/work_request_error.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/__pycache__/work_request_error_collection.cpython-314.pyc
@@ -25109,6 +25137,10 @@
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/__pycache__/work_request_resource.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/__pycache__/work_request_summary.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/__pycache__/work_request_summary_collection.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/addon_collection.py
+/usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/addon_option_collection.py
+/usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/addon_option_summary.py
+/usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/addon_summary.py
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/bootstrap_url.py
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/broker_shape.py
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/change_kafka_cluster_compartment_details.py
@@ -25116,7 +25148,10 @@
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/create_kafka_cluster_config_details.py
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/create_kafka_cluster_details.py
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/enable_superuser_details.py
+/usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/install_addon_details.py
+/usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/install_public_connectivity_addon_details.py
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/kafka_cluster.py
+/usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/kafka_cluster_addon.py
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/kafka_cluster_collection.py
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/kafka_cluster_config.py
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/kafka_cluster_config_collection.py
@@ -25127,9 +25162,12 @@
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/kafka_cluster_summary.py
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/node_shape_collection.py
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/node_shape_summary.py
+/usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/public_connectivity_addon.py
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/subnet_set.py
+/usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/update_addon_details.py
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/update_kafka_cluster_config_details.py
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/update_kafka_cluster_details.py
+/usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/update_public_connectivity_addon_details.py
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/work_request.py
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/work_request_error.py
 /usr/local/lib/python3.14/site-packages/oci/managed_kafka/models/work_request_error_collection.py
@@ -26346,6 +26384,7 @@
 /usr/local/lib/python3.14/site-packages/oci/mysql/models/__pycache__/heat_wave_cluster_table_memory_estimate.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/mysql/models/__pycache__/heat_wave_node.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/mysql/models/__pycache__/initialization_variables.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/mysql/models/__pycache__/ipv6_address_ipv6_subnet_cidr_pair_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/mysql/models/__pycache__/logging_destination_configuration.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/mysql/models/__pycache__/maintenance_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/mysql/models/__pycache__/maintenance_disabled_window.cpython-314.pyc
@@ -26472,6 +26511,7 @@
 /usr/local/lib/python3.14/site-packages/oci/mysql/models/heat_wave_cluster_table_memory_estimate.py
 /usr/local/lib/python3.14/site-packages/oci/mysql/models/heat_wave_node.py
 /usr/local/lib/python3.14/site-packages/oci/mysql/models/initialization_variables.py
+/usr/local/lib/python3.14/site-packages/oci/mysql/models/ipv6_address_ipv6_subnet_cidr_pair_details.py
 /usr/local/lib/python3.14/site-packages/oci/mysql/models/logging_destination_configuration.py
 /usr/local/lib/python3.14/site-packages/oci/mysql/models/maintenance_details.py
 /usr/local/lib/python3.14/site-packages/oci/mysql/models/maintenance_disabled_window.py
