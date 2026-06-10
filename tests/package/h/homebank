@@ -1,0 +1,3 @@
+#!/bin/bash
+homebank -h
+homebank -V
