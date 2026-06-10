@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_readme_renderer < Pip
   description 'Safely render long_description/README files in Warehouse'
   homepage 'https://github.com/pypa/readme_renderer'
-  version "44.0-#{CREW_PY_VER}"
+  version "45.0-#{CREW_PY_VER}"
   license 'Apache'
   compatibility 'all'
   source_url 'SKIP'
