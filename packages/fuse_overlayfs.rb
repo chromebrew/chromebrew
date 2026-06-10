@@ -6,7 +6,7 @@ require 'package'
 class Fuse_overlayfs < Package
   description 'FUSE implementation of overlayfs'
   homepage 'https://github.com/containers/fuse-overlayfs'
-  version '1.16'
+  version '1.17'
   license 'GPL3'
   compatibility 'all'
   source_url 'https://github.com/containers/fuse-overlayfs.git'
