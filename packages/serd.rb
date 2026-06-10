@@ -14,10 +14,10 @@ class Serd < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '368a3a655818230edb8f564242462c6bd0340ea9e24f23fc5cf67a49b7a6c87b',
-     armv7l: '368a3a655818230edb8f564242462c6bd0340ea9e24f23fc5cf67a49b7a6c87b',
-       i686: '73d41609a03ed831a3c64ddef6fd8da8fa71e3bc05291619b37c3aae2ab2f10c',
-     x86_64: '2602bd3a9fdedb39a0a710d02cc81cbb4462ccd900d9a66af59d2d0c73911657'
+    aarch64: '867ff2ee7e81661b20dbc1eabf90729e22c99ded136f8df4174a025f83260013',
+     armv7l: '867ff2ee7e81661b20dbc1eabf90729e22c99ded136f8df4174a025f83260013',
+       i686: '90054e6fe6aaa1cfee1bdf90ad240bc98f265a3ceb0155e9730a8920183ae26c',
+     x86_64: '274b67b8ecbcb74b61b8dcd6c98919f87ee48a8c7312dec56821c3cfeed2c55d'
   })
 
   depends_on 'gcc_lib' # R
