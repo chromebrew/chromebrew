@@ -66,7 +66,7 @@ jobs:
     steps:
       - name: Get GH Token
         id: get_workflow_token
-        uses: peter-murray/workflow-application-token-action@v4
+        uses: peter-murray/workflow-application-token-action@v5
         with:
           application_id: ${{ secrets.APPLICATION_ID }}
           application_private_key: ${{ secrets.APPLICATION_PRIVATE_KEY }}
@@ -410,7 +410,7 @@ jobs:
           ref: ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
       - name: Get GH Token
         id: get_workflow_token
-        uses: peter-murray/workflow-application-token-action@v4
+        uses: peter-murray/workflow-application-token-action@v5
         with:
           application_id: ${{ secrets.APPLICATION_ID }}
           application_private_key: ${{ secrets.APPLICATION_PRIVATE_KEY }}
