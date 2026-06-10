@@ -1,11 +1,11 @@
-# Total size: 44741
-/usr/local/lib/python3.14/site-packages/readme_renderer-44.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/readme_renderer-44.0.dist-info/LICENSE
-/usr/local/lib/python3.14/site-packages/readme_renderer-44.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/readme_renderer-44.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/readme_renderer-44.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/readme_renderer-44.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/readme_renderer-44.0.dist-info/top_level.txt
+# Total size: 49683
+/usr/local/lib/python3.14/site-packages/readme_renderer-45.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/readme_renderer-45.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/readme_renderer-45.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/readme_renderer-45.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/readme_renderer-45.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/readme_renderer-45.0.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/readme_renderer-45.0.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/readme_renderer/__init__.py
 /usr/local/lib/python3.14/site-packages/readme_renderer/__main__.py
 /usr/local/lib/python3.14/site-packages/readme_renderer/__pycache__/__init__.cpython-314.pyc
