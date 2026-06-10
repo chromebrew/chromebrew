@@ -72,7 +72,7 @@ CREW_ANITYA_PACKAGE_NAME_MAPPINGS = Set[
   { pkg_name: 'gtk3', anitya_pkg: 'gtk+3.0~stable', comments: 'Anitya has Hackage, Rubygems, and CPAN (Perl) packages named gtk3' },
   { pkg_name: 'gtk4', anitya_pkg: 'gtk', comments: 'Anitya has Rubygems and crate.io packages named gtk3' },
   { pkg_name: 'gtksharp2', anitya_pkg: 'gtk-sharp', comments: 'The upstream Anitya package is mapped to gtk-sharp3 in other distros, but it is using the outdated mono/gtk-sharp repository so it is only getting the 2.x versions. Not sure what to do here.' },
-  { pkg_name: 'heroku', anitya_pkg: 'heroku-cli',  comments: '' },
+  { pkg_name: 'heroku', anitya_pkg: 'heroku-cli', comments: '' },
   { pkg_name: 'hunspell_en_us', anitya_pkg: 'LibreOffice', comments: '' },
   { pkg_name: 'hunspell_es_any', anitya_pkg: 'LibreOffice', comments: '' },
   { pkg_name: 'hunspell_es_us', anitya_pkg: 'LibreOffice', comments: '' },
