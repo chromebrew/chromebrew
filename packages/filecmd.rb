@@ -3,7 +3,7 @@ require 'package'
 class Filecmd < Package
   description 'file and libmagic determine file type'
   homepage 'https://darwinsys.com/file/'
-  version '5.47'
+  version '5.48'
   license 'BSD-2 and GPL-3+' # Chromebrew's filefix is GPL-3+, file itself is BSD-2
   compatibility 'all'
   source_url 'https://github.com/file/file.git'
@@ -11,14 +11,15 @@ class Filecmd < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9163715750c6d7e9d70ff081edc97c70b1a717e822787385793708222cc5408e',
-     armv7l: '9163715750c6d7e9d70ff081edc97c70b1a717e822787385793708222cc5408e',
-       i686: '668763b09dc6d188fb5e0acdad208563718d10a9b28aa543247a663a87356efe',
-     x86_64: 'e5fe4216f9fd7d02d4b75f225fa5eb53fc4c6faca7df95416e27689136054470'
+    aarch64: '84acef410f991acdcc9c6614bde31ab38f978c45b299bdd0d419889e1bdbacd5',
+     armv7l: '84acef410f991acdcc9c6614bde31ab38f978c45b299bdd0d419889e1bdbacd5',
+       i686: 'de65d58c8ce5f94d6ae2cc9f50c94746cbc193fdd843e6f0bfb5f4fa04fcaeb6',
+     x86_64: '8044c6c7f40c55ac05ecdc4faba3eb481845131c1225f2992b31fd0c09eb8c09'
   })
 
   depends_on 'bzip2' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'lzlib' => :library
   depends_on 'xzutils' => :library
   depends_on 'zlib' => :library
@@ -57,6 +58,7 @@ class Filecmd < Package
   def self.build
     system 'autoreconf -fiv' unless File.executable? './configure'
     @filecmd_config_opts = "--enable-static \
+                            #{'--disable-year2038' unless CREW_LIB_SUFFIX == '64'} \
                             --enable-shared \
                             --enable-zlib \
                             --enable-bzlib \
