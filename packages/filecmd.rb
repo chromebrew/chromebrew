@@ -57,6 +57,7 @@ class Filecmd < Package
   def self.build
     system 'autoreconf -fiv' unless File.executable? './configure'
     @filecmd_config_opts = "--enable-static \
+                            #{'--disable-year2038' unless CREW_LIB_SUFFIX == '64'	} \
                             --enable-shared \
                             --enable-zlib \
                             --enable-bzlib \
