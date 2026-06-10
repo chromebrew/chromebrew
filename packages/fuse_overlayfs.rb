@@ -14,14 +14,14 @@ class Fuse_overlayfs < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f5f34e8005324799c5dd3e6e9287c92f549c6751bc956f1c226a41b98ff3c717',
-     armv7l: 'f5f34e8005324799c5dd3e6e9287c92f549c6751bc956f1c226a41b98ff3c717',
-       i686: '47c5e67a8066685d834b918c64d62f84cfec1a5519ca355ea397e623f9982dfe',
-     x86_64: '7d6f6ff5fdcd81f2cf3b2ca91811a23baa4c4aaab25de136bc51fe80d961f6fa'
+    aarch64: '2ce5dfbea26f897d4501a9e9c521b54024c86b8298f693fb90fa11993e73dc2c',
+     armv7l: '2ce5dfbea26f897d4501a9e9c521b54024c86b8298f693fb90fa11993e73dc2c',
+       i686: '4be4f595c07ad9d5d8e9258482472acc5e44d91df033c4b856f5d8947c8248e7',
+     x86_64: '3c4b8501e7ea560cba2a024c45557b7cdc0f38e1a45e2a8a0c69c9f296e2326e'
   })
 
-  depends_on 'fuse3' # R
-  depends_on 'glibc' # R
+  depends_on 'fuse3' => :executable
+  depends_on 'glibc' => :executable
   depends_on 'go_md2man' => :build
 
   def self.build
