@@ -22,6 +22,7 @@ class Fuse_overlayfs < Package
 
   depends_on 'fuse3' => :executable
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'go_md2man' => :build
 
   def self.build
