@@ -19,6 +19,7 @@ class Filecmd < Package
 
   depends_on 'bzip2' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'lzlib' => :library
   depends_on 'xzutils' => :library
   depends_on 'zlib' => :library
