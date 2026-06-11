@@ -3,19 +3,22 @@ require 'buildsystems/autotools'
 class Hyphen < Autotools
   description 'hyphenation library to use converted TeX hyphenation patterns'
   homepage 'https://github.com/hunspell/hyphen'
-  version '2.8.8-73dd296'
+  version '2.8.9'
   license 'GPL-2, LGPL-2.1 and MPL-1.1'
   compatibility 'all'
   source_url 'https://github.com/hunspell/hyphen.git'
-  git_hashtag '73dd2967c8e1e4f6d7334ee9e539a323d6e66cbd'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7e2e2fdb83d0ffc858f50927f8119566a7709cb7644bbf1002f8e47f050e3a56',
-     armv7l: '7e2e2fdb83d0ffc858f50927f8119566a7709cb7644bbf1002f8e47f050e3a56',
-       i686: 'fceabb306364839bea4cec6d415a11e4b6b961f64eda2ade1cd5339fd57b0dd0',
-     x86_64: 'cae5691f15a004798e42721343845626363a807b0973009edcd415c33b739b5b'
+    aarch64: '78bb2fd8416730724d11d8393147f47e68caf8bf8b23dea3c47745e6afaf188c',
+     armv7l: '78bb2fd8416730724d11d8393147f47e68caf8bf8b23dea3c47745e6afaf188c',
+       i686: '326c7c59b48cf5b0fa24245806b06d14336f46db8bbc05f70c1d21ba42fd75fc',
+     x86_64: '4ee39ad89a470f041d6dda847055f4aea4e35d7b35ee0bf79a2c64c3f19d9ef0'
   })
+
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 
   run_tests
 end
