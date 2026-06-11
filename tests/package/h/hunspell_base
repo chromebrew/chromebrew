@@ -1,0 +1,3 @@
+#!/bin/bash
+hunspell -h 2>&1 | head
+hunspell -v
