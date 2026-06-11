@@ -1,0 +1,3 @@
+#!/bin/bash
+perl -e "require JavaScript::Beautifier"
+js_beautify
