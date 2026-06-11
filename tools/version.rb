@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.38 (for Chromebrew)
+# version.rb version 3.39 (for Chromebrew)
 
 OPTIONS = %w[-a --all -h --help -j --json -u --update-package-files -v --verbose -vv]
 
@@ -151,10 +151,19 @@ def get_version(name, homepage, source)
   puts "anitya_id: #{anitya_id}" if CREW_VERY_VERBOSE
   if !anitya_id.nil?
     # Get the latest stable version of the package from anitya.
-    json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/versions/?project_id=#{anitya_id}")))
-    puts json if CREW_VERY_VERBOSE
-    return json['latest_version'] if json['stable_versions'][0].nil?
-    return json['stable_versions'][0]
+    anitya_url = "https://release-monitoring.org/api/v2/versions/?project_id=#{anitya_id}"
+    puts "anitya_url is #{anitya_url}" if CREW_VERY_VERBOSE
+    response = Net::HTTP.get(URI(anitya_url))
+    begin
+      json = JSON.parse(response)
+      puts json if CREW_VERY_VERBOSE
+      return json['latest_version'] if json['stable_versions'][0].nil?
+      return json['stable_versions'][0]
+    rescue StandardError => e
+      puts "The response from #{anitya_url} for package #{name} is not valid JSON."
+      puts e if CREW_VERY_VERBOSE
+      return ''
+    end
   elsif !source.nil? && !source.is_a?(Hash)
     # If anitya has failed, we have a variety of fallbacks as a last resort.
     source.sub!('www.', '')
