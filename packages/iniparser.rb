@@ -1,48 +1,26 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Iniparser < Package
+class Iniparser < CMake
   description 'stand-alone ini parser library in ANSI C'
   homepage 'http://ndevilla.free.fr/iniparser/'
-  version '4.1'
+  version '4.2.6'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/ndevilla/iniparser/archive/v4.1.tar.gz'
-  source_sha256 '960daa800dd31d70ba1bacf3ea2d22e8ddfc2906534bf328319495966443f3ae'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/ndevilla/iniparser.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '712e6e63ea2aa696666a53ba354a5108f158241ce806f1eda5b27a577cc7bd58',
-     armv7l: '712e6e63ea2aa696666a53ba354a5108f158241ce806f1eda5b27a577cc7bd58',
-       i686: 'e48a36dd2464e406f43e301bcee25592b225f7eb7a7ab90bbfbfa2ea19c2ad86',
-     x86_64: '9a00066ad86da206832d1c9c024fa83e0cb0da923332581342a32dcc748254dd'
+    aarch64: '295fa27bf359fabf07a1ea8cd0471838521f1c30f8b282b52abac1cef78572a7',
+     armv7l: '295fa27bf359fabf07a1ea8cd0471838521f1c30f8b282b52abac1cef78572a7',
+       i686: '26aa6ee31d08fe36f526d81ebfec792f5af76141567430426ae15489caf1cb70',
+     x86_64: '6888f3e699735c0e2699a01f55300aeae14bd1468977b69e3c7f098d350fe40b'
   })
 
-  def self.patch
-    # Fix buffer overflow vulnerabilities
-    system 'curl -#LO https://github.com/ndevilla/iniparser/commit/a249509544972d60f5077bfde554af480bd82594.patch'
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest(File.read('a249509544972d60f5077bfde554af480bd82594.patch')) == '1b1fe5d2faf6eb5bed51b80b046d4699c09b14b3e5e5277aed790a8741fcad8b'
-    system 'patch', '-Np1', '-i', 'a249509544972d60f5077bfde554af480bd82594.patch'
-    # Fix libdir
-    system 'sed', '-i', "s,/usr/lib,#{CREW_LIB_PREFIX},g", 'Makefile'
-  end
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 
-  def self.build
-    system 'make'
-  end
+  cmake_options '-DBUILD_TESTING=ON'
 
-  def self.install
-    # Create needed directories
-    FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/include"
-    # Install library
-    FileUtils.install 'libiniparser.so.1', CREW_DEST_LIB_PREFIX
-    # Install header files
-    FileUtils.install Dir.glob('src/*.h'), "#{CREW_DEST_PREFIX}/include"
-    # Install library symlink
-    FileUtils.ln_s 'libiniparser.so.1', "#{CREW_DEST_LIB_PREFIX}/libiniparser.so"
-  end
-
-  def self.check
-    system 'make', 'check'
-  end
+  run_tests
 end

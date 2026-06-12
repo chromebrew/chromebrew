@@ -1,5 +1,21 @@
-# Total size: 48183
-/usr/local/include/dictionary.h
-/usr/local/include/iniparser.h
+# Total size: 453191
+/usr/local/include/iniparser/dictionary.h
+/usr/local/include/iniparser/iniparser.h
+/usr/local/include/unity/unity.h
+/usr/local/include/unity/unity_internals.h
+/usr/local/lib64/cmake/iniparser/iniparser-config-version.cmake
+/usr/local/lib64/cmake/iniparser/iniparser-config.cmake
+/usr/local/lib64/cmake/iniparser/iniparser-sharedTargets-release.cmake
+/usr/local/lib64/cmake/iniparser/iniparser-sharedTargets.cmake
+/usr/local/lib64/cmake/iniparser/iniparser-staticTargets-release.cmake
+/usr/local/lib64/cmake/iniparser/iniparser-staticTargets.cmake
+/usr/local/lib64/cmake/unity/unityConfig.cmake
+/usr/local/lib64/cmake/unity/unityConfigVersion.cmake
+/usr/local/lib64/cmake/unity/unityTargets-release.cmake
+/usr/local/lib64/cmake/unity/unityTargets.cmake
+/usr/local/lib64/libiniparser.a
 /usr/local/lib64/libiniparser.so
-/usr/local/lib64/libiniparser.so.1
+/usr/local/lib64/libiniparser.so.4
+/usr/local/lib64/libiniparser.so.4.2.6
+/usr/local/lib64/libunity.a
+/usr/local/lib64/pkgconfig/iniparser.pc
