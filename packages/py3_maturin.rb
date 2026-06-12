@@ -22,6 +22,7 @@ class Py3_maturin < Python
 
   depends_on 'gcc_lib' => :executable
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'py3_semantic_version' => :build
   depends_on 'py3_setuptools'
   depends_on 'py3_setuptools_rust'
