@@ -1,0 +1,3 @@
+#!/bin/bash
+makeg -h | head
+makeg -v
