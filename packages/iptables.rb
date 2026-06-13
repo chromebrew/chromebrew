@@ -3,20 +3,21 @@ require 'buildsystems/autotools'
 class Iptables < Autotools
   description 'iptables is the userspace command line program used to configure the Linux 2.4.x and later packet filtering ruleset.'
   homepage 'https://www.netfilter.org/projects/iptables/'
-  version '1.8.11'
+  version '1.8.13'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.netfilter.org/projects/iptables/files/iptables-#{version}.tar.xz"
-  source_sha256 'd87303d55ef8c92bcad4dd3f978b26d272013642b029425775f5bad1009fe7b2'
+  source_sha256 '1afcd33da9e8f913ace6a2126788162e207e26f5d5e29c6573c0e581ffc58b99'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cceb641d27a6c9cbf4dd24860dc9317371a99b97dd3c964455c69202f9a5ea70',
-     armv7l: 'cceb641d27a6c9cbf4dd24860dc9317371a99b97dd3c964455c69202f9a5ea70',
-     x86_64: '0d22c11c74dd468b51b11b72a3daf4f18b44e123ef5cd5a15bb901aa26ae7b52'
+    aarch64: 'a13564bcc3222f90c455e0d4d02683709d56d676fa35f619ddd3b70bb309b15e',
+     armv7l: 'a13564bcc3222f90c455e0d4d02683709d56d676fa35f619ddd3b70bb309b15e',
+     x86_64: 'e0ac1522ead574b130446aff8abfcdc248ed70144b3e3e3dbbef00c9735396f3'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 
   autotools_configure_options '--enable-static --disable-nftables'
 end
