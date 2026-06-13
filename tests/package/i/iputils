@@ -1,0 +1,9 @@
+#!/bin/bash
+arping -h 2>&1 | head -5
+arping -V
+clockdiff -h 2>&1 | head -5
+clockdiff -V
+ping -h 2>&1 | head -5
+ping -V
+tracepath -h 2>&1 | head -5
+tracepath -V
