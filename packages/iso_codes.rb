@@ -1,28 +1,19 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Iso_codes < Package
+class Iso_codes < Meson
   description 'Provides lists of various ISO standards (countries, languages, language scripts, and currency names)'
   homepage 'https://salsa.debian.org/iso-codes-team/iso-codes'
-  version '4.1'
+  version '4.20.1'
   license 'LGPL-2.1+'
   compatibility 'all'
-  source_url 'https://salsa.debian.org/iso-codes-team/iso-codes/uploads/049ce6aac94d842be809f4063950646c/iso-codes-4.1.tar.xz'
-  source_sha256 '67117fb76f32c8fb5e37d2d60bce238f1f8e865cc7b569a57cbc3017ca15488a'
-  binary_compression 'tar.xz'
+  source_url 'https://salsa.debian.org/iso-codes-team/iso-codes.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3842e352264375e1b331bc14e4bdfceb56c27978e4ca96b0572c96db980266c0',
-     armv7l: '3842e352264375e1b331bc14e4bdfceb56c27978e4ca96b0572c96db980266c0',
-       i686: '61d56299e86b904fec2595653853dbbc1029631867b335896834d6cc3c65f9bb',
-     x86_64: '5491ddcffd603df2cecdaa60f4ea498f290f117cf1202aa1bfc85af35e19772c'
+    aarch64: 'd2b3138df48366fef39d75ffd144f15faf2bc127d0d2b36e86ff9b9875856139',
+     armv7l: 'd2b3138df48366fef39d75ffd144f15faf2bc127d0d2b36e86ff9b9875856139',
+       i686: '88add42dc3e09877ab6683d6b49ce75b891de836e6b1dfa222fee7ab3d1cd720',
+     x86_64: '21f98f1d2e699f0ff5504574b8fdd5a5c5826b23cc5a4f9fd0f270288f8a6eef'
   })
-
-  def self.build
-    system "./configure --prefix=#{CREW_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end
