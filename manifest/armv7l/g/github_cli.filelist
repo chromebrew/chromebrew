@@ -1,4 +1,4 @@
-# Total size: 37198887
+# Total size: 37534274
 /usr/local/bin/gh
 /usr/local/share/man/man1/gh-agent-task-create.1.zst
 /usr/local/share/man/man1/gh-agent-task-list.1.zst
@@ -49,6 +49,12 @@
 /usr/local/share/man/man1/gh-config-set.1.zst
 /usr/local/share/man/man1/gh-config.1.zst
 /usr/local/share/man/man1/gh-copilot.1.zst
+/usr/local/share/man/man1/gh-discussion-comment.1.zst
+/usr/local/share/man/man1/gh-discussion-create.1.zst
+/usr/local/share/man/man1/gh-discussion-edit.1.zst
+/usr/local/share/man/man1/gh-discussion-list.1.zst
+/usr/local/share/man/man1/gh-discussion-view.1.zst
+/usr/local/share/man/man1/gh-discussion.1.zst
 /usr/local/share/man/man1/gh-extension-browse.1.zst
 /usr/local/share/man/man1/gh-extension-create.1.zst
 /usr/local/share/man/man1/gh-extension-exec.1.zst
@@ -198,6 +204,7 @@
 /usr/local/share/man/man1/gh-secret-set.1.zst
 /usr/local/share/man/man1/gh-secret.1.zst
 /usr/local/share/man/man1/gh-skill-install.1.zst
+/usr/local/share/man/man1/gh-skill-list.1.zst
 /usr/local/share/man/man1/gh-skill-preview.1.zst
 /usr/local/share/man/man1/gh-skill-publish.1.zst
 /usr/local/share/man/man1/gh-skill-search.1.zst

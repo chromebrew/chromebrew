@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Vulkan_headers < CMake
   description 'Vulkan header files'
   homepage 'https://www.khronos.org/vulkan'
-  version '1.4.353'
+  version '1.4.354'
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/KhronosGroup/Vulkan-Headers.git'
@@ -11,8 +11,8 @@ class Vulkan_headers < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '57e826465fd559d3d5540c9f777b536a894bb68f7fe251ddbef6689c06eb30af',
-     armv7l: '57e826465fd559d3d5540c9f777b536a894bb68f7fe251ddbef6689c06eb30af',
-     x86_64: 'c437c1cfc62aaa59348348b628e26708bc9d9abd79248b675611b92334f21a62'
+    aarch64: 'fdd5739469b6493ac47052e2e3d825e7dfea40e7884e29f99fc31562b46a8ab3',
+     armv7l: 'fdd5739469b6493ac47052e2e3d825e7dfea40e7884e29f99fc31562b46a8ab3',
+     x86_64: '79ba01d822ec8dc8a357867a609631ce1d77c81631e3214f17dbaa02d9a53150'
   })
 end
