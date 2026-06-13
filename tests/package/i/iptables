@@ -1,0 +1,5 @@
+#!/bin/bash
+iptables -h | head -5
+iptables -V
+ip6tables -h | head -5
+ip6tables -V
