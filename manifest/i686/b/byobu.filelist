@@ -1,4 +1,4 @@
-# Total size: 847805
+# Total size: 882345
 /usr/local/bin/byobu
 /usr/local/bin/byobu-config
 /usr/local/bin/byobu-ctrl-a
@@ -33,11 +33,7 @@
 /usr/local/bin/manifest
 /usr/local/bin/purge-old-kernels
 /usr/local/bin/trustmux
-/usr/local/bin/trustmux-ctl
-/usr/local/bin/trustmux-disable
-/usr/local/bin/trustmux-enable
-/usr/local/bin/trustmux-pair
-/usr/local/bin/trustmux-unpair
+/usr/local/bin/trustmuxd
 /usr/local/bin/vigpg
 /usr/local/bin/wifi-status
 /usr/local/etc/byobu/backend
@@ -105,6 +101,7 @@
 /usr/local/lib/trustmux/trustmux/_enable.py
 /usr/local/lib/trustmux/trustmux/_pair.py
 /usr/local/lib/trustmux/trustmux/_unpair.py
+/usr/local/share/bash-completion/completions/trustmux
 /usr/local/share/byobu/desktop/byobu.desktop
 /usr/local/share/byobu/desktop/byobu.desktop.old
 /usr/local/share/byobu/keybindings/common
@@ -136,6 +133,7 @@
 /usr/local/share/byobu/status/status
 /usr/local/share/byobu/status/statusrc
 /usr/local/share/byobu/tests/byobu-time-notifications
+/usr/local/share/byobu/tests/test_byobu.sh
 /usr/local/share/byobu/windows/common
 /usr/local/share/dbus-1/services/us.kirkland.terminals.byobu.service
 /usr/local/share/doc/byobu/help.screen.txt
@@ -173,12 +171,8 @@
 /usr/local/share/man/man1/ctail.1.zst
 /usr/local/share/man/man1/manifest.1.zst
 /usr/local/share/man/man1/purge-old-kernels.1.zst
-/usr/local/share/man/man1/trustmux-ctl.1.zst
-/usr/local/share/man/man1/trustmux-disable.1.zst
-/usr/local/share/man/man1/trustmux-enable.1.zst
-/usr/local/share/man/man1/trustmux-pair.1.zst
-/usr/local/share/man/man1/trustmux-unpair.1.zst
 /usr/local/share/man/man1/trustmux.1.zst
+/usr/local/share/man/man1/trustmuxd.1.zst
 /usr/local/share/man/man1/vigpg.1.zst
 /usr/local/share/man/man1/wifi-status.1.zst
 /usr/local/share/sounds/byobu/byobu.ogg
