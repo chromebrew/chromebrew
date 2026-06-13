@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Yaru < Meson
   description 'Yaru default ubuntu theme'
   homepage 'https://github.com/ubuntu/yaru'
-  version '25.10.3-0ubuntu1'
+  version '26.10.1'
   license 'GPL-3 and CC-BY-SA-4.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/ubuntu/yaru.git'
