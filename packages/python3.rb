@@ -23,6 +23,7 @@ class Python3 < Package
   depends_on 'gcc_lib' # R
   depends_on 'gdbm' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'krb5' => :build
   depends_on 'libdb' => :library
   depends_on 'libffi' => :library
