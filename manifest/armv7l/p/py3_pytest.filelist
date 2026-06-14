@@ -1,4 +1,4 @@
-# Total size: 3224107
+# Total size: 3289617
 /usr/local/bin/py.test
 /usr/local/bin/pytest
 /usr/local/lib/python3.14/site-packages/__pycache__/py.cpython-314.pyc
@@ -77,9 +77,25 @@
 /usr/local/lib/python3.14/site-packages/_pytest/_version.py
 /usr/local/lib/python3.14/site-packages/_pytest/assertion/__init__.py
 /usr/local/lib/python3.14/site-packages/_pytest/assertion/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/_pytest/assertion/__pycache__/_compare_any.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/_pytest/assertion/__pycache__/_compare_mapping.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/_pytest/assertion/__pycache__/_compare_sequence.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/_pytest/assertion/__pycache__/_compare_set.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/_pytest/assertion/__pycache__/_guards.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/_pytest/assertion/__pycache__/_typing.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/_pytest/assertion/__pycache__/compare_text.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/_pytest/assertion/__pycache__/highlight.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/_pytest/assertion/__pycache__/rewrite.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/_pytest/assertion/__pycache__/truncate.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/_pytest/assertion/__pycache__/util.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/_pytest/assertion/_compare_any.py
+/usr/local/lib/python3.14/site-packages/_pytest/assertion/_compare_mapping.py
+/usr/local/lib/python3.14/site-packages/_pytest/assertion/_compare_sequence.py
+/usr/local/lib/python3.14/site-packages/_pytest/assertion/_compare_set.py
+/usr/local/lib/python3.14/site-packages/_pytest/assertion/_guards.py
+/usr/local/lib/python3.14/site-packages/_pytest/assertion/_typing.py
+/usr/local/lib/python3.14/site-packages/_pytest/assertion/compare_text.py
+/usr/local/lib/python3.14/site-packages/_pytest/assertion/highlight.py
 /usr/local/lib/python3.14/site-packages/_pytest/assertion/rewrite.py
 /usr/local/lib/python3.14/site-packages/_pytest/assertion/truncate.py
 /usr/local/lib/python3.14/site-packages/_pytest/assertion/util.py
@@ -89,11 +105,9 @@
 /usr/local/lib/python3.14/site-packages/_pytest/config/__init__.py
 /usr/local/lib/python3.14/site-packages/_pytest/config/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/_pytest/config/__pycache__/argparsing.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/_pytest/config/__pycache__/compat.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/_pytest/config/__pycache__/exceptions.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/_pytest/config/__pycache__/findpaths.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/_pytest/config/argparsing.py
-/usr/local/lib/python3.14/site-packages/_pytest/config/compat.py
 /usr/local/lib/python3.14/site-packages/_pytest/config/exceptions.py
 /usr/local/lib/python3.14/site-packages/_pytest/config/findpaths.py
 /usr/local/lib/python3.14/site-packages/_pytest/debugging.py
@@ -146,14 +160,14 @@
 /usr/local/lib/python3.14/site-packages/_pytest/warning_types.py
 /usr/local/lib/python3.14/site-packages/_pytest/warnings.py
 /usr/local/lib/python3.14/site-packages/py.py
-/usr/local/lib/python3.14/site-packages/pytest-9.0.3.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/pytest-9.0.3.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/pytest-9.0.3.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/pytest-9.0.3.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/pytest-9.0.3.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/pytest-9.0.3.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/pytest-9.0.3.dist-info/licenses/LICENSE
-/usr/local/lib/python3.14/site-packages/pytest-9.0.3.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/pytest-9.1.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/pytest-9.1.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/pytest-9.1.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/pytest-9.1.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/pytest-9.1.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/pytest-9.1.0.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/pytest-9.1.0.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/pytest-9.1.0.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/pytest/__init__.py
 /usr/local/lib/python3.14/site-packages/pytest/__main__.py
 /usr/local/lib/python3.14/site-packages/pytest/__pycache__/__init__.cpython-314.pyc
