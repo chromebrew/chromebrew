@@ -10,10 +10,10 @@ class Py3_pytest < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a6cf34ae6c0fefd0bcb663955df8dce1f46f71e4ce3e69d0ee2bec2b3ef306c6',
-     armv7l: 'a6cf34ae6c0fefd0bcb663955df8dce1f46f71e4ce3e69d0ee2bec2b3ef306c6',
-       i686: '15b68630c2f1047b44afc90878376630d741e1e31b8bf2f59bad11b62cd64490',
-     x86_64: 'f1ed4fdb0e4474deffaf20f3b5689ff9cb7f18670e2b9f032e001337ca1185e9'
+    aarch64: '422f3460e32d4b383596a7cca9682e0849e97674e7905458a709a098f300dbb4',
+     armv7l: '422f3460e32d4b383596a7cca9682e0849e97674e7905458a709a098f300dbb4',
+       i686: '222fc21fdccc6ce15e4b6cd13b6a6d6de06bf0fe1b6ac39237b26be1ca65e0ad',
+     x86_64: '9ee379e4ebd26896f047f12202306036fc4be4e1799d7d686f161eed12bcca53'
   })
 
   depends_on 'py3_attrs'
