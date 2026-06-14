@@ -1,0 +1,14 @@
+# This file is not the .gitconfig file created by the user
+# This file is for internal use by chromebrew when calling git
+
+# It sets sane defaults when cloning repositories for building use
+# and is designed to minimize unnecessary advice and hints from git
+# meant for the end user
+
+[advice]
+    # remove detached HEAD warning
+    detachedHead = false
+
+[init]
+    # avoid initial branch name warning
+    defaultBranch = main
