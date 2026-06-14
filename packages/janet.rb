@@ -1,28 +1,24 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Janet < Package
+class Janet < Meson
   description 'Janet is a functional and imperative programming language and bytecode interpreter.'
   homepage 'https://janet-lang.org'
-  version '1.7.0'
+  version '1.41.2'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/janet-lang/janet/archive/v1.7.0.tar.gz'
-  source_sha256 '2a119f3a79b209a858864e73ca3efda57ac044df3c89762a31480bbea386d2a3'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/janet-lang/janet.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6fbc239bc6374e516ca5e63e988e50a62f5396b83cc1b5ffcc37c484f436ea07',
-     armv7l: '6fbc239bc6374e516ca5e63e988e50a62f5396b83cc1b5ffcc37c484f436ea07',
-       i686: '5037e0285af569a4a660094599bb251695387fe84936bc53315a107d2d258b61',
-     x86_64: 'db58991ce4aef8d19e17abf5e944f39bb94bbb5e7b750c217de36fae71fce1b3'
+    aarch64: '47fe7ca6d9592746455e72dda55bc38df031ac082bee998587e211c0854c82ca',
+     armv7l: '47fe7ca6d9592746455e72dda55bc38df031ac082bee998587e211c0854c82ca',
+       i686: 'e1e5e7937d97b598e9eaa26f7345196797b9e9f2991fb756681f3a3f6c3d4785',
+     x86_64: 'cc18a14abd4f1d2698d45745fefb53cb9127b130d139c01d5d7c1331626f8048'
   })
 
-  def self.build
-    system "meson --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} builddir"
-    system 'ninja -C builddir'
-  end
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  meson_options '-Dos_name=ChromeOS -Dprf=true -Dreduced_os=true'
 end
