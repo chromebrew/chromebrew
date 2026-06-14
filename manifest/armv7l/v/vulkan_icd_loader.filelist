@@ -1,8 +1,8 @@
-# Total size: 524242
+# Total size: 524818
 /usr/local/lib/cmake/VulkanLoader/VulkanLoaderConfig-release.cmake
 /usr/local/lib/cmake/VulkanLoader/VulkanLoaderConfig.cmake
 /usr/local/lib/cmake/VulkanLoader/VulkanLoaderConfigVersion.cmake
 /usr/local/lib/libvulkan.so
 /usr/local/lib/libvulkan.so.1
-/usr/local/lib/libvulkan.so.1.4.353
+/usr/local/lib/libvulkan.so.1.4.354
 /usr/local/lib/pkgconfig/vulkan.pc
