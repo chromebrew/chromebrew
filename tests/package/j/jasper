@@ -1,0 +1,3 @@
+#!/bin/bash
+jasper --help 2>&1 | head
+jasper --version
