@@ -1,0 +1,3 @@
+#!/bin/bash
+jpegoptim -h 2>&1 | head
+jpegoptim -V
