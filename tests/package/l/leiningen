@@ -1,0 +1,3 @@
+#!/bin/bash
+lein -h | head
+lein -v
