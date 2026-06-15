@@ -3,34 +3,33 @@ require 'package'
 class Leiningen < Package
   description 'for automating Clojure projects without setting your hair on fire'
   homepage 'https://leiningen.org/'
-  version '2.9.8'
+  version '2.13.0'
   license 'EPL-1.0'
   compatibility 'all'
-  source_url 'https://github.com/technomancy/leiningen/archive/2.9.8.tar.gz'
-  source_sha256 'be299cbd70693213c6887f931327fb9df3bd54930a521d0fc88bea04d55c5cd4'
+  source_url 'https://github.com/technomancy/leiningen.git'
+  git_hashtag version
 
   depends_on 'clojure'
 
+  no_compile_needed
+
+  def self.patch
+    # Correct the version.
+    system "sed -i 's,2.12.1-SNAPSHOT,#{version},g' bin/lein"
+  end
+
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.install 'bin/lein', "#{CREW_DEST_PREFIX}/bin/lein", mode: 0o755
   end
 
   def self.postinstall
-    puts "\nType 'lein' to get started.\n".lightblue
+    downloader "https://github.com/technomancy/leiningen/releases/download/#{version}/leiningen-#{version}-standalone.jar",
+               '5f5231f06c3c7924e3241e3dfa52885577fb44ddf8a9ea373d2c5e2f27217565'
+    FileUtils.install "leiningen-#{version}-standalone.jar", "#{HOME}/.lein/self-installs/leiningen-#{version}-standalone.jar", mode: 0o644
+    ExitMessage.add "\nType 'lein' to get started.\n"
   end
 
   def self.postremove
-    config_dir = "#{HOME}/.lein"
-    if Dir.exist? config_dir
-      print "Would you like to remove the #{config_dir} directory? [y/N] "
-      case $stdin.gets.chomp.downcase
-      when 'y', 'yes'
-        FileUtils.rm_rf config_dir
-        puts "#{config_dir} removed.".lightred
-      else
-        puts "#{config_dir} saved.".lightgreen
-      end
-    end
+    Package.agree_to_remove("#{HOME}/.lein")
   end
 end
