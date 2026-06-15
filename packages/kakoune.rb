@@ -5,20 +5,21 @@ class Kakoune < Package
   homepage 'http://kakoune.org/'
   compatibility 'all'
   license 'Unlicense'
-  version '2025.06.03'
+  version '2026.05.21'
   source_url 'https://github.com/mawww/kakoune.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ecd4b93d1306456a5a927a592d986642c07623584432123f19bdd8784aa56708',
-     armv7l: 'ecd4b93d1306456a5a927a592d986642c07623584432123f19bdd8784aa56708',
-       i686: '9ec9e9a3d7c7b6cbfeb16e3ab74edb2c743cd86a4a0bb239561b8276bd42ddf0',
-     x86_64: 'f881c357f29625e75338cd0ebfc7eba135b88dedbd33be6e8618b6179b03c05c'
+    aarch64: '773d7445ac20723c427c093a4b91c90ea8e50a52a85e878b390eba811628f94f',
+     armv7l: '773d7445ac20723c427c093a4b91c90ea8e50a52a85e878b390eba811628f94f',
+       i686: '969000ef6c20f59a2499ff01620878ef6659ed0dfcfed9ff7c3dc9bf1c0b95d5',
+     x86_64: 'a1e8fcaa359e2e5d06daf1379949c03eb9a13d1cc61c54a6ac1d9683e97fdb66'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
 
   def self.build
     system 'make && make man'

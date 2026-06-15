@@ -1,2 +1,2 @@
 #!/bin/bash
-kak -help
+kak -help | head
