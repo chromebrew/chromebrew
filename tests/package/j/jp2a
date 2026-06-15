@@ -1,0 +1,3 @@
+#!/bin/bash
+jp2a -h 2>&1 | head
+jp2a -V 2>&1
