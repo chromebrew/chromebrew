@@ -1,4 +1,4 @@
-# Total size: 6287924
+# Total size: 6287908
 /usr/local/include/libical-glib/i-cal-array.h
 /usr/local/include/libical-glib/i-cal-attach.h
 /usr/local/include/libical-glib/i-cal-comp-iter.h
@@ -129,25 +129,25 @@
 /usr/local/lib/girepository-1.0/ICalGLib-4.0.typelib
 /usr/local/lib/libical-glib.so
 /usr/local/lib/libical-glib.so.4.0
-/usr/local/lib/libical-glib.so.4.0.2
+/usr/local/lib/libical-glib.so.4.0.3
 /usr/local/lib/libical.so
 /usr/local/lib/libical.so.4.0
-/usr/local/lib/libical.so.4.0.2
+/usr/local/lib/libical.so.4.0.3
 /usr/local/lib/libical_cxx.so
 /usr/local/lib/libical_cxx.so.4.0
-/usr/local/lib/libical_cxx.so.4.0.2
+/usr/local/lib/libical_cxx.so.4.0.3
 /usr/local/lib/libicalss.so
 /usr/local/lib/libicalss.so.4.0
-/usr/local/lib/libicalss.so.4.0.2
+/usr/local/lib/libicalss.so.4.0.3
 /usr/local/lib/libicalss_cxx.so
 /usr/local/lib/libicalss_cxx.so.4.0
-/usr/local/lib/libicalss_cxx.so.4.0.2
+/usr/local/lib/libicalss_cxx.so.4.0.3
 /usr/local/lib/libicalvcal.so
 /usr/local/lib/libicalvcal.so.4.0
-/usr/local/lib/libicalvcal.so.4.0.2
+/usr/local/lib/libicalvcal.so.4.0.3
 /usr/local/lib/libicalvcard.so
 /usr/local/lib/libicalvcard.so.4.0
-/usr/local/lib/libicalvcard.so.4.0.2
+/usr/local/lib/libicalvcard.so.4.0.3
 /usr/local/lib/pkgconfig/libical-glib.pc
 /usr/local/lib/pkgconfig/libical.pc
 /usr/local/lib/pkgconfig/libicalss.pc
