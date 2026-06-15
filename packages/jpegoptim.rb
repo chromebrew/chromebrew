@@ -1,31 +1,23 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Jpegoptim < Package
+class Jpegoptim < Autotools
   description 'Utility to optimize/compress JPEG files'
   homepage 'https://github.com/tjko/jpegoptim'
-  version '1.5.0'
+  version '1.5.6'
   license 'GPL-3.0'
   compatibility 'all'
-  source_url 'https://github.com/tjko/jpegoptim/archive/v1.5.0.tar.gz'
-  source_sha256 '67b0feba73fd72f0bd383f25bf84149a73378d34c0c25bc0b9b25b0264d85824'
+  source_url 'https://github.com/tjko/jpegoptim.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd4decc886ec846db2b6c730ddac7593c806fdad9f271dfdd91f164a3f167f751',
-     armv7l: 'd4decc886ec846db2b6c730ddac7593c806fdad9f271dfdd91f164a3f167f751',
-       i686: '8c944bed8ae566930095f00fcf73e9c6dd26e49f00162a46e5574050227df70b',
-     x86_64: '0954751ef6aada53613c24fba136c5a2257c64338ad972e6bc07597041d0bddc'
+    aarch64: '3c6e44e4ced81e9c727cec6e4e67388193baf9d0080c61b52b939f433b8eb26b',
+     armv7l: '3c6e44e4ced81e9c727cec6e4e67388193baf9d0080c61b52b939f433b8eb26b',
+       i686: 'db69dbb9747a28806678d54618de75c236b1d7c4c8f0c6031f78657ff449477e',
+     x86_64: '809fcd8a7778d7bc519e09a2188785280717708ca12dd96b4cca1acdb2676df3'
   })
 
-  depends_on 'libjpeg_turbo'
-
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-    system 'make', 'strip'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'libjpeg_turbo' => :executable
 end
