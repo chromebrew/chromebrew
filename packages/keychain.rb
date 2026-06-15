@@ -3,26 +3,25 @@ require 'package'
 class Keychain < Package
   description 'Keychain helps you to manage SSH and GPG keys in a convenient and secure manner.'
   homepage 'https://www.funtoo.org/Keychain'
-  version '2.8.5'
+  version '2.9.8'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/funtoo/keychain/archive/2.8.5.tar.gz'
-  source_sha256 'dcce703e5001211c8ebc0528f45b523f84d2bceeb240600795b4d80cb8475a0b'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/funtoo/keychain.git'
+  git_hashtag version
 
-  binary_sha256({
-    aarch64: 'e494cfd41ed3215757cf656b36a7b483f8a0e007fb5963d2e6b058c701f6ff44',
-     armv7l: 'e494cfd41ed3215757cf656b36a7b483f8a0e007fb5963d2e6b058c701f6ff44',
-       i686: '539b7395d19f08d1a914070b889f240fe890fc0abf7b298d62597bcc72b9916f',
-     x86_64: '4b4aead7a52d97ef7acfc5695952e57b35c3c12935b4fde6ce3ed5e64705ec0a'
-  })
+  no_compile_needed
+  print_source_bashrc
+
+  def self.build
+    system 'make'
+  end
 
   def self.install
-    system 'gzip -9 keychain.1'
-    system "install -Dm755 keychain #{CREW_DEST_PREFIX}/bin/keychain"
-    system "install -Dm644 keychain.1.gz #{CREW_DEST_PREFIX}/share/man/man1/keychain.1.gz"
-    system "mkdir -p #{CREW_DEST_PREFIX}/share/keychain"
-    system 'rm -f .gitignore keychain keychain.1.gz keychain.spec.in keychain.spec keychain.pod Makefile'
-    system "cp -r . #{CREW_DEST_PREFIX}/share/keychain"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/keychain"
+    FileUtils.install 'keychain', "#{CREW_DEST_PREFIX}/bin/keychain"
+    FileUtils.install 'keychain.1', "#{CREW_DEST_MAN_PREFIX}/man1/keychain.1"
+    FileUtils.install 'completions/keychain.bash', "#{CREW_DEST_PREFIX}/etc/bash.d/10-keychain", mode: 0o644
+    FileUtils.rm_rf %w[.gitignore keychain keychain.1 keychain.1.orig keychain.spec.in keychain.spec keychain.pod Makefile]
+    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/keychain"
   end
 end
