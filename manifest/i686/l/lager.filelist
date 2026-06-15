@@ -1,4 +1,4 @@
-# Total size: 258757
+# Total size: 272512
 /usr/local/include/lager/commit.hpp
 /usr/local/include/lager/config.hpp
 /usr/local/include/lager/constant.hpp
@@ -30,6 +30,7 @@
 /usr/local/include/lager/extra/cereal/immer_flex_vector.hpp
 /usr/local/include/lager/extra/cereal/immer_map.hpp
 /usr/local/include/lager/extra/cereal/immer_set.hpp
+/usr/local/include/lager/extra/cereal/immer_table.hpp
 /usr/local/include/lager/extra/cereal/immer_vector.hpp
 /usr/local/include/lager/extra/cereal/inline.hpp
 /usr/local/include/lager/extra/cereal/json.hpp
@@ -46,6 +47,7 @@
 /usr/local/include/lager/extra/enum.hpp
 /usr/local/include/lager/extra/qt.hpp
 /usr/local/include/lager/extra/struct.hpp
+/usr/local/include/lager/extra/thunk.hpp
 /usr/local/include/lager/future.hpp
 /usr/local/include/lager/lens.hpp
 /usr/local/include/lager/lenses.hpp
