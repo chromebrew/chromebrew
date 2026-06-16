@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_tzlocal < Pip
   description 'Tzlocal provides tzinfo object for the local timezone.'
   homepage 'https://github.com/regebro/tzlocal/'
-  version "5.3.1-#{CREW_PY_VER}"
+  version "5.4-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6f21c5329d8b8b4b492f54f037734c326117947d078f6b32b9cdd1dcaefe2e3c',
-     armv7l: '6f21c5329d8b8b4b492f54f037734c326117947d078f6b32b9cdd1dcaefe2e3c',
-       i686: '5edad6d31c6ef64ff5a14025a8a64e9574b9b734af2bf94346d906937486365e',
-     x86_64: 'bf1c22bd9375cc2a57598373f7c2ff83024a7cc763bcde73607f653f3cf6e855'
+    aarch64: '5c188957798617ad9801d081c01042fd1933920f9706e1d02bb779f8f12f666a',
+     armv7l: '5c188957798617ad9801d081c01042fd1933920f9706e1d02bb779f8f12f666a',
+       i686: '10cb1a4a825118a74554ccaf92c8e8c6f07ded7766afcfe7c9b920f64243bffb',
+     x86_64: '337cc4150280a619f843dac7a3a05977669d4a71d84479f5b3dfdae5ea3c5f06'
   })
 
   depends_on 'py3_pytz'
