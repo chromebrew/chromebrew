@@ -1,2 +1,10 @@
-# Total size: 98384
+# Total size: 159642
+/usr/local/include/pystring/pystring.h
+/usr/local/include/pystring/pystring_impl.h
+/usr/local/lib/cmake/pystring/pystringConfig.cmake
+/usr/local/lib/cmake/pystring/pystringConfigVersion.cmake
+/usr/local/lib/cmake/pystring/pystringTargets-release.cmake
+/usr/local/lib/cmake/pystring/pystringTargets.cmake
 /usr/local/lib/libpystring.so
+/usr/local/lib/libpystring.so.1
+/usr/local/lib/libpystring.so.1.2.0
