@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Pystring < CMake
   description 'C++ functions matching the interface and behavior of python string methods with std::string'
   homepage 'https://github.com/imageworks/pystring'
-  version '1.1.4'
+  version '1.2.0'
   license 'BSD-3'
   compatibility 'all'
   source_url 'https://github.com/imageworks/pystring.git'
