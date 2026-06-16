@@ -10,10 +10,10 @@ class Py3_botocore < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e55e5e42f7763451751d4ddfbf4c0434c072d8c93b03c204e44bc2324d5eed4b',
-     armv7l: 'e55e5e42f7763451751d4ddfbf4c0434c072d8c93b03c204e44bc2324d5eed4b',
-       i686: 'b64684dd5de911d526ddca81576f9cb9a021e52afccef3640309e9274ab73dae',
-     x86_64: '0a3350841782746555e057bfa0a46730cd4eddc4a7cae4f0d06b1189510184bc'
+    aarch64: 'af955b189f9bd3a85a0fbb1c234081344ce4db4d5e3b394b87b8d8d1575fc2ef',
+     armv7l: 'af955b189f9bd3a85a0fbb1c234081344ce4db4d5e3b394b87b8d8d1575fc2ef',
+       i686: 'a558f157123d469f49020ffb405a63124e3af25bfbe1e187e803fc68402aa0ad',
+     x86_64: '32539e2ebe04a3000b1a1c25b237c7343a70cd92cc5886a789fb7ff8e9070739'
   })
 
   depends_on 'python3' => :logical
