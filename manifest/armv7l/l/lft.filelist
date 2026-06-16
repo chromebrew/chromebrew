@@ -1,5 +1,5 @@
-# Total size: 137639
+# Total size: 174553
 /usr/local/bin/lft
 /usr/local/bin/whob
-/usr/local/share/man/man8/lft.8.gz
-/usr/local/share/man/man8/whob.8.gz
+/usr/local/share/man/man8/lft.8.zst
+/usr/local/share/man/man8/whob.8.zst
