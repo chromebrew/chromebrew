@@ -1,12 +1,12 @@
-# Total size: 21256733
-/usr/local/lib/python3.14/site-packages/botocore-1.43.30.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/botocore-1.43.30.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/botocore-1.43.30.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/botocore-1.43.30.dist-info/NOTICE
-/usr/local/lib/python3.14/site-packages/botocore-1.43.30.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/botocore-1.43.30.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/botocore-1.43.30.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/botocore-1.43.30.dist-info/top_level.txt
+# Total size: 21275725
+/usr/local/lib/python3.14/site-packages/botocore-1.43.31.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/botocore-1.43.31.dist-info/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/botocore-1.43.31.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/botocore-1.43.31.dist-info/NOTICE
+/usr/local/lib/python3.14/site-packages/botocore-1.43.31.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/botocore-1.43.31.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/botocore-1.43.31.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/botocore-1.43.31.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/botocore/__init__.py
 /usr/local/lib/python3.14/site-packages/botocore/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/botocore/__pycache__/args.cpython-314.pyc
@@ -1639,6 +1639,7 @@
 /usr/local/lib/python3.14/site-packages/botocore/data/s3tables/2018-05-10/waiters-2.json
 /usr/local/lib/python3.14/site-packages/botocore/data/s3vectors/2025-07-15/endpoint-rule-set-1.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/s3vectors/2025-07-15/paginators-1.json
+/usr/local/lib/python3.14/site-packages/botocore/data/s3vectors/2025-07-15/paginators-1.sdk-extras.json
 /usr/local/lib/python3.14/site-packages/botocore/data/s3vectors/2025-07-15/service-2.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/s3vectors/2025-07-15/waiters-2.json
 /usr/local/lib/python3.14/site-packages/botocore/data/sagemaker-a2i-runtime/2019-11-07/endpoint-rule-set-1.json.gz
