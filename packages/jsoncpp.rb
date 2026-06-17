@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Jsoncpp < Meson
   description 'A C++ library for interacting with JSON.'
   homepage 'https://github.com/open-source-parsers/jsoncpp'
-  version '1.9.7'
+  version '1.9.8'
   license 'MIT, public-domain'
   compatibility 'all'
   source_url 'https://github.com/open-source-parsers/jsoncpp.git'
@@ -11,12 +11,13 @@ class Jsoncpp < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '768995f3ef460d128f25affb65e0a3de8dd866aadacd998c551485992b2dccf6',
-     armv7l: '768995f3ef460d128f25affb65e0a3de8dd866aadacd998c551485992b2dccf6',
-       i686: 'f5b27c142a07ec5ae2e4b8030feb9f12997341eb662479c0a049e3b67da69193',
-     x86_64: '4a1e67172ddcf3d6531a7fd387685c30c3c64440ae82eb03b2f06d2b9eeea344'
+    aarch64: '8f1a5d254ed8141d46b606d0fd44470592cfacb6cc74ab106d3ea44ad97af0de',
+     armv7l: '8f1a5d254ed8141d46b606d0fd44470592cfacb6cc74ab106d3ea44ad97af0de',
+       i686: 'd12761c2fdf871ce29ce5d3bc6eada351f4cea573d4dc915bd341b167e713118',
+     x86_64: 'ca9698f8d1b225eed7cb8f9c6371ac2f32943de90a9aef64fab8183e170d303f'
   })
 
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 end
