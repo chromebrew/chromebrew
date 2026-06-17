@@ -19,6 +19,7 @@ class Asciinema < RUST
 
   depends_on 'gcc_lib' => :executable
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'python3' => :build
   depends_on 'xdg_base'
 
