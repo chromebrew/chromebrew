@@ -11,14 +11,15 @@ class Coin < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd5ed0e034c6bdea85c1d6a8115191e953857be31d1b569ad25f858a0972cff96',
-     armv7l: 'd5ed0e034c6bdea85c1d6a8115191e953857be31d1b569ad25f858a0972cff96',
-     x86_64: '032949e20b09516ed2822181bf9722e6a7effcf2e771eddd819c1b528d371cb2'
+    aarch64: 'd5ebe855a22351ae080787b0168fb9d11e489afc0cd57063bea09b3160d32f40',
+     armv7l: 'd5ebe855a22351ae080787b0168fb9d11e489afc0cd57063bea09b3160d32f40',
+     x86_64: '54c40cab61e7b4fe48ea3649bfbc9738e5584f384e387f3dcb8a28630446ad34'
   })
 
   depends_on 'boost' => :build
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'libglvnd' => :library
   depends_on 'libice' => :library
   depends_on 'libsm' => :library
