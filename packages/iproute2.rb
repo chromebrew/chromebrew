@@ -14,14 +14,15 @@ class Iproute2 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ae57b3e5b95611297c91b277441b424662cbf12b07c90d319f0809a3e5de25f4',
-     armv7l: 'ae57b3e5b95611297c91b277441b424662cbf12b07c90d319f0809a3e5de25f4',
-     x86_64: 'f20c6ef4e3353dc90e8deead244594ae4af2e5667761d4c863e8e2411eb2e8be'
+    aarch64: '553fa2fd9e95b9e38610c0ad0f7fdc34ee574788f7057debf8b90bb80e17f525',
+     armv7l: '553fa2fd9e95b9e38610c0ad0f7fdc34ee574788f7057debf8b90bb80e17f525',
+     x86_64: 'a53a0be9261b0303d2c16053340cad4cf1e106b8f4f430ea560040ea056b23d1'
   })
 
   depends_on 'elfutils' => :executable
   depends_on 'gcc_lib' # R
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'iptables' => :executable
   depends_on 'libbpf' => :executable
   depends_on 'libbpf' unless ARCH == 'i686'
