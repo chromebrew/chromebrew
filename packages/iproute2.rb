@@ -6,11 +6,11 @@ require 'package'
 class Iproute2 < Package
   description 'IP Routing Utilities'
   homepage 'https://git.kernel.org/pub/scm/network/iproute2/iproute2.git'
-  version '7.0.0'
+  version '7.1.0'
   license 'GPL2'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-#{version}.tar.xz"
-  source_sha256 'e62890f7b5de63c05a3bf331dc8deb4c015c336013f341a4edf46969797f2f4e'
+  source_sha256 'fd9fa1b95809417157ca83dd72957e3261bdbce896353cb936f80af0b33a4b5c'
   binary_compression 'tar.zst'
 
   binary_sha256({
