@@ -11,9 +11,9 @@ class Ffmpeg < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c7e79e79d90d05f9dd9c2ce3ca4118a85d436411f3865cae5ed209d10f6a5580',
-     armv7l: 'c7e79e79d90d05f9dd9c2ce3ca4118a85d436411f3865cae5ed209d10f6a5580',
-     x86_64: '034ef894a20f8be6a2ff09180d70b1cb9c8f9b827a1e9a2cd21e3f18e6facaea'
+    aarch64: '36cf50b8abb97ab4cbc8a339cd4d5d10f835088d7857261ffc2bf8b04bdd8d99',
+     armv7l: '36cf50b8abb97ab4cbc8a339cd4d5d10f835088d7857261ffc2bf8b04bdd8d99',
+     x86_64: '53a556556da254bf5f51e93dce313482b86eb28dad4fe74a7810ea71626f8eed'
   })
 
   depends_on 'alsa_lib' => :library
@@ -26,6 +26,7 @@ class Ffmpeg < Package
   depends_on 'gcc_lib' => :executable
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gsm' => :build
   depends_on 'gstreamer' => :library
   depends_on 'harfbuzz' # R
