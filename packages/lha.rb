@@ -1,29 +1,22 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Lha < Package
+class Lha < Autotools
   description 'LHa for UNIX is a console-based utility that uncompresses and compresses .lha packages.'
   homepage 'https://lha.osdn.jp/'
-  version '2695022'
+  version '86094cb'
   license 'lha'
   compatibility 'all'
   source_url 'https://github.com/jca02266/lha.git'
-  git_hashtag '26950220c9c7590fd603ecaa54a12a52371affed'
+  git_hashtag '86094cb56aba34de45668f39f74fcfb61e9d7fb6'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a9e93c81eef64714252d453f98843a2d6b00c43bbcc9b4c67c3aabeb8365db50',
-     armv7l: 'a9e93c81eef64714252d453f98843a2d6b00c43bbcc9b4c67c3aabeb8365db50',
-       i686: 'f3f0e76166650dafe0874af2b10b650f3e826503e1be6cacae4275d03fe6a918',
-     x86_64: 'b5ac02857046c1673acdb928c7a189ee350d9b0babdaaea1661c39fc81328590'
+    aarch64: '592b6de73748121453911646eb1aac2d4c021bcd6682e0fb3a3785c99686c2aa',
+     armv7l: '592b6de73748121453911646eb1aac2d4c021bcd6682e0fb3a3785c99686c2aa',
+       i686: '6cb49a5a83b052f122f776f4d0f0b592a1c429bf92b039c9e660ec63abac426b',
+     x86_64: '630894efdce3b4fa3f7e7e0072dcc975204834790c70e617d79e1e3d597978d0'
   })
 
-  def self.build
-    system 'autoreconf -sif'
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
 end
