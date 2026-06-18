@@ -1,4 +1,4 @@
-# Total size: 37534274
+# Total size: 37995568
 /usr/local/bin/gh
 /usr/local/share/man/man1/gh-agent-task-create.1.zst
 /usr/local/share/man/man1/gh-agent-task-list.1.zst
@@ -175,6 +175,8 @@
 /usr/local/share/man/man1/gh-repo-license-view.1.zst
 /usr/local/share/man/man1/gh-repo-license.1.zst
 /usr/local/share/man/man1/gh-repo-list.1.zst
+/usr/local/share/man/man1/gh-repo-read-dir.1.zst
+/usr/local/share/man/man1/gh-repo-read-file.1.zst
 /usr/local/share/man/man1/gh-repo-rename.1.zst
 /usr/local/share/man/man1/gh-repo-set-default.1.zst
 /usr/local/share/man/man1/gh-repo-sync.1.zst
