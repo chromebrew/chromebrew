@@ -1,0 +1,3 @@
+#!/bin/bash
+lft -v 2>&1 | head
+whob -v 2>&1 | head
