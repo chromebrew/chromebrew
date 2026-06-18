@@ -1,7 +1,9 @@
-# Total size: 17750847
+# Total size: 20327634
 /usr/local/bin/MPEG2TransportStreamIndexer
+/usr/local/bin/live555HLSProxy
 /usr/local/bin/live555MediaServer
 /usr/local/bin/live555ProxyServer
+/usr/local/bin/mikeyParse
 /usr/local/bin/openRTSP
 /usr/local/bin/playSIP
 /usr/local/bin/registerRTSPStream
@@ -9,6 +11,7 @@
 /usr/local/bin/testAMRAudioStreamer
 /usr/local/bin/testDVVideoStreamer
 /usr/local/bin/testH264VideoStreamer
+/usr/local/bin/testH264VideoToHLSSegments
 /usr/local/bin/testH264VideoToTransportStream
 /usr/local/bin/testH265VideoStreamer
 /usr/local/bin/testH265VideoToTransportStream
@@ -51,7 +54,6 @@
 /usr/local/include/groupsock/NetAddress.hh
 /usr/local/include/groupsock/NetCommon.h
 /usr/local/include/groupsock/NetInterface.hh
-/usr/local/include/groupsock/TunnelEncaps.hh
 /usr/local/include/groupsock/groupsock_version.hh
 /usr/local/include/liveMedia/AC3AudioFileServerMediaSubsession.hh
 /usr/local/include/liveMedia/AC3AudioRTPSink.hh
@@ -59,6 +61,7 @@
 /usr/local/include/liveMedia/AC3AudioStreamFramer.hh
 /usr/local/include/liveMedia/ADTSAudioFileServerMediaSubsession.hh
 /usr/local/include/liveMedia/ADTSAudioFileSource.hh
+/usr/local/include/liveMedia/ADTSAudioStreamDiscreteFramer.hh
 /usr/local/include/liveMedia/AMRAudioFileServerMediaSubsession.hh
 /usr/local/include/liveMedia/AMRAudioFileSink.hh
 /usr/local/include/liveMedia/AMRAudioFileSource.hh
@@ -109,6 +112,9 @@
 /usr/local/include/liveMedia/H265VideoRTPSource.hh
 /usr/local/include/liveMedia/H265VideoStreamDiscreteFramer.hh
 /usr/local/include/liveMedia/H265VideoStreamFramer.hh
+/usr/local/include/liveMedia/HLSSegmenter.hh
+/usr/local/include/liveMedia/HMAC_SHA1.hh
+/usr/local/include/liveMedia/HMAC_hash.hh
 /usr/local/include/liveMedia/InputFile.hh
 /usr/local/include/liveMedia/JPEG2000VideoRTPSink.hh
 /usr/local/include/liveMedia/JPEG2000VideoRTPSource.hh
@@ -116,6 +122,7 @@
 /usr/local/include/liveMedia/JPEGVideoRTPSource.hh
 /usr/local/include/liveMedia/JPEGVideoSource.hh
 /usr/local/include/liveMedia/Locale.hh
+/usr/local/include/liveMedia/MIKEY.hh
 /usr/local/include/liveMedia/MP3ADU.hh
 /usr/local/include/liveMedia/MP3ADURTPSink.hh
 /usr/local/include/liveMedia/MP3ADURTPSource.hh
@@ -184,16 +191,17 @@
 /usr/local/include/liveMedia/RTSPCommon.hh
 /usr/local/include/liveMedia/RTSPRegisterSender.hh
 /usr/local/include/liveMedia/RTSPServer.hh
-/usr/local/include/liveMedia/RTSPServerSupportingHTTPStreaming.hh
+/usr/local/include/liveMedia/RawVideoFrameParameters.hh
 /usr/local/include/liveMedia/RawVideoRTPSink.hh
 /usr/local/include/liveMedia/RawVideoRTPSource.hh
 /usr/local/include/liveMedia/SIPClient.hh
+/usr/local/include/liveMedia/SRTPCryptographicContext.hh
 /usr/local/include/liveMedia/ServerMediaSession.hh
 /usr/local/include/liveMedia/SimpleRTPSink.hh
 /usr/local/include/liveMedia/SimpleRTPSource.hh
 /usr/local/include/liveMedia/StreamReplicator.hh
 /usr/local/include/liveMedia/T140TextRTPSink.hh
-/usr/local/include/liveMedia/TCPStreamSink.hh
+/usr/local/include/liveMedia/TLSState.hh
 /usr/local/include/liveMedia/TextRTPSink.hh
 /usr/local/include/liveMedia/TheoraVideoRTPSink.hh
 /usr/local/include/liveMedia/TheoraVideoRTPSource.hh
