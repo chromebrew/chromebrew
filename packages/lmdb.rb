@@ -6,33 +6,32 @@ require 'package'
 class Lmdb < Package
   description 'Symas Lightning Memory-Mapped Database'
   homepage 'https://www.symas.com/mdb'
-  version '0.9.33'
+  version '0.9.35'
   license 'OpenLDAP Public License'
   compatibility 'all'
-  source_url "https://git.openldap.org/openldap/openldap/-/archive/LMDB_#{version}/openldap-LMDB_#{version}.tar.gz"
-  source_sha256 '476801f5239c88c7de61c3390502a5d13965ecedef80105b5fb0fcb8373d1e53'
+  source_url 'https://git.openldap.org/openldap/openldap.git'
+  git_hashtag "LMDB_#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fb7a48d43b3d95cd74b71abe0fa87e544fc8d274df6a48e367d6a5de4e86ad40',
-     armv7l: 'fb7a48d43b3d95cd74b71abe0fa87e544fc8d274df6a48e367d6a5de4e86ad40',
-       i686: '5a295f0f2b29455bce60d7e4e098e21c2fe228c1aa3e64b43c0416c41188c29e',
-     x86_64: '17fd317ffb609d8b197c1b6734be90022a303e648c2bddb035861a1b5af463aa'
+    aarch64: 'a0e922d6b3c2a81469c422d43324b3cb6054b918011d0cad2bfeee4b12234b7b',
+     armv7l: 'a0e922d6b3c2a81469c422d43324b3cb6054b918011d0cad2bfeee4b12234b7b',
+       i686: '62d7d2b5a9606c7aa21b0fff9f28ade116c72ddbe3f9f3d1e38eda09ca7de23e',
+     x86_64: '585187e82d821def830be9c41dd0677f8aecaebbfe752f0fb85bcd4d0b577941'
   })
 
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 
   def self.patch
-    system "sed -i 's,libdir = $(exec_prefix)/lib,libdir = $(exec_prefix)/lib#{CREW_LIB_SUFFIX},g' libraries/liblmdb/Makefile"
-    system "sed -i 's,prefix	= /usr/local,prefix	= #{CREW_PREFIX},g' libraries/liblmdb/Makefile"
-    system "sed -i 's,OPT = -O2 -g,OPT = -O2 -g -flto=auto,g' libraries/liblmdb/Makefile"
+    system "sed -i 's,libdir = $(exec_prefix)/lib,libdir = $(exec_prefix)/lib#{CREW_LIB_SUFFIX},g' liblmdb/Makefile"
+    system "sed -i 's,prefix	= /usr/local,prefix	= #{CREW_PREFIX},g' liblmdb/Makefile"
+    system "sed -i 's,OPT = -O2 -g,OPT = -O2 -g -flto=auto,g' liblmdb/Makefile"
   end
 
   def self.build
-    Dir.chdir 'libraries/liblmdb' do
-      system "make prefix=#{CREW_PREFIX}"
-    end
+    system "make -C liblmdb prefix=#{CREW_PREFIX}"
     @lmdb_pc = <<~LMDB_PC_EOF
       prefix=#{CREW_PREFIX}
       libdir=#{CREW_LIB_PREFIX}
@@ -48,9 +47,7 @@ class Lmdb < Package
   end
 
   def self.install
-    Dir.chdir 'libraries/liblmdb' do
-      system "make DESTDIR=#{CREW_DEST_DIR} install"
-    end
+    system "make -C liblmdb DESTDIR=#{CREW_DEST_DIR} install"
     FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/pkgconfig/"
     File.write("#{CREW_DEST_LIB_PREFIX}/pkgconfig/lmdb.pc", @lmdb_pc)
   end
