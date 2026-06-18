@@ -1,0 +1,5 @@
+#!/bin/bash
+lv2apply -V
+lv2bench -V
+lv2info -V
+lv2ls -V

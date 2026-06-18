@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Lilv < Meson
   description 'A C library interface to the LV2 plug-in standard'
   homepage 'https://drobilla.net/software/lilv/'
-  version "0.24.20-#{CREW_PY_VER}"
+  version "0.28.0-#{CREW_PY_VER}"
   license 'isc'
   compatibility 'all'
   source_url 'https://github.com/lv2/lilv.git'
@@ -14,20 +14,22 @@ class Lilv < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '44d5137303bd635b344b91a01dd280cc7da0ff04b14011453b5af74e544f8761',
-     armv7l: '44d5137303bd635b344b91a01dd280cc7da0ff04b14011453b5af74e544f8761',
-       i686: 'afa02806f28bcb43ab4d40f413bbec0e249012ac6c47ca0f9aa1d977b3c84e91',
-     x86_64: 'fefa28b2fcf93f8af004c3e77b283b280ac4e04814e266ae5e19a882b5504682'
+    aarch64: 'c011d0753138a7927b1577988909389200c9fbcfa0f9efea0c19c7283651c435',
+     armv7l: 'c011d0753138a7927b1577988909389200c9fbcfa0f9efea0c19c7283651c435',
+       i686: 'f79a50b18ef89cca5ab6e76d9b5c6931ddb513ea9b42de6e36439f5487f684f7',
+     x86_64: 'f65e7bea1792c194778177662d5f15b29b5fc7f1b371a07cc3730850a311c69d'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'libsndfile' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'libsndfile' => :executable
   depends_on 'lv2' => :logical
   depends_on 'python3' => :build
-  depends_on 'serd' # R
-  depends_on 'sord' # R
-  depends_on 'sratom' # R
+  depends_on 'serd' => :library
+  depends_on 'sord' => :library
+  depends_on 'sratom' => :library
+  depends_on 'zix' => :library
 
   meson_options '-Ddocs=disabled \
                -Dtests=disabled'
