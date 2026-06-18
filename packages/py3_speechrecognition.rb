@@ -18,6 +18,7 @@ class Py3_speechrecognition < Pip
 
   depends_on 'glibc' => :executable
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :executable
   depends_on 'python3' => :logical
 
   no_source_build
