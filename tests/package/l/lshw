@@ -1,0 +1,4 @@
+#!/bin/bash
+gtk-lshw -h
+lshw -help 2>&1 | head
+lshw -version
