@@ -17,6 +17,7 @@ class Ruby_nokogiri < RUBY
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'ruby' => :library
   depends_on 'ruby_mini_portile2' # R
   depends_on 'ruby_racc' # R
