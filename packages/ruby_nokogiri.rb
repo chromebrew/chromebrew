@@ -10,10 +10,10 @@ class Ruby_nokogiri < RUBY
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: 'a963ebc101b72294cdc6bc81d37aba68b261f6272deea983f0506314bf31a792',
-     armv7l: 'a963ebc101b72294cdc6bc81d37aba68b261f6272deea983f0506314bf31a792',
-       i686: '43cccdbe04cc3c79a5decc4c90d5db5b0e3cb8cefca26ad88d63abdd3b9ad0c6',
-     x86_64: '9d316daae5340e91618f9c844f1eadcf41462b68982da8f7ff7a018cd756dcef'
+    aarch64: '1a6d0e2f3417875befbd2a222a3ba7922603f2d2b6ed116e1d4ec26605b220f8',
+     armv7l: '1a6d0e2f3417875befbd2a222a3ba7922603f2d2b6ed116e1d4ec26605b220f8',
+       i686: '621fa5fe06255d8b8940c342053d5f2717b96a78f71b4e6f3d4c68941721ba63',
+     x86_64: '9c37e23427179b71ba38488d07caa039c93cb63256f89c2bb390dc4f77acadfc'
   })
 
   depends_on 'glibc' => :library
