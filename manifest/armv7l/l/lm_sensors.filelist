@@ -1,4 +1,4 @@
-# Total size: 492706
+# Total size: 728120
 /usr/local/bin/sensors
 /usr/local/bin/sensors-conf-convert
 /usr/local/etc/sensors3.conf
@@ -8,14 +8,16 @@
 /usr/local/lib/libsensors.so
 /usr/local/lib/libsensors.so.5
 /usr/local/lib/libsensors.so.5.0.0
-/usr/local/man/man1/sensors.1.gz
-/usr/local/man/man3/libsensors.3.gz
-/usr/local/man/man5/sensors.conf.5.gz
-/usr/local/man/man5/sensors3.conf.5.gz
-/usr/local/man/man8/fancontrol.8.gz
-/usr/local/man/man8/pwmconfig.8.gz
-/usr/local/man/man8/sensors-conf-convert.8.gz
-/usr/local/man/man8/sensors-detect.8.gz
 /usr/local/sbin/fancontrol
 /usr/local/sbin/pwmconfig
 /usr/local/sbin/sensors-detect
+/usr/local/share/man/man1/sensors.1.zst
+/usr/local/share/man/man3/libsensors.3.zst
+/usr/local/share/man/man5/sensors.conf.5.zst
+/usr/local/share/man/man5/sensors3.conf.5.zst
+/usr/local/share/man/man8/fancontrol.8.zst
+/usr/local/share/man/man8/pwmconfig.8.zst
+/usr/local/share/man/man8/sensors-conf-convert.8.zst
+/usr/local/share/man/man8/sensors-detect.8.zst
+/usr/local/share/zsh/site-functions/_sensors
+/usr/local/share/zsh/site-functions/_sensors-detect
