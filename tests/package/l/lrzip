@@ -1,0 +1,11 @@
+#!/bin/bash
+lrunzip -h 2>&1 | head -5
+lrunzip -V
+lrz -h 2>&1 | head -5
+lrz -V
+lrzcat -h 2>&1 | head -5
+lrzcat -V
+lrzip -h 2>&1 | head -5
+lrzip -V
+lrztar -h 2>&1 | head -5
+lrzuntar -h 2>&1 | head -5

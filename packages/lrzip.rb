@@ -6,25 +6,27 @@ require 'buildsystems/autotools'
 class Lrzip < Autotools
   description 'Multi-threaded compression with rzip/lzma, lzo, and zpaq'
   homepage 'https://github.com/ckolivas/lrzip'
-  version '0.651-1242aec'
+  version '0.660'
   license 'GPL'
   compatibility 'all'
   source_url 'https://github.com/ckolivas/lrzip.git'
-  git_hashtag '1242aecfed4c8f10b52204d66e2daafcc53f92ac'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '206babaa1900a768911b8c592876233afe4e2ac478228cd393aa78ca10aac1a4',
-     armv7l: '206babaa1900a768911b8c592876233afe4e2ac478228cd393aa78ca10aac1a4',
-       i686: '10452825c0b56fe013cdb217a24b2f0cf2eef9eafabfa120644b961f07c1b09c',
-     x86_64: 'd429d68035f3fb70e43d6fff77acd6819576abeff0fce1150d63e9b107ea72fe'
+    aarch64: '42df7df626bd5307b8c748e99df07a33c9367922942533fc2b329609a1bfceb5',
+     armv7l: '42df7df626bd5307b8c748e99df07a33c9367922942533fc2b329609a1bfceb5',
+       i686: 'bd559e6b17966b1afa089c020ace82c7ff0f1099238417e6bdb92ec40167c3ab',
+     x86_64: '98f85b08add4a133f193c055313dc51f4e0bc9bddbad070b10a31d896e3e65ca'
   })
 
-  depends_on 'bzip2' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'lz4' # R
-  depends_on 'lzo' # R
-  depends_on 'zlib' # R
+  depends_on 'bzip2' => :executable
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'lz4' => :executable
+  depends_on 'lzo' => :executable
+  depends_on 'zlib' => :executable
 
   git_fetchtags
 end
