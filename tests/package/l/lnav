@@ -1,0 +1,3 @@
+#!/bin/bash
+lnav -h 2>&1 | head
+lnav -V
