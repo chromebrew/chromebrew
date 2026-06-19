@@ -1,30 +1,30 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Lm_sensors < Package
+class Lm_sensors < Autotools
   description 'Collection of user space tools for general SMBus access and hardware monitoring'
   homepage 'https://hwmon.wiki.kernel.org/lm_sensors'
-  version '3.6.0'
+  version '3-6-2'
   license 'GPL-2+ and LGPL-2.1'
   compatibility 'all'
-  source_url 'https://github.com/lm-sensors/lm-sensors/archive/V3-6-0.tar.gz'
-  source_sha256 '0591f9fa0339f0d15e75326d0365871c2d4e2ed8aa1ff759b3a55d3734b7d197'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/lm-sensors/lm-sensors.git'
+  git_hashtag "V#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f823f0cdfd1e20b45169972dc3708ca4f92ac5eaf2a7910436c9a48e2a9764fc',
-     armv7l: 'f823f0cdfd1e20b45169972dc3708ca4f92ac5eaf2a7910436c9a48e2a9764fc',
-       i686: '02dc0f9719ad8a8dad023187f39296cfe863d28f7e40247ae6dfda71fc598582',
-     x86_64: '2561335f0dbe8c442e509bd6ca29751ea3c05c9a6111766ffc2380cb60dff6d1'
+    aarch64: '203b3a8d9e69f49e957c43b58e7abea5e3aeff6fae479af48e1195f68df20144',
+     armv7l: '203b3a8d9e69f49e957c43b58e7abea5e3aeff6fae479af48e1195f68df20144',
+       i686: '70e9293d7e9f4cc14b42ef2a2056360593b182fb05052d981c43290acc5397fe',
+     x86_64: '66c68207d359385dcf8f818fedffde6972a4a2529c6b7ea42676646aba632c6c'
   })
+
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'libiconv' => :executable
 
   def self.build
     system "sed -i 's/-Llib -lsensors/-Llib -lsensors -liconv/g' prog/sensors/Module.mk"
     system "sed -i \"/LIBDIR :=/c LIBDIR := #{CREW_LIB_PREFIX}\" Makefile"
     system "sed -i \"/ETCDIR :=/c ETCDIR := #{CREW_PREFIX}\/etc\" Makefile"
     system "make PREFIX=#{CREW_PREFIX}"
-  end
-
-  def self.install
-    system "make PREFIX=#{CREW_PREFIX} DESTDIR=#{CREW_DEST_DIR} install"
   end
 end
