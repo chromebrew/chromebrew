@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Lnav < Autotools
   description 'An advanced log file viewer for the small-scale'
   homepage 'https://lnav.org/'
-  version '0.11.2'
+  version '0.14.0'
   license 'BSD-2 Clause'
   compatibility 'x86_64'
   source_url 'https://github.com/tstack/lnav.git'
@@ -11,17 +11,22 @@ class Lnav < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: 'a3da030ad5690e7f447b58530966820e38e3d85bdb145d7fa77d02898fbb3453'
+     x86_64: 'd643e8c4cb58ae54054f52165a66a124c641867b0a42549688a499d93037d30b'
   })
 
+  depends_on 'bzip2' => :executable
+  depends_on 'curl' => :executable
   depends_on 'gcc' => :build
-  depends_on 'pcre2' # R
-  depends_on 'sqlite' # R
-  depends_on 'ncurses' # R
-  depends_on 'readline' # R
-  depends_on 'zlib' # R
-  depends_on 'bzip2' # R
-  depends_on 'libcurl' # R
-  depends_on 'libarchive' # R
-  depends_on 'wireshark' # R
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'libarchive' => :executable
+  depends_on 'libcurl' => :library
+  depends_on 'libunistring' => :executable
+  depends_on 'ncurses' => :library
+  depends_on 'pcre2' => :executable
+  depends_on 'readline' => :library
+  depends_on 'sqlite' => :executable
+  depends_on 'wireshark' => :library
+  depends_on 'zlib' => :executable
 end
