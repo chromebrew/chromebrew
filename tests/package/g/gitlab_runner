@@ -1,0 +1,3 @@
+#!/bin/bash
+gitlab-runner -h | head
+gitlab-runner -v

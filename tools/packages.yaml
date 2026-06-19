@@ -2640,6 +2640,11 @@ url: https://www.gitkraken.com/download
 activity: high
 ---
 kind: url
+name: gitlab_runner
+url: https://gitlab.com/gitlab-org/gitlab-runner/-/tags
+activity: high
+---
+kind: url
 name: gittools
 url: https://github.com/internetwache/GitTools/
 activity: none
