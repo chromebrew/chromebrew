@@ -1,4 +1,4 @@
-# Total size: 433383730
+# Total size: 433548408
 /usr/local/bin/appflowy
 /usr/local/share/AppFlowy/AppFlowy
 /usr/local/share/AppFlowy/data/flutter_assets/AssetManifest.bin
@@ -704,6 +704,7 @@
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/code_block_language_search_icon.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/code_block_mermaid.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/collapse.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/comment_document.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/comment_reopen.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/comment_reply.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/comment_resolve.svg
