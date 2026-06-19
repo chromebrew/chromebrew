@@ -22,14 +22,17 @@ class Autotools < Package
     Dir.chdir(@autotools_build_relative_dir) do
       # Some packages, such as ocaml, have a dummy makefile, so check that this is actually a generated makefile.
       unless @autotools_skip_configure || (File.file?('Makefile') && File.read('Makefile', 500).include?('generated') && CREW_CACHE_BUILD)
-        # Run autoreconf if necessary
-        unless File.executable? './configure'
-          if File.executable? './autogen.sh'
-            system 'NOCONFIGURE=1 ./autogen.sh --no-configure || NOCONFIGURE=1 ./autogen.sh'
-          elsif File.executable? './bootstrap'
-            system 'NOCONFIGURE=1 ./bootstrap --no-configure || NOCONFIGURE=1 ./bootstrap'
-          else
+        if File.executable? './autogen.sh'
+          system 'NOCONFIGURE=1 ./autogen.sh --no-configure || NOCONFIGURE=1 ./autogen.sh'
+        elsif File.executable? './bootstrap'
+          system 'NOCONFIGURE=1 ./bootstrap --no-configure || NOCONFIGURE=1 ./bootstrap'
+        end
+        # This ensures the correct aclocal and automake versions are configured.
+        if File.file?('configure.ac')
+          if File.file?('configure')
             system 'autoreconf -fiv'
+          else
+            system 'autoconf -fiv'
           end
         end
         abort 'configure script not found!'.lightred unless File.file?('configure')
