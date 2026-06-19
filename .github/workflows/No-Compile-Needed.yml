@@ -52,7 +52,7 @@ jobs:
       x86_64_packages: ${{ steps.get-compatibility.outputs.x86_64_PACKAGES }}
       armv7l_packages: ${{ steps.get-compatibility.outputs.armv7l_PACKAGES }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
           persist-credentials: true
@@ -212,7 +212,7 @@ jobs:
         env:
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
         run: echo "$MATRIX_CONTEXT"
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
           persist-credentials: true
@@ -324,7 +324,7 @@ jobs:
         run: exit 1
       - name: Report update success
         run: echo "Update jobs succeeded. Creating a PR."
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
           persist-credentials: true

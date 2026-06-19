@@ -52,7 +52,7 @@ jobs:
       x86_64_MIN_GLIBC: ${{ steps.min_glibc_compatibility.outputs.x86_64_min_glibc }}
       armv7l_MIN_GLIBC: ${{ steps.min_glibc_compatibility.outputs.armv7l_min_glibc }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           repository: ${{ github.event.pull_request.head.repo.full_name || github.event.repository.full_name }}
           ref: ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
