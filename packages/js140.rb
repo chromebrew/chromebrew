@@ -1,16 +1,13 @@
-# Adapted from Arch Linux js115 PKGBUILD at:
-# https://gitlab.archlinux.org/archlinux/packaging/packages/js115/-/blob/main/PKGBUILD?ref_type=heads
-
 require 'package'
 
 class Js140 < Package
   description 'JavaScript interpreter and libraries - Version 140'
   homepage 'https://spidermonkey.dev/'
-  version "140.11.0-#{CREW_ICU_VER}-1"
+  version "140.12.0-#{CREW_ICU_VER}"
   license 'MPL-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://archive.mozilla.org/pub/firefox/releases/#{version.gsub("-#{CREW_ICU_VER}", '').split('-').first}esr/source/firefox-#{version.gsub("-#{CREW_ICU_VER}", '').split('-').first}esr.source.tar.xz"
-  source_sha256 '1b034d2117356fda24807a151055132315c6ba58ad2bdf7ec71ee707fac5e028'
+  source_sha256 '85dfb9f6021152b4302b8968ef485d958c8c471cb02415a19853daaad5acce62'
   binary_compression 'tar.zst'
 
   binary_sha256({
