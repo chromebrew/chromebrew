@@ -1,4 +1,4 @@
-# Total size: 12126101
+# Total size: 12129355
 /usr/local/bin/aws
 /usr/local/bin/aws.cmd
 /usr/local/bin/aws_bash_completer
@@ -6,13 +6,13 @@
 /usr/local/bin/aws_zsh_completer.sh
 /usr/local/etc/bash.d/aws
 /usr/local/etc/zsh.d/aws
-/usr/local/lib/python3.14/site-packages/awscli-1.45.33.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/awscli-1.45.33.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/awscli-1.45.33.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/awscli-1.45.33.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/awscli-1.45.33.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/awscli-1.45.33.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/awscli-1.45.33.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/awscli-1.45.34.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/awscli-1.45.34.dist-info/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/awscli-1.45.34.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/awscli-1.45.34.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/awscli-1.45.34.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/awscli-1.45.34.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/awscli-1.45.34.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/awscli/__init__.py
 /usr/local/lib/python3.14/site-packages/awscli/__main__.py
 /usr/local/lib/python3.14/site-packages/awscli/__pycache__/__init__.cpython-314.pyc
@@ -2283,6 +2283,7 @@
 /usr/local/lib/python3.14/site-packages/awscli/examples/ec2/describe-instance-types.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/ec2/describe-instances.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/ec2/describe-internet-gateways.rst
+/usr/local/lib/python3.14/site-packages/awscli/examples/ec2/describe-ipam-pool-allocations.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/ec2/describe-ipam-pools.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/ec2/describe-ipam-resource-discoveries.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/ec2/describe-ipam-resource-discovery-associations.rst
@@ -2501,6 +2502,7 @@
 /usr/local/lib/python3.14/site-packages/awscli/examples/ec2/modify-instance-maintenance-options.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/ec2/modify-instance-metadata-options.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/ec2/modify-instance-placement.rst
+/usr/local/lib/python3.14/site-packages/awscli/examples/ec2/modify-ipam-pool-allocation.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/ec2/modify-ipam-pool.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/ec2/modify-ipam-resource-cidr.rst
 /usr/local/lib/python3.14/site-packages/awscli/examples/ec2/modify-ipam-resource-discovery.rst
