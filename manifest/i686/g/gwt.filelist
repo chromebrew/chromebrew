@@ -1,4 +1,4 @@
-# Total size: 207847775
+# Total size: 206291192
 /usr/local/bin/i18nCreator
 /usr/local/bin/webAppCreator
 /usr/local/share/gwt/COPYING
@@ -4625,18 +4625,17 @@
 /usr/local/share/gwt/doc/javadoc/com/google/web/bindery/requestfactory/vm/testing/package-tree.html
 /usr/local/share/gwt/doc/javadoc/com/google/web/bindery/requestfactory/vm/testing/package-use.html
 /usr/local/share/gwt/doc/javadoc/constant-values.html
-/usr/local/share/gwt/doc/javadoc/copy.svg
 /usr/local/share/gwt/doc/javadoc/deprecated-list.html
 /usr/local/share/gwt/doc/javadoc/element-list
 /usr/local/share/gwt/doc/javadoc/help-doc.html
 /usr/local/share/gwt/doc/javadoc/index-all.html
 /usr/local/share/gwt/doc/javadoc/index.html
+/usr/local/share/gwt/doc/javadoc/jquery-ui.overrides.css
 /usr/local/share/gwt/doc/javadoc/legal/ADDITIONAL_LICENSE_INFO
 /usr/local/share/gwt/doc/javadoc/legal/ASSEMBLY_EXCEPTION
 /usr/local/share/gwt/doc/javadoc/legal/LICENSE
 /usr/local/share/gwt/doc/javadoc/legal/jquery.md
 /usr/local/share/gwt/doc/javadoc/legal/jqueryUI.md
-/usr/local/share/gwt/doc/javadoc/link.svg
 /usr/local/share/gwt/doc/javadoc/member-search-index.js
 /usr/local/share/gwt/doc/javadoc/module-search-index.js
 /usr/local/share/gwt/doc/javadoc/overview-summary.html
@@ -4648,8 +4647,6 @@
 /usr/local/share/gwt/doc/javadoc/script-dir/jquery-ui.min.css
 /usr/local/share/gwt/doc/javadoc/script-dir/jquery-ui.min.js
 /usr/local/share/gwt/doc/javadoc/script.js
-/usr/local/share/gwt/doc/javadoc/search-page.js
-/usr/local/share/gwt/doc/javadoc/search.html
 /usr/local/share/gwt/doc/javadoc/search.js
 /usr/local/share/gwt/doc/javadoc/serialized-form.html
 /usr/local/share/gwt/doc/javadoc/stylesheet.css
