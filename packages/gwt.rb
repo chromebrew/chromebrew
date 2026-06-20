@@ -3,11 +3,11 @@ require 'package'
 class Gwt < Package
   description 'Google Web Toolkit'
   homepage 'https://www.gwtproject.org/'
-  version '2.13.0'
+  version '2.13.1'
   license 'Apache-2.0'
   compatibility 'all'
   source_url "https://github.com/gwtproject/gwt/releases/download/#{version}/gwt-#{version}.zip"
-  source_sha256 '43ca936765a432d5e6fb7ce746caf9c9a7d6d47abb955da3f03742d7a61b31d3'
+  source_sha256 '92610f2f9b929a8625b858fe394c15351357ba32733282e79e38168ecc0d131d'
 
   depends_on 'ant' => :logical
   depends_on 'unzip' => :build
