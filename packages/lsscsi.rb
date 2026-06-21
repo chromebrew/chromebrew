@@ -1,30 +1,22 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Lsscsi < Package
+class Lsscsi < Autotools
   description 'The lsscsi command lists information about SCSI devices in Linux.'
   homepage 'http://sg.danny.cz/scsi/lsscsi.html'
-  version '0.28'
+  version '0.32'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/hreinecke/lsscsi/archive/v0.28.tar.gz'
-  source_sha256 'eec0c2c10b30d58aa8d7c7703ccbca92215939632ce3fea599f280f8390553e6'
-  binary_compression 'tar.xz'
+  source_url "https://sg.danny.cz/scsi/lsscsi-#{version}.tgz"
+  source_sha256 '0a800e9e94dca2ab702d65d72777ae8cae078e3d74d0bcbed64ba0849e8029a1'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '38b24d217de71e9b295edccaad466aa41a25803b87725a26aeff1aa17e5a4bc5',
-     armv7l: '38b24d217de71e9b295edccaad466aa41a25803b87725a26aeff1aa17e5a4bc5',
-       i686: '44b1427c916692e84fd5120b1eb79c6b52c16bea508761041c1732cb04f0d34a',
-     x86_64: '2961c41e2a8676ab3f92f3873b0b39b195d834da07ee030607c91ed4ee04476d'
+    aarch64: '3c18783f57d5e4d774c089d47ce19a4084b28180e267c5a2b3f6bdbf702998a6',
+     armv7l: '3c18783f57d5e4d774c089d47ce19a4084b28180e267c5a2b3f6bdbf702998a6',
+       i686: 'ed007f117c7401e0fec65b3624117eda1b5a04cac0382853dbd81dba6c62f59c',
+     x86_64: '3b3e228b6f3cc737ff8dc4d951ca5aea843d42ee0043cd0c90b6ba56838c3655'
   })
 
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           '--disable-maintainer-mode'
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
 end
