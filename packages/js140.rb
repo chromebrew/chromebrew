@@ -1,22 +1,19 @@
-# Adapted from Arch Linux js115 PKGBUILD at:
-# https://gitlab.archlinux.org/archlinux/packaging/packages/js115/-/blob/main/PKGBUILD?ref_type=heads
-
 require 'package'
 
 class Js140 < Package
   description 'JavaScript interpreter and libraries - Version 140'
   homepage 'https://spidermonkey.dev/'
-  version "140.11.0-#{CREW_ICU_VER}-1"
+  version "140.12.0-#{CREW_ICU_VER}"
   license 'MPL-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://archive.mozilla.org/pub/firefox/releases/#{version.gsub("-#{CREW_ICU_VER}", '').split('-').first}esr/source/firefox-#{version.gsub("-#{CREW_ICU_VER}", '').split('-').first}esr.source.tar.xz"
-  source_sha256 '1b034d2117356fda24807a151055132315c6ba58ad2bdf7ec71ee707fac5e028'
+  source_sha256 '85dfb9f6021152b4302b8968ef485d958c8c471cb02415a19853daaad5acce62'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd3ab8544662234c686a11ad7c35eb5ae2bb168d3c1f2703dc0e5f151b5bfd25d',
-     armv7l: 'd3ab8544662234c686a11ad7c35eb5ae2bb168d3c1f2703dc0e5f151b5bfd25d',
-     x86_64: '77d7a9c4986fe30443f0acb73c72a902d20e1c8f1eb46e165529d8ff3fca06d9'
+    aarch64: 'c436f5aa321b96f89d7d75d6700a11edd5edc556df950fbbee3c53bcaf0f8438',
+     armv7l: 'c436f5aa321b96f89d7d75d6700a11edd5edc556df950fbbee3c53bcaf0f8438',
+     x86_64: '31b384c6ea1c747f827deef8c15bfd63d605e423a7cdb6218ad65f5428720733'
   })
 
   depends_on 'autoconf213' => :build
