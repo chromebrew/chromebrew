@@ -1,0 +1,3 @@
+#!/bin/bash
+lsscsi -h 2>&1 | head 
+lsscsi -V 2>&1
