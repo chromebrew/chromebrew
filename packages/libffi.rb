@@ -17,7 +17,7 @@ class Libffi < Autotools
      x86_64: 'ce86abb76761fc8fc946ec8f172315ba697a1a96b4f6df897224328436d8c5ab'
   })
 
-  depends_on 'gcc_lib' # R
+  depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
 
