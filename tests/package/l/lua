@@ -1,0 +1,3 @@
+#!/bin/bash
+lua -v
+luac -v
