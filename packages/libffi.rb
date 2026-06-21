@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Libffi < Autotools
   description 'The libffi library provides a portable, high level programming interface to various calling conventions.'
   homepage 'https://sourceware.org/libffi/'
-  version '3.5.2'
+  version '3.6.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/libffi/libffi.git'
@@ -11,14 +11,15 @@ class Libffi < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e386d85ff175495ea4288c508dae894620436be25ac838858858aae4155626cf',
-     armv7l: 'e386d85ff175495ea4288c508dae894620436be25ac838858858aae4155626cf',
-       i686: '1047e257453111344ef939927ea738ef1407936f761fec885ea8fe40431f8f3e',
-     x86_64: '169e1fdd8636e3cb770eb89fe6ed36b040148b79d9c3c3a55846dc290df3edc3'
+    aarch64: 'b589b48f32b37d7199792fe7a9f971dab5c122bfbd3205bea74fa985d1c6aa1d',
+     armv7l: 'b589b48f32b37d7199792fe7a9f971dab5c122bfbd3205bea74fa985d1c6aa1d',
+       i686: 'a2e22f40a76b66c726578b1f147f34bae2bf49b0e4377c650dc7c1127a9681b5',
+     x86_64: 'ce86abb76761fc8fc946ec8f172315ba697a1a96b4f6df897224328436d8c5ab'
   })
 
-  depends_on 'gcc_lib' # R
+  depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 
   # run_tests         # DejaGNU required
 
