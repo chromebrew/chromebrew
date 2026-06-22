@@ -16,6 +16,7 @@ class Gstreamer < Meson
      x86_64: '910462bcfa2d674e6b9f45e663ef042c263eb9a5ac3d2996357abcdbf7f63644'
   })
 
+  depends_on 'abseil_cpp' => :build
   depends_on 'alsa_lib' => :library
   depends_on 'bzip2' => :library
   depends_on 'ca_certificates' => :build
