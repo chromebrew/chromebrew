@@ -1,22 +1,22 @@
 require 'package'
-Package.load_package("#{__dir__}/llvm22_build.rb")
 
 class Llvm22_dev < Package
+  llvm_build_obj = Package.load_package("#{__dir__}/#{CREW_LLVM_VER}_build.rb")
   description 'LLVM: Everything except libLLVM & llvm-strip'
-  homepage Llvm22_build.homepage
-  version '22.1.7'
+  homepage llvm_build_obj.homepage
+  version llvm_build_obj.version
   # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
-  puts "#{self} version differs from llvm version #{Llvm22_build.version}".orange if version != Llvm22_build.version && !ENV['NESTED_CI']
-  license Llvm22_build.license
+  puts "#{self} version differs from llvm version #{llvm_build_obj.version}".orange if version != llvm_build_obj.version && !ENV['NESTED_CI']
+  license llvm_build_obj.license
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7712dbdcee64e04dbec1590730e941a7a711cbb5adb45bad7d15317dce8d85c1',
-     armv7l: '7712dbdcee64e04dbec1590730e941a7a711cbb5adb45bad7d15317dce8d85c1',
-       i686: 'ec8ae338c7aa2395f989703b0571438c38f52b2b3594181909e584da29a70cdc',
-     x86_64: '86abf404917995ed5d640a70ad4a4ba302fa30da52f043b71498910246483636'
+    aarch64: '9fd5462f54d63ff6131c81268f673168f277c09e3240259a860c76853fea080d',
+     armv7l: '9fd5462f54d63ff6131c81268f673168f277c09e3240259a860c76853fea080d',
+       i686: 'de31ba3c704cf5653cdeb41333f41332dae38b548d4552cee5b845964ed001c5',
+     x86_64: '643085dce3f50b65681e21609503f4a4008edf2b4eb9d969af2de0e5acb355c7'
   })
 
   depends_on 'gcc_lib' => :library
@@ -37,7 +37,8 @@ class Llvm22_dev < Package
   no_strip
 
   def self.preflight
-    abort "Update #{CREW_LLVM_VER}_build first.".lightred if Gem::Version.new(version) < Gem::Version.new(Llvm22_build.version.split('-').first)
+    llvm_build_obj = Package.load_package("#{__dir__}/#{CREW_LLVM_VER}_build.rb")
+    abort "Update #{CREW_LLVM_VER}_build first.".lightred if Gem::Version.new(version) < Gem::Version.new(llvm_build_obj.version.split('-').first)
     llvm_lib_obj = Package.load_package("#{__dir__}/#{CREW_LLVM_VER}_dev.rb")
     abort "Update  #{CREW_LLVM_VER}_lib first.".lightred if Gem::Version.new(version) > Gem::Version.new(llvm_lib_obj.version.split('-').first)
   end
