@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Coin < CMake
   description 'OpenGL-based, 3D graphics library'
   homepage 'https://github.com/coin3d/coin'
-  version '4.0.9'
+  version '4.0.10'
   license 'BSD-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/coin3d/coin.git'
