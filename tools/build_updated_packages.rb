@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# build_updated_packages version 5.4 (for Chromebrew)
+# build_updated_packages version 5.5 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -100,10 +100,9 @@ dependent_packages_to_check = Set[
   { pkg_name: 'gcc_build', downstream_packages: 'gcc_lib', comments: '' },
   { pkg_name: 'gcc_lib', downstream_packages: 'gcc_dev', comments: '' },
   { pkg_name: 'gcc_dev', downstream_packages: 'libssp', comments: '' },
-  { pkg_name: "#{CREW_LLVM_VER}_build", downstream_packages: "#{CREW_LLVM_VER}_lib", comments: '' },
+  { pkg_name: "#{CREW_LLVM_VER}_build", downstream_packages: "#{CREW_LLVM_VER}_lib #{CREW_LLVM_VER}_dev openmp libclc", comments: '' },
   { pkg_name: "#{CREW_LLVM_VER}_lib", downstream_packages: "#{CREW_LLVM_VER}_dev", comments: '' },
-  { pkg_name: "#{CREW_LLVM_VER}_dev", downstream_packages: 'openmp spirv_llvm_translator libclc', comments: '' },
-  { pkg_name: 'spirv_llvm_translator', downstream_packages: 'libclc', comments: '' }
+  { pkg_name: "#{CREW_LLVM_VER}_dev", downstream_packages: 'openmp libclc', comments: '' }
 ]
 dependent_pkgs = dependent_packages_to_check.to_h { [it[:pkg_name], it[:downstream_packages]] }
 
@@ -178,7 +177,7 @@ def determine_recursive_deps(d_pkg_input, dependency_graphs: {})
     d_pkg_obj = Package.load_package("packages/#{d_pkg}.rb")
     d_pkg_deps = d_pkg_obj.dependencies.map { |key, value| key.to_s if value == [[], nil] }.compact.map { |key, _value| key.to_s }.compact.delete_if { it.include?('glibc_') }
     # Pull in build dependencies if necessary.
-    if (d_pkg.include?('_lib') || d_pkg.include?('_dev')) && !d_pkg.include?('gcc_lib')
+    if (d_pkg.include?('_lib') || d_pkg.include?('_dev') || d_pkg.include?('libclc') ||  d_pkg.include?('openmp')) && !d_pkg.include?('gcc_lib')
       puts "#{"#{__LINE__}: " if CREW_VERBOSE}#{d_pkg} includes _dev || _lib, pulling build deps.".orange
       # d_pkg_deps = d_pkg_obj.get_deps_list(exclude_buildessential: false).delete_if { |d| ( d == 'glibc' || d == 'gcc_lib' ) }
       d_pkg_deps = d_pkg_obj.dependencies.map { |key, _value| key.to_s }.compact.delete_if { %w[glibc gcc_lib].include?(it) }

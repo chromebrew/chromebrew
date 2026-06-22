@@ -1,13 +1,13 @@
 require 'package'
-Package.load_package("#{__dir__}/llvm22_build.rb")
 
 class Llvm22_dev < Package
+  llvm_build_obj = Package.load_package("#{__dir__}/#{CREW_LLVM_VER}_build.rb")
   description 'LLVM: Everything except libLLVM & llvm-strip'
-  homepage Llvm22_build.homepage
-  version '22.1.7'
+  homepage llvm_build_obj.homepage
+  version llvm_build_obj.version
   # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
-  puts "#{self} version differs from llvm version #{Llvm22_build.version}".orange if version != Llvm22_build.version && !ENV['NESTED_CI']
-  license Llvm22_build.license
+  puts "#{self} version differs from llvm version #{llvm_build_obj.version}".orange if version != llvm_build_obj.version && !ENV['NESTED_CI']
+  license llvm_build_obj.license
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
@@ -37,7 +37,8 @@ class Llvm22_dev < Package
   no_strip
 
   def self.preflight
-    abort "Update #{CREW_LLVM_VER}_build first.".lightred if Gem::Version.new(version) < Gem::Version.new(Llvm22_build.version.split('-').first)
+    llvm_build_obj = Package.load_package("#{__dir__}/#{CREW_LLVM_VER}_build.rb")
+    abort "Update #{CREW_LLVM_VER}_build first.".lightred if Gem::Version.new(version) < Gem::Version.new(llvm_build_obj.version.split('-').first)
     llvm_lib_obj = Package.load_package("#{__dir__}/#{CREW_LLVM_VER}_dev.rb")
     abort "Update  #{CREW_LLVM_VER}_lib first.".lightred if Gem::Version.new(version) > Gem::Version.new(llvm_lib_obj.version.split('-').first)
   end
