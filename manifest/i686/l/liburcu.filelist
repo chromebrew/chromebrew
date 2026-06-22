@@ -1,4 +1,4 @@
-# Total size: 842789
+# Total size: 757833
 /usr/local/include/urcu-bp.h
 /usr/local/include/urcu-call-rcu.h
 /usr/local/include/urcu-defer.h
@@ -6,6 +6,7 @@
 /usr/local/include/urcu-pointer.h
 /usr/local/include/urcu-qsbr.h
 /usr/local/include/urcu.h
+/usr/local/include/urcu/annotate.h
 /usr/local/include/urcu/arch.h
 /usr/local/include/urcu/arch/aarch64.h
 /usr/local/include/urcu/arch/alpha.h
@@ -14,6 +15,7 @@
 /usr/local/include/urcu/arch/generic.h
 /usr/local/include/urcu/arch/hppa.h
 /usr/local/include/urcu/arch/ia64.h
+/usr/local/include/urcu/arch/loongarch.h
 /usr/local/include/urcu/arch/m68k.h
 /usr/local/include/urcu/arch/mips.h
 /usr/local/include/urcu/arch/nios2.h
@@ -40,7 +42,6 @@
 /usr/local/include/urcu/map/urcu-mb.h
 /usr/local/include/urcu/map/urcu-memb.h
 /usr/local/include/urcu/map/urcu-qsbr.h
-/usr/local/include/urcu/map/urcu-signal.h
 /usr/local/include/urcu/map/urcu.h
 /usr/local/include/urcu/pointer.h
 /usr/local/include/urcu/rcuhlist.h
@@ -58,8 +59,6 @@
 /usr/local/include/urcu/static/urcu-mb.h
 /usr/local/include/urcu/static/urcu-memb.h
 /usr/local/include/urcu/static/urcu-qsbr.h
-/usr/local/include/urcu/static/urcu-signal-nr.h
-/usr/local/include/urcu/static/urcu-signal.h
 /usr/local/include/urcu/static/urcu.h
 /usr/local/include/urcu/static/wfcqueue.h
 /usr/local/include/urcu/static/wfqueue.h
@@ -70,11 +69,16 @@
 /usr/local/include/urcu/uatomic.h
 /usr/local/include/urcu/uatomic/aarch64.h
 /usr/local/include/urcu/uatomic/alpha.h
+/usr/local/include/urcu/uatomic/api.h
 /usr/local/include/urcu/uatomic/arm.h
+/usr/local/include/urcu/uatomic/builtins-generic.h
+/usr/local/include/urcu/uatomic/builtins-x86.h
+/usr/local/include/urcu/uatomic/builtins.h
 /usr/local/include/urcu/uatomic/gcc.h
 /usr/local/include/urcu/uatomic/generic.h
 /usr/local/include/urcu/uatomic/hppa.h
 /usr/local/include/urcu/uatomic/ia64.h
+/usr/local/include/urcu/uatomic/loongarch.h
 /usr/local/include/urcu/uatomic/m68k.h
 /usr/local/include/urcu/uatomic/mips.h
 /usr/local/include/urcu/uatomic/nios2.h
@@ -83,6 +87,7 @@
 /usr/local/include/urcu/uatomic/s390.h
 /usr/local/include/urcu/uatomic/sparc64.h
 /usr/local/include/urcu/uatomic/tile.h
+/usr/local/include/urcu/uatomic/uassert.h
 /usr/local/include/urcu/uatomic/x86.h
 /usr/local/include/urcu/uatomic_arch.h
 /usr/local/include/urcu/urcu-bp.h
@@ -91,7 +96,6 @@
 /usr/local/include/urcu/urcu-memb.h
 /usr/local/include/urcu/urcu-poll.h
 /usr/local/include/urcu/urcu-qsbr.h
-/usr/local/include/urcu/urcu-signal.h
 /usr/local/include/urcu/urcu.h
 /usr/local/include/urcu/urcu_ref.h
 /usr/local/include/urcu/wfcqueue.h
@@ -121,10 +125,6 @@
 /usr/local/lib/liburcu-qsbr.so
 /usr/local/lib/liburcu-qsbr.so.8
 /usr/local/lib/liburcu-qsbr.so.8.1.0
-/usr/local/lib/liburcu-signal.la
-/usr/local/lib/liburcu-signal.so
-/usr/local/lib/liburcu-signal.so.8
-/usr/local/lib/liburcu-signal.so.8.1.0
 /usr/local/lib/liburcu.la
 /usr/local/lib/liburcu.so
 /usr/local/lib/liburcu.so.8
@@ -134,9 +134,8 @@
 /usr/local/lib/pkgconfig/liburcu-mb.pc
 /usr/local/lib/pkgconfig/liburcu-memb.pc
 /usr/local/lib/pkgconfig/liburcu-qsbr.pc
-/usr/local/lib/pkgconfig/liburcu-signal.pc
 /usr/local/lib/pkgconfig/liburcu.pc
-/usr/local/share/doc/userspace-rcu/LICENSE
+/usr/local/share/doc/userspace-rcu/LICENSE.md
 /usr/local/share/doc/userspace-rcu/README.md
 /usr/local/share/doc/userspace-rcu/cds-api.md
 /usr/local/share/doc/userspace-rcu/examples/Makefile
@@ -196,12 +195,10 @@
 /usr/local/share/doc/userspace-rcu/examples/urcu-flavors/Makefile.mb
 /usr/local/share/doc/userspace-rcu/examples/urcu-flavors/Makefile.membarrier
 /usr/local/share/doc/userspace-rcu/examples/urcu-flavors/Makefile.qsbr
-/usr/local/share/doc/userspace-rcu/examples/urcu-flavors/Makefile.signal
 /usr/local/share/doc/userspace-rcu/examples/urcu-flavors/bp.c
 /usr/local/share/doc/userspace-rcu/examples/urcu-flavors/mb.c
 /usr/local/share/doc/userspace-rcu/examples/urcu-flavors/membarrier.c
 /usr/local/share/doc/userspace-rcu/examples/urcu-flavors/qsbr.c
-/usr/local/share/doc/userspace-rcu/examples/urcu-flavors/signal.c
 /usr/local/share/doc/userspace-rcu/examples/wfcqueue/Makefile
 /usr/local/share/doc/userspace-rcu/examples/wfcqueue/Makefile.cds_wfcq_dequeue
 /usr/local/share/doc/userspace-rcu/examples/wfcqueue/Makefile.cds_wfcq_enqueue
