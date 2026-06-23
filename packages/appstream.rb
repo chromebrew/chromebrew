@@ -1,12 +1,9 @@
-# Adapted from Arch Linux appstream PKGBUILD at:
-# https://github.com/archlinux/svntogit-packages/raw/packages/appstream/trunk/PKGBUILD
-
 require 'buildsystems/meson'
 
 class Appstream < Meson
   description 'Provides a standard for creating app stores across distributions'
   homepage 'https://www.freedesktop.org/wiki/Distributions/AppStream/'
-  version '1.1.2'
+  version '1.1.3'
   license 'GPL'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/ximion/appstream.git'
@@ -19,8 +16,6 @@ class Appstream < Meson
      x86_64: '427e4bfd8fb8b29503dd42641c023a694e96ba86fdf6af366995479e1f99cfdc'
   })
 
-  # depends_on 'libadwaita' # R
-  # depends_on 'libfyaml' # R
   depends_on 'cairo' # R
   depends_on 'curl' # R
   depends_on 'fontconfig' # R
@@ -45,9 +40,7 @@ class Appstream < Meson
   depends_on 'xmlto' => :build
   depends_on 'zstd' # R
 
-  meson_options '-Dcompose=true \
-    -Dsystemd=false \
-    -Dvapi=true'
+  meson_options '-Dcompose=true -Dsystemd=false -Dvapi=true -Dblake3-support=false'
 
   def self.postinstall
     ExitMessage.add "\nType 'appstreamcli --help' to get started.\n"
