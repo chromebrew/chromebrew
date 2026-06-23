@@ -23,6 +23,5 @@ class Vmaf < Meson
   depends_on 'nasm' => :build if %w[x86_64 i686].include?(ARCH)
 
   meson_build_relative_dir 'libvmaf'
-  # vmaf currently fails to build with default configuration in i686: https://github.com/Netflix/vmaf/issues/1481
-  meson_options "-Denable_docs=false -Denable_tests=false -Denable_float=true #{'-Denable_asm=false' if ARCH == 'i686'}"
+  meson_options '-Denable_docs=false -Denable_tests=false -Denable_float=true'
 end
