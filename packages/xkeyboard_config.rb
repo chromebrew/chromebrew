@@ -7,13 +7,13 @@ class Xkeyboard_config < Meson
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config.git'
-  git_hashtag "xkeyboard-config-#{version.split('-').first}"
+  git_hashtag "xkeyboard-config-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f96d53d29a55c9f0b46cb1e1e2891dc6d7ce46f6c0be8fe91f7179a6eaf13a39',
-     armv7l: 'f96d53d29a55c9f0b46cb1e1e2891dc6d7ce46f6c0be8fe91f7179a6eaf13a39',
-     x86_64: 'a8ec9dad6dc2a7611981b01b4beee2b7c03e021f0cb774d14a89a846bbe2f056'
+    aarch64: '7bc18f045634d1816d27dae56221a17538c9bf97fa8d03c1074c4ef516cfc3a7',
+     armv7l: '7bc18f045634d1816d27dae56221a17538c9bf97fa8d03c1074c4ef516cfc3a7',
+     x86_64: '5fd9a83eee76352462cfe8d0d6b48c282c4b81b5b54b4edf91fc0c7431941b5d'
   })
 
   depends_on 'libx11' => :build
