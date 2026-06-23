@@ -20,6 +20,7 @@ class Swig < Autotools
   depends_on 'boost' => :build
   depends_on 'gcc_lib' => :executable
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'pcre' => :build
   depends_on 'pcre2' => :executable
   depends_on 'zlib' => :executable
