@@ -126,7 +126,8 @@ class Gstreamer < Meson
     -Dgpl=enabled \
     -Dgtk_doc=disabled \
     -Dintrospection=disabled \
-    -Dtests=disabled"
+    -Dtests=disabled \
+    -Dwebrtc=disabled"
 
   meson_install_extras do
     # avoid conflicts from libglvnd
