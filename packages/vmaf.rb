@@ -19,6 +19,7 @@ class Vmaf < Meson
 
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'nasm' => :build if %w[x86_64 i686].include?(ARCH)
 
   meson_build_relative_dir 'libvmaf'
