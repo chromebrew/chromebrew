@@ -19,5 +19,6 @@ class Ocaml < Autotools
 
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'zstd' => :library
 end
