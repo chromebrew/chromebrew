@@ -13,7 +13,7 @@ class Swig < Autotools
   binary_sha256({
     aarch64: '459d6b472eb99251302a18a29252b5f4848451c017826f87a17d3d2e0aaf59c6',
      armv7l: '459d6b472eb99251302a18a29252b5f4848451c017826f87a17d3d2e0aaf59c6',
-       i686: 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii',
+       i686: 'b42de3edf3f7d194329a6407239ca042386f9d8adfe5b631460cc661dce05836',
      x86_64: 'fa39c67ebff03a231b33a00087c6ced2248848cf8c2432096781d4adbef717f3'
   })
 
