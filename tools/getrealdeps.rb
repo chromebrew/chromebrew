@@ -238,7 +238,6 @@ def determine_dependencies(pkg_name, pkgfiles_to_check)
   # TODO: Are there more packages like this?
   pkgdeps = pkgdeps.map { |i| i.gsub('glib_stub', 'glib') }.uniq unless %w[gobject_introspection glib].include?(pkg_name)
   # TODO: Since these packages aren't needed by any specific package, do we need to package them at all?
-  pkgdeps = pkgdeps.map { |i| i.gsub('jack1', 'jack') }.uniq
   pkgdeps = pkgdeps.map { |i| i.gsub('libxml2_autotools', 'libxml2') }.uniq
   pkgdeps = pkgdeps.map { |i| i.gsub(/^vdev$/, 'eudev') }.uniq
   pkgdeps = pkgdeps.map { |i| i.gsub('libudev_stub', 'eudev') }.uniq
