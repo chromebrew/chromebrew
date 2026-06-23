@@ -117,8 +117,8 @@ class Gstreamer < Meson
 
   # Fix for webrtc dep build with gcc 16
   # See https://gitlab.freedesktop.org/pulseaudio/webrtc-audio-processing/-/work_items/44
-  meson_options "-Dcpp_std=c++20 \
-    #{CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
+  pre_meson_options "CFLAGS+=' -std=c++20'"
+  meson_options "#{CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
     -Dbenchmarks=disabled \
     -Ddoc=disabled \
     -Dexamples=disabled \
