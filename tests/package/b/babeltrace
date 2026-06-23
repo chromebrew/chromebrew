@@ -1,0 +1,3 @@
+#!/bin/bash
+babeltrace2 -h | head
+babeltrace2 -V
