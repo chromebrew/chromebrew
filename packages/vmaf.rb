@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Vmaf < Meson
   description 'Perceptual video quality assessment algorithm based on multi-method fusion'
   homepage 'https://github.com/Netflix/vmaf'
-  version '3.1.0'
+  version '3.2.0'
   license 'BSD-2'
   compatibility 'all'
   source_url 'https://github.com/Netflix/vmaf.git'
