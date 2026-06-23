@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Xkeyboard_config < Meson
   description 'The non-arch keyboard configuration database for X Window.'
   homepage 'https://www.freedesktop.org/wiki/Software/XKeyboardConfig/'
-  version '2.47-1'
+  version '2.48'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config.git'
