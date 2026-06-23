@@ -3655,11 +3655,6 @@ url: https://github.com/jackaudio/jack2/releases
 activity: low
 ---
 kind: url
-name: jack1
-url: https://github.com/jackaudio/jack1/releases
-activity: none
----
-kind: url
 name: jam
 url: https://swarm.workshop.perforce.com/downloads/guest/perforce_software/jam/
 activity: none

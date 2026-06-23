@@ -137,6 +137,7 @@ deprecated_packages = Set[
   { pkg_name: 'ilmbase', comments: 'Included in openexr.' },
   { pkg_name: 'imagemagick6', comments: 'Obsolete version of package, no longer required.' },
   { pkg_name: 'imagemagick', comments: 'Metapackage made redundant by the removal of imagemagick6.' },
+  { pkg_name: 'jack1', comments: 'Obsolete version of package, no longer required.' },
   { pkg_name: 'js91', comments: 'Replaced by newer versions of js.' },
   { pkg_name: 'komodo', comments: 'Abandoned upstream and no longer functional.' },
   { pkg_name: 'libaudiofile', comments: 'Inactive upstream with applicable CVEs' },
