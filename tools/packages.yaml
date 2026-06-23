@@ -505,6 +505,11 @@ url: https://sourceforge.net/projects/base64/files/
 activity: none
 ---
 kind: url
+name: babeltrace
+url: https://www.efficios.com/files/babeltrace/
+activity: low
+---
+kind: url
 name: babl
 url: https://gitlab.gnome.org/GNOME/babl/-/tags
 activity: high
