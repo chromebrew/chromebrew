@@ -11,14 +11,14 @@ class Ragel < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '505c0dd59b1cc6506218cf87d627245d6446053d06757dd219f594e99b465dd8',
-     armv7l: '505c0dd59b1cc6506218cf87d627245d6446053d06757dd219f594e99b465dd8',
-       i686: '555b423d1e7538943278f40d7675bd54b72eda2fc030fe8fb6f8a39a9c983542',
-     x86_64: 'bb30efaddb9102e6acdbe547419fbe4dada8b3e7a508510ea68b828e718e8b55'
+    aarch64: '8edc2dfccadae1b99c06e7973bd17e6ac01f6fabd438d765751cbc964bd5f121',
+     armv7l: '8edc2dfccadae1b99c06e7973bd17e6ac01f6fabd438d765751cbc964bd5f121',
+       i686: 'a3f0f6bacf4b58504c3a2e90d22f4020d0d81bbc169448f2292385efa7cbb400',
+     x86_64: 'ae7866fc233f5ec1706b9daaa954f833139d852b2cee8db1438ee3e5a76ca008'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
 
   autotools_pre_configure_options "CFLAGS+=' -std=gnu++98' CXXFLAGS+=' -std=gnu++98'"
 end
