@@ -28,13 +28,7 @@ class Autotools < Package
           system 'NOCONFIGURE=1 ./bootstrap --no-configure || NOCONFIGURE=1 ./bootstrap'
         end
         # This ensures the correct aclocal and automake versions are configured.
-        if File.file?('configure.ac')
-          if File.file?('configure')
-            system 'autoreconf -fiv'
-          else
-            system 'autoconf -fiv'
-          end
-        end
+        system 'autoreconf -fiv' if File.file?('configure.ac')
         abort 'configure script not found!'.lightred unless File.file?('configure')
         FileUtils.chmod('+x', 'configure')
         system 'filefix', exception: false unless @no_filefix
