@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Mesa < Meson
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  version "26.1.2-#{CREW_LLVM_VER}"
+  version "26.1.3-#{CREW_LLVM_VER}"
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/mesa/mesa.git'
@@ -11,9 +11,9 @@ class Mesa < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4fccf7b7e1eb9bce9e4ed4c87bea91e29af0f978bbb10b7e5b9085dcb2d87100',
-     armv7l: '4fccf7b7e1eb9bce9e4ed4c87bea91e29af0f978bbb10b7e5b9085dcb2d87100',
-     x86_64: '5e0d5ffb64af962a32e2bcb640b59cf285b1ddd5720b4d49af1c769ea65836bc'
+    aarch64: 'a7bcdf8b4f74944a02d2f65b3094a74465b583ad1df0cd4ccea94f61d3a2b6a5',
+     armv7l: 'a7bcdf8b4f74944a02d2f65b3094a74465b583ad1df0cd4ccea94f61d3a2b6a5',
+     x86_64: 'acd04f0b2a8487a7d86ea975f26d405682710b74908bd8b111906a9fd58da53b'
   })
 
   depends_on 'elfutils' => :library
@@ -95,7 +95,7 @@ class Mesa < Meson
     # Currently build is locked to use the older version of the spirv_llvm_translator.
     system "sed -i \"s#'< @0@.@1@'.format(chosen_llvm_version_major, chosen_llvm_version_minor + 1) ]#'< @0@.@1@'.format(chosen_llvm_version_major + 1, chosen_llvm_version_minor + 1) ]#\" meson.build"
 
-    if version.gsub("-#{CREW_LLVM_VER}", '') == '26.1.2' && ARCH.include?('armv7l')
+    if version.gsub("-#{CREW_LLVM_VER}", '').include?('26.1') && ARCH.include?('armv7l')
       patch = [
         [
           # See https://gitlab.freedesktop.org/mesa/mesa/-/work_items/15553
