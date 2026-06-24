@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Libnvme < Meson
   description 'C Library for NVM Express on Linux'
   homepage 'https://github.com/linux-nvme/libnvme'
-  version '1.16.1'
+  version '1.16.2'
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://github.com/linux-nvme/libnvme.git'
