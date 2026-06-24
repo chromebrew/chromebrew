@@ -3,18 +3,18 @@ require 'buildsystems/cmake'
 class Libarchive < CMake
   description 'Multi-format archive and compression library.'
   homepage 'https://www.libarchive.org/'
-  version "3.8.7-#{CREW_ICU_VER}"
+  version "3.8.8-#{CREW_ICU_VER}"
   license 'BSD, BSD-2, BSD-4 and public-domain'
   compatibility 'all'
-  source_url "https://www.libarchive.org/downloads/libarchive-#{version.split('-').first}.tar.xz"
-  source_sha256 'd3a8ba457ae25c27c84fd2830a2efdcc5b1d40bf585d4eb0d35f47e99e5d4774'
+  source_url 'https://github.com/libarchive/libarchive.git'
+  git_hashtag "v#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '06dc0de7da751898b5b6da0325de779c1077b5fdf13ef8daf9fff89178f4e292',
-     armv7l: '06dc0de7da751898b5b6da0325de779c1077b5fdf13ef8daf9fff89178f4e292',
-       i686: '295e8d2b146f1ca8ed1e48d8979c153b710fa83c6f5af197b053af46a405796e',
-     x86_64: 'a4faa2cc8f9f3b6590d765a001c5bd04bf738ddef65281018cbf5a7835c91eaa'
+    aarch64: 'c6e4af9027eb49b2ceda1dda776aade7e81a8cfb0acf3a1795613abb610d1271',
+     armv7l: 'c6e4af9027eb49b2ceda1dda776aade7e81a8cfb0acf3a1795613abb610d1271',
+       i686: 'c7da365ba4cf47729ab799f772e325d98fa99c2fbf49b99036dca6bd49c14271',
+     x86_64: '4a3c77f78e3fa701a98ec4190578e27ff95112719db03be10fbdfff01cb49628'
   })
 
   depends_on 'acl' => :library
@@ -23,6 +23,7 @@ class Libarchive < CMake
   depends_on 'expat' # R
   depends_on 'gcc_lib' => :build
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'icu4c' # R
   depends_on 'libxml2' => :library
   depends_on 'lz4' => :library
