@@ -19,6 +19,7 @@ class Ragel < Autotools
 
   depends_on 'gcc_lib' => :executable
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
 
   autotools_pre_configure_options "CFLAGS+=' -std=gnu++98' CXXFLAGS+=' -std=gnu++98'"
 end
