@@ -10,10 +10,10 @@ class Py3_tox < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'dd92a3f20af53f0ba173ca3e8245c7b075a1fd9da66a1f95de49ea4e95925dea',
-     armv7l: 'dd92a3f20af53f0ba173ca3e8245c7b075a1fd9da66a1f95de49ea4e95925dea',
-       i686: 'e199b73852e54d11cdc8a8c69289c95faec16316c07c107fad8fe54d5b12a626',
-     x86_64: '9204a6b27dea62d5112875a11956e0bc75e9b7b1616a806fa54211af9b745663'
+    aarch64: '4d6a9bd39c3b95a4538b606a28de68b3a1c84103037c96c7f7e21dbbcb95d10d',
+     armv7l: '4d6a9bd39c3b95a4538b606a28de68b3a1c84103037c96c7f7e21dbbcb95d10d',
+       i686: '36a97750505edb99106da0dbc9fe1efff8d9af6a728474f14b55afd3bb5587be',
+     x86_64: '7df4b3b48630c971e9b5ff2afc57c4ae2423352042cdf3ef742ac8591c09fe39'
   })
 
   depends_on 'py3_filelock'
