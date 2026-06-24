@@ -263,7 +263,7 @@ if File.exist?("#{CREW_PREFIX}/bin/upx") && File.exist?("#{CREW_PREFIX}/bin/patc
   # errors on arm.
   # Running find twice because it involves less ruby overhead than saving
   # the output in memory, and also doing that in ruby is VERY SLOW.
-  puts 'Please wait while upx is run to uncompress binaries...'.lightblue unless CREW_UNATTENDED
+  puts 'Please wait while upx is run to uncompress binaries...'.lightblue
   Kernel.system "#{CREW_PREFIX}/bin/find #{CREW_PREFIX}/bin -type f -print0 | xargs -0 -P#{CREW_NPROC} -n1 -r bash -c 'header=$(head -c4 ${0}); elfheader='$(printf '\\\177ELF')' ; arheader=\\!\\<ar ; case $header in $elfheader|$arheader) upx -qq -d ${0} ;; esac'", %i[err] => File::NULL, exception: false
 
   unless CREW_GLIBC_INTERPRETER.blank?
