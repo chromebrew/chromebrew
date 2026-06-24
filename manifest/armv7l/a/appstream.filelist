@@ -1,4 +1,4 @@
-# Total size: 28837344
+# Total size: 29228104
 /usr/local/bin/appstreamcli
 /usr/local/include/appstream-compose/appstream-compose.h
 /usr/local/include/appstream-compose/asc-compose.h
@@ -55,9 +55,9 @@
 /usr/local/lib/girepository-1.0/AppStreamCompose-1.0.typelib
 /usr/local/lib/libappstream-compose.so
 /usr/local/lib/libappstream-compose.so.0
-/usr/local/lib/libappstream-compose.so.1.1.2
+/usr/local/lib/libappstream-compose.so.1.1.3
 /usr/local/lib/libappstream.so
-/usr/local/lib/libappstream.so.1.1.2
+/usr/local/lib/libappstream.so.1.1.3
 /usr/local/lib/libappstream.so.5
 /usr/local/lib/pkgconfig/appstream-compose.pc
 /usr/local/lib/pkgconfig/appstream.pc
@@ -1008,6 +1008,7 @@
 /usr/local/share/doc/appstream/html/compose-api/flags.ImageSaveFlags.html
 /usr/local/share/doc/appstream/html/compose-api/fonts.css
 /usr/local/share/doc/appstream/html/compose-api/func.build_component_global_id.html
+/usr/local/share/doc/appstream/html/compose-api/func.compute_content_checksum_for_data.html
 /usr/local/share/doc/appstream/html/compose-api/func.filename_from_url.html
 /usr/local/share/doc/appstream/html/compose-api/func.globals_add_hint_tag.html
 /usr/local/share/doc/appstream/html/compose-api/func.globals_clear.html
@@ -1228,6 +1229,7 @@
 /usr/local/share/gtk-doc/html/appstream-compose/flags.ImageSaveFlags.html
 /usr/local/share/gtk-doc/html/appstream-compose/fonts.css
 /usr/local/share/gtk-doc/html/appstream-compose/func.build_component_global_id.html
+/usr/local/share/gtk-doc/html/appstream-compose/func.compute_content_checksum_for_data.html
 /usr/local/share/gtk-doc/html/appstream-compose/func.filename_from_url.html
 /usr/local/share/gtk-doc/html/appstream-compose/func.globals_add_hint_tag.html
 /usr/local/share/gtk-doc/html/appstream-compose/func.globals_clear.html
@@ -2291,6 +2293,7 @@
 /usr/local/share/locale/it/LC_MESSAGES/appstream.mo
 /usr/local/share/locale/ja/LC_MESSAGES/appstream.mo
 /usr/local/share/locale/ka/LC_MESSAGES/appstream.mo
+/usr/local/share/locale/kk/LC_MESSAGES/appstream.mo
 /usr/local/share/locale/ko/LC_MESSAGES/appstream.mo
 /usr/local/share/locale/kw/LC_MESSAGES/appstream.mo
 /usr/local/share/locale/lt/LC_MESSAGES/appstream.mo

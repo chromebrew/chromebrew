@@ -1,12 +1,9 @@
-# Adapted from Arch Linux appstream PKGBUILD at:
-# https://github.com/archlinux/svntogit-packages/raw/packages/appstream/trunk/PKGBUILD
-
 require 'buildsystems/meson'
 
 class Appstream < Meson
   description 'Provides a standard for creating app stores across distributions'
   homepage 'https://www.freedesktop.org/wiki/Distributions/AppStream/'
-  version '1.1.2'
+  version '1.1.3'
   license 'GPL'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/ximion/appstream.git'
@@ -14,40 +11,37 @@ class Appstream < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'dee51c1b27694ff7d25e4bfcf989086f695b7e3768eb79e1bf5efa0231904bfd',
-     armv7l: 'dee51c1b27694ff7d25e4bfcf989086f695b7e3768eb79e1bf5efa0231904bfd',
-     x86_64: '427e4bfd8fb8b29503dd42641c023a694e96ba86fdf6af366995479e1f99cfdc'
+    aarch64: '1468356552fe80bc4e6c0bb27281522027ba9a4a8a3a52a7b832931d5e5c7c10',
+     armv7l: '1468356552fe80bc4e6c0bb27281522027ba9a4a8a3a52a7b832931d5e5c7c10',
+     x86_64: 'ed8e2f310795dabf2ab970aa131970e1814a68143079790770d767f4780d5883'
   })
 
-  # depends_on 'libadwaita' # R
-  # depends_on 'libfyaml' # R
-  depends_on 'cairo' # R
-  depends_on 'curl' # R
-  depends_on 'fontconfig' # R
-  depends_on 'freetype' # R
-  depends_on 'gdk_pixbuf' # R
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
+  depends_on 'cairo' => :library
+  depends_on 'curl' => :library
+  depends_on 'fontconfig' => :library
+  depends_on 'freetype' => :library
+  depends_on 'gdk_pixbuf' => :library
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gobject_introspection' => :build
   depends_on 'gperf' => :build
   depends_on 'gtk_doc' => :build
   depends_on 'harfbuzz' # R
-  depends_on 'libfyaml' # R
-  depends_on 'librsvg' # R
-  depends_on 'libstemmer' # R
-  depends_on 'libxml2' # R
-  depends_on 'libxmlb' # R
-  depends_on 'pango' # R
+  depends_on 'libfyaml' => :library
+  depends_on 'librsvg' => :library
+  depends_on 'libstemmer' => :library
+  depends_on 'libxml2' => :library
+  depends_on 'libxmlb' => :library
+  depends_on 'pango' => :library
   depends_on 'py3_gi_docgen' => :build
   depends_on 'py3_itstool' => :build
   depends_on 'py3_libxml2' => :build
   depends_on 'vala' => :build
   depends_on 'xmlto' => :build
-  depends_on 'zstd' # R
+  depends_on 'zstd' => :library
 
-  meson_options '-Dcompose=true \
-    -Dsystemd=false \
-    -Dvapi=true'
+  meson_options '-Dcompose=true -Dsystemd=false -Dvapi=true -Dblake3-support=false'
 
   def self.postinstall
     ExitMessage.add "\nType 'appstreamcli --help' to get started.\n"
