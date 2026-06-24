@@ -1,12 +1,12 @@
-# Total size: 406269744
-/usr/local/lib/python3.14/site-packages/oci-2.179.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/oci-2.179.0.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/oci-2.179.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/oci-2.179.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/oci-2.179.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/oci-2.179.0.dist-info/THIRD_PARTY_LICENSES.txt
-/usr/local/lib/python3.14/site-packages/oci-2.179.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/oci-2.179.0.dist-info/top_level.txt
+# Total size: 406388281
+/usr/local/lib/python3.14/site-packages/oci-2.180.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/oci-2.180.0.dist-info/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/oci-2.180.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/oci-2.180.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/oci-2.180.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/oci-2.180.0.dist-info/THIRD_PARTY_LICENSES.txt
+/usr/local/lib/python3.14/site-packages/oci-2.180.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/oci-2.180.0.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/oci/__init__.py
 /usr/local/lib/python3.14/site-packages/oci/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/__pycache__/base_client.cpython-314.pyc
@@ -1819,6 +1819,7 @@
 /usr/local/lib/python3.14/site-packages/oci/apigateway/models/__pycache__/mutual_tls_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/apigateway/models/__pycache__/no_cache.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/apigateway/models/__pycache__/no_content_validation.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/apigateway/models/__pycache__/o_auth2_login_backend.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/apigateway/models/__pycache__/o_auth2_logout_backend.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/apigateway/models/__pycache__/o_auth2_response_validation_failure_policy.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/apigateway/models/__pycache__/oracle_function_backend.cpython-314.pyc
@@ -1980,6 +1981,7 @@
 /usr/local/lib/python3.14/site-packages/oci/apigateway/models/mutual_tls_details.py
 /usr/local/lib/python3.14/site-packages/oci/apigateway/models/no_cache.py
 /usr/local/lib/python3.14/site-packages/oci/apigateway/models/no_content_validation.py
+/usr/local/lib/python3.14/site-packages/oci/apigateway/models/o_auth2_login_backend.py
 /usr/local/lib/python3.14/site-packages/oci/apigateway/models/o_auth2_logout_backend.py
 /usr/local/lib/python3.14/site-packages/oci/apigateway/models/o_auth2_response_validation_failure_policy.py
 /usr/local/lib/python3.14/site-packages/oci/apigateway/models/oracle_function_backend.py
@@ -5676,6 +5678,7 @@
 /usr/local/lib/python3.14/site-packages/oci/container_engine/models/__pycache__/update_workload_mapping_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/container_engine/models/__pycache__/virtual_node.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/container_engine/models/__pycache__/virtual_node_pool.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/container_engine/models/__pycache__/virtual_node_pool_cycling_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/container_engine/models/__pycache__/virtual_node_pool_summary.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/container_engine/models/__pycache__/virtual_node_summary.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/container_engine/models/__pycache__/virtual_node_tags.cpython-314.pyc
@@ -5780,6 +5783,7 @@
 /usr/local/lib/python3.14/site-packages/oci/container_engine/models/update_workload_mapping_details.py
 /usr/local/lib/python3.14/site-packages/oci/container_engine/models/virtual_node.py
 /usr/local/lib/python3.14/site-packages/oci/container_engine/models/virtual_node_pool.py
+/usr/local/lib/python3.14/site-packages/oci/container_engine/models/virtual_node_pool_cycling_details.py
 /usr/local/lib/python3.14/site-packages/oci/container_engine/models/virtual_node_pool_summary.py
 /usr/local/lib/python3.14/site-packages/oci/container_engine/models/virtual_node_summary.py
 /usr/local/lib/python3.14/site-packages/oci/container_engine/models/virtual_node_tags.py
@@ -22734,6 +22738,7 @@
 /usr/local/lib/python3.14/site-packages/oci/integration/models/__pycache__/outbound_connection.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/integration/models/__pycache__/private_endpoint_outbound_connection.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/integration/models/__pycache__/public_endpoint_details.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/integration/models/__pycache__/remove_log_analytics_log_group_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/integration/models/__pycache__/update_custom_endpoint_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/integration/models/__pycache__/update_integration_instance_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/integration/models/__pycache__/virtual_cloud_network.cpython-314.pyc
@@ -22764,6 +22769,7 @@
 /usr/local/lib/python3.14/site-packages/oci/integration/models/outbound_connection.py
 /usr/local/lib/python3.14/site-packages/oci/integration/models/private_endpoint_outbound_connection.py
 /usr/local/lib/python3.14/site-packages/oci/integration/models/public_endpoint_details.py
+/usr/local/lib/python3.14/site-packages/oci/integration/models/remove_log_analytics_log_group_details.py
 /usr/local/lib/python3.14/site-packages/oci/integration/models/update_custom_endpoint_details.py
 /usr/local/lib/python3.14/site-packages/oci/integration/models/update_integration_instance_details.py
 /usr/local/lib/python3.14/site-packages/oci/integration/models/virtual_cloud_network.py
