@@ -23,6 +23,7 @@ class Libarchive < CMake
   depends_on 'expat' # R
   depends_on 'gcc_lib' => :build
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'icu4c' # R
   depends_on 'libxml2' => :library
   depends_on 'lz4' => :library
