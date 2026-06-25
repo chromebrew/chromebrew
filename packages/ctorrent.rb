@@ -1,32 +1,24 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Ctorrent < Package
+class Ctorrent < Autotools
   description 'CTorrent is a BitTorrent client implemented in C++ to be lightweight and quick.'
   homepage 'http://www.rahul.net/dholmes/ctorrent/'
-  @_ver = '3.3.2'
-  version "#{@_ver}-1"
+  version '3.3.2'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'http://www.rahul.net/dholmes/ctorrent/ctorrent-dnh3.3.2.tar.gz'
+  source_url "http://www.rahul.net/dholmes/ctorrent/ctorrent-dnh#{version}.tar.gz"
   source_sha256 'c87366c91475931f75b924119580abd06a7b3cb3f00fef47346552cab1e24863'
-  binary_compression 'tpxz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4f56ef37eccd39f4a2b410feaacd1d2904d789af45e72b3a7bdab3cda30d764e',
-     armv7l: '4f56ef37eccd39f4a2b410feaacd1d2904d789af45e72b3a7bdab3cda30d764e',
-       i686: '9fcf5a83b561500c4ec44dfbcedc0dc3fd51343221ae6a65d8496cb9a8f8b750',
-     x86_64: '74fa2be2160fb2ffa7fe9fa2479d52636be246db4da7955518eed5fc1b7c2959'
+    aarch64: 'c25d9d6a8ce729da7d027c4a491898c6fa0ca3aa9337287bfbfdf24062bbde12',
+     armv7l: 'c25d9d6a8ce729da7d027c4a491898c6fa0ca3aa9337287bfbfdf24062bbde12',
+       i686: '7f40edfe88210f3c48a037a2f362e88fdf5a4efb2f302ee8d579b06965b46ca2',
+     x86_64: '3c536ba324ff003adf26eb3861aad8ce493f9a6f94a6e3b8e0eda385a84bd495'
   })
 
-  def self.build
-    system './configure'
-  end
-
-  def self.check
-    system 'make', 'check'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'openssl' => :executable
 end
