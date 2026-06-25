@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Haveged < Autotools
   description 'A simple entropy daemon based on the HAVEGE algorithm, significantly faster than /dev/urandom.'
   homepage 'https://issihosts.com/haveged/'
-  version '1.9.24'
+  version '1.9.26'
   license 'GPL-3+'
   compatibility 'all'
   source_url 'https://github.com/jirka-h/haveged.git'
