@@ -21,6 +21,7 @@ class Curl < Autotools
   depends_on 'c_ares' => :library
   depends_on 'ca_certificates' => :build
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'libcyrussasl' => :library
   depends_on 'libidn2' => :library
   depends_on 'libnghttp2' => :library
