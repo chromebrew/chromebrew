@@ -105,8 +105,10 @@ class Pip < Package
                      `PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 MAKEFLAGS=-j#{CREW_NPROC} #{@pip_pre_configure_options} python3 -m pip wheel #{'--pre' if prerelease?} -w #{@pip_cache_dir} git+#{source_url}`[/(?<=filename=)(.*)*?(\S+)/, 0]
                    end
       puts "@pip_wheel is #{@pip_wheel}" if CREW_DEBUG
-      FileUtils.install File.join(@pip_cache_dir, @pip_wheel), @pip_cache_dest_dir
-      Kernel.system "python3 -m pip install #{'--pre' if prerelease?} --force-reinstall --upgrade #{File.join(@pip_cache_dir, @pip_wheel)}"
+      unless @pip_wheel.nil?
+        FileUtils.install File.join(@pip_cache_dir, @pip_wheel), @pip_cache_dest_dir
+        Kernel.system "python3 -m pip install #{'--pre' if prerelease?} --force-reinstall --upgrade #{File.join(@pip_cache_dir, @pip_wheel)}"
+      end
       # Check the just-installed package...
       if get_pip_info(@py_pkg)
         puts "Note that #{@py_pkg}==#{@pip_pkg_version} is installed, which is different from the #{@py_pkg_chromebrew_version}. Please update the package file.".lightpurple if @py_pkg_chromebrew_version != @pip_pkg_version
