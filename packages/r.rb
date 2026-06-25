@@ -11,9 +11,9 @@ class R < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6e3c8227268d71e18395f38e0f579df6b79e06ef27ed917defd4c640628078cd',
-     armv7l: '6e3c8227268d71e18395f38e0f579df6b79e06ef27ed917defd4c640628078cd',
-     x86_64: '09effba770bc821d6259fbd6f13e5155bea4de368efb0640104e7dafe6c35751'
+    aarch64: '906338a18a872a2176977aa868d61b1ca145fb737943b00f094e1fbf529a08ba',
+     armv7l: '906338a18a872a2176977aa868d61b1ca145fb737943b00f094e1fbf529a08ba',
+     x86_64: '2975f414d160402a8a5cd1183bfbd4c41c3f2aa159e52d2ff6e5fc29f48beaae'
   })
 
   depends_on 'bzip2' => :library
@@ -22,6 +22,7 @@ class R < Autotools
   depends_on 'gcc_lib' => :library
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'harfbuzz' => :library
   depends_on 'icu4c' => :library
   depends_on 'lapack' => :library
