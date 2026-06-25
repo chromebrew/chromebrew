@@ -23,8 +23,7 @@ class Pkgconf < Meson
 
   conflicts_ok # Conflicts with pkg_config
 
-  meson_options "-Dtests=disabled \
-    -Dwith-system-libdir=#{CREW_LIB_PREFIX} \
+  meson_options "-Dwith-system-libdir=#{CREW_LIB_PREFIX} \
     -Dwith-system-includedir=#{CREW_PREFIX}/include"
 
   meson_install_extras do
