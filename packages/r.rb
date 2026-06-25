@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class R < Autotools
   description 'R is a free software environment for statistical computing and graphics.'
   homepage 'https://www.r-project.org/'
-  version "4.6.0-#{CREW_ICU_VER}"
+  version "4.6.1-#{CREW_ICU_VER}"
   license 'GPL-2 or GPL-3 and LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://cran.r-project.org/src/base/R-4/R-#{version.split('-')[0]}.tar.xz"
-  source_sha256 '91f2b3693fa5252cdea9b62abc84a1c58db5547cb9f0fe3d15f44eef8aff5a27'
+  source_sha256 'e4149581e151f3f1bc5edd6475e24ca1e2f452c08b6a22c29b570ce8abfe5783'
   binary_compression 'tar.zst'
 
   binary_sha256({
