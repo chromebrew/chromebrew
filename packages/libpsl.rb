@@ -18,6 +18,7 @@ class Libpsl < Meson
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'libidn2' => :library
   depends_on 'libunistring' => :library
 
