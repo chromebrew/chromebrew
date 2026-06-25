@@ -18,6 +18,7 @@ class Jq < Autotools
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'oniguruma' => :library
 
   autotools_configure_options "--disable-maintainer-mode \
