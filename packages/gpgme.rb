@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Gpgme < Autotools
   description 'GnuPG Made Easy (GPGME) is a library designed to make access to GnuPG easier for applications.'
   homepage 'https://www.gnupg.org/related_software/gpgme/index.html'
-  version '2.1.0'
+  version '2.1.1'
   license 'GPL-2 and LGPL-2.1'
   compatibility 'all'
   source_url "https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-#{version}.tar.bz2"
-  source_sha256 '841c5ea53fc26259f4fbf0e8bde982dea1b8a1ca0cb77e681c82b050566bf92b'
+  source_sha256 '6d7ee12b209d7dce75468db53f72a90e1ad3d21f4c304ef2c002612a52f5333a'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '862bf548f985881713c690b46cca6178d0b4a10f94c863d0b738f344c6df53d3',
-     armv7l: '862bf548f985881713c690b46cca6178d0b4a10f94c863d0b738f344c6df53d3',
-       i686: '9e5ad96650d775cfd6d2d67b234119da60af76e93110e6370ad72cc38c417145',
-     x86_64: 'ac257a9d9b0086fdbaa0bc50d21a83cae171983821c76d1e12ffd4090600e3d1'
+    aarch64: '84e8200efddd29c6737477b5507fdefb931932e58503f3140cd2a3b0904b9373',
+     armv7l: '84e8200efddd29c6737477b5507fdefb931932e58503f3140cd2a3b0904b9373',
+       i686: '4d9695fe62577326a933b5d2e56af21cd773ebbe0276d36e9bf03ed0c2d534db',
+     x86_64: '3f71e5c09a037877099d96d1f395dc8573ad9faffcc949f93e7d7ebdeb38a8b1'
   })
 
   depends_on 'gcc_lib' => :library

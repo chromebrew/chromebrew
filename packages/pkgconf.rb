@@ -3,19 +3,19 @@ require 'buildsystems/meson'
 class Pkgconf < Meson
   description 'Package compiler and linker metadata toolkit'
   homepage 'https://github.com/pkgconf/pkgconf'
-  version '2.9.90'
+  version '2.9.93'
   license 'ISC'
   compatibility 'all'
   source_url 'https://github.com/pkgconf/pkgconf.git'
   git_hashtag "pkgconf-#{version}"
-  source_sha256 'dcc3ff791054c7f856be123e6ebc6b04267a8d4470176f3a937a71f31c272218'
+  source_sha256 'b42b2c122d554630e211e9128e7505fd286febabdab89ae76f6a3bd42753e061'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a10f2d2cd22526665ed97c46afe7b4122d223969f7378594f06ce532c26ea269',
-     armv7l: 'a10f2d2cd22526665ed97c46afe7b4122d223969f7378594f06ce532c26ea269',
-       i686: '1ee679cd1159a2e7ff6b02fb1445751be8cbb11068a75b0cb745fdae53f5eba6',
-     x86_64: '6f6bc458f2643c0b56d69a2e97e0c0e880cf12eb22f5cb61785bb8f9f735e6d2'
+    aarch64: '8453e0b832d7df77212a9ba77d7d79a7b2d836206ea22f32a44b07f0302bc381',
+     armv7l: '8453e0b832d7df77212a9ba77d7d79a7b2d836206ea22f32a44b07f0302bc381',
+       i686: '686a6e5308ea63b0185e4b66a14b527d67275e3d49655b5bb8cf53e599f496fa',
+     x86_64: '17c1316366dbeda1f74c613d730d1e11043b6e93058ab4cebde12c36b3cbdf4d'
   })
 
   depends_on 'gcc_lib' # R
