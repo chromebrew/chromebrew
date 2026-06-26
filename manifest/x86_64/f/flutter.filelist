@@ -1,4 +1,4 @@
-# Total size: 2527876914
+# Total size: 2528581078
 /home/chronos/user/.flutter_tool_state
 /usr/local/bin/dart
 /usr/local/bin/flutter
@@ -40,9 +40,9 @@
 /usr/local/share/flutter/.git/logs/refs/remotes/origin/HEAD
 /usr/local/share/flutter/.git/objects/info/commit-graph
 /usr/local/share/flutter/.git/objects/info/packs
-/usr/local/share/flutter/.git/objects/pack/pack-78ae7fe5d9ea0a5842cbcfa90abd68e918ab1907.idx
-/usr/local/share/flutter/.git/objects/pack/pack-78ae7fe5d9ea0a5842cbcfa90abd68e918ab1907.pack
-/usr/local/share/flutter/.git/objects/pack/pack-78ae7fe5d9ea0a5842cbcfa90abd68e918ab1907.rev
+/usr/local/share/flutter/.git/objects/pack/pack-25830c62ae5627b7f382674aed91ea6eb64bb302.idx
+/usr/local/share/flutter/.git/objects/pack/pack-25830c62ae5627b7f382674aed91ea6eb64bb302.pack
+/usr/local/share/flutter/.git/objects/pack/pack-25830c62ae5627b7f382674aed91ea6eb64bb302.rev
 /usr/local/share/flutter/.git/packed-refs
 /usr/local/share/flutter/.git/refs/remotes/origin/HEAD
 /usr/local/share/flutter/.gitattributes
@@ -221,6 +221,7 @@
 /usr/local/share/flutter/.pub-preload-cache/path_provider_android-2.3.1.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/path_provider_foundation-2.6.0.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/path_provider_linux-2.2.1.tar.gz
+/usr/local/share/flutter/.pub-preload-cache/path_provider_linux-2.2.2.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/path_provider_platform_interface-2.1.2.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/path_provider_platform_interface-2.1.3.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/path_provider_windows-2.3.0.tar.gz
@@ -10980,43 +10981,43 @@
 /usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/StatusBarTest.h
 /usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/StatusBarTest.m
 /usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/UnobstructedPlatformViewTests.m
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_bogus_font_text_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_darwin_system_font_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_non_full_screen_flutter_view_platform_view_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_clippath_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_clippath_multiple_clips_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_clippath_with_transform_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_clippath_with_transform_multiple_clips_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_cliprect_after_moved_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_cliprect_after_moved_multiple_clips_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_cliprect_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_cliprect_multiple_clips_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_cliprect_with_transform_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_cliprect_with_transform_multiple_clips_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_cliprrect_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_cliprrect_multiple_clips_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_cliprrect_with_transform_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_cliprrect_with_transform_multiple_clips_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_large_cliprrect_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_large_cliprrect_multiple_clips_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_large_cliprrect_with_transform_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_large_cliprrect_with_transform_multiple_clips_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_multiple_background_foreground_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_multiple_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_opacity_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_rotate_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_transform_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_with_negative_backdrop_filter_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_with_other_backdrop_filter_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_spawn_engine_works_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_two_platform_view_clip_path_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_two_platform_view_clip_path_multiple_clips_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_two_platform_view_clip_rect_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_two_platform_view_clip_rect_multiple_clips_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_two_platform_view_clip_rrect_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_two_platform_view_clip_rrect_multiple_clips_impeller_iPhone SE (3rd generation)_18.2_simulator.png
-/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_two_platform_views_with_other_backdrop_filter_impeller_iPhone SE (3rd generation)_18.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_bogus_font_text_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_darwin_system_font_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_non_full_screen_flutter_view_platform_view_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_clippath_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_clippath_multiple_clips_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_clippath_with_transform_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_clippath_with_transform_multiple_clips_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_cliprect_after_moved_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_cliprect_after_moved_multiple_clips_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_cliprect_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_cliprect_multiple_clips_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_cliprect_with_transform_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_cliprect_with_transform_multiple_clips_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_cliprrect_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_cliprrect_multiple_clips_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_cliprrect_with_transform_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_cliprrect_with_transform_multiple_clips_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_large_cliprrect_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_large_cliprrect_multiple_clips_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_large_cliprrect_with_transform_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_large_cliprrect_with_transform_multiple_clips_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_multiple_background_foreground_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_multiple_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_opacity_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_rotate_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_transform_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_with_negative_backdrop_filter_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_platform_view_with_other_backdrop_filter_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_spawn_engine_works_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_two_platform_view_clip_path_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_two_platform_view_clip_path_multiple_clips_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_two_platform_view_clip_rect_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_two_platform_view_clip_rect_multiple_clips_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_two_platform_view_clip_rrect_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_two_platform_view_clip_rrect_multiple_clips_impeller_iPhone SE (3rd generation)_26.2_simulator.png
+/usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/golden_two_platform_views_with_other_backdrop_filter_impeller_iPhone SE (3rd generation)_26.2_simulator.png
 /usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/Scenarios/ScenariosUITests/iPadGestureTests.m
 /usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/ios/app_stub.c
 /usr/local/share/flutter/engine/src/flutter/testing/ios_scenario_app/lib/main.dart
