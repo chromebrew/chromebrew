@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gvfs < Meson
   description 'Virtual filesystem implementation for GIO'
   homepage 'https://wiki.gnome.org/Projects/gvfs'
-  version '1.60.0'
+  version '1.61.1'
   license 'GPLv2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gvfs.git'
