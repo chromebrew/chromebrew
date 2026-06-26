@@ -1,32 +1,29 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Mcelog < Package
+class Mcelog < Autotools
   description 'logs and accounts machine checks (in particular memory, IO, and CPU hardware errors) on modern x86 Linux systems.'
   homepage 'https://www.mcelog.org/'
-  version '165'
+  version '210'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://git.kernel.org/pub/scm/utils/cpu/mce/mcelog.git/snapshot/mcelog-165.tar.gz'
-  source_sha256 'a18fdef9cfe2dfaefa09087c616c376a301dc87b1fa14a37476d97370962c668'
-  binary_compression 'tar.xz'
+  source_url "https://git.kernel.org/pub/scm/utils/cpu/mce/mcelog.git/snapshot/mcelog-#{version}.tar.gz"
+  source_sha256 '5760c1b433ca4caccf140d51490e2565d117a684942d9f6b4d79b6209465e11e'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5d9cf717ea6e8f1008b061468130164e14794588d1bf5610d01563cf48182c9b',
-     armv7l: '5d9cf717ea6e8f1008b061468130164e14794588d1bf5610d01563cf48182c9b',
-       i686: '9d5f57770c2189457f402992ef0fa08ccf26d9db677ec725177589ec92b32118',
-     x86_64: 'cbe973fe9210ca821f3bda8e2f0f98249ab8fa4043fcf30fdb7ef5a1c234362b'
+    aarch64: '8be990e99eb8d9e320d464ec947aa3c64cc09cf59e3852d564780b2a004a45a3',
+     armv7l: '8be990e99eb8d9e320d464ec947aa3c64cc09cf59e3852d564780b2a004a45a3',
+       i686: '4f7dc5cda84cd1ac0c4eff7d65ec11a7333f58119553fcb13c5c5af997428908',
+     x86_64: '25b38ae4729a717277a46f738fffc7a37425eb613fcad7ba26dbfc9414404503'
   })
+
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
 
   def self.patch
     system "sed -i 's,prefix := /usr,prefix := #{CREW_PREFIX},' Makefile"
     system "sed -i 's,etcprefix :=,etcprefix := #{CREW_PREFIX},' Makefile"
   end
 
-  def self.build
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  autotools_skip_configure
 end
