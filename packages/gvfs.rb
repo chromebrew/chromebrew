@@ -11,9 +11,9 @@ class Gvfs < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'be34d04edca23dac2a608413a870bfcc9d34b6ebf1f5ce6752a5d9aa7cdcb60d',
-     armv7l: 'be34d04edca23dac2a608413a870bfcc9d34b6ebf1f5ce6752a5d9aa7cdcb60d',
-     x86_64: 'a1c5dd80d8be87511e2b31890fb9597853e3bdacf8c155191806b901082322f6'
+    aarch64: '726a803abcb823dbf895a22947f71665518dce5df5f0a11a71a94e952da97f7f',
+     armv7l: '726a803abcb823dbf895a22947f71665518dce5df5f0a11a71a94e952da97f7f',
+     x86_64: '139750d6f3c6beace5dd3d79850b74c06d0e5cb4d381de96ecb1e4ea9fc88138'
   })
 
   depends_on 'avahi' => :executable
@@ -26,6 +26,7 @@ class Gvfs < Meson
   depends_on 'gcr_4' => :library
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gtk3' => :build
   depends_on 'libarchive' => :executable
   depends_on 'libbluray' => :build

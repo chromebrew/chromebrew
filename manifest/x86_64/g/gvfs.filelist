@@ -1,4 +1,4 @@
-# Total size: 6030128
+# Total size: 5905997
 /usr/local/lib64/gio/modules/libgioremote-volume-monitor.so
 /usr/local/lib64/gio/modules/libgvfsdbus.so
 /usr/local/lib64/gvfs/libgvfscommon.so
@@ -8,9 +8,6 @@
 /usr/local/libexec/gvfsd
 /usr/local/libexec/gvfsd-admin
 /usr/local/libexec/gvfsd-afc
-/usr/local/libexec/gvfsd-afp
-/usr/local/libexec/gvfsd-afp-browse
-/usr/local/libexec/gvfsd-archive
 /usr/local/libexec/gvfsd-cdda
 /usr/local/libexec/gvfsd-computer
 /usr/local/libexec/gvfsd-dav
@@ -41,9 +38,6 @@
 /usr/local/share/glib-2.0/schemas/org.gnome.system.wsdd.gschema.xml
 /usr/local/share/gvfs/mounts/admin.mount
 /usr/local/share/gvfs/mounts/afc.mount
-/usr/local/share/gvfs/mounts/afp-browse.mount
-/usr/local/share/gvfs/mounts/afp.mount
-/usr/local/share/gvfs/mounts/archive.mount
 /usr/local/share/gvfs/mounts/cdda.mount
 /usr/local/share/gvfs/mounts/computer.mount
 /usr/local/share/gvfs/mounts/dav+sd.mount
@@ -109,6 +103,7 @@
 /usr/local/share/locale/kn/LC_MESSAGES/gvfs.mo
 /usr/local/share/locale/ko/LC_MESSAGES/gvfs.mo
 /usr/local/share/locale/ku/LC_MESSAGES/gvfs.mo
+/usr/local/share/locale/lo/LC_MESSAGES/gvfs.mo
 /usr/local/share/locale/lt/LC_MESSAGES/gvfs.mo
 /usr/local/share/locale/lv/LC_MESSAGES/gvfs.mo
 /usr/local/share/locale/mai/LC_MESSAGES/gvfs.mo
