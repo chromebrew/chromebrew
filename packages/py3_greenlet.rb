@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_greenlet < Pip
   description 'Greenlet provides lightweight in-process concurrent programming.'
   homepage 'https://greenlet.readthedocs.io/'
-  version "3.5.2-#{CREW_PY_VER}"
+  version "3.5.3-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9856d9efef75cc48d82046c8703193223d9963bf7a0255400843659080513c6c',
-     armv7l: '9856d9efef75cc48d82046c8703193223d9963bf7a0255400843659080513c6c',
-       i686: 'ab25ea9cf6b6d9baf745680b6717f0b73343d9c6b327baf80a272ab6621a3c3f',
-     x86_64: '205218d946298c4687ec6d482b5a1c2028f848afc5740226704b97e69b86a6c5'
+    aarch64: 'a3933e7f552fa9d4f4d2c07cd450a0ecfafdc983d515b5cf47bac786a50c7ed3',
+     armv7l: 'a3933e7f552fa9d4f4d2c07cd450a0ecfafdc983d515b5cf47bac786a50c7ed3',
+       i686: '5fbf4df0c8461370fbdd25a2521db009948c435dc3f1a909b56a0fc464043de1',
+     x86_64: '5d9d810f9c3c69c6b7274bdcf190833b2bc81a7ae0793169bc53b7a1b934878c'
   })
 
   depends_on 'gcc_lib' => :library
