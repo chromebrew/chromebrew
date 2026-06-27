@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Libgedit_gtksourceview < Meson
   description 'Gedit Technology - Source code editing widget'
   homepage 'https://gedit-text-editor.org'
-  version '299.7.0'
+  version '299.7.1'
   license 'LGPL2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/World/gedit/libgedit-gtksourceview.git'
