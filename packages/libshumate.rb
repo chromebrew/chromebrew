@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Libshumate < Meson
   description 'GTK toolkit providing widgets for embedded maps'
   homepage 'https://wiki.gnome.org/Projects/libshumate'
-  version '1.6.1'
+  version '1.6.2'
   license 'LGPL2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/libshumate.git'
@@ -14,9 +14,9 @@ class Libshumate < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '04ff1b6125f8b4893c9f1d2b524001d881721999244ee16b25c5ec8d05afff6f',
-     armv7l: '04ff1b6125f8b4893c9f1d2b524001d881721999244ee16b25c5ec8d05afff6f',
-     x86_64: '032addf69f0a2904243afaf52df1d124c50a74c858156a1e3e07c1c99a801ed3'
+    aarch64: '296b0882693dc756f4aa5882f43a6a7c3c2f1dfd7cbacfa92de2819fe99a1e54',
+     armv7l: '296b0882693dc756f4aa5882f43a6a7c3c2f1dfd7cbacfa92de2819fe99a1e54',
+     x86_64: '74de189043f646facfc058cb07013222adc497a26fdfbdebf46aa228c4b07f55'
   })
 
   depends_on 'cairo' => :library
@@ -24,6 +24,7 @@ class Libshumate < Meson
   depends_on 'gdk_pixbuf' => :library
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gobject_introspection' => :build
   depends_on 'gperf' => :build
   depends_on 'graphene' => :library

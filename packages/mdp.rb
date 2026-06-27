@@ -1,29 +1,26 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Mdp < Package
+class Mdp < Autotools
   description 'A command-line based markdown presentation tool.'
   homepage 'https://github.com/visit1985/mdp'
-  version '1.0.10'
+  version '1.0.18'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://github.com/visit1985/mdp/archive/1.0.10.tar.gz'
-  source_sha256 '7384c1ba32bd8e4b11342570d2144165a60682499b4cb54e50c8eb3164cfabc5'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/visit1985/mdp.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2478dbee17514f83d0340c0ac6eb2ccf957aa000e48a0b0d2c614df523f98315',
-     armv7l: '2478dbee17514f83d0340c0ac6eb2ccf957aa000e48a0b0d2c614df523f98315',
-       i686: 'f3a418a1ab54584b5f6ec1e6ada44075e982c86274edb009ba031199af591984',
-     x86_64: 'a444f58edb9b973d4274e99e31c9e339fe1c88cf0641c55bb7d7f10413f761a4'
+    aarch64: '4e30487f9e37ebc8c5bddc17815e2796789cdfb8a437ef1c4799ed463294f839',
+     armv7l: '4e30487f9e37ebc8c5bddc17815e2796789cdfb8a437ef1c4799ed463294f839',
+       i686: '22b69eb6d4c62a90c545ad0cebd782a82e1a679241364c0ddf42f0aedac53396',
+     x86_64: '8327b998aae1a770f5debfe963389613bef1496650cc5516963bf503ab1a439b'
   })
 
-  depends_on 'ncurses'
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'ncurses' => :executable
 
-  def self.build
-    system "CPPFLAGS=-I#{CREW_PREFIX}/include/ncursesw PREFIX=#{CREW_PREFIX} make"
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  autotools_skip_configure
+  autotools_pre_make_options "CPPFLAGS='-I#{CREW_PREFIX}/include/ncursesw'"
 end

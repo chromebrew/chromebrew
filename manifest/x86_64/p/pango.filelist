@@ -1,4 +1,4 @@
-# Total size: 2508883
+# Total size: 2538985
 /usr/local/bin/pango-list
 /usr/local/bin/pango-segmentation
 /usr/local/bin/pango-view
@@ -48,16 +48,16 @@
 /usr/local/lib64/girepository-1.0/PangoXft-1.0.typelib
 /usr/local/lib64/libpango-1.0.so
 /usr/local/lib64/libpango-1.0.so.0
-/usr/local/lib64/libpango-1.0.so.0.5701.0
+/usr/local/lib64/libpango-1.0.so.0.5800.0
 /usr/local/lib64/libpangocairo-1.0.so
 /usr/local/lib64/libpangocairo-1.0.so.0
-/usr/local/lib64/libpangocairo-1.0.so.0.5701.0
+/usr/local/lib64/libpangocairo-1.0.so.0.5800.0
 /usr/local/lib64/libpangoft2-1.0.so
 /usr/local/lib64/libpangoft2-1.0.so.0
-/usr/local/lib64/libpangoft2-1.0.so.0.5701.0
+/usr/local/lib64/libpangoft2-1.0.so.0.5800.0
 /usr/local/lib64/libpangoxft-1.0.so
 /usr/local/lib64/libpangoxft-1.0.so.0
-/usr/local/lib64/libpangoxft-1.0.so.0.5701.0
+/usr/local/lib64/libpangoxft-1.0.so.0.5800.0
 /usr/local/lib64/pkgconfig/pango.pc
 /usr/local/lib64/pkgconfig/pangocairo.pc
 /usr/local/lib64/pkgconfig/pangofc.pc
