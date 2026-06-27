@@ -1,4 +1,4 @@
-# Total size: 240103736
+# Total size: 264150031
 /usr/local/bin/mupdf-gl
 /usr/local/bin/mupdf-x11
 /usr/local/bin/mutool
@@ -34,6 +34,7 @@
 /usr/local/include/mupdf/fitz/json.h
 /usr/local/include/mupdf/fitz/link.h
 /usr/local/include/mupdf/fitz/log.h
+/usr/local/include/mupdf/fitz/options.h
 /usr/local/include/mupdf/fitz/outline.h
 /usr/local/include/mupdf/fitz/output-svg.h
 /usr/local/include/mupdf/fitz/output.h
