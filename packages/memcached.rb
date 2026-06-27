@@ -1,32 +1,23 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Memcached < Package
+class Memcached < Autotools
   description 'Memcached is an in-memory key-value store for small chunks of arbitrary data (strings, objects) from results of database calls, API calls, or page rendering.'
   homepage 'https://memcached.org/'
-  version '1.5.16'
+  version '1.6.42'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://memcached.org/files/memcached-1.5.16.tar.gz'
-  source_sha256 '45a22c890dc1edb27db567fb4c9c25b91bfd578477c08c5fb10dca93cc62cc5a'
-  binary_compression 'tar.xz'
+  source_url "https://memcached.org/files/memcached-#{version}.tar.gz"
+  source_sha256 '50f08b879d4f9d36dea9d905e9eaade15c708e38db7e9a73fc21dc8b45395de7'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c80d5865748c2954b08734ed28dc46b5df20c5a222e73d1205f6a2d574d96aff',
-     armv7l: 'c80d5865748c2954b08734ed28dc46b5df20c5a222e73d1205f6a2d574d96aff',
-       i686: 'f20c7638e5722f37c44b19db3c548a77caa6d8621ca08478e91cbc412af12755',
-     x86_64: 'c98b1daab6080fe48960b2731df7dd141abfbe97f571f9602dcc15bf2308f38d'
+    aarch64: '8c43c4b03228bf00a22d747b861dcd7defe3ee431c1ae32af0b1c9b1d631aea7',
+     armv7l: '8c43c4b03228bf00a22d747b861dcd7defe3ee431c1ae32af0b1c9b1d631aea7',
+       i686: '4ce88154313636ae30bc5ccbaef3cbef877c6e2a03abb3846e751141f0ac5157',
+     x86_64: 'ea6309433b14c016b7395b0d66e13e69bbc9e1919b09c73e8dc028e6a8dde9de'
   })
 
-  depends_on 'libevent'
-
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'libevent' => :executable
 end
