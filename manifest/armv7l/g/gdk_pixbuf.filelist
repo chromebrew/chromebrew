@@ -1,4 +1,4 @@
-# Total size: 3034645
+# Total size: 3065827
 /usr/local/bin/gdk-pixbuf-csource
 /usr/local/bin/gdk-pixbuf-pixdata
 /usr/local/bin/gdk-pixbuf-query-loaders
@@ -21,7 +21,7 @@
 /usr/local/lib/girepository-1.0/GdkPixdata-2.0.typelib
 /usr/local/lib/libgdk_pixbuf-2.0.so
 /usr/local/lib/libgdk_pixbuf-2.0.so.0
-/usr/local/lib/libgdk_pixbuf-2.0.so.0.4400.6
+/usr/local/lib/libgdk_pixbuf-2.0.so.0.4400.7
 /usr/local/lib/pkgconfig/gdk-pixbuf-2.0.pc
 /usr/local/share/gir-1.0/GdkPixbuf-2.0.gir
 /usr/local/share/gir-1.0/GdkPixdata-2.0.gir
@@ -82,6 +82,7 @@
 /usr/local/share/locale/ko/LC_MESSAGES/gdk-pixbuf.mo
 /usr/local/share/locale/ku/LC_MESSAGES/gdk-pixbuf.mo
 /usr/local/share/locale/li/LC_MESSAGES/gdk-pixbuf.mo
+/usr/local/share/locale/lo/LC_MESSAGES/gdk-pixbuf.mo
 /usr/local/share/locale/lt/LC_MESSAGES/gdk-pixbuf.mo
 /usr/local/share/locale/lv/LC_MESSAGES/gdk-pixbuf.mo
 /usr/local/share/locale/mai/LC_MESSAGES/gdk-pixbuf.mo
