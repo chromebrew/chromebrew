@@ -5,7 +5,7 @@ require_relative '../report_buildsystem_methods'
 
 class Autotools < Package
   boolean_property :autotools_make_j1, :autotools_skip_configure
-  property :autotools_build_relative_dir, :autotools_configure_options, :autotools_configure_modifications, :autotools_install_options, :autotools_pre_configure_options, :autotools_build_extras, :autotools_install_extras, :autotools_pre_make_options
+  property :autotools_build_relative_dir, :autotools_configure_options, :autotools_configure_modifications, :autotools_install_options, :autotools_pre_configure_options, :autotools_build_extras, :autotools_install_extras, :autotools_pre_make_options, :autotools_make_options
 
   def self.prebuild_config_and_report
     @autotools_build_relative_dir ||= '.'
@@ -37,9 +37,9 @@ class Autotools < Package
 
       # Add "-j#" argument to "make" at compile-time, if necessary.
       if @autotools_make_j1
-        system "#{@autotools_pre_make_options} make -j1"
+        system "#{@autotools_pre_make_options} make -j1 #{@autotools_make_options}"
       else
-        system "#{@autotools_pre_make_options} make -j#{CREW_NPROC}"
+        system "#{@autotools_pre_make_options} make -j#{CREW_NPROC} #{@autotools_make_options}"
       end
 
       @autotools_build_extras&.call

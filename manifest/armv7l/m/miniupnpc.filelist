@@ -1,4 +1,9 @@
-# Total size: 168867
+# Total size: 447371
+/usr/local/bin/external-ip.sh
+/usr/local/bin/upnp-listdevices-shared
+/usr/local/bin/upnp-listdevices-static
+/usr/local/bin/upnpc-shared
+/usr/local/bin/upnpc-static
 /usr/local/include/miniupnpc/igd_desc_parse.h
 /usr/local/include/miniupnpc/miniupnpc.h
 /usr/local/include/miniupnpc/miniupnpc_declspec.h
@@ -9,7 +14,15 @@
 /usr/local/include/miniupnpc/upnpdev.h
 /usr/local/include/miniupnpc/upnperrors.h
 /usr/local/include/miniupnpc/upnpreplyparse.h
+/usr/local/lib/cmake/miniupnpc/libminiupnpc-shared-release.cmake
+/usr/local/lib/cmake/miniupnpc/libminiupnpc-shared.cmake
+/usr/local/lib/cmake/miniupnpc/libminiupnpc-static-release.cmake
+/usr/local/lib/cmake/miniupnpc/libminiupnpc-static.cmake
+/usr/local/lib/cmake/miniupnpc/miniupnpc-config.cmake
+/usr/local/lib/cmake/miniupnpc/miniupnpc-private.cmake
 /usr/local/lib/libminiupnpc.a
 /usr/local/lib/libminiupnpc.so
-/usr/local/lib/libminiupnpc.so.17
-/usr/local/lib/libminiupnpc.so.2.1
+/usr/local/lib/libminiupnpc.so.2.3.3
+/usr/local/lib/libminiupnpc.so.21
+/usr/local/lib/pkgconfig/miniupnpc.pc
+/usr/local/share/man/man3/miniupnpc.3.zst
