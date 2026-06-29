@@ -200,7 +200,7 @@ def cache_build(extract_dir)
   puts "build_cachefile is #{build_cachefile}"
   if (@pkg.cache_build? || CREW_CACHE_BUILD) && File.writable?(CREW_CACHE_DIR)
     puts 'Caching build dir...'
-    pkg_build_dirname_absolute = File.join(CREW_BREW_DIR, extract_dir)
+    pkg_build_dirname_absolute = extract_dir
     pkg_build_dirname = File.basename(pkg_build_dirname_absolute)
     Dir.chdir pkg_build_dirname_absolute do
       # Do not use --exclude-vcs w/ tar to exclude .git
