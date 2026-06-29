@@ -3,42 +3,40 @@ require 'package'
 class Mksh < Package
   description 'The MirBSD Korn Shell'
   homepage 'https://www.mirbsd.org/mksh.htm'
-  version '0.57'
+  version '59c'
   license 'BSD'
   compatibility 'all'
-  source_url 'http://www.mirbsd.org/MirOS/dist/mir/mksh/mksh-R57.tgz'
-  source_sha256 '3d101154182d52ae54ef26e1360c95bc89c929d28859d378cc1c84f3439dbe75'
-  binary_compression 'tar.xz'
+  source_url "http://www.mirbsd.org/MirOS/dist/mir/mksh/mksh-R#{version}.tgz"
+  source_sha256 '77ae1665a337f1c48c61d6b961db3e52119b38e58884d1c89684af31f87bc506'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ff71eee5a37906009ec8252e0b09400ea0acbf7519152ba34634baa59621f0a2',
-     armv7l: 'ff71eee5a37906009ec8252e0b09400ea0acbf7519152ba34634baa59621f0a2',
-       i686: 'b167da443ab2319501e45c0bb793b5fc75552a8749d4d28b31e46390689766d3',
-     x86_64: '41f2613566cb9fb9a024eebff88ac61e2f47301c434f58bc217ff03443267e4b'
+    aarch64: 'f4dff577f5bac92f1bbc778690e32b2dc3f2ef870d0dd1f707e35101c6b4840c',
+     armv7l: 'f4dff577f5bac92f1bbc778690e32b2dc3f2ef870d0dd1f707e35101c6b4840c',
+       i686: '8503c38d4c0c3fe811980eefacb8cfac0f891f48c592c0b6c257b7a9755acfae',
+     x86_64: '5c9309e81b77459c34c9bd5e0582e9cc4303e56d8a88f8e56ef29897870bd4ee'
   })
+
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
 
   def self.build
     system 'sh Build.sh'
   end
 
-  def self.check
-    #    system 'sh test.sh'
-  end
-
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    system "install -c -s -m 555 mksh #{CREW_DEST_PREFIX}/bin/mksh"
+    FileUtils.install 'mksh', "#{CREW_DEST_PREFIX}/bin/mksh", mode: 0o755
     #    Can't perform this step unless the filesystem is mounted as RW:
     #    system 'grep -x /bin/mksh /etc/shells >/dev/null || echo /bin/mksh >>/etc/shells'
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/doc/mksh/examples"
-    system "install -c -m 444 dot.mkshrc #{CREW_DEST_PREFIX}/share/doc/mksh/examples/"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/man/man1"
-    system "install -c -m 444 lksh.1 mksh.1 #{CREW_DEST_PREFIX}/share/man/man1/"
+    FileUtils.install 'dot.mkshrc', "#{CREW_DEST_PREFIX}/share/doc/mksh/examples/dot.mkshrc", mode: 0o644
+    FileUtils.install %w[lksh.1 mksh.1], "#{CREW_DEST_MAN_PREFIX}/man1/", mode: 0o644
   end
 
   def self.postinstall
-    puts 'Please note: mksh cannot be set as the default shell in Chrome OS, as by default /etc'.lightgreen
-    puts 'is mounted as read-only, so mksh cannot be added to the list of valid login shells in /etc/shells.'.lightgreen
-    puts "For an example ~/.mkshrc file, copy #{CREW_PREFIX}/share/doc/mksh/examples/dot.mkshrc to #{HOME}/.mkshrc".lightblue
+    ExitMessage.add <<~EOM
+      Please note: mksh cannot be set as the default shell in Chrome OS, as by default /etc
+      is mounted read-only, so mksh cannot be added to the list of valid login shells in /etc/shells.
+      For an example ~/.mkshrc file, copy #{CREW_PREFIX}/share/doc/mksh/examples/dot.mkshrc to #{HOME}/.mkshrc
+    EOM
   end
 end
