@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_wakeonlan < Pip
   description 'A small python module for wake on lan.'
   homepage 'https://pywakeonlan.readthedocs.io/en/latest/'
-  version "3.3.0-#{CREW_PY_VER}"
+  version "4.0.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
