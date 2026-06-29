@@ -85,63 +85,16 @@ class Command
       when /\.zip$/i, /\.(tar(\.(gz|bz2|xz|lzma|lz|zst))?|tgz|tbz|tpxz|txz)$/i, /\.deb$/i, /\.AppImage$/i, /\.gem$/i
         # Recall file from cache if requested
         if CREW_CACHE_ENABLED || CREW_CACHE_BUILD || pkg.cache_build?
-          puts "Looking for #{pkg.name} archive in cache".orange if verbose
-          # Privilege CREW_LOCAL_BUILD_DIR over CREW_CACHE_DIR.
-          local_build_cachefile = File.join(CREW_LOCAL_BUILD_DIR, filename)
-          crew_cache_dir_cachefile = File.join(CREW_CACHE_DIR, filename)
-          cachefile = File.file?(local_build_cachefile) ? local_build_cachefile : crew_cache_dir_cachefile
-          # puts "Using #{pkg.name} archive from the build cache at #{cachefile}; The checksum will not be checked against the package file.".orange if cachefile.include?(CREW_LOCAL_BUILD_DIR)
-          puts "Using #{pkg.name} archive from the build cache at #{cachefile}".orange
-          if File.file?(cachefile)
-            puts "#{pkg.name.capitalize} archive file exists in cache".lightgreen if verbose
-            # Don't validate checksum if file is in the local build cache.
-            if cachefile.include?(CREW_LOCAL_BUILD_DIR) || cachefile.include?(CREW_CACHE_DIR)
-              sha256sum = 'SKIP'
-            else
-              calc_sha256sum = `sha256sum #{cachefile}`.chomp.split.first
-            end
-            if sha256sum =~ /^SKIP$/i || calc_sha256sum == sha256sum
-              begin
-                # Hard link cached file if possible.
-                FileUtils.ln cachefile, CREW_BREW_DIR, force: true, verbose: verbose unless File.identical?(cachefile, "#{CREW_BREW_DIR}/#{filename}")
-                puts 'Archive hard linked from cache'.green if verbose
-              rescue StandardError
-                # Copy cached file if hard link fails.
-                FileUtils.cp cachefile, CREW_BREW_DIR, verbose: verbose unless File.identical?(cachefile, "#{CREW_BREW_DIR}/#{filename}")
-                puts 'Archive copied from cache'.green if verbose
-              end
-              puts 'Archive found in cache'.lightgreen
-              unless caller.grep(/download_command/).empty?
-                puts 'Downloaded to: '.lightblue + File.join(CREW_BREW_DIR, filename).blue
-                FileUtils.rm_rf extract_dir
-              end
-              return { source:, filename:, extract_dir: }
-            else
-              puts 'Cached archive checksum mismatch. 😔 Will download.'.lightred
-              cachefile = ''
-            end
-          else
-            puts "Cannot find cached archive at #{cachefile}. 😔 Will download.".orange
-            cachefile = ''
-          end
+          outcome = cached_download(pkg, source, filename, extract_dir, verbose: verbose)
+          return outcome if outcome
         end
         # Download file if not cached.
         downloader url, sha256sum, filename, verbose: verbose
 
         puts "#{pkg.name.capitalize} archive downloaded.".lightgreen
-        # Stow file in cache if requested, if file is not from cache,
-        # and cache is writable.
-        if CREW_CACHE_ENABLED && cachefile.to_s.empty? && File.writable?(CREW_CACHE_DIR)
-          begin
-            # Hard link to cache if possible.
-            FileUtils.ln filename, CREW_CACHE_DIR, verbose: verbose
-            puts 'Archive hard linked to cache'.green if verbose
-          rescue StandardError
-            # Copy to cache if hard link fails.
-            FileUtils.cp filename, CREW_CACHE_DIR, verbose: verbose
-            puts 'Archive copied to cache'.green if verbose
-          end
-        end
+        # Stow file in cache if requested, if file is not from cache, and cache is writable.
+        cache_downloaded_file(filename, verbose: verbose) if CREW_CACHE_ENABLED && cachefile.to_s.empty? && File.writable?(CREW_CACHE_DIR)
+
         unless caller.grep(/download_command/).empty?
           puts 'Downloaded to: '.lightblue + File.join(CREW_BREW_DIR, filename).blue
           FileUtils.rm_rf extract_dir
@@ -165,38 +118,13 @@ class Command
       if git
         # Recall repository from cache if requested
         if CREW_CACHE_ENABLED
-          # No git branch specified, just a git commit or tag
-          if pkg.git_branch.to_s.empty?
-            abort('No Git branch, commit, or tag specified!').lightred if pkg.git_hashtag.to_s.empty?
-            cachefile = File.join(CREW_CACHE_DIR, "#{filename}#{pkg.git_hashtag.gsub('/', '_')}.tar.zst")
-          # Git branch and git commit specified
-          elsif !pkg.git_hashtag.to_s.empty?
-            cachefile = File.join(CREW_CACHE_DIR, "#{filename}#{pkg.git_branch.gsub(/[^0-9A-Za-z.-]/, '_')}_#{pkg.git_hashtag.gsub('/', '_')}.tar.zst")
-          # Git branch specified, without a specific git commit.
+          outcome = cached_git_download(pkg, source, filename, extract_dir, verbose: verbose)
+          # If the outcome is a hash, we're done here and we can return early.
+          if outcome.is_a?(Hash)
+            return outcome
           else
-            # Use to the day granularity for a branch timestamp with no specific commit specified.
-            cachefile = File.join(CREW_CACHE_DIR, "#{filename}#{pkg.git_branch.gsub(/[^0-9A-Za-z.-]/, '_')}#{Time.now.strftime('%m%d%Y')}.tar.zst")
-          end
-          puts "Git cachefile is #{cachefile}".orange if verbose
-          if File.file?(cachefile) && File.file?("#{cachefile}.sha256")
-            while File.file?("#{cachefile}.lock")
-              @cache_wait_timer = 0
-              puts "Waited #{@cache_wait_timer}s for #{cachefile} generation..."
-              sleep 1
-              @cache_wait_timer += 1
-              abort "Cachefile not available after #{@cache_wait_timer} seconds." if @cache_wait_timer > 300
-            end
-            if Dir.chdir CREW_CACHE_DIR do
-              system "sha256sum -c #{cachefile}.sha256"
-            end
-              FileUtils.mkdir_p extract_dir
-              system "tar -Izstd -x#{@verbose}f #{cachefile} -C #{extract_dir}"
-              return { source:, filename:, extract_dir: }
-            else
-              puts 'Cached git repository checksum mismatch. 😔 Will download.'.lightred
-            end
-          else
-            puts 'Cannot find cached git repository. 😔 Will download.'.lightred
+            # Otherwise, there wasn't a cached git repository, but we know where to make one.
+            cachefile = outcome
           end
         end
         # Download via git
@@ -223,26 +151,117 @@ class Command
         # Stow file in cache if requested and cache is writable, except if
         # in Github Actions, since the cached git archive isn't shared
         # between parallel runs.
-        if CREW_CACHE_ENABLED && File.writable?(CREW_CACHE_DIR) && !ENV['NESTED_CI']
-          puts 'Caching downloaded git repo...'
-          Dir.chdir extract_dir do
-            # Do not use --exclude-vcs to exclude .git
-            # because some builds will use that information.
-            @git_cachefile_lockfile = CrewLockfile.new "#{cachefile}.lock"
-            begin
-              @git_cachefile_lockfile.lock
-              system "tar c \
-                $(#{CREW_PREFIX}/bin/find -mindepth 1 -maxdepth 1 -printf '%P\n') | \
-                nice -n 20 zstd -T0 --ultra -20 -o #{cachefile} -"
-            ensure
-              @git_cachefile_lockfile.unlock
-            end
-          end
-          system 'sha256sum', cachefile, out: "#{cachefile}.sha256" if File.file?(cachefile)
-          puts 'Git repo cached.'.lightgreen
-        end
+        cache_downloaded_git_repository(extract_dir, cachefile) if CREW_CACHE_ENABLED && File.writable?(CREW_CACHE_DIR) && !ENV['NESTED_CI']
       end
     end
     return { source:, filename:, extract_dir: }
   end
+end
+
+def cached_download(pkg, source, filename, extract_dir, verbose: false)
+  puts "Looking for #{pkg.name} archive in cache".orange if verbose
+  # Privilege CREW_LOCAL_BUILD_DIR over CREW_CACHE_DIR.
+  local_build_cachefile = File.join(CREW_LOCAL_BUILD_DIR, filename)
+  crew_cache_dir_cachefile = File.join(CREW_CACHE_DIR, filename)
+  cachefile = File.file?(local_build_cachefile) ? local_build_cachefile : crew_cache_dir_cachefile
+  # puts "Using #{pkg.name} archive from the build cache at #{cachefile}; The checksum will not be checked against the package file.".orange if cachefile.include?(CREW_LOCAL_BUILD_DIR)
+  puts "Using #{pkg.name} archive from the build cache at #{cachefile}".orange
+  if File.file?(cachefile)
+    puts "#{pkg.name.capitalize} archive file exists in cache".lightgreen if verbose
+    # Don't validate checksum if file is in the local build cache.
+    if cachefile.include?(CREW_LOCAL_BUILD_DIR) || cachefile.include?(CREW_CACHE_DIR)
+      sha256sum = 'SKIP'
+    else
+      calc_sha256sum = `sha256sum #{cachefile}`.chomp.split.first
+    end
+    if sha256sum =~ /^SKIP$/i || calc_sha256sum == sha256sum
+      begin
+        # Hard link cached file if possible.
+        FileUtils.ln cachefile, CREW_BREW_DIR, force: true, verbose: verbose unless File.identical?(cachefile, "#{CREW_BREW_DIR}/#{filename}")
+        puts 'Archive hard linked from cache'.green if verbose
+      rescue StandardError
+        # Copy cached file if hard link fails.
+        FileUtils.cp cachefile, CREW_BREW_DIR, verbose: verbose unless File.identical?(cachefile, "#{CREW_BREW_DIR}/#{filename}")
+        puts 'Archive copied from cache'.green if verbose
+      end
+      puts 'Archive found in cache'.lightgreen
+      unless caller.grep(/download_command/).empty?
+        puts 'Downloaded to: '.lightblue + File.join(CREW_BREW_DIR, filename).blue
+        FileUtils.rm_rf extract_dir
+      end
+      return { source:, filename:, extract_dir: }
+    else
+      puts 'Cached archive checksum mismatch. 😔 Will download.'.lightred
+      ''
+    end
+  else
+    puts "Cannot find cached archive at #{cachefile}. 😔 Will download.".orange
+    ''
+  end
+end
+
+def cache_downloaded_file(filename, verbose: false)
+  # Hard link to cache if possible.
+  FileUtils.ln filename, CREW_CACHE_DIR, verbose: verbose
+  puts 'Archive hard linked to cache'.green if verbose
+rescue StandardError
+  # Copy to cache if hard link fails.
+  FileUtils.cp filename, CREW_CACHE_DIR, verbose: verbose
+  puts 'Archive copied to cache'.green if verbose
+end
+
+def cached_git_download(pkg, source, filename, extract_dir, verbose: false)
+  # No git branch specified, just a git commit or tag
+  if pkg.git_branch.to_s.empty?
+    abort('No Git branch, commit, or tag specified!').lightred if pkg.git_hashtag.to_s.empty?
+    cachefile = File.join(CREW_CACHE_DIR, "#{filename}#{pkg.git_hashtag.gsub('/', '_')}.tar.zst")
+  # Git branch and git commit specified
+  elsif !pkg.git_hashtag.to_s.empty?
+    cachefile = File.join(CREW_CACHE_DIR, "#{filename}#{pkg.git_branch.gsub(/[^0-9A-Za-z.-]/, '_')}_#{pkg.git_hashtag.gsub('/', '_')}.tar.zst")
+  # Git branch specified, without a specific git commit.
+  else
+    # Use to the day granularity for a branch timestamp with no specific commit specified.
+    cachefile = File.join(CREW_CACHE_DIR, "#{filename}#{pkg.git_branch.gsub(/[^0-9A-Za-z.-]/, '_')}#{Time.now.strftime('%m%d%Y')}.tar.zst")
+  end
+  puts "Git cachefile is #{cachefile}".orange if verbose
+  if File.file?(cachefile) && File.file?("#{cachefile}.sha256")
+    while File.file?("#{cachefile}.lock")
+      cache_wait_timer = 0
+      puts "Waited #{cache_wait_timer}s for #{cachefile} generation..."
+      sleep 1
+      cache_wait_timer += 1
+      abort "Cachefile not available after #{cache_wait_timer} seconds." if cache_wait_timer > 300
+    end
+    if Dir.chdir CREW_CACHE_DIR do
+      system "sha256sum -c #{cachefile}.sha256"
+    end
+      FileUtils.mkdir_p extract_dir
+      system "tar -Izstd -x#{verbose}f #{cachefile} -C #{extract_dir}"
+      return { source:, filename:, extract_dir: }, cachefile
+    else
+      puts 'Cached git repository checksum mismatch. 😔 Will download.'.lightred
+    end
+  else
+    puts 'Cannot find cached git repository. 😔 Will download.'.lightred
+  end
+
+  return cachefile
+end
+
+def cache_downloaded_git_repository(extract_dir, cachefile)
+  puts 'Caching downloaded git repo...'
+  Dir.chdir extract_dir do
+    # Do not use --exclude-vcs to exclude .git because some builds will use that information.
+    git_cachefile_lockfile = CrewLockfile.new "#{cachefile}.lock"
+    begin
+      git_cachefile_lockfile.lock
+      system "tar c \
+        $(#{CREW_PREFIX}/bin/find -mindepth 1 -maxdepth 1 -printf '%P\n') | \
+        nice -n 20 zstd -T0 --ultra -20 -o #{cachefile} -"
+    ensure
+      git_cachefile_lockfile.unlock
+    end
+  end
+  system 'sha256sum', cachefile, out: "#{cachefile}.sha256" if File.file?(cachefile)
+  puts 'Git repo cached.'.lightgreen
 end
