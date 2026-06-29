@@ -3,11 +3,12 @@ require 'buildsystems/cmake'
 class Nethack5 < CMake
   description 'NetHack is a \'roguelike\' game following in the same tradition; the player controls an adventurer delving into a randomly generated dungeon to retrieve the Amulet of Yendor from its depths.'
   homepage 'https://github.com/NetHack/NetHack'
-  version '5.0.0'
+  version '5.0.0-aaf601f'
   license 'nethack'
-  compatibility 'all'
-  source_url 'https://github.com/satmandu/NetHack.git'
-  git_hashtag 'NetHack-5.0'
+  compatibility 'aarch64 armv7l x86_64'
+  source_url 'https://github.com/Nethack/NetHack.git'
+  git_hashtag 'aaf601ffc803d5a2dfd91db17d412146ee756175'
+  # git_hashtag 'NetHack-5.0'
   # git_hashtag 'dfae1f07dde2c49ea808448af18e8ade6cfe9bf1'
   # git_hashtag "NetHack-#{version}_Released"
   binary_compression 'tar.zst'
@@ -15,20 +16,17 @@ class Nethack5 < CMake
   binary_sha256({
     aarch64: '529415a3a9f40bb5c01ef45d0390b1910f554567bee3bdfeaf8d6f90355b31fa',
      armv7l: '529415a3a9f40bb5c01ef45d0390b1910f554567bee3bdfeaf8d6f90355b31fa',
-       i686: 'a62bfdd13a4e4cd8ae81b5fd220d86d93a71f455314bb06b53df3ab2d5e7152e',
      x86_64: '1572c4a2585ceb5b6b19876c7e2cf3cc016e1fe9e0a750e855c8668cee66ba9c'
   })
 
-  unless ARCH.include?('i686')
-    depends_on 'bdftopcf' => :build
-    depends_on 'libx11' => :build
-    depends_on 'libxaw' => :build
-    depends_on 'libxt' => :build
-    depends_on 'mkfontscale' => :build
-    depends_on 'glibc' => :executable
-    depends_on 'ncurses' => :executable
-    depends_on 'util_linux' => :executable
-  end
+  depends_on 'bdftopcf' => :build
+  depends_on 'libx11' => :build
+  depends_on 'libxaw' => :build
+  depends_on 'libxt' => :build
+  depends_on 'mkfontscale' => :build
+  depends_on 'glibc' => :executable
+  depends_on 'ncurses' => :executable
+  depends_on 'util_linux' => :executable
 
   no_env_options
   no_fhs
