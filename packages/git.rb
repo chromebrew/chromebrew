@@ -3,11 +3,11 @@ require 'buildsystems/meson'
 class Git < Meson
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  version '2.54.0'
+  version '2.55.0'
   license 'GPL-2'
   compatibility 'all'
   source_url "https://mirrors.edge.kernel.org/pub/software/scm/git/git-#{version}.tar.xz"
-  source_sha256 'f689162364c10de79ef89aa8dbf48731eb057e34edbbd20aca510ce0154681a3'
+  source_sha256 '457fdb04dc8728e007d4688695e6912e6f680727920f2a40bf11eacc17505357'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -25,6 +25,7 @@ class Git < Meson
   depends_on 'pcre2' => :executable
   depends_on 'py3_asciidoc' => :build
   depends_on 'ruby_asciidoctor' => :build
+  depends_on 'rust' => :build
   depends_on 'xmlto' => :build
   depends_on 'zlib_ng' => :executable
 
@@ -36,7 +37,6 @@ class Git < Meson
         -Dgitattributes=#{CREW_PREFIX}/etc/gitattributes \
         -Dgitconfig=#{CREW_PREFIX}/etc/gitconfig \
         -Dgitweb=disabled \
-        #{'-Drust=disabled' if ARCH == 'armv7l'} \
         -Dsane_tool_path=#{CREW_PREFIX}/bin \
         -Dzlib_backend=zlib-ng"
 
