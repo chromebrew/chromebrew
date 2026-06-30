@@ -21,7 +21,6 @@ class Libtinfo < Package
     # build libncurses
     Dir.mkdir 'ncurses_build'
     Dir.chdir 'ncurses_build' do
-      # system "#{CREW_ENV_OPTIONS} ../configure #{CREW_CONFIGURE_OPTIONS} \
       system "../configure #{CREW_CONFIGURE_OPTIONS} \
           --program-prefix='' \
           --program-suffix='' \
@@ -39,7 +38,6 @@ class Libtinfo < Package
     # build libncursesw
     Dir.mkdir 'ncursesw_build'
     Dir.chdir 'ncursesw_build' do
-      # system "#{CREW_ENV_OPTIONS} ../configure #{CREW_CONFIGURE_OPTIONS} \
       system "../configure #{CREW_CONFIGURE_OPTIONS} \
           --program-prefix='' \
           --program-suffix='' \
@@ -66,7 +64,7 @@ class Libtinfo < Package
     # Save only the libtinfo libraries.
     FileUtils.rm_rf CREW_DEST_PREFIX
     FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
-    FileUtils.mv Dir['ncurses_build/lib/libtinfo.so.5*'], CREW_DEST_LIB_PREFIX
-    FileUtils.mv Dir['ncursesw_build/lib/libtinfow.so.5*'], CREW_DEST_LIB_PREFIX
+    FileUtils.mv Dir["ncurses_build/lib/libtinfo.so.#{version.split('.').first}*"], CREW_DEST_LIB_PREFIX
+    FileUtils.mv Dir["ncursesw_build/lib/libtinfow.so.#{version.split('.').first}*"], CREW_DEST_LIB_PREFIX
   end
 end
