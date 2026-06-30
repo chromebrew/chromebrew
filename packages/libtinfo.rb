@@ -11,11 +11,13 @@ class Libtinfo < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4cd214446b4d34eb7c00166986e746c8cc84b123d8cb3bbff61d486384c746f2',
-     armv7l: '4cd214446b4d34eb7c00166986e746c8cc84b123d8cb3bbff61d486384c746f2',
-       i686: '1391890981de5c9b70cc86e8ac3e0b87076ea6cdf7a73c89e3b5aa3c8500a67d',
-     x86_64: '9527bba23a9c551e0865996aeedf0d13a87572b8049125cbff24bf2d137e5e23'
+    aarch64: '2e2c0b2caea812593a51bb84b85aeeaee086fd13683c283a24929801bff8f27e',
+     armv7l: '2e2c0b2caea812593a51bb84b85aeeaee086fd13683c283a24929801bff8f27e',
+       i686: '2e27aef81975804ffae62b2703d1ee1da1b5333739ae6d50548c07d90aedfb1e',
+     x86_64: '4d448cd26184abfcf7288da1529ebb517000ea9f4bcfee9c18613d32b02ea356'
   })
+
+  depends_on 'glibc' => :library
 
   conflicts_ok # Has the same files as in ncurses.
 
