@@ -17,6 +17,8 @@ class Libtinfo < Package
      x86_64: '9527bba23a9c551e0865996aeedf0d13a87572b8049125cbff24bf2d137e5e23'
   })
 
+  conflicts_ok # Has the same files as in ncurses.
+
   def self.build
     # build libncurses
     Dir.mkdir 'ncurses_build'
