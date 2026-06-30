@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Arping < Autotools
   description 'ARP Ping'
   homepage 'https://www.habets.pp.se/synscan/programs_arping.html'
-  version '2.28'
+  version '2.29'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/ThomasHabets/arping.git'
