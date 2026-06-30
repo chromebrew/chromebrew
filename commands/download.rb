@@ -241,8 +241,8 @@ def cached_git_download(pkg, source, filename, extract_dir, verbose: false)
       system "sha256sum -c #{cachefile}.sha256"
     end
       FileUtils.mkdir_p extract_dir
-      system "tar -Izstd -x#{verbose}f #{cachefile} -C #{extract_dir}"
-      return { source:, filename:, extract_dir: }, cachefile
+      system "tar -Izstd -x#{'v' if verbose}f #{cachefile} -C #{extract_dir}"
+      return { source:, filename:, extract_dir: }
     else
       puts 'Cached git repository checksum mismatch. 😔 Will download.'.lightred
     end
