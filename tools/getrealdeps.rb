@@ -60,7 +60,7 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
   # Special cases where dependencies should not be automatically added:
   dependency_exceptions = Set[
     { name_regex: 'harfbuzz', exclusion_regex: '(cairo|chafa|fontconfig|freetype)', comments: 'chafa pulls in cairo, which is built internally. fontconfig overwrites parts of harfbuzz, and harfbuzz provides a freetype stub that is overwritten' },
-    { name_regex: 'freerdp', exclusion_regex: 'nethack4', comments: 'We want libjansson.so.4 to be pulled from the jansson package.' },
+    { name_regex: 'freerdp', exclusion_regex: 'nethack5', comments: 'We want libjansson.so.4 to be pulled from the jansson package.' },
     { name_regex: 'llvm.*_build', exclusion_regex: 'llvm.*_*', comments: 'created from the llvm build package.' },
     { name_regex: '(llvm.*_dev|llvm.*_lib|libclc|openmp)', exclusion_regex: 'llvm.*_build', comments: 'should only be a build dep.' },
     { name_regex: 'llvm.*_lib', exclusion_regex: 'llvm_lib', comments: 'should only be a build dep.' },
@@ -70,7 +70,7 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
     { name_regex: 'mesa', exclusion_regex: 'libminigbm', comments: 'Conflicts with mesa' },
     { name_regex: 'python3', exclusion_regex: '(tcl|tk)', comments: 'optional for i686, which does not have gui libraries.' },
     { name_regex: 'qt5_base', exclusion_regex: 'mysql', comments: 'Do not want dep for armv7l, since mysql us 64 bit only.' },
-    { name_regex: 'smbclient', exclusion_regex: 'nethack4', comments: 'We want libjansson.so.4 to be pulled from the jansson package.' },
+    { name_regex: 'smbclient', exclusion_regex: 'nethack5', comments: 'We want libjansson.so.4 to be pulled from the jansson package.' },
     { name_regex: 'util_linux', exclusion_regex: 'python3', comments: 'Avoid circular dependency.' }
   ]
 
@@ -235,7 +235,7 @@ def determine_dependencies(pkg_name, pkgfiles_to_check)
   # If two packages both provide a library, use the regular one unless this is the specific package that needs the alternative.
   # TODO: Are there more packages like this?
   pkgdeps = pkgdeps.map { |i| i.gsub('libminigbm', 'mesa') }.uniq
-  pkgdeps = pkgdeps.map { |i| i.gsub('nethack4', 'jansson') }.uniq
+  pkgdeps = pkgdeps.map { |i| i.gsub('nethack5', 'jansson') }.uniq
   pkgdeps = pkgdeps.map { |i| i.gsub('glib_stub', 'glib') }.uniq unless %w[gobject_introspection glib].include?(pkg_name)
   # TODO: Since these packages aren't needed by any specific package, do we need to package them at all?
   pkgdeps = pkgdeps.map { |i| i.gsub('libxml2_autotools', 'libxml2') }.uniq
