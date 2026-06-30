@@ -26,6 +26,7 @@ class Ncurses < Autotools
 
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 
   autotools_configure_options "--program-prefix='' \
           --program-suffix='' \
