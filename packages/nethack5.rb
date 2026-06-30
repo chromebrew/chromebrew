@@ -25,6 +25,7 @@ class Nethack5 < CMake
   depends_on 'libx11' => :build
   depends_on 'libxaw' => :build
   depends_on 'libxt' => :build
+  depends_on 'lua' => :build
   depends_on 'mkfontscale' => :build
   depends_on 'ncurses' => :executable
   depends_on 'util_linux' => :executable
