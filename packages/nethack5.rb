@@ -15,15 +15,17 @@ class Nethack5 < CMake
   binary_sha256({
     aarch64: '529415a3a9f40bb5c01ef45d0390b1910f554567bee3bdfeaf8d6f90355b31fa',
      armv7l: '529415a3a9f40bb5c01ef45d0390b1910f554567bee3bdfeaf8d6f90355b31fa',
+       i686: 'a62bfdd13a4e4cd8ae81b5fd220d86d93a71f455314bb06b53df3ab2d5e7152e',
      x86_64: '1572c4a2585ceb5b6b19876c7e2cf3cc016e1fe9e0a750e855c8668cee66ba9c'
   })
 
   depends_on 'bdftopcf' => :build
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'libx11' => :build
   depends_on 'libxaw' => :build
   depends_on 'libxt' => :build
   depends_on 'mkfontscale' => :build
-  depends_on 'glibc' => :executable
   depends_on 'ncurses' => :executable
   depends_on 'util_linux' => :executable
 
@@ -33,11 +35,11 @@ class Nethack5 < CMake
 
   def self.patch
     patches = [
-     [
-      # Cmake support
-      'https://github.com/NetHack/NetHack/pull/1558.diff',
-      'de0cc3d4cc3a7ecf385e2507061d56de47447b2118dddea54f31f6396362cdb5'
-     ]
+      [
+        # Cmake support
+        'https://github.com/NetHack/NetHack/pull/1558.diff',
+        'de0cc3d4cc3a7ecf385e2507061d56de47447b2118dddea54f31f6396362cdb5'
+      ]
     ]
     ConvenienceFunctions.patch(patches)
     # system 'patch -Np1 -i /output/git/662.diff'
