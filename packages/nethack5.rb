@@ -3,13 +3,15 @@ require 'buildsystems/cmake'
 class Nethack5 < CMake
   description 'NetHack is a \'roguelike\' game following in the same tradition; the player controls an adventurer delving into a randomly generated dungeon to retrieve the Amulet of Yendor from its depths.'
   homepage 'https://github.com/NetHack/NetHack'
-  version '5.0.0'
+  version '5.0.0-64e9cf8'
   license 'nethack'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://github.com/Nethack/NetHack.git'
+  source_url 'https://github.com/mark-z-r/NetHack.git'
+  git_hashtag '64e9cf847cf9ffef2dddf454608c1172553c8bb1'
+  # source_url 'https://github.com/Nethack/NetHack.git'
   # git_hashtag 'NetHack-5.0'
   # git_hashtag 'dfae1f07dde2c49ea808448af18e8ade6cfe9bf1'
-  git_hashtag "NetHack-#{version}_Released"
+  # git_hashtag "NetHack-#{version}_Released"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -30,19 +32,17 @@ class Nethack5 < CMake
   depends_on 'ncurses' => :executable
   depends_on 'util_linux' => :executable
 
-  no_env_options
   no_fhs
-  no_lto
 
   def self.patch
-    patches = [
-      [
-        # Cmake support
-        'https://github.com/NetHack/NetHack/pull/1558.diff',
-        'de0cc3d4cc3a7ecf385e2507061d56de47447b2118dddea54f31f6396362cdb5'
-      ]
-    ]
-    ConvenienceFunctions.patch(patches)
+    # patches = [
+    #  [
+    #    # Cmake support
+    #    'https://github.com/NetHack/NetHack/pull/1558.diff',
+    #    'de0cc3d4cc3a7ecf385e2507061d56de47447b2118dddea54f31f6396362cdb5'
+    #  ]
+    # ]
+    # ConvenienceFunctions.patch(patches)
     # system 'patch -Np1 -i /output/git/662.diff'
     # system "sed -i 's/NetHack VERSION 3.7/NetHack VERSION 5.0/' CMakeLists.txt"
     # system "sed -i 's/LUA_VERSION 5.4.3/LUA_VERSION 5.4.8/' CMakeLists.txt"
