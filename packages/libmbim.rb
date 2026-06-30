@@ -5,7 +5,7 @@ class Libmbim < Meson
   homepage 'https://www.freedesktop.org/wiki/Software/libmbim/'
   version '1.34.0'
   license 'LGPL-2'
-  compatibility 'aarch64 armv7l x86_64'
+  compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/mobile-broadband/libmbim.git'
   git_hashtag version
   binary_compression 'tar.zst'
@@ -13,6 +13,7 @@ class Libmbim < Meson
   binary_sha256({
     aarch64: '19d452828b1fed44a46d364ba0bfc44decc42cc74b4bffefc67c2e8d2db55948',
      armv7l: '19d452828b1fed44a46d364ba0bfc44decc42cc74b4bffefc67c2e8d2db55948',
+       i686: 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii',
      x86_64: '38a1025baa5b644e9a3296e073cc43e7593243a8fdaa220823504a152b537d22'
   })
 
