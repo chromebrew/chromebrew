@@ -3,7 +3,7 @@ require 'package'
 class Starship < Package
   description 'Cross-shell prompt for astronauts'
   homepage 'https://starship.rs'
-  version '1.25.1'
+  version '1.26.0'
   license 'ISC'
   compatibility 'all'
   source_url({
@@ -13,10 +13,10 @@ class Starship < Package
      x86_64: "https://github.com/starship/starship/releases/download/v#{version}/starship-x86_64-unknown-linux-musl.tar.gz"
   })
   source_sha256({
-    aarch64: '1aa14d0142fe6da17b7a50ef4641b0512d144f7b37d9efce883fe20d808165cf',
-     armv7l: '1aa14d0142fe6da17b7a50ef4641b0512d144f7b37d9efce883fe20d808165cf',
-       i686: '2296c004789975ddb3c40e18ad2f565fd9719b1ddaf3b630b4ecfe83445e2625',
-     x86_64: 'c6ddd3ecb9c0071a2ad38d98cee748160066b7c4f197421268058f4a5d6f8504'
+    aarch64: 'c7bd93b1cfb87dd4e531d100b4f87cb77eee9eb2982d9428940bc006db4ab689',
+     armv7l: 'c7bd93b1cfb87dd4e531d100b4f87cb77eee9eb2982d9428940bc006db4ab689',
+       i686: '6a19cd68dcfb945bcc60fbe1931b21fdae5277dcb761cba7582beccdcd5468be',
+     x86_64: 'b7c232b0e8249d8e55a40beb79c5c43a7d370f3f9408bd215deb0170daeaadf3'
   })
 
   no_compile_needed
