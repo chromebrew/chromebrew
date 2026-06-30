@@ -13,7 +13,7 @@ class Libmbim < Meson
   binary_sha256({
     aarch64: '19d452828b1fed44a46d364ba0bfc44decc42cc74b4bffefc67c2e8d2db55948',
      armv7l: '19d452828b1fed44a46d364ba0bfc44decc42cc74b4bffefc67c2e8d2db55948',
-       i686: 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii',
+       i686: 'd0f8ee7188521556d72ba9f3d5d87c522f3aa102e8ebcfee95d04a37df3a0888',
      x86_64: '38a1025baa5b644e9a3296e073cc43e7593243a8fdaa220823504a152b537d22'
   })
 
