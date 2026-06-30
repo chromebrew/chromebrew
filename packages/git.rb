@@ -25,6 +25,7 @@ class Git < Meson
   depends_on 'glibc' => :executable
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :executable
+  depends_on 'glibc_lib' => :library
   depends_on 'openssl' => :executable
   depends_on 'openssl' => :library
   depends_on 'pcre2' => :executable
