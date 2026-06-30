@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Acl < Autotools
   description 'Commands for Manipulating POSIX Access Control Lists.'
   homepage 'https://savannah.nongnu.org/projects/acl'
-  version '2.3.2-1'
+  version '2.4.0'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://git.savannah.gnu.org/git/acl.git'
