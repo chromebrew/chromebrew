@@ -18,6 +18,7 @@ class Libtinfo < Package
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 
   conflicts_ok # Has the same files as in ncurses.
 
