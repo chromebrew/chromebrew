@@ -20,5 +20,6 @@ class Libgudev < Meson
   depends_on 'eudev' => :library
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gobject_introspection' => :build
 end
