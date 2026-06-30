@@ -6,11 +6,15 @@ require 'buildsystems/autotools'
 class Ncurses < Autotools
   description 'The ncurses (new curses) library is a free software emulation of curses in System V Release 4.0 (SVr4), and more. — Wide character'
   homepage 'https://www.gnu.org/software/ncurses/'
-  version '6_5_20250628'
+  version '6.6'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/ThomasDickey/ncurses-snapshots.git'
-  git_hashtag "v#{version}"
+  source_url "https://ftp.gnu.org/gnu/ncurses/ncurses-#{version}.tar.gz"
+  source_sha256 '355b4cbbed880b0381a04c46617b7656e362585d52e9cf84a67e2009b749ff11'
+  # source_url 'https://github.com/ThomasDickey/ncurses-snapshots.git'
+  # git_hashtag "v#{version}"
+  # source_url 'https://github.com/mirror/ncurses.git'
+  # git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
