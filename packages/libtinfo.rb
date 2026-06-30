@@ -3,12 +3,11 @@ require 'package'
 class Libtinfo < Package
   description 'Missing ncurses library reference.'
   homepage 'https://www.gnu.org/software/ncurses/'
-  @_ver = 5.9
-  version "#{@_ver}-1"
+  version '6.6'
   license 'MIT' # Ncurses license
   compatibility 'all'
-  source_url 'https://github.com/mirror/ncurses.git'
-  git_hashtag "v#{@_ver}"
+  source_url "https://ftp.gnu.org/gnu/ncurses/ncurses-#{version}.tar.gz"
+  source_sha256 '355b4cbbed880b0381a04c46617b7656e362585d52e9cf84a67e2009b749ff11'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -19,9 +18,6 @@ class Libtinfo < Package
   })
 
   def self.build
-    # Fix ncurses error: expected ')' before 'int'.
-    # See https://lists.gnu.org/archive/html/bug-ncurses/2015-01/msg00016.html.
-    ENV['CPPFLAGS'] = '-P'
     # build libncurses
     Dir.mkdir 'ncurses_build'
     Dir.chdir 'ncurses_build' do
