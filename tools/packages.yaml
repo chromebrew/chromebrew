@@ -5110,6 +5110,11 @@ url: https://www.freedesktop.org/software/libqmi/
 activity: low
 ---
 kind: url
+name: libqrtr_glib
+url: https://gitlab.freedesktop.org/mobile-broadband/libqrtr-glib/-/tags
+activity: low
+---
+kind: url
 name: libraw
 url: https://www.libraw.org/
 activity: low

@@ -1,0 +1,14 @@
+# Total size: 132189
+/usr/local/include/libqrtr-glib/libqrtr-glib.h
+/usr/local/include/libqrtr-glib/qrtr-bus.h
+/usr/local/include/libqrtr-glib/qrtr-client.h
+/usr/local/include/libqrtr-glib/qrtr-node.h
+/usr/local/include/libqrtr-glib/qrtr-types.h
+/usr/local/include/libqrtr-glib/qrtr-utils.h
+/usr/local/include/libqrtr-glib/qrtr-version.h
+/usr/local/lib64/girepository-1.0/Qrtr-1.0.typelib
+/usr/local/lib64/libqrtr-glib.so
+/usr/local/lib64/libqrtr-glib.so.0
+/usr/local/lib64/libqrtr-glib.so.0.0.1
+/usr/local/lib64/pkgconfig/qrtr-glib.pc
+/usr/local/share/gir-1.0/Qrtr-1.0.gir
