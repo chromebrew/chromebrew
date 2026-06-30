@@ -47,12 +47,21 @@ class Nethack5 < CMake
     # system "sed -i 's/NetHack VERSION 3.7/NetHack VERSION 5.0/' CMakeLists.txt"
     # system "sed -i 's/LUA_VERSION 5.4.3/LUA_VERSION 5.4.8/' CMakeLists.txt"
     # system "sed -i 's/SHA512=3a1a3ee8694b72b4ec9d3ce76705fe179328294353604ca950c53f41b41161b449877d43318ef4501fee44ecbd6c83314ce7468d7425ba9b2903c9c32a28bbc0/SHA256=4f18ddae154e793e46eeab727c59ef1c0c0c2b744e7b94219710d76f530629ae/' CMakeLists.txt"
+    File.write 'include/nhlua.h', <<~NHLUA_H_EOF
+      /* nhlua.h - generated file */
+      #include "lua.h"
+      #include "lualib.h"
+      #include "lauxlib.h"
+      /*nhlua.h*/
+    NHLUA_H_EOF
   end
 
   # pre_cmake_options "LDFLAGS='-L#{CREW_LIB_PREFIX}' CFLAGS='-I../include -I#{CREW_PREFIX}/include -I#{CREW_PREFIX}/include/ncursesw -I../include -DNOTPARMDECL -L#{CREW_LIB_PREFIX}'"
   # cmake_options "-DHACKDIR=#{CREW_PREFIX}/var/lib/nethackdir -DCFLAGS='-I../include -I#{CREW_PREFIX}/include -I#{CREW_PREFIX}/include/ncursesw -I../include -DNOTPARMDECL -L#{CREW_LIB_PREFIX}' -DLDFLAGS='-L#{CREW_LIB_PREFIX}'"
   # cmake_options "-DHACKDIR=#{CREW_PREFIX}/var/lib/nethackdir -DCMAKE_C_FLAGS='-I../include -I#{CREW_PREFIX}/include -I#{CREW_PREFIX}/include/ncursesw'"
-  cmake_options "-DHACKDIR=#{CREW_PREFIX}/var/lib/nethackdir"
+  # cmake_options "-DCURSES_INCLUDE_PATH=#{CREW_PREFIX}/include/ncursesw -DHACKDIR=#{CREW_PREFIX}/var/lib/nethackdir -DCMAKE_C_FLAGS='-I../include -I#{CREW_PREFIX}/include -I#{CREW_PREFIX}/include/ncursesw'"
+  cmake_options "-DCURSES_INCLUDE_PATH=#{CREW_PREFIX}/include/ncursesw -DHACKDIR=#{CREW_PREFIX}/var/lib/nethackdir -DCMAKE_C_FLAGS='-I#{CREW_PREFIX}/include/ncursesw'"
+  #  -DCMAKE_C_FLAGS='-I../include -I#{CREW_PREFIX}/include -I#{CREW_PREFIX}/include/ncursesw'"
   # -DCFLAGS='-I../include -I#{CREW_PREFIX}/include -I#{CREW_PREFIX}/include/ncursesw -I../include -DNOTPARMDECL -L#{CREW_LIB_PREFIX}' -DLDFLAGS='-L#{CREW_LIB_PREFIX}'"
   # def self.install
   # system "make DESTDIR=#{CREW_DEST_PREFIX} GIT=1 WANT_WIN_TTY=1 WANT_WIN_CURSES=1 #{'WANT_WIN_X11=1' unless ARCH.include?('i686')} install"
