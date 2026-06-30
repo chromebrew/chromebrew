@@ -19,4 +19,5 @@ class Acl < Autotools
 
   depends_on 'attr' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 end
