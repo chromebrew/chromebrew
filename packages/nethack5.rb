@@ -3,14 +3,13 @@ require 'buildsystems/cmake'
 class Nethack5 < CMake
   description 'NetHack is a \'roguelike\' game following in the same tradition; the player controls an adventurer delving into a randomly generated dungeon to retrieve the Amulet of Yendor from its depths.'
   homepage 'https://github.com/NetHack/NetHack'
-  version '5.0.0-aaf601f'
+  version '5.0.0'
   license 'nethack'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/Nethack/NetHack.git'
-  git_hashtag 'aaf601ffc803d5a2dfd91db17d412146ee756175'
   # git_hashtag 'NetHack-5.0'
   # git_hashtag 'dfae1f07dde2c49ea808448af18e8ade6cfe9bf1'
-  # git_hashtag "NetHack-#{version}_Released"
+  git_hashtag "NetHack-#{version}_Released"
   binary_compression 'tar.zst'
 
   binary_sha256({
