@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gjs < Meson
   description 'Javascript Bindings for GNOME'
   homepage 'https://gitlab.gnome.org/GNOME/gjs/'
-  version "1.88.0-#{CREW_ICU_VER}"
+  version "1.89.1-#{CREW_ICU_VER}"
   license 'MIT and MPL-1.1, LGPL-2+ or GPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gjs.git'
