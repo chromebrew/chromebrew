@@ -7380,8 +7380,18 @@ url: https://metacpan.org/pod/IO::File
 activity: low
 ---
 kind: url
+name: perl_io_pty
+url: https://cpan.metacpan.org/authors/id/T/TO/TODDR/
+activity: low
+---
+kind: url
 name: perl_io_socket_ssl
 url: https://cpan.metacpan.org/authors/id/S/SU/SULLR/
+activity: low
+---
+kind: url
+name: perl_ipc_run
+url: https://cpan.metacpan.org/authors/id/T/TO/TODDR/
 activity: low
 ---
 kind: url
