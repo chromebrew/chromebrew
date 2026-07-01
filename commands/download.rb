@@ -98,8 +98,8 @@ class Command
         downloader url, sha256sum, filename, verbose: verbose
 
         puts "#{pkg.name.capitalize} archive downloaded.".lightgreen
-        # Stow file in cache if requested, if file is not from cache, and cache is writable.
-        cache_downloaded_file(filename, verbose: verbose) if CREW_CACHE_ENABLED && cachefile.to_s.empty? && File.writable?(CREW_CACHE_DIR)
+        # Stow file in cache if requested, if cachefile does not exist, and cache is writable.
+        cache_downloaded_file(filename, verbose: verbose) if CREW_CACHE_ENABLED && !File.file?(cachefile) && File.writable?(CREW_CACHE_DIR)
 
         unless caller.grep(/download_command/).empty?
           puts 'Downloaded to: '.lightblue + File.join(CREW_BREW_DIR, filename).blue

@@ -1737,7 +1737,7 @@ def download_command(args)
       meta = Command.download(@pkg, verbose: CREW_VERBOSE, opt_source: @opt_source)
     end
     # Clean up remnant meta[:extract_dir] folders.
-    FileUtils.rm_rf File.join(CREW_BREW_DIR, meta[:extract_dir])
+    FileUtils.rm_rf File.join(CREW_BREW_DIR, meta[:extract_dir]) unless meta[:extract_dir].nil?
   end
 end
 
