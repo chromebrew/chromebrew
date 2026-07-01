@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# build_updated_packages version 5.4 (for Chromebrew)
+# build_updated_packages version 5.5 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -310,7 +310,7 @@ if updated_packages.empty?
   puts 'No packages need to be updated.'.orange
 else
   updated_packages.uniq!
-  updated_packages.delete_if { !PackageUtils.compatible?(Package.load_package(File.join(crew_local_repo_root, it.downcase))) }
+  updated_packages.delete_if { !File.file?(File.join(crew_local_repo_root, it.downcase)) || !PackageUtils.compatible?(Package.load_package(File.join(crew_local_repo_root, it.downcase))) }
   cleaned_updated_packages = updated_packages.map { it.sub('packages/', '').sub('.rb', '') }
   updated_packages_reordered = cleaned_updated_packages.nil? ? updated_packages.map { "packages/#{it}.rb" } : order_recursive_deps(cleaned_updated_packages).map { "packages/#{it}.rb" }
   puts 'These packages will be checked to see if they need updated binaries:'.orange
