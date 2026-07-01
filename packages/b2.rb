@@ -3,7 +3,7 @@ require 'package'
 class B2 < Package
   description 'B2 makes it easy to build C++ projects, everywhere.'
   homepage 'https://www.bfgroup.xyz/b2/'
-  version '5.4.2'
+  version '5.5.0'
   license 'BSL 1.0'
   compatibility 'all'
   source_url 'https://github.com/bfgroup/b2.git'
@@ -11,14 +11,14 @@ class B2 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4fb0969ed19d32d7a5ff4aa17818a6520c8b07be012b68158996e05d77658829',
-     armv7l: '4fb0969ed19d32d7a5ff4aa17818a6520c8b07be012b68158996e05d77658829',
-       i686: 'b64616fd92e5930cec29d16a045618ad81a768b47d398c3501b176590783023c',
-     x86_64: 'e25331d87cd4b8c738c372b8cd8bd1750885fc33208bf2d87416a595ae56e51f'
+    aarch64: '4d40866bb6f1fef788860909cd6b99b73c9742d853c0847fd29d079e2b7929c2',
+     armv7l: '4d40866bb6f1fef788860909cd6b99b73c9742d853c0847fd29d079e2b7929c2',
+       i686: 'c698a9888d2c2b6f45d1acb7affe1b8ddf783cfa1ab0225b0a8a875b3abbba84',
+     x86_64: 'eaa28d45779cc0bbbae1556ec1332229f3e7c5792158a36f5b8922ffc172c6c4'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
 
   def self.build
     system './bootstrap.sh'

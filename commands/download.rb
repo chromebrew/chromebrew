@@ -86,7 +86,13 @@ class Command
         # Recall file from cache if requested
         if CREW_CACHE_ENABLED || CREW_CACHE_BUILD || pkg.cache_build?
           outcome = cached_download(pkg, source, filename, extract_dir, verbose: verbose)
-          return outcome if outcome
+          # If the outcome is a hash, we're done here and we can return early.
+          if outcome.is_a?(Hash)
+            return outcome
+          else
+            # Otherwise, there wasn't a cached file, but we know where to make one.
+            cachefile = outcome
+          end
         end
         # Download file if not cached.
         downloader url, sha256sum, filename, verbose: verbose
@@ -192,11 +198,10 @@ def cached_download(pkg, source, filename, extract_dir, verbose: false)
       return { source:, filename:, extract_dir: }
     else
       puts 'Cached archive checksum mismatch. 😔 Will download.'.lightred
-      ''
     end
   else
     puts "Cannot find cached archive at #{cachefile}. 😔 Will download.".orange
-    ''
+    return cachefile
   end
 end
 
@@ -236,8 +241,8 @@ def cached_git_download(pkg, source, filename, extract_dir, verbose: false)
       system "sha256sum -c #{cachefile}.sha256"
     end
       FileUtils.mkdir_p extract_dir
-      system "tar -Izstd -x#{verbose}f #{cachefile} -C #{extract_dir}"
-      return { source:, filename:, extract_dir: }, cachefile
+      system "tar -Izstd -x#{'v' if verbose}f #{cachefile} -C #{extract_dir}"
+      return { source:, filename:, extract_dir: }
     else
       puts 'Cached git repository checksum mismatch. 😔 Will download.'.lightred
     end
