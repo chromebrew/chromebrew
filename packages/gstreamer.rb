@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gstreamer < Meson
   description 'GStreamer is a library for constructing graphs of media-handling components.'
   homepage 'https://gstreamer.freedesktop.org/'
-  version '1.28.3'
+  version '1.28.4'
   license 'LGPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/gstreamer/gstreamer.git'
@@ -16,6 +16,7 @@ class Gstreamer < Meson
      x86_64: '910462bcfa2d674e6b9f45e663ef042c263eb9a5ac3d2996357abcdbf7f63644'
   })
 
+  depends_on 'abseil_cpp' => :build
   depends_on 'alsa_lib' => :library
   depends_on 'bzip2' => :library
   depends_on 'ca_certificates' => :build
@@ -114,6 +115,9 @@ class Gstreamer < Meson
     system "#{CREW_PREFIX}/bin/update-ca-certificates --fresh --certsconf #{CREW_PREFIX}/etc/ca-certificates.conf"
   end
 
+  # Fix for webrtc dep build with gcc 16
+  # See https://gitlab.freedesktop.org/pulseaudio/webrtc-audio-processing/-/work_items/44
+  pre_meson_options "CFLAGS+=' -std=c++20'"
   meson_options "#{CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
     -Dbenchmarks=disabled \
     -Ddoc=disabled \
@@ -122,7 +126,8 @@ class Gstreamer < Meson
     -Dgpl=enabled \
     -Dgtk_doc=disabled \
     -Dintrospection=disabled \
-    -Dtests=disabled"
+    -Dtests=disabled \
+    -Dwebrtc=disabled"
 
   meson_install_extras do
     # avoid conflicts from libglvnd
