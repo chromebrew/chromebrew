@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Gpgme < Autotools
   description 'GnuPG Made Easy (GPGME) is a library designed to make access to GnuPG easier for applications.'
   homepage 'https://www.gnupg.org/related_software/gpgme/index.html'
-  version '2.1.1'
+  version '2.1.2'
   license 'GPL-2 and LGPL-2.1'
   compatibility 'all'
   source_url "https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-#{version}.tar.bz2"
-  source_sha256 '6d7ee12b209d7dce75468db53f72a90e1ad3d21f4c304ef2c002612a52f5333a'
+  source_sha256 '0687a95b299871c4141f507c0f740de6b429c9ac067d0fa4e062e3264df5fb77'
   binary_compression 'tar.zst'
 
   binary_sha256({
