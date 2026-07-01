@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Cage < Meson
   description 'A kiosk compositor for Wayland'
   homepage 'https://www.hjdskes.nl/projects/cage/'
-  version '0.3.0'
+  version '0.3.1'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/Hjdskes/cage.git'
