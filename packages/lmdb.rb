@@ -6,7 +6,7 @@ require 'package'
 class Lmdb < Package
   description 'Symas Lightning Memory-Mapped Database'
   homepage 'https://www.symas.com/mdb'
-  version '0.9.35'
+  version '1.0.0'
   license 'OpenLDAP Public License'
   compatibility 'all'
   source_url 'https://git.openldap.org/openldap/openldap.git'
