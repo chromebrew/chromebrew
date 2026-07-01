@@ -1,0 +1,5 @@
+#!/bin/bash
+mm-common-get --help
+mm-common-get --version
+mm-common-prepare --help
+mm-common-prepare --version
