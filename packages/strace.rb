@@ -11,13 +11,14 @@ class Strace < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0b564f88270e87fdb1e4ef55d985f7ac5cefa77ab4db9ecef476037cf66e23c3',
-     armv7l: '0b564f88270e87fdb1e4ef55d985f7ac5cefa77ab4db9ecef476037cf66e23c3',
-     x86_64: '03f78a27e21c3535bdbcf79f17fd4322cdd0816e58db84397bb23eed5b147c32'
+    aarch64: '935e8d41515687a095c606465e2ab1bd2d5f1c2f3c0c18bb33f2c33673d98294',
+     armv7l: '935e8d41515687a095c606465e2ab1bd2d5f1c2f3c0c18bb33f2c33673d98294',
+     x86_64: '36a65c0b4e9ff25200f7704b643de3e697ba6181afc03ca69f32d27926b5d945'
   })
 
   depends_on 'elfutils' => :executable
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
 
   autotools_configure_options '--disable-mpers --with-libdw --disable-gcc-Werror'
 end
