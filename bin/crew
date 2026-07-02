@@ -1326,9 +1326,9 @@ end
 
 def update_package_file(package = nil, pkg_version = nil, binary_compression = nil)
   pkg_file = "#{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
-  binary_sha256_hash = { armv7l: nil, i686: nil, x86_64: nil }
-  starting_binary_sha256_hash = { armv7l: nil, i686: nil, x86_64: nil }
-  %w[x86_64 i686 armv7l].each do |arch|
+  binary_sha256_hash = { aarch64: nil, armv7l: nil, i686: nil, x86_64: nil }
+  starting_binary_sha256_hash = { aarch64: nil, armv7l: nil, i686: nil, x86_64: nil }
+  %w[x86_64 i686 aarch64 armv7l].each do |arch|
     binary_sha256_hash[arch.to_sym] = @pkg.binary_sha256[arch.to_sym] if @pkg.binary_sha256&.key?(arch.to_sym)
     starting_binary_sha256_hash[arch.to_sym] = @pkg.binary_sha256[arch.to_sym] if @pkg.binary_sha256&.key?(arch.to_sym)
     remote_binary_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{package}/#{pkg_version}_#{arch}/#{package}-#{pkg_version}-chromeos-#{arch}.#{binary_compression}"
@@ -1342,8 +1342,15 @@ def update_package_file(package = nil, pkg_version = nil, binary_compression = n
   puts "\e[1A\e[KGenerating binary_sha256 block for package file #{pkg_file}...\n".orange
   binary_sha256_block = ''
   binary_sha256_block << "\n  binary_sha256({\n"
+  unless binary_sha256_hash[:aarch64].nil?
+    binary_sha256_block << "    aarch64: '#{binary_sha256_hash[:aarch64]}'"
+    binary_sha256_block << if binary_sha256_hash[:armv7l].nil? && binary_sha256_hash[:i686].nil? && binary_sha256_hash[:x86_64].nil?
+                             "\n"
+                           else
+                             ",\n"
+                           end
+  end
   unless binary_sha256_hash[:armv7l].nil?
-    binary_sha256_block << "    aarch64: '#{binary_sha256_hash[:armv7l]}',\n"
     binary_sha256_block << "     armv7l: '#{binary_sha256_hash[:armv7l]}'"
     binary_sha256_block << if binary_sha256_hash[:i686].nil? && binary_sha256_hash[:x86_64].nil?
                              "\n"
@@ -1490,12 +1497,12 @@ def upload(pkg_name = nil, pkg_version = nil, binary_compression = nil)
     end
 
     # 3. Set sha256 hash variables for all architectures to nil.
-    binary_sha256_hash = { armv7l: nil, i686: nil, x86_64: nil }
+    binary_sha256_hash = { aarch64: nil, armv7l: nil, i686: nil, x86_64: nil }
     # The following is used to figure out where a non-standard
     # binary_sha256 section might be, such as in a gcc_lib file.
-    starting_binary_sha256_hash = { armv7l: nil, i686: nil, x86_64: nil }
+    starting_binary_sha256_hash = { aarch64: nil, armv7l: nil, i686: nil, x86_64: nil }
 
-    %w[x86_64 i686 armv7l].each do |arch|
+    %w[x86_64 i686 aarch64 armv7l].each do |arch|
       upload_binary = false
       local_binary = false
       puts "Processing package: #{package}, Arch: #{arch}".yellow
