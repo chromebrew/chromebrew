@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Jansson < CMake
   description 'Jansson is a C library for encoding, decoding and manipulating JSON data.'
   homepage 'https://github.com/akheron/jansson'
-  version '2.15.0'
+  version '2.15.1'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/akheron/jansson.git'
