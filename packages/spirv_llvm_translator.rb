@@ -11,10 +11,10 @@ class Spirv_llvm_translator < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b850cce6e35bf66eb09ce24d5caecf9b5370977d396c090117cc5ff489f05f24',
-     armv7l: 'b850cce6e35bf66eb09ce24d5caecf9b5370977d396c090117cc5ff489f05f24',
-       i686: '845fd618c01ad1e7fab61275eae4153dc9d00b2ae90c9b4cd87d87600b356360',
-     x86_64: '46c6cb05b27de2101c33c91bd0934e01824285a6a7be2d76a23894060cea2b1a'
+    aarch64: 'd763f1776c122c77ea5d15ad39be744242d1455385aedd2ecc99b9a80e6b0c34',
+     armv7l: 'd763f1776c122c77ea5d15ad39be744242d1455385aedd2ecc99b9a80e6b0c34',
+       i686: 'ef6a09d96b671a6d9261b8e7c9c60f265bd7b1b5a31217134082329d197fb405',
+     x86_64: '821ab4e0c03478c51aef73df5db2f7f690f2c28d9f90639190667ca9f7699cdd'
   })
 
   depends_on 'gcc_lib' => :library
