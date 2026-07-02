@@ -17,11 +17,10 @@ class Ragel < Autotools
      x86_64: 'ae7866fc233f5ec1706b9daaa954f833139d852b2cee8db1438ee3e5a76ca008'
   })
 
-  depends_on 'collectl' => :build
+  depends_on 'colm' => :build
   depends_on 'gcc_lib' => :executable
   depends_on 'glibc' => :executable
   depends_on 'glibc_lib' => :executable
 
   autotools_pre_configure_options "CFLAGS+=' -std=gnu++98' CXXFLAGS+=' -std=gnu++98'"
-  autotools_configure_options '--with-colm'
 end
