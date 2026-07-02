@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Stunnel < Autotools
   description "Stunnel is a proxy designed to add TLS encryption functionality to existing clients and servers without any changes in the programs' code."
   homepage 'https://www.stunnel.org/index.html'
-  version '5.78'
+  version '5.79'
   license 'GPL-2+'
   compatibility 'all'
   source_url 'https://github.com/mtrojnar/stunnel.git'
