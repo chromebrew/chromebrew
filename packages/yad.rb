@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Yad < Autotools
   description 'display graphical dialogs from shell scripts or command line.'
   homepage 'https://github.com/v1cont/yad'
-  version '14.2'
+  version '15.0'
   license 'GPL-3+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/v1cont/yad.git'
