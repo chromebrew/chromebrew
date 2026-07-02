@@ -17,10 +17,10 @@ class Awscli < Pip
   })
 
   binary_sha256({
-    aarch64: '79180b07174ede588a7726bbcafd38195a272b2d2024d54bad8826ffb77b8782',
-     armv7l: '79180b07174ede588a7726bbcafd38195a272b2d2024d54bad8826ffb77b8782',
-       i686: 'abba48d2327d473760d2cdfb141e2e0cfe3e0010a105f031452d812f1190ce05',
-     x86_64: 'de566c2d518ef085c2196e70a03338a1c8aeeb6c4f0a64ae88ef427f18111d83'
+    aarch64: 'ee0a4ef9ae10ac56a775a326738bdae89f2648ebc5a7a3d1faf696f77821bff8',
+     armv7l: 'ee0a4ef9ae10ac56a775a326738bdae89f2648ebc5a7a3d1faf696f77821bff8',
+       i686: '6fc4aafacabf3d600b6a63a8b8eba9d3a443b4e121413faff8c02fd005ead010',
+     x86_64: 'dcc850278525580dcb29324cb25af67b3867c5d2821dc14c58dfae3ba92189fe'
   })
 
   depends_on 'groff' # R
