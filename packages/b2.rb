@@ -11,10 +11,10 @@ class B2 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4d40866bb6f1fef788860909cd6b99b73c9742d853c0847fd29d079e2b7929c2',
-     armv7l: '4d40866bb6f1fef788860909cd6b99b73c9742d853c0847fd29d079e2b7929c2',
-       i686: 'c698a9888d2c2b6f45d1acb7affe1b8ddf783cfa1ab0225b0a8a875b3abbba84',
-     x86_64: 'eaa28d45779cc0bbbae1556ec1332229f3e7c5792158a36f5b8922ffc172c6c4'
+    aarch64: '7d70ef8429a76a863f0ef810aec0bb1d01365b8ac5f7d79e61526894b8275471',
+     armv7l: '7d70ef8429a76a863f0ef810aec0bb1d01365b8ac5f7d79e61526894b8275471',
+       i686: '5b0d60f16b8f0a78961c9b2a1feb4ffbe45b353a632d13c8dc9b67d8706cde22',
+     x86_64: '63f0de3c978ddd357f8f50adee48b63b0f3406aad1796e96838d8f678558bff9'
   })
 
   depends_on 'gcc_lib' => :executable
