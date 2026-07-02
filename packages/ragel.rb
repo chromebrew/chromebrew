@@ -11,10 +11,10 @@ class Ragel < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8edc2dfccadae1b99c06e7973bd17e6ac01f6fabd438d765751cbc964bd5f121',
-     armv7l: '8edc2dfccadae1b99c06e7973bd17e6ac01f6fabd438d765751cbc964bd5f121',
-       i686: 'a3f0f6bacf4b58504c3a2e90d22f4020d0d81bbc169448f2292385efa7cbb400',
-     x86_64: 'ae7866fc233f5ec1706b9daaa954f833139d852b2cee8db1438ee3e5a76ca008'
+    aarch64: 'aa958a5c84b74dfbf38521acdbf3243abcd22567cfd92fb9bad85a3362b58cf0',
+     armv7l: 'aa958a5c84b74dfbf38521acdbf3243abcd22567cfd92fb9bad85a3362b58cf0',
+       i686: '423854b61b56c77d9b57c7e1c5d37450c866068cd3fa97b1d8b0aa77e8adc374',
+     x86_64: '2624da1a1ae5f5c51d678c435fab01245e109cfb5cfef0d16c496180cf1769f2'
   })
 
   depends_on 'gcc_lib' => :executable
