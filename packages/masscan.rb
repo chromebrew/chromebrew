@@ -5,7 +5,7 @@ class Masscan < Package
   homepage 'https://github.com/robertdavidgraham/masscan'
   compatibility 'all'
   license 'AGPL-3'
-  version '1.3.2'
+  version '2'
   source_url 'https://github.com/robertdavidgraham/masscan.git'
   git_hashtag version
   binary_compression 'tar.zst'
