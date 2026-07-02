@@ -3,11 +3,11 @@ require 'package'
 class Libseccomp < Package
   description 'The libseccomp library provides an easy to use, platform independent, interface to the Linux Kernel\'s syscall filtering mechanism.'
   homepage 'https://github.com/seccomp/libseccomp'
-  version '2.6.0'
+  version '2.6.1'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url "https://github.com/seccomp/libseccomp/archive/v#{version}.tar.gz"
-  source_sha256 '0889a8da98e37f86019c90789fd4ff7eda6e1ceb9ef07d4c51c67aeb50a77860'
+  source_sha256 'f9a13e4c633d319a9240189760ca348caa0837c0ebe2a09b17061da8ceaf60f0'
   binary_compression 'tar.zst'
 
   binary_sha256({
