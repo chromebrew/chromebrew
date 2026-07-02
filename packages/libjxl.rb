@@ -34,6 +34,7 @@ class Libjxl < CMake
   depends_on 'json_glib' => :build
   depends_on 'libjpeg_turbo' => :executable
   depends_on 'libpng' => :executable
+  depends_on 'libxslt' => :build
   depends_on 'openexr' => :executable
   depends_on 'pango' => :build
   depends_on 'py3_asciidoc' => :build
