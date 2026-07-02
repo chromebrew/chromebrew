@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libfmt < CMake
   description 'A modern formatting library'
   homepage 'https://fmt.dev'
-  version '12.1.0'
+  version '12.2.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/fmtlib/fmt.git'
