@@ -1,4 +1,4 @@
-# Total size: 1112240
+# Total size: 1215914
 /usr/local/bin/mpg123
 /usr/local/bin/mpg123-id3dump
 /usr/local/bin/mpg123-strip
@@ -10,15 +10,15 @@
 /usr/local/lib/libmpg123.la
 /usr/local/lib/libmpg123.so
 /usr/local/lib/libmpg123.so.0
-/usr/local/lib/libmpg123.so.0.48.1
+/usr/local/lib/libmpg123.so.0.49.4
 /usr/local/lib/libout123.la
 /usr/local/lib/libout123.so
 /usr/local/lib/libout123.so.0
-/usr/local/lib/libout123.so.0.5.0
+/usr/local/lib/libout123.so.0.5.2
 /usr/local/lib/libsyn123.la
 /usr/local/lib/libsyn123.so
 /usr/local/lib/libsyn123.so.0
-/usr/local/lib/libsyn123.so.0.2.2
+/usr/local/lib/libsyn123.so.0.2.3
 /usr/local/lib/mpg123/output_alsa.so
 /usr/local/lib/mpg123/output_dummy.so
 /usr/local/lib/pkgconfig/libmpg123.pc
