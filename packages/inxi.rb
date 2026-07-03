@@ -3,7 +3,7 @@ require 'package'
 class Inxi < Package
   description 'inxi is a full featured CLI system information tool.'
   homepage 'https://smxi.org/docs/inxi.htm'
-  version '3.3.40-1'
+  version '3.3.41-1'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://codeberg.org/smxi/inxi.git'
