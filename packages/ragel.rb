@@ -17,10 +17,7 @@ class Ragel < Autotools
      x86_64: '2624da1a1ae5f5c51d678c435fab01245e109cfb5cfef0d16c496180cf1769f2'
   })
 
-  depends_on 'gcc_lib' => :executable
   depends_on 'gcc_lib' => :library
-  depends_on 'glibc' => :executable
   depends_on 'glibc' => :library
-  depends_on 'glibc_lib' => :executable
   depends_on 'glibc_lib' => :library
 end
