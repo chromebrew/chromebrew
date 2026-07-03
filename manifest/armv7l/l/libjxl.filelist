@@ -1,9 +1,8 @@
-# Total size: 6892064
-/usr/local/bin/cjpegli
+# Total size: 6104232
 /usr/local/bin/cjxl
-/usr/local/bin/djpegli
 /usr/local/bin/djxl
 /usr/local/bin/jxlinfo
+/usr/local/bin/jxltran
 /usr/local/include/jxl/cms.h
 /usr/local/include/jxl/cms_interface.h
 /usr/local/include/jxl/codestream_header.h
@@ -28,15 +27,15 @@
 /usr/local/include/jxl/version.h
 /usr/local/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-jxl.so
 /usr/local/lib/libjxl.so
-/usr/local/lib/libjxl.so.0.11
-/usr/local/lib/libjxl.so.0.11.2
+/usr/local/lib/libjxl.so.0.12
+/usr/local/lib/libjxl.so.0.12.0
 /usr/local/lib/libjxl_cms.so
-/usr/local/lib/libjxl_cms.so.0.11
-/usr/local/lib/libjxl_cms.so.0.11.2
+/usr/local/lib/libjxl_cms.so.0.12
+/usr/local/lib/libjxl_cms.so.0.12.0
 /usr/local/lib/libjxl_extras_codec.a
 /usr/local/lib/libjxl_threads.so
-/usr/local/lib/libjxl_threads.so.0.11
-/usr/local/lib/libjxl_threads.so.0.11.2
+/usr/local/lib/libjxl_threads.so.0.12
+/usr/local/lib/libjxl_threads.so.0.12.0
 /usr/local/lib/pkgconfig/libjxl.pc
 /usr/local/lib/pkgconfig/libjxl_cms.pc
 /usr/local/lib/pkgconfig/libjxl_threads.pc
