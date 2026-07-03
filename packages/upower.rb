@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Upower < Meson
   description 'Abstraction for enumerating power devices, listening to device events and querying history and statistics'
   homepage 'https://upower.freedesktop.org'
-  version '1.91.2'
+  version '1.91.3'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/upower/upower.git'
@@ -11,15 +11,16 @@ class Upower < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6255eec40126dd106f84a392f3202da3096ac308d6d0b8ba0f392ffad2446ad9',
-     armv7l: '6255eec40126dd106f84a392f3202da3096ac308d6d0b8ba0f392ffad2446ad9',
-     x86_64: 'e5b20f46deaea68dafbe0a5ee17a4bd66d3b5aa09d0814fa00bf2131908b3b63'
+    aarch64: 'd1b61e34975250594483001adf4d49b0b3bb18c7e611d460837d07fd3ad28735',
+     armv7l: 'd1b61e34975250594483001adf4d49b0b3bb18c7e611d460837d07fd3ad28735',
+     x86_64: '98bedf509e6ca5c73e8cad3787f52c292fd7cd5a758c67ffdceab4050a7d4572'
   })
 
   depends_on 'docbook_xml' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk_doc' => :build
   depends_on 'libgudev' => :executable
