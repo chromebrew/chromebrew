@@ -17,6 +17,10 @@ class Mtr < Package
      x86_64: '7ec1e4e20d17fa583089f1ce681c4dd373fdf9683eb36a7d14ede883a2fca0fc'
   })
 
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'ncurses' => :executable
+
   def self.build
     system './configure',
            '--without-gtk',
