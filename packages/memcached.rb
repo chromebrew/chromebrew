@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Memcached < Autotools
   description 'Memcached is an in-memory key-value store for small chunks of arbitrary data (strings, objects) from results of database calls, API calls, or page rendering.'
   homepage 'https://memcached.org/'
-  version '1.6.42'
+  version '1.6.43'
   license 'BSD'
   compatibility 'all'
   source_url "https://memcached.org/files/memcached-#{version}.tar.gz"
-  source_sha256 '50f08b879d4f9d36dea9d905e9eaade15c708e38db7e9a73fc21dc8b45395de7'
+  source_sha256 '8042ee26e004efa0db41ca4a7c713f759c3280c2f8bee438579f13de1e509435'
   binary_compression 'tar.zst'
 
   binary_sha256({
