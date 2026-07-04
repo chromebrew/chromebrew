@@ -1,0 +1,3 @@
+#!/bin/bash
+ncdu -h | head
+ncdu -v
