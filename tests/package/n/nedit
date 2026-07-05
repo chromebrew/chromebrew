@@ -1,0 +1,3 @@
+#!/bin/bash
+nedit -h 2>&1
+nedit -V

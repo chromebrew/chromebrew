@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Enchant < Autotools
   description 'Enchant is a library (and command-line program) that wraps a number of different spelling libraries and programs with a consistent interface.'
   homepage 'https://abiword.github.io/enchant/'
-  version '2.8.17'
+  version '2.8.18'
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/AbiWord/enchant.git'
@@ -11,9 +11,9 @@ class Enchant < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0c71c7026dee534ddb4070369ae20d4ae4668f8ba40166a16523c5a4179c0f2a',
-     armv7l: '0c71c7026dee534ddb4070369ae20d4ae4668f8ba40166a16523c5a4179c0f2a',
-     x86_64: '2e3888709cd7f99ce51b04794eb50ae0089a007ed24633519eda4bd3806b5655'
+    aarch64: '17e5804504105e3a3839c75ddad0441058bbf10b9c93d7a0ffa95df0a89eca22',
+     armv7l: '17e5804504105e3a3839c75ddad0441058bbf10b9c93d7a0ffa95df0a89eca22',
+     x86_64: 'a7a321072b136de619dd96df1ddcec64b43e4a153b7dcd74a6960e06b42033f6'
   })
 
   depends_on 'aspell' => :library
