@@ -1,4 +1,4 @@
-# Total size: 473278
+# Total size: 192316
 /usr/local/bin/addr2name
 /usr/local/bin/dnssort
 /usr/local/bin/name2addr
@@ -17,14 +17,14 @@
 /usr/local/share/locale/en_GB/LC_MESSAGES/ndisc6.mo
 /usr/local/share/locale/fr/LC_MESSAGES/ndisc6.mo
 /usr/local/share/locale/sv/LC_MESSAGES/ndisc6.mo
-/usr/local/share/man/man1/addr2name.1.gz
-/usr/local/share/man/man1/dnssort.1.gz
-/usr/local/share/man/man1/name2addr.1.gz
-/usr/local/share/man/man1/tcpspray.1.gz
-/usr/local/share/man/man1/tcpspray6.1.gz
-/usr/local/share/man/man8/ndisc6.8.gz
-/usr/local/share/man/man8/rdisc6.8.gz
-/usr/local/share/man/man8/rdnssd.8.gz
-/usr/local/share/man/man8/rltraceroute6.8.gz
-/usr/local/share/man/man8/tcptraceroute6.8.gz
-/usr/local/share/man/man8/tracert6.8.gz
+/usr/local/share/man/man1/addr2name.1.zst
+/usr/local/share/man/man1/dnssort.1.zst
+/usr/local/share/man/man1/name2addr.1.zst
+/usr/local/share/man/man1/tcpspray.1.zst
+/usr/local/share/man/man1/tcpspray6.1.zst
+/usr/local/share/man/man8/ndisc6.8.zst
+/usr/local/share/man/man8/rdisc6.8.zst
+/usr/local/share/man/man8/rdnssd.8.zst
+/usr/local/share/man/man8/rltraceroute6.8.zst
+/usr/local/share/man/man8/tcptraceroute6.8.zst
+/usr/local/share/man/man8/tracert6.8.zst
