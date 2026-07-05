@@ -3,11 +3,11 @@ require 'package'
 class Live555 < Package
   description 'This code forms a set of C++ libraries for multimedia streaming, using open standard protocols (RTP/RTCP, RTSP, SIP).'
   homepage 'http://www.live555.com'
-  version '2026.07.02'
+  version '2026.07.04'
   license 'LGPL'
   compatibility 'all'
   source_url "https://download.live555.com/live.#{version}.tar.gz"
-  source_sha256 '92dd7aeff0f6d93f11aecab25670d30f974604b2d0dd71f6cdbfceecd92b31dd'
+  source_sha256 'b89b425ec6fedaa4dc0b478ba9146a431b265f5352cb17fc44c14402c512e378'
   binary_compression 'tar.zst'
 
   binary_sha256({
