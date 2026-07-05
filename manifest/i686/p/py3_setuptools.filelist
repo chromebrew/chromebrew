@@ -1,17 +1,17 @@
-# Total size: 7463536
+# Total size: 7473068
 /usr/local/lib/python3.14/site-packages/_distutils_hack/__init__.py
 /usr/local/lib/python3.14/site-packages/_distutils_hack/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/_distutils_hack/__pycache__/override.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/_distutils_hack/override.py
 /usr/local/lib/python3.14/site-packages/distutils-precedence.pth
-/usr/local/lib/python3.14/site-packages/setuptools-82.0.1.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/setuptools-82.0.1.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/setuptools-82.0.1.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/setuptools-82.0.1.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/setuptools-82.0.1.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/setuptools-82.0.1.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/setuptools-82.0.1.dist-info/licenses/LICENSE
-/usr/local/lib/python3.14/site-packages/setuptools-82.0.1.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/setuptools-83.0.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/setuptools-83.0.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/setuptools-83.0.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/setuptools-83.0.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/setuptools-83.0.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/setuptools-83.0.0.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/setuptools-83.0.0.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/setuptools-83.0.0.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/setuptools/__init__.py
 /usr/local/lib/python3.14/site-packages/setuptools/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/setuptools/__pycache__/_core_metadata.cpython-314.pyc
@@ -140,6 +140,7 @@
 /usr/local/lib/python3.14/site-packages/setuptools/_distutils/compilers/C/cygwin.py
 /usr/local/lib/python3.14/site-packages/setuptools/_distutils/compilers/C/errors.py
 /usr/local/lib/python3.14/site-packages/setuptools/_distutils/compilers/C/msvc.py
+/usr/local/lib/python3.14/site-packages/setuptools/_distutils/compilers/C/py.typed
 /usr/local/lib/python3.14/site-packages/setuptools/_distutils/compilers/C/tests/__pycache__/test_base.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/setuptools/_distutils/compilers/C/tests/__pycache__/test_cygwin.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/setuptools/_distutils/compilers/C/tests/__pycache__/test_mingw.cpython-314.pyc
@@ -164,6 +165,7 @@
 /usr/local/lib/python3.14/site-packages/setuptools/_distutils/file_util.py
 /usr/local/lib/python3.14/site-packages/setuptools/_distutils/filelist.py
 /usr/local/lib/python3.14/site-packages/setuptools/_distutils/log.py
+/usr/local/lib/python3.14/site-packages/setuptools/_distutils/py.typed
 /usr/local/lib/python3.14/site-packages/setuptools/_distutils/spawn.py
 /usr/local/lib/python3.14/site-packages/setuptools/_distutils/sysconfig.py
 /usr/local/lib/python3.14/site-packages/setuptools/_distutils/tests/__init__.py
