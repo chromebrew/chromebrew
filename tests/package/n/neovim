@@ -1,0 +1,3 @@
+#!/bin/bash
+nvim -h | head
+nvim -v

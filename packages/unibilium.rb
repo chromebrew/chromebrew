@@ -14,11 +14,12 @@ class Unibilium < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7f068000fbd0b9d2b85c3aece98dfed0af7d023ab9b32cb7e2d9c67ef0c9afce',
-     armv7l: '7f068000fbd0b9d2b85c3aece98dfed0af7d023ab9b32cb7e2d9c67ef0c9afce',
-       i686: '176f96d97ef20021f20cddcef7a8700233b4e2ac4a9f76305ee71d104a96d154',
-     x86_64: '624efa8c596f133e37ba948023c99ac55204aac5edc019cfbf197d27e4e6f8be'
+    aarch64: 'dafb10dbb938f0d425223012e18e6915777e3499728bda0709f6175035748976',
+     armv7l: 'dafb10dbb938f0d425223012e18e6915777e3499728bda0709f6175035748976',
+       i686: '9d1d5e1c6da59cfcdf90779719fd4f89ef9b72b5dacb1154556cd7c95d24e595',
+     x86_64: 'cdeb18bbebae3899dc49df4b84bef4de8e52b78be1eb2b6a1023a3052baea2fb'
   })
 
-  depends_on 'glibc'
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 end

@@ -11,13 +11,14 @@ class Libuv < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fc8ae5c75eb65b7f8b32ddd1b048abae46fab872f192e7ce348c07bc513153b1',
-     armv7l: 'fc8ae5c75eb65b7f8b32ddd1b048abae46fab872f192e7ce348c07bc513153b1',
-       i686: '66ef1f3dc86d9a84b1897e632f8bfef8b56d370ba4ecca9299822ea8cc1ddb77',
-     x86_64: '29a099cb2888bf28e14c9642d965efca7eab952eb0257247ea4ae0a0e8a8f38a'
+    aarch64: '68210bbe3af6a980ab01757f1ecde1eb1f3c36f929f56acd36c8936fdb133ed9',
+     armv7l: '68210bbe3af6a980ab01757f1ecde1eb1f3c36f929f56acd36c8936fdb133ed9',
+       i686: '4a6a096da50dc1632d2cc1d0a10bc938337cc893ec7ba7dd533193cf42412876',
+     x86_64: '5bd5b5786fc9ed1029a5bd55ed52277b6b1b7972f56b2b11b27d6bb159df311c'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 
   cmake_options '-DLIBUV_BUILD_TESTS=OFF'
 end
