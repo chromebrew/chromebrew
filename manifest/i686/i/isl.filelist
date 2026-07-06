@@ -1,4 +1,4 @@
-# Total size: 20857022
+# Total size: 21646163
 /usr/local/include/isl/aff.h
 /usr/local/include/isl/aff_type.h
 /usr/local/include/isl/arg.h
@@ -11,9 +11,14 @@
 /usr/local/include/isl/fixed_box.h
 /usr/local/include/isl/flow.h
 /usr/local/include/isl/hash.h
+/usr/local/include/isl/hbase.h
+/usr/local/include/isl/hbase_templ.c
 /usr/local/include/isl/hmap.h
 /usr/local/include/isl/hmap_templ.c
+/usr/local/include/isl/hset.h
+/usr/local/include/isl/hset_templ.c
 /usr/local/include/isl/id.h
+/usr/local/include/isl/id_set.h
 /usr/local/include/isl/id_to_ast_expr.h
 /usr/local/include/isl/id_to_id.h
 /usr/local/include/isl/id_to_pw_aff.h
@@ -65,6 +70,7 @@
 /usr/local/lib/libisl.la
 /usr/local/lib/libisl.so
 /usr/local/lib/libisl.so.23
-/usr/local/lib/libisl.so.23.4.0
-/usr/local/lib/libisl.so.23.4.0-gdb.py
+/usr/local/lib/libisl.so.23.5.0
+/usr/local/lib/libisl.so.23.5.0-gdb.py
 /usr/local/lib/pkgconfig/isl.pc
+/usr/local/share/aclocal/isl_detect_clang.m4
