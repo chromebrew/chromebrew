@@ -1,9 +1,9 @@
 # Total size: 195448
-/usr/local/lib/python3.14/site-packages/gvdb-0.36.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/gvdb-0.36.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/gvdb-0.36.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/gvdb-0.36.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/gvdb-0.36.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/gvdb-0.38.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/gvdb-0.38.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/gvdb-0.38.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/gvdb-0.38.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/gvdb-0.38.0.dist-info/WHEEL
 /usr/local/lib/python3.14/site-packages/gvdb/__init__.py
 /usr/local/lib/python3.14/site-packages/gvdb/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/gvdb/__pycache__/client.cpython-314.pyc
