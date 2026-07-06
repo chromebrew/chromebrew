@@ -11,12 +11,12 @@ class Isl < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1be10108b1dca2f1b4a5ec1b3e0327a60afc32f86d6eb18c26b2799aa0e666ec',
-     armv7l: '1be10108b1dca2f1b4a5ec1b3e0327a60afc32f86d6eb18c26b2799aa0e666ec',
-       i686: 'dcba2fea92e4bc82127c5a31ac1778d195c7255256c36b0ea2e8993577ed5c47',
-     x86_64: '913383236bf56e993aff957eeaa93a96478a045ea88adecceea57a3017f307d5'
+    aarch64: '9bede8e2e173d5e9e6fe0c4c616cfba7b392296e2229295b153adb8f2a4184a3',
+     armv7l: '9bede8e2e173d5e9e6fe0c4c616cfba7b392296e2229295b153adb8f2a4184a3',
+       i686: '07d8321b19c458aebd83306225ea1a83bb07a58a3138f91e7c2f4f9a6a844b7d',
+     x86_64: 'b6d5889693323a82f9b400e5bb70f83399e8c29843ad2dd081b57fa6dcd9ba41'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'gmp' # R
+  depends_on 'glibc' => :library
+  depends_on 'gmp' => :library
 end
