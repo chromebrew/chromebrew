@@ -20,8 +20,10 @@ class Openssh < Autotools
   depends_on 'gcc_lib' => :executable
   depends_on 'glibc' => :executable
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :executable
   depends_on 'libmd' => :executable
   depends_on 'libmd' => :library
+  depends_on 'libxcrypt' => :executable
   depends_on 'libxcrypt' => :library
   depends_on 'libxcrypt' => :logical
   depends_on 'openssl' => :executable
