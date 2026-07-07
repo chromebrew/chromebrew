@@ -20,7 +20,9 @@ class Netavark < Package
      x86_64: '32c92aba46076831874528d7ab4be3f5337c0a1a1ec028c5a26596b6b7fd3232'
   })
 
+  depends_on 'gcc_lib' => :executable
   depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :executable
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
   depends_on 'go_md2man' => :build
