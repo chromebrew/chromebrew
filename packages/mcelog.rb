@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Mcelog < Autotools
   description 'logs and accounts machine checks (in particular memory, IO, and CPU hardware errors) on modern x86 Linux systems.'
   homepage 'https://www.mcelog.org/'
-  version '210'
+  version '211'
   license 'GPL-2'
   compatibility 'all'
   source_url "https://git.kernel.org/pub/scm/utils/cpu/mce/mcelog.git/snapshot/mcelog-#{version}.tar.gz"
-  source_sha256 '5760c1b433ca4caccf140d51490e2565d117a684942d9f6b4d79b6209465e11e'
+  source_sha256 '744322b5154ce657758afd942a1fa7bf55879ae618c9274c67dd9333389c6b4f'
   binary_compression 'tar.zst'
 
   binary_sha256({
