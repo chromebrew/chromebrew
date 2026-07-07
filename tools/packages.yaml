@@ -4080,6 +4080,11 @@ url: https://gitlab.gnome.org/GNOME/libadwaita/-/tags
 activity: high
 ---
 kind: url
+name: libaec
+url: https://gitlab.dkrz.de/dkrz-sw/libaec/-/tags
+activity: low
+---
+kind: url
 name: libaio
 url: http://libaio.sourcearchive.com/downloads/
 activity: low
@@ -5387,6 +5392,16 @@ activity: none
 kind: url
 name: libtorrent
 url: https://github.com/arvidn/libtorrent/releases
+activity: low
+---
+kind: url
+name: libtraceevent
+url: https://github.com/rostedt/libtraceevent
+activity: low
+---
+kind: url
+name: libtracefs
+url: https://github.com/rostedt/libtracefs
 activity: low
 ---
 kind: url

@@ -1,34 +1,30 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Netcdf < Package
+class Netcdf < CMake
   description 'NetCDF is a set of software libraries and self-describing, machine-independent data formats that support the creation, access, and sharing of array-oriented scientific data.'
   homepage 'https://www.unidata.ucar.edu/software/netcdf/'
-  version '4.7.4'
+  version '4.10.0'
   license 'UCAR-Unidata'
   compatibility 'all'
-  source_url 'https://www.unidata.ucar.edu/downloads/netcdf/ftp/netcdf-c-4.7.4.tar.gz'
-  source_sha256 '0e476f00aeed95af8771ff2727b7a15b2de353fb7bb3074a0d340b55c2bd4ea8'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/Unidata/netcdf-c.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0023e30b23e00619fdfef8d497d6b9804b64ef79c328dd6839b1bc2ef762b275',
-     armv7l: '0023e30b23e00619fdfef8d497d6b9804b64ef79c328dd6839b1bc2ef762b275',
-       i686: 'ec6dedcabe255f6ae1b476002bf072fb01b04503d133da6a76978fed386e3e8b',
-     x86_64: 'ff3aaee614a276bcbde78d0afb4339ca7312b76e16f9811bb97a621cb6f8874c'
+    aarch64: '0641f638f746a567866502a30d590403b4c7593f9555e695f81b80c2e28b0c85',
+     armv7l: '0641f638f746a567866502a30d590403b4c7593f9555e695f81b80c2e28b0c85',
+       i686: '43b70695d7fb64f8bea80adf1ad719473eb7065a767ca00de7d995a0101dc168',
+     x86_64: '4471b03ef9097326169f569218ea380e81a226d66ccedbde765d2b7205f5e9fa'
   })
 
-  depends_on 'curl'
-  depends_on 'hdf5'
-
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-maintainer-mode'
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'bzip2' => :library
+  depends_on 'curl' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'hdf5' => :library
+  depends_on 'libaec' => :library
+  depends_on 'libxml2' => :library
+  depends_on 'libzip' => :library
+  depends_on 'zlib' => :library
+  depends_on 'zstd' => :library
 end
