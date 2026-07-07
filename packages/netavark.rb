@@ -24,6 +24,7 @@ class Netavark < Package
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :executable
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :executable
   depends_on 'glibc_lib' => :library
   depends_on 'go_md2man' => :build
   depends_on 'libgit2' => :build
