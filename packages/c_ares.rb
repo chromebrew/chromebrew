@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class C_ares < CMake
   description 'C library for asynchronous DNS requests (including name resolves).'
   homepage 'https://c-ares.org/'
-  version '1.34.6'
+  version '1.34.7'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/c-ares/c-ares.git'
@@ -11,14 +11,15 @@ class C_ares < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cc8d50ce18eb0c6985d5886b9f7407431bcd75754f9c5dd3e96709f13f3d280d',
-     armv7l: 'cc8d50ce18eb0c6985d5886b9f7407431bcd75754f9c5dd3e96709f13f3d280d',
-       i686: 'b8329bcbdcdb19d03f1b87e6fb3cfd1cbfdcdf6c1c5f012c0177bfc836bcbe61',
-     x86_64: '5dc718bf93d44a690125281d419951ea2d4ac1f3a80d9336e08ec9d6c9cf3114'
+    aarch64: '3a7cbe0a66b3157bb2ea9466d259596a47dedba726eb8cacfa0eb108c0e2193a',
+     armv7l: '3a7cbe0a66b3157bb2ea9466d259596a47dedba726eb8cacfa0eb108c0e2193a',
+       i686: 'f5396561216b4239b294574b4a2da9acba5085e1e9df0bd1df715a6f2da54286',
+     x86_64: '09de8ed9498e679401e930802c7e3742b695257bf7ca15d2e6abad3ba1205a26'
   })
 
   depends_on 'docbook2x' => :build
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 
   cmake_options '-DCARES_BUILD_TESTS=OFF \
       -DCARES_BUILD_TOOLS=ON'
