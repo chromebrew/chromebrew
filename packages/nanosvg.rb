@@ -3,11 +3,11 @@ require 'buildsystems/cmake'
 class Nanosvg < CMake
   description 'Simple stupid SVG parser'
   homepage 'https://github.com/memononen/nanosvg'
-  version '5cefd98'
+  version '48120e9'
   license 'Zlib'
   compatibility 'all'
   source_url 'https://github.com/memononen/nanosvg.git'
-  git_hashtag '5cefd9847949af6df13f65027fd43af5a7513633'
+  git_hashtag '48120e91e64b2f409ed600cdfd6d790a49ba11ab'
   binary_compression 'tar.zst'
 
   binary_sha256({
