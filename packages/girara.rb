@@ -11,9 +11,9 @@ class Girara < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ac915089fefb5eb17965c2603a508a802e6e08a701b2b3801539a6e0958410bc',
-     armv7l: 'ac915089fefb5eb17965c2603a508a802e6e08a701b2b3801539a6e0958410bc',
-     x86_64: '9648c9af8d3fb26b8f93ebc5c7df1274545625e1ee8aad37dcc0e0dd6827f8ea'
+    aarch64: 'bb2e34590de1fc10640d9bde869c76ab94e7c89eba5a21e92695ad7d42fbfc93',
+     armv7l: 'bb2e34590de1fc10640d9bde869c76ab94e7c89eba5a21e92695ad7d42fbfc93',
+     x86_64: 'be86facbba3df9ac6fadcadcfb5bb2b01e425d93b2f8091dd6f428613e792dbe'
   })
 
   depends_on 'glib' => :library
