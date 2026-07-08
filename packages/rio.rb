@@ -3,7 +3,7 @@ require 'package'
 class Rio < Package
   description 'A hardware-accelerated GPU terminal emulator focusing to run in desktops and browsers.'
   homepage 'https://raphamorim.io/rio'
-  version '0.4.8'
+  version '0.4.9'
   license 'MIT'
   compatibility 'x86_64'
   source_url 'https://github.com/raphamorim/rio.git'
