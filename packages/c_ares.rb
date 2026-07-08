@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class C_ares < CMake
   description 'C library for asynchronous DNS requests (including name resolves).'
   homepage 'https://c-ares.org/'
-  version '1.34.7'
+  version '1.34.8'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/c-ares/c-ares.git'
@@ -11,10 +11,10 @@ class C_ares < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3a7cbe0a66b3157bb2ea9466d259596a47dedba726eb8cacfa0eb108c0e2193a',
-     armv7l: '3a7cbe0a66b3157bb2ea9466d259596a47dedba726eb8cacfa0eb108c0e2193a',
-       i686: 'f5396561216b4239b294574b4a2da9acba5085e1e9df0bd1df715a6f2da54286',
-     x86_64: '09de8ed9498e679401e930802c7e3742b695257bf7ca15d2e6abad3ba1205a26'
+    aarch64: '25b240c7175ce092ae5f7fb5c803f80e3965b09c718c9279aae442ef9a0ccb03',
+     armv7l: '25b240c7175ce092ae5f7fb5c803f80e3965b09c718c9279aae442ef9a0ccb03',
+       i686: '679056ea5925b3c0e0ad41f70b49fbd0f0d7b08bcc35f068899f0ec17015a355',
+     x86_64: '953268127732893c4c7c8433794d808926e328530adf764d54ff8ed632d08f6f'
   })
 
   depends_on 'docbook2x' => :build
