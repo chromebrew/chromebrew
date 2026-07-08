@@ -1,4 +1,4 @@
-# Total size: 6063982
+# Total size: 6077458
 /usr/local/bin/fax2ps
 /usr/local/bin/fax2tiff
 /usr/local/bin/pal2rgb
@@ -13,6 +13,7 @@
 /usr/local/bin/tiffcrop
 /usr/local/bin/tiffdither
 /usr/local/bin/tiffdump
+/usr/local/bin/tiffgt
 /usr/local/bin/tiffinfo
 /usr/local/bin/tiffmedian
 /usr/local/bin/tiffset

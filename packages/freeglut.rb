@@ -5,7 +5,7 @@ class Freeglut < CMake
   homepage 'https://freeglut.sourceforge.net/'
   version '3.8.0'
   license 'MIT'
-  compatibility 'aarch64 armv7l x86_64'
+  compatibility 'all'
   source_url 'https://github.com/freeglut/freeglut.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
@@ -13,11 +13,13 @@ class Freeglut < CMake
   binary_sha256({
     aarch64: '8bf8dbed8391095e6c866852a596a6a5c49e456cba7805bbc9d834fee4d03968',
      armv7l: '8bf8dbed8391095e6c866852a596a6a5c49e456cba7805bbc9d834fee4d03968',
+       i686: 'b8d954e62cdaf54b4e22aad1975f8d944426a6c88890ce72baf7f5fcc34f2385',
      x86_64: 'd6583d548829e3ff1fff0c2105bf96c9868f4845ccff81949d9e85a616988182'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'libglu'
-  depends_on 'libglvnd' # R
-  depends_on 'libx11' # R
+  depends_on 'libglvnd' => :library
+  depends_on 'libx11' => :library
 end
