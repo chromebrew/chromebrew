@@ -1,4 +1,4 @@
-# Total size: 5964825
+# Total size: 6089532
 /usr/local/bin/fax2ps
 /usr/local/bin/fax2tiff
 /usr/local/bin/pal2rgb
@@ -23,16 +23,16 @@
 /usr/local/include/tiffio.h
 /usr/local/include/tiffio.hxx
 /usr/local/include/tiffvers.h
-/usr/local/lib64/cmake/tiff/TiffConfig.cmake
-/usr/local/lib64/cmake/tiff/TiffConfigVersion.cmake
-/usr/local/lib64/cmake/tiff/TiffTargets-release.cmake
-/usr/local/lib64/cmake/tiff/TiffTargets.cmake
+/usr/local/lib64/cmake/tiff/tiff-config-version.cmake
+/usr/local/lib64/cmake/tiff/tiff-config.cmake
+/usr/local/lib64/cmake/tiff/tiff-targets-release.cmake
+/usr/local/lib64/cmake/tiff/tiff-targets.cmake
 /usr/local/lib64/libtiff.so
 /usr/local/lib64/libtiff.so.6
-/usr/local/lib64/libtiff.so.6.2.0
+/usr/local/lib64/libtiff.so.6.3.0
 /usr/local/lib64/libtiffxx.so
 /usr/local/lib64/libtiffxx.so.6
-/usr/local/lib64/libtiffxx.so.6.2.0
+/usr/local/lib64/libtiffxx.so.6.3.0
 /usr/local/lib64/pkgconfig/libtiff-4.pc
 /usr/local/share/doc/tiff/manual/html/.buildinfo
 /usr/local/share/doc/tiff/manual/html/_images/bali.jpg
@@ -71,6 +71,7 @@
 /usr/local/share/doc/tiff/manual/html/_sources/functions/TIFFFieldWriteCount.rst.txt
 /usr/local/share/doc/tiff/manual/html/_sources/functions/TIFFFlush.rst.txt
 /usr/local/share/doc/tiff/manual/html/_sources/functions/TIFFGetField.rst.txt
+/usr/local/share/doc/tiff/manual/html/_sources/functions/TIFFGetMaxCompressionRatio.rst.txt
 /usr/local/share/doc/tiff/manual/html/_sources/functions/TIFFMergeFieldInfo.rst.txt
 /usr/local/share/doc/tiff/manual/html/_sources/functions/TIFFOpen.rst.txt
 /usr/local/share/doc/tiff/manual/html/_sources/functions/TIFFOpenOptions.rst.txt
@@ -185,6 +186,7 @@
 /usr/local/share/doc/tiff/manual/html/_sources/releases/v4.6.0.rst.txt
 /usr/local/share/doc/tiff/manual/html/_sources/releases/v4.7.0.rst.txt
 /usr/local/share/doc/tiff/manual/html/_sources/releases/v4.7.1.rst.txt
+/usr/local/share/doc/tiff/manual/html/_sources/releases/v4.7.2.rst.txt
 /usr/local/share/doc/tiff/manual/html/_sources/rfcs/index.rst.txt
 /usr/local/share/doc/tiff/manual/html/_sources/rfcs/rfc1_psc.rst.txt
 /usr/local/share/doc/tiff/manual/html/_sources/rfcs/rfc2_restoring_needed_tools.rst.txt
@@ -253,6 +255,7 @@
 /usr/local/share/doc/tiff/manual/html/functions/TIFFFieldWriteCount.html
 /usr/local/share/doc/tiff/manual/html/functions/TIFFFlush.html
 /usr/local/share/doc/tiff/manual/html/functions/TIFFGetField.html
+/usr/local/share/doc/tiff/manual/html/functions/TIFFGetMaxCompressionRatio.html
 /usr/local/share/doc/tiff/manual/html/functions/TIFFMergeFieldInfo.html
 /usr/local/share/doc/tiff/manual/html/functions/TIFFOpen.html
 /usr/local/share/doc/tiff/manual/html/functions/TIFFOpenOptions.html
@@ -369,6 +372,7 @@
 /usr/local/share/doc/tiff/manual/html/releases/v4.6.0.html
 /usr/local/share/doc/tiff/manual/html/releases/v4.7.0.html
 /usr/local/share/doc/tiff/manual/html/releases/v4.7.1.html
+/usr/local/share/doc/tiff/manual/html/releases/v4.7.2.html
 /usr/local/share/doc/tiff/manual/html/rfcs/index.html
 /usr/local/share/doc/tiff/manual/html/rfcs/rfc1_psc.html
 /usr/local/share/doc/tiff/manual/html/rfcs/rfc2_restoring_needed_tools.html
@@ -441,6 +445,7 @@
 /usr/local/share/man/man3/TIFFFieldWriteCount.3tiff.zst
 /usr/local/share/man/man3/TIFFFlush.3tiff.zst
 /usr/local/share/man/man3/TIFFGetField.3tiff.zst
+/usr/local/share/man/man3/TIFFGetMaxCompressionRatio.3tiff.zst
 /usr/local/share/man/man3/TIFFMergeFieldInfo.3tiff.zst
 /usr/local/share/man/man3/TIFFOpen.3tiff.zst
 /usr/local/share/man/man3/TIFFPrintDirectory.3tiff.zst

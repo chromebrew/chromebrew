@@ -17,18 +17,22 @@ class Libtiff < CMake
      x86_64: '1a6ed0b5a95a367b263ccb68ef47daaaeafc1bf5f820b51d4502dc7282eb67a7'
   })
 
+  depends_on 'freeglut' => :executable
   depends_on 'freeglut' unless ARCH == 'i686' # R
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'imake' => :build
   depends_on 'jbigkit' => :library
   depends_on 'libdeflate' => :library
   depends_on 'libglu' unless ARCH == 'i686' # R
+  depends_on 'libglvnd' => :executable
   depends_on 'libglvnd' unless ARCH == 'i686' # R
   depends_on 'libice' unless ARCH == 'i686' # R
   depends_on 'libjpeg_turbo' => :library
   depends_on 'libsm' unless ARCH == 'i686' # R
   depends_on 'libx11' unless ARCH == 'i686' # R
+  depends_on 'libxi' => :executable
   depends_on 'libxi' unless ARCH == 'i686' # R
   depends_on 'mesa' => :build unless ARCH == 'i686'
   depends_on 'sphinx' => :build
