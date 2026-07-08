@@ -1,4 +1,4 @@
-# Total size: 530899
+# Total size: 531059
 /usr/local/bin/memcached
 /usr/local/include/memcached/protocol_binary.h
 /usr/local/include/memcached/xxhash.h
