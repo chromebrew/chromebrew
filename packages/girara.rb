@@ -3,11 +3,11 @@ require 'buildsystems/meson'
 class Girara < Meson
   description 'Girara is a library that implements a user interface that focuses on simplicity and minimalism'
   homepage 'https://pwmt.org/projects/girara/'
-  version '2026.02.04'
+  version '2026.07.07'
   license 'ZLIB'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://pwmt.org/projects/girara/download/girara-#{version}.tar.xz"
-  source_sha256 '342eca8108bd05a2275e3eacb18107fa3170fa89a12c77e541a5f111f7bba56d'
+  source_sha256 '475f154148647d45e0f1324762fe5452094147085fddf2ccef4e9725c335b0c1'
   binary_compression 'tar.zst'
 
   binary_sha256({
