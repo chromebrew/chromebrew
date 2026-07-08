@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libtiff < CMake
   description 'LibTIFF provides support for the Tag Image File Format (TIFF), a widely used format for storing image data.'
   homepage 'http://www.libtiff.org/'
-  version '4.7.1-1'
+  version '4.7.2'
   license 'libtiff'
   compatibility 'all'
   source_url 'https://github.com/libsdl-org/libtiff.git'
