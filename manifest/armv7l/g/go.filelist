@@ -1,4 +1,4 @@
-# Total size: 228436025
+# Total size: 228494849
 /usr/local/bin/go
 /usr/local/bin/gofmt
 /usr/local/share/go/CONTRIBUTING.md
@@ -1932,6 +1932,7 @@
 /usr/local/share/go/src/cmd/go/testdata/mod/example.com_fuzzfail_v0.2.0.txt
 /usr/local/share/go/src/cmd/go/testdata/mod/example.com_generics_v1.0.0.txt
 /usr/local/share/go/src/cmd/go/testdata/mod/example.com_ignore_v1.0.0.txt
+/usr/local/share/go/src/cmd/go/testdata/mod/example.com_importcrypto_v1.0.0.txt
 /usr/local/share/go/src/cmd/go/testdata/mod/example.com_incompatiblewithsub_v1.0.0.txt
 /usr/local/share/go/src/cmd/go/testdata/mod/example.com_incompatiblewithsub_v2.0.0+incompatible.txt
 /usr/local/share/go/src/cmd/go/testdata/mod/example.com_invalidpath_v1_v1.0.0.txt
@@ -2543,6 +2544,7 @@
 /usr/local/share/go/src/cmd/go/testdata/script/mod_get_exec_toolchain.txt
 /usr/local/share/go/src/cmd/go/testdata/script/mod_get_extra.txt
 /usr/local/share/go/src/cmd/go/testdata/script/mod_get_fallback.txt
+/usr/local/share/go/src/cmd/go/testdata/script/mod_get_fips140_issue73649.txt
 /usr/local/share/go/src/cmd/go/testdata/script/mod_get_fossil.txt
 /usr/local/share/go/src/cmd/go/testdata/script/mod_get_future.txt
 /usr/local/share/go/src/cmd/go/testdata/script/mod_get_go_file.txt
@@ -14117,6 +14119,7 @@
 /usr/local/share/go/test/fixedbugs/issue7867.go
 /usr/local/share/go/test/fixedbugs/issue7884.go
 /usr/local/share/go/test/fixedbugs/issue79182.go
+/usr/local/share/go/test/fixedbugs/issue79186.go
 /usr/local/share/go/test/fixedbugs/issue7921.go
 /usr/local/share/go/test/fixedbugs/issue7944.go
 /usr/local/share/go/test/fixedbugs/issue7995.go
@@ -14126,6 +14129,7 @@
 /usr/local/share/go/test/fixedbugs/issue7996.go
 /usr/local/share/go/test/fixedbugs/issue7997.go
 /usr/local/share/go/test/fixedbugs/issue7998.go
+/usr/local/share/go/test/fixedbugs/issue80004.go
 /usr/local/share/go/test/fixedbugs/issue8004.go
 /usr/local/share/go/test/fixedbugs/issue8011.go
 /usr/local/share/go/test/fixedbugs/issue8017.go
