@@ -19,7 +19,7 @@ class Freeglut < CMake
 
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
-  depends_on 'libglu'
+  depends_on 'libglu'=> :build
   depends_on 'libglvnd' => :library
   depends_on 'libx11' => :library
 end
