@@ -3,11 +3,11 @@ require 'package'
 class Opencode < Package
   description 'The open source coding agent.'
   homepage 'https://opencode.ai/'
-  version '1.17.14'
+  version '1.17.15'
   license 'MIT'
   compatibility 'x86_64'
   source_url "https://github.com/sst/opencode/releases/download/v#{version}/opencode-linux-x64.tar.gz"
-  source_sha256 '38a870d0951a73f640eae7db1729364bc4e3a8405f7f3e1ded4994f7cd53ed2e'
+  source_sha256 '0e1353771192c7d2dc0c610d61ff70668bb8a4420dc4d9e35cfd33d7245f3e67'
 
   no_compile_needed
 
