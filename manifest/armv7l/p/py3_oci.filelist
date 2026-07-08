@@ -1,12 +1,12 @@
-# Total size: 406483125
-/usr/local/lib/python3.14/site-packages/oci-2.181.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/oci-2.181.0.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/oci-2.181.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/oci-2.181.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/oci-2.181.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/oci-2.181.0.dist-info/THIRD_PARTY_LICENSES.txt
-/usr/local/lib/python3.14/site-packages/oci-2.181.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/oci-2.181.0.dist-info/top_level.txt
+# Total size: 406366670
+/usr/local/lib/python3.14/site-packages/oci-2.181.1.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/oci-2.181.1.dist-info/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/oci-2.181.1.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/oci-2.181.1.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/oci-2.181.1.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/oci-2.181.1.dist-info/THIRD_PARTY_LICENSES.txt
+/usr/local/lib/python3.14/site-packages/oci-2.181.1.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/oci-2.181.1.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/oci/__init__.py
 /usr/local/lib/python3.14/site-packages/oci/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/__pycache__/base_client.cpython-314.pyc
@@ -140,24 +140,6 @@
 /usr/local/lib/python3.14/site-packages/oci/_vendor/idna/intranges.py
 /usr/local/lib/python3.14/site-packages/oci/_vendor/idna/package_data.py
 /usr/local/lib/python3.14/site-packages/oci/_vendor/idna/uts46data.py
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/__init__.py
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/__pycache__/__init__.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/__pycache__/algorithms.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/__pycache__/api_jwk.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/__pycache__/api_jws.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/__pycache__/api_jwt.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/__pycache__/exceptions.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/__pycache__/help.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/__pycache__/jwks_client.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/__pycache__/utils.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/algorithms.py
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/api_jwk.py
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/api_jws.py
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/api_jwt.py
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/exceptions.py
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/help.py
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/jwks_client.py
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/utils.py
 /usr/local/lib/python3.14/site-packages/oci/_vendor/requests/__init__.py
 /usr/local/lib/python3.14/site-packages/oci/_vendor/requests/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/_vendor/requests/__pycache__/__version__.cpython-314.pyc
