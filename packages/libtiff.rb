@@ -10,7 +10,6 @@ class Libtiff < CMake
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
-
   binary_sha256({
     aarch64: 'e65411777c8eda46b9daad9868d19f7948c1ec16e222b8e40736f95be0eac4ad',
      armv7l: 'e65411777c8eda46b9daad9868d19f7948c1ec16e222b8e40736f95be0eac4ad',
