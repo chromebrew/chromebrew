@@ -17,7 +17,6 @@ class Zoneinfo < Package
      x86_64: '1b2740851a95fdf549bbf1f6379ddc092c8ed6f2f91a1876d573dfea526c66bc'
   })
 
-  depends_on 'glibc' => :executable
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :executable
 
