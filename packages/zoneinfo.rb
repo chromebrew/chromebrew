@@ -19,6 +19,7 @@ class Zoneinfo < Package
 
   depends_on 'glibc' => :executable
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :executable
 
   def self.patch
     system "sed -i 's:TZDEFAULT = $(TOPDIR)/etc/localtime:TZDEFAULT = #{CREW_PREFIX}/etc/localtime:g' Makefile"
