@@ -1,4 +1,4 @@
-# Total size: 12095946
+# Total size: 12098071
 /usr/local/bin/aws
 /usr/local/bin/aws.cmd
 /usr/local/bin/aws_bash_completer
@@ -6,13 +6,13 @@
 /usr/local/bin/aws_zsh_completer.sh
 /usr/local/etc/bash.d/aws
 /usr/local/etc/zsh.d/aws
-/usr/local/lib/python3.14/site-packages/awscli-1.45.42.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/awscli-1.45.42.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/awscli-1.45.42.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/awscli-1.45.42.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/awscli-1.45.42.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/awscli-1.45.42.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/awscli-1.45.42.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/awscli-1.45.44.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/awscli-1.45.44.dist-info/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/awscli-1.45.44.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/awscli-1.45.44.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/awscli-1.45.44.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/awscli-1.45.44.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/awscli-1.45.44.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/awscli/__init__.py
 /usr/local/lib/python3.14/site-packages/awscli/__main__.py
 /usr/local/lib/python3.14/site-packages/awscli/__pycache__/__init__.cpython-314.pyc
@@ -103,6 +103,7 @@
 /usr/local/lib/python3.14/site-packages/awscli/customizations/__pycache__/scalarparse.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/awscli/customizations/__pycache__/sessendemail.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/awscli/customizations/__pycache__/sessionmanager.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/awscli/customizations/__pycache__/signin.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/awscli/customizations/__pycache__/sms_voice.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/awscli/customizations/__pycache__/socialmessaging.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/awscli/customizations/__pycache__/streamingoutputarg.cpython-314.pyc
@@ -429,6 +430,7 @@
 /usr/local/lib/python3.14/site-packages/awscli/customizations/servicecatalog/utils.py
 /usr/local/lib/python3.14/site-packages/awscli/customizations/sessendemail.py
 /usr/local/lib/python3.14/site-packages/awscli/customizations/sessionmanager.py
+/usr/local/lib/python3.14/site-packages/awscli/customizations/signin.py
 /usr/local/lib/python3.14/site-packages/awscli/customizations/sms_voice.py
 /usr/local/lib/python3.14/site-packages/awscli/customizations/socialmessaging.py
 /usr/local/lib/python3.14/site-packages/awscli/customizations/streamingoutputarg.py
