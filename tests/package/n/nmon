@@ -1,0 +1,3 @@
+#!/bin/bash
+nmon -h | head
+nmon -V

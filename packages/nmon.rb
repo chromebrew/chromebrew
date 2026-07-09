@@ -3,30 +3,33 @@ require 'package'
 class Nmon < Package
   description "nmon is short for Nigel's performance MONitor for Linux"
   homepage 'https://nmon.sourceforge.io/pmwiki.php'
-  version '16g'
+  version '16s'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'http://downloads.sourceforge.net/project/nmon/lmon16g.c'
-  source_sha256 'da82dd693b503b062854dfe7dbb5d36b347872ab44a4aa05b97e9d577747f688'
-  binary_compression 'tar.xz'
+  source_url "https://downloads.sourceforge.net/project/nmon/lmon#{version}.c"
+  source_sha256 '0736ce0f729e48c124a7ba566c069c5a234511cc9c6ac9277da92f8bb44f2b11'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bcb216dff6287ea5bfe77ab99e0f299739be39c8e53d8887ad304f68faf8363e',
-     armv7l: 'bcb216dff6287ea5bfe77ab99e0f299739be39c8e53d8887ad304f68faf8363e',
-       i686: 'ae03d1026a0178732a0bdc024b746c0839d028af13efbabc6aa42c1c58a1d698',
-     x86_64: 'ee701f555a32e7161fee50662f34151c7378f65751393a2e9ab974af3da97d93'
+    aarch64: 'a2ec115cc91eeaf987b538c8a3be11ff9aafa47d64e46c142bd665c55ffc2cb5',
+     armv7l: 'a2ec115cc91eeaf987b538c8a3be11ff9aafa47d64e46c142bd665c55ffc2cb5',
+       i686: 'fbe6bf9234e9685aad02ea2798c202d2dad9019cc53ae4fd332fb5a02ed3e774',
+     x86_64: 'fa566c10833700f66e320b16af52fbe6d396b505abe2b39f741b613aa2090ff3'
   })
 
-  depends_on 'ncurses'
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'ncurses' => :executable
+
+  def self.patch
+    system "sed -i 's,<ncurses.h>,<#{CREW_PREFIX}/include/ncurses/ncurses.h>,' lmon#{version}.c"
+  end
 
   def self.build
-    system 'curl -#LO http://downloads.sourceforge.net/project/nmon/lmon16g.c'
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest(File.read('lmon16g.c')) == 'da82dd693b503b062854dfe7dbb5d36b347872ab44a4aa05b97e9d577747f688'
-    system "sed -i 's,<ncurses.h>,<#{CREW_PREFIX}/include/ncurses/ncurses.h>,' lmon16g.c"
-    system 'cc -o nmon lmon16g.c -g -O3 -Wall -D JFS -D GETUSER -D LARGEMEM -lncurses -lm -g -D POWER'
+    system "cc -o nmon lmon#{version}.c -g -O3 -Wall -D JFS -D GETUSER -D LARGEMEM -lncurses -lm -g -D POWER"
   end
 
   def self.install
-    system "install -Dm755 nmon #{CREW_DEST_PREFIX}/bin/nmon"
+    FileUtils.install 'nmon', "#{CREW_DEST_PREFIX}/bin/nmon", mode: 0o755
   end
 end
