@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Libffi < Autotools
   description 'The libffi library provides a portable, high level programming interface to various calling conventions.'
   homepage 'https://sourceware.org/libffi/'
-  version '3.6.0'
+  version '3.7.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/libffi/libffi.git'
