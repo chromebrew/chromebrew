@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Wlroots < Meson
   description 'Modular Wayland compositor library'
   homepage 'https://gitlab.freedesktop.org/wlroots/wlroots'
-  version '0.20.1'
+  version '0.20.2'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/wlroots/wlroots.git'
@@ -11,9 +11,9 @@ class Wlroots < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e270db5a04b83ae07180be9922ed4121b960f2ab25b74a7b59f38fc0952635dd',
-     armv7l: 'e270db5a04b83ae07180be9922ed4121b960f2ab25b74a7b59f38fc0952635dd',
-     x86_64: '1af3ea4d234c89b61cf062ccea85bceac1401726baba44b6af85221ed99f538e'
+    aarch64: '4aadb998116d6adfba62b87bf1b248d1b0cb4facd90a9e883394cb6cfd6560e0',
+     armv7l: '4aadb998116d6adfba62b87bf1b248d1b0cb4facd90a9e883394cb6cfd6560e0',
+     x86_64: 'bbb93db2e1e69a312d2d13cac87ce9429cb65c142c291cf42e7f45cd8d0540b6'
   })
 
   depends_on 'eudev' => :library
