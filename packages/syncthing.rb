@@ -11,10 +11,10 @@ class Syncthing < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '11cf08a5e29fd0debcb41d414ed65b54f22cf1433da50cb9927b7d11113858bc',
-     armv7l: '11cf08a5e29fd0debcb41d414ed65b54f22cf1433da50cb9927b7d11113858bc',
-       i686: '72637da6cd0c78074359c5ca5f9ad404a7138f7ff76c312b6ea0dab946f53613',
-     x86_64: '254df2b51bcf91f806c0daaa86b21164a834067488e89ddc9fd6832a04ce8422'
+    aarch64: '1e2d9c481e28a7690af98e295b8e49e698b081cefd4df2e219248a4c2f999b61',
+     armv7l: '1e2d9c481e28a7690af98e295b8e49e698b081cefd4df2e219248a4c2f999b61',
+       i686: 'e496f7da5c34c05680e16359ef40867d2195dfa5b0f0706e143ad11487fdb4f0',
+     x86_64: 'edc70ad1f166bcecfabbbeec03c3f1aec8a77d8af1307e80b53bc9f400fa5bfb'
   })
 
   depends_on 'glibc' => :executable
