@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Wxwidgets < CMake
   description 'wxWidgets is a C++ library that lets developers create applications for Windows, macOS, Linux and other platforms with a single code base.'
   homepage 'https://www.wxwidgets.org/'
-  version '3.3.2'
+  version '3.3.3'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/wxWidgets/wxWidgets.git'
