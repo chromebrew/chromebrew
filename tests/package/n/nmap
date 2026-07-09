@@ -1,0 +1,4 @@
+#!/bin/bash
+ncat --version
+nmap --version
+nping --version
