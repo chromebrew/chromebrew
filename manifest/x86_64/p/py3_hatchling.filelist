@@ -1,12 +1,12 @@
-# Total size: 723946
+# Total size: 725716
 /usr/local/bin/hatchling
-/usr/local/lib/python3.14/site-packages/hatchling-1.30.1.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/hatchling-1.30.1.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/hatchling-1.30.1.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/hatchling-1.30.1.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/hatchling-1.30.1.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/hatchling-1.30.1.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/hatchling-1.30.1.dist-info/licenses/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/hatchling-1.31.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/hatchling-1.31.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/hatchling-1.31.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/hatchling-1.31.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/hatchling-1.31.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/hatchling-1.31.0.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/hatchling-1.31.0.dist-info/licenses/LICENSE.txt
 /usr/local/lib/python3.14/site-packages/hatchling/__about__.py
 /usr/local/lib/python3.14/site-packages/hatchling/__init__.py
 /usr/local/lib/python3.14/site-packages/hatchling/__main__.py
