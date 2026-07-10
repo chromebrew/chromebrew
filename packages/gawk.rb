@@ -10,11 +10,11 @@ require 'buildsystems/autotools'
 class Gawk < Autotools
   description 'The gawk utility interprets a special-purpose programming language that makes it possible to handle simple data-reformatting jobs with just a few lines of code.'
   homepage 'https://www.gnu.org/software/gawk/'
-  version '5.4.0'
+  version '5.4.1'
   license 'GPL-2'
   compatibility 'all'
   source_url "https://ftp.gnu.org/gnu/gawk/gawk-#{version}.tar.xz"
-  source_sha256 'ca9c16d3d11d0ff8c69d79dc0b47267e1329a69b39b799895604ed447d3ca90b'
+  source_sha256 '07f6f7342b7febe4313fc2c2542ad93d64fe20ad8717200109f105a826f5fd37'
   binary_compression 'tar.zst'
 
   binary_sha256({
