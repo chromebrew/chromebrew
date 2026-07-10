@@ -11,13 +11,14 @@ class Atuin < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cb90bda5c0c423bd003aa5b303df0691bd8c1283e1b1d693d12d5e57099bbb7c',
-     armv7l: 'cb90bda5c0c423bd003aa5b303df0691bd8c1283e1b1d693d12d5e57099bbb7c',
-     x86_64: 'cb0cf12fc2b122ff2322da9b1946f52fa2075add01203df2538845657d466ed9'
+    aarch64: '042c1626b115e6a7e099956d907444fb8db259562dda332fe77b1bee85949674',
+     armv7l: '042c1626b115e6a7e099956d907444fb8db259562dda332fe77b1bee85949674',
+     x86_64: '4b692543c287b28ea1cd7e00bc9168ff80b7704acce778d7e4c69259acb03b27'
   })
 
   depends_on 'gcc_lib' => :executable
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'rust' => :build
 
   print_source_bashrc
