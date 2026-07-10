@@ -20,6 +20,7 @@ class Opam < Autotools
   depends_on 'bubblewrap' => :logical
   depends_on 'gcc_lib' => :executable
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'ocaml' # R
   depends_on 'rsync' => :build
   depends_on 'zstd' => :executable
