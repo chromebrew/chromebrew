@@ -6,21 +6,22 @@ require 'buildsystems/autotools'
 class Ethtool < Autotools
   description 'Utility for controlling network drivers and hardware'
   homepage 'https://www.kernel.org/pub/software/network/ethtool/'
-  version '7.0'
+  version '7.1'
   license 'LGPL2.1'
   compatibility 'all'
   source_url "https://www.kernel.org/pub/software/network/ethtool/ethtool-#{version}.tar.xz"
-  source_sha256 '660bf9725a7871343a0d232068a7634fbcfb69b6c2f8eff455827faefb0cd162'
+  source_sha256 '4d78c26edc0255bc92f4b995b5fd66108d75ff966ed4694f6025a6d370bc2496'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9bd4247a1327f5bff2086059b05dc651ef57e7e9ebb68320d53afa4c42b5d643',
-     armv7l: '9bd4247a1327f5bff2086059b05dc651ef57e7e9ebb68320d53afa4c42b5d643',
-       i686: 'e837069d04e0451e35fac0822f95e7ab5edaf25b03581b5142ac26afe5f1847c',
-     x86_64: '975f5bb6cb23a229f71bd5b1dd50af40e5cfbe506466dfabe716e29390493d5b'
+    aarch64: 'd1e52a4a6e83943d9975c29950a7003e747c487f46848d8e96276636a13674c8',
+     armv7l: 'd1e52a4a6e83943d9975c29950a7003e747c487f46848d8e96276636a13674c8',
+       i686: '3d6e7fc0d2d69650a24633e64f1bbc7817938fcfc1869426e637cad71bff227a',
+     x86_64: 'd2cc764f30e1794c81c9bb71de164bf8a6b1442211d34580637c2d003d8f190d'
   })
 
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'libmnl' => :executable
 
   # Tests fail for arm builds.
