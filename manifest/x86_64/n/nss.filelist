@@ -1,4 +1,4 @@
-# Total size: 7804385
+# Total size: 11679457
 /usr/local/bin/certutil
 /usr/local/bin/cmsutil
 /usr/local/bin/compile-et.pl
@@ -8,6 +8,7 @@
 /usr/local/bin/modutil
 /usr/local/bin/nspr-config
 /usr/local/bin/nss
+/usr/local/bin/nssdefaults
 /usr/local/bin/pk12util
 /usr/local/bin/prerr.properties
 /usr/local/bin/pwdecrypt
@@ -19,22 +20,15 @@
 /usr/local/bin/validation
 /usr/local/include/nspr/md/_aix32.cfg
 /usr/local/include/nspr/md/_aix64.cfg
-/usr/local/include/nspr/md/_bsdi.cfg
 /usr/local/include/nspr/md/_darwin.cfg
 /usr/local/include/nspr/md/_freebsd.cfg
-/usr/local/include/nspr/md/_hpux32.cfg
-/usr/local/include/nspr/md/_hpux64.cfg
 /usr/local/include/nspr/md/_linux.cfg
 /usr/local/include/nspr/md/_netbsd.cfg
 /usr/local/include/nspr/md/_nto.cfg
 /usr/local/include/nspr/md/_openbsd.cfg
-/usr/local/include/nspr/md/_os2.cfg
 /usr/local/include/nspr/md/_qnx.cfg
 /usr/local/include/nspr/md/_riscos.cfg
-/usr/local/include/nspr/md/_scoos.cfg
 /usr/local/include/nspr/md/_solaris.cfg
-/usr/local/include/nspr/md/_unixware.cfg
-/usr/local/include/nspr/md/_unixware7.cfg
 /usr/local/include/nspr/md/_win95.cfg
 /usr/local/include/nspr/md/_winnt.cfg
 /usr/local/include/nspr/nspr.h
@@ -91,7 +85,6 @@
 /usr/local/include/nspr/prtrace.h
 /usr/local/include/nspr/prtypes.h
 /usr/local/include/nspr/prvrsion.h
-/usr/local/include/nspr/prwin16.h
 /usr/local/include/nss/base64.h
 /usr/local/include/nss/blapit.h
 /usr/local/include/nss/cert.h
@@ -120,6 +113,7 @@
 /usr/local/include/nss/kyber.h
 /usr/local/include/nss/lowkeyi.h
 /usr/local/include/nss/lowkeyti.h
+/usr/local/include/nss/ml_dsat.h
 /usr/local/include/nss/mozpkix/Input.h
 /usr/local/include/nss/mozpkix/Result.h
 /usr/local/include/nss/mozpkix/Time.h
@@ -148,6 +142,7 @@
 /usr/local/include/nss/nssckg.h
 /usr/local/include/nss/nssckmdt.h
 /usr/local/include/nss/nssckt.h
+/usr/local/include/nss/nsshash.h
 /usr/local/include/nss/nssilckt.h
 /usr/local/include/nss/nssilock.h
 /usr/local/include/nss/nsslocks.h
