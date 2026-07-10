@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Netcdf < CMake
   description 'NetCDF is a set of software libraries and self-describing, machine-independent data formats that support the creation, access, and sharing of array-oriented scientific data.'
   homepage 'https://www.unidata.ucar.edu/software/netcdf/'
-  version '4.10.0'
+  version '4.10.1'
   license 'UCAR-Unidata'
   compatibility 'all'
   source_url 'https://github.com/Unidata/netcdf-c.git'
