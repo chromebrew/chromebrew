@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Pipewire < Meson
   description 'PipeWire is a project that aims to greatly improve handling of audio and video under Linux.'
   homepage 'https://pipewire.org'
-  version '1.6.7'
+  version '1.6.8'
   compatibility 'aarch64 armv7l x86_64'
   license 'LGPL-2.1+'
   source_url 'https://gitlab.freedesktop.org/pipewire/pipewire.git'
