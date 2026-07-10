@@ -11,9 +11,9 @@ class Pipewire < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5d60c142249a7d627c7cecf500f22bab5af3698ff51f04b013177622b45a8503',
-     armv7l: '5d60c142249a7d627c7cecf500f22bab5af3698ff51f04b013177622b45a8503',
-     x86_64: 'e90ac16f4fc31c4e47a1f5ca1841c40a33e53fdc767324cfb44242cddf324412'
+    aarch64: '6dfc9b0d38910d94286eca24feabf56ced219ffc19ad843fed8bb0aa35b287ac',
+     armv7l: '6dfc9b0d38910d94286eca24feabf56ced219ffc19ad843fed8bb0aa35b287ac',
+     x86_64: '07b536d9ff8c170d40a03fbf59805b4c214febbcaace9448c0c99cbec1655799'
   })
 
   depends_on 'alsa_lib' => :library
