@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libtorrent < CMake
   description 'Feature complete C++ bittorrent implementation focusing on efficiency and scalability.'
   homepage 'https://www.libtorrent.org/'
-  version '2.0.13'
+  version '2.1.0'
   license 'Unknown, BSD-3-Clause'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/arvidn/libtorrent.git'
