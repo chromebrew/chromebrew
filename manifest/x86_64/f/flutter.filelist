@@ -1,4 +1,4 @@
-# Total size: 2528763021
+# Total size: 2529484398
 /home/chronos/user/.flutter_tool_state
 /usr/local/bin/dart
 /usr/local/bin/flutter
@@ -40,9 +40,9 @@
 /usr/local/share/flutter/.git/logs/refs/remotes/origin/HEAD
 /usr/local/share/flutter/.git/objects/info/commit-graph
 /usr/local/share/flutter/.git/objects/info/packs
-/usr/local/share/flutter/.git/objects/pack/pack-652d2cc582834e4b8aa27335389d16e8b2d3b397.idx
-/usr/local/share/flutter/.git/objects/pack/pack-652d2cc582834e4b8aa27335389d16e8b2d3b397.pack
-/usr/local/share/flutter/.git/objects/pack/pack-652d2cc582834e4b8aa27335389d16e8b2d3b397.rev
+/usr/local/share/flutter/.git/objects/pack/pack-713d7439cb9e9eebffba01c762f08272ac288a32.idx
+/usr/local/share/flutter/.git/objects/pack/pack-713d7439cb9e9eebffba01c762f08272ac288a32.pack
+/usr/local/share/flutter/.git/objects/pack/pack-713d7439cb9e9eebffba01c762f08272ac288a32.rev
 /usr/local/share/flutter/.git/packed-refs
 /usr/local/share/flutter/.git/refs/remotes/origin/HEAD
 /usr/local/share/flutter/.gitattributes
@@ -203,7 +203,7 @@
 /usr/local/share/flutter/.pub-preload-cache/matcher-0.12.19.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/material_color_utilities-0.13.0.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/meta-1.18.0.tar.gz
-/usr/local/share/flutter/.pub-preload-cache/meta-1.18.3.tar.gz
+/usr/local/share/flutter/.pub-preload-cache/meta-1.19.0.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/metrics_center-1.0.15.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/mime-2.0.0.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/multicast_dns-0.3.3.tar.gz
