@@ -22,6 +22,7 @@ class Shared_mime_info < Meson
   depends_on 'glib' => :executable
   depends_on 'glibc' => :executable
   depends_on 'libxml2' => :executable
+  depends_on 'xmlto' => :build
 
   meson_options '-Dbuild-tests=false'
 
