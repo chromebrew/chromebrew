@@ -11,10 +11,10 @@ class Libffi < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd463ee58e6a0dc7d9aa2db7ad849685f6315b03d8a6b6b8566786bd558efa2e2',
-     armv7l: 'd463ee58e6a0dc7d9aa2db7ad849685f6315b03d8a6b6b8566786bd558efa2e2',
-       i686: 'd99613923965bff817eedda2e224b50cbf48fefd3ecdd9a485174a616dbe3c84',
-     x86_64: '1307ea1deb5c2585facfef32d5d785c58b43051ff9bd58abcaeaaef62dd13273'
+    aarch64: 'b081d3944c1859c91786c3991710bd7a893e08020bf9f10a78230d887ed5982c',
+     armv7l: 'b081d3944c1859c91786c3991710bd7a893e08020bf9f10a78230d887ed5982c',
+       i686: '35b489e915cace9d810178ffffb1724939d7ad4d5ac2a4028552242f504a2e5d',
+     x86_64: 'a66e445450e438c92bf4f41c2534ac1a801a47ed43624d56a7e385e00e4fe968'
   })
 
   depends_on 'gcc_lib' => :library
