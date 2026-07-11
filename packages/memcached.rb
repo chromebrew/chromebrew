@@ -11,10 +11,10 @@ class Memcached < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '44e9a16270d5bbe1bcc2a5a174dd4608bcced50f4461584b356861bb5edaeb25',
-     armv7l: '44e9a16270d5bbe1bcc2a5a174dd4608bcced50f4461584b356861bb5edaeb25',
-       i686: 'b5e5e95c8ec657e9859ed2938be6763e0e52776d44109383137db3feab2ee36b',
-     x86_64: 'd82f57b684605b06188b7fd80c296ff7fec3ef0d1864c490fb9b14b11337c37d'
+    aarch64: 'fc758b91132c375ee48249d17d6c6c261ce5d13887aabb7a69d3465e9aa09f05',
+     armv7l: 'fc758b91132c375ee48249d17d6c6c261ce5d13887aabb7a69d3465e9aa09f05',
+       i686: 'b1d7eb94924a260bd1dd085e9693ab60f10c8a377211366753e61cf8c8896dda',
+     x86_64: '3713d6356361ded0670e4fc797007673ee934ffd2c7a61f52dcc6ee1dfce76f6'
   })
 
   depends_on 'glibc' => :executable
