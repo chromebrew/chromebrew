@@ -21,6 +21,7 @@ class Shared_mime_info < Meson
   depends_on 'gettext' => :build
   depends_on 'glib' => :executable
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'libxml2' => :executable
   depends_on 'xmlto' => :build
 
