@@ -18,6 +18,7 @@ class Expat < CMake
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   run_tests
 
   cmake_build_relative_dir 'expat'
