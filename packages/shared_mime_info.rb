@@ -11,10 +11,10 @@ class Shared_mime_info < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f44c8dcbed47cad416f9a85537672b76d4589afe17c200e86b689f533c934351',
-     armv7l: 'f44c8dcbed47cad416f9a85537672b76d4589afe17c200e86b689f533c934351',
-       i686: '7f27204235a196acd78790949c5ca13a4db2d9dac7b9f007135538baf3afeb73',
-     x86_64: '3723dd862e10c39a982928773129aca53683c11571caf5360831ab7d2a5486d0'
+    aarch64: '24afe56e4d97ded4d9d4e6725c201d9dc5f40e33cc231376c7f473aa895c40b2',
+     armv7l: '24afe56e4d97ded4d9d4e6725c201d9dc5f40e33cc231376c7f473aa895c40b2',
+       i686: '93c1a83ad2f0041788f36c7ebd7e298bbdc9299846d3a9c67a71c4de14413d69',
+     x86_64: '3d7cc947d02e3462f8cf8ac706449b33d2dad8f544a2a49c6c9ff5fd15b510d1'
   })
 
   depends_on 'gcc_lib' => :executable
