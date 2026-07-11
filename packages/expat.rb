@@ -21,7 +21,8 @@ class Expat < CMake
   run_tests
 
   cmake_build_relative_dir 'expat'
-  cmake_options '-DEXPAT_BUILD_DOCS=OFF \
+  cmake_options "-DEXPAT_BUILD_DOCS=OFF \
           -DEXPAT_BUILD_EXAMPLES=OFF \
-          -DBUILD_SHARED_LIBS=ON'
+          -DBUILD_SHARED_LIBS=ON \
+          #{'-DEXPAT_DEV_URANDOM=ON' if ARCH == 'i686'}"
 end
