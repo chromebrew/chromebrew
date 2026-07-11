@@ -18,6 +18,7 @@ class Pupnp < CMake
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gtest' => :build
 
   cmake_options "-DGTest_DIR=#{CREW_LIB_PREFIX}/cmake/GTest"
