@@ -1,0 +1,6 @@
+#!/bin/bash
+sample_decode -? | head
+sample_encode -? | head
+sample_multi_transcode -? | head
+sample_vpp -? | head
+vpl-inspect -? | head
