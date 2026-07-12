@@ -11,9 +11,9 @@ class Simde < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '608a9263a2d384fe68f2b73ab2155cb1e62b4c3441c5c0cd36693c4106365705',
-     armv7l: '608a9263a2d384fe68f2b73ab2155cb1e62b4c3441c5c0cd36693c4106365705',
-     x86_64: '524c27c5bdb6b6e4331b9c3872d8ccc66fca210aa7faef074087f802a8880387'
+    aarch64: 'ce3be32a98c661182e4470ba8eb618f7521a974cc3437d02d048bdc4fdb84582',
+     armv7l: 'ce3be32a98c661182e4470ba8eb618f7521a974cc3437d02d048bdc4fdb84582',
+     x86_64: '73aee39beff9d1e20ed78b9369da059e348d00a8330d62b70730d0c5844e862b'
   })
 
   depends_on 'glibc' # R
