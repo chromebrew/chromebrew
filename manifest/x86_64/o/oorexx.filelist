@@ -1,7 +1,9 @@
-# Total size: 6283368
+# Total size: 7116622
 /usr/local/bin/csvStream.cls
 /usr/local/bin/dateparser.cls
 /usr/local/bin/json.cls
+/usr/local/bin/json.dtd
+/usr/local/bin/json.xsd
 /usr/local/bin/mime.cls
 /usr/local/bin/ncurses.cls
 /usr/local/bin/rexx
@@ -15,6 +17,11 @@
 /usr/local/bin/smtp.cls
 /usr/local/bin/socket.cls
 /usr/local/bin/streamsocket.cls
+/usr/local/bin/xmlToJson.xsl
+/usr/local/bin/xmlToYaml.xsl
+/usr/local/bin/yaml.cls
+/usr/local/bin/yaml.dtd
+/usr/local/bin/yaml.xsd
 /usr/local/include/oorexxapi.h
 /usr/local/include/oorexxerrors.h
 /usr/local/include/rexx.h
