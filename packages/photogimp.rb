@@ -3,11 +3,11 @@ require 'package'
 class Photogimp < Package
   description 'A Patch for GIMP 3+ for Photoshop Users'
   homepage 'https://photogimp.com/'
-  version '3.0'
+  version '3.1'
   license 'GPL-3.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://github.com/Diolinux/PhotoGIMP/releases/download/#{version}/PhotoGIMP-linux.zip"
-  source_sha256 '1af6e2a6308bbc0fb716a7dbbd68036adbcc091da16432869c7c6c6aef18e54e'
+  source_sha256 'bf0e1279870d40152beb3e702cf3e4e01a6892031a1ace5bc4a9b858894b584e'
 
   depends_on 'gimp' => :logical
   depends_on 'xdg_base' => :logical
