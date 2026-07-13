@@ -80,6 +80,7 @@ renamed_packages = Set[
   { pkg_name: 'moonbuggy', pkg_rename: 'moon_buggy', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'oci_cli', pkg_rename: 'py3_oci_cli', comments: 'Fix to match upstream name.' },
   { pkg_name: 'onepassword', pkg_rename: 'onepassword_cli', comments: 'Rename to distinguish between onepassword_gui.' },
+  { pkg_name: 'onevpl', pkg_rename: 'libvpl', comments: 'Rename to redirected github repository.' },
   { pkg_name: 'perl_locale_messages', pkg_rename: 'perl_libintl_perl', comments: 'Renamed to identify perl package.' },
   { pkg_name: 'percona_toolkit', pkg_rename: 'perl_percona_toolkit', comments: 'Renamed to identify perl package.' },
   { pkg_name: 'pkgconfig', pkg_rename: 'pkg_config', comments: 'Renamed to better match upstream.' },
