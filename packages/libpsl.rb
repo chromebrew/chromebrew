@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Libpsl < Meson
   description 'C library for the Public Suffix List'
   homepage 'https://github.com/rockdaboot/libpsl'
-  version '0.22.0'
+  version '0.23.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/rockdaboot/libpsl.git'
