@@ -1,0 +1,4 @@
+#!/bin/bash
+opj_compress -h | head
+opj_decompress -h | head
+opj_dump -h | head
