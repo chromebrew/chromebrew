@@ -1,38 +1,26 @@
-# Adapted from Arch Linux openh264 PKGBUILD at:
-# https://github.com/archlinux/svntogit-community/raw/packages/openh264/trunk/PKGBUILD
+require 'buildsystems/meson'
 
-require 'package'
-
-class Openh264 < Package
+class Openh264 < Meson
   description 'H.264 encoder and decoder'
   homepage 'https://www.openh264.org/'
-  version '2.3.1'
+  version '2.6.0'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/cisco/openh264/archive/v2.3.1/openh264-2.3.1.tar.gz'
-  source_sha256 '453afa66dacb560bc5fd0468aabee90c483741571bca820a39a1c07f0362dc32'
+  source_url 'https://github.com/cisco/openh264.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd25d54ea1cf05c529fbf86b54fe26a0b80be4cc424e3f4dcdf6e70c2af6c0283',
-     armv7l: 'd25d54ea1cf05c529fbf86b54fe26a0b80be4cc424e3f4dcdf6e70c2af6c0283',
-       i686: '37cb08ef667b57bdcb21391bd5e96ba78f080d3107a5d6044522a745b17e86cc',
-     x86_64: '5a4dcecb3251a329c6b6539162e212fc4fb497159e98567208bc348bda5d579d'
+    aarch64: 'a8f6cd409bb67c0317fec6c0d4ae859223f625f65d96e8f735684fd9e0c206d8',
+     armv7l: 'a8f6cd409bb67c0317fec6c0d4ae859223f625f65d96e8f735684fd9e0c206d8',
+       i686: 'c30bcc97e4ac3429bd33ed29673c67a23efe365e5146fea605fe6c1edf343c98',
+     x86_64: 'ce4a93fdc4c21968f946e23b34007ff216fed23705df8b653e28546df8892316'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'nasm' => :build
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-      -Dtests=disabled \
-      builddir"
-    system 'meson configure --no-pager builddir'
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+  meson_options '-Dtests=disabled'
 end
