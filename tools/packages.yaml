@@ -5530,6 +5530,11 @@ url: https://downloads.xiph.org/releases/vorbis
 activity: low
 ---
 kind: url
+name: libvpl
+url: https://github.com/intel/libvpl/releases
+activity: low
+---
+kind: url
 name: libvpx
 url: https://github.com/webmproject/libvpx/releases
 activity: low
@@ -6867,11 +6872,6 @@ activity: medium
 kind: url
 name: onepassword_gui
 url: https://support.1password.com/install-linux/#other-distributions-or-arm-targz
-activity: medium
----
-kind: url
-name: onevpl
-url: https://github.com/oneapi-src/oneVPL/releases
 activity: medium
 ---
 kind: url
