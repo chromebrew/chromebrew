@@ -1,10 +1,10 @@
-# Total size: 1940982
+# Total size: 1942024
 /usr/local/include/microhttpd.h
 /usr/local/lib/libmicrohttpd.a
 /usr/local/lib/libmicrohttpd.la
 /usr/local/lib/libmicrohttpd.so
 /usr/local/lib/libmicrohttpd.so.12
-/usr/local/lib/libmicrohttpd.so.12.62.3
+/usr/local/lib/libmicrohttpd.so.12.62.4
 /usr/local/lib/pkgconfig/libmicrohttpd.pc
 /usr/local/share/info/libmicrohttpd-tutorial.info.zst
 /usr/local/share/info/libmicrohttpd.info.zst

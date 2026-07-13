@@ -1,38 +1,46 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Openconnect < Package
-  version '8.20'
+class Openconnect < Autotools
   description 'OpenConnect is an SSL VPN client initially created to support Cisco\'s AnyConnect SSL VPN.'
   homepage 'http://www.infradead.org/openconnect/'
+  version '9.21'
   license 'LGPL-2.1 and GPL-2'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://www.infradead.org/openconnect/download/openconnect-8.20.tar.gz'
-  source_sha256 'c1452384c6f796baee45d4e919ae1bfc281d6c88862e1f646a2cc513fc44e58b'
+  source_url "https://www.infradead.org/openconnect/download/openconnect-#{version}.tar.gz"
+  source_sha256 '5b32369467db6e5f317aa1ed12cfcbb81ed00bdbc765450b6bfcbdc300944a58'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7b9c045bd2b24a6a1aacefa110c4271c22429eedf7eec1cebf057fa2898f4876',
-     armv7l: '7b9c045bd2b24a6a1aacefa110c4271c22429eedf7eec1cebf057fa2898f4876',
-     x86_64: '6f25b14be33eca8f53eb142dbda5b6df2db7c6b1dd6e5d000740e69979c7df10'
+    aarch64: '666a60ad6bee25b503cef097c3dbea7af12966525093381d53e02f383f5b13f6',
+     armv7l: '666a60ad6bee25b503cef097c3dbea7af12966525093381d53e02f383f5b13f6',
+     x86_64: 'f4f24bbf6bf0b920872180d5460ec4899596862e9778e1f52745331fdca51846'
   })
 
-  depends_on 'libproxy'
-  depends_on 'libxml2'
-  depends_on 'lz4'
-  depends_on 'gnutls'
-  depends_on 'vpnc'
+  depends_on 'brotli' => :library
+  depends_on 'e2fsprogs' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'gmp' => :library
+  depends_on 'gnutls' => :library
+  depends_on 'krb5' => :library
+  depends_on 'libidn2' => :library
+  depends_on 'libproxy' => :library
+  depends_on 'libtasn1' => :library
+  depends_on 'libunistring' => :library
+  depends_on 'libxml2' => :library
+  depends_on 'lz4' => :library
+  depends_on 'nettle' => :library
+  depends_on 'p11kit' => :library
+  depends_on 'vpnc' => :logical
+  depends_on 'zlib' => :library
+  depends_on 'zstd' => :library
 
-  def self.build
-    system "./configure \
-           #{CREW_CONFIGURE_OPTIONS} \
-           --with-vpnc-script=#{CREW_PREFIX}/etc/vpnc/vpnc-script"
-    system 'make'
-  end
+  print_source_bashrc
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    @vpnc_start = <<~'VPNC_STARTEOF'
+  autotools_configure_options "--with-vpnc-script=#{CREW_PREFIX}/etc/vpnc/vpnc-script"
+
+  autotools_build_extras do
+    File.write 'vpnc-start', <<~'VPNC_STARTEOF'
       #!/bin/bash
       if test "$1"; then
         echo "Restarting ChromeOS shill process such that it does not kill the vpn network device."
@@ -53,20 +61,32 @@ class Openconnect < Package
         echo "Usage: vpnc-start vpn.example.com"
       fi
     VPNC_STARTEOF
-    File.write "#{CREW_DEST_PREFIX}/bin/vpnc-start", @vpnc_start, perm: 0o755
-    @vpnc_stop = <<~VPNC_STOPEOF
+    File.write 'vpnc-stop', <<~VPNC_STOPEOF
       #!/bin/bash
       killall openconnect
       sudo ip tuntap del mode tun tun0
     VPNC_STOPEOF
-    File.write "#{CREW_DEST_PREFIX}/bin/vpnc-stop", @vpnc_stop, perm: 0o755
+    File.write '10-vpnc-start', <<~VPNC_EOF
+      #!/bin/bash
+      vpnc-start
+    VPNC_EOF
+  end
+
+  autotools_install_extras do
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    FileUtils.install 'vpnc-start', "#{CREW_DEST_PREFIX}/bin/vpnc-start", mode: 0o755
+    FileUtils.install 'vpnc-stop', "#{CREW_DEST_PREFIX}/bin/vpnc-stop", mode: 0o755
+    FileUtils.install '10-vpnc-start', "#{CREW_DEST_PREFIX}/etc/bash.d/10-vpnc-start", mode: 0o644
   end
 
   def self.postinstall
-    puts
-    puts 'Added the following bash scripts:'.lightblue
-    puts 'vpnc-start - start vpn'.lightblue
-    puts 'vpnc-stop - stop vpn'.lightblue
-    puts
+    ExitMessage.add <<~EOM
+
+      Added the following bash scripts:
+      vpnc-start - start vpn
+      vpnc-stop - stop vpn
+
+      Edit #{CREW_PREFIX}/etc/bash.d/10-vpnc-start and add the domain to launch on start up.
+    EOM
   end
 end

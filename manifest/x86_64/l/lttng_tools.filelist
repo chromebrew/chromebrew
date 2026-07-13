@@ -1,4 +1,4 @@
-# Total size: 8126183
+# Total size: 24411443
 /usr/local/bin/lttng
 /usr/local/bin/lttng-crash
 /usr/local/bin/lttng-relayd
@@ -35,24 +35,29 @@
 /usr/local/include/lttng/event-rule/kernel-tracepoint.h
 /usr/local/include/lttng/event-rule/kernel-uprobe.h
 /usr/local/include/lttng/event-rule/log4j-logging.h
+/usr/local/include/lttng/event-rule/log4j2-logging.h
 /usr/local/include/lttng/event-rule/python-logging.h
 /usr/local/include/lttng/event-rule/user-tracepoint.h
 /usr/local/include/lttng/event.h
 /usr/local/include/lttng/handle.h
 /usr/local/include/lttng/health.h
 /usr/local/include/lttng/kernel-probe.h
+/usr/local/include/lttng/kernel.h
 /usr/local/include/lttng/load.h
 /usr/local/include/lttng/location.h
 /usr/local/include/lttng/log-level-rule.h
 /usr/local/include/lttng/lttng-error.h
+/usr/local/include/lttng/lttng-export.h
 /usr/local/include/lttng/lttng.h
 /usr/local/include/lttng/notification/channel.h
 /usr/local/include/lttng/notification/notification.h
+/usr/local/include/lttng/reclaim.h
 /usr/local/include/lttng/rotation.h
 /usr/local/include/lttng/save.h
 /usr/local/include/lttng/session-descriptor.h
 /usr/local/include/lttng/session.h
 /usr/local/include/lttng/snapshot.h
+/usr/local/include/lttng/stream-info.h
 /usr/local/include/lttng/tracker.h
 /usr/local/include/lttng/trigger/trigger.h
 /usr/local/include/lttng/userspace-probe.h
@@ -90,6 +95,7 @@
 /usr/local/share/man/man1/lttng-list.1.zst
 /usr/local/share/man/man1/lttng-load.1.zst
 /usr/local/share/man/man1/lttng-metadata.1.zst
+/usr/local/share/man/man1/lttng-reclaim-memory.1.zst
 /usr/local/share/man/man1/lttng-regenerate.1.zst
 /usr/local/share/man/man1/lttng-remove-trigger.1.zst
 /usr/local/share/man/man1/lttng-rotate.1.zst

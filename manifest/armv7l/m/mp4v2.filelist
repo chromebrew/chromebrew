@@ -1,4 +1,4 @@
-# Total size: 5047179
+# Total size: 1153354
 /usr/local/bin/mp4art
 /usr/local/bin/mp4chaps
 /usr/local/bin/mp4extract
@@ -22,12 +22,14 @@
 /usr/local/include/mp4v2/streaming.h
 /usr/local/include/mp4v2/track.h
 /usr/local/include/mp4v2/track_prop.h
-/usr/local/lib/libmp4v2.a
 /usr/local/lib/libmp4v2.la
 /usr/local/lib/libmp4v2.so
 /usr/local/lib/libmp4v2.so.2
-/usr/local/lib/libmp4v2.so.2.0.0
-/usr/local/share/man/man1/mp4art.1
-/usr/local/share/man/man1/mp4file.1
-/usr/local/share/man/man1/mp4subtitle.1
-/usr/local/share/man/man1/mp4track.1
+/usr/local/lib/libmp4v2.so.2.1.3
+/usr/local/lib/pkgconfig/mp4v2.pc
+/usr/local/share/man/man1/mp4art.1.zst
+/usr/local/share/man/man1/mp4chaps.1.zst
+/usr/local/share/man/man1/mp4file.1.zst
+/usr/local/share/man/man1/mp4subtitle.1.zst
+/usr/local/share/man/man1/mp4tags.1.zst
+/usr/local/share/man/man1/mp4track.1.zst

@@ -1,4 +1,4 @@
-# Total size: 3165573
+# Total size: 3470084
 /usr/local/bin/ntfscat
 /usr/local/bin/ntfscluster
 /usr/local/bin/ntfscmp
@@ -72,10 +72,5 @@
 /usr/local/share/man/man8/ntfslabel.8.zst
 /usr/local/share/man/man8/ntfsls.8.zst
 /usr/local/share/man/man8/ntfsprogs.8.zst
-/usr/local/share/man/man8/ntfsrecover.8.zst
 /usr/local/share/man/man8/ntfsresize.8.zst
-/usr/local/share/man/man8/ntfssecaudit.8.zst
-/usr/local/share/man/man8/ntfstruncate.8.zst
 /usr/local/share/man/man8/ntfsundelete.8.zst
-/usr/local/share/man/man8/ntfsusermap.8.zst
-/usr/local/share/man/man8/ntfswipe.8.zst

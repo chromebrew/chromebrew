@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gnome_maps < Meson
   description 'A simple GNOME maps application'
   homepage 'https://wiki.gnome.org/Apps/Maps'
-  version '50.1'
+  version '50.2'
   license 'GPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-maps.git'
@@ -11,9 +11,9 @@ class Gnome_maps < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '96c7c0e44edeb7e6f20a56ea7127118cadab45174c7649ab312702e5fa355560',
-     armv7l: '96c7c0e44edeb7e6f20a56ea7127118cadab45174c7649ab312702e5fa355560',
-     x86_64: '2ccd416cd7ae6ca015cf2a0274361d5607809854d247ab9bedc07f8e0ddb239f'
+    aarch64: '8e0a494658babe93ada9c05b155019da39aa8840dc8c8fa82440b115dd52520d',
+     armv7l: '8e0a494658babe93ada9c05b155019da39aa8840dc8c8fa82440b115dd52520d',
+     x86_64: '9f2f7e992c2cb064cbcdf64361162b1dd8353a87d3e3dc09ce18a6bf4639415c'
   })
 
   depends_on 'blueprint_compiler'
@@ -25,6 +25,7 @@ class Gnome_maps < Meson
   depends_on 'gjs' # R
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gnome_weather' => :build
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk4' => :library

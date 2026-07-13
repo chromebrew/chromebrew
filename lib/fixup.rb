@@ -80,6 +80,7 @@ renamed_packages = Set[
   { pkg_name: 'moonbuggy', pkg_rename: 'moon_buggy', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'oci_cli', pkg_rename: 'py3_oci_cli', comments: 'Fix to match upstream name.' },
   { pkg_name: 'onepassword', pkg_rename: 'onepassword_cli', comments: 'Rename to distinguish between onepassword_gui.' },
+  { pkg_name: 'onevpl', pkg_rename: 'libvpl', comments: 'Rename to redirected github repository.' },
   { pkg_name: 'perl_locale_messages', pkg_rename: 'perl_libintl_perl', comments: 'Renamed to identify perl package.' },
   { pkg_name: 'percona_toolkit', pkg_rename: 'perl_percona_toolkit', comments: 'Renamed to identify perl package.' },
   { pkg_name: 'pkgconfig', pkg_rename: 'pkg_config', comments: 'Renamed to better match upstream.' },
@@ -137,6 +138,7 @@ deprecated_packages = Set[
   { pkg_name: 'ilmbase', comments: 'Included in openexr.' },
   { pkg_name: 'imagemagick6', comments: 'Obsolete version of package, no longer required.' },
   { pkg_name: 'imagemagick', comments: 'Metapackage made redundant by the removal of imagemagick6.' },
+  { pkg_name: 'jack1', comments: 'Obsolete version of package, no longer required.' },
   { pkg_name: 'js91', comments: 'Replaced by newer versions of js.' },
   { pkg_name: 'komodo', comments: 'Abandoned upstream and no longer functional.' },
   { pkg_name: 'libaudiofile', comments: 'Inactive upstream with applicable CVEs' },
@@ -262,7 +264,7 @@ if File.exist?("#{CREW_PREFIX}/bin/upx") && File.exist?("#{CREW_PREFIX}/bin/patc
   # errors on arm.
   # Running find twice because it involves less ruby overhead than saving
   # the output in memory, and also doing that in ruby is VERY SLOW.
-  puts 'Please wait while upx is run to uncompress binaries...'.lightblue unless CREW_UNATTENDED
+  puts 'Please wait while upx is run to uncompress binaries...'.lightblue
   Kernel.system "#{CREW_PREFIX}/bin/find #{CREW_PREFIX}/bin -type f -print0 | xargs -0 -P#{CREW_NPROC} -n1 -r bash -c 'header=$(head -c4 ${0}); elfheader='$(printf '\\\177ELF')' ; arheader=\\!\\<ar ; case $header in $elfheader|$arheader) upx -qq -d ${0} ;; esac'", %i[err] => File::NULL, exception: false
 
   unless CREW_GLIBC_INTERPRETER.blank?

@@ -224,8 +224,6 @@ def determine_dependencies(pkg_name, pkgfiles_to_check)
   pkgdeps = pkgdeps.map { |i| i.gsub('glibc_fallthrough', 'glibc') }.uniq
   pkgdeps = pkgdeps.map { |i| i.gsub(/glibc_lib.*/, 'glibc_lib') }.uniq.map(&:strip).reject(&:empty?)
 
-  # Prefer mesa to libminigbm
-  pkgdeps = pkgdeps.map { it.gsub('libminigbm', 'mesa') }.uniq
   # Massage the gcc entries in the dependency list.
   pkgdeps = pkgdeps.map { |i| i.gsub('gcc_build', 'gcc_lib') }.uniq
 
@@ -236,9 +234,10 @@ def determine_dependencies(pkg_name, pkgfiles_to_check)
 
   # If two packages both provide a library, use the regular one unless this is the specific package that needs the alternative.
   # TODO: Are there more packages like this?
+  pkgdeps = pkgdeps.map { |i| i.gsub('libminigbm', 'mesa') }.uniq
+  pkgdeps = pkgdeps.map { |i| i.gsub('nethack4', 'jansson') }.uniq
   pkgdeps = pkgdeps.map { |i| i.gsub('glib_stub', 'glib') }.uniq unless %w[gobject_introspection glib].include?(pkg_name)
   # TODO: Since these packages aren't needed by any specific package, do we need to package them at all?
-  pkgdeps = pkgdeps.map { |i| i.gsub('jack1', 'jack') }.uniq
   pkgdeps = pkgdeps.map { |i| i.gsub('libxml2_autotools', 'libxml2') }.uniq
   pkgdeps = pkgdeps.map { |i| i.gsub(/^vdev$/, 'eudev') }.uniq
   pkgdeps = pkgdeps.map { |i| i.gsub('libudev_stub', 'eudev') }.uniq

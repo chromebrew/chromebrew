@@ -1,4 +1,4 @@
-# Total size: 777036
+# Total size: 888642
 /usr/local/bin/chacl
 /usr/local/bin/getfacl
 /usr/local/bin/setfacl
@@ -8,7 +8,7 @@
 /usr/local/lib/libacl.la
 /usr/local/lib/libacl.so
 /usr/local/lib/libacl.so.1
-/usr/local/lib/libacl.so.1.1.2302
+/usr/local/lib/libacl.so.1.2.2400
 /usr/local/lib/pkgconfig/libacl.pc
 /usr/local/share/doc/acl/CHANGES
 /usr/local/share/doc/acl/COPYING
@@ -37,6 +37,7 @@
 /usr/local/share/man/man3/acl_copy_int.3.zst
 /usr/local/share/man/man3/acl_create_entry.3.zst
 /usr/local/share/man/man3/acl_delete_def_file.3.zst
+/usr/local/share/man/man3/acl_delete_def_file_at.3.zst
 /usr/local/share/man/man3/acl_delete_entry.3.zst
 /usr/local/share/man/man3/acl_delete_perm.3.zst
 /usr/local/share/man/man3/acl_dup.3.zst
@@ -45,6 +46,7 @@
 /usr/local/share/man/man3/acl_error.3.zst
 /usr/local/share/man/man3/acl_extended_fd.3.zst
 /usr/local/share/man/man3/acl_extended_file.3.zst
+/usr/local/share/man/man3/acl_extended_file_at.3.zst
 /usr/local/share/man/man3/acl_extended_file_nofollow.3.zst
 /usr/local/share/man/man3/acl_free.3.zst
 /usr/local/share/man/man3/acl_from_mode.3.zst
@@ -52,6 +54,7 @@
 /usr/local/share/man/man3/acl_get_entry.3.zst
 /usr/local/share/man/man3/acl_get_fd.3.zst
 /usr/local/share/man/man3/acl_get_file.3.zst
+/usr/local/share/man/man3/acl_get_file_at.3.zst
 /usr/local/share/man/man3/acl_get_perm.3.zst
 /usr/local/share/man/man3/acl_get_permset.3.zst
 /usr/local/share/man/man3/acl_get_qualifier.3.zst
@@ -59,6 +62,7 @@
 /usr/local/share/man/man3/acl_init.3.zst
 /usr/local/share/man/man3/acl_set_fd.3.zst
 /usr/local/share/man/man3/acl_set_file.3.zst
+/usr/local/share/man/man3/acl_set_file_at.3.zst
 /usr/local/share/man/man3/acl_set_permset.3.zst
 /usr/local/share/man/man3/acl_set_qualifier.3.zst
 /usr/local/share/man/man3/acl_set_tag_type.3.zst

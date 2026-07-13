@@ -210,7 +210,7 @@ jobs:
                 if [[ -n "${{ needs.get-compatibility.outputs.glibc_232_compat }}" ]]; then
                     echo "CONTAINER=satmandu/crewbuild:nocturne-x86_64.m97" >> "$GITHUB_ENV"
                 elif [[ -n "${{ needs.get-compatibility.outputs.glibc_237_compat }}" ]]; then
-                    echo "CONTAINER=satmandu/crewbuild:hatch-x86_64.m148" >> "$GITHUB_ENV"
+                    echo "CONTAINER=satmandu/crewbuild:hatch-x86_64.m149" >> "$GITHUB_ENV"
                 else
                     echo "CONTAINER=satmandu/crew-pre-glibc-standalone:nocturne-x86_64.m90" >> "$GITHUB_ENV"
                 fi
@@ -225,7 +225,7 @@ jobs:
                 if [[ -n "${{ needs.get-compatibility.outputs.glibc_232_compat }}" ]]; then
                     echo "CONTAINER=satmandu/crewbuild:fievel-armv7l.m97" >> "$GITHUB_ENV"
                 elif [[ -n "${{ needs.get-compatibility.outputs.glibc_237_compat }}" ]]; then
-                    echo "CONTAINER=satmandu/crewbuild:strongbad-armv7l.m148" >> "$GITHUB_ENV"
+                    echo "CONTAINER=satmandu/crewbuild:strongbad-armv7l.m149" >> "$GITHUB_ENV"
                 else
                     echo "CONTAINER=satmandu/crew-pre-glibc-standalone:fievel-armv7l.m91" >> "$GITHUB_ENV"
                 fi

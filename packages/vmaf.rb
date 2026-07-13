@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Vmaf < Meson
   description 'Perceptual video quality assessment algorithm based on multi-method fusion'
   homepage 'https://github.com/Netflix/vmaf'
-  version '3.1.0'
+  version '3.2.0'
   license 'BSD-2'
   compatibility 'all'
   source_url 'https://github.com/Netflix/vmaf.git'
@@ -11,17 +11,17 @@ class Vmaf < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0e877192cd4f51d3a4df46976474d892e2d3844cef013ede4ba58dbe0609498e',
-     armv7l: '0e877192cd4f51d3a4df46976474d892e2d3844cef013ede4ba58dbe0609498e',
-       i686: '60df638d8fae70d05b881d5ee3bc99e4f7b131f5694b9be8000dd69e36ea86ee',
-     x86_64: 'd60e09872021f6ebc7eb620b5622c28c040faca864cda594b523e9a86bdd2082'
+    aarch64: '21dddd8dd3896d60a4ec84d4d98e45d10cf4ec8a0e973cb6c08931aadff98c43',
+     armv7l: '21dddd8dd3896d60a4ec84d4d98e45d10cf4ec8a0e973cb6c08931aadff98c43',
+       i686: 'b092f3ad17b318c32e454f423010e9a10b5869f70e5c8f32e15a44e53f5dfeba',
+     x86_64: '0f2fe9d3a5959bc8e3608f8b76e823ef67af0302217fb992b70ca5646627d785'
   })
 
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'nasm' => :build if %w[x86_64 i686].include?(ARCH)
 
   meson_build_relative_dir 'libvmaf'
-  # vmaf currently fails to build with default configuration in i686: https://github.com/Netflix/vmaf/issues/1481
-  meson_options "-Denable_docs=false -Denable_tests=false -Denable_float=true #{'-Denable_asm=false' if ARCH == 'i686'}"
+  meson_options '-Denable_docs=false -Denable_tests=false -Denable_float=true'
 end

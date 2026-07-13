@@ -1,0 +1,5 @@
+#!/bin/bash
+lttng -V
+lttng-crash -V
+lttng-relayd -V
+lttng-sessiond -V

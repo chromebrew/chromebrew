@@ -1,12 +1,12 @@
-# Total size: 406269744
-/usr/local/lib/python3.14/site-packages/oci-2.179.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/oci-2.179.0.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/oci-2.179.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/oci-2.179.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/oci-2.179.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/oci-2.179.0.dist-info/THIRD_PARTY_LICENSES.txt
-/usr/local/lib/python3.14/site-packages/oci-2.179.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/oci-2.179.0.dist-info/top_level.txt
+# Total size: 406366670
+/usr/local/lib/python3.14/site-packages/oci-2.181.1.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/oci-2.181.1.dist-info/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/oci-2.181.1.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/oci-2.181.1.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/oci-2.181.1.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/oci-2.181.1.dist-info/THIRD_PARTY_LICENSES.txt
+/usr/local/lib/python3.14/site-packages/oci-2.181.1.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/oci-2.181.1.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/oci/__init__.py
 /usr/local/lib/python3.14/site-packages/oci/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/__pycache__/base_client.cpython-314.pyc
@@ -140,24 +140,6 @@
 /usr/local/lib/python3.14/site-packages/oci/_vendor/idna/intranges.py
 /usr/local/lib/python3.14/site-packages/oci/_vendor/idna/package_data.py
 /usr/local/lib/python3.14/site-packages/oci/_vendor/idna/uts46data.py
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/__init__.py
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/__pycache__/__init__.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/__pycache__/algorithms.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/__pycache__/api_jwk.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/__pycache__/api_jws.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/__pycache__/api_jwt.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/__pycache__/exceptions.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/__pycache__/help.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/__pycache__/jwks_client.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/__pycache__/utils.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/algorithms.py
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/api_jwk.py
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/api_jws.py
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/api_jwt.py
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/exceptions.py
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/help.py
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/jwks_client.py
-/usr/local/lib/python3.14/site-packages/oci/_vendor/jwt/utils.py
 /usr/local/lib/python3.14/site-packages/oci/_vendor/requests/__init__.py
 /usr/local/lib/python3.14/site-packages/oci/_vendor/requests/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/_vendor/requests/__pycache__/__version__.cpython-314.pyc
@@ -1819,6 +1801,7 @@
 /usr/local/lib/python3.14/site-packages/oci/apigateway/models/__pycache__/mutual_tls_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/apigateway/models/__pycache__/no_cache.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/apigateway/models/__pycache__/no_content_validation.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/apigateway/models/__pycache__/o_auth2_login_backend.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/apigateway/models/__pycache__/o_auth2_logout_backend.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/apigateway/models/__pycache__/o_auth2_response_validation_failure_policy.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/apigateway/models/__pycache__/oracle_function_backend.cpython-314.pyc
@@ -1980,6 +1963,7 @@
 /usr/local/lib/python3.14/site-packages/oci/apigateway/models/mutual_tls_details.py
 /usr/local/lib/python3.14/site-packages/oci/apigateway/models/no_cache.py
 /usr/local/lib/python3.14/site-packages/oci/apigateway/models/no_content_validation.py
+/usr/local/lib/python3.14/site-packages/oci/apigateway/models/o_auth2_login_backend.py
 /usr/local/lib/python3.14/site-packages/oci/apigateway/models/o_auth2_logout_backend.py
 /usr/local/lib/python3.14/site-packages/oci/apigateway/models/o_auth2_response_validation_failure_policy.py
 /usr/local/lib/python3.14/site-packages/oci/apigateway/models/oracle_function_backend.py
@@ -5676,6 +5660,7 @@
 /usr/local/lib/python3.14/site-packages/oci/container_engine/models/__pycache__/update_workload_mapping_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/container_engine/models/__pycache__/virtual_node.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/container_engine/models/__pycache__/virtual_node_pool.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/container_engine/models/__pycache__/virtual_node_pool_cycling_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/container_engine/models/__pycache__/virtual_node_pool_summary.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/container_engine/models/__pycache__/virtual_node_summary.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/container_engine/models/__pycache__/virtual_node_tags.cpython-314.pyc
@@ -5780,6 +5765,7 @@
 /usr/local/lib/python3.14/site-packages/oci/container_engine/models/update_workload_mapping_details.py
 /usr/local/lib/python3.14/site-packages/oci/container_engine/models/virtual_node.py
 /usr/local/lib/python3.14/site-packages/oci/container_engine/models/virtual_node_pool.py
+/usr/local/lib/python3.14/site-packages/oci/container_engine/models/virtual_node_pool_cycling_details.py
 /usr/local/lib/python3.14/site-packages/oci/container_engine/models/virtual_node_pool_summary.py
 /usr/local/lib/python3.14/site-packages/oci/container_engine/models/virtual_node_summary.py
 /usr/local/lib/python3.14/site-packages/oci/container_engine/models/virtual_node_tags.py
@@ -22734,6 +22720,7 @@
 /usr/local/lib/python3.14/site-packages/oci/integration/models/__pycache__/outbound_connection.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/integration/models/__pycache__/private_endpoint_outbound_connection.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/integration/models/__pycache__/public_endpoint_details.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/integration/models/__pycache__/remove_log_analytics_log_group_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/integration/models/__pycache__/update_custom_endpoint_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/integration/models/__pycache__/update_integration_instance_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/integration/models/__pycache__/virtual_cloud_network.cpython-314.pyc
@@ -22764,6 +22751,7 @@
 /usr/local/lib/python3.14/site-packages/oci/integration/models/outbound_connection.py
 /usr/local/lib/python3.14/site-packages/oci/integration/models/private_endpoint_outbound_connection.py
 /usr/local/lib/python3.14/site-packages/oci/integration/models/public_endpoint_details.py
+/usr/local/lib/python3.14/site-packages/oci/integration/models/remove_log_analytics_log_group_details.py
 /usr/local/lib/python3.14/site-packages/oci/integration/models/update_custom_endpoint_details.py
 /usr/local/lib/python3.14/site-packages/oci/integration/models/update_integration_instance_details.py
 /usr/local/lib/python3.14/site-packages/oci/integration/models/virtual_cloud_network.py
@@ -30340,6 +30328,7 @@
 /usr/local/lib/python3.14/site-packages/oci/psql/models/__pycache__/monthly_backup_policy.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/psql/models/__pycache__/network_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/psql/models/__pycache__/none_backup_policy.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/psql/models/__pycache__/none_pitr_policy.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/psql/models/__pycache__/none_source_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/psql/models/__pycache__/oci_optimized_storage_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/psql/models/__pycache__/odsp_insight.cpython-314.pyc
@@ -30355,7 +30344,11 @@
 /usr/local/lib/python3.14/site-packages/oci/psql/models/__pycache__/patch_remove_instruction.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/psql/models/__pycache__/patch_replace_instruction.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/psql/models/__pycache__/patch_require_instruction.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/psql/models/__pycache__/pitr_details.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/psql/models/__pycache__/pitr_policy.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/psql/models/__pycache__/pitr_time_window.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/psql/models/__pycache__/plain_text_password_details.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/psql/models/__pycache__/point_in_time_db_system_source_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/psql/models/__pycache__/primary_db_instance_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/psql/models/__pycache__/primary_db_system_source_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/psql/models/__pycache__/replication_config.cpython-314.pyc
@@ -30370,6 +30363,7 @@
 /usr/local/lib/python3.14/site-packages/oci/psql/models/__pycache__/sorting_default.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/psql/models/__pycache__/source_backup_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/psql/models/__pycache__/source_details.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/psql/models/__pycache__/standard_pitr_policy.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/psql/models/__pycache__/start_db_system_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/psql/models/__pycache__/storage_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/psql/models/__pycache__/switch_over_details.cpython-314.pyc
@@ -30453,6 +30447,7 @@
 /usr/local/lib/python3.14/site-packages/oci/psql/models/monthly_backup_policy.py
 /usr/local/lib/python3.14/site-packages/oci/psql/models/network_details.py
 /usr/local/lib/python3.14/site-packages/oci/psql/models/none_backup_policy.py
+/usr/local/lib/python3.14/site-packages/oci/psql/models/none_pitr_policy.py
 /usr/local/lib/python3.14/site-packages/oci/psql/models/none_source_details.py
 /usr/local/lib/python3.14/site-packages/oci/psql/models/oci_optimized_storage_details.py
 /usr/local/lib/python3.14/site-packages/oci/psql/models/odsp_insight.py
@@ -30468,7 +30463,11 @@
 /usr/local/lib/python3.14/site-packages/oci/psql/models/patch_remove_instruction.py
 /usr/local/lib/python3.14/site-packages/oci/psql/models/patch_replace_instruction.py
 /usr/local/lib/python3.14/site-packages/oci/psql/models/patch_require_instruction.py
+/usr/local/lib/python3.14/site-packages/oci/psql/models/pitr_details.py
+/usr/local/lib/python3.14/site-packages/oci/psql/models/pitr_policy.py
+/usr/local/lib/python3.14/site-packages/oci/psql/models/pitr_time_window.py
 /usr/local/lib/python3.14/site-packages/oci/psql/models/plain_text_password_details.py
+/usr/local/lib/python3.14/site-packages/oci/psql/models/point_in_time_db_system_source_details.py
 /usr/local/lib/python3.14/site-packages/oci/psql/models/primary_db_instance_details.py
 /usr/local/lib/python3.14/site-packages/oci/psql/models/primary_db_system_source_details.py
 /usr/local/lib/python3.14/site-packages/oci/psql/models/replication_config.py
@@ -30483,6 +30482,7 @@
 /usr/local/lib/python3.14/site-packages/oci/psql/models/sorting_default.py
 /usr/local/lib/python3.14/site-packages/oci/psql/models/source_backup_details.py
 /usr/local/lib/python3.14/site-packages/oci/psql/models/source_details.py
+/usr/local/lib/python3.14/site-packages/oci/psql/models/standard_pitr_policy.py
 /usr/local/lib/python3.14/site-packages/oci/psql/models/start_db_system_details.py
 /usr/local/lib/python3.14/site-packages/oci/psql/models/storage_details.py
 /usr/local/lib/python3.14/site-packages/oci/psql/models/switch_over_details.py
@@ -30926,8 +30926,8 @@
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/__pycache__/associated_resources_collection.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/__pycache__/bitbucket_cloud_config_source.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/__pycache__/bitbucket_cloud_config_source_record.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/oci/resource_manager/models/__pycache__/bitbucket_cloud_username_app_password_configuration_source_provider.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/oci/resource_manager/models/__pycache__/bitbucket_cloud_username_app_password_configuration_source_provider_summary.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/resource_manager/models/__pycache__/bitbucket_cloud_email_api_token_configuration_source_provider.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/resource_manager/models/__pycache__/bitbucket_cloud_email_api_token_configuration_source_provider_summary.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/__pycache__/bitbucket_server_access_token_configuration_source_provider.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/__pycache__/bitbucket_server_access_token_configuration_source_provider_summary.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/__pycache__/bitbucket_server_config_source.cpython-314.pyc
@@ -30946,7 +30946,7 @@
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/__pycache__/create_apply_job_operation_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/__pycache__/create_apply_rollback_job_operation_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/__pycache__/create_bitbucket_cloud_config_source_details.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/oci/resource_manager/models/__pycache__/create_bitbucket_cloud_username_app_password_configuration_source_provider_details.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/resource_manager/models/__pycache__/create_bitbucket_cloud_email_api_token_configuration_source_provider_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/__pycache__/create_bitbucket_server_access_token_configuration_source_provider_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/__pycache__/create_bitbucket_server_config_source_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/__pycache__/create_compartment_config_source_details.cpython-314.pyc
@@ -31020,7 +31020,7 @@
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/__pycache__/terraform_version_collection.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/__pycache__/terraform_version_summary.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/__pycache__/update_bitbucket_cloud_config_source_details.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/oci/resource_manager/models/__pycache__/update_bitbucket_cloud_username_app_password_configuration_source_provider_details.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/resource_manager/models/__pycache__/update_bitbucket_cloud_email_api_token_configuration_source_provider_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/__pycache__/update_bitbucket_server_access_token_configuration_source_provider_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/__pycache__/update_bitbucket_server_config_source_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/__pycache__/update_config_source_details.cpython-314.pyc
@@ -31053,8 +31053,8 @@
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/associated_resources_collection.py
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/bitbucket_cloud_config_source.py
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/bitbucket_cloud_config_source_record.py
-/usr/local/lib/python3.14/site-packages/oci/resource_manager/models/bitbucket_cloud_username_app_password_configuration_source_provider.py
-/usr/local/lib/python3.14/site-packages/oci/resource_manager/models/bitbucket_cloud_username_app_password_configuration_source_provider_summary.py
+/usr/local/lib/python3.14/site-packages/oci/resource_manager/models/bitbucket_cloud_email_api_token_configuration_source_provider.py
+/usr/local/lib/python3.14/site-packages/oci/resource_manager/models/bitbucket_cloud_email_api_token_configuration_source_provider_summary.py
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/bitbucket_server_access_token_configuration_source_provider.py
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/bitbucket_server_access_token_configuration_source_provider_summary.py
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/bitbucket_server_config_source.py
@@ -31073,7 +31073,7 @@
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/create_apply_job_operation_details.py
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/create_apply_rollback_job_operation_details.py
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/create_bitbucket_cloud_config_source_details.py
-/usr/local/lib/python3.14/site-packages/oci/resource_manager/models/create_bitbucket_cloud_username_app_password_configuration_source_provider_details.py
+/usr/local/lib/python3.14/site-packages/oci/resource_manager/models/create_bitbucket_cloud_email_api_token_configuration_source_provider_details.py
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/create_bitbucket_server_access_token_configuration_source_provider_details.py
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/create_bitbucket_server_config_source_details.py
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/create_compartment_config_source_details.py
@@ -31147,7 +31147,7 @@
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/terraform_version_collection.py
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/terraform_version_summary.py
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/update_bitbucket_cloud_config_source_details.py
-/usr/local/lib/python3.14/site-packages/oci/resource_manager/models/update_bitbucket_cloud_username_app_password_configuration_source_provider_details.py
+/usr/local/lib/python3.14/site-packages/oci/resource_manager/models/update_bitbucket_cloud_email_api_token_configuration_source_provider_details.py
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/update_bitbucket_server_access_token_configuration_source_provider_details.py
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/update_bitbucket_server_config_source_details.py
 /usr/local/lib/python3.14/site-packages/oci/resource_manager/models/update_config_source_details.py

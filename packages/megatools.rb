@@ -1,31 +1,42 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Megatools < Package
+class Megatools < Meson
   description 'Megatools is a collection of programs for accessing Mega.nz service from a command line of your desktop or server.'
   homepage 'https://megatools.megous.com/'
-  version '1.9.98'
+  version '1.11.5.20250706'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://megatools.megous.com/builds/megatools-1.9.98.tar.gz'
-  source_sha256 '9b0521a4d27dbc417fc8e12610ac1e1da729bf6d6eb5bef927ef3670b372a16f'
-  binary_compression 'tar.xz'
+  source_url "https://xff.cz/megatools/builds/megatools-#{version}.tar.gz"
+  source_sha256 '51f78a03748a64b1066ce28a2ca75d98dbef5f00fe9789dc894827f9a913b362'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '503807b962eb17c2b9fded0ae197ee4d78871a3b339f76a82dad76ac5d461275',
-     armv7l: '503807b962eb17c2b9fded0ae197ee4d78871a3b339f76a82dad76ac5d461275',
-       i686: '60d736bb95af651a7f78ec0f0daea2274854a9db5c548655bfc39524e77297da',
-     x86_64: '39ac4b9d1aa152c12ba1b2cd162d07a8dad6b2206e6f67a6b87377b5c907ede4'
+    aarch64: '236286635d377470423b68f8996a11e7083333d8ce281b86fbb8f5207f22f0ef',
+     armv7l: '236286635d377470423b68f8996a11e7083333d8ce281b86fbb8f5207f22f0ef',
+       i686: '4c63d58ca40e839d7797e62a00effaff2b7169dbab8dc65d521f4604c40b49db',
+     x86_64: 'a6e15ca98f51159bec6359bed1c7b3ec7f085397cc1090243c19ad82b97ad073'
   })
 
-  depends_on 'py3_asciidoc'
-  depends_on 'glib'
+  depends_on 'curl' => :executable
+  depends_on 'glib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'openssl' => :executable
+  depends_on 'txt2man' => :build
 
-  def self.build
-    system './configure'
-    system 'make'
-  end
+  print_source_bashrc
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  meson_install_extras do
+    FileUtils.install 'contrib/bash-completion/megatools', "#{CREW_DEST_PREFIX}/etc/bash.d/10-megatools", mode: 0o644
+    Dir["#{CREW_DEST_PREFIX}/bin/*"].each do |binary|
+      bin = File.basename(binary)
+      man = "#{bin}.1"
+      system "#{binary} -h | txt2man -r #{bin}-#{version} -s 1 -t #{bin} > #{man}"
+      FileUtils.install man, "#{CREW_DEST_MAN_PREFIX}/man1/#{man}", mode: 0o644
+    end
+    Dir.chdir 'docs' do
+      system "txt2man -r megarc-#{version} -s 5 -t megarc megarc.txt > megarc.5"
+      FileUtils.install 'megarc.5', "#{CREW_DEST_MAN_PREFIX}/man5/megarc.5", mode: 0o644
+    end
   end
 end

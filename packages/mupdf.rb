@@ -3,7 +3,7 @@ require 'package'
 class Mupdf < Package
   description 'MuPDF is a lightweight open source software framework for viewing and converting PDF, XPS, and E-book documents.'
   homepage 'https://mupdf.com/'
-  version '1.27.2'
+  version '1.28.0'
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/ArtifexSoftware/mupdf.git'
@@ -11,15 +11,16 @@ class Mupdf < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f5b3a9d402c17e47fd5ee51599241f05129e4130b1261ad460af410581864511',
-     armv7l: 'f5b3a9d402c17e47fd5ee51599241f05129e4130b1261ad460af410581864511',
-     x86_64: 'c58ce3a9ed4a9ef6b4173b69f4c5f6615d208d38f9d80f07a63e2ea2fa7f08ef'
+    aarch64: '6f1b9a1cd0229bc98b9dec54daa069871eadc4a2ca54b7b0afb215ef806e44b4',
+     armv7l: '6f1b9a1cd0229bc98b9dec54daa069871eadc4a2ca54b7b0afb215ef806e44b4',
+     x86_64: 'f5b975c2ed9764b158cf45dac482b68c7578704c931840221b178d173a4dbc84'
   })
 
   depends_on 'freeglut'
   depends_on 'freetype'
   depends_on 'gcc_lib' # R
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'jbigkit'
   depends_on 'libglvnd' => :executable
   depends_on 'libjpeg_turbo'

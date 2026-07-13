@@ -3,21 +3,22 @@ require 'buildsystems/meson'
 class Libpsl < Meson
   description 'C library for the Public Suffix List'
   homepage 'https://github.com/rockdaboot/libpsl'
-  version '0.21.5-2'
+  version '0.23.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/rockdaboot/libpsl.git'
-  git_hashtag version.split('-').first
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '15c6b9fa6bca331c7ed30dfb0572f59450367caf21b04eb6265e06d46f912002',
-     armv7l: '15c6b9fa6bca331c7ed30dfb0572f59450367caf21b04eb6265e06d46f912002',
-       i686: '8caf19357b4bb6303be7fe58cb42397978ef8179644efab1e33972c3c788c501',
-     x86_64: 'fd60346c566038b898a0deb19255fd0efbc4d5b33d8b3915abb89937c7cf624a'
+    aarch64: '224316f5e0b67623173199d98c2e97b8289a12979335a0f6fe3956ba1b338203',
+     armv7l: '224316f5e0b67623173199d98c2e97b8289a12979335a0f6fe3956ba1b338203',
+       i686: '6922e7d8e80b108bc9f2d3827d4573401280b1b021089f983405743aa2586660',
+     x86_64: '38a4a1e7218aec934834109909d1c16e492ceef7d740cb1413254d68ceead2bb'
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'libidn2' => :library
   depends_on 'libunistring' => :library
 

@@ -1,0 +1,3 @@
+#!/bin/bash
+mmcli -h | head
+mmcli -V

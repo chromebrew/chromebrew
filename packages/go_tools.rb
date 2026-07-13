@@ -3,7 +3,7 @@ require 'package'
 class Go_tools < Package
   description 'Developer tools for the Go programming language'
   homepage 'https://github.com/golang/tools'
-  version '0.46.0'
+  version '0.48.0'
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/golang/tools.git'
@@ -11,10 +11,10 @@ class Go_tools < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '029af1c9763504d4953a8f064f2ee5612b1b7db25bd8b4e33c22808c14ea7ca0',
-     armv7l: '029af1c9763504d4953a8f064f2ee5612b1b7db25bd8b4e33c22808c14ea7ca0',
-       i686: '40d1d67dbdbb1be7f4d63c9f46a72a5a1c43a0db5680a70e2e86f1ca72974b2f',
-     x86_64: 'a6a730cb968f1da271a80e5e12231fba6f739e22d20000c92e84a47fa22dac04'
+    aarch64: 'dba5cb62bee34d23b88b51c7ec883ec8af251036afee69d6c045a59ee71fe259',
+     armv7l: 'dba5cb62bee34d23b88b51c7ec883ec8af251036afee69d6c045a59ee71fe259',
+       i686: 'ae5890f31fd6552189865dc06d48dc76c901bf9580b7ebac5d5458d5f753bd71',
+     x86_64: 'bc878c7526704a58e81c0741721842000c9e4afd6cca1716ab848ebc9440843a'
   })
 
   depends_on 'glibc' => :executable

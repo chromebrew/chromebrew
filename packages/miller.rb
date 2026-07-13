@@ -3,7 +3,7 @@ require 'package'
 class Miller < Package
   description 'Miller is like awk, sed, cut, join, and sort for name-indexed data such as CSV, TSV, and tabular JSON'
   homepage 'https://miller.readthedocs.io/'
-  version '6.18.1'
+  version '6.20.2'
   license 'Copyright (c) 2015 - John Kerl'
   compatibility 'all'
 
@@ -14,10 +14,10 @@ class Miller < Package
      x86_64: "https://github.com/johnkerl/miller/releases/download/v#{version}/miller-#{version}-linux-amd64.tar.gz"
   })
   source_sha256({
-    aarch64: 'e7f7a491874a65bbbe1de57b9c37b5c531813a9a71cf769371629f0ee398aeba',
-     armv7l: 'e7f7a491874a65bbbe1de57b9c37b5c531813a9a71cf769371629f0ee398aeba',
-       i686: 'a144515300447a84614e92f99f18191308fa0bdcc49390d33f2186aa8f55d191',
-     x86_64: '5a1b4322dae60857e8de6ac4acd5a2ce97b174667ee5f4de059cf05ced4b56ea'
+    aarch64: '4e1bc6240340b7adc944ddda33463f6fb788c6ae0d195713ab0a38ae7a5135ed',
+     armv7l: '4e1bc6240340b7adc944ddda33463f6fb788c6ae0d195713ab0a38ae7a5135ed',
+       i686: 'fbd1b135834ad91db180fe00619a2f11042c6b5869a1b04aaa2be511a1b6c5cd',
+     x86_64: '73461cd6469df3a0c14a102d6e19ef04528eda08cbd7aedbce5d32ccc7c0428e'
   })
 
   no_compile_needed

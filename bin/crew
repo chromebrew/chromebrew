@@ -195,12 +195,12 @@ rescue StandardError => e
   abort "Error with #{pkg_name}.rb: #{e}".lightred unless silent
 end
 
-def cache_build
+def cache_build(extract_dir)
   build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
   puts "build_cachefile is #{build_cachefile}"
   if (@pkg.cache_build? || CREW_CACHE_BUILD) && File.writable?(CREW_CACHE_DIR)
     puts 'Caching build dir...'
-    pkg_build_dirname_absolute = File.join(CREW_BREW_DIR, @extract_dir)
+    pkg_build_dirname_absolute = extract_dir
     pkg_build_dirname = File.basename(pkg_build_dirname_absolute)
     Dir.chdir pkg_build_dirname_absolute do
       # Do not use --exclude-vcs w/ tar to exclude .git
@@ -256,106 +256,6 @@ def cache_build
   else
     puts 'CREW_CACHE_BUILD is not set.'.orange unless CREW_CACHE_BUILD || @pkg.cache_build?
     puts "#{CREW_CACHE_DIR} is not writable.".lightred unless File.writable?(CREW_CACHE_DIR)
-  end
-end
-
-def update
-  abort "'crew update' is used to update crew itself. Use 'crew upgrade <package1> [<package2> ...]' to update specific packages.".orange if @pkg_name
-
-  unless CREW_NO_GIT
-    unless Dir.exist?(File.join(CREW_LIB_PATH, '.git'))
-      puts 'Fixing Chromebrew system git repo clone...'.orange
-      system(<<~GIT_REPAIR_COMMANDS, chdir: CREW_LIB_PATH, %i[out err] => File::NULL)
-        ## Run the git setup commands used in install.sh.
-        # Make the git default branch error messages go away.
-        git config --global init.defaultBranch main
-        # Setup the dir with git information.
-        git init --ref-format=reftable
-        git remote add origin #{CREW_REPO}
-        # Help handle situations where GitHub is down.
-        git config --local http.lowSpeedLimit 1000
-        git config --local http.lowSpeedTime 5
-        # Checkout, overwriting local files.
-        git fetch --all
-        git checkout -f master
-        git reset --hard origin/#{CREW_BRANCH}
-      GIT_REPAIR_COMMANDS
-    end
-
-    ## Update crew from git.
-    # Set sparse-checkout folders.
-    @silent = CREW_UNATTENDED ? '&>/dev/null' : ''
-    system "git sparse-checkout set packages manifest/#{ARCH} lib commands bin crew tests tools #{@silent}", chdir: CREW_LIB_PATH, exception: true
-    system "git sparse-checkout reapply  #{@silent}", chdir: CREW_LIB_PATH, exception: true
-    system "git fetch #{CREW_REPO} #{CREW_BRANCH}  #{@silent}", chdir: CREW_LIB_PATH, exception: true
-    # Now that we've fetched all the new changes, see if lib/const.rb was changed.
-    # We do this before resetting to FETCH_HEAD because we lose the original HEAD when doing so.
-    to_update = `cd #{CREW_LIB_PATH} && git show --name-only HEAD..FETCH_HEAD`.include?('lib/const.rb')
-    system("git reset --hard FETCH_HEAD  #{@silent}", chdir: CREW_LIB_PATH, exception: true)
-
-    if Time.now.to_i - @last_update_check > (CREW_UPDATE_CHECK_INTERVAL * 3600 * 24)
-      puts 'Updating RubyGems.'.orange
-      system "gem update -N --system  #{@silent}"
-      system "gem cleanup  #{@silent}"
-    end
-
-    puts 'Package lists, crew, and library updated.' unless CREW_UNATTENDED
-
-    # If lib/const.rb was changed, CREW_VERSION was bumped, so we re-run crew update.
-    if to_update
-      puts 'Restarting crew update since there is an updated crew version.'.lightcyan unless CREW_UNATTENDED
-      puts "CREW_REPO=#{CREW_REPO} CREW_BRANCH=#{CREW_BRANCH} crew update".orange if CREW_VERBOSE
-      exec "CREW_REPO=#{CREW_REPO} CREW_BRANCH=#{CREW_BRANCH} crew update"
-    end
-
-    # Do any fixups necessary after crew has updated from git.
-    system "#{CREW_LIB_PATH}/lib/fixup.rb"
-
-    # Reload device.json in case it was modified by lib/fixup.rb
-    @device = ConvenienceFunctions.load_symbolized_json
-  end
-
-  # check for outdated installed packages
-  puts 'Checking for package updates...' unless CREW_UNATTENDED
-
-  can_be_updated = 0
-  updatable_packages = []
-  @device[:installed_packages].each do |package|
-    search package[:name], silent: true
-    unless @pkg
-      puts "Package file for #{package[:name]} not found. :(".lightred if CREW_VERBOSE
-      next
-    end
-    different_version = (package[:version] != @pkg.version)
-    has_sha = !(PackageUtils.get_sha256(@pkg).to_s.empty? || package[:sha256].to_s.empty?)
-    different_sha = has_sha && package[:sha256] != PackageUtils.get_sha256(@pkg)
-
-    can_be_updated += 1 if different_version || different_sha
-
-    if different_version && !different_sha && has_sha
-      unless @pkg.no_compile_needed?
-        can_be_updated -= 1
-        updatable_packages.push(@pkg.name)
-        puts "#{@pkg.name} has a version change but does not have updated binaries".yellow unless CREW_UNATTENDED
-      end
-    elsif different_version
-      updatable_packages.push(@pkg.name)
-      puts "#{@pkg.name} could be updated from #{package[:version]} to #{@pkg.version}" unless CREW_UNATTENDED
-    elsif !different_version && different_sha
-      updatable_packages.push(@pkg.name)
-      puts "#{@pkg.name} could be updated (rebuild)" unless CREW_UNATTENDED
-    end
-  end
-
-  # Don't be clever about checking to see if updatable packages can be
-  # updated here. Let tools/build_updated_packages.rb handle that.
-  if CREW_UNATTENDED && updatable_packages.length.positive?
-    puts updatable_packages.to_json
-  elsif can_be_updated.positive?
-    puts "\n#{can_be_updated} packages can be updated."
-    puts 'Run `crew upgrade` to update all packages or `crew upgrade <package1> [<package2> ...]` to update specific packages.'
-  else
-    puts 'Your software is up to date.'.lightgreen unless CREW_UNATTENDED
   end
 end
 
@@ -491,257 +391,19 @@ def upgrade(*pkgs, build_from_source: false)
   end
 end
 
-def download
-  test_url = PackageUtils.get_url(@pkg, build_from_source: @opt_source || @pkg.build_from_source)
-  sha256sum = PackageUtils.get_sha256(@pkg, build_from_source: @opt_source || @pkg.build_from_source)
-
-  # Do an early check for a missing binary package and if so rebuild.
-  if !@pkg.source?(@device[:architecture]) && @pkg.superclass.to_s == 'Pip'
-    if `curl -sI #{test_url}`.lines.first.split[1] == '200' && PackageUtils.get_gitlab_pkginfo(@pkg.name, @pkg.version, ARCH, false, false)[:pkg_sha256] == sha256sum
-      url = test_url
-    else
-      url = 'SKIP'
-      @pkg.missing_binaries = true
-    end
-  else
-    url = test_url
-  end
-
-  source = @pkg.source?(@device[:architecture])
-
-  uri = URI.parse url
-  filename = File.basename(uri.path)
-  # # If we're downloading a binary, reset the filename to what it would have been if we didn't download from the API.
-  filename = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.#{@pkg.binary_compression}" if filename.eql?('download')
-  @extract_dir = "#{@pkg.name}.#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.dir"
-
-  build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
-  return { source:, filename: } if (CREW_CACHE_BUILD || @pkg.cache_build?) && File.file?(build_cachefile) && !@pkg.built
-
-  if !url
-    abort "No precompiled binary or source is available for #{@device[:architecture]}.".lightred
-  elsif url.casecmp?('SKIP') || (@pkg.no_source_build? || @pkg.gem_compile_needed?)
-    puts 'Skipping source download...'
-  elsif @pkg.build_from_source
-    puts 'Downloading source...'
-  elsif !source
-    puts 'Precompiled binary available, downloading...'
-  else
-    puts 'No precompiled binary available for your platform, downloading source...'
-  end
-
-  git = true unless @pkg.git_hashtag.to_s.empty?
-  gitlab_binary_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{@pkg.name}/#{@pkg.version}_#{@device[:architecture]}/#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.#{@pkg.binary_compression}"
-
-  if (@pkg.cache_build? || CREW_CACHE_BUILD) && !File.file?(build_cachefile) && !@pkg.no_source_build? && !File.file?(File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.#{@pkg.binary_compression}")) && `curl -fsI #{gitlab_binary_url}`.lines.first.split[1] != '200'
-
-    build_cache_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{@pkg.name}/#{@pkg.version}_#{@device[:architecture]}_build/#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst"
-    puts 'Checking for cached build...'.orange
-    # Does a remote build artifact exist?
-    puts build_cache_url if CREW_VERBOSE
-    puts "curl -fsI #{build_cache_url}" if CREW_VERBOSE
-    if `curl -fsI #{build_cache_url}`.lines.first.split[1] == '200'
-      gitlab_pkginfo = PackageUtils.get_gitlab_pkginfo(@pkg.name, @pkg.version, @device[:architecture], true, true)
-      gitlab_build_artifact_sha256 = gitlab_pkginfo[:pkg_sha256]
-      gitlab_build_artifact_date = gitlab_pkginfo[:pkg_upload_date]
-      puts "Cached build artifact from #{gitlab_build_artifact_date} exists! with sha256 #{gitlab_build_artifact_sha256}".lightgreen
-      puts "Downloading most recent cached build artifact for #{@pkg.name}-#{@pkg.version}...".orange
-      # Download the package build artifact.
-      downloader(build_cache_url, gitlab_build_artifact_sha256, build_cachefile, no_update_hash: true)
-      File.write "#{build_cachefile}.sha256", <<~BUILD_CACHEFILE_SHA256_EOF
-        #{gitlab_build_artifact_sha256} #{build_cachefile}
-      BUILD_CACHEFILE_SHA256_EOF
-    end
-  end
-
-  Dir.chdir CREW_BREW_DIR do
-    FileUtils.mkdir_p @extract_dir
-    # We want to skip when no_source_build is true during the build,
-    # but when we have built a binary we are in upgrade, and we need
-    # download since we need to extract the just generated binary.
-    crewlog '(@pkg.no_source_build? || @pkg.gem_compile_needed?) && !@pkg.in_upgrade && !@pkg.in_install && caller.grep(/download_command/).empty?'
-    crewlog "#{@pkg.no_source_build?} || #{@pkg.gem_compile_needed?} && #{!@pkg.in_upgrade} && #{!@pkg.in_install} && #{caller.grep(/download_command/).empty?}"
-    next if (@pkg.no_source_build? || @pkg.gem_compile_needed?) && !@pkg.in_upgrade && !@pkg.in_install && caller.grep(/download_command/).empty?
-    case File.basename(filename)
-    # Sources that download with our internal downloader.
-    # This also covers all precompiled binaries.
-    when /\.zip$/i, /\.(tar(\.(gz|bz2|xz|lzma|lz|zst))?|tgz|tbz|tpxz|txz)$/i, /\.deb$/i, /\.AppImage$/i, /\.gem$/i
-      # Recall file from cache if requested
-      if CREW_CACHE_ENABLED || CREW_CACHE_BUILD || @pkg.cache_build?
-        puts "Looking for #{@pkg.name} archive in cache".orange if CREW_VERBOSE
-        # Privilege CREW_LOCAL_BUILD_DIR over CREW_CACHE_DIR.
-        local_build_cachefile = File.join(CREW_LOCAL_BUILD_DIR, filename)
-        crew_cache_dir_cachefile = File.join(CREW_CACHE_DIR, filename)
-        cachefile = File.file?(local_build_cachefile) ? local_build_cachefile : crew_cache_dir_cachefile
-        # puts "Using #{@pkg.name} archive from the build cache at #{cachefile}; The checksum will not be checked against the package file.".orange if cachefile.include?(CREW_LOCAL_BUILD_DIR)
-        puts "Using #{@pkg.name} archive from the build cache at #{cachefile}".orange
-        if File.file?(cachefile)
-          puts "#{@pkg.name.capitalize} archive file exists in cache".lightgreen if CREW_VERBOSE
-          # Don't validate checksum if file is in the local build cache.
-          if cachefile.include?(CREW_LOCAL_BUILD_DIR) || cachefile.include?(CREW_CACHE_DIR)
-            sha256sum = 'SKIP'
-          else
-            calc_sha256sum = `sha256sum #{cachefile}`.chomp.split.first
-          end
-          if sha256sum =~ /^SKIP$/i || calc_sha256sum == sha256sum
-            begin
-              # Hard link cached file if possible.
-              FileUtils.ln cachefile, CREW_BREW_DIR, force: true, verbose: CREW_VERBOSE unless File.identical?(cachefile, "#{CREW_BREW_DIR}/#{filename}")
-              puts 'Archive hard linked from cache'.green if CREW_VERBOSE
-            rescue StandardError
-              # Copy cached file if hard link fails.
-              FileUtils.cp cachefile, CREW_BREW_DIR, verbose: CREW_VERBOSE unless File.identical?(cachefile, "#{CREW_BREW_DIR}/#{filename}")
-              puts 'Archive copied from cache'.green if CREW_VERBOSE
-            end
-            puts 'Archive found in cache'.lightgreen
-            unless caller.grep(/download_command/).empty?
-              puts 'Downloaded to: '.lightblue + File.join(CREW_BREW_DIR, filename).blue
-              FileUtils.rm_rf @extract_dir
-            end
-            return { source:, filename: }
-          else
-            puts 'Cached archive checksum mismatch. 😔 Will download.'.lightred
-            cachefile = ''
-          end
-        else
-          puts "Cannot find cached archive at #{cachefile}. 😔 Will download.".orange
-          cachefile = ''
-        end
-      end
-      # Download file if not cached.
-      downloader url, sha256sum, filename, verbose: CREW_VERBOSE
-
-      puts "#{@pkg.name.capitalize} archive downloaded.".lightgreen
-      # Stow file in cache if requested, if file is not from cache,
-      # and cache is writable.
-      if CREW_CACHE_ENABLED && cachefile.to_s.empty? && File.writable?(CREW_CACHE_DIR)
-        begin
-          # Hard link to cache if possible.
-          FileUtils.ln filename, CREW_CACHE_DIR, verbose: CREW_VERBOSE
-          puts 'Archive hard linked to cache'.green if CREW_VERBOSE
-        rescue StandardError
-          # Copy to cache if hard link fails.
-          FileUtils.cp filename, CREW_CACHE_DIR, verbose: CREW_VERBOSE
-          puts 'Archive copied to cache'.green if CREW_VERBOSE
-        end
-      end
-      unless caller.grep(/download_command/).empty?
-        puts 'Downloaded to: '.lightblue + File.join(CREW_BREW_DIR, filename).blue
-        FileUtils.rm_rf @extract_dir
-      end
-      return { source:, filename: }
-
-    when /^SKIP$/i
-      FileUtils.mkdir_p @extract_dir
-    else
-      unless git # We don't want to download a git repository as a file.
-        FileUtils.mkdir_p @extract_dir
-        downloader url, sha256sum, filename, verbose: CREW_VERBOSE
-
-        puts "#{filename}: File downloaded.".lightgreen
-
-        FileUtils.mv filename, "#{@extract_dir}/#{filename}"
-      end
-    end
-
-    # Handle git sources.
-    if git
-      # Recall repository from cache if requested
-      if CREW_CACHE_ENABLED
-        # No git branch specified, just a git commit or tag
-        if @pkg.git_branch.to_s.empty?
-          abort('No Git branch, commit, or tag specified!').lightred if @pkg.git_hashtag.to_s.empty?
-          cachefile = File.join(CREW_CACHE_DIR, "#{filename}#{@pkg.git_hashtag.gsub('/', '_')}.tar.zst")
-        # Git branch and git commit specified
-        elsif !@pkg.git_hashtag.to_s.empty?
-          cachefile = File.join(CREW_CACHE_DIR, "#{filename}#{@pkg.git_branch.gsub(/[^0-9A-Za-z.-]/, '_')}_#{@pkg.git_hashtag.gsub('/', '_')}.tar.zst")
-        # Git branch specified, without a specific git commit.
-        else
-          # Use to the day granularity for a branch timestamp with no specific commit specified.
-          cachefile = File.join(CREW_CACHE_DIR, "#{filename}#{@pkg.git_branch.gsub(/[^0-9A-Za-z.-]/, '_')}#{Time.now.strftime('%m%d%Y')}.tar.zst")
-        end
-        puts "Git cachefile is #{cachefile}".orange if CREW_VERBOSE
-        if File.file?(cachefile) && File.file?("#{cachefile}.sha256")
-          while File.file?("#{cachefile}.lock")
-            @cache_wait_timer = 0
-            puts "Waited #{@cache_wait_timer}s for #{cachefile} generation..."
-            sleep 1
-            @cache_wait_timer += 1
-            abort "Cachefile not available after #{@cache_wait_timer} seconds." if @cache_wait_timer > 300
-          end
-          if Dir.chdir CREW_CACHE_DIR do
-               system "sha256sum -c #{cachefile}.sha256"
-             end
-            FileUtils.mkdir_p @extract_dir
-            system "tar -Izstd -x#{@verbose}f #{cachefile} -C #{@extract_dir}"
-            return { source:, filename: }
-          else
-            puts 'Cached git repository checksum mismatch. 😔 Will download.'.lightred
-          end
-        else
-          puts 'Cannot find cached git repository. 😔 Will download.'.lightred
-        end
-      end
-      # Download via git
-      FileUtils.mkdir_p @extract_dir
-      Dir.chdir @extract_dir do
-        if @pkg.git_branch.to_s.empty?
-          system 'git init'
-          system 'git config advice.detachedHead false'
-          system 'git config init.defaultBranch master'
-          system "git remote add origin #{@pkg.source_url}", exception: true
-          system "git fetch #{'--depth 1' unless @pkg.git_clone_deep?} origin #{@pkg.git_hashtag}", exception: true
-          system 'git checkout FETCH_HEAD'
-        else
-          # Leave a message because this step can be slow.
-          puts 'Downloading src from a git branch. This may take a while...'
-          system "git clone --branch #{@pkg.git_branch} --single-branch #{@pkg.source_url} tmpdir", exception: true
-          system 'mv tmpdir/.git . && rm -rf tmpdir'
-          system "git reset --hard #{@pkg.git_hashtag}", exception: true
-        end
-        system 'git submodule update --init --recursive' unless @pkg.no_git_submodules?
-        system 'git fetch --tags', exception: true if @pkg.git_fetchtags?
-        puts 'Repository downloaded.'.lightgreen
-      end
-      # Stow file in cache if requested and cache is writable, except if
-      # in Github Actions, since the cached git archive isn't shared
-      # between parallel runs.
-      if CREW_CACHE_ENABLED && File.writable?(CREW_CACHE_DIR) && !ENV['NESTED_CI']
-        puts 'Caching downloaded git repo...'
-        Dir.chdir @extract_dir do
-          # Do not use --exclude-vcs to exclude .git
-          # because some builds will use that information.
-          @git_cachefile_lockfile = CrewLockfile.new "#{cachefile}.lock"
-          begin
-            @git_cachefile_lockfile.lock
-            system "tar c \
-              $(#{CREW_PREFIX}/bin/find -mindepth 1 -maxdepth 1 -printf '%P\n') | \
-              nice -n 20 zstd -T0 --ultra -20 -o #{cachefile} -"
-          ensure
-            @git_cachefile_lockfile.unlock
-          end
-        end
-        system 'sha256sum', cachefile, out: "#{cachefile}.sha256" if File.file?(cachefile)
-        puts 'Git repo cached.'.lightgreen
-      end
-    end
-  end
-  return { source:, filename: }
-end
-
 def unpack(meta)
   target_dir = nil
   Dir.chdir CREW_BREW_DIR do
-    FileUtils.mkdir_p @extract_dir, verbose: CREW_VERBOSE
+    FileUtils.mkdir_p meta[:extract_dir], verbose: CREW_VERBOSE
 
     build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
     if !@pkg.built && (@pkg.cache_build? || CREW_CACHE_BUILD) && File.file?(build_cachefile) && File.file?("#{build_cachefile}.sha256") && (system "sha256sum -c #{build_cachefile}.sha256", chdir: CREW_CACHE_DIR)
       @pkg.cached_build = true
       puts "Extracting cached build directory from #{build_cachefile}".lightgreen
       system "tar -Izstd -x#{@verbose}f #{build_cachefile} -C #{CREW_BREW_DIR}", exception: true
-      # Need to reset @extract_dir to the extracted cached build
+      # Need to reset meta[:extract_dir] to the extracted cached build
       # directory.
-      @extract_dir = `tar -Izstd --exclude='./*/*' -tf #{build_cachefile} | cut -d '/' -f 1 | LC_ALL=C sort -u`.chomp
+      meta[:extract_dir] = `tar -Izstd --exclude='./*/*' -tf #{build_cachefile} | cut -d '/' -f 1 | LC_ALL=C sort -u`.chomp
     else
       @pkg.cached_build = false
       @archive_wait_timer = 0
@@ -754,17 +416,17 @@ def unpack(meta)
       case File.basename meta[:filename]
       when /\.zip$/i
         puts "Unpacking archive using 'unzip', this may take a while..."
-        system 'unzip', (CREW_VERBOSE ? '-v' : '-qq'), '-d', @extract_dir, meta[:filename], exception: true
+        system 'unzip', (CREW_VERBOSE ? '-v' : '-qq'), '-d', meta[:extract_dir], meta[:filename], exception: true
       when /\.(tar(\.(bz2|gz|lz|lzma))?|tbz|tgz)$/i
         puts "Unpacking archive using 'tar', this may take a while..."
-        system 'tar', "-x#{@verbose}f", meta[:filename], '-C', @extract_dir, exception: true
+        system 'tar', "-x#{@verbose}f", meta[:filename], '-C', meta[:extract_dir], exception: true
       when /\.(tar(\.(xz|zst))?|txz|tpxz)$/i
         puts "Unpacking archive using 'tar', this may take a while..."
-        system "LD_AUDIT= tar -Izstd -x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true unless system 'tar', '-Izstd', "-x#{@verbose}f", meta[:filename], '-C', @extract_dir
+        system "LD_AUDIT= tar -Izstd -x#{@verbose}f #{meta[:filename]} -C #{meta[:extract_dir]}", exception: true unless system 'tar', '-Izstd', "-x#{@verbose}f", meta[:filename], '-C', meta[:extract_dir]
       when /\.deb$/i
         puts "Unpacking '.deb' archive, this may take a while..."
         DebUtils.extract_deb(meta[:filename], /data\..*/)
-        system 'tar', "-x#{@verbose}f", *Dir['data.*'], '-C', @extract_dir, exception: true
+        system 'tar', "-x#{@verbose}f", *Dir['data.*'], '-C', meta[:extract_dir], exception: true
       when /\.AppImage$/i
         puts "Unpacking 'AppImage' archive, this may take a while..."
         FileUtils.chmod 0o755, meta[:filename], verbose: CREW_VERBOSE
@@ -773,17 +435,17 @@ def unpack(meta)
           _appimage_set_interpreter_stdout, appimage_set_interpreter_stderr = Open3.capture3("patchelf --set-interpreter #{CREW_GLIBC_INTERPRETER} #{meta[:filename]}")
           puts "#{meta[:filename]}: appimage_set_interpreter_stderr: #{appimage_set_interpreter_stderr.chomp}".lightpurple if !appimage_set_interpreter_stderr.blank? && CREW_VERBOSE
         end
-        system "../#{meta[:filename]}", '--appimage-extract', chdir: @extract_dir, exception: true
+        system "../#{meta[:filename]}", '--appimage-extract', chdir: meta[:extract_dir], exception: true
       when /\.gem$/i
         ruby_gem_name, ruby_gem_version, _upstream_version, _gem_installed_version, _gem_latest_version_installed, _gem_deps = PackageUtils.get_gem_vars(@pkg.name, @pkg.version, @pkg.upstream_name)
         puts "Moving #{ruby_gem_name} binary gem for install...".orange
         gem_file = "#{ruby_gem_name}-#{ruby_gem_version}-#{GEM_ARCH}.gem"
-        FileUtils.mv meta[:filename], File.join(@extract_dir, gem_file)
+        FileUtils.mv meta[:filename], File.join(meta[:extract_dir], gem_file)
       end
     end
     if meta[:source]
       # Check the number of directories in the archive
-      entries = Dir["#{@extract_dir}/*"]
+      entries = Dir["#{meta[:extract_dir]}/*"]
 
       if entries.empty? && CREW_VERBOSE
         # This will happen with SKIP packages.
@@ -794,11 +456,11 @@ def unpack(meta)
                      entries.first
                    else
                      # Use `extract_dir` otherwise
-                     @extract_dir
+                     meta[:extract_dir]
                    end
     else
       # Use `extract_dir` for binary distribution
-      target_dir = @extract_dir
+      target_dir = meta[:extract_dir]
     end
     # Remove tarball to save space.
     FileUtils.rm_f meta[:filename], verbose: CREW_VERBOSE if File.file?(meta[:filename])
@@ -822,7 +484,7 @@ def build_and_preconfigure(target_dir)
     @pkg.in_build = true
     Signal.trap('INT') do
       if CREW_CACHE_BUILD || @pkg.cache_build?
-        cache_build
+        cache_build(target_dir)
         ExitMessage.add 'The build was interrupted. The build directory was cached.'.lightred
         exit 1
       end
@@ -842,7 +504,7 @@ def build_and_preconfigure(target_dir)
       @pkg.build
     rescue StandardError => e
       if CREW_CACHE_FAILED_BUILD || @pkg.cache_build?
-        cache_build
+        cache_build(target_dir)
         abort "There was a build error, caching build directory.\n#{e}".lightred
       end
       abort "There was a build error.\n#{e}".lightred
@@ -850,7 +512,7 @@ def build_and_preconfigure(target_dir)
     @pkg.in_build = false
     Signal.trap('INT', 'DEFAULT') if CREW_CACHE_BUILD || @pkg.cache_build?
 
-    cache_build if (CREW_CACHE_BUILD || @pkg.cache_build?) && !%w[Pip RUBY].include?(@pkg.superclass.to_s)
+    cache_build(target_dir) if (CREW_CACHE_BUILD || @pkg.cache_build?) && !%w[Pip RUBY].include?(@pkg.superclass.to_s)
 
     # wipe crew destdir
     FileUtils.rm_rf Dir["#{CREW_DEST_DIR}/*"], verbose: CREW_VERBOSE unless @pkg.superclass.to_s == 'RUBY'
@@ -1420,7 +1082,7 @@ def install(skip_postinstall: false)
     # use CREW_DEST_DIR
     dest_dir = CREW_DEST_DIR
   elsif @pkg.superclass.to_s == 'RUBY'
-    meta = download
+    meta = Command.download(@pkg, verbose: CREW_VERBOSE, opt_source: @opt_source)
     target_dir = unpack meta
     ruby_gem_name, ruby_gem_version, _upstream_version, _gem_installed_version, _gem_latest_version_installed, _gem_deps = PackageUtils.get_gem_vars(@pkg.name, @pkg.version, @pkg.upstream_name)
     gem_file = "#{ruby_gem_name}-#{ruby_gem_version}-#{GEM_ARCH}.gem"
@@ -1431,7 +1093,7 @@ def install(skip_postinstall: false)
     end
     dest_dir = CREW_DEST_DIR
   else
-    meta = download
+    meta = Command.download(@pkg, verbose: CREW_VERBOSE, opt_source: @opt_source)
     target_dir = unpack meta
     if meta[:source]
       # build from source and place binaries at CREW_DEST_DIR
@@ -1577,7 +1239,7 @@ end
 
 def build_package(crew_archive_dest)
   # Download source code and unpack it.
-  meta = download
+  meta = Command.download(@pkg, verbose: CREW_VERBOSE, opt_source: @opt_source)
   target_dir = unpack meta
 
   # Build from source and place binaries in CREW_DEST_DIR.
@@ -2046,6 +1708,7 @@ def download_command(args)
     search @pkg_name
     @pkg.build_from_source = true if @opt_source
     print_current_package extra: CREW_VERBOSE
+    meta = {}
     # rubocop:disable Style/ArrayIntersectWithSingleElement
     if ARGV.intersect?(%w[download]) && @pkg.is_fake?
       # rubocop:enable Style/ArrayIntersectWithSingleElement
@@ -2066,15 +1729,15 @@ def download_command(args)
           total_files_to_check = fake_pkg_deplist.length
           numlength = total_files_to_check.to_s.length
           puts "[#{(index + 1).to_s.rjust(numlength)}/#{total_files_to_check}] Downloading #{fake_pkg_dep}...".blue
-          download
+          meta = Command.download(@pkg, verbose: CREW_VERBOSE, opt_source: @opt_source)
           fake_pkg_deplist.delete(@pkg_name)
         end
       end
     else
-      download
+      meta = Command.download(@pkg, verbose: CREW_VERBOSE, opt_source: @opt_source)
     end
-    # Clean up remnant @extract_dir folders.
-    FileUtils.rm_rf File.join(CREW_BREW_DIR, @extract_dir)
+    # Clean up remnant meta[:extract_dir] folders.
+    FileUtils.rm_rf File.join(CREW_BREW_DIR, meta[:extract_dir]) unless meta[:extract_dir].nil?
   end
 end
 
@@ -2177,7 +1840,7 @@ def sysinfo_command(_args)
 end
 
 def update_command(_args)
-  update
+  Command.update(@last_update_check)
 end
 
 def upgrade_command(args) = upgrade(*args['<name>'], build_from_source: @opt_source)

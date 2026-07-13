@@ -1,0 +1,3 @@
+#!/bin/bash
+mkfontscale --help 2>&1
+mkfontscale --version

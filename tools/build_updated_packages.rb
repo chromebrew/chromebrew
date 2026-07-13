@@ -21,6 +21,7 @@ crew_local_repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp
 # When invoked from crew, pwd is CREW_DEST_DIR, so crew_local_repo_root
 # is empty.
 crew_local_repo_root = '../' if crew_local_repo_root.to_s.empty?
+require File.join(crew_local_repo_root, 'commands/update')
 require File.join(crew_local_repo_root, 'lib/color')
 require File.join(crew_local_repo_root, 'lib/const')
 require File.join(crew_local_repo_root, 'lib/package')
@@ -274,7 +275,7 @@ else
 end
 
 unless ONLY_SPECIFIED_PACKAGES
-  crew_update_packages = `CREW_NO_GIT=1 CREW_UNATTENDED=1 crew update | grep "\\[\\""  | jq -r '.[]'`.chomp.split.map(&'packages/'.method(:+)).map { it.concat('.rb') }
+  crew_update_packages = determine_updatable_packages(json: true).map { "packages/#{it}.rb" }
   if CHECK_ALL_PYTHON
     py_packages = `grep -l CREW_PY_VER packages/*`.chomp.split
     updated_packages.push(*py_packages)

@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Ocaml < Autotools
   description 'OCaml is an industrial strength programming language supporting functional, imperative and object-oriented styles'
   homepage 'https://ocaml.org/'
-  version '5.4.1'
+  version '5.5.0'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://github.com/ocaml/ocaml.git'
@@ -11,13 +11,14 @@ class Ocaml < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8eef941708e6de0b326c1939649b79f771166f61fd509d0f8604c121064b9af8',
-     armv7l: '8eef941708e6de0b326c1939649b79f771166f61fd509d0f8604c121064b9af8',
-       i686: 'b685ee5c735076fa41027038cac6b064cfd36427510a8c0a0c2ae5bb39be5d3a',
-     x86_64: '555eec4b5de0b72124ee8f484d29834309a3284fe340971c60f7d6746b8b2838'
+    aarch64: '56d1fa4ba2ea85c3aa3e5743f75962b5a1b72506844d80dd3f734af103bb8dd6',
+     armv7l: '56d1fa4ba2ea85c3aa3e5743f75962b5a1b72506844d80dd3f734af103bb8dd6',
+       i686: '06e53e6a309eb41a24bf3ff52b66e7300230e82de06b7ef019bf4640c394f986',
+     x86_64: '9d43188720a15e0767752dc6db2c831da25c050ee261f7794613d54fe1dc6b92'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'zstd' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'zstd' => :library
 end

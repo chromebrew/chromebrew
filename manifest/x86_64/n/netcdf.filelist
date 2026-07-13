@@ -1,4 +1,4 @@
-# Total size: 5052158
+# Total size: 2630043
 /usr/local/bin/nc-config
 /usr/local/bin/nccopy
 /usr/local/bin/ncdump
@@ -8,19 +8,22 @@
 /usr/local/include/netcdf_aux.h
 /usr/local/include/netcdf_dispatch.h
 /usr/local/include/netcdf_filter.h
+/usr/local/include/netcdf_filter_build.h
+/usr/local/include/netcdf_json.h
 /usr/local/include/netcdf_mem.h
 /usr/local/include/netcdf_meta.h
-/usr/local/lib64/libh5bzip2.la
-/usr/local/lib64/libh5bzip2.so
-/usr/local/lib64/libnetcdf.a
-/usr/local/lib64/libnetcdf.la
+/usr/local/include/netcdf_proplist.h
+/usr/local/include/netcdf_vutils.h
+/usr/local/lib64/cmake/netCDF/netCDFConfig.cmake
+/usr/local/lib64/cmake/netCDF/netCDFConfigVersion.cmake
+/usr/local/lib64/cmake/netCDF/netCDFTargets-release.cmake
+/usr/local/lib64/cmake/netCDF/netCDFTargets.cmake
 /usr/local/lib64/libnetcdf.settings
 /usr/local/lib64/libnetcdf.so
-/usr/local/lib64/libnetcdf.so.18
-/usr/local/lib64/libnetcdf.so.18.0.0
+/usr/local/lib64/libnetcdf.so.22
 /usr/local/lib64/pkgconfig/netcdf.pc
-/usr/local/share/man/man1/nccopy.1.gz
-/usr/local/share/man/man1/ncdump.1.gz
-/usr/local/share/man/man1/ncgen.1.gz
-/usr/local/share/man/man1/ncgen3.1.gz
-/usr/local/share/man/man3/netcdf.3.gz
+/usr/local/share/man/man1/nccopy.1.zst
+/usr/local/share/man/man1/ncdump.1.zst
+/usr/local/share/man/man1/ncgen.1.zst
+/usr/local/share/man/man1/ncgen3.1.zst
+/usr/local/share/man/man3/netcdf.3.zst

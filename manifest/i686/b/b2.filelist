@@ -1,4 +1,4 @@
-# Total size: 2582316
+# Total size: 2772438
 /usr/local/bin/b2
 /usr/local/share/b2/src/build-system.jam
 /usr/local/share/b2/src/build/ac.jam
@@ -28,6 +28,7 @@
 /usr/local/share/b2/src/tools/bison.jam
 /usr/local/share/b2/src/tools/boostbook.jam
 /usr/local/share/b2/src/tools/borland.jam
+/usr/local/share/b2/src/tools/brotli.jam
 /usr/local/share/b2/src/tools/builtin.jam
 /usr/local/share/b2/src/tools/bzip2.jam
 /usr/local/share/b2/src/tools/cast.jam
@@ -116,6 +117,7 @@
 /usr/local/share/b2/src/tools/features/version-feature.jam
 /usr/local/share/b2/src/tools/features/visibility-feature.jam
 /usr/local/share/b2/src/tools/features/warnings-feature.jam
+/usr/local/share/b2/src/tools/filc.jam
 /usr/local/share/b2/src/tools/flags.jam
 /usr/local/share/b2/src/tools/fop.jam
 /usr/local/share/b2/src/tools/fortran.jam

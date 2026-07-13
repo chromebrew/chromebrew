@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Jq < Autotools
   description 'jq is a lightweight and flexible command-line JSON processor.'
   homepage 'https://stedolan.github.io/jq/'
-  version '1.8.1'
+  version '1.8.2'
   license 'MIT and CC-BY-3.0'
   compatibility 'all'
   source_url 'https://github.com/stedolan/jq.git'
@@ -11,13 +11,14 @@ class Jq < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9b43ad5b36f03354c8617508dba0b1cb0e22c917502a65e562ec57b08f63e5ea',
-     armv7l: '9b43ad5b36f03354c8617508dba0b1cb0e22c917502a65e562ec57b08f63e5ea',
-       i686: '3890e4b752480f64c8a424801ab6069b4c78db456bdeb1d42ea97bc930e260da',
-     x86_64: '1c10b89e6e12e52466f1b4dabe999ba9d705c54bddc2b3258e13898103f83826'
+    aarch64: '12101470f0e6b6dec30e00ace0ad6bce7f63bf4e0e16e37dd9744c160c7172f2',
+     armv7l: '12101470f0e6b6dec30e00ace0ad6bce7f63bf4e0e16e37dd9744c160c7172f2',
+       i686: 'e5bab74ab5e36374a8f2fc36d18dcd7683b7bb37803b79796683227480beb55c',
+     x86_64: 'bdce1a53efe2c8378e0b95d81a445e942d63fb0ebbd1580ac20ad67e73df62df'
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'oniguruma' => :library
 
   autotools_configure_options "--disable-maintainer-mode \

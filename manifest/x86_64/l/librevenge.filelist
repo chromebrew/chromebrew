@@ -1,4 +1,4 @@
-# Total size: 9694416
+# Total size: 9880969
 /usr/local/include/librevenge-0.0/librevenge-generators/RVNGCSVSpreadsheetGenerator.h
 /usr/local/include/librevenge-0.0/librevenge-generators/RVNGHTMLTextGenerator.h
 /usr/local/include/librevenge-0.0/librevenge-generators/RVNGRawDrawingGenerator.h
@@ -33,15 +33,15 @@
 /usr/local/lib64/librevenge-0.0.la
 /usr/local/lib64/librevenge-0.0.so
 /usr/local/lib64/librevenge-0.0.so.0
-/usr/local/lib64/librevenge-0.0.so.0.0.5
+/usr/local/lib64/librevenge-0.0.so.0.0.6
 /usr/local/lib64/librevenge-generators-0.0.la
 /usr/local/lib64/librevenge-generators-0.0.so
 /usr/local/lib64/librevenge-generators-0.0.so.0
-/usr/local/lib64/librevenge-generators-0.0.so.0.0.5
+/usr/local/lib64/librevenge-generators-0.0.so.0.0.6
 /usr/local/lib64/librevenge-stream-0.0.la
 /usr/local/lib64/librevenge-stream-0.0.so
 /usr/local/lib64/librevenge-stream-0.0.so.0
-/usr/local/lib64/librevenge-stream-0.0.so.0.0.5
+/usr/local/lib64/librevenge-stream-0.0.so.0.0.6
 /usr/local/lib64/pkgconfig/librevenge-0.0.pc
 /usr/local/lib64/pkgconfig/librevenge-generators-0.0.pc
 /usr/local/lib64/pkgconfig/librevenge-stream-0.0.pc

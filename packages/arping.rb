@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Arping < Autotools
   description 'ARP Ping'
   homepage 'https://www.habets.pp.se/synscan/programs_arping.html'
-  version '2.28'
+  version '2.29'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/ThomasHabets/arping.git'
@@ -11,13 +11,14 @@ class Arping < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '093718d8c147470ee1c3935d23e80f237ab2047e88b269daa0797b5192319078',
-     armv7l: '093718d8c147470ee1c3935d23e80f237ab2047e88b269daa0797b5192319078',
-       i686: '1776a40819efb729991aa1f404b6bbe56d18e003cd7d7da8cb1334f6b4b46437',
-     x86_64: 'ce751dae17387cc0e42704b2596e9d0aa13b848e3a63db416745dfdfce27b188'
+    aarch64: '415bc110d92dc212920ba08da1d522b5cd4e72d5a9474e84aaa76a993d687a16',
+     armv7l: '415bc110d92dc212920ba08da1d522b5cd4e72d5a9474e84aaa76a993d687a16',
+       i686: 'afdfe5a1f3c8ae03dce6d3a1cee67bec57908c0ff81c0d33dca074f5bb48e37f',
+     x86_64: 'fba04d482ae05627c53b946029a3f606b9ae12f0f9a79fb0303e1c9a7be22f8a'
   })
 
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'libcap' => :executable
   depends_on 'libnet' => :executable
   depends_on 'libpcap' => :executable

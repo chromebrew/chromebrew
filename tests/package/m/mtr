@@ -1,0 +1,3 @@
+#!/bin/bash
+mtr -h | head
+mtr -v

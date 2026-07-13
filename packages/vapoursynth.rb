@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Vapoursynth < Meson
   description 'A video processing framework with the future in mind'
   homepage 'http://www.vapoursynth.com/'
-  version '76'
+  version '77'
   license 'LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/vapoursynth/vapoursynth.git'
@@ -11,14 +11,15 @@ class Vapoursynth < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9cd3bf0e1a671aae64491d9590f1aa8602b59a514e4de40e430c07edc71b3996',
-     armv7l: '9cd3bf0e1a671aae64491d9590f1aa8602b59a514e4de40e430c07edc71b3996',
-     x86_64: '47372f462a5af96088d1d771cf15878b2b7e8e42debac8d9638c6532acc6b4ee'
+    aarch64: 'e203729918a59e631733e1f30a39938f3e9a6d9da1b259b804f8d9abb019579b',
+     armv7l: 'e203729918a59e631733e1f30a39938f3e9a6d9da1b259b804f8d9abb019579b',
+     x86_64: 'e99445a28516b9994b0c13c4da8e2cefaf49a616e81a47bd9c41a9e7414d9130'
   })
 
   depends_on 'ffmpeg' => :build
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'graphicsmagick' => :build
   depends_on 'libass' => :build
   depends_on 'py3_cython' => :build

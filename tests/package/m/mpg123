@@ -1,0 +1,3 @@
+#!/bin/bash
+mpg123 -? | head
+mpg123 --version

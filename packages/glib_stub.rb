@@ -21,7 +21,6 @@ class Glib_stub < Meson
 
   depends_on 'elfutils' => :executable
   depends_on 'gcc_lib' # R
-  depends_on 'glib' # R
   depends_on 'glibc' # R
   depends_on 'libffi' # R
   depends_on 'pcre2' # R

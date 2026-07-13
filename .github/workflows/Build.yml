@@ -159,14 +159,15 @@ jobs:
           armv7l_PACKAGES: ${{ needs.get-compatibility.outputs.armv7l_PACKAGES }}
         run: |
           function join_by { local IFS="$1"; shift; echo "$*"; }
-          if [[ -n "${i686_PACKAGES}" ]]; then
+          if [[ "${{ ( inputs.build-on) }}" =~ "i686" ]] && [[ -n "${i686_PACKAGES}" ]]; then
             export CONTAINER_ARCH+=( "\"i686\"" )
             export i686_MIN_GLIBC+=( "\"$i686_MIN_GLIBC\"" )
           fi
-          # Always run on x86_64
-          export CONTAINER_ARCH+=( "\"x86_64\"" )
-          export x86_64_MIN_GLIBC+=( "\"$x86_64_MIN_GLIBC\"" )
-          if [[ -n "${armv7l_PACKAGES}" ]]; then
+          if [[ "${{ ( inputs.build-on) }}" =~ "x86_64" ]] && [[ -n "${x86_64_PACKAGES}" ]]; then
+            export CONTAINER_ARCH+=( "\"x86_64\"" )
+            export x86_64_MIN_GLIBC+=( "\"$x86_64_MIN_GLIBC\"" )
+          fi
+          if [[ "${{ ( inputs.build-on) }}" =~ "armv7l" ]] && [[ -n "${armv7l_PACKAGES}" ]]; then
             export CONTAINER_ARCH+=( "\"armv7l\"" )
             export armv7l_MIN_GLIBC+=( "\"$armv7l_MIN_GLIBC\"" )
           fi
@@ -268,7 +269,7 @@ jobs:
                   echo "CONTAINER=satmandu/crewbuild:fievel-armv7l.m97" >> "$GITHUB_ENV"
                   ;;
                 2.37)
-                  echo "CONTAINER=satmandu/crewbuild:strongbad-armv7l.m148" >> "$GITHUB_ENV"
+                  echo "CONTAINER=satmandu/crewbuild:strongbad-armv7l.m149" >> "$GITHUB_ENV"
                   ;;
                 *)
                   # Fallback/default is the M91 Glibc 2.27 container.

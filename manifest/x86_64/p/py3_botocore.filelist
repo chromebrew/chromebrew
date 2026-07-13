@@ -1,12 +1,12 @@
-# Total size: 21338554
-/usr/local/lib/python3.14/site-packages/botocore-1.43.34.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/botocore-1.43.34.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/botocore-1.43.34.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/botocore-1.43.34.dist-info/NOTICE
-/usr/local/lib/python3.14/site-packages/botocore-1.43.34.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/botocore-1.43.34.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/botocore-1.43.34.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/botocore-1.43.34.dist-info/top_level.txt
+# Total size: 21450685
+/usr/local/lib/python3.14/site-packages/botocore-1.43.46.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/botocore-1.43.46.dist-info/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/botocore-1.43.46.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/botocore-1.43.46.dist-info/NOTICE
+/usr/local/lib/python3.14/site-packages/botocore-1.43.46.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/botocore-1.43.46.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/botocore-1.43.46.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/botocore-1.43.46.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/botocore/__init__.py
 /usr/local/lib/python3.14/site-packages/botocore/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/botocore/__pycache__/args.cpython-314.pyc
@@ -277,6 +277,7 @@
 /usr/local/lib/python3.14/site-packages/botocore/data/bedrock/2023-04-20/waiters-2.json
 /usr/local/lib/python3.14/site-packages/botocore/data/billing/2023-09-07/endpoint-rule-set-1.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/billing/2023-09-07/paginators-1.json
+/usr/local/lib/python3.14/site-packages/botocore/data/billing/2023-09-07/paginators-1.sdk-extras.json
 /usr/local/lib/python3.14/site-packages/botocore/data/billing/2023-09-07/service-2.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/billing/2023-09-07/waiters-2.json
 /usr/local/lib/python3.14/site-packages/botocore/data/billingconductor/2021-07-30/endpoint-rule-set-1.json.gz
@@ -969,6 +970,7 @@
 /usr/local/lib/python3.14/site-packages/botocore/data/inspector2/2020-06-08/paginators-1.json
 /usr/local/lib/python3.14/site-packages/botocore/data/inspector2/2020-06-08/paginators-1.sdk-extras.json
 /usr/local/lib/python3.14/site-packages/botocore/data/inspector2/2020-06-08/service-2.json.gz
+/usr/local/lib/python3.14/site-packages/botocore/data/inspector2/2020-06-08/waiters-2.json
 /usr/local/lib/python3.14/site-packages/botocore/data/interconnect/2022-07-26/endpoint-rule-set-1.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/interconnect/2022-07-26/paginators-1.json
 /usr/local/lib/python3.14/site-packages/botocore/data/interconnect/2022-07-26/service-2.json.gz
@@ -1000,14 +1002,6 @@
 /usr/local/lib/python3.14/site-packages/botocore/data/iotdeviceadvisor/2020-09-18/examples-1.json
 /usr/local/lib/python3.14/site-packages/botocore/data/iotdeviceadvisor/2020-09-18/paginators-1.json
 /usr/local/lib/python3.14/site-packages/botocore/data/iotdeviceadvisor/2020-09-18/service-2.json.gz
-/usr/local/lib/python3.14/site-packages/botocore/data/iotevents-data/2018-10-23/endpoint-rule-set-1.json.gz
-/usr/local/lib/python3.14/site-packages/botocore/data/iotevents-data/2018-10-23/examples-1.json
-/usr/local/lib/python3.14/site-packages/botocore/data/iotevents-data/2018-10-23/paginators-1.json
-/usr/local/lib/python3.14/site-packages/botocore/data/iotevents-data/2018-10-23/service-2.json.gz
-/usr/local/lib/python3.14/site-packages/botocore/data/iotevents/2018-07-27/endpoint-rule-set-1.json.gz
-/usr/local/lib/python3.14/site-packages/botocore/data/iotevents/2018-07-27/examples-1.json
-/usr/local/lib/python3.14/site-packages/botocore/data/iotevents/2018-07-27/paginators-1.json
-/usr/local/lib/python3.14/site-packages/botocore/data/iotevents/2018-07-27/service-2.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/iotfleetwise/2021-06-17/endpoint-rule-set-1.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/iotfleetwise/2021-06-17/paginators-1.json
 /usr/local/lib/python3.14/site-packages/botocore/data/iotfleetwise/2021-06-17/service-2.json.gz
@@ -1113,6 +1107,12 @@
 /usr/local/lib/python3.14/site-packages/botocore/data/lakeformation/2017-03-31/paginators-1.json
 /usr/local/lib/python3.14/site-packages/botocore/data/lakeformation/2017-03-31/paginators-1.sdk-extras.json
 /usr/local/lib/python3.14/site-packages/botocore/data/lakeformation/2017-03-31/service-2.json.gz
+/usr/local/lib/python3.14/site-packages/botocore/data/lambda-core/2026-04-30/endpoint-rule-set-1.json.gz
+/usr/local/lib/python3.14/site-packages/botocore/data/lambda-core/2026-04-30/paginators-1.json
+/usr/local/lib/python3.14/site-packages/botocore/data/lambda-core/2026-04-30/service-2.json.gz
+/usr/local/lib/python3.14/site-packages/botocore/data/lambda-microvms/2025-09-09/endpoint-rule-set-1.json.gz
+/usr/local/lib/python3.14/site-packages/botocore/data/lambda-microvms/2025-09-09/paginators-1.json
+/usr/local/lib/python3.14/site-packages/botocore/data/lambda-microvms/2025-09-09/service-2.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/lambda/2014-11-11/endpoint-rule-set-1.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/lambda/2014-11-11/service-2.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/lambda/2015-03-31/endpoint-rule-set-1.json.gz
@@ -1394,10 +1394,6 @@
 /usr/local/lib/python3.14/site-packages/botocore/data/outposts/2019-12-03/paginators-1.json
 /usr/local/lib/python3.14/site-packages/botocore/data/outposts/2019-12-03/paginators-1.sdk-extras.json
 /usr/local/lib/python3.14/site-packages/botocore/data/outposts/2019-12-03/service-2.json.gz
-/usr/local/lib/python3.14/site-packages/botocore/data/panorama/2019-07-24/endpoint-rule-set-1.json.gz
-/usr/local/lib/python3.14/site-packages/botocore/data/panorama/2019-07-24/examples-1.json
-/usr/local/lib/python3.14/site-packages/botocore/data/panorama/2019-07-24/paginators-1.json
-/usr/local/lib/python3.14/site-packages/botocore/data/panorama/2019-07-24/service-2.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/partitions.json
 /usr/local/lib/python3.14/site-packages/botocore/data/partnercentral-account/2025-04-04/endpoint-rule-set-1.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/partnercentral-account/2025-04-04/paginators-1.json
@@ -1411,6 +1407,10 @@
 /usr/local/lib/python3.14/site-packages/botocore/data/partnercentral-channel/2024-03-18/paginators-1.json
 /usr/local/lib/python3.14/site-packages/botocore/data/partnercentral-channel/2024-03-18/service-2.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/partnercentral-channel/2024-03-18/waiters-2.json
+/usr/local/lib/python3.14/site-packages/botocore/data/partnercentral-revenue-measurement/2022-07-26/endpoint-rule-set-1.json.gz
+/usr/local/lib/python3.14/site-packages/botocore/data/partnercentral-revenue-measurement/2022-07-26/paginators-1.json
+/usr/local/lib/python3.14/site-packages/botocore/data/partnercentral-revenue-measurement/2022-07-26/service-2.json.gz
+/usr/local/lib/python3.14/site-packages/botocore/data/partnercentral-revenue-measurement/2022-07-26/waiters-2.json
 /usr/local/lib/python3.14/site-packages/botocore/data/partnercentral-selling/2022-07-26/endpoint-rule-set-1.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/partnercentral-selling/2022-07-26/paginators-1.json
 /usr/local/lib/python3.14/site-packages/botocore/data/partnercentral-selling/2022-07-26/service-2.json.gz
@@ -1760,9 +1760,6 @@
 /usr/local/lib/python3.14/site-packages/botocore/data/simpledbv2/2025-09-26/paginators-1.json
 /usr/local/lib/python3.14/site-packages/botocore/data/simpledbv2/2025-09-26/service-2.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/simpledbv2/2025-09-26/waiters-2.json
-/usr/local/lib/python3.14/site-packages/botocore/data/simspaceweaver/2022-10-28/endpoint-rule-set-1.json.gz
-/usr/local/lib/python3.14/site-packages/botocore/data/simspaceweaver/2022-10-28/paginators-1.json
-/usr/local/lib/python3.14/site-packages/botocore/data/simspaceweaver/2022-10-28/service-2.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/sms-voice/2018-09-05/endpoint-rule-set-1.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/sms-voice/2018-09-05/service-2.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/snow-device-management/2021-08-04/endpoint-rule-set-1.json.gz
@@ -1842,6 +1839,10 @@
 /usr/local/lib/python3.14/site-packages/botocore/data/support/2013-04-15/examples-1.json
 /usr/local/lib/python3.14/site-packages/botocore/data/support/2013-04-15/paginators-1.json
 /usr/local/lib/python3.14/site-packages/botocore/data/support/2013-04-15/service-2.json.gz
+/usr/local/lib/python3.14/site-packages/botocore/data/supportauthz/2026-06-30/endpoint-rule-set-1.json.gz
+/usr/local/lib/python3.14/site-packages/botocore/data/supportauthz/2026-06-30/paginators-1.json
+/usr/local/lib/python3.14/site-packages/botocore/data/supportauthz/2026-06-30/service-2.json.gz
+/usr/local/lib/python3.14/site-packages/botocore/data/supportauthz/2026-06-30/waiters-2.json
 /usr/local/lib/python3.14/site-packages/botocore/data/sustainability/2018-05-10/endpoint-rule-set-1.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/sustainability/2018-05-10/paginators-1.json
 /usr/local/lib/python3.14/site-packages/botocore/data/sustainability/2018-05-10/service-2.json.gz

@@ -1,39 +1,33 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Ncdc < Package
+class Ncdc < Autotools
   description 'Ncdc is a modern and lightweight direct connect client with a friendly ncurses interface.'
   homepage 'https://dev.yorhel.nl/ncdc'
-  version '1.20'
+  version '1.25'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://dev.yorhel.nl/download/ncdc-1.20.tar.gz'
-  source_sha256 '8a998857df6289b6bd44287fc06f705b662098189f2a8fe95b1a5fbc703b9631'
-  binary_compression 'tar.xz'
+  source_url "https://dev.yorhel.nl/download/ncdc-#{version}.tar.gz"
+  source_sha256 'b9be58e7dbe677f2ac1c472f6e76fad618a65e2f8bf1c7b9d3d97bc169feb740'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '29c39214a120bd002a78b118a53daa085530e837a6b67f1cf10bbaa7d1991524',
-     armv7l: '29c39214a120bd002a78b118a53daa085530e837a6b67f1cf10bbaa7d1991524',
-       i686: 'f28d8e26a29f6c2d555f591e5b3552aa1231fc843f52b827950ab67293443f2f',
-     x86_64: '7d72e59960fa27fef99a6f45c0fc9fc86b62931851c811d192e60d1376829452'
+    aarch64: '99096c1af84e886ea58f55f68132a375016825d87b8b483e533a53f1b197e14f',
+     armv7l: '99096c1af84e886ea58f55f68132a375016825d87b8b483e533a53f1b197e14f',
+       i686: '76f487fe4a0130551563328e9ea0886309bbaab13b5666b7bec6c6963ea3e28a',
+     x86_64: '59c4c5834ed95e77cc1b4a1ca7dcb1ec89472df025e3584fcf5e3696f450137c'
   })
 
-  depends_on 'ncurses'
-  depends_on 'zlib'
-  depends_on 'bzip2'
-  depends_on 'sqlite'
-  depends_on 'glib'
-  depends_on 'gnutls'
-  depends_on 'geoip'
+  depends_on 'bzip2' => :executable
+  depends_on 'geoip' => :executable
+  depends_on 'glib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'gnutls' => :executable
+  depends_on 'libmaxminddb' => :executable
+  depends_on 'ncurses' => :executable
+  depends_on 'sqlite' => :executable
+  depends_on 'zlib' => :executable
 
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "CPPFLAGS=-I#{CREW_PREFIX}/include/ncursesw",
-           '--with-geoip'
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  autotools_pre_configure_options "CPPFLAGS='-I#{CREW_PREFIX}/include/ncursesw'"
+  autotools_configure_options '--with-geoip'
 end

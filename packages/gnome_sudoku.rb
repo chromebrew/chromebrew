@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gnome_sudoku < Meson
   description 'Sudoku puzzle game for GNOME'
   homepage 'https://wiki.gnome.org/Apps/Sudoku'
-  version '50.1'
+  version '50.3'
   license 'GPL-3+ and CC-BY-SA-3.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-sudoku.git'
@@ -11,9 +11,9 @@ class Gnome_sudoku < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '304a41c7be83824ce3070b989a56a1781e3335c8fd8d6f145b29051d08d303a4',
-     armv7l: '304a41c7be83824ce3070b989a56a1781e3335c8fd8d6f145b29051d08d303a4',
-     x86_64: '282f799bd35b8d6e36cab11f8ae6c62dbd934fecc3430d8f39c9ba2f005c24b8'
+    aarch64: '1e752e32ff88b69ba927f13ddf5fa8d9755e489094b1b086db412c23ae0fef32',
+     armv7l: '1e752e32ff88b69ba927f13ddf5fa8d9755e489094b1b086db412c23ae0fef32',
+     x86_64: 'a8b4f5e61410416159a3a7b0bc9fc23fbcf3627a6fc3fa2321824c98f4cac8df'
   })
 
   depends_on 'blueprint_compiler' => :build
@@ -23,6 +23,7 @@ class Gnome_sudoku < Meson
   depends_on 'gcc_lib' => :executable
   depends_on 'glib' => :executable
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'gsound' => :build
   depends_on 'gtk4' => :executable
   depends_on 'harfbuzz' => :executable

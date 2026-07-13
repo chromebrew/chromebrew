@@ -505,6 +505,11 @@ url: https://sourceforge.net/projects/base64/files/
 activity: none
 ---
 kind: url
+name: babeltrace
+url: https://www.efficios.com/files/babeltrace/
+activity: low
+---
+kind: url
 name: babl
 url: https://gitlab.gnome.org/GNOME/babl/-/tags
 activity: high
@@ -3650,11 +3655,6 @@ url: https://github.com/jackaudio/jack2/releases
 activity: low
 ---
 kind: url
-name: jack1
-url: https://github.com/jackaudio/jack1/releases
-activity: none
----
-kind: url
 name: jam
 url: https://swarm.workshop.perforce.com/downloads/guest/perforce_software/jam/
 activity: none
@@ -4078,6 +4078,11 @@ kind: url
 name: libadwaita
 url: https://gitlab.gnome.org/GNOME/libadwaita/-/tags
 activity: high
+---
+kind: url
+name: libaec
+url: https://gitlab.dkrz.de/dkrz-sw/libaec/-/tags
+activity: low
 ---
 kind: url
 name: libaio
@@ -5110,6 +5115,11 @@ url: https://www.freedesktop.org/software/libqmi/
 activity: low
 ---
 kind: url
+name: libqrtr_glib
+url: https://gitlab.freedesktop.org/mobile-broadband/libqrtr-glib/-/tags
+activity: low
+---
+kind: url
 name: libraw
 url: https://www.libraw.org/
 activity: low
@@ -5385,6 +5395,16 @@ url: https://github.com/arvidn/libtorrent/releases
 activity: low
 ---
 kind: url
+name: libtraceevent
+url: https://github.com/rostedt/libtraceevent
+activity: low
+---
+kind: url
+name: libtracefs
+url: https://github.com/rostedt/libtracefs
+activity: low
+---
+kind: url
 name: libudev_stub
 url: https://github.com/therealkenc/libudev-stub/releases
 activity: none
@@ -5507,6 +5527,11 @@ activity: none
 kind: url
 name: libvorbis
 url: https://downloads.xiph.org/releases/vorbis
+activity: low
+---
+kind: url
+name: libvpl
+url: https://github.com/intel/libvpl/releases
 activity: low
 ---
 kind: url
@@ -6850,11 +6875,6 @@ url: https://support.1password.com/install-linux/#other-distributions-or-arm-tar
 activity: medium
 ---
 kind: url
-name: onevpl
-url: https://github.com/oneapi-src/oneVPL/releases
-activity: medium
----
-kind: url
 name: oniguruma
 url: https://github.com/kkos/oniguruma/releases
 activity: medium
@@ -7375,8 +7395,18 @@ url: https://metacpan.org/pod/IO::File
 activity: low
 ---
 kind: url
+name: perl_io_pty
+url: https://cpan.metacpan.org/authors/id/T/TO/TODDR/
+activity: low
+---
+kind: url
 name: perl_io_socket_ssl
 url: https://cpan.metacpan.org/authors/id/S/SU/SULLR/
+activity: low
+---
+kind: url
+name: perl_ipc_run
+url: https://cpan.metacpan.org/authors/id/T/TO/TODDR/
 activity: low
 ---
 kind: url

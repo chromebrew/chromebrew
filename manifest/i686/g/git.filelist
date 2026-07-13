@@ -1,4 +1,4 @@
-# Total size: 32655855
+# Total size: 33565462
 /usr/local/bin/git
 /usr/local/bin/git-cvsserver
 /usr/local/bin/git-receive-pack
@@ -167,6 +167,7 @@
 /usr/local/share/man/man1/git-for-each-ref.1.zst
 /usr/local/share/man/man1/git-for-each-repo.1.zst
 /usr/local/share/man/man1/git-format-patch.1.zst
+/usr/local/share/man/man1/git-format-rev.1.zst
 /usr/local/share/man/man1/git-fsck-objects.1.zst
 /usr/local/share/man/man1/git-fsck.1.zst
 /usr/local/share/man/man1/git-fsmonitor--daemon.1.zst
@@ -268,6 +269,7 @@
 /usr/local/share/man/man1/git-update-server-info.1.zst
 /usr/local/share/man/man1/git-upload-archive.1.zst
 /usr/local/share/man/man1/git-upload-pack.1.zst
+/usr/local/share/man/man1/git-url-parse.1.zst
 /usr/local/share/man/man1/git-var.1.zst
 /usr/local/share/man/man1/git-verify-commit.1.zst
 /usr/local/share/man/man1/git-verify-pack.1.zst

@@ -1,4 +1,4 @@
-# Total size: 698160
+# Total size: 698437
 /usr/local/bin/gnupg-key-manage
 /usr/local/bin/gpgme-json
 /usr/local/bin/gpgme-tool
@@ -6,7 +6,7 @@
 /usr/local/lib/libgpgme.la
 /usr/local/lib/libgpgme.so
 /usr/local/lib/libgpgme.so.45
-/usr/local/lib/libgpgme.so.45.1.0
+/usr/local/lib/libgpgme.so.45.1.2
 /usr/local/lib/pkgconfig/gpgme-glib.pc
 /usr/local/lib/pkgconfig/gpgme.pc
 /usr/local/share/aclocal/gpgme.m4

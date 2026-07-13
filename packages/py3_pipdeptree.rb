@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_pipdeptree < Pip
   description 'Displays a dependency tree of the installed Python packages.'
   homepage 'https://github.com/naiquevin/pipdeptree/'
-  version "3.1.0-#{CREW_PY_VER}"
+  version "3.1.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '52bf920251419c154f2d28cd1f3c453b665882af93d06f27ba0f50bfaea0274d',
-     armv7l: '52bf920251419c154f2d28cd1f3c453b665882af93d06f27ba0f50bfaea0274d',
-       i686: 'd2ebfcf11abd312f8bfe9d6df801184cc479aee216c9d2a7a1d7c645fbeb1208',
-     x86_64: 'a559cc57a66fd594ad27acb600b98dbec9315ac52da97935bb594e334fa39385'
+    aarch64: '437b56a6b39b78272805c760c8414d895dab44b9a001b3d3dab62bada4da82d3',
+     armv7l: '437b56a6b39b78272805c760c8414d895dab44b9a001b3d3dab62bada4da82d3',
+       i686: '1098471a83331deb59ae83cb22cc93a8d8dbf0f9b2348c3b6c789fa2ef6f050d',
+     x86_64: '072ab150f0600d9c0403cafeed0e5a27ca7f55c8edd82c4c3920b1621eb6d696'
   })
 
   depends_on 'python3' => :logical

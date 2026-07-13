@@ -1,0 +1,2 @@
+#!/bin/bash
+upnpc-shared -h | head

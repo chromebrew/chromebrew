@@ -1,0 +1,17 @@
+# Total size: 309413
+/usr/local/share/man/man3/IPC::Run.3.zst
+/usr/local/share/man/man3/IPC::Run::Debug.3.zst
+/usr/local/share/man/man3/IPC::Run::IO.3.zst
+/usr/local/share/man/man3/IPC::Run::Timer.3.zst
+/usr/local/share/man/man3/IPC::Run::Win32Helper.3.zst
+/usr/local/share/man/man3/IPC::Run::Win32IO.3.zst
+/usr/local/share/man/man3/IPC::Run::Win32Process.3.zst
+/usr/local/share/man/man3/IPC::Run::Win32Pump.3.zst
+/usr/local/share/perl5/site_perl/IPC/Run.pm
+/usr/local/share/perl5/site_perl/IPC/Run/Debug.pm
+/usr/local/share/perl5/site_perl/IPC/Run/IO.pm
+/usr/local/share/perl5/site_perl/IPC/Run/Timer.pm
+/usr/local/share/perl5/site_perl/IPC/Run/Win32Helper.pm
+/usr/local/share/perl5/site_perl/IPC/Run/Win32IO.pm
+/usr/local/share/perl5/site_perl/IPC/Run/Win32Process.pm
+/usr/local/share/perl5/site_perl/IPC/Run/Win32Pump.pm

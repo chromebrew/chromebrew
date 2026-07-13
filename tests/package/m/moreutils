@@ -1,0 +1,9 @@
+#!/bin/bash
+chronic --help 2>&1
+combine -h 2>&1
+errno -h 2>&1
+ifdata -h 2>&1 | head
+isutf8 -h 2>&1
+parallel -h 2>&1
+sponge -h 2>&1
+zrun -h 2>&1

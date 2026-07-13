@@ -1,4 +1,4 @@
-# Total size: 1217110
+# Total size: 1212187
 /usr/local/bin/scmp_sys_resolver
 /usr/local/include/seccomp-syscalls.h
 /usr/local/include/seccomp.h
@@ -6,7 +6,7 @@
 /usr/local/lib64/libseccomp.la
 /usr/local/lib64/libseccomp.so
 /usr/local/lib64/libseccomp.so.2
-/usr/local/lib64/libseccomp.so.2.6.0
+/usr/local/lib64/libseccomp.so.2.6.1
 /usr/local/lib64/pkgconfig/libseccomp.pc
 /usr/local/share/man/man1/scmp_sys_resolver.1.zst
 /usr/local/share/man/man3/seccomp_api_get.3.zst
@@ -42,4 +42,5 @@
 /usr/local/share/man/man3/seccomp_syscall_resolve_name_arch.3.zst
 /usr/local/share/man/man3/seccomp_syscall_resolve_name_rewrite.3.zst
 /usr/local/share/man/man3/seccomp_syscall_resolve_num_arch.3.zst
+/usr/local/share/man/man3/seccomp_transaction_start.3.zst
 /usr/local/share/man/man3/seccomp_version.3.zst

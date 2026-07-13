@@ -1,39 +1,33 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Mtr < Package
+class Mtr < Autotools
   description "mtr combines the functionality of the 'traceroute' and 'ping' programs in a single network diagnostic tool."
   homepage 'https://www.bitwizard.nl/mtr/'
-  version '0.93'
+  version '0.96'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'ftp://ftp.bitwizard.nl/mtr/mtr-0.93.tar.gz'
-  source_sha256 '229c673d637bd7dbb96471623785a47e85da0b1944978200c949994c1e6af10d'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/traviscross/mtr.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '10827000fd244c4a001077b013ed89d9ee156297764a59b763938e2e261d1965',
-     armv7l: '10827000fd244c4a001077b013ed89d9ee156297764a59b763938e2e261d1965',
-       i686: '6d42197636f5bc79bd63e879a4e50fa4d13c72e552d8393ac1893b2ae10bf226',
-     x86_64: '7ec1e4e20d17fa583089f1ce681c4dd373fdf9683eb36a7d14ede883a2fca0fc'
+    aarch64: '65d74d348d392b112c8edfb200d2f3ab3cbef1f168a8047d808422cc044fe555',
+     armv7l: '65d74d348d392b112c8edfb200d2f3ab3cbef1f168a8047d808422cc044fe555',
+       i686: '5c48a2da63cb90785ed9a339107733fa5153a1769658f3e372ed21c90328c4f0',
+     x86_64: 'f37ff654cceb4241ba4446a9f4a0204a9afc1a4ed5286d8c0c3e0aaf4785b10a'
   })
 
-  def self.build
-    system './configure',
-           '--without-gtk',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           "LDFLAGS=-Wl,-rpath,#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'libcap' => :executable
+  depends_on 'ncurses' => :executable
 
-  def self.install
-    system 'sudo', 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    system 'sudo', 'chown', '-R', "#{USER}:#{USER}", CREW_DEST_DIR.to_s
-  end
+  autotools_configure_options '--without-gtk'
 
   def self.postinstall
-    puts
-    puts "To run, execute 'sudo mtr <domain>'".lightblue
-    puts
+    ExitMessage.add <<~EOM
+
+      Execute 'sudo mtr <domain>' to get results.
+    EOM
   end
 end

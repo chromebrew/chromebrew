@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_oci < Pip
   description 'Oracle Cloud Infrastructure Python SDK'
   homepage 'https://oracle-cloud-infrastructure-python-sdk.readthedocs.io/'
-  version "2.179.0-#{CREW_PY_VER}"
+  version "2.181.1-#{CREW_PY_VER}"
   license 'UPL-1.0 or Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c19f1de432941969eb5a539e53ecbf8c4cb5721852b4d55830cd3f6bb9585f97',
-     armv7l: 'c19f1de432941969eb5a539e53ecbf8c4cb5721852b4d55830cd3f6bb9585f97',
-       i686: '012b32bb0d64cc9f48c02221b247ae29fc45d09dcb5dff51f6b32a0733cbf5b1',
-     x86_64: '4f337459fd9d16cf21396b98a81d55e8e90eb9aaba155a0674ca6488b2b7f7f1'
+    aarch64: 'a218a54aa4a4a5de8e95048aedd6d86b237a7761b5415b2bd4063dbfae767d2c',
+     armv7l: 'a218a54aa4a4a5de8e95048aedd6d86b237a7761b5415b2bd4063dbfae767d2c',
+       i686: '803cb77f1f280a436fc9e086868a3a46db167273510d62ab4963e18ee6d2920f',
+     x86_64: '237ae98132a55d592984d633dbcd995ce3b5d5d317bd730c826376c6e165171e'
   })
 
   depends_on 'py3_certifi'

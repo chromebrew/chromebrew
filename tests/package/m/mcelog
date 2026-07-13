@@ -1,0 +1,3 @@
+#!/bin/bash
+mcelog --help 2>&1 | head
+mcelog --version 2>&1

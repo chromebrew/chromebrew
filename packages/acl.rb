@@ -3,20 +3,21 @@ require 'buildsystems/autotools'
 class Acl < Autotools
   description 'Commands for Manipulating POSIX Access Control Lists.'
   homepage 'https://savannah.nongnu.org/projects/acl'
-  version '2.3.2-1'
+  version '2.4.0'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://git.savannah.gnu.org/git/acl.git'
-  git_hashtag "v#{version.split('-').first}"
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '76d53a4ba5aaee8c592f9119d7fc29d3b636675c7f7d1642d663b823b87f2303',
-     armv7l: '76d53a4ba5aaee8c592f9119d7fc29d3b636675c7f7d1642d663b823b87f2303',
-       i686: '8fdb8c78cb4eec75bab8fa77a94cab4968c018285b0b3b98ff006c702dbf3a22',
-     x86_64: 'e5b1beae3754bae84e18928c85a6c1c28ee196f387299b51f4cd2ea91dc09645'
+    aarch64: '6d824c066f8631b85d61a55586b9f69b1752ae6fd6893a818570ff020a1e6040',
+     armv7l: '6d824c066f8631b85d61a55586b9f69b1752ae6fd6893a818570ff020a1e6040',
+       i686: '159faf982b56fd073b7ba9af23f412b111f4b1f13d035c7ce4f8775fd5b89fd8',
+     x86_64: 'f3c3aafa1e5b02c7ad050cb6e0101ef05eac34e4fc518535372fef560d99669a'
   })
 
   depends_on 'attr' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 end

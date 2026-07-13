@@ -1,4 +1,5 @@
-# Total size: 1185995
-/usr/local/lib/podman/netavark
+# Total size: 8688246
+/usr/local/bin/netavark
 /usr/local/share/doc/netavark/README.md
-/usr/local/share/man/man1/netavark.1.gz
+/usr/local/share/man/man1/netavark.1.zst
+/usr/local/share/man/man7/netavark-firewalld.7.zst

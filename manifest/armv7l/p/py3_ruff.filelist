@@ -1,11 +1,11 @@
-# Total size: 25754709
+# Total size: 25848430
 /usr/local/bin/ruff
-/usr/local/lib/python3.14/site-packages/ruff-0.15.18.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/ruff-0.15.18.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/ruff-0.15.18.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/ruff-0.15.18.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/ruff-0.15.18.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/ruff-0.15.18.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/ruff-0.15.21.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/ruff-0.15.21.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/ruff-0.15.21.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/ruff-0.15.21.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/ruff-0.15.21.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/ruff-0.15.21.dist-info/licenses/LICENSE
 /usr/local/lib/python3.14/site-packages/ruff/__init__.py
 /usr/local/lib/python3.14/site-packages/ruff/__main__.py
 /usr/local/lib/python3.14/site-packages/ruff/__pycache__/__init__.cpython-314.pyc

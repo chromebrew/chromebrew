@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class P11kit < Meson
   description "Provides a standard configuration setup for installing PKCS#11 modules in such a way that they're discoverable."
   homepage 'https://p11-glue.github.io/p11-glue/p11-kit.html'
-  version '0.26.2'
+  version '0.26.4'
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/p11-glue/p11-kit.git'
@@ -11,14 +11,15 @@ class P11kit < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5a904994785cbcc6b620f8694d046cf8608659fa2b392bf46cb76c582bfbf732',
-     armv7l: '5a904994785cbcc6b620f8694d046cf8608659fa2b392bf46cb76c582bfbf732',
-       i686: '348cd844f00f6bf88a679cab26da06db2238f23549cdda59b629a0608222f03d',
-     x86_64: 'ea08b352ca16b2b4f8537aaac3459997e4bd422167c8448428730b4c218b0544'
+    aarch64: '5c986075d71533b2827618a4bc543db138ba4c20eea937de60a41078c41f9770',
+     armv7l: '5c986075d71533b2827618a4bc543db138ba4c20eea937de60a41078c41f9770',
+       i686: '415cc14794bf01ae62d4deea8975ae228cf3ceaaf04ccde7b35079880e13bf71',
+     x86_64: 'b8b4b2d97c8176768b4e7c91b2e8bac4f84e387973a0460db7c121d9ebe3efe8'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'libffi' => :library
   depends_on 'libtasn1' => :library
 end

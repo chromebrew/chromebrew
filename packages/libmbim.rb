@@ -1,34 +1,24 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Libmbim < Package
+class Libmbim < Meson
   description 'libmbim is a glib-based library for talking to WWAN modems and devices which speak the Mobile Interface Broadband Model (MBIM) protocol.'
   homepage 'https://www.freedesktop.org/wiki/Software/libmbim/'
-  version '1.24.6'
+  version '1.34.0'
   license 'LGPL-2'
   compatibility 'all'
-  source_url "https://www.freedesktop.org/software/libmbim/libmbim-#{version}.tar.xz"
-  source_sha256 '760465caaa1ccd699c14290e9791da456d5300dd11ebf4c1486151033e875dfd'
-  binary_compression 'tar.xz'
+  source_url 'https://gitlab.freedesktop.org/mobile-broadband/libmbim.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ffb063051859e2696af5f44b10de9915becb1c22cc90581b3962814be7626f0c',
-     armv7l: 'ffb063051859e2696af5f44b10de9915becb1c22cc90581b3962814be7626f0c',
-       i686: '82b1a84f2226675537c939ada353ec29e962ec53000946e91c2a14a599fe98a8',
-     x86_64: '1e5b4926e3baf334425804688ee72c75e8cc9a6482102d9ef8bf727123561570'
+    aarch64: '19d452828b1fed44a46d364ba0bfc44decc42cc74b4bffefc67c2e8d2db55948',
+     armv7l: '19d452828b1fed44a46d364ba0bfc44decc42cc74b4bffefc67c2e8d2db55948',
+       i686: 'd0f8ee7188521556d72ba9f3d5d87c522f3aa102e8ebcfee95d04a37df3a0888',
+     x86_64: '38a1025baa5b644e9a3296e073cc43e7593243a8fdaa220823504a152b537d22'
   })
 
-  depends_on 'glib'
-
-  def self.build
-    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
-      LDFLAGS='-flto=auto' \
-      ./configure \
-      #{CREW_CONFIGURE_OPTIONS} \
-      --disable-maintainer-mode"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'gobject_introspection' => :library
 end

@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_setuptools_scm < Pip
   description 'Setuptools-scm is the blessed package to manage your versions by scm tags.'
   homepage 'https://github.com/pypa/setuptools_scm'
-  version "10.0.5-#{CREW_PY_VER}"
+  version "10.2.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c349a345d88a355b272a5f9ba4701f66976c30c30e634ea6e66ce2dc1bdc89eb',
-     armv7l: 'c349a345d88a355b272a5f9ba4701f66976c30c30e634ea6e66ce2dc1bdc89eb',
-       i686: '75aca47c438718d769df1f54eff913a58a9ef5ee1b3e1905cb0933ef24ac501c',
-     x86_64: '87a85f9bf4572521db92e896cf39a3e54fab0e16abaaacd693fb362bb1d6b96d'
+    aarch64: '6332e2178978412528ed31b28d1a06961ab55795bb2b2f3b1dddfe76a6d5d6ba',
+     armv7l: '6332e2178978412528ed31b28d1a06961ab55795bb2b2f3b1dddfe76a6d5d6ba',
+       i686: '10d25cd32d3ba02b1039eee35875ab81cd7b75bcb467d55c6c126114d105abc8',
+     x86_64: '16a9d9fa17ba0cf2cdc1b3572fc155fd4164818f60633fc7f51810e6c9d6f752'
   })
 
   depends_on 'py3_packaging'

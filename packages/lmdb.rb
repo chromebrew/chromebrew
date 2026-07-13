@@ -6,7 +6,7 @@ require 'package'
 class Lmdb < Package
   description 'Symas Lightning Memory-Mapped Database'
   homepage 'https://www.symas.com/mdb'
-  version '0.9.35'
+  version '1.0.0'
   license 'OpenLDAP Public License'
   compatibility 'all'
   source_url 'https://git.openldap.org/openldap/openldap.git'
@@ -14,10 +14,10 @@ class Lmdb < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a0e922d6b3c2a81469c422d43324b3cb6054b918011d0cad2bfeee4b12234b7b',
-     armv7l: 'a0e922d6b3c2a81469c422d43324b3cb6054b918011d0cad2bfeee4b12234b7b',
-       i686: '62d7d2b5a9606c7aa21b0fff9f28ade116c72ddbe3f9f3d1e38eda09ca7de23e',
-     x86_64: '585187e82d821def830be9c41dd0677f8aecaebbfe752f0fb85bcd4d0b577941'
+    aarch64: '850f6f955d930fb1685b5888d2a629fb2854386c0cb92ff05bb6760a87be5ede',
+     armv7l: '850f6f955d930fb1685b5888d2a629fb2854386c0cb92ff05bb6760a87be5ede',
+       i686: '0d2557faf2753f28a723f81f1cb4011edcd37fc9eec4171bf950d12451e4cb2d',
+     x86_64: 'b7033cda2ead987972ffa619bab481344bf743ac1155651a43bea4828958b9e4'
   })
 
   depends_on 'gcc_lib' # R

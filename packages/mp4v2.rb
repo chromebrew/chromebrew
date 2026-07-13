@@ -1,33 +1,25 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Mp4v2 < Package
+class Mp4v2 < Autotools
   description 'MP4v2 Library: This library provides functions to read, create, and modify mp4 files'
   homepage 'https://code.google.com/archive/p/mp4v2/'
-  version '2.0.0'
+  version '2.1.3'
   license 'MPL-1.1'
   compatibility 'all'
-  source_url 'https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/mp4v2/mp4v2-2.0.0.tar.bz2'
-  source_sha256 '0319b9a60b667cf10ee0ec7505eb7bdc0a2e21ca7a93db96ec5bd758e3428338'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/enzo1982/mp4v2.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a636db38c7bc1f2ea3d01f64d271f56edd37ffeafdbb792701a352ce996bcc2e',
-     armv7l: 'a636db38c7bc1f2ea3d01f64d271f56edd37ffeafdbb792701a352ce996bcc2e',
-       i686: '364b76b514b0f942336f821fc2c8216d1b5cb540b820fcf0233eda451ec578ce',
-     x86_64: '0c65a40cbef64c0d33c3d2e7d2b46ea83d0a14f053de873f0efa62dc79f8841b'
+    aarch64: 'f4837b6266236e26fae963c9a8fbb210400e10c22ec434babeeddd4cc3df4876',
+     armv7l: 'f4837b6266236e26fae963c9a8fbb210400e10c22ec434babeeddd4cc3df4876',
+       i686: '2ae8f39f433048d618f5c2fe9866a4a4439f0aaf13e71e3e4d7c528a00de3bf5',
+     x86_64: '9a5535d74ad17da680ee2f3cf950005f992c63fbdc798eefaf97a0d23869c182'
   })
 
-  def self.patch
-    system "curl -Ls -o autoaux/config.guess 'https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD'"
-    system "curl -Ls -o autoaux/config.sub 'https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD'"
-  end
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS} --disable-dependency-tracking --disable-debug"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  autotools_configure_options '--disable-debug'
 end

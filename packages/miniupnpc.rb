@@ -1,40 +1,24 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Miniupnpc < Package
+class Miniupnpc < CMake
   description 'UPnP IGD client lightweight library'
   homepage 'http://miniupnp.free.fr/'
-  version '2.1'
+  version '2.3.3'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/miniupnp/miniupnp/archive/miniupnpc_2_1.tar.gz'
-  source_sha256 '19c5b6cf8f3fc31d5e641c797b36ecca585909c7f3685a5c1a64325340537c94'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/miniupnp/miniupnp.git'
+  git_hashtag "miniupnpc_#{version.gsub('.', '_')}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '312d76ffa9e5f86e7d1556b49a875387455cea3914f359aa2e9b9dee761a6adb',
-     armv7l: '312d76ffa9e5f86e7d1556b49a875387455cea3914f359aa2e9b9dee761a6adb',
-       i686: 'ec9f784b89804522b35d05c62c027ef359c03aa664b885619d942f72418474c5',
-     x86_64: 'cc39583447b82b0599b6fd6807f6df3f728b35089d9d9a99d4c9064f58eb4fa0'
+    aarch64: 'bf163ac0912951443577a91ed6c89e3f269e129b1b7860a2145e6620bdac07e0',
+     armv7l: 'bf163ac0912951443577a91ed6c89e3f269e129b1b7860a2145e6620bdac07e0',
+       i686: 'af826ef511ea524d0a8245f4d668254c50588676f261411033607388c6814ce6',
+     x86_64: '491990bc8083e746f871521fd42b91f66f0673f0b7d66bb3610dec6848050c0f'
   })
 
-  def self.patch
-    # system "sed -i '139s,/usr,,' Makefile"
-  end
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 
-  def self.build
-    Dir.chdir 'miniupnpc' do
-      if ARCH == 'x86_64'
-        system "cmake -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DLIB_SUFFIX=64"
-      else
-        system "cmake -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}"
-      end
-      system 'make'
-    end
-  end
-
-  def self.install
-    Dir.chdir 'miniupnpc' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    end
-  end
+  cmake_build_relative_dir 'miniupnpc'
 end

@@ -1,0 +1,3 @@
+#!/bin/bash
+mdp -h 2>&1 | head
+mdp -v

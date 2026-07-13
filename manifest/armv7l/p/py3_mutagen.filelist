@@ -1,18 +1,18 @@
-# Total size: 1499357
+# Total size: 1507364
 /usr/local/bin/mid3cp
 /usr/local/bin/mid3iconv
 /usr/local/bin/mid3v2
 /usr/local/bin/moggsplit
 /usr/local/bin/mutagen-inspect
 /usr/local/bin/mutagen-pony
-/usr/local/lib/python3.14/site-packages/mutagen-1.47.0.dist-info/COPYING
-/usr/local/lib/python3.14/site-packages/mutagen-1.47.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/mutagen-1.47.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/mutagen-1.47.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/mutagen-1.47.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/mutagen-1.47.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/mutagen-1.47.0.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/mutagen-1.47.0.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/mutagen-1.48.1.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/mutagen-1.48.1.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/mutagen-1.48.1.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/mutagen-1.48.1.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/mutagen-1.48.1.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/mutagen-1.48.1.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/mutagen-1.48.1.dist-info/licenses/COPYING
+/usr/local/lib/python3.14/site-packages/mutagen-1.48.1.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/mutagen/__init__.py
 /usr/local/lib/python3.14/site-packages/mutagen/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mutagen/__pycache__/_constants.cpython-314.pyc

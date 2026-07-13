@@ -51,7 +51,7 @@
     "name": "acl",
     "description": "Commands for Manipulating POSIX Access Control Lists.",
     "homepage": "https://savannah.nongnu.org/projects/acl",
-    "version": "2.3.2-1",
+    "version": "2.4.0",
     "license": "LGPL-2.1",
     "compatibility": "all"
   },
@@ -75,7 +75,7 @@
     "name": "acquia_cli",
     "description": "Acquia CLI - The official command-line tool for interacting with the Drupal Cloud Platform and services.",
     "homepage": "https://github.com/acquia/cli",
-    "version": "2.61.3",
+    "version": "3.0.0",
     "license": "GPL-2.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -187,7 +187,7 @@
     "name": "aliyun_cli",
     "description": "Alibaba Cloud CLI",
     "homepage": "https://www.alibabacloud.com/help/en/cli/",
-    "version": "3.3.23",
+    "version": "3.4.6",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -355,7 +355,7 @@
     "name": "appflowy",
     "description": "AI collaborative workspace where you achieve more without losing control of your data. The best open source alternative to Notion.",
     "homepage": "https://www.appflowy.io/",
-    "version": "0.12.4",
+    "version": "0.12.5",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -371,7 +371,7 @@
     "name": "appstream",
     "description": "Provides a standard for creating app stores across distributions",
     "homepage": "https://www.freedesktop.org/wiki/Distributions/AppStream/",
-    "version": "1.1.2",
+    "version": "1.1.3",
     "license": "GPL",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -459,7 +459,7 @@
     "name": "armadillo",
     "description": "Armadillo is a high quality linear algebra library (matrix maths) for the C++ language, aiming towards a good balance between speed and ease of use",
     "homepage": "https://arma.sourceforge.net/",
-    "version": "15.4.0",
+    "version": "15.4.1",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -483,7 +483,7 @@
     "name": "arping",
     "description": "ARP Ping",
     "homepage": "https://www.habets.pp.se/synscan/programs_arping.html",
-    "version": "2.28",
+    "version": "2.29",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -507,7 +507,7 @@
     "name": "asdf",
     "description": "Extendable version manager with support for Ruby, Node.js, Elixir, Erlang & more",
     "homepage": "https://asdf-vm.com/",
-    "version": "0.19.0",
+    "version": "0.20.0",
     "license": "MIT",
     "compatibility": "i686 x86_64"
   },
@@ -563,7 +563,7 @@
     "name": "at_spi2_core",
     "description": "This is over DBus, tookit widgets provide their content to screen readers such as Orca",
     "homepage": "https://ftp.gnome.org/pub/gnome/sources/at-spi2-core",
-    "version": "2.60.4",
+    "version": "2.60.5",
     "license": "LGPL-2.1+",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -627,7 +627,7 @@
     "name": "atuin",
     "description": "Sync, search and backup shell history.",
     "homepage": "https://atuin.sh/",
-    "version": "18.16.1",
+    "version": "18.17.0",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -787,7 +787,7 @@
     "name": "awscli",
     "description": "Universal Command Line Interface for Amazon Web Services",
     "homepage": "https://github.com/aws/aws-cli",
-    "version": "1.45.34",
+    "version": "1.45.46",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -803,7 +803,7 @@
     "name": "b2",
     "description": "B2 makes it easy to build C++ projects, everywhere.",
     "homepage": "https://www.bfgroup.xyz/b2/",
-    "version": "5.4.2",
+    "version": "5.5.1",
     "license": "BSL 1.0",
     "compatibility": "all"
   },
@@ -814,6 +814,14 @@
     "version": "0.94",
     "license": "MIT",
     "compatibility": "all"
+  },
+  {
+    "name": "babeltrace",
+    "description": "open-source trace manipulation toolkit.",
+    "homepage": "https://babeltrace.org/",
+    "version": "2.1.2",
+    "license": "MIT, BSD-2-Clause, BSD-4-Clause, LGPL-2.1, GPL-2+, PSF-2.0",
+    "compatibility": "aarch64 armv7l x86_64"
   },
   {
     "name": "babl",
@@ -1171,7 +1179,7 @@
     "name": "broot",
     "description": "A new way to see and navigate directory trees",
     "homepage": "https://dystroy.org/broot/",
-    "version": "1.57.0",
+    "version": "1.58.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -1243,7 +1251,7 @@
     "name": "byobu",
     "description": "Byobu is a GPLv3 open source text-based window manager and terminal multiplexer.",
     "homepage": "https://www.byobu.org",
-    "version": "7.12",
+    "version": "7.15",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -1283,7 +1291,7 @@
     "name": "c_ares",
     "description": "C library for asynchronous DNS requests (including name resolves).",
     "homepage": "https://c-ares.org/",
-    "version": "1.34.6",
+    "version": "1.34.8",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -1323,7 +1331,7 @@
     "name": "cage",
     "description": "A kiosk compositor for Wayland",
     "homepage": "https://www.hjdskes.nl/projects/cage/",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -1491,7 +1499,7 @@
     "name": "cf",
     "description": "The official command line client for Cloud Foundry",
     "homepage": "https://docs.cloudfoundry.org/cf-cli/",
-    "version": "8.18.3",
+    "version": "8.18.4",
     "license": "Apache-2.0",
     "compatibility": "i686 x86_64"
   },
@@ -1691,7 +1699,7 @@
     "name": "clickhouse",
     "description": "Real-time analytics DBMS",
     "homepage": "https://clickhouse.com/",
-    "version": "26.5.1.882-stable",
+    "version": "26.6.1.1193-stable",
     "license": "Apache-2.0",
     "compatibility": "x86_64"
   },
@@ -1763,7 +1771,7 @@
     "name": "cmake",
     "description": "CMake is an open-source, cross-platform family of tools designed to build, test and package software.",
     "homepage": "https://cmake.org/",
-    "version": "4.3.4",
+    "version": "4.4.0",
     "license": "CMake",
     "compatibility": "all"
   },
@@ -1851,7 +1859,7 @@
     "name": "coin",
     "description": "OpenGL-based, 3D graphics library",
     "homepage": "https://github.com/coin3d/coin",
-    "version": "4.0.9",
+    "version": "4.0.10",
     "license": "BSD-3",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -1907,7 +1915,7 @@
     "name": "composer",
     "description": "Dependency Manager for PHP",
     "homepage": "https://getcomposer.org/",
-    "version": "2.10.1",
+    "version": "2.10.2",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -1955,7 +1963,7 @@
     "name": "copilot",
     "description": "AI coding assistant that helps you write code faster and with less effort.",
     "homepage": "https://github.com/github/copilot-cli",
-    "version": "1.0.63",
+    "version": "1.0.70",
     "license": "GitHub Copilot CLI License",
     "compatibility": "x86_64"
   },
@@ -2155,7 +2163,7 @@
     "name": "crystal",
     "description": "A language for humans and computers",
     "homepage": "https://crystal-lang.org/",
-    "version": "1.20.2",
+    "version": "1.20.3",
     "license": "Apache-2.0",
     "compatibility": "x86_64"
   },
@@ -2187,7 +2195,7 @@
     "name": "ctorrent",
     "description": "CTorrent is a BitTorrent client implemented in C++ to be lightweight and quick.",
     "homepage": "http://www.rahul.net/dholmes/ctorrent/",
-    "version": "3.3.2-1",
+    "version": "3.3.2",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -2211,7 +2219,7 @@
     "name": "curl",
     "description": "Command line tool and library for transferring data with URLs.",
     "homepage": "https://curl.se/",
-    "version": "8.20.0",
+    "version": "8.21.0",
     "license": "curl",
     "compatibility": "all"
   },
@@ -2307,7 +2315,7 @@
     "name": "dbeaver",
     "description": "Free Universal Database Tool",
     "homepage": "https://dbeaver.io",
-    "version": "26.1.0",
+    "version": "26.1.2",
     "license": "Apache-2.0",
     "compatibility": "x86_64"
   },
@@ -2379,7 +2387,7 @@
     "name": "delve",
     "description": "Debugger for the Go programming language",
     "homepage": "https://github.com/go-delve/delve",
-    "version": "1.26.3",
+    "version": "1.27.0",
     "license": "MIT",
     "compatibility": "i686 x86_64"
   },
@@ -2387,7 +2395,7 @@
     "name": "deno",
     "description": "A secure runtime for JavaScript and TypeScript",
     "homepage": "https://deno.land",
-    "version": "2.8.3",
+    "version": "2.9.2",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -2411,7 +2419,7 @@
     "name": "deskreen",
     "description": "Turn any device into a secondary screen for your computer",
     "homepage": "https://deskreen.com/lang-en",
-    "version": "3.2.15",
+    "version": "3.2.16",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -2603,7 +2611,7 @@
     "name": "doctl",
     "description": "The official command line interface for the DigitalOcean API.",
     "homepage": "https://github.com/digitalocean/doctl",
-    "version": "1.162.0",
+    "version": "1.163.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -2835,7 +2843,7 @@
     "name": "elixir",
     "description": "Elixir is a dynamic, functional language designed for building scalable and maintainable applications.",
     "homepage": "https://elixir-lang.org/",
-    "version": "1.20.1",
+    "version": "1.20.2",
     "license": "Apache-2.0 and ErlPL-1.1",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -2875,7 +2883,7 @@
     "name": "enchant",
     "description": "Enchant is a library (and command-line program) that wraps a number of different spelling libraries and programs with a consistent interface.",
     "homepage": "https://abiword.github.io/enchant/",
-    "version": "2.8.16",
+    "version": "2.8.19",
     "license": "LGPL-2.1+",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -2931,7 +2939,7 @@
     "name": "etcd",
     "description": "Distributed reliable key-value store for the most critical data of a distributed system",
     "homepage": "https://etcd.io/",
-    "version": "3.6.12",
+    "version": "3.7.0",
     "license": "Apache-2.0",
     "compatibility": "x86_64"
   },
@@ -2939,7 +2947,7 @@
     "name": "ethtool",
     "description": "Utility for controlling network drivers and hardware",
     "homepage": "https://www.kernel.org/pub/software/network/ethtool/",
-    "version": "7.0",
+    "version": "7.1",
     "license": "LGPL2.1",
     "compatibility": "all"
   },
@@ -3051,7 +3059,7 @@
     "name": "expat",
     "description": "James Clark's Expat XML parser library in C.",
     "homepage": "https://github.com/libexpat/libexpat",
-    "version": "2.8.1",
+    "version": "2.8.2",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -3067,7 +3075,7 @@
     "name": "extra_cmake_modules",
     "description": "Extra modules and scripts for CMake.",
     "homepage": "https://invent.kde.org/frameworks/extra-cmake-modules",
-    "version": "6.27.0",
+    "version": "6.28.0",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -3107,7 +3115,7 @@
     "name": "fakeroot",
     "description": "Run a command in an environment faking root privileges for file manipulation.",
     "homepage": "https://wiki.debian.org/FakeRoot",
-    "version": "1.38.1",
+    "version": "2.0",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -3139,7 +3147,7 @@
     "name": "fastfetch",
     "description": "Like Neofetch, but much faster because written in C",
     "homepage": "https://github.com/fastfetch-cli/fastfetch",
-    "version": "2.64.2",
+    "version": "2.66.0",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -3283,7 +3291,7 @@
     "name": "firefox",
     "description": "Mozilla Firefox (or simply Firefox) is a free and open-source web browser",
     "homepage": "https://www.mozilla.org/en-US/firefox/",
-    "version": "151.0.3",
+    "version": "152.0.5",
     "license": "MPL-2.0, GPL-2 and LGPL-2.1",
     "compatibility": "x86_64"
   },
@@ -3299,7 +3307,7 @@
     "name": "fish",
     "description": "fish is a smart and user-friendly command line shell for macOS, Linux, and the rest of the family.",
     "homepage": "https://fishshell.com/",
-    "version": "4.7.1",
+    "version": "4.8.0",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -3363,7 +3371,7 @@
     "name": "flutter",
     "description": "Flutter is Google's UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase.",
     "homepage": "https://flutter.dev/",
-    "version": "3.44.2",
+    "version": "3.44.6",
     "license": "BSD-3",
     "compatibility": "x86_64"
   },
@@ -3579,7 +3587,7 @@
     "name": "fontconfig",
     "description": "Fontconfig is a library for configuring and customizing font access.",
     "homepage": "https://www.freedesktop.org/wiki/Software/fontconfig/",
-    "version": "2.18.1",
+    "version": "2.18.2",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -3701,7 +3709,7 @@
     "homepage": "https://freeglut.sourceforge.net/",
     "version": "3.8.0",
     "license": "MIT",
-    "compatibility": "aarch64 armv7l x86_64"
+    "compatibility": "all"
   },
   {
     "name": "freeimage",
@@ -3755,7 +3763,7 @@
     "name": "frp",
     "description": "A fast reverse proxy",
     "homepage": "https://github.com/fatedier/frp",
-    "version": "0.69.1",
+    "version": "0.70.0",
     "license": "Apache-2.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -3819,7 +3827,7 @@
     "name": "fzf",
     "description": "A command-line fuzzy finder",
     "homepage": "https://github.com/junegunn/fzf",
-    "version": "0.73.1",
+    "version": "0.74.0",
     "license": "MIT and BSD-with-disclosure",
     "compatibility": "all"
   },
@@ -3843,7 +3851,7 @@
     "name": "gawk",
     "description": "The gawk utility interprets a special-purpose programming language that makes it possible to handle simple data-reformatting jobs with just a few lines of code.",
     "homepage": "https://www.gnu.org/software/gawk/",
-    "version": "5.4.0",
+    "version": "5.4.1",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -3963,7 +3971,7 @@
     "name": "gdk_pixbuf",
     "description": "GdkPixbuf is a library for image loading and manipulation.",
     "homepage": "https://gtk.org",
-    "version": "2.44.6",
+    "version": "2.44.7",
     "license": "LGPL-2.1+",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -4211,7 +4219,7 @@
     "name": "girara",
     "description": "Girara is a library that implements a user interface that focuses on simplicity and minimalism",
     "homepage": "https://pwmt.org/projects/girara/",
-    "version": "2026.02.04",
+    "version": "2026.07.07",
     "license": "ZLIB",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -4219,7 +4227,7 @@
     "name": "git",
     "description": "Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.",
     "homepage": "https://git-scm.com/",
-    "version": "2.54.0",
+    "version": "2.55.0",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -4243,7 +4251,7 @@
     "name": "github_cli",
     "description": "Official Github CLI tool",
     "homepage": "https://cli.github.com/",
-    "version": "2.95.0",
+    "version": "2.96.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -4275,7 +4283,7 @@
     "name": "gitlab_runner",
     "description": "Run your CI/CD jobs and send the results back to GitLab",
     "homepage": "https://gitlab.com/gitlab-org/gitlab-runner",
-    "version": "19.1.0",
+    "version": "19.1.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -4291,7 +4299,7 @@
     "name": "gjs",
     "description": "Javascript Bindings for GNOME",
     "homepage": "https://gitlab.gnome.org/GNOME/gjs/",
-    "version": "1.88.0",
+    "version": "1.89.1",
     "license": "MIT and MPL-1.1, LGPL-2+ or GPL-2+",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -4307,7 +4315,7 @@
     "name": "glab",
     "description": "A GitLab CLI tool bringing GitLab to your command line",
     "homepage": "https://gitlab.com/gitlab-org/cli",
-    "version": "1.102.0",
+    "version": "1.107.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -4339,7 +4347,7 @@
     "name": "glib",
     "description": "GLib provides the core application building blocks for libraries and applications written in C.",
     "homepage": "https://developer.gnome.org/glib",
-    "version": "2.88.1",
+    "version": "2.88.2",
     "license": "LGPL-2.1",
     "compatibility": "all"
   },
@@ -4651,7 +4659,7 @@
     "name": "gnome_maps",
     "description": "A simple GNOME maps application",
     "homepage": "https://wiki.gnome.org/Apps/Maps",
-    "version": "50.1",
+    "version": "50.2",
     "license": "GPL-2+",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -4683,7 +4691,7 @@
     "name": "gnome_sudoku",
     "description": "Sudoku puzzle game for GNOME",
     "homepage": "https://wiki.gnome.org/Apps/Sudoku",
-    "version": "50.1",
+    "version": "50.3",
     "license": "GPL-3+ and CC-BY-SA-3.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -4787,7 +4795,7 @@
     "name": "go",
     "description": "Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.",
     "homepage": "https://go.dev",
-    "version": "1.26.4",
+    "version": "1.26.5",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -4827,7 +4835,7 @@
     "name": "go_tools",
     "description": "Developer tools for the Go programming language",
     "homepage": "https://github.com/golang/tools",
-    "version": "0.46.0",
+    "version": "0.48.0",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -4845,13 +4853,13 @@
     "homepage": "https://wiki.gnome.org/Projects/GObjectIntrospection",
     "version": "1.86.0-1",
     "license": "LGPL-2+ and GPL-2+",
-    "compatibility": "aarch64 armv7l x86_64"
+    "compatibility": "all"
   },
   {
     "name": "google_chrome",
     "description": "Google Chrome is a fast, easy to use, and secure web browser.",
     "homepage": "https://www.google.com/chrome/",
-    "version": "149.0.7827.155",
+    "version": "150.0.7871.114",
     "license": "google-chrome",
     "compatibility": "x86_64"
   },
@@ -4923,7 +4931,7 @@
     "name": "gpgme",
     "description": "GnuPG Made Easy (GPGME) is a library designed to make access to GnuPG easier for applications.",
     "homepage": "https://www.gnupg.org/related_software/gpgme/index.html",
-    "version": "2.1.0",
+    "version": "2.1.2",
     "license": "GPL-2 and LGPL-2.1",
     "compatibility": "all"
   },
@@ -4987,7 +4995,7 @@
     "name": "gradle",
     "description": "From mobile apps to microservices, from small startups to big enterprises, Gradle helps teams build, automate and deliver better software, faster.",
     "homepage": "https://gradle.org/",
-    "version": "9.6.0",
+    "version": "9.6.1",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -5099,7 +5107,7 @@
     "name": "gspell",
     "description": "a flexible API to implement the spell checking in a GTK+ application",
     "homepage": "https://wiki.gnome.org/Projects/gspell",
-    "version": "1.14.3",
+    "version": "1.14.4",
     "license": "LGPL-2.1+",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -5283,7 +5291,7 @@
     "name": "gvfs",
     "description": "Virtual filesystem implementation for GIO",
     "homepage": "https://wiki.gnome.org/Projects/gvfs",
-    "version": "1.60.0",
+    "version": "1.61.1",
     "license": "GPLv2",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -5355,7 +5363,7 @@
     "name": "haproxy",
     "description": "The Reliable, High Performance TCP/HTTP Load Balancer.",
     "homepage": "https://www.haproxy.org/",
-    "version": "3.4.0",
+    "version": "3.4.2",
     "license": "GPL-2 and LGPL-2.1",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -5387,7 +5395,7 @@
     "name": "haveged",
     "description": "A simple entropy daemon based on the HAVEGE algorithm, significantly faster than /dev/urandom.",
     "homepage": "https://issihosts.com/haveged/",
-    "version": "1.9.24",
+    "version": "1.9.26",
     "license": "GPL-3+",
     "compatibility": "all"
   },
@@ -5563,7 +5571,7 @@
     "name": "hugo",
     "description": "Hugo is one of the most popular open-source static site generators.",
     "homepage": "https://gohugo.io",
-    "version": "0.163.3",
+    "version": "0.164.0",
     "license": "Apache-2.0, Unlicense, BSD, BSD-2 and MPL-2.0",
     "compatibility": "all"
   },
@@ -5579,7 +5587,7 @@
     "name": "hunspell_en_us",
     "description": "Hunspell US English dictionary",
     "homepage": "http://hunspell.github.io/",
-    "version": "26.2.4.2",
+    "version": "26.2.5.1",
     "license": "MPL-1.1, GPL-2 and LGPL-2.1",
     "compatibility": "all"
   },
@@ -5595,7 +5603,7 @@
     "name": "hunspell_es_us",
     "description": "Diccionarios de español de Hunspell",
     "homepage": "http://hunspell.github.io/",
-    "version": "26.2.4.2",
+    "version": "26.2.5.1",
     "license": "MPL-1.1, GPL-2 and LGPL-2.1",
     "compatibility": "all"
   },
@@ -5603,7 +5611,7 @@
     "name": "hunspell_fr_fr",
     "description": "Dictionnaire Français Hunspell",
     "homepage": "http://hunspell.github.io/",
-    "version": "26.2.4.2",
+    "version": "26.2.5.1",
     "license": "MPL-1.1, GPL-2 and LGPL-2.1",
     "compatibility": "all"
   },
@@ -5619,7 +5627,7 @@
     "name": "hwdata",
     "description": "hardware identification databases",
     "homepage": "https://github.com/vcrhonek/hwdata",
-    "version": "0.408",
+    "version": "0.409",
     "license": "GPL2",
     "compatibility": "all"
   },
@@ -5741,7 +5749,7 @@
     "homepage": "https://xorg.freedesktop.org/wiki/",
     "version": "1.0.11",
     "license": "custom",
-    "compatibility": "aarch64 armv7l x86_64"
+    "compatibility": "all"
   },
   {
     "name": "imgur",
@@ -5843,7 +5851,7 @@
     "name": "inxi",
     "description": "inxi is a full featured CLI system information tool.",
     "homepage": "https://smxi.org/docs/inxi.htm",
-    "version": "3.3.40-1",
+    "version": "3.3.41-1",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -5939,7 +5947,7 @@
     "name": "isl",
     "description": "Integer Set Library for manipulating sets and relations of integer points bounded by linear constraints",
     "homepage": "https://libisl.sourceforge.io/",
-    "version": "0.27",
+    "version": "0.28",
     "license": "LGPL-2.1",
     "compatibility": "all"
   },
@@ -5968,14 +5976,6 @@
     "compatibility": "aarch64 armv7l x86_64"
   },
   {
-    "name": "jack1",
-    "description": "JACK (JACK Audio Connection Kit) refers to an API that provides a basic infrastructure for audio applications to communicate with each other and with audio hardware.",
-    "homepage": "https://jackaudio.org/",
-    "version": "b04083",
-    "license": "GPL-3 and LGPL-3",
-    "compatibility": "aarch64 armv7l x86_64"
-  },
-  {
     "name": "jam",
     "description": "Jam is a software build tool that makes building simple things simple and building complicated things manageable.",
     "homepage": "https://swarm.workshop.perforce.com/projects/perforce_software-jam",
@@ -5995,7 +5995,7 @@
     "name": "jansson",
     "description": "Jansson is a C library for encoding, decoding and manipulating JSON data.",
     "homepage": "https://github.com/akheron/jansson",
-    "version": "2.15.0",
+    "version": "2.15.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -6083,7 +6083,7 @@
     "name": "jitsi_meet",
     "description": "Jitsi Meet video conferencing desktop application",
     "homepage": "https://jitsi.org/jitsi-meet/",
-    "version": "2026.6.0",
+    "version": "2026.7.0",
     "license": "Apache-2.0",
     "compatibility": "x86_64"
   },
@@ -6099,7 +6099,7 @@
     "name": "joplin",
     "description": "Open source note-taking app",
     "homepage": "https://joplinapp.org/",
-    "version": "3.7.1",
+    "version": "3.7.6",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -6123,7 +6123,7 @@
     "name": "jq",
     "description": "jq is a lightweight and flexible command-line JSON processor.",
     "homepage": "https://stedolan.github.io/jq/",
-    "version": "1.8.1",
+    "version": "1.8.2",
     "license": "MIT and CC-BY-3.0",
     "compatibility": "all"
   },
@@ -6483,7 +6483,7 @@
     "name": "lazygit",
     "description": "A simple terminal UI for git commands",
     "homepage": "https://github.com/jesseduffield/lazygit",
-    "version": "0.62.2",
+    "version": "0.63.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -6640,6 +6640,14 @@
     "compatibility": "aarch64 armv7l x86_64"
   },
   {
+    "name": "libaec",
+    "description": "Adaptive Entropy Coding library",
+    "homepage": "https://gitlab.dkrz.de/dkrz-sw/libaec",
+    "version": "1.1.7",
+    "license": "Copyright 2008 Simon Tatham. All rights reserved.",
+    "compatibility": "all"
+  },
+  {
     "name": "libaio",
     "description": "Linux-native asynchronous I/O access library",
     "homepage": "https://pagure.io/libaio",
@@ -6675,7 +6683,7 @@
     "name": "libarchive",
     "description": "Multi-format archive and compression library.",
     "homepage": "https://www.libarchive.org/",
-    "version": "3.8.7",
+    "version": "3.8.8",
     "license": "BSD, BSD-2, BSD-4 and public-domain",
     "compatibility": "all"
   },
@@ -6891,7 +6899,7 @@
     "name": "libclc",
     "description": "Library requirements of the OpenCL C programming language",
     "homepage": "https://libclc.llvm.org/",
-    "version": "22.1.7",
+    "version": "22.1.8",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -7291,7 +7299,7 @@
     "name": "libffi",
     "description": "The libffi library provides a portable, high level programming interface to various calling conventions.",
     "homepage": "https://sourceware.org/libffi/",
-    "version": "3.6.0",
+    "version": "3.7.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -7387,7 +7395,7 @@
     "name": "libgedit_gfls",
     "description": "A module dedicated to file loading and saving.",
     "homepage": "https://gitlab.gnome.org/World/gedit/libgedit-gfls",
-    "version": "0.4.1",
+    "version": "0.4.2",
     "license": "LGPL-3.0-or-later",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -7395,7 +7403,7 @@
     "name": "libgedit_gtksourceview",
     "description": "Gedit Technology - Source code editing widget",
     "homepage": "https://gedit-text-editor.org",
-    "version": "299.7.0",
+    "version": "299.7.1",
     "license": "LGPL2.1",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -7437,7 +7445,7 @@
     "homepage": "https://www.mesa3d.org/",
     "version": "9.0.3",
     "license": "SGI-B-2.0",
-    "compatibility": "aarch64 armv7l x86_64"
+    "compatibility": "all"
   },
   {
     "name": "libglvnd",
@@ -7445,7 +7453,7 @@
     "homepage": "https://gitlab.freedesktop.org/glvnd/libglvnd",
     "version": "1.7.0",
     "license": "MIT",
-    "compatibility": "aarch64 armv7l x86_64"
+    "compatibility": "all"
   },
   {
     "name": "libgme",
@@ -7541,7 +7549,7 @@
     "homepage": "https://wiki.gnome.org/Projects/libgudev",
     "version": "238",
     "license": "LGPL-2.1+",
-    "compatibility": "aarch64 armv7l x86_64"
+    "compatibility": "all"
   },
   {
     "name": "libgweather",
@@ -7605,7 +7613,7 @@
     "homepage": "https://www.x.org/wiki/",
     "version": "1.1.2",
     "license": "X11",
-    "compatibility": "aarch64 armv7l x86_64"
+    "compatibility": "all"
   },
   {
     "name": "libiconv",
@@ -7707,7 +7715,7 @@
     "name": "libjxl",
     "description": "JPEG XL image format reference implementation",
     "homepage": "https://jpeg.org/jpegxl/",
-    "version": "0.11.2",
+    "version": "0.12.0",
     "license": "BSD",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -7779,7 +7787,7 @@
     "name": "libmbim",
     "description": "libmbim is a glib-based library for talking to WWAN modems and devices which speak the Mobile Interface Broadband Model (MBIM) protocol.",
     "homepage": "https://www.freedesktop.org/wiki/Software/libmbim/",
-    "version": "1.24.6",
+    "version": "1.34.0",
     "license": "LGPL-2",
     "compatibility": "all"
   },
@@ -7835,7 +7843,7 @@
     "name": "libmicrohttpd",
     "description": "GNU libmicrohttpd is a small C library that is supposed to make it easy to run an HTTP server as part of another application.",
     "homepage": "https://www.gnu.org/software/libmicrohttpd/",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "license": "LGPL-2.1",
     "compatibility": "all"
   },
@@ -8003,7 +8011,7 @@
     "name": "libnghttp3",
     "description": "HTTP/3 library written in C",
     "homepage": "https://github.com/ngtcp2/nghttp3",
-    "version": "1.16.0",
+    "version": "1.17.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -8011,7 +8019,7 @@
     "name": "libngtcp2",
     "description": "Implementation of IETF QUIC protocol",
     "homepage": "https://github.com/ngtcp2/ngtcp2",
-    "version": "1.23.0",
+    "version": "1.24.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -8067,7 +8075,7 @@
     "name": "libnvme",
     "description": "C Library for NVM Express on Linux",
     "homepage": "https://github.com/linux-nvme/libnvme",
-    "version": "1.16.1",
+    "version": "1.16.2",
     "license": "LGPL-2.1+",
     "compatibility": "all"
   },
@@ -8235,7 +8243,7 @@
     "name": "libportal",
     "description": "libportal provides GIO-style async APIs for most Flatpak portals.",
     "homepage": "https://github.com/flatpak/libportal",
-    "version": "0.9.1",
+    "version": "0.10.0",
     "license": "GPL-2+",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -8259,7 +8267,7 @@
     "name": "libpsl",
     "description": "C library for the Public Suffix List",
     "homepage": "https://github.com/rockdaboot/libpsl",
-    "version": "0.21.5-2",
+    "version": "0.22.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -8291,8 +8299,16 @@
     "name": "libqmi",
     "description": "libqmi is a glib-based library for talking to WWAN modems and devices which speak the Qualcomm MSM Interface (QMI) protocol.",
     "homepage": "https://www.freedesktop.org/wiki/Software/libqmi/",
-    "version": "1.28.2",
+    "version": "1.38.0",
     "license": "LGPL-2",
+    "compatibility": "aarch64 armv7l x86_64"
+  },
+  {
+    "name": "libqrtr_glib",
+    "description": "Qualcomm IPC Router protocol helper library",
+    "homepage": "https://gitlab.freedesktop.org/mobile-broadband/libqrtr-glib",
+    "version": "1.4.0",
+    "license": "LGPL-2.1+",
     "compatibility": "aarch64 armv7l x86_64"
   },
   {
@@ -8323,7 +8339,7 @@
     "name": "librevenge",
     "description": "library for REVerses ENGineered formats filters",
     "homepage": "https://sf.net/p/libwpd/librevenge/",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "license": "MPL",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -8339,7 +8355,7 @@
     "name": "librsvg",
     "description": "SVG library for GNOME",
     "homepage": "https://wiki.gnome.org/Projects/LibRsvg",
-    "version": "2.62.3",
+    "version": "2.62.90",
     "license": "LGPL-2+",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -8387,7 +8403,7 @@
     "name": "libseccomp",
     "description": "The libseccomp library provides an easy to use, platform independent, interface to the Linux Kernel's syscall filtering mechanism.",
     "homepage": "https://github.com/seccomp/libseccomp",
-    "version": "2.6.0",
+    "version": "2.6.1",
     "license": "LGPL-2.1",
     "compatibility": "all"
   },
@@ -8411,7 +8427,7 @@
     "name": "libshumate",
     "description": "GTK toolkit providing widgets for embedded maps",
     "homepage": "https://wiki.gnome.org/Projects/libshumate",
-    "version": "1.6.1",
+    "version": "1.6.2",
     "license": "LGPL2.1",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -8477,7 +8493,7 @@
     "homepage": "https://www.x.org/wiki/",
     "version": "1.2.6",
     "license": "MIT",
-    "compatibility": "aarch64 armv7l x86_64"
+    "compatibility": "all"
   },
   {
     "name": "libsmi",
@@ -8691,7 +8707,7 @@
     "name": "libtiff",
     "description": "LibTIFF provides support for the Tag Image File Format (TIFF), a widely used format for storing image data.",
     "homepage": "http://www.libtiff.org/",
-    "version": "4.7.1-1",
+    "version": "4.7.2",
     "license": "libtiff",
     "compatibility": "all"
   },
@@ -8707,7 +8723,7 @@
     "name": "libtinfo",
     "description": "Missing ncurses library reference.",
     "homepage": "https://www.gnu.org/software/ncurses/",
-    "version": "5.9-1",
+    "version": "6.6",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -8739,7 +8755,7 @@
     "name": "libtorrent",
     "description": "Feature complete C++ bittorrent implementation focusing on efficiency and scalability.",
     "homepage": "https://www.libtorrent.org/",
-    "version": "2.0.13",
+    "version": "2.1.0",
     "license": "Unknown, BSD-3-Clause",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -8803,7 +8819,7 @@
     "name": "liburcu",
     "description": "Userspace RCU (read-copy-update) library.",
     "homepage": "https://liburcu.org/",
-    "version": "0.14.0-2",
+    "version": "0.15.6",
     "license": "LGPLv2.1",
     "compatibility": "all"
   },
@@ -9035,9 +9051,9 @@
     "name": "libx11",
     "description": "C interface to the X window system",
     "homepage": "https://x.org/wiki/",
-    "version": "1.8.12",
+    "version": "1.8.13",
     "license": "X11",
-    "compatibility": "aarch64 armv7l x86_64"
+    "compatibility": "all"
   },
   {
     "name": "libx264",
@@ -9133,7 +9149,7 @@
     "homepage": "https://x.org/wiki/",
     "version": "1.3.7",
     "license": "MIT",
-    "compatibility": "aarch64 armv7l x86_64"
+    "compatibility": "all"
   },
   {
     "name": "libxfce4ui",
@@ -9157,7 +9173,7 @@
     "homepage": "https://x.org/wiki/",
     "version": "6.0.2",
     "license": "custom",
-    "compatibility": "aarch64 armv7l x86_64"
+    "compatibility": "all"
   },
   {
     "name": "libxfont2",
@@ -9179,9 +9195,9 @@
     "name": "libxi",
     "description": "X.org libXi Client library for XInput",
     "homepage": "https://x.org/wiki/",
-    "version": "1.8.2",
+    "version": "1.8.3",
     "license": "MIT and custom",
-    "compatibility": "aarch64 armv7l x86_64"
+    "compatibility": "all"
   },
   {
     "name": "libxinerama",
@@ -9443,7 +9459,7 @@
     "name": "live555",
     "description": "This code forms a set of C++ libraries for multimedia streaming, using open standard protocols (RTP/RTCP, RTSP, SIP).",
     "homepage": "http://www.live555.com",
-    "version": "2026.06.12",
+    "version": "2026.07.06",
     "license": "LGPL",
     "compatibility": "all"
   },
@@ -9595,7 +9611,7 @@
     "name": "llvm22_build",
     "description": "The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The packages included are: bolt clang clang-tools-extra lld lldb compiler-rt polly",
     "homepage": "https://llvm.org/",
-    "version": "22.1.7",
+    "version": "22.1.8",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "all"
   },
@@ -9603,7 +9619,7 @@
     "name": "llvm22_dev",
     "description": "LLVM: Everything except libLLVM & llvm-strip",
     "homepage": "https://llvm.org/",
-    "version": "22.1.7",
+    "version": "22.1.8",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "all"
   },
@@ -9611,7 +9627,7 @@
     "name": "llvm22_lib",
     "description": "LibLLVM and llvm-strip",
     "homepage": "https://llvm.org/",
-    "version": "22.1.7",
+    "version": "22.1.8",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "all"
   },
@@ -9635,7 +9651,7 @@
     "name": "lmdb",
     "description": "Symas Lightning Memory-Mapped Database",
     "homepage": "https://www.symas.com/mdb",
-    "version": "0.9.35",
+    "version": "1.0.0",
     "license": "OpenLDAP Public License",
     "compatibility": "all"
   },
@@ -9755,15 +9771,15 @@
     "name": "lttng_tools",
     "description": "Linux Trace Toolkit: next generation is a modern toolkit for tracing Linux systems and applications.",
     "homepage": "https://lttng.org/",
-    "version": "2.13.11",
+    "version": "2.15.1",
     "license": "LGPL-2.1-only, MIT, GPL-2.0-only, GPL-3.0-or-later, BSD-2-Clause, BSD-3-Clause",
-    "compatibility": "all"
+    "compatibility": "aarch64 armv7l x86_64"
   },
   {
     "name": "lttng_ust",
     "description": "Linux Trace Toolkit: next generation is a modern toolkit for tracing Linux systems and applications.",
     "homepage": "https://lttng.org/",
-    "version": "2.13.7",
+    "version": "2.15.1",
     "license": "LGPL-2.1-only, MIT, GPL-2.0-only, GPL-3.0-or-later, BSD-2-Clause, BSD-3-Clause",
     "compatibility": "all"
   },
@@ -9811,7 +9827,7 @@
     "name": "luajit_mpack",
     "description": "libmpack lua binding",
     "homepage": "https://github.com/libmpack/libmpack-lua",
-    "version": "1.0.12",
+    "version": "1.0.13",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -9819,7 +9835,7 @@
     "name": "luit",
     "description": "Filter that can be run between an arbitrary application and a UTF-8 terminal emulator",
     "homepage": "https://invisible-island.net/luit/luit.html",
-    "version": "2_0_20230201",
+    "version": "20250912",
     "license": "custom",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -9971,7 +9987,7 @@
     "name": "makedepend",
     "description": "Makedepend parses C sources in Makefiles to generate dependency lists",
     "homepage": "https://www.x.org/wiki/",
-    "version": "1.0.6",
+    "version": "1.0.9",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -10019,7 +10035,7 @@
     "name": "masscan",
     "description": "TCP port scanner, spews SYN packets asynchronously, scanning entire Internet in under 5 minutes.",
     "homepage": "https://github.com/robertdavidgraham/masscan",
-    "version": "1.0.4",
+    "version": "1.3.2",
     "license": "AGPL-3",
     "compatibility": "all"
   },
@@ -10027,7 +10043,7 @@
     "name": "mate_calc",
     "description": "Calculator for MATE.",
     "homepage": "https://mate-desktop.org",
-    "version": "1.21",
+    "version": "1.28.0",
     "license": "CC-BY-SA-3.0 and GPL-2+",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -10075,7 +10091,7 @@
     "name": "mcelog",
     "description": "logs and accounts machine checks (in particular memory, IO, and CPU hardware errors) on modern x86 Linux systems.",
     "homepage": "https://www.mcelog.org/",
-    "version": "165",
+    "version": "211",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -10091,7 +10107,7 @@
     "name": "mdp",
     "description": "A command-line based markdown presentation tool.",
     "homepage": "https://github.com/visit1985/mdp",
-    "version": "1.0.10",
+    "version": "1.0.18",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -10115,7 +10131,7 @@
     "name": "megatools",
     "description": "Megatools is a collection of programs for accessing Mega.nz service from a command line of your desktop or server.",
     "homepage": "https://megatools.megous.com/",
-    "version": "1.9.98",
+    "version": "1.11.5.20250706",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -10131,7 +10147,7 @@
     "name": "memcached",
     "description": "Memcached is an in-memory key-value store for small chunks of arbitrary data (strings, objects) from results of database calls, API calls, or page rendering.",
     "homepage": "https://memcached.org/",
-    "version": "1.5.16",
+    "version": "1.6.45",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -10139,7 +10155,7 @@
     "name": "mesa",
     "description": "Open-source implementation of the OpenGL specification",
     "homepage": "https://www.mesa3d.org",
-    "version": "26.1.2",
+    "version": "26.1.4",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -10203,7 +10219,7 @@
     "name": "miller",
     "description": "Miller is like awk, sed, cut, join, and sort for name-indexed data such as CSV, TSV, and tabular JSON",
     "homepage": "https://miller.readthedocs.io/",
-    "version": "6.18.1",
+    "version": "6.20.2",
     "license": "Copyright (c) 2015 - John Kerl",
     "compatibility": "all"
   },
@@ -10227,7 +10243,7 @@
     "name": "minerd",
     "description": "CPU miner for Litecoin and Bitcoin",
     "homepage": "https://github.com/pooler/cpuminer",
-    "version": "2.5.0",
+    "version": "2.5.1",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -10251,7 +10267,7 @@
     "name": "miniupnpc",
     "description": "UPnP IGD client lightweight library",
     "homepage": "http://miniupnp.free.fr/",
-    "version": "2.1",
+    "version": "2.3.3",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -10299,7 +10315,7 @@
     "name": "mkfontscale",
     "description": "X11 Scalable Font Index Generator",
     "homepage": "https://www.x.org/wiki/",
-    "version": "1.2.1-1",
+    "version": "1.2.4",
     "license": "custom",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -10307,7 +10323,7 @@
     "name": "mksh",
     "description": "The MirBSD Korn Shell",
     "homepage": "https://www.mirbsd.org/mksh.htm",
-    "version": "0.57",
+    "version": "59c",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -10331,15 +10347,15 @@
     "name": "mm_common",
     "description": "Common build files of the C++ bindings",
     "homepage": "https://www.gtkmm.org/",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "license": "GPL-2",
-    "compatibility": "all"
+    "compatibility": "aarch64 armv7l x86_64"
   },
   {
     "name": "mobile_broadband_provider_info",
     "description": "Network Management daemon",
     "homepage": "https://gitlab.gnome.org/GNOME/mobile-broadband-provider-info",
-    "version": "20240316",
+    "version": "20240407",
     "license": "CC-PD",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -10355,7 +10371,7 @@
     "name": "modemmanager",
     "description": "ModemManager is a DBus-activated daemon which controls mobile broadband (2G/3G/4G) devices and connections.",
     "homepage": "https://www.freedesktop.org/wiki/Software/ModemManager/",
-    "version": "1.16.2",
+    "version": "1.24.2",
     "license": "GPL-2+",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -10371,7 +10387,7 @@
     "name": "monero",
     "description": "Private, decentralized cryptocurrency that keeps your finances confidential and secure.",
     "homepage": "https://www.getmonero.org/",
-    "version": "0.18.5.0",
+    "version": "0.18.5.1",
     "license": "The Cryptonote developers,The Boolberry developers,MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -10379,7 +10395,7 @@
     "name": "monero_gui",
     "description": "Private, decentralized cryptocurrency that keeps your finances confidential and secure.",
     "homepage": "https://www.getmonero.org/",
-    "version": "0.18.5.0",
+    "version": "0.18.5.1",
     "license": "The Cryptonote developers,The Boolberry developers,MIT",
     "compatibility": "x86_64"
   },
@@ -10411,7 +10427,7 @@
     "name": "moreutils",
     "description": "Growing collection of the unix tools that nobody thought to write long ago when unix was young.",
     "homepage": "https://joeyh.name/code/moreutils/",
-    "version": "0.69",
+    "version": "0.70",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -10451,7 +10467,7 @@
     "name": "mp4v2",
     "description": "MP4v2 Library: This library provides functions to read, create, and modify mp4 files",
     "homepage": "https://code.google.com/archive/p/mp4v2/",
-    "version": "2.0.0",
+    "version": "2.1.3",
     "license": "MPL-1.1",
     "compatibility": "all"
   },
@@ -10491,7 +10507,7 @@
     "name": "mpg123",
     "description": "Fast console MPEG Audio Player and decoder library.",
     "homepage": "http://www.mpg123.org/",
-    "version": "1.32.3",
+    "version": "1.33.6",
     "license": "GPL-2 and LGPL-2.1",
     "compatibility": "all"
   },
@@ -10547,7 +10563,7 @@
     "name": "mtr",
     "description": "mtr combines the functionality of the 'traceroute' and 'ping' programs in a single network diagnostic tool.",
     "homepage": "https://www.bitwizard.nl/mtr/",
-    "version": "0.93",
+    "version": "0.96",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -10563,7 +10579,7 @@
     "name": "mullvad",
     "description": "Privacy-focused browser",
     "homepage": "https://mullvad.net/browser",
-    "version": "15.0.14",
+    "version": "15.0.16",
     "license": "Mozilla Public License V2",
     "compatibility": "x86_64"
   },
@@ -10595,7 +10611,7 @@
     "name": "mupdf",
     "description": "MuPDF is a lightweight open source software framework for viewing and converting PDF, XPS, and E-book documents.",
     "homepage": "https://mupdf.com/",
-    "version": "1.27.2",
+    "version": "1.28.0",
     "license": "GPL-3",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -10851,7 +10867,7 @@
     "name": "mutt",
     "description": "Mutt is a small but very powerful text-based mail client for Unix operating systems.",
     "homepage": "http://mutt.org/",
-    "version": "2.3.3",
+    "version": "2.4.1",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -10899,7 +10915,7 @@
     "name": "mysqltuner",
     "description": "MySQLTuner is a script written in Perl that allows you to review a MySQL installation quickly and make adjustments to increase performance and stability.",
     "homepage": "https://github.com/major/MySQLTuner-perl",
-    "version": "2.7.0",
+    "version": "2.8.45",
     "license": "GPL-3+",
     "compatibility": "all"
   },
@@ -10915,7 +10931,7 @@
     "name": "nano",
     "description": "Nano's ANOther editor, an enhanced free Pico clone.",
     "homepage": "https://www.nano-editor.org/",
-    "version": "9.0",
+    "version": "9.1",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -10923,7 +10939,7 @@
     "name": "nanomsg",
     "description": "nanomsg is a socket library that provides several common communication patterns.",
     "homepage": "https://nanomsg.org/",
-    "version": "1.1.5",
+    "version": "1.2.2",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -10931,7 +10947,7 @@
     "name": "nanosvg",
     "description": "Simple stupid SVG parser",
     "homepage": "https://github.com/memononen/nanosvg",
-    "version": "5cefd98",
+    "version": "48120e9",
     "license": "Zlib",
     "compatibility": "all"
   },
@@ -10979,7 +10995,7 @@
     "name": "ncdc",
     "description": "Ncdc is a modern and lightweight direct connect client with a friendly ncurses interface.",
     "homepage": "https://dev.yorhel.nl/ncdc",
-    "version": "1.20",
+    "version": "1.25",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -10987,9 +11003,9 @@
     "name": "ncdu",
     "description": "Ncdu is a disk usage analyzer with an ncurses interface.",
     "homepage": "https://dev.yorhel.nl/ncdu",
-    "version": "1.12",
+    "version": "2.9.2",
     "license": "MIT",
-    "compatibility": "all"
+    "compatibility": "aarch64 armv7l x86_64"
   },
   {
     "name": "ncftp",
@@ -11027,7 +11043,7 @@
     "name": "ncurses",
     "description": "The ncurses (new curses) library is a free software emulation of curses in System V Release 4.0 (SVr4), and more. — Wide character",
     "homepage": "https://www.gnu.org/software/ncurses/",
-    "version": "6_5_20250628",
+    "version": "6.6",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -11043,7 +11059,7 @@
     "name": "ndisc6",
     "description": "Small collection of useful tools for IPv6 networking (ndisc6, rdisc6, tcptraceroute6, traceroute6, rdnssd).",
     "homepage": "https://www.remlab.net/ndisc6/",
-    "version": "1.0.4",
+    "version": "1.0.8",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -11059,7 +11075,7 @@
     "name": "nedit",
     "description": "A fast, compact Motif/X11 plain text editor, for most popular Unix systems.",
     "homepage": "https://sourceforge.net/projects/nedit/",
-    "version": "5.7",
+    "version": "5.8",
     "license": "GPL-2",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -11099,7 +11115,7 @@
     "name": "neovim",
     "description": "Neovim is a refactor, and sometimes redactor, in the tradition of Vim (which itself derives from Stevie).",
     "homepage": "https://neovim.io/",
-    "version": "0.11.3",
+    "version": "0.12.4",
     "license": "Apache-2.0 and vim",
     "compatibility": "all"
   },
@@ -11107,7 +11123,7 @@
     "name": "netavark",
     "description": "Container network stack",
     "homepage": "https://github.com/containers/netavark",
-    "version": "1.0.1",
+    "version": "2.0.0",
     "license": "Apache",
     "compatibility": "all"
   },
@@ -11131,7 +11147,7 @@
     "name": "netcdf",
     "description": "NetCDF is a set of software libraries and self-describing, machine-independent data formats that support the creation, access, and sharing of array-oriented scientific data.",
     "homepage": "https://www.unidata.ucar.edu/software/netcdf/",
-    "version": "4.7.4",
+    "version": "4.10.1",
     "license": "UCAR-Unidata",
     "compatibility": "all"
   },
@@ -11235,7 +11251,7 @@
     "name": "nginx",
     "description": "nginx [engine x] is an HTTP and reverse proxy server, a mail proxy server, and a generic TCP/UDP proxy server, originally written by Igor Sysoev.",
     "homepage": "http://nginx.org/",
-    "version": "1.31.1",
+    "version": "1.31.2",
     "license": "BSD-2, BSD, SSLeay, MIT, GPL-2 and GPL-2+",
     "compatibility": "all"
   },
@@ -11259,7 +11275,7 @@
     "name": "nim",
     "description": "Nim is a statically typed compiled systems programming language.",
     "homepage": "https://nim-lang.org/",
-    "version": "1.6.10",
+    "version": "2.2.10",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -11291,15 +11307,15 @@
     "name": "nmap",
     "description": "Utility for network discovery and security auditing",
     "homepage": "https://nmap.org/",
-    "version": "7.94",
+    "version": "7.99",
     "license": "GPL2",
-    "compatibility": "all"
+    "compatibility": "aarch64 armv7l x86_64"
   },
   {
     "name": "nmon",
     "description": "nmon is short for Nigel's performance MONitor for Linux",
     "homepage": "https://nmon.sourceforge.io/pmwiki.php",
-    "version": "16g",
+    "version": "16s",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -11339,7 +11355,7 @@
     "name": "nsgenbind",
     "description": "Tool to generate javascript to dom bindings from w3c webid files",
     "homepage": "https://www.netsurf-browser.org",
-    "version": "0.8",
+    "version": "0.9",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -11347,7 +11363,7 @@
     "name": "nss",
     "description": "Network Security Services (NSS) is a set of libraries designed to support cross-platform development of security-enabled client and server applications.",
     "homepage": "https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS",
-    "version": "nss.3.98.nspr.4.35",
+    "version": "nss.3.119.1.nspr.4.38.2",
     "license": "MPL-2.0, GPL-2 or LGPL-2.1",
     "compatibility": "all"
   },
@@ -11363,7 +11379,7 @@
     "name": "ntfs_3g",
     "description": "NTFS-3G Safe Read/Write NTFS Driver",
     "homepage": "https://github.com/tuxera/ntfs-3g",
-    "version": "2022.10.3",
+    "version": "2026.2.25",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -11371,7 +11387,7 @@
     "name": "nuclei",
     "description": "Fast, customizable vulnerability scanner",
     "homepage": "https://docs.projectdiscovery.io/tools/nuclei",
-    "version": "3.9.0",
+    "version": "3.11.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -11387,7 +11403,7 @@
     "name": "nushell",
     "description": "A new type of shell",
     "homepage": "https://www.nushell.sh/",
-    "version": "0.113.1",
+    "version": "0.114.1",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -11435,7 +11451,7 @@
     "name": "ocaml",
     "description": "OCaml is an industrial strength programming language supporting functional, imperative and object-oriented styles",
     "homepage": "https://ocaml.org/",
-    "version": "5.4.1",
+    "version": "5.5.0",
     "license": "LGPL-2.1",
     "compatibility": "all"
   },
@@ -11475,7 +11491,7 @@
     "name": "ollama",
     "description": "Get up and running with large language models.",
     "homepage": "https://ollama.com/",
-    "version": "0.30.8",
+    "version": "0.31.2",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -11547,7 +11563,7 @@
     "name": "opam",
     "description": "OCaml package manager",
     "homepage": "https://opam.ocaml.org/",
-    "version": "2.5.1",
+    "version": "2.5.2",
     "license": "LGPL-2.1-with-linking-exception",
     "compatibility": "all"
   },
@@ -11603,7 +11619,7 @@
     "name": "opencode",
     "description": "The open source coding agent.",
     "homepage": "https://opencode.ai/",
-    "version": "1.17.7",
+    "version": "1.17.18",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -11731,7 +11747,7 @@
     "name": "openmp",
     "description": "LLVM OpenMP Runtime Library",
     "homepage": "https://openmp.llvm.org/",
-    "version": "22.1.7",
+    "version": "22.1.8",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "all"
   },
@@ -11763,7 +11779,7 @@
     "name": "openssh",
     "description": "OpenSSH is the premier connectivity tool for remote login with the SSH protocol.",
     "homepage": "https://www.openssh.com/",
-    "version": "10.3p1",
+    "version": "10.4p1",
     "license": "BSD and GPL-2",
     "compatibility": "all"
   },
@@ -11787,7 +11803,7 @@
     "name": "openvpn",
     "description": "OpenVPN is an open source VPN daemon",
     "homepage": "https://openvpn.net/",
-    "version": "2.7.4",
+    "version": "2.7.5",
     "license": "GPL-2",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -11803,7 +11819,7 @@
     "name": "opera",
     "description": "Opera is a multi-platform web browser based on Chromium and developed by Opera Software.",
     "homepage": "https://www.opera.com/",
-    "version": "132.0.5905.37",
+    "version": "133.0.5932.34",
     "license": "OPERA-2018",
     "compatibility": "x86_64"
   },
@@ -11859,7 +11875,7 @@
     "name": "p11kit",
     "description": "Provides a standard configuration setup for installing PKCS#11 modules in such a way that they're discoverable.",
     "homepage": "https://p11-glue.github.io/p11-glue/p11-kit.html",
-    "version": "0.26.2",
+    "version": "0.26.4",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -11939,7 +11955,7 @@
     "name": "pango",
     "description": "Pango is a library for laying out and rendering of text, with an emphasis on internationalization.",
     "homepage": "https://www.pango.org/",
-    "version": "1.57.1",
+    "version": "1.58.0",
     "license": "LGPL-2+ and FTL",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -12075,7 +12091,7 @@
     "name": "pdfbox",
     "description": "The Apache PDFBox® library is an open source Java tool for working with PDF documents.",
     "homepage": "https://pdfbox.apache.org/",
-    "version": "3.0.7",
+    "version": "3.0.8",
     "license": "Apache-2.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -12368,11 +12384,27 @@
     "compatibility": "all"
   },
   {
+    "name": "perl_io_pty",
+    "description": "Pseudo TTY object class",
+    "homepage": "https://metacpan.org/pod/IO::Pty",
+    "version": "1.31",
+    "license": "perl_5",
+    "compatibility": "all"
+  },
+  {
     "name": "perl_io_socket_ssl",
     "description": "IO::Socket::SSL - SSL sockets with IO::Socket interface",
     "homepage": "https://metacpan.org/pod/IO::Socket::SSL",
     "version": "2.085",
     "license": "GPL-1+ or Artistic",
+    "compatibility": "all"
+  },
+  {
+    "name": "perl_ipc_run",
+    "description": "system() and background procs w/ piping, redirs, ptys (Unix, Win32)",
+    "homepage": "https://metacpan.org/dist/IPC-Run",
+    "version": "20260402.0",
+    "license": "perl_5",
     "compatibility": "all"
   },
   {
@@ -12667,7 +12699,7 @@
     "name": "photogimp",
     "description": "A Patch for GIMP 3+ for Photoshop Users",
     "homepage": "https://photogimp.com/",
-    "version": "3.0",
+    "version": "3.1",
     "license": "GPL-3.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -12851,7 +12883,7 @@
     "name": "pipewire",
     "description": "PipeWire is a project that aims to greatly improve handling of audio and video under Linux.",
     "homepage": "https://pipewire.org",
-    "version": "1.6.6",
+    "version": "1.6.8",
     "license": "LGPL-2.1+",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -12899,7 +12931,7 @@
     "name": "pkgconf",
     "description": "Package compiler and linker metadata toolkit",
     "homepage": "https://github.com/pkgconf/pkgconf",
-    "version": "2.5.1-2",
+    "version": "3.0.0",
     "license": "ISC",
     "compatibility": "all"
   },
@@ -12987,7 +13019,7 @@
     "name": "pnpm",
     "description": "Fast, disk space efficient package manager",
     "homepage": "https://pnpm.io/",
-    "version": "11.7.0",
+    "version": "11.12.0",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -13083,7 +13115,7 @@
     "name": "powershell",
     "description": "Powershell is a cross-platform, task-based command-line shell and scripting language that helps rapidly automate tasks that manage operating systems and processes",
     "homepage": "https://learn.microsoft.com/en-us/powershell/",
-    "version": "7.6.2",
+    "version": "7.6.3",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -13227,7 +13259,7 @@
     "name": "pupnp",
     "description": "PUPnP is the Portable SDK for UPnP devices.",
     "homepage": "https://pupnp.github.io/pupnp/",
-    "version": "1.18.5",
+    "version": "2.0.2",
     "license": "BSD-3",
     "compatibility": "all"
   },
@@ -13339,7 +13371,7 @@
     "name": "py3_argcomplete",
     "description": "Argcomplete provides bash completion for argparse.",
     "homepage": "https://kislyuk.github.io/argcomplete/",
-    "version": "3.6.3",
+    "version": "3.7.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -13387,7 +13419,7 @@
     "name": "py3_azure_cli",
     "description": "Next generation multi-platform command line experience for Azure.",
     "homepage": "https://pypi.org/project/azure-cli/",
-    "version": "2.87.0",
+    "version": "2.88.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13427,7 +13459,7 @@
     "name": "py3_botocore",
     "description": "Low-level, data-driven core of boto 3.",
     "homepage": "https://github.com/boto/botocore",
-    "version": "1.43.34",
+    "version": "1.43.46",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -13443,7 +13475,7 @@
     "name": "py3_build",
     "description": "Python build is a simple, correct PEP 517 build frontend.",
     "homepage": "https://pypa-build.readthedocs.io/",
-    "version": "1.5.0",
+    "version": "1.5.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13507,7 +13539,7 @@
     "name": "py3_click",
     "description": "Click is a simple wrapper around optparse for powerful command line utilities.",
     "homepage": "https://click.palletsprojects.com",
-    "version": "8.4.1",
+    "version": "8.4.2",
     "license": "BSD-3",
     "compatibility": "all"
   },
@@ -13563,7 +13595,7 @@
     "name": "py3_cython",
     "description": "The Cython language makes writing C extensions for the Python language as easy as Python itself.",
     "homepage": "https://cython.org/",
-    "version": "3.2.5",
+    "version": "3.2.8",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -13707,7 +13739,7 @@
     "name": "py3_filelock",
     "description": "FileLock implements a platform independent file lock in Python.",
     "homepage": "https://github.com/tox-dev/filelock",
-    "version": "3.29.4",
+    "version": "3.29.7",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13771,7 +13803,7 @@
     "name": "py3_greenlet",
     "description": "Greenlet provides lightweight in-process concurrent programming.",
     "homepage": "https://greenlet.readthedocs.io/",
-    "version": "3.5.2",
+    "version": "3.5.3",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13779,7 +13811,7 @@
     "name": "py3_gvdb",
     "description": "Python client for GVDB distributed vector database",
     "homepage": "https://github.com/JonathanBerhe/gvdb",
-    "version": "0.36.0",
+    "version": "0.38.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -13803,7 +13835,7 @@
     "name": "py3_hatchling",
     "description": "The extensible, standards compliant build backend used by Hatch.",
     "homepage": "https://hatch.pypa.io/latest",
-    "version": "1.30.1",
+    "version": "1.31.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14075,7 +14107,7 @@
     "name": "py3_mercurial",
     "description": "Mercurial is a free, distributed source control management tool. It efficiently handles projects of any size and offers an easy and intuitive interface.",
     "homepage": "https://www.mercurial-scm.org/",
-    "version": "7.2.2",
+    "version": "7.2.3",
     "license": "GPL-2+",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -14083,7 +14115,7 @@
     "name": "py3_meson",
     "description": "Meson is an open source build system meant to be both extremely fast and user friendly.",
     "homepage": "https://mesonbuild.com/",
-    "version": "1.11.1",
+    "version": "1.11.2",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -14115,7 +14147,7 @@
     "name": "py3_mutagen",
     "description": "Python module for handling audio metadata",
     "homepage": "https://mutagen.readthedocs.io/",
-    "version": "1.47.0",
+    "version": "1.48.1",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -14123,7 +14155,7 @@
     "name": "py3_nh3",
     "description": "Ammonia HTML sanitizer Python binding",
     "homepage": "https://pypi.org/project/nh3/",
-    "version": "0.3.5",
+    "version": "0.3.6",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14139,7 +14171,7 @@
     "name": "py3_nuitka",
     "description": "Nuitka is a Python to binary compiler written in Python. You feed it your Python app, it does a lot of clever things, and spits out an executable or extension module.",
     "homepage": "https://nuitka.net/",
-    "version": "4.1.2",
+    "version": "4.1.3",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -14147,7 +14179,7 @@
     "name": "py3_numpy",
     "description": "NumPy is the fundamental package for array computing with Python.",
     "homepage": "https://numpy.org/",
-    "version": "2.4.6",
+    "version": "2.5.1",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -14155,7 +14187,7 @@
     "name": "py3_oci",
     "description": "Oracle Cloud Infrastructure Python SDK",
     "homepage": "https://oracle-cloud-infrastructure-python-sdk.readthedocs.io/",
-    "version": "2.179.0",
+    "version": "2.181.1",
     "license": "UPL-1.0 or Apache-2.0",
     "compatibility": "all"
   },
@@ -14163,7 +14195,7 @@
     "name": "py3_oci_cli",
     "description": "Command Line Interface for Oracle Cloud Infrastructure",
     "homepage": "https://github.com/oracle/oci-cli/",
-    "version": "3.87.0",
+    "version": "3.89.1",
     "license": "UPL-1.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -14251,7 +14283,7 @@
     "name": "py3_pillow",
     "description": "Pillow is a Python Imaging Library (PIL).",
     "homepage": "https://python-pillow.org/",
-    "version": "12.2.0",
+    "version": "12.3.0",
     "license": "HPND",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -14267,7 +14299,7 @@
     "name": "py3_pipdeptree",
     "description": "Displays a dependency tree of the installed Python packages.",
     "homepage": "https://github.com/naiquevin/pipdeptree/",
-    "version": "3.1.0",
+    "version": "3.1.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14339,7 +14371,7 @@
     "name": "py3_pyasn1",
     "description": "PyASN.1 is a generic ASN.1 library for Python",
     "homepage": "https://github.com/etingof/pyasn1/",
-    "version": "0.6.3",
+    "version": "0.6.4",
     "license": "BSD-2",
     "compatibility": "all"
   },
@@ -14451,7 +14483,7 @@
     "name": "py3_pypdf",
     "description": "A pure-python PDF library capable of splitting, merging, cropping, and transforming the pages of PDF files.",
     "homepage": "https://github.com/py-pdf/pypdf",
-    "version": "6.13.3",
+    "version": "6.14.2",
     "license": "BSD-3-Clause",
     "compatibility": "all"
   },
@@ -14467,7 +14499,7 @@
     "name": "py3_pyright",
     "description": "Static Type Checker for Python",
     "homepage": "https://github.com/microsoft/pyright",
-    "version": "1.1.410",
+    "version": "1.1.411",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14507,7 +14539,7 @@
     "name": "py3_python_discovery",
     "description": "Python interpreter discovery",
     "homepage": "https://github.com/tox-dev/python-discovery",
-    "version": "1.4.2",
+    "version": "1.4.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14635,7 +14667,7 @@
     "name": "py3_rpds_py",
     "description": "Python bindings to the Rust rpds crate for persistent data structures",
     "homepage": "https://github.com/crate-py/rpds",
-    "version": "2026.5.1",
+    "version": "2026.6.3",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14651,7 +14683,7 @@
     "name": "py3_ruff",
     "description": "An extremely fast Python linter, written in Rust.",
     "homepage": "https://docs.astral.sh/ruff",
-    "version": "0.15.18",
+    "version": "0.15.21",
     "license": "GPL-2.0",
     "compatibility": "all"
   },
@@ -14659,7 +14691,7 @@
     "name": "py3_s3transfer",
     "description": "An Amazon S3 Transfer Manager",
     "homepage": "https://github.com/boto/s3transfer",
-    "version": "0.19.0",
+    "version": "0.19.1",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -14691,7 +14723,7 @@
     "name": "py3_setuptools",
     "description": "Setuptools is the python build system from the Python Packaging Authority.",
     "homepage": "https://setuptools.readthedocs.io/",
-    "version": "82.0.1",
+    "version": "83.0.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14699,7 +14731,7 @@
     "name": "py3_setuptools_rust",
     "description": "Setuptools-rust provides rust support for setuptools.",
     "homepage": "https://github.com/PyO3/setuptools-rust",
-    "version": "1.12.1",
+    "version": "1.13.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14707,7 +14739,7 @@
     "name": "py3_setuptools_scm",
     "description": "Setuptools-scm is the blessed package to manage your versions by scm tags.",
     "homepage": "https://github.com/pypa/setuptools_scm",
-    "version": "10.0.5",
+    "version": "10.2.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14883,7 +14915,7 @@
     "name": "py3_tox",
     "description": "Command line driven CI frontend and development task automation tool.",
     "homepage": "https://tox.readthedocs.io/",
-    "version": "4.55.1",
+    "version": "4.56.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14907,7 +14939,7 @@
     "name": "py3_typing_extensions",
     "description": "Backported and Experimental Type Hints for Python 3.5+",
     "homepage": "https://github.com/python/typing/tree/master/typing_extensions",
-    "version": "4.15.0",
+    "version": "4.16.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14923,7 +14955,7 @@
     "name": "py3_tzlocal",
     "description": "Tzlocal provides tzinfo object for the local timezone.",
     "homepage": "https://github.com/regebro/tzlocal/",
-    "version": "5.4.3",
+    "version": "5.4.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14955,7 +14987,7 @@
     "name": "py3_urwid",
     "description": "Urwid is a full-featured console user interface library.",
     "homepage": "http://urwid.org/",
-    "version": "4.0.2",
+    "version": "4.0.3",
     "license": "LGPL-2.1",
     "compatibility": "all"
   },
@@ -14963,7 +14995,7 @@
     "name": "py3_virtualenv",
     "description": "Virtualenv is a Virtual Environment builder for Python.",
     "homepage": "https://virtualenv.pypa.io/",
-    "version": "21.5.1",
+    "version": "21.6.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14971,7 +15003,7 @@
     "name": "py3_wakeonlan",
     "description": "A small python module for wake on lan.",
     "homepage": "https://pywakeonlan.readthedocs.io/en/latest/",
-    "version": "3.3.0",
+    "version": "4.0.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14979,7 +15011,7 @@
     "name": "py3_wcwidth",
     "description": "WCWidth measures the displayed width of unicode strings in a terminal.",
     "homepage": "https://github.com/jquast/wcwidth/",
-    "version": "0.8.1",
+    "version": "0.8.2",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14987,7 +15019,7 @@
     "name": "py3_websockets",
     "description": " Library for building WebSocket servers and clients in Python",
     "homepage": "https://websockets.readthedocs.io/",
-    "version": "16.0",
+    "version": "16.1",
     "license": "BSD-3",
     "compatibility": "all"
   },
@@ -15171,7 +15203,7 @@
     "name": "qortal",
     "description": "Data storage, communications, web hosting, decentralized trading, complete infrastructure for the future blockchain based Internet",
     "homepage": "https://qortal.org/",
-    "version": "6.1.5",
+    "version": "6.1.9",
     "license": "GPL-3",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -15403,7 +15435,7 @@
     "name": "quazip",
     "description": "Qt/C++ wrapper over minizip",
     "homepage": "https://github.com/stachenov/quazip",
-    "version": "1.7.1",
+    "version": "1.7.2",
     "license": "LGPL-2.1",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -15411,7 +15443,7 @@
     "name": "r",
     "description": "R is a free software environment for statistical computing and graphics.",
     "homepage": "https://www.r-project.org/",
-    "version": "4.6.0",
+    "version": "4.6.1",
     "license": "GPL-2 or GPL-3 and LGPL-2.1",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -15427,7 +15459,7 @@
     "name": "ragel",
     "description": "Compiles finite state machines from regular languages into executable C, C++, Objective-C, or D code.",
     "homepage": "https://www.colm.net/open-source/ragel/",
-    "version": "6.10-1",
+    "version": "7.1.0-pre.1",
     "license": "GPL-2.0-only",
     "compatibility": "all"
   },
@@ -15475,7 +15507,7 @@
     "name": "rclone",
     "description": "Rclone is a command-line program to manage files on cloud storage.",
     "homepage": "https://rclone.org/",
-    "version": "1.74.3",
+    "version": "1.74.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15643,7 +15675,7 @@
     "name": "rio",
     "description": "A hardware-accelerated GPU terminal emulator focusing to run in desktops and browsers.",
     "homepage": "https://raphamorim.io/rio",
-    "version": "0.4.7",
+    "version": "0.4.10",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -15707,7 +15739,7 @@
     "name": "rqlite",
     "description": "The lightweight, user-friendly, distributed relational database built on SQLite.",
     "homepage": "https://rqlite.io/",
-    "version": "10.2.0",
+    "version": "10.2.7",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -15835,7 +15867,7 @@
     "name": "ruby_bundler",
     "description": "Bundler manages an application's dependencies through its entire life, across many machines, systematically and repeatably.",
     "homepage": "https://bundler.io",
-    "version": "4.0.14",
+    "version": "4.0.16",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -15851,7 +15883,7 @@
     "name": "ruby_cgi",
     "description": "Support for the common gateway interface protocol.",
     "homepage": "https://github.com/ruby/cgi",
-    "version": "0.5.1",
+    "version": "0.5.2",
     "license": "Ruby",
     "compatibility": "all"
   },
@@ -15995,7 +16027,7 @@
     "name": "ruby_error_highlight",
     "description": "The gem enhances exception#message by adding a short explanation where the exception is raised.",
     "homepage": "https://github.com/ruby/error_highlight",
-    "version": "0.7.1",
+    "version": "0.7.2",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -16147,7 +16179,7 @@
     "name": "ruby_json",
     "description": "This is a JSON implementation as a Ruby extension in C.",
     "homepage": "https://flori.github.io/json",
-    "version": "2.19.9",
+    "version": "2.20.0",
     "license": "Ruby",
     "compatibility": "all"
   },
@@ -16171,7 +16203,7 @@
     "name": "ruby_language_server_protocol",
     "description": "A Language Server Protocol SDK.",
     "homepage": "https://github.com/mtsmfm/language_server-protocol-ruby",
-    "version": "3.17.0.5",
+    "version": "3.17.0.6",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -16411,7 +16443,7 @@
     "name": "ruby_pp",
     "description": "Provides a prettyprinter for ruby objects.",
     "homepage": "https://github.com/ruby/pp",
-    "version": "0.6.3",
+    "version": "0.6.4",
     "license": "Ruby",
     "compatibility": "all"
   },
@@ -16515,7 +16547,7 @@
     "name": "ruby_rdoc",
     "description": "RDoc produces HTML and command-line documentation for Ruby projects.",
     "homepage": "https://ruby.github.io/rdoc",
-    "version": "7.2.0",
+    "version": "8.0.0",
     "license": "Ruby",
     "compatibility": "all"
   },
@@ -16611,7 +16643,7 @@
     "name": "ruby_rubocop",
     "description": "A Ruby static code analyzer and formatter",
     "homepage": "https://rubocop.org",
-    "version": "1.88.0",
+    "version": "1.88.2",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -16619,7 +16651,7 @@
     "name": "ruby_rubocop_ast",
     "description": "Contains the classes needed by RuboCop to deal with Ruby's AST.",
     "homepage": "https://github.com/rubocop/rubocop-ast",
-    "version": "1.49.1",
+    "version": "1.50.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -16659,7 +16691,7 @@
     "name": "ruby_rubygems_update",
     "description": "RubyGems is a package management framework for Ruby.",
     "homepage": "https://github.com/rubygems/rubygems",
-    "version": "4.0.14",
+    "version": "4.0.16",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -16723,7 +16755,7 @@
     "name": "ruby_solargraph",
     "description": "IDE tools for code completion, inline documentation, and static analysis.",
     "homepage": "https://solargraph.org",
-    "version": "0.60.1",
+    "version": "0.60.2",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -16803,7 +16835,7 @@
     "name": "ruby_tilt",
     "description": "Generic interface to multiple Ruby template engines.",
     "homepage": "https://github.com/jeremyevans/tilt",
-    "version": "2.7.0",
+    "version": "2.8.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -16995,7 +17027,7 @@
     "name": "rust",
     "description": "Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.",
     "homepage": "https://www.rust-lang.org/",
-    "version": "1.96.0",
+    "version": "1.97.0",
     "license": "Apache-2.0 and MIT",
     "compatibility": "all"
   },
@@ -17123,7 +17155,7 @@
     "name": "sccache",
     "description": "Shared Compilation Cache",
     "homepage": "https://github.com/mozilla/sccache/",
-    "version": "0.15.0",
+    "version": "0.16.0",
     "license": "Apache-2.0, Apache-2.0-with-LLVM-exceptions, BSD, BSD-2, Boost-1.0, ISC, MIT, Unlicense and ZLIB",
     "compatibility": "all"
   },
@@ -17147,7 +17179,7 @@
     "name": "scite",
     "description": "A free source code editing component for Win32, GTK+, and OS X",
     "homepage": "https://www.scintilla.org/",
-    "version": "5.6.3",
+    "version": "5.6.4",
     "license": "HPND and MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -17227,7 +17259,7 @@
     "name": "sdl3",
     "description": "A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard Version 3",
     "homepage": "https://www.libsdl.org",
-    "version": "3.4.10",
+    "version": "3.4.12",
     "license": "zlib",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -17371,7 +17403,7 @@
     "name": "shared_mime_info",
     "description": "The shared-mime-info package contains the core database of common types and the update-mime-database command used to extend it.",
     "homepage": "https://freedesktop.org/wiki/Software/shared-mime-info/",
-    "version": "2.4-1",
+    "version": "2.5.1",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -17467,9 +17499,17 @@
     "name": "signal_desktop",
     "description": "Private Messenger for Windows, Mac, and Linux",
     "homepage": "https://signal.org/",
-    "version": "8.14.0",
+    "version": "8.18.0",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
+  },
+  {
+    "name": "simde",
+    "description": "Implementations of SIMD instruction sets for systems which don't natively support them.",
+    "homepage": "https://simd-everywhere.github.io/blog/",
+    "version": "0.8.2",
+    "license": "MIT",
+    "compatibility": "aarch64 armv7l x86_64"
   },
   {
     "name": "sl",
@@ -17539,7 +17579,7 @@
     "name": "smbclient",
     "description": "Tools to access a servers filespace and printers via SMB",
     "homepage": "https://www.samba.org",
-    "version": "4.24.3",
+    "version": "4.24.4",
     "license": "GPLv3",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -17747,7 +17787,7 @@
     "name": "spirv_headers",
     "description": "SPIR-V Headers",
     "homepage": "https://github.com/KhronosGroup/SPIRV-Headers",
-    "version": "1.4.350.0",
+    "version": "1.4.350.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -17755,7 +17795,7 @@
     "name": "spirv_llvm_translator",
     "description": "Tool and a library for bi-directional translation between SPIR-V and LLVM IR",
     "homepage": "https://github.com/KhronosGroup/SPIRV-LLVM-Translator",
-    "version": "22.1.3",
+    "version": "22.1.4",
     "license": "Apache-2.0 WITH LLVM-exception",
     "compatibility": "all"
   },
@@ -17771,7 +17811,7 @@
     "name": "sqlite",
     "description": "SQLite is a self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine.",
     "homepage": "https://www.sqlite.org/",
-    "version": "3.53.2",
+    "version": "3.53.3",
     "license": "public-domain",
     "compatibility": "all"
   },
@@ -17787,7 +17827,7 @@
     "name": "sqlmap",
     "description": "sqlmap is an open source penetration testing tool that automates the process of detecting and exploiting SQL injection flaws and taking over of database servers.",
     "homepage": "https://sqlmap.org/",
-    "version": "1.10.6",
+    "version": "1.10.7",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -17893,7 +17933,7 @@
     "homepage": "https://oguzhaninan.github.io/Stacer-Web/",
     "version": "1.1.0",
     "license": "GPL-3",
-    "compatibility": "x86_64"
+    "compatibility": "aarch64 armv7l x86_64"
   },
   {
     "name": "stack",
@@ -17907,7 +17947,7 @@
     "name": "starship",
     "description": "Cross-shell prompt for astronauts",
     "homepage": "https://starship.rs",
-    "version": "1.25.1",
+    "version": "1.26.0",
     "license": "ISC",
     "compatibility": "all"
   },
@@ -17939,9 +17979,9 @@
     "name": "strace",
     "description": "strace is a diagnostic, debugging and instructional userspace utility for Linux.",
     "homepage": "https://strace.io/",
-    "version": "6.19",
+    "version": "7.1",
     "license": "BSD",
-    "compatibility": "all"
+    "compatibility": "aarch64 armv7l x86_64"
   },
   {
     "name": "stressng",
@@ -17987,7 +18027,7 @@
     "name": "sudo_rs",
     "description": "A safety oriented and memory safe implementation of sudo and su written in Rust.",
     "homepage": "https://github.com/trifectatechfoundation/sudo-rs",
-    "version": "0.2.13",
+    "version": "0.2.14",
     "license": "Apache-2.0 AND MIT",
     "compatibility": "all"
   },
@@ -18037,7 +18077,7 @@
     "homepage": "https://www.swig.org/",
     "version": "4.4.1",
     "license": "GPL-3, BSD and BSD-2",
-    "compatibility": "aarch64 armv7l x86_64"
+    "compatibility": "all"
   },
   {
     "name": "swig1",
@@ -18075,7 +18115,7 @@
     "name": "syncthing",
     "description": "An application that lets you synchronize your files across multiple devices",
     "homepage": "https://github.com/syncthing/syncthing",
-    "version": "2.1.1",
+    "version": "2.1.2",
     "license": "Apache-2.0, BSD, BSD-2, ISC, MIT, MPL-2.0 and Unlicense",
     "compatibility": "all"
   },
@@ -18163,7 +18203,7 @@
     "name": "tauri_cli",
     "description": "Build smaller, faster, and more secure desktop and mobile applications with a web frontend.",
     "homepage": "https://tauri.app/",
-    "version": "2.11.2",
+    "version": "2.11.4",
     "license": "Apache-2.0, MIT",
     "compatibility": "x86_64"
   },
@@ -18291,7 +18331,7 @@
     "name": "terminus",
     "description": "The Pantheon CLI — a standalone utility for performing operations on the Pantheon Platform",
     "homepage": "https://github.com/pantheon-systems/terminus",
-    "version": "4.3.1",
+    "version": "4.3.2",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -18307,7 +18347,7 @@
     "name": "terraform",
     "description": "Terraform is a tool for building, changing, and combining infrastructure safely and efficiently.",
     "homepage": "https://www.terraform.io/",
-    "version": "1.15.6",
+    "version": "1.15.8",
     "license": "Apache-2.0, BSD-2, BSD-4, ECL-2.0, imagemagick, ISC, JSON, MIT, MIT-with-advertising, MPL-2.0 and unicode",
     "compatibility": "all"
   },
@@ -18531,7 +18571,7 @@
     "name": "tmux",
     "description": "tmux is a terminal multiplexer",
     "homepage": "https://tmux.github.io/",
-    "version": "3.6b",
+    "version": "3.7b",
     "license": "ISC",
     "compatibility": "all"
   },
@@ -18611,7 +18651,7 @@
     "name": "tree_sitter",
     "description": "An incremental parsing system for programming tools",
     "homepage": "https://github.com/tree-sitter/tree-sitter",
-    "version": "0.26.9",
+    "version": "0.26.10",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -18867,7 +18907,7 @@
     "name": "upower",
     "description": "Abstraction for enumerating power devices, listening to device events and querying history and statistics",
     "homepage": "https://upower.freedesktop.org",
-    "version": "1.91.2",
+    "version": "1.91.3",
     "license": "GPL-2",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -18971,7 +19011,7 @@
     "name": "uv",
     "description": "An extremely fast Python package and project manager, written in Rust.",
     "homepage": "https://docs.astral.sh/uv/",
-    "version": "0.11.21",
+    "version": "0.11.28",
     "license": "Apache-2.0, MIT",
     "compatibility": "all"
   },
@@ -18987,7 +19027,7 @@
     "name": "v2ray",
     "description": "A platform for building proxies to bypass network restrictions.",
     "homepage": "www.v2fly.org",
-    "version": "5.49.0",
+    "version": "5.51.2",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -19043,7 +19083,7 @@
     "name": "vapoursynth",
     "description": "A video processing framework with the future in mind",
     "homepage": "http://www.vapoursynth.com/",
-    "version": "76",
+    "version": "77",
     "license": "LGPL-2.1",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -19139,7 +19179,7 @@
     "name": "vivaldi",
     "description": "Vivaldi is a new browser that blocks unwanted ads, protects you from trackers, and puts you in control with unique built-in features.",
     "homepage": "https://vivaldi.com/",
-    "version": "8.0.4033.46",
+    "version": "8.1.4087.48",
     "license": "Vivaldi",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -19163,7 +19203,7 @@
     "name": "vmaf",
     "description": "Perceptual video quality assessment algorithm based on multi-method fusion",
     "homepage": "https://github.com/Netflix/vmaf",
-    "version": "3.1.0",
+    "version": "3.2.0",
     "license": "BSD-2",
     "compatibility": "all"
   },
@@ -19227,7 +19267,7 @@
     "name": "vulkan_headers",
     "description": "Vulkan header files",
     "homepage": "https://www.khronos.org/vulkan",
-    "version": "1.4.354",
+    "version": "1.4.356",
     "license": "Apache-2.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -19235,7 +19275,7 @@
     "name": "vulkan_icd_loader",
     "description": "Vulkan Installable Client Driver ICD Loader",
     "homepage": "https://github.com/KhronosGroup/Vulkan-Loader",
-    "version": "1.4.354",
+    "version": "1.4.356",
     "license": "Apache-2.0",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -19243,7 +19283,7 @@
     "name": "vulkan_tools",
     "description": "Vulkan Utilities and Tools",
     "homepage": "https://github.com/KhronosGroup/Vulkan-Tools",
-    "version": "1.4.354",
+    "version": "1.4.356",
     "license": "custom",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -19411,7 +19451,7 @@
     "name": "weechat",
     "description": "WeeChat is a fast, light and extensible chat client.",
     "homepage": "https://weechat.org/",
-    "version": "4.9.2",
+    "version": "4.9.3",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -19507,7 +19547,7 @@
     "name": "wireshark",
     "description": "Network traffic and protocol analyzer/sniffer",
     "homepage": "https://www.wireshark.org/",
-    "version": "4.6.6",
+    "version": "4.6.7",
     "license": "GPL-2",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -19539,7 +19579,7 @@
     "name": "wlroots",
     "description": "Modular Wayland compositor library",
     "homepage": "https://gitlab.freedesktop.org/wlroots/wlroots",
-    "version": "0.20.1",
+    "version": "0.20.2",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -19611,7 +19651,7 @@
     "name": "wxwidgets",
     "description": "wxWidgets is a C++ library that lets developers create applications for Windows, macOS, Linux and other platforms with a single code base.",
     "homepage": "https://www.wxwidgets.org/",
-    "version": "3.3.2",
+    "version": "3.3.3",
     "license": "GPL-2",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -19867,7 +19907,7 @@
     "name": "xkeyboard_config",
     "description": "The non-arch keyboard configuration database for X Window.",
     "homepage": "https://www.freedesktop.org/wiki/Software/XKeyboardConfig/",
-    "version": "2.47-1",
+    "version": "2.48",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -19981,13 +20021,13 @@
     "homepage": "https://www.x.org/wiki/",
     "version": "2025.1",
     "license": "MIT",
-    "compatibility": "aarch64 armv7l x86_64"
+    "compatibility": "all"
   },
   {
     "name": "xorg_server",
     "description": "The Xorg Server is the core of the X Window system.",
     "homepage": "https://gitlab.freedesktop.org/xorg/xserver",
-    "version": "21.1.23",
+    "version": "21.1.24",
     "license": "BSD-3, MIT, BSD-4, MIT-with-advertising, ISC and custom",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -20067,7 +20107,7 @@
     "name": "xrdb",
     "description": "xrdb - X server resource database utility",
     "homepage": "https://x.org/wiki/",
-    "version": "1.2.2",
+    "version": "1.2.3",
     "license": "custom",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -20115,7 +20155,7 @@
     "name": "xwayland",
     "description": "X server configured to work with weston or sommelier",
     "homepage": "https://x.org/wiki/",
-    "version": "24.1.12",
+    "version": "24.1.13",
     "license": "MIT-with-advertising, ISC, BSD-3, BSD and custom",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -20155,7 +20195,7 @@
     "name": "yad",
     "description": "display graphical dialogs from shell scripts or command line.",
     "homepage": "https://github.com/v1cont/yad",
-    "version": "14.2",
+    "version": "15.0",
     "license": "GPL-3+",
     "compatibility": "aarch64 armv7l x86_64"
   },
@@ -20251,7 +20291,7 @@
     "name": "yt_dlp",
     "description": "A fork of youtube-dl with additional features and patches",
     "homepage": "https://github.com/yt-dlp/yt-dlp",
-    "version": "2026.6.9",
+    "version": "2026.7.4",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -20315,7 +20355,7 @@
     "name": "zed",
     "description": "Zed is a high-performance, multiplayer code editor",
     "homepage": "https://zed.dev/",
-    "version": "1.6.3",
+    "version": "1.10.2",
     "license": "GPL-3, AGPL-3, Apache-2.0",
     "compatibility": "x86_64"
   },
@@ -20347,7 +20387,7 @@
     "name": "zig",
     "description": "Programming language designed for robustness, optimality, and clarity",
     "homepage": "https://ziglang.org/",
-    "version": "0.15.2",
+    "version": "0.16.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -20419,7 +20459,7 @@
     "name": "zoneinfo",
     "description": "Code and data that represent the history of local time for many representative locations around the globe.",
     "homepage": "https://www.iana.org/time-zones",
-    "version": "2026b",
+    "version": "2026c",
     "license": "public-domain",
     "compatibility": "all"
   },
@@ -20435,7 +20475,7 @@
     "name": "zotero",
     "description": "Zotero is a free, easy-to-use tool to help you collect, organize, annotate, cite, and share research.",
     "homepage": "https://www.zotero.org/",
-    "version": "9.0.4",
+    "version": "9.0.6",
     "license": "GPL-3",
     "compatibility": "x86_64"
   },
@@ -20443,7 +20483,7 @@
     "name": "zoxide",
     "description": "zoxide is a smarter cd command, inspired by z and autojump.",
     "homepage": "https://github.com/ajeetdsouza/zoxide",
-    "version": "0.9.9",
+    "version": "0.10.0",
     "license": "MIT",
     "compatibility": "aarch64 armv7l x86_64"
   },

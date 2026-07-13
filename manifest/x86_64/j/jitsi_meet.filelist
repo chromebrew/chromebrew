@@ -1,4 +1,4 @@
-# Total size: 320002852
+# Total size: 330268709
 /usr/local/bin/jitsi
 /usr/local/share/applications/jitsi-meet.desktop
 /usr/local/share/icons/hicolor/512x512/apps/jitsi-meet.png
@@ -14,12 +14,18 @@
 /usr/local/share/jitsi/lib/libEGL.so
 /usr/local/share/jitsi/lib/libGLESv2.so
 /usr/local/share/jitsi/lib/libXss.so.1
+/usr/local/share/jitsi/lib/libXss.so.1.0.0
 /usr/local/share/jitsi/lib/libXtst.so.6
-/usr/local/share/jitsi/lib/libappindicator.so.1
+/usr/local/share/jitsi/lib/libXtst.so.6.1.0
+/usr/local/share/jitsi/lib/libappindicator3.so.1
+/usr/local/share/jitsi/lib/libappindicator3.so.1.0.0
 /usr/local/share/jitsi/lib/libffmpeg.so
 /usr/local/share/jitsi/lib/libgconf-2.so.4
-/usr/local/share/jitsi/lib/libindicator.so.7
+/usr/local/share/jitsi/lib/libgconf-2.so.4.1.5
+/usr/local/share/jitsi/lib/libindicator3.so.7
+/usr/local/share/jitsi/lib/libindicator3.so.7.0.0
 /usr/local/share/jitsi/lib/libnotify.so.4
+/usr/local/share/jitsi/lib/libnotify.so.4.0.0
 /usr/local/share/jitsi/lib/libvk_swiftshader.so
 /usr/local/share/jitsi/lib/libvulkan.so.1
 /usr/local/share/jitsi/locales/af.pak

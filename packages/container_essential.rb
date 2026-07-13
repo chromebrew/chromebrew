@@ -3,7 +3,7 @@ require 'package'
 class Container_essential < Package
   description 'A collection of extra tools and packages needed in the docker build containers.'
   homepage 'https://github.com/chromebrew/chromebrew'
-  version '1.1'
+  version '1.2'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -28,6 +28,9 @@ class Container_essential < Package
     depends_on 'which'
   end
   depends_on 'uutils_coreutils' unless ARCH == 'i686'
+
+  # Add llvm_dev so it is pre-installed.
+  depends_on 'llvm_dev'
 
   # Add pax_utils (gives us lddtree)
   depends_on 'pax_utils'

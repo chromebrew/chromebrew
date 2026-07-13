@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Libjxl < CMake
   description 'JPEG XL image format reference implementation'
   homepage 'https://jpeg.org/jpegxl/'
-  version '0.11.2'
+  version '0.12.0'
   license 'BSD'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/libjxl/libjxl.git'
@@ -14,9 +14,9 @@ class Libjxl < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b6d207addea3c07358cf9a0baeb1e2bbf41dc6934f911d287b216b3cf32e522d',
-     armv7l: 'b6d207addea3c07358cf9a0baeb1e2bbf41dc6934f911d287b216b3cf32e522d',
-     x86_64: '30d633e8a47f21008c4fc3011dbd88cbf540e9aa60122aa360365bd8282461c3'
+    aarch64: '6cbd22376c49d3367dd8851777b5ac40c05ffa1419d036ebe63a8b6b6700beb9',
+     armv7l: '6cbd22376c49d3367dd8851777b5ac40c05ffa1419d036ebe63a8b6b6700beb9',
+     x86_64: '9476194524d082fc719658cf716db3a8a2d1d0eab9f53174e2e65bac56dcbe8f'
   })
 
   depends_on 'at_spi2_core' => :build
@@ -29,11 +29,13 @@ class Libjxl < CMake
   depends_on 'giflib' => :executable
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'harfbuzz' => :build
   depends_on 'highway' => :library
   depends_on 'json_glib' => :build
   depends_on 'libjpeg_turbo' => :executable
   depends_on 'libpng' => :executable
+  depends_on 'libxslt' => :build
   depends_on 'openexr' => :executable
   depends_on 'pango' => :build
   depends_on 'py3_asciidoc' => :build

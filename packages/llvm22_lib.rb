@@ -1,22 +1,22 @@
 require 'package'
-Package.load_package("#{__dir__}/llvm22_build.rb")
 
 class Llvm22_lib < Package
+  llvm_build_obj = Package.load_package("#{__dir__}/#{CREW_LLVM_VER}_build.rb")
   description 'LibLLVM and llvm-strip'
-  homepage Llvm22_build.homepage
-  version '22.1.7'
+  homepage llvm_build_obj.homepage
+  version llvm_build_obj.version
   # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
-  puts "#{self} version differs from llvm version #{Llvm22_build.version}".orange if version != Llvm22_build.version && !ENV['NESTED_CI']
-  license Llvm22_build.license
+  puts "#{self} version differs from llvm version #{llvm_build_obj.version}".orange if version != llvm_build_obj.version && !ENV['NESTED_CI']
+  license llvm_build_obj.license
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '896b569da3380941cc156a5ea9fea0d51fb266870598ae1a3c41f5ad375b7001',
-     armv7l: '896b569da3380941cc156a5ea9fea0d51fb266870598ae1a3c41f5ad375b7001',
-       i686: 'fa4fa09f25d766239103afb90a18aa8150fe7747cbc74bb6f10859d40c061331',
-     x86_64: '310ce39dcb141027e991597553a4c6d04d8cda01f0763a2bcb29124943274ecc'
+    aarch64: '1eab1fe14ca13f5d48662b38b4cb7b55a8327f3437871a0eb0daf9686aecafab',
+     armv7l: '1eab1fe14ca13f5d48662b38b4cb7b55a8327f3437871a0eb0daf9686aecafab',
+       i686: '9ecb9b34fa3dad8fe33b49e437197f9aea821304a5d5ceffdd1275c68bbb0c81',
+     x86_64: '785628387ade052fdf015203497355131c0607b0fa4d077678cd449e25b5a6dc'
   })
 
   depends_on 'gcc_lib' => :library
@@ -35,7 +35,8 @@ class Llvm22_lib < Package
   no_strip
 
   def self.preflight
-    abort "Update #{CREW_LLVM_VER} first.".lightred if Gem::Version.new(version) < Gem::Version.new(Llvm22_build.version.split('-').first)
+    llvm_build_obj = Package.load_package("#{__dir__}/#{CREW_LLVM_VER}_build.rb")
+    abort "Update #{CREW_LLVM_VER} first.".lightred if Gem::Version.new(version) < Gem::Version.new(llvm_build_obj.version.split('-').first)
   end
 
   def self.install

@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Cage < Meson
   description 'A kiosk compositor for Wayland'
   homepage 'https://www.hjdskes.nl/projects/cage/'
-  version '0.3.0'
+  version '0.3.1'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/Hjdskes/cage.git'
@@ -11,12 +11,13 @@ class Cage < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8cd15519f33254830ea5a0dd25e3b721240e92f7a15d6de9039a9950ff92f316',
-     armv7l: '8cd15519f33254830ea5a0dd25e3b721240e92f7a15d6de9039a9950ff92f316',
-     x86_64: '19e2760310d262b1579ba210aa917fb15961cb3cc09a2a539c6f0f7bf15d82f7'
+    aarch64: '1d7c257c140a9ce604c1d48f2e5c109919613d9e39392d8ef81f5990cd64a403',
+     armv7l: '1d7c257c140a9ce604c1d48f2e5c109919613d9e39392d8ef81f5990cd64a403',
+     x86_64: 'a29905b58d9cbbaf85872a04851ab1d28c41d7e921ca633cd29babb5882b2df3'
   })
 
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'libxkbcommon' => :executable
   depends_on 'pixman' => :build
   depends_on 'scdoc' => :build
