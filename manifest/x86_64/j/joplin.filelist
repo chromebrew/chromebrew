@@ -1,4 +1,4 @@
-# Total size: 1120547489
+# Total size: 1135391076
 /usr/local/bin/joplin
 /usr/local/share/icons/hicolor/1024x1024/apps/joplin.png
 /usr/local/share/icons/hicolor/128x128/apps/joplin.png
@@ -175,6 +175,12 @@
 /usr/local/share/joplin/resources/build/tesseract.js-core/tesseract-core-lstm.js
 /usr/local/share/joplin/resources/build/tesseract.js-core/tesseract-core-lstm.wasm
 /usr/local/share/joplin/resources/build/tesseract.js-core/tesseract-core-lstm.wasm.js
+/usr/local/share/joplin/resources/build/tesseract.js-core/tesseract-core-relaxedsimd-lstm.js
+/usr/local/share/joplin/resources/build/tesseract.js-core/tesseract-core-relaxedsimd-lstm.wasm
+/usr/local/share/joplin/resources/build/tesseract.js-core/tesseract-core-relaxedsimd-lstm.wasm.js
+/usr/local/share/joplin/resources/build/tesseract.js-core/tesseract-core-relaxedsimd.js
+/usr/local/share/joplin/resources/build/tesseract.js-core/tesseract-core-relaxedsimd.wasm
+/usr/local/share/joplin/resources/build/tesseract.js-core/tesseract-core-relaxedsimd.wasm.js
 /usr/local/share/joplin/resources/build/tesseract.js-core/tesseract-core-simd-lstm.js
 /usr/local/share/joplin/resources/build/tesseract.js-core/tesseract-core-simd-lstm.wasm
 /usr/local/share/joplin/resources/build/tesseract.js-core/tesseract-core-simd-lstm.wasm.js
