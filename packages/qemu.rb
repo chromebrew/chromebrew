@@ -11,7 +11,7 @@ class Qemu < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '2df6984d580a95836093ca25ccd234ed7c1f6f9291a2eee56bd9657dda712280'
+     x86_64: 'a2c59d29163b89c5405f5b5e42907b05e0302de76280b12d8f1fbe20eade4ca5'
   })
 
   depends_on 'alsa_lib' => :executable
