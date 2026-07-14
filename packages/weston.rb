@@ -16,7 +16,6 @@ class Weston < Meson
      x86_64: 'f81b186e5091475ed9b0d21a1437397432b2909a4e06b87734ac04315e77d9e1'
   })
 
-  depends_on 'aml' => :library
   depends_on 'cairo' => :library
   depends_on 'dbus' => :build
   depends_on 'eudev' => :library
@@ -48,7 +47,6 @@ class Weston < Meson
   depends_on 'linux_pam' => :library
   depends_on 'lua' => :library
   depends_on 'mesa' => :library
-  depends_on 'neatvnc' => :library
   depends_on 'pango' => :library
   depends_on 'pipewire' => :library
   depends_on 'pixman' => :library
@@ -70,39 +68,6 @@ class Weston < Meson
         -Dshell-ivi=false \
         -Dsystemd=false \
         -Dxwayland-path=#{CREW_PREFIX}/bin/Xwayland"
-
-  def self.patch
-    # https://gitlab.freedesktop.org/wayland/weston/-/issues/1049
-    # file = File.read 'subprojects/neatvnc.wrap'
-    # file.gsub!('revision = v0.7.0', 'revision = v0.9.5')
-    # File.write('subprojects/neatvnc.wrap', file)
-    #
-    # Install Top of Tree neatvnc and aml as deps instead, and make
-    # weston handle those versions.
-    FileUtils.rm_rf 'subprojects/neatvnc'
-    FileUtils.rm_rf 'subprojects/aml.wrap'
-    FileUtils.rm_rf 'subprojects/neatvnc.wrap'
-    File.write 'weston_vnc.patch', <<~'VNCPATCHEOF'
-      --- a/libweston/backend-vnc/meson.build	2025-09-24 09:44:35.000000000 -0400
-      +++ b/libweston/backend-vnc/meson.build	2025-09-24 10:36:09.653992251 -0400
-      @@ -3,12 +3,12 @@ if not get_option('backend-vnc')
-       endif
-
-       config_h.set('BUILD_VNC_COMPOSITOR', '1')
-      -dep_neatvnc = dependency('neatvnc', version: ['>= 0.7.0', '< 0.10.0'], required: false, fallback: ['neatvnc', 'neatvnc_dep'])
-      +dep_neatvnc = dependency('neatvnc', version: ['>= 0.7.0', '< 0.11.0'], required: false, fallback: ['neatvnc', 'neatvnc_dep'])
-       if not dep_neatvnc.found()
-       	error('VNC backend requires neatvnc which was not found. Or, you can use \'-Dbackend-vnc=false\'.')
-       endif
-
-      -dep_aml = dependency('aml', version: ['>= 0.3.0', '< 0.4.0'], required: false, fallback: ['aml', 'aml_dep'])
-      +dep_aml = dependency('aml1', version: ['>= 0.3.0', '< 1.1.0'], required: false, fallback: ['aml', 'aml_dep'])
-       if not dep_aml.found()
-       	error('VNC backend requires libaml which was not found. Or, you can use \'-Dbackend-vnc=false\'.')
-       endif
-    VNCPATCHEOF
-    system 'patch -Np1 -i weston_vnc.patch'
-  end
 
   meson_install_extras do
     File.write 'weston.ini', <<~WESTON_INI_EOF
