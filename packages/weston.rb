@@ -63,8 +63,8 @@ class Weston < Meson
   meson_options "-Dbackend-default=wayland \
         -Dbackend-drm=true \
         -Dbackend-rdp=false \
+        -Dbackend-vnc=false \
         -Dcolor-management-lcms=false \
-        -Dremoting=true \
         -Dshell-ivi=false \
         -Dsystemd=false \
         -Dxwayland-path=#{CREW_PREFIX}/bin/Xwayland"
