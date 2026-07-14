@@ -6,12 +6,11 @@ require 'buildsystems/meson'
 class Neatvnc < Meson
   description 'Fast and neat VNC server library'
   homepage 'https://github.com/any1/neatvnc'
-  version '0.10-4962e0a'
+  version '1.0.1'
   license 'ISC'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/any1/neatvnc.git'
-  # git_hashtag "v#{version}"
-  git_hashtag '4962e0af5d550b2c4fd34c79dbdca543f233d87c'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
