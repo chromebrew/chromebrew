@@ -36,4 +36,8 @@ class DownloadCommandTest < Minitest::Test
     assert(meta[:source])
     assert_equal(PackageUtils.get_sha256(pkg, build_from_source: true), Digest::SHA256.hexdigest(File.read(File.join(CREW_BREW_DIR, meta[:extract_dir], meta[:filename]))))
   end
+
+  def test_fake_download
+    assert_raises(SystemExit) { Command.download(Package.load_package('buildessential.rb')) }
+  end
 end

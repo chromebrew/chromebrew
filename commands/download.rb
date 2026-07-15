@@ -6,6 +6,8 @@ require_relative '../lib/package_utils'
 
 class Command
   def self.download(pkg, verbose: false, opt_source: false)
+    abort 'Unable to download fake package.'.lightred if pkg.is_fake?
+
     url = PackageUtils.get_url(pkg, build_from_source: opt_source)
     sha256sum = PackageUtils.get_sha256(pkg, build_from_source: opt_source)
 
