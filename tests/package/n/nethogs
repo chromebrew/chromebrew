@@ -1,0 +1,3 @@
+#!/bin/bash
+nethogs -h | head
+nethogs -V
