@@ -3,7 +3,7 @@ require 'package'
 class Newsboat < Package
   description 'Newsboat is an RSS/Atom feed reader for the text console.'
   homepage 'https://newsboat.org/'
-  version '2.43'
+  version '2.44'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/newsboat/newsboat.git'
