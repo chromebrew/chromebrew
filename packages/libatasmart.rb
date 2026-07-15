@@ -17,7 +17,10 @@ class Libatasmart < Package
      x86_64: 'dd683c2b7d97c91a9f02ffd0bfee195cf5ca0411c17b922498009e35c0203946'
   })
 
-  depends_on 'eudev' => :build
+  depends_on 'eudev' => :library
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 
   def self.build
     system './autogen.sh'
