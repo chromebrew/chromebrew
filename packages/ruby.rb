@@ -11,10 +11,10 @@ class Ruby < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b1024b79b0eb1bf0b64235985d892f5cdbea7c18f81b4bc59cdbb23c23fe8178',
-     armv7l: 'b1024b79b0eb1bf0b64235985d892f5cdbea7c18f81b4bc59cdbb23c23fe8178',
-       i686: '6f61831a5cda83b94a6e1025082f25bdac2f6fcfd8ffc108b9b5a6d8bf4bb09a',
-     x86_64: '2083d5bbd3f2970118bd5407ea5424aef20aa92d8b57abed86268f1edc76f4ec'
+    aarch64: 'a7904b8d72c12e70642c1808be45644bdc85d4221191186e048f684d9371bcb7',
+     armv7l: 'a7904b8d72c12e70642c1808be45644bdc85d4221191186e048f684d9371bcb7',
+       i686: 'e38bdec01033dd4677dbd0c51856b1a3e1f1fabf040a8c03265e5d0998754f12',
+     x86_64: 'a9c19ba1614d788d5c58612a040bf9f415d3b276705d3af8b90eeb861d1ac66f'
   })
 
   depends_on 'ca_certificates' => :logical
