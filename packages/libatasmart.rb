@@ -20,6 +20,7 @@ class Libatasmart < Package
   depends_on 'eudev' => :library
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 
   def self.build
     system './autogen.sh'
