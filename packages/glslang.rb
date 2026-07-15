@@ -14,13 +14,14 @@ class Glslang < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'dab4b0802c22ece148b53b57959ca639374d900d5bc53a1ddf9e8a9dd8fff65d',
-     armv7l: 'dab4b0802c22ece148b53b57959ca639374d900d5bc53a1ddf9e8a9dd8fff65d',
-     x86_64: '0e304ae4ef16fc9220901f5274cc22d0592c101f65631aea9e22b013e6eb9898'
+    aarch64: '958067d3c55635a6763f2f45ba33623060f7d356b4028a7c13a4eccf77b13d3a',
+     armv7l: '958067d3c55635a6763f2f45ba33623060f7d356b4028a7c13a4eccf77b13d3a',
+     x86_64: 'b2af833c2d5af15014ea65f3300b2d09b81abe29bbd6e0e201e0f6b990d2221c'
   })
 
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'spirv_headers' => :build
   depends_on 'spirv_tools' => :library
 
