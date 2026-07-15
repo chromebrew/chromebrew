@@ -11,13 +11,13 @@ class Dav1d < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '96852f722190552c9362c8cacc0450ed6e983d31f049f413191fabea83579b3e',
-     armv7l: '96852f722190552c9362c8cacc0450ed6e983d31f049f413191fabea83579b3e',
-       i686: 'bb2b93f8b16cb3c3e4f0f13152b55b9f0215be2ee3c58cf35f068dffb2cc8f54',
-     x86_64: '422fe62bb8f9dd287e1b03a96f19d788ecd868b30e535b4d1f693aee0c1066f0'
+    aarch64: 'ee952aa8dcbad8dac19aa271a1bbbcf668ce5f34bbfa644c6c0c5ebd9847a371',
+     armv7l: 'ee952aa8dcbad8dac19aa271a1bbbcf668ce5f34bbfa644c6c0c5ebd9847a371',
+       i686: 'c168826efbecb20fb3720c0affccf022a54a62896052c019a1e8d104ce81280f',
+     x86_64: '5044e342960e619bb73de7006be272f3376cc6b03d6f8e3684997fc45493c893'
   })
 
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
   depends_on 'nasm' => :build
 end
