@@ -38,7 +38,7 @@ class Ruby < Package
     # Download bundled gems version from Top of Tree. Otherwise outdated
     # compile needed gems during install can cause issues when updates
     # are attempted.
-    downloader 'https://github.com/ruby/ruby/raw/refs/heads/master/gems/bundled_gems', 'SKIP', 'gems/bundled_gems' unless version == '4.0.5'
+    downloader 'https://github.com/ruby/ruby/raw/refs/heads/master/gems/bundled_gems', 'SKIP', 'gems/bundled_gems' unless version == '4.0.6'
   end
 
   def self.build
