@@ -6,9 +6,8 @@ class Libatasmart < Package
   version '0.19'
   license 'LGPL-2.1+'
   compatibility 'all'
-  source_url 'https://git.0pointer.net/clone/libatasmart.git'
+  source_url 'https://github.com/libatasmart/libatasmart.git'
   git_hashtag "v#{version}"
-  git_branch 'master'
   binary_compression 'tar.zst'
 
   binary_sha256({

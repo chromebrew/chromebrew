@@ -4,7 +4,7 @@ require_relative '../require_gem'
 require_relative '../report_buildsystem_methods'
 
 class Autotools < Package
-  boolean_property :autotools_make_j1, :autotools_skip_configure
+  boolean_property :autotools_make_j1, :autotools_skip_configure, :autotools_skip_autoreconf
   property :autotools_build_relative_dir, :autotools_configure_options, :autotools_configure_modifications, :autotools_install_options, :autotools_pre_configure_options, :autotools_build_extras, :autotools_install_extras, :autotools_pre_make_options, :autotools_make_options
 
   def self.prebuild_config_and_report
@@ -27,8 +27,10 @@ class Autotools < Package
         elsif File.executable? './bootstrap'
           system 'NOCONFIGURE=1 ./bootstrap --no-configure || NOCONFIGURE=1 ./bootstrap'
         end
-        # This ensures the correct aclocal and automake versions are configured.
-        system 'autoreconf -fiv' if File.file?('configure.ac')
+        if !@autotools_skip_autoreconf && File.file?('configure.ac')
+          # This ensures the correct aclocal and automake versions are configured.
+          system 'autoreconf -fiv'
+        end
         abort 'configure script not found!'.lightred unless File.file?('configure')
         FileUtils.chmod('+x', 'configure')
         system 'filefix', exception: false unless @no_filefix
