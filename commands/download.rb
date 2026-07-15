@@ -6,22 +6,15 @@ require_relative '../lib/package_utils'
 
 class Command
   def self.download(pkg, verbose: false, opt_source: false)
-    test_url = PackageUtils.get_url(pkg, build_from_source: opt_source || pkg.build_from_source)
+    url = PackageUtils.get_url(pkg, build_from_source: opt_source || pkg.build_from_source)
     sha256sum = PackageUtils.get_sha256(pkg, build_from_source: opt_source || pkg.build_from_source)
 
-    # Do an early check for a missing binary package and if so rebuild.
-    if !pkg.source?(ARCH.to_sym) && pkg.superclass.to_s == 'Pip'
-      if `curl -sI #{test_url}`.lines.first.split[1] == '200' && PackageUtils.get_gitlab_pkginfo(pkg.name, pkg.version, ARCH, false, false)[:pkg_sha256] == sha256sum
-        url = test_url
-      else
-        url = 'SKIP'
-        pkg.missing_binaries = true
-      end
-    else
-      url = test_url
-    end
-
     source = pkg.source?(ARCH.to_sym)
+    # Check for a missing binary package and if so rebuild.
+    if !source && pkg.superclass.to_s == 'Pip' && !(`curl -sI #{url}`.lines.first.split[1] == '200' && PackageUtils.get_gitlab_pkginfo(pkg.name, pkg.version, ARCH, false, false)[:pkg_sha256] == sha256sum)
+      url = 'SKIP'
+      source = true
+    end
 
     uri = URI.parse url
     filename = File.basename(uri.path)

@@ -95,7 +95,6 @@ class Package
                   :in_build,
                   :in_install,
                   :in_upgrade,
-                  :missing_binaries,
                   :name
   end
 
@@ -374,7 +373,7 @@ class Package
   end
 
   def self.binary?(architecture) = !@build_from_source && @binary_sha256&.key?(architecture)
-  def self.source?(architecture) = missing_binaries ? true : !(binary?(architecture) || is_fake?)
+  def self.source?(architecture) = !(binary?(architecture) || is_fake?)
 
   def self.system(*args, **opt_args)
     crew_env_options_hash = if no_env_options?
