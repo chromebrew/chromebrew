@@ -6,10 +6,10 @@ require_relative '../lib/package_utils'
 
 class Command
   def self.download(pkg, verbose: false, opt_source: false)
-    url = PackageUtils.get_url(pkg, build_from_source: opt_source || pkg.build_from_source)
-    sha256sum = PackageUtils.get_sha256(pkg, build_from_source: opt_source || pkg.build_from_source)
+    url = PackageUtils.get_url(pkg, build_from_source: opt_source)
+    sha256sum = PackageUtils.get_sha256(pkg, build_from_source: opt_source)
 
-    source = pkg.source?(ARCH.to_sym)
+    source = pkg.source?(ARCH.to_sym) || opt_source
     # Check for a missing binary package and if so rebuild.
     if !source && pkg.superclass.to_s == 'Pip' && !(`curl -sI #{url}`.lines.first.split[1] == '200' && PackageUtils.get_gitlab_pkginfo(pkg.name, pkg.version, ARCH, false, false)[:pkg_sha256] == sha256sum)
       url = 'SKIP'
@@ -29,7 +29,7 @@ class Command
       abort "No precompiled binary or source is available for #{ARCH}.".lightred
     elsif url.casecmp?('SKIP') || (pkg.no_source_build? || pkg.gem_compile_needed?)
       puts 'Skipping source download...'
-    elsif pkg.build_from_source
+    elsif opt_source
       puts 'Downloading source...'
     elsif !source
       puts 'Precompiled binary available, downloading...'
