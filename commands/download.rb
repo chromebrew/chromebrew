@@ -136,20 +136,12 @@ class Command
         # Download via git
         FileUtils.mkdir_p extract_dir
         Dir.chdir extract_dir do
-          if pkg.git_branch.to_s.empty?
-            system 'git init'
-            system 'git config advice.detachedHead false'
-            system 'git config init.defaultBranch master'
-            system "git remote add origin #{pkg.source_url}", exception: true
-            system "git fetch #{'--depth 1' unless pkg.git_clone_deep?} origin #{pkg.git_hashtag}", exception: true
-            system 'git checkout FETCH_HEAD'
-          else
-            # Leave a message because this step can be slow.
-            puts 'Downloading src from a git branch. This may take a while...'
-            system "git clone --branch #{pkg.git_branch} --single-branch #{pkg.source_url} tmpdir", exception: true
-            system 'mv tmpdir/.git . && rm -rf tmpdir'
-            system "git reset --hard #{pkg.git_hashtag}", exception: true
-          end
+          system 'git init'
+          system 'git config advice.detachedHead false'
+          system 'git config init.defaultBranch master'
+          system "git remote add origin #{pkg.source_url}", exception: true
+          system "git fetch #{'--depth 1' unless pkg.git_clone_deep?} origin #{pkg.git_hashtag}", exception: true
+          system 'git checkout FETCH_HEAD'
           system 'git submodule update --init --recursive' unless pkg.no_git_submodules?
           system 'git fetch --tags', exception: true if pkg.git_fetchtags?
           puts 'Repository downloaded.'.lightgreen
@@ -216,18 +208,7 @@ rescue StandardError
 end
 
 def cached_git_download(pkg, source, filename, extract_dir, verbose: false)
-  # No git branch specified, just a git commit or tag
-  if pkg.git_branch.to_s.empty?
-    abort('No Git branch, commit, or tag specified!').lightred if pkg.git_hashtag.to_s.empty?
-    cachefile = File.join(CREW_CACHE_DIR, "#{filename}#{pkg.git_hashtag.gsub('/', '_')}.tar.zst")
-  # Git branch and git commit specified
-  elsif !pkg.git_hashtag.to_s.empty?
-    cachefile = File.join(CREW_CACHE_DIR, "#{filename}#{pkg.git_branch.gsub(/[^0-9A-Za-z.-]/, '_')}_#{pkg.git_hashtag.gsub('/', '_')}.tar.zst")
-  # Git branch specified, without a specific git commit.
-  else
-    # Use to the day granularity for a branch timestamp with no specific commit specified.
-    cachefile = File.join(CREW_CACHE_DIR, "#{filename}#{pkg.git_branch.gsub(/[^0-9A-Za-z.-]/, '_')}#{Time.now.strftime('%m%d%Y')}.tar.zst")
-  end
+  cachefile = File.join(CREW_CACHE_DIR, "#{filename}_#{pkg.git_hashtag.gsub('/', '_')}.tar.zst")
   puts "Git cachefile is #{cachefile}".orange if verbose
   if File.file?(cachefile) && File.file?("#{cachefile}.sha256")
     while File.file?("#{cachefile}.lock")

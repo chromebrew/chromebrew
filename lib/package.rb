@@ -67,7 +67,6 @@ class Package
            :binary_sha256,
            :source_url,
            :source_sha256,
-           :git_branch,
            :git_hashtag,
            :max_glibc,
            :min_glibc,
