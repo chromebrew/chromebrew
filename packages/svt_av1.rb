@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Svt_av1 < CMake
   description 'Scalable Video Technology AV1 encoder and decoder'
   homepage 'https://gitlab.com/AOMediaCodec/SVT-AV1'
-  version '4.1.0'
+  version '4.2.0'
   license 'BSD-2, Apache-2.0, BSD, ISC, MIT and LGPG-2.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.com/AOMediaCodec/SVT-AV1.git'
