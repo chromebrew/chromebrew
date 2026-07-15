@@ -11,12 +11,13 @@ class Svt_av1 < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a803ccda07fe1abd6e319ba3dd89bc1fa293535efca15024aacd9b9e3a52f4bf',
-     armv7l: 'a803ccda07fe1abd6e319ba3dd89bc1fa293535efca15024aacd9b9e3a52f4bf',
-     x86_64: '42ef12c79b4810966a1a677ca66e2bcae6eefbc9ccd21bf5ae6e1976a5207c7c'
+    aarch64: '39d9baa567f8a1eb203123ffb01714e8156a1d0f5a82ea9d2595160de3298b10',
+     armv7l: '39d9baa567f8a1eb203123ffb01714e8156a1d0f5a82ea9d2595160de3298b10',
+     x86_64: 'c927b7be0e8278e85fbf4437ea28969dd3b9f371f430281cfd92dfb204135571'
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'nasm' => :build
 
   @arch_flags = ''
