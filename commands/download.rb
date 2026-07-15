@@ -1,5 +1,4 @@
 require 'fileutils'
-require 'json'
 require_relative '../lib/const'
 require_relative '../lib/crew_lockfile'
 require_relative '../lib/downloader'
@@ -10,10 +9,8 @@ class Command
     test_url = PackageUtils.get_url(pkg, build_from_source: opt_source || pkg.build_from_source)
     sha256sum = PackageUtils.get_sha256(pkg, build_from_source: opt_source || pkg.build_from_source)
 
-    device_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
-
     # Do an early check for a missing binary package and if so rebuild.
-    if !pkg.source?(device_json['architecture'].to_sym) && pkg.superclass.to_s == 'Pip'
+    if !pkg.source?(ARCH.to_sym) && pkg.superclass.to_s == 'Pip'
       if `curl -sI #{test_url}`.lines.first.split[1] == '200' && PackageUtils.get_gitlab_pkginfo(pkg.name, pkg.version, ARCH, false, false)[:pkg_sha256] == sha256sum
         url = test_url
       else
@@ -24,19 +21,19 @@ class Command
       url = test_url
     end
 
-    source = pkg.source?(device_json['architecture'].to_sym)
+    source = pkg.source?(ARCH.to_sym)
 
     uri = URI.parse url
     filename = File.basename(uri.path)
     # # If we're downloading a binary, reset the filename to what it would have been if we didn't download from the API.
-    filename = "#{pkg.name}-#{pkg.version}-chromeos-#{device_json['architecture']}.#{pkg.binary_compression}" if filename.eql?('download')
+    filename = "#{pkg.name}-#{pkg.version}-chromeos-#{ARCH}.#{pkg.binary_compression}" if filename.eql?('download')
     extract_dir = "#{pkg.name}.#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.dir"
 
-    build_cachefile = File.join(CREW_CACHE_DIR, "#{pkg.name}-#{pkg.version}-build-#{device_json['architecture']}.tar.zst")
+    build_cachefile = File.join(CREW_CACHE_DIR, "#{pkg.name}-#{pkg.version}-build-#{ARCH}.tar.zst")
     return { source:, filename:, extract_dir: } if (CREW_CACHE_BUILD || pkg.cache_build?) && File.file?(build_cachefile) && !pkg.built
 
     if !url
-      abort "No precompiled binary or source is available for #{device_json['architecture']}.".lightred
+      abort "No precompiled binary or source is available for #{ARCH}.".lightred
     elsif url.casecmp?('SKIP') || (pkg.no_source_build? || pkg.gem_compile_needed?)
       puts 'Skipping source download...'
     elsif pkg.build_from_source
@@ -48,17 +45,17 @@ class Command
     end
 
     git = true unless pkg.git_hashtag.to_s.empty?
-    gitlab_binary_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{pkg.name}/#{pkg.version}_#{device_json['architecture']}/#{pkg.name}-#{pkg.version}-chromeos-#{device_json['architecture']}.#{pkg.binary_compression}"
+    gitlab_binary_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{pkg.name}/#{pkg.version}_#{ARCH}/#{pkg.name}-#{pkg.version}-chromeos-#{ARCH}.#{pkg.binary_compression}"
 
-    if (pkg.cache_build? || CREW_CACHE_BUILD) && !File.file?(build_cachefile) && !pkg.no_source_build? && !File.file?(File.join(CREW_CACHE_DIR, "#{pkg.name}-#{pkg.version}-chromeos-#{device_json['architecture']}.#{pkg.binary_compression}")) && `curl -fsI #{gitlab_binary_url}`.lines.first.split[1] != '200'
+    if (pkg.cache_build? || CREW_CACHE_BUILD) && !File.file?(build_cachefile) && !pkg.no_source_build? && !File.file?(File.join(CREW_CACHE_DIR, "#{pkg.name}-#{pkg.version}-chromeos-#{ARCH}.#{pkg.binary_compression}")) && `curl -fsI #{gitlab_binary_url}`.lines.first.split[1] != '200'
 
-      build_cache_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{pkg.name}/#{pkg.version}_#{device_json['architecture']}_build/#{pkg.name}-#{pkg.version}-build-#{device_json['architecture']}.tar.zst"
+      build_cache_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{pkg.name}/#{pkg.version}_#{ARCH}_build/#{pkg.name}-#{pkg.version}-build-#{ARCH}.tar.zst"
       puts 'Checking for cached build...'.orange
       # Does a remote build artifact exist?
       puts build_cache_url if verbose
       puts "curl -fsI #{build_cache_url}" if verbose
       if `curl -fsI #{build_cache_url}`.lines.first.split[1] == '200'
-        gitlab_pkginfo = PackageUtils.get_gitlab_pkginfo(pkg.name, pkg.version, device_json['architecture'], true, true)
+        gitlab_pkginfo = PackageUtils.get_gitlab_pkginfo(pkg.name, pkg.version, ARCH, true, true)
         gitlab_build_artifact_sha256 = gitlab_pkginfo[:pkg_sha256]
         gitlab_build_artifact_date = gitlab_pkginfo[:pkg_upload_date]
         puts "Cached build artifact from #{gitlab_build_artifact_date} exists! with sha256 #{gitlab_build_artifact_sha256}".lightgreen
