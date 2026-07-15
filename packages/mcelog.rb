@@ -11,10 +11,10 @@ class Mcelog < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '38e45d54a822f53c3497f6a4cce8a30718d8a98809cd110ef0effdadc570d4ba',
-     armv7l: '38e45d54a822f53c3497f6a4cce8a30718d8a98809cd110ef0effdadc570d4ba',
-       i686: '48ba80075245b4e962605f8157810b5c094ee528c417e6662dee88fc24fe3b97',
-     x86_64: 'c9efb5ff4e1599c44b52daf94f09409ff0eb9f71f75a067b3ef6c336879aad36'
+    aarch64: '99916977faaf082da9f1b0581b31896fb78d17cd71182a0fb8788849d35bf314',
+     armv7l: '99916977faaf082da9f1b0581b31896fb78d17cd71182a0fb8788849d35bf314',
+       i686: '539cb26c67b9bdfd2d95c6f5f167656f356f8b7c11b9162ed423e873db64444e',
+     x86_64: '49115355e37ea37b00e099f601deddbda3fe794211ac670b6280aae39abfce9e'
   })
 
   depends_on 'glibc' => :executable
