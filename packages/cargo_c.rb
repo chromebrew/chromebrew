@@ -15,10 +15,10 @@ class Cargo_c < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2aebd7d525dbf904e40a30a6759e2fbcefaaffdfb4172550ea16185cf6140df8',
-     armv7l: '2aebd7d525dbf904e40a30a6759e2fbcefaaffdfb4172550ea16185cf6140df8',
-       i686: '9e0e6db34635c21db285a89bfeae71c3ca6cc2a26d62854acb50feb100109f9e',
-     x86_64: '29bd71e1c6f9787e596605874d9be30f5837e92b60cd3cc1f90f62764eee8998'
+    aarch64: '5aa43b31b471aef85e1ca754bd98a4c35f8d59724afc83fe7d419887f731f4b8',
+     armv7l: '5aa43b31b471aef85e1ca754bd98a4c35f8d59724afc83fe7d419887f731f4b8',
+       i686: '2f7a54425ba6d5b2fc05b39e83ccd1ad16f5d3a2d481e5b19e212dfd360d44bd',
+     x86_64: '2bc6c9037150e40bac115c3ef852414813cad961df7696decd2523f22352264b'
   })
 
   depends_on 'curl' => :executable
