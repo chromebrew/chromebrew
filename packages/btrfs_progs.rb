@@ -11,15 +11,16 @@ class Btrfs_progs < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ad8fa8a6eebc641abfbe7b830c4c75b690d8f0cb89c8f7f5225ca5c176303e42',
-     armv7l: 'ad8fa8a6eebc641abfbe7b830c4c75b690d8f0cb89c8f7f5225ca5c176303e42',
-     x86_64: 'bdc6b814c42065e19b3f795dd1ab43bdcebd4c504ca0ac7dcc1593db2a5fd49e'
+    aarch64: '898b8891f1fc1e73da16d96b51a12e71f818f87b63921f2cf7569d8fb12df4ef',
+     armv7l: '898b8891f1fc1e73da16d96b51a12e71f818f87b63921f2cf7569d8fb12df4ef',
+     x86_64: 'ccc85388f30f4b426bd8df864e93b52c55717e9087f1acf86b28932a37307835'
   })
 
   depends_on 'e2fsprogs'
   depends_on 'eudev' => :library
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'libgcrypt' => :library
   depends_on 'libsodium' => :library
   depends_on 'libuuid' => :library
