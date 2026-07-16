@@ -20,6 +20,7 @@ class Wayland < Meson
   depends_on 'expat' => :executable
   depends_on 'gcc_lib' # R
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'icu4c' => :build
   depends_on 'libffi' => :library
   depends_on 'libxml2' => :executable
