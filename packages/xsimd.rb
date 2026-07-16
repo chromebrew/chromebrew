@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Xsimd < CMake
   description 'C++ wrappers for SIMD intrinsics'
   homepage 'https://github.com/xtensor-stack/xsimd'
-  version '14.2.0'
+  version '14.3.0'
   license 'BSD-3'
   compatibility 'all'
   source_url 'https://github.com/xtensor-stack/xsimd.git'
