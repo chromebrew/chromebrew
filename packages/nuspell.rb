@@ -19,6 +19,7 @@ class Nuspell < CMake
 
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'graphviz' => :build
   depends_on 'icu4c' => :library
   depends_on 'pandoc' => :build
