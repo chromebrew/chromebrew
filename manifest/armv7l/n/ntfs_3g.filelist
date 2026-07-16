@@ -1,4 +1,4 @@
-# Total size: 3067544
+# Total size: 3079329
 /usr/local/bin/ntfscat
 /usr/local/bin/ntfscluster
 /usr/local/bin/ntfscmp
@@ -47,8 +47,8 @@
 /usr/local/lib/libntfs-3g.a
 /usr/local/lib/libntfs-3g.la
 /usr/local/lib/libntfs-3g.so
-/usr/local/lib/libntfs-3g.so.89
-/usr/local/lib/libntfs-3g.so.89.0.0
+/usr/local/lib/libntfs-3g.so.90
+/usr/local/lib/libntfs-3g.so.90.0.0
 /usr/local/lib/pkgconfig/libntfs-3g.pc
 /usr/local/sbin/mkfs.ntfs
 /usr/local/sbin/mkntfs
