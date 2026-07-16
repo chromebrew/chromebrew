@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Ntfs_3g < Autotools
   description 'NTFS-3G Safe Read/Write NTFS Driver'
   homepage 'https://github.com/tuxera/ntfs-3g'
-  version '2026.2.25'
+  version '2026.7.7'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/tuxera/ntfs-3g.git'
