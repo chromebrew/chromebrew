@@ -1,4 +1,4 @@
-# Total size: 1395559
+# Total size: 1289735
 /usr/local/bin/nuspell
 /usr/local/include/nuspell/aff_data.hxx
 /usr/local/include/nuspell/checker.hxx
@@ -15,7 +15,7 @@
 /usr/local/lib/cmake/nuspell/NuspellTargets.cmake
 /usr/local/lib/libnuspell.so
 /usr/local/lib/libnuspell.so.5
-/usr/local/lib/libnuspell.so.5.1.7
+/usr/local/lib/libnuspell.so.5.1.8
 /usr/local/lib/pkgconfig/nuspell.pc
 /usr/local/share/doc/nuspell/README.md
 /usr/local/share/doc/nuspell/html/aff__data_8hxx_source.html
@@ -28,6 +28,7 @@
 /usr/local/share/doc/nuspell/html/classnuspell_1_1Dictionary.js
 /usr/local/share/doc/nuspell/html/classnuspell_1_1Dictionary__Loading__Error.html
 /usr/local/share/doc/nuspell/html/clipboard.js
+/usr/local/share/doc/nuspell/html/codefolding.js
 /usr/local/share/doc/nuspell/html/cookie.js
 /usr/local/share/doc/nuspell/html/defines_8hxx_source.html
 /usr/local/share/doc/nuspell/html/deprecated.html
@@ -42,7 +43,6 @@
 /usr/local/share/doc/nuspell/html/doxygen.css
 /usr/local/share/doc/nuspell/html/doxygen.svg
 /usr/local/share/doc/nuspell/html/doxygen_crawl.html
-/usr/local/share/doc/nuspell/html/dynsections.js
 /usr/local/share/doc/nuspell/html/files.html
 /usr/local/share/doc/nuspell/html/files_dup.js
 /usr/local/share/doc/nuspell/html/finder_8hxx.html
@@ -53,6 +53,7 @@
 /usr/local/share/doc/nuspell/html/finder_8hxx_source.html
 /usr/local/share/doc/nuspell/html/functions.html
 /usr/local/share/doc/nuspell/html/functions_func.html
+/usr/local/share/doc/nuspell/html/graph_legend.dot.cmapx
 /usr/local/share/doc/nuspell/html/graph_legend.html
 /usr/local/share/doc/nuspell/html/graph_legend.md5
 /usr/local/share/doc/nuspell/html/graph_legend.svg
@@ -66,7 +67,6 @@
 /usr/local/share/doc/nuspell/html/inherit_graph_1.md5
 /usr/local/share/doc/nuspell/html/inherit_graph_1.svg
 /usr/local/share/doc/nuspell/html/inherits.html
-/usr/local/share/doc/nuspell/html/jquery.js
 /usr/local/share/doc/nuspell/html/menu.js
 /usr/local/share/doc/nuspell/html/menudata.js
 /usr/local/share/doc/nuspell/html/namespacemembers.html

@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Ntfs_3g < Autotools
   description 'NTFS-3G Safe Read/Write NTFS Driver'
   homepage 'https://github.com/tuxera/ntfs-3g'
-  version '2026.2.25'
+  version '2026.7.7'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/tuxera/ntfs-3g.git'
@@ -11,10 +11,10 @@ class Ntfs_3g < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6a0945e41b06452ba9b4e7e2b46c45d87a47b0287dd201e94c234d16243bdd92',
-     armv7l: '6a0945e41b06452ba9b4e7e2b46c45d87a47b0287dd201e94c234d16243bdd92',
-       i686: '075120ba32bbf1b1b4b0cacccb88981f3d0a7981385afbccce56e23f2721ab31',
-     x86_64: '7b7ef5e12c8f9d0856575b3dcf0c25ca184a04eb5b65f8416c76b87b1844532b'
+    aarch64: 'd3889f33b1cb1ae67360d0ee0512485d70297cb4d7bd5e0b5fd51ecedd972f78',
+     armv7l: 'd3889f33b1cb1ae67360d0ee0512485d70297cb4d7bd5e0b5fd51ecedd972f78',
+       i686: 'c14fddbe6dc3a442429db9faac6f6d5556b23bf0158c3a6cc64dfcafee3481f1',
+     x86_64: '15abdccc0e701d0a0f74dfa133d6e579d739eeb6748a1eeda9d96afe01d0ba46'
   })
 
   depends_on 'glibc' => :library
