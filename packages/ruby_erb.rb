@@ -17,6 +17,7 @@ class Ruby_erb < RUBY
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'ruby' => :library
   depends_on 'ruby_cgi' # R
 
