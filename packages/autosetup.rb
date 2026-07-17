@@ -3,7 +3,7 @@ require 'package'
 class Autosetup < Package
   description 'autosetup is a tool, similar to autoconf, to configure a build system'
   homepage 'https://msteveb.github.io/autosetup/'
-  version '0.7.2'
+  version '0.7.3'
   license 'BSD-2'
   compatibility 'all'
   source_url 'https://github.com/msteveb/autosetup.git'
@@ -11,10 +11,10 @@ class Autosetup < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '03842300c4bb4bbe2c670b1e2cc5cc73e744eb9f0284489e1ee39fe3c90787c6',
-     armv7l: '03842300c4bb4bbe2c670b1e2cc5cc73e744eb9f0284489e1ee39fe3c90787c6',
-       i686: '78d7cd743fb27abf134340aa58614d92690762f06c6c92b165572d4bc91ef4f8',
-     x86_64: 'b32c0ea05f8182e639157eb4c7dcfafe1ade90100c92a768eb9309f2d37a2106'
+    aarch64: '5c8a0c9da4c2bbd06a39796f91803afaf938a5eb286173c78e693a3633cdf5f2',
+     armv7l: '5c8a0c9da4c2bbd06a39796f91803afaf938a5eb286173c78e693a3633cdf5f2',
+       i686: 'dfb6abd0ac98d58f1cb3def005eb7144a475b56c7906d707ff3984ca43e1d1b6',
+     x86_64: '1778a8e1a12d29d8d56c920997ae31fe8987ec7097e9dc3200844ad86a338122'
   })
 
   depends_on 'tcl'
