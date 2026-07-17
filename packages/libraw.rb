@@ -11,9 +11,9 @@ class Libraw < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e76ea68b2b0411fa84e81dcdbd6d5a9c5a6d0d05379c6e5b212924fbfa5b0067',
-     armv7l: 'e76ea68b2b0411fa84e81dcdbd6d5a9c5a6d0d05379c6e5b212924fbfa5b0067',
-     x86_64: '848f56c2d17585c7d9fdc2408e9e6753535a0efd9ceb513e685a2ce0a3f1d438'
+    aarch64: '32102d4d097f7977a55fea0cd3a80a1e70abe327feb96abf6abb9b2a8f2d9c96',
+     armv7l: '32102d4d097f7977a55fea0cd3a80a1e70abe327feb96abf6abb9b2a8f2d9c96',
+     x86_64: 'a784e7696636db644f016772bd2c197fa3c948ba0b3720baed7080d2b08174dd'
   })
 
   depends_on 'gcc_lib' => :library
