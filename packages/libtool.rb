@@ -18,6 +18,7 @@ class Libtool < Package
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'm4'
 
   def self.build
