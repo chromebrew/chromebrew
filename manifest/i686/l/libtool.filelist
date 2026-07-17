@@ -1,5 +1,6 @@
-# Total size: 2663044
+# Total size: 2736810
 /usr/local/bin/libtool
+/usr/local/bin/libtool-next-version
 /usr/local/bin/libtoolize
 /usr/local/include/libltdl/lt_dlloader.h
 /usr/local/include/libltdl/lt_error.h
@@ -9,7 +10,7 @@
 /usr/local/lib/libltdl.la
 /usr/local/lib/libltdl.so
 /usr/local/lib/libltdl.so.7
-/usr/local/lib/libltdl.so.7.3.3
+/usr/local/lib/libltdl.so.7.3.6
 /usr/local/share/aclocal/libtool.m4
 /usr/local/share/aclocal/ltargz.m4
 /usr/local/share/aclocal/ltdl.m4
@@ -62,5 +63,6 @@
 /usr/local/share/libtool/ltdl.h
 /usr/local/share/libtool/ltdl.mk
 /usr/local/share/libtool/slist.c
+/usr/local/share/man/man1/libtool-next-version.1.zst
 /usr/local/share/man/man1/libtool.1.zst
 /usr/local/share/man/man1/libtoolize.1.zst
