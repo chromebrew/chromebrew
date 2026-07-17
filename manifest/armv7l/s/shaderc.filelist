@@ -1,4 +1,4 @@
-# Total size: 177682048
+# Total size: 179669854
 /usr/local/bin/glslang
 /usr/local/bin/glslangValidator
 /usr/local/bin/glslc
@@ -70,13 +70,13 @@
 /usr/local/lib/libSPIRV-Tools.a
 /usr/local/lib/libSPIRV.so
 /usr/local/lib/libSPIRV.so.16
-/usr/local/lib/libSPIRV.so.16.2.0
+/usr/local/lib/libSPIRV.so.16.4.0
 /usr/local/lib/libglslang-default-resource-limits.so
 /usr/local/lib/libglslang-default-resource-limits.so.16
-/usr/local/lib/libglslang-default-resource-limits.so.16.2.0
+/usr/local/lib/libglslang-default-resource-limits.so.16.4.0
 /usr/local/lib/libglslang.so
 /usr/local/lib/libglslang.so.16
-/usr/local/lib/libglslang.so.16.2.0
+/usr/local/lib/libglslang.so.16.4.0
 /usr/local/lib/libshaderc.a
 /usr/local/lib/libshaderc_combined.a
 /usr/local/lib/libshaderc_shared.so
