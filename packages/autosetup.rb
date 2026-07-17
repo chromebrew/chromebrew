@@ -3,7 +3,7 @@ require 'package'
 class Autosetup < Package
   description 'autosetup is a tool, similar to autoconf, to configure a build system'
   homepage 'https://msteveb.github.io/autosetup/'
-  version '0.7.2'
+  version '0.7.3'
   license 'BSD-2'
   compatibility 'all'
   source_url 'https://github.com/msteveb/autosetup.git'
