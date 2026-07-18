@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Xfsprogs < Autotools
   description 'XFS filesystem utilities'
   homepage 'https://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git/'
-  version "7.1.0-#{CREW_ICU_VER}"
+  version "7.1.1-#{CREW_ICU_VER}"
   license 'LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git'
