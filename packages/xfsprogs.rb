@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Xfsprogs < Autotools
   description 'XFS filesystem utilities'
   homepage 'https://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git/'
-  version "7.1.0-#{CREW_ICU_VER}"
+  version "7.1.1-#{CREW_ICU_VER}"
   license 'LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git'
@@ -11,9 +11,9 @@ class Xfsprogs < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e917a3c0f8b2cef9f071fedf5585cc31fbb49824df4b23412b7f174445a356f3',
-     armv7l: 'e917a3c0f8b2cef9f071fedf5585cc31fbb49824df4b23412b7f174445a356f3',
-     x86_64: 'a47c393fc5bc1236c88295b173937d8f3f1f3a60580317fedd9d82597a1f8579'
+    aarch64: 'bfce90a9d1ce731fe3c2bcaddba09d48820b188de6bb3ef8e4c0626ba3d21307',
+     armv7l: 'bfce90a9d1ce731fe3c2bcaddba09d48820b188de6bb3ef8e4c0626ba3d21307',
+     x86_64: '1230e50fc96b107d8acdd215fd2734635a42fede2e07d5a3af687b42bfa83df0'
   })
 
   depends_on 'gcc_lib' => :library
