@@ -11,10 +11,10 @@ class Htop < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '02f046b1c6b12309b646e917820a44415fa81971d8b5cc7f985154624660b3a1',
-     armv7l: '02f046b1c6b12309b646e917820a44415fa81971d8b5cc7f985154624660b3a1',
-       i686: 'e649d7a79c5dbf1a623b2f9cb42278b926c72d9d4cd47c5d742152c96582381f',
-     x86_64: '11f99378be6f5e439fa66baae3ca77f152cf89cd1b484931a6b69e126688b102'
+    aarch64: 'bc133486ff42a9d08c0243fb0956c0bedc6fef6fd03d89f9a16d44a7c3d9e7ab',
+     armv7l: 'bc133486ff42a9d08c0243fb0956c0bedc6fef6fd03d89f9a16d44a7c3d9e7ab',
+       i686: '30c4fec2e5074aca4114a7af708fb79872c68be573a3afddeff72ac4b6bde182',
+     x86_64: 'c7b1f5400efeeaa58026830db71c55dd79dec0630fe98ad64347082ec3d7a409'
   })
 
   depends_on 'glibc' => :executable
