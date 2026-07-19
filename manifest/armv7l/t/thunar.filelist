@@ -1,4 +1,4 @@
-# Total size: 9627692
+# Total size: 9774514
 /usr/local/bin/Thunar
 /usr/local/bin/thunar
 /usr/local/bin/thunar-settings
@@ -236,6 +236,7 @@
 /usr/local/share/locale/ka/LC_MESSAGES/thunar.mo
 /usr/local/share/locale/kk/LC_MESSAGES/thunar.mo
 /usr/local/share/locale/ko/LC_MESSAGES/thunar.mo
+/usr/local/share/locale/lo/LC_MESSAGES/thunar.mo
 /usr/local/share/locale/lt/LC_MESSAGES/thunar.mo
 /usr/local/share/locale/lv/LC_MESSAGES/thunar.mo
 /usr/local/share/locale/ms/LC_MESSAGES/thunar.mo
