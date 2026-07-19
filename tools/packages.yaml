@@ -3840,6 +3840,11 @@ url: https://github.com/SimonKagstrom/kcov/releases
 activity: low
 ---
 kind: url
+name: kdenlive
+url: https://kdenlive.org/download/
+activity: low
+---
+kind: url
 name: keepassxc
 url: https://github.com/keepassxreboot/keepassxc/releases
 activity: low
