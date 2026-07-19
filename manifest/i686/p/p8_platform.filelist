@@ -1,4 +1,4 @@
-# Total size: 321439
+# Total size: 268717
 /usr/local/include/p8-platform/os.h
 /usr/local/include/p8-platform/posix/os-socket.h
 /usr/local/include/p8-platform/posix/os-threads.h
@@ -17,6 +17,6 @@
 /usr/local/include/p8-platform/util/util.h
 /usr/local/lib/libp8-platform.so
 /usr/local/lib/libp8-platform.so.2
-/usr/local/lib/libp8-platform.so.2.1.0
+/usr/local/lib/libp8-platform.so.2.2.0
 /usr/local/lib/p8-platform/p8-platform-config.cmake
 /usr/local/lib/pkgconfig/p8-platform.pc

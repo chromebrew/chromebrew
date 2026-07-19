@@ -3,17 +3,17 @@ require 'buildsystems/meson'
 class Girara < Meson
   description 'Girara is a library that implements a user interface that focuses on simplicity and minimalism'
   homepage 'https://pwmt.org/projects/girara/'
-  version '2026.07.07'
+  version '2026.07.18'
   license 'ZLIB'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://pwmt.org/projects/girara/download/girara-#{version}.tar.xz"
-  source_sha256 '475f154148647d45e0f1324762fe5452094147085fddf2ccef4e9725c335b0c1'
+  source_sha256 'd7255635776a45d42d1e555aa425ab96caf23755442474cf240cbac966d8502f'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bb2e34590de1fc10640d9bde869c76ab94e7c89eba5a21e92695ad7d42fbfc93',
-     armv7l: 'bb2e34590de1fc10640d9bde869c76ab94e7c89eba5a21e92695ad7d42fbfc93',
-     x86_64: 'be86facbba3df9ac6fadcadcfb5bb2b01e425d93b2f8091dd6f428613e792dbe'
+    aarch64: 'a3c69c823194f2504967cf347b59792a3030870bbfb66456e535a132735c2030',
+     armv7l: 'a3c69c823194f2504967cf347b59792a3030870bbfb66456e535a132735c2030',
+     x86_64: '54521d0ac0f194014a1dfac0210555bddc52ea0bc46abb729df12bef135b4541'
   })
 
   depends_on 'glib' => :library
