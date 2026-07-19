@@ -3,18 +3,17 @@ require 'package'
 class Qt5_base < Package
   description 'Qt Base (Core, Gui, Widgets, Network, ...)'
   homepage 'https://code.qt.io/cgit/qt/qtbase'
-  kde_5_15_githash = '2529f7f0c2333d437089c775c9c30f624d1fd5bc'
-  version "kde-5.15.16-#{kde_5_15_githash[0, 7]}-#{CREW_ICU_VER}"
+  version "kde-5.15.18-#{CREW_ICU_VER}"
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://invent.kde.org/qt/qt/qtbase.git'
-  git_hashtag kde_5_15_githash
+  git_hashtag "v#{version.split('-')[1]}-lts-lgpl"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '52a076cad63deec005e5ca947c54410494d9a8e77f9d26754628cace10bb304e',
-     armv7l: '52a076cad63deec005e5ca947c54410494d9a8e77f9d26754628cace10bb304e',
-     x86_64: '4d3f4459f9ca3f5c76932da91a2992037e03c138185fc91f0cef7cb96529ceb3'
+    aarch64: 'da67e181c57076bd6fb946c40721384114022e8223736fc900ce6ca997684c0c',
+     armv7l: 'da67e181c57076bd6fb946c40721384114022e8223736fc900ce6ca997684c0c',
+     x86_64: '2ab6daab8662f4837d238046d592c19f84f32bc4715353ce83776bba277c11fa'
   })
 
   depends_on 'alsa_plugins' => :build
@@ -54,6 +53,9 @@ class Qt5_base < Package
   depends_on 'libxkbcommon' => :library
   depends_on 'mesa' => :library
   depends_on 'mtdev' => :library
+  # Note that mysql can't be built for 32-bit arm, so we do
+  # not want that dependency from preventing arm builds here.
+  depends_on 'mysql' => :library if ARCH.eql?('x86_64')
   depends_on 'pango' => :library
   depends_on 'pcre2' => :library
   depends_on 'protobuf' => :build
@@ -68,11 +70,6 @@ class Qt5_base < Package
   depends_on 'xcb_util_xrm' => :build
   depends_on 'zlib' => :library
   depends_on 'zstd' => :library
-  if ARCH.eql?('x86_64')
-    # Note that mysql can't be built for 32-bit arm, so we do
-    # not want that dependency from preventing arm builds here.
-    depends_on 'mysql' => :library
-  end
 
   def self.build
     system "./configure \
@@ -91,7 +88,8 @@ class Qt5_base < Package
     system 'make', "INSTALL_ROOT=#{CREW_DEST_DIR}", 'install'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     Dir["#{CREW_DEST_PREFIX}/share/Qt-5/bin/*"].select { |f| File.executable?(f) }.each do |filename|
-      FileUtils.ln_s(filename, File.join(CREW_DEST_PREFIX, 'bin', File.basename(filename)))
+      bin = File.basename(filename)
+      FileUtils.ln_s "#{CREW_PREFIX}/share/Qt-5/bin/#{bin}", "#{CREW_DEST_PREFIX}/bin/#{bin}"
     end
   end
 end
