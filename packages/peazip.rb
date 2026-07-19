@@ -3,7 +3,7 @@ require 'package'
 class Peazip < Package
   description 'Free file archiver utility to open and extract RAR, TAR and ZIP archives'
   homepage 'https://peazip.github.io/'
-  version ARCH.eql?('x86_64') ? '11.1.0' : '5.2.0'
+  version ARCH.eql?('x86_64') ? '11.2.0' : '5.2.0'
   license 'LGPL-3'
   compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.34' if ARCH.eql?('x86_64')
@@ -15,7 +15,7 @@ class Peazip < Package
   source_sha256({
     aarch64: '6724a5c4e273f086680ac30440a2014b647322d25ed9bba574b7b8edba61abcc',
      armv7l: '6724a5c4e273f086680ac30440a2014b647322d25ed9bba574b7b8edba61abcc',
-     x86_64: '1069d5715f315de43bb5470ddfc3d8c6556cd52182fca51ddc95c2a172fa0a82'
+     x86_64: 'aff93d7d378f7b673e2175d5c933476d28f114ae1cca7040c5f114ebe5bf36ca'
   })
 
   depends_on 'gtk2'
