@@ -18,6 +18,7 @@ class Htop < Autotools
   })
 
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'libcap' => :executable
   depends_on 'libnl3' => :build
   depends_on 'libunwind' => :executable
