@@ -4,31 +4,35 @@ require 'convenience_functions'
 class Thunar < Autotools
   description 'Thunar File Manager'
   homepage 'https://docs.xfce.org/xfce/thunar/Start'
-  version '4.20.8'
+  version '4.20.9'
   license 'GPL-2+ and LGPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://archive.xfce.org/src/xfce/thunar/#{version.rpartition('.')[0]}/thunar-#{version}.tar.bz2"
-  source_sha256 'cc735954d948a88eba2e40016a94c598f876309b736686c9f4d0273a05870c69'
+  source_sha256 'eb09869ce93b12ed285678967f55f243c833f2baf2fb10c9844ac7648d9270cb'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '00a0ce275f5b4d77665714b71b75c66ff9527b91602ee675a473096fff6aae10',
-     armv7l: '00a0ce275f5b4d77665714b71b75c66ff9527b91602ee675a473096fff6aae10',
-     x86_64: 'f885bfaf4100ae45d7405fd810672ff776ed831bbd90ac76fcb846f755e8f8ec'
+    aarch64: '98a9b1d4337507ece5a6d5dedfb8885b1a66dd001ebf048555a5f8f1559325fb',
+     armv7l: '98a9b1d4337507ece5a6d5dedfb8885b1a66dd001ebf048555a5f8f1559325fb',
+     x86_64: '88e686190d703d3aea9c4ccb3ea1153ff1e50390731165fe7cb959a8842ed722'
   })
 
   depends_on 'at_spi2_core' => :library
+  depends_on 'cairo' => :executable
   depends_on 'cairo' => :library
   depends_on 'exo' => :library
   depends_on 'gdk_pixbuf' => :library
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gtk3' => :library
   depends_on 'harfbuzz' => :library
   depends_on 'libexif' => :library
   depends_on 'libgudev' => :executable
+  depends_on 'libice' => :executable
   depends_on 'libice' => :library
   depends_on 'libnotify' => :executable
+  depends_on 'libsm' => :executable
   depends_on 'libsm' => :library
   depends_on 'libx11' => :library
   depends_on 'libxfce4ui' => :library

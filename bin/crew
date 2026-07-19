@@ -1082,7 +1082,7 @@ def install(skip_postinstall: false)
     # use CREW_DEST_DIR
     dest_dir = CREW_DEST_DIR
   elsif @pkg.superclass.to_s == 'RUBY'
-    meta = Command.download(@pkg, verbose: CREW_VERBOSE, opt_source: @opt_source)
+    meta = Command.download(@pkg, verbose: CREW_VERBOSE, opt_source: @opt_source || @opt_recursive || CREW_BUILD_FROM_SOURCE)
     target_dir = unpack meta
     ruby_gem_name, ruby_gem_version, _upstream_version, _gem_installed_version, _gem_latest_version_installed, _gem_deps = PackageUtils.get_gem_vars(@pkg.name, @pkg.version, @pkg.upstream_name)
     gem_file = "#{ruby_gem_name}-#{ruby_gem_version}-#{GEM_ARCH}.gem"
@@ -1093,7 +1093,7 @@ def install(skip_postinstall: false)
     end
     dest_dir = CREW_DEST_DIR
   else
-    meta = Command.download(@pkg, verbose: CREW_VERBOSE, opt_source: @opt_source)
+    meta = Command.download(@pkg, verbose: CREW_VERBOSE, opt_source: @opt_source || @opt_recursive || CREW_BUILD_FROM_SOURCE)
     target_dir = unpack meta
     if meta[:source]
       # build from source and place binaries at CREW_DEST_DIR
@@ -1239,7 +1239,7 @@ end
 
 def build_package(crew_archive_dest)
   # Download source code and unpack it.
-  meta = Command.download(@pkg, verbose: CREW_VERBOSE, opt_source: @opt_source)
+  meta = Command.download(@pkg, verbose: CREW_VERBOSE, opt_source: true)
   target_dir = unpack meta
 
   # Build from source and place binaries in CREW_DEST_DIR.
@@ -1713,36 +1713,8 @@ def download_command(args)
   args['<name>'].each do |name|
     @pkg_name = name
     search @pkg_name
-    @pkg.build_from_source = true if @opt_source
     print_current_package extra: CREW_VERBOSE
-    meta = {}
-    # rubocop:disable Style/ArrayIntersectWithSingleElement
-    if ARGV.intersect?(%w[download]) && @pkg.is_fake?
-      # rubocop:enable Style/ArrayIntersectWithSingleElement
-      fake_pkg_deplist = @pkg.get_deps_list(return_attr: true).flat_map(&:keys).uniq
-      until fake_pkg_deplist.blank?
-        puts "Will download the following packages: #{fake_pkg_deplist.join(' ')}".orange
-        fake_pkg_deplist.each_with_index do |fake_pkg_dep, index|
-          @pkg_name = fake_pkg_dep
-          search @pkg_name
-          @pkg.build_from_source = true if @opt_source
-          if @pkg.is_fake?
-            puts "Expanding #{fake_pkg_dep}...".lightpurple
-            expanded_pkg_list = @pkg.get_deps_list(return_attr: true).flat_map(&:keys).uniq
-            fake_pkg_deplist.push(*expanded_pkg_list)
-            fake_pkg_deplist.delete(@pkg_name)
-            next fake_pkg_dep
-          end
-          total_files_to_check = fake_pkg_deplist.length
-          numlength = total_files_to_check.to_s.length
-          puts "[#{(index + 1).to_s.rjust(numlength)}/#{total_files_to_check}] Downloading #{fake_pkg_dep}...".blue
-          meta = Command.download(@pkg, verbose: CREW_VERBOSE, opt_source: @opt_source)
-          fake_pkg_deplist.delete(@pkg_name)
-        end
-      end
-    else
-      meta = Command.download(@pkg, verbose: CREW_VERBOSE, opt_source: @opt_source)
-    end
+    meta = Command.download(@pkg, verbose: CREW_VERBOSE, opt_source: @opt_source)
     # Clean up remnant meta[:extract_dir] folders.
     FileUtils.rm_rf File.join(CREW_BREW_DIR, meta[:extract_dir]) unless meta[:extract_dir].nil?
   end

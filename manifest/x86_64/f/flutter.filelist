@@ -1,4 +1,4 @@
-# Total size: 2528581078
+# Total size: 2529484398
 /home/chronos/user/.flutter_tool_state
 /usr/local/bin/dart
 /usr/local/bin/flutter
@@ -40,9 +40,9 @@
 /usr/local/share/flutter/.git/logs/refs/remotes/origin/HEAD
 /usr/local/share/flutter/.git/objects/info/commit-graph
 /usr/local/share/flutter/.git/objects/info/packs
-/usr/local/share/flutter/.git/objects/pack/pack-25830c62ae5627b7f382674aed91ea6eb64bb302.idx
-/usr/local/share/flutter/.git/objects/pack/pack-25830c62ae5627b7f382674aed91ea6eb64bb302.pack
-/usr/local/share/flutter/.git/objects/pack/pack-25830c62ae5627b7f382674aed91ea6eb64bb302.rev
+/usr/local/share/flutter/.git/objects/pack/pack-713d7439cb9e9eebffba01c762f08272ac288a32.idx
+/usr/local/share/flutter/.git/objects/pack/pack-713d7439cb9e9eebffba01c762f08272ac288a32.pack
+/usr/local/share/flutter/.git/objects/pack/pack-713d7439cb9e9eebffba01c762f08272ac288a32.rev
 /usr/local/share/flutter/.git/packed-refs
 /usr/local/share/flutter/.git/refs/remotes/origin/HEAD
 /usr/local/share/flutter/.gitattributes
@@ -203,7 +203,7 @@
 /usr/local/share/flutter/.pub-preload-cache/matcher-0.12.19.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/material_color_utilities-0.13.0.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/meta-1.18.0.tar.gz
-/usr/local/share/flutter/.pub-preload-cache/meta-1.18.3.tar.gz
+/usr/local/share/flutter/.pub-preload-cache/meta-1.19.0.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/metrics_center-1.0.15.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/mime-2.0.0.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/multicast_dns-0.3.3.tar.gz
@@ -7585,6 +7585,7 @@
 /usr/local/share/flutter/engine/src/flutter/impeller/renderer/backend/vulkan/allocator_vk.cc
 /usr/local/share/flutter/engine/src/flutter/impeller/renderer/backend/vulkan/allocator_vk.h
 /usr/local/share/flutter/engine/src/flutter/impeller/renderer/backend/vulkan/allocator_vk_unittests.cc
+/usr/local/share/flutter/engine/src/flutter/impeller/renderer/backend/vulkan/android/ahb_swapchain_vk_unittests.cc
 /usr/local/share/flutter/engine/src/flutter/impeller/renderer/backend/vulkan/android/ahb_texture_source_vk.cc
 /usr/local/share/flutter/engine/src/flutter/impeller/renderer/backend/vulkan/android/ahb_texture_source_vk.h
 /usr/local/share/flutter/engine/src/flutter/impeller/renderer/backend/vulkan/android/ahb_texture_source_vk_unittests.cc
@@ -7822,6 +7823,8 @@
 /usr/local/share/flutter/engine/src/flutter/impeller/toolkit/android/proc_table.h
 /usr/local/share/flutter/engine/src/flutter/impeller/toolkit/android/surface_control.cc
 /usr/local/share/flutter/engine/src/flutter/impeller/toolkit/android/surface_control.h
+/usr/local/share/flutter/engine/src/flutter/impeller/toolkit/android/surface_control_impl.cc
+/usr/local/share/flutter/engine/src/flutter/impeller/toolkit/android/surface_control_impl.h
 /usr/local/share/flutter/engine/src/flutter/impeller/toolkit/android/surface_transaction.cc
 /usr/local/share/flutter/engine/src/flutter/impeller/toolkit/android/surface_transaction.h
 /usr/local/share/flutter/engine/src/flutter/impeller/toolkit/android/surface_transaction_stats.cc
@@ -16333,6 +16336,7 @@
 /usr/local/share/flutter/packages/flutter_tools/gradle/src/main/kotlin/plugins/PluginHandler.kt
 /usr/local/share/flutter/packages/flutter_tools/gradle/src/main/kotlin/tasks/BaseFlutterTask.kt
 /usr/local/share/flutter/packages/flutter_tools/gradle/src/main/kotlin/tasks/BaseFlutterTaskHelper.kt
+/usr/local/share/flutter/packages/flutter_tools/gradle/src/main/kotlin/tasks/CopyFlutterJniLibsTask.kt
 /usr/local/share/flutter/packages/flutter_tools/gradle/src/main/kotlin/tasks/DeepLinkJsonFromManifestTask.kt
 /usr/local/share/flutter/packages/flutter_tools/gradle/src/main/kotlin/tasks/DeepLinkJsonFromManifestTaskHelper.kt
 /usr/local/share/flutter/packages/flutter_tools/gradle/src/main/kotlin/tasks/FlutterTask.kt
@@ -17564,6 +17568,7 @@
 /usr/local/share/flutter/packages/flutter_tools/test/integration.shard/forbidden_imports_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/integration.shard/gen_l10n_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/integration.shard/gradle_jni_packaging_test.dart
+/usr/local/share/flutter/packages/flutter_tools/test/integration.shard/gradle_libapp_so_packaging_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/integration.shard/gradle_non_android_plugin_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/integration.shard/hot_reload_errors_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/integration.shard/hot_reload_test.dart

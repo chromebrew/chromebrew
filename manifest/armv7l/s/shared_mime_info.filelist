@@ -1,4 +1,4 @@
-# Total size: 4774226
+# Total size: 6078630
 /usr/local/bin/update-mime-database
 /usr/local/share/gettext/its/shared-mime-info.its
 /usr/local/share/gettext/its/shared-mime-info.loc
@@ -41,6 +41,7 @@
 /usr/local/share/locale/it/LC_MESSAGES/shared-mime-info.mo
 /usr/local/share/locale/ja/LC_MESSAGES/shared-mime-info.mo
 /usr/local/share/locale/ka/LC_MESSAGES/shared-mime-info.mo
+/usr/local/share/locale/kab/LC_MESSAGES/shared-mime-info.mo
 /usr/local/share/locale/kk/LC_MESSAGES/shared-mime-info.mo
 /usr/local/share/locale/kn/LC_MESSAGES/shared-mime-info.mo
 /usr/local/share/locale/ko/LC_MESSAGES/shared-mime-info.mo

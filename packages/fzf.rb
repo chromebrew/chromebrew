@@ -3,7 +3,7 @@ require 'package'
 class Fzf < Package
   description 'A command-line fuzzy finder'
   homepage 'https://github.com/junegunn/fzf'
-  version '0.73.1'
+  version '0.74.1'
   license 'MIT and BSD-with-disclosure'
   compatibility 'all'
   source_url 'https://github.com/junegunn/fzf.git'
@@ -11,10 +11,10 @@ class Fzf < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '54ed2aa6c8c5bf8774891cd87964e3f2b8489833712e3fbd0df07e497b08b11c',
-     armv7l: '54ed2aa6c8c5bf8774891cd87964e3f2b8489833712e3fbd0df07e497b08b11c',
-       i686: '97f1bb0586cac77989b31698f3a9f0bc7cde394125d28f6394a7a69f09cff0e2',
-     x86_64: '9861e4fb3a1e62239ec76efc661036c62bfecc2ae819e7e5b017d2fa74488efb'
+    aarch64: 'a97f1008ee5cb1f66578f46281e20bc08974ff93919706ab51c83e389899018d',
+     armv7l: 'a97f1008ee5cb1f66578f46281e20bc08974ff93919706ab51c83e389899018d',
+       i686: '9bc0b119091bba2603fecdc18215ba09e68b2d044f73e9d1c198b0280e66c888',
+     x86_64: '16c075b9750fa245a91a6c1fc5099822456aa9ff686a39758c3995f15e359ce1'
   })
 
   depends_on 'glibc' => :executable

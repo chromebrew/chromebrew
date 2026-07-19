@@ -4080,6 +4080,11 @@ url: https://gitlab.gnome.org/GNOME/libadwaita/-/tags
 activity: high
 ---
 kind: url
+name: libaec
+url: https://gitlab.dkrz.de/dkrz-sw/libaec/-/tags
+activity: low
+---
+kind: url
 name: libaio
 url: http://libaio.sourcearchive.com/downloads/
 activity: low
@@ -5390,6 +5395,16 @@ url: https://github.com/arvidn/libtorrent/releases
 activity: low
 ---
 kind: url
+name: libtraceevent
+url: https://github.com/rostedt/libtraceevent
+activity: low
+---
+kind: url
+name: libtracefs
+url: https://github.com/rostedt/libtracefs
+activity: low
+---
+kind: url
 name: libudev_stub
 url: https://github.com/therealkenc/libudev-stub/releases
 activity: none
@@ -5512,6 +5527,11 @@ activity: none
 kind: url
 name: libvorbis
 url: https://downloads.xiph.org/releases/vorbis
+activity: low
+---
+kind: url
+name: libvpl
+url: https://github.com/intel/libvpl/releases
 activity: low
 ---
 kind: url
@@ -6852,11 +6872,6 @@ activity: medium
 kind: url
 name: onepassword_gui
 url: https://support.1password.com/install-linux/#other-distributions-or-arm-targz
-activity: medium
----
-kind: url
-name: onevpl
-url: https://github.com/oneapi-src/oneVPL/releases
 activity: medium
 ---
 kind: url

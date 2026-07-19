@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Neovim < CMake
   description 'Neovim is a refactor, and sometimes redactor, in the tradition of Vim (which itself derives from Stevie).'
   homepage 'https://neovim.io/'
-  version '0.11.3'
+  version '0.12.4'
   license 'Apache-2.0 and vim'
   compatibility 'all'
   source_url 'https://github.com/neovim/neovim.git'
@@ -11,15 +11,16 @@ class Neovim < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '405560ae5b698ef74d4d80d42a41fdd8d72d66f2d6497845108e1e3a2421822c',
-     armv7l: '405560ae5b698ef74d4d80d42a41fdd8d72d66f2d6497845108e1e3a2421822c',
-       i686: '4b9a085bf06fb07e56b3918ebb6977c5ede3260af304d2b9243d664a5a254c59',
-     x86_64: '8c7d53547c79c770ff39f1430db9182f8bb4d10c38f44c5df1daae40ca801967'
+    aarch64: 'ea6c8e7d2fdc2b28bea4ae9da076c105152bba13172ee7d604e51518e0520ebc',
+     armv7l: 'ea6c8e7d2fdc2b28bea4ae9da076c105152bba13172ee7d604e51518e0520ebc',
+       i686: '1451d75c8570ed70e1ce8536ae4a32b4325061a24a41f664997339bd0b48dc63',
+     x86_64: 'fc43becdc7c95f834375899290853b940df4b16a1441079a1736135b7be249db'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'libluv' # R
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'libluv' => :executable
   depends_on 'libuv' => :build
   depends_on 'luajit' => :build
   depends_on 'luajit_bitop' => :build
@@ -28,7 +29,7 @@ class Neovim < CMake
   # depends_on 'perl_app_cpanminus' => :logical
   depends_on 'tree_sitter' => :build
   depends_on 'unibilium' => :build
-  depends_on 'utf8proc' # R
+  depends_on 'utf8proc' => :executable
   depends_on 'xdg_base' => :logical
 
   no_lto

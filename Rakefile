@@ -4,6 +4,7 @@ task default: %w[command_test lib_test]
 # Command tests
 task :command_test do
   ruby 'tests/commands/const.rb'
+  ruby 'tests/commands/download.rb'
   ruby 'tests/commands/help.rb'
   ruby 'tests/commands/list.rb'
   ruby 'tests/commands/prop.rb'

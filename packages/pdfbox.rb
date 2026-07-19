@@ -3,11 +3,11 @@ require 'package'
 class Pdfbox < Package
   description 'The Apache PDFBox® library is an open source Java tool for working with PDF documents.'
   homepage 'https://pdfbox.apache.org/'
-  version '3.0.7'
+  version '3.0.8'
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://dlcdn.apache.org/pdfbox/#{version}/pdfbox-app-#{version}.jar"
-  source_sha256 'bf70b90aca964bda6f1438d7b87d6f99cfaa9912ba6fcebc0541d9d90ee5ef54'
+  source_sha256 'f6b3a80c39747ff0ef5d06708bc03882152403de58dbef4a1fbffbee568eceb1'
 
   depends_on 'openjdk17' unless File.exist?("#{CREW_PREFIX}/bin/java") # R
   depends_on 'libx11' # R

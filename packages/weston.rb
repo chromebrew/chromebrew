@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Weston < Meson
   description 'Weston is the reference implementation of a Wayland compositor, and a useful compositor in its own right.'
   homepage 'https://wayland.freedesktop.org'
-  version '15.0.1'
+  version '16.0.0'
   license 'MIT and CC-BY-SA-3.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/wayland/weston.git'
@@ -11,12 +11,11 @@ class Weston < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4a9a7c06d1d16bdb26fe3eb763f918e795efa3856df8409a21bcdf1d51089000',
-     armv7l: '4a9a7c06d1d16bdb26fe3eb763f918e795efa3856df8409a21bcdf1d51089000',
-     x86_64: 'f81b186e5091475ed9b0d21a1437397432b2909a4e06b87734ac04315e77d9e1'
+    aarch64: '3eb93c532deb75a6e7da6d718236b11740a11c08657859992ae0ee478c5801dd',
+     armv7l: '3eb93c532deb75a6e7da6d718236b11740a11c08657859992ae0ee478c5801dd',
+     x86_64: 'aaea9621beca27920258a7eb2bb325a8c5e84898ca6fc7982e9bcfed48e0dc06'
   })
 
-  depends_on 'aml' => :library
   depends_on 'cairo' => :library
   depends_on 'dbus' => :build
   depends_on 'eudev' => :library
@@ -48,7 +47,6 @@ class Weston < Meson
   depends_on 'linux_pam' => :library
   depends_on 'lua' => :library
   depends_on 'mesa' => :library
-  depends_on 'neatvnc' => :library
   depends_on 'pango' => :library
   depends_on 'pipewire' => :library
   depends_on 'pixman' => :library
@@ -65,44 +63,11 @@ class Weston < Meson
   meson_options "-Dbackend-default=wayland \
         -Dbackend-drm=true \
         -Dbackend-rdp=false \
+        -Dbackend-vnc=false \
         -Dcolor-management-lcms=false \
-        -Dremoting=true \
         -Dshell-ivi=false \
         -Dsystemd=false \
         -Dxwayland-path=#{CREW_PREFIX}/bin/Xwayland"
-
-  def self.patch
-    # https://gitlab.freedesktop.org/wayland/weston/-/issues/1049
-    # file = File.read 'subprojects/neatvnc.wrap'
-    # file.gsub!('revision = v0.7.0', 'revision = v0.9.5')
-    # File.write('subprojects/neatvnc.wrap', file)
-    #
-    # Install Top of Tree neatvnc and aml as deps instead, and make
-    # weston handle those versions.
-    FileUtils.rm_rf 'subprojects/neatvnc'
-    FileUtils.rm_rf 'subprojects/aml.wrap'
-    FileUtils.rm_rf 'subprojects/neatvnc.wrap'
-    File.write 'weston_vnc.patch', <<~'VNCPATCHEOF'
-      --- a/libweston/backend-vnc/meson.build	2025-09-24 09:44:35.000000000 -0400
-      +++ b/libweston/backend-vnc/meson.build	2025-09-24 10:36:09.653992251 -0400
-      @@ -3,12 +3,12 @@ if not get_option('backend-vnc')
-       endif
-
-       config_h.set('BUILD_VNC_COMPOSITOR', '1')
-      -dep_neatvnc = dependency('neatvnc', version: ['>= 0.7.0', '< 0.10.0'], required: false, fallback: ['neatvnc', 'neatvnc_dep'])
-      +dep_neatvnc = dependency('neatvnc', version: ['>= 0.7.0', '< 0.11.0'], required: false, fallback: ['neatvnc', 'neatvnc_dep'])
-       if not dep_neatvnc.found()
-       	error('VNC backend requires neatvnc which was not found. Or, you can use \'-Dbackend-vnc=false\'.')
-       endif
-
-      -dep_aml = dependency('aml', version: ['>= 0.3.0', '< 0.4.0'], required: false, fallback: ['aml', 'aml_dep'])
-      +dep_aml = dependency('aml1', version: ['>= 0.3.0', '< 1.1.0'], required: false, fallback: ['aml', 'aml_dep'])
-       if not dep_aml.found()
-       	error('VNC backend requires libaml which was not found. Or, you can use \'-Dbackend-vnc=false\'.')
-       endif
-    VNCPATCHEOF
-    system 'patch -Np1 -i weston_vnc.patch'
-  end
 
   meson_install_extras do
     File.write 'weston.ini', <<~WESTON_INI_EOF

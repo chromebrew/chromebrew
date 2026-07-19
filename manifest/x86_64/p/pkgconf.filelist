@@ -1,5 +1,6 @@
-# Total size: 320412
+# Total size: 355000
 /usr/local/bin/bomtool
+/usr/local/bin/pccritic
 /usr/local/bin/pkg-config
 /usr/local/bin/pkgconf
 /usr/local/bin/spdxtool
@@ -18,6 +19,7 @@
 /usr/local/share/doc/pkgconf/COPYING
 /usr/local/share/doc/pkgconf/README.md
 /usr/local/share/man/man1/bomtool.1.zst
+/usr/local/share/man/man1/pccritic.1.zst
 /usr/local/share/man/man1/pkgconf.1.zst
 /usr/local/share/man/man1/spdxtool.1.zst
 /usr/local/share/man/man5/pc.5.zst

@@ -1,4 +1,4 @@
-# Total size: 3197781
+# Total size: 3464879
 /usr/local/bin/ntfscat
 /usr/local/bin/ntfscluster
 /usr/local/bin/ntfscmp
@@ -47,8 +47,8 @@
 /usr/local/lib/libntfs-3g.a
 /usr/local/lib/libntfs-3g.la
 /usr/local/lib/libntfs-3g.so
-/usr/local/lib/libntfs-3g.so.89
-/usr/local/lib/libntfs-3g.so.89.0.0
+/usr/local/lib/libntfs-3g.so.90
+/usr/local/lib/libntfs-3g.so.90.0.0
 /usr/local/lib/pkgconfig/libntfs-3g.pc
 /usr/local/sbin/mkfs.ntfs
 /usr/local/sbin/mkntfs
@@ -72,10 +72,5 @@
 /usr/local/share/man/man8/ntfslabel.8.zst
 /usr/local/share/man/man8/ntfsls.8.zst
 /usr/local/share/man/man8/ntfsprogs.8.zst
-/usr/local/share/man/man8/ntfsrecover.8.zst
 /usr/local/share/man/man8/ntfsresize.8.zst
-/usr/local/share/man/man8/ntfssecaudit.8.zst
-/usr/local/share/man/man8/ntfstruncate.8.zst
 /usr/local/share/man/man8/ntfsundelete.8.zst
-/usr/local/share/man/man8/ntfsusermap.8.zst
-/usr/local/share/man/man8/ntfswipe.8.zst

@@ -3,18 +3,18 @@ require 'package'
 class Live555 < Package
   description 'This code forms a set of C++ libraries for multimedia streaming, using open standard protocols (RTP/RTCP, RTSP, SIP).'
   homepage 'http://www.live555.com'
-  version '2026.07.04'
+  version '2026.07.06'
   license 'LGPL'
   compatibility 'all'
   source_url "https://download.live555.com/live.#{version}.tar.gz"
-  source_sha256 'b89b425ec6fedaa4dc0b478ba9146a431b265f5352cb17fc44c14402c512e378'
+  source_sha256 '1f2cfd356a4baf6539bd76110b67e5058fd99d44ee983d6fff73e4756ecf817e'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c998c4aa72e096ce7950ad5ea5491a04553040162f28d3d88da5ecb0d5ba6261',
-     armv7l: 'c998c4aa72e096ce7950ad5ea5491a04553040162f28d3d88da5ecb0d5ba6261',
-       i686: '2e9eadf8bdcd82183ed01c03ae58f42fcaa7e34df1473030c8ded1f45c000932',
-     x86_64: 'bc3e1f0b685cb599f78f63dc747c85a4964d70d9cb511147a07eb8b31b5e7336'
+    aarch64: '280bd63390278f2d72e5d0ee61f02a8308d26946c1efeac6dcf6ae9ceb670c61',
+     armv7l: '280bd63390278f2d72e5d0ee61f02a8308d26946c1efeac6dcf6ae9ceb670c61',
+       i686: '5b29a1862dde9309454316df01e8f53e089029b70c54916e3eef64a1f88edf62',
+     x86_64: 'd40057720fd7bcb12788a2dd537ba26f51f700b240288c71421184bd57aef3b0'
   })
 
   depends_on 'gcc_lib' => :executable

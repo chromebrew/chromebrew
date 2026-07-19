@@ -1,26 +1,26 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Newsboat < Package
+class Newsboat < Autotools
   description 'Newsboat is an RSS/Atom feed reader for the text console.'
   homepage 'https://newsboat.org/'
-  version '2.43'
+  version '2.44'
   license 'MIT'
-  compatibility 'all'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/newsboat/newsboat.git'
   git_hashtag "r#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '48e85a6f7d5b6206905113f81207b0ff9cd5395b4acacde0793a5d39421a6ec1',
-     armv7l: '48e85a6f7d5b6206905113f81207b0ff9cd5395b4acacde0793a5d39421a6ec1',
-       i686: 'f0d3115574ecd796cb6c8b07aa22fb3195ae49f8f322de7fe6e827238578756d',
-     x86_64: '820160251ce1ba903ccdd6d8eeb50d37c78a4e948457e68dcaa42cef0c394f70'
+    aarch64: '6695a1c3398f2fd40891b9eb580b8741c23fa578bc6d223b2b1376affd0b1657',
+     armv7l: '6695a1c3398f2fd40891b9eb580b8741c23fa578bc6d223b2b1376affd0b1657',
+     x86_64: '8d1d0f327773241c34e865be5faa2f8430dc414a4ecb71ecfd46c47f995beb0e'
   })
 
   depends_on 'curl' => :executable
   depends_on 'gcc_lib' => :executable
   depends_on 'gettext' => :build
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'json_c' => :executable
   depends_on 'libstfl' => :executable
   depends_on 'libxml2' => :executable
@@ -34,31 +34,10 @@ class Newsboat < Package
     system "sed -i 's:prefix?=/usr/local:prefix?=#{CREW_PREFIX}:' Makefile"
   end
 
-  def self.build
-    system "CXXFLAGS+=' -Wno-unused-function ' make"
-  end
-
-  # def self.check
-  # Fails due to not having availsble TERM in the actions
-  # container.
-  #   system 'make', 'check'
-  # end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  autotools_skip_configure
+  autotools_pre_make_options "CXXFLAGS+=' -Wno-unused-function '"
 
   def self.postremove
-    config_dir = "#{HOME}/.newsboat"
-    if Dir.exist? config_dir
-      print "Would you like to remove the config directory #{config_dir}? [y/N] "
-      case $stdin.gets.chomp.downcase
-      when 'y', 'yes'
-        FileUtils.rm_rf config_dir
-        puts "#{config_dir} removed.".lightred
-      else
-        puts "#{config_dir} saved.".lightgreen
-      end
-    end
+    Package.agree_to_remove("#{HOME}/.newsboat")
   end
 end

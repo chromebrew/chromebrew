@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Xwayland < Meson
   description 'X server configured to work with weston or sommelier'
   homepage 'https://x.org/wiki/'
-  version '24.1.12'
+  version '24.1.13'
   license 'MIT-with-advertising, ISC, BSD-3, BSD and custom'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/xserver.git'
@@ -11,9 +11,9 @@ class Xwayland < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ee21bf10281802579aea90df7a4e6d973594bc2529f3548532f4bb9a226ccf06',
-     armv7l: 'ee21bf10281802579aea90df7a4e6d973594bc2529f3548532f4bb9a226ccf06',
-     x86_64: 'f5cea055c84f358686f997368454968919ef9459b0bae63975cd3dd6fe8e29d9'
+    aarch64: '0029902070db06f4013e45b7898125bacfd6f16820c156af031569822222ca25',
+     armv7l: '0029902070db06f4013e45b7898125bacfd6f16820c156af031569822222ca25',
+     x86_64: 'ef17620f511378e1690998ccc8ec6003177d577d2b19c63828039814115d1911'
   })
 
   no_env_options

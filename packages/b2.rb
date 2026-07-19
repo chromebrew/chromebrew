@@ -3,7 +3,7 @@ require 'package'
 class B2 < Package
   description 'B2 makes it easy to build C++ projects, everywhere.'
   homepage 'https://www.bfgroup.xyz/b2/'
-  version '5.5.1'
+  version '5.5.3'
   license 'BSL 1.0'
   compatibility 'all'
   source_url 'https://github.com/bfgroup/b2.git'
@@ -11,10 +11,10 @@ class B2 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7d70ef8429a76a863f0ef810aec0bb1d01365b8ac5f7d79e61526894b8275471',
-     armv7l: '7d70ef8429a76a863f0ef810aec0bb1d01365b8ac5f7d79e61526894b8275471',
-       i686: '5b0d60f16b8f0a78961c9b2a1feb4ffbe45b353a632d13c8dc9b67d8706cde22',
-     x86_64: '63f0de3c978ddd357f8f50adee48b63b0f3406aad1796e96838d8f678558bff9'
+    aarch64: 'd92c84148de029bf83e320ae773ab1dd121edcbaeb5f220792152ecfb72993bd',
+     armv7l: 'd92c84148de029bf83e320ae773ab1dd121edcbaeb5f220792152ecfb72993bd',
+       i686: 'e7f8f7de32471df9d7e8324f9791b3b118d0a51310d117fa9bd1373ec62ddaad',
+     x86_64: '96275f5679ca147c8f268a987928919c7c0fb1ba04a9949cc98f0260bdd1f138'
   })
 
   depends_on 'gcc_lib' => :executable
