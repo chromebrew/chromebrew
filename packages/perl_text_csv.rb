@@ -16,4 +16,6 @@ class Perl_text_csv < PERL
        i686: '8df994f64829f62d09433c98a5f9ba188278bd892bf0a2fb4e2cf147347f641d',
      x86_64: '664a71e5f564b4be60192f91c6ade574d42d6ca8378d18fe50f7c103535d142a'
   })
+
+  depends_on 'perl' => :logical
 end

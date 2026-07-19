@@ -16,4 +16,6 @@ class Perl_uri < PERL
        i686: '69b573275ceb40c7f84e0d793b6dcc5caffe5dbdfc1b8c27f6b4800fb39cf4e4',
      x86_64: 'eba395cfc6f82ecb278d74ac18b4a162e43e07c5331f80ef8bd7a821ca8acf3e'
   })
+
+  depends_on 'perl' => :logical
 end

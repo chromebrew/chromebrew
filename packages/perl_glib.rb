@@ -11,14 +11,16 @@ class Perl_glib < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3f5e6be19f4e2c4c91badb2bf7c533a7e91faa89682e6326226fb2168ba4a75e',
-     armv7l: '3f5e6be19f4e2c4c91badb2bf7c533a7e91faa89682e6326226fb2168ba4a75e',
-       i686: 'a4fd5e4b9180a502de77a3225093b3bec875a33dda2fda3bd69ce5b84ddd6a6e',
-     x86_64: 'd6bddaf3b90e82e7e4ba064ec14d09e0ba89bac40824b92a59deefb85c7e11fd'
+    aarch64: '01a3ccd12e0fe4ccb074140013c5b6bf91ed1746ccafc40d50790bc0194a10fa',
+     armv7l: '01a3ccd12e0fe4ccb074140013c5b6bf91ed1746ccafc40d50790bc0194a10fa',
+       i686: 'c521c0e2af319be94c576651650e86be6750cd60b91fe9cbc4763349217cdf7f',
+     x86_64: 'f7ee55234458aef6199911df7ebbf59dadae2d2d77376eea284ad83e2196d7a1'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'glib' # R
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'perl' => :logical
   depends_on 'perl_extutils_depends' => :build
   depends_on 'perl_extutils_pkgconfig' => :build
 end

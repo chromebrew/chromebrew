@@ -11,10 +11,11 @@ class Perl_gtk3 < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f7a520f85676609ab8ccc8ae6853936ec6d759523b2882a08006ec000fe11055',
-     armv7l: 'f7a520f85676609ab8ccc8ae6853936ec6d759523b2882a08006ec000fe11055',
-     x86_64: '1729c89dd5edfe85624a46476de5377cd6444be918ab148af31fcd2a26527767'
+    aarch64: 'cde1d94f5e37c7a0d0780025fc3d8f12f662c7092e026dcffeefcbff902b3f11',
+     armv7l: 'cde1d94f5e37c7a0d0780025fc3d8f12f662c7092e026dcffeefcbff902b3f11',
+     x86_64: '4efda03bf05fc7e550b66e2fea931771de82fc46c44e43da5cdff8d58df5c6e4'
   })
 
   depends_on 'gtk3' # R
+  depends_on 'perl' => :logical
 end

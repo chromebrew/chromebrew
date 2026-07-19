@@ -11,11 +11,20 @@ class Perl_extutils_makemaker < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7c8c64b59820b7d61a060acdaa51160f465b05cc7f5698b2d489558e39aa83de',
-     armv7l: '7c8c64b59820b7d61a060acdaa51160f465b05cc7f5698b2d489558e39aa83de',
-       i686: '7396d0748cf286e4bf149e61f61cb6ca68fe89fc88d3d135219ca58bbbdbd0d9',
-     x86_64: '27b90ef581ef4803d77cc3b68f23e539a5a66aa3553bac498bd0f86c3bd28210'
+    aarch64: '5f040ddc442bda8b7d18bb7484f46943e5f20dcae440491b30ab0614fc1d2342',
+     armv7l: '5f040ddc442bda8b7d18bb7484f46943e5f20dcae440491b30ab0614fc1d2342',
+       i686: '17099b2e8f0b4222734fc6d6766c234ce6b86e1a60da1a2dc04d279de5f96bba',
+     x86_64: 'e0cffbbd4124a87cadddec22b574cd6bfee55d1da1ae384777d94dc77966bce4'
   })
+
+  binary_sha256({
+    aarch64: '5f040ddc442bda8b7d18bb7484f46943e5f20dcae440491b30ab0614fc1d2342',
+     armv7l: '5f040ddc442bda8b7d18bb7484f46943e5f20dcae440491b30ab0614fc1d2342',
+       i686: '17099b2e8f0b4222734fc6d6766c234ce6b86e1a60da1a2dc04d279de5f96bba',
+     x86_64: 'e0cffbbd4124a87cadddec22b574cd6bfee55d1da1ae384777d94dc77966bce4'
+  })
+
+  depends_on 'perl' => :logical
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'

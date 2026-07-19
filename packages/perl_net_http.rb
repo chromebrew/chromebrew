@@ -16,4 +16,6 @@ class Perl_net_http < PERL
        i686: '3724d765666073a1d0a84c0934a3797b46ecee912de89a5460cac3a920e17656',
      x86_64: '9d90b4cb557c303608176af3136c4a2c411972785763a82f2fc8c179b18488f9'
   })
+
+  depends_on 'perl' => :logical
 end

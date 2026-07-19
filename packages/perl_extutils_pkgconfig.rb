@@ -11,9 +11,11 @@ class Perl_extutils_pkgconfig < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2a1b3563db7c4bb9a470a161ab9decdbdb5413c0f9e8ef86195b0ca8c4976c45',
-     armv7l: '2a1b3563db7c4bb9a470a161ab9decdbdb5413c0f9e8ef86195b0ca8c4976c45',
-       i686: 'ed7249c6cfa4c1b4127f29926b78720e37dd40f4b24ab474f47358cd98e1b103',
-     x86_64: 'a3171927fdb4d37f0aa74329333d3f35d28472697790417e0d9e6548369b0808'
+    aarch64: '4423b454498b01fc2219a5b77fd19768e7f181ee84703f966e7457deaa400db3',
+     armv7l: '4423b454498b01fc2219a5b77fd19768e7f181ee84703f966e7457deaa400db3',
+       i686: 'e64a8345588d79e429ef6360a43d5f83347743ec523ecd5fc39354cbeecfff36',
+     x86_64: '7d5ca28ec027b70b9aa33b57a2f1d9a6c8a2e4fcf1b18273b35ab8ab986cf151'
   })
+
+  depends_on 'perl' => :logical
 end

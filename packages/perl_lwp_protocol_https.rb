@@ -16,4 +16,6 @@ class Perl_lwp_protocol_https < PERL
        i686: '17820b8d4c880cec57064cc7443ac2586c9717c4aefe7f3851d1211abad82b54',
      x86_64: 'e565d3a9c818f2821c0c57f29fdd3eef6f328d0906fbf7d6d4f4903d8e6cacdb'
   })
+
+  depends_on 'perl' => :logical
 end

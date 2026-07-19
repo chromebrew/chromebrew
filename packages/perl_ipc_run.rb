@@ -11,10 +11,10 @@ class Perl_ipc_run < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '02316ca0164dd85ac8779510bbaaa68db371eafa29907d03ac157a1f0dd7a843',
-     armv7l: '02316ca0164dd85ac8779510bbaaa68db371eafa29907d03ac157a1f0dd7a843',
-       i686: '386930aa83897116f7fee97616fb01876dffa449044d141249da55eead5304d3',
-     x86_64: '03435fb8e2923c62e1187919f0274f0372c340275df0fed5aa7fbc21c2b1de0c'
+    aarch64: '15f572df584acbeeb037b3972efb05b61f50e595b6e22fd915b1d4ce63df0678',
+     armv7l: '15f572df584acbeeb037b3972efb05b61f50e595b6e22fd915b1d4ce63df0678',
+       i686: '4013756ae0a7f52972b10ca0f55f54fae5dd43ee777382855a3bf5acba4a944f',
+     x86_64: 'c61f4ee459e26f7c8bc8f28568a2d17814e87474d2a1e189c48a55313af773a0'
   })
 
   depends_on 'perl' => :logical

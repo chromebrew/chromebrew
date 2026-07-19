@@ -11,10 +11,10 @@ class Perl_date_calc < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '85ea878bb054393f3acc0f2f49df959898dc8a3c3aaaff008e1ed626fa579fcb',
-     armv7l: '85ea878bb054393f3acc0f2f49df959898dc8a3c3aaaff008e1ed626fa579fcb',
-       i686: 'a0b4774af4cab8a973540ce8dc79df9f88dd7ea72368b02758592a0c0cf91712',
-     x86_64: '1b070fe262617ac366014ea0f4dc1ca24c3be423051cdd7bad7b6bc455210472'
+    aarch64: '9c220c95c6836b3a7b87ca0e0acf333157be8772f0aa42adb043cea733b46107',
+     armv7l: '9c220c95c6836b3a7b87ca0e0acf333157be8772f0aa42adb043cea733b46107',
+       i686: '6d3b70582d5c7aa5b533f53497712126426cb2d4b0a9757bd55b543b5031290d',
+     x86_64: 'b46df00838f120aab49439e97339f3846483a3e6b103cca0dd6d101a523fb04f'
   })
 
   def self.prebuild

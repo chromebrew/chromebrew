@@ -11,11 +11,20 @@ class Perl_file_temp < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '086f60a4785b1e8437aaf85386f5c0ece9026c8d99fcd196203816d16e2f1a48',
-     armv7l: '086f60a4785b1e8437aaf85386f5c0ece9026c8d99fcd196203816d16e2f1a48',
-       i686: '22a2086f617b2ae9c6b321218fd92d15a43945bf46b21b923b26465fcfcadb32',
-     x86_64: '9889a16d8173fb7c7d071d1f4148b7e73066cf458c3b3d3660b1f15d3b9b393a'
+    aarch64: '',
+     armv7l: '',
+       i686: '2f3529cad14b3d7cad87c86bb6f9f0c82aa02fc0bfcad46e759c194765bf939d',
+     x86_64: 'e8cef1dc9ce781afa80cac42f5e8214162ac27296993d2cb0578b55c08c41638'
   })
+
+  binary_sha256({
+    aarch64: 'f9b6175f87a1189d26427470ef95814af14b4b0f0ee4a9037d0b819e661a8998',
+     armv7l: 'f9b6175f87a1189d26427470ef95814af14b4b0f0ee4a9037d0b819e661a8998',
+       i686: '2f3529cad14b3d7cad87c86bb6f9f0c82aa02fc0bfcad46e759c194765bf939d',
+     x86_64: 'e8cef1dc9ce781afa80cac42f5e8214162ac27296993d2cb0578b55c08c41638'
+  })
+
+  depends_on 'perl' => :logical
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'

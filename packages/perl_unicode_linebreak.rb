@@ -17,5 +17,7 @@ class Perl_unicode_linebreak < PERL
      x86_64: 'f5d2e4044eb9b5e7a4f375aabe74c08bc5d10e13a6dac4e44f2633703919ac63'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'perl' => :logical
 end

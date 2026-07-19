@@ -17,7 +17,9 @@ class Perl_net_ssleay < PERL
      x86_64: '8c66f6eef0739412a7d5b66224059ee57b650d8653eb06667b69650befc74925'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'openssl' # R
-  depends_on 'zlib' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'openssl' => :library
+  depends_on 'perl' => :logical
+  depends_on 'zlib' => :library
 end

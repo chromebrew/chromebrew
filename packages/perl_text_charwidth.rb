@@ -17,7 +17,8 @@ class Perl_text_charwidth < Package
      x86_64: '50dc30e26bc35e7e83bfeadea1263d96ad75932766da1197f811ab621e8b124b'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 
   def self.prebuild
     system 'perl', 'Makefile.PL'

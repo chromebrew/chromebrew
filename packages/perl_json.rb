@@ -16,4 +16,6 @@ class Perl_json < PERL
        i686: '6ae5c61335c78767161a3cd9e00785ac4f3b05fdfcc04ac1bee599fd356efb3e',
      x86_64: '2c3d7553b8d36e84a4fcacf8e861935f3b6eb017900e027d43a02a64e31379f5'
   })
+
+  depends_on 'perl' => :logical
 end

@@ -20,5 +20,6 @@ class Perl_xml_xpath < PERL
      x86_64: '8c5a8886d499f67b1df3ff62d6cc50605d4afe87122194e962ceeb4196e8b266'
   })
 
+  depends_on 'perl' => :logical
   depends_on 'perl_xml_parser'
 end

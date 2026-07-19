@@ -11,11 +11,13 @@ class Perl_clone < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6ca76c50746f7cc1a1ff005604cb62aece1dff2853bcbd42fe92e57906a00ab6',
-     armv7l: '6ca76c50746f7cc1a1ff005604cb62aece1dff2853bcbd42fe92e57906a00ab6',
-       i686: 'b104b0c9fe046ef4268b605d92e7de1bbcd3d67c5e37960a81edbd879e73005f',
-     x86_64: 'f03afc1badbf204d6b9718874c9bb9e69d6b1ce9b910510e7be764bfc3c26ff0'
+    aarch64: '593bf4cbdce1450f55acc8f5dc427072525fef2eec11ef1cb4ef3fe5f5aed89b',
+     armv7l: '593bf4cbdce1450f55acc8f5dc427072525fef2eec11ef1cb4ef3fe5f5aed89b',
+       i686: '335e5123e335fde16994b263be047634d6026a16ac7994f8b7bea44ec145c4aa',
+     x86_64: 'f0ccd2b9be7065a515fdc0770fbe8c3f0d37e06f1888e8a876d9abbd94edb2c6'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'perl' => :logical
 end

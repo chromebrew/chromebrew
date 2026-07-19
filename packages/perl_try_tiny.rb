@@ -16,4 +16,6 @@ class Perl_try_tiny < PERL
        i686: '1268b021f833913a8d43734ab584f1ed9b893d3d406f53650896e978e4072901',
      x86_64: '765b8aa77cb8f2e2fa54377cd5d818daba9ce722598f24977eaf60fffade115d'
   })
+
+  depends_on 'perl' => :logical
 end

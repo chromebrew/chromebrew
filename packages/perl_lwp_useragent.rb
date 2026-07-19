@@ -16,4 +16,6 @@ class Perl_lwp_useragent < PERL
        i686: '5aca63c57d299e353a184e8793ef0aa9a006052b94aead9b283a73f648f7f719',
      x86_64: '28e4153a2bad0ae8a4416e2de4d2db170394c0fe763ec16116faac9c2c6ea97c'
   })
+
+  depends_on 'perl' => :logical
 end

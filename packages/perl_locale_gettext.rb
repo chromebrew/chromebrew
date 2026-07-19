@@ -17,5 +17,7 @@ class Perl_locale_gettext < PERL
      x86_64: '1b1ef261df52b10d9f1c330d79961a38d293eaf48e791a6ed972a9f7785d3af8'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'perl' => :logical
 end

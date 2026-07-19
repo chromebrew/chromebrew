@@ -11,10 +11,10 @@ class Perl_app_cpanminus < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cb18b151e66da219ac9881c84ffb3ddbadaa28e77e30d58a9f01d441e782dace',
-     armv7l: 'cb18b151e66da219ac9881c84ffb3ddbadaa28e77e30d58a9f01d441e782dace',
-       i686: '71c3ab7c3dd33e588d01ee6857ed0bb49e57f37bcc0bb40522bda023cc9548c4',
-     x86_64: '1beebd1257d21c93bf818c7de59bd5bfa10e6920263f2ac2db4adaba8c71040c'
+    aarch64: 'afd83edd920b82ac5f2bfa8426d789bb9d3e6771e8d91b48812d661a6965b381',
+     armv7l: 'afd83edd920b82ac5f2bfa8426d789bb9d3e6771e8d91b48812d661a6965b381',
+       i686: '78614d5d3acf00ecf08c86e655c498099cab2eee721939da3be66e523f0c70e6',
+     x86_64: '18ee4d73b799c9cc7bb2528751fcc3788ecda363f29629c3ddb61df514e51131'
   })
 
   def self.prebuild

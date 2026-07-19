@@ -17,5 +17,7 @@ class Perl_term_readkey < PERL
      x86_64: '5ba6f645f563f2b437c5ecac013019328831d57c81c6e535f13256f242fade15'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'perl' => :logical
 end

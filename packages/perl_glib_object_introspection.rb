@@ -11,16 +11,18 @@ class Perl_glib_object_introspection < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7193ab962dd8e2c414c8f0de9828e4ff072d16ee90682523949a32b33e3273d9',
-     armv7l: '7193ab962dd8e2c414c8f0de9828e4ff072d16ee90682523949a32b33e3273d9',
-     x86_64: '164f404f95c34e34a085bb115685832c2a24e3c406a5fc0dadabd79821079830'
+    aarch64: '9435aba36aa00d9940c227a64effa329e03e622c23fed2fc55462efb24b8065c',
+     armv7l: '9435aba36aa00d9940c227a64effa329e03e622c23fed2fc55462efb24b8065c',
+     x86_64: '3dd1d0e48c718a6311e84e7e75dbdc992a41dfc4a314363e25bcc1771094d40b'
   })
 
   depends_on 'cairo'
-  depends_on 'gobject_introspection'
-  depends_on 'perl_glib' => :build
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
-  depends_on 'libffi' # R
   depends_on 'gcc_lib' # R
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'gobject_introspection' => :library
+  depends_on 'libffi' => :library
+  depends_on 'perl' => :logical
+  depends_on 'perl_glib' => :build
 end

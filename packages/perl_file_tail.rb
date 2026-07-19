@@ -11,10 +11,10 @@ class Perl_file_tail < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '62f39d24c9917c1d5a3c42362d2a372fb20b1711e95727d2a0ce25a9deb99380',
-     armv7l: '62f39d24c9917c1d5a3c42362d2a372fb20b1711e95727d2a0ce25a9deb99380',
-       i686: 'bad1f36c2a0364953a5bcd450d0d86548bc2b5431ecfd17feb9bd5197050bfae',
-     x86_64: 'eef7805b258aad0c205fec73ddfaba9a455348a2e4700ee9a549884f42663ddc'
+    aarch64: '90f3399cdf46bfb562ba1ea7c7efaff03a2d06c9a0c65fbd41dad8a02efd25c9',
+     armv7l: '90f3399cdf46bfb562ba1ea7c7efaff03a2d06c9a0c65fbd41dad8a02efd25c9',
+       i686: '1ae9ab8c9e937a1c09ccf7eadcc5ac7bdfd103f48dcb3a72a0c4093163f16ed3',
+     x86_64: 'a0e06f3fde34001b2cb9c0893445f907d1d725e3afcd481a060b138628d0d7c5'
   })
 
   def self.prebuild
