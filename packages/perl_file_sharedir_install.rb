@@ -4,19 +4,18 @@ class Perl_file_sharedir_install < PERL
   description 'Install shared files'
   homepage 'https://metacpan.org/pod/File::ShareDir::Install'
   version "0.14-#{CREW_PERL_VER}"
-  license 'perl_5'
+  license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url "https://cpan.metacpan.org/authors/id/E/ET/ETHER/File-ShareDir-Install-#{version.split('-')[0]}.tar.gz"
-  source_sha256 'b6af5f4a5e92f1c3d7c9e2a5b9a83c0e2a6f8b9e5d1c3a7b9d2f4e6a8c1d3f5'
+  source_sha256 '2290d61bf5c39882fc3311da9ce1c7f42dbdf825ae169e552c59fe4598b36f4a'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4d4ba48d15b57cb39517bd1ed08905c3c622a9ddc0fe09fadf38ed8860901cd3',
-     armv7l: '4d4ba48d15b57cb39517bd1ed08905c3c622a9ddc0fe09fadf38ed8860901cd3',
-       i686: '74936c8549f2b681706d0127dcd83b00a53c0f3af7db89dbea4eb57dc2f8e016',
-     x86_64: 'ab6cef5ce4becd413b5d78acf0842b35da3eda88e1eedf4f039b4c8b1163dac8'
+    aarch64: 'e598e9f3c1fb13d0d27415cc7a65d2e1941627e8e638416dbf2d76edde9ab843',
+     armv7l: 'e598e9f3c1fb13d0d27415cc7a65d2e1941627e8e638416dbf2d76edde9ab843',
+       i686: '1d575b917356553d42d6085a2898e38c7333863836080255a04cd0f085f4c1f4',
+     x86_64: '3ba8a037c700891a016f20a5f70f95c972c5e5cb8815d75517ab9028bb549d6d'
   })
 
-  depends_on 'glibc' # R
   depends_on 'perl' => :logical
 end

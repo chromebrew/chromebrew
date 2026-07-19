@@ -11,18 +11,19 @@ class Perl_xml_parser < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b90327df1006bf82ae3820fec9100a7d1404e12a02ad4997dd898c3ed357cd5d',
-     armv7l: 'b90327df1006bf82ae3820fec9100a7d1404e12a02ad4997dd898c3ed357cd5d',
-       i686: '490e063606b65d3690d6cb9f10c69ce362396eda51395424d47e1f67ac12caea',
-     x86_64: '762d203cfaae1aad93a490019099d55fea76a8f84c48ac3c0bddcbb3f94ba822'
+    aarch64: '6ec9395662e92a14ceb941b461d3ab2d0e533f17e1ee4b910a28868bcd43eb88',
+     armv7l: '6ec9395662e92a14ceb941b461d3ab2d0e533f17e1ee4b910a28868bcd43eb88',
+       i686: '8f911ffd5efe0147f470cbc53d221cad0d3519854e1e3c6c83c28c201208b321',
+     x86_64: '9db09f2f159cc258650e00b38fa713a4aaf9e8fcc7616561b0fd175599465ca1'
   })
 
   depends_on 'expat' => :library
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
   depends_on 'perl' => :logical
-  depends_on 'perl_file_sharedir' => :executable
   depends_on 'perl_class_inspector' => :executable
+  depends_on 'perl_file_sharedir' => :executable
+  depends_on 'perl_file_sharedir_install' => :executable
 
   conflicts_ok # conflicts with perl_date_format
 end
