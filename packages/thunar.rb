@@ -4,11 +4,11 @@ require 'convenience_functions'
 class Thunar < Autotools
   description 'Thunar File Manager'
   homepage 'https://docs.xfce.org/xfce/thunar/Start'
-  version '4.20.8'
+  version '4.20.9'
   license 'GPL-2+ and LGPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://archive.xfce.org/src/xfce/thunar/#{version.rpartition('.')[0]}/thunar-#{version}.tar.bz2"
-  source_sha256 'cc735954d948a88eba2e40016a94c598f876309b736686c9f4d0273a05870c69'
+  source_sha256 'eb09869ce93b12ed285678967f55f243c833f2baf2fb10c9844ac7648d9270cb'
   binary_compression 'tar.zst'
 
   binary_sha256({
