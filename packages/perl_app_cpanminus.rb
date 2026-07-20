@@ -13,7 +13,7 @@ class Perl_app_cpanminus < Package
   binary_sha256({
     aarch64: 'afd83edd920b82ac5f2bfa8426d789bb9d3e6771e8d91b48812d661a6965b381',
      armv7l: 'afd83edd920b82ac5f2bfa8426d789bb9d3e6771e8d91b48812d661a6965b381',
-       i686: '78614d5d3acf00ecf08c86e655c498099cab2eee721939da3be66e523f0c70e6',
+       i686: 'c8c64f13b2db3da380598ae37c63fc6ab496cbd48d86b12d067a5b86ca3fd452',
      x86_64: '18ee4d73b799c9cc7bb2528751fcc3788ecda363f29629c3ddb61df514e51131'
   })
 

@@ -13,7 +13,7 @@ class Perl_unicode_eastasianwidth < Package
   binary_sha256({
     aarch64: '1d685e7f73b417f27f0ccdbc0b519174b5d43f29057b260af9a0fc8db994aedc',
      armv7l: '1d685e7f73b417f27f0ccdbc0b519174b5d43f29057b260af9a0fc8db994aedc',
-       i686: 'ddd780a611a02703ec4db71773b9c9d41e8da28502f6854504553bb1d48595f9',
+       i686: '1a783f036ae9555ed28c80657a373118d8ce610dc130b7c8d39305d5ded2bb75',
      x86_64: '5c19ea5a346ea597d8209dafbfc1cd71e91894993cb873cc25de02ca2d16fb37'
   })
 

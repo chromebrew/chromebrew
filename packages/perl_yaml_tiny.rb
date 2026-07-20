@@ -13,7 +13,7 @@ class Perl_yaml_tiny < Package
   binary_sha256({
     aarch64: '9b430f947c72edf55c4fd44d8bafda5b11faade319dbdf21e42fdcbadf7dfb9f',
      armv7l: '9b430f947c72edf55c4fd44d8bafda5b11faade319dbdf21e42fdcbadf7dfb9f',
-       i686: '9bc35270312f9ca375b0edc5a7b3a8268ab759d467ad1df1cd67b26f31c2c4db',
+       i686: '84fc80f0a471d94f9088532067fb2e412539d950830a15f7a9a758cef42e0f72',
      x86_64: '532ed529e7c761f9ceac074a0021b09da558b4d758d9d08152157e7cc2e8f6af'
   })
 

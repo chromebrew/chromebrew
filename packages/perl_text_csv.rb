@@ -11,10 +11,10 @@ class Perl_text_csv < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '991988b28ad10c15bc8780b34204b791e1af80abbc362509de2ae875eb0494c0',
-     armv7l: '991988b28ad10c15bc8780b34204b791e1af80abbc362509de2ae875eb0494c0',
-       i686: '8df994f64829f62d09433c98a5f9ba188278bd892bf0a2fb4e2cf147347f641d',
-     x86_64: '664a71e5f564b4be60192f91c6ade574d42d6ca8378d18fe50f7c103535d142a'
+    aarch64: '96fafe3efe806cd8fb903d4a1eddcadb36208b7cb06845b71dcff4e26355d8e2',
+     armv7l: '96fafe3efe806cd8fb903d4a1eddcadb36208b7cb06845b71dcff4e26355d8e2',
+       i686: '6d358a1dd153a81bae93b0e4ccb5b0055fd8df1083fc8459b85ff50f5a12e681',
+     x86_64: '2344726f7e9dbbf45efe7bc28dc7d3cc47913a22f8bc0b7ca098a8091185ed68'
   })
 
   depends_on 'perl' => :logical

@@ -13,7 +13,7 @@ class Perl_xml_writer < PERL
   binary_sha256({
     aarch64: '9cd75f21cf0f45e7caee76b8108365d60ddc0ab878f1ddfcc051c5c7adc5b7a8',
      armv7l: '9cd75f21cf0f45e7caee76b8108365d60ddc0ab878f1ddfcc051c5c7adc5b7a8',
-       i686: 'eb28f7ae348ad9d8b260543c6fa6d4d7f9f3d5bb3174652517593bd73e3c12b8',
+       i686: 'c1dee624b8acd56e0ab1b8e88d1d4a118007c5932f7ddeee56fa79a32528a1af',
      x86_64: '21a619197eae95f7a079c37a47fb5045af7aa6be7af695a76e54657c44d43c10'
   })
 

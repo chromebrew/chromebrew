@@ -13,7 +13,7 @@ class Perl_json < PERL
   binary_sha256({
     aarch64: '4ca5eeecc6744bdbd76a97cbfc422402478f267d8fb2480a4ffb2be1dfe691e5',
      armv7l: '4ca5eeecc6744bdbd76a97cbfc422402478f267d8fb2480a4ffb2be1dfe691e5',
-       i686: 'ce0fe6d74c36fc9daa2162fd4d5296afad725d7a7afdf4c51e93162b757f4ce4',
+       i686: '1e7711b40aa156b50efd8521062189474e263cee1366005cc1ef07e30f33bd7e',
      x86_64: 'c55cecc088d9d1b32481c1283af94274d95416b5c4a955567625b7013d961fc4'
   })
 

@@ -11,10 +11,10 @@ class Perl_try_tiny < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a29dc1da7faa393104c7292811ab0035e2fbccc269707a60c9a1e125fb1ba900',
-     armv7l: 'a29dc1da7faa393104c7292811ab0035e2fbccc269707a60c9a1e125fb1ba900',
-       i686: '1268b021f833913a8d43734ab584f1ed9b893d3d406f53650896e978e4072901',
-     x86_64: '765b8aa77cb8f2e2fa54377cd5d818daba9ce722598f24977eaf60fffade115d'
+    aarch64: 'a334d98488ed321eb28eea5d224e683f70f275a890e8d43048fd7c017338fe94',
+     armv7l: 'a334d98488ed321eb28eea5d224e683f70f275a890e8d43048fd7c017338fe94',
+       i686: '19ee98257468fe7153328ca84b6fe2716a66a46aec792e93b3ee48a1b669d4ed',
+     x86_64: 'da2e7099c8f0f14d1ff997b0a74073c7ed9bb0cd6ba07a034896d9fb143c2b82'
   })
 
   depends_on 'perl' => :logical

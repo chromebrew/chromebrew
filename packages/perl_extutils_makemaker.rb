@@ -13,14 +13,7 @@ class Perl_extutils_makemaker < PERL
   binary_sha256({
     aarch64: '5f040ddc442bda8b7d18bb7484f46943e5f20dcae440491b30ab0614fc1d2342',
      armv7l: '5f040ddc442bda8b7d18bb7484f46943e5f20dcae440491b30ab0614fc1d2342',
-       i686: '17099b2e8f0b4222734fc6d6766c234ce6b86e1a60da1a2dc04d279de5f96bba',
-     x86_64: 'e0cffbbd4124a87cadddec22b574cd6bfee55d1da1ae384777d94dc77966bce4'
-  })
-
-  binary_sha256({
-    aarch64: '5f040ddc442bda8b7d18bb7484f46943e5f20dcae440491b30ab0614fc1d2342',
-     armv7l: '5f040ddc442bda8b7d18bb7484f46943e5f20dcae440491b30ab0614fc1d2342',
-       i686: '17099b2e8f0b4222734fc6d6766c234ce6b86e1a60da1a2dc04d279de5f96bba',
+       i686: 'a428c4dca0a4300d4fa13d1a929c34c103b37dc43be5309666e2a42da173ab32',
      x86_64: 'e0cffbbd4124a87cadddec22b574cd6bfee55d1da1ae384777d94dc77966bce4'
   })
 

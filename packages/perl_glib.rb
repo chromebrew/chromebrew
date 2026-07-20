@@ -13,7 +13,7 @@ class Perl_glib < PERL
   binary_sha256({
     aarch64: '01a3ccd12e0fe4ccb074140013c5b6bf91ed1746ccafc40d50790bc0194a10fa',
      armv7l: '01a3ccd12e0fe4ccb074140013c5b6bf91ed1746ccafc40d50790bc0194a10fa',
-       i686: 'c521c0e2af319be94c576651650e86be6750cd60b91fe9cbc4763349217cdf7f',
+       i686: '93e33c00c6fa17f08d1adc7cd2fdaba63274aa5bca98fafa1e61b20b32dbbb05',
      x86_64: 'f7ee55234458aef6199911df7ebbf59dadae2d2d77376eea284ad83e2196d7a1'
   })
 

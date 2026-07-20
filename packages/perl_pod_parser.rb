@@ -11,10 +11,10 @@ class Perl_pod_parser < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '066cb7d78247f2f580ca69832e8d610ea8b62a1a5bd578140fe3586b012c593e',
-     armv7l: '066cb7d78247f2f580ca69832e8d610ea8b62a1a5bd578140fe3586b012c593e',
-       i686: 'b93232e9b4616e2b691d70d70d9c86ea78eb563e9e97284471ed468ab330d67b',
-     x86_64: '874b9fe46939fbd32376a04559d390886b041ef9ab88b0d4ea651792d349f3ec'
+    aarch64: '40f3c4afef556740d68deb35df6f07600f0d45f6d9fa49a1b4cebefdc0047c3b',
+     armv7l: '40f3c4afef556740d68deb35df6f07600f0d45f6d9fa49a1b4cebefdc0047c3b',
+       i686: '06fa7ecb7145c60aa8b9e54d57ba8a699708fcc11122f2060fe83841e1098ff7',
+     x86_64: 'abba6ba4f40cfc3d572f8dcbf9418c01eec8afb182cb546b5e12699e6a5b02b4'
   })
 
   def self.prebuild

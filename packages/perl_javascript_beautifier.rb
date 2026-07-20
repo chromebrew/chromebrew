@@ -11,10 +11,10 @@ class Perl_javascript_beautifier < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b369e5bc47911e7408ef6f58b18311faecff3e101d58979e4f7d94c18e7e79b1',
-     armv7l: 'b369e5bc47911e7408ef6f58b18311faecff3e101d58979e4f7d94c18e7e79b1',
-       i686: 'd9f47f712d1d1539b8b3bd1b66f9e335bdaef4373dc42be2356987a1aae20929',
-     x86_64: '875757eb64a73d26edd26ba767a92ef4e55bd972ae79e0a0f726ddd6bd4940dd'
+    aarch64: '19cd221cf4bc944893692b85a63a2356543eaca0aa40cbbbd2209e6812cf19e1',
+     armv7l: '19cd221cf4bc944893692b85a63a2356543eaca0aa40cbbbd2209e6812cf19e1',
+       i686: '37e5c9efcc79fdfd424c2dc73504a0e99045778ec9c3fcb427a8db507701d4de',
+     x86_64: 'c3fa7419c57d4d1d473bba24d134c0a04c3d0ab08d97b3d981dc983dfceeff6d'
   })
 
   depends_on 'perl' => :logical

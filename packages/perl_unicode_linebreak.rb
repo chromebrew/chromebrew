@@ -11,10 +11,10 @@ class Perl_unicode_linebreak < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9aef5868ff1ca6fdd3b0c3a9f8371efe2250a67a4c7ea991bc1a010039f1c887',
-     armv7l: '9aef5868ff1ca6fdd3b0c3a9f8371efe2250a67a4c7ea991bc1a010039f1c887',
-       i686: 'e7d077c763d49aa3605f2e4025adf8acf3268c640b709c9e9314b8dbc8b76287',
-     x86_64: 'f5d2e4044eb9b5e7a4f375aabe74c08bc5d10e13a6dac4e44f2633703919ac63'
+    aarch64: 'f7a53fe75b32fe7fa32fc4dd37e2212f4f9edf452b2eda6baf6f1b366c8ce30d',
+     armv7l: 'f7a53fe75b32fe7fa32fc4dd37e2212f4f9edf452b2eda6baf6f1b366c8ce30d',
+       i686: 'b980da46a31246a8ecb23f28e57836443bf4cbcc0cd0e26a72a95adc956227b6',
+     x86_64: 'f053789039ce33f1cd0751bc028ea035bb2275649cdc46418fe1d4289f769e09'
   })
 
   depends_on 'glibc' => :library

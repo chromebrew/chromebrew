@@ -11,10 +11,10 @@ class Perl_net_http < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'dfb0454522878959b691f90c995c1e0b25286dff1a32e665ce9a57a03be089d9',
-     armv7l: 'dfb0454522878959b691f90c995c1e0b25286dff1a32e665ce9a57a03be089d9',
-       i686: '3724d765666073a1d0a84c0934a3797b46ecee912de89a5460cac3a920e17656',
-     x86_64: '9d90b4cb557c303608176af3136c4a2c411972785763a82f2fc8c179b18488f9'
+    aarch64: '1a683cd6c3cf5ed7f59ea93f57a8d3da4e6af23db9b3925c75fc2fb8048d2e00',
+     armv7l: '1a683cd6c3cf5ed7f59ea93f57a8d3da4e6af23db9b3925c75fc2fb8048d2e00',
+       i686: '12900eae6da005182200f59fa2a41c5fe93ced5471fdc17cc010c64b9baccf8a',
+     x86_64: '2a8d6c52d4bfae3b6bee51f4aab5f2661c68d2a3405a89db5394adca55f58ee3'
   })
 
   depends_on 'perl' => :logical

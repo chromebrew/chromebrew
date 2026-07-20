@@ -11,10 +11,10 @@ class Perl_parse_yapp < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c057f82c148b2e345dc90b67746023519d5856e203b84f21ee2b26758e66c7e4',
-     armv7l: 'c057f82c148b2e345dc90b67746023519d5856e203b84f21ee2b26758e66c7e4',
-       i686: '573f89994d4fe1dbaa22ad9fa0af457bad88cb34ebb5e7f7da7472b662c025af',
-     x86_64: '05350c4cafcb8f79199a0df6f4b9a38cd10a3c92a533b38a2c795071d31fa043'
+    aarch64: '5818d7ca01c925e0a3a1b9b1e9a68cddd1c4e4e3c7bd1452b66910151bedf2ba',
+     armv7l: '5818d7ca01c925e0a3a1b9b1e9a68cddd1c4e4e3c7bd1452b66910151bedf2ba',
+       i686: '1c1178e0cf8a48ce5d82c4f64f0e637b942e785ca0ec140de73ec2936c71dc1f',
+     x86_64: '26b260d04207147e0434439333cb6e533d8b31aa99478e38ec90fbaafcbf65ac'
   })
 
   def self.prebuild

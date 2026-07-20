@@ -11,10 +11,10 @@ class Perl_lwp_protocol_https < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fea84427d5b49f31c6044a35251dea302fac2c3681bdf4d43ffacc7b66d94c4d',
-     armv7l: 'fea84427d5b49f31c6044a35251dea302fac2c3681bdf4d43ffacc7b66d94c4d',
-       i686: '17820b8d4c880cec57064cc7443ac2586c9717c4aefe7f3851d1211abad82b54',
-     x86_64: 'e565d3a9c818f2821c0c57f29fdd3eef6f328d0906fbf7d6d4f4903d8e6cacdb'
+    aarch64: '95d61e95d266ee4a7621682212007781338dd278c66045eec8331ac27a45351e',
+     armv7l: '95d61e95d266ee4a7621682212007781338dd278c66045eec8331ac27a45351e',
+       i686: 'f3d487bdb6c17ebec99d063a555375ff0284d3e0e9e6b6df76314ca8581a5fba',
+     x86_64: 'cf33d0a321224085917a965ad74ed2671d8fe30148e4db7fcc333ed1a6dcea35'
   })
 
   depends_on 'perl' => :logical

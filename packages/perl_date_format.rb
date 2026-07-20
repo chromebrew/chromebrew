@@ -13,7 +13,7 @@ class Perl_date_format < Package
   binary_sha256({
     aarch64: 'c0eeb5529764b0f77caff46e75f241005565c0b4f40cfafa5770d457f3b886f3',
      armv7l: 'c0eeb5529764b0f77caff46e75f241005565c0b4f40cfafa5770d457f3b886f3',
-       i686: '965a18d052dab848e33cda3b15267f61990cdf0074adec98d99bc1f240176495',
+       i686: 'df6797645682a08fceac17eb31961cc1e3b79596087d6b262dd2e454103ffe38',
      x86_64: '0e28216e43b5cef00a1aa855c95b6ec74fc0728b210eddfbf1e42abed2f3dc1c'
   })
 

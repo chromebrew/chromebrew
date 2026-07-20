@@ -13,7 +13,7 @@ class Perl_clone < PERL
   binary_sha256({
     aarch64: '593bf4cbdce1450f55acc8f5dc427072525fef2eec11ef1cb4ef3fe5f5aed89b',
      armv7l: '593bf4cbdce1450f55acc8f5dc427072525fef2eec11ef1cb4ef3fe5f5aed89b',
-       i686: '335e5123e335fde16994b263be047634d6026a16ac7994f8b7bea44ec145c4aa',
+       i686: '60a27fb2091843378c6a16c502c50410bce12b2e08c697c05e3de2194c2b4eb9',
      x86_64: 'f0ccd2b9be7065a515fdc0770fbe8c3f0d37e06f1888e8a876d9abbd94edb2c6'
   })
 
