@@ -11,10 +11,10 @@ class Perl_json < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '02ab5dcd5e2dd99ce650635c3bb3ed2182a2923787ce24162619cad741c86006',
-     armv7l: '02ab5dcd5e2dd99ce650635c3bb3ed2182a2923787ce24162619cad741c86006',
-       i686: '6ae5c61335c78767161a3cd9e00785ac4f3b05fdfcc04ac1bee599fd356efb3e',
-     x86_64: '2c3d7553b8d36e84a4fcacf8e861935f3b6eb017900e027d43a02a64e31379f5'
+    aarch64: '4ca5eeecc6744bdbd76a97cbfc422402478f267d8fb2480a4ffb2be1dfe691e5',
+     armv7l: '4ca5eeecc6744bdbd76a97cbfc422402478f267d8fb2480a4ffb2be1dfe691e5',
+       i686: 'ce0fe6d74c36fc9daa2162fd4d5296afad725d7a7afdf4c51e93162b757f4ce4',
+     x86_64: 'c55cecc088d9d1b32481c1283af94274d95416b5c4a955567625b7013d961fc4'
   })
 
   depends_on 'perl' => :logical
