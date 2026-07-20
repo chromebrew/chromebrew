@@ -11,13 +11,15 @@ class Perl_file_spec < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cd7942b6a912309c2715bccfab06295671a31a9b8d46cfe0987a4c5d25beac27',
-     armv7l: 'cd7942b6a912309c2715bccfab06295671a31a9b8d46cfe0987a4c5d25beac27',
-       i686: '1abfd0778eeb57cfc88e297c93a45569e0929889d5dd1b1956307aebce3b1caf',
-     x86_64: '4ccf4c80468b6ad4bff81fbec7c4982f3330c4516df751ca866d671fed175a82'
+    aarch64: 'ab1c6cc1c4368f817b562d1180e0c733e4b692f04f7d9f35446aebbc66b591d4',
+     armv7l: 'ab1c6cc1c4368f817b562d1180e0c733e4b692f04f7d9f35446aebbc66b591d4',
+       i686: '071e6f8a967e94f6989b550be121cc51365fc7a1faadf744a09cbd7e3e6ef20d',
+     x86_64: '86aef81263a6a8d0384a80c347c4e17ebb0b0e5aa6b09ecadbc40a08084d0e25'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'perl' => :logical
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'

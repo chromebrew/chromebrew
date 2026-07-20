@@ -11,11 +11,13 @@ class Perl_term_readkey < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '41d94360e2441fdeb0211b04ff15605675a061ac1b3a6c5da7001b1299bafcbf',
-     armv7l: '41d94360e2441fdeb0211b04ff15605675a061ac1b3a6c5da7001b1299bafcbf',
-       i686: '69f6ceacb2ac536eaec1ae28bfae806b1ef3fcc5437409b67b30f6f439f4e155',
-     x86_64: '5ba6f645f563f2b437c5ecac013019328831d57c81c6e535f13256f242fade15'
+    aarch64: 'f7e6c9f12bce3bbae916995d7b08f90264dcd27759bc87480e7d53dd0d4e8c61',
+     armv7l: 'f7e6c9f12bce3bbae916995d7b08f90264dcd27759bc87480e7d53dd0d4e8c61',
+       i686: '9e457cd33d87b3c58762f5039552427051a11e2dc05215dcd5b76893655091a4',
+     x86_64: '16b4b169e71fdb5630bdf8cae8469a9561e2ce5a75e2064007f4e5e9a27edd4a'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'perl' => :logical
 end

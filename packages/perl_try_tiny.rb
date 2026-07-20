@@ -3,17 +3,19 @@ require 'buildsystems/perl'
 class Perl_try_tiny < PERL
   description 'Minimal try/catch with proper preservation of $@'
   homepage 'https://metacpan.org/pod/Try::Tiny'
-  version "0.31-#{CREW_PERL_VER}"
+  version "0.32-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
-  source_url 'https://cpan.metacpan.org/authors/id/E/ET/ETHER/Try-Tiny-0.31.tar.gz'
-  source_sha256 '3300d31d8a4075b26d8f46ce864a1d913e0e8467ceeba6655d5d2b2e206c11be'
+  source_url "https://cpan.metacpan.org/authors/id/E/ET/ETHER/Try-Tiny-#{version.split('-')[0]}.tar.gz"
+  source_sha256 'ef2d6cab0bad18e3ab1c4e6125cc5f695c7e459899f512451c8fa3ef83fa7fc0'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a29dc1da7faa393104c7292811ab0035e2fbccc269707a60c9a1e125fb1ba900',
-     armv7l: 'a29dc1da7faa393104c7292811ab0035e2fbccc269707a60c9a1e125fb1ba900',
-       i686: '1268b021f833913a8d43734ab584f1ed9b893d3d406f53650896e978e4072901',
-     x86_64: '765b8aa77cb8f2e2fa54377cd5d818daba9ce722598f24977eaf60fffade115d'
+    aarch64: 'cb2f1ad7b3f9a7d3323bbfa3d6a19cb7b296013aaee3a2b33cd8e57c1d0f8820',
+     armv7l: 'cb2f1ad7b3f9a7d3323bbfa3d6a19cb7b296013aaee3a2b33cd8e57c1d0f8820',
+       i686: '12d6c00315bf3be03d935ace7e699ea1a26542628ce7f14a3009555415a2e0db',
+     x86_64: 'bdb650e2bc04fc34836e6a7d17289bfe3c102223fae865ee954cf11692e4df2b'
   })
+
+  depends_on 'perl' => :logical
 end

@@ -11,14 +11,16 @@ class Perl_io_file < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5ddff773b8af7033bcb92e706045251fed9788f4eff64c3eca8388ec16dd6e66',
-     armv7l: '5ddff773b8af7033bcb92e706045251fed9788f4eff64c3eca8388ec16dd6e66',
-       i686: 'eb9046dd3a2ba12316af327894e27b6fcd5889f9149436a57faa8c27886bf34f',
-     x86_64: 'b651176529ef15ddb49d9e8c2a947959b9be51a2bcdb8b20bc9fdd6e39af05d7'
+    aarch64: '20e61e6b245098d2ef68349800bd5deadf14923801855f742c9e30cdba2195c3',
+     armv7l: '20e61e6b245098d2ef68349800bd5deadf14923801855f742c9e30cdba2195c3',
+       i686: '8c6c0aee29007512f811a67d89c299bb502a91a50b1c1b5222f39630a945270c',
+     x86_64: 'c0cc0d572bc3704a51ced478b7b26f7ddf9cbde2f345ccf3fbaed28bba45879c'
   })
 
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'perl' => :logical
   depends_on 'perl_file_temp' => :build
-  depends_on 'glibc' # R
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'

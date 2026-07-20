@@ -3,18 +3,18 @@ require 'package'
 class Perl_date_manip < Package
   description 'Date::Manip - Date manipulation routines'
   homepage 'https://metacpan.org/pod/Date::Manip'
-  version "6.95-#{CREW_PERL_VER}"
+  version "6.99-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
-  source_url 'https://cpan.metacpan.org/authors/id/S/SB/SBECK/Date-Manip-6.95.tar.gz'
+  source_url "https://cpan.metacpan.org/authors/id/S/SB/SBECK/Date-Manip-#{version.split('-')[0]}.tar.gz"
   source_sha256 '92383832311f22083f55d03c8dae8f4bcc387cd902624e5ef9ac680f144cbd4c'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '987954e5917fde35d7917f160a8890df5e403563f67ed017a56d18b06bf1067e',
-     armv7l: '987954e5917fde35d7917f160a8890df5e403563f67ed017a56d18b06bf1067e',
-       i686: 'dffd0b7217d81587baf7896551156029582928bc8b1d8517dc43fab408147b1b',
-     x86_64: 'b2787c35a09cedf3d9ab2d483ece66f3f7b0fae7b179f1f6be7707d264dbaa43'
+    aarch64: '42eed6abc21985269b9192f765a6ca7f2d82a887bc14bb74f44e56e338faa3b5',
+     armv7l: '42eed6abc21985269b9192f765a6ca7f2d82a887bc14bb74f44e56e338faa3b5',
+       i686: '18f26def7c8763899ffc76b1088b4fca64f916617ccd3a63ab9c0c9ce221b92a',
+     x86_64: '2030193c0e5e5d5148a75f5d9af0472014bb35675c27208bae5e0603fc494a04'
   })
 
   def self.prebuild

@@ -11,11 +11,13 @@ class Perl_locale_gettext < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ea2b381247d367fdf7c90a4114c7bd3b3d1fcf04131f74a25be9e78b7e9c89c2',
-     armv7l: 'ea2b381247d367fdf7c90a4114c7bd3b3d1fcf04131f74a25be9e78b7e9c89c2',
-       i686: '1d29f0e0166383af3eed1ce03f85ca280ce4a0cf75022b9e6036d2e688cdd7b9',
-     x86_64: '1b1ef261df52b10d9f1c330d79961a38d293eaf48e791a6ed972a9f7785d3af8'
+    aarch64: '206ebd9a75d31527d8e3a7cc2ae7dc0446e9958d4405b392e7c354704432736f',
+     armv7l: '206ebd9a75d31527d8e3a7cc2ae7dc0446e9958d4405b392e7c354704432736f',
+       i686: 'a8715960cc59ea05a1adde7a36ee256834e8514e2ab0a251ebd0413a304bf20f',
+     x86_64: '70f938255289e933ebf61cd08096986b31f25d89d5a3d00829ac45248890bc64'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'perl' => :logical
 end

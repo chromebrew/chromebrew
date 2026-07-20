@@ -1,4 +1,4 @@
-# Total size: 11441936
+# Total size: 11302061
 /usr/local/bin/dm_date
 /usr/local/bin/dm_zdump
 /usr/local/share/man/man1/dm_date.1.zst
@@ -569,6 +569,7 @@
 /usr/local/share/perl5/site_perl/Date/Manip/TZ/amciud00.pm
 /usr/local/share/perl5/site_perl/Date/Manip/TZ/amcord00.pm
 /usr/local/share/perl5/site_perl/Date/Manip/TZ/amcost00.pm
+/usr/local/share/perl5/site_perl/Date/Manip/TZ/amcoyh00.pm
 /usr/local/share/perl5/site_perl/Date/Manip/TZ/amcuia00.pm
 /usr/local/share/perl5/site_perl/Date/Manip/TZ/amdanm00.pm
 /usr/local/share/perl5/site_perl/Date/Manip/TZ/amdaws00.pm
@@ -685,7 +686,6 @@
 /usr/local/share/perl5/site_perl/Date/Manip/TZ/asbeir00.pm
 /usr/local/share/perl5/site_perl/Date/Manip/TZ/asbish00.pm
 /usr/local/share/perl5/site_perl/Date/Manip/TZ/aschit00.pm
-/usr/local/share/perl5/site_perl/Date/Manip/TZ/aschoi00.pm
 /usr/local/share/perl5/site_perl/Date/Manip/TZ/ascolo00.pm
 /usr/local/share/perl5/site_perl/Date/Manip/TZ/asdama00.pm
 /usr/local/share/perl5/site_perl/Date/Manip/TZ/asdhak00.pm
@@ -767,10 +767,8 @@
 /usr/local/share/perl5/site_perl/Date/Manip/TZ/ausydn00.pm
 /usr/local/share/perl5/site_perl/Date/Manip/TZ/b00.pm
 /usr/local/share/perl5/site_perl/Date/Manip/TZ/c00.pm
-/usr/local/share/perl5/site_perl/Date/Manip/TZ/cet00.pm
 /usr/local/share/perl5/site_perl/Date/Manip/TZ/d00.pm
 /usr/local/share/perl5/site_perl/Date/Manip/TZ/e00.pm
-/usr/local/share/perl5/site_perl/Date/Manip/TZ/eet00.pm
 /usr/local/share/perl5/site_perl/Date/Manip/TZ/etgmt00.pm
 /usr/local/share/perl5/site_perl/Date/Manip/TZ/etgmtm00.pm
 /usr/local/share/perl5/site_perl/Date/Manip/TZ/etgmtm01.pm
@@ -847,7 +845,6 @@
 /usr/local/share/perl5/site_perl/Date/Manip/TZ/k00.pm
 /usr/local/share/perl5/site_perl/Date/Manip/TZ/l00.pm
 /usr/local/share/perl5/site_perl/Date/Manip/TZ/m00.pm
-/usr/local/share/perl5/site_perl/Date/Manip/TZ/met00.pm
 /usr/local/share/perl5/site_perl/Date/Manip/TZ/n00.pm
 /usr/local/share/perl5/site_perl/Date/Manip/TZ/o00.pm
 /usr/local/share/perl5/site_perl/Date/Manip/TZ/p00.pm
@@ -889,7 +886,6 @@
 /usr/local/share/perl5/site_perl/Date/Manip/TZ/ut00.pm
 /usr/local/share/perl5/site_perl/Date/Manip/TZ/v00.pm
 /usr/local/share/perl5/site_perl/Date/Manip/TZ/w00.pm
-/usr/local/share/perl5/site_perl/Date/Manip/TZ/wet00.pm
 /usr/local/share/perl5/site_perl/Date/Manip/TZ/x00.pm
 /usr/local/share/perl5/site_perl/Date/Manip/TZ/y00.pm
 /usr/local/share/perl5/site_perl/Date/Manip/TZ/z00.pm

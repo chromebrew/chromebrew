@@ -11,9 +11,9 @@ class Perl_sgmls < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '59f819d4146063577a31cba64ce9f7586664e9eeb1ea2ff3d952b87a89f7f598',
-     armv7l: '59f819d4146063577a31cba64ce9f7586664e9eeb1ea2ff3d952b87a89f7f598',
-       i686: '62a69aeeffaafefcfbbbebe3ec65d6c64f5480cf1a4113eae31e2e3d2270acbb',
+    aarch64: 'd47d72539205e3772dc110cfc33eb14dd46817c0d48cd4578995969a0535a64f',
+     armv7l: 'd47d72539205e3772dc110cfc33eb14dd46817c0d48cd4578995969a0535a64f',
+       i686: '9d61eae41e4f953e3804346e4b4212f212ed0ff627f63df804a5360fcf735ec2',
      x86_64: '6fff085bedfd64a418e582b6de1fdea3b78eb035ca55277f6f0a67096f9bcc2c'
   })
 
