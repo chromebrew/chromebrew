@@ -11,8 +11,8 @@ class Perl_file_spec < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '78bd20660d0ce4340bcd11d2354bab52f62553de1840212342df125166d724c7',
-     armv7l: '78bd20660d0ce4340bcd11d2354bab52f62553de1840212342df125166d724c7',
+    aarch64: 'ab1c6cc1c4368f817b562d1180e0c733e4b692f04f7d9f35446aebbc66b591d4',
+     armv7l: 'ab1c6cc1c4368f817b562d1180e0c733e4b692f04f7d9f35446aebbc66b591d4',
        i686: '071e6f8a967e94f6989b550be121cc51365fc7a1faadf744a09cbd7e3e6ef20d',
      x86_64: '86aef81263a6a8d0384a80c347c4e17ebb0b0e5aa6b09ecadbc40a08084d0e25'
   })

@@ -11,8 +11,8 @@ class Perl_xml_parser < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6ec9395662e92a14ceb941b461d3ab2d0e533f17e1ee4b910a28868bcd43eb88',
-     armv7l: '6ec9395662e92a14ceb941b461d3ab2d0e533f17e1ee4b910a28868bcd43eb88',
+    aarch64: 'fae543b502bbdd2a0e5341d254b815fb117ebd77c8185a67d98704785432c7fa',
+     armv7l: 'fae543b502bbdd2a0e5341d254b815fb117ebd77c8185a67d98704785432c7fa',
        i686: '37263e99ed9c6e316d80c584efef84b161d81501be02dd4770e562f760c479ed',
      x86_64: '9db09f2f159cc258650e00b38fa713a4aaf9e8fcc7616561b0fd175599465ca1'
   })

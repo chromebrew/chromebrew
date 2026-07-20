@@ -11,8 +11,8 @@ class Perl_text_charwidth < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'eb79b142a945e01dae2d33d7a0219509fe6f9d4fff67edc9cf9b0298ac6cdf61',
-     armv7l: 'eb79b142a945e01dae2d33d7a0219509fe6f9d4fff67edc9cf9b0298ac6cdf61',
+    aarch64: '27276ab1d1fa2c95ef8ddb55e5cf054bc28d58e5a8c5d618152d01035dc02524',
+     armv7l: '27276ab1d1fa2c95ef8ddb55e5cf054bc28d58e5a8c5d618152d01035dc02524',
        i686: '636f9df309174d4978c09fbcbc6ba9c9c5183c82677d999909fb686f3cbf661e',
      x86_64: '50dc30e26bc35e7e83bfeadea1263d96ad75932766da1197f811ab621e8b124b'
   })

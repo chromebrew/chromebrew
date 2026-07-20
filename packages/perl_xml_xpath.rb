@@ -6,18 +6,18 @@ require 'buildsystems/perl'
 class Perl_xml_xpath < PERL
   description 'A set of modules for parsing and evaluating XPath statements'
   homepage 'https://metacpan.org/release/XML-XPath'
-  version '1.48'
+  version '1.49'
   license 'PerlArtistic GPL'
   compatibility 'all'
-  source_url 'https://cpan.metacpan.org/authors/id/M/MA/MANWAR/XML-XPath-1.48.tar.gz'
-  source_sha256 '7bc75be36b239e5b2e700a9570d2b53b43093d467f2abe6a743f9ff9093790cd'
+  source_url "https://cpan.metacpan.org/authors/id/M/MA/MANWAR/XML-XPath-#{version}.tar.gz"
+  source_sha256 '9c84a51be4cdb47bf88766ecab051fe092016472969e39f4acdba009885faabe'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '54e2d7d5233406f25f120f17a4787390bc146a980a87bfab768160418cf41189',
-     armv7l: '54e2d7d5233406f25f120f17a4787390bc146a980a87bfab768160418cf41189',
-       i686: 'b3bb94995c44e6deb3620f96a56d5e3f4a2e7d775aa83740045ab6719de295a0',
-     x86_64: '8c5a8886d499f67b1df3ff62d6cc50605d4afe87122194e962ceeb4196e8b266'
+    aarch64: 'a2aeab378004fec997212b1bcc2263a4a8475d2fe8976bbc3f9b4cba8e957e68',
+     armv7l: 'a2aeab378004fec997212b1bcc2263a4a8475d2fe8976bbc3f9b4cba8e957e68',
+       i686: '56a39ca59c72140b27c2b06eb6ba4daf3db34e97d1a498ca94e3e0c88555bc64',
+     x86_64: 'fc6227e0d439a3a44c31339c56ed1b00a4a95a03c5365d6a41676773da1c176b'
   })
 
   depends_on 'perl' => :logical

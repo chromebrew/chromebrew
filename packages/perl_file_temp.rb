@@ -3,11 +3,11 @@ require 'buildsystems/perl'
 class Perl_file_temp < PERL
   description 'Return name and handle of a temporary file safely'
   homepage 'https://metacpan.org/pod/File::Temp'
-  version "0.2311-#{CREW_PERL_VER}"
+  version "0.2312-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
-  source_url 'https://cpan.metacpan.org/authors/id/E/ET/ETHER/File-Temp-0.2311.tar.gz'
-  source_sha256 '2290d61bf5c39882fc3311da9ce1c7f42dbdf825ae169e552c59fe4598b36f4a'
+  source_url "https://cpan.metacpan.org/authors/id/E/ET/ETHER/File-Temp-#{version.split('-')[0]}.tar.gz"
+  source_sha256 '6fa961d955cf84d5b87f2f219a723cf77cb44b79282793f6819ccb19e8d0b884'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -18,10 +18,10 @@ class Perl_file_temp < PERL
   })
 
   binary_sha256({
-    aarch64: 'f9b6175f87a1189d26427470ef95814af14b4b0f0ee4a9037d0b819e661a8998',
-     armv7l: 'f9b6175f87a1189d26427470ef95814af14b4b0f0ee4a9037d0b819e661a8998',
-       i686: 'b04f9380e50a3b35e42d2d92b90ec1b88205f8934f6ec23d8921ab6594f6f7b7',
-     x86_64: 'e8cef1dc9ce781afa80cac42f5e8214162ac27296993d2cb0578b55c08c41638'
+    aarch64: '45036d05f425edb77c425c0b3ccd509dc2fa34a6f77413dc8f31963024e05020',
+     armv7l: '45036d05f425edb77c425c0b3ccd509dc2fa34a6f77413dc8f31963024e05020',
+       i686: 'd5a824c39086ea2fa893bfb257d30eece51a6891ed21dc4f4be3315895617aad',
+     x86_64: 'bf53a24609d7dfc94545106998e9713321760de8f30e542ff3c8338c1462aa57'
   })
 
   depends_on 'perl' => :logical

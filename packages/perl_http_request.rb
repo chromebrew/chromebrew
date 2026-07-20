@@ -11,8 +11,8 @@ class Perl_http_request < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '536f68ed7af45a689a9f04f9ce37b7b4352e07f6e92ccf6e46452bfd5db5c020',
-     armv7l: '536f68ed7af45a689a9f04f9ce37b7b4352e07f6e92ccf6e46452bfd5db5c020',
+    aarch64: 'eac00d59811732e09fe50d7e6b5fabe32ecb7ec0503dc8ecfc1411004aa35b58',
+     armv7l: 'eac00d59811732e09fe50d7e6b5fabe32ecb7ec0503dc8ecfc1411004aa35b58',
        i686: 'd8563c0e8682f5a414055179a9425c6d588be8fcc0312e2d1a5eccf36b51ffc6',
      x86_64: '831f122b72f53e73273f174942a07dcadd0b23bc000dfb386ff564c1829e55ea'
   })

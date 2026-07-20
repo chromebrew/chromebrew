@@ -11,8 +11,8 @@ class Perl_file_tail < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '90f3399cdf46bfb562ba1ea7c7efaff03a2d06c9a0c65fbd41dad8a02efd25c9',
-     armv7l: '90f3399cdf46bfb562ba1ea7c7efaff03a2d06c9a0c65fbd41dad8a02efd25c9',
+    aarch64: '36456b3fed202ac79d4f1349fa912fc0a4d0e960532d373a98c2846b7a5095a9',
+     armv7l: '36456b3fed202ac79d4f1349fa912fc0a4d0e960532d373a98c2846b7a5095a9',
        i686: '21669145b2a00faf9cb2d8d5689601de62859d44381acb8c3481990bb1645a09',
      x86_64: 'a0e06f3fde34001b2cb9c0893445f907d1d725e3afcd481a060b138628d0d7c5'
   })

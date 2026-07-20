@@ -11,8 +11,8 @@ class Perl_term_readkey < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '019b8fa8fbc7baf7b09ac7214106883ab0567b6166c654fb587adfedb25a9dda',
-     armv7l: '019b8fa8fbc7baf7b09ac7214106883ab0567b6166c654fb587adfedb25a9dda',
+    aarch64: 'f7e6c9f12bce3bbae916995d7b08f90264dcd27759bc87480e7d53dd0d4e8c61',
+     armv7l: 'f7e6c9f12bce3bbae916995d7b08f90264dcd27759bc87480e7d53dd0d4e8c61',
        i686: '9e457cd33d87b3c58762f5039552427051a11e2dc05215dcd5b76893655091a4',
      x86_64: '16b4b169e71fdb5630bdf8cae8469a9561e2ce5a75e2064007f4e5e9a27edd4a'
   })

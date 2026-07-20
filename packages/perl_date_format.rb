@@ -11,8 +11,8 @@ class Perl_date_format < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c0eeb5529764b0f77caff46e75f241005565c0b4f40cfafa5770d457f3b886f3',
-     armv7l: 'c0eeb5529764b0f77caff46e75f241005565c0b4f40cfafa5770d457f3b886f3',
+    aarch64: '9fd78ef01265c043cad85d4664bde7f5f0a64b6f3a33f6630ec16512c1c06a3b',
+     armv7l: '9fd78ef01265c043cad85d4664bde7f5f0a64b6f3a33f6630ec16512c1c06a3b',
        i686: 'df6797645682a08fceac17eb31961cc1e3b79596087d6b262dd2e454103ffe38',
      x86_64: '0e28216e43b5cef00a1aa855c95b6ec74fc0728b210eddfbf1e42abed2f3dc1c'
   })

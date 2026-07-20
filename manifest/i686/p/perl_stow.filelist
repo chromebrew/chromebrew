@@ -1,4 +1,4 @@
-# Total size: 937958
+# Total size: 662529
 /usr/local/bin/chkstow
 /usr/local/bin/stow
 /usr/local/share/doc/stow/ChangeLog
@@ -36,7 +36,6 @@
 /usr/local/share/doc/stow/manual-split/symlink.html
 /usr/local/share/doc/stow/manual-split/tree-folding.html
 /usr/local/share/doc/stow/manual-split/tree-refolding.html
-/usr/local/share/doc/stow/manual.pdf
 /usr/local/share/doc/stow/version.texi
 /usr/local/share/info/stow.info.zst
 /usr/local/share/man/man8/stow.8.zst

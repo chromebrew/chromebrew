@@ -11,8 +11,8 @@ class Perl_ipc_run < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '15f572df584acbeeb037b3972efb05b61f50e595b6e22fd915b1d4ce63df0678',
-     armv7l: '15f572df584acbeeb037b3972efb05b61f50e595b6e22fd915b1d4ce63df0678',
+    aarch64: 'c21c5403de81682e4265dea3d408acc6abaeba7a71960fe50083beac4829203d',
+     armv7l: 'c21c5403de81682e4265dea3d408acc6abaeba7a71960fe50083beac4829203d',
        i686: '286185e92f46574798bb3167a6d57b003496ae327969eabdf75654b5834091fe',
      x86_64: 'c61f4ee459e26f7c8bc8f28568a2d17814e87474d2a1e189c48a55313af773a0'
   })

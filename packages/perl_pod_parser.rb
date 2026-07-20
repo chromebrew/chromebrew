@@ -11,8 +11,8 @@ class Perl_pod_parser < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '40f3c4afef556740d68deb35df6f07600f0d45f6d9fa49a1b4cebefdc0047c3b',
-     armv7l: '40f3c4afef556740d68deb35df6f07600f0d45f6d9fa49a1b4cebefdc0047c3b',
+    aarch64: 'b7659eed7c5fef373eab13e0c2a5701546bf126938b0a861330c4fe6d720b4b4',
+     armv7l: 'b7659eed7c5fef373eab13e0c2a5701546bf126938b0a861330c4fe6d720b4b4',
        i686: '06fa7ecb7145c60aa8b9e54d57ba8a699708fcc11122f2060fe83841e1098ff7',
      x86_64: 'abba6ba4f40cfc3d572f8dcbf9418c01eec8afb182cb546b5e12699e6a5b02b4'
   })

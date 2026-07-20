@@ -11,8 +11,8 @@ class Perl_gtk3 < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cde1d94f5e37c7a0d0780025fc3d8f12f662c7092e026dcffeefcbff902b3f11',
-     armv7l: 'cde1d94f5e37c7a0d0780025fc3d8f12f662c7092e026dcffeefcbff902b3f11',
+    aarch64: '11962422d867b543c123d06fe78555c3d3044e8ae1ce50359248ddb68f834e5d',
+     armv7l: '11962422d867b543c123d06fe78555c3d3044e8ae1ce50359248ddb68f834e5d',
      x86_64: '4efda03bf05fc7e550b66e2fea931771de82fc46c44e43da5cdff8d58df5c6e4'
   })
 

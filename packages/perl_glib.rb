@@ -11,8 +11,8 @@ class Perl_glib < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '01a3ccd12e0fe4ccb074140013c5b6bf91ed1746ccafc40d50790bc0194a10fa',
-     armv7l: '01a3ccd12e0fe4ccb074140013c5b6bf91ed1746ccafc40d50790bc0194a10fa',
+    aarch64: '4f956a32c0e1ac2697510407c00ab6d2500cd9df9e83a67d7417ba7639b3fe74',
+     armv7l: '4f956a32c0e1ac2697510407c00ab6d2500cd9df9e83a67d7417ba7639b3fe74',
        i686: '93e33c00c6fa17f08d1adc7cd2fdaba63274aa5bca98fafa1e61b20b32dbbb05',
      x86_64: 'f7ee55234458aef6199911df7ebbf59dadae2d2d77376eea284ad83e2196d7a1'
   })

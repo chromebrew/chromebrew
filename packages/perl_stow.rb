@@ -3,18 +3,18 @@ require 'package'
 class Perl_stow < Package
   description 'Manage installation of multiple softwares in the same directory tree'
   homepage 'https://www.gnu.org/software/stow/'
-  version "2.4.0-#{CREW_PERL_VER}"
+  version "2.4.1-#{CREW_PERL_VER}"
   license 'GPL-3+'
   compatibility 'all'
-  source_url 'https://ftp.gnu.org/gnu/stow/stow-2.4.0.tar.gz'
-  source_sha256 '6fed67cf64deab6d3d9151a43e2c06c95cdfca6a88fab7d416f46a648b1d761d'
+  source_url "https://ftp.gnu.org/gnu/stow/stow-#{version.split('-')[0]}.tar.gz"
+  source_sha256 '2a671e75fc207303bfe86a9a7223169c7669df0a8108ebdf1a7fe8cd2b88780b'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd6b4a21448dc4159054c416af691cda857b0c6a39f36f00abc02dab13a253828',
-     armv7l: 'd6b4a21448dc4159054c416af691cda857b0c6a39f36f00abc02dab13a253828',
-       i686: 'ed86d964fad20958609f2d1021b10539ba759eb2d362b08f4e58d7e6e9c5c594',
-     x86_64: '55692990260b2eb77310c96b5d78aed3436f02876116d54a2e9fbc6b137d55de'
+    aarch64: '8252099e0e33338c65cd3d094e04bb4f549ba6e4ab196984138126672478536a',
+     armv7l: '8252099e0e33338c65cd3d094e04bb4f549ba6e4ab196984138126672478536a',
+       i686: '49a756bef8ec84432629d2477c2eb42ff418fd6a0cf1a1835d064b5482e61183',
+     x86_64: '7e59b61caa1da26a22c8e3662902173d5d88a2837a77b91bf9cb0fab9ece665a'
   })
 
   depends_on 'perl_app_cpanminus' => :build

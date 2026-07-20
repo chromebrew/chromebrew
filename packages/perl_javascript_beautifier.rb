@@ -11,8 +11,8 @@ class Perl_javascript_beautifier < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '19cd221cf4bc944893692b85a63a2356543eaca0aa40cbbbd2209e6812cf19e1',
-     armv7l: '19cd221cf4bc944893692b85a63a2356543eaca0aa40cbbbd2209e6812cf19e1',
+    aarch64: '3d487bf874eaaf660ca22545bac11adf72e8e2850f9f8969d40a83c43c8a3f63',
+     armv7l: '3d487bf874eaaf660ca22545bac11adf72e8e2850f9f8969d40a83c43c8a3f63',
        i686: '37e5c9efcc79fdfd424c2dc73504a0e99045778ec9c3fcb427a8db507701d4de',
      x86_64: 'c3fa7419c57d4d1d473bba24d134c0a04c3d0ab08d97b3d981dc983dfceeff6d'
   })

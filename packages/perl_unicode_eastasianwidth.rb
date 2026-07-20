@@ -11,8 +11,8 @@ class Perl_unicode_eastasianwidth < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1d685e7f73b417f27f0ccdbc0b519174b5d43f29057b260af9a0fc8db994aedc',
-     armv7l: '1d685e7f73b417f27f0ccdbc0b519174b5d43f29057b260af9a0fc8db994aedc',
+    aarch64: '32cebf0adf31cc80686b7b4b3c8b28f41f94482ea5d1abf501a4d6e888681bda',
+     armv7l: '32cebf0adf31cc80686b7b4b3c8b28f41f94482ea5d1abf501a4d6e888681bda',
        i686: '1a783f036ae9555ed28c80657a373118d8ce610dc130b7c8d39305d5ded2bb75',
      x86_64: '5c19ea5a346ea597d8209dafbfc1cd71e91894993cb873cc25de02ca2d16fb37'
   })

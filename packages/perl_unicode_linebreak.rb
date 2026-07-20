@@ -11,8 +11,8 @@ class Perl_unicode_linebreak < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f7a53fe75b32fe7fa32fc4dd37e2212f4f9edf452b2eda6baf6f1b366c8ce30d',
-     armv7l: 'f7a53fe75b32fe7fa32fc4dd37e2212f4f9edf452b2eda6baf6f1b366c8ce30d',
+    aarch64: '9da92e712b2600adadb983ebc413627ecc6dae6985bec8fe973bd09126655f84',
+     armv7l: '9da92e712b2600adadb983ebc413627ecc6dae6985bec8fe973bd09126655f84',
        i686: 'b980da46a31246a8ecb23f28e57836443bf4cbcc0cd0e26a72a95adc956227b6',
      x86_64: 'f053789039ce33f1cd0751bc028ea035bb2275649cdc46418fe1d4289f769e09'
   })

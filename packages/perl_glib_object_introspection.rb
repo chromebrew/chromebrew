@@ -3,17 +3,17 @@ require 'buildsystems/perl'
 class Perl_glib_object_introspection < PERL
   description 'Dynamically create Perl language bindings'
   homepage 'https://metacpan.org/pod/Glib::Object::Introspection'
-  version "0.051-#{CREW_PERL_VER}"
+  version "0.052-#{CREW_PERL_VER}"
   license 'GPL PerlArtistic'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://cpan.metacpan.org/authors/id/X/XA/XAOC/Glib-Object-Introspection-0.051.tar.gz'
-  source_sha256 '6569611dcc80ac1482c7c22264b1ae8c9c351d4983511eb9a6c5f47a10150089'
+  source_url "https://cpan.metacpan.org/authors/id/X/XA/XAOC/Glib-Object-Introspection-#{version.split('-')[0]}.tar.gz"
+  source_sha256 '555b4f1308939bb3141ea4570ad12e04e27c23329c302c9dc8725409e1049111'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9435aba36aa00d9940c227a64effa329e03e622c23fed2fc55462efb24b8065c',
-     armv7l: '9435aba36aa00d9940c227a64effa329e03e622c23fed2fc55462efb24b8065c',
-     x86_64: '3dd1d0e48c718a6311e84e7e75dbdc992a41dfc4a314363e25bcc1771094d40b'
+    aarch64: 'ca6a0a632deb4ae701cb8160f9dfe6637084c7ad0829dbccb1db01da0e23f47f',
+     armv7l: 'ca6a0a632deb4ae701cb8160f9dfe6637084c7ad0829dbccb1db01da0e23f47f',
+     x86_64: '1b64252654cbd3e55cc343f0ded1c8b16ed82bf252e643e22dad9511a2a9d2c4'
   })
 
   depends_on 'cairo'
