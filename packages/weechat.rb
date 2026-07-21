@@ -11,10 +11,10 @@ class Weechat < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cddcd6b46fd9dd7c36a9507014684baed130371687dff6bbb950599b6631e4b3',
-     armv7l: 'cddcd6b46fd9dd7c36a9507014684baed130371687dff6bbb950599b6631e4b3',
-       i686: 'd30cac99509affc6ee1d29a4296dc5f736f523eb6af1f99db73c6163471be19a',
-     x86_64: '02955559c190e47fdf50d253934f98eb2a44377f995378d88c688a9f1d39a53c'
+    aarch64: '4379c0bf973aae2adf124cd2aed8067ea3ab4f4553a1199149d47e8468f6894f',
+     armv7l: '4379c0bf973aae2adf124cd2aed8067ea3ab4f4553a1199149d47e8468f6894f',
+       i686: '316347696140487df30f19cbc310c49199085a35dab02fb4ecea46914c922606',
+     x86_64: 'a724ae3d4d4adbbbf59002f0b73f906aecad210be1136cde633442e2560a4a62'
   })
 
   depends_on 'aspell' => :library
@@ -27,6 +27,7 @@ class Weechat < CMake
   depends_on 'gnutls' => :library
   depends_on 'guile' => :library
   depends_on 'libgcrypt' => :library
+  depends_on 'libiconv' => :library
   depends_on 'libxcrypt' => :library
   depends_on 'lua' => :library
   depends_on 'ncurses'
