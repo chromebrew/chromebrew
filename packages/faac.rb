@@ -14,10 +14,10 @@ class Faac < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6249a7bbe2590c48ce8070823ca34d4ea03f315f38ef17d7e5b292ecefc05ac2',
-     armv7l: '6249a7bbe2590c48ce8070823ca34d4ea03f315f38ef17d7e5b292ecefc05ac2',
-       i686: '3332dc511f6ed2ce0737dce54ea0bdb023f29b714e8902a5c37d1bdb1bdeaf54',
-     x86_64: '9f9a9dce35bd56d5794aed6496482cef46aacd8f5b0ce05124a29248e1940101'
+    aarch64: '453bbe8992d73081318a92180752682669e34cdb89f6d826c1d6a504a1b4e5c1',
+     armv7l: '453bbe8992d73081318a92180752682669e34cdb89f6d826c1d6a504a1b4e5c1',
+       i686: '5f5e04587bdab9ac49264e6ab6ace40277161e709ed15f06948cc509ce955f3f',
+     x86_64: 'afa65ed29bd5c6bbda8813430ae4630c09a0ff14c71c3a1a4aea521ed3b30ea1'
   })
 
   depends_on 'glibc' => :library
