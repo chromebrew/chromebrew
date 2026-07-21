@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Goaccess < Autotools
   description 'GoAccess is an open source real-time web log analyzer and interactive viewer that runs in a terminal in *nix systems or through your browser.'
   homepage 'https://goaccess.io/'
-  version '1.10.2'
+  version '1.11'
   license 'MIT'
   compatibility 'all'
   source_url "https://tar.goaccess.io/goaccess-#{version}.tar.gz"
-  source_sha256 'b9b7484a413279863c7d92dc7dd4c19dcb55c0a2d138735efc18570bcc4eaa0e'
+  source_sha256 '01024b129c974582bfe7a4653eb55b1c83cb2b57ab3dda96e820bc185a25ff71'
   binary_compression 'tar.zst'
 
   binary_sha256({
