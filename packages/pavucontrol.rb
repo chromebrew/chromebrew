@@ -1,38 +1,33 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Pavucontrol < Package
+class Pavucontrol < Meson
   description 'PulseAudio Volume Control'
   homepage 'https://freedesktop.org/software/pulseaudio/pavucontrol/'
-  version '4.0-381b-1'
+  version '6.2'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://github.com/pulseaudio/pavucontrol/archive/381b708202e87e40347a57f8a627014199cde266.zip'
-  source_sha256 'aa6c5814e77a8f36d8ed50b70381fbfbab2ebbf0fb62548ec8b8b935527d527e'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/pulseaudio/pavucontrol.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2773e569e8fef5cbc3d2adadf9d94abdbb7122393baff840e6f743ebe669f1b9',
-     armv7l: '2773e569e8fef5cbc3d2adadf9d94abdbb7122393baff840e6f743ebe669f1b9',
-     x86_64: '01f0d27fac88490d8d4b149a3396e8e0fd85e2c5763a08f4367245e10b6ea303'
+    aarch64: '211e496463f621889f9c73b9646c28c8c741a0cfc96c8348c00e0560c1711d98',
+     armv7l: '211e496463f621889f9c73b9646c28c8c741a0cfc96c8348c00e0560c1711d98',
+     x86_64: '1a279ee44dffa2d32571e81dde1a102cd0dcd9ecc0bcfee5a02aafabca39688b'
   })
 
-  depends_on 'libcanberra'
-  depends_on 'gtkmm3'
-  depends_on 'libsigcplusplus'
-  depends_on 'pulseaudio'
-  depends_on 'pygtk'
-  depends_on 'glibmm'
-
-  def self.build
-    system 'NOCONFIGURE=1 ./bootstrap.sh'
-    system "env #{CREW_ENV_OPTIONS} \
-    ./configure \
-    #{CREW_CONFIGURE_OPTIONS} \
-    --disable-lynx"
-    system 'make'
-  end
-
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-  end
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'glibmm' => :executable
+  depends_on 'glibmm_2_68' => :executable
+  depends_on 'gtk4' => :executable
+  depends_on 'gtkmm4' => :executable
+  depends_on 'json_glib' => :executable
+  depends_on 'libcanberra' => :executable
+  depends_on 'libsigcplusplus' => :executable
+  depends_on 'libsigcplusplus3' => :executable
+  depends_on 'pulseaudio' => :executable
+  depends_on 'pygtk' => :executable
 end
