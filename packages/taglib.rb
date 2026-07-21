@@ -3,11 +3,11 @@ require 'buildsystems/cmake'
 class Taglib < CMake
   description 'TagLib is a library for reading and editing the meta-data of several popular audio formats.'
   homepage 'https://taglib.org'
-  version '2.3'
+  version '2.3.1'
   license 'LGPL-2.1 and MPL-1.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://taglib.org/releases/taglib-#{version}.tar.gz"
-  source_sha256 '7349f6fd942418bc7009ebe743eb7c9d055f02921ec56fa436ec25007c47fd38'
+  source_sha256 'a19d90e6fd41d09a0281ec0fe762d51491d7a6ccffc923c4f7868c5e647ca230'
   binary_compression 'tar.zst'
 
   binary_sha256({
