@@ -1,4 +1,4 @@
-# Total size: 171977
+# Total size: 221104
 /usr/local/share/man/man3/URI.3.zst
 /usr/local/share/man/man3/URI::Escape.3.zst
 /usr/local/share/man/man3/URI::Heuristic.3.zst
@@ -9,7 +9,14 @@
 /usr/local/share/man/man3/URI::_punycode.3.zst
 /usr/local/share/man/man3/URI::data.3.zst
 /usr/local/share/man/man3/URI::file.3.zst
+/usr/local/share/man/man3/URI::geo.3.zst
+/usr/local/share/man/man3/URI::icap.3.zst
+/usr/local/share/man/man3/URI::icaps.3.zst
 /usr/local/share/man/man3/URI::ldap.3.zst
+/usr/local/share/man/man3/URI::otpauth.3.zst
+/usr/local/share/man/man3/URI::smb.3.zst
+/usr/local/share/man/man3/URI::ws.3.zst
+/usr/local/share/man/man3/URI::wss.3.zst
 /usr/local/share/perl5/site_perl/URI.pm
 /usr/local/share/perl5/site_perl/URI/Escape.pm
 /usr/local/share/perl5/site_perl/URI/Heuristic.pm
@@ -18,6 +25,7 @@
 /usr/local/share/perl5/site_perl/URI/Split.pm
 /usr/local/share/perl5/site_perl/URI/URL.pm
 /usr/local/share/perl5/site_perl/URI/WithBase.pm
+/usr/local/share/perl5/site_perl/URI/_emailauth.pm
 /usr/local/share/perl5/site_perl/URI/_foreign.pm
 /usr/local/share/perl5/site_perl/URI/_generic.pm
 /usr/local/share/perl5/site_perl/URI/_idna.pm
@@ -38,9 +46,16 @@
 /usr/local/share/perl5/site_perl/URI/file/Unix.pm
 /usr/local/share/perl5/site_perl/URI/file/Win32.pm
 /usr/local/share/perl5/site_perl/URI/ftp.pm
+/usr/local/share/perl5/site_perl/URI/ftpes.pm
+/usr/local/share/perl5/site_perl/URI/ftps.pm
+/usr/local/share/perl5/site_perl/URI/geo.pm
 /usr/local/share/perl5/site_perl/URI/gopher.pm
 /usr/local/share/perl5/site_perl/URI/http.pm
 /usr/local/share/perl5/site_perl/URI/https.pm
+/usr/local/share/perl5/site_perl/URI/icap.pm
+/usr/local/share/perl5/site_perl/URI/icaps.pm
+/usr/local/share/perl5/site_perl/URI/irc.pm
+/usr/local/share/perl5/site_perl/URI/ircs.pm
 /usr/local/share/perl5/site_perl/URI/ldap.pm
 /usr/local/share/perl5/site_perl/URI/ldapi.pm
 /usr/local/share/perl5/site_perl/URI/ldaps.pm
@@ -49,14 +64,18 @@
 /usr/local/share/perl5/site_perl/URI/news.pm
 /usr/local/share/perl5/site_perl/URI/nntp.pm
 /usr/local/share/perl5/site_perl/URI/nntps.pm
+/usr/local/share/perl5/site_perl/URI/otpauth.pm
 /usr/local/share/perl5/site_perl/URI/pop.pm
 /usr/local/share/perl5/site_perl/URI/rlogin.pm
 /usr/local/share/perl5/site_perl/URI/rsync.pm
 /usr/local/share/perl5/site_perl/URI/rtsp.pm
 /usr/local/share/perl5/site_perl/URI/rtspu.pm
+/usr/local/share/perl5/site_perl/URI/scp.pm
 /usr/local/share/perl5/site_perl/URI/sftp.pm
 /usr/local/share/perl5/site_perl/URI/sip.pm
 /usr/local/share/perl5/site_perl/URI/sips.pm
+/usr/local/share/perl5/site_perl/URI/smb.pm
+/usr/local/share/perl5/site_perl/URI/smtp.pm
 /usr/local/share/perl5/site_perl/URI/snews.pm
 /usr/local/share/perl5/site_perl/URI/ssh.pm
 /usr/local/share/perl5/site_perl/URI/telnet.pm
@@ -64,3 +83,5 @@
 /usr/local/share/perl5/site_perl/URI/urn.pm
 /usr/local/share/perl5/site_perl/URI/urn/isbn.pm
 /usr/local/share/perl5/site_perl/URI/urn/oid.pm
+/usr/local/share/perl5/site_perl/URI/ws.pm
+/usr/local/share/perl5/site_perl/URI/wss.pm

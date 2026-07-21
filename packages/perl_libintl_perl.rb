@@ -11,14 +11,16 @@ class Perl_libintl_perl < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '53faaa6391ee0964ee495c8adbf1532c065d039a895b716cb9d69a80de0e3243',
-     armv7l: '53faaa6391ee0964ee495c8adbf1532c065d039a895b716cb9d69a80de0e3243',
-       i686: '561ed846639f73f5470163be715ea7e2e2de90f67a918c8d2999426218775ccf',
-     x86_64: '496889e426f4c1f0aba3b726cf0c8508a476fe19f2052274ad217a54efbc2ad7'
+    aarch64: '001844b85c06c35e270a0dcda592992f7d0b6c2eec1fa761408377aaeb9ceebd',
+     armv7l: '001844b85c06c35e270a0dcda592992f7d0b6c2eec1fa761408377aaeb9ceebd',
+       i686: 'f025bb6ab3579900e4a035547d377cf25ae31cc7811d50602a9db6894f66833f',
+     x86_64: '15e91c14b1d7f67f48f0c91b3799dbd0afd93e0dc513e39f25d27672f1cc460f'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'perl' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'libiconv' => :library
+  depends_on 'perl' => :logical
 
   conflicts_ok # conflicts with replaced perl_locale_messages.
 end

@@ -1,4 +1,4 @@
-# Total size: 8195434
+# Total size: 8221486
 /usr/local/bin/pt-align
 /usr/local/bin/pt-archiver
 /usr/local/bin/pt-config-diff
@@ -67,7 +67,6 @@
 /usr/local/share/man/man1/pt-table-checksum.1p.zst
 /usr/local/share/man/man1/pt-table-sync.1p.zst
 /usr/local/share/man/man1/pt-table-usage.1p.zst
-/usr/local/share/man/man1/pt-upgrade.1p.zst
 /usr/local/share/man/man1/pt-variable-advisor.1p.zst
 /usr/local/share/man/man1/pt-visual-explain.1p.zst
 /usr/local/share/perl5/site_perl/Advisor.pm

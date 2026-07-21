@@ -1,4 +1,4 @@
-# Total size: 2765931
+# Total size: 2762458
 /usr/local/bin/tv_combo
 /usr/local/bin/tv_ctrlpt
 /usr/local/bin/tv_device
@@ -25,22 +25,18 @@
 /usr/local/include/upnp/upnp.h
 /usr/local/include/upnp/upnpconfig.h
 /usr/local/include/upnp/upnptools.h
-/usr/local/lib64/cmake/IXML/IXML-release.cmake
-/usr/local/lib64/cmake/IXML/IXML.cmake
-/usr/local/lib64/cmake/IXML/IXMLConfig.cmake
-/usr/local/lib64/cmake/IXML/IXMLConfigVersion.cmake
-/usr/local/lib64/cmake/UPNP/UPNP-release.cmake
-/usr/local/lib64/cmake/UPNP/UPNP.cmake
+/usr/local/lib64/cmake/UPNP/PUPNP-release.cmake
+/usr/local/lib64/cmake/UPNP/PUPNP.cmake
 /usr/local/lib64/cmake/UPNP/UPNPConfig.cmake
 /usr/local/lib64/cmake/UPNP/UPNPConfigVersion.cmake
 /usr/local/lib64/libixml.a
 /usr/local/lib64/libixml.so
-/usr/local/lib64/libixml.so.11
-/usr/local/lib64/libixml.so.11.1.8
+/usr/local/lib64/libixml.so.22
+/usr/local/lib64/libixml.so.22.0.4
 /usr/local/lib64/libupnp.a
 /usr/local/lib64/libupnp.so
 /usr/local/lib64/libupnp.so.22
-/usr/local/lib64/libupnp.so.22.0.2
+/usr/local/lib64/libupnp.so.22.0.4
 /usr/local/lib64/pkgconfig/libupnp.pc
 /usr/local/share/upnp/tvcombodesc.xml
 /usr/local/share/upnp/tvcontrolSCPD.xml

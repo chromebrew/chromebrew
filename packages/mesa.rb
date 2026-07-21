@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Mesa < Meson
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  version "26.1.4-#{CREW_LLVM_VER}"
+  version "26.1.5-#{CREW_LLVM_VER}"
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/mesa/mesa.git'
@@ -11,9 +11,9 @@ class Mesa < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3a7092dec67889a0fcc3467e4c87d20456292ad1201e5afb66138ca7b00bf041',
-     armv7l: '3a7092dec67889a0fcc3467e4c87d20456292ad1201e5afb66138ca7b00bf041',
-     x86_64: '07c6cd070d197625a9f0196698db6f04888bfe6815bca5c407ef97ddb1d2c95f'
+    aarch64: 'e73d8f4066349ba2e92ab7756fcab7d36d01749c1b0984426d9281eadd95574e',
+     armv7l: 'e73d8f4066349ba2e92ab7756fcab7d36d01749c1b0984426d9281eadd95574e',
+     x86_64: 'f5aa4737192f645bbfe2105b8819c8152094032cdee6e9c5fffe8e6727b9a2dc'
   })
 
   depends_on 'elfutils' => :library
