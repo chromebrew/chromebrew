@@ -11,10 +11,10 @@ class Mg < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a69ba6284b041bd57d87285b9600b445c35718104f77078c60789c527a6cfcbb',
-     armv7l: 'a69ba6284b041bd57d87285b9600b445c35718104f77078c60789c527a6cfcbb',
-       i686: 'd455d153f7c3f2d65988987369212a93cb1f4b34f28e3f2c1da120ff1ce001b1',
-     x86_64: 'f0c1b137bba90d5e9203b5f83b432aaccf6b8fdcaa20a976737829e24e78f0d9'
+    aarch64: '74a0c5cf3a39e0c6c8afa3d642ccd5c4d6034af079188ae6c0ad375f3eeedab1',
+     armv7l: '74a0c5cf3a39e0c6c8afa3d642ccd5c4d6034af079188ae6c0ad375f3eeedab1',
+       i686: '3b4eab529d77af292b04b4fa3e37a74b0d0f987d9c89efaab206ca12324fc1f1',
+     x86_64: '58060e5b767e455f90b617c12c415e7d60b43737ab601fd4292ca0277421fd99'
   })
 
   depends_on 'glibc' => :executable
