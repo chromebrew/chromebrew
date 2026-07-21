@@ -1,0 +1,3 @@
+#!/bin/bash
+lspci --help 2>&1 | head
+lspci --version
