@@ -11,10 +11,10 @@ class Srt < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2a6b5a823f2c28169b5ba18a9b67588cfc6dbde71773df8464f6ae343135d4cf',
-     armv7l: '2a6b5a823f2c28169b5ba18a9b67588cfc6dbde71773df8464f6ae343135d4cf',
-       i686: 'aff9ef9332424d81b029a99ad58ea84d9eed59260c4b0bdb011b886622ccc85f',
-     x86_64: 'c54606ca2102cb6df5f83ee4aa29595807cf34b7219f71a7735a28bd5a5b4fd4'
+    aarch64: '0182636d7e6067709ed45f2daa4de3ae1db865b83cfb9659d04f55f0e50a58f5',
+     armv7l: '0182636d7e6067709ed45f2daa4de3ae1db865b83cfb9659d04f55f0e50a58f5',
+       i686: '9ff76b05eb8586d90bd840f16f852b6cd5b108784c96343594c4bb43aaab047d',
+     x86_64: 'd10753984ec97a1636ceb03ef3b3cbd25d808366ea60473cfea13a067f241873'
   })
 
   depends_on 'gcc_lib' => :library
