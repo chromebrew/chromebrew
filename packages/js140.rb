@@ -11,9 +11,9 @@ class Js140 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c436f5aa321b96f89d7d75d6700a11edd5edc556df950fbbee3c53bcaf0f8438',
-     armv7l: 'c436f5aa321b96f89d7d75d6700a11edd5edc556df950fbbee3c53bcaf0f8438',
-     x86_64: '31b384c6ea1c747f827deef8c15bfd63d605e423a7cdb6218ad65f5428720733'
+    aarch64: 'd570a479dfd8ff36321b61082b7db4631818595e23b5cdd7a3d8209e70f96054',
+     armv7l: 'd570a479dfd8ff36321b61082b7db4631818595e23b5cdd7a3d8209e70f96054',
+     x86_64: 'b66b263c5de1d7515518e5734065290c52769032b1c9cf29150450acd3cf7b4c'
   })
 
   depends_on 'autoconf213' => :build
