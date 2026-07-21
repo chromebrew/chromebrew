@@ -3,17 +3,17 @@ require 'buildsystems/cmake'
 class Taglib < CMake
   description 'TagLib is a library for reading and editing the meta-data of several popular audio formats.'
   homepage 'https://taglib.org'
-  version '2.3'
+  version '2.3.1'
   license 'LGPL-2.1 and MPL-1.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://taglib.org/releases/taglib-#{version}.tar.gz"
-  source_sha256 '7349f6fd942418bc7009ebe743eb7c9d055f02921ec56fa436ec25007c47fd38'
+  source_sha256 'a19d90e6fd41d09a0281ec0fe762d51491d7a6ccffc923c4f7868c5e647ca230'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a30827d281dcca835f3a590cf53dab5b2d7c346c758cca0416b13c63104632b0',
-     armv7l: 'a30827d281dcca835f3a590cf53dab5b2d7c346c758cca0416b13c63104632b0',
-     x86_64: 'fef549a7cbd5a566ec33638425200f20b26c5058e3764deba4fd6fc3fc10f132'
+    aarch64: 'd94e6a6bac936f12be39636841e8a8b2a9899efcfc6f876fb5ce75b91d5a5eee',
+     armv7l: 'd94e6a6bac936f12be39636841e8a8b2a9899efcfc6f876fb5ce75b91d5a5eee',
+     x86_64: '95cb02bfe6f6b38be9a6ec5e9f88bf69547aabeade3846a63e2e2de1591e31a1'
   })
 
   depends_on 'boost' => :build

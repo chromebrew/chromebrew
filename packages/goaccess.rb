@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Goaccess < Autotools
   description 'GoAccess is an open source real-time web log analyzer and interactive viewer that runs in a terminal in *nix systems or through your browser.'
   homepage 'https://goaccess.io/'
-  version '1.10.2'
+  version '1.11'
   license 'MIT'
   compatibility 'all'
   source_url "https://tar.goaccess.io/goaccess-#{version}.tar.gz"
-  source_sha256 'b9b7484a413279863c7d92dc7dd4c19dcb55c0a2d138735efc18570bcc4eaa0e'
+  source_sha256 '01024b129c974582bfe7a4653eb55b1c83cb2b57ab3dda96e820bc185a25ff71'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '94d90146a9150cf8cfa0035a850745db5bf1f1f39af70dd57769206775ecb747',
-     armv7l: '94d90146a9150cf8cfa0035a850745db5bf1f1f39af70dd57769206775ecb747',
-       i686: '450e986e7e9f2550046696557488011a3e9a9a6fb6978b039e7c00a65334d355',
-     x86_64: '03aa906f945eff2bbfa8dafacd356daef109310f0ee05e2d2a7e09e9999d7cdf'
+    aarch64: '86ddb7db43b3eac8fe522cc0bb71a65274f7fbcf74d94c3d6ee9cc4634247608',
+     armv7l: '86ddb7db43b3eac8fe522cc0bb71a65274f7fbcf74d94c3d6ee9cc4634247608',
+       i686: 'a94fccfda8b6c1b2959e9d85e2d166c0b6c28789eff943cd8900e6958ee90590',
+     x86_64: '2ef9c61fd5a13e7a0d761ac03db327a19f5a81fef88e55d8d572a2498d8413be'
   })
 
   depends_on 'geoip' => :executable
