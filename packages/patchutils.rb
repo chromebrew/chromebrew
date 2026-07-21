@@ -1,32 +1,33 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Patchutils < Package
+class Patchutils < Autotools
   description 'Patchutils is a small collection of programs that operate on patch files.'
   homepage 'http://cyberelk.net/tim/software/patchutils/'
-  version '0.3.4'
+  version '0.4.5'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'http://cyberelk.net/tim/data/patchutils/stable/patchutils-0.3.4.tar.xz'
-  source_sha256 'cf55d4db83ead41188f5b6be16f60f6b76a87d5db1c42f5459d596e81dabe876'
-  binary_compression 'tar.xz'
+  source_url "http://cyberelk.net/tim/data/patchutils/stable/patchutils-#{version}.tar.xz"
+  source_sha256 '8386a35a4d2d3cbc28fdcc93c5be007c382c78e3ee079070139f0d822e013325'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a016f2bf4f5cd6711295f46e30563dcbd910b714be964b61f00cb68ef97d0f2c',
-     armv7l: 'a016f2bf4f5cd6711295f46e30563dcbd910b714be964b61f00cb68ef97d0f2c',
-       i686: '3bbc58f6e110e6d7437c0fd7acaf2bd49b7afb51609d577483df3efddbc8e034',
-     x86_64: '47995cc77fbf3bf7dbea906fc2bb7ffd28be265fdf64f970e00cfa85edc55ace'
+    aarch64: '030809998a2de25d0afd81e69b2d6e80172a1c1e9940c2540c1e01d640c0fd67',
+     armv7l: '030809998a2de25d0afd81e69b2d6e80172a1c1e9940c2540c1e01d640c0fd67',
+       i686: '03c0619a5790aea4991abe69f3c6581f2e51078d639be7599cefe502aab301cc',
+     x86_64: '2f6c36e9c6d61fba2452a61fa7c148f698bf1a46038392a1dd6764c92c5fea90'
   })
 
-  def self.build
-    system "./configure --prefix=#{CREW_PREFIX}"
-    system 'make'
-  end
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'pcre2' => :executable
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  run_tests
 
-  def self.check
-    system 'make', 'check'
+  autotools_install_extras do
+    # Remove conflict with bash_completion.
+    FileUtils.rm "#{CREW_DEST_PREFIX}/share/bash-completion/completions/interdiff"
+    %w[gitdiff gitdiffview gitshow gitshowview patchview-wrapper svndiff svndiffview].each do |bin|
+      system "sed -i 's,/usr/bin/python3,#{CREW_PREFIX}/bin/python3,' #{CREW_DEST_PREFIX}/bin/#{bin}"
+    end
   end
 end
