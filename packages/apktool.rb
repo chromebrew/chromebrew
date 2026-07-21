@@ -3,7 +3,7 @@ require 'package'
 class Apktool < Package
   description 'A tool for reverse engineering Android apk files'
   homepage 'https://apktool.org/'
-  version '3.0.2'
+  version '3.0.3'
   license 'Apache-2.0'
   compatibility 'all'
   source_url "https://raw.githubusercontent.com/iBotPeaches/Apktool/v#{version}/scripts/linux/apktool"
