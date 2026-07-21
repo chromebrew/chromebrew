@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Mg < Autotools
   description 'mg is the portable version of the mg editor from OpenBSD'
   homepage 'https://github.com/hboetes/mg/'
-  version '20260227'
+  version '20260719'
   license 'public-domain'
   compatibility 'all'
   source_url 'https://github.com/hboetes/mg.git'
