@@ -1,0 +1,3 @@
+#!/bin/bash
+pdfgrep --help | head
+pdfgrep -V
