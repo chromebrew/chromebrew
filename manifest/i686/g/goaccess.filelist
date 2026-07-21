@@ -1,4 +1,4 @@
-# Total size: 2762642
+# Total size: 2809662
 /usr/local/bin/goaccess
 /usr/local/etc/goaccess/browsers.list
 /usr/local/etc/goaccess/goaccess.conf
@@ -15,4 +15,5 @@
 /usr/local/share/locale/sv/LC_MESSAGES/goaccess.mo
 /usr/local/share/locale/uk/LC_MESSAGES/goaccess.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/goaccess.mo
+/usr/local/share/locale/zh_TW/LC_MESSAGES/goaccess.mo
 /usr/local/share/man/man1/goaccess.1.zst
