@@ -3,25 +3,29 @@ require 'package'
 class Pdfcrack < Package
   description 'pdfcrack is a command line, password recovery tool for PDF-files.'
   homepage 'https://sourceforge.net/projects/pdfcrack/'
-  version '0.16'
+  version '0.21'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://sourceforge.net/projects/pdfcrack/files/pdfcrack/pdfcrack-0.16/pdfcrack-0.16.tar.gz'
-  source_sha256 '7865b203074ccfd5c612c8ce00c46ffcb4fabaa26154ce9304dfc668c7cb73ef'
-  binary_compression 'tar.xz'
+  source_url "https://sourceforge.net/projects/pdfcrack/files/pdfcrack/pdfcrack-#{version}/pdfcrack-#{version}.tar.gz"
+  source_sha256 '26f00d4afcb70b5839047bc6f62e4253073ac437bdb526f01e8c04b220e97762'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f2aeae2872eddaa3034f024d80a6a10302ba88274c07b77112aac24f7146f4e9',
-     armv7l: 'f2aeae2872eddaa3034f024d80a6a10302ba88274c07b77112aac24f7146f4e9',
-       i686: '0a8bb96eaaa224e97a6ba6d77890359398cc06c5844e99de19aa63a2e39c7c6d',
-     x86_64: 'fe283684679ffe42701876251ef2ae9dc4b19272a91a0df93f968f0e2d148c1b'
+    aarch64: '021b66bc71dc94a89e2cb80cef566505fbf45baac2135b805952cdd9da38e048',
+     armv7l: '021b66bc71dc94a89e2cb80cef566505fbf45baac2135b805952cdd9da38e048',
+       i686: '0cf5afad35cdc32108a84a1b6629ead0b0d58f27fe4593f57374c3368446273d',
+     x86_64: '1d0dc532320ddb6ecdc188a192ebcee5519ce74429d79062ca2a96bc84532c3c'
   })
+
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
 
   def self.build
     system 'make'
   end
 
   def self.install
-    system "install -Dm755 pdfcrack #{CREW_DEST_PREFIX}/bin/pdfcrack"
+    FileUtils.install 'pdfcrack', "#{CREW_DEST_PREFIX}/bin/pdfcrack", mode: 0o755
+    FileUtils.install 'pdfcrack.1', "#{CREW_DEST_MAN_PREFIX}/man1/pdfcrack.1", mode: 0o644
   end
 end
