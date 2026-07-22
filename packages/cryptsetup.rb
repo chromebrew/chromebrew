@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Cryptsetup < Autotools
   description 'The cryptsetup utility is used to conveniently setup disk en-/decryption based on DMCrypt kernel module.'
   homepage 'https://gitlab.com/cryptsetup/cryptsetup'
-  version '2.8.6'
+  version '2.8.7'
   license 'GPL-2+'
   compatibility 'all'
   source_url "https://mirrors.edge.kernel.org/pub/linux/utils/cryptsetup/v#{version.sub(/\.\d+$/, '')}/cryptsetup-#{version}.tar.xz"
-  source_sha256 '8004265fd993885d08f7b633dbe056851de1a210307613a4ebddc743fccefe5a'
+  source_sha256 'e776f0d381e86ca61042c457069491fe8e0ac286780c7c3b1e4f9921abc961da'
   binary_compression 'tar.zst'
 
   binary_sha256({
