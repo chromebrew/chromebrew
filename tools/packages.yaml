@@ -10860,6 +10860,11 @@ url: https://github.com/freedesktop/xorg-xserver/releases
 activity: medium
 ---
 kind: url
+name: xwininfo
+url: https://gitlab.freedesktop.org/xorg/app/xwininfo/-/tags
+activity: low
+---
+kind: url
 name: xxd_standalone
 url: https://github.com/vim/vim/releases
 activity: high
