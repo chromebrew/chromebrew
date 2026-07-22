@@ -3,11 +3,11 @@ require 'buildsystems/cmake'
 class Libssh < CMake
   description 'libssh is a multiplatform C library implementing the SSHv2 and SSHv1 protocol on client and server side.'
   homepage 'https://www.libssh.org/'
-  version '0.12.0'
+  version '0.12.1'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url "https://www.libssh.org/files/#{version.rpartition('.')[0]}/libssh-#{version}.tar.xz"
-  source_sha256 '1a6af424d8327e5eedef4e5fe7f5b924226dd617ac9f3de80f217d82a36a7121'
+  source_sha256 'd3941af0a2d78d5d82ed7a36988e9133994312f035b9659a6e43f8db3968784c'
   binary_compression 'tar.zst'
 
   binary_sha256({
