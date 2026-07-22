@@ -1,12 +1,12 @@
-# Total size: 409216782
-/usr/local/lib/python3.14/site-packages/oci-2.182.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/oci-2.182.0.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/oci-2.182.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/oci-2.182.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/oci-2.182.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/oci-2.182.0.dist-info/THIRD_PARTY_LICENSES.txt
-/usr/local/lib/python3.14/site-packages/oci-2.182.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/oci-2.182.0.dist-info/top_level.txt
+# Total size: 409469212
+/usr/local/lib/python3.14/site-packages/oci-2.182.1.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/oci-2.182.1.dist-info/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/oci-2.182.1.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/oci-2.182.1.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/oci-2.182.1.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/oci-2.182.1.dist-info/THIRD_PARTY_LICENSES.txt
+/usr/local/lib/python3.14/site-packages/oci-2.182.1.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/oci-2.182.1.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/oci/__init__.py
 /usr/local/lib/python3.14/site-packages/oci/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/__pycache__/_log_redaction.cpython-314.pyc
@@ -1450,7 +1450,10 @@
 /usr/local/lib/python3.14/site-packages/oci/analytics/models/__pycache__/change_compartment_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/analytics/models/__pycache__/create_analytics_instance_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/analytics/models/__pycache__/create_private_access_channel_details.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/analytics/models/__pycache__/create_resource_group_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/analytics/models/__pycache__/create_vanity_url_details.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/analytics/models/__pycache__/instance_resource_group.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/analytics/models/__pycache__/instance_resource_group_summary.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/analytics/models/__pycache__/network_endpoint_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/analytics/models/__pycache__/private_access_channel.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/analytics/models/__pycache__/private_endpoint_details.cpython-314.pyc
@@ -1462,6 +1465,7 @@
 /usr/local/lib/python3.14/site-packages/oci/analytics/models/__pycache__/set_kms_key_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/analytics/models/__pycache__/update_analytics_instance_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/analytics/models/__pycache__/update_private_access_channel_details.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/analytics/models/__pycache__/update_resource_group_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/analytics/models/__pycache__/update_vanity_url_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/analytics/models/__pycache__/vanity_url_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/analytics/models/__pycache__/virtual_cloud_network.cpython-314.pyc
@@ -1477,7 +1481,10 @@
 /usr/local/lib/python3.14/site-packages/oci/analytics/models/change_compartment_details.py
 /usr/local/lib/python3.14/site-packages/oci/analytics/models/create_analytics_instance_details.py
 /usr/local/lib/python3.14/site-packages/oci/analytics/models/create_private_access_channel_details.py
+/usr/local/lib/python3.14/site-packages/oci/analytics/models/create_resource_group_details.py
 /usr/local/lib/python3.14/site-packages/oci/analytics/models/create_vanity_url_details.py
+/usr/local/lib/python3.14/site-packages/oci/analytics/models/instance_resource_group.py
+/usr/local/lib/python3.14/site-packages/oci/analytics/models/instance_resource_group_summary.py
 /usr/local/lib/python3.14/site-packages/oci/analytics/models/network_endpoint_details.py
 /usr/local/lib/python3.14/site-packages/oci/analytics/models/private_access_channel.py
 /usr/local/lib/python3.14/site-packages/oci/analytics/models/private_endpoint_details.py
@@ -1489,6 +1496,7 @@
 /usr/local/lib/python3.14/site-packages/oci/analytics/models/set_kms_key_details.py
 /usr/local/lib/python3.14/site-packages/oci/analytics/models/update_analytics_instance_details.py
 /usr/local/lib/python3.14/site-packages/oci/analytics/models/update_private_access_channel_details.py
+/usr/local/lib/python3.14/site-packages/oci/analytics/models/update_resource_group_details.py
 /usr/local/lib/python3.14/site-packages/oci/analytics/models/update_vanity_url_details.py
 /usr/local/lib/python3.14/site-packages/oci/analytics/models/vanity_url_details.py
 /usr/local/lib/python3.14/site-packages/oci/analytics/models/virtual_cloud_network.py
@@ -6461,6 +6469,7 @@
 /usr/local/lib/python3.14/site-packages/oci/core/models/__pycache__/letter_of_authority.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/core/models/__pycache__/licensing_config.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/core/models/__pycache__/list_ip_inventory_details.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/core/models/__pycache__/loa_extension_data.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/core/models/__pycache__/local_peering_gateway.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/core/models/__pycache__/loop_back_drg_attachment_network_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/core/models/__pycache__/macsec_key.cpython-314.pyc
@@ -6582,6 +6591,7 @@
 /usr/local/lib/python3.14/site-packages/oci/core/models/__pycache__/update_cpe_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/core/models/__pycache__/update_cross_connect_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/core/models/__pycache__/update_cross_connect_group_details.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/core/models/__pycache__/update_cross_connect_letter_of_authority_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/core/models/__pycache__/update_dedicated_capacity_source_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/core/models/__pycache__/update_dedicated_vm_host_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/core/models/__pycache__/update_dhcp_details.cpython-314.pyc
@@ -7167,6 +7177,7 @@
 /usr/local/lib/python3.14/site-packages/oci/core/models/letter_of_authority.py
 /usr/local/lib/python3.14/site-packages/oci/core/models/licensing_config.py
 /usr/local/lib/python3.14/site-packages/oci/core/models/list_ip_inventory_details.py
+/usr/local/lib/python3.14/site-packages/oci/core/models/loa_extension_data.py
 /usr/local/lib/python3.14/site-packages/oci/core/models/local_peering_gateway.py
 /usr/local/lib/python3.14/site-packages/oci/core/models/loop_back_drg_attachment_network_details.py
 /usr/local/lib/python3.14/site-packages/oci/core/models/macsec_key.py
@@ -7288,6 +7299,7 @@
 /usr/local/lib/python3.14/site-packages/oci/core/models/update_cpe_details.py
 /usr/local/lib/python3.14/site-packages/oci/core/models/update_cross_connect_details.py
 /usr/local/lib/python3.14/site-packages/oci/core/models/update_cross_connect_group_details.py
+/usr/local/lib/python3.14/site-packages/oci/core/models/update_cross_connect_letter_of_authority_details.py
 /usr/local/lib/python3.14/site-packages/oci/core/models/update_dedicated_capacity_source_details.py
 /usr/local/lib/python3.14/site-packages/oci/core/models/update_dedicated_vm_host_details.py
 /usr/local/lib/python3.14/site-packages/oci/core/models/update_dhcp_details.py

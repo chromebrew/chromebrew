@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_python_discovery < Pip
   description 'Python interpreter discovery'
   homepage 'https://github.com/tox-dev/python-discovery'
-  version "1.4.4-#{CREW_PY_VER}"
+  version "1.5.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a628e72912fdad9e4a8b22e15dff89fc46699fafd9290b2e1f3d440ae1a7988d',
-     armv7l: 'a628e72912fdad9e4a8b22e15dff89fc46699fafd9290b2e1f3d440ae1a7988d',
-       i686: '3cf70e0a862e5de0a387a034764a9188f8a18d430bf4462b77dc8f116c22014e',
-     x86_64: '572c21fe3c06c46aedbb67f4fe6e74838dcb8b83c56132ae331649fb353c014f'
+    aarch64: '41601bda5fbbb794d6d1a86fbacc6a217034e9f84cc208395423a00b8b41347d',
+     armv7l: '41601bda5fbbb794d6d1a86fbacc6a217034e9f84cc208395423a00b8b41347d',
+       i686: 'ffdc4738f678972455fb8520c391fef79737b1d3c422476af08eaa3e2ac5ce4f',
+     x86_64: 'e41877f9a5909250d5de448731ab0b6f3537829acb27f860b7fcdb85642b528b'
   })
 
   depends_on 'python3' => :logical
