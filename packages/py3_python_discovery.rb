@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_python_discovery < Pip
   description 'Python interpreter discovery'
   homepage 'https://github.com/tox-dev/python-discovery'
-  version "1.4.4-#{CREW_PY_VER}"
+  version "1.5.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
