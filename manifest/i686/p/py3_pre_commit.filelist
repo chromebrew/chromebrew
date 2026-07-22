@@ -1,13 +1,13 @@
-# Total size: 768637
+# Total size: 769101
 /usr/local/bin/pre-commit
-/usr/local/lib/python3.14/site-packages/pre_commit-4.6.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/pre_commit-4.6.0.dist-info/LICENSE
-/usr/local/lib/python3.14/site-packages/pre_commit-4.6.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/pre_commit-4.6.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/pre_commit-4.6.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/pre_commit-4.6.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/pre_commit-4.6.0.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/pre_commit-4.6.0.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/pre_commit-4.6.1.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/pre_commit-4.6.1.dist-info/LICENSE
+/usr/local/lib/python3.14/site-packages/pre_commit-4.6.1.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/pre_commit-4.6.1.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/pre_commit-4.6.1.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/pre_commit-4.6.1.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/pre_commit-4.6.1.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/pre_commit-4.6.1.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/pre_commit/__init__.py
 /usr/local/lib/python3.14/site-packages/pre_commit/__main__.py
 /usr/local/lib/python3.14/site-packages/pre_commit/__pycache__/__init__.cpython-314.pyc
@@ -135,7 +135,6 @@
 /usr/local/lib/python3.14/site-packages/pre_commit/resources/__init__.py
 /usr/local/lib/python3.14/site-packages/pre_commit/resources/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pre_commit/resources/__pycache__/empty_template_setup.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/pre_commit/resources/empty_template_.npmignore
 /usr/local/lib/python3.14/site-packages/pre_commit/resources/empty_template_Cargo.toml
 /usr/local/lib/python3.14/site-packages/pre_commit/resources/empty_template_LICENSE.renv
 /usr/local/lib/python3.14/site-packages/pre_commit/resources/empty_template_Makefile.PL
@@ -144,7 +143,6 @@
 /usr/local/lib/python3.14/site-packages/pre_commit/resources/empty_template_go.mod
 /usr/local/lib/python3.14/site-packages/pre_commit/resources/empty_template_main.go
 /usr/local/lib/python3.14/site-packages/pre_commit/resources/empty_template_main.rs
-/usr/local/lib/python3.14/site-packages/pre_commit/resources/empty_template_package.json
 /usr/local/lib/python3.14/site-packages/pre_commit/resources/empty_template_pre-commit-package-dev-1.rockspec
 /usr/local/lib/python3.14/site-packages/pre_commit/resources/empty_template_pre_commit_placeholder_package.gemspec
 /usr/local/lib/python3.14/site-packages/pre_commit/resources/empty_template_pubspec.yaml
