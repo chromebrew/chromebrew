@@ -19,6 +19,7 @@ class Libssh < CMake
 
   depends_on 'e2fsprogs' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'krb5' => :library
   depends_on 'libgcrypt'
   depends_on 'openssl' => :library
