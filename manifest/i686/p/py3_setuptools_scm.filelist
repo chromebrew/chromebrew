@@ -1,13 +1,13 @@
-# Total size: 150408
+# Total size: 159184
 /usr/local/bin/setuptools-scm
-/usr/local/lib/python3.14/site-packages/setuptools_scm-10.2.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/setuptools_scm-10.2.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/setuptools_scm-10.2.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/setuptools_scm-10.2.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/setuptools_scm-10.2.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/setuptools_scm-10.2.0.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/setuptools_scm-10.2.0.dist-info/licenses/LICENSE
-/usr/local/lib/python3.14/site-packages/setuptools_scm-10.2.0.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/setuptools_scm-10.2.1.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/setuptools_scm-10.2.1.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/setuptools_scm-10.2.1.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/setuptools_scm-10.2.1.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/setuptools_scm-10.2.1.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/setuptools_scm-10.2.1.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/setuptools_scm-10.2.1.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/setuptools_scm-10.2.1.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/setuptools_scm/.git_archival.txt
 /usr/local/lib/python3.14/site-packages/setuptools_scm/__init__.py
 /usr/local/lib/python3.14/site-packages/setuptools_scm/__main__.py
@@ -28,6 +28,7 @@
 /usr/local/lib/python3.14/site-packages/setuptools_scm/_integration/__init__.py
 /usr/local/lib/python3.14/site-packages/setuptools_scm/_integration/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/setuptools_scm/_integration/__pycache__/_discover.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/setuptools_scm/_integration/__pycache__/bdist_wheel.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/setuptools_scm/_integration/__pycache__/build_py.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/setuptools_scm/_integration/__pycache__/deprecation.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/setuptools_scm/_integration/__pycache__/egg_info.cpython-314.pyc
@@ -36,6 +37,7 @@
 /usr/local/lib/python3.14/site-packages/setuptools_scm/_integration/__pycache__/setuptools.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/setuptools_scm/_integration/__pycache__/version_inference.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/setuptools_scm/_integration/_discover.py
+/usr/local/lib/python3.14/site-packages/setuptools_scm/_integration/bdist_wheel.py
 /usr/local/lib/python3.14/site-packages/setuptools_scm/_integration/build_py.py
 /usr/local/lib/python3.14/site-packages/setuptools_scm/_integration/deprecation.py
 /usr/local/lib/python3.14/site-packages/setuptools_scm/_integration/egg_info.py
