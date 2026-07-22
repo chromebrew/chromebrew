@@ -3,13 +3,15 @@ require 'package'
 class Phpsysinfo < Package
   description 'phpSysInfo is a customizable PHP Script that parses /proc, and formats information nicely.'
   homepage 'https://phpsysinfo.github.io/phpsysinfo/'
-  version '3.4.1'
+  version '3.4.6'
   license 'GPL-2+'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://github.com/phpsysinfo/phpsysinfo/archive/v3.4.1.tar.gz'
-  source_sha256 '377bafea4dc4f1f705cd35df5b95e55034045ab3e7971dc934d1f599157dc3aa'
+  source_url 'https://github.com/phpsysinfo/phpsysinfo.git'
+  git_hashtag "v#{version}"
 
-  depends_on 'php74' unless File.exist? "#{CREW_PREFIX}/bin/php"
+  depends_on 'php84' unless File.exist? "#{CREW_PREFIX}/bin/php"
+
+  no_compile_needed
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/phpsysinfo"
@@ -18,9 +20,11 @@ class Phpsysinfo < Package
   end
 
   def self.postinstall
-    puts "\nTo get started, execute the following:".lightblue
-    puts "cd #{CREW_PREFIX}/share/phpsysinfo".lightblue
-    puts 'php -S localhost:9000'.lightblue
-    puts "Visit localhost:9000 in your browser.\n".lightblue
+    ExitMessage.add <<~EOM
+      To get started, execute the following:
+      cd #{CREW_PREFIX}/share/phpsysinfo
+      php -S localhost:9000
+      Visit http://localhost:9000 in your browser.
+    EOM
   end
 end
