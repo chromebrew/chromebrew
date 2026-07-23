@@ -1,8 +1,8 @@
-# Total size: 4987285
+# Total size: 5522350
 /usr/local/bin/cec-client
-/usr/local/bin/cec-client-7.1.1
+/usr/local/bin/cec-client-8.0.0
 /usr/local/bin/cecc-client
-/usr/local/bin/cecc-client-7.1.1
+/usr/local/bin/cecc-client-8.0.0
 /usr/local/bin/pyCecClient
 /usr/local/include/libcec/cec.h
 /usr/local/include/libcec/cecc.h
@@ -10,10 +10,14 @@
 /usr/local/include/libcec/cecloader.h
 /usr/local/include/libcec/cectypes.h
 /usr/local/include/libcec/version.h
+/usr/local/lib/cmake/libcec/libcec-config-version.cmake
+/usr/local/lib/cmake/libcec/libcec-config.cmake
+/usr/local/lib/cmake/libcec/libcec-release.cmake
+/usr/local/lib/cmake/libcec/libcec.cmake
 /usr/local/lib/libcec.a
 /usr/local/lib/libcec.so
-/usr/local/lib/libcec.so.7
-/usr/local/lib/libcec.so.7.1.1
+/usr/local/lib/libcec.so.8
+/usr/local/lib/libcec.so.8.0.0
 /usr/local/lib/pkgconfig/libcec.pc
 /usr/local/lib/python3.14/site-packages/_pycec.so
 /usr/local/lib/python3.14/site-packages/cec.py
