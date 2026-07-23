@@ -3,18 +3,18 @@ require 'package'
 class Pigz < Package
   description 'A parallel implementation of gzip for modern multi-processor, multi-core machines'
   homepage 'https://zlib.net/pigz/'
-  version '2.4'
+  version '2.8'
   license 'ZLIB'
   compatibility 'all'
-  source_url 'https://zlib.net/pigz/pigz-2.4.tar.gz'
-  source_sha256 'a4f816222a7b4269bd232680590b579ccc72591f1bb5adafcd7208ca77e14f73'
-  binary_compression 'tar.xz'
+  source_url "https://zlib.net/pigz/pigz-#{version}.tar.gz"
+  source_sha256 'eb872b4f0e1f0ebe59c9f7bd8c506c4204893ba6a8492de31df416f0d5170fd0'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '10aa75b1ea4f2bd9acc84350fa30c0d152391e37517a2487febde4c6a82d329d',
-     armv7l: '10aa75b1ea4f2bd9acc84350fa30c0d152391e37517a2487febde4c6a82d329d',
-       i686: 'a9189537126b568f26aaeb6e8df2f8cb0a6519a47f277c796008be29db0dd87e',
-     x86_64: '7254da818fd1658337f052cf2eaf4ecef66d1932eb3092703f335a847ccf7382'
+    aarch64: '4367672f7ea6833e0098fe4cec1f57ea57e7013c441b03017631def5fc774f19',
+     armv7l: '4367672f7ea6833e0098fe4cec1f57ea57e7013c441b03017631def5fc774f19',
+       i686: '87130e9f6b588e86ef968cc3770df7ca26245ce8a3b287532a9ab871fee62fb2',
+     x86_64: '31bc09206e5584d32ebd36ad3f71199c6673205003145cb07039f2c0579c44a1'
   })
 
   depends_on 'glibc' => :executable
@@ -23,12 +23,11 @@ class Pigz < Package
 
   def self.build
     system 'make'
-    system 'gzip -9 pigz.1'
   end
 
   def self.install
-    system "install -Dm755 pigz #{CREW_DEST_PREFIX}/bin/pigz"
-    system "install -Dm755 unpigz #{CREW_DEST_PREFIX}/bin/unpigz"
-    system "install -Dm644 pigz.1.gz #{CREW_DEST_PREFIX}/share/man/man1/pigz.1.gz"
+    FileUtils.install 'pigz', "#{CREW_DEST_PREFIX}/bin/pigz", mode: 0o755
+    FileUtils.install 'unpigz', "#{CREW_DEST_PREFIX}/bin/unpigz", mode: 0o755
+    FileUtils.install 'pigz.1', "#{CREW_DEST_MAN_PREFIX}/man1/pigz.1", mode: 0o644
   end
 end
