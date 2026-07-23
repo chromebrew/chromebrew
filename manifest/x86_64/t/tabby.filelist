@@ -1,4 +1,4 @@
-# Total size: 427495458
+# Total size: 423107183
 /usr/local/bin/tabby
 /usr/local/share/tabby/LICENSE.electron.txt
 /usr/local/share/tabby/LICENSES.chromium.html
@@ -159,32 +159,6 @@
 /usr/local/share/tabby/resources/app.asar.unpacked/node_modules/keytar/build/Release/keytar.node
 /usr/local/share/tabby/resources/app.asar.unpacked/node_modules/keytar/lib/keytar.js
 /usr/local/share/tabby/resources/app.asar.unpacked/node_modules/keytar/package.json
-/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/libnpmaccess/LICENSE
-/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/libnpmaccess/PULL_REQUEST_TEMPLATE
-/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/libnpmaccess/index.js
-/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/libnpmaccess/package.json
-/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/libnpmconfig/LICENSE
-/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/libnpmconfig/PULL_REQUEST_TEMPLATE
-/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/libnpmconfig/index.js
-/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/libnpmconfig/package.json
-/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/libnpmorg/LICENSE
-/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/libnpmorg/PULL_REQUEST_TEMPLATE
-/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/libnpmorg/index.js
-/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/libnpmorg/package.json
-/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/libnpmpublish/LICENSE
-/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/libnpmpublish/PULL_REQUEST_TEMPLATE
-/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/libnpmpublish/index.js
-/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/libnpmpublish/package.json
-/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/libnpmpublish/publish.js
-/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/libnpmpublish/unpublish.js
-/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/libnpmsearch/LICENSE
-/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/libnpmsearch/PULL_REQUEST_TEMPLATE
-/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/libnpmsearch/index.js
-/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/libnpmsearch/package.json
-/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/libnpmteam/LICENSE
-/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/libnpmteam/PULL_REQUEST_TEMPLATE
-/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/libnpmteam/index.js
-/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/libnpmteam/package.json
 /usr/local/share/tabby/resources/app.asar.unpacked/node_modules/native-process-working-directory/.editorconfig
 /usr/local/share/tabby/resources/app.asar.unpacked/node_modules/native-process-working-directory/bin/linux-x64-139/native-process-working-directory.node
 /usr/local/share/tabby/resources/app.asar.unpacked/node_modules/native-process-working-directory/build/Release/native-process-working-directory.node
@@ -243,10 +217,6 @@
 /usr/local/share/tabby/resources/app.asar.unpacked/node_modules/russh/russh.win32-arm64-msvc.node
 /usr/local/share/tabby/resources/app.asar.unpacked/node_modules/russh/russh.win32-x64-msvc.node
 /usr/local/share/tabby/resources/app.asar.unpacked/node_modules/russh/rust-toolchain.toml
-/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/term-size/index.js
-/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/term-size/license
-/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/term-size/package.json
-/usr/local/share/tabby/resources/app.asar.unpacked/node_modules/term-size/vendor/macos/term-size
 /usr/local/share/tabby/resources/builtin-plugins/tabby-auto-sudo-password/dist/index.js
 /usr/local/share/tabby/resources/builtin-plugins/tabby-auto-sudo-password/dist/index.js.map
 /usr/local/share/tabby/resources/builtin-plugins/tabby-auto-sudo-password/node_modules/.yarn-integrity
@@ -291,6 +261,7 @@
 /usr/local/share/tabby/resources/builtin-plugins/tabby-community-color-schemes/schemes/Ciapre
 /usr/local/share/tabby/resources/builtin-plugins/tabby-community-color-schemes/schemes/Cobalt Neon
 /usr/local/share/tabby/resources/builtin-plugins/tabby-community-color-schemes/schemes/Cobalt2
+/usr/local/share/tabby/resources/builtin-plugins/tabby-community-color-schemes/schemes/CoolRetroTermAmber
 /usr/local/share/tabby/resources/builtin-plugins/tabby-community-color-schemes/schemes/CrayonPonyFish
 /usr/local/share/tabby/resources/builtin-plugins/tabby-community-color-schemes/schemes/Dark Pastel
 /usr/local/share/tabby/resources/builtin-plugins/tabby-community-color-schemes/schemes/Darkside
@@ -495,6 +466,9 @@
 /usr/local/share/tabby/resources/builtin-plugins/tabby-core/src/components/profileIcon.component.pug
 /usr/local/share/tabby/resources/builtin-plugins/tabby-core/src/components/profileIcon.component.scss
 /usr/local/share/tabby/resources/builtin-plugins/tabby-core/src/components/profileIcon.component.ts
+/usr/local/share/tabby/resources/builtin-plugins/tabby-core/src/components/profileTree.component.pug
+/usr/local/share/tabby/resources/builtin-plugins/tabby-core/src/components/profileTree.component.scss
+/usr/local/share/tabby/resources/builtin-plugins/tabby-core/src/components/profileTree.component.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-core/src/components/promptModal.component.pug
 /usr/local/share/tabby/resources/builtin-plugins/tabby-core/src/components/promptModal.component.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-core/src/components/renameTabModal.component.pug
@@ -616,6 +590,7 @@
 /usr/local/share/tabby/resources/builtin-plugins/tabby-core/typings/components/baseTab.component.d.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-core/typings/components/checkbox.component.d.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-core/typings/components/profileIcon.component.d.ts
+/usr/local/share/tabby/resources/builtin-plugins/tabby-core/typings/components/profileTree.component.d.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-core/typings/components/promptModal.component.d.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-core/typings/components/renameTabModal.component.d.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-core/typings/components/safeModeModal.component.d.ts
@@ -806,6 +781,7 @@
 /usr/local/share/tabby/resources/builtin-plugins/tabby-local/src/components/shellSettingsTab.component.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-local/src/components/terminalTab.component.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-local/src/config.ts
+/usr/local/share/tabby/resources/builtin-plugins/tabby-local/src/environment.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-local/src/hotkeys.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-local/src/icons/plus.svg
 /usr/local/share/tabby/resources/builtin-plugins/tabby-local/src/index.ts
@@ -826,6 +802,7 @@
 /usr/local/share/tabby/resources/builtin-plugins/tabby-local/typings/components/shellSettingsTab.component.d.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-local/typings/components/terminalTab.component.d.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-local/typings/config.d.ts
+/usr/local/share/tabby/resources/builtin-plugins/tabby-local/typings/environment.d.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-local/typings/hotkeys.d.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-local/typings/index.d.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-local/typings/profiles.d.ts
@@ -902,6 +879,7 @@
 /usr/local/share/tabby/resources/builtin-plugins/tabby-settings/src/components/hotkeyInputModal.component.scss
 /usr/local/share/tabby/resources/builtin-plugins/tabby-settings/src/components/hotkeyInputModal.component.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-settings/src/components/hotkeySettingsTab.component.pug
+/usr/local/share/tabby/resources/builtin-plugins/tabby-settings/src/components/hotkeySettingsTab.component.scss
 /usr/local/share/tabby/resources/builtin-plugins/tabby-settings/src/components/hotkeySettingsTab.component.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-settings/src/components/multiHotkeyInput.component.pug
 /usr/local/share/tabby/resources/builtin-plugins/tabby-settings/src/components/multiHotkeyInput.component.scss
@@ -959,7 +937,6 @@
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/dist/index.js.map
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/.bin/ipv6
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/.bin/ipv6grep
-/usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/.bin/rimraf
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/.bin/run-os
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/.bin/run-script-os
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/.yarn-integrity
@@ -1023,8 +1000,21 @@
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/balanced-match/README.md
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/balanced-match/index.js
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/balanced-match/package.json
+/usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/brace-expansion/.tap/coverage/8b906b8c-e21f-40b5-8c0d-214d8c2682c5.json
+/usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/brace-expansion/.tap/processinfo/8b906b8c-e21f-40b5-8c0d-214d8c2682c5.json
+/usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/brace-expansion/ADVISORY-CVE-2026-14257.md
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/brace-expansion/LICENSE
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/brace-expansion/README.md
+/usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/brace-expansion/dist/commonjs/index.d.ts
+/usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/brace-expansion/dist/commonjs/index.d.ts.map
+/usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/brace-expansion/dist/commonjs/index.js
+/usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/brace-expansion/dist/commonjs/index.js.map
+/usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/brace-expansion/dist/commonjs/package.json
+/usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/brace-expansion/dist/esm/index.d.ts
+/usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/brace-expansion/dist/esm/index.d.ts.map
+/usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/brace-expansion/dist/esm/index.js
+/usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/brace-expansion/dist/esm/index.js.map
+/usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/brace-expansion/dist/esm/package.json
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/brace-expansion/index.js
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/brace-expansion/package.json
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/cli/README.md
@@ -1181,12 +1171,6 @@
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/pkginfo/lib/pkginfo.js
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/pkginfo/package.json
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/pkginfo/test/pkginfo-test.js
-/usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/rimraf/CHANGELOG.md
-/usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/rimraf/LICENSE
-/usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/rimraf/README.md
-/usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/rimraf/bin.js
-/usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/rimraf/package.json
-/usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/rimraf/rimraf.js
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/run-script-os/LICENSE
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/run-script-os/README.md
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/run-script-os/functions.js
@@ -1212,11 +1196,9 @@
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/tmp-promise/package.json
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/tmp-promise/publish.js
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/tmp-promise/test.js
-/usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/tmp/CHANGELOG.md
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/tmp/LICENSE
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/tmp/README.md
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/tmp/lib/tmp.js
-/usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/tmp/node_modules/.bin/rimraf
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/tmp/package.json
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/winston/.jshintrc
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/node_modules/winston/.npmignore
@@ -1404,6 +1386,7 @@
 /usr/local/share/tabby/resources/builtin-plugins/tabby-terminal/node_modules/.yarn-integrity
 /usr/local/share/tabby/resources/builtin-plugins/tabby-terminal/package.json
 /usr/local/share/tabby/resources/builtin-plugins/tabby-terminal/patches/ansi-color+0.2.1.patch
+/usr/local/share/tabby/resources/builtin-plugins/tabby-terminal/patches/zmodem.js+0.1.10.patch
 /usr/local/share/tabby/resources/builtin-plugins/tabby-terminal/src/api/baseTerminalTab.component.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-terminal/src/api/colorSchemeProvider.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-terminal/src/api/connectableTerminalTab.component.ts
