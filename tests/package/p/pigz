@@ -1,0 +1,5 @@
+#!/bin/bash
+pigz -h 2>&1 | head
+pigz -V
+unpigz -h 2>&1 | head
+unpigz -V
