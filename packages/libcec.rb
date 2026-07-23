@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libcec < CMake
   description 'Pulse-Eights libcec for the Pulse-Eight USB-CEC adapter'
   homepage 'https://libcec.pulse-eight.com/'
-  version '7.1.1'
+  version '8.0.0'
   license 'GPL'
   compatibility 'aarch64 armv7l x86_64' # Not kernel compatible w/ i686 kernel.
   source_url 'https://github.com/Pulse-Eight/libcec.git'
