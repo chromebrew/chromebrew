@@ -17,7 +17,7 @@ class Libeconf < Meson
      x86_64: '4d79d844e42e4a22e83dd21cfcdb0493f10345355463a1d8bfcb8ece9b36138f'
   })
 
-  depends_on 'gcc_lib' # R
+  depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
 end
