@@ -1,13 +1,13 @@
-# Total size: 979579
+# Total size: 1009379
 /usr/local/include/python3.14/greenlet/greenlet.h
-/usr/local/lib/python3.14/site-packages/greenlet-3.5.3.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/greenlet-3.5.3.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/greenlet-3.5.3.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/greenlet-3.5.3.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/greenlet-3.5.3.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/greenlet-3.5.3.dist-info/licenses/LICENSE
-/usr/local/lib/python3.14/site-packages/greenlet-3.5.3.dist-info/licenses/LICENSE.PSF
-/usr/local/lib/python3.14/site-packages/greenlet-3.5.3.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/greenlet-3.5.4.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/greenlet-3.5.4.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/greenlet-3.5.4.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/greenlet-3.5.4.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/greenlet-3.5.4.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/greenlet-3.5.4.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/greenlet-3.5.4.dist-info/licenses/LICENSE.PSF
+/usr/local/lib/python3.14/site-packages/greenlet-3.5.4.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/greenlet/CObjects.cpp
 /usr/local/lib/python3.14/site-packages/greenlet/PyGreenlet.cpp
 /usr/local/lib/python3.14/site-packages/greenlet/PyGreenlet.hpp
@@ -73,10 +73,13 @@
 /usr/local/lib/python3.14/site-packages/greenlet/slp_platformselect.h
 /usr/local/lib/python3.14/site-packages/greenlet/tests/__init__.py
 /usr/local/lib/python3.14/site-packages/greenlet/tests/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/greenlet/tests/__pycache__/fail_c_stack_refs_suspended_gc.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/greenlet/tests/__pycache__/fail_clearing_run_switches.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/greenlet/tests/__pycache__/fail_cpp_exception.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/greenlet/tests/__pycache__/fail_initialstub_already_started.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/greenlet/tests/__pycache__/fail_issue_515_freethread_gc.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/greenlet/tests/__pycache__/fail_slp_switch.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/greenlet/tests/__pycache__/fail_switch_critical_section.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/greenlet/tests/__pycache__/fail_switch_three_greenlets.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/greenlet/tests/__pycache__/fail_switch_three_greenlets2.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/greenlet/tests/__pycache__/fail_switch_two_greenlets.cpython-314.pyc
@@ -100,10 +103,13 @@
 /usr/local/lib/python3.14/site-packages/greenlet/tests/_test_extension.cpython-314-arm-linux-gnueabihf.so
 /usr/local/lib/python3.14/site-packages/greenlet/tests/_test_extension_cpp.cpp
 /usr/local/lib/python3.14/site-packages/greenlet/tests/_test_extension_cpp.cpython-314-arm-linux-gnueabihf.so
+/usr/local/lib/python3.14/site-packages/greenlet/tests/fail_c_stack_refs_suspended_gc.py
 /usr/local/lib/python3.14/site-packages/greenlet/tests/fail_clearing_run_switches.py
 /usr/local/lib/python3.14/site-packages/greenlet/tests/fail_cpp_exception.py
 /usr/local/lib/python3.14/site-packages/greenlet/tests/fail_initialstub_already_started.py
+/usr/local/lib/python3.14/site-packages/greenlet/tests/fail_issue_515_freethread_gc.py
 /usr/local/lib/python3.14/site-packages/greenlet/tests/fail_slp_switch.py
+/usr/local/lib/python3.14/site-packages/greenlet/tests/fail_switch_critical_section.py
 /usr/local/lib/python3.14/site-packages/greenlet/tests/fail_switch_three_greenlets.py
 /usr/local/lib/python3.14/site-packages/greenlet/tests/fail_switch_three_greenlets2.py
 /usr/local/lib/python3.14/site-packages/greenlet/tests/fail_switch_two_greenlets.py
