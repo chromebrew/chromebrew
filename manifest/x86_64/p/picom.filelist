@@ -1,0 +1,14 @@
+# Total size: 829252
+/usr/local/bin/compton
+/usr/local/bin/compton-trans
+/usr/local/bin/picom
+/usr/local/bin/picom-inspect
+/usr/local/bin/picom-trans
+/usr/local/etc/xdg/autostart/picom.desktop
+/usr/local/include/picom/api.h
+/usr/local/include/picom/backend.h
+/usr/local/lib64/pkgconfig/picom-api.pc
+/usr/local/share/applications/compton.desktop
+/usr/local/share/applications/picom.desktop
+/usr/local/share/icons/hicolor/48x48/apps/compton.png
+/usr/local/share/icons/hicolor/scalable/apps/compton.svg
