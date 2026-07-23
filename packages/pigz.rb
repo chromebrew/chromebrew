@@ -17,6 +17,9 @@ class Pigz < Package
      x86_64: '7254da818fd1658337f052cf2eaf4ecef66d1932eb3092703f335a847ccf7382'
   })
 
+  depends_on 'glibc' => :executable
+  depends_on 'zlib' => :executable
+
   def self.build
     system 'make'
     system 'gzip -9 pigz.1'
