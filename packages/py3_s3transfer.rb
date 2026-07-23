@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_s3transfer < Pip
   description 'An Amazon S3 Transfer Manager'
   homepage 'https://github.com/boto/s3transfer'
-  version "0.19.1-#{CREW_PY_VER}"
+  version "0.19.2-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'
