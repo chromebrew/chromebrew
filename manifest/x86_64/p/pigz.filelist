@@ -1,4 +1,4 @@
-# Total size: 327696
+# Total size: 314365
 /usr/local/bin/pigz
 /usr/local/bin/unpigz
-/usr/local/share/man/man1/pigz.1.gz
+/usr/local/share/man/man1/pigz.1.zst
