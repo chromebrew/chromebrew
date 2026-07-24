@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Blueprint_compiler < Meson
   description 'A markup language for GTK user interfaces'
   homepage 'https://gitlab.gnome.org/GNOME/blueprint-compiler'
-  version "0.20.4-#{CREW_PY_VER}"
+  version "0.22.2-#{CREW_PY_VER}"
   license 'LGPL'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/blueprint-compiler.git'
