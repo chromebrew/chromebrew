@@ -11,10 +11,10 @@ class Snappy < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '697cff1e0c956c29d65d690a5440aee2f38fe3d9d02bab13396cf3744cb04a66',
-     armv7l: '697cff1e0c956c29d65d690a5440aee2f38fe3d9d02bab13396cf3744cb04a66',
-       i686: 'b9cb1f83e790e0307cbe2e8d51474a76bfb5e77068f2bcc8ca3affbe4b0460c5',
-     x86_64: 'da62465a10ede8e2ce13fc5e4228af137377ef7ebb6e4e219b3031ffe1578872'
+    aarch64: 'fbc02c16f466c8b04025f55c72716d97318de888dfab1151dad3476e3f7dc3a8',
+     armv7l: 'fbc02c16f466c8b04025f55c72716d97318de888dfab1151dad3476e3f7dc3a8',
+       i686: '2c21491abf010a76bdff7092a0071ff16bb116007581e14058e1e75ef04f2972',
+     x86_64: '6a1897e565809ec90eccc647c30486b16bf22b130c5d2f67dd8d6e9941f417b9'
   })
 
   depends_on 'gcc_lib' => :library
@@ -23,5 +23,8 @@ class Snappy < CMake
   depends_on 'llvm_dev' => :build
   depends_on 'lzo' => :library
 
-  cmake_options '-DBUILD_SHARED_LIBS=ON -DSNAPPY_BUILD_TESTS=OFF' # Tests don't work on ARM
+  cmake_options ' \
+    -DBUILD_SHARED_LIBS=ON \
+    -DBENCHMARK_ENABLE_INSTALL=OFF \
+    -DSNAPPY_BUILD_TESTS=OFF' # Tests don't work on ARM
 end
