@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# getrealdeps version 2.16 (for Chromebrew)
+# getrealdeps version 2.17 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 #
 # Dependencies in Chromebrew can be:
@@ -167,15 +167,17 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
     dependency_insert = pkg_file_lines.index { it.include?('})') && pkg_file_lines.index(it) >= dependency_insert.to_i }
 
     # We then need to move one past the end of the binary_sha256 hash, and add an empty line at the start of our new dependency block.
-    dependency_insert += 1
+    dependency_insert += 1 unless dependency_insert.nil?
     pkgdepsblock.prepend('')
   end
 
-  # First remove all dependencies.
-  pkg_file_lines.reject! { it.include?("depends_on '") }
+  unless dependency_insert.nil?
+    # First remove all dependencies.
+    pkg_file_lines.reject! { it.include?("depends_on '") }
 
-  # Add back our sorted dependencies.
-  pkg_file_lines.insert(dependency_insert, pkgdepsblock)
+    # Add back our sorted dependencies.
+    pkg_file_lines.insert(dependency_insert, pkgdepsblock)
+  end
 
   # Only write back sorted dependencies if ARCH.include lines do not
   # appear on or around dependency lines.
