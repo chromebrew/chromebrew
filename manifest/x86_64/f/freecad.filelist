@@ -1,4 +1,4 @@
-# Total size: 4097793639
+# Total size: 4097893171
 /usr/local/bin/freecad
 /usr/local/share/freecad/AppRun
 /usr/local/share/freecad/freecad.sh
@@ -335,9 +335,11 @@
 /usr/local/share/freecad/usr/Mod/BIM/bimtests/TestArchTruss.py
 /usr/local/share/freecad/usr/Mod/BIM/bimtests/TestArchWall.py
 /usr/local/share/freecad/usr/Mod/BIM/bimtests/TestArchWindow.py
+/usr/local/share/freecad/usr/Mod/BIM/bimtests/TestArchWindowGui.py
 /usr/local/share/freecad/usr/Mod/BIM/bimtests/TestWebGLExport.py
 /usr/local/share/freecad/usr/Mod/BIM/bimtests/TestWebGLExportGui.py
 /usr/local/share/freecad/usr/Mod/BIM/bimtests/fixtures/FC_site_simple-102.FCStd
+/usr/local/share/freecad/usr/Mod/BIM/bimtests/test_roof_subtraction.brep
 /usr/local/share/freecad/usr/Mod/BIM/importers/Sample.sh3d
 /usr/local/share/freecad/usr/Mod/BIM/importers/__init__.py
 /usr/local/share/freecad/usr/Mod/BIM/importers/exportIFC.py
@@ -1843,6 +1845,8 @@
 /usr/local/share/freecad/usr/Mod/Sketcher/Profiles.py
 /usr/local/share/freecad/usr/Mod/Sketcher/SketcherExample.py
 /usr/local/share/freecad/usr/Mod/Sketcher/SketcherTests/TestPlacementUpdate.py
+/usr/local/share/freecad/usr/Mod/Sketcher/SketcherTests/TestSketchCarbonCopyReverseMapping.FCStd
+/usr/local/share/freecad/usr/Mod/Sketcher/SketcherTests/TestSketchCarbonCopyReverseMapping.py
 /usr/local/share/freecad/usr/Mod/Sketcher/SketcherTests/TestSketchExpression.py
 /usr/local/share/freecad/usr/Mod/Sketcher/SketcherTests/TestSketchFillet.py
 /usr/local/share/freecad/usr/Mod/Sketcher/SketcherTests/TestSketchValidateCoincidents.py

@@ -1,13 +1,11 @@
-# Total size: 2607700
-/usr/local/lib/python3.14/site-packages/urwid-4.0.5.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/urwid-4.0.5.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/urwid-4.0.5.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/urwid-4.0.5.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/urwid-4.0.5.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/urwid-4.0.5.dist-info/licenses/COPYING
-/usr/local/lib/python3.14/site-packages/urwid-4.0.5.dist-info/scm_file_list.json
-/usr/local/lib/python3.14/site-packages/urwid-4.0.5.dist-info/scm_version.json
-/usr/local/lib/python3.14/site-packages/urwid-4.0.5.dist-info/top_level.txt
+# Total size: 2617496
+/usr/local/lib/python3.14/site-packages/urwid-4.0.6.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/urwid-4.0.6.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/urwid-4.0.6.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/urwid-4.0.6.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/urwid-4.0.6.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/urwid-4.0.6.dist-info/licenses/COPYING
+/usr/local/lib/python3.14/site-packages/urwid-4.0.6.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/urwid/__init__.py
 /usr/local/lib/python3.14/site-packages/urwid/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/urwid/__pycache__/canvas.cpython-314.pyc
