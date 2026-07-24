@@ -1,4 +1,4 @@
-# Total size: 3656649
+# Total size: 3740037
 /usr/local/include/benchmark/benchmark.h
 /usr/local/include/benchmark/export.h
 /usr/local/lib/cmake/benchmark/benchmarkConfig.cmake
@@ -25,3 +25,21 @@
 /usr/local/share/doc/benchmark/releasing.md
 /usr/local/share/doc/benchmark/tools.md
 /usr/local/share/doc/benchmark/user_guide.md
+/usr/local/share/googlebenchmark/tools/BUILD.bazel
+/usr/local/share/googlebenchmark/tools/compare.py
+/usr/local/share/googlebenchmark/tools/gbench/Inputs/test1_run1.json
+/usr/local/share/googlebenchmark/tools/gbench/Inputs/test1_run2.json
+/usr/local/share/googlebenchmark/tools/gbench/Inputs/test2_run.json
+/usr/local/share/googlebenchmark/tools/gbench/Inputs/test3_run0.json
+/usr/local/share/googlebenchmark/tools/gbench/Inputs/test3_run1.json
+/usr/local/share/googlebenchmark/tools/gbench/Inputs/test4_run.json
+/usr/local/share/googlebenchmark/tools/gbench/Inputs/test4_run0.json
+/usr/local/share/googlebenchmark/tools/gbench/Inputs/test4_run1.json
+/usr/local/share/googlebenchmark/tools/gbench/Inputs/test5_run0.json
+/usr/local/share/googlebenchmark/tools/gbench/Inputs/test5_run1.json
+/usr/local/share/googlebenchmark/tools/gbench/__init__.py
+/usr/local/share/googlebenchmark/tools/gbench/report.py
+/usr/local/share/googlebenchmark/tools/gbench/util.py
+/usr/local/share/googlebenchmark/tools/libpfm.BUILD.bazel
+/usr/local/share/googlebenchmark/tools/requirements.txt
+/usr/local/share/googlebenchmark/tools/strip_asm.py
