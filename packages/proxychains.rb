@@ -1,31 +1,43 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Proxychains < Package
+class Proxychains < Autotools
   description 'a tool that forces any TCP connection made by any given application to follow through proxy like TOR or any other SOCKS4, SOCKS5 or HTTP(S) proxy.'
   homepage 'https://github.com/haad/proxychains'
-  version '4.2.0'
+  version '4.4.0-2ec9e1d'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/haad/proxychains/archive/proxychains-4.2.0.tar.gz'
-  source_sha256 '225284e5553fb062d09ed425d2815387eda9c1c0d6e2bc24ea95393a71601619'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/haad/proxychains.git'
+  git_hashtag '2ec9e1d7ca7e7d37f8eb67181e2c6580a7fdf3d0'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '570e3bbbc4ef4429d409c65b1bb434b8fa5178f62c156c7f40390ffa7560ad63',
-     armv7l: '570e3bbbc4ef4429d409c65b1bb434b8fa5178f62c156c7f40390ffa7560ad63',
-       i686: 'c91eac05feaf24420161f659b9bfea4d9caba0ffb8710945b2e483187aa259f3',
-     x86_64: 'f5de3f217b624363140f63e68bf188ff8b8de93f18b3af946b51a62a8c0c3271'
+    aarch64: '4b3bc65b0acc1442f8b42a00fa477bf901647cff4f801337507b74806ffbfeef',
+     armv7l: '4b3bc65b0acc1442f8b42a00fa477bf901647cff4f801337507b74806ffbfeef',
+       i686: 'c556ab1c23c894e0874eeb90ad358bb09dd4febd793b97f5aed05136acdc127a',
+     x86_64: '602ff96d2ccc6736f19e0201ad2e10e4ad7b2f580e84cd1ad45399b53612fb1e'
   })
+
+  depends_on 'drill' => :executable # Needed for proxyresolv.
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+
+  def self.patch
+    # Fix error: ‘strncpy’ specified bound 256 equals destination size [-Werror=stringop-truncation]
+    # See https://github.com/haad/proxychains/pull/178.
+    system "sed -i 's/strncpy(data->addr_name, name, sizeof(data->addr_name))/snprintf(data->addr_name, sizeof(data->addr_name), \"%s\", name)/' src/core.c"
+    system "sed -i 's/strncpy(space->addr_name, node, sizeof(space->addr_name))/snprintf(space->addr_name, sizeof(space->addr_name), \"%s\", node)/' src/core.c"
+  end
+
   def self.build
-    system './configure', "--prefix=#{CREW_PREFIX}", "--libdir=#{CREW_LIB_PREFIX}"
+    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
     system 'make'
   end
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    system "install -Dm644 src/proxychains.conf #{CREW_DEST_PREFIX}/$HOME/.proxychains/proxychains.conf"
-    system "install -Dm644 src/proxychains.conf #{CREW_DEST_PREFIX}/etc/proxychains.conf"
-    system 'mkdir -p HOME/.proxychains && cp src/proxychains.conf $HOME/.proxychains'
-    system "install -Dm755 src/proxyresolv #{CREW_DEST_PREFIX}/bin/proxyresolv"
+  autotools_install_extras do
+    FileUtils.install 'src/proxychains.conf', "#{CREW_DEST_HOME}/.proxychains/proxychains.conf", mode: 0o644
+    FileUtils.install 'src/proxychains.conf', "#{CREW_DEST_PREFIX}/etc/proxychains.conf", mode: 0o644
+    FileUtils.install 'src/proxyresolv', "#{CREW_DEST_PREFIX}/bin/proxyresolv", mode: 0o755
+    # Fix ERROR: ld.so: object 'libproxychains.so' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+    FileUtils.ln_s "#{CREW_LIB_PREFIX}/libproxychains.so.4", "#{CREW_DEST_LIB_PREFIX}/libproxychains.so"
   end
 end
