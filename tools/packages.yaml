@@ -6650,9 +6650,9 @@ url: https://github.com/NetHack/NetHack/releases
 activity: low
 ---
 kind: url
-name: nethack4
-url: http://nethack4.org/
-activity: none
+name: nethack5
+url: https://github.com/NetHack/NetHack/releases
+activity: low
 ---
 kind: url
 name: nethogs

@@ -78,6 +78,7 @@ renamed_packages = Set[
   { pkg_name: 'meson', pkg_rename: 'py3_meson', comments: 'Renamed to avoid conflict with buildsystems/meson.' },
   { pkg_name: 'mesonbuild', pkg_rename: 'py3_meson', comments: 'Renamed to indicate switch to pip buildsystem.' },
   { pkg_name: 'moonbuggy', pkg_rename: 'moon_buggy', comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'nethack4', pkg_rename: 'nethack5', comments: 'Reflect new supported version upstream.' },
   { pkg_name: 'oci_cli', pkg_rename: 'py3_oci_cli', comments: 'Fix to match upstream name.' },
   { pkg_name: 'onepassword', pkg_rename: 'onepassword_cli', comments: 'Rename to distinguish between onepassword_gui.' },
   { pkg_name: 'onevpl', pkg_rename: 'libvpl', comments: 'Rename to redirected github repository.' },

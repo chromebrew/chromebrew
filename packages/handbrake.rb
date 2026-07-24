@@ -37,7 +37,6 @@ class Handbrake < Package
   depends_on 'libx264' => :executable
   depends_on 'libxml2' => :executable
   depends_on 'nasm' => :build
-  depends_on 'nethack4' => :executable
   depends_on 'numactl' => :executable
   depends_on 'opus' => :executable
   depends_on 'pango' => :executable
