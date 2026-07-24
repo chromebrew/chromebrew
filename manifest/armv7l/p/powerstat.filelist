@@ -1,4 +1,4 @@
-# Total size: 69742
+# Total size: 37969
 /usr/local/bin/powerstat
 /usr/local/share/bash-completion/completions/powerstat
-/usr/local/share/man/man8/powerstat.8.gz
+/usr/local/share/man/man8/powerstat.8.zst
