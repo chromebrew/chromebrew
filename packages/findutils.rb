@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Findutils < Autotools
   description 'the basic directory searching utilities of the GNU operating system'
   homepage 'https://www.gnu.org/software/findutils/'
-  version '4.10.0'
+  version '4.11.0'
   license 'GPL-3+'
   compatibility 'all'
   source_url "https://ftp.gnu.org/gnu/findutils/findutils-#{version}.tar.xz"
-  source_sha256 '1387e0b67ff247d2abde998f90dfbf70c1491391a59ddfecb8ae698789f0a4f5'
+  source_sha256 'bfd19cb06cc71f3352d567e90284d8cdac02ac89774bbeadf0b533b0c11432fd'
   binary_compression 'tar.zst'
 
   binary_sha256({
