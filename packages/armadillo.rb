@@ -11,10 +11,10 @@ class Armadillo < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1eaa279583413278f7536bd67caa1e3c8dd11960441eb4ae10ec99040f86fed2',
-     armv7l: '1eaa279583413278f7536bd67caa1e3c8dd11960441eb4ae10ec99040f86fed2',
-       i686: 'a044810ec2d81c58b2460d1d1e5a93db41087e456f5ea35022dbc7c2f7d2d423',
-     x86_64: 'cb393bf777adb36fe489c293ce89dd4cac4effa03512ada72d48f602b0a7460a'
+    aarch64: 'd56f75f7bcc89a5e051570249514bf63b3ac2a9604dc4500e46573e8096e5c32',
+     armv7l: 'd56f75f7bcc89a5e051570249514bf63b3ac2a9604dc4500e46573e8096e5c32',
+       i686: '43c234af0fb117d5ecf25a213b225062861d51d7cfb18c8a93a6ebf11fe1d4fc',
+     x86_64: 'c69ed0cd333193c48144cc225e1f922b5556d4608fd1608e3aafcfc56722afc1'
   })
 
   depends_on 'arpack_ng' => :library
