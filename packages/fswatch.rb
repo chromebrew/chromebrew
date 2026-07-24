@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Fswatch < Autotools
   description 'fswatch is a file change monitor that receives notifications when the contents of the specified files or directories are modified.'
   homepage 'https://github.com/emcrisostomo/fswatch'
-  version '1.21.0'
+  version '1.22.0'
   license 'GPL-3+'
   compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.41'
