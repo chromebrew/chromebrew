@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class P8_platform < CMake
   description 'Platform support library used by libCEC and binary add-ons for Kodi'
   homepage 'https://github.com/Pulse-Eight/platform'
-  version '2.2.0'
+  version '8-platform-2.2.0'
   license 'GPL'
   compatibility 'all'
   source_url 'https://github.com/Pulse-Eight/platform.git'
