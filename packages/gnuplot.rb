@@ -11,34 +11,35 @@ class Gnuplot < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a9d193a5f66e87d418772a22386826a4c7c695c58193fc799a846af90ae41795',
-     armv7l: 'a9d193a5f66e87d418772a22386826a4c7c695c58193fc799a846af90ae41795',
-     x86_64: '71bb3d83d27298efa8bfe43b333f3b0146632034dbfa037db7cf33b2f9f59509'
+    aarch64: 'f4b84cbe20ce05479aff6dfaa379dcd91b94cfcb3e8d1e91b487e5b7c0442524',
+     armv7l: 'f4b84cbe20ce05479aff6dfaa379dcd91b94cfcb3e8d1e91b487e5b7c0442524',
+     x86_64: '50847494327b062b007791a6cde667facf0b7617f39260f840c5fa2c07e76d68'
   })
 
   depends_on 'at_spi2_core' => :executable
-  depends_on 'cairo' => :executable
-  depends_on 'gcc_lib' => :executable
+  depends_on 'cairo' => :library
+  depends_on 'gcc_lib' => :library
   depends_on 'gdk_pixbuf' => :executable
-  depends_on 'glib' => :executable
-  depends_on 'glibc' => :executable
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gtk3' => :executable
-  depends_on 'harfbuzz' => :executable
-  depends_on 'libcerf' => :executable
+  depends_on 'harfbuzz' => :library
+  depends_on 'libcerf' => :library
   depends_on 'libgd' => :executable
   depends_on 'libwebp' => :executable
-  depends_on 'libx11' => :executable
-  depends_on 'libxrender'
-  depends_on 'libxxf86vm'
+  depends_on 'libx11' => :library
+  depends_on 'libxrender' => :library
+  depends_on 'libxxf86vm' => :library
   depends_on 'lua' => :executable
   depends_on 'ncurses' => :executable
-  depends_on 'pango' => :executable
-  depends_on 'qt5_base' => :executable
-  depends_on 'qt5_svg' => :executable
-  depends_on 'qt5_tools'
+  depends_on 'pango' => :library
+  depends_on 'qt5_base' => :library
+  depends_on 'qt5_svg' => :library
+  depends_on 'qt5_tools' => :library
   depends_on 'readline' => :executable
   depends_on 'wxwidgets' => :executable
-  depends_on 'zlib' => :executable
+  depends_on 'zlib' => :library
 
   autotools_configure_options "CPPFLAGS='-I#{CREW_PREFIX}/share/Qt-5/include/QtCore \
     -I#{CREW_LIB_PREFIX}/wx/include/gtk3-unicode-3.3'"
