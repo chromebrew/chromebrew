@@ -3,11 +3,11 @@ require 'buildsystems/perl'
 class Perl_lwp_protocol_https < PERL
   description 'Provide https support for LWP::UserAgent'
   homepage 'https://metacpan.org/pod/LWP::Protocol::https'
-  version "6.15-#{CREW_PERL_VER}"
+  version "6.17-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url "https://cpan.metacpan.org/authors/id/O/OA/OALDERS/LWP-Protocol-https-#{version.split('-')[0]}.tar.gz"
-  source_sha256 '44eec2da147ba0511090871b0ca82f69794376bc31e8c76d1040961ba57f59b8'
+  source_sha256 '361c7c1eee8cf66812958f975f26ef2e2272a0c6221d2043477cb9c22b8d1c23'
   binary_compression 'tar.zst'
 
   binary_sha256({
