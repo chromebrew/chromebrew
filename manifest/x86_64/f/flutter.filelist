@@ -1,4 +1,4 @@
-# Total size: 2530238633
+# Total size: 2530505472
 /home/chronos/user/.flutter_tool_state
 /usr/local/bin/dart
 /usr/local/bin/flutter
@@ -40,9 +40,9 @@
 /usr/local/share/flutter/.git/logs/refs/remotes/origin/HEAD
 /usr/local/share/flutter/.git/objects/info/commit-graph
 /usr/local/share/flutter/.git/objects/info/packs
-/usr/local/share/flutter/.git/objects/pack/pack-84931cd06676ad241c193fad49b3b3e31c30cc79.idx
-/usr/local/share/flutter/.git/objects/pack/pack-84931cd06676ad241c193fad49b3b3e31c30cc79.pack
-/usr/local/share/flutter/.git/objects/pack/pack-84931cd06676ad241c193fad49b3b3e31c30cc79.rev
+/usr/local/share/flutter/.git/objects/pack/pack-61d148903f33c27655ed8dc04cc59e91563f19d7.idx
+/usr/local/share/flutter/.git/objects/pack/pack-61d148903f33c27655ed8dc04cc59e91563f19d7.pack
+/usr/local/share/flutter/.git/objects/pack/pack-61d148903f33c27655ed8dc04cc59e91563f19d7.rev
 /usr/local/share/flutter/.git/packed-refs
 /usr/local/share/flutter/.git/refs/remotes/origin/HEAD
 /usr/local/share/flutter/.gitattributes
