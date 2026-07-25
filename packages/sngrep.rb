@@ -18,6 +18,7 @@ class Sngrep < CMake
   })
 
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'libpcap' => :executable
   depends_on 'ncurses' => :executable
   depends_on 'openssl' => :executable
