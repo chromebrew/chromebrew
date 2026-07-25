@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Sngrep < CMake
   description 'An Ncurses SIP Messages flow viewer'
   homepage 'https://github.com/irontec/sngrep'
-  version '1.8.3'
+  version '1.8.4'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/irontec/sngrep.git'
