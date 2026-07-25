@@ -1,37 +1,25 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Pugixml < Package
+class Pugixml < CMake
   description 'Light-weight, simple and fast XML parser for C++ with XPath support'
   homepage 'https://pugixml.org/'
-  version '1.10'
+  version '1.16'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/zeux/pugixml/releases/download/v1.10/pugixml-1.10.tar.gz'
-  source_sha256 '55f399fbb470942410d348584dc953bcaec926415d3462f471ef350f29b5870a'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/zeux/pugixml.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c948a90abf61186a25c71ed9434e9bea9ac7f6a88578c05fe40ba006ede7d561',
-     armv7l: 'c948a90abf61186a25c71ed9434e9bea9ac7f6a88578c05fe40ba006ede7d561',
-       i686: '98434a99ee0c01a9b571939e206d2a0c62205abacd3cbc06a9226147837762ef',
-     x86_64: 'a3c3a28cad9b0e278c5d3e863d73b5ad4ec9498bb5d2f21804946d786af18234'
+    aarch64: '3d809066d2e8a40f52eacf7bf2d51d62dab2fd347606467537e67647ea732366',
+     armv7l: '3d809066d2e8a40f52eacf7bf2d51d62dab2fd347606467537e67647ea732366',
+       i686: '903788081ca878df36f23630755485733965cc3f663106576d13a79bd3f4872f',
+     x86_64: '3e405d77799cd276db4374b92d44560e8cfcf82491d37a96d69fa10b6bc939f5'
   })
 
-  def self.build
-    Dir.mkdir 'build'
-    Dir.chdir 'build' do
-      system 'cmake',
-             "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}",
-             '-DCMAKE_BUILD_TYPE=Release',
-             '-DBUILD_SHARED_LIBS=ON',
-             '..'
-      system 'make'
-    end
-  end
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 
-  def self.install
-    Dir.chdir 'build' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    end
-  end
+  cmake_options '-DBUILD_SHARED_LIBS=ON'
 end
