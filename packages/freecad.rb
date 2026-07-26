@@ -4,11 +4,11 @@ require 'misc_functions'
 class Freecad < Package
   description 'A free and opensource multiplatform 3D parametric modeler.'
   homepage 'https://www.freecad.org/'
-  version '1.1.2'
+  version '1.1.3'
   license 'GPL-2'
   compatibility 'x86_64'
   source_url "https://github.com/FreeCAD/FreeCAD/releases/download/#{version}/FreeCAD_#{version}-Linux-x86_64-py311.AppImage"
-  source_sha256 'c70bec8b99de6d61431ec45867a7acc404d8d18ac058a1a740619b50770ce9b1'
+  source_sha256 '3a853eb69ee595f779f2255dbf80a765926981d8ff68903cefee4dfb03a8f5ef'
 
   no_compile_needed
   no_shrink
