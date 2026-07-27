@@ -1,13 +1,13 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Qpdf < Package
+class Qpdf < CMake
   description 'QPDF is a command-line program that does structural, content-preserving transformations on PDF files.'
   homepage 'https://qpdf.sourceforge.io/'
-  version '11.1.1'
+  version '12.3.2'
   license 'Apache-2.0 or Artistic-2'
   compatibility 'all'
-  source_url 'https://github.com/qpdf/qpdf/archive/refs/tags/v11.1.1.tar.gz'
-  source_sha256 '785edab622a1bc7e25e1537ad2c325005d48c5c7957f7abedff405deb80fa59a'
+  source_url 'https://github.com/qpdf/qpdf.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -17,24 +17,10 @@ class Qpdf < Package
      x86_64: '36dde4a77f5bbad284e02f9ca7d684a36d6b03c97addfe7a7667711feb5fdecd'
   })
 
-  depends_on 'libjpeg_turbo'
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'gnutls' # R
-  depends_on 'openssl' # R
-  depends_on 'zlib' # R
-
-  def self.build
-    Dir.mkdir 'builddir'
-    Dir.chdir 'builddir' do
-      system "cmake -G Ninja \
-        #{CREW_CMAKE_OPTIONS} \
-        .."
-    end
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'gnutls' => :library
+  depends_on 'libjpeg_turbo' => :library
+  depends_on 'openssl' => :library
+  depends_on 'zlib' => :library
 end
