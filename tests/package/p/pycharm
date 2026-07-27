@@ -1,0 +1,3 @@
+#!/bin/bash
+pycharm --help
+pycharm --version
