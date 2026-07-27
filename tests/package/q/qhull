@@ -1,0 +1,11 @@
+#!/bin/bash
+qconvex --help | head
+qconvex -V
+qdelaunay --help | head
+qdelaunay -V
+qhalf --help | head
+qhalf -V
+qhull --help | head
+qhull -V
+qvoronoi --help | head
+qvoronoi -V
