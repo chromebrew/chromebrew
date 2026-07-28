@@ -16,10 +16,10 @@ class Binutils < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '76daf7ca27a890e608a7d964d920fa6603b4e1d872edfb8d2e8900eb4d820e18',
-     armv7l: '76daf7ca27a890e608a7d964d920fa6603b4e1d872edfb8d2e8900eb4d820e18',
-       i686: 'c9d0beb18cbf26aad7d1f30602d6a4f4c6a0a72c74453f7de1aad00f9be67be7',
-     x86_64: 'a38024e661ffeaa2cbe87cb1c5b199efd4efd0cd51a26391d2323af886dbabd5'
+    aarch64: 'f7d7b632915808411db47216c13d1d6b8ef85967388a5c2c493a44ae05937643',
+     armv7l: 'f7d7b632915808411db47216c13d1d6b8ef85967388a5c2c493a44ae05937643',
+       i686: 'a709aa3b700b123c4f59f70101376e52c00694faaa44c2707542869acff5d123',
+     x86_64: '04edf473dbc608e760863f145bf5ac1e9fde3dbd593e04818924cf1c7655c6c4'
   })
 
   depends_on 'elfutils' => :build
