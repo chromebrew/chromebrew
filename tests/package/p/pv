@@ -1,0 +1,3 @@
+#!/bin/bash
+pv -h | head
+pv -V
