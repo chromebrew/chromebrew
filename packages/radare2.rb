@@ -1,33 +1,25 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Radare2 < Package
+class Radare2 < Meson
   description 'unix-like reverse engineering framework and commandline tools'
   homepage 'https://www.radare.org/r/'
-  version '2.4.0'
+  version '6.1.8'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/radare/radare2/archive/2.4.0.tar.gz'
-  source_sha256 'e2edef4d70c7bbbb47d04002ce9d384eb2fc9c0cd4cbfde77cda8c10cae9ff24'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/radare/radare2.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7f1625aa3bbeea13de76bf122eab70130df32da119585cb0e46cea523f3e07ab',
-     armv7l: '7f1625aa3bbeea13de76bf122eab70130df32da119585cb0e46cea523f3e07ab',
-       i686: '81f78367ade45bc48632a1cfe4ebaebd9d6c549abfe3ff26a7d32116b79329ee',
-     x86_64: 'fcde3ae52954bf875ecbc650d0e0392ef80175f3df4c7b7f560aeb0535ed1969'
+    aarch64: 'b46ceec491a2b32a372cb034a7ee4812b7c3b40ee3dbd8984cd53e2b19e9bd12',
+     armv7l: 'b46ceec491a2b32a372cb034a7ee4812b7c3b40ee3dbd8984cd53e2b19e9bd12',
+       i686: '90f2837a01972bc9dd836a3a25e9e560bd253dde99c0785767f9a3401a10b2dc',
+     x86_64: 'f50cf8b0e6a4449b5590dfa79109267565a4670d69f434a4350eff68cec1b4be'
   })
 
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'openssl'
 
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--with-openssl'
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  meson_options '-Duse_sys_openssl=true'
 end
