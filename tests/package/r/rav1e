@@ -1,0 +1,3 @@
+#!/bin/bash
+rav1e -h | head
+rav1e --version
