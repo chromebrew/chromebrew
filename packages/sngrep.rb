@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Sngrep < CMake
   description 'An Ncurses SIP Messages flow viewer'
   homepage 'https://github.com/irontec/sngrep'
-  version '1.8.3'
+  version '1.8.4'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/irontec/sngrep.git'
@@ -11,13 +11,14 @@ class Sngrep < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b2458526e01d60bdb3683b473195d280126ff0e67def8dee06ad3a3287756389',
-     armv7l: 'b2458526e01d60bdb3683b473195d280126ff0e67def8dee06ad3a3287756389',
-       i686: 'e21cb11af5ff3f96a113a219297a4bde024e20b9268c4ba871edad641bf02ecb',
-     x86_64: 'ce8268947e49d13ec19f3d7eaea055c303d762770fcb90430d5b429f1d5f20a5'
+    aarch64: 'cf8a9e46bc436a1c8902545b07c2787d5668efbe55280f307c7b59a56ffa7202',
+     armv7l: 'cf8a9e46bc436a1c8902545b07c2787d5668efbe55280f307c7b59a56ffa7202',
+       i686: '8a814442dedb15034630a29b73b0b5b1614ea51558a282064c716edcad57d4a0',
+     x86_64: '9c8f9deeeea26c0ba45bd1cb152d15b41afc2babc0ebe42368db1b8f87ea7136'
   })
 
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'libpcap' => :executable
   depends_on 'ncurses' => :executable
   depends_on 'openssl' => :executable

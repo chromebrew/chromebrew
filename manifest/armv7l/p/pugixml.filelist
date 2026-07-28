@@ -1,9 +1,11 @@
-# Total size: 283776
+# Total size: 245605
 /usr/local/include/pugiconfig.hpp
 /usr/local/include/pugixml.hpp
-/usr/local/lib/cmake/pugixml/pugixml-config-release.cmake
+/usr/local/lib/cmake/pugixml/pugixml-config-version.cmake
 /usr/local/lib/cmake/pugixml/pugixml-config.cmake
+/usr/local/lib/cmake/pugixml/pugixml-targets-release.cmake
+/usr/local/lib/cmake/pugixml/pugixml-targets.cmake
 /usr/local/lib/libpugixml.so
 /usr/local/lib/libpugixml.so.1
-/usr/local/lib/libpugixml.so.1.10
+/usr/local/lib/libpugixml.so.1.16
 /usr/local/lib/pkgconfig/pugixml.pc
