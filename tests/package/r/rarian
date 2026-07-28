@@ -1,0 +1,5 @@
+#!/bin/bash
+rarian-sk-config --help
+rarian-sk-config --version
+scrollkeeper-config --help
+scrollkeeper-config --version
