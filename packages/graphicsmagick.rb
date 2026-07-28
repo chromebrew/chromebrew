@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Graphicsmagick < Autotools
   description 'GraphicsMagick is the swiss army knife of image processing.'
   homepage 'http://www.graphicsmagick.org/'
-  version "1.3.47-#{CREW_ICU_VER}"
+  version "1.3.48-#{CREW_ICU_VER}"
   license 'MIT'
   compatibility 'all'
   source_url "https://sourceforge.net/projects/graphicsmagick/files/graphicsmagick/#{version.split('-').first}/GraphicsMagick-#{version.split('-').first}.tar.xz"
-  source_sha256 '95fb682dab0206a9db168d065963f4ffdf5a60b0b2a375aca1f4492fb18d0627'
+  source_sha256 '9218eb78179110f91371066ab75cb3b4dd034b9bb464b29ce9bab7a11979232b'
   binary_compression 'tar.zst'
 
   binary_sha256({
