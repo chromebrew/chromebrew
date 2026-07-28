@@ -3,7 +3,7 @@ require 'package'
 class S < Package
   description 'Open a web search in your terminal.'
   homepage 'https://github.com/zquestz/s/'
-  version '0.8.0'
+  version '0.8.1'
   license 'GPL-3+'
   compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.32'
@@ -13,7 +13,7 @@ class S < Package
     source_sha256 '0e995ab36fd2a08d6ab60ad2dcbe01a516906a469d58b8c77d04b33fb8efed1b'
   when 'x86_64'
     source_url "https://github.com/zquestz/s/releases/download/v#{version}/s-linux_amd64.zip"
-    source_sha256 'e351c4a9b3528fbe6c481cf0dd81e3e4a2b222b20cd6f3107540c0209177f1b9'
+    source_sha256 '7676ba5e2ee5f1d16dada1e13bed62eea27f4f9f1521117b280e52cca8ae8cb5'
   end
 
   depends_on 'unzip' => :executable
