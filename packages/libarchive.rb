@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libarchive < CMake
   description 'Multi-format archive and compression library.'
   homepage 'https://www.libarchive.org/'
-  version "3.8.8-#{CREW_ICU_VER}"
+  version "3.8.9-#{CREW_ICU_VER}"
   license 'BSD, BSD-2, BSD-4 and public-domain'
   compatibility 'all'
   source_url 'https://github.com/libarchive/libarchive.git'
