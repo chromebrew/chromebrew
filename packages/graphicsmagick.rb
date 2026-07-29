@@ -18,73 +18,55 @@ class Graphicsmagick < Autotools
   })
 
   if %w[x86_64 aarch64 armv7l].include?(ARCH)
-    depends_on 'bzip2' => :library
     depends_on 'freetype' => :library
-    depends_on 'gcc_lib' => :library
     depends_on 'ghostscript' => :build
-    depends_on 'glibc' => :library
-    depends_on 'glibc_lib' => :library
     depends_on 'harfbuzz' => :build
     depends_on 'jasper' => :library
-    depends_on 'jbigkit' => :library
     depends_on 'lcms' => :library
-    depends_on 'libbsd' => :executable
-    depends_on 'libbsd' => :library
     depends_on 'libde265' => :build
     depends_on 'libdeflate' => :build
     depends_on 'libheif' => :library
     depends_on 'libice' => :library
-    depends_on 'libjpeg_turbo' => :library
     depends_on 'libjxl' => :library
-    depends_on 'libpng' => :library
     depends_on 'libsm' => :library
-    depends_on 'libtiff' => :library
-    depends_on 'libtool' => :library
     depends_on 'libwebp' => :library
     depends_on 'libwmf' => :library
-    depends_on 'libx11' => :library
-    depends_on 'libxau' => :executable
-    depends_on 'libxau' => :library
-    depends_on 'libxcb' => :executable
-    depends_on 'libxcb' => :library
-    depends_on 'libxdmcp' => :executable
-    depends_on 'libxdmcp' => :library
-    depends_on 'libxext' => :library
-    depends_on 'libxml2' => :library
-    depends_on 'msttcorefonts' => :logical
-    depends_on 'py3_docutils' => :build
-    depends_on 'util_linux' => :executable
-    depends_on 'util_linux' => :library
-    depends_on 'xzutils' => :library
-    depends_on 'zlib' => :library
-    depends_on 'zstd' => :library
-    depends_on 'bzip2' => :library
     depends_on 'freetype' => :library
-    depends_on 'gcc_lib' => :library
-    depends_on 'glibc' => :library
-    depends_on 'glibc_lib' => :library
     depends_on 'jasper' => :library
-    depends_on 'jbigkit' => :library
     depends_on 'lcms' => :library
     depends_on 'libheif' => :library
     depends_on 'libice' => :library
-    depends_on 'libjpeg_turbo' => :library
     depends_on 'libjxl' => :library
-    depends_on 'libpng' => :library
     depends_on 'libsm' => :library
-    depends_on 'libtiff' => :library
-    depends_on 'libtool' => :library
     depends_on 'libwebp' => :library
     depends_on 'libwmf' => :library
-    depends_on 'libx11' => :library
-    depends_on 'libxext' => :library
-    depends_on 'libxml2' => :library
-    depends_on 'xzutils' => :library
-    depends_on 'zlib' => :library
-    depends_on 'zstd' => :library
   end
+  depends_on 'py3_docutils' => :build
+  depends_on 'bzip2' => :library
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'jbigkit' => :library
+  depends_on 'libbsd' => :executable
+  depends_on 'libjpeg_turbo' => :library
+  depends_on 'libpng' => :library
+  depends_on 'libtiff' => :library
+  depends_on 'libtool' => :library
+  depends_on 'libx11' => :library
+  depends_on 'libxau' => :executable
+  depends_on 'libxcb' => :executable
+  depends_on 'libxdmcp' => :executable
+  depends_on 'libxext' => :library
+  depends_on 'libxml2' => :library
+  depends_on 'msttcorefonts' => :logical
+  depends_on 'py3_docutils' => :build
+  depends_on 'util_linux' => :executable
+  depends_on 'xzutils' => :library
+  depends_on 'zlib' => :library
+  depends_on 'zstd' => :library
 
   no_env_options
+  no_update_deps
 
   autotools_configure_options "--with-windows-font-dir=#{CREW_PREFIX}/share/fonts/truetype/msttcorefonts \
       --with-perl=#{CREW_PREFIX}/bin/perl \

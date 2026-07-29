@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# getrealdeps version 2.17 (for Chromebrew)
+# getrealdeps version 2.18 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 #
 # Dependencies in Chromebrew can be:
@@ -260,7 +260,11 @@ def main(pkg)
     return
   end
 
-  puts "Determining #{pkg.name}'s runtime dependencies...".lightblue
+  puts "Determining #{pkg.name}'s runtime dependencies on #{ARCH}...".lightblue
+  if pkg.no_update_deps?
+    puts "This is advisory only because no_update_deps is set for #{pkg.name}.".lightpurple
+    puts "The dependency block for #{pkg.name} will not be replaced.".lightpurple
+  end
   pkg_file = Dir["{#{CREW_LOCAL_REPO_ROOT}/packages,#{CREW_PACKAGES_PATH}}/#{pkg.name}.rb"].max { |a, b| File.mtime(a) <=> File.mtime(b) }
   if @opt_use_crew_dest_dir
     define_singleton_method('pkgfilelist') { File.join(CREW_DEST_DIR, 'filelist') }
@@ -326,6 +330,24 @@ def main(pkg)
   # We currently handle duplicate build dependencies in write_deps.
   logical_deps = logical_deps.difference(executable_deps, library_deps)
   executable_deps = executable_deps.difference(library_deps)
+
+  if pkg.no_update_deps?
+    unless logical_deps.empty? && executable_deps.empty? && library_deps.empty?
+      unless logical_deps.empty?
+        puts 'Determined logical dependencies:'.orange
+        puts logical_deps.sort
+      end
+      unless executable_deps.empty?
+        puts 'Determined executable dependencies:'.orange
+        puts executable_deps.sort
+      end
+      unless library_deps.empty?
+        puts 'Determined library dependencies:'.orange
+        puts library_deps.sort
+      end
+    end
+    return
+  end
 
   # Write the changed dependencies to the package file.
   # Note that most logical and all build dependencies are added manually.
