@@ -156,6 +156,7 @@ deprecated_packages = Set[
   { pkg_name: 'py3_zcmds', comments: 'Removed due to broken builds.' },
   { pkg_name: 'q', comments: 'No longer suitable for packaging.' },
   { pkg_name: 'qtchooser', comments: "Doesn't work for newer Qt versions." },
+  { pkg_name: 'rfkill', comments: 'Included with util_linux.' },
   { pkg_name: 'skype', comments: 'Officially sunsetting and will be shut down soon.' }
 ]
 
