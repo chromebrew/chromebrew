@@ -3,12 +3,12 @@ require 'package'
 class Firefox < Package
   description 'Mozilla Firefox (or simply Firefox) is a free and open-source web browser'
   homepage 'https://www.mozilla.org/en-US/firefox/'
-  version '153.0'
+  version '153.0.1'
   license 'MPL-2.0, GPL-2 and LGPL-2.1'
   compatibility 'x86_64'
   min_glibc '2.35'
   source_url "https://download-installer.cdn.mozilla.net/pub/firefox/releases/#{version}/linux-x86_64/en-US/firefox-#{version}.tar.xz"
-  source_sha256 'bfc57e7b6b4e6204b11e7e03c4b93cff708e9fb37f6b9948be243455311d82ee'
+  source_sha256 '05fb58905a90ce717c36a2ba5af0bbdc4d0e8b0eed6f50469030774c8c85b8eb'
 
   depends_on 'alsa_lib' # R
   depends_on 'at_spi2_core' # R
@@ -83,9 +83,9 @@ class Firefox < Package
       FileUtils.mv 'default128.png', "#{icon_base_path}/128x128/apps/firefox.png"
     end
     # The following image is needed for crew-launcher which requires a minimum icon size of 144x144.
-    downloader 'https://images.freeimages.com/fic/images/icons/783/mozilla_pack/256/firefox.png',
-               '9ef1fb263cd33c0ffae8eca3df466e2d9b9cf8b7c598bfa72e8a2dc68bed11c4'
-    FileUtils.install 'firefox.png', "#{icon_base_path}/256x256/apps/firefox.png", mode: 0o644
+    downloader 'https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/firefox-browser-icon.png',
+               'f4784581b3bea8d49e7c06b535bb4266fc3f6f406740b8f6132b2ce09386efd8'
+    FileUtils.install 'firefox-browser-icon.png', "#{icon_base_path}/512x512/apps/firefox.png", mode: 0o644
   end
 
   def self.postinstall
