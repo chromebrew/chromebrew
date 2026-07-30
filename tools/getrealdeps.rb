@@ -89,6 +89,8 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
   pkgdeps.each do |i|
     puts "  depends_on '#{i}'#{suffix}".lightgreen
   end
+  return if pkg.no_update_deps?
+
   pkg_read = File.read(pkg_file)
   # Look for runtime dependencies that aren't already provided by the
   # package, excepting build and logical dependencies, which get
@@ -330,24 +332,6 @@ def main(pkg)
   # We currently handle duplicate build dependencies in write_deps.
   logical_deps = logical_deps.difference(executable_deps, library_deps)
   executable_deps = executable_deps.difference(library_deps)
-
-  if pkg.no_update_deps?
-    unless logical_deps.empty? && executable_deps.empty? && library_deps.empty?
-      unless logical_deps.empty?
-        puts 'Determined logical dependencies:'.orange
-        puts logical_deps.sort
-      end
-      unless executable_deps.empty?
-        puts 'Determined executable dependencies:'.orange
-        puts executable_deps.sort
-      end
-      unless library_deps.empty?
-        puts 'Determined library dependencies:'.orange
-        puts library_deps.sort
-      end
-    end
-    return
-  end
 
   # Write the changed dependencies to the package file.
   # Note that most logical and all build dependencies are added manually.
