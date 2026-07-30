@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Util_linux < Meson
   description 'essential linux tools'
   homepage 'https://www.kernel.org/pub/linux/utils/util-linux/'
-  version "2.42-1-#{CREW_PY_VER}"
+  version "2.42.2-#{CREW_PY_VER}"
   license 'GPL-2, LGPL-2.1, BSD-4, MIT and public-domain'
   compatibility 'all'
   source_url 'https://github.com/util-linux/util-linux.git'
@@ -21,6 +21,7 @@ class Util_linux < Meson
   depends_on 'filecmd' => :executable
   depends_on 'gcc_lib' => :executable
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'libcap_ng' => :executable
   depends_on 'libeconf' => :library
   depends_on 'libxcrypt' => :executable
@@ -38,11 +39,13 @@ class Util_linux < Meson
   # succeed on x86_64 and armv7l.
   # Need -Ddefault_libraru=both to get the static libuuid.a,
   # which is needed by xfsprogs.
+  # Unable to build libmount due to libmount/src/hook_subdir.c:229:22: error: implicit declaration of function ‘open_tree’ [-Wimplicit-function-declaration]
+  # and libmount/src/hook_subdir.c:244:30: error: implicit declaration of function ‘move_mount’ [-Wimplicit-function-declaration]
+
   year2038 = '-Dallow-32bit-time=true'
   i686_disabled_builds = '-Dbuild-blkzone=disabled -Dbuild-lsfd=disabled'
   meson_options "-Ddefault_library=both \
-                 -Dbuild-kill=disabled \
-                 -Dbuild-uuidd=disabled \
+                 -Dbuild-libmount=disabled \
                  -Dprogram-tests=false \
                  -Dsystemd=disabled \
                  #{i686_disabled_builds if ARCH == 'i686'} \
