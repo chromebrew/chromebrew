@@ -8580,11 +8580,6 @@ url: https://github.com/mgechev/revive/releases
 activity: medium
 ---
 kind: url
-name: rfkill
-url: https://www.kernel.org/pub/software/network/rfkill
-activity: none
----
-kind: url
 name: rgb
 url: https://gitlab.freedesktop.org/xorg/app/rgb/-/tags
 activity: none
