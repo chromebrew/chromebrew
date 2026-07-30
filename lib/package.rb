@@ -50,6 +50,7 @@ class Package
                    :no_shrink,
                    :no_source_build,
                    :no_strip,
+                   :no_update_deps,
                    :no_upstream_update,
                    :no_zstd,
                    :patchelf,
