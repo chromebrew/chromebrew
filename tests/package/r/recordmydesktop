@@ -1,0 +1,3 @@
+#!/bin/bash
+recordmydesktop -h | head
+recordmydesktop --version 2>&1
