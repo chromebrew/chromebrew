@@ -3,17 +3,17 @@ require 'package'
 class Smbclient < Package
   description 'Tools to access a servers filespace and printers via SMB'
   homepage 'https://www.samba.org'
-  version "4.24.4-#{CREW_ICU_VER}"
+  version "4.24.5-#{CREW_ICU_VER}"
   license 'GPLv3'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://download.samba.org/pub/samba/stable/samba-#{version.split('-').first}.tar.gz"
-  source_sha256 'df2c51ab4361ec626ab9988e5946efcca8465bc7afae834291d5558468265ff8'
+  source_sha256 '6d5d7ee82f5ce9da4135086c9b184e47a58b4b023565f58abbb1f8c8a922306b'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bee6b75d6b57b314331a88e0f0de356a0c7e0c8643066309e7007e279e7e58a8',
-     armv7l: 'bee6b75d6b57b314331a88e0f0de356a0c7e0c8643066309e7007e279e7e58a8',
-     x86_64: 'd8d10c0c83e4d8afd35420af8d17bf89be3e9d7558582a461fa813962ad5aabf'
+    aarch64: 'bc7e4ec5a8f00361e0967d144808867ceeae9bca4417d71c0419009712f67977',
+     armv7l: 'bc7e4ec5a8f00361e0967d144808867ceeae9bca4417d71c0419009712f67977',
+     x86_64: '82d9f4819b847b3b7a69b958fccd1eedc6abf72e120bf40c31a1c25424964538'
   })
 
   depends_on 'acl' => :library

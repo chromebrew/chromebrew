@@ -3,12 +3,12 @@ require 'package'
 class Seamonkey < Package
   description 'Web-browser, advanced e-mail, newsgroup and feed client, IRC chat, and HTML editing made simple'
   homepage 'https://www.seamonkey-project.org/'
-  version '2.53.22'
+  version '2.53.24'
   license 'Mozilla Public License 2.0'
   compatibility 'x86_64'
   min_glibc '2.28'
   source_url "https://archive.seamonkey-project.org/releases/#{version}/linux-x86_64/en-US/seamonkey-#{version}.en-US.linux-x86_64.tar.bz2"
-  source_sha256 '56607cdb040aee55caef740441dd06a4d2a385c4c279a29d5aa95757aacfb7e0'
+  source_sha256 '63fbe1d0f5ca35bb228e47eb586a81c5787debfbc27a242129ea9e133429d82c'
 
   depends_on 'dbus_glib'
   depends_on 'gtk3'

@@ -3,18 +3,18 @@ require 'buildsystems/cmake'
 class Libssh < CMake
   description 'libssh is a multiplatform C library implementing the SSHv2 and SSHv1 protocol on client and server side.'
   homepage 'https://www.libssh.org/'
-  version '0.12.1'
+  version '0.12.2'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url "https://www.libssh.org/files/#{version.rpartition('.')[0]}/libssh-#{version}.tar.xz"
-  source_sha256 'd3941af0a2d78d5d82ed7a36988e9133994312f035b9659a6e43f8db3968784c'
+  source_sha256 '49560f677d96e3706a904ac2de1116e25f3680937d51e5c92198fcba4a1c1e9f'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5258ae011dbbb5daf9efa2370bdd477da6b0aba4417805b780b72eb6fb464ade',
-     armv7l: '5258ae011dbbb5daf9efa2370bdd477da6b0aba4417805b780b72eb6fb464ade',
-       i686: '698c33a0213b80a0a3d01ac0c6954b479be2d4834b257492e7712999d4e3b696',
-     x86_64: '5eac0aa0860fe4034708f568f0761c17bedffd56e73dd448ed24c5a6f2fe0e68'
+    aarch64: 'a1ce0ccc906d645b46e23cf3a6148c7cb0942ad0719d3df537ab3ad7404d39d4',
+     armv7l: 'a1ce0ccc906d645b46e23cf3a6148c7cb0942ad0719d3df537ab3ad7404d39d4',
+       i686: 'd58af93838e9d513b4a78561e8d11c68407e17a7e19d996bad76db23b0bf0a29',
+     x86_64: '9af5f8cee15d07834877fadbf4b9fb6013f38def0b25dc684e795a09e3a8f197'
   })
 
   depends_on 'e2fsprogs' => :library
