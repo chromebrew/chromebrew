@@ -3,11 +3,11 @@ require 'package'
 class Haproxy < Package
   description 'The Reliable, High Performance TCP/HTTP Load Balancer.'
   homepage 'https://www.haproxy.org/'
-  version '3.4.2'
+  version '3.4.3'
   license 'GPL-2 and LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.haproxy.org/download/#{version.split('.')[0..1].join('.')}/src/haproxy-#{version}.tar.gz"
-  source_sha256 'b1330dbb0d6e6bc4a72c4708a6a9e585579cd1156dfe5763c26305105bc12907'
+  source_sha256 '7fa666d36d198275999e2a68dda44d3d37960f2f7aed3a595fb811f4fd0515b5'
   binary_compression 'tar.zst'
 
   binary_sha256({
