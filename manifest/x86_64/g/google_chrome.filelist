@@ -1,4 +1,4 @@
-# Total size: 433380558
+# Total size: 451021368
 /usr/local/bin/google-chrome
 /usr/local/share/appdata/google-chrome.appdata.xml
 /usr/local/share/applications/com.google.Chrome.desktop
@@ -20,11 +20,9 @@
 /usr/local/share/chrome/chrome_crashpad_handler
 /usr/local/share/chrome/cron/google-chrome
 /usr/local/share/chrome/default-app-block
-/usr/local/share/chrome/default_apps/external_extensions.json
 /usr/local/share/chrome/google-chrome
 /usr/local/share/chrome/icudtl.dat
-/usr/local/share/chrome/libEGL.so
-/usr/local/share/chrome/libGLESv2.so
+/usr/local/share/chrome/libLiteRtWebGpuAccelerator.so
 /usr/local/share/chrome/liboptimization_guide_internal.so
 /usr/local/share/chrome/libqt5_shim.so
 /usr/local/share/chrome/libqt6_shim.so

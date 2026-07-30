@@ -3,20 +3,21 @@ require 'buildsystems/cmake'
 class Re2c < CMake
   description 're2c is a free and open-source lexer generator for C and C++.'
   homepage 'http://re2c.org/'
-  version '3.1'
+  version '4.5.1'
   license 'public-domain'
   compatibility 'all'
-  source_url 'https://github.com/skvadrik/re2c/releases/download/3.1/re2c-3.1.tar.lz'
-  source_sha256 '1c499e89ffd9926d79374fa5101c27a4bc89355462d5217abdbe4c76312db2f1'
+  source_url "https://github.com/skvadrik/re2c/releases/download/#{version}/re2c-#{version}.tar.lz"
+  source_sha256 'af85de20a6d780f2ef345eac81b35786eded075dc468384f79a65ad1059dc50d'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'de01cccbde508b8f13ea0100c6b87aa640087865849b56bc78f55da9973437bc',
-     armv7l: 'de01cccbde508b8f13ea0100c6b87aa640087865849b56bc78f55da9973437bc',
-       i686: '7a920a06ca30f757003f3199e070a9a7c33a250d053bd35d55c6c2e4e266285a',
-     x86_64: '765e292a2ad73ed9ca4704b72ee4163f3644071bf6727005e32a21349e9873d2'
+    aarch64: '6e886a5c5b32dc51fabf77af86a9247b1f59684490a1fb61fa669941253bc54f',
+     armv7l: '6e886a5c5b32dc51fabf77af86a9247b1f59684490a1fb61fa669941253bc54f',
+       i686: 'f0963a657de299ee4b28b8bf24420e6ab9c53a2607123c025e29f29a04e391f8',
+     x86_64: '9f60169e9c8621b036cad0769eb6b9e9b099bc2cdcdd7b447288e5b2f5dc9dff'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
 end
