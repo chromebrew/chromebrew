@@ -1,4 +1,4 @@
-# Total size: 317431698
+# Total size: 324173946
 /usr/local/bin/firefox
 /usr/local/share/applications/firefox.desktop
 /usr/local/share/firefox/application.ini
@@ -55,9 +55,10 @@
 /usr/local/share/firefox/updater
 /usr/local/share/firefox/updater.ini
 /usr/local/share/firefox/vaapitest
+/usr/local/share/firefox/vulkantest
 /usr/local/share/icons/hicolor/128x128/apps/firefox.png
 /usr/local/share/icons/hicolor/16x16/apps/firefox.png
-/usr/local/share/icons/hicolor/256x256/apps/firefox.png
 /usr/local/share/icons/hicolor/32x32/apps/firefox.png
 /usr/local/share/icons/hicolor/48x48/apps/firefox.png
+/usr/local/share/icons/hicolor/512x512/apps/firefox.png
 /usr/local/share/icons/hicolor/64x64/apps/firefox.png
