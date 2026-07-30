@@ -43,7 +43,7 @@ class Util_linux < Meson
   # and libmount/src/hook_subdir.c:244:30: error: implicit declaration of function ‘move_mount’ [-Wimplicit-function-declaration]
 
   year2038 = '-Dallow-32bit-time=true'
-  i686_disabled_builds = '-Dbuild-blkzone=disabled -Dbuild-lsfd=disabled'
+  i686_disabled_builds = '-Dbuild-agetty=disabled -Dbuild-blkzone=disabled -Dbuild-lsfd=disabled'
   meson_options "-Ddefault_library=both \
                  -Dbuild-libmount=disabled \
                  -Dprogram-tests=false \
