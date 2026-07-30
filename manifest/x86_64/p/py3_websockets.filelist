@@ -1,13 +1,13 @@
-# Total size: 1393545
+# Total size: 1682521
 /usr/local/bin/websockets
-/usr/local/lib64/python3.14/site-packages/websockets-16.1.1.dist-info/INSTALLER
-/usr/local/lib64/python3.14/site-packages/websockets-16.1.1.dist-info/METADATA
-/usr/local/lib64/python3.14/site-packages/websockets-16.1.1.dist-info/RECORD
-/usr/local/lib64/python3.14/site-packages/websockets-16.1.1.dist-info/REQUESTED
-/usr/local/lib64/python3.14/site-packages/websockets-16.1.1.dist-info/WHEEL
-/usr/local/lib64/python3.14/site-packages/websockets-16.1.1.dist-info/entry_points.txt
-/usr/local/lib64/python3.14/site-packages/websockets-16.1.1.dist-info/licenses/LICENSE
-/usr/local/lib64/python3.14/site-packages/websockets-16.1.1.dist-info/top_level.txt
+/usr/local/lib64/python3.14/site-packages/websockets-17.0.dist-info/INSTALLER
+/usr/local/lib64/python3.14/site-packages/websockets-17.0.dist-info/METADATA
+/usr/local/lib64/python3.14/site-packages/websockets-17.0.dist-info/RECORD
+/usr/local/lib64/python3.14/site-packages/websockets-17.0.dist-info/REQUESTED
+/usr/local/lib64/python3.14/site-packages/websockets-17.0.dist-info/WHEEL
+/usr/local/lib64/python3.14/site-packages/websockets-17.0.dist-info/entry_points.txt
+/usr/local/lib64/python3.14/site-packages/websockets-17.0.dist-info/licenses/LICENSE
+/usr/local/lib64/python3.14/site-packages/websockets-17.0.dist-info/top_level.txt
 /usr/local/lib64/python3.14/site-packages/websockets/__init__.py
 /usr/local/lib64/python3.14/site-packages/websockets/__main__.py
 /usr/local/lib64/python3.14/site-packages/websockets/__pycache__/__init__.cpython-314.pyc
@@ -20,7 +20,6 @@
 /usr/local/lib64/python3.14/site-packages/websockets/__pycache__/exceptions.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/websockets/__pycache__/frames.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/websockets/__pycache__/headers.cpython-314.pyc
-/usr/local/lib64/python3.14/site-packages/websockets/__pycache__/http.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/websockets/__pycache__/http11.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/websockets/__pycache__/imports.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/websockets/__pycache__/protocol.cpython-314.pyc
@@ -33,16 +32,12 @@
 /usr/local/lib64/python3.14/site-packages/websockets/__pycache__/version.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/websockets/asyncio/__init__.py
 /usr/local/lib64/python3.14/site-packages/websockets/asyncio/__pycache__/__init__.cpython-314.pyc
-/usr/local/lib64/python3.14/site-packages/websockets/asyncio/__pycache__/async_timeout.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/websockets/asyncio/__pycache__/client.cpython-314.pyc
-/usr/local/lib64/python3.14/site-packages/websockets/asyncio/__pycache__/compatibility.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/websockets/asyncio/__pycache__/connection.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/websockets/asyncio/__pycache__/messages.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/websockets/asyncio/__pycache__/router.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/websockets/asyncio/__pycache__/server.cpython-314.pyc
-/usr/local/lib64/python3.14/site-packages/websockets/asyncio/async_timeout.py
 /usr/local/lib64/python3.14/site-packages/websockets/asyncio/client.py
-/usr/local/lib64/python3.14/site-packages/websockets/asyncio/compatibility.py
 /usr/local/lib64/python3.14/site-packages/websockets/asyncio/connection.py
 /usr/local/lib64/python3.14/site-packages/websockets/asyncio/messages.py
 /usr/local/lib64/python3.14/site-packages/websockets/asyncio/router.py
@@ -61,7 +56,6 @@
 /usr/local/lib64/python3.14/site-packages/websockets/extensions/permessage_deflate.py
 /usr/local/lib64/python3.14/site-packages/websockets/frames.py
 /usr/local/lib64/python3.14/site-packages/websockets/headers.py
-/usr/local/lib64/python3.14/site-packages/websockets/http.py
 /usr/local/lib64/python3.14/site-packages/websockets/http11.py
 /usr/local/lib64/python3.14/site-packages/websockets/imports.py
 /usr/local/lib64/python3.14/site-packages/websockets/legacy/__init__.py
@@ -104,6 +98,20 @@
 /usr/local/lib64/python3.14/site-packages/websockets/sync/router.py
 /usr/local/lib64/python3.14/site-packages/websockets/sync/server.py
 /usr/local/lib64/python3.14/site-packages/websockets/sync/utils.py
+/usr/local/lib64/python3.14/site-packages/websockets/trio/__init__.py
+/usr/local/lib64/python3.14/site-packages/websockets/trio/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib64/python3.14/site-packages/websockets/trio/__pycache__/client.cpython-314.pyc
+/usr/local/lib64/python3.14/site-packages/websockets/trio/__pycache__/connection.cpython-314.pyc
+/usr/local/lib64/python3.14/site-packages/websockets/trio/__pycache__/messages.cpython-314.pyc
+/usr/local/lib64/python3.14/site-packages/websockets/trio/__pycache__/router.cpython-314.pyc
+/usr/local/lib64/python3.14/site-packages/websockets/trio/__pycache__/server.cpython-314.pyc
+/usr/local/lib64/python3.14/site-packages/websockets/trio/__pycache__/utils.cpython-314.pyc
+/usr/local/lib64/python3.14/site-packages/websockets/trio/client.py
+/usr/local/lib64/python3.14/site-packages/websockets/trio/connection.py
+/usr/local/lib64/python3.14/site-packages/websockets/trio/messages.py
+/usr/local/lib64/python3.14/site-packages/websockets/trio/router.py
+/usr/local/lib64/python3.14/site-packages/websockets/trio/server.py
+/usr/local/lib64/python3.14/site-packages/websockets/trio/utils.py
 /usr/local/lib64/python3.14/site-packages/websockets/typing.py
 /usr/local/lib64/python3.14/site-packages/websockets/uri.py
 /usr/local/lib64/python3.14/site-packages/websockets/utils.py
