@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Lft < Autotools
   description "LFT, short for Layer Four Traceroute, is a sort of 'traceroute' that often works much faster (than the commonly-used Van Jacobson method) and goes through many configurations of packet-filters (firewalls)."
   homepage 'https://pwhois.org/lft/'
-  version '3.98'
+  version '3.99'
   license 'VOSTROM'
   compatibility 'all'
   source_url "https://deb.debian.org/debian/pool/main/l/lft/lft_#{version}.orig.tar.gz"
-  source_sha256 '395ced8d95ee2bcc588a837f187e23bb25ce97999a0bb8481b2b3e0c1c633455'
+  source_sha256 'f34707b543391eb887ba8479f7d2c2670bfefc3afb244dc5d34a2a41d7b317eb'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5aab15d9253b4f9a441347357b8c365f213b539f88aa828f1d88b1d48fad171c',
-     armv7l: '5aab15d9253b4f9a441347357b8c365f213b539f88aa828f1d88b1d48fad171c',
-       i686: 'dd77a57dccf6a547447107665435abd850ca3dacfa157461e9f10d269dbc8779',
-     x86_64: '89b5bdb4e820809fe51cb5003ba033b84f075170afdbb747ac9d4e37330381a4'
+    aarch64: '5a90e2877ce481fd076ed3ac7965b509ac750bc1fefb551a3c310339a4852ae0',
+     armv7l: '5a90e2877ce481fd076ed3ac7965b509ac750bc1fefb551a3c310339a4852ae0',
+       i686: 'ba7a2174a735d0ecd0872111e663f42049ce264c0611beaca7107389fa80f060',
+     x86_64: 'c9af65457c2d49d03fe78d14a6acdfe8657979707a4c076a068e86a7124b23a3'
   })
 
   depends_on 'c_ares' => :executable
