@@ -1,14 +1,14 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Redis < Package
+class Redis < Autotools
   description 'Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.'
   homepage 'https://redis.io/'
-  version '4.0.6'
+  version '8.10.0'
   license 'BSD'
   compatibility 'all'
-  source_url 'http://download.redis.io/releases/redis-4.0.6.tar.gz'
-  source_sha256 '769b5d69ec237c3e0481a262ff5306ce30db9b5c8ceb14d1023491ca7be5f6fa'
-  binary_compression 'tar.xz'
+  source_url "http://download.redis.io/releases/redis-#{version}.tar.gz"
+  source_sha256 'f1baa4b28befd417aa6577ebeedde9e9fc7814cfcc299b2a6d2fd99ef7420a6c'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '42719b23596a9340ae1e87321b91ec810fd6a3f5c69b540036674ce56c78d0e8',
@@ -19,19 +19,17 @@ class Redis < Package
 
   depends_on 'tcl' => :build
 
-  def self.build
-    system "CC='gcc' make"
+  autotools_skip_configure
+
+  def self.check
     system './runtest'
   end
 
-  def self.install
-    system 'make', "PREFIX=#{CREW_DEST_PREFIX}", 'install'
-  end
-
   def self.postinstall
-    puts
-    puts 'To start the redis server: redis-server --daemonize yes'.lightblue
-    puts 'To connect to the server: redis-cli'.lightblue
-    puts
+    ExitMessage.add <<~EOM
+
+      To start the redis server: redis-server --daemonize yes
+      To connect to the server: redis-cli
+    EOM
   end
 end
