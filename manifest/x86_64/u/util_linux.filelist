@@ -1,4 +1,4 @@
-# Total size: 32911465
+# Total size: 33599962
 /usr/local/bin/bits
 /usr/local/bin/cal
 /usr/local/bin/chfn
@@ -29,6 +29,7 @@
 /usr/local/bin/ipcs
 /usr/local/bin/irqtop
 /usr/local/bin/isosize
+/usr/local/bin/kill
 /usr/local/bin/last
 /usr/local/bin/lastb
 /usr/local/bin/lastlog2
@@ -169,6 +170,7 @@
 /usr/local/sbin/swapon
 /usr/local/sbin/switch_root
 /usr/local/sbin/tunelp
+/usr/local/sbin/uuidd
 /usr/local/sbin/wipefs
 /usr/local/sbin/zramctl
 /usr/local/share/bash-completion/completions/addpart
@@ -353,6 +355,7 @@
 /usr/local/share/man/man1/ipcrm.1.zst
 /usr/local/share/man/man1/ipcs.1.zst
 /usr/local/share/man/man1/irqtop.1.zst
+/usr/local/share/man/man1/kill.1.zst
 /usr/local/share/man/man1/last.1.zst
 /usr/local/share/man/man1/lastb.1.zst
 /usr/local/share/man/man1/line.1.zst
