@@ -37,7 +37,7 @@ class Util_linux < Meson
 
   # Needs to be built with CREW_KERNEL_VERSION=5.10 for the build to
   # succeed on x86_64 and armv7l.
-  # Need -Ddefault_libraru=both to get the static libuuid.a,
+  # Need -Ddefault_library=both to get the static libuuid.a,
   # which is needed by xfsprogs.
 
   year2038 = '-Dallow-32bit-time=true'
