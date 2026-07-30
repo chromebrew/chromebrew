@@ -1,5 +1,5 @@
 ---
-# Version 2.1
+# Version 2.2
 name: Unit Tests
 on:
   check_run:
@@ -207,9 +207,9 @@ jobs:
             case ${{ matrix.arch }} in
               x86_64)
                 # Export the x86_64 container depending on whether this branch updates packages with appropriate minimum glibc.
-                if [[ -n "${{ needs.get-compatibility.outputs.glibc_232_compat }}" ]]; then
+                if [[ -n "${{ needs.get-compatibility.outputs.glibc_232_compatible_packages }}" ]]; then
                     echo "CONTAINER=satmandu/crewbuild:nocturne-x86_64.m97" >> "$GITHUB_ENV"
-                elif [[ -n "${{ needs.get-compatibility.outputs.glibc_237_compat }}" ]]; then
+                elif [[ -n "${{ needs.get-compatibility.outputs.glibc_237_compatible_packages }}" ]]; then
                     echo "CONTAINER=satmandu/crewbuild:hatch-x86_64.m150" >> "$GITHUB_ENV"
                 else
                     echo "CONTAINER=satmandu/crew-pre-glibc-standalone:nocturne-x86_64.m90" >> "$GITHUB_ENV"
@@ -222,9 +222,9 @@ jobs:
               ;;
               armv7l)
                 # Export the armv7l container depending on whether this branch updates packages with appropriate minimum glibc.
-                if [[ -n "${{ needs.get-compatibility.outputs.glibc_232_compat }}" ]]; then
+                if [[ -n "${{ needs.get-compatibility.outputs.glibc_232_compatible_packages }}" ]]; then
                     echo "CONTAINER=satmandu/crewbuild:fievel-armv7l.m97" >> "$GITHUB_ENV"
-                elif [[ -n "${{ needs.get-compatibility.outputs.glibc_237_compat }}" ]]; then
+                elif [[ -n "${{ needs.get-compatibility.outputs.glibc_237_compatible_packages }}" ]]; then
                     echo "CONTAINER=satmandu/crewbuild:strongbad-armv7l.m150" >> "$GITHUB_ENV"
                 else
                     echo "CONTAINER=satmandu/crew-pre-glibc-standalone:fievel-armv7l.m91" >> "$GITHUB_ENV"
