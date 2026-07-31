@@ -20,7 +20,6 @@ class Weechat < CMake
   depends_on 'aspell' => :library
   depends_on 'bdwgc' => :library
   depends_on 'cjson' => :library
-  depends_on 'curl'
   depends_on 'curl' => :executable
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
@@ -30,7 +29,6 @@ class Weechat < CMake
   depends_on 'libiconv' => :library
   depends_on 'libxcrypt' => :library
   depends_on 'lua' => :library
-  depends_on 'ncurses'
   depends_on 'ncurses' => :executable
   depends_on 'perl' => :library
   depends_on 'python3' => :library
