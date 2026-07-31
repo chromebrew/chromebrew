@@ -1,0 +1,25 @@
+# Total size: 1474094
+/usr/local/include/config.h
+/usr/local/include/eng_err.h
+/usr/local/include/engine.h
+/usr/local/include/libp11-int.h
+/usr/local/include/libp11.h
+/usr/local/include/p11_err.h
+/usr/local/include/p11_pthread.h
+/usr/local/include/p11_ver.h
+/usr/local/include/pkcs11.h
+/usr/local/include/provider_helpers.h
+/usr/local/include/util.h
+/usr/local/lib64/engines-3/libpkcs11.so
+/usr/local/lib64/engines-3/pkcs11.la
+/usr/local/lib64/engines-3/pkcs11.so
+/usr/local/lib64/libp11.a
+/usr/local/lib64/libp11.la
+/usr/local/lib64/libp11.so
+/usr/local/lib64/libp11.so.3
+/usr/local/lib64/libp11.so.3.8.0
+/usr/local/lib64/ossl-modules/libpkcs11.so
+/usr/local/lib64/ossl-modules/pkcs11prov.la
+/usr/local/lib64/ossl-modules/pkcs11prov.so
+/usr/local/lib64/pkgconfig/libp11.pc
+/usr/local/share/doc/libp11/NEWS

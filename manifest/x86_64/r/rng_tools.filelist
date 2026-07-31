@@ -1,7 +1,9 @@
-# Total size: 198274
+# Total size: 192146
+/usr/local/bin/randstat
 /usr/local/bin/rngtest
 /usr/local/bin/startrngd
 /usr/local/bin/stoprngd
+/usr/local/etc/bash.d/10-startrngd
 /usr/local/sbin/rngd
-/usr/local/share/man/man1/rngtest.1.gz
-/usr/local/share/man/man8/rngd.8.gz
+/usr/local/share/man/man1/rngtest.1.zst
+/usr/local/share/man/man8/rngd.8.zst

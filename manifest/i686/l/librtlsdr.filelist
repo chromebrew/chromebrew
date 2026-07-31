@@ -1,0 +1,20 @@
+# Total size: 616476
+/usr/local/bin/rtl_adsb
+/usr/local/bin/rtl_biast
+/usr/local/bin/rtl_eeprom
+/usr/local/bin/rtl_fm
+/usr/local/bin/rtl_power
+/usr/local/bin/rtl_sdr
+/usr/local/bin/rtl_tcp
+/usr/local/bin/rtl_test
+/usr/local/include/rtl-sdr.h
+/usr/local/include/rtl-sdr_export.h
+/usr/local/lib/cmake/rtlsdr/rtlsdrConfig.cmake
+/usr/local/lib/cmake/rtlsdr/rtlsdrConfigVersion.cmake
+/usr/local/lib/cmake/rtlsdr/rtlsdrTargets-release.cmake
+/usr/local/lib/cmake/rtlsdr/rtlsdrTargets.cmake
+/usr/local/lib/librtlsdr.a
+/usr/local/lib/librtlsdr.so
+/usr/local/lib/librtlsdr.so.0
+/usr/local/lib/librtlsdr.so.2.0.1
+/usr/local/lib/pkgconfig/librtlsdr.pc
