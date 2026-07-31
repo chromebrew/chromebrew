@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Libmicrohttpd < Autotools
   description 'GNU libmicrohttpd is a small C library that is supposed to make it easy to run an HTTP server as part of another application.'
   homepage 'https://www.gnu.org/software/libmicrohttpd/'
-  version '1.0.8'
+  version '1.0.9'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url "https://ftp.gnu.org/gnu/libmicrohttpd/libmicrohttpd-#{version}.tar.gz"
-  source_sha256 '0763970a0e39f8f382123366e3cf5d03f70aa1e2208d3101e84da3e2cd674703'
+  source_sha256 '6e9adc446b08083ec03d40317fb66ca6f2e03e4f6170aef33a6e59bb08db2012'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6ba3267ad21886c8a49608601bb26d350fdcc52c7fcb45c0c3707911387ef63d',
-     armv7l: '6ba3267ad21886c8a49608601bb26d350fdcc52c7fcb45c0c3707911387ef63d',
-       i686: 'eb58d652d1ed90103b75476004816a7570387dd4c1ccc32735107a9b0c541a52',
-     x86_64: '4b06a71c5515ae5657c58cc45543d8ebbac6540c58f39504eb52dd7721892e12'
+    aarch64: '0670fba04df26c8b3f74ee4101ec9427e3841af5daddc9ccb57576a8cfc46374',
+     armv7l: '0670fba04df26c8b3f74ee4101ec9427e3841af5daddc9ccb57576a8cfc46374',
+       i686: '757097eab284334a8148ab477c826a59795b5af543d8b0f4755c4ae791617c58',
+     x86_64: '8c561418f9204f515fa54e3227822f9b3d2c48c304682d37613a537f1e16e721'
   })
 
   depends_on 'brotli' => :library
