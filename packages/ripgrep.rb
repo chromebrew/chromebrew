@@ -3,19 +3,23 @@ require 'package'
 class Ripgrep < Package
   description 'ripgrep recursively searches directories for a regex pattern'
   homepage 'https://github.com/BurntSushi/ripgrep'
-  version '12.1.0'
+  version '15.2.0'
   license 'Apache-2.0, BSD-2, Boost-1.0 and MIT or Unlicense'
   compatibility 'all'
-  source_url 'https://github.com/BurntSushi/ripgrep/archive/12.1.0.tar.gz'
-  source_sha256 'ca2d11dd7b7346734d47ad8073468e9c409fbe85842a608d372b8d4fb36be291'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/BurntSushi/ripgrep.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3a258a81559b077d04cf3d9912731da26d2f8398538e9a9faa3fb3e0a15aa6cd',
-     armv7l: '3a258a81559b077d04cf3d9912731da26d2f8398538e9a9faa3fb3e0a15aa6cd',
-     x86_64: '1e1b614726be5ad7de8e35921d8ea73c0fd72f4cd3d245b5dae78e356055e17b'
+    aarch64: 'cdff508de644154a18a1636ab681c6d9255d7551d19f2f35a92c42db04006ea0',
+     armv7l: 'cdff508de644154a18a1636ab681c6d9255d7551d19f2f35a92c42db04006ea0',
+       i686: 'bad92325e65b9950933b7e3ddfce7e3a6bbc2b91a10b2333251dd3b213d08c39',
+     x86_64: 'd22b1ddd15dafa60399cabba67f30d29d526488411aa741dcdae48e2b63693cf'
   })
 
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'rust' => :build
 
   def self.build
@@ -35,12 +39,10 @@ class Ripgrep < Package
   end
 
   def self.install
-    system "install -Dm755 target/release/rg #{CREW_DEST_PREFIX}/bin/rg"
+    FileUtils.install 'target/release/rg', "#{CREW_DEST_PREFIX}/bin/rg", mode: 0o755
   end
 
   def self.postinstall
-    puts
-    puts "Type 'rg' to get started.".lightblue
-    puts
+    ExitMessage.add "\nType 'rg' to get started.\n"
   end
 end
