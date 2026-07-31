@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.39 (for Chromebrew)
+# version.rb version 3.40 (for Chromebrew)
 
 OPTIONS = %w[-a --all -h --help -j --json -u --update-package-files -v --verbose -vv]
 
@@ -112,6 +112,7 @@ CREW_ANITYA_PACKAGE_NAME_MAPPINGS = Set[
   { pkg_name: 'nnn', anitya_pkg: 'nnn', comments: 'Prefer to GitHub' },
   { pkg_name: 'openssl', anitya_pkg: 'openssl-3.5-LTS', comments: 'Prefer to GitHub' },
   { pkg_name: 'owl', anitya_pkg: 'Owl Lisp', comments: '' },
+  { pkg_name: 'p8_platform', anitya_pkg: 'platform', comments: 'Use Anitya name' },
   { pkg_name: 'pcre2', anitya_pkg: 'pcre2', comments: 'Prefer to GitHub' },
   { pkg_name: 'procps', anitya_pkg: 'procps-ng', comments: '' },
   { pkg_name: 'pthread_stubs', anitya_pkg: 'libpthread-stubs', comments: '' },
