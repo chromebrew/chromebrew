@@ -1,0 +1,3 @@
+#!/bin/bash
+rngtest --help | head
+rngtest -V

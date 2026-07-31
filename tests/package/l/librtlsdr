@@ -1,0 +1,2 @@
+#!/bin/bash
+rtl_test -h 2>&1

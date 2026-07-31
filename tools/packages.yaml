@@ -5025,6 +5025,11 @@ url: https://otr.im/dist/libotr/
 activity: none
 ---
 kind: url
+name: libp11
+url: https://github.com/OpenSC/libp11/releases
+activity: low
+---
+kind: url
 name: libpanel
 url: https://gitlab.gnome.org/GNOME/libpanel/-/tags
 activity: medium
@@ -5158,6 +5163,11 @@ kind: url
 name: librsync
 url: https://github.com/librsync/librsync/releases
 activity: low
+---
+kind: url
+name: librtlsdr
+url: https://github.com/steve-m/librtlsdr/tags
+activity: none
 ---
 kind: url
 name: libsamplerate
