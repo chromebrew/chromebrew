@@ -38,4 +38,12 @@ class Libarchive < CMake
     # As per Arch pkgbuild. This fixes epiphany builds.
     system "sed -i 's/iconv//g' #{CREW_DEST_LIB_PREFIX}/pkgconfig/libarchive.pc"
   end
+
+  def self.patch
+    patches = [
+      # Fix for https://github.com/libarchive/libarchive/issues/3338
+      ['https://github.com/libarchive/libarchive/pull/3339.patch', '423847f4e448361cae1d86a2ab62e47b3cd31b76a065294ff9b2e5a689ec9cbd']
+    ]
+    ConvenienceFunctions.patch(patches) if version.split('-').first.eql?('3.8.9')
+  end
 end
