@@ -3,7 +3,7 @@ require 'package'
 class Keychain < Package
   description 'Keychain helps you to manage SSH and GPG keys in a convenient and secure manner.'
   homepage 'https://www.funtoo.org/Keychain'
-  version '3.0.1'
+  version '3.0.2'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/funtoo/keychain.git'
