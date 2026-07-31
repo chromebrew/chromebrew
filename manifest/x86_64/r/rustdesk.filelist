@@ -1,4 +1,4 @@
-# Total size: 79665099
+# Total size: 81225102
 /usr/local/bin/rustdesk
 /usr/local/share/applications/rustdesk-link.desktop
 /usr/local/share/applications/rustdesk.desktop
@@ -15,12 +15,12 @@
 /usr/local/share/rustdesk/data/flutter_assets/assets/arrow.svg
 /usr/local/share/rustdesk/data/flutter_assets/assets/auth-apple.svg
 /usr/local/share/rustdesk/data/flutter_assets/assets/auth-auth0.svg
-/usr/local/share/rustdesk/data/flutter_assets/assets/auth-azure.svg
 /usr/local/share/rustdesk/data/flutter_assets/assets/auth-default.svg
 /usr/local/share/rustdesk/data/flutter_assets/assets/auth-facebook.svg
 /usr/local/share/rustdesk/data/flutter_assets/assets/auth-github.svg
 /usr/local/share/rustdesk/data/flutter_assets/assets/auth-gitlab.svg
 /usr/local/share/rustdesk/data/flutter_assets/assets/auth-google.svg
+/usr/local/share/rustdesk/data/flutter_assets/assets/auth-microsoft.svg
 /usr/local/share/rustdesk/data/flutter_assets/assets/auth-okta.svg
 /usr/local/share/rustdesk/data/flutter_assets/assets/call_end.svg
 /usr/local/share/rustdesk/data/flutter_assets/assets/call_wait.svg
@@ -31,6 +31,7 @@
 /usr/local/share/rustdesk/data/flutter_assets/assets/close.svg
 /usr/local/share/rustdesk/data/flutter_assets/assets/device_group.ttf
 /usr/local/share/rustdesk/data/flutter_assets/assets/display.svg
+/usr/local/share/rustdesk/data/flutter_assets/assets/display_switcher.svg
 /usr/local/share/rustdesk/data/flutter_assets/assets/dots.svg
 /usr/local/share/rustdesk/data/flutter_assets/assets/file.svg
 /usr/local/share/rustdesk/data/flutter_assets/assets/file_transfer.svg
@@ -45,7 +46,7 @@
 /usr/local/share/rustdesk/data/flutter_assets/assets/insecure_relay.svg
 /usr/local/share/rustdesk/data/flutter_assets/assets/kb_layout_iso.svg
 /usr/local/share/rustdesk/data/flutter_assets/assets/kb_layout_not_iso.svg
-/usr/local/share/rustdesk/data/flutter_assets/assets/keyboard.svg
+/usr/local/share/rustdesk/data/flutter_assets/assets/keyboard_mouse.svg
 /usr/local/share/rustdesk/data/flutter_assets/assets/linux.svg
 /usr/local/share/rustdesk/data/flutter_assets/assets/mac.svg
 /usr/local/share/rustdesk/data/flutter_assets/assets/message_24dp_5F6368.svg
