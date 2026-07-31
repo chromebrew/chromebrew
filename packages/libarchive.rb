@@ -11,10 +11,10 @@ class Libarchive < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c6e4af9027eb49b2ceda1dda776aade7e81a8cfb0acf3a1795613abb610d1271',
-     armv7l: 'c6e4af9027eb49b2ceda1dda776aade7e81a8cfb0acf3a1795613abb610d1271',
-       i686: 'c7da365ba4cf47729ab799f772e325d98fa99c2fbf49b99036dca6bd49c14271',
-     x86_64: '4a3c77f78e3fa701a98ec4190578e27ff95112719db03be10fbdfff01cb49628'
+    aarch64: '44ef05612fb0bc9569334ae887927ec216f61bffd75c401e88cfd6f5dc913d7f',
+     armv7l: '44ef05612fb0bc9569334ae887927ec216f61bffd75c401e88cfd6f5dc913d7f',
+       i686: 'e3959d6a3b7d916c8f638d93a450c6b07c32fea1a4a88e318b1d150de022b858',
+     x86_64: '976e2d82f3a353fe51fe69f9bedc74df90ef219c20ec1cdbcbf6dabef7e87b25'
   })
 
   depends_on 'acl' => :library
@@ -25,6 +25,7 @@ class Libarchive < CMake
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
   depends_on 'icu4c' # R
+  depends_on 'libiconv' => :library
   depends_on 'libxml2' => :library
   depends_on 'lz4' => :library
   depends_on 'openssl' => :library
