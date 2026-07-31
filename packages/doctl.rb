@@ -10,10 +10,10 @@ class Doctl < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3679526573d71a5d078ca35f921a17119e9bc7e99280e64ec4328a8786d07726',
-     armv7l: '3679526573d71a5d078ca35f921a17119e9bc7e99280e64ec4328a8786d07726',
-       i686: 'f818acf726f7bf217f4eb6372e66453fcbb3ab05ad99f7900b114bc4be524721',
-     x86_64: '3a66247da17df7e77bc772b4446d050e103d797e5c1565f780e4d44afa234630'
+    aarch64: 'bcfc276fefd107fee4bfae7ebc9c8cdad1bced8616787b49af28882a392d38ac',
+     armv7l: 'bcfc276fefd107fee4bfae7ebc9c8cdad1bced8616787b49af28882a392d38ac',
+       i686: 'bc53dad60c77e0dce67e4d10b88977f601683946bf714c2550588418c1e01692',
+     x86_64: 'a71e9e1b85b3f8a87f56ff21cabeba0a3e182621934f2c15fdd872ed50c7c43f'
   })
 
   depends_on 'glibc' => :executable
