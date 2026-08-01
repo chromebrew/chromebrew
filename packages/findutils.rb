@@ -20,6 +20,7 @@ class Findutils < Autotools
   depends_on 'glibc' => :executable
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :executable
+  depends_on 'glibc_lib' => :library
   depends_on 'python3' => :build
 
   run_tests
