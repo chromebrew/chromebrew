@@ -10,10 +10,10 @@ class Ruby_json < RUBY
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: 'e8440ef259763f811c7781a1d752cb842a628d433bdd89100120e69dc5ccee77',
-     armv7l: 'e8440ef259763f811c7781a1d752cb842a628d433bdd89100120e69dc5ccee77',
-       i686: 'd257ce5590a66d0abb5ef2d360e2aebf374af23883d95df3078fc46341455f42',
-     x86_64: '4cc2ec682ce6e3205bfabd5fec49bf163de358ae1602b0b0e34c1b925fa31f9e'
+    aarch64: '228db24110e03ad583b29f9ff8d996b28b9fb3adf1470538a41f24cd4b1cd6f6',
+     armv7l: '228db24110e03ad583b29f9ff8d996b28b9fb3adf1470538a41f24cd4b1cd6f6',
+       i686: 'd18dbf2e74749ee468e6d6114e8d153ddb123be9be9f2c522a9d03731b459ba6',
+     x86_64: '3ac24c069455d79504920c44714018f37e6fd7e90b7a29c2302fb8c1765654aa'
   })
 
   depends_on 'glibc' => :library
