@@ -11,14 +11,14 @@ class Findutils < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fb232a6606497ed4d567854989842584e814d0342455306d75af520dcf513235',
-     armv7l: 'fb232a6606497ed4d567854989842584e814d0342455306d75af520dcf513235',
-       i686: '01f38c767f135bea358cceb0cd9ba4c4aef1815c5a6d0baa0db797de403fd18a',
-     x86_64: 'f0b7307d68f232450f567e914ef515f67325db7276c3775ad701dd545a28b8b9'
+    aarch64: 'f197c6fc628e381a2d1d84c86876b031781d11e710d1ed9824e9c85e1dee09a1',
+     armv7l: 'f197c6fc628e381a2d1d84c86876b031781d11e710d1ed9824e9c85e1dee09a1',
+       i686: '60b9d443529dc240da3b6b596488e5162da5cce9118019675a77a3c906812450',
+     x86_64: '5ac24168fe8efeb0a4c3a0e64f959d91505abff737897c6e1df4c444cd7665d8'
   })
 
-  depends_on 'glibc' # R
   depends_on 'glibc' => :executable
+  depends_on 'glibc' => :library
   depends_on 'python3' => :build
 
   run_tests
