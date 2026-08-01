@@ -11,9 +11,9 @@ class Gvfs < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '726a803abcb823dbf895a22947f71665518dce5df5f0a11a71a94e952da97f7f',
-     armv7l: '726a803abcb823dbf895a22947f71665518dce5df5f0a11a71a94e952da97f7f',
-     x86_64: '139750d6f3c6beace5dd3d79850b74c06d0e5cb4d381de96ecb1e4ea9fc88138'
+    aarch64: 'dc21abe9654f0928bad9540857b631867d0263f55f25e1942a57dc81a25d7817',
+     armv7l: 'dc21abe9654f0928bad9540857b631867d0263f55f25e1942a57dc81a25d7817',
+     x86_64: 'f7d29508f685ba24d3eabc6ddcbdeb4539bd1b925627e2a1fb78148068066980'
   })
 
   depends_on 'avahi' => :executable
