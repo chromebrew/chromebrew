@@ -11,9 +11,9 @@ class Gnuplot < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a9d193a5f66e87d418772a22386826a4c7c695c58193fc799a846af90ae41795',
-     armv7l: 'a9d193a5f66e87d418772a22386826a4c7c695c58193fc799a846af90ae41795',
-     x86_64: '71bb3d83d27298efa8bfe43b333f3b0146632034dbfa037db7cf33b2f9f59509'
+    aarch64: '90e38bf0ec7d85a144a306f96870e0d2ed01815cc9769b9831d6eff39fbdbf88',
+     armv7l: '90e38bf0ec7d85a144a306f96870e0d2ed01815cc9769b9831d6eff39fbdbf88',
+     x86_64: '96e2742ccb2e0b8518a029441e38b9338653493c7a2ed132ae1826c8e980f301'
   })
 
   depends_on 'at_spi2_core' => :executable
@@ -22,6 +22,7 @@ class Gnuplot < Autotools
   depends_on 'gdk_pixbuf' => :executable
   depends_on 'glib' => :executable
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'gtk3' => :executable
   depends_on 'harfbuzz' => :executable
   depends_on 'libcerf' => :executable
