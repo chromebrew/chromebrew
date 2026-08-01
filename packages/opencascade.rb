@@ -4,7 +4,7 @@ require_relative 'tcl'
 class Opencascade < CMake
   description 'Open CASCADE Technology (OCCT) is an open-source software development platform for 3D CAD, CAM, CAE.'
   homepage 'https://occt3d.com/'
-  version '8.0.0'
+  version '8.0.1'
   license 'LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/Open-Cascade-SAS/OCCT.git'
