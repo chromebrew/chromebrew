@@ -1,0 +1,3 @@
+#!/bin/bash
+samu -h 2>&1
+samu --version
