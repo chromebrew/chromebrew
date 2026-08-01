@@ -12,9 +12,9 @@ class Opencascade < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1f1f1911a0243a682a99b277fc2efa757737bce13cfb5c245e0d731ab9e919f9',
-     armv7l: '1f1f1911a0243a682a99b277fc2efa757737bce13cfb5c245e0d731ab9e919f9',
-     x86_64: 'b12c1a66aca729eca05995a813f78dd5ccdf6b03b5be3fb9d0262c3fdc899649'
+    aarch64: '34cb75313d2d8df4abf9f9398ed9bd5289aa11914657a4804bc4f73b2366ef47',
+     armv7l: '34cb75313d2d8df4abf9f9398ed9bd5289aa11914657a4804bc4f73b2366ef47',
+     x86_64: 'eda57e065287f630c235a5dd377faa177a4744cb9a0e8f63545e8be1e61b37ad'
   })
 
   depends_on 'expat' => :library
@@ -22,6 +22,7 @@ class Opencascade < CMake
   depends_on 'freetype' => :library
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'harfbuzz' # R
   depends_on 'libglvnd' => :library
   depends_on 'libx11' => :library
