@@ -1,32 +1,35 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Sane_backends < Package
+class Sane_backends < Autotools
   description 'Scanner Access Now Easy - Backends'
   homepage 'http://www.sane-project.org/'
-  version '1.0.32'
+  version '1.4.0'
   license 'GPL-2 and public-domain'
   compatibility 'all'
-  source_url 'https://gitlab.com/sane-project/backends/uploads/104f09c07d35519cc8e72e604f11643f/sane-backends-1.0.32.tar.gz'
-  source_sha256 '3a28c237c0a72767086202379f6dc92dbb63ec08dfbab22312cba80e238bb114'
-  binary_compression 'tar.xz'
+  source_url 'https://gitlab.com/sane-project/backends.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ac5d7ac8a77796e58a2b423ecabb59df5cbcec5c734080942cf187517deecaf9',
-     armv7l: 'ac5d7ac8a77796e58a2b423ecabb59df5cbcec5c734080942cf187517deecaf9',
-       i686: '5fad9e3f62a984238d46ce0eb4a3e29bb687a38c7fc356c8a058c9fe242395e5',
-     x86_64: '977124535b8365b80a29d6449f22cb0760f417f294f341ec53ebd9faae2c4cab'
+    aarch64: 'd928dc4dc4a875d01c6418add252d69975a8554a9b18317a3bcbb94b356cba43',
+     armv7l: 'd928dc4dc4a875d01c6418add252d69975a8554a9b18317a3bcbb94b356cba43',
+       i686: '28a24252fa1033e8b477bc039849b871d992280d2595872d724bd5d7fdef220a',
+     x86_64: '9eaee63abdc714a7b9ded89568da6fc963a7f98afe7ca70e40122b2128303ba1'
   })
 
-  def self.build
-    system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      ./configure #{CREW_CONFIGURE_OPTIONS} \
-      --disable-maintainer-mode"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'autoconf_archive' => :build
+  depends_on 'avahi' => :library
+  depends_on 'curl' => :library
+  depends_on 'dbus' => :executable
+  depends_on 'eudev' => :library
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'libjpeg_turbo' => :library
+  depends_on 'libpng' => :library
+  depends_on 'libssp' => :executable
+  depends_on 'libtiff' => :library
+  depends_on 'libusb' => :library
+  depends_on 'libxml2' => :library
+  depends_on 'v4l_utils' => :library
 end
