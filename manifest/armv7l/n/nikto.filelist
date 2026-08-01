@@ -1,4 +1,4 @@
-# Total size: 2159469
+# Total size: 2198085
 /home/chronos/user/nikto.conf
 /usr/local/bin/nikto
 /usr/local/bin/nikto-bulk
@@ -7,7 +7,6 @@
 /usr/local/share/man/man1/nikto.1.zst
 /usr/local/share/nikto/databases/db_404_strings
 /usr/local/share/nikto/databases/db_content_search
-/usr/local/share/nikto/databases/db_dictionary
 /usr/local/share/nikto/databases/db_favicon
 /usr/local/share/nikto/databases/db_headers_common
 /usr/local/share/nikto/databases/db_headers_suggested
@@ -28,7 +27,6 @@
 /usr/local/share/nikto/plugins/nikto_content_search.plugin
 /usr/local/share/nikto/plugins/nikto_cookies.plugin
 /usr/local/share/nikto/plugins/nikto_core.plugin
-/usr/local/share/nikto/plugins/nikto_dictionary_attack.plugin
 /usr/local/share/nikto/plugins/nikto_favicon.plugin
 /usr/local/share/nikto/plugins/nikto_fileops.plugin
 /usr/local/share/nikto/plugins/nikto_headers.plugin
@@ -44,6 +42,7 @@
 /usr/local/share/nikto/plugins/nikto_report_csv.plugin
 /usr/local/share/nikto/plugins/nikto_report_html.plugin
 /usr/local/share/nikto/plugins/nikto_report_json.plugin
+/usr/local/share/nikto/plugins/nikto_report_sqld.plugin
 /usr/local/share/nikto/plugins/nikto_report_sqlg.plugin
 /usr/local/share/nikto/plugins/nikto_report_text.plugin
 /usr/local/share/nikto/plugins/nikto_report_xml.plugin
