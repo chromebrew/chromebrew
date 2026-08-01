@@ -11,9 +11,9 @@ class Libcec < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e1f984cbb9f909e3687384f90cb43c2d2edecc2464c2aefd0ef073ee0dcb1253',
-     armv7l: 'e1f984cbb9f909e3687384f90cb43c2d2edecc2464c2aefd0ef073ee0dcb1253',
-     x86_64: '3f0eec65449d3bb686ae9325d49aa0426f98bdc9c75047b373dd22c3de579d9f'
+    aarch64: 'ea1498057369c37ba9a27bfad574f248d1059d29053b7211d4749a0b282bfac0',
+     armv7l: 'ea1498057369c37ba9a27bfad574f248d1059d29053b7211d4749a0b282bfac0',
+     x86_64: '66aa998fc7f45341ce1e67314837f629a1a96f25a4e59518a0679c69276c6203'
   })
 
   depends_on 'eudev' => :library
