@@ -18,28 +18,40 @@ class Gnuplot < Autotools
 
   depends_on 'at_spi2_core' => :executable
   depends_on 'cairo' => :executable
+  depends_on 'cairo' => :library
   depends_on 'gcc_lib' => :executable
+  depends_on 'gcc_lib' => :library
   depends_on 'gdk_pixbuf' => :executable
   depends_on 'glib' => :executable
+  depends_on 'glib' => :library
   depends_on 'glibc' => :executable
+  depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :executable
+  depends_on 'glibc_lib' => :library
   depends_on 'gtk3' => :executable
   depends_on 'harfbuzz' => :executable
+  depends_on 'harfbuzz' => :library
   depends_on 'libcerf' => :executable
+  depends_on 'libcerf' => :library
   depends_on 'libgd' => :executable
   depends_on 'libwebp' => :executable
   depends_on 'libx11' => :executable
+  depends_on 'libx11' => :library
   depends_on 'libxrender'
   depends_on 'libxxf86vm'
   depends_on 'lua' => :executable
   depends_on 'ncurses' => :executable
   depends_on 'pango' => :executable
+  depends_on 'pango' => :library
   depends_on 'qt5_base' => :executable
+  depends_on 'qt5_base' => :library
   depends_on 'qt5_svg' => :executable
+  depends_on 'qt5_svg' => :library
   depends_on 'qt5_tools'
   depends_on 'readline' => :executable
   depends_on 'wxwidgets' => :executable
   depends_on 'zlib' => :executable
+  depends_on 'zlib' => :library
 
   autotools_configure_options "CPPFLAGS='-I#{CREW_PREFIX}/share/Qt-5/include/QtCore \
     -I#{CREW_LIB_PREFIX}/wx/include/gtk3-unicode-3.3'"
