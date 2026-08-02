@@ -1,4 +1,4 @@
-# Total size: 54593258
+# Total size: 36382226
 /usr/local/bin/sbcl
 /usr/local/share/doc/sbcl/BUGS
 /usr/local/share/doc/sbcl/COPYING
@@ -43,8 +43,6 @@
 /usr/local/share/sbcl/lib/sbcl/contrib/sb-rotate-byte.fasl
 /usr/local/share/sbcl/lib/sbcl/contrib/sb-rt.asd
 /usr/local/share/sbcl/lib/sbcl/contrib/sb-rt.fasl
-/usr/local/share/sbcl/lib/sbcl/contrib/sb-simd.asd
-/usr/local/share/sbcl/lib/sbcl/contrib/sb-simd.fasl
 /usr/local/share/sbcl/lib/sbcl/contrib/sb-simple-streams.asd
 /usr/local/share/sbcl/lib/sbcl/contrib/sb-simple-streams.fasl
 /usr/local/share/sbcl/lib/sbcl/contrib/sb-sprof.asd
