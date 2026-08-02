@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gnome_maps < Meson
   description 'A simple GNOME maps application'
   homepage 'https://wiki.gnome.org/Apps/Maps'
-  version '50.2'
+  version '50.3'
   license 'GPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-maps.git'
@@ -11,9 +11,9 @@ class Gnome_maps < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8e0a494658babe93ada9c05b155019da39aa8840dc8c8fa82440b115dd52520d',
-     armv7l: '8e0a494658babe93ada9c05b155019da39aa8840dc8c8fa82440b115dd52520d',
-     x86_64: '9f2f7e992c2cb064cbcdf64361162b1dd8353a87d3e3dc09ce18a6bf4639415c'
+    aarch64: '010b426aa499e45277f4cbee04d25bc5dca3f3263f12e9ddac0a2fe130dce86c',
+     armv7l: '010b426aa499e45277f4cbee04d25bc5dca3f3263f12e9ddac0a2fe130dce86c',
+     x86_64: '4ef6b74a8cec85d6dc32c4e84562da414d567f3b90b7b7e18075a8ae96706b76'
   })
 
   depends_on 'blueprint_compiler'
