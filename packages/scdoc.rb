@@ -1,40 +1,29 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Scdoc < Package
+class Scdoc < Autotools
   description 'A simple man page generator for POSIX systems written in C99'
   homepage 'https://git.sr.ht/~sircmpwn/scdoc/'
-  version '1.11.3'
+  version '1.11.5'
   license 'MIT'
-  # source_url 'https://git.sr.ht/~sircmpwn/scdoc.git' # Git url with .git at the end returns 403 Forbidden
-  # git_hashtag @_ver
   compatibility 'all'
   source_url "https://git.sr.ht/~sircmpwn/scdoc/archive/#{version}.tar.gz"
-  source_sha256 'e9ff9981b5854301789a6778ee64ef1f6d1e5f4829a9dd3e58a9a63eacc2e6f0'
+  source_sha256 '98780bbdf16c1bce89ef3a8c0f537ac6e4ea77087b609e7698857614488a2a62'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '46e2a757ba83581eb8eed4b2ccbb70b3787791d7caa08913020fee754cdb4460',
-     armv7l: '46e2a757ba83581eb8eed4b2ccbb70b3787791d7caa08913020fee754cdb4460',
-       i686: 'a5792bb17872928aedb23298a2ef5a9d6199a34a41ec32fed784fe6f1dd23c84',
-     x86_64: '44a8b34c96d79b583b8cdff0c0ad0d1e5fc2657c204bbe46d9df96348d43f4d5'
+    aarch64: 'f52cb4acc19f20ee0480b4c64f41285b00043a5fa2f6b56afe77a7e9606aae2a',
+     armv7l: 'f52cb4acc19f20ee0480b4c64f41285b00043a5fa2f6b56afe77a7e9606aae2a',
+       i686: '78e8a4b9d53505e7d5e6f7e9008d79a7934487f32bb058e8dca70e0464aade04',
+     x86_64: 'c1a45e11d99f9aee48cd2fa832e5e6dfeb1dc36aec7389eef9f93a693f4985ae'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+
+  autotools_skip_configure
 
   def self.patch
     # Build a dynamically linked binary
-    system "sed -i 's:LDFLAGS+=-static:LDFLAGS+=:' Makefile" # Compile dynamically
-  end
-
-  def self.build
-    system 'make'
-  end
-
-  def self.check
-    system 'make', 'check'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system "sed -i 's:LDFLAGS+=-static:LDFLAGS+=:' Makefile"
   end
 end
