@@ -1,0 +1,3 @@
+#!/bin/bash
+screenfetch -h | head
+screenfetch -V
