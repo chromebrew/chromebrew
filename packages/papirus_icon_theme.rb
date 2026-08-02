@@ -3,7 +3,7 @@ require 'package'
 class Papirus_icon_theme < Package
   description 'SVG icon theme for Linux, based on Paper Icon Set'
   homepage 'https://github.com/PapirusDevelopmentTeam/papirus-icon-theme'
-  version '20250501'
+  version '20260801'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/PapirusDevelopmentTeam/papirus-icon-theme.git'
