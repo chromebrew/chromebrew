@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Vte < Meson
   description 'Virtual Terminal Emulator widget for use with GTK'
   homepage 'https://wiki.gnome.org/Apps/Terminal/VTE'
-  version "0.84.0-#{CREW_ICU_VER}"
+  version "0.84.1-#{CREW_ICU_VER}"
   license 'LGPL-2+ and GPL-3+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/vte.git'
@@ -11,9 +11,9 @@ class Vte < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9008f1a2ccf84cd59948dc0463529dcc013f97ca95aeae2052c8f296a8fc796b',
-     armv7l: '9008f1a2ccf84cd59948dc0463529dcc013f97ca95aeae2052c8f296a8fc796b',
-     x86_64: '7f4b390395674134b778a1f6a7907929b7283077dbb4c84c68ee1d6301c8698a'
+    aarch64: 'eecc6358aa495731dc45e9cbf197b045ccbb68f5adba0d6cab0612fdd0df2a90',
+     armv7l: 'eecc6358aa495731dc45e9cbf197b045ccbb68f5adba0d6cab0612fdd0df2a90',
+     x86_64: '9c837e978b605aaaf22c7dda068ac27159df14bd27970aeb3a5942bf526aa12b'
   })
 
   depends_on 'at_spi2_core' => :library
@@ -23,6 +23,7 @@ class Vte < Meson
   depends_on 'gdk_pixbuf' => :executable
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gnutls' => :library
   depends_on 'gobject_introspection' => :build
   depends_on 'graphene' => :library
