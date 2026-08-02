@@ -11,9 +11,9 @@ class Gjs < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3adc79bdadfa32591555508f1481963163a234ce6a04372ca8022b95e24059a5',
-     armv7l: '3adc79bdadfa32591555508f1481963163a234ce6a04372ca8022b95e24059a5',
-     x86_64: '72e8f395073af3168fc3f7c3836ed6f783addaa352cc1ea25f23709f96676415'
+    aarch64: '895b50bd856c88a30a5c681180eb721e4de656cd717d28d30ddc7d36b5f91eeb',
+     armv7l: '895b50bd856c88a30a5c681180eb721e4de656cd717d28d30ddc7d36b5f91eeb',
+     x86_64: '60622d1a299e00b8e9fc6a00fbd27a49659d2a10f8358018208a665e808895d1'
   })
 
   depends_on 'cairo' => :library
