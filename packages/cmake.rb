@@ -37,6 +37,15 @@ class Cmake < Package
   depends_on 'zlib' => :build
   depends_on 'zstd' => :build
 
+  def self.patch
+    return unless version.include?('4.4')
+
+    Dir.chdir('Utilities/cmlibarchive') do
+      downloader 'https://patch-diff.githubusercontent.com/raw/libarchive/libarchive/pull/3339.diff', 'asasa'
+      system 'patch -Np1 -i 3339.diff'
+    end
+  end
+
   def self.build
     FileUtils.mkdir_p 'builddir'
     system '../bootstrap && make', chdir: 'builddir'
