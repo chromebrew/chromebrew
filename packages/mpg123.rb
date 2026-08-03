@@ -11,10 +11,10 @@ class Mpg123 < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a553b6184906f57c17b0783c780882b643ddee8ccfffe9fe9788cd0d3592597c',
-     armv7l: 'a553b6184906f57c17b0783c780882b643ddee8ccfffe9fe9788cd0d3592597c',
-       i686: '471e4c0bec3bc22faeceab652ed794f50b3c33d303a44e503dd5bc285fd63c0a',
-     x86_64: '84f446be131d1a27fd61429f435a11ba515a6ebcd8b0e5fca14025338dcd40aa'
+    aarch64: 'db46b303478cbfc711a77d3b718319d2f2a3b2a982a4fd23a1cdc65ff402d360',
+     armv7l: 'db46b303478cbfc711a77d3b718319d2f2a3b2a982a4fd23a1cdc65ff402d360',
+       i686: 'd363c55aa38632d0e236f19fd1ebff67e4d8e631b92242ea521d4ad345f01b16',
+     x86_64: 'd685185ce71f7386bb2c3cb8716a46f7f9f0ce948f0ead614eab64055b740177'
   })
 
   depends_on 'alsa_lib' => :library
