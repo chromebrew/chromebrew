@@ -1,0 +1,3 @@
+#!/bin/bash
+screen -h | head
+screen -v
