@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Mpg123 < Autotools
   description 'Fast console MPEG Audio Player and decoder library.'
   homepage 'http://www.mpg123.org/'
-  version '1.33.6'
+  version '1.33.7'
   license 'GPL-2 and LGPL-2.1'
   compatibility 'all'
   source_url "https://sourceforge.net/projects/mpg123/files/mpg123/#{version}/mpg123-#{version}.tar.bz2"
-  source_sha256 '929a7c18ba662b8927aed4de229ad9ae8ab2b4806dd0f30b90113eb1b4e2195a'
+  source_sha256 '31d0e35a4ca567ec9b5ebda6c3062bb4435d6d3eacd6ef0d95cadd7854dc03ee'
   binary_compression 'tar.zst'
 
   binary_sha256({
