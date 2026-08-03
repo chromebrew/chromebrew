@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Weechat < CMake
   description 'WeeChat is a fast, light and extensible chat client.'
   homepage 'https://weechat.org/'
-  version '4.9.5'
+  version '4.10.0'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/weechat/weechat.git'
@@ -11,10 +11,10 @@ class Weechat < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '04bb8d3fff292b06a4a7e3bdf34873a51044c8a25fd4d2c86041ab7d3c9cab83',
-     armv7l: '04bb8d3fff292b06a4a7e3bdf34873a51044c8a25fd4d2c86041ab7d3c9cab83',
-       i686: '649dca539d8b24efb0b3e1877c52667670fd646346dbd533347ee222ecd58324',
-     x86_64: 'c5c4b6459177744aa3da5a4e381d085410363df21a83c41d2db322888ca2ad3d'
+    aarch64: '80467b49de29172dbefc391ebb7d5c38aab3b93e1dad48d33ced8affa479da98',
+     armv7l: '80467b49de29172dbefc391ebb7d5c38aab3b93e1dad48d33ced8affa479da98',
+       i686: 'a433ba966c9177d0893a37bc2e80bd85e4e6d0ca138ff1a82cf2eb9efdf88fb6',
+     x86_64: 'ff11d821f64e29f738da78aba27f3a0d4850f9b5fc6c1c76d5ec150e5281e34b'
   })
 
   depends_on 'aspell' => :library
