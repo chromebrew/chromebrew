@@ -11,14 +11,14 @@ class Pax_utils < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '38116b047903f635e67bf4b9b1fc8eb6bada5013480b073a60f9506e3136caa6',
-     armv7l: '38116b047903f635e67bf4b9b1fc8eb6bada5013480b073a60f9506e3136caa6',
-       i686: 'ff66e74f21425bf869e92a6f432dea54814db453e84aa089d6ff788fb829a21b',
-     x86_64: '34f1ffd939cfe497bc7cb5efde8526f51c3b78d2df48436586ef25795d849bc1'
+    aarch64: 'ead3602892e6df841e856292a4789de7da58ef01bf0a9b002d05d2a3ed98541e',
+     armv7l: 'ead3602892e6df841e856292a4789de7da58ef01bf0a9b002d05d2a3ed98541e',
+       i686: 'ec9191886e5212dfdc67227935f36d7b668f611bb8c7db64f564af9d09534ed4',
+     x86_64: 'b2f38631001deaace56ab05433fda52f8ca08a96742cfc8a565a59386fc8e103'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'libcap' # R
+  depends_on 'glibc' => :executable
+  depends_on 'libcap' => :executable
   depends_on 'libseccomp' => :build
   depends_on 'python3' => :logical
   depends_on 'xmlto' => :build
