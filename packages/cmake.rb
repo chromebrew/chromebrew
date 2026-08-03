@@ -11,10 +11,10 @@ class Cmake < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9ec3c4fd910d2d000fcac1904c71b7456c8873f6b517f7c235c1225ebcda9f13',
-     armv7l: '9ec3c4fd910d2d000fcac1904c71b7456c8873f6b517f7c235c1225ebcda9f13',
-       i686: '10faccef86ff6f62631f3edb0ea55c7fa0f5c42273f48a60fc90886c2ec28b33',
-     x86_64: '6bb4ebf46d7408888a70e968a174bdde9537789b099253c9b98ed8fa7b002fb6'
+    aarch64: 'ca14bc5c0472bee60e53668af268dde76f2c3e7d0c91b1471d1ed86881bb48d8',
+     armv7l: 'ca14bc5c0472bee60e53668af268dde76f2c3e7d0c91b1471d1ed86881bb48d8',
+       i686: 'd61f302051fd02301bc91064385c216aeec1ac4ed1607f6cb59118ebcd503302',
+     x86_64: '9aa98fc06d413685e607b82d8198ea7a39321a8d38d5299e14e75340b134c4ab'
   })
 
   depends_on 'bzip2' => :build
@@ -26,6 +26,7 @@ class Cmake < Package
   depends_on 'glibc_lib' => :executable
   depends_on 'jsoncpp' => :build
   depends_on 'libarchive' => :build
+  depends_on 'libiconv' => :executable
   depends_on 'libidn2' => :executable
   depends_on 'libnghttp2' => :build
   depends_on 'librhash' => :build
