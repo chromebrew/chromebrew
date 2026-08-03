@@ -1,0 +1,3 @@
+#!/bin/bash
+scrot -h | head
+scrot -v
