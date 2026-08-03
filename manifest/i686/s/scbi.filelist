@@ -1,4 +1,4 @@
-# Total size: 689359
+# Total size: 707389
 /usr/local/.config/scbi/.core.plugins
 /usr/local/.config/scbi/.env
 /usr/local/.config/scbi/.pkgs-cos
@@ -25,6 +25,7 @@
 /usr/local/.config/scbi/c-ada-language-server
 /usr/local/.config/scbi/c-ada-libfswatch
 /usr/local/.config/scbi/c-ada-mode
+/usr/local/.config/scbi/c-ada-toml
 /usr/local/.config/scbi/c-ada-tools
 /usr/local/.config/scbi/c-adasat
 /usr/local/.config/scbi/c-aflex
@@ -65,6 +66,7 @@
 /usr/local/.config/scbi/c-gnatcoll-db-libs-sql
 /usr/local/.config/scbi/c-gnatcoll-db-libs-sqlite
 /usr/local/.config/scbi/c-gnatcoll-db-tools
+/usr/local/.config/scbi/c-gnatcov
 /usr/local/.config/scbi/c-gnatdist
 /usr/local/.config/scbi/c-gnatdoc4
 /usr/local/.config/scbi/c-gpmdp
@@ -88,6 +90,7 @@
 /usr/local/.config/scbi/c-libadalang-refactor
 /usr/local/.config/scbi/c-libadalang-tools
 /usr/local/.config/scbi/c-libavif
+/usr/local/.config/scbi/c-libclang
 /usr/local/.config/scbi/c-libfswatch
 /usr/local/.config/scbi/c-libgegl
 /usr/local/.config/scbi/c-libgpr
@@ -97,6 +100,7 @@
 /usr/local/.config/scbi/c-libopenjpeg
 /usr/local/.config/scbi/c-librest
 /usr/local/.config/scbi/c-llvm
+/usr/local/.config/scbi/c-llvm-bindings
 /usr/local/.config/scbi/c-markdown
 /usr/local/.config/scbi/c-mingw
 /usr/local/.config/scbi/c-mingw-header
@@ -114,6 +118,7 @@
 /usr/local/.config/scbi/c-sandbox
 /usr/local/.config/scbi/c-spark
 /usr/local/.config/scbi/c-spawn
+/usr/local/.config/scbi/c-stable-sloc
 /usr/local/.config/scbi/c-templates-parser
 /usr/local/.config/scbi/c-v2p
 /usr/local/.config/scbi/c-vss
