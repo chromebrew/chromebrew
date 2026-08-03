@@ -23,6 +23,7 @@ class Talloc < Package
   depends_on 'docbook_xml' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'libbsd' => :library
   depends_on 'libxcrypt' => :build
   # depends_on 'python3' # R (optional) # For Python bindings.
