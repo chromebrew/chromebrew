@@ -12,9 +12,9 @@ class Fswatch < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ef0fa24ca31966a0ca600cd5de2f9022c6617a61cb86b871e0a9f249b84b90c9',
-     armv7l: 'ef0fa24ca31966a0ca600cd5de2f9022c6617a61cb86b871e0a9f249b84b90c9',
-     x86_64: '5a433c84d52c51b36eaf4a05ad961408bf76cbfddab09ddf5eb404f32006c8e5'
+    aarch64: '34cd8361d367d69cbd7fc9c4962a6f9d220976aa945b9e6e6cce326da3fa1e0d',
+     armv7l: '34cd8361d367d69cbd7fc9c4962a6f9d220976aa945b9e6e6cce326da3fa1e0d',
+     x86_64: '73af7a5b0a18c628fbe51054103bd2b36a9bed111e08785964c5bcc45c9fe36a'
   })
 
   depends_on 'gcc_lib' => :library
