@@ -1,28 +1,23 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Sfk < Package
+class Sfk < Autotools
   description 'The Swiss File Knife - A Command Line Tools Collection for Windows / Linux / Mac.'
   homepage 'https://swissfileknife.sourceforge.net/'
-  version '1.8.7'
+  version '2.0.0'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://sourceforge.net/projects/swissfileknife/files/1-swissfileknife/1.8.7/sfk-1.8.7.tar.gz'
-  source_sha256 '1c53d4d9d05af752546c8341a718bf64be99b62491ff91db02ef100e2f93bfc3'
-  binary_compression 'tar.xz'
+  source_url "https://downloads.sourceforge.net/project/swissfileknife/1-swissfileknife/#{version}.3/sfk-#{version}.tar.gz"
+  source_sha256 'b7e2e3848e3126dcee916056bff5f8340acae9158f3610049de2cde999ccca63'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1666f3bd5271973be9ce535e6cc1a71a831ba3d479ba2a08b7c587d2142ef360',
-     armv7l: '1666f3bd5271973be9ce535e6cc1a71a831ba3d479ba2a08b7c587d2142ef360',
-       i686: 'e2366c801933f920eef6058c559883be2ab31470f314c0fc0bdd40187014331c',
-     x86_64: '86c8b0fc3953d74b5225e16aec90dfb8e5c6f794f4d02ffb731e8ab8469c97e6'
+    aarch64: 'b507ab01f38b79b99e3ef221014ed11e3652929ab2c2abd01b9aef3524bf6204',
+     armv7l: 'b507ab01f38b79b99e3ef221014ed11e3652929ab2c2abd01b9aef3524bf6204',
+       i686: '3d8d79d85cc3431545c2a9e645e81c6f87c54a5f8324b35723f9d4ca2f1eded0',
+     x86_64: '269706e7db78e840c1d40058c5c4e43c204f8dd43d006040a5a8eea07a1593f7'
   })
 
-  def self.build
-    system './configure'
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
 end
