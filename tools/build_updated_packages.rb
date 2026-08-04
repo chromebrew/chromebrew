@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# build_updated_packages version 5.5 (for Chromebrew)
+# build_updated_packages version 5.4 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -272,17 +272,6 @@ else
   changed_files_previous_commit = `git diff-tree --no-commit-id --name-only -r $(git rev-parse origin/master)..$(git rev-parse --verify HEAD)`.chomp.split
   updated_packages.push(*changed_files.grep(%r{(packages/).*.*(\.rb$)}))
   updated_packages.push(*changed_files_previous_commit.grep(%r{(packages/).*.*(\.rb$)}))
-
-  # If we are in one of the automated updater branches, then the branch name will also gice us a package to check.
-  current_branch = `git rev-parse --abbrev-ref HEAD`.chomp
-  if current_branch.include?('updater-')
-    current_branch_package = current_branch.gsub('updater-', '').split('-').first
-    git_branch_pkg_string = "packages/#{current_branch_package}.rb"
-    if File.exist?(File.join(crew_local_repo_root, git_branch_pkg_string)) && !updated_packages.grep(/#{Regexp.quote(git_branch_pkg_string)}/)
-      puts "Current git branch package is #{current_branch_package}.".orange if VERY_VERBOSE
-      updated_packages.push(git_branch_pkg_string)
-    end
-  end
 end
 
 unless ONLY_SPECIFIED_PACKAGES
@@ -317,13 +306,11 @@ updated_packages.each do |p|
   end
 end
 
-# Final cleanup of packages list.
-updated_packages.uniq! unless updated_packages.empty?
-updated_packages.delete_if { !PackageUtils.compatible?(Package.load_package(File.join(crew_local_repo_root, it.downcase))) } unless updated_packages.empty?
-
 if updated_packages.empty?
   puts 'No packages need to be updated.'.orange
 else
+  updated_packages.uniq!
+  updated_packages.delete_if { !PackageUtils.compatible?(Package.load_package(File.join(crew_local_repo_root, it.downcase))) }
   cleaned_updated_packages = updated_packages.map { it.sub('packages/', '').sub('.rb', '') }
   updated_packages_reordered = cleaned_updated_packages.nil? ? updated_packages.map { "packages/#{it}.rb" } : order_recursive_deps(cleaned_updated_packages).map { "packages/#{it}.rb" }
   puts 'These packages will be checked to see if they need updated binaries:'.orange
