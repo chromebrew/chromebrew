@@ -10,8 +10,8 @@ class Delve < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-       i686: 'c295dc350f1f7d5e1f3b97541f3b8a823407d8689728a39ccfcd36ac0c9ba588',
-     x86_64: '939d10701a1c92171e24555cdb368aa919662f7ee348122022cda952e18cea4b'
+       i686: 'b6cdb933c44dc081a4a5ae520aba62834c51e873809ca0a0e9ba726a419fb08e',
+     x86_64: 'e2faa0bf509f6bb44e171348a3995413f43cc0301d80e5a42f0ce96396688f96'
   })
 
   depends_on 'glibc' => :executable
