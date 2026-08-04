@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Nanomsg < CMake
   description 'nanomsg is a socket library that provides several common communication patterns.'
   homepage 'https://nanomsg.org/'
-  version '1.2.3'
+  version '1.2.4'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/nanomsg/nanomsg.git'
