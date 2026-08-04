@@ -41,10 +41,14 @@ class Cmake < Package
   def self.patch
     return unless version.include?('4.4')
 
-    Dir.chdir('Utilities/cmlibarchive') do
-      downloader 'https://patch-diff.githubusercontent.com/raw/libarchive/libarchive/pull/3339.diff', '1208a9ef66ddbdd563adacda0579803c8b6ca3bd3d7909d2b12474eb6a1006a4'
-      system 'patch -Np1 -i 3339.diff'
-    end
+    patch = [
+      [
+        'https://patch-diff.githubusercontent.com/raw/libarchive/libarchive/pull/3339.diff',
+        '1208a9ef66ddbdd563adacda0579803c8b6ca3bd3d7909d2b12474eb6a1006a4',
+        'Utilities/cmlibarchive'
+      ]
+    ]
+    ConvenienceFunctions.patch(patch)
   end
 
   def self.build
