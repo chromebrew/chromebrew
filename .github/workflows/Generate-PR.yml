@@ -1,5 +1,5 @@
 ---
-# Version 2.8
+# Version 2.9
 name: Generate PR
 run-name: Generate PR for ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} by @${{ github.actor }}
 on:
@@ -193,6 +193,7 @@ jobs:
       TARGET_ARCH: ${{ matrix.arch }}
       GLIBC_232_COMPATIBLE_PACKAGES: ${{ needs.get-compatibility.outputs.GLIBC_232_COMPATIBLE_PACKAGES }}
       GLIBC_237_COMPATIBLE_PACKAGES: ${{ needs.get-compatibility.outputs.GLIBC_237_COMPATIBLE_PACKAGES }}
+      GLIBC_241_COMPATIBLE_PACKAGES: ${{ needs.get-compatibility.outputs.GLIBC_241_COMPATIBLE_PACKAGES }}
       i686_MIN_GLIBC: ${{ needs.get-compatibility.outputs.i686_min_glibc }}
       i686_PACKAGES: ${{ needs.get-compatibility.outputs.i686_PACKAGES }}
       x86_64_MIN_GLIBC: ${{ needs.get-compatibility.outputs.x86_64_min_glibc }}
@@ -245,7 +246,10 @@ jobs:
                   echo "CONTAINER=satmandu/crewbuild:nocturne-x86_64.m97" >> "$GITHUB_ENV"
                   ;;
                 2.37)
-                  echo "CONTAINER=satmandu/crewbuild:nocturne-x86_64.m97" >> "$GITHUB_ENV"
+                  echo "CONTAINER=satmandu/crewbuild:hatch-x86_64.m150" >> "$GITHUB_ENV"
+                  ;;
+                2.41)
+                  echo "CONTAINER=satmandu/crewbuild:hatch-x86_64.m150" >> "$GITHUB_ENV"
                   ;;
                 *)
                   # Fallback/default is the M90 Glibc 2.27 container.
@@ -261,6 +265,9 @@ jobs:
                   echo "CONTAINER=satmandu/crewbuild:fievel-armv7l.m97" >> "$GITHUB_ENV"
                   ;;
                 2.37)
+                  echo "CONTAINER=satmandu/crewbuild:strongbad-armv7l.m150" >> "$GITHUB_ENV"
+                  ;;
+                2.41)
                   echo "CONTAINER=satmandu/crewbuild:strongbad-armv7l.m150" >> "$GITHUB_ENV"
                   ;;
                 *)
