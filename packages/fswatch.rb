@@ -1,6 +1,6 @@
-require 'buildsystems/autotools'
+require 'buildsystems/cmake'
 
-class Fswatch < Autotools
+class Fswatch < CMake
   description 'fswatch is a file change monitor that receives notifications when the contents of the specified files or directories are modified.'
   homepage 'https://github.com/emcrisostomo/fswatch'
   version '1.22.0'
@@ -21,7 +21,7 @@ class Fswatch < Autotools
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
 
-  autotools_configure_options '--disable-static'
+  cmake_options '-DBUILD_SHARED_LIBS=ON'
 
   run_tests
 end
