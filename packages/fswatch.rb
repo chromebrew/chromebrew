@@ -12,9 +12,9 @@ class Fswatch < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f389a976f06ca857551fc2cd587f1cbec578a8f63d82f0231e3c576283c6ef5c',
-     armv7l: 'f389a976f06ca857551fc2cd587f1cbec578a8f63d82f0231e3c576283c6ef5c',
-     x86_64: '9446f340de6c2319824b27357c3b2216b88af76662a182bdd512eaf3d742c7be'
+    aarch64: 'ef0fa24ca31966a0ca600cd5de2f9022c6617a61cb86b871e0a9f249b84b90c9',
+     armv7l: 'ef0fa24ca31966a0ca600cd5de2f9022c6617a61cb86b871e0a9f249b84b90c9',
+     x86_64: '5a433c84d52c51b36eaf4a05ad961408bf76cbfddab09ddf5eb404f32006c8e5'
   })
 
   depends_on 'gcc_lib' => :library
