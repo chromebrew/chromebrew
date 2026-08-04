@@ -1,4 +1,4 @@
-# Total size: 366045
+# Total size: 366013
 /usr/local/bin/nanocat
 /usr/local/include/nanomsg/bus.h
 /usr/local/include/nanomsg/inproc.h
@@ -11,10 +11,10 @@
 /usr/local/include/nanomsg/survey.h
 /usr/local/include/nanomsg/tcp.h
 /usr/local/include/nanomsg/ws.h
-/usr/local/lib64/cmake/nanomsg-6dac4ea/nanomsg-config-version.cmake
-/usr/local/lib64/cmake/nanomsg-6dac4ea/nanomsg-config.cmake
-/usr/local/lib64/cmake/nanomsg-6dac4ea/nanomsg-target-release.cmake
-/usr/local/lib64/cmake/nanomsg-6dac4ea/nanomsg-target.cmake
+/usr/local/lib64/cmake/nanomsg-e6d0b8d/nanomsg-config-version.cmake
+/usr/local/lib64/cmake/nanomsg-e6d0b8d/nanomsg-config.cmake
+/usr/local/lib64/cmake/nanomsg-e6d0b8d/nanomsg-target-release.cmake
+/usr/local/lib64/cmake/nanomsg-e6d0b8d/nanomsg-target.cmake
 /usr/local/lib64/libnanomsg.so
 /usr/local/lib64/libnanomsg.so.6
 /usr/local/lib64/libnanomsg.so.6.0.1
