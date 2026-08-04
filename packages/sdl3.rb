@@ -14,9 +14,9 @@ class Sdl3 < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c8b54ffc44490e9d00fa56ba795057843fe96a2490ef96f9f634015c85de1aaa',
-     armv7l: 'c8b54ffc44490e9d00fa56ba795057843fe96a2490ef96f9f634015c85de1aaa',
-     x86_64: '95aea4f455f05828ebf442fc7b6a93b2345ec7cee5ba365df60a4ff46c80848e'
+    aarch64: '47bf7aeddca17586cb1e951efd2e1f4e7b104b65e3fc4f41fe8cf037c09307e1',
+     armv7l: '47bf7aeddca17586cb1e951efd2e1f4e7b104b65e3fc4f41fe8cf037c09307e1',
+     x86_64: '2c75f1ac5e10429419d5e56fdccd80e582f9beb974fedb575e2745079f0bc87e'
   })
 
   depends_on 'alsa_lib' => :build
