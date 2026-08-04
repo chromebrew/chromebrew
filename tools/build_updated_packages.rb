@@ -277,9 +277,10 @@ else
   current_branch = `git rev-parse --abbrev-ref HEAD`.chomp
   if current_branch.include?('updater-')
     current_branch_package = current_branch.gsub('updater-', '').split('-').first
-    if File.exist?(File.join(crew_local_repo_root, "packages/#{current_branch_package}.rb"))
-      puts "Current git branch package is #{current_branch_package}.".orange
-      updated_packages.push("packages/#{current_branch_package}.rb")
+    git_branch_pkg_string = "packages/#{current_branch_package}.rb"
+    if File.exist?(File.join(crew_local_repo_root, git_branch_pkg_string)) && !updated_packages.grep(/#{Regexp.quote(git_branch_pkg_string)}/)
+      puts "Current git branch package is #{current_branch_package}.".orange if VERY_VERBOSE
+      updated_packages.push(git_branch_pkg_string)
     end
   end
 end
