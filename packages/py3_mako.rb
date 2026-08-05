@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_mako < Pip
   description 'Mako is a super fast templating language.'
   homepage 'https://www.makotemplates.org/'
-  version "1.3.12-#{CREW_PY_VER}"
+  version "1.4.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1d973d7624af6c18ba5fb0d249d8a7d52093b44154e8942b687337e0e64225ba',
-     armv7l: '1d973d7624af6c18ba5fb0d249d8a7d52093b44154e8942b687337e0e64225ba',
-       i686: '98f1b0ce88285af8b3d67788994e7e0145b810be0a1df66c6fd6c3c878b41044',
-     x86_64: '56a6fd9cf73d1c198a85a9a63938d07c880784b5bdfb215650b150712506b6c9'
+    aarch64: '6ddc10798d1a8c94d165b5ebaefa0dc7c1338bdb97e6e518bb2c1af35c1d88f6',
+     armv7l: '6ddc10798d1a8c94d165b5ebaefa0dc7c1338bdb97e6e518bb2c1af35c1d88f6',
+       i686: 'b651d94cf69c550a2de68765c7a5e9e650dc8e73d37a75f3cacbe8da88fed594',
+     x86_64: 'c8aafb460b12ac77f5787341d780ff806cfa8c656b74434e28718285d18d3482'
   })
 
   depends_on 'py3_markupsafe'
