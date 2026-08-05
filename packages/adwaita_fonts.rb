@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Adwaita_fonts < Meson
   description 'The typefaces for GNOME'
   homepage 'https://gitlab.gnome.org/GNOME/adwaita-fonts'
-  version '50.0'
+  version '51.0'
   license 'GPL-3.0-or-later'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/adwaita-fonts.git'
