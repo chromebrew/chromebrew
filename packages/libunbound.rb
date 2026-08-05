@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Libunbound < Autotools
   description 'Unbound is a validating, recursive, and caching DNS resolver.'
   homepage 'https://nlnetlabs.nl/projects/unbound/about/'
-  version '1.25.2'
+  version '1.26.0'
   license 'BSD and GPL-2'
   compatibility 'all'
   source_url "https://nlnetlabs.nl/downloads/unbound/unbound-#{version}.tar.gz"
-  source_sha256 '0d92275c703d5f5f8baba3dab22117dd8c29b495588a5c229768ed6581566600'
+  source_sha256 '77458a7156e275c0b7b17fabcb357cb12445d95cfcb26fb9bb7d5ecba45e0b63'
   binary_compression 'tar.zst'
 
   binary_sha256({
