@@ -11,9 +11,9 @@ class Openvpn < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd3b7dbcf6ecb3383ae44c328becb6564ded51a871d3f1c0414a5e116773c5890',
-     armv7l: 'd3b7dbcf6ecb3383ae44c328becb6564ded51a871d3f1c0414a5e116773c5890',
-     x86_64: '926d29b2ac56eccc0b00e44d846912b45d310bb6712170635e9c3031c6ae60d7'
+    aarch64: 'c5f36a1531ab46057627c9defb562f54c527d6802905730fd55ae736605a234a',
+     armv7l: 'c5f36a1531ab46057627c9defb562f54c527d6802905730fd55ae736605a234a',
+     x86_64: '4c992a4338d693b6533f4d7e2281c835ea5a1ee466f0b960ddf6ac2b9ecfec7b'
   })
 
   depends_on 'e2fsprogs' => :executable
