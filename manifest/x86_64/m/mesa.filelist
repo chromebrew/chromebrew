@@ -1,4 +1,4 @@
-# Total size: 137528035
+# Total size: 142088198
 /usr/local/include/EGL/eglext_angle.h
 /usr/local/include/EGL/eglmesaext.h
 /usr/local/include/GL/internal/dri_interface.h
@@ -123,7 +123,7 @@
 /usr/local/lib64/libGLX_mesa.so
 /usr/local/lib64/libGLX_mesa.so.0
 /usr/local/lib64/libGLX_mesa.so.0.0.0
-/usr/local/lib64/libgallium-26.1.6.so
+/usr/local/lib64/libgallium-26.2.0.so
 /usr/local/lib64/libgbm.so
 /usr/local/lib64/libgbm.so.1
 /usr/local/lib64/libgbm.so.1.0.0
@@ -133,8 +133,19 @@
 /usr/local/lib64/libvulkan_radeon.so
 /usr/local/lib64/pkgconfig/dri.pc
 /usr/local/lib64/pkgconfig/gbm.pc
+/usr/local/share/drirc.d/00-anv-defaults.conf
+/usr/local/share/drirc.d/00-crocus-defaults.conf
+/usr/local/share/drirc.d/00-hasvk-defaults.conf
+/usr/local/share/drirc.d/00-iris-defaults.conf
+/usr/local/share/drirc.d/00-lavapipe-defaults.conf
 /usr/local/share/drirc.d/00-mesa-defaults.conf
+/usr/local/share/drirc.d/00-r300-defaults.conf
+/usr/local/share/drirc.d/00-r600-defaults.conf
+/usr/local/share/drirc.d/00-radeonsi-defaults.conf
 /usr/local/share/drirc.d/00-radv-defaults.conf
+/usr/local/share/drirc.d/00-virtio_gpu-defaults.conf
+/usr/local/share/drirc.d/00-vmwgfx-defaults.conf
+/usr/local/share/drirc.d/00-zink-defaults.conf
 /usr/local/share/glvnd/egl_vendor.d/50_mesa.json
 /usr/local/share/vulkan/icd.d/intel_hasvk_icd.x86_64.json
 /usr/local/share/vulkan/icd.d/intel_icd.x86_64.json
