@@ -1,4 +1,4 @@
-# Total size: 911160
+# Total size: 997992
 /usr/local/bin/byobu
 /usr/local/bin/byobu-config
 /usr/local/bin/byobu-ctrl-a
@@ -95,11 +95,13 @@
 /usr/local/lib64/byobu/wifi_quality
 /usr/local/lib64/trustmux/__init__.py
 /usr/local/lib64/trustmux/__main__.py
+/usr/local/lib64/trustmux/_advertise.py
 /usr/local/lib64/trustmux/_ctl.py
 /usr/local/lib64/trustmux/_daemon.py
 /usr/local/lib64/trustmux/_disable.py
 /usr/local/lib64/trustmux/_enable.py
 /usr/local/lib64/trustmux/_pair.py
+/usr/local/lib64/trustmux/_paths.py
 /usr/local/lib64/trustmux/_unpair.py
 /usr/local/share/bash-completion/completions/trustmux
 /usr/local/share/byobu/desktop/byobu.desktop
