@@ -3,7 +3,7 @@ require 'package'
 class Syncthing < Package
   description 'An application that lets you synchronize your files across multiple devices'
   homepage 'https://github.com/syncthing/syncthing'
-  version '2.1.2'
+  version '2.1.3'
   license 'Apache-2.0, BSD, BSD-2, ISC, MIT, MPL-2.0 and Unlicense'
   compatibility 'all'
   source_url 'https://github.com/syncthing/syncthing.git'
@@ -11,10 +11,10 @@ class Syncthing < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1e2d9c481e28a7690af98e295b8e49e698b081cefd4df2e219248a4c2f999b61',
-     armv7l: '1e2d9c481e28a7690af98e295b8e49e698b081cefd4df2e219248a4c2f999b61',
-       i686: 'e496f7da5c34c05680e16359ef40867d2195dfa5b0f0706e143ad11487fdb4f0',
-     x86_64: 'edc70ad1f166bcecfabbbeec03c3f1aec8a77d8af1307e80b53bc9f400fa5bfb'
+    aarch64: '64dac852663327d0a7544d95395659084222f704ac1920917894259cb9a385e3',
+     armv7l: '64dac852663327d0a7544d95395659084222f704ac1920917894259cb9a385e3',
+       i686: 'd8c9a4886477af1b825d3bc1129eee38089d89c72bf7fd67ebe2c60f35c4b797',
+     x86_64: 'bd26a1ec9ca21844e50bffc3c3097015a85b747a11a698c968dc7deb5983a1bb'
   })
 
   depends_on 'glibc' => :executable
