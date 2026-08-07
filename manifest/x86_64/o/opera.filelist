@@ -1,4 +1,4 @@
-# Total size: 374824372
+# Total size: 379396739
 /usr/local/bin/opera
 /usr/local/share/applications/opera.desktop
 /usr/local/share/doc/opera-stable/changelog.gz
@@ -172,7 +172,6 @@
 /usr/local/share/x86_64-linux-gnu/opera-stable/resources/partner_speeddials.json
 /usr/local/share/x86_64-linux-gnu/opera-stable/resources/purchases-schemas.json
 /usr/local/share/x86_64-linux-gnu/opera-stable/resources/siteprefs.json
-/usr/local/share/x86_64-linux-gnu/opera-stable/resources/specific_keywords.json
 /usr/local/share/x86_64-linux-gnu/opera-stable/resources/standard_themes/default_dark_theme.zip
 /usr/local/share/x86_64-linux-gnu/opera-stable/resources/standard_themes/default_theme.zip
 /usr/local/share/x86_64-linux-gnu/opera-stable/snapshot_blob.bin
