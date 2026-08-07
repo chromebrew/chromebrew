@@ -138,8 +138,16 @@ class Package
     if output_to_null
       original_stderr = $stderr.clone
       original_stdout = $stdout.clone
-      $stderr.reopen(File::NULL, 'w')
-      $stdout.reopen(File::NULL, 'w')
+      begin
+        $stderr.reopen(File::NULL, 'w')
+      rescue Errno::EACCES
+        Tempfile.create('tmp_stderr') { $stderr.reopen(it.to_path, 'w') }
+      end
+      begin
+        $stdout.reopen(File::NULL, 'w')
+      rescue Errno::EACCES
+        Tempfile.create('tmp_stdout') { $stdout.reopen(it.to_path, 'w') }
+      end
     end
 
     reload = !reload.nil?
