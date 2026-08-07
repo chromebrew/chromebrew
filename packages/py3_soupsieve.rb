@@ -10,10 +10,10 @@ class Py3_soupsieve < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '59545dfb491fa79bffb95247fdc9dfc9dcf3c73e570d3a1ecf7fdc5f2ebf0cda',
-     armv7l: '59545dfb491fa79bffb95247fdc9dfc9dcf3c73e570d3a1ecf7fdc5f2ebf0cda',
-       i686: 'fd69ecd44cc30e0b5b102fa63c7e1cc9d2011cc7d583db5662554a96ef57715b',
-     x86_64: 'fed9437005236ea6728f9b8b19cffdcdfa8cd57c6f8844512514afe47524bdc3'
+    aarch64: '9a2f50b5a8075f0fe87eab8876e8e4630d5835ddb1081b7b5e822b7bd722c796',
+     armv7l: '9a2f50b5a8075f0fe87eab8876e8e4630d5835ddb1081b7b5e822b7bd722c796',
+       i686: 'dcae98afd49287f6ff6edd4812900b947c6ad035d15efff51e59a8a251950189',
+     x86_64: 'baf8326fe8fca013fff9a6eeb268895c74bb5e7aa2af71d5a430765c17aa1d11'
   })
 
   depends_on 'python3' => :logical
