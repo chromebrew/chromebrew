@@ -1,4 +1,4 @@
-# Total size: 111939
+# Total size: 119846
 /usr/local/bin/fpcalc
 /usr/local/include/chromaprint.h
 /usr/local/lib64/cmake/Chromaprint/ChromaprintConfig.cmake
@@ -7,5 +7,5 @@
 /usr/local/lib64/cmake/Chromaprint/ChromaprintTargets.cmake
 /usr/local/lib64/libchromaprint.so
 /usr/local/lib64/libchromaprint.so.1
-/usr/local/lib64/libchromaprint.so.1.6.0
+/usr/local/lib64/libchromaprint.so.1.6.1
 /usr/local/lib64/pkgconfig/libchromaprint.pc
