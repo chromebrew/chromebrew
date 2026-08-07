@@ -1,4 +1,4 @@
-# Total size: 1097076948
+# Total size: 1101997578
 /usr/local/bin/c++
 /usr/local/bin/c++-16
 /usr/local/bin/c89
@@ -1967,7 +1967,7 @@
 /usr/local/lib64/libstdc++.modules.json
 /usr/local/lib64/libstdc++.so
 /usr/local/lib64/libstdc++.so.6
-/usr/local/lib64/libstdc++.so.6.0.35
+/usr/local/lib64/libstdc++.so.6.0.36
 /usr/local/lib64/libstdc++exp.a
 /usr/local/lib64/libstdc++exp.la
 /usr/local/lib64/libstdc++fs.a
@@ -2018,7 +2018,7 @@
 /usr/local/share/gcc-16/python/libstdcxx/v6/__pycache__/xmethods.cpython-314.pyc
 /usr/local/share/gcc-16/python/libstdcxx/v6/printers.py
 /usr/local/share/gcc-16/python/libstdcxx/v6/xmethods.py
-/usr/local/share/gdb/auto-load/usr/lib/libstdc++.so.6.0.35-gdb.py
+/usr/local/share/gdb/auto-load/usr/lib/libstdc++.so.6.0.36-gdb.py
 /usr/local/share/info/cpp.info.zst
 /usr/local/share/info/cppinternals.info.zst
 /usr/local/share/info/gcc.info.zst
