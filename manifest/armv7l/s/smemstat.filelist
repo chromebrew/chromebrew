@@ -1,4 +1,4 @@
-# Total size: 56896
+# Total size: 25463
 /usr/local/bin/smemstat
 /usr/local/share/bash-completion/completions/smemstat
-/usr/local/share/man/man8/smemstat.8.gz
+/usr/local/share/man/man8/smemstat.8.zst

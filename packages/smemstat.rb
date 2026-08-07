@@ -1,31 +1,30 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Smemstat < Package
+class Smemstat < Autotools
   description 'Smemstat reports the physical memory usage taking into consideration shared memory.'
-  homepage 'https://kernel.ubuntu.com/~cking/smemstat/'
-  version '0.02.07'
+  homepage 'https://github.com/ColinIanKing/smemstat'
+  version '0.02.10'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://kernel.ubuntu.com/~cking/tarballs/smemstat/smemstat-0.02.07.tar.xz'
-  source_sha256 'acc17fdd6da92571e73a58bf1512b398cb307b80f46dc196cbb8102e7fb02526'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/ColinIanKing/smemstat.git'
+  git_hashtag "V#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '80549cd181fd79bd9c58462ea5e9b87d5f0c0657093a892803ae3db77980b7cb',
-     armv7l: '80549cd181fd79bd9c58462ea5e9b87d5f0c0657093a892803ae3db77980b7cb',
-       i686: 'b015b51fa07cbaeb7f3f2ae2abcef9a8c425a3f52a3c87c9ad51a4477c5fcf92',
-     x86_64: '80884214345553902dd3bef26011b1381c6f16382df34bbd473ee506ddf81e83'
+    aarch64: '32de67cf01fa86ca7ac325ae46b1a23774bd080e939dd864e9b5b2d66d42db10',
+     armv7l: '32de67cf01fa86ca7ac325ae46b1a23774bd080e939dd864e9b5b2d66d42db10',
+       i686: '66452ce0828149c8af7ba5bdbaf805628c35463cd1aa470f00d7fc5d1a50ba69',
+     x86_64: '441dcdd891898b730436d84a5454ea0bd8916c47c13920c621dc8548ba36f543'
   })
 
-  depends_on 'ncurses'
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'ncurses' => :executable
 
-  def self.build
+  def self.patch
     system "sed -i 's,/usr,#{CREW_PREFIX},g' Makefile"
     system "sed -i '/^CFLAGS += -Wall/s/$/ -I\\/usr\\/local\\/include\\/ncurses/' Makefile"
-    system 'make'
   end
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  autotools_skip_configure
 end
