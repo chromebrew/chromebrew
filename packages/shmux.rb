@@ -1,30 +1,26 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Shmux < Package
+class Shmux < Autotools
   description 'shell multiplexor'
   homepage 'https://github.com/shmux/shmux'
-  version '1.0.2'
+  version '1.0.3'
   license 'shmux'
   compatibility 'all'
-  source_url 'https://github.com/shmux/shmux/archive/v1.0.2.tar.gz'
-  source_sha256 '4b84dc3e0d72d054ed4730d130a509f43441fb61561c11a444d6ee65cbff9c04'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/shmux/shmux.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a8e89a4d6d087c646c5a0050fb09527a15b655838277fda2bcfd4ed37a1c10c5',
-     armv7l: 'a8e89a4d6d087c646c5a0050fb09527a15b655838277fda2bcfd4ed37a1c10c5',
-       i686: '9ae22a86f07497589e2414eee3a8bead32868bef93b4fdd619245c807e9baa82',
-     x86_64: 'b29380a06c522510e36119614187713594a03c39d280b16015a42af336bc126a'
+    aarch64: 'f1a6bb863879f194374339602a44ce89d69f88f5a7c20984b6aad2513fb13205',
+     armv7l: 'f1a6bb863879f194374339602a44ce89d69f88f5a7c20984b6aad2513fb13205',
+       i686: '010a0065b7df8e7cd32423370cdb08392ec9021df6f967d8514b3238fdb4aeb8',
+     x86_64: '107999616941e30d95d756a54fa97dba3dc16d62c8298e50ff3ac47c79e871df'
   })
 
-  depends_on 'pcre'
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'ncurses' => :executable
+  depends_on 'pcre' => :executable
 
-  def self.build
-    system "./configure --prefix=#{CREW_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  autotools_pre_configure_options "CFLAGS='-I#{CREW_PREFIX}/include/ncursesw'"
 end

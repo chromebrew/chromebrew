@@ -3,7 +3,7 @@ require 'package'
 class Rio < Package
   description 'A hardware-accelerated GPU terminal emulator focusing to run in desktops and browsers.'
   homepage 'https://raphamorim.io/rio'
-  version '0.5.10'
+  version '0.5.15'
   license 'MIT'
   compatibility 'x86_64'
   source_url 'https://github.com/raphamorim/rio.git'
@@ -11,7 +11,7 @@ class Rio < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: 'b707b961056c8263540de9bacd944c474188de47090f4d49f87c3a91de150897'
+     x86_64: '5df97014ebb328911aefa479f796a575867733a095a7abcf0a4ec6598ce76c78'
   })
 
   depends_on 'fontconfig' => :executable

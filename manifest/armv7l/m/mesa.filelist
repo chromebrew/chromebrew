@@ -1,4 +1,4 @@
-# Total size: 99955832
+# Total size: 103947075
 /usr/local/include/EGL/eglext_angle.h
 /usr/local/include/EGL/eglmesaext.h
 /usr/local/include/GL/internal/dri_interface.h
@@ -124,7 +124,7 @@
 /usr/local/lib/libGLX_mesa.so
 /usr/local/lib/libGLX_mesa.so.0
 /usr/local/lib/libGLX_mesa.so.0.0.0
-/usr/local/lib/libgallium-26.1.6.so
+/usr/local/lib/libgallium-26.2.0.so
 /usr/local/lib/libgbm.so
 /usr/local/lib/libgbm.so.1
 /usr/local/lib/libgbm.so.1.0.0
@@ -134,7 +134,18 @@
 /usr/local/lib/libvulkan_panfrost.so
 /usr/local/lib/pkgconfig/dri.pc
 /usr/local/lib/pkgconfig/gbm.pc
+/usr/local/share/drirc.d/00-anv-defaults.conf
+/usr/local/share/drirc.d/00-iris-defaults.conf
+/usr/local/share/drirc.d/00-lavapipe-defaults.conf
 /usr/local/share/drirc.d/00-mesa-defaults.conf
+/usr/local/share/drirc.d/00-msm-defaults.conf
+/usr/local/share/drirc.d/00-panfrost-defaults.conf
+/usr/local/share/drirc.d/00-panvk-defaults.conf
+/usr/local/share/drirc.d/00-turnip-defaults.conf
+/usr/local/share/drirc.d/00-v3d-defaults.conf
+/usr/local/share/drirc.d/00-virtio_gpu-defaults.conf
+/usr/local/share/drirc.d/00-vmwgfx-defaults.conf
+/usr/local/share/drirc.d/00-zink-defaults.conf
 /usr/local/share/glvnd/egl_vendor.d/50_mesa.json
 /usr/local/share/vulkan/icd.d/freedreno_icd.armv8l.json
 /usr/local/share/vulkan/icd.d/intel_icd.armv8l.json
