@@ -1,4 +1,4 @@
-# Total size: 2530505472
+# Total size: 2531934113
 /home/chronos/user/.flutter_tool_state
 /usr/local/bin/dart
 /usr/local/bin/flutter
@@ -40,9 +40,9 @@
 /usr/local/share/flutter/.git/logs/refs/remotes/origin/HEAD
 /usr/local/share/flutter/.git/objects/info/commit-graph
 /usr/local/share/flutter/.git/objects/info/packs
-/usr/local/share/flutter/.git/objects/pack/pack-61d148903f33c27655ed8dc04cc59e91563f19d7.idx
-/usr/local/share/flutter/.git/objects/pack/pack-61d148903f33c27655ed8dc04cc59e91563f19d7.pack
-/usr/local/share/flutter/.git/objects/pack/pack-61d148903f33c27655ed8dc04cc59e91563f19d7.rev
+/usr/local/share/flutter/.git/objects/pack/pack-f7e3050b872e9cbcab7e84d7294f908e80a849b4.idx
+/usr/local/share/flutter/.git/objects/pack/pack-f7e3050b872e9cbcab7e84d7294f908e80a849b4.pack
+/usr/local/share/flutter/.git/objects/pack/pack-f7e3050b872e9cbcab7e84d7294f908e80a849b4.rev
 /usr/local/share/flutter/.git/packed-refs
 /usr/local/share/flutter/.git/refs/remotes/origin/HEAD
 /usr/local/share/flutter/.gitattributes
@@ -189,7 +189,10 @@
 /usr/local/share/flutter/.pub-preload-cache/io-1.0.5.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/isolate-2.1.1.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/jni-1.0.0.tar.gz
+/usr/local/share/flutter/.pub-preload-cache/jni-1.0.3.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/jni_flutter-1.0.1.tar.gz
+/usr/local/share/flutter/.pub-preload-cache/jni_flutter-1.0.2.tar.gz
+/usr/local/share/flutter/.pub-preload-cache/jni_util-1.0.0.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/js-0.7.2.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/json_annotation-4.11.0.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/json_annotation-4.12.0.tar.gz

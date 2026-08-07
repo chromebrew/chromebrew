@@ -1,4 +1,4 @@
-# Total size: 7152230
+# Total size: 7410310
 /usr/local/bin/ldapadd
 /usr/local/bin/ldapcompare
 /usr/local/bin/ldapdelete
@@ -21,17 +21,16 @@
 /usr/local/include/ldap_utf8.h
 /usr/local/include/ldif.h
 /usr/local/include/openldap.h
-/usr/local/include/slapi-plugin.h
 /usr/local/lib64/liblber.a
 /usr/local/lib64/liblber.la
 /usr/local/lib64/liblber.so
 /usr/local/lib64/liblber.so.2
-/usr/local/lib64/liblber.so.2.0.200
+/usr/local/lib64/liblber.so.2.0.201
 /usr/local/lib64/libldap.a
 /usr/local/lib64/libldap.la
 /usr/local/lib64/libldap.so
 /usr/local/lib64/libldap.so.2
-/usr/local/lib64/libldap.so.2.0.200
+/usr/local/lib64/libldap.so.2.0.201
 /usr/local/lib64/pkgconfig/lber.pc
 /usr/local/lib64/pkgconfig/ldap.pc
 /usr/local/share/man/man1/ldapadd.1.zst
@@ -242,10 +241,8 @@
 /usr/local/share/man/man5/slapd-monitor.5.zst
 /usr/local/share/man/man5/slapd-null.5.zst
 /usr/local/share/man/man5/slapd-passwd.5.zst
-/usr/local/share/man/man5/slapd-perl.5.zst
 /usr/local/share/man/man5/slapd-relay.5.zst
 /usr/local/share/man/man5/slapd-sock.5.zst
-/usr/local/share/man/man5/slapd-sql.5.zst
 /usr/local/share/man/man5/slapd-wt.5.zst
 /usr/local/share/man/man5/slapd.access.5.zst
 /usr/local/share/man/man5/slapd.backends.5.zst
