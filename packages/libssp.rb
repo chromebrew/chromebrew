@@ -4,21 +4,20 @@ Package.load_package("#{__dir__}/gcc_build.rb")
 class Libssp < Package
   description 'Libssp is a part of the GCC toolkit.'
   homepage 'https://gcc.gnu.org/'
-  version '16.1.0'
+  version '16.2.0'
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   # When upgrading gcc_build, be sure to upgrade gcc_lib, gcc_dev, libssp, and then binutils in tandem.
   puts "#{self} version (#{version}) differs from gcc version #{Gcc_build.version}".orange if version != Gcc_build.version
   compatibility 'all'
   source_url 'https://github.com/gcc-mirror/gcc.git'
-  git_hashtag '69eb1716b884f6213aef30194390d7741af97c80'
-  # git_hashtag "releases/gcc-#{version.split('-').first}"
+  git_hashtag "releases/gcc-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '24d7ef57179d128ecb566388670cc7a893b76f145e17bb48dc298f2f4f614437',
-     armv7l: '24d7ef57179d128ecb566388670cc7a893b76f145e17bb48dc298f2f4f614437',
-       i686: 'c401e05adb5b4fb0e5b61c425d292c35d024155020392a7a4fd3f257ceb37838',
-     x86_64: '5f803a6cc396d677cdb64f4ade69f0f179631baa8f3a55fe2dcc3b5fcbe89661'
+    aarch64: '03db85fca149f24efc52a090b06c0631c9e69a9cfd3448d4b189e17e740c125d',
+     armv7l: '03db85fca149f24efc52a090b06c0631c9e69a9cfd3448d4b189e17e740c125d',
+       i686: '6b52050d6210cdd893abe0a5d04f9eb7136d8992805c4e23042f66bcd92a2f26',
+     x86_64: '059b8bfdc851692286e7c58039d669b7858daef2851c2303ee174c23872bdcbb'
   })
 
   depends_on 'dejagnu' => :build # for test

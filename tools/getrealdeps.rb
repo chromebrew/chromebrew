@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# getrealdeps version 2.18 (for Chromebrew)
+# getrealdeps version 2.20 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 #
 # Dependencies in Chromebrew can be:
@@ -34,6 +34,11 @@ if ARGV.include?('--use-crew-dest-dir')
   @opt_use_crew_dest_dir = true
 end
 
+if ARGV.include?('--print-only')
+  ARGV.delete('--print-only')
+  @opt_print_only = true
+end
+
 # If we're running as a script, exit quickly if an invalid package name is given.
 if __FILE__ == $PROGRAM_NAME && (ARGV[0].nil? || ARGV[0].empty? || ARGV[0].include?('#'))
   puts 'Getrealdeps checks for the runtime dependencies of a package.'
@@ -44,7 +49,7 @@ end
 
 # Search for which packages have a needed library in CREW_LIB_PREFIX.
 def whatprovidesfxn(pkgdepslcl, pkg)
-  packages = `crew whatprovides --no-color "#{CREW_LIB_PREFIX}/#{pkgdepslcl}"`.lines[0...-2].flat_map { it.split(':')[0] }.uniq.sort.join(' ')
+  packages = JSON.parse(`crew whatprovides --no-color "#{CREW_LIB_PREFIX}/#{pkgdepslcl}" --json`.chomp).join(' ')
   # If the package we're finding the dependencies for already provides this file, we don't need any of the packages that provide this file as dependencies.
   return packages.include?(pkg) ? '' : packages
 end
@@ -183,8 +188,8 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
 
   # Only write back sorted dependencies if ARCH.include lines do not
   # appear on or around dependency lines.
-  if `grep -B1 'depends_on ' #{pkg_file}`.chomp.include?('ARCH.include')
-    puts 'Not swapping in this revised dependency block because an ARCH.include line was detected around the block.'.orange
+  if `grep -B1 'depends_on ' #{pkg_file}`.chomp.include?('ARCH.include') || @opt_print_only
+    puts "Not swapping in this revised dependency block #{'because an ARCH.include line was detected around the block.' if `grep -B1 'depends_on ' #{pkg_file}`.chomp.include?('ARCH.include')}.".orange
     puts 'Revised block:'.orange
     puts
     puts pkgdepsblock

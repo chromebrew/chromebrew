@@ -134,7 +134,22 @@ class Package
     end
   end
 
-  def self.load_package(pkg_file, reload = nil)
+  def self.load_package(pkg_file, reload = nil, output_to_null = nil)
+    if output_to_null
+      original_stderr = $stderr.clone
+      original_stdout = $stdout.clone
+      begin
+        $stderr.reopen(File::NULL, 'w')
+      rescue Errno::EACCES
+        Tempfile.create('tmp_stderr') { $stderr.reopen(it.to_path, 'w') }
+      end
+      begin
+        $stdout.reopen(File::NULL, 'w')
+      rescue Errno::EACCES
+        Tempfile.create('tmp_stdout') { $stdout.reopen(it.to_path, 'w') }
+      end
+    end
+
     reload = !reload.nil?
     # self.load_package: load a package under 'Package' class scope
     #
@@ -153,6 +168,11 @@ class Package
 
     @crew_current_package = @crew_current_package.nil? ? pkg_obj.name : @crew_current_package
 
+    # Restore original outputs.
+    if output_to_null
+      $stderr.reopen(original_stderr)
+      $stdout.reopen(original_stdout)
+    end
     return pkg_obj
   end
 

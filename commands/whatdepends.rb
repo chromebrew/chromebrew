@@ -10,7 +10,7 @@ class Command
       puts "#{pkg.lightgreen} is a dependency of:" unless CREW_OUTPUT_JSON
       `grep -lER "depends_on '#{pkg}'" #{File.join(CREW_LOCAL_REPO_ROOT, 'packages/')}/*.rb`.lines(chomp: true).flat_map do |result|
         pkg_name = File.basename(result, '.rb')
-        if PackageUtils.compatible?(Package.load_package(File.join("#{CREW_LOCAL_REPO_ROOT}/packages/", "#{pkg_name}.rb")))
+        if PackageUtils.compatible?(Package.load_package(File.join("#{CREW_LOCAL_REPO_ROOT}/packages/", "#{pkg_name}.rb"), false, true))
           json_depends.push(pkg_name)
           if PackageUtils.installed?(pkg_name)
             puts pkg_name.lightgreen unless CREW_OUTPUT_JSON

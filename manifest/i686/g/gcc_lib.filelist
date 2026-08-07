@@ -1,4 +1,4 @@
-# Total size: 100347624
+# Total size: 100327684
 /usr/local/lib/bfd-plugins/liblto_plugin.so
 /usr/local/lib/gcc/i686-cros-linux-gnu/16/plugin/libcc1plugin.so
 /usr/local/lib/gcc/i686-cros-linux-gnu/16/plugin/libcc1plugin.so.0
@@ -39,9 +39,9 @@
 /usr/local/lib/libquadmath.so.0.0.0
 /usr/local/lib/libstdc++.so
 /usr/local/lib/libstdc++.so.6
-/usr/local/lib/libstdc++.so.6.0.35
+/usr/local/lib/libstdc++.so.6.0.36
 /usr/local/lib/libubsan.so
 /usr/local/lib/libubsan.so.1
 /usr/local/lib/libubsan.so.1.0.0
 /usr/local/libexec/gcc/i686-cros-linux-gnu/16/liblto_plugin.so
-/usr/local/share/gdb/auto-load/usr/lib/libstdc++.so.6.0.35-gdb.py
+/usr/local/share/gdb/auto-load/usr/lib/libstdc++.so.6.0.36-gdb.py
