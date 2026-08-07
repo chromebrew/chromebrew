@@ -20,6 +20,7 @@ class Openldap < Autotools
   depends_on 'e2fsprogs' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'krb5' => :build
   depends_on 'libcyrussasl' => :library
   depends_on 'openssl' => :library
