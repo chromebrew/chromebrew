@@ -14,10 +14,10 @@ class Netavark < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cc26770ad7c96e2088431bd47fd92bc9bd4fb22ad798bcb2b8e678342964e896',
-     armv7l: 'cc26770ad7c96e2088431bd47fd92bc9bd4fb22ad798bcb2b8e678342964e896',
-       i686: '0d8a370aab601a150d959b2b75af7a4bfd488f37d21c727b9481139f3f57d9ae',
-     x86_64: '32c92aba46076831874528d7ab4be3f5337c0a1a1ec028c5a26596b6b7fd3232'
+    aarch64: 'bee7249109091b7dcc49a0765ca5551811c018b9f5fd7e10dd8c1f359ae17c7a',
+     armv7l: 'bee7249109091b7dcc49a0765ca5551811c018b9f5fd7e10dd8c1f359ae17c7a',
+       i686: 'b8dd657ed86d7c78eb1e32ed7571c7492e5591ab19e01ea10b2c1692d70f0a12',
+     x86_64: '33ab84a13892f09e321d01f51db586a6880c999556a8b40e7ddd9714a78129e9'
   })
 
   depends_on 'gcc_lib' => :executable
