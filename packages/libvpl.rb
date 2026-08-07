@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libvpl < CMake
   description 'Intel® Video Processing Library (Intel® VPL) API, dispatcher, and examples'
   homepage 'https://intel.github.io/libvpl/'
-  version '2.17.0'
+  version '2023.4.0'
   license 'MIT'
   compatibility 'x86_64'
   source_url 'https://github.com/intel/libvpl.git'
