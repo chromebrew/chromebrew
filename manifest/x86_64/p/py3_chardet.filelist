@@ -1,13 +1,13 @@
-# Total size: 1888525
+# Total size: 2159077
 /usr/local/bin/chardetect
-/usr/local/lib64/python3.14/site-packages/4ef79d6367bb14396397__mypyc.cpython-314-x86_64-linux-gnu.so
-/usr/local/lib64/python3.14/site-packages/chardet-7.4.3.dist-info/INSTALLER
-/usr/local/lib64/python3.14/site-packages/chardet-7.4.3.dist-info/METADATA
-/usr/local/lib64/python3.14/site-packages/chardet-7.4.3.dist-info/RECORD
-/usr/local/lib64/python3.14/site-packages/chardet-7.4.3.dist-info/REQUESTED
-/usr/local/lib64/python3.14/site-packages/chardet-7.4.3.dist-info/WHEEL
-/usr/local/lib64/python3.14/site-packages/chardet-7.4.3.dist-info/entry_points.txt
-/usr/local/lib64/python3.14/site-packages/chardet-7.4.3.dist-info/licenses/LICENSE
+/usr/local/lib64/python3.14/site-packages/7cf47097c39cf1afcee8__mypyc.cpython-314-x86_64-linux-gnu.so
+/usr/local/lib64/python3.14/site-packages/chardet-7.5.1.dist-info/INSTALLER
+/usr/local/lib64/python3.14/site-packages/chardet-7.5.1.dist-info/METADATA
+/usr/local/lib64/python3.14/site-packages/chardet-7.5.1.dist-info/RECORD
+/usr/local/lib64/python3.14/site-packages/chardet-7.5.1.dist-info/REQUESTED
+/usr/local/lib64/python3.14/site-packages/chardet-7.5.1.dist-info/WHEEL
+/usr/local/lib64/python3.14/site-packages/chardet-7.5.1.dist-info/entry_points.txt
+/usr/local/lib64/python3.14/site-packages/chardet-7.5.1.dist-info/licenses/LICENSE
 /usr/local/lib64/python3.14/site-packages/chardet/__init__.py
 /usr/local/lib64/python3.14/site-packages/chardet/__main__.py
 /usr/local/lib64/python3.14/site-packages/chardet/__pycache__/__init__.cpython-314.pyc
@@ -18,6 +18,8 @@
 /usr/local/lib64/python3.14/site-packages/chardet/__pycache__/detector.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/chardet/__pycache__/enums.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/chardet/__pycache__/equivalences.cpython-314.pyc
+/usr/local/lib64/python3.14/site-packages/chardet/__pycache__/evaluation.cpython-314.pyc
+/usr/local/lib64/python3.14/site-packages/chardet/__pycache__/output_names.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/chardet/__pycache__/registry.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/chardet/__pycache__/universaldetector.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/chardet/_utils.py
@@ -26,13 +28,16 @@
 /usr/local/lib64/python3.14/site-packages/chardet/detector.py
 /usr/local/lib64/python3.14/site-packages/chardet/enums.py
 /usr/local/lib64/python3.14/site-packages/chardet/equivalences.py
+/usr/local/lib64/python3.14/site-packages/chardet/evaluation.py
 /usr/local/lib64/python3.14/site-packages/chardet/models/__init__.cpython-314-x86_64-linux-gnu.so
 /usr/local/lib64/python3.14/site-packages/chardet/models/__init__.py
 /usr/local/lib64/python3.14/site-packages/chardet/models/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/chardet/models/confusion.bin
 /usr/local/lib64/python3.14/site-packages/chardet/models/idf.bin
 /usr/local/lib64/python3.14/site-packages/chardet/models/models.bin
+/usr/local/lib64/python3.14/site-packages/chardet/models/rowmax.bin
 /usr/local/lib64/python3.14/site-packages/chardet/models/training_metadata.yaml
+/usr/local/lib64/python3.14/site-packages/chardet/output_names.py
 /usr/local/lib64/python3.14/site-packages/chardet/pipeline/__init__.py
 /usr/local/lib64/python3.14/site-packages/chardet/pipeline/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/chardet/pipeline/__pycache__/ascii.cpython-314.pyc
@@ -40,9 +45,11 @@
 /usr/local/lib64/python3.14/site-packages/chardet/pipeline/__pycache__/bom.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/chardet/pipeline/__pycache__/confusion.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/chardet/pipeline/__pycache__/escape.cpython-314.pyc
+/usr/local/lib64/python3.14/site-packages/chardet/pipeline/__pycache__/language.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/chardet/pipeline/__pycache__/magic.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/chardet/pipeline/__pycache__/markup.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/chardet/pipeline/__pycache__/orchestrator.cpython-314.pyc
+/usr/local/lib64/python3.14/site-packages/chardet/pipeline/__pycache__/postprocess.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/chardet/pipeline/__pycache__/statistical.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/chardet/pipeline/__pycache__/structural.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/chardet/pipeline/__pycache__/utf1632.cpython-314.pyc
@@ -56,11 +63,15 @@
 /usr/local/lib64/python3.14/site-packages/chardet/pipeline/confusion.py
 /usr/local/lib64/python3.14/site-packages/chardet/pipeline/escape.cpython-314-x86_64-linux-gnu.so
 /usr/local/lib64/python3.14/site-packages/chardet/pipeline/escape.py
+/usr/local/lib64/python3.14/site-packages/chardet/pipeline/language.cpython-314-x86_64-linux-gnu.so
+/usr/local/lib64/python3.14/site-packages/chardet/pipeline/language.py
 /usr/local/lib64/python3.14/site-packages/chardet/pipeline/magic.cpython-314-x86_64-linux-gnu.so
 /usr/local/lib64/python3.14/site-packages/chardet/pipeline/magic.py
 /usr/local/lib64/python3.14/site-packages/chardet/pipeline/markup.py
 /usr/local/lib64/python3.14/site-packages/chardet/pipeline/orchestrator.cpython-314-x86_64-linux-gnu.so
 /usr/local/lib64/python3.14/site-packages/chardet/pipeline/orchestrator.py
+/usr/local/lib64/python3.14/site-packages/chardet/pipeline/postprocess.cpython-314-x86_64-linux-gnu.so
+/usr/local/lib64/python3.14/site-packages/chardet/pipeline/postprocess.py
 /usr/local/lib64/python3.14/site-packages/chardet/pipeline/statistical.cpython-314-x86_64-linux-gnu.so
 /usr/local/lib64/python3.14/site-packages/chardet/pipeline/statistical.py
 /usr/local/lib64/python3.14/site-packages/chardet/pipeline/structural.cpython-314-x86_64-linux-gnu.so
