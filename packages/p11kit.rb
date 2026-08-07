@@ -11,10 +11,10 @@ class P11kit < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5c986075d71533b2827618a4bc543db138ba4c20eea937de60a41078c41f9770',
-     armv7l: '5c986075d71533b2827618a4bc543db138ba4c20eea937de60a41078c41f9770',
-       i686: '415cc14794bf01ae62d4deea8975ae228cf3ceaaf04ccde7b35079880e13bf71',
-     x86_64: 'b8b4b2d97c8176768b4e7c91b2e8bac4f84e387973a0460db7c121d9ebe3efe8'
+    aarch64: 'd4587a59bbef8ea59341e0f2dfadee3883a9c9aa00b7e181554a77d0024110ea',
+     armv7l: 'd4587a59bbef8ea59341e0f2dfadee3883a9c9aa00b7e181554a77d0024110ea',
+       i686: '010642bb6d150d975fe8d3e5545ff60a0e5d5cb8142420d2987dd7b592688aa2',
+     x86_64: '8b380a51204b5a4d0ee2f289f8cadbb9d743821d54feff2f9098fa02c2ce6e43'
   })
 
   depends_on 'gcc_lib' # R
