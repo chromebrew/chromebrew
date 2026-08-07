@@ -218,7 +218,6 @@ def determine_dependencies(pkg_name, pkgfiles_to_check)
     FileUtils.mkdir_p("/tmp/deps/#{pkg_name}/")
     `readelf -d "#{i}" 2>/dev/null | #{@grep} NEEDED | awk '{print $5}' | sed 's/\\[//g' | sed 's/\\]//g' | awk '!x[$0]++' | tee /tmp/deps/#{pkg_name}/#{File.basename(i)}`
   end
-
   pkgdepsfiles = pkgdepsfiles.map do |filedeps|
     filedeps&.split("\n")
   end.flatten.compact.uniq

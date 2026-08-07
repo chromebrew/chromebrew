@@ -160,7 +160,6 @@ def update_deps(pkg)
   unless CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES
     # Update package dependencies.
     if PackageUtils.compatible?(pkg)
-      puts "tools/getrealdeps.rb #{pkg.name}".lightblue
       Kernel.system "tools/getrealdeps.rb #{pkg.name}"
     else
       puts PackageUtils.incompatible_reason(pkg).join("\n").orange
