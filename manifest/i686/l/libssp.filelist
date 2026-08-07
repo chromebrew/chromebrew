@@ -1,8 +1,8 @@
 # Total size: 50527
-/usr/local/lib/gcc/i686-cros-linux-gnu/15/include/ssp/ssp.h
-/usr/local/lib/gcc/i686-cros-linux-gnu/15/include/ssp/stdio.h
-/usr/local/lib/gcc/i686-cros-linux-gnu/15/include/ssp/string.h
-/usr/local/lib/gcc/i686-cros-linux-gnu/15/include/ssp/unistd.h
+/usr/local/lib/gcc/i686-cros-linux-gnu/16/include/ssp/ssp.h
+/usr/local/lib/gcc/i686-cros-linux-gnu/16/include/ssp/stdio.h
+/usr/local/lib/gcc/i686-cros-linux-gnu/16/include/ssp/string.h
+/usr/local/lib/gcc/i686-cros-linux-gnu/16/include/ssp/unistd.h
 /usr/local/lib/libssp.a
 /usr/local/lib/libssp.la
 /usr/local/lib/libssp.so
