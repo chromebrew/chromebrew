@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# getrealdeps version 2.19 (for Chromebrew)
+# getrealdeps version 2.20 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 #
 # Dependencies in Chromebrew can be:
@@ -49,7 +49,7 @@ end
 
 # Search for which packages have a needed library in CREW_LIB_PREFIX.
 def whatprovidesfxn(pkgdepslcl, pkg)
-  packages = `crew whatprovides --no-color "#{CREW_LIB_PREFIX}/#{pkgdepslcl}"`.lines[0...-2].flat_map { it.split(':')[0] }.uniq.sort.join(' ')
+  packages = JSON.parse(`crew whatprovides --no-color "#{CREW_LIB_PREFIX}/#{pkgdepslcl}" --json`.chomp).join(' ')
   # If the package we're finding the dependencies for already provides this file, we don't need any of the packages that provide this file as dependencies.
   return packages.include?(pkg) ? '' : packages
 end
@@ -218,6 +218,7 @@ def determine_dependencies(pkg_name, pkgfiles_to_check)
     FileUtils.mkdir_p("/tmp/deps/#{pkg_name}/")
     `readelf -d "#{i}" 2>/dev/null | #{@grep} NEEDED | awk '{print $5}' | sed 's/\\[//g' | sed 's/\\]//g' | awk '!x[$0]++' | tee /tmp/deps/#{pkg_name}/#{File.basename(i)}`
   end
+
   pkgdepsfiles = pkgdepsfiles.map do |filedeps|
     filedeps&.split("\n")
   end.flatten.compact.uniq
@@ -225,36 +226,21 @@ def determine_dependencies(pkg_name, pkgfiles_to_check)
   # Figure out which Chromebrew packages provide the relevant deps.
   pkgdeps = pkgdepsfiles.map { |file| whatprovidesfxn(file, pkg_name) }
 
-  puts "#{__LINE__} - pkgdeps:".lightred
-  puts pkgdeps
-
   # Split any multi-dependency strings into individual array members.
   pkgdeps = pkgdeps.flat_map(&:split).uniq
-
-  puts "#{__LINE__} - pkgdeps:".lightred
-  puts pkgdeps
 
   # Massage the glibc entries in the dependency list.
   pkgdeps = pkgdeps.map { |i| i.gsub(/glibc_build.*/, 'glibc') }.uniq
   pkgdeps = pkgdeps.map { |i| i.gsub('glibc_fallthrough', 'glibc') }.uniq
   pkgdeps = pkgdeps.map { |i| i.gsub(/glibc_lib.*/, 'glibc_lib') }.uniq.map(&:strip).reject(&:empty?)
 
-  puts "#{__LINE__} - pkgdeps:".lightred
-  puts pkgdeps
-
   # Massage the gcc entries in the dependency list.
   pkgdeps = pkgdeps.map { |i| i.gsub('gcc_build', 'gcc_lib') }.uniq
-
-  puts "#{__LINE__} - pkgdeps:".lightred
-  puts pkgdeps
 
   # Massage the llvm entries in the dependency list.
   pkgdeps = pkgdeps.map { |i| i.gsub(/llvm(\d)+_build/, 'llvm_lib') }.uniq
   pkgdeps = pkgdeps.map { |i| i.gsub(/llvm(\d)+_lib/, 'llvm_lib') }.uniq
   pkgdeps = pkgdeps.map { |i| i.gsub(/llvm(\d)+_dev/, 'llvm_dev') }.uniq
-
-  puts "#{__LINE__} - pkgdeps:".lightred
-  puts pkgdeps
 
   # If two packages both provide a library, use the regular one unless this is the specific package that needs the alternative.
   # TODO: Are there more packages like this?
@@ -266,14 +252,8 @@ def determine_dependencies(pkg_name, pkgfiles_to_check)
   pkgdeps = pkgdeps.map { |i| i.gsub(/^vdev$/, 'eudev') }.uniq
   pkgdeps = pkgdeps.map { |i| i.gsub('libudev_stub', 'eudev') }.uniq
 
-  puts "#{__LINE__} - pkgdeps:".lightred
-  puts pkgdeps
-
   # Split any multi-dependency strings into individual array members.
   pkgdeps = pkgdeps.flat_map(&:split).uniq
-
-  puts "#{__LINE__} - pkgdeps:".lightred
-  puts pkgdeps
 
   if pkgdeps.blank?
     return []
