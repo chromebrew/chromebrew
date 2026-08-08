@@ -1,27 +1,24 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Snooze < Package
+class Snooze < Autotools
   description 'run a command at a particular time'
   homepage 'https://github.com/leahneukirchen/snooze'
-  version '0.2'
+  version '0.5.1'
   license 'public-domain'
   compatibility 'all'
-  source_url 'https://github.com/leahneukirchen/snooze/archive/v0.2.tar.gz'
-  source_sha256 '69242bb1534b11b569dfd1535aca20e3e6be95c6285aff1ccf612b2a9f906a1a'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/leahneukirchen/snooze.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'dfe815eda42dd1c734ca9845ec5530615c1ed61a1961f50237375d4c09df57e8',
-     armv7l: 'dfe815eda42dd1c734ca9845ec5530615c1ed61a1961f50237375d4c09df57e8',
-       i686: 'b2f9d6e8fe497182d763f1b300185dc01a5af6fb90b69415aa4d16cae035319c',
-     x86_64: '0e8ecfdc763b5f721e68fbc4b925139a4f023c8fc4e576bd325e5819a83b6acd'
+    aarch64: 'f48d06febfefcc412dbeb9f73a64e77b42ab190b24b81d0a88cf2e2cba745502',
+     armv7l: 'f48d06febfefcc412dbeb9f73a64e77b42ab190b24b81d0a88cf2e2cba745502',
+       i686: '5c5c33c134230a1e38f03e956993e257ee2fed4210286e4b48e3b3cc92e44599',
+     x86_64: 'b4516653203371b802e40dc6d428be3e11800b87646f06aa9d1e4cffc328dfb4'
   })
 
-  def self.build
-    system 'make', "PREFIX=#{CREW_PREFIX}"
-  end
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  autotools_skip_configure
 end
