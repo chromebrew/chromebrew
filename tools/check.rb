@@ -837,11 +837,6 @@ task :netcat do
                 rest: ''
 end
 
-desc 'Check for new version of nethack4'
-task :nethack4 do
-  puts 'manual check because of page structure'
-end
-
 desc 'Check for new version of nettle'
 task :nettle do
   check_version pkg_name: 'nettle',
