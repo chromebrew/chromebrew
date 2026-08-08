@@ -14,9 +14,9 @@ class Crun < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '08a77ac558a26273356753fc9af72fe1f3065a2d36cfe5c23e131357827eccaf',
-     armv7l: '08a77ac558a26273356753fc9af72fe1f3065a2d36cfe5c23e131357827eccaf',
-     x86_64: '1f0570508295afd42566cc65ac9bf43764003170c72800e93fb6e8d5fa08cb38'
+    aarch64: 'c062646e3b24dd64d4f35fec7f1859dafdf55cfe364dd5f92963a10531d63f9b',
+     armv7l: 'c062646e3b24dd64d4f35fec7f1859dafdf55cfe364dd5f92963a10531d63f9b',
+     x86_64: '42849f2a4b65fbcf6163375b4e71cac7d24b7782172e5faffd740c803dd3cd7f'
   })
 
   depends_on 'criu' if ARCH.eql?('x86_64')
