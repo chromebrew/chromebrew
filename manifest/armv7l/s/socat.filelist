@@ -1,5 +1,10 @@
-# Total size: 667655
+# Total size: 494074
 /usr/local/bin/filan
 /usr/local/bin/procan
 /usr/local/bin/socat
+/usr/local/bin/socat-broker.sh
+/usr/local/bin/socat-chain.sh
+/usr/local/bin/socat-mux.sh
+/usr/local/bin/socat1
 /usr/local/share/man/man1/socat.1.zst
+/usr/local/share/man/man1/socat1.1.zst

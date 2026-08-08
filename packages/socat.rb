@@ -1,32 +1,25 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Socat < Package
+class Socat < Autotools
   description 'SOcket CAT is a multipurpose relay \'netcat++\' (extended design, new implementation).'
   homepage 'http://www.dest-unreach.org/socat/'
-  version '1.7.4.4'
+  version '1.8.1.3'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'http://www.dest-unreach.org/socat/download/socat-1.7.4.4.tar.gz'
-  source_sha256 '0f8f4b9d5c60b8c53d17b60d79ababc4a0f51b3bb6d2bd3ae8a6a4b9d68f195e'
+  source_url "http://www.dest-unreach.org/socat/download/socat-#{version}.tar.gz"
+  source_sha256 '06602ffd591e98c75b3dc1d66f0f19136cc666b0b2d95caad987d6ab2cb28097'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '76d9e400d0574e6200cee7c4c9743b2a78f1e64d3f59a2ca7beb41a697a9e49d',
-     armv7l: '76d9e400d0574e6200cee7c4c9743b2a78f1e64d3f59a2ca7beb41a697a9e49d',
-       i686: '315b412cafa133fed17c0fff71ad16813eea35f4ce29f59489d7378e5d8f72c9',
-     x86_64: '44b495a05a294d69bca119e9d4efc9c5e81de85baa5f3c87f431701cbafd55b2'
+    aarch64: '0a4f9fd3a724cab56181d8154dad9533a24aafd978530bf4a541e1611adb4b81',
+     armv7l: '0a4f9fd3a724cab56181d8154dad9533a24aafd978530bf4a541e1611adb4b81',
+       i686: '7c1452afa2d1c9b4ce800f27e46662ca32858b276fa4a6e0bd9871a92734d342',
+     x86_64: '279800e2e40f55e111718948b7607e416aec3ad6f3def2f29b0258f97a70a8ed'
   })
 
-  depends_on 'readline'
-  depends_on 'openssl'
-  depends_on 'glibc' # R
-
-  def self.build
-    system './configure'
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'openssl' => :executable
+  depends_on 'readline' => :executable
+  depends_on 'tcpwrappers' => :executable
 end
