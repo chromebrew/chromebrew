@@ -17,10 +17,14 @@ class Sqlitebrowser < Package
      x86_64: 'b4213ade6b79ad9a03f2062c08dfde249009f0de6115b94e15b37edfc087949e'
   })
 
-  depends_on 'gcc_lib' # R
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'qt5_base'
+  depends_on 'qt5_base' => :executable
   depends_on 'sommelier' => :logical
   depends_on 'sqlite'
+  depends_on 'sqlite' => :executable
 
   def self.build
     system 'cmake',
