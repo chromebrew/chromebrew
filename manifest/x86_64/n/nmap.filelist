@@ -1,4 +1,4 @@
-# Total size: 34207432
+# Total size: 34375381
 /usr/local/bin/ncat
 /usr/local/bin/ndiff
 /usr/local/bin/nmap
@@ -67,6 +67,7 @@
 /usr/local/lib/python3.14/site-packages/radialnet/gui/__pycache__/SaveDialog.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/radialnet/gui/__pycache__/Toolbar.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/radialnet/gui/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/radialnet/share/sample/nmap_example.xml
 /usr/local/lib/python3.14/site-packages/radialnet/util/__init__.py
 /usr/local/lib/python3.14/site-packages/radialnet/util/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/radialnet/util/__pycache__/drawing.cpython-314.pyc
@@ -77,16 +78,16 @@
 /usr/local/lib/python3.14/site-packages/radialnet/util/geometry.py
 /usr/local/lib/python3.14/site-packages/radialnet/util/integration.py
 /usr/local/lib/python3.14/site-packages/radialnet/util/misc.py
-/usr/local/lib/python3.14/site-packages/zenmap-7.99.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/zenmap-7.99.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/zenmap-7.99.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/zenmap-7.99.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/zenmap-7.99.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/zenmap-7.99.dist-info/direct_url.json
-/usr/local/lib/python3.14/site-packages/zenmap-7.99.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/zenmap-7.99.dist-info/licenses/COPYING_HIGWIDGETS
-/usr/local/lib/python3.14/site-packages/zenmap-7.99.dist-info/licenses/LICENSE
-/usr/local/lib/python3.14/site-packages/zenmap-7.99.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/zenmap-7.991.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/zenmap-7.991.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/zenmap-7.991.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/zenmap-7.991.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/zenmap-7.991.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/zenmap-7.991.dist-info/direct_url.json
+/usr/local/lib/python3.14/site-packages/zenmap-7.991.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/zenmap-7.991.dist-info/licenses/COPYING_HIGWIDGETS
+/usr/local/lib/python3.14/site-packages/zenmap-7.991.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/zenmap-7.991.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/zenmapCore/BasePaths.py
 /usr/local/lib/python3.14/site-packages/zenmapCore/DelayedObject.py
 /usr/local/lib/python3.14/site-packages/zenmapCore/Diff.py
@@ -739,7 +740,6 @@
 /usr/local/share/nmap/scripts/hbase-region-info.nse
 /usr/local/share/nmap/scripts/hddtemp-info.nse
 /usr/local/share/nmap/scripts/hnap-info.nse
-/usr/local/share/nmap/scripts/hostmap-bfk.nse
 /usr/local/share/nmap/scripts/hostmap-crtsh.nse
 /usr/local/share/nmap/scripts/hostmap-robtex.nse
 /usr/local/share/nmap/scripts/http-adobe-coldfusion-apsa1301.nse

@@ -14,9 +14,9 @@ class Nmap < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5490359e88b56430b60a59f4c45b929e38d69a3b8b0595042557e5b5ec264f84',
-     armv7l: '5490359e88b56430b60a59f4c45b929e38d69a3b8b0595042557e5b5ec264f84',
-     x86_64: 'd58f72d2f005ea01ba0f2f9b38f0c6707dda6baadfb6240ebb04e4a8aa0724da'
+    aarch64: '8aa330812813dc85cff8f41ceab948127999bd55f2d5590e0e28cb122a8290da',
+     armv7l: '8aa330812813dc85cff8f41ceab948127999bd55f2d5590e0e28cb122a8290da',
+     x86_64: '15051191f5dd28ed098ea2e7876e4185c77e1f258141c6362a8ec0a4f47c28b0'
   })
 
   depends_on 'cairo' => :library
