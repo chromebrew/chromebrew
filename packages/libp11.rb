@@ -11,10 +11,10 @@ class Libp11 < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1ec82ad29ec5f69d69ed11cab8c653d53b533c9b232dcad7eba426e18cfe0a10',
-     armv7l: '1ec82ad29ec5f69d69ed11cab8c653d53b533c9b232dcad7eba426e18cfe0a10',
-       i686: '7978240f15d99f9c472805ad39f74424f9099e8387ec7f08eb89d3ada20359dc',
-     x86_64: '83d7a908743e884d0839eaad3ad86f16cada8984eefbb0932d845fdb6a4ea100'
+    aarch64: 'c35587a9a938f47a9f329ae10789c197ec94d1a17f774b8e39f444c65ccc4803',
+     armv7l: 'c35587a9a938f47a9f329ae10789c197ec94d1a17f774b8e39f444c65ccc4803',
+       i686: 'c1c566f74c4748834f2d6804726808bb62d093fb6af8a29f8fa173e0182edbf7',
+     x86_64: '6abe2ffa009f4d22c856edf6380440f9c21531f2d4d356779176e6b052d54e01'
   })
 
   depends_on 'glibc' => :library
