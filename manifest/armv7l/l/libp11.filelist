@@ -1,4 +1,4 @@
-# Total size: 1206738
+# Total size: 1364209
 /usr/local/include/config.h
 /usr/local/include/eng_err.h
 /usr/local/include/engine.h
@@ -17,7 +17,7 @@
 /usr/local/lib/libp11.la
 /usr/local/lib/libp11.so
 /usr/local/lib/libp11.so.3
-/usr/local/lib/libp11.so.3.8.0
+/usr/local/lib/libp11.so.3.9.0
 /usr/local/lib/ossl-modules/libpkcs11.so
 /usr/local/lib/ossl-modules/pkcs11prov.la
 /usr/local/lib/ossl-modules/pkcs11prov.so
