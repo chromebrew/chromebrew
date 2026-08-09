@@ -22,6 +22,7 @@ class Libnfs < Autotools
   depends_on 'glibc_lib' => :library
   depends_on 'gmp' => :executable
   depends_on 'gnutls' => :executable
+  depends_on 'gnutls' => :library
   depends_on 'krb5' => :library
   depends_on 'libidn2' => :executable
   depends_on 'libtasn1' => :executable
