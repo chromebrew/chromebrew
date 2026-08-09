@@ -6,17 +6,17 @@ require 'buildsystems/autotools'
 class Nmap < Autotools
   description 'Utility for network discovery and security auditing'
   homepage 'https://nmap.org/'
-  version '7.99'
+  version '7.991'
   license 'GPL2'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://nmap.org/dist/nmap-#{version}.tar.bz2"
-  source_sha256 'df512492ffd108e53a27a06f26d8635bbe89e0e569455dc8ffef058c035d51b2'
+  source_sha256 'a5d507f29437bef3bedd4771ff9aaa8fc1c2a109ddba1f5b1cf12027456929be'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5490359e88b56430b60a59f4c45b929e38d69a3b8b0595042557e5b5ec264f84',
-     armv7l: '5490359e88b56430b60a59f4c45b929e38d69a3b8b0595042557e5b5ec264f84',
-     x86_64: 'd58f72d2f005ea01ba0f2f9b38f0c6707dda6baadfb6240ebb04e4a8aa0724da'
+    aarch64: '8aa330812813dc85cff8f41ceab948127999bd55f2d5590e0e28cb122a8290da',
+     armv7l: '8aa330812813dc85cff8f41ceab948127999bd55f2d5590e0e28cb122a8290da',
+     x86_64: '15051191f5dd28ed098ea2e7876e4185c77e1f258141c6362a8ec0a4f47c28b0'
   })
 
   depends_on 'cairo' => :library
