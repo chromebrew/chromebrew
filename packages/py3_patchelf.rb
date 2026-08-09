@@ -16,8 +16,9 @@ class Py3_patchelf < Pip
      x86_64: '1b84db6663f4ef56cc92eb69b65dbdb261aa03630d8590b4a369dd99636799f9'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'python3'
   depends_on 'python3' => :logical
 
