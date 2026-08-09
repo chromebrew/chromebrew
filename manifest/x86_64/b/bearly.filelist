@@ -1,4 +1,4 @@
-# Total size: 380945258
+# Total size: 391264074
 /usr/local/bin/bearly
 /usr/local/share/applications/bearly.desktop
 /usr/local/share/bearly/AppRun
@@ -76,7 +76,7 @@
 /usr/local/share/bearly/resources/app-update.yml
 /usr/local/share/bearly/resources/app.asar
 /usr/local/share/bearly/resources/dist/pages/cantLoad.html
-/usr/local/share/bearly/resources/dist/pages/icon-text-logo.svg
+/usr/local/share/bearly/resources/dist/pages/logo-icon.svg
 /usr/local/share/bearly/resources/extraResources/IconTemplate.png
 /usr/local/share/bearly/resources/extraResources/IconTemplate@2x.png
 /usr/local/share/bearly/snapshot_blob.bin
