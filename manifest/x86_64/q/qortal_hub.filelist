@@ -1,4 +1,4 @@
-# Total size: 377926005
+# Total size: 465914684
 /usr/local/bin/qortal-hub
 /usr/local/share/applications/qortal-hub.desktop
 /usr/local/share/icons/hicolor/1024x1024/apps/qortal-hub.png
@@ -87,6 +87,25 @@
 /usr/local/share/qortal_hub/resources/app-update.yml
 /usr/local/share/qortal_hub/resources/app.asar
 /usr/local/share/qortal_hub/resources/app.asar.unpacked/build/src/ed25519-verify.worker.js
+/usr/local/share/qortal_hub/resources/app.asar.unpacked/build/src/reticulum-chat.worker.js
+/usr/local/share/qortal_hub/resources/app.asar.unpacked/build/src/reticulum-media.worker.js
+/usr/local/share/qortal_hub/resources/app.asar.unpacked/build/src/reticulum-resource.worker.js
+/usr/local/share/qortal_hub/resources/app.asar.unpacked/node_modules/@img/sharp-libvips-linux-x64/lib/glib-2.0/include/glibconfig.h
+/usr/local/share/qortal_hub/resources/app.asar.unpacked/node_modules/@img/sharp-libvips-linux-x64/lib/index.js
+/usr/local/share/qortal_hub/resources/app.asar.unpacked/node_modules/@img/sharp-libvips-linux-x64/lib/libvips-cpp.so.8.17.3
+/usr/local/share/qortal_hub/resources/app.asar.unpacked/node_modules/@img/sharp-libvips-linux-x64/package.json
+/usr/local/share/qortal_hub/resources/app.asar.unpacked/node_modules/@img/sharp-libvips-linux-x64/versions.json
+/usr/local/share/qortal_hub/resources/app.asar.unpacked/node_modules/@img/sharp-libvips-linuxmusl-x64/lib/glib-2.0/include/glibconfig.h
+/usr/local/share/qortal_hub/resources/app.asar.unpacked/node_modules/@img/sharp-libvips-linuxmusl-x64/lib/index.js
+/usr/local/share/qortal_hub/resources/app.asar.unpacked/node_modules/@img/sharp-libvips-linuxmusl-x64/lib/libvips-cpp.so.8.17.3
+/usr/local/share/qortal_hub/resources/app.asar.unpacked/node_modules/@img/sharp-libvips-linuxmusl-x64/package.json
+/usr/local/share/qortal_hub/resources/app.asar.unpacked/node_modules/@img/sharp-libvips-linuxmusl-x64/versions.json
+/usr/local/share/qortal_hub/resources/app.asar.unpacked/node_modules/@img/sharp-linux-x64/LICENSE
+/usr/local/share/qortal_hub/resources/app.asar.unpacked/node_modules/@img/sharp-linux-x64/lib/sharp-linux-x64.node
+/usr/local/share/qortal_hub/resources/app.asar.unpacked/node_modules/@img/sharp-linux-x64/package.json
+/usr/local/share/qortal_hub/resources/app.asar.unpacked/node_modules/@img/sharp-linuxmusl-x64/LICENSE
+/usr/local/share/qortal_hub/resources/app.asar.unpacked/node_modules/@img/sharp-linuxmusl-x64/lib/sharp-linuxmusl-x64.node
+/usr/local/share/qortal_hub/resources/app.asar.unpacked/node_modules/@img/sharp-linuxmusl-x64/package.json
 /usr/local/share/qortal_hub/resources/app.asar.unpacked/node_modules/better-sqlite3/LICENSE
 /usr/local/share/qortal_hub/resources/app.asar.unpacked/node_modules/better-sqlite3/build/Release/better_sqlite3.node
 /usr/local/share/qortal_hub/resources/app.asar.unpacked/node_modules/better-sqlite3/deps/common.gypi
@@ -135,13 +154,21 @@
 /usr/local/share/qortal_hub/resources/app.asar.unpacked/node_modules/better-sqlite3/src/util/macros.cpp
 /usr/local/share/qortal_hub/resources/app.asar.unpacked/node_modules/better-sqlite3/src/util/query-macros.cpp
 /usr/local/share/qortal_hub/resources/app.asar.unpacked/node_modules/better-sqlite3/src/util/row-builder.cpp
+/usr/local/share/qortal_hub/resources/app.asar.unpacked/node_modules/bindings/LICENSE.md
+/usr/local/share/qortal_hub/resources/app.asar.unpacked/node_modules/bindings/bindings.js
+/usr/local/share/qortal_hub/resources/app.asar.unpacked/node_modules/bindings/package.json
+/usr/local/share/qortal_hub/resources/app.asar.unpacked/node_modules/file-uri-to-path/History.md
+/usr/local/share/qortal_hub/resources/app.asar.unpacked/node_modules/file-uri-to-path/LICENSE
+/usr/local/share/qortal_hub/resources/app.asar.unpacked/node_modules/file-uri-to-path/index.js
+/usr/local/share/qortal_hub/resources/app.asar.unpacked/node_modules/file-uri-to-path/package.json
 /usr/local/share/qortal_hub/resources/reticulum/BUNDLE_READY
 /usr/local/share/qortal_hub/resources/reticulum/README.md
-/usr/local/share/qortal_hub/resources/reticulum/__pycache__/presence_bridge.cpython-312.pyc
 /usr/local/share/qortal_hub/resources/reticulum/mesh-network.identity
 /usr/local/share/qortal_hub/resources/reticulum/mesh-network.passphrase
 /usr/local/share/qortal_hub/resources/reticulum/presence_bridge
 /usr/local/share/qortal_hub/resources/reticulum/presence_bridge.py
+/usr/local/share/qortal_hub/resources/reticulum/qortalland_games.py
+/usr/local/share/qortal_hub/resources/reticulum/qortalland_proximity.py
 /usr/local/share/qortal_hub/resources/reticulum/rnsd
 /usr/local/share/qortal_hub/snapshot_blob.bin
 /usr/local/share/qortal_hub/usr/lib/libXss.so.1
