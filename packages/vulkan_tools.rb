@@ -14,9 +14,9 @@ class Vulkan_tools < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '818b344c2d5e7af783c073bae3cbe0cd2a9567b85c449faf1dc10fc55d772979',
-     armv7l: '818b344c2d5e7af783c073bae3cbe0cd2a9567b85c449faf1dc10fc55d772979',
-     x86_64: 'b451b2d0c543eb87211328dc7885d5da6080fd8816d660fe5c00712bd5d938ab'
+    aarch64: '6a7f0a4e2ab177a90e2ced5f33b29db41828eefe00b0a8b366068994428ffd05',
+     armv7l: '6a7f0a4e2ab177a90e2ced5f33b29db41828eefe00b0a8b366068994428ffd05',
+     x86_64: '6e7b893237c73f39b412a60d4cdd9b3087866fbc4d32dd6dc9b1a2799937602c'
   })
 
   depends_on 'gcc_dev' => :build
