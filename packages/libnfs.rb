@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Libnfs < Autotools
   description 'client library for accessing NFS shares'
   homepage 'https://github.com/sahlberg/libnfs'
-  version '6.0.2'
+  version '7.0.0'
   compatibility 'all'
   license 'GPL-3, LGPL-2.1 and BSD'
   source_url 'https://github.com/sahlberg/libnfs.git'
