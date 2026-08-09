@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Libp11 < Autotools
   description 'PKCS#11 wrapper library'
   homepage 'https://github.com/OpenSC/libp11'
-  version '0.4.19'
+  version '0.4.20'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://github.com/OpenSC/libp11.git'
