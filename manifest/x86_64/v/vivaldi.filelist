@@ -1,4 +1,4 @@
-# Total size: 458948352
+# Total size: 454732703
 /usr/local/bin/vivaldi
 /usr/local/bin/vivaldi-stable
 /usr/local/etc/cron.daily/vivaldi
@@ -17,6 +17,7 @@
 /usr/local/share/vivaldi/MEIPreload/preloaded_data.pb
 /usr/local/share/vivaldi/PrivacySandboxAttestationsPreloaded/manifest.json
 /usr/local/share/vivaldi/PrivacySandboxAttestationsPreloaded/privacy-sandbox-attestations.dat
+/usr/local/share/vivaldi/apparmor.d/vivaldi-stable
 /usr/local/share/vivaldi/chrome_crashpad_handler
 /usr/local/share/vivaldi/cron/vivaldi
 /usr/local/share/vivaldi/libEGL.so
@@ -38,14 +39,6 @@
 /usr/local/share/vivaldi/locales/ar_FEMININE.pak
 /usr/local/share/vivaldi/locales/ar_MASCULINE.pak
 /usr/local/share/vivaldi/locales/ar_NEUTER.pak
-/usr/local/share/vivaldi/locales/az.pak
-/usr/local/share/vivaldi/locales/az_FEMININE.pak
-/usr/local/share/vivaldi/locales/az_MASCULINE.pak
-/usr/local/share/vivaldi/locales/az_NEUTER.pak
-/usr/local/share/vivaldi/locales/be.pak
-/usr/local/share/vivaldi/locales/be_FEMININE.pak
-/usr/local/share/vivaldi/locales/be_MASCULINE.pak
-/usr/local/share/vivaldi/locales/be_NEUTER.pak
 /usr/local/share/vivaldi/locales/bg.pak
 /usr/local/share/vivaldi/locales/bg_FEMININE.pak
 /usr/local/share/vivaldi/locales/bg_MASCULINE.pak
@@ -110,10 +103,6 @@
 /usr/local/share/vivaldi/locales/et_FEMININE.pak
 /usr/local/share/vivaldi/locales/et_MASCULINE.pak
 /usr/local/share/vivaldi/locales/et_NEUTER.pak
-/usr/local/share/vivaldi/locales/eu.pak
-/usr/local/share/vivaldi/locales/eu_FEMININE.pak
-/usr/local/share/vivaldi/locales/eu_MASCULINE.pak
-/usr/local/share/vivaldi/locales/eu_NEUTER.pak
 /usr/local/share/vivaldi/locales/fa.pak
 /usr/local/share/vivaldi/locales/fa_FEMININE.pak
 /usr/local/share/vivaldi/locales/fa_MASCULINE.pak
@@ -138,10 +127,6 @@
 /usr/local/share/vivaldi/locales/gd_FEMININE.pak
 /usr/local/share/vivaldi/locales/gd_MASCULINE.pak
 /usr/local/share/vivaldi/locales/gd_NEUTER.pak
-/usr/local/share/vivaldi/locales/gl.pak
-/usr/local/share/vivaldi/locales/gl_FEMININE.pak
-/usr/local/share/vivaldi/locales/gl_MASCULINE.pak
-/usr/local/share/vivaldi/locales/gl_NEUTER.pak
 /usr/local/share/vivaldi/locales/gu.pak
 /usr/local/share/vivaldi/locales/gu_FEMININE.pak
 /usr/local/share/vivaldi/locales/gu_MASCULINE.pak
@@ -162,10 +147,6 @@
 /usr/local/share/vivaldi/locales/hu_FEMININE.pak
 /usr/local/share/vivaldi/locales/hu_MASCULINE.pak
 /usr/local/share/vivaldi/locales/hu_NEUTER.pak
-/usr/local/share/vivaldi/locales/hy.pak
-/usr/local/share/vivaldi/locales/hy_FEMININE.pak
-/usr/local/share/vivaldi/locales/hy_MASCULINE.pak
-/usr/local/share/vivaldi/locales/hy_NEUTER.pak
 /usr/local/share/vivaldi/locales/id.pak
 /usr/local/share/vivaldi/locales/id_FEMININE.pak
 /usr/local/share/vivaldi/locales/id_MASCULINE.pak
@@ -174,10 +155,6 @@
 /usr/local/share/vivaldi/locales/io_FEMININE.pak
 /usr/local/share/vivaldi/locales/io_MASCULINE.pak
 /usr/local/share/vivaldi/locales/io_NEUTER.pak
-/usr/local/share/vivaldi/locales/is.pak
-/usr/local/share/vivaldi/locales/is_FEMININE.pak
-/usr/local/share/vivaldi/locales/is_MASCULINE.pak
-/usr/local/share/vivaldi/locales/is_NEUTER.pak
 /usr/local/share/vivaldi/locales/it.pak
 /usr/local/share/vivaldi/locales/it_FEMININE.pak
 /usr/local/share/vivaldi/locales/it_MASCULINE.pak
@@ -194,10 +171,6 @@
 /usr/local/share/vivaldi/locales/jbo_FEMININE.pak
 /usr/local/share/vivaldi/locales/jbo_MASCULINE.pak
 /usr/local/share/vivaldi/locales/jbo_NEUTER.pak
-/usr/local/share/vivaldi/locales/ka.pak
-/usr/local/share/vivaldi/locales/ka_FEMININE.pak
-/usr/local/share/vivaldi/locales/ka_MASCULINE.pak
-/usr/local/share/vivaldi/locales/ka_NEUTER.pak
 /usr/local/share/vivaldi/locales/kab.pak
 /usr/local/share/vivaldi/locales/kab_FEMININE.pak
 /usr/local/share/vivaldi/locales/kab_MASCULINE.pak
@@ -222,10 +195,6 @@
 /usr/local/share/vivaldi/locales/lv_FEMININE.pak
 /usr/local/share/vivaldi/locales/lv_MASCULINE.pak
 /usr/local/share/vivaldi/locales/lv_NEUTER.pak
-/usr/local/share/vivaldi/locales/mk.pak
-/usr/local/share/vivaldi/locales/mk_FEMININE.pak
-/usr/local/share/vivaldi/locales/mk_MASCULINE.pak
-/usr/local/share/vivaldi/locales/mk_NEUTER.pak
 /usr/local/share/vivaldi/locales/ml.pak
 /usr/local/share/vivaldi/locales/ml_FEMININE.pak
 /usr/local/share/vivaldi/locales/ml_MASCULINE.pak
@@ -250,10 +219,6 @@
 /usr/local/share/vivaldi/locales/nn_FEMININE.pak
 /usr/local/share/vivaldi/locales/nn_MASCULINE.pak
 /usr/local/share/vivaldi/locales/nn_NEUTER.pak
-/usr/local/share/vivaldi/locales/pa.pak
-/usr/local/share/vivaldi/locales/pa_FEMININE.pak
-/usr/local/share/vivaldi/locales/pa_MASCULINE.pak
-/usr/local/share/vivaldi/locales/pa_NEUTER.pak
 /usr/local/share/vivaldi/locales/pl.pak
 /usr/local/share/vivaldi/locales/pl_FEMININE.pak
 /usr/local/share/vivaldi/locales/pl_MASCULINE.pak
@@ -286,14 +251,6 @@
 /usr/local/share/vivaldi/locales/sl_FEMININE.pak
 /usr/local/share/vivaldi/locales/sl_MASCULINE.pak
 /usr/local/share/vivaldi/locales/sl_NEUTER.pak
-/usr/local/share/vivaldi/locales/sq.pak
-/usr/local/share/vivaldi/locales/sq_FEMININE.pak
-/usr/local/share/vivaldi/locales/sq_MASCULINE.pak
-/usr/local/share/vivaldi/locales/sq_NEUTER.pak
-/usr/local/share/vivaldi/locales/sr-Latn.pak
-/usr/local/share/vivaldi/locales/sr-Latn_FEMININE.pak
-/usr/local/share/vivaldi/locales/sr-Latn_MASCULINE.pak
-/usr/local/share/vivaldi/locales/sr-Latn_NEUTER.pak
 /usr/local/share/vivaldi/locales/sr.pak
 /usr/local/share/vivaldi/locales/sr_FEMININE.pak
 /usr/local/share/vivaldi/locales/sr_MASCULINE.pak
@@ -449,7 +406,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/adblocker_resources/redirectable_resources.json
 /usr/local/share/vivaldi/resources/vivaldi/background-bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/background-common-bundle.js
-/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-9567491b38d101971077a1ceff057b7c.js
+/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-53e2e69ba78ab00a32f9030e16d06f4c.js
 /usr/local/share/vivaldi/resources/vivaldi/bundle-mailreader-worker.js
 /usr/local/share/vivaldi/resources/vivaldi/bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/components/mail/mail.html
@@ -781,6 +738,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/mask-eye.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/mask-more.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/mask-open.svg
+/usr/local/share/vivaldi/resources/vivaldi/resources/mask-profile-managed.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/mask-reload.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/mask-remove.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/new_gift.svg
