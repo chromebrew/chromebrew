@@ -1,0 +1,2 @@
+#!/bin/bash
+squashfuse -h 2>&1

@@ -1,4 +1,4 @@
-# Total size: 427536
+# Total size: 1019034
 /usr/local/bin/squashfuse
 /usr/local/bin/squashfuse_ll
 /usr/local/include/squashfuse/cache.h
@@ -8,16 +8,10 @@
 /usr/local/include/squashfuse/dir.h
 /usr/local/include/squashfuse/file.h
 /usr/local/include/squashfuse/fs.h
-/usr/local/include/squashfuse/fuseprivate.h
-/usr/local/include/squashfuse/hash.h
 /usr/local/include/squashfuse/ll.h
-/usr/local/include/squashfuse/nonstd-internal.h
-/usr/local/include/squashfuse/nonstd.h
 /usr/local/include/squashfuse/squashfs_fs.h
 /usr/local/include/squashfuse/squashfuse.h
 /usr/local/include/squashfuse/stack.h
-/usr/local/include/squashfuse/stat.h
-/usr/local/include/squashfuse/swap.h
 /usr/local/include/squashfuse/table.h
 /usr/local/include/squashfuse/traverse.h
 /usr/local/include/squashfuse/util.h
@@ -27,5 +21,12 @@
 /usr/local/lib64/libsquashfuse.so
 /usr/local/lib64/libsquashfuse.so.0
 /usr/local/lib64/libsquashfuse.so.0.0.0
+/usr/local/lib64/libsquashfuse_ll.a
+/usr/local/lib64/libsquashfuse_ll.la
+/usr/local/lib64/libsquashfuse_ll.so
+/usr/local/lib64/libsquashfuse_ll.so.0
+/usr/local/lib64/libsquashfuse_ll.so.0.0.0
 /usr/local/lib64/pkgconfig/squashfuse.pc
-/usr/local/share/man/man1/squashfuse.1.gz
+/usr/local/lib64/pkgconfig/squashfuse_ll.pc
+/usr/local/share/man/man1/squashfuse.1.zst
+/usr/local/share/man/man1/squashfuse_ll.1.zst
