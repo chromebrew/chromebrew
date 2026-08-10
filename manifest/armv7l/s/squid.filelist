@@ -1,8 +1,4 @@
-# Total size: 2838311
-/usr/local/bin/purge
-/usr/local/bin/squidclient
-/usr/local/etc/cachemgr.conf
-/usr/local/etc/cachemgr.conf.default
+# Total size: 11491455
 /usr/local/etc/errorpage.css
 /usr/local/etc/errorpage.css.default
 /usr/local/etc/mime.conf
@@ -15,13 +11,13 @@
 /usr/local/libexec/basic_getpwnam_auth
 /usr/local/libexec/basic_ldap_auth
 /usr/local/libexec/basic_ncsa_auth
+/usr/local/libexec/basic_nis_auth
 /usr/local/libexec/basic_pam_auth
 /usr/local/libexec/basic_pop3_auth
 /usr/local/libexec/basic_radius_auth
 /usr/local/libexec/basic_sasl_auth
 /usr/local/libexec/basic_smb_auth
 /usr/local/libexec/basic_smb_auth.sh
-/usr/local/libexec/cachemgr.cgi
 /usr/local/libexec/cert_tool
 /usr/local/libexec/digest_edirectory_auth
 /usr/local/libexec/digest_file_auth
@@ -147,8 +143,6 @@
 /usr/local/share/icons/silk/script.png
 /usr/local/share/icons/silk/script_gear.png
 /usr/local/share/icons/silk/script_palette.png
-/usr/local/share/man/man1/purge.1.zst
-/usr/local/share/man/man1/squidclient.1.zst
 /usr/local/share/man/man8/basic_db_auth.8.zst
 /usr/local/share/man/man8/basic_getpwnam_auth.8.zst
 /usr/local/share/man/man8/basic_ldap_auth.8.zst
@@ -157,7 +151,6 @@
 /usr/local/share/man/man8/basic_pop3_auth.8.zst
 /usr/local/share/man/man8/basic_radius_auth.8.zst
 /usr/local/share/man/man8/basic_sasl_auth.8.zst
-/usr/local/share/man/man8/cachemgr.cgi.8.zst
 /usr/local/share/man/man8/digest_file_auth.8.zst
 /usr/local/share/man/man8/ext_delayer_acl.8.zst
 /usr/local/share/man/man8/ext_edirectory_userip_acl.8.zst
