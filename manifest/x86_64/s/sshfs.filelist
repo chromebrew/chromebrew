@@ -1,3 +1,5 @@
-# Total size: 417873
+# Total size: 103832
 /usr/local/bin/sshfs
-/usr/local/share/man/man1/sshfs.1.gz
+/usr/local/sbin/mount.fuse.sshfs
+/usr/local/sbin/mount.sshfs
+/usr/local/share/man/man1/sshfs.1.zst
