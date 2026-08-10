@@ -1,31 +1,24 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Sshfs < Package
+class Sshfs < Meson
   description 'A network filesystem client to connect to SSH servers.'
   homepage 'https://github.com/libfuse/sshfs'
-  version '2.10'
+  version '3.7.6'
   license 'GPL-2'
-  compatibility 'all'
-  source_url 'https://github.com/libfuse/sshfs/releases/download/sshfs-2.10/sshfs-2.10.tar.gz'
-  source_sha256 '70845dde2d70606aa207db5edfe878e266f9c193f1956dd10ba1b7e9a3c8d101'
-  binary_compression 'tar.xz'
+  compatibility 'aarch64 armv7l x86_64'
+  source_url 'https://github.com/libfuse/sshfs.git'
+  git_hashtag "sshfs-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '22670d1a6127f7c1e7181af517f0e9242cf7f88645a861f80541f8196bdd815f',
-     armv7l: '22670d1a6127f7c1e7181af517f0e9242cf7f88645a861f80541f8196bdd815f',
-       i686: 'ebd6c89d54f1ec9fca31869ad9a41d0d6c422d648658a1296f4bd31249c7b125',
-     x86_64: 'cef0929354e03eb6b82046218aca8b95284d71249288604c4ce41a699daef1f0'
+    aarch64: '5884ea8a54bc4b3db7b99f5627fd3db39fb5c78ce41ee0de82bdfa8cb37ab0c4',
+     armv7l: '5884ea8a54bc4b3db7b99f5627fd3db39fb5c78ce41ee0de82bdfa8cb37ab0c4',
+     x86_64: '13d622655e68aa691d4a1a32e8cf7bc7bf8d3d6e6ad4837b102ba024d8c416d9'
   })
 
-  depends_on 'glib'
-  depends_on 'fuse3'
-
-  def self.build
-    system "./configure --prefix=#{CREW_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'fuse3' => :executable
+  depends_on 'glib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'py3_docutils' => :build
 end
