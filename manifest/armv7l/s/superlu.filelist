@@ -1,4 +1,4 @@
-# Total size: 541275
+# Total size: 2756192
 /usr/local/include/slu_Cnames.h
 /usr/local/include/slu_cdefs.h
 /usr/local/include/slu_dcomplex.h
@@ -7,8 +7,12 @@
 /usr/local/include/slu_sdefs.h
 /usr/local/include/slu_util.h
 /usr/local/include/slu_zdefs.h
+/usr/local/include/superlu_config.h
 /usr/local/include/superlu_enum_consts.h
 /usr/local/include/supermatrix.h
-/usr/local/lib/libsuperlu.so
-/usr/local/lib/libsuperlu.so.5
-/usr/local/lib/libsuperlu.so.5.2.1
+/usr/local/lib/cmake/superlu/superluConfig.cmake
+/usr/local/lib/cmake/superlu/superluConfigVersion.cmake
+/usr/local/lib/cmake/superlu/superluTargets-release.cmake
+/usr/local/lib/cmake/superlu/superluTargets.cmake
+/usr/local/lib/libsuperlu.a
+/usr/local/lib/pkgconfig/superlu.pc
