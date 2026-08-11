@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libcec < CMake
   description 'Pulse-Eights libcec for the Pulse-Eight USB-CEC adapter'
   homepage 'https://libcec.pulse-eight.com/'
-  version '8.1.3'
+  version '8.1.6'
   license 'GPL'
   compatibility 'aarch64 armv7l x86_64' # Not kernel compatible w/ i686 kernel.
   source_url 'https://github.com/Pulse-Eight/libcec.git'
@@ -11,9 +11,9 @@ class Libcec < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ea1498057369c37ba9a27bfad574f248d1059d29053b7211d4749a0b282bfac0',
-     armv7l: 'ea1498057369c37ba9a27bfad574f248d1059d29053b7211d4749a0b282bfac0',
-     x86_64: '66aa998fc7f45341ce1e67314837f629a1a96f25a4e59518a0679c69276c6203'
+    aarch64: '8cea5027c367df51d1b057a7ba4da809c8c75a67c451ef5681a271295553b4d8',
+     armv7l: '8cea5027c367df51d1b057a7ba4da809c8c75a67c451ef5681a271295553b4d8',
+     x86_64: '0bf4b4ed9f64f8c391f92a81dad893d446bd7777d45c9fce8bb92962659467ff'
   })
 
   depends_on 'eudev' => :library
