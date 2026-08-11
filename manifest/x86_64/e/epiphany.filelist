@@ -1,4 +1,4 @@
-# Total size: 17497766
+# Total size: 17703160
 /usr/local/bin/epiphany
 /usr/local/lib64/epiphany/libephyautofill.so
 /usr/local/lib64/epiphany/libephymain.so
@@ -806,6 +806,7 @@
 /usr/local/share/locale/ko/LC_MESSAGES/epiphany.mo
 /usr/local/share/locale/ku/LC_MESSAGES/epiphany.mo
 /usr/local/share/locale/li/LC_MESSAGES/epiphany.mo
+/usr/local/share/locale/lo/LC_MESSAGES/epiphany.mo
 /usr/local/share/locale/lt/LC_MESSAGES/epiphany.mo
 /usr/local/share/locale/lv/LC_MESSAGES/epiphany.mo
 /usr/local/share/locale/mai/LC_MESSAGES/epiphany.mo

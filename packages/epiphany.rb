@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Epiphany < Meson
   description 'A GNOME web browser based on the WebKit rendering engine'
   homepage 'https://wiki.gnome.org/Apps/Web'
-  version '50.4'
+  version '50.5'
   license 'GPL'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/epiphany.git'
@@ -14,9 +14,9 @@ class Epiphany < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '73c7c0eb22a9b00ccf7e906c2716b4cdae429fc814a68e9445a9470c89952d25',
-     armv7l: '73c7c0eb22a9b00ccf7e906c2716b4cdae429fc814a68e9445a9470c89952d25',
-     x86_64: '781ebde501781ad05d7198b5dcde3b9d9c06f5ff3437a43decc09317045420ca'
+    aarch64: 'f802cc19ad350a33ff06637b0c1935628386bed0f9e0061eedf9730591a66928',
+     armv7l: 'f802cc19ad350a33ff06637b0c1935628386bed0f9e0061eedf9730591a66928',
+     x86_64: 'c4f30c598243056c4eefbd33426754ba248d4cefb7c2c6f46090d693b291919f'
   })
 
   depends_on 'at_spi2_core' # R
@@ -30,6 +30,7 @@ class Epiphany < Meson
   depends_on 'gdk_pixbuf' => :library
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gmp' => :library
   depends_on 'gobject_introspection' => :build
   depends_on 'gstreamer' => :library
