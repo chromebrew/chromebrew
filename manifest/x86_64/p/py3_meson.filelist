@@ -1,13 +1,13 @@
-# Total size: 10362901
+# Total size: 10647899
 /usr/local/bin/meson
-/usr/local/lib/python3.14/site-packages/meson-1.11.2.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/meson-1.11.2.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/meson-1.11.2.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/meson-1.11.2.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/meson-1.11.2.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/meson-1.11.2.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/meson-1.11.2.dist-info/licenses/COPYING
-/usr/local/lib/python3.14/site-packages/meson-1.11.2.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/meson-1.12.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/meson-1.12.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/meson-1.12.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/meson-1.12.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/meson-1.12.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/meson-1.12.0.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/meson-1.12.0.dist-info/licenses/COPYING
+/usr/local/lib/python3.14/site-packages/meson-1.12.0.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/mesonbuild/__init__.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/__pycache__/_pathlib.cpython-314.pyc
@@ -248,6 +248,7 @@
 /usr/local/lib/python3.14/site-packages/mesonbuild/interpreter/__init__.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/interpreter/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/interpreter/__pycache__/compiler.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/mesonbuild/interpreter/__pycache__/decorators.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/interpreter/__pycache__/dependencyfallbacks.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/interpreter/__pycache__/interpreter.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/interpreter/__pycache__/interpreterobjects.cpython-314.pyc
@@ -255,6 +256,7 @@
 /usr/local/lib/python3.14/site-packages/mesonbuild/interpreter/__pycache__/mesonmain.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/interpreter/__pycache__/type_checking.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonbuild/interpreter/compiler.py
+/usr/local/lib/python3.14/site-packages/mesonbuild/interpreter/decorators.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/interpreter/dependencyfallbacks.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/interpreter/interpreter.py
 /usr/local/lib/python3.14/site-packages/mesonbuild/interpreter/interpreterobjects.py
