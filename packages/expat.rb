@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Expat < CMake
   description 'James Clark\'s Expat XML parser library in C.'
   homepage 'https://github.com/libexpat/libexpat'
-  version '2.8.2'
+  version '2.8.3'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/libexpat/libexpat.git'
@@ -11,10 +11,10 @@ class Expat < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'be6c3784c2df447f42ccda9bbf825313780e42192b22f3af657eb052c681ea29',
-     armv7l: 'be6c3784c2df447f42ccda9bbf825313780e42192b22f3af657eb052c681ea29',
-       i686: '460b1fba7b1091b6c4d5e2d8225d367fbe43d8950abee2b0752bbecdf8ef38dc',
-     x86_64: '7f44d48ca6af63d46afa29a64d20f5925f098d28b8ea54b8a29f062ca8f870f5'
+    aarch64: '70fa7c95abefa28957792cf0d6561a80bcbd2edc4a10dcbb254025438804c2fb',
+     armv7l: '70fa7c95abefa28957792cf0d6561a80bcbd2edc4a10dcbb254025438804c2fb',
+       i686: '68f4a9adf01ae8042a00704c4a1823b39fa167c426d2b9d99aff17502a0dadaa',
+     x86_64: 'd0496c9ca051611d175a65467316be3a92ff6aa832f561569baa79cf806ecbaf'
   })
 
   depends_on 'glibc' => :library
