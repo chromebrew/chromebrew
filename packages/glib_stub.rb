@@ -13,21 +13,21 @@ class Glib_stub < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ba1df16740f4842b26d8c205b3a15b4f0167d0a437e6e9e393346363768aaaf8',
-     armv7l: 'ba1df16740f4842b26d8c205b3a15b4f0167d0a437e6e9e393346363768aaaf8',
-       i686: '875a214c4ba41a05653b510dc1b96b0f25213dafcd37511dcd6a05672089aaa4',
-     x86_64: 'd98bea7dcc189f77a4445ffebe7c7f44daa4638d55ea75837eea9d64935420fa'
+    aarch64: '56b17b33e97b3a487d547538247e20589f59331bf309b72b048b277b62f1ebdd',
+     armv7l: '56b17b33e97b3a487d547538247e20589f59331bf309b72b048b277b62f1ebdd',
+       i686: '700e7846686f08a678c15aa4c835e07313548d02e0513c6602617fe08508245f',
+     x86_64: '7e47a90a4791957868ae58a87c4e9e98aee81435fcaa60b9e283ca8f0d02f6f2'
   })
 
   depends_on 'elfutils' => :executable
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'libffi' # R
-  depends_on 'pcre2' # R
+  depends_on 'glibc' => :library
+  depends_on 'libffi' => :library
+  depends_on 'pcre2' => :library
   depends_on 'py3_pygments' => :build
   depends_on 'shared_mime_info' => :logical
-  depends_on 'util_linux' # R
-  depends_on 'zlib' # R
+  depends_on 'util_linux' => :library
+  depends_on 'zlib' => :library
 
   conflicts_ok # Conflicts with glib.
   gnome
