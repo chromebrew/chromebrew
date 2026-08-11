@@ -1,12 +1,12 @@
-# Total size: 1744920
+# Total size: 1767569
 /usr/local/bin/tox
-/usr/local/lib/python3.14/site-packages/tox-4.58.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/tox-4.58.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/tox-4.58.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/tox-4.58.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/tox-4.58.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/tox-4.58.0.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/tox-4.58.0.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/tox-4.59.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/tox-4.59.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/tox-4.59.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/tox-4.59.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/tox-4.59.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/tox-4.59.0.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/tox-4.59.0.dist-info/licenses/LICENSE
 /usr/local/lib/python3.14/site-packages/tox/__init__.py
 /usr/local/lib/python3.14/site-packages/tox/__main__.py
 /usr/local/lib/python3.14/site-packages/tox/__pycache__/__init__.cpython-314.pyc
@@ -250,6 +250,7 @@
 /usr/local/lib/python3.14/site-packages/tox/util/__pycache__/cpu.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tox/util/__pycache__/file_view.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tox/util/__pycache__/graph.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/tox/util/__pycache__/json_types.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tox/util/__pycache__/path.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tox/util/__pycache__/redact.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tox/util/__pycache__/spinner.cpython-314.pyc
@@ -257,6 +258,7 @@
 /usr/local/lib/python3.14/site-packages/tox/util/cpu.py
 /usr/local/lib/python3.14/site-packages/tox/util/file_view.py
 /usr/local/lib/python3.14/site-packages/tox/util/graph.py
+/usr/local/lib/python3.14/site-packages/tox/util/json_types.py
 /usr/local/lib/python3.14/site-packages/tox/util/path.py
 /usr/local/lib/python3.14/site-packages/tox/util/redact.py
 /usr/local/lib/python3.14/site-packages/tox/util/spinner.py
