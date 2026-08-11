@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Glib < Meson
   description 'GLib provides the core application building blocks for libraries and applications written in C.'
   homepage 'https://developer.gnome.org/glib'
-  version '2.88.2'
+  version '2.88.3'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/glib.git'
@@ -19,6 +19,7 @@ class Glib < Meson
 
   depends_on 'elfutils' => :executable
   depends_on 'gcc_lib' # R
+  depends_on 'glib_stub' => :build
   depends_on 'gobject_introspection' => :build
   depends_on 'libffi' => :library
   depends_on 'pcre2' => :library
