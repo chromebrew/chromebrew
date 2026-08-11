@@ -177,7 +177,7 @@ def determine_recursive_deps(d_pkg_input, dependency_graphs: {})
   # @gcc_lib_graph.merge(@glibc_graph)
   [d_pkg_input].flatten.each do |d_pkg|
     d_pkg_obj = Package.load_package("packages/#{d_pkg}.rb")
-    d_pkg_deps = d_pkg_obj.dependencies.map { |key, value| key.to_s if value == [[], nil] }.compact.map { |key, _value| key.to_s }.compact.delete_if { it.include?('glibc_') }
+    d_pkg_deps = d_pkg_obj.dependencies.map { |key, value| key.to_s unless %w[build executable logical].include?(value.compact.flatten.first.to_s) }.compact.map { |key, _value| key.to_s }.delete_if { it.include?('glibc_') }.delete_if { it.include?(d_pkg) }
     # Pull in build dependencies if necessary.
     if (d_pkg.include?('_lib') || d_pkg.include?('_dev')) && !d_pkg.include?('gcc_lib')
       puts "#{"#{__LINE__}: " if CREW_VERBOSE}#{d_pkg} includes _dev || _lib, pulling build deps.".orange
@@ -209,7 +209,8 @@ def determine_recursive_deps(d_pkg_input, dependency_graphs: {})
   return dependency_graphs
 end
 
-def print_recursive_deps(d_pkg_input, dependency_graphs)
+def print_recursive_deps(d_pkg_input, dependency_graphs = nil)
+  dependency_graphs = determine_recursive_deps(d_pkg_input) if dependency_graphs.nil?
   [d_pkg_input].flatten.each do |p|
     abort "@#{p}_graph does not exist!".lightred unless !dependency_graphs[p].nil? && !dependency_graphs[p].dependencies.nil?
     deps = dependency_graphs[p].dependencies
