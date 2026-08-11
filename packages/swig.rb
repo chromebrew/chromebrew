@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Swig < Autotools
   description 'Simplified Wrapper and Interface Generator'
   homepage 'https://www.swig.org/'
-  version '4.4.1'
+  version '4.5.0'
   license 'GPL-3, BSD and BSD-2'
   compatibility 'all'
   source_url 'https://github.com/swig/swig'
@@ -11,10 +11,10 @@ class Swig < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '459d6b472eb99251302a18a29252b5f4848451c017826f87a17d3d2e0aaf59c6',
-     armv7l: '459d6b472eb99251302a18a29252b5f4848451c017826f87a17d3d2e0aaf59c6',
-       i686: 'b42de3edf3f7d194329a6407239ca042386f9d8adfe5b631460cc661dce05836',
-     x86_64: 'fa39c67ebff03a231b33a00087c6ced2248848cf8c2432096781d4adbef717f3'
+    aarch64: '6438b65ba5076638dfdd468dc49dd9b0b8bb2bf9526364ec1928b711c539fd11',
+     armv7l: '6438b65ba5076638dfdd468dc49dd9b0b8bb2bf9526364ec1928b711c539fd11',
+       i686: '70282d2e2e4e2381e84c3e7f2fc8fe37641eb69988e0aeae6199c6ff27b9ab8f',
+     x86_64: 'ed92ef076f7c78f657094f3bc61d4e4a98a614a9e8143caf2b8bbbe0117e3d29'
   })
 
   depends_on 'boost' => :build
@@ -24,4 +24,6 @@ class Swig < Autotools
   depends_on 'pcre' => :build
   depends_on 'pcre2' => :executable
   depends_on 'zlib' => :executable
+
+  autotools_skip_autoreconf
 end
