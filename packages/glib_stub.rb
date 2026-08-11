@@ -22,6 +22,7 @@ class Glib_stub < Meson
   depends_on 'elfutils' => :executable
   depends_on 'gcc_lib' # R
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'libffi' => :library
   depends_on 'pcre2' => :library
   depends_on 'py3_pygments' => :build
