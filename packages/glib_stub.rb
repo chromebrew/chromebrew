@@ -5,7 +5,7 @@ class Glib_stub < Meson
   description 'Glib stub built without gobject_introspection, needed as a build dep for gobject_instrospection'
   homepage 'https://developer.gnome.org/glib'
   version Glib.version
-  version '2.86.4'
+  version '2.88.3'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/glib.git'

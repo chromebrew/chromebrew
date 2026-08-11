@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.40 (for Chromebrew)
+# version.rb version 3.41 (for Chromebrew)
 
 OPTIONS = %w[-a --all -h --help -j --json -u --update-package-files -v --verbose -vv]
 
@@ -67,6 +67,7 @@ CREW_ANITYA_PACKAGE_NAME_MAPPINGS = Set[
   { pkg_name: 'asdf', anitya_pkg: 'asdf-vm', comments: 'Anitya has a pip package named asdf' },
   { pkg_name: 'cvs', anitya_pkg: 'cvs-stable', comments: 'Anitya has a pip package named cvs' },
   { pkg_name: 'gexiv2', anitya_pkg: 'gexiv2~14.x', comments: 'TODO: Why are we sticking to the 0.14.x release series?' },
+  { pkg_name: 'glib_stub', anitya_pkg: 'glib', comments: '' },
   { pkg_name: 'gnome_docking_library', anitya_pkg: 'gdl', comments: 'Anitya has two gdl packages, so this mapping doesnt work' },
   { pkg_name: 'go_tools', anitya_pkg: 'golang-tools', comments: 'Anitya has a different package named go-tools' },
   { pkg_name: 'gtk3', anitya_pkg: 'gtk+3.0~stable', comments: 'Anitya has Hackage, Rubygems, and CPAN (Perl) packages named gtk3' },
