@@ -11,10 +11,10 @@ class Libpsl < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2c403cf7137dba0eee692bd01058483e6e461d9ff11f12de3fb8c98b7d3d6bde',
-     armv7l: '2c403cf7137dba0eee692bd01058483e6e461d9ff11f12de3fb8c98b7d3d6bde',
-       i686: 'eadc5b22ef51320156d54c656603f511e6bfb8d02b2379ff9914b7ad882360df',
-     x86_64: '98e8f1018ef02973e17398a8d1c2fb7cdda755192076b338ed21d38e5fbc4e46'
+    aarch64: 'de77490c7469ad315fe9a9861bf325aa88ce10f7a415e1e67a3827b652f4b526',
+     armv7l: 'de77490c7469ad315fe9a9861bf325aa88ce10f7a415e1e67a3827b652f4b526',
+       i686: '03a2eba205b3b651fdfbd8508d39b323721ee82299d9c09d942a9b265b7a77fd',
+     x86_64: 'e24aec82a141e1e1ecb9b82b58946f309130752e46e14412436ecea97f0aa11f'
   })
 
   depends_on 'glibc' => :library
