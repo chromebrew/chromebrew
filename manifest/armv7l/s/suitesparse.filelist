@@ -1,4 +1,4 @@
-# Total size: 74557452
+# Total size: 72503672
 /usr/local/bin/suitesparse_mongoose
 /usr/local/include/suitesparse/GraphBLAS.h
 /usr/local/include/suitesparse/LAGraph.h
@@ -168,7 +168,7 @@
 /usr/local/lib/libcholmod.a
 /usr/local/lib/libcholmod.so
 /usr/local/lib/libcholmod.so.5
-/usr/local/lib/libcholmod.so.5.3.4
+/usr/local/lib/libcholmod.so.5.3.5
 /usr/local/lib/libcolamd.a
 /usr/local/lib/libcolamd.so
 /usr/local/lib/libcolamd.so.3
@@ -179,7 +179,7 @@
 /usr/local/lib/libcxsparse.so.4.4.2
 /usr/local/lib/libgraphblas.so
 /usr/local/lib/libgraphblas.so.10
-/usr/local/lib/libgraphblas.so.10.2.0
+/usr/local/lib/libgraphblas.so.10.3.2
 /usr/local/lib/libklu.a
 /usr/local/lib/libklu.so
 /usr/local/lib/libklu.so.2
@@ -191,11 +191,11 @@
 /usr/local/lib/liblagraph.a
 /usr/local/lib/liblagraph.so
 /usr/local/lib/liblagraph.so.1
-/usr/local/lib/liblagraph.so.1.2.1
+/usr/local/lib/liblagraph.so.1.2.2
 /usr/local/lib/liblagraphx.a
 /usr/local/lib/liblagraphx.so
 /usr/local/lib/liblagraphx.so.1
-/usr/local/lib/liblagraphx.so.1.2.1
+/usr/local/lib/liblagraphx.so.1.2.2
 /usr/local/lib/libldl.a
 /usr/local/lib/libldl.so
 /usr/local/lib/libldl.so.3
@@ -203,7 +203,7 @@
 /usr/local/lib/libparu.a
 /usr/local/lib/libparu.so
 /usr/local/lib/libparu.so.1
-/usr/local/lib/libparu.so.1.1.0
+/usr/local/lib/libparu.so.1.1.1
 /usr/local/lib/librbio.a
 /usr/local/lib/librbio.so
 /usr/local/lib/librbio.so.4
@@ -226,11 +226,11 @@
 /usr/local/lib/libsuitesparseconfig.a
 /usr/local/lib/libsuitesparseconfig.so
 /usr/local/lib/libsuitesparseconfig.so.7
-/usr/local/lib/libsuitesparseconfig.so.7.12.1
+/usr/local/lib/libsuitesparseconfig.so.7.12.3
 /usr/local/lib/libumfpack.a
 /usr/local/lib/libumfpack.so
 /usr/local/lib/libumfpack.so.6
-/usr/local/lib/libumfpack.so.6.3.7
+/usr/local/lib/libumfpack.so.6.3.8
 /usr/local/lib/pkgconfig/AMD.pc
 /usr/local/lib/pkgconfig/BTF.pc
 /usr/local/lib/pkgconfig/CAMD.pc
