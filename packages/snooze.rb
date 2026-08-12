@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Snooze < Autotools
   description 'run a command at a particular time'
   homepage 'https://github.com/leahneukirchen/snooze'
-  version '0.5.1'
+  version '0.6'
   license 'public-domain'
   compatibility 'all'
   source_url 'https://github.com/leahneukirchen/snooze.git'
@@ -11,10 +11,10 @@ class Snooze < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f48d06febfefcc412dbeb9f73a64e77b42ab190b24b81d0a88cf2e2cba745502',
-     armv7l: 'f48d06febfefcc412dbeb9f73a64e77b42ab190b24b81d0a88cf2e2cba745502',
-       i686: '5c5c33c134230a1e38f03e956993e257ee2fed4210286e4b48e3b3cc92e44599',
-     x86_64: 'b4516653203371b802e40dc6d428be3e11800b87646f06aa9d1e4cffc328dfb4'
+    aarch64: '2c83dd4bd9ddbac02f0996eecd7e14f84a0660bc38b027489e67b2002a13cfef',
+     armv7l: '2c83dd4bd9ddbac02f0996eecd7e14f84a0660bc38b027489e67b2002a13cfef',
+       i686: '892a2716b862bf9092df95987082e30725b0bcaf80c2ad2294229b5f58ddf4c1',
+     x86_64: '461a2ccd9a1b00fe2919338759e9f2f2397abb802633fa109fb658c68dab5ed7'
   })
 
   depends_on 'glibc' => :executable
