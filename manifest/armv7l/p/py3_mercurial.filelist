@@ -1,4 +1,4 @@
-# Total size: 27945587
+# Total size: 27856069
 /usr/local/bin/hg
 /usr/local/lib/python3.14/site-packages/hgdemandimport/__init__.py
 /usr/local/lib/python3.14/site-packages/hgdemandimport/__pycache__/__init__.cpython-314.pyc
@@ -291,15 +291,13 @@
 /usr/local/lib/python3.14/site-packages/hgext/zeroconf/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/hgext3rd/__init__.py
 /usr/local/lib/python3.14/site-packages/hgext3rd/__pycache__/__init__.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/mercurial-7.2.3.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/mercurial-7.2.3.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/mercurial-7.2.3.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/mercurial-7.2.3.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/mercurial-7.2.3.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/mercurial-7.2.3.dist-info/licenses/COPYING
-/usr/local/lib/python3.14/site-packages/mercurial-7.2.3.dist-info/scm_file_list.json
-/usr/local/lib/python3.14/site-packages/mercurial-7.2.3.dist-info/scm_version.json
-/usr/local/lib/python3.14/site-packages/mercurial-7.2.3.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/mercurial-7.2.4.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/mercurial-7.2.4.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/mercurial-7.2.4.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/mercurial-7.2.4.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/mercurial-7.2.4.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/mercurial-7.2.4.dist-info/licenses/COPYING
+/usr/local/lib/python3.14/site-packages/mercurial-7.2.4.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/mercurial/__init__.py
 /usr/local/lib/python3.14/site-packages/mercurial/__main__.py
 /usr/local/lib/python3.14/site-packages/mercurial/__modulepolicy__.py
