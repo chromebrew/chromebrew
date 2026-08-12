@@ -1,5 +1,6 @@
 require 'io/console'
 require 'open3'
+require 'tempfile'
 require 'uri'
 require_relative 'const'
 require_relative 'color'
@@ -80,7 +81,6 @@ def downloader(url, sha256sum, filename = File.basename(url).gsub(/\s+/, ''), no
       puts "Updating checksum for #{filename}".lightblue
       puts "from #{sha256sum} to #{calc_sha256sum}".lightblue
       puts "in #{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb .".lightblue
-      require 'tempfile'
       Tempfile.create do |f|
         FileUtils.cp f.path, "#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb" if system "sed 's/#{sha256sum}/#{calc_sha256sum}/g;w #{f.path}' #{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb"
       end
