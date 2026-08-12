@@ -82,7 +82,7 @@ def downloader(url, sha256sum, filename = File.basename(url).gsub(/\s+/, ''), no
       puts "in #{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb .".lightblue
       require 'tempfile'
       Tempfile.create do |f|
-        system "sed 's/#{sha256sum}/#{calc_sha256sum}/g;w #{f.path}' #{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb && cp #{f.path} #{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb"
+        FileUtils.cp f.path, "#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb" if system "sed 's/#{sha256sum}/#{calc_sha256sum}/g;w #{f.path}' #{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb"
       end
     else
       FileUtils.rm_f filename
