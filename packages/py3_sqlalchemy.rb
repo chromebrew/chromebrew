@@ -10,10 +10,10 @@ class Py3_sqlalchemy < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3fa8b52c0ab4ced9a17d04ef324f16414e5f2a05c9218a30c71250a941143f15',
-     armv7l: '3fa8b52c0ab4ced9a17d04ef324f16414e5f2a05c9218a30c71250a941143f15',
-       i686: 'fc2da3270fef599aeb717e703b3d3be51deb6b4edb9838d6212921c39cd1d79d',
-     x86_64: 'd4bc2a8a9553e883edcd731af3e0aaf4fc3db9e7056b7d68f2a76d1ace25102f'
+    aarch64: '927208ce5198a84e802784aa5427e85ddf165424265c35ad8eb461dcf27f5131',
+     armv7l: '927208ce5198a84e802784aa5427e85ddf165424265c35ad8eb461dcf27f5131',
+       i686: 'f742384fd1dda0d7ea7fe290a9c7b0118bb29440e5ddebd377fc0a4850f22d08',
+     x86_64: 'ce1bfb4d34fa522e87bd703cccbb215d1121a3f62f7a2da841dd2c275c30eceb'
   })
 
   depends_on 'glibc' => :library
