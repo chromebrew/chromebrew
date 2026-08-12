@@ -20,10 +20,14 @@ class Mold < CMake
      x86_64: 'ab20e207afe628d712f5174e955ecc0a1bbbc96022aa0391c354b5eb3b108fd5'
   })
 
+  depends_on 'gcc_lib' => :executable
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'xxhash' => :build
+  depends_on 'zlib' => :executable
   depends_on 'zlib' => :library
+  depends_on 'zstd' => :executable
   depends_on 'zstd' => :library
 
   no_env_options
