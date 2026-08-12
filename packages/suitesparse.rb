@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Suitesparse < CMake
   description 'A suite of sparse matrix software'
   homepage 'https://people.engr.tamu.edu/davis/suitesparse.html'
-  version '7.12.3'
+  version '7.13.0'
   license 'metapackage'
   compatibility 'all'
   source_url 'https://github.com/DrTimothyAldenDavis/SuiteSparse.git'
