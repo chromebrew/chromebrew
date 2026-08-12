@@ -1,2 +1,11 @@
-# Total size: 0
-
+# Total size: 140523
+/usr/local/bin/sxhkd
+/usr/local/share/doc/sxhkd/examples/background_shell/profile
+/usr/local/share/doc/sxhkd/examples/background_shell/shell
+/usr/local/share/doc/sxhkd/examples/background_shell/sxhkdrc
+/usr/local/share/doc/sxhkd/examples/background_shell/xinitrc
+/usr/local/share/doc/sxhkd/examples/notification/autostart
+/usr/local/share/doc/sxhkd/examples/notification/pam_environment
+/usr/local/share/doc/sxhkd/examples/notification/sxhkd_notify
+/usr/local/share/doc/sxhkd/examples/notification/xinitrc
+/usr/local/share/man/man1/sxhkd.1.zst
