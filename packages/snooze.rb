@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Snooze < Autotools
   description 'run a command at a particular time'
   homepage 'https://github.com/leahneukirchen/snooze'
-  version '0.5.1'
+  version '0.6'
   license 'public-domain'
   compatibility 'all'
   source_url 'https://github.com/leahneukirchen/snooze.git'
