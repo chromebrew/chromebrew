@@ -3,7 +3,7 @@ require 'package'
 class Mujs < Package
   description 'An embeddable Javascript interpreter in C'
   homepage 'https://mujs.com/'
-  version '1.3.9'
+  version '1.3.10'
   license 'ISC'
   compatibility 'all'
   source_url 'https://github.com/ArtifexSoftware/mujs.git'
