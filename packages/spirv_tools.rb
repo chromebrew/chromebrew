@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Spirv_tools < CMake
   homepage 'https://github.com/KhronosGroup/SPIRV-Tools'
   description 'API and commands for processing SPIR-V modules'
-  version '2026.2'
+  version '2026.3'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/KhronosGroup/SPIRV-Tools.git'
@@ -11,10 +11,10 @@ class Spirv_tools < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '394a8095d66a75219143abbf36fdc925522fcfe69900ac1a8f54d376be6b1d9c',
-     armv7l: '394a8095d66a75219143abbf36fdc925522fcfe69900ac1a8f54d376be6b1d9c',
-       i686: 'c036524f31851de8edeeb8b14b892e3788357c809887d3cd8c1aa8c3c6fc74c6',
-     x86_64: 'e75b797f894165a7a86f6743744365c1780e80b39c3350fb1d7a7a16459b131c'
+    aarch64: 'f20d236a4cb27d7c77d5b7ec7d59747fa7bac031e9d272b74e0ffe820056667c',
+     armv7l: 'f20d236a4cb27d7c77d5b7ec7d59747fa7bac031e9d272b74e0ffe820056667c',
+       i686: '2e192d891f6bcf78c04352e3680b36ca8b81fcdb87c4d71c31c66a0056d71fe4',
+     x86_64: '403ade161594ae3791160b67e2a08ba23fcd5faba86fc04ca1935d6d6a12ffc9'
   })
 
   depends_on 'gcc_lib' => :library
