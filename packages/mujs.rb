@@ -18,6 +18,7 @@ class Mujs < Package
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'readline' => :executable
 
   def self.build
