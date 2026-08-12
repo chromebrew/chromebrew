@@ -18,7 +18,7 @@ class Glib < Meson
   })
 
   depends_on 'elfutils' => :executable
-  depends_on 'gcc_lib' # R
+  depends_on 'gcc_lib' => :library
   depends_on 'glib_stub' => :build
   depends_on 'gobject_introspection' => :build
   depends_on 'libffi' => :library
