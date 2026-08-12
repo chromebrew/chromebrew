@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_charset_normalizer < Pip
   description 'The Real First Universal Charset Detector. Open, modern and actively maintained alternative to Chardet.'
   homepage 'https://github.com/jawah/charset_normalizer'
-  version "3.4.7-#{CREW_PY_VER}"
+  version "3.4.9-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
