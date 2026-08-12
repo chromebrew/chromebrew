@@ -1,8 +1,4 @@
-# Total size: 441133
-/usr/local/bin/dlist_test
-/usr/local/bin/get_device
-/usr/local/bin/get_driver
-/usr/local/bin/get_module
+# Total size: 331461
 /usr/local/bin/systool
 /usr/local/include/sysfs/dlist.h
 /usr/local/include/sysfs/libsysfs.h
@@ -11,4 +7,5 @@
 /usr/local/lib/libsysfs.so
 /usr/local/lib/libsysfs.so.2
 /usr/local/lib/libsysfs.so.2.0.1
-/usr/local/man/man1/systool.1.gz
+/usr/local/lib/pkgconfig/libsysfs.pc
+/usr/local/share/man/man1/systool.1.zst
