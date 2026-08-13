@@ -1,2 +1,2 @@
-#!/bin/bash -ex
-crew files ${1} | grep /usr/local/bin | xargs --no-run-if-empty -I % sh -c '% --version 2>&1'
+#!/bin/bash
+crew files poppler | grep /usr/local/bin | xargs --no-run-if-empty -I % sh -c '% -v 2>&1'
