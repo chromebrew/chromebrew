@@ -321,7 +321,12 @@ end
 # Final cleanup of packages list.
 updated_packages.uniq! unless updated_packages.empty?
 updated_packages.delete_if { !File.file?(File.join(crew_local_repo_root, it.downcase)) } unless updated_packages.empty?
-updated_packages.delete_if { !PackageUtils.compatible?(Package.load_package(File.join(crew_local_repo_root, it.downcase))) } unless updated_packages.empty?
+unless updated_packages.empty?
+  updated_packages.delete_if do
+    p = Package.load_package(File.join(crew_local_repo_root, it.downcase))
+    !PackageUtils.compatible?(p) || p.ignore_updater?
+  end
+end
 
 if updated_packages.empty?
   puts 'No packages need to be updated.'.orange
