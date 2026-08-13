@@ -25,7 +25,7 @@ class Gstreamer < Meson
   depends_on 'elfutils' => :library
   depends_on 'faac' => :library
   depends_on 'faad2' => :library
-  depends_on 'ffmpeg' => :logical
+  depends_on 'ffmpeg' => :library
   depends_on 'flac' => :library
   depends_on 'gcc_lib' => :library
   depends_on 'gdk_pixbuf' => :library
@@ -36,6 +36,7 @@ class Gstreamer < Meson
   depends_on 'graphene' => :library
   depends_on 'gtk3' => :library
   depends_on 'harfbuzz' => :library
+  depends_on 'intel_media_sdk' => :library if ARCH.eql?('x86_64')
   depends_on 'json_glib' => :library
   depends_on 'lcms' => :library
   depends_on 'libaom' => :library
