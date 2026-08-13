@@ -30,6 +30,7 @@ class Ffmpeg < Package
   depends_on 'gsm' => :build
   depends_on 'harfbuzz' => :library
   depends_on 'jack' => :library
+  depends_on 'ladspa' => :build
   depends_on 'libaom' => :library
   depends_on 'libass' => :library
   depends_on 'libavc1394' => :library
