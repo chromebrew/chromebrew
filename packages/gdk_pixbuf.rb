@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gdk_pixbuf < Meson
   description 'GdkPixbuf is a library for image loading and manipulation.'
   homepage 'https://gtk.org'
-  version '2.44.7'
+  version '2.44.8'
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gdk-pixbuf.git'
@@ -11,9 +11,9 @@ class Gdk_pixbuf < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '445eeb3dd09483cf0a92a11d21f6c4d620ad2b3e9d69b8273208fe3e2cdef028',
-     armv7l: '445eeb3dd09483cf0a92a11d21f6c4d620ad2b3e9d69b8273208fe3e2cdef028',
-     x86_64: '4f99ec231c3a10501a788e5c499d2736919c5760fd471e340e3109a39642387a'
+    aarch64: 'cbce05d1aa8a6bbd111445275f97b8af6a6615401d265ae05ed2417a2a3c61aa',
+     armv7l: 'cbce05d1aa8a6bbd111445275f97b8af6a6615401d265ae05ed2417a2a3c61aa',
+     x86_64: '6164b1ac5d39b15f28ee4dde527fa1cf2ade4fff2842533a87edb5ca1cf1bfa9'
   })
 
   depends_on 'glib' => :library
