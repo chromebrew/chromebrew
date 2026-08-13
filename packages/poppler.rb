@@ -21,7 +21,7 @@ class Poppler < CMake
   depends_on 'curl' => :library
   depends_on 'fontconfig' => :library
   depends_on 'freetype' => :library
-  depends_on 'gcc_lib' # R
+  depends_on 'gcc_lib' => :library
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
