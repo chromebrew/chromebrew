@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Libvncserver < Package
+class Libvncserver < CMake
   description 'LibVNCServer/LibVNCClient are cross-platform C libraries that allow you to easily implement VNC server or client functionality in your program.'
   homepage 'https://github.com/LibVNC/libvncserver'
   version '0.9.15'
@@ -28,15 +28,5 @@ class Libvncserver < Package
   depends_on 'openssl' # R
   depends_on 'zlib' # R
 
-  def self.build
-    system "cmake -B builddir #{CREW_CMAKE_OPTIONS} \
-        -DWITH_SYSTEMD=OFF \
-        -Wno-author \
-        -G Ninja"
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+  cmake_options '-DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DWITH_SYSTEMD=OFF'
 end
