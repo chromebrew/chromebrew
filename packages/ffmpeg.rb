@@ -68,8 +68,6 @@ class Ffmpeg < Package
   depends_on 'openjpeg' => :library
   depends_on 'openssl' => :library
   depends_on 'opus' => :library
-  depends_on 'pipewire' => :library
-  depends_on 'pulseaudio' => :library
   depends_on 'rav1e' => :library
   depends_on 'rtmpdump' => :library
   depends_on 'rubberband' => :library
