@@ -3,11 +3,11 @@ require 'package'
 class Libde265 < Package
   description 'Open h.265 video codec implementation.'
   homepage 'https://github.com/strukturag/libde265'
-  version '1.0.16'
+  version '1.1.1'
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://github.com/strukturag/libde265/releases/download/v#{version}/libde265-#{version}.tar.gz"
-  source_sha256 'b92beb6b53c346db9a8fae968d686ab706240099cdd5aff87777362d668b0de7'
+  source_sha256 'fd48a927e94ed74fc7ce8829d222b9d8599fcbfe8b6448ba66705babc56ab219'
   binary_compression 'tar.zst'
 
   binary_sha256({
