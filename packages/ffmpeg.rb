@@ -28,7 +28,6 @@ class Ffmpeg < Package
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
   depends_on 'gsm' => :build
-  depends_on 'gstreamer' => :library
   depends_on 'harfbuzz' => :library
   depends_on 'jack' => :library
   depends_on 'libaom' => :library
