@@ -1,4 +1,4 @@
-# Total size: 187186677
+# Total size: 187186678
 /usr/local/bin/az
 /usr/local/bin/az.bat
 /usr/local/bin/az.completion.sh
@@ -8710,10 +8710,10 @@
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/vm/operations/vm_host_group.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/vm/operations/vmss.py
 /usr/local/lib/python3.14/site-packages/azure/cli/command_modules/vm/operations/vmss_vms.py
-/usr/local/lib/python3.14/site-packages/azure_cli-2.89.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/azure_cli-2.89.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/azure_cli-2.89.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/azure_cli-2.89.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/azure_cli-2.89.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/azure_cli-2.89.0.dist-info/licenses/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/azure_cli-2.89.0.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/azure_cli-2.89.1.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/azure_cli-2.89.1.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/azure_cli-2.89.1.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/azure_cli-2.89.1.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/azure_cli-2.89.1.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/azure_cli-2.89.1.dist-info/licenses/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/azure_cli-2.89.1.dist-info/top_level.txt
