@@ -57,7 +57,7 @@ class Jellyfin_media_player < Package
       -DLINUX_X11POWER=ON \
       -DQTROOT=./qt \
       -DCMAKE_SKIP_RPATH=1 \
-      -Wno-dev"
+      -Wno-author"
     system "#{CREW_NINJA} -C builddir"
   end
 

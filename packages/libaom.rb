@@ -40,7 +40,7 @@ class Libaom < Package
       -DENABLE_WERROR:BOOL='OFF' \
       -DINCLUDE_INSTALL_DIR:PATH='#{CREW_PREFIX}/include' \
       -DLIB_INSTALL_DIR:PATH='#{CREW_LIB_PREFIX}' \
-      -Wno-dev"
+      -Wno-author"
     system "#{CREW_NINJA} -C builddir"
   end
 

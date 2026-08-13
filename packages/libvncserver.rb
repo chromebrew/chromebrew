@@ -31,7 +31,7 @@ class Libvncserver < Package
   def self.build
     system "cmake -B builddir #{CREW_CMAKE_OPTIONS} \
         -DWITH_SYSTEMD=OFF \
-        -Wno-dev \
+        -Wno-author \
         -G Ninja"
     system "#{CREW_NINJA} -C builddir"
   end

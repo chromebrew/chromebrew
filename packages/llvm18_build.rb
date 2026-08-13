@@ -167,7 +167,7 @@ class Llvm18_build < Package
             -DLLVM_TARGETS_TO_BUILD='#{LLVM_TARGETS_TO_BUILD}' \
             -DOPENMP_ENABLE_LIBOMPTARGET=OFF \
             -DPYTHON_EXECUTABLE=$(which python3) \
-            -Wno-dev"
+            -Wno-author"
     end
     @counter = 1
     @counter_max = 20
