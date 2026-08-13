@@ -324,9 +324,16 @@ updated_packages.delete_if { !File.file?(File.join(crew_local_repo_root, it.down
 unless updated_packages.empty?
   updated_packages.delete_if do
     p = Package.load_package(File.join(crew_local_repo_root, it.downcase))
-    !PackageUtils.compatible?(p) || p.ignore_updater?
+    !PackageUtils.compatible?(p)
+  end
+  updated_packages.delete_if do
+    p = Package.load_package(File.join(crew_local_repo_root, it.downcase))
+    p.ignore_updater?
   end
 end
+
+puts 'updated packages to check:'.lightblue
+puts updated_packages
 
 if updated_packages.empty?
   puts 'No packages need to be updated.'.orange
