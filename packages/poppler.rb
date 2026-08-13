@@ -37,5 +37,7 @@ class Poppler < CMake
   depends_on 'qt5_base' # R
   depends_on 'zlib' # R
 
-  cmake_options '-DENABLE_UNSTABLE_API_ABI_HEADERS=ON'
+  cmake_options '-DENABLE_UNSTABLE_API_ABI_HEADERS=ON \
+                 -DENABLE_QT6=OFF \
+                 -DBUILD_QT6_TESTS=OFF'
 end
