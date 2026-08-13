@@ -1,4 +1,4 @@
-# Total size: 779419
+# Total size: 801351
 /usr/local/include/rfb/keysym.h
 /usr/local/include/rfb/rfb.h
 /usr/local/include/rfb/rfbclient.h
@@ -11,10 +11,10 @@
 /usr/local/lib64/cmake/LibVNCServer/LibVNCServerTargets-release.cmake
 /usr/local/lib64/cmake/LibVNCServer/LibVNCServerTargets.cmake
 /usr/local/lib64/libvncclient.so
-/usr/local/lib64/libvncclient.so.0.9.14
+/usr/local/lib64/libvncclient.so.0.9.15
 /usr/local/lib64/libvncclient.so.1
 /usr/local/lib64/libvncserver.so
-/usr/local/lib64/libvncserver.so.0.9.14
+/usr/local/lib64/libvncserver.so.0.9.15
 /usr/local/lib64/libvncserver.so.1
 /usr/local/lib64/pkgconfig/libvncclient.pc
 /usr/local/lib64/pkgconfig/libvncserver.pc
