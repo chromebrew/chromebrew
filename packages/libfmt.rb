@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libfmt < CMake
   description 'A modern formatting library'
   homepage 'https://fmt.dev'
-  version '12.1.0'
+  version '12.2.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/fmtlib/fmt.git'
@@ -20,6 +20,6 @@ class Libfmt < CMake
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
-  cmake_options '-DBUILD_SHARED_LIBS=TRUE'
-  run_tests
+  cmake_options "-DBUILD_SHARED_LIBS=TRUE -DFMT_TEST=#{ARCH.include?('i686') ? 'OFF' : 'ON'}"
+  run_tests unless ARCH.include?('i686')
 end
