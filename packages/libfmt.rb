@@ -19,6 +19,7 @@ class Libfmt < CMake
 
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 
   cmake_options '-DBUILD_SHARED_LIBS=TRUE'
   run_tests
