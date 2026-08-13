@@ -1,0 +1,3 @@
+#!/bin/bash
+terminology -h | head
+terminology -V

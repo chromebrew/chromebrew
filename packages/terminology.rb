@@ -1,33 +1,25 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Terminology < Package
+class Terminology < Meson
   description 'Enlightenments terminal emulator'
   homepage 'https://www.enlightenment.org'
-  version '1.8.0'
+  version '1.14.0'
   license 'BSD-2'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://download.enlightenment.org/rel/apps/terminology/terminology-1.8.0.tar.xz'
-  source_sha256 'c6f5b003412f25507277702cabe1a11d7190971343c1d6030aa7d3fe5b45765f'
-  binary_compression 'tar.xz'
+  source_url "https://download.enlightenment.org/rel/apps/terminology/terminology-#{version}.tar.xz"
+  source_sha256 'f354057051b05cffb699e33836a1135db1d4ed8bf954f9b57dc0e93bc307514d'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'be229db30e4c8c423bd89adb118e1e3d7958fe718ca5ecc149bfc395939b0523',
-     armv7l: 'be229db30e4c8c423bd89adb118e1e3d7958fe718ca5ecc149bfc395939b0523',
-       i686: 'd9d03f10e5522feec35fbb4ea2c789eb805a483403ceafacfc0ab6dcda3c36c6',
-     x86_64: '8d975f5df0ff60a90073b858141b042c0b5abe034b84c862b116e4ce0e767fdb'
+    aarch64: '8f3435482057d9d1f8fcb10ff232dadd514e109e51f737c49434cb8ffa993cb7',
+     armv7l: '8f3435482057d9d1f8fcb10ff232dadd514e109e51f737c49434cb8ffa993cb7',
+     x86_64: 'bb0c3c5831b99838c914d05c212c36554bd6bcaba45c29487a56169c182f5da3'
   })
 
-  depends_on 'desktop_file_utilities'
-  depends_on 'libefl'
+  depends_on 'desktop_file_utilities' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'libefl' => :executable
   depends_on 'sommelier' => :logical
-  depends_on 'xdg_utils'
-
-  def self.build
-    system "meson --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} _build"
-    system 'ninja -v -C _build'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C _build install"
-  end
+  depends_on 'xdg_utils' => :logical
 end
