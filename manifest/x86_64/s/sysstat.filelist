@@ -1,6 +1,4 @@
-# Total size: 1455474
-/etc/sysconfig/sysstat
-/etc/sysconfig/sysstat.ioconf
+# Total size: 1667915
 /usr/local/bin/cifsiostat
 /usr/local/bin/iostat
 /usr/local/bin/mpstat
@@ -8,27 +6,16 @@
 /usr/local/bin/sadf
 /usr/local/bin/sar
 /usr/local/bin/tapestat
-/usr/local/doc/CHANGES
-/usr/local/doc/COPYING
-/usr/local/doc/CREDITS
-/usr/local/doc/FAQ.md
-/usr/local/doc/README.md
-/usr/local/doc/sysstat-12.1.5.lsm
 /usr/local/lib64/sa/sa1
 /usr/local/lib64/sa/sa2
 /usr/local/lib64/sa/sadc
-/usr/local/man/man1/cifsiostat.1.gz
-/usr/local/man/man1/iostat.1.gz
-/usr/local/man/man1/mpstat.1.gz
-/usr/local/man/man1/pidstat.1.gz
-/usr/local/man/man1/sadf.1.gz
-/usr/local/man/man1/sar.1.gz
-/usr/local/man/man1/tapestat.1.gz
-/usr/local/man/man5/sysstat.5.gz
-/usr/local/man/man8/sa1.8.gz
-/usr/local/man/man8/sa2.8.gz
-/usr/local/man/man8/sadc.8.gz
+/usr/local/share/doc/sysstat-12.7.9/CHANGES
+/usr/local/share/doc/sysstat-12.7.9/COPYING
+/usr/local/share/doc/sysstat-12.7.9/CREDITS
+/usr/local/share/doc/sysstat-12.7.9/FAQ.md
+/usr/local/share/doc/sysstat-12.7.9/README.md
 /usr/local/share/locale/af/LC_MESSAGES/sysstat.mo
+/usr/local/share/locale/be/LC_MESSAGES/sysstat.mo
 /usr/local/share/locale/cs/LC_MESSAGES/sysstat.mo
 /usr/local/share/locale/da/LC_MESSAGES/sysstat.mo
 /usr/local/share/locale/de/LC_MESSAGES/sysstat.mo
@@ -44,6 +31,7 @@
 /usr/local/share/locale/id/LC_MESSAGES/sysstat.mo
 /usr/local/share/locale/it/LC_MESSAGES/sysstat.mo
 /usr/local/share/locale/ja/LC_MESSAGES/sysstat.mo
+/usr/local/share/locale/ka/LC_MESSAGES/sysstat.mo
 /usr/local/share/locale/ko/LC_MESSAGES/sysstat.mo
 /usr/local/share/locale/ky/LC_MESSAGES/sysstat.mo
 /usr/local/share/locale/lv/LC_MESSAGES/sysstat.mo
@@ -64,3 +52,14 @@
 /usr/local/share/locale/vi/LC_MESSAGES/sysstat.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/sysstat.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/sysstat.mo
+/usr/local/share/man/man1/cifsiostat.1.zst
+/usr/local/share/man/man1/iostat.1.zst
+/usr/local/share/man/man1/mpstat.1.zst
+/usr/local/share/man/man1/pidstat.1.zst
+/usr/local/share/man/man1/sadf.1.zst
+/usr/local/share/man/man1/sar.1.zst
+/usr/local/share/man/man1/tapestat.1.zst
+/usr/local/share/man/man5/sysstat.5.zst
+/usr/local/share/man/man8/sa1.8.zst
+/usr/local/share/man/man8/sa2.8.zst
+/usr/local/share/man/man8/sadc.8.zst
