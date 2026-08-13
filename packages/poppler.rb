@@ -26,7 +26,7 @@ class Poppler < CMake
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
   depends_on 'gpgmepp' => :library
-  depends_on 'harfbuzz' # R
+  depends_on 'harfbuzz'  => :library
   depends_on 'lcms' => :library
   depends_on 'libjpeg_turbo' => :library
   depends_on 'libpng' => :library
