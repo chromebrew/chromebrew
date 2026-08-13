@@ -20,6 +20,14 @@ class Libfmt < CMake
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
-  cmake_options "-DBUILD_SHARED_LIBS=TRUE -DFMT_TEST=#{ARCH.include?('i686') ? 'OFF' : 'ON'}"
-  run_tests unless ARCH.include?('i686')
+  cmake_options '-DBUILD_SHARED_LIBS=TRUE'
+  run_tests
+
+  def self.patch
+    patches = [
+      # Fix for i686 breakage mentioned in https://github.com/fmtlib/fmt/issues/4811
+      ['https://github.com/fmtlib/fmt/pull/4813.patch', '423847f4e448361cae1d86a2ab62e47b3cd31b76a065294ff9b2e5a689ec9cbd']
+    ]
+    ConvenienceFunctions.patch(patches) if version.eql?('12.2.0')
+  end
 end
