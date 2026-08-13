@@ -3,7 +3,7 @@ require 'package'
 class Boost < Package
   description 'Boost provides free peer-reviewed portable C++ source libraries.'
   homepage 'https://www.boost.org/'
-  version "1.91.0-1-#{CREW_ICU_VER}-#{CREW_PY_VER}"
+  version "1.92.0-#{CREW_ICU_VER}-#{CREW_PY_VER}"
   license 'Boost-1.0'
   compatibility 'all'
   source_url 'https://github.com/boostorg/boost.git'
