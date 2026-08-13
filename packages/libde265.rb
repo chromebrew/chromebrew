@@ -26,7 +26,7 @@ class Libde265 < Package
       -B builddir -G Ninja \
       #{CREW_CMAKE_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
       -DENABLE_ENCODER=ON \
-      -Wno-dev"
+      -Wno-author"
     system "#{CREW_NINJA} -C builddir"
   end
 

@@ -77,7 +77,7 @@ class Openmp < Package
       -DLLVM_INCLUDE_BENCHMARKS=OFF \
       -DOPENMP_LIBDIR_SUFFIX=#{CREW_LIB_SUFFIX} \
       -DPYTHON_EXECUTABLE=$(which python3) \
-      -Wno-dev"
+      -Wno-author"
     system "#{CREW_NINJA} -C builddir"
   end
 

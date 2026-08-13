@@ -39,7 +39,7 @@ class Poppler < Package
   def self.build
     system "cmake -B builddir #{CREW_CMAKE_OPTIONS} \
         -DENABLE_UNSTABLE_API_ABI_HEADERS=ON \
-        -Wno-dev \
+        -Wno-author \
         -G Ninja"
     system "#{CREW_NINJA} -C builddir"
   end

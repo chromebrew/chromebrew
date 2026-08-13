@@ -35,7 +35,7 @@ class Intel_media_sdk < Package
         -DENABLE_OPENCL:BOOL='ON' \
         -DENABLE_WAYLAND:BOOL='ON' \
         -DENABLE_X11_DRI3:BOOL='ON' \
-        -Wno-dev \
+        -Wno-author \
         .."
     end
     system 'ninja -C builddir'

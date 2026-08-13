@@ -154,7 +154,7 @@ class Llvm22_build < Package
             -DLLVM_LINK_LLVM_DYLIB=ON \
             -DLLVM_OPTIMIZED_TABLEGEN=ON \
             -DLLVM_TARGETS_TO_BUILD='#{@llvm_targets_to_build}' \
-            -Wno-dev"
+            -Wno-author"
     end
     system "#{CREW_NINJA} -C builddir -j #{CREW_NPROC}"
   end
