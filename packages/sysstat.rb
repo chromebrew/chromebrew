@@ -1,38 +1,29 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Sysstat < Package
+class Sysstat < Autotools
   description 'The sysstat utilities are a collection of performance monitoring tools for Linux. These include sar, sadf, mpstat, iostat, tapestat, pidstat, cifsiostat and sa tools.'
-  homepage 'http://sebastien.godard.pagesperso-orange.fr/'
-  version '12.1.5'
+  homepage 'https://sysstat.github.io/'
+  version '12.7.9'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'http://pagesperso-orange.fr/sebastien.godard/sysstat-12.1.5.tar.xz'
-  source_sha256 'a496936bb3f5093d780a50735f00e39b0b7f3a688eb89051f2ef5f86739522c5'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/sysstat/sysstat.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '88f64d75bf8be7fe4cb8136ec188631a6e504c44951d8f2003f1998167be2df7',
-     armv7l: '88f64d75bf8be7fe4cb8136ec188631a6e504c44951d8f2003f1998167be2df7',
-       i686: 'c33bc10c60d55e2649e62a13b2f666e63035538103d8a81740de1ab0f170685e',
-     x86_64: '5aac1bfb1bdf0a8d3dbeb010f179bbddeac24134768755d9dc3ccad01fb26f24'
+    aarch64: '2bbc4b040c8830a9e1c29c5245aeef718ffeaa0a7a4eba240b3d357e8a4e6743',
+     armv7l: '2bbc4b040c8830a9e1c29c5245aeef718ffeaa0a7a4eba240b3d357e8a4e6743',
+       i686: '8ce65526577737faa583fa9e837bf755ed8ffa4ae07f7c2ff258f34f175d1945',
+     x86_64: '31fda4f33ffb1e7a237e70bb14685e9203b5dbc91652ab9c3afaad5fa373ba0d'
   })
+
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 
   def self.patch
     system "sed -i 's/GRP=root/GRP=$(whoami)/' configure"
     system "sed -i 's/\"root\"/\"$(whoami)\"/g' configure"
-    system "sed -i 's/root/$(whoami)/g' configure.in"
+    system "sed -i 's/root/$(whoami)/g' configure.ac"
     system "sed -i 's/root/$(whoami)/g' sysstat-#{version}.spec"
-  end
-
-  def self.build
-    system "./configure \
-            --docdir=#{CREW_PREFIX}/doc \
-            --infodir=#{CREW_PREFIX}/info \
-            --mandir=#{CREW_MAN_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end
