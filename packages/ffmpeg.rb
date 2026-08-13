@@ -3,7 +3,7 @@ require 'package'
 class Ffmpeg < Package
   description 'Complete solution to record, convert and stream audio and video'
   homepage 'https://ffmpeg.org/'
-  version '9.0'
+  version '9.0.1'
   license 'LGPL-2,1, GPL-2, GPL-3, and LGPL-3' # When changing ffmpeg's configure options, make sure this variable is still accurate.
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://git.ffmpeg.org/ffmpeg.git'
@@ -30,7 +30,6 @@ class Ffmpeg < Package
   depends_on 'gsm' => :build
   depends_on 'gstreamer' => :library
   depends_on 'harfbuzz' => :library
-  depends_on 'intel_media_sdk' if ARCH == 'x86_64' && CREW_IS_INTEL # R
   depends_on 'jack' => :library
   depends_on 'libaom' => :library
   depends_on 'libass' => :library

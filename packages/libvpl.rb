@@ -3,11 +3,11 @@ require 'buildsystems/cmake'
 class Libvpl < CMake
   description 'Intel® Video Processing Library (Intel® VPL) API, dispatcher, and examples'
   homepage 'https://intel.github.io/libvpl/'
-  version '2.17.0'
+  version '2.17.0-1'
   license 'MIT'
   compatibility 'x86_64'
   source_url 'https://github.com/intel/libvpl.git'
-  git_hashtag "v#{version}"
+  git_hashtag "v#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -17,7 +17,6 @@ class Libvpl < CMake
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
-  depends_on 'intel_media_sdk' => :library
   depends_on 'libdrm' => :library
   depends_on 'libva' => :library
   depends_on 'libx11' => :library

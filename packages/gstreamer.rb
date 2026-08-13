@@ -36,7 +36,6 @@ class Gstreamer < Meson
   depends_on 'graphene' => :library
   depends_on 'gtk3' => :library
   depends_on 'harfbuzz' => :library
-  depends_on 'intel_media_sdk' => :library if ARCH.eql?('x86_64')
   depends_on 'json_glib' => :library
   depends_on 'lcms' => :library
   depends_on 'libaom' => :library

@@ -22,7 +22,6 @@ class Handbrake < Package
   depends_on 'glibc' => :executable
   depends_on 'glibc_lib' => :executable
   depends_on 'gtk4' => :executable
-  depends_on 'intel_media_sdk' => :executable
   depends_on 'jansson' => :executable
   depends_on 'libass' => :executable
   depends_on 'libdrm' => :executable
