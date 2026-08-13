@@ -1,4 +1,4 @@
-# Total size: 542546
+# Total size: 473566
 /usr/local/bin/rtl_adsb
 /usr/local/bin/rtl_biast
 /usr/local/bin/rtl_eeprom
@@ -16,5 +16,5 @@
 /usr/local/lib/librtlsdr.a
 /usr/local/lib/librtlsdr.so
 /usr/local/lib/librtlsdr.so.0
-/usr/local/lib/librtlsdr.so.2.0.1
+/usr/local/lib/librtlsdr.so.2.0.3
 /usr/local/lib/pkgconfig/librtlsdr.pc
