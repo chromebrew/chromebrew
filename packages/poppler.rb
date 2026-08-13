@@ -1,13 +1,13 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Poppler < Package
+class Poppler < CMake
   description 'Poppler is a PDF rendering library based on the xpdf-3.0 code base.'
   homepage 'https://poppler.freedesktop.org/'
-  version '23.07.0'
+  version '26.08.0'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
-  source_url "https://poppler.freedesktop.org/poppler-#{version}.tar.xz"
-  source_sha256 'f29b4b4bf47572611176454c8f21506d71d27eca5011a39aa44038b30b957db0'
+  source_url 'https://gitlab.freedesktop.org/poppler/poppler.git'
+  git_hashtag "poppler-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -36,15 +36,5 @@ class Poppler < Package
   depends_on 'qt5_base' # R
   depends_on 'zlib' # R
 
-  def self.build
-    system "cmake -B builddir #{CREW_CMAKE_OPTIONS} \
-        -DENABLE_UNSTABLE_API_ABI_HEADERS=ON \
-        -Wno-author \
-        -G Ninja"
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+  cmake_options '-DENABLE_UNSTABLE_API_ABI_HEADERS=ON'
 end
