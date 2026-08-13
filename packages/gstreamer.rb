@@ -25,7 +25,7 @@ class Gstreamer < Meson
   depends_on 'elfutils' => :library
   depends_on 'faac' => :library
   depends_on 'faad2' => :library
-  depends_on 'ffmpeg' => :library
+  depends_on 'ffmpeg' => :logical
   depends_on 'flac' => :library
   depends_on 'gcc_lib' => :library
   depends_on 'gdk_pixbuf' => :library
