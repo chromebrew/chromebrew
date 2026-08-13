@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Librtlsdr < CMake
   description 'Software to turn the RTL2832U into an SDR'
   homepage 'https://github.com/steve-m/librtlsdr'
-  version '2.0.2'
+  version '2.0.3'
   license 'GPL-2.0'
   compatibility 'all'
   source_url 'https://github.com/steve-m/librtlsdr.git'
