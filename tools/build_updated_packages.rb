@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# build_updated_packages version 5.5 (for Chromebrew)
+# build_updated_packages version 5.6 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -320,6 +320,7 @@ end
 
 # Final cleanup of packages list.
 updated_packages.uniq! unless updated_packages.empty?
+updated_packages.delete_if { !File.file?(File.join(crew_local_repo_root, it.downcase)) } unless updated_packages.empty?
 updated_packages.delete_if { !PackageUtils.compatible?(Package.load_package(File.join(crew_local_repo_root, it.downcase))) } unless updated_packages.empty?
 
 if updated_packages.empty?
