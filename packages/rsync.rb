@@ -13,16 +13,17 @@ class Rsync < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '93853f1a3c76455644656c624949b62a8be460ab5c94b039790cbca15fbb4b57',
-     armv7l: '93853f1a3c76455644656c624949b62a8be460ab5c94b039790cbca15fbb4b57',
-       i686: '5ecb9355614806b7042f6ceb2c0e880998296476af5dda40c81b1723ff36671a',
-     x86_64: 'ad2557558ea34207a04a2df32fcb2fbbcf26a0f84395fa8bebfaa346ec56b848'
+    aarch64: 'cb57874b9d886d61aee990d7d37f41bce74d1995de50f4264245a0b03875a47c',
+     armv7l: 'cb57874b9d886d61aee990d7d37f41bce74d1995de50f4264245a0b03875a47c',
+       i686: '502eff03a119d362a052cf45613e7dc07c49cca48dd2071bfb641071da3f961c',
+     x86_64: 'cbd8e845009b1cdf1c06286fe3eba4c604683348302034e1aed0af310b9e5847'
   })
 
   depends_on 'acl' => :executable
   depends_on 'attr' => :executable
   depends_on 'glibc' => :executable
   depends_on 'glibc_lib' => :executable
+  depends_on 'libiconv' => :executable
   depends_on 'lz4' => :executable
   depends_on 'openssl' => :executable
   depends_on 'popt' => :executable
