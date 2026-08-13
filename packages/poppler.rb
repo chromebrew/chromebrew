@@ -24,6 +24,7 @@ class Poppler < CMake
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'gpgmepp' => :build
   depends_on 'harfbuzz' # R
   depends_on 'lcms' # R
   depends_on 'libjpeg_turbo' # R
