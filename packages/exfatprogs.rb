@@ -11,10 +11,10 @@ class Exfatprogs < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '845e59aa8521d83d0206e899d11ffe9f8fb9daf00557632440f663fcc7f433e8',
-     armv7l: '845e59aa8521d83d0206e899d11ffe9f8fb9daf00557632440f663fcc7f433e8',
-       i686: '25bdb6a28991fb975a6d9b4076eb01161187db0557fd3bc6cbffe2c42a7d7c96',
-     x86_64: 'f355404dd24fe3a35c8d9911ec90a743f3ee3892076da9fb1c61e494d87849c3'
+    aarch64: '508688db5f681d7ccff94942948ca1a12b7141a38afcfe15a6b53e1f25b820ba',
+     armv7l: '508688db5f681d7ccff94942948ca1a12b7141a38afcfe15a6b53e1f25b820ba',
+       i686: '15e4b329cb44382317a9b2ee349bed6c155f59eaf88b8e726e24a8ddcae50392',
+     x86_64: '2548241bc0d073e5f2465e05f1a547f114c642bc58d4a0fb22fe239c49e20c23'
   })
 
   depends_on 'glibc' => :executable
