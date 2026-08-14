@@ -11,31 +11,31 @@ class Bind < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1f205f5c518b3d1b44d57d9655350cb0e019e1b2616d50e54ad4fe3887b9666b',
-     armv7l: '1f205f5c518b3d1b44d57d9655350cb0e019e1b2616d50e54ad4fe3887b9666b',
-       i686: 'f000d1ab8ab6116faa1d244a20f95fc68db4661ed31a3400b1d918147997383b',
-     x86_64: 'b61fc6619e1896cd492fd329d79bb3cba3f5197322beaeabb5c07481cc607801'
+    aarch64: 'c9a55ad5ba3ac70bb731435d6edf365407d910ad0c89955b89cc98f424398069',
+     armv7l: 'c9a55ad5ba3ac70bb731435d6edf365407d910ad0c89955b89cc98f424398069',
+       i686: '30fa074f574bc4e8bf2813481325c9f1f6b7a79ea181c7da485c0c787db1953f',
+     x86_64: '2e5c001a88419a8034be43f57b46ab31352a26019b1bfe2f4817c10f8ffafa44'
   })
 
   depends_on 'e2fsprogs' # R
-  depends_on 'glibc' # R
-  depends_on 'jemalloc' # R
-  depends_on 'json_c' # R
-  depends_on 'krb5' # R
-  depends_on 'libcap' # R
-  depends_on 'libedit' # R
-  depends_on 'libidn2' # R
-  depends_on 'libnghttp2' # R
+  depends_on 'glibc' => :library
+  depends_on 'jemalloc' => :library
+  depends_on 'json_c' => :library
+  depends_on 'krb5' => :library
+  depends_on 'libcap' => :executable
+  depends_on 'libedit' => :executable
+  depends_on 'libidn2' => :executable
+  depends_on 'libnghttp2' => :library
   depends_on 'libunistring' # R
-  depends_on 'liburcu' # R
-  depends_on 'libuv' # R
-  depends_on 'libxml2' # R
-  depends_on 'lmdb' => :build
+  depends_on 'liburcu' => :library
+  depends_on 'libuv' => :library
+  depends_on 'libxml2' => :library
+  depends_on 'lmdb' => :library
   depends_on 'ncurses' # R
-  depends_on 'openssl' # R
+  depends_on 'openssl' => :library
   depends_on 'py3_ply' => :build
   depends_on 'sphinx' => :build
-  depends_on 'zlib' # R
+  depends_on 'zlib' => :library
 
   meson_options '-Dnamed-lto=disabled'
 end
