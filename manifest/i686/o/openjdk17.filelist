@@ -1,4 +1,4 @@
-# Total size: 310536873
+# Total size: 311031207
 /usr/local/bin/jar
 /usr/local/bin/jarsigner
 /usr/local/bin/java
@@ -300,6 +300,7 @@
 /usr/local/share/openjdk17/legal/java.base/asm.md
 /usr/local/share/openjdk17/legal/java.base/c-libutl.md
 /usr/local/share/openjdk17/legal/java.base/cldr.md
+/usr/local/share/openjdk17/legal/java.base/gcc.md
 /usr/local/share/openjdk17/legal/java.base/icu.md
 /usr/local/share/openjdk17/legal/java.base/public_suffix.md
 /usr/local/share/openjdk17/legal/java.base/siphash.md

@@ -1,4 +1,4 @@
-# Total size: 151666152
+# Total size: 151071016
 /usr/local/bin/appletviewer
 /usr/local/bin/clhsdb
 /usr/local/bin/extcheck
@@ -140,7 +140,6 @@
 /usr/local/jre/lib/amd64/server/libjsig.so
 /usr/local/jre/lib/amd64/server/libjvm.so
 /usr/local/jre/lib/calendars.properties
-/usr/local/jre/lib/cat.jar
 /usr/local/jre/lib/charsets.jar
 /usr/local/jre/lib/classlist
 /usr/local/jre/lib/cmm/CIEXYZ.pf
@@ -151,7 +150,6 @@
 /usr/local/jre/lib/content-types.properties
 /usr/local/jre/lib/currency.data
 /usr/local/jre/lib/ext/cldrdata.jar
-/usr/local/jre/lib/ext/crs-agent.jar
 /usr/local/jre/lib/ext/dnsns.jar
 /usr/local/jre/lib/ext/jaccess.jar
 /usr/local/jre/lib/ext/localedata.jar
