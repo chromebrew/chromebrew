@@ -1,4 +1,4 @@
-# Total size: 1218517
+# Total size: 1223163
 /usr/local/bin/blueprint-compiler
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/__init__.py
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/__pycache__/__init__.cpython-314.pyc
@@ -6,6 +6,7 @@
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/__pycache__/ast_utils.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/__pycache__/completions.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/__pycache__/completions_utils.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/blueprintcompiler/__pycache__/config.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/__pycache__/decompiler.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/__pycache__/errors.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/__pycache__/formatter.cpython-314.pyc
@@ -25,6 +26,7 @@
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/ast_utils.py
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/completions.py
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/completions_utils.py
+/usr/local/lib/python3.14/site-packages/blueprintcompiler/config.py
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/data/__pycache__/collect_stats.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/data/collect_stats.py
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/data/stats.json
@@ -32,6 +34,7 @@
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/errors.py
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/formatter.py
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/gir.py
+/usr/local/lib/python3.14/site-packages/blueprintcompiler/gir.py.rej
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/interactive_port.py
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/language/__init__.py
 /usr/local/lib/python3.14/site-packages/blueprintcompiler/language/__pycache__/__init__.cpython-314.pyc
