@@ -1,5 +1,5 @@
 ---
-# Version 2.9
+# Version 3.0
 name: Generate PR
 run-name: Generate PR for ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} by @${{ github.actor }}
 on:
@@ -501,6 +501,7 @@ jobs:
           x86_64_PACKAGES: ${{ needs.get-compatibility.outputs.x86_64_PACKAGES }}
           armv7l_PACKAGES: ${{ needs.get-compatibility.outputs.armv7l_PACKAGES }}
         run: |
+          set -x
           # Make untouched clone of repo so we can get the existing versions of packages.
           (cd /tmp ; git clone --depth=1 https://github.com/${{ github.repository }}.git chromebrew_main )
           gem install -N json --conservative
