@@ -142,7 +142,7 @@ class Ffmpeg < Package
         --enable-libopencore_amrwb \
         --enable-libopenjpeg \
         --enable-libopus \
-        --enable-libpulse \
+        --disable-libpulse \
         --enable-librav1e \
         --enable-librtmp \
         --enable-librubberband \
