@@ -18,38 +18,4 @@ class Bash_completion < Autotools
   })
 
   depends_on 'bash' => :logical
-
-  # Handle conflicts with uutils_coreutils.
-  autotools_install_extras do
-    %w[
-      b2sum
-      chgrp
-      chmod
-      chown
-      cksum
-      dd
-      env
-      hostname
-      id
-      kill
-      md5sum
-      mktemp
-      nproc
-      printenv
-      pwd
-      sha1sum
-      sha224sum
-      sha256sum
-      sha384sum
-      sha512sum
-      timeout
-      truncate
-    ].each do |completion|
-      if File.file?("#{CREW_DEST_PREFIX}/share/bash-completion/completions/#{completion}")
-        FileUtils.mv "#{CREW_DEST_PREFIX}/share/bash-completion/completions/#{completion}", "#{CREW_DEST_PREFIX}/share/bash-completion/completions/#{completion}_bash"
-      else
-        puts "#{CREW_DEST_PREFIX}/share/bash-completion/completions/#{completion} does not exist.".orange
-      end
-    end
-  end
 end
