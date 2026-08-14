@@ -11,9 +11,9 @@ class Blueprint_compiler < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bf6e0cac652fd99c82a5a47d92eb7665dff4d78da53e610898180c9e6f78ac77',
-     armv7l: 'bf6e0cac652fd99c82a5a47d92eb7665dff4d78da53e610898180c9e6f78ac77',
-     x86_64: 'e1f878a4f68ea001f85d837c65abfccdc5866712c6d20797cc4431fa7f67c570'
+    aarch64: '65f0002a675539fdeac82323ebe436761673fec240bf4c08607205dca5cb30fb',
+     armv7l: '65f0002a675539fdeac82323ebe436761673fec240bf4c08607205dca5cb30fb',
+     x86_64: 'b2a25f0848dcb6f1668620dbc1459393d2d67fb6b7b6ca93d288d02773309f2b'
   })
 
   depends_on 'gobject_introspection' => :build
