@@ -17,7 +17,7 @@ class Bind < Meson
      x86_64: '2e5c001a88419a8034be43f57b46ab31352a26019b1bfe2f4817c10f8ffafa44'
   })
 
-  depends_on 'e2fsprogs' # R
+  depends_on 'e2fsprogs' => :build
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
   depends_on 'jemalloc' => :library
@@ -27,12 +27,12 @@ class Bind < Meson
   depends_on 'libedit' => :executable
   depends_on 'libidn2' => :executable
   depends_on 'libnghttp2' => :library
-  depends_on 'libunistring' # R
+  depends_on 'libunistring' => :build
   depends_on 'liburcu' => :library
   depends_on 'libuv' => :library
   depends_on 'libxml2' => :library
   depends_on 'lmdb' => :library
-  depends_on 'ncurses' # R
+  depends_on 'ncurses' => :build
   depends_on 'openssl' => :library
   depends_on 'py3_ply' => :build
   depends_on 'sphinx' => :build
