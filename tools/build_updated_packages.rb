@@ -322,8 +322,8 @@ end
 updated_packages.uniq! unless updated_packages.empty?
 updated_packages.delete_if { !File.file?(File.join(crew_local_repo_root, it.downcase)) } unless updated_packages.empty?
 unless updated_packages.empty?
-  updated_packages.delete_if do
-    p = Package.load_package(File.join(crew_local_repo_root, it.downcase))
+  updated_packages.delete_if do |check_pkg|
+    p = Package.load_package(File.join(crew_local_repo_root, check_pkg.downcase))
     !PackageUtils.compatible?(p) || p.ignore_updater?
   end
 end
