@@ -4,11 +4,11 @@ require 'convenience_functions'
 class Handbrake < Package
   description 'HandBrake is a tool for converting video from nearly any format to a selection of modern, widely supported codecs.'
   homepage 'https://handbrake.fr/'
-  version '1.11.2'
+  version '1.11.2-1'
   license 'GPL-2'
   compatibility 'x86_64'
   source_url 'https://github.com/HandBrake/HandBrake.git'
-  git_hashtag version
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
