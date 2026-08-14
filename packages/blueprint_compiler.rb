@@ -16,6 +16,7 @@ class Blueprint_compiler < Meson
      x86_64: 'e1f878a4f68ea001f85d837c65abfccdc5866712c6d20797cc4431fa7f67c570'
   })
 
+  depends_on 'gobject_introspection' => :build
   depends_on 'gtk4' => :build
   depends_on 'py3_pygobject' => :logical
 
