@@ -30,6 +30,7 @@ class Bind < Meson
   depends_on 'liburcu' # R
   depends_on 'libuv' # R
   depends_on 'libxml2' # R
+  depends_on 'lmdb' => :build
   depends_on 'ncurses' # R
   depends_on 'openssl' # R
   depends_on 'py3_ply' => :build
