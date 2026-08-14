@@ -3,7 +3,7 @@ require 'package'
 class Ffmpeg < Package
   description 'Complete solution to record, convert and stream audio and video'
   homepage 'https://ffmpeg.org/'
-  version '9.0'
+  version '9.0.1'
   license 'LGPL-2,1, GPL-2, GPL-3, and LGPL-3' # When changing ffmpeg's configure options, make sure this variable is still accurate.
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://git.ffmpeg.org/ffmpeg.git'
@@ -11,9 +11,9 @@ class Ffmpeg < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '72ecea7904a8b59d351a7660abd0062714ccee1715142c93b65bd928aff7a04e',
-     armv7l: '72ecea7904a8b59d351a7660abd0062714ccee1715142c93b65bd928aff7a04e',
-     x86_64: '20e19baaaebc78e7ced71e2dfa342402533719fe7447c64dc76c6134278619b1'
+    aarch64: '546707120021a8864f13ab3b2e691f82cf1320d9764e4e8bb863cb5d5edc8ac5',
+     armv7l: '546707120021a8864f13ab3b2e691f82cf1320d9764e4e8bb863cb5d5edc8ac5',
+     x86_64: '5a7939b9342798178435d43bf19ed2771a831be78dbb0dd25089ba142d8ea3dd'
   })
 
   depends_on 'alsa_lib' => :library
@@ -28,10 +28,9 @@ class Ffmpeg < Package
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
   depends_on 'gsm' => :build
-  depends_on 'gstreamer' => :library
   depends_on 'harfbuzz' => :library
-  depends_on 'intel_media_sdk' if ARCH == 'x86_64' && CREW_IS_INTEL # R
   depends_on 'jack' => :library
+  depends_on 'ladspa' => :build
   depends_on 'libaom' => :library
   depends_on 'libass' => :library
   depends_on 'libavc1394' => :library
@@ -70,8 +69,6 @@ class Ffmpeg < Package
   depends_on 'openjpeg' => :library
   depends_on 'openssl' => :library
   depends_on 'opus' => :library
-  depends_on 'pipewire' => :library
-  depends_on 'pulseaudio' => :library
   depends_on 'rav1e' => :library
   depends_on 'rtmpdump' => :library
   depends_on 'rubberband' => :library
@@ -145,7 +142,7 @@ class Ffmpeg < Package
         --enable-libopencore_amrwb \
         --enable-libopenjpeg \
         --enable-libopus \
-        --enable-libpulse \
+        --disable-libpulse \
         --enable-librav1e \
         --enable-librtmp \
         --enable-librubberband \

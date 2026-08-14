@@ -1853,7 +1853,7 @@ def version_command(args)
   else
     args['<name>'].each do |name|
       search name
-      version_array = @pkg.nil? ? [{ package: name, version: '' }] : [{ package: name, version: @pkg.version }]
+      version_array = @pkg.nil? ? [{ package: name, version: '-1' }] : [{ package: name, version: @pkg.version }]
       puts CREW_OUTPUT_JSON ? version_array.to_json : @pkg.version
     end
   end

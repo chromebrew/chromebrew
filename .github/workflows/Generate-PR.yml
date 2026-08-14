@@ -1,5 +1,5 @@
 ---
-# Version 2.9
+# Version 3.0
 name: Generate PR
 run-name: Generate PR for ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} by @${{ github.actor }}
 on:
@@ -501,6 +501,7 @@ jobs:
           x86_64_PACKAGES: ${{ needs.get-compatibility.outputs.x86_64_PACKAGES }}
           armv7l_PACKAGES: ${{ needs.get-compatibility.outputs.armv7l_PACKAGES }}
         run: |
+          set -x
           # Make untouched clone of repo so we can get the existing versions of packages.
           (cd /tmp ; git clone --depth=1 https://github.com/${{ github.repository }}.git chromebrew_main )
           gem install -N json --conservative
@@ -534,9 +535,9 @@ jobs:
             for file in ${CHANGED_PACKAGES}
               do
               # Get version before PR, but do not let a broken version stop us.
-              main_version_string="$(cd /tmp/chromebrew_main ; LD_LIBRARY_PATH=/usr/local/lib ruby bin/crew version ${file} || true)"
+              main_version_string="$(cd /tmp/chromebrew_main ; LD_LIBRARY_PATH=/usr/local/lib ruby bin/crew version ${file} -j | jq -r '.[]|.version' || true)"
               [[ -n "$main_version_string" ]] && main_version_string=": $main_version_string"
-              pkg_version="$(LD_LIBRARY_PATH=/usr/local/lib ruby bin/crew version ${file})"
+              pkg_version="$(LD_LIBRARY_PATH=/usr/local/lib ruby bin/crew version ${file} -j | jq -r '.[]|.version')"
               upstream_version="$(LD_LIBRARY_PATH=/usr/local/lib ruby tools/version.rb -j "${file}" | jq -r '.[]|.upstream_version' || true)"
               if [[ -z "$pkg_version" ]]; then
                 echo "- \`${file}\`${main_version_string}" >> /tmp/pr.txt

@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gtk4 < Meson
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://www.gtk.org/'
-  version '4.22.4-1'
+  version '4.22.4-2'
   license 'LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
@@ -11,9 +11,9 @@ class Gtk4 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '25e0f673c9ff2507edd2a29be5f3beb8dee9e05b173d09889856c03f6391e9f3',
-     armv7l: '25e0f673c9ff2507edd2a29be5f3beb8dee9e05b173d09889856c03f6391e9f3',
-     x86_64: '2dbaae2e2265a8727bbb39a9a39261b0eccbbbed0eb475077b2c7768ff133358'
+    aarch64: 'e7868a7b7a9c09c7eabe551dca1fbe3aa57d3d3a0a4d440daeddcc4367fbd177',
+     armv7l: 'e7868a7b7a9c09c7eabe551dca1fbe3aa57d3d3a0a4d440daeddcc4367fbd177',
+     x86_64: '2bfc16c55ab83c9504479d94afcadfc9b90ed1c19e5f5b2a9ee3b4ca237bc09f'
   })
 
   depends_on 'adwaita_fonts' => :logical
@@ -35,7 +35,6 @@ class Gtk4 < Meson
   # depends_on 'gstreamer' # R Let's avoid the glibc 2.29 dep.
   depends_on 'harfbuzz' => :library
   depends_on 'hicolor_icon_theme' => :logical
-  depends_on 'intel_media_sdk' => :build if ARCH.eql?('x86_64')
   depends_on 'iso_codes' => :build
   depends_on 'libcloudproviders' => :library
   depends_on 'libepoxy' => :library
