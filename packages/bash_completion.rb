@@ -22,7 +22,6 @@ class Bash_completion < Autotools
   # Handle conflicts with uutils_coreutils.
   autotools_install_extras do
     %w[
-      arch
       b2sum
       chgrp
       chmod
@@ -46,7 +45,11 @@ class Bash_completion < Autotools
       timeout
       truncate
     ].each do |completion|
-      FileUtils.mv "#{CREW_DEST_PREFIX}/share/bash-completion/completions/#{completion}", "#{CREW_DEST_PREFIX}/share/bash-completion/completions/#{completion}_bash"
+      if File.file?("#{CREW_DEST_PREFIX}/share/bash-completion/completions/#{completion}")
+        FileUtils.mv "#{CREW_DEST_PREFIX}/share/bash-completion/completions/#{completion}", "#{CREW_DEST_PREFIX}/share/bash-completion/completions/#{completion}_bash"
+      else
+        puts "#{CREW_DEST_PREFIX}/share/bash-completion/completions/#{completion} does not exist.".orange
+      end
     end
   end
 end
