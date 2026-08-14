@@ -1,4 +1,4 @@
-# Total size: 28038919
+# Total size: 28038043
 /usr/local/bin/net
 /usr/local/bin/nmblookup
 /usr/local/bin/rpcclient
@@ -31,7 +31,7 @@
 /usr/local/lib/libndr-standard.so.0.0.1
 /usr/local/lib/libndr.so
 /usr/local/lib/libndr.so.6
-/usr/local/lib/libndr.so.6.0.0
+/usr/local/lib/libndr.so.6.1.0
 /usr/local/lib/libnetapi.so
 /usr/local/lib/libnetapi.so.1
 /usr/local/lib/libnetapi.so.1.0.0
