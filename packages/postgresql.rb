@@ -11,9 +11,9 @@ class Postgresql < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e26d3d2b33fb86d939295a6e40aaa6166d2b4058aa1499ada914f742af8d27a2',
-     armv7l: 'e26d3d2b33fb86d939295a6e40aaa6166d2b4058aa1499ada914f742af8d27a2',
-     x86_64: '02d866fa34ded9e26f7a263d87fcf6e2c242e56de3d21783da707a2fd4f4aeb2'
+    aarch64: '8fdf13b4cab9ba8d57872932d6eefc3219d1ff43ba4b6b0c8fedd115e9a12894',
+     armv7l: '8fdf13b4cab9ba8d57872932d6eefc3219d1ff43ba4b6b0c8fedd115e9a12894',
+     x86_64: '74ca468b0e5c2a60dda71d58b9c8116e02888be443eda890dc5bee7959fabbe3'
   })
 
   depends_on 'brotli' => :build
@@ -23,6 +23,7 @@ class Postgresql < Meson
   depends_on 'fop' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'icu4c' => :executable
   depends_on 'krb5' => :library
   depends_on 'libcyrussasl' => :build
