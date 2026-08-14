@@ -20,15 +20,6 @@ class Blueprint_compiler < Meson
   depends_on 'gtk4' => :build
   depends_on 'py3_pygobject' => :logical
 
-  def self.patch
-    patches = [
-      # https://gitlab.gnome.org/GNOME/blueprint-compiler/-/work_items/254
-      ['https://gitlab.gnome.org/GNOME/blueprint-compiler/-/merge_requests/314.diff',
-       'f42df751f5a8bfc853faf67fddac33fe162afae71e9212021e1595b558c9d556']
-    ]
-    ConvenienceFunctions.patch(patches) if version.gsub("-#{CREW_PY_VER}", '').include?('0.22')
-  end
-
   def self.check
     # From: https://github.com/Homebrew/homebrew-core/blob/12f0265ccfd2a9eaf66cf94733acd79a88572ad2/Formula/b/blueprint-compiler.rb
     testpath = `pwd`.chomp
