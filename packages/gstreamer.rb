@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gstreamer < Meson
   description 'GStreamer is a library for constructing graphs of media-handling components.'
   homepage 'https://gstreamer.freedesktop.org/'
-  version '1.28.3'
+  version '1.28.6'
   license 'LGPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/gstreamer/gstreamer.git'
@@ -11,11 +11,12 @@ class Gstreamer < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f12f4cc108abbe74fcdff89bd1a7bfd378e3cb73dca582e858dac9a3977bf6a2',
-     armv7l: 'f12f4cc108abbe74fcdff89bd1a7bfd378e3cb73dca582e858dac9a3977bf6a2',
-     x86_64: '910462bcfa2d674e6b9f45e663ef042c263eb9a5ac3d2996357abcdbf7f63644'
+    aarch64: '019240de1125a3895fb52a799c3c717d925342af36a4c5d32867d0be1958dd8f',
+     armv7l: '019240de1125a3895fb52a799c3c717d925342af36a4c5d32867d0be1958dd8f',
+     x86_64: 'c2ed40d3102f24fb223c5c7184ea11912c0e9ed6a747dcbfc3afc5bd1d283164'
   })
 
+  depends_on 'abseil_cpp' => :build
   depends_on 'alsa_lib' => :library
   depends_on 'bzip2' => :library
   depends_on 'ca_certificates' => :build
@@ -78,6 +79,7 @@ class Gstreamer < Meson
   depends_on 'libxv' => :library
   depends_on 'lilv' => :library
   depends_on 'mesa' => :library
+  depends_on 'mpg123' => :library
   depends_on 'neon' => :library
   depends_on 'nettle' => :library
   depends_on 'openal' => :library
@@ -88,7 +90,6 @@ class Gstreamer < Meson
   depends_on 'opus' => :library
   depends_on 'opusfile' => :build
   depends_on 'pango' => :library
-  depends_on 'pulseaudio' => :library
   depends_on 'py3_gitlint' => :build
   depends_on 'py3_setuptools' => :build
   depends_on 'qt5_base' => :library
@@ -108,7 +109,6 @@ class Gstreamer < Meson
 
   # no_lto
   gnome
-  ignore_updater
 
   def self.prebuild
     system "#{CREW_PREFIX}/bin/update-ca-certificates --fresh --certsconf #{CREW_PREFIX}/etc/ca-certificates.conf"
@@ -122,7 +122,10 @@ class Gstreamer < Meson
     -Dgpl=enabled \
     -Dgtk_doc=disabled \
     -Dintrospection=disabled \
-    -Dtests=disabled"
+    -Dtests=disabled \
+    -Dwebrtc=disabled \
+    -Dgst-plugins-bad:webrtc=disabled \
+    -Dgst-plugins-bad:webrtcdsp=disabled"
 
   meson_install_extras do
     # avoid conflicts from libglvnd
