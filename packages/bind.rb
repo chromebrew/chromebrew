@@ -11,10 +11,10 @@ class Bind < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c9a55ad5ba3ac70bb731435d6edf365407d910ad0c89955b89cc98f424398069',
-     armv7l: 'c9a55ad5ba3ac70bb731435d6edf365407d910ad0c89955b89cc98f424398069',
-       i686: '30fa074f574bc4e8bf2813481325c9f1f6b7a79ea181c7da485c0c787db1953f',
-     x86_64: '2e5c001a88419a8034be43f57b46ab31352a26019b1bfe2f4817c10f8ffafa44'
+    aarch64: '221f3bd9daf7ba5b6a6bf04b0b26f7dc9feb572e27ba87b87fd6b67420764ef1',
+     armv7l: '221f3bd9daf7ba5b6a6bf04b0b26f7dc9feb572e27ba87b87fd6b67420764ef1',
+       i686: '918347b8281d99c8a87494727c32051b79ce259a65ccf85d46cd6411446217ae',
+     x86_64: 'f5cd5ae5df7d0eeb5bda55409e4d803f8f351f70cec103b83c5db97a0d749c0a'
   })
 
   depends_on 'e2fsprogs' => :build
