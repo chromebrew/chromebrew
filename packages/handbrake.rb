@@ -12,7 +12,7 @@ class Handbrake < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '1d9fdaf5a57b94b81bdd1889922f9fba8f7e094ce5b877939e57828f3ecbcfa2'
+     x86_64: 'd9d82046b0e3362365f3761945450c35cdd892d61d8da411c222154a291c0a1c'
   })
 
   depends_on 'bzip2' => :executable
