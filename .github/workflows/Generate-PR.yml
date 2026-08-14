@@ -537,7 +537,7 @@ jobs:
               # Get version before PR, but do not let a broken version stop us.
               main_version_string="$(cd /tmp/chromebrew_main ; LD_LIBRARY_PATH=/usr/local/lib ruby bin/crew version ${file} -j | jq -r '.[]|.version' || true)"
               [[ -n "$main_version_string" ]] && main_version_string=": $main_version_string"
-              pkg_version="$(LD_LIBRARY_PATH=/usr/local/lib ruby bin/crew version ${file})"
+              pkg_version="$(LD_LIBRARY_PATH=/usr/local/lib ruby bin/crew version ${file} -j | jq -r '.[]|.version')"
               upstream_version="$(LD_LIBRARY_PATH=/usr/local/lib ruby tools/version.rb -j "${file}" | jq -r '.[]|.upstream_version' || true)"
               if [[ -z "$pkg_version" ]]; then
                 echo "- \`${file}\`${main_version_string}" >> /tmp/pr.txt
