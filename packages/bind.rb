@@ -19,6 +19,7 @@ class Bind < Meson
 
   depends_on 'e2fsprogs' # R
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'jemalloc' => :library
   depends_on 'json_c' => :library
   depends_on 'krb5' => :library
