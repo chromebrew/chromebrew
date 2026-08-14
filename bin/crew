@@ -189,7 +189,7 @@ def search(pkg_name, pkg_path: File.join(CREW_PACKAGES_PATH, "#{pkg_name}.rb"), 
     return check_load_package(pkg_path)
   else
     @pkg = nil
-    abort "Package #{pkg_name} not found. 😞".lightred unless silent
+    abort "Package #{pkg_name} not found. 😞".lightred unless silent || CREW_OUTPUT_JSON
   end
 rescue StandardError => e
   abort "Error with #{pkg_name}.rb: #{e}".lightred unless silent
@@ -1849,11 +1849,12 @@ end
 def version_command(args)
   args = { '<name>' => args.split } if args.is_a? String
   if args['<name>'].empty?
-    puts CREW_VERSION
+    puts CREW_OUTPUT_JSON ? [{ package: 'Chromebrew', version: CREW_VERSION }].to_json : CREW_VERSION
   else
     args['<name>'].each do |name|
       search name
-      puts @pkg.version
+      version_array = @pkg.nil? ? [{ package: name, version: '' }] : [{ package: name, version: @pkg.version }]
+      puts CREW_OUTPUT_JSON ? version_array.to_json : @pkg.version
     end
   end
 end
