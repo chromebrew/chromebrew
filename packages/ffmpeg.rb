@@ -11,9 +11,9 @@ class Ffmpeg < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '72ecea7904a8b59d351a7660abd0062714ccee1715142c93b65bd928aff7a04e',
-     armv7l: '72ecea7904a8b59d351a7660abd0062714ccee1715142c93b65bd928aff7a04e',
-     x86_64: '20e19baaaebc78e7ced71e2dfa342402533719fe7447c64dc76c6134278619b1'
+    aarch64: '546707120021a8864f13ab3b2e691f82cf1320d9764e4e8bb863cb5d5edc8ac5',
+     armv7l: '546707120021a8864f13ab3b2e691f82cf1320d9764e4e8bb863cb5d5edc8ac5',
+     x86_64: '5a7939b9342798178435d43bf19ed2771a831be78dbb0dd25089ba142d8ea3dd'
   })
 
   depends_on 'alsa_lib' => :library

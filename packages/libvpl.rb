@@ -11,7 +11,7 @@ class Libvpl < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: 'e6d0a955a414876db92bd454d3ea446b33c30eba2cbf602dc3f914b1d870b1d1'
+     x86_64: '37b60625bd80ec7ab1acb5bb271d229afbd6413dc55fff914d7603689350a5e3'
   })
 
   depends_on 'gcc_lib' => :library

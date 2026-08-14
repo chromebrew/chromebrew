@@ -1,4 +1,4 @@
-# Total size: 192130007
+# Total size: 191872602
 /usr/local/bin/ffmpeg
 /usr/local/bin/ffplay
 /usr/local/bin/ffprobe
@@ -151,31 +151,31 @@
 /usr/local/lib64/libavcodec.a
 /usr/local/lib64/libavcodec.so
 /usr/local/lib64/libavcodec.so.63
-/usr/local/lib64/libavcodec.so.63.1.100
+/usr/local/lib64/libavcodec.so.63.1.101
 /usr/local/lib64/libavdevice.a
 /usr/local/lib64/libavdevice.so
 /usr/local/lib64/libavdevice.so.63
-/usr/local/lib64/libavdevice.so.63.1.100
+/usr/local/lib64/libavdevice.so.63.1.101
 /usr/local/lib64/libavfilter.a
 /usr/local/lib64/libavfilter.so
 /usr/local/lib64/libavfilter.so.12
-/usr/local/lib64/libavfilter.so.12.1.100
+/usr/local/lib64/libavfilter.so.12.1.101
 /usr/local/lib64/libavformat.a
 /usr/local/lib64/libavformat.so
 /usr/local/lib64/libavformat.so.63
-/usr/local/lib64/libavformat.so.63.1.100
+/usr/local/lib64/libavformat.so.63.1.101
 /usr/local/lib64/libavutil.a
 /usr/local/lib64/libavutil.so
 /usr/local/lib64/libavutil.so.61
-/usr/local/lib64/libavutil.so.61.1.100
+/usr/local/lib64/libavutil.so.61.1.101
 /usr/local/lib64/libswresample.a
 /usr/local/lib64/libswresample.so
 /usr/local/lib64/libswresample.so.7
-/usr/local/lib64/libswresample.so.7.1.100
+/usr/local/lib64/libswresample.so.7.1.101
 /usr/local/lib64/libswscale.a
 /usr/local/lib64/libswscale.so
 /usr/local/lib64/libswscale.so.10
-/usr/local/lib64/libswscale.so.10.1.100
+/usr/local/lib64/libswscale.so.10.1.101
 /usr/local/lib64/pkgconfig/libavcodec.pc
 /usr/local/lib64/pkgconfig/libavdevice.pc
 /usr/local/lib64/pkgconfig/libavfilter.pc
