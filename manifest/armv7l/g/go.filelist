@@ -1,4 +1,4 @@
-# Total size: 228494849
+# Total size: 228571474
 /usr/local/bin/go
 /usr/local/bin/gofmt
 /usr/local/share/go/CONTRIBUTING.md
@@ -14122,6 +14122,7 @@
 /usr/local/share/go/test/fixedbugs/issue79186.go
 /usr/local/share/go/test/fixedbugs/issue7921.go
 /usr/local/share/go/test/fixedbugs/issue7944.go
+/usr/local/share/go/test/fixedbugs/issue79874.go
 /usr/local/share/go/test/fixedbugs/issue7995.go
 /usr/local/share/go/test/fixedbugs/issue7995b.dir/x1.go
 /usr/local/share/go/test/fixedbugs/issue7995b.dir/x2.go
@@ -14131,8 +14132,11 @@
 /usr/local/share/go/test/fixedbugs/issue7998.go
 /usr/local/share/go/test/fixedbugs/issue80004.go
 /usr/local/share/go/test/fixedbugs/issue8004.go
+/usr/local/share/go/test/fixedbugs/issue80097.go
 /usr/local/share/go/test/fixedbugs/issue8011.go
+/usr/local/share/go/test/fixedbugs/issue80127.go
 /usr/local/share/go/test/fixedbugs/issue8017.go
+/usr/local/share/go/test/fixedbugs/issue80188.go
 /usr/local/share/go/test/fixedbugs/issue8028.go
 /usr/local/share/go/test/fixedbugs/issue8036.go
 /usr/local/share/go/test/fixedbugs/issue8039.go
@@ -14140,6 +14144,10 @@
 /usr/local/share/go/test/fixedbugs/issue8047.go
 /usr/local/share/go/test/fixedbugs/issue8047b.go
 /usr/local/share/go/test/fixedbugs/issue8048.go
+/usr/local/share/go/test/fixedbugs/issue80517_1.go
+/usr/local/share/go/test/fixedbugs/issue80517_2.go
+/usr/local/share/go/test/fixedbugs/issue80517_3.go
+/usr/local/share/go/test/fixedbugs/issue80577.go
 /usr/local/share/go/test/fixedbugs/issue8060.dir/a.go
 /usr/local/share/go/test/fixedbugs/issue8060.dir/b.go
 /usr/local/share/go/test/fixedbugs/issue8060.go
