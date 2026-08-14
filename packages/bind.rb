@@ -36,4 +36,6 @@ class Bind < Meson
   depends_on 'py3_ply' => :build
   depends_on 'sphinx' => :build
   depends_on 'zlib' # R
+
+  meson_options '-Dnamed-lto=disabled'
 end
