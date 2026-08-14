@@ -1,4 +1,4 @@
-# Total size: 330183049
+# Total size: 328508432
 /usr/local/bin/jaotc
 /usr/local/bin/jar
 /usr/local/bin/jarsigner
@@ -284,8 +284,6 @@
 /usr/local/share/openjdk11/include/jvmticmlr.h
 /usr/local/share/openjdk11/include/linux/jawt_md.h
 /usr/local/share/openjdk11/include/linux/jni_md.h
-/usr/local/share/openjdk11/jmods/com.azul.crs.client.jmod
-/usr/local/share/openjdk11/jmods/com.azul.tooling.jmod
 /usr/local/share/openjdk11/jmods/java.base.jmod
 /usr/local/share/openjdk11/jmods/java.compiler.jmod
 /usr/local/share/openjdk11/jmods/java.datatransfer.jmod
@@ -357,13 +355,6 @@
 /usr/local/share/openjdk11/jmods/jdk.unsupported.jmod
 /usr/local/share/openjdk11/jmods/jdk.xml.dom.jmod
 /usr/local/share/openjdk11/jmods/jdk.zipfs.jmod
-/usr/local/share/openjdk11/legal/com.azul.crs.client/ADDITIONAL_LICENSE_INFO
-/usr/local/share/openjdk11/legal/com.azul.crs.client/ASSEMBLY_EXCEPTION
-/usr/local/share/openjdk11/legal/com.azul.crs.client/LICENSE
-/usr/local/share/openjdk11/legal/com.azul.crs.client/crs-asm.md
-/usr/local/share/openjdk11/legal/com.azul.tooling/ADDITIONAL_LICENSE_INFO
-/usr/local/share/openjdk11/legal/com.azul.tooling/ASSEMBLY_EXCEPTION
-/usr/local/share/openjdk11/legal/com.azul.tooling/LICENSE
 /usr/local/share/openjdk11/legal/java.base/ADDITIONAL_LICENSE_INFO
 /usr/local/share/openjdk11/legal/java.base/ASSEMBLY_EXCEPTION
 /usr/local/share/openjdk11/legal/java.base/LICENSE
