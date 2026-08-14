@@ -1,6 +1,6 @@
-require 'buildsystems/autotools'
+require 'buildsystems/meson'
 
-class Bind < Autotools
+class Bind < Meson
   description 'BIND is open source software that enables you to publish your Domain Name System (DNS) information on the Internet, and to resolve DNS queries for your users.'
   homepage 'https://www.isc.org/bind/'
   version '9.21.24'
@@ -35,6 +35,4 @@ class Bind < Autotools
   depends_on 'py3_ply' => :build
   depends_on 'sphinx' => :build
   depends_on 'zlib' # R
-
-  autotools_configure_options '--enable-fixed-rrset --enable-full-report --with-libidn2'
 end
