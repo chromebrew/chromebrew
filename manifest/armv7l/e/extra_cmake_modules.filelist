@@ -1,4 +1,4 @@
-# Total size: 1945399
+# Total size: 1952568
 /usr/local/share/ECM/cmake/ECMConfig.cmake
 /usr/local/share/ECM/cmake/ECMConfigVersion.cmake
 /usr/local/share/ECM/find-modules/ECMFindModuleHelpersStub.cmake
@@ -143,6 +143,7 @@
 /usr/local/share/doc/ECM/html/_sources/find-module/FindInotify.rst.txt
 /usr/local/share/doc/ECM/html/_sources/find-module/FindIsoCodes.rst.txt
 /usr/local/share/doc/ECM/html/_sources/find-module/FindKF5.rst.txt
+/usr/local/share/doc/ECM/html/_sources/find-module/FindKF6.rst.txt
 /usr/local/share/doc/ECM/html/_sources/find-module/FindLibExiv2.rst.txt
 /usr/local/share/doc/ECM/html/_sources/find-module/FindLibGit2.rst.txt
 /usr/local/share/doc/ECM/html/_sources/find-module/FindLibMount.rst.txt
@@ -250,6 +251,7 @@
 /usr/local/share/doc/ECM/html/find-module/FindInotify.html
 /usr/local/share/doc/ECM/html/find-module/FindIsoCodes.html
 /usr/local/share/doc/ECM/html/find-module/FindKF5.html
+/usr/local/share/doc/ECM/html/find-module/FindKF6.html
 /usr/local/share/doc/ECM/html/find-module/FindLibExiv2.html
 /usr/local/share/doc/ECM/html/find-module/FindLibGit2.html
 /usr/local/share/doc/ECM/html/find-module/FindLibMount.html
