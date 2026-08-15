@@ -14,9 +14,9 @@ class Epiphany < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f802cc19ad350a33ff06637b0c1935628386bed0f9e0061eedf9730591a66928',
-     armv7l: 'f802cc19ad350a33ff06637b0c1935628386bed0f9e0061eedf9730591a66928',
-     x86_64: 'c4f30c598243056c4eefbd33426754ba248d4cefb7c2c6f46090d693b291919f'
+    aarch64: '54721263eb419610ec8c1c965b4e91e432a50464f6d9b92ebae9b2d5c55505ad',
+     armv7l: '54721263eb419610ec8c1c965b4e91e432a50464f6d9b92ebae9b2d5c55505ad',
+     x86_64: '15dfab28b9cca1f8d07757cd9a23896fd77ce15267909beb405879b0c0ee6f4f'
   })
 
   depends_on 'at_spi2_core' # R
