@@ -3,7 +3,7 @@ require 'package'
 class Nnn < Package
   description 'Full-featured terminal file manager.'
   homepage 'https://github.com/jarun/nnn'
-  version '5.2'
+  version '5.3'
   license 'BSD-2 Clause'
   compatibility 'all'
   source_url 'https://github.com/jarun/nnn.git'
