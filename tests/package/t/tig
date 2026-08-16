@@ -1,0 +1,3 @@
+#!/bin/bash
+tig -h | head
+tig -v

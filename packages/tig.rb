@@ -1,31 +1,25 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Tig < Package
+class Tig < Autotools
   description 'Tig is an ncurses-based text-mode interface for git.'
   homepage 'https://jonas.github.io/tig/'
-  version '2.4.1'
+  version '2.6.1'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/jonas/tig/releases/download/tig-2.4.1/tig-2.4.1.tar.gz'
-  source_sha256 'b6b6aa183e571224d0e1fab3ec482542c1a97fa7a85b26352dc31dbafe8558b8'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/jonas/tig.git'
+  git_hashtag "tig-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '712274329587938cdb648fba374338f12f78145a0a69e2285f30a3ac0f2b0eb2',
-     armv7l: '712274329587938cdb648fba374338f12f78145a0a69e2285f30a3ac0f2b0eb2',
-       i686: '70ed711fb304a329f256e5802983110587e9f3e7c6378a12b73d5a0a6d5f5d36',
-     x86_64: '16aa53a2087362bfacb86aada31eccd4614b347b7b3202849c0ce790efc0cfcb'
+    aarch64: '6bf898b49971afcb3abfdbb0830174194c40b7fa950de10deddeecfd14ec7b04',
+     armv7l: '6bf898b49971afcb3abfdbb0830174194c40b7fa950de10deddeecfd14ec7b04',
+       i686: 'dff8603e36edd2344e3800a055ce8050850694430090b60dde2617c22a9a531d',
+     x86_64: '9b23bfd4841045cbfd1962a842be9f02ca82ecb5d22080672ff055d2ee1efc24'
   })
 
-  def self.build
-    system './configure', "--prefix=#{CREW_PREFIX}"
-    system "sed -i 's,\$(QUIET_LINK),,' Makefile"
-    system "sed -i 's,\$(QUIET_CC),,' Makefile"
-    system "sed -i 's,\$(QUIET_GEN),,g' Makefile"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'ncurses' => :executable
+  depends_on 'pcre2' => :executable
+  depends_on 'readline' => :executable
 end
