@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_pipdeptree < Pip
   description 'Displays a dependency tree of the installed Python packages.'
   homepage 'https://github.com/naiquevin/pipdeptree/'
-  version "4.2.0-#{CREW_PY_VER}"
+  version "4.2.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b55ce07d2f8ecb50bd22f24acf02ac751e661934738aec40c511ae37b1080017',
-     armv7l: 'b55ce07d2f8ecb50bd22f24acf02ac751e661934738aec40c511ae37b1080017',
-       i686: '4a3d87c3f737272a640f8155077332d4f273135c50bee3704a46fb68c4e4c3ba',
-     x86_64: '3cf0e992e3debf02874cc27defb4f9450d7b37b71c7ef5a4f6920675bc761738'
+    aarch64: '918339ce678dfe6702fce1b639d3459ee6e743a63fc524951d6694e5fcea324c',
+     armv7l: '918339ce678dfe6702fce1b639d3459ee6e743a63fc524951d6694e5fcea324c',
+       i686: '4232998f9a5633b67a8b5a3cc086d9b1e1b50565e413e4dd48601d5b56dc65e7',
+     x86_64: '01d7cd32333cfd381718bc2ca2ec3249805365eee9d017a94e852b324c76c2db'
   })
 
   depends_on 'gcc_lib' => :library
