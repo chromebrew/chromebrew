@@ -3,7 +3,7 @@ require 'package'
 class Uv < Package
   description 'An extremely fast Python package and project manager, written in Rust.'
   homepage 'https://docs.astral.sh/uv/'
-  version '0.12.4'
+  version '0.12.5'
   license 'Apache-2.0, MIT'
   compatibility 'all'
   source_url({
@@ -13,10 +13,10 @@ class Uv < Package
      x86_64: "https://releases.astral.sh/github/uv/releases/download/#{version}/uv-x86_64-unknown-linux-gnu.tar.gz"
   })
   source_sha256({
-    aarch64: 'fd9d223afc79a4d116d48269ea8cdc00cdeb0637d028843910650abc037e7c4f',
-     armv7l: 'fd9d223afc79a4d116d48269ea8cdc00cdeb0637d028843910650abc037e7c4f',
-       i686: 'bcf9e594c0867f9bfe91b7979cdac38a86bb9f7136ceba259e727af912127f23',
-     x86_64: 'c8c60f47e6f88d18dbf6f33d7279fb1fbf7ae76631768152cf5578c3d65729b4'
+    aarch64: '63f86f3cd92de223c2680dee5149ed3f317ad7aeac774fd7e6fe1f86f53e85da',
+     armv7l: '63f86f3cd92de223c2680dee5149ed3f317ad7aeac774fd7e6fe1f86f53e85da',
+       i686: '4875a06092c3b0aa8ece5265a42b053dfef649adba26434b5e40eeb58c2a2aa5',
+     x86_64: '68a509da24b06b4223a1c0175fb5eb5bc79342b76cbeff0cfe51ac3f5b17b6b2'
   })
 
   no_compile_needed
