@@ -18,6 +18,7 @@ class Nnn < Package
   })
 
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'ncurses' => :executable
   depends_on 'pkg_config' => :build
   depends_on 'readline' => :executable
