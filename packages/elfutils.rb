@@ -20,6 +20,7 @@ class Elfutils < Autotools
   depends_on 'bzip2' => :library
   depends_on 'gcc_lib' => :executable
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'libarchive' => :executable
   depends_on 'xzutils' => :library
   depends_on 'zlib' => :library
