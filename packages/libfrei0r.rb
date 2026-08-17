@@ -11,9 +11,9 @@ class Libfrei0r < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd803ea454f7ca0c29a04887c4eed81072584820eb38db1c2bd855683a0e78bc6',
-     armv7l: 'd803ea454f7ca0c29a04887c4eed81072584820eb38db1c2bd855683a0e78bc6',
-     x86_64: '796498943d29c71c7efb337be8e2152f809e73406c42421d56b2cca99e94f8d5'
+    aarch64: '8f72c9a12741f3f4c3e6ee2c626d3ef62105afab39b6b7bff52a25b4ba2ea1bd',
+     armv7l: '8f72c9a12741f3f4c3e6ee2c626d3ef62105afab39b6b7bff52a25b4ba2ea1bd',
+     x86_64: '18af0115f1dbd93265e3a1b445468baf9883b9dc3eaa6d19cf8da4aa101c6534'
   })
 
   depends_on 'cairo' => :library
