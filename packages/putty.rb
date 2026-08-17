@@ -3,17 +3,17 @@ require 'buildsystems/cmake'
 class Putty < CMake
   description 'Free Telnet, SSH, and Rlogin clients plus a terminal emulator'
   homepage 'https://www.chiark.greenend.org.uk/~sgtatham/putty/'
-  version '0.84'
+  version '0.85'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://the.earth.li/~sgtatham/putty/latest/putty-#{version}.tar.gz"
-  source_sha256 '06057862ae198f1dbd219d0c7493080d59f606194bb5056c549e342aa01b69fe'
+  source_sha256 '13fd4db2936d03b73812a7bcc2a658e4dd29cc776a56c3670a7fc6f1a0ee8af8'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0eb7c7cef781a2a7b1f0fc0f9e47a3e58b86609698c048049483fe9527516a5e',
-     armv7l: '0eb7c7cef781a2a7b1f0fc0f9e47a3e58b86609698c048049483fe9527516a5e',
-     x86_64: '580c0439c5767e8e79a5d88b9bdfb0b6ce30b77f562eddf70994ac976c65a8d8'
+    aarch64: '68586fd5a21a0cd25011399347f1b98c1357b3fd2c8340df6d2f0c674cc32c90',
+     armv7l: '68586fd5a21a0cd25011399347f1b98c1357b3fd2c8340df6d2f0c674cc32c90',
+     x86_64: '5d8a844e59954df97524d570b8ba138ad542bff8e228b9eb2443c2c4ce2d585e'
   })
 
   depends_on 'at_spi2_core' => :executable
