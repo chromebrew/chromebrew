@@ -18,4 +18,6 @@ class Bash_completion < Autotools
   })
 
   depends_on 'bash' => :logical
+
+  print_source_bashrc
 end
