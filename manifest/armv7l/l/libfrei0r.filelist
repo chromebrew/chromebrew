@@ -1,4 +1,4 @@
-# Total size: 1590044
+# Total size: 1596508
 /usr/local/include/frei0r.h
 /usr/local/include/frei0r.hpp
 /usr/local/include/frei0r/blur.h
@@ -107,6 +107,7 @@
 /usr/local/lib/frei0r-1/partik0l.so
 /usr/local/lib/frei0r-1/perspective.so
 /usr/local/lib/frei0r-1/pixeliz0r.so
+/usr/local/lib/frei0r-1/pixels0rt.so
 /usr/local/lib/frei0r-1/pixs0r.so
 /usr/local/lib/frei0r-1/plasma.so
 /usr/local/lib/frei0r-1/posterize.so
