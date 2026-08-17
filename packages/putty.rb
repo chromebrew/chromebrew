@@ -3,11 +3,11 @@ require 'buildsystems/cmake'
 class Putty < CMake
   description 'Free Telnet, SSH, and Rlogin clients plus a terminal emulator'
   homepage 'https://www.chiark.greenend.org.uk/~sgtatham/putty/'
-  version '0.84'
+  version '0.85'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://the.earth.li/~sgtatham/putty/latest/putty-#{version}.tar.gz"
-  source_sha256 '06057862ae198f1dbd219d0c7493080d59f606194bb5056c549e342aa01b69fe'
+  source_sha256 '13fd4db2936d03b73812a7bcc2a658e4dd29cc776a56c3670a7fc6f1a0ee8af8'
   binary_compression 'tar.zst'
 
   binary_sha256({
