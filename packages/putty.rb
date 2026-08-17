@@ -11,9 +11,9 @@ class Putty < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0eb7c7cef781a2a7b1f0fc0f9e47a3e58b86609698c048049483fe9527516a5e',
-     armv7l: '0eb7c7cef781a2a7b1f0fc0f9e47a3e58b86609698c048049483fe9527516a5e',
-     x86_64: '580c0439c5767e8e79a5d88b9bdfb0b6ce30b77f562eddf70994ac976c65a8d8'
+    aarch64: '68586fd5a21a0cd25011399347f1b98c1357b3fd2c8340df6d2f0c674cc32c90',
+     armv7l: '68586fd5a21a0cd25011399347f1b98c1357b3fd2c8340df6d2f0c674cc32c90',
+     x86_64: '5d8a844e59954df97524d570b8ba138ad542bff8e228b9eb2443c2c4ce2d585e'
   })
 
   depends_on 'at_spi2_core' => :executable
