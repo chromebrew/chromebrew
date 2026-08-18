@@ -11,9 +11,9 @@ class Makedepend < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ec484d9e47ff6589d95f8e17e21d39612ff425c3aaf10e1b1a7979e569f41b39',
-     armv7l: 'ec484d9e47ff6589d95f8e17e21d39612ff425c3aaf10e1b1a7979e569f41b39',
-     x86_64: '9fe4ef118e76ad82de09442d72d2894fd2888470ca8afcec898459cb6c7e40f2'
+    aarch64: '0a13d5bb3237152d693fcf35f9995208ec81935bf688b1acdc7758b15afeaff1',
+     armv7l: '0a13d5bb3237152d693fcf35f9995208ec81935bf688b1acdc7758b15afeaff1',
+     x86_64: '8514f3cb07bd5096785be7562958127a929e43d987f9f40a37b0b42cbcf6c7af'
   })
 
   depends_on 'glibc' => :executable
