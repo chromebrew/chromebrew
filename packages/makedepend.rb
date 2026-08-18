@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Makedepend < Autotools
   description 'Makedepend parses C sources in Makefiles to generate dependency lists'
   homepage 'https://www.x.org/wiki/'
-  version '1.0.9'
+  version '1.0.10'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.x.org/releases/individual/util/makedepend-#{version}.tar.gz"
-  source_sha256 'bc94ffda6cd4671603a69c39dbe8f96b317707b9185b2aaa3b54b5d134b41884'
+  source_sha256 'baf742fb6c76c15febf5181e5cd814066205d8be9aef4abfdc2c54b235e14917'
   binary_compression 'tar.zst'
 
   binary_sha256({
