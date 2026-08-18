@@ -11,10 +11,10 @@ class Tmux < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '832cb24d8af959bde24f080b1d4d2b1d9e170682e97f47da2dea2eae064a2e3b',
-     armv7l: '832cb24d8af959bde24f080b1d4d2b1d9e170682e97f47da2dea2eae064a2e3b',
-       i686: 'f2e9c80b77d1434a3d51846786b0f71a84d550b972e84c2f656145020b55cd7a',
-     x86_64: '234c945b3327c9b92376c27a065229834607a8a1b3695e0ddbf9f1ed047940bb'
+    aarch64: 'fdf5426a21ec8938f1288e4d27b3a024c9d0397a9d7ceeac6ff2366ca7946185',
+     armv7l: 'fdf5426a21ec8938f1288e4d27b3a024c9d0397a9d7ceeac6ff2366ca7946185',
+       i686: 'e7dfe9f20c49f882b1bc5daf461c655fce0bf1de79e842a05ee61b0b659d372d',
+     x86_64: '0be31cfb22e0523a9c9040bd2d52de439c190c626ebc167664235de0d2762b6b'
   })
 
   depends_on 'glibc' => :executable
