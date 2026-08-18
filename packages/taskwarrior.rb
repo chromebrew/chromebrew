@@ -3,11 +3,11 @@ require 'buildsystems/cmake'
 class Taskwarrior < CMake
   description 'Free and Open Source Software that manages your TODO list from the command line.'
   homepage 'https://taskwarrior.org/'
-  version '3.4.2'
+  version '3.5.0'
   license 'MIT'
   compatibility 'all'
   source_url "https://github.com/GothenburgBitFactory/taskwarrior/releases/download/v#{version}/task-#{version}.tar.gz"
-  source_sha256 'd302761fcd1268e4a5a545613a2b68c61abd50c0bcaade3b3e68d728dd02e716'
+  source_sha256 '9ea64b411f8314414f440ec765dfdf5a86c9f6159df47e2f60cff3db6b31157a'
   binary_compression 'tar.zst'
 
   binary_sha256({
