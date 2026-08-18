@@ -1,4 +1,4 @@
-# Total size: 39196412
+# Total size: 30494768
 /usr/local/bin/task
 /usr/local/share/doc/task/AUTHORS
 /usr/local/share/doc/task/ChangeLog
@@ -15,6 +15,7 @@
 /usr/local/share/doc/task/rc/dark-red-256.theme
 /usr/local/share/doc/task/rc/dark-violets-256.theme
 /usr/local/share/doc/task/rc/dark-yellow-green.theme
+/usr/local/share/doc/task/rc/default.theme
 /usr/local/share/doc/task/rc/holidays.cs-CZ.rc
 /usr/local/share/doc/task/rc/holidays.da-DK.rc
 /usr/local/share/doc/task/rc/holidays.de-AT.rc
@@ -58,7 +59,6 @@
 /usr/local/share/doc/task/scripts/add-ons/README
 /usr/local/share/doc/task/scripts/add-ons/update-holidays.pl
 /usr/local/share/doc/task/scripts/bash/task.sh
-/usr/local/share/doc/task/scripts/fish/task.fish
 /usr/local/share/doc/task/scripts/hooks/README
 /usr/local/share/doc/task/scripts/hooks/on-add
 /usr/local/share/doc/task/scripts/hooks/on-add.the
@@ -72,6 +72,7 @@
 /usr/local/share/doc/task/scripts/vim/syntax/taskedit.vim
 /usr/local/share/doc/task/scripts/vim/syntax/taskrc.vim
 /usr/local/share/doc/task/task-ref.pdf
+/usr/local/share/fish/vendor_completions.d/task.fish
 /usr/local/share/man/man1/task.1.zst
 /usr/local/share/man/man5/task-color.5.zst
 /usr/local/share/man/man5/task-sync.5.zst
