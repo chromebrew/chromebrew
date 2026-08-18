@@ -1,4 +1,4 @@
-# Total size: 96401367
+# Total size: 96396303
 /usr/local/bin/suitesparse_mongoose
 /usr/local/include/suitesparse/GraphBLAS.h
 /usr/local/include/suitesparse/LAGraph.h
@@ -179,7 +179,7 @@
 /usr/local/lib64/libcxsparse.so.4.4.2
 /usr/local/lib64/libgraphblas.so
 /usr/local/lib64/libgraphblas.so.10
-/usr/local/lib64/libgraphblas.so.10.4.1
+/usr/local/lib64/libgraphblas.so.10.5.0
 /usr/local/lib64/libklu.a
 /usr/local/lib64/libklu.so
 /usr/local/lib64/libklu.so.2
@@ -226,7 +226,7 @@
 /usr/local/lib64/libsuitesparseconfig.a
 /usr/local/lib64/libsuitesparseconfig.so
 /usr/local/lib64/libsuitesparseconfig.so.7
-/usr/local/lib64/libsuitesparseconfig.so.7.13.0
+/usr/local/lib64/libsuitesparseconfig.so.7.14.0
 /usr/local/lib64/libumfpack.a
 /usr/local/lib64/libumfpack.so
 /usr/local/lib64/libumfpack.so.6
