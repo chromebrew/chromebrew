@@ -1,0 +1,3 @@
+#!/bin/bash
+uwsgi -h | head
+uwsgi --version
