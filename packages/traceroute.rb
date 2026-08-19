@@ -1,29 +1,29 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Traceroute < Package
+class Traceroute < Autotools
   description 'Traceroute tracks the route packets taken from an IP network on their way to a given host.'
   homepage 'https://traceroute.sourceforge.net/'
-  version '2.1.4'
+  version '2.1.6'
   license 'GPL-2 and LGPL-2.1'
   compatibility 'all'
-  source_url 'https://downloads.sourceforge.net/project/traceroute/traceroute/traceroute%202.1.4/traceroute-2.1.4.tar.gz'
-  source_sha256 'b2e39a1d04ea45a6a60c976a2637d1a16224edd2eaa19a5870af83edb2ffe3fa'
+  source_url "https://downloads.sourceforge.net/project/traceroute/traceroute/traceroute-#{version}/traceroute-#{version}.tar.gz"
+  source_sha256 '9ccef9cdb9d7a98ff7fbf93f79ebd0e48881664b525c4b232a0fcec7dcb9db5e'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '80d2764b34cc364107065ce9a3ae76d61a2565fb4840a37642e68ffc500bfbf5',
-     armv7l: '80d2764b34cc364107065ce9a3ae76d61a2565fb4840a37642e68ffc500bfbf5',
-       i686: '1a2894202e959c53295e1559d3a7b9056199903848b5a4e81cc864c1ef4aa52f',
-     x86_64: '141f1dcdeb4797c34aa985607c861115380d49a44f21390c5b436196d4d205bc'
+    aarch64: 'f477e37b8f6f5d131bb4dfe97c75dc83c5220f47c9c77575000b6057049dabb3',
+     armv7l: 'f477e37b8f6f5d131bb4dfe97c75dc83c5220f47c9c77575000b6057049dabb3',
+       i686: 'ac89a0bd94648d7d9f0bc08bfde82bfa3a3ef61850e5fcf7c7f30807da2c5b20',
+     x86_64: '99fd85a8ac4381524d6d5636a69c17fcd501313289f97991529a95fc5857a620'
   })
 
-  def self.build
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+
+  autotools_skip_configure
+
+  def self.patch
     # add /usr/lib64 to vpath to check /usr/lib64/libm.so
     system 'sed', '-i', 'Make.rules', '-e', '/vpath lib%.so/s:$: /usr/lib64:'
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end
