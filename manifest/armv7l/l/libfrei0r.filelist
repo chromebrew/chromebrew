@@ -1,4 +1,4 @@
-# Total size: 1596508
+# Total size: 1613932
 /usr/local/include/frei0r.h
 /usr/local/include/frei0r.hpp
 /usr/local/include/frei0r/blur.h
@@ -120,6 +120,7 @@
 /usr/local/lib/frei0r-1/scanline0r.so
 /usr/local/lib/frei0r-1/screen.so
 /usr/local/lib/frei0r-1/select0r.so
+/usr/local/lib/frei0r-1/shake0scillate.so
 /usr/local/lib/frei0r-1/sharpness.so
 /usr/local/lib/frei0r-1/sigmoidaltransfer.so
 /usr/local/lib/frei0r-1/sleid0r_push-down.so
