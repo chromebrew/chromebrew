@@ -102,7 +102,7 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
             -DCOMPILER_RT_BUILD_LIBFUZZER=OFF \
             -DCOMPILER_RT_BUILD_BUILTINS=ON \
             -DCOMPILER_RT_DEFAULT_TARGET_ONLY=ON \
-            -Wno-dev \
+            -Wno-author \
             ../llvm"
       system 'ninja'
     end

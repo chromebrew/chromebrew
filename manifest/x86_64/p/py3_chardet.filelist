@@ -1,17 +1,18 @@
-# Total size: 2159077
+# Total size: 2596373
 /usr/local/bin/chardetect
 /usr/local/lib64/python3.14/site-packages/7cf47097c39cf1afcee8__mypyc.cpython-314-x86_64-linux-gnu.so
-/usr/local/lib64/python3.14/site-packages/chardet-7.5.1.dist-info/INSTALLER
-/usr/local/lib64/python3.14/site-packages/chardet-7.5.1.dist-info/METADATA
-/usr/local/lib64/python3.14/site-packages/chardet-7.5.1.dist-info/RECORD
-/usr/local/lib64/python3.14/site-packages/chardet-7.5.1.dist-info/REQUESTED
-/usr/local/lib64/python3.14/site-packages/chardet-7.5.1.dist-info/WHEEL
-/usr/local/lib64/python3.14/site-packages/chardet-7.5.1.dist-info/entry_points.txt
-/usr/local/lib64/python3.14/site-packages/chardet-7.5.1.dist-info/licenses/LICENSE
+/usr/local/lib64/python3.14/site-packages/chardet-7.6.0.dist-info/INSTALLER
+/usr/local/lib64/python3.14/site-packages/chardet-7.6.0.dist-info/METADATA
+/usr/local/lib64/python3.14/site-packages/chardet-7.6.0.dist-info/RECORD
+/usr/local/lib64/python3.14/site-packages/chardet-7.6.0.dist-info/REQUESTED
+/usr/local/lib64/python3.14/site-packages/chardet-7.6.0.dist-info/WHEEL
+/usr/local/lib64/python3.14/site-packages/chardet-7.6.0.dist-info/entry_points.txt
+/usr/local/lib64/python3.14/site-packages/chardet-7.6.0.dist-info/licenses/LICENSE
 /usr/local/lib64/python3.14/site-packages/chardet/__init__.py
 /usr/local/lib64/python3.14/site-packages/chardet/__main__.py
 /usr/local/lib64/python3.14/site-packages/chardet/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/chardet/__pycache__/__main__.cpython-314.pyc
+/usr/local/lib64/python3.14/site-packages/chardet/__pycache__/_kernel.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/chardet/__pycache__/_utils.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/chardet/__pycache__/_version.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/chardet/__pycache__/cli.cpython-314.pyc
@@ -22,6 +23,8 @@
 /usr/local/lib64/python3.14/site-packages/chardet/__pycache__/output_names.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/chardet/__pycache__/registry.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/chardet/__pycache__/universaldetector.cpython-314.pyc
+/usr/local/lib64/python3.14/site-packages/chardet/_kernel.cpython-314-x86_64-linux-gnu.so
+/usr/local/lib64/python3.14/site-packages/chardet/_kernel.py
 /usr/local/lib64/python3.14/site-packages/chardet/_utils.py
 /usr/local/lib64/python3.14/site-packages/chardet/_version.py
 /usr/local/lib64/python3.14/site-packages/chardet/cli.py

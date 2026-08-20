@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION = defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION = '1.75.3' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION = '1.75.7' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH = Etc.uname[:machine]
@@ -328,7 +328,7 @@ CREW_CMAKE_OPTIONS = <<~OPT.chomp
   -DCMAKE_MODULE_LINKER_FLAGS='#{CREW_LINKER_FLAGS}' \
   -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=TRUE \
   -DCMAKE_BUILD_TYPE=Release \
-  -Wno-dev
+  -Wno-author
 OPT
 
 CREW_CMAKE_LIBSUFFIX_OPTIONS = "#{CREW_CMAKE_OPTIONS} -DLIB_SUFFIX=#{CREW_LIB_SUFFIX}"
@@ -430,7 +430,7 @@ CREW_DOCOPT = <<~DOCOPT
     crew upgrade [options] [-f|--force] [-k|--keep] [--regenerate-filelist] [-s|--source] [-v|--verbose] [<name> ...]
     crew upload [options] [-f|--force] [-v|--verbose] [<name> ...]
     crew upstream [options] [-a|--all|-f|--force|-j|--json|-u|--update-package-files|-v|--verbose|-vv] <name> ...
-    crew version [options] [<name>]
+    crew version [options] [-j|--json] [<name>]
     crew whatdepends [options] [-j|--json] <name> ...
     crew whatprovides [options] [-j|--json] <pattern> ...
 

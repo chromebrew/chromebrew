@@ -3,7 +3,7 @@ require 'package'
 class Pdm < Package
   description 'Python Development Master (aka PDM) is a modern Python package manager with PEP 582 support.'
   homepage 'https://pdm.fming.dev/'
-  version '2.28.0'
+  version '2.28.2'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/pdm-project/pdm.git'

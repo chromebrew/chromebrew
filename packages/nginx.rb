@@ -3,18 +3,18 @@ require 'package'
 class Nginx < Package
   description 'nginx [engine x] is an HTTP and reverse proxy server, a mail proxy server, and a generic TCP/UDP proxy server, originally written by Igor Sysoev.'
   homepage 'http://nginx.org/'
-  version '1.31.3'
+  version '1.31.4'
   license 'BSD-2, BSD, SSLeay, MIT, GPL-2 and GPL-2+'
   compatibility 'all'
   source_url "http://nginx.org/download/nginx-#{version}.tar.gz"
-  source_sha256 'a7657c50811c2d92d9895395e8b873ef60398142c4db21eb647811c38f6dd525'
+  source_sha256 'e6f20b644a17a643f059ae6467a1971fe2811587d025e071068753a1f1e3b3c3'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4fc64bdd2adc4aec5706df517526fe59f99f74e0a77627816a8c0d4b1a921a9d',
-     armv7l: '4fc64bdd2adc4aec5706df517526fe59f99f74e0a77627816a8c0d4b1a921a9d',
-       i686: 'f307920a852863bb3cb561d01f6eb78d1ac761a73de2297385876722ff14c4d4',
-     x86_64: '8990c65b22185127f9155075661369dca9c5956b88319996ef884ff5432e2031'
+    aarch64: '9d2fbea12e8e2b9c5b754e40c431884ae4d7b5c7a70cf0d71167e605d893de7f',
+     armv7l: '9d2fbea12e8e2b9c5b754e40c431884ae4d7b5c7a70cf0d71167e605d893de7f',
+       i686: 'ea68d4f3c4382c14ace241cdf69e39fc8deff05b808c98a043d7e319fee1b924',
+     x86_64: '7afea414cdab83b94b6472088017c7963bd6ef23adda02415f20a30976b7997b'
   })
 
   depends_on 'glibc' => :executable

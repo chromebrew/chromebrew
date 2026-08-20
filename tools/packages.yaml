@@ -6995,6 +6995,11 @@ url: https://www.azul.com/downloads/?version=java-25-lts&package=jdk#zulu
 activity: medium
 ---
 kind: url
+name: openjdk26
+url: https://www.azul.com/downloads/?version=java-26-lts&package=jdk#zulu
+activity: medium
+---
+kind: url
 name: openjpeg
 url: https://github.com/uclouvain/openjpeg/releases
 activity: low

@@ -418,7 +418,7 @@ jobs:
           ref: ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '4.0.5'
+          ruby-version: '4.0.6'
       - name: Install bin/crew gem dependencies
         run: |
           # Install required gems.
@@ -453,7 +453,7 @@ jobs:
             ruby bin/crew prop ignore_updater ${file}
             [[ "$(ruby bin/crew prop ignore_updater ${file})" == "false" ]] && touch tools/automatically_updatable_packages/${file} || true
           done
-      - uses: EndBug/add-and-commit@v10
+      - uses: EndBug/add-and-commit@v11
         if: ${{ contains(needs.generate.result, 'success') }}
         env:
           GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}

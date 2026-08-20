@@ -1,0 +1,2 @@
+#!/bin/bash
+wish -help 2>&1

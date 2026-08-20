@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Suitesparse < CMake
   description 'A suite of sparse matrix software'
   homepage 'https://people.engr.tamu.edu/davis/suitesparse.html'
-  version '7.12.3'
+  version '7.14.0'
   license 'metapackage'
   compatibility 'all'
   source_url 'https://github.com/DrTimothyAldenDavis/SuiteSparse.git'
@@ -11,10 +11,10 @@ class Suitesparse < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0ead52eaaa446ba93455588133ddda2eac111cc6fb72a105dc8b972ea873de8b',
-     armv7l: '0ead52eaaa446ba93455588133ddda2eac111cc6fb72a105dc8b972ea873de8b',
-       i686: 'fe9b59efaf6a6413963304800dace25ab731bb265d7b070ed79e846c91485080',
-     x86_64: 'a00c65e3763537b970a324daaa38da9c4d3c221c84879c3fc889a83e99e6a1ea'
+    aarch64: '9a885f9a578774f1ade3862ef02c80604c0ebd04b1ce08e02dcffae0baa1779d',
+     armv7l: '9a885f9a578774f1ade3862ef02c80604c0ebd04b1ce08e02dcffae0baa1779d',
+       i686: '26be9c92911051d2d9de024d6b82e1a227ad70ee27c26573a2a49c95b39bb0e6',
+     x86_64: 'ec5c81a5f125b71ecefdae2e6f9adc059ae31fe531042d4be2db921772b470e8'
   })
 
   depends_on 'gcc_lib' => :library

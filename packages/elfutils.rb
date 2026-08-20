@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Elfutils < Autotools
   description 'elfutils is a collection of utilities and libraries to read, create and modify ELF binary files, find and handle DWARF debug data, symbols, thread state and stacktraces for processes and core files on GNU/Linux.'
   homepage 'https://sourceware.org/elfutils/'
-  version '0.195'
+  version '0.196'
   license 'GPL-2+ or LGPL-3+'
   compatibility 'all'
   source_url 'https://sourceware.org/git/elfutils.git'
@@ -11,15 +11,16 @@ class Elfutils < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8ff4837ba7584ef891206279b5e7ed8eb47a1df45ea0445f4651cd23edf3ed6d',
-     armv7l: '8ff4837ba7584ef891206279b5e7ed8eb47a1df45ea0445f4651cd23edf3ed6d',
-       i686: '03cb6fd66831a2a7f974b431763211c6ce24de7e032a83074b0e030ff4737176',
-     x86_64: 'a64b166958d85734e54361f65b136d7fc591ddf0ffb91dcf26f0836d3675a4c9'
+    aarch64: 'ae9833161158fcf0892c8f29c751220c24263164eda87381e7400011e4e7f8cc',
+     armv7l: 'ae9833161158fcf0892c8f29c751220c24263164eda87381e7400011e4e7f8cc',
+       i686: '2e0fcf17de4de5dfb3839727b4e07f539f84d9a02bb6bb071fd537c8f367d5ee',
+     x86_64: '2516f99f4e12fe021a9bf29be43d28bfe93ae74baa1247577dca2b59408d4603'
   })
 
   depends_on 'bzip2' => :library
   depends_on 'gcc_lib' => :executable
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'libarchive' => :executable
   depends_on 'xzutils' => :library
   depends_on 'zlib' => :library

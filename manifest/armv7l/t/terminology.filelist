@@ -1,4 +1,4 @@
-# Total size: 29527226
+# Total size: 5757243
 /usr/local/bin/terminology
 /usr/local/bin/tyalpha
 /usr/local/bin/tybg
@@ -17,28 +17,69 @@
 /usr/local/share/locale/es/LC_MESSAGES/terminology.mo
 /usr/local/share/locale/fi/LC_MESSAGES/terminology.mo
 /usr/local/share/locale/fr/LC_MESSAGES/terminology.mo
+/usr/local/share/locale/he/LC_MESSAGES/terminology.mo
 /usr/local/share/locale/hi/LC_MESSAGES/terminology.mo
 /usr/local/share/locale/hr/LC_MESSAGES/terminology.mo
+/usr/local/share/locale/hu/LC_MESSAGES/terminology.mo
+/usr/local/share/locale/id/LC_MESSAGES/terminology.mo
 /usr/local/share/locale/it/LC_MESSAGES/terminology.mo
+/usr/local/share/locale/ja/LC_MESSAGES/terminology.mo
 /usr/local/share/locale/ko/LC_MESSAGES/terminology.mo
+/usr/local/share/locale/lt/LC_MESSAGES/terminology.mo
 /usr/local/share/locale/ms/LC_MESSAGES/terminology.mo
+/usr/local/share/locale/nb_NO/LC_MESSAGES/terminology.mo
 /usr/local/share/locale/nl/LC_MESSAGES/terminology.mo
 /usr/local/share/locale/pl/LC_MESSAGES/terminology.mo
+/usr/local/share/locale/pt/LC_MESSAGES/terminology.mo
+/usr/local/share/locale/pt_BR/LC_MESSAGES/terminology.mo
+/usr/local/share/locale/ru/LC_MESSAGES/terminology.mo
+/usr/local/share/locale/si/LC_MESSAGES/terminology.mo
+/usr/local/share/locale/sk/LC_MESSAGES/terminology.mo
 /usr/local/share/locale/sl/LC_MESSAGES/terminology.mo
 /usr/local/share/locale/sr/LC_MESSAGES/terminology.mo
+/usr/local/share/locale/sv/LC_MESSAGES/terminology.mo
 /usr/local/share/locale/tr/LC_MESSAGES/terminology.mo
+/usr/local/share/locale/uk/LC_MESSAGES/terminology.mo
 /usr/local/share/locale/vi/LC_MESSAGES/terminology.mo
-/usr/local/share/man/man1/terminology-helpers.1.gz
-/usr/local/share/man/man1/terminology.1.gz
-/usr/local/share/man/man1/tyalpha.1.gz
-/usr/local/share/man/man1/tybg.1.gz
-/usr/local/share/man/man1/tycat.1.gz
-/usr/local/share/man/man1/tyls.1.gz
-/usr/local/share/man/man1/typop.1.gz
-/usr/local/share/man/man1/tyq.1.gz
-/usr/local/share/man/man1/tysend.1.gz
+/usr/local/share/locale/zh_Hans/LC_MESSAGES/terminology.mo
+/usr/local/share/man/man1/terminology-helpers.1.zst
+/usr/local/share/man/man1/terminology.1.zst
+/usr/local/share/man/man1/tyalpha.1.zst
+/usr/local/share/man/man1/tybg.1.zst
+/usr/local/share/man/man1/tycat.1.zst
+/usr/local/share/man/man1/tyls.1.zst
+/usr/local/share/man/man1/typop.1.zst
+/usr/local/share/man/man1/tyq.1.zst
+/usr/local/share/man/man1/tysend.1.zst
 /usr/local/share/terminology/backgrounds/mystic.png
 /usr/local/share/terminology/backgrounds/texture_background.png
+/usr/local/share/terminology/colorschemes/Belafonte Day.eet
+/usr/local/share/terminology/colorschemes/Belafonte Night.eet
+/usr/local/share/terminology/colorschemes/Black.eet
+/usr/local/share/terminology/colorschemes/Cobalt2.eet
+/usr/local/share/terminology/colorschemes/Default.eet
+/usr/local/share/terminology/colorschemes/Dracula.eet
+/usr/local/share/terminology/colorschemes/Fahrenheit.eet
+/usr/local/share/terminology/colorschemes/Fir Dark.eet
+/usr/local/share/terminology/colorschemes/Material.eet
+/usr/local/share/terminology/colorschemes/Mild.eet
+/usr/local/share/terminology/colorschemes/Mustang.eet
+/usr/local/share/terminology/colorschemes/Nord.eet
+/usr/local/share/terminology/colorschemes/Ocean Dark.eet
+/usr/local/share/terminology/colorschemes/One Dark.eet
+/usr/local/share/terminology/colorschemes/PaleNight.eet
+/usr/local/share/terminology/colorschemes/PaperColor.eet
+/usr/local/share/terminology/colorschemes/Selenized Black.eet
+/usr/local/share/terminology/colorschemes/Selenized Dark.eet
+/usr/local/share/terminology/colorschemes/Selenized Light.eet
+/usr/local/share/terminology/colorschemes/Selenized White.eet
+/usr/local/share/terminology/colorschemes/Smyck.eet
+/usr/local/share/terminology/colorschemes/Soft Era.eet
+/usr/local/share/terminology/colorschemes/Solarized Light.eet
+/usr/local/share/terminology/colorschemes/Solarized.eet
+/usr/local/share/terminology/colorschemes/Tango Dark.eet
+/usr/local/share/terminology/colorschemes/Tango Light.eet
+/usr/local/share/terminology/colorschemes/Tomorrow Night Burns.eet
 /usr/local/share/terminology/fonts/10x20.pcf
 /usr/local/share/terminology/fonts/4x6.pcf
 /usr/local/share/terminology/fonts/5x7.pcf
@@ -65,14 +106,5 @@
 /usr/local/share/terminology/fonts/terminus-20-bold.pcf
 /usr/local/share/terminology/fonts/terminus-20.pcf
 /usr/local/share/terminology/images/terminology.png
-/usr/local/share/terminology/themes/base16_ocean_dark.edj
-/usr/local/share/terminology/themes/black.edj
 /usr/local/share/terminology/themes/default.edj
-/usr/local/share/terminology/themes/mild.edj
-/usr/local/share/terminology/themes/mustang.edj
-/usr/local/share/terminology/themes/nord.edj
 /usr/local/share/terminology/themes/nyanology.edj
-/usr/local/share/terminology/themes/papercolor.edj
-/usr/local/share/terminology/themes/smyck.edj
-/usr/local/share/terminology/themes/solarized.edj
-/usr/local/share/terminology/themes/solarized_light.edj

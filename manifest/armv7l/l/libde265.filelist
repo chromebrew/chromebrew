@@ -1,11 +1,13 @@
-# Total size: 935380
+# Total size: 673539
 /usr/local/bin/dec265
 /usr/local/bin/enc265
 /usr/local/include/libde265/de265-version.h
 /usr/local/include/libde265/de265.h
 /usr/local/include/libde265/en265.h
-/usr/local/lib/cmake/libde265/libde265Config-release.cmake
-/usr/local/lib/cmake/libde265/libde265Config.cmake
-/usr/local/lib/cmake/libde265/libde265ConfigVersion.cmake
+/usr/local/lib/cmake/libde265/libde265-config-release.cmake
+/usr/local/lib/cmake/libde265/libde265-config-version.cmake
+/usr/local/lib/cmake/libde265/libde265-config.cmake
 /usr/local/lib/libde265.so
+/usr/local/lib/libde265.so.0
+/usr/local/lib/libde265.so.0.2.1
 /usr/local/lib/pkgconfig/libde265.pc

@@ -3,24 +3,28 @@ require 'buildsystems/autotools'
 class Tcl < Autotools
   description 'Tcl (Tool Command Language) is a very powerful but easy to learn dynamic programming language, suitable for a very wide range of uses, including web and desktop applications, networking, administration, testing and many more.'
   homepage 'http://www.tcl.tk/'
-  version '9.0.3-1'
+  version '9.0.4'
   license 'tcltk'
   compatibility 'all'
-  source_url "https://downloads.sourceforge.net/project/tcl/Tcl/#{version.split('-').first}/tcl#{version.split('-').first}-src.tar.gz"
-  source_sha256 '2537ba0c86112c8c953f7c09d33f134dd45c0fb3a71f2d7f7691fd301d2c33a6'
+  source_url "https://downloads.sourceforge.net/project/tcl/Tcl/#{version}/tcl#{version}-src.tar.gz"
+  source_sha256 'd0aed49230bc02a65c1e0229e65f34590a4b037ec40d546f32573b467f7551ea'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f1f71b09a1754108f3c6c5d86cc84cc936883b8ab1a75456cad01e80a5db895b',
-     armv7l: 'f1f71b09a1754108f3c6c5d86cc84cc936883b8ab1a75456cad01e80a5db895b',
-       i686: '194cbd3ea4c4999528a14cf7be63f1d675ef10680250520d7e7a2005ed497a97',
-     x86_64: 'a1d48a1e41625fd1a865153ccf6f64e9c60bcbaf147dc8c1e2365b193bb20a11'
+    aarch64: '6724e87c237b45e092561b339d17d11fd33b626adb17f17a50d64210c0433bbc',
+     armv7l: '6724e87c237b45e092561b339d17d11fd33b626adb17f17a50d64210c0433bbc',
+       i686: '68c36e34a0a3a2120d6704eca6f5abcfe146a10f372e2b32862f080efc60aacf',
+     x86_64: 'faf0db65f7d11e847e6bf10ed34527c594f35a3ac416048d36cff54b7db96c7a'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'zlib' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'zlib' => :library
 
   no_lto
+
+  # To fix error while loading shared libraries: libtcl9.0.so: cannot open shared object file: No such file or directory,
+  # install tcl prior to attempting to build.
 
   def self.patch
     # As in https://salsa.debian.org/tcltk-team/tcl9.0/-/blob/master/debian/rules?ref_type=heads

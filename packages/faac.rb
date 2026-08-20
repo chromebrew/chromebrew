@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Faac < Meson
   description 'Freeware Advanced Audio Coder'
   homepage 'https://www.audiocoding.com/'
-  version '2.0'
+  version '2.1'
   license 'GPL2 custom'
   compatibility 'all'
   source_url 'https://github.com/knik0/faac.git'
@@ -14,10 +14,10 @@ class Faac < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '453bbe8992d73081318a92180752682669e34cdb89f6d826c1d6a504a1b4e5c1',
-     armv7l: '453bbe8992d73081318a92180752682669e34cdb89f6d826c1d6a504a1b4e5c1',
-       i686: '5f5e04587bdab9ac49264e6ab6ace40277161e709ed15f06948cc509ce955f3f',
-     x86_64: 'afa65ed29bd5c6bbda8813430ae4630c09a0ff14c71c3a1a4aea521ed3b30ea1'
+    aarch64: '61a87a50d1de4a0aaaae75b58b2315ed13fd03da1b8feabc241567e32bc42540',
+     armv7l: '61a87a50d1de4a0aaaae75b58b2315ed13fd03da1b8feabc241567e32bc42540',
+       i686: 'ae1f1f1efac6fd857d4f20a9e52e718801e24004a138b83f4c0bd6d0dca7f9ab',
+     x86_64: '22bed9da5bf19ca53bf91c6a8888820e3e653289f68ea34e2446bcbe06d85e81'
   })
 
   depends_on 'glibc' => :library

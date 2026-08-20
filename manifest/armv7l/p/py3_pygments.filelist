@@ -1,13 +1,13 @@
-# Total size: 8878162
+# Total size: 9031685
 /usr/local/bin/pygmentize
-/usr/local/lib/python3.14/site-packages/pygments-2.20.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/pygments-2.20.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/pygments-2.20.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/pygments-2.20.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/pygments-2.20.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/pygments-2.20.0.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/pygments-2.20.0.dist-info/licenses/AUTHORS
-/usr/local/lib/python3.14/site-packages/pygments-2.20.0.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/pygments-2.21.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/pygments-2.21.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/pygments-2.21.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/pygments-2.21.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/pygments-2.21.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/pygments-2.21.0.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/pygments-2.21.0.dist-info/licenses/AUTHORS
+/usr/local/lib/python3.14/site-packages/pygments-2.21.0.dist-info/licenses/LICENSE
 /usr/local/lib/python3.14/site-packages/pygments/__init__.py
 /usr/local/lib/python3.14/site-packages/pygments/__main__.py
 /usr/local/lib/python3.14/site-packages/pygments/__pycache__/__init__.cpython-314.pyc
@@ -113,6 +113,7 @@
 /usr/local/lib/python3.14/site-packages/pygments/lexers/__pycache__/bdd.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pygments/lexers/__pycache__/berry.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pygments/lexers/__pycache__/bibtex.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/pygments/lexers/__pycache__/bitbake.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pygments/lexers/__pycache__/blueprint.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pygments/lexers/__pycache__/boa.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pygments/lexers/__pycache__/bqn.cpython-314.pyc
@@ -122,6 +123,7 @@
 /usr/local/lib/python3.14/site-packages/pygments/lexers/__pycache__/capnproto.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pygments/lexers/__pycache__/carbon.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pygments/lexers/__pycache__/cddl.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/pygments/lexers/__pycache__/cel.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pygments/lexers/__pycache__/chapel.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pygments/lexers/__pycache__/clean.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pygments/lexers/__pycache__/codeql.cpython-314.pyc
@@ -243,6 +245,7 @@
 /usr/local/lib/python3.14/site-packages/pygments/lexers/__pycache__/promql.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pygments/lexers/__pycache__/prql.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pygments/lexers/__pycache__/ptx.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/pygments/lexers/__pycache__/purescript.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pygments/lexers/__pycache__/python.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pygments/lexers/__pycache__/q.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pygments/lexers/__pycache__/qlik.cpython-314.pyc
@@ -372,6 +375,7 @@
 /usr/local/lib/python3.14/site-packages/pygments/lexers/bdd.py
 /usr/local/lib/python3.14/site-packages/pygments/lexers/berry.py
 /usr/local/lib/python3.14/site-packages/pygments/lexers/bibtex.py
+/usr/local/lib/python3.14/site-packages/pygments/lexers/bitbake.py
 /usr/local/lib/python3.14/site-packages/pygments/lexers/blueprint.py
 /usr/local/lib/python3.14/site-packages/pygments/lexers/boa.py
 /usr/local/lib/python3.14/site-packages/pygments/lexers/bqn.py
@@ -381,6 +385,7 @@
 /usr/local/lib/python3.14/site-packages/pygments/lexers/capnproto.py
 /usr/local/lib/python3.14/site-packages/pygments/lexers/carbon.py
 /usr/local/lib/python3.14/site-packages/pygments/lexers/cddl.py
+/usr/local/lib/python3.14/site-packages/pygments/lexers/cel.py
 /usr/local/lib/python3.14/site-packages/pygments/lexers/chapel.py
 /usr/local/lib/python3.14/site-packages/pygments/lexers/clean.py
 /usr/local/lib/python3.14/site-packages/pygments/lexers/codeql.py
@@ -502,6 +507,7 @@
 /usr/local/lib/python3.14/site-packages/pygments/lexers/promql.py
 /usr/local/lib/python3.14/site-packages/pygments/lexers/prql.py
 /usr/local/lib/python3.14/site-packages/pygments/lexers/ptx.py
+/usr/local/lib/python3.14/site-packages/pygments/lexers/purescript.py
 /usr/local/lib/python3.14/site-packages/pygments/lexers/python.py
 /usr/local/lib/python3.14/site-packages/pygments/lexers/q.py
 /usr/local/lib/python3.14/site-packages/pygments/lexers/qlik.py
@@ -617,6 +623,7 @@
 /usr/local/lib/python3.14/site-packages/pygments/styles/__pycache__/monokai.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pygments/styles/__pycache__/murphy.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pygments/styles/__pycache__/native.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/pygments/styles/__pycache__/night_owl.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pygments/styles/__pycache__/nord.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pygments/styles/__pycache__/onedark.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pygments/styles/__pycache__/paraiso_dark.cpython-314.pyc
@@ -664,6 +671,7 @@
 /usr/local/lib/python3.14/site-packages/pygments/styles/monokai.py
 /usr/local/lib/python3.14/site-packages/pygments/styles/murphy.py
 /usr/local/lib/python3.14/site-packages/pygments/styles/native.py
+/usr/local/lib/python3.14/site-packages/pygments/styles/night_owl.py
 /usr/local/lib/python3.14/site-packages/pygments/styles/nord.py
 /usr/local/lib/python3.14/site-packages/pygments/styles/onedark.py
 /usr/local/lib/python3.14/site-packages/pygments/styles/paraiso_dark.py

@@ -22,7 +22,7 @@ class Zlib < CMake
 
   depends_on 'glibc' => :library
 
-  cmake_options "#{CREW_CMAKE_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} -Wno-dev"
+  cmake_options "#{CREW_CMAKE_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} -Wno-author"
 
   run_tests
 

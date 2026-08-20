@@ -70,7 +70,7 @@ class Libclc < Package
       -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
       -DCMAKE_LIBRARY_PATH='#{CREW_GLIBC_INTERPRETER.nil? ? CREW_LIB_PREFIX : "#{CREW_GLIBC_PREFIX};#{CREW_LIB_PREFIX}"}' \
       -D_CMAKE_TOOLCHAIN_PREFIX=llvm- \
-      -Wno-dev"
+      -Wno-author"
     system "#{CREW_NINJA} -C builddir"
   end
 
