@@ -1,4 +1,4 @@
-# Total size: 2585068890
+# Total size: 2586793685
 /home/chronos/user/.flutter_tool_state
 /usr/local/bin/dart
 /usr/local/bin/flutter
@@ -75,9 +75,9 @@
 /usr/local/share/flutter/.git/logs/refs/remotes/origin/HEAD
 /usr/local/share/flutter/.git/objects/info/commit-graph
 /usr/local/share/flutter/.git/objects/info/packs
-/usr/local/share/flutter/.git/objects/pack/pack-09e116bd667ab501f4a552fb3519a35527c35c1e.idx
-/usr/local/share/flutter/.git/objects/pack/pack-09e116bd667ab501f4a552fb3519a35527c35c1e.pack
-/usr/local/share/flutter/.git/objects/pack/pack-09e116bd667ab501f4a552fb3519a35527c35c1e.rev
+/usr/local/share/flutter/.git/objects/pack/pack-02b007c89ae33632853a201f77aed8fc4a198aa5.idx
+/usr/local/share/flutter/.git/objects/pack/pack-02b007c89ae33632853a201f77aed8fc4a198aa5.pack
+/usr/local/share/flutter/.git/objects/pack/pack-02b007c89ae33632853a201f77aed8fc4a198aa5.rev
 /usr/local/share/flutter/.git/packed-refs
 /usr/local/share/flutter/.git/refs/remotes/origin/HEAD
 /usr/local/share/flutter/.gitattributes
@@ -315,6 +315,7 @@
 /usr/local/share/flutter/.pub-preload-cache/video_player_platform_interface-6.9.0.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/video_player_web-2.4.0.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/vm_service-15.2.0.tar.gz
+/usr/local/share/flutter/.pub-preload-cache/vm_service-15.3.0.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/vm_service_interface-2.0.1.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/vm_snapshot_analysis-0.7.6.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/watcher-1.2.1.tar.gz
