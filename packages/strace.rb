@@ -11,9 +11,9 @@ class Strace < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '935e8d41515687a095c606465e2ab1bd2d5f1c2f3c0c18bb33f2c33673d98294',
-     armv7l: '935e8d41515687a095c606465e2ab1bd2d5f1c2f3c0c18bb33f2c33673d98294',
-     x86_64: '36a65c0b4e9ff25200f7704b643de3e697ba6181afc03ca69f32d27926b5d945'
+    aarch64: '203b32fa2b8e2fc79a9605eef07e93533c770ad982a35f5ac89e43e293c35c3b',
+     armv7l: '203b32fa2b8e2fc79a9605eef07e93533c770ad982a35f5ac89e43e293c35c3b',
+     x86_64: 'ea00f6793a9be9467c41e1941ccb03daee79f3709c771f030fe12e1d2a257b4a'
   })
 
   depends_on 'elfutils' => :executable
