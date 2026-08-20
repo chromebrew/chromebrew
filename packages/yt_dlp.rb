@@ -10,10 +10,10 @@ class Yt_dlp < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0c4fbbceafefd6c9ddefb57983c3b5517e72aac79830bec41aeb427837c10355',
-     armv7l: '0c4fbbceafefd6c9ddefb57983c3b5517e72aac79830bec41aeb427837c10355',
-       i686: '671ced7b2a057535356519def850de69a29cdd03f23dfd3de8fefb414852952a',
-     x86_64: '3d38238f05f2ec2a8b4ec929c0e7388bcadd91dfaf9a72bf8e6b129465a68f39'
+    aarch64: 'df46254fbab640c102857dd0cd93d50d160b9a39a74351548700647f76207c46',
+     armv7l: 'df46254fbab640c102857dd0cd93d50d160b9a39a74351548700647f76207c46',
+       i686: '4fdc75da22f1e52f7460c0468c36f806bb46ca4dabc96b389b5ac1c59ef819f2',
+     x86_64: 'f500d13b4ac98053c0787037a668b381d0dc82dadc81ae470799e272f0c0fd61'
   })
 
   depends_on 'py3_brotlicffi'
