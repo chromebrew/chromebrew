@@ -1,12 +1,12 @@
-# Total size: 416919550
-/usr/local/lib/python3.14/site-packages/oci-2.184.1.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/oci-2.184.1.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/oci-2.184.1.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/oci-2.184.1.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/oci-2.184.1.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/oci-2.184.1.dist-info/THIRD_PARTY_LICENSES.txt
-/usr/local/lib/python3.14/site-packages/oci-2.184.1.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/oci-2.184.1.dist-info/top_level.txt
+# Total size: 416951299
+/usr/local/lib/python3.14/site-packages/oci-2.184.2.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/oci-2.184.2.dist-info/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/oci-2.184.2.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/oci-2.184.2.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/oci-2.184.2.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/oci-2.184.2.dist-info/THIRD_PARTY_LICENSES.txt
+/usr/local/lib/python3.14/site-packages/oci-2.184.2.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/oci-2.184.2.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/oci/__init__.py
 /usr/local/lib/python3.14/site-packages/oci/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/__pycache__/_log_redaction.cpython-314.pyc
@@ -11613,6 +11613,7 @@
 /usr/local/lib/python3.14/site-packages/oci/database/models/__pycache__/system_version_minor_version_collection.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/database/models/__pycache__/system_version_minor_version_summary.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/database/models/__pycache__/system_version_summary.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/database/models/__pycache__/tde_wallet_backup_destination.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/database/models/__pycache__/undelete_autonomous_database_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/database/models/__pycache__/unmount_dbnode_snapshot_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/database/models/__pycache__/unregister_cloud_autonomous_vm_cluster_pkcs_details.cpython-314.pyc
@@ -12193,6 +12194,7 @@
 /usr/local/lib/python3.14/site-packages/oci/database/models/system_version_minor_version_collection.py
 /usr/local/lib/python3.14/site-packages/oci/database/models/system_version_minor_version_summary.py
 /usr/local/lib/python3.14/site-packages/oci/database/models/system_version_summary.py
+/usr/local/lib/python3.14/site-packages/oci/database/models/tde_wallet_backup_destination.py
 /usr/local/lib/python3.14/site-packages/oci/database/models/undelete_autonomous_database_details.py
 /usr/local/lib/python3.14/site-packages/oci/database/models/unmount_dbnode_snapshot_details.py
 /usr/local/lib/python3.14/site-packages/oci/database/models/unregister_cloud_autonomous_vm_cluster_pkcs_details.py
