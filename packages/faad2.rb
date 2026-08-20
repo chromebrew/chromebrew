@@ -11,11 +11,11 @@ class Faad2 < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '335da273b197cf7ebeaa1486c13cf5bd5f75fdd195cd980f2307fdda2b76ba08',
-     armv7l: '335da273b197cf7ebeaa1486c13cf5bd5f75fdd195cd980f2307fdda2b76ba08',
-       i686: 'b45016587d82ce30406358450df33cbf98b9ef6ed563df47df40a44ac23823f6',
-     x86_64: '1de0ae79020d437d94e84415434799bcf5f3d5bd72952f709dc5a352c895482e'
+    aarch64: '2a31c4871db43da250a4333ffab199f87ba45b51daec7f0da885f39bc03476ff',
+     armv7l: '2a31c4871db43da250a4333ffab199f87ba45b51daec7f0da885f39bc03476ff',
+       i686: 'd3ddfb6dcc16d94a363d2874aba5061de8d43595715c1060964e8b749fb9a32e',
+     x86_64: '1616cd8ef29d3ef7cde2110e6b891c8839d9c1a33df073b3b8d0758a6df003bf'
   })
 
-  depends_on 'glibc'
+  depends_on 'glibc' => :library
 end
