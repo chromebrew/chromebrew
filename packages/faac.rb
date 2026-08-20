@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Faac < Meson
   description 'Freeware Advanced Audio Coder'
   homepage 'https://www.audiocoding.com/'
-  version '2.0'
+  version '2.1'
   license 'GPL2 custom'
   compatibility 'all'
   source_url 'https://github.com/knik0/faac.git'
