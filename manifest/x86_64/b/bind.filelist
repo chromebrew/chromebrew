@@ -1,4 +1,4 @@
-# Total size: 6172610
+# Total size: 6209824
 /usr/local/bin/arpaname
 /usr/local/bin/delv
 /usr/local/bin/dig
@@ -21,17 +21,18 @@
 /usr/local/bin/named-makejournal
 /usr/local/bin/named-nzd2nzf
 /usr/local/bin/named-rrchecker
+/usr/local/bin/named-wireformat
 /usr/local/bin/nsec3hash
 /usr/local/bin/nslookup
 /usr/local/bin/nsupdate
 /usr/local/lib64/bind/filter-a.so
 /usr/local/lib64/bind/filter-aaaa.so
 /usr/local/lib64/bind/synthrecord.so
-/usr/local/lib64/libdns-9.21.24.so
-/usr/local/lib64/libisc-9.21.24.so
-/usr/local/lib64/libisccc-9.21.24.so
-/usr/local/lib64/libisccfg-9.21.24.so
-/usr/local/lib64/libns-9.21.24.so
+/usr/local/lib64/libdns-9.21.25.so
+/usr/local/lib64/libisc-9.21.25.so
+/usr/local/lib64/libisccc-9.21.25.so
+/usr/local/lib64/libisccfg-9.21.25.so
+/usr/local/lib64/libns-9.21.25.so
 /usr/local/sbin/ddns-confgen
 /usr/local/sbin/named
 /usr/local/sbin/rndc
