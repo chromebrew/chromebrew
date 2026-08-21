@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Ed < Autotools
   description 'GNU ed is a line-oriented text editor.'
   homepage 'http://www.gnu.org/software/ed/ed.html'
-  version '1.22.5'
+  version '1.22.6'
   license 'GPL-2'
   compatibility 'all'
   source_url "https://ftp.gnu.org/gnu/ed/ed-#{version}.tar.lz"
-  source_sha256 '56e107ddc2f29dad6690376c15bf9751509e1ee3b8241710e44edbe5c3a158cc'
+  source_sha256 '3f33b22135219c39c3c695f7b7171c2567d3e2a17c798c0a90607320cbb268f2'
   binary_compression 'tar.zst'
 
   binary_sha256({
