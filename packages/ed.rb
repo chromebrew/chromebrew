@@ -19,5 +19,6 @@ class Ed < Autotools
 
   # only lz archive is available for ed and it requires lzip.
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'lzip' => :build
 end
