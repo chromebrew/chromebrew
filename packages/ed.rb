@@ -11,10 +11,10 @@ class Ed < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '07ed27b1eebe06ca9e12a95924fa01a70518bb6f79e5c6fe98ff7558bcb20768',
-     armv7l: '07ed27b1eebe06ca9e12a95924fa01a70518bb6f79e5c6fe98ff7558bcb20768',
-       i686: '082f377693ffd42a5dc4c5edb3ba68f544fa21a0deef0a2df9662c4a1c450bdf',
-     x86_64: '186637f055316add7a42ae455abfdc73b50990308d097d8d0386ff28cd342a1f'
+    aarch64: '666055709189337246f421132d582a17aced4aa3389420721472b127feb49eaf',
+     armv7l: '666055709189337246f421132d582a17aced4aa3389420721472b127feb49eaf',
+       i686: '1fe418e4f051814f5c606c603dc503f6a52ee3487e2b5bd0c7a46e6bb637b36e',
+     x86_64: '05f033d773e4d0e5bdcfea0f0584883aa2e090f6673a2cb15124c980207b6f37'
   })
 
   # only lz archive is available for ed and it requires lzip.
