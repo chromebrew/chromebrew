@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Protobuf < CMake
   description 'Protocol Buffers - Googles data interchange format'
   homepage 'https://protobuf.dev'
-  version '35.1'
+  version '36.0'
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/protocolbuffers/protobuf.git'
