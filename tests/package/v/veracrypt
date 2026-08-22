@@ -1,0 +1,3 @@
+#!/bin/bash
+veracrypt -t -h 2>&1 | head
+veracrypt -t --version
