@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Procps < Autotools
   description 'procps is a set of command line and full-screen utilities that provide information out of the pseudo-filesystem most commonly located at /proc.'
   homepage 'https://gitlab.com/procps-ng/procps'
-  version '4.0.6'
+  version '4.0.7'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://gitlab.com/procps-ng/procps.git'
