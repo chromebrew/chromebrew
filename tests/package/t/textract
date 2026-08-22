@@ -1,0 +1,3 @@
+#!/bin/bash
+textract -h | head
+textract -v
