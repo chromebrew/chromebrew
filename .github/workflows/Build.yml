@@ -254,10 +254,10 @@ jobs:
                   echo "CONTAINER=satmandu/crewbuild:nocturne-x86_64.m97" >> "$GITHUB_ENV"
                   ;;
                 2.37)
-                  echo "CONTAINER=satmandu/crewbuild:hatch-x86_64.m150" >> "$GITHUB_ENV"
+                  echo "CONTAINER=satmandu/crewbuild:hatch-x86_64.m151" >> "$GITHUB_ENV"
                   ;;
                 2.41)
-                  echo "CONTAINER=satmandu/crewbuild:hatch-x86_64.m150" >> "$GITHUB_ENV"
+                  echo "CONTAINER=satmandu/crewbuild:hatch-x86_64.m151" >> "$GITHUB_ENV"
                   ;;
                 *)
                   # Fallback/default is the M90 Glibc 2.27 container.
@@ -273,10 +273,10 @@ jobs:
                   echo "CONTAINER=satmandu/crewbuild:fievel-armv7l.m97" >> "$GITHUB_ENV"
                   ;;
                 2.37)
-                  echo "CONTAINER=satmandu/crewbuild:strongbad-armv7l.m150" >> "$GITHUB_ENV"
+                  echo "CONTAINER=satmandu/crewbuild:strongbad-armv7l.m151" >> "$GITHUB_ENV"
                   ;;
                 2.41)
-                  echo "CONTAINER=satmandu/crewbuild:strongbad-armv7l.m150" >> "$GITHUB_ENV"
+                  echo "CONTAINER=satmandu/crewbuild:strongbad-armv7l.m151" >> "$GITHUB_ENV"
                   ;;
                 *)
                   # Fallback/default is the M91 Glibc 2.27 container.
