@@ -3,7 +3,7 @@ require 'package'
 class Pacparser < Package
   description 'pacparser is a library to parse proxy auto-config (PAC) files.'
   homepage 'https://pacparser.manugarg.com/'
-  version '1.5.1'
+  version '1.5.2'
   license 'LGPL-3'
   compatibility 'all'
   source_url 'https://github.com/pacparser/pacparser.git'
