@@ -1,34 +1,27 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Vifm < Package
+class Vifm < Autotools
   description 'Vifm is an ncurses based file manager with vi like keybindings/modes/options/commands/configuration, which also borrows some useful ideas from mutt.'
   homepage 'https://vifm.info/'
-  version '0.9'
+  version '0.14.4'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://downloads.sourceforge.net/project/vifm/vifm/vifm-0.9.tar.bz2'
-  source_sha256 'ab10c99d1e4c24ff8a03c20be1c202cc15874750cc47a1614e6fe4f8d816a7fd'
-  binary_compression 'tar.xz'
+  source_url "https://downloads.sourceforge.net/project/vifm/vifm/vifm-#{version}.tar.bz2"
+  source_sha256 '40bc32ec10d829ada3d0297d33cd4f302c520bb431287d544fc0a05ae45fdb1b'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '78e4257894e5c19e825d6b33d2f66fc29189bd17bbfa21aa8eecb9b4b75c47da',
-     armv7l: '78e4257894e5c19e825d6b33d2f66fc29189bd17bbfa21aa8eecb9b4b75c47da',
-       i686: '3611f9a8b5740242b672b9c91efca3c537a63c2fbfb0d3ab9f4f3b1e5a91b701',
-     x86_64: 'bf9c7b3328428b50247c9ae6d5386f055357a8f6919efc03174666440b1b923e'
+    aarch64: '47a824aab61a1c28d99e07b193e3c1ab3d74f8282332ebb157e00d83ccb8ac31',
+     armv7l: '47a824aab61a1c28d99e07b193e3c1ab3d74f8282332ebb157e00d83ccb8ac31',
+       i686: 'b8a87ed0f2ab53c58c60e0a2e14d82329257c18f5ad1f0d9c002681ae7c447ac',
+     x86_64: '25b92a68de966eccb733db7434c84474846dd405b8d261037cb971934f95f6cc'
   })
 
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           '--without-gtk',
-           '--without-X11',
-           # "--with-curses=#{CREW_PREFIX}/include/ncursesw" \
-           # "--with-curses-name=ncursesw" \
-           "CPPFLAGS=-I#{CREW_PREFIX}/include/ncursesw"
-    system 'make'
-  end
+  depends_on 'filecmd' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'ncurses' => :executable
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  autotools_pre_configure_options "CPPFLAGS=-I#{CREW_PREFIX}/include/ncursesw"
+  autotools_configure_options '--without-glib --without-X11'
 end
