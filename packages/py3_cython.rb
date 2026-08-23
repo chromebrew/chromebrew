@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_cython < Pip
   description 'The Cython language makes writing C extensions for the Python language as easy as Python itself.'
   homepage 'https://cython.org/'
-  version "3.2.9-#{CREW_PY_VER}"
+  version "3.3.0-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a2ff58b814ba7a02db6129a83d54b5a60cee218ff7515b41c634e0148818fa89',
-     armv7l: 'a2ff58b814ba7a02db6129a83d54b5a60cee218ff7515b41c634e0148818fa89',
-       i686: 'fb88b8c4f134d45e5389cf1d274ad94832b4686932b13ac893c30ae45c76e5ad',
-     x86_64: '782f9265538b063de5829deaee4743e045713de2f4f5ac42914c4bfe32abbd49'
+    aarch64: 'e3028ebe37c8fc45b93ae82bf5525730c27e5eb9d419c111dd22b12496e6b5bc',
+     armv7l: 'e3028ebe37c8fc45b93ae82bf5525730c27e5eb9d419c111dd22b12496e6b5bc',
+       i686: '8b9665bec5e6d3cd2925ca9104a08530f476746f0cfb9f4d4827866ed7f58559',
+     x86_64: '6afced4ab623157457e57e72cd33ef921ee6e7420fba7490fc5b2f93f3710723'
   })
 
   depends_on 'glibc' => :library
