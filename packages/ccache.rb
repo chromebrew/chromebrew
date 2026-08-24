@@ -19,6 +19,7 @@ class Ccache < CMake
 
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'ruby_asciidoctor' => :build
   depends_on 'xdg_base' => :logical
   depends_on 'xxhash' => :library
