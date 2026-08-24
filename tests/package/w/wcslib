@@ -1,0 +1,4 @@
+#!/bin/bash
+fitshdr -h 2>&1
+sundazel -h 2>&1 | head -5
+tofits -h 2>&1 | head -5
