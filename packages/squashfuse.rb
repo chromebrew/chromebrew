@@ -6,7 +6,7 @@ require 'buildsystems/autotools'
 class Squashfuse < Autotools
   description 'FUSE filesystem to mount squashfs archives'
   homepage 'https://github.com/vasi/squashfuse'
-  version '0.6.2'
+  version '0.6.3'
   license 'custom'
   compatibility 'all'
   source_url 'https://github.com/vasi/squashfuse.git'
