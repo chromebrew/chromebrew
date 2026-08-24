@@ -14,10 +14,10 @@ class Tree_sitter < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '177071a3cb79681ed12b249d95fc3b2e632b43784df9293b965b29899f75bebf',
-     armv7l: '177071a3cb79681ed12b249d95fc3b2e632b43784df9293b965b29899f75bebf',
-       i686: '91ee9ee76f09b4b4ca493dba761450c230acdfa3a489fe607aca3946d32dc71d',
-     x86_64: '632a50f537684517f2373a65326a89d3db96647737d8d2f16b8d5b22d9888897'
+    aarch64: '3c6ee4dca8616e8cc1219389cb1c880fee8cdacd3932c4e859eea41820af6130',
+     armv7l: '3c6ee4dca8616e8cc1219389cb1c880fee8cdacd3932c4e859eea41820af6130',
+       i686: 'a9c0f6964c0fe9514238b174eebb3cfe1c6eff0644dc0ed1aa80e8d8038d7df5',
+     x86_64: '45a78dc4aed8b940b5f6364e15a7a5ed1d751b86970ebb889652747dd1eb25fa'
   })
 
   depends_on 'gcc_lib' => :executable
