@@ -1,0 +1,19 @@
+#!/bin/bash
+cbmcopy --version
+cbmctrl --version
+cbmformat --version
+cbmforng --version
+cbmlinetester --version
+cbmread --version
+cbmrpm41 --version
+cbmwrite --version
+d64copy --version
+d82copy --version
+frm_analyzer --version
+imgcopy --version | head -5
+nibconv --version | head -5
+nibread --version | head -5
+nibrepair --version | head -5
+nibscan --version | head -5
+nibsrqtest --version | head -5
+nibwrite --version | head -5

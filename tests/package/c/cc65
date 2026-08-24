@@ -1,0 +1,13 @@
+#!/bin/bash
+ar65 V 2>&1
+ca65 -V 2>&1
+cc65 -V 2>&1
+chrcvt65 -V 2>&1
+cl65 -V 2>&1
+co65 -V 2>&1
+da65 -V 2>&1
+grc65 -V 2>&1
+ld65 -V 2>&1
+od65 -V 2>&1
+sim65 -V 2>&1
+sp65 -V 2>&1
