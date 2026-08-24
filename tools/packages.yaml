@@ -895,6 +895,11 @@ url: https://gitlab.com/jallbrit/cbonsai/-/tags
 activity: none
 ---
 kind: url
+name: cc65
+url: https://github.com/cc65/cc65/releases
+activity: none
+---
+kind: url
 name: ccache
 url: https://github.com/ccache/ccache/releases
 activity: medium
@@ -6925,6 +6930,11 @@ url: http://openbox.org/wiki/Openbox:Download
 activity: none
 ---
 kind: url
+name: opencbm
+url: https://github.com/OpenCBM/OpenCBM/tags
+activity: none
+---
+kind: url
 name: opencl_headers
 url: https://github.com/KhronosGroup/OpenCL-Headers/releases
 activity: medium
@@ -8218,6 +8228,11 @@ kind: url
 name: py3_sphinxcontrib_jquery
 url: https://github.com/sphinx-contrib/jquery/tags
 activity: medium
+---
+kind: url
+name: py3_streamlit
+url: https://github.com/streamlit/streamlit/releases
+activity: high
 ---
 kind: url
 name: py3_twine
