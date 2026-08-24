@@ -6,7 +6,7 @@ require 'buildsystems/autotools'
 class Squashfuse < Autotools
   description 'FUSE filesystem to mount squashfs archives'
   homepage 'https://github.com/vasi/squashfuse'
-  version '0.6.2'
+  version '0.6.3'
   license 'custom'
   compatibility 'all'
   source_url 'https://github.com/vasi/squashfuse.git'
@@ -14,10 +14,10 @@ class Squashfuse < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9af06b0894554939781f2f02da73eff7e96ebdfe69c2591b8515a60b8762547b',
-     armv7l: '9af06b0894554939781f2f02da73eff7e96ebdfe69c2591b8515a60b8762547b',
-       i686: '66dca481d52e25ebd6ae5be10aa188649ff426b6aa51b961e4ec335dea13ca08',
-     x86_64: 'b624917fef01972cc4d2ac72f15d673535eca1c04ea60994e941e3f822f479f6'
+    aarch64: '630de64705eb85ebba47e9c6129b30961aaf3401ae18b6ae9cc39f8bc1fff19a',
+     armv7l: '630de64705eb85ebba47e9c6129b30961aaf3401ae18b6ae9cc39f8bc1fff19a',
+       i686: 'abe55a32f765ab8f01c81ebac41544f19f2c523c64e48930b1dd81be74f02139',
+     x86_64: '70c35249171db95ef55b6dc7d7e8b64fba99c6edc11d9774a6d19e313b7acbea'
   })
 
   depends_on 'fuse3' => :library
