@@ -12,10 +12,10 @@ class Pkgconf < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c61c83984df87d812c86e341cedf60f08ead40bde9303bd032d81a5ee4604397',
-     armv7l: 'c61c83984df87d812c86e341cedf60f08ead40bde9303bd032d81a5ee4604397',
-       i686: '687e1fc90f5d32685b02f3cc8582c15a9c238395a997a11c165199ae67f2fcfa',
-     x86_64: '492cb887435922586d9d665f2a632284fbcd6bb9ff05e3d25704a0b5c4822450'
+    aarch64: '6f44a37a68e4c4bb79b501326d57ad7db85185d155c151ef1a8a774fae2f9c54',
+     armv7l: '6f44a37a68e4c4bb79b501326d57ad7db85185d155c151ef1a8a774fae2f9c54',
+       i686: '4504cd56bfed10b293acebea02f60b13fd05d0baf83ac0a71b1ecae0919984a1',
+     x86_64: '504aa256f8b5a80313d8fa0cc26f9b6e1a063663fc1cd490254c8c90a48a34bd'
   })
 
   depends_on 'gcc_lib' # R
