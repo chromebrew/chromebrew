@@ -1,12 +1,12 @@
-# Total size: 13563554
+# Total size: 14054181
 /usr/local/bin/protoc
-/usr/local/bin/protoc-35.1.0
+/usr/local/bin/protoc-36.0.0
 /usr/local/bin/protoc-gen-upb
-/usr/local/bin/protoc-gen-upb-35.1.0
+/usr/local/bin/protoc-gen-upb-36.0.0
 /usr/local/bin/protoc-gen-upb_minitable
-/usr/local/bin/protoc-gen-upb_minitable-35.1.0
+/usr/local/bin/protoc-gen-upb_minitable-36.0.0
 /usr/local/bin/protoc-gen-upbdefs
-/usr/local/bin/protoc-gen-upbdefs-35.1.0
+/usr/local/bin/protoc-gen-upbdefs-36.0.0
 /usr/local/include/google/protobuf/any.h
 /usr/local/include/google/protobuf/any.pb.h
 /usr/local/include/google/protobuf/any.proto
@@ -19,6 +19,7 @@
 /usr/local/include/google/protobuf/arenastring.h
 /usr/local/include/google/protobuf/arenaz_sampler.h
 /usr/local/include/google/protobuf/c_sharp_features.proto
+/usr/local/include/google/protobuf/class_data.h
 /usr/local/include/google/protobuf/compiler/code_generator.h
 /usr/local/include/google/protobuf/compiler/code_generator_lite.h
 /usr/local/include/google/protobuf/compiler/command_line_interface.h
@@ -52,11 +53,15 @@
 /usr/local/include/google/protobuf/cpp_edition_defaults.h
 /usr/local/include/google/protobuf/cpp_features.pb.h
 /usr/local/include/google/protobuf/cpp_features.proto
+/usr/local/include/google/protobuf/cpp_file_options.pb.h
+/usr/local/include/google/protobuf/cpp_file_options.proto
+/usr/local/include/google/protobuf/cpp_options.proto
 /usr/local/include/google/protobuf/descriptor.h
 /usr/local/include/google/protobuf/descriptor.pb.h
 /usr/local/include/google/protobuf/descriptor.proto
 /usr/local/include/google/protobuf/descriptor.upb.h
 /usr/local/include/google/protobuf/descriptor.upb_minitable.h
+/usr/local/include/google/protobuf/descriptor_builder.h
 /usr/local/include/google/protobuf/descriptor_database.h
 /usr/local/include/google/protobuf/descriptor_legacy.h
 /usr/local/include/google/protobuf/descriptor_lite.h
@@ -112,6 +117,11 @@
 /usr/local/include/google/protobuf/json/internal/writer.h
 /usr/local/include/google/protobuf/json/internal/zero_copy_buffered_stream.h
 /usr/local/include/google/protobuf/json/json.h
+/usr/local/include/google/protobuf/json_enumvalue_options.pb.h
+/usr/local/include/google/protobuf/json_enumvalue_options.proto
+/usr/local/include/google/protobuf/json_enumvalue_options.upb.h
+/usr/local/include/google/protobuf/json_enumvalue_options.upb_minitable.h
+/usr/local/include/google/protobuf/json_options.proto
 /usr/local/include/google/protobuf/map.h
 /usr/local/include/google/protobuf/map_entry.h
 /usr/local/include/google/protobuf/map_field.h
@@ -119,9 +129,11 @@
 /usr/local/include/google/protobuf/map_type_handler.h
 /usr/local/include/google/protobuf/message.h
 /usr/local/include/google/protobuf/message_lite.h
+/usr/local/include/google/protobuf/message_traits.h
 /usr/local/include/google/protobuf/metadata.h
 /usr/local/include/google/protobuf/metadata_lite.h
 /usr/local/include/google/protobuf/micro_string.h
+/usr/local/include/google/protobuf/naming_style.h
 /usr/local/include/google/protobuf/os_macros_restore.inc
 /usr/local/include/google/protobuf/os_macros_undef.inc
 /usr/local/include/google/protobuf/parse_context.h
@@ -153,6 +165,7 @@
 /usr/local/include/google/protobuf/stubs/platform_macros.h
 /usr/local/include/google/protobuf/stubs/port.h
 /usr/local/include/google/protobuf/stubs/status_macros.h
+/usr/local/include/google/protobuf/symbol.h
 /usr/local/include/google/protobuf/symbol_checker.h
 /usr/local/include/google/protobuf/text_format.h
 /usr/local/include/google/protobuf/thread_safe_arena.h
@@ -160,6 +173,7 @@
 /usr/local/include/google/protobuf/timestamp.proto
 /usr/local/include/google/protobuf/type.pb.h
 /usr/local/include/google/protobuf/type.proto
+/usr/local/include/google/protobuf/type_id.h
 /usr/local/include/google/protobuf/unknown_field_set.h
 /usr/local/include/google/protobuf/util/delimited_message_util.h
 /usr/local/include/google/protobuf/util/field_comparator.h
@@ -192,7 +206,6 @@
 /usr/local/include/upb/json/encode.h
 /usr/local/include/upb/lex/atoi.h
 /usr/local/include/upb/lex/round_trip.h
-/usr/local/include/upb/lex/strtod.h
 /usr/local/include/upb/lex/unicode.h
 /usr/local/include/upb/mem/alloc.h
 /usr/local/include/upb/mem/arena.h
@@ -202,6 +215,7 @@
 /usr/local/include/upb/message/array.h
 /usr/local/include/upb/message/compare.h
 /usr/local/include/upb/message/compat.h
+/usr/local/include/upb/message/convert.h
 /usr/local/include/upb/message/copy.h
 /usr/local/include/upb/message/internal/accessors.h
 /usr/local/include/upb/message/internal/array.h
@@ -217,6 +231,7 @@
 /usr/local/include/upb/message/map_gencode_util.h
 /usr/local/include/upb/message/merge.h
 /usr/local/include/upb/message/message.h
+/usr/local/include/upb/message/unknown_fields.h
 /usr/local/include/upb/message/value.h
 /usr/local/include/upb/mini_descriptor/build_enum.h
 /usr/local/include/upb/mini_descriptor/decode.h
@@ -276,6 +291,7 @@
 /usr/local/include/upb/reflection/internal/oneof_def.h
 /usr/local/include/upb/reflection/internal/service_def.h
 /usr/local/include/upb/reflection/internal/upb_edition_defaults.h
+/usr/local/include/upb/reflection/json_enumvalue_options_bootstrap.h
 /usr/local/include/upb/reflection/message.h
 /usr/local/include/upb/reflection/message.hpp
 /usr/local/include/upb/reflection/message_def.h
@@ -296,7 +312,10 @@
 /usr/local/include/upb/wire/decode_fast/select.h
 /usr/local/include/upb/wire/encode.h
 /usr/local/include/upb/wire/eps_copy_input_stream.h
+/usr/local/include/upb/wire/internal/back_alloc.h
+/usr/local/include/upb/wire/internal/constants.h
 /usr/local/include/upb/wire/internal/decoder.h
+/usr/local/include/upb/wire/internal/encoder.h
 /usr/local/include/upb/wire/internal/eps_copy_input_stream.h
 /usr/local/include/upb/wire/internal/reader.h
 /usr/local/include/upb/wire/reader.h
@@ -315,16 +334,16 @@
 /usr/local/lib/cmake/utf8_range/utf8_range-targets-release.cmake
 /usr/local/lib/cmake/utf8_range/utf8_range-targets.cmake
 /usr/local/lib/libprotobuf-lite.so
-/usr/local/lib/libprotobuf-lite.so.35.1.0
+/usr/local/lib/libprotobuf-lite.so.36.0.0
 /usr/local/lib/libprotobuf.so
-/usr/local/lib/libprotobuf.so.35.1.0
+/usr/local/lib/libprotobuf.so.36.0.0
 /usr/local/lib/libprotoc.so
-/usr/local/lib/libprotoc.so.35.1.0
+/usr/local/lib/libprotoc.so.36.0.0
 /usr/local/lib/libupb.a
 /usr/local/lib/libutf8_range.so
-/usr/local/lib/libutf8_range.so.35.1.0
+/usr/local/lib/libutf8_range.so.36.0.0
 /usr/local/lib/libutf8_validity.so
-/usr/local/lib/libutf8_validity.so.35.1.0
+/usr/local/lib/libutf8_validity.so.36.0.0
 /usr/local/lib/pkgconfig/protobuf-lite.pc
 /usr/local/lib/pkgconfig/protobuf.pc
 /usr/local/lib/pkgconfig/upb.pc

@@ -1,4 +1,4 @@
-# Total size: 466933576
+# Total size: 467552037
 /usr/local/bin/qortal-hub
 /usr/local/share/applications/qortal-hub.desktop
 /usr/local/share/icons/hicolor/1024x1024/apps/qortal-hub.png
@@ -167,9 +167,11 @@
 /usr/local/share/qortal_hub/resources/reticulum/mesh-network.passphrase
 /usr/local/share/qortal_hub/resources/reticulum/presence_bridge
 /usr/local/share/qortal_hub/resources/reticulum/presence_bridge.py
+/usr/local/share/qortal_hub/resources/reticulum/qortal_python_diagnostics.py
 /usr/local/share/qortal_hub/resources/reticulum/qortalland_games.py
 /usr/local/share/qortal_hub/resources/reticulum/qortalland_proximity.py
 /usr/local/share/qortal_hub/resources/reticulum/rnsd
+/usr/local/share/qortal_hub/resources/reticulum/sitecustomize.py
 /usr/local/share/qortal_hub/snapshot_blob.bin
 /usr/local/share/qortal_hub/usr/lib/libXss.so.1
 /usr/local/share/qortal_hub/usr/lib/libXtst.so.6

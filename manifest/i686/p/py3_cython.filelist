@@ -1,4 +1,4 @@
-# Total size: 15309812
+# Total size: 16229826
 /usr/local/bin/cygdb
 /usr/local/bin/cython
 /usr/local/bin/cythonize
@@ -81,6 +81,7 @@
 /usr/local/lib/python3.14/site-packages/Cython/Compiler/Scanning.abi3.so
 /usr/local/lib/python3.14/site-packages/Cython/Compiler/Scanning.pxd
 /usr/local/lib/python3.14/site-packages/Cython/Compiler/Scanning.py
+/usr/local/lib/python3.14/site-packages/Cython/Compiler/StringEncoding.abi3.so
 /usr/local/lib/python3.14/site-packages/Cython/Compiler/StringEncoding.py
 /usr/local/lib/python3.14/site-packages/Cython/Compiler/Symtab.py
 /usr/local/lib/python3.14/site-packages/Cython/Compiler/Tests/TestBuffer.py
@@ -224,6 +225,7 @@
 /usr/local/lib/python3.14/site-packages/Cython/Includes/cpython/exc.pxd
 /usr/local/lib/python3.14/site-packages/Cython/Includes/cpython/fileobject.pxd
 /usr/local/lib/python3.14/site-packages/Cython/Includes/cpython/float.pxd
+/usr/local/lib/python3.14/site-packages/Cython/Includes/cpython/frozendict.pxd
 /usr/local/lib/python3.14/site-packages/Cython/Includes/cpython/function.pxd
 /usr/local/lib/python3.14/site-packages/Cython/Includes/cpython/genobject.pxd
 /usr/local/lib/python3.14/site-packages/Cython/Includes/cpython/getargs.pxd
@@ -247,6 +249,7 @@
 /usr/local/lib/python3.14/site-packages/Cython/Includes/cpython/pystate.pxd
 /usr/local/lib/python3.14/site-packages/Cython/Includes/cpython/pythread.pxd
 /usr/local/lib/python3.14/site-packages/Cython/Includes/cpython/ref.pxd
+/usr/local/lib/python3.14/site-packages/Cython/Includes/cpython/sentinel.pxd
 /usr/local/lib/python3.14/site-packages/Cython/Includes/cpython/sequence.pxd
 /usr/local/lib/python3.14/site-packages/Cython/Includes/cpython/set.pxd
 /usr/local/lib/python3.14/site-packages/Cython/Includes/cpython/slice.pxd
@@ -334,6 +337,8 @@
 /usr/local/lib/python3.14/site-packages/Cython/Includes/posix/uio.pxd
 /usr/local/lib/python3.14/site-packages/Cython/Includes/posix/unistd.pxd
 /usr/local/lib/python3.14/site-packages/Cython/Includes/posix/wait.pxd
+/usr/local/lib/python3.14/site-packages/Cython/LZSS.abi3.so
+/usr/local/lib/python3.14/site-packages/Cython/LZSS.py
 /usr/local/lib/python3.14/site-packages/Cython/Plex/Actions.abi3.so
 /usr/local/lib/python3.14/site-packages/Cython/Plex/Actions.pxd
 /usr/local/lib/python3.14/site-packages/Cython/Plex/Actions.py
@@ -367,7 +372,6 @@
 /usr/local/lib/python3.14/site-packages/Cython/Runtime/refnanny.abi3.so
 /usr/local/lib/python3.14/site-packages/Cython/Runtime/refnanny.pyx
 /usr/local/lib/python3.14/site-packages/Cython/Shadow.py
-/usr/local/lib/python3.14/site-packages/Cython/Shadow.pyi
 /usr/local/lib/python3.14/site-packages/Cython/StringIOTree.abi3.so
 /usr/local/lib/python3.14/site-packages/Cython/StringIOTree.py
 /usr/local/lib/python3.14/site-packages/Cython/Tempita/__init__.py
@@ -410,10 +414,13 @@
 /usr/local/lib/python3.14/site-packages/Cython/Utility/Dataclasses.c
 /usr/local/lib/python3.14/site-packages/Cython/Utility/Embed.c
 /usr/local/lib/python3.14/site-packages/Cython/Utility/Exceptions.c
+/usr/local/lib/python3.14/site-packages/Cython/Utility/Exceptions_Cy.pyx
 /usr/local/lib/python3.14/site-packages/Cython/Utility/ExtensionTypes.c
 /usr/local/lib/python3.14/site-packages/Cython/Utility/FunctionArguments.c
 /usr/local/lib/python3.14/site-packages/Cython/Utility/FusedFunction.pyx
 /usr/local/lib/python3.14/site-packages/Cython/Utility/ImportExport.c
+/usr/local/lib/python3.14/site-packages/Cython/Utility/MatchCase.c
+/usr/local/lib/python3.14/site-packages/Cython/Utility/MatchCase_Cy.pyx
 /usr/local/lib/python3.14/site-packages/Cython/Utility/MemoryView.pxd
 /usr/local/lib/python3.14/site-packages/Cython/Utility/MemoryView.pyx
 /usr/local/lib/python3.14/site-packages/Cython/Utility/MemoryView_C.c
@@ -422,7 +429,6 @@
 /usr/local/lib/python3.14/site-packages/Cython/Utility/ObjectHandling.c
 /usr/local/lib/python3.14/site-packages/Cython/Utility/Optimize.c
 /usr/local/lib/python3.14/site-packages/Cython/Utility/Overflow.c
-/usr/local/lib/python3.14/site-packages/Cython/Utility/Printing.c
 /usr/local/lib/python3.14/site-packages/Cython/Utility/Profile.c
 /usr/local/lib/python3.14/site-packages/Cython/Utility/StringTools.c
 /usr/local/lib/python3.14/site-packages/Cython/Utility/Synchronization.c
@@ -439,24 +445,25 @@
 /usr/local/lib/python3.14/site-packages/Cython/Utils.abi3.so
 /usr/local/lib/python3.14/site-packages/Cython/Utils.py
 /usr/local/lib/python3.14/site-packages/Cython/__init__.py
-/usr/local/lib/python3.14/site-packages/Cython/__init__.pyi
 /usr/local/lib/python3.14/site-packages/Cython/__pycache__/CodeWriter.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/Cython/__pycache__/Coverage.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/Cython/__pycache__/Debugging.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/Cython/__pycache__/LZSS.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/Cython/__pycache__/Shadow.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/Cython/__pycache__/StringIOTree.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/Cython/__pycache__/TestUtils.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/Cython/__pycache__/Utils.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/Cython/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/Cython/_shared.abi3.so
 /usr/local/lib/python3.14/site-packages/Cython/py.typed
 /usr/local/lib/python3.14/site-packages/__pycache__/cython.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/cython-3.2.9.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/cython-3.2.9.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/cython-3.2.9.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/cython-3.2.9.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/cython-3.2.9.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/cython-3.2.9.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/cython-3.2.9.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/cython-3.3.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/cython-3.3.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/cython-3.3.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/cython-3.3.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/cython-3.3.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/cython-3.3.0.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/cython-3.3.0.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/cython.py
 /usr/local/lib/python3.14/site-packages/pyximport/__init__.py
 /usr/local/lib/python3.14/site-packages/pyximport/__pycache__/__init__.cpython-314.pyc

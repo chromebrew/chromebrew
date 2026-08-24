@@ -3,17 +3,17 @@ require 'buildsystems/ruby'
 class Ruby_rbs < RUBY
   description 'RBS is the language for type signatures for Ruby and standard library definitions.'
   homepage 'https://github.com/ruby/rbs'
-  version "4.1.3-#{CREW_RUBY_VER}"
+  version "4.2.0-#{CREW_RUBY_VER}"
   license 'BSD-2-Clause'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: '7f6c5b93984ccf388abc106f8d6b95254acd30df5729d0ef41b85925e6984f41',
-     armv7l: '7f6c5b93984ccf388abc106f8d6b95254acd30df5729d0ef41b85925e6984f41',
-       i686: 'd6eb8590aa1674811d830371a99ad171b3afa51496f95fe4a0e47e5f392398b2',
-     x86_64: '08eb815e2653e3295413126c125df49385887d154e50ef92a717c9fd078ec0bf'
+    aarch64: 'a09ae862e87fc17bc306c2bb112a0dc2d35a9ec89b930c84eb688161b106d595',
+     armv7l: 'a09ae862e87fc17bc306c2bb112a0dc2d35a9ec89b930c84eb688161b106d595',
+       i686: '4ff85ebedab8397a6f67d3ab331df85f189b44c5c66ea56cf7d94a69f537fabe',
+     x86_64: '821f63c887047bbd683eeb5a3470e5c557f7971feb5a3e737cfbb4183971731f'
   })
 
   depends_on 'glibc' => :library
