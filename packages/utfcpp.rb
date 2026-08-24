@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Utfcpp < CMake
   description 'UTF-8 with C++ in a Portable Way'
   homepage 'https://github.com/nemtrif/utfcpp'
-  version '4.1.1'
+  version '4.2.0'
   license 'BSL-1.0'
   compatibility 'all'
   source_url 'https://github.com/nemtrif/utfcpp.git'
@@ -11,9 +11,9 @@ class Utfcpp < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cb83733bcb0a5f4768306cbc3b5f9322feecb71e93fbc1a583d6730ca56533c1',
-     armv7l: 'cb83733bcb0a5f4768306cbc3b5f9322feecb71e93fbc1a583d6730ca56533c1',
-       i686: '2cdfa2f71b4e3f2b8faad8b742225bec0dbd588b90c64af250fca90699a965ff',
-     x86_64: '85b681cdf5400455ed2c6d6ccd8475cc7d508eccd20ff1010401acfa8b8db83e'
+    aarch64: '2f41bcef3a5a661a24814655526f244ea029e8f7750163eaeb094ea38813850d',
+     armv7l: '2f41bcef3a5a661a24814655526f244ea029e8f7750163eaeb094ea38813850d',
+       i686: 'fc1c5a0fbcf3fa44f6b0353dcd7a67b0e956727547e3c2de4bf4db1853c9fe99',
+     x86_64: '1e38eb656ba1763ac00c9b6dde09ef108cddb26fe88754d8a355b6a94c2f7fe5'
   })
 end
