@@ -1,13 +1,13 @@
-# Total size: 21900726
-/usr/local/bin/weather
-/usr/local/bin/weather.py
-/usr/local/data/weather/airports
-/usr/local/data/weather/places
-/usr/local/data/weather/slist
-/usr/local/data/weather/stations
-/usr/local/data/weather/zctas
-/usr/local/data/weather/zlist
-/usr/local/data/weather/zones
-/usr/local/etc/weatherrc
-/usr/local/man/man1/weather.1
-/usr/local/man/man5/weatherrc.5
+# Total size: 20690068
+/home/chronos/user/.weather/weatherrc
+/usr/local/bin/weather/weather
+/usr/local/bin/weather/weather.py
+/usr/local/share/man/man1/weather.1.zst
+/usr/local/share/man/man5/weatherrc.5.zst
+/usr/local/share/weather/data/airports
+/usr/local/share/weather/data/places
+/usr/local/share/weather/data/slist
+/usr/local/share/weather/data/stations
+/usr/local/share/weather/data/zctas
+/usr/local/share/weather/data/zlist
+/usr/local/share/weather/data/zones
