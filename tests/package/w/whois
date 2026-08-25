@@ -1,0 +1,3 @@
+#!/bin/bash
+whois --help | head
+whois --version

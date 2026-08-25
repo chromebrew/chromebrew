@@ -11,13 +11,14 @@ class Libxcrypt < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '71a07dc54be7bbd21105ee89243e5b9e4687ac9f2f47fba61449005e00eca2c4',
-     armv7l: '71a07dc54be7bbd21105ee89243e5b9e4687ac9f2f47fba61449005e00eca2c4',
-       i686: '5bf079bf54015f8727cbdc44a2d73f5de914a6b94e3e1237030b355630d0d4ce',
-     x86_64: '1553a96a54eb3480a4906eec597178d9cce561f2417d78315fead429a45c5fd8'
+    aarch64: '8ee04ec38fba081b7fed26007a922e45033313022406eda41edb3aa95bca435a',
+     armv7l: '8ee04ec38fba081b7fed26007a922e45033313022406eda41edb3aa95bca435a',
+       i686: 'b366ff7a08295510aa900738c384a208508bf4c44fda541475df899f22545412',
+     x86_64: 'ebcef904c8434c450cdf5c9f9104f1f0003dc6d00f77e850472c0e389d0281a1'
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'llvm_dev' => :build
 
   conflicts_ok
