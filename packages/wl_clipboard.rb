@@ -1,31 +1,25 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Wl_clipboard < Package
+class Wl_clipboard < Meson
   description 'Command-line copy/paste utilities for Wayland'
   homepage 'https://github.com/bugaevc/wl-clipboard'
-  version '2.0.0'
+  version '2.3.0'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://github.com/bugaevc/wl-clipboard/archive/v2.0.0.tar.gz'
-  source_sha256 '2c42f182432adabe56da0f1144d5fcc40b7aae3d8e14d2bc4dc4c3f91b51808d'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/bugaevc/wl-clipboard.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '66cbdc3e76e9325a561d749cbdf84d2f0bacaef2f3be3c2b0c950f19d466517d',
-     armv7l: '66cbdc3e76e9325a561d749cbdf84d2f0bacaef2f3be3c2b0c950f19d466517d',
-       i686: 'cf22556aa95ed294281a579c7aa4d1565bfc1be9b6eb1d7295ff0c99e625d39c',
-     x86_64: 'a8be7b0810067cbd022df88959262b64d6e03b95b94fc660067afa7b8b0bdeb2'
+    aarch64: '51f8d71f255a2dfc9c0df8ca854215b310333ed55176e066cfb5da5ac82c0426',
+     armv7l: '51f8d71f255a2dfc9c0df8ca854215b310333ed55176e066cfb5da5ac82c0426',
+       i686: '1cf71502f8877df59c1b7953057eb93252fd8e0344663afa594b1404caf525ff',
+     x86_64: '26bfb929964f1fa71050af2a5478897a06f0e2dc94ba1efd5c36d6d407979b50'
   })
 
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'wayland' => :executable
   depends_on 'wayland_protocols' # xdg-shell support, depends on wayland
   depends_on 'xdg_utils' # content type inference in wl-copy
-
-  def self.build
-    system "meson build --prefix #{CREW_PREFIX}"
-    system 'ninja -C build'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
-  end
 end
