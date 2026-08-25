@@ -1,0 +1,5 @@
+#!/bin/bash
+wl-copy -h | head
+wl-copy -v
+wl-paste -h | head
+wl-paste -v
