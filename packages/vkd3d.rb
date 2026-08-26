@@ -6,13 +6,12 @@ class Vkd3d < Autotools
   version '2.1'
   license 'LGPL-2.1'
   compatibility 'x86_64'
-  min_glibc '2.31'
   source_url 'https://gitlab.winehq.org/wine/vkd3d.git'
   git_hashtag "vkd3d-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '9d451383c82c1c46b7306b7a5c5075cc0ff52c987f4fb74901fffe804cfeaa11'
+     x86_64: '47acaa8587ad918bdd1d09b853f8d85642142e256b9ec605019cbbce6e838256'
   })
 
   depends_on 'glibc' => :library
