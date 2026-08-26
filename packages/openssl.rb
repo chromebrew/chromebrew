@@ -11,10 +11,10 @@ class Openssl < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd11501ef2b76fe10226aedae09d4ce11b614aa782051c55ccff052ad5ee159a0',
-     armv7l: 'd11501ef2b76fe10226aedae09d4ce11b614aa782051c55ccff052ad5ee159a0',
-       i686: 'f2fb6d3b65a88190135c8250bd0106fcd1978a9bdca4eb904080d6633fb3deb9',
-     x86_64: 'ad9561609e224eca71bba8f282561abd433ead7b76941054573bff94838cab95'
+    aarch64: '96fba04818b7ecfa42087b2d3d729cb7a72ce4ea3386baa9886571739e52cd8b',
+     armv7l: '96fba04818b7ecfa42087b2d3d729cb7a72ce4ea3386baa9886571739e52cd8b',
+       i686: 'aa770e90924003949d0899fc971ff686838e4dca79ed777e4cac2a32dc74fb84',
+     x86_64: '51123b68f96de9d5f4844caab64d44d973d7ace9e2dbba16bab416974d940860'
   })
 
   depends_on 'ccache' => :build
