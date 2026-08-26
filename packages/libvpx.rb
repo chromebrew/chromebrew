@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Libvpx < Autotools
   description 'VP8/VP9 Codec SDK'
   homepage 'https://www.webmproject.org/code/'
-  version '1.16.0'
+  version '1.17.0'
   license 'BSD'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://chromium.googlesource.com/webm/libvpx.git'
