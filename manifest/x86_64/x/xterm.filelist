@@ -1,4 +1,4 @@
-# Total size: 1535402
+# Total size: 1546435
 /usr/local/bin/koi8rxterm
 /usr/local/bin/resize
 /usr/local/bin/uxterm
@@ -31,6 +31,7 @@
 /usr/local/lib/terminfo/e/ecma+index
 /usr/local/lib/terminfo/e/ecma+italics
 /usr/local/lib/terminfo/e/ecma+strikeout
+/usr/local/lib/terminfo/i/ibm+16color
 /usr/local/lib/terminfo/r/report+da2
 /usr/local/lib/terminfo/r/report+version
 /usr/local/lib/terminfo/v/vs100
@@ -44,6 +45,7 @@
 /usr/local/lib/terminfo/x/xterm+256color
 /usr/local/lib/terminfo/x/xterm+256color2
 /usr/local/lib/terminfo/x/xterm+3keys
+/usr/local/lib/terminfo/x/xterm+88color
 /usr/local/lib/terminfo/x/xterm+acs
 /usr/local/lib/terminfo/x/xterm+alt+title
 /usr/local/lib/terminfo/x/xterm+alt1049
@@ -75,7 +77,7 @@
 /usr/local/lib/terminfo/x/xterm+pcfn
 /usr/local/lib/terminfo/x/xterm+sm+1006
 /usr/local/lib/terminfo/x/xterm+titlestack
-/usr/local/lib/terminfo/x/xterm+tmux
+/usr/local/lib/terminfo/x/xterm+tmux2
 /usr/local/lib/terminfo/x/xterm+vt+edit
 /usr/local/lib/terminfo/x/xterm+x11mouse
 /usr/local/lib/terminfo/x/xterm-16color
