@@ -1,9 +1,5 @@
-# Total size: 16038
-/usr/local/lib/ruby/gems/4.0.0/gems/net-protocol-0.2.2/Gemfile
-/usr/local/lib/ruby/gems/4.0.0/gems/net-protocol-0.2.2/LICENSE.txt
-/usr/local/lib/ruby/gems/4.0.0/gems/net-protocol-0.2.2/README.md
-/usr/local/lib/ruby/gems/4.0.0/gems/net-protocol-0.2.2/Rakefile
-/usr/local/lib/ruby/gems/4.0.0/gems/net-protocol-0.2.2/bin/console
-/usr/local/lib/ruby/gems/4.0.0/gems/net-protocol-0.2.2/bin/setup
-/usr/local/lib/ruby/gems/4.0.0/gems/net-protocol-0.2.2/lib/net/protocol.rb
-/usr/local/lib/ruby/gems/4.0.0/gems/net-protocol-0.2.2/net-protocol.gemspec
+# Total size: 18935
+/usr/local/lib/ruby/gems/4.0.0/gems/net-protocol-0.3.0/BSDL
+/usr/local/lib/ruby/gems/4.0.0/gems/net-protocol-0.3.0/COPYING
+/usr/local/lib/ruby/gems/4.0.0/gems/net-protocol-0.3.0/README.md
+/usr/local/lib/ruby/gems/4.0.0/gems/net-protocol-0.3.0/lib/net/protocol.rb
