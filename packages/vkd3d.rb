@@ -6,6 +6,7 @@ class Vkd3d < Autotools
   version '2.1'
   license 'LGPL-2.1'
   compatibility 'x86_64'
+  min_glibc '2.31'
   source_url 'https://gitlab.winehq.org/wine/vkd3d.git'
   git_hashtag "vkd3d-#{version}"
   binary_compression 'tar.zst'
