@@ -11,7 +11,7 @@ class Llvm23_build < Package
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
   source_url "https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-#{version}.tar.gz"
-  source_sha256 'ad18b70e287954c3d62bc7e0b86e7b7af2adf87bcfce21c15fe717f101d7aace'
+  source_sha256 'd8657b2a7291e518407bf13c4b41c85ef2cded2d4354097a2f451644dfc817b0'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -175,13 +175,13 @@ class Llvm23_build < Package
   end
 
   # preserve for check, skip check for current version
-   def self.check
-     Dir.chdir('builddir') do
-       system 'ninja check-llvm || true'
-       system 'ninja check-clang || true'
-       system 'ninja check-lld || true'
-     end
-   end
+  def self.check
+    Dir.chdir('builddir') do
+      system 'ninja check-llvm || true'
+      system 'ninja check-clang || true'
+      system 'ninja check-lld || true'
+    end
+  end
 
   def self.postinstall
     puts
