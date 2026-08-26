@@ -3,7 +3,7 @@ require 'package'
 class Dart < Package
   description 'The Dart SDK is a set of tools and libraries for the Dart programming language.  You can find information about Dart online at dartlang.org.'
   homepage 'https://dart.dev'
-  version '3.13.1'
+  version '3.13.2'
   license 'BSD-3'
   compatibility 'aarch64 armv7l x86_64'
 
@@ -13,9 +13,9 @@ class Dart < Package
      x86_64: "https://storage.googleapis.com/dart-archive/channels/stable/release/#{version}/sdk/dartsdk-linux-x64-release.zip"
   })
   source_sha256({
-    aarch64: 'b17aec791a0930fbe7f3d9bbf870748107ffda99a946f68be940577c116974bf',
-     armv7l: 'b17aec791a0930fbe7f3d9bbf870748107ffda99a946f68be940577c116974bf',
-     x86_64: '9251c4606ebb31480c45f430be69fce2697e3b888a0a828b9e16e7d23403d72a'
+    aarch64: 'c34c656a004d5117fdd05165a4cad56540900a81b424d98c45ec8cbd7bd50e95',
+     armv7l: 'c34c656a004d5117fdd05165a4cad56540900a81b424d98c45ec8cbd7bd50e95',
+     x86_64: '28951c9f6bcca005a73aa24cd5e11478dd6555f53e8e96a33ef4d868b6efa9eb'
   })
 
   conflicts_with 'flutter'
