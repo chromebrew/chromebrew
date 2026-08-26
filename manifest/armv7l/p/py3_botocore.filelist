@@ -1,12 +1,12 @@
-# Total size: 21771927
-/usr/local/lib/python3.14/site-packages/botocore-1.43.79.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/botocore-1.43.79.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/botocore-1.43.79.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/botocore-1.43.79.dist-info/NOTICE
-/usr/local/lib/python3.14/site-packages/botocore-1.43.79.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/botocore-1.43.79.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/botocore-1.43.79.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/botocore-1.43.79.dist-info/top_level.txt
+# Total size: 21786579
+/usr/local/lib/python3.14/site-packages/botocore-1.43.80.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/botocore-1.43.80.dist-info/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/botocore-1.43.80.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/botocore-1.43.80.dist-info/NOTICE
+/usr/local/lib/python3.14/site-packages/botocore-1.43.80.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/botocore-1.43.80.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/botocore-1.43.80.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/botocore-1.43.80.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/botocore/__init__.py
 /usr/local/lib/python3.14/site-packages/botocore/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/botocore/__pycache__/args.cpython-314.pyc
@@ -950,6 +950,10 @@
 /usr/local/lib/python3.14/site-packages/botocore/data/healthlake/2017-07-01/paginators-1.json
 /usr/local/lib/python3.14/site-packages/botocore/data/healthlake/2017-07-01/service-2.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/healthlake/2017-07-01/waiters-2.json
+/usr/local/lib/python3.14/site-packages/botocore/data/iam-toolbox/2018-05-10/endpoint-rule-set-1.json.gz
+/usr/local/lib/python3.14/site-packages/botocore/data/iam-toolbox/2018-05-10/paginators-1.json
+/usr/local/lib/python3.14/site-packages/botocore/data/iam-toolbox/2018-05-10/service-2.json.gz
+/usr/local/lib/python3.14/site-packages/botocore/data/iam-toolbox/2018-05-10/waiters-2.json
 /usr/local/lib/python3.14/site-packages/botocore/data/iam/2010-05-08/endpoint-rule-set-1.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/iam/2010-05-08/examples-1.json
 /usr/local/lib/python3.14/site-packages/botocore/data/iam/2010-05-08/paginators-1.json
