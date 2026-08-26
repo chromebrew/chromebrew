@@ -1,0 +1,3 @@
+#!/bin/bash
+xclock -help 2>&1
+xclock -version
