@@ -25,6 +25,7 @@ class Tree_sitter < Package
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
   depends_on 'llvm' => :build
+  depends_on 'nodebrew' => :logical # Needed for packages that use tree_sitter.
   depends_on 'rust' => :build
 
   def self.patch
