@@ -35,6 +35,7 @@ class Xterm < Package
   depends_on 'pcre' => :executable
   depends_on 'sommelier' => :logical
 
+  conflicts_ok # conflicts with terminfo defs in ncurses
   no_env_options
 
   def self.patch
