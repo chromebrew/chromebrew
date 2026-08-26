@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Xbitmaps < Autotools
   description 'The xbitmaps package contains bitmap images used by multiple applications built in Xorg chapter.'
   homepage 'https://www.x.org/wiki/'
-  version '1.1.3'
+  version '1.1.4'
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/data/bitmaps.git'
@@ -11,10 +11,10 @@ class Xbitmaps < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b0a13a0a16e121c1d62ead9a064f08ba95239fc1d560296e116525707b654667',
-     armv7l: 'b0a13a0a16e121c1d62ead9a064f08ba95239fc1d560296e116525707b654667',
-       i686: '7b1d1167e9eb2f328403d601ac8c5528e342f1564378ff1baeb2e4f93fb32c83',
-     x86_64: 'd277b2d353dfa8efc9be26faa44a149bb33024cd130bca495c0d9a176ce7c3e2'
+    aarch64: '21a7f827b9da7535aa566347e69303c9bf0adce2710956b411bbf79162b54cc1',
+     armv7l: '21a7f827b9da7535aa566347e69303c9bf0adce2710956b411bbf79162b54cc1',
+       i686: '3f9f0600965349a85bdef8977d3d1ed6b02e377529b784f9ac907a29b08c542d',
+     x86_64: '16031a128e126aa971f934989e25f43351a99b6a88bd03704b9b5dfe403f6c54'
   })
 
   depends_on 'xorg_macros' => :build
