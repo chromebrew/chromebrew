@@ -56,7 +56,7 @@ class Command
         puts "Cached build artifact from #{gitlab_build_artifact_date} exists! with sha256 #{gitlab_build_artifact_sha256}".lightgreen
         puts "Downloading most recent cached build artifact for #{pkg.name}-#{pkg.version}...".orange
         # Download the package build artifact.
-        downloader(build_cache_url, gitlab_build_artifact_sha256, build_cachefile, no_update_hash: true)
+        downloader(build_cache_url, gitlab_build_artifact_sha256, build_cachefile, pkg, no_update_hash: true)
         File.write "#{build_cachefile}.sha256", <<~BUILD_CACHEFILE_SHA256_EOF
           #{gitlab_build_artifact_sha256} #{build_cachefile}
         BUILD_CACHEFILE_SHA256_EOF
@@ -87,7 +87,7 @@ class Command
           end
         end
         # Download file if not cached.
-        downloader url, sha256sum, filename, verbose: verbose
+        downloader url, sha256sum, filename, pkg, verbose: verbose
 
         puts "#{pkg.name.capitalize} archive downloaded.".lightgreen
         # Stow file in cache if requested, if cachefile does not exist, and cache is writable.
@@ -104,7 +104,7 @@ class Command
       else
         unless git # We don't want to download a git repository as a file.
           FileUtils.mkdir_p extract_dir
-          downloader url, sha256sum, filename, verbose: verbose
+          downloader url, sha256sum, filename, pkg, verbose: verbose
 
           puts "#{filename}: File downloaded.".lightgreen
 
