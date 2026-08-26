@@ -1,4 +1,4 @@
-# Total size: 23229231
+# Total size: 23575095
 /usr/local/bin/aomdec
 /usr/local/bin/aomenc
 /usr/local/include/aom/aom.h
@@ -20,5 +20,5 @@
 /usr/local/lib/libaom.a
 /usr/local/lib/libaom.so
 /usr/local/lib/libaom.so.3
-/usr/local/lib/libaom.so.3.14.1
+/usr/local/lib/libaom.so.3.15.0
 /usr/local/lib/pkgconfig/aom.pc
