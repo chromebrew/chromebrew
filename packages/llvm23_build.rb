@@ -15,10 +15,10 @@ class Llvm23_build < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '224ae5869d21ba0e2a7120fe02a67a84787bc0f7261bf6b47e79e2157a2c5dd2',
-     armv7l: '224ae5869d21ba0e2a7120fe02a67a84787bc0f7261bf6b47e79e2157a2c5dd2',
-       i686: 'e0e61c466f85b479e76f7f24bc3d202a36314fcbba385776d668b15acdfc2049',
-     x86_64: '6bcaafb4790ee9c3ba8c020e1bcfc5d6fe6e796719f8581039e2a7d9786b1770'
+    aarch64: '4460f7e0f78ea05bf9e3ba2ed94a12f7c84776e7a78b23ad929e64954593b834',
+     armv7l: '4460f7e0f78ea05bf9e3ba2ed94a12f7c84776e7a78b23ad929e64954593b834',
+       i686: '21087132fc7dd0c13d14390036e6fab5ed7cee53de3611c652cfc174a9ab3033',
+     x86_64: '71e2610c720b3e34ccc9984e36dc85ba13daaa26768d114fbffae7904041deb2'
   })
 
   depends_on 'gcc_lib' => :library
@@ -32,7 +32,7 @@ class Llvm23_build < Package
   depends_on 'ocaml' => :build
   depends_on 'py3_pygments' => :build
   depends_on 'py3_pyyaml' => :build
-  depends_on 'tree_sitter' => :build
+  depends_on 'tree_sitter' => :library
   depends_on 'xzutils' => :library
   depends_on 'zlib' => :library
   depends_on 'zstd' => :library
