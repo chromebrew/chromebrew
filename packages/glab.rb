@@ -3,7 +3,7 @@ require 'package'
 class Glab < Package
   description 'A GitLab CLI tool bringing GitLab to your command line'
   homepage 'https://gitlab.com/gitlab-org/cli'
-  version '1.114.0'
+  version '1.115.0'
   license 'MIT'
   compatibility 'all'
   source_url({
@@ -13,10 +13,10 @@ class Glab < Package
      x86_64: "https://gitlab.com/gitlab-org/cli/-/releases/v#{version}/downloads/glab_#{version}_linux_amd64.tar.gz"
   })
   source_sha256({
-    aarch64: 'e6a1ddad9cebc606ed7b549a4db939973289e24de415319b4c7ee66048943482',
-     armv7l: 'e6a1ddad9cebc606ed7b549a4db939973289e24de415319b4c7ee66048943482',
-       i686: '05d78e0f704ad8fa48dd2fb020d39258688fccf046a99acfb56c9249cb6ac9b9',
-     x86_64: '00e892a80d586a1e8b8fdc035321923db99dce0caa3b0c4fd72c5337ffdb1c48'
+    aarch64: '6097b1c4c601d5b46f88fb51d65cc75de25232846a5c03c8d815c7430fd76afa',
+     armv7l: '6097b1c4c601d5b46f88fb51d65cc75de25232846a5c03c8d815c7430fd76afa',
+       i686: '832bbf9fdae28683ad50f9ec4f2d641e27ff8f354312e1eb2940d7e48ae40254',
+     x86_64: '3744c9f393fdf0aabd329e536aec3501ce780d5f7785eb2cbe0f1d3efa0f436b'
   })
 
   no_compile_needed
