@@ -1,12 +1,12 @@
-# Total size: 6204128
+# Total size: 6205331
 /usr/local/bin/virtualenv
-/usr/local/lib/python3.14/site-packages/virtualenv-21.7.4.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/virtualenv-21.7.4.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/virtualenv-21.7.4.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/virtualenv-21.7.4.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/virtualenv-21.7.4.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/virtualenv-21.7.4.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/virtualenv-21.7.4.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/virtualenv-21.7.5.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/virtualenv-21.7.5.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/virtualenv-21.7.5.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/virtualenv-21.7.5.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/virtualenv-21.7.5.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/virtualenv-21.7.5.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/virtualenv-21.7.5.dist-info/licenses/LICENSE
 /usr/local/lib/python3.14/site-packages/virtualenv/__init__.py
 /usr/local/lib/python3.14/site-packages/virtualenv/__main__.py
 /usr/local/lib/python3.14/site-packages/virtualenv/__pycache__/__init__.cpython-314.pyc

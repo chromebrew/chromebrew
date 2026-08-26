@@ -3,7 +3,7 @@ require 'package'
 class Libaom < Package
   description 'AV1 video codec from Alliance for Open Media'
   homepage 'https://aomedia.org/'
-  version '3.14.1'
+  version '3.15.0'
   license 'BSD-2'
   compatibility 'all'
   source_url 'https://aomedia.googlesource.com/aom.git'
@@ -11,10 +11,10 @@ class Libaom < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c91cff80d678af97d7942193cc6dd55e9d7431242a2fbbe4e1d3529dd8d255be',
-     armv7l: 'c91cff80d678af97d7942193cc6dd55e9d7431242a2fbbe4e1d3529dd8d255be',
-       i686: '998be31f0716369763a595eb65d62195706f9ce74298ce94f9c816e9bf2c58b8',
-     x86_64: 'f05c9eb07e66a42ce0954806e24c0e1cffd76e5a00b8f4fd24e53ba87805c1d5'
+    aarch64: 'e57646e05a4f38ba8832e2bb7331750b0813dc39bc5f5cfde59872eee0e95697',
+     armv7l: 'e57646e05a4f38ba8832e2bb7331750b0813dc39bc5f5cfde59872eee0e95697',
+       i686: '5b8b3e9d1f27966ec613866244b2e1a36d78ab48b2d643fd73cd31ddf38b6cdb',
+     x86_64: '911ff1724cbdb3430207b01d30fd440187611171e1c76cf1a11f4f6e5eee0fe4'
   })
 
   depends_on 'gcc_lib' => :executable
