@@ -3,7 +3,7 @@ require 'buildsystems/ruby'
 class Ruby_net_protocol < RUBY
   description 'The abstract interface for net-* client.'
   homepage 'https://github.com/ruby/net-protocol'
-  version "0.2.2-#{CREW_RUBY_VER}"
+  version "0.3.0-#{CREW_RUBY_VER}"
   license 'Ruby'
   compatibility 'all'
   source_url 'SKIP'
