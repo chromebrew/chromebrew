@@ -32,6 +32,7 @@ class Llvm23_build < Package
   depends_on 'ocaml' => :build
   depends_on 'py3_pygments' => :build
   depends_on 'py3_pyyaml' => :build
+  depends_on 'tree_sitter' => :build
   depends_on 'xzutils' => :library
   depends_on 'zlib' => :library
   depends_on 'zstd' => :library
