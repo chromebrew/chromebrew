@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.41 (for Chromebrew)
+# version.rb version 3.42 (for Chromebrew)
 
 OPTIONS = %w[-a --all -h --help -j --json -u --update-package-files -v --verbose -vv]
 
@@ -132,6 +132,7 @@ CREW_ANITYA_PACKAGE_NAME_MAPPINGS = Set[
   { pkg_name: 'upx', anitya_pkg: 'upx', comments: 'Prefer to GitHub' },
   { pkg_name: 'vidstab', anitya_pkg: 'vid.stab', comments: 'Prefer to GitHub' },
   { pkg_name: 'vim_runtime', anitya_pkg: 'vim', comments: '' },
+  { pkg_name: 'vulkansdk', anitya_pkg: 'vulkan-sdk', comments: '' },
   { pkg_name: 'wallstreet', anitya_pkg: 'hollywood', comments: '' },
   { pkg_name: 'wayland_info', anitya_pkg: 'wayland-utils', comments: '' },
   { pkg_name: 'webkit2gtk_4_0', anitya_pkg: 'webkitgtk~stable', comments: '' },
