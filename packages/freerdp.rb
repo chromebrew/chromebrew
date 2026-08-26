@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Freerdp < CMake
   description 'FreeRDP is a free implementation of the Remote Desktop Protocol.'
   homepage 'https://www.freerdp.com/'
-  version "3.26.0-#{CREW_ICU_VER}"
+  version "3.30.0-#{CREW_ICU_VER}"
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.29'
