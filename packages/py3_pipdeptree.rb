@@ -10,10 +10,10 @@ class Py3_pipdeptree < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '918339ce678dfe6702fce1b639d3459ee6e743a63fc524951d6694e5fcea324c',
-     armv7l: '918339ce678dfe6702fce1b639d3459ee6e743a63fc524951d6694e5fcea324c',
-       i686: '4232998f9a5633b67a8b5a3cc086d9b1e1b50565e413e4dd48601d5b56dc65e7',
-     x86_64: '01d7cd32333cfd381718bc2ca2ec3249805365eee9d017a94e852b324c76c2db'
+    aarch64: '2a3d132c3e6051b4c8dc3820f3e255727483994a351aeb12dde0e020a71fd457',
+     armv7l: '2a3d132c3e6051b4c8dc3820f3e255727483994a351aeb12dde0e020a71fd457',
+       i686: '952bcb2d0a91712701c08a5ecb5bf18ddafd336cee92ae97f89d50da84af1f25',
+     x86_64: '535aef69e427ad4c65e79ac68507ea7ff962633ed51d77b291dc3ab42f0384cf'
   })
 
   depends_on 'gcc_lib' => :library
