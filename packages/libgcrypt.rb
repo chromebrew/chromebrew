@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Libgcrypt < Autotools
   description 'Libgcrypt is a general purpose cryptographic library originally based on code from GnuPG.'
   homepage 'https://www.gnupg.org/related_software/libgcrypt/index.html'
-  version '1.12.2'
+  version '1.12.3'
   license 'LGPL-2.1 and MIT'
   compatibility 'all'
   source_url "https://www.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-#{version}.tar.bz2"
-  source_sha256 '7ce33c2492221a0436f96a8500215e9f3e3dcb5fd26a757cd415e7a843babd5e'
+  source_sha256 '98d1b0b3202d2b03fa754a35aa3cbbfcf526a3260d8d2ee213748001b1043006'
   binary_compression 'tar.zst'
 
   binary_sha256({
