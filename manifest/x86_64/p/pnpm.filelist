@@ -1,4 +1,4 @@
-# Total size: 165010624
+# Total size: 47031022
 /usr/local/bin/pnpm
 /usr/local/libexec/pnpm/dist/node-gyp-bin/node-gyp
 /usr/local/libexec/pnpm/dist/node-gyp-bin/node-gyp.cmd
@@ -8,9 +8,6 @@
 /usr/local/libexec/pnpm/dist/node_modules/@isaacs/fs-minipass/dist/esm/index.js
 /usr/local/libexec/pnpm/dist/node_modules/@isaacs/fs-minipass/dist/esm/package.json
 /usr/local/libexec/pnpm/dist/node_modules/@isaacs/fs-minipass/package.json
-/usr/local/libexec/pnpm/dist/node_modules/@reflink/reflink/binding.js
-/usr/local/libexec/pnpm/dist/node_modules/@reflink/reflink/index.js
-/usr/local/libexec/pnpm/dist/node_modules/@reflink/reflink/package.json
 /usr/local/libexec/pnpm/dist/node_modules/abbrev/LICENSE
 /usr/local/libexec/pnpm/dist/node_modules/abbrev/lib/index.js
 /usr/local/libexec/pnpm/dist/node_modules/abbrev/package.json
@@ -40,6 +37,18 @@
 /usr/local/libexec/pnpm/dist/node_modules/fdir/dist/index.d.mts
 /usr/local/libexec/pnpm/dist/node_modules/fdir/dist/index.mjs
 /usr/local/libexec/pnpm/dist/node_modules/fdir/package.json
+/usr/local/libexec/pnpm/dist/node_modules/get-pnpm/bin/get-pnpm.js
+/usr/local/libexec/pnpm/dist/node_modules/get-pnpm/lib/downloadExecutable.js
+/usr/local/libexec/pnpm/dist/node_modules/get-pnpm/lib/extractTarball.js
+/usr/local/libexec/pnpm/dist/node_modules/get-pnpm/lib/extractTarballMember.js
+/usr/local/libexec/pnpm/dist/node_modules/get-pnpm/lib/index.js
+/usr/local/libexec/pnpm/dist/node_modules/get-pnpm/lib/npmSigningKeys.js
+/usr/local/libexec/pnpm/dist/node_modules/get-pnpm/lib/platformPackageName.js
+/usr/local/libexec/pnpm/dist/node_modules/get-pnpm/lib/registry.js
+/usr/local/libexec/pnpm/dist/node_modules/get-pnpm/lib/resolveVersion.js
+/usr/local/libexec/pnpm/dist/node_modules/get-pnpm/lib/sameFileContents.js
+/usr/local/libexec/pnpm/dist/node_modules/get-pnpm/lib/verifySignature.js
+/usr/local/libexec/pnpm/dist/node_modules/get-pnpm/package.json
 /usr/local/libexec/pnpm/dist/node_modules/graceful-fs/LICENSE
 /usr/local/libexec/pnpm/dist/node_modules/graceful-fs/clone.js
 /usr/local/libexec/pnpm/dist/node_modules/graceful-fs/graceful-fs.js
@@ -410,9 +419,6 @@
 /usr/local/libexec/pnpm/dist/node_modules/undici/lib/web/websocket/websocket.js
 /usr/local/libexec/pnpm/dist/node_modules/undici/package.json
 /usr/local/libexec/pnpm/dist/node_modules/undici/scripts/strip-comments.js
-/usr/local/libexec/pnpm/dist/node_modules/v8-compile-cache/LICENSE
-/usr/local/libexec/pnpm/dist/node_modules/v8-compile-cache/package.json
-/usr/local/libexec/pnpm/dist/node_modules/v8-compile-cache/v8-compile-cache.js
 /usr/local/libexec/pnpm/dist/node_modules/which/LICENSE
 /usr/local/libexec/pnpm/dist/node_modules/which/bin/which.js
 /usr/local/libexec/pnpm/dist/node_modules/which/lib/index.js
@@ -422,13 +428,4 @@
 /usr/local/libexec/pnpm/dist/node_modules/yallist/dist/esm/index.js
 /usr/local/libexec/pnpm/dist/node_modules/yallist/dist/esm/package.json
 /usr/local/libexec/pnpm/dist/node_modules/yallist/package.json
-/usr/local/libexec/pnpm/dist/pnpm.mjs
-/usr/local/libexec/pnpm/dist/pnpmrc
-/usr/local/libexec/pnpm/dist/templates/completion.bash
-/usr/local/libexec/pnpm/dist/templates/completion.fish
-/usr/local/libexec/pnpm/dist/templates/completion.ps1
-/usr/local/libexec/pnpm/dist/templates/completion.zsh
-/usr/local/libexec/pnpm/dist/vendor/fastlist-0.3.0-x64.exe
-/usr/local/libexec/pnpm/dist/vendor/fastlist-0.3.0-x86.exe
-/usr/local/libexec/pnpm/dist/worker.js
 /usr/local/libexec/pnpm/pnpm
