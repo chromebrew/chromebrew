@@ -3,7 +3,7 @@ require 'buildsystems/rust'
 class Fd < RUST
   description "A simple, fast and user-friendly alternative to 'find'."
   homepage 'https://github.com/sharkdp/fd/'
-  version '10.4.2'
+  version '10.5.0'
   license 'Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/sharkdp/fd.git'
