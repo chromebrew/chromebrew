@@ -3,7 +3,7 @@ require 'package'
 class Atuin < Package
   description 'Sync, search and backup shell history.'
   homepage 'https://atuin.sh/'
-  version '18.20.0'
+  version '18.20.1'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/atuinsh/atuin.git'
@@ -11,9 +11,9 @@ class Atuin < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '313d21f5a8be8160eb25d65cc8d97a64eafc2ac3a722b72ce00c0f57e57f657a',
-     armv7l: '313d21f5a8be8160eb25d65cc8d97a64eafc2ac3a722b72ce00c0f57e57f657a',
-     x86_64: '79b39de5a18ae23bb3fb5542408eefa952b2df085541592c0451416c168d9227'
+    aarch64: '5953a25d5ad1b9b5cc376eca3051581b352fa3ab68859dcc560ee7ca96e15176',
+     armv7l: '5953a25d5ad1b9b5cc376eca3051581b352fa3ab68859dcc560ee7ca96e15176',
+     x86_64: 'ce38f8f1a909b3f07bdd1405d15479800947d0c6c6ed952f603122b6a11915a1'
   })
 
   depends_on 'gcc_lib' => :executable
