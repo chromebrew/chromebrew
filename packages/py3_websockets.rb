@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_websockets < Pip
   description ' Library for building WebSocket servers and clients in Python'
   homepage 'https://websockets.readthedocs.io/'
-  version "17.0.1-#{CREW_PY_VER}"
+  version "17.1-#{CREW_PY_VER}"
   license 'BSD-3'
   compatibility 'all'
   source_url 'SKIP'
