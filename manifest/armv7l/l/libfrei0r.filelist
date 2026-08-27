@@ -1,4 +1,4 @@
-# Total size: 1613932
+# Total size: 1646960
 /usr/local/include/frei0r.h
 /usr/local/include/frei0r.hpp
 /usr/local/include/frei0r/blur.h
@@ -145,6 +145,7 @@
 /usr/local/lib/frei0r-1/sopsat.so
 /usr/local/lib/frei0r-1/spillsupress.so
 /usr/local/lib/frei0r-1/squareblur.so
+/usr/local/lib/frei0r-1/squigglevision.so
 /usr/local/lib/frei0r-1/subtract.so
 /usr/local/lib/frei0r-1/tehroxx0r.so
 /usr/local/lib/frei0r-1/test_pat_B.so
