@@ -6,7 +6,7 @@ require 'package'
 class Mandown < Package
   description 'Create man pages from markdown markup'
   homepage 'https://gitlab.com/kornelski/mandown'
-  version '1.1.0'
+  version '1.1.1'
   license 'Apache'
   compatibility 'all'
   source_url 'https://gitlab.com/kornelski/mandown.git'
