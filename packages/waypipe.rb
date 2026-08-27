@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Waypipe < Meson
   description 'A proxy for Wayland protocol applications.'
   homepage 'https://gitlab.freedesktop.org/mstoeckl/waypipe'
-  version '0.11.1'
+  version '0.11.2'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/mstoeckl/waypipe.git'
