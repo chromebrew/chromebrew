@@ -60,7 +60,17 @@ class Libclc < Package
                      else
                        CREW_CMAKE_OPTIONS
                      end
-    system "cmake -B builddir -G Ninja libclc \
+    # See https://salsa.debian.org/pkg-llvm-team/llvm-toolchain/-/blob/23/debian/rules?ref_type=heads
+    libclc_runtime_targets = %w[amdgcn-amd-amdhsa-llvm spirv64-unknown-vulkan nvptx64-- nvptx64--nvidiacl nvptx64-nvidia-cuda spirv-mesa3d- spirv64-mesa3d-]
+    llvm_runtime_targets = libclc_runtime_targets.join(';')
+    llvm_spirv = `which llvm-spirv`.chomp
+    libclc_runtimes = libclc_runtime_targets.map { "-DRUNTIMES_#{it}_LLVM_ENABLE_RUNTIMES=libclc -DRUNTIMES_#{it}_LLVM_SPIRV=#{llvm_spirv}" }.join(' ')
+    system "cmake -B builddir -G Ninja llvm \
+      -DLLVM_ENABLE_PROJECTS='clang' \
+      -DLLVM_HOST_TRIPLE=#{CREW_TARGET} \
+      -DLLVM_RUNTIME_TARGETS='default;#{llvm_runtime_targets}' \
+      #{libclc_runtimes} \
+      -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_C_COMPILER=$(which clang) \
       -DCMAKE_C_COMPILER_TARGET=#{CREW_TARGET} \
       -DCMAKE_CXX_COMPILER=$(which clang++) \
