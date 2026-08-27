@@ -11,10 +11,10 @@ class Fd < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f73056ff720be22f16bd56e7a0aa9a98f05f199f5555ad1316d2dbd87713433c',
-     armv7l: 'f73056ff720be22f16bd56e7a0aa9a98f05f199f5555ad1316d2dbd87713433c',
-       i686: '904f6f2e266e7a82d10e84e2d09fc17ebbe60e61d25f82414fb428ac771f1127',
-     x86_64: '66bca1a50dd1abc3f7c55607cc3a438b2c7e4a6904e3c0a1c6a2e2e457ef012f'
+    aarch64: 'ad031ceafac9ff5679aedcdda73b8bd1849bfed0e8023dfc9e8286834beab669',
+     armv7l: 'ad031ceafac9ff5679aedcdda73b8bd1849bfed0e8023dfc9e8286834beab669',
+       i686: '7bda1cf1d1b7c850edec864418d510d7c4d239482f21793bd87978facf77c49a',
+     x86_64: '0ea59a410fd2050c26bbdea3c0a5f901ab31031969d090d35b6864f986a829dc'
   })
 
   depends_on 'gcc_lib' => :executable
