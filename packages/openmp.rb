@@ -17,10 +17,10 @@ class Openmp < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '433011252accf8548acd2d8d07339f03ac35cbaed141114d41136224702a0493',
-     armv7l: '433011252accf8548acd2d8d07339f03ac35cbaed141114d41136224702a0493',
-       i686: 'be7eb93583ce849fceb2db63edc25aeb805314b3a77f2faa684a368c8a61ec71',
-     x86_64: '354ff05183f4bd913bf5c2553ffdc7a52fff3857cafe026384bda5f953f3175a'
+    aarch64: '48f137c2ab2c24eb6cba4eb713eda843b019784bacf122af0f89a3f922b60f46',
+     armv7l: '48f137c2ab2c24eb6cba4eb713eda843b019784bacf122af0f89a3f922b60f46',
+       i686: '6dddad69ad320515330ff6df66774dec4979e085ea9193dd4f4c621402f91a70',
+     x86_64: '3205b2eac29402cd8b86b0e757a77d955666e65fdd16251e2d1e2d3235ac9b97'
   })
 
   depends_on 'gcc_lib' => :library
@@ -63,17 +63,20 @@ class Openmp < Package
                      else
                        CREW_CMAKE_OPTIONS
                      end
-    system "cmake -B builddir -G Ninja openmp \
+    system "cmake -B builddir -G Ninja runtimes \
       #{@cmake_options} \
       -DCLANG_DEFAULT_LINKER=mold \
+      -DCMAKE_C_FLAGS=#{'-latomic' if ARCH == 'i686'} \
       -DCMAKE_C_COMPILER=$(which clang) \
       -DCMAKE_C_COMPILER_TARGET=#{CREW_TARGET} \
+      -DCMAKE_CXX_FLAGS=#{'-latomic' if ARCH == 'i686'} \
       -DCMAKE_CXX_COMPILER=$(which clang++) \
       -DCMAKE_CXX_COMPILER_AR=$(which llvm-ar) \
       -DCMAKE_CXX_COMPILER_RANLIB=$(which llvm-ranlib) \
       -D_CMAKE_TOOLCHAIN_PREFIX=llvm- \
       -DLIBOMP_ENABLE_SHARED=ON \
       -DLIBOMP_INSTALL_ALIASES=OFF \
+      -DLLVM_ENABLE_RUNTIMES=openmp \
       -DLLVM_INCLUDE_BENCHMARKS=OFF \
       -DOPENMP_LIBDIR_SUFFIX=#{CREW_LIB_SUFFIX} \
       -DPYTHON_EXECUTABLE=$(which python3) \

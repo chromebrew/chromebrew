@@ -13,7 +13,7 @@ class Spirv_llvm_translator < CMake
   binary_sha256({
     aarch64: 'c4f941a251e728d3bc09fa97cbbeddb86fee2b6d269438d42b1df19cd8b5d04e',
      armv7l: 'c4f941a251e728d3bc09fa97cbbeddb86fee2b6d269438d42b1df19cd8b5d04e',
-       i686: '595f113ebbfcef1e0d7329003041968465c94aefb957c5d3a690b52369b9648b',
+       i686: '3ba3aa3d571213c5dd85f6ae5336f9d26f218579dc4f9c6ed13efe95b02ad048',
      x86_64: '4e20fc284b0660b4f14a09fbc9074d9fd9c9f4ceea4112fe70a3aac8b82aa8bb'
   })
 
