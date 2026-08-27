@@ -1,0 +1,3 @@
+#!/bin/bash
+xsetroot -help 2>&1 | head
+xsetroot -version
