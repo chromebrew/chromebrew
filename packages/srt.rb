@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Srt < CMake
   description 'Secure Reliable Transport library'
   homepage 'https://www.srtalliance.org/'
-  version '1.5.6'
+  version '1.5.7'
   license 'MPL-2.0'
   compatibility 'all'
   source_url 'https://github.com/Haivision/srt.git'
@@ -11,10 +11,10 @@ class Srt < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0182636d7e6067709ed45f2daa4de3ae1db865b83cfb9659d04f55f0e50a58f5',
-     armv7l: '0182636d7e6067709ed45f2daa4de3ae1db865b83cfb9659d04f55f0e50a58f5',
-       i686: '9ff76b05eb8586d90bd840f16f852b6cd5b108784c96343594c4bb43aaab047d',
-     x86_64: 'd10753984ec97a1636ceb03ef3b3cbd25d808366ea60473cfea13a067f241873'
+    aarch64: '8105c8892998dc80b0d5de85cc70cf0c911272e97750533a06acf58f2b687ce4',
+     armv7l: '8105c8892998dc80b0d5de85cc70cf0c911272e97750533a06acf58f2b687ce4',
+       i686: '7065d338630488b9a42eaffef7d6a930b53400602cc18708571504c7b9eac79e',
+     x86_64: 'b774502089e248cb373d8ec43aa98f335609d86b920232533f25af438440fa9e'
   })
 
   depends_on 'gcc_lib' => :library
