@@ -15,9 +15,9 @@ class Harfbuzz < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '828ac15f16b5c1c0f100942b939eb32bdc385b0be5f9c31ac54ddaf7a9ca97bf',
-     armv7l: '828ac15f16b5c1c0f100942b939eb32bdc385b0be5f9c31ac54ddaf7a9ca97bf',
-     x86_64: '9fd21ba4ab4a9974020eda4824e0456eee3394cfd6377c0710c76ebfc61beb1a'
+    aarch64: '192d622e72ae22a236a3dfffedd3c2beae9e274808f861bb70a0e281ad91e9d3',
+     armv7l: '192d622e72ae22a236a3dfffedd3c2beae9e274808f861bb70a0e281ad91e9d3',
+     x86_64: 'f2dc062c79ae084d7fdf7c22618a4402effcfd86076a1274775b1fcecfdf08ca'
   })
 
   depends_on 'brotli' => :library
