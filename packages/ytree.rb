@@ -3,21 +3,24 @@ require 'package'
 class Ytree < Package
   description 'A (curses-based) file manager similar to DOS Xtree(tm).'
   homepage 'https://www.han.de/~werner/ytree.html'
-  version '2.07'
+  version '2.13'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://www.han.de/~werner/ytree-2.07.tar.gz'
-  source_sha256 '636f4adb6fefea3b29669f700faf94e7a40ec7f033a42c8b31a0bfe41effcceb'
+  source_url "https://www.han.de/~werner/ytree-#{version}.tar.gz"
+  source_sha256 'caeeeac334dac83921bd8b657ad2d4cf234c15da4ffc7d15dad0bda99e52f197'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1dd103252673e85e3d1186d7a32962e7091f66872959d272712909d4015413b5',
-     armv7l: '1dd103252673e85e3d1186d7a32962e7091f66872959d272712909d4015413b5',
-       i686: 'f98ff9cfb6d15da7c9e6b3d23284d4b004c6ccb641c7987b0949db63542135c3',
-     x86_64: '5a0512fb0c099e852694cb287f842cb23c5389307ae899f331eb3370b38ea127'
+    aarch64: '2a5dcf60f6f914b13070ef6dbce0cb8e9be413a081e63fbe4e0c766d57b1dc8b',
+     armv7l: '2a5dcf60f6f914b13070ef6dbce0cb8e9be413a081e63fbe4e0c766d57b1dc8b',
+       i686: '2469c699907329fcdc70e8dd0a173a535864f426291d03aa7782cb8a143e365b',
+     x86_64: '50f63a48b9f4539dc7650652b710d760355a17a328aa63f1667fadbab18ba831'
   })
 
-  depends_on 'ncurses'
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'ncurses' => :executable
+  depends_on 'readline' => :executable
 
   def self.patch
     system "sed -i 's,/usr,#{CREW_DEST_PREFIX},' Makefile"
