@@ -1,7 +1,7 @@
-# Total size: 38369019
+# Total size: 55193390
 /usr/local/include/cclang/module.modulemap
 /usr/local/include/cclang/opencl-c-base.h
 /usr/local/include/cclang/opencl-c.h
 /usr/local/include/cclang/opencl_clang.h
 /usr/local/lib64/libopencl-clang.so
-/usr/local/lib64/libopencl-clang.so.19.1
+/usr/local/lib64/libopencl-clang.so.23.1
