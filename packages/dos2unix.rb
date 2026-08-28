@@ -11,10 +11,10 @@ class Dos2unix < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1f0e89fc7dbcba536fd04206cb48505a6fcfec1a2bb86bb7c6c80d54566c58e3',
-     armv7l: '1f0e89fc7dbcba536fd04206cb48505a6fcfec1a2bb86bb7c6c80d54566c58e3',
-       i686: 'ea5232af84ba74e325dab5eea6f39cb0af10e5c4bf46c0f8488e13e4a7aa3427',
-     x86_64: '5d099d6e4a599311e3f94c7c51765ee1e391db717a3fd0129112be671c388b11'
+    aarch64: '6f727dd6d70c3133e89700b88c39489e58eb05e3f44a0a67e3d80b351f88f201',
+     armv7l: '6f727dd6d70c3133e89700b88c39489e58eb05e3f44a0a67e3d80b351f88f201',
+       i686: 'b5e35ca706772fd1550afbd9bd08907ccc2167f160c31b986811a0a6ea312a32',
+     x86_64: 'f5897a06a1f3e9908a179507e65b7b717011e932d12dae49e1be073cc37cb02f'
   })
 
   depends_on 'gettext' => :build
