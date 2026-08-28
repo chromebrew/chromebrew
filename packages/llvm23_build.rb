@@ -58,6 +58,11 @@ class Llvm23_build < Package
        }
     LLVM_PATCH_EOF
     system 'patch -Np1 -i llvm_crew_lib_prefix.patch'
+    patches = [
+      # Fix for i686 needing -atomic. See https://github.com/llvm/llvm-project/issues/45130
+      ['https://salsa.debian.org/pkg-llvm-team/llvm-toolchain/-/raw/23/debian/patches/clangd-atomic-cmake.patch?ref_type=heads&inline=false', '423847f4e448361cae1d86a2ab62e47b3cd31b76a065294ff9b2e5a689ec9cbd']
+    ]
+    ConvenienceFunctions.patch(patches)
   end
 
   def self.build
@@ -72,8 +77,12 @@ class Llvm23_build < Package
       # @llvm_targets_to_build = 'X86'.freeze
       # Because ld.lld: error: undefinler-rt;libc;libcxx;libcxxabi;libunwind;openmped symbol: __atomic_store
       # Polly demands fPIC
-      @ARCH_C_FLAGS = '-latomic'
-      @ARCH_CXX_FLAGS = '-latomic'
+      # See See https://github.com/llvm/llvm-project/issues/45130 . Currently handled with the debian patch
+      # at https://salsa.debian.org/pkg-llvm-team/llvm-toolchain/-/raw/23/debian/patches/clangd-atomic-cmake.patch
+      # @ARCH_C_FLAGS = '-latomic'
+      # @ARCH_CXX_FLAGS = '-latomic'
+      @ARCH_C_FLAGS = ''
+      @ARCH_CXX_FLAGS = ''
       # Because getting this error:
       # ld.lld: error: relocation R_386_PC32 cannot be used against symbol isl_map_fix_si; recompile with -fPIC
       # So as per https://github.com/openssl/openssl/issues/11305#issuecomment-602003528

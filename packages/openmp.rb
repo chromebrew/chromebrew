@@ -55,7 +55,7 @@ class Openmp < Package
     LLVM_PATCH_EOF
     system 'patch -Np1 -i llvm_crew_lib_prefix.patch'
     patches = [
-      # Fix for i686 needing -atomic.
+      # Fix for i686 needing -atomic. See https://github.com/llvm/llvm-project/issues/45130
       ['https://salsa.debian.org/pkg-llvm-team/llvm-toolchain/-/raw/23/debian/patches/clangd-atomic-cmake.patch?ref_type=heads&inline=false', '423847f4e448361cae1d86a2ab62e47b3cd31b76a065294ff9b2e5a689ec9cbd']
     ]
     ConvenienceFunctions.patch(patches)
