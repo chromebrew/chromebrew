@@ -1,7 +1,7 @@
 require 'package'
 
 class Llvm23_lib < Package
-  llvm_build_obj = Package.load_package("#{__dir__}/#{CREW_LLVM_VER}_build.rb")
+  llvm_build_obj = Package.load_package("#{__dir__}/llvm23_build.rb")
   description 'LibLLVM and llvm-strip'
   homepage llvm_build_obj.homepage
   version llvm_build_obj.version

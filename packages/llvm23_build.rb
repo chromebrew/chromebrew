@@ -131,16 +131,16 @@ class Llvm23_build < Package
         clang++ -fPIC -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem ${cxx_sys} -I ${cxx_inc} -B ${gnuc_lib} -L ${gnuc_lib} "$@"
       CLCPLUSPLUS_EOF
 
-      libclc_runtime_targets = %w[amdgcn-amd-amdhsa-llvm nvptx64-- nvptx64--nvidiacl nvptx64-nvidia-cuda]
-      llvm_runtime_targets = libclc_runtime_targets.join(';')
-      libclc_runtimes = libclc_runtime_targets.map { "-DRUNTIMES_#{it}_LLVM_ENABLE_RUNTIMES=libclc" }.join(' ')
+      libclc_runtime_targets = ARCH == 'i686' ? [] : %w[amdgcn-amd-amdhsa-llvm nvptx64-- nvptx64--nvidiacl nvptx64-nvidia-cuda]
+      llvm_runtime_targets = ARCH == 'i686' ? '' : ";libclc;#{libclc_runtime_targets.join(';')}"
+      libclc_runtimes = ARCH == 'i686' ? '' : libclc_runtime_targets.map { "-DRUNTIMES_#{it}_LLVM_ENABLE_RUNTIMES=libclc" }.join(' ')
 
       system "cmake -B builddir -G Ninja llvm \
-            -DLLVM_RUNTIME_TARGETS='default;compiler-rt;#{llvm_runtime_targets}' \
+            -DLLVM_RUNTIME_TARGETS='default;compiler-rt#{llvm_runtime_targets}' \
             #{libclc_runtimes} \
             -DLLVM_NATIVE_TOOL_DIR=#{CREW_PREFIX}/bin \
             -DLLVM_HOST_TRIPLE=#{CREW_TARGET} \
-            -DCLANG_DEFAULT_LINKER=lld \
+            -DCLANG_DEFAULT_LINKER=mold \
             -DCMAKE_ASM_COMPILER_TARGET=#{CREW_TARGET} \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_C_COMPILER=$(which clang) \
@@ -154,10 +154,6 @@ class Llvm23_build < Package
             -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
             -DCMAKE_LIBRARY_PATH='#{CREW_GLIBC_INTERPRETER.nil? ? CREW_LIB_PREFIX : "#{CREW_GLIBC_PREFIX};#{CREW_LIB_PREFIX}"}' \
             -D_CMAKE_TOOLCHAIN_PREFIX=llvm- \
-            -DCOMPILER_RT_BUILD_BUILTINS=ON \
-            -DCOMPILER_RT_BUILD_LIBFUZZER=OFF \
-            -DCOMPILER_RT_BUILD_SANITIZERS=OFF \
-            -DCOMPILER_RT_DEFAULT_TARGET_ONLY=ON \
             -DLLDB_INCLUDE_TESTS=OFF \
             -DLLVM_BINUTILS_INCDIR='#{CREW_PREFIX}/include' \
             -DLLVM_BUILD_LLVM_DYLIB=ON \
