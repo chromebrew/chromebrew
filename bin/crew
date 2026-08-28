@@ -327,16 +327,19 @@ def upgrade(*pkgs, build_from_source: false)
     rerun_upgrade = true
   end
 
+  to_be_upgraded.uniq! if to_be_upgraded.any?
+  extra_deps.uniq! if extra_deps.any?
+
   puts <<~EOT
 
-    The following package(s) will be upgraded:
+    The following package#{'s' if to_be_upgraded.size > 1} will be upgraded:
 
     #{to_be_upgraded.join(' ')}
 
   EOT
 
   puts <<~EOT if extra_deps.any?
-    The following package(s) also need to be installed:
+    The following package#{'s' if extra_deps.size > 1} also need#{'s' if extra_deps.size == 1} to be installed:
 
     #{extra_deps.join(' ')}
 
