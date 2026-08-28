@@ -1,17 +1,17 @@
-# Total size: 29596668
+# Total size: 30173411
 /usr/local/bin/compile-python-for-nuitka-linux.sh
 /usr/local/bin/nuitka
 /usr/local/bin/nuitka-run
-/usr/local/lib64/python3.14/site-packages/nuitka-4.1.3.dist-info/INSTALLER
-/usr/local/lib64/python3.14/site-packages/nuitka-4.1.3.dist-info/METADATA
-/usr/local/lib64/python3.14/site-packages/nuitka-4.1.3.dist-info/RECORD
-/usr/local/lib64/python3.14/site-packages/nuitka-4.1.3.dist-info/REQUESTED
-/usr/local/lib64/python3.14/site-packages/nuitka-4.1.3.dist-info/WHEEL
-/usr/local/lib64/python3.14/site-packages/nuitka-4.1.3.dist-info/entry_points.txt
-/usr/local/lib64/python3.14/site-packages/nuitka-4.1.3.dist-info/licenses/LICENSE-RUNTIME.txt
-/usr/local/lib64/python3.14/site-packages/nuitka-4.1.3.dist-info/licenses/LICENSE.txt
-/usr/local/lib64/python3.14/site-packages/nuitka-4.1.3.dist-info/licenses/NOTICE.txt
-/usr/local/lib64/python3.14/site-packages/nuitka-4.1.3.dist-info/top_level.txt
+/usr/local/lib64/python3.14/site-packages/nuitka-4.2.dist-info/INSTALLER
+/usr/local/lib64/python3.14/site-packages/nuitka-4.2.dist-info/METADATA
+/usr/local/lib64/python3.14/site-packages/nuitka-4.2.dist-info/RECORD
+/usr/local/lib64/python3.14/site-packages/nuitka-4.2.dist-info/REQUESTED
+/usr/local/lib64/python3.14/site-packages/nuitka-4.2.dist-info/WHEEL
+/usr/local/lib64/python3.14/site-packages/nuitka-4.2.dist-info/entry_points.txt
+/usr/local/lib64/python3.14/site-packages/nuitka-4.2.dist-info/licenses/LICENSE-RUNTIME.txt
+/usr/local/lib64/python3.14/site-packages/nuitka-4.2.dist-info/licenses/LICENSE.txt
+/usr/local/lib64/python3.14/site-packages/nuitka-4.2.dist-info/licenses/NOTICE.txt
+/usr/local/lib64/python3.14/site-packages/nuitka-4.2.dist-info/top_level.txt
 /usr/local/lib64/python3.14/site-packages/nuitka/Builtins.py
 /usr/local/lib64/python3.14/site-packages/nuitka/BytecodeCaching.py
 /usr/local/lib64/python3.14/site-packages/nuitka/Bytecodes.py
@@ -34,6 +34,7 @@
 /usr/local/lib64/python3.14/site-packages/nuitka/TreeXML.py
 /usr/local/lib64/python3.14/site-packages/nuitka/Variables.py
 /usr/local/lib64/python3.14/site-packages/nuitka/Version.py
+/usr/local/lib64/python3.14/site-packages/nuitka/VersionCheck.py
 /usr/local/lib64/python3.14/site-packages/nuitka/__init__.py
 /usr/local/lib64/python3.14/site-packages/nuitka/__main__.py
 /usr/local/lib64/python3.14/site-packages/nuitka/__past__.py
@@ -59,6 +60,7 @@
 /usr/local/lib64/python3.14/site-packages/nuitka/__pycache__/TreeXML.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/nuitka/__pycache__/Variables.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/nuitka/__pycache__/Version.cpython-314.pyc
+/usr/local/lib64/python3.14/site-packages/nuitka/__pycache__/VersionCheck.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/nuitka/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/nuitka/__pycache__/__main__.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/nuitka/__pycache__/__past__.cpython-314.pyc
@@ -109,6 +111,7 @@
 /usr/local/lib64/python3.14/site-packages/nuitka/build/include/nuitka/constants_blob.h
 /usr/local/lib64/python3.14/site-packages/nuitka/build/include/nuitka/constants_blob_spec.h
 /usr/local/lib64/python3.14/site-packages/nuitka/build/include/nuitka/debug_settings.h
+/usr/local/lib64/python3.14/site-packages/nuitka/build/include/nuitka/defines.h
 /usr/local/lib64/python3.14/site-packages/nuitka/build/include/nuitka/environment_variables.h
 /usr/local/lib64/python3.14/site-packages/nuitka/build/include/nuitka/environment_variables_system.h
 /usr/local/lib64/python3.14/site-packages/nuitka/build/include/nuitka/exception_groups.h
@@ -150,6 +153,7 @@
 /usr/local/lib64/python3.14/site-packages/nuitka/build/include/nuitka/helper/operations_binary_bitxor.h
 /usr/local/lib64/python3.14/site-packages/nuitka/build/include/nuitka/helper/operations_binary_divmod.h
 /usr/local/lib64/python3.14/site-packages/nuitka/build/include/nuitka/helper/operations_binary_dual_add.h
+/usr/local/lib64/python3.14/site-packages/nuitka/build/include/nuitka/helper/operations_binary_dual_sub.h
 /usr/local/lib64/python3.14/site-packages/nuitka/build/include/nuitka/helper/operations_binary_floordiv.h
 /usr/local/lib64/python3.14/site-packages/nuitka/build/include/nuitka/helper/operations_binary_lshift.h
 /usr/local/lib64/python3.14/site-packages/nuitka/build/include/nuitka/helper/operations_binary_matmult.h
@@ -193,6 +197,7 @@
 /usr/local/lib64/python3.14/site-packages/nuitka/build/include/nuitka/python_internals_access.h
 /usr/local/lib64/python3.14/site-packages/nuitka/build/include/nuitka/python_pgo.h
 /usr/local/lib64/python3.14/site-packages/nuitka/build/include/nuitka/safe_string_ops.h
+/usr/local/lib64/python3.14/site-packages/nuitka/build/include/nuitka/string_functions.h
 /usr/local/lib64/python3.14/site-packages/nuitka/build/include/nuitka/threading.h
 /usr/local/lib64/python3.14/site-packages/nuitka/build/include/nuitka/tracing.h
 /usr/local/lib64/python3.14/site-packages/nuitka/build/include/nuitka/type_aliases.h
@@ -724,6 +729,7 @@
 /usr/local/lib64/python3.14/site-packages/nuitka/build/static_src/HelpersOperationBinaryDivmod.c
 /usr/local/lib64/python3.14/site-packages/nuitka/build/static_src/HelpersOperationBinaryDivmodUtils.c
 /usr/local/lib64/python3.14/site-packages/nuitka/build/static_src/HelpersOperationBinaryDualAdd.c
+/usr/local/lib64/python3.14/site-packages/nuitka/build/static_src/HelpersOperationBinaryDualSub.c
 /usr/local/lib64/python3.14/site-packages/nuitka/build/static_src/HelpersOperationBinaryFloordiv.c
 /usr/local/lib64/python3.14/site-packages/nuitka/build/static_src/HelpersOperationBinaryLshift.c
 /usr/local/lib64/python3.14/site-packages/nuitka/build/static_src/HelpersOperationBinaryMatmult.c
@@ -768,6 +774,7 @@
 /usr/local/lib64/python3.14/site-packages/nuitka/build/static_src/MetaPathBasedLoaderResourceReaderFiles.c
 /usr/local/lib64/python3.14/site-packages/nuitka/build/static_src/OnefileBootstrap.c
 /usr/local/lib64/python3.14/site-packages/nuitka/build/static_src/OnefileSplashScreen.cpp
+/usr/local/lib64/python3.14/site-packages/nuitka/code_generation/AnnotateFunctionCodes.py
 /usr/local/lib64/python3.14/site-packages/nuitka/code_generation/AsyncgenCodes.py
 /usr/local/lib64/python3.14/site-packages/nuitka/code_generation/AttributeCodes.py
 /usr/local/lib64/python3.14/site-packages/nuitka/code_generation/BinaryOperationHelperDefinitions.py
@@ -819,11 +826,13 @@
 /usr/local/lib64/python3.14/site-packages/nuitka/code_generation/PackageResourceCodes.py
 /usr/local/lib64/python3.14/site-packages/nuitka/code_generation/PrintCodes.py
 /usr/local/lib64/python3.14/site-packages/nuitka/code_generation/PythonAPICodes.py
+/usr/local/lib64/python3.14/site-packages/nuitka/code_generation/PythonSourceCodeGeneration.py
 /usr/local/lib64/python3.14/site-packages/nuitka/code_generation/RaisingCodes.py
 /usr/local/lib64/python3.14/site-packages/nuitka/code_generation/Reports.py
 /usr/local/lib64/python3.14/site-packages/nuitka/code_generation/ReturnCodes.py
 /usr/local/lib64/python3.14/site-packages/nuitka/code_generation/SetCodes.py
 /usr/local/lib64/python3.14/site-packages/nuitka/code_generation/SliceCodes.py
+/usr/local/lib64/python3.14/site-packages/nuitka/code_generation/SpecialConstantData.py
 /usr/local/lib64/python3.14/site-packages/nuitka/code_generation/StringCodes.py
 /usr/local/lib64/python3.14/site-packages/nuitka/code_generation/SubscriptCodes.py
 /usr/local/lib64/python3.14/site-packages/nuitka/code_generation/TensorflowCodes.py
@@ -834,6 +843,7 @@
 /usr/local/lib64/python3.14/site-packages/nuitka/code_generation/VariableDeclarations.py
 /usr/local/lib64/python3.14/site-packages/nuitka/code_generation/YieldCodes.py
 /usr/local/lib64/python3.14/site-packages/nuitka/code_generation/__init__.py
+/usr/local/lib64/python3.14/site-packages/nuitka/code_generation/__pycache__/AnnotateFunctionCodes.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/nuitka/code_generation/__pycache__/AsyncgenCodes.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/nuitka/code_generation/__pycache__/AttributeCodes.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/nuitka/code_generation/__pycache__/BinaryOperationHelperDefinitions.cpython-314.pyc
@@ -885,11 +895,13 @@
 /usr/local/lib64/python3.14/site-packages/nuitka/code_generation/__pycache__/PackageResourceCodes.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/nuitka/code_generation/__pycache__/PrintCodes.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/nuitka/code_generation/__pycache__/PythonAPICodes.cpython-314.pyc
+/usr/local/lib64/python3.14/site-packages/nuitka/code_generation/__pycache__/PythonSourceCodeGeneration.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/nuitka/code_generation/__pycache__/RaisingCodes.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/nuitka/code_generation/__pycache__/Reports.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/nuitka/code_generation/__pycache__/ReturnCodes.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/nuitka/code_generation/__pycache__/SetCodes.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/nuitka/code_generation/__pycache__/SliceCodes.cpython-314.pyc
+/usr/local/lib64/python3.14/site-packages/nuitka/code_generation/__pycache__/SpecialConstantData.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/nuitka/code_generation/__pycache__/StringCodes.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/nuitka/code_generation/__pycache__/SubscriptCodes.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/nuitka/code_generation/__pycache__/TensorflowCodes.cpython-314.pyc
@@ -1028,8 +1040,8 @@
 /usr/local/lib64/python3.14/site-packages/nuitka/freezer/ImportDetection.py
 /usr/local/lib64/python3.14/site-packages/nuitka/freezer/IncludedDataFiles.py
 /usr/local/lib64/python3.14/site-packages/nuitka/freezer/IncludedEntryPoints.py
+/usr/local/lib64/python3.14/site-packages/nuitka/freezer/LinuxApp.py
 /usr/local/lib64/python3.14/site-packages/nuitka/freezer/MacOSApp.py
-/usr/local/lib64/python3.14/site-packages/nuitka/freezer/MacOSDmg.py
 /usr/local/lib64/python3.14/site-packages/nuitka/freezer/Onefile.py
 /usr/local/lib64/python3.14/site-packages/nuitka/freezer/Standalone.py
 /usr/local/lib64/python3.14/site-packages/nuitka/freezer/__init__.py
@@ -1043,8 +1055,8 @@
 /usr/local/lib64/python3.14/site-packages/nuitka/freezer/__pycache__/ImportDetection.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/nuitka/freezer/__pycache__/IncludedDataFiles.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/nuitka/freezer/__pycache__/IncludedEntryPoints.cpython-314.pyc
+/usr/local/lib64/python3.14/site-packages/nuitka/freezer/__pycache__/LinuxApp.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/nuitka/freezer/__pycache__/MacOSApp.cpython-314.pyc
-/usr/local/lib64/python3.14/site-packages/nuitka/freezer/__pycache__/MacOSDmg.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/nuitka/freezer/__pycache__/Onefile.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/nuitka/freezer/__pycache__/Standalone.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/nuitka/freezer/__pycache__/__init__.cpython-314.pyc
@@ -1068,6 +1080,23 @@
 /usr/local/lib64/python3.14/site-packages/nuitka/importing/__pycache__/Recursion.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/nuitka/importing/__pycache__/StandardLibrary.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/nuitka/importing/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib64/python3.14/site-packages/nuitka/installer/Installer.py
+/usr/local/lib64/python3.14/site-packages/nuitka/installer/LinuxInstaller.py
+/usr/local/lib64/python3.14/site-packages/nuitka/installer/MacOSDmg.py
+/usr/local/lib64/python3.14/site-packages/nuitka/installer/WindowsInstaller.py
+/usr/local/lib64/python3.14/site-packages/nuitka/installer/__init__.py
+/usr/local/lib64/python3.14/site-packages/nuitka/installer/__pycache__/Installer.cpython-314.pyc
+/usr/local/lib64/python3.14/site-packages/nuitka/installer/__pycache__/LinuxInstaller.cpython-314.pyc
+/usr/local/lib64/python3.14/site-packages/nuitka/installer/__pycache__/MacOSDmg.cpython-314.pyc
+/usr/local/lib64/python3.14/site-packages/nuitka/installer/__pycache__/WindowsInstaller.cpython-314.pyc
+/usr/local/lib64/python3.14/site-packages/nuitka/installer/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib64/python3.14/site-packages/nuitka/installer/backends/AppImageBackend.py
+/usr/local/lib64/python3.14/site-packages/nuitka/installer/backends/NsisBackend.py
+/usr/local/lib64/python3.14/site-packages/nuitka/installer/backends/NsisTemplate.nsi
+/usr/local/lib64/python3.14/site-packages/nuitka/installer/backends/__init__.py
+/usr/local/lib64/python3.14/site-packages/nuitka/installer/backends/__pycache__/AppImageBackend.cpython-314.pyc
+/usr/local/lib64/python3.14/site-packages/nuitka/installer/backends/__pycache__/NsisBackend.cpython-314.pyc
+/usr/local/lib64/python3.14/site-packages/nuitka/installer/backends/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/nuitka/nodes/AsyncgenNodes.py
 /usr/local/lib64/python3.14/site-packages/nuitka/nodes/AttributeLookupNodes.py
 /usr/local/lib64/python3.14/site-packages/nuitka/nodes/AttributeNodes.py
@@ -1660,6 +1689,7 @@
 /usr/local/lib64/python3.14/site-packages/nuitka/utils/WindowsFileUsage.py
 /usr/local/lib64/python3.14/site-packages/nuitka/utils/WindowsResources.py
 /usr/local/lib64/python3.14/site-packages/nuitka/utils/Yaml.py
+/usr/local/lib64/python3.14/site-packages/nuitka/utils/Zipfiles.py
 /usr/local/lib64/python3.14/site-packages/nuitka/utils/__init__.py
 /usr/local/lib64/python3.14/site-packages/nuitka/utils/__pycache__/AppDirs.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/nuitka/utils/__pycache__/CStrings.cpython-314.pyc
@@ -1695,5 +1725,6 @@
 /usr/local/lib64/python3.14/site-packages/nuitka/utils/__pycache__/WindowsFileUsage.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/nuitka/utils/__pycache__/WindowsResources.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/nuitka/utils/__pycache__/Yaml.cpython-314.pyc
+/usr/local/lib64/python3.14/site-packages/nuitka/utils/__pycache__/Zipfiles.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/nuitka/utils/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib64/python3.14/site-packages/nuitka/utils/requirements-private.txt
