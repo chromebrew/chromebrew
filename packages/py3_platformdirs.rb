@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_platformdirs < Pip
   description 'A small Python package for determining appropriate platform-specific dirs.'
   homepage 'https://pypi.org/project/platformdirs'
-  version "4.11.4-#{CREW_PY_VER}"
+  version "4.11.5-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '18942e11f284a7f68afac062ab66d78e479f638be258834ff290b9538d07f18e',
-     armv7l: '18942e11f284a7f68afac062ab66d78e479f638be258834ff290b9538d07f18e',
-       i686: '83d04e45d7c3fa0845dbe0b8f8fbb43726d3a004edd48e57e575137bcdafb3a8',
-     x86_64: '482abca9ba24c949d9c84f59f53257e21adeded1ef5ade2895a165f351aea105'
+    aarch64: '805a5170a0f6595a309db3f9413423dbaf9d788fe267e53149716d3072322ca6',
+     armv7l: '805a5170a0f6595a309db3f9413423dbaf9d788fe267e53149716d3072322ca6',
+       i686: '14851c5fcfe248e88a6dce35e4d24c25c216792a97451b70da1381db6ec4f2fa',
+     x86_64: '486c53c5157f438fe0366d714612002e02402106b76daf242ef7e39c82318192'
   })
 
   depends_on 'python3' => :logical
