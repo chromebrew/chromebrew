@@ -15,8 +15,8 @@ class Intel_opencl_clang < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2f2aed9c42fe4f7eb03018ac5a547ad53327fdfa00bca3eec2552fe9b5c47af1',
-     armv7l: '2f2aed9c42fe4f7eb03018ac5a547ad53327fdfa00bca3eec2552fe9b5c47af1',
+    aarch64: 'db11d584f0b80fee1ddd04ffbe716707e1617aa5e8998da6776937205d11272b',
+     armv7l: 'db11d584f0b80fee1ddd04ffbe716707e1617aa5e8998da6776937205d11272b',
      x86_64: 'fe2fe6331b7b0c9dddad299a633f9e7907f7d0e847f5899a22af436beced9a76'
   })
 
