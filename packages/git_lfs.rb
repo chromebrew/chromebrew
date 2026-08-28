@@ -11,14 +11,14 @@ class Git_lfs < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '950c862d38542c4e111c29f196b57e3188bf0aba7e58ae5ae887e4058fb03cf9',
-     armv7l: '950c862d38542c4e111c29f196b57e3188bf0aba7e58ae5ae887e4058fb03cf9',
-       i686: 'b7ac2d1172b5381816f6f0ebc33c0772afa7a990e79b334868fb8d76f4d191bc',
-     x86_64: 'c5c0a929e356957e01d77d61002ffad407dbc191d1167a71134418acfa979b7c'
+    aarch64: '06585f8acf12962daa1e25793d7243c003081b47c4858394acf082cc4e707860',
+     armv7l: '06585f8acf12962daa1e25793d7243c003081b47c4858394acf082cc4e707860',
+       i686: 'b9746b3065c76c902c75ec64f4f1ea0d824f6166220e08a58c5f17b553981bb1',
+     x86_64: '1d4da286c38facef3a30b35eb29a3be732c0123cc5086258620aa048d8a4337b'
   })
 
   depends_on 'asciidoctor' => :build
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :executable
   depends_on 'go' => :build
 
   def self.build
