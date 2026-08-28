@@ -19,6 +19,7 @@ class Git_lfs < Package
 
   depends_on 'asciidoctor' => :build
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'go' => :build
 
   def self.build
