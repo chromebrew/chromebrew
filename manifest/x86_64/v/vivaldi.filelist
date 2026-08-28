@@ -1,4 +1,4 @@
-# Total size: 454808271
+# Total size: 454756465
 /usr/local/bin/vivaldi
 /usr/local/bin/vivaldi-stable
 /usr/local/etc/cron.daily/vivaldi
@@ -406,7 +406,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/adblocker_resources/redirectable_resources.json
 /usr/local/share/vivaldi/resources/vivaldi/background-bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/background-common-bundle.js
-/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-0eb1282c782cf9401b6c53954ef61ade.js
+/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-9140aff10d44e918bc1826e14ddbb0e8.js
 /usr/local/share/vivaldi/resources/vivaldi/bundle-mailreader-worker.js
 /usr/local/share/vivaldi/resources/vivaldi/bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/components/mail/mail.html
