@@ -3,17 +3,17 @@ require 'package'
 class Haproxy < Package
   description 'The Reliable, High Performance TCP/HTTP Load Balancer.'
   homepage 'https://www.haproxy.org/'
-  version '3.4.3'
+  version '3.4.4'
   license 'GPL-2 and LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.haproxy.org/download/#{version.split('.')[0..1].join('.')}/src/haproxy-#{version}.tar.gz"
-  source_sha256 '7fa666d36d198275999e2a68dda44d3d37960f2f7aed3a595fb811f4fd0515b5'
+  source_sha256 'b0c5053c4d46840ecdee3925736fe9a3de6472559b43c69183d70e593d9133df'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '928cefab8703d41691314c3041f5f48e5ec3d35ea0013f1267ad59939c7b2207',
-     armv7l: '928cefab8703d41691314c3041f5f48e5ec3d35ea0013f1267ad59939c7b2207',
-     x86_64: '44f76c8583e98cb7d7269d1cdef10a16d5a86e6f42ac459120bccbb229451224'
+    aarch64: '8c8d8ca0ffe4f7c10aabdadea512195095e99fbb6665b9abd1118e26c0fbfb42',
+     armv7l: '8c8d8ca0ffe4f7c10aabdadea512195095e99fbb6665b9abd1118e26c0fbfb42',
+     x86_64: 'ada691949eb814d185d0324fef2c28f52723df9a04e3f4616b775fabd70c333e'
   })
 
   depends_on 'glibc' => :executable
