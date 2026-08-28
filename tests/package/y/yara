@@ -1,0 +1,5 @@
+#!/bin/bash
+yara -h | head
+yara -v
+yarac -h | head
+yarac -v
