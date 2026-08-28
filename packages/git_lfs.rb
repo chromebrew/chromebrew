@@ -3,11 +3,11 @@ require 'package'
 class Git_lfs < Package
   description 'Git extension for versioning large files'
   homepage 'https://git-lfs.com/'
-  version '3.7.1'
+  version '3.8.0'
   license 'AGPL-3'
   compatibility 'all'
   source_url "https://github.com/git-lfs/git-lfs/releases/download/v#{version}/git-lfs-v#{version}.tar.gz"
-  source_sha256 '8f56058622edfea1d111e50e9844ef2f5ce670b2dbe4d55d48e765c943af4351'
+  source_sha256 '4f75492c6832038fa73d39a45316657208bb6caa23b273451cb4ec2358d42ccb'
   binary_compression 'tar.zst'
 
   binary_sha256({
