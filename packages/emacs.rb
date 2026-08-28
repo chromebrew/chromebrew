@@ -3,11 +3,11 @@ require 'package'
 class Emacs < Package
   description 'An extensible, customizable, free/libre text editor - and more.'
   homepage 'http://www.gnu.org/software/emacs/'
-  version '29.1'
+  version '31.1'
   license 'GPL-3+, FDL-1.3+, BSD, HPND, MIT, W3C, unicode, PSF-2'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://ftp.gnu.org/gnu/emacs/emacs-29.1.tar.xz'
-  source_sha256 'd2f881a5cc231e2f5a03e86f4584b0438f83edd7598a09d24a21bd8d003e2e01'
+  source_url "https://ftp.gnu.org/gnu/emacs/emacs-#{version}.tar.xz"
+  source_sha256 '1da5790d9580c81932b5bf700633114468da7b3412d69faa767daebf974f4586'
   binary_compression 'tar.zst'
 
   binary_sha256({
