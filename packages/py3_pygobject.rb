@@ -4,7 +4,7 @@ require 'buildsystems/meson'
 class Py3_pygobject < Meson
   description 'PyGObject is a Python package which provides bindings for GObject based libraries such as GTK+, GStreamer, WebKitGTK+, GLib, GIO and many more.'
   homepage 'https://wiki.gnome.org/Projects/PyGObject'
-  version "3.56.3-#{CREW_PY_VER}"
+  version "3.58.0-#{CREW_PY_VER}"
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/pygobject.git'
@@ -12,15 +12,16 @@ class Py3_pygobject < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '404e13b79c708609d8488689f7abe4784d9aed28778b368b5e0aed8fcf671bdd',
-     armv7l: '404e13b79c708609d8488689f7abe4784d9aed28778b368b5e0aed8fcf671bdd',
-     x86_64: 'f7c7ffd85bb808fa3e4ad76049239a94261c513d8425acde9728598c67d7492d'
+    aarch64: '0f023487db4c6ba38bda1d1dd3179d4c7af19b738e67b8723a91208fde239031',
+     armv7l: '0f023487db4c6ba38bda1d1dd3179d4c7af19b738e67b8723a91208fde239031',
+     x86_64: 'd492c8dc166fe759ee7cab53bcf321a3adfd51d6f931d11fc6e4ac049ff183fc'
   })
 
   depends_on 'cairo' => :library
   depends_on 'gcc_lib' # R
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'harfbuzz' => :library
   depends_on 'libffi' => :library
   depends_on 'py3_meson_python' => :build
