@@ -1,4 +1,4 @@
-# Total size: 3311710
+# Total size: 4652938
 /usr/local/bin/yara
 /usr/local/bin/yarac
 /usr/local/include/yara.h
@@ -26,6 +26,7 @@
 /usr/local/include/yara/rules.h
 /usr/local/include/yara/scan.h
 /usr/local/include/yara/scanner.h
+/usr/local/include/yara/simple_str.h
 /usr/local/include/yara/sizedstr.h
 /usr/local/include/yara/stack.h
 /usr/local/include/yara/stopwatch.h
@@ -33,12 +34,13 @@
 /usr/local/include/yara/strutils.h
 /usr/local/include/yara/threading.h
 /usr/local/include/yara/types.h
+/usr/local/include/yara/unaligned.h
 /usr/local/include/yara/utils.h
 /usr/local/lib/libyara.a
 /usr/local/lib/libyara.la
 /usr/local/lib/libyara.so
-/usr/local/lib/libyara.so.9
-/usr/local/lib/libyara.so.9.0.1
+/usr/local/lib/libyara.so.10
+/usr/local/lib/libyara.so.10.0.0
 /usr/local/lib/pkgconfig/yara.pc
-/usr/local/share/man/man1/yara.1.gz
-/usr/local/share/man/man1/yarac.1.gz
+/usr/local/share/man/man1/yara.1.zst
+/usr/local/share/man/man1/yarac.1.zst
