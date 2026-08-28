@@ -10,10 +10,10 @@ class Py3_scons < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '793a5db70774329e02984894f817b792dcf03bde7d8f64c5df09a7235d32f0ad',
-     armv7l: '793a5db70774329e02984894f817b792dcf03bde7d8f64c5df09a7235d32f0ad',
-       i686: 'a90c8fc82b7e8335fa4372588592de5727e1dd8cab1c82273d6bb109671f88cd',
-     x86_64: 'f9a17d775f2ed5572ce8e03158cc28facacfccd2e08882cdd9de8d5977df493b'
+    aarch64: '3e792d05c7fdf24b67fc622c28b45d391b2eb6ba5d36cbd62b9f2fbcbd7bcace',
+     armv7l: '3e792d05c7fdf24b67fc622c28b45d391b2eb6ba5d36cbd62b9f2fbcbd7bcace',
+       i686: '9402b03312f9eaf3ef2a2a537190fefa56d76d4a48ba5973f73b97d0883510af',
+     x86_64: '6856d48cd3ad35d575df526b4643b53ecc824d664d93a58da687c32be66b2a12'
   })
 
   depends_on 'python3' => :logical
