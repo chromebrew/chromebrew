@@ -1,4 +1,4 @@
-# Total size: 450394848
+# Total size: 454479844
 /usr/local/bin/appflowy
 /usr/local/share/AppFlowy/AppFlowy
 /usr/local/share/AppFlowy/data/flutter_assets/AssetManifest.bin
@@ -103,6 +103,7 @@
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/bulleted_list_icon_1.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/bulleted_list_icon_2.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/bulleted_list_icon_3.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/calculate.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/calendar.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/calendar_layout.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/callout.svg
@@ -429,6 +430,7 @@
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/paragraph_mark.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/pdf.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/percent.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/percent_v2.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/person.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/photo_layout_browser.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/photo_layout_grid.svg
@@ -568,6 +570,7 @@
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/table_set_to_page_width.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/tag.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/tag_block.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/target.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/template.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/text.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/text_color.svg
@@ -705,6 +708,7 @@
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/brands_logo.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/breadcrumbs.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/bulleted_list.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/calculate.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/calendar.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/callout.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/caption%20copy.svg
@@ -876,6 +880,7 @@
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/pdf_open_in_browser.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/pdf_replace.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/pdf_resize.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/percent_v2.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/person_icon_no_access.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/pie_chart.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/plan.svg
@@ -942,6 +947,7 @@
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/switch.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/table.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/table_of_content.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/target.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/text.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/text_color.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/text_color_border.svg
