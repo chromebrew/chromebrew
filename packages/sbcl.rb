@@ -3,18 +3,18 @@ require 'package'
 class Sbcl < Package
   description 'Steel Bank Common Lisp (SBCL) is a high performance Common Lisp compiler.'
   homepage 'http://www.sbcl.org/index.html'
-  version '2.6.7'
+  version '2.6.8'
   license 'MIT'
   compatibility 'all'
   source_url "https://downloads.sourceforge.net/project/sbcl/sbcl/#{version}/sbcl-#{version}-source.tar.bz2"
-  source_sha256 '1ebdc35c9dc8e271b8cd1ac44965e00bf255f9c0221650fcb77f0fb34c2d3ade'
+  source_sha256 'ad5126dfdfba5db27ee77bcc25893020fe522d0b7653d45b4c4795ade3ddc23d'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cd4f5e8d4b2ef6877b4dc1664133add988315d991e1779cd5d0574e374e9f3c8',
-     armv7l: 'cd4f5e8d4b2ef6877b4dc1664133add988315d991e1779cd5d0574e374e9f3c8',
-       i686: 'e23255ea1e214b10cefa5ef05df2cb062e5009a7c409165bdc1595d6f4d9009a',
-     x86_64: 'e1d53463b3a5cdb04552976129ad7924a356eea154123da8d443a961c080847d'
+    aarch64: '317afcde34411d5edd048d274599b3a29243ade94da1fc9cf1a39114fb3a993a',
+     armv7l: '317afcde34411d5edd048d274599b3a29243ade94da1fc9cf1a39114fb3a993a',
+       i686: '3fb77e07777b726b06078d993b3ed3f86dfd65a7013f28caa36fd7b03dcc104f',
+     x86_64: '5cdc3c6fe964426a94747521658907a4031945e8e2896cc0e8c0f391108f3d9e'
   })
 
   depends_on 'clisp' => :build
