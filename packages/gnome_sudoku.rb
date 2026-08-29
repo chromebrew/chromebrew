@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gnome_sudoku < Meson
   description 'Sudoku puzzle game for GNOME'
   homepage 'https://wiki.gnome.org/Apps/Sudoku'
-  version '50.3'
+  version '50.4'
   license 'GPL-3+ and CC-BY-SA-3.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-sudoku.git'
@@ -11,9 +11,9 @@ class Gnome_sudoku < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1e752e32ff88b69ba927f13ddf5fa8d9755e489094b1b086db412c23ae0fef32',
-     armv7l: '1e752e32ff88b69ba927f13ddf5fa8d9755e489094b1b086db412c23ae0fef32',
-     x86_64: 'a8b4f5e61410416159a3a7b0bc9fc23fbcf3627a6fc3fa2321824c98f4cac8df'
+    aarch64: '35158a0b23ec76806196049adaeb88a7bf36f9ba370158ad07d7b91d45fa342f',
+     armv7l: '35158a0b23ec76806196049adaeb88a7bf36f9ba370158ad07d7b91d45fa342f',
+     x86_64: 'a304487a2881ff9320d5f76bca80ccf073563c50cc3373dd1070f432a3cf6332'
   })
 
   depends_on 'blueprint_compiler' => :build
