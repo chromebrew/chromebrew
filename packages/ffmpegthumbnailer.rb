@@ -11,9 +11,9 @@ class Ffmpegthumbnailer < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '30ea82b1f97dc3f1c80582a731d8522d186b29c99caa5eb5216cac873cd7e525',
-     armv7l: '30ea82b1f97dc3f1c80582a731d8522d186b29c99caa5eb5216cac873cd7e525',
-     x86_64: 'c4ff9cbb3798843b2326fb9d6b2de498899eb41e568e7446d22b01fcf3f8b408'
+    aarch64: '09af732a9cabdf509a7cfa8c8dbb4b965f43571e32db48d5c3cc91a1f97a0662',
+     armv7l: '09af732a9cabdf509a7cfa8c8dbb4b965f43571e32db48d5c3cc91a1f97a0662',
+     x86_64: '4fd5ebfda74ec2dd10ef414d3de50e42e1cc4532f3f427b624125f27459dcce2'
   })
 
   depends_on 'ffmpeg' => :library
