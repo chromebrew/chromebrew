@@ -11,10 +11,10 @@ class Fftw < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '967ee876b47a3f0a8354fa5587a9cd6103cd6629a908ded148b69634cef47839',
-     armv7l: '967ee876b47a3f0a8354fa5587a9cd6103cd6629a908ded148b69634cef47839',
-       i686: '8ef033f81a7398024a7a757187bb5e259562d472752e7680746afd1cbb692ebc',
-     x86_64: '27e304bd4022d580dbc181e5f08f250179c80cd2c109639dd7e2ab619fc4e136'
+    aarch64: '7c12af0ee15819d3c4cd87e09c86f33587250bd1ba791e10ab1dfd6ec2ecb76d',
+     armv7l: '7c12af0ee15819d3c4cd87e09c86f33587250bd1ba791e10ab1dfd6ec2ecb76d',
+       i686: 'a2e3de9475c9b8e91088b80a4f8c65cd89c24530dfd94a46f2514a76c51a850f',
+     x86_64: '6530ec2a959bb3de0f15ebf96c3b2cf9d93853d2bd4a01769d78e559ce7c7887'
   })
 
   depends_on 'glibc' => :library
@@ -23,6 +23,6 @@ class Fftw < Autotools
   # We'd need to build fftw three times with each precision option in order to support things properly.
   # https://www.linuxfromscratch.org/blfs/view/cvs/general/fftw.html
   # https://github.com/FFTW/fftw3/pull/276
-  autotools_configure_options '--enable-shared'
+  autotools_configure_options '--enable-shared --enable-threads'
   run_tests
 end
