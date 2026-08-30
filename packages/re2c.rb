@@ -3,11 +3,11 @@ require 'buildsystems/cmake'
 class Re2c < CMake
   description 're2c is a free and open-source lexer generator for C and C++.'
   homepage 'http://re2c.org/'
-  version '4.5.1'
+  version '4.6'
   license 'public-domain'
   compatibility 'all'
   source_url "https://github.com/skvadrik/re2c/releases/download/#{version}/re2c-#{version}.tar.lz"
-  source_sha256 'af85de20a6d780f2ef345eac81b35786eded075dc468384f79a65ad1059dc50d'
+  source_sha256 'c002a864734bec2899cc95e2db2aba4f63104bece866f3631a6ed93be2ca7be9'
   binary_compression 'tar.zst'
 
   binary_sha256({
