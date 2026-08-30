@@ -11,10 +11,10 @@ class Re2c < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6e886a5c5b32dc51fabf77af86a9247b1f59684490a1fb61fa669941253bc54f',
-     armv7l: '6e886a5c5b32dc51fabf77af86a9247b1f59684490a1fb61fa669941253bc54f',
-       i686: 'f0963a657de299ee4b28b8bf24420e6ab9c53a2607123c025e29f29a04e391f8',
-     x86_64: '9f60169e9c8621b036cad0769eb6b9e9b099bc2cdcdd7b447288e5b2f5dc9dff'
+    aarch64: '3d84b8101c4433a614603b3ec428f525fab04c3a84798b9bd769a789b994a76e',
+     armv7l: '3d84b8101c4433a614603b3ec428f525fab04c3a84798b9bd769a789b994a76e',
+       i686: '25b5046a6afe1f48da7a1d91cba641defd388873c66d8115b605f91b7bde4fff',
+     x86_64: 'bb20f18817aab59c828bdc88da1e630ce8f2fc9f796db974309be077501f3009'
   })
 
   depends_on 'gcc_lib' => :executable
