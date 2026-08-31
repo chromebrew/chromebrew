@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Aide < Autotools
   description 'Advanced Intrusion Detection Environment'
   homepage 'https://aide.github.io'
-  version '0.19.3'
+  version '0.19.4'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/aide/aide.git'
