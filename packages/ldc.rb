@@ -3,12 +3,12 @@ require 'package'
 class Ldc < Package
   description 'D language compiler using LLVM.'
   homepage 'https://github.com/ldc-developers/ldc'
-  version '1.42.0'
+  version '1.43.0'
   license 'BSD-3, Boost-1.0, MIT, NCSA and Artistic-1.0 or GPL-2+'
   compatibility 'x86_64'
   min_glibc '2.29'
   source_url "https://github.com/ldc-developers/ldc/releases/download/v#{version}/ldc2-#{version}-linux-x86_64.tar.xz"
-  source_sha256 'a7bc9c956138f558cadf9c962352f59d41c80df6eb3ae3f8039f25be14a69303'
+  source_sha256 '35805db60f47fd1a162b2035da84d96beec37e6d1e7b1edf60498a90acfaedce'
 
   depends_on 'curl'
   depends_on 'ncurses'
