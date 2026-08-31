@@ -20,6 +20,7 @@ class Aide < Autotools
   depends_on 'autoconf_archive' => :build
   depends_on 'check' => :build
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'libgcrypt'
   depends_on 'mhash'
   depends_on 'nettle' => :executable
