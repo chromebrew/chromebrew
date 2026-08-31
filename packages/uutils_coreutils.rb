@@ -14,9 +14,9 @@ class Uutils_coreutils < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '02f7862d6858b9f56c92db6a533674e38e12d5c63479dc559d2167df3bc5246a',
-     armv7l: '02f7862d6858b9f56c92db6a533674e38e12d5c63479dc559d2167df3bc5246a',
-     x86_64: '1cd5861af3f8ce1f32caa4585eb7349f636e385ff18de2da2d57b9670f775c80'
+    aarch64: 'fb4281097d363c3ac163a525fd40a9fcd7846cf7459268b5db6ad9358769515d',
+     armv7l: 'fb4281097d363c3ac163a525fd40a9fcd7846cf7459268b5db6ad9358769515d',
+     x86_64: '2a0d204872cd72d4255f24ca766a33b6d9836fa782b42e91f1ec5e254daec514'
   })
 
   depends_on 'acl' => :build
