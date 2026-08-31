@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Aide < Autotools
   description 'Advanced Intrusion Detection Environment'
   homepage 'https://aide.github.io'
-  version '0.19.3'
+  version '0.19.4'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/aide/aide.git'
@@ -11,20 +11,23 @@ class Aide < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1644325e839bf383b1dc080a7759cb9f9c38f85ca80a89e0bfc526180aa0cee3',
-     armv7l: '1644325e839bf383b1dc080a7759cb9f9c38f85ca80a89e0bfc526180aa0cee3',
-       i686: '1bad6d94ccfe0fad495d35a3035f46b4b31f462bf82e999a9f6d9428a509a9e7',
-     x86_64: 'fdbdbf8341767db4ed116cdadcc519bf410938ddc7d41dfdac42b8508c0bb0a0'
+    aarch64: '4194c37b56379b5b4508bc62427cc34255bd7110c117078c60705f494a870dfa',
+     armv7l: '4194c37b56379b5b4508bc62427cc34255bd7110c117078c60705f494a870dfa',
+       i686: '80a8d2809ba29ee8f3f296e214236da765faa15c319e8518ef73aeff76286a5a',
+     x86_64: 'e8a8da4e20f77582a7cd5072371f95a40afd8c1ed4d7f62c59519034c6ba0f45'
   })
 
   depends_on 'autoconf_archive' => :build
   depends_on 'check' => :build
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'libgcrypt'
   depends_on 'mhash'
-  depends_on 'nettle' # R
+  depends_on 'nettle' => :executable
   depends_on 'pcre2'
+  depends_on 'pcre2' => :executable
   depends_on 'zlib'
+  depends_on 'zlib' => :executable
 
   def self.patch
     # Aide requires some macros that do not exist in older kernel's headers. (for example, BPF_FS_MAGIC)
