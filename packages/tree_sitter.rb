@@ -6,7 +6,7 @@ require 'package'
 class Tree_sitter < Package
   description 'An incremental parsing system for programming tools'
   homepage 'https://github.com/tree-sitter/tree-sitter'
-  version '0.26.13'
+  version '0.27.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/tree-sitter/tree-sitter.git'
