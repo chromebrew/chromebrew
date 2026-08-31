@@ -14,10 +14,10 @@ class Fuse_overlayfs < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2ce5dfbea26f897d4501a9e9c521b54024c86b8298f693fb90fa11993e73dc2c',
-     armv7l: '2ce5dfbea26f897d4501a9e9c521b54024c86b8298f693fb90fa11993e73dc2c',
-       i686: '4be4f595c07ad9d5d8e9258482472acc5e44d91df033c4b856f5d8947c8248e7',
-     x86_64: '3c4b8501e7ea560cba2a024c45557b7cdc0f38e1a45e2a8a0c69c9f296e2326e'
+    aarch64: '9501b7c97ab5a6b1ba3a3ab77b5769612abf0a86cd6084ed044d32cf549ef6be',
+     armv7l: '9501b7c97ab5a6b1ba3a3ab77b5769612abf0a86cd6084ed044d32cf549ef6be',
+       i686: '4779842db8d27feb6de91c1988559adc34121594035ac2c3d9f9441403247f4c',
+     x86_64: 'daac13981970ce9f091209f7d9d6a01783f4aa7198f6980f22fd7df62e077c4f'
   })
 
   depends_on 'fuse3' => :executable
