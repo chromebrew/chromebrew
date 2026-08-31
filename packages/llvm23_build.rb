@@ -3,7 +3,7 @@ require 'package'
 class Llvm23_build < Package
   # Note that compiler-rt cannot be removed from @llvm_projects_to_build
   # due to https://github.com/llvm/llvm-project/issues/141329
-  @llvm_projects_to_build = ARCH == 'x86_64' ? 'bolt;clang;clang-tools-extra;lld;lldb;polly' : 'clang;clang-tools-extra;lld;lldb;polly'
+  @llvm_projects_to_build = ARCH == 'x86_64' ? 'bolt;clang;clang-tools-extra;lld;lldb;compiler-rt;polly' : 'clang;clang-tools-extra;lld;lldb;compiler-rt;polly'
   description "The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The packages included are: #{@llvm_projects_to_build.gsub(';', ' ')}"
   homepage 'https://llvm.org/'
   version '23.1.0'
@@ -28,7 +28,8 @@ class Llvm23_build < Package
   depends_on 'libedit' => :library
   depends_on 'libffi' => :library
   depends_on 'libxml2' => :library
-  depends_on 'llvm23_stage1_build' => :build
+  depends_on 'llvm_dev' => :build
+  depends_on 'nodebrew' => :build # Needed by tree_sitter.
   depends_on 'ocaml' => :build
   depends_on 'py3_pygments' => :build
   depends_on 'py3_pyyaml' => :build
@@ -60,7 +61,7 @@ class Llvm23_build < Package
     system 'patch -Np1 -i llvm_crew_lib_prefix.patch'
     patches = [
       # Fix for i686 needing -atomic. See https://github.com/llvm/llvm-project/issues/45130
-      ['https://salsa.debian.org/pkg-llvm-team/llvm-toolchain/-/raw/23/debian/patches/clangd-atomic-cmake.patch?ref_type=heads&inline=false', 'a9f5b314938007573101700a4180c918814b10715dfa964523a07ed5f0530295']
+      ['https://salsa.debian.org/pkg-llvm-team/llvm-toolchain/-/raw/23/debian/patches/clangd-atomic-cmake.patch?ref_type=heads&inline=false', '423847f4e448361cae1d86a2ab62e47b3cd31b76a065294ff9b2e5a689ec9cbd']
     ]
     ConvenienceFunctions.patch(patches)
   end
@@ -130,16 +131,7 @@ class Llvm23_build < Package
         gnuc_lib=#{CREW_LIB_PREFIX}/gcc/${machine}/${version}
         clang++ -fPIC -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem ${cxx_sys} -I ${cxx_inc} -B ${gnuc_lib} -L ${gnuc_lib} "$@"
       CLCPLUSPLUS_EOF
-
-      libclc_runtime_targets = ARCH == 'i686' ? [] : %w[amdgcn-amd-amdhsa-llvm nvptx64-- nvptx64--nvidiacl nvptx64-nvidia-cuda]
-      llvm_runtime_targets = ARCH == 'i686' ? '' : ";libclc;#{libclc_runtime_targets.join(';')}"
-      libclc_runtimes = ARCH == 'i686' ? '' : libclc_runtime_targets.map { "-DRUNTIMES_#{it}_LLVM_ENABLE_RUNTIMES=libclc" }.join(' ')
-
       system "cmake -B builddir -G Ninja llvm \
-            -DLLVM_RUNTIME_TARGETS='default;compiler-rt#{llvm_runtime_targets}' \
-            #{libclc_runtimes} \
-            -DLLVM_NATIVE_TOOL_DIR=#{CREW_PREFIX}/bin \
-            -DLLVM_HOST_TRIPLE=#{CREW_TARGET} \
             -DCLANG_DEFAULT_LINKER=mold \
             -DCMAKE_ASM_COMPILER_TARGET=#{CREW_TARGET} \
             -DCMAKE_BUILD_TYPE=Release \
@@ -154,6 +146,10 @@ class Llvm23_build < Package
             -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
             -DCMAKE_LIBRARY_PATH='#{CREW_GLIBC_INTERPRETER.nil? ? CREW_LIB_PREFIX : "#{CREW_GLIBC_PREFIX};#{CREW_LIB_PREFIX}"}' \
             -D_CMAKE_TOOLCHAIN_PREFIX=llvm- \
+            -DCOMPILER_RT_BUILD_BUILTINS=ON \
+            -DCOMPILER_RT_BUILD_LIBFUZZER=OFF \
+            -DCOMPILER_RT_BUILD_SANITIZERS=OFF \
+            -DCOMPILER_RT_DEFAULT_TARGET_ONLY=ON \
             -DLLDB_INCLUDE_TESTS=OFF \
             -DLLVM_BINUTILS_INCDIR='#{CREW_PREFIX}/include' \
             -DLLVM_BUILD_LLVM_DYLIB=ON \
