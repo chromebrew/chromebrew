@@ -3,12 +3,12 @@ require 'package'
 class Smplayer < Package
   description 'SMPlayer is a free media player for Windows and Linux with built-in codecs that can play virtually all video and audio formats.'
   homepage 'https://www.smplayer.info/'
-  version '25.6.0'
+  version '26.8.29'
   license 'GPL-2'
   compatibility 'x86_64'
   min_glibc '2.30'
   source_url "https://github.com/smplayer-dev/smplayer/releases/download/v#{version}/SMPlayer-#{version}-x86_64.AppImage"
-  source_sha256 '04b891f013e42c1f92620acf5be57556ac37b973a3aab53489aff58231679794'
+  source_sha256 'a9dd04934018bbe0886797fcc8cca5189dbad0ec793b989c6bb0728a29ad903c'
 
   no_compile_needed
 
