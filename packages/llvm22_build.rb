@@ -37,6 +37,7 @@ class Llvm22_build < Package
   depends_on 'zstd' => :library
 
   conflicts_ok
+  ignore_updater
   no_env_options
 
   def self.patch
