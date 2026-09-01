@@ -1,4 +1,4 @@
-# Total size: 98013093
+# Total size: 98060423
 /usr/local/share/glib-2.0/schemas/99_Yaru.gschema.override
 /usr/local/share/gnome-shell/extensions/ubuntu-dock@ubuntu.com/yaru.css
 /usr/local/share/gnome-shell/modes/yaru.json
@@ -35938,9 +35938,6 @@
 /usr/local/share/icons/Yaru/scalable/actions/action-unavailable-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/actions/add-reminder-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/actions/address-book-new-symbolic.svg
-/usr/local/share/icons/Yaru/scalable/actions/adw-adaptive-preview-symbolic.svg
-/usr/local/share/icons/Yaru/scalable/actions/adw-entry-apply-symbolic.svg
-/usr/local/share/icons/Yaru/scalable/actions/adw-mail-send-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/actions/annotations-squiggly-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/actions/annotations-text-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/actions/application-exit-rtl-symbolic.svg
@@ -36733,7 +36730,6 @@
 /usr/local/share/icons/Yaru/scalable/emblems/adaptive-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/emblems/advertising-none-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/emblems/advertising-symbolic.svg
-/usr/local/share/icons/Yaru/scalable/emblems/adw-external-link-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/emblems/alcohol-use-none-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/emblems/alcohol-use-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/emblems/app-installed-symbolic.svg
@@ -36846,6 +36842,25 @@
 /usr/local/share/icons/Yaru/scalable/legacy/battery-good-charging-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/legacy/battery-good-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/legacy/battery-low-charging-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/libadwaita/adw-adaptive-preview-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/libadwaita/adw-application-exit-rtl-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/libadwaita/adw-application-exit-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/libadwaita/adw-avatar-default.svg
+/usr/local/share/icons/Yaru/scalable/libadwaita/adw-entry-apply-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/libadwaita/adw-entry-edit-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/libadwaita/adw-expander-arrow-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/libadwaita/adw-external-link-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/libadwaita/adw-mail-send-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/libadwaita/adw-rotate-acw-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/libadwaita/adw-rotate-cw-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/libadwaita/adw-screenshot-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/libadwaita/adw-sidebar-rtl-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/libadwaita/adw-sidebar-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/libadwaita/adw-tab-counter-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/libadwaita/adw-tab-icon-missing-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/libadwaita/adw-tab-new-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/libadwaita/adw-tab-overflow-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/libadwaita/adw-tab-unpin-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/mimetypes/application-certificate-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/mimetypes/application-rss+xml-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/mimetypes/application-vnd.snap-symbolic.svg
@@ -36967,10 +36982,7 @@
 /usr/local/share/icons/Yaru/scalable/places/user-desktop-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/places/user-home-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/places/user-trash-symbolic.svg
-/usr/local/share/icons/Yaru/scalable/status/adw-tab-counter-symbolic.svg
-/usr/local/share/icons/Yaru/scalable/status/adw-tab-icon-missing-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/adw-tab-overflow-symbolic.svg
-/usr/local/share/icons/Yaru/scalable/status/adw-tab-unpin-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/airplane-mode-disabled-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/airplane-mode-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/app-beta-software-symbolic.svg
@@ -37045,6 +37057,7 @@
 /usr/local/share/icons/Yaru/scalable/status/call-outgoing-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/camera-disabled-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/camera-hardware-disabled-symbolic.svg
+/usr/local/share/icons/Yaru/scalable/status/caps-lock-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/changes-allow-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/changes-prevent-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/status/channel-insecure-symbolic.svg
@@ -37310,7 +37323,6 @@
 /usr/local/share/icons/Yaru/scalable/time/week-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/time/year-alt-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/time/year-symbolic.svg
-/usr/local/share/icons/Yaru/scalable/ui/adw-expander-arrow-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/ui/check-outlined-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/ui/checkbox-checked-symbolic.svg
 /usr/local/share/icons/Yaru/scalable/ui/checkbox-mixed-symbolic.svg
@@ -37712,4 +37724,3 @@
 /usr/local/share/themes/Yaru/unity/unmaximize_unfocused_prelight.svg
 /usr/local/share/themes/Yaru/unity/unmaximize_unfocused_pressed.svg
 /usr/local/share/wayland-sessions/Yaru.desktop
-/usr/local/share/xsessions/Yaru-xorg.desktop
