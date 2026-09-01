@@ -11,14 +11,14 @@ class Libnftnl < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '69fbc6d3e87b6ab94d075fa96f90fce53e82912f6aef5548879d7f758b172f77',
-     armv7l: '69fbc6d3e87b6ab94d075fa96f90fce53e82912f6aef5548879d7f758b172f77',
-       i686: '37260df5b9c20e694c0a63e817bf01121d8d6a6de536e9dd5e8015f924808717',
-     x86_64: 'b79d2fc5da8360508f1aa0fe9aeb90d9f7655c38efcd16c62c53be3ca7d4cef4'
+    aarch64: 'b75be7f10fd897198a22f968b5c6253d9b462482730713c7bd676bf42139ee48',
+     armv7l: 'b75be7f10fd897198a22f968b5c6253d9b462482730713c7bd676bf42139ee48',
+       i686: '08051784083f4af1062811079dd781b7a8fa4c570a8455d35ce88924dc4d344c',
+     x86_64: '50452dd617f5794ba9bf26405fec3115ff60cf593517a0574e816c50f4fe0f6f'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'libmnl' # R
+  depends_on 'glibc' => :library
+  depends_on 'libmnl' => :library
 
   run_tests
 end
