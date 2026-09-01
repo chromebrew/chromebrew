@@ -3,7 +3,7 @@ require 'package'
 class Lego < Package
   description "Let's Encrypt/ACME client and library written in Go"
   homepage 'https://go-acme.github.io/lego/'
-  version '5.4.0'
+  version '5.4.1'
   license 'MIT'
   compatibility 'all'
   source_url({
@@ -13,10 +13,10 @@ class Lego < Package
      x86_64: "https://github.com/go-acme/lego/releases/download/v#{version}/lego_v#{version}_linux_amd64.tar.gz"
   })
   source_sha256({
-    aarch64: '3e0c223591fe79d0085bd45a7859125d2881b77b517a0c1c36cde14b0d41bad9',
-     armv7l: '3e0c223591fe79d0085bd45a7859125d2881b77b517a0c1c36cde14b0d41bad9',
-       i686: 'fae7fc81ead9a38eabdd8a3c7fcbf9c7a62d23029e9df3d628b27f901cf6eb20',
-     x86_64: 'd3adf89392d606ce84d485c1cc20832edd42ace6ff9ced9dd3670d9d8b8aca38'
+    aarch64: '67e06c5f19f87e1f282362f513eff08ea2e3665c53722b3aefa47b4a55e6f1f3',
+     armv7l: '67e06c5f19f87e1f282362f513eff08ea2e3665c53722b3aefa47b4a55e6f1f3',
+       i686: 'd08032666a51a851cccaa7097e2aed43158e3d48cae342eb318eb1d2c2bc0f09',
+     x86_64: 'ebb33f1bead5a7c99dd46f1c5734b44cf1eab5b5c12faf397cd14d50a5916419'
   })
 
   no_compile_needed
