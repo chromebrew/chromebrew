@@ -11,10 +11,10 @@ class Squid < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '11d80c1fadffaebd5566e0c06016e4d8339eda1a8ec892faa9e98f5c2d2f58e0',
-     armv7l: '11d80c1fadffaebd5566e0c06016e4d8339eda1a8ec892faa9e98f5c2d2f58e0',
-       i686: 'c5d5b0c40bfb7aa5c2fae55763591fb8049aa598853fd388603e325307bb17dc',
-     x86_64: '7746a33a08bb292dc9971460ad5da1ef3568c527558bd806d17d27d6d1c268e5'
+    aarch64: '40a5b8877f817e5e5ca6b0dc26c0ec8a4f6971121098a0a8872f86e08c69a9f7',
+     armv7l: '40a5b8877f817e5e5ca6b0dc26c0ec8a4f6971121098a0a8872f86e08c69a9f7',
+       i686: '210373f7ec594a153083f529f38278d416377d5d45d164c50344354dca8d36fc',
+     x86_64: '2e95844190fe9195270ce6f6d548e8165fe89e174d3ccfa6a0b756396ef05e0f'
   })
 
   depends_on 'brotli' => :executable
