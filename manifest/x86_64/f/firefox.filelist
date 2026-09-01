@@ -1,4 +1,4 @@
-# Total size: 329374769
+# Total size: 330563090
 /usr/local/bin/firefox
 /usr/local/share/applications/firefox.desktop
 /usr/local/share/firefox/application.ini
@@ -20,7 +20,7 @@
 /usr/local/share/firefox/firefox_desktop
 /usr/local/share/firefox/firefox_sh
 /usr/local/share/firefox/fonts/TwemojiMozilla.ttf
-/usr/local/share/firefox/glxtest
+/usr/local/share/firefox/gfxtest
 /usr/local/share/firefox/gmp-clearkey/0.1/libclearkey.so
 /usr/local/share/firefox/gmp-clearkey/0.1/libclearkey.so.sig
 /usr/local/share/firefox/gmp-clearkey/0.1/manifest.json
@@ -54,8 +54,6 @@
 /usr/local/share/firefox/update-settings.ini
 /usr/local/share/firefox/updater
 /usr/local/share/firefox/updater.ini
-/usr/local/share/firefox/vaapitest
-/usr/local/share/firefox/vulkantest
 /usr/local/share/icons/hicolor/128x128/apps/firefox.png
 /usr/local/share/icons/hicolor/16x16/apps/firefox.png
 /usr/local/share/icons/hicolor/32x32/apps/firefox.png
