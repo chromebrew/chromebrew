@@ -34,8 +34,9 @@ class Llvm18_build < Package
   depends_on 'zlib' # R
   depends_on 'zstd' # R
 
-  no_env_options
   conflicts_ok
+  ignore_updater
+  no_env_options
 
   case ARCH
   when 'aarch64', 'armv7l'
