@@ -6,26 +6,40 @@ class Plplot < CMake
   version '5.15.0'
   license 'LGPL-2'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://downloads.sourceforge.net/project/plplot/plplot/5.15.0%20Source/plplot-5.15.0.tar.gz'
+  source_url "https://downloads.sourceforge.net/project/plplot/plplot/#{version}%20Source/plplot-#{version}.tar.gz"
   source_sha256 'b92de4d8f626a9b20c84fc94f4f6a9976edd76e33fb1eae44f6804bdcc628c7b'
-  binary_compression 'tar.xz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '13f6b739b87349e98ec82b542d0bce70b982f76b7e72ede1ff22d8f020bc05d3',
-     armv7l: '13f6b739b87349e98ec82b542d0bce70b982f76b7e72ede1ff22d8f020bc05d3',
-     x86_64: '6aa2d9509f13283391d604ae0e3d9ff501f0ccf3a527ac0fe6e584d20d2f30a0'
+    aarch64: '69626cb9ef9687ce1c385774c29b5c1b7ad2ce870178d2db05db8cbcfc374094',
+     armv7l: '69626cb9ef9687ce1c385774c29b5c1b7ad2ce870178d2db05db8cbcfc374094',
+     x86_64: '2d730562402dad23a0da898caac2dd568ff563b25651cf1ae3bb454ab6f49203'
   })
 
-  depends_on 'libharu'
-  depends_on 'lua'
-  depends_on 'ocaml'
-  depends_on 'openjdk8'
-  depends_on 'pango'
-  depends_on 'qhull'
-  depends_on 'qt5_svg'
-  depends_on 'swig'
-  depends_on 'tk'
-  depends_on 'wxwidgets'
+  depends_on 'cairo' => :library
+  depends_on 'gcc_lib' => :library
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'harfbuzz' => :library
+  depends_on 'libharu' => :library
+  depends_on 'libice' => :library
+  depends_on 'libsm' => :library
+  depends_on 'libx11' => :library
+  depends_on 'libxext' => :library
+  depends_on 'lua' => :library
+  depends_on 'ocaml' => :library
+  depends_on 'pango' => :library
+  depends_on 'qhull' => :library
+  depends_on 'swig' => :library
+  depends_on 'wxwidgets' => :library
 
-  cmake_options '-DBUILD_TEST=ON -DENABLE_DYNDRIVERS=OFF -DUSE_INCRTCL_VERSION_4=ON'
+  no_fhs
+
+  cmake_options '-DBUILD_TEST=ON \
+    -DENABLE_DYNDRIVERS=OFF \
+    -DENABLE_java=OFF \
+    -DENABLE_qt=OFF \
+    -DENABLE_tcl=OFF \
+    -DUSE_INCRTCL_VERSION_4=ON'
 end

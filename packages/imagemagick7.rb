@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Imagemagick7 < Autotools
   description 'Use ImageMagick to create, edit, compose, or convert bitmap images.'
   homepage 'http://www.imagemagick.org/script/index.php'
-  version "7.1.2-1-#{CREW_PERL_VER}"
+  version "7.1.2-30-#{CREW_PERL_VER}"
   license 'imagemagick'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/ImageMagick/ImageMagick.git'
@@ -12,9 +12,9 @@ class Imagemagick7 < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2b95a08e9614868776de108a6fdcc80bbb5323112b463392a1fa4d87e51c1960',
-     armv7l: '2b95a08e9614868776de108a6fdcc80bbb5323112b463392a1fa4d87e51c1960',
-     x86_64: 'b0644aa0cb3a9dd5ce38d9a530fdaa8e02bd2954e1794fc90ae1550a115bc6af'
+    aarch64: '78f1a7e62f13ec432fb749d61d5e201dbe51b010b1a9489d86b2ef95526e1b00',
+     armv7l: '78f1a7e62f13ec432fb749d61d5e201dbe51b010b1a9489d86b2ef95526e1b00',
+     x86_64: 'dd6e5b864f39391be563aed38c3e54382655c570a898fec76dcf84b451dc0d78'
   })
 
   depends_on 'bzip2' # R
@@ -62,12 +62,12 @@ class Imagemagick7 < Autotools
   depends_on 'zlib' # R
   depends_on 'zstd' # R
 
-  no_upstream_update
+  conflicts_with 'graphicsmagick'
 
   def self.prebuild
     ConvenienceFunctions.libtoolize('jbig', 'jbigkit')
     ConvenienceFunctions.libtoolize('libpng')
-    ConvenienceFunctions.libtoolize('libuuid')
+    ConvenienceFunctions.libtoolize('libuuid', 'util_linux')
   end
 
   def self.preinstall

@@ -11,9 +11,9 @@ class Weston < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3eb93c532deb75a6e7da6d718236b11740a11c08657859992ae0ee478c5801dd',
-     armv7l: '3eb93c532deb75a6e7da6d718236b11740a11c08657859992ae0ee478c5801dd',
-     x86_64: 'aaea9621beca27920258a7eb2bb325a8c5e84898ca6fc7982e9bcfed48e0dc06'
+    aarch64: '0bb0d207e3b05a3c40a5e1293fb8e7e7458ec54eb9d823db1e06b72ae06d54fd',
+     armv7l: '0bb0d207e3b05a3c40a5e1293fb8e7e7458ec54eb9d823db1e06b72ae06d54fd',
+     x86_64: '12536e09b6714e40b31c70866d418a2dbcd86857607362c0113524e3190ddc9e'
   })
 
   depends_on 'cairo' => :library

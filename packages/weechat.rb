@@ -11,16 +11,15 @@ class Weechat < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '80467b49de29172dbefc391ebb7d5c38aab3b93e1dad48d33ced8affa479da98',
-     armv7l: '80467b49de29172dbefc391ebb7d5c38aab3b93e1dad48d33ced8affa479da98',
-       i686: 'a433ba966c9177d0893a37bc2e80bd85e4e6d0ca138ff1a82cf2eb9efdf88fb6',
-     x86_64: 'ff11d821f64e29f738da78aba27f3a0d4850f9b5fc6c1c76d5ec150e5281e34b'
+    aarch64: 'c0997ee6732ae097bc11b2027b4f886ed9ac20892e01ffced19885e28352fe4b',
+     armv7l: 'c0997ee6732ae097bc11b2027b4f886ed9ac20892e01ffced19885e28352fe4b',
+       i686: '280dc20f483dfdded0ef0ba18075f2f01d7c36f09cd9a770b9bf2ac951b8deef',
+     x86_64: '41c3c629dc85d18b3886b6d387c0384ebd630b6a78e061123d5b9758f5b8d6a5'
   })
 
   depends_on 'aspell' => :library
   depends_on 'bdwgc' => :library
   depends_on 'cjson' => :library
-  depends_on 'curl'
   depends_on 'curl' => :executable
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
@@ -30,7 +29,6 @@ class Weechat < CMake
   depends_on 'libiconv' => :library
   depends_on 'libxcrypt' => :library
   depends_on 'lua' => :library
-  depends_on 'ncurses'
   depends_on 'ncurses' => :executable
   depends_on 'perl' => :library
   depends_on 'python3' => :library

@@ -12,8 +12,8 @@ class Gvim < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f3285509446d19f37d9f937e1ab384aef9150458faf6770e7167f504f71816e7',
-     armv7l: 'f3285509446d19f37d9f937e1ab384aef9150458faf6770e7167f504f71816e7',
+    aarch64: '807a3e080e3cc82296e7de0355d3809c3e25edfe8a51fd556b82660c4dac9f6c',
+     armv7l: '807a3e080e3cc82296e7de0355d3809c3e25edfe8a51fd556b82660c4dac9f6c',
      x86_64: '2310ef469322ee94716e2eefb4b98b4029e3252e87535a3ee4d22f416ce2a6fc'
   })
 
@@ -24,6 +24,7 @@ class Gvim < Autotools
   depends_on 'gdk_pixbuf' => :executable
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :executable
   depends_on 'gpm' => :executable
   depends_on 'gtk3' => :executable
   depends_on 'harfbuzz' => :executable
