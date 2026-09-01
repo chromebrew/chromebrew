@@ -1,4 +1,4 @@
-# Total size: 10750743
+# Total size: 10937766
 /usr/local/bin/pcre2-config
 /usr/local/bin/pcre2grep
 /usr/local/include/pcre2.h
@@ -10,19 +10,19 @@
 /usr/local/lib/libpcre2-16.a
 /usr/local/lib/libpcre2-16.so
 /usr/local/lib/libpcre2-16.so.0
-/usr/local/lib/libpcre2-16.so.0.15.0
+/usr/local/lib/libpcre2-16.so.0.16.0
 /usr/local/lib/libpcre2-32.a
 /usr/local/lib/libpcre2-32.so
 /usr/local/lib/libpcre2-32.so.0
-/usr/local/lib/libpcre2-32.so.0.15.0
+/usr/local/lib/libpcre2-32.so.0.16.0
 /usr/local/lib/libpcre2-8.a
 /usr/local/lib/libpcre2-8.so
 /usr/local/lib/libpcre2-8.so.0
-/usr/local/lib/libpcre2-8.so.0.15.0
+/usr/local/lib/libpcre2-8.so.0.16.0
 /usr/local/lib/libpcre2-posix.a
 /usr/local/lib/libpcre2-posix.so
 /usr/local/lib/libpcre2-posix.so.3
-/usr/local/lib/libpcre2-posix.so.3.0.7
+/usr/local/lib/libpcre2-posix.so.3.0.8
 /usr/local/lib/pkgconfig/libpcre2-16.pc
 /usr/local/lib/pkgconfig/libpcre2-32.pc
 /usr/local/lib/pkgconfig/libpcre2-8.pc
@@ -34,6 +34,7 @@
 /usr/local/share/doc/pcre2/NEWS
 /usr/local/share/doc/pcre2/README
 /usr/local/share/doc/pcre2/SECURITY.md
+/usr/local/share/doc/pcre2/SUPPORT-LIFECYCLE.md
 /usr/local/share/doc/pcre2/html/NON-AUTOTOOLS-BUILD.txt
 /usr/local/share/doc/pcre2/html/README.txt
 /usr/local/share/doc/pcre2/html/index.html
