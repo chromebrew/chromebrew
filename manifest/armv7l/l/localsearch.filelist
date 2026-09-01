@@ -1,4 +1,4 @@
-# Total size: 2506762
+# Total size: 2526180
 /usr/local/bin/localsearch
 /usr/local/etc/xdg/autostart/localsearch-3.desktop
 /usr/local/lib/localsearch-3.0/extract-modules/libextract-abw.so
@@ -86,6 +86,7 @@
 /usr/local/share/locale/kab/LC_MESSAGES/localsearch3.mo
 /usr/local/share/locale/kk/LC_MESSAGES/localsearch3.mo
 /usr/local/share/locale/ko/LC_MESSAGES/localsearch3.mo
+/usr/local/share/locale/lo/LC_MESSAGES/localsearch3.mo
 /usr/local/share/locale/lt/LC_MESSAGES/localsearch3.mo
 /usr/local/share/locale/lv/LC_MESSAGES/localsearch3.mo
 /usr/local/share/locale/mk/LC_MESSAGES/localsearch3.mo

@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Localsearch < Meson
   description 'Collection of data extractors for Tracker/Nepomuk'
   homepage 'https://gitlab.gnome.org/GNOME/localsearch'
-  version "3.11.1-#{CREW_ICU_VER}"
+  version "3.11.2-#{CREW_ICU_VER}"
   license 'GPLv2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/localsearch.git'
@@ -11,9 +11,9 @@ class Localsearch < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6a5bfc891e809074144bbb664612b3c9b22e087388c395bfae8511c1a7aab9e5',
-     armv7l: '6a5bfc891e809074144bbb664612b3c9b22e087388c395bfae8511c1a7aab9e5',
-     x86_64: '28d81f81aebccef109a469db9894676d2e1f7425dc0a85beebf12fd75561479d'
+    aarch64: '30ccd1589a8640b4ef20312334960e52347afe552e13da8db699524ab78d66f1',
+     armv7l: '30ccd1589a8640b4ef20312334960e52347afe552e13da8db699524ab78d66f1',
+     x86_64: '3899362ecd1c2c3a9a55cea1689e659643c362a841e7f1a64cbed7318f531a5d'
   })
 
   depends_on 'exempi' => :library
@@ -23,6 +23,7 @@ class Localsearch < Meson
   depends_on 'giflib' => :library
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gobject_introspection' => :build
   depends_on 'gstreamer' => :library
   depends_on 'icu4c' => :library
