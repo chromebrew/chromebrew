@@ -65,6 +65,7 @@ class Graphicsmagick < Autotools
   depends_on 'zlib' => :library
   depends_on 'zstd' => :library
 
+  conflicts_with 'imagemagick7'
   no_env_options
   no_update_deps
 

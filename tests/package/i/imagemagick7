@@ -1,0 +1,16 @@
+#!/bin/bash
+Magick++-config --version 2>&1
+MagickCore-config --version 2>&1
+MagickWand-config --version 2>&1
+animate --version 2>&1
+compare --version 2>&1
+composite --version 2>&1
+convert --version 2>&1
+display --version 2>&1
+identify --version 2>&1
+import --version 2>&1
+magick --version 2>&1
+magick-script --version 2>&1
+mogrify --version 2>&1
+montage --version 2>&1
+stream --version 2>&1
