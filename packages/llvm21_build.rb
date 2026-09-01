@@ -33,6 +33,7 @@ class Llvm21_build < Package
   depends_on 'zstd' # R
 
   conflicts_ok
+  ignore_updater
   no_env_options
 
   case ARCH
