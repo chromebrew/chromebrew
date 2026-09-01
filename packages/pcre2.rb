@@ -19,6 +19,7 @@ class Pcre2 < CMake
 
   depends_on 'bzip2' => :executable
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'zlib' => :executable
 
   cmake_options '-DPCRE2_BUILD_TESTS=OFF \
