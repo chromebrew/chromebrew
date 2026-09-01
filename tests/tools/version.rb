@@ -35,13 +35,6 @@ class VersionMonitorTest < Minitest::Test
     assert_nil(sourceforge_fallback(URI.parse('https://downloads.sourceforge.net/project/99notreal/99notreal.odz')))
   end
 
-  def test_pagure_fallback
-    # This repo has been archived for 7 years, so hopefully there won't be any new releases.
-    assert_equal('18.0.0-5', pagure_fallback(URI.parse('https://pagure.io/release-notes')))
-    assert_nil(pagure_fallback(URI.parse('https://pagure.io/test')))
-    assert_nil(pagure_fallback(URI.parse('https://pagure.io/99notreal')))
-  end
-
   def test_get_simple_anitya_id
     assert_equal(15222, get_anitya_id('audaspace', 'https://github.com/audaspace/audaspace', 'CMake'))
   end

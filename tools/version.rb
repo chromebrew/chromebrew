@@ -180,8 +180,6 @@ def get_version(name, homepage, source)
       gitlab_fallback(url)
     when 'downloads.sourceforge.net'
       sourceforge_fallback(url)
-    when 'pagure.io'
-      pagure_fallback(url)
     end
   end
 end
