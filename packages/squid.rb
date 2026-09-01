@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Squid < Autotools
   description 'Squid Web Proxy Cache'
   homepage 'https://www.squid-cache.org/'
-  version '7.6'
+  version '7.7'
   license 'GPL-2.0'
   compatibility 'all'
   source_url 'https://github.com/squid-cache/squid.git'
