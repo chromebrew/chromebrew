@@ -18,6 +18,7 @@ class Libnftnl < Autotools
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'libmnl' => :library
 
   run_tests
