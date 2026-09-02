@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_streamlit < Pip
   description 'A faster way to build and share data apps'
   homepage 'https://streamlit.io/'
-  version "1.62.0-#{CREW_PY_VER}"
+  version "1.63.0-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'
