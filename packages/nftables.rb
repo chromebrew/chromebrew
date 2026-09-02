@@ -14,18 +14,19 @@ class Nftables < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2470463856096c2d2d477bbc5f08e70784d7d8a02c172df73fcb255f348c89d4',
-     armv7l: '2470463856096c2d2d477bbc5f08e70784d7d8a02c172df73fcb255f348c89d4',
-     x86_64: 'a20f5b03c0ce6a54d4183546b90cffcad22bbd59638dbb2b732b28f4726f4dd2'
+    aarch64: 'c82ab77c7f8a9b3ed78b6881bcd65ddd01bbc563551392808fbc5ee9f0a14f77',
+     armv7l: 'c82ab77c7f8a9b3ed78b6881bcd65ddd01bbc563551392808fbc5ee9f0a14f77',
+     x86_64: '7ab0fe2025bc93ed62792c9b3b168726f94b029a072f98d8d72ddbabeac20465'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'jansson' # R
-  depends_on 'libmnl' # R
-  depends_on 'libnftnl' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'jansson' => :library
+  depends_on 'libmnl' => :library
+  depends_on 'libnftnl' => :library
   depends_on 'libxslt' => :build
   depends_on 'py3_asciidoc' => :build
-  depends_on 'readline' # R
+  depends_on 'readline' => :library
 
   autotools_configure_options "--sysconfdir=#{CREW_PREFIX}/etc \
     --with-json \
