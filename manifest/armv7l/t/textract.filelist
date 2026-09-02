@@ -1,11 +1,11 @@
-# Total size: 123785
+# Total size: 173186
 /usr/local/bin/textract
-/usr/local/lib/python3.14/site-packages/textract-2.0.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/textract-2.0.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/textract-2.0.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/textract-2.0.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/textract-2.0.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/textract-2.0.0.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/textract-2.1.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/textract-2.1.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/textract-2.1.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/textract-2.1.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/textract-2.1.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/textract-2.1.0.dist-info/entry_points.txt
 /usr/local/lib/python3.14/site-packages/textract/__init__.py
 /usr/local/lib/python3.14/site-packages/textract/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/textract/__pycache__/cli.cpython-314.pyc
@@ -33,6 +33,7 @@
 /usr/local/lib/python3.14/site-packages/textract/parsers/__pycache__/json_parser.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/textract/parsers/__pycache__/mp3_parser.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/textract/parsers/__pycache__/msg_parser.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/textract/parsers/__pycache__/ods_parser.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/textract/parsers/__pycache__/odt_parser.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/textract/parsers/__pycache__/ogg_parser.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/textract/parsers/__pycache__/pdf_parser.cpython-314.pyc
@@ -61,6 +62,7 @@
 /usr/local/lib/python3.14/site-packages/textract/parsers/json_parser.py
 /usr/local/lib/python3.14/site-packages/textract/parsers/mp3_parser.py
 /usr/local/lib/python3.14/site-packages/textract/parsers/msg_parser.py
+/usr/local/lib/python3.14/site-packages/textract/parsers/ods_parser.py
 /usr/local/lib/python3.14/site-packages/textract/parsers/odt_parser.py
 /usr/local/lib/python3.14/site-packages/textract/parsers/ogg_parser.py
 /usr/local/lib/python3.14/site-packages/textract/parsers/pdf_parser.py
