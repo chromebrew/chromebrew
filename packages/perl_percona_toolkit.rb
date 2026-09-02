@@ -3,7 +3,7 @@ require 'buildsystems/perl'
 class Perl_percona_toolkit < PERL
   description 'Percona Toolkit is a collection of advanced command-line tools used by Percona support staff to perform a variety of MySQL and system tasks that are too difficult or complex to perform manually.'
   homepage 'https://www.percona.com/percona-toolkit'
-  version '3.7.1'
+  version '3.7.1-4'
   license 'GPL-2'
   compatibility 'x86_64'
   source_url 'https://github.com/percona/percona-toolkit.git'
