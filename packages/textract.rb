@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Textract < Pip
   description 'Textract provides text extracting tools for many formats.'
   homepage 'http://textract.readthedocs.io/'
-  version '2.0.0'
+  version '2.1.0'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'SKIP'
