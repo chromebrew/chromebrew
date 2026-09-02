@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Sysstat < Autotools
   description 'The sysstat utilities are a collection of performance monitoring tools for Linux. These include sar, sadf, mpstat, iostat, tapestat, pidstat, cifsiostat and sa tools.'
   homepage 'https://sysstat.github.io/'
-  version '12.7.9'
+  version '12.8.0'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/sysstat/sysstat.git'
