@@ -18,6 +18,7 @@ class Procps < Autotools
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'ncurses' => :executable
 
   conflicts_ok # Conflicts with uutils_coreutils.
