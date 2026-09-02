@@ -1,4 +1,4 @@
-# Total size: 1675548
+# Total size: 1680910
 /usr/local/bin/cifsiostat
 /usr/local/bin/iostat
 /usr/local/bin/mpstat
@@ -9,11 +9,11 @@
 /usr/local/lib/sa/sa1
 /usr/local/lib/sa/sa2
 /usr/local/lib/sa/sadc
-/usr/local/share/doc/sysstat-12.7.9/CHANGES
-/usr/local/share/doc/sysstat-12.7.9/COPYING
-/usr/local/share/doc/sysstat-12.7.9/CREDITS
-/usr/local/share/doc/sysstat-12.7.9/FAQ.md
-/usr/local/share/doc/sysstat-12.7.9/README.md
+/usr/local/share/doc/sysstat-12.8.0/CHANGES
+/usr/local/share/doc/sysstat-12.8.0/COPYING
+/usr/local/share/doc/sysstat-12.8.0/CREDITS
+/usr/local/share/doc/sysstat-12.8.0/FAQ.md
+/usr/local/share/doc/sysstat-12.8.0/README.md
 /usr/local/share/locale/af/LC_MESSAGES/sysstat.mo
 /usr/local/share/locale/be/LC_MESSAGES/sysstat.mo
 /usr/local/share/locale/cs/LC_MESSAGES/sysstat.mo
