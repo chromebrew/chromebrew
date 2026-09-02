@@ -3,13 +3,15 @@ require 'package'
 class Android_sdk_tools < Package
   description 'Android SDK Command-Line Tools'
   homepage 'https://developer.android.com/studio'
-  version '13114758'
+  version '16111833'
   license 'Apache-2.0'
   compatibility 'x86_64'
   source_url "https://dl.google.com/android/repository/commandlinetools-linux-#{version}_latest.zip"
-  source_sha256 '7ec965280a073311c339e571cd5de778b9975026cfcbe79f2b1cdcb1e15317ee'
+  source_sha256 '0877a1d048fe4a24efe2eff536ca4223f7adeb58648bb81909d33c446918cfa8'
 
   depends_on 'openjdk17'
+
+  no_compile_needed
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
@@ -22,11 +24,6 @@ class Android_sdk_tools < Package
   end
 
   def self.postinstall
-    puts "\nTesting binaries...".yellow
-    Dir["#{CREW_PREFIX}/share/android-sdk-tools/bin/*"].each do |bin|
-      puts "\nTesting #{bin}...".yellow
-      system "#{bin} --help;exit 0"
-    end
     puts "\nThe available tools are listed below:".lightblue
     system "ls #{CREW_PREFIX}/share/android-sdk-tools/bin"
   end
