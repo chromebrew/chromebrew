@@ -1,12 +1,12 @@
-# Total size: 4391800
+# Total size: 4411897
 /usr/local/bin/janet
 /usr/local/include/janet.h
 /usr/local/include/janet/janet.h
-/usr/local/include/janet/janet_1.41.2.h
+/usr/local/include/janet/janet_1.42.0.h
 /usr/local/lib/janet/.keep
 /usr/local/lib/libjanet.a
 /usr/local/lib/libjanet.so
-/usr/local/lib/libjanet.so.1.41
-/usr/local/lib/libjanet.so.1.41.2
+/usr/local/lib/libjanet.so.1.42
+/usr/local/lib/libjanet.so.1.42.0
 /usr/local/lib/pkgconfig/janet.pc
 /usr/local/share/man/man1/janet.1.zst
