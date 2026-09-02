@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# getrealdeps version 2.20 (for Chromebrew)
+# getrealdeps version 2.21 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 #
 # Dependencies in Chromebrew can be:
@@ -56,7 +56,6 @@ end
 
 # Write the missing dependencies to the package file.
 def write_deps(pkg_file, pkgdeps, pkg, label)
-  return if pkgdeps.empty?
   puts "Processing #{label} dependencies for #{pkg.name}...".orange
   suffix = " => :#{label}"
 
@@ -90,23 +89,11 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
     puts "#{pkg.name}: #{exception[:exclusion_regex]} - #{exception[:comments]}..".orange if pkgdeps_length != pkgdeps.length
   end
 
-  puts "\n#{pkg.name.capitalize} has #{'executables with ' if label == 'executable'}#{'libraries with ' if label == 'library'}these #{'build ' if label == 'build'}#{'logical ' if label == 'logical'}dependencies:".lightblue
+  puts "\n#{pkg.name.capitalize} has #{'no ' if pkgdeps.empty?}#{'executables with ' if label == 'executable'}#{'libraries with ' if label == 'library'}#{'these ' unless pkgdeps.empty?}#{'build ' if label == 'build'}#{'logical ' if label == 'logical'}dependencies#{pkgdeps.empty? ? '.' : ':'}".lightblue
   pkgdeps.each do |i|
     puts "  depends_on '#{i}'#{suffix}".lightgreen
   end
   return if pkg.no_update_deps?
-
-  pkg_read = File.read(pkg_file)
-  # Look for runtime dependencies that aren't already provided by the
-  # package, excepting build and logical dependencies, which get
-  # installed anyways.
-  missingpkgdeps = pkgdeps.reject { pkg_read.include?("depends_on '#{it}'#{suffix}") unless pkg_read.include?("depends_on '#{it}' => :build") }
-  missingpkgdeps = missingpkgdeps.reject { pkg_read.include?("depends_on '#{it}'#{suffix}") unless pkg_read.include?("depends_on '#{it}' => :logical") }
-
-  unless missingpkgdeps.empty?
-    puts "\nPackage file #{pkg_file} is missing these dependencies:".orange
-    puts "  depends_on '#{missingpkgdeps.join("#{suffix}\n  depends_on '")}#{suffix}".orange
-  end
 
   # Read the package file into an array of lines without newlines.
   pkg_file_lines = File.readlines(pkg_file)
@@ -114,6 +101,46 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
   # Remove newlines from the end of each line to allow better
   # duplicate removal.
   pkgdepsblock = pkg_file_lines.filter { it.include?("depends_on '") }.map(&:chomp)
+  original_pkgdepsblock = pkgdepsblock.dup
+
+  #   %w[build library logical executable].each do |dep_type|
+  #     instance_variable_set("@existing_deps_#{dep_type}", [])
+  #     pkgdepsblock.each { instance_variable_get("@existing_deps_#{dep_type}").push it.match(/(?<=  depends_on ')(.*)(?=' => :)/)[0] if it.match(/(?<=  depends_on ')*(?<= :)(.*)/)[0] == dep_type }
+  #     puts "Existing #{dep_type} deps:\n".orange
+  #     puts instance_variable_get("@existing_deps_#{dep_type}")
+  #   end
+
+  if pkgdeps.empty?
+    # Note deps of label type if package has no deps of that type.
+    outdated_deps = pkgdepsblock.reject { [it].grep(/#{suffix}/).empty? }
+
+    unless outdated_deps.empty?
+      # Preserve them as build deps so we do not break future builds.
+      preserved_deps = outdated_deps.map { it.match(/(?<=  depends_on ')(.*)(?=' => :)/)[0] }
+
+      # Conservatively remove outdated dependencies, and add them as build dependencies.
+      # Build dependencies may be converted back to library or executable dependencies
+      # in another run of this function.
+      pkgdepsblock.select! { [it].grep(/#{suffix}/).empty? }
+      pkgdepsblock += preserved_deps.map { "  depends_on '#{it}' => :build" }
+    end
+  end
+
+  # Look for runtime dependencies that aren't already provided by the
+  # package, excepting build and logical dependencies, which get
+  # installed anyways.
+  # We want to reject executable deps that already exist as logical or
+  # library deps.
+  missingpkgdeps = if pkgdeps.empty? && label == 'library'
+                     pkgdeps.reject { !pkgdepsblock.grep(/depends_on '#{it}'#{suffix}/).empty? unless !pkgdepsblock.grep(/depends_on '#{it}' => :build/).empty? || !pkgdepsblock.grep(/depends_on '#{it}' => :logical/).empty? || !pkgdepsblock.grep(/depends_on '#{it}' => :library/).empty? }
+                   else
+                     pkgdeps.reject { !pkgdepsblock.grep(/depends_on '#{it}'#{suffix}/).empty? unless !pkgdepsblock.grep(/depends_on '#{it}' => :build/).empty? || !pkgdepsblock.grep(/depends_on '#{it}' => :logical/).empty? || (label == 'executable' && !pkgdepsblock.grep(/depends_on '#{it}' => :library/).empty?) }
+                   end
+
+  unless missingpkgdeps.empty?
+    puts "\nPackage file #{pkg_file} is missing these dependencies:".orange
+    puts "  depends_on '#{missingpkgdeps.join("#{suffix}\n  depends_on '")}#{suffix}".orange
+  end
 
   pkgdepsblock += pkgdeps.map { "  depends_on '#{it}'#{suffix}" }
 
@@ -162,6 +189,8 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
   # to enable them to be sorted with the others.
   # Remove newlines from the block to better remove duplicates.
   pkgdepsblock = pkgdepsblock.sort_by { it.sub('  # ', '  ') }.map(&:chomp).uniq
+
+  return if pkgdepsblock == original_pkgdepsblock
 
   puts "\nAdding to or replacing dependency block in #{pkg_file}..."
 
@@ -267,7 +296,7 @@ def main(pkg)
     return
   end
 
-  puts "Determining #{pkg.name}'s runtime dependencies on #{ARCH}...".lightblue
+  puts "Determining #{pkg.name}'s runtime dependencies on #{ARCH}...".lightpurple
   if pkg.no_update_deps?
     puts "This is advisory only because no_update_deps is set for #{pkg.name}.".lightpurple
     puts "The dependency block for #{pkg.name} will not be replaced.".lightpurple
@@ -321,12 +350,16 @@ def main(pkg)
   pkgfiles = pkgfiles.reject { |i| !File.file?(i.chomp) || File.read(i.chomp, 4) != "\x7FELF" || i.include?('.zst') }
 
   # Try to select all libraries based upon filename and location.
-  library_pkgfiles = pkgfiles.select { |p| p.include?('.so') || p.include?(CREW_LIB_PREFIX) }
+  library_pkgfiles = pkgfiles.select { |p| p.include?('.so') || p.include?("#{CREW_LIB_PREFIX}/") }
   # Assume executable_pkgfiles is everything left.
   executable_pkgfiles = pkgfiles.reject { |p| library_pkgfiles.include?(p) }
 
   # Determine dependencies for each subset of files.
+  puts "Determining library dependencies for #{pkg.name}...".orange
   library_deps = determine_dependencies(pkg.name, library_pkgfiles).compact
+  write_deps(pkg_file, library_deps, pkg, 'library') if library_deps.empty?
+
+  puts "Determining executable dependencies for #{pkg.name}...".orange
   executable_deps = determine_dependencies(pkg.name, executable_pkgfiles).compact
 
   # Add logical deps for perl, pip, python, and ruby gem packages.
