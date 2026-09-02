@@ -3,17 +3,17 @@ require 'buildsystems/cmake'
 class Spirv_headers < CMake
   homepage 'https://github.com/KhronosGroup/SPIRV-Headers'
   description 'SPIR-V Headers'
-  version '1.4.357.0'
+  version '2026.08.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/KhronosGroup/SPIRV-Headers.git'
-  git_hashtag "vulkan-sdk-#{version}"
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '50c9497b34e32d8d9e61e5c28619adb4b1ded51d44c79e11d70e4ff521fe95ef',
-     armv7l: '50c9497b34e32d8d9e61e5c28619adb4b1ded51d44c79e11d70e4ff521fe95ef',
-       i686: '1d19d10a15befb7059bbc4b4a72d4ed71d1d33d8dfdb9d3d3cd2bb5c9a21b43b',
-     x86_64: 'f7fcb48ead5998268225182832978e058ec6f98636d38335f141c6d07e68bb70'
+    aarch64: 'af159ab9eedc60b51d402eb3a1c48368e4f25a48ad127a5b0bafe17fe544af98',
+     armv7l: 'af159ab9eedc60b51d402eb3a1c48368e4f25a48ad127a5b0bafe17fe544af98',
+       i686: '60f6a1b5d86d1acae8f5e2f8edb063d24756d8a52920e8a65624ed5c2687242c',
+     x86_64: '4d33791eb9475ce9c9582e02b155207f8ff6523dae4d6ab136764e82fb26f59f'
   })
 end
