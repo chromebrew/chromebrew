@@ -1,4 +1,4 @@
-# Total size: 133291
+# Total size: 138010
 /usr/local/include/zix-0/zix/allocator.h
 /usr/local/include/zix-0/zix/attributes.h
 /usr/local/include/zix-0/zix/btree.h
@@ -18,5 +18,5 @@
 /usr/local/include/zix-0/zix/zix.h
 /usr/local/lib64/libzix-0.so
 /usr/local/lib64/libzix-0.so.0
-/usr/local/lib64/libzix-0.so.0.8.0
+/usr/local/lib64/libzix-0.so.0.8.2
 /usr/local/lib64/pkgconfig/zix-0.pc
