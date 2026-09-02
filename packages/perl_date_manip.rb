@@ -3,11 +3,11 @@ require 'package'
 class Perl_date_manip < Package
   description 'Date::Manip - Date manipulation routines'
   homepage 'https://metacpan.org/pod/Date::Manip'
-  version "6.99-#{CREW_PERL_VER}"
+  version "7.00-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url "https://cpan.metacpan.org/authors/id/S/SB/SBECK/Date-Manip-#{version.split('-')[0]}.tar.gz"
-  source_sha256 '92383832311f22083f55d03c8dae8f4bcc387cd902624e5ef9ac680f144cbd4c'
+  source_sha256 '37133eeb09d36da6d461546cc216b8f6a2297a43331c680a6848f3fff925975c'
   binary_compression 'tar.zst'
 
   binary_sha256({
