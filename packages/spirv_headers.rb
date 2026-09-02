@@ -7,7 +7,7 @@ class Spirv_headers < CMake
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/KhronosGroup/SPIRV-Headers.git'
-  git_hashtag "vulkan-sdk-#{version}"
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
