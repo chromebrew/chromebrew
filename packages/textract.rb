@@ -10,9 +10,9 @@ class Textract < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ff36c30fa82026d3c7753cdbd7ab2230a64c77fe6e40e185ed7e1ffb43aa0411',
-     armv7l: 'ff36c30fa82026d3c7753cdbd7ab2230a64c77fe6e40e185ed7e1ffb43aa0411',
-     x86_64: 'b0a12650fd86780c09af6908c3c1fb780fe67e9e4c73e6e38522af1dda7b18fa'
+    aarch64: '691ad0ecb93a19cd2657c7ee43f01171a3c2bf11cd385d1eaba36b6b7a9108f1',
+     armv7l: '691ad0ecb93a19cd2657c7ee43f01171a3c2bf11cd385d1eaba36b6b7a9108f1',
+     x86_64: 'c9660d99772e5146aa8ad09ec190cca6cd0842611ca3090f942a536eb71e5db1'
   })
 
   depends_on 'py3_argcomplete' => :library
