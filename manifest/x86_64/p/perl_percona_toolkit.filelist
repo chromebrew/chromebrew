@@ -1,4 +1,4 @@
-# Total size: 8221486
+# Total size: 120476124
 /usr/local/bin/pt-align
 /usr/local/bin/pt-archiver
 /usr/local/bin/pt-config-diff
@@ -10,17 +10,24 @@
 /usr/local/bin/pt-find
 /usr/local/bin/pt-fingerprint
 /usr/local/bin/pt-fk-error-logger
+/usr/local/bin/pt-galera-log-explainer
 /usr/local/bin/pt-heartbeat
 /usr/local/bin/pt-index-usage
 /usr/local/bin/pt-ioprofile
+/usr/local/bin/pt-k8s-debug-collector
 /usr/local/bin/pt-kill
 /usr/local/bin/pt-mext
+/usr/local/bin/pt-mongodb-index-check
+/usr/local/bin/pt-mongodb-query-digest
+/usr/local/bin/pt-mongodb-summary
 /usr/local/bin/pt-mysql-summary
 /usr/local/bin/pt-online-schema-change
+/usr/local/bin/pt-pg-summary
 /usr/local/bin/pt-pmp
 /usr/local/bin/pt-query-digest
 /usr/local/bin/pt-replica-find
 /usr/local/bin/pt-replica-restart
+/usr/local/bin/pt-secure-collect
 /usr/local/bin/pt-show-grants
 /usr/local/bin/pt-sift
 /usr/local/bin/pt-slave-delay
