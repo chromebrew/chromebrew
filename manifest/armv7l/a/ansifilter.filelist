@@ -1,10 +1,13 @@
-# Total size: 233911
+# Total size: 417978
 /usr/local/bin/ansifilter
+/usr/local/bin/ansifilter-gui
+/usr/local/share/applications/ansifilter.desktop
 /usr/local/share/bash-completion/completions/ansifilter
-/usr/local/share/doc/ansifilter/COPYING
-/usr/local/share/doc/ansifilter/ChangeLog.adoc
-/usr/local/share/doc/ansifilter/INSTALL
-/usr/local/share/doc/ansifilter/README.adoc
+/usr/local/share/doc/COPYING
+/usr/local/share/doc/ChangeLog.adoc
+/usr/local/share/doc/INSTALL
+/usr/local/share/doc/README.adoc
 /usr/local/share/fish/vendor_completions.d/ansifilter.fish
+/usr/local/share/icons/hicolor/256x256/apps/ansifilter.xpm
 /usr/local/share/man/man1/ansifilter.1.zst
 /usr/local/share/zsh/site-functions/_ansifilter
