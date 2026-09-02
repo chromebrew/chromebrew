@@ -1,4 +1,4 @@
-# Total size: 243893388
+# Total size: 243910739
 /usr/local/bin/go
 /usr/local/bin/gofmt
 /usr/local/share/go/CONTRIBUTING.md
@@ -6236,6 +6236,7 @@
 /usr/local/share/go/src/debug/elf/testdata/gcc-riscv64-linux-exec
 /usr/local/share/go/src/debug/elf/testdata/go-relocation-test-clang-arm.obj
 /usr/local/share/go/src/debug/elf/testdata/go-relocation-test-clang-x86.obj
+/usr/local/share/go/src/debug/elf/testdata/go-relocation-test-gcc133-ppc.obj
 /usr/local/share/go/src/debug/elf/testdata/go-relocation-test-gcc424-x86-64.obj
 /usr/local/share/go/src/debug/elf/testdata/go-relocation-test-gcc441-x86-64.obj
 /usr/local/share/go/src/debug/elf/testdata/go-relocation-test-gcc441-x86.obj
@@ -14748,6 +14749,8 @@
 /usr/local/share/go/test/fixedbugs/issue8074.go
 /usr/local/share/go/test/fixedbugs/issue8076.go
 /usr/local/share/go/test/fixedbugs/issue8079.go
+/usr/local/share/go/test/fixedbugs/issue80976.go
+/usr/local/share/go/test/fixedbugs/issue81165.go
 /usr/local/share/go/test/fixedbugs/issue8132.go
 /usr/local/share/go/test/fixedbugs/issue8139.go
 /usr/local/share/go/test/fixedbugs/issue8154.go
