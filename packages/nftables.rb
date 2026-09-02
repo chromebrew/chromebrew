@@ -6,26 +6,27 @@ require 'buildsystems/autotools'
 class Nftables < Autotools
   description 'Netfilter tables userspace tools'
   homepage 'https://netfilter.org/projects/nftables/'
-  version '1.1.6'
+  version '1.1.7'
   license 'GPL2'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://netfilter.org/projects/nftables/files/nftables-#{version}.tar.xz"
-  source_sha256 '372931bda8556b310636a2f9020adc710f9bab66f47efe0ce90bff800ac2530c'
+  source_sha256 'a6fbf060d8d4fff001517a2b94f356bb4366bfbf0ba366366f9d27cc38caa58f'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2470463856096c2d2d477bbc5f08e70784d7d8a02c172df73fcb255f348c89d4',
-     armv7l: '2470463856096c2d2d477bbc5f08e70784d7d8a02c172df73fcb255f348c89d4',
-     x86_64: 'a20f5b03c0ce6a54d4183546b90cffcad22bbd59638dbb2b732b28f4726f4dd2'
+    aarch64: 'c82ab77c7f8a9b3ed78b6881bcd65ddd01bbc563551392808fbc5ee9f0a14f77',
+     armv7l: 'c82ab77c7f8a9b3ed78b6881bcd65ddd01bbc563551392808fbc5ee9f0a14f77',
+     x86_64: '7ab0fe2025bc93ed62792c9b3b168726f94b029a072f98d8d72ddbabeac20465'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'jansson' # R
-  depends_on 'libmnl' # R
-  depends_on 'libnftnl' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'jansson' => :library
+  depends_on 'libmnl' => :library
+  depends_on 'libnftnl' => :library
   depends_on 'libxslt' => :build
   depends_on 'py3_asciidoc' => :build
-  depends_on 'readline' # R
+  depends_on 'readline' => :library
 
   autotools_configure_options "--sysconfdir=#{CREW_PREFIX}/etc \
     --with-json \
