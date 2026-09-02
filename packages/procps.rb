@@ -11,10 +11,10 @@ class Procps < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c3cb80317d20af10c73e660789f61b5ff183338d1ef05ef52a4895e92566b459',
-     armv7l: 'c3cb80317d20af10c73e660789f61b5ff183338d1ef05ef52a4895e92566b459',
+    aarch64: 'f3bafa254aef067d1ee187ac57ca08351867ad2b29b8f0cb8dcedab4f3e6067c',
+     armv7l: 'f3bafa254aef067d1ee187ac57ca08351867ad2b29b8f0cb8dcedab4f3e6067c',
        i686: '50057d6fa01e19ff60da7c68de9ed5d1f60dfe9ad7d73f22daf45d68bb172ad1',
-     x86_64: '3193c16555554d63bffe63957b6add1ab3f689bb8d5eb57f22533068fceb5605'
+     x86_64: 'bb6bf2cdaea0f3d58aca1319a419cda04c28264733d9b24c33994b73ead5eaec'
   })
 
   depends_on 'glibc' => :library
