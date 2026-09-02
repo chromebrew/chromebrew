@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Janet < Meson
   description 'Janet is a functional and imperative programming language and bytecode interpreter.'
   homepage 'https://janet-lang.org'
-  version '1.41.2'
+  version '1.42.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/janet-lang/janet.git'
