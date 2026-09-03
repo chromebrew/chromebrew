@@ -1,4 +1,4 @@
-# Total size: 11432798
+# Total size: 11786151
 /usr/local/bin/curl
 /usr/local/bin/curl-config
 /usr/local/bin/wcurl
@@ -224,6 +224,10 @@
 /usr/local/share/man/man3/CURLOPT_HTTPHEADER.3.zst
 /usr/local/share/man/man3/CURLOPT_HTTPPOST.3.zst
 /usr/local/share/man/man3/CURLOPT_HTTPPROXYTUNNEL.3.zst
+/usr/local/share/man/man3/CURLOPT_HTTPSIG_ALGORITHM.3.zst
+/usr/local/share/man/man3/CURLOPT_HTTPSIG_HEADERS.3.zst
+/usr/local/share/man/man3/CURLOPT_HTTPSIG_KEY.3.zst
+/usr/local/share/man/man3/CURLOPT_HTTPSIG_KEYID.3.zst
 /usr/local/share/man/man3/CURLOPT_HTTP_CONTENT_DECODING.3.zst
 /usr/local/share/man/man3/CURLOPT_HTTP_TRANSFER_DECODING.3.zst
 /usr/local/share/man/man3/CURLOPT_HTTP_VERSION.3.zst
