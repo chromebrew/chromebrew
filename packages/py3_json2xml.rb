@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_json2xml < Pip
   description 'json to xml converter'
   homepage 'https://json2xml.readthedocs.io/'
-  version "7.0.1-#{CREW_PY_VER}"
+  version "7.1.0-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ed8b8d0f3c8988fc06f99c4ffb01fde96084eea64b3400c3da09b4734a5f1c85',
-     armv7l: 'ed8b8d0f3c8988fc06f99c4ffb01fde96084eea64b3400c3da09b4734a5f1c85',
-       i686: '19c21817894e4035f340e0e9a9944e2cf1e44a48de4bd2d01e633e7e802a2ce0',
-     x86_64: '6e38466d1dd8a13fecff94b48cf8858958eba1f04f03d26246c4e55e9067a99e'
+    aarch64: 'd375486a48b974ea4464c8f1ef1cc71b15a6ce41e84d82c62d9fe8fa25558286',
+     armv7l: 'd375486a48b974ea4464c8f1ef1cc71b15a6ce41e84d82c62d9fe8fa25558286',
+       i686: 'e2d4ea7970a51c8ef79d5c26dc3f69f56e28a5222d5971894bd443b1695fbd14',
+     x86_64: '76122a4e47e4a73b2a0084183a9f295a82fb5b44c7a1b7ba008e7f90db64ae2a'
   })
 
   depends_on 'py3_dicttoxml'
