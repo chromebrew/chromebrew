@@ -1,4 +1,4 @@
-# Total size: 1765534
+# Total size: 1988867
 /usr/local/bin/apu-1-config
 /usr/local/include/apr-1/apr_anylock.h
 /usr/local/include/apr-1/apr_base64.h
@@ -35,6 +35,10 @@
 /usr/local/include/apr-1/apu_errno.h
 /usr/local/include/apr-1/apu_version.h
 /usr/local/include/apr-1/apu_want.h
+/usr/local/lib/apr-util-1/apr_dbd_odbc-1.so
+/usr/local/lib/apr-util-1/apr_dbd_odbc.a
+/usr/local/lib/apr-util-1/apr_dbd_odbc.la
+/usr/local/lib/apr-util-1/apr_dbd_odbc.so
 /usr/local/lib/apr-util-1/apr_dbd_sqlite3-1.so
 /usr/local/lib/apr-util-1/apr_dbd_sqlite3.a
 /usr/local/lib/apr-util-1/apr_dbd_sqlite3.la
@@ -44,5 +48,5 @@
 /usr/local/lib/libaprutil-1.la
 /usr/local/lib/libaprutil-1.so
 /usr/local/lib/libaprutil-1.so.0
-/usr/local/lib/libaprutil-1.so.0.6.3
+/usr/local/lib/libaprutil-1.so.0.6.5
 /usr/local/lib/pkgconfig/apr-util-1.pc
