@@ -1,13 +1,14 @@
-# Total size: 2682537
-/usr/local/lib/python3.14/site-packages/urwid-4.0.13.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/urwid-4.0.13.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/urwid-4.0.13.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/urwid-4.0.13.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/urwid-4.0.13.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/urwid-4.0.13.dist-info/licenses/COPYING
-/usr/local/lib/python3.14/site-packages/urwid-4.0.13.dist-info/top_level.txt
+# Total size: 2878107
+/usr/local/lib/python3.14/site-packages/urwid-4.1.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/urwid-4.1.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/urwid-4.1.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/urwid-4.1.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/urwid-4.1.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/urwid-4.1.0.dist-info/licenses/COPYING
+/usr/local/lib/python3.14/site-packages/urwid-4.1.0.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/urwid/__init__.py
 /usr/local/lib/python3.14/site-packages/urwid/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/urwid/__pycache__/ansi_parser.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/urwid/__pycache__/canvas.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/urwid/__pycache__/command_map.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/urwid/__pycache__/font.cpython-314.pyc
@@ -20,6 +21,7 @@
 /usr/local/lib/python3.14/site-packages/urwid/__pycache__/util.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/urwid/__pycache__/version.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/urwid/__pycache__/vterm.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/urwid/ansi_parser.py
 /usr/local/lib/python3.14/site-packages/urwid/canvas.py
 /usr/local/lib/python3.14/site-packages/urwid/command_map.py
 /usr/local/lib/python3.14/site-packages/urwid/display/__init__.py
@@ -81,6 +83,7 @@
 /usr/local/lib/python3.14/site-packages/urwid/vterm.py
 /usr/local/lib/python3.14/site-packages/urwid/widget/__init__.py
 /usr/local/lib/python3.14/site-packages/urwid/widget/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/urwid/widget/__pycache__/ansi_text.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/urwid/widget/__pycache__/attr_map.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/urwid/widget/__pycache__/attr_wrap.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/urwid/widget/__pycache__/bar_graph.cpython-314.pyc
@@ -89,13 +92,16 @@
 /usr/local/lib/python3.14/site-packages/urwid/widget/__pycache__/columns.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/urwid/widget/__pycache__/constants.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/urwid/widget/__pycache__/container.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/urwid/widget/__pycache__/deque_walker.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/urwid/widget/__pycache__/divider.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/urwid/widget/__pycache__/edit.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/urwid/widget/__pycache__/filler.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/urwid/widget/__pycache__/frame.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/urwid/widget/__pycache__/grid_flow.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/urwid/widget/__pycache__/line_box.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/urwid/widget/__pycache__/list_walker.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/urwid/widget/__pycache__/listbox.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/urwid/widget/__pycache__/monitored_deque.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/urwid/widget/__pycache__/monitored_list.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/urwid/widget/__pycache__/overlay.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/urwid/widget/__pycache__/padding.cpython-314.pyc
@@ -109,6 +115,7 @@
 /usr/local/lib/python3.14/site-packages/urwid/widget/__pycache__/widget.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/urwid/widget/__pycache__/widget_decoration.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/urwid/widget/__pycache__/wimp.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/urwid/widget/ansi_text.py
 /usr/local/lib/python3.14/site-packages/urwid/widget/attr_map.py
 /usr/local/lib/python3.14/site-packages/urwid/widget/attr_wrap.py
 /usr/local/lib/python3.14/site-packages/urwid/widget/bar_graph.py
@@ -117,13 +124,16 @@
 /usr/local/lib/python3.14/site-packages/urwid/widget/columns.py
 /usr/local/lib/python3.14/site-packages/urwid/widget/constants.py
 /usr/local/lib/python3.14/site-packages/urwid/widget/container.py
+/usr/local/lib/python3.14/site-packages/urwid/widget/deque_walker.py
 /usr/local/lib/python3.14/site-packages/urwid/widget/divider.py
 /usr/local/lib/python3.14/site-packages/urwid/widget/edit.py
 /usr/local/lib/python3.14/site-packages/urwid/widget/filler.py
 /usr/local/lib/python3.14/site-packages/urwid/widget/frame.py
 /usr/local/lib/python3.14/site-packages/urwid/widget/grid_flow.py
 /usr/local/lib/python3.14/site-packages/urwid/widget/line_box.py
+/usr/local/lib/python3.14/site-packages/urwid/widget/list_walker.py
 /usr/local/lib/python3.14/site-packages/urwid/widget/listbox.py
+/usr/local/lib/python3.14/site-packages/urwid/widget/monitored_deque.py
 /usr/local/lib/python3.14/site-packages/urwid/widget/monitored_list.py
 /usr/local/lib/python3.14/site-packages/urwid/widget/overlay.py
 /usr/local/lib/python3.14/site-packages/urwid/widget/padding.py
