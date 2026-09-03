@@ -10,10 +10,10 @@ class Py3_lxml < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9c4252d72cded55ba3fbd396b89e15842e66d10549d1ae78859ffeba572ebfd5',
-     armv7l: '9c4252d72cded55ba3fbd396b89e15842e66d10549d1ae78859ffeba572ebfd5',
-       i686: 'a1e4150c15e0e4fe6f7a30c8caf6b850ac0437e9b6acfba5e19a4d928131ac74',
-     x86_64: '7168174a986ae1542620c33c6090116827c0128e2bdcd9d58a643e798babebb4'
+    aarch64: '6c2a9d5bc43e22f3f82813e3045554497329343a835cdafac0fc38b384a16067',
+     armv7l: '6c2a9d5bc43e22f3f82813e3045554497329343a835cdafac0fc38b384a16067',
+       i686: '28455fac1a8ffbad70b411a1527862b2f059cdd33d96eca20992bcc0f5a3e256',
+     x86_64: '8af3deafaa5961d3a80d4533707669401d94ac613d8fb4dc69bdcd5f5f0326a0'
   })
 
   depends_on 'glibc' => :library
