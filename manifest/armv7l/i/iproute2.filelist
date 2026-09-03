@@ -1,4 +1,4 @@
-# Total size: 2415403
+# Total size: 2425273
 /usr/local/bin/arpd
 /usr/local/bin/bridge
 /usr/local/bin/ctstat
@@ -32,7 +32,6 @@
 /usr/local/share/iproute2/rt_realms
 /usr/local/share/iproute2/rt_scopes
 /usr/local/share/iproute2/rt_tables
-/usr/local/share/man/man3/libnetlink.3.zst
 /usr/local/share/man/man7/tc-hfsc.7.zst
 /usr/local/share/man/man8/arpd.8.zst
 /usr/local/share/man/man8/bridge.8.zst
