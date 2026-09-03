@@ -11,10 +11,10 @@ class Curl < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2f8eeab3d73cc7eb121c77db07b893cb3b345ec664411da534001a9666b66c35',
-     armv7l: '2f8eeab3d73cc7eb121c77db07b893cb3b345ec664411da534001a9666b66c35',
-       i686: 'eda2f2ab542a25512830d0eb8f0ca512e2b522846ff462e2d3c727db2adadf78',
-     x86_64: '296d98dd03871271574e3ceabb82fb68c3b9322cf93e165d6977024d9c36bc7c'
+    aarch64: '8f6562ef09ce4b157a600d3f0c13c07ac5652cb4a767ae2809f41268df089cf8',
+     armv7l: '8f6562ef09ce4b157a600d3f0c13c07ac5652cb4a767ae2809f41268df089cf8',
+       i686: '72d1186e80621fa260c1797971bc9d5761abc2fa9a0971779ae8f02c8f646e07',
+     x86_64: '7e79a6f0e7b2f5b35db3d44e3d5468d28b52661201776d91306f1094507b046f'
   })
 
   depends_on 'brotli' => :library
@@ -22,6 +22,7 @@ class Curl < Autotools
   depends_on 'ca_certificates' => :build
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
+  depends_on 'libcyrussasl' => :executable
   depends_on 'libcyrussasl' => :library
   depends_on 'libidn2' => :library
   depends_on 'libnghttp2' => :library
@@ -29,6 +30,7 @@ class Curl < Autotools
   depends_on 'libngtcp2' => :library
   depends_on 'libpsl' => :library
   depends_on 'libssh' => :library
+  depends_on 'libunistring' => :executable
   depends_on 'libunistring' => :library
   depends_on 'openldap' => :library
   depends_on 'openssl' => :library
