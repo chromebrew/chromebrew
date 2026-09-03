@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Foot < Meson
   description 'Wayland terminal emulator - fast, lightweight and minimalistic'
   homepage 'https://codeberg.org/dnkl/foot'
-  version '1.27.0'
+  version '1.28.0'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://codeberg.org/dnkl/foot.git'
@@ -11,9 +11,9 @@ class Foot < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '26d52ca46e8b7fc8bdef35dd901845c282ef56ca2811af145269f05b510575a0',
-     armv7l: '26d52ca46e8b7fc8bdef35dd901845c282ef56ca2811af145269f05b510575a0',
-     x86_64: 'ffff4b5d38e55802afbeed2241d8f0d01a86a3419abbb7d2fdf1110d81b7ee1c'
+    aarch64: '09f0cdd1c0faad01fe8c4ed1b158a34e0a9fe46e9938503d845185e101d1d3ec',
+     armv7l: '09f0cdd1c0faad01fe8c4ed1b158a34e0a9fe46e9938503d845185e101d1d3ec',
+     x86_64: '2877cd074ee79685fd46566b46cc3cc5764718ba5c2deebe95662e3e7e67394a'
   })
 
   def self.patch
