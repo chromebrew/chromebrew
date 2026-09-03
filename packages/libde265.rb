@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libde265 < CMake
   description 'Open h.265 video codec implementation.'
   homepage 'https://github.com/strukturag/libde265'
-  version '1.1.1'
+  version '1.1.2'
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/strukturag/libde265.git'
