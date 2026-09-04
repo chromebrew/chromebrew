@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Sdl3_image < CMake
   description 'SDL3_image is an image loading library that is used with the SDL2 library.'
   homepage 'https://github.com/libsdl-org/SDL_image'
-  version '3.4.4'
+  version '3.4.6'
   license 'zlib'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/libsdl-org/SDL_image.git'
