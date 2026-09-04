@@ -11,10 +11,10 @@ class Perl_uri < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5c6b537384ee53563d2ee538184a559c15047bc0047ea83fe00653e92bec142f',
-     armv7l: '5c6b537384ee53563d2ee538184a559c15047bc0047ea83fe00653e92bec142f',
-       i686: '312db805513c81aea0b129858d8e135c11ba8219d6bf26070b5fb32c06fe9fab',
-     x86_64: '6472f92cfc54899c5a15203d05c6c890b6a9628b9562fe4f5c8787c5ea7721b8'
+    aarch64: 'bea9ff3f7486cd583311eda8ce0b65d2d6de92af5021181fbaa17a59cacb0a8b',
+     armv7l: 'bea9ff3f7486cd583311eda8ce0b65d2d6de92af5021181fbaa17a59cacb0a8b',
+       i686: '6ffd7b931540f6beac9c2c911806888df15a535fd511991e7bdd9ff9e0ba83b7',
+     x86_64: 'be11ed556c70ad8e6e849d0bfa78f5f7d8af0288b0d3e9cbf92989ae37645fa3'
   })
 
   depends_on 'perl' => :logical
