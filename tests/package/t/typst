@@ -1,0 +1,3 @@
+#!/bin/bash
+typst -h | head
+typst -V

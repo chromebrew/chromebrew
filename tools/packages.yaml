@@ -10025,6 +10025,11 @@ url: https://github.com/microsoft/TypeScript/releases
 activity: high
 ---
 kind: url
+name: typst
+url: https://github.com/typst/typst/releases
+activity: medium
+---
+kind: url
 name: uasm
 url: https://github.com/Terraspace/UASM/releases
 activity: low
