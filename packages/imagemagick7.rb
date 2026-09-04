@@ -12,54 +12,55 @@ class Imagemagick7 < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '78f1a7e62f13ec432fb749d61d5e201dbe51b010b1a9489d86b2ef95526e1b00',
-     armv7l: '78f1a7e62f13ec432fb749d61d5e201dbe51b010b1a9489d86b2ef95526e1b00',
-     x86_64: 'dd6e5b864f39391be563aed38c3e54382655c570a898fec76dcf84b451dc0d78'
+    aarch64: '1e568efd14ef986365ad603be30b27feda30ab4ad7afd85de8e58fe155cf62c4',
+     armv7l: '1e568efd14ef986365ad603be30b27feda30ab4ad7afd85de8e58fe155cf62c4',
+     x86_64: 'f310b6a5c25061846f27138bac9fe41b89560d3b62843894c4d96babf9eaf590'
   })
 
-  depends_on 'bzip2' # R
-  depends_on 'cairo' # R
+  depends_on 'bzip2' => :library
+  depends_on 'cairo' => :library
   depends_on 'flif' => :build
-  depends_on 'fontconfig' # R
+  depends_on 'fontconfig' => :library
   depends_on 'freeimage' => :build
-  depends_on 'freetype' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'gdk_pixbuf' # R
+  depends_on 'freetype' => :library
+  depends_on 'gcc_lib' => :library
+  depends_on 'gdk_pixbuf' => :library
   depends_on 'ghostscript' => :build
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
-  depends_on 'graphviz' # R
-  depends_on 'harfbuzz' # R
-  depends_on 'jbigkit' # R
-  depends_on 'jemalloc' # R
-  depends_on 'lcms' # R
-  depends_on 'libbsd' # R
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'graphviz' => :library
+  depends_on 'harfbuzz' => :library
+  depends_on 'jbigkit' => :library
+  depends_on 'jemalloc' => :library
+  depends_on 'lcms' => :library
+  depends_on 'libbsd' => :executable
   depends_on 'libdeflate' # R
-  depends_on 'libheif' # R
-  depends_on 'libice' # R
-  depends_on 'libjpeg_turbo' # R
-  depends_on 'libjxl' # R
-  depends_on 'libpng' # R
-  depends_on 'librsvg' # R
-  depends_on 'libsm' # R
-  depends_on 'libtiff' # R
-  depends_on 'libtool' # R
-  depends_on 'libwebp' # R
-  depends_on 'libwmf' # R
-  depends_on 'libx11' # R
-  depends_on 'libxau' # R
-  depends_on 'libxcb' # R
-  depends_on 'libxdmcp' # R
-  depends_on 'libxext' # R
-  depends_on 'libxml2' # R
-  depends_on 'libxt' # R
+  depends_on 'libheif' => :library
+  depends_on 'libice' => :library
+  depends_on 'libjpeg_turbo' => :library
+  depends_on 'libjxl' => :library
+  depends_on 'libpng' => :library
+  depends_on 'librsvg' => :library
+  depends_on 'libsm' => :library
+  depends_on 'libtiff' => :library
+  depends_on 'libtool' => :library
+  depends_on 'libwebp' => :library
+  depends_on 'libwmf' => :library
+  depends_on 'libx11' => :library
+  depends_on 'libxau' => :executable
+  depends_on 'libxcb' => :executable
+  depends_on 'libxdmcp' => :executable
+  depends_on 'libxext' => :library
+  depends_on 'libxml2' => :library
+  depends_on 'libxt' => :library
   depends_on 'msttcorefonts' => :logical
-  depends_on 'openexr' # R
-  depends_on 'openjpeg' # R
-  depends_on 'pango' # R
-  depends_on 'util_linux' # R
-  depends_on 'xzutils' # R
-  depends_on 'zlib' # R
+  depends_on 'openexr' => :library
+  depends_on 'openjpeg' => :library
+  depends_on 'pango' => :library
+  depends_on 'util_linux' => :executable
+  depends_on 'xzutils' => :library
+  depends_on 'zlib' => :library
   depends_on 'zstd' # R
 
   conflicts_with 'graphicsmagick'
