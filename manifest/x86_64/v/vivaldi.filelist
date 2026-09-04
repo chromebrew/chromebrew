@@ -1,4 +1,4 @@
-# Total size: 454756465
+# Total size: 475520854
 /usr/local/bin/vivaldi
 /usr/local/bin/vivaldi-stable
 /usr/local/etc/cron.daily/vivaldi
@@ -20,8 +20,7 @@
 /usr/local/share/vivaldi/apparmor.d/vivaldi-stable
 /usr/local/share/vivaldi/chrome_crashpad_handler
 /usr/local/share/vivaldi/cron/vivaldi
-/usr/local/share/vivaldi/libEGL.so
-/usr/local/share/vivaldi/libGLESv2.so
+/usr/local/share/vivaldi/icudtl.dat
 /usr/local/share/vivaldi/libffmpeg.so
 /usr/local/share/vivaldi/libqt5_shim.so
 /usr/local/share/vivaldi/libqt6_shim.so
@@ -313,6 +312,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/_locales/be/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/bg/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/bn/messages.json
+/usr/local/share/vivaldi/resources/vivaldi/_locales/brh/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/bs/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/ca/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/ca@valencia/messages.json
@@ -321,9 +321,11 @@
 /usr/local/share/vivaldi/resources/vivaldi/_locales/cy/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/da/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/de/messages.json
+/usr/local/share/vivaldi/resources/vivaldi/_locales/de_AT/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/de_CH/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/el/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/en/messages.json
+/usr/local/share/vivaldi/resources/vivaldi/_locales/en_AU/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/en_CA/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/en_GB/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/en_US/messages.json
@@ -406,7 +408,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/adblocker_resources/redirectable_resources.json
 /usr/local/share/vivaldi/resources/vivaldi/background-bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/background-common-bundle.js
-/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-9140aff10d44e918bc1826e14ddbb0e8.js
+/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-4e3a9d35ab00ec06b0a2a81b32957a8c.js
 /usr/local/share/vivaldi/resources/vivaldi/bundle-mailreader-worker.js
 /usr/local/share/vivaldi/resources/vivaldi/bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/components/mail/mail.html
