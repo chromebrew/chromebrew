@@ -1,11 +1,13 @@
-# Total size: 1054165
+# Total size: 1128258
 /usr/local/bin/byobu
 /usr/local/bin/byobu-config
 /usr/local/bin/byobu-ctrl-a
 /usr/local/bin/byobu-disable
 /usr/local/bin/byobu-disable-prompt
+/usr/local/bin/byobu-disable-shell-integration
 /usr/local/bin/byobu-enable
 /usr/local/bin/byobu-enable-prompt
+/usr/local/bin/byobu-enable-shell-integration
 /usr/local/bin/byobu-export
 /usr/local/bin/byobu-janitor
 /usr/local/bin/byobu-keybindings
@@ -35,6 +37,7 @@
 /usr/local/bin/trustmux
 /usr/local/bin/trustmuxd
 /usr/local/bin/vigpg
+/usr/local/bin/whats-my-public-ip
 /usr/local/bin/wifi-status
 /usr/local/etc/byobu/backend
 /usr/local/etc/byobu/socketdir
@@ -130,6 +133,8 @@
 /usr/local/share/byobu/profiles/common
 /usr/local/share/byobu/profiles/dircolors
 /usr/local/share/byobu/profiles/screenrc
+/usr/local/share/byobu/profiles/shell-integration.bash
+/usr/local/share/byobu/profiles/shell-integration.zsh
 /usr/local/share/byobu/profiles/tmux
 /usr/local/share/byobu/profiles/tmuxrc
 /usr/local/share/byobu/status/status
@@ -143,8 +148,10 @@
 /usr/local/share/man/man1/byobu-config.1.zst
 /usr/local/share/man/man1/byobu-ctrl-a.1.zst
 /usr/local/share/man/man1/byobu-disable-prompt.1.zst
+/usr/local/share/man/man1/byobu-disable-shell-integration.1.zst
 /usr/local/share/man/man1/byobu-disable.1.zst
 /usr/local/share/man/man1/byobu-enable-prompt.1.zst
+/usr/local/share/man/man1/byobu-enable-shell-integration.1.zst
 /usr/local/share/man/man1/byobu-enable.1.zst
 /usr/local/share/man/man1/byobu-export.1.zst
 /usr/local/share/man/man1/byobu-janitor.1.zst
