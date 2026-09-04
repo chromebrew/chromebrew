@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Sdl3_image < CMake
   description 'SDL3_image is an image loading library that is used with the SDL2 library.'
   homepage 'https://github.com/libsdl-org/SDL_image'
-  version '3.4.4'
+  version '3.4.6'
   license 'zlib'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/libsdl-org/SDL_image.git'
@@ -11,9 +11,9 @@ class Sdl3_image < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '05a4129c6cceee96765486c45f97ac25dd406331d2a212cabecea4430b8fecf7',
-     armv7l: '05a4129c6cceee96765486c45f97ac25dd406331d2a212cabecea4430b8fecf7',
-     x86_64: '4dd5bc6aaa28ae8e7aa41b71488d4328879a98d25732f9ef7588a7ed7ea783bb'
+    aarch64: 'fa886baa2de144035bc8892eb9b6876a300dbf3153035e4dcf3eb155daefd4f4',
+     armv7l: 'fa886baa2de144035bc8892eb9b6876a300dbf3153035e4dcf3eb155daefd4f4',
+     x86_64: '4b4b5cd8353b0c9fba23d940348e5b1697e428674a981ae044198c54848739c5'
   })
 
   depends_on 'gcc_lib' => :library
