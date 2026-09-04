@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Openvpn < Autotools
   description 'OpenVPN is an open source VPN daemon'
   homepage 'https://openvpn.net/'
-  version '2.7.6'
+  version '2.7.7'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/OpenVPN/openvpn.git'
@@ -11,9 +11,9 @@ class Openvpn < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c5f36a1531ab46057627c9defb562f54c527d6802905730fd55ae736605a234a',
-     armv7l: 'c5f36a1531ab46057627c9defb562f54c527d6802905730fd55ae736605a234a',
-     x86_64: '4c992a4338d693b6533f4d7e2281c835ea5a1ee466f0b960ddf6ac2b9ecfec7b'
+    aarch64: '3ab8772fa86c4b34ba8f73f185475fd1e615a58f047fffd4fe3960625be80002',
+     armv7l: '3ab8772fa86c4b34ba8f73f185475fd1e615a58f047fffd4fe3960625be80002',
+     x86_64: 'b291bde2c9f9f250e8fd5985a44b1050e23fc85007e6f76edaf84184096405ae'
   })
 
   depends_on 'e2fsprogs' => :executable
