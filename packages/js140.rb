@@ -3,11 +3,11 @@ require 'package'
 class Js140 < Package
   description 'JavaScript interpreter and libraries - Version 140'
   homepage 'https://spidermonkey.dev/'
-  version "140.14.0-#{CREW_ICU_VER}"
+  version "140.15.0-#{CREW_ICU_VER}"
   license 'MPL-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://archive.mozilla.org/pub/firefox/releases/#{version.gsub("-#{CREW_ICU_VER}", '').split('-').first}esr/source/firefox-#{version.gsub("-#{CREW_ICU_VER}", '').split('-').first}esr.source.tar.xz"
-  source_sha256 '28006bd454e703932e1ea804918165774a1e21478b18e551cd1b38111d664239'
+  source_sha256 '358bb03c550f95172f1e31694e4287da3411560df91e931cb25210efdf90e524'
   binary_compression 'tar.zst'
 
   binary_sha256({
