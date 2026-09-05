@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Gmic < CMake
   description "GREYC's Magic for Image Computing: A Full-Featured Open-Source Framework for Image Processing"
   homepage 'https://gmic.eu/'
-  version '4.0.4'
+  version '4.0.5'
   license 'CeCILL and CeCILL-C'
   compatibility 'x86_64'
   source_url 'https://github.com/GreycLab/gmic.git'
