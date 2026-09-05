@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Bochs < Autotools
   description 'Bochs is a highly portable open source IA-32 (x86) PC emulator written in C++, that runs on most popular platforms.'
   homepage 'https://bochs.sourceforge.io/'
-  version '3.0'
+  version '3.1'
   license 'LGPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://downloads.sourceforge.net/project/bochs/bochs/#{version}/bochs-#{version}.tar.gz"
-  source_sha256 'cb6f542b51f35a2cc9206b2a980db5602b7cd1b7cf2e4ed4f116acd5507781aa'
+  source_sha256 '14aaf78dbe1337987923fffc4e7a962ae56abcf9a87474ace39e593f9f84ee84'
   binary_compression 'tar.zst'
 
   binary_sha256({
