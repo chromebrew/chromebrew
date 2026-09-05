@@ -19,6 +19,7 @@ class Py3_libxml2 < Meson
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'libxml2' => :library
   depends_on 'py3_setuptools' => :build
   depends_on 'python3' # R
