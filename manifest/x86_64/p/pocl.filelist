@@ -1,4 +1,4 @@
-# Total size: 15667872
+# Total size: 17748581
 /usr/local/bin/poclcc
 /usr/local/include/CL/cl.h
 /usr/local/include/CL/cl2.hpp
@@ -23,7 +23,7 @@
 /usr/local/include/CL/opencl.hpp
 /usr/local/lib64/libOpenCL.so
 /usr/local/lib64/libOpenCL.so.2
-/usr/local/lib64/libOpenCL.so.2.15.0
+/usr/local/lib64/libOpenCL.so.2.16.0
 /usr/local/lib64/pkgconfig/pocl.pc
 /usr/local/lib64/pocl/libpocl-devices-basic.so
 /usr/local/lib64/pocl/libpocl-devices-pthread.so

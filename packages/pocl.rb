@@ -11,16 +11,17 @@ class Pocl < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    x86_64: 'ca5034ff4857842753dd3002bee4bf5476e19788c207b74e2cf2e0fea8782cb4'
+     x86_64: 'da552d0f56021da6e09a6156c9370dd962b44674e24509bb2fcee7929596fb15'
   })
 
   depends_on 'cmake' => :build
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'hwloc' # R
-  depends_on 'llvm_dev' # R
-  depends_on 'llvm_lib' # R
-  depends_on 'spirv_llvm_translator' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'hwloc' => :library
+  depends_on 'llvm_dev' => :library
+  depends_on 'llvm_lib' => :library
+  depends_on 'spirv_llvm_translator' => :library
   depends_on 'spirv_tools' # R
 
   cmake_options '-DLLC_HOST_CPU=x86-64'
