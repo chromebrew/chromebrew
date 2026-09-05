@@ -1,0 +1,3 @@
+#!/bin/bash
+audacity -h | head
+audacity -v
