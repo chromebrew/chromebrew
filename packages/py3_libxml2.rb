@@ -12,10 +12,10 @@ class Py3_libxml2 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '432cbdc5821d7f6e283724b8d959ecc56c7eecd7b79b2cc2d535621401024d3e',
-     armv7l: '432cbdc5821d7f6e283724b8d959ecc56c7eecd7b79b2cc2d535621401024d3e',
-       i686: '69cce40d2a8b75501304354a6d94fb8933158ce2391df3b43e1a5b96d7b4ee11',
-     x86_64: '79ad45501c150c0713014453a0abb707afd4646922ad4410b8f627ad42d5d1c2'
+    aarch64: '43ca7419c662f218be755aaa8bedee5e59ded5cf24c6bae1bc40cd793d26d59a',
+     armv7l: '43ca7419c662f218be755aaa8bedee5e59ded5cf24c6bae1bc40cd793d26d59a',
+       i686: '288abd21b98c57c7eeb0bd881db4a526957eab00b32a2b98768db569445c5948',
+     x86_64: '226d9552938889e2fcdeebd590911b4eeadc8f337aca762b949f17ab61d30b5f'
   })
 
   depends_on 'glibc' => :library
