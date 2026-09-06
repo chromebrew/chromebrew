@@ -11,12 +11,12 @@ class Libpcap < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c48f29bfbc8171b765feecf0c3a957cc08458178cd3c9523ea351a07ba17045b',
-     armv7l: 'c48f29bfbc8171b765feecf0c3a957cc08458178cd3c9523ea351a07ba17045b',
-       i686: '829c325641fca7dcbe9430bc7f1ceb556f6d8f947ebef53b55b724f18b6c04e0',
-     x86_64: 'e277d0a63ca0e3a1d6f13b8b4969ce00ee7b21f028ca6922cc8e1b37a31cc604'
+    aarch64: '8fc959573756981b75da91bf89344fbe9a380588e1ee5418d65e10c622a5c250',
+     armv7l: '8fc959573756981b75da91bf89344fbe9a380588e1ee5418d65e10c622a5c250',
+       i686: '438cf00b0ad5d921efb0bf04046be51c9a4dcfbebf059a5e7192e765a74d6ade',
+     x86_64: '42e4ea9a790456ba2897e05ffc8a80b7f5a0fd1a251a10c845825b711552cf61'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'libnl3'
+  depends_on 'glibc' => :library
+  depends_on 'libnl3' => :library
 end
