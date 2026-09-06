@@ -3,7 +3,7 @@ require 'package'
 class Bats < Package
   description 'Bash Automated Testing System'
   homepage 'https://github.com/bats-core/bats-core'
-  version '1.13.0'
+  version '1.14.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/bats-core/bats-core.git'
@@ -11,10 +11,10 @@ class Bats < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3d4611b3b3edb932d5ab561ba026530a442790ae0a49f3250360d5a808a5c5e4',
-     armv7l: '3d4611b3b3edb932d5ab561ba026530a442790ae0a49f3250360d5a808a5c5e4',
-       i686: '9ed3dbf1660222836086d6a6bee6325bbc83945792f789ad89f533bf4bd24993',
-     x86_64: 'dd3909855f57b21b3dcb0ed284f516f5292225843d8fed79f45da32ee85f9aea'
+    aarch64: '547f34298cf4b94e799e02f05ce42a49d82dd5131e5939eca7d4d79082262bb6',
+     armv7l: '547f34298cf4b94e799e02f05ce42a49d82dd5131e5939eca7d4d79082262bb6',
+       i686: '7d924a856b66296fb3e134990e61579399ecc3d6c55d57bba06ac5397747a700',
+     x86_64: '597df5d0be67f5f1d6c6630b0029c2a55f35d22dc743308700892a3f99bd1921'
   })
 
   def self.install
