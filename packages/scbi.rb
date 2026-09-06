@@ -32,7 +32,7 @@ class Scbi < Package
     system "sed -i 's,hostname --short,hostname,' #{CREW_DEST_PREFIX}/.config/scbi/6_distpkg"
     # Download and install User Guide.
     downloader "https://github.com/TurboGit/scbi/releases/download/v#{version}/scbi.pdf",
-               '51f7d83613ce00a96384c19ee603f0372d99a07ca64d806503d40c3ab31f4314'
+               '143fead9adebe6d082906892357e1a9046bd8aec13fa2531d526f8beddbeb0f1'
     FileUtils.install 'scbi.pdf', "#{CREW_DEST_PREFIX}/share/scbi/scbi.pdf", mode: 0o644
   end
 
