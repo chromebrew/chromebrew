@@ -521,7 +521,7 @@ activity: medium
 ---
 kind: url
 name: bacula
-url: https://sourceforge.net/projects/bacula/files/bacula/
+url: https://gitlab.bacula.org/bacula-community-edition/bacula-community/-/tags
 activity: medium
 ---
 kind: url
