@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Weechat < CMake
   description 'WeeChat is a fast, light and extensible chat client.'
   homepage 'https://weechat.org/'
-  version '4.10.0'
+  version '4.10.1'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/weechat/weechat.git'
