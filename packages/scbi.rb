@@ -3,7 +3,7 @@ require 'package'
 class Scbi < Package
   description 'Setup Configure Build Install - Tool to build from sources with local developers checkout support'
   homepage 'https://github.com/TurboGit/scbi'
-  version '12.3'
+  version '12.4'
   license 'Copyright (C) Pascal Obry'
   compatibility 'all'
   source_url 'https://github.com/TurboGit/scbi.git'
