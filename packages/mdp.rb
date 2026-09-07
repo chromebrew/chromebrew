@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Mdp < Autotools
   description 'A command-line based markdown presentation tool.'
   homepage 'https://github.com/visit1985/mdp'
-  version '1.0.18'
+  version '1.0.19'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/visit1985/mdp.git'
