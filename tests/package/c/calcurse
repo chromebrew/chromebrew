@@ -1,0 +1,3 @@
+#!/bin/bash
+calcurse -h | head
+calcurse -v

@@ -1,7 +1,8 @@
-# Total size: 1312094
+# Total size: 932831
 /usr/local/bin/calcurse
 /usr/local/bin/calcurse-caldav
 /usr/local/bin/calcurse-upgrade
+/usr/local/bin/calcurse-vdir
 /usr/local/share/doc/calcurse/add.txt
 /usr/local/share/doc/calcurse/config.txt
 /usr/local/share/doc/calcurse/copy-paste.txt
@@ -167,4 +168,4 @@
 /usr/local/share/locale/nl/LC_MESSAGES/calcurse.mo
 /usr/local/share/locale/pt_BR/LC_MESSAGES/calcurse.mo
 /usr/local/share/locale/ru/LC_MESSAGES/calcurse.mo
-/usr/local/share/man/man1/calcurse.1.gz
+/usr/local/share/man/man1/calcurse.1.zst
