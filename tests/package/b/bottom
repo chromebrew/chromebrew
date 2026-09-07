@@ -1,0 +1,3 @@
+#!/bin/bash
+btm -h | head
+btm -V
