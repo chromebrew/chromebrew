@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Lnav < Autotools
   description 'An advanced log file viewer for the small-scale'
   homepage 'https://lnav.org/'
-  version '0.14.0'
+  version '0.14.1'
   license 'BSD-2 Clause'
   compatibility 'x86_64'
   source_url 'https://github.com/tstack/lnav.git'
