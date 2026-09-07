@@ -11,10 +11,10 @@ class Mdp < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4e30487f9e37ebc8c5bddc17815e2796789cdfb8a437ef1c4799ed463294f839',
-     armv7l: '4e30487f9e37ebc8c5bddc17815e2796789cdfb8a437ef1c4799ed463294f839',
-       i686: '22b69eb6d4c62a90c545ad0cebd782a82e1a679241364c0ddf42f0aedac53396',
-     x86_64: '8327b998aae1a770f5debfe963389613bef1496650cc5516963bf503ab1a439b'
+    aarch64: '544142370778a36e908ee76a362cbe8efe05bb041ce052fe388a81488f8fa5e3',
+     armv7l: '544142370778a36e908ee76a362cbe8efe05bb041ce052fe388a81488f8fa5e3',
+       i686: '8b36008afc91d7014aecb04b6ff25874573177c7909b00a50687171c5cc44bf8',
+     x86_64: 'd39384dda4837dc72b392fd318d2dbed746dde5dd0cfeb9900ac79ed02e2eee3'
   })
 
   depends_on 'glibc' => :executable
