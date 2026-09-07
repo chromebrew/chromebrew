@@ -1,0 +1,3 @@
+#!/bin/bash
+cadaver -h
+cadaver -V
