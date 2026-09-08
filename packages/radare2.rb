@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Radare2 < Meson
   description 'unix-like reverse engineering framework and commandline tools'
   homepage 'https://www.radare.org/r/'
-  version '6.2.0'
+  version '6.2.2'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/radare/radare2.git'
