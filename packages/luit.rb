@@ -6,7 +6,7 @@ require 'buildsystems/autotools'
 class Luit < Autotools
   description 'Filter that can be run between an arbitrary application and a UTF-8 terminal emulator'
   homepage 'https://invisible-island.net/luit/luit.html'
-  version '20250912'
+  version '20260907'
   license 'custom'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/ThomasDickey/luit-snapshots.git'
