@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gegl < Meson
   description 'GEGL (Generic Graphics Library) is a data flow based image processing framework, providing floating point processing and non-destructive image processing capabilities to GNU Image Manipulation Program and other projects.'
   homepage 'https://gegl.org/'
-  version '0.4.70'
+  version '0.4.72'
   license 'GPL-3+ and LGPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gegl.git'
@@ -11,9 +11,9 @@ class Gegl < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0f985bd32c2993ca0c9415867ad10f94544b7bb62e3d7d79cfd0dfe219124e0f',
-     armv7l: '0f985bd32c2993ca0c9415867ad10f94544b7bb62e3d7d79cfd0dfe219124e0f',
-     x86_64: '4f0b84341e743b588fc84386ab03efff927c1a98b522f63bd29c923a57593083'
+    aarch64: '650d46ca039e0533d953382548168c67f72e6d3973029e0eef8fff84cef5ea3f',
+     armv7l: '650d46ca039e0533d953382548168c67f72e6d3973029e0eef8fff84cef5ea3f',
+     x86_64: 'e57a7b6cb0b5f9e387a15b72000e16625347969a2866a17d9fbebc147d2045cf'
   })
 
   depends_on 'babl' => :library
@@ -47,6 +47,7 @@ class Gegl < Meson
   depends_on 'py3_asciidoc' => :build
   depends_on 'sdl2' => :library
   depends_on 'sdl2_compat' => :library
+  depends_on 'sdl3' => :library
   depends_on 'source_highlight' => :build
   depends_on 'suitesparse' => :library
   depends_on 'vala' => :build
