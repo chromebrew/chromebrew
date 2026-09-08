@@ -11,10 +11,10 @@ class Cryptsetup < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '35a43ff3a863c5e5405d050d765797d6e2f2592a725eb8cba8d2fb10caea7894',
-     armv7l: '35a43ff3a863c5e5405d050d765797d6e2f2592a725eb8cba8d2fb10caea7894',
-       i686: '1696be692ab61f6a66cadd6a8fd38ff55197f5542dc86e1d4031fd7564681bb3',
-     x86_64: 'b8b274191f932f18b4aaa9d60e18c862f93241168c932ed03cbc6312eadded09'
+    aarch64: '7d71490ef7064b9130c419f2ca84c616f603cd4882f5b8fd1cf517364eade7e3',
+     armv7l: '7d71490ef7064b9130c419f2ca84c616f603cd4882f5b8fd1cf517364eade7e3',
+       i686: '90c348d457d030e9be33f0c6a9e0bae51c3752a87e3bbd8f18ef20667d13ffda',
+     x86_64: 'ea79114c241954483341e3199deab8c62f12ee8c864fddfe1ef0a627ec570805'
   })
 
   depends_on 'glibc' => :library
