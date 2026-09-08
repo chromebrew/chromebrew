@@ -1,4 +1,4 @@
-# Total size: 1709850
+# Total size: 1702971
 /usr/local/bin/cookbook
 /usr/local/bin/fitscopy
 /usr/local/bin/fitsverify
@@ -17,5 +17,5 @@
 /usr/local/lib/cmake/cfitsio/cfitsioTargets.cmake
 /usr/local/lib/libcfitsio.so
 /usr/local/lib/libcfitsio.so.10
-/usr/local/lib/libcfitsio.so.4.6.3
+/usr/local/lib/libcfitsio.so.4.7.0
 /usr/local/lib/pkgconfig/cfitsio.pc

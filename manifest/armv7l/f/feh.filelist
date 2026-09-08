@@ -1,4 +1,4 @@
-# Total size: 413180
+# Total size: 1045362
 /usr/local/bin/feh
 /usr/local/share/applications/feh.desktop
 /usr/local/share/doc/feh/AUTHORS
@@ -9,8 +9,7 @@
 /usr/local/share/doc/feh/examples/find-lowres
 /usr/local/share/doc/feh/examples/keys
 /usr/local/share/doc/feh/examples/themes
-/usr/local/share/feh/fonts/black.style
-/usr/local/share/feh/fonts/menu.style
+/usr/local/share/feh/fonts/NotoSans-Medium.ttf
 /usr/local/share/feh/fonts/yudit.ttf
 /usr/local/share/feh/images/feh.png
 /usr/local/share/feh/images/feh.svg

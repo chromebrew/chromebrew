@@ -6,7 +6,7 @@ require 'buildsystems/rust'
 class Cargo_about < RUST
   description 'Cargo plugin to generate list of all licenses for a crate'
   homepage 'https://github.com/EmbarkStudios/cargo-about'
-  version '0.8.4'
+  version '0.9.2'
   license 'Apache MIT'
   compatibility 'all'
   source_url 'https://github.com/EmbarkStudios/cargo-about.git'
@@ -14,16 +14,18 @@ class Cargo_about < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '46f9e15a46d9ffbba523052af853b5c80b51aeb8fa6350aa56a2fde836ca8874',
-     armv7l: '46f9e15a46d9ffbba523052af853b5c80b51aeb8fa6350aa56a2fde836ca8874',
-       i686: 'a571d1a7721ee07663838d86041be348c27c88b3b2faf5686f4084e45cd13a68',
-     x86_64: 'f2bfb1f67c896be2bfb43d1422b3a27ae8138a03f0a90b8fdb7042c42bd8cbce'
+    aarch64: '45e5070b43f50535d16bd3c16dc78d352b763e6cbc0fe1cc44de291c4431aa6e',
+     armv7l: '45e5070b43f50535d16bd3c16dc78d352b763e6cbc0fe1cc44de291c4431aa6e',
+       i686: 'bd44b38d9815f68f2bd8a2268d3b4bf3f033f64964f2add7380757760f7be94d',
+     x86_64: '4d1483b1b0b2e7f73b8e2405fe8594a5a83333b1669e5a94c220a4cda39236d1'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'rust' => :build
 
+  rust_features 'cli'
   rust_install_extras do
     Dir.chdir("#{CREW_DEST_PREFIX}/bin") do
       FileUtils.ln_s 'cargo-about', 'about'

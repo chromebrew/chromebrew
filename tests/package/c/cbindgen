@@ -1,0 +1,3 @@
+#!/bin/bash
+cbindgen -h | head
+cbindgen -V
