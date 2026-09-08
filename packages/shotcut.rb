@@ -3,16 +3,16 @@ require 'package'
 class Shotcut < Package
   description 'Shotcut is a free, open source, cross-platform video editor.'
   homepage 'https://www.shotcut.org/'
-  version '26.8.1'
+  version '26.9.6'
   license 'GPL-3+'
   compatibility 'x86_64'
   min_glibc '2.30'
   source_url "https://github.com/mltframework/shotcut/releases/download/v#{version}/shotcut-linux-x86_64-#{version}.txz"
-  source_sha256 'c4befab2240964389df6139f00aae0b92949f398fd98083b922f3aabd8b7a844'
+  source_sha256 '91d949204de365fa2bb6eac456c6157f5e8feeefbe6302962819876186ed51e6'
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: 'd341979d20ece8b8d972505f3b1c59ed871fb577e67baedaf33c2188045c0a73'
+     x86_64: '237a0745a23fdeda9e6528004b2a44a75dce0472cce1871880140c0fa5ad9c6b'
   })
 
   depends_on 'acl' => :library
@@ -27,6 +27,7 @@ class Shotcut < Package
   depends_on 'elfutils' => :library
   depends_on 'eudev' => :library
   depends_on 'expat' => :library
+  depends_on 'ffmpeg' => :library
   depends_on 'fftw' => :library
   depends_on 'filecmd' => :library
   depends_on 'flac' => :library
