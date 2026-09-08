@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Libp11 < Autotools
   description 'PKCS#11 wrapper library'
   homepage 'https://github.com/OpenSC/libp11'
-  version '0.4.20'
+  version '0.4.21'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://github.com/OpenSC/libp11.git'
@@ -11,10 +11,10 @@ class Libp11 < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c35587a9a938f47a9f329ae10789c197ec94d1a17f774b8e39f444c65ccc4803',
-     armv7l: 'c35587a9a938f47a9f329ae10789c197ec94d1a17f774b8e39f444c65ccc4803',
-       i686: 'c1c566f74c4748834f2d6804726808bb62d093fb6af8a29f8fa173e0182edbf7',
-     x86_64: '6abe2ffa009f4d22c856edf6380440f9c21531f2d4d356779176e6b052d54e01'
+    aarch64: '91ae06221014607ccca85c2629d1e2a5518654f1336ae38fb36662cb4536b08a',
+     armv7l: '91ae06221014607ccca85c2629d1e2a5518654f1336ae38fb36662cb4536b08a',
+       i686: 'bbe225c3d985716127aa39dccbfec8625e31b54da49d6175f619548b8798347c',
+     x86_64: '7517fd0849d7938925172e3323ac6c582d127161899bfbe706c067f07b4454ff'
   })
 
   depends_on 'glibc' => :library
