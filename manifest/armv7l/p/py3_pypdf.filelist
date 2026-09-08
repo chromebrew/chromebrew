@@ -1,13 +1,14 @@
-# Total size: 3942760
-/usr/local/lib/python3.14/site-packages/pypdf-6.17.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/pypdf-6.17.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/pypdf-6.17.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/pypdf-6.17.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/pypdf-6.17.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/pypdf-6.17.0.dist-info/licenses/LICENSE
+# Total size: 3988799
+/usr/local/lib/python3.14/site-packages/pypdf-6.18.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/pypdf-6.18.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/pypdf-6.18.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/pypdf-6.18.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/pypdf-6.18.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/pypdf-6.18.0.dist-info/licenses/LICENSE
 /usr/local/lib/python3.14/site-packages/pypdf/__init__.py
 /usr/local/lib/python3.14/site-packages/pypdf/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pypdf/__pycache__/_cmap.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/pypdf/__pycache__/_configuration.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pypdf/__pycache__/_doc_common.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pypdf/__pycache__/_encryption.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pypdf/__pycache__/_font.cpython-314.pyc
@@ -42,6 +43,7 @@
 /usr/local/lib/python3.14/site-packages/pypdf/_codecs/std.py
 /usr/local/lib/python3.14/site-packages/pypdf/_codecs/symbol.py
 /usr/local/lib/python3.14/site-packages/pypdf/_codecs/zapfding.py
+/usr/local/lib/python3.14/site-packages/pypdf/_configuration.py
 /usr/local/lib/python3.14/site-packages/pypdf/_crypt_providers/__init__.py
 /usr/local/lib/python3.14/site-packages/pypdf/_crypt_providers/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pypdf/_crypt_providers/__pycache__/_base.cpython-314.pyc
@@ -93,6 +95,7 @@
 /usr/local/lib/python3.14/site-packages/pypdf/generic/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pypdf/generic/__pycache__/_appearance_stream.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pypdf/generic/__pycache__/_base.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/pypdf/generic/__pycache__/_color.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pypdf/generic/__pycache__/_data_structures.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pypdf/generic/__pycache__/_files.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pypdf/generic/__pycache__/_fit.cpython-314.pyc
@@ -105,6 +108,7 @@
 /usr/local/lib/python3.14/site-packages/pypdf/generic/__pycache__/_viewerpref.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pypdf/generic/_appearance_stream.py
 /usr/local/lib/python3.14/site-packages/pypdf/generic/_base.py
+/usr/local/lib/python3.14/site-packages/pypdf/generic/_color.py
 /usr/local/lib/python3.14/site-packages/pypdf/generic/_data_structures.py
 /usr/local/lib/python3.14/site-packages/pypdf/generic/_files.py
 /usr/local/lib/python3.14/site-packages/pypdf/generic/_fit.py
