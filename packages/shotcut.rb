@@ -12,7 +12,7 @@ class Shotcut < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: 'd341979d20ece8b8d972505f3b1c59ed871fb577e67baedaf33c2188045c0a73'
+     x86_64: '237a0745a23fdeda9e6528004b2a44a75dce0472cce1871880140c0fa5ad9c6b'
   })
 
   depends_on 'acl' => :library
@@ -27,6 +27,7 @@ class Shotcut < Package
   depends_on 'elfutils' => :library
   depends_on 'eudev' => :library
   depends_on 'expat' => :library
+  depends_on 'ffmpeg' => :library
   depends_on 'fftw' => :library
   depends_on 'filecmd' => :library
   depends_on 'flac' => :library
