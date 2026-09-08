@@ -1,19 +1,17 @@
-# Total size: 234736
-/usr/local/lib/python3.14/site-packages/meson_python-0.20.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/meson_python-0.20.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/meson_python-0.20.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/meson_python-0.20.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/meson_python-0.20.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/meson_python-0.20.0.dist-info/licenses/LICENSES/MIT.txt
+# Total size: 234857
+/usr/local/lib/python3.14/site-packages/meson_python-0.21.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/meson_python-0.21.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/meson_python-0.21.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/meson_python-0.21.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/meson_python-0.21.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/meson_python-0.21.0.dist-info/licenses/LICENSES/MIT.txt
 /usr/local/lib/python3.14/site-packages/mesonpy/__init__.py
 /usr/local/lib/python3.14/site-packages/mesonpy/__pycache__/__init__.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/mesonpy/__pycache__/_compat.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonpy/__pycache__/_editable.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonpy/__pycache__/_rpath.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonpy/__pycache__/_tags.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonpy/__pycache__/_util.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/mesonpy/__pycache__/_wheelfile.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/mesonpy/_compat.py
 /usr/local/lib/python3.14/site-packages/mesonpy/_editable.py
 /usr/local/lib/python3.14/site-packages/mesonpy/_rpath.py
 /usr/local/lib/python3.14/site-packages/mesonpy/_tags.py
