@@ -11,13 +11,13 @@ class Yyjson < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '26423264b2d7c2414a53b99db68415d6c4d911e14282ad33edf7c599e57676c0',
-     armv7l: '26423264b2d7c2414a53b99db68415d6c4d911e14282ad33edf7c599e57676c0',
-       i686: 'c43dfb2091d143cc43ddd78c353077f94b40d91fb62ee9eb3a535035468b57a8',
-     x86_64: 'f9ab48ee53291f51446a0a6238ae8263e6d7653a101c6b46f51354039f334b98'
+    aarch64: 'eb353952f67a8ea86e8522ba07a9594a20c707c6fa66faebd6aeacbaf4405ab7',
+     armv7l: 'eb353952f67a8ea86e8522ba07a9594a20c707c6fa66faebd6aeacbaf4405ab7',
+       i686: 'b8fcabc5f6f6fa33b351f84616a4a33180d91e0096bfa47341e222fc5ab37ef6',
+     x86_64: '0dfc843ba6189ff081f6a345669cd6bc93f5ae819541f225352aae827955fcbb'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
 
   cmake_options '-DBUILD_SHARED_LIBS=ON'
 end
