@@ -3,7 +3,7 @@ require 'package'
 class Clojure < Package
   description 'Clojure is a robust, practical, and fast programming language with a set of useful features that together form a simple, coherent, and powerful tool.'
   homepage 'https://clojure.org/'
-  version '1.12.4'
+  version '1.12.6'
   license 'EPL-1.0, Apache-2.0 and BSD'
   compatibility 'all'
   source_url 'https://github.com/clojure/clojure.git'
@@ -11,10 +11,10 @@ class Clojure < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7332fa47344f098834ece70893f628bfdcfcbfbbe46a05b2dfa74e086ea16f88',
-     armv7l: '7332fa47344f098834ece70893f628bfdcfcbfbbe46a05b2dfa74e086ea16f88',
-       i686: 'a1d5cf74cf77505f9df67d9fa7e7e38ae7c4bd195697e82d11e2aa286721c207',
-     x86_64: 'd7f573b1bb41662bda5fa512dafc1586ed3786f31073ba507fbc84929958abbc'
+    aarch64: 'c2e37a64531caca0843100445f4b645121c7f48faffca610d15abdcaca8018ef',
+     armv7l: 'c2e37a64531caca0843100445f4b645121c7f48faffca610d15abdcaca8018ef',
+       i686: '540f49371358d71abc23dc1f345493cf1064fbc6b91a1b88b7afa9039ba2f3a8',
+     x86_64: 'ae86daac4a6da4ef82814abaffa727628649ff44c248c981f3bf9b66a12b1111'
   })
 
   depends_on 'ant' => :build
