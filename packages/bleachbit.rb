@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/python'
 
-class Bleachbit < Package
+class Bleachbit < Python
   description 'Bleachbit provides a means to clean your system and free disk space.'
   homepage 'https://www.bleachbit.org/'
-  version '4.6.1'
+  version '6.0.3'
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/bleachbit/bleachbit.git'
@@ -11,28 +11,25 @@ class Bleachbit < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f33cbce2cb7a675895a564eee685893c168a832f4fe87d2d074df0371aeaf9dc',
-     armv7l: 'f33cbce2cb7a675895a564eee685893c168a832f4fe87d2d074df0371aeaf9dc',
-     x86_64: '24ef4d3ad423ca6695b92babb56848b236a83861660f13af2b884c63133abcd6'
+    aarch64: 'be72e9561fef1f48b4a4c81be48ca0f714565393424c42f198cfc5c79822bd35',
+     armv7l: 'be72e9561fef1f48b4a4c81be48ca0f714565393424c42f198cfc5c79822bd35',
+     x86_64: '2fed1eca841e55f1bbb6ab03fb3411034861990cdbd8e21638ec9fb07f564700'
   })
 
-  depends_on 'gtk3'
-  depends_on 'py3_chardet'
+  depends_on 'gtk3' => :library
+  depends_on 'py3_chardet' => :library
   depends_on 'py3_mock' => :build
-  depends_on 'py3_psutil'
-  depends_on 'py3_pygobject'
+  depends_on 'py3_psutil' => :library
+  depends_on 'py3_pygobject' => :library
   depends_on 'py3_requests' => :build
+  depends_on 'python3' => :logical
   depends_on 'python3', '>= 3.12.0'
 
-  def self.patch
-    # Improve portability around hardcoded /usr/share in bleachbit.py; respect destdir and prefix in po/Makefile; correct shebangs
-    downloader 'https://patch-diff.githubusercontent.com/raw/bleachbit/bleachbit/pull/1714.patch', '52ce1bc71c273a824f49369fdb467a7fa558c3f0724b0ad4c6ec6b37a633930e'
-    system 'git apply 1714.patch'
-  end
-
-  def self.install
+  python_install_extras do
     # This deletes windows-specific files.
     system 'make', 'delete_windows_files'
     system 'make', "prefix=#{CREW_PREFIX}", "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    # Fix Error in chown() under chownself().
+    system "sed -i '172,177d' #{CREW_DEST_PREFIX}/lib/python3.14/site-packages/bleachbit/General.py"
   end
 end
