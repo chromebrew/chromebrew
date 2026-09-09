@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Yyjson < CMake
   description 'A high performance JSON library written in ANSI C'
   homepage 'https://ibireme.github.io/yyjson'
-  version '0.12.0'
+  version '0.13.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/ibireme/yyjson.git'
