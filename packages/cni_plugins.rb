@@ -6,7 +6,7 @@ require 'package'
 class Cni_plugins < Package
   description 'Some standard networking plugins, maintained by the CNI team'
   homepage 'https://github.com/containernetworking/plugins'
-  version '1.6.2'
+  version '1.9.1'
   license 'Apache'
   compatibility 'all'
   source_url 'https://github.com/containernetworking/plugins.git'
@@ -14,13 +14,14 @@ class Cni_plugins < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c5e8bb6a459fe950f328dd1241aa76e684443240b2116edf4f73d98c5ab0ab69',
-     armv7l: 'c5e8bb6a459fe950f328dd1241aa76e684443240b2116edf4f73d98c5ab0ab69',
-       i686: 'b910ed5dd9fa300896f244df44bfa03cc2c81f56963b4f1612aa41707453e7be',
-     x86_64: '97c4a904b8380f50a07a4154fb54bbe967b78629b627f11e540894643c6dc90b'
+    aarch64: 'b25924449171e9153f631a401a2ae5ff74ea64dced8c943b21fb6a9ea7c058b1',
+     armv7l: 'b25924449171e9153f631a401a2ae5ff74ea64dced8c943b21fb6a9ea7c058b1',
+       i686: 'c637884b6397e6f2351a9db7503df3c0600be039bb06939bd0c769ca90b06992',
+     x86_64: 'ca587f79133f70df7808ebce625437c8444c99f5e850bfc7fd17d73683ae34f2'
   })
 
-  depends_on 'glibc'
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'go' => :build
 
   def self.build
