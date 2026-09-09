@@ -3,7 +3,7 @@ require 'package'
 class Phpsysinfo < Package
   description 'phpSysInfo is a customizable PHP Script that parses /proc, and formats information nicely.'
   homepage 'https://phpsysinfo.github.io/phpsysinfo/'
-  version '3.4.6'
+  version '3.4.7'
   license 'GPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/phpsysinfo/phpsysinfo.git'
