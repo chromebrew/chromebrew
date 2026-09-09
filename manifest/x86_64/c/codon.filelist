@@ -1,4 +1,4 @@
-# Total size: 226269639
+# Total size: 301908292
 /usr/local/bin/codon
 /usr/local/include/codon/cir/analyze/analysis.h
 /usr/local/include/codon/cir/analyze/dataflow/capture.h
@@ -46,12 +46,13 @@
 /usr/local/include/codon/cir/transform/parallel/schedule.h
 /usr/local/include/codon/cir/transform/pass.h
 /usr/local/include/codon/cir/transform/pythonic/dict.h
+/usr/local/include/codon/cir/transform/pythonic/format.h
 /usr/local/include/codon/cir/transform/pythonic/generator.h
 /usr/local/include/codon/cir/transform/pythonic/io.h
 /usr/local/include/codon/cir/transform/pythonic/list.h
 /usr/local/include/codon/cir/transform/pythonic/str.h
 /usr/local/include/codon/cir/transform/rewrite.h
-/usr/local/include/codon/cir/types/types.h
+/usr/local/include/codon/cir/type.h
 /usr/local/include/codon/cir/util/cloning.h
 /usr/local/include/codon/cir/util/context.h
 /usr/local/include/codon/cir/util/format.h
@@ -73,6 +74,7 @@
 /usr/local/include/codon/compiler/jit.h
 /usr/local/include/codon/compiler/jit_extern.h
 /usr/local/include/codon/compiler/memory_manager.h
+/usr/local/include/codon/compiler/options.h
 /usr/local/include/codon/config/config.h
 /usr/local/include/codon/dsl/dsl.h
 /usr/local/include/codon/dsl/plugins.h
@@ -104,14 +106,6 @@
 /usr/local/include/codon/parser/visitors/typecheck/ctx.h
 /usr/local/include/codon/parser/visitors/typecheck/typecheck.h
 /usr/local/include/codon/parser/visitors/visitor.h
-/usr/local/include/codon/runtime/floatlib/fp_extend.h
-/usr/local/include/codon/runtime/floatlib/fp_lib.h
-/usr/local/include/codon/runtime/floatlib/fp_trunc.h
-/usr/local/include/codon/runtime/floatlib/int_endianness.h
-/usr/local/include/codon/runtime/floatlib/int_lib.h
-/usr/local/include/codon/runtime/floatlib/int_math.h
-/usr/local/include/codon/runtime/floatlib/int_types.h
-/usr/local/include/codon/runtime/floatlib/int_util.h
 /usr/local/include/codon/runtime/lib.h
 /usr/local/include/codon/util/common.h
 /usr/local/include/codon/util/jupyter.h
@@ -162,6 +156,7 @@
 /usr/local/lib64/codon/stdlib/internal/__init_test__.codon
 /usr/local/lib64/codon/stdlib/internal/attributes.codon
 /usr/local/lib64/codon/stdlib/internal/builtin.codon
+/usr/local/lib64/codon/stdlib/internal/bytes.codon
 /usr/local/lib64/codon/stdlib/internal/c_stubs.codon
 /usr/local/lib64/codon/stdlib/internal/core.codon
 /usr/local/lib64/codon/stdlib/internal/dlopen.codon
@@ -171,15 +166,15 @@
 /usr/local/lib64/codon/stdlib/internal/gpu.codon
 /usr/local/lib64/codon/stdlib/internal/internal.codon
 /usr/local/lib64/codon/stdlib/internal/khash.codon
-/usr/local/lib64/codon/stdlib/internal/pynumerics.codon
+/usr/local/lib64/codon/stdlib/internal/ops.codon
 /usr/local/lib64/codon/stdlib/internal/python.codon
 /usr/local/lib64/codon/stdlib/internal/sort.codon
 /usr/local/lib64/codon/stdlib/internal/static.codon
 /usr/local/lib64/codon/stdlib/internal/str.codon
 /usr/local/lib64/codon/stdlib/internal/types/any.codon
-/usr/local/lib64/codon/stdlib/internal/types/array.codon
 /usr/local/lib64/codon/stdlib/internal/types/bool.codon
-/usr/local/lib64/codon/stdlib/internal/types/byte.codon
+/usr/local/lib64/codon/stdlib/internal/types/bytes.codon
+/usr/local/lib64/codon/stdlib/internal/types/collections/bytearray.codon
 /usr/local/lib64/codon/stdlib/internal/types/collections/dict.codon
 /usr/local/lib64/codon/stdlib/internal/types/collections/list.codon
 /usr/local/lib64/codon/stdlib/internal/types/collections/set.codon
@@ -192,17 +187,22 @@
 /usr/local/lib64/codon/stdlib/internal/types/generator.codon
 /usr/local/lib64/codon/stdlib/internal/types/import_.codon
 /usr/local/lib64/codon/stdlib/internal/types/int.codon
-/usr/local/lib64/codon/stdlib/internal/types/intn.codon
 /usr/local/lib64/codon/stdlib/internal/types/optional.codon
 /usr/local/lib64/codon/stdlib/internal/types/ptr.codon
 /usr/local/lib64/codon/stdlib/internal/types/range.codon
 /usr/local/lib64/codon/stdlib/internal/types/rtti.codon
 /usr/local/lib64/codon/stdlib/internal/types/slice.codon
-/usr/local/lib64/codon/stdlib/internal/types/str.codon
 /usr/local/lib64/codon/stdlib/internal/types/strbuf.codon
 /usr/local/lib64/codon/stdlib/internal/types/tuple.codon
 /usr/local/lib64/codon/stdlib/internal/types/type.codon
 /usr/local/lib64/codon/stdlib/internal/types/union.codon
+/usr/local/lib64/codon/stdlib/internal/unicode/codecs.codon
+/usr/local/lib64/codon/stdlib/internal/unicode/data.codon
+/usr/local/lib64/codon/stdlib/internal/unicode/float_dtoa.codon
+/usr/local/lib64/codon/stdlib/internal/unicode/float_dtoa_tables.codon
+/usr/local/lib64/codon/stdlib/internal/unicode/normalization.codon
+/usr/local/lib64/codon/stdlib/internal/unicode/normalization_data.codon
+/usr/local/lib64/codon/stdlib/internal/unicode/unicodedata_data.codon
 /usr/local/lib64/codon/stdlib/itertools.codon
 /usr/local/lib64/codon/stdlib/math.codon
 /usr/local/lib64/codon/stdlib/numpy/__init__.codon
@@ -266,6 +266,7 @@
 /usr/local/lib64/codon/stdlib/threading.codon
 /usr/local/lib64/codon/stdlib/time.codon
 /usr/local/lib64/codon/stdlib/typing.codon
+/usr/local/lib64/codon/stdlib/unicodedata.codon
 /usr/local/lib64/codon/stdlib/unittest.codon
 /usr/local/lib64/libcodon_jupyter.so
 /usr/local/lib64/libcodonc.so
