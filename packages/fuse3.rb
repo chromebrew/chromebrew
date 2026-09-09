@@ -19,6 +19,7 @@ class Fuse3 < Meson
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'py3_pytest' => :build
 
   meson_options "-Ddisable-mtab=true \
