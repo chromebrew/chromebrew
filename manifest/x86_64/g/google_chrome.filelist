@@ -1,4 +1,4 @@
-# Total size: 456949481
+# Total size: 454752082
 /usr/local/bin/google-chrome
 /usr/local/share/appdata/google-chrome.appdata.xml
 /usr/local/share/applications/com.google.Chrome.desktop
@@ -26,6 +26,7 @@
 /usr/local/share/chrome/liboptimization_guide_internal.so
 /usr/local/share/chrome/libqt5_shim.so
 /usr/local/share/chrome/libqt6_shim.so
+/usr/local/share/chrome/libsapisid.so
 /usr/local/share/chrome/libvk_swiftshader.so
 /usr/local/share/chrome/libvulkan.so.1
 /usr/local/share/chrome/locales/af.pak
