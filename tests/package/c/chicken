@@ -1,0 +1,3 @@
+#!/bin/bash
+chicken -help | head
+chicken -version

@@ -1,4 +1,4 @@
-# Total size: 4526098
+# Total size: 4096174
 /usr/local/share/phpsysinfo/CHANGELOG.md
 /usr/local/share/phpsysinfo/COPYING
 /usr/local/share/phpsysinfo/Dockerfile
@@ -847,6 +847,7 @@
 /usr/local/share/phpsysinfo/sample/main/cpuinfo14.txt
 /usr/local/share/phpsysinfo/sample/main/cpuinfo15.txt
 /usr/local/share/phpsysinfo/sample/main/cpuinfo16.txt
+/usr/local/share/phpsysinfo/sample/main/cpuinfo17.txt
 /usr/local/share/phpsysinfo/sample/main/cpuinfo2.txt
 /usr/local/share/phpsysinfo/sample/main/cpuinfo3.txt
 /usr/local/share/phpsysinfo/sample/main/cpuinfo4.txt

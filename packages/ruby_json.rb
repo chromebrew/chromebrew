@@ -3,17 +3,17 @@ require 'buildsystems/ruby'
 class Ruby_json < RUBY
   description 'This is a JSON implementation as a Ruby extension in C.'
   homepage 'https://flori.github.io/json'
-  version "3.0.0-#{CREW_RUBY_VER}"
+  version "3.0.1-#{CREW_RUBY_VER}"
   license 'Ruby'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: 'a503536c9a2956c99ab4b3a2ac78c8825b75b5e269da797707fa46e358529d2d',
-     armv7l: 'a503536c9a2956c99ab4b3a2ac78c8825b75b5e269da797707fa46e358529d2d',
-       i686: '7edc3864a2135bfd8e6a0680e42ce5d3907b58a64d27e599b2d92856d9ff7589',
-     x86_64: '7529d61b7cc6a89f5a79fbf08e18e2de8a4e576a948e6855c4ef6d2ae2ea449f'
+    aarch64: '5fc4ff84582bcc2f1d3fa186e97ed49a2c21855c8a55c85b3ffc98bf2211b80b',
+     armv7l: '5fc4ff84582bcc2f1d3fa186e97ed49a2c21855c8a55c85b3ffc98bf2211b80b',
+       i686: '7cf2109c99087e7645d836b916dcb9815e6d57d498b1dcaf3d66f0e6dddb271b',
+     x86_64: '91716e845d00a725255188f6d7564248daa9068bede40053858c7d214bf44e96'
   })
 
   depends_on 'glibc' => :library

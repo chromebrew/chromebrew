@@ -1,12 +1,12 @@
-# Total size: 419306675
-/usr/local/lib/python3.14/site-packages/oci-2.185.1.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/oci-2.185.1.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/oci-2.185.1.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/oci-2.185.1.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/oci-2.185.1.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/oci-2.185.1.dist-info/THIRD_PARTY_LICENSES.txt
-/usr/local/lib/python3.14/site-packages/oci-2.185.1.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/oci-2.185.1.dist-info/top_level.txt
+# Total size: 419485486
+/usr/local/lib/python3.14/site-packages/oci-2.185.2.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/oci-2.185.2.dist-info/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/oci-2.185.2.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/oci-2.185.2.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/oci-2.185.2.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/oci-2.185.2.dist-info/THIRD_PARTY_LICENSES.txt
+/usr/local/lib/python3.14/site-packages/oci-2.185.2.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/oci-2.185.2.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/oci/__init__.py
 /usr/local/lib/python3.14/site-packages/oci/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/__pycache__/_log_redaction.cpython-314.pyc
@@ -28162,6 +28162,7 @@
 /usr/local/lib/python3.14/site-packages/oci/ocvp/models/__pycache__/esxi_host_collection.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/ocvp/models/__pycache__/esxi_host_summary.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/ocvp/models/__pycache__/hcx_license_summary.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/ocvp/models/__pycache__/host_distribution_report_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/ocvp/models/__pycache__/initial_cluster_configuration.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/ocvp/models/__pycache__/initial_configuration.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/ocvp/models/__pycache__/inplace_upgrade_details.cpython-314.pyc
@@ -28249,6 +28250,7 @@
 /usr/local/lib/python3.14/site-packages/oci/ocvp/models/esxi_host_collection.py
 /usr/local/lib/python3.14/site-packages/oci/ocvp/models/esxi_host_summary.py
 /usr/local/lib/python3.14/site-packages/oci/ocvp/models/hcx_license_summary.py
+/usr/local/lib/python3.14/site-packages/oci/ocvp/models/host_distribution_report_details.py
 /usr/local/lib/python3.14/site-packages/oci/ocvp/models/initial_cluster_configuration.py
 /usr/local/lib/python3.14/site-packages/oci/ocvp/models/initial_configuration.py
 /usr/local/lib/python3.14/site-packages/oci/ocvp/models/inplace_upgrade_details.py
@@ -31566,8 +31568,10 @@
 /usr/local/lib/python3.14/site-packages/oci/redis/models/__pycache__/change_oci_cache_config_set_compartment_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/redis/models/__pycache__/change_oci_cache_user_compartment_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/redis/models/__pycache__/change_redis_cluster_compartment_details.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/redis/models/__pycache__/cluster_replication_topology.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/redis/models/__pycache__/configuration_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/redis/models/__pycache__/configuration_info.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/redis/models/__pycache__/convert_to_secondary_cluster_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/redis/models/__pycache__/create_identity_token_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/redis/models/__pycache__/create_oci_cache_backup_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/redis/models/__pycache__/create_oci_cache_config_set_details.cpython-314.pyc
@@ -31582,6 +31586,7 @@
 /usr/local/lib/python3.14/site-packages/oci/redis/models/__pycache__/identity_token_details_response.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/redis/models/__pycache__/import_oci_cache_from_object_storage_details.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/redis/models/__pycache__/import_oci_cache_from_object_storage_object.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/oci/redis/models/__pycache__/member_cluster.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/redis/models/__pycache__/node.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/redis/models/__pycache__/node_collection.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/oci/redis/models/__pycache__/node_summary.cpython-314.pyc
@@ -31626,8 +31631,10 @@
 /usr/local/lib/python3.14/site-packages/oci/redis/models/change_oci_cache_config_set_compartment_details.py
 /usr/local/lib/python3.14/site-packages/oci/redis/models/change_oci_cache_user_compartment_details.py
 /usr/local/lib/python3.14/site-packages/oci/redis/models/change_redis_cluster_compartment_details.py
+/usr/local/lib/python3.14/site-packages/oci/redis/models/cluster_replication_topology.py
 /usr/local/lib/python3.14/site-packages/oci/redis/models/configuration_details.py
 /usr/local/lib/python3.14/site-packages/oci/redis/models/configuration_info.py
+/usr/local/lib/python3.14/site-packages/oci/redis/models/convert_to_secondary_cluster_details.py
 /usr/local/lib/python3.14/site-packages/oci/redis/models/create_identity_token_details.py
 /usr/local/lib/python3.14/site-packages/oci/redis/models/create_oci_cache_backup_details.py
 /usr/local/lib/python3.14/site-packages/oci/redis/models/create_oci_cache_config_set_details.py
@@ -31642,6 +31649,7 @@
 /usr/local/lib/python3.14/site-packages/oci/redis/models/identity_token_details_response.py
 /usr/local/lib/python3.14/site-packages/oci/redis/models/import_oci_cache_from_object_storage_details.py
 /usr/local/lib/python3.14/site-packages/oci/redis/models/import_oci_cache_from_object_storage_object.py
+/usr/local/lib/python3.14/site-packages/oci/redis/models/member_cluster.py
 /usr/local/lib/python3.14/site-packages/oci/redis/models/node.py
 /usr/local/lib/python3.14/site-packages/oci/redis/models/node_collection.py
 /usr/local/lib/python3.14/site-packages/oci/redis/models/node_summary.py
