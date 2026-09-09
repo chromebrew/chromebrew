@@ -3,15 +3,17 @@ require 'package'
 class Audacity < Package
   description "Audacity is the world's most popular audio editing and recording app"
   homepage 'https://www.audacityteam.org/'
-  version '3.7.9'
+  version '4.0.0'
   license 'GPL-3'
   compatibility 'x86_64'
   min_glibc '2.30'
-  source_url "https://github.com/audacity/audacity/releases/download/Audacity-#{version}/audacity-linux-#{version}-x64-22.04.AppImage"
-  source_sha256 'e03f51163e370277039c2f2f665376a86b56aa51c9056aba00f8712d889ed654'
+  source_url "https://github.com/audacity/audacity/releases/download/Audacity-#{version}/audacity-linux-#{version}-x86_64.AppImage"
+  source_sha256 '772663b0b407be44232193b8402cde4da4665c7f6e81edb5b70e3b14e8b9b5b4'
 
-  depends_on 'gtk3'
-  depends_on 'libthai'
+  depends_on 'gtk3' => :library
+  depends_on 'libthai' => :library
+  depends_on 'portaudio' => :library
+  depends_on 'smplayer' => :library
   depends_on 'sommelier' => :logical
 
   no_shrink
@@ -21,7 +23,7 @@ class Audacity < Package
     File.write 'audacity.sh', <<~EOF
       #!/bin/bash
       export APPDIR=#{CREW_PREFIX}/share/audacity/usr
-      export LD_LIBRARY_PATH="#{CREW_PREFIX}/share/audacity/lib:#{CREW_LIB_PREFIX}"
+      export LD_LIBRARY_PATH="#{CREW_PREFIX}/share/audacity/lib:#{CREW_PREFIX}/share/smplayer/lib:#{CREW_LIB_PREFIX}"
       cd $APPDIR
       GDK_BACKEND=x11 ./AppRun "$@"
     EOF
@@ -45,5 +47,10 @@ class Audacity < Package
 
   def self.postinstall
     ExitMessage.add "\nType 'audacity' to get started.\n"
+  end
+
+  def self.postremove
+    Package.agree_to_remove("#{CREW_PREFIX}/.config/audacity4")
+    Package.agree_to_remove("#{CREW_PREFIX}/.config/Audacity")
   end
 end
