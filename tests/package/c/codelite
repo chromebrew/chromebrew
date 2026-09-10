@@ -1,0 +1,3 @@
+#!/bin/bash
+codelite -h 2>&1
+codelite -v 2> /dev/null
