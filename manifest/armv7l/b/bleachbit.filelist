@@ -1,9 +1,9 @@
-# Total size: 4414025
+# Total size: 4563661
 /usr/local/bin/bleachbit
-/usr/local/lib/python3.14/site-packages/bleachbit-6.0.3-py3.14.egg-info/PKG-INFO
-/usr/local/lib/python3.14/site-packages/bleachbit-6.0.3-py3.14.egg-info/SOURCES.txt
-/usr/local/lib/python3.14/site-packages/bleachbit-6.0.3-py3.14.egg-info/dependency_links.txt
-/usr/local/lib/python3.14/site-packages/bleachbit-6.0.3-py3.14.egg-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/bleachbit-6.0.4-py3.14.egg-info/PKG-INFO
+/usr/local/lib/python3.14/site-packages/bleachbit-6.0.4-py3.14.egg-info/SOURCES.txt
+/usr/local/lib/python3.14/site-packages/bleachbit-6.0.4-py3.14.egg-info/dependency_links.txt
+/usr/local/lib/python3.14/site-packages/bleachbit-6.0.4-py3.14.egg-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/bleachbit/Action.py
 /usr/local/lib/python3.14/site-packages/bleachbit/Bootstrap.py
 /usr/local/lib/python3.14/site-packages/bleachbit/CLI.py
@@ -31,6 +31,7 @@
 /usr/local/lib/python3.14/site-packages/bleachbit/GuiWindow.py
 /usr/local/lib/python3.14/site-packages/bleachbit/Language.py
 /usr/local/lib/python3.14/site-packages/bleachbit/Log.py
+/usr/local/lib/python3.14/site-packages/bleachbit/Mac.py
 /usr/local/lib/python3.14/site-packages/bleachbit/Memory.py
 /usr/local/lib/python3.14/site-packages/bleachbit/Network.py
 /usr/local/lib/python3.14/site-packages/bleachbit/Options.py
@@ -76,6 +77,7 @@
 /usr/local/lib/python3.14/site-packages/bleachbit/__pycache__/GuiWindow.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/bleachbit/__pycache__/Language.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/bleachbit/__pycache__/Log.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/bleachbit/__pycache__/Mac.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/bleachbit/__pycache__/Memory.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/bleachbit/__pycache__/Network.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/bleachbit/__pycache__/Options.cpython-314.pyc
@@ -132,6 +134,7 @@
 /usr/local/share/bleachbit/GuiWindow.py
 /usr/local/share/bleachbit/Language.py
 /usr/local/share/bleachbit/Log.py
+/usr/local/share/bleachbit/Mac.py
 /usr/local/share/bleachbit/Memory.py
 /usr/local/share/bleachbit/Network.py
 /usr/local/share/bleachbit/Options.py
@@ -201,6 +204,8 @@
 /usr/local/share/bleachbit/__pycache__/Language.cpython-314.pyc
 /usr/local/share/bleachbit/__pycache__/Log.cpython-314.opt-1.pyc
 /usr/local/share/bleachbit/__pycache__/Log.cpython-314.pyc
+/usr/local/share/bleachbit/__pycache__/Mac.cpython-314.opt-1.pyc
+/usr/local/share/bleachbit/__pycache__/Mac.cpython-314.pyc
 /usr/local/share/bleachbit/__pycache__/Memory.cpython-314.opt-1.pyc
 /usr/local/share/bleachbit/__pycache__/Memory.cpython-314.pyc
 /usr/local/share/bleachbit/__pycache__/Network.cpython-314.opt-1.pyc
@@ -234,6 +239,7 @@
 /usr/local/share/bleachbit/cleaners/adobe_reader.xml
 /usr/local/share/bleachbit/cleaners/amsn.xml
 /usr/local/share/bleachbit/cleaners/amule.xml
+/usr/local/share/bleachbit/cleaners/android_studio.xml
 /usr/local/share/bleachbit/cleaners/apt.xml
 /usr/local/share/bleachbit/cleaners/audacious.xml
 /usr/local/share/bleachbit/cleaners/bash.xml
@@ -293,6 +299,7 @@
 /usr/local/share/bleachbit/cleaners/realplayer.xml
 /usr/local/share/bleachbit/cleaners/recoll.xml
 /usr/local/share/bleachbit/cleaners/rhythmbox.xml
+/usr/local/share/bleachbit/cleaners/safari.xml
 /usr/local/share/bleachbit/cleaners/screenlets.xml
 /usr/local/share/bleachbit/cleaners/seamonkey.xml
 /usr/local/share/bleachbit/cleaners/secondlife_viewer.xml
