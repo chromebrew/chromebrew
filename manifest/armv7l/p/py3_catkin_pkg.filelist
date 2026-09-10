@@ -1,4 +1,4 @@
-# Total size: 491484
+# Total size: 492448
 /usr/local/bin/catkin_create_pkg
 /usr/local/bin/catkin_find_pkg
 /usr/local/bin/catkin_generate_changelog
@@ -6,14 +6,14 @@
 /usr/local/bin/catkin_prepare_release
 /usr/local/bin/catkin_tag_changelog
 /usr/local/bin/catkin_test_changelog
-/usr/local/lib/python3.14/site-packages/catkin_pkg-1.1.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/catkin_pkg-1.1.0.dist-info/LICENSE
-/usr/local/lib/python3.14/site-packages/catkin_pkg-1.1.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/catkin_pkg-1.1.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/catkin_pkg-1.1.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/catkin_pkg-1.1.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/catkin_pkg-1.1.0.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/catkin_pkg-1.1.0.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/catkin_pkg-1.1.1.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/catkin_pkg-1.1.1.dist-info/LICENSE
+/usr/local/lib/python3.14/site-packages/catkin_pkg-1.1.1.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/catkin_pkg-1.1.1.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/catkin_pkg-1.1.1.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/catkin_pkg-1.1.1.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/catkin_pkg-1.1.1.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/catkin_pkg-1.1.1.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/catkin_pkg/__init__.py
 /usr/local/lib/python3.14/site-packages/catkin_pkg/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/catkin_pkg/__pycache__/changelog.cpython-314.pyc
