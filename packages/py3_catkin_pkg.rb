@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_catkin_pkg < Pip
   description 'Library for retrieving information about catkin packages.'
   homepage 'https://wiki.ros.org/catkin_pkg'
-  version "1.1.0-#{CREW_PY_VER}"
+  version "1.1.1-#{CREW_PY_VER}"
   license 'BSD'
   compatibility 'all'
   source_url 'SKIP'
