@@ -10,10 +10,10 @@ class Py3_catkin_pkg < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '40ebd03764e442634442226b724a70b7314b7ef1bbed7effe6ab8f2f1cca9f54',
-     armv7l: '40ebd03764e442634442226b724a70b7314b7ef1bbed7effe6ab8f2f1cca9f54',
-       i686: '69df56902a4b8f333576a48cea1606baf63ca436334302bd95ebf6901c12d3f9',
-     x86_64: 'ff232f5078497fa29a4c9a849476a55bc79dccf2e1bbd22fa99d16bb1c0b57ca'
+    aarch64: '43598fbdde1533b265b09f851b4a9f955f422623c3161ae25987bde4282ef253',
+     armv7l: '43598fbdde1533b265b09f851b4a9f955f422623c3161ae25987bde4282ef253',
+       i686: 'a08abd48b818fb36310fc16ee55766fa33f76424840f337ac09189fd161c8aa0',
+     x86_64: '96b74b3a69adb5a700aced3fd66e83e4b5e904d0af85b78ca55990fa3e8394af'
   })
 
   depends_on 'python3' => :logical
