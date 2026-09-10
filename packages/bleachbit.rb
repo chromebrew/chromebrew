@@ -3,7 +3,7 @@ require 'buildsystems/python'
 class Bleachbit < Python
   description 'Bleachbit provides a means to clean your system and free disk space.'
   homepage 'https://www.bleachbit.org/'
-  version '6.0.3'
+  version '6.0.4'
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/bleachbit/bleachbit.git'
