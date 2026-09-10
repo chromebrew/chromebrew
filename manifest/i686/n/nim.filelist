@@ -1,11 +1,10 @@
-# Total size: 19252438
+# Total size: 19265957
 /usr/local/bin/nim
 /usr/local/share/nim/bin/nim
 /usr/local/share/nim/compiler/aliasanalysis.nim
 /usr/local/share/nim/compiler/aliases.nim
 /usr/local/share/nim/compiler/ast.nim
 /usr/local/share/nim/compiler/astalgo.nim
-/usr/local/share/nim/compiler/astdef.nim
 /usr/local/share/nim/compiler/astmsgs.nim
 /usr/local/share/nim/compiler/astyaml.nim
 /usr/local/share/nim/compiler/bitsets.nim
