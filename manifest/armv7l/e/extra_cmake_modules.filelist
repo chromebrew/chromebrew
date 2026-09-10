@@ -1,4 +1,4 @@
-# Total size: 1952568
+# Total size: 2015231
 /usr/local/share/ECM/cmake/ECMConfig.cmake
 /usr/local/share/ECM/cmake/ECMConfigVersion.cmake
 /usr/local/share/ECM/find-modules/ECMFindModuleHelpersStub.cmake
@@ -89,6 +89,7 @@
 /usr/local/share/ECM/modules/ECMGenerateQDoc.cmake
 /usr/local/share/ECM/modules/ECMGenerateQmlTypes.cmake
 /usr/local/share/ECM/modules/ECMInstallIcons.cmake
+/usr/local/share/ECM/modules/ECMInstalledLibraryCheck.cmake
 /usr/local/share/ECM/modules/ECMMarkAsTest.cmake
 /usr/local/share/ECM/modules/ECMMarkNonGuiExecutable.cmake
 /usr/local/share/ECM/modules/ECMOptionalAddSubdirectory.cmake
@@ -119,6 +120,7 @@
 /usr/local/share/ECM/modules/ECMWinResolveSymlinks.cmake
 /usr/local/share/ECM/modules/QtVersionOption.cmake
 /usr/local/share/ECM/modules/check-outbound-license.py
+/usr/local/share/ECM/modules/ecm_create_installed_library_check.cmake
 /usr/local/share/ECM/modules/ecm_uninstall.cmake.in
 /usr/local/share/ECM/test-modules/test_execute_and_compare.cmake
 /usr/local/share/ECM/toolchain/Android.cmake
@@ -206,6 +208,7 @@
 /usr/local/share/doc/ECM/html/_sources/module/ECMGenerateQDoc.rst.txt
 /usr/local/share/doc/ECM/html/_sources/module/ECMGenerateQmlTypes.rst.txt
 /usr/local/share/doc/ECM/html/_sources/module/ECMInstallIcons.rst.txt
+/usr/local/share/doc/ECM/html/_sources/module/ECMInstalledLibraryCheck.rst.txt
 /usr/local/share/doc/ECM/html/_sources/module/ECMMarkAsTest.rst.txt
 /usr/local/share/doc/ECM/html/_sources/module/ECMMarkNonGuiExecutable.rst.txt
 /usr/local/share/doc/ECM/html/_sources/module/ECMOptionalAddSubdirectory.rst.txt
@@ -315,6 +318,7 @@
 /usr/local/share/doc/ECM/html/module/ECMGenerateQDoc.html
 /usr/local/share/doc/ECM/html/module/ECMGenerateQmlTypes.html
 /usr/local/share/doc/ECM/html/module/ECMInstallIcons.html
+/usr/local/share/doc/ECM/html/module/ECMInstalledLibraryCheck.html
 /usr/local/share/doc/ECM/html/module/ECMMarkAsTest.html
 /usr/local/share/doc/ECM/html/module/ECMMarkNonGuiExecutable.html
 /usr/local/share/doc/ECM/html/module/ECMOptionalAddSubdirectory.html
