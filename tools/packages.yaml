@@ -10120,6 +10120,11 @@ url: https://github.com/twogood/unshield/releases
 activity: none
 ---
 kind: url
+name: unsloth
+url: https://github.com/unslothai/unsloth/releases
+activity: high
+---
+kind: url
 name: unzip
 url: https://sourceforge.net/projects/infozip/files/UnZip%206.x%20%28latest%29/
 activity: none
