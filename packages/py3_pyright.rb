@@ -10,10 +10,10 @@ class Py3_pyright < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '74acea14283026d867124da3e96c03f66284b2a0afcddbaa22ff373e763bee31',
-     armv7l: '74acea14283026d867124da3e96c03f66284b2a0afcddbaa22ff373e763bee31',
-       i686: '680dbf0ff243555fb702af45c40e403457f2a729e37efa31a9c4e5d5acdfa1ac',
-     x86_64: '543603a52b933895720ce92194935d21e22b8bfd59fc69043a9e77398a54ebd0'
+    aarch64: '1095ad2d06ba297e7a0e950351804cd59b07dbd1226dd1a070d4eec7008dbf36',
+     armv7l: '1095ad2d06ba297e7a0e950351804cd59b07dbd1226dd1a070d4eec7008dbf36',
+       i686: 'a6c349fd857237774e6e3cee48e9fffcc6769dae4e7e04fc4e1fd39846f33786',
+     x86_64: 'be3d8df61f7f0bc46b72cb7026cebee1fdeb69e9b5c8d4181b658302cf00845c'
   })
 
   depends_on 'py3_nodeenv'
