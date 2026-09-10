@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Lft < Autotools
   description "LFT, short for Layer Four Traceroute, is a sort of 'traceroute' that often works much faster (than the commonly-used Van Jacobson method) and goes through many configurations of packet-filters (firewalls)."
   homepage 'https://pwhois.org/lft/'
-  version '3.99'
+  version '4.0'
   license 'VOSTROM'
   compatibility 'all'
   source_url "https://deb.debian.org/debian/pool/main/l/lft/lft_#{version}.orig.tar.gz"
-  source_sha256 'f34707b543391eb887ba8479f7d2c2670bfefc3afb244dc5d34a2a41d7b317eb'
+  source_sha256 'b1645ade44896a69efcbd0dbd78321b5b2dce1fdb68c890d45b26d2d09262b9c'
   binary_compression 'tar.zst'
 
   binary_sha256({
