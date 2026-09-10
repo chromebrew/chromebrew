@@ -5,7 +5,7 @@ class Glib_stub < Meson
   description 'Glib stub built without gobject_introspection, needed as a build dep for gobject_instrospection'
   homepage 'https://developer.gnome.org/glib'
   version Glib.version
-  version '2.88.3'
+  version '2.90.0'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/glib.git'
@@ -13,10 +13,10 @@ class Glib_stub < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '56b17b33e97b3a487d547538247e20589f59331bf309b72b048b277b62f1ebdd',
-     armv7l: '56b17b33e97b3a487d547538247e20589f59331bf309b72b048b277b62f1ebdd',
-       i686: '700e7846686f08a678c15aa4c835e07313548d02e0513c6602617fe08508245f',
-     x86_64: '7e47a90a4791957868ae58a87c4e9e98aee81435fcaa60b9e283ca8f0d02f6f2'
+    aarch64: '48440f4633b40f8d3d6da77449c28c4ade96c59cbea2b2a084a9056bab7a2624',
+     armv7l: '48440f4633b40f8d3d6da77449c28c4ade96c59cbea2b2a084a9056bab7a2624',
+       i686: '6d53923c0f428f66b996a588ec5b6fbb08594118ca93c2d286234f325b341921',
+     x86_64: '9318e7aea91f0f6fbf116fb88b3b8599357584407b9317027af01e705dbb66ba'
   })
 
   depends_on 'elfutils' => :executable
