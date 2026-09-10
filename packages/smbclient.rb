@@ -11,9 +11,9 @@ class Smbclient < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '54dfab0af8a31f38ab18ed23f5025aa3988ee42d87e919b013bf324b66137cbc',
-     armv7l: '54dfab0af8a31f38ab18ed23f5025aa3988ee42d87e919b013bf324b66137cbc',
-     x86_64: 'bd9f9e81480a6b92c9a611865ac1fab6e8c1ac0a7ea59a9e1c922584196f8386'
+    aarch64: 'c5f728c7afb949499d5208ef7d191ae185b738dde05d47c5f8ae4102c0830bcf',
+     armv7l: 'c5f728c7afb949499d5208ef7d191ae185b738dde05d47c5f8ae4102c0830bcf',
+     x86_64: '2b46d38dd5944cc5cd84cee2a333074c3c3ac6893cf031c356de8b01600e15ee'
   })
 
   depends_on 'acl' => :library
