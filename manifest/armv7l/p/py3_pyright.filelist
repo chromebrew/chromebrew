@@ -1,16 +1,16 @@
-# Total size: 20176522
+# Total size: 20288657
 /usr/local/bin/pyright
 /usr/local/bin/pyright-langserver
 /usr/local/bin/pyright-python
 /usr/local/bin/pyright-python-langserver
-/usr/local/lib/python3.14/site-packages/pyright-1.1.413.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/pyright-1.1.413.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/pyright-1.1.413.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/pyright-1.1.413.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/pyright-1.1.413.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/pyright-1.1.413.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/pyright-1.1.413.dist-info/licenses/LICENSE
-/usr/local/lib/python3.14/site-packages/pyright-1.1.413.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/pyright-1.1.414.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/pyright-1.1.414.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/pyright-1.1.414.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/pyright-1.1.414.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/pyright-1.1.414.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/pyright-1.1.414.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/pyright-1.1.414.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/pyright-1.1.414.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/pyright/__init__.py
 /usr/local/lib/python3.14/site-packages/pyright/__main__.py
 /usr/local/lib/python3.14/site-packages/pyright/__pycache__/__init__.cpython-314.pyc
