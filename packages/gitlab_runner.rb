@@ -3,7 +3,7 @@ require 'package'
 class Gitlab_runner < Package
   description 'Run your CI/CD jobs and send the results back to GitLab'
   homepage 'https://gitlab.com/gitlab-org/gitlab-runner'
-  version '19.3.1'
+  version '19.3.2'
   license 'MIT'
   compatibility 'all'
   source_url({
@@ -13,10 +13,10 @@ class Gitlab_runner < Package
      x86_64: "https://s3.dualstack.us-east-1.amazonaws.com/gitlab-runner-downloads/v#{version}/binaries/gitlab-runner-linux-amd64"
   })
   source_sha256({
-    aarch64: '9762446209d2c7b9c05ac8350e9621e5ee9936a73e168bf20dfabbdb65d721e5',
-     armv7l: '9762446209d2c7b9c05ac8350e9621e5ee9936a73e168bf20dfabbdb65d721e5',
-       i686: '44a17600546c0ad666832ef8e73ec37d2af40d6d01d9d138793f146bbb2c2c48',
-     x86_64: 'c5e647c3b2ab3ac51f577bc8b22575ab5cbe7ab0889ca82a2d79dab08156960e'
+    aarch64: '254b346193aa559c6283d170d46a4b944655d44194b022c754a50b78c305f646',
+     armv7l: '254b346193aa559c6283d170d46a4b944655d44194b022c754a50b78c305f646',
+       i686: '0c471bc16bd5cc40de912a84419d6042f8212ab66e4ad0e72012da3c48da4bab',
+     x86_64: 'ce0e28cde2a4d554c48a1eee43706dc400a18067eb1e91e001a5e55c5ea0ecf6'
   })
 
   no_compile_needed
