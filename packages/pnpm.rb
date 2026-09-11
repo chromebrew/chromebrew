@@ -3,12 +3,12 @@ require 'package'
 class Pnpm < Package
   description 'Fast, disk space efficient package manager'
   homepage 'https://pnpm.io/'
-  version '12.4.0'
+  version '12.4.1'
   license 'MIT'
   compatibility 'x86_64'
   min_glibc '2.28'
   source_url "https://github.com/pnpm/pnpm/releases/download/v#{version}/pnpm-linux-x64.tar.gz"
-  source_sha256 'fcff7ecad46365d356718a40a88a72b4c02eae9d075d567e032697d769f3d999'
+  source_sha256 '66e9886299085dade56e203ae0e3586f35787f8801a68d33ec07ac17b0de2001'
 
   no_compile_needed
 
