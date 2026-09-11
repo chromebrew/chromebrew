@@ -39,13 +39,16 @@ class Gcc_build < Package
   @cflags = @cxxflags = "-fPIC -pipe #{@glibc_flags} -B#{CREW_LIB_PREFIX}"
   @languages = 'c,c++,jit,objc,fortran,go,rust,cobol'
   case ARCH
-  when 'armv7l', 'aarch64'
+  when 'armv7l'
     @archflags = '--with-arch=armv7-a+fp --with-float=hard --with-tune=cortex-a15 --with-fpu=vfpv3-d16'
-  when 'x86_64'
-    @archflags = '--with-arch-64=x86-64'
+    @languages = @languages.gsub(',cobol', '')  # COBOL in GCC needs 64bits
   when 'i686'
     @archflags = '--with-arch-32=i686'
     @languages = @languages.gsub(',cobol', '')  # COBOL in GCC needs 64bits
+  when 'aarch64'
+    @archflags = '--with-arch=armv7-a+fp --with-float=hard --with-tune=cortex-a15 --with-fpu=vfpv3-d16'
+  when 'x86_64'
+    @archflags = '--with-arch-64=x86-64'
   end
   @ldflags = @glibc_flags
   @path = "#{CREW_PREFIX}/share/cargo/bin:" + ENV.fetch('PATH', nil)
