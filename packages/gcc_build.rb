@@ -2,7 +2,7 @@ require 'English'
 require 'package'
 
 class Gcc_build < Package
-  description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, Go, and COBOL.'
+  description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, Go, and for 64bit: COBOL.'
   homepage 'https://www.gnu.org/software/gcc/'
   version '16.2.0'
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
@@ -37,18 +37,15 @@ class Gcc_build < Package
 
   @glibc_flags = "-L#{CREW_LIB_PREFIX}"
   @cflags = @cxxflags = "-fPIC -pipe #{@glibc_flags} -B#{CREW_LIB_PREFIX}"
-  @languages = 'c,c++,jit,objc,fortran,go,rust,cobol'
+  @languages = 'c,c++,jit,objc,fortran,go,rust'
   case ARCH
-  when 'armv7l'
-    @archflags = '--with-arch=armv7-a+fp --with-float=hard --with-tune=cortex-a15 --with-fpu=vfpv3-d16'
-    @languages = @languages.gsub(',cobol', '')  # COBOL in GCC needs 64bits
-  when 'i686'
-    @archflags = '--with-arch-32=i686'
-    @languages = @languages.gsub(',cobol', '')  # COBOL in GCC needs 64bits
-  when 'aarch64'
+  when 'armv7l', 'aarch64'
     @archflags = '--with-arch=armv7-a+fp --with-float=hard --with-tune=cortex-a15 --with-fpu=vfpv3-d16'
   when 'x86_64'
     @archflags = '--with-arch-64=x86-64'
+    @languages = "#{@languages},cobol"  # COBOL in GCC needs 64bits, so only added here
+  when 'i686'
+    @archflags = '--with-arch-32=i686'
   end
   @ldflags = @glibc_flags
   @path = "#{CREW_PREFIX}/share/cargo/bin:" + ENV.fetch('PATH', nil)
