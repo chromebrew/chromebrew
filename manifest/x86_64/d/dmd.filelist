@@ -1,4 +1,4 @@
-# Total size: 104847372
+# Total size: 106646450
 /usr/local/bin/ddemangle
 /usr/local/bin/dmd
 /usr/local/bin/dub
@@ -7,8 +7,8 @@
 /usr/local/etc/dmd.conf
 /usr/local/lib64/libphobos2.a
 /usr/local/lib64/libphobos2.so
-/usr/local/lib64/libphobos2.so.0.112
-/usr/local/lib64/libphobos2.so.0.112.0
+/usr/local/lib64/libphobos2.so.0.113
+/usr/local/lib64/libphobos2.so.0.113.0
 /usr/local/share/man/man1/dmd.1.zst
 /usr/local/share/man/man1/dumpobj.1.zst
 /usr/local/share/man/man1/obj2asm.1.zst
