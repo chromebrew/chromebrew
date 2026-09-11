@@ -7,13 +7,13 @@ class Gtk4 < Meson
   license 'LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
-  git_hashtag version.split('-').first
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e7868a7b7a9c09c7eabe551dca1fbe3aa57d3d3a0a4d440daeddcc4367fbd177',
-     armv7l: 'e7868a7b7a9c09c7eabe551dca1fbe3aa57d3d3a0a4d440daeddcc4367fbd177',
-     x86_64: '2bfc16c55ab83c9504479d94afcadfc9b90ed1c19e5f5b2a9ee3b4ca237bc09f'
+    aarch64: '6dab82180b91c99b4034c6fff98ce3f0e20eed34237a9b8c740d9eb15fab05dc',
+     armv7l: '6dab82180b91c99b4034c6fff98ce3f0e20eed34237a9b8c740d9eb15fab05dc',
+     x86_64: '0d642cd36409ee8438fbf8f28b7ae95836e86f5bce2a1be0607fd8d8ae078be6'
   })
 
   depends_on 'adwaita_fonts' => :logical
@@ -85,7 +85,7 @@ class Gtk4 < Meson
       ['https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/9745.diff',
        'ef266dab0038693a26723f438bb40af0c8f0577f4ea817b513ff22b94070eec7']
     ]
-    ConvenienceFunctions.patch(patches) if ARCH != 'x86_64' && version.split('-').first.eql?('4.22.4')
+    ConvenienceFunctions.patch(patches) if ARCH != 'x86_64' && version.eql?('4.22.4')
   end
 
   meson_options '-Dbroadway-backend=true \
