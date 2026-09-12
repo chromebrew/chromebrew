@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gtk4 < Meson
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://www.gtk.org/'
-  version '4.22.5'
+  version '4.24.0'
   license 'LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
@@ -11,9 +11,9 @@ class Gtk4 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6dab82180b91c99b4034c6fff98ce3f0e20eed34237a9b8c740d9eb15fab05dc',
-     armv7l: '6dab82180b91c99b4034c6fff98ce3f0e20eed34237a9b8c740d9eb15fab05dc',
-     x86_64: '0d642cd36409ee8438fbf8f28b7ae95836e86f5bce2a1be0607fd8d8ae078be6'
+    aarch64: '46487af5bbd489c6e74a2e7ed091f8d1a22639ca60f6e14e03c6cc70410bbe00',
+     armv7l: '46487af5bbd489c6e74a2e7ed091f8d1a22639ca60f6e14e03c6cc70410bbe00',
+     x86_64: 'cce22a6c105f5f146382460e683ba8a304640e06265860db4e06995e1efe6dc9'
   })
 
   depends_on 'adwaita_fonts' => :logical
