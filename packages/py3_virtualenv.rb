@@ -10,10 +10,10 @@ class Py3_virtualenv < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '949c67a4cdd4286ddf99d2818bc22860a6625cbf8e47c2d2ed86019d284a013d',
-     armv7l: '949c67a4cdd4286ddf99d2818bc22860a6625cbf8e47c2d2ed86019d284a013d',
-       i686: 'b7832d53d2d23488c2cb13d9adafe2dbf25c58484fe18aaa381cda2e0753d28b',
-     x86_64: 'c77f4a893c8819808a4ac6418e075dbe74b7c3cd612f198205f60c3dd51f42a3'
+    aarch64: 'edb03fccbae45f0cc221292e23298569abca4804692a5e740fdc9da3e25e838e',
+     armv7l: 'edb03fccbae45f0cc221292e23298569abca4804692a5e740fdc9da3e25e838e',
+       i686: '78d35b1f15c9ea86b50efca947685f56bc6b5ac1ca23f714f3ac51db823c36db',
+     x86_64: 'a1481c6de615ba88940f50a68113e637fbfeadeff0ed685b04c8aa555af66ae8'
   })
 
   depends_on 'py3_distlib'
