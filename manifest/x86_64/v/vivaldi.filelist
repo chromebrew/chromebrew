@@ -1,4 +1,4 @@
-# Total size: 475617808
+# Total size: 475684800
 /usr/local/bin/vivaldi
 /usr/local/bin/vivaldi-stable
 /usr/local/etc/cron.daily/vivaldi
@@ -408,7 +408,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/adblocker_resources/redirectable_resources.json
 /usr/local/share/vivaldi/resources/vivaldi/background-bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/background-common-bundle.js
-/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-78a860cbeb18a5cfe24d9c09c19fecc3.js
+/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-9b558d3613687e2a14dcdfe24523482d.js
 /usr/local/share/vivaldi/resources/vivaldi/bundle-mailreader-worker.js
 /usr/local/share/vivaldi/resources/vivaldi/bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/components/mail/mail.html
@@ -549,6 +549,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/aftonbladet.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/agoda_com.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/airbnb.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/favicons/ajio.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/aliexpress_com.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/allegro_pl.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/amazon_com.png
@@ -588,6 +589,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/expressen.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/facebook.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/finn_no.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/favicons/flipkart.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/fnac_com.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/forum.ge.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/furunavi.png
@@ -631,6 +633,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/lynkco-colab.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/lynkco.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/macys_com.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/favicons/makemytrip.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/malaysiakini_com.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/mbl_is.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/mediaexpert_pl.png
@@ -651,6 +654,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/npo.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/nrk.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/nvidia.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/favicons/nykaa.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/nzherald.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/onliner_by.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/orf.png
@@ -766,6 +770,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_accuweather.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_af_iol_co_za.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_airbnb.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_ajio.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_aliexpress.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_amazon.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_ar_ae_khaleej.png
@@ -929,6 +934,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_lamoda.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_lt_delfi.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_lu_lb.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_makemytrip.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_mg_lexpress.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_microsoft365.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_mk_sg_st.png
@@ -952,6 +958,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_no_cdon.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_nos.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_npo.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_nykaa.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_nz_stuff.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_outlook.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_overstock.png
