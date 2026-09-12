@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gvfs < Meson
   description 'Virtual filesystem implementation for GIO'
   homepage 'https://wiki.gnome.org/Projects/gvfs'
-  version '1.61.91'
+  version '1.62.0'
   license 'GPLv2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gvfs.git'
@@ -11,9 +11,9 @@ class Gvfs < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '139f63d64b8668705e617a06142e8f73e0ee654769cdf951b1a2d3316d7a2db9',
-     armv7l: '139f63d64b8668705e617a06142e8f73e0ee654769cdf951b1a2d3316d7a2db9',
-     x86_64: '33eb69d1e70a89ef1f65326d751aa382e702cccd1f1b12ccef1d02a1493e410d'
+    aarch64: '78ceebf8f3bf553c6d2ffffbfe469371a97864c6bad87cba5fcbd7689926598d',
+     armv7l: '78ceebf8f3bf553c6d2ffffbfe469371a97864c6bad87cba5fcbd7689926598d',
+     x86_64: '6595ca2236a4bd7f3477ed6f70477f661829bad550b0945b4eb3167dbcd41030'
   })
 
   depends_on 'avahi' => :executable
