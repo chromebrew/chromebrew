@@ -1,4 +1,4 @@
-# Total size: 1640852
+# Total size: 1648075
 /usr/local/bin/gnome-sudoku
 /usr/local/share/applications/org.gnome.Sudoku.desktop
 /usr/local/share/dbus-1/services/org.gnome.Sudoku.service
@@ -438,6 +438,7 @@
 /usr/local/share/locale/lt/LC_MESSAGES/gnome-sudoku.mo
 /usr/local/share/locale/lv/LC_MESSAGES/gnome-sudoku.mo
 /usr/local/share/locale/mai/LC_MESSAGES/gnome-sudoku.mo
+/usr/local/share/locale/mjw/LC_MESSAGES/gnome-sudoku.mo
 /usr/local/share/locale/mk/LC_MESSAGES/gnome-sudoku.mo
 /usr/local/share/locale/ml/LC_MESSAGES/gnome-sudoku.mo
 /usr/local/share/locale/mn/LC_MESSAGES/gnome-sudoku.mo
