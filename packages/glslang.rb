@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Glslang < CMake
   description 'OpenGL and OpenGL ES shader front end and validator'
   homepage 'https://github.com/KhronosGroup/glslang'
-  version '16.5.0'
+  version '16.6.0'
   license 'BSD-3, MIT, BSD-2, Apache-2.0 and NVIDIA'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/KhronosGroup/glslang.git'
@@ -14,9 +14,9 @@ class Glslang < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4a75cd70d70cc2cd39dfd0cf81f5464035f2b2c455b4ee552299aa0ac0338d29',
-     armv7l: '4a75cd70d70cc2cd39dfd0cf81f5464035f2b2c455b4ee552299aa0ac0338d29',
-     x86_64: '8fda6258987983e0c29215ba4f7cc146d6c6033d4e9fa54cdf9540bdc3a7f504'
+    aarch64: '072cb62415a65090433485120fb4b72c2f329ed92dc85833d894874805d803c9',
+     armv7l: '072cb62415a65090433485120fb4b72c2f329ed92dc85833d894874805d803c9',
+     x86_64: '97d1fa263df722d68ec30fc25a79b32f2c042b68d26ad4721c097ef1c121d31a'
   })
 
   depends_on 'gcc_lib' => :library
