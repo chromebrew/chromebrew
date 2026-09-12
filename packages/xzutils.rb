@@ -23,6 +23,6 @@ class Xzutils < CMake
 
   cmake_install_extras do
     # Imagemagick & Graphicsmagick want a libtool file.
-    ConvenienceFunctions.libtoolize('lzma', 'xzutils', true)
+    ConvenienceFunctions.libtoolize('lzma', 'xzutils', install_dest: true)
   end
 end
