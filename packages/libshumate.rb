@@ -14,9 +14,9 @@ class Libshumate < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '808aa6894529e5d99ab64cf9e212221d9fceddc6b9c664581e6665bb2827ccb1',
-     armv7l: '808aa6894529e5d99ab64cf9e212221d9fceddc6b9c664581e6665bb2827ccb1',
-     x86_64: 'a77b8175badefd08a564ee54354a341f662be31d845a9295d55cd45d044b6069'
+    aarch64: 'a5384a1bc629457cab7abdfc4dc4ca50faf2786297a83e81bb423f070426f58c',
+     armv7l: 'a5384a1bc629457cab7abdfc4dc4ca50faf2786297a83e81bb423f070426f58c',
+     x86_64: '43333fd07982153b29176d6679f9ad3578083e04bea08bdf4c2cee93ea3766ed'
   })
 
   depends_on 'cairo' => :library
