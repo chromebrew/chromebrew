@@ -1,4 +1,4 @@
-# Total size: 2588907491
+# Total size: 2589391913
 /home/chronos/user/.flutter_tool_state
 /usr/local/bin/dart
 /usr/local/bin/flutter
@@ -75,9 +75,9 @@
 /usr/local/share/flutter/.git/logs/refs/remotes/origin/HEAD
 /usr/local/share/flutter/.git/objects/info/commit-graph
 /usr/local/share/flutter/.git/objects/info/packs
-/usr/local/share/flutter/.git/objects/pack/pack-bbf932cce6820c6e1241a9f4a3eb14dc7d794bea.idx
-/usr/local/share/flutter/.git/objects/pack/pack-bbf932cce6820c6e1241a9f4a3eb14dc7d794bea.pack
-/usr/local/share/flutter/.git/objects/pack/pack-bbf932cce6820c6e1241a9f4a3eb14dc7d794bea.rev
+/usr/local/share/flutter/.git/objects/pack/pack-ced85dcf4e80741786fafd56de0d852359b2bcad.idx
+/usr/local/share/flutter/.git/objects/pack/pack-ced85dcf4e80741786fafd56de0d852359b2bcad.pack
+/usr/local/share/flutter/.git/objects/pack/pack-ced85dcf4e80741786fafd56de0d852359b2bcad.rev
 /usr/local/share/flutter/.git/packed-refs
 /usr/local/share/flutter/.git/refs/remotes/origin/HEAD
 /usr/local/share/flutter/.gitattributes
@@ -333,6 +333,7 @@
 /usr/local/share/flutter/.pub-preload-cache/web_socket-1.0.1.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/web_socket_channel-3.0.3.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/webdriver-3.1.0.tar.gz
+/usr/local/share/flutter/.pub-preload-cache/webdriver-3.2.0.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/webkit_inspection_protocol-1.2.1.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/webview_flutter-4.14.1.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/webview_flutter_android-4.13.0.tar.gz
@@ -17292,6 +17293,7 @@
 /usr/local/share/flutter/packages/flutter_tools/lib/src/ios/application_package.dart
 /usr/local/share/flutter/packages/flutter_tools/lib/src/ios/code_signing.dart
 /usr/local/share/flutter/packages/flutter_tools/lib/src/ios/core_devices.dart
+/usr/local/share/flutter/packages/flutter_tools/lib/src/ios/device_support.dart
 /usr/local/share/flutter/packages/flutter_tools/lib/src/ios/devices.dart
 /usr/local/share/flutter/packages/flutter_tools/lib/src/ios/ios_deploy.dart
 /usr/local/share/flutter/packages/flutter_tools/lib/src/ios/ios_emulators.dart
@@ -17886,6 +17888,7 @@
 /usr/local/share/flutter/packages/flutter_tools/test/commands.shard/hermetic/test_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/commands.shard/hermetic/update_packages_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/commands.shard/hermetic/upgrade_test.dart
+/usr/local/share/flutter/packages/flutter_tools/test/commands.shard/hermetic/widget_preview/lsp_preview_detector_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/commands.shard/hermetic/widget_preview/preview_code_generator_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/commands.shard/hermetic/widget_preview/preview_detector/preview_detector_invalid_preview_applications_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/commands.shard/hermetic/widget_preview/preview_detector/preview_detector_previews_non_const_params_test.dart
@@ -18067,6 +18070,7 @@
 /usr/local/share/flutter/packages/flutter_tools/test/general.shard/intellij/intellij_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/general.shard/ios/code_signing_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/general.shard/ios/core_devices_test.dart
+/usr/local/share/flutter/packages/flutter_tools/test/general.shard/ios/device_support_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/general.shard/ios/devices_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/general.shard/ios/ios_deploy_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/general.shard/ios/ios_device_install_test.dart
