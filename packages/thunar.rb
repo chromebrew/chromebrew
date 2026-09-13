@@ -12,9 +12,9 @@ class Thunar < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '98a9b1d4337507ece5a6d5dedfb8885b1a66dd001ebf048555a5f8f1559325fb',
-     armv7l: '98a9b1d4337507ece5a6d5dedfb8885b1a66dd001ebf048555a5f8f1559325fb',
-     x86_64: '88e686190d703d3aea9c4ccb3ea1153ff1e50390731165fe7cb959a8842ed722'
+    aarch64: '164da8d45d1667cdbf1678aefb9d5bb6c41c680c4324e4887443d9e12f0dcf36',
+     armv7l: '164da8d45d1667cdbf1678aefb9d5bb6c41c680c4324e4887443d9e12f0dcf36',
+     x86_64: '434b0b63488d7e98016f353a123076307d26359d9b86de2f22b1a00504d52f83'
   })
 
   depends_on 'at_spi2_core' => :library
