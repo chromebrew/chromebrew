@@ -4,17 +4,17 @@ require 'convenience_functions'
 class Thunar < Autotools
   description 'Thunar File Manager'
   homepage 'https://docs.xfce.org/xfce/thunar/Start'
-  version '4.20.9'
+  version '4.20.10'
   license 'GPL-2+ and LGPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://archive.xfce.org/src/xfce/thunar/#{version.rpartition('.')[0]}/thunar-#{version}.tar.bz2"
-  source_sha256 'eb09869ce93b12ed285678967f55f243c833f2baf2fb10c9844ac7648d9270cb'
+  source_sha256 'a5a32b51028dc821155e44cdec025fe70398bae193c619ae6ba8b1babf6f49f1'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '98a9b1d4337507ece5a6d5dedfb8885b1a66dd001ebf048555a5f8f1559325fb',
-     armv7l: '98a9b1d4337507ece5a6d5dedfb8885b1a66dd001ebf048555a5f8f1559325fb',
-     x86_64: '88e686190d703d3aea9c4ccb3ea1153ff1e50390731165fe7cb959a8842ed722'
+    aarch64: '164da8d45d1667cdbf1678aefb9d5bb6c41c680c4324e4887443d9e12f0dcf36',
+     armv7l: '164da8d45d1667cdbf1678aefb9d5bb6c41c680c4324e4887443d9e12f0dcf36',
+     x86_64: '434b0b63488d7e98016f353a123076307d26359d9b86de2f22b1a00504d52f83'
   })
 
   depends_on 'at_spi2_core' => :library
