@@ -11,9 +11,9 @@ class Gnome_sudoku < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '82907c769b14277cfe748dbeb9001af9b94e8a5aa5f474d4485108bfd39fba3d',
-     armv7l: '82907c769b14277cfe748dbeb9001af9b94e8a5aa5f474d4485108bfd39fba3d',
-     x86_64: '5923ede414d18472ec7bcc6beb0db259c1d19ac57d3f90dea0ba64bc1ddafd6d'
+    aarch64: 'fedfb3555c3af7b37ca76e117f0b8cfe799ef6f3e250c0d559baa163ec00eece',
+     armv7l: 'fedfb3555c3af7b37ca76e117f0b8cfe799ef6f3e250c0d559baa163ec00eece',
+     x86_64: 'ee736c17d7744bdcc70c056b7a463a014ff47a86eeb20fecea56713260df53a5'
   })
 
   depends_on 'blueprint_compiler' => :build
