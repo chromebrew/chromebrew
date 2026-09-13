@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Shaderc < CMake
   description 'Collection of tools, libraries and tests for shader compilation'
   homepage 'https://github.com/google/shaderc'
-  version '2026.3'
+  version '2026.4'
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/google/shaderc.git'
@@ -14,9 +14,9 @@ class Shaderc < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a6a441fe5a067a15b3f482ea3c01234ab2439b3e2a5655b8d915afe44e4fa3bc',
-     armv7l: 'a6a441fe5a067a15b3f482ea3c01234ab2439b3e2a5655b8d915afe44e4fa3bc',
-     x86_64: 'e855570319ea6ebb0f839e261452d9ec11d08a3475fee0791e1afe974db6fe58'
+    aarch64: '6578ff90fa9d693b6b875245bca7bb19defa0fda969ad0efdcb0cb325ac13b25',
+     armv7l: '6578ff90fa9d693b6b875245bca7bb19defa0fda969ad0efdcb0cb325ac13b25',
+     x86_64: 'eada61a82bc79603b70a2500b9b1188bdc2ff9e875cdf7a867a811692cb27ef8'
   })
 
   depends_on 'gcc_lib' => :library
