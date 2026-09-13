@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Lttng_tools < Autotools
   description 'Linux Trace Toolkit: next generation is a modern toolkit for tracing Linux systems and applications.'
   homepage 'https://lttng.org/'
-  version '2.15.1'
+  version '2.16.0'
   license 'LGPL-2.1-only, MIT, GPL-2.0-only, GPL-3.0-or-later, BSD-2-Clause, BSD-3-Clause'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://lttng.org/files/lttng-tools/lttng-tools-#{version}.tar.bz2"
-  source_sha256 '8b6d4ba7ae2c036f7dafbb4e29717677411078f9a9d961b2dc7c1ba16273e9e9'
+  source_sha256 'b8b3244894e49e773d4942b8899f768057974edf75c18dbb48b65bb123c7b2c7'
   binary_compression 'tar.zst'
 
   binary_sha256({
