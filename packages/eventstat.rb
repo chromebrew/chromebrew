@@ -2,27 +2,38 @@ require 'package'
 
 class Eventstat < Package
   description 'Eventstat periodically dumps out the current kernel event state.'
-  homepage 'https://kernel.ubuntu.com/~cking/eventstat/'
-  version '0.04.07'
+  homepage 'https://github.com/ColinIanKing/eventstat'
+  version '0.04.12'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://kernel.ubuntu.com/~cking/tarballs/eventstat/eventstat-0.04.07.tar.gz'
-  source_sha256 '492f9ff8b64f1e2d4d4d67607331b87e4bcf95a4acff60d674ff2a391fa9103d'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/ColinIanKing/eventstat.git'
+  git_hashtag "V#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '638fb6d23929c8d570032bf798d39533f96d77b694b58e99e4cf5d55e1ae9a10',
-     armv7l: '638fb6d23929c8d570032bf798d39533f96d77b694b58e99e4cf5d55e1ae9a10',
-       i686: '95b38b940095606fe2e2d518fe0e59b3fe9bab251ef278e809204d9a15b30940',
-     x86_64: 'a4e8ab12fcab23cf01fb11c6122f46935778c54028da5d8a0a43df9a385cab74'
+    aarch64: 'aa92cd676a30ac214e77478fe74e9a82c63bd559795c18ba012b1cda6c7b5b4b',
+     armv7l: 'aa92cd676a30ac214e77478fe74e9a82c63bd559795c18ba012b1cda6c7b5b4b',
+       i686: '8f7b1b44aaa60bc3cd235bbee41af86abf1456067dc3d51de9109fc1899e5e9c',
+     x86_64: '295c5507f406198cd2249624c575a6a7b3c2e8efb284218e49d0a734ee448619'
   })
 
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'ncurses' => :executable
+
+  print_source_bashrc
+
   def self.build
-    system "CPPFLAGS=-I#{CREW_PREFIX}/include/ncurses make"
+    system "CPPFLAGS=-I#{CREW_PREFIX}/include/ncursesw make"
   end
 
   def self.install
-    system "install -Dm755 eventstat #{CREW_DEST_PREFIX}/bin/eventstat"
-    system "install -Dm644 eventstat.8 #{CREW_DEST_PREFIX}/share/man/man8/eventstat.8"
+    system 'make',
+           "PREFIX=#{CREW_PREFIX}",
+           "DESTDIR=#{CREW_DEST_DIR}",
+           "BINDIR=#{CREW_PREFIX}/bin",
+           "MANDIR=#{CREW_MAN_PREFIX}/man8",
+           "BASHDIR=#{CREW_PREFIX}/etc/bash.d",
+           'install'
   end
 end
