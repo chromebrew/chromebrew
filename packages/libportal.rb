@@ -11,9 +11,9 @@ class Libportal < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e4531cb94b5e547f51834cfb3459d943a18e96f5cb94b427d63a4219eabda8e5',
-     armv7l: 'e4531cb94b5e547f51834cfb3459d943a18e96f5cb94b427d63a4219eabda8e5',
-     x86_64: '65d52d8c90a99785004a147a57cc91b2c76e943afe03c3cccb9c671c1f8d8a13'
+    aarch64: '5bcc40aa1bea6bdb4677fd4e939408aa01ab94daaa20efac964f4cb9f44bf911',
+     armv7l: '5bcc40aa1bea6bdb4677fd4e939408aa01ab94daaa20efac964f4cb9f44bf911',
+     x86_64: '4f9a658f03fbb661309130ac48d0bd7268f09036dde7c9c79ceac3ebc106da40'
   })
 
   depends_on 'glib' => :library
