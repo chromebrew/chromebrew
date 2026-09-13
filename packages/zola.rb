@@ -3,12 +3,12 @@ require 'package'
 class Zola < Package
   description 'A fast static site generator'
   homepage 'https://www.getzola.org/'
-  version '0.23.4'
+  version '0.23.5'
   license 'MIT'
   compatibility 'x86_64'
   min_glibc '2.29'
   source_url "https://github.com/getzola/zola/releases/download/v#{version}/zola-v#{version}-x86_64-unknown-linux-gnu.tar.gz"
-  source_sha256 '54d1a347781b2f32330914fcc02def81c7e3ddb6111b36d1cc89c06557aed1de'
+  source_sha256 'f9b864c54fb8ef598ae34337d72a0e9f24e84a0b051657a7f231a3f2a3c02e34'
 
   no_compile_needed
 
