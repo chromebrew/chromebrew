@@ -19,5 +19,6 @@ class Libtirpc < Autotools
 
   depends_on 'e2fsprogs' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'krb5' => :library
 end
