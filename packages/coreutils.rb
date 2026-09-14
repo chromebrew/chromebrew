@@ -21,6 +21,7 @@ class Coreutils < Autotools
   depends_on 'attr' => :executable
   depends_on 'glibc' => :executable
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gmp' => :executable
   depends_on 'libcap' => :executable
   depends_on 'openssl' => :executable
