@@ -1,4 +1,4 @@
-# Total size: 3307250
+# Total size: 3338002
 /usr/local/bin/gnome-keyring
 /usr/local/bin/gnome-keyring-3
 /usr/local/bin/gnome-keyring-daemon
@@ -9,7 +9,6 @@
 /usr/local/lib/gnome-keyring/devel/gkm-ssh-store-standalone.so
 /usr/local/lib/gnome-keyring/devel/gkm-xdg-store-standalone.so
 /usr/local/lib/pkcs11/gnome-keyring-pkcs11.so
-/usr/local/share/GConf/gsettings/org.gnome.crypto.cache.convert
 /usr/local/share/dbus-1/services/org.freedesktop.impl.portal.Secret.service
 /usr/local/share/dbus-1/services/org.freedesktop.secrets.service
 /usr/local/share/dbus-1/services/org.gnome.keyring.service
@@ -65,6 +64,7 @@
 /usr/local/share/locale/kn/LC_MESSAGES/gnome-keyring.mo
 /usr/local/share/locale/ko/LC_MESSAGES/gnome-keyring.mo
 /usr/local/share/locale/kw/LC_MESSAGES/gnome-keyring.mo
+/usr/local/share/locale/lo/LC_MESSAGES/gnome-keyring.mo
 /usr/local/share/locale/lt/LC_MESSAGES/gnome-keyring.mo
 /usr/local/share/locale/lv/LC_MESSAGES/gnome-keyring.mo
 /usr/local/share/locale/mai/LC_MESSAGES/gnome-keyring.mo
