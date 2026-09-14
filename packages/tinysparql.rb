@@ -11,9 +11,9 @@ class Tinysparql < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fe152ba9add21afbd3dac9bdee43715cf46ee8ce4eb058c1fa1d5d401a9e03c1',
-     armv7l: 'fe152ba9add21afbd3dac9bdee43715cf46ee8ce4eb058c1fa1d5d401a9e03c1',
-     x86_64: 'e7820af639d76d1b5988981a29c6d9ffb8b4723617d5c82ae61b86a204d7c043'
+    aarch64: '7114014559208317503dfe7ec214c8c35b3ddc242a445132943763ff5d6ddb06',
+     armv7l: '7114014559208317503dfe7ec214c8c35b3ddc242a445132943763ff5d6ddb06',
+     x86_64: '94ea8c376db23c33487dcd755783f32f47a13417f53c0d75547cfe6df11266cf'
   })
 
   depends_on 'avahi' => :library
@@ -22,6 +22,7 @@ class Tinysparql < Meson
   depends_on 'gcc_lib' # R
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk_doc' => :build
   depends_on 'icu4c' => :library
