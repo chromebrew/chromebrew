@@ -1,8 +1,6 @@
-# Total size: 6395231
+# Total size: 6991674
 /usr/local/include/gsettings-desktop-schemas/gdesktop-enums.h
 /usr/local/lib64/girepository-1.0/GDesktopEnums-3.0.typelib
-/usr/local/share/GConf/gsettings/gsettings-desktop-schemas.convert
-/usr/local/share/GConf/gsettings/wm-schemas.convert
 /usr/local/share/gir-1.0/GDesktopEnums-3.0.gir
 /usr/local/share/glib-2.0/schemas/org.gnome.desktop.a11y.applications.gschema.xml
 /usr/local/share/glib-2.0/schemas/org.gnome.desktop.a11y.gschema.xml
@@ -69,6 +67,7 @@
 /usr/local/share/locale/ka/LC_MESSAGES/gsettings-desktop-schemas.mo
 /usr/local/share/locale/kab/LC_MESSAGES/gsettings-desktop-schemas.mo
 /usr/local/share/locale/kk/LC_MESSAGES/gsettings-desktop-schemas.mo
+/usr/local/share/locale/lo/LC_MESSAGES/gsettings-desktop-schemas.mo
 /usr/local/share/locale/lt/LC_MESSAGES/gsettings-desktop-schemas.mo
 /usr/local/share/locale/lv/LC_MESSAGES/gsettings-desktop-schemas.mo
 /usr/local/share/locale/ml/LC_MESSAGES/gsettings-desktop-schemas.mo
@@ -84,12 +83,14 @@
 /usr/local/share/locale/pt_BR/LC_MESSAGES/gsettings-desktop-schemas.mo
 /usr/local/share/locale/ro/LC_MESSAGES/gsettings-desktop-schemas.mo
 /usr/local/share/locale/ru/LC_MESSAGES/gsettings-desktop-schemas.mo
+/usr/local/share/locale/sat/LC_MESSAGES/gsettings-desktop-schemas.mo
 /usr/local/share/locale/sk/LC_MESSAGES/gsettings-desktop-schemas.mo
 /usr/local/share/locale/sl/LC_MESSAGES/gsettings-desktop-schemas.mo
 /usr/local/share/locale/sr/LC_MESSAGES/gsettings-desktop-schemas.mo
 /usr/local/share/locale/sr@latin/LC_MESSAGES/gsettings-desktop-schemas.mo
 /usr/local/share/locale/sv/LC_MESSAGES/gsettings-desktop-schemas.mo
 /usr/local/share/locale/tg/LC_MESSAGES/gsettings-desktop-schemas.mo
+/usr/local/share/locale/th/LC_MESSAGES/gsettings-desktop-schemas.mo
 /usr/local/share/locale/tr/LC_MESSAGES/gsettings-desktop-schemas.mo
 /usr/local/share/locale/ug/LC_MESSAGES/gsettings-desktop-schemas.mo
 /usr/local/share/locale/uk/LC_MESSAGES/gsettings-desktop-schemas.mo
