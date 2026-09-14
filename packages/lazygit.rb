@@ -3,7 +3,7 @@ require 'package'
 class Lazygit < Package
   description 'A simple terminal UI for git commands'
   homepage 'https://github.com/jesseduffield/lazygit'
-  version '0.65.0'
+  version '0.65.1'
   license 'MIT'
   compatibility 'all'
   source_url({
@@ -13,10 +13,10 @@ class Lazygit < Package
      x86_64: "https://github.com/jesseduffield/lazygit/releases/download/v#{version}/lazygit_#{version}_linux_x86_64.tar.gz"
   })
   source_sha256({
-    aarch64: '0b46185444b6256503f25383b9f55a9e7bb39eaef881072b10efed4c08aa878f',
-     armv7l: '0b46185444b6256503f25383b9f55a9e7bb39eaef881072b10efed4c08aa878f',
-       i686: '749478c0c0b0ee1f7dc8fb4c845fab569661327e06a12fdf6182f68808afab69',
-     x86_64: '44d8e7dd1484b4a66e191bd4ab25a71e8b4b3a65ab122f838e65677ef58c5506'
+    aarch64: 'e7f8e989933f272222facb741aefbbfcc99b91a2d2214d429776908ad8e489ed',
+     armv7l: 'e7f8e989933f272222facb741aefbbfcc99b91a2d2214d429776908ad8e489ed',
+       i686: '50c158eb8bf83aabafb9a00426223264e42ee937fc573452fcb399999fe4b732',
+     x86_64: '02beacbcda0fa342e50ae3480ba8147307353af3fb28e1d5f790e02329c201a6'
   })
 
   no_compile_needed
