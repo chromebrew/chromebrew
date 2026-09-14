@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Coreutils < Autotools
   description 'The GNU Core Utilities are the basic file, shell and text manipulation utilities of the GNU operating system.'
   homepage 'https://www.gnu.org/software/coreutils/coreutils.html'
-  version '9.11'
+  version '9.12'
   license 'GPL-3'
   compatibility 'all'
   source_url "https://ftp.gnu.org/gnu/coreutils/coreutils-#{version}.tar.xz"
-  source_sha256 '394024eda0a5955217ceda9cd1201e65dc8fa3aa29c2951135a49521d57c3cc3'
+  source_sha256 'a480198559733e9b3da999e90543ac6f888a2caa544d8d664c5a1f17e528e210'
   binary_compression 'tar.zst'
 
   binary_sha256({
