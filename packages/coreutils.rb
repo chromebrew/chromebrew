@@ -30,6 +30,13 @@ class Coreutils < Autotools
 
   CREW_IN_CONTAINER ? conflicts_ok : (conflicts_with 'uutils_coreutils')
 
+  def self.patch
+    # The aclocal version is hardcoded.
+    aclocal_version = `aclocal --version|head -1|cut -d' ' -f4`.chomp
+    system "sed -i 's,1.18,#{aclocal_version},g' aclocal.m4"
+    system "sed -i 's,1.18,#{aclocal_version},g' configure"
+  end
+
   def self.prebuild
     File.write 'arch', <<~EOF
       #!/bin/bash
