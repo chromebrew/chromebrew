@@ -24,7 +24,7 @@ class Autotools < Package
       unless @autotools_skip_configure || (File.file?('Makefile') && File.read('Makefile', 500).include?('generated') && CREW_CACHE_BUILD)
         if File.executable? './autogen.sh'
           system 'NOCONFIGURE=1 ./autogen.sh --no-configure || NOCONFIGURE=1 ./autogen.sh'
-        elsif !@autotools_skip_bootstrap && File.executable?('./bootstrap')
+        elsif !@autotools_skip_bootstrap && File.file?('./bootstrap') && File.executable?('./bootstrap')
           system 'NOCONFIGURE=1 ./bootstrap --no-configure || NOCONFIGURE=1 ./bootstrap'
         end
         if !@autotools_skip_autoreconf && File.file?('configure.ac')
