@@ -1,3 +1,4 @@
-# Total size: 45507
+# Total size: 34527
 /usr/local/bin/eventstat
-/usr/local/share/man/man8/eventstat.8.gz
+/usr/local/etc/bash.d/eventstat
+/usr/local/share/man/man8/eventstat.8.zst
