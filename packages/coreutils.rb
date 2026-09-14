@@ -25,6 +25,8 @@ class Coreutils < Autotools
   depends_on 'libcap' => :executable
   depends_on 'openssl' => :executable
 
+  autotools_skip_bootstrap
+
   CREW_IN_CONTAINER ? conflicts_ok : (conflicts_with 'uutils_coreutils')
 
   def self.prebuild

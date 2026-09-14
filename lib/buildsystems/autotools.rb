@@ -4,7 +4,7 @@ require_relative '../require_gem'
 require_relative '../report_buildsystem_methods'
 
 class Autotools < Package
-  boolean_property :autotools_make_j1, :autotools_skip_configure, :autotools_skip_autoreconf
+  boolean_property :autotools_make_j1, :autotools_skip_bootstrap, :autotools_skip_configure, :autotools_skip_autoreconf
   property :autotools_build_relative_dir, :autotools_configure_options, :autotools_configure_modifications, :autotools_install_options, :autotools_pre_configure_options, :autotools_build_extras, :autotools_install_extras, :autotools_pre_make_options, :autotools_make_options
 
   def self.prebuild_config_and_report
@@ -24,7 +24,7 @@ class Autotools < Package
       unless @autotools_skip_configure || (File.file?('Makefile') && File.read('Makefile', 500).include?('generated') && CREW_CACHE_BUILD)
         if File.executable? './autogen.sh'
           system 'NOCONFIGURE=1 ./autogen.sh --no-configure || NOCONFIGURE=1 ./autogen.sh'
-        elsif File.executable? './bootstrap'
+        elsif !@autotools_skip_bootstrap && File.executable?('./bootstrap')
           system 'NOCONFIGURE=1 ./bootstrap --no-configure || NOCONFIGURE=1 ./bootstrap'
         end
         if !@autotools_skip_autoreconf && File.file?('configure.ac')
