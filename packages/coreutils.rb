@@ -11,10 +11,10 @@ class Coreutils < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fa39da43df4459a4a591211c50b465b449c9ecc0b6e1c0ca5ce0281a34e76ed3',
-     armv7l: 'fa39da43df4459a4a591211c50b465b449c9ecc0b6e1c0ca5ce0281a34e76ed3',
-       i686: '5ebefc26d69481ed2541fc5da8b272f891d24ecfffcf2ad2cd1d56ede2ac6a38',
-     x86_64: 'b448f293e47b1fce2a9d7ab1e10d4c05f580168bd1da31e50d4dcd2112bd4adb'
+    aarch64: 'ac79ea5c5fa7e0901ffaad17d5ad5d9b45c78123f3d263a2531cf8ad954726a4',
+     armv7l: 'ac79ea5c5fa7e0901ffaad17d5ad5d9b45c78123f3d263a2531cf8ad954726a4',
+       i686: '91fdc86356fe80aa5798271fe78f0fbc80bf81f887fa35602843c10b0037cfd1',
+     x86_64: '4c96f5744cd154bf19d961b0d5c04299ca5b5915fbe6cf8e8fcd56dc240239cf'
   })
 
   depends_on 'acl' => :executable
