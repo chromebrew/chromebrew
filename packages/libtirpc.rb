@@ -11,10 +11,10 @@ class Libtirpc < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3b55d2647b8984cf7404c20c3a6aa2f4ffee848bb989739d756abb9764068e38',
-     armv7l: '3b55d2647b8984cf7404c20c3a6aa2f4ffee848bb989739d756abb9764068e38',
-       i686: '662adf4a07f4df52a71ec5a7098676e3865fc50c48794ef534037c1e1e964b3c',
-     x86_64: '081acfd9da4eeda100fcbe9f538f7af4ba1531b13c31f4662395cf9d50c73ac4'
+    aarch64: '2b3a5ab0971b9eee3a31df56ad34fc400697a060bd4fc2fff872a8cd2ccfbdfd',
+     armv7l: '2b3a5ab0971b9eee3a31df56ad34fc400697a060bd4fc2fff872a8cd2ccfbdfd',
+       i686: '8cf3754491db3ae4351ebcb817fcda356e926734a656e1c224c64c041e581514',
+     x86_64: '6bd993acd91e3a2271e5e2fd0a0433bd0e2f67ffc90fe5afe484dc3cfa031be3'
   })
 
   depends_on 'e2fsprogs' => :library
