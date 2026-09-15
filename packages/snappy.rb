@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Snappy < CMake
   description 'Snappy, a fast compressor/decompressor.'
   homepage 'https://github.com/google/snappy'
-  version '1.2.2'
+  version '1.3.0'
   license 'GPL-2 and LGPL-2'
   compatibility 'all'
   source_url 'https://github.com/google/snappy.git'
@@ -11,10 +11,10 @@ class Snappy < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fbc02c16f466c8b04025f55c72716d97318de888dfab1151dad3476e3f7dc3a8',
-     armv7l: 'fbc02c16f466c8b04025f55c72716d97318de888dfab1151dad3476e3f7dc3a8',
-       i686: '2c21491abf010a76bdff7092a0071ff16bb116007581e14058e1e75ef04f2972',
-     x86_64: '6a1897e565809ec90eccc647c30486b16bf22b130c5d2f67dd8d6e9941f417b9'
+    aarch64: '4d78506c356fb0909e939c5708a49a8027e567abd83bbb0847ad0620e8078af9',
+     armv7l: '4d78506c356fb0909e939c5708a49a8027e567abd83bbb0847ad0620e8078af9',
+       i686: 'd5f36003b8aa32ab3bdaefdd7943221e189703a2e708cbb1afaf4579fa24ac29',
+     x86_64: 'cb44d8aae7101bfb6b3c5c0e5b1618626f5ff580703072c820450de8e287e35b'
   })
 
   depends_on 'gcc_lib' => :library
