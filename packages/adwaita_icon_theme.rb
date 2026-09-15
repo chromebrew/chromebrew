@@ -11,9 +11,9 @@ class Adwaita_icon_theme < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5eec5ea4caa7e47b213de5e2131009a1b1ae2795778751cdd1a7d648a1dfe3aa',
-     armv7l: '5eec5ea4caa7e47b213de5e2131009a1b1ae2795778751cdd1a7d648a1dfe3aa',
-     x86_64: 'ac5e811a399ac6975081848e51c08aa231ea4058c7d612baf9aad8f51287fdb7'
+    aarch64: '7da8a19c9e19d229f26ee853d9945a07b92fd0b52cbc33086c1d20ea1186b162',
+     armv7l: '7da8a19c9e19d229f26ee853d9945a07b92fd0b52cbc33086c1d20ea1186b162',
+     x86_64: '9d0463a930b1835f877c01b2bfd29063661c114f8695e6cd0a528ff495204ae0'
   })
 
   depends_on 'adwaita_fonts' => :logical
