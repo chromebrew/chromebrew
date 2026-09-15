@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gnome_desktop < Meson
   description 'Library with common API for various GNOME modules'
   homepage 'https://gitlab.gnome.org/GNOME/gnome-desktop'
-  version '44.5'
+  version '51.0'
   license 'GPL-2+, LGPL-2+ and FDL-1.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-desktop.git'
