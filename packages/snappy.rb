@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Snappy < CMake
   description 'Snappy, a fast compressor/decompressor.'
   homepage 'https://github.com/google/snappy'
-  version '1.2.2'
+  version '1.3.0'
   license 'GPL-2 and LGPL-2'
   compatibility 'all'
   source_url 'https://github.com/google/snappy.git'
