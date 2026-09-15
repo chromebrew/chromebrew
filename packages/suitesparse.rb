@@ -11,10 +11,10 @@ class Suitesparse < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9a885f9a578774f1ade3862ef02c80604c0ebd04b1ce08e02dcffae0baa1779d',
-     armv7l: '9a885f9a578774f1ade3862ef02c80604c0ebd04b1ce08e02dcffae0baa1779d',
-       i686: '26be9c92911051d2d9de024d6b82e1a227ad70ee27c26573a2a49c95b39bb0e6',
-     x86_64: 'ec5c81a5f125b71ecefdae2e6f9adc059ae31fe531042d4be2db921772b470e8'
+    aarch64: '88de046e349d6ad27290b6f38061ed689bb3e6a6270e1bb73acb6858c48eb6fb',
+     armv7l: '88de046e349d6ad27290b6f38061ed689bb3e6a6270e1bb73acb6858c48eb6fb',
+       i686: '6dbc59ec344d12e7551ddfcb91124dc4f8ff029e3ccc112d85e098eac7e87167',
+     x86_64: 'c5095f5273a4371d763efb46da03fd2a4a2ad887a33da5eb90ad52932b45075c'
   })
 
   depends_on 'gcc_lib' => :library
