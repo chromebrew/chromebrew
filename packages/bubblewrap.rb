@@ -3,11 +3,11 @@ require 'buildsystems/meson'
 class Bubblewrap < Meson
   description 'bubblewrap works by creating a new, completely empty, mount namespace'
   homepage 'https://github.com/containers/bubblewrap'
-  version '0.11.2'
+  version '0.12.0'
   license 'LGPL-2+'
   compatibility 'all'
   source_url "https://github.com/containers/bubblewrap/releases/download/v#{version}/bubblewrap-#{version}.tar.xz"
-  source_sha256 '69abc30005d2186baf7737feacd8da35633b93cf5af38838ecff17c5f8e924f6'
+  source_sha256 '9760d007363e3abba7c747489910f9f82d9fca53ba3bd3282e396fa3c97a3314'
   binary_compression 'tar.zst'
 
   binary_sha256({
