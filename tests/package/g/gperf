@@ -1,0 +1,3 @@
+#!/bin/bash
+gperf -h | head
+gperf -v
