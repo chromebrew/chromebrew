@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Gflags < CMake
   description 'C++ library that implements commandline flags processing'
   homepage 'https://gflags.github.io/gflags/'
-  version '2.3.0'
+  version '2.3.1'
   license 'BSD-3 Clause'
   compatibility 'all'
   source_url 'https://github.com/gflags/gflags.git'
@@ -11,10 +11,10 @@ class Gflags < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3b9ae630e0eda5c6a270644f860cc6218ca6a21cb62f5795b51b5ddd745317a2',
-     armv7l: '3b9ae630e0eda5c6a270644f860cc6218ca6a21cb62f5795b51b5ddd745317a2',
-       i686: '32d97b57e7a03528de9e58208f3f4b58a0b33888f35689394893452c9cdf8f84',
-     x86_64: '0802944972dfddee0cce69d5c6e011f946c4d2df73be827481dc3ec60f1d1ea5'
+    aarch64: '06c5ccea5dc7e04ffa10f5c9eecba9ecc3be8635687c4bf9db6715a372117ff7',
+     armv7l: '06c5ccea5dc7e04ffa10f5c9eecba9ecc3be8635687c4bf9db6715a372117ff7',
+       i686: '4c487f044016982e7c8005c51e0dbeab4da26b83e3898adcb354bac7aed00bb4',
+     x86_64: '1659437b273ec90e00f5607ad2c3afc93a7260dfb1a6e46b080f3457a85e77a9'
   })
 
   depends_on 'gcc_lib' => :library
