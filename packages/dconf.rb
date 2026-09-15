@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Dconf < Meson
   description 'The DConf package contains a low-level configuration system.'
   homepage 'https://wiki.gnome.org/Projects/dconf'
-  version '0.49.0'
+  version '51.0'
   license 'LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/dconf.git'
