@@ -18,7 +18,7 @@ class Gnome_desktop < Meson
 
   depends_on 'cairo' => :library
   depends_on 'eudev' => :library
-  depends_on 'gcc_lib' # R
+  depends_on 'gcc_lib' => :library
   depends_on 'gdk_pixbuf' => :library
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
@@ -29,7 +29,7 @@ class Gnome_desktop < Meson
   depends_on 'gtk3' => :library
   depends_on 'gtk4' => :library
   depends_on 'gtk_doc' => :build
-  depends_on 'harfbuzz' # R
+  depends_on 'harfbuzz' => :build
   depends_on 'iso_codes' => :build
   depends_on 'libjpeg_turbo' => :build
   depends_on 'libseccomp' => :library
