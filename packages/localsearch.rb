@@ -11,9 +11,9 @@ class Localsearch < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '30ccd1589a8640b4ef20312334960e52347afe552e13da8db699524ab78d66f1',
-     armv7l: '30ccd1589a8640b4ef20312334960e52347afe552e13da8db699524ab78d66f1',
-     x86_64: '3899362ecd1c2c3a9a55cea1689e659643c362a841e7f1a64cbed7318f531a5d'
+    aarch64: '1220be4115e9947b6678efbfb4bf9f10e3add4a555c0783c1123fed64a9e13c5',
+     armv7l: '1220be4115e9947b6678efbfb4bf9f10e3add4a555c0783c1123fed64a9e13c5',
+     x86_64: 'ffe7afca468f7d7716c2767d85703ac20ca701af158d5eb3de870fb34d541a5b'
   })
 
   depends_on 'exempi' => :library
