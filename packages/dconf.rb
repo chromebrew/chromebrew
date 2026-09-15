@@ -11,15 +11,16 @@ class Dconf < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f415cdeda2116ba03a4ef6ea72cd4db30677240f9bce632aa49e80466e824e39',
-     armv7l: 'f415cdeda2116ba03a4ef6ea72cd4db30677240f9bce632aa49e80466e824e39',
-     x86_64: '8159f9ea61b1f469049e292cbf1732631b2a723343e14736079880062b77c1f5'
+    aarch64: '9c0b832084df711f3a8f81cd2960c01cf9e4d5bd2fcd8b05915b5e8d89e2dc7f',
+     armv7l: '9c0b832084df711f3a8f81cd2960c01cf9e4d5bd2fcd8b05915b5e8d89e2dc7f',
+     x86_64: 'cf94dd8277eec499a7466e1070ef7181df23c021897ded4028df822b24c7a5f5'
   })
 
   depends_on 'bash_completion' => :build
   depends_on 'dbus' => :build
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gtk_doc' => :build
   depends_on 'libxslt' => :library
   depends_on 'py3_gvdb' => :library
