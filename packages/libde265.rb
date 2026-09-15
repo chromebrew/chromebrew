@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libde265 < CMake
   description 'Open h.265 video codec implementation.'
   homepage 'https://github.com/strukturag/libde265'
-  version '1.1.2'
+  version '1.1.3'
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/strukturag/libde265.git'
@@ -11,9 +11,9 @@ class Libde265 < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6159c9e0c16be23fe654021ee7735046cccf3f1acde00c035aa6fe9599ee37ce',
-     armv7l: '6159c9e0c16be23fe654021ee7735046cccf3f1acde00c035aa6fe9599ee37ce',
-     x86_64: '0a68d6c6c14d633c71f03cddc32d03c124e9e6457bbd2962a5c8544967226df8'
+    aarch64: '5d22a473010a4c97827b8038d73eac5855ce43f3e05a6195df663d29b14956a2',
+     armv7l: '5d22a473010a4c97827b8038d73eac5855ce43f3e05a6195df663d29b14956a2',
+     x86_64: '7b255b996d45925bf71f8fb223833929f3f2080c2dd3e6eed2a83865c80a5578'
   })
 
   depends_on 'gcc_lib' => :library
