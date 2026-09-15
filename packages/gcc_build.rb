@@ -28,6 +28,7 @@ class Gcc_build < Package
   depends_on 'gmp' => :library
   depends_on 'isl' => :library
   depends_on 'libssp' => :logical
+  depends_on 'libxml2' => :build
   depends_on 'mpc' => :library
   depends_on 'mpfr' => :library
   depends_on 'rust' => :build
