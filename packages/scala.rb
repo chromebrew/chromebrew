@@ -3,7 +3,7 @@ require 'package'
 class Scala < Package
   description 'The Scala 3 compiler, also known as Dotty.'
   homepage 'https://scala-lang.org/'
-  version '3.3.8'
+  version '3.9.0'
   license 'Apache-2.0'
   compatibility 'x86_64'
   source_url 'https://github.com/scala/scala3.git'
