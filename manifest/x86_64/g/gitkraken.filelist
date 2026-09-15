@@ -1,4 +1,4 @@
-# Total size: 710617564
+# Total size: 732498810
 /usr/local/bin/gitkraken
 /usr/local/share/gitkraken/LICENSE
 /usr/local/share/gitkraken/LICENSE.electron
@@ -139,6 +139,7 @@
 /usr/local/share/gitkraken/resources/app.asar.unpacked/git/libexec/git-core/git-grep
 /usr/local/share/gitkraken/resources/app.asar.unpacked/git/libexec/git-core/git-hash-object
 /usr/local/share/gitkraken/resources/app.asar.unpacked/git/libexec/git-core/git-help
+/usr/local/share/gitkraken/resources/app.asar.unpacked/git/libexec/git-core/git-history
 /usr/local/share/gitkraken/resources/app.asar.unpacked/git/libexec/git-core/git-hook
 /usr/local/share/gitkraken/resources/app.asar.unpacked/git/libexec/git-core/git-http-backend
 /usr/local/share/gitkraken/resources/app.asar.unpacked/git/libexec/git-core/git-http-fetch

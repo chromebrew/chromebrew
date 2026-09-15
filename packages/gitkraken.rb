@@ -3,16 +3,11 @@ require 'package'
 class Gitkraken < Package
   description 'The legendary Git GUI for Windows, Mac and Linux'
   homepage 'https://www.gitkraken.com/git-client'
-  version '12.1.2'
+  version '12.4.1'
   license 'Gitkracken-EULA'
   compatibility 'x86_64'
-  source_url 'https://release.gitkraken.dev/gkd/production/normal/linux/x64/12.1.2/3Dw6tQ41lY4HGfY0JGNxt60FlAU/gitkraken-amd64.tar.gz'
-  source_sha256 '9b885d9668379693dc69ce589b3c7c4788695d03fea91f35433bfd3d29591d89'
-  binary_compression 'tar.zst'
-
-  binary_sha256({
-     x86_64: '6b5d969f16ce032bc433ed090d9b92c925982bb4af2a60963cd0bf6ee97144fd'
-  })
+  source_url 'https://release.gitkraken.dev/gkd/production/normal/linux/x64/12.4.1/3Ijh9hqRbAH7umT5wxyEDUwxraL/gitkraken-amd64.tar.gz'
+  source_sha256 '344276052482d68d334fc9535fb681a5600e5658f1a962f04ea09a200fd42ea4'
 
   depends_on 'alsa_lib' => :executable
   depends_on 'at_spi2_core' => :executable
@@ -47,6 +42,8 @@ class Gitkraken < Package
   depends_on 'pango' => :executable
   depends_on 'sommelier' => :logical
   depends_on 'zlib' => :executable
+
+  no_compile_needed
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
