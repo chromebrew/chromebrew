@@ -2,13 +2,16 @@ require 'English'
 require 'package'
 
 class Gcc_build < Package
-  description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
+  description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, Go, and for 64bit: COBOL.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '16.2.0'
+  version '16.2.1-7799a75'
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
-  source_url 'https://github.com/gcc-mirror/gcc.git'
-  git_hashtag "releases/gcc-#{version}"
+  source_url 'https://gcc.gnu.org/pub/gcc/snapshots/LATEST-16/gcc-16-20260912.tar.xz'
+  source_sha256 '487fa9ed3b0c34a06ea6049dcbcb239f6a7807f2974083426b287f4c4f011db5'
+  # Built from 7799a75054edd195627f794b4766f80566f5d368
+  # source_url 'https://github.com/gcc-mirror/gcc.git'
+  # git_hashtag "releases/gcc-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -42,6 +45,7 @@ class Gcc_build < Package
   when 'armv7l', 'aarch64'
     @archflags = '--with-arch=armv7-a+fp --with-float=hard --with-tune=cortex-a15 --with-fpu=vfpv3-d16'
   when 'x86_64'
+    @languages = "#{@languages},cobol" # COBOL in GCC needs 64bits, so only added here.
     @archflags = '--with-arch-64=x86-64'
   when 'i686'
     @archflags = '--with-arch-32=i686'
