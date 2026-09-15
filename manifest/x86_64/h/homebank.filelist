@@ -1,4 +1,4 @@
-# Total size: 7750643
+# Total size: 10832604
 /usr/local/bin/homebank
 /usr/local/etc/env.d/10-homebank
 /usr/local/share/application-registry/homebank.applications
@@ -212,6 +212,7 @@
 /usr/local/share/homebank/icons/Default/scalable/actions/hb-budget.svg
 /usr/local/share/homebank/icons/Default/scalable/actions/hb-category.svg
 /usr/local/share/homebank/icons/Default/scalable/actions/hb-clear.svg
+/usr/local/share/homebank/icons/Default/scalable/actions/hb-content-copy.svg
 /usr/local/share/homebank/icons/Default/scalable/actions/hb-document-new.svg
 /usr/local/share/homebank/icons/Default/scalable/actions/hb-document-open.svg
 /usr/local/share/homebank/icons/Default/scalable/actions/hb-document-print.svg
@@ -353,6 +354,7 @@
 /usr/local/share/homebank/icons/hicolor/24x24/actions/hb-budget.png
 /usr/local/share/homebank/icons/hicolor/24x24/actions/hb-category.png
 /usr/local/share/homebank/icons/hicolor/24x24/actions/hb-clear.png
+/usr/local/share/homebank/icons/hicolor/24x24/actions/hb-content-copy.png
 /usr/local/share/homebank/icons/hicolor/24x24/actions/hb-document-new.png
 /usr/local/share/homebank/icons/hicolor/24x24/actions/hb-document-open.png
 /usr/local/share/homebank/icons/hicolor/24x24/actions/hb-document-print.png
@@ -418,6 +420,7 @@
 /usr/local/share/homebank/icons/hicolor/scalable/actions/hb-budget-symbolic.svg
 /usr/local/share/homebank/icons/hicolor/scalable/actions/hb-category-symbolic.svg
 /usr/local/share/homebank/icons/hicolor/scalable/actions/hb-clear-symbolic.svg
+/usr/local/share/homebank/icons/hicolor/scalable/actions/hb-content-copy-symbolic.svg
 /usr/local/share/homebank/icons/hicolor/scalable/actions/hb-document-new-symbolic.svg
 /usr/local/share/homebank/icons/hicolor/scalable/actions/hb-document-open-symbolic.svg
 /usr/local/share/homebank/icons/hicolor/scalable/actions/hb-document-print-symbolic.svg
@@ -523,11 +526,14 @@
 /usr/local/share/icons/hicolor/32x32/apps/homebank.png
 /usr/local/share/icons/hicolor/48x48/apps/homebank.png
 /usr/local/share/locale/af/LC_MESSAGES/homebank.mo
+/usr/local/share/locale/am/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/ar/LC_MESSAGES/homebank.mo
+/usr/local/share/locale/ast/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/be/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/bg/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/bn/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/br/LC_MESSAGES/homebank.mo
+/usr/local/share/locale/bs/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/ca/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/ckb/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/cs/LC_MESSAGES/homebank.mo
@@ -538,6 +544,7 @@
 /usr/local/share/locale/en_AU/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/en_CA/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/en_GB/LC_MESSAGES/homebank.mo
+/usr/local/share/locale/eo/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/es/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/et/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/eu/LC_MESSAGES/homebank.mo
@@ -545,18 +552,30 @@
 /usr/local/share/locale/fi/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/fr/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/fr_CA/LC_MESSAGES/homebank.mo
+/usr/local/share/locale/ga/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/gl/LC_MESSAGES/homebank.mo
+/usr/local/share/locale/gu/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/he/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/hi/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/hr/LC_MESSAGES/homebank.mo
+/usr/local/share/locale/ht/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/hu/LC_MESSAGES/homebank.mo
+/usr/local/share/locale/ia/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/id/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/is/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/it/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/ja/LC_MESSAGES/homebank.mo
+/usr/local/share/locale/ka/LC_MESSAGES/homebank.mo
+/usr/local/share/locale/kk/LC_MESSAGES/homebank.mo
+/usr/local/share/locale/kn/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/ko/LC_MESSAGES/homebank.mo
+/usr/local/share/locale/ku/LC_MESSAGES/homebank.mo
+/usr/local/share/locale/lo/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/lt/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/lv/LC_MESSAGES/homebank.mo
+/usr/local/share/locale/mi/LC_MESSAGES/homebank.mo
+/usr/local/share/locale/ml/LC_MESSAGES/homebank.mo
+/usr/local/share/locale/mr/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/ms/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/nb/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/nds/LC_MESSAGES/homebank.mo
@@ -569,16 +588,23 @@
 /usr/local/share/locale/ro/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/ru/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/si/LC_MESSAGES/homebank.mo
+/usr/local/share/locale/sk/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/sl/LC_MESSAGES/homebank.mo
+/usr/local/share/locale/sn/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/sq/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/sr/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/sv/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/ta/LC_MESSAGES/homebank.mo
+/usr/local/share/locale/ta_LK/LC_MESSAGES/homebank.mo
+/usr/local/share/locale/th/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/tr/LC_MESSAGES/homebank.mo
+/usr/local/share/locale/ug/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/uk/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/ur/LC_MESSAGES/homebank.mo
+/usr/local/share/locale/uz/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/vi/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/homebank.mo
+/usr/local/share/locale/zh_HK/LC_MESSAGES/homebank.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/homebank.mo
 /usr/local/share/metainfo/homebank.appdata.xml
 /usr/local/share/mime-info/homebank.keys
