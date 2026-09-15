@@ -1,7 +1,8 @@
-# Total size: 635328
+# Total size: 802326
 /usr/local/lib/gio/modules/libgiognomeproxy.so
 /usr/local/lib/gio/modules/libgiognutls.so
 /usr/local/lib/gio/modules/libgiolibproxy.so
+/usr/local/lib/gio/modules/libgioopenssl.so
 /usr/local/lib/systemd/user/glib-pacrunner.service
 /usr/local/libexec/glib-pacrunner
 /usr/local/share/dbus-1/services/org.gtk.GLib.PACRunner.service
@@ -45,6 +46,8 @@
 /usr/local/share/locale/km/LC_MESSAGES/glib-networking.mo
 /usr/local/share/locale/kn/LC_MESSAGES/glib-networking.mo
 /usr/local/share/locale/ko/LC_MESSAGES/glib-networking.mo
+/usr/local/share/locale/kw/LC_MESSAGES/glib-networking.mo
+/usr/local/share/locale/lo/LC_MESSAGES/glib-networking.mo
 /usr/local/share/locale/lt/LC_MESSAGES/glib-networking.mo
 /usr/local/share/locale/lv/LC_MESSAGES/glib-networking.mo
 /usr/local/share/locale/ml/LC_MESSAGES/glib-networking.mo
@@ -73,6 +76,7 @@
 /usr/local/share/locale/tr/LC_MESSAGES/glib-networking.mo
 /usr/local/share/locale/ug/LC_MESSAGES/glib-networking.mo
 /usr/local/share/locale/uk/LC_MESSAGES/glib-networking.mo
+/usr/local/share/locale/uz/LC_MESSAGES/glib-networking.mo
 /usr/local/share/locale/vi/LC_MESSAGES/glib-networking.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/glib-networking.mo
 /usr/local/share/locale/zh_HK/LC_MESSAGES/glib-networking.mo
