@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_streamlit < Pip
   description 'A faster way to build and share data apps'
   homepage 'https://streamlit.io/'
-  version "1.63.0-#{CREW_PY_VER}"
+  version "1.64.0-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6b8703154a5f4d611c4088b137b781788c836de5092ec2620b515bfdc9efdfc5',
-     armv7l: '6b8703154a5f4d611c4088b137b781788c836de5092ec2620b515bfdc9efdfc5',
-       i686: '017000405cf9b32532057bbc4cfcc1b9d2fb37d1dbbfb10a177470ecb998821c',
-     x86_64: '057b8640cb917d633aa327a46542bb659044a902e1267bf34dd0e2c8da68bb96'
+    aarch64: '01b9c29b2bce2eb1d196e306ed17af2fa21c4838fb5ef17613c4b3087016bbc2',
+     armv7l: '01b9c29b2bce2eb1d196e306ed17af2fa21c4838fb5ef17613c4b3087016bbc2',
+       i686: '4c58946760a600d048293645f0233cb09b264a30d7a789217091c2e0e657bdf4',
+     x86_64: '8fba70b31af691b7f3758f4345ce65636ac817c8d8da52762c2ceee2d73498af'
   })
 
   depends_on 'python3' => :logical
