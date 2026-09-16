@@ -18,6 +18,7 @@ class Libcpuid < CMake
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 
   run_tests
 end
