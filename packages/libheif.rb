@@ -11,26 +11,29 @@ class Libheif < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '778d0b6b8ff7874c27dcc4dea52cd3bbd9b523e4a2dfdfbd9e514dcf37b9577c',
-     armv7l: '778d0b6b8ff7874c27dcc4dea52cd3bbd9b523e4a2dfdfbd9e514dcf37b9577c',
-     x86_64: '3ec223d5489a1624911f33efbaad79bcbef457c23272ccef60a6d7a7ca7cc47b'
+    aarch64: 'bd082093a0f1a9d2d35eb3c6fe801c857251b751bcbb67b5b22866f524d8edb2',
+     armv7l: 'bd082093a0f1a9d2d35eb3c6fe801c857251b751bcbb67b5b22866f524d8edb2',
+     x86_64: '8108f35e885364720176e567b5fa2c22a1b2a67295566d614fb0c99404f9a176'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'gdk_pixbuf' # R
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'gdk_pixbuf' => :library
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'graphviz' => :build # Only needed for dot.
-  depends_on 'libaom' # R
-  depends_on 'libde265' # R
-  depends_on 'libjpeg_turbo' # R
-  depends_on 'libpng' # R
+  depends_on 'libaom' => :library
+  depends_on 'libde265' => :library
+  depends_on 'libjpeg_turbo' => :executable
+  depends_on 'libpng' => :executable
+  depends_on 'libtiff' => :executable
   depends_on 'libtiff' => :logical
-  depends_on 'libwebp' # R
-  depends_on 'libx265' # R
-  depends_on 'openh264' # R
-  depends_on 'sdl2' # R
-  depends_on 'zlib' # R
+  depends_on 'libwebp' => :library
+  depends_on 'libx265' => :library
+  depends_on 'openh264' => :library
+  depends_on 'sdl2' => :executable
+  depends_on 'sdl2_compat' => :executable
+  depends_on 'zlib' => :executable
 
   gnome
 end
