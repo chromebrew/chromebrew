@@ -1,4 +1,4 @@
-# Total size: 42336043
+# Total size: 42397191
 /home/chronos/user/.gemrc
 /usr/local/bin/bundle
 /usr/local/bin/bundler
@@ -209,7 +209,7 @@
 /usr/local/include/ruby-4.0.0/x86_64-linux/ruby/config.h
 /usr/local/lib64/libruby.so
 /usr/local/lib64/libruby.so.4.0
-/usr/local/lib64/libruby.so.4.0.6
+/usr/local/lib64/libruby.so.4.0.7
 /usr/local/lib64/pkgconfig/ruby-4.0.pc
 /usr/local/lib64/ruby/4.0.0/English.rb
 /usr/local/lib64/ruby/4.0.0/bundled_gems.rb
@@ -1185,8 +1185,8 @@
 /usr/local/lib64/ruby/gems/4.0.0/gems/benchmark-0.5.0/bin/console
 /usr/local/lib64/ruby/gems/4.0.0/gems/benchmark-0.5.0/bin/setup
 /usr/local/lib64/ruby/gems/4.0.0/gems/benchmark-0.5.0/lib/benchmark.rb
-/usr/local/lib64/ruby/gems/4.0.0/gems/bundler-4.0.16/exe/bundle
-/usr/local/lib64/ruby/gems/4.0.0/gems/bundler-4.0.16/exe/bundler
+/usr/local/lib64/ruby/gems/4.0.0/gems/bundler-4.0.20/exe/bundle
+/usr/local/lib64/ruby/gems/4.0.0/gems/bundler-4.0.20/exe/bundler
 /usr/local/lib64/ruby/gems/4.0.0/gems/csv-3.3.5/LICENSE.txt
 /usr/local/lib64/ruby/gems/4.0.0/gems/csv-3.3.5/NEWS.md
 /usr/local/lib64/ruby/gems/4.0.0/gems/csv-3.3.5/README.md
@@ -1241,7 +1241,7 @@
 /usr/local/lib64/ruby/gems/4.0.0/gems/drb-2.2.3/lib/drb/unix.rb
 /usr/local/lib64/ruby/gems/4.0.0/gems/drb-2.2.3/lib/drb/version.rb
 /usr/local/lib64/ruby/gems/4.0.0/gems/drb-2.2.3/lib/drb/weakidconv.rb
-/usr/local/lib64/ruby/gems/4.0.0/gems/erb-6.0.1.1/libexec/erb
+/usr/local/lib64/ruby/gems/4.0.0/gems/erb-6.0.7/libexec/erb
 /usr/local/lib64/ruby/gems/4.0.0/gems/getoptlong-0.2.1/Gemfile
 /usr/local/lib64/ruby/gems/4.0.0/gems/getoptlong-0.2.1/LICENSE.txt
 /usr/local/lib64/ruby/gems/4.0.0/gems/getoptlong-0.2.1/README.md
@@ -2116,13 +2116,13 @@
 /usr/local/lib64/ruby/gems/4.0.0/specifications/base64-0.3.0.gemspec
 /usr/local/lib64/ruby/gems/4.0.0/specifications/benchmark-0.5.0.gemspec
 /usr/local/lib64/ruby/gems/4.0.0/specifications/csv-3.3.5.gemspec
-/usr/local/lib64/ruby/gems/4.0.0/specifications/default/bundler-4.0.16.gemspec
+/usr/local/lib64/ruby/gems/4.0.0/specifications/default/bundler-4.0.20.gemspec
 /usr/local/lib64/ruby/gems/4.0.0/specifications/default/date-3.5.1.gemspec
 /usr/local/lib64/ruby/gems/4.0.0/specifications/default/delegate-0.6.1.gemspec
 /usr/local/lib64/ruby/gems/4.0.0/specifications/default/did_you_mean-2.0.0.gemspec
 /usr/local/lib64/ruby/gems/4.0.0/specifications/default/digest-3.2.1.gemspec
 /usr/local/lib64/ruby/gems/4.0.0/specifications/default/english-0.8.1.gemspec
-/usr/local/lib64/ruby/gems/4.0.0/specifications/default/erb-6.0.1.1.gemspec
+/usr/local/lib64/ruby/gems/4.0.0/specifications/default/erb-6.0.7.gemspec
 /usr/local/lib64/ruby/gems/4.0.0/specifications/default/error_highlight-0.7.2.gemspec
 /usr/local/lib64/ruby/gems/4.0.0/specifications/default/etc-1.4.6.gemspec
 /usr/local/lib64/ruby/gems/4.0.0/specifications/default/fcntl-1.3.0.gemspec
@@ -2144,7 +2144,7 @@
 /usr/local/lib64/ruby/gems/4.0.0/specifications/default/prettyprint-0.2.0.gemspec
 /usr/local/lib64/ruby/gems/4.0.0/specifications/default/prism-1.8.1.gemspec
 /usr/local/lib64/ruby/gems/4.0.0/specifications/default/psych-5.3.1.gemspec
-/usr/local/lib64/ruby/gems/4.0.0/specifications/default/resolv-0.7.0.gemspec
+/usr/local/lib64/ruby/gems/4.0.0/specifications/default/resolv-0.7.2.gemspec
 /usr/local/lib64/ruby/gems/4.0.0/specifications/default/ruby2_keywords-0.0.5.gemspec
 /usr/local/lib64/ruby/gems/4.0.0/specifications/default/securerandom-0.4.1.gemspec
 /usr/local/lib64/ruby/gems/4.0.0/specifications/default/shellwords-0.2.2.gemspec
@@ -3806,6 +3806,7 @@
 /usr/local/share/ri/4.0.0/system/Gem/BasicSpecification/have_extensions%3f-i.ri
 /usr/local/share/ri/4.0.0/system/Gem/BasicSpecification/have_file%3f-i.ri
 /usr/local/share/ri/4.0.0/system/Gem/BasicSpecification/ignored%3f-i.ri
+/usr/local/share/ri/4.0.0/system/Gem/BasicSpecification/lib_dirs-i.ri
 /usr/local/share/ri/4.0.0/system/Gem/BasicSpecification/lib_dirs_glob-i.ri
 /usr/local/share/ri/4.0.0/system/Gem/BasicSpecification/loaded_from-i.ri
 /usr/local/share/ri/4.0.0/system/Gem/BasicSpecification/matches_for_glob-i.ri
@@ -4262,6 +4263,7 @@
 /usr/local/share/ri/4.0.0/system/Gem/Ext/Builder/run-c.ri
 /usr/local/share/ri/4.0.0/system/Gem/Ext/Builder/shelljoin-c.ri
 /usr/local/share/ri/4.0.0/system/Gem/Ext/Builder/shellsplit-c.ri
+/usr/local/share/ri/4.0.0/system/Gem/Ext/Builder/shellsplit_command-c.ri
 /usr/local/share/ri/4.0.0/system/Gem/Ext/CargoBuilder/DylibNotFoundError/cdesc-DylibNotFoundError.ri
 /usr/local/share/ri/4.0.0/system/Gem/Ext/CargoBuilder/DylibNotFoundError/new-c.ri
 /usr/local/share/ri/4.0.0/system/Gem/Ext/CargoBuilder/LinkFlagConverter/cdesc-LinkFlagConverter.ri
@@ -5094,6 +5096,7 @@
 /usr/local/share/ri/4.0.0/system/Gem/SafeMarshal/Reader/DataTooShortError/cdesc-DataTooShortError.ri
 /usr/local/share/ri/4.0.0/system/Gem/SafeMarshal/Reader/EOFError/cdesc-EOFError.ri
 /usr/local/share/ri/4.0.0/system/Gem/SafeMarshal/Reader/Error/cdesc-Error.ri
+/usr/local/share/ri/4.0.0/system/Gem/SafeMarshal/Reader/LengthTooLongError/cdesc-LengthTooLongError.ri
 /usr/local/share/ri/4.0.0/system/Gem/SafeMarshal/Reader/NegativeLengthError/cdesc-NegativeLengthError.ri
 /usr/local/share/ri/4.0.0/system/Gem/SafeMarshal/Reader/NotImplementedError/cdesc-NotImplementedError.ri
 /usr/local/share/ri/4.0.0/system/Gem/SafeMarshal/Reader/UnconsumedBytesError/cdesc-UnconsumedBytesError.ri
@@ -5107,6 +5110,7 @@
 /usr/local/share/ri/4.0.0/system/Gem/SafeMarshal/Reader/read_bytes-i.ri
 /usr/local/share/ri/4.0.0/system/Gem/SafeMarshal/Reader/read_class-i.ri
 /usr/local/share/ri/4.0.0/system/Gem/SafeMarshal/Reader/read_class_or_module-i.ri
+/usr/local/share/ri/4.0.0/system/Gem/SafeMarshal/Reader/read_count-i.ri
 /usr/local/share/ri/4.0.0/system/Gem/SafeMarshal/Reader/read_data-i.ri
 /usr/local/share/ri/4.0.0/system/Gem/SafeMarshal/Reader/read_element-i.ri
 /usr/local/share/ri/4.0.0/system/Gem/SafeMarshal/Reader/read_extended_object-i.ri
