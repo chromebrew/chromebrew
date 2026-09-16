@@ -11,14 +11,15 @@ class Proj < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '90088a432a0e5cf00ffb0e531b05c88d1f628a914fe51a2f9b46d2afd4bdcb16',
-     armv7l: '90088a432a0e5cf00ffb0e531b05c88d1f628a914fe51a2f9b46d2afd4bdcb16',
-     x86_64: '1dd5d6b8cc8a02302af065dad2a95f9a9b2587a6bcf4900410618060376c11f8'
+    aarch64: 'fc4ff075542bda65fbfb5bb17944841df8016ab152f580fe029176523562555e',
+     armv7l: 'fc4ff075542bda65fbfb5bb17944841df8016ab152f580fe029176523562555e',
+     x86_64: 'be786f49c3549f94672196b8b044ffd6c0273fe61f29f6898ca54826a3233486'
   })
 
   depends_on 'curl' => :library
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'libtiff' => :library
   depends_on 'sqlite' => :library
 end
