@@ -1,13 +1,12 @@
 require 'package'
-Package.load_package("#{__dir__}/gcc_build.rb")
 
-class Gcc_dev < Package
+class Gcc14_dev < Package
+  gcc_build_object = Package.load_package("#{__dir__}/gcc14_build.rb")
   description 'The GNU Compiler Collection: Everything (excepting libraries aside from libgccjit)'
-  homepage Gcc_build.homepage
+  homepage gcc_build_object.homepage
   version '14.3.0'
-  license Gcc_build.license
+  license gcc_build_object.license
   # When upgrading gcc_build, be sure to upgrade gcc_lib, gcc_dev, libssp, and then binutils in tandem.
-  puts "#{self} version (#{version}) differs from gcc version #{Gcc_build.version}".orange if version != Gcc_build.version
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
@@ -19,8 +18,7 @@ class Gcc_dev < Package
      x86_64: 'a18a219aa78497247b45b550f3bfd9805a121bc3f07c83357741bfacca88bd16'
   })
 
-  depends_on 'gcc_build' # L
-  depends_on 'gcc_lib' # R
+  depends_on 'gcc14_build' # L
   depends_on 'glibc' # R
   depends_on 'gmp' # R
   depends_on 'isl' # R
@@ -36,7 +34,7 @@ class Gcc_dev < Package
 
   def self.install
     puts 'Installing Gcc_build to pull files for build...'.lightblue
-    @filelist_path = File.join(CREW_META_PATH, 'gcc_build.filelist')
+    @filelist_path = File.join(CREW_META_PATH, 'gcc14_build.filelist')
     abort 'File list for Gcc_build does not exist!'.lightred unless File.file?(@filelist_path)
     @filelist = File.readlines(@filelist_path, chomp: true).grep(/^(?!#)/)
 
