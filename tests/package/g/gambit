@@ -1,0 +1,4 @@
+#!/bin/bash
+gambuild-C | head -5
+gambuild-x86 | head -5
+gambuild-x86-64 | head -5
