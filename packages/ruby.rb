@@ -34,13 +34,6 @@ class Ruby < Package
 
   # at run-time, system's gmp, openssl, and zlib can be used
 
-  def self.patch
-    # Download bundled gems version from Top of Tree. Otherwise outdated
-    # compile needed gems during install can cause issues when updates
-    # are attempted.
-    downloader 'https://github.com/ruby/ruby/raw/refs/heads/master/gems/bundled_gems', 'SKIP', 'gems/bundled_gems' unless version == '4.0.7'
-  end
-
   def self.build
     system '[ -x configure ] || autoreconf -fiv'
     system 'filefix'
@@ -52,7 +45,7 @@ class Ruby < Package
       --enable-shared \
       #{'--enable-yjit' if ARCH == 'x86_64' || ARCH == 'aarch64'} \
       --disable-fortify-source"
-    system "MAKEFLAGS='--jobs #{CREW_NPROC}' make"
+    system "MAKEFLAGS='--jobs #{CREW_NPROC}' make -j #{CREW_NPROC}"
   end
 
   def self.check
