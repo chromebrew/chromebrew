@@ -148,6 +148,7 @@ class Gcc_build < Package
       --with-system-zlib \
       --with-system-zstd \
       --with-stage1-ldflags='#{@glibc_flags}' \
+      --with-target-libxml2-include=#{CREW_PREFIX}/include/libxml2 \
       --with-boot-ldflags='#{@glibc_flags}'
     OPT
     puts 'Building with:'.lightblue
