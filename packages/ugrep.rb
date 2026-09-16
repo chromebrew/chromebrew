@@ -11,7 +11,7 @@ class Ugrep < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: 'db56970c213d4b842325228c77d0b46af22e869aeffe28f965cbef3a0f54a3d3'
+     x86_64: '4f4fd1d10fdcc1a37bf5b7006b9cc802e8ca347c798961a34a13df8b0b740c1c'
   })
 
   depends_on 'brotli' => :executable
