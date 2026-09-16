@@ -3,11 +3,11 @@ require 'buildsystems/cmake'
 class Proj < CMake
   description 'PROJ is a generic coordinate transformation software that transforms geospatial coordinates from one coordinate reference system (CRS) to another.'
   homepage 'https://proj.org'
-  version '9.8.1'
+  version '9.9.0'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://download.osgeo.org/proj/proj-#{version}.tar.gz"
-  source_sha256 'af5b731c145c1d13c4e3b4eeb7d167e94e845e440f71e3496b4ed8dae0291960'
+  source_sha256 '791a0610547eeabb17006cfd49cdbd2034f3240f47ed5e88a1031811f4e2bcf3'
   binary_compression 'tar.zst'
 
   binary_sha256({
