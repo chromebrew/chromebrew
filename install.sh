@@ -1,5 +1,5 @@
 #!/bin/bash
-CREW_INSTALLER_VERSION=2026052801
+CREW_INSTALLER_VERSION=2026091601
 export CREW_INSTALLER_RUNNING=1
 # Exit on fail.
 set -eE
@@ -193,7 +193,8 @@ PATCHELF_INTERPRETER="${CREW_PREFIX}/bin/ld.so"
 #  ;;
 #esac
 
-: "${CREW_PY_VER:=3.14}"
+: "${CREW_GCC_VER:=gcc16}"
+: "${CREW_PY_VER:=py3.14}"
 CREW_NPROC="$(nproc)"
 export CREW_NPROC
 
@@ -299,7 +300,7 @@ if [[ -n "${CREW_PRE_GLIBC_STANDALONE}" ]]; then
   [[ -n "${PREFIX_CMD}" ]] && BOOTSTRAP_PACKAGES+=' util_linux'
   # Overwrite the glibc libcrypt.so.1.1.0 with the one from libxcrypt.
   BOOTSTRAP_PACKAGES+=' libxcrypt '
-  BOOTSTRAP_PACKAGES+=' upx patchelf lz4 zlib xzutils zlib_ng gcc_lib crew_mvdir ca_certificates libyaml openssl findutils ncurses readline bash psmisc'
+  BOOTSTRAP_PACKAGES+=" upx patchelf lz4 zlib xzutils zlib_ng ${CREW_GCC_VER}_build crew_mvdir ca_certificates libyaml openssl findutils ncurses readline bash psmisc"
 else
   # Ruby wants gcc_lib, so install our version build against our glibc
   # first.
@@ -308,7 +309,7 @@ else
   BOOTSTRAP_PACKAGES='zstd_static glibc crew_preload'
   # Get linux32 as early as possible.
   [[ -n "${PREFIX_CMD}" ]] && BOOTSTRAP_PACKAGES+=' util_linux'
-  BOOTSTRAP_PACKAGES+=' libxcrypt upx patchelf lz4 zlib xzutils zlib_ng crew_mvdir ncurses readline bash gcc_lib ca_certificates libyaml openssl gmp findutils psmisc'
+  BOOTSTRAP_PACKAGES+=" libxcrypt upx patchelf lz4 zlib xzutils zlib_ng crew_mvdir ncurses readline bash ${CREW_GCC_VER}_build ca_certificates libyaml openssl gmp findutils psmisc"
   [[ "${ARCH}" == 'i686' ]] || BOOTSTRAP_PACKAGES+=' uutils_coreutils'
 fi
 
@@ -471,7 +472,7 @@ function extract_install () {
 }
 
 function get_pkg_version () {
-  grep "\ \ version" "${1}" | head -n 1 | sed "s/#{LIBC_VERSION}/$LIBC_VERSION/g" | sed "s/#{@gcc_libc_version}/$LIBC_VERSION/g" | sed "s/#{CREW_PY_VER}/py$CREW_PY_VER/g"| sed "s/#{CREW_RUBY_VER}/$CREW_RUBY_VER/g"| awk '{print substr($2,2,length($2)-2)}'
+  grep "\ \ version" "${1}" | head -n 1 | sed "s/#{LIBC_VERSION}/$LIBC_VERSION/g" | sed "s/#{@gcc_libc_version}/$LIBC_VERSION/g" | sed "s/#{CREW_GCC_VER}/$CREW_GCC_VER/g"| sed "s/#{CREW_PY_VER}/$CREW_PY_VER/g"| sed "s/#{CREW_RUBY_VER}/$CREW_RUBY_VER/g"| awk '{print substr($2,2,length($2)-2)}'
 }
 
 function update_device_json () {

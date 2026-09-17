@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# getrealdeps version 2.21 (for Chromebrew)
+# getrealdeps version 2.22 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 #
 # Dependencies in Chromebrew can be:
@@ -68,9 +68,9 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
     { name_regex: 'llvm.*_build', exclusion_regex: 'llvm.*_*', comments: 'created from the llvm build package.' },
     { name_regex: '(llvm.*_dev|llvm.*_lib|libclc|openmp)', exclusion_regex: 'llvm.*_build', comments: 'should only be a build dep.' },
     { name_regex: 'llvm.*_lib', exclusion_regex: 'llvm_lib', comments: 'should only be a build dep.' },
-    { name_regex: 'gcc_build', exclusion_regex: 'gcc.*_*', comments: 'created from the gcc_build package.' },
-    { name_regex: '(gcc_dev|gcc_lib|libssp)', exclusion_regex: 'gcc_build', comments: 'should only be a build dep.' },
-    { name_regex: 'gcc_lib', exclusion_regex: 'gcc_lib', comments: 'should only be a build dep.' },
+    { name_regex: 'gcc.*_build', exclusion_regex: 'gcc.*_*', comments: 'created from the gcc_build package.' },
+    { name_regex: '(gcc.*_dev|gcc.*_lib|libssp)', exclusion_regex: 'gcc.*_build', comments: 'should only be a build dep.' },
+    { name_regex: 'gcc.*_lib', exclusion_regex: 'gcc.*_lib', comments: 'should only be a build dep.' },
     { name_regex: 'mesa', exclusion_regex: 'libminigbm', comments: 'Conflicts with mesa' },
     { name_regex: 'python3', exclusion_regex: '(tcl|tk)', comments: 'optional for i686, which does not have gui libraries.' },
     { name_regex: 'qt5_base', exclusion_regex: 'mysql', comments: 'Do not want dep for armv7l, since mysql us 64 bit only.' },
