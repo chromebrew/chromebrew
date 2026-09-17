@@ -3,7 +3,7 @@ require 'package'
 class Rqlite < Package
   description 'The lightweight, user-friendly, distributed relational database built on SQLite.'
   homepage 'https://rqlite.io/'
-  version '10.3.3'
+  version '10.3.4'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.29'
@@ -13,9 +13,9 @@ class Rqlite < Package
      x86_64: "https://github.com/rqlite/rqlite/releases/download/v#{version}/rqlite-v#{version}-linux-amd64.tar.gz"
   })
   source_sha256({
-    aarch64: 'ccee5ff8d4b888040466d352d10c76dbad5338c4f9075e9711e488822223d4bb',
-     armv7l: 'ccee5ff8d4b888040466d352d10c76dbad5338c4f9075e9711e488822223d4bb',
-     x86_64: '9e22f1efce478f2f0ae1bf7199fa55b073b548a195d7eb0cb4e10af8834bb549'
+    aarch64: 'b9440fe7c1febe972a13e52f74fd7132e4cd168af2db7abb488604dad0f8570b',
+     armv7l: 'b9440fe7c1febe972a13e52f74fd7132e4cd168af2db7abb488604dad0f8570b',
+     x86_64: 'b8939991deb982da53907fda2a178d31a7732af595fcd06c2023617926f9c4eb'
   })
 
   depends_on 'psmisc'
