@@ -3,7 +3,7 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '4.0.6'
+  version '4.0.7'
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
   source_url 'https://github.com/ruby/ruby.git'
@@ -11,10 +11,10 @@ class Ruby < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a7904b8d72c12e70642c1808be45644bdc85d4221191186e048f684d9371bcb7',
-     armv7l: 'a7904b8d72c12e70642c1808be45644bdc85d4221191186e048f684d9371bcb7',
-       i686: 'e38bdec01033dd4677dbd0c51856b1a3e1f1fabf040a8c03265e5d0998754f12',
-     x86_64: 'a9c19ba1614d788d5c58612a040bf9f415d3b276705d3af8b90eeb861d1ac66f'
+    aarch64: 'c6328b42ae70ddcc4fd6a65937b11b510dd0cef4951a1ba9bbd689d7694a0fc8',
+     armv7l: 'c6328b42ae70ddcc4fd6a65937b11b510dd0cef4951a1ba9bbd689d7694a0fc8',
+       i686: '875de8deab4d29987d2b9ef0a683600cbec89bfaffe7ed34ca2ac92f4e3091b2',
+     x86_64: 'a0ccc0a848e040d92c27a8030f3a1ccc805483c95ae0e1baba00d043e2643572'
   })
 
   depends_on 'ca_certificates' => :logical
@@ -34,13 +34,6 @@ class Ruby < Package
 
   # at run-time, system's gmp, openssl, and zlib can be used
 
-  def self.patch
-    # Download bundled gems version from Top of Tree. Otherwise outdated
-    # compile needed gems during install can cause issues when updates
-    # are attempted.
-    downloader 'https://github.com/ruby/ruby/raw/refs/heads/master/gems/bundled_gems', 'SKIP', 'gems/bundled_gems' unless version == '4.0.6'
-  end
-
   def self.build
     system '[ -x configure ] || autoreconf -fiv'
     system 'filefix'
@@ -52,13 +45,13 @@ class Ruby < Package
       --enable-shared \
       #{'--enable-yjit' if ARCH == 'x86_64' || ARCH == 'aarch64'} \
       --disable-fortify-source"
-    system "MAKEFLAGS='--jobs #{CREW_NPROC}' make"
+    system "MAKEFLAGS='--jobs #{CREW_NPROC}' make -j #{CREW_NPROC}"
   end
 
   def self.check
     # Do not run checks if rebuilding current ruby version.
     # RUBY_VERSION is a built-in ruby constant.
-    system "MAKEFLAGS='--jobs #{CREW_NPROC}' make check || true" unless version == RUBY_VERSION
+    system "MAKEFLAGS='--jobs #{CREW_NPROC}' make check || true" unless version == RUBY_VERSION || ARCH.include?('armv7l')
   end
 
   def self.install
