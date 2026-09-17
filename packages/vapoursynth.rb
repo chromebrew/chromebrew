@@ -17,8 +17,6 @@ class Vapoursynth < Meson
   })
 
   depends_on 'ffmpeg' => :build
-  depends_on 'gcc16_build' => :library
-  depends_on 'gcc16_lib' => :library
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
