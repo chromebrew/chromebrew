@@ -23,6 +23,9 @@ on:
       - completed
 env:
   BRANCH: ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
+
+cache-mode: read
+
 jobs:
   debug:
     runs-on: ubuntu-24.04
@@ -121,7 +124,6 @@ jobs:
     uses: ./.github/workflows/Determine-Compatibility.yml
     with:
       changed_packages: ${{ needs.setup.outputs.changed_packages }}
-      cache-mode: read
 
   gen-matrix:
     needs: get-compatibility
