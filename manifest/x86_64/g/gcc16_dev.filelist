@@ -1,4 +1,4 @@
-# Total size: 1321089817
+# Total size: 1416561316
 /usr/local/bin/c++
 /usr/local/bin/c++-16
 /usr/local/bin/c89
@@ -20,6 +20,10 @@
 /usr/local/bin/gccgo-16
 /usr/local/bin/gccrs
 /usr/local/bin/gccrs-16
+/usr/local/bin/gcobc
+/usr/local/bin/gcobc-16
+/usr/local/bin/gcobol
+/usr/local/bin/gcobol-16
 /usr/local/bin/gcov
 /usr/local/bin/gcov-16
 /usr/local/bin/gcov-dump
@@ -51,6 +55,10 @@
 /usr/local/bin/x86_64-cros-linux-gnu-gccgo-16
 /usr/local/bin/x86_64-cros-linux-gnu-gccrs
 /usr/local/bin/x86_64-cros-linux-gnu-gccrs-16
+/usr/local/bin/x86_64-cros-linux-gnu-gcobc
+/usr/local/bin/x86_64-cros-linux-gnu-gcobc-16
+/usr/local/bin/x86_64-cros-linux-gnu-gcobol
+/usr/local/bin/x86_64-cros-linux-gnu-gcobol-16
 /usr/local/bin/x86_64-cros-linux-gnu-gfortran
 /usr/local/bin/x86_64-cros-linux-gnu-gfortran-16
 /usr/local/bin/x86_64-cros-linux-gnu-nm
@@ -923,6 +931,19 @@
 /usr/local/include/libgccjit.h
 /usr/local/lib64/gcc/x86_64-cros-linux-gnu/16/cc1
 /usr/local/lib64/gcc/x86_64-cros-linux-gnu/16/cc1plus
+/usr/local/lib64/gcc/x86_64-cros-linux-gnu/16/cobol/compat/gnu/lib/CBL_ALLOC_MEM.cbl
+/usr/local/lib64/gcc/x86_64-cros-linux-gnu/16/cobol/compat/gnu/lib/CBL_CHECK_FILE_EXIST.cbl
+/usr/local/lib64/gcc/x86_64-cros-linux-gnu/16/cobol/compat/gnu/lib/CBL_DELETE_FILE.cbl
+/usr/local/lib64/gcc/x86_64-cros-linux-gnu/16/cobol/compat/gnu/lib/CBL_FREE_MEM.cbl
+/usr/local/lib64/gcc/x86_64-cros-linux-gnu/16/cobol/compat/gnu/udf/stored-char-length.cbl
+/usr/local/lib64/gcc/x86_64-cros-linux-gnu/16/cobol/posix/cpy/posix-errno.cbl
+/usr/local/lib64/gcc/x86_64-cros-linux-gnu/16/cobol/posix/cpy/statbuf.cpy
+/usr/local/lib64/gcc/x86_64-cros-linux-gnu/16/cobol/posix/udf/posix-exit.cbl
+/usr/local/lib64/gcc/x86_64-cros-linux-gnu/16/cobol/posix/udf/posix-localtime.cbl
+/usr/local/lib64/gcc/x86_64-cros-linux-gnu/16/cobol/posix/udf/posix-mkdir.cbl
+/usr/local/lib64/gcc/x86_64-cros-linux-gnu/16/cobol/posix/udf/posix-open.cbl
+/usr/local/lib64/gcc/x86_64-cros-linux-gnu/16/cobol/posix/udf/posix-stat.cbl
+/usr/local/lib64/gcc/x86_64-cros-linux-gnu/16/cobol/posix/udf/posix-unlink.cbl
 /usr/local/lib64/gcc/x86_64-cros-linux-gnu/16/collect2
 /usr/local/lib64/gcc/x86_64-cros-linux-gnu/16/crtbegin.o
 /usr/local/lib64/gcc/x86_64-cros-linux-gnu/16/crtbeginS.o
@@ -1893,6 +1914,9 @@
 /usr/local/lib64/libgccjit.so
 /usr/local/lib64/libgccjit.so.0
 /usr/local/lib64/libgccjit.so.0.0.1
+/usr/local/lib64/libgcobol.a
+/usr/local/lib64/libgcobol.la
+/usr/local/lib64/libgcobol.spec
 /usr/local/lib64/libgfortran.a
 /usr/local/lib64/libgfortran.la
 /usr/local/lib64/libgfortran.spec
@@ -1936,6 +1960,7 @@
 /usr/local/libexec/gcc/x86_64-cros-linux-gnu/16/cc1obj
 /usr/local/libexec/gcc/x86_64-cros-linux-gnu/16/cc1plus
 /usr/local/libexec/gcc/x86_64-cros-linux-gnu/16/cgo
+/usr/local/libexec/gcc/x86_64-cros-linux-gnu/16/cobol1
 /usr/local/libexec/gcc/x86_64-cros-linux-gnu/16/collect2
 /usr/local/libexec/gcc/x86_64-cros-linux-gnu/16/crab1
 /usr/local/libexec/gcc/x86_64-cros-linux-gnu/16/f951
@@ -2027,6 +2052,8 @@
 /usr/local/share/man/man1/gcc.1.zst
 /usr/local/share/man/man1/gccgo-16.1.zst
 /usr/local/share/man/man1/gccgo.1.zst
+/usr/local/share/man/man1/gcobol-16.1.zst
+/usr/local/share/man/man1/gcobol.1.zst
 /usr/local/share/man/man1/gcov-16.1.zst
 /usr/local/share/man/man1/gcov-dump-16.1.zst
 /usr/local/share/man/man1/gcov-dump.1.zst
@@ -2041,6 +2068,7 @@
 /usr/local/share/man/man1/gofmt.1.zst
 /usr/local/share/man/man1/lto-dump-16.1.zst
 /usr/local/share/man/man1/lto-dump.1.zst
+/usr/local/share/man/man3/gcobol-io-16.3.zst
 /usr/local/share/man/man7/fsf-funding.7.zst
 /usr/local/share/man/man7/gfdl.7.zst
 /usr/local/share/man/man7/gpl.7.zst
