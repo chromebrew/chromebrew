@@ -11,10 +11,10 @@ class Unicode_character_database < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1d8655eaeb3fc144fd18b7e0a1cffafe0309ac112f0698845b27237a5c6fbe22',
-     armv7l: '1d8655eaeb3fc144fd18b7e0a1cffafe0309ac112f0698845b27237a5c6fbe22',
-       i686: '321cfe995ba2d2ee62f7657df2fd56d00a8e45d4d19a01c56d108708365b67f2',
-     x86_64: 'bef1332d80100581c521ce78b2724aa0cea2b94535d4460326c446ad63b889ba'
+    aarch64: '510e0d305b3fac043b15cbfc450d3173ac9a18f1de4c3572c1aa5a3629c1b8b6',
+     armv7l: '510e0d305b3fac043b15cbfc450d3173ac9a18f1de4c3572c1aa5a3629c1b8b6',
+       i686: 'af0be46bc7b9ea6bddaab66ac33ac5af658a01da0aae7144c31656a9ad8ef9b9',
+     x86_64: '7f8e159365ef904887f5b2a4656c784a7831c8389db8d549a20ca34addacc3de'
   })
 
   depends_on 'libarchive' => :build
