@@ -3,11 +3,11 @@ require 'package'
 class Unicode_character_database < Package
   description 'Unicode Character Database'
   homepage 'https://www.unicode.org/'
-  version '17.0.0'
+  version '18.0.0'
   license 'Unicode-DFS-2015'
   compatibility 'all'
   source_url "https://www.unicode.org/Public/#{version}/ucd/UCD.zip"
-  source_sha256 '2066d1909b2ea93916ce092da1c0ee4808ea3ef8407c94b4f14f5b7eb263d28e'
+  source_sha256 '7b3e555514060b92290d154f53655c5eb0fa62b16eb04c03434ff72d1a66a0d8'
   binary_compression 'tar.zst'
 
   binary_sha256({
