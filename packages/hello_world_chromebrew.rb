@@ -21,12 +21,9 @@ class Hello_world_chromebrew < Package
 
   # Register dependencies (use the following line as a basis)
 
-  # Runtime dependencies:
-  # depends_on '*' => :executable
-  # or:
-  # depends_on '*' => :library
-  # Build dependencies:
-  # depends_on '*' => :build
+  # depends_on '*' => :build # Build dependency.
+  # depends_on '*' => :executable # Runtime dependency for executable.
+  # depends_on '*' => :library # Runtime dependency for library.
   depends_on 'glibc' => :executable
   depends_on 'glibc_lib' => :executable
 
