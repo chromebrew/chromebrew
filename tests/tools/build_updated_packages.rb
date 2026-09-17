@@ -11,14 +11,14 @@ String.use_color = false
 class BuildUpdatedPackagesTest < Minitest::Test
   # To avoid having to update these tests frequently, the only packages currently tested are those tagged with no_upstream_update.
   def test_multiple_dependencies
-    expected_output = '{js78: [:nss], nss: [:glibc, :sqlite], glibc: [], sqlite: [:gcc_lib, :glibc, :zlib], gcc_lib: [:glibc], zlib: [:glibc]}
+    expected_output = "{js78: [:nss], nss: [:glibc, :sqlite], glibc: [], sqlite: [:gcc_lib, :glibc, :zlib], gcc_lib: [], zlib: [:glibc]}
 glibc
 gcc_lib
 zlib
 sqlite
 nss
 js78
-'
+"
     assert_output(expected_output, nil) do
       print_recursive_deps 'js78'
     end
