@@ -22,10 +22,13 @@ class Hello_world_chromebrew < Package
   # Register dependencies (use the following line as a basis)
 
   # Runtime dependencies:
-  # depends_on '*' # R
+  # depends_on '*' => :executable
+  # or:
+  # depends_on '*' => :library
   # Build dependencies:
   # depends_on '*' => :build
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
 
   # Function to perform patch operations prior to build from source.
   def self.patch
