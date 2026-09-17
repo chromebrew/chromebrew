@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# build_updated_packages version 5.6 (for Chromebrew)
+# build_updated_packages version 5.7 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -179,10 +179,10 @@ def determine_recursive_deps(d_pkg_input, dependency_graphs: {})
     d_pkg_obj = Package.load_package("packages/#{d_pkg}.rb")
     d_pkg_deps = d_pkg_obj.dependencies.map { |key, value| key.to_s unless %w[build executable logical].include?(value.compact.flatten.first.to_s) }.compact.map { |key, _value| key.to_s }.delete_if { it.include?('glibc_') }.delete_if { it.include?(d_pkg) }
     # Pull in build dependencies if necessary.
-    if (d_pkg.include?('_lib') || d_pkg.include?('_dev')) && !d_pkg.include?('gcc_lib')
-      puts "#{"#{__LINE__}: " if CREW_VERBOSE}#{d_pkg} includes _dev || _lib, pulling build deps.".orange
+    if d_pkg.include?('_lib') || d_pkg.include?('_dev')
+      puts "#{"#{__LINE__}: " if CREW_VERBOSE}#{d_pkg} includes _dev || _lib, pulling build deps.".orange unless %W[#{CREW_GCC_VER}_lib gcc_lib].include?(d_pkg)
       # d_pkg_deps = d_pkg_obj.get_deps_list(exclude_buildessential: false).delete_if { |d| ( d == 'glibc' || d == 'gcc_lib' ) }
-      d_pkg_deps = d_pkg_obj.dependencies.map { |key, _value| key.to_s }.compact.delete_if { %w[glibc gcc_lib].include?(it) }
+      d_pkg_deps = d_pkg_obj.dependencies.map { |key, _value| key.to_s }.compact.delete_if { %W[glibc gcc_lib #{CREW_GCC_VER}_lib].include?(it) }
     end
     dependency_graphs[d_pkg] = Dagwood::DependencyGraph.new({ d_pkg.to_sym => (d_pkg_deps.map &:to_sym) }) if dependency_graphs[d_pkg].nil?
 

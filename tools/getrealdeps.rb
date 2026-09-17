@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# getrealdeps version 2.22 (for Chromebrew)
+# getrealdeps version 2.23 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 #
 # Dependencies in Chromebrew can be:
@@ -113,6 +113,9 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
   if pkgdeps.empty?
     # Note deps of label type if package has no deps of that type.
     outdated_deps = pkgdepsblock.reject { [it].grep(/#{suffix}/).empty? }
+
+    # Remove commented lines.
+    outdated_deps.delete_if { it.match(/(?<=^  #)/) }
 
     unless outdated_deps.empty?
       # Preserve them as build deps so we do not break future builds.
