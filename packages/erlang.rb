@@ -16,8 +16,6 @@ class Erlang < Autotools
      x86_64: '954f6f6a496ab3db3edb3d2747c6c468d192d145892ff0d9f3379632842b8851'
   })
 
-  depends_on 'gcc16_build' => :library
-  depends_on 'gcc16_lib' => :library
   depends_on 'gcc_lib' => :library
   depends_on 'glib' => :build
   depends_on 'glibc' => :library
