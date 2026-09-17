@@ -1,4 +1,4 @@
-# Total size: 302532278
+# Total size: 302370361
 /usr/local/bin/codon
 /usr/local/include/codon/cir/analyze/analysis.h
 /usr/local/include/codon/cir/analyze/dataflow/capture.h
@@ -204,6 +204,7 @@
 /usr/local/lib64/codon/stdlib/internal/unicode/normalization_data.codon
 /usr/local/lib64/codon/stdlib/internal/unicode/unicodedata_data.codon
 /usr/local/lib64/codon/stdlib/itertools.codon
+/usr/local/lib64/codon/stdlib/json.codon
 /usr/local/lib64/codon/stdlib/math.codon
 /usr/local/lib64/codon/stdlib/numpy/__init__.codon
 /usr/local/lib64/codon/stdlib/numpy/const.codon
@@ -253,7 +254,11 @@
 /usr/local/lib64/codon/stdlib/openmp.codon
 /usr/local/lib64/codon/stdlib/operator.codon
 /usr/local/lib64/codon/stdlib/os/__init__.codon
+/usr/local/lib64/codon/stdlib/os/_ntpath.codon
+/usr/local/lib64/codon/stdlib/os/_status.codon
+/usr/local/lib64/codon/stdlib/os/_win32.codon
 /usr/local/lib64/codon/stdlib/os/path.codon
+/usr/local/lib64/codon/stdlib/pathlib.codon
 /usr/local/lib64/codon/stdlib/pickle.codon
 /usr/local/lib64/codon/stdlib/python.codon
 /usr/local/lib64/codon/stdlib/random.codon
