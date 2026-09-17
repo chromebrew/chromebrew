@@ -19,8 +19,6 @@ class Mesa < Meson
   depends_on 'elfutils' => :library
   depends_on 'eudev' => :library
   depends_on 'expat' => :library
-  depends_on 'gcc16_build' => :library
-  depends_on 'gcc16_lib' => :library
   depends_on 'gcc_dev' => :build
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
