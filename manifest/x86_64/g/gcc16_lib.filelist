@@ -1,4 +1,4 @@
-# Total size: 131931647
+# Total size: 133606151
 /usr/local/lib/bfd-plugins/liblto_plugin.so
 /usr/local/lib64/bfd-plugins/liblto_plugin.so
 /usr/local/lib64/gcc/x86_64-cros-linux-gnu/16/plugin/libcc1plugin.so
@@ -20,6 +20,9 @@
 /usr/local/lib64/libgcc_s.so
 /usr/local/lib64/libgcc_s.so.1
 /usr/local/lib64/libgcc_s_asneeded.so
+/usr/local/lib64/libgcobol.so
+/usr/local/lib64/libgcobol.so.2
+/usr/local/lib64/libgcobol.so.2.0.0
 /usr/local/lib64/libgfortran.so
 /usr/local/lib64/libgfortran.so.5
 /usr/local/lib64/libgfortran.so.5.0.0

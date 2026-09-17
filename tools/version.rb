@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.42 (for Chromebrew)
+# version.rb version 3.43 (for Chromebrew)
 
 OPTIONS = %w[-a --all -h --help -j --json -u --update-package-files -v --verbose -vv]
 
@@ -66,6 +66,9 @@ CREW_ANITYA_PACKAGE_NAME_MAPPINGS = Set[
   { pkg_name: 'alsa_lib', anitya_pkg: 'alsa-lib', comments: 'PackageUtils.get_clean_name mistakenly removes the _lib from the name' },
   { pkg_name: 'asdf', anitya_pkg: 'asdf-vm', comments: 'Anitya has a pip package named asdf' },
   { pkg_name: 'cvs', anitya_pkg: 'cvs-stable', comments: 'Anitya has a pip package named cvs' },
+  { pkg_name: "#{CREW_GCC_VER}_build", anitya_pkg: 'gcc', comments: '' },
+  { pkg_name: "#{CREW_GCC_VER}_dev", anitya_pkg: 'gcc', comments: '' },
+  { pkg_name: "#{CREW_GCC_VER}_lib", anitya_pkg: 'gcc', comments: '' },
   { pkg_name: 'gexiv2', anitya_pkg: 'gexiv2~14.x', comments: 'TODO: Why are we sticking to the 0.14.x release series?' },
   { pkg_name: 'glib_stub', anitya_pkg: 'glib', comments: '' },
   { pkg_name: 'gnome_docking_library', anitya_pkg: 'gdl', comments: 'Anitya has two gdl packages, so this mapping doesnt work' },
