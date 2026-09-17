@@ -1,11 +1,11 @@
-# Total size: 14000610
+# Total size: 14082825
 /usr/local/etc/unbound/unbound.conf
 /usr/local/include/unbound.h
 /usr/local/lib64/libunbound.a
 /usr/local/lib64/libunbound.la
 /usr/local/lib64/libunbound.so
 /usr/local/lib64/libunbound.so.8
-/usr/local/lib64/libunbound.so.8.1.39
+/usr/local/lib64/libunbound.so.8.1.40
 /usr/local/lib64/pkgconfig/libunbound.pc
 /usr/local/sbin/unbound
 /usr/local/sbin/unbound-anchor
