@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# getrealdeps version 2.23 (for Chromebrew)
+# getrealdeps version 2.24 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 #
 # Dependencies in Chromebrew can be:
@@ -267,6 +267,8 @@ def determine_dependencies(pkg_name, pkgfiles_to_check)
 
   # Massage the gcc entries in the dependency list.
   pkgdeps = pkgdeps.map { |i| i.gsub('gcc_build', 'gcc_lib') }.uniq
+  pkgdeps = pkgdeps.map { |i| i.gsub(/gcc(\d)+_build/, 'gcc_lib') }.uniq
+  pkgdeps = pkgdeps.map { |i| i.gsub(/gcc(\d)+_lib/, 'gcc_lib') }.uniq
 
   # Massage the llvm entries in the dependency list.
   pkgdeps = pkgdeps.map { |i| i.gsub(/llvm(\d)+_build/, 'llvm_lib') }.uniq
