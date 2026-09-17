@@ -1,4 +1,4 @@
-# Total size: 83998919
+# Total size: 79903380
 /usr/local/share/unicode/ArabicShaping.txt
 /usr/local/share/unicode/BidiBrackets.txt
 /usr/local/share/unicode/BidiCharacterTest.txt
@@ -20,6 +20,7 @@
 /usr/local/share/unicode/IndicPositionalCategory.txt
 /usr/local/share/unicode/IndicSyllabicCategory.txt
 /usr/local/share/unicode/Jamo.txt
+/usr/local/share/unicode/JurchenSources.txt
 /usr/local/share/unicode/LineBreak.txt
 /usr/local/share/unicode/NameAliases.txt
 /usr/local/share/unicode/NamedSequences.txt
@@ -35,12 +36,11 @@
 /usr/local/share/unicode/ReadMe.txt
 /usr/local/share/unicode/ScriptExtensions.txt
 /usr/local/share/unicode/Scripts.txt
+/usr/local/share/unicode/SealSources.txt
 /usr/local/share/unicode/SpecialCasing.txt
 /usr/local/share/unicode/StandardizedVariants.txt
 /usr/local/share/unicode/TangutSources.txt
 /usr/local/share/unicode/USourceData.txt
-/usr/local/share/unicode/USourceGlyphs.pdf
-/usr/local/share/unicode/USourceRSChart.pdf
 /usr/local/share/unicode/UnicodeData.txt
 /usr/local/share/unicode/Unihan_DictionaryIndices.txt
 /usr/local/share/unicode/Unihan_DictionaryLikeData.txt
