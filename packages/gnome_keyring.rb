@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gnome_keyring < Meson
   description 'GNOME password and secret manager'
   homepage 'https://www.gnome.org'
-  version '51.0'
+  version '51.1'
   license 'GPL-2+ and LGPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-keyring.git'
@@ -11,9 +11,9 @@ class Gnome_keyring < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f68de1623127c9cdcd7fbaaf6416d791e843d0288a94c8c6fac2e786678e0717',
-     armv7l: 'f68de1623127c9cdcd7fbaaf6416d791e843d0288a94c8c6fac2e786678e0717',
-     x86_64: 'c4c6ccdbdabeadc98a4752716aafda65bc970f39e408d10d3b7b72c11d2052e9'
+    aarch64: 'bb325cd9dd9827ddf927519181114617abdb7a901189033882401bc408ab4f27',
+     armv7l: 'bb325cd9dd9827ddf927519181114617abdb7a901189033882401bc408ab4f27',
+     x86_64: 'e3fb415d976f825cf159bbcc02da65f127074a237359202d23474557e65605b1'
   })
 
   depends_on 'at_spi2_core' # R
