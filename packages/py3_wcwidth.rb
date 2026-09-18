@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_wcwidth < Pip
   description 'WCWidth measures the displayed width of unicode strings in a terminal.'
   homepage 'https://github.com/jquast/wcwidth/'
-  version "0.8.3-#{CREW_PY_VER}"
+  version "0.8.4-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '694f0cc1b4b35f05a937fbdc64afe4394d72e98b5bfe9b205832ceeaf968dbb2',
-     armv7l: '694f0cc1b4b35f05a937fbdc64afe4394d72e98b5bfe9b205832ceeaf968dbb2',
-       i686: '5db064a71177e664d407c4cddbfbca1ed792b0d559c7c668f190e1673f47deb5',
-     x86_64: 'c7893c47ace243a38c604e73d5ea4e2c8c9dfeb5c13da12624f85023c127aa30'
+    aarch64: 'd5cd57a8ff89f32327beb76eefb26e0f54ffdd40011cf5efa43d1020c8de7105',
+     armv7l: 'd5cd57a8ff89f32327beb76eefb26e0f54ffdd40011cf5efa43d1020c8de7105',
+       i686: 'e9284f353e30a25bb93ca22a3ac86ea303e4e6c92ac28e55dc3bc9acf8ac5e9e',
+     x86_64: 'a8966b19e9326401c9a34b3dd8d1a3809317bbf97dc814c4b21270a1fd5c112d'
   })
 
   depends_on 'python3' => :logical
