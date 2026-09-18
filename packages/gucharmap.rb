@@ -11,9 +11,9 @@ class Gucharmap < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '98954b209f5771cf4ac82bff6e403c780965adc4760f8641f6099e42680e09c5',
-     armv7l: '98954b209f5771cf4ac82bff6e403c780965adc4760f8641f6099e42680e09c5',
-     x86_64: '47b0f39348fd063f078be9a463c7a509b1965b5577c8e808b4a706a80ddcd6b7'
+    aarch64: '2ca881b5a1481fb97890051bc20bd8153a5522af63d94d3aea8a41a623dd867e',
+     armv7l: '2ca881b5a1481fb97890051bc20bd8153a5522af63d94d3aea8a41a623dd867e',
+     x86_64: 'b6253c8e631771609cdb6225a662f69b47ee7b26c9621b2479ab5ec36601a8c4'
   })
 
   depends_on 'at_spi2_core' => :library
@@ -21,6 +21,7 @@ class Gucharmap < Meson
   depends_on 'desktop_file_utilities' => :build
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gobject_introspection'
   depends_on 'gtk3' => :library
   depends_on 'harfbuzz' => :library
