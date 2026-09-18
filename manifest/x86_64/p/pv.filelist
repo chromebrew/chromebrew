@@ -1,4 +1,4 @@
-# Total size: 359235
+# Total size: 387445
 /usr/local/bin/pv
 /usr/local/share/doc/pv/ACKNOWLEDGEMENTS.md
 /usr/local/share/doc/pv/COPYING
@@ -10,9 +10,12 @@
 /usr/local/share/locale/de/LC_MESSAGES/pv.mo
 /usr/local/share/locale/fi/LC_MESSAGES/pv.mo
 /usr/local/share/locale/fr/LC_MESSAGES/pv.mo
+/usr/local/share/locale/it/LC_MESSAGES/pv.mo
 /usr/local/share/locale/ka/LC_MESSAGES/pv.mo
 /usr/local/share/locale/pl/LC_MESSAGES/pv.mo
 /usr/local/share/locale/pt/LC_MESSAGES/pv.mo
+/usr/local/share/locale/ro/LC_MESSAGES/pv.mo
 /usr/local/share/locale/ru/LC_MESSAGES/pv.mo
 /usr/local/share/locale/tr/LC_MESSAGES/pv.mo
+/usr/local/share/locale/uk/LC_MESSAGES/pv.mo
 /usr/local/share/man/man1/pv.1.zst
