@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Opam < Autotools
   description 'OCaml package manager'
   homepage 'https://opam.ocaml.org/'
-  version '2.5.2'
+  version '2.6.0'
   license 'LGPL-2.1-with-linking-exception'
   compatibility 'all'
   source_url 'https://github.com/ocaml/opam.git'
