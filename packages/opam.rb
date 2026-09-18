@@ -11,10 +11,10 @@ class Opam < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'befa73a8cae283755948733b8a8c5fb0314f3e0c6cd2e63cbc39d7bbeccbce0b',
-     armv7l: 'befa73a8cae283755948733b8a8c5fb0314f3e0c6cd2e63cbc39d7bbeccbce0b',
-       i686: '568185641c01c30286469ecbde36248bbfbadcfb3a772bc8d871e441c5950fd8',
-     x86_64: '7085c2376eb926101413dd200220067bddc1e79be37b3755882276af0592e46a'
+    aarch64: '79e3db3d792ddee9d87355a51f442352ae2fc77545358914056e22a545bd991a',
+     armv7l: '79e3db3d792ddee9d87355a51f442352ae2fc77545358914056e22a545bd991a',
+       i686: '7ac8396743f2bfe955f8e81a1a29f4b3c994e307f242994fab3b20080384839d',
+     x86_64: '69a78fe62077ea7b0536327fa06d432d86303acf3c2f0312648c653d73314d7a'
   })
 
   depends_on 'bubblewrap' => :logical
