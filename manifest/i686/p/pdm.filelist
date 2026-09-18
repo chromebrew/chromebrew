@@ -1,4 +1,4 @@
-# Total size: 48545811
+# Total size: 48546127
 /usr/local/bin/pdm
 /usr/local/etc/bash.d/pdm.bash-completion
 /usr/local/etc/bash.d/pdm.pep582
@@ -882,13 +882,13 @@
 /usr/local/venv/lib/python3.14/site-packages/pbs_installer/_utils.py
 /usr/local/venv/lib/python3.14/site-packages/pbs_installer/_versions.py
 /usr/local/venv/lib/python3.14/site-packages/pbs_installer/py.typed
-/usr/local/venv/lib/python3.14/site-packages/pdm-2.29.1.dist-info/INSTALLER
-/usr/local/venv/lib/python3.14/site-packages/pdm-2.29.1.dist-info/METADATA
-/usr/local/venv/lib/python3.14/site-packages/pdm-2.29.1.dist-info/RECORD
-/usr/local/venv/lib/python3.14/site-packages/pdm-2.29.1.dist-info/REQUESTED
-/usr/local/venv/lib/python3.14/site-packages/pdm-2.29.1.dist-info/WHEEL
-/usr/local/venv/lib/python3.14/site-packages/pdm-2.29.1.dist-info/entry_points.txt
-/usr/local/venv/lib/python3.14/site-packages/pdm-2.29.1.dist-info/licenses/LICENSE
+/usr/local/venv/lib/python3.14/site-packages/pdm-2.29.2.dist-info/INSTALLER
+/usr/local/venv/lib/python3.14/site-packages/pdm-2.29.2.dist-info/METADATA
+/usr/local/venv/lib/python3.14/site-packages/pdm-2.29.2.dist-info/RECORD
+/usr/local/venv/lib/python3.14/site-packages/pdm-2.29.2.dist-info/REQUESTED
+/usr/local/venv/lib/python3.14/site-packages/pdm-2.29.2.dist-info/WHEEL
+/usr/local/venv/lib/python3.14/site-packages/pdm-2.29.2.dist-info/entry_points.txt
+/usr/local/venv/lib/python3.14/site-packages/pdm-2.29.2.dist-info/licenses/LICENSE
 /usr/local/venv/lib/python3.14/site-packages/pdm/VERSION
 /usr/local/venv/lib/python3.14/site-packages/pdm/__init__.py
 /usr/local/venv/lib/python3.14/site-packages/pdm/__main__.py
