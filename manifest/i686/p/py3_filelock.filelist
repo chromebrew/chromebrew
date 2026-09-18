@@ -1,10 +1,10 @@
-# Total size: 820579
-/usr/local/lib/python3.14/site-packages/filelock-3.32.7.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/filelock-3.32.7.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/filelock-3.32.7.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/filelock-3.32.7.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/filelock-3.32.7.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/filelock-3.32.7.dist-info/licenses/LICENSE
+# Total size: 858662
+/usr/local/lib/python3.14/site-packages/filelock-4.0.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/filelock-4.0.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/filelock-4.0.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/filelock-4.0.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/filelock-4.0.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/filelock-4.0.0.dist-info/licenses/LICENSE
 /usr/local/lib/python3.14/site-packages/filelock/__init__.py
 /usr/local/lib/python3.14/site-packages/filelock/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/filelock/__pycache__/_api.cpython-314.pyc
@@ -38,8 +38,12 @@
 /usr/local/lib/python3.14/site-packages/filelock/_soft_rw/__init__.py
 /usr/local/lib/python3.14/site-packages/filelock/_soft_rw/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/filelock/_soft_rw/__pycache__/_async.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/filelock/_soft_rw/__pycache__/_protocol.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/filelock/_soft_rw/__pycache__/_storage.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/filelock/_soft_rw/__pycache__/_sync.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/filelock/_soft_rw/_async.py
+/usr/local/lib/python3.14/site-packages/filelock/_soft_rw/_protocol.py
+/usr/local/lib/python3.14/site-packages/filelock/_soft_rw/_storage.py
 /usr/local/lib/python3.14/site-packages/filelock/_soft_rw/_sync.py
 /usr/local/lib/python3.14/site-packages/filelock/_strict.py
 /usr/local/lib/python3.14/site-packages/filelock/_unix.py
