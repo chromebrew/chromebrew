@@ -11,7 +11,7 @@ class Zed < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: 'af1466c1af66385099c4b5fb7b3c57c3b0f745e3390f2c85e10e5322edf200d2'
+     x86_64: 'b1cbf83b2cb8bfaaa4adbdc4ee39b61dc83016e63c5a3e8f4af649654e794503'
   })
 
   depends_on 'alsa_lib' => :executable
