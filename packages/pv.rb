@@ -11,10 +11,10 @@ class Pv < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7c14f0e41f98b4803071b04eeb1098ccbff37a8973361351ac71e051ec27ef25',
-     armv7l: '7c14f0e41f98b4803071b04eeb1098ccbff37a8973361351ac71e051ec27ef25',
-       i686: '3db1bdebd24d6923c1cc9c46621fc4de3f7364f3158586e71ddf519a3e119a3d',
-     x86_64: 'da0a8238e701e292b084a057583df1eb527793cbd25f063578379c8b08864851'
+    aarch64: '8cb92435dcb75d28b3d4a8ed486df1798d9020beb7ef73fdcd762463fc9b38d3',
+     armv7l: '8cb92435dcb75d28b3d4a8ed486df1798d9020beb7ef73fdcd762463fc9b38d3',
+       i686: 'db192b2ae12f8aaf60b6bbb48db9d31dccbc7731883b40118479fa4fdf613b7a',
+     x86_64: '103acfbe4386cb740f2b91ad56596f481cb9acfa2673cf5a025d63bfd63686ce'
   })
 
   depends_on 'glibc' => :executable
