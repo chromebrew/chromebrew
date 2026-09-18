@@ -11,19 +11,17 @@ class Less < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '580c0f4bbfe3e40996d55cf67cdb0d1e7ace7cd41f656681aea1a2dac56354cb',
-     armv7l: '580c0f4bbfe3e40996d55cf67cdb0d1e7ace7cd41f656681aea1a2dac56354cb',
-       i686: 'f773175cf1add339eb9324c5d9f173da787fc1d7d24dc4405ee56c1786cb7338',
-     x86_64: '0567105c3962e72215185d8e638dc7036de7dd1b57de0b7f870e14df7a1a657f'
+    aarch64: '7075f9d940bca34f2923e9c95b69985620950bced035210743ba7496e891937e',
+     armv7l: '7075f9d940bca34f2923e9c95b69985620950bced035210743ba7496e891937e',
+       i686: 'e5f7e4c6b99ab02b1d00181ad99d1874d71c5ca1e8f1b89ab14d5f856adeeee5',
+     x86_64: 'b3d650daf71db62ff8c0b3ffb0f01e925c9d8bd84bb0832028feb85083f6a3a7'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' => :executable
-  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :build
   depends_on 'glibc_lib' => :executable
-  depends_on 'glibc_lib' => :library
   depends_on 'ncurses' => :executable
-  depends_on 'ncurses' => :library
   depends_on 'patch' => :build
 
   autotools_configure_options '--with-regex=posix'
