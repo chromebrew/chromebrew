@@ -22,7 +22,7 @@ jobs:
         with:
           persist-credentials: true
       - name: Run GitHub Actions Version Updater
-        uses: saadmk11/github-actions-version-updater@v0.9.0
+        uses: saadmk11/github-actions-version-updater@v1.0.1
         with:
           token: ${{ secrets.CREW_PR_TOKEN}}
           pull_request_team_reviewers: chromebrew/active
