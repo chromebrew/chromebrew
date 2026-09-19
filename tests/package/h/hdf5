@@ -1,0 +1,18 @@
+#!/bin/bash
+h5cc --version
+h5clear --version
+h5copy --version
+h5debug --version
+h5delete --version
+h5diff --version
+h5dump --version
+h5format_convert --version
+h5jam -V
+h5ls --version
+h5mkgrp --version
+h5perf_serial -V | head -1
+h5repack --version
+h5repart --version
+h5stat --version
+h5unjam -V
+h5watch --version

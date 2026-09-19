@@ -3,18 +3,18 @@ require 'buildsystems/cmake'
 class Hdf5 < CMake
   description 'HDF5 is a unique technology suite that makes possible the management of extremely large and complex data collections.'
   homepage 'https://www.hdfgroup.org/'
-  version '1.14.6' # Do not update to 2.x branch, it will break libmedfile.
+  version '2.2.0' # Do not update to 2.x branch, it will break libmedfile.
   license 'BSD-3'
   compatibility 'all'
   source_url 'https://github.com/HDFGroup/hdf5.git'
-  git_hashtag "hdf5_#{version}"
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b36432a244407f7e868b38659297c02901f1d119828361d6a6c9747272c950c4',
-     armv7l: 'b36432a244407f7e868b38659297c02901f1d119828361d6a6c9747272c950c4',
-       i686: 'df6cddf4185bfb30ea7a2a82f984405f0e6d5bff2b48920f8639fa18cfd47acf',
-     x86_64: 'a1c6fcfbaa3b18530dd622244f84d52b31bcbaac433d8c15618c38b0ed12131f'
+    aarch64: 'dac2b0cd6a6372327e8794f239030ffc9144d1ed2d38c582cfbd7484793ec39d',
+     armv7l: 'dac2b0cd6a6372327e8794f239030ffc9144d1ed2d38c582cfbd7484793ec39d',
+       i686: '07e984aa67b72578d5b90448813b55f18549e86e98152036e4b18cccaf7e0e6b',
+     x86_64: '09eb749b46179d3282f89e2c821cb295e32ab187b403cb5521a2e13eb758b21d'
   })
 
   depends_on 'glibc' => :library
