@@ -1,15 +1,15 @@
-# Total size: 407125
+# Total size: 407659
 /usr/local/bin/imapclient-interact
 /usr/local/bin/imapclient-livetest
-/usr/local/lib/python3.14/site-packages/imapclient-4.0.1.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/imapclient-4.0.1.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/imapclient-4.0.1.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/imapclient-4.0.1.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/imapclient-4.0.1.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/imapclient-4.0.1.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/imapclient-4.0.1.dist-info/licenses/AUTHORS.rst
-/usr/local/lib/python3.14/site-packages/imapclient-4.0.1.dist-info/licenses/COPYING
-/usr/local/lib/python3.14/site-packages/imapclient-4.0.1.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/imapclient-4.1.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/imapclient-4.1.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/imapclient-4.1.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/imapclient-4.1.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/imapclient-4.1.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/imapclient-4.1.0.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/imapclient-4.1.0.dist-info/licenses/AUTHORS.rst
+/usr/local/lib/python3.14/site-packages/imapclient-4.1.0.dist-info/licenses/COPYING
+/usr/local/lib/python3.14/site-packages/imapclient-4.1.0.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/imapclient/__init__.py
 /usr/local/lib/python3.14/site-packages/imapclient/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/imapclient/__pycache__/config.cpython-314.pyc
