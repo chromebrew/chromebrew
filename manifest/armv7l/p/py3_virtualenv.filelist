@@ -1,12 +1,12 @@
-# Total size: 6208396
+# Total size: 6225979
 /usr/local/bin/virtualenv
-/usr/local/lib/python3.14/site-packages/virtualenv-21.7.11.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/virtualenv-21.7.11.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/virtualenv-21.7.11.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/virtualenv-21.7.11.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/virtualenv-21.7.11.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/virtualenv-21.7.11.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/virtualenv-21.7.11.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/virtualenv-21.7.15.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/virtualenv-21.7.15.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/virtualenv-21.7.15.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/virtualenv-21.7.15.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/virtualenv-21.7.15.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/virtualenv-21.7.15.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/virtualenv-21.7.15.dist-info/licenses/LICENSE
 /usr/local/lib/python3.14/site-packages/virtualenv/__init__.py
 /usr/local/lib/python3.14/site-packages/virtualenv/__main__.py
 /usr/local/lib/python3.14/site-packages/virtualenv/__pycache__/__init__.cpython-314.pyc
@@ -30,6 +30,7 @@
 /usr/local/lib/python3.14/site-packages/virtualenv/activation/cshell/__init__.py
 /usr/local/lib/python3.14/site-packages/virtualenv/activation/cshell/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/virtualenv/activation/cshell/activate.csh
+/usr/local/lib/python3.14/site-packages/virtualenv/activation/cshell/deactivate.csh
 /usr/local/lib/python3.14/site-packages/virtualenv/activation/fish/__init__.py
 /usr/local/lib/python3.14/site-packages/virtualenv/activation/fish/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/virtualenv/activation/fish/activate.fish
@@ -190,6 +191,7 @@
 /usr/local/lib/python3.14/site-packages/virtualenv/util/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/virtualenv/util/__pycache__/error.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/virtualenv/util/__pycache__/lock.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/virtualenv/util/__pycache__/text.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/virtualenv/util/__pycache__/zipapp.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/virtualenv/util/error.py
 /usr/local/lib/python3.14/site-packages/virtualenv/util/lock.py
@@ -203,5 +205,6 @@
 /usr/local/lib/python3.14/site-packages/virtualenv/util/path/_win.py
 /usr/local/lib/python3.14/site-packages/virtualenv/util/subprocess/__init__.py
 /usr/local/lib/python3.14/site-packages/virtualenv/util/subprocess/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/virtualenv/util/text.py
 /usr/local/lib/python3.14/site-packages/virtualenv/util/zipapp.py
 /usr/local/lib/python3.14/site-packages/virtualenv/version.py
