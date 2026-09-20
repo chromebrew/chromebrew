@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Remind < Autotools
   description 'Remind is a sophisticated calendar and alarm program.'
   homepage 'https://dianne.skoll.ca/projects/remind/'
-  version '06.03.03'
+  version '06.03.04'
   license 'GPL-2'
   compatibility 'all'
   source_url "https://dianne.skoll.ca/projects/remind/download/remind-#{version}.tar.gz"
-  source_sha256 '6045283b98e004a683b13a636409ba691401d2ae9e5122d244c151972e923341'
+  source_sha256 'c56976b4bb3f3c838b4861f35b1a0ed80695b6a5e27c7736763c6518a884218b'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5ee6740a1c43ea6c156d30de4bc35b9599407576e0a2e9f66f61af36e932ae6a',
-     armv7l: '5ee6740a1c43ea6c156d30de4bc35b9599407576e0a2e9f66f61af36e932ae6a',
-       i686: '34246694fe618848c28548ab03d027bea583b93bcd4883cda67c80949b49f773',
-     x86_64: '2687c294206eb98f7c441701fc6defa7a38ef24ffc7b4ba1244e91c55b4a9bb1'
+    aarch64: '28503b9702e3f6ee2ce4f7315b5e98a26fce48ea5d718e28d5e2a127f9611975',
+     armv7l: '28503b9702e3f6ee2ce4f7315b5e98a26fce48ea5d718e28d5e2a127f9611975',
+       i686: 'd3e56d9a9d24cc708fb80d16fed1f6ba542cc076bc7feece3905fa88210f2539',
+     x86_64: '724a11b856de604d95675021c097fa8957f17042d62c8d6107599c36ce334f6a'
   })
 
   depends_on 'glibc' => :executable
