@@ -1,4 +1,4 @@
-# Total size: 101936
+# Total size: 101945
 /usr/local/include/snappy-c.h
 /usr/local/include/snappy-sinksource.h
 /usr/local/include/snappy-stubs-public.h
@@ -9,4 +9,4 @@
 /usr/local/lib64/cmake/Snappy/SnappyTargets.cmake
 /usr/local/lib64/libsnappy.so
 /usr/local/lib64/libsnappy.so.1
-/usr/local/lib64/libsnappy.so.1.2.2
+/usr/local/lib64/libsnappy.so.1.3.1
