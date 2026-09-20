@@ -3,7 +3,7 @@ require 'package'
 class Difftastic < Package
   description 'Difftastic is a structural diff tool that compares files based on their syntax.'
   homepage 'https://github.com/Wilfred/difftastic'
-  version '0.70.0'
+  version '0.71.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/Wilfred/difftastic.git'
@@ -11,10 +11,10 @@ class Difftastic < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bab1cf4083b57ad47d775435d0627a3a20107d471e680e56b6c1a85b1faaf619',
-     armv7l: 'bab1cf4083b57ad47d775435d0627a3a20107d471e680e56b6c1a85b1faaf619',
-       i686: 'a548f0a4e7e1e2f376f9b295e5a22da9d9ff16a86c18141c16b04423540bba04',
-     x86_64: '52719be0ab0a5739f2846cdfc37bf835ff1ef9633447980e6471c342025cc46c'
+    aarch64: 'f475cea0230b9f162107f8df203f011f6207e73f72375dafd95e1d77e064a8ca',
+     armv7l: 'f475cea0230b9f162107f8df203f011f6207e73f72375dafd95e1d77e064a8ca',
+       i686: '9efdaa814bca46c36cf9f89f7458830309a4a62cc1749bfb34927ab2a7e3fb45',
+     x86_64: '0e34f463c5cea9b94c2d983b09a64b51973341701db6fca9f7c4f63342c70b84'
   })
 
   depends_on 'gcc_lib' => :executable
