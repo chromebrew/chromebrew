@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_filelock < Pip
   description 'FileLock implements a platform independent file lock in Python.'
   homepage 'https://github.com/tox-dev/filelock'
-  version "4.0.0-#{CREW_PY_VER}"
+  version "4.0.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
