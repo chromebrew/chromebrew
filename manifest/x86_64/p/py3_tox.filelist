@@ -1,12 +1,12 @@
-# Total size: 1784849
+# Total size: 1789916
 /usr/local/bin/tox
-/usr/local/lib/python3.14/site-packages/tox-4.61.5.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/tox-4.61.5.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/tox-4.61.5.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/tox-4.61.5.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/tox-4.61.5.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/tox-4.61.5.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/tox-4.61.5.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/tox-4.63.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/tox-4.63.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/tox-4.63.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/tox-4.63.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/tox-4.63.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/tox-4.63.0.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/tox-4.63.0.dist-info/licenses/LICENSE
 /usr/local/lib/python3.14/site-packages/tox/__init__.py
 /usr/local/lib/python3.14/site-packages/tox/__main__.py
 /usr/local/lib/python3.14/site-packages/tox/__pycache__/__init__.cpython-314.pyc
@@ -254,6 +254,7 @@
 /usr/local/lib/python3.14/site-packages/tox/util/__pycache__/path.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tox/util/__pycache__/redact.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tox/util/__pycache__/spinner.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/tox/util/__pycache__/typing_compat.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/tox/util/ci.py
 /usr/local/lib/python3.14/site-packages/tox/util/cpu.py
 /usr/local/lib/python3.14/site-packages/tox/util/file_view.py
@@ -262,5 +263,6 @@
 /usr/local/lib/python3.14/site-packages/tox/util/path.py
 /usr/local/lib/python3.14/site-packages/tox/util/redact.py
 /usr/local/lib/python3.14/site-packages/tox/util/spinner.py
+/usr/local/lib/python3.14/site-packages/tox/util/typing_compat.py
 /usr/local/lib/python3.14/site-packages/tox/version.py
 /usr/local/share/man/man1/tox.1.zst
