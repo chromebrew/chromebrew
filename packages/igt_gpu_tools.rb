@@ -1,44 +1,44 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Igt_gpu_tools < Package
+class Igt_gpu_tools < Meson
   description 'Tools for development and testing of the Intel DRM driver'
   homepage 'https://gitlab.freedesktop.org/drm/igt-gpu-tools'
-  @_ver = '1.25'
-  version "#{@_ver}-1"
+  version '2.5'
   license 'MIT'
   compatibility 'x86_64'
-  source_url "https://xorg.freedesktop.org/releases/individual/app/igt-gpu-tools-#{@_ver}.tar.xz"
-  source_sha256 '40454d8f0484ea2477862007398a08eef78a6c252c4defce1c934548593fdd11'
-  binary_compression 'tar.xz'
+  source_url "https://xorg.freedesktop.org/releases/individual/app/igt-gpu-tools-#{version}.tar.xz"
+  source_sha256 'bf5ee5cc1e2b92c456d626b7986be9e2d18b4765cd06c28c1ab449200c1ce5e2'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '72bfc16dbd9532d049a67a8a8c328b50d8f5764f6922445bfe9899129735fcd1'
+     x86_64: '27d98727b0e7939b38b7967b0bc1ad3807f2bc57810d8c4c07146aa08a80dce2'
   })
 
-  depends_on 'libdrm'
-  depends_on 'libpciaccess'
-  depends_on 'cairo'
-  depends_on 'libxrandr'
-  depends_on 'procps'
-  depends_on 'libkmod'
-  depends_on 'libxv'
-  depends_on 'libunwind'
-  depends_on 'peg'
-  depends_on 'swig' => :build
+  depends_on 'cairo' => :library
+  depends_on 'elfutils' => :library
+  depends_on 'eudev' => :library
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gtk_doc' => :build
+  depends_on 'libdrm' => :library
+  depends_on 'libkmod' => :library
+  depends_on 'libpciaccess' => :library
+  depends_on 'libunwind' => :library
+  depends_on 'libx11' => :library
+  depends_on 'libxext' => :library
+  depends_on 'libxrandr' => :library
+  depends_on 'libxv' => :library
+  depends_on 'pciutils' => :library
+  depends_on 'peg' => :library
+  depends_on 'pixman' => :library
+  depends_on 'procps' => :executable
+  depends_on 'swig' => :build
+  depends_on 'zlib' => :executable
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
+  meson_options ' \
     -Ddocs=disabled \
     -Dtests=disabled \
     -Doping=disabled \
-    -Drunner=disabled \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+    -Drunner=disabled'
 end
