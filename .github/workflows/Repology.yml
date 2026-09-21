@@ -1,5 +1,4 @@
 ---
-# Version 1.0
 name: Generate Repology JSON
 on:
   schedule:
@@ -8,7 +7,7 @@ on:
 jobs:
   generate:
     if: ${{ github.repository_owner == 'chromebrew' }}
-    runs-on: ubuntu-26.04
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v7
       - uses: ruby/setup-ruby@v1

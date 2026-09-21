@@ -1,5 +1,4 @@
 ---
-# Version 1.0
 name: Generate GitHub Actions Token
 on:
   schedule:
@@ -11,7 +10,7 @@ permissions:
 jobs:
   gen_token:
     name: Generate & Save
-    runs-on: ubuntu-26.04
+    runs-on: ubuntu-24.04
     if: ${{ contains(github.repository_owner, 'chromebrew') }}
     steps:
       - name: Get GH Token

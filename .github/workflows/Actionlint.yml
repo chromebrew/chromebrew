@@ -1,5 +1,5 @@
 ---
-# Version 1.1
+# Version 1.0
 name: ActionLint
 on: workflow_call
 env:
@@ -9,7 +9,7 @@ env:
   SHELLCHECK_OPTS: "-e SC2038 -e SC2086 -e SC2129 -e SC2155"
 jobs:
   actionlint:
-    runs-on: ubuntu-26.04
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
       pull-requests: write

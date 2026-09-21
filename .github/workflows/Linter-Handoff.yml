@@ -1,5 +1,4 @@
 ---
-# Version 1.0
 name: Linter-Handoff
 on:
   pull_request:
@@ -19,7 +18,7 @@ env:
 jobs:
   debug:
     if: ${{ ( github.repository_owner == 'chromebrew' ) }}
-    runs-on: ubuntu-26.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Dump GitHub context
         env:
@@ -34,7 +33,7 @@ jobs:
           STEPS_CONTEXT: ${{ toJson(steps) }}
         run: echo "$STEPS_CONTEXT"
   handoff:
-    runs-on: ubuntu-26.04
+    runs-on: ubuntu-24.04
     outputs:
       category: ${{ steps.changed-file-extensions.outputs.category }}
     steps:
@@ -101,7 +100,7 @@ jobs:
     uses: ./.github/workflows/Actionlint.yml
     secrets: inherit
   linter-tests:
-    runs-on: ubuntu-26.04
+    runs-on: ubuntu-24.04
     needs:
       - handoff
       - markdown

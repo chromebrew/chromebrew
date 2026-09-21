@@ -28,7 +28,7 @@ cache-mode: read
 
 jobs:
   debug:
-    runs-on: ubuntu-26.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Dump GitHub context
         env:
@@ -43,7 +43,7 @@ jobs:
           STEPS_CONTEXT: ${{ toJson(steps) }}
         run: echo "$STEPS_CONTEXT"
   setup:
-    runs-on: ubuntu-26.04
+    runs-on: ubuntu-24.04
     concurrency:
       group: ${{ github.workflow }}-${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}-${{ github.sha }}
       cancel-in-progress: true
@@ -127,7 +127,7 @@ jobs:
 
   gen-matrix:
     needs: get-compatibility
-    runs-on: ubuntu-26.04
+    runs-on: ubuntu-24.04
     outputs:
       matrix: ${{ steps.set-generate-matrix.outputs.matrix }}
     steps:
@@ -157,15 +157,15 @@ jobs:
       matrix:
         arch: ${{ fromJSON(needs.gen-matrix.outputs.matrix) }}
         runner:
-          - ubuntu-26.04
-          - ubuntu-26.04-arm
+          - ubuntu-24.04
+          - ubuntu-24.04-arm
         exclude:
           - arch: x86_64
-            runner: ubuntu-26.04-arm
+            runner: ubuntu-24.04-arm
           - arch: i686
-            runner: ubuntu-26.04-arm
+            runner: ubuntu-24.04-arm
           - arch: armv7l
-            runner: ubuntu-26.04
+            runner: ubuntu-24.04
     runs-on: ${{ matrix.runner }}
     env:
       TARGET_ARCH: ${{ matrix.arch }}
@@ -322,7 +322,7 @@ jobs:
                 /bin/chromebrewstart /usr/local/lib/crew/tests/unit_test_stub.sh
             fi
   container_test_check:
-    runs-on: ubuntu-26.04-arm
+    runs-on: ubuntu-24.04-arm
     needs:
       - container_tests
     if: ${{ !cancelled() }}

@@ -1,5 +1,5 @@
 ---
-# Version 1.1
+# Version 1.0
 name: Generate Updates for Packages and Their Dependencies.
 on:
   workflow_dispatch:
@@ -22,7 +22,7 @@ permissions:                    # Global permissions configuration starts here
 jobs:
   dependencies:
     if: ${{ github.repository_owner == 'chromebrew' }}
-    runs-on: ubuntu-26.04
+    runs-on: ubuntu-24.04
     outputs:
       packages: ${{ steps.get-dependencies.outputs.packages }}
     steps:

@@ -1,5 +1,4 @@
 ---
-# Version 1.0
 name: Markdown-lint
 on: workflow_call
 env:
@@ -7,7 +6,7 @@ env:
    GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
 jobs:
   markdown-lint:
-    runs-on: ubuntu-26.04
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
       pull-requests: write
