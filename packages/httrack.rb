@@ -1,32 +1,30 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Httrack < Package
+class Httrack < Autotools
   description 'HTTrack is a free (GPL, libre/free software) and easy-to-use offline browser utility. It allows you to download a World Wide Web site from the Internet to a local directory, building recursively all directories, getting HTML, images, and other files from the server to your computer.'
   homepage 'http://www.httrack.com/'
-  version '3.49.2-2'
+  version '3.50.3'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://mirror.httrack.com/httrack-3.49.2.tar.gz'
-  source_sha256 '3477a0e5568e241c63c9899accbfcdb6aadef2812fcce0173688567b4c7d4025'
+  source_url "https://github.com/xroche/httrack/releases/download/#{version}/httrack-#{version}.tar.gz"
+  source_sha256 '644d4ec0e48ad596dacd7f8017b68d8a3f1dfc140284b412b53086e7d1664e9d'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '65be9f112bd18ec49d3d0425e9b49d9c0e4a1242419ea1b4bb28ac68ec29cc8b',
-     armv7l: '65be9f112bd18ec49d3d0425e9b49d9c0e4a1242419ea1b4bb28ac68ec29cc8b',
-       i686: '708949b7a3910a98d66c41db1c872ce1451e9afe43af38b06463a9218905cf17',
-     x86_64: 'e2d6bd8daf3d21577b4f908a3e1c585791365d3befe7b0df450898f8fc8dba60'
+    aarch64: 'b51542d66c07433645adec5dcbbb590627f631871254ad2e144011c0283ff05c',
+     armv7l: 'b51542d66c07433645adec5dcbbb590627f631871254ad2e144011c0283ff05c',
+       i686: '0e19188cfa3b32583915d0cf0529e2fd5a8c5cc0bb6c78c130ca3d4a49a44036',
+     x86_64: '0a79c76afbd4c1839fb30f76f314427ee59cc642ee9da8b02a12557008dc865c'
   })
 
-  def self.patch
-    system 'filefix'
-  end
+  depends_on 'brotli' => :library
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'openssl' => :library
+  depends_on 'zlib' => :library
+  depends_on 'zstd' => :library
 
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  autotools_skip_autoreconf
+  autotools_skip_bootstrap
 end
