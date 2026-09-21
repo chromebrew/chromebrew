@@ -19,8 +19,8 @@ class Gzip < Autotools
 
   depends_on 'glibc' => :executable
 
-  no_filefix
-  run_tests
+  # Tests fail due to tty not being available in the automated build containers.
+  # more: Failed to initialize input reader
 
   autotools_configure_options ('--disable-year2038' if ARCH == 'armv7l').to_s
 end
