@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Libgsf < Autotools
   description 'The G Structured File Library'
   homepage 'https://gitlab.gnome.org/GNOME/libgsf'
-  version '1.14.58'
+  version '1.14.59'
   license 'GPL-2 and LGPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/libgsf.git'
