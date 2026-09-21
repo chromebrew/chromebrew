@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Fribidi < Meson
   description 'GNU FriBidi is an implementation of the Unicode Bidirectional Algorithm (bidi).'
   homepage 'https://github.com/fribidi/fribidi'
-  version '1.0.16'
+  version '1.0.17'
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://github.com/fribidi/fribidi.git'
@@ -11,13 +11,14 @@ class Fribidi < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b74c5a5608e0640fbf5a9873a7ea0b53a3351c74ef0e38136e6fe2cca020517a',
-     armv7l: 'b74c5a5608e0640fbf5a9873a7ea0b53a3351c74ef0e38136e6fe2cca020517a',
-       i686: 'd26ffc24ca2ffddaf31c5e95c1904fa642d139a7cbe52900f6ab78b544e1307c',
-     x86_64: '3314bbd8192a99e3e56915df475cde4c497d04b10152a7c9984edcebe844af1f'
+    aarch64: '4f0cca3b699872b337c2b6cf110a26c6645a196b1939570acbef9cba9e224f75',
+     armv7l: '4f0cca3b699872b337c2b6cf110a26c6645a196b1939570acbef9cba9e224f75',
+       i686: '4b00c8938234cc9d8435e775d1aa7a8993e575d19f773df40df9be09a6cad08d',
+     x86_64: '065bc01cb3f643b7bbf7dea7f55481e5ecd83797a7782ab4ba23df6cc823d7b2'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 
   meson_options '-Ddocs=false \
       -Dtests=false'
