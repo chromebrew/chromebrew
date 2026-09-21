@@ -1,5 +1,5 @@
 ---
-# Version 2.0
+# Version 2.1
 name: Set Reviewers
 run-name: Set Reviewers for PR from ${{ github.event.workflow_run.display_title }} ${{ inputs.branch || github.event.workflow_run.head_commit.message || github.head_ref || github.ref_name }}
 on:
@@ -23,7 +23,7 @@ permissions:
 jobs:
   debug:
     if: ${{ github.repository_owner == 'chromebrew' && github.event.pull_request.draft == false }}
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     steps:
       - name: Dump GitHub context
         env:
@@ -52,7 +52,7 @@ jobs:
           echo "github.event.workflow_run.conclusion == 'success' : ${EVENT_WORKFLOW_RUN_CONCLUSION_SUCCESS}"
   setup:
     if: ${{ github.repository_owner == 'chromebrew' && inputs.branch != 'master' && github.event.workflow_run.head_branch != 'master' && github.event.pull_request.draft == false && github.event.workflow_run.conclusion == 'success' }}
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     concurrency:
       group: ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}-${{ github.sha }}
       cancel-in-progress: true

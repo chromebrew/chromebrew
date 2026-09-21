@@ -1,5 +1,5 @@
 ---
-# Version 1.0
+# Version 1.1
 name: Generate Updates PR
 on:
   schedule:
@@ -32,7 +32,7 @@ jobs:
     with:
       version_cmd_input: "core buildessential"
   generic-packages:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     outputs:
       packages: ${{ steps.get-packages.outputs.packages }}
     steps:

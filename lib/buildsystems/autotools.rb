@@ -60,7 +60,7 @@ class Autotools < Package
 
     Dir.chdir(@autotools_build_relative_dir) do
       puts 'Testing with make check.'.orange
-      system "make #{@autotools_install_options} check"
+      system "PAGER=cat TERM=dumb make #{@autotools_install_options} check"
     end
   end
 end

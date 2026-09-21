@@ -62,7 +62,7 @@ permissions:
 jobs:
   debug:
     if: ${{ ( github.repository_owner == 'chromebrew' ) }}
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     steps:
       - name: Dump GitHub context
         env:
@@ -78,7 +78,7 @@ jobs:
         run: echo "$STEPS_CONTEXT"
   setup:
     if: ${{ ( github.repository_owner == 'chromebrew' ) && ( inputs.branch != 'master' ) }}
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     outputs:
       timestamp: ${{ steps.set-timestamp.outputs.TIMESTAMP }}  # https://stackoverflow.com/a/75142892
       current_head: ${{ steps.get-current-head.outputs.CURRENT_HEAD }}
@@ -144,7 +144,7 @@ jobs:
 
   gen-matrix:
     needs: get-compatibility
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     outputs:
       matrix: ${{ steps.set-generate-matrix.outputs.matrix }}
     steps:
@@ -185,15 +185,15 @@ jobs:
       matrix:
         arch: ${{ fromJSON(needs.gen-matrix.outputs.matrix) }}
         runner:
-          - ubuntu-24.04
-          - ubuntu-24.04-arm
+          - ubuntu-26.04
+          - ubuntu-26.04-arm
         exclude:
           - arch: x86_64
-            runner: ubuntu-24.04-arm
+            runner: ubuntu-26.04-arm
           - arch: i686
-            runner: ubuntu-24.04-arm
+            runner: ubuntu-26.04-arm
           - arch: armv7l
-            runner: ubuntu-24.04
+            runner: ubuntu-26.04
     runs-on: ${{ matrix.runner }}
     env:
       CREW_BUILD_NO_PACKAGE_FILE_HASH_UPDATES: 1
@@ -364,10 +364,7 @@ jobs:
               CREW_MAX_BUILD_TIME_PASSTHROUGH+=" "
               CREW_MAX_BUILD_TIME_PASSTHROUGH+=CREW_MAX_BUILD_TIME=${CREW_MAX_BUILD_TIME}
             fi
-            # Use script to provide a pty
-            script typescript <<'EOF'
             docker run \
-              -it \
               --rm \
               --platform "${PLATFORM}" \
               -e PUID=1000 \
@@ -388,14 +385,11 @@ jobs:
               --ulimit "nofile=$(ulimit -Sn):$(ulimit -Hn)" \
               "${CONTAINER}" \
               /bin/chromebrewstart "/output/tools/github_actions_update_builder.sh ${{ github.event.inputs.allow_fail == 'true' && '--continue-after-failed-builds' || ''}} ${{ github.event.inputs.rebuild_packages == 'true' && '--rebuild' || ''}}"  > >(tee -a /tmp/build.log) 2> >(tee -a /tmp/build.log >&2)
-            exit
-            EOF
-            rm -f typescript
-            grep "Built and Uploaded:" /tmp/build.log || true
-            echo "Deleting build output directories."
-            sudo rm -rf release pkg_cache
+              grep "Built and Uploaded:" /tmp/build.log || true
+              echo "Deleting build output directories."
+              sudo rm -rf release pkg_cache
   build-check:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     needs:
       - setup
       - generate

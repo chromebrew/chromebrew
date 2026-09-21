@@ -1,5 +1,5 @@
 ---
-# Version 1.7
+# Version 1.8
 name: Generate Updates PRs on Demand
 run-name: Generating Updates PRs on Demand using ${{ inputs.version_cmd_input }}
 on:
@@ -23,7 +23,7 @@ permissions:                    # Global permissions configuration starts here
 jobs:
   update-check:
     if: ${{ github.repository_owner == 'chromebrew' }}
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     steps:
       - name: Get GH Token
         id: get_workflow_token
