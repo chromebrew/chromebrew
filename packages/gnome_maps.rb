@@ -11,9 +11,9 @@ class Gnome_maps < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5c5699ac99f36605ea727b4845c04ea0343452a384db3517dcb7d2d419dd302d',
-     armv7l: '5c5699ac99f36605ea727b4845c04ea0343452a384db3517dcb7d2d419dd302d',
-     x86_64: '9163ee464cb974fe81791b8e27e78c4447c94c8cdd580cbfe3265eec519fcb20'
+    aarch64: 'a1231f11a5888a3ed40e6fd8a91bb9ece30f9eb09970b07482b7e2b7d7bee202',
+     armv7l: 'a1231f11a5888a3ed40e6fd8a91bb9ece30f9eb09970b07482b7e2b7d7bee202',
+     x86_64: 'c04459def3e3618e1b8628a6cdc95666484a62f7a7a5e3f97b730314f99620e8'
   })
 
   depends_on 'blueprint_compiler'
