@@ -11,10 +11,10 @@ class Gzip < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4cc05d25a34eb5a7d26b3aded51d97ef80edc37fad21fad41888ddb774190b4a',
-     armv7l: '4cc05d25a34eb5a7d26b3aded51d97ef80edc37fad21fad41888ddb774190b4a',
-       i686: 'f3b6c28a23474b435d3b9479af4f003e50a873bd599b8ec5cba2b1e582b90936',
-     x86_64: '5b2d9a48456d3aca4c07f778d4562ce86afdb8cf37eb333e1a1340c180b399b2'
+    aarch64: '896303cba73c10a3decf76698703107442501aeb107f490dc3776a3d772c2faa',
+     armv7l: '896303cba73c10a3decf76698703107442501aeb107f490dc3776a3d772c2faa',
+       i686: '177e708ddf22ddf87af76841a30b2a8d59385b24e7bed8cdc55c0a3bf42b17d4',
+     x86_64: '7853b68cd349c842d0c3937d72035c05377085612ece18eaa2be6e74dca03b9c'
   })
 
   depends_on 'glibc' => :executable
