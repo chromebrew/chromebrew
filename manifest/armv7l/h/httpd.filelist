@@ -1,4 +1,4 @@
-# Total size: 28022533
+# Total size: 28451888
 /usr/local/bin/ab
 /usr/local/bin/apachectl
 /usr/local/bin/apxs
@@ -59,6 +59,7 @@
 /usr/local/share/httpd/error/HTTP_BAD_GATEWAY.html.var
 /usr/local/share/httpd/error/HTTP_BAD_REQUEST.html.var
 /usr/local/share/httpd/error/HTTP_FORBIDDEN.html.var
+/usr/local/share/httpd/error/HTTP_GATEWAY_TIME_OUT.html.var
 /usr/local/share/httpd/error/HTTP_GONE.html.var
 /usr/local/share/httpd/error/HTTP_INTERNAL_SERVER_ERROR.html.var
 /usr/local/share/httpd/error/HTTP_LENGTH_REQUIRED.html.var
@@ -392,6 +393,7 @@
 /usr/local/share/httpd/manual/bind.html.fr.utf8
 /usr/local/share/httpd/manual/bind.html.ja.utf8
 /usr/local/share/httpd/manual/bind.html.ko.euc-kr
+/usr/local/share/httpd/manual/bind.html.pt-br.utf8
 /usr/local/share/httpd/manual/bind.html.tr.utf8
 /usr/local/share/httpd/manual/caching.html
 /usr/local/share/httpd/manual/caching.html.en
@@ -432,6 +434,8 @@
 /usr/local/share/httpd/manual/developer/index.html
 /usr/local/share/httpd/manual/developer/index.html.en
 /usr/local/share/httpd/manual/developer/index.html.zh-cn.utf8
+/usr/local/share/httpd/manual/developer/mod_example_1.c
+/usr/local/share/httpd/manual/developer/mod_example_2.c
 /usr/local/share/httpd/manual/developer/modguide.html
 /usr/local/share/httpd/manual/developer/modguide.html.en
 /usr/local/share/httpd/manual/developer/modules.html
@@ -478,6 +482,7 @@
 /usr/local/share/httpd/manual/filter.html.fr.utf8
 /usr/local/share/httpd/manual/filter.html.ja.utf8
 /usr/local/share/httpd/manual/filter.html.ko.euc-kr
+/usr/local/share/httpd/manual/filter.html.pt-br.utf8
 /usr/local/share/httpd/manual/filter.html.tr.utf8
 /usr/local/share/httpd/manual/getting-started.html
 /usr/local/share/httpd/manual/getting-started.html.en
@@ -523,6 +528,7 @@
 /usr/local/share/httpd/manual/howto/htaccess.html.ja.utf8
 /usr/local/share/httpd/manual/howto/htaccess.html.ko.euc-kr
 /usr/local/share/httpd/manual/howto/htaccess.html.pt-br
+/usr/local/share/httpd/manual/howto/htaccess.html.pt-br.utf8
 /usr/local/share/httpd/manual/howto/http2.html
 /usr/local/share/httpd/manual/howto/http2.html.en
 /usr/local/share/httpd/manual/howto/http2.html.es
@@ -567,24 +573,27 @@
 /usr/local/share/httpd/manual/images/feather.gif
 /usr/local/share/httpd/manual/images/feather.png
 /usr/local/share/httpd/manual/images/filter_arch.png
+/usr/local/share/httpd/manual/images/filter_arch.pt-br.png
 /usr/local/share/httpd/manual/images/filter_arch.tr.png
 /usr/local/share/httpd/manual/images/home.gif
 /usr/local/share/httpd/manual/images/index.gif
 /usr/local/share/httpd/manual/images/left.gif
 /usr/local/share/httpd/manual/images/mod_filter_new.gif
 /usr/local/share/httpd/manual/images/mod_filter_new.png
+/usr/local/share/httpd/manual/images/mod_filter_new.pt-br.png
 /usr/local/share/httpd/manual/images/mod_filter_new.tr.png
 /usr/local/share/httpd/manual/images/mod_filter_old.gif
 /usr/local/share/httpd/manual/images/mod_filter_old.png
-/usr/local/share/httpd/manual/images/mod_rewrite_fig1.gif
 /usr/local/share/httpd/manual/images/mod_rewrite_fig1.png
-/usr/local/share/httpd/manual/images/mod_rewrite_fig2.gif
+/usr/local/share/httpd/manual/images/mod_rewrite_fig1.svg
 /usr/local/share/httpd/manual/images/mod_rewrite_fig2.png
+/usr/local/share/httpd/manual/images/mod_rewrite_fig2.svg
 /usr/local/share/httpd/manual/images/pixel.gif
 /usr/local/share/httpd/manual/images/reverse-proxy-arch.png
 /usr/local/share/httpd/manual/images/rewrite_backreferences.png
+/usr/local/share/httpd/manual/images/rewrite_backreferences.svg
 /usr/local/share/httpd/manual/images/rewrite_process_uri.png
-/usr/local/share/httpd/manual/images/rewrite_rule_flow.png
+/usr/local/share/httpd/manual/images/rewrite_process_uri.svg
 /usr/local/share/httpd/manual/images/right.gif
 /usr/local/share/httpd/manual/images/ssl_intro_fig1.gif
 /usr/local/share/httpd/manual/images/ssl_intro_fig1.png
@@ -594,7 +603,9 @@
 /usr/local/share/httpd/manual/images/ssl_intro_fig3.png
 /usr/local/share/httpd/manual/images/sub.gif
 /usr/local/share/httpd/manual/images/syntax_rewritecond.png
+/usr/local/share/httpd/manual/images/syntax_rewritecond.svg
 /usr/local/share/httpd/manual/images/syntax_rewriterule.png
+/usr/local/share/httpd/manual/images/syntax_rewriterule.svg
 /usr/local/share/httpd/manual/images/up.gif
 /usr/local/share/httpd/manual/index.html
 /usr/local/share/httpd/manual/index.html.da
@@ -605,6 +616,7 @@
 /usr/local/share/httpd/manual/index.html.ja.utf8
 /usr/local/share/httpd/manual/index.html.ko.euc-kr
 /usr/local/share/httpd/manual/index.html.pt-br
+/usr/local/share/httpd/manual/index.html.pt-br.utf8
 /usr/local/share/httpd/manual/index.html.ru.utf8
 /usr/local/share/httpd/manual/index.html.tr.utf8
 /usr/local/share/httpd/manual/index.html.zh-cn.utf8
@@ -615,6 +627,7 @@
 /usr/local/share/httpd/manual/install.html.fr.utf8
 /usr/local/share/httpd/manual/install.html.ja.utf8
 /usr/local/share/httpd/manual/install.html.ko.euc-kr
+/usr/local/share/httpd/manual/install.html.pt-br.utf8
 /usr/local/share/httpd/manual/install.html.tr.utf8
 /usr/local/share/httpd/manual/invoking.html
 /usr/local/share/httpd/manual/invoking.html.de
@@ -623,6 +636,7 @@
 /usr/local/share/httpd/manual/invoking.html.fr.utf8
 /usr/local/share/httpd/manual/invoking.html.ja.utf8
 /usr/local/share/httpd/manual/invoking.html.ko.euc-kr
+/usr/local/share/httpd/manual/invoking.html.pt-br.utf8
 /usr/local/share/httpd/manual/invoking.html.tr.utf8
 /usr/local/share/httpd/manual/license.html
 /usr/local/share/httpd/manual/license.html.en
@@ -1233,16 +1247,19 @@
 /usr/local/share/httpd/manual/new_features_2_0.html.ja.utf8
 /usr/local/share/httpd/manual/new_features_2_0.html.ko.euc-kr
 /usr/local/share/httpd/manual/new_features_2_0.html.pt-br
+/usr/local/share/httpd/manual/new_features_2_0.html.pt-br.utf8
 /usr/local/share/httpd/manual/new_features_2_0.html.tr.utf8
 /usr/local/share/httpd/manual/new_features_2_2.html
 /usr/local/share/httpd/manual/new_features_2_2.html.en
 /usr/local/share/httpd/manual/new_features_2_2.html.fr.utf8
 /usr/local/share/httpd/manual/new_features_2_2.html.ko.euc-kr
 /usr/local/share/httpd/manual/new_features_2_2.html.pt-br
+/usr/local/share/httpd/manual/new_features_2_2.html.pt-br.utf8
 /usr/local/share/httpd/manual/new_features_2_2.html.tr.utf8
 /usr/local/share/httpd/manual/new_features_2_4.html
 /usr/local/share/httpd/manual/new_features_2_4.html.en
 /usr/local/share/httpd/manual/new_features_2_4.html.fr.utf8
+/usr/local/share/httpd/manual/new_features_2_4.html.pt-br.utf8
 /usr/local/share/httpd/manual/new_features_2_4.html.tr.utf8
 /usr/local/share/httpd/manual/platform/ebcdic.html
 /usr/local/share/httpd/manual/platform/ebcdic.html.en
@@ -1256,10 +1273,6 @@
 /usr/local/share/httpd/manual/platform/netware.html.en
 /usr/local/share/httpd/manual/platform/netware.html.fr.utf8
 /usr/local/share/httpd/manual/platform/netware.html.ko.euc-kr
-/usr/local/share/httpd/manual/platform/perf-hp.html
-/usr/local/share/httpd/manual/platform/perf-hp.html.en
-/usr/local/share/httpd/manual/platform/perf-hp.html.fr.utf8
-/usr/local/share/httpd/manual/platform/perf-hp.html.ko.euc-kr
 /usr/local/share/httpd/manual/platform/rpm.html
 /usr/local/share/httpd/manual/platform/rpm.html.en
 /usr/local/share/httpd/manual/platform/rpm.html.fr.utf8
@@ -1478,6 +1491,7 @@
 /usr/local/share/httpd/manual/upgrading.html
 /usr/local/share/httpd/manual/upgrading.html.en
 /usr/local/share/httpd/manual/upgrading.html.fr.utf8
+/usr/local/share/httpd/manual/upgrading.html.pt-br.utf8
 /usr/local/share/httpd/manual/urlmapping.html
 /usr/local/share/httpd/manual/urlmapping.html.en
 /usr/local/share/httpd/manual/urlmapping.html.fr.utf8
