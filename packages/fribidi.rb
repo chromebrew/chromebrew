@@ -18,6 +18,7 @@ class Fribidi < Meson
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 
   meson_options '-Ddocs=false \
       -Dtests=false'
