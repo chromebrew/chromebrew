@@ -3,12 +3,12 @@ require 'package'
 class Tauri_cli < Package
   description 'Build smaller, faster, and more secure desktop and mobile applications with a web frontend.'
   homepage 'https://tauri.app/'
-  version '2.11.4'
+  version '2.11.5'
   license 'Apache-2.0, MIT'
   compatibility 'x86_64'
   min_glibc '2.29'
   source_url "https://github.com/tauri-apps/tauri/releases/download/tauri-cli-v#{version}/cargo-tauri-x86_64-unknown-linux-gnu.tgz"
-  source_sha256 '6864602a34292aa6f2ad40ae019eebe5c1064d6c623fe20696a8a8974067e60b'
+  source_sha256 'e75e2a1e8d3bceba327a10640a08b0bfef6d7559e8e13274629189001f2fce08'
 
   no_compile_needed
 
