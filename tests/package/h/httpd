@@ -1,0 +1,4 @@
+#!/bin/bash
+ab -V
+apachectl -V | head
+httpd -V | head
