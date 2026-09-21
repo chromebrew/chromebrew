@@ -18,6 +18,7 @@ class Gzip < Autotools
   })
 
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
 
   # Tests fail due to tty not being available in the automated build containers.
   # more: Failed to initialize input reader
