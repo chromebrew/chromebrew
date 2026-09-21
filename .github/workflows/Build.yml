@@ -1,5 +1,5 @@
 ---
-# Version 1.8
+# Version 1.9
 name: Build
 run-name: Build ${{ inputs.packages_to_build }} for ${{ inputs.build-on }} on branch ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} requested by @${{ github.actor }}
 on:
@@ -364,7 +364,10 @@ jobs:
               CREW_MAX_BUILD_TIME_PASSTHROUGH+=" "
               CREW_MAX_BUILD_TIME_PASSTHROUGH+=CREW_MAX_BUILD_TIME=${CREW_MAX_BUILD_TIME}
             fi
+            # Use script to provide a pty
+            script typescript <<'EOF'
             docker run \
+              -it \
               --rm \
               --platform "${PLATFORM}" \
               -e PUID=1000 \
@@ -385,9 +388,12 @@ jobs:
               --ulimit "nofile=$(ulimit -Sn):$(ulimit -Hn)" \
               "${CONTAINER}" \
               /bin/chromebrewstart "/output/tools/github_actions_update_builder.sh ${{ github.event.inputs.allow_fail == 'true' && '--continue-after-failed-builds' || ''}} ${{ github.event.inputs.rebuild_packages == 'true' && '--rebuild' || ''}}"  > >(tee -a /tmp/build.log) 2> >(tee -a /tmp/build.log >&2)
-              grep "Built and Uploaded:" /tmp/build.log || true
-              echo "Deleting build output directories."
-              sudo rm -rf release pkg_cache
+            exit
+            EOF
+            rm -f typescript
+            grep "Built and Uploaded:" /tmp/build.log || true
+            echo "Deleting build output directories."
+            sudo rm -rf release pkg_cache
   build-check:
     runs-on: ubuntu-24.04
     needs:

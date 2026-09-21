@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Gzip < Autotools
   description 'GNU Gzip is a popular data compression program originally written by Jean-loup Gailly for the GNU project.'
   homepage 'https://www.gnu.org/software/gzip/'
-  version '1.14'
+  version '1.15'
   compatibility 'all'
   license 'GPL-3'
   source_url "https://ftp.gnu.org/gnu/gzip/gzip-#{version}.tar.xz"
-  source_sha256 '01a7b881bd220bfdf615f97b8718f80bdfd3f6add385b993dcf6efd14e8c0ac6'
+  source_sha256 '9aa0cc780dec156b8282844833b342ab7cb08c25d2cd9a1869cdd0df31deff48'
   binary_compression 'tar.zst'
 
   binary_sha256({
