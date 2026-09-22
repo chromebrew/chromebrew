@@ -1,5 +1,5 @@
 ---
-# Version 1.8
+# Version 1.9
 name: Build
 run-name: Build ${{ inputs.packages_to_build }} for ${{ inputs.build-on }} on branch ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} requested by @${{ github.actor }}
 on:
@@ -62,7 +62,7 @@ permissions:
 jobs:
   debug:
     if: ${{ ( github.repository_owner == 'chromebrew' ) }}
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     steps:
       - name: Dump GitHub context
         env:
@@ -78,7 +78,7 @@ jobs:
         run: echo "$STEPS_CONTEXT"
   setup:
     if: ${{ ( github.repository_owner == 'chromebrew' ) && ( inputs.branch != 'master' ) }}
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     outputs:
       timestamp: ${{ steps.set-timestamp.outputs.TIMESTAMP }}  # https://stackoverflow.com/a/75142892
       current_head: ${{ steps.get-current-head.outputs.CURRENT_HEAD }}
@@ -144,7 +144,7 @@ jobs:
 
   gen-matrix:
     needs: get-compatibility
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     outputs:
       matrix: ${{ steps.set-generate-matrix.outputs.matrix }}
     steps:
@@ -186,12 +186,19 @@ jobs:
         arch: ${{ fromJSON(needs.gen-matrix.outputs.matrix) }}
         runner:
           - ubuntu-24.04
-          - ubuntu-24.04-arm
+          - ubuntu-26.04
+          - ubuntu-26.04-arm
         exclude:
           - arch: x86_64
-            runner: ubuntu-24.04-arm
+            runner: ubuntu-26.04-arm
+          - arch: x86_64
+            runner: ubuntu-24.04
           - arch: i686
-            runner: ubuntu-24.04-arm
+            runner: ubuntu-26.04-arm
+          - arch: i686
+            runner: ubuntu-26.04
+          - arch: armv7l
+            runner: ubuntu-26.04
           - arch: armv7l
             runner: ubuntu-24.04
     runs-on: ${{ matrix.runner }}
@@ -389,7 +396,7 @@ jobs:
               echo "Deleting build output directories."
               sudo rm -rf release pkg_cache
   build-check:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     needs:
       - setup
       - generate

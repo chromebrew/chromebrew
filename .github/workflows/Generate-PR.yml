@@ -1,5 +1,5 @@
 ---
-# Version 3.0
+# Version 3.1
 name: Generate PR
 run-name: Generate PR for ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} by @${{ github.actor }}
 on:
@@ -44,7 +44,7 @@ permissions:
   repository-projects: read
 jobs:
   debug:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     steps:
       - name: Dump GitHub context
         env:
@@ -60,7 +60,7 @@ jobs:
         run: echo "$STEPS_CONTEXT"
   setup:
     if: ${{ ( github.repository_owner == 'chromebrew' ) && ( inputs.branch != 'master' ) && ( ( github.event.action  == 'labeled' && github.event.label.name == 'regenerate_pr' ) || ( github.repository_owner == 'chromebrew' && github.event.action  == 'labeled' && github.event.label.name == 'update-package-files' ) || ( github.repository_owner == 'chromebrew' && github.event.action  == 'labeled' && github.event.label.name == 'updater' ) || github.event_name  == 'workflow_dispatch' ) }}
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     outputs:
       changed_packages: ${{ steps.changed-packages.outputs.CHANGED_PACKAGES }}
     steps:
@@ -135,7 +135,7 @@ jobs:
 
   gen-matrix:
     needs: get-compatibility
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     outputs:
       matrix: ${{ steps.set-generate-matrix.outputs.matrix }}
     steps:
@@ -175,15 +175,15 @@ jobs:
       matrix:
         arch: ${{ fromJSON(needs.gen-matrix.outputs.matrix) }}
         runner:
-          - ubuntu-24.04
-          - ubuntu-24.04-arm
+          - ubuntu-26.04
+          - ubuntu-26.04-arm
         exclude:
           - arch: x86_64
-            runner: ubuntu-24.04-arm
+            runner: ubuntu-26.04-arm
           - arch: i686
-            runner: ubuntu-24.04-arm
+            runner: ubuntu-26.04-arm
           - arch: armv7l
-            runner: ubuntu-24.04
+            runner: ubuntu-26.04
     runs-on: ${{ matrix.runner }}
     outputs:
       runner_glibc: ${{ steps.set-container-by-glibc.outputs.runner_glibc }}
@@ -396,7 +396,7 @@ jobs:
             git log --oneline -10
           fi
   build-check:
-    runs-on: ubuntu-24.04-arm
+    runs-on: ubuntu-26.04-arm
     needs:
       - setup
       - get-compatibility
