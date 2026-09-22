@@ -3,19 +3,15 @@ require 'package'
 class Pandoc < Package
   description 'Universal markup converter'
   homepage 'https://github.com/jgm/pandoc/'
-  version '2.7.3'
+  version '3.1.1'
   license 'GPL-2+'
-  compatibility 'all'
-  binary_compression 'tar.xz'
-
-  source_url 'https://github.com/jgm/pandoc/releases/download/2.7.3/pandoc-2.7.3-linux.tar.gz'
-  source_sha256 'eb775fd42ec50329004d00f0c9b13076e707cdd44745517c8ce2581fb8abdb75'
+  compatibility 'x86_64'
+  source_url "https://github.com/jgm/pandoc/releases/download/#{version}/pandoc-#{version}-linux-amd64.tar.gz"
+  source_sha256 '52b25f0115517e32047a06d821e63729108027bd06d9605fe8eac0fa83e0bf81'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2bdd58244cb9044771e1ef36adcb9749c56c045c8f040c3e199e6bbb047a78f5',
-     armv7l: '2bdd58244cb9044771e1ef36adcb9749c56c045c8f040c3e199e6bbb047a78f5',
-       i686: '7dd73da7ef9bcb0f9a2380a7e72b3906101bde0e99091483aeaa047b8e6c8808',
-     x86_64: '7a6382e0dacaea978eb348feebaf02d8b58addc8cc14db179b68dcf552b7e260'
+     x86_64: '623be2d8275ac435e0503fe68c3757829f8fffacca9d3079040c2170c27b01b9'
   })
 
   def self.install
