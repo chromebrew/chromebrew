@@ -1,4 +1,4 @@
-# Total size: 66746205
+# Total size: 68755347
 /usr/local/bin/cc-wrapper
 /usr/local/bin/codelite
 /usr/local/bin/codelite-echo
@@ -11,9 +11,11 @@
 /usr/local/bin/codelite_kill_children
 /usr/local/bin/codelite_open_helper.py
 /usr/local/bin/codelite_xterm
+/usr/local/bin/wxcgen
 /usr/local/lib/codelite/AutoSave.so
 /usr/local/lib/codelite/CMakePlugin.so
 /usr/local/lib/codelite/CallGraph.so
+/usr/local/lib/codelite/ClaudeCode.so
 /usr/local/lib/codelite/CodeFormatter.so
 /usr/local/lib/codelite/CodeLiteDiff.so
 /usr/local/lib/codelite/ContinuousBuild.so
@@ -124,11 +126,15 @@
 /usr/local/share/codelite/svgs/dark-theme/checkbox.svg
 /usr/local/share/codelite/svgs/dark-theme/clang.svg
 /usr/local/share/codelite/svgs/dark-theme/class.svg
+/usr/local/share/codelite/svgs/dark-theme/claude-code.svg
+/usr/local/share/codelite/svgs/dark-theme/claude-remote.svg
 /usr/local/share/codelite/svgs/dark-theme/clean.svg
 /usr/local/share/codelite/svgs/dark-theme/clear.svg
 /usr/local/share/codelite/svgs/dark-theme/cmake-button.svg
 /usr/local/share/codelite/svgs/dark-theme/cmake.svg
 /usr/local/share/codelite/svgs/dark-theme/codelite-logo.svg
+/usr/local/share/codelite/svgs/dark-theme/codex-remote.svg
+/usr/local/share/codelite/svgs/dark-theme/codex.svg
 /usr/local/share/codelite/svgs/dark-theme/cog.svg
 /usr/local/share/codelite/svgs/dark-theme/colour-pallette.svg
 /usr/local/share/codelite/svgs/dark-theme/connected.svg
@@ -320,11 +326,15 @@
 /usr/local/share/codelite/svgs/light-theme/checkbox.svg
 /usr/local/share/codelite/svgs/light-theme/clang.svg
 /usr/local/share/codelite/svgs/light-theme/class.svg
+/usr/local/share/codelite/svgs/light-theme/claude-code.svg
+/usr/local/share/codelite/svgs/light-theme/claude-remote.svg
 /usr/local/share/codelite/svgs/light-theme/clean.svg
 /usr/local/share/codelite/svgs/light-theme/clear.svg
 /usr/local/share/codelite/svgs/light-theme/cmake-button.svg
 /usr/local/share/codelite/svgs/light-theme/cmake.svg
 /usr/local/share/codelite/svgs/light-theme/codelite-logo.svg
+/usr/local/share/codelite/svgs/light-theme/codex-remote.svg
+/usr/local/share/codelite/svgs/light-theme/codex.svg
 /usr/local/share/codelite/svgs/light-theme/cog.svg
 /usr/local/share/codelite/svgs/light-theme/colour-pallette.svg
 /usr/local/share/codelite/svgs/light-theme/connected.svg
@@ -689,7 +699,6 @@
 /usr/local/share/codelite/terminal_themes/themes/catppuccin_mocha.toml
 /usr/local/share/codelite/terminal_themes/themes/challenger_deep.toml
 /usr/local/share/codelite/terminal_themes/themes/chicago95.toml
-/usr/local/share/codelite/terminal_themes/themes/citylights.toml
 /usr/local/share/codelite/terminal_themes/themes/cyber_punk_neon.toml
 /usr/local/share/codelite/terminal_themes/themes/dark_pastels.toml
 /usr/local/share/codelite/terminal_themes/themes/dark_plus.toml
@@ -697,7 +706,6 @@
 /usr/local/share/codelite/terminal_themes/themes/dawnfox.toml
 /usr/local/share/codelite/terminal_themes/themes/dayfox.toml
 /usr/local/share/codelite/terminal_themes/themes/deep_space.toml
-/usr/local/share/codelite/terminal_themes/themes/doom_one.toml
 /usr/local/share/codelite/terminal_themes/themes/dracula.toml
 /usr/local/share/codelite/terminal_themes/themes/dracula_plus.toml
 /usr/local/share/codelite/terminal_themes/themes/duskfox.toml

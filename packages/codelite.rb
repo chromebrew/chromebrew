@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Codelite < CMake
   description 'CodeLite is an open source, free, cross platform IDE, specialized in C, C++, Rust, Python, PHP and JavaScript'
   homepage 'https://codelite.org/'
-  version '18.4.0'
+  version '18.5.0'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/eranif/codelite.git'
@@ -11,9 +11,9 @@ class Codelite < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '647f66c5d486f4abe313930586f7d8ffaee8094173ac084b1c8cc6fa1e6a7a3d',
-     armv7l: '647f66c5d486f4abe313930586f7d8ffaee8094173ac084b1c8cc6fa1e6a7a3d',
-     x86_64: '1429fd6f2465453991f3b9db9c228f728bbf286f5419ba771d91d9e1a76840cd'
+    aarch64: '5be1f656f8e56a45fe59ed467a8b544fa5a41f21f5894f01e8203f17114db701',
+     armv7l: '5be1f656f8e56a45fe59ed467a8b544fa5a41f21f5894f01e8203f17114db701',
+     x86_64: '060ed8c4068b25579052c4e02454140cc33355710288aade924679fb5800be04'
   })
 
   depends_on 'at_spi2_core' => :library
