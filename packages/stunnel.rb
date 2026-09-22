@@ -29,10 +29,14 @@ class Stunnel < Autotools
     # The aclocal & automake versions are hardcoded.
     aclocal_version = `aclocal --version|head -1|cut -d' ' -f4`.chomp
     automake_version = `automake --version|head -1|cut -d' ' -f4`.chomp.gsub(/\.\d+$/, '')
-    system "sed -i \"s,am__api_version='1.17',am__api_version='#{automake_version}',g\" aclocal.m4"
-    system "sed -i 's/m4_if([$1], [1.17]/m4_if([$1], [#{automake_version}]/g' aclocal.m4"
-    system "sed -i 's,1.17,#{aclocal_version},g' aclocal.m4"
-    system "sed -i 's,1.17,#{aclocal_version},g' configure"
+    package_automake_version = File.open('Makefile.in', &:readline).split[5]
+    package_automake_major_version = package_automake_version.rpartition('.')[0]
+    system "sed -i \"s,am__api_version='#{package_automake_version}',am__api_version='#{automake_version}',g\" aclocal.m4"
+    system "sed -i 's/m4_if([$1], [#{package_automake_version}]/m4_if([$1], [#{automake_version}]/g' aclocal.m4"
+    system "sed -i 's,#{package_automake_version},#{aclocal_version},g' aclocal.m4"
+    system "sed -i 's,#{package_automake_major_version},#{aclocal_version},g' aclocal.m4"
+    system "sed -i 's,#{package_automake_version},#{aclocal_version},g' configure"
+    system "sed -i 's,#{package_automake_major_version},#{aclocal_version},g' configure"
     system 'automake'
   end
 
