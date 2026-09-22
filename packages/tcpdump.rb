@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Tcpdump < Autotools
   description 'A powerful command-line packet analyzer.'
   homepage 'https://www.tcpdump.org/'
-  version '4.99.6'
+  version '4.99.7'
   license 'BSD'
   compatibility 'all'
   source_url "https://www.tcpdump.org/release/tcpdump-#{version}.tar.gz"
-  source_sha256 '5839921a0f67d7d8fa3dacd9cd41e44c89ccb867e8a6db216d62628c7fd14b09'
+  source_sha256 '8be364e28d3b745ef1459b385cd2f4bc0e1ebad7a5d2ebdf70071d6c9b5b9a54'
   binary_compression 'tar.zst'
 
   binary_sha256({
