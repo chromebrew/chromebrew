@@ -11,9 +11,9 @@ class Lttng_tools < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e7c24ebf1cbb9906862b5cfb2ff505d62f6f4c053c947d3fca34af58eb781f87',
-     armv7l: 'e7c24ebf1cbb9906862b5cfb2ff505d62f6f4c053c947d3fca34af58eb781f87',
-     x86_64: '929ddc3f761ebc170bd1350f0b80da1d5eeffab2f8dcd3bb33a6d7e4aefbb155'
+    aarch64: '24e9a7554b75ad3758f12b6a8000fd1966ea7ca809f82a792085f78a1324186e',
+     armv7l: '24e9a7554b75ad3758f12b6a8000fd1966ea7ca809f82a792085f78a1324186e',
+     x86_64: '13f43b677acb9d0655fdffe94153d4ceeb9b8a7e188cdb0e463786fa0a6e8dc3'
   })
 
   depends_on 'babeltrace' => :build
@@ -24,5 +24,6 @@ class Lttng_tools < Autotools
   depends_on 'liburcu' => :library
   depends_on 'libxml2' => :library
   depends_on 'lttng_ust' => :library
+  depends_on 'numactl' => :library
   depends_on 'popt' => :executable
 end
