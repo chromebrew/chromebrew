@@ -14,14 +14,15 @@ class Libdex < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b905f8968d0cc86a71fbae8b32e8bcdf537225c86d47425f5da64a5d2631f382',
-     armv7l: 'b905f8968d0cc86a71fbae8b32e8bcdf537225c86d47425f5da64a5d2631f382',
-     x86_64: 'd90947586f2d7295f03a5635313c4c98cb474277fe9281a5108d054901402116'
+    aarch64: 'c1760163739866c5313218f055a4e6a2484038c79edc5f2d76b5ecf7318dbfa7',
+     armv7l: 'c1760163739866c5313218f055a4e6a2484038c79edc5f2d76b5ecf7318dbfa7',
+     x86_64: 'dd1d89b36858f6b0e77836c759f9b67e931cc7f4ff98029cf3d42ba4f03aade8'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gobject_introspection' => :build
 
   meson_options '-Dexamples=false \
