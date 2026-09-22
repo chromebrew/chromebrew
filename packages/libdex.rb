@@ -22,6 +22,7 @@ class Libdex < Meson
   depends_on 'gcc_lib' # R
   depends_on 'glib' # R
   depends_on 'glibc' # R
+  depends_on 'gobject_introspection' => :build
 
   meson_options '-Dexamples=false \
                  -Dtests=false \
