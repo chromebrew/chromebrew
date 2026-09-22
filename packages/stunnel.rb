@@ -11,16 +11,15 @@ class Stunnel < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '877e2fe163c0215bc262eb8cd80f6f27db5952c7388cb8ed9abee762ce568dcf',
-     armv7l: '877e2fe163c0215bc262eb8cd80f6f27db5952c7388cb8ed9abee762ce568dcf',
-       i686: '7a00118302234de0a24f1706b9d342c76031ca3f8304719985b4210fafe03568',
-     x86_64: '4ada48f543baef427c34560031391b83ecad9d0048d28593c68cf2e8d4502072'
+    aarch64: '2806af8dda82a6cf9a50e3b460bab97e567fcd0abbb157646b7040ce0231fe38',
+     armv7l: '2806af8dda82a6cf9a50e3b460bab97e567fcd0abbb157646b7040ce0231fe38',
+       i686: '7b986a840042cf225e484ba9a6cdb1a36eb21ea517973cf65b136b93339c3123',
+     x86_64: 'a364e95a8c439dc1d5828e2894e3d98cd8e19332e54c42f4ecf312aac4721145'
   })
 
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
   depends_on 'openssl' => :executable
-  depends_on 'pandoc' => :build
   depends_on 'tcpwrappers' => :library
 
   autotools_skip_autoreconf
