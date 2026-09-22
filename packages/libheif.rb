@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libheif < CMake
   description 'libheif is a ISO/IEC 23008-12:2017 HEIF file format decoder and encoder.'
   homepage 'https://github.com/strukturag/libheif'
-  version '1.23.4'
+  version '1.23.5'
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/strukturag/libheif.git'
@@ -11,9 +11,9 @@ class Libheif < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bd082093a0f1a9d2d35eb3c6fe801c857251b751bcbb67b5b22866f524d8edb2',
-     armv7l: 'bd082093a0f1a9d2d35eb3c6fe801c857251b751bcbb67b5b22866f524d8edb2',
-     x86_64: '8108f35e885364720176e567b5fa2c22a1b2a67295566d614fb0c99404f9a176'
+    aarch64: 'f71ace9de54bfea3e7836aeb326c9ec5927da95f0775484007421fb25d654fba',
+     armv7l: 'f71ace9de54bfea3e7836aeb326c9ec5927da95f0775484007421fb25d654fba',
+     x86_64: '2f355db32c6791bd8f22ccc06474bb59de0886cd75c2fb5950d28d51beb1e5c0'
   })
 
   depends_on 'gcc_lib' => :library
