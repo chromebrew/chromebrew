@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Libdex < Meson
   description 'A library supporting Deferred Execution'
   homepage 'https://gitlab.gnome.org/chergert/libdex'
-  version '1.0.0'
+  version '1.2.0'
   license 'LGPL'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/chergert/libdex.git'
