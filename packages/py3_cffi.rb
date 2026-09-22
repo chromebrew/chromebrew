@@ -17,9 +17,10 @@ class Py3_cffi < Pip
   })
 
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'libffi' # R
-  depends_on 'python3' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'libffi' => :library
+  depends_on 'python3' => :logical
 
   no_source_build
 end

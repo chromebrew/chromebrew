@@ -20,8 +20,9 @@ class Libdex < Meson
   })
 
   depends_on 'gcc_lib' # R
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 
   meson_options '-Dexamples=false \
                  -Dtests=false \
