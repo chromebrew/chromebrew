@@ -1,5 +1,7 @@
-# Total size: 136061120
+# Total size: 129102740
 /usr/local/bin/pandoc
-/usr/local/bin/pandoc-citeproc
-/usr/local/share/man/man1/pandoc-citeproc.1.gz
-/usr/local/share/man/man1/pandoc.1.gz
+/usr/local/bin/pandoc-lua
+/usr/local/bin/pandoc-server
+/usr/local/share/man/man1/pandoc-lua.1.zst
+/usr/local/share/man/man1/pandoc-server.1.zst
+/usr/local/share/man/man1/pandoc.1.zst
