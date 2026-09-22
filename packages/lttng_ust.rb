@@ -11,12 +11,13 @@ class Lttng_ust < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8abc564f183bab9aea7b3ac964158a910b618728cdcfea6c02ebc87950d81ab6',
-     armv7l: '8abc564f183bab9aea7b3ac964158a910b618728cdcfea6c02ebc87950d81ab6',
-       i686: 'b5591119e085684594d45fd2ff40c41a876e3f45558565ceea147a29144cf049',
-     x86_64: '38fd7ace2ba041d476337c403f90678ff773c54e359c455a5063d1c396000d31'
+    aarch64: '474bf017c80bec3a8f70979246ed3f100bbcd52eadf3f1c00da88b92bbfb5954',
+     armv7l: '474bf017c80bec3a8f70979246ed3f100bbcd52eadf3f1c00da88b92bbfb5954',
+       i686: '38cde294975bae73e68161ead1f5b91e47d0f6c94de2593a4eece43a7b22b671',
+     x86_64: 'c49698152918adb0b472acc48e564623fe7eae422bb6d5129e43d0b81299a612'
   })
 
+  depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
   depends_on 'liburcu' => :library
