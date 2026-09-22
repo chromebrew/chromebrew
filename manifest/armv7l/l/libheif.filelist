@@ -1,4 +1,4 @@
-# Total size: 1947401
+# Total size: 1964281
 /usr/local/bin/heif-convert
 /usr/local/bin/heif-dec
 /usr/local/bin/heif-enc
@@ -39,7 +39,7 @@
 /usr/local/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-heif.so
 /usr/local/lib/libheif.so
 /usr/local/lib/libheif.so.1
-/usr/local/lib/libheif.so.1.23.4
+/usr/local/lib/libheif.so.1.23.5
 /usr/local/lib/pkgconfig/libheif.pc
 /usr/local/share/man/man1/heif-dec.1.zst
 /usr/local/share/man/man1/heif-enc.1.zst
