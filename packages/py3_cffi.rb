@@ -3,23 +3,24 @@ require 'buildsystems/pip'
 class Py3_cffi < Pip
   description 'C Foreign Function Interface for Python calling C code.'
   homepage 'https://cffi.readthedocs.io/'
-  version "2.0.0-#{CREW_PY_VER}"
+  version "2.1.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
-  source_url 'SKIP'
+  source_url 'https://github.com/python-cffi/cffi.git'
+  git_hashtag "v#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'de9a661a324899f9d0f8ff27abe975097a88e8f7f88b7087c30343b15d323117',
-     armv7l: 'de9a661a324899f9d0f8ff27abe975097a88e8f7f88b7087c30343b15d323117',
-       i686: '7252075ca97d17afead116d926b6434e88d0a4331953098af333db6d94e79b28',
-     x86_64: '5a082e020f6cb7a0df2376f86dcbb3abe4e33114b88aa4d8e0f808ae064c6464'
+    aarch64: '8668f9a04427fe51d149d0f56f9869e5125721a33262a65cc8daa2764eb6c180',
+     armv7l: '8668f9a04427fe51d149d0f56f9869e5125721a33262a65cc8daa2764eb6c180',
+       i686: '58290f8a2711fb5502f4b1aa259821831f72b471ebe19e8272c6e21301bebc72',
+     x86_64: '399553783f7c5f64e4a42f824375da096663db00b9ea359f9034a3ddb9755429'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'libffi' # R
-  depends_on 'python3' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'libffi' => :library
+  depends_on 'python3' => :logical
 
-  no_source_build
+  no_fhs
 end
