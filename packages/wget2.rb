@@ -54,4 +54,16 @@ class Wget2 < Autotools
     FileUtils.ln_sf "#{CREW_PREFIX}/bin/wget2", "#{CREW_DEST_PREFIX}/bin/wget"
     FileUtils.rm_f "#{CREW_DEST_PREFIX}/bin/wget2_noinstall"
   end
+
+  def self.patch
+    # The c11threads threads.h breaks builds on software that uses gnulib.
+    # See: https://github.com/jtsiomb/c11threads/issues/19
+    # Note that c11threads is a workaround for C11 Threads only being
+    # introduced in Glibc 2.28 as per:
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=14092#c10
+    if LIBC_VERSION.to_f < 2.28 && ENV['NESTED_CI']
+      puts 'Removing the c11threads include/threads.h from the c11threads package to prevent build failures.'.orange
+      FileUtils.rm_f "#{CREW_PREFIX}/include/threads.h"
+    end
+  end
 end
