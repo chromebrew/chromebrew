@@ -18,6 +18,7 @@ class Tcpdump < Autotools
   })
 
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'libcap'
   depends_on 'libcap_ng'
   depends_on 'libcap_ng' => :executable
