@@ -659,7 +659,7 @@ def prepare_package(destdir)
       # Whitelist crew-preload on multiarch ARM systems.
       next if %w[lib64/crew-preload.so].include?(filename) && %w[aarch64 armv7l].include?(ARCH)
       unless fhs_compliant_prefix.include?(filename)
-        if CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY || @pkg.no_fhs?
+        if CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY || @pkg.no_fhs? || @pkg.superclass.to_s == 'Pip'
           puts "Warning: #{CREW_PREFIX}/#{filename} in #{@pkg.name} is not FHS3 compliant.".orange
         else
           puts "Error: #{CREW_PREFIX}/#{filename} in #{@pkg.name} is not FHS3 compliant.".lightred

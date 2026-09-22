@@ -33,6 +33,14 @@ def pip_hard_reinstall
   Kernel.system "trash-put #{pip_site_packages_folder}/#{@py_pkg}*"
   @pip_hard_install_out, _read_pip_hard_install_stderr_s, @read_pip_hard_install_status = Open3.capture3("PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -m pip install #{@pip_resume_retries} --ignore-installed --force-reinstall --upgrade '#{@py_pkg}==#{@py_pkg_chromebrew_version}'")
   puts @read_pip_hard_install_status ? @pip_hard_install_out.green : @pip_hard_install_out.red
+  @pip_wheel = @pip_hard_install_out.split.detect { it.match(/.*\.whl$/) }
+  system "pip show #{@py_pkg}" if CREW_DEBUG
+  puts "@read_pip_hard_install_status: #{@read_pip_hard_install_status}" if CREW_DEBUG
+  if @read_pip_hard_install_status
+    # Download the wheel if possible.
+    @pip_hard_download_out, _read_pip_hard_download_stderr_s, @read_pip_hard_download_status = Open3.capture3("PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -m pip download #{@pip_resume_retries} --only-binary=:all: '#{@py_pkg}==#{@py_pkg_chromebrew_version}'")
+    @pip_wheel = @pip_hard_download_out.split.detect { it.match(/.*\.whl$/) }
+  end
   get_pip_info(@py_pkg)
 end
 
@@ -96,17 +104,31 @@ class Pip < Package
       puts "A wheel for #{@py_pkg}==#{@py_pkg_chromebrew_version} was found!".lightblue
     else
       puts "A wheel for #{@py_pkg}==#{@py_pkg_chromebrew_version} was unavailable, so we will build a wheel.".orange
+      puts "The version found was #{@py_pkg}==#{@pip_pkg_version}" unless @pip_pkg_version.nil?
       @pip_no_wheel_found_install_out, _read_pip_no_wheel_found_install_stderr_s, @read_pip_no_wheel_found_install_status = Open3.capture3("PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -m pip install #{@pip_resume_retries} #{'--pre' if prerelease?} --ignore-installed --force-reinstall --upgrade '#{@py_pkg}==#{@py_pkg_chromebrew_version}'")
       puts @read_pip_no_wheel_found_install_status ? @pip_no_wheel_found_install_out.green : @pip_no_wheel_found_install_out.red
+      # Python3 pip may find a pre-built wheel for x86_64, so use it if found.
+      if @read_pip_no_wheel_found_install_status
+        # Download the wheel if possible.
+        @pip_no_wheel_found_download_out, _pip_no_wheel_found_download_stderr_s, @pip_no_wheel_found_download_status = Open3.capture3("PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python3 -m pip download #{@pip_resume_retries} --only-binary=:all: '#{@py_pkg}==#{@py_pkg_chromebrew_version}'")
+        @pip_wheel = @pip_no_wheel_found_download_out.split.detect { it.match(/.*\.whl$/) }
+      end
       # Assume all pip non-SKIP sources are git.
-      @pip_wheel = if @source_url == 'SKIP'
-                     `PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 MAKEFLAGS=-j#{CREW_NPROC} #{@pip_pre_configure_options} python3 -m pip wheel #{'--pre' if prerelease?} -w #{@pip_cache_dir} #{@py_pkg}==#{@py_pkg_version}`[/(?<=filename=)(.*)*?(\S+)/, 0]
-                   else
-                     `PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 MAKEFLAGS=-j#{CREW_NPROC} #{@pip_pre_configure_options} python3 -m pip wheel #{'--pre' if prerelease?} -w #{@pip_cache_dir} git+#{source_url}`[/(?<=filename=)(.*)*?(\S+)/, 0]
-                   end
+      if @pip_wheel.nil?
+        @pip_wheel = if @source_url == 'SKIP'
+                       `PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 MAKEFLAGS=-j#{CREW_NPROC} #{@pip_pre_configure_options} python3 -m pip wheel #{'--pre' if prerelease?} -w #{@pip_cache_dir} #{@py_pkg}==#{@py_pkg_version}`[/(?<=filename=)(.*)*?(\S+)/, 0]
+                     else
+                       `PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 MAKEFLAGS=-j#{CREW_NPROC} #{@pip_pre_configure_options} python3 -m pip wheel #{'--pre' if prerelease?} -w #{@pip_cache_dir} git+#{source_url}`[/(?<=filename=)(.*)*?(\S+)/, 0]
+                     end
+      end
       puts "@pip_wheel is #{@pip_wheel}" if CREW_DEBUG
-      FileUtils.install File.join(@pip_cache_dir, @pip_wheel), @pip_cache_dest_dir
-      Kernel.system "python3 -m pip install #{'--pre' if prerelease?} --force-reinstall --upgrade #{File.join(@pip_cache_dir, @pip_wheel)}"
+      pip_wheel_full_path = if File.file?(@pip_wheel)
+                              @pip_wheel
+                            elsif File.file?(File.join(@pip_cache_dir, @pip_wheel))
+                              File.join(@pip_cache_dir, @pip_wheel)
+                            end
+      FileUtils.install pip_wheel_full_path, @pip_cache_dest_dir
+      Kernel.system "python3 -m pip install #{'--pre' if prerelease?} --force-reinstall --upgrade #{pip_wheel_full_path}"
       # Check the just-installed package...
       if get_pip_info(@py_pkg)
         puts "Note that #{@py_pkg}==#{@pip_pkg_version} is installed, which is different from the #{@py_pkg_chromebrew_version}. Please update the package file.".lightpurple if @py_pkg_chromebrew_version != @pip_pkg_version
