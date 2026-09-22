@@ -1,10 +1,12 @@
-# Total size: 880585
+# Total size: 1132308
+/usr/local/.cache/pip
 /usr/local/bin/normalizer
 /usr/local/lib64/python3.14/site-packages/charset_normalizer-3.5.1.dist-info/INSTALLER
 /usr/local/lib64/python3.14/site-packages/charset_normalizer-3.5.1.dist-info/METADATA
 /usr/local/lib64/python3.14/site-packages/charset_normalizer-3.5.1.dist-info/RECORD
 /usr/local/lib64/python3.14/site-packages/charset_normalizer-3.5.1.dist-info/REQUESTED
 /usr/local/lib64/python3.14/site-packages/charset_normalizer-3.5.1.dist-info/WHEEL
+/usr/local/lib64/python3.14/site-packages/charset_normalizer-3.5.1.dist-info/direct_url.json
 /usr/local/lib64/python3.14/site-packages/charset_normalizer-3.5.1.dist-info/entry_points.txt
 /usr/local/lib64/python3.14/site-packages/charset_normalizer-3.5.1.dist-info/licenses/LICENSE
 /usr/local/lib64/python3.14/site-packages/charset_normalizer-3.5.1.dist-info/top_level.txt
