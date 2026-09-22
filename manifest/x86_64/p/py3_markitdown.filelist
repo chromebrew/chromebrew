@@ -1,11 +1,11 @@
-# Total size: 490273
+# Total size: 618989
 /usr/local/bin/markitdown
-/usr/local/lib/python3.14/site-packages/markitdown-0.1.7.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/markitdown-0.1.7.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/markitdown-0.1.7.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/markitdown-0.1.7.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/markitdown-0.1.7.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/markitdown-0.1.7.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/markitdown-0.1.8.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/markitdown-0.1.8.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/markitdown-0.1.8.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/markitdown-0.1.8.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/markitdown-0.1.8.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/markitdown-0.1.8.dist-info/entry_points.txt
 /usr/local/lib/python3.14/site-packages/markitdown/__about__.py
 /usr/local/lib/python3.14/site-packages/markitdown/__init__.py
 /usr/local/lib/python3.14/site-packages/markitdown/__main__.py
@@ -24,9 +24,15 @@
 /usr/local/lib/python3.14/site-packages/markitdown/_uri_utils.py
 /usr/local/lib/python3.14/site-packages/markitdown/converter_utils/__init__.py
 /usr/local/lib/python3.14/site-packages/markitdown/converter_utils/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/markitdown/converter_utils/__pycache__/_image.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/markitdown/converter_utils/__pycache__/_xlsx_images.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/markitdown/converter_utils/_image.py
+/usr/local/lib/python3.14/site-packages/markitdown/converter_utils/_xlsx_images.py
 /usr/local/lib/python3.14/site-packages/markitdown/converter_utils/docx/__init__.py
 /usr/local/lib/python3.14/site-packages/markitdown/converter_utils/docx/__pycache__/__init__.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/markitdown/converter_utils/docx/__pycache__/_images.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/markitdown/converter_utils/docx/__pycache__/pre_process.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/markitdown/converter_utils/docx/_images.py
 /usr/local/lib/python3.14/site-packages/markitdown/converter_utils/docx/math/__init__.py
 /usr/local/lib/python3.14/site-packages/markitdown/converter_utils/docx/math/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/markitdown/converter_utils/docx/math/__pycache__/latex_dict.cpython-314.pyc
