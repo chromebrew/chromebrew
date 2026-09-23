@@ -65,5 +65,10 @@ class Wget2 < Autotools
       puts 'Removing the c11threads include/threads.h from the c11threads package to prevent build failures.'.orange
       FileUtils.rm_f "#{CREW_PREFIX}/include/threads.h"
     end
+    patches = [
+      # Fix for broken legacy TCP Fast Open code branch
+      ['https://github.com/rockdaboot/wget2/commit/db600f40c51f0e612085f19351df3f9ad963bb5f.patch', '24b6928e87f388f633b51b98025c15ca6cd40c4cd388278cbb98bd06c64be719']
+    ]
+    ConvenienceFunctions.patch(patches) if ARCH == 'i686' && version == '2.3.0'
   end
 end
