@@ -11,35 +11,35 @@ class Wget2 < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bcc35aa52125321e99fa293f99bff03c764ac36da3b48b921ed04dca1203fefb',
-     armv7l: 'bcc35aa52125321e99fa293f99bff03c764ac36da3b48b921ed04dca1203fefb',
-       i686: '94fd7df2890c9feb82f44e3d50363c45aa067c7a550e7335654e70db911c3f33',
-     x86_64: '7fcbd974cec93c4161057f3b6743dc709fe624eb0de97dc1736f623d2369333b'
+    aarch64: '68874477d0d746481ac31a2af585ab8e35b8d788ce41914f1268bc92ed86e09a',
+     armv7l: '68874477d0d746481ac31a2af585ab8e35b8d788ce41914f1268bc92ed86e09a',
+       i686: '927f2ab0a6affa680a3bc2915f1a0034e53b90caee0963ef9e74e88dcb3ad319',
+     x86_64: 'ea7e4870d0fe46eaf2f16a5bd611ffd489e69be7c7a020f2b343632aeeba4ec6'
   })
 
-  depends_on 'brotli' # R
-  depends_on 'bzip2' # R
+  depends_on 'brotli' => :library
+  depends_on 'bzip2' => :library
   depends_on 'ca_certificates' => :logical
-  depends_on 'glibc' # R
-  depends_on 'gmp' # R
-  depends_on 'gnutls' # R
+  depends_on 'glibc' => :library
+  depends_on 'gmp' => :executable
+  depends_on 'gnutls' => :library
   depends_on 'gperf' => :build
-  depends_on 'libidn2' # R
+  depends_on 'libidn2' => :library
   depends_on 'libmetalink' => :build
-  depends_on 'libnghttp2' # R
-  depends_on 'libpsl' # R
-  depends_on 'libtasn1' # R
-  depends_on 'libunbound' # R
-  depends_on 'libunistring' # R
-  depends_on 'lzlib' # R
-  depends_on 'nettle' # R
-  depends_on 'openssl' # R
-  depends_on 'p11kit' # R
-  depends_on 'pcre2' # R
+  depends_on 'libnghttp2' => :library
+  depends_on 'libpsl' => :library
+  depends_on 'libtasn1' => :executable
+  depends_on 'libunbound' => :executable
+  depends_on 'libunistring' => :executable
+  depends_on 'lzlib' => :library
+  depends_on 'nettle' => :executable
+  depends_on 'openssl' => :executable
+  depends_on 'p11kit' => :executable
+  depends_on 'pcre2' => :library
   depends_on 'util_linux' => :build
-  depends_on 'xzutils' # R
-  depends_on 'zlib' # R
-  depends_on 'zstd' # R
+  depends_on 'xzutils' => :library
+  depends_on 'zlib' => :library
+  depends_on 'zstd' => :library
 
   conflicts_with 'wget_static'
 
