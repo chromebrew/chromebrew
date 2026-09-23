@@ -3,7 +3,7 @@ require 'package'
 class Doctl < Package
   description 'The official command line interface for the DigitalOcean API.'
   homepage 'https://github.com/digitalocean/doctl'
-  version '1.169.0'
+  version '1.171.2'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'
