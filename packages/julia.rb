@@ -3,21 +3,21 @@ require 'package'
 class Julia < Package
   description 'Julia is a flexible dynamic language, appropriate for scientific and numerical computing'
   homepage 'https://julialang.org/'
-  version ARCH.eql?('x86_64') ? '1.12.6' : '1.7.3'
+  version %w[aarch64 armv7l].include?(ARCH) ? '1.7.3' : '1.13.0'
   license 'MIT'
   compatibility 'all'
 
   source_url({
     aarch64: 'https://julialang-s3.julialang.org/bin/linux/armv7l/1.7/julia-1.7.3-linux-armv7l.tar.gz',
      armv7l: 'https://julialang-s3.julialang.org/bin/linux/armv7l/1.7/julia-1.7.3-linux-armv7l.tar.gz',
-       i686: 'https://julialang-s3.julialang.org/bin/linux/x86/1.7/julia-1.7.3-linux-i686.tar.gz',
-     x86_64: "https://julialang-s3.julialang.org/bin/linux/x64/#{version.sub(/\.\d+$/, '')}/julia-#{version}-linux-x86_64.tar.gz"
+       i686: "https://julialang-s3.julialang.org/bin/linux/x86/#{version.split('.')[0..1].join('.')}/julia-#{version}-linux-i686.tar.gz",
+     x86_64: "https://julialang-s3.julialang.org/bin/linux/x64/#{version.split('.')[0..1].join('.')}/julia-#{version}-linux-x86_64.tar.gz"
   })
   source_sha256({
     aarch64: 'e9de15c56b9b62727c69d10da4b8e90fa6609d2e94e9cfb9f99128dfb59a8677',
      armv7l: 'e9de15c56b9b62727c69d10da4b8e90fa6609d2e94e9cfb9f99128dfb59a8677',
-       i686: 'c1e1a4f9a53affee269c7e740cb8bd46740f9021414459c3ab3bb2c540d9d499',
-     x86_64: 'bbabf3bef19421a9dbd24a767d807606ab85e444323b5a1c73ffe293fa3d079a'
+       i686: '811a3d82afd11b6a069c0a49111a98eeaf9a107139c188ff3d4cba5721ae8e5d',
+     x86_64: '8975da61c128a5e5ded3e719e868da8c8781deb7ad7913d37fb99be02a81904b'
   })
 
   depends_on 'gcc_lib' => :library
