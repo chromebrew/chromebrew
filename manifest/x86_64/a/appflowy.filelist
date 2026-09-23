@@ -1,4 +1,4 @@
-# Total size: 470036998
+# Total size: 462101039
 /usr/local/bin/appflowy
 /usr/local/share/AppFlowy/AppFlowy
 /usr/local/share/AppFlowy/data/flutter_assets/AssetManifest.bin
@@ -1576,8 +1576,6 @@
 /usr/local/share/AppFlowy/lib/libraw1394.so.11.1.0
 /usr/local/share/AppFlowy/lib/librom1394.so.0
 /usr/local/share/AppFlowy/lib/librom1394.so.0.3.0
-/usr/local/share/AppFlowy/lib/librsvg-2.so.2
-/usr/local/share/AppFlowy/lib/librsvg-2.so.2.48.0
 /usr/local/share/AppFlowy/lib/librubberband.so.2
 /usr/local/share/AppFlowy/lib/librubberband.so.2.1.5
 /usr/local/share/AppFlowy/lib/libsamplerate.so.0
