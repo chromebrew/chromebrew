@@ -1,4 +1,4 @@
-# Total size: 3508591
+# Total size: 3821994
 /usr/local/bin/sysprof
 /usr/local/include/sysprof-6/sysprof-address.h
 /usr/local/include/sysprof-6/sysprof-battery-charge.h
@@ -104,6 +104,7 @@
 /usr/local/share/icons/hicolor/scalable/actions/sysprof-trace-app.svg
 /usr/local/share/icons/hicolor/scalable/apps/org.gnome.Sysprof.svg
 /usr/local/share/icons/hicolor/symbolic/apps/org.gnome.Sysprof-symbolic.svg
+/usr/local/share/locale/be/LC_MESSAGES/sysprof.mo
 /usr/local/share/locale/bg/LC_MESSAGES/sysprof.mo
 /usr/local/share/locale/ca/LC_MESSAGES/sysprof.mo
 /usr/local/share/locale/cs/LC_MESSAGES/sysprof.mo
@@ -129,7 +130,9 @@
 /usr/local/share/locale/kab/LC_MESSAGES/sysprof.mo
 /usr/local/share/locale/kk/LC_MESSAGES/sysprof.mo
 /usr/local/share/locale/ko/LC_MESSAGES/sysprof.mo
+/usr/local/share/locale/lo/LC_MESSAGES/sysprof.mo
 /usr/local/share/locale/lt/LC_MESSAGES/sysprof.mo
+/usr/local/share/locale/nb/LC_MESSAGES/sysprof.mo
 /usr/local/share/locale/ne/LC_MESSAGES/sysprof.mo
 /usr/local/share/locale/nl/LC_MESSAGES/sysprof.mo
 /usr/local/share/locale/oc/LC_MESSAGES/sysprof.mo
@@ -144,6 +147,7 @@
 /usr/local/share/locale/sr/LC_MESSAGES/sysprof.mo
 /usr/local/share/locale/sr@latin/LC_MESSAGES/sysprof.mo
 /usr/local/share/locale/sv/LC_MESSAGES/sysprof.mo
+/usr/local/share/locale/th/LC_MESSAGES/sysprof.mo
 /usr/local/share/locale/tr/LC_MESSAGES/sysprof.mo
 /usr/local/share/locale/ug/LC_MESSAGES/sysprof.mo
 /usr/local/share/locale/uk/LC_MESSAGES/sysprof.mo
