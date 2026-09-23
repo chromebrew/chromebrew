@@ -1,5 +1,5 @@
 ---
-# Version 1.0
+# Version 1.1
 name: Linter-Handoff
 on:
   pull_request:
@@ -14,10 +14,14 @@ on:
     workflows: [Generate PR]
     types:
       - completed
+permissions:
+  contents: read
+  pull-requests: write
 env:
   GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
-cache-mode: write
-pull-requests: write
+
+cache-mode: write  # actionlint:ignore cache-write-untrusted -- this job runs reviewed default-branch code only
+
 jobs:
   debug:
     if: ${{ ( github.repository_owner == 'chromebrew' ) }}
