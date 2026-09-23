@@ -15,11 +15,12 @@ on:
     types:
       - completed
 permissions:
+  contents: read
   pull-requests: write
 env:
   GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
 
-cache-mode: write
+cache-mode: write  # actionlint:ignore cache-write-untrusted -- this job runs reviewed default-branch code only
 
 jobs:
   debug:
