@@ -21,6 +21,7 @@ class Wget2 < Autotools
   depends_on 'bzip2' => :library
   depends_on 'ca_certificates' => :logical
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gmp' => :executable
   depends_on 'gnutls' => :library
   depends_on 'gperf' => :build
