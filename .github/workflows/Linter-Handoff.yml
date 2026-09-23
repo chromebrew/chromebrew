@@ -1,5 +1,5 @@
 ---
-# Version 1.0
+# Version 1.1
 name: Linter-Handoff
 on:
   pull_request:
@@ -14,10 +14,13 @@ on:
     workflows: [Generate PR]
     types:
       - completed
+permissions:
+  pull-requests: write
 env:
   GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
+
 cache-mode: write
-pull-requests: write
+
 jobs:
   debug:
     if: ${{ ( github.repository_owner == 'chromebrew' ) }}
