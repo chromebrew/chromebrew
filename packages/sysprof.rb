@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Sysprof < Meson
   description 'Kernel based performance profiler'
   homepage 'https://wiki.gnome.org/Apps/Sysprof'
-  version '50.0'
+  version '51.0'
   license 'GPL'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/sysprof.git'
@@ -14,9 +14,9 @@ class Sysprof < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ac85b617989d653cf33a321511530a0375187ec36719f812f4144c0b237cc945',
-     armv7l: 'ac85b617989d653cf33a321511530a0375187ec36719f812f4144c0b237cc945',
-     x86_64: '49efa8cac1101a23ae2133907c0f311484342c157369d70253672f3699550ec8'
+    aarch64: '7c44d4376c7cd190e875b77004a73843a205e63c16aaca7eb6dd97a9ea5f5a4b',
+     armv7l: '7c44d4376c7cd190e875b77004a73843a205e63c16aaca7eb6dd97a9ea5f5a4b',
+     x86_64: 'cef7fadb225161966a4d861add36b7f0b8c689fc2f19a5289bed654a8cc97855'
   })
 
   depends_on 'cairo' => :executable
@@ -24,6 +24,7 @@ class Sysprof < Meson
   depends_on 'gcc_lib' => :library
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'graphene' => :executable
   depends_on 'gtk4' => :executable
   depends_on 'harfbuzz' => :executable

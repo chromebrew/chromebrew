@@ -1,12 +1,12 @@
-# Total size: 21918641
-/usr/local/lib/python3.14/site-packages/botocore-1.43.99.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/botocore-1.43.99.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/botocore-1.43.99.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/botocore-1.43.99.dist-info/NOTICE
-/usr/local/lib/python3.14/site-packages/botocore-1.43.99.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/botocore-1.43.99.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/botocore-1.43.99.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/botocore-1.43.99.dist-info/top_level.txt
+# Total size: 21961078
+/usr/local/lib/python3.14/site-packages/botocore-1.43.100.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/botocore-1.43.100.dist-info/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/botocore-1.43.100.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/botocore-1.43.100.dist-info/NOTICE
+/usr/local/lib/python3.14/site-packages/botocore-1.43.100.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/botocore-1.43.100.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/botocore-1.43.100.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/botocore-1.43.100.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/botocore/__init__.py
 /usr/local/lib/python3.14/site-packages/botocore/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/botocore/__pycache__/args.cpython-314.pyc
@@ -484,6 +484,9 @@
 /usr/local/lib/python3.14/site-packages/botocore/data/cloudwatch/2010-08-01/paginators-1.json
 /usr/local/lib/python3.14/site-packages/botocore/data/cloudwatch/2010-08-01/service-2.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/cloudwatch/2010-08-01/waiters-2.json
+/usr/local/lib/python3.14/site-packages/botocore/data/cloudwatchomni/2025-01-01/endpoint-rule-set-1.json.gz
+/usr/local/lib/python3.14/site-packages/botocore/data/cloudwatchomni/2025-01-01/paginators-1.json
+/usr/local/lib/python3.14/site-packages/botocore/data/cloudwatchomni/2025-01-01/service-2.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/codeartifact/2018-09-22/endpoint-rule-set-1.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/codeartifact/2018-09-22/examples-1.json
 /usr/local/lib/python3.14/site-packages/botocore/data/codeartifact/2018-09-22/paginators-1.json
