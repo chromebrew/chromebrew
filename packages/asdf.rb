@@ -3,7 +3,7 @@ require 'package'
 class Asdf < Package
   description 'Extendable version manager with support for Ruby, Node.js, Elixir, Erlang & more'
   homepage 'https://asdf-vm.com/'
-  version '0.20.0'
+  version '0.20.2'
   license 'MIT'
   compatibility 'i686 x86_64'
   source_url({
@@ -11,8 +11,8 @@ class Asdf < Package
       i686: "https://github.com/asdf-vm/asdf/releases/download/v#{version}/asdf-v#{version}-linux-386.tar.gz"
   })
   source_sha256({
-    x86_64: '9c25e1af7cc4c9d59ff3736eba14fd000480c32929258f80d8c5a8b290ebee14',
-      i686: '17b32c669b0ea72d6c941cb00b8a337e55b62d2e5bee0644c2df0f5f2997ca56'
+    x86_64: '6d45e6fab12f50a259b5643adf06a2e77af30a87300b4402440eda09af467a6d',
+      i686: '140141311f21a25882a1d2c419771449ed5dec1fffb01d323c115e741f3c3719'
   })
 
   no_compile_needed
