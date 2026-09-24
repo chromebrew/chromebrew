@@ -1,12 +1,12 @@
-# Total size: 21961078
-/usr/local/lib/python3.14/site-packages/botocore-1.43.100.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/botocore-1.43.100.dist-info/LICENSE.txt
-/usr/local/lib/python3.14/site-packages/botocore-1.43.100.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/botocore-1.43.100.dist-info/NOTICE
-/usr/local/lib/python3.14/site-packages/botocore-1.43.100.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/botocore-1.43.100.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/botocore-1.43.100.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/botocore-1.43.100.dist-info/top_level.txt
+# Total size: 22000601
+/usr/local/lib/python3.14/site-packages/botocore-1.43.101.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/botocore-1.43.101.dist-info/LICENSE.txt
+/usr/local/lib/python3.14/site-packages/botocore-1.43.101.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/botocore-1.43.101.dist-info/NOTICE
+/usr/local/lib/python3.14/site-packages/botocore-1.43.101.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/botocore-1.43.101.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/botocore-1.43.101.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/botocore-1.43.101.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/botocore/__init__.py
 /usr/local/lib/python3.14/site-packages/botocore/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/botocore/__pycache__/args.cpython-314.pyc
@@ -1352,6 +1352,10 @@
 /usr/local/lib/python3.14/site-packages/botocore/data/network-firewall/2020-11-12/paginators-1.json
 /usr/local/lib/python3.14/site-packages/botocore/data/network-firewall/2020-11-12/paginators-1.sdk-extras.json
 /usr/local/lib/python3.14/site-packages/botocore/data/network-firewall/2020-11-12/service-2.json.gz
+/usr/local/lib/python3.14/site-packages/botocore/data/network-security-manager/2025-10-30/endpoint-rule-set-1.json.gz
+/usr/local/lib/python3.14/site-packages/botocore/data/network-security-manager/2025-10-30/paginators-1.json
+/usr/local/lib/python3.14/site-packages/botocore/data/network-security-manager/2025-10-30/service-2.json.gz
+/usr/local/lib/python3.14/site-packages/botocore/data/network-security-manager/2025-10-30/waiters-2.json
 /usr/local/lib/python3.14/site-packages/botocore/data/networkflowmonitor/2023-04-19/endpoint-rule-set-1.json.gz
 /usr/local/lib/python3.14/site-packages/botocore/data/networkflowmonitor/2023-04-19/paginators-1.json
 /usr/local/lib/python3.14/site-packages/botocore/data/networkflowmonitor/2023-04-19/paginators-1.sdk-extras.json
