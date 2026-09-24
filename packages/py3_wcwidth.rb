@@ -3,19 +3,21 @@ require 'buildsystems/pip'
 class Py3_wcwidth < Pip
   description 'WCWidth measures the displayed width of unicode strings in a terminal.'
   homepage 'https://github.com/jquast/wcwidth/'
-  version "0.8.4-#{CREW_PY_VER}"
+  version "0.9.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd5cd57a8ff89f32327beb76eefb26e0f54ffdd40011cf5efa43d1020c8de7105',
-     armv7l: 'd5cd57a8ff89f32327beb76eefb26e0f54ffdd40011cf5efa43d1020c8de7105',
-       i686: 'e9284f353e30a25bb93ca22a3ac86ea303e4e6c92ac28e55dc3bc9acf8ac5e9e',
-     x86_64: 'a8966b19e9326401c9a34b3dd8d1a3809317bbf97dc814c4b21270a1fd5c112d'
+    aarch64: '53c62eaa061f3c5bf84234d0b1191d385079ff8fc8b47d7aad4493a5815caa88',
+     armv7l: '53c62eaa061f3c5bf84234d0b1191d385079ff8fc8b47d7aad4493a5815caa88',
+       i686: 'f0c000b84aab95c480e21f8be248eed8838965455fa69b8e6d111122fa8aeaf7',
+     x86_64: 'fdcab0c8ac0956068b922efef98a6b24216c20cf171db8a060b092327e6cfd18'
   })
 
+  depends_on 'glibc' => :build
+  depends_on 'glibc_lib' => :build
   depends_on 'python3' => :logical
 
   no_source_build
