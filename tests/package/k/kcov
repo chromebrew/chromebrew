@@ -1,0 +1,3 @@
+#!/bin/bash
+kcov -h | head
+kcov --version
