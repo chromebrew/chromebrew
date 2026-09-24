@@ -11,10 +11,10 @@ class Hwloc < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a5af9b6e1e2caee9a6b63d1d2a432629026b038b89f97b6d46e5632feb33c9bf',
-     armv7l: 'a5af9b6e1e2caee9a6b63d1d2a432629026b038b89f97b6d46e5632feb33c9bf',
-       i686: 'be0b91f86a4b93f98e127c5f3006641b9a2279d1c2394b98f7defb7adf568777',
-     x86_64: '3eb3704c328c7e28e04dd1be74922ecd4c485cc9324cd5e186be81929181e91b'
+    aarch64: '7696c5b9f5e9c3983d80aa9e0aa86b4464ddc2c32514d8693c0f9807ceb2fd8b',
+     armv7l: '7696c5b9f5e9c3983d80aa9e0aa86b4464ddc2c32514d8693c0f9807ceb2fd8b',
+       i686: '63615a1291764efb9724dde4d5e8a9ea69e3e477631acc542e4ef08da1f369fd',
+     x86_64: '8a6d220a707b66be4f0798c7a2e6bac147ae16ebac498892081a5805cd87f1a5'
   })
 
   depends_on 'eudev' => :library
