@@ -1,4 +1,4 @@
-# Total size: 431062942
+# Total size: 379868617
 /usr/local/bin/signal-desktop
 /usr/local/share/Signal/LICENSE.electron.txt
 /usr/local/share/Signal/LICENSES.chromium.html
@@ -7,8 +7,6 @@
 /usr/local/share/Signal/chrome_200_percent.pak
 /usr/local/share/Signal/chrome_crashpad_handler
 /usr/local/share/Signal/icudtl.dat
-/usr/local/share/Signal/libEGL.so
-/usr/local/share/Signal/libGLESv2.so
 /usr/local/share/Signal/libffmpeg.so
 /usr/local/share/Signal/libvk_swiftshader.so
 /usr/local/share/Signal/libvulkan.so.1
