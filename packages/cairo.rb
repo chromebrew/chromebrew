@@ -8,13 +8,13 @@ class Cairo < Meson
   license 'LGPL-2.1 or MPL-1.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/cairo/cairo.git'
-  git_hashtag version.split('-').first
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ddba0f894e1d252a70e66c24e12cf6d08163b8b574440f287b0bf8249173c2bb',
-     armv7l: 'ddba0f894e1d252a70e66c24e12cf6d08163b8b574440f287b0bf8249173c2bb',
-     x86_64: 'e0ae01aa2286cd2b69074074ca6ec5981da6d07eb35304003f09ab197cce8f04'
+    aarch64: '1c284572a7a4f1cc18d7efef7aeb6dae1fb419be4132f9314fe62bd78f39517a',
+     armv7l: '1c284572a7a4f1cc18d7efef7aeb6dae1fb419be4132f9314fe62bd78f39517a',
+     x86_64: 'a2020d04561c69cb629a5c48fd5e7fa4ed539181b192d8b18219109a168c2282'
   })
 
   depends_on 'fontconfig' => :library
