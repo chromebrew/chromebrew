@@ -11,10 +11,10 @@ class Ntfs_3g < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd3889f33b1cb1ae67360d0ee0512485d70297cb4d7bd5e0b5fd51ecedd972f78',
-     armv7l: 'd3889f33b1cb1ae67360d0ee0512485d70297cb4d7bd5e0b5fd51ecedd972f78',
-       i686: 'c14fddbe6dc3a442429db9faac6f6d5556b23bf0158c3a6cc64dfcafee3481f1',
-     x86_64: '15abdccc0e701d0a0f74dfa133d6e579d739eeb6748a1eeda9d96afe01d0ba46'
+    aarch64: '5f77a10d42ca6ef6d2a8f93eb27a9d3b6c70c4aeb57d0fcf01a27158e6ff9ca2',
+     armv7l: '5f77a10d42ca6ef6d2a8f93eb27a9d3b6c70c4aeb57d0fcf01a27158e6ff9ca2',
+       i686: 'a712d8ce0527e8b4acc285a84f46393982a7777b4d3e1d1a76a1ca92dbaa1f1f',
+     x86_64: '85d1a62fa5c5a5cfee7c181d314215cc655b29d76f1ea17e5d46662baa8c243d'
   })
 
   depends_on 'glibc' => :library
