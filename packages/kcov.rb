@@ -1,40 +1,36 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Kcov < Package
+class Kcov < CMake
   description 'Kcov is a code coverage tester for compiled programs, Python scripts and shell scripts.'
   homepage 'http://simonkagstrom.github.io/kcov/'
-  version 'v36'
+  version '43'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/SimonKagstrom/kcov/archive/v36.tar.gz'
-  source_sha256 '29ccdde3bd44f14e0d7c88d709e1e5ff9b448e735538ae45ee08b73c19a2ea0b'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/SimonKagstrom/kcov.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f1ccc1d5d85941c1bb00fa93cafcf50546621c6063aa87f66b017e218fb2734f',
-     armv7l: 'f1ccc1d5d85941c1bb00fa93cafcf50546621c6063aa87f66b017e218fb2734f',
-       i686: 'a9a0be31864db5aacc0d9771e60a453972423d33689b8381cea41c6caa26d5f1',
-     x86_64: '35ccebb9cda52beb4cf13977483fcb4ebc6011fe0c1e52ce9be2cefb5fbd300a'
+    aarch64: '965e5c9d16fb3325ba725dd0f2d098ff378fac7517d2b84959d9b039c5953132',
+     armv7l: '965e5c9d16fb3325ba725dd0f2d098ff378fac7517d2b84959d9b039c5953132',
+       i686: '795b5571fcbaa96d52b20d0a1e650648d570740f7cbbcfd3a23aab3efc6b0161',
+     x86_64: 'a5490ced1ddd6171f318d15cf02bf02fe8f2d8a85d6343ccd415c538c46ec7fb'
   })
 
-  depends_on 'curl'
-  depends_on 'elfutils'
-  depends_on 'py3_six'
+  depends_on 'curl' => :executable
+  depends_on 'elfutils' => :executable
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'py3_six' => :build
+  depends_on 'zlib' => :executable
 
-  def self.build
-    Dir.mkdir 'build'
-    Dir.chdir 'build' do
-      system 'cmake',
-             '-DCMAKE_BUILD_TYPE=Release',
-             "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}",
-             '..'
-      system 'make'
-    end
-  end
-
-  def self.install
-    Dir.chdir 'build' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    end
+  def self.patch
+    # Fix string sub-command REGEX, mode REPLACE needs at least 6 arguments total
+    system "sed -i '46d' CMakeLists.txt"
+    system "sed -i '42,44d' CMakeLists.txt"
+    system "sed -i '39d' CMakeLists.txt"
+    # Explicitly set the version.
+    system "sed -i 's,set (PROJECT_VERSION,set (PROJECT_VERSION #{version}),' CMakeLists.txt"
   end
 end
