@@ -1,4 +1,4 @@
-# Total size: 349404
+# Total size: 481022
 /usr/local/bin/ltrace
 /usr/local/share/doc/ltrace/COPYING
 /usr/local/share/doc/ltrace/CREDITS
@@ -12,5 +12,5 @@
 /usr/local/share/ltrace/libpthread.so-types.conf
 /usr/local/share/ltrace/libpthread.so.conf
 /usr/local/share/ltrace/syscalls.conf
-/usr/local/share/man/man1/ltrace.1.gz
-/usr/local/share/man/man5/ltrace.conf.5.gz
+/usr/local/share/man/man1/ltrace.1.zst
+/usr/local/share/man/man5/ltrace.conf.5.zst

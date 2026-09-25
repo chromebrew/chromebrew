@@ -1,45 +1,37 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Ltrace < Package
+class Ltrace < Autotools
   description 'ltrace intercepts and records dynamic library calls which are called by an executed process and the signals received by that process.'
   homepage 'https://gitlab.com/cespedes/ltrace'
-  version '0.7.91-ea8928'
+  version '0.8.1'
   license 'GPL-2'
-  compatibility 'all'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.com/cespedes/ltrace.git'
-  git_hashtag 'ea8928dab8a0a1f549d0ed8ebc6ec563e9fa1159'
-  binary_compression 'tpxz'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '09bc63d26ef561e10f01628d61eb4a6c8d5caeb24a77f19deddb5fa1a5867dd2',
-     armv7l: '09bc63d26ef561e10f01628d61eb4a6c8d5caeb24a77f19deddb5fa1a5867dd2',
-       i686: 'fc5ca046f26608668f2885a0389d47baf7fea535503366c79464bb9c0014873d',
-     x86_64: '69ce6519d523f4b225e28f421f766c4f502a0e970e093a1d3beba117904898a7'
+    aarch64: '3ee507aa1db380e7d2ecbed3dafbba88f30c4979be7a7f16e00398810eecad61',
+     armv7l: '3ee507aa1db380e7d2ecbed3dafbba88f30c4979be7a7f16e00398810eecad61',
+     x86_64: 'da6d76553b71d80373fbe811db899f3769fdd0dfae9d40613cbd883f18ab8429'
   })
 
-  depends_on 'libunwind'
-  depends_on 'procps'
-
-  def self.patch
-    # Use readdir instead of deprecated readdir_r.
-    # This patch can be removed after the merge request is merged.
-    system 'curl -L#O https://gitlab.com/cespedes/ltrace/-/merge_requests/1.diff'
-    abort 'Checksum mismatch. 😔 Try again.'.lightred unless Digest::SHA256.hexdigest(File.read('1.diff')) == '77442c497bd8410e0afba3a03638a6504ed9ae216bd694a771682f592a9c3759'
-    system 'patch -p1 < 1.diff'
-  end
+  depends_on 'elfutils' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'libunwind' => :executable
+  depends_on 'procps' => :executable
+  depends_on 'xzutils' => :executable
+  depends_on 'zlib' => :executable
 
   def self.build
     system './autogen.sh'
-    system 'filefix'
-    system "./configure #{CREW_CONFIGURE_OPTIONS} --disable-werror --without-elfutils --disable-maintainer-mode"
+    # Disable selinux. It would be nice if there was a configure switch option to disable.
+    system "sed -i '14831,14892d' configure"
+    system "CFLAGS='-Wno-error=int-conversion -Wno-error=implicit-function-declaration -Wno-error=maybe-uninitialized' \
+      ./configure #{CREW_CONFIGURE_OPTIONS} --without-elfutils #{ARCH.eql?('x86_64') ? '--enable-year2038' : '--disable-year2038'}"
     system 'make'
   end
 
-  def self.check
-    system 'make', 'check'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  run_tests
 end
