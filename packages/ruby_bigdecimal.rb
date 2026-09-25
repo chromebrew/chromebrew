@@ -13,7 +13,7 @@ class Ruby_bigdecimal < RUBY
     aarch64: 'fb0252c64a7077bd6b7edebd7f2c54aabe918e5829a62e726e5c29310c38d31c',
      armv7l: 'fb0252c64a7077bd6b7edebd7f2c54aabe918e5829a62e726e5c29310c38d31c',
        i686: '45488ef4a26b6d2039f77cbd31d601cb5bf0a17d331d5ece5f5e3e8be201b8a9',
-     x86_64: '18cb924713a238ee85f0378e14fbeaad1f7446e798d3eca2421f5c1fa66d6c10'
+     x86_64: ''
   })
 
   depends_on 'glibc' => :library
