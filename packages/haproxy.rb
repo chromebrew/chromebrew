@@ -11,9 +11,9 @@ class Haproxy < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8c8d8ca0ffe4f7c10aabdadea512195095e99fbb6665b9abd1118e26c0fbfb42',
-     armv7l: '8c8d8ca0ffe4f7c10aabdadea512195095e99fbb6665b9abd1118e26c0fbfb42',
-     x86_64: 'ada691949eb814d185d0324fef2c28f52723df9a04e3f4616b775fabd70c333e'
+    aarch64: 'e09a44884182ba5187b64d6d6a470c493325514c7d059762a878c838c1a84744',
+     armv7l: 'e09a44884182ba5187b64d6d6a470c493325514c7d059762a878c838c1a84744',
+     x86_64: '6c0bd26109f1e99c55cb3b4dd1c09ed4b5975616b82edeec07c2bea60f6f0f59'
   })
 
   depends_on 'glibc' => :executable
