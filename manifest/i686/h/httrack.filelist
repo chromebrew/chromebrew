@@ -1,4 +1,4 @@
-# Total size: 19707556
+# Total size: 19840059
 /usr/local/bin/htsserver
 /usr/local/bin/httrack
 /usr/local/bin/proxytrack
@@ -71,7 +71,7 @@
 /usr/local/lib/libhttrack.la
 /usr/local/lib/libhttrack.so
 /usr/local/lib/libhttrack.so.3
-/usr/local/lib/libhttrack.so.3.0.23
+/usr/local/lib/libhttrack.so.3.0.25
 /usr/local/lib/pkgconfig/libhttrack.pc
 /usr/local/share/applications/WebHTTrack-Websites.desktop
 /usr/local/share/applications/WebHTTrack.desktop

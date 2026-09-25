@@ -11,10 +11,10 @@ class Httrack < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b51542d66c07433645adec5dcbbb590627f631871254ad2e144011c0283ff05c',
-     armv7l: 'b51542d66c07433645adec5dcbbb590627f631871254ad2e144011c0283ff05c',
-       i686: '0e19188cfa3b32583915d0cf0529e2fd5a8c5cc0bb6c78c130ca3d4a49a44036',
-     x86_64: '0a79c76afbd4c1839fb30f76f314427ee59cc642ee9da8b02a12557008dc865c'
+    aarch64: '1d3d28cc34de2ba846afd830b26f86617acbc213c72baff20ec5c9118a54efb3',
+     armv7l: '1d3d28cc34de2ba846afd830b26f86617acbc213c72baff20ec5c9118a54efb3',
+       i686: 'a65012b7a83a25781759cbc48658839e44f7c0e3aabe5c9864e0bdbf1f37749b',
+     x86_64: 'fde2b9653b600c23c6051cce7f918e8a33371045131631a14223897f1f2a1f3d'
   })
 
   depends_on 'brotli' => :library
