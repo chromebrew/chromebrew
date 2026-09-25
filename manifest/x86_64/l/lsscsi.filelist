@@ -1,3 +1,8 @@
-# Total size: 115398
+# Total size: 201498
+/usr/local/bin/ls_name_value
+/usr/local/bin/ls_name_value_rd
 /usr/local/bin/lsscsi
+/usr/local/share/man/man8/ls_name_value.8.zst
+/usr/local/share/man/man8/ls_name_value_rd.8.zst
 /usr/local/share/man/man8/lsscsi.8.zst
+/usr/local/share/man/man8/lsscsi_json.8.zst
