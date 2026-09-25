@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Httrack < Autotools
   description 'HTTrack is a free (GPL, libre/free software) and easy-to-use offline browser utility. It allows you to download a World Wide Web site from the Internet to a local directory, building recursively all directories, getting HTML, images, and other files from the server to your computer.'
   homepage 'http://www.httrack.com/'
-  version '3.50.3'
+  version '3.50.4'
   license 'GPL-3'
   compatibility 'all'
   source_url "https://github.com/xroche/httrack/releases/download/#{version}/httrack-#{version}.tar.gz"
-  source_sha256 '644d4ec0e48ad596dacd7f8017b68d8a3f1dfc140284b412b53086e7d1664e9d'
+  source_sha256 'f97dbb96d110681b4349912c8bc5c4011a6c227a7d4294ea1d4f0093baea51b6'
   binary_compression 'tar.zst'
 
   binary_sha256({
