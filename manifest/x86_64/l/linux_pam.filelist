@@ -1,4 +1,4 @@
-# Total size: 2759445
+# Total size: 2605880
 /usr/local/include/security/_pam_compat.h
 /usr/local/include/security/_pam_macros.h
 /usr/local/include/security/_pam_types.h
@@ -107,6 +107,7 @@
 /usr/local/share/locale/it/LC_MESSAGES/Linux-PAM.mo
 /usr/local/share/locale/ja/LC_MESSAGES/Linux-PAM.mo
 /usr/local/share/locale/ka/LC_MESSAGES/Linux-PAM.mo
+/usr/local/share/locale/kab/LC_MESSAGES/Linux-PAM.mo
 /usr/local/share/locale/kk/LC_MESSAGES/Linux-PAM.mo
 /usr/local/share/locale/km/LC_MESSAGES/Linux-PAM.mo
 /usr/local/share/locale/kn/LC_MESSAGES/Linux-PAM.mo

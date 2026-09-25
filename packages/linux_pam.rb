@@ -19,6 +19,7 @@ class Linux_pam < Meson
 
   depends_on 'gdbm' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'libeconf' => :library
   depends_on 'libxcrypt' => :logical
 
