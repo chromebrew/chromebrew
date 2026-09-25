@@ -11,10 +11,10 @@ class Linux_pam < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a01010ccd68fe7cd022052d5bb4136d5e72ffd7d4897990b3133c386f65ba145',
-     armv7l: 'a01010ccd68fe7cd022052d5bb4136d5e72ffd7d4897990b3133c386f65ba145',
-       i686: '4236d1bd3642aeb129a00813416fd2cbbaac9d188bbf3f2fbdaa4706ac85daea',
-     x86_64: '9bb1165900b6bf5be8fac459ce3cee8f07c9b271dcae514a23f64ecd7dffcb3e'
+    aarch64: 'ecaf3ad1366d24e6c69336f11db2c57898dfc4c87635361567957b3e6e41ce62',
+     armv7l: 'ecaf3ad1366d24e6c69336f11db2c57898dfc4c87635361567957b3e6e41ce62',
+       i686: 'c6a3ccf3fe424733831c77ce133c189aa0bff604bbda60415fcff0ae9e243162',
+     x86_64: '1065007b54ae04203d86d86cbd23e43245cbe26014fec7d9664045148bf5fec5'
   })
 
   depends_on 'gdbm' => :library
