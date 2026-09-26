@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Utf8proc < CMake
   description 'a clean C library for processing UTF-8 Unicode data: normalization, case-folding, graphemes, and more'
   homepage 'https://julialang.org/utf8proc/'
-  version '2.11.3'
+  version '2.12.0'
   license 'MIT and custom'
   compatibility 'all'
   source_url 'https://github.com/JuliaStrings/utf8proc.git'
