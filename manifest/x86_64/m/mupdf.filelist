@@ -1,4 +1,4 @@
-# Total size: 279397908
+# Total size: 279693430
 /usr/local/bin/mupdf-gl
 /usr/local/bin/mupdf-x11
 /usr/local/bin/mutool
@@ -41,6 +41,7 @@
 /usr/local/include/mupdf/fitz/path.h
 /usr/local/include/mupdf/fitz/pixmap.h
 /usr/local/include/mupdf/fitz/pool.h
+/usr/local/include/mupdf/fitz/regexp.h
 /usr/local/include/mupdf/fitz/separation.h
 /usr/local/include/mupdf/fitz/shade.h
 /usr/local/include/mupdf/fitz/store.h
