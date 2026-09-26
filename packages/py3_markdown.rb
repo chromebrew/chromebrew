@@ -10,10 +10,10 @@ class Py3_markdown < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4bf480ab3b14e9c3d7fc1b4908f67690162c77df781c8f9f8592d9baa21eddfb',
-     armv7l: '4bf480ab3b14e9c3d7fc1b4908f67690162c77df781c8f9f8592d9baa21eddfb',
-       i686: 'c5f2074ac4d4c4d293f8c3bca997f97b0547a456afac857a356c6894d5fcbe28',
-     x86_64: '44f7eb6c10e824c2d5055ac919227a5b2a3e456ed29367364a96a35a4b2f3466'
+    aarch64: 'e1d00d536540a9304ef32e82c073ee57b79f3d3204d7f6cb43b5fff64f3406d4',
+     armv7l: 'e1d00d536540a9304ef32e82c073ee57b79f3d3204d7f6cb43b5fff64f3406d4',
+       i686: '0883a06ba61b70b07a0467c53405cace3a18ec2e1706effc98cc3b25681c49c9',
+     x86_64: '896117ae27e871fe64e7b47f47624de9c4bc8c23a8042c8eb5e12191c18e1c05'
   })
 
   depends_on 'python3'
