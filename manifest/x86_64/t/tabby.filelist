@@ -1,4 +1,4 @@
-# Total size: 451651320
+# Total size: 451698293
 /usr/local/bin/tabby
 /usr/local/share/tabby/LICENSE.electron.txt
 /usr/local/share/tabby/LICENSES.chromium.html
@@ -1302,6 +1302,7 @@
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/src/services/ssh.service.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/src/services/sshKnownHosts.service.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/src/services/sshMultiplexer.service.ts
+/usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/src/session/authMethodSelection.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/src/session/forwards.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/src/session/sftp.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/src/session/shell.ts
@@ -1311,6 +1312,7 @@
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/src/settings.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/src/sftpContextMenu.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/src/tabContextMenu.ts
+/usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/test/authMethodSelection.test.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/test/shellChannel.test.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/test/terminalType.test.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/tsconfig.json
@@ -1339,6 +1341,7 @@
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/typings/services/ssh.service.d.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/typings/services/sshKnownHosts.service.d.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/typings/services/sshMultiplexer.service.d.ts
+/usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/typings/session/authMethodSelection.d.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/typings/session/forwards.d.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/typings/session/sftp.d.ts
 /usr/local/share/tabby/resources/builtin-plugins/tabby-ssh/typings/session/shell.d.ts
