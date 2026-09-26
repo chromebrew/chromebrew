@@ -1,0 +1,3 @@
+#!/bin/bash
+lynis -h | head
+lynis -V
