@@ -1,4 +1,4 @@
-# Total size: 3604676
+# Total size: 3742168
 /usr/local/bin/gtkdoc-check
 /usr/local/bin/gtkdoc-depscan
 /usr/local/bin/gtkdoc-fixxref
@@ -73,6 +73,8 @@
 /usr/local/share/help/hu/gtk-doc-manual/index.docbook
 /usr/local/share/help/kk/gtk-doc-manual/fdl-appendix.xml
 /usr/local/share/help/kk/gtk-doc-manual/index.docbook
+/usr/local/share/help/nn/gtk-doc-manual/fdl-appendix.xml
+/usr/local/share/help/nn/gtk-doc-manual/index.docbook
 /usr/local/share/help/pt_BR/gtk-doc-manual/fdl-appendix.xml
 /usr/local/share/help/pt_BR/gtk-doc-manual/index.docbook
 /usr/local/share/help/sl/gtk-doc-manual/fdl-appendix.xml

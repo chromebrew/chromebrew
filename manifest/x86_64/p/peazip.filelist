@@ -1,4 +1,4 @@
-# Total size: 44658794
+# Total size: 44903655
 /usr/local/bin/pea
 /usr/local/bin/peazip
 /usr/local/share/application/peazip.desktop
@@ -114,6 +114,7 @@
 /usr/local/share/peazip/res/share/batch/Windows/Windows 11 mini context menu/add PeaZip, open file or folder.reg
 /usr/local/share/peazip/res/share/batch/Windows/Windows 11 mini context menu/readme mini context menu.txt
 /usr/local/share/peazip/res/share/batch/Windows/Windows 11 mini context menu/remove PeaZip entries.reg
+/usr/local/share/peazip/res/share/batch/Windows/windows-system-wide-hotkey.txt
 /usr/local/share/peazip/res/share/batch/bat/Add to 7z.bat
 /usr/local/share/peazip/res/share/batch/bat/Add to archive....bat
 /usr/local/share/peazip/res/share/batch/bat/Add to brotli.bat
@@ -417,6 +418,7 @@
 /usr/local/share/peazip/res/share/lang/sl.txt
 /usr/local/share/peazip/res/share/lang/sv.txt
 /usr/local/share/peazip/res/share/lang/sw.txt
+/usr/local/share/peazip/res/share/lang/ta.txt
 /usr/local/share/peazip/res/share/lang/th.txt
 /usr/local/share/peazip/res/share/lang/tj.txt
 /usr/local/share/peazip/res/share/lang/tr.txt
@@ -455,8 +457,8 @@
 /usr/local/share/peazip/res/share/readme/readme_Linux.txt
 /usr/local/share/peazip/res/share/readme/readme_Windows.txt
 /usr/local/share/peazip/res/share/readme/readme_macOS.txt
-/usr/local/share/peazip/res/share/themes/line-dark.theme.7z
-/usr/local/share/peazip/res/share/themes/line.theme.7z
+/usr/local/share/peazip/res/share/themes/blue-dark.theme.7z
+/usr/local/share/peazip/res/share/themes/blue.theme.7z
 /usr/local/share/peazip/res/share/themes/mac-dark.theme.7z
 /usr/local/share/peazip/res/share/themes/mac.theme.7z
 /usr/local/share/peazip/res/share/themes/main-dark.theme.7z
@@ -465,7 +467,5 @@
 /usr/local/share/peazip/res/share/themes/main.theme.7z
 /usr/local/share/peazip/res/share/themes/ten-dark.theme.7z
 /usr/local/share/peazip/res/share/themes/ten.theme.7z
-/usr/local/share/peazip/res/share/themes/tux-alt-dark.theme.7z
-/usr/local/share/peazip/res/share/themes/tux-alt.theme.7z
 /usr/local/share/peazip/res/share/themes/tux-dark.theme.7z
 /usr/local/share/peazip/res/share/themes/tux.theme.7z
