@@ -3,11 +3,11 @@ require 'package'
 class Smbclient < Package
   description 'Tools to access a servers filespace and printers via SMB'
   homepage 'https://www.samba.org'
-  version "4.24.7-#{CREW_ICU_VER}"
+  version "4.25.0-#{CREW_ICU_VER}"
   license 'GPLv3'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://download.samba.org/pub/samba/stable/samba-#{version.split('-').first}.tar.gz"
-  source_sha256 '45b7747a47452eff2b2159a44cc63eb43690d339fd1069088e023a015fed06c7'
+  source_sha256 '2e2cb7296833b35b8f7a7fb76045e0c57adc0c2cd03264b37df5d58e40f28437'
   binary_compression 'tar.zst'
 
   binary_sha256({
