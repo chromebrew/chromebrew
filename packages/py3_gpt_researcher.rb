@@ -10,9 +10,9 @@ class Py3_gpt_researcher < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '05100f93c6bc12768258131c8ed7712195344d8233e62df8fe8d0a8e10d97dc8',
-     armv7l: '05100f93c6bc12768258131c8ed7712195344d8233e62df8fe8d0a8e10d97dc8',
-     x86_64: '6bc9be1eff4934679cf030667d1e8587a920366a041fe5c9679ef969d64ec2b3'
+    aarch64: 'dc312eaf2a4ccee7005757dbe0de734b4726761a19b4810cc035602aa826455b',
+     armv7l: 'dc312eaf2a4ccee7005757dbe0de734b4726761a19b4810cc035602aa826455b',
+     x86_64: '7f0966640a89aefc2061bea98261d68d1d98e78565826496285488afcb876ee9'
   })
 
   depends_on 'llvm_dev' => :build
