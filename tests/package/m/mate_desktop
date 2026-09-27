@@ -1,0 +1,3 @@
+#!/bin/bash
+mate-about -h
+mate-about -v

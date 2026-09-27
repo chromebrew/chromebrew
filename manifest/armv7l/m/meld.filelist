@@ -1,4 +1,4 @@
-# Total size: 4639063
+# Total size: 4726375
 /usr/local/bin/meld
 /usr/local/lib/python3.14/site-packages/meld/__init__.py
 /usr/local/lib/python3.14/site-packages/meld/__pycache__/__init__.cpython-314.pyc
@@ -294,6 +294,7 @@
 /usr/local/share/locale/it/LC_MESSAGES/meld.mo
 /usr/local/share/locale/ja/LC_MESSAGES/meld.mo
 /usr/local/share/locale/ka/LC_MESSAGES/meld.mo
+/usr/local/share/locale/kk/LC_MESSAGES/meld.mo
 /usr/local/share/locale/ko/LC_MESSAGES/meld.mo
 /usr/local/share/locale/nb/LC_MESSAGES/meld.mo
 /usr/local/share/locale/ne/LC_MESSAGES/meld.mo
