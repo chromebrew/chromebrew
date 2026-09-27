@@ -3,7 +3,7 @@ require 'buildsystems/rust'
 class Broot < RUST
   description 'A new way to see and navigate directory trees'
   homepage 'https://dystroy.org/broot/'
-  version '1.60.1'
+  version '1.60.2'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/Canop/broot.git'
