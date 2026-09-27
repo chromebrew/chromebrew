@@ -3,7 +3,7 @@ require 'package'
 class Julia < Package
   description 'Julia is a flexible dynamic language, appropriate for scientific and numerical computing'
   homepage 'https://julialang.org/'
-  version %w[aarch64 armv7l].include?(ARCH) ? '1.7.3' : '1.13.0'
+  version %w[aarch64 armv7l].include?(ARCH) ? '1.7.3' : '1.13.1'
   license 'MIT'
   compatibility 'all'
 
@@ -16,8 +16,8 @@ class Julia < Package
   source_sha256({
     aarch64: 'e9de15c56b9b62727c69d10da4b8e90fa6609d2e94e9cfb9f99128dfb59a8677',
      armv7l: 'e9de15c56b9b62727c69d10da4b8e90fa6609d2e94e9cfb9f99128dfb59a8677',
-       i686: '811a3d82afd11b6a069c0a49111a98eeaf9a107139c188ff3d4cba5721ae8e5d',
-     x86_64: '8975da61c128a5e5ded3e719e868da8c8781deb7ad7913d37fb99be02a81904b'
+       i686: '8bd3f8f20c0fd346b31ba5204f50d770c21abc0dba6f37b7ad7c02faa05033a6',
+     x86_64: '0f2e18c8dea60a2c8711d089cd9612f7a8df394b89e5208096fe5867647e0908'
   })
 
   depends_on 'gcc_lib' => :library
