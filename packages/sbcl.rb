@@ -3,11 +3,11 @@ require 'package'
 class Sbcl < Package
   description 'Steel Bank Common Lisp (SBCL) is a high performance Common Lisp compiler.'
   homepage 'http://www.sbcl.org/index.html'
-  version '2.6.8'
+  version '2.6.9'
   license 'MIT'
   compatibility 'all'
   source_url "https://downloads.sourceforge.net/project/sbcl/sbcl/#{version}/sbcl-#{version}-source.tar.bz2"
-  source_sha256 'ad5126dfdfba5db27ee77bcc25893020fe522d0b7653d45b4c4795ade3ddc23d'
+  source_sha256 'c6fd1d735570eb4ff34caf9609988ca77ed0bd12b55d09a4fed075be890da513'
   binary_compression 'tar.zst'
 
   binary_sha256({
