@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_filelock < Pip
   description 'FileLock implements a platform independent file lock in Python.'
   homepage 'https://github.com/tox-dev/filelock'
-  version "4.0.3-#{CREW_PY_VER}"
+  version "4.0.4-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2abe201fb0a76811bbc35a75c031d8cede5d8b281de47d344af944089ec0d5a2',
-     armv7l: '2abe201fb0a76811bbc35a75c031d8cede5d8b281de47d344af944089ec0d5a2',
-       i686: '8582c7717e3aecde506037eca3e551b702721196971ac9dfcf9c948086c249b6',
-     x86_64: '48ef814d85340547d8600b8a98e1aac85ba22ba7ec3269266fa861c6230e78f9'
+    aarch64: '0005cce52ccfd3e4b2bd048bd0463bf6cc56c0b426e26f939ccd6c4be16ef361',
+     armv7l: '0005cce52ccfd3e4b2bd048bd0463bf6cc56c0b426e26f939ccd6c4be16ef361',
+       i686: 'd7d18e6eccb258dd7076904450af2fc63cf3bc3606a1b074b3dd97e477e9697d',
+     x86_64: 'f08a607f112013e47f900d0396a11fe671caffef3f7d8da3b2d9d3542132d3a6'
   })
 
   depends_on 'py3_python_discovery' => :logical
