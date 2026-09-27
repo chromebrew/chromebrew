@@ -11,10 +11,10 @@ class Sbcl < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '317afcde34411d5edd048d274599b3a29243ade94da1fc9cf1a39114fb3a993a',
-     armv7l: '317afcde34411d5edd048d274599b3a29243ade94da1fc9cf1a39114fb3a993a',
-       i686: '3fb77e07777b726b06078d993b3ed3f86dfd65a7013f28caa36fd7b03dcc104f',
-     x86_64: '5cdc3c6fe964426a94747521658907a4031945e8e2896cc0e8c0f391108f3d9e'
+    aarch64: '44863cc2769b8a5cd8e78b0336f4b356b2e26a1bd2b5302ee4123e0da153e46f',
+     armv7l: '44863cc2769b8a5cd8e78b0336f4b356b2e26a1bd2b5302ee4123e0da153e46f',
+       i686: '8f6266debda254d25a5bae59b8039cc8433fe6253ede06e4fb40864b1c45960f',
+     x86_64: 'c0b48d53c62a4fb49b93e52a39a25f570e7bd0c66d2420af31b762face5724f9'
   })
 
   depends_on 'clisp' => :build
