@@ -11,10 +11,10 @@ class Pupnp < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '118a7b5d6f11e50bf20dc60d5adeba7c80450b471cdb6f7eda597f10b3426aa9',
-     armv7l: '118a7b5d6f11e50bf20dc60d5adeba7c80450b471cdb6f7eda597f10b3426aa9',
-       i686: '49b2528309eea88a88e008be2112673cede5354936552eb1b34b02634829984c',
-     x86_64: '849e0c485f8ec28c94583579a33a6cdd99b997b05945ec209d764ed7de99962e'
+    aarch64: 'bcc41c6bd0f8a9f36ac8803a848d2695d93d6fd489c3d63f4d22234d56c1d27c',
+     armv7l: 'bcc41c6bd0f8a9f36ac8803a848d2695d93d6fd489c3d63f4d22234d56c1d27c',
+       i686: '17f83b7f5fa9bce37471eaacb9e45efccc4de29dbca81b0627b77a6c475adfb2',
+     x86_64: 'fb592b694478e63c31d2db51f911f30de98e3f1c66ade82584d522920b84a947'
   })
 
   depends_on 'glibc' => :library
