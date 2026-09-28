@@ -1670,6 +1670,11 @@ url: https://github.com/fcsonline/drill/releases
 activity: low
 ---
 kind: url
+name: drop
+url: https://github.com/wrr/drop/releases
+activity: medium
+---
+kind: url
 name: dropbox
 url: https://www.dropbox.com/
 activity: high
@@ -7192,6 +7197,11 @@ activity: none
 kind: url
 name: pass
 url: https://git.zx2c4.com/password-store
+activity: medium
+---
+kind: url
+name: passt
+url: https://passt.top/passt
 activity: medium
 ---
 kind: url
