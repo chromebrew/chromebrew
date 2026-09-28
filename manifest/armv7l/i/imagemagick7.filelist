@@ -1,4 +1,4 @@
-# Total size: 41522801
+# Total size: 41714506
 /usr/local/bin/Magick++-config
 /usr/local/bin/MagickCore-config
 /usr/local/bin/MagickWand-config
@@ -498,6 +498,7 @@
 /usr/local/share/doc/ImageMagick-7/www/composite/index.html
 /usr/local/share/doc/ImageMagick-7/www/conjure/index.html
 /usr/local/share/doc/ImageMagick-7/www/connected-components/index.html
+/usr/local/share/doc/ImageMagick-7/www/content-provenance-authenticity/index.html
 /usr/local/share/doc/ImageMagick-7/www/convert/index.html
 /usr/local/share/doc/ImageMagick-7/www/convex-hull/index.html
 /usr/local/share/doc/ImageMagick-7/www/defines/index.html
