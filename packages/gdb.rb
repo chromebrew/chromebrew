@@ -40,6 +40,7 @@ class Gdb < Autotools
   depends_on 'zlib' => :library
   depends_on 'zstd' => :library
 
+  autotools_skip_autoreconf
   conflicts_ok # binutils conflicts
 
   autotools_configure_options "--disable-binutils \
