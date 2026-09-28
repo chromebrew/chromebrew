@@ -2670,6 +2670,11 @@ url: https://github.com/internetwache/GitTools/
 activity: none
 ---
 kind: url
+name: gjc
+url: https://github.com/Yeachan-Heo/gajae-code/releases
+activity: high
+---
+kind: url
 name: gjs
 url: https://download.gnome.org/sources/gjs/
 activity: medium
