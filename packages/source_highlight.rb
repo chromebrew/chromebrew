@@ -14,10 +14,10 @@ class Source_highlight < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5f5821a40f03f5cbb6f5108391582cc1c62277538a75c18d4aae547d78a3e254',
-     armv7l: '5f5821a40f03f5cbb6f5108391582cc1c62277538a75c18d4aae547d78a3e254',
-       i686: 'd533ed4c7fe18be81011f286f03d283f61557fa2e7734c1d018391f2fd788b71',
-     x86_64: 'be181d938568d79a67b08c1fd20bd961ada9659d3d963948154ee2bc18609a7a'
+    aarch64: 'b878b6386da814ee198f8b5dc2509c69811df77d9cfd949caeb3c6ffec2b44fc',
+     armv7l: 'b878b6386da814ee198f8b5dc2509c69811df77d9cfd949caeb3c6ffec2b44fc',
+       i686: '683219ced9b15476bd33eed9490f3f7405690f9e839c6a3d6b73125aaeac4e45',
+     x86_64: 'd265a58f2e9b960d79f8837e083d859957a324beebb6fadae39c0af9f3dc7399'
   })
 
   depends_on 'boost' => :library
