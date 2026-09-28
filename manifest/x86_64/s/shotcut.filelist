@@ -1,4 +1,4 @@
-# Total size: 577764311
+# Total size: 578203086
 /usr/local/bin/shotcut
 /usr/local/share/applications/org.shotcut.Shotcut.desktop
 /usr/local/share/icons/hicolor/128x128/apps/org.shotcut.Shotcut.png
@@ -45,6 +45,7 @@
 /usr/local/share/shotcut/lib/cmake/whisper/whisper-config.cmake
 /usr/local/share/shotcut/lib/cmake/whisper/whisper-version.cmake
 /usr/local/share/shotcut/lib/frei0r-1/3dflippo.so
+/usr/local/share/shotcut/lib/frei0r-1/3dperspective.so
 /usr/local/share/shotcut/lib/frei0r-1/B.so
 /usr/local/share/shotcut/lib/frei0r-1/G.so
 /usr/local/share/shotcut/lib/frei0r-1/IIRblur.so
@@ -168,6 +169,7 @@
 /usr/local/share/shotcut/lib/frei0r-1/scanline0r.so
 /usr/local/share/shotcut/lib/frei0r-1/screen.so
 /usr/local/share/shotcut/lib/frei0r-1/select0r.so
+/usr/local/share/shotcut/lib/frei0r-1/shadert0y.so
 /usr/local/share/shotcut/lib/frei0r-1/shake0scillate.so
 /usr/local/share/shotcut/lib/frei0r-1/sharpness.so
 /usr/local/share/shotcut/lib/frei0r-1/sigmoidaltransfer.so
@@ -390,19 +392,19 @@
 /usr/local/share/shotcut/lib/libatspi.so.0
 /usr/local/share/shotcut/lib/libavcodec.so
 /usr/local/share/shotcut/lib/libavcodec.so.63
-/usr/local/share/shotcut/lib/libavcodec.so.63.1.101
+/usr/local/share/shotcut/lib/libavcodec.so.63.1.102
 /usr/local/share/shotcut/lib/libavdevice.so
 /usr/local/share/shotcut/lib/libavdevice.so.63
-/usr/local/share/shotcut/lib/libavdevice.so.63.1.101
+/usr/local/share/shotcut/lib/libavdevice.so.63.1.102
 /usr/local/share/shotcut/lib/libavfilter.so
 /usr/local/share/shotcut/lib/libavfilter.so.12
-/usr/local/share/shotcut/lib/libavfilter.so.12.1.101
+/usr/local/share/shotcut/lib/libavfilter.so.12.1.102
 /usr/local/share/shotcut/lib/libavformat.so
 /usr/local/share/shotcut/lib/libavformat.so.63
-/usr/local/share/shotcut/lib/libavformat.so.63.1.101
+/usr/local/share/shotcut/lib/libavformat.so.63.1.102
 /usr/local/share/shotcut/lib/libavutil.so
 /usr/local/share/shotcut/lib/libavutil.so.61
-/usr/local/share/shotcut/lib/libavutil.so.61.1.101
+/usr/local/share/shotcut/lib/libavutil.so.61.1.102
 /usr/local/share/shotcut/lib/libb2.so.1
 /usr/local/share/shotcut/lib/libblkid.so.1
 /usr/local/share/shotcut/lib/libbrotlicommon.so.1
@@ -540,10 +542,10 @@
 /usr/local/share/shotcut/lib/libsratom-0.so.0
 /usr/local/share/shotcut/lib/libswresample.so
 /usr/local/share/shotcut/lib/libswresample.so.7
-/usr/local/share/shotcut/lib/libswresample.so.7.1.101
+/usr/local/share/shotcut/lib/libswresample.so.7.1.102
 /usr/local/share/shotcut/lib/libswscale.so
 /usr/local/share/shotcut/lib/libswscale.so.10
-/usr/local/share/shotcut/lib/libswscale.so.10.1.101
+/usr/local/share/shotcut/lib/libswscale.so.10.1.102
 /usr/local/share/shotcut/lib/libsystemd.so.0
 /usr/local/share/shotcut/lib/libtheoradec.so.1
 /usr/local/share/shotcut/lib/libtheoraenc.so.1
@@ -551,7 +553,7 @@
 /usr/local/share/shotcut/lib/libts.so.0
 /usr/local/share/shotcut/lib/libudev.so.1
 /usr/local/share/shotcut/lib/libvidstab.so
-/usr/local/share/shotcut/lib/libvidstab.so.1.4
+/usr/local/share/shotcut/lib/libvidstab.so.1.2
 /usr/local/share/shotcut/lib/libvmaf.so
 /usr/local/share/shotcut/lib/libvmaf.so.3
 /usr/local/share/shotcut/lib/libvmaf.so.3.0.0
