@@ -602,6 +602,8 @@ def prepare_package(destdir)
       FileUtils.rm Dir["#{CREW_DEST_DIR}/**/{.packlist,perllocal.pod}"]
     end
 
+    # Remove files inside the pip cache from pip packages.
+    FileUtils.rm_rf Dir["#{CREW_DEST_PREFIX}/.cache/pip"] if @pkg.superclass.to_s == 'Pip'
     # Compress manual files, and move errant files to the correct
     # locations.
     if File.exist?("#{CREW_DEST_PREFIX}/man")

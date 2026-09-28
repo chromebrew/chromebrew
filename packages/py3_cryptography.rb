@@ -3,25 +3,26 @@ require 'buildsystems/pip'
 class Py3_cryptography < Pip
   description 'Cryptography provides cryptographic recipes and primitives to Python developers.'
   homepage 'https://cryptography.io/'
-  version "48.0.0-#{CREW_PY_VER}"
+  version "50.0.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a03a75451b80e3c2f6bbc479a6e7aa385eb839a7f50f4990d0b2e20dcd13fc6e',
-     armv7l: 'a03a75451b80e3c2f6bbc479a6e7aa385eb839a7f50f4990d0b2e20dcd13fc6e',
-       i686: '70cb905bacb2c9ae5a854fc0d7f93551a0dac1763dd50c01b898734c3ec03324',
-     x86_64: 'd5da532912f83f076b0ae3e190424a81e30242e8b79882dd216be50bd0497977'
+    aarch64: '27be4bc6cfc18ebb1bb7bec049ef8e2ea0112af1914542e7042c6eb7d4f69fb6',
+     armv7l: '27be4bc6cfc18ebb1bb7bec049ef8e2ea0112af1914542e7042c6eb7d4f69fb6',
+       i686: '15e1ce3af47058c7a9bc49abd61ef45b60ff9b3c2fbcdbc8168decbee6ab60d6',
+     x86_64: '0341372ad54603e1f6f440106abff1e72722bd5045633b83281cd696fcddb931'
   })
 
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'openssl' => :library
-  depends_on 'py3_cffi'
+  depends_on 'py3_cffi' => :library
   depends_on 'py3_pycparser' => :build
-  depends_on 'py3_typing_extensions'
+  depends_on 'py3_typing_extensions' => :library
   depends_on 'python3' => :logical
   depends_on 'rust' => :build
 
