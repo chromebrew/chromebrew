@@ -1,0 +1,3 @@
+#!/bin/bash
+gjc --help | head
+gjc --version
