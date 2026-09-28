@@ -20,9 +20,9 @@ class Py3_cryptography < Pip
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
   depends_on 'openssl' => :library
-  depends_on 'py3_cffi'
+  depends_on 'py3_cffi' => :library
   depends_on 'py3_pycparser' => :build
-  depends_on 'py3_typing_extensions'
+  depends_on 'py3_typing_extensions' => :library
   depends_on 'python3' => :logical
   depends_on 'rust' => :build
 
