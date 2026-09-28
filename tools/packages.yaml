@@ -955,6 +955,11 @@ url: https://github.com/charmbracelet/charm/releases
 activity: high
 ---
 kind: url
+name: chatgpt
+url: https://learn.chatgpt.com/docs/linux/linux-app
+activity: high
+---
+kind: url
 name: cheat
 url: https://github.com/cheat/cheat/releases
 activity: low
