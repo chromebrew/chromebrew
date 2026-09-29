@@ -11,30 +11,24 @@ class Git < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2842456c4077998996f4a4088b874ce5832c09e21f04d7b64dee345e19ae42ec',
-     armv7l: '2842456c4077998996f4a4088b874ce5832c09e21f04d7b64dee345e19ae42ec',
-       i686: 'c5c6054549b6a3f83f2951956de5f12df0b3659071ed89a6c18c39bc318df120',
-     x86_64: '8d6a3491455e9b5bedaab27c31d79a902198accbc69f0a497f41d08c9f8a8051'
+    aarch64: '6557fa83bf9c652764cc83064e341b0f9878c88187da639bd699488c1036e472',
+     armv7l: '6557fa83bf9c652764cc83064e341b0f9878c88187da639bd699488c1036e472',
+       i686: '0ba3ae373484b62bdf33a06a006550311bd69410fb127abd2f5a60d4c5e8a32a',
+     x86_64: '7ded3eaf98f4d9add09e36df25ef1487f28ff263525fb108c27fa77930293d97'
   })
 
   depends_on 'ca_certificates' => :build
   depends_on 'curl' => :executable
-  depends_on 'curl' => :library
   depends_on 'expat' => :executable
-  depends_on 'expat' => :library
   depends_on 'glibc' => :executable
-  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :build
   depends_on 'glibc_lib' => :executable
-  depends_on 'glibc_lib' => :library
   depends_on 'openssl' => :executable
-  depends_on 'openssl' => :library
   depends_on 'pcre2' => :executable
-  depends_on 'pcre2' => :library
   depends_on 'py3_asciidoc' => :build
   depends_on 'ruby_asciidoctor' => :build
   depends_on 'xmlto' => :build
   depends_on 'zlib_ng' => :executable
-  depends_on 'zlib_ng' => :library
 
   print_source_bashrc
   run_tests
