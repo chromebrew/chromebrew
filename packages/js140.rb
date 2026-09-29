@@ -3,17 +3,17 @@ require 'package'
 class Js140 < Package
   description 'JavaScript interpreter and libraries - Version 140'
   homepage 'https://spidermonkey.dev/'
-  version "140.14.0-#{CREW_ICU_VER}"
+  version "140.17.0-#{CREW_ICU_VER}"
   license 'MPL-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://archive.mozilla.org/pub/firefox/releases/#{version.gsub("-#{CREW_ICU_VER}", '').split('-').first}esr/source/firefox-#{version.gsub("-#{CREW_ICU_VER}", '').split('-').first}esr.source.tar.xz"
-  source_sha256 '28006bd454e703932e1ea804918165774a1e21478b18e551cd1b38111d664239'
+  source_sha256 '4d6ed3b18b2069c55bab12d8ba95da6013ac0b036d8a031df8b9f39a25d05c33'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bb6c5fb91801eb25738713b17421c89a006e5098c645c4e8cef4cc4ea7119cc3',
-     armv7l: 'bb6c5fb91801eb25738713b17421c89a006e5098c645c4e8cef4cc4ea7119cc3',
-     x86_64: 'c50732268e5b8c3a3b5348e69541f295288e62ffa0f3b242af563717e98e277b'
+    aarch64: '867dbc834aa633ed043a11b3c7e28977dfefb4445d427f33627241524ce81f2c',
+     armv7l: '867dbc834aa633ed043a11b3c7e28977dfefb4445d427f33627241524ce81f2c',
+     x86_64: '0ebf8735ceb1ccd245b4034134179fd90dd1719bf9543437763f3c75a3f0ac17'
   })
 
   depends_on 'autoconf213' => :build
