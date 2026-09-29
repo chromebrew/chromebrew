@@ -1,7 +1,6 @@
-# Total size: 62083472
+# Total size: 63402531
 /usr/local/bin/pnpm
 /usr/local/libexec/pnpm/dist/node-gyp-bin/node-gyp
-/usr/local/libexec/pnpm/dist/node-gyp-bin/node-gyp.cmd
 /usr/local/libexec/pnpm/dist/node_modules/@isaacs/fs-minipass/LICENSE
 /usr/local/libexec/pnpm/dist/node_modules/@isaacs/fs-minipass/dist/commonjs/index.js
 /usr/local/libexec/pnpm/dist/node_modules/@isaacs/fs-minipass/dist/commonjs/package.json
