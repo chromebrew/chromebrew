@@ -1,11 +1,11 @@
-# Total size: 360113
-/usr/local/lib/python3.14/site-packages/pyudev-0.24.4.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/pyudev-0.24.4.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/pyudev-0.24.4.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/pyudev-0.24.4.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/pyudev-0.24.4.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/pyudev-0.24.4.dist-info/licenses/COPYING
-/usr/local/lib/python3.14/site-packages/pyudev-0.24.4.dist-info/top_level.txt
+# Total size: 353797
+/usr/local/lib/python3.14/site-packages/pyudev-0.24.5.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/pyudev-0.24.5.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/pyudev-0.24.5.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/pyudev-0.24.5.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/pyudev-0.24.5.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/pyudev-0.24.5.dist-info/licenses/COPYING
+/usr/local/lib/python3.14/site-packages/pyudev-0.24.5.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/pyudev/__init__.py
 /usr/local/lib/python3.14/site-packages/pyudev/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pyudev/__pycache__/_errors.cpython-314.pyc
@@ -15,7 +15,6 @@
 /usr/local/lib/python3.14/site-packages/pyudev/__pycache__/discover.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pyudev/__pycache__/glib.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pyudev/__pycache__/monitor.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/pyudev/__pycache__/pyqt4.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pyudev/__pycache__/pyqt5.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pyudev/__pycache__/pyside.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pyudev/__pycache__/pyside6.cpython-314.pyc
@@ -48,7 +47,6 @@
 /usr/local/lib/python3.14/site-packages/pyudev/discover.py
 /usr/local/lib/python3.14/site-packages/pyudev/glib.py
 /usr/local/lib/python3.14/site-packages/pyudev/monitor.py
-/usr/local/lib/python3.14/site-packages/pyudev/pyqt4.py
 /usr/local/lib/python3.14/site-packages/pyudev/pyqt5.py
 /usr/local/lib/python3.14/site-packages/pyudev/pyside.py
 /usr/local/lib/python3.14/site-packages/pyudev/pyside6.py
