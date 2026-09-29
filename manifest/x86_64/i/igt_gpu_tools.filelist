@@ -1,5 +1,4 @@
-# Total size: 24079386
-/usr/local/bin/amd_hdmi_compliance
+# Total size: 27602210
 /usr/local/bin/dpcd_reg
 /usr/local/bin/gputop
 /usr/local/bin/i915-perf-configs
@@ -7,6 +6,7 @@
 /usr/local/bin/i915-perf-reader
 /usr/local/bin/i915-perf-recorder
 /usr/local/bin/igt_facts
+/usr/local/bin/igt_hdmi_compliance
 /usr/local/bin/igt_power
 /usr/local/bin/igt_stats
 /usr/local/bin/intel-gen4asm
@@ -152,6 +152,12 @@
 /usr/local/libexec/igt-gpu-tools/intel-ci-tests/xe/bmg/full-vf.testlist
 /usr/local/libexec/igt-gpu-tools/intel-ci-tests/xe/bmg/full-vm.testlist
 /usr/local/libexec/igt-gpu-tools/intel-ci-tests/xe/bmg/full.testlist
+/usr/local/libexec/igt-gpu-tools/intel-ci-tests/xe/cri/bat-vf.testlist
+/usr/local/libexec/igt-gpu-tools/intel-ci-tests/xe/cri/bat-vm.testlist
+/usr/local/libexec/igt-gpu-tools/intel-ci-tests/xe/cri/bat.testlist
+/usr/local/libexec/igt-gpu-tools/intel-ci-tests/xe/cri/full-vf.testlist
+/usr/local/libexec/igt-gpu-tools/intel-ci-tests/xe/cri/full-vm.testlist
+/usr/local/libexec/igt-gpu-tools/intel-ci-tests/xe/cri/full.testlist
 /usr/local/libexec/igt-gpu-tools/intel-ci-tests/xe/default/bat-chamelium.testlist
 /usr/local/libexec/igt-gpu-tools/intel-ci-tests/xe/default/bat-vf.testlist
 /usr/local/libexec/igt-gpu-tools/intel-ci-tests/xe/default/bat-vm.testlist
@@ -178,8 +184,12 @@
 /usr/local/libexec/igt-gpu-tools/intel-ci-tests/xe/mtl/full-chamelium.testlist
 /usr/local/libexec/igt-gpu-tools/intel-ci-tests/xe/mtl/full.testlist
 /usr/local/libexec/igt-gpu-tools/intel-ci-tests/xe/nvl/bat-chamelium.testlist
+/usr/local/libexec/igt-gpu-tools/intel-ci-tests/xe/nvl/bat-vf.testlist
+/usr/local/libexec/igt-gpu-tools/intel-ci-tests/xe/nvl/bat-vm.testlist
 /usr/local/libexec/igt-gpu-tools/intel-ci-tests/xe/nvl/bat.testlist
 /usr/local/libexec/igt-gpu-tools/intel-ci-tests/xe/nvl/full-chamelium.testlist
+/usr/local/libexec/igt-gpu-tools/intel-ci-tests/xe/nvl/full-vf.testlist
+/usr/local/libexec/igt-gpu-tools/intel-ci-tests/xe/nvl/full-vm.testlist
 /usr/local/libexec/igt-gpu-tools/intel-ci-tests/xe/nvl/full.testlist
 /usr/local/libexec/igt-gpu-tools/intel-ci-tests/xe/ptl/bat-chamelium.testlist
 /usr/local/libexec/igt-gpu-tools/intel-ci-tests/xe/ptl/bat-vf.testlist

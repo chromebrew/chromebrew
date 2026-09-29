@@ -11,7 +11,7 @@ class Igt_gpu_tools < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '27d98727b0e7939b38b7967b0bc1ad3807f2bc57810d8c4c07146aa08a80dce2'
+     x86_64: '86289e6c39e46ddd108dbeafc9735078aea1f11b2d4cc045b18af033e02a0f7c'
   })
 
   depends_on 'cairo' => :library
@@ -25,9 +25,12 @@ class Igt_gpu_tools < Meson
   depends_on 'libkmod' => :library
   depends_on 'libpciaccess' => :library
   depends_on 'libunwind' => :library
+  depends_on 'libx11' => :executable
   depends_on 'libx11' => :library
+  depends_on 'libxext' => :executable
   depends_on 'libxext' => :library
   depends_on 'libxrandr' => :library
+  depends_on 'libxv' => :executable
   depends_on 'libxv' => :library
   depends_on 'pciutils' => :library
   depends_on 'peg' => :library
