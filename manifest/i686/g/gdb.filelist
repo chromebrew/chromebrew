@@ -1,4 +1,4 @@
-# Total size: 22577009
+# Total size: 22346201
 /usr/local/bin/gcore
 /usr/local/bin/gdb
 /usr/local/bin/gdb-add-index
@@ -11,7 +11,7 @@
 /usr/local/include/gdb/jit-reader.h
 /usr/local/include/plugin-api.h
 /usr/local/include/symcat.h
-/usr/local/lib/libbfd-2.45.50.so
+/usr/local/lib/libbfd-2.47.50.so
 /usr/local/lib/libbfd.a
 /usr/local/lib/libbfd.la
 /usr/local/lib/libbfd.so
@@ -81,6 +81,7 @@
 /usr/local/share/gdb/syscalls/netbsd.xml
 /usr/local/share/gdb/syscalls/ppc-linux.xml
 /usr/local/share/gdb/syscalls/ppc64-linux.xml
+/usr/local/share/gdb/syscalls/riscv-linux.xml
 /usr/local/share/gdb/syscalls/s390-linux.xml
 /usr/local/share/gdb/syscalls/s390x-linux.xml
 /usr/local/share/gdb/syscalls/sparc-linux.xml
@@ -99,7 +100,6 @@
 /usr/local/share/info/gdb.info-8.zst
 /usr/local/share/info/gdb.info-9.zst
 /usr/local/share/info/gdb.info.zst
-/usr/local/share/info/stabs.info.zst
 /usr/local/share/man/man1/gcore.1.zst
 /usr/local/share/man/man1/gdb-add-index.1.zst
 /usr/local/share/man/man1/gdb.1.zst
