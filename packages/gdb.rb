@@ -63,6 +63,14 @@ class Gdb < Autotools
       --with-system-zlib \
       #{'--with-x' unless ARCH == 'i686'}"
 
+  def self.patch
+    patches = [
+      # Fixes i686 build on older glibc.
+      ['https://inbox.sourceware.org/gdb-patches/20260928172119.425553-1-simon.marchi@efficios.com/raw', '98ef611ff73ca43544a5331a7ca86c8ddf78e28efca9a95b832fe4f9e2b58949']
+    ]
+    ConvenienceFunctions.patch(patches) if ARCH == 'i686' && version.split('-').first == '18.1'
+  end
+
   def self.prebuild
     # The c11threads threads.h breaks builds on software that uses gnulib.
     # See: https://github.com/jtsiomb/c11threads/issues/19
