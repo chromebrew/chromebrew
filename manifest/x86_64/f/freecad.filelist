@@ -1,4 +1,4 @@
-# Total size: 4097895395
+# Total size: 4097948902
 /usr/local/bin/freecad
 /usr/local/share/freecad/AppRun
 /usr/local/share/freecad/freecad.sh
@@ -1422,6 +1422,7 @@
 /usr/local/share/freecad/usr/Mod/Fem/femtest/app/test_object.py
 /usr/local/share/freecad/usr/Mod/Fem/femtest/app/test_open.py
 /usr/local/share/freecad/usr/Mod/Fem/femtest/app/test_result.py
+/usr/local/share/freecad/usr/Mod/Fem/femtest/app/test_security.py
 /usr/local/share/freecad/usr/Mod/Fem/femtest/app/test_solver_elmer.py
 /usr/local/share/freecad/usr/Mod/Fem/femtest/app/test_solver_mystran.py
 /usr/local/share/freecad/usr/Mod/Fem/femtest/app/test_solver_z88.py
