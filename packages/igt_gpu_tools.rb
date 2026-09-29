@@ -3,11 +3,11 @@ require 'buildsystems/meson'
 class Igt_gpu_tools < Meson
   description 'Tools for development and testing of the Intel DRM driver'
   homepage 'https://gitlab.freedesktop.org/drm/igt-gpu-tools'
-  version '2.5'
+  version '2.6'
   license 'MIT'
   compatibility 'x86_64'
   source_url "https://xorg.freedesktop.org/releases/individual/app/igt-gpu-tools-#{version}.tar.xz"
-  source_sha256 'bf5ee5cc1e2b92c456d626b7986be9e2d18b4765cd06c28c1ab449200c1ce5e2'
+  source_sha256 '5d5190debfec0ee1728430897f243d0afa271856c2cb5834a23b23f08be8d06e'
   binary_compression 'tar.zst'
 
   binary_sha256({
