@@ -3,15 +3,15 @@ require 'buildsystems/meson'
 class Igt_gpu_tools < Meson
   description 'Tools for development and testing of the Intel DRM driver'
   homepage 'https://gitlab.freedesktop.org/drm/igt-gpu-tools'
-  version '2.5'
+  version '2.6'
   license 'MIT'
   compatibility 'x86_64'
   source_url "https://xorg.freedesktop.org/releases/individual/app/igt-gpu-tools-#{version}.tar.xz"
-  source_sha256 'bf5ee5cc1e2b92c456d626b7986be9e2d18b4765cd06c28c1ab449200c1ce5e2'
+  source_sha256 '5d5190debfec0ee1728430897f243d0afa271856c2cb5834a23b23f08be8d06e'
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '27d98727b0e7939b38b7967b0bc1ad3807f2bc57810d8c4c07146aa08a80dce2'
+     x86_64: '86289e6c39e46ddd108dbeafc9735078aea1f11b2d4cc045b18af033e02a0f7c'
   })
 
   depends_on 'cairo' => :library
@@ -25,9 +25,12 @@ class Igt_gpu_tools < Meson
   depends_on 'libkmod' => :library
   depends_on 'libpciaccess' => :library
   depends_on 'libunwind' => :library
+  depends_on 'libx11' => :executable
   depends_on 'libx11' => :library
+  depends_on 'libxext' => :executable
   depends_on 'libxext' => :library
   depends_on 'libxrandr' => :library
+  depends_on 'libxv' => :executable
   depends_on 'libxv' => :library
   depends_on 'pciutils' => :library
   depends_on 'peg' => :library
