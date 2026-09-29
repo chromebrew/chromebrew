@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Stellarium < CMake
   description 'Stellarium is a free open source planetarium for your computer.'
   homepage 'http://stellarium.org/'
-  version '26.2'
+  version '26.3'
   license 'GPL-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/Stellarium/stellarium.git'
