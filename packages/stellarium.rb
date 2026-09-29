@@ -11,9 +11,9 @@ class Stellarium < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0df3f7eb6cb9f40a6423dba81717a1ac9c7cfd9715bd55c08d5f66f60e2443c8',
-     armv7l: '0df3f7eb6cb9f40a6423dba81717a1ac9c7cfd9715bd55c08d5f66f60e2443c8',
-     x86_64: 'eab55680175be3fb1111530f91d2cf2cab26b7c88712aecf57774d7fdc99d78a'
+    aarch64: '981378901f5fb197358bbdadc528f2e2e48038eaaf64d0aea2a8b94e9051e26b',
+     armv7l: '981378901f5fb197358bbdadc528f2e2e48038eaaf64d0aea2a8b94e9051e26b',
+     x86_64: '12ca21a30241b471607974c0be18c05f5df71a83e29fe3dbe292bcb01fddf565'
   })
 
   depends_on 'gcc_lib' => :library
