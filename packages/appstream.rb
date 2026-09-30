@@ -33,6 +33,7 @@ class Appstream < Meson
   depends_on 'libstemmer' => :library
   depends_on 'libxml2' => :library
   depends_on 'libxmlb' => :library
+  depends_on 'libvips' => :build
   depends_on 'pango' => :library
   depends_on 'py3_gi_docgen' => :build
   depends_on 'py3_itstool' => :build
