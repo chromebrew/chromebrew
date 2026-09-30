@@ -3940,6 +3940,11 @@ url: https://invent.kde.org/frameworks/kwindowsystem/-/tags
 activity: medium
 ---
 kind: url
+name: kilo
+url: https://github.com/Kilo-Org/kilocode/releases
+activity: high
+---
+kind: url
 name: komodo
 url: https://downloads.activestate.com/Komodo/releases/
 activity: low
