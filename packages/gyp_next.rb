@@ -3,7 +3,7 @@ require 'buildsystems/python'
 class Gyp_next < Python
   description 'GYP is a fork of the GYP build system for use in the Node.js projects.'
   homepage 'https://github.com/nodejs/gyp-next/'
-  version '0.22.2'
+  version '0.22.3'
   license 'BSD-3'
   compatibility 'all'
   source_url 'https://github.com/nodejs/gyp-next.git'
