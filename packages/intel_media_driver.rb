@@ -11,7 +11,7 @@ class Intel_media_driver < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '07946820021a90061a0fe9d2e3bb4d46063baf876889c57658e629e7ff469da1'
+     x86_64: 'ae640374ef405722f49c191485f2201278cb0691d707ed65304c2df15b1fb748'
   })
 
   depends_on 'gcc_lib' => :library
