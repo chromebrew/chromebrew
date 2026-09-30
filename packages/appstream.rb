@@ -13,7 +13,7 @@ class Appstream < Meson
   binary_sha256({
     aarch64: '1468356552fe80bc4e6c0bb27281522027ba9a4a8a3a52a7b832931d5e5c7c10',
      armv7l: '1468356552fe80bc4e6c0bb27281522027ba9a4a8a3a52a7b832931d5e5c7c10',
-     x86_64: 'ed8e2f310795dabf2ab970aa131970e1814a68143079790770d767f4780d5883'
+     x86_64: '90ffdaf7c6f122950cceb78e1693280afb1eba1802301aa11cae49c9a40dca50'
   })
 
   depends_on 'cairo' => :library
@@ -31,9 +31,9 @@ class Appstream < Meson
   depends_on 'libfyaml' => :library
   depends_on 'librsvg' => :library
   depends_on 'libstemmer' => :library
+  depends_on 'libvips' => :library
   depends_on 'libxml2' => :library
   depends_on 'libxmlb' => :library
-  depends_on 'libvips' => :build
   depends_on 'pango' => :library
   depends_on 'py3_gi_docgen' => :build
   depends_on 'py3_itstool' => :build
@@ -44,6 +44,25 @@ class Appstream < Meson
   depends_on 'zstd' => :library
 
   meson_options '-Dapidocs=false -Dcompose=true -Dsystemd=false -Dvapi=true -Dblake3-support=false'
+
+  def self.patch
+    # https://github.com/ximion/appstream/issues/794
+    File.write 'appstream_openat.patch', <<~OPENAT_PATCH
+      diff -Npaur a/compose/asc-directory-unit.c b/compose/asc-directory-unit.c
+      --- a/compose/asc-directory-unit.c	2026-09-30 13:58:54.454270875 -0400
+      +++ b/compose/asc-directory-unit.c	2026-09-30 13:59:35.757725026 -0400
+      @@ -202,7 +202,7 @@ asc_resolve_path_in_root (const gchar *r
+       static gint
+       asc_openat2 (gint dir_fd, const gchar *path, gint flags)
+       {
+      -#if defined(HAVE_OPENAT2) || defined(HAVE_LINUX_OPENAT2_H)
+      +#if defined(HAVE_OPENAT2) && defined(HAVE_LINUX_OPENAT2_H)
+       	struct open_how how = {
+       		.flags = flags,
+       		.resolve = RESOLVE_IN_ROOT,
+    OPENAT_PATCH
+    system 'patch -Np1 -i appstream_openat.patch' if version == '1.2.1'
+  end
 
   def self.postinstall
     ExitMessage.add "\nType 'appstreamcli --help' to get started.\n"
