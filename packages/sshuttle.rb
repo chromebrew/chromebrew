@@ -3,7 +3,7 @@ require 'buildsystems/python'
 class Sshuttle < Python
   description 'Full-featured VPN over an SSH tunnel'
   homepage 'https://github.com/sshuttle/sshuttle'
-  version '1.3.2'
+  version '2.0.0'
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://github.com/sshuttle/sshuttle.git'
