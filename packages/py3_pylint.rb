@@ -6,17 +6,17 @@ require 'buildsystems/pip'
 class Py3_pylint < Pip
   description 'Analyzes Python code looking for bugs and signs of poor quality'
   homepage 'https://pylint.pycqa.org'
-  version "4.0.9-#{CREW_PY_VER}"
+  version "4.1.1-#{CREW_PY_VER}"
   license 'GPL'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5d5f26511bf8f2d24db843c3e0db747dbb5138e1fb0bd71bafb6ed00b63fcc0e',
-     armv7l: '5d5f26511bf8f2d24db843c3e0db747dbb5138e1fb0bd71bafb6ed00b63fcc0e',
-       i686: '6ebb84d65e4614e75829c9a69eca5156a61abbfa5fb942ce710375c802f34223',
-     x86_64: 'cc6d571b151c8a7b93870a643b5ba13febba7d1f277dd78aa15fe43540d5d5ee'
+    aarch64: 'ca5686b0e5be927816e1536fe56f3de02093e3d86fb7d79a8f85a23b46d38897',
+     armv7l: 'ca5686b0e5be927816e1536fe56f3de02093e3d86fb7d79a8f85a23b46d38897',
+       i686: 'a66dd6d10639ee5fca4bebcf923ca48de01d81ae313ae5034133be95e485f116',
+     x86_64: '079374aecbb87738a3432b549b995bff4ddc4bd22f9b41a62ef95ec2176ad380'
   })
 
   depends_on 'python3' => :logical
