@@ -6,8 +6,7 @@ class Claude < Package
   version '2.1.285'
   license 'Claude/Anthropic Terms and Conditions'
   compatibility 'x86_64'
-  # Run `curl https://downloads.claude.ai/claude-code-releases/latest` to get the latest release.
-  source_url "https://downloads.claude.ai/claude-code-releases/#{version}/linux-x64/claude"
+  source_url "https://github.com/anthropics/claude-code/releases/download/v#{version}/claude-linux-x64.tar.gz"
   source_sha256 '33dad1ec615a2e08cc78b494f05c110e49916de2c79d78ec8799ebf46b233d29'
 
   no_compile_needed
