@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Ansifilter < CMake
   description 'Ansifilter parses common ANSI codes to remove them or to convert them to another colored text file format (HTML, TeX, LaTeX, RTF, Pango or BBCode).'
   homepage 'http://andre-simon.de/doku/ansifilter/en/ansifilter.php'
-  version '2.23'
+  version '2.24'
   license 'GPL-3+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.com/saalen/ansifilter.git'
