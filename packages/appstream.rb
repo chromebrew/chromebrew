@@ -11,8 +11,8 @@ class Appstream < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1468356552fe80bc4e6c0bb27281522027ba9a4a8a3a52a7b832931d5e5c7c10',
-     armv7l: '1468356552fe80bc4e6c0bb27281522027ba9a4a8a3a52a7b832931d5e5c7c10',
+    aarch64: 'c2647331aaec4487c5cf5c2bfb76b69c4c560ece9a5c4a0bd0bd9cc4c9313f04',
+     armv7l: 'c2647331aaec4487c5cf5c2bfb76b69c4c560ece9a5c4a0bd0bd9cc4c9313f04',
      x86_64: '90ffdaf7c6f122950cceb78e1693280afb1eba1802301aa11cae49c9a40dca50'
   })
 
