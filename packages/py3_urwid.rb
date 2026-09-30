@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_urwid < Pip
   description 'Urwid is a full-featured console user interface library.'
   homepage 'http://urwid.org/'
-  version "4.1.7-#{CREW_PY_VER}"
+  version "4.2.3-#{CREW_PY_VER}"
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8a3b0bb94cd2880c6553d1a7e8ed1e557e93b65ff1528da1ab115799e8e095f8',
-     armv7l: '8a3b0bb94cd2880c6553d1a7e8ed1e557e93b65ff1528da1ab115799e8e095f8',
-       i686: '394d21d9b1ef4389deebfa3bc0d2e56ffe14b6cefce3a1153db99cc280f69134',
-     x86_64: 'c3968495d40b4389322ef8c2fac38174c3544e93df0d3edff010b26880abbd19'
+    aarch64: '4d4a8188e07a7b1a86c2399c077c5017c456bb2224351cf05edf341c225764d4',
+     armv7l: '4d4a8188e07a7b1a86c2399c077c5017c456bb2224351cf05edf341c225764d4',
+       i686: 'd6d2274b5c2bf44f9919a64d71c36562ff9afc4acbc2fccf517e31ffc0228680',
+     x86_64: '24c82bb6873627b1879174aeffd5df91a5f88dcb05d02ee8b28a21281ba829e5'
   })
 
   depends_on 'glibc' # R
