@@ -1,4 +1,4 @@
-# Total size: 4083570
+# Total size: 8341166
 /usr/local/bin/fy-compose
 /usr/local/bin/fy-dump
 /usr/local/bin/fy-filter
@@ -7,11 +7,30 @@
 /usr/local/bin/fy-tool
 /usr/local/bin/fy-ypath
 /usr/local/include/libfyaml.h
+/usr/local/include/libfyaml/libfyaml-align.h
+/usr/local/include/libfyaml/libfyaml-allocator.h
+/usr/local/include/libfyaml/libfyaml-atomics.h
+/usr/local/include/libfyaml/libfyaml-blake3.h
+/usr/local/include/libfyaml/libfyaml-composer.h
+/usr/local/include/libfyaml/libfyaml-core.h
+/usr/local/include/libfyaml/libfyaml-cpp.h
+/usr/local/include/libfyaml/libfyaml-docbuild.h
+/usr/local/include/libfyaml/libfyaml-dociter.h
+/usr/local/include/libfyaml/libfyaml-endian.h
+/usr/local/include/libfyaml/libfyaml-generic.h
+/usr/local/include/libfyaml/libfyaml-path-exec.h
+/usr/local/include/libfyaml/libfyaml-reflection.h
+/usr/local/include/libfyaml/libfyaml-thread.h
+/usr/local/include/libfyaml/libfyaml-util.h
+/usr/local/include/libfyaml/libfyaml-vlsize.h
+/usr/local/lib/cmake/libfyaml/libfyaml-config-version.cmake
+/usr/local/lib/cmake/libfyaml/libfyaml-config.cmake
+/usr/local/lib/cmake/libfyaml/libfyaml-targets-release.cmake
+/usr/local/lib/cmake/libfyaml/libfyaml-targets.cmake
 /usr/local/lib/libfyaml.a
-/usr/local/lib/libfyaml.la
 /usr/local/lib/libfyaml.so
-/usr/local/lib/libfyaml.so.0
-/usr/local/lib/libfyaml.so.0.0.0
+/usr/local/lib/libfyaml.so.2
+/usr/local/lib/libfyaml.so.2.6.1
 /usr/local/lib/pkgconfig/libfyaml.pc
 /usr/local/share/man/man1/fy-compose.1.zst
 /usr/local/share/man/man1/fy-dump.1.zst
@@ -20,3 +39,8 @@
 /usr/local/share/man/man1/fy-testsuite.1.zst
 /usr/local/share/man/man1/fy-tool.1.zst
 /usr/local/share/man/man1/fy-ypath.1.zst
+/usr/local/share/man/man3/libfyaml-core.3.zst
+/usr/local/share/man/man3/libfyaml-generics.3.zst
+/usr/local/share/man/man3/libfyaml-misc.3.zst
+/usr/local/share/man/man3/libfyaml-reflection.3.zst
+/usr/local/share/man/man3/libfyaml.3.zst
