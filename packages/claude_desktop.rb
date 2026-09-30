@@ -1,7 +1,7 @@
 require 'package'
 
 class Claude_desktop < Package
-  description "Claude Code, Anthropic’s agentic coding tool for the desktop'
+  description "Claude Code, Anthropic's agentic coding tool for the desktop"
   homepage 'https://claude.com/product/claude-code'
   version '2.9939.4'
   license 'Claude/Anthropic Commercial Terms of Service'
