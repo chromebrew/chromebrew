@@ -1,12 +1,12 @@
 # Adapted from Arch Linux libfyaml PKGBUILD at:
 # https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=libfyaml
 
-require 'buildsystems/autotools'
+require 'buildsystems/cmake'
 
-class Libfyaml < Autotools
+class Libfyaml < CMake
   description 'Fully feature complete YAML parser and emitter'
   homepage 'https://pantoniou.github.io/libfyaml'
-  version '0.9'
+  version '0.9.6'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/pantoniou/libfyaml.git'
@@ -20,6 +20,9 @@ class Libfyaml < Autotools
      x86_64: 'd1ed053fa4bacb5f022bc61cfe5d63bbd9b3250483fb0a76410623f533def077'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'jq' => :build
+
+  cmake_options '-DENABLE_LIBCLANG=OFF'
 end

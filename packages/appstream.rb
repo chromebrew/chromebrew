@@ -43,7 +43,7 @@ class Appstream < Meson
   depends_on 'xmlto' => :build
   depends_on 'zstd' => :library
 
-  meson_options '-Dcompose=true -Dsystemd=false -Dvapi=true -Dblake3-support=false'
+  meson_options '-Dapidocs=false -Dcompose=true -Dsystemd=false -Dvapi=true -Dblake3-support=false'
 
   def self.postinstall
     ExitMessage.add "\nType 'appstreamcli --help' to get started.\n"
