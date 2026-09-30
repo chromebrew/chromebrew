@@ -25,13 +25,13 @@ class Libvips < Meson
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
-  depends_on 'gstreamer'
+  depends_on 'gstreamer' => :build
   depends_on 'highway' => :library
   depends_on 'imagemagick7' => :library
   depends_on 'lcms' => :library
   depends_on 'libarchive' => :library
   depends_on 'libexif' => :library
-  depends_on 'libgsf'
+  depends_on 'libgsf' => :build
   depends_on 'libheif' => :library
   depends_on 'libimagequant' => :library
   depends_on 'libjpeg_turbo' => :library
