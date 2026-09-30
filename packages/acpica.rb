@@ -3,7 +3,7 @@ require 'package'
 class Acpica < Package
   description 'ACPI tools, including Intel ACPI Source Language compiler'
   homepage 'https://www.intel.com/content/www/us/en/developer/topic-technology/open/acpica/overview.html'
-  version '20260408'
+  version '20260930'
   license 'GPL-2'
   compatibility 'x86_64'
   source_url 'https://github.com/acpica/acpica.git'
