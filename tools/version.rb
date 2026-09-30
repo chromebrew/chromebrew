@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.43 (for Chromebrew)
+# version.rb version 3.44 (for Chromebrew)
 
 OPTIONS = %w[-a --all -h --help -j --json -u --update-package-files -v --verbose -vv]
 
@@ -104,6 +104,7 @@ CREW_ANITYA_PACKAGE_NAME_MAPPINGS = Set[
   { pkg_name: 'libstfl', anitya_pkg: 'stfl', comments: '' },
   { pkg_name: 'libtinfo', anitya_pkg: 'ncurses~stable', comments: '' },
   { pkg_name: 'libunbound', anitya_pkg: 'unbound', comments: '' },
+  { pkg_name: 'libvips', anitya_pkg: 'vips', comments: '' },
   { pkg_name: 'libx264', anitya_pkg: 'x264', comments: '' },
   { pkg_name: 'linux_pam', anitya_pkg: 'pam', comments: '' },
   { pkg_name: "#{CREW_LLVM_VER}_build", anitya_pkg: 'llvm', comments: '' },
