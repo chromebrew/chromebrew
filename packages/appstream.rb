@@ -38,6 +38,7 @@ class Appstream < Meson
   depends_on 'py3_itstool' => :build
   depends_on 'py3_libxml2' => :build
   depends_on 'vala' => :build
+  depends_on 'wayland' => :build
   depends_on 'xmlto' => :build
   depends_on 'zstd' => :library
 
