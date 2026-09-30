@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Iniparser < CMake
   description 'stand-alone ini parser library in ANSI C'
   homepage 'http://ndevilla.free.fr/iniparser/'
-  version '4.2.6'
+  version '4.3.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/ndevilla/iniparser.git'
