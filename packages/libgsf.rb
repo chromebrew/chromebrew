@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Libgsf < Autotools
   description 'The G Structured File Library'
   homepage 'https://gitlab.gnome.org/GNOME/libgsf'
-  version '1.14.59'
+  version '1.14.60'
   license 'GPL-2 and LGPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/libgsf.git'
@@ -11,9 +11,9 @@ class Libgsf < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e17df405f5d3a28eb09cec89517e7780fcc2b0311443293629f91c32eb8cb98d',
-     armv7l: 'e17df405f5d3a28eb09cec89517e7780fcc2b0311443293629f91c32eb8cb98d',
-     x86_64: '0967f27636f681725bef155829d7710a477ed69eaa1ad080545408590c5517e3'
+    aarch64: '55f342daffb78b59a4abd77c8d5e1c4e789fe628aa96d25216ee03659783b76a',
+     armv7l: '55f342daffb78b59a4abd77c8d5e1c4e789fe628aa96d25216ee03659783b76a',
+     x86_64: '4b3617fb8d2582abc1a334f94b778512169b4cb9cd57dcd1ccbcaa2abbd7e303'
   })
 
   depends_on 'bzip2' => :library
