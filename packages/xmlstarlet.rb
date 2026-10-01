@@ -21,6 +21,8 @@ class Xmlstarlet < Autotools
   depends_on 'libxml2' => :executable
   depends_on 'libxslt' => :executable
 
+  autotools_skip_autogen
+
   def self.patch
     system "sed -i 's, ATTRIBUTE_UNUSED,,g' src/xml_pyx.c"
   end
