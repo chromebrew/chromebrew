@@ -19,5 +19,5 @@ class Xxhash < CMake
 
   depends_on 'glibc' => :library
 
-  cmake_build_relative_dir 'cmake_unofficial'
+  cmake_build_relative_dir 'build/cmake'
 end
