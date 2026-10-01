@@ -53,6 +53,18 @@ class Pip < Package
     print_buildsystem_methods
 
     @pip_cache_dir = `pip cache dir`.chomp
+
+    default_pip_cache_dir = "#{CREW_PREFIX}/.cache/pip"
+    # Delete default pip_cache_dir if it is not a directory.
+    if File.file?(default_pip_cache_dir)
+      FileUtils.rm_f(default_pip_cache_dir)
+      FileUtils.mkdir_p(default_pip_cache_dir)
+    end
+
+    # Ensure pip wheels dir exists.
+    @pip_wheels_dir = File.join(@pip_cache_dir, 'wheels')
+    FileUtils.mkdir_p(@pip_wheels_dir)
+
     @pip_cache_dest_dir = File.join(CREW_DEST_DIR, @pip_cache_dir)
 
     @pip_version = `python3 -c "import pip; print(pip.__version__)"`.chomp
