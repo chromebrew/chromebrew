@@ -53,6 +53,12 @@ class Pip < Package
     print_buildsystem_methods
 
     @pip_cache_dir = `pip cache dir`.chomp
+    # Ensure pip wheels dir exists.
+    @pip_wheels_dir = File.join(@pip_cache_dir, 'wheels')
+    # Fix pip_cache_dir if it is not a directory.
+    FileUtils.rm_f(@pip_cache_dir) if File.file?(@pip_cache_dir)
+    FileUtils.mkdir_p(@pip_wheels_dir)
+
     @pip_cache_dest_dir = File.join(CREW_DEST_DIR, @pip_cache_dir)
 
     @pip_version = `python3 -c "import pip; print(pip.__version__)"`.chomp
