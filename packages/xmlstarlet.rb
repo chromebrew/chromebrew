@@ -23,10 +23,6 @@ class Xmlstarlet < Autotools
 
   autotools_skip_autogen
 
-  def self.patch
-    system "sed -i 's, ATTRIBUTE_UNUSED,,g' src/xml_pyx.c"
-  end
-
   autotools_install_extras do
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.ln_s "#{CREW_PREFIX}/bin/xml", "#{CREW_DEST_PREFIX}/bin/xmlstarlet"
