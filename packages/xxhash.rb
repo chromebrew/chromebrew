@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Xxhash < CMake
   description 'xxHash is an extremely fast non-cryptographic hash algorithm, working at speeds close to RAM limits.'
   homepage 'https://xxhash.com/'
-  version '0.8.3'
+  version '0.8.4'
   license 'BSD-2 and GPL-2+'
   compatibility 'all'
   source_url 'https://github.com/Cyan4973/xxHash.git'
