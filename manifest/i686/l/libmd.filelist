@@ -1,4 +1,4 @@
-# Total size: 520623
+# Total size: 541492
 /usr/local/include/md2.h
 /usr/local/include/md4.h
 /usr/local/include/md5.h
@@ -14,7 +14,7 @@
 /usr/local/lib/libmd.la
 /usr/local/lib/libmd.so
 /usr/local/lib/libmd.so.0
-/usr/local/lib/libmd.so.0.2.0
+/usr/local/lib/libmd.so.0.3.0
 /usr/local/lib/pkgconfig/libmd.pc
 /usr/local/share/man/man3/MD2Data.3.zst
 /usr/local/share/man/man3/MD2End.3.zst

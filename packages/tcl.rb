@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Tcl < Autotools
   description 'Tcl (Tool Command Language) is a very powerful but easy to learn dynamic programming language, suitable for a very wide range of uses, including web and desktop applications, networking, administration, testing and many more.'
   homepage 'http://www.tcl.tk/'
-  version '9.0.4'
+  version '9.1.0'
   license 'tcltk'
   compatibility 'all'
   source_url "https://downloads.sourceforge.net/project/tcl/Tcl/#{version}/tcl#{version}-src.tar.gz"
-  source_sha256 'd0aed49230bc02a65c1e0229e65f34590a4b037ec40d546f32573b467f7551ea'
+  source_sha256 '536c45543f64d6eb11832d97ba3494aacff046fbc5040273bd55258d0e448ff1'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6724e87c237b45e092561b339d17d11fd33b626adb17f17a50d64210c0433bbc',
-     armv7l: '6724e87c237b45e092561b339d17d11fd33b626adb17f17a50d64210c0433bbc',
-       i686: '68c36e34a0a3a2120d6704eca6f5abcfe146a10f372e2b32862f080efc60aacf',
-     x86_64: 'faf0db65f7d11e847e6bf10ed34527c594f35a3ac416048d36cff54b7db96c7a'
+    aarch64: 'f6fde2913cdcb523baba42aa4e9cc6b441e902c22686f98c27439cff20f99e90',
+     armv7l: 'f6fde2913cdcb523baba42aa4e9cc6b441e902c22686f98c27439cff20f99e90',
+       i686: 'bd5a7ab6f6694d0f6a5c1c264bbc57522ad4bcc2cdd3754064bce37c1101e001',
+     x86_64: '17646fc25caa74e3ddd8cabe3a1d1b34b4a49b1693a8f55aae15e6a1698c430a'
   })
 
   depends_on 'glibc' => :library

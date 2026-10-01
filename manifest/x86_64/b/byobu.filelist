@@ -1,4 +1,4 @@
-# Total size: 1128258
+# Total size: 1299615
 /usr/local/bin/byobu
 /usr/local/bin/byobu-config
 /usr/local/bin/byobu-ctrl-a
@@ -145,6 +145,27 @@
 /usr/local/share/dbus-1/services/us.kirkland.terminals.byobu.service
 /usr/local/share/doc/byobu/help.screen.txt
 /usr/local/share/doc/byobu/help.tmux.txt
+/usr/local/share/locale/bg/LC_MESSAGES/byobu.mo
+/usr/local/share/locale/cs/LC_MESSAGES/byobu.mo
+/usr/local/share/locale/de/LC_MESSAGES/byobu.mo
+/usr/local/share/locale/en_GB/LC_MESSAGES/byobu.mo
+/usr/local/share/locale/es/LC_MESSAGES/byobu.mo
+/usr/local/share/locale/fr/LC_MESSAGES/byobu.mo
+/usr/local/share/locale/hu/LC_MESSAGES/byobu.mo
+/usr/local/share/locale/id/LC_MESSAGES/byobu.mo
+/usr/local/share/locale/is/LC_MESSAGES/byobu.mo
+/usr/local/share/locale/it/LC_MESSAGES/byobu.mo
+/usr/local/share/locale/ja/LC_MESSAGES/byobu.mo
+/usr/local/share/locale/ka/LC_MESSAGES/byobu.mo
+/usr/local/share/locale/la/LC_MESSAGES/byobu.mo
+/usr/local/share/locale/lt/LC_MESSAGES/byobu.mo
+/usr/local/share/locale/nl/LC_MESSAGES/byobu.mo
+/usr/local/share/locale/pt/LC_MESSAGES/byobu.mo
+/usr/local/share/locale/pt_BR/LC_MESSAGES/byobu.mo
+/usr/local/share/locale/ru/LC_MESSAGES/byobu.mo
+/usr/local/share/locale/sv/LC_MESSAGES/byobu.mo
+/usr/local/share/locale/tr/LC_MESSAGES/byobu.mo
+/usr/local/share/locale/uk/LC_MESSAGES/byobu.mo
 /usr/local/share/man/man1/byobu-config.1.zst
 /usr/local/share/man/man1/byobu-ctrl-a.1.zst
 /usr/local/share/man/man1/byobu-disable-prompt.1.zst
