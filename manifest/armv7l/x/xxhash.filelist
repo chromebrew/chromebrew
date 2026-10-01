@@ -1,4 +1,4 @@
-# Total size: 369791
+# Total size: 401770
 /usr/local/bin/xxhsum
 /usr/local/include/xxh3.h
 /usr/local/include/xxhash.h
@@ -8,6 +8,6 @@
 /usr/local/lib/cmake/xxHash/xxHashTargets.cmake
 /usr/local/lib/libxxhash.so
 /usr/local/lib/libxxhash.so.0
-/usr/local/lib/libxxhash.so.0.8.3
+/usr/local/lib/libxxhash.so.0.8.4
 /usr/local/lib/pkgconfig/libxxhash.pc
 /usr/local/share/man/man1/xxhsum.1.zst
