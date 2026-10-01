@@ -11,10 +11,10 @@ class Xmlstarlet < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '16bc087a81954a1fb85bc0bba87fbb4a7ad82f6ced461ba73edacccb90b0c652',
-     armv7l: '16bc087a81954a1fb85bc0bba87fbb4a7ad82f6ced461ba73edacccb90b0c652',
-       i686: '0b32e2295e2ff530e5532d14adc4634e0ade37e27855e16973cd54dd8ad6bff2',
-     x86_64: 'e6d96615719b3c47d0d6c558cd651dea02387af7baca0ab1cf8b22e8b6b6e221'
+    aarch64: '68b7172fe01c2c8e17d54e1758d212d35d58a7560901c900058717c30b8a3068',
+     armv7l: '68b7172fe01c2c8e17d54e1758d212d35d58a7560901c900058717c30b8a3068',
+       i686: 'b461fd10a3ec654da32d8cd2fdd23d3bedf75cce5fd3a8eb54ae29c9f65398d0',
+     x86_64: 'f7c2842250919a5763c152d01b6a734ac7550e4bd90eea07aa55141c394055fe'
   })
 
   depends_on 'glibc' => :executable
