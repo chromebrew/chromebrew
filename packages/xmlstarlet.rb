@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Xmlstarlet < Autotools
   description 'XMLStarlet is a command line XML toolkit which can be used to transform, query, validate, and edit XML documents and files using simple set of shell commands in similar way it is done for plain text files using grep/sed/awk/tr/diff/patch.'
   homepage 'https://xmlstar.sourceforge.net/'
-  version '1.6.1'
+  version '1.7.0'
   license 'MIT'
   compatibility 'all'
-  source_url "https://downloads.sourceforge.net/project/xmlstar/xmlstarlet/#{version}/xmlstarlet-#{version}.tar.gz"
-  source_sha256 '15d838c4f3375332fd95554619179b69e4ec91418a3a5296e7c631b7ed19e7ca'
+  source_url 'https://github.com/xmlstarlet/xmlstarlet.git'
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
