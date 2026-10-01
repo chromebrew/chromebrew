@@ -1,4 +1,4 @@
-# Total size: 395242201
+# Total size: 397217975
 /usr/local/bin/audacity
 /usr/local/share/applications/org.audacityteam.Audacity4portable.desktop
 /usr/local/share/audacity/AppRun
@@ -12,6 +12,7 @@
 /usr/local/share/audacity/bin/portable-utils
 /usr/local/share/audacity/bin/qt.conf
 /usr/local/share/audacity/bin/rm-empty-dirs
+/usr/local/share/audacity/fallback/libOpenGL.so.0/libOpenGL.so.0
 /usr/local/share/audacity/fallback/libjack.so.0/libjack.so.0
 /usr/local/share/audacity/fallback/libnss3.so/libnss3.so
 /usr/local/share/audacity/fallback/libnss3.so/libnssutil3.so
@@ -66,6 +67,9 @@
 /usr/local/share/audacity/lib/libQt6Widgets.so.6
 /usr/local/share/audacity/lib/libQt6WlShellIntegration.so.6
 /usr/local/share/audacity/lib/libQt6XcbQpa.so.6
+/usr/local/share/audacity/lib/libSoundTouch.so
+/usr/local/share/audacity/lib/libSoundTouch.so.1
+/usr/local/share/audacity/lib/libSoundTouch.so.1.0.0
 /usr/local/share/audacity/lib/libXau.so.6
 /usr/local/share/audacity/lib/libXdmcp.so.6
 /usr/local/share/audacity/lib/libatk-1.0.so.0
@@ -77,7 +81,6 @@
 /usr/local/share/audacity/lib/libcairo.so.2
 /usr/local/share/audacity/lib/libcap.so.2
 /usr/local/share/audacity/lib/libdb-5.3.so
-/usr/local/share/audacity/lib/libdbus-1.so.3
 /usr/local/share/audacity/lib/libexpat.so
 /usr/local/share/audacity/lib/libexpat.so.1
 /usr/local/share/audacity/lib/libexpat.so.1.10.2
@@ -123,10 +126,22 @@
 /usr/local/share/audacity/lib/libpng16.so.16.50.0
 /usr/local/share/audacity/lib/libportaudio.so
 /usr/local/share/audacity/lib/librsvg-2.so.2
+/usr/local/share/audacity/lib/libsbsms.so
+/usr/local/share/audacity/lib/libsbsms.so.10
+/usr/local/share/audacity/lib/libsbsms.so.10.0.0
 /usr/local/share/audacity/lib/libselinux.so.1
 /usr/local/share/audacity/lib/libsndfile.so
 /usr/local/share/audacity/lib/libsndfile.so.1
 /usr/local/share/audacity/lib/libsndfile.so.1.0.37
+/usr/local/share/audacity/lib/libsoxr.so
+/usr/local/share/audacity/lib/libsoxr.so.0
+/usr/local/share/audacity/lib/libsoxr.so.0.1.2
+/usr/local/share/audacity/lib/libsqlite3.so
+/usr/local/share/audacity/lib/libsqlite3.so.0
+/usr/local/share/audacity/lib/libsqlite3.so.0.8.6
+/usr/local/share/audacity/lib/libtwolame.so
+/usr/local/share/audacity/lib/libtwolame.so.0
+/usr/local/share/audacity/lib/libtwolame.so.0.0.0
 /usr/local/share/audacity/lib/libudev.so.1
 /usr/local/share/audacity/lib/libvorbis.so
 /usr/local/share/audacity/lib/libvorbis.so.0
@@ -179,6 +194,12 @@
 /usr/local/share/audacity/licenses/opus/COPYING
 /usr/local/share/audacity/licenses/opusfile/COPYING
 /usr/local/share/audacity/licenses/portaudio/LICENSE.txt
+/usr/local/share/audacity/licenses/sbsms/COPYING
+/usr/local/share/audacity/licenses/sbsms/LICENSE
+/usr/local/share/audacity/licenses/soundtouch/COPYING.TXT
+/usr/local/share/audacity/licenses/soxr/COPYING.LGPL
+/usr/local/share/audacity/licenses/soxr/LICENCE
+/usr/local/share/audacity/licenses/twolame/COPYING
 /usr/local/share/audacity/licenses/vorbis/COPYING
 /usr/local/share/audacity/licenses/wavpack/COPYING
 /usr/local/share/audacity/licenses/wxwidgets/licence.txt
@@ -506,6 +527,7 @@
 /usr/local/share/audacity/usr/bin/portable-utils
 /usr/local/share/audacity/usr/bin/qt.conf
 /usr/local/share/audacity/usr/bin/rm-empty-dirs
+/usr/local/share/audacity/usr/fallback/libOpenGL.so.0/libOpenGL.so.0
 /usr/local/share/audacity/usr/fallback/libjack.so.0/libjack.so.0
 /usr/local/share/audacity/usr/fallback/libnss3.so/libnss3.so
 /usr/local/share/audacity/usr/fallback/libnss3.so/libnssutil3.so
@@ -560,6 +582,9 @@
 /usr/local/share/audacity/usr/lib/libQt6Widgets.so.6
 /usr/local/share/audacity/usr/lib/libQt6WlShellIntegration.so.6
 /usr/local/share/audacity/usr/lib/libQt6XcbQpa.so.6
+/usr/local/share/audacity/usr/lib/libSoundTouch.so
+/usr/local/share/audacity/usr/lib/libSoundTouch.so.1
+/usr/local/share/audacity/usr/lib/libSoundTouch.so.1.0.0
 /usr/local/share/audacity/usr/lib/libXau.so.6
 /usr/local/share/audacity/usr/lib/libXdmcp.so.6
 /usr/local/share/audacity/usr/lib/libatk-1.0.so.0
@@ -571,7 +596,6 @@
 /usr/local/share/audacity/usr/lib/libcairo.so.2
 /usr/local/share/audacity/usr/lib/libcap.so.2
 /usr/local/share/audacity/usr/lib/libdb-5.3.so
-/usr/local/share/audacity/usr/lib/libdbus-1.so.3
 /usr/local/share/audacity/usr/lib/libexpat.so
 /usr/local/share/audacity/usr/lib/libexpat.so.1
 /usr/local/share/audacity/usr/lib/libexpat.so.1.10.2
@@ -617,10 +641,22 @@
 /usr/local/share/audacity/usr/lib/libpng16.so.16.50.0
 /usr/local/share/audacity/usr/lib/libportaudio.so
 /usr/local/share/audacity/usr/lib/librsvg-2.so.2
+/usr/local/share/audacity/usr/lib/libsbsms.so
+/usr/local/share/audacity/usr/lib/libsbsms.so.10
+/usr/local/share/audacity/usr/lib/libsbsms.so.10.0.0
 /usr/local/share/audacity/usr/lib/libselinux.so.1
 /usr/local/share/audacity/usr/lib/libsndfile.so
 /usr/local/share/audacity/usr/lib/libsndfile.so.1
 /usr/local/share/audacity/usr/lib/libsndfile.so.1.0.37
+/usr/local/share/audacity/usr/lib/libsoxr.so
+/usr/local/share/audacity/usr/lib/libsoxr.so.0
+/usr/local/share/audacity/usr/lib/libsoxr.so.0.1.2
+/usr/local/share/audacity/usr/lib/libsqlite3.so
+/usr/local/share/audacity/usr/lib/libsqlite3.so.0
+/usr/local/share/audacity/usr/lib/libsqlite3.so.0.8.6
+/usr/local/share/audacity/usr/lib/libtwolame.so
+/usr/local/share/audacity/usr/lib/libtwolame.so.0
+/usr/local/share/audacity/usr/lib/libtwolame.so.0.0.0
 /usr/local/share/audacity/usr/lib/libudev.so.1
 /usr/local/share/audacity/usr/lib/libvorbis.so
 /usr/local/share/audacity/usr/lib/libvorbis.so.0
@@ -673,6 +709,12 @@
 /usr/local/share/audacity/usr/licenses/opus/COPYING
 /usr/local/share/audacity/usr/licenses/opusfile/COPYING
 /usr/local/share/audacity/usr/licenses/portaudio/LICENSE.txt
+/usr/local/share/audacity/usr/licenses/sbsms/COPYING
+/usr/local/share/audacity/usr/licenses/sbsms/LICENSE
+/usr/local/share/audacity/usr/licenses/soundtouch/COPYING.TXT
+/usr/local/share/audacity/usr/licenses/soxr/COPYING.LGPL
+/usr/local/share/audacity/usr/licenses/soxr/LICENCE
+/usr/local/share/audacity/usr/licenses/twolame/COPYING
 /usr/local/share/audacity/usr/licenses/vorbis/COPYING
 /usr/local/share/audacity/usr/licenses/wavpack/COPYING
 /usr/local/share/audacity/usr/licenses/wxwidgets/licence.txt
@@ -992,6 +1034,7 @@
 /usr/local/share/audacity/usr/wrappers/xdg-open
 /usr/local/share/audacity/wrappers/xdg-open
 /usr/local/share/audacity4portable-4.0/locale/audacity_af.qm
+/usr/local/share/audacity4portable-4.0/locale/audacity_am_ET.qm
 /usr/local/share/audacity4portable-4.0/locale/audacity_ar.qm
 /usr/local/share/audacity4portable-4.0/locale/audacity_be.qm
 /usr/local/share/audacity4portable-4.0/locale/audacity_bg.qm
@@ -1035,6 +1078,7 @@
 /usr/local/share/audacity4portable-4.0/locale/audacity_my.qm
 /usr/local/share/audacity4portable-4.0/locale/audacity_nb.qm
 /usr/local/share/audacity4portable-4.0/locale/audacity_nl.qm
+/usr/local/share/audacity4portable-4.0/locale/audacity_nn.qm
 /usr/local/share/audacity4portable-4.0/locale/audacity_oc.qm
 /usr/local/share/audacity4portable-4.0/locale/audacity_pl.qm
 /usr/local/share/audacity4portable-4.0/locale/audacity_pt_BR.qm
