@@ -3,11 +3,11 @@ require 'package'
 class Zotero < Package
   description 'Zotero is a free, easy-to-use tool to help you collect, organize, annotate, cite, and share research.'
   homepage 'https://www.zotero.org/'
-  version '10.0.3'
+  version '10.0.5'
   license 'GPL-3'
   compatibility 'x86_64'
   source_url "https://download.zotero.org/client/release/#{version}/Zotero-#{version}_linux-x86_64.tar.xz"
-  source_sha256 '45f1d3900b927dfb16dec52e4e3fe8672042c7be94ec6b77ca7712b9ebc9c1b6'
+  source_sha256 'bfc414d8cd03aa2cc3b710ec84b78e02cfc119efc14d28112af74599d309ec0f'
 
   depends_on 'dbus_glib'
   depends_on 'gtk3'

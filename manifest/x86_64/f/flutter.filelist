@@ -1,4 +1,4 @@
-# Total size: 2589824377
+# Total size: 2591339649
 /home/chronos/user/.flutter_tool_state
 /usr/local/bin/dart
 /usr/local/bin/flutter
@@ -75,9 +75,9 @@
 /usr/local/share/flutter/.git/logs/refs/remotes/origin/HEAD
 /usr/local/share/flutter/.git/objects/info/commit-graph
 /usr/local/share/flutter/.git/objects/info/packs
-/usr/local/share/flutter/.git/objects/pack/pack-918931ca4582d840702b284b37136e7774e51579.idx
-/usr/local/share/flutter/.git/objects/pack/pack-918931ca4582d840702b284b37136e7774e51579.pack
-/usr/local/share/flutter/.git/objects/pack/pack-918931ca4582d840702b284b37136e7774e51579.rev
+/usr/local/share/flutter/.git/objects/pack/pack-84a5d7c573b95cf41a51037deab9e1e450c2bbb3.idx
+/usr/local/share/flutter/.git/objects/pack/pack-84a5d7c573b95cf41a51037deab9e1e450c2bbb3.pack
+/usr/local/share/flutter/.git/objects/pack/pack-84a5d7c573b95cf41a51037deab9e1e450c2bbb3.rev
 /usr/local/share/flutter/.git/packed-refs
 /usr/local/share/flutter/.git/refs/remotes/origin/HEAD
 /usr/local/share/flutter/.gitattributes
@@ -318,7 +318,7 @@
 /usr/local/share/flutter/.pub-preload-cache/url_launcher_windows-3.1.5.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/uuid-4.5.3.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/vector_math-2.4.0.tar.gz
-/usr/local/share/flutter/.pub-preload-cache/vector_math-2.4.2.tar.gz
+/usr/local/share/flutter/.pub-preload-cache/vector_math-2.4.3.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/video_player-2.11.1.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/video_player_android-2.10.0.tar.gz
 /usr/local/share/flutter/.pub-preload-cache/video_player_avfoundation-2.10.0.tar.gz
