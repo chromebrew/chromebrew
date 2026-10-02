@@ -1,0 +1,3 @@
+#!/bin/bash
+dapr -h | head
+dapr -v

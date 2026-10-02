@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_meson_python < Pip
   description 'Meson Python build backend (PEP 517)'
   homepage 'https://pypi.org/project/meson-python'
-  version "0.22.0-#{CREW_PY_VER}"
+  version "0.22.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fd7f2ae3abc34aacf6f574b50f1830d47f6c60b90bf3ef806a8ede058bf7af66',
-     armv7l: 'fd7f2ae3abc34aacf6f574b50f1830d47f6c60b90bf3ef806a8ede058bf7af66',
-       i686: '3e162e63037178ca28d41031cd86884d3e624bc362f43cca17135f2d8af8a642',
-     x86_64: '39298e0a01946c6eea6c7a6e60950fa46041c5be3efbaac2fff82de1ea46091a'
+    aarch64: 'bcfbf0d49d0cb4c6a4e8ee6bc396031f64ddb5fe50595d1eced37c1b19fa71d7',
+     armv7l: 'bcfbf0d49d0cb4c6a4e8ee6bc396031f64ddb5fe50595d1eced37c1b19fa71d7',
+       i686: 'a6223b529cd0d1250b0f250e151999c8236df20e02aeaa46b19a0529a2a285ed',
+     x86_64: '8aa540e7f40e8e42f0853fd37cb6b384f4420f4c3089c9987a9b7ec510e94d73'
   })
 
   depends_on 'python3'

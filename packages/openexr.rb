@@ -3,21 +3,23 @@ require 'buildsystems/cmake'
 class Openexr < CMake
   description 'OpenEXR is a high dynamic-range (HDR) image file format developed by Industrial Light & Magic for use in computer imaging applications.'
   homepage 'https://openexr.com/en/latest/'
-  version '3.2.1'
+  version '3.5.1'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/AcademySoftwareFoundation/openexr/archive/refs/tags/v3.2.1.tar.gz'
-  source_sha256 '61e175aa2203399fb3c8c2288752fbea3c2637680d50b6e306ea5f8ffdd46a9b'
+  source_url 'https://github.com/AcademySoftwareFoundation/openexr.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '790cd3fba4398fea18376924db32bbe58c547ebf652ab7d9cb029b4772e83602',
-     armv7l: '790cd3fba4398fea18376924db32bbe58c547ebf652ab7d9cb029b4772e83602',
-       i686: '1fa2bf8fa2709282fd43329ae05f14f261b4e021a49fd78fb0bc506a6cc4d433',
-     x86_64: 'e11aa055cbace1b83b088aae1d68a95a44863df3a1276639f28838cab3e6977c'
+    aarch64: 'ff292125b845e9ab9a91211b8371bad1c4db19cebb5c1f5f5bdcb6cd74f6a67f',
+     armv7l: 'ff292125b845e9ab9a91211b8371bad1c4db19cebb5c1f5f5bdcb6cd74f6a67f',
+       i686: 'c59c36f49415bb3e7d0cbdad469d3a94c6bf20fedf5b50e9620992879a70d9bb',
+     x86_64: 'cb7d320d4536d0003e5dcf842a7c783c413dce8c5c4d9b6e69f0a4e72be98e23'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'libdeflate' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'libdeflate' => :library
+  depends_on 'zstd' => :library
 end
