@@ -10,15 +10,16 @@ class Py3_dbus_python < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '946a0e778e799367db1ce34c08693b5f0bcb932da11a52988cc0f27d1d4914b4',
-     armv7l: '946a0e778e799367db1ce34c08693b5f0bcb932da11a52988cc0f27d1d4914b4',
-     x86_64: 'c6994af972bd88afc85e2b6762222bb66582cb97138130baf60655c2f90fd25d'
+    aarch64: '11185685473c1768c6d1e7d1ca893f3a010f75ac89868149c8c5c998ea75b72b',
+     armv7l: '11185685473c1768c6d1e7d1ca893f3a010f75ac89868149c8c5c998ea75b72b',
+     x86_64: '3b0e6a8315964eda835ffbc080b98292dd7c7d409f14adeb2af5827108a7fcae'
   })
 
   depends_on 'autoconf_archive' => :build
   depends_on 'dbus' => :library
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'py3_meson_python' => :build
   depends_on 'py3_patchelf' => :build
   depends_on 'python3' => :logical
