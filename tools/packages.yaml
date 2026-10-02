@@ -1390,6 +1390,11 @@ url: https://ftp.gnu.org/non-gnu/cvs/source/stable
 activity: none
 ---
 kind: url
+name: dapr
+url: https://github.com/dapr/cli/releases
+activity: medium
+---
+kind: url
 name: daq
 url: https://www.snort.org/downloads/
 activity: none
