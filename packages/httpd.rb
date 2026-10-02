@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Httpd < Autotools
   description 'The Apache HTTP Server Project is an effort to develop and maintain an open-source HTTP server for modern operating systems including UNIX and Windows.'
   homepage 'https://httpd.apache.org/'
-  version '2.4.68'
+  version '2.4.69'
   license 'GPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://dlcdn.apache.org/httpd/httpd-#{version}.tar.bz2"
-  source_sha256 '68c74d4df38c26bed4dfbdb8f3baf1eb532f3872357becc1bba5d136f6b63c06'
+  source_sha256 'c5e6ebc66e349b87d7fc6916ae7cc2a808ed348003de134cf9e9d89d3e2cc73d'
   binary_compression 'tar.zst'
 
   binary_sha256({
