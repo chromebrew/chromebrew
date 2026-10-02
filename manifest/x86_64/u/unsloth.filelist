@@ -1,4 +1,4 @@
-# Total size: 484019001
+# Total size: 485745072
 /usr/local/bin/unsloth
 /usr/local/share/unsloth/AppRun
 /usr/local/share/unsloth/AppRun.wrapped
@@ -688,5 +688,13 @@
 /usr/local/share/unsloth/usr/share/glib-2.0/schemas/org.gtk.Settings.EmojiChooser.gschema.xml
 /usr/local/share/unsloth/usr/share/glib-2.0/schemas/org.gtk.Settings.FileChooser.gschema.xml
 /usr/local/share/unsloth/usr/share/icons/hicolor/128x128/apps/unsloth-studio.png
+/usr/local/share/unsloth/usr/share/icons/hicolor/16x16/apps/unsloth-studio.png
+/usr/local/share/unsloth/usr/share/icons/hicolor/22x22/apps/unsloth-studio.png
+/usr/local/share/unsloth/usr/share/icons/hicolor/24x24/apps/unsloth-studio.png
+/usr/local/share/unsloth/usr/share/icons/hicolor/256x256/apps/unsloth-studio.png
 /usr/local/share/unsloth/usr/share/icons/hicolor/32x32/apps/unsloth-studio.png
+/usr/local/share/unsloth/usr/share/icons/hicolor/48x48/apps/unsloth-studio.png
+/usr/local/share/unsloth/usr/share/icons/hicolor/512x512/apps/unsloth-studio.png
+/usr/local/share/unsloth/usr/share/icons/hicolor/64x64/apps/unsloth-studio.png
+/usr/local/share/unsloth/usr/share/icons/hicolor/96x96/apps/unsloth-studio.png
 /usr/local/share/unsloth/usr/share/unsloth/fonts/UnslothSafeEmoji.ttf
