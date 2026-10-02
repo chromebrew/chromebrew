@@ -11,9 +11,9 @@ class Appstream < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c2647331aaec4487c5cf5c2bfb76b69c4c560ece9a5c4a0bd0bd9cc4c9313f04',
-     armv7l: 'c2647331aaec4487c5cf5c2bfb76b69c4c560ece9a5c4a0bd0bd9cc4c9313f04',
-     x86_64: '90ffdaf7c6f122950cceb78e1693280afb1eba1802301aa11cae49c9a40dca50'
+    aarch64: '851c044710553b642aefdf771810084e77424c22c42605d5cdfa6864dcb80c46',
+     armv7l: '851c044710553b642aefdf771810084e77424c22c42605d5cdfa6864dcb80c46',
+     x86_64: '8546135e0029635d031e37798f2b76014b5c61c5bd149cc25cca04b35dc185c1'
   })
 
   depends_on 'cairo' => :library
@@ -46,22 +46,11 @@ class Appstream < Meson
   meson_options '-Dapidocs=false -Dcompose=true -Dsystemd=false -Dvapi=true -Dblake3-support=false'
 
   def self.patch
-    # https://github.com/ximion/appstream/issues/794
-    File.write 'appstream_openat.patch', <<~OPENAT_PATCH
-      diff -Npaur a/compose/asc-directory-unit.c b/compose/asc-directory-unit.c
-      --- a/compose/asc-directory-unit.c	2026-09-30 13:58:54.454270875 -0400
-      +++ b/compose/asc-directory-unit.c	2026-09-30 13:59:35.757725026 -0400
-      @@ -202,7 +202,7 @@ asc_resolve_path_in_root (const gchar *r
-       static gint
-       asc_openat2 (gint dir_fd, const gchar *path, gint flags)
-       {
-      -#if defined(HAVE_OPENAT2) || defined(HAVE_LINUX_OPENAT2_H)
-      +#if defined(HAVE_OPENAT2) && defined(HAVE_LINUX_OPENAT2_H)
-       	struct open_how how = {
-       		.flags = flags,
-       		.resolve = RESOLVE_IN_ROOT,
-    OPENAT_PATCH
-    system 'patch -Np1 -i appstream_openat.patch' if version == '1.2.1'
+    patches = [
+      # https://github.com/ximion/appstream/issues/794
+      ['https://github.com/ximion/appstream/commit/2cf338e0e9f1c711844e1e55ac853cf5ed307678.patch', 'ec2d1d883e0c2c25091d53f745c718882626016bf94989e471dcc30d135e8bfa']
+    ]
+    ConvenienceFunctions.patch(patches) if version == '1.2.1'
   end
 
   def self.postinstall
