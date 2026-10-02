@@ -3,12 +3,12 @@ require 'package'
 class Appflowy < Package
   description 'AI collaborative workspace where you achieve more without losing control of your data. The best open source alternative to Notion.'
   homepage 'https://www.appflowy.io/'
-  version '0.14.5'
+  version '0.14.6'
   license 'AGPL-3.0'
   compatibility 'x86_64'
   min_glibc '2.28'
   source_url "https://github.com/AppFlowy-IO/AppFlowy/releases/download/#{version}/AppFlowy-#{version}-linux-x86_64.tar.gz"
-  source_sha256 '1af3dfd4cab96b86501a49106ab08a38c9772fd3b86967c4e4c42cf54145fd3e'
+  source_sha256 'c1fda271f703ef159026e395d9830998a57ff7486052b32e577f5651b6a42ec2'
 
   depends_on 'gtk3' # R
   depends_on 'gobject_introspection' # R
