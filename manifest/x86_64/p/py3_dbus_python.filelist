@@ -1,4 +1,4 @@
-# Total size: 503486
+# Total size: 541386
 /usr/local/include/python3.14/dbus_python/dbus-1.0/dbus/dbus-python.h
 /usr/local/lib64/python3.14/site-packages/.dbus_python.mesonpy.libs/pkgconfig/dbus-python.pc
 /usr/local/lib64/python3.14/site-packages/_dbus_bindings.cpython-314-x86_64-linux-gnu.so
@@ -37,8 +37,14 @@
 /usr/local/lib64/python3.14/site-packages/dbus/server.py
 /usr/local/lib64/python3.14/site-packages/dbus/service.py
 /usr/local/lib64/python3.14/site-packages/dbus/types.py
-/usr/local/lib64/python3.14/site-packages/dbus_python-1.4.0.dist-info/INSTALLER
-/usr/local/lib64/python3.14/site-packages/dbus_python-1.4.0.dist-info/METADATA
-/usr/local/lib64/python3.14/site-packages/dbus_python-1.4.0.dist-info/RECORD
-/usr/local/lib64/python3.14/site-packages/dbus_python-1.4.0.dist-info/REQUESTED
-/usr/local/lib64/python3.14/site-packages/dbus_python-1.4.0.dist-info/WHEEL
+/usr/local/lib64/python3.14/site-packages/dbus_python-1.5.0.dist-info/INSTALLER
+/usr/local/lib64/python3.14/site-packages/dbus_python-1.5.0.dist-info/METADATA
+/usr/local/lib64/python3.14/site-packages/dbus_python-1.5.0.dist-info/RECORD
+/usr/local/lib64/python3.14/site-packages/dbus_python-1.5.0.dist-info/REQUESTED
+/usr/local/lib64/python3.14/site-packages/dbus_python-1.5.0.dist-info/WHEEL
+/usr/local/lib64/python3.14/site-packages/dbus_python-1.5.0.dist-info/licenses/COPYING
+/usr/local/lib64/python3.14/site-packages/dbus_python-1.5.0.dist-info/licenses/LICENSES/MIT.txt
+/usr/local/lib64/python3.14/site-packages/dbus_python-1.5.0.dist-info/licenses/subprojects/dbus-gmain/COPYING
+/usr/local/lib64/python3.14/site-packages/dbus_python-1.5.0.dist-info/licenses/subprojects/dbus-gmain/LICENSES/AFL-2.1.txt
+/usr/local/lib64/python3.14/site-packages/dbus_python-1.5.0.dist-info/licenses/subprojects/dbus-gmain/LICENSES/GPL-2.0-or-later.txt
+/usr/local/lib64/python3.14/site-packages/dbus_python-1.5.0.dist-info/licenses/subprojects/dbus-gmain/LICENSES/MIT.txt
