@@ -1,4 +1,4 @@
-# Total size: 29538699
+# Total size: 29874660
 /usr/local/bin/ab
 /usr/local/bin/apachectl
 /usr/local/bin/apxs
@@ -556,6 +556,7 @@
 /usr/local/share/httpd/manual/howto/ssi.html.fr.utf8
 /usr/local/share/httpd/manual/howto/ssi.html.ja.utf8
 /usr/local/share/httpd/manual/howto/ssi.html.ko.euc-kr
+/usr/local/share/httpd/manual/images/README.md
 /usr/local/share/httpd/manual/images/apache_header.gif
 /usr/local/share/httpd/manual/images/bal-man-b.png
 /usr/local/share/httpd/manual/images/bal-man-w.png
@@ -592,8 +593,16 @@
 /usr/local/share/httpd/manual/images/reverse-proxy-arch.png
 /usr/local/share/httpd/manual/images/rewrite_backreferences.png
 /usr/local/share/httpd/manual/images/rewrite_backreferences.svg
+/usr/local/share/httpd/manual/images/rewrite_l_flag_looping.png
+/usr/local/share/httpd/manual/images/rewrite_l_flag_looping.svg
+/usr/local/share/httpd/manual/images/rewrite_module_order.png
+/usr/local/share/httpd/manual/images/rewrite_module_order.svg
+/usr/local/share/httpd/manual/images/rewrite_path_stripping.png
+/usr/local/share/httpd/manual/images/rewrite_path_stripping.svg
 /usr/local/share/httpd/manual/images/rewrite_process_uri.png
 /usr/local/share/httpd/manual/images/rewrite_process_uri.svg
+/usr/local/share/httpd/manual/images/rewrite_simplified_overview.png
+/usr/local/share/httpd/manual/images/rewrite_simplified_overview.svg
 /usr/local/share/httpd/manual/images/right.gif
 /usr/local/share/httpd/manual/images/ssl_intro_fig1.gif
 /usr/local/share/httpd/manual/images/ssl_intro_fig1.png
