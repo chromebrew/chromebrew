@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Wcslib < Autotools
   description 'C library that implements the "World Coordinate System" (WCS) standard in FITS (Flexible Image Transport System).'
   homepage 'https://www.atnf.csiro.au/people/mcalabre/WCS/wcslib/'
-  version '8.9'
+  version '8.10'
   license 'Copyright (C) 1995-2023, Mark Calabretta'
   compatibility 'all'
   source_url "https://www.atnf.csiro.au/computing/software/wcs/wcslib-releases/wcslib-#{version}.tar.bz2"
-  source_sha256 '82ac09ce5091b0bf06cec8f5cdeec1dabe1d06ba5dfb7ff2bdb0c1680488807b'
+  source_sha256 'b394d3306da9a52410f056136911496e599b5c48f1cff2f221563697077bbd8d'
   binary_compression 'tar.zst'
 
   binary_sha256({
