@@ -3,11 +3,11 @@ require 'buildsystems/perl'
 class Perl_clone < PERL
   description 'Recursively copy Perl datatypes'
   homepage 'https://metacpan.org/pod/Clone'
-  version "0.50-#{CREW_PERL_VER}"
+  version "0.51-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url "https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/Clone-#{version.split('-')[0]}.tar.gz"
-  source_sha256 'f9732a4a857974db30905233589113003301b585b0cecda29a21cfba5bb014f9'
+  source_sha256 'f17f66fec97dacca67ac9585701d2d079cfc80539fe6e8160c201c4e55f67507'
   binary_compression 'tar.zst'
 
   binary_sha256({
