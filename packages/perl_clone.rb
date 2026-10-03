@@ -3,18 +3,18 @@ require 'buildsystems/perl'
 class Perl_clone < PERL
   description 'Recursively copy Perl datatypes'
   homepage 'https://metacpan.org/pod/Clone'
-  version "0.50-#{CREW_PERL_VER}"
+  version "0.51-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url "https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/Clone-#{version.split('-')[0]}.tar.gz"
-  source_sha256 'f9732a4a857974db30905233589113003301b585b0cecda29a21cfba5bb014f9'
+  source_sha256 'f17f66fec97dacca67ac9585701d2d079cfc80539fe6e8160c201c4e55f67507'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b34bd696263c1244df60111dffe89ef554eca5aaa57b8b31b1484dfdb6a3e5c3',
-     armv7l: 'b34bd696263c1244df60111dffe89ef554eca5aaa57b8b31b1484dfdb6a3e5c3',
-       i686: 'ec7cdbbe35fb43f9e10354f2528a667253d0afd101c7e61b41283834f994d480',
-     x86_64: 'fead8bfbcd2b1850d9baa2b2524556fd97fe241f021dacfd5815b94312eb66fe'
+    aarch64: '8b00f825127b4ece744ee4c96be9defd1e746f621b982452476937001d4fbba6',
+     armv7l: '8b00f825127b4ece744ee4c96be9defd1e746f621b982452476937001d4fbba6',
+       i686: '92aab63008241f268703c7385079bda1cf0f087cfad77f6941622283f077759e',
+     x86_64: '06a6e4b7afe5548e4c497f4c8b6e0b618edb08500cdf4d4ea505f675e3e4c94a'
   })
 
   depends_on 'glibc' => :library
