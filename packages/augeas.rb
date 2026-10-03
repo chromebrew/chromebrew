@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Augeas < Autotools
   description 'Augeas is a configuration editing tool that parses native formats and transforms them into a tree.'
   homepage 'http://augeas.net/'
-  version '1.14.1'
+  version '1.15.0'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://github.com/hercules-team/augeas.git'
