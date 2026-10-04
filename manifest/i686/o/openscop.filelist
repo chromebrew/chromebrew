@@ -1,4 +1,4 @@
-# Total size: 1933136
+# Total size: 2122693
 /usr/local/include/osl/attributes.h
 /usr/local/include/osl/body.h
 /usr/local/include/osl/extensions/annotation.h
@@ -12,6 +12,7 @@
 /usr/local/include/osl/extensions/loop.h
 /usr/local/include/osl/extensions/null.h
 /usr/local/include/osl/extensions/pluto_unroll.h
+/usr/local/include/osl/extensions/private.h
 /usr/local/include/osl/extensions/region.h
 /usr/local/include/osl/extensions/scatinfos.h
 /usr/local/include/osl/extensions/scatnames.h

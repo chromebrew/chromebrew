@@ -20,7 +20,7 @@ class Cloog < Autotools
   depends_on 'glibc' # R
   depends_on 'gmp' # R
   depends_on 'isl'
-  depends_on 'osl'
+  depends_on 'openscop'
 
   autotools_configure_options '--with-isl=system --with-osl=system'
   run_tests
