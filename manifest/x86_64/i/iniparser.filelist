@@ -1,4 +1,4 @@
-# Total size: 135242
+# Total size: 135402
 /usr/local/include/iniparser/dictionary.h
 /usr/local/include/iniparser/iniparser.h
 /usr/local/include/iniparser/version.h
@@ -11,5 +11,5 @@
 /usr/local/lib64/libiniparser.a
 /usr/local/lib64/libiniparser.so
 /usr/local/lib64/libiniparser.so.4
-/usr/local/lib64/libiniparser.so.4.3.0
+/usr/local/lib64/libiniparser.so.4.3.2
 /usr/local/lib64/pkgconfig/iniparser.pc
