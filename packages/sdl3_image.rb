@@ -11,9 +11,9 @@ class Sdl3_image < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fa886baa2de144035bc8892eb9b6876a300dbf3153035e4dcf3eb155daefd4f4',
-     armv7l: 'fa886baa2de144035bc8892eb9b6876a300dbf3153035e4dcf3eb155daefd4f4',
-     x86_64: '4b4b5cd8353b0c9fba23d940348e5b1697e428674a981ae044198c54848739c5'
+    aarch64: '5d0604d91744b09cac2b0e5ce020714cfb8e7f6d193f30c4d1a029f7863323c6',
+     armv7l: '5d0604d91744b09cac2b0e5ce020714cfb8e7f6d193f30c4d1a029f7863323c6',
+     x86_64: '16b575e6d0c45e03d30a43715f748c9057e007e1b96f82ab5e875653b79521f2'
   })
 
   depends_on 'gcc_lib' => :library
