@@ -11,10 +11,10 @@ class Pacparser < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7c1291e3bc4fb2defe85d42222d210e4c11bd6b9ad3fdef016243fd811f9a79d',
-     armv7l: '7c1291e3bc4fb2defe85d42222d210e4c11bd6b9ad3fdef016243fd811f9a79d',
-       i686: 'c42044e0bf7c84e6fad15018c3d3e77ea87489d4e88900cea6ae09482aeda8b7',
-     x86_64: 'b229e32c4887060f85dd945a2ac8d46da690be08eb0bc412dcd3e7622b58f67d'
+    aarch64: '0a43949a0a631c5a7d1073255248fff8cecd2bccd7ecf65c36359baf9dc42107',
+     armv7l: '0a43949a0a631c5a7d1073255248fff8cecd2bccd7ecf65c36359baf9dc42107',
+       i686: 'f43a673a4332e03bff977da6c13d88b2c737205559c7e6b976f01d4c53354246',
+     x86_64: 'adf683f6a53738aadc02896109752f7c3b28085a6a057eaf15373b40337d8074'
   })
 
   depends_on 'glibc' => :library
