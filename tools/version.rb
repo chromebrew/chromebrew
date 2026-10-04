@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.44 (for Chromebrew)
+# version.rb version 3.45 (for Chromebrew)
 
 OPTIONS = %w[-a --all -h --help -j --json -u --update-package-files -v --verbose -vv]
 
@@ -179,11 +179,11 @@ def get_version(name, homepage, source)
     puts "source_url host is #{url.host}" if CREW_VERY_VERBOSE
     case url.host
     when 'github.com'
-      github_fallback(url)
+      return github_fallback(url)
     when 'gitlab.com'
-      gitlab_fallback(url)
+      return gitlab_fallback(url)
     when 'downloads.sourceforge.net'
-      sourceforge_fallback(url)
+      return sourceforge_fallback(url)
     end
   end
 end
