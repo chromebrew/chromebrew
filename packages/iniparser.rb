@@ -11,10 +11,10 @@ class Iniparser < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7432b433a0d25e14f80a3f156d674a0a70c974cef5707888c8f42a47129ab6d3',
-     armv7l: '7432b433a0d25e14f80a3f156d674a0a70c974cef5707888c8f42a47129ab6d3',
-       i686: 'c99805a824c6e7a4b0567ea63f44f405b81206002b54adee7c9936657701bf24',
-     x86_64: '4d28a6f1aeb507d031b7ac0211a34b4368cd650d41881327d361df0e6bd44b1a'
+    aarch64: '703c5d2acff44a6e89fa393ba6eaf47b4b1926cd003b44b4915268bb89c4cd1c',
+     armv7l: '703c5d2acff44a6e89fa393ba6eaf47b4b1926cd003b44b4915268bb89c4cd1c',
+       i686: 'f05f9d9ffa66b270f88e029dfd7729e2a2340750ee9466c011df44f77834da14',
+     x86_64: '86c9c34d5a9e7cf563c48bc23febbf6116f67aab9f3fe0b68de8151d4cf6973d'
   })
 
   depends_on 'glibc' => :library
