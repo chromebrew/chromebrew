@@ -3,7 +3,7 @@ require 'buildsystems/rust'
 class Broot < RUST
   description 'A new way to see and navigate directory trees'
   homepage 'https://dystroy.org/broot/'
-  version '1.60.2'
+  version '1.61.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/Canop/broot.git'
@@ -11,10 +11,10 @@ class Broot < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aac60abf4b60b03fd75303e42e9dda18d05f39223fe411a64e99df04a4b441e8',
-     armv7l: 'aac60abf4b60b03fd75303e42e9dda18d05f39223fe411a64e99df04a4b441e8',
-       i686: '93f801e86ad2faf500e15fee56b493f6518df4be38e01c350b6fd0f762fe4af8',
-     x86_64: '3012d20fd18a37ca010ddcee6a1df31bf20645f966a6c673b00c6cfc02f6e7c1'
+    aarch64: '6107e04cb3e428aef43149b1b58bd7dd8fa2ced4a3f5fb897ae6f8c3e86e74c8',
+     armv7l: '6107e04cb3e428aef43149b1b58bd7dd8fa2ced4a3f5fb897ae6f8c3e86e74c8',
+       i686: '889214f5376c50d6021e368ecfbbfeb7ab486c1f54991dba5a587bf9a3933d36',
+     x86_64: '6d8871dd9ca7dd2bd8a2b9b6bcf207cb12a419607c4cdce2f47b4c23f3791264'
   })
 
   depends_on 'gcc_lib' => :executable
