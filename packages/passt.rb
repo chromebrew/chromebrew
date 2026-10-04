@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Passt < Autotools
   description 'Plug A Simple Socket Transport'
   homepage 'https://passt.top/passt/about/'
-  version '2026_09_25.df90211'
+  version '2026_10_02.cba3570'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://passt.top/passt'
