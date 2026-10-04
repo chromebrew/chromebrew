@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Xorg_proto < Meson
   description 'The xorgproto package provides the header files required to build the X Window system, and to allow other applications to build against the installed X Window system.'
   homepage 'https://www.x.org/wiki/'
-  version '2025.1'
+  version '2026.1'
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/proto/xorgproto.git'
