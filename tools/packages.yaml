@@ -11070,6 +11070,11 @@ url: https://pwmt.org/projects/zathura-pdf-poppler/download/
 activity: low
 ---
 kind: url
+name: zcode
+url: https://zcode.z.ai/en#all-downloads
+activity: high
+---
+kind: url
 name: zed
 url: https://github.com/zed-industries/zed/releases
 activity: high
