@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Poppler < CMake
   description 'Poppler is a PDF rendering library based on the xpdf-3.0 code base.'
   homepage 'https://poppler.freedesktop.org/'
-  version '26.08.0'
+  version '26.10.0'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/poppler/poppler.git'
