@@ -11,19 +11,19 @@ class Curtail < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd3352d0a5a64e6d837e03b9c910b33adf4ec7eeacba9c3996ae0018683bc4d81',
-     armv7l: 'd3352d0a5a64e6d837e03b9c910b33adf4ec7eeacba9c3996ae0018683bc4d81',
-     x86_64: 'd2e0fd2a8c490e8210f6940e88a83f03df922d96bf48786d9f7eea8b9ea6b708'
+    aarch64: 'd3edb67248592218d01085c5b83fe28ea0d2b965432931423885d9ec7ee5a475',
+     armv7l: 'd3edb67248592218d01085c5b83fe28ea0d2b965432931423885d9ec7ee5a475',
+     x86_64: '9d8d5370f55143b2f67fb42c651ba34e4eed2491e4e2953034f4ddaa5724b14b'
   })
 
-  depends_on 'appstream' => :library
-  depends_on 'blueprint_compiler' => :library
-  depends_on 'desktop_file_utils' => :library
-  depends_on 'gobject_introspection' => :library
-  depends_on 'gtk4' => :library
-  depends_on 'jpegoptim' => :library
-  depends_on 'libadwaita' => :library
-  depends_on 'libwebp' => :library
-  depends_on 'optipng' => :library
-  depends_on 'pngquant' => :library
+  depends_on 'appstream' => :build
+  depends_on 'blueprint_compiler' => :build
+  depends_on 'desktop_file_utils' => :build
+  depends_on 'gobject_introspection' => :build
+  depends_on 'gtk4' => :build
+  depends_on 'jpegoptim' => :build
+  depends_on 'libadwaita' => :build
+  depends_on 'libwebp' => :build
+  depends_on 'optipng' => :build
+  depends_on 'pngquant' => :build
 end
