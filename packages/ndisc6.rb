@@ -11,10 +11,10 @@ class Ndisc6 < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '18e22de4da573e25a38c5dd108a4121e45278129b90bc6faee91a41c666d538d',
-     armv7l: '18e22de4da573e25a38c5dd108a4121e45278129b90bc6faee91a41c666d538d',
-       i686: '9bcdc5cee50c6cc0023226ae9c5a0628861650ef7b99788362c8de15e68fe610',
-     x86_64: '4903331acbaefa2f66db1514c08ee5b614508432d2b1fbe21a0392191020c099'
+    aarch64: 'deabc90c2f621f0b3a945f77854312ca3f0376cc5d9e62f264d5e3885ed127aa',
+     armv7l: 'deabc90c2f621f0b3a945f77854312ca3f0376cc5d9e62f264d5e3885ed127aa',
+       i686: 'cb816a7766d0fd6a0bd9c4cf55c47ff1814cfd8f13829b5caf4cce1704ae0532',
+     x86_64: '1a16c389a59809e2e7deadf00db9f0294cef07f6277ba9b3154f44778e76785b'
   })
 
   depends_on 'glibc' => :executable
