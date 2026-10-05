@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Curtail < Meson
   description 'Curtail (previously ImCompressor) is an useful image compressor, supporting PNG, JPEG and WEBP file types.'
   homepage 'https://github.com/Huluti/Curtail'
-  version '1.16.2'
+  version '1.17.0'
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/Huluti/Curtail.git'
