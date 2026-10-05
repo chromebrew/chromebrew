@@ -1,4 +1,4 @@
-# Total size: 538123
+# Total size: 551895
 /usr/local/bin/curtail
 /usr/local/share/applications/com.github.huluti.Curtail.desktop
 /usr/local/share/curtail/curtail.gresource
@@ -60,5 +60,6 @@
 /usr/local/share/locale/tr/LC_MESSAGES/curtail.mo
 /usr/local/share/locale/uk/LC_MESSAGES/curtail.mo
 /usr/local/share/locale/uz/LC_MESSAGES/curtail.mo
+/usr/local/share/locale/vi/LC_MESSAGES/curtail.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/curtail.mo
-/usr/local/share/metainfo/com.github.huluti.Curtail.appdata.xml
+/usr/local/share/metainfo/com.github.huluti.Curtail.metainfo.xml
