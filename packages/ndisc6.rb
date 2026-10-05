@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Ndisc6 < Autotools
   description 'Small collection of useful tools for IPv6 networking (ndisc6, rdisc6, tcptraceroute6, traceroute6, rdnssd).'
   homepage 'https://www.remlab.net/ndisc6/'
-  version '1.0.8'
+  version '1.0.9'
   license 'GPL-2'
   compatibility 'all'
   source_url "https://www.remlab.net/files/ndisc6/ndisc6-#{version}.tar.bz2"
-  source_sha256 '1f2fb2dc1172770aa5a09d39738a44d8b753cc5e2e25e306ca78682f9fea0b4f'
+  source_sha256 '1fdcd2f2abc8a69f182631a53902d0720fc8b00703e2d9131dadab7e327f478b'
   binary_compression 'tar.zst'
 
   binary_sha256({
