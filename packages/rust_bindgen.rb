@@ -11,10 +11,10 @@ class Rust_bindgen < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a21601070721d2a2985e34f44571fbeb7387ca11ca117e5283f6d8ef6d46eba4',
-     armv7l: 'a21601070721d2a2985e34f44571fbeb7387ca11ca117e5283f6d8ef6d46eba4',
-       i686: 'ef03597cccb229e1a534b6de81aaf85d07129bbc88a94bcc49de86572e41f92e',
-     x86_64: 'c2e5736fe5d310f261da6f289490f3e5dfca3bb5e2ea53ed0193655ca45fb632'
+    aarch64: '490d8a4dff347fe9b2e944842c36cd4813c8b883d17dfe6b3f0ba961bed16e83',
+     armv7l: '490d8a4dff347fe9b2e944842c36cd4813c8b883d17dfe6b3f0ba961bed16e83',
+       i686: 'f2fa9c1212ef4bbc6c80c1116c0e86c250252385db60ed50e2b13e4c2602be55',
+     x86_64: '56d1f397949826126bb00e100f35ee6bb2360fad656c647df4914bce70c0aac0'
   })
 
   depends_on 'gcc_lib' => :executable
