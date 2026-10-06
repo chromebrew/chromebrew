@@ -11,9 +11,9 @@ class Upower < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0e91dd25aabb541a03c4d6ac532655ed6ad3bc7b02f7b2ef17a0e98c3f7bdb60',
-     armv7l: '0e91dd25aabb541a03c4d6ac532655ed6ad3bc7b02f7b2ef17a0e98c3f7bdb60',
-     x86_64: 'c8866def1793bfba679129f733eb4d8b440b28875884c7331f05dd6ace0deb85'
+    aarch64: '6f85ea3fbd03e7e8bf848b234cc17285b22f126ab7373b5258fa8b219dddb559',
+     armv7l: '6f85ea3fbd03e7e8bf848b234cc17285b22f126ab7373b5258fa8b219dddb559',
+     x86_64: 'edf5e96736d1f38351c348275e844ca26eaa374085ef4a606c39fde93a7311e3'
   })
 
   depends_on 'docbook_xml' => :build
