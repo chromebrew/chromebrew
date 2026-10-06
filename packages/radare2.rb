@@ -11,10 +11,10 @@ class Radare2 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '028cf7e3dce5c4df32c6c8c54a22c97a6ca54c79f12b25292595451cbd47b67c',
-     armv7l: '028cf7e3dce5c4df32c6c8c54a22c97a6ca54c79f12b25292595451cbd47b67c',
-       i686: '9d5972efcc27425e8178d5c159700f28a717db5becb59f699aeb536b0024b06d',
-     x86_64: '78aec6fbfe0ae999bf2b1141c926654f77df5340f0f11a0966ff95f75483142b'
+    aarch64: '33cad798f3a960c37f438bb7842d6f921ac718d74d039a2402f97e92f5bdab20',
+     armv7l: '33cad798f3a960c37f438bb7842d6f921ac718d74d039a2402f97e92f5bdab20',
+       i686: '6cd5a887c740f690fe7740b03a7d814e20c1d352b3ca30d1a388c56f76e801e0',
+     x86_64: 'f8cd5c4506471ceeb8c73337bbbffaf4601818742c7e388266edb1a67758dadf'
   })
 
   depends_on 'glibc' => :library
