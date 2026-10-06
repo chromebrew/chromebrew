@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Sngrep < CMake
   description 'An Ncurses SIP Messages flow viewer'
   homepage 'https://github.com/irontec/sngrep'
-  version '1.8.4'
+  version '1.9.0'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/irontec/sngrep.git'
@@ -11,10 +11,10 @@ class Sngrep < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cf8a9e46bc436a1c8902545b07c2787d5668efbe55280f307c7b59a56ffa7202',
-     armv7l: 'cf8a9e46bc436a1c8902545b07c2787d5668efbe55280f307c7b59a56ffa7202',
-       i686: '8a814442dedb15034630a29b73b0b5b1614ea51558a282064c716edcad57d4a0',
-     x86_64: '9c8f9deeeea26c0ba45bd1cb152d15b41afc2babc0ebe42368db1b8f87ea7136'
+    aarch64: '9c083ed097fbf39b6fcb72820c5d800463f8b3e56034744fdb41983c49badfd9',
+     armv7l: '9c083ed097fbf39b6fcb72820c5d800463f8b3e56034744fdb41983c49badfd9',
+       i686: '13b85edd479635b62c87c786154b28b51330a30927b0cec9bd2bb15438681b5b',
+     x86_64: '5db703d03d695ba53ecef029985ee15e3a0cf4b7ae001a70344b39b36b18e309'
   })
 
   depends_on 'glibc' => :executable

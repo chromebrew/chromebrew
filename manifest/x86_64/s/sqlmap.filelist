@@ -1,12 +1,12 @@
-# Total size: 24558945
+# Total size: 24732576
 /usr/local/bin/sqlmap
-/usr/local/lib/python3.14/site-packages/sqlmap-1.10.9.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/sqlmap-1.10.9.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/sqlmap-1.10.9.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/sqlmap-1.10.9.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/sqlmap-1.10.9.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/sqlmap-1.10.9.dist-info/entry_points.txt
-/usr/local/lib/python3.14/site-packages/sqlmap-1.10.9.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/sqlmap-1.10.10.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/sqlmap-1.10.10.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/sqlmap-1.10.10.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/sqlmap-1.10.10.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/sqlmap-1.10.10.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/sqlmap-1.10.10.dist-info/entry_points.txt
+/usr/local/lib/python3.14/site-packages/sqlmap-1.10.10.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/sqlmap/.gitattributes
 /usr/local/lib/python3.14/site-packages/sqlmap/.github/CODE_OF_CONDUCT.md
 /usr/local/lib/python3.14/site-packages/sqlmap/.github/CONTRIBUTING.md
@@ -1248,9 +1248,11 @@
 /usr/local/lib/python3.14/site-packages/sqlmap/tests/__pycache__/test_hashdb.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/sqlmap/tests/__pycache__/test_heuristic_signatures.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/sqlmap/tests/__pycache__/test_hql.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/sqlmap/tests/__pycache__/test_html_parser_forks.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/sqlmap/tests/__pycache__/test_http2.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/sqlmap/tests/__pycache__/test_identifiers_output.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/sqlmap/tests/__pycache__/test_inference_engine.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/sqlmap/tests/__pycache__/test_jit_guard.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/sqlmap/tests/__pycache__/test_jitter_stress.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/sqlmap/tests/__pycache__/test_jwt.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/sqlmap/tests/__pycache__/test_kbchars.cpython-314.pyc
@@ -1354,9 +1356,11 @@
 /usr/local/lib/python3.14/site-packages/sqlmap/tests/test_hashdb.py
 /usr/local/lib/python3.14/site-packages/sqlmap/tests/test_heuristic_signatures.py
 /usr/local/lib/python3.14/site-packages/sqlmap/tests/test_hql.py
+/usr/local/lib/python3.14/site-packages/sqlmap/tests/test_html_parser_forks.py
 /usr/local/lib/python3.14/site-packages/sqlmap/tests/test_http2.py
 /usr/local/lib/python3.14/site-packages/sqlmap/tests/test_identifiers_output.py
 /usr/local/lib/python3.14/site-packages/sqlmap/tests/test_inference_engine.py
+/usr/local/lib/python3.14/site-packages/sqlmap/tests/test_jit_guard.py
 /usr/local/lib/python3.14/site-packages/sqlmap/tests/test_jitter_stress.py
 /usr/local/lib/python3.14/site-packages/sqlmap/tests/test_jwt.py
 /usr/local/lib/python3.14/site-packages/sqlmap/tests/test_kbchars.py

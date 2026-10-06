@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Meld < Meson
   description 'Meld is a visual diff and merge tool targeted at developers.'
   homepage 'https://meldmerge.org/'
-  version "3.24.0-#{CREW_PY_VER}"
+  version "3.24.1-#{CREW_PY_VER}"
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/meld.git'
@@ -11,9 +11,9 @@ class Meld < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '00b81ca77c6db07d3d6090532469421508bf34b464368fbf0e91f85068bfed4c',
-     armv7l: '00b81ca77c6db07d3d6090532469421508bf34b464368fbf0e91f85068bfed4c',
-     x86_64: '7987b9bc24938a2b55492bd7355d98d166f39fad0b2d2ab96d95261b19980538'
+    aarch64: 'e4c396bbe369900bc8bb995810d0a8dba2d25571d531bd8118b35aeb4278c2f2',
+     armv7l: 'e4c396bbe369900bc8bb995810d0a8dba2d25571d531bd8118b35aeb4278c2f2',
+     x86_64: '955fac35a5931784d613fdbb1747534dad7470a18262ebb45aa2dfdf04fd7ac7'
   })
 
   depends_on 'appstream' => :executable
