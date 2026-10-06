@@ -1,5 +1,6 @@
-# Total size: 336837
+# Total size: 347762
 /usr/local/bin/sngrep
+/usr/local/etc/sngreprc
 /usr/local/share/doc/sngrep/COPYING
 /usr/local/share/doc/sngrep/ChangeLog
 /usr/local/share/doc/sngrep/README
