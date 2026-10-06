@@ -3,7 +3,7 @@ require 'buildsystems/rust'
 class Rust_bindgen < RUST
   description 'bindgen automatically generates Rust FFI bindings to C (and some C++) libraries.'
   homepage 'https://github.com/rust-lang/rust-bindgen'
-  version '0.72.1'
+  version '0.73.2'
   license 'MPL2'
   compatibility 'all'
   source_url 'https://github.com/rust-lang/rust-bindgen.git'
