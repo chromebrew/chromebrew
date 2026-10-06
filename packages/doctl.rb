@@ -3,17 +3,17 @@ require 'package'
 class Doctl < Package
   description 'The official command line interface for the DigitalOcean API.'
   homepage 'https://github.com/digitalocean/doctl'
-  version '1.177.0'
+  version '1.178.0'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cba854d2cd0693a4bdd66d8015fbe3f55eb70305be9dc5347bb0f86be220df17',
-     armv7l: 'cba854d2cd0693a4bdd66d8015fbe3f55eb70305be9dc5347bb0f86be220df17',
-       i686: '9155b0d9cc7ad2babe49eb25decdb921f43af485a0985db3a8dfe2c6090bb411',
-     x86_64: 'a95c50fb409f6a04f30682f0da22057cec1178a1551f6f9776a7a9fa25aa53bc'
+    aarch64: '6b552557fd65d35ba3c4e109a63ae1c6dca846814d64a9ba4b967949d99b97c0',
+     armv7l: '6b552557fd65d35ba3c4e109a63ae1c6dca846814d64a9ba4b967949d99b97c0',
+       i686: '156e888266fefe1deb148563f3bf5be155b4559a427efd5eb3bd1daab53d5fc4',
+     x86_64: '8651fac1f2aa441d3fa318c26e6f3fef4e3dc092d8b4819f46eb2d12404962cc'
   })
 
   depends_on 'glibc' => :executable
