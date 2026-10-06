@@ -19,6 +19,7 @@ class Rust_bindgen < RUST
 
   depends_on 'gcc_lib' => :executable
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'rust' => :build
 
   rust_install_path 'bindgen-cli'
