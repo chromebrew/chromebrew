@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Remind < Autotools
   description 'Remind is a sophisticated calendar and alarm program.'
   homepage 'https://dianne.skoll.ca/projects/remind/'
-  version '06.03.05'
+  version '06.03.06'
   license 'GPL-2'
   compatibility 'all'
   source_url "https://dianne.skoll.ca/projects/remind/download/remind-#{version}.tar.gz"
-  source_sha256 'd060f4073fa7a498824dc5a00ab567c92025a7b5121e4651663a86ea787bcdd4'
+  source_sha256 '19518dfa6ab3695749e74b26b664a7134b573ddd03f0a7a6fee3867868d6fd58'
   binary_compression 'tar.zst'
 
   binary_sha256({
