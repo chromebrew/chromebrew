@@ -1,12 +1,12 @@
 # Adapted from Arch Linux mold PKGBUILD at:
 # https://github.com/archlinux/svntogit-community/raw/packages/mold/trunk/PKGBUILD
 
-require 'buildsystems/cmake'
+require 'buildsystems/rust'
 
-class Mold < CMake
+class Mold < RUST
   description 'A Modern Linker'
   homepage 'https://github.com/rui314/mold'
-  version '2.42.1'
+  version '3.0.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/rui314/mold.git'
@@ -14,10 +14,10 @@ class Mold < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c8e64f1a7557128712067fbed8d3bfb7aa949c570124d2fae1b9ef30f794c72e',
-     armv7l: 'c8e64f1a7557128712067fbed8d3bfb7aa949c570124d2fae1b9ef30f794c72e',
-       i686: '54c0ecfebf0730c9cc4f583e1aa8b85d265d4f9ba7a07c7395dc0f14567605c6',
-     x86_64: '4f1625150dff572edc37f4ffdf686e793147044227c1ab8159840e64f6f99efe'
+    aarch64: 'ea7495f3b599a3c69205215392ad6141005a9aa942fc854bd2a6207963e278d8',
+     armv7l: 'ea7495f3b599a3c69205215392ad6141005a9aa942fc854bd2a6207963e278d8',
+       i686: '58358ad2140f417ecfad657a2ba03a8ab2fdc922f5b27c1d7bc953bda0a9172f',
+     x86_64: '52d63833f6cddddb719beac6b4219025f26a66446bb88bddf4531ad34c74e02b'
   })
 
   depends_on 'gcc_lib' => :executable
@@ -30,16 +30,12 @@ class Mold < CMake
   depends_on 'zstd' => :executable
   depends_on 'zstd' => :library
 
-  no_env_options
   print_source_bashrc
 
-  cmake_options "-DBUILD_TESTING=OFF \
-        -DMOLD_LTO=ON \
-        -DMOLD_USE_MOLD=ON \
-        -DTBB_WARNING_LEVEL='-Wno-error=stringop-overflow'"
+  pre_rust_options "MOLD_LIBDIR=#{CREW_LIB_PREFIX}"
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} MOLD_LIBDIR=#{CREW_LIB_PREFIX} PREFIX=#{CREW_PREFIX} ./install-mold.sh"
     File.write 'moldenv', <<~MOLD_ENV_EOF
       # See https://github.com/rui314/mold/commit/36fc0655489eb96e1be15b03b3f5e227cd97a22e
       if [[ $(free | head -n 2 | tail -n 1 | awk '{print $4}') -gt '4096000' ]]; then

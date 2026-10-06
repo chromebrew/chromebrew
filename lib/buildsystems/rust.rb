@@ -61,7 +61,7 @@ class RUST < Package
       }.transform_keys(&:to_s)
 
     @rust_install_path.split.each do |path|
-      system rust_env, "cargo #{@channel_flag} install \
+      system rust_env, "#{@pre_rust_options} cargo #{@channel_flag} install \
         --profile=#{@profile} \
         --no-track \
         --path #{path} \
