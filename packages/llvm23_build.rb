@@ -6,12 +6,12 @@ class Llvm23_build < Package
   @llvm_projects_to_build = ARCH == 'x86_64' ? 'bolt;clang;clang-tools-extra;lld;lldb;compiler-rt;polly' : 'clang;clang-tools-extra;lld;lldb;compiler-rt;polly'
   description "The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The packages included are: #{@llvm_projects_to_build.gsub(';', ' ')}"
   homepage 'https://llvm.org/'
-  version '23.1.2'
+  version '23.1.3'
   # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
   source_url "https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-#{version}.tar.gz"
-  source_sha256 '75788d759e6987a910975b902f554dc77c08b076b945b2cebde54116d8e831ca'
+  source_sha256 '791b560dee8f65fdf7b19ad5db0b4ac627467824d8b687957d8a437b806103f0'
   binary_compression 'tar.zst'
 
   binary_sha256({
