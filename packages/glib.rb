@@ -11,10 +11,10 @@ class Glib < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a073ae862169932843d1c153c7794fdfb3b339691dc558df371147e9b193afb5',
-     armv7l: 'a073ae862169932843d1c153c7794fdfb3b339691dc558df371147e9b193afb5',
-       i686: '24871a3e313c8a57a0bec5374fb6ae0b6ff0f54feb69af70d29fc2ac70229d23',
-     x86_64: '597e31725e5c242aca36e08fec8fe2e9e7def927f97675847896478d9a56bf2d'
+    aarch64: '3790beb5853dae72017a40d473ff7fbe2eb3418d4a42352d51f9fe56e6f662e0',
+     armv7l: '3790beb5853dae72017a40d473ff7fbe2eb3418d4a42352d51f9fe56e6f662e0',
+       i686: 'a0e0abfbbe46aaacf9a01793feddd98a92425d91b8f1cdf586efc6abf8609eed',
+     x86_64: '4ddbde486f9f05cdff1dfe516fbd329dede06586d638949d7dcdee5fa3120966'
   })
 
   depends_on 'elfutils' => :executable
