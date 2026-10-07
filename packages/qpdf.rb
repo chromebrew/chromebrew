@@ -1,40 +1,27 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Qpdf < Package
+class Qpdf < CMake
   description 'QPDF is a command-line program that does structural, content-preserving transformations on PDF files.'
   homepage 'https://qpdf.sourceforge.io/'
-  version '11.1.1'
+  version '12.4.2'
   license 'Apache-2.0 or Artistic-2'
   compatibility 'all'
-  source_url 'https://github.com/qpdf/qpdf/archive/refs/tags/v11.1.1.tar.gz'
-  source_sha256 '785edab622a1bc7e25e1537ad2c325005d48c5c7957f7abedff405deb80fa59a'
+  source_url 'https://github.com/qpdf/qpdf.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '53a790ba153b2533d9384f3653830942fd87eac4f5f58b58d161a32af06d012c',
-     armv7l: '53a790ba153b2533d9384f3653830942fd87eac4f5f58b58d161a32af06d012c',
-       i686: 'd71562f7c38ea4a57274fc8d6d8a85bbc91feb19af8ffc1417f9a183d5b2dba6',
-     x86_64: '36dde4a77f5bbad284e02f9ca7d684a36d6b03c97addfe7a7667711feb5fdecd'
+    aarch64: '816a7f63f3d896884c66bb7abcbf1cd49bdf49e657e1c91b930aa0a880404c2d',
+     armv7l: '816a7f63f3d896884c66bb7abcbf1cd49bdf49e657e1c91b930aa0a880404c2d',
+       i686: '8851b26ddcf4fc1f0ec1b7f056705e57efbd6cd179a8616d29c277268a8ef0a7',
+     x86_64: '507d9c8c455b9446ecf715882fc850dc5574f483432134bec69ef898c1a62f82'
   })
 
-  depends_on 'libjpeg_turbo'
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'gnutls' # R
-  depends_on 'openssl' # R
-  depends_on 'zlib' # R
-
-  def self.build
-    Dir.mkdir 'builddir'
-    Dir.chdir 'builddir' do
-      system "cmake -G Ninja \
-        #{CREW_CMAKE_OPTIONS} \
-        .."
-    end
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'gnutls' => :library
+  depends_on 'libjpeg_turbo' => :library
+  depends_on 'openssl' => :library
+  depends_on 'zlib' => :library
 end
