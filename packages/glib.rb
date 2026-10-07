@@ -32,6 +32,46 @@ class Glib < Meson
   gnome
   no_strip if %w[aarch64 armv7l].include? ARCH
 
+  def self.patch
+    # See: https://gitlab.gnome.org/GNOME/glib/-/work_items/4068
+    # https://gitlab.gnome.org/GNOME/glib/-/commit/5b7f4b0403d29753d7c8c57f883e55a3366b0f0a
+    # Breaks python's LD_LIBRARY_PATH during this build step:
+    # Generating girepository/introspection/...h a custom command (wrapped by meson to set env)
+    File.write 'reverse_5b7f4b0403d29753d7c8c57f883e55a3366b0f0a.patch', <<~PATCH_EOF
+      --- b/girepository/introspection/meson.build
+      +++ a/girepository/introspection/meson.build
+      @@ -19,13 +19,6 @@
+
+       gi_gen_env_variables = environment()
+
+      -# Use currently built libraries to run g-ir-scanner and the various tools
+      -# this may not happen if we don't set the library paths.
+      -# FIXME: https://github.com/mesonbuild/meson/issues/16127
+      -gi_gen_env_variables.prepend(glib_exec_var_library_path,
+      -  fs.parent(libglib.full_path()), fs.parent(libgobject.full_path()),
+      -  fs.parent(libgmodule.full_path()), fs.parent(libgio.full_path()))
+      -
+       if 'address' in glib_sanitizers
+         gi_gen_env_variables.append(
+           'ASAN_OPTIONS', glib_exec_asan_option_ignore_preload, separator: ',')
+      --- b/meson.build
+      +++ a/meson.build
+      @@ -2727,11 +2727,9 @@
+       glib_exec_preloaded_env = {}
+
+       if host_system in ['ios', 'darwin']
+      -  glib_exec_var_library_path = 'DYLD_LIBRARY_PATH'
+         glib_exec_var_preload = 'DYLD_INSERT_LIBRARIES'
+         glib_exec_var_preload_separator = ':'
+       else
+      -  glib_exec_var_library_path = 'LD_LIBRARY_PATH'
+         glib_exec_var_preload = 'LD_PRELOAD'
+         glib_exec_var_preload_separator = ' '
+       endif
+    PATCH_EOF
+    system 'patch -Np1 -i reverse_5b7f4b0403d29753d7c8c57f883e55a3366b0f0a.patch' if version == '2.90.1'
+  end
+
   meson_options '-Dglib_debug=disabled \
     -Dselinux=disabled \
     -Dsysprof=disabled \
