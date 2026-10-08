@@ -3,11 +3,11 @@ require 'package'
 class Bazel < Package
   description 'a fast, scalable, multi-language and extensible build system'
   homepage 'https://bazel.build/'
-  version '9.2.0'
+  version '9.3.0'
   license 'Apache-2.0'
   compatibility 'x86_64'
   source_url "https://github.com/bazelbuild/bazel/releases/download/#{version}/bazel-#{version}-linux-x86_64"
-  source_sha256 '7668a95db1250f12c40407251e4e203b4ec8bf39bc495d2f485b2d8c99048694'
+  source_sha256 'd302d22ed77ee5658b87857249baa579db84300ecebe0a1e9a357b5b20f80eb8'
 
   no_compile_needed
   no_shrink
