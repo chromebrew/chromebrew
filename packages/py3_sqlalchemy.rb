@@ -16,8 +16,8 @@ class Py3_sqlalchemy < Pip
      x86_64: '7839ade415573bb5f1ad4fd952a60fe955342a0636d7d564c0479979130dd66e'
   })
 
-  depends_on 'glibc' => :build
-  depends_on 'glibc_lib' => :build
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'python3' => :logical
 
   no_source_build
