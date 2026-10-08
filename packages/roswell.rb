@@ -1,50 +1,41 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Roswell < Package
+class Roswell < Autotools
   description 'A lisp installer and launcher for major environment.'
   homepage 'https://github.com/roswell/roswell'
-  version '20.01.14.104'
+  version '26.02.116'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/roswell/roswell/archive/v20.01.14.104.tar.gz'
-  source_sha256 '798b96fdcb8c89445b36692b31570bb99882d83719d6310d969ccfcb2a35a1d4'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/roswell/roswell.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3c3a54706ecb418ded5e27b9672a6a11e29eaf778e0c6bb44b18ab16050ff463',
-     armv7l: '3c3a54706ecb418ded5e27b9672a6a11e29eaf778e0c6bb44b18ab16050ff463',
-       i686: '221ba9a7cadf7354584c53a200f9154b09e4cda6193a9bfa93fce1afed3a5369',
-     x86_64: '4df5fe6db244b10c432cf45a5db394e7ccc2f25be37724a0e0ca436051bc0bbb'
+    aarch64: '0a2ad1ae4a6ccd5d9fb54bd407f1a42dc6a424876fb7988ce4c0bde492d9ee5d',
+     armv7l: '0a2ad1ae4a6ccd5d9fb54bd407f1a42dc6a424876fb7988ce4c0bde492d9ee5d',
+       i686: '1f99fe1ba741bdb7ed566ac82bb94ca850477320f9652f1c9dfd91fc1b1eb81d',
+     x86_64: 'cd65542cccd5533eb11a176b4ee4e059ed4e4393dd20db82f91243d65b00208a'
   })
 
-  depends_on 'brotli'
-  depends_on 'curl'
-  depends_on 'libcyrussasl'
-  depends_on 'libnghttp2'
-  depends_on 'openldap'
-  depends_on 'rtmpdump'
-  depends_on 'xdg_base'
+  depends_on 'brotli' => :library
+  depends_on 'curl' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'libcyrussasl' => :library
+  depends_on 'libnghttp2' => :library
+  depends_on 'openldap' => :library
+  depends_on 'rtmpdump' => :library
+  depends_on 'xdg_base' => :logical
 
-  def self.build
-    system 'sh bootstrap'
-    system './configure', "--prefix=#{CREW_PREFIX}"
-    system 'make'
-  end
+  no_fhs
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  autotools_install_extras do
     FileUtils.mkdir_p CREW_DEST_HOME
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/.config/.roswell"
     FileUtils.ln_s "#{CREW_PREFIX}/.config/.roswell", "#{CREW_DEST_HOME}/.roswell"
   end
 
   def self.postinstall
-    puts
-    puts "To finish the installation, type 'ros'.".lightblue
-    puts
-    puts 'To completely remove, execute the following:'.lightblue
-    puts 'crew remove roswell'.lightblue
-    puts "rm -rf #{CREW_PREFIX}/.config/.roswell".lightblue
-    puts
+    ExitMessage.add "\nType 'ros' to get started.\n"
   end
 end
