@@ -19,6 +19,7 @@ class Libzip < CMake
 
   depends_on 'bzip2' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'libmbedtls' => :library
   depends_on 'openssl' => :library
   depends_on 'xzutils' => :library

@@ -1,4 +1,4 @@
-# Total size: 508553
+# Total size: 528995
 /usr/local/bin/zipcmp
 /usr/local/bin/zipmerge
 /usr/local/bin/ziptool
@@ -10,12 +10,11 @@
 /usr/local/lib64/cmake/libzip/libzip-config.cmake
 /usr/local/lib64/cmake/libzip/libzip-targets-release.cmake
 /usr/local/lib64/cmake/libzip/libzip-targets.cmake
-/usr/local/lib64/cmake/libzip/modules/FindMbedTLS.cmake
 /usr/local/lib64/cmake/libzip/modules/FindNettle.cmake
 /usr/local/lib64/cmake/libzip/modules/Findzstd.cmake
 /usr/local/lib64/libzip.so
 /usr/local/lib64/libzip.so.5
-/usr/local/lib64/libzip.so.5.5
+/usr/local/lib64/libzip.so.5.6
 /usr/local/lib64/pkgconfig/libzip.pc
 /usr/local/share/man/man1/zipcmp.1.zst
 /usr/local/share/man/man1/zipmerge.1.zst
@@ -98,6 +97,7 @@
 /usr/local/share/man/man3/zip_set_default_password.3.zst
 /usr/local/share/man/man3/zip_set_file_comment.3.zst
 /usr/local/share/man/man3/zip_set_file_compression.3.zst
+/usr/local/share/man/man3/zip_source_at_eof.3.zst
 /usr/local/share/man/man3/zip_source_begin_write.3.zst
 /usr/local/share/man/man3/zip_source_begin_write_cloning.3.zst
 /usr/local/share/man/man3/zip_source_buffer.3.zst
@@ -121,6 +121,7 @@
 /usr/local/share/man/man3/zip_source_layered_create.3.zst
 /usr/local/share/man/man3/zip_source_make_command_bitmap.3.zst
 /usr/local/share/man/man3/zip_source_open.3.zst
+/usr/local/share/man/man3/zip_source_pass_to_lower_layer.3.zst
 /usr/local/share/man/man3/zip_source_read.3.zst
 /usr/local/share/man/man3/zip_source_rollback_write.3.zst
 /usr/local/share/man/man3/zip_source_seek.3.zst
