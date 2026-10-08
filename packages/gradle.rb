@@ -9,7 +9,7 @@ class Gradle < Package
   source_url "https://github.com/gradle/gradle-distributions/releases/download/v#{version}/gradle-#{version}-bin.zip"
   source_sha256 'dce76f55f8e251a3a1f130eb120f30b3d271de2b76c9b0729d316b5a1b6dc01f'
 
-  depends_on 'openjdk8' unless File.exist? "#{CREW_PREFIX}/bin/java"
+  depends_on 'openjdk17' unless File.exist? "#{CREW_PREFIX}/bin/java"
 
   no_compile_needed
 
