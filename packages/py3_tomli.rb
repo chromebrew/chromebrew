@@ -16,8 +16,8 @@ class Py3_tomli < Pip
      x86_64: '8ebec129cef6b711c92a43f4d263b7402a37108a75f1a820e0a8b243b1324c0c'
   })
 
-  depends_on 'glibc' => :build
-  depends_on 'glibc_lib' => :build
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'py3_flit_core'
   depends_on 'python3' => :logical
 
