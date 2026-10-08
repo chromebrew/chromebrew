@@ -3,22 +3,23 @@ require 'package'
 class Mediainfo < Package
   description 'MediaInfo is a convenient unified display of the most relevant technical and tag data for video and audio files.'
   homepage 'https://mediaarea.net/en/MediaInfo'
-  version '26.05'
+  version '26.10'
   license 'BSD-2'
   compatibility 'all'
   source_url "https://mediaarea.net/download/binary/mediainfo/#{version}/MediaInfo_CLI_#{version}_GNU_FromSource.tar.xz"
-  source_sha256 '220e54edc92a559cf8c2b4e332eba0116f9f758b2588ea02d432d1894a569c6a'
+  source_sha256 '7785bb75d69efd21b7c0b2c2269164aeb21cea2be6f6b9103ad79743af6fdec7'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a3a7db2e5617200fc4fb4222a201c13049624312c584f9b656e3b538b8955273',
-     armv7l: 'a3a7db2e5617200fc4fb4222a201c13049624312c584f9b656e3b538b8955273',
-       i686: 'acc1ee3be53b92701f9045e0ccedebc0fec26df34315ad9aa92be10315d79f53',
-     x86_64: '358f9dc0337d8577a4a4f62b0415c995e0ad1720e934886ae2bc74c4f21b16bf'
+    aarch64: 'e512452459d44af9ea979ce2d58b7f72e168111019e7dc03b370e1eadc754d42',
+     armv7l: 'e512452459d44af9ea979ce2d58b7f72e168111019e7dc03b370e1eadc754d42',
+       i686: 'efea575baf0881f90842441e32789a8a9a4b19abcc3c65257bc2be88d5eb7994',
+     x86_64: '2ed12f4cbf995b8ba902fb6b97880c60166dc94ec8786106d57f7306b8bd6aa5'
   })
 
   depends_on 'gcc_lib' => :executable
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'zlib' => :executable
 
   def self.patch
