@@ -1,0 +1,3 @@
+#!/bin/bash
+ros help 2>&1 | head
+ros version 2>&1
