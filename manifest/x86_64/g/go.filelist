@@ -1,4 +1,4 @@
-# Total size: 243910739
+# Total size: 244137476
 /usr/local/bin/go
 /usr/local/bin/gofmt
 /usr/local/share/go/CONTRIBUTING.md
@@ -653,6 +653,11 @@
 /usr/local/share/go/src/cmd/cgo/internal/testplugin/testdata/issue67976/plugin.go
 /usr/local/share/go/src/cmd/cgo/internal/testplugin/testdata/issue75102/main.go
 /usr/local/share/go/src/cmd/cgo/internal/testplugin/testdata/issue75102/plugin.go
+/usr/local/share/go/src/cmd/cgo/internal/testplugin/testdata/issue81303/main.go
+/usr/local/share/go/src/cmd/cgo/internal/testplugin/testdata/issue81303/p/p.go
+/usr/local/share/go/src/cmd/cgo/internal/testplugin/testdata/issue81303/plugin1.go
+/usr/local/share/go/src/cmd/cgo/internal/testplugin/testdata/issue81303/plugin2.go
+/usr/local/share/go/src/cmd/cgo/internal/testplugin/testdata/issue81303/plugin3.go
 /usr/local/share/go/src/cmd/cgo/internal/testplugin/testdata/mangle/plugin.go
 /usr/local/share/go/src/cmd/cgo/internal/testplugin/testdata/method/main.go
 /usr/local/share/go/src/cmd/cgo/internal/testplugin/testdata/method/plugin.go
@@ -1354,6 +1359,7 @@
 /usr/local/share/go/src/cmd/compile/internal/test/issue57434_test.go
 /usr/local/share/go/src/cmd/compile/internal/test/issue62407_test.go
 /usr/local/share/go/src/cmd/compile/internal/test/issue71943_test.go
+/usr/local/share/go/src/cmd/compile/internal/test/issue_81478_test.go
 /usr/local/share/go/src/cmd/compile/internal/test/lang_test.go
 /usr/local/share/go/src/cmd/compile/internal/test/locals_test.go
 /usr/local/share/go/src/cmd/compile/internal/test/logic_test.go
@@ -1838,6 +1844,7 @@
 /usr/local/share/go/src/cmd/go/internal/modfetch/coderepo.go
 /usr/local/share/go/src/cmd/go/internal/modfetch/coderepo_test.go
 /usr/local/share/go/src/cmd/go/internal/modfetch/fetch.go
+/usr/local/share/go/src/cmd/go/internal/modfetch/fetch_test.go
 /usr/local/share/go/src/cmd/go/internal/modfetch/key.go
 /usr/local/share/go/src/cmd/go/internal/modfetch/proxy.go
 /usr/local/share/go/src/cmd/go/internal/modfetch/repo.go
@@ -2433,6 +2440,7 @@
 /usr/local/share/go/src/cmd/go/testdata/script/fileline.txt
 /usr/local/share/go/src/cmd/go/testdata/script/fips.txt
 /usr/local/share/go/src/cmd/go/testdata/script/fipssnap.txt
+/usr/local/share/go/src/cmd/go/testdata/script/fipssnap_modcache.txt
 /usr/local/share/go/src/cmd/go/testdata/script/fix_diff_exitcode.txt
 /usr/local/share/go/src/cmd/go/testdata/script/fix_suite.txt
 /usr/local/share/go/src/cmd/go/testdata/script/fix_vendor.txt
@@ -2485,6 +2493,7 @@
 /usr/local/share/go/src/cmd/go/testdata/script/gotoolchain_modcmds.txt
 /usr/local/share/go/src/cmd/go/testdata/script/gotoolchain_net.txt
 /usr/local/share/go/src/cmd/go/testdata/script/gotoolchain_path.txt
+/usr/local/share/go/src/cmd/go/testdata/script/gotoolchain_switch_gosum.txt
 /usr/local/share/go/src/cmd/go/testdata/script/gotoolchain_version.txt
 /usr/local/share/go/src/cmd/go/testdata/script/gotoolchain_work_issue76728.txt
 /usr/local/share/go/src/cmd/go/testdata/script/govcs.txt
@@ -2629,6 +2638,7 @@
 /usr/local/share/go/src/cmd/go/testdata/script/mod_download_replace_file.txt
 /usr/local/share/go/src/cmd/go/testdata/script/mod_download_svn.txt
 /usr/local/share/go/src/cmd/go/testdata/script/mod_download_too_many_redirects.txt
+/usr/local/share/go/src/cmd/go/testdata/script/mod_download_toolchain_gosum.txt
 /usr/local/share/go/src/cmd/go/testdata/script/mod_e.txt
 /usr/local/share/go/src/cmd/go/testdata/script/mod_edit.txt
 /usr/local/share/go/src/cmd/go/testdata/script/mod_edit_go.txt
@@ -2994,6 +3004,7 @@
 /usr/local/share/go/src/cmd/go/testdata/script/test_buildvcs.txt
 /usr/local/share/go/src/cmd/go/testdata/script/test_cache_coverpkg_bug.txt
 /usr/local/share/go/src/cmd/go/testdata/script/test_cache_coverpkg_no_profile.txt
+/usr/local/share/go/src/cmd/go/testdata/script/test_chatty_ascii.txt
 /usr/local/share/go/src/cmd/go/testdata/script/test_chatty_fail.txt
 /usr/local/share/go/src/cmd/go/testdata/script/test_chatty_parallel_fail.txt
 /usr/local/share/go/src/cmd/go/testdata/script/test_chatty_parallel_success.txt
@@ -5197,6 +5208,7 @@
 /usr/local/share/go/src/crypto/internal/fips140/mldsa/mldsa_test.go
 /usr/local/share/go/src/crypto/internal/fips140/mldsa/semiexpanded.go
 /usr/local/share/go/src/crypto/internal/fips140/mlkem/cast.go
+/usr/local/share/go/src/crypto/internal/fips140/mlkem/cast_test.go
 /usr/local/share/go/src/crypto/internal/fips140/mlkem/field.go
 /usr/local/share/go/src/crypto/internal/fips140/mlkem/field_test.go
 /usr/local/share/go/src/crypto/internal/fips140/mlkem/generate1024.go
@@ -9198,6 +9210,7 @@
 /usr/local/share/go/src/net/http/header_test.go
 /usr/local/share/go/src/net/http/http.go
 /usr/local/share/go/src/net/http/http1_server_test.go
+/usr/local/share/go/src/net/http/http1_transport_test.go
 /usr/local/share/go/src/net/http/http2.go
 /usr/local/share/go/src/net/http/http_test.go
 /usr/local/share/go/src/net/http/httptest/example_test.go
@@ -14750,12 +14763,17 @@
 /usr/local/share/go/test/fixedbugs/issue8076.go
 /usr/local/share/go/test/fixedbugs/issue8079.go
 /usr/local/share/go/test/fixedbugs/issue80976.go
+/usr/local/share/go/test/fixedbugs/issue81089.go
 /usr/local/share/go/test/fixedbugs/issue81165.go
+/usr/local/share/go/test/fixedbugs/issue81240.go
+/usr/local/share/go/test/fixedbugs/issue81242.go
 /usr/local/share/go/test/fixedbugs/issue8132.go
 /usr/local/share/go/test/fixedbugs/issue8139.go
 /usr/local/share/go/test/fixedbugs/issue8154.go
 /usr/local/share/go/test/fixedbugs/issue8155.go
 /usr/local/share/go/test/fixedbugs/issue8158.go
+/usr/local/share/go/test/fixedbugs/issue81612.go
+/usr/local/share/go/test/fixedbugs/issue81687.go
 /usr/local/share/go/test/fixedbugs/issue8183.go
 /usr/local/share/go/test/fixedbugs/issue8280.dir/a.go
 /usr/local/share/go/test/fixedbugs/issue8280.dir/b.go
