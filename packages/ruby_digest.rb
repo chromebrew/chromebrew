@@ -10,10 +10,10 @@ class Ruby_digest < RUBY
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: 'bd84f978b0a01e6ca2a3bc0b70630abbfcf4495f92ee4c3fe3b20c8c446d7ed3',
-     armv7l: 'bd84f978b0a01e6ca2a3bc0b70630abbfcf4495f92ee4c3fe3b20c8c446d7ed3',
-       i686: 'e91a7d6f7f2121bcb81144056c3ececf25b934e70137dbbddb6ac2dd9fa19dfb',
-     x86_64: '1174e436f7c2b41f44e85cd1b521be28d399e8a58c36593c2e1137b5b3f26925'
+    aarch64: '0e790a4e1a4100fa0ec4ac7cb84f36b042bd18d4d1489ff1103d01745d87a12d',
+     armv7l: '0e790a4e1a4100fa0ec4ac7cb84f36b042bd18d4d1489ff1103d01745d87a12d',
+       i686: '96a1e16d002c3d67881cb46420e9000a940e9a6d215d2eef8c2dc659c32b444b',
+     x86_64: 'e50da7e4d1792b3790228e647a107f74d6458564838ff50051473e17d8c533bb'
   })
 
   depends_on 'glibc' => :library
