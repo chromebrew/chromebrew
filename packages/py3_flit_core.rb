@@ -10,10 +10,10 @@ class Py3_flit_core < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b8c80fd7aafc48815fcbb3f796efc275f1fe3b46d09e91db43162b5ffa2605fd',
-     armv7l: 'b8c80fd7aafc48815fcbb3f796efc275f1fe3b46d09e91db43162b5ffa2605fd',
-       i686: 'f29d2ce44fa2be7fbe1e8b4af228c5b66908596a67ed54b9b2127ed99ab7b16b',
-     x86_64: '96c58716af11da7e2e437e8cdcd1b2681b94824f2979e62baceeaddb40b3a751'
+    aarch64: '20a2618085de7478e5288de1ed3f01f58c6ae68406019362f23bdc6e3d4a15a1',
+     armv7l: '20a2618085de7478e5288de1ed3f01f58c6ae68406019362f23bdc6e3d4a15a1',
+       i686: 'fdfb629a3c1a87032bff6d728991c599efddd4da910a9b1c6203d982f878c55a',
+     x86_64: 'ce735d5507db966d69b7d0a1aa977062f1c4726465b8dbab12de05ab623e1b88'
   })
 
   depends_on 'python3'
