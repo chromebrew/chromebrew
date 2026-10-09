@@ -17,14 +17,14 @@ class Roswell < Autotools
      x86_64: 'cd65542cccd5533eb11a176b4ee4e059ed4e4393dd20db82f91243d65b00208a'
   })
 
-  depends_on 'brotli' => :library
+  depends_on 'brotli' => :build
   depends_on 'curl' => :executable
   depends_on 'glibc' => :executable
   depends_on 'glibc_lib' => :executable
-  depends_on 'libcyrussasl' => :library
-  depends_on 'libnghttp2' => :library
-  depends_on 'openldap' => :library
-  depends_on 'rtmpdump' => :library
+  depends_on 'libcyrussasl' => :build
+  depends_on 'libnghttp2' => :build
+  depends_on 'openldap' => :build
+  depends_on 'rtmpdump' => :build
   depends_on 'xdg_base' => :logical
 
   no_fhs
