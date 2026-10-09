@@ -1,11 +1,24 @@
-# Total size: 148910
-/usr/local/lib/ruby/gems/4.0.0/gems/etc-1.4.6-x86-linux/BSDL
-/usr/local/lib/ruby/gems/4.0.0/gems/etc-1.4.6-x86-linux/COPYING
-/usr/local/lib/ruby/gems/4.0.0/gems/etc-1.4.6-x86-linux/ChangeLog
-/usr/local/lib/ruby/gems/4.0.0/gems/etc-1.4.6-x86-linux/README.md
-/usr/local/lib/ruby/gems/4.0.0/gems/etc-1.4.6-x86-linux/ext/etc/constdefs.h
-/usr/local/lib/ruby/gems/4.0.0/gems/etc-1.4.6-x86-linux/ext/etc/etc.c
-/usr/local/lib/ruby/gems/4.0.0/gems/etc-1.4.6-x86-linux/ext/etc/extconf.rb
-/usr/local/lib/ruby/gems/4.0.0/gems/etc-1.4.6-x86-linux/ext/etc/mkconstants.rb
-/usr/local/lib/ruby/gems/4.0.0/gems/etc-1.4.6-x86-linux/lib/etc.so
-/usr/local/lib/ruby/gems/4.0.0/gems/etc-1.4.6-x86-linux/test/etc/test_etc.rb
+# Total size: 198866
+/usr/local/lib/ruby/gems/4.0.0/gems/etc-1.5.0-x86-linux/BSDL
+/usr/local/lib/ruby/gems/4.0.0/gems/etc-1.5.0-x86-linux/COPYING
+/usr/local/lib/ruby/gems/4.0.0/gems/etc-1.5.0-x86-linux/ChangeLog
+/usr/local/lib/ruby/gems/4.0.0/gems/etc-1.5.0-x86-linux/README.md
+/usr/local/lib/ruby/gems/4.0.0/gems/etc-1.5.0-x86-linux/ext/etc/constdefs.h
+/usr/local/lib/ruby/gems/4.0.0/gems/etc-1.5.0-x86-linux/ext/etc/etc.c
+/usr/local/lib/ruby/gems/4.0.0/gems/etc-1.5.0-x86-linux/ext/etc/extconf.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/etc-1.5.0-x86-linux/ext/etc/mkconstants.rb
+/usr/local/lib/ruby/gems/4.0.0/gems/etc-1.5.0-x86-linux/lib/etc.so
+/usr/local/lib/ruby/gems/4.0.0/gems/etc-1.5.0-x86-linux/logs/ChangeLog-1.0.0
+/usr/local/lib/ruby/gems/4.0.0/gems/etc-1.5.0-x86-linux/logs/ChangeLog-1.0.1
+/usr/local/lib/ruby/gems/4.0.0/gems/etc-1.5.0-x86-linux/logs/ChangeLog-1.1.0
+/usr/local/lib/ruby/gems/4.0.0/gems/etc-1.5.0-x86-linux/logs/ChangeLog-1.2.0
+/usr/local/lib/ruby/gems/4.0.0/gems/etc-1.5.0-x86-linux/logs/ChangeLog-1.3.0
+/usr/local/lib/ruby/gems/4.0.0/gems/etc-1.5.0-x86-linux/logs/ChangeLog-1.3.1
+/usr/local/lib/ruby/gems/4.0.0/gems/etc-1.5.0-x86-linux/logs/ChangeLog-1.4.0
+/usr/local/lib/ruby/gems/4.0.0/gems/etc-1.5.0-x86-linux/logs/ChangeLog-1.4.1
+/usr/local/lib/ruby/gems/4.0.0/gems/etc-1.5.0-x86-linux/logs/ChangeLog-1.4.2
+/usr/local/lib/ruby/gems/4.0.0/gems/etc-1.5.0-x86-linux/logs/ChangeLog-1.4.3
+/usr/local/lib/ruby/gems/4.0.0/gems/etc-1.5.0-x86-linux/logs/ChangeLog-1.4.4
+/usr/local/lib/ruby/gems/4.0.0/gems/etc-1.5.0-x86-linux/logs/ChangeLog-1.4.5
+/usr/local/lib/ruby/gems/4.0.0/gems/etc-1.5.0-x86-linux/logs/ChangeLog-1.4.6
+/usr/local/lib/ruby/gems/4.0.0/gems/etc-1.5.0-x86-linux/test/etc/test_etc.rb
