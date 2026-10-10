@@ -11,13 +11,14 @@ class Libcap_ng < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '60b87b152507693c26c35937658e92a3b7807582777fe3e4708dba33c0148119',
-     armv7l: '60b87b152507693c26c35937658e92a3b7807582777fe3e4708dba33c0148119',
-       i686: 'b1a5beec5bb2eff8bf6dd72ba4a1d16c979c37909a18169cf530c514970f531c',
-     x86_64: '4859ca3a65257063fd0099966e136de4aa6858b6de9f2104214e3143e7856199'
+    aarch64: '77fe362f71577eec68490263a455bfa459dfc7be0d9b2b35242c0c425280af30',
+     armv7l: '77fe362f71577eec68490263a455bfa459dfc7be0d9b2b35242c0c425280af30',
+       i686: '237c273bf93ae6620bc4309152c1048a4bd97120d36ec69c4a1f47631b277a0c',
+     x86_64: '6d72486f5258f1c2b1a0915fa82a8cd065dca971e1e109b0a074d113478871c0'
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'python3' => :build
   depends_on 'swig' => :build
 

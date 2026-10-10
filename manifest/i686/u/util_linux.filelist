@@ -1,4 +1,4 @@
-# Total size: 32299874
+# Total size: 32296060
 /usr/local/bin/bits
 /usr/local/bin/cal
 /usr/local/bin/chfn
@@ -122,9 +122,9 @@
 /usr/local/lib/pkgconfig/mount.pc
 /usr/local/lib/pkgconfig/smartcols.pc
 /usr/local/lib/pkgconfig/uuid.pc
-/usr/local/lib/python3.14/site-packages/libmount/__init__.py
-/usr/local/lib/python3.14/site-packages/libmount/__pycache__/__init__.cpython-314.pyc
-/usr/local/lib/python3.14/site-packages/libmount/pylibmount.cpython-314-i386-linux-gnu.so
+/usr/local/lib/python3.15/site-packages/libmount/__init__.py
+/usr/local/lib/python3.15/site-packages/libmount/__pycache__/__init__.cpython-315.pyc
+/usr/local/lib/python3.15/site-packages/libmount/pylibmount.cpython-315-i386-linux-gnu.so
 /usr/local/lib/security/pam_lastlog2.so
 /usr/local/sbin/addpart
 /usr/local/sbin/blkdiscard
