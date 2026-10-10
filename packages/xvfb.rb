@@ -4,7 +4,7 @@ Package.load_package("#{__dir__}/xorg_server.rb")
 class Xvfb < Package
   description 'XVfb from Xorg Server.'
   homepage 'https://gitlab.freedesktop.org/xorg/xserver'
-  version '21.1.24'
+  version '21.1.25'
   license 'BSD-3, MIT, BSD-4, MIT-with-advertising, ISC and custom'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'SKIP'
