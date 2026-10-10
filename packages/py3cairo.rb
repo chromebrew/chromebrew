@@ -11,9 +11,9 @@ class Py3cairo < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0c4dabe05355a5753cdb449584f81093aad714aae34e5e507759b616bd24ad59',
-     armv7l: '0c4dabe05355a5753cdb449584f81093aad714aae34e5e507759b616bd24ad59',
-     x86_64: '57ab0997fcf80d0855dba1483cc17a89f33bdc2bab7a02b302caab9a8bc96faf'
+    aarch64: '64de3bc27460ab7585217191523d2f076df9ef5594711dc250c7f884fb7ba556',
+     armv7l: '64de3bc27460ab7585217191523d2f076df9ef5594711dc250c7f884fb7ba556',
+     x86_64: '130564f02f1d5612ea5662bcf5455cb94d1413e5868f367dee5681e04674c8b5'
   })
 
   depends_on 'cairo' => :library
