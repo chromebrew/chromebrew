@@ -12,9 +12,9 @@ class Py3_pygobject < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7e3ab02ea0e8fd2febde13334e187c535d02b85b7b2d48f33f89449f76744603',
-     armv7l: '7e3ab02ea0e8fd2febde13334e187c535d02b85b7b2d48f33f89449f76744603',
-     x86_64: '90bb3d6b23e76793c95b2798304ce3d9790c2ec39054527bbb4c6096d322d549'
+    aarch64: '7d3161df3e31d386dccc1c4729f191240b875f14f6eb09711a26c7b111fd3cab',
+     armv7l: '7d3161df3e31d386dccc1c4729f191240b875f14f6eb09711a26c7b111fd3cab',
+     x86_64: 'e259086c31b7a20949050d650bdb50d651de5aaa683aa44d642638fc5b1735f6'
   })
 
   depends_on 'cairo' => :library
