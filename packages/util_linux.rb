@@ -11,10 +11,10 @@ class Util_linux < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a1ca9e518abfaa2c06c65015f0b33be8a125cd86ca20081427a3e7feb27ded1b',
-     armv7l: 'a1ca9e518abfaa2c06c65015f0b33be8a125cd86ca20081427a3e7feb27ded1b',
-       i686: '21c5875d2d8d190e64c8e4a28b36f818ddf740287c3ce01abad3c841d7a513ea',
-     x86_64: 'ebbf35eed4460ec4e837c19b6fd1453b0db32f5329c593a0cb4e76a1a9642586'
+    aarch64: '5fdbc4600ad11521d821e9798feb7534e1ad8ca152f1d4897de1b5c6ca66a6e1',
+     armv7l: '5fdbc4600ad11521d821e9798feb7534e1ad8ca152f1d4897de1b5c6ca66a6e1',
+       i686: '9da8fd884ce7febd54797ac4e454aa5bf243f7d7d3d777253730acdced8bfccf',
+     x86_64: 'd36014eb17d0f094a572b106054b108b66a33e29827ad4b97cbff387a2f83d72'
   })
 
   depends_on 'eudev_header' => :build if ARCH == 'x86_64' # (for libudev.h)

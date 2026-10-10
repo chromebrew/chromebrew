@@ -10,10 +10,10 @@ class Py3_readme_renderer < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd5191be6efd1a28ba4bc4bb6a6ec609243e9b0e2b36c29a64beec9516f01201b',
-     armv7l: 'd5191be6efd1a28ba4bc4bb6a6ec609243e9b0e2b36c29a64beec9516f01201b',
-       i686: '265f4f55d7a9b6e9cc5811cd99d6af5f77b179422f15cbe546da1c9224177c9b',
-     x86_64: '80496afc7688f721f3dae2505cec43a122bd30aea64619ab09add37e2491e273'
+    aarch64: 'd628498f465fab0fab7e51b05603c5129ffa992711fab193f6135ebdb0f05d24',
+     armv7l: 'd628498f465fab0fab7e51b05603c5129ffa992711fab193f6135ebdb0f05d24',
+       i686: '74d31a445248d2fcecac78ad804d4810af2fe81259a87b4ebc85cb26cb098306',
+     x86_64: 'cf44bbd4188a0412131cda05d829c3faa2fd0c0bdb9f4fdcd66bfe87e5ed386a'
   })
 
   depends_on 'py3_bleach' => :build
