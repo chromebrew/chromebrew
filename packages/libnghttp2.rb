@@ -14,7 +14,7 @@ class Libnghttp2 < CMake
     aarch64: 'ce940f52573adef4041724ee16f5f9cb51d048d4bc371dd2471e602351abd6d6',
      armv7l: 'ce940f52573adef4041724ee16f5f9cb51d048d4bc371dd2471e602351abd6d6',
        i686: '468fc676963fbf70d21cd96028ebea47ada02c16927e75ea51ab782ddcfb65f2',
-     x86_64: 'cb1ea36c03e88fe11bae0c436cc42e3c2cee1e7867e70c1b477fb492f1c8c71c'
+     x86_64: '8b4061ebabde4cd79f058322021d006b6b56e74054c444d229cac5c07c1ed0ee'
   })
 
   depends_on 'glibc' => :library
