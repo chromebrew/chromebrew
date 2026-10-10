@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Py3cairo < Meson
   description 'Pycairo is a provides bindings for the cairo graphics library.'
   homepage 'https://cairographics.org/pycairo/'
-  version "1.29.0-#{CREW_PY_VER}"
+  version "1.29.2-#{CREW_PY_VER}"
   license 'LGPL-2.1 or MPL-1.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/pygobject/pycairo.git'
@@ -11,9 +11,9 @@ class Py3cairo < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '64de3bc27460ab7585217191523d2f076df9ef5594711dc250c7f884fb7ba556',
-     armv7l: '64de3bc27460ab7585217191523d2f076df9ef5594711dc250c7f884fb7ba556',
-     x86_64: '130564f02f1d5612ea5662bcf5455cb94d1413e5868f367dee5681e04674c8b5'
+    aarch64: '735078596eb85db2f77e9c66984f83924592f96d4b1103a4dc4da4bc95607f84',
+     armv7l: '735078596eb85db2f77e9c66984f83924592f96d4b1103a4dc4da4bc95607f84',
+     x86_64: '55fe870f058d3dafba53671e83e1564d829772dbdcb6f88e37cfe38c0c6b3e03'
   })
 
   depends_on 'cairo' => :library
