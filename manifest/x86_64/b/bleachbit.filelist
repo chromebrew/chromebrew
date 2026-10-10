@@ -1,9 +1,9 @@
-# Total size: 4563661
+# Total size: 4750179
 /usr/local/bin/bleachbit
-/usr/local/lib/python3.14/site-packages/bleachbit-6.0.4-py3.14.egg-info/PKG-INFO
-/usr/local/lib/python3.14/site-packages/bleachbit-6.0.4-py3.14.egg-info/SOURCES.txt
-/usr/local/lib/python3.14/site-packages/bleachbit-6.0.4-py3.14.egg-info/dependency_links.txt
-/usr/local/lib/python3.14/site-packages/bleachbit-6.0.4-py3.14.egg-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/bleachbit-6.0.5-py3.14.egg-info/PKG-INFO
+/usr/local/lib/python3.14/site-packages/bleachbit-6.0.5-py3.14.egg-info/SOURCES.txt
+/usr/local/lib/python3.14/site-packages/bleachbit-6.0.5-py3.14.egg-info/dependency_links.txt
+/usr/local/lib/python3.14/site-packages/bleachbit-6.0.5-py3.14.egg-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/bleachbit/Action.py
 /usr/local/lib/python3.14/site-packages/bleachbit/Bootstrap.py
 /usr/local/lib/python3.14/site-packages/bleachbit/CLI.py
@@ -24,6 +24,7 @@
 /usr/local/lib/python3.14/site-packages/bleachbit/GuiBasic.py
 /usr/local/lib/python3.14/site-packages/bleachbit/GuiChaff.py
 /usr/local/lib/python3.14/site-packages/bleachbit/GuiCookie.py
+/usr/local/lib/python3.14/site-packages/bleachbit/GuiInfoBar.py
 /usr/local/lib/python3.14/site-packages/bleachbit/GuiPreferences.py
 /usr/local/lib/python3.14/site-packages/bleachbit/GuiStartup.py
 /usr/local/lib/python3.14/site-packages/bleachbit/GuiTreeModels.py
@@ -70,6 +71,7 @@
 /usr/local/lib/python3.14/site-packages/bleachbit/__pycache__/GuiBasic.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/bleachbit/__pycache__/GuiChaff.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/bleachbit/__pycache__/GuiCookie.cpython-314.pyc
+/usr/local/lib/python3.14/site-packages/bleachbit/__pycache__/GuiInfoBar.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/bleachbit/__pycache__/GuiPreferences.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/bleachbit/__pycache__/GuiStartup.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/bleachbit/__pycache__/GuiTreeModels.cpython-314.pyc
@@ -127,6 +129,7 @@
 /usr/local/share/bleachbit/GuiBasic.py
 /usr/local/share/bleachbit/GuiChaff.py
 /usr/local/share/bleachbit/GuiCookie.py
+/usr/local/share/bleachbit/GuiInfoBar.py
 /usr/local/share/bleachbit/GuiPreferences.py
 /usr/local/share/bleachbit/GuiStartup.py
 /usr/local/share/bleachbit/GuiTreeModels.py
@@ -190,6 +193,8 @@
 /usr/local/share/bleachbit/__pycache__/GuiChaff.cpython-314.pyc
 /usr/local/share/bleachbit/__pycache__/GuiCookie.cpython-314.opt-1.pyc
 /usr/local/share/bleachbit/__pycache__/GuiCookie.cpython-314.pyc
+/usr/local/share/bleachbit/__pycache__/GuiInfoBar.cpython-314.opt-1.pyc
+/usr/local/share/bleachbit/__pycache__/GuiInfoBar.cpython-314.pyc
 /usr/local/share/bleachbit/__pycache__/GuiPreferences.cpython-314.opt-1.pyc
 /usr/local/share/bleachbit/__pycache__/GuiPreferences.cpython-314.pyc
 /usr/local/share/bleachbit/__pycache__/GuiStartup.cpython-314.opt-1.pyc
@@ -251,6 +256,7 @@
 /usr/local/share/bleachbit/cleaners/deepscan.xml
 /usr/local/share/bleachbit/cleaners/discord.xml
 /usr/local/share/bleachbit/cleaners/dnf.xml
+/usr/local/share/bleachbit/cleaners/docker.xml
 /usr/local/share/bleachbit/cleaners/easytag.xml
 /usr/local/share/bleachbit/cleaners/elinks.xml
 /usr/local/share/bleachbit/cleaners/emesene.xml
@@ -272,6 +278,7 @@
 /usr/local/share/bleachbit/cleaners/google_toolbar.xml
 /usr/local/share/bleachbit/cleaners/gpodder.xml
 /usr/local/share/bleachbit/cleaners/gwenview.xml
+/usr/local/share/bleachbit/cleaners/helium.xml
 /usr/local/share/bleachbit/cleaners/hexchat.xml
 /usr/local/share/bleachbit/cleaners/hippo_opensim_viewer.xml
 /usr/local/share/bleachbit/cleaners/java.xml
