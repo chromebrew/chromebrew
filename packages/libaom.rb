@@ -3,7 +3,7 @@ require 'package'
 class Libaom < Package
   description 'AV1 video codec from Alliance for Open Media'
   homepage 'https://aomedia.org/'
-  version '3.15.1'
+  version '3.15.2'
   license 'BSD-2'
   compatibility 'all'
   source_url 'https://aomedia.googlesource.com/aom.git'
