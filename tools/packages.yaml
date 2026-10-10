@@ -1090,6 +1090,11 @@ url: https://www.bastoul.net/cloog/download.php
 activity: none
 ---
 kind: url
+name: cloudcompare
+url: https://github.com/CloudCompare/CloudCompare/releases
+activity: none
+---
+kind: url
 name: cloudcross
 url: https://github.com/MasterSoft24/CloudCross/releases
 activity: none

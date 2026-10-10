@@ -11,10 +11,10 @@ class Libmbedtls < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c99f6939a79bd7a836e8a666587080aa11dbf9e67171b26bd8d1f765ede22a87',
-     armv7l: 'c99f6939a79bd7a836e8a666587080aa11dbf9e67171b26bd8d1f765ede22a87',
-       i686: 'ef4bdb39ef1b529220c7c4b50ad1cc7c0dcb13fb7159b42ab3a30c089be07d15',
-     x86_64: 'caa3daf74b261afc52636a180ccf0fa275648bfbee0d536780b8fb62c57ede17'
+    aarch64: '4acd217acce553dcce4686be290c8a03ba3e0fbda6d15fce541111b2b5e84435',
+     armv7l: '4acd217acce553dcce4686be290c8a03ba3e0fbda6d15fce541111b2b5e84435',
+       i686: 'b7b8e1b5986ef3ba7ba0c1ef2776ab69876c1ac3b43e8ef0957dc9e4b0b298e9',
+     x86_64: '074c71f9c76d928cbe827ab6b902dfc65f52790e0bb183fc8995ccb2466aeb56'
   })
 
   depends_on 'glibc' => :library
