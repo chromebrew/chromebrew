@@ -10,10 +10,10 @@ class Py3_cssselect < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b039fdc45f5d652029dd3623be621761389ec5a996a6f58b860b23b53cefd26a',
-     armv7l: 'b039fdc45f5d652029dd3623be621761389ec5a996a6f58b860b23b53cefd26a',
-       i686: 'b4c15548c4da259f0fa5434b5e9407562a96e3d75c159e841db6f5fe570cef5a',
-     x86_64: 'e6d41dd097c76508d6446f23702ade1c82490a06b2b74b0ff0c0ac7a7a950621'
+    aarch64: 'cf818079807498d8af8bc6a374bc15d7f00cce5573cfb606eddd6e3f3a5f9789',
+     armv7l: 'cf818079807498d8af8bc6a374bc15d7f00cce5573cfb606eddd6e3f3a5f9789',
+       i686: 'f6bfd5bc61142cf781b6e39f7205699d397e2b166513ed8cc3c09714fc8d1aab',
+     x86_64: '771c1fe2f6d5a8546528f4a7b1c05fce41f44f4bc33526f929b25b04128ca48a'
   })
 
   depends_on 'python3' => :logical
