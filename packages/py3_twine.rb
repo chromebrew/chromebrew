@@ -10,10 +10,10 @@ class Py3_twine < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0ddcf2b70549a23cc0a1b9b143e82a97bdf25ac7e9a2878d1effeeff8ec70e96',
-     armv7l: '0ddcf2b70549a23cc0a1b9b143e82a97bdf25ac7e9a2878d1effeeff8ec70e96',
-       i686: '774e1dcda455abc56741672c86a76a8ec9313aa4f275689e48cbc5c74f950499',
-     x86_64: '310d067ac043c866406fc113a09c8a5d740ef9a87a922745dc6095db5ca2a23d'
+    aarch64: '6a1bb7c9ee5827295aaf730a32383dd79b38def508275d511c86041732f25d0b',
+     armv7l: '6a1bb7c9ee5827295aaf730a32383dd79b38def508275d511c86041732f25d0b',
+       i686: '10c61ea3242876eca2594e1275e14fc2d1d54a76a9459c9fb1f2ddd12067d559',
+     x86_64: 'ff17eb4d0c46216855e03ea20c6568f12ca4e07435a9f418af27a258da99af97'
   })
 
   depends_on 'py3_certifi'
