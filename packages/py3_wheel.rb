@@ -10,10 +10,10 @@ class Py3_wheel < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'af288f7f8b2c010136c73b1cdb3ecf2feebaa512229aea5e3352ce9271c55fd9',
-     armv7l: 'af288f7f8b2c010136c73b1cdb3ecf2feebaa512229aea5e3352ce9271c55fd9',
-       i686: '0c8444f1ba8bd08eeaf0baf18971e6c1482100d9e3d4687ccdd5492eb1d5e7ad',
-     x86_64: '6c2fdcbcd862197f8d3e520a6d66ac70a06c47d9b36168e5ae70b6b4a48cbb16'
+    aarch64: '77427d50e5c0ce2af6d6dc3f101b6f7ddc6a0e66fb9dee1213c89a4a988b003b',
+     armv7l: '77427d50e5c0ce2af6d6dc3f101b6f7ddc6a0e66fb9dee1213c89a4a988b003b',
+       i686: '4027bcaa39d23e1ffbf6b0f23892b5f7c0c97fdfee8c6194fd82b4eb0bf43fca',
+     x86_64: 'f559bd3f2d7483daed0f2b28f0fc712692df4fea546b669cbf19833f5d97891a'
   })
 
   depends_on 'py3_packaging'
