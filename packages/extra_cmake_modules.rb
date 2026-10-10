@@ -11,10 +11,10 @@ class Extra_cmake_modules < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e051ea7e54f97dc0be815bf2434ae163cbded54a56bd2bb8a426e0a2c54d4ab8',
-     armv7l: 'e051ea7e54f97dc0be815bf2434ae163cbded54a56bd2bb8a426e0a2c54d4ab8',
-       i686: 'a497639b0ad8c252e3caa2e9578a1e1dbbc810be13e4237f193f804c6237fc0f',
-     x86_64: '061a103c316a7fb097ed6bfcbbc5610f51e45fa6c9e779dfd84b7505baff8432'
+    aarch64: 'a778e06c90ccaf3e96c3047782b5500145bc75afb0e5c2ef3b3d5d1ed37a272b',
+     armv7l: 'a778e06c90ccaf3e96c3047782b5500145bc75afb0e5c2ef3b3d5d1ed37a272b',
+       i686: '5698659874cc832468f40d2d6e0c68235bfa42e759f9c9075dbe98a40281b268',
+     x86_64: '990e8300ce878588ce9c2f93a82fc0045308597cf7b222d23bf95ce175eab5b4'
   })
 
   depends_on 'sphinx' => :build
