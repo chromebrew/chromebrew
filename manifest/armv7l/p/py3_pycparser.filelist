@@ -1,11 +1,11 @@
-# Total size: 477471
-/usr/local/lib/python3.14/site-packages/pycparser-3.1.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/pycparser-3.1.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/pycparser-3.1.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/pycparser-3.1.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/pycparser-3.1.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/pycparser-3.1.dist-info/licenses/LICENSE
-/usr/local/lib/python3.14/site-packages/pycparser-3.1.dist-info/top_level.txt
+# Total size: 495056
+/usr/local/lib/python3.14/site-packages/pycparser-3.11.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/pycparser-3.11.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/pycparser-3.11.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/pycparser-3.11.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/pycparser-3.11.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/pycparser-3.11.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/pycparser-3.11.dist-info/top_level.txt
 /usr/local/lib/python3.14/site-packages/pycparser/__init__.py
 /usr/local/lib/python3.14/site-packages/pycparser/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/pycparser/__pycache__/_ast_gen.cpython-314.pyc
