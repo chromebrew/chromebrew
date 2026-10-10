@@ -1,0 +1,4 @@
+#!/bin/bash
+java -help 2>&1 | head
+java -version 2>&1
+javac -version 2>&1
