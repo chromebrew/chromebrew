@@ -16,8 +16,8 @@ class Py3_charset_normalizer < Pip
      x86_64: '4ba56d188da039d213635c8510426dabce08522332d90d140ba363a277c3b7ca'
   })
 
-  depends_on 'glibc' => :library
-  depends_on 'glibc_lib' => :library
+  depends_on 'glibc' => :build
+  depends_on 'glibc_lib' => :build
   depends_on 'python3' => :logical
 
   no_source_build
