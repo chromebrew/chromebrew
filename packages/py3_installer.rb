@@ -10,10 +10,10 @@ class Py3_installer < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '21150659cfc21c8c8602ac344e09f38469d0d23ce9c6e638590a21fef799aee7',
-     armv7l: '21150659cfc21c8c8602ac344e09f38469d0d23ce9c6e638590a21fef799aee7',
-       i686: '711ff963cdd418636495755125a4c934753870336c3d5acfb4e61ce79fe8f3da',
-     x86_64: '5dabbe9636f50200bf8097f4e88d7dd223494e619baec63bd6a1c0e6c43804aa'
+    aarch64: '71375eb41aafef99b0f16c12ebd45cbfb0381a0627834ac1f0f051d2e87f5a2c',
+     armv7l: '71375eb41aafef99b0f16c12ebd45cbfb0381a0627834ac1f0f051d2e87f5a2c',
+       i686: 'a7b20be2080e5cff5132d1c0869a709158e36ae60d74adf04dcb5c1ee16bac3d',
+     x86_64: '25b36bef89a9f9e16b3506333182e7693f648408047e619e4cc4ef734beb5653'
   })
 
   depends_on 'python3' => :logical
