@@ -10,10 +10,10 @@ class Py3_pygments < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '50e6f2ff4d1643662735a47fad38d419a56a2bc907d01d8dbc1f27a33231ac8f',
-     armv7l: '50e6f2ff4d1643662735a47fad38d419a56a2bc907d01d8dbc1f27a33231ac8f',
-       i686: 'e7f9bd8ffb8d39365ded4a0cf1971de28d898515c2ff733d07ba8ef8ca54769d',
-     x86_64: 'ed0cd23d879df90ac0d8b78be99a4b1eef65017593150c50bc5c278970a0aea6'
+    aarch64: 'c92a8f2dd6ecc6c595cd26c76f6c3c1702273cbcf0a9424884320d395ffa18c7',
+     armv7l: 'c92a8f2dd6ecc6c595cd26c76f6c3c1702273cbcf0a9424884320d395ffa18c7',
+       i686: 'd1ae456bb5fb3f5061cff0e302a3490c103a56c499056f31947e0ae90567ba58',
+     x86_64: '73480c23c09e08429d9f6767eee0bfa1fadf5bb6d299964c362429c62d42e3e4'
   })
 
   depends_on 'python3' => :logical

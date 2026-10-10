@@ -1,14 +1,14 @@
 require 'package'
 
-class Openjdk26 < Package
+class Openjdk27 < Package
   description 'The JDK is a development environment for building applications, applets, and components using the Java programming language.'
   homepage 'https://openjdk.org/'
-  version '26.0.2'
+  version '27.0.0'
   license 'GPL-2'
   compatibility 'x86_64'
-  # Visit https://www.azul.com/downloads/?version=java-26-lts&package=jdk#zulu to download the binary.
-  source_url 'https://cdn.azul.com/zulu/bin/zulu26.32.13-ca-jdk26.0.2-linux_x64.tar.gz'
-  source_sha256 '4b7c114917aebd0fc6284fc7111245d7747a4d9603bd12d86b384b1abc9d575d'
+  # Visit https://www.azul.com/downloads/?version=java-27-lts&package=jdk#zulu to download the binary.
+  source_url 'https://cdn.azul.com/zulu/bin/zulu27.28.101-ca-jdk27.0.0-linux_x64.tar.gz'
+  source_sha256 'ccbc15c4edbedfdcc03c2d29a2aa2c6daf9e6ffb4cda7dd5ece0fcbb37350267'
 
   no_compile_needed
   no_shrink
@@ -23,27 +23,27 @@ class Openjdk26 < Package
       majver = '8' if majver == '1'
       unless jdkname == 'openjdk' && majver == '17'
         puts "Package #{jdkname}#{majver} already installed.".lightgreen
-        abort "Enter `crew remove #{jdkname}#{majver} && crew install openjdk26` to install this version."
+        abort "Enter `crew remove #{jdkname}#{majver} && crew install openjdk27` to install this version."
       end
     end
   end
 
   def self.install
     FileUtils.mkdir_p CREW_DEST_MAN_PREFIX
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/openjdk26"
-    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/openjdk26/"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/openjdk27"
+    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/openjdk27/"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    Dir["#{CREW_DEST_PREFIX}/share/openjdk26/bin/*"].each do |binfile|
+    Dir["#{CREW_DEST_PREFIX}/share/openjdk27/bin/*"].each do |binfile|
       @basename = File.basename(binfile)
-      FileUtils.ln_s "#{CREW_PREFIX}/share/openjdk26/bin/#{@basename}", "#{CREW_DEST_PREFIX}/bin/#{@basename}"
+      FileUtils.ln_s "#{CREW_PREFIX}/share/openjdk27/bin/#{@basename}", "#{CREW_DEST_PREFIX}/bin/#{@basename}"
     end
-    FileUtils.mv Dir["#{CREW_DEST_PREFIX}/share/openjdk26/man/*"], CREW_DEST_MAN_PREFIX
+    FileUtils.mv Dir["#{CREW_DEST_PREFIX}/share/openjdk27/man/*"], CREW_DEST_MAN_PREFIX
     # Add environment variable.
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
     javaenv = <<~EOF
       # Java configuration
       JAVA_HOME=#{CREW_PREFIX}
     EOF
-    File.write("#{CREW_DEST_PREFIX}/etc/env.d/10-openjdk26", javaenv)
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/10-openjdk27", javaenv)
   end
 end
