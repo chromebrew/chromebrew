@@ -3,7 +3,7 @@ require 'buildsystems/python'
 class Bleachbit < Python
   description 'Bleachbit provides a means to clean your system and free disk space.'
   homepage 'https://www.bleachbit.org/'
-  version '6.0.4'
+  version '6.0.5'
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/bleachbit/bleachbit.git'
@@ -11,9 +11,9 @@ class Bleachbit < Python
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a4f5816a8a2b04b989afa085b9653579f3a79a55d8b4c87d02f438eff4715d44',
-     armv7l: 'a4f5816a8a2b04b989afa085b9653579f3a79a55d8b4c87d02f438eff4715d44',
-     x86_64: 'b4bc5f72f2c7e6cc8ddcdd6d84acb52f983fa92c2b04c0830b19516555fa7f9d'
+    aarch64: 'b58b39ab813a9bc181f4ffa3b0fa858423a3da2a28d8c373847b2f819ddb2577',
+     armv7l: 'b58b39ab813a9bc181f4ffa3b0fa858423a3da2a28d8c373847b2f819ddb2577',
+     x86_64: '463c124392fa925ff4f93e23c368ee13fa08ba81ca8741deac8c017be1a58f2f'
   })
 
   depends_on 'gtk3' => :build
