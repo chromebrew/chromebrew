@@ -1,5 +1,5 @@
 #!/bin/bash
-CREW_INSTALLER_VERSION=2026091601
+CREW_INSTALLER_VERSION=2026101101
 export CREW_INSTALLER_RUNNING=1
 # Exit on fail.
 set -eE
@@ -194,7 +194,7 @@ PATCHELF_INTERPRETER="${CREW_PREFIX}/bin/ld.so"
 #esac
 
 : "${CREW_GCC_VER:=gcc16}"
-: "${CREW_PY_VER:=py3.14}"
+: "${CREW_PY_VER:=py3.15}"
 CREW_NPROC="$(nproc)"
 export CREW_NPROC
 
