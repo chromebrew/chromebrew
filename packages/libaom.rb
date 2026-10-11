@@ -11,10 +11,10 @@ class Libaom < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6b64e20e24391bbf142094fc71f9e0a46b14c4b3ca78c1d3c74fa7b77e8d313e',
-     armv7l: '6b64e20e24391bbf142094fc71f9e0a46b14c4b3ca78c1d3c74fa7b77e8d313e',
-       i686: '503d9c69657f5a6925dad3438d5a3ce1d622ba3c5e1248e5ce456f3dff105b1a',
-     x86_64: '9f1ef344114ab5d0c2b5eebe074c3608f8819da7e81c04de5f205373406a5012'
+    aarch64: '3f8a7b6f6022e1c9a8f4cc65fd3b81cb6dc0703fcf75e3758d2d79225fb25f16',
+     armv7l: '3f8a7b6f6022e1c9a8f4cc65fd3b81cb6dc0703fcf75e3758d2d79225fb25f16',
+       i686: 'f3e4797c667e2723a7033120042286190e85a109270db707c4c24a0e7504439b',
+     x86_64: '79c11660be9000ea5e9dd6a31969fc3179c2f2bd3039433b4b4e6aae46542ef0'
   })
 
   depends_on 'gcc_lib' => :executable
