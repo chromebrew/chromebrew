@@ -1,0 +1,5 @@
+#!/bin/bash
+hermes -h 2>&1 | head
+hermes --version
+hermes-acp -h
+hermes-acp --version
