@@ -6,15 +6,22 @@ class Libxcrypt < Autotools
   version '4.5.2'
   license 'LGPL-2.1+, public-domain, BSD and BSD-2'
   compatibility 'all'
-  source_url "https://github.com/besser82/libxcrypt/releases/download/v#{version}/libxcrypt-#{version}.tar.xz"
-  source_sha256 '71513a31c01a428bccd5367a32fd95f115d6dac50fb5b60c779d5c7942aec071'
+  source_url 'https://github.com/besser82/libxcrypt.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8ee04ec38fba081b7fed26007a922e45033313022406eda41edb3aa95bca435a',
-     armv7l: '8ee04ec38fba081b7fed26007a922e45033313022406eda41edb3aa95bca435a',
-       i686: 'b366ff7a08295510aa900738c384a208508bf4c44fda541475df899f22545412',
-     x86_64: 'ebcef904c8434c450cdf5c9f9104f1f0003dc6d00f77e850472c0e389d0281a1'
+    aarch64: '3b48a42c6c7ae9844eeb09dfe56e9a7c18898921a489c8d96bd4aa0db4253cf2',
+     armv7l: '3b48a42c6c7ae9844eeb09dfe56e9a7c18898921a489c8d96bd4aa0db4253cf2',
+       i686: '88a9146e9b8088d2516352893284957a594e1aa97411129272e4724ac5755b1c',
+     x86_64: '98228feaf1aa39429a7d688afd0e6f6a605564aefc6d432b9e67e1ace33cf4e2'
+  })
+
+  binary_sha256({
+    aarch64: '3b48a42c6c7ae9844eeb09dfe56e9a7c18898921a489c8d96bd4aa0db4253cf2',
+     armv7l: '3b48a42c6c7ae9844eeb09dfe56e9a7c18898921a489c8d96bd4aa0db4253cf2',
+       i686: '88a9146e9b8088d2516352893284957a594e1aa97411129272e4724ac5755b1c',
+     x86_64: '98228feaf1aa39429a7d688afd0e6f6a605564aefc6d432b9e67e1ace33cf4e2'
   })
 
   depends_on 'glibc' => :library
