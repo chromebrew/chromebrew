@@ -1,31 +1,25 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Siege < Package
+class Siege < Autotools
   description 'Siege is an http load testing and benchmarking utility.'
   homepage 'https://www.joedog.org/siege-home/'
-  version '4.0.5'
+  version '4.2.0'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'http://download.joedog.org/siege/siege-4.0.5.tar.gz'
-  source_sha256 '3b4b7001afa4d80f3f4939066a4932e198e9f949dcc0e3affecbedd922800231'
-  binary_compression 'tar.xz'
+  source_url "https://download.joedog.org/siege/siege-#{version}.tar.gz"
+  source_sha256 '78af482fc655f1cf7270fdbc3171581ed4cb3163009f7f4f056fc2b7e2d24453'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bdebecd0f52474101942d8f0d993389b1ed3f6aa32d9c3c5a9ffd8ed719814a3',
-     armv7l: 'bdebecd0f52474101942d8f0d993389b1ed3f6aa32d9c3c5a9ffd8ed719814a3',
-       i686: '152e9eaff55b5cf304aa34a3eb3f4a17a2918a84f1e224c34713cde9334c1f99',
-     x86_64: 'b2bb5b875c5e4e7acec1d7c3a3e5e111751ca3ba6a9098be18c0bce295e240b6'
+    aarch64: 'fcaedde74daa4af1989b1876ca76532ea90a5e943f73701d31c4b5244285cb13',
+     armv7l: 'fcaedde74daa4af1989b1876ca76532ea90a5e943f73701d31c4b5244285cb13',
+       i686: '4806d54ea01aba33f17c2816db1eba2cbb6bc09e58cedddc1b7b76e4e4ce5180',
+     x86_64: '19223a776a957751da1d826d21bfefbf839be515d7eabdc72dcdb45b7ab26084'
   })
 
-  def self.build
-    system "./configure \
-           --prefix=#{CREW_PREFIX} \
-           --libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    system "compressdoc --gzip -9 #{CREW_DEST_PREFIX}/share/man/man1"
-  end
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'openssl' => :executable
+  depends_on 'util_linux' => :executable
+  depends_on 'zlib' => :executable
 end
