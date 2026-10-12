@@ -3,7 +3,7 @@ require 'package'
 class Fzf < Package
   description 'A command-line fuzzy finder'
   homepage 'https://github.com/junegunn/fzf'
-  version '0.74.4'
+  version '0.74.5'
   license 'MIT and BSD-with-disclosure'
   compatibility 'all'
   source_url 'https://github.com/junegunn/fzf.git'
