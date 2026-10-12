@@ -11,9 +11,9 @@ class Xterm < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6e0fada45b3f5c9deeee74dbcad76833f2f9d4b519eb9c86cd0895308e960d2b',
-     armv7l: '6e0fada45b3f5c9deeee74dbcad76833f2f9d4b519eb9c86cd0895308e960d2b',
-     x86_64: 'a343f5962926a0a48406bd5bd9e948d45827bc5141f468b439fcb0647aaf761f'
+    aarch64: 'eb14f1ea39afbde8ac804905fbd759b56ffd6d80577ce243f52ebad8cc1058e1',
+     armv7l: 'eb14f1ea39afbde8ac804905fbd759b56ffd6d80577ce243f52ebad8cc1058e1',
+     x86_64: 'ca7a0ac81a97b50f9bca5529d87a9f3469789b89f25ac3c2b1175de473cd559c'
   })
 
   depends_on 'fontconfig' => :executable
