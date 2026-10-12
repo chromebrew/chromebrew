@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Byobu < Autotools
   description 'Byobu is a GPLv3 open source text-based window manager and terminal multiplexer.'
   homepage 'https://www.byobu.org'
-  version '7.20'
+  version '7.21'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/dustinkirkland/byobu.git'
@@ -11,10 +11,10 @@ class Byobu < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c2ef2a41907a0fe0dd5723ff0a59719e744b19ed54fe0125acdf2bd967928ac2',
-     armv7l: 'c2ef2a41907a0fe0dd5723ff0a59719e744b19ed54fe0125acdf2bd967928ac2',
-       i686: '00aece511e3d9c3bf93a57a66aae471c125eb32618d3ae6c46b26b866814e6cc',
-     x86_64: 'fb795a02275e594daf161a1e55453231740c10f11c16faab66c4b04823ff94c1'
+    aarch64: 'fa1fdeea5d8661eafea6bf0b8f97077079499db46986a0691552e483eb864ccf',
+     armv7l: 'fa1fdeea5d8661eafea6bf0b8f97077079499db46986a0691552e483eb864ccf',
+       i686: '4117b57b26e9ce4a3c01c8499e7badfb51b0ead2efeeb3e5c53ce1fc9255f108',
+     x86_64: 'c983e0935a6c5ade4460acedf03ca8c209e8ada604f92a2ca2191f21bd57dcba'
   })
 
   depends_on 'tmux' unless File.exist? "#{CREW_PREFIX}/bin/screen"
