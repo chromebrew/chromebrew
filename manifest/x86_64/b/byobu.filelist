@@ -1,4 +1,4 @@
-# Total size: 1299615
+# Total size: 1605985
 /usr/local/bin/byobu
 /usr/local/bin/byobu-config
 /usr/local/bin/byobu-ctrl-a
@@ -207,6 +207,9 @@
 /usr/local/share/man/man1/wifi-status.1.zst
 /usr/local/share/sounds/byobu/byobu.ogg
 /usr/local/share/trustmux/static/app.js
+/usr/local/share/trustmux/static/fonts/DejaVuSansMono-Bold.woff2
+/usr/local/share/trustmux/static/fonts/DejaVuSansMono.woff2
+/usr/local/share/trustmux/static/fonts/LICENSE
 /usr/local/share/trustmux/static/icons/icon-192.png
 /usr/local/share/trustmux/static/icons/icon-512.png
 /usr/local/share/trustmux/static/index.html
