@@ -1,4 +1,4 @@
-# Total size: 402937
+# Total size: 417497
 /home/chronos/user/.roswell
 /usr/local/bin/ros
 /usr/local/etc/roswell/balus.ros
@@ -61,11 +61,13 @@
 /usr/local/etc/roswell/install-allegro.lisp
 /usr/local/etc/roswell/install-asdf.lisp
 /usr/local/etc/roswell/install-ccl-bin.lisp
+/usr/local/etc/roswell/install-clamiga.lisp
 /usr/local/etc/roswell/install-clasp-bin.lisp
 /usr/local/etc/roswell/install-clasp.lisp
 /usr/local/etc/roswell/install-clisp-head.lisp
 /usr/local/etc/roswell/install-clisp.lisp
 /usr/local/etc/roswell/install-cmu-bin.lisp
+/usr/local/etc/roswell/install-dotcl-bin.lisp
 /usr/local/etc/roswell/install-ecl.lisp
 /usr/local/etc/roswell/install-lispworks.lisp
 /usr/local/etc/roswell/install-mkcl.lisp
