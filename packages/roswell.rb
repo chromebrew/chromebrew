@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Roswell < Autotools
   description 'A lisp installer and launcher for major environment.'
   homepage 'https://github.com/roswell/roswell'
-  version '26.02.116'
+  version '26.10.117'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/roswell/roswell.git'
