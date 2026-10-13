@@ -14,16 +14,15 @@ class Gdb < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '434e750e950deaec9d9022b840219c8e6a363cb358ae5c730d04f6ecf21fdb41',
-     armv7l: '434e750e950deaec9d9022b840219c8e6a363cb358ae5c730d04f6ecf21fdb41',
-       i686: '1a58785d717411524b4eac0d1515e9990c771c04f2e80aa70f1706bf45b0c360',
-     x86_64: 'a961b15899fba5e78b1e59cdbf4547dafd6ea58ebf64f4efec07a693ad660d16'
+    aarch64: '39a1a65d4dea4dbb5cc1d2a4028d3f28d9ad02a18eebdd7a583109725f36e773',
+     armv7l: '39a1a65d4dea4dbb5cc1d2a4028d3f28d9ad02a18eebdd7a583109725f36e773',
+       i686: 'a82b1767cff23005f62fe8acdf91a5b1e8d5d4d393bbea366f330d0a09cdee03',
+     x86_64: 'b743ff881efc7c354f5af034e7d7c2301124ca5fb273692327a7777cd58f0349'
   })
 
   depends_on 'binutils' => :executable
-  depends_on 'binutils' => :library
   depends_on 'boost' => :executable
-  depends_on 'elfutils' # R
+  depends_on 'elfutils' => :library
   depends_on 'expat' => :executable
   depends_on 'gcc_lib' => :executable
   depends_on 'glibc' => :library
