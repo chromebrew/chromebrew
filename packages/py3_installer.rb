@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_installer < Pip
   description 'Python build is a simple, correct PEP 517 build frontend.'
   homepage 'https://installer.readthedocs.io/'
-  version "1.0.1-#{CREW_PY_VER}"
+  version "1.1.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '71375eb41aafef99b0f16c12ebd45cbfb0381a0627834ac1f0f051d2e87f5a2c',
-     armv7l: '71375eb41aafef99b0f16c12ebd45cbfb0381a0627834ac1f0f051d2e87f5a2c',
-       i686: 'a7b20be2080e5cff5132d1c0869a709158e36ae60d74adf04dcb5c1ee16bac3d',
-     x86_64: '25b36bef89a9f9e16b3506333182e7693f648408047e619e4cc4ef734beb5653'
+    aarch64: '74eb70a9b5311cd85c7ce0408626ebf0a79e6e4feda30d27ad2c73a876dd358e',
+     armv7l: '74eb70a9b5311cd85c7ce0408626ebf0a79e6e4feda30d27ad2c73a876dd358e',
+       i686: 'c7a44a1b26a52f98c75a9874780053892d6b72d61e00bf30950dec942d2deda8',
+     x86_64: '477f123dad03de7eee849574e426da7a82c060d461dffe21ba2b9de8616f09ee'
   })
 
   depends_on 'python3' => :logical
