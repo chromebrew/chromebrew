@@ -1,4 +1,4 @@
-# Total size: 161671807
+# Total size: 168498330
 /usr/local/bin/crystal
 /usr/local/bin/shards
 /usr/local/etc/bash.d/10-crystal
@@ -316,9 +316,14 @@
 /usr/local/share/crystal/src/crystal/digest/sha1.cr
 /usr/local/share/crystal/src/crystal/dwarf.cr
 /usr/local/share/crystal/src/crystal/dwarf/abbrev.cr
+/usr/local/share/crystal/src/crystal/dwarf/addr.cr
+/usr/local/share/crystal/src/crystal/dwarf/backtraces.cr
 /usr/local/share/crystal/src/crystal/dwarf/info.cr
-/usr/local/share/crystal/src/crystal/dwarf/line_numbers.cr
-/usr/local/share/crystal/src/crystal/dwarf/strings.cr
+/usr/local/share/crystal/src/crystal/dwarf/line.cr
+/usr/local/share/crystal/src/crystal/dwarf/line/registers.cr
+/usr/local/share/crystal/src/crystal/dwarf/line/sequence.cr
+/usr/local/share/crystal/src/crystal/dwarf/reader.cr
+/usr/local/share/crystal/src/crystal/dwarf/str_offsets.cr
 /usr/local/share/crystal/src/crystal/event_loop.cr
 /usr/local/share/crystal/src/crystal/event_loop/epoll.cr
 /usr/local/share/crystal/src/crystal/event_loop/file_descriptor.cr
@@ -350,6 +355,7 @@
 /usr/local/share/crystal/src/crystal/interpreter.cr
 /usr/local/share/crystal/src/crystal/lib_iconv.cr
 /usr/local/share/crystal/src/crystal/lock.cr
+/usr/local/share/crystal/src/crystal/lru_cache.cr
 /usr/local/share/crystal/src/crystal/main.cr
 /usr/local/share/crystal/src/crystal/once.cr
 /usr/local/share/crystal/src/crystal/pointer_linked_list.cr
@@ -666,6 +672,7 @@
 /usr/local/share/crystal/src/lib_c/aarch64-android/c/pthread.cr
 /usr/local/share/crystal/src/lib_c/aarch64-android/c/pwd.cr
 /usr/local/share/crystal/src/lib_c/aarch64-android/c/sched.cr
+/usr/local/share/crystal/src/lib_c/aarch64-android/c/semaphore.cr
 /usr/local/share/crystal/src/lib_c/aarch64-android/c/signal.cr
 /usr/local/share/crystal/src/lib_c/aarch64-android/c/stdarg.cr
 /usr/local/share/crystal/src/lib_c/aarch64-android/c/stddef.cr
@@ -710,6 +717,7 @@
 /usr/local/share/crystal/src/lib_c/aarch64-darwin/c/pthread.cr
 /usr/local/share/crystal/src/lib_c/aarch64-darwin/c/pwd.cr
 /usr/local/share/crystal/src/lib_c/aarch64-darwin/c/sched.cr
+/usr/local/share/crystal/src/lib_c/aarch64-darwin/c/semaphore.cr
 /usr/local/share/crystal/src/lib_c/aarch64-darwin/c/signal.cr
 /usr/local/share/crystal/src/lib_c/aarch64-darwin/c/stdarg.cr
 /usr/local/share/crystal/src/lib_c/aarch64-darwin/c/stddef.cr
@@ -753,6 +761,7 @@
 /usr/local/share/crystal/src/lib_c/aarch64-linux-android/c/pthread.cr
 /usr/local/share/crystal/src/lib_c/aarch64-linux-android/c/pwd.cr
 /usr/local/share/crystal/src/lib_c/aarch64-linux-android/c/sched.cr
+/usr/local/share/crystal/src/lib_c/aarch64-linux-android/c/semaphore.cr
 /usr/local/share/crystal/src/lib_c/aarch64-linux-android/c/signal.cr
 /usr/local/share/crystal/src/lib_c/aarch64-linux-android/c/stdarg.cr
 /usr/local/share/crystal/src/lib_c/aarch64-linux-android/c/stddef.cr
@@ -803,6 +812,7 @@
 /usr/local/share/crystal/src/lib_c/aarch64-linux-gnu/c/pthread.cr
 /usr/local/share/crystal/src/lib_c/aarch64-linux-gnu/c/pwd.cr
 /usr/local/share/crystal/src/lib_c/aarch64-linux-gnu/c/sched.cr
+/usr/local/share/crystal/src/lib_c/aarch64-linux-gnu/c/semaphore.cr
 /usr/local/share/crystal/src/lib_c/aarch64-linux-gnu/c/signal.cr
 /usr/local/share/crystal/src/lib_c/aarch64-linux-gnu/c/stdarg.cr
 /usr/local/share/crystal/src/lib_c/aarch64-linux-gnu/c/stddef.cr
@@ -850,6 +860,7 @@
 /usr/local/share/crystal/src/lib_c/aarch64-linux-musl/c/pthread.cr
 /usr/local/share/crystal/src/lib_c/aarch64-linux-musl/c/pwd.cr
 /usr/local/share/crystal/src/lib_c/aarch64-linux-musl/c/sched.cr
+/usr/local/share/crystal/src/lib_c/aarch64-linux-musl/c/semaphore.cr
 /usr/local/share/crystal/src/lib_c/aarch64-linux-musl/c/signal.cr
 /usr/local/share/crystal/src/lib_c/aarch64-linux-musl/c/stdarg.cr
 /usr/local/share/crystal/src/lib_c/aarch64-linux-musl/c/stddef.cr
@@ -1048,6 +1059,7 @@
 /usr/local/share/crystal/src/lib_c/amd64-unknown-openbsd/c/pthread.cr
 /usr/local/share/crystal/src/lib_c/amd64-unknown-openbsd/c/pwd.cr
 /usr/local/share/crystal/src/lib_c/amd64-unknown-openbsd/c/sched.cr
+/usr/local/share/crystal/src/lib_c/amd64-unknown-openbsd/c/semaphore.cr
 /usr/local/share/crystal/src/lib_c/amd64-unknown-openbsd/c/signal.cr
 /usr/local/share/crystal/src/lib_c/amd64-unknown-openbsd/c/stdarg.cr
 /usr/local/share/crystal/src/lib_c/amd64-unknown-openbsd/c/stddef.cr
@@ -1091,6 +1103,7 @@
 /usr/local/share/crystal/src/lib_c/arm-linux-gnueabihf/c/pthread.cr
 /usr/local/share/crystal/src/lib_c/arm-linux-gnueabihf/c/pwd.cr
 /usr/local/share/crystal/src/lib_c/arm-linux-gnueabihf/c/sched.cr
+/usr/local/share/crystal/src/lib_c/arm-linux-gnueabihf/c/semaphore.cr
 /usr/local/share/crystal/src/lib_c/arm-linux-gnueabihf/c/signal.cr
 /usr/local/share/crystal/src/lib_c/arm-linux-gnueabihf/c/stdarg.cr
 /usr/local/share/crystal/src/lib_c/arm-linux-gnueabihf/c/stddef.cr
@@ -1138,6 +1151,7 @@
 /usr/local/share/crystal/src/lib_c/i386-linux-gnu/c/pthread.cr
 /usr/local/share/crystal/src/lib_c/i386-linux-gnu/c/pwd.cr
 /usr/local/share/crystal/src/lib_c/i386-linux-gnu/c/sched.cr
+/usr/local/share/crystal/src/lib_c/i386-linux-gnu/c/semaphore.cr
 /usr/local/share/crystal/src/lib_c/i386-linux-gnu/c/signal.cr
 /usr/local/share/crystal/src/lib_c/i386-linux-gnu/c/stdarg.cr
 /usr/local/share/crystal/src/lib_c/i386-linux-gnu/c/stddef.cr
@@ -1185,6 +1199,7 @@
 /usr/local/share/crystal/src/lib_c/i386-linux-musl/c/pthread.cr
 /usr/local/share/crystal/src/lib_c/i386-linux-musl/c/pwd.cr
 /usr/local/share/crystal/src/lib_c/i386-linux-musl/c/sched.cr
+/usr/local/share/crystal/src/lib_c/i386-linux-musl/c/semaphore.cr
 /usr/local/share/crystal/src/lib_c/i386-linux-musl/c/signal.cr
 /usr/local/share/crystal/src/lib_c/i386-linux-musl/c/stdarg.cr
 /usr/local/share/crystal/src/lib_c/i386-linux-musl/c/stddef.cr
@@ -1231,6 +1246,7 @@
 /usr/local/share/crystal/src/lib_c/i686-linux-gnu/c/pthread.cr
 /usr/local/share/crystal/src/lib_c/i686-linux-gnu/c/pwd.cr
 /usr/local/share/crystal/src/lib_c/i686-linux-gnu/c/sched.cr
+/usr/local/share/crystal/src/lib_c/i686-linux-gnu/c/semaphore.cr
 /usr/local/share/crystal/src/lib_c/i686-linux-gnu/c/signal.cr
 /usr/local/share/crystal/src/lib_c/i686-linux-gnu/c/stdarg.cr
 /usr/local/share/crystal/src/lib_c/i686-linux-gnu/c/stddef.cr
@@ -1277,6 +1293,7 @@
 /usr/local/share/crystal/src/lib_c/i686-linux-musl/c/pthread.cr
 /usr/local/share/crystal/src/lib_c/i686-linux-musl/c/pwd.cr
 /usr/local/share/crystal/src/lib_c/i686-linux-musl/c/sched.cr
+/usr/local/share/crystal/src/lib_c/i686-linux-musl/c/semaphore.cr
 /usr/local/share/crystal/src/lib_c/i686-linux-musl/c/signal.cr
 /usr/local/share/crystal/src/lib_c/i686-linux-musl/c/stdarg.cr
 /usr/local/share/crystal/src/lib_c/i686-linux-musl/c/stddef.cr
@@ -1345,6 +1362,7 @@
 /usr/local/share/crystal/src/lib_c/x86_64-darwin/c/pthread.cr
 /usr/local/share/crystal/src/lib_c/x86_64-darwin/c/pwd.cr
 /usr/local/share/crystal/src/lib_c/x86_64-darwin/c/sched.cr
+/usr/local/share/crystal/src/lib_c/x86_64-darwin/c/semaphore.cr
 /usr/local/share/crystal/src/lib_c/x86_64-darwin/c/signal.cr
 /usr/local/share/crystal/src/lib_c/x86_64-darwin/c/stdarg.cr
 /usr/local/share/crystal/src/lib_c/x86_64-darwin/c/stddef.cr
@@ -1384,6 +1402,7 @@
 /usr/local/share/crystal/src/lib_c/x86_64-dragonfly/c/pthread.cr
 /usr/local/share/crystal/src/lib_c/x86_64-dragonfly/c/pwd.cr
 /usr/local/share/crystal/src/lib_c/x86_64-dragonfly/c/sched.cr
+/usr/local/share/crystal/src/lib_c/x86_64-dragonfly/c/semaphore.cr
 /usr/local/share/crystal/src/lib_c/x86_64-dragonfly/c/signal.cr
 /usr/local/share/crystal/src/lib_c/x86_64-dragonfly/c/stdarg.cr
 /usr/local/share/crystal/src/lib_c/x86_64-dragonfly/c/stddef.cr
@@ -1424,6 +1443,7 @@
 /usr/local/share/crystal/src/lib_c/x86_64-freebsd/c/pthread.cr
 /usr/local/share/crystal/src/lib_c/x86_64-freebsd/c/pwd.cr
 /usr/local/share/crystal/src/lib_c/x86_64-freebsd/c/sched.cr
+/usr/local/share/crystal/src/lib_c/x86_64-freebsd/c/semaphore.cr
 /usr/local/share/crystal/src/lib_c/x86_64-freebsd/c/signal.cr
 /usr/local/share/crystal/src/lib_c/x86_64-freebsd/c/stdarg.cr
 /usr/local/share/crystal/src/lib_c/x86_64-freebsd/c/stddef.cr
@@ -1471,6 +1491,7 @@
 /usr/local/share/crystal/src/lib_c/x86_64-linux-gnu/c/pthread.cr
 /usr/local/share/crystal/src/lib_c/x86_64-linux-gnu/c/pwd.cr
 /usr/local/share/crystal/src/lib_c/x86_64-linux-gnu/c/sched.cr
+/usr/local/share/crystal/src/lib_c/x86_64-linux-gnu/c/semaphore.cr
 /usr/local/share/crystal/src/lib_c/x86_64-linux-gnu/c/signal.cr
 /usr/local/share/crystal/src/lib_c/x86_64-linux-gnu/c/stdarg.cr
 /usr/local/share/crystal/src/lib_c/x86_64-linux-gnu/c/stddef.cr
@@ -1518,6 +1539,7 @@
 /usr/local/share/crystal/src/lib_c/x86_64-linux-musl/c/pthread.cr
 /usr/local/share/crystal/src/lib_c/x86_64-linux-musl/c/pwd.cr
 /usr/local/share/crystal/src/lib_c/x86_64-linux-musl/c/sched.cr
+/usr/local/share/crystal/src/lib_c/x86_64-linux-musl/c/semaphore.cr
 /usr/local/share/crystal/src/lib_c/x86_64-linux-musl/c/signal.cr
 /usr/local/share/crystal/src/lib_c/x86_64-linux-musl/c/stdarg.cr
 /usr/local/share/crystal/src/lib_c/x86_64-linux-musl/c/stddef.cr
@@ -1560,6 +1582,7 @@
 /usr/local/share/crystal/src/lib_c/x86_64-macosx-darwin/c/pthread.cr
 /usr/local/share/crystal/src/lib_c/x86_64-macosx-darwin/c/pwd.cr
 /usr/local/share/crystal/src/lib_c/x86_64-macosx-darwin/c/sched.cr
+/usr/local/share/crystal/src/lib_c/x86_64-macosx-darwin/c/semaphore.cr
 /usr/local/share/crystal/src/lib_c/x86_64-macosx-darwin/c/signal.cr
 /usr/local/share/crystal/src/lib_c/x86_64-macosx-darwin/c/stdarg.cr
 /usr/local/share/crystal/src/lib_c/x86_64-macosx-darwin/c/stddef.cr
@@ -1599,6 +1622,7 @@
 /usr/local/share/crystal/src/lib_c/x86_64-netbsd/c/pthread.cr
 /usr/local/share/crystal/src/lib_c/x86_64-netbsd/c/pwd.cr
 /usr/local/share/crystal/src/lib_c/x86_64-netbsd/c/sched.cr
+/usr/local/share/crystal/src/lib_c/x86_64-netbsd/c/semaphore.cr
 /usr/local/share/crystal/src/lib_c/x86_64-netbsd/c/signal.cr
 /usr/local/share/crystal/src/lib_c/x86_64-netbsd/c/stdarg.cr
 /usr/local/share/crystal/src/lib_c/x86_64-netbsd/c/stddef.cr
@@ -1638,6 +1662,7 @@
 /usr/local/share/crystal/src/lib_c/x86_64-openbsd/c/pthread.cr
 /usr/local/share/crystal/src/lib_c/x86_64-openbsd/c/pwd.cr
 /usr/local/share/crystal/src/lib_c/x86_64-openbsd/c/sched.cr
+/usr/local/share/crystal/src/lib_c/x86_64-openbsd/c/semaphore.cr
 /usr/local/share/crystal/src/lib_c/x86_64-openbsd/c/signal.cr
 /usr/local/share/crystal/src/lib_c/x86_64-openbsd/c/stdarg.cr
 /usr/local/share/crystal/src/lib_c/x86_64-openbsd/c/stddef.cr
@@ -1678,6 +1703,7 @@
 /usr/local/share/crystal/src/lib_c/x86_64-portbld-freebsd/c/pthread.cr
 /usr/local/share/crystal/src/lib_c/x86_64-portbld-freebsd/c/pwd.cr
 /usr/local/share/crystal/src/lib_c/x86_64-portbld-freebsd/c/sched.cr
+/usr/local/share/crystal/src/lib_c/x86_64-portbld-freebsd/c/semaphore.cr
 /usr/local/share/crystal/src/lib_c/x86_64-portbld-freebsd/c/signal.cr
 /usr/local/share/crystal/src/lib_c/x86_64-portbld-freebsd/c/stdarg.cr
 /usr/local/share/crystal/src/lib_c/x86_64-portbld-freebsd/c/stddef.cr
@@ -1721,6 +1747,7 @@
 /usr/local/share/crystal/src/lib_c/x86_64-solaris/c/pthread.cr
 /usr/local/share/crystal/src/lib_c/x86_64-solaris/c/pwd.cr
 /usr/local/share/crystal/src/lib_c/x86_64-solaris/c/sched.cr
+/usr/local/share/crystal/src/lib_c/x86_64-solaris/c/semaphore.cr
 /usr/local/share/crystal/src/lib_c/x86_64-solaris/c/signal.cr
 /usr/local/share/crystal/src/lib_c/x86_64-solaris/c/stdarg.cr
 /usr/local/share/crystal/src/lib_c/x86_64-solaris/c/stddef.cr
@@ -1763,6 +1790,7 @@
 /usr/local/share/crystal/src/lib_c/x86_64-unknown-freebsd/c/pthread.cr
 /usr/local/share/crystal/src/lib_c/x86_64-unknown-freebsd/c/pwd.cr
 /usr/local/share/crystal/src/lib_c/x86_64-unknown-freebsd/c/sched.cr
+/usr/local/share/crystal/src/lib_c/x86_64-unknown-freebsd/c/semaphore.cr
 /usr/local/share/crystal/src/lib_c/x86_64-unknown-freebsd/c/signal.cr
 /usr/local/share/crystal/src/lib_c/x86_64-unknown-freebsd/c/stdarg.cr
 /usr/local/share/crystal/src/lib_c/x86_64-unknown-freebsd/c/stddef.cr
