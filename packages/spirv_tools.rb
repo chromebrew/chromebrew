@@ -11,10 +11,10 @@ class Spirv_tools < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f20d236a4cb27d7c77d5b7ec7d59747fa7bac031e9d272b74e0ffe820056667c',
-     armv7l: 'f20d236a4cb27d7c77d5b7ec7d59747fa7bac031e9d272b74e0ffe820056667c',
-       i686: '2e192d891f6bcf78c04352e3680b36ca8b81fcdb87c4d71c31c66a0056d71fe4',
-     x86_64: '403ade161594ae3791160b67e2a08ba23fcd5faba86fc04ca1935d6d6a12ffc9'
+    aarch64: '4e3e50eb85b00a97adcb644202646f788e1d2c0f665facaaab2fc9f0159c4a53',
+     armv7l: '4e3e50eb85b00a97adcb644202646f788e1d2c0f665facaaab2fc9f0159c4a53',
+       i686: 'a49c49066929864f8ef4506cc8911aad1ca4a94f89a176a6668449de9c29d7e8',
+     x86_64: 'dc62ce20d7d869874349c43dab21b54af320325bdc566793afa737b12ec97990'
   })
 
   depends_on 'gcc_lib' => :library
