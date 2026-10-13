@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Roswell < Autotools
   description 'A lisp installer and launcher for major environment.'
   homepage 'https://github.com/roswell/roswell'
-  version '26.10.117'
+  version '26.10.118'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/roswell/roswell.git'
@@ -11,10 +11,10 @@ class Roswell < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3bc1619d6e0470352b7e5eaa8df8ea32b3845fae9b1c9e66575c874ed09b83cb',
-     armv7l: '3bc1619d6e0470352b7e5eaa8df8ea32b3845fae9b1c9e66575c874ed09b83cb',
-       i686: 'ef8b81408923ed3018b28f56d21feb00cbaf5ce16b7e99b938277078ff91aae9',
-     x86_64: 'a713adab63c839ab210f9be98ebbc4cbe62607ae6481b09b44bb899984089808'
+    aarch64: 'a33224cdf3938744758cfa2b9358bd72b34fba2c3b05b249c7133cd41aecfe9a',
+     armv7l: 'a33224cdf3938744758cfa2b9358bd72b34fba2c3b05b249c7133cd41aecfe9a',
+       i686: 'b8dab1dfa60eb753a925c86bfd5a16e7bbe4e281e86f321772ab580e784c41a8',
+     x86_64: '502ced452e46d79ffe6f30846aa1d6b37ee478ac74be1d42f93d041403a427f6'
   })
 
   depends_on 'brotli' => :build
