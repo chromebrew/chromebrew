@@ -11,10 +11,10 @@ class Boost < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1113d598a51433e3af13f16e9f8ca7fc455dc3ad9bcfb70e21eabf5ba9563a4c',
-     armv7l: '1113d598a51433e3af13f16e9f8ca7fc455dc3ad9bcfb70e21eabf5ba9563a4c',
-       i686: '45c0c75599411ae57bfc70a0c66f875c8b55a3b8ea75384c8904c12c5904279e',
-     x86_64: '435ea4db8b2284810868e3c014262602f037f9e6e5cc2ffea5d21d0be99e9856'
+    aarch64: '5ede8ba501aba4b5df4243dc0199b3531467cc185a93fd4feba5cfb3d8d88a99',
+     armv7l: '5ede8ba501aba4b5df4243dc0199b3531467cc185a93fd4feba5cfb3d8d88a99',
+       i686: 'b125bad2d0819d0723a15aa31b554cbf405a5dec3be8d52403c0b9cef8e129b4',
+     x86_64: '35ce5bb362f47e258cd42a1eb40fa65d907363b6ef65e9a20c700ed7616809f5'
   })
 
   depends_on 'bzip2' => :library
