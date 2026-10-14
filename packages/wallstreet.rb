@@ -11,9 +11,9 @@ class Wallstreet < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '146ccb4f0733b892c7458cf0ee39057c9150b3235d6b5a30c44470664e7e4123',
-     armv7l: '146ccb4f0733b892c7458cf0ee39057c9150b3235d6b5a30c44470664e7e4123',
-     x86_64: 'd62743dff4ca8b8ccd347a692e93f2281b9e88d380ee8c90bca7f34b5617fdb4'
+    aarch64: '8fada5c186593136a21df10c8a7cfe4b85e17b3b9db7b31a10ab0719b2f96dd1',
+     armv7l: '8fada5c186593136a21df10c8a7cfe4b85e17b3b9db7b31a10ab0719b2f96dd1',
+     x86_64: '9b8e323b8c121197ea064fc6a9f4d022eb4d0da78f6ad701249363ce16e9e76f'
   })
 
   depends_on 'byobu' => :logical
@@ -30,13 +30,14 @@ class Wallstreet < Package
   depends_on 'w3m' => :logical
   depends_on 'wget2' => :logical
 
+  no_fhs
+
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/lib"
-    FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/man1"
-    FileUtils.cp './bin/wallstreet', "#{CREW_DEST_PREFIX}/bin/"
-    FileUtils.cp_r './lib/wallstreet/', "#{CREW_DEST_PREFIX}/lib/"
-    FileUtils.cp_r './share/wallstreet/', "#{CREW_DEST_PREFIX}/share/"
-    FileUtils.cp './share/man/man1/wallstreet.1', "#{CREW_DEST_MAN_PREFIX}/man1/"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share"
+    FileUtils.mv './lib/wallstreet/', "#{CREW_DEST_PREFIX}/lib/"
+    FileUtils.mv './share/wallstreet/', "#{CREW_DEST_PREFIX}/share/"
+    FileUtils.install './bin/wallstreet', "#{CREW_DEST_PREFIX}/bin/wallstreet", mode: 0o755
+    FileUtils.install './share/man/man1/wallstreet.1', "#{CREW_DEST_MAN_PREFIX}/man1/wallstreet.1", mode: 0o644
   end
 end
