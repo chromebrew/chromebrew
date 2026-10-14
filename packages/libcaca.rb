@@ -4,50 +4,64 @@ require 'convenience_functions'
 class Libcaca < Autotools
   description 'libcaca is a graphics library that outputs text instead of pixels, so that it can work on older video cards or text terminals.'
   homepage 'https://github.com/cacalabs/libcaca'
-  version "0.99.beta20-69a4213-#{CREW_PY_VER}"
+  version "0.99.beta20-de48e1a-#{CREW_PY_VER}"
   license 'GPL-2, ISC, LGPL-2.1 and WTFPL'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/cacalabs/libcaca.git'
-  git_hashtag '69a42132350da166a98afe4ab36d89008197b5f2'
+  git_hashtag 'de48e1a0888caabdc6276afdea46e9096d0adb05'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '60b0cd89561b2895576f9cd80ab4f1c45da84df871a98fa75cbf354ba2443ed9',
-     armv7l: '60b0cd89561b2895576f9cd80ab4f1c45da84df871a98fa75cbf354ba2443ed9',
-     x86_64: 'a3b192dc6bb4200a740b98856d2c6d6a0ec2a5f386cda815decba2beb9ce1c97'
+    aarch64: 'c44a06070d65ed96c8949c7b3d60c2e40d07126d3fdd4d48e076170cd26d1d16',
+     armv7l: 'c44a06070d65ed96c8949c7b3d60c2e40d07126d3fdd4d48e076170cd26d1d16',
+     x86_64: 'bb357b08962db4f387f23d113b06e77b9578fd711240111e45832fa0d18c68a4'
   })
 
-  depends_on 'freeglut' # R
-  depends_on 'freetype' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'imlib2' # R
-  depends_on 'libbsd' # R
-  depends_on 'libglu' # R
-  depends_on 'libglvnd' # R
-  depends_on 'libmd' # R
-  depends_on 'libx11' # R
-  depends_on 'libxau' # R
-  depends_on 'libxcb' # R
-  depends_on 'libxdmcp' # R
-  depends_on 'libxext' # R
+  depends_on 'freeglut' => :library
+  depends_on 'freetype' => :executable
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'imlib2' => :executable
+  depends_on 'libbsd' => :executable
+  depends_on 'libglu' => :library
+  depends_on 'libglvnd' => :library
+  depends_on 'libmd' => :library
+  depends_on 'libx11' => :library
+  depends_on 'libxau' => :executable
+  depends_on 'libxcb' => :executable
+  depends_on 'libxdmcp' => :executable
+  depends_on 'libxext' => :executable
   depends_on 'mesa' => :build
-  depends_on 'ncurses' # R
-  depends_on 'python3'
-  depends_on 'ruby' # R
-  depends_on 'slang' # R
-  depends_on 'zlib' # R
+  depends_on 'ncurses' => :library
+  depends_on 'python3' => :logical
+  depends_on 'slang' => :library
+  depends_on 'zlib' => :library
 
   def self.patch
-    downloader 'https://patch-diff.githubusercontent.com/raw/cacalabs/libcaca/pull/66.patch',
-               'd8a8f7347c5cb7b1f63ef4ef112d7fecd9d39d1703f27fccfab10709fc284d51'
-    system 'patch -Np1 -i 66.patch'
-    downloader 'https://patch-diff.githubusercontent.com/raw/cacalabs/libcaca/pull/70.patch',
-               '173778700c92338a7b6d9f139053574359dd28829c8cdf8418df81632e002b6a'
-    system 'patch -Np1 -i 70.patch'
-    downloader 'https://patch-diff.githubusercontent.com/raw/cacalabs/libcaca/pull/81.patch',
-               '99917c0bc6b0405c8a8a8f4ce8e0df46182ff4db96d6ffb4edbb19ec2ed24b8d'
-    system 'patch -Np1 -i 81.patch'
+    patches = [
+      [
+        # Prevent a divide-by-zero by checking for a zero width or height.
+        'https://patch-diff.githubusercontent.com/raw/cacalabs/libcaca/pull/66.patch',
+        'd8a8f7347c5cb7b1f63ef4ef112d7fecd9d39d1703f27fccfab10709fc284d51'
+      ],
+      [
+        # Fix undefined reference to _caca_alloc2d.
+        'https://patch-diff.githubusercontent.com/raw/cacalabs/libcaca/pull/70.patch',
+        '173778700c92338a7b6d9f139053574359dd28829c8cdf8418df81632e002b6a'
+      ],
+      [
+        # Mark fallthroughs as explicit in charset.c.
+        'https://patch-diff.githubusercontent.com/raw/cacalabs/libcaca/pull/81.patch',
+        '99917c0bc6b0405c8a8a8f4ce8e0df46182ff4db96d6ffb4edbb19ec2ed24b8d'
+      ],
+      [
+        # Fix 32-bit overflow in CVE-2026-42046 patch.
+        'https://patch-diff.githubusercontent.com/raw/cacalabs/libcaca/pull/90.patch',
+        'df59ca578f182dc7283ad2616c385bc1ed6a038d1d64d573d021142d31a0e1c6'
+      ]
+    ]
+    ConvenienceFunctions.patch(patches)
   end
 
   def self.prebuild
