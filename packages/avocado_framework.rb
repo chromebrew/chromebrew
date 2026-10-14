@@ -17,7 +17,7 @@ class Avocado_framework < Python
      x86_64: '988c044f3e6c99dce5a6c3216080f12df7bd76a68ffa50a684f7c8499f5200f5'
   })
 
+  depends_on 'python3' => :logical
   depends_on 'xdg_base'
   depends_on 'xzutils'
-  depends_on 'python3' => :build
 end
