@@ -6,30 +6,32 @@ require 'buildsystems/autotools'
 class Libabigail < Autotools
   description 'ABI Generic Analysis and Instrumentation Library'
   homepage 'https://sourceware.org/libabigail/'
-  version "2.5-#{CREW_PY_VER}"
+  version "3.0-#{CREW_PY_VER}"
   license 'Apache'
-  compatibility 'all'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://sourceware.org/git/libabigail.git'
   git_hashtag "libabigail-#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fccd0a4c8a3e1d40e2bb6fe7cb61b3ad1a2ddc2013e2a477c23c995ed9357068',
-     armv7l: 'fccd0a4c8a3e1d40e2bb6fe7cb61b3ad1a2ddc2013e2a477c23c995ed9357068',
-       i686: '5c227698370fa311c3d800e3a9d78496799880678af02b989609b918007332ec',
-     x86_64: '014c0909ee3510e41797d682ee0dec9339eeba1c46153dc268c6dd7bd7b2f439'
+    aarch64: '417416e37d9e13cb248dac25347c86ca388499592de7df4b5a2cb2444c4d81d0',
+     armv7l: '417416e37d9e13cb248dac25347c86ca388499592de7df4b5a2cb2444c4d81d0',
+     x86_64: 'bebbda2de8b966e1ea6b9a7dcf4e96958815770c3459cf4684013d5419a3e959'
   })
 
-  depends_on 'binutils' # R
-  depends_on 'elfutils' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'gdb' # R
-  depends_on 'glibc' # R
-  depends_on 'libxml2' # R
+  depends_on 'binutils' => :library
+  depends_on 'elfutils' => :library
+  depends_on 'gcc_lib' => :library
+  depends_on 'gdb' => :executable
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'libxml2' => :library
   depends_on 'python3' => :build
   depends_on 'sphinx' => :build
-  depends_on 'zlib' # R
-  depends_on 'zstd' # R
+  depends_on 'xxhash' => :library
+  depends_on 'xzutils' => :library
+  depends_on 'zlib' => :executable
+  depends_on 'zstd' => :executable
 
   autotools_configure_options '--enable-bash-completion \
     --disable-manual \
