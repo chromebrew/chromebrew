@@ -11,15 +11,16 @@ class Gobject_introspection < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '460ffea87296475698c8772a3e4504cea6c2c04a0be0a6432ff4b81878174580',
-     armv7l: '460ffea87296475698c8772a3e4504cea6c2c04a0be0a6432ff4b81878174580',
-       i686: 'b1728b3d6c40ebc525719ef19c89a94e6e5f4f1996e71d7524d88420ec5b7a3d',
-     x86_64: 'fbbc3be5f8c6917d4673bd7c75697efaa45ee146ef97d271d133748f94f97e13'
+    aarch64: '0ef77fbbf1a6d5f0b602da23e4d1b0beb90fa02173a5947a7235c16090742bbc',
+     armv7l: '0ef77fbbf1a6d5f0b602da23e4d1b0beb90fa02173a5947a7235c16090742bbc',
+       i686: '5de31fe6e3b237581940dcddcce91e08b0180391d6c9e2d9e9b68cbd958e755d',
+     x86_64: '59ebd671fe4da9355b6c5baba84014fd2f7f45d3cc4b2746e0a48e2a9487f160'
   })
 
   # Note that this build does not work on i686 if glib is installed.
   depends_on 'gcc_lib' # R
-  depends_on 'glib_stub' => :build
+  depends_on 'glib' => :library
+  depends_on 'glib_stub' => :library
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
   depends_on 'libffi' => :library
