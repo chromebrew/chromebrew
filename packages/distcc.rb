@@ -6,36 +6,44 @@ require 'buildsystems/autotools'
 class Distcc < Autotools
   description 'Distributed compilation service for C, C++ and Objective-C'
   homepage 'https://github.com/distcc/distcc'
-  version "3.4-66bf4c5-#{CREW_PY_VER}"
+  version "3.4-8d569d1-#{CREW_PY_VER}"
   license 'GPL'
   compatibility 'all'
   source_url 'https://github.com/distcc/distcc.git'
-  git_hashtag '66bf4c56f6af2243c48748139c078f4f01cd639b'
+  git_hashtag '8d569d192141615e26a3f0b65315822e7c814c3d'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9c199b98e0b17fff5292cf9cea9a9a15b7f3a733d17a480f3628945758d01501',
-     armv7l: '9c199b98e0b17fff5292cf9cea9a9a15b7f3a733d17a480f3628945758d01501',
-       i686: '5754f94f2d5df11fae96d1677a5fc057d420674f9cb7fb012614a2e900f4a26c',
-     x86_64: '4e4e8fe4d8f33fcfedaa5a677a7a65f5723527b05aa35b20ed5700cb1df23d78'
+    aarch64: 'de598a6fd4f89e80e9ad00f1d7e6b4ee9580d29ef98a8fdb3fbbc8c10e294211',
+     armv7l: 'de598a6fd4f89e80e9ad00f1d7e6b4ee9580d29ef98a8fdb3fbbc8c10e294211',
+       i686: '202e6ebdf1fe417cbaf3ea03bab440780c5e2483f90e71e76215b9ae4d295b0a',
+     x86_64: 'f2fe45965e002d655ecd89e3a852c603d69105102e5d7893cfc8d48099bbdbf9'
   })
 
-  depends_on 'avahi' # R
+  depends_on 'at_spi2_core' => :executable unless ARCH.eql?('i686')
+  depends_on 'avahi' => :executable
+  depends_on 'cairo' => :executable unless ARCH.eql?('i686')
   depends_on 'ccache' => :logical
   depends_on 'gcc_dev' => :logical
-  depends_on 'glibc' # R
+  depends_on 'gdk_pixbuf' => :executable unless ARCH.eql?('i686')
+  depends_on 'glib' => :executable
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'gtk3' => :executable unless ARCH.eql?('i686')
+  depends_on 'gtk4' => :executable unless ARCH.eql?('i686')
+  depends_on 'harfbuzz' => :executable unless ARCH.eql?('i686')
+  depends_on 'libglade' => :library unless ARCH.eql?('i686')
   depends_on 'llvm_dev' => :logical
-  depends_on 'popt' # R
+  depends_on 'pango' => :executable unless ARCH.eql?('i686')
+  depends_on 'popt' => :executable
   depends_on 'python3' => :build
+  depends_on 'zlib' => :executable
 
   print_source_bashrc
 
-  def self.patch
-    system "sed -i 's/ install-gnome-data//g' Makefile.in"
-  end
-
+  gtk = ARCH.eql?('i686') ? '--without-gtk' : '--with-gtk'
   autotools_pre_configure_options "CFLAGS+=' -DPY_SSIZE_T_CLEAN -fcommon' NATIVE_COMPILER_TRIPLE='#{CREW_TARGET}' INCLUDESERVER_PYTHON='#{CREW_PREFIX}/bin/python3'"
-  autotools_configure_options '--enable-rfc2553 --disable-Werror --with-python-sys-prefix'
+  autotools_configure_options "--enable-rfc2553 --disable-Werror --with-python-sys-prefix --without-gnome #{gtk}"
 
   def self.install
     system "make DESTDIR=#{CREW_DEST_DIR} INCLUDESERVER_PYTHON=#{CREW_PREFIX}/bin/python3 install"
