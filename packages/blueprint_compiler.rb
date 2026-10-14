@@ -11,9 +11,9 @@ class Blueprint_compiler < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '65f0002a675539fdeac82323ebe436761673fec240bf4c08607205dca5cb30fb',
-     armv7l: '65f0002a675539fdeac82323ebe436761673fec240bf4c08607205dca5cb30fb',
-     x86_64: 'b2a25f0848dcb6f1668620dbc1459393d2d67fb6b7b6ca93d288d02773309f2b'
+    aarch64: '0dd0bc6e7f8a795639f3a31c780db6d3a85a0d6a35daa2a138ba9ddeddc1d86f',
+     armv7l: '0dd0bc6e7f8a795639f3a31c780db6d3a85a0d6a35daa2a138ba9ddeddc1d86f',
+     x86_64: 'f184ac27c9f4b8d5337f5feaf4a68d368e9e08482af887bce53124761eb9ef87'
   })
 
   depends_on 'gobject_introspection' => :build
@@ -39,7 +39,7 @@ class Blueprint_compiler < Meson
         }
       }
     BLUEPRINT
-    output = `PYTHONPATH=#{CREW_DEST_PREFIX}/lib/python3.14/site-packages #{CREW_DEST_PREFIX}/bin/blueprint-compiler compile #{testpath}/test.blp`.chomp
+    output = `PYTHONPATH=#{CREW_DEST_PREFIX}/lib/python#{CREW_PY_VER.split('y')[1]}/site-packages #{CREW_DEST_PREFIX}/bin/blueprint-compiler compile #{testpath}/test.blp`.chomp
     abort "#{name} test error".lightred unless output.include?('Hello, Blueprint!')
   end
 end
