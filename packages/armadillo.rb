@@ -3,11 +3,11 @@ require 'buildsystems/cmake'
 class Armadillo < CMake
   description 'Armadillo is a high quality linear algebra library (matrix maths) for the C++ language, aiming towards a good balance between speed and ease of use'
   homepage 'https://arma.sourceforge.net/'
-  version '15.4.2'
+  version '15.6.1'
   license 'Apache-2.0'
   compatibility 'all'
   source_url "https://downloads.sourceforge.net/project/arma/armadillo-#{version}.tar.xz"
-  source_sha256 '58fa258d0e1f93074c9afa792027fc259b85cb974ccc0b932b061d4ada5bd83a'
+  source_sha256 '23fe3b3848e2929ab39089ad6e8e445d3a24cc39d36c018a253b97e56ba88c2c'
   binary_compression 'tar.zst'
 
   binary_sha256({
