@@ -11,10 +11,10 @@ class Curl < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b6706f1913bce2cc66b09a58495feccd09be5579a55a557db287ca0c806e7628',
-     armv7l: 'b6706f1913bce2cc66b09a58495feccd09be5579a55a557db287ca0c806e7628',
-       i686: 'b8825eba5f4c86f94fdb7e4d94ec2e66b65356af0ed7162cde177f0ade9d2d79',
-     x86_64: '383b66e71d67736006316e743189f109550ae279d80681923fe5019b3489bb2e'
+    aarch64: '6886697cbde4c887c629e36eda7328faa54886790e6461f58a18e149fa70a219',
+     armv7l: '6886697cbde4c887c629e36eda7328faa54886790e6461f58a18e149fa70a219',
+       i686: '22ab0d1c55c99668224239c175958f11a4264d48e6fd42be36b6d4effb7ae8d6',
+     x86_64: '785be4376d37206c91c6a0c38e5fc2450038eda799f399f1edc40ae961c2d014'
   })
 
   depends_on 'brotli' => :library
@@ -44,6 +44,7 @@ class Curl < Autotools
       --enable-ipv6 \
       --enable-ldap \
       --enable-unix-sockets \
+      --with-ca-embed=#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt \
       --with-ca-bundle=#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt \
       --with-ca-fallback \
       --with-ca-path=#{CREW_PREFIX}/etc/ssl/certs \
