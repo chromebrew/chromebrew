@@ -1,0 +1,3 @@
+#!/bin/bash
+distcc --help | head
+distcc --version
