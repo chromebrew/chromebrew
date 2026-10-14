@@ -1,4 +1,4 @@
-# Total size: 5706168
+# Total size: 6060077
 /usr/local/include/armadillo
 /usr/local/include/armadillo_bits/BaseCube_bones.hpp
 /usr/local/include/armadillo_bits/BaseCube_meat.hpp
@@ -131,6 +131,7 @@
 /usr/local/include/armadillo_bits/fn_cor.hpp
 /usr/local/include/armadillo_bits/fn_cov.hpp
 /usr/local/include/armadillo_bits/fn_cross.hpp
+/usr/local/include/armadillo_bits/fn_cubemul.hpp
 /usr/local/include/armadillo_bits/fn_cumprod.hpp
 /usr/local/include/armadillo_bits/fn_cumsum.hpp
 /usr/local/include/armadillo_bits/fn_det.hpp
@@ -157,8 +158,7 @@
 /usr/local/include/armadillo_bits/fn_histc.hpp
 /usr/local/include/armadillo_bits/fn_index_max.hpp
 /usr/local/include/armadillo_bits/fn_index_min.hpp
-/usr/local/include/armadillo_bits/fn_inplace_strans.hpp
-/usr/local/include/armadillo_bits/fn_inplace_trans.hpp
+/usr/local/include/armadillo_bits/fn_inplace_xtrans.hpp
 /usr/local/include/armadillo_bits/fn_interp1.hpp
 /usr/local/include/armadillo_bits/fn_interp2.hpp
 /usr/local/include/armadillo_bits/fn_intersect.hpp
@@ -187,6 +187,7 @@
 /usr/local/include/armadillo_bits/fn_omit.hpp
 /usr/local/include/armadillo_bits/fn_ones.hpp
 /usr/local/include/armadillo_bits/fn_orth_null.hpp
+/usr/local/include/armadillo_bits/fn_permute.hpp
 /usr/local/include/armadillo_bits/fn_pinv.hpp
 /usr/local/include/armadillo_bits/fn_polyfit.hpp
 /usr/local/include/armadillo_bits/fn_polyval.hpp
@@ -225,7 +226,6 @@
 /usr/local/include/armadillo_bits/fn_spsolve.hpp
 /usr/local/include/armadillo_bits/fn_sqrtmat.hpp
 /usr/local/include/armadillo_bits/fn_stddev.hpp
-/usr/local/include/armadillo_bits/fn_strans.hpp
 /usr/local/include/armadillo_bits/fn_sum.hpp
 /usr/local/include/armadillo_bits/fn_svd.hpp
 /usr/local/include/armadillo_bits/fn_svds.hpp
@@ -233,7 +233,6 @@
 /usr/local/include/armadillo_bits/fn_symmat.hpp
 /usr/local/include/armadillo_bits/fn_toeplitz.hpp
 /usr/local/include/armadillo_bits/fn_trace.hpp
-/usr/local/include/armadillo_bits/fn_trans.hpp
 /usr/local/include/armadillo_bits/fn_trapz.hpp
 /usr/local/include/armadillo_bits/fn_trig.hpp
 /usr/local/include/armadillo_bits/fn_trimat.hpp
@@ -245,6 +244,7 @@
 /usr/local/include/armadillo_bits/fn_vecnorm.hpp
 /usr/local/include/armadillo_bits/fn_vectorise.hpp
 /usr/local/include/armadillo_bits/fn_wishrnd.hpp
+/usr/local/include/armadillo_bits/fn_xtrans.hpp
 /usr/local/include/armadillo_bits/fn_zeros.hpp
 /usr/local/include/armadillo_bits/glue_affmul_bones.hpp
 /usr/local/include/armadillo_bits/glue_affmul_meat.hpp
@@ -258,6 +258,8 @@
 /usr/local/include/armadillo_bits/glue_cov_meat.hpp
 /usr/local/include/armadillo_bits/glue_cross_bones.hpp
 /usr/local/include/armadillo_bits/glue_cross_meat.hpp
+/usr/local/include/armadillo_bits/glue_cubemul_bones.hpp
+/usr/local/include/armadillo_bits/glue_cubemul_meat.hpp
 /usr/local/include/armadillo_bits/glue_hist_bones.hpp
 /usr/local/include/armadillo_bits/glue_hist_meat.hpp
 /usr/local/include/armadillo_bits/glue_histc_bones.hpp
@@ -444,6 +446,8 @@
 /usr/local/include/armadillo_bits/op_omit_meat.hpp
 /usr/local/include/armadillo_bits/op_orth_null_bones.hpp
 /usr/local/include/armadillo_bits/op_orth_null_meat.hpp
+/usr/local/include/armadillo_bits/op_permute_bones.hpp
+/usr/local/include/armadillo_bits/op_permute_meat.hpp
 /usr/local/include/armadillo_bits/op_pinv_bones.hpp
 /usr/local/include/armadillo_bits/op_pinv_meat.hpp
 /usr/local/include/armadillo_bits/op_powmat_bones.hpp
@@ -648,7 +652,7 @@
 /usr/local/include/armadillo_bits/xvec_htrans_meat.hpp
 /usr/local/lib64/libarmadillo.so
 /usr/local/lib64/libarmadillo.so.15
-/usr/local/lib64/libarmadillo.so.15.4.2
+/usr/local/lib64/libarmadillo.so.15.6.1
 /usr/local/lib64/pkgconfig/armadillo.pc
 /usr/local/share/Armadillo/CMake/ArmadilloConfig.cmake
 /usr/local/share/Armadillo/CMake/ArmadilloConfigVersion.cmake
