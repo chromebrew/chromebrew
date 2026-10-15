@@ -3,11 +3,11 @@ require 'buildsystems/cmake'
 class Libzip < CMake
   description 'libzip is a C library for reading, creating, and modifying zip archives.'
   homepage 'https://libzip.org/'
-  version '1.12'
+  version '1.12.1'
   license 'BSD'
   compatibility 'all'
   source_url "https://libzip.org/download/libzip-#{version}.tar.xz"
-  source_sha256 '376908d0f0fda13180a19fdc4f7062a1abfb59e09ca07a392d361253b8e60c2b'
+  source_sha256 'c40062022a1963c80573d48f6070792297cecd7c6bffe3aefcac0d8b9bee8913'
   binary_compression 'tar.zst'
 
   binary_sha256({
