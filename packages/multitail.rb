@@ -11,10 +11,10 @@ class Multitail < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0e9d7d2bdb9f328d92e366c5d908e8fdb94c12cd8aeb0331fa7921595ce6321e',
-     armv7l: '0e9d7d2bdb9f328d92e366c5d908e8fdb94c12cd8aeb0331fa7921595ce6321e',
-       i686: '72d384d94f5dc87c27e9afa704e7343b02618573413522a39f04527c4fd359bb',
-     x86_64: 'eb31ec5a22057605bfc74da263eb0bff38c84f20b73e9d1092fc3c2b420bf781'
+    aarch64: '6ed35ce94a07dc37dad01ee31ad6ee172741f31a650244751a835f04cc15c1f3',
+     armv7l: '6ed35ce94a07dc37dad01ee31ad6ee172741f31a650244751a835f04cc15c1f3',
+       i686: '4cd54e1deef581f9f8b2a2550bd01a363dc8be13b67c5af194efe233eb4c43d6',
+     x86_64: '07cee2620d98a4f32370059ad786c2a7540b2ee9bf4a2bdcf238bc976ebd754d'
   })
 
   depends_on 'glibc' => :executable
