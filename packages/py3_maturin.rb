@@ -14,10 +14,10 @@ class Py3_maturin < Python
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a811ab6fd09cbae2f17b5ec1524ab8f897ee814935febfd817268d03d4e856c2',
-     armv7l: 'a811ab6fd09cbae2f17b5ec1524ab8f897ee814935febfd817268d03d4e856c2',
-       i686: '4c5e223af202c2d972e8b640a3306ea9c230b358fff10d507b0f5e90d9d7ec2d',
-     x86_64: 'be34717739cd120adceddb3005d239ec77ad12efbf95dc35aa8b7fee81b8f6f7'
+    aarch64: 'c5708a45a5ed14f1cda7518842af1b7adf263d4f4a9542d53453788fe5a8fd90',
+     armv7l: 'c5708a45a5ed14f1cda7518842af1b7adf263d4f4a9542d53453788fe5a8fd90',
+       i686: 'a238f5c22cd5997cb3de05e99563eecb5f182c5103a526496a006e9fc69157cc',
+     x86_64: 'd79d1746b398fc38676cae51334c32d74da2cd7deba6136bc91ec2cadee1eb6d'
   })
 
   depends_on 'gcc_lib' => :executable
@@ -30,4 +30,8 @@ class Py3_maturin < Python
   depends_on 'python3' => :executable
   depends_on 'python3' => :logical
   depends_on 'rust'
+
+  def self.postinstall
+    ExitMessage.add "\nType 'maturin' to get started.\n"
+  end
 end
