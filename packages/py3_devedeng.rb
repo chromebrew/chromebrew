@@ -11,9 +11,9 @@ class Py3_devedeng < Python
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'da1ea8dae386a0df18822ac4d74990788c8e40b3f82f36804644bb86d06a69b2',
-     armv7l: 'da1ea8dae386a0df18822ac4d74990788c8e40b3f82f36804644bb86d06a69b2',
-     x86_64: '502b916de666e1930962a7aea09c7e42f33c14655ad51e6d980c4a8ac598bfa9'
+    aarch64: '01a918970a55212c7dd242b5b4cc23b82742cfb882f1a125910d31b4aea75ac7',
+     armv7l: '01a918970a55212c7dd242b5b4cc23b82742cfb882f1a125910d31b4aea75ac7',
+     x86_64: 'ef883ac803e53e4543bc2ff6e783ca1bf68cbdb76cffdf82371059bcb3e80a04'
   })
 
   depends_on 'gtk3'
@@ -23,11 +23,11 @@ class Py3_devedeng < Python
 
   python_install_extras do
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.ln_s "#{CREW_PREFIX}/bin/devede_ng.py", "#{CREW_DEST_PREFIX}/bin/devede"
+    FileUtils.ln_s "#{CREW_PREFIX}/bin/devede_ng", "#{CREW_DEST_PREFIX}/bin/devede"
     FileUtils.ln_s "#{CREW_PREFIX}/bin/copy_files_verbose.py", "#{CREW_DEST_PREFIX}/bin/copy_files_verbose"
   end
 
   def self.postinstall
-    ExitMessage.add "Type 'devede' to get started.".lightblue
+    ExitMessage.add "\nType 'devede' to get started.\n"
   end
 end
