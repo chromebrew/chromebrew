@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Erlang < Autotools
   description 'Erlang is a programming language used to build massively scalable soft real-time systems with requirements on high availability.'
   homepage 'https://www.erlang.org/'
-  version '29.1.1'
+  version '29.1.2'
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/erlang/otp.git'
@@ -11,9 +11,9 @@ class Erlang < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '29ee8219af913b5feb177b71c513df259d515ec004ca51a5b8c9f5a172e2be96',
-     armv7l: '29ee8219af913b5feb177b71c513df259d515ec004ca51a5b8c9f5a172e2be96',
-     x86_64: 'df66803fc6b6d755e8707bb48273cf475bdfae9cd6bf70ec9377ed2353ed6bb4'
+    aarch64: '21b6fb64b888e1d6b1a5a26d25326c3beab4cf3a150c2ebc9eab634e0221f780',
+     armv7l: '21b6fb64b888e1d6b1a5a26d25326c3beab4cf3a150c2ebc9eab634e0221f780',
+     x86_64: '1814a6c026920acbdfcb7b9610f34768dff5ac0f71dc8d32213407dd2a43cac1'
   })
 
   depends_on 'gcc_lib' => :library

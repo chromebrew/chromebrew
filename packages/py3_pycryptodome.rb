@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_pycryptodome < Pip
   description 'Pycryptodome is a cryptographic library for Python.'
   homepage 'https://www.pycryptodome.org/'
-  version "3.24.1-#{CREW_PY_VER}"
+  version "4.0.0-#{CREW_PY_VER}"
   license 'BSD and public-domain'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c1449d00ff5aeb63149fb25e3bdea18795217afef9e03c869c26b57947215cc6',
-     armv7l: 'c1449d00ff5aeb63149fb25e3bdea18795217afef9e03c869c26b57947215cc6',
-       i686: 'c974e84b449ef03d23de158895c65f81b4b801a1298cb31c408ef2cf093aa078',
-     x86_64: '963203a10e825832e7ba0a9fb29d4bc6e8c2bc32f5442d645bc5a035f9f5e3f2'
+    aarch64: 'e2a7c278d798436538188f35b2096bef3e6368c544d783eb65c123510bd9929c',
+     armv7l: 'e2a7c278d798436538188f35b2096bef3e6368c544d783eb65c123510bd9929c',
+       i686: '3fd34c2f6422bb156760576ee88e526fa5d32d2d09c7ac82f6a588b813171c9b',
+     x86_64: '94eea4dc81e85feca6c2e6f365d1f32c10b6ef4b22fa8c2ff209328d9899ddc7'
   })
 
   depends_on 'glibc' => :library
