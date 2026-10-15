@@ -18,6 +18,7 @@ class Multitail < CMake
   })
 
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'ncurses' => :executable
 
   cmake_options "-DCMAKE_C_FLAGS='-I#{CREW_PREFIX}/include/ncursesw'"
