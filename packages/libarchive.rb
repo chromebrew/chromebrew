@@ -14,7 +14,7 @@ class Libarchive < CMake
     aarch64: '63fe64e4dcf96d979e9817e551563023fd01d70ff7f151839689c633e85b2365',
      armv7l: '63fe64e4dcf96d979e9817e551563023fd01d70ff7f151839689c633e85b2365',
        i686: '564a9b9834f9ea9b12953af9290d048a25216996bcdd7343fba7e63d03a30183',
-     x86_64: '11a87f97e5b06d32a9f83af523a742dc4db7fceb6b4c00e03cd47dc6b7c1dca1'
+     x86_64: ''
   })
 
   depends_on 'acl' => :library

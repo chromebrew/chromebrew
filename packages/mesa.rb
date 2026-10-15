@@ -11,9 +11,9 @@ class Mesa < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b2a0e820c93d081a19a324c97a8efdd3a4b0e4302d54f0c85d0cc3df70bbcf83',
-     armv7l: 'b2a0e820c93d081a19a324c97a8efdd3a4b0e4302d54f0c85d0cc3df70bbcf83',
-     x86_64: 'b93934c7f22807778370d2567ea06c30ae2649224848731a758f7ed8390493e3'
+    aarch64: '8a76ca43f8050508d02d5941f3c54d35b1051060d00981231a4e8f90776a7aac',
+     armv7l: '8a76ca43f8050508d02d5941f3c54d35b1051060d00981231a4e8f90776a7aac',
+     x86_64: '37e86b6891edfbd942177c3b4b978f42ff2d08c6c6eb477337c91c39e10632b9'
   })
 
   depends_on 'elfutils' => :library
