@@ -20,6 +20,14 @@ class Py3_pip < Python
   depends_on 'python3' => :logical
   conflicts_ok
 
+  def self.patch
+    patches = [
+      # Fix flit 4 incompatibility.
+      ['https://github.com/pypa/pip/pull/14254.patch', '16e9179bff87a1cbefcb5f8e95a6a809327c2ac4af749f8caab367b5e8203e2f']
+    ]
+    ConvenienceFunctions.patch(patches) if version == "26.2.1-#{CREW_PY_VER}"
+  end
+
   def self.postinstall
     puts 'Updating pip package...'.lightblue
     system 'PIP_DISABLE_PIP_VERSION_CHECK=1 python3 -m pip install --upgrade --force-reinstall pip', exception: false
