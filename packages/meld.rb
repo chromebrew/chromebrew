@@ -11,9 +11,9 @@ class Meld < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e4c396bbe369900bc8bb995810d0a8dba2d25571d531bd8118b35aeb4278c2f2',
-     armv7l: 'e4c396bbe369900bc8bb995810d0a8dba2d25571d531bd8118b35aeb4278c2f2',
-     x86_64: '955fac35a5931784d613fdbb1747534dad7470a18262ebb45aa2dfdf04fd7ac7'
+    aarch64: '921e89d68953baaf141bf20f1d388dfbb0639df59fea2e38930445b6e25dc24c',
+     armv7l: '921e89d68953baaf141bf20f1d388dfbb0639df59fea2e38930445b6e25dc24c',
+     x86_64: '86a24d8a4801d3bcfaecffe66256e9fa43052b8c965b585e6b54e5bbe7a6a64a'
   })
 
   depends_on 'appstream' => :executable
@@ -24,6 +24,7 @@ class Meld < Meson
   depends_on 'py3_libxml2' => :logical
   depends_on 'py3_pygobject' => :logical
   depends_on 'py3cairo' => :logical
+  depends_on 'pygtk' => :logical
   depends_on 'python3' => :logical
   depends_on 'xvfb' => :build
 
