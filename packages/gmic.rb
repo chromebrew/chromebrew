@@ -11,7 +11,7 @@ class Gmic < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: 'c784ee9f4dc60faf134f9fdb170bf0a4f8181f1954302b642feffdb12ba39c76'
+     x86_64: '43b9755acbcce815a032795b3b631c39228376908d64b10f6e6fd38c8d83969b'
   })
 
   depends_on 'curl' => :library
