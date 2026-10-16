@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Chromaprint < CMake
   description 'Chromaprint is a client-side library that implements a custom algorithm for extracting fingerprints from any audio source.'
   homepage 'https://acoustid.org/chromaprint'
-  version '1.6.1'
+  version '1.6.2'
   license 'LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/acoustid/chromaprint.git'
@@ -11,9 +11,9 @@ class Chromaprint < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2f7f5e99cdb6097cdd3d2ee1fa70ad85c312ba645743152a47015956627381bc',
-     armv7l: '2f7f5e99cdb6097cdd3d2ee1fa70ad85c312ba645743152a47015956627381bc',
-     x86_64: 'e5e5bfc4c31d06f23e3be7e197347335a92f1843263c2f30d7806f091e696313'
+    aarch64: '58698a0703045ba0f1abec54ae6086419d9426c719c58b3a0c4e6ea2a126efdf',
+     armv7l: '58698a0703045ba0f1abec54ae6086419d9426c719c58b3a0c4e6ea2a126efdf',
+     x86_64: 'e14bd1ddf1258f6ebcd717815d54182102605ba1980eb4c4019feb000ac92347'
   })
 
   depends_on 'ffmpeg' => :library
