@@ -11,17 +11,18 @@ class Polkit < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '84490f0403cdfe2f6357dacf5af775af06e44112ae42c62d0bc8a10ef56703fc',
-     armv7l: '84490f0403cdfe2f6357dacf5af775af06e44112ae42c62d0bc8a10ef56703fc',
-     x86_64: '38ad0b4e78df4443940086461324526ef6fc67d5b3e8819c1e10c6e1a3e307f9'
+    aarch64: 'c1e832a790b4790150c98a22da9693e7dc889fddf2010d6f87b5023886441c01',
+     armv7l: 'c1e832a790b4790150c98a22da9693e7dc889fddf2010d6f87b5023886441c01',
+     x86_64: 'bd2b5aaaa802f07a2cacfc458f6fafff6e5e0512585824b3b44df366fe9fd875'
   })
 
   depends_on 'dbus' => :build
   depends_on 'duktape' => :build
-  depends_on 'elogind' # R
+  depends_on 'elogind' => :library
   depends_on 'expat' => :build
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk_doc' => :build
 
