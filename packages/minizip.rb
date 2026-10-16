@@ -14,13 +14,14 @@ class Minizip < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1dd507a336eee780e3919360cd434165251a2d86f7b11561357660903e8278de',
-     armv7l: '1dd507a336eee780e3919360cd434165251a2d86f7b11561357660903e8278de',
-       i686: '34ea7026b146354b7f8adcbbd10cfd3b477f954ad7c151edd5382dcafe76b8bf',
-     x86_64: 'b1d8049921c59764d2173b0f83d73ba1328030442f2bf94ee55cdaee8457b76e'
+    aarch64: '576b613ef0f13e400062847c8de1c35d52153b6fad0cda5160975c9eb1e1f619',
+     armv7l: '576b613ef0f13e400062847c8de1c35d52153b6fad0cda5160975c9eb1e1f619',
+       i686: 'fd83b3b7c69a144711373b0bc35c3868c564efe240bfbc00754ecb9e37fb0a81',
+     x86_64: '5aac1c5f064bbafd0aa29415cb597f81d10e200fe3669a4add6b7412202e8fce'
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'zlib' => :library
 
   def self.build
@@ -42,5 +43,7 @@ class Minizip < Package
     Dir.chdir 'contrib/minizip' do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     end
+    # Remove conflict with libxcrypt.
+    FileUtils.rm_f "#{CREW_DEST_PREFIX}/include/crypt.h"
   end
 end
