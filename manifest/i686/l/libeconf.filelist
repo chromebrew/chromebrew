@@ -1,10 +1,10 @@
-# Total size: 163664
+# Total size: 170747
 /usr/local/bin/econftool
 /usr/local/include/libeconf.h
 /usr/local/include/libeconf_ext.h
 /usr/local/lib/libeconf.so
 /usr/local/lib/libeconf.so.0
-/usr/local/lib/libeconf.so.0.8.5
+/usr/local/lib/libeconf.so.0.8.6
 /usr/local/lib/pkgconfig/libeconf.pc
 /usr/local/share/man/man3/econf_comment_tag.3.zst
 /usr/local/share/man/man3/econf_delimiter_tag.3.zst
@@ -35,9 +35,11 @@
 /usr/local/share/man/man3/econf_getUIntValueDef.3.zst
 /usr/local/share/man/man3/econf_getValue.3.zst
 /usr/local/share/man/man3/econf_getValueDef.3.zst
+/usr/local/share/man/man3/econf_hasQuotes.3.zst
 /usr/local/share/man/man3/econf_mergeFiles.3.zst
 /usr/local/share/man/man3/econf_newIniFile.3.zst
 /usr/local/share/man/man3/econf_newKeyFile.3.zst
+/usr/local/share/man/man3/econf_newKeyFile_with_options.3.zst
 /usr/local/share/man/man3/econf_readConfig.3.zst
 /usr/local/share/man/man3/econf_readConfigWithCallback.3.zst
 /usr/local/share/man/man3/econf_readFile.3.zst
@@ -48,6 +50,7 @@
 /usr/local/share/man/man3/econf_setFloatValue.3.zst
 /usr/local/share/man/man3/econf_setInt64Value.3.zst
 /usr/local/share/man/man3/econf_setIntValue.3.zst
+/usr/local/share/man/man3/econf_setQuotes.3.zst
 /usr/local/share/man/man3/econf_setStringValue.3.zst
 /usr/local/share/man/man3/econf_setUInt64Value.3.zst
 /usr/local/share/man/man3/econf_setValue.3.zst

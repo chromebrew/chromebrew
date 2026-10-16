@@ -1,9 +1,9 @@
-# Total size: 175782
+# Total size: 297390
 /usr/local/include/libgedit-gfls-1/gfls/gfls-attribute-keys.h
-/usr/local/include/libgedit-gfls-1/gfls/gfls-bytes-region-builder.h
-/usr/local/include/libgedit-gfls-1/gfls/gfls-bytes-region.h
+/usr/local/include/libgedit-gfls-1/gfls/gfls-byte-array.h
 /usr/local/include/libgedit-gfls-1/gfls/gfls-encoding-conversion.h
-/usr/local/include/libgedit-gfls-1/gfls/gfls-encoding-convert.h
+/usr/local/include/libgedit-gfls-1/gfls/gfls-encoding-converter.h
+/usr/local/include/libgedit-gfls-1/gfls/gfls-encoding.h
 /usr/local/include/libgedit-gfls-1/gfls/gfls-enum-types.h
 /usr/local/include/libgedit-gfls-1/gfls/gfls-error.h
 /usr/local/include/libgedit-gfls-1/gfls/gfls-iconv.h
@@ -13,7 +13,12 @@
 /usr/local/include/libgedit-gfls-1/gfls/gfls-loader-config-simple.h
 /usr/local/include/libgedit-gfls-1/gfls/gfls-loader-config.h
 /usr/local/include/libgedit-gfls-1/gfls/gfls-unsaved-document-titles.h
+/usr/local/include/libgedit-gfls-1/gfls/gfls-utf8-auto-converter.h
 /usr/local/include/libgedit-gfls-1/gfls/gfls-utf8.h
+/usr/local/include/libgedit-gfls-1/gfls/gfls-utils.h
+/usr/local/include/libgedit-gfls-1/gfls/gfls-validated-string-builder.h
+/usr/local/include/libgedit-gfls-1/gfls/gfls-validated-string-chunk.h
+/usr/local/include/libgedit-gfls-1/gfls/gfls-validated-string.h
 /usr/local/include/libgedit-gfls-1/gfls/gfls.h
 /usr/local/lib/girepository-1.0/Gfls-1.typelib
 /usr/local/lib/libgedit-gfls-1.so
@@ -32,7 +37,9 @@
 /usr/local/share/locale/kk/LC_MESSAGES/libgedit-gfls-1.mo
 /usr/local/share/locale/kw/LC_MESSAGES/libgedit-gfls-1.mo
 /usr/local/share/locale/lt/LC_MESSAGES/libgedit-gfls-1.mo
+/usr/local/share/locale/nn/LC_MESSAGES/libgedit-gfls-1.mo
 /usr/local/share/locale/pl/LC_MESSAGES/libgedit-gfls-1.mo
+/usr/local/share/locale/pt/LC_MESSAGES/libgedit-gfls-1.mo
 /usr/local/share/locale/pt_BR/LC_MESSAGES/libgedit-gfls-1.mo
 /usr/local/share/locale/ru/LC_MESSAGES/libgedit-gfls-1.mo
 /usr/local/share/locale/sl/LC_MESSAGES/libgedit-gfls-1.mo
