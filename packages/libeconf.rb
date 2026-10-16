@@ -11,10 +11,10 @@ class Libeconf < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9c1968fa15ddba8c15666e1ce75ed85234d76b0b35cb519aa851f9db12b83b4f',
-     armv7l: '9c1968fa15ddba8c15666e1ce75ed85234d76b0b35cb519aa851f9db12b83b4f',
-       i686: '290808e30d3580bd9c5bc7054b0a981a1976a091a31ff524de5808a834847c29',
-     x86_64: 'b6a765daee3f28ff17b3444dbb464e0ef29781ef297d3f1d87119b0e549d1ef3'
+    aarch64: '3392e31ba830fadd55b47fe3ab263516fde8e7149f5a894f308e1a04b1372cc2',
+     armv7l: '3392e31ba830fadd55b47fe3ab263516fde8e7149f5a894f308e1a04b1372cc2',
+       i686: '64ae67f97092fcd3ffbc36ef6ac8e7116a9fc9a5b70352a7cb2f06e5054ce09d',
+     x86_64: 'cc8a09d69530c55dfd9614912e2ead8dd6243569c50980c82d3a8d8ea008369f'
   })
 
   depends_on 'gcc_lib' => :library
