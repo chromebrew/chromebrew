@@ -10,10 +10,10 @@ class Py3_pypdf < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1f1aac5f804a84cd25d780b5ff39d37e8cfda67e66e3f717e4e144b5e7c7f14b',
-     armv7l: '1f1aac5f804a84cd25d780b5ff39d37e8cfda67e66e3f717e4e144b5e7c7f14b',
-       i686: '3885b23774398d96532715b3fbed26e21a878352fd4926ea33c5cb5f0808af5f',
-     x86_64: '60db960572db6d927edf3a36225cd9e43f8bb89d4c79dacf54ea099d278747cd'
+    aarch64: '490cee383cc201d1d171bc1584a1dd2312d6829ad3cd940a5b88cf855ae65905',
+     armv7l: '490cee383cc201d1d171bc1584a1dd2312d6829ad3cd940a5b88cf855ae65905',
+       i686: '06bd4112c6a4d9ff27d85e868629bd71c70cb8241f6d763a7dc4bbbf92c750d7',
+     x86_64: '2f8722a9425a6a58e46f09e4c7b389683f0b34f3b6e392f484c9de575be0fb8a'
   })
 
   depends_on 'python3'
