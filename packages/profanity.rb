@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Profanity < Meson
   description 'A console based XMPP client'
   homepage 'https://profanity-im.github.io/'
-  version '0.18.2'
+  version '0.19.0'
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/profanity-im/profanity.git'
