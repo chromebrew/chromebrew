@@ -3,7 +3,7 @@ require 'package'
 class F3 < Package
   description 'F3 is a simple tool that tests flash cards\' capacity and performance to see if they live up to claimed specifications.'
   homepage 'http://oss.digirati.com.br/f3/'
-  version '9.0'
+  version '10.0'
   license 'GPL-3+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/AltraMayor/f3.git'
