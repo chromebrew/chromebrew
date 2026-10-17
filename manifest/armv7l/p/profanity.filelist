@@ -1,4 +1,4 @@
-# Total size: 1353334
+# Total size: 1396649
 /usr/local/bin/profanity
 /usr/local/include/profapi.h
 /usr/local/lib/libprofanity.so
@@ -56,6 +56,7 @@
 /usr/local/share/man/man1/profanity-mam.1.zst
 /usr/local/share/man/man1/profanity-mood.1.zst
 /usr/local/share/man/man1/profanity-msg.1.zst
+/usr/local/share/man/man1/profanity-mucping.1.zst
 /usr/local/share/man/man1/profanity-nick.1.zst
 /usr/local/share/man/man1/profanity-notify.1.zst
 /usr/local/share/man/man1/profanity-occupants.1.zst

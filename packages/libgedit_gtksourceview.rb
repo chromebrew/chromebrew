@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Libgedit_gtksourceview < Meson
   description 'Gedit Technology - Source code editing widget'
   homepage 'https://gedit-text-editor.org'
-  version '299.7.1'
+  version '299.8.0'
   license 'LGPL2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/World/gedit/libgedit-gtksourceview.git'
@@ -11,9 +11,9 @@ class Libgedit_gtksourceview < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cc9a02d23ec2433cfe732d89ecb1d3acf2cbce67e6fefbda1570d245fa9681c1',
-     armv7l: 'cc9a02d23ec2433cfe732d89ecb1d3acf2cbce67e6fefbda1570d245fa9681c1',
-     x86_64: '41ffff0d8bedb569f1caf66db12082330f25169ef7879292256f7536506ac544'
+    aarch64: '07fb2aec4e90d5b44fac9e8922c1457ce4ee24def05b8c1b8cdae13ea1ea5c72',
+     armv7l: '07fb2aec4e90d5b44fac9e8922c1457ce4ee24def05b8c1b8cdae13ea1ea5c72',
+     x86_64: 'f49a51e3a58d53def0f8c358b9791fa7a15ac4b532234a9621593ada092ebf50'
   })
 
   depends_on 'cairo' => :library
