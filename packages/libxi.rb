@@ -11,10 +11,10 @@ class Libxi < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8c72b199acaf1a3d3e378f804225897c4b71a918c6a2ca4d3e4c7ee3694e33c0',
-     armv7l: '8c72b199acaf1a3d3e378f804225897c4b71a918c6a2ca4d3e4c7ee3694e33c0',
-       i686: '241a80160121a6f5409ffb9f87063cba4dee6f2e5884e9014e7418d48efce24c',
-     x86_64: 'bbd43e1feb0c339e46ff4c45828ce3e1b50e921bc9ff1bc3623601c2c64a9488'
+    aarch64: 'a2a4acb225f8f64b6256425bd6b6cd4f70edb71fa36422690f3827141c9cf27b',
+     armv7l: 'a2a4acb225f8f64b6256425bd6b6cd4f70edb71fa36422690f3827141c9cf27b',
+       i686: 'c808d94a1be5754e3cf55d29a2292c6b1dc639d89466a3e0bca6cdc26bf97faa',
+     x86_64: '102295c1d7d12bb928a86637bb4e194824e977cba6ba190ec79540de13892229'
   })
 
   depends_on 'glibc' => :library
