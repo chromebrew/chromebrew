@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Libxi < Autotools
   description 'X.org libXi Client library for XInput'
   homepage 'https://x.org/wiki/'
-  version '1.8.3'
+  version '1.8.4'
   license 'MIT and custom'
   compatibility 'all'
   source_url "https://www.x.org/archive/individual/lib/libXi-#{version}.tar.gz"
-  source_sha256 '6648c44127e4585f4e7842c0802d265008fa6f9741df0ea6ee7934a5267adf63'
+  source_sha256 '4d52f03b693cf3b32ae21701310cce34344ec8535f50d1667b1510a7083eca4a'
   binary_compression 'tar.zst'
 
   binary_sha256({
