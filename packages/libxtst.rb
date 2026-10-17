@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Libxtst < Autotools
   description 'X.org Xtst Library'
   homepage 'http://t2sde.org/packages/libxtst.html'
-  version '1.2.5'
+  version '1.2.6'
   license 'x11'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxtst.git'
