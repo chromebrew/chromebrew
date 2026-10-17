@@ -18,15 +18,14 @@ CPUINFO = File.readlines('/proc/cpuinfo').map { |line| line.chomp.split(/\t+: /)
 # Also, we allow ARCH to be changed via the ARCH environment variable.
 ARCH = ENV.fetch('ARCH') do |_name|
   case KERN_ARCH
-  when 'aarch64', 'armv8l'
+  when 'armv8l'
     'armv7l'
   else KERN_ARCH
   end
 end
-
 # Allow for edge case of i686 install on a x86_64 host before linux32 is
 # downloaded, e.g. in a docker container.
-CREW_LIB_SUFFIX = ARCH.eql?('x86_64') && Dir.exist?('/lib64') ? '64' : ''
+CREW_LIB_SUFFIX = %w[aarch64 x86_64].include?(ARCH) && Dir.exist?('/lib64') ? '64' : ''
 ARCH_LIB        = "lib#{CREW_LIB_SUFFIX}"
 
 CREW_PREFIX = ENV.fetch('CREW_PREFIX', '/usr/local')
@@ -228,7 +227,10 @@ SSL_CERT_DIR =
 
 CREW_ARCH_FLAGS_OVERRIDE = ENV.fetch('CREW_ARCH_FLAGS_OVERRIDE', '')
 case ARCH
-when 'aarch64', 'armv7l'
+when 'aarch64'
+  CREW_TARGET = 'aarch64-cros-linux-gnu'
+  CREW_ARCH_FLAGS = CREW_ARCH_FLAGS_OVERRIDE.to_s.empty? ? '' : CREW_ARCH_FLAGS_OVERRIDE
+when 'armv7l'
   CREW_TARGET = 'armv7l-cros-linux-gnueabihf'
   # These settings have been selected to match debian armhf.
   # Using -mfpu=neon breaks builds such as webkit2gtk.
@@ -331,14 +333,12 @@ OPT
 
 CREW_CMAKE_LIBSUFFIX_OPTIONS = "#{CREW_CMAKE_OPTIONS} -DLIB_SUFFIX=#{CREW_LIB_SUFFIX}"
 
-GEM_ARCH = case ARCH
-           when 'x86_64'
-             'x86_64-linux'
-           when 'i686'
-             'x86-linux'
-           when 'aarch64', 'armv7l'
-             'armv8l-linux-eabihf'
-           end
+GEM_ARCH = {
+  'x86_64' => 'x86_64-linux',
+  'i686' => 'x86-linux',
+  'aarch64' => 'aarch64-linux',
+  'armv7l' => 'armv8l-linux-eabihf'
+}[ARCH]
 
 PY3_SETUP_BUILD_OPTIONS          = "--executable=#{CREW_PREFIX}/bin/python3"
 PY2_SETUP_BUILD_OPTIONS          = "--executable=#{CREW_PREFIX}/bin/python2"
