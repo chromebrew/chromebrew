@@ -11,9 +11,9 @@ class Profanity < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'baa13608edab17c6091b77c0a8f05540fff5f00b8362cf231bf6699cff88039e',
-     armv7l: 'baa13608edab17c6091b77c0a8f05540fff5f00b8362cf231bf6699cff88039e',
-     x86_64: '49a3ba5afd8ee7698c16217971ad56ac2c440c9d27cf3ba69002176bb625cbe2'
+    aarch64: 'c55497c76f32d5825df924cd75c81dd0ca1034e0e5d2f68dedb03fef6edd7681',
+     armv7l: 'c55497c76f32d5825df924cd75c81dd0ca1034e0e5d2f68dedb03fef6edd7681',
+     x86_64: '6bb42839477b1f7b47f71561fe209ce77651f1bcbcb6fcc07919250256e3f1a8'
   })
 
   depends_on 'curl' => :executable
