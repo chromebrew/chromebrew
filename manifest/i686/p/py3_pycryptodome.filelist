@@ -1,4 +1,4 @@
-# Total size: 6625396
+# Total size: 6631764
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/AES.py
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/ARC2.py
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/ARC4.py
@@ -407,6 +407,7 @@
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Util/__pycache__/test_Counter.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Util/__pycache__/test_Padding.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Util/__pycache__/test_asn1.cpython-315.pyc
+/usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Util/__pycache__/test_cpu_features.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Util/__pycache__/test_number.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Util/__pycache__/test_raw_api.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Util/__pycache__/test_rfc1751.cpython-315.pyc
@@ -415,6 +416,7 @@
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Util/test_Counter.py
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Util/test_Padding.py
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Util/test_asn1.py
+/usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Util/test_cpu_features.py
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Util/test_number.py
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Util/test_raw_api.py
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Util/test_rfc1751.py
@@ -473,10 +475,10 @@
 /usr/local/lib/python3.15/site-packages/Crypto/__init__.py
 /usr/local/lib/python3.15/site-packages/Crypto/__pycache__/__init__.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Crypto/py.typed
-/usr/local/lib/python3.15/site-packages/pycryptodome-4.0.0.dist-info/INSTALLER
-/usr/local/lib/python3.15/site-packages/pycryptodome-4.0.0.dist-info/METADATA
-/usr/local/lib/python3.15/site-packages/pycryptodome-4.0.0.dist-info/RECORD
-/usr/local/lib/python3.15/site-packages/pycryptodome-4.0.0.dist-info/REQUESTED
-/usr/local/lib/python3.15/site-packages/pycryptodome-4.0.0.dist-info/WHEEL
-/usr/local/lib/python3.15/site-packages/pycryptodome-4.0.0.dist-info/licenses/LICENSE.rst
-/usr/local/lib/python3.15/site-packages/pycryptodome-4.0.0.dist-info/top_level.txt
+/usr/local/lib/python3.15/site-packages/pycryptodome-4.0.1.dist-info/INSTALLER
+/usr/local/lib/python3.15/site-packages/pycryptodome-4.0.1.dist-info/METADATA
+/usr/local/lib/python3.15/site-packages/pycryptodome-4.0.1.dist-info/RECORD
+/usr/local/lib/python3.15/site-packages/pycryptodome-4.0.1.dist-info/REQUESTED
+/usr/local/lib/python3.15/site-packages/pycryptodome-4.0.1.dist-info/WHEEL
+/usr/local/lib/python3.15/site-packages/pycryptodome-4.0.1.dist-info/licenses/LICENSE.rst
+/usr/local/lib/python3.15/site-packages/pycryptodome-4.0.1.dist-info/top_level.txt
