@@ -1,4 +1,4 @@
-# Total size: 245827584
+# Total size: 246852792
 /usr/local/bin/codon
 /usr/local/include/codon/cir/analyze/analysis.h
 /usr/local/include/codon/cir/analyze/dataflow/capture.h
@@ -39,6 +39,7 @@
 /usr/local/include/codon/cir/transform/lowering/await.h
 /usr/local/include/codon/cir/transform/lowering/imperative.h
 /usr/local/include/codon/cir/transform/lowering/pipeline.h
+/usr/local/include/codon/cir/transform/lowering/throw.h
 /usr/local/include/codon/cir/transform/manager.h
 /usr/local/include/codon/cir/transform/numpy/indexing.h
 /usr/local/include/codon/cir/transform/numpy/numpy.h
@@ -94,6 +95,7 @@
 /usr/local/include/codon/parser/ast/types/type.h
 /usr/local/include/codon/parser/ast/types/union.h
 /usr/local/include/codon/parser/cache.h
+/usr/local/include/codon/parser/capi.h
 /usr/local/include/codon/parser/common.h
 /usr/local/include/codon/parser/ctx.h
 /usr/local/include/codon/parser/match.h
@@ -108,6 +110,7 @@
 /usr/local/include/codon/parser/visitors/typecheck/typecheck.h
 /usr/local/include/codon/parser/visitors/visitor.h
 /usr/local/include/codon/runtime/lib.h
+/usr/local/include/codon/runtime/rtti.h
 /usr/local/include/codon/util/common.h
 /usr/local/include/codon/util/jupyter.h
 /usr/local/include/codon/util/serialize.h
@@ -148,6 +151,7 @@
 /usr/local/lib64/codon/stdlib/collections.codon
 /usr/local/lib64/codon/stdlib/copy.codon
 /usr/local/lib64/codon/stdlib/datetime.codon
+/usr/local/lib64/codon/stdlib/enum.codon
 /usr/local/lib64/codon/stdlib/functools.codon
 /usr/local/lib64/codon/stdlib/getopt.codon
 /usr/local/lib64/codon/stdlib/gpu.codon

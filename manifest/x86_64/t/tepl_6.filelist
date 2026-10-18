@@ -1,4 +1,4 @@
-# Total size: 1237593
+# Total size: 1282579
 /usr/local/include/libgedit-tepl-6/tepl/code-comment/tepl-code-comment-view.h
 /usr/local/include/libgedit-tepl-6/tepl/code-comment/tepl-code-comment.h
 /usr/local/include/libgedit-tepl-6/tepl/tepl-abstract-factory.h
@@ -56,7 +56,7 @@
 /usr/local/include/libgedit-tepl-6/tepl/tepl.h
 /usr/local/lib64/girepository-1.0/Tepl-6.typelib
 /usr/local/lib64/libgedit-tepl-6.so
-/usr/local/lib64/libgedit-tepl-6.so.4
+/usr/local/lib64/libgedit-tepl-6.so.5
 /usr/local/lib64/pkgconfig/libgedit-tepl-6.pc
 /usr/local/share/gir-1.0/Tepl-6.gir
 /usr/local/share/locale/be/LC_MESSAGES/libgedit-tepl-6.mo
@@ -75,8 +75,11 @@
 /usr/local/share/locale/id/LC_MESSAGES/libgedit-tepl-6.mo
 /usr/local/share/locale/ja/LC_MESSAGES/libgedit-tepl-6.mo
 /usr/local/share/locale/ka/LC_MESSAGES/libgedit-tepl-6.mo
+/usr/local/share/locale/kk/LC_MESSAGES/libgedit-tepl-6.mo
 /usr/local/share/locale/nl/LC_MESSAGES/libgedit-tepl-6.mo
+/usr/local/share/locale/nn/LC_MESSAGES/libgedit-tepl-6.mo
 /usr/local/share/locale/pl/LC_MESSAGES/libgedit-tepl-6.mo
+/usr/local/share/locale/pt/LC_MESSAGES/libgedit-tepl-6.mo
 /usr/local/share/locale/pt_BR/LC_MESSAGES/libgedit-tepl-6.mo
 /usr/local/share/locale/ro/LC_MESSAGES/libgedit-tepl-6.mo
 /usr/local/share/locale/ru/LC_MESSAGES/libgedit-tepl-6.mo
