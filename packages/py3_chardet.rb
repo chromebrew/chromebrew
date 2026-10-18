@@ -10,14 +10,14 @@ class Py3_chardet < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0e2a11cab1fcfe98dd19490679f801cdd16c67013c032aa54b3b3f0032b2aceb',
-     armv7l: '0e2a11cab1fcfe98dd19490679f801cdd16c67013c032aa54b3b3f0032b2aceb',
-       i686: 'b0d38b94d9bcd19dd6faa1de7e0cb48eeaada79848c784a58209c6ca56406687',
-     x86_64: '43362170a0849e792572e535c84d3e03d7850a1b1845218db662ff6ba632f59f'
+    aarch64: '247a2b4543becec7b0468ed9e6bbfc86207d09303c6b117ad6fedac7bceebfff',
+     armv7l: '247a2b4543becec7b0468ed9e6bbfc86207d09303c6b117ad6fedac7bceebfff',
+       i686: '7994b2300b2319b4a7fe0a60d44cb11ab322149fe7adb4ebe1f1d14245d51dd6',
+     x86_64: '98115369e171cf6870fb05c8a576f5e9347366805c70b2b23eb68bb89d87b3de'
   })
 
-  depends_on 'glibc' => :library
-  depends_on 'glibc_lib' => :library
+  depends_on 'glibc' => :build
+  depends_on 'glibc_lib' => :build
   depends_on 'python3' => :logical
 
   no_source_build
