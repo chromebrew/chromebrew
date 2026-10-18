@@ -1,4 +1,4 @@
-# Total size: 44903655
+# Total size: 45279887
 /usr/local/bin/pea
 /usr/local/bin/peazip
 /usr/local/share/application/peazip.desktop
@@ -355,7 +355,6 @@
 /usr/local/share/peazip/res/share/lang-wincontext/fi.reg
 /usr/local/share/peazip/res/share/lang-wincontext/fr.reg
 /usr/local/share/peazip/res/share/lang-wincontext/fr_alt.reg
-/usr/local/share/peazip/res/share/lang-wincontext/fr_alt2.reg
 /usr/local/share/peazip/res/share/lang-wincontext/gr.reg
 /usr/local/share/peazip/res/share/lang-wincontext/hu.reg
 /usr/local/share/peazip/res/share/lang-wincontext/id.reg
