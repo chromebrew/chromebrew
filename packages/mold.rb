@@ -14,10 +14,10 @@ class Mold < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ea7495f3b599a3c69205215392ad6141005a9aa942fc854bd2a6207963e278d8',
-     armv7l: 'ea7495f3b599a3c69205215392ad6141005a9aa942fc854bd2a6207963e278d8',
-       i686: '58358ad2140f417ecfad657a2ba03a8ab2fdc922f5b27c1d7bc953bda0a9172f',
-     x86_64: '52d63833f6cddddb719beac6b4219025f26a66446bb88bddf4531ad34c74e02b'
+    aarch64: 'e77a0fb0921c811fc82623ee457f6923d3ce4f9a1437abab95e7a0203c70b8a5',
+     armv7l: 'e77a0fb0921c811fc82623ee457f6923d3ce4f9a1437abab95e7a0203c70b8a5',
+       i686: '5a9866f294b4c6e353aa417f84c57824673e26a9825d2cfbef0c506b95dd6b8f',
+     x86_64: 'ed1382d4416e4d648daf7d225d7806c636cfc7b2733ace5f4eee64c2fb17cfb8'
   })
 
   depends_on 'gcc_lib' => :executable
