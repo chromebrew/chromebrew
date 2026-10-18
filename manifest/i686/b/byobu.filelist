@@ -1,4 +1,4 @@
-# Total size: 1581267
+# Total size: 1592287
 /usr/local/bin/byobu
 /usr/local/bin/byobu-config
 /usr/local/bin/byobu-ctrl-a
@@ -49,6 +49,7 @@
 /usr/local/lib/byobu/cpu_count
 /usr/local/lib/byobu/cpu_freq
 /usr/local/lib/byobu/cpu_temp
+/usr/local/lib/byobu/cpu_usage
 /usr/local/lib/byobu/custom
 /usr/local/lib/byobu/date
 /usr/local/lib/byobu/disk

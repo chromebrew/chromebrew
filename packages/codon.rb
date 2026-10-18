@@ -3,11 +3,11 @@ require 'package'
 class Codon < Package
   description 'Codon is a high-performance Python compiler that compiles Python code to native machine code without any runtime overhead.'
   homepage 'https://docs.exaloop.io/codon/'
-  version '0.20.3'
+  version '0.20.4'
   license 'Apache-2.0'
   compatibility 'x86_64'
   source_url "https://github.com/exaloop/codon/releases/download/v#{version}/codon-linux-x86_64.tar.gz"
-  source_sha256 '8716e5753a441764d13fd6a0b4f911060d292f66c9e61d0a4cdccb64c843da6f'
+  source_sha256 '490d2263e2a543b7786e8f5898eb767dd6a67945238c90fe8be130b4331eb8c9'
 
   depends_on 'llvm'
   depends_on 'python3'
