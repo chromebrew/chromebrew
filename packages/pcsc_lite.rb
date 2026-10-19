@@ -11,9 +11,9 @@ class Pcsc_lite < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cd0696f99f49ceaed74131ea9f91875d25b4e762aa49cd7d4dd01fe5c4fd739b',
-     armv7l: 'cd0696f99f49ceaed74131ea9f91875d25b4e762aa49cd7d4dd01fe5c4fd739b',
-     x86_64: 'c73ed6c47c4c3e9b856c501d439fa00fb74c4a1d02421e1f52693da36ac6c03b'
+    aarch64: '5ffef058582c36c5a8108505c09195e61c9b3cb5425ccd3c7981f5dd9c30c877',
+     armv7l: '5ffef058582c36c5a8108505c09195e61c9b3cb5425ccd3c7981f5dd9c30c877',
+     x86_64: 'b1ae6e5aecf9c0f7c1699549173bd9dfeaa7c5ee339a32e520315c2d7a10af0b'
   })
 
   depends_on 'elogind'
