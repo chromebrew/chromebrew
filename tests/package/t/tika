@@ -1,0 +1,3 @@
+#!/bin/bash
+tika --help | head
+tika --version
