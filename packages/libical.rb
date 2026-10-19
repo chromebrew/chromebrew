@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libical < CMake
   description 'An open source reference implementation of the icalendar data type and serialization format'
   homepage 'https://github.com/libical/libical'
-  version "4.0.5-#{CREW_ICU_VER}"
+  version "4.0.7-#{CREW_ICU_VER}"
   license 'MPL-2.0 or LGPL-2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/libical/libical.git'
@@ -11,9 +11,9 @@ class Libical < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0bd6e7cff9857fac7b1f0c360f56227585553780d05441c4ef8a2be3d264f302',
-     armv7l: '0bd6e7cff9857fac7b1f0c360f56227585553780d05441c4ef8a2be3d264f302',
-     x86_64: '0254adfe50c8017adc501b6edcb441bd19f293367e884986f1c405b1bd14d21c'
+    aarch64: '2da3b86a22abb818f648c851c38f212696cbeae7b36e5655d2dab8e971231143',
+     armv7l: '2da3b86a22abb818f648c851c38f212696cbeae7b36e5655d2dab8e971231143',
+     x86_64: '1216a9007a7d6c0e79056491e002ce87bb76247f5ce894f37014c29cd40ed927'
   })
 
   depends_on 'gcc_lib' => :library
