@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Haveged < Autotools
   description 'A simple entropy daemon based on the HAVEGE algorithm, significantly faster than /dev/urandom.'
   homepage 'https://issihosts.com/haveged/'
-  version '1.9.26'
+  version '1.9.27'
   license 'GPL-3+'
   compatibility 'all'
   source_url 'https://github.com/jirka-h/haveged.git'
@@ -11,10 +11,10 @@ class Haveged < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '21f02fcaf9f14eac1b062a0980ada034c1e400b447c15faa5ac3589b48fcb7ea',
-     armv7l: '21f02fcaf9f14eac1b062a0980ada034c1e400b447c15faa5ac3589b48fcb7ea',
-       i686: '6fbd946ca7e8cc4765255626b1a2537a2b9b7b89e8c4744d66246209cbda22b6',
-     x86_64: 'e769f38b953524e3f6ccc8be79cf455418bf68007a6a3cee0b3ecd1a614a8fbf'
+    aarch64: 'f0ac5e0cc971a84df277de4ac07a8ea6e6cc560e787286861d1a2d0b0b15d731',
+     armv7l: 'f0ac5e0cc971a84df277de4ac07a8ea6e6cc560e787286861d1a2d0b0b15d731',
+       i686: '9d5bb3052b8735c56d4594d8360942b244dc334677809bc057134521676d7c52',
+     x86_64: '38d39b670b9d1c6fe29ba78663f2eb8cdbb57bbea9d57dde01fc946833686821'
   })
 
   depends_on 'glibc' => :library
