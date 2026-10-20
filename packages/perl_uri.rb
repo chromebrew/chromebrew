@@ -3,11 +3,11 @@ require 'buildsystems/perl'
 class Perl_uri < PERL
   description 'Uniform Resource Identifiers (absolute and relative)'
   homepage 'https://metacpan.org/pod/URI'
-  version "5.37-#{CREW_PERL_VER}"
+  version "5.40-#{CREW_PERL_VER}"
   license 'GPL PerlArtistic'
   compatibility 'all'
   source_url "https://cpan.metacpan.org/authors/id/O/OA/OALDERS/URI-#{version.split('-')[0]}.tar.gz"
-  source_sha256 '5a8750ddd8ee743d7cc89bebdd542a9b78a34023164ebe19dea0c248e121c21e'
+  source_sha256 'ef5d2ef099a1a24a6e83ffe543de73337805d3d39c00b84fa205d725ad1a1b63'
   binary_compression 'tar.zst'
 
   binary_sha256({
