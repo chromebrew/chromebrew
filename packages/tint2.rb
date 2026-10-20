@@ -1,36 +1,53 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Tint2 < Package
+class Tint2 < CMake
   description 'A lightweight panel/taskbar for Linux and BSD'
-  homepage 'https://gitlab.com/o9000/tint2'
-  version '16.7'
+  homepage 'https://gitlab.com/nick87720z/tint2'
+  version '17.1.3'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://gitlab.com/o9000/tint2/-/archive/v16.7/tint2-v16.7.tar.gz'
-  source_sha256 '74962c1dd111be9955319a133a790b24fe5a8ef0315a1bcdabc58c1157c1fb26'
-  binary_compression 'tar.xz'
+  source_url 'https://gitlab.com/nick87720z/tint2.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a975a792b4d533bf2d64a776c20c8b9e5b9a4e6b1243e8206f6051f1afc02c77',
-     armv7l: 'a975a792b4d533bf2d64a776c20c8b9e5b9a4e6b1243e8206f6051f1afc02c77',
-     x86_64: '3ed565ee2eddc788b01dfa0e2a77d582646b80eb2ca56bc11384cc09e4e19324'
+    aarch64: '12133496955af7cbdfc9ed11711ef1399cdd9327deb93b8977a1f11348862a96',
+     armv7l: '12133496955af7cbdfc9ed11711ef1399cdd9327deb93b8977a1f11348862a96',
+     x86_64: '5fc3f22367383691d563b9b200cb05430ef04fb28286f513bafcc5f55f9d9d57'
   })
 
-  depends_on 'imlib2'
-  depends_on 'gdk_pixbuf'
+  depends_on 'at_spi2_core' => :executable
+  depends_on 'cairo' => :executable
+  depends_on 'gdk_pixbuf' => :executable
+  depends_on 'glib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'gtk3' => :executable
+  depends_on 'harfbuzz' => :executable
+  depends_on 'imlib2' => :executable
+  depends_on 'librsvg' => :executable
+  depends_on 'libx11' => :executable
+  depends_on 'libxcomposite' => :executable
+  depends_on 'libxdamage' => :executable
+  depends_on 'libxext' => :executable
+  depends_on 'libxfixes' => :executable
+  depends_on 'libxinerama' => :executable
+  depends_on 'libxrandr' => :executable
+  depends_on 'libxrender' => :executable
+  depends_on 'pango' => :executable
+  depends_on 'startup_notification' => :executable
+  depends_on 'zlib' => :executable
 
-  ENV['CFLAGS'] = '-lX11 -lXau'
-  def self.build
-    Dir.mkdir 'build'
-    Dir.chdir 'build' do
-      system "cmake .. -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX}"
-      system 'make'
-    end
-  end
+  cmake_options '-DCMAKE_POLICY_VERSION_MINIMUM=3.5'
 
-  def self.install
-    Dir.chdir 'build' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    end
+  def self.patch
+    patch = [
+      [
+        # Add explicit dependency of tint2conf on libm.
+        'https://gitlab.com/nick87720z/tint2/-/merge_requests/3.diff',
+        '91793b0b09975f74769787c6cfde624130ed9a9cbf629bd13d63380f2daff799'
+      ]
+    ]
+    ConvenienceFunctions.patch(patch)
   end
 end
