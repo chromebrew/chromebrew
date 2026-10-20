@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Weston < Meson
   description 'Weston is the reference implementation of a Wayland compositor, and a useful compositor in its own right.'
   homepage 'https://wayland.freedesktop.org'
-  version '16.0.0'
+  version '16.0.1'
   license 'MIT and CC-BY-SA-3.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/wayland/weston.git'
@@ -11,9 +11,9 @@ class Weston < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0bb0d207e3b05a3c40a5e1293fb8e7e7458ec54eb9d823db1e06b72ae06d54fd',
-     armv7l: '0bb0d207e3b05a3c40a5e1293fb8e7e7458ec54eb9d823db1e06b72ae06d54fd',
-     x86_64: '12536e09b6714e40b31c70866d418a2dbcd86857607362c0113524e3190ddc9e'
+    aarch64: '0f4c32d9bab01e2608f45f2aba52847a6cf480e93f0132a2353ad45638992af3',
+     armv7l: '0f4c32d9bab01e2608f45f2aba52847a6cf480e93f0132a2353ad45638992af3',
+     x86_64: 'a0b6f0a2c0cf0626b05f9ed7b76fffd01e3233bc7393449e7df5d9b7c9278567'
   })
 
   depends_on 'cairo' => :library
