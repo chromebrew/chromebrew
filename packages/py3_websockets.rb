@@ -10,13 +10,13 @@ class Py3_websockets < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f3ba49b9457fb93acfdfb0845e6e19e0e35d6c7547cd1add76761b1772305649',
-     armv7l: 'f3ba49b9457fb93acfdfb0845e6e19e0e35d6c7547cd1add76761b1772305649',
-       i686: 'cc7929677b42a92338df9f7047de602bb7e0fb82fb3ace274a13ce7563c53368',
-     x86_64: '5dcb03cef2468ab866d22176162f950e17d5150fdfd684fbd3fa7c0f6d6fa981'
+    aarch64: 'b01ba7bfb66d52913dfd457da635198a78f73be3a3176e3f366263410bedab6b',
+     armv7l: 'b01ba7bfb66d52913dfd457da635198a78f73be3a3176e3f366263410bedab6b',
+       i686: '6ec062099b31d8a1c40b4807d3f55f024c8d67ae08aee08333c4bdef7b601810',
+     x86_64: 'cd885b242be28fe15ed4e2742dfea49f5600d74e9e871ac7656272dc86fc9875'
   })
 
-  depends_on 'glibc' => :build
+  depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :build
   depends_on 'python3' => :logical
 
