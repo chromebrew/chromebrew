@@ -1,4 +1,4 @@
-# Total size: 14891157
+# Total size: 15113895
 /usr/local/bin/eu-addr2line
 /usr/local/bin/eu-ar
 /usr/local/bin/eu-elfclassify
@@ -29,15 +29,15 @@
 /usr/local/include/gelf.h
 /usr/local/include/libelf.h
 /usr/local/include/nlist.h
-/usr/local/lib/libasm-0.196.so
+/usr/local/lib/libasm-0.197.so
 /usr/local/lib/libasm.a
 /usr/local/lib/libasm.so
 /usr/local/lib/libasm.so.1
-/usr/local/lib/libdw-0.196.so
+/usr/local/lib/libdw-0.197.so
 /usr/local/lib/libdw.a
 /usr/local/lib/libdw.so
 /usr/local/lib/libdw.so.1
-/usr/local/lib/libelf-0.196.so
+/usr/local/lib/libelf-0.197.so
 /usr/local/lib/libelf.a
 /usr/local/lib/libelf.so
 /usr/local/lib/libelf.so.1
@@ -50,6 +50,7 @@
 /usr/local/share/locale/ja/LC_MESSAGES/elfutils.mo
 /usr/local/share/locale/ka/LC_MESSAGES/elfutils.mo
 /usr/local/share/locale/pl/LC_MESSAGES/elfutils.mo
+/usr/local/share/locale/sv/LC_MESSAGES/elfutils.mo
 /usr/local/share/locale/uk/LC_MESSAGES/elfutils.mo
 /usr/local/share/man/man1/debuginfod-find.1.zst
 /usr/local/share/man/man1/eu-elfclassify.1.zst
