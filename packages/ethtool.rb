@@ -6,11 +6,11 @@ require 'buildsystems/autotools'
 class Ethtool < Autotools
   description 'Utility for controlling network drivers and hardware'
   homepage 'https://www.kernel.org/pub/software/network/ethtool/'
-  version '7.1'
+  version '7.2'
   license 'LGPL2.1'
   compatibility 'all'
   source_url "https://www.kernel.org/pub/software/network/ethtool/ethtool-#{version}.tar.xz"
-  source_sha256 '4d78c26edc0255bc92f4b995b5fd66108d75ff966ed4694f6025a6d370bc2496'
+  source_sha256 '44256ddf4631ed08d816b7b8725f4b2e0f05e96b8c7ca64ee5c81449da2b6507'
   binary_compression 'tar.zst'
 
   binary_sha256({
