@@ -1,9 +1,9 @@
-# Total size: 4774766
+# Total size: 4859788
 /usr/local/bin/bleachbit
-/usr/local/lib/python3.15/site-packages/bleachbit-6.0.5-py3.15.egg-info/PKG-INFO
-/usr/local/lib/python3.15/site-packages/bleachbit-6.0.5-py3.15.egg-info/SOURCES.txt
-/usr/local/lib/python3.15/site-packages/bleachbit-6.0.5-py3.15.egg-info/dependency_links.txt
-/usr/local/lib/python3.15/site-packages/bleachbit-6.0.5-py3.15.egg-info/top_level.txt
+/usr/local/lib/python3.15/site-packages/bleachbit-6.0.6-py3.15.egg-info/PKG-INFO
+/usr/local/lib/python3.15/site-packages/bleachbit-6.0.6-py3.15.egg-info/SOURCES.txt
+/usr/local/lib/python3.15/site-packages/bleachbit-6.0.6-py3.15.egg-info/dependency_links.txt
+/usr/local/lib/python3.15/site-packages/bleachbit-6.0.6-py3.15.egg-info/top_level.txt
 /usr/local/lib/python3.15/site-packages/bleachbit/Action.py
 /usr/local/lib/python3.15/site-packages/bleachbit/Bootstrap.py
 /usr/local/lib/python3.15/site-packages/bleachbit/CLI.py
@@ -314,6 +314,7 @@
 /usr/local/share/bleachbit/cleaners/slack.xml
 /usr/local/share/bleachbit/cleaners/snap.xml
 /usr/local/share/bleachbit/cleaners/sqlite3.xml
+/usr/local/share/bleachbit/cleaners/teamviewer.xml
 /usr/local/share/bleachbit/cleaners/thumbnails.xml
 /usr/local/share/bleachbit/cleaners/thunderbird.xml
 /usr/local/share/bleachbit/cleaners/transmission.xml
@@ -350,6 +351,7 @@
 /usr/local/share/bleachbit/markovify/utils.py
 /usr/local/share/bleachbit/share/app-menu.ui
 /usr/local/share/bleachbit/share/protected_path.xml
+/usr/local/share/icons/hicolor/scalable/apps/bleachbit.svg
 /usr/local/share/metainfo/org.bleachbit.BleachBit.metainfo.xml
 /usr/local/share/pixmaps/bleachbit.png
 /usr/local/share/polkit-1/actions/org.bleachbit.policy
