@@ -11,9 +11,9 @@ class Audacious < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c9ce972c1c0c2c55a3aced050ec028bf52b3a7d466f6bc09839782a6c913d65a',
-     armv7l: 'c9ce972c1c0c2c55a3aced050ec028bf52b3a7d466f6bc09839782a6c913d65a',
-     x86_64: '7ed6d408a8c11c0f0a0b5e6a54c295ce4c8c80eae10676d0c6b91dda9caf96dd'
+    aarch64: '0712eac4bc832a39ceb206bff9e9d14b4f47131ffe5a5e802a804bcc50fa01e2',
+     armv7l: '0712eac4bc832a39ceb206bff9e9d14b4f47131ffe5a5e802a804bcc50fa01e2',
+     x86_64: 'ed2cff755c69aa3b2aa16c84482e68b5efda1555e56fc8f9b3765bfeab835d4f'
   })
 
   depends_on 'at_spi2_core' => :build
