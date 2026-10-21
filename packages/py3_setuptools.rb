@@ -4,7 +4,7 @@ require 'ptools'
 class Py3_setuptools < Pip
   description 'Setuptools is the python build system from the Python Packaging Authority.'
   homepage 'https://setuptools.readthedocs.io/'
-  version "84.2.0-#{CREW_PY_VER}"
+  version "84.2.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
@@ -13,10 +13,10 @@ class Py3_setuptools < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e2e7112ecda2f0dedb57fff4256185bef23e3bb36455dce4e5727761fda394e9',
-     armv7l: 'e2e7112ecda2f0dedb57fff4256185bef23e3bb36455dce4e5727761fda394e9',
-       i686: '0b4226ade3acce9eb610265b39b157c8700dbe13e56d39d4ed469bf350c0de90',
-     x86_64: 'ce3d85575513471e9a522795dcb4c3c0e8022fb09b2afef024887ccc12af23ba'
+    aarch64: '879eed4301206cee62780e9e82e2f31605ce5ceca16a52da7cdde37b569f6526',
+     armv7l: '879eed4301206cee62780e9e82e2f31605ce5ceca16a52da7cdde37b569f6526',
+       i686: '94a6b03e4f0fee69ecfe2c448d3e6a3af12112eda32581051b1b56e8f51f474d',
+     x86_64: 'bffb1b867e588420aab04e779f55cbe059cefc4a199219d9dbbe0cb8fcfc773c'
   })
 
   depends_on 'py3_packaging'

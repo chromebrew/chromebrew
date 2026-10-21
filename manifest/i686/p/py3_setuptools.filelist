@@ -1,17 +1,17 @@
-# Total size: 6324896
+# Total size: 6328911
 /usr/local/lib/python3.15/site-packages/_distutils_hack/__init__.py
 /usr/local/lib/python3.15/site-packages/_distutils_hack/__pycache__/__init__.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/_distutils_hack/__pycache__/override.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/_distutils_hack/override.py
 /usr/local/lib/python3.15/site-packages/distutils-precedence.pth
-/usr/local/lib/python3.15/site-packages/setuptools-84.2.0.dist-info/INSTALLER
-/usr/local/lib/python3.15/site-packages/setuptools-84.2.0.dist-info/METADATA
-/usr/local/lib/python3.15/site-packages/setuptools-84.2.0.dist-info/RECORD
-/usr/local/lib/python3.15/site-packages/setuptools-84.2.0.dist-info/REQUESTED
-/usr/local/lib/python3.15/site-packages/setuptools-84.2.0.dist-info/WHEEL
-/usr/local/lib/python3.15/site-packages/setuptools-84.2.0.dist-info/entry_points.txt
-/usr/local/lib/python3.15/site-packages/setuptools-84.2.0.dist-info/licenses/LICENSE
-/usr/local/lib/python3.15/site-packages/setuptools-84.2.0.dist-info/top_level.txt
+/usr/local/lib/python3.15/site-packages/setuptools-84.2.1.dist-info/INSTALLER
+/usr/local/lib/python3.15/site-packages/setuptools-84.2.1.dist-info/METADATA
+/usr/local/lib/python3.15/site-packages/setuptools-84.2.1.dist-info/RECORD
+/usr/local/lib/python3.15/site-packages/setuptools-84.2.1.dist-info/REQUESTED
+/usr/local/lib/python3.15/site-packages/setuptools-84.2.1.dist-info/WHEEL
+/usr/local/lib/python3.15/site-packages/setuptools-84.2.1.dist-info/entry_points.txt
+/usr/local/lib/python3.15/site-packages/setuptools-84.2.1.dist-info/licenses/LICENSE
+/usr/local/lib/python3.15/site-packages/setuptools-84.2.1.dist-info/top_level.txt
 /usr/local/lib/python3.15/site-packages/setuptools/__init__.py
 /usr/local/lib/python3.15/site-packages/setuptools/__pycache__/__init__.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/setuptools/__pycache__/_core_metadata.cpython-315.pyc
