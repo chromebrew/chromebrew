@@ -11,10 +11,10 @@ class Curl < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6886697cbde4c887c629e36eda7328faa54886790e6461f58a18e149fa70a219',
-     armv7l: '6886697cbde4c887c629e36eda7328faa54886790e6461f58a18e149fa70a219',
-       i686: '22ab0d1c55c99668224239c175958f11a4264d48e6fd42be36b6d4effb7ae8d6',
-     x86_64: '785be4376d37206c91c6a0c38e5fc2450038eda799f399f1edc40ae961c2d014'
+    aarch64: '9c56ea96f2858668cde8d82452dc9b5fd54d442482742d26e1fea21f6cbcf2df',
+     armv7l: '9c56ea96f2858668cde8d82452dc9b5fd54d442482742d26e1fea21f6cbcf2df',
+       i686: 'd432934e08eb58e8177fdd621f730de2353e8cc1300eeaa43fef4ebbf2b4e1a2',
+     x86_64: '7fe41473b93e08701b5ce75dbf65c170c3a6399cd06abf710ba28e7b445c06d5'
   })
 
   depends_on 'brotli' => :library
@@ -39,13 +39,20 @@ class Curl < Autotools
   depends_on 'zlib' => :library
   depends_on 'zstd' => :library
 
+  def self.patch
+    # Get the current Mozilla CA certificates pem from
+    # https://curl.se/docs/caextract.html, which is also in the
+    # ca_certificates package.
+    downloader 'https://curl.se/ca/cacert.pem', 'SKIP', "#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt"
+  end
+
   autotools_configure_options "--disable-maintainer-mode \
       --enable-ares \
       --enable-ipv6 \
       --enable-ldap \
       --enable-unix-sockets \
-      --with-ca-embed=#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt \
       --with-ca-bundle=#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt \
+      --with-ca-embed=#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt \
       --with-ca-fallback \
       --with-ca-path=#{CREW_PREFIX}/etc/ssl/certs \
       --with-libssh \
