@@ -7810,6 +7810,11 @@ url: https://github.com/kornelski/pngquant/tags
 activity: low
 ---
 kind: url
+name: po4a
+url: https://github.com/mquinson/po4a/tags
+activity: medium
+---
+kind: url
 name: pocl
 url: https://github.com/pocl/pocl/releases
 activity: medium
@@ -8982,6 +8987,11 @@ activity: medium
 kind: url
 name: rubymine
 url: https://www.jetbrains.com/ruby/download/?section=linux
+activity: low
+---
+kind: url
+name: run_parts
+url: https://salsa.debian.org/debian/debianutils/-/tags
 activity: low
 ---
 kind: url
