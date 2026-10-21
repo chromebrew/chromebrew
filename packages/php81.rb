@@ -26,6 +26,7 @@ class Php81 < Package
   depends_on 'exif'
   depends_on 'freetds'
   depends_on 'freetype' => :executable
+  depends_on 'gcc_lib' => :executable
   depends_on 'gcc_lib' => :library
   depends_on 'gdbm' => :library
   depends_on 'glibc' => :library
