@@ -2,115 +2,80 @@ require 'package'
 
 class Ca_certificates < Package
   description 'Common CA Certificates PEM files'
-  homepage 'https://packages.debian.org/sid/ca-certificates'
-  version '20260816-36f9040'
+  homepage 'https://gitlab.alpinelinux.org/alpine/ca-certificates'
+  version '20261020'
   license 'GPL-2.0-or-later MPL-2.0'
   compatibility 'all'
-  source_url 'https://salsa.debian.org/debian/ca-certificates.git'
-  git_hashtag '36f904035c8390db4f0834c644c3e6ceceec01f5'
+  source_url 'https://gitlab.alpinelinux.org/alpine/ca-certificates.git'
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '071f2e515fd7038aa06fba83f40e678fc0ad4442ee3542e7fb4735b4beaeb9d6',
-     armv7l: '071f2e515fd7038aa06fba83f40e678fc0ad4442ee3542e7fb4735b4beaeb9d6',
-       i686: 'c3f84eb0b2bc8f797733c236164a43cc9dff7d4ca8bce69f5e91c59b6e9c2017',
-     x86_64: 'dc77df26e8b798d6c4006d75c2fa52e08c65bcaa14600235dacdea4f1f692ba5'
+    aarch64: 'b6c940026913c879a244e97b9430ffd07a8585e67b9ef7de0b6ae6715e0e829f',
+     armv7l: 'b6c940026913c879a244e97b9430ffd07a8585e67b9ef7de0b6ae6715e0e829f',
+       i686: '44c9d61b105cbd2ffa9ea4cad41195aea9ebbf75c35f204fe310d4f49ecf4970',
+     x86_64: 'e9a2ba60e6578eb6c3a2cbb223298d3ea466919e9ccf95d2cd1289f70638a778'
   })
 
-  depends_on 'openssl' => :build
   depends_on 'py3_cryptography' => :build
+  depends_on 'run_parts' => :build
 
   print_source_bashrc
 
   def self.patch
-    downloader 'https://gitlab.alpinelinux.org/alpine/ca-certificates/-/raw/5aaf4043e057e23cc8e0dd5cfbe4f9ceba41ca3b/c_rehash.c', 'a68fedc0edd976b9f35ecfdcb252d80dc12084b1bc4e945be7dc42c437d8b540'
-    system "sed -i 's,/etc,#{CREW_PREFIX}/etc,g' c_rehash.c"
-    # Patch from:
-    # https://gitweb.gentoo.org/repo/gentoo.git/plain/app-misc/ca-certificates/files/ca-certificates-20150426-root.patch
-    File.write 'ca-certificates-20150426-root.patch', <<~'GENTOO_CA_CERT_HEREDOC'
-      --- a/sbin/update-ca-certificates      2025-05-01 00:06:58.282420314 +0800
-      +++ b/sbin/update-ca-certificates      2025-05-01 00:07:00.752420448 +0800
-      @@ -30,6 +30,8 @@
-       CERTBUNDLE=ca-certificates.crt
-       ETCCERTSDIR=/etc/ssl/certs
-       HOOKSDIR=/etc/ca-certificates/update.d
-      +ROOT=""
-      +RELPATH=""
-
-       while [ $# -gt 0 ];
-       do
-      @@ -67,13 +69,25 @@
-             LOCALCERTSDIR="$1/${LOCALCERTSDIR}"
-             ETCCERTSDIR="$1/${ETCCERTSDIR}"
-             HOOKSDIR="$1/${HOOKSDIR}";;
-      +    --root|-r)
-      +      shift
-      +      # Needed as c_rehash wants to read the files directly.
-      +      # This gets us from $CERTSCONF to $CERTSDIR.
-      +      RELPATH="../../.."
-      +      ROOT=$(readlink -f "$1");;
-           --help|-h|*)
-      -      echo "$0: [--verbose] [--fresh]"
-      +      echo "$0: [--verbose] [--fresh] [--root <dir>]"
-             exit;;
-         esac
-         shift
-       done
-
-      +CERTSCONF="$ROOT$CERTSCONF"
-      +CERTSDIR="$ROOT$CERTSDIR"
-      +LOCALCERTSDIR="$ROOT$LOCALCERTSDIR"
-      +ETCCERTSDIR="$ROOT$ETCCERTSDIR"
-      +HOOKSDIR="$ROOT$HOOKSDIR"
-      +
-       if [ ! -s "$CERTSCONF" ]
-       then
-         fresh=1
-      @@ -102,7 +116,7 @@
-                                                         -e 's/,/_/g').pem"
-         if ! test -e "$PEM" || [ "$(readlink "$PEM")" != "$CERT" ]
-         then
-      -    ln -sf "$CERT" "$PEM"
-      +    ln -sf "${RELPATH}${CERT#$ROOT}" "$PEM"
-           echo "+$PEM" >> "$ADDED"
-         fi
-         # Add trailing newline to certificate, if it is missing (#635570)
-    GENTOO_CA_CERT_HEREDOC
-
-    system 'patch -p1 -i ca-certificates-20150426-root.patch'
-
-    system "sed -i 's,/usr/share/ca-certificates,#{CREW_PREFIX}/share/ca-certificates,g' \
-      Makefile sbin/update-ca-certificates"
-    system "sed -i 's,CERTSCONF=/etc/ca-certificates.conf,CERTSCONF=#{CREW_PREFIX}/etc/ca-certificates.conf,g' \
-      sbin/update-ca-certificates"
-    system "sed -i 's,ETCCERTSDIR=/etc/ssl/certs,ETCCERTSDIR=#{CREW_PREFIX}/etc/ssl/certs,g' \
-      sbin/update-ca-certificates"
-    system "sed -i 's,HOOKSDIR=/etc/ca-certificates/update.d,HOOKSDIR=#{CREW_PREFIX}/etc/ca-certificates/update.d,g' \
-      sbin/update-ca-certificates"
-    system "sed -i '/restorecon/d' sbin/update-ca-certificates"
-    system "sed -i 's,/usr/sbin,#{CREW_PREFIX}/bin,g' sbin/Makefile"
+    system "sed -i 's,LOCALCERTSDIR \"/usr/local/share/ca-certificates/\",LOCALCERTSDIR \"/usr/local/share/local-ca-certificates/\",' update-ca.c"
+    %w[
+      etc
+      usr/share
+    ].each do |dir|
+      %w[
+        c_rehash.c
+        Makefile
+        update-ca.c
+        update-ca-certificates.8
+      ].each do |file|
+        system "sed -i 's,/#{dir},#{CREW_PREFIX}/#{dir.split('/').last},g' #{file}"
+      end
+    end
+    %w[
+      Makefile
+      update-ca.c
+    ].each do |file|
+      system "sed -i 's,/usr/bin,#{CREW_PREFIX}/bin,g' #{file}"
+      system "sed -i 's,/usr/sbin,#{CREW_PREFIX}/bin,g' #{file}"
+    end
   end
 
   def self.build
+    system 'make update'
     system 'make'
-    system 'gcc -o alpine_c_rehash c_rehash.c -lcrypto'
   end
 
   def self.install
-    FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/etc/ssl/certs/")
-    FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/bin")
-    FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/share/ca-certificates/")
+    %w[
+      /bin
+      /etc/ca-certificates/update.d
+      /etc/ssl/certs/
+      /share/ca-certificates/mozilla
+    ].each do |dir|
+      FileUtils.mkdir_p("#{CREW_DEST_PREFIX}#{dir}")
+    end
     system "make DESTDIR=#{CREW_DEST_DIR} install"
-    # We only use this to create the cert hashes during the install.
-    # This way we don't have any runtime dependencies on it.
-    # FileUtils.install 'alpine_c_rehash', "#{CREW_DEST_PREFIX}/bin/alpine_c_rehash"
+    # We dont need the binaries after the build.
+    FileUtils.rm_rf "#{CREW_DEST_PREFIX}/bin/c_rehash"
+    FileUtils.rm_rf "#{CREW_DEST_PREFIX}/bin/update-ca-certificates"
+    FileUtils.rm_rf CREW_DEST_MAN_PREFIX
 
+    Dir.chdir "#{CREW_DEST_PREFIX}/share/ca-certificates/" do
+      @certs = Dir['mozilla/*.crt'].join("\n")
+    end
     File.write "#{CREW_DEST_PREFIX}/etc/ca-certificates.conf", <<~CA_CERT_CONF_HEREDOC
-      # Automatically generated by Chromebrew package #{Module.nesting.first}
-      # from ca-certificates-debian-#{version.split('-').first}
-      # and from https://hg.mozilla.org/releases/mozilla-beta/rev/#{@mozilla_git_tag}
+      # Automatically generated by Chromebrew package #{name}.
+      # from NSS VERSION: #{`grep NSS_VERSION Makefile`.chomp.split[2]}
       # #{Time.now}
       # Do not edit.
+      #{@certs}
+
     CA_CERT_CONF_HEREDOC
 
     File.write '08-ca-certificates', <<~CA_CERT_ENVD_HEREDOC
@@ -119,21 +84,11 @@ class Ca_certificates < Package
       SSL_CERT_FILE="${CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt"
     CA_CERT_ENVD_HEREDOC
     FileUtils.install '08-ca-certificates', "#{CREW_DEST_PREFIX}/etc/env.d/08-ca-certificates", mode: 0o644
-
-    system "sbin/update-ca-certificates --hooksdir '' --root #{CREW_DEST_DIR} --certsconf #{CREW_PREFIX}/etc/ca-certificates.conf"
     Dir.glob("#{CREW_DEST_PREFIX}/share/ca-certificates/mozilla/*.crt") do |cert_file|
       cert_basename = File.basename(cert_file, '.crt')
-      FileUtils.ln_sf "#{CREW_PREFIX}/share/ca-certificates/mozilla/#{cert_basename}.crt",
-                      "#{CREW_DEST_PREFIX}/etc/ssl/certs/#{cert_basename}.pem"
+      FileUtils.install "#{CREW_DEST_PREFIX}/share/ca-certificates/mozilla/#{cert_basename}.crt", "#{CREW_DEST_PREFIX}/etc/ssl/certs/#{cert_basename}.pem", mode: 0o644
     end
-    File.open("#{CREW_DEST_PREFIX}/etc/ssl/certs/ca-certificates.crt", 'a') do |mergedcerts|
-      Dir["#{CREW_DEST_PREFIX}/share/ca-certificates/**/*.{crt}"] do |cert_file|
-        File.foreach(cert_file) do |li|
-          mergedcerts.write(li)
-        end
-      end
-    end
-    FileUtils.ln_sf "#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt", "#{CREW_DEST_PREFIX}/etc/ssl/cert.pem"
-    system "./alpine_c_rehash #{CREW_DEST_PREFIX}/etc/ssl/certs"
+    FileUtils.install 'cert.pem', "#{CREW_DEST_PREFIX}/etc/ssl/certs/ca-certificates.crt", mode: 0o644
+    system "./c_rehash #{CREW_DEST_PREFIX}/etc/ssl/certs"
   end
 end

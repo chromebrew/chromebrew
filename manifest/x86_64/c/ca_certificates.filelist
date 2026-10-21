@@ -1,8 +1,6 @@
-# Total size: 369603
-/usr/local/bin/update-ca-certificates
+# Total size: 548592
 /usr/local/etc/ca-certificates.conf
 /usr/local/etc/env.d/08-ca-certificates
-/usr/local/etc/ssl/cert.pem
 /usr/local/etc/ssl/certs/002c0b4f.0
 /usr/local/etc/ssl/certs/0179095f.0
 /usr/local/etc/ssl/certs/062cdee6.0
@@ -16,7 +14,6 @@
 /usr/local/etc/ssl/certs/0f5dc4f3.0
 /usr/local/etc/ssl/certs/0f6fa695.0
 /usr/local/etc/ssl/certs/1001acf7.0
-/usr/local/etc/ssl/certs/14bc7599.0
 /usr/local/etc/ssl/certs/1cef98f5.0
 /usr/local/etc/ssl/certs/1d3472b9.0
 /usr/local/etc/ssl/certs/1e08bfd1.0
@@ -32,10 +29,8 @@
 /usr/local/etc/ssl/certs/3fb36b73.0
 /usr/local/etc/ssl/certs/40193066.0
 /usr/local/etc/ssl/certs/4042bcee.0
-/usr/local/etc/ssl/certs/406c9bb1.0
 /usr/local/etc/ssl/certs/422cf4bf.0
 /usr/local/etc/ssl/certs/48bec511.0
-/usr/local/etc/ssl/certs/4b718d9b.0
 /usr/local/etc/ssl/certs/4bfab552.0
 /usr/local/etc/ssl/certs/5443e9e3.0
 /usr/local/etc/ssl/certs/54657681.0
@@ -228,9 +223,6 @@
 /usr/local/etc/ssl/certs/ed858448.0
 /usr/local/etc/ssl/certs/eed8c118.0
 /usr/local/etc/ssl/certs/ef954a4e.0
-/usr/local/etc/ssl/certs/emSign_ECC_Root_CA_-_C3.pem
-/usr/local/etc/ssl/certs/emSign_ECC_Root_CA_-_G3.pem
-/usr/local/etc/ssl/certs/emSign_Root_CA_-_C1.pem
 /usr/local/etc/ssl/certs/emSign_Root_CA_-_G1.pem
 /usr/local/etc/ssl/certs/f0c70a8d.0
 /usr/local/etc/ssl/certs/f30dd6ad.0
@@ -361,9 +353,6 @@
 /usr/local/share/ca-certificates/mozilla/certSIGN_Root_CA_G2.crt
 /usr/local/share/ca-certificates/mozilla/e-Szigno_Root_CA_2017.crt
 /usr/local/share/ca-certificates/mozilla/e-Szigno_TLS_Root_CA_2023.crt
-/usr/local/share/ca-certificates/mozilla/emSign_ECC_Root_CA_-_C3.crt
-/usr/local/share/ca-certificates/mozilla/emSign_ECC_Root_CA_-_G3.crt
-/usr/local/share/ca-certificates/mozilla/emSign_Root_CA_-_C1.crt
 /usr/local/share/ca-certificates/mozilla/emSign_Root_CA_-_G1.crt
 /usr/local/share/ca-certificates/mozilla/vTrus_ECC_Root_CA.crt
 /usr/local/share/ca-certificates/mozilla/vTrus_Root_CA.crt
