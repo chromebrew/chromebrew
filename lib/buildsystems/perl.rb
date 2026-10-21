@@ -21,6 +21,7 @@ class PERL < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system "find #{CREW_DEST_DIR} -name .packlist -o -name perllocal.pod -delete"
     @perl_install_extras&.call
   end
 end
