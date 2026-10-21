@@ -3,17 +3,17 @@ require 'package'
 class Php85 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'https://www.php.net/'
-  version '8.5.6'
+  version '8.5.12'
   license 'PHP-3.01'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.php.net/distributions/php-#{version}.tar.xz"
-  source_sha256 '39cb6e4acd679b574d3d3276f148213e935fc25f90403eb84fb1b836a806ef1e'
+  source_sha256 '08bc2eba2a588654ade1357174aa646b761556c862dda0678345ee29ed481209'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1e2bf120495c6b31767120c266d67189d11d8774b5e2c76bc7f29e31947cc8dc',
-     armv7l: '1e2bf120495c6b31767120c266d67189d11d8774b5e2c76bc7f29e31947cc8dc',
-     x86_64: 'd22781578eb4c3eb21144ea51bcd6ba771338d3c94e7207c66fef4bb150ae6c2'
+    aarch64: '27ad8d5f616633ac4f98070ecfe91b0d6a7d23df09f1d18561f4bc9b992a3abb',
+     armv7l: '27ad8d5f616633ac4f98070ecfe91b0d6a7d23df09f1d18561f4bc9b992a3abb',
+     x86_64: '0189076e918c8e5ce48cd4455f895d501224367102b067f8b29fbed494f5a491'
   })
 
   depends_on 'aspell_en' => :build
@@ -25,6 +25,7 @@ class Php85 < Package
   depends_on 'gcc_lib' => :executable
   depends_on 'gdbm' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gmp' => :executable
   depends_on 'icu4c' => :executable
   depends_on 'jq' => :build
