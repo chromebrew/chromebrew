@@ -1,10 +1,10 @@
-# Total size: 362511
+# Total size: 363626
 /usr/local/include/unibilium.h
 /usr/local/lib/libunibilium.a
 /usr/local/lib/libunibilium.la
 /usr/local/lib/libunibilium.so
 /usr/local/lib/libunibilium.so.4
-/usr/local/lib/libunibilium.so.4.0.1
+/usr/local/lib/libunibilium.so.4.0.2
 /usr/local/lib/pkgconfig/unibilium.pc
 /usr/local/share/man/man3/unibi_add_ext_bool.3.zst
 /usr/local/share/man/man3/unibi_add_ext_num.3.zst
