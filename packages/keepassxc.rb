@@ -3,12 +3,12 @@ require 'package'
 class Keepassxc < Package
   description 'KeePass Cross-Platform Community Edition, the free, open source, light-weight and easy-to-use password manager.'
   homepage 'https://keepassxc.org/'
-  version '2.7.12'
+  version '2.8.0'
   license 'GPL-2 or GPL-3'
   compatibility 'x86_64'
   min_glibc '2.28'
   source_url "https://github.com/keepassxreboot/keepassxc/releases/download/#{version}/KeePassXC-#{version}-x86_64.AppImage"
-  source_sha256 '564fe8b751b9ef7aa057e4d3d0b2878db24eaa0f6b1c855c82e699ab0913ae49'
+  source_sha256 'b52889fd627ae7a1c609b91b2526ccd5d847ec6707ac6eb634553186dee4f705'
 
   no_compile_needed
 
