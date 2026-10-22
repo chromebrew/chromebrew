@@ -3,22 +3,23 @@ require 'package'
 class Unrar < Package
   description 'UnRAR is a powerful archive extractor.'
   homepage 'https://www.rarlab.com/'
-  version '7.0.9'
+  version '7.3.1'
   license 'unRAR'
   compatibility 'all'
-  source_url 'https://www.rarlab.com/rar/unrarsrc-7.0.9.tar.gz'
-  source_sha256 '505c13f9e4c54c01546f2e29b2fcc2d7fabc856a060b81e5cdfe6012a9198326'
+  source_url "https://www.rarlab.com/rar/unrarsrc-#{version}.tar.gz"
+  source_sha256 '634900842a3737d9cc15bbcc71d4c74cc713437e0bca296a573424fe5f2660ab'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f6af65b842dd3eaf120f6755ec8675dad7176125397bc20740bc5d983ed5d5d3',
-     armv7l: 'f6af65b842dd3eaf120f6755ec8675dad7176125397bc20740bc5d983ed5d5d3',
-       i686: 'ed4d4a78f65259128efcb55053f13af58c03604b024335a85027d19c60c2feb6',
-     x86_64: '445e829e51aadc90ebddca48301c12dca0f7d23ea0bc0a2f266a376311bd90cc'
+    aarch64: '0aead6c12bd67808524230208ff15d4bc42d7ed1ea9be3afcda04d472c60f1d1',
+     armv7l: '0aead6c12bd67808524230208ff15d4bc42d7ed1ea9be3afcda04d472c60f1d1',
+       i686: 'b7ff7c3e46bb451ea65c2040266c899baa6f3ac20dbcb7534a60f5515b76c90b',
+     x86_64: 'c0b85473858287fc4cf473fd0afea705607d3355ff7acceec42a7e38628462c2'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
 
   def self.build
     # force to compile in sequential since unrar Makefile doesn't work in parallel
