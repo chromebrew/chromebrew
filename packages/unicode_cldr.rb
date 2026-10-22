@@ -3,7 +3,7 @@ require 'package'
 class Unicode_cldr < Package
   description 'Unicode Common Locale Data Repository'
   homepage 'https://cldr.unicode.org/'
-  version '48-2'
+  version '49'
   license 'unicode'
   compatibility 'all'
   source_url 'https://github.com/unicode-org/cldr.git'

@@ -1,4 +1,4 @@
-# Total size: 39834978
+# Total size: 38991793
 /usr/local/bin/gh
 /usr/local/share/man/man1/gh-agent-task-create.1.zst
 /usr/local/share/man/man1/gh-agent-task-list.1.zst
@@ -76,6 +76,13 @@
 /usr/local/share/man/man1/gh-gpg-key-delete.1.zst
 /usr/local/share/man/man1/gh-gpg-key-list.1.zst
 /usr/local/share/man/man1/gh-gpg-key.1.zst
+/usr/local/share/man/man1/gh-issue-artifact-create.1.zst
+/usr/local/share/man/man1/gh-issue-artifact-delete.1.zst
+/usr/local/share/man/man1/gh-issue-artifact-download.1.zst
+/usr/local/share/man/man1/gh-issue-artifact-edit.1.zst
+/usr/local/share/man/man1/gh-issue-artifact-list.1.zst
+/usr/local/share/man/man1/gh-issue-artifact-view.1.zst
+/usr/local/share/man/man1/gh-issue-artifact.1.zst
 /usr/local/share/man/man1/gh-issue-close.1.zst
 /usr/local/share/man/man1/gh-issue-comment.1.zst
 /usr/local/share/man/man1/gh-issue-create.1.zst
