@@ -1,0 +1,3 @@
+#!/bin/bash
+unrtf -h 2>&1
+unrtf --version 2>&1
