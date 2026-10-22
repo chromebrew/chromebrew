@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Vifm < Autotools
   description 'Vifm is an ncurses based file manager with vi like keybindings/modes/options/commands/configuration, which also borrows some useful ideas from mutt.'
   homepage 'https://vifm.info/'
-  version '0.14.4'
+  version '0.14.5'
   license 'GPL-2'
   compatibility 'all'
   source_url "https://downloads.sourceforge.net/project/vifm/vifm/vifm-#{version}.tar.bz2"
-  source_sha256 '40bc32ec10d829ada3d0297d33cd4f302c520bb431287d544fc0a05ae45fdb1b'
+  source_sha256 '5de33fd6637ce91cdce162358ec393f6fe5e9734deb1833ea16776d619960422'
   binary_compression 'tar.zst'
 
   binary_sha256({
