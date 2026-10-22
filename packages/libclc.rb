@@ -19,12 +19,6 @@ class Libclc < Package
      x86_64: 'f0c293b1a897ee1e4313801984f4e7bf311572f079e2bf944473dc013351749f'
   })
 
-  binary_sha256({
-    aarch64: '9233beb297c67b850dbac24e35b28838f66ba757e91cb66911ccc9206bd7951e',
-     armv7l: '9233beb297c67b850dbac24e35b28838f66ba757e91cb66911ccc9206bd7951e',
-     x86_64: 'f0c293b1a897ee1e4313801984f4e7bf311572f079e2bf944473dc013351749f'
-  })
-
   depends_on 'llvm_dev' => :build
   depends_on 'python3' => :build
   depends_on 'spirv_llvm_translator' => :build
