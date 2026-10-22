@@ -1,14 +1,14 @@
-# Total size: 7789267
+# Total size: 7854283
 /usr/local/bin/virtualenv
-/usr/local/lib/python3.15/site-packages/virtualenv-21.14.11.dist-info/INSTALLER
-/usr/local/lib/python3.15/site-packages/virtualenv-21.14.11.dist-info/METADATA
-/usr/local/lib/python3.15/site-packages/virtualenv-21.14.11.dist-info/RECORD
-/usr/local/lib/python3.15/site-packages/virtualenv-21.14.11.dist-info/REQUESTED
-/usr/local/lib/python3.15/site-packages/virtualenv-21.14.11.dist-info/WHEEL
-/usr/local/lib/python3.15/site-packages/virtualenv-21.14.11.dist-info/entry_points.txt
-/usr/local/lib/python3.15/site-packages/virtualenv-21.14.11.dist-info/licenses/LICENSE
-/usr/local/lib/python3.15/site-packages/virtualenv-21.14.11.dist-info/licenses/THIRD-PARTY-NOTICES.md
-/usr/local/lib/python3.15/site-packages/virtualenv-21.14.11.dist-info/sboms/virtualenv.cdx.json
+/usr/local/lib/python3.15/site-packages/virtualenv-21.14.12.dist-info/INSTALLER
+/usr/local/lib/python3.15/site-packages/virtualenv-21.14.12.dist-info/METADATA
+/usr/local/lib/python3.15/site-packages/virtualenv-21.14.12.dist-info/RECORD
+/usr/local/lib/python3.15/site-packages/virtualenv-21.14.12.dist-info/REQUESTED
+/usr/local/lib/python3.15/site-packages/virtualenv-21.14.12.dist-info/WHEEL
+/usr/local/lib/python3.15/site-packages/virtualenv-21.14.12.dist-info/entry_points.txt
+/usr/local/lib/python3.15/site-packages/virtualenv-21.14.12.dist-info/licenses/LICENSE
+/usr/local/lib/python3.15/site-packages/virtualenv-21.14.12.dist-info/licenses/THIRD-PARTY-NOTICES.md
+/usr/local/lib/python3.15/site-packages/virtualenv-21.14.12.dist-info/sboms/virtualenv.cdx.json
 /usr/local/lib/python3.15/site-packages/virtualenv/__init__.py
 /usr/local/lib/python3.15/site-packages/virtualenv/__main__.py
 /usr/local/lib/python3.15/site-packages/virtualenv/__pycache__/__init__.cpython-315.pyc
@@ -184,9 +184,9 @@
 /usr/local/lib/python3.15/site-packages/virtualenv/seed/wheels/embed/__init__.py
 /usr/local/lib/python3.15/site-packages/virtualenv/seed/wheels/embed/__pycache__/__init__.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/virtualenv/seed/wheels/embed/pip-26.0.1-py3-none-any.whl
-/usr/local/lib/python3.15/site-packages/virtualenv/seed/wheels/embed/pip-26.2.1-py3-none-any.whl
+/usr/local/lib/python3.15/site-packages/virtualenv/seed/wheels/embed/pip-26.2.2-py3-none-any.whl
 /usr/local/lib/python3.15/site-packages/virtualenv/seed/wheels/embed/setuptools-82.0.1-py3-none-any.whl
-/usr/local/lib/python3.15/site-packages/virtualenv/seed/wheels/embed/setuptools-84.0.0-py3-none-any.whl
+/usr/local/lib/python3.15/site-packages/virtualenv/seed/wheels/embed/setuptools-84.2.1-py3-none-any.whl
 /usr/local/lib/python3.15/site-packages/virtualenv/seed/wheels/periodic_update.py
 /usr/local/lib/python3.15/site-packages/virtualenv/seed/wheels/util.py
 /usr/local/lib/python3.15/site-packages/virtualenv/util/__init__.py
