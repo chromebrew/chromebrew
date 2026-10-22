@@ -1,4 +1,4 @@
-# Total size: 7994670
+# Total size: 7928558
 /usr/local/bin/arpaname
 /usr/local/bin/delv
 /usr/local/bin/dig
@@ -28,11 +28,11 @@
 /usr/local/lib/bind/filter-a.so
 /usr/local/lib/bind/filter-aaaa.so
 /usr/local/lib/bind/synthrecord.so
-/usr/local/lib/libdns-9.21.26.so
-/usr/local/lib/libisc-9.21.26.so
-/usr/local/lib/libisccc-9.21.26.so
-/usr/local/lib/libisccfg-9.21.26.so
-/usr/local/lib/libns-9.21.26.so
+/usr/local/lib/libdns-9.21.27.so
+/usr/local/lib/libisc-9.21.27.so
+/usr/local/lib/libisccc-9.21.27.so
+/usr/local/lib/libisccfg-9.21.27.so
+/usr/local/lib/libns-9.21.27.so
 /usr/local/sbin/ddns-confgen
 /usr/local/sbin/named
 /usr/local/sbin/rndc
