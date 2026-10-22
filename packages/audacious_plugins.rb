@@ -11,9 +11,9 @@ class Audacious_plugins < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f60e95c190df4badde9f8957607b6e368274adc175dfcded30d7df083f06ba1e',
-     armv7l: 'f60e95c190df4badde9f8957607b6e368274adc175dfcded30d7df083f06ba1e',
-     x86_64: 'bdf6ba5ef9442bfcd907b6493b0ec5f68f45e89dd13d4e2901366e8cc0457eb7'
+    aarch64: 'f51f7ef58f04b612af1fc8051f5901a82fa98ec039dd47b15ad3430f4a6fd174',
+     armv7l: 'f51f7ef58f04b612af1fc8051f5901a82fa98ec039dd47b15ad3430f4a6fd174',
+     x86_64: 'e81dd6004dd313088155383a1730f087f1b1e9fdac2e052d3d6c70d1e8dc39cc'
   })
 
   depends_on 'alsa_lib' => :library
