@@ -20,6 +20,7 @@ class Daq < Autotools
   # depends_on 'cmocka' => :build
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'libpcap' => :library
 
   # https://github.com/snort3/libdaq/issues/30
