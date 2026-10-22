@@ -3,11 +3,11 @@ require 'buildsystems/meson'
 class Audacious_plugins < Meson
   description 'Audacious is an open source audio player.'
   homepage 'https://github.com/audacious-media-player/audacious-plugins'
-  version '4.6'
+  version '4.6.2'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://distfiles.audacious-media-player.org/audacious-plugins-#{version}.tar.bz2"
-  source_sha256 'ce708bca0194d3a1b2b8a89a2892e1c7798f374593563fb21c4c64b24ab8d83a'
+  source_sha256 'c295c65bdaae71775b4fa9eb206799c627b383c4f45444d637c714196daf8077'
   binary_compression 'tar.zst'
 
   binary_sha256({
