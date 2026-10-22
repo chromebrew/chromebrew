@@ -10,10 +10,10 @@ class Sphinx < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4af635d39e5204ea1f50a7c9835e8636ad0f6761a84931cdd5b9d7acf7540478',
-     armv7l: '4af635d39e5204ea1f50a7c9835e8636ad0f6761a84931cdd5b9d7acf7540478',
-       i686: '5d2c0a4914d0efd89a1949d54a47983e28ab3dcd628852c3529a814c98a35224',
-     x86_64: '84ee3a468ddf8ca613d92f0942ed4caec05360beb674d54ea9b8c3e7aae9dc08'
+    aarch64: 'f883d18e5ac1e2c8912d2e7ccde0468c7a7bf9e3b599475ac0266f2b8b2f225e',
+     armv7l: 'f883d18e5ac1e2c8912d2e7ccde0468c7a7bf9e3b599475ac0266f2b8b2f225e',
+       i686: '060fd17d295f208b409eb53507ce7e7d4e43c95afe1528eb18270df740a9c1cc',
+     x86_64: '3cd6511ef3ccec94471e32fb3abec177502cafc7914cc504d92140e1d09b9dc6'
   })
 
   depends_on 'py3_alabaster' # R
