@@ -11,10 +11,10 @@ class Brotli < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd0889e7016532dd4a56b7ccfcac1df8e8e8def36eff65c9ff3a901d530075c3c',
-     armv7l: 'd0889e7016532dd4a56b7ccfcac1df8e8e8def36eff65c9ff3a901d530075c3c',
-       i686: '4106aa361fc1f3e5493bddefdb3df88b554d7783a6589ad872025fbce78472b9',
-     x86_64: '0183cd16f1c20c73bbbad805801e4470bdf734759f5c376efa21cfa9b2e761f9'
+    aarch64: '83fd6ddf7bbe71349a2889d988eeaa2625997bc2cca245f6df7732ce51dcf929',
+     armv7l: '83fd6ddf7bbe71349a2889d988eeaa2625997bc2cca245f6df7732ce51dcf929',
+       i686: '766c0c07ff58427ccc66e213eb45874fad7bd210f8847275a09063da74f7c259',
+     x86_64: 'd8a76f422b8b6835845387cdf4444dfb1b3b8a943a8a79a47f882debe1c7a6df'
   })
 
   depends_on 'glibc' => :library
