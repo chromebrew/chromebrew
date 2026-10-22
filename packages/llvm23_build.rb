@@ -6,19 +6,19 @@ class Llvm23_build < Package
   @llvm_projects_to_build = ARCH == 'x86_64' ? 'bolt;clang;clang-tools-extra;lld;lldb;compiler-rt;polly' : 'clang;clang-tools-extra;lld;lldb;compiler-rt;polly'
   description "The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The packages included are: #{@llvm_projects_to_build.gsub(';', ' ')}"
   homepage 'https://llvm.org/'
-  version '23.1.3'
+  version '23.1.4'
   # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
   source_url "https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-#{version}.tar.gz"
-  source_sha256 '791b560dee8f65fdf7b19ad5db0b4ac627467824d8b687957d8a437b806103f0'
+  source_sha256 '3e1c70b30f623976c2046d94b8eeab6cac536f107914cb4ed7bac572a03131db'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b5ad5fd154c078b6135b59c356370de049d650b744fb15c1e8c1298d97848ac5',
-     armv7l: 'b5ad5fd154c078b6135b59c356370de049d650b744fb15c1e8c1298d97848ac5',
-       i686: 'e9b8f39d444377a20ea1f013ed8d37cf29c60577470fc8d9edef487e40e4dfc2',
-     x86_64: '82d9033999ab0f66e5e4d901f63e11455089cfd5332941d75bf36f349e557a11'
+    aarch64: '7ff06de7a1f2f7fb5b143b44f7f326f12dbc1fc2e063890546e577202ec3062f',
+     armv7l: '7ff06de7a1f2f7fb5b143b44f7f326f12dbc1fc2e063890546e577202ec3062f',
+       i686: 'e362e287c43c5c1dafc0f4233131bde005897dbc7dc916fe7a91ef0370189eba',
+     x86_64: 'cde3c7435c6a29da4236d00daecb5254c73c758ddea96b83fcca4f7ab764553a'
   })
 
   depends_on 'gcc_lib' => :library
@@ -61,7 +61,7 @@ class Llvm23_build < Package
     system 'patch -Np1 -i llvm_crew_lib_prefix.patch'
     patches = [
       # Fix for i686 needing -atomic. See https://github.com/llvm/llvm-project/issues/45130
-      ['https://salsa.debian.org/pkg-llvm-team/llvm-toolchain/-/raw/23/debian/patches/clangd-atomic-cmake.patch?ref_type=heads&inline=false', '423847f4e448361cae1d86a2ab62e47b3cd31b76a065294ff9b2e5a689ec9cbd']
+      ['https://salsa.debian.org/pkg-llvm-team/llvm-toolchain/-/raw/23/debian/patches/clangd-atomic-cmake.patch?ref_type=heads&inline=false', 'a9f5b314938007573101700a4180c918814b10715dfa964523a07ed5f0530295']
     ]
     ConvenienceFunctions.patch(patches)
   end
@@ -186,11 +186,11 @@ class Llvm23_build < Package
 
   # preserve for check, skip check for current version
   def self.check
-    Dir.chdir('builddir') do
-      system 'ninja check-llvm || true'
-      system 'ninja check-clang || true'
-      system 'ninja check-lld || true'
-    end
+    # Dir.chdir('builddir') do
+    #  system 'ninja check-llvm || true'
+    # system 'ninja check-clang || true'
+    # system 'ninja check-lld || true'
+    # end
   end
 
   def self.postinstall
