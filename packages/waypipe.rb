@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Waypipe < Meson
   description 'A proxy for Wayland protocol applications.'
   homepage 'https://gitlab.freedesktop.org/mstoeckl/waypipe'
-  version '0.11.2'
+  version '0.11.3'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/mstoeckl/waypipe.git'
@@ -11,9 +11,9 @@ class Waypipe < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e7d11d37f0a09232d2dd77e8bb6a23fc2ff5a147e89aae1cce3c515227ef3b54',
-     armv7l: 'e7d11d37f0a09232d2dd77e8bb6a23fc2ff5a147e89aae1cce3c515227ef3b54',
-     x86_64: '5030328ae4e2754d99754dfd759cd09dde0092d1ea797dfdfe4a49e7c853c287'
+    aarch64: 'a508d4c98ad12f81c73b4af692eac2ab251a154d4c969e92353355d08a574be8',
+     armv7l: 'a508d4c98ad12f81c73b4af692eac2ab251a154d4c969e92353355d08a574be8',
+     x86_64: 'aeee0548bb6a9164b37a19ef63621772c4785bc6bb5527f56ec6e5b28eb47047'
   })
 
   depends_on 'gcc_lib' => :executable
