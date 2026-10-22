@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Daq < Autotools
   description 'Data Acquisition library, for packet I/O.'
   homepage 'https://www.snort.org'
-  version '3.0.27'
+  version '3.0.28'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/snort3/libdaq.git'
