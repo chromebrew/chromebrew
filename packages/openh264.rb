@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Openh264 < Meson
   description 'H.264 encoder and decoder'
   homepage 'https://www.openh264.org/'
-  version '2.6.0'
+  version '2.7.0'
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/cisco/openh264.git'
