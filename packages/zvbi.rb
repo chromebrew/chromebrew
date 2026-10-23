@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Zvbi < Autotools
   description 'VBI capture and decoding library.'
   homepage 'https://github.com/zapping-vbi/zvbi'
-  version '0.2.45'
+  version '0.2.46'
   license 'GPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/zapping-vbi/zvbi.git'
