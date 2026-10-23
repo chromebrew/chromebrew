@@ -3,11 +3,11 @@ require 'buildsystems/meson'
 class Usbutils < Meson
   description 'Tools for examining usb devices'
   homepage 'https://linux-usb.sourceforge.net/'
-  version '019'
+  version '020'
   license 'GPL-2'
   compatibility 'all'
   source_url "https://mirrors.kernel.org/pub/linux/utils/usb/usbutils/usbutils-#{version}.tar.xz"
-  source_sha256 '659f40c440e31ba865c52c818a33d3ba6a97349e3353f8b1985179cb2aa71ec5'
+  source_sha256 '20287d68fcd9ebb50a05ba0645a4af7583bd8dfc7307215ba121e4bc6d057aa1'
   binary_compression 'tar.zst'
 
   binary_sha256({
