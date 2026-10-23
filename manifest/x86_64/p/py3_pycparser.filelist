@@ -1,11 +1,11 @@
-# Total size: 504314
-/usr/local/lib/python3.15/site-packages/pycparser-3.11.dist-info/INSTALLER
-/usr/local/lib/python3.15/site-packages/pycparser-3.11.dist-info/METADATA
-/usr/local/lib/python3.15/site-packages/pycparser-3.11.dist-info/RECORD
-/usr/local/lib/python3.15/site-packages/pycparser-3.11.dist-info/REQUESTED
-/usr/local/lib/python3.15/site-packages/pycparser-3.11.dist-info/WHEEL
-/usr/local/lib/python3.15/site-packages/pycparser-3.11.dist-info/licenses/LICENSE
-/usr/local/lib/python3.15/site-packages/pycparser-3.11.dist-info/top_level.txt
+# Total size: 612116
+/usr/local/lib/python3.15/site-packages/pycparser-3.12.dist-info/INSTALLER
+/usr/local/lib/python3.15/site-packages/pycparser-3.12.dist-info/METADATA
+/usr/local/lib/python3.15/site-packages/pycparser-3.12.dist-info/RECORD
+/usr/local/lib/python3.15/site-packages/pycparser-3.12.dist-info/REQUESTED
+/usr/local/lib/python3.15/site-packages/pycparser-3.12.dist-info/WHEEL
+/usr/local/lib/python3.15/site-packages/pycparser-3.12.dist-info/licenses/LICENSE
+/usr/local/lib/python3.15/site-packages/pycparser-3.12.dist-info/top_level.txt
 /usr/local/lib/python3.15/site-packages/pycparser/__init__.py
 /usr/local/lib/python3.15/site-packages/pycparser/__pycache__/__init__.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/pycparser/__pycache__/_ast_gen.cpython-315.pyc
