@@ -11,7 +11,7 @@ class Perl_percona_toolkit < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '85cdefc4310580d904e4af81274d1d5a195ef34dd05260331a413072230f1fe2'
+     x86_64: '2fe118ac761a8e7ff3f7cfda2152c5b97ca81167c16d14ab777e2b66f1e28e69'
   })
 
   depends_on 'glibc' => :executable
