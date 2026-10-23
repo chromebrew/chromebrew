@@ -11,18 +11,15 @@ class Usbutils < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1fe75c769e0ca099a22c80412ddb1502b342e330ac17111a5de441f507027a86',
-     armv7l: '1fe75c769e0ca099a22c80412ddb1502b342e330ac17111a5de441f507027a86',
-       i686: 'bc1dcf49696c72b0166130339f72193bae79a0e9d280c8d3a4a6bfed519c4f6d',
-     x86_64: 'fe3326d1d91b055cb8985d04a424d6b31db45b7ad16927097aee4263f36064b7'
+    aarch64: 'd971440964123021c75cd24f42004f6edea5f3d42eb94dfdcc373b4f041af4b7',
+     armv7l: 'd971440964123021c75cd24f42004f6edea5f3d42eb94dfdcc373b4f041af4b7',
+       i686: '0066e8fc18895e2c1aaa997b44244ad1d88245e7922ae3987ab819828af64c0b',
+     x86_64: '455b48b745992cd780d2f1e0a217f280e603562ce79979fcc41f083d6ed4e9bc'
   })
 
   depends_on 'eudev' => :executable
-  depends_on 'eudev' => :library
   depends_on 'glibc' => :executable
-  depends_on 'glibc' => :library
   depends_on 'libusb' => :executable
-  depends_on 'libusb' => :library
 
   meson_install_extras do
     downloader 'http://www.linux-usb.org/usb.ids',
