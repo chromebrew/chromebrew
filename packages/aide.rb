@@ -11,10 +11,10 @@ class Aide < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4194c37b56379b5b4508bc62427cc34255bd7110c117078c60705f494a870dfa',
-     armv7l: '4194c37b56379b5b4508bc62427cc34255bd7110c117078c60705f494a870dfa',
-       i686: '80a8d2809ba29ee8f3f296e214236da765faa15c319e8518ef73aeff76286a5a',
-     x86_64: 'e8a8da4e20f77582a7cd5072371f95a40afd8c1ed4d7f62c59519034c6ba0f45'
+    aarch64: 'e62f4ba66ce6bbd571013e58acf77736fe68bf656c263b700cf870252b0190d4',
+     armv7l: 'e62f4ba66ce6bbd571013e58acf77736fe68bf656c263b700cf870252b0190d4',
+       i686: '09e1f7e7ffed9aa059dc44f6fd00edec3ccddaa473dba47aea067f1701b0ecdd',
+     x86_64: '83256e07cbe70eba3881198d2566cff38eefed979c786f4a8f64fed59aa088cb'
   })
 
   depends_on 'autoconf_archive' => :build
