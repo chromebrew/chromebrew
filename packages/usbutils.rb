@@ -19,6 +19,7 @@ class Usbutils < Meson
 
   depends_on 'eudev' => :executable
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'libusb' => :executable
 
   meson_install_extras do
