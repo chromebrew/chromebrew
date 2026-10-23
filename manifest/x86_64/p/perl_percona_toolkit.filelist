@@ -1,4 +1,4 @@
-# Total size: 120476124
+# Total size: 152230865
 /usr/local/bin/pt-align
 /usr/local/bin/pt-archiver
 /usr/local/bin/pt-config-diff
@@ -30,7 +30,6 @@
 /usr/local/bin/pt-secure-collect
 /usr/local/bin/pt-show-grants
 /usr/local/bin/pt-sift
-/usr/local/bin/pt-slave-delay
 /usr/local/bin/pt-slave-find
 /usr/local/bin/pt-slave-restart
 /usr/local/bin/pt-stalk
@@ -66,7 +65,6 @@
 /usr/local/share/man/man1/pt-replica-restart.1p.zst
 /usr/local/share/man/man1/pt-show-grants.1p.zst
 /usr/local/share/man/man1/pt-sift.1p.zst
-/usr/local/share/man/man1/pt-slave-delay.1p.zst
 /usr/local/share/man/man1/pt-slave-find.1p.zst
 /usr/local/share/man/man1/pt-slave-restart.1p.zst
 /usr/local/share/man/man1/pt-stalk.1p.zst

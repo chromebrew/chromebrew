@@ -3,18 +3,18 @@ require 'package'
 class Git_lfs < Package
   description 'Git extension for versioning large files'
   homepage 'https://git-lfs.com/'
-  version '3.8.0'
+  version '3.8.1'
   license 'AGPL-3'
   compatibility 'all'
   source_url "https://github.com/git-lfs/git-lfs/releases/download/v#{version}/git-lfs-v#{version}.tar.gz"
-  source_sha256 '4f75492c6832038fa73d39a45316657208bb6caa23b273451cb4ec2358d42ccb'
+  source_sha256 '1939307bef808580f7c8954ede7072889d7e76721f5d6fdc4ab110bf907330ab'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '06585f8acf12962daa1e25793d7243c003081b47c4858394acf082cc4e707860',
-     armv7l: '06585f8acf12962daa1e25793d7243c003081b47c4858394acf082cc4e707860',
-       i686: 'b9746b3065c76c902c75ec64f4f1ea0d824f6166220e08a58c5f17b553981bb1',
-     x86_64: '1d4da286c38facef3a30b35eb29a3be732c0123cc5086258620aa048d8a4337b'
+    aarch64: '61d03e9a62af9205cd0bcad7a9966e11bf7de9a8d9d5a89de737e6da9d42787c',
+     armv7l: '61d03e9a62af9205cd0bcad7a9966e11bf7de9a8d9d5a89de737e6da9d42787c',
+       i686: 'aae63aa8e3825c2ecad1f905b950f0e8f2eaa8b29a4d59f0982f28595e0b3d05',
+     x86_64: '2c83d71219ae71e09710f3cad7a06bdcaba62c00ee3993f43743dea4839317ef'
   })
 
   depends_on 'asciidoctor' => :build

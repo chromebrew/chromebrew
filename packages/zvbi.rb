@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Zvbi < Autotools
   description 'VBI capture and decoding library.'
   homepage 'https://github.com/zapping-vbi/zvbi'
-  version '0.2.45'
+  version '0.2.46'
   license 'GPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/zapping-vbi/zvbi.git'
@@ -11,9 +11,9 @@ class Zvbi < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fbf3013bca7f19416d6bd897bb2160ff7800aa55942f3dcda716dd9b3130359a',
-     armv7l: 'fbf3013bca7f19416d6bd897bb2160ff7800aa55942f3dcda716dd9b3130359a',
-     x86_64: '89c7a3244515259b3ccc016bd568054e43b1d35b6a7c7a8cfa644772faae0f7d'
+    aarch64: 'c67b19fd50f1dc891c2bb3b5cdda738be88351ffedfda4023a7a4d54898ffe1f',
+     armv7l: 'c67b19fd50f1dc891c2bb3b5cdda738be88351ffedfda4023a7a4d54898ffe1f',
+     x86_64: 'd4088232461d81245fc38354c58b08d17f63c294d0ff243cc2bd92a98230664a'
   })
 
   depends_on 'glibc' => :library

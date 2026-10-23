@@ -1,4 +1,4 @@
-# Total size: 429801075
+# Total size: 551558726
 /usr/local/bin/etcher
 /usr/local/share/balena-etcher/LICENSE
 /usr/local/share/balena-etcher/LICENSES.chromium.html
@@ -10,8 +10,6 @@
 /usr/local/share/balena-etcher/chrome_crashpad_handler
 /usr/local/share/balena-etcher/etcher.sh
 /usr/local/share/balena-etcher/icudtl.dat
-/usr/local/share/balena-etcher/libEGL.so
-/usr/local/share/balena-etcher/libGLESv2.so
 /usr/local/share/balena-etcher/libffmpeg.so
 /usr/local/share/balena-etcher/libvk_swiftshader.so
 /usr/local/share/balena-etcher/libvulkan.so.1

@@ -1,32 +1,24 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Unrtf < Package
+class Unrtf < Autotools
   description 'UnRTF is a command-line program written in C which converts documents in Rich Text Format (.rtf) to HTML, LaTeX, troff macros, and RTF itself.'
   homepage 'https://www.gnu.org/software/unrtf/'
-  version '0.21.9'
+  version '0.21.13'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://www.gnu.org/software/unrtf/unrtf-0.21.9.tar.gz'
-  source_sha256 '22a37826f96d754e335fb69f8036c068c00dd01ee9edd9461a36df0085fb8ddd'
-  binary_compression 'tar.xz'
+  source_url "https://www.gnu.org/software/unrtf/unrtf-#{version}.tar.gz"
+  source_sha256 'ff227d1a0adb84a9e1a51b5e5c3cecbda3d67c8a31dbd7e8593a040a438fb44c'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '60ac4110be548c1d7f52210f30b2af30774ca532b245778badd0f5ecec4fc669',
-     armv7l: '60ac4110be548c1d7f52210f30b2af30774ca532b245778badd0f5ecec4fc669',
-       i686: 'c6ebb018e9c82cede4d0847b00c4cea44b209ca4f23ffa404d62276d6baa95d1',
-     x86_64: '905c08e45a27b7a40aa2986ce9576f24fc36118f185dad78cd728cef51af8e54'
+    aarch64: '776436a265610fe95ba2fe23f1ecd026fd3e00c6838efc93b9580c071e510f65',
+     armv7l: '776436a265610fe95ba2fe23f1ecd026fd3e00c6838efc93b9580c071e510f65',
+       i686: 'dcd2b077269904a591b9ab436f55e60e87c6660d98a0f9b8ecfcb161a4f3a298',
+     x86_64: 'b6c4d39dc9c19ceeb92f01c0bda8e40254d4f505cc04f084955244a155008d08'
   })
 
-  def self.build
-    system './bootstrap'
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           '--disable-depedency-tracking',
-           '--disable-maintainer-mode'
-    system 'make'
-  end
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  run_tests
 end
