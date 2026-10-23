@@ -3,7 +3,7 @@ require 'package'
 class Dapr < Package
   description 'Command-line tools for Dapr.'
   homepage 'https://dapr.io/'
-  version '1.18.3'
+  version '1.19.0'
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url({
@@ -12,9 +12,9 @@ class Dapr < Package
      x86_64: "https://github.com/dapr/cli/releases/download/v#{version}/dapr_linux_amd64.tar.gz"
   })
   source_sha256({
-    aarch64: '3a66eec26751a5f4fdf0ad25e0f2c24041a75597bf7574701b9a640c2786831c',
-     armv7l: '3a66eec26751a5f4fdf0ad25e0f2c24041a75597bf7574701b9a640c2786831c',
-     x86_64: 'b0dd9a7672cce23995bb3d80637ac354a18c2dc74f1cb6ee564cc6b5da6acf51'
+    aarch64: '3a97749da2011f47b16d1f4f4fbdbee2b66437746bd32a97743855b622923967',
+     armv7l: '3a97749da2011f47b16d1f4f4fbdbee2b66437746bd32a97743855b622923967',
+     x86_64: '7fee19c8aa58c7b43af840c5c272097009855ab2c8d69ae055d3d9c0fab56b7b'
   })
 
   def self.install
