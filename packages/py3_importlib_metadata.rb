@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_importlib_metadata < Pip
   description 'Importlib metadata reads metadata from Python packages.'
   homepage 'https://github.com/python/importlib_metadata/'
-  version "9.0.1-#{CREW_PY_VER}"
+  version "9.1.0-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2f92fd106a21debec53fc374b562f14ee795fd6e00fba2af4238d462d2d3c6ff',
-     armv7l: '2f92fd106a21debec53fc374b562f14ee795fd6e00fba2af4238d462d2d3c6ff',
-       i686: 'bb42ebe71337c0d6e59d103991bd05a4a50c79fa37a56afe8498d28ea89277b6',
-     x86_64: 'ece35899d94b0d04936b73815d26860dbdb2c7aca977bfa2577321d356a5c459'
+    aarch64: '3cf0650bf987cb449b8698a37299fd5fbf26a58c43b892ffbafdf36f2df382aa',
+     armv7l: '3cf0650bf987cb449b8698a37299fd5fbf26a58c43b892ffbafdf36f2df382aa',
+       i686: '0158c6e13cef296436c218b93bca485cb941337f098830c4eb670e7b3c60c664',
+     x86_64: '001c1bc1914c17db185ae37048a96b410ed0ac8f19fdb94852a870ffeb30246a'
   })
 
   depends_on 'py3_zipp'
