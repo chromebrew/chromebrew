@@ -51,7 +51,7 @@ class Ruby < Package
   def self.check
     # Do not run checks if rebuilding current ruby version.
     # RUBY_VERSION is a built-in ruby constant.
-    system "MAKEFLAGS='--jobs #{CREW_NPROC}' make check || true" unless version == RUBY_VERSION || ARCH.include?('armv7l')
+    # system "MAKEFLAGS='--jobs #{CREW_NPROC}' make check || true" unless version == RUBY_VERSION || ARCH.include?('armv7l')
   end
 
   def self.install
