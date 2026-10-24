@@ -17,7 +17,7 @@ class Zlib_ng < CMake
     aarch64: '68ef045f13b2ccf5ca94ad9b77e7894572205245c5ff4f72b9f18d8ea89b1dec',
      armv7l: '68ef045f13b2ccf5ca94ad9b77e7894572205245c5ff4f72b9f18d8ea89b1dec',
        i686: '97a34288bd5c492e16e84ad57dc9c312d19621a729c69f517f9fe55b5ded1139',
-     x86_64: '1030e224f3feb4c6adeee82b60ed3b3cd6eac25cca86b0dd3f485827d12d27f2'
+     x86_64: 'a3a1f4d491407280e401f4d7bfad3d944fa2608ff58cc20f6eafa8249a502a99'
   })
 
   depends_on 'glibc' => :library
