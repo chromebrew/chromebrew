@@ -11,13 +11,13 @@ class Ascii < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e3b9efce0b5fef983da30aad96c294238bd37aff5b93630d79b0558276b216f5',
-     armv7l: 'e3b9efce0b5fef983da30aad96c294238bd37aff5b93630d79b0558276b216f5',
-       i686: 'ebb0d101a9dd33ff323b6cacc21eb7d5f6ec75e8465be9ef41b0dca8d9861557',
-     x86_64: '8844ef50255fd938407da8d5927a019a711be792349342ec7f4767a4b8ecbff0'
+    aarch64: '23f2ff524d83a11d5b44cf5f01a953ca65e0d26ba2e7132b9e261fb769d74480',
+     armv7l: '23f2ff524d83a11d5b44cf5f01a953ca65e0d26ba2e7132b9e261fb769d74480',
+       i686: 'e94f837faaed6f54f9abf31e7ddecd1bd29b086eadeb611cf1cbc3849a02bb96',
+     x86_64: '55275748e7d03b3629559f69bf61c0b4f07887cf4c5b0e108e7e17bab1db8ca6'
   })
 
-  depends_on 'asciidoctor' => :library
+  depends_on 'asciidoctor' => :build
   depends_on 'glibc' => :executable
 
   def self.build
