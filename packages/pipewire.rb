@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Pipewire < Meson
   description 'PipeWire is a project that aims to greatly improve handling of audio and video under Linux.'
   homepage 'https://pipewire.org'
-  version '1.6.9'
+  version '1.6.10'
   compatibility 'aarch64 armv7l x86_64'
   license 'LGPL-2.1+'
   source_url 'https://gitlab.freedesktop.org/pipewire/pipewire.git'
@@ -44,12 +44,6 @@ class Pipewire < Meson
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' => :library
   depends_on 'webrtc_audio_processing' => :library
-
-  def self.prebuild
-    # Without running the ca_certificates postinstall armv7l build breaks
-    # complaining about the network not working.
-    system "#{CREW_PREFIX}/bin/update-ca-certificates --fresh --certsconf #{CREW_PREFIX}/etc/ca-certificates.conf"
-  end
 
   # -lpthread is needed for pre-Glibc 2.30 with the c11threads package.
   pre_meson_options "CC='gcc -lpthread' CXX='g++ -lpthread' LDFLAGS='#{CREW_LINKER_FLAGS} -pthread'"

@@ -110,10 +110,6 @@ class Gstreamer < Meson
   # no_lto
   gnome
 
-  def self.prebuild
-    system "#{CREW_PREFIX}/bin/update-ca-certificates --fresh --certsconf #{CREW_PREFIX}/etc/ca-certificates.conf"
-  end
-
   meson_options "#{CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
     -Dbenchmarks=disabled \
     -Ddoc=disabled \

@@ -74,7 +74,6 @@ class Harfbuzz < Meson
 
       puts "#{build_exclusion} needs to be uninstalled before this build.".lightred
     end
-    system 'update-ca-certificates --fresh'
   end
 
   def self.patch
