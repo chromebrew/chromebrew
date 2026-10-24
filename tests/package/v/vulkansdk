@@ -1,0 +1,36 @@
+#!/bin/bash
+dxa -help | head -5
+dxc -help | head -5
+dxl -help | head -5
+dxr -help | head -5
+dxv -help | head -5
+gfxrecon-compress --version
+gfxrecon-convert --version
+gfxrecon-extract --version
+gfxrecon-file-version-patch --version
+gfxrecon-info --version
+gfxrecon-optimize --version
+gfxrecon-replay --version
+glslang --version
+glslangValidator --version
+glslc --version
+slang -help | head -5
+slangc -help | head -5
+slangd -help | head -5
+slangi -help | head -5
+spirv-as --version
+spirv-cfg --version
+spirv-cross --version
+spirv-diff --version
+spirv-dis --version
+spirv-link --version
+spirv-lint --version
+spirv-objdump --version
+spirv-opt --version
+spirv-reduce --version
+spirv-reflect --help | head -5
+spirv-reflect-pp --help | head -5
+spirv-val --version
+vkconfig version
+vkprofiles -v
+vulkanCapsViewer -v
