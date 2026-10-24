@@ -3,7 +3,7 @@ require 'package'
 class Vscodium < Package
   description 'VSCodium is Open Source Software Binaries of VSCode with a community-driven default configuration.'
   homepage 'https://vscodium.com/'
-  version ARCH.eql?('x86_64') ? '1.126.04524' : '1.121.03429'
+  version ARCH.eql?('x86_64') ? '1.140.06880' : '1.121.03429'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.28'
@@ -15,7 +15,7 @@ class Vscodium < Package
   source_sha256({
     aarch64: 'f756478445035680e24412f030754b8732a66fd81670f054b1545954b8420383',
      armv7l: 'f756478445035680e24412f030754b8732a66fd81670f054b1545954b8420383',
-     x86_64: '2c9b06735d4c1face570935f4968d358f9f6269f5d9237813d0b825c7d70a143'
+     x86_64: '61223b74f9e40834117311ec4177cb386d09b84c1aae4f9e674c96580569cef3'
   })
 
   depends_on 'alsa_lib' # R
@@ -50,7 +50,7 @@ class Vscodium < Package
   no_shrink
 
   def self.install
-    arch = ARCH == 'x86_64' ? 'x64' : 'arm'
+    arch = ARCH.eql?('x86_64') ? 'x64' : 'arm'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/VSCodium-linux-#{arch}"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/VSCodium-linux-#{arch}"
