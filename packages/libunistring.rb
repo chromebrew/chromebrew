@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Libunistring < Autotools
   description 'A library that provides functions for manipulating Unicode strings and for manipulating C strings according to the Unicode standard.'
   homepage 'https://www.gnu.org/software/libunistring/'
-  version '1.4.2'
+  version '1.5'
   license 'LGPL-3+ or GPL-2+ and FDL-1.2 or GPL-3+'
   compatibility 'all'
   source_url "https://ftp.gnu.org/gnu/libunistring/libunistring-#{version}.tar.xz"
-  source_sha256 '5b46e74377ed7409c5b75e7a96f95377b095623b689d8522620927964a41499c'
+  source_sha256 'fe89007a8a414ae4790b816b86859e877d3ab135db3c37f06541ff7e85ac344b'
   binary_compression 'tar.zst'
 
   binary_sha256({
