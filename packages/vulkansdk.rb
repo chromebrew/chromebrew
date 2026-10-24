@@ -3,11 +3,12 @@ require 'package'
 class Vulkansdk < Package
   description 'Vulkan SDK'
   homepage 'https://vulkan.lunarg.com/'
-  version '1.4.357.1'
+  version '1.4.363.0'
   license 'https://vulkan.lunarg.com/license/#/license'
   compatibility 'x86_64'
+  min_glibc '2.32'
   source_url "https://sdk.lunarg.com/sdk/download/#{version}/linux/vulkansdk-linux-x86_64-#{version}.tar.xz"
-  source_sha256 '4b41e3b30e8aedaa5dac7c136561ab463eb316a25a54e2c6245f2c299ea1fb85'
+  source_sha256 '197962f5cbf80baf2775a03336a01cee7c8745686c65aaa70d3f751ade4d7e43'
 
   depends_on 'libglvnd'
   depends_on 'libxcomposite'
@@ -15,6 +16,7 @@ class Vulkansdk < Package
   depends_on 'vulkan_headers'
   depends_on 'vulkan_icd_loader'
   depends_on 'vulkan_tools'
+  depends_on 'xcb_util_cursor' # Needed for vkconfig
   depends_on 'xcb_util_image'
   depends_on 'xcb_util_keysyms'
   depends_on 'xcb_util_renderutil'
