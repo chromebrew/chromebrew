@@ -3,11 +3,11 @@ require 'package'
 class Ascii < Package
   description 'List ASCII idiomatic names and octal/decimal code-point forms.'
   homepage 'http://www.catb.org/~esr/ascii/'
-  version '3.32'
+  version '3.33'
   license 'BSD'
   compatibility 'all'
   source_url "http://www.catb.org/~esr/ascii/ascii-#{version}.tar.gz"
-  source_sha256 '4a4d62bec25b3faea38b0a4ea2bc630e3393055c5f3ef197deee345de419b2a8'
+  source_sha256 'fbfc0abf8d0629ff1cf204b916c45ede436259497cff8461f85ebceccde356fd'
   binary_compression 'tar.zst'
 
   binary_sha256({
