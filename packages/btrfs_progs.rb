@@ -11,9 +11,9 @@ class Btrfs_progs < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '898b8891f1fc1e73da16d96b51a12e71f818f87b63921f2cf7569d8fb12df4ef',
-     armv7l: '898b8891f1fc1e73da16d96b51a12e71f818f87b63921f2cf7569d8fb12df4ef',
-     x86_64: 'ccc85388f30f4b426bd8df864e93b52c55717e9087f1acf86b28932a37307835'
+    aarch64: '89330572d11c2fd9ccca1d6e1e917bbbcc83ce5090631ac71840a96537d94eaf',
+     armv7l: '89330572d11c2fd9ccca1d6e1e917bbbcc83ce5090631ac71840a96537d94eaf',
+     x86_64: '033f7be978b3154b428dad8f588a209a93c87b4c7de90e238038f6e29d33f84b'
   })
 
   depends_on 'e2fsprogs'
