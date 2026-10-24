@@ -10,10 +10,10 @@ class Py3_certifi < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '415c037abc0c48cc1d3fe23fdf1648ba4bb3cf433403d4256080bde59ecd1469',
-     armv7l: '415c037abc0c48cc1d3fe23fdf1648ba4bb3cf433403d4256080bde59ecd1469',
-       i686: 'ecfc641b8341838217e64a9a97e32a85974cc0bfb1361fd5ac7894dbb5217da5',
-     x86_64: 'ccb7caaf6c6eabcc3b0b79d9f787d41e22fa726d77d75c6f9c8703b1a0c3ff72'
+    aarch64: '4c95e37fd312249d1e6b7d060f86e76a017a70bbe851f1a229c7e40f49e11f46',
+     armv7l: '4c95e37fd312249d1e6b7d060f86e76a017a70bbe851f1a229c7e40f49e11f46',
+       i686: '32bf414c577e535f0f359a46eb19397827839a03cb5c802c59f395223af30cc6',
+     x86_64: '965152cf86e83e1e0342fc30a6f9eb3f09f76cb6105b12d54362da577744934c'
   })
 
   depends_on 'python3' => :logical
