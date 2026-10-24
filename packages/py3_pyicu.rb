@@ -18,6 +18,7 @@ class Py3_pyicu < Pip
 
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'icu4c' => :library
   depends_on 'llvm_dev' => :build
   depends_on 'python3' => :logical
