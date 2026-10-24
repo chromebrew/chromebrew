@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Newsboat < Autotools
   description 'Newsboat is an RSS/Atom feed reader for the text console.'
   homepage 'https://newsboat.org/'
-  version '2.44'
+  version '2.45'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/newsboat/newsboat.git'
