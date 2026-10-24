@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Darktable < CMake
   description 'darktable is an open source photography workflow application and raw developer.'
   homepage 'https://www.darktable.org/'
-  version '5.6.1'
+  version '5.6.2'
   license 'GPL-3'
   compatibility 'x86_64'
   source_url 'https://github.com/darktable-org/darktable.git'
