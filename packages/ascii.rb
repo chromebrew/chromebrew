@@ -19,6 +19,7 @@ class Ascii < Package
 
   depends_on 'asciidoctor' => :build
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
 
   def self.build
     system 'make'
