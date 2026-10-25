@@ -10,10 +10,10 @@ class Py3_extract_msg < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '85136295e6c291dc0d44bf8fca9a2bc96844a1db05c766e2abc6e3ed027b32ed',
-     armv7l: '85136295e6c291dc0d44bf8fca9a2bc96844a1db05c766e2abc6e3ed027b32ed',
-       i686: '9de49e36fa551b72ec4acb9607017610be056aa870d02ef8d46f1e96074df53b',
-     x86_64: '185fbdffc57c15bc8972d54eb6aae8a7411be13492adec9bd4b1f068780c8872'
+    aarch64: '26a5e292ad270e9215c128a6553caa83c23a1ec9ffb3c35c1d2e1131d57fcc5d',
+     armv7l: '26a5e292ad270e9215c128a6553caa83c23a1ec9ffb3c35c1d2e1131d57fcc5d',
+       i686: '9e35b1af3f51cc4bca787235bd6972442025c1599ee45d082034eb1cb577e036',
+     x86_64: '88011d277f418f4025148a29e6053cc1bc7291db5907a9dd83697878d0a4fbe8'
   })
 
   depends_on 'py3_imapclient'
