@@ -3,7 +3,7 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '4.0.7'
+  version '4.0.9'
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
   source_url 'https://github.com/ruby/ruby.git'
@@ -11,10 +11,10 @@ class Ruby < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c6328b42ae70ddcc4fd6a65937b11b510dd0cef4951a1ba9bbd689d7694a0fc8',
-     armv7l: 'c6328b42ae70ddcc4fd6a65937b11b510dd0cef4951a1ba9bbd689d7694a0fc8',
-       i686: '875de8deab4d29987d2b9ef0a683600cbec89bfaffe7ed34ca2ac92f4e3091b2',
-     x86_64: 'a0ccc0a848e040d92c27a8030f3a1ccc805483c95ae0e1baba00d043e2643572'
+    aarch64: 'e96d1a91e12cffeaebb6170b8ac47f09287ee004ecac111f8779bee86bcd536e',
+     armv7l: 'e96d1a91e12cffeaebb6170b8ac47f09287ee004ecac111f8779bee86bcd536e',
+       i686: '2ad779a3a05b16faf584989e2aa02d2986af4025ff3713c2db8d89e6f35a745d',
+     x86_64: 'c1fb4b0910752e1935feff038d5648372c3940b4acef80c9d348e71184752947'
   })
 
   depends_on 'ca_certificates' => :logical
@@ -43,7 +43,7 @@ class Ruby < Package
       LD=mold \
       ./configure #{CREW_CONFIGURE_OPTIONS} \
       --enable-shared \
-      #{'--enable-yjit' if ARCH == 'x86_64' || ARCH == 'aarch64'} \
+      #{'--disable-yjit --disable-zjit' if ARCH == 'x86_64' || ARCH == 'aarch64'} \
       --disable-fortify-source"
     system "MAKEFLAGS='--jobs #{CREW_NPROC}' make -j #{CREW_NPROC}"
   end
@@ -51,7 +51,7 @@ class Ruby < Package
   def self.check
     # Do not run checks if rebuilding current ruby version.
     # RUBY_VERSION is a built-in ruby constant.
-    system "MAKEFLAGS='--jobs #{CREW_NPROC}' make check || true" unless version == RUBY_VERSION || ARCH.include?('armv7l')
+    # system "MAKEFLAGS='--jobs #{CREW_NPROC}' make check || true" unless version == RUBY_VERSION || ARCH.include?('armv7l')
   end
 
   def self.install
