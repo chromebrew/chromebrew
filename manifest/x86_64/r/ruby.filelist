@@ -1,4 +1,4 @@
-# Total size: 42397191
+# Total size: 39390009
 /home/chronos/user/.gemrc
 /usr/local/bin/bundle
 /usr/local/bin/bundler
@@ -209,7 +209,7 @@
 /usr/local/include/ruby-4.0.0/x86_64-linux/ruby/config.h
 /usr/local/lib64/libruby.so
 /usr/local/lib64/libruby.so.4.0
-/usr/local/lib64/libruby.so.4.0.7
+/usr/local/lib64/libruby.so.4.0.9
 /usr/local/lib64/pkgconfig/ruby-4.0.pc
 /usr/local/lib64/ruby/4.0.0/English.rb
 /usr/local/lib64/ruby/4.0.0/bundled_gems.rb
@@ -2142,7 +2142,7 @@
 /usr/local/lib64/ruby/gems/4.0.0/specifications/default/optparse-0.8.1.gemspec
 /usr/local/lib64/ruby/gems/4.0.0/specifications/default/pp-0.6.3.gemspec
 /usr/local/lib64/ruby/gems/4.0.0/specifications/default/prettyprint-0.2.0.gemspec
-/usr/local/lib64/ruby/gems/4.0.0/specifications/default/prism-1.8.1.gemspec
+/usr/local/lib64/ruby/gems/4.0.0/specifications/default/prism-1.8.2.gemspec
 /usr/local/lib64/ruby/gems/4.0.0/specifications/default/psych-5.3.1.gemspec
 /usr/local/lib64/ruby/gems/4.0.0/specifications/default/resolv-0.7.2.gemspec
 /usr/local/lib64/ruby/gems/4.0.0/specifications/default/ruby2_keywords-0.0.5.gemspec

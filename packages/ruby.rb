@@ -14,7 +14,7 @@ class Ruby < Package
     aarch64: 'e96d1a91e12cffeaebb6170b8ac47f09287ee004ecac111f8779bee86bcd536e',
      armv7l: 'e96d1a91e12cffeaebb6170b8ac47f09287ee004ecac111f8779bee86bcd536e',
        i686: '2ad779a3a05b16faf584989e2aa02d2986af4025ff3713c2db8d89e6f35a745d',
-     x86_64: 'a0ccc0a848e040d92c27a8030f3a1ccc805483c95ae0e1baba00d043e2643572'
+     x86_64: 'c1fb4b0910752e1935feff038d5648372c3940b4acef80c9d348e71184752947'
   })
 
   depends_on 'ca_certificates' => :logical
@@ -43,6 +43,7 @@ class Ruby < Package
       LD=mold \
       ./configure #{CREW_CONFIGURE_OPTIONS} \
       --enable-shared \
+      #{'--disable-yjit --disable-zjit' if ARCH == 'x86_64' || ARCH == 'aarch64'} \
       --disable-fortify-source"
     system "MAKEFLAGS='--jobs #{CREW_NPROC}' make -j #{CREW_NPROC}"
   end
