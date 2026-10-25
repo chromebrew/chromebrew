@@ -11,9 +11,9 @@ class Ruby < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c6328b42ae70ddcc4fd6a65937b11b510dd0cef4951a1ba9bbd689d7694a0fc8',
-     armv7l: 'c6328b42ae70ddcc4fd6a65937b11b510dd0cef4951a1ba9bbd689d7694a0fc8',
-       i686: '875de8deab4d29987d2b9ef0a683600cbec89bfaffe7ed34ca2ac92f4e3091b2',
+    aarch64: 'e96d1a91e12cffeaebb6170b8ac47f09287ee004ecac111f8779bee86bcd536e',
+     armv7l: 'e96d1a91e12cffeaebb6170b8ac47f09287ee004ecac111f8779bee86bcd536e',
+       i686: '2ad779a3a05b16faf584989e2aa02d2986af4025ff3713c2db8d89e6f35a745d',
      x86_64: 'a0ccc0a848e040d92c27a8030f3a1ccc805483c95ae0e1baba00d043e2643572'
   })
 
@@ -43,7 +43,6 @@ class Ruby < Package
       LD=mold \
       ./configure #{CREW_CONFIGURE_OPTIONS} \
       --enable-shared \
-      #{'--enable-yjit' if ARCH == 'x86_64' || ARCH == 'aarch64'} \
       --disable-fortify-source"
     system "MAKEFLAGS='--jobs #{CREW_NPROC}' make -j #{CREW_NPROC}"
   end
