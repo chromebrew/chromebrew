@@ -1,0 +1,3 @@
+#!/bin/bash
+xdg-dbus-proxy --help | head
+xdg-dbus-proxy --version
