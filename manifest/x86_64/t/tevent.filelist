@@ -1,7 +1,7 @@
-# Total size: 218656
+# Total size: 218888
 /usr/local/include/tevent.h
-/usr/local/lib/python3.14/site-packages/_tevent.cpython-314-x86_64-linux-gnu.so
-/usr/local/lib/python3.14/site-packages/tevent.py
+/usr/local/lib/python3.15/site-packages/_tevent.cpython-315-x86_64-linux-gnu.so
+/usr/local/lib/python3.15/site-packages/tevent.py
 /usr/local/lib64/libtevent.so
 /usr/local/lib64/libtevent.so.0
 /usr/local/lib64/libtevent.so.0.17.2
