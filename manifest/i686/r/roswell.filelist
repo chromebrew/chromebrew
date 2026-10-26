@@ -1,4 +1,4 @@
-# Total size: 460941
+# Total size: 462710
 /home/chronos/user/.roswell
 /usr/local/bin/ros
 /usr/local/etc/roswell/balus.ros
@@ -28,6 +28,7 @@
 /usr/local/etc/roswell/dist-versions.lisp
 /usr/local/etc/roswell/dist.ros
 /usr/local/etc/roswell/dump-ccl.lisp
+/usr/local/etc/roswell/dump-clasp.lisp
 /usr/local/etc/roswell/dump-clisp.lisp
 /usr/local/etc/roswell/dump-cmucl.lisp
 /usr/local/etc/roswell/dump-ecl.lisp
