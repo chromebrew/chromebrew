@@ -11,10 +11,10 @@ class Sccache < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '578e09c45a8673f466232a6710a2e8ef7471a349a3126ff4b48fd2dcb65f5434',
-     armv7l: '578e09c45a8673f466232a6710a2e8ef7471a349a3126ff4b48fd2dcb65f5434',
-       i686: '7ddfa136cd18f16d7dc61cefb077caae6a599fe64812a9dda4ad3ef9b981bbf9',
-     x86_64: 'bdd5ff9fe80d37fd86d64f3279d48fabbaed4deae4ee406762e88c6be18afbab'
+    aarch64: '10ac9006ba0fe6d17ff63a20c24e667d0aa7a00f4a9df792d1ac3f3138c37160',
+     armv7l: '10ac9006ba0fe6d17ff63a20c24e667d0aa7a00f4a9df792d1ac3f3138c37160',
+       i686: 'f50a56703fa11e13cd7953c863a50d0c5cdc87e29dbb01e0c283f06d59f001fa',
+     x86_64: '3a87e18429cf3a92fd9a99c59c5281f556ea88b45087609d073a8a0f6562bbae'
   })
 
   depends_on 'gcc_lib' => :executable
