@@ -11,10 +11,10 @@ class Libunistring < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9f0dcf8a5a9ad7f097ab5510849fdabe06165c837b09d0f927dc1d83264dcb00',
-     armv7l: '9f0dcf8a5a9ad7f097ab5510849fdabe06165c837b09d0f927dc1d83264dcb00',
-       i686: 'ded2e29450f589071c091c4cbc7bbdf712ced82105c62dea5585b8394d3846ae',
-     x86_64: '621b8d10ba194eaa76f46ebffa67fd78c3f4b2b2a7fd1dcb3b0d619a3413dfed'
+    aarch64: '8a6c36e7d4f6273daffd3a2e90304a29c313c55d63de077f6115ca74b5bedb2f',
+     armv7l: '8a6c36e7d4f6273daffd3a2e90304a29c313c55d63de077f6115ca74b5bedb2f',
+       i686: '25456ca11e3c89145960433f75e34a4396c6bedc224f2620248977e44efebc98',
+     x86_64: 'b62112f53a776d284b1112c426f8e2fc0cf6f735a6e3c015955d902e8327d9b9'
   })
 
   depends_on 'glibc' => :library
