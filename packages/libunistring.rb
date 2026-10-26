@@ -18,6 +18,7 @@ class Libunistring < Autotools
   })
 
   depends_on 'glibc' => :library
+  autotools_skip_autogen
 
   autotools_configure_options '--enable-static \
       --enable-shared'
