@@ -73,7 +73,6 @@ class Smbclient < Package
   end
 
   def self.build
-    system './configure --help'
     system "python_LDFLAGS='' ./configure --enable-fhs \
       #{CREW_CONFIGURE_OPTIONS.sub(/--program-suffix.*/, '')} \
       --sysconfdir=#{CREW_PREFIX}/etc \
