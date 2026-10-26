@@ -21,7 +21,7 @@ class Ldb < Package
 
   depends_on 'cmocka' => :build
   depends_on 'docbook_xml' => :build
-  depends_on 'gcc_lib' # R
+  depends_on 'gcc_lib' => :library
   depends_on 'gdb' => :build
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
