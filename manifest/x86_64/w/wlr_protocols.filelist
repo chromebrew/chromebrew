@@ -1,0 +1,12 @@
+# Total size: 110495
+/usr/local/share/pkgconfig/wlr-protocols.pc
+/usr/local/share/wlr-protocols/unstable/wlr-data-control-unstable-v1.xml
+/usr/local/share/wlr-protocols/unstable/wlr-export-dmabuf-unstable-v1.xml
+/usr/local/share/wlr-protocols/unstable/wlr-foreign-toplevel-management-unstable-v1.xml
+/usr/local/share/wlr-protocols/unstable/wlr-gamma-control-unstable-v1.xml
+/usr/local/share/wlr-protocols/unstable/wlr-input-inhibitor-unstable-v1.xml
+/usr/local/share/wlr-protocols/unstable/wlr-layer-shell-unstable-v1.xml
+/usr/local/share/wlr-protocols/unstable/wlr-output-management-unstable-v1.xml
+/usr/local/share/wlr-protocols/unstable/wlr-output-power-management-unstable-v1.xml
+/usr/local/share/wlr-protocols/unstable/wlr-screencopy-unstable-v1.xml
+/usr/local/share/wlr-protocols/unstable/wlr-virtual-pointer-unstable-v1.xml

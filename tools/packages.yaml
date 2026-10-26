@@ -4395,6 +4395,11 @@ url: https://gitlab.gnome.org/GNOME/libdex/-/tags
 activity: low
 ---
 kind: url
+name: libdisplay_info
+url: https://gitlab.freedesktop.org/emersion/libdisplay-info/-/tags
+activity: low
+---
+kind: url
 name: libdmraid
 url: https://people.redhat.com/~heinzm/sw/dmraid/src/
 activity: none
@@ -5712,6 +5717,11 @@ activity: low
 kind: url
 name: libxfce4util
 url: https://archive.xfce.org/src/xfce/libxfce4util/
+activity: low
+---
+kind: url
+name: libxfce4windowing
+url: https://gitlab.xfce.org/xfce/libxfce4windowing/-/tags
 activity: low
 ---
 kind: url
@@ -10613,6 +10623,11 @@ kind: url
 name: wl_clipboard
 url: https://github.com/bugaevc/wl-clipboard/releases
 activity: medium
+---
+kind: url
+name: wlr_protocols
+url: https://gitlab.freedesktop.org/wlroots/wlr-protocols
+activity: none
 ---
 kind: url
 name: wlroots
