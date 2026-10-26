@@ -18,6 +18,7 @@ class Libunistring < Autotools
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   autotools_skip_autogen
 
   autotools_configure_options '--enable-static \
