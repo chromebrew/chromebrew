@@ -1,7 +1,9 @@
-# Total size: 2044756
+# Total size: 2051523
 /usr/local/bin/aclocal
+/usr/local/bin/aclocal-1
 /usr/local/bin/aclocal-1.19
 /usr/local/bin/automake
+/usr/local/bin/automake-1
 /usr/local/bin/automake-1.19
 /usr/local/share/aclocal-1.19/amversion.m4
 /usr/local/share/aclocal-1.19/ar-lib.m4

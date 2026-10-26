@@ -8,20 +8,26 @@ class Automake < Autotools
   compatibility 'all'
   source_url 'https://https.git.savannah.gnu.org/git/automake.git'
   git_hashtag "v#{version}"
-  # source_url "https://ftp.gnu.org/gnu/gnu/automake/automake-#{version}.tar.xz"
-  # source_sha256 '5bdccca96b007a7e344c24204b9b9ac12ecd17f5971931a9063bdee4887f4aaf'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7326f3447ea17c6e7c051a1d10f481390f90299da365364b98b8f16ea4237c63',
-     armv7l: '7326f3447ea17c6e7c051a1d10f481390f90299da365364b98b8f16ea4237c63',
-       i686: 'fdebb39071b1397c8f6e55686705997485e36f3f7ef4625c89c29e50f8c8cbc0',
-     x86_64: 'fa15d8f9806d629926e16689511c2e6e429325f1d289df17d5b00d79ae104fb0'
+    aarch64: 'd93174c3b8c4d541fcc5ac97382c6b6d9d864a0988fbea5252dd7cd41340aa9b',
+     armv7l: 'd93174c3b8c4d541fcc5ac97382c6b6d9d864a0988fbea5252dd7cd41340aa9b',
+       i686: '9ccf1bb4895d4ebf4ff056f11c9cd859fdbfc78a0d105528069a858eb1d166bc',
+     x86_64: '03db2521790acb90911f4f178042ed17eafdcdfb079d78912d5d06e4d11d3e7b'
   })
 
-  depends_on 'autoconf'
+  depends_on 'autoconf' => :executable
 
-  no_filefix
+  def self.build
+    system './bootstrap'
+    system "./configure --prefix=#{CREW_PREFIX}"
+    system 'make'
+  end
 
-  autotools_configure_options '--disable-option-checking'
+  autotools_install_extras do
+    # Fix aclocal-1: command not found and automake-1: command not found
+    FileUtils.ln_s "#{CREW_PREFIX}/bin/aclocal-#{version}", "#{CREW_DEST_PREFIX}/bin/aclocal-1"
+    FileUtils.ln_s "#{CREW_PREFIX}/bin/automake-#{version}", "#{CREW_DEST_PREFIX}/bin/automake-1"
+  end
 end

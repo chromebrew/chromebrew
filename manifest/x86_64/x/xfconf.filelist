@@ -1,4 +1,4 @@
-# Total size: 1983047
+# Total size: 1169112
 /usr/local/bin/xfconf-query
 /usr/local/include/xfce4/xfconf-0/xfconf/xfconf-binding.h
 /usr/local/include/xfce4/xfconf-0/xfconf/xfconf-channel.h
@@ -14,8 +14,10 @@
 /usr/local/lib64/libxfconf-0.so.3.0.0
 /usr/local/lib64/pkgconfig/libxfconf-0.pc
 /usr/local/lib64/xfce4/xfconf/xfconfd
+/usr/local/share/bash-completion/completions/xfconf-query
 /usr/local/share/dbus-1/services/org.xfce.Xfconf.service
 /usr/local/share/gir-1.0/Xfconf-0.gir
+/usr/local/share/gtk-doc/html/xfconf/annotation-glossary.html
 /usr/local/share/gtk-doc/html/xfconf/ch01.html
 /usr/local/share/gtk-doc/html/xfconf/ch02.html
 /usr/local/share/gtk-doc/html/xfconf/ch03.html
@@ -50,18 +52,22 @@
 /usr/local/share/locale/en_CA/LC_MESSAGES/xfconf.mo
 /usr/local/share/locale/en_GB/LC_MESSAGES/xfconf.mo
 /usr/local/share/locale/es/LC_MESSAGES/xfconf.mo
+/usr/local/share/locale/et/LC_MESSAGES/xfconf.mo
 /usr/local/share/locale/eu/LC_MESSAGES/xfconf.mo
 /usr/local/share/locale/fi/LC_MESSAGES/xfconf.mo
 /usr/local/share/locale/fr/LC_MESSAGES/xfconf.mo
 /usr/local/share/locale/gl/LC_MESSAGES/xfconf.mo
 /usr/local/share/locale/he/LC_MESSAGES/xfconf.mo
+/usr/local/share/locale/hi/LC_MESSAGES/xfconf.mo
 /usr/local/share/locale/hr/LC_MESSAGES/xfconf.mo
 /usr/local/share/locale/hu/LC_MESSAGES/xfconf.mo
 /usr/local/share/locale/hy_AM/LC_MESSAGES/xfconf.mo
+/usr/local/share/locale/hye/LC_MESSAGES/xfconf.mo
 /usr/local/share/locale/id/LC_MESSAGES/xfconf.mo
 /usr/local/share/locale/is/LC_MESSAGES/xfconf.mo
 /usr/local/share/locale/it/LC_MESSAGES/xfconf.mo
 /usr/local/share/locale/ja/LC_MESSAGES/xfconf.mo
+/usr/local/share/locale/kab/LC_MESSAGES/xfconf.mo
 /usr/local/share/locale/kk/LC_MESSAGES/xfconf.mo
 /usr/local/share/locale/ko/LC_MESSAGES/xfconf.mo
 /usr/local/share/locale/lt/LC_MESSAGES/xfconf.mo
