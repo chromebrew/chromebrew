@@ -8,7 +8,7 @@ class Ldb < Package
   homepage 'https://ldb.samba.org/'
   version "2.9.2-#{CREW_PY_VER}"
   license 'GPLv3'
-  compatibility 'all'
+  compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.samba.org/ftp/ldb/ldb-#{version.split('-').first}.tar.gz"
   source_sha256 'd155884002c79dbb1c3d8642f8b1013f2e520b3aeefd6e96412adec5b8d6cbc0'
   binary_compression 'tar.zst'
@@ -16,7 +16,6 @@ class Ldb < Package
   binary_sha256({
     aarch64: '0cbe3037f30a80879978d73c3aba628c2ff9d3a8d3158c79dc8fd426a7ac2586',
      armv7l: '0cbe3037f30a80879978d73c3aba628c2ff9d3a8d3158c79dc8fd426a7ac2586',
-       i686: '38e3cd51346b36c83467b5f5cd04db47d8445fcd11fe0dcbc0ba370f6678f90b',
      x86_64: '5d867bee58a28cef411ea02a748051d7968835ad3406e44156bbe208470750b5'
   })
 
