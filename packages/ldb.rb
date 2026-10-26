@@ -27,7 +27,7 @@ class Ldb < Package
   depends_on 'glibc_lib' => :library
   depends_on 'libbsd' => :library
   depends_on 'libxcrypt' => :build
-  depends_on 'lmdb' # R
+  depends_on 'lmdb' => :library
   depends_on 'openldap' => :library
   depends_on 'popt' => :library
   depends_on 'python3' => :library
