@@ -1,32 +1,36 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Xfconf < Package
+class Xfconf < Autotools
   description 'Xfce hierarchical (tree-like) configuration system'
   homepage 'https://xfce.org/'
-  version '4.14.3'
+  version '4.20.0'
   license 'GPL-2+'
-  compatibility 'all'
-  source_url 'https://archive.xfce.org/src/xfce/xfconf/4.14/xfconf-4.14.3.tar.bz2'
-  source_sha256 '589052a0efc6151c5fb5f438da463502a4fd91848cae7b9376d417be4c5a0c02'
-  binary_compression 'tar.xz'
+  compatibility 'aarch64 armv7l x86_64'
+  source_url "https://archive.xfce.org/src/xfce/xfconf/#{version.sub(/\.\d+$/, '')}/xfconf-#{version}.tar.bz2"
+  source_sha256 '8bc43c60f1716b13cf35fc899e2a36ea9c6cdc3478a8f051220eef0f53567efd'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '14c0ea331495d775cefe7d47d0ad3b916ca1b32cee886dcd526f6577d9e8e846',
-     armv7l: '14c0ea331495d775cefe7d47d0ad3b916ca1b32cee886dcd526f6577d9e8e846',
-       i686: '477b34ac827fc9765cfd099ff63904eb05d1f028eee93e40aa67540812306516',
-     x86_64: '9550ca9cf26bfd14b99997fd5cee8ef9b3b4045f3c7a88c9cb27e2f4a32d58c9'
+    aarch64: '57eb706adb57a4fb3860059b294b86c9f48779f0d7203dde8650e126de25ae8e',
+     armv7l: '57eb706adb57a4fb3860059b294b86c9f48779f0d7203dde8650e126de25ae8e',
+     x86_64: 'e8cb669059d2e45478a2d21f9ae1570800de8c09b3d2b4b19f72f83bc014be88'
   })
 
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gobject_introspection' # For --enable-gsettings-backend
-  depends_on 'libxfce4util'
+  depends_on 'libxfce4util' => :library
   depends_on 'vala' => :build
 
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS} --enable-gsettings-backend"
-    system "make -j#{CREW_NPROC}"
+  autotools_skip_autoreconf
+  autotools_configure_options '--enable-gsettings-backend'
+
+  def self.prebuild
+    ConvenienceFunctions.libtoolize('libglib-2.0', 'glib')
   end
 
-  def self.install
-    system "make install DESTDIR=#{CREW_DEST_DIR}"
+  autotools_install_extras do
+    FileUtils.rm_f "#{CREW_DEST_PREFIX}/lib/systemd/user/xfconfd.service"
   end
 end

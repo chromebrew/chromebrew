@@ -1,0 +1,2 @@
+#!/bin/bash
+di-edid-decode -h 2>&1

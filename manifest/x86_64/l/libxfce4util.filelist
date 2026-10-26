@@ -1,4 +1,4 @@
-# Total size: 1135525
+# Total size: 1112229
 /usr/local/include/xfce4/libxfce4util/libxfce4util-config.h
 /usr/local/include/xfce4/libxfce4util/libxfce4util.h
 /usr/local/include/xfce4/libxfce4util/xfce-consolekit.h
@@ -27,12 +27,8 @@
 /usr/local/share/gtk-doc/html/libxfce4util/XfceConsolekit.html
 /usr/local/share/gtk-doc/html/libxfce4util/XfceSystemd.html
 /usr/local/share/gtk-doc/html/libxfce4util/annotation-glossary.html
-/usr/local/share/gtk-doc/html/libxfce4util/api-index-4-18.html
-/usr/local/share/gtk-doc/html/libxfce4util/api-index-4-2.html
-/usr/local/share/gtk-doc/html/libxfce4util/api-index-4-20.html
-/usr/local/share/gtk-doc/html/libxfce4util/api-index-4-4.html
-/usr/local/share/gtk-doc/html/libxfce4util/api-index-deprecated.html
 /usr/local/share/gtk-doc/html/libxfce4util/api-index-full.html
+/usr/local/share/gtk-doc/html/libxfce4util/ch01.html
 /usr/local/share/gtk-doc/html/libxfce4util/home.png
 /usr/local/share/gtk-doc/html/libxfce4util/index.html
 /usr/local/share/gtk-doc/html/libxfce4util/left-insensitive.png
@@ -50,13 +46,8 @@
 /usr/local/share/gtk-doc/html/libxfce4util/libxfce4util-Xfce-Generics.html
 /usr/local/share/gtk-doc/html/libxfce4util/libxfce4util-Xfce-Kiosk-functions.html
 /usr/local/share/gtk-doc/html/libxfce4util/libxfce4util-Xfce-String-Functions.html
-/usr/local/share/gtk-doc/html/libxfce4util/libxfce4util-core.html
-/usr/local/share/gtk-doc/html/libxfce4util/libxfce4util-datatypes.html
-/usr/local/share/gtk-doc/html/libxfce4util/libxfce4util-fundamentals.html
-/usr/local/share/gtk-doc/html/libxfce4util/libxfce4util-session-management.html
-/usr/local/share/gtk-doc/html/libxfce4util/libxfce4util-utilities.html
 /usr/local/share/gtk-doc/html/libxfce4util/libxfce4util.devhelp2
-/usr/local/share/gtk-doc/html/libxfce4util/reference.html
+/usr/local/share/gtk-doc/html/libxfce4util/object-tree.html
 /usr/local/share/gtk-doc/html/libxfce4util/right-insensitive.png
 /usr/local/share/gtk-doc/html/libxfce4util/right.png
 /usr/local/share/gtk-doc/html/libxfce4util/style.css
@@ -80,6 +71,7 @@
 /usr/local/share/locale/es/LC_MESSAGES/libxfce4util.mo
 /usr/local/share/locale/et/LC_MESSAGES/libxfce4util.mo
 /usr/local/share/locale/eu/LC_MESSAGES/libxfce4util.mo
+/usr/local/share/locale/fa_IR/LC_MESSAGES/libxfce4util.mo
 /usr/local/share/locale/fi/LC_MESSAGES/libxfce4util.mo
 /usr/local/share/locale/fr/LC_MESSAGES/libxfce4util.mo
 /usr/local/share/locale/gl/LC_MESSAGES/libxfce4util.mo
@@ -117,6 +109,7 @@
 /usr/local/share/locale/sq/LC_MESSAGES/libxfce4util.mo
 /usr/local/share/locale/sr/LC_MESSAGES/libxfce4util.mo
 /usr/local/share/locale/sv/LC_MESSAGES/libxfce4util.mo
+/usr/local/share/locale/te/LC_MESSAGES/libxfce4util.mo
 /usr/local/share/locale/th/LC_MESSAGES/libxfce4util.mo
 /usr/local/share/locale/tr/LC_MESSAGES/libxfce4util.mo
 /usr/local/share/locale/ug/LC_MESSAGES/libxfce4util.mo
@@ -127,3 +120,4 @@
 /usr/local/share/locale/zh_CN/LC_MESSAGES/libxfce4util.mo
 /usr/local/share/locale/zh_HK/LC_MESSAGES/libxfce4util.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/libxfce4util.mo
+/usr/local/share/vala/vapi/libxfce4util-1.0.vapi
