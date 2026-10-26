@@ -3,7 +3,7 @@ require 'buildsystems/rust'
 class Tealdeer < RUST
   description 'A very fast implementation of tldr in Rust.'
   homepage 'https://tealdeer-rs.github.io/tealdeer/'
-  version '1.9.0'
+  version '1.9.1'
   license 'Apache-2.0, MIT'
   compatibility 'all'
   source_url 'https://github.com/tealdeer-rs/tealdeer.git'
