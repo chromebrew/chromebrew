@@ -11,10 +11,10 @@ class Tssh < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b023103b0aaebd903cd1df53a4f9f85d496504deda8190fbf7be5c573330bc60',
-     armv7l: 'b023103b0aaebd903cd1df53a4f9f85d496504deda8190fbf7be5c573330bc60',
-       i686: '3f68bc2d2d77d2358aed9c629c4c91dc6aae65cd25db3f6c2db0063aee429c02',
-     x86_64: 'bf2394c380a5a5ad9e9de68dc35cf4c6e0e0060f10b58cf8b1aa7a61e72d1552'
+    aarch64: '1d1fe77a0b8ca1e6758770ddbd3ec25d7b66ab69c2c20e855b1fbb15959edc44',
+     armv7l: '1d1fe77a0b8ca1e6758770ddbd3ec25d7b66ab69c2c20e855b1fbb15959edc44',
+       i686: '7558926c9c117521abdfd3e922d616e076bf643fd45ddd1a9d14c70318baf702',
+     x86_64: 'ca8a653070926f6ce55100a5897f52ee2df669da74f12483b49ffb4dfd9ea84d'
   })
 
   depends_on 'glibc' => :executable
