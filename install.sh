@@ -88,17 +88,6 @@ set -a
 : "${CREW_BRANCH:=${BRANCH}}"
 : "${CREW_REPO:=https://github.com/${OWNER}/${REPO}.git}"
 
-# Set CURL_HEADER if a Gitlab Token is available, to avoid Gitlab
-# rate limiting.
-if [[ -z "${GITLAB_TOKEN}" ]]; then
-  GITLAB_CURL_HEADER=
-  echo_info "GITLAB_TOKEN unavailable!"
-  echo_info "Please obtain and set if your Chromebrew install downloads are rate limited!"
-elif [[ $GITLAB_TOKEN == glpat* ]]; then
-  GITLAB_CURL_HEADER="--header \"PRIVATE-TOKEN: ${GITLAB_TOKEN}\""
-else
-  GITLAB_CURL_HEADER="--header \"DEPLOY-TOKEN: ${GITLAB_TOKEN}\""
-fi
 set +a
 
 : "${CREW_PREFIX:=/usr/local}"
@@ -377,7 +366,7 @@ function download_check () {
     # Download
     echo_intra "Downloading ${1}...from ${2}"
     if [[ "${2}" == *"gitlab.com/"* ]]; then
-      curl_wrapper '-#' -L "${2}" -o "${3}" || glab --repo chromebrew/Binaries packages download --name ${1} --version ${5}_${ARCH} --filename ${1}-${5}-chromeos-${ARCH}.${6}
+      curl_wrapper '-#' -L "${2}" -o "${3}" || glab --repo chromebrew/Binaries packages download --name "${1}" --version "${5}"_"${ARCH}" --filename "${1}"-"${5}"-chromeos-"${ARCH}"."${6}"
     else
       curl_wrapper '-#' -L "${2}" -o "${3}"
     fi
@@ -461,10 +450,10 @@ function extract_install () {
     if [[ "${2##*.}" == "gz" ]]; then
       tar xpf ../"${2}"
       if [[ "${1}" == *"glab"* ]]; then
-        mkdir -p .${CREW_PREFIX}/bin
-        mv bin/glab .${CREW_PREFIX}/bin/
+        mkdir -p ."${CREW_PREFIX}"/bin
+        mv bin/glab ."${CREW_PREFIX}"/bin/
         echo "${CREW_PREFIX}/bin" >> dlist
-        glab_size=$(du -b .${CREW_PREFIX}/bin/glab | awk '{print $1}')
+        glab_size=$(du -b ."${CREW_PREFIX}"/bin/glab | awk '{print $1}')
         echo -e "# Total size: $glab_size" >> filelist
         echo "${CREW_PREFIX}/bin/glab" >> filelist
       fi
@@ -597,7 +586,7 @@ for package in $BOOTSTRAP_PACKAGES; do
   fi
 
   if [[ $package == 'glab' ]]; then
-    url=$(sed -n '/source_url({/,/})/p' "${CREW_LIB_PATH}"/packages/glab.rb  | grep ${ARCH} | sed "s/#{version}/${version}/g" | grep -o \".*\" | tr -d '"')
+    url=$(sed -n '/source_url({/,/})/p' "${CREW_LIB_PATH}"/packages/glab.rb  | grep "${ARCH}" | sed "s/#{version}/${version}/g" | grep -o "\".*\"" | tr -d '"')
   else
     url="https://gitlab.com/api/v4/projects/26210301/packages/generic/${package}/${version}_${ARCH}/${package}-${version}-chromeos-${ARCH}.${binary_compression}"
   fi
