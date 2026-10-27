@@ -1,12 +1,12 @@
-# Total size: 22037963
+# Total size: 22030724
 /usr/local/bin/yt-dlp
-/usr/local/lib/python3.15/site-packages/yt_dlp-2026.10.21.dist-info/INSTALLER
-/usr/local/lib/python3.15/site-packages/yt_dlp-2026.10.21.dist-info/METADATA
-/usr/local/lib/python3.15/site-packages/yt_dlp-2026.10.21.dist-info/RECORD
-/usr/local/lib/python3.15/site-packages/yt_dlp-2026.10.21.dist-info/REQUESTED
-/usr/local/lib/python3.15/site-packages/yt_dlp-2026.10.21.dist-info/WHEEL
-/usr/local/lib/python3.15/site-packages/yt_dlp-2026.10.21.dist-info/entry_points.txt
-/usr/local/lib/python3.15/site-packages/yt_dlp-2026.10.21.dist-info/licenses/LICENSE
+/usr/local/lib/python3.15/site-packages/yt_dlp-2026.10.26.dist-info/INSTALLER
+/usr/local/lib/python3.15/site-packages/yt_dlp-2026.10.26.dist-info/METADATA
+/usr/local/lib/python3.15/site-packages/yt_dlp-2026.10.26.dist-info/RECORD
+/usr/local/lib/python3.15/site-packages/yt_dlp-2026.10.26.dist-info/REQUESTED
+/usr/local/lib/python3.15/site-packages/yt_dlp-2026.10.26.dist-info/WHEEL
+/usr/local/lib/python3.15/site-packages/yt_dlp-2026.10.26.dist-info/entry_points.txt
+/usr/local/lib/python3.15/site-packages/yt_dlp-2026.10.26.dist-info/licenses/LICENSE
 /usr/local/lib/python3.15/site-packages/yt_dlp/YoutubeDL.py
 /usr/local/lib/python3.15/site-packages/yt_dlp/__init__.py
 /usr/local/lib/python3.15/site-packages/yt_dlp/__main__.py
@@ -43,10 +43,6 @@
 /usr/local/lib/python3.15/site-packages/yt_dlp/compat/compat_utils.py
 /usr/local/lib/python3.15/site-packages/yt_dlp/compat/imghdr.py
 /usr/local/lib/python3.15/site-packages/yt_dlp/compat/shutil.py
-/usr/local/lib/python3.15/site-packages/yt_dlp/compat/urllib/__init__.py
-/usr/local/lib/python3.15/site-packages/yt_dlp/compat/urllib/__pycache__/__init__.cpython-315.pyc
-/usr/local/lib/python3.15/site-packages/yt_dlp/compat/urllib/__pycache__/request.cpython-315.pyc
-/usr/local/lib/python3.15/site-packages/yt_dlp/compat/urllib/request.py
 /usr/local/lib/python3.15/site-packages/yt_dlp/cookies.py
 /usr/local/lib/python3.15/site-packages/yt_dlp/dependencies/Cryptodome.py
 /usr/local/lib/python3.15/site-packages/yt_dlp/dependencies/__init__.py
