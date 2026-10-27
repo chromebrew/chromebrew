@@ -231,7 +231,7 @@ def external_downloader(uri, filename = File.basename(url), verbose: false)
 
   # use CREW_DOWNLOADER if specified, use curl by default
   downloader_cmdline = CREW_DOWNLOADER || curl_cmdline
-  puts "downloader_cmdline=#{downloader_cmdline}" if CREW_VERBOSE
+  puts "downloader_cmdline=#{downloader_cmdline}" if verbose
 
   return system(
     format(downloader_cmdline,
