@@ -1,3 +1,4 @@
-# Total size: 25623
+# Total size: 26417
+/usr/local/lib64/xorg/modules/drivers/fbdev_drv.la
 /usr/local/lib64/xorg/modules/drivers/fbdev_drv.so
-/usr/local/share/man/man4/fbdev.4
+/usr/local/share/man/man4/fbdev.4.zst
