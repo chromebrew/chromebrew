@@ -40,16 +40,20 @@ class Command
     end
 
     git = true unless pkg.git_hashtag.to_s.empty?
+    @curl_header = GITLAB_TOKEN.nil? ? '' : "--header '#{CREW_GITLAB_TOKEN_LABEL}: #{GITLAB_TOKEN}'"
     gitlab_binary_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{pkg.name}/#{pkg.version}_#{ARCH}/#{pkg.name}-#{pkg.version}-chromeos-#{ARCH}.#{pkg.binary_compression}"
 
-    if (pkg.cache_build? || CREW_CACHE_BUILD) && !File.file?(build_cachefile) && !pkg.no_source_build? && !File.file?(File.join(CREW_CACHE_DIR, "#{pkg.name}-#{pkg.version}-chromeos-#{ARCH}.#{pkg.binary_compression}")) && `curl -fsI #{gitlab_binary_url}`.lines.first.split[1] != '200'
+    gitlab_rate_limited = `curl #{@curl_header} -fsI #{gitlab_binary_url}`.lines.first.split[1] == '429'
+    puts 'Gitlab has rate limited you!'.lightred if gitlab_rate_limited
+
+    if (pkg.cache_build? || CREW_CACHE_BUILD) && !File.file?(build_cachefile) && !pkg.no_source_build? && !File.file?(File.join(CREW_CACHE_DIR, "#{pkg.name}-#{pkg.version}-chromeos-#{ARCH}.#{pkg.binary_compression}")) && (!%w[200 429].include? `curl #{@curl_header} -fsI #{gitlab_binary_url}`.lines.first.split[1])
 
       build_cache_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{pkg.name}/#{pkg.version}_#{ARCH}_build/#{pkg.name}-#{pkg.version}-build-#{ARCH}.tar.zst"
       puts 'Checking for cached build...'.orange
       # Does a remote build artifact exist?
       puts build_cache_url if verbose
-      puts "curl -fsI #{build_cache_url}" if verbose
-      if `curl -fsI #{build_cache_url}`.lines.first.split[1] == '200'
+      puts "curl {@curl_header} -fsI #{build_cache_url}" if verbose
+      if `curl {@curl_header} -fsI #{build_cache_url}`.lines.first.split[1] == '200'
         gitlab_pkginfo = PackageUtils.get_gitlab_pkginfo(pkg.name, pkg.version, ARCH, true, true)
         gitlab_build_artifact_sha256 = gitlab_pkginfo[:pkg_sha256]
         gitlab_build_artifact_date = gitlab_pkginfo[:pkg_upload_date]
@@ -87,7 +91,12 @@ class Command
           end
         end
         # Download file if not cached.
-        downloader url, sha256sum, filename, pkg, verbose: verbose
+        if gitlab_rate_limited && File.which('glab')
+          puts "Attempting gitlab fallback for download of #{pkg.name} binaries...".orange
+          system "glab --repo chromebrew/Binaries packages download --name #{pkg.name} --version #{pkg.version}_#{ARCH} --filename #{pkg.name}-#{pkg.version}-chromeos-#{ARCH}.#{pkg.binary_compression} --path ."
+        else
+          downloader url, sha256sum, filename, pkg, verbose: verbose
+        end
 
         puts "#{pkg.name.capitalize} archive downloaded.".lightgreen
         # Stow file in cache if requested, if cachefile does not exist, and cache is writable.
