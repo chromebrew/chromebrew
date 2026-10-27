@@ -3,12 +3,12 @@ require 'package'
 class Unsloth < Package
   description 'Local UI to run and train LLMs and diffusion models'
   homepage 'https://unsloth.ai/'
-  version '0.1.910-beta'
+  version '0.1.911-beta'
   license 'Apache-2.0, AGPL-3.0'
   compatibility 'x86_64'
   min_glibc '2.30'
   source_url "https://github.com/unslothai/unsloth/releases/download/v#{version}/Unsloth-Desktop-Linux.AppImage"
-  source_sha256 'e4093d67fa2a7348ca773e09f5bc598232d605d21a01af517eea0880ed736d1f'
+  source_sha256 'f9c9d00f3c29da97701c83f288023e06e8df1a9d437119951c684c4f5480fddb'
 
   no_compile_needed
   no_shrink
