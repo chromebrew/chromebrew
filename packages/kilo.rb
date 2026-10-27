@@ -3,11 +3,11 @@ require 'package'
 class Kilo < Package
   description 'All-in-one agentic engineering platform.'
   homepage 'https://kilo.ai/'
-  version '7.8.17'
+  version '7.8.18'
   license 'MIT'
   compatibility 'x86_64'
   source_url "https://github.com/Kilo-Org/kilocode/releases/download/v#{version}/kilo-linux-x64.tar.gz"
-  source_sha256 '73491b15e9816fa1c982331ff4d8418e5aa9fd6d861853ab4c81935200ae8f6a'
+  source_sha256 '503561fb8c4b8ede26703457a912b98cf18c9c9e8961649f3718cf7676b5c02a'
 
   no_compile_needed
 
