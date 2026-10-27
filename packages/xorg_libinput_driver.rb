@@ -1,38 +1,29 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Xorg_libinput_driver < Package
+class Xorg_libinput_driver < Autotools
   description 'The X.Org Libinput Driver is a thin wrapper around libinput and allows for libinput to be used for input devices in X. This driver can be used as drop-in replacement for evdev and synaptics.'
   homepage 'https://www.x.org/wiki/'
-  version '0.27.1'
+  version '1.5.0'
   license 'ISC'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://www.x.org/pub/individual/driver/xf86-input-libinput-0.27.1.tar.bz2'
-  source_sha256 'd4ad8dc5ad6f962a3f15f61ba9e9f8e37fa0b57eee9f484e2bd721d60ca72ee6'
-  binary_compression 'tar.xz'
+  source_url 'https://gitlab.freedesktop.org/xorg/driver/xf86-input-libinput.git'
+  git_hashtag "xf86-input-libinput-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a053e2e55ad706913c2cafcca3a4f6da585e315c672bebafadc6844dc75f3663',
-     armv7l: 'a053e2e55ad706913c2cafcca3a4f6da585e315c672bebafadc6844dc75f3663',
-     x86_64: 'f3687b252e47e08cabe31e7c7d09f00c456b875eaa0826b2de446d70674c4727'
+    aarch64: '30965b8989d5fd90ad1165a0f68e104c5ba7d593858a65a20774ade5f89ad608',
+     armv7l: '30965b8989d5fd90ad1165a0f68e104c5ba7d593858a65a20774ade5f89ad608',
+     x86_64: 'b21e1056462c287cce5d1428091edb9995f7c6fcee0963bf75407e4f43c5567a'
   })
 
-  depends_on 'libinput'
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'libinput' => :library
   depends_on 'xorg_server' => :build
-
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--enable-shared',
-           '--disable-static'
-    system 'make'
-  end
-
-  def self.check
-    system "make -j#{CREW_NPROC} check"
-  end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install-strip'
   end
+
+  run_tests
 end
