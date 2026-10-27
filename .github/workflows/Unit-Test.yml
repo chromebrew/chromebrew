@@ -1,5 +1,5 @@
 ---
-# Version 2.3
+# Version 2.4
 name: Unit Tests
 on:
   check_run:
@@ -323,6 +323,7 @@ jobs:
                 -e GCONV_PATH="/usr/local/lib${LIB_SUFFIX}/gconv" \
                 -e CREW_REPO="${CREW_REPO}" \
                 -e CREW_BRANCH="${CREW_BRANCH}" \
+                -e GITLAB_TOKEN="${{ secrets.GITLAB_TOKEN }}" \
                 --tmpfs /tmp \
                 --ulimit "nofile=$(ulimit -Sn):$(ulimit -Hn)" \
                 "${CONTAINER}" \
