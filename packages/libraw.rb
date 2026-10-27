@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Libraw < Autotools
   description 'Raw image decoder library'
   homepage 'https://www.libraw.org'
-  version '0.22.2'
+  version '0.22.3'
   license 'LGPL-2.1 and CDDL'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.libraw.org/data/LibRaw-#{version}.tar.gz"
-  source_sha256 'de86b035655accff8d4010f1a221fdf50d353cb7b1422ba26f14a0db92612cfa'
+  source_sha256 '789f3c33466210a1a0907f747a97c715d21bbf4af712f257fcbbd90111b227e4'
   binary_compression 'tar.zst'
 
   binary_sha256({
