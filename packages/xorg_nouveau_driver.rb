@@ -1,34 +1,28 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Xorg_nouveau_driver < Package
+class Xorg_nouveau_driver < Autotools
   description 'The Xorg Nouveau Driver package contains the X.Org Video Driver for NVidia Cards including RIVA TNT, RIVA TNT2, GeForce 256, QUADRO, GeForce2, QUADRO2, GeForce3, QUADRO DDC, nForce, nForce2, GeForce4, QUADRO4, GeForce FX, QUADRO FX, GeForce 6XXX and GeForce 7xxx chipsets.'
   homepage 'https://01.org/linuxgraphics/'
-  version '1.0.15'
+  version '1.0.18'
   license 'custom'
-  compatibility 'all'
-  source_url 'https://www.x.org/pub/individual/driver/xf86-video-nouveau-1.0.15.tar.bz2'
-  source_sha256 'aede10fd395610a328697adca3434fb14e9afbd79911d6c8545cfa2c0e541d4c'
-  binary_compression 'tar.xz'
+  compatibility 'aarch64 armv7l x86_64'
+  source_url 'https://gitlab.freedesktop.org/xorg/driver/xf86-video-nouveau.git'
+  git_hashtag "xf86-video-nouveau-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '117d2cc14d320b1cdbe5e3f792022b796779d289553a8213607b132ee442090e',
-     armv7l: '117d2cc14d320b1cdbe5e3f792022b796779d289553a8213607b132ee442090e',
-       i686: 'fcd85ec40d2cb137fe5aae2ffd46a71b25e391b245da1405a1369c25f59af522',
-     x86_64: '2f9589c902856d1b103ba62945fbad7b4a35ba8e9725d8f135d7d9b6ed7b0afb'
+    aarch64: '9d8b4c822e90758b69b3c0b825d3d2eb5c53ee31d854bfb82aca96ea227d9d3d',
+     armv7l: '9d8b4c822e90758b69b3c0b825d3d2eb5c53ee31d854bfb82aca96ea227d9d3d',
+     x86_64: '7410359648d22b2194510a6a26b36c2782999a01160d9cc7617b4202fa2f42bd'
   })
 
+  depends_on 'eudev' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'libdrm' => :library
   depends_on 'xorg_server' => :build
 
   # The new “Maxwell” and “Pascal” GPUs require Glamor to be built with the Xorg server.
-
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--enable-shared',
-           '--disable-static'
-    system 'make'
-  end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install-strip'
