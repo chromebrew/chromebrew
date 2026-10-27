@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Hunspell_base < Autotools
   description 'Hunspell is a spell checker and morphological analyzer library'
   homepage 'http://hunspell.github.io/'
-  version '1.7.5'
+  version '1.7.6'
   license 'MPL-1.1, GPL-2 and LGPL-2.1'
   compatibility 'all'
   source_url 'https://github.com/hunspell/hunspell.git'
