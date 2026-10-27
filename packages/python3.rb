@@ -3,18 +3,18 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  version '3.15.0'
+  version '3.15.2'
   license 'PSF-2.0'
   compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{version}/Python-#{version}.tar.xz"
-  source_sha256 'ba4bed1ba346b916890b76d9e320451420aa69f6408997d33c66482eeae3d575'
+  source_sha256 '8b5536d280142ecf6cdfe15d12a21ba1c65e300bbf7b28a8d0cdb849575797de'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'af123c38b846209df456b844dbe57ebab223db152babd7c652a2f4171f736cf8',
-     armv7l: 'af123c38b846209df456b844dbe57ebab223db152babd7c652a2f4171f736cf8',
-       i686: '4f6a61975c4af3a78db526ff2cb168d522b3f77821419ea78729d8f878bc9152',
-     x86_64: 'c91ab2021c6557618d20bbc39c0ddabc2aafb1f06123fd6e97c592e0e9567bf4'
+    aarch64: '223ba4c6615cb72427b8e05449b44d2872486e59b07226efd53b87901e613bd3',
+     armv7l: '223ba4c6615cb72427b8e05449b44d2872486e59b07226efd53b87901e613bd3',
+       i686: 'f8ae277b1114b0fb1bf096128b4e89d294ab9f48cb301d75b655df6199a7db54',
+     x86_64: '129481be04ed192cf3c2b41595672a7d07283c386f2f863d434583b4d68eec08'
   })
 
   depends_on 'autoconf_archive' => :build
