@@ -8,8 +8,15 @@ class Crew_profile_base < Package
   compatibility 'all'
   source_url "https://github.com/chromebrew/crew-profile-base/archive/refs/tags/#{version}.tar.gz"
   source_sha256 'a8a91526591df42c984fc901139904401ebc9b0233f116221a599a26f066f785'
+  binary_compression 'tar.zst'
 
-  no_compile_needed
+  binary_sha256({
+    aarch64: '4f1fda01b8adf3c5ce33c13aea1929a0313a4f97a355cf6ce2eeb7b49e09be67',
+     armv7l: '4f1fda01b8adf3c5ce33c13aea1929a0313a4f97a355cf6ce2eeb7b49e09be67',
+       i686: '28481f4d21021bc91dd256306b9751edc93b06fd8e13b994164f0849f1882588',
+     x86_64: '25f95796b20c378d9956247a53e478dba80f8e774f39870bad438cd5890402fa'
+  })
+
   print_source_bashrc
 
   def self.install
@@ -75,8 +82,8 @@ class Crew_profile_base < Package
     puts 'Choose your default pager:'.yellow
     @pager_options = [
       { value: 'most', description: 'Most Pager' },
-      { value: 'more',  description: 'More Pager' },
-      { value: 'less',  description: 'Less Pager' }
+      { value: 'more', description: 'More Pager' },
+      { value: 'less', description: 'Less Pager' }
     ]
 
     @pager_default = Selector.new(@pager_options).show_prompt
