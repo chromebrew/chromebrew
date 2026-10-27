@@ -1,4 +1,4 @@
-# Total size: 481709896
+# Total size: 482091870
 /usr/local/bin/appflowy
 /usr/local/share/AppFlowy/AppFlowy
 /usr/local/share/AppFlowy/data/flutter_assets/AssetManifest.bin
@@ -13,6 +13,7 @@
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/5_columns.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/add.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/add_cover.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/add_emoji.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/add_icon.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/add_less_padding.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/16x/add_thin.svg
@@ -670,6 +671,7 @@
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/action_pin_language.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/action_wrap_code.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/add_comment_reaction.svg
+/usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/add_emoji.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/advanced.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/ai.svg
 /usr/local/share/AppFlowy/data/flutter_assets/assets/flowy_icons/20x/ai_block.svg
