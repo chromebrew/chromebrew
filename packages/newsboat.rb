@@ -11,9 +11,9 @@ class Newsboat < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6695a1c3398f2fd40891b9eb580b8741c23fa578bc6d223b2b1376affd0b1657',
-     armv7l: '6695a1c3398f2fd40891b9eb580b8741c23fa578bc6d223b2b1376affd0b1657',
-     x86_64: '8d1d0f327773241c34e865be5faa2f8430dc414a4ecb71ecfd46c47f995beb0e'
+    aarch64: '972fa45c7424ec376509ea0868a95fa2e351fd907bb5bf6a088e51231fbb8244',
+     armv7l: '972fa45c7424ec376509ea0868a95fa2e351fd907bb5bf6a088e51231fbb8244',
+     x86_64: 'fde193eeb1209cac4690ccecfd51fa5c951bd02ea9efdaab4e232c6563be93dc'
   })
 
   depends_on 'curl' => :executable
