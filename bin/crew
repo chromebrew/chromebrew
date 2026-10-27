@@ -1340,7 +1340,8 @@ def update_package_file(package = nil, pkg_version = nil, binary_compression = n
     binary_sha256_hash[arch.to_sym] = @pkg.binary_sha256[arch.to_sym] if @pkg.binary_sha256&.key?(arch.to_sym)
     starting_binary_sha256_hash[arch.to_sym] = @pkg.binary_sha256[arch.to_sym] if @pkg.binary_sha256&.key?(arch.to_sym)
     remote_binary_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{package}/#{pkg_version}_#{arch}/#{package}-#{pkg_version}-chromeos-#{arch}.#{binary_compression}"
-    remote_binary = `curl -fsI #{remote_binary_url}`.lines.first.split[1] == '200'
+    @curl_header = GITLAB_TOKEN.nil? ? '' : "--header '#{CREW_GITLAB_TOKEN_LABEL}: #{GITLAB_TOKEN}'"
+    remote_binary = `curl #{@curl_header} -fsI #{remote_binary_url}`.lines.first.split[1] == '200'
     next unless remote_binary
     puts "\e[1A\e[KRemote #{package} package binary exists for #{arch}.\r".green
     binary_sha256_hash[arch.to_sym] = PackageUtils.get_gitlab_pkginfo(package, pkg_version, arch, false, true)[:pkg_sha256]
@@ -1521,7 +1522,8 @@ def upload(pkg_name = nil, pkg_version = nil, binary_compression = nil)
 
       # 3c. Check to see if an existing upload exists.
       puts "\e[1A\e[KChecking for existing upload ...\r".orange
-      remote_binary = `curl -fsI #{new_url}`.lines.first.split[1] == '200'
+      @curl_header = GITLAB_TOKEN.nil? ? '' : "--header '#{CREW_GITLAB_TOKEN_LABEL}: #{GITLAB_TOKEN}'"
+      remote_binary = `curl #{@curl_header} -fsI #{new_url}`.lines.first.split[1] == '200'
       gitlab_remote_binary_sha256 = PackageUtils.get_gitlab_pkginfo(package, new_version, arch, false, true)[:pkg_sha256] if remote_binary
 
       # 3d. Check for local binary.
@@ -1534,7 +1536,8 @@ def upload(pkg_name = nil, pkg_version = nil, binary_compression = nil)
         #     download it.
         puts "Downloading remote binary for #{new_version}_#{arch}"
         FileUtils.mkdir_p release_dir
-        system "curl -Ls #{new_url} > #{local_tarfile}"
+        @curl_header = GITLAB_TOKEN.nil? ? '' : "--header '#{CREW_GITLAB_TOKEN_LABEL}: #{GITLAB_TOKEN}'"
+        system "curl #{@curl_header} -Ls #{new_url} > #{local_tarfile}"
       else
         local_binary = true
         puts "\e[1A\e[KLocal package binary exists.\n".green

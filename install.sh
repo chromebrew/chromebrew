@@ -1,5 +1,5 @@
 #!/bin/bash
-CREW_INSTALLER_VERSION=2026101101
+CREW_INSTALLER_VERSION=2026102701
 export CREW_INSTALLER_RUNNING=1
 # Exit on fail.
 set -eE
@@ -87,6 +87,18 @@ set -a
 : "${BRANCH:=master}"
 : "${CREW_BRANCH:=${BRANCH}}"
 : "${CREW_REPO:=https://github.com/${OWNER}/${REPO}.git}"
+
+# Set CURL_HEADER if a Gitlab Token is available, to avoid Gitlab
+# rate limiting.
+if [[ -z "${GITLAB_TOKEN}" ]]; then
+  GITLAB_CURL_HEADER=
+  echo_info "GITLAB_TOKEN unavailable!"
+  echo_info "Please obtain and set if your Chromebrew install downloads are rate limited!"
+elif [[ $GITLAB_TOKEN == glpat* ]]; then
+  GITLAB_CURL_HEADER="--header \"PRIVATE-TOKEN: ${GITLAB_TOKEN}\""
+else
+  GITLAB_CURL_HEADER="--header \"DEPLOY-TOKEN: ${GITLAB_TOKEN}\""
+fi
 set +a
 
 : "${CREW_PREFIX:=/usr/local}"
@@ -362,7 +374,11 @@ function download_check () {
     fi
     # Download
     echo_intra "Downloading ${1}..."
-    curl_wrapper '-#' -L "${2}" -o "${3}"
+    if [[ "${2}" == *"gitlab.com/"* ]]; then
+      curl_wrapper '-#' "${GITLAB_CURL_HEADER}" -L "${2}" -o "${3}"
+    else
+      curl_wrapper '-#' -L "${2}" -o "${3}"
+    fi
 
     # Verify
     echo_intra "Verifying ${1}..."

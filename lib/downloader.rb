@@ -146,7 +146,9 @@ def http_downloader(uri, filename = File.basename(url), verbose: false)
     ca_file:     SSL_CERT_FILE,
     ca_path:     SSL_CERT_DIR
   }) do |http|
-    http.request(Net::HTTP::Get.new(uri)) do |response|
+    req = Net::HTTP::Get.new(uri)
+    req[CREW_GITLAB_TOKEN_LABEL.to_s] = GITLAB_TOKEN if !uri.host[/gitlab.com$/i].nil? && !GITLAB_TOKEN.nil?
+    http.request(req) do |response|
       case
       when response.is_a?(Net::HTTPSuccess)
         # Response is successful, don't abort
@@ -223,10 +225,13 @@ def external_downloader(uri, filename = File.basename(url), verbose: false)
   # Only bypass this when we are using the system curl early in install.
   @curl_binary = File.which('curl_static') && `curl_static --version` ? File.which('curl_static') : File.which('curl')
 
-  curl_cmdline = ARCH == 'i686' && @curl_binary == '/usr/bin/curl' ? "#{@curl_binary} %<verbose>s -kL -# --retry %<retry>s %<url>s -o %<output>s" : "#{@curl_binary} %<verbose>s -L -# --retry %<retry>s %<url>s -o %<output>s"
+  @curl_header = !uri.host[/gitlab.com$/i].nil? && !GITLAB_TOKEN.nil? ? "--header '#{CREW_GITLAB_TOKEN_LABEL}: #{GITLAB_TOKEN}'" : ''
+
+  curl_cmdline = ARCH == 'i686' && @curl_binary == '/usr/bin/curl' ? "#{@curl_binary} %<verbose>s -kL -# #{@curl_header} --retry %<retry>s %<url>s -o %<output>s" : "#{@curl_binary} %<verbose>s -L -# #{@curl_header} --retry %<retry>s %<url>s -o %<output>s"
 
   # use CREW_DOWNLOADER if specified, use curl by default
   downloader_cmdline = CREW_DOWNLOADER || curl_cmdline
+  puts "downloader_cmdline=#{downloader_cmdline}" if CREW_VERBOSE
 
   return system(
     format(downloader_cmdline,
