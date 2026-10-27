@@ -6,11 +6,11 @@ require 'buildsystems/autotools'
 class Nmap < Autotools
   description 'Utility for network discovery and security auditing'
   homepage 'https://nmap.org/'
-  version '7.992'
+  version '7.993'
   license 'GPL2'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://nmap.org/dist/nmap-#{version}.tar.bz2"
-  source_sha256 '0c12660eddbf7eabeff6996cb0c044a4eadf2bb0c6fbcb340d6cf72b1caee402'
+  source_sha256 '270e55f04915bfcecb5db8feb959d4c5ba86a48c094520a4f1c07571e1c79c59'
   binary_compression 'tar.zst'
 
   binary_sha256({
