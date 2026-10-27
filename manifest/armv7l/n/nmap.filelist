@@ -1,4 +1,4 @@
-# Total size: 33343186
+# Total size: 33360128
 /usr/local/bin/ncat
 /usr/local/bin/ndiff
 /usr/local/bin/nmap
@@ -147,16 +147,16 @@
 /usr/local/lib/python3.15/site-packages/radialnet/util/geometry.py
 /usr/local/lib/python3.15/site-packages/radialnet/util/integration.py
 /usr/local/lib/python3.15/site-packages/radialnet/util/misc.py
-/usr/local/lib/python3.15/site-packages/zenmap-7.992.dist-info/INSTALLER
-/usr/local/lib/python3.15/site-packages/zenmap-7.992.dist-info/METADATA
-/usr/local/lib/python3.15/site-packages/zenmap-7.992.dist-info/RECORD
-/usr/local/lib/python3.15/site-packages/zenmap-7.992.dist-info/REQUESTED
-/usr/local/lib/python3.15/site-packages/zenmap-7.992.dist-info/WHEEL
-/usr/local/lib/python3.15/site-packages/zenmap-7.992.dist-info/direct_url.json
-/usr/local/lib/python3.15/site-packages/zenmap-7.992.dist-info/entry_points.txt
-/usr/local/lib/python3.15/site-packages/zenmap-7.992.dist-info/licenses/COPYING_HIGWIDGETS
-/usr/local/lib/python3.15/site-packages/zenmap-7.992.dist-info/licenses/LICENSE
-/usr/local/lib/python3.15/site-packages/zenmap-7.992.dist-info/top_level.txt
+/usr/local/lib/python3.15/site-packages/zenmap-7.993.dist-info/INSTALLER
+/usr/local/lib/python3.15/site-packages/zenmap-7.993.dist-info/METADATA
+/usr/local/lib/python3.15/site-packages/zenmap-7.993.dist-info/RECORD
+/usr/local/lib/python3.15/site-packages/zenmap-7.993.dist-info/REQUESTED
+/usr/local/lib/python3.15/site-packages/zenmap-7.993.dist-info/WHEEL
+/usr/local/lib/python3.15/site-packages/zenmap-7.993.dist-info/direct_url.json
+/usr/local/lib/python3.15/site-packages/zenmap-7.993.dist-info/entry_points.txt
+/usr/local/lib/python3.15/site-packages/zenmap-7.993.dist-info/licenses/COPYING_HIGWIDGETS
+/usr/local/lib/python3.15/site-packages/zenmap-7.993.dist-info/licenses/LICENSE
+/usr/local/lib/python3.15/site-packages/zenmap-7.993.dist-info/top_level.txt
 /usr/local/lib/python3.15/site-packages/zenmapCore/BasePaths.py
 /usr/local/lib/python3.15/site-packages/zenmapCore/DelayedObject.py
 /usr/local/lib/python3.15/site-packages/zenmapCore/Diff.py
