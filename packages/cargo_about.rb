@@ -6,7 +6,7 @@ require 'buildsystems/rust'
 class Cargo_about < RUST
   description 'Cargo plugin to generate list of all licenses for a crate'
   homepage 'https://github.com/EmbarkStudios/cargo-about'
-  version '0.9.2'
+  version '0.9.3'
   license 'Apache MIT'
   compatibility 'all'
   source_url 'https://github.com/EmbarkStudios/cargo-about.git'
