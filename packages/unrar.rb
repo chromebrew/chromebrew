@@ -3,11 +3,11 @@ require 'package'
 class Unrar < Package
   description 'UnRAR is a powerful archive extractor.'
   homepage 'https://www.rarlab.com/'
-  version '7.3.1'
+  version '7.3.2'
   license 'unRAR'
   compatibility 'all'
   source_url "https://www.rarlab.com/rar/unrarsrc-#{version}.tar.gz"
-  source_sha256 '634900842a3737d9cc15bbcc71d4c74cc713437e0bca296a573424fe5f2660ab'
+  source_sha256 'f61a1160d6e2ebbda2ad353c8e82f62ab4312f97fde23c6c2c982d25e0014f99'
   binary_compression 'tar.zst'
 
   binary_sha256({
