@@ -11,12 +11,13 @@ class Hurl < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '3147be4ef0172eee0e18c29abf9fa700b4e12cbde4240d53456147646ce4adc0'
+     x86_64: '225a9e5590b83d02dc69deb145a9102cce607ca4ae8c35974d238a29af97cdb6'
   })
 
   depends_on 'curl' => :executable
   depends_on 'gcc_lib' => :executable
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'libxml2' => :executable
   depends_on 'llvm_dev' => :build
   depends_on 'openssl' => :build
