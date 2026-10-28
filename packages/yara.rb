@@ -11,10 +11,10 @@ class Yara < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a4be8fac6c81b03ad01bc006e702b9e9c0ae1cd0b499b8cfdeee43eb0d77cb37',
-     armv7l: 'a4be8fac6c81b03ad01bc006e702b9e9c0ae1cd0b499b8cfdeee43eb0d77cb37',
-       i686: '6361816f374607d92d8420ed38f85a654ec8351dcdabaf7e94dd3666bc083ea3',
-     x86_64: 'e7a67ae29395bbb788c3ee55831517cd116bb60964d22753a694e601310ee772'
+    aarch64: '06cd2814399e204c98aafe0a4a66237798dd7fb85c87b1262bb58b3b9e193ea0',
+     armv7l: '06cd2814399e204c98aafe0a4a66237798dd7fb85c87b1262bb58b3b9e193ea0',
+       i686: '192484a8b7bc1fc1082ab00583ce3317f8d6b00b73c467a9f5a5ec8a8afb7244',
+     x86_64: '24a01482507427b2c8fbc4b23f3d78d749c22472aac3821b4618e3dfa7a58f4e'
   })
 
   depends_on 'glibc' => :library
