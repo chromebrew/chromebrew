@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Siege < Autotools
   description 'Siege is an http load testing and benchmarking utility.'
   homepage 'https://www.joedog.org/siege-home/'
-  version '4.2.0'
+  version '4.2.2'
   license 'GPL-3'
   compatibility 'all'
   source_url "https://download.joedog.org/siege/siege-#{version}.tar.gz"
-  source_sha256 '78af482fc655f1cf7270fdbc3171581ed4cb3163009f7f4f056fc2b7e2d24453'
+  source_sha256 'c0d5bfac11086aeb3828888a71bf276ed54c9fa0f0af2ead981d2b2fa242141b'
   binary_compression 'tar.zst'
 
   binary_sha256({
