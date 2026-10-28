@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Yara < Autotools
   description 'The pattern matching swiss knife for malware researchers (and everyone else).'
   homepage 'https://virustotal.github.io/yara/'
-  version '4.5.8'
+  version '4.6.0'
   license 'BSD-3 Clause'
   compatibility 'all'
   source_url 'https://github.com/VirusTotal/yara.git'
