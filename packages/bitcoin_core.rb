@@ -3,7 +3,7 @@ require 'package'
 class Bitcoin_core < Package
   description 'Bitcoin Core is a full Bitcoin client and builds the backbone of the network.'
   homepage 'https://bitcoincore.org/'
-  version '31.1'
+  version '32.1'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.29'
@@ -13,9 +13,9 @@ class Bitcoin_core < Package
      x86_64: "https://bitcoincore.org/bin/bitcoin-core-#{version}/bitcoin-#{version}-x86_64-linux-gnu.tar.gz"
   })
   source_sha256({
-    aarch64: '66b2b45359efa161031a49898f96aa7cf1455db46ca6102acd16a7197dc3b96f',
-     armv7l: '66b2b45359efa161031a49898f96aa7cf1455db46ca6102acd16a7197dc3b96f',
-     x86_64: 'b80d9c3e04da78fb6f0569685673418cf686fadba9042d926d13fb87ff503f9e'
+    aarch64: 'd3eb66edc34be230667d925a30e2b590c0671cd65e0302bfc5c6aa57fd3eb9a6',
+     armv7l: 'd3eb66edc34be230667d925a30e2b590c0671cd65e0302bfc5c6aa57fd3eb9a6',
+     x86_64: '61545c17c3120fb7412f896d248b11993af04ec8817aad3649c55b2afb044963'
   })
 
   # Dependencies needed for bitcoin-qt
