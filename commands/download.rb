@@ -43,7 +43,13 @@ class Command
     @curl_header = GITLAB_TOKEN.nil? ? '' : "--header '#{CREW_GITLAB_TOKEN_LABEL}: #{GITLAB_TOKEN}'"
     gitlab_binary_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{pkg.name}/#{pkg.version}_#{ARCH}/#{pkg.name}-#{pkg.version}-chromeos-#{ARCH}.#{pkg.binary_compression}"
 
-    gitlab_rate_limited = `curl #{@curl_header} -fsI #{gitlab_binary_url}`.lines.first.split[1] == '429'
+    begin
+      gitlab_rate_limited = `curl #{@curl_header} -fsI #{gitlab_binary_url}`.lines.first.split[1] == '429'
+    rescue NoMethodError => e
+      puts e
+      system "curl #{@curl_header} -fsI #{gitlab_binary_url}"
+      gitlab_rate_limited = true
+    end
     puts 'Gitlab has rate limited you!'.lightred if gitlab_rate_limited
 
     if (pkg.cache_build? || CREW_CACHE_BUILD) && !File.file?(build_cachefile) && !pkg.no_source_build? && !File.file?(File.join(CREW_CACHE_DIR, "#{pkg.name}-#{pkg.version}-chromeos-#{ARCH}.#{pkg.binary_compression}")) && (!%w[200 429].include? `curl #{@curl_header} -fsI #{gitlab_binary_url}`.lines.first.split[1])
