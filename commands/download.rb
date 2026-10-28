@@ -45,12 +45,12 @@ class Command
 
     begin
       gitlab_rate_limited = `curl #{@curl_header} -fsI #{gitlab_binary_url}`.lines.first.split[1] == '429'
-    rescue NoMethodError => e
-      puts e
+    rescue StandardError => e
+      puts "Unexpected error: #{e.message}"
       system "curl #{@curl_header} -fsI #{gitlab_binary_url}"
       gitlab_rate_limited = true
     end
-    puts 'Gitlab has rate limited you!'.lightred if gitlab_rate_limited
+    puts 'Gitlab may have rate limited you!'.lightred if gitlab_rate_limited
 
     if (pkg.cache_build? || CREW_CACHE_BUILD) && !File.file?(build_cachefile) && !pkg.no_source_build? && !File.file?(File.join(CREW_CACHE_DIR, "#{pkg.name}-#{pkg.version}-chromeos-#{ARCH}.#{pkg.binary_compression}")) && (!%w[200 429].include? `curl #{@curl_header} -fsI #{gitlab_binary_url}`.lines.first.split[1])
 
