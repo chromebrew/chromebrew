@@ -11,10 +11,10 @@ class Nim < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f2e4d57db2fddf0120473135f211afb106ac279e3614e66e1ca95feff1413209',
-     armv7l: 'f2e4d57db2fddf0120473135f211afb106ac279e3614e66e1ca95feff1413209',
-       i686: 'e31c9827f2ab6006dc94b710235f7a312ab405ffa9462a86c68605e2fe3a2920',
-     x86_64: '48cc4c585c8aebb9f159b2351aa92949730cf5d554d3997985a2063ff4455005'
+    aarch64: '8dce3649e96ae9042b584ed35f888c52ba1deb1873f887ad4a785b6e99751f9f',
+     armv7l: '8dce3649e96ae9042b584ed35f888c52ba1deb1873f887ad4a785b6e99751f9f',
+       i686: 'e41e47b9e11e3f801d4e0f3fb839ecdcc60e47117ade7b708da8165fae85d6b3',
+     x86_64: '838bea4c39e0b2367f758d555de6a4adb6705cef0361e3cac93c3b3c44dace3f'
   })
 
   depends_on 'glibc' => :executable
