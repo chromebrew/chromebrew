@@ -1,4 +1,4 @@
-# Total size: 176952
+# Total size: 65725
 /usr/local/lib64/xorg/modules/drivers/vmware_drv.la
 /usr/local/lib64/xorg/modules/drivers/vmware_drv.so
-/usr/local/share/man/man4/vmware.4.gz
+/usr/local/share/man/man4/vmware.4.zst
