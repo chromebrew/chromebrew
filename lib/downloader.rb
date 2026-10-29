@@ -165,6 +165,15 @@ def http_downloader(uri, filename = File.basename(url), verbose: false)
         redirect_uri.host ||= uri.host
 
         return send(__method__, redirect_uri, filename, verbose: verbose)
+      when response.code == '429'
+        retry_after = response.headers['Retry-After']
+        if retry_after.nil?
+          abort "Download of #{uri} failed with error #{response.code}: #{response.msg}".lightred
+        else
+          puts "Sleeping for #{retry_after} seconds as requested.".lightred
+          sleep(retry_after)
+          return send(__method__, uri, filename, verbose: verbose)
+        end
       else
         abort "Download of #{uri} failed with error #{response.code}: #{response.msg}".lightred
       end
