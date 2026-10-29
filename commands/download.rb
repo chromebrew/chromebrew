@@ -97,9 +97,23 @@ class Command
           end
         end
         # Download file if not cached.
-        if gitlab_rate_limited && File.which('glab')
-          puts "Attempting gitlab fallback for download of #{pkg.name} binaries...".orange
-          system "glab --repo chromebrew/Binaries packages download --name #{pkg.name} --version #{pkg.version}_#{ARCH} --filename #{pkg.name}-#{pkg.version}-chromeos-#{ARCH}.#{pkg.binary_compression} --path ."
+        puts "Please install glab with 'crew install glab'".lightred unless File.which('glab')
+        if !uri.to_s[%r{gitlab.com/chromebrew/binaries}].nil? && File.which('glab')
+          puts "Attempting to use glab for download of #{pkg.name} binaries..."
+          glab_cmd = "glab --repo chromebrew/Binaries packages download --name #{pkg.name} --version #{pkg.version}_#{ARCH} --filename #{pkg.name}-#{pkg.version}-chromeos-#{ARCH}.#{pkg.binary_compression} --path ."
+          glab_out, glab_stderr, glab_status = Open3.capture3(glab_cmd)
+          if glab_status.success?
+            puts glab_out
+          else
+            if CREW_VERBOSE
+              puts "Download of #{pkg.name} binaries using glab failed:".orange
+              puts glab_cmd
+              puts glab_out
+              puts glab_stderr
+            end
+            puts "Attempting to use downloader for download of #{pkg.name} binaries...".orange
+            downloader url, sha256sum, filename, pkg, verbose: verbose
+          end
         else
           downloader url, sha256sum, filename, pkg, verbose: verbose
         end

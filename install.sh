@@ -1,5 +1,5 @@
 #!/bin/bash
-CREW_INSTALLER_VERSION=2026102702
+CREW_INSTALLER_VERSION=2026102901
 export CREW_INSTALLER_RUNNING=1
 # Exit on fail.
 set -eE
@@ -365,8 +365,8 @@ function download_check () {
     fi
     # Download
     echo_intra "Downloading ${1}...from ${2}"
-    if [[ "${2}" == *"gitlab.com/"* ]]; then
-      curl_wrapper '-#' -L "${2}" -o "${3}" || glab --repo chromebrew/Binaries packages download --name "${1}" --version "${5}"_"${ARCH}" --filename "${1}"-"${5}"-chromeos-"${ARCH}"."${6}"
+    if [[ "${2}" == *"gitlab.com/chromebrew/binaries"* ]]; then
+      glab --repo chromebrew/Binaries packages download --name "${1}" --version "${5}"_"${ARCH}" --filename "${1}"-"${5}"-chromeos-"${ARCH}"."${6}" || curl_wrapper '-#' -L "${2}" -o "${3}"
     else
       curl_wrapper '-#' -L "${2}" -o "${3}"
     fi
