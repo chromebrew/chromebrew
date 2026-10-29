@@ -11,10 +11,10 @@ class Cracklib < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '26f166493cc8af576ac1c0a101d7fead20aa211f7da59a19349446bd814fbc8d',
-     armv7l: '26f166493cc8af576ac1c0a101d7fead20aa211f7da59a19349446bd814fbc8d',
-       i686: '2decf564080f0f40515ac4cf11f93129dd0ba8852d45e01fc59ddadc360d3973',
-     x86_64: 'a44522bfeaa1a8247e686c05b9b11d394cbe7d673105ebae9b1348c9c0edf17e'
+    aarch64: '82cfcc16986a7d3f96224219e373fd86e0a6827719cde41fd042f1c09f8f6982',
+     armv7l: '82cfcc16986a7d3f96224219e373fd86e0a6827719cde41fd042f1c09f8f6982',
+       i686: '51dc05d64081ad932a7e228830d7d3c83476b5e12a6fd244092f83d7d1b9e9e4',
+     x86_64: '2e9ecdcf0785a4ba5aa6910ed76d05beff21ece6f1cc5eadc10cbddb75fdbf77'
   })
 
   depends_on 'glibc' => :library
