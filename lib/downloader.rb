@@ -166,11 +166,14 @@ def http_downloader(uri, filename = File.basename(url), verbose: false)
 
         return send(__method__, redirect_uri, filename, verbose: verbose)
       when response.is_a?(Net::HTTPTooManyRequests) # 429 Error
-        retry_after = response['Retry-After']
+        retry_after = response['Retry-After'].to_i
         if retry_after.nil?
           abort "Download of #{uri} failed with error #{response.code}: #{response.msg}".lightred
         else
           puts "Sleeping for #{retry_after} seconds as requested.".lightred
+          puts "The maximum number of requests allowed in the current rate limit window is #{response['RateLimit-Limit']}.".lightred unless response['RateLimit-Limit'].nil?
+          puts "The number of requests counted in the current window is #{response['RateLimit-Observed']}.".lightred unless response['RateLimit-Observed'].nil?
+          puts "The remaining number of requests in the current window is #{response['RateLimit-Remaining']}.".lightred unless response['RateLimit-Remaining'].nil?
           sleep(retry_after)
           return send(__method__, uri, filename, verbose: verbose)
         end
