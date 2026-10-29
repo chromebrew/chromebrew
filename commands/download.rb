@@ -105,11 +105,13 @@ class Command
           if glab_status.success?
             puts glab_out
           else
-            system 'glab auth status'
-            puts "Download of #{pkg.name} binaries using glab failed:".orange
-            puts glab_cmd
-            puts glab_out
-            puts glab_stderr
+            if ENV['NESTED_CI']
+              system 'glab auth status'
+              puts "Download of #{pkg.name} binaries using glab failed:".orange
+              puts glab_cmd
+              puts glab_out
+              puts glab_stderr
+            end
             puts "Attempting to use downloader for download of #{pkg.name} binaries...".orange
             downloader url, sha256sum, filename, pkg, verbose: verbose
           end
