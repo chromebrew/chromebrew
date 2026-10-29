@@ -10,10 +10,10 @@ class Ruby_io_console < RUBY
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: '6805e01ce05ff0fcfe5f687ef7b1236fc68c0efdcd89f605ee19977890da0c25',
-     armv7l: '6805e01ce05ff0fcfe5f687ef7b1236fc68c0efdcd89f605ee19977890da0c25',
-       i686: '8531b48638730b2552d57e430c87884102ab8bd9805663c91bd6d6bd3af4b819',
-     x86_64: '2afad75c52c361f0ebb30e034f015815f2cc77ff11cca80c134ae47ddc0324d4'
+    aarch64: 'ffefcbb5d16648758341f9090fca95df53e63bd1d06c338bc9bdd1b4f903c9da',
+     armv7l: 'ffefcbb5d16648758341f9090fca95df53e63bd1d06c338bc9bdd1b4f903c9da',
+       i686: '3162eea4f9ba2b42097e136f7acd586920a1b4c1d8d3e20f67e723b561fd739c',
+     x86_64: '882073224256e99bae526919ab0321f3da207bbba93840d9f0311d6a9b928c29'
   })
 
   depends_on 'glibc' => :library
