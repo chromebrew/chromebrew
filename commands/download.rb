@@ -97,7 +97,7 @@ class Command
           end
         end
         # Download file if not cached.
-        puts "Please install glab with 'crew install glab'".lightred unless File.which('glab')
+        puts "Please install glab with 'crew install glab', as this helps with informing GitLab that we don't want to be rate limited.".lightred unless File.which('glab')
         if !uri.to_s[%r{gitlab.com/chromebrew/binaries}].nil? && File.which('glab')
           puts "Attempting to use glab for download of #{pkg.name} binaries...".orange
           glab_cmd = "glab --repo chromebrew/Binaries packages download --name #{pkg.name} --version #{pkg.version}_#{ARCH} --filename #{pkg.name}-#{pkg.version}-chromeos-#{ARCH}.#{pkg.binary_compression} --path ."
