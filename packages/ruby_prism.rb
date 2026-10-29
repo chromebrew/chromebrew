@@ -3,7 +3,7 @@ require 'buildsystems/ruby'
 class Ruby_prism < RUBY
   description 'Prism is a parser for the Ruby programming language.'
   homepage 'https://github.com/ruby/prism'
-  version "2.0.0-#{CREW_RUBY_VER}"
+  version "2.1.0-#{CREW_RUBY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
