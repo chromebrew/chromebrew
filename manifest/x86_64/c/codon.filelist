@@ -1,4 +1,4 @@
-# Total size: 246852792
+# Total size: 246628956
 /usr/local/bin/codon
 /usr/local/include/codon/cir/analyze/analysis.h
 /usr/local/include/codon/cir/analyze/dataflow/capture.h
@@ -39,6 +39,7 @@
 /usr/local/include/codon/cir/transform/lowering/await.h
 /usr/local/include/codon/cir/transform/lowering/imperative.h
 /usr/local/include/codon/cir/transform/lowering/pipeline.h
+/usr/local/include/codon/cir/transform/lowering/return.h
 /usr/local/include/codon/cir/transform/lowering/throw.h
 /usr/local/include/codon/cir/transform/manager.h
 /usr/local/include/codon/cir/transform/numpy/indexing.h
