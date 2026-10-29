@@ -1,4 +1,4 @@
-# Total size: 42636
+# Total size: 29227
 /usr/local/bin/vmmouse_detect
 /usr/local/lib64/hal/hal-probe-vmmouse
 /usr/local/lib64/udev/rules.d/69-xorg-vmmouse.rules
@@ -6,5 +6,5 @@
 /usr/local/lib64/xorg/modules/input/vmmouse_drv.so
 /usr/local/share/X11/xorg.conf.d/50-vmmouse.conf
 /usr/local/share/hal/fdi/policy/20thirdparty/11-x11-vmmouse.fdi
-/usr/local/share/man/man1/vmmouse_detect.1.gz
-/usr/local/share/man/man4/vmmouse.4.gz
+/usr/local/share/man/man1/vmmouse_detect.1.zst
+/usr/local/share/man/man4/vmmouse.4.zst
