@@ -18,6 +18,7 @@ class Cracklib < Package
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'zlib' => :library
 
   def self.build
