@@ -105,7 +105,7 @@ class Command
           if glab_status.success?
             puts glab_out
           else
-            if ENV['NESTED_CI']
+            if ENV['NESTED_CI'] || CREW_VERBOSE
               system 'glab auth status'
               puts "Download of #{pkg.name} binaries using glab failed:".orange
               puts glab_cmd
