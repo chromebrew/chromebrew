@@ -3,7 +3,7 @@ require 'package'
 class Ccl < Package
   description 'Clozure CL is a fast, mature, open source Common Lisp implementation.'
   homepage 'https://ccl.clozure.com'
-  version '1.13'
+  version '1.14'
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.32'
@@ -15,9 +15,9 @@ class Ccl < Package
      x86_64: "https://github.com/Clozure/ccl/releases/download/v#{version}/ccl-#{version}-linuxx86.tar.gz"
   })
   source_sha256({
-    aarch64: '8b250c4c3b876f27c40310008635c036387a1e1a4b9161b9f9d89723a6855147',
-     armv7l: '8b250c4c3b876f27c40310008635c036387a1e1a4b9161b9f9d89723a6855147',
-     x86_64: '70069ee74c6f0685df83eb6224ce22f3e7919e17b233476c784e440d60e26bf1'
+    aarch64: '5bdbdb53014799c0e61592d4f3f76224f7044aabcf814de294d5be4ab611a4dd',
+     armv7l: '5bdbdb53014799c0e61592d4f3f76224f7044aabcf814de294d5be4ab611a4dd',
+     x86_64: '96fff67c53b56dc67acc06e92ff1774b73401564650669c95e7c63f1200a4f5d'
   })
 
   no_compile_needed
