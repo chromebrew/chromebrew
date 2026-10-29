@@ -1,39 +1,39 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Xorg_wacom_driver < Package
+class Xorg_wacom_driver < Autotools
   description 'The Xorg Wacom Driver package contains the X.Org X11 driver and SDK for Wacom and Wacom-like tablets. It is not required to use a Wacom tablet, the xf86-input-evdev driver can handle these devices without problems.'
   homepage 'https://www.x.org/wiki/'
-  version '0.36.0'
+  version '1.2.4'
   license 'GPL-2'
-  compatibility 'all'
-  source_url "https://downloads.sourceforge.net/project/linuxwacom/xf86-input-wacom/xf86-input-wacom-#{version}.tar.bz"
-  source_sha256 'eae7c5d2872b1433c8d679bb42b00213403eb2a0544c514f4df2b586284c23f6'
-  binary_compression 'tar.xz'
+  compatibility 'aarch64 armv7l x86_64'
+  source_url 'https://github.com/linuxwacom/xf86-input-wacom.git'
+  git_hashtag "xf86-input-wacom-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ee29a6cace73be6ba1a7d219ad1b177a27329b60bd54ac535bcf542810e49f17',
-     armv7l: 'ee29a6cace73be6ba1a7d219ad1b177a27329b60bd54ac535bcf542810e49f17',
-       i686: 'b626188aa89986e4440c8a549bfd3b96805c97b7bd7e243a129ebe86eddb17c1',
-     x86_64: 'bb728fe3c71174876921f48677d5c796a44789d42f919f4169bc64ad08757258'
+    aarch64: '95560ba7c87f83e3ee6697696a3c4350965495095159c4fe396f2691a447a3d9',
+     armv7l: '95560ba7c87f83e3ee6697696a3c4350965495095159c4fe396f2691a447a3d9',
+     x86_64: '8ef34038583b702e328ef78b70a6378fedd7ba51099860989de712a2ab95bcee'
   })
 
+  depends_on 'eudev' => :executable
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'libbsd' => :executable
+  depends_on 'libx11' => :executable
+  depends_on 'libxau' => :executable
+  depends_on 'libxcb' => :executable
+  depends_on 'libxdmcp' => :executable
+  depends_on 'libxext' => :executable
+  depends_on 'libxfixes' => :executable
+  depends_on 'libxi' => :executable
+  depends_on 'libxinerama' => :executable
+  depends_on 'libxrandr' => :executable
   depends_on 'xorg_server' => :build
-
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--enable-shared',
-           '--disable-static',
-           '--with-systemd-unit-dir=no'
-    system 'make'
-  end
-
-  def self.check
-    system "make -j#{CREW_NPROC} check"
-  end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install-strip'
   end
+
+  run_tests
 end
