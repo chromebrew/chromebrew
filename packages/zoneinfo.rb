@@ -3,18 +3,18 @@ require 'package'
 class Zoneinfo < Package
   description 'Code and data that represent the history of local time for many representative locations around the globe.'
   homepage 'https://www.iana.org/time-zones'
-  version '2026e'
+  version '2026f'
   license 'public-domain'
   compatibility 'all'
   source_url "https://data.iana.org/time-zones/releases/tzdb-#{version}.tar.lz"
-  source_sha256 '4e9c4e9d4587443e716ed42a7070466c1e5975938fb530244a17cf6db883990b'
+  source_sha256 '357829e3a16a78224d23f1ae2327704c1da1fd35f6769a7aac0682755fb9027a'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a9bf3808ec04ed175c1e7e07786b4e3ade371d342273201db97f77774ab8f828',
-     armv7l: 'a9bf3808ec04ed175c1e7e07786b4e3ade371d342273201db97f77774ab8f828',
-       i686: 'd483e805f6a814446f6e4d61b4c9d365624ee614fa3cb63be2f0ab8e70d1c0e3',
-     x86_64: '57f073d4295d5f0752f840b4cb970878333602d58edadfa0b9d58981641b1f3e'
+    aarch64: 'e7ca2ccba5be6e6357430b94a1c2b678894766abbb9a28114ec7e626277e3843',
+     armv7l: 'e7ca2ccba5be6e6357430b94a1c2b678894766abbb9a28114ec7e626277e3843',
+       i686: 'ebf9980c2f922cb270e218847b7fcf284eb068be0a62830aa07384eeae1e2d40',
+     x86_64: '72579ffc6888c140951330b89084e570b7916b243c29aa3f1f7e61ebe768573d'
   })
 
   depends_on 'glibc' => :executable

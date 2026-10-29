@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Gmic < CMake
   description "GREYC's Magic for Image Computing: A Full-Featured Open-Source Framework for Image Processing"
   homepage 'https://gmic.eu/'
-  version '4.0.6'
+  version '4.0.7'
   license 'CeCILL and CeCILL-C'
   compatibility 'x86_64'
   source_url 'https://github.com/GreycLab/gmic.git'
@@ -11,7 +11,7 @@ class Gmic < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '43b9755acbcce815a032795b3b631c39228376908d64b10f6e6fd38c8d83969b'
+     x86_64: '8b1a3a3b05896ebead4573eefe5409d067eac154f622657c2ad089a3cc59e780'
   })
 
   depends_on 'curl' => :library
