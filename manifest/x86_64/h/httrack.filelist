@@ -1,4 +1,4 @@
-# Total size: 19757312
+# Total size: 22861687
 /usr/local/bin/htsserver
 /usr/local/bin/httrack
 /usr/local/bin/proxytrack
@@ -71,7 +71,7 @@
 /usr/local/lib64/libhttrack.la
 /usr/local/lib64/libhttrack.so
 /usr/local/lib64/libhttrack.so.3
-/usr/local/lib64/libhttrack.so.3.0.26
+/usr/local/lib64/libhttrack.so.3.0.28
 /usr/local/lib64/pkgconfig/libhttrack.pc
 /usr/local/share/applications/WebHTTrack-Websites.desktop
 /usr/local/share/applications/WebHTTrack.desktop
@@ -145,6 +145,7 @@
 /usr/local/share/doc/httrack/html/img/guide-web-start.png
 /usr/local/share/doc/httrack/html/img/guide-win-finished.png
 /usr/local/share/doc/httrack/html/img/guide-win-language.png
+/usr/local/share/doc/httrack/html/img/guide-win-opt-accept-headers.png
 /usr/local/share/doc/httrack/html/img/guide-win-opt-browser-id.png
 /usr/local/share/doc/httrack/html/img/guide-win-opt-build.png
 /usr/local/share/doc/httrack/html/img/guide-win-opt-experts-only.png
@@ -165,8 +166,10 @@
 /usr/local/share/doc/httrack/html/img/snap4_a.gif
 /usr/local/share/doc/httrack/html/index.html
 /usr/local/share/doc/httrack/html/library.html
+/usr/local/share/doc/httrack/html/login.html
 /usr/local/share/doc/httrack/html/options.html
 /usr/local/share/doc/httrack/html/overview.html
+/usr/local/share/doc/httrack/html/palette.css
 /usr/local/share/doc/httrack/html/plug.html
 /usr/local/share/doc/httrack/html/plug_330.html
 /usr/local/share/doc/httrack/html/scripting.html
@@ -191,6 +194,7 @@
 /usr/local/share/doc/httrack/html/step9_opt8.html
 /usr/local/share/doc/httrack/html/step9_opt9.html
 /usr/local/share/doc/httrack/httrack-doc.html
+/usr/local/share/doc/httrack/license-psl.txt
 /usr/local/share/doc/httrack/license.txt
 /usr/local/share/httrack/html/doc
 /usr/local/share/httrack/html/doc/greetings.txt
@@ -263,6 +267,7 @@
 /usr/local/share/httrack/html/doc/html/img/guide-web-start.png
 /usr/local/share/httrack/html/doc/html/img/guide-win-finished.png
 /usr/local/share/httrack/html/doc/html/img/guide-win-language.png
+/usr/local/share/httrack/html/doc/html/img/guide-win-opt-accept-headers.png
 /usr/local/share/httrack/html/doc/html/img/guide-win-opt-browser-id.png
 /usr/local/share/httrack/html/doc/html/img/guide-win-opt-build.png
 /usr/local/share/httrack/html/doc/html/img/guide-win-opt-experts-only.png
@@ -283,8 +288,10 @@
 /usr/local/share/httrack/html/doc/html/img/snap4_a.gif
 /usr/local/share/httrack/html/doc/html/index.html
 /usr/local/share/httrack/html/doc/html/library.html
+/usr/local/share/httrack/html/doc/html/login.html
 /usr/local/share/httrack/html/doc/html/options.html
 /usr/local/share/httrack/html/doc/html/overview.html
+/usr/local/share/httrack/html/doc/html/palette.css
 /usr/local/share/httrack/html/doc/html/plug.html
 /usr/local/share/httrack/html/doc/html/plug_330.html
 /usr/local/share/httrack/html/doc/html/scripting.html
@@ -309,9 +316,12 @@
 /usr/local/share/httrack/html/doc/html/step9_opt8.html
 /usr/local/share/httrack/html/doc/html/step9_opt9.html
 /usr/local/share/httrack/html/doc/httrack-doc.html
+/usr/local/share/httrack/html/doc/license-psl.txt
 /usr/local/share/httrack/html/doc/license.txt
+/usr/local/share/httrack/html/palette.css
 /usr/local/share/httrack/html/server/about.html
 /usr/local/share/httrack/html/server/addurl.html
+/usr/local/share/httrack/html/server/browserlogin.html
 /usr/local/share/httrack/html/server/error.html
 /usr/local/share/httrack/html/server/exit.html
 /usr/local/share/httrack/html/server/finished.html
@@ -337,6 +347,8 @@
 /usr/local/share/httrack/html/server/step3.html
 /usr/local/share/httrack/html/server/step4.html
 /usr/local/share/httrack/html/server/style.css
+/usr/local/share/httrack/html/server/themes/modern/theme.css
+/usr/local/share/httrack/html/server/user.css
 /usr/local/share/httrack/lang.def
 /usr/local/share/httrack/lang.indexes
 /usr/local/share/httrack/lang/Bulgarian.txt
