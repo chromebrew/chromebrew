@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Tbb < CMake
   description 'High level abstract threading library'
   homepage 'https://github.com/oneapi-src/oneTBB'
-  version '2023.1.0'
+  version '2023.2.0'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/oneapi-src/oneTBB.git'
