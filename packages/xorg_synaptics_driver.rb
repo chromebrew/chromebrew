@@ -18,6 +18,7 @@ class Xorg_synaptics_driver < Package
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'libevdev' => :library
   depends_on 'libx11' => :executable
   depends_on 'libxau' => :executable
