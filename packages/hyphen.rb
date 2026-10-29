@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Hyphen < Autotools
   description 'hyphenation library to use converted TeX hyphenation patterns'
   homepage 'https://github.com/hunspell/hyphen'
-  version '2.8.9'
+  version '2.8.10'
   license 'GPL-2, LGPL-2.1 and MPL-1.1'
   compatibility 'all'
   source_url 'https://github.com/hunspell/hyphen.git'
