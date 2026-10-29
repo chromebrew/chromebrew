@@ -17,7 +17,14 @@ class Xorg_synaptics_driver < Package
      x86_64: '20281d2dadaed44efd343a85e889b24062bdf9532354757ca266ba621931782a'
   })
 
-  depends_on 'libevdev'
+  depends_on 'glibc' => :library
+  depends_on 'libevdev' => :library
+  depends_on 'libx11' => :executable
+  depends_on 'libxau' => :executable
+  depends_on 'libxcb' => :executable
+  depends_on 'libxext' => :executable
+  depends_on 'libxi' => :executable
+  depends_on 'libxtst' => :executable
   depends_on 'xorg_server' => :build
 
   def self.build
