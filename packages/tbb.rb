@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Tbb < CMake
   description 'High level abstract threading library'
   homepage 'https://github.com/oneapi-src/oneTBB'
-  version '2023.1.0'
+  version '2023.2.0'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/oneapi-src/oneTBB.git'
@@ -11,10 +11,10 @@ class Tbb < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0e59232a6e4f62a126a8c1e57a690203253bde2eda35cccf9698045d6aefba0d',
-     armv7l: '0e59232a6e4f62a126a8c1e57a690203253bde2eda35cccf9698045d6aefba0d',
-       i686: '701b6034b542a7698c026f5a97b64fab0faca851191bf483460b2c3059bd6e02',
-     x86_64: '561f9d71af8d30c680c93fb162436d650d1a4659d2458e923d6edabc54cb3dd5'
+    aarch64: '34295f614ecf493000f77784c4048044545f8defcc0d4f4e764b911b0aff54e5',
+     armv7l: '34295f614ecf493000f77784c4048044545f8defcc0d4f4e764b911b0aff54e5',
+       i686: 'e2e0bf67813ad9318edd718fbb65d0ff234b66e2dee1cf81ae85bc6d86b1e1bc',
+     x86_64: '1e8a2b327250dc3c41c1110ee5124a7eb1f96f0725846142491f874227307ceb'
   })
 
   depends_on 'gcc_lib' => :library
