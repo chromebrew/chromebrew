@@ -1,0 +1,3 @@
+#!/bin/bash
+xset -help 2>&1 | head
+xset -version
