@@ -3,7 +3,7 @@ require 'package'
 class Cracklib < Package
   description 'The CrackLib package contains a library used to enforce strong passwords by comparing user selected passwords to words in chosen word lists.'
   homepage 'https://github.com/cracklib/cracklib'
-  version '2.10.3'
+  version '2.10.4-gpg'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://github.com/cracklib/cracklib.git'
