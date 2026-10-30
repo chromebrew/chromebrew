@@ -1,0 +1,3 @@
+#!/bin/bash
+zathura -h | head
+zathura -v
