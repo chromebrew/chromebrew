@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_nodeenv < Pip
   description 'Tool to create isolated node.js environments.'
   homepage 'https://github.com/ekalinin/nodeenv'
-  version "1.11.0-#{CREW_PY_VER}"
+  version "1.11.1-#{CREW_PY_VER}"
   license 'Copyright (c) 2011, Eugene Kalinin'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '74c257216a9df8e37b13aabecf0ed2d50891fed1ced5c7412a6790c17dea2292',
-     armv7l: '74c257216a9df8e37b13aabecf0ed2d50891fed1ced5c7412a6790c17dea2292',
-       i686: 'bfcf3681ed7b5b35e63b51eef1277de7d8fa753466be3a56838fe2fbae7edd8f',
-     x86_64: '2a894e26be72e0ff4df689601189ae3bb7bd6296717a3fc45f03b3900febecaa'
+    aarch64: '28f97992ba3cb45bf78a662385c249b8409fe6955f2e955e293e5bd92d359d85',
+     armv7l: '28f97992ba3cb45bf78a662385c249b8409fe6955f2e955e293e5bd92d359d85',
+       i686: '1b036485682d7e5f2b36df698de8b222b0b4996478ddb1f8b72d1f28463260c8',
+     x86_64: '96a1c3a8931ebeb47ab74969eaa56173f03c125da82b46029c19361da1f9752a'
   })
 
   depends_on 'python3'
