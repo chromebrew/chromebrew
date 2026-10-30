@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Fribidi < Meson
   description 'GNU FriBidi is an implementation of the Unicode Bidirectional Algorithm (bidi).'
   homepage 'https://github.com/fribidi/fribidi'
-  version '1.0.17'
+  version '1.0.18'
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://github.com/fribidi/fribidi.git'
