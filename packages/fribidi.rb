@@ -11,10 +11,10 @@ class Fribidi < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4f0cca3b699872b337c2b6cf110a26c6645a196b1939570acbef9cba9e224f75',
-     armv7l: '4f0cca3b699872b337c2b6cf110a26c6645a196b1939570acbef9cba9e224f75',
-       i686: '4b00c8938234cc9d8435e775d1aa7a8993e575d19f773df40df9be09a6cad08d',
-     x86_64: '065bc01cb3f643b7bbf7dea7f55481e5ecd83797a7782ab4ba23df6cc823d7b2'
+    aarch64: 'b974097e6de6d47f71d83af60751fbc541d20f74b8a15c81b94dae356bcb97e9',
+     armv7l: 'b974097e6de6d47f71d83af60751fbc541d20f74b8a15c81b94dae356bcb97e9',
+       i686: '835795f739d2e90b189417800db1fc173b0a8194b20640a94e3da94f1d7a095b',
+     x86_64: 'f7ac83be7966a332dc94f4416ba420830f30de79785bfd2dfbcd388afdec76d1'
   })
 
   depends_on 'glibc' => :library
