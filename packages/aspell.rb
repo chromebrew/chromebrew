@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Aspell < Autotools
   description 'GNU Aspell is a Free and Open Source spell checker designed to eventually replace Ispell.'
   homepage 'http://aspell.net/'
-  version '0.60.8.2'
+  version '0.60.8.3'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://github.com/GNUAspell/aspell.git'
