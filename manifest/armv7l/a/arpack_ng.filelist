@@ -1,20 +1,27 @@
-# Total size: 645868
+# Total size: 567832
 /usr/local/include/arpack/arpack.h
 /usr/local/include/arpack/arpack.hpp
 /usr/local/include/arpack/arpackdef.h
+/usr/local/include/arpack/arpackicb.h
 /usr/local/include/arpack/debug.h
+/usr/local/include/arpack/debugF90.h
 /usr/local/include/arpack/debug_c.h
 /usr/local/include/arpack/debug_c.hpp
 /usr/local/include/arpack/parpack.h
 /usr/local/include/arpack/parpack.hpp
 /usr/local/include/arpack/stat.h
+/usr/local/include/arpack/statF90.h
 /usr/local/include/arpack/stat_c.h
 /usr/local/include/arpack/stat_c.hpp
-/usr/local/lib/cmake/arpack-ng-config-version.cmake
-/usr/local/lib/cmake/arpack-ng-config.cmake
+/usr/local/lib/cmake/arpackng/arpackng-config-version.cmake
+/usr/local/lib/cmake/arpackng/arpackng-config.cmake
+/usr/local/lib/cmake/arpackng/arpackngTargets-release.cmake
+/usr/local/lib/cmake/arpackng/arpackngTargets.cmake
 /usr/local/lib/libarpack.so
 /usr/local/lib/libarpack.so.2
 /usr/local/lib/libarpack.so.2.1.0
 /usr/local/lib/libparpack.so
 /usr/local/lib/libparpack.so.2
 /usr/local/lib/libparpack.so.2.1.0
+/usr/local/lib/pkgconfig/arpack.pc
+/usr/local/lib/pkgconfig/parpack.pc
