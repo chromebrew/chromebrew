@@ -1,63 +1,39 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Arpack_ng < Package
+class Arpack_ng < CMake
   description 'Collection of Fortran77 subroutines designed to solve large scale eigenvalue problems.'
   homepage 'https://github.com/opencollab/arpack-ng'
-  version '3.7.0'
+  version '3.9.1'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/opencollab/arpack-ng/archive/3.7.0.tar.gz'
-  source_sha256 '972e3fc3cd0b9d6b5a737c9bf6fd07515c0d6549319d4ffb06970e64fa3cc2d6'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/opencollab/arpack-ng.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8ac867cd31ef8c507039105de1e6467807c30a75f1752ab43650d82348b558d0',
-     armv7l: '8ac867cd31ef8c507039105de1e6467807c30a75f1752ab43650d82348b558d0',
-       i686: '8c2096851e7868c456220480b315d8ba84b5c188d8bf193cf8ce8abea6b20eb4',
-     x86_64: '83b1d11cbc66d977dc2287f8273a39527bd33c302b81baaa84172c110b6aeed1'
+    aarch64: '31b13ca1dc12f0dca520d465bcfa2feb74178de8bc3d0a9d54029f6a528bc252',
+     armv7l: '31b13ca1dc12f0dca520d465bcfa2feb74178de8bc3d0a9d54029f6a528bc252',
+       i686: '329aa907033b425be2bbc27665b284b091d7a20461898125813a1d972be4b02a',
+     x86_64: '4b858a509a4084b5711d6f2a132bb11dfb7da0e2291c0501425ca61449256548'
   })
 
-  depends_on 'lapack'
-  depends_on 'openblas'
-  depends_on 'openmpi'
-  depends_on 'ld_default' => :build
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'lapack' => :library
+  depends_on 'openblas' => :library
+  depends_on 'openmpi' => :library
 
-  def self.patch
-    # Fix Unknown CMake command "check_symbol_exists".
-    # See https://techoverflow.net/2019/06/20/how-to-fix-unknown-cmake-command-check_symbol_exists/.
-    system "sed -i '1iinclude(CheckSymbolExists)' CMakeLists.txt"
-  end
-
-  def self.build
-    Dir.mkdir 'build'
-    Dir.chdir 'build' do
-      suffix = ''
-      interface = 'OFF'
-      if ARCH == 'x86_64'
-        suffix = '64'
-        interface = 'ON'
-      end
-      # Use the gold linker.
-      old_ld = `ld_default g`.chomp
-      system 'cmake',
-             '-DCMAKE_BUILD_TYPE=Release',
-             "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}",
-             "-DBLAS_LIBRARIES=#{CREW_LIB_PREFIX}/libopenblas.so",
-             "-DINTERFACE64=#{interface}",
-             "-DLIBSUFFIX=#{suffix}",
-             '-DBUILD_SHARED_LIBS=ON',
-             '-DEXAMPLES=ON',
-             '-DICB=ON',
-             '-DMPI=ON',
-             '..'
-      system 'make'
-      system 'ld_default', old_ld
-    end
-  end
-
-  def self.install
-    Dir.chdir 'build' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    end
-  end
+  cmake_options " \
+    -DBLAS_LIBRARIES=#{CREW_LIB_PREFIX}/libopenblas.so \
+    -DCMAKE_Fortran_COMPILER=#{CREW_PREFIX}/bin/gfortran \
+    -DCMAKE_Fortran_FLAGS=-I#{CREW_PREFIX}/include \
+    -DINTERFACE64=#{ARCH.eql?('x86_64') ? 'ON' : 'OFF'} \
+    -DMPI=#{ARCH.eql?('x86_64') ? 'OFF' : 'ON'} \
+    -DMPI_Fortran_WORKS=ON \
+    -DLIBSUFFIX=#{'64' if ARCH.eql?('x86_64')} \
+    -DBUILD_SHARED_LIBS=ON \
+    -DEXAMPLES=OFF \
+    -DTESTS=OFF \
+    -DICB=ON"
 end
