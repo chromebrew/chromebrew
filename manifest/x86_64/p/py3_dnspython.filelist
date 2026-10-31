@@ -1,4 +1,4 @@
-# Total size: 2879043
+# Total size: 2908616
 /usr/local/lib/python3.15/site-packages/dns/__init__.py
 /usr/local/lib/python3.15/site-packages/dns/__pycache__/__init__.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/dns/__pycache__/_asyncbackend.cpython-315.pyc
@@ -322,8 +322,9 @@
 /usr/local/lib/python3.15/site-packages/dns/zone.py
 /usr/local/lib/python3.15/site-packages/dns/zonefile.py
 /usr/local/lib/python3.15/site-packages/dns/zonetypes.py
-/usr/local/lib/python3.15/site-packages/dnspython-2.9.0.dist-info/INSTALLER
-/usr/local/lib/python3.15/site-packages/dnspython-2.9.0.dist-info/METADATA
-/usr/local/lib/python3.15/site-packages/dnspython-2.9.0.dist-info/RECORD
-/usr/local/lib/python3.15/site-packages/dnspython-2.9.0.dist-info/REQUESTED
-/usr/local/lib/python3.15/site-packages/dnspython-2.9.0.dist-info/WHEEL
+/usr/local/lib/python3.15/site-packages/dnspython-2.9.1.dist-info/INSTALLER
+/usr/local/lib/python3.15/site-packages/dnspython-2.9.1.dist-info/METADATA
+/usr/local/lib/python3.15/site-packages/dnspython-2.9.1.dist-info/RECORD
+/usr/local/lib/python3.15/site-packages/dnspython-2.9.1.dist-info/REQUESTED
+/usr/local/lib/python3.15/site-packages/dnspython-2.9.1.dist-info/WHEEL
+/usr/local/lib/python3.15/site-packages/dnspython-2.9.1.dist-info/licenses/LICENSE
