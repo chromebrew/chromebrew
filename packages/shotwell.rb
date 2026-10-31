@@ -3,11 +3,11 @@ require 'buildsystems/meson'
 class Shotwell < Meson
   description 'An open-source digital photo organiser for GNOME'
   homepage 'https://wiki.gnome.org/Apps/Shotwell'
-  version '0.32.17'
+  version '33.0'
   license 'GPL-2.1+'
   compatibility 'x86_64'
   source_url "https://download.gnome.org/sources/shotwell/#{version.split('.')[0..1].join('.')}/shotwell-#{version}.tar.xz"
-  source_sha256 '0a56684e98817c3103f54a648fe9400427c76a25a7b111457fc1d860c3167672'
+  source_sha256 '79f2fa2bd5df3b18d5301012085222eb9a6e548593f6d5dbcea6d1e8559cb797'
   binary_compression 'tar.zst'
 
   binary_sha256({
