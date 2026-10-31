@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Openexr < CMake
   description 'OpenEXR is a high dynamic-range (HDR) image file format developed by Industrial Light & Magic for use in computer imaging applications.'
   homepage 'https://openexr.com/en/latest/'
-  version '3.5.1'
+  version '3.5.2'
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/AcademySoftwareFoundation/openexr.git'
