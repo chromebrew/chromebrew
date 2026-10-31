@@ -3,7 +3,7 @@ require 'package'
 class Cmus < Package
   description 'cmus is a small, fast and powerful console music player for Unix-like operating systems.'
   homepage 'https://cmus.github.io/'
-  version '2.12.0'
+  version '2.13.0'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/cmus/cmus.git'
