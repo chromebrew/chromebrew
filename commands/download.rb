@@ -185,8 +185,8 @@ def cached_download(pkg, source, filename, extract_dir, verbose: false)
   crew_cache_dir_cachefile = File.join(CREW_CACHE_DIR, filename)
   cachefile = File.file?(local_build_cachefile) ? local_build_cachefile : crew_cache_dir_cachefile
   # puts "Using #{pkg.name} archive from the build cache at #{cachefile}; The checksum will not be checked against the package file.".orange if cachefile.include?(CREW_LOCAL_BUILD_DIR)
-  puts "Using #{pkg.name} archive from the build cache at #{cachefile}".orange
-  if File.file?(cachefile)
+  puts "Trying to use #{pkg.name} archive from the build cache at #{cachefile}".orange
+  if File.file?(cachefile) && File.readable?(cachefile)
     puts "#{pkg.name.capitalize} archive file exists in cache".lightgreen if verbose
     # Don't validate checksum if file is in the local build cache.
     if cachefile.include?(CREW_LOCAL_BUILD_DIR) || cachefile.include?(CREW_CACHE_DIR)
