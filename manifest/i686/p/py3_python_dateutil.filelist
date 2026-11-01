@@ -1,4 +1,4 @@
-# Total size: 700375
+# Total size: 675129
 /usr/local/lib/python3.15/site-packages/dateutil/__init__.py
 /usr/local/lib/python3.15/site-packages/dateutil/__pycache__/__init__.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/dateutil/__pycache__/_common.cpython-315.pyc
@@ -41,11 +41,10 @@
 /usr/local/lib/python3.15/site-packages/dateutil/zoneinfo/__pycache__/__init__.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/dateutil/zoneinfo/__pycache__/rebuild.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/dateutil/zoneinfo/rebuild.py
-/usr/local/lib/python3.15/site-packages/python_dateutil-3.0.0.dist-info/INSTALLER
-/usr/local/lib/python3.15/site-packages/python_dateutil-3.0.0.dist-info/METADATA
-/usr/local/lib/python3.15/site-packages/python_dateutil-3.0.0.dist-info/RECORD
-/usr/local/lib/python3.15/site-packages/python_dateutil-3.0.0.dist-info/REQUESTED
-/usr/local/lib/python3.15/site-packages/python_dateutil-3.0.0.dist-info/WHEEL
-/usr/local/lib/python3.15/site-packages/python_dateutil-3.0.0.dist-info/licenses/LICENSE
-/usr/local/lib/python3.15/site-packages/python_dateutil-3.0.0.dist-info/top_level.txt
-/usr/local/lib/python3.15/site-packages/python_dateutil-3.0.0.dist-info/zip-safe
+/usr/local/lib/python3.15/site-packages/python_dateutil-4.0.0.dist-info/INSTALLER
+/usr/local/lib/python3.15/site-packages/python_dateutil-4.0.0.dist-info/METADATA
+/usr/local/lib/python3.15/site-packages/python_dateutil-4.0.0.dist-info/RECORD
+/usr/local/lib/python3.15/site-packages/python_dateutil-4.0.0.dist-info/REQUESTED
+/usr/local/lib/python3.15/site-packages/python_dateutil-4.0.0.dist-info/WHEEL
+/usr/local/lib/python3.15/site-packages/python_dateutil-4.0.0.dist-info/licenses/AUTHORS.md
+/usr/local/lib/python3.15/site-packages/python_dateutil-4.0.0.dist-info/licenses/LICENSE
