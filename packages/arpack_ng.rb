@@ -17,11 +17,11 @@ class Arpack_ng < CMake
      x86_64: '4b858a509a4084b5711d6f2a132bb11dfb7da0e2291c0501425ca61449256548'
   })
 
-  depends_on 'gcc_lib' => :build
-  depends_on 'glibc' => :build
-  depends_on 'glibc_lib' => :build
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'lapack' => :build
-  depends_on 'openblas' => :build
+  depends_on 'openblas' => :library
   depends_on 'openmpi' => :build
 
   cmake_options " \
