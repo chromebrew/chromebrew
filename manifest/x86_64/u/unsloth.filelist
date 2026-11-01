@@ -1,4 +1,4 @@
-# Total size: 475133932
+# Total size: 517993544
 /usr/local/bin/unsloth
 /usr/local/share/unsloth/AppRun
 /usr/local/share/unsloth/AppRun.wrapped
@@ -8,6 +8,7 @@
 /usr/local/share/unsloth/apprun-hooks/linuxdeploy-plugin-gtk.sh
 /usr/local/share/unsloth/unsloth-studio.png
 /usr/local/share/unsloth/unsloth.sh
+/usr/local/share/unsloth/usr/bin/host/unsloth-studio
 /usr/local/share/unsloth/usr/bin/unsloth-studio
 /usr/local/share/unsloth/usr/bin/xdg-mime
 /usr/local/share/unsloth/usr/bin/xdg-open
