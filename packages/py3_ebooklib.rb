@@ -10,10 +10,10 @@ class Py3_ebooklib < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '25c0f7eb94a41c38ee7cebc7ab1c91b67fa3b3904bfcc448468e3ddb380488db',
-     armv7l: '25c0f7eb94a41c38ee7cebc7ab1c91b67fa3b3904bfcc448468e3ddb380488db',
-       i686: '72593ef451ae90ae757dcea8ab2162bb152610f8e29087647deef6df1c1d5378',
-     x86_64: 'b7d0105ce07949b4947feef860730aee314bd0cacecbd86744802c65bb1d6c56'
+    aarch64: 'fd1a0cd8ceb38f987402946580c3d7b1881fb445ee0887c1ec5d9a426e7498ec',
+     armv7l: 'fd1a0cd8ceb38f987402946580c3d7b1881fb445ee0887c1ec5d9a426e7498ec',
+       i686: 'e0d89b9ee7ed1059e42cbc79db4b868c550ccd058303f5246b98b18f7f8e4ede',
+     x86_64: 'cef5e55a1f155bc199731f2600f40fcd94ea64acfb88890fa26f9c0e67fec269'
   })
 
   depends_on 'py3_lxml' # R
