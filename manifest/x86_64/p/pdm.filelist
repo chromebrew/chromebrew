@@ -1,4 +1,4 @@
-# Total size: 49454946
+# Total size: 49463703
 /usr/local/bin/pdm
 /usr/local/etc/bash.d/pdm.bash-completion
 /usr/local/etc/bash.d/pdm.pep582
@@ -897,13 +897,13 @@
 /usr/local/venv/lib/python3.15/site-packages/pbs_installer/_versions.py
 /usr/local/venv/lib/python3.15/site-packages/pbs_installer/py.typed
 /usr/local/venv/lib/python3.15/site-packages/pbs_installer/versions.json
-/usr/local/venv/lib/python3.15/site-packages/pdm-2.29.4.dist-info/INSTALLER
-/usr/local/venv/lib/python3.15/site-packages/pdm-2.29.4.dist-info/METADATA
-/usr/local/venv/lib/python3.15/site-packages/pdm-2.29.4.dist-info/RECORD
-/usr/local/venv/lib/python3.15/site-packages/pdm-2.29.4.dist-info/REQUESTED
-/usr/local/venv/lib/python3.15/site-packages/pdm-2.29.4.dist-info/WHEEL
-/usr/local/venv/lib/python3.15/site-packages/pdm-2.29.4.dist-info/entry_points.txt
-/usr/local/venv/lib/python3.15/site-packages/pdm-2.29.4.dist-info/licenses/LICENSE
+/usr/local/venv/lib/python3.15/site-packages/pdm-2.29.5.dist-info/INSTALLER
+/usr/local/venv/lib/python3.15/site-packages/pdm-2.29.5.dist-info/METADATA
+/usr/local/venv/lib/python3.15/site-packages/pdm-2.29.5.dist-info/RECORD
+/usr/local/venv/lib/python3.15/site-packages/pdm-2.29.5.dist-info/REQUESTED
+/usr/local/venv/lib/python3.15/site-packages/pdm-2.29.5.dist-info/WHEEL
+/usr/local/venv/lib/python3.15/site-packages/pdm-2.29.5.dist-info/entry_points.txt
+/usr/local/venv/lib/python3.15/site-packages/pdm-2.29.5.dist-info/licenses/LICENSE
 /usr/local/venv/lib/python3.15/site-packages/pdm/VERSION
 /usr/local/venv/lib/python3.15/site-packages/pdm/__init__.py
 /usr/local/venv/lib/python3.15/site-packages/pdm/__main__.py
