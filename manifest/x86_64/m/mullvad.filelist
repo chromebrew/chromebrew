@@ -1,4 +1,4 @@
-# Total size: 277543600
+# Total size: 300355779
 /usr/local/bin/mullvad
 /usr/local/share/applications/start-mullvad-browser.desktop
 /usr/local/share/icons/default/64x64/apps/web-browser.png
@@ -203,3 +203,4 @@
 /usr/local/share/mullvad/updater.ini
 /usr/local/share/mullvad/vaapitest
 /usr/local/share/mullvad/version.json
+/usr/local/share/mullvad/vulkantest
