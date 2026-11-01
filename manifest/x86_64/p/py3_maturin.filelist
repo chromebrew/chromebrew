@@ -1,11 +1,11 @@
-# Total size: 15855701
+# Total size: 15940559
 /usr/local/bin/maturin
-/usr/local/lib64/python3.15/site-packages/maturin-1.15.0-py3.15.egg-info/PKG-INFO
-/usr/local/lib64/python3.15/site-packages/maturin-1.15.0-py3.15.egg-info/SOURCES.txt
-/usr/local/lib64/python3.15/site-packages/maturin-1.15.0-py3.15.egg-info/dependency_links.txt
-/usr/local/lib64/python3.15/site-packages/maturin-1.15.0-py3.15.egg-info/not-zip-safe
-/usr/local/lib64/python3.15/site-packages/maturin-1.15.0-py3.15.egg-info/requires.txt
-/usr/local/lib64/python3.15/site-packages/maturin-1.15.0-py3.15.egg-info/top_level.txt
+/usr/local/lib64/python3.15/site-packages/maturin-1.16.0-py3.15.egg-info/PKG-INFO
+/usr/local/lib64/python3.15/site-packages/maturin-1.16.0-py3.15.egg-info/SOURCES.txt
+/usr/local/lib64/python3.15/site-packages/maturin-1.16.0-py3.15.egg-info/dependency_links.txt
+/usr/local/lib64/python3.15/site-packages/maturin-1.16.0-py3.15.egg-info/not-zip-safe
+/usr/local/lib64/python3.15/site-packages/maturin-1.16.0-py3.15.egg-info/requires.txt
+/usr/local/lib64/python3.15/site-packages/maturin-1.16.0-py3.15.egg-info/top_level.txt
 /usr/local/lib64/python3.15/site-packages/maturin/__init__.py
 /usr/local/lib64/python3.15/site-packages/maturin/__main__.py
 /usr/local/lib64/python3.15/site-packages/maturin/__pycache__/__init__.cpython-315.pyc
