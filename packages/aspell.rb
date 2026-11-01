@@ -17,7 +17,8 @@ class Aspell < Autotools
      x86_64: '0adb8aaa62679070ce285f3afde4a8a559bfa645b7c11b632771b9767f667abf'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'ncurses' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'ncurses' => :executable
 end
