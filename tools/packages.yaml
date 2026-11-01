@@ -9435,6 +9435,11 @@ url: https://github.com/drobilla/sord/tags
 activity: none
 ---
 kind: url
+name: soundtouch
+url: hhttps://codeberg.org/soundtouch/soundtouch/tags
+activity: low
+---
+kind: url
 name: source_highlight
 url: https://ftp.gnu.org/gnu/src-highlite/
 activity: none
