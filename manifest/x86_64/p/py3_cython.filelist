@@ -1,4 +1,4 @@
-# Total size: 16021092
+# Total size: 16051773
 /usr/local/bin/cygdb
 /usr/local/bin/cython
 /usr/local/bin/cythonize
@@ -268,6 +268,7 @@
 /usr/local/lib64/python3.15/site-packages/Cython/Includes/libc/math.pxd
 /usr/local/lib64/python3.15/site-packages/Cython/Includes/libc/setjmp.pxd
 /usr/local/lib64/python3.15/site-packages/Cython/Includes/libc/signal.pxd
+/usr/local/lib64/python3.15/site-packages/Cython/Includes/libc/stdbool.pxd
 /usr/local/lib64/python3.15/site-packages/Cython/Includes/libc/stddef.pxd
 /usr/local/lib64/python3.15/site-packages/Cython/Includes/libc/stdint.pxd
 /usr/local/lib64/python3.15/site-packages/Cython/Includes/libc/stdio.pxd
@@ -457,13 +458,13 @@
 /usr/local/lib64/python3.15/site-packages/Cython/_shared.cpython-315-x86_64-linux-gnu.so
 /usr/local/lib64/python3.15/site-packages/Cython/py.typed
 /usr/local/lib64/python3.15/site-packages/__pycache__/cython.cpython-315.pyc
-/usr/local/lib64/python3.15/site-packages/cython-3.3.0.dist-info/INSTALLER
-/usr/local/lib64/python3.15/site-packages/cython-3.3.0.dist-info/METADATA
-/usr/local/lib64/python3.15/site-packages/cython-3.3.0.dist-info/RECORD
-/usr/local/lib64/python3.15/site-packages/cython-3.3.0.dist-info/REQUESTED
-/usr/local/lib64/python3.15/site-packages/cython-3.3.0.dist-info/WHEEL
-/usr/local/lib64/python3.15/site-packages/cython-3.3.0.dist-info/entry_points.txt
-/usr/local/lib64/python3.15/site-packages/cython-3.3.0.dist-info/top_level.txt
+/usr/local/lib64/python3.15/site-packages/cython-3.3.1.dist-info/INSTALLER
+/usr/local/lib64/python3.15/site-packages/cython-3.3.1.dist-info/METADATA
+/usr/local/lib64/python3.15/site-packages/cython-3.3.1.dist-info/RECORD
+/usr/local/lib64/python3.15/site-packages/cython-3.3.1.dist-info/REQUESTED
+/usr/local/lib64/python3.15/site-packages/cython-3.3.1.dist-info/WHEEL
+/usr/local/lib64/python3.15/site-packages/cython-3.3.1.dist-info/entry_points.txt
+/usr/local/lib64/python3.15/site-packages/cython-3.3.1.dist-info/top_level.txt
 /usr/local/lib64/python3.15/site-packages/cython.py
 /usr/local/lib64/python3.15/site-packages/pyximport/__init__.py
 /usr/local/lib64/python3.15/site-packages/pyximport/__pycache__/__init__.cpython-315.pyc
