@@ -25,7 +25,7 @@ class Py3_pip < Python
       # Fix flit 4 incompatibility.
       ['https://github.com/pypa/pip/pull/14254.patch', '16e9179bff87a1cbefcb5f8e95a6a809327c2ac4af749f8caab367b5e8203e2f']
     ]
-    ConvenienceFunctions.patch(patches) if version == "26.2.1-#{CREW_PY_VER}"
+    ConvenienceFunctions.patch(patches) if version == "26.2.2-#{CREW_PY_VER}"
   end
 
   def self.postinstall
