@@ -13,7 +13,7 @@ class Appstream < Meson
   binary_sha256({
     aarch64: '300a53ea64ab58a177be8ba704ded96f2a47f4abb58cea372a964837b3de26c6',
      armv7l: '300a53ea64ab58a177be8ba704ded96f2a47f4abb58cea372a964837b3de26c6',
-     x86_64: '8546135e0029635d031e37798f2b76014b5c61c5bd149cc25cca04b35dc185c1'
+     x86_64: 'dfb3f1abcccaf7710adade19ede2b387ada8020dd6daacee9b1deba7c91ecd82'
   })
 
   depends_on 'cairo' => :library

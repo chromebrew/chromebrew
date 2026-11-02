@@ -1,16 +1,16 @@
-# Total size: 67264
-/usr/local/lib64/python3.14/site-packages/markupsafe-3.0.4.dist-info/INSTALLER
-/usr/local/lib64/python3.14/site-packages/markupsafe-3.0.4.dist-info/METADATA
-/usr/local/lib64/python3.14/site-packages/markupsafe-3.0.4.dist-info/RECORD
-/usr/local/lib64/python3.14/site-packages/markupsafe-3.0.4.dist-info/REQUESTED
-/usr/local/lib64/python3.14/site-packages/markupsafe-3.0.4.dist-info/WHEEL
-/usr/local/lib64/python3.14/site-packages/markupsafe-3.0.4.dist-info/licenses/LICENSE.txt
-/usr/local/lib64/python3.14/site-packages/markupsafe-3.0.4.dist-info/top_level.txt
-/usr/local/lib64/python3.14/site-packages/markupsafe/__init__.py
-/usr/local/lib64/python3.14/site-packages/markupsafe/__pycache__/__init__.cpython-314.pyc
-/usr/local/lib64/python3.14/site-packages/markupsafe/__pycache__/_native.cpython-314.pyc
-/usr/local/lib64/python3.14/site-packages/markupsafe/_native.py
-/usr/local/lib64/python3.14/site-packages/markupsafe/_speedups.c
-/usr/local/lib64/python3.14/site-packages/markupsafe/_speedups.cpython-314-x86_64-linux-gnu.so
-/usr/local/lib64/python3.14/site-packages/markupsafe/_speedups.pyi
-/usr/local/lib64/python3.14/site-packages/markupsafe/py.typed
+# Total size: 68804
+/usr/local/lib64/python3.15/site-packages/markupsafe-3.0.4.dist-info/INSTALLER
+/usr/local/lib64/python3.15/site-packages/markupsafe-3.0.4.dist-info/METADATA
+/usr/local/lib64/python3.15/site-packages/markupsafe-3.0.4.dist-info/RECORD
+/usr/local/lib64/python3.15/site-packages/markupsafe-3.0.4.dist-info/REQUESTED
+/usr/local/lib64/python3.15/site-packages/markupsafe-3.0.4.dist-info/WHEEL
+/usr/local/lib64/python3.15/site-packages/markupsafe-3.0.4.dist-info/licenses/LICENSE.txt
+/usr/local/lib64/python3.15/site-packages/markupsafe-3.0.4.dist-info/top_level.txt
+/usr/local/lib64/python3.15/site-packages/markupsafe/__init__.py
+/usr/local/lib64/python3.15/site-packages/markupsafe/__pycache__/__init__.cpython-315.pyc
+/usr/local/lib64/python3.15/site-packages/markupsafe/__pycache__/_native.cpython-315.pyc
+/usr/local/lib64/python3.15/site-packages/markupsafe/_native.py
+/usr/local/lib64/python3.15/site-packages/markupsafe/_speedups.c
+/usr/local/lib64/python3.15/site-packages/markupsafe/_speedups.cpython-315-x86_64-linux-gnu.so
+/usr/local/lib64/python3.15/site-packages/markupsafe/_speedups.pyi
+/usr/local/lib64/python3.15/site-packages/markupsafe/py.typed
