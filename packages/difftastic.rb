@@ -11,10 +11,10 @@ class Difftastic < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f475cea0230b9f162107f8df203f011f6207e73f72375dafd95e1d77e064a8ca',
-     armv7l: 'f475cea0230b9f162107f8df203f011f6207e73f72375dafd95e1d77e064a8ca',
-       i686: '9efdaa814bca46c36cf9f89f7458830309a4a62cc1749bfb34927ab2a7e3fb45',
-     x86_64: '0e34f463c5cea9b94c2d983b09a64b51973341701db6fca9f7c4f63342c70b84'
+    aarch64: '1100a0feda6ccb851f7e85380a2344921c75409e61c81ed9c354a3b1cda9b83a',
+     armv7l: '1100a0feda6ccb851f7e85380a2344921c75409e61c81ed9c354a3b1cda9b83a',
+       i686: 'e339a1fe822160977e6f07c4e62bc3096f7b714add9ea990e95c67ca7fc5d400',
+     x86_64: '2caa281057b5d4f3356aa6834d8581421fc083a39338e47ed9128ba5a3ae938d'
   })
 
   depends_on 'gcc_lib' => :executable
