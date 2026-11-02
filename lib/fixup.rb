@@ -59,6 +59,7 @@ renamed_packages = Set[
   { pkg_name: 'btrfsprogs', pkg_rename: 'btrfs_progs', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'bz2', pkg_rename: 'bzip2', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'bz3', pkg_rename: 'bzip3', comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'charm', pkg_rename: 'charm_sh', comments: 'Renamed to prevent a conflict with an npm package with same name.' },
   { pkg_name: 'chrome', pkg_rename: 'google_chrome', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'codium', pkg_rename: 'vscodium', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'dstat', pkg_rename: 'py3_dool', comments: 'Following upstream rename.' },
