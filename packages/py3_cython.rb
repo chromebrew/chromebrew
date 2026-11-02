@@ -16,8 +16,8 @@ class Py3_cython < Pip
      x86_64: '968d3432299ab7cbd277c73949a6f2c86c7c520d2424aefeb1c380f15e98d752'
   })
 
-  depends_on 'glibc' => :library
-  depends_on 'glibc_lib' => :library
+  depends_on 'glibc' => :build
+  depends_on 'glibc_lib' => :build
   depends_on 'python3' => :logical
 
   no_source_build
