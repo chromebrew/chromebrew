@@ -11,10 +11,10 @@ class Broot < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6107e04cb3e428aef43149b1b58bd7dd8fa2ced4a3f5fb897ae6f8c3e86e74c8',
-     armv7l: '6107e04cb3e428aef43149b1b58bd7dd8fa2ced4a3f5fb897ae6f8c3e86e74c8',
-       i686: '889214f5376c50d6021e368ecfbbfeb7ab486c1f54991dba5a587bf9a3933d36',
-     x86_64: '6d8871dd9ca7dd2bd8a2b9b6bcf207cb12a419607c4cdce2f47b4c23f3791264'
+    aarch64: 'e37beb434b157e908f967142b698a9fec512e169617fb8bfb0560600b3cb9b0c',
+     armv7l: 'e37beb434b157e908f967142b698a9fec512e169617fb8bfb0560600b3cb9b0c',
+       i686: '374ab1f4ba0a6e877e433b7e35cf6c6b1f79142d86254c207983a012f704c147',
+     x86_64: '4cd33bdb05812d557872372698a559ed23dd0528388d61f820680f5445f16cb7'
   })
 
   depends_on 'gcc_lib' => :executable
