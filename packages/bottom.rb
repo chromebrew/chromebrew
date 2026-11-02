@@ -3,7 +3,7 @@ require 'package'
 class Bottom < Package
   description 'Yet another cross-platform graphical process/system monitor.'
   homepage 'https://github.com/ClementTsang/bottom'
-  version '0.14.9'
+  version '0.15.0'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.28'
@@ -13,9 +13,9 @@ class Bottom < Package
      x86_64: "https://github.com/ClementTsang/bottom/releases/download/#{version}/bottom_x86_64-unknown-linux-gnu.tar.gz"
   })
   source_sha256({
-    aarch64: 'a9c1aa0a12d6f6fcbd7948c4dc50504504c916ad1ef4ed0219483e64fbe03038',
-     armv7l: 'a9c1aa0a12d6f6fcbd7948c4dc50504504c916ad1ef4ed0219483e64fbe03038',
-     x86_64: 'e0c325829e8bdcea25a8a7651da05dbb6f1fc109ac5d2f0187867d3d5d9c0df8'
+    aarch64: '273387b032310c63bc1c3e7cb6a9069fb32a2d20568bfce3b1ba2967dadec1ef',
+     armv7l: '273387b032310c63bc1c3e7cb6a9069fb32a2d20568bfce3b1ba2967dadec1ef',
+     x86_64: '051888e0e064aa037728efed3fcf77820714f8f4dc7bea2b0179d40c54400c26'
   })
 
   no_compile_needed
