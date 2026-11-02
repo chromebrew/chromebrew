@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Bashdb < Autotools
   description 'The Bash Debugger Project is a source-code debugger for bash that follows the gdb command syntax.'
   homepage 'https://bashdb.sourceforge.net/'
-  version '5.0-1.1.2-1f1118d'
+  version '5.2-1.2.0'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://git.code.sf.net/p/bashdb/code'
-  git_hashtag '1f1118dd73f3d3d450d2b644b5b871d545ea0473'
+  source_url 'https://github.com/Trepan-Debuggers/bashdb.git'
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ed1f102778d653fca7f36933c0e7b0be6170c23b356613fccc3b4b772f134ed5',
-     armv7l: 'ed1f102778d653fca7f36933c0e7b0be6170c23b356613fccc3b4b772f134ed5',
-       i686: '70302e22dd1b703ed550c3a15366449f7a9e42b7c62a5cf370e598bf6dc64a17',
-     x86_64: '468e44a71a027b55dba4f996b5f4b7e548282933d30356f55a3c7ee1b89cdbcd'
+    aarch64: '364b5756c974e98c92fc682c0c4212d664d5c4932f1fc22980754e80618a191c',
+     armv7l: '364b5756c974e98c92fc682c0c4212d664d5c4932f1fc22980754e80618a191c',
+       i686: '2714e30728422b790175d38a77e58493a0a720dc9c2dc2b4cb55959dec000c80',
+     x86_64: 'd306d4478157861186cf3823938cf2f22f324666b0ae858da4bd77f5467f2e26'
   })
 
   def self.patch
@@ -29,7 +29,7 @@ class Bashdb < Autotools
        bash_5_or_greater=no
        case "${bash_major}.${bash_minor}" in
       -  'OK_BASH_VERS' | '5.0' | '5.1')
-      +  'OK_BASH_VERS' | '5.0' | '5.1' | '5.2')
+      +  'OK_BASH_VERS' | '5.0' | '5.1' | '5.2' | '5.3')
            bash_5_or_greater=yes
            ;;
          *)
