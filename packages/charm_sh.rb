@@ -1,6 +1,6 @@
 require 'package'
 
-class Charm < Package
+class Charm_sh < Package
   description 'Charm is a set of tools that makes adding a backend to your terminal-based applications fun and easy.'
   homepage 'https://charm.sh'
   version '0.12.6'
@@ -19,8 +19,13 @@ class Charm < Package
      x86_64: '3dc72e9e4ce9f0dfc771955d320cc26e52053f501ff128d0329f6ad4f3859ce9'
   })
 
+  no_compile_needed
+
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.install 'charm', "#{CREW_DEST_PREFIX}/bin/charm", mode: 0o755
+  end
+
+  def self.postinstall
+    ExitMessage.add "\nType 'charm -h' to get started.\n"
   end
 end
