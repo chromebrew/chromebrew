@@ -3,12 +3,12 @@ require 'package'
 class Dmd < Package
   description 'D Programming Language compiler'
   homepage 'https://dlang.org/'
-  version '2.113.0'
+  version '2.114.0'
   license 'BSL-1.0'
   compatibility 'x86_64'
   min_glibc '2.32'
   source_url "https://github.com/dlang/dmd/releases/download/v#{version}/dmd.#{version}.linux.tar.xz"
-  source_sha256 'b342ab8bd40cc0c46407692b31d7cd69661ff01da686234f426949e881727294'
+  source_sha256 '9bf481ccf099e56d2acbde45fdcab8bcad86d7e134ad1fd1faa8e00b807e13e9'
 
   conflicts_with 'ldc'
   depends_on 'gcc_lib' # R
