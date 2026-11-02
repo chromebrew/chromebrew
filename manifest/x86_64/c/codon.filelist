@@ -1,4 +1,4 @@
-# Total size: 246628956
+# Total size: 247152375
 /usr/local/bin/codon
 /usr/local/include/codon/cir/analyze/analysis.h
 /usr/local/include/codon/cir/analyze/dataflow/capture.h
@@ -29,6 +29,7 @@
 /usr/local/include/codon/cir/pyextension.h
 /usr/local/include/codon/cir/transform/cleanup/canonical.h
 /usr/local/include/codon/cir/transform/cleanup/dead_code.h
+/usr/local/include/codon/cir/transform/cleanup/devirtualize.h
 /usr/local/include/codon/cir/transform/cleanup/global_demote.h
 /usr/local/include/codon/cir/transform/cleanup/replacer.h
 /usr/local/include/codon/cir/transform/folding/const_fold.h
@@ -144,6 +145,7 @@
 /usr/local/lib64/codon/stdlib/algorithms/qsort.codon
 /usr/local/lib64/codon/stdlib/algorithms/strings.codon
 /usr/local/lib64/codon/stdlib/algorithms/timsort.codon
+/usr/local/lib64/codon/stdlib/argparse.codon
 /usr/local/lib64/codon/stdlib/asyncio.codon
 /usr/local/lib64/codon/stdlib/bisect.codon
 /usr/local/lib64/codon/stdlib/bz2.codon
