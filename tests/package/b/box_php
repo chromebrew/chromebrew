@@ -1,0 +1,3 @@
+#!/bin/bash
+box -h | head
+box -V
