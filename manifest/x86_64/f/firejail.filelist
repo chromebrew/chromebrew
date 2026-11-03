@@ -1,4 +1,4 @@
-# Total size: 2567858
+# Total size: 2467578
 /usr/local/bin/firecfg
 /usr/local/bin/firejail
 /usr/local/bin/firemon
@@ -12,6 +12,9 @@
 /usr/local/etc/firejail/Books.profile
 /usr/local/etc/firejail/Builder.profile
 /usr/local/etc/firejail/Cheese.profile
+/usr/local/etc/firejail/ChiPass-cli.profile
+/usr/local/etc/firejail/ChiPass-proxy.profile
+/usr/local/etc/firejail/ChiPass.profile
 /usr/local/etc/firejail/Cryptocat.profile
 /usr/local/etc/firejail/Cyberfox.profile
 /usr/local/etc/firejail/Discord.profile
@@ -215,6 +218,7 @@
 /usr/local/etc/firejail/clamdtop.profile
 /usr/local/etc/firejail/clamscan.profile
 /usr/local/etc/firejail/clamtk.profile
+/usr/local/etc/firejail/claude.profile
 /usr/local/etc/firejail/claws-mail.profile
 /usr/local/etc/firejail/clawsker.profile
 /usr/local/etc/firejail/clementine.profile
@@ -339,6 +343,7 @@
 /usr/local/etc/firejail/eog.profile
 /usr/local/etc/firejail/eom.profile
 /usr/local/etc/firejail/ephemeral.profile
+/usr/local/etc/firejail/ephoto.profile
 /usr/local/etc/firejail/epiphany.profile
 /usr/local/etc/firejail/equalx.profile
 /usr/local/etc/firejail/erd.profile
@@ -433,6 +438,7 @@
 /usr/local/etc/firejail/geeqie.profile
 /usr/local/etc/firejail/geki2.profile
 /usr/local/etc/firejail/geki3.profile
+/usr/local/etc/firejail/gemini.profile
 /usr/local/etc/firejail/gfeeds.profile
 /usr/local/etc/firejail/gget.profile
 /usr/local/etc/firejail/gh.profile
@@ -441,6 +447,7 @@
 /usr/local/etc/firejail/gimp-2.10.profile
 /usr/local/etc/firejail/gimp-2.8.profile
 /usr/local/etc/firejail/gimp-3.0.profile
+/usr/local/etc/firejail/gimp-3.2.profile
 /usr/local/etc/firejail/gimp.profile
 /usr/local/etc/firejail/gist-paste.profile
 /usr/local/etc/firejail/gist.profile
@@ -668,6 +675,7 @@
 /usr/local/etc/firejail/links2.profile
 /usr/local/etc/firejail/linphone.profile
 /usr/local/etc/firejail/linuxqq.profile
+/usr/local/etc/firejail/llm-agent-common.profile
 /usr/local/etc/firejail/lmms.profile
 /usr/local/etc/firejail/lobase.profile
 /usr/local/etc/firejail/lobster.profile
@@ -720,6 +728,7 @@
 /usr/local/etc/firejail/make.profile
 /usr/local/etc/firejail/makedeb.profile
 /usr/local/etc/firejail/makepkg.profile
+/usr/local/etc/firejail/maki.profile
 /usr/local/etc/firejail/man.profile
 /usr/local/etc/firejail/manaplus.profile
 /usr/local/etc/firejail/marker.profile
@@ -876,6 +885,7 @@
 /usr/local/etc/firejail/openbox.profile
 /usr/local/etc/firejail/opencity.profile
 /usr/local/etc/firejail/openclonk.profile
+/usr/local/etc/firejail/opencode.profile
 /usr/local/etc/firejail/openmw-launcher.profile
 /usr/local/etc/firejail/openmw.profile
 /usr/local/etc/firejail/openoffice.org.profile
@@ -912,6 +922,7 @@
 /usr/local/etc/firejail/peek.profile
 /usr/local/etc/firejail/penguin-command.profile
 /usr/local/etc/firejail/photoflare.profile
+/usr/local/etc/firejail/pi.profile
 /usr/local/etc/firejail/picard.profile
 /usr/local/etc/firejail/pidgin.profile
 /usr/local/etc/firejail/pinball-wrapper.profile
@@ -1100,6 +1111,7 @@
 /usr/local/etc/firejail/sysprof.profile
 /usr/local/etc/firejail/system-log-common.profile
 /usr/local/etc/firejail/tar.profile
+/usr/local/etc/firejail/tasks-org.profile
 /usr/local/etc/firejail/tb-starter-wrapper.profile
 /usr/local/etc/firejail/tcpdump.profile
 /usr/local/etc/firejail/tcpserver.net
@@ -1125,6 +1137,7 @@
 /usr/local/etc/firejail/tilp.profile
 /usr/local/etc/firejail/tin.profile
 /usr/local/etc/firejail/tiny-rdm.profile
+/usr/local/etc/firejail/tldr.profile
 /usr/local/etc/firejail/tmux.profile
 /usr/local/etc/firejail/tor-browser-ar.profile
 /usr/local/etc/firejail/tor-browser-ca.profile
@@ -1388,13 +1401,11 @@
 /usr/local/lib64/firejail/fbuilder
 /usr/local/lib64/firejail/fbwrap
 /usr/local/lib64/firejail/fcopy
-/usr/local/lib64/firejail/firejail-welcome.sh
 /usr/local/lib64/firejail/fix_private-bin.py
 /usr/local/lib64/firejail/fj-mkdeb.py
 /usr/local/lib64/firejail/fjclip.py
 /usr/local/lib64/firejail/fjdisplay.py
 /usr/local/lib64/firejail/fjresize.py
-/usr/local/lib64/firejail/fldd
 /usr/local/lib64/firejail/fnet
 /usr/local/lib64/firejail/fnetfilter
 /usr/local/lib64/firejail/fnetlock
@@ -1405,14 +1416,11 @@
 /usr/local/lib64/firejail/fsec-optimize
 /usr/local/lib64/firejail/fsec-print
 /usr/local/lib64/firejail/fseccomp
-/usr/local/lib64/firejail/fshaper.sh
 /usr/local/lib64/firejail/ftee
-/usr/local/lib64/firejail/fzenity
 /usr/local/lib64/firejail/gdb-firejail.sh
 /usr/local/lib64/firejail/jail_prober.py
 /usr/local/lib64/firejail/libpostexecseccomp.so
 /usr/local/lib64/firejail/libtrace.so
-/usr/local/lib64/firejail/libtracelog.so
 /usr/local/lib64/firejail/profstats
 /usr/local/lib64/firejail/seccomp
 /usr/local/lib64/firejail/seccomp.32
@@ -1441,7 +1449,6 @@
 /usr/local/share/man/man1/firejail.1.zst
 /usr/local/share/man/man1/firemon.1.zst
 /usr/local/share/man/man1/jailcheck.1.zst
-/usr/local/share/man/man5/firejail-login.5.zst
 /usr/local/share/man/man5/firejail-profile.5.zst
 /usr/local/share/man/man5/firejail-users.5.zst
 /usr/local/share/vim/vimfiles/ftdetect/firejail.vim
