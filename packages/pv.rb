@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Pv < Autotools
   description 'pv - Pipe Viewer - is a terminal-based tool for monitoring the progress of data through a pipeline.'
   homepage 'http://www.ivarch.com/programs/pv.shtml'
-  version '1.12.0'
+  version '1.12.7'
   license 'Artistic-2'
   compatibility 'all'
   source_url "https://www.ivarch.com/programs/sources/pv-#{version}.tar.gz"
-  source_sha256 '31fdbdb449c7143cd2968567bef7599e9f031950e6158ee7bb76e40aebf6ffb8'
+  source_sha256 '5326ed7ee95ef18039390c0b17891ac28985ac7c7a4235070fab767c1fe37bd8'
   binary_compression 'tar.zst'
 
   binary_sha256({
