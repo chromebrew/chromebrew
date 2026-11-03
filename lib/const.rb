@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION = defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION = '1.77.4' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION = '1.77.5' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH = Etc.uname[:machine]
@@ -108,6 +108,7 @@ CREW_LOCAL_BUILD_DIR = "#{CREW_LOCAL_REPO_ROOT}/release/#{ARCH}"
 CREW_MAX_BUILD_TIME  = ENV.fetch('CREW_MAX_BUILD_TIME', '19800') # GitHub Action containers are killed after 6 hours, so set to 5.5 hours.
 CREW_GITLAB_PKG_REPO = 'https://gitlab.com/api/v4/projects/26210301/packages'
 GITLAB_TOKEN = ENV.fetch('GITLAB_TOKEN', nil)
+GITLAB_GLAB_TOKEN = ENV.fetch('GITLAB_GLAB_TOKEN', nil)
 GITLAB_TOKEN_USERNAME = ENV.fetch('GITLAB_TOKEN_USERNAME', nil)
 CREW_GITLAB_TOKEN_LABEL = if GITLAB_TOKEN.nil?
                             ''

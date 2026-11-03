@@ -1,5 +1,5 @@
 ---
-# Version 3.1
+# Version 3.2
 name: Generate PR
 run-name: Generate PR for ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} by @${{ github.actor }}
 on:
@@ -369,6 +369,7 @@ jobs:
               -e CREW_REPO="${CREW_REPO}" \
               -e CREW_BRANCH="${BRANCH}" \
               -e GITLAB_TOKEN="${{ secrets.GITLAB_TOKEN }}" \
+              -e GITLAB_GLAB_TOKEN="${{ secrets.GITLAB_GLAB_TOKEN }}" \
               -e GITLAB_TOKEN_USERNAME="${{ secrets.GITLAB_TOKEN_USERNAME }}" \
               ${CI_PASSTHROUGH} \
               ${ARCH_PACKAGES_PASSTHROUGH} \

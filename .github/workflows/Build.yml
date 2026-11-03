@@ -1,5 +1,5 @@
 ---
-# Version 1.9
+# Version 2.0
 name: Build
 run-name: Build ${{ inputs.packages_to_build }} for ${{ inputs.build-on }} on branch ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} requested by @${{ github.actor }}
 on:
@@ -382,6 +382,7 @@ jobs:
               -e CREW_REPO="${CREW_REPO}" \
               -e CREW_BRANCH="${BRANCH}" \
               -e GITLAB_TOKEN="${{ secrets.GITLAB_TOKEN }}" \
+              -e GITLAB_GLAB_TOKEN="${{ secrets.GITLAB_GLAB_TOKEN }}" \
               -e GITLAB_TOKEN_USERNAME="${{ secrets.GITLAB_TOKEN_USERNAME }}" \
               ${CI_PASSTHROUGH} \
               ${ARCH_PACKAGES_PASSTHROUGH} \
