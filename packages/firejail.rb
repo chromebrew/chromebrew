@@ -12,9 +12,9 @@ class Firejail < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'af74a94f93d8fd22c686d17b00378350bc60a7e9a4c1f1287d3b24203de0f6cb',
-     armv7l: 'af74a94f93d8fd22c686d17b00378350bc60a7e9a4c1f1287d3b24203de0f6cb',
-     x86_64: '0f70f2fd03e79e6679588f01c67ec66342f2cd9c6795e2cc4476286861c5c4b1'
+    aarch64: 'e93ed559b994ca9d0655fccce4fb43ea8160042697dc5c7551ee119047b4559b',
+     armv7l: 'e93ed559b994ca9d0655fccce4fb43ea8160042697dc5c7551ee119047b4559b',
+     x86_64: 'a16e003865d8b0ec3aa0ad0a877f0fe560669a743555b2d76fe0bdc45b7336e5'
   })
 
   depends_on 'glibc' => :library
