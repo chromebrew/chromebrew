@@ -19,6 +19,7 @@ class Libversion < CMake
 
   depends_on 'gcc_lib' => :executable
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 
   run_tests
 end
