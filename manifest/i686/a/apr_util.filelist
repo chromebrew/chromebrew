@@ -1,4 +1,4 @@
-# Total size: 1988867
+# Total size: 1988826
 /usr/local/bin/apu-1-config
 /usr/local/include/apr-1/apr_anylock.h
 /usr/local/include/apr-1/apr_base64.h
@@ -48,5 +48,5 @@
 /usr/local/lib/libaprutil-1.la
 /usr/local/lib/libaprutil-1.so
 /usr/local/lib/libaprutil-1.so.0
-/usr/local/lib/libaprutil-1.so.0.6.5
+/usr/local/lib/libaprutil-1.so.0.6.6
 /usr/local/lib/pkgconfig/apr-util-1.pc
