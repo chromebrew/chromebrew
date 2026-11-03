@@ -3,7 +3,7 @@ require 'package'
 class Wallstreet < Package
   description 'Fill your console with Wall Street-like news and stats.'
   homepage 'https://a.hollywood.computer/'
-  version '1.25'
+  version '1.26'
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/dustinkirkland/hollywood.git'
