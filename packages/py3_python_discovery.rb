@@ -10,10 +10,10 @@ class Py3_python_discovery < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '28f389035427aef513cb62260f0266aee254c0f71ced5ab7577dfb35438879ab',
-     armv7l: '28f389035427aef513cb62260f0266aee254c0f71ced5ab7577dfb35438879ab',
-       i686: '00f866ac7bc2a0bf7e229070001fcaffdc45db1c455f1d3289fa93ec4d0768ac',
-     x86_64: 'b071509694234acc76a4075724423c1651ecc2c0374dc0951dd8fc447c369f27'
+    aarch64: '9b5cf0c54e934a5f26eba606c1cb59f7d82c7368ab3f0739b5ef640acf0ba5cf',
+     armv7l: '9b5cf0c54e934a5f26eba606c1cb59f7d82c7368ab3f0739b5ef640acf0ba5cf',
+       i686: 'fa50496a32323ad09b0e2b73fc0a1906e10e008cb2430dc2cd8ce2dfa593e235',
+     x86_64: '8b651643c513325542a64c9eca1536a6d7263be85118de992c459db6624bc573'
   })
 
   depends_on 'python3' => :logical
