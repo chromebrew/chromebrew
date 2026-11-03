@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Uriparser < CMake
   description 'uriparser is a strictly RFC 3986 compliant URI parsing library. uriparser is cross-platform, fast, supports Unicode'
   homepage 'https://github.com/uriparser/uriparser'
-  version '1.0.2'
+  version '1.0.3'
   license 'BSD-3'
   compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.29'
@@ -12,10 +12,10 @@ class Uriparser < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd777e9616e5e3ce9688212c956b494c3250aa292bd9823e2d970bfd2cff527d5',
-     armv7l: 'd777e9616e5e3ce9688212c956b494c3250aa292bd9823e2d970bfd2cff527d5',
+    aarch64: 'bbce039046087b00bbd18870c21b68344fe475eef256bc892703d1e7bb58810b',
+     armv7l: 'bbce039046087b00bbd18870c21b68344fe475eef256bc892703d1e7bb58810b',
        i686: 'd7d7a7e85dc2209b16c024508b87cb5a29fa0736d3b0c69166aca26daf168512',
-     x86_64: '61ac0d35cc2748bd781e651d7d5d7f0a0643e11afaaa5e2069b889a5ce3f739c'
+     x86_64: '0628c66725d882c480b5f45f74814f1e75ec4777edc026fd9180fb270113b96d'
   })
 
   depends_on 'glibc' => :library
