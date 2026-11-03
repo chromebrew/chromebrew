@@ -11,10 +11,10 @@ class Libversion < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd9b1164fcf89b40bbc6b81b0d935b10a107d8c13f86d58d4e2906ab2d9572c6b',
-     armv7l: 'd9b1164fcf89b40bbc6b81b0d935b10a107d8c13f86d58d4e2906ab2d9572c6b',
-       i686: '57192007d0a6ac991165247e7dcd9f90ebc82e505caa19436d4c12533c378751',
-     x86_64: '0d451b69e43e8931d79e2a097ecce63bf4d287e37ccb67c80839f06a5956c812'
+    aarch64: '25f71f581969e582d5e6db3941feb67eb80df9e2561e2b39afecb9ebcc91ce68',
+     armv7l: '25f71f581969e582d5e6db3941feb67eb80df9e2561e2b39afecb9ebcc91ce68',
+       i686: 'ad49813d8aeda0d5596ce87b8069afd845b4f8c5d76a3509781c3cf07b61945d',
+     x86_64: 'a2e15327f41d110828ca8ff9e9084a05a341073acbf09b79d211ba5c7382bea0'
   })
 
   depends_on 'gcc_lib' => :executable
