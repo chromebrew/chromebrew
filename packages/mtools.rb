@@ -11,12 +11,14 @@ class Mtools < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4782d387473bb5f49ee14aaedfeda9579e3b22479b20f9b9d33b05dce86a78fe',
-     armv7l: '4782d387473bb5f49ee14aaedfeda9579e3b22479b20f9b9d33b05dce86a78fe',
-     x86_64: '649e44c6ae13ab3834149702d321a6f23c09abcb49c703a6bf36420e99e652ad'
+    aarch64: '046f927e02175ecc4eafd6ccb9f7a81d8a5d37d90b992a0ad659094393b3600d',
+     armv7l: '046f927e02175ecc4eafd6ccb9f7a81d8a5d37d90b992a0ad659094393b3600d',
+     x86_64: '2202e3d57b1c2b81e78125b4786d5932117f3f4a305838f30984e79ddd829cce'
   })
 
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'libiconv' => :executable
 
   autotools_configure_options '--without-x'
 end
