@@ -3,40 +3,40 @@ require 'buildsystems/cmake'
 class Clamav < CMake
   description 'ClamAV is an open source antivirus engine for detecting trojans, viruses, malware & other malicious threats.'
   homepage 'https://www.clamav.net/'
-  version '1.5.1'
+  version '1.5.4'
   license 'GPL-2'
   compatibility 'all'
   source_url "https://www.clamav.net/downloads/production/clamav-#{version}.tar.gz"
-  source_sha256 '64fe4a16a5622c1d71efe9ed7f2c2fbd37f8f237da9f11ff66b73038df71db91'
+  source_sha256 '1af1117a228f1b5bc7fa91a0dabc37848a99e7d25188e9be8043332ce721dfd3'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c0db3aab369545201accb021a6c1fd6a04d618b4f59ae792fa5d850b4f5f9d6c',
-     armv7l: 'c0db3aab369545201accb021a6c1fd6a04d618b4f59ae792fa5d850b4f5f9d6c',
-       i686: 'b9bb06591614920d105386eb4cfa192f3a36f05c2fe4e95c69920fc46a90c85e',
-     x86_64: '83d74f2a4797944f96952ccfd74ece4d7fce04c23f47f0a44dab285bb5bbc6e8'
+    aarch64: '36c0b81ac3e88d55ab21e848b50484df7578524b51f4b0aeb2fbc013bf2c52a5',
+     armv7l: '36c0b81ac3e88d55ab21e848b50484df7578524b51f4b0aeb2fbc013bf2c52a5',
+       i686: 'a87a01816065f891069a8e6756bc7f2c54fd5b97c02264e757c30f83e89c8dc6',
+     x86_64: 'be80ccb967d52328626da29f85b49a9986d186119d6b7004c792855153154f74'
   })
 
-  depends_on 'bzip2' # R
+  depends_on 'bzip2' => :library
   depends_on 'check' => :build
-  depends_on 'curl' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'json_c' # R
+  depends_on 'curl' => :library
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'json_c' => :library
   depends_on 'libiconv' => :build
-  depends_on 'libxml2' # R
-  depends_on 'ncurses' # R
-  depends_on 'openssl' # R
-  depends_on 'pcre2' # R
-  depends_on 'psmisc' # R
+  depends_on 'libxml2' => :library
+  depends_on 'ncurses' => :executable
+  depends_on 'openssl' => :library
+  depends_on 'pcre2' => :library
+  depends_on 'psmisc' => :executable
   depends_on 'py3_pytest' => :build
   depends_on 'rust' => :build
-  depends_on 'zlib' # R
+  depends_on 'zlib' => :library
 
   cmake_options "-DAPP_CONFIG_DIRECTORY=#{CREW_PREFIX}/etc/clamav \
-    -DCMAKE_C_FLAGS=-fPIC \
     -DDATABASE_DIRECTORY=#{CREW_PREFIX}/share/clamav \
-    -DENABLE_JSON_SHARED=OFF \
+    -DENABLE_JSON_SHARED=ON \
     -DENABLE_MILTER=OFF \
     -DENABLE_STATIC_LIB=ON \
     -DENABLE_SYSTEMD=OFF"

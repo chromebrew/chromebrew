@@ -1,0 +1,8 @@
+#!/bin/bash
+clamav-config --version
+clambc --version
+clamconf --version
+clamdscan --version
+clamscan --version
+freshclam --version
+sigtool --version
