@@ -11,10 +11,10 @@ class Apr_util < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2603f0186cc0310495f73a949c78812a2ebc0934b0fa40530c15cafa10949d8f',
-     armv7l: '2603f0186cc0310495f73a949c78812a2ebc0934b0fa40530c15cafa10949d8f',
-       i686: '40fbfd6d7e9a46f640e51a1970cf1877d9490c4e17d0477ae7d7740c648dbf4e',
-     x86_64: 'ddf0c7fd9578d3db9fc645ef587c8d138ecc5afeed01b5335ddda89ed78e7078'
+    aarch64: 'adb9b1172f2348bf0546a244d89f41daae8a2c72dec70a977661d280ed1cb0c1',
+     armv7l: 'adb9b1172f2348bf0546a244d89f41daae8a2c72dec70a977661d280ed1cb0c1',
+       i686: '0e836eeb9c014da127af272c008fefc60d0596a0a78a37b2649b6e28ce01d1b5',
+     x86_64: 'cbe0adb0417f66590625bbc7b590331d3ab328a40aef9770b9a113089eaa3e0b'
   })
 
   depends_on 'apr' => :library
