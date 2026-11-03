@@ -1,4 +1,4 @@
-# Total size: 397217975
+# Total size: 397254825
 /usr/local/bin/audacity
 /usr/local/share/applications/org.audacityteam.Audacity4portable.desktop
 /usr/local/share/audacity/AppRun
@@ -187,6 +187,9 @@
 /usr/local/share/audacity/licenses/freetype/LICENSE.TXT
 /usr/local/share/audacity/licenses/harfbuzz/COPYING
 /usr/local/share/audacity/licenses/lame/COPYING
+/usr/local/share/audacity/licenses/libid3tag/COPYING
+/usr/local/share/audacity/licenses/libid3tag/COPYRIGHT
+/usr/local/share/audacity/licenses/libid3tag/CREDITS
 /usr/local/share/audacity/licenses/libpng/LICENSE
 /usr/local/share/audacity/licenses/libsndfile/COPYING
 /usr/local/share/audacity/licenses/mpg123/COPYING
@@ -702,6 +705,9 @@
 /usr/local/share/audacity/usr/licenses/freetype/LICENSE.TXT
 /usr/local/share/audacity/usr/licenses/harfbuzz/COPYING
 /usr/local/share/audacity/usr/licenses/lame/COPYING
+/usr/local/share/audacity/usr/licenses/libid3tag/COPYING
+/usr/local/share/audacity/usr/licenses/libid3tag/COPYRIGHT
+/usr/local/share/audacity/usr/licenses/libid3tag/CREDITS
 /usr/local/share/audacity/usr/licenses/libpng/LICENSE
 /usr/local/share/audacity/usr/licenses/libsndfile/COPYING
 /usr/local/share/audacity/usr/licenses/mpg123/COPYING
