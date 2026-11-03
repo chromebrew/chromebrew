@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Pv < Autotools
   description 'pv - Pipe Viewer - is a terminal-based tool for monitoring the progress of data through a pipeline.'
   homepage 'http://www.ivarch.com/programs/pv.shtml'
-  version '1.12.0'
+  version '1.12.7'
   license 'Artistic-2'
   compatibility 'all'
   source_url "https://www.ivarch.com/programs/sources/pv-#{version}.tar.gz"
-  source_sha256 '31fdbdb449c7143cd2968567bef7599e9f031950e6158ee7bb76e40aebf6ffb8'
+  source_sha256 '5326ed7ee95ef18039390c0b17891ac28985ac7c7a4235070fab767c1fe37bd8'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8cb92435dcb75d28b3d4a8ed486df1798d9020beb7ef73fdcd762463fc9b38d3',
-     armv7l: '8cb92435dcb75d28b3d4a8ed486df1798d9020beb7ef73fdcd762463fc9b38d3',
-       i686: 'db192b2ae12f8aaf60b6bbb48db9d31dccbc7731883b40118479fa4fdf613b7a',
-     x86_64: '103acfbe4386cb740f2b91ad56596f481cb9acfa2673cf5a025d63bfd63686ce'
+    aarch64: 'd4264d6651f747aca4971099030bfee4cf4b5f750ae46db847a0f280e1b53bf4',
+     armv7l: 'd4264d6651f747aca4971099030bfee4cf4b5f750ae46db847a0f280e1b53bf4',
+       i686: '30747e5438823bd4d0b4805b6839ac50fd541a77d5d4b07b822ce3f1f0682a3e',
+     x86_64: 'd3fc5992e4ac52c77d57b0dd290b70852547f99cd670ba359224d5588015a71a'
   })
 
   depends_on 'glibc' => :executable
