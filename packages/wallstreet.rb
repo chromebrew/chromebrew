@@ -3,7 +3,7 @@ require 'package'
 class Wallstreet < Package
   description 'Fill your console with Wall Street-like news and stats.'
   homepage 'https://a.hollywood.computer/'
-  version '1.25'
+  version '1.26'
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/dustinkirkland/hollywood.git'
@@ -11,9 +11,9 @@ class Wallstreet < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8fada5c186593136a21df10c8a7cfe4b85e17b3b9db7b31a10ab0719b2f96dd1',
-     armv7l: '8fada5c186593136a21df10c8a7cfe4b85e17b3b9db7b31a10ab0719b2f96dd1',
-     x86_64: '9b8e323b8c121197ea064fc6a9f4d022eb4d0da78f6ad701249363ce16e9e76f'
+    aarch64: 'f22b8c48d104ae63dae581f0fa1e3acb4d97f79a14fe1e96be7d79cf8524f6a4',
+     armv7l: 'f22b8c48d104ae63dae581f0fa1e3acb4d97f79a14fe1e96be7d79cf8524f6a4',
+     x86_64: '9bf1580d4d79febf6324693d709aad86e6a25b8c848308f16b5fe3c6892ae20f'
   })
 
   depends_on 'byobu' => :logical

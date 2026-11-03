@@ -100,13 +100,13 @@ class Command
         puts "Please install glab with 'crew install glab', as this helps with informing GitLab that we don't want to be rate limited.".lightred unless File.which('glab')
         if !uri.to_s[%r{gitlab.com/chromebrew/binaries}].nil? && File.which('glab')
           puts "Attempting to use glab for download of #{pkg.name} binaries...".orange
-          glab_cmd = "glab --repo chromebrew/Binaries packages download --name #{pkg.name} --version #{pkg.version}_#{ARCH} --filename #{pkg.name}-#{pkg.version}-chromeos-#{ARCH}.#{pkg.binary_compression} --path ."
+          glab_cmd = "#{"GITLAB_TOKEN=#{GITLAB_GLAB_TOKEN}" unless GITLAB_GLAB_TOKEN.nil?} glab --repo chromebrew/Binaries packages download --name #{pkg.name} --version #{pkg.version}_#{ARCH} --filename #{pkg.name}-#{pkg.version}-chromeos-#{ARCH}.#{pkg.binary_compression} --path ."
           glab_out, glab_stderr, glab_status = Open3.capture3(glab_cmd)
           if glab_status.success?
             puts glab_out
           else
             if ENV['NESTED_CI'] || CREW_VERBOSE
-              system 'glab auth status'
+              system "#{"GITLAB_TOKEN=#{GITLAB_GLAB_TOKEN}" unless GITLAB_GLAB_TOKEN.nil?} glab auth status"
               puts "Download of #{pkg.name} binaries using glab failed:".orange
               puts glab_cmd
               puts glab_out
