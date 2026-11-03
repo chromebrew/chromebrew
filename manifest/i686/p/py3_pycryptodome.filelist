@@ -1,4 +1,4 @@
-# Total size: 7507988
+# Total size: 7612329
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/AES.py
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/ARC2.py
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/ARC4.py
@@ -499,12 +499,12 @@
 /usr/local/lib/python3.15/site-packages/Crypto/__init__.py
 /usr/local/lib/python3.15/site-packages/Crypto/__pycache__/__init__.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Crypto/py.typed
-/usr/local/lib/python3.15/site-packages/pycryptodome-4.2.0.dist-info/INSTALLER
-/usr/local/lib/python3.15/site-packages/pycryptodome-4.2.0.dist-info/METADATA
-/usr/local/lib/python3.15/site-packages/pycryptodome-4.2.0.dist-info/RECORD
-/usr/local/lib/python3.15/site-packages/pycryptodome-4.2.0.dist-info/REQUESTED
-/usr/local/lib/python3.15/site-packages/pycryptodome-4.2.0.dist-info/WHEEL
-/usr/local/lib/python3.15/site-packages/pycryptodome-4.2.0.dist-info/licenses/LICENSE.rst
-/usr/local/lib/python3.15/site-packages/pycryptodome-4.2.0.dist-info/licenses/src/mldsa-native/LICENSE
-/usr/local/lib/python3.15/site-packages/pycryptodome-4.2.0.dist-info/licenses/src/mlkem-native/LICENSE
-/usr/local/lib/python3.15/site-packages/pycryptodome-4.2.0.dist-info/top_level.txt
+/usr/local/lib/python3.15/site-packages/pycryptodome-4.3.0.dist-info/INSTALLER
+/usr/local/lib/python3.15/site-packages/pycryptodome-4.3.0.dist-info/METADATA
+/usr/local/lib/python3.15/site-packages/pycryptodome-4.3.0.dist-info/RECORD
+/usr/local/lib/python3.15/site-packages/pycryptodome-4.3.0.dist-info/REQUESTED
+/usr/local/lib/python3.15/site-packages/pycryptodome-4.3.0.dist-info/WHEEL
+/usr/local/lib/python3.15/site-packages/pycryptodome-4.3.0.dist-info/licenses/LICENSE.rst
+/usr/local/lib/python3.15/site-packages/pycryptodome-4.3.0.dist-info/licenses/src/mldsa-native/LICENSE
+/usr/local/lib/python3.15/site-packages/pycryptodome-4.3.0.dist-info/licenses/src/mlkem-native/LICENSE
+/usr/local/lib/python3.15/site-packages/pycryptodome-4.3.0.dist-info/top_level.txt
