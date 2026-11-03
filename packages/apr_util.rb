@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Apr_util < Autotools
   description 'APR-util provides a number of helpful abstractions on top of APR.'
   homepage 'https://apache.org/dist/apr'
-  version '1.6.5'
+  version '1.6.6'
   license 'Apache-2.0'
   compatibility 'all'
   source_url "https://dlcdn.apache.org/apr/apr-util-#{version}.tar.bz2"
-  source_sha256 '96de1dd6f6a0476d2d2e7964926d8c1ddc3bb0e210e1b1812d3ba5a454a392e2'
+  source_sha256 'aa77dd25f036731b7246abbfbebe6cc813b42799b62c874bc82bd4e1f90f2918'
   binary_compression 'tar.zst'
 
   binary_sha256({
