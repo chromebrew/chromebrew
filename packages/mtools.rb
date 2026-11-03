@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Mtools < Autotools
   description 'Mtools is a collection of utilities to access MS-DOS disks from GNU and Unix without mounting them.'
   homepage 'https://www.gnu.org/software/mtools/'
-  version '4.0.49'
+  version '4.0.50'
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://ftp.gnu.org/gnu/mtools/mtools-#{version}.tar.lz"
-  source_sha256 '32ca85dfc1674c536143d4e0da60e3134039eb9552e0fecfa110e9c8736093ce'
+  source_sha256 '6adccaf371081efb6cf2fe687c88746c0978bafeb9deed5c2b03992704a1a6ab'
   binary_compression 'tar.zst'
 
   binary_sha256({
