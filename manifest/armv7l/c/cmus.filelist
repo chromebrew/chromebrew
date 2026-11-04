@@ -1,8 +1,9 @@
-# Total size: 591096
+# Total size: 603091
 /usr/local/bin/cmus
 /usr/local/bin/cmus-remote
 /usr/local/lib/cmus/ip/aac.so
 /usr/local/lib/cmus/ip/cue.so
+/usr/local/lib/cmus/ip/ffmpeg.so
 /usr/local/lib/cmus/ip/flac.so
 /usr/local/lib/cmus/ip/modplug.so
 /usr/local/lib/cmus/ip/opus.so
