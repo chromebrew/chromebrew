@@ -1,4 +1,4 @@
-# Total size: 41746525
+# Total size: 42272512
 /usr/local/bin/Magick++-config
 /usr/local/bin/MagickCore-config
 /usr/local/bin/MagickWand-config
@@ -638,6 +638,7 @@
 /usr/local/share/doc/ImageMagick-7/www/image/wizard.jpg
 /usr/local/share/doc/ImageMagick-7/www/image/wizard.png
 /usr/local/share/doc/ImageMagick-7/www/import/index.html
+/usr/local/share/doc/ImageMagick-7/www/index-2.html
 /usr/local/share/doc/ImageMagick-7/www/index.html
 /usr/local/share/doc/ImageMagick-7/www/install-source/index.html
 /usr/local/share/doc/ImageMagick-7/www/jp2/index.html
