@@ -1,9 +1,9 @@
-# Total size: 343994
+# Total size: 348130
 /usr/local/bin/patchelf
-/usr/local/lib/python3.14/site-packages/patchelf-0.19.1.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/patchelf-0.19.1.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/patchelf-0.19.1.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/patchelf-0.19.1.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/patchelf-0.19.1.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/patchelf-0.19.1.0.dist-info/licenses/COPYING
-/usr/local/lib/python3.14/site-packages/patchelf-0.19.1.0.dist-info/licenses/LICENSE
+/usr/local/lib/python3.15/site-packages/patchelf-0.19.3.0.dist-info/INSTALLER
+/usr/local/lib/python3.15/site-packages/patchelf-0.19.3.0.dist-info/METADATA
+/usr/local/lib/python3.15/site-packages/patchelf-0.19.3.0.dist-info/RECORD
+/usr/local/lib/python3.15/site-packages/patchelf-0.19.3.0.dist-info/REQUESTED
+/usr/local/lib/python3.15/site-packages/patchelf-0.19.3.0.dist-info/WHEEL
+/usr/local/lib/python3.15/site-packages/patchelf-0.19.3.0.dist-info/licenses/COPYING
+/usr/local/lib/python3.15/site-packages/patchelf-0.19.3.0.dist-info/licenses/LICENSE

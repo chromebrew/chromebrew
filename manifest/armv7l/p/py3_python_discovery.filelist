@@ -1,10 +1,10 @@
-# Total size: 325369
-/usr/local/lib/python3.15/site-packages/python_discovery-1.9.1.dist-info/INSTALLER
-/usr/local/lib/python3.15/site-packages/python_discovery-1.9.1.dist-info/METADATA
-/usr/local/lib/python3.15/site-packages/python_discovery-1.9.1.dist-info/RECORD
-/usr/local/lib/python3.15/site-packages/python_discovery-1.9.1.dist-info/REQUESTED
-/usr/local/lib/python3.15/site-packages/python_discovery-1.9.1.dist-info/WHEEL
-/usr/local/lib/python3.15/site-packages/python_discovery-1.9.1.dist-info/licenses/LICENSE
+# Total size: 361788
+/usr/local/lib/python3.15/site-packages/python_discovery-1.9.2.dist-info/INSTALLER
+/usr/local/lib/python3.15/site-packages/python_discovery-1.9.2.dist-info/METADATA
+/usr/local/lib/python3.15/site-packages/python_discovery-1.9.2.dist-info/RECORD
+/usr/local/lib/python3.15/site-packages/python_discovery-1.9.2.dist-info/REQUESTED
+/usr/local/lib/python3.15/site-packages/python_discovery-1.9.2.dist-info/WHEEL
+/usr/local/lib/python3.15/site-packages/python_discovery-1.9.2.dist-info/licenses/LICENSE
 /usr/local/lib/python3.15/site-packages/python_discovery/__init__.py
 /usr/local/lib/python3.15/site-packages/python_discovery/__pycache__/__init__.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/python_discovery/__pycache__/_cache.cpython-315.pyc
@@ -25,8 +25,10 @@
 /usr/local/lib/python3.15/site-packages/python_discovery/_specifier.py
 /usr/local/lib/python3.15/site-packages/python_discovery/_windows/__init__.py
 /usr/local/lib/python3.15/site-packages/python_discovery/_windows/__pycache__/__init__.cpython-315.pyc
+/usr/local/lib/python3.15/site-packages/python_discovery/_windows/__pycache__/_cancel_io.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/python_discovery/_windows/__pycache__/_pep514.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/python_discovery/_windows/__pycache__/_propose.cpython-315.pyc
+/usr/local/lib/python3.15/site-packages/python_discovery/_windows/_cancel_io.py
 /usr/local/lib/python3.15/site-packages/python_discovery/_windows/_pep514.py
 /usr/local/lib/python3.15/site-packages/python_discovery/_windows/_propose.py
 /usr/local/lib/python3.15/site-packages/python_discovery/py.typed
