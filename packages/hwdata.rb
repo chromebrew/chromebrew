@@ -6,7 +6,7 @@ require 'buildsystems/autotools'
 class Hwdata < Autotools
   description 'hardware identification databases'
   homepage 'https://github.com/vcrhonek/hwdata'
-  version '0.412'
+  version '0.413'
   license 'GPL2'
   compatibility 'all'
   source_url 'https://github.com/vcrhonek/hwdata.git'
@@ -14,10 +14,10 @@ class Hwdata < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '36871e8ba174f7497059e689e5112b032e2e2afd75a3cefd210f04a0a8016c35',
-     armv7l: '36871e8ba174f7497059e689e5112b032e2e2afd75a3cefd210f04a0a8016c35',
-       i686: 'ead7743f107110519fcf0a8b8812de2dd35fa3594e3b7935539cbd9bf6bb226f',
-     x86_64: '1b99ba430185b5e34dc599d059b9bb9dbb7da49094e7cfcc936631296cf668f7'
+    aarch64: '21cf6c0617079bbb2f7be4e36ac6eeb0aafe9025a209802a7595663c5c1aaae9',
+     armv7l: '21cf6c0617079bbb2f7be4e36ac6eeb0aafe9025a209802a7595663c5c1aaae9',
+       i686: '070d60797ed707540c67b392adefd626e7a4e164fbf1768460cf5afd311b09f7',
+     x86_64: '65ee51931b34e8f33eb6fa4cc070ef4b5bab3a61ff2a995c0aabf0a0c2047905'
   })
 
   def self.patch

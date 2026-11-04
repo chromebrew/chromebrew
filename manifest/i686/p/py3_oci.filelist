@@ -1,12 +1,12 @@
-# Total size: 430050599
-/usr/local/lib/python3.15/site-packages/oci-2.189.0.dist-info/INSTALLER
-/usr/local/lib/python3.15/site-packages/oci-2.189.0.dist-info/LICENSE.txt
-/usr/local/lib/python3.15/site-packages/oci-2.189.0.dist-info/METADATA
-/usr/local/lib/python3.15/site-packages/oci-2.189.0.dist-info/RECORD
-/usr/local/lib/python3.15/site-packages/oci-2.189.0.dist-info/REQUESTED
-/usr/local/lib/python3.15/site-packages/oci-2.189.0.dist-info/THIRD_PARTY_LICENSES.txt
-/usr/local/lib/python3.15/site-packages/oci-2.189.0.dist-info/WHEEL
-/usr/local/lib/python3.15/site-packages/oci-2.189.0.dist-info/top_level.txt
+# Total size: 430550300
+/usr/local/lib/python3.15/site-packages/oci-2.190.0.dist-info/INSTALLER
+/usr/local/lib/python3.15/site-packages/oci-2.190.0.dist-info/LICENSE.txt
+/usr/local/lib/python3.15/site-packages/oci-2.190.0.dist-info/METADATA
+/usr/local/lib/python3.15/site-packages/oci-2.190.0.dist-info/RECORD
+/usr/local/lib/python3.15/site-packages/oci-2.190.0.dist-info/REQUESTED
+/usr/local/lib/python3.15/site-packages/oci-2.190.0.dist-info/THIRD_PARTY_LICENSES.txt
+/usr/local/lib/python3.15/site-packages/oci-2.190.0.dist-info/WHEEL
+/usr/local/lib/python3.15/site-packages/oci-2.190.0.dist-info/top_level.txt
 /usr/local/lib/python3.15/site-packages/oci/__init__.py
 /usr/local/lib/python3.15/site-packages/oci/__pycache__/__init__.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/oci/__pycache__/_log_redaction.cpython-315.pyc
