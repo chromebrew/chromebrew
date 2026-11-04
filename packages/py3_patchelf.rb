@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_patchelf < Pip
   description 'Patchelf is a small utility to modify the dynamic linker and RPATH of ELF executables.'
   homepage 'https://pypi.org/project/patchelf'
-  version "0.19.1.0-#{CREW_PY_VER}"
+  version "0.19.3.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fcfef738b7d77b66b251d900f180b70a608504d32f295a4a4a341799ec6137f7',
-     armv7l: 'fcfef738b7d77b66b251d900f180b70a608504d32f295a4a4a341799ec6137f7',
-       i686: '1e92c6807e1075dc3e0a9e4018ed0b581c3b5a55d8e386935f26bccbb89847c2',
-     x86_64: '1b84db6663f4ef56cc92eb69b65dbdb261aa03630d8590b4a369dd99636799f9'
+    aarch64: 'f36ec92a17dca6abb52f948bc547e9c33c9d7350506b76f1f9db330f066796fd',
+     armv7l: 'f36ec92a17dca6abb52f948bc547e9c33c9d7350506b76f1f9db330f066796fd',
+       i686: '659e63c609a8a3d0bee129b1de705be6e60144fd6658a16442a7afed8cbd6f2f',
+     x86_64: '6571ab77f45564b49e12220fac3c81ea46af1861103a45c84d07bd675ee3b4a2'
   })
 
   depends_on 'gcc_lib' => :executable
