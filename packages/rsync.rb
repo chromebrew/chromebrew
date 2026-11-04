@@ -13,10 +13,10 @@ class Rsync < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6d6e6984f97160849b24bf6ee825207e113b6782ecb350c91191d06de46667bf',
-     armv7l: '6d6e6984f97160849b24bf6ee825207e113b6782ecb350c91191d06de46667bf',
-       i686: '43ce01b77ece5c0db90376cc06236138598697704216d68638a18432f012b478',
-     x86_64: '0e9713d410c52f1c12a29a204303f03a04eba8148b4c3aab2ae8638a4463ec34'
+    aarch64: 'fcad94e37477e1b60ff64bb5b9fac0cd1deb31cdd5a0ece1a1b571155e9db1de',
+     armv7l: 'fcad94e37477e1b60ff64bb5b9fac0cd1deb31cdd5a0ece1a1b571155e9db1de',
+       i686: 'd5ce3d778d476a0d0cba2723aa244482f2e3fafdfb8897f0f17ce9b3a8700a27',
+     x86_64: '8560da2eac311e3aac26eb6a007ddb0a87c68f490b349c33baf80bfa56978a2b'
   })
 
   depends_on 'acl' => :executable
