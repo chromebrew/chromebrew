@@ -1,5 +1,5 @@
 ---
-# Version 2.4
+# Version 2.5
 name: Unit Tests
 on:
   check_run:
@@ -324,6 +324,7 @@ jobs:
                 -e CREW_REPO="${CREW_REPO}" \
                 -e CREW_BRANCH="${CREW_BRANCH}" \
                 -e GITLAB_TOKEN="${{ secrets.GITLAB_TOKEN }}" \
+                -e GITLAB_GLAB_TOKEN="${{ secrets.GITLAB_GLAB_TOKEN }}" \
                 --tmpfs /tmp \
                 --ulimit "nofile=$(ulimit -Sn):$(ulimit -Hn)" \
                 "${CONTAINER}" \
