@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_dnspython < Pip
   description 'DNSPython is a DNS toolkit.'
   homepage 'https://www.dnspython.org/'
-  version "2.9.1-#{CREW_PY_VER}"
+  version "2.9.2-#{CREW_PY_VER}"
   license 'ISC'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7d79acbe4134cd5b50e184b94e2f7920492698d6580415a84ef9765c087b2122',
-     armv7l: '7d79acbe4134cd5b50e184b94e2f7920492698d6580415a84ef9765c087b2122',
-       i686: '122c985bce191241ee93ea6d0ee6e2168249f05c91834a19baf2ebfcbd2031f2',
-     x86_64: '07242beeb0cff298ed9f452bf28e7534de0df880aafc22a0145834ecb5a9d51d'
+    aarch64: '8e83d8fd6cb03e2e5dea9449b607f241575023a8c0a6b5f412d136f633b29275',
+     armv7l: '8e83d8fd6cb03e2e5dea9449b607f241575023a8c0a6b5f412d136f633b29275',
+       i686: '39064e82fbe38c2ed54e5c074841db52d9787d007b9473d79fd5e0485d2b7646',
+     x86_64: '760db373bcae3b30550f866b3c00ced7c3105816c77b0aa05bfb2640c701f4c4'
   })
 
   depends_on 'python3' => :logical
