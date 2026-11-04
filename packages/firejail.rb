@@ -4,7 +4,7 @@ class Firejail < Autotools
   description 'Firejail is a SUID program that reduces the risk of security breaches by restricting the running environment of untrusted applications
   by using Linux namespaces and seccomp-bpf.'
   homepage 'https://firejail.wordpress.com'
-  version '0.9.82'
+  version '0.9.82.2'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/netblue30/firejail.git'
