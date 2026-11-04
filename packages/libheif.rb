@@ -11,9 +11,9 @@ class Libheif < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f24d69232f1b7678ecc381a8b76bc8e828617293413b38b99ea58c222ab7af78',
-     armv7l: 'f24d69232f1b7678ecc381a8b76bc8e828617293413b38b99ea58c222ab7af78',
-     x86_64: 'ebf5ed11f00593eb033aa171cbacd376d1be2aac1ce550a15df8a4553ec20f7a'
+    aarch64: '342424adf87ffef3a01228242106ec8327fe9e1392c5cdc97aa5f26a68333a72',
+     armv7l: '342424adf87ffef3a01228242106ec8327fe9e1392c5cdc97aa5f26a68333a72',
+     x86_64: '55a1750240d7f2172ba3bc2f4ff62d1a061e2080ff5d4d2148bcd43800f18068'
   })
 
   depends_on 'gcc_lib' => :library
