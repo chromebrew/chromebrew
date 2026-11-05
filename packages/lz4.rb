@@ -18,6 +18,7 @@ class Lz4 < Meson
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 
   meson_options '-Dprograms=true'
 
