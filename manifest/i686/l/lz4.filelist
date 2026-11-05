@@ -1,4 +1,4 @@
-# Total size: 491016
+# Total size: 552881
 /usr/local/bin/lz4
 /usr/local/bin/lz4c
 /usr/local/bin/lz4cat
@@ -8,7 +8,7 @@
 /usr/local/include/lz4hc.h
 /usr/local/lib/liblz4.so
 /usr/local/lib/liblz4.so.1
-/usr/local/lib/liblz4.so.1.10.0
+/usr/local/lib/liblz4.so.1.11.0
 /usr/local/lib/pkgconfig/liblz4.pc
 /usr/local/share/man/man1/lz4.1.zst
 /usr/local/share/man/man1/lz4c.1.zst

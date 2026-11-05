@@ -7,14 +7,14 @@ class Lz4 < Meson
   license 'BSD-2 and GPL-2'
   compatibility 'all'
   source_url 'https://github.com/lz4/lz4.git'
-  git_hashtag "v#{version.split('-').first}"
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2c3cfc33448b4b1ce19536e07187b44eaa649e3f161a252957dc6fd511f3bee5',
-     armv7l: '2c3cfc33448b4b1ce19536e07187b44eaa649e3f161a252957dc6fd511f3bee5',
-       i686: '1c67990d04b5ac9d36331de00af4aa900bd0cb63c456e04adfe8641c1aaa9aa8',
-     x86_64: 'eb0777acb53c1e81e673e87648fdae53a0a05c5e463475e688e6633c27e5b195'
+    aarch64: 'f53be4b1b0091de1f4f4dd32978f15575405213d5f92ffd47e7894d4ca2c4028',
+     armv7l: 'f53be4b1b0091de1f4f4dd32978f15575405213d5f92ffd47e7894d4ca2c4028',
+       i686: '349ed4bcf0b390e6c243312378454bedb7c3844c3a6a0108d7bff2aebf8b45ce',
+     x86_64: '543b3181a9946d535e0afa57c2041480a717cab3b0597c35f1e32f0d2026d79f'
   })
 
   depends_on 'glibc' => :library
