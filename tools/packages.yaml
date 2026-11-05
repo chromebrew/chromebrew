@@ -1685,7 +1685,7 @@ url: https://github.com/fcsonline/drill/releases
 activity: low
 ---
 kind: url
-name: drop
+name: drop_linux
 url: https://github.com/wrr/drop/releases
 activity: medium
 ---
