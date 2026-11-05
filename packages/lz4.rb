@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Lz4 < Meson
   description 'LZ4 is lossless compression algorithm, providing compression speed at 400 MB/s per core (0.16 Bytes/cycle).'
   homepage 'https://lz4.org/'
-  version '1.10.0-2'
+  version '1.11.0'
   license 'BSD-2 and GPL-2'
   compatibility 'all'
   source_url 'https://github.com/lz4/lz4.git'
