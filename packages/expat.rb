@@ -11,10 +11,10 @@ class Expat < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2ba5d59b18a673a2b6870fbe0b8320fa06ee751a121532ac429f7f640b6c343b',
-     armv7l: '2ba5d59b18a673a2b6870fbe0b8320fa06ee751a121532ac429f7f640b6c343b',
-       i686: '8e1f6c6248ceb75ae07f3d7e7067074462bf2b5ccce5a098e6d65d1c9c007777',
-     x86_64: '31e04a3cabd922d622894458c135493ed496d227ca56b08eaf9aa112582f83bb'
+    aarch64: 'd02c2059984331a1ee8de6f909eebb5e2554b9149b6e0a180b09fc280121685f',
+     armv7l: 'd02c2059984331a1ee8de6f909eebb5e2554b9149b6e0a180b09fc280121685f',
+       i686: '447ae0d04d48100a2a76ce8539cc2bf758ef499911764fdf444f8493f5afcad9',
+     x86_64: 'dc9fbebd3eb19c76bf6b4b66ece5c624f22d100dfa4e32c1e76fdc23146d1acf'
   })
 
   depends_on 'glibc' => :library
