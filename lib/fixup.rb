@@ -63,6 +63,7 @@ renamed_packages = Set[
   { pkg_name: 'charm', pkg_rename: 'charm_sh', comments: 'Renamed to prevent a conflict with an npm package with same name.' },
   { pkg_name: 'chrome', pkg_rename: 'google_chrome', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'codium', pkg_rename: 'vscodium', comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'drop', pkg_rename: 'drop_linux', comments: 'Renamed to prevent a conflict with a Python project with the same name.' },
   { pkg_name: 'dstat', pkg_rename: 'py3_dool', comments: 'Following upstream rename.' },
   { pkg_name: 'ffcall', pkg_rename: 'libffcall', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'gnome_themes_standard', pkg_rename: 'gnome_themes_extra', comments: 'Renamed to better match upstream.' },
