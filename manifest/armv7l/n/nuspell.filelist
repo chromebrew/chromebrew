@@ -1,4 +1,4 @@
-# Total size: 1289735
+# Total size: 1269328
 /usr/local/bin/nuspell
 /usr/local/include/nuspell/aff_data.hxx
 /usr/local/include/nuspell/checker.hxx
@@ -15,7 +15,7 @@
 /usr/local/lib/cmake/nuspell/NuspellTargets.cmake
 /usr/local/lib/libnuspell.so
 /usr/local/lib/libnuspell.so.5
-/usr/local/lib/libnuspell.so.5.1.8
+/usr/local/lib/libnuspell.so.5.1.9
 /usr/local/lib/pkgconfig/nuspell.pc
 /usr/local/share/doc/nuspell/README.md
 /usr/local/share/doc/nuspell/html/aff__data_8hxx_source.html
@@ -104,4 +104,3 @@
 /usr/local/share/doc/nuspell/html/tabs.css
 /usr/local/share/doc/nuspell/html/unicode_8hxx_source.html
 /usr/local/share/doc/nuspell/html/utils_8hxx_source.html
-/usr/local/share/man/man1/nuspell.1.zst
