@@ -14,9 +14,9 @@ class Opencv < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ec7a825c824df5956f3bc316668b4da650938504b9439674d2d94981244fdd5f',
-     armv7l: 'ec7a825c824df5956f3bc316668b4da650938504b9439674d2d94981244fdd5f',
-     x86_64: 'b0ecd17df0ae8182447888e68765314f4acaa7e3193042c54951caef9be9e6de'
+    aarch64: 'e0153ae9e4d29fe5f02b6818c1085012430b3736e3a6fb77fbb7c98e815e5bd2',
+     armv7l: 'e0153ae9e4d29fe5f02b6818c1085012430b3736e3a6fb77fbb7c98e815e5bd2',
+     x86_64: '38129aae57fca73c5014b4e0dcb7c877d7633b8bfaf58ea8b52b3b07b08a96ff'
   })
 
   depends_on 'ant' => :build
@@ -31,7 +31,7 @@ class Opencv < CMake
   depends_on 'glibc_lib' => :library
   depends_on 'gstreamer' => :library
   depends_on 'gtk3' => :library
-  depends_on 'harfbuzz' # R
+  depends_on 'harfbuzz' => :library
   depends_on 'hdf5' => :build
   depends_on 'lapack' => :build
   depends_on 'libavif' => :library
