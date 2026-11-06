@@ -1,0 +1,5 @@
+#!/bin/bash
+gifdiff -h | head
+gifdiff -v
+gifsicle -h | head
+gifsicle --version
