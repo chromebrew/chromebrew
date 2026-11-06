@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libaec < CMake
   description 'Adaptive Entropy Coding library'
   homepage 'https://gitlab.dkrz.de/dkrz-sw/libaec'
-  version '1.1.7'
+  version '1.1.8'
   license 'Copyright 2008 Simon Tatham. All rights reserved.'
   compatibility 'all'
   source_url 'https://gitlab.dkrz.de/dkrz-sw/libaec.git'
