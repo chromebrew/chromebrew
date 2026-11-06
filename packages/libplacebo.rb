@@ -14,18 +14,20 @@ class Libplacebo < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7a84755a3febd4cc5064e117cb44a1739e8c5f1c5e519a25da2d82abf860dcaa',
-     armv7l: '7a84755a3febd4cc5064e117cb44a1739e8c5f1c5e519a25da2d82abf860dcaa',
-     x86_64: '7be69c02907256712cf674728bbb308505e28165faca45d701c99b10e687dfc3'
+    aarch64: '18400a406c0be5ade768c674925804342594040601d5695cfc7ec0a97dfa9fb9',
+     armv7l: '18400a406c0be5ade768c674925804342594040601d5695cfc7ec0a97dfa9fb9',
+     x86_64: 'd7ca271df1fa2f474e644b661828fc1035652ea88986dec3cee1c975c5537209'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'glslang' # R
-  depends_on 'shaderc' # R
-  depends_on 'lcms' # R
-  depends_on 'libdovi' # R
-  depends_on 'vulkan_icd_loader' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'glslang' => :library
+  depends_on 'lcms' => :library
+  depends_on 'libdovi' => :library
+  depends_on 'shaderc' => :library
+  depends_on 'vulkan_icd_loader' => :library
+  depends_on 'vulkansdk' => :library
 
   meson_options "-Dtests=false \
     -Dvulkan=enabled \
