@@ -1,4 +1,4 @@
-# Total size: 6998883
+# Total size: 6996764
 /usr/local/lib64/python3.15/site-packages/Cryptodome/Cipher/AES.py
 /usr/local/lib64/python3.15/site-packages/Cryptodome/Cipher/AES.pyi
 /usr/local/lib64/python3.15/site-packages/Cryptodome/Cipher/ARC2.py
@@ -551,11 +551,11 @@
 /usr/local/lib64/python3.15/site-packages/Cryptodome/__init__.pyi
 /usr/local/lib64/python3.15/site-packages/Cryptodome/__pycache__/__init__.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Cryptodome/py.typed
-/usr/local/lib64/python3.15/site-packages/pycryptodomex-3.24.1.dist-info/AUTHORS.rst
-/usr/local/lib64/python3.15/site-packages/pycryptodomex-3.24.1.dist-info/INSTALLER
-/usr/local/lib64/python3.15/site-packages/pycryptodomex-3.24.1.dist-info/LICENSE.rst
-/usr/local/lib64/python3.15/site-packages/pycryptodomex-3.24.1.dist-info/METADATA
-/usr/local/lib64/python3.15/site-packages/pycryptodomex-3.24.1.dist-info/RECORD
-/usr/local/lib64/python3.15/site-packages/pycryptodomex-3.24.1.dist-info/REQUESTED
-/usr/local/lib64/python3.15/site-packages/pycryptodomex-3.24.1.dist-info/WHEEL
-/usr/local/lib64/python3.15/site-packages/pycryptodomex-3.24.1.dist-info/top_level.txt
+/usr/local/lib64/python3.15/site-packages/pycryptodomex-3.24.2.dist-info/AUTHORS.rst
+/usr/local/lib64/python3.15/site-packages/pycryptodomex-3.24.2.dist-info/INSTALLER
+/usr/local/lib64/python3.15/site-packages/pycryptodomex-3.24.2.dist-info/LICENSE.rst
+/usr/local/lib64/python3.15/site-packages/pycryptodomex-3.24.2.dist-info/METADATA
+/usr/local/lib64/python3.15/site-packages/pycryptodomex-3.24.2.dist-info/RECORD
+/usr/local/lib64/python3.15/site-packages/pycryptodomex-3.24.2.dist-info/REQUESTED
+/usr/local/lib64/python3.15/site-packages/pycryptodomex-3.24.2.dist-info/WHEEL
+/usr/local/lib64/python3.15/site-packages/pycryptodomex-3.24.2.dist-info/top_level.txt
