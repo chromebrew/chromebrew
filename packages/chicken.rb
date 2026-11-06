@@ -11,10 +11,10 @@ class Chicken < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '497ad8e35946e23e39e4fea42dd14bad382e7a902ae59987c5cdf60520c4336d',
-     armv7l: '497ad8e35946e23e39e4fea42dd14bad382e7a902ae59987c5cdf60520c4336d',
-       i686: '469dc02022c66f9b3b328c2a7a1627d48099af3b5aa352f5bb9e7d3e9f2ca3cf',
-     x86_64: 'f48a8b54e92b10c600961573c29aa05a4ac4d309c958cfaa37cfe5c5af9a25b3'
+    aarch64: '6977c5cb5563c9b5a8259eca7be1ab371c941de7bf19197ec6288e54c938e4f1',
+     armv7l: '6977c5cb5563c9b5a8259eca7be1ab371c941de7bf19197ec6288e54c938e4f1',
+       i686: 'c5ca9ef2970dbb515352d185878fc13a4c1d53ee9a438b081b62a9e0433a26b1',
+     x86_64: 'd3192fff8af6910064221e859510508cc98b16227cf760118633dc473d39ff79'
   })
 
   depends_on 'glibc' => :library
