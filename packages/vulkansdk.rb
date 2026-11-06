@@ -3,12 +3,12 @@ require 'package'
 class Vulkansdk < Package
   description 'Vulkan SDK'
   homepage 'https://vulkan.lunarg.com/'
-  version '1.4.363.0'
+  version '1.4.363.1'
   license 'https://vulkan.lunarg.com/license/#/license'
   compatibility 'x86_64'
   min_glibc '2.32'
   source_url "https://sdk.lunarg.com/sdk/download/#{version}/linux/vulkansdk-linux-x86_64-#{version}.tar.xz"
-  source_sha256 '197962f5cbf80baf2775a03336a01cee7c8745686c65aaa70d3f751ade4d7e43'
+  source_sha256 'b7867d8ca658563813af666f34b93db87f1b1c7d9d69d97e924c210c7ba33eb8'
 
   depends_on 'libglvnd'
   depends_on 'libxcomposite'
