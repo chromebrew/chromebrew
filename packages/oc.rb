@@ -3,7 +3,7 @@ require 'package'
 class Oc < Package
   description 'Enterprise Kubernetes for Developers'
   homepage 'https://github.com/openshift/oc'
-  version '4.22.0-202605222050'
+  version '5.0.0-202610271435'
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/openshift/oc.git'
