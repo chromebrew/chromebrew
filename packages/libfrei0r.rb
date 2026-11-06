@@ -13,7 +13,7 @@ class Libfrei0r < CMake
   binary_sha256({
     aarch64: '3fb92ddaaa1b0b8cbad6e395835ca9adb23441e7d02a382d7add314c1a530c24',
      armv7l: '3fb92ddaaa1b0b8cbad6e395835ca9adb23441e7d02a382d7add314c1a530c24',
-     x86_64: 'ef6c2a20545a9b3ddb8c12ecd8cc43983ff697a1faca902f49ad8002769ff03d'
+     x86_64: '1008cf7744c8ec82139f9dc4665db29b9f6608f0696f105de897bcd6048e7c2d'
   })
 
   depends_on 'cairo' => :library
@@ -21,6 +21,7 @@ class Libfrei0r < CMake
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
   depends_on 'harfbuzz' => :library
+  depends_on 'libglvnd' => :library
 
   # TODO: should we add gavl and enable this?
   cmake_options '-DWITHOUT_OPENCV=ON -DWITHOUT_GAVL=ON'

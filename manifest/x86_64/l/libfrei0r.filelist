@@ -1,12 +1,14 @@
-# Total size: 2610570
+# Total size: 2783760
 /usr/local/include/frei0r.h
 /usr/local/include/frei0r.hpp
 /usr/local/include/frei0r/blur.h
+/usr/local/include/frei0r/bundle.h
 /usr/local/include/frei0r/cairo.h
 /usr/local/include/frei0r/cfc.h
 /usr/local/include/frei0r/colorspace.h
 /usr/local/include/frei0r/math.h
 /usr/local/lib64/frei0r-1/3dflippo.so
+/usr/local/lib64/frei0r-1/3dperspective.so
 /usr/local/lib64/frei0r-1/B.so
 /usr/local/lib64/frei0r-1/G.so
 /usr/local/lib64/frei0r-1/IIRblur.so
@@ -68,6 +70,7 @@
 /usr/local/lib64/frei0r-1/equaliz0r.so
 /usr/local/lib64/frei0r-1/euclid_eraser.so
 /usr/local/lib64/frei0r-1/filmgrain.so
+/usr/local/lib64/frei0r-1/flarefx.so
 /usr/local/lib64/frei0r-1/flippo.so
 /usr/local/lib64/frei0r-1/gamma.so
 /usr/local/lib64/frei0r-1/gateweave.so
@@ -76,6 +79,7 @@
 /usr/local/lib64/frei0r-1/grain_extract.so
 /usr/local/lib64/frei0r-1/grain_merge.so
 /usr/local/lib64/frei0r-1/hardlight.so
+/usr/local/lib64/frei0r-1/harris0r.so
 /usr/local/lib64/frei0r-1/heatmap0r.so
 /usr/local/lib64/frei0r-1/hue.so
 /usr/local/lib64/frei0r-1/hueshift0r.so
@@ -95,6 +99,7 @@
 /usr/local/lib64/frei0r-1/measure_pr0file.so
 /usr/local/lib64/frei0r-1/medians.so
 /usr/local/lib64/frei0r-1/mirr0r.so
+/usr/local/lib64/frei0r-1/motiondiff0r.so
 /usr/local/lib64/frei0r-1/multiply.so
 /usr/local/lib64/frei0r-1/ndvi.so
 /usr/local/lib64/frei0r-1/nervous.so
@@ -120,6 +125,7 @@
 /usr/local/lib64/frei0r-1/scanline0r.so
 /usr/local/lib64/frei0r-1/screen.so
 /usr/local/lib64/frei0r-1/select0r.so
+/usr/local/lib64/frei0r-1/shadert0y.so
 /usr/local/lib64/frei0r-1/shake0scillate.so
 /usr/local/lib64/frei0r-1/sharpness.so
 /usr/local/lib64/frei0r-1/sigmoidaltransfer.so
@@ -139,6 +145,7 @@
 /usr/local/lib64/frei0r-1/sleid0r_wipe-rect.so
 /usr/local/lib64/frei0r-1/sleid0r_wipe-right.so
 /usr/local/lib64/frei0r-1/sleid0r_wipe-up.so
+/usr/local/lib64/frei0r-1/slitscan0r.so
 /usr/local/lib64/frei0r-1/sobel.so
 /usr/local/lib64/frei0r-1/softglow.so
 /usr/local/lib64/frei0r-1/softlight.so
@@ -166,5 +173,6 @@
 /usr/local/lib64/frei0r-1/vertigo.so
 /usr/local/lib64/frei0r-1/vignette.so
 /usr/local/lib64/frei0r-1/water.so
+/usr/local/lib64/frei0r-1/whirlpinch0r.so
 /usr/local/lib64/frei0r-1/xfade0r.so
 /usr/local/lib64/pkgconfig/frei0r.pc
