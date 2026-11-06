@@ -1,4 +1,4 @@
-# Total size: 378170605
+# Total size: 378413052
 /usr/local/bin/zig
 /usr/local/share/zig/LICENSE
 /usr/local/share/zig/README.md
@@ -261,6 +261,7 @@
 /usr/local/share/zig/lib/compiler_rt/fmod.zig
 /usr/local/share/zig/lib/compiler_rt/fmodq_test.zig
 /usr/local/share/zig/lib/compiler_rt/fmodx_test.zig
+/usr/local/share/zig/lib/compiler_rt/fmv.zig
 /usr/local/share/zig/lib/compiler_rt/hexagon.zig
 /usr/local/share/zig/lib/compiler_rt/int.zig
 /usr/local/share/zig/lib/compiler_rt/int_from_float.zig
@@ -1490,10 +1491,24 @@
 /usr/local/share/zig/lib/libc/include/any-darwin-any/memory.h
 /usr/local/share/zig/lib/libc/include/any-darwin-any/monetary.h
 /usr/local/share/zig/lib/libc/include/any-darwin-any/ndbm.h
+/usr/local/share/zig/lib/libc/include/any-darwin-any/net/bpf.h
+/usr/local/share/zig/lib/libc/include/any-darwin-any/net/dlil.h
+/usr/local/share/zig/lib/libc/include/any-darwin-any/net/ethernet.h
 /usr/local/share/zig/lib/libc/include/any-darwin-any/net/if.h
+/usr/local/share/zig/lib/libc/include/any-darwin-any/net/if_arp.h
 /usr/local/share/zig/lib/libc/include/any-darwin-any/net/if_dl.h
+/usr/local/share/zig/lib/libc/include/any-darwin-any/net/if_llc.h
+/usr/local/share/zig/lib/libc/include/any-darwin-any/net/if_media.h
+/usr/local/share/zig/lib/libc/include/any-darwin-any/net/if_mib.h
+/usr/local/share/zig/lib/libc/include/any-darwin-any/net/if_types.h
+/usr/local/share/zig/lib/libc/include/any-darwin-any/net/if_utun.h
 /usr/local/share/zig/lib/libc/include/any-darwin-any/net/if_var.h
+/usr/local/share/zig/lib/libc/include/any-darwin-any/net/if_var_status.h
+/usr/local/share/zig/lib/libc/include/any-darwin-any/net/ipsec_offload.h
+/usr/local/share/zig/lib/libc/include/any-darwin-any/net/kext_net.h
+/usr/local/share/zig/lib/libc/include/any-darwin-any/net/ndrv.h
 /usr/local/share/zig/lib/libc/include/any-darwin-any/net/net_kev.h
+/usr/local/share/zig/lib/libc/include/any-darwin-any/net/pfkeyv2.h
 /usr/local/share/zig/lib/libc/include/any-darwin-any/net/route.h
 /usr/local/share/zig/lib/libc/include/any-darwin-any/netdb.h
 /usr/local/share/zig/lib/libc/include/any-darwin-any/netinet/in.h
