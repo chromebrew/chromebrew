@@ -1,0 +1,5 @@
+#!/bin/bash
+systemd-hwdb --help | head
+systemd-hwdb --version
+udevadm --help | head
+udevadm --version
