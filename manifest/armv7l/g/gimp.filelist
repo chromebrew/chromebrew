@@ -1,4 +1,4 @@
-# Total size: 156204759
+# Total size: 155422454
 /usr/local/bin/gimp
 /usr/local/bin/gimp-3
 /usr/local/bin/gimp-3.2
@@ -386,6 +386,7 @@
 /usr/local/lib/gimp/3.0/plug-ins/file-exr/file-exr
 /usr/local/lib/gimp/3.0/plug-ins/file-farbfeld/file-farbfeld
 /usr/local/lib/gimp/3.0/plug-ins/file-faxg3/file-faxg3
+/usr/local/lib/gimp/3.0/plug-ins/file-fits/file-fits
 /usr/local/lib/gimp/3.0/plug-ins/file-fli/file-fli
 /usr/local/lib/gimp/3.0/plug-ins/file-gbr/file-gbr
 /usr/local/lib/gimp/3.0/plug-ins/file-gegl/file-gegl
@@ -489,34 +490,34 @@
 /usr/local/lib/girepository-1.0/GimpUi-3.0.typelib
 /usr/local/lib/libgimp-3.0.so
 /usr/local/lib/libgimp-3.0.so.0
-/usr/local/lib/libgimp-3.0.so.0.204.0
+/usr/local/lib/libgimp-3.0.so.0.206.2
 /usr/local/lib/libgimp-scriptfu-3.0.so
 /usr/local/lib/libgimp-scriptfu-3.0.so.0
-/usr/local/lib/libgimp-scriptfu-3.0.so.0.204.0
+/usr/local/lib/libgimp-scriptfu-3.0.so.0.206.2
 /usr/local/lib/libgimpbase-3.0.so
 /usr/local/lib/libgimpbase-3.0.so.0
-/usr/local/lib/libgimpbase-3.0.so.0.204.0
+/usr/local/lib/libgimpbase-3.0.so.0.206.2
 /usr/local/lib/libgimpcolor-3.0.so
 /usr/local/lib/libgimpcolor-3.0.so.0
-/usr/local/lib/libgimpcolor-3.0.so.0.204.0
+/usr/local/lib/libgimpcolor-3.0.so.0.206.2
 /usr/local/lib/libgimpconfig-3.0.so
 /usr/local/lib/libgimpconfig-3.0.so.0
-/usr/local/lib/libgimpconfig-3.0.so.0.204.0
+/usr/local/lib/libgimpconfig-3.0.so.0.206.2
 /usr/local/lib/libgimpmath-3.0.so
 /usr/local/lib/libgimpmath-3.0.so.0
-/usr/local/lib/libgimpmath-3.0.so.0.204.0
+/usr/local/lib/libgimpmath-3.0.so.0.206.2
 /usr/local/lib/libgimpmodule-3.0.so
 /usr/local/lib/libgimpmodule-3.0.so.0
-/usr/local/lib/libgimpmodule-3.0.so.0.204.0
+/usr/local/lib/libgimpmodule-3.0.so.0.206.2
 /usr/local/lib/libgimpthumb-3.0.so
 /usr/local/lib/libgimpthumb-3.0.so.0
-/usr/local/lib/libgimpthumb-3.0.so.0.204.0
+/usr/local/lib/libgimpthumb-3.0.so.0.206.2
 /usr/local/lib/libgimpui-3.0.so
 /usr/local/lib/libgimpui-3.0.so.0
-/usr/local/lib/libgimpui-3.0.so.0.204.0
+/usr/local/lib/libgimpui-3.0.so.0.206.2
 /usr/local/lib/libgimpwidgets-3.0.so
 /usr/local/lib/libgimpwidgets-3.0.so.0
-/usr/local/lib/libgimpwidgets-3.0.so.0.204.0
+/usr/local/lib/libgimpwidgets-3.0.so.0.206.2
 /usr/local/lib/pkgconfig/gimp-3.0.pc
 /usr/local/lib/pkgconfig/gimpthumb-3.0.pc
 /usr/local/lib/pkgconfig/gimpui-3.0.pc
@@ -4829,7 +4830,6 @@
 /usr/local/share/gimp/3.0/icons/Legacy/12x12/apps/gimp-quick-mask-off.png
 /usr/local/share/gimp/3.0/icons/Legacy/12x12/apps/gimp-quick-mask-on.png
 /usr/local/share/gimp/3.0/icons/Legacy/12x12/apps/gimp-swap-colors.png
-/usr/local/share/gimp/3.0/icons/Legacy/12x12/apps/gimp-visible.png
 /usr/local/share/gimp/3.0/icons/Legacy/12x12/apps/gimp-zoom-follow-window.png
 /usr/local/share/gimp/3.0/icons/Legacy/16x16/apps/dialog-information.png
 /usr/local/share/gimp/3.0/icons/Legacy/16x16/apps/dialog-warning.png
@@ -4886,7 +4886,6 @@
 /usr/local/share/gimp/3.0/icons/Legacy/16x16/apps/gimp-histogram-linear.png
 /usr/local/share/gimp/3.0/icons/Legacy/16x16/apps/gimp-histogram-logarithmic.png
 /usr/local/share/gimp/3.0/icons/Legacy/16x16/apps/gimp-histogram.png
-/usr/local/share/gimp/3.0/icons/Legacy/16x16/apps/gimp-image.png
 /usr/local/share/gimp/3.0/icons/Legacy/16x16/apps/gimp-images.png
 /usr/local/share/gimp/3.0/icons/Legacy/16x16/apps/gimp-input-device.png
 /usr/local/share/gimp/3.0/icons/Legacy/16x16/apps/gimp-invert.png
@@ -4974,7 +4973,6 @@
 /usr/local/share/gimp/3.0/icons/Legacy/18x18/apps/gimp-color-picker-white.png
 /usr/local/share/gimp/3.0/icons/Legacy/192x192/apps/gimp-wilber.png
 /usr/local/share/gimp/3.0/icons/Legacy/20x20/apps/gimp-linked.png
-/usr/local/share/gimp/3.0/icons/Legacy/20x20/apps/gimp-visible.png
 /usr/local/share/gimp/3.0/icons/Legacy/22x22/apps/gimp-char-picker.png
 /usr/local/share/gimp/3.0/icons/Legacy/22x22/apps/gimp-dynamics.png
 /usr/local/share/gimp/3.0/icons/Legacy/22x22/apps/gimp-histogram.png
@@ -5060,7 +5058,6 @@
 /usr/local/share/gimp/3.0/icons/Legacy/24x24/apps/gimp-hchain-broken.png
 /usr/local/share/gimp/3.0/icons/Legacy/24x24/apps/gimp-hchain.png
 /usr/local/share/gimp/3.0/icons/Legacy/24x24/apps/gimp-hfill.png
-/usr/local/share/gimp/3.0/icons/Legacy/24x24/apps/gimp-image.png
 /usr/local/share/gimp/3.0/icons/Legacy/24x24/apps/gimp-images.png
 /usr/local/share/gimp/3.0/icons/Legacy/24x24/apps/gimp-layer-mask.png
 /usr/local/share/gimp/3.0/icons/Legacy/24x24/apps/gimp-layer.png
@@ -5095,7 +5092,6 @@
 /usr/local/share/gimp/3.0/icons/Legacy/32x32/apps/gimp-channel-red.png
 /usr/local/share/gimp/3.0/icons/Legacy/32x32/apps/gimp-channel.png
 /usr/local/share/gimp/3.0/icons/Legacy/32x32/apps/gimp-floating-selection.png
-/usr/local/share/gimp/3.0/icons/Legacy/32x32/apps/gimp-image.png
 /usr/local/share/gimp/3.0/icons/Legacy/32x32/apps/gimp-layer-mask.png
 /usr/local/share/gimp/3.0/icons/Legacy/32x32/apps/gimp-layer.png
 /usr/local/share/gimp/3.0/icons/Legacy/32x32/apps/gimp-text-layer.png
@@ -5162,6 +5158,7 @@
 /usr/local/share/gimp/3.0/icons/Legacy/96x96/apps/gimp-wilber.png
 /usr/local/share/gimp/3.0/icons/Legacy/index.theme
 /usr/local/share/gimp/3.0/icons/Legacy/scalable/apps/gimp-business-card.svg
+/usr/local/share/gimp/3.0/icons/Legacy/scalable/apps/gimp-close-all.svg
 /usr/local/share/gimp/3.0/icons/Legacy/scalable/apps/gimp-color-cmyk.svg
 /usr/local/share/gimp/3.0/icons/Legacy/scalable/apps/gimp-color-space-linear.svg
 /usr/local/share/gimp/3.0/icons/Legacy/scalable/apps/gimp-color-space-non-linear.svg
@@ -5179,6 +5176,9 @@
 /usr/local/share/gimp/3.0/icons/Legacy/scalable/apps/gimp-file-manager.svg
 /usr/local/share/gimp/3.0/icons/Legacy/scalable/apps/gimp-gegl.svg
 /usr/local/share/gimp/3.0/icons/Legacy/scalable/apps/gimp-group-layer.svg
+/usr/local/share/gimp/3.0/icons/Legacy/scalable/apps/gimp-image-open.svg
+/usr/local/share/gimp/3.0/icons/Legacy/scalable/apps/gimp-image-reload.svg
+/usr/local/share/gimp/3.0/icons/Legacy/scalable/apps/gimp-image.svg
 /usr/local/share/gimp/3.0/icons/Legacy/scalable/apps/gimp-lock-alpha-symbolic.svg
 /usr/local/share/gimp/3.0/icons/Legacy/scalable/apps/gimp-lock-alpha.svg
 /usr/local/share/gimp/3.0/icons/Legacy/scalable/apps/gimp-lock-content-symbolic.svg
@@ -5275,6 +5275,7 @@
 /usr/local/share/gimp/3.0/icons/Legacy/scalable/apps/gimp-transform-3d-camera.svg
 /usr/local/share/gimp/3.0/icons/Legacy/scalable/apps/gimp-transform-3d-move.svg
 /usr/local/share/gimp/3.0/icons/Legacy/scalable/apps/gimp-transform-3d-rotate.svg
+/usr/local/share/gimp/3.0/icons/Legacy/scalable/apps/gimp-visible.svg
 /usr/local/share/gimp/3.0/icons/Legacy/scalable/apps/gtk-cancel.svg
 /usr/local/share/gimp/3.0/icons/Legacy/scalable/apps/gtk-no.svg
 /usr/local/share/gimp/3.0/icons/Legacy/scalable/apps/gtk-ok.svg

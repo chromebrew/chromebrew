@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Openexr < CMake
   description 'OpenEXR is a high dynamic-range (HDR) image file format developed by Industrial Light & Magic for use in computer imaging applications.'
   homepage 'https://openexr.com/en/latest/'
-  version '3.5.1'
+  version '3.5.3'
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/AcademySoftwareFoundation/openexr.git'
@@ -11,10 +11,10 @@ class Openexr < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ff292125b845e9ab9a91211b8371bad1c4db19cebb5c1f5f5bdcb6cd74f6a67f',
-     armv7l: 'ff292125b845e9ab9a91211b8371bad1c4db19cebb5c1f5f5bdcb6cd74f6a67f',
-       i686: 'c59c36f49415bb3e7d0cbdad469d3a94c6bf20fedf5b50e9620992879a70d9bb',
-     x86_64: 'cb7d320d4536d0003e5dcf842a7c783c413dce8c5c4d9b6e69f0a4e72be98e23'
+    aarch64: '577550659940b6bacbc90508bb1d799ad12e014c49ee04d8ca35eb7f62053585',
+     armv7l: '577550659940b6bacbc90508bb1d799ad12e014c49ee04d8ca35eb7f62053585',
+       i686: '09bb86426de7e0ffa00a8220bd2f3e386d6e2f261480e83979297bd53198f520',
+     x86_64: '6ee4eb23cdc5fbe21ea7a413bc1e809dc089d29d6124084fc024ae664e81eb58'
   })
 
   depends_on 'gcc_lib' => :library
@@ -22,4 +22,16 @@ class Openexr < CMake
   depends_on 'glibc_lib' => :library
   depends_on 'libdeflate' => :library
   depends_on 'zstd' => :library
+
+  def self.prebuild
+    # The c11threads threads.h breaks builds on software that uses gnulib.
+    # See: https://github.com/jtsiomb/c11threads/issues/19
+    # Note that c11threads is a workaround for C11 Threads only being
+    # introduced in Glibc 2.28 as per:
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=14092#c10
+    if LIBC_VERSION.to_f < 2.28 && ENV['NESTED_CI']
+      puts 'Removing the c11threads include/threads.h from the c11threads package to prevent build failures.'.orange
+      FileUtils.rm_f "#{CREW_PREFIX}/include/threads.h"
+    end
+  end
 end
