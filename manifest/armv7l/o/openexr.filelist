@@ -1,4 +1,4 @@
-# Total size: 4220366
+# Total size: 4226713
 /usr/local/bin/exr2aces
 /usr/local/bin/exrenvmap
 /usr/local/bin/exrheader
@@ -205,27 +205,27 @@
 /usr/local/lib/cmake/OpenEXR/OpenEXRTargets.cmake
 /usr/local/lib/libIex-3_5.so
 /usr/local/lib/libIex-3_5.so.34
-/usr/local/lib/libIex-3_5.so.34.3.5.1
+/usr/local/lib/libIex-3_5.so.34.3.5.3
 /usr/local/lib/libIex.so
 /usr/local/lib/libIlmThread-3_5.so
 /usr/local/lib/libIlmThread-3_5.so.34
-/usr/local/lib/libIlmThread-3_5.so.34.3.5.1
+/usr/local/lib/libIlmThread-3_5.so.34.3.5.3
 /usr/local/lib/libIlmThread.so
 /usr/local/lib/libImath-3_2.so
 /usr/local/lib/libImath-3_2.so.30
-/usr/local/lib/libImath-3_2.so.30.3.2.0
+/usr/local/lib/libImath-3_2.so.30.3.2.3
 /usr/local/lib/libImath.so
 /usr/local/lib/libOpenEXR-3_5.so
 /usr/local/lib/libOpenEXR-3_5.so.34
-/usr/local/lib/libOpenEXR-3_5.so.34.3.5.1
+/usr/local/lib/libOpenEXR-3_5.so.34.3.5.3
 /usr/local/lib/libOpenEXR.so
 /usr/local/lib/libOpenEXRCore-3_5.so
 /usr/local/lib/libOpenEXRCore-3_5.so.34
-/usr/local/lib/libOpenEXRCore-3_5.so.34.3.5.1
+/usr/local/lib/libOpenEXRCore-3_5.so.34.3.5.3
 /usr/local/lib/libOpenEXRCore.so
 /usr/local/lib/libOpenEXRUtil-3_5.so
 /usr/local/lib/libOpenEXRUtil-3_5.so.34
-/usr/local/lib/libOpenEXRUtil-3_5.so.34.3.5.1
+/usr/local/lib/libOpenEXRUtil-3_5.so.34.3.5.3
 /usr/local/lib/libOpenEXRUtil.so
 /usr/local/lib/pkgconfig/Imath.pc
 /usr/local/lib/pkgconfig/OpenEXR.pc
