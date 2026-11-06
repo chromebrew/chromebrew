@@ -6,8 +6,8 @@ class Openssh < Autotools
   version '10.6p2'
   license 'BSD and GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/openssh/openssh-portable.git'
-  git_hashtag "V_#{version.upcase.tr('.', '_').sub('P', '_P')}"
+  source_url "https://cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-#{version}.tar.gz"
+  source_sha256 '9ae44872090cf2f06b3cf9ff147e7f16f309671340763ed2f99248398ae29d5b'
   binary_compression 'tar.zst'
 
   binary_sha256({
