@@ -1,4 +1,4 @@
-# Total size: 475839592
+# Total size: 491734567
 /usr/local/bin/vivaldi
 /usr/local/bin/vivaldi-stable
 /usr/local/etc/cron.daily/vivaldi
@@ -15,8 +15,6 @@
 /usr/local/share/vivaldi/LICENSE.html
 /usr/local/share/vivaldi/MEIPreload/manifest.json
 /usr/local/share/vivaldi/MEIPreload/preloaded_data.pb
-/usr/local/share/vivaldi/PrivacySandboxAttestationsPreloaded/manifest.json
-/usr/local/share/vivaldi/PrivacySandboxAttestationsPreloaded/privacy-sandbox-attestations.dat
 /usr/local/share/vivaldi/apparmor.d/vivaldi-stable
 /usr/local/share/vivaldi/chrome_crashpad_handler
 /usr/local/share/vivaldi/cron/vivaldi
@@ -398,6 +396,8 @@
 /usr/local/share/vivaldi/resources/vivaldi/_locales/th/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/tr/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/uk/messages.json
+/usr/local/share/vivaldi/resources/vivaldi/_locales/ur/messages.json
+/usr/local/share/vivaldi/resources/vivaldi/_locales/uz/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/vi/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/zh_CN/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/zh_HANT/messages.json
@@ -408,19 +408,16 @@
 /usr/local/share/vivaldi/resources/vivaldi/adblocker_resources/redirectable_resources.json
 /usr/local/share/vivaldi/resources/vivaldi/background-bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/background-common-bundle.js
-/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-5144fcc931fc0fa0c2ef9ebb02ce786b.js
+/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-f69bc5eafa17d8bbdda2720cee557caf.js
 /usr/local/share/vivaldi/resources/vivaldi/bundle-mailreader-worker.js
 /usr/local/share/vivaldi/resources/vivaldi/bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/components/mail/mail.html
 /usr/local/share/vivaldi/resources/vivaldi/components/notes/richtexteditor/md.css
 /usr/local/share/vivaldi/resources/vivaldi/components/notes/richtexteditor/md.js
-/usr/local/share/vivaldi/resources/vivaldi/components/picture-in-picture/background.js
 /usr/local/share/vivaldi/resources/vivaldi/components/picture-in-picture/config.json
 /usr/local/share/vivaldi/resources/vivaldi/components/picture-in-picture/picture-in-picture.css
 /usr/local/share/vivaldi/resources/vivaldi/components/picture-in-picture/picture-in-picture.js
 /usr/local/share/vivaldi/resources/vivaldi/components/private-intro/private-intro.html
-/usr/local/share/vivaldi/resources/vivaldi/components/reader/reader.css
-/usr/local/share/vivaldi/resources/vivaldi/components/reader/reader.html
 /usr/local/share/vivaldi/resources/vivaldi/components/theme-store/theme-store.js
 /usr/local/share/vivaldi/resources/vivaldi/components/welcome/welcome.html
 /usr/local/share/vivaldi/resources/vivaldi/default-bookmarks/be-BY.json
@@ -479,9 +476,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/markdowneditor-bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/menus/contextmenu.json
 /usr/local/share/vivaldi/resources/vivaldi/menus/mainmenu.json
-/usr/local/share/vivaldi/resources/vivaldi/policy_prefs.json
 /usr/local/share/vivaldi/resources/vivaldi/prefs_definitions.json
-/usr/local/share/vivaldi/resources/vivaldi/reader-bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/resources/ToolbarIconFallback.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/badge-advocate-12@2x.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/badge-advocate-16@2x.png
@@ -734,7 +729,6 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/icon_128.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/icon_16.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/icon_notifications.png
-/usr/local/share/vivaldi/resources/vivaldi/resources/inverse-rounding-mask.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/mail_notification_icon.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/mask-add-outline.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/mask-add.svg
@@ -1061,8 +1055,6 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/search_startpage.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/share-confetti.gif
 /usr/local/share/vivaldi/resources/vivaldi/resources/share-friends.png
-/usr/local/share/vivaldi/resources/vivaldi/resources/startup-static.svg
-/usr/local/share/vivaldi/resources/vivaldi/resources/startup.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/support-donate.webp
 /usr/local/share/vivaldi/resources/vivaldi/resources/support_tony.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/symbol-reload.svg
@@ -1144,6 +1136,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/tip-img-sync.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/tip-img-workspaces-dark.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/tip-img-workspaces.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/tony_cry.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/tony_thanks.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/unknown_file.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/unsynced_file.png
