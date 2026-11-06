@@ -11,9 +11,9 @@ class Gegl < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '650d46ca039e0533d953382548168c67f72e6d3973029e0eef8fff84cef5ea3f',
-     armv7l: '650d46ca039e0533d953382548168c67f72e6d3973029e0eef8fff84cef5ea3f',
-     x86_64: 'e57a7b6cb0b5f9e387a15b72000e16625347969a2866a17d9fbebc147d2045cf'
+    aarch64: '64ec0d717bbf37d79b99814766f45e684bbb57c282603b7a04c8dc671874bf16',
+     armv7l: '64ec0d717bbf37d79b99814766f45e684bbb57c282603b7a04c8dc671874bf16',
+     x86_64: 'df00f5b1c093b77c577dca2264034413b54f072c879622805d6b6ef13aae3436'
   })
 
   depends_on 'babl' => :library
@@ -26,6 +26,7 @@ class Gegl < Meson
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
+  depends_on 'gobject_introspection' => :build
   depends_on 'graphviz' => :build # for dot
   depends_on 'harfbuzz' => :library
   depends_on 'jasper' => :library
