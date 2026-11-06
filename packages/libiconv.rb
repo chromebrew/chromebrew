@@ -17,9 +17,11 @@ class Libiconv < Autotools
      x86_64: 'fe48380945f08a4f391dc38dcdc9ec4774c22ff68fdd415be73b76873b87f86a'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 
   autotools_skip_autogen
+  autotools_skip_autoreconf
 
   autotools_configure_options "--includedir=#{CREW_PREFIX}/include/gnu-libiconv \
         --enable-static \
