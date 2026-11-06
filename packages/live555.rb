@@ -11,10 +11,10 @@ class Live555 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ff41bcf5cc7e44c10a7efb1f23ff8e05d12b2e6dffb8d9878311ed1b123da9d5',
-     armv7l: 'ff41bcf5cc7e44c10a7efb1f23ff8e05d12b2e6dffb8d9878311ed1b123da9d5',
-       i686: '74f375d062e42aaae5a9ed06809e3aa6e7782183d652e90ad2158372f68e53ee',
-     x86_64: 'db4e2aa78ec39b19082a417a7aaa47ddfada3a4dd05ebdb321a8461c9432b044'
+    aarch64: '76d81f02a59629b05de0c0caeb6b65a6a03489d975b3b3031dbfb8b37fd4ae1c',
+     armv7l: '76d81f02a59629b05de0c0caeb6b65a6a03489d975b3b3031dbfb8b37fd4ae1c',
+       i686: '2fc1c55ad70dc354e8688680619148de52218c32d988d4687546b50ee1d84353',
+     x86_64: '0e6682056d0ac83872f946a720aecab319af676633da4ad26faa35a296958bb9'
   })
 
   depends_on 'gcc_lib' => :executable
