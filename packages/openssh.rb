@@ -11,10 +11,10 @@ class Openssh < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '511f15dc60681797f9875c42a40d9e1570a4c927115aaee636dbd3146c7c7e5b',
-     armv7l: '511f15dc60681797f9875c42a40d9e1570a4c927115aaee636dbd3146c7c7e5b',
-       i686: 'e138ada97364d09addf0f1ed33d8115d96eedc04667fe8ade3bb07a2da2d7704',
-     x86_64: 'd03761983ee6f9731b57600eefe0a5a4c666aa7a4d2b889dfec3251af45a6fa5'
+    aarch64: '71b4cc5c029169b0295bef8bfca13c42c829920cf8dc6b4d8ecd37582bd66437',
+     armv7l: '71b4cc5c029169b0295bef8bfca13c42c829920cf8dc6b4d8ecd37582bd66437',
+       i686: '5fc1543c76d4d93fdc48fde8b6756c09355d0f0288d7d5071842600f52440f2b',
+     x86_64: 'c21e96cec43780769b18e6e26838e8eb391fe069c751243ba6ea0f1b9af5ac9a'
   })
 
   depends_on 'gcc_lib' => :executable
