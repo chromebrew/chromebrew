@@ -3,18 +3,18 @@ require 'package'
 class Chicken < Package
   description 'CHICKEN is a practical and portable scheme system.'
   homepage 'https://code.call-cc.org/'
-  version '6.0.0'
+  version '6.1.0'
   license 'BSD'
   compatibility 'all'
   source_url "https://code.call-cc.org/releases/#{version}/chicken-#{version}.tar.gz"
-  source_sha256 '92835552b1b687ad26737e429b5aba36510bf429f8816ec0f6d336c8cb41f443'
+  source_sha256 'c6aee9a5374102ba318e0cfae62ded5e1825346577137952d7fb15b3094d49d8'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '497ad8e35946e23e39e4fea42dd14bad382e7a902ae59987c5cdf60520c4336d',
-     armv7l: '497ad8e35946e23e39e4fea42dd14bad382e7a902ae59987c5cdf60520c4336d',
-       i686: '469dc02022c66f9b3b328c2a7a1627d48099af3b5aa352f5bb9e7d3e9f2ca3cf',
-     x86_64: 'f48a8b54e92b10c600961573c29aa05a4ac4d309c958cfaa37cfe5c5af9a25b3'
+    aarch64: '6977c5cb5563c9b5a8259eca7be1ab371c941de7bf19197ec6288e54c938e4f1',
+     armv7l: '6977c5cb5563c9b5a8259eca7be1ab371c941de7bf19197ec6288e54c938e4f1',
+       i686: 'c5ca9ef2970dbb515352d185878fc13a4c1d53ee9a438b081b62a9e0433a26b1',
+     x86_64: 'd3192fff8af6910064221e859510508cc98b16227cf760118633dc473d39ff79'
   })
 
   depends_on 'glibc' => :library
