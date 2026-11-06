@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Newsboat < Autotools
   description 'Newsboat is an RSS/Atom feed reader for the text console.'
   homepage 'https://newsboat.org/'
-  version '2.45'
+  version '2.45.1'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/newsboat/newsboat.git'
@@ -11,9 +11,9 @@ class Newsboat < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '972fa45c7424ec376509ea0868a95fa2e351fd907bb5bf6a088e51231fbb8244',
-     armv7l: '972fa45c7424ec376509ea0868a95fa2e351fd907bb5bf6a088e51231fbb8244',
-     x86_64: 'fde193eeb1209cac4690ccecfd51fa5c951bd02ea9efdaab4e232c6563be93dc'
+    aarch64: 'd589e4387c0d49874fb04a81cb8b703ad9569eddc6a2c58f84308343d475cb75',
+     armv7l: 'd589e4387c0d49874fb04a81cb8b703ad9569eddc6a2c58f84308343d475cb75',
+     x86_64: '21ad57ee8d0a155e8a9c455ae00d198dd636551f4b0a609f197be8dc8262a015'
   })
 
   depends_on 'curl' => :executable
