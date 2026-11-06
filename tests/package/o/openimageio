@@ -1,0 +1,9 @@
+#!/bin/bash
+iconvert --help | head
+idiff --version
+igrep --version
+iinfo --version
+iv --version
+maketx --version
+oiiotool --version
+testtex --help | head
