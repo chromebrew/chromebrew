@@ -1,4 +1,4 @@
-# Total size: 578203086
+# Total size: 578575780
 /usr/local/bin/shotcut
 /usr/local/share/applications/org.shotcut.Shotcut.desktop
 /usr/local/share/icons/hicolor/128x128/apps/org.shotcut.Shotcut.png
@@ -477,10 +477,10 @@
 /usr/local/share/shotcut/lib/libmd4c.so.0
 /usr/local/share/shotcut/lib/libmlt++-7.so
 /usr/local/share/shotcut/lib/libmlt++-7.so.7
-/usr/local/share/shotcut/lib/libmlt++-7.so.7.41.0
+/usr/local/share/shotcut/lib/libmlt++-7.so.7.43.0
 /usr/local/share/shotcut/lib/libmlt-7.so
 /usr/local/share/shotcut/lib/libmlt-7.so.7
-/usr/local/share/shotcut/lib/libmlt-7.so.7.41.0
+/usr/local/share/shotcut/lib/libmlt-7.so.7.43.0
 /usr/local/share/shotcut/lib/libmovit.la
 /usr/local/share/shotcut/lib/libmovit.so
 /usr/local/share/shotcut/lib/libmovit.so.8
@@ -546,7 +546,6 @@
 /usr/local/share/shotcut/lib/libswscale.so
 /usr/local/share/shotcut/lib/libswscale.so.10
 /usr/local/share/shotcut/lib/libswscale.so.10.1.102
-/usr/local/share/shotcut/lib/libsystemd.so.0
 /usr/local/share/shotcut/lib/libtheoradec.so.1
 /usr/local/share/shotcut/lib/libtheoraenc.so.1
 /usr/local/share/shotcut/lib/libtiff.so.5
@@ -3915,6 +3914,8 @@
 /usr/local/share/shotcut/share/shotcut/elements/graphics/Rounded Rectangle.rawr
 /usr/local/share/shotcut/share/shotcut/elements/graphics/Subscribe.json
 /usr/local/share/shotcut/share/shotcut/elements/graphics/Subscribe.webp
+/usr/local/share/shotcut/share/shotcut/elements/graphics/recording.json
+/usr/local/share/shotcut/share/shotcut/elements/graphics/recording.webp
 /usr/local/share/shotcut/share/shotcut/elements/graphics/shout1.rawr
 /usr/local/share/shotcut/share/shotcut/elements/graphics/shout1.webp
 /usr/local/share/shotcut/share/shotcut/elements/graphics/shout2.rawr
@@ -4472,6 +4473,7 @@
 /usr/local/share/shotcut/share/shotcut/qml/filters/white/meta_frei0r.qml
 /usr/local/share/shotcut/share/shotcut/qml/filters/white/meta_movit.qml
 /usr/local/share/shotcut/share/shotcut/qml/filters/white/ui.qml
+/usr/local/share/shotcut/share/shotcut/qml/modules/Shotcut/Controls/AudioMixingAssistantTag.qml
 /usr/local/share/shotcut/share/shotcut/qml/modules/Shotcut/Controls/Button.qml
 /usr/local/share/shotcut/share/shotcut/qml/modules/Shotcut/Controls/ChannelMask.qml
 /usr/local/share/shotcut/share/shotcut/qml/modules/Shotcut/Controls/ColorPicker.qml
@@ -4491,6 +4493,7 @@
 /usr/local/share/shotcut/share/shotcut/qml/modules/Shotcut/Controls/Number2D.qml
 /usr/local/share/shotcut/share/shotcut/qml/modules/Shotcut/Controls/Preset.qml
 /usr/local/share/shotcut/share/shotcut/qml/modules/Shotcut/Controls/RectangleControl.qml
+/usr/local/share/shotcut/share/shotcut/qml/modules/Shotcut/Controls/RectangleVui.qml
 /usr/local/share/shotcut/share/shotcut/qml/modules/Shotcut/Controls/SaveDefaultButton.qml
 /usr/local/share/shotcut/share/shotcut/qml/modules/Shotcut/Controls/SimplePropertyUI.qml
 /usr/local/share/shotcut/share/shotcut/qml/modules/Shotcut/Controls/SliderSpinner.qml

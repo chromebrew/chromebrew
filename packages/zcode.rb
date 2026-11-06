@@ -3,11 +3,11 @@ require 'package'
 class Zcode < Package
   description 'ZCode is next-gen vibe coding for complex goals - with multiple agents and control from anywhere.'
   homepage 'https://zcode.z.ai/'
-  version '3.17.1'
+  version '3.17.2'
   license 'ZCode Terms of Service'
   compatibility 'x86_64'
   source_url "https://cdn-zcode.z.ai/zcode/electron/releases/#{version}/linux-x64/ZCode-#{version}-linux-x64.AppImage"
-  source_sha256 'd5c81eefb96338d73cf24f7e71f2709d1b482cbebd4235b98561aae46c40b301'
+  source_sha256 '4a522d45727454188c56833275ae5b4d588ac3b2b87eedee5f7d98f8553a12e1'
 
   no_compile_needed
 

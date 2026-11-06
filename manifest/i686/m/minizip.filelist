@@ -1,7 +1,8 @@
-# Total size: 426544
+# Total size: 425071
 /usr/local/bin/miniunzip
 /usr/local/bin/minizip
 /usr/local/include/minizip/crypt.h
+/usr/local/include/minizip/ints.h
 /usr/local/include/minizip/ioapi.h
 /usr/local/include/minizip/mztools.h
 /usr/local/include/minizip/unzip.h

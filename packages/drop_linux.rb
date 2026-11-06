@@ -3,11 +3,11 @@ require 'package'
 class Drop_linux < Package
   description "Linux sandboxing that doesn't get in your way"
   homepage 'https://droprun.sh/'
-  version '0.3.1'
+  version '0.3.2'
   license 'Apache-2.0'
   compatibility 'x86_64'
   source_url "https://github.com/wrr/drop/releases/download/v#{version}/drop-linux-amd64"
-  source_sha256 'aa21b6b9c626ae109c32b403e4eaac51c2c50f775c85e58abedde4116a86b4de'
+  source_sha256 '5874e97ca06e95c286a82c7c2939456142f6ae7e06ff8f56b5930e2364ead8d5'
 
   depends_on 'passt'
 
