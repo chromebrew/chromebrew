@@ -13,7 +13,7 @@ class Gimp < Meson
   binary_sha256({
     aarch64: '95d67ff810d279b90220cd069fb93619e4c38f5addc90290a83c010c1e241a27',
      armv7l: '95d67ff810d279b90220cd069fb93619e4c38f5addc90290a83c010c1e241a27',
-     x86_64: 'fe8a6e034c3f25ac41b1605d0dd146edc778a9b48797033a28ae6d76614aa92c'
+     x86_64: 'b7cbf8ebda30d51f1020e463423aecf4725af39197649255b1590df0686c8ace'
   })
 
   depends_on 'aalib' => :library
@@ -24,10 +24,12 @@ class Gimp < Meson
   depends_on 'babl' => :library
   depends_on 'bzip2' => :library
   depends_on 'cairo' => :library
+  depends_on 'cfitsio' => :library
   depends_on 'desktop_file_utils' => :logical
   depends_on 'ffmpeg' => :build
   depends_on 'fontconfig' => :library
   depends_on 'freetype' => :executable
+  depends_on 'fribidi' => :executable
   depends_on 'gcc_lib' => :library
   depends_on 'gdk_pixbuf' => :library
   depends_on 'gegl' => :library
