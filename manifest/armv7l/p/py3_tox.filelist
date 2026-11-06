@@ -1,12 +1,12 @@
-# Total size: 2180869
+# Total size: 2182680
 /usr/local/bin/tox
-/usr/local/lib/python3.15/site-packages/tox-4.67.11.dist-info/INSTALLER
-/usr/local/lib/python3.15/site-packages/tox-4.67.11.dist-info/METADATA
-/usr/local/lib/python3.15/site-packages/tox-4.67.11.dist-info/RECORD
-/usr/local/lib/python3.15/site-packages/tox-4.67.11.dist-info/REQUESTED
-/usr/local/lib/python3.15/site-packages/tox-4.67.11.dist-info/WHEEL
-/usr/local/lib/python3.15/site-packages/tox-4.67.11.dist-info/entry_points.txt
-/usr/local/lib/python3.15/site-packages/tox-4.67.11.dist-info/licenses/LICENSE
+/usr/local/lib/python3.15/site-packages/tox-4.67.12.dist-info/INSTALLER
+/usr/local/lib/python3.15/site-packages/tox-4.67.12.dist-info/METADATA
+/usr/local/lib/python3.15/site-packages/tox-4.67.12.dist-info/RECORD
+/usr/local/lib/python3.15/site-packages/tox-4.67.12.dist-info/REQUESTED
+/usr/local/lib/python3.15/site-packages/tox-4.67.12.dist-info/WHEEL
+/usr/local/lib/python3.15/site-packages/tox-4.67.12.dist-info/entry_points.txt
+/usr/local/lib/python3.15/site-packages/tox-4.67.12.dist-info/licenses/LICENSE
 /usr/local/lib/python3.15/site-packages/tox/__init__.py
 /usr/local/lib/python3.15/site-packages/tox/__main__.py
 /usr/local/lib/python3.15/site-packages/tox/__pycache__/__init__.cpython-315.pyc
@@ -21,6 +21,7 @@
 /usr/local/lib/python3.15/site-packages/tox/config/__pycache__/main.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/tox/config/__pycache__/of_type.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/tox/config/__pycache__/set_env.cpython-315.pyc
+/usr/local/lib/python3.15/site-packages/tox/config/__pycache__/set_env_line.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/tox/config/__pycache__/sets.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/tox/config/__pycache__/types.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/tox/config/cli/__init__.py
@@ -70,6 +71,7 @@
 /usr/local/lib/python3.15/site-packages/tox/config/main.py
 /usr/local/lib/python3.15/site-packages/tox/config/of_type.py
 /usr/local/lib/python3.15/site-packages/tox/config/set_env.py
+/usr/local/lib/python3.15/site-packages/tox/config/set_env_line.py
 /usr/local/lib/python3.15/site-packages/tox/config/sets.py
 /usr/local/lib/python3.15/site-packages/tox/config/source/__init__.py
 /usr/local/lib/python3.15/site-packages/tox/config/source/__pycache__/__init__.cpython-315.pyc
