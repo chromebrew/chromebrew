@@ -11,9 +11,9 @@ class Oc < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3db6c535c4081c126b63fd87fc50a0ac44fcf714ef5f00fc2cb3ba2116f037ec',
-     armv7l: '3db6c535c4081c126b63fd87fc50a0ac44fcf714ef5f00fc2cb3ba2116f037ec',
-     x86_64: 'e2eb56a4a35cc67c51e9ecbe934d1de2a481605dc35984f28780fc1118b206b5'
+    aarch64: 'c84838bba0e733fb9f525d938170f3cd94ba4d9d7b9a533e78519ec5ccb7b6cf',
+     armv7l: 'c84838bba0e733fb9f525d938170f3cd94ba4d9d7b9a533e78519ec5ccb7b6cf',
+     x86_64: '566949b88cef10e539fbc959bcf8a6001d2c092ebd46c2fa39cef130177ca13f'
   })
 
   depends_on 'glibc' => :executable
