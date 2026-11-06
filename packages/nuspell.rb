@@ -24,4 +24,7 @@ class Nuspell < CMake
   depends_on 'icu4c' => :library
 
   run_tests
+
+  # man page builds require pandoc, which is not available on armv7l.'
+  cmake_options '-DBUILD_MAN=OFF'
 end
