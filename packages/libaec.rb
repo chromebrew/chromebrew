@@ -11,10 +11,10 @@ class Libaec < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ac98eef52bce6f11efe1dbc938123c4160d1e679a540992d2551f39f20c40a5e',
-     armv7l: 'ac98eef52bce6f11efe1dbc938123c4160d1e679a540992d2551f39f20c40a5e',
-       i686: 'a20b149da2e7e44d415ee762411c9165b6cbd4176b4110808d6dc19be11f5329',
-     x86_64: 'f944d9a12aed92eec08dba4fa02f2f7fe76f0d7c02ec822a32867a163025996e'
+    aarch64: '82e435bd2e0f6efa3644d659abacb174b1aae7a5bf6366dc42e1c0d834bb16d0',
+     armv7l: '82e435bd2e0f6efa3644d659abacb174b1aae7a5bf6366dc42e1c0d834bb16d0',
+       i686: '8878c0e9826513fd4de014be2a9902b85c58e7752828611a207fa75f7aa1c0d8',
+     x86_64: 'd78491c26bc92209fa11d86f57bcd7cd15e7812763fc0d50b739e76669d5cc96'
   })
 
   depends_on 'glibc' => :library
