@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.46 (for Chromebrew)
+# version.rb version 3.47 (for Chromebrew)
 
 OPTIONS = %w[-a --all -h --help -j --json -u --update-package-files -v --verbose -vv]
 
@@ -111,6 +111,7 @@ CREW_ANITYA_PACKAGE_NAME_MAPPINGS = Set[
   { pkg_name: "#{CREW_LLVM_VER}_dev", anitya_pkg: 'llvm', comments: '' },
   { pkg_name: "#{CREW_LLVM_VER}_lib", anitya_pkg: 'llvm', comments: '' },
   { pkg_name: 'mediainfo_gui', anitya_pkg: 'mediainfo', comments: '' },
+  { pkg_name: 'minizip', anitya_pkg: 'zlib', comments: '' },
   { pkg_name: 'mold', anitya_pkg: 'mold', comments: 'Prefer to GitHub' },
   { pkg_name: 'ncurses', anitya_pkg: 'ncurses~stable', comments: '' },
   { pkg_name: 'ninja', anitya_pkg: 'ninja-build', comments: '' },
