@@ -19,6 +19,8 @@ class Libiconv < Autotools
 
   depends_on 'glibc' # R
 
+  autotools_skip_autogen
+
   autotools_configure_options "--includedir=#{CREW_PREFIX}/include/gnu-libiconv \
         --enable-static \
         --enable-relocatable \
