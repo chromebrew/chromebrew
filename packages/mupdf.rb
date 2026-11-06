@@ -11,9 +11,9 @@ class Mupdf < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '11065d86cd5e2868d9ce14cbb497f95d62a68801f0aa5a74a990d05995825cb8',
-     armv7l: '11065d86cd5e2868d9ce14cbb497f95d62a68801f0aa5a74a990d05995825cb8',
-     x86_64: '7e5c934f48873b17195824306fb43cee97c438a0a9a242e7f7102c7eba89590b'
+    aarch64: 'fea28c3217b7ae9f7409dee0fe0b3253cffcc87604bb23faf94a7fa51e7e932a',
+     armv7l: 'fea28c3217b7ae9f7409dee0fe0b3253cffcc87604bb23faf94a7fa51e7e932a',
+     x86_64: '2791ecb21a5f815729979818d039194e7431de2b6f95a4c3e855f74e10029efb'
   })
 
   depends_on 'freeglut'
