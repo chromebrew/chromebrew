@@ -3,11 +3,11 @@ require 'package'
 class Chicken < Package
   description 'CHICKEN is a practical and portable scheme system.'
   homepage 'https://code.call-cc.org/'
-  version '6.0.0'
+  version '6.1.0'
   license 'BSD'
   compatibility 'all'
   source_url "https://code.call-cc.org/releases/#{version}/chicken-#{version}.tar.gz"
-  source_sha256 '92835552b1b687ad26737e429b5aba36510bf429f8816ec0f6d336c8cb41f443'
+  source_sha256 'c6aee9a5374102ba318e0cfae62ded5e1825346577137952d7fb15b3094d49d8'
   binary_compression 'tar.zst'
 
   binary_sha256({
