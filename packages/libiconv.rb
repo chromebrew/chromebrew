@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Libiconv < Autotools
   description 'GNU charset conversion library for libc which does not implement it.'
   homepage 'https://www.gnu.org/software/libiconv/'
-  version '1.19'
+  version '1.19.1'
   license 'LGPL-2+ and GPL-3+'
   compatibility 'all'
   source_url "https://ftp.gnu.org/gnu/libiconv/libiconv-#{version}.tar.gz"
-  source_sha256 '88dd96a8c0464eca144fc791ae60cd31cd8ee78321e67397e25fc095c4a19aa6'
+  source_sha256 '9a06844846d664d7122161700c10a64480d7c7bcead3091925a785b38c91edab'
   binary_compression 'tar.zst'
 
   binary_sha256({
