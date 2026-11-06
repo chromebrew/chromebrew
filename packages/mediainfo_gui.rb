@@ -31,6 +31,7 @@ class Mediainfo_gui < Package
   depends_on 'libxxf86vm' => :executable
   depends_on 'pango' => :executable
   depends_on 'zlib' => :executable
+  depends_on 'wxwidgets' => :build
 
   gnome
 
