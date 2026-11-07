@@ -1,4 +1,4 @@
-# Total size: 6397771
+# Total size: 6417064
 /usr/local/bin/pdfattach
 /usr/local/bin/pdfdetach
 /usr/local/bin/pdffonts
@@ -160,8 +160,8 @@
 /usr/local/lib/libpoppler-qt5.so.1
 /usr/local/lib/libpoppler-qt5.so.1.41.0
 /usr/local/lib/libpoppler.so
-/usr/local/lib/libpoppler.so.165
-/usr/local/lib/libpoppler.so.165.0.0
+/usr/local/lib/libpoppler.so.166
+/usr/local/lib/libpoppler.so.166.0.0
 /usr/local/lib/pkgconfig/poppler-cpp.pc
 /usr/local/lib/pkgconfig/poppler-glib.pc
 /usr/local/lib/pkgconfig/poppler-qt5.pc
