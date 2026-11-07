@@ -30,6 +30,7 @@ class Gedit < Meson
   depends_on 'harfbuzz' => :library
   depends_on 'libgedit_gtksourceview' => :library
   depends_on 'libpeas' => :library
+  depends_on 'libpng' => :build
   depends_on 'pango' => :library
   depends_on 'py3_lxml' => :build
   depends_on 'py3_pygobject' => :build
