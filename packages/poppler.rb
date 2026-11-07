@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Poppler < CMake
   description 'Poppler is a PDF rendering library based on the xpdf-3.0 code base.'
   homepage 'https://poppler.freedesktop.org/'
-  version '26.10.0'
+  version '26.11.0'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/poppler/poppler.git'
@@ -11,9 +11,9 @@ class Poppler < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd2e869e700b15e6b2d3ef547a6713188b8da97d9ca7433c747abb0b6bfe261f3',
-     armv7l: 'd2e869e700b15e6b2d3ef547a6713188b8da97d9ca7433c747abb0b6bfe261f3',
-     x86_64: '73de16cff7675e5c7030aecac4e41c80088d90f02a10eb047dd83c38553c5135'
+    aarch64: '47f4bfbc4ee9dafed8ad0feb6013689f83f1d1279d5dcdce28fc72f3798f1b8e',
+     armv7l: '47f4bfbc4ee9dafed8ad0feb6013689f83f1d1279d5dcdce28fc72f3798f1b8e',
+     x86_64: 'd14e34397dc6f82c3f42b516093d7347d8e85953fd02ad0086d4359e0171775a'
   })
 
   depends_on 'boost' => :build
