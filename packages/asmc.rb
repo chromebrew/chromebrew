@@ -4,7 +4,7 @@ class Asmc < Package
   description 'Asmc Macro Assembler'
   homepage 'https://github.com/nidud/asmc'
   license 'GPL-2.0'
-  version '2.39'
+  version '2.40'
   compatibility 'all'
   source_url 'https://github.com/nidud/asmc.git'
   git_hashtag "v#{version}"
