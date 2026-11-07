@@ -3,11 +3,11 @@ require 'package'
 class Perl_mozilla_ca < Package
   description "Mozilla::CA - Mozilla's CA cert bundle in PEM format"
   homepage 'https://metacpan.org/pod/Mozilla::CA'
-  version "20261020-#{CREW_PERL_VER}"
+  version "20261105-#{CREW_PERL_VER}"
   license 'GPL2'
   compatibility 'all'
   source_url "https://cpan.metacpan.org/authors/id/L/LW/LWP/Mozilla-CA-#{version.split('-')[0]}.tar.gz"
-  source_sha256 '1aeed97a463389e582e085e82de03ae0bffae74d46cf8ee4c511341e5508c21d'
+  source_sha256 'b29dfd05d0f0038091fab9d7a184e8e476bc24fb5de5963cd23d21d262e0be10'
   binary_compression 'tar.zst'
 
   binary_sha256({
