@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gstreamer < Meson
   description 'GStreamer is a library for constructing graphs of media-handling components.'
   homepage 'https://gstreamer.freedesktop.org/'
-  version '1.28.8'
+  version '1.28.9'
   license 'LGPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/gstreamer/gstreamer.git'
@@ -11,9 +11,9 @@ class Gstreamer < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b38d5917d1d3b2da91f3e5f78e508ebc7637b2300e7d091c52acca4cb817b95b',
-     armv7l: 'b38d5917d1d3b2da91f3e5f78e508ebc7637b2300e7d091c52acca4cb817b95b',
-     x86_64: '1228ededecedabed1fa04f1e77bc7f23a11432caa80cc6c69b3b854e1338adcd'
+    aarch64: '99df2d4ed8838ff92497b0c9c03ea2ff46f5b6eed23f3f6866ba137ba8c5a2f2',
+     armv7l: '99df2d4ed8838ff92497b0c9c03ea2ff46f5b6eed23f3f6866ba137ba8c5a2f2',
+     x86_64: 'ead7225dd0d678affc427aca45c160c8a85fefa32a601a87a03fccabd39c6d73'
   })
 
   depends_on 'abseil_cpp' => :build

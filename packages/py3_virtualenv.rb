@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_virtualenv < Pip
   description 'Virtualenv is a Virtual Environment builder for Python.'
   homepage 'https://virtualenv.pypa.io/'
-  version "21.15.5-#{CREW_PY_VER}"
+  version "21.15.6-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a32e722695d195a77a24084740c885dfb02c9214800aa62257ecaf96c99d41ae',
-     armv7l: 'a32e722695d195a77a24084740c885dfb02c9214800aa62257ecaf96c99d41ae',
-       i686: '9ac994d4d276f7a0852aaa7878312f4770581f25bec31f714d592e05e57b0825',
-     x86_64: 'e7cda93c7cdc87e7d1adbddeb203813e96988f091ef38a995e279ab97d82e834'
+    aarch64: 'fa87b4e08b4ffb42fcdfd7a34077170d4e77e0024e56644a5619728a2b44e01b',
+     armv7l: 'fa87b4e08b4ffb42fcdfd7a34077170d4e77e0024e56644a5619728a2b44e01b',
+       i686: 'dc3f58f2893a1630e4c0d930a40ac45d93e74f9e92f68720d1ad345ace939ac0',
+     x86_64: 'f88f5fabde25fb7b73c78a5427f43a3650312c00f23088d03e6e6234ee7dfaa8'
   })
 
   depends_on 'py3_distlib'
