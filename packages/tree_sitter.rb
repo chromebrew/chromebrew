@@ -6,7 +6,7 @@ require 'package'
 class Tree_sitter < Package
   description 'An incremental parsing system for programming tools'
   homepage 'https://github.com/tree-sitter/tree-sitter'
-  version '0.27.1'
+  version '0.27.2'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/tree-sitter/tree-sitter.git'
@@ -14,10 +14,10 @@ class Tree_sitter < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '88b7765fe0748147abadb7f750d45728b4ca4f50d313d5a920240929dfb12d45',
-     armv7l: '88b7765fe0748147abadb7f750d45728b4ca4f50d313d5a920240929dfb12d45',
-       i686: '71d4cda7c35ae5feaa463360ea26eb099b806674527784c051304124e0168cb4',
-     x86_64: 'b47bba75099a8117129bf3451770dcdb6fec3a7a9f1019e80d459761479a4672'
+    aarch64: 'bb48d0e354945e6e4f89f6e7562642f9e254db6641a7fe677de87c456f3053a4',
+     armv7l: 'bb48d0e354945e6e4f89f6e7562642f9e254db6641a7fe677de87c456f3053a4',
+       i686: '05a0ae5c06508033af232a34ac6511a387b6f09c658a0402abb7731eebb6d1c6',
+     x86_64: 'c4d4e76ce5068e743e165002739505cf95f41da75c842da4601de5894813be65'
   })
 
   depends_on 'gcc_lib' => :executable
