@@ -10,10 +10,10 @@ class Py3_pycryptodome < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0187b8dbbc6c313b31f3e9c22fcdd3a3d9c6ad3e5b242e80069825ef7ec44e23',
-     armv7l: '0187b8dbbc6c313b31f3e9c22fcdd3a3d9c6ad3e5b242e80069825ef7ec44e23',
-       i686: 'b07db54180b75e6bd7317800d26b06be9bd12f930e03671a6d30832c02ad34d1',
-     x86_64: 'b89a1e2d4478b77b8be59fe4886f10e6f0795f3689f4ea0662a6359acba02039'
+    aarch64: '5f3f8c94016573923ee1de3417e4a76b68ee3df54d60cb50604a705d0dcec46b',
+     armv7l: '5f3f8c94016573923ee1de3417e4a76b68ee3df54d60cb50604a705d0dcec46b',
+       i686: 'afa8e17a4b5cecf4a6a24d31818c914610e20280e059aba7b52dde27dc6a54b1',
+     x86_64: '7af8314fe8f8c2f8fa314e56476a00f61fc43bbdc202b03e43d9fad0647bda8b'
   })
 
   depends_on 'glibc' => :library
