@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Automake < Autotools
   description 'Automake is a tool for automatically generating Makefile.in files compliant with the GNU Coding Standards.'
   homepage 'https://www.gnu.org/software/automake/'
-  version '1.19'
+  version '1.20'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://https.git.savannah.gnu.org/git/automake.git'
