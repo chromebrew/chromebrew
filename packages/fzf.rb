@@ -11,10 +11,10 @@ class Fzf < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '95fcfc7fcf5052961ee8370826f885094aeff159b0fb72a4e6aac5e01bfe1cb9',
-     armv7l: '95fcfc7fcf5052961ee8370826f885094aeff159b0fb72a4e6aac5e01bfe1cb9',
-       i686: 'eb9c2e47f63f50837fc4d2d7ed30b0fc902992bc51133dbed128967b8f3f8efc',
-     x86_64: 'addca03f38e820d2934dda34a10ec67528ca770404ef6eaa66b7d05899958ba3'
+    aarch64: 'd17071133ff57bee050c725daa03b145130194050026b285386ee7fbc7c6ea4b',
+     armv7l: 'd17071133ff57bee050c725daa03b145130194050026b285386ee7fbc7c6ea4b',
+       i686: '7b03d68116265605ae2123af9045d1728fbab8465d0a54492131b36dd5b69c14',
+     x86_64: '6c8a6d7b0df2ab99e8721afa6637955684c6eb131419267fce4c406202ace3ad'
   })
 
   depends_on 'glibc' => :executable
