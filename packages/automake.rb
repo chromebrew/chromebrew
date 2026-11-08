@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Automake < Autotools
   description 'Automake is a tool for automatically generating Makefile.in files compliant with the GNU Coding Standards.'
   homepage 'https://www.gnu.org/software/automake/'
-  version '1.19'
+  version '1.20'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://https.git.savannah.gnu.org/git/automake.git'
@@ -11,10 +11,10 @@ class Automake < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd93174c3b8c4d541fcc5ac97382c6b6d9d864a0988fbea5252dd7cd41340aa9b',
-     armv7l: 'd93174c3b8c4d541fcc5ac97382c6b6d9d864a0988fbea5252dd7cd41340aa9b',
-       i686: '9ccf1bb4895d4ebf4ff056f11c9cd859fdbfc78a0d105528069a858eb1d166bc',
-     x86_64: '03db2521790acb90911f4f178042ed17eafdcdfb079d78912d5d06e4d11d3e7b'
+    aarch64: 'f511ae72f7b403ac04681baed501366a9746684b683120c9dc4ed60c800015f3',
+     armv7l: 'f511ae72f7b403ac04681baed501366a9746684b683120c9dc4ed60c800015f3',
+       i686: 'b808392f72e9aa49ec4d833583b8d31a63a194418984e7df25b2a53ef709abd1',
+     x86_64: 'b5822e67b6990f90fad90644f2ab63a7b8badd8cedd1ef24f66c244814d39b45'
   })
 
   depends_on 'autoconf' => :executable
