@@ -1,4 +1,4 @@
-# Total size: 8319370
+# Total size: 8443473
 /usr/local/lib64/python3.15/site-packages/Crypto/Cipher/AES.py
 /usr/local/lib64/python3.15/site-packages/Crypto/Cipher/ARC2.py
 /usr/local/lib64/python3.15/site-packages/Crypto/Cipher/ARC4.py
@@ -378,6 +378,7 @@
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/__pycache__/test_ECC_Ed25519.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/__pycache__/test_ECC_Ed448.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/__pycache__/test_ECC_NIST.cpython-315.pyc
+/usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/__pycache__/test_ECC_secp256k1.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/__pycache__/test_ElGamal.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/__pycache__/test_Hybrid.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/__pycache__/test_MLDSA.cpython-315.pyc
@@ -397,6 +398,7 @@
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/test_ECC_Ed25519.py
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/test_ECC_Ed448.py
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/test_ECC_NIST.py
+/usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/test_ECC_secp256k1.py
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/test_ElGamal.py
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/test_Hybrid.py
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/test_MLDSA.py
@@ -501,12 +503,12 @@
 /usr/local/lib64/python3.15/site-packages/Crypto/__init__.py
 /usr/local/lib64/python3.15/site-packages/Crypto/__pycache__/__init__.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/py.typed
-/usr/local/lib64/python3.15/site-packages/pycryptodome-4.3.0.dist-info/INSTALLER
-/usr/local/lib64/python3.15/site-packages/pycryptodome-4.3.0.dist-info/METADATA
-/usr/local/lib64/python3.15/site-packages/pycryptodome-4.3.0.dist-info/RECORD
-/usr/local/lib64/python3.15/site-packages/pycryptodome-4.3.0.dist-info/REQUESTED
-/usr/local/lib64/python3.15/site-packages/pycryptodome-4.3.0.dist-info/WHEEL
-/usr/local/lib64/python3.15/site-packages/pycryptodome-4.3.0.dist-info/licenses/LICENSE.rst
-/usr/local/lib64/python3.15/site-packages/pycryptodome-4.3.0.dist-info/licenses/src/mldsa-native/LICENSE
-/usr/local/lib64/python3.15/site-packages/pycryptodome-4.3.0.dist-info/licenses/src/mlkem-native/LICENSE
-/usr/local/lib64/python3.15/site-packages/pycryptodome-4.3.0.dist-info/top_level.txt
+/usr/local/lib64/python3.15/site-packages/pycryptodome-4.4.0.dist-info/INSTALLER
+/usr/local/lib64/python3.15/site-packages/pycryptodome-4.4.0.dist-info/METADATA
+/usr/local/lib64/python3.15/site-packages/pycryptodome-4.4.0.dist-info/RECORD
+/usr/local/lib64/python3.15/site-packages/pycryptodome-4.4.0.dist-info/REQUESTED
+/usr/local/lib64/python3.15/site-packages/pycryptodome-4.4.0.dist-info/WHEEL
+/usr/local/lib64/python3.15/site-packages/pycryptodome-4.4.0.dist-info/licenses/LICENSE.rst
+/usr/local/lib64/python3.15/site-packages/pycryptodome-4.4.0.dist-info/licenses/src/mldsa-native/LICENSE
+/usr/local/lib64/python3.15/site-packages/pycryptodome-4.4.0.dist-info/licenses/src/mlkem-native/LICENSE
+/usr/local/lib64/python3.15/site-packages/pycryptodome-4.4.0.dist-info/top_level.txt
