@@ -1,0 +1,3 @@
+#!/bin/bash
+espanso -h | head
+espanso -V

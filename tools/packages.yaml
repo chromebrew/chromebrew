@@ -1860,6 +1860,11 @@ url: http://erlang.org/download
 activity: high
 ---
 kind: url
+name: espanso
+url: https://github.com/espanso/espanso/releases
+activity: low
+---
+kind: url
 name: etcd
 url: https://github.com/etcd-io/etcd/releases
 activity: high
