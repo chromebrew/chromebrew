@@ -7,12 +7,12 @@ class Heroku < Package
   license 'Heroku-TOS'
   compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.28'
-  source_url ({
+  source_url({
     aarch64: 'https://cli-assets.heroku.com/channels/stable/heroku-linux-arm.tar.xz',
      armv7l: 'https://cli-assets.heroku.com/channels/stable/heroku-linux-arm.tar.xz',
      x86_64: 'https://cli-assets.heroku.com/channels/stable/heroku-linux-x64.tar.xz'
   })
-  source_sha256 ({
+  source_sha256({
     aarch64: 'be4d913db666e1cdb1631479457ef333a5d19871a8d56943195d78ea06c8416d',
      armv7l: 'be4d913db666e1cdb1631479457ef333a5d19871a8d56943195d78ea06c8416d',
      x86_64: '241ebfd6da0e540ecdbc50655099b3410db682554f4e506c9ea406c312a55e73'
