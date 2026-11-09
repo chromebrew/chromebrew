@@ -68,6 +68,7 @@ renamed_packages = Set[
   { pkg_name: 'ffcall', pkg_rename: 'libffcall', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'gnome_themes_standard', pkg_rename: 'gnome_themes_extra', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'gtk_engines_adwaita', pkg_rename: 'gnome_themes_extra', comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'health_check', pkg_rename: 'health_check_tool', comments: 'Renamed to prevent a conflict with a Ruby gem with the same name.' },
   { pkg_name: 'itstool', pkg_rename: 'py3_itstool', comments: 'Renamed to indicate switch to pip buildsystem.' },
   { pkg_name: 'jsonc', pkg_rename: 'json_c', comments: 'Renamed to better match upstream.' },
   { pkg_name: 'libcurl', pkg_rename: 'curl', comments: 'Renamed to better match upstream.' },

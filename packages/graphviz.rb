@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Graphviz < CMake
   description 'Graphviz is open source graph visualization software.'
   homepage 'https://www.graphviz.org/'
-  version '16.1.0'
+  version '16.1.1'
   license 'BSD'
   compatibility 'all'
   source_url 'https://gitlab.com/graphviz/graphviz.git'
@@ -17,10 +17,10 @@ class Graphviz < CMake
   })
 
   binary_sha256({
-    aarch64: '62ba031c2132ac5e5722d134107543b0bae1822be86920a0fec2bf596613d6a3',
-     armv7l: '62ba031c2132ac5e5722d134107543b0bae1822be86920a0fec2bf596613d6a3',
-       i686: '71ee20c907497e226cda16d8d181c519df81177766f15e3393428d8badf8ae67',
-     x86_64: 'ee004f620f3409f061653f3c3fea3a3183b366dbaa19297e93b38c0cc1b0f427'
+    aarch64: '181aeaf6aeddc6242473a581b357b667670d5bc2f11504051788e6999c89f192',
+     armv7l: '181aeaf6aeddc6242473a581b357b667670d5bc2f11504051788e6999c89f192',
+       i686: 'ee6ee471a25ace13faac66bb77362535bfd3eb1a01db8ba10c806695630a9e47',
+     x86_64: '5ddaad16ddd71439a5e60fc6dfc5ad20e48e92d31ba71ad4b274621ccfc4f08f'
   })
 
   unless ARCH.include?('i686')
