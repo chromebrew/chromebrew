@@ -1,4 +1,4 @@
-# Total size: 142574254
+# Total size: 141499202
 /usr/local/include/EGL/eglext_angle.h
 /usr/local/include/EGL/eglmesaext.h
 /usr/local/include/GL/internal/dri_interface.h
@@ -123,7 +123,7 @@
 /usr/local/lib64/libGLX_mesa.so
 /usr/local/lib64/libGLX_mesa.so.0
 /usr/local/lib64/libGLX_mesa.so.0.0.0
-/usr/local/lib64/libgallium-26.2.6.so
+/usr/local/lib64/libgallium-26.3.0.so
 /usr/local/lib64/libgbm.so
 /usr/local/lib64/libgbm.so.1
 /usr/local/lib64/libgbm.so.1.0.0
@@ -146,6 +146,7 @@
 /usr/local/share/drirc.d/00-virtio_gpu-defaults.conf
 /usr/local/share/drirc.d/00-vmwgfx-defaults.conf
 /usr/local/share/drirc.d/00-zink-defaults.conf
+/usr/local/share/drirc.d/01-radv-performance.conf
 /usr/local/share/glvnd/egl_vendor.d/50_mesa.json
 /usr/local/share/vulkan/icd.d/intel_hasvk_icd.x86_64.json
 /usr/local/share/vulkan/icd.d/intel_icd.x86_64.json
