@@ -6,7 +6,7 @@ require 'package'
 class Cni_plugins < Package
   description 'Some standard networking plugins, maintained by the CNI team'
   homepage 'https://github.com/containernetworking/plugins'
-  version '1.9.1'
+  version '1.10.0'
   license 'Apache'
   compatibility 'all'
   source_url 'https://github.com/containernetworking/plugins.git'
