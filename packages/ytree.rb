@@ -3,11 +3,11 @@ require 'package'
 class Ytree < Package
   description 'A (curses-based) file manager similar to DOS Xtree(tm).'
   homepage 'https://www.han.de/~werner/ytree.html'
-  version '2.13'
+  version '2.14'
   license 'GPL-2'
   compatibility 'all'
   source_url "https://www.han.de/~werner/ytree-#{version}.tar.gz"
-  source_sha256 'caeeeac334dac83921bd8b657ad2d4cf234c15da4ffc7d15dad0bda99e52f197'
+  source_sha256 '1dac8ce79a075c17de159383c2056961f51bf1160ade3661e7a831755bec0f93'
   binary_compression 'tar.zst'
 
   binary_sha256({
