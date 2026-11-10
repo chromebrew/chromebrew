@@ -1,12 +1,12 @@
-# Total size: 22369486
-/usr/local/lib/python3.15/site-packages/botocore-1.43.126.dist-info/INSTALLER
-/usr/local/lib/python3.15/site-packages/botocore-1.43.126.dist-info/LICENSE.txt
-/usr/local/lib/python3.15/site-packages/botocore-1.43.126.dist-info/METADATA
-/usr/local/lib/python3.15/site-packages/botocore-1.43.126.dist-info/NOTICE
-/usr/local/lib/python3.15/site-packages/botocore-1.43.126.dist-info/RECORD
-/usr/local/lib/python3.15/site-packages/botocore-1.43.126.dist-info/REQUESTED
-/usr/local/lib/python3.15/site-packages/botocore-1.43.126.dist-info/WHEEL
-/usr/local/lib/python3.15/site-packages/botocore-1.43.126.dist-info/top_level.txt
+# Total size: 22403397
+/usr/local/lib/python3.15/site-packages/botocore-1.43.127.dist-info/INSTALLER
+/usr/local/lib/python3.15/site-packages/botocore-1.43.127.dist-info/LICENSE.txt
+/usr/local/lib/python3.15/site-packages/botocore-1.43.127.dist-info/METADATA
+/usr/local/lib/python3.15/site-packages/botocore-1.43.127.dist-info/NOTICE
+/usr/local/lib/python3.15/site-packages/botocore-1.43.127.dist-info/RECORD
+/usr/local/lib/python3.15/site-packages/botocore-1.43.127.dist-info/REQUESTED
+/usr/local/lib/python3.15/site-packages/botocore-1.43.127.dist-info/WHEEL
+/usr/local/lib/python3.15/site-packages/botocore-1.43.127.dist-info/top_level.txt
 /usr/local/lib/python3.15/site-packages/botocore/__init__.py
 /usr/local/lib/python3.15/site-packages/botocore/__pycache__/__init__.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/botocore/__pycache__/args.cpython-315.pyc
@@ -41,6 +41,7 @@
 /usr/local/lib/python3.15/site-packages/botocore/__pycache__/response.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/botocore/__pycache__/retryhandler.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/botocore/__pycache__/serialize.cpython-315.pyc
+/usr/local/lib/python3.15/site-packages/botocore/__pycache__/service_module_names.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/botocore/__pycache__/session.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/botocore/__pycache__/signers.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/botocore/__pycache__/stub.cpython-315.pyc
@@ -2077,6 +2078,7 @@
 /usr/local/lib/python3.15/site-packages/botocore/retries/throttling.py
 /usr/local/lib/python3.15/site-packages/botocore/retryhandler.py
 /usr/local/lib/python3.15/site-packages/botocore/serialize.py
+/usr/local/lib/python3.15/site-packages/botocore/service_module_names.py
 /usr/local/lib/python3.15/site-packages/botocore/session.py
 /usr/local/lib/python3.15/site-packages/botocore/signers.py
 /usr/local/lib/python3.15/site-packages/botocore/stub.py
