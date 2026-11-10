@@ -6,7 +6,7 @@ require 'package'
 class Cni_plugins < Package
   description 'Some standard networking plugins, maintained by the CNI team'
   homepage 'https://github.com/containernetworking/plugins'
-  version '1.9.1'
+  version '1.10.0'
   license 'Apache'
   compatibility 'all'
   source_url 'https://github.com/containernetworking/plugins.git'
@@ -14,10 +14,10 @@ class Cni_plugins < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b25924449171e9153f631a401a2ae5ff74ea64dced8c943b21fb6a9ea7c058b1',
-     armv7l: 'b25924449171e9153f631a401a2ae5ff74ea64dced8c943b21fb6a9ea7c058b1',
-       i686: 'c637884b6397e6f2351a9db7503df3c0600be039bb06939bd0c769ca90b06992',
-     x86_64: 'ca587f79133f70df7808ebce625437c8444c99f5e850bfc7fd17d73683ae34f2'
+    aarch64: '6a8cfc02a1a1f96065661ee071cf02daecf82ee222fb43c0d3578b5b390ab7f2',
+     armv7l: '6a8cfc02a1a1f96065661ee071cf02daecf82ee222fb43c0d3578b5b390ab7f2',
+       i686: '7b8d78f611e92c7fee60d6d6e0903dad164f411768f24797b3718df830d97a19',
+     x86_64: 'f48ad22f65cc4819bf28f854803a86787fa8799d9b58b91f83290a7218644333'
   })
 
   depends_on 'glibc' => :executable
