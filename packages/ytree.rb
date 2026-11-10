@@ -11,10 +11,10 @@ class Ytree < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2a5dcf60f6f914b13070ef6dbce0cb8e9be413a081e63fbe4e0c766d57b1dc8b',
-     armv7l: '2a5dcf60f6f914b13070ef6dbce0cb8e9be413a081e63fbe4e0c766d57b1dc8b',
-       i686: '2469c699907329fcdc70e8dd0a173a535864f426291d03aa7782cb8a143e365b',
-     x86_64: '50f63a48b9f4539dc7650652b710d760355a17a328aa63f1667fadbab18ba831'
+    aarch64: '1956a80e78e8a6e23dd094b5ac94f0a053e29e9e1ecd14eb1adf668ea872c314',
+     armv7l: '1956a80e78e8a6e23dd094b5ac94f0a053e29e9e1ecd14eb1adf668ea872c314',
+       i686: 'cafcb529c8fff90c32e079add4459bfcf35fc807dc8fc84c4925d2ffece90588',
+     x86_64: 'ad624aa08df548d070e6bbf5cc2c9b818f63cc469f3327bd0ccfd1b79cc962e3'
   })
 
   depends_on 'glibc' => :executable
