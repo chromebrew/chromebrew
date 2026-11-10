@@ -10,10 +10,10 @@ class Py3_agate_excel < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ccd0f99f3f1da0f220bf694878c5ce77e29f7b51e140ed1a970660763fcac9c5',
-     armv7l: 'ccd0f99f3f1da0f220bf694878c5ce77e29f7b51e140ed1a970660763fcac9c5',
-       i686: 'ed23b3921a3fd0500e16606c1c57f2def47f2786c2b03872cc10e25052069659',
-     x86_64: 'c328d5b3bcb2eca0d097105f96c6194c1cb66c031070f67e0ec10ebf91c2cf2d'
+    aarch64: '2511c542b6d12deeb8b7f575557c66eac8c5c6ae0d34c8c23f678a6b86334af3',
+     armv7l: '2511c542b6d12deeb8b7f575557c66eac8c5c6ae0d34c8c23f678a6b86334af3',
+       i686: '8fb9b2b785572b239c50dac61c015e162c3eb90d8eaf212f1c055ee4490d936b',
+     x86_64: '575d375f9aedc51e32f4ebef284a2843c136516af0619dd83c665b9e1cb9bc7b'
   })
 
   depends_on 'py3_agate'
