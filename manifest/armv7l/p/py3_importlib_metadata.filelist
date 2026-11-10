@@ -1,11 +1,11 @@
-# Total size: 218146
-/usr/local/lib/python3.15/site-packages/importlib_metadata-10.1.0.dist-info/INSTALLER
-/usr/local/lib/python3.15/site-packages/importlib_metadata-10.1.0.dist-info/METADATA
-/usr/local/lib/python3.15/site-packages/importlib_metadata-10.1.0.dist-info/RECORD
-/usr/local/lib/python3.15/site-packages/importlib_metadata-10.1.0.dist-info/REQUESTED
-/usr/local/lib/python3.15/site-packages/importlib_metadata-10.1.0.dist-info/WHEEL
-/usr/local/lib/python3.15/site-packages/importlib_metadata-10.1.0.dist-info/licenses/LICENSE
-/usr/local/lib/python3.15/site-packages/importlib_metadata-10.1.0.dist-info/top_level.txt
+# Total size: 223790
+/usr/local/lib/python3.15/site-packages/importlib_metadata-10.2.0.dist-info/INSTALLER
+/usr/local/lib/python3.15/site-packages/importlib_metadata-10.2.0.dist-info/METADATA
+/usr/local/lib/python3.15/site-packages/importlib_metadata-10.2.0.dist-info/RECORD
+/usr/local/lib/python3.15/site-packages/importlib_metadata-10.2.0.dist-info/REQUESTED
+/usr/local/lib/python3.15/site-packages/importlib_metadata-10.2.0.dist-info/WHEEL
+/usr/local/lib/python3.15/site-packages/importlib_metadata-10.2.0.dist-info/licenses/LICENSE
+/usr/local/lib/python3.15/site-packages/importlib_metadata-10.2.0.dist-info/top_level.txt
 /usr/local/lib/python3.15/site-packages/importlib_metadata/__init__.py
 /usr/local/lib/python3.15/site-packages/importlib_metadata/__pycache__/__init__.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/importlib_metadata/__pycache__/_adapters.cpython-315.pyc
@@ -20,7 +20,9 @@
 /usr/local/lib/python3.15/site-packages/importlib_metadata/_collections.py
 /usr/local/lib/python3.15/site-packages/importlib_metadata/_compat/__init__.py
 /usr/local/lib/python3.15/site-packages/importlib_metadata/_compat/__pycache__/__init__.cpython-315.pyc
+/usr/local/lib/python3.15/site-packages/importlib_metadata/_compat/__pycache__/_functools.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/importlib_metadata/_compat/__pycache__/localize.cpython-315.pyc
+/usr/local/lib/python3.15/site-packages/importlib_metadata/_compat/_functools.py
 /usr/local/lib/python3.15/site-packages/importlib_metadata/_compat/localize.py
 /usr/local/lib/python3.15/site-packages/importlib_metadata/_context.py
 /usr/local/lib/python3.15/site-packages/importlib_metadata/_functools.py
@@ -31,7 +33,9 @@
 /usr/local/lib/python3.15/site-packages/importlib_metadata/compat/__pycache__/__init__.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/importlib_metadata/compat/__pycache__/py311.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/importlib_metadata/compat/__pycache__/py312.cpython-315.pyc
+/usr/local/lib/python3.15/site-packages/importlib_metadata/compat/__pycache__/py314.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/importlib_metadata/compat/py311.py
 /usr/local/lib/python3.15/site-packages/importlib_metadata/compat/py312.py
+/usr/local/lib/python3.15/site-packages/importlib_metadata/compat/py314.py
 /usr/local/lib/python3.15/site-packages/importlib_metadata/diagnose.py
 /usr/local/lib/python3.15/site-packages/importlib_metadata/py.typed
