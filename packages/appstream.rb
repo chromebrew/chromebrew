@@ -11,9 +11,9 @@ class Appstream < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '300a53ea64ab58a177be8ba704ded96f2a47f4abb58cea372a964837b3de26c6',
-     armv7l: '300a53ea64ab58a177be8ba704ded96f2a47f4abb58cea372a964837b3de26c6',
-     x86_64: 'dfb3f1abcccaf7710adade19ede2b387ada8020dd6daacee9b1deba7c91ecd82'
+    aarch64: '36950cb261fe58dfc888c5654e89215707446df2d317835b4c7406a60de6e813',
+     armv7l: '36950cb261fe58dfc888c5654e89215707446df2d317835b4c7406a60de6e813',
+     x86_64: '8fa61ae6e6a077e43e6b2b35795f814fc74fcb063658418175d19da6dad0aebb'
   })
 
   depends_on 'cairo' => :library
