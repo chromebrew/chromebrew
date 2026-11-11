@@ -1,4 +1,4 @@
-# Total size: 237805006
+# Total size: 238012081
 /usr/local/bin/go
 /usr/local/bin/gofmt
 /usr/local/share/go/CONTRIBUTING.md
@@ -1520,6 +1520,7 @@
 /usr/local/share/go/src/cmd/compile/internal/types2/lookup_test.go
 /usr/local/share/go/src/cmd/compile/internal/types2/main_test.go
 /usr/local/share/go/src/cmd/compile/internal/types2/map.go
+/usr/local/share/go/src/cmd/compile/internal/types2/methodorder_test.go
 /usr/local/share/go/src/cmd/compile/internal/types2/mono.go
 /usr/local/share/go/src/cmd/compile/internal/types2/mono_test.go
 /usr/local/share/go/src/cmd/compile/internal/types2/named.go
@@ -14775,6 +14776,7 @@
 /usr/local/share/go/test/fixedbugs/issue81612.go
 /usr/local/share/go/test/fixedbugs/issue81687.go
 /usr/local/share/go/test/fixedbugs/issue8183.go
+/usr/local/share/go/test/fixedbugs/issue81863.go
 /usr/local/share/go/test/fixedbugs/issue8280.dir/a.go
 /usr/local/share/go/test/fixedbugs/issue8280.dir/b.go
 /usr/local/share/go/test/fixedbugs/issue8280.go
