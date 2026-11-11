@@ -13,10 +13,10 @@ class Py3_markdown_it_py < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '47d67703bf7268ac584ee4b5c101216cbad6190935228d6d7cf5978599727fbd',
-     armv7l: '47d67703bf7268ac584ee4b5c101216cbad6190935228d6d7cf5978599727fbd',
-       i686: 'ef78880a092a9f1a5487daeb85f92693737b771f4864da9bc6ca3cadf90c7832',
-     x86_64: 'a6056f777bf78c554637ceaf7af232be8eee416ca2da2908feae8e37bdf3f517'
+    aarch64: '5e451107eda99a5620eef1cb35fd6c9caa1f6475061fa27c7e75198ea852401c',
+     armv7l: '5e451107eda99a5620eef1cb35fd6c9caa1f6475061fa27c7e75198ea852401c',
+       i686: '6f8372e785c3424bd932d161d61809d5f4ef0c72f4219f53ddfff61ceeb0efc2',
+     x86_64: 'c8ae9072a4fb2271c3e4234281222ad8a6a5d10b20673f644bdb8ab6346b54df'
   })
 
   depends_on 'py3_mdurl'
