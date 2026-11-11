@@ -1,0 +1,5 @@
+#!/bin/bash
+jbgtopbm -h 2>&1 | head -2
+jbgtopbm85 -h 2>&1 | head -2
+pbmtojbg -h 2>&1 | head -2
+pbmtojbg85 -h 2>&1 | head -2
