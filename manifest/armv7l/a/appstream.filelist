@@ -1,4 +1,4 @@
-# Total size: 7051566
+# Total size: 7183711
 /usr/local/bin/appstreamcli
 /usr/local/include/appstream-compose/appstream-compose.h
 /usr/local/include/appstream-compose/asc-compose.h
@@ -30,6 +30,7 @@
 /usr/local/include/appstream/as-image.h
 /usr/local/include/appstream/as-issue.h
 /usr/local/include/appstream/as-launchable.h
+/usr/local/include/appstream/as-locale.h
 /usr/local/include/appstream/as-macros.h
 /usr/local/include/appstream/as-metadata.h
 /usr/local/include/appstream/as-pool.h
@@ -57,9 +58,9 @@
 /usr/local/lib/girepository-1.0/AppStreamCompose-1.0.typelib
 /usr/local/lib/libappstream-compose.so
 /usr/local/lib/libappstream-compose.so.1
-/usr/local/lib/libappstream-compose.so.1.2.2
+/usr/local/lib/libappstream-compose.so.1.2.3
 /usr/local/lib/libappstream.so
-/usr/local/lib/libappstream.so.1.2.2
+/usr/local/lib/libappstream.so.1.2.3
 /usr/local/lib/libappstream.so.5
 /usr/local/lib/pkgconfig/appstream-compose.pc
 /usr/local/lib/pkgconfig/appstream.pc
