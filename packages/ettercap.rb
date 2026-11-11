@@ -20,6 +20,7 @@ class Ettercap < CMake
   depends_on 'check' => :build
   depends_on 'curl' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'libbsd' => :library
   depends_on 'libiconv' => :library
   depends_on 'libmaxminddb' => :library
