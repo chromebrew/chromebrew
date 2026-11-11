@@ -1,4 +1,4 @@
-# Total size: 64724848
+# Total size: 67949663
 /usr/local/bin/pnpm
 /usr/local/libexec/pnpm/dist/node-gyp-bin/node-gyp
 /usr/local/libexec/pnpm/dist/node_modules/@isaacs/fs-minipass/LICENSE
@@ -16,6 +16,7 @@
 /usr/local/libexec/pnpm/dist/node_modules/chownr/dist/esm/package.json
 /usr/local/libexec/pnpm/dist/node_modules/chownr/package.json
 /usr/local/libexec/pnpm/dist/node_modules/confbox/LICENSE
+/usr/local/libexec/pnpm/dist/node_modules/confbox/dist/THIRD-PARTY-LICENSES.md.gz
 /usr/local/libexec/pnpm/dist/node_modules/confbox/dist/_chunks/_format.d.mts
 /usr/local/libexec/pnpm/dist/node_modules/confbox/dist/_chunks/_format.mjs
 /usr/local/libexec/pnpm/dist/node_modules/confbox/dist/_chunks/libs/detect-indent.mjs
@@ -264,6 +265,7 @@
 /usr/local/libexec/pnpm/dist/node_modules/semver/internal/lrucache.js
 /usr/local/libexec/pnpm/dist/node_modules/semver/internal/parse-options.js
 /usr/local/libexec/pnpm/dist/node_modules/semver/internal/re.js
+/usr/local/libexec/pnpm/dist/node_modules/semver/internal/trim-comparator-whitespace.js
 /usr/local/libexec/pnpm/dist/node_modules/semver/package.json
 /usr/local/libexec/pnpm/dist/node_modules/semver/preload.js
 /usr/local/libexec/pnpm/dist/node_modules/semver/range.bnf
