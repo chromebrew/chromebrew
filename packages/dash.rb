@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Dash < Autotools
   description 'The Debian Almquist Shell (dash) is a POSIX-compliant shell derived from ash that executes scripts faster than bash and has fewer library dependencies.'
   homepage 'https://salsa.debian.org/debian/dash/'
-  version '0.5.13.5'
+  version '0.5.13.6'
   license 'BSD'
   compatibility 'all'
   source_url 'https://git.kernel.org/pub/scm/utils/dash/dash.git'
