@@ -11,9 +11,9 @@ class Sshfs < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5884ea8a54bc4b3db7b99f5627fd3db39fb5c78ce41ee0de82bdfa8cb37ab0c4',
-     armv7l: '5884ea8a54bc4b3db7b99f5627fd3db39fb5c78ce41ee0de82bdfa8cb37ab0c4',
-     x86_64: '13d622655e68aa691d4a1a32e8cf7bc7bf8d3d6e6ad4837b102ba024d8c416d9'
+    aarch64: '9d9fabf6f2ff110490379099594a507b62a7560190e067a705244bdcafe6170f',
+     armv7l: '9d9fabf6f2ff110490379099594a507b62a7560190e067a705244bdcafe6170f',
+     x86_64: '8e0efd737c72565381e16cd1d7dff2fc2f1352669d7072938685baa09497f927'
   })
 
   depends_on 'fuse3' => :executable
