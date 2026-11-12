@@ -7,7 +7,7 @@ class Rust < Package
   license 'Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/rust-lang/rustup.git'
-  git_hashtag '1.28.2'
+  git_hashtag '1.29.3'
   binary_compression 'tar.zst'
 
   binary_sha256({
