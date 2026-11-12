@@ -11,9 +11,9 @@ class Xvfb < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9f2ac117cdcfed6f01304fff428f72bcb8cb2f591a8a981992a26001b6899b64',
-     armv7l: '9f2ac117cdcfed6f01304fff428f72bcb8cb2f591a8a981992a26001b6899b64',
-     x86_64: '1ab3f67daa3335355c9963b179126948f2938b4577cf577ee411a213c8c13d89'
+    aarch64: '1d8ac3dfc0c69ca5214685f2603f82446649370a224b92daebcf9201aa42e9a8',
+     armv7l: '1d8ac3dfc0c69ca5214685f2603f82446649370a224b92daebcf9201aa42e9a8',
+     x86_64: 'f155767b3d9fd62f2c02f818402af38ff8a996057f89dc402157325fa1fc18ad'
   })
 
   depends_on 'glibc' => :executable
