@@ -11,10 +11,10 @@ class Dash < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9a9afd1b141790a308f022e80f8aef0cbe0c96d0303f0c689d33bebc1513bc39',
-     armv7l: '9a9afd1b141790a308f022e80f8aef0cbe0c96d0303f0c689d33bebc1513bc39',
-       i686: '199c06d51f19292315a790c0470d3f493bd4159f30d9341fe0a919c3d8b0e138',
-     x86_64: 'e2d601df37cc360fe4f4b324f636780424f9c9a4e17624f8900de7368a4ec4d9'
+    aarch64: '5d787b50ac4f9561cbbed9ed7c0418ba6fd3e8d36a11418fea6a0c6c14b59b67',
+     armv7l: '5d787b50ac4f9561cbbed9ed7c0418ba6fd3e8d36a11418fea6a0c6c14b59b67',
+       i686: '9ae195f20b5653af2fed852ed1f63a559651d66ec44d850e439ff7c6b8679680',
+     x86_64: '95fb72974cd5ea70ee3be9f560e4b828d07371e54d4dab19e8e5a17ebebbee8a'
   })
 
   depends_on 'glibc' => :executable
