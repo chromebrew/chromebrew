@@ -11,10 +11,10 @@ class Go_fetch < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '88b046562fb38601b38a4896a9b2b4410ca65fd43ad45ee4c17661bed64d2a4b',
-     armv7l: '88b046562fb38601b38a4896a9b2b4410ca65fd43ad45ee4c17661bed64d2a4b',
-       i686: '73b034d582bbfb473835c059703a93629f0008c88d7165391cabe6582a11b40b',
-     x86_64: '01c299923ff02607bce592d382dc3a1539cd37c36fee0524ca80ff2be4bc41a5'
+    aarch64: '162bd694eeb7330e095f998048f10d73ed3d88f06daa271a3840fa8bf334ca1d',
+     armv7l: '162bd694eeb7330e095f998048f10d73ed3d88f06daa271a3840fa8bf334ca1d',
+       i686: '40bfb9fcef9559f843ead07093cf1d166312825ce5a66d03248b7d814dbe8ace',
+     x86_64: '982ae441bc2ddfcb54185aa1f483c2d4409b8cbae2db34d95cee6eef657465c6'
   })
 
   depends_on 'glibc' => :executable
