@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Autoconf_archive < Autotools
   description 'GNU Autoconf Archive is a collection of freely re-usable Autoconf macros.'
   homepage 'https://www.gnu.org/software/autoconf-archive/'
-  version '2024.10.16'
+  version '2026.11.11'
   license 'GPL-3'
   compatibility 'all'
   source_url "https://ftp.gnu.org/gnu/autoconf-archive/autoconf-archive-#{version}.tar.xz"
-  source_sha256 'e07454f00d8cae7907bed42d0747798927809947684d94c37207a4d63a32f423'
+  source_sha256 '2c18f15e2b3bb79e09622b27391df07d8608ce9f07fbfc7c1143fa683891ab26'
   binary_compression 'tar.zst'
 
   binary_sha256({
