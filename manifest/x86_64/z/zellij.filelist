@@ -1,5 +1,6 @@
-# Total size: 54907996
+# Total size: 91741461
 /usr/local/bin/zellij
+/usr/local/bin/zellij-terminal
 /usr/local/etc/bash.d/zellij
 /usr/local/share/bash-completion/completions/zellij
 /usr/local/share/fish/vendor_completions.d/zellij.fish
