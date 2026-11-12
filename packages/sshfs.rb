@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Sshfs < Meson
   description 'A network filesystem client to connect to SSH servers.'
   homepage 'https://github.com/libfuse/sshfs'
-  version '3.7.6'
+  version '3.7.7'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/libfuse/sshfs.git'
