@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Mobile_broadband_provider_info < Meson
   description 'Network Management daemon'
   homepage 'https://gitlab.gnome.org/GNOME/mobile-broadband-provider-info'
-  version '20240407'
+  version '20261111'
   license 'CC-PD'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/mobile-broadband-provider-info.git'
