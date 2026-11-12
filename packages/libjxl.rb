@@ -14,9 +14,9 @@ class Libjxl < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6cbd22376c49d3367dd8851777b5ac40c05ffa1419d036ebe63a8b6b6700beb9',
-     armv7l: '6cbd22376c49d3367dd8851777b5ac40c05ffa1419d036ebe63a8b6b6700beb9',
-     x86_64: '9476194524d082fc719658cf716db3a8a2d1d0eab9f53174e2e65bac56dcbe8f'
+    aarch64: '61ac0bd0c153a8e2b42530e2ea2c6ed5044b77688bd90251c85ef0021bec2691',
+     armv7l: '61ac0bd0c153a8e2b42530e2ea2c6ed5044b77688bd90251c85ef0021bec2691',
+     x86_64: '81393e9fdaf27805ff10f69fa993f4e68ab27fe907162634c0df08f471ea7013'
   })
 
   depends_on 'at_spi2_core' => :build
