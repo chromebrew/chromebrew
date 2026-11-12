@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Libjxl < CMake
   description 'JPEG XL image format reference implementation'
   homepage 'https://jpeg.org/jpegxl/'
-  version '0.12.0'
+  version '0.13.0'
   license 'BSD'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/libjxl/libjxl.git'
