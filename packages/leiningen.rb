@@ -3,7 +3,7 @@ require 'package'
 class Leiningen < Package
   description 'for automating Clojure projects without setting your hair on fire'
   homepage 'https://leiningen.org/'
-  version '2.13.0'
+  version '2.13.1'
   license 'EPL-1.0'
   compatibility 'all'
   source_url 'https://github.com/technomancy/leiningen.git'
