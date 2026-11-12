@@ -3,7 +3,7 @@ require 'package'
 class Leiningen < Package
   description 'for automating Clojure projects without setting your hair on fire'
   homepage 'https://leiningen.org/'
-  version '2.13.0'
+  version '2.13.1'
   license 'EPL-1.0'
   compatibility 'all'
   source_url 'https://github.com/technomancy/leiningen.git'
@@ -24,7 +24,7 @@ class Leiningen < Package
 
   def self.postinstall
     downloader "https://github.com/technomancy/leiningen/releases/download/#{version}/leiningen-#{version}-standalone.jar",
-               '5f5231f06c3c7924e3241e3dfa52885577fb44ddf8a9ea373d2c5e2f27217565'
+               '2e4c36cbaef717d0fa589a1f95e4c526a1cb6c35b48dc92e6dbb30d6f8595b5c'
     FileUtils.install "leiningen-#{version}-standalone.jar", "#{HOME}/.lein/self-installs/leiningen-#{version}-standalone.jar", mode: 0o644
     ExitMessage.add "\nType 'lein' to get started.\n"
   end

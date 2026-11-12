@@ -3,17 +3,17 @@ require 'buildsystems/autotools'
 class Httpd < Autotools
   description 'The Apache HTTP Server Project is an effort to develop and maintain an open-source HTTP server for modern operating systems including UNIX and Windows.'
   homepage 'https://httpd.apache.org/'
-  version '2.4.70'
+  version '2.4.71'
   license 'GPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://dlcdn.apache.org/httpd/httpd-#{version}.tar.bz2"
-  source_sha256 '1eefd7dc95836c5872894ce8e6a37f773d5a6764f0766869d39b8bcf0b1bafc3'
+  source_sha256 '2bc5da5a33c247341de082717d4ebcb5cb49e8b73a05b7fddf7d5d6dc2f8de62'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a42aab50028bbf679111c3bf1f444e54be5a2a99cc85251c53eca62d11569de5',
-     armv7l: 'a42aab50028bbf679111c3bf1f444e54be5a2a99cc85251c53eca62d11569de5',
-     x86_64: '0a2e5871ca64fefb88b47ff65617007a47d44dc5de5e05967bdd9655f9514fd5'
+    aarch64: 'a6f12e50c6ac55e4bb38d0c126fff398aad435627759e914110c37dd6f365ed5',
+     armv7l: 'a6f12e50c6ac55e4bb38d0c126fff398aad435627759e914110c37dd6f365ed5',
+     x86_64: 'e36eb83704c1b2f8d84f28b772df487ecb03ccc478d4325af7952b52531a76f9'
   })
 
   depends_on 'apr' => :executable

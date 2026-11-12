@@ -1,4 +1,4 @@
-# Total size: 450253887
+# Total size: 470976545
 /usr/local/bin/dart
 /usr/local/lib/dart/LICENSE
 /usr/local/lib/dart/README
@@ -6,6 +6,8 @@
 /usr/local/lib/dart/bin/dart.sym
 /usr/local/lib/dart/bin/dartaotruntime
 /usr/local/lib/dart/bin/dartaotruntime.sym
+/usr/local/lib/dart/bin/dartcliruntime
+/usr/local/lib/dart/bin/dartcliruntime.sym
 /usr/local/lib/dart/bin/dartvm
 /usr/local/lib/dart/bin/dartvm.sym
 /usr/local/lib/dart/bin/resources/dartdoc/resources/blank.txt
@@ -456,6 +458,7 @@
 /usr/local/lib/dart/bin/resources/devtools/assets/packages/devtools_app_shared/fonts/Roboto_Mono/RobotoMono-Medium.ttf
 /usr/local/lib/dart/bin/resources/devtools/assets/packages/devtools_app_shared/fonts/Roboto_Mono/RobotoMono-Regular.ttf
 /usr/local/lib/dart/bin/resources/devtools/assets/packages/devtools_app_shared/fonts/Roboto_Mono/RobotoMono-Thin.ttf
+/usr/local/lib/dart/bin/resources/devtools/assets/packages/material_ui/shaders/ink_sparkle.frag
 /usr/local/lib/dart/bin/resources/devtools/assets/packages/perfetto_ui_compiled/dist/devtools/devtools_dark.css
 /usr/local/lib/dart/bin/resources/devtools/assets/packages/perfetto_ui_compiled/dist/devtools/devtools_light.css
 /usr/local/lib/dart/bin/resources/devtools/assets/packages/perfetto_ui_compiled/dist/devtools/devtools_shared.css
@@ -518,6 +521,7 @@
 /usr/local/lib/dart/bin/snapshots/analysis_server_aot.dart.snapshot
 /usr/local/lib/dart/bin/snapshots/dart2js_aot.dart.snapshot
 /usr/local/lib/dart/bin/snapshots/dart2wasm_product.snapshot
+/usr/local/lib/dart/bin/snapshots/dart_runtime_service_vm_aot.dart.snapshot
 /usr/local/lib/dart/bin/snapshots/dart_tooling_daemon_aot.dart.snapshot
 /usr/local/lib/dart/bin/snapshots/dartdev_aot.dart.snapshot
 /usr/local/lib/dart/bin/snapshots/dartdevc.dart.snapshot
@@ -549,6 +553,7 @@
 /usr/local/lib/dart/lib/_http/overrides.dart
 /usr/local/lib/dart/lib/_http/websocket.dart
 /usr/local/lib/dart/lib/_http/websocket_impl.dart
+/usr/local/lib/dart/lib/_http/websocket_profiler.dart
 /usr/local/lib/dart/lib/_internal/allowed_experiments.json
 /usr/local/lib/dart/lib/_internal/dart2js_platform.dill
 /usr/local/lib/dart/lib/_internal/dart2js_server_platform.dill
