@@ -11,9 +11,9 @@ class Homebank < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '639af946272fa5c0685d8bfe1b06de71936e92681038e1f4d16e69d3aa8f34ed',
-     armv7l: '639af946272fa5c0685d8bfe1b06de71936e92681038e1f4d16e69d3aa8f34ed',
-     x86_64: '37410a5caebda33613072c64d8bfef39f9551aaa05aa00c786b7fda3bbbb6a7f'
+    aarch64: '3269899dafc666d381c61b9b6bb4e489833d0e5305ff02ccfbf1f9a8ad0e464d',
+     armv7l: '3269899dafc666d381c61b9b6bb4e489833d0e5305ff02ccfbf1f9a8ad0e464d',
+     x86_64: '9316553027597265bcc6bf9d5d007b39365f8f907cdd6b26e5e2d42a0bf51f9b'
   })
 
   depends_on 'at_spi2_core' => :executable
