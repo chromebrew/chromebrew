@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Homebank < Autotools
   description 'HomeBank is a free software that will assist you to manage your personal accounting.'
   homepage 'https://www.gethomebank.org/en/index.php'
-  version '5.10.3'
+  version '5.10.4'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.gethomebank.org/public/sources/homebank-#{version}.tar.gz"
-  source_sha256 '574de504cceafdb6138ffa2e03be567ad66b8a2ceaef3434e07ca695e82dd9e3'
+  source_sha256 'f8072131328e7c1d6ca336f809e265e483c6d6d21f3654bc520700d27deae2d8'
   binary_compression 'tar.zst'
 
   binary_sha256({
