@@ -3,7 +3,7 @@ require 'package'
 class Eventstat < Package
   description 'Eventstat periodically dumps out the current kernel event state.'
   homepage 'https://github.com/ColinIanKing/eventstat'
-  version '0.04.12'
+  version '0.06.00'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/ColinIanKing/eventstat.git'
