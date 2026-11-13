@@ -17,36 +17,37 @@ class Mailutils < Autotools
      x86_64: '6f4b18de58422568a586105c0171116c22fe332962e00fdb3b1a5c68f36473b1'
   })
 
-  depends_on 'brotli' # R
-  depends_on 'e2fsprogs' # R
+  depends_on 'brotli' => :library
+  depends_on 'e2fsprogs' => :executable
   depends_on 'emacs' => :build
   depends_on 'fribidi' # R
-  depends_on 'gdbm' # R
-  depends_on 'glibc' # R
-  depends_on 'gmp' # R
-  depends_on 'gnutls' # R
-  depends_on 'krb5' # R
-  depends_on 'libcyrussasl' # R
-  depends_on 'libdb' # R
-  depends_on 'libidn2' # R
-  depends_on 'libtasn1' # R
-  depends_on 'libtirpc' # R
-  depends_on 'libtool' # R
-  depends_on 'libunistring' # R
-  depends_on 'libxcrypt' # R
-  depends_on 'linux_pam' # R
-  depends_on 'ncurses' # R
+  depends_on 'gdbm' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'gmp' => :library
+  depends_on 'gnutls' => :library
+  depends_on 'krb5' => :executable
+  depends_on 'libcyrussasl' => :library
+  depends_on 'libdb' => :library
+  depends_on 'libidn2' => :library
+  depends_on 'libtasn1' => :library
+  depends_on 'libtirpc' => :executable
+  depends_on 'libtool' => :library
+  depends_on 'libunistring' => :library
+  depends_on 'libxcrypt' => :library
+  depends_on 'linux_pam' => :library
+  depends_on 'ncurses' => :executable
   depends_on 'nettle' # R
-  depends_on 'openldap' # R
-  depends_on 'openssl' # R
-  depends_on 'p11kit' # R
+  depends_on 'openldap' => :library
+  depends_on 'openssl' => :library
+  depends_on 'p11kit' => :library
   depends_on 'perl_pod_parser' => :build
   depends_on 'python3' # R
-  depends_on 'readline' # R
-  depends_on 'tcpwrappers' # R
+  depends_on 'readline' => :executable
+  depends_on 'tcpwrappers' => :executable
   depends_on 'wget2' => :build
-  depends_on 'zlib' # R
-  depends_on 'zstd' # R
+  depends_on 'zlib' => :library
+  depends_on 'zstd' => :library
 
   autotools_configure_options '--enable-ipv6 \
             --with-gnutls \
