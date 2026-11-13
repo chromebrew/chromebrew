@@ -11,10 +11,10 @@ class Smemstat < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '32de67cf01fa86ca7ac325ae46b1a23774bd080e939dd864e9b5b2d66d42db10',
-     armv7l: '32de67cf01fa86ca7ac325ae46b1a23774bd080e939dd864e9b5b2d66d42db10',
-       i686: '66452ce0828149c8af7ba5bdbaf805628c35463cd1aa470f00d7fc5d1a50ba69',
-     x86_64: '441dcdd891898b730436d84a5454ea0bd8916c47c13920c621dc8548ba36f543'
+    aarch64: '2d4dc10ec2205c06a6e4b023fa6e090bda63d817b896cb09051b4af3f1da3039',
+     armv7l: '2d4dc10ec2205c06a6e4b023fa6e090bda63d817b896cb09051b4af3f1da3039',
+       i686: 'c025dc4972bd792c21497e137928fdc3876d0b9e0307066cefb95b25cf948ffa',
+     x86_64: '5342afb13976feb65c1769172fd9fcca1a98b15c7c492c3796e0c911701fb3f2'
   })
 
   depends_on 'glibc' => :executable
