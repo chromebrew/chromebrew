@@ -11,10 +11,10 @@ class Eventstat < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aa92cd676a30ac214e77478fe74e9a82c63bd559795c18ba012b1cda6c7b5b4b',
-     armv7l: 'aa92cd676a30ac214e77478fe74e9a82c63bd559795c18ba012b1cda6c7b5b4b',
-       i686: '8f7b1b44aaa60bc3cd235bbee41af86abf1456067dc3d51de9109fc1899e5e9c',
-     x86_64: '295c5507f406198cd2249624c575a6a7b3c2e8efb284218e49d0a734ee448619'
+    aarch64: '9faa4f4d58cb1b796a0e63607ca4a06c904066739dd164c14f3da2e34b03d3c4',
+     armv7l: '9faa4f4d58cb1b796a0e63607ca4a06c904066739dd164c14f3da2e34b03d3c4',
+       i686: 'd20adfc4a356146816d71df0562e0c9f971de3346e457a684a303464fc089d6e',
+     x86_64: '4ab08da1083a697af8827efbcd19e136f40cee0036a7f09f64533646b7b7364d'
   })
 
   depends_on 'glibc' => :executable
