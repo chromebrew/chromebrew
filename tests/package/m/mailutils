@@ -1,0 +1,5 @@
+#!/bin/bash
+mail --help | head
+mail -V
+mailutils --help | head
+mailutils -V
