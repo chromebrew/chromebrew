@@ -3,17 +3,17 @@ require 'buildsystems/autotools'
 class Homebank < Autotools
   description 'HomeBank is a free software that will assist you to manage your personal accounting.'
   homepage 'https://www.gethomebank.org/en/index.php'
-  version '5.10.3'
+  version '5.10.4'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.gethomebank.org/public/sources/homebank-#{version}.tar.gz"
-  source_sha256 '574de504cceafdb6138ffa2e03be567ad66b8a2ceaef3434e07ca695e82dd9e3'
+  source_sha256 'f8072131328e7c1d6ca336f809e265e483c6d6d21f3654bc520700d27deae2d8'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '639af946272fa5c0685d8bfe1b06de71936e92681038e1f4d16e69d3aa8f34ed',
-     armv7l: '639af946272fa5c0685d8bfe1b06de71936e92681038e1f4d16e69d3aa8f34ed',
-     x86_64: '37410a5caebda33613072c64d8bfef39f9551aaa05aa00c786b7fda3bbbb6a7f'
+    aarch64: '3269899dafc666d381c61b9b6bb4e489833d0e5305ff02ccfbf1f9a8ad0e464d',
+     armv7l: '3269899dafc666d381c61b9b6bb4e489833d0e5305ff02ccfbf1f9a8ad0e464d',
+     x86_64: '9316553027597265bcc6bf9d5d007b39365f8f907cdd6b26e5e2d42a0bf51f9b'
   })
 
   depends_on 'at_spi2_core' => :executable
