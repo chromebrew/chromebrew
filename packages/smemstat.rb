@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Smemstat < Autotools
   description 'Smemstat reports the physical memory usage taking into consideration shared memory.'
   homepage 'https://github.com/ColinIanKing/smemstat'
-  version '0.02.10'
+  version '0.02.13'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/ColinIanKing/smemstat.git'
