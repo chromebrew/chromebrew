@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Mate_desktop < Meson
   description 'Libraries for the MATE desktop that are not part of the UI.'
   homepage 'https://mate-desktop.org'
-  version '1.29.0'
+  version '1.29.1'
   license 'FDL-1.1, GPL-2+, LGPL-2+, MIT-with-advertising'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/mate-desktop/mate-desktop.git'
