@@ -1,10 +1,11 @@
-# Total size: 2015232
+# Total size: 2028070
 /usr/local/share/ECM/cmake/ECMConfig.cmake
 /usr/local/share/ECM/cmake/ECMConfigVersion.cmake
 /usr/local/share/ECM/find-modules/ECMFindModuleHelpersStub.cmake
 /usr/local/share/ECM/find-modules/Find7Zip.cmake
 /usr/local/share/ECM/find-modules/Find7z.cmake
 /usr/local/share/ECM/find-modules/FindCanberra.cmake
+/usr/local/share/ECM/find-modules/FindDesktopFileUtils.cmake
 /usr/local/share/ECM/find-modules/FindEGL.cmake
 /usr/local/share/ECM/find-modules/FindFFmpeg.cmake
 /usr/local/share/ECM/find-modules/FindGLIB2.cmake
@@ -136,6 +137,7 @@
 /usr/local/share/doc/ECM/html/_sources/find-module/Find7Zip.rst.txt
 /usr/local/share/doc/ECM/html/_sources/find-module/Find7z.rst.txt
 /usr/local/share/doc/ECM/html/_sources/find-module/FindCanberra.rst.txt
+/usr/local/share/doc/ECM/html/_sources/find-module/FindDesktopFileUtils.rst.txt
 /usr/local/share/doc/ECM/html/_sources/find-module/FindEGL.rst.txt
 /usr/local/share/doc/ECM/html/_sources/find-module/FindFFmpeg.rst.txt
 /usr/local/share/doc/ECM/html/_sources/find-module/FindGLIB2.rst.txt
@@ -245,6 +247,7 @@
 /usr/local/share/doc/ECM/html/find-module/Find7Zip.html
 /usr/local/share/doc/ECM/html/find-module/Find7z.html
 /usr/local/share/doc/ECM/html/find-module/FindCanberra.html
+/usr/local/share/doc/ECM/html/find-module/FindDesktopFileUtils.html
 /usr/local/share/doc/ECM/html/find-module/FindEGL.html
 /usr/local/share/doc/ECM/html/find-module/FindFFmpeg.html
 /usr/local/share/doc/ECM/html/find-module/FindGLIB2.html
