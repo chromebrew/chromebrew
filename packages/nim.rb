@@ -3,11 +3,11 @@ require 'package'
 class Nim < Package
   description 'Nim is a statically typed compiled systems programming language.'
   homepage 'https://nim-lang.org/'
-  version '2.4.0'
+  version '2.4.2'
   license 'MIT'
   compatibility 'all'
   source_url "https://nim-lang.org/download/nim-#{version}.tar.xz"
-  source_sha256 '4fa00853bc6ac92ebdd924d8e2ce42509d3f708d76a3ffcc034e16288e0e0325'
+  source_sha256 'b28bf4da1fce46dba9d16685c981b3d5e98de8db1b60d66f279b0bd2af2d8211'
   binary_compression 'tar.zst'
 
   binary_sha256({
