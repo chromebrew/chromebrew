@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Libeconf < Meson
   description 'Enhanced config file parser, which merges config files placed in several locations into one.'
   homepage 'https://github.com/openSUSE/libeconf'
-  version '0.8.6'
+  version '0.8.7'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/openSUSE/libeconf.git'
@@ -11,10 +11,10 @@ class Libeconf < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3392e31ba830fadd55b47fe3ab263516fde8e7149f5a894f308e1a04b1372cc2',
-     armv7l: '3392e31ba830fadd55b47fe3ab263516fde8e7149f5a894f308e1a04b1372cc2',
-       i686: '64ae67f97092fcd3ffbc36ef6ac8e7116a9fc9a5b70352a7cb2f06e5054ce09d',
-     x86_64: 'cc8a09d69530c55dfd9614912e2ead8dd6243569c50980c82d3a8d8ea008369f'
+    aarch64: '0bc7143fcf813b2d13e46ffddf709a59e7abf1ab1cc3e6e00ecccc9606a7cd84',
+     armv7l: '0bc7143fcf813b2d13e46ffddf709a59e7abf1ab1cc3e6e00ecccc9606a7cd84',
+       i686: 'b2d47a57c5898907c250a952289e16177ddd0646abb0fc229628bc8a866c5c94',
+     x86_64: 'bab4248cac87d3f002d2300a7f655de544bf43a08dab085ecf6a8ca4dcc5706f'
   })
 
   depends_on 'gcc_lib' => :library
