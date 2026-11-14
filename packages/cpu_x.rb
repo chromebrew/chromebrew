@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Cpu_x < CMake
   description 'CPU-X is a Free software that gathers information on CPU, motherboard and more.'
   homepage 'https://thetumultuousunicornofdarkness.github.io/CPU-X/'
-  version '5.4.0'
+  version '5.4.1'
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/TheTumultuousUnicornOfDarkness/CPU-X.git'
