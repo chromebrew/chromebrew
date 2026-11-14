@@ -1,12 +1,12 @@
-# Total size: 22492735
-/usr/local/lib/python3.15/site-packages/botocore-1.44.2.dist-info/INSTALLER
-/usr/local/lib/python3.15/site-packages/botocore-1.44.2.dist-info/LICENSE.txt
-/usr/local/lib/python3.15/site-packages/botocore-1.44.2.dist-info/METADATA
-/usr/local/lib/python3.15/site-packages/botocore-1.44.2.dist-info/NOTICE
-/usr/local/lib/python3.15/site-packages/botocore-1.44.2.dist-info/RECORD
-/usr/local/lib/python3.15/site-packages/botocore-1.44.2.dist-info/REQUESTED
-/usr/local/lib/python3.15/site-packages/botocore-1.44.2.dist-info/WHEEL
-/usr/local/lib/python3.15/site-packages/botocore-1.44.2.dist-info/top_level.txt
+# Total size: 22520241
+/usr/local/lib/python3.15/site-packages/botocore-1.44.3.dist-info/INSTALLER
+/usr/local/lib/python3.15/site-packages/botocore-1.44.3.dist-info/LICENSE.txt
+/usr/local/lib/python3.15/site-packages/botocore-1.44.3.dist-info/METADATA
+/usr/local/lib/python3.15/site-packages/botocore-1.44.3.dist-info/NOTICE
+/usr/local/lib/python3.15/site-packages/botocore-1.44.3.dist-info/RECORD
+/usr/local/lib/python3.15/site-packages/botocore-1.44.3.dist-info/REQUESTED
+/usr/local/lib/python3.15/site-packages/botocore-1.44.3.dist-info/WHEEL
+/usr/local/lib/python3.15/site-packages/botocore-1.44.3.dist-info/top_level.txt
 /usr/local/lib/python3.15/site-packages/botocore/__init__.py
 /usr/local/lib/python3.15/site-packages/botocore/__pycache__/__init__.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/botocore/__pycache__/args.cpython-315.pyc
@@ -980,6 +980,7 @@
 /usr/local/lib/python3.15/site-packages/botocore/data/imagebuilder/2019-12-02/paginators-1.json
 /usr/local/lib/python3.15/site-packages/botocore/data/imagebuilder/2019-12-02/paginators-1.sdk-extras.json
 /usr/local/lib/python3.15/site-packages/botocore/data/imagebuilder/2019-12-02/service-2.json.gz
+/usr/local/lib/python3.15/site-packages/botocore/data/imagebuilder/2019-12-02/waiters-2.json
 /usr/local/lib/python3.15/site-packages/botocore/data/importexport/2010-06-01/endpoint-rule-set-1.json.gz
 /usr/local/lib/python3.15/site-packages/botocore/data/importexport/2010-06-01/paginators-1.json
 /usr/local/lib/python3.15/site-packages/botocore/data/importexport/2010-06-01/service-2.json.gz
@@ -1137,6 +1138,7 @@
 /usr/local/lib/python3.15/site-packages/botocore/data/lambda-core/2026-04-30/endpoint-rule-set-1.json.gz
 /usr/local/lib/python3.15/site-packages/botocore/data/lambda-core/2026-04-30/paginators-1.json
 /usr/local/lib/python3.15/site-packages/botocore/data/lambda-core/2026-04-30/service-2.json.gz
+/usr/local/lib/python3.15/site-packages/botocore/data/lambda-core/2026-04-30/waiters-2.json
 /usr/local/lib/python3.15/site-packages/botocore/data/lambda-microvms/2025-09-09/endpoint-rule-set-1.json.gz
 /usr/local/lib/python3.15/site-packages/botocore/data/lambda-microvms/2025-09-09/paginators-1.json
 /usr/local/lib/python3.15/site-packages/botocore/data/lambda-microvms/2025-09-09/service-2.json.gz
@@ -1725,6 +1727,7 @@
 /usr/local/lib/python3.15/site-packages/botocore/data/scheduler/2021-06-30/endpoint-rule-set-1.json.gz
 /usr/local/lib/python3.15/site-packages/botocore/data/scheduler/2021-06-30/paginators-1.json
 /usr/local/lib/python3.15/site-packages/botocore/data/scheduler/2021-06-30/service-2.json.gz
+/usr/local/lib/python3.15/site-packages/botocore/data/scheduler/2021-06-30/waiters-2.json
 /usr/local/lib/python3.15/site-packages/botocore/data/schemas/2019-12-02/endpoint-rule-set-1.json.gz
 /usr/local/lib/python3.15/site-packages/botocore/data/schemas/2019-12-02/paginators-1.json
 /usr/local/lib/python3.15/site-packages/botocore/data/schemas/2019-12-02/service-2.json.gz
