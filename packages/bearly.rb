@@ -3,11 +3,11 @@ require 'package'
 class Bearly < Package
   description 'Bearly makes you 10x faster by adding state of the art AI to your workflow.'
   homepage 'https://bearly.ai/'
-  version '5.2.11'
+  version '5.2.12'
   license 'Unknown'
   compatibility 'x86_64'
   source_url "https://github.com/bearlyai/releases/releases/download/v#{version}/Bearly-#{version}.AppImage"
-  source_sha256 '2f7a3fd4c0688704000b5a90e48076f504500771f66f4d88092d481247d7befa'
+  source_sha256 'e64c6656dd983aa9bc60ffce0aa29d79a265a70bb2fcd12f78a1962c9e5d7823'
 
   no_compile_needed
   no_shrink
