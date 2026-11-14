@@ -1,0 +1,24 @@
+# Total size: 1282359
+/usr/local/include/traceevent/event-parse.h
+/usr/local/include/traceevent/event-utils.h
+/usr/local/include/traceevent/kbuffer.h
+/usr/local/include/traceevent/trace-seq.h
+/usr/local/lib64/libtraceevent.a
+/usr/local/lib64/libtraceevent.so
+/usr/local/lib64/libtraceevent.so.1
+/usr/local/lib64/libtraceevent.so.1.9.0
+/usr/local/lib64/pkgconfig/libtraceevent.pc
+/usr/local/lib64/traceevent/plugins/libtraceevent-dynamic-list
+/usr/local/lib64/traceevent/plugins/plugin_cfg80211.so
+/usr/local/lib64/traceevent/plugins/plugin_function.so
+/usr/local/lib64/traceevent/plugins/plugin_futex.so
+/usr/local/lib64/traceevent/plugins/plugin_hrtimer.so
+/usr/local/lib64/traceevent/plugins/plugin_jbd2.so
+/usr/local/lib64/traceevent/plugins/plugin_kmem.so
+/usr/local/lib64/traceevent/plugins/plugin_kvm.so
+/usr/local/lib64/traceevent/plugins/plugin_mac80211.so
+/usr/local/lib64/traceevent/plugins/plugin_net.so
+/usr/local/lib64/traceevent/plugins/plugin_sched_switch.so
+/usr/local/lib64/traceevent/plugins/plugin_scsi.so
+/usr/local/lib64/traceevent/plugins/plugin_tlb.so
+/usr/local/lib64/traceevent/plugins/plugin_xen.so
