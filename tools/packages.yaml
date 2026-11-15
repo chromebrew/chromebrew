@@ -521,7 +521,7 @@ activity: medium
 ---
 kind: url
 name: bacula
-url: https://sourceforge.net/projects/bacula/files/bacula/
+url: https://gitlab.bacula.org/bacula-community-edition/bacula-community/-/tags
 activity: medium
 ---
 kind: url
@@ -700,9 +700,9 @@ url: https://sourceforge.net/projects/boost/files/boost/
 activity: medium
 ---
 kind: url
-name: box
-url: https://github.com/box-project/box2/releases
-activity: none
+name: box_php
+url: https://github.com/box-project/box/releases
+activity: low
 ---
 kind: url
 name: brackets
@@ -895,6 +895,11 @@ url: https://gitlab.com/jallbrit/cbonsai/-/tags
 activity: none
 ---
 kind: url
+name: cc65
+url: https://github.com/cc65/cc65/releases
+activity: none
+---
+kind: url
 name: ccache
 url: https://github.com/ccache/ccache/releases
 activity: medium
@@ -947,6 +952,11 @@ activity: medium
 kind: url
 name: charm
 url: https://github.com/charmbracelet/charm/releases
+activity: high
+---
+kind: url
+name: chatgpt
+url: https://learn.chatgpt.com/docs/linux/linux-app
 activity: high
 ---
 kind: url
@@ -1035,6 +1045,11 @@ url: https://claude.com/product/claude-code
 activity: medium
 ---
 kind: url
+name: claude_desktop
+url: https://claude.com/product/claude-code
+activity: medium
+---
+kind: url
 name: clean
 url: https://sourceforge.net/projects/clean/files/clean/
 activity: none
@@ -1072,6 +1087,11 @@ activity: medium
 kind: url
 name: cloog
 url: https://www.bastoul.net/cloog/download.php
+activity: none
+---
+kind: url
+name: cloudcompare
+url: https://github.com/CloudCompare/CloudCompare/releases
 activity: none
 ---
 kind: url
@@ -1375,6 +1395,11 @@ url: https://ftp.gnu.org/non-gnu/cvs/source/stable
 activity: none
 ---
 kind: url
+name: dapr
+url: https://github.com/dapr/cli/releases
+activity: medium
+---
+kind: url
 name: daq
 url: https://www.snort.org/downloads/
 activity: none
@@ -1655,6 +1680,16 @@ url: https://github.com/doxygen/doxygen/releases
 activity: low
 ---
 kind: url
+name: drill
+url: https://github.com/fcsonline/drill/releases
+activity: low
+---
+kind: url
+name: drop_linux
+url: https://github.com/wrr/drop/releases
+activity: medium
+---
+kind: url
 name: dropbox
 url: https://www.dropbox.com/
 activity: high
@@ -1823,6 +1858,11 @@ kind: url
 name: erlang
 url: http://erlang.org/download
 activity: high
+---
+kind: url
+name: espanso
+url: https://github.com/espanso/espanso/releases
+activity: low
 ---
 kind: url
 name: etcd
@@ -2653,6 +2693,11 @@ kind: url
 name: gittools
 url: https://github.com/internetwache/GitTools/
 activity: none
+---
+kind: url
+name: gjc
+url: https://github.com/Yeachan-Heo/gajae-code/releases
+activity: high
 ---
 kind: url
 name: gjs
@@ -3915,6 +3960,11 @@ url: https://invent.kde.org/frameworks/kwindowsystem/-/tags
 activity: medium
 ---
 kind: url
+name: kilo
+url: https://github.com/Kilo-Org/kilocode/releases
+activity: high
+---
+kind: url
 name: komodo
 url: https://downloads.activestate.com/Komodo/releases/
 activity: low
@@ -4347,6 +4397,11 @@ activity: low
 kind: url
 name: libdex
 url: https://gitlab.gnome.org/GNOME/libdex/-/tags
+activity: low
+---
+kind: url
+name: libdisplay_info
+url: https://gitlab.freedesktop.org/emersion/libdisplay-info/-/tags
 activity: low
 ---
 kind: url
@@ -5020,6 +5075,11 @@ url: https://otr.im/dist/libotr/
 activity: none
 ---
 kind: url
+name: libp11
+url: https://github.com/OpenSC/libp11/releases
+activity: low
+---
+kind: url
 name: libpanel
 url: https://gitlab.gnome.org/GNOME/libpanel/-/tags
 activity: medium
@@ -5153,6 +5213,11 @@ kind: url
 name: librsync
 url: https://github.com/librsync/librsync/releases
 activity: low
+---
+kind: url
+name: librtlsdr
+url: https://github.com/steve-m/librtlsdr/tags
+activity: none
 ---
 kind: url
 name: libsamplerate
@@ -5530,6 +5595,11 @@ url: https://downloads.xiph.org/releases/vorbis
 activity: low
 ---
 kind: url
+name: libvpl
+url: https://github.com/intel/libvpl/releases
+activity: low
+---
+kind: url
 name: libvpx
 url: https://github.com/webmproject/libvpx/releases
 activity: low
@@ -5652,6 +5722,11 @@ activity: low
 kind: url
 name: libxfce4util
 url: https://archive.xfce.org/src/xfce/libxfce4util/
+activity: low
+---
+kind: url
+name: libxfce4windowing
+url: https://gitlab.xfce.org/xfce/libxfce4windowing/-/tags
 activity: low
 ---
 kind: url
@@ -6870,11 +6945,6 @@ url: https://support.1password.com/install-linux/#other-distributions-or-arm-tar
 activity: medium
 ---
 kind: url
-name: onevpl
-url: https://github.com/oneapi-src/oneVPL/releases
-activity: medium
----
-kind: url
 name: oniguruma
 url: https://github.com/kkos/oniguruma/releases
 activity: medium
@@ -6907,6 +6977,11 @@ activity: medium
 kind: url
 name: openbox
 url: http://openbox.org/wiki/Openbox:Download
+activity: none
+---
+kind: url
+name: opencbm
+url: https://github.com/OpenCBM/OpenCBM/tags
 activity: none
 ---
 kind: url
@@ -6977,6 +7052,11 @@ activity: medium
 kind: url
 name: openjdk25
 url: https://www.azul.com/downloads/?version=java-25-lts&package=jdk#zulu
+activity: medium
+---
+kind: url
+name: openjdk27
+url: https://www.azul.com/downloads/?version=java-27-lts&package=jdk#zulu
 activity: medium
 ---
 kind: url
@@ -7152,6 +7232,11 @@ activity: none
 kind: url
 name: pass
 url: https://git.zx2c4.com/password-store
+activity: medium
+---
+kind: url
+name: passt
+url: https://passt.top/passt
 activity: medium
 ---
 kind: url
@@ -7740,6 +7825,11 @@ url: https://github.com/kornelski/pngquant/tags
 activity: low
 ---
 kind: url
+name: po4a
+url: https://github.com/mquinson/po4a/tags
+activity: medium
+---
+kind: url
 name: pocl
 url: https://github.com/pocl/pocl/releases
 activity: medium
@@ -8005,6 +8095,11 @@ url: https://github.com/pypa/hatch/releases
 activity: medium
 ---
 kind: url
+name: py3_hermes_agent
+url: https://github.com/NousResearch/hermes-agent/releases
+activity: high
+---
+kind: url
 name: py3_id
 url: https://github.com/di/id/releases
 activity: medium
@@ -8198,6 +8293,16 @@ kind: url
 name: py3_sphinxcontrib_jquery
 url: https://github.com/sphinx-contrib/jquery/tags
 activity: medium
+---
+kind: url
+name: py3_standard_pkg_resources
+url: https://pypi.org/project/standard-pkg-resources/
+activity: medium
+---
+kind: url
+name: py3_streamlit
+url: https://github.com/streamlit/streamlit/releases
+activity: high
 ---
 kind: url
 name: py3_twine
@@ -8455,6 +8560,11 @@ url: https://github.com/stachenov/quazip/tags
 activity: medium
 ---
 kind: url
+name: qwen
+url: https://github.com/QwenLM/qwen-code/releases
+activity: high
+---
+kind: url
 name: r
 url: https://cran.r-project.org/src/base/R-3/
 activity: medium
@@ -8573,11 +8683,6 @@ kind: url
 name: revive
 url: https://github.com/mgechev/revive/releases
 activity: medium
----
-kind: url
-name: rfkill
-url: https://www.kernel.org/pub/software/network/rfkill
-activity: none
 ---
 kind: url
 name: rgb
@@ -8900,6 +9005,11 @@ url: https://www.jetbrains.com/ruby/download/?section=linux
 activity: low
 ---
 kind: url
+name: run_parts
+url: https://salsa.debian.org/debian/debianutils/-/tags
+activity: low
+---
+kind: url
 name: runc
 url: https://github.com/opencontainers/runc/releases
 activity: medium
@@ -8977,6 +9087,11 @@ activity: medium
 kind: url
 name: sbt
 url: https://github.com/sbt/sbt/releases
+activity: medium
+---
+kind: url
+name: scala
+url: https://github.com/scala/scala3/releases
 activity: medium
 ---
 kind: url
@@ -9323,6 +9438,11 @@ kind: url
 name: sord
 url: https://github.com/drobilla/sord/tags
 activity: none
+---
+kind: url
+name: soundtouch
+url: hhttps://codeberg.org/soundtouch/soundtouch/tags
+activity: low
 ---
 kind: url
 name: source_highlight
@@ -9990,6 +10110,11 @@ url: https://github.com/microsoft/TypeScript/releases
 activity: high
 ---
 kind: url
+name: typst
+url: https://github.com/typst/typst/releases
+activity: medium
+---
+kind: url
 name: uasm
 url: https://github.com/Terraspace/UASM/releases
 activity: low
@@ -10078,6 +10203,11 @@ kind: url
 name: unshield
 url: https://github.com/twogood/unshield/releases
 activity: none
+---
+kind: url
+name: unsloth
+url: https://github.com/unslothai/unsloth/releases
+activity: high
 ---
 kind: url
 name: unzip
@@ -10396,8 +10526,8 @@ activity: none
 ---
 kind: url
 name: wcslib
-url: https://www.atnf.csiro.au/people/Mark.Calabretta/WCS/
-activity: none
+url: https://www.atnf.csiro.au/computing/software/wcs/wcslib-releases
+activity: low
 ---
 kind: url
 name: wdiff
@@ -10503,6 +10633,11 @@ kind: url
 name: wl_clipboard
 url: https://github.com/bugaevc/wl-clipboard/releases
 activity: medium
+---
+kind: url
+name: wlr_protocols
+url: https://gitlab.freedesktop.org/wlroots/wlr-protocols
+activity: none
 ---
 kind: url
 name: wlroots
@@ -10860,6 +10995,11 @@ url: https://github.com/freedesktop/xorg-xserver/releases
 activity: medium
 ---
 kind: url
+name: xwininfo
+url: https://gitlab.freedesktop.org/xorg/app/xwininfo/-/tags
+activity: low
+---
+kind: url
 name: xxd_standalone
 url: https://github.com/vim/vim/releases
 activity: high
@@ -10978,6 +11118,11 @@ kind: url
 name: zathura_poppler_pdf
 url: https://pwmt.org/projects/zathura-pdf-poppler/download/
 activity: low
+---
+kind: url
+name: zcode
+url: https://zcode.z.ai/en#all-downloads
+activity: high
 ---
 kind: url
 name: zed

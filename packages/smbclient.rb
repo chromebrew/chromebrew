@@ -3,17 +3,17 @@ require 'package'
 class Smbclient < Package
   description 'Tools to access a servers filespace and printers via SMB'
   homepage 'https://www.samba.org'
-  version "4.24.4-#{CREW_ICU_VER}"
+  version "4.25.1-#{CREW_ICU_VER}"
   license 'GPLv3'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://download.samba.org/pub/samba/stable/samba-#{version.split('-').first}.tar.gz"
-  source_sha256 'df2c51ab4361ec626ab9988e5946efcca8465bc7afae834291d5558468265ff8'
+  source_sha256 '7f367545bca69aa96897628f82f0f04d4b66b3bcb36cb978b9bb952c4b4c428d'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bee6b75d6b57b314331a88e0f0de356a0c7e0c8643066309e7007e279e7e58a8',
-     armv7l: 'bee6b75d6b57b314331a88e0f0de356a0c7e0c8643066309e7007e279e7e58a8',
-     x86_64: 'd8d10c0c83e4d8afd35420af8d17bf89be3e9d7558582a461fa813962ad5aabf'
+    aarch64: '4cdecde0c42890ab65843eb11e7ac3926cb17a77c15f8921feffeaf9ed396766',
+     armv7l: '4cdecde0c42890ab65843eb11e7ac3926cb17a77c15f8921feffeaf9ed396766',
+     x86_64: 'c5145b64579468463a7cbaeebf64278604d5b78c10ad65ee55564cbc13b2f1c9'
   })
 
   depends_on 'acl' => :library
@@ -73,7 +73,6 @@ class Smbclient < Package
   end
 
   def self.build
-    system './configure --help'
     system "python_LDFLAGS='' ./configure --enable-fhs \
       #{CREW_CONFIGURE_OPTIONS.sub(/--program-suffix.*/, '')} \
       --sysconfdir=#{CREW_PREFIX}/etc \

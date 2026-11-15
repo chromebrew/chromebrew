@@ -3,7 +3,7 @@ require 'package'
 class Core < Package
   description 'Core Chromebrew Packages.'
   homepage 'https://github.com/chromebrew/chromebrew'
-  version '3.17'
+  version '3.18'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -32,6 +32,8 @@ class Core < Package
   depends_on 'gettext'
   depends_on 'git'
   depends_on 'git_mestrelion_tools'
+  # Needed for gitlab rate-limiting fallback.
+  depends_on 'glab'
   # The standalone glibc is installed on newer systems, and on older
   # systems we have glibc_dev and glibc_lib metapackages.
   depends_on 'glibc'

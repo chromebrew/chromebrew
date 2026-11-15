@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Spirv_llvm_translator < CMake
   description 'Tool and a library for bi-directional translation between SPIR-V and LLVM IR'
   homepage 'https://github.com/KhronosGroup/SPIRV-LLVM-Translator'
-  version '22.1.4'
+  version '23.1.3'
   license 'Apache-2.0 WITH LLVM-exception'
   compatibility 'all'
   source_url 'https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git'
@@ -11,10 +11,10 @@ class Spirv_llvm_translator < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd763f1776c122c77ea5d15ad39be744242d1455385aedd2ecc99b9a80e6b0c34',
-     armv7l: 'd763f1776c122c77ea5d15ad39be744242d1455385aedd2ecc99b9a80e6b0c34',
-       i686: 'ef6a09d96b671a6d9261b8e7c9c60f265bd7b1b5a31217134082329d197fb405',
-     x86_64: '821ab4e0c03478c51aef73df5db2f7f690f2c28d9f90639190667ca9f7699cdd'
+    aarch64: 'ad44a13c13a2b7fc95286b5166ac5acba2728b09eed85b72fb8087dec15b4a50',
+     armv7l: 'ad44a13c13a2b7fc95286b5166ac5acba2728b09eed85b72fb8087dec15b4a50',
+       i686: '1da00c2b3925d50204c3377832d099116ccba6ccf62fabee3d1202d49a15ca88',
+     x86_64: 'c9d2e2c5520b722fa0a7846b58f62f7ec4dd48724ff86c8ca5a072f388d466fd'
   })
 
   depends_on 'gcc_lib' => :library

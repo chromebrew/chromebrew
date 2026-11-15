@@ -10,21 +10,22 @@ require 'buildsystems/autotools'
 class Gawk < Autotools
   description 'The gawk utility interprets a special-purpose programming language that makes it possible to handle simple data-reformatting jobs with just a few lines of code.'
   homepage 'https://www.gnu.org/software/gawk/'
-  version '5.4.0'
+  version '5.4.1'
   license 'GPL-2'
   compatibility 'all'
   source_url "https://ftp.gnu.org/gnu/gawk/gawk-#{version}.tar.xz"
-  source_sha256 'ca9c16d3d11d0ff8c69d79dc0b47267e1329a69b39b799895604ed447d3ca90b'
+  source_sha256 '07f6f7342b7febe4313fc2c2542ad93d64fe20ad8717200109f105a826f5fd37'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '39196313d603083858c739cd39eb0ce65f16f08dc9a17aac1d11a29ba570520c',
-     armv7l: '39196313d603083858c739cd39eb0ce65f16f08dc9a17aac1d11a29ba570520c',
-       i686: '505f9fabf169629e8d219039c6493257471e4ecc1da17e7741a5a9699f530b5c',
-     x86_64: 'f792967a6c06e7ea70b1eb05c4fa68fa2ae6d9bc7876552f33a50a25fcb18523'
+    aarch64: 'c30d9e452953d665054097dc95ae8188e9cb55f505204a4bdf342e0345db5900',
+     armv7l: 'c30d9e452953d665054097dc95ae8188e9cb55f505204a4bdf342e0345db5900',
+       i686: '3de4da5662976cc645124368c89c4b8fbcc11de4e5bd468dbcb3f2b2f5d67606',
+     x86_64: '90a700d3615944895f969045683faa375cb99c2f6c3dfb3fd09b54dba1405940'
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gmp' => :library
   depends_on 'libsigsegv' # R
   depends_on 'mpfr' => :library

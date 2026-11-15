@@ -1,0 +1,3 @@
+#!/bin/bash
+weston --help | head
+weston --version

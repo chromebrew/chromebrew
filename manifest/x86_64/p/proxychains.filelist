@@ -1,6 +1,9 @@
-# Total size: 117928
+# Total size: 64091
+/home/chronos/user/.proxychains/proxychains.conf
+/usr/local/bin/proxychains
 /usr/local/bin/proxychains4
 /usr/local/bin/proxyresolv
 /usr/local/etc/proxychains.conf
-/usr/local/home/chronos/user/.proxychains/proxychains.conf
-/usr/local/lib64/libproxychains4.so
+/usr/local/lib64/libproxychains.so
+/usr/local/lib64/libproxychains.so.4
+/usr/local/share/zsh/site-functions/_proxychains4

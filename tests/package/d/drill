@@ -1,0 +1,3 @@
+#!/bin/bash
+drill -h | head
+drill -V

@@ -3,47 +3,37 @@ require 'package'
 class Pycharm < Package
   description 'The Python IDE for Professional Developers'
   homepage 'https://www.jetbrains.com/pycharm/'
-  version '2022.2'
+  version '2025.2.6.1'
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://download.jetbrains.com/python/pycharm-community-2022.2.tar.gz'
-  source_sha256 '07023b299ed317cbcf34ba89f1e9385281ff971e85407c6f8a0d17447ca74fce'
+  min_glibc '2.28'
+  source_url "https://download.jetbrains.com/python/pycharm-community-#{version}.tar.gz"
+  source_sha256 'bb77e06e2153285827a2bf1593ef3a632f92fb7ce577c379c22a8ddb03ddbe2b'
 
-  depends_on 'jdk8'
+  depends_on 'openjdk17'
   depends_on 'xdg_base'
   depends_on 'sommelier' => :logical
 
-  def self.patch
-    # Fix java.io.IOException: Cannot run program "/home/chronos/user/.PyCharmCE2019.3/system/tmp/ij1055598732.tmp": error=13, Permission denied
-    FileUtils.mkdir_p CREW_DEST_HOME.to_s
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/.config/.PyCharmCE2022.2"
-    system "touch #{CREW_DEST_PREFIX}/.config/.PyCharmCE2022.2/test"
-    FileUtils.ln_s "#{CREW_PREFIX}/.config/.PyCharmCE2022.2", "#{CREW_DEST_HOME}/.PyCharmCE2022.2"
+  def self.preflight
+    MiscFunctions.check_free_disk_space(2147483648)
   end
 
   def self.install
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/PyCharm"
     FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/PyCharm"
-    FileUtils.ln_s "#{CREW_PREFIX}/share/PyCharm/bin/pycharm.sh", "#{CREW_DEST_PREFIX}/bin/pycharm"
+    FileUtils.ln_s "#{CREW_PREFIX}/share/PyCharm/bin/pycharm", "#{CREW_DEST_PREFIX}/bin/pycharm"
   end
 
   def self.postinstall
-    puts "\nType 'pycharm' to get started.\n".lightblue
+    ExitMessage.add "\nType 'pycharm' to get started.\n"
   end
 
   def self.postremove
-    config_dir = "#{CREW_PREFIX}/.config/.PyCharmCE2022.2"
+    config_dir = "#{CREW_PREFIX}/.config/JetBrains/PyCharmCE#{version.split('.')[0..1].join('.')}"
     if Dir.exist? config_dir
       puts 'WARNING: This will remove all PyCharm config!'.orange
-      print "Would you like to remove the #{config_dir} directory? [y/N] "
-      case $stdin.gets.chomp.downcase
-      when 'y', 'yes'
-        FileUtils.rm_rf config_dir
-        puts "#{config_dir} removed.".lightred
-      else
-        puts "#{config_dir} saved.".lightgreen
-      end
+      Package.agree_to_remove(config_dir)
     end
   end
 end

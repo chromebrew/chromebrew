@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# build_updated_packages version 5.5 (for Chromebrew)
+# build_updated_packages version 5.8 (for Chromebrew)
 # This updates the versions in python pip packages by calling
 # tools/update_python_pip_packages.rb, checks for updated ruby packages
 # by calling tools/update_ruby_gem_packages.rb, and then checks if any
@@ -177,12 +177,12 @@ def determine_recursive_deps(d_pkg_input, dependency_graphs: {})
   # @gcc_lib_graph.merge(@glibc_graph)
   [d_pkg_input].flatten.each do |d_pkg|
     d_pkg_obj = Package.load_package("packages/#{d_pkg}.rb")
-    d_pkg_deps = d_pkg_obj.dependencies.map { |key, value| key.to_s if value == [[], nil] }.compact.map { |key, _value| key.to_s }.compact.delete_if { it.include?('glibc_') }
+    d_pkg_deps = d_pkg_obj.dependencies.map { |key, value| key.to_s unless %w[build executable logical].include?(value.compact.flatten.first.to_s) }.compact.map { |key, _value| key.to_s }.delete_if { it.include?('glibc_') }.delete_if { it.include?(d_pkg) }
     # Pull in build dependencies if necessary.
-    if (d_pkg.include?('_lib') || d_pkg.include?('_dev')) && !d_pkg.include?('gcc_lib')
-      puts "#{"#{__LINE__}: " if CREW_VERBOSE}#{d_pkg} includes _dev || _lib, pulling build deps.".orange
+    if d_pkg.include?('_lib') || d_pkg.include?('_dev')
+      puts "#{"#{__LINE__}: " if CREW_VERBOSE}#{d_pkg} includes _dev || _lib, pulling build deps.".orange unless %W[#{CREW_GCC_VER}_lib gcc_lib].include?(d_pkg)
       # d_pkg_deps = d_pkg_obj.get_deps_list(exclude_buildessential: false).delete_if { |d| ( d == 'glibc' || d == 'gcc_lib' ) }
-      d_pkg_deps = d_pkg_obj.dependencies.map { |key, _value| key.to_s }.compact.delete_if { %w[glibc gcc_lib].include?(it) }
+      d_pkg_deps = d_pkg_obj.dependencies.map { |key, _value| key.to_s }.compact.delete_if { %W[glibc gcc_lib #{CREW_GCC_VER}_lib].include?(it) }
     end
     dependency_graphs[d_pkg] = Dagwood::DependencyGraph.new({ d_pkg.to_sym => (d_pkg_deps.map &:to_sym) }) if dependency_graphs[d_pkg].nil?
 
@@ -209,7 +209,8 @@ def determine_recursive_deps(d_pkg_input, dependency_graphs: {})
   return dependency_graphs
 end
 
-def print_recursive_deps(d_pkg_input, dependency_graphs)
+def print_recursive_deps(d_pkg_input, dependency_graphs = nil)
+  dependency_graphs = determine_recursive_deps(d_pkg_input) if dependency_graphs.nil?
   [d_pkg_input].flatten.each do |p|
     abort "@#{p}_graph does not exist!".lightred unless !dependency_graphs[p].nil? && !dependency_graphs[p].dependencies.nil?
     deps = dependency_graphs[p].dependencies
@@ -272,6 +273,17 @@ else
   changed_files_previous_commit = `git diff-tree --no-commit-id --name-only -r $(git rev-parse origin/master)..$(git rev-parse --verify HEAD)`.chomp.split
   updated_packages.push(*changed_files.grep(%r{(packages/).*.*(\.rb$)}))
   updated_packages.push(*changed_files_previous_commit.grep(%r{(packages/).*.*(\.rb$)}))
+
+  # If we are in one of the automated updater branches, then the branch name will also gice us a package to check.
+  current_branch = `git rev-parse --abbrev-ref HEAD`.chomp
+  if current_branch.include?('updater-')
+    current_branch_package = current_branch.gsub('updater-', '').split('-').first
+    git_branch_pkg_string = "packages/#{current_branch_package}.rb"
+    if File.exist?(File.join(crew_local_repo_root, git_branch_pkg_string)) && !updated_packages.grep(/#{Regexp.quote(git_branch_pkg_string)}/)
+      puts "Current git branch package is #{current_branch_package}.".orange if VERY_VERBOSE
+      updated_packages.push(git_branch_pkg_string)
+    end
+  end
 end
 
 unless ONLY_SPECIFIED_PACKAGES
@@ -305,6 +317,19 @@ updated_packages.each do |p|
     end
   end
 end
+
+# Final cleanup of packages list.
+updated_packages.uniq! unless updated_packages.empty?
+updated_packages.delete_if { !File.file?(File.join(crew_local_repo_root, it.downcase)) } unless updated_packages.empty?
+unless updated_packages.empty?
+  updated_packages.delete_if do |check_pkg|
+    p = Package.load_package(File.join(crew_local_repo_root, check_pkg.downcase))
+    !PackageUtils.compatible?(p) || p.ignore_updater?
+  end
+end
+
+puts 'updated packages to check:'.lightblue
+puts updated_packages
 
 if updated_packages.empty?
   puts 'No packages need to be updated.'.orange

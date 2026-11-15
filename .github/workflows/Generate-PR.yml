@@ -1,5 +1,5 @@
 ---
-# Version 2.8
+# Version 3.2
 name: Generate PR
 run-name: Generate PR for ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} by @${{ github.actor }}
 on:
@@ -44,7 +44,7 @@ permissions:
   repository-projects: read
 jobs:
   debug:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     steps:
       - name: Dump GitHub context
         env:
@@ -60,7 +60,7 @@ jobs:
         run: echo "$STEPS_CONTEXT"
   setup:
     if: ${{ ( github.repository_owner == 'chromebrew' ) && ( inputs.branch != 'master' ) && ( ( github.event.action  == 'labeled' && github.event.label.name == 'regenerate_pr' ) || ( github.repository_owner == 'chromebrew' && github.event.action  == 'labeled' && github.event.label.name == 'update-package-files' ) || ( github.repository_owner == 'chromebrew' && github.event.action  == 'labeled' && github.event.label.name == 'updater' ) || github.event_name  == 'workflow_dispatch' ) }}
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     outputs:
       changed_packages: ${{ steps.changed-packages.outputs.CHANGED_PACKAGES }}
     steps:
@@ -135,7 +135,7 @@ jobs:
 
   gen-matrix:
     needs: get-compatibility
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     outputs:
       matrix: ${{ steps.set-generate-matrix.outputs.matrix }}
     steps:
@@ -175,15 +175,15 @@ jobs:
       matrix:
         arch: ${{ fromJSON(needs.gen-matrix.outputs.matrix) }}
         runner:
-          - ubuntu-24.04
-          - ubuntu-24.04-arm
+          - ubuntu-26.04
+          - ubuntu-26.04-arm
         exclude:
           - arch: x86_64
-            runner: ubuntu-24.04-arm
+            runner: ubuntu-26.04-arm
           - arch: i686
-            runner: ubuntu-24.04-arm
+            runner: ubuntu-26.04-arm
           - arch: armv7l
-            runner: ubuntu-24.04
+            runner: ubuntu-26.04
     runs-on: ${{ matrix.runner }}
     outputs:
       runner_glibc: ${{ steps.set-container-by-glibc.outputs.runner_glibc }}
@@ -193,6 +193,7 @@ jobs:
       TARGET_ARCH: ${{ matrix.arch }}
       GLIBC_232_COMPATIBLE_PACKAGES: ${{ needs.get-compatibility.outputs.GLIBC_232_COMPATIBLE_PACKAGES }}
       GLIBC_237_COMPATIBLE_PACKAGES: ${{ needs.get-compatibility.outputs.GLIBC_237_COMPATIBLE_PACKAGES }}
+      GLIBC_241_COMPATIBLE_PACKAGES: ${{ needs.get-compatibility.outputs.GLIBC_241_COMPATIBLE_PACKAGES }}
       i686_MIN_GLIBC: ${{ needs.get-compatibility.outputs.i686_min_glibc }}
       i686_PACKAGES: ${{ needs.get-compatibility.outputs.i686_PACKAGES }}
       x86_64_MIN_GLIBC: ${{ needs.get-compatibility.outputs.x86_64_min_glibc }}
@@ -245,7 +246,10 @@ jobs:
                   echo "CONTAINER=satmandu/crewbuild:nocturne-x86_64.m97" >> "$GITHUB_ENV"
                   ;;
                 2.37)
-                  echo "CONTAINER=satmandu/crewbuild:nocturne-x86_64.m97" >> "$GITHUB_ENV"
+                  echo "CONTAINER=satmandu/crewbuild:hatch-x86_64.m156" >> "$GITHUB_ENV"
+                  ;;
+                2.41)
+                  echo "CONTAINER=satmandu/crewbuild:hatch-x86_64.m156" >> "$GITHUB_ENV"
                   ;;
                 *)
                   # Fallback/default is the M90 Glibc 2.27 container.
@@ -261,7 +265,10 @@ jobs:
                   echo "CONTAINER=satmandu/crewbuild:fievel-armv7l.m97" >> "$GITHUB_ENV"
                   ;;
                 2.37)
-                  echo "CONTAINER=satmandu/crewbuild:strongbad-armv7l.m149" >> "$GITHUB_ENV"
+                  echo "CONTAINER=satmandu/crewbuild:strongbad-armv7l.m156" >> "$GITHUB_ENV"
+                  ;;
+                2.41)
+                  echo "CONTAINER=satmandu/crewbuild:strongbad-armv7l.m156" >> "$GITHUB_ENV"
                   ;;
                 *)
                   # Fallback/default is the M91 Glibc 2.27 container.
@@ -362,6 +369,7 @@ jobs:
               -e CREW_REPO="${CREW_REPO}" \
               -e CREW_BRANCH="${BRANCH}" \
               -e GITLAB_TOKEN="${{ secrets.GITLAB_TOKEN }}" \
+              -e GITLAB_GLAB_TOKEN="${{ secrets.GITLAB_GLAB_TOKEN }}" \
               -e GITLAB_TOKEN_USERNAME="${{ secrets.GITLAB_TOKEN_USERNAME }}" \
               ${CI_PASSTHROUGH} \
               ${ARCH_PACKAGES_PASSTHROUGH} \
@@ -389,7 +397,7 @@ jobs:
             git log --oneline -10
           fi
   build-check:
-    runs-on: ubuntu-24.04-arm
+    runs-on: ubuntu-26.04-arm
     needs:
       - setup
       - get-compatibility
@@ -478,7 +486,7 @@ jobs:
             fi
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '4.0.5'
+          ruby-version: '4.0.6'
       - name: Create Pull Request
         env:
           CHANGED_GITHUB_CONFIG_FILES: ${{ steps.changed-files.outputs.github_all_changed_files }}
@@ -494,6 +502,7 @@ jobs:
           x86_64_PACKAGES: ${{ needs.get-compatibility.outputs.x86_64_PACKAGES }}
           armv7l_PACKAGES: ${{ needs.get-compatibility.outputs.armv7l_PACKAGES }}
         run: |
+          set -x
           # Make untouched clone of repo so we can get the existing versions of packages.
           (cd /tmp ; git clone --depth=1 https://github.com/${{ github.repository }}.git chromebrew_main )
           gem install -N json --conservative
@@ -527,9 +536,9 @@ jobs:
             for file in ${CHANGED_PACKAGES}
               do
               # Get version before PR, but do not let a broken version stop us.
-              main_version_string="$(cd /tmp/chromebrew_main ; LD_LIBRARY_PATH=/usr/local/lib ruby bin/crew version ${file} || true)"
+              main_version_string="$(cd /tmp/chromebrew_main ; LD_LIBRARY_PATH=/usr/local/lib ruby bin/crew version ${file} -j | jq -r '.[]|.version' || true)"
               [[ -n "$main_version_string" ]] && main_version_string=": $main_version_string"
-              pkg_version="$(LD_LIBRARY_PATH=/usr/local/lib ruby bin/crew version ${file})"
+              pkg_version="$(LD_LIBRARY_PATH=/usr/local/lib ruby bin/crew version ${file} -j | jq -r '.[]|.version')"
               upstream_version="$(LD_LIBRARY_PATH=/usr/local/lib ruby tools/version.rb -j "${file}" | jq -r '.[]|.upstream_version' || true)"
               if [[ -z "$pkg_version" ]]; then
                 echo "- \`${file}\`${main_version_string}" >> /tmp/pr.txt

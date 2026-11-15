@@ -1,4 +1,4 @@
-# Total size: 5382736
+# Total size: 5551652
 /usr/local/bin/bacula
 /usr/local/bin/bacula-dir
 /usr/local/bin/bacula-fd
@@ -18,6 +18,7 @@
 /usr/local/bin/btraceback
 /usr/local/bin/bwild
 /usr/local/bin/dbcheck
+/usr/local/bin/get-os
 /usr/local/bin/get_malware_abuse.ch
 /usr/local/bin/md5tobase64.py
 /usr/local/etc/bacula
@@ -26,6 +27,7 @@
 /usr/local/etc/bacula-ctl-sd
 /usr/local/etc/bacula-dir.conf
 /usr/local/etc/bacula-fd.conf
+/usr/local/etc/bacula-resource-auto-creator.py
 /usr/local/etc/bacula-sd.conf
 /usr/local/etc/bacula-tray-monitor.desktop
 /usr/local/etc/bacula_config
@@ -36,6 +38,7 @@
 /usr/local/etc/btraceback.gdb
 /usr/local/etc/btraceback.mdb
 /usr/local/etc/create_bacula_database
+/usr/local/etc/create_config
 /usr/local/etc/create_mysql_database
 /usr/local/etc/delete_catalog_backup
 /usr/local/etc/disk-changer
@@ -53,31 +56,33 @@
 /usr/local/etc/make_catalog_backup.pl
 /usr/local/etc/make_mysql_tables
 /usr/local/etc/mtx-changer
+/usr/local/etc/mtx-changer-python.conf
+/usr/local/etc/mtx-changer-python.py
 /usr/local/etc/mtx-changer.conf
 /usr/local/etc/query.sql
 /usr/local/etc/tapealert
 /usr/local/etc/update_bacula_tables
 /usr/local/etc/update_mysql_tables
 /usr/local/lib64/bpipe-fd.so
-/usr/local/lib64/libbac-15.0.3.so
+/usr/local/lib64/libbac-17.0.0.so
 /usr/local/lib64/libbac.la
 /usr/local/lib64/libbac.so
-/usr/local/lib64/libbaccats-15.0.3.so
-/usr/local/lib64/libbaccats-mysql-15.0.3.so
+/usr/local/lib64/libbaccats-17.0.0.so
+/usr/local/lib64/libbaccats-mysql-17.0.0.so
 /usr/local/lib64/libbaccats-mysql.la
 /usr/local/lib64/libbaccats-mysql.so
 /usr/local/lib64/libbaccats.la
 /usr/local/lib64/libbaccats.so
-/usr/local/lib64/libbaccfg-15.0.3.so
+/usr/local/lib64/libbaccfg-17.0.0.so
 /usr/local/lib64/libbaccfg.la
 /usr/local/lib64/libbaccfg.so
-/usr/local/lib64/libbacfind-15.0.3.so
+/usr/local/lib64/libbacfind-17.0.0.so
 /usr/local/lib64/libbacfind.la
 /usr/local/lib64/libbacfind.so
-/usr/local/lib64/libbacsd-15.0.3.so
+/usr/local/lib64/libbacsd-17.0.0.so
 /usr/local/lib64/libbacsd.la
 /usr/local/lib64/libbacsd.so
-/usr/local/lib64/libbacsql-15.0.3.so
+/usr/local/lib64/libbacsql-17.0.0.so
 /usr/local/lib64/libbacsql.la
 /usr/local/lib64/libbacsql.so
 /usr/local/share/doc/bacula/ChangeLog

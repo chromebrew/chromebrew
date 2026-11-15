@@ -189,7 +189,7 @@ def search(pkg_name, pkg_path: File.join(CREW_PACKAGES_PATH, "#{pkg_name}.rb"), 
     return check_load_package(pkg_path)
   else
     @pkg = nil
-    abort "Package #{pkg_name} not found. 😞".lightred unless silent
+    abort "Package #{pkg_name} not found. 😞".lightred unless silent || CREW_OUTPUT_JSON
   end
 rescue StandardError => e
   abort "Error with #{pkg_name}.rb: #{e}".lightred unless silent
@@ -327,16 +327,19 @@ def upgrade(*pkgs, build_from_source: false)
     rerun_upgrade = true
   end
 
+  to_be_upgraded.uniq! if to_be_upgraded.any?
+  extra_deps.uniq! if extra_deps.any?
+
   puts <<~EOT
 
-    The following package(s) will be upgraded:
+    The following package#{'s' if to_be_upgraded.size > 1} will be upgraded:
 
     #{to_be_upgraded.join(' ')}
 
   EOT
 
   puts <<~EOT if extra_deps.any?
-    The following package(s) also need to be installed:
+    The following package#{'s' if extra_deps.size > 1} also need#{'s' if extra_deps.size == 1} to be installed:
 
     #{extra_deps.join(' ')}
 
@@ -398,7 +401,10 @@ def unpack(meta)
 
     build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
     if !@pkg.built && (@pkg.cache_build? || CREW_CACHE_BUILD) && File.file?(build_cachefile) && File.file?("#{build_cachefile}.sha256") && (system "sha256sum -c #{build_cachefile}.sha256", chdir: CREW_CACHE_DIR)
-      @pkg.cached_build = true
+      # Sanity check for an empty build_cachefile.
+      @pkg.cached_build = `tar -Izstd -tf #{build_cachefile} 2>/dev/null`.chomp.empty?
+    end
+    if @pkg_cached_build
       puts "Extracting cached build directory from #{build_cachefile}".lightgreen
       system "tar -Izstd -x#{@verbose}f #{build_cachefile} -C #{CREW_BREW_DIR}", exception: true
       # Need to reset meta[:extract_dir] to the extracted cached build
@@ -596,6 +602,8 @@ def prepare_package(destdir)
       FileUtils.rm Dir["#{CREW_DEST_DIR}/**/{.packlist,perllocal.pod}"]
     end
 
+    # Remove files inside the pip cache from pip packages.
+    FileUtils.rm_rf Dir["#{CREW_DEST_PREFIX}/.cache/pip"] if @pkg.superclass.to_s == 'Pip'
     # Compress manual files, and move errant files to the correct
     # locations.
     if File.exist?("#{CREW_DEST_PREFIX}/man")
@@ -653,7 +661,7 @@ def prepare_package(destdir)
       # Whitelist crew-preload on multiarch ARM systems.
       next if %w[lib64/crew-preload.so].include?(filename) && %w[aarch64 armv7l].include?(ARCH)
       unless fhs_compliant_prefix.include?(filename)
-        if CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY || @pkg.no_fhs?
+        if CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY || @pkg.no_fhs? || @pkg.superclass.to_s == 'Pip'
           puts "Warning: #{CREW_PREFIX}/#{filename} in #{@pkg.name} is not FHS3 compliant.".orange
         else
           puts "Error: #{CREW_PREFIX}/#{filename} in #{@pkg.name} is not FHS3 compliant.".lightred
@@ -1082,7 +1090,7 @@ def install(skip_postinstall: false)
     # use CREW_DEST_DIR
     dest_dir = CREW_DEST_DIR
   elsif @pkg.superclass.to_s == 'RUBY'
-    meta = Command.download(@pkg, verbose: CREW_VERBOSE, opt_source: @opt_source)
+    meta = Command.download(@pkg, verbose: CREW_VERBOSE, opt_source: @opt_source || @opt_recursive || CREW_BUILD_FROM_SOURCE)
     target_dir = unpack meta
     ruby_gem_name, ruby_gem_version, _upstream_version, _gem_installed_version, _gem_latest_version_installed, _gem_deps = PackageUtils.get_gem_vars(@pkg.name, @pkg.version, @pkg.upstream_name)
     gem_file = "#{ruby_gem_name}-#{ruby_gem_version}-#{GEM_ARCH}.gem"
@@ -1093,7 +1101,7 @@ def install(skip_postinstall: false)
     end
     dest_dir = CREW_DEST_DIR
   else
-    meta = Command.download(@pkg, verbose: CREW_VERBOSE, opt_source: @opt_source)
+    meta = Command.download(@pkg, verbose: CREW_VERBOSE, opt_source: @opt_source || @opt_recursive || CREW_BUILD_FROM_SOURCE)
     target_dir = unpack meta
     if meta[:source]
       # build from source and place binaries at CREW_DEST_DIR
@@ -1239,7 +1247,7 @@ end
 
 def build_package(crew_archive_dest)
   # Download source code and unpack it.
-  meta = Command.download(@pkg, verbose: CREW_VERBOSE, opt_source: @opt_source)
+  meta = Command.download(@pkg, verbose: CREW_VERBOSE, opt_source: true)
   target_dir = unpack meta
 
   # Build from source and place binaries in CREW_DEST_DIR.
@@ -1332,7 +1340,8 @@ def update_package_file(package = nil, pkg_version = nil, binary_compression = n
     binary_sha256_hash[arch.to_sym] = @pkg.binary_sha256[arch.to_sym] if @pkg.binary_sha256&.key?(arch.to_sym)
     starting_binary_sha256_hash[arch.to_sym] = @pkg.binary_sha256[arch.to_sym] if @pkg.binary_sha256&.key?(arch.to_sym)
     remote_binary_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{package}/#{pkg_version}_#{arch}/#{package}-#{pkg_version}-chromeos-#{arch}.#{binary_compression}"
-    remote_binary = `curl -fsI #{remote_binary_url}`.lines.first.split[1] == '200'
+    @curl_header = GITLAB_TOKEN.nil? ? '' : "--header '#{CREW_GITLAB_TOKEN_LABEL}: #{GITLAB_TOKEN}'"
+    remote_binary = `curl #{@curl_header} -fsI #{remote_binary_url}`.lines.first.split[1] == '200'
     next unless remote_binary
     puts "\e[1A\e[KRemote #{package} package binary exists for #{arch}.\r".green
     binary_sha256_hash[arch.to_sym] = PackageUtils.get_gitlab_pkginfo(package, pkg_version, arch, false, true)[:pkg_sha256]
@@ -1513,7 +1522,8 @@ def upload(pkg_name = nil, pkg_version = nil, binary_compression = nil)
 
       # 3c. Check to see if an existing upload exists.
       puts "\e[1A\e[KChecking for existing upload ...\r".orange
-      remote_binary = `curl -fsI #{new_url}`.lines.first.split[1] == '200'
+      @curl_header = GITLAB_TOKEN.nil? ? '' : "--header '#{CREW_GITLAB_TOKEN_LABEL}: #{GITLAB_TOKEN}'"
+      remote_binary = `curl #{@curl_header} -fsI #{new_url}`.lines.first.split[1] == '200'
       gitlab_remote_binary_sha256 = PackageUtils.get_gitlab_pkginfo(package, new_version, arch, false, true)[:pkg_sha256] if remote_binary
 
       # 3d. Check for local binary.
@@ -1526,7 +1536,8 @@ def upload(pkg_name = nil, pkg_version = nil, binary_compression = nil)
         #     download it.
         puts "Downloading remote binary for #{new_version}_#{arch}"
         FileUtils.mkdir_p release_dir
-        system "curl -Ls #{new_url} > #{local_tarfile}"
+        @curl_header = GITLAB_TOKEN.nil? ? '' : "--header '#{CREW_GITLAB_TOKEN_LABEL}: #{GITLAB_TOKEN}'"
+        system "curl #{@curl_header} -Ls #{new_url} > #{local_tarfile}"
       else
         local_binary = true
         puts "\e[1A\e[KLocal package binary exists.\n".green
@@ -1706,36 +1717,8 @@ def download_command(args)
   args['<name>'].each do |name|
     @pkg_name = name
     search @pkg_name
-    @pkg.build_from_source = true if @opt_source
     print_current_package extra: CREW_VERBOSE
-    meta = {}
-    # rubocop:disable Style/ArrayIntersectWithSingleElement
-    if ARGV.intersect?(%w[download]) && @pkg.is_fake?
-      # rubocop:enable Style/ArrayIntersectWithSingleElement
-      fake_pkg_deplist = @pkg.get_deps_list(return_attr: true).flat_map(&:keys).uniq
-      until fake_pkg_deplist.blank?
-        puts "Will download the following packages: #{fake_pkg_deplist.join(' ')}".orange
-        fake_pkg_deplist.each_with_index do |fake_pkg_dep, index|
-          @pkg_name = fake_pkg_dep
-          search @pkg_name
-          @pkg.build_from_source = true if @opt_source
-          if @pkg.is_fake?
-            puts "Expanding #{fake_pkg_dep}...".lightpurple
-            expanded_pkg_list = @pkg.get_deps_list(return_attr: true).flat_map(&:keys).uniq
-            fake_pkg_deplist.push(*expanded_pkg_list)
-            fake_pkg_deplist.delete(@pkg_name)
-            next fake_pkg_dep
-          end
-          total_files_to_check = fake_pkg_deplist.length
-          numlength = total_files_to_check.to_s.length
-          puts "[#{(index + 1).to_s.rjust(numlength)}/#{total_files_to_check}] Downloading #{fake_pkg_dep}...".blue
-          meta = Command.download(@pkg, verbose: CREW_VERBOSE, opt_source: @opt_source)
-          fake_pkg_deplist.delete(@pkg_name)
-        end
-      end
-    else
-      meta = Command.download(@pkg, verbose: CREW_VERBOSE, opt_source: @opt_source)
-    end
+    meta = Command.download(@pkg, verbose: CREW_VERBOSE, opt_source: @opt_source)
     # Clean up remnant meta[:extract_dir] folders.
     FileUtils.rm_rf File.join(CREW_BREW_DIR, meta[:extract_dir]) unless meta[:extract_dir].nil?
   end
@@ -1877,11 +1860,12 @@ end
 def version_command(args)
   args = { '<name>' => args.split } if args.is_a? String
   if args['<name>'].empty?
-    puts CREW_VERSION
+    puts CREW_OUTPUT_JSON ? [{ package: 'Chromebrew', version: CREW_VERSION }].to_json : CREW_VERSION
   else
     args['<name>'].each do |name|
       search name
-      puts @pkg.version
+      version_array = @pkg.nil? ? [{ package: name, version: '-1' }] : [{ package: name, version: @pkg.version }]
+      puts CREW_OUTPUT_JSON ? version_array.to_json : @pkg.version
     end
   end
 end

@@ -3,21 +3,22 @@ require 'buildsystems/autotools'
 class Jemalloc < Autotools
   description 'jemalloc is a general purpose malloc(3) implementation that emphasizes fragmentation avoidance and scalable concurrency support.'
   homepage 'http://jemalloc.net/'
-  version '5.3.1'
+  version '5.4.0'
   license 'BSD'
   compatibility 'all'
   source_url "https://github.com/jemalloc/jemalloc/releases/download/#{version}/jemalloc-#{version}.tar.bz2"
-  source_sha256 '3826bc80232f22ed5c4662f3034f799ca316e819103bdc7bb99018a421706f92'
+  source_sha256 '200776fac271093e7c2f21edd6d62657ecd2be578d9328633f2a86bfa6ef4f1d'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '92dbc8c2871919aa16f7baba2c39417e9424e7ec4e83487e80ead28626feda5d',
-     armv7l: '92dbc8c2871919aa16f7baba2c39417e9424e7ec4e83487e80ead28626feda5d',
-       i686: '2b9c95d8873fe5e1861af5da1ac12f34a669b4ae298021fc429cfd42a13c6908',
-     x86_64: '04071152be5af61c3688f0df4f5662b4c3f37a2d02ca18ef0142a2579296f05f'
+    aarch64: '8a965cca0115535fa9b1e48a4130fc3e60fef90aee9b626d636dee776c0a063b',
+     armv7l: '8a965cca0115535fa9b1e48a4130fc3e60fef90aee9b626d636dee776c0a063b',
+       i686: '4879d9e2f4a23811d125b24ec59f969ef31d4f553b463ec3d348c43096db232a',
+     x86_64: '69b955e164e2a9e642f0381ea0cd422c62560c79007bfcbce9b8972bd2274970'
   })
 
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'libxslt' => :build
 end

@@ -1,0 +1,3 @@
+#!/bin/bash
+ffmpeg -h | head
+ffmpeg -version

@@ -1,0 +1,13 @@
+#!/bin/bash
+mkntfs -h | head
+mkntfs -V
+ntfsclone -h | head
+ntfsclone -V
+ntfscp -h | head
+ntfscp -V
+ntfslabel -h | head
+ntfslabel -V
+ntfsresize -h | head
+ntfsresize -V
+ntfsundelete -h | head
+ntfsundelete -V

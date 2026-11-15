@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Yelp < Meson
   description 'Get help with GNOME'
   homepage 'https://wiki.gnome.org/Apps/Yelp'
-  version "49.1-#{CREW_ICU_VER}"
+  version "49.2-#{CREW_ICU_VER}"
   license 'GPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/yelp.git'
@@ -11,9 +11,9 @@ class Yelp < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e4a41cfb78cc09aed07c5533d9c0160e43bf32234a4ee738e3512ef4d722a389',
-     armv7l: 'e4a41cfb78cc09aed07c5533d9c0160e43bf32234a4ee738e3512ef4d722a389',
-     x86_64: '083fee3091ab52e0a5884c3c94c58404389d13eb37ffa1f343263de8204c22a2'
+    aarch64: 'bf9467d0a8819c149dc100dfab7ff3e3c1a2fad2b8392a24c89d0d8b7aa44b4f',
+     armv7l: 'bf9467d0a8819c149dc100dfab7ff3e3c1a2fad2b8392a24c89d0d8b7aa44b4f',
+     x86_64: '84cce26548c78ac9d08e4fe3df032e8a7a0b67277ca5b7576d1169e15b26774e'
   })
 
   depends_on 'appstream_glib' => :build
@@ -24,6 +24,7 @@ class Yelp < Meson
   depends_on 'gdk_pixbuf' # R
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gtk4' => :library
   depends_on 'gtk_doc' => :build
   depends_on 'harfbuzz' # R

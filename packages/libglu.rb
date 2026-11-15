@@ -5,7 +5,7 @@ class Libglu < Package
   homepage 'https://www.mesa3d.org/'
   version '9.0.3'
   license 'SGI-B-2.0'
-  compatibility 'aarch64 armv7l x86_64'
+  compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/mesa/glu.git'
   git_hashtag "glu-#{version}"
   binary_compression 'tar.zst'
@@ -13,12 +13,14 @@ class Libglu < Package
   binary_sha256({
     aarch64: 'f4610c827c80fe817f0f91eaf52a0bc820d1051747af117a849ed6749dea2e3f',
      armv7l: 'f4610c827c80fe817f0f91eaf52a0bc820d1051747af117a849ed6749dea2e3f',
+       i686: 'c96fdcd776b3686caca43aaf17506b33269043666b1c21b00036b425d41486a2',
      x86_64: '878ab6a7129c6fcfaa576343ee2c00eeb68daed891a9ae9dcc4a961a084c825f'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'libglvnd' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'libglvnd' => :library
 
   def self.build
     system 'meson setup build'

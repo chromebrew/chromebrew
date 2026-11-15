@@ -1,56 +1,69 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Darktable < Package
+class Darktable < CMake
   description 'darktable is an open source photography workflow application and raw developer.'
   homepage 'https://www.darktable.org/'
-  version '3.4.1.1'
+  version '5.6.1'
   license 'GPL-3'
   compatibility 'x86_64'
-  source_url 'https://github.com/darktable-org/darktable/releases/download/release-3.4.1/darktable-3.4.1.1.tar.xz'
-  source_sha256 '00d57a6c3b86f4eb1791128b612e762f69df4be2c110965afac1fdcca5678143'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/darktable-org/darktable.git'
+  git_hashtag "release-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '793e78e4d9859fdbc72e7490b8a5395409dd5d941dcbfafefdd0a5317cb4b832'
+    x86_64: '5f1993b2c86aa8e2abf27be832411e123749dd4d48249b63c2951c4703b15cf9'
   })
 
-  depends_on 'cairo'
-  depends_on 'colord'
-  depends_on 'curl'
-  depends_on 'dbus_glib'
-  depends_on 'fop'
-  depends_on 'gexiv2'
-  depends_on 'gphoto'
-  depends_on 'graphicsmagick'
-  depends_on 'gtk3'
-  depends_on 'imagemagick7'
-  depends_on 'lcms'
-  depends_on 'libjpeg_turbo'
-  depends_on 'libpng'
-  depends_on 'librsvg'
-  depends_on 'libsecret'
-  depends_on 'libsoup'
-  depends_on 'libtiff'
-  depends_on 'lua'
-  depends_on 'openexr'
-  depends_on 'pugixml'
-  depends_on 'sqlite'
+  depends_on 'at_spi2_core' => :library
+  depends_on 'cairo' => :library
+  depends_on 'colord' => :executable
+  depends_on 'cups' => :library
+  depends_on 'curl' => :library
+  depends_on 'dbus_glib' => :library
+  depends_on 'fop' => :executable
+  depends_on 'gcc_lib' => :library
+  depends_on 'gdk_pixbuf' => :library
+  depends_on 'gexiv2' => :library
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'gmic' => :library
+  depends_on 'gphoto' => :library
+  depends_on 'graphicsmagick' => :library
+  depends_on 'gtk3' => :library
+  depends_on 'harfbuzz' => :library
+  depends_on 'icu4c' => :library
+  depends_on 'json_glib' => :library
+  depends_on 'lcms' => :library
+  depends_on 'lensfun' => :library
+  depends_on 'libexiv2' => :library
+  depends_on 'libgphoto' => :library
+  depends_on 'libheif' => :library
+  depends_on 'libice' => :executable
+  depends_on 'libjpeg_turbo' => :library
+  depends_on 'libjxl' => :library
+  depends_on 'libpng' => :library
+  depends_on 'librsvg' => :library
+  depends_on 'libsecret' => :library
+  depends_on 'libsm' => :executable
+  depends_on 'libsoup' => :library
+  depends_on 'libtiff' => :library
+  depends_on 'libwebp' => :library
+  depends_on 'libx11' => :executable
+  depends_on 'libxext' => :executable
+  depends_on 'libxml2' => :library
+  depends_on 'libxrandr' => :executable
+  depends_on 'libxslt' => :library
+  depends_on 'openexr' => :library
+  depends_on 'openjpeg' => :library
+  depends_on 'pango' => :library
+  depends_on 'potrace' => :library
+  depends_on 'pugixml' => :library
+  depends_on 'sdl2' => :library
+  depends_on 'sdl2_compat' => :library
   depends_on 'sommelier' => :logical
+  depends_on 'sqlite' => :library
+  depends_on 'zlib' => :library
 
-  def self.build
-    Dir.mkdir 'build'
-    Dir.chdir 'build' do
-      system 'cmake',
-             "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}",
-             '-DCMAKE_BUILD_TYPE=Release',
-             '..'
-      system 'make'
-    end
-  end
-
-  def self.install
-    Dir.chdir 'build' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    end
-  end
+  cmake_options '-DDONT_USE_INTERNAL_LUA=Off'
 end

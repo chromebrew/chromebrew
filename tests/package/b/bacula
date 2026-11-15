@@ -1,0 +1,14 @@
+#!/bin/bash
+bacula-dir -? 2>&1 | head -3
+bacula-fd -? 2>&1 | head -3
+bacula-sd -? 2>&1 | head -3
+bbconsjson -? 2>&1 | head -3
+bconsole -? 2>&1 | head -3
+bcopy -? 2>&1 | head -3
+bdirjson -? 2>&1 | head -3
+bextract -? 2>&1 | head -3
+bfdjson -? 2>&1 | head -3
+bls -? 2>&1 | head -3
+bscan -? 2>&1 | head -3
+bsdjson -? 2>&1 | head -3
+dbcheck -? 2>&1 | head -3

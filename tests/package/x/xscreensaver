@@ -1,0 +1,3 @@
+#!/bin/bash
+xscreensaver --help 2>&1
+xscreensaver --version 2>&1

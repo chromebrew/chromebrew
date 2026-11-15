@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Vulkan_tools < CMake
   description 'Vulkan Utilities and Tools'
   homepage 'https://github.com/KhronosGroup/Vulkan-Tools'
-  version '1.4.356'
+  version '1.4.368'
   license 'custom'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/KhronosGroup/Vulkan-Tools.git'
@@ -14,28 +14,23 @@ class Vulkan_tools < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '38b285bb4cf9887eeae5ede20519405f970f815982014a0da68fa1ea74c66990',
-     armv7l: '38b285bb4cf9887eeae5ede20519405f970f815982014a0da68fa1ea74c66990',
-     x86_64: 'cfaee26ae29eef41ce6a52b78d0e5cf8bf36efdd5498b2962a3c1aaf1b6cdace'
+    aarch64: '5c030daf710b743fd64498f7428fff97a50a26cb055832a032adb951bad0ea20',
+     armv7l: '5c030daf710b743fd64498f7428fff97a50a26cb055832a032adb951bad0ea20',
+     x86_64: 'a45d71439e0c086c807cc5b2f1f29e6a73d6622cc672b342e40326928346bf71'
   })
 
   depends_on 'gcc_dev' => :build
   depends_on 'gcc_lib' => :executable
-  depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :executable
-  depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :executable
   depends_on 'glslang' => :build
   depends_on 'libx11' => :executable
-  depends_on 'libx11' => :library
   depends_on 'libxcb' => :executable
-  depends_on 'libxcb' => :library
   depends_on 'libxrandr' => :build
   depends_on 'python3' => :build
   depends_on 'spirv_tools' => :build
   depends_on 'vulkan_headers' => :build
   depends_on 'wayland' => :executable
-  depends_on 'wayland' => :library
   depends_on 'wayland_protocols' => :build
 
   def self.build

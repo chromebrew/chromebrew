@@ -6,7 +6,7 @@ require 'buildsystems/autotools'
 class Unibilium < Autotools
   description 'A terminfo parsing library'
   homepage 'https://github.com/neovim/unibilium'
-  version '2.1.2'
+  version '2.1.4'
   license 'LGPL3'
   compatibility 'all'
   source_url 'https://github.com/neovim/unibilium.git'
@@ -14,10 +14,10 @@ class Unibilium < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'dafb10dbb938f0d425223012e18e6915777e3499728bda0709f6175035748976',
-     armv7l: 'dafb10dbb938f0d425223012e18e6915777e3499728bda0709f6175035748976',
-       i686: '9d1d5e1c6da59cfcdf90779719fd4f89ef9b72b5dacb1154556cd7c95d24e595',
-     x86_64: 'cdeb18bbebae3899dc49df4b84bef4de8e52b78be1eb2b6a1023a3052baea2fb'
+    aarch64: '449612c91e99431b1982ab8139da5fe1ceab918243b69201f4fb159e1586ddeb',
+     armv7l: '449612c91e99431b1982ab8139da5fe1ceab918243b69201f4fb159e1586ddeb',
+       i686: '74ededa129f12dfd56a063607dd25b8e60cb773498af334818ea8a1853edc6a4',
+     x86_64: 'f40d6c2cd7e59bec236d7cd82507b140303841c19792c96a72241162680209c7'
   })
 
   depends_on 'glibc' => :library

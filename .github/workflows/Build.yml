@@ -1,5 +1,5 @@
 ---
-# Version 1.7
+# Version 2.0
 name: Build
 run-name: Build ${{ inputs.packages_to_build }} for ${{ inputs.build-on }} on branch ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }} requested by @${{ github.actor }}
 on:
@@ -62,7 +62,7 @@ permissions:
 jobs:
   debug:
     if: ${{ ( github.repository_owner == 'chromebrew' ) }}
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     steps:
       - name: Dump GitHub context
         env:
@@ -78,7 +78,7 @@ jobs:
         run: echo "$STEPS_CONTEXT"
   setup:
     if: ${{ ( github.repository_owner == 'chromebrew' ) && ( inputs.branch != 'master' ) }}
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     outputs:
       timestamp: ${{ steps.set-timestamp.outputs.TIMESTAMP }}  # https://stackoverflow.com/a/75142892
       current_head: ${{ steps.get-current-head.outputs.CURRENT_HEAD }}
@@ -144,7 +144,7 @@ jobs:
 
   gen-matrix:
     needs: get-compatibility
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     outputs:
       matrix: ${{ steps.set-generate-matrix.outputs.matrix }}
     steps:
@@ -186,12 +186,19 @@ jobs:
         arch: ${{ fromJSON(needs.gen-matrix.outputs.matrix) }}
         runner:
           - ubuntu-24.04
-          - ubuntu-24.04-arm
+          - ubuntu-26.04
+          - ubuntu-26.04-arm
         exclude:
           - arch: x86_64
-            runner: ubuntu-24.04-arm
+            runner: ubuntu-26.04-arm
+          - arch: x86_64
+            runner: ubuntu-24.04
           - arch: i686
-            runner: ubuntu-24.04-arm
+            runner: ubuntu-26.04-arm
+          - arch: i686
+            runner: ubuntu-26.04
+          - arch: armv7l
+            runner: ubuntu-26.04
           - arch: armv7l
             runner: ubuntu-24.04
     runs-on: ${{ matrix.runner }}
@@ -202,6 +209,7 @@ jobs:
       TIMESTAMP: ${{ needs.setup.outputs.timestamp }}
       GLIBC_232_COMPATIBLE_PACKAGES: ${{ needs.get-compatibility.outputs.GLIBC_232_COMPATIBLE_PACKAGES }}
       GLIBC_237_COMPATIBLE_PACKAGES: ${{ needs.get-compatibility.outputs.GLIBC_237_COMPATIBLE_PACKAGES }}
+      GLIBC_241_COMPATIBLE_PACKAGES: ${{ needs.get-compatibility.outputs.GLIBC_241_COMPATIBLE_PACKAGES }}
       i686_MIN_GLIBC: ${{ needs.get-compatibility.outputs.i686_min_glibc }}
       i686_PACKAGES: ${{ needs.get-compatibility.outputs.i686_PACKAGES }}
       x86_64_MIN_GLIBC: ${{ needs.get-compatibility.outputs.x86_64_min_glibc }}
@@ -253,7 +261,10 @@ jobs:
                   echo "CONTAINER=satmandu/crewbuild:nocturne-x86_64.m97" >> "$GITHUB_ENV"
                   ;;
                 2.37)
-                  echo "CONTAINER=satmandu/crewbuild:nocturne-x86_64.m97" >> "$GITHUB_ENV"
+                  echo "CONTAINER=satmandu/crewbuild:hatch-x86_64.m156" >> "$GITHUB_ENV"
+                  ;;
+                2.41)
+                  echo "CONTAINER=satmandu/crewbuild:hatch-x86_64.m156" >> "$GITHUB_ENV"
                   ;;
                 *)
                   # Fallback/default is the M90 Glibc 2.27 container.
@@ -269,7 +280,10 @@ jobs:
                   echo "CONTAINER=satmandu/crewbuild:fievel-armv7l.m97" >> "$GITHUB_ENV"
                   ;;
                 2.37)
-                  echo "CONTAINER=satmandu/crewbuild:strongbad-armv7l.m149" >> "$GITHUB_ENV"
+                  echo "CONTAINER=satmandu/crewbuild:strongbad-armv7l.m156" >> "$GITHUB_ENV"
+                  ;;
+                2.41)
+                  echo "CONTAINER=satmandu/crewbuild:strongbad-armv7l.m156" >> "$GITHUB_ENV"
                   ;;
                 *)
                   # Fallback/default is the M91 Glibc 2.27 container.
@@ -368,6 +382,7 @@ jobs:
               -e CREW_REPO="${CREW_REPO}" \
               -e CREW_BRANCH="${BRANCH}" \
               -e GITLAB_TOKEN="${{ secrets.GITLAB_TOKEN }}" \
+              -e GITLAB_GLAB_TOKEN="${{ secrets.GITLAB_GLAB_TOKEN }}" \
               -e GITLAB_TOKEN_USERNAME="${{ secrets.GITLAB_TOKEN_USERNAME }}" \
               ${CI_PASSTHROUGH} \
               ${ARCH_PACKAGES_PASSTHROUGH} \
@@ -382,7 +397,7 @@ jobs:
               echo "Deleting build output directories."
               sudo rm -rf release pkg_cache
   build-check:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     needs:
       - setup
       - generate
@@ -411,7 +426,7 @@ jobs:
           ref: ${{ inputs.branch || github.event.workflow_run.head_branch || github.head_ref || github.ref_name }}
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '4.0.5'
+          ruby-version: '4.0.6'
       - name: Install bin/crew gem dependencies
         run: |
           # Install required gems.
@@ -446,7 +461,7 @@ jobs:
             ruby bin/crew prop ignore_updater ${file}
             [[ "$(ruby bin/crew prop ignore_updater ${file})" == "false" ]] && touch tools/automatically_updatable_packages/${file} || true
           done
-      - uses: EndBug/add-and-commit@v10
+      - uses: EndBug/add-and-commit@v11
         if: ${{ contains(needs.generate.result, 'success') }}
         env:
           GH_TOKEN: ${{ steps.get_workflow_token.outputs.token }}

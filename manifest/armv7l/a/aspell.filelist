@@ -1,4 +1,4 @@
-# Total size: 3385866
+# Total size: 3266896
 /usr/local/bin/aspell
 /usr/local/bin/aspell-import
 /usr/local/bin/precat
@@ -111,6 +111,7 @@
 /usr/local/lib/libpspell.so.15.3.1
 /usr/local/share/info/aspell-dev.info.zst
 /usr/local/share/info/aspell.info.zst
+/usr/local/share/locale/ar/LC_MESSAGES/aspell.mo
 /usr/local/share/locale/ast/LC_MESSAGES/aspell.mo
 /usr/local/share/locale/be/LC_MESSAGES/aspell.mo
 /usr/local/share/locale/ca/LC_MESSAGES/aspell.mo
@@ -149,6 +150,7 @@
 /usr/local/share/locale/vi/LC_MESSAGES/aspell.mo
 /usr/local/share/locale/wa/LC_MESSAGES/aspell.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/aspell.mo
+/usr/local/share/locale/zh_TW/LC_MESSAGES/aspell.mo
 /usr/local/share/man/man1/aspell-import.1.zst
 /usr/local/share/man/man1/aspell.1.zst
 /usr/local/share/man/man1/prezip-bin.1.zst

@@ -1,0 +1,14 @@
+# Total size: 715287
+/usr/local/bin/soundstretch
+/usr/local/include/soundtouch/BPMDetect.h
+/usr/local/include/soundtouch/FIFOSampleBuffer.h
+/usr/local/include/soundtouch/FIFOSamplePipe.h
+/usr/local/include/soundtouch/STTypes.h
+/usr/local/include/soundtouch/SoundTouch.h
+/usr/local/include/soundtouch/soundtouch_config.h
+/usr/local/lib64/cmake/SoundTouch/SoundTouchConfig.cmake
+/usr/local/lib64/cmake/SoundTouch/SoundTouchConfigVersion.cmake
+/usr/local/lib64/cmake/SoundTouch/SoundTouchTargets-release.cmake
+/usr/local/lib64/cmake/SoundTouch/SoundTouchTargets.cmake
+/usr/local/lib64/libSoundTouch.a
+/usr/local/lib64/pkgconfig/soundtouch.pc

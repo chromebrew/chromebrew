@@ -1,0 +1,3 @@
+#!/bin/bash
+xfce4-panel -h | head
+xfce4-panel -V

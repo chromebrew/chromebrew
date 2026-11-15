@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Libunbound < Autotools
   description 'Unbound is a validating, recursive, and caching DNS resolver.'
   homepage 'https://nlnetlabs.nl/projects/unbound/about/'
-  version '1.25.1'
+  version '1.26.2'
   license 'BSD and GPL-2'
   compatibility 'all'
   source_url "https://nlnetlabs.nl/downloads/unbound/unbound-#{version}.tar.gz"
-  source_sha256 '0fe8b6277b0959cfd17562debac0aa5f71e0b02dc4ffa9c60271c583edab586f'
+  source_sha256 'd8ee7aa6bbb3ff1be7d9e57637d0d0ec2f18273a8efff1a0afe2c665858b96f7'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e17aada47876558c2962220fa3088dcd9f7ede33cd9820f1a0ac423839d3f6a5',
-     armv7l: 'e17aada47876558c2962220fa3088dcd9f7ede33cd9820f1a0ac423839d3f6a5',
-       i686: '364c0e8ad05a2a4173be904f19a5a9cd784c4f50c4589a5e695089b3859dc49e',
-     x86_64: '30520cd219e5345e596c32e3e13d0f255c77564bad140f1d4ed1ad611650ceab'
+    aarch64: 'f3b453ed9f1a008ee2e7a874f5bfb8ee139a9f3229f96ff32e3f007484776471',
+     armv7l: 'f3b453ed9f1a008ee2e7a874f5bfb8ee139a9f3229f96ff32e3f007484776471',
+       i686: 'ad57ecf2e4c82070fec0349353c70da8c7c62c7d28eed3beb32852f679269231',
+     x86_64: '4309d0a8e991d34b5adeb2ac63d858a939fddacf379c45c053d043483766653c'
   })
 
   depends_on 'expat' => :executable

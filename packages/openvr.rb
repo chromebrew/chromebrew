@@ -1,39 +1,29 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Openvr < Package
+class Openvr < CMake
   description 'OpenVR is an API and runtime that allows access to VR hardware from multiple vendors without requiring that applications have specific knowledge of the hardware they are targeting.'
   homepage 'https://github.com/ValveSoftware/openvr'
-  version '1.12.5'
+  version '2.15.6'
   license 'BSD-3'
   compatibility 'all'
-  source_url 'https://github.com/ValveSoftware/openvr/archive/v1.12.5.tar.gz'
-  source_sha256 'f3cdbaa946688553638e6d65978f156311c9b08825316198d925f5eade6cfeb7'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/ValveSoftware/openvr.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a76d1856f054658c6e2d6bc1eb32ee15331e7d2a06c136341d33262b1bce0930',
-     armv7l: 'a76d1856f054658c6e2d6bc1eb32ee15331e7d2a06c136341d33262b1bce0930',
-       i686: '91d3f788580791cdb59522621f37227b69974fad3a2ad52c72b2f956a36f06de',
-     x86_64: '5cdd33423050168ac1704e498aa52fad652ca71c1060de4b7b8243b56807896f'
+    aarch64: '84da36d1e2bb01a934a17734a6a703c6ccc73e3e33a971c3145e0423b3e4eab7',
+     armv7l: '84da36d1e2bb01a934a17734a6a703c6ccc73e3e33a971c3145e0423b3e4eab7',
+       i686: 'fc3c1a4061b7a68af70f60568d7fdc0b8bec04bc56413e96e40456529f810ddd',
+     x86_64: 'd2185584f81cb00209fa41ebb810e7ef23c3810851ebb16e29df48835f28d384'
   })
 
-  def self.build
-    Dir.mkdir 'build'
-    Dir.chdir 'build' do
-      system "cmake .. -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED=ON"
-      system 'make'
-    end
-  end
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 
-  def self.install
-    Dir.chdir 'build' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-      case ARCH
-      when 'x86_64'
-        Dir.chdir CREW_DEST_PREFIX do
-          FileUtils.mv 'lib/', 'lib64'
-        end
-      end
-    end
+  cmake_options '-DBUILD_SHARED=ON'
+
+  cmake_install_extras do
+    FileUtils.mv "#{CREW_DEST_PREFIX}/lib", CREW_DEST_LIB_PREFIX if ARCH.eql?('x86_64')
   end
 end

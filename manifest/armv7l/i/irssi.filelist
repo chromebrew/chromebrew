@@ -1,6 +1,5 @@
-# Total size: 5758764
+# Total size: 2356534
 /usr/local/bin/irssi
-/usr/local/etc/irssi.conf
 /usr/local/include/irssi/irssi-config.h
 /usr/local/include/irssi/irssi-version.h
 /usr/local/include/irssi/src/common.h
@@ -39,6 +38,7 @@
 /usr/local/include/irssi/src/core/query-rec.h
 /usr/local/include/irssi/src/core/rawlog.h
 /usr/local/include/irssi/src/core/recode.h
+/usr/local/include/irssi/src/core/refstrings.h
 /usr/local/include/irssi/src/core/server-connect-rec.h
 /usr/local/include/irssi/src/core/server-rec.h
 /usr/local/include/irssi/src/core/server-setup-rec.h
@@ -93,6 +93,7 @@
 /usr/local/include/irssi/src/fe-text/statusbar-item.h
 /usr/local/include/irssi/src/fe-text/statusbar.h
 /usr/local/include/irssi/src/fe-text/term.h
+/usr/local/include/irssi/src/fe-text/textbuffer-formats.h
 /usr/local/include/irssi/src/fe-text/textbuffer-view.h
 /usr/local/include/irssi/src/fe-text/textbuffer.h
 /usr/local/include/irssi/src/irc/core/bans.h
@@ -132,6 +133,18 @@
 /usr/local/include/irssi/src/irc/notifylist/notifylist.h
 /usr/local/include/irssi/src/lib-config/iconfig.h
 /usr/local/include/irssi/src/lib-config/module.h
+/usr/local/lib/irssi/modules/libfe_perl.so
+/usr/local/lib/irssi/modules/libotr_core.so
+/usr/local/lib/irssi/modules/libperl_core.so
+/usr/local/lib/perl5/5.44/site_perl/Irssi.pm
+/usr/local/lib/perl5/5.44/site_perl/Irssi/Irc.pm
+/usr/local/lib/perl5/5.44/site_perl/Irssi/TextUI.pm
+/usr/local/lib/perl5/5.44/site_perl/Irssi/UI.pm
+/usr/local/lib/perl5/5.44/site_perl/auto/Irssi/Irc/Irc.so
+/usr/local/lib/perl5/5.44/site_perl/auto/Irssi/Irssi.so
+/usr/local/lib/perl5/5.44/site_perl/auto/Irssi/TextUI/TextUI.so
+/usr/local/lib/perl5/5.44/site_perl/auto/Irssi/UI/UI.so
+/usr/local/lib/pkgconfig/irssi-1.pc
 /usr/local/share/doc/irssi/capsicum.txt
 /usr/local/share/doc/irssi/design.html
 /usr/local/share/doc/irssi/design.txt
@@ -262,16 +275,13 @@
 /usr/local/share/irssi/scripts/autoop.pl
 /usr/local/share/irssi/scripts/autorejoin.pl
 /usr/local/share/irssi/scripts/buf.pl
-/usr/local/share/irssi/scripts/command.pl
 /usr/local/share/irssi/scripts/dns.pl
 /usr/local/share/irssi/scripts/kills.pl
 /usr/local/share/irssi/scripts/mail.pl
 /usr/local/share/irssi/scripts/mlock.pl
-/usr/local/share/irssi/scripts/msg-event.pl
 /usr/local/share/irssi/scripts/quitmsg.pl
-/usr/local/share/irssi/scripts/redirect.pl
 /usr/local/share/irssi/scripts/scriptassist.pl
 /usr/local/share/irssi/scripts/usercount.pl
 /usr/local/share/irssi/themes/colorless.theme
 /usr/local/share/irssi/themes/default.theme
-/usr/local/share/man/man1/irssi.1.gz
+/usr/local/share/man/man1/irssi.1.zst

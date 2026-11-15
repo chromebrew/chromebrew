@@ -1,39 +1,30 @@
-require 'package'
+require 'buildsystems/qmake'
 
-class Clipgrab < Package
+class Clipgrab < Qmake
   description 'A friendly downloader for YouTube and other sites'
   homepage 'https://clipgrab.org/'
   version '3.9.14'
   license 'GPL-3'
-  compatibility 'x86_64'
-  source_url "https://download.clipgrab.org/ClipGrab-#{version}-x86_64.AppImage"
-  source_sha256 '4d6a0669b3da4992d22c85ad0ac80ed9095544b58acdbbda9b55ea795d106739'
+  compatibility 'aarch64 armv7l x86_64'
+  source_url "https://download.clipgrab.org/clipgrab-#{version}.tar.gz"
+  source_sha256 'd3e53731f9edaca05c5c860e15680ed2432dc5ad6c9a822acba5bc851f1ec836'
+  binary_compression 'tar.zst'
 
-  no_compile_needed
+  binary_sha256({
+    aarch64: '64b96d664ac336d929e2850fe9c8b6226f5365051ba035657f86f69edcf005c9',
+     armv7l: '64b96d664ac336d929e2850fe9c8b6226f5365051ba035657f86f69edcf005c9',
+     x86_64: '48ecc6b00ac8784316d46da0d72b3efceba3bff1f83a88f03c6f593ff18b38e4'
+  })
 
-  depends_on 'ffmpeg'
-  depends_on 'gtk3'
-
-  def self.build
-    File.write 'clipgrab.sh', <<~EOF
-      #!/bin/bash
-      cd #{CREW_PREFIX}/share/clipgrab
-      ./AppRun "$@"
-    EOF
-    # Fixes ./AppRun: symbol lookup error: /usr/local/lib64/libQt5Core.so.5: undefined symbol: u_strToLower_73
-    File.write 'clipgrab.env', <<~EOF
-      LD_LIBRARY_PATH=#{CREW_PREFIX}/share/clipgrab/usr/lib:$LD_LIBRARY_PATH
-    EOF
-  end
+  depends_on 'qt5_base' => :executable
+  depends_on 'qt5_declarative' => :executable
+  depends_on 'qt5_location' => :executable
+  depends_on 'qt5_webchannel' => :executable
+  depends_on 'qt5_webengine' => :executable
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/clipgrab"
-    FileUtils.install 'clipgrab.sh', "#{CREW_DEST_PREFIX}/bin/clipgrab", mode: 0o755
-    FileUtils.install 'clipgrab.env', "#{CREW_DEST_PREFIX}/etc/env.d/clipgrab", mode: 0o644
-    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/clipgrab"
+    FileUtils.install 'clipgrab', "#{CREW_DEST_PREFIX}/bin/clipgrab", mode: 0o755
   end
 
-  def self.postinstall
-    ExitMessage.add "\nType 'clipgrab' to get started.\n"
-  end
+  qmake_project 'clipgrab.pro'
 end

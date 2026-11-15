@@ -1,42 +1,38 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Recordmydesktop < Package
+class Recordmydesktop < Autotools
   description 'desktop session recorder for GNU / Linux that attempts to be easy to use'
   homepage 'https://recordmydesktop.sourceforge.net/about.php'
-  version '0.3.8.1'
+  version '0.4.0'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://prdownloads.sourceforge.net/project/recordmydesktop/recordmydesktop/0.3.8.1/recordmydesktop-0.3.8.1.tar.gz'
-  source_sha256 '33a2e208186ae78e2db2a27b0f5047b50fb7819c47fe15483b0765200b9d738c'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/Enselic/recordmydesktop.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9bb5c75a43e50eb5b61598efe09ffc8131c7cbd6fb714b6ca33d3f22a3ff6b86',
-     armv7l: '9bb5c75a43e50eb5b61598efe09ffc8131c7cbd6fb714b6ca33d3f22a3ff6b86',
-       i686: 'c5341ca6d41f184d736d16766f92f7c4ec35836c4454e22dff14386271e623e4',
-     x86_64: '16fdce8d65a3b57e1167f5edaaf0c8ac2829b27cc38d821d8a64332409349095'
+    aarch64: '906d1896e18f9c24f593e93bbff2dc44770e909a8a8c876fa9ded8c301b188cf',
+     armv7l: '906d1896e18f9c24f593e93bbff2dc44770e909a8a8c876fa9ded8c301b188cf',
+     x86_64: '8896579cb5b2212c96e3728e29f7a4a827021f1294b2b52c40139d0194488efc'
   })
 
-  depends_on 'alsa_lib' # R
-  depends_on 'alsa_plugins'
-  depends_on 'libice' # R
-  depends_on 'libogg' # R
-  depends_on 'libsm' # R
-  depends_on 'libtheora'
-  depends_on 'libvorbis' # R
-  depends_on 'libx11' # R
-  depends_on 'libxdamage' # R
-  depends_on 'libxext' # R
-  depends_on 'libxfixes' # R
+  depends_on 'alsa_lib' => :executable
+  depends_on 'alsa_plugins' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'jack' => :executable
+  depends_on 'libice' => :executable
+  depends_on 'libogg' => :executable
+  depends_on 'libsm' => :executable
+  depends_on 'libtheora' => :executable
+  depends_on 'libvorbis' => :executable
+  depends_on 'libx11' => :executable
+  depends_on 'libxdamage' => :executable
+  depends_on 'libxext' => :executable
+  depends_on 'libxfixes' => :executable
+  depends_on 'popt' => :executable
   depends_on 'sommelier' => :logical
-  depends_on 'zlib' # R
+  depends_on 'zlib' => :executable
 
-  def self.build
-    system "./configure --prefix=#{CREW_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  autotools_build_relative_dir 'recordmydesktop'
 end

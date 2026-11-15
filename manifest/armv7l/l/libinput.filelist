@@ -1,4 +1,4 @@
-# Total size: 1045730
+# Total size: 1051999
 /usr/local/bin/libinput
 /usr/local/include/libinput.h
 /usr/local/lib/libinput.so
@@ -63,6 +63,7 @@
 /usr/local/share/libinput/50-system-asus.quirks
 /usr/local/share/libinput/50-system-cyborg.quirks
 /usr/local/share/libinput/50-system-dell.quirks
+/usr/local/share/libinput/50-system-eaecis.quirks
 /usr/local/share/libinput/50-system-framework.quirks
 /usr/local/share/libinput/50-system-gigabyte.quirks
 /usr/local/share/libinput/50-system-google.quirks
@@ -75,6 +76,7 @@
 /usr/local/share/libinput/50-system-lenovo.quirks
 /usr/local/share/libinput/50-system-lg.quirks
 /usr/local/share/libinput/50-system-minisforum.quirks
+/usr/local/share/libinput/50-system-panasonic.quirks
 /usr/local/share/libinput/50-system-pine64.quirks
 /usr/local/share/libinput/50-system-positivo.quirks
 /usr/local/share/libinput/50-system-sony.quirks

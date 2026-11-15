@@ -1,8 +1,9 @@
-# Total size: 17591059
+# Total size: 20146076
 /usr/local/bin/iconvert
 /usr/local/bin/idiff
 /usr/local/bin/igrep
 /usr/local/bin/iinfo
+/usr/local/bin/iv
 /usr/local/bin/maketx
 /usr/local/bin/oiiotool
 /usr/local/bin/testtex
@@ -17,6 +18,7 @@
 /usr/local/include/OpenImageIO/deepdata.h
 /usr/local/include/OpenImageIO/detail/farmhash.h
 /usr/local/include/OpenImageIO/detail/fmt.h
+/usr/local/include/OpenImageIO/detail/fmt/base.h
 /usr/local/include/OpenImageIO/detail/fmt/chrono.h
 /usr/local/include/OpenImageIO/detail/fmt/core.h
 /usr/local/include/OpenImageIO/detail/fmt/format-inl.h
@@ -75,13 +77,13 @@
 /usr/local/lib64/cmake/OpenImageIO/OpenImageIOTargets.cmake
 /usr/local/lib64/libOpenImageIO.so
 /usr/local/lib64/libOpenImageIO.so.2.5
-/usr/local/lib64/libOpenImageIO.so.2.5.15
+/usr/local/lib64/libOpenImageIO.so.2.5.19
 /usr/local/lib64/libOpenImageIO_Util.so
 /usr/local/lib64/libOpenImageIO_Util.so.2.5
-/usr/local/lib64/libOpenImageIO_Util.so.2.5.15
+/usr/local/lib64/libOpenImageIO_Util.so.2.5.19
 /usr/local/lib64/pkgconfig/OpenImageIO.pc
-/usr/local/lib64/python3.13/site-packages/OpenImageIO/OpenImageIO.cpython-313-x86_64-linux-gnu.so
-/usr/local/lib64/python3.13/site-packages/OpenImageIO/__init__.py
+/usr/local/lib64/python3.15/site-packages/OpenImageIO/OpenImageIO.cpython-315-x86_64-linux-gnu.so
+/usr/local/lib64/python3.15/site-packages/OpenImageIO/__init__.py
 /usr/local/share/doc/OpenImageIO/CHANGES-0.x.md
 /usr/local/share/doc/OpenImageIO/CHANGES-1.x.md
 /usr/local/share/doc/OpenImageIO/CHANGES.md

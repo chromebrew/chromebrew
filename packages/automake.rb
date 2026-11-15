@@ -3,25 +3,31 @@ require 'buildsystems/autotools'
 class Automake < Autotools
   description 'Automake is a tool for automatically generating Makefile.in files compliant with the GNU Coding Standards.'
   homepage 'https://www.gnu.org/software/automake/'
-  version '1.18.1'
+  version '1.20'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://https.git.savannah.gnu.org/git/automake.git'
   git_hashtag "v#{version}"
-  # source_url "https://ftp.gnu.org/gnu/gnu/automake/automake-#{version}.tar.xz"
-  # source_sha256 '5bdccca96b007a7e344c24204b9b9ac12ecd17f5971931a9063bdee4887f4aaf'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'dac62cec4062da0ced7e00c53ffaf3809c67d38d3d7342b0ae9ebc5a1b55d30a',
-     armv7l: 'dac62cec4062da0ced7e00c53ffaf3809c67d38d3d7342b0ae9ebc5a1b55d30a',
-       i686: '7df52319759ec22991e5744f144093f7d724a20b6cd8aa82f2a71145fed3c274',
-     x86_64: 'f0d23c064d7f7a18a3ef1e7f59b188298c3bd12a5ccf744a554f140f7bf6725c'
+    aarch64: 'f511ae72f7b403ac04681baed501366a9746684b683120c9dc4ed60c800015f3',
+     armv7l: 'f511ae72f7b403ac04681baed501366a9746684b683120c9dc4ed60c800015f3',
+       i686: 'b808392f72e9aa49ec4d833583b8d31a63a194418984e7df25b2a53ef709abd1',
+     x86_64: 'b5822e67b6990f90fad90644f2ab63a7b8badd8cedd1ef24f66c244814d39b45'
   })
 
-  depends_on 'autoconf'
+  depends_on 'autoconf' => :executable
 
-  no_filefix
+  def self.build
+    system './bootstrap'
+    system "./configure --prefix=#{CREW_PREFIX}"
+    system 'make'
+  end
 
-  autotools_configure_options '--disable-option-checking'
+  autotools_install_extras do
+    # Fix aclocal-1: command not found and automake-1: command not found
+    FileUtils.ln_s "#{CREW_PREFIX}/bin/aclocal-#{version}", "#{CREW_DEST_PREFIX}/bin/aclocal-1"
+    FileUtils.ln_s "#{CREW_PREFIX}/bin/automake-#{version}", "#{CREW_DEST_PREFIX}/bin/automake-1"
+  end
 end

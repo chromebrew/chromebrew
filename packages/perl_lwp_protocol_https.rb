@@ -3,17 +3,19 @@ require 'buildsystems/perl'
 class Perl_lwp_protocol_https < PERL
   description 'Provide https support for LWP::UserAgent'
   homepage 'https://metacpan.org/pod/LWP::Protocol::https'
-  version "6.14-#{CREW_PERL_VER}"
+  version "6.17-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
-  source_url 'https://cpan.metacpan.org/authors/id/O/OA/OALDERS/LWP-Protocol-https-6.14.tar.gz'
-  source_sha256 '59cdeabf26950d4f1bef70f096b0d77c5b1c5a7b5ad1b66d71b681ba279cbb2a'
+  source_url "https://cpan.metacpan.org/authors/id/O/OA/OALDERS/LWP-Protocol-https-#{version.split('-')[0]}.tar.gz"
+  source_sha256 '361c7c1eee8cf66812958f975f26ef2e2272a0c6221d2043477cb9c22b8d1c23'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fea84427d5b49f31c6044a35251dea302fac2c3681bdf4d43ffacc7b66d94c4d',
-     armv7l: 'fea84427d5b49f31c6044a35251dea302fac2c3681bdf4d43ffacc7b66d94c4d',
-       i686: '17820b8d4c880cec57064cc7443ac2586c9717c4aefe7f3851d1211abad82b54',
-     x86_64: 'e565d3a9c818f2821c0c57f29fdd3eef6f328d0906fbf7d6d4f4903d8e6cacdb'
+    aarch64: 'c167b816a9f7007b003ddc9b31a844be5416781f29a5a413040fce6491705dba',
+     armv7l: 'c167b816a9f7007b003ddc9b31a844be5416781f29a5a413040fce6491705dba',
+       i686: 'c1a314232ac4112abd0a6ce8710a36fa2dd50498f25b5f2706d80e9479b30793',
+     x86_64: '7e2be74cf8693f47d66135480273ce74999b5064e495427c954c628cfb69b82e'
   })
+
+  depends_on 'perl' => :logical
 end

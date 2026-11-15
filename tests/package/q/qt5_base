@@ -1,0 +1,3 @@
+#!/bin/bash
+qmake -h | head
+qmake -v

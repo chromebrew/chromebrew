@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_pluggy < Pip
   description 'Pluggy provides plugin and hook calling mechanisms for Python.'
   homepage 'https://pluggy.readthedocs.io/'
-  version "1.6.0-#{CREW_PY_VER}"
+  version "1.7.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '27fe31ceab306bbe47e039d1d34dc491c598c5b16d19204b059ec9323273654d',
-     armv7l: '27fe31ceab306bbe47e039d1d34dc491c598c5b16d19204b059ec9323273654d',
-       i686: '47cdb14ca2d5ab3cfb617fdafd9be237fa40557d124190a493aa8d92799fb3e4',
-     x86_64: '27f47e7f75e73d8758be7c0819a2da39831e9a9fc3914b765171f527f448621e'
+    aarch64: '43b7654cc98fef20ab0eb4f545d8d752820d831f726da8bce86efd6d25e6aecb',
+     armv7l: '43b7654cc98fef20ab0eb4f545d8d752820d831f726da8bce86efd6d25e6aecb',
+       i686: 'f77cd49698f7f0c963c95f1947994873df78f1330d7e5a1eea28d47fccdad85d',
+     x86_64: '5ec49d7cf37568f457b48cb75f9803cec89f994d71ba8d4651fe53504e448c48'
   })
 
   depends_on 'python3' => :logical

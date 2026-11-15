@@ -1,46 +1,48 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Picom < Package
+class Picom < Meson
   description 'Lightweight compositor for X11 (previously a compton fork)'
   homepage 'https://github.com/yshui/picom/'
-  version '8'
+  version '13'
   license 'MPL-2.0 and MIT'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://github.com/yshui/picom/archive/v8.tar.gz'
-  source_sha256 'f839a3c058ca90f463eae3973a9381cf2fe93be7d0e58db1c28ea72acd10480f'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/yshui/picom.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5de726299cbd8469b6c846cf437aac9132bbd50d1572c7b61dc4cfd14d8edc1f',
-     armv7l: '5de726299cbd8469b6c846cf437aac9132bbd50d1572c7b61dc4cfd14d8edc1f',
-     x86_64: 'f8750b816aed2fac643ae65028048344d4736ab4e7968b754fe186b32514f85b'
+    aarch64: 'c756a9f79b3944e015aabf6e1d4e3256d2df89cb4d65cafa2d67854b5467e0d9',
+     armv7l: 'c756a9f79b3944e015aabf6e1d4e3256d2df89cb4d65cafa2d67854b5467e0d9',
+     x86_64: 'e5fd631205f6b6dd24f9ccce6b5cb9afe43ed06a046e44a33573f46b3d09d239'
   })
 
-  depends_on 'mesa'
-  depends_on 'dbus'
-  depends_on 'libconfig'
-  depends_on 'libev'
-  depends_on 'pcre'
-  depends_on 'pixman'
-  depends_on 'xcb_util_image'
-  depends_on 'xcb_util_renderutil'
-  depends_on 'xdg_base'
-  depends_on 'uthash'
-  depends_on 'desktop_file_utilities'
-
-  def self.build
-    system "meson --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} _build -Dopengl=false" # Glx backend cannot be used yet
-    system 'ninja -v -C _build'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C _build install"
-  end
+  depends_on 'dbus' => :executable
+  depends_on 'desktop_file_utilities' => :executable
+  depends_on 'gegl' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'libconfig' => :executable
+  depends_on 'libepoxy' => :executable
+  depends_on 'libev' => :executable
+  depends_on 'libx11' => :executable
+  depends_on 'libxcb' => :executable
+  depends_on 'mesa' => :executable
+  depends_on 'pcre' => :executable
+  depends_on 'pcre2' => :executable
+  depends_on 'pixman' => :executable
+  # depends_on 'uthash' => :executable
+  depends_on 'xcb_util' => :executable
+  depends_on 'xcb_util_image' => :executable
+  depends_on 'xcb_util_renderutil' => :executable
+  depends_on 'xdg_base' => :executable
+  depends_on 'xprop' => :executable # Needed for picom-trans.
+  depends_on 'xwininfo' => :executable # Needed for picom-trans.
 
   def self.postinstall
-    puts
-    puts 'Note that picom requires a Window Manager to be running.  Sommelier does not count.'.lightblue
-    puts 'Some examples are: Berry, Openbox, i3, sowm, bspwm, and dwm'.lightblue
-    puts
+    ExitMessage.add <<~EOM
+
+      Note that picom requires a Window Manager to be running.  Sommelier does not count.
+      Some examples are the following: Berry, Openbox, i3, sowm, bspwm, and dwm.
+    EOM
   end
 end

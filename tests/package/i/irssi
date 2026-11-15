@@ -1,0 +1,3 @@
+#!/bin/bash
+irssi -? | head
+irssi -v

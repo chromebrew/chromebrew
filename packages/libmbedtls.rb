@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libmbedtls < CMake
   description 'An open source, portable, easy to use, readable and flexible SSL library'
   homepage 'https://www.trustedfirmware.org/projects/mbed-tls/'
-  version '4.0.0'
+  version '4.2.0'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/ARMmbed/mbedtls.git'
@@ -11,13 +11,14 @@ class Libmbedtls < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1213726759c6fb3b093b71e95693c66892e7b0c2cbf82bdeec4136fe144220c9',
-     armv7l: '1213726759c6fb3b093b71e95693c66892e7b0c2cbf82bdeec4136fe144220c9',
-       i686: '5d62ecf51bc3329cdf377434f1ce09c29bca7988507447916d8324e5cda7a9c0',
-     x86_64: 'f9d9bd8d8601deda9e6ea6c7579c58cd52418433ee7d80b92e02e98603535072'
+    aarch64: '4acd217acce553dcce4686be290c8a03ba3e0fbda6d15fce541111b2b5e84435',
+     armv7l: '4acd217acce553dcce4686be290c8a03ba3e0fbda6d15fce541111b2b5e84435',
+       i686: 'b7b8e1b5986ef3ba7ba0c1ef2776ab69876c1ac3b43e8ef0957dc9e4b0b298e9',
+     x86_64: '074c71f9c76d928cbe827ab6b902dfc65f52790e0bb183fc8995ccb2466aeb56'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'py3_attrs' => :build
   depends_on 'py3_jinja2' => :build
   depends_on 'py3_jsonschema' => :build
@@ -33,5 +34,7 @@ class Libmbedtls < CMake
 
   # run_tests
 
-  cmake_options "-DUSE_SHARED_MBEDTLS_LIBRARY=ON -DENABLE_TESTING=#{@run_tests ? 'ON' : 'OFF'}"
+  cmake_options "-DUSE_SHARED_MBEDTLS_LIBRARY=ON \
+    -DLINK_WITH_PTHREAD=ON \
+    -DENABLE_TESTING=#{@run_tests ? 'ON' : 'OFF'}"
 end

@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Opam < Autotools
   description 'OCaml package manager'
   homepage 'https://opam.ocaml.org/'
-  version '2.5.1'
+  version '2.6.1'
   license 'LGPL-2.1-with-linking-exception'
   compatibility 'all'
   source_url 'https://github.com/ocaml/opam.git'
@@ -11,15 +11,16 @@ class Opam < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cfe2bb9516ab2f0dc802d44d6b7661071ae5e315904abb10842fe1138434f883',
-     armv7l: 'cfe2bb9516ab2f0dc802d44d6b7661071ae5e315904abb10842fe1138434f883',
-       i686: '85931eb518630a22b9168521ac6c37c6b2dc7280e6145dec9e8f9a209228c028',
-     x86_64: '75610ba8c8a9fe2d687b5e44e7749dea16ea1a6affe0a84f1427718eb0f929a0'
+    aarch64: 'a7df7141886ec8b656cc47e1d9f9dcd7da1ff4d1404bdd32ff1f315e3acb5242',
+     armv7l: 'a7df7141886ec8b656cc47e1d9f9dcd7da1ff4d1404bdd32ff1f315e3acb5242',
+       i686: 'b8bc3c43c7735a61dfafaadd3df58192a605d27587d0df9ea09f183922d5700c',
+     x86_64: '272236b8a6a57fe234702281e859460cbde9656c5b8edcf878b0b8e5afe93e27'
   })
 
   depends_on 'bubblewrap' => :logical
   depends_on 'gcc_lib' => :executable
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'ocaml' # R
   depends_on 'rsync' => :build
   depends_on 'zstd' => :executable

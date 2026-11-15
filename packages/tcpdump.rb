@@ -3,25 +3,29 @@ require 'buildsystems/autotools'
 class Tcpdump < Autotools
   description 'A powerful command-line packet analyzer.'
   homepage 'https://www.tcpdump.org/'
-  version '4.99.6'
+  version '4.99.7'
   license 'BSD'
   compatibility 'all'
   source_url "https://www.tcpdump.org/release/tcpdump-#{version}.tar.gz"
-  source_sha256 '5839921a0f67d7d8fa3dacd9cd41e44c89ccb867e8a6db216d62628c7fd14b09'
+  source_sha256 '8be364e28d3b745ef1459b385cd2f4bc0e1ebad7a5d2ebdf70071d6c9b5b9a54'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '47090a61c318a62b52edb46d6c723d3fb12eeb3d14cf84a9bddbf6cc4f579948',
-     armv7l: '47090a61c318a62b52edb46d6c723d3fb12eeb3d14cf84a9bddbf6cc4f579948',
-       i686: '3be034a586cd674c45ab9753a1a975499a821e64d9cc4a6b3598a7a2cd901874',
-     x86_64: 'd86f1c3d80365291c121caf6a8fe1ea06d776b4e3126284e8933b4527ba446ea'
+    aarch64: '97216170c3fc61536107cd753e52d530d4ca280d953cd81400ac2b52cc336500',
+     armv7l: '97216170c3fc61536107cd753e52d530d4ca280d953cd81400ac2b52cc336500',
+       i686: 'e1b45f9c9934995f97ddf7cda3b2cab049af7abc0e75e9da78f89764cc5c84dd',
+     x86_64: 'fdfd0214024537e3d03176817982b0e616d4c5637e8044360f8d4ff85b868962'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'libcap'
   depends_on 'libcap_ng'
+  depends_on 'libcap_ng' => :executable
   depends_on 'libpcap'
+  depends_on 'libpcap' => :executable
   depends_on 'openssl'
+  depends_on 'openssl' => :executable
 
   autotools_configure_options "--with-user=#{USER}"
 end

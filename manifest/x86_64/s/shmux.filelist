@@ -1,4 +1,4 @@
-# Total size: 225182
+# Total size: 90383
 /usr/local/bin/shmux
-/usr/local/share/man/man1/shmux.1.gz
+/usr/local/share/man/man1/shmux.1.zst
 /usr/local/share/shmux/mcmd.sh

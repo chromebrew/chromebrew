@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gstreamer < Meson
   description 'GStreamer is a library for constructing graphs of media-handling components.'
   homepage 'https://gstreamer.freedesktop.org/'
-  version '1.28.3'
+  version '1.28.9'
   license 'LGPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/gstreamer/gstreamer.git'
@@ -11,11 +11,12 @@ class Gstreamer < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f12f4cc108abbe74fcdff89bd1a7bfd378e3cb73dca582e858dac9a3977bf6a2',
-     armv7l: 'f12f4cc108abbe74fcdff89bd1a7bfd378e3cb73dca582e858dac9a3977bf6a2',
-     x86_64: '910462bcfa2d674e6b9f45e663ef042c263eb9a5ac3d2996357abcdbf7f63644'
+    aarch64: '99df2d4ed8838ff92497b0c9c03ea2ff46f5b6eed23f3f6866ba137ba8c5a2f2',
+     armv7l: '99df2d4ed8838ff92497b0c9c03ea2ff46f5b6eed23f3f6866ba137ba8c5a2f2',
+     x86_64: 'ead7225dd0d678affc427aca45c160c8a85fefa32a601a87a03fccabd39c6d73'
   })
 
+  depends_on 'abseil_cpp' => :build
   depends_on 'alsa_lib' => :library
   depends_on 'bzip2' => :library
   depends_on 'ca_certificates' => :build
@@ -36,7 +37,6 @@ class Gstreamer < Meson
   depends_on 'graphene' => :library
   depends_on 'gtk3' => :library
   depends_on 'harfbuzz' => :library
-  depends_on 'intel_media_sdk' => :library if ARCH.eql?('x86_64')
   depends_on 'json_glib' => :library
   depends_on 'lcms' => :library
   depends_on 'libaom' => :library
@@ -79,6 +79,7 @@ class Gstreamer < Meson
   depends_on 'libxv' => :library
   depends_on 'lilv' => :library
   depends_on 'mesa' => :library
+  depends_on 'mpg123' => :library
   depends_on 'neon' => :library
   depends_on 'nettle' => :library
   depends_on 'openal' => :library
@@ -89,7 +90,6 @@ class Gstreamer < Meson
   depends_on 'opus' => :library
   depends_on 'opusfile' => :build
   depends_on 'pango' => :library
-  depends_on 'pulseaudio' => :library
   depends_on 'py3_gitlint' => :build
   depends_on 'py3_setuptools' => :build
   depends_on 'qt5_base' => :library
@@ -110,10 +110,6 @@ class Gstreamer < Meson
   # no_lto
   gnome
 
-  def self.prebuild
-    system "#{CREW_PREFIX}/bin/update-ca-certificates --fresh --certsconf #{CREW_PREFIX}/etc/ca-certificates.conf"
-  end
-
   meson_options "#{CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
     -Dbenchmarks=disabled \
     -Ddoc=disabled \
@@ -122,7 +118,10 @@ class Gstreamer < Meson
     -Dgpl=enabled \
     -Dgtk_doc=disabled \
     -Dintrospection=disabled \
-    -Dtests=disabled"
+    -Dtests=disabled \
+    -Dwebrtc=disabled \
+    -Dgst-plugins-bad:webrtc=disabled \
+    -Dgst-plugins-bad:webrtcdsp=disabled"
 
   meson_install_extras do
     # avoid conflicts from libglvnd

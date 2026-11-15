@@ -3,7 +3,7 @@ require 'package'
 class Mujs < Package
   description 'An embeddable Javascript interpreter in C'
   homepage 'https://mujs.com/'
-  version '1.3.9'
+  version '1.3.11'
   license 'ISC'
   compatibility 'all'
   source_url 'https://github.com/ArtifexSoftware/mujs.git'
@@ -11,13 +11,14 @@ class Mujs < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b6d0fda3ba3952a468b08e00e4ad99389d974d841c8c2063a570b55a026cd984',
-     armv7l: 'b6d0fda3ba3952a468b08e00e4ad99389d974d841c8c2063a570b55a026cd984',
-       i686: '92448403a79d77445d8726fac103de481913229f6e7ed65aa15cf4c2b91b2cf4',
-     x86_64: 'ce14606a0e778e72f725353e2c247e8fe99aaa857d875648da3e9da727397464'
+    aarch64: '0ca589fd7367317ceb931dbd1f74f852a2d388a6534d899c69408f13ec928e30',
+     armv7l: '0ca589fd7367317ceb931dbd1f74f852a2d388a6534d899c69408f13ec928e30',
+       i686: '73cc5c1231274d9c6f5aa55ac5c137190b47e9ce3e520d2608d5c0f98606077d',
+     x86_64: 'bea0c20d00f1c2d350abe29bfc81a6e086bfc8a2ae7e095d36824c67b9f3a10e'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'readline' => :executable
 
   def self.build

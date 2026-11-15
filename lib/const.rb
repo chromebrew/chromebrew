@@ -4,7 +4,7 @@ require 'etc'
 require 'open3'
 
 OLD_CREW_VERSION = defined?(CREW_VERSION) ? CREW_VERSION : '1.0'
-CREW_VERSION = '1.75.0' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
+CREW_VERSION = '1.77.5' unless defined?(CREW_VERSION) && CREW_VERSION == OLD_CREW_VERSION
 
 # Kernel architecture.
 KERN_ARCH = Etc.uname[:machine]
@@ -108,6 +108,7 @@ CREW_LOCAL_BUILD_DIR = "#{CREW_LOCAL_REPO_ROOT}/release/#{ARCH}"
 CREW_MAX_BUILD_TIME  = ENV.fetch('CREW_MAX_BUILD_TIME', '19800') # GitHub Action containers are killed after 6 hours, so set to 5.5 hours.
 CREW_GITLAB_PKG_REPO = 'https://gitlab.com/api/v4/projects/26210301/packages'
 GITLAB_TOKEN = ENV.fetch('GITLAB_TOKEN', nil)
+GITLAB_GLAB_TOKEN = ENV.fetch('GITLAB_GLAB_TOKEN', nil)
 GITLAB_TOKEN_USERNAME = ENV.fetch('GITLAB_TOKEN_USERNAME', nil)
 CREW_GITLAB_TOKEN_LABEL = if GITLAB_TOKEN.nil?
                             ''
@@ -326,7 +327,7 @@ CREW_CMAKE_OPTIONS = <<~OPT.chomp
   -DCMAKE_MODULE_LINKER_FLAGS='#{CREW_LINKER_FLAGS}' \
   -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=TRUE \
   -DCMAKE_BUILD_TYPE=Release \
-  -Wno-dev
+  -Wno-author
 OPT
 
 CREW_CMAKE_LIBSUFFIX_OPTIONS = "#{CREW_CMAKE_OPTIONS} -DLIB_SUFFIX=#{CREW_LIB_SUFFIX}"
@@ -351,14 +352,14 @@ PY3_PIP_RETRIES                  = ENV.fetch('PY3_PIP_RETRIES', '5')
 # Defaults for the current versions used in version checking, in case
 # we are checking versions from outside Chromebrew, such as in CI.
 # Do adjust necessary variables in install.sh when changed here.
-crew_boost_ver_default = '1.91'
+crew_boost_ver_default = '1.92'
 crew_gcc_ver_default = '16'
 crew_icu_ver_default = '78.3'
-crew_llvm_ver_default = '22'
-crew_perl_ver_default = '5.42'
-crew_py_ver_default = '3.14'
+crew_llvm_ver_default = '23'
+crew_perl_ver_default = '5.44'
+crew_py_ver_default = '3.15'
 crew_ruby_ver_default = '4.0'
-crew_rust_ver_default = '1.94'
+crew_rust_ver_default = '1.98'
 if ENV['CI']
   CREW_BOOST_VER = "boost#{crew_boost_ver_default}"
   CREW_GCC_VER  = "gcc#{crew_gcc_ver_default}"
@@ -430,9 +431,9 @@ CREW_DOCOPT = <<~DOCOPT
     crew upgrade [options] [-f|--force] [-k|--keep] [--regenerate-filelist] [-s|--source] [-v|--verbose] [<name> ...]
     crew upload [options] [-f|--force] [-v|--verbose] [<name> ...]
     crew upstream [options] [-a|--all|-f|--force|-j|--json|-u|--update-package-files|-v|--verbose|-vv] <name> ...
-    crew version [options] [<name>]
+    crew version [options] [-j|--json] [<name>]
     crew whatdepends [options] [-j|--json] <name> ...
-    crew whatprovides [options] <pattern> ...
+    crew whatprovides [options] [-j|--json] <pattern> ...
 
     -a --all                   Include all output that is excluded by default.
     -b --include-build-deps    Include build dependencies in output.

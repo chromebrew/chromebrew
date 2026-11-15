@@ -3,19 +3,28 @@ require 'buildsystems/perl'
 class Perl_file_temp < PERL
   description 'Return name and handle of a temporary file safely'
   homepage 'https://metacpan.org/pod/File::Temp'
-  version "0.2311-#{CREW_PERL_VER}"
+  version "0.2312-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
-  source_url 'https://cpan.metacpan.org/authors/id/E/ET/ETHER/File-Temp-0.2311.tar.gz'
-  source_sha256 '2290d61bf5c39882fc3311da9ce1c7f42dbdf825ae169e552c59fe4598b36f4a'
+  source_url "https://cpan.metacpan.org/authors/id/E/ET/ETHER/File-Temp-#{version.split('-')[0]}.tar.gz"
+  source_sha256 '6fa961d955cf84d5b87f2f219a723cf77cb44b79282793f6819ccb19e8d0b884'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '086f60a4785b1e8437aaf85386f5c0ece9026c8d99fcd196203816d16e2f1a48',
-     armv7l: '086f60a4785b1e8437aaf85386f5c0ece9026c8d99fcd196203816d16e2f1a48',
-       i686: '22a2086f617b2ae9c6b321218fd92d15a43945bf46b21b923b26465fcfcadb32',
-     x86_64: '9889a16d8173fb7c7d071d1f4148b7e73066cf458c3b3d3660b1f15d3b9b393a'
+    aarch64: '',
+     armv7l: '',
+       i686: '2f3529cad14b3d7cad87c86bb6f9f0c82aa02fc0bfcad46e759c194765bf939d',
+     x86_64: 'e8cef1dc9ce781afa80cac42f5e8214162ac27296993d2cb0578b55c08c41638'
   })
+
+  binary_sha256({
+    aarch64: '45036d05f425edb77c425c0b3ccd509dc2fa34a6f77413dc8f31963024e05020',
+     armv7l: '45036d05f425edb77c425c0b3ccd509dc2fa34a6f77413dc8f31963024e05020',
+       i686: 'd5a824c39086ea2fa893bfb257d30eece51a6891ed21dc4f4be3315895617aad',
+     x86_64: 'bf53a24609d7dfc94545106998e9713321760de8f30e542ff3c8338c1462aa57'
+  })
+
+  depends_on 'perl' => :logical
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'

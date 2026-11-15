@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Pcsc_lite < Meson
   description 'PCSC is middleware to access a smart card using SCard API (PC/SC).'
   homepage 'https://pcsclite.apdu.fr/'
-  version '2.5.1'
+  version '2.5.3'
   compatibility 'aarch64 armv7l x86_64'
   license 'BSD, ISC, MIT, GPL-3+ and GPL-2'
   source_url 'https://salsa.debian.org/debian/pcsc-lite.git'
@@ -11,9 +11,9 @@ class Pcsc_lite < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fd4d9b728203d2db6e42cf5f2879e974ac83f481585aa4d2143122809f4919f0',
-     armv7l: 'fd4d9b728203d2db6e42cf5f2879e974ac83f481585aa4d2143122809f4919f0',
-     x86_64: 'c5515a41326373166f639a75c6f141829f5430cca30f299e7b5490792cb46bef'
+    aarch64: '5ffef058582c36c5a8108505c09195e61c9b3cb5425ccd3c7981f5dd9c30c877',
+     armv7l: '5ffef058582c36c5a8108505c09195e61c9b3cb5425ccd3c7981f5dd9c30c877',
+     x86_64: 'b1ae6e5aecf9c0f7c1699549173bd9dfeaa7c5ee339a32e520315c2d7a10af0b'
   })
 
   depends_on 'elogind'

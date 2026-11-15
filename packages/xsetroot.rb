@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Xsetroot < Autotools
   description 'Root window parameter setting utility for X'
   homepage 'https://www.x.org/archive/X11R7.5/doc/man/man1/xsetroot.1.html'
-  version '1.1.3'
+  version '1.1.4'
   license 'MIT-with-advertising'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/app/xsetroot.git'
@@ -11,12 +11,15 @@ class Xsetroot < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ccabb9f3c58eb88df8eb937d8be5171d73e6ac3051ac2ff7cfad156abeb8d9ea',
-     armv7l: 'ccabb9f3c58eb88df8eb937d8be5171d73e6ac3051ac2ff7cfad156abeb8d9ea',
-     x86_64: '20a40300aff5dd5eb990a7bfd3e28e1805dd4db15373104a93ce9eb1360c9afb'
+    aarch64: 'e3e69faeca8831ee02bcb4ebb4cd9e2f25a9f2bd0a21dc1731a5ffca5dded3e8',
+     armv7l: 'e3e69faeca8831ee02bcb4ebb4cd9e2f25a9f2bd0a21dc1731a5ffca5dded3e8',
+     x86_64: 'eee714d9b3d7eb223a743cfced328b6b2fdf8eeb8ae9e4e57ab6a4a728f9cf1d'
   })
 
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'libx11' => :executable
+  depends_on 'libxcursor' => :executable
+  depends_on 'libxmu' => :executable
   depends_on 'xbitmaps' => :build
-  depends_on 'libxcursor' => :build
-  depends_on 'libxmu' => :build
 end

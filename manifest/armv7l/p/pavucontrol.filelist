@@ -1,8 +1,12 @@
-# Total size: 1245883
+# Total size: 964021
 /usr/local/bin/pavucontrol
-/usr/local/share/applications/pavucontrol.desktop
+/usr/local/share/applications/org.pulseaudio.pavucontrol.desktop
 /usr/local/share/doc/pavucontrol/README.html
 /usr/local/share/doc/pavucontrol/style.css
+/usr/local/share/icons/hicolor/scalable/apps/org.pulseaudio.pavucontrol.svg
+/usr/local/share/icons/hicolor/symbolic/apps/org.pulseaudio.pavucontrol-symbolic.svg
+/usr/local/share/locale/af/LC_MESSAGES/pavucontrol.mo
+/usr/local/share/locale/ar/LC_MESSAGES/pavucontrol.mo
 /usr/local/share/locale/as/LC_MESSAGES/pavucontrol.mo
 /usr/local/share/locale/ast/LC_MESSAGES/pavucontrol.mo
 /usr/local/share/locale/be/LC_MESSAGES/pavucontrol.mo
@@ -19,11 +23,14 @@
 /usr/local/share/locale/fr/LC_MESSAGES/pavucontrol.mo
 /usr/local/share/locale/gl/LC_MESSAGES/pavucontrol.mo
 /usr/local/share/locale/gu/LC_MESSAGES/pavucontrol.mo
+/usr/local/share/locale/he/LC_MESSAGES/pavucontrol.mo
 /usr/local/share/locale/hi/LC_MESSAGES/pavucontrol.mo
 /usr/local/share/locale/hr/LC_MESSAGES/pavucontrol.mo
 /usr/local/share/locale/hu/LC_MESSAGES/pavucontrol.mo
+/usr/local/share/locale/id/LC_MESSAGES/pavucontrol.mo
 /usr/local/share/locale/it/LC_MESSAGES/pavucontrol.mo
 /usr/local/share/locale/ja/LC_MESSAGES/pavucontrol.mo
+/usr/local/share/locale/ka/LC_MESSAGES/pavucontrol.mo
 /usr/local/share/locale/kk/LC_MESSAGES/pavucontrol.mo
 /usr/local/share/locale/kn/LC_MESSAGES/pavucontrol.mo
 /usr/local/share/locale/ko/LC_MESSAGES/pavucontrol.mo
@@ -38,7 +45,9 @@
 /usr/local/share/locale/pl/LC_MESSAGES/pavucontrol.mo
 /usr/local/share/locale/pt/LC_MESSAGES/pavucontrol.mo
 /usr/local/share/locale/pt_BR/LC_MESSAGES/pavucontrol.mo
+/usr/local/share/locale/ro/LC_MESSAGES/pavucontrol.mo
 /usr/local/share/locale/ru/LC_MESSAGES/pavucontrol.mo
+/usr/local/share/locale/si/LC_MESSAGES/pavucontrol.mo
 /usr/local/share/locale/sk/LC_MESSAGES/pavucontrol.mo
 /usr/local/share/locale/sl/LC_MESSAGES/pavucontrol.mo
 /usr/local/share/locale/sr/LC_MESSAGES/pavucontrol.mo
@@ -51,4 +60,4 @@
 /usr/local/share/locale/uk/LC_MESSAGES/pavucontrol.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/pavucontrol.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/pavucontrol.mo
-/usr/local/share/pavucontrol/pavucontrol.glade
+/usr/local/share/metainfo/org.pulseaudio.pavucontrol.metainfo.xml

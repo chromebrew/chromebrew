@@ -1,0 +1,8 @@
+#!/bin/bash
+compton --help | head
+compton --version
+picom --help | head
+picom --version
+picom-inspect --help | head
+picom-inspect --version
+picom-trans --help | head

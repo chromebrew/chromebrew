@@ -3,12 +3,12 @@ require 'package'
 class Vulkansdk < Package
   description 'Vulkan SDK'
   homepage 'https://vulkan.lunarg.com/'
-  version '1.3.283.0'
+  version '1.4.363.1'
   license 'https://vulkan.lunarg.com/license/#/license'
   compatibility 'x86_64'
-  min_glibc '2.31'
+  min_glibc '2.32'
   source_url "https://sdk.lunarg.com/sdk/download/#{version}/linux/vulkansdk-linux-x86_64-#{version}.tar.xz"
-  source_sha256 '8005e2cf3e89c80cbe1c0d0a259c88248de3257b4fc6fdefb47409edb3e43ecb'
+  source_sha256 'b7867d8ca658563813af666f34b93db87f1b1c7d9d69d97e924c210c7ba33eb8'
 
   depends_on 'libglvnd'
   depends_on 'libxcomposite'
@@ -16,12 +16,14 @@ class Vulkansdk < Package
   depends_on 'vulkan_headers'
   depends_on 'vulkan_icd_loader'
   depends_on 'vulkan_tools'
+  depends_on 'xcb_util_cursor' # Needed for vkconfig
   depends_on 'xcb_util_image'
   depends_on 'xcb_util_keysyms'
   depends_on 'xcb_util_renderutil'
   depends_on 'xcb_util_wm'
   depends_on 'xdg_base'
 
+  conflicts_ok # conflicts with llvm_dev and slang
   no_shrink
   no_compile_needed
   print_source_bashrc
@@ -42,7 +44,7 @@ class Vulkansdk < Package
       FileUtils.rm_rf Dir['share/vulkan/registry/*']
       # Remove conflicts with vulkan_tools
       Dir.chdir 'bin' do
-        %w[vkcube vkcubepp vkcube-wayland vulkaninfo].each do |bin|
+        %w[vkcube vkcubepp vulkaninfo].each do |bin|
           FileUtils.rm bin
         end
       end

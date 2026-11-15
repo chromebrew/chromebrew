@@ -1,0 +1,3 @@
+#!/bin/bash
+qwen -h | head
+qwen -v

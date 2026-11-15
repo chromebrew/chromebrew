@@ -1,0 +1,3 @@
+#!/bin/bash
+Xvfb -help 2>&1 | head
+xvfb-run -help 2>&1 | head

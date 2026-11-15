@@ -3,17 +3,19 @@ require 'buildsystems/perl'
 class Perl_text_csv < PERL
   description 'Comma-separated values manipulator (using XS or PurePerl)'
   homepage 'https://metacpan.org/pod/Text::CSV'
-  version "2.04-#{CREW_PERL_VER}"
+  version "2.06-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
-  source_url 'https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/Text-CSV-2.04.tar.gz'
-  source_sha256 '4f80122e4ea0b05079cad493e386564030f18c8d7b1f9af561df86985a653fe3'
+  source_url "https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/Text-CSV-#{version.split('-')[0]}.tar.gz"
+  source_sha256 'dfcaec925a788b0ba41e51bc6d16e21b0e98b4c7af9b79395090add75f5e506f'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '991988b28ad10c15bc8780b34204b791e1af80abbc362509de2ae875eb0494c0',
-     armv7l: '991988b28ad10c15bc8780b34204b791e1af80abbc362509de2ae875eb0494c0',
-       i686: '8df994f64829f62d09433c98a5f9ba188278bd892bf0a2fb4e2cf147347f641d',
-     x86_64: '664a71e5f564b4be60192f91c6ade574d42d6ca8378d18fe50f7c103535d142a'
+    aarch64: '5f3f1d8cf027a95750f4880ac180afacfaa3589750bb763e5efe3bf994839190',
+     armv7l: '5f3f1d8cf027a95750f4880ac180afacfaa3589750bb763e5efe3bf994839190',
+       i686: '05be43b9113d71ed889fc213f4a923a89d8a2ac2b1324c4b26987d4495541864',
+     x86_64: '902ef71c3aaf1a760b9814d1b627da5f073e0b205a631fa02f8055e58faf8d8c'
   })
+
+  depends_on 'perl' => :logical
 end

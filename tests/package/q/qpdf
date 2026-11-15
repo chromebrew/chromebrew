@@ -1,0 +1,4 @@
+#!/bin/bash
+qpdf --help | head
+qpdf --version
+fix-qdf --version

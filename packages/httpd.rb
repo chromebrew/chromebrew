@@ -3,32 +3,33 @@ require 'buildsystems/autotools'
 class Httpd < Autotools
   description 'The Apache HTTP Server Project is an effort to develop and maintain an open-source HTTP server for modern operating systems including UNIX and Windows.'
   homepage 'https://httpd.apache.org/'
-  version '2.4.66'
+  version '2.4.71'
   license 'GPL-2+'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://dlcdn.apache.org/httpd/httpd-#{version}.tar.bz2"
-  source_sha256 '94d7ff2b42acbb828e870ba29e4cbad48e558a79c623ad3596e4116efcfea25a'
+  source_sha256 '2bc5da5a33c247341de082717d4ebcb5cb49e8b73a05b7fddf7d5d6dc2f8de62'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd3066b6297164c348ad9f95546c24293dd8c6bf1fd4ac319f1b3b5f88b26bc21',
-     armv7l: 'd3066b6297164c348ad9f95546c24293dd8c6bf1fd4ac319f1b3b5f88b26bc21',
-     x86_64: '3d3d491a0f0a6776341e96ec123d5179d6fabc2fc190249e7f7f4534213e9f9c'
+    aarch64: 'a6f12e50c6ac55e4bb38d0c126fff398aad435627759e914110c37dd6f365ed5',
+     armv7l: 'a6f12e50c6ac55e4bb38d0c126fff398aad435627759e914110c37dd6f365ed5',
+     x86_64: 'e36eb83704c1b2f8d84f28b772df487ecb03ccc478d4325af7952b52531a76f9'
   })
 
-  depends_on 'apr'
-  depends_on 'apr_util'
-  depends_on 'brotli' # R
-  depends_on 'expat'
-  depends_on 'glibc' # R
-  depends_on 'libnghttp2' # R
-  depends_on 'libtool'
-  depends_on 'libxcrypt'
-  depends_on 'openssl' # R
-  depends_on 'pcre'
-  depends_on 'pcre2' # R
-  depends_on 'util_linux' # R
-  depends_on 'zlib' # R
+  depends_on 'apr' => :executable
+  depends_on 'apr_util' => :executable
+  depends_on 'brotli' => :library
+  depends_on 'expat' => :executable
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'libnghttp2' => :library
+  depends_on 'libtool' => :library
+  depends_on 'libxcrypt' => :library
+  depends_on 'openssl' => :library
+  depends_on 'pcre' => :executable
+  depends_on 'pcre2' => :executable
+  depends_on 'util_linux' => :library
+  depends_on 'zlib' => :library
 
   print_source_bashrc
 

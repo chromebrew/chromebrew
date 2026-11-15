@@ -3,7 +3,7 @@ require 'package'
 class Libaom < Package
   description 'AV1 video codec from Alliance for Open Media'
   homepage 'https://aomedia.org/'
-  version '3.6.1'
+  version '3.15.3'
   license 'BSD-2'
   compatibility 'all'
   source_url 'https://aomedia.googlesource.com/aom.git'
@@ -11,15 +11,16 @@ class Libaom < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '54083b99311194c9ec94abc1a4419aed309dd3476511c92269dc3d43d5f064aa',
-     armv7l: '54083b99311194c9ec94abc1a4419aed309dd3476511c92269dc3d43d5f064aa',
-       i686: '6a8681ae79e7e5c3674e9ad4460bcc8bf7efb0e3cb956d931b3cca53e6417cc3',
-     x86_64: '3e161e4d2759a9420486c062fedeb063b6dcf6bc4be59e7d6d7e31f453dd2014'
+    aarch64: '97d3ab782d2b6b8a9233f7fc71e9346c6f3d33952465c19dda0b5191d0c15e49',
+     armv7l: '97d3ab782d2b6b8a9233f7fc71e9346c6f3d33952465c19dda0b5191d0c15e49',
+       i686: 'b6b026a72225a7c681aba1eeccd85acac527999b40323e02499799c8d15c3216',
+     x86_64: '05198a7db7b38c0c3b5def8d8acf05fac33a120678a6c76b065d745c1454cfbf'
   })
 
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'nasm' => :build
-  depends_on 'glibc' # R
-  depends_on 'gcc_lib' # R
   no_env_options
 
   def self.build
@@ -40,7 +41,7 @@ class Libaom < Package
       -DENABLE_WERROR:BOOL='OFF' \
       -DINCLUDE_INSTALL_DIR:PATH='#{CREW_PREFIX}/include' \
       -DLIB_INSTALL_DIR:PATH='#{CREW_LIB_PREFIX}' \
-      -Wno-dev"
+      -Wno-author"
     system "#{CREW_NINJA} -C builddir"
   end
 

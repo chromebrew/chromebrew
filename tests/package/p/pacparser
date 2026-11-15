@@ -1,0 +1,3 @@
+#!/bin/bash
+pactester --help 2>&1
+pactester -v

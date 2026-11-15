@@ -1,37 +1,25 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Xfce4_dev_tools < Package
+class Xfce4_dev_tools < Autotools
   description 'Xfce4 development tools'
   homepage 'https://xfce.org/'
-  version '4.17.0'
+  version '4.20.0'
   license 'GPL-2+'
   compatibility 'all'
-  source_url 'https://archive.xfce.org/src/xfce/xfce4-dev-tools/4.17/xfce4-dev-tools-4.17.0.tar.bz2'
-  source_sha256 'd334c1f10e140e666b86c6c3bd8dcd62f1a877f537bcacc974478b6e92c493c7'
-  binary_compression 'tar.xz'
+  source_url "https://archive.xfce.org/src/xfce/xfce4-dev-tools/#{version.sub(/\.\d+$/, '')}/xfce4-dev-tools-#{version}.tar.bz2"
+  source_sha256 '1fba39a08a0ecc771eaa3a3b6e4272a4f0b9e7c67d0f66e780cd6090cd4466aa'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1afbe430ed4e23d84b04573283a458ec64fe127989a9a9e1dd2cc3181e4cbbeb',
-     armv7l: '1afbe430ed4e23d84b04573283a458ec64fe127989a9a9e1dd2cc3181e4cbbeb',
-       i686: '8c3419c54ad2d8b0a205ffb7bba9cf0d5d5d6127153d38c9641ac458cf2f0698',
-     x86_64: 'a4476a7992c67ed8402d6962f1484fa0741ed1283f02cab0ed1af701e265c68b'
+    aarch64: '029ae3ab3ceed5e6e65ef848b160a9f7e6d8a69d90a3b7793a8a9556aa5b1e9c',
+     armv7l: '029ae3ab3ceed5e6e65ef848b160a9f7e6d8a69d90a3b7793a8a9556aa5b1e9c',
+       i686: 'b8e56baea279d5b8d86705c7c241f5046bc1443a4a294717d232dcf32dc8b57a',
+     x86_64: '045254614d75b773c2479d460961727efa4ce52216e426380182bfcfcc2c3f84'
   })
 
-  depends_on 'gtk_doc'
-
-  def self.patch
-    system 'filefix'
-  end
-
-  def self.build
-    system <<~BUILD
-      [ -x autogen.sh ] && env NOCONFIGURE='1' ./autogen.sh
-      env #{CREW_ENV_OPTIONS} ./configure #{CREW_CONFIGURE_OPTIONS}
-      make
-    BUILD
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'glib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'gtk_doc' => :build
+  depends_on 'libxslt' => :build
 end

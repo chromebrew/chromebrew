@@ -1,4 +1,4 @@
-# Total size: 6347157
+# Total size: 6821020
 /usr/local/bin/geos-config
 /usr/local/bin/geosop
 /usr/local/include/geos.h
@@ -8,8 +8,10 @@
 /usr/local/include/geos/algorithm/CGAlgorithmsDD.h
 /usr/local/include/geos/algorithm/CentralEndpointIntersector.h
 /usr/local/include/geos/algorithm/Centroid.h
+/usr/local/include/geos/algorithm/CircularArcIntersector.h
 /usr/local/include/geos/algorithm/CircularArcs.h
 /usr/local/include/geos/algorithm/ConvexHull.h
+/usr/local/include/geos/algorithm/CurveToLineParams.h
 /usr/local/include/geos/algorithm/Distance.h
 /usr/local/include/geos/algorithm/HCoordinate.h
 /usr/local/include/geos/algorithm/InteriorPointArea.h
@@ -19,6 +21,8 @@
 /usr/local/include/geos/algorithm/Intersection.h
 /usr/local/include/geos/algorithm/Length.h
 /usr/local/include/geos/algorithm/LineIntersector.h
+/usr/local/include/geos/algorithm/LineToCurveConverter.h
+/usr/local/include/geos/algorithm/LineToCurveParams.h
 /usr/local/include/geos/algorithm/MinimumAreaRectangle.h
 /usr/local/include/geos/algorithm/MinimumBoundingCircle.h
 /usr/local/include/geos/algorithm/MinimumDiameter.h
@@ -54,6 +58,7 @@
 /usr/local/include/geos/coverage/CoverageBoundarySegmentFinder.h
 /usr/local/include/geos/coverage/CoverageCleaner.h
 /usr/local/include/geos/coverage/CoverageEdge.h
+/usr/local/include/geos/coverage/CoverageEdges.h
 /usr/local/include/geos/coverage/CoverageGapFinder.h
 /usr/local/include/geos/coverage/CoveragePolygon.h
 /usr/local/include/geos/coverage/CoveragePolygonValidator.h
@@ -132,6 +137,7 @@
 /usr/local/include/geos/geom/prep/PreparedPolygonPredicate.h
 /usr/local/include/geos/geom/util/ComponentCoordinateExtracter.h
 /usr/local/include/geos/geom/util/CoordinateOperation.h
+/usr/local/include/geos/geom/util/CurveBuilder.h
 /usr/local/include/geos/geom/util/Densifier.h
 /usr/local/include/geos/geom/util/GeometryCombiner.h
 /usr/local/include/geos/geom/util/GeometryEditor.h
@@ -141,13 +147,16 @@
 /usr/local/include/geos/geom/util/GeometryLister.h
 /usr/local/include/geos/geom/util/GeometryMapper.h
 /usr/local/include/geos/geom/util/GeometryTransformer.h
+/usr/local/include/geos/geom/util/LinealExtracter.h
 /usr/local/include/geos/geom/util/LinearComponentExtracter.h
 /usr/local/include/geos/geom/util/NoOpGeometryOperation.h
 /usr/local/include/geos/geom/util/PointExtracter.h
 /usr/local/include/geos/geom/util/PolygonExtracter.h
 /usr/local/include/geos/geom/util/PolygonalExtracter.h
 /usr/local/include/geos/geom/util/ShortCircuitedGeometryVisitor.h
+/usr/local/include/geos/geom/util/SimpleCurveExtracter.h
 /usr/local/include/geos/geom/util/SineStarFactory.h
+/usr/local/include/geos/geom/util/SurfaceExtracter.h
 /usr/local/include/geos/geomgraph/Depth.h
 /usr/local/include/geos/geomgraph/DirectedEdge.h
 /usr/local/include/geos/geomgraph/DirectedEdgeStar.h
@@ -257,8 +266,13 @@
 /usr/local/include/geos/linearref/LocationIndexedLine.h
 /usr/local/include/geos/math/DD.h
 /usr/local/include/geos/namespaces.h
+/usr/local/include/geos/noding/ArcIntersectionAdder.h
+/usr/local/include/geos/noding/ArcIntersector.h
+/usr/local/include/geos/noding/ArcNoder.h
+/usr/local/include/geos/noding/ArcString.h
 /usr/local/include/geos/noding/BasicSegmentString.h
 /usr/local/include/geos/noding/BoundaryChainNoder.h
+/usr/local/include/geos/noding/DirectionIndependentArcString.h
 /usr/local/include/geos/noding/FastNodingValidator.h
 /usr/local/include/geos/noding/FastSegmentSetIntersectionFinder.h
 /usr/local/include/geos/noding/GeometryNoder.h
@@ -267,6 +281,8 @@
 /usr/local/include/geos/noding/IteratedNoder.h
 /usr/local/include/geos/noding/MCIndexNoder.h
 /usr/local/include/geos/noding/MCIndexSegmentSetMutualIntersector.h
+/usr/local/include/geos/noding/NodableArcString.h
+/usr/local/include/geos/noding/NodablePath.h
 /usr/local/include/geos/noding/NodableSegmentString.h
 /usr/local/include/geos/noding/NodedSegmentString.h
 /usr/local/include/geos/noding/Noder.h
@@ -274,6 +290,7 @@
 /usr/local/include/geos/noding/NodingValidator.h
 /usr/local/include/geos/noding/Octant.h
 /usr/local/include/geos/noding/OrientedCoordinateArray.h
+/usr/local/include/geos/noding/PathString.h
 /usr/local/include/geos/noding/ScaledNoder.h
 /usr/local/include/geos/noding/SegmentExtractingNoder.h
 /usr/local/include/geos/noding/SegmentIntersectionDetector.h
@@ -430,6 +447,9 @@
 /usr/local/include/geos/operation/relateng/TopologyComputer.h
 /usr/local/include/geos/operation/relateng/TopologyPredicate.h
 /usr/local/include/geos/operation/sharedpaths/SharedPathsOp.h
+/usr/local/include/geos/operation/spanning/SpanningTree.h
+/usr/local/include/geos/operation/split/GeometrySplitter.h
+/usr/local/include/geos/operation/split/SplitLinealAtPoint.h
 /usr/local/include/geos/operation/union/CascadedPolygonUnion.h
 /usr/local/include/geos/operation/union/CoverageUnion.h
 /usr/local/include/geos/operation/union/DisjointSubsetUnion.h
@@ -470,9 +490,11 @@
 /usr/local/include/geos/precision/PrecisionReducerTransformer.h
 /usr/local/include/geos/precision/SimpleGeometryPrecisionReducer.h
 /usr/local/include/geos/profiler.h
+/usr/local/include/geos/shape/GeometricShapeBuilder.h
 /usr/local/include/geos/shape/fractal/HilbertCode.h
 /usr/local/include/geos/shape/fractal/HilbertEncoder.h
 /usr/local/include/geos/shape/fractal/MortonCode.h
+/usr/local/include/geos/shape/random/RandomPointsBuilder.h
 /usr/local/include/geos/simplify/ComponentJumpChecker.h
 /usr/local/include/geos/simplify/DouglasPeuckerLineSimplifier.h
 /usr/local/include/geos/simplify/DouglasPeuckerSimplifier.h
@@ -519,6 +541,7 @@
 /usr/local/include/geos/util/IllegalStateException.h
 /usr/local/include/geos/util/Interrupt.h
 /usr/local/include/geos/util/Machine.h
+/usr/local/include/geos/util/Progress.h
 /usr/local/include/geos/util/TopologyException.h
 /usr/local/include/geos/util/UniqueCoordinateArrayFilter.h
 /usr/local/include/geos/util/UnsupportedOperationException.h
@@ -533,8 +556,8 @@
 /usr/local/lib/cmake/GEOS/geos-targets-release.cmake
 /usr/local/lib/cmake/GEOS/geos-targets.cmake
 /usr/local/lib/libgeos.so
-/usr/local/lib/libgeos.so.3.14.1
+/usr/local/lib/libgeos.so.3.15.0
 /usr/local/lib/libgeos_c.so
 /usr/local/lib/libgeos_c.so.1
-/usr/local/lib/libgeos_c.so.1.20.5
+/usr/local/lib/libgeos_c.so.1.21.0
 /usr/local/lib/pkgconfig/geos.pc

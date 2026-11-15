@@ -5,7 +5,7 @@ class Glib_stub < Meson
   description 'Glib stub built without gobject_introspection, needed as a build dep for gobject_instrospection'
   homepage 'https://developer.gnome.org/glib'
   version Glib.version
-  version '2.86.4'
+  version '2.90.1'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/glib.git'
@@ -13,21 +13,22 @@ class Glib_stub < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ba1df16740f4842b26d8c205b3a15b4f0167d0a437e6e9e393346363768aaaf8',
-     armv7l: 'ba1df16740f4842b26d8c205b3a15b4f0167d0a437e6e9e393346363768aaaf8',
-       i686: '875a214c4ba41a05653b510dc1b96b0f25213dafcd37511dcd6a05672089aaa4',
-     x86_64: 'd98bea7dcc189f77a4445ffebe7c7f44daa4638d55ea75837eea9d64935420fa'
+    aarch64: '647abec95dab32e1cf5977977bb7f009a6991477d1ce526183420ca6635c7e3f',
+     armv7l: '647abec95dab32e1cf5977977bb7f009a6991477d1ce526183420ca6635c7e3f',
+       i686: '03c96727be3f701eba596ea11eba0a0eb42fa72423db8b76968e3d8c01609ed7',
+     x86_64: 'bcd93862dc83a2ddae4c309c4ed16916d5e143619761f71158de10de6855c30e'
   })
 
   depends_on 'elfutils' => :executable
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'libffi' # R
-  depends_on 'pcre2' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'libffi' => :library
+  depends_on 'pcre2' => :library
   depends_on 'py3_pygments' => :build
   depends_on 'shared_mime_info' => :logical
-  depends_on 'util_linux' # R
-  depends_on 'zlib' # R
+  depends_on 'util_linux' => :library
+  depends_on 'zlib' => :library
 
   conflicts_ok # Conflicts with glib.
   gnome

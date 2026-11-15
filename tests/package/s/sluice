@@ -1,0 +1,3 @@
+#!/bin/bash
+sluice -h | head
+sluice -V

@@ -1,0 +1,5 @@
+#!/bin/bash
+appstream-builder -h | head
+appstream-compose -h | head
+appstream-util -h | head
+appstream-util --version

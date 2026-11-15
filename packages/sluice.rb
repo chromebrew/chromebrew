@@ -1,28 +1,41 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Sluice < Package
+class Sluice < Autotools
   description 'Sluice is a program that reads input on stdin and outputs on stdout at a specified data rate.'
-  homepage 'https://kernel.ubuntu.com/~cking/sluice/'
-  version '0.02.08'
+  homepage 'https://github.com/ColinIanKing/sluice'
+  version '0.03.01'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://kernel.ubuntu.com/~cking/tarballs/sluice/sluice-0.02.08.tar.gz'
-  source_sha256 'c1fc8093f93bc376d494883f3302749fcf46a1041baab6c3304ef6185f9c1569'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/ColinIanKing/sluice.git'
+  git_hashtag "V#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b0cab6d3faaff309e4c81f16b81873c44968a1fca5b89996116c5a53cdf0eef3',
-     armv7l: 'b0cab6d3faaff309e4c81f16b81873c44968a1fca5b89996116c5a53cdf0eef3',
-       i686: '6539f7c68e21409f6b4bbb03bff5b1e70c578290fb7d0f9ee20e2bfa1b2f6cf5',
-     x86_64: 'aa22286d0331082d72c65670f8550ae11c74e348ff8fe873247d5b1df011612e'
+    aarch64: 'c8a189bf8c165714411b62080190f3ddf7885192c7bdc5ff5c56605882d5bf41',
+     armv7l: 'c8a189bf8c165714411b62080190f3ddf7885192c7bdc5ff5c56605882d5bf41',
+       i686: 'ad78a68b39f9d13ef84493165411e3708d83d3b107aa601ba593150ed497407a',
+     x86_64: '1d9cac96774d9c7b17ee086cbf429ac8057537ecd72d4acad78f3ee18fc322ed'
   })
 
-  def self.build
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+
+  print_source_bashrc
+
+  def self.patch
     system "sed -i 's,/usr,#{CREW_PREFIX},g' Makefile"
-    system 'make'
   end
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  def self.build
+    File.write '10-sluice', <<~EOF
+      #!/bin/bash
+      source #{CREW_PREFIX}/share/bash-completion/completions/sluice
+    EOF
+  end
+
+  autotools_skip_configure
+
+  autotools_install_extras do
+    FileUtils.install '10-sluice', "#{CREW_DEST_PREFIX}/etc/env.d/10-sluice", mode: 0o644
   end
 end

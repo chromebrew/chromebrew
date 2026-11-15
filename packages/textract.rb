@@ -1,39 +1,32 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Textract < Package
+class Textract < Pip
   description 'Textract provides text extracting tools for many formats.'
   homepage 'http://textract.readthedocs.io/'
-  version '1.6.4'
+  version '2.1.0'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://github.com/deanmalmgren/textract.git'
-  git_hashtag "v#{version}"
-  binary_compression 'tpxz'
+  source_url 'SKIP'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd621a56b5d12557eb7d96c234a70f46fe009bb9f9cf4cb3ccf1d3d2193f95ce2',
-     armv7l: 'd621a56b5d12557eb7d96c234a70f46fe009bb9f9cf4cb3ccf1d3d2193f95ce2',
-     x86_64: '0b3fedcbfd45de8555ac00ae5bf343bc979a0d8b843315335959996332e8fb90'
+    aarch64: '691ad0ecb93a19cd2657c7ee43f01171a3c2bf11cd385d1eaba36b6b7a9108f1',
+     armv7l: '691ad0ecb93a19cd2657c7ee43f01171a3c2bf11cd385d1eaba36b6b7a9108f1',
+     x86_64: 'c9660d99772e5146aa8ad09ec190cca6cd0842611ca3090f942a536eb71e5db1'
   })
 
-  depends_on 'py3_pdfminer_six'
-  depends_on 'py3_ebooklib'
-  depends_on 'py3_python_pptx'
-  depends_on 'py3_extract_msg'
-  depends_on 'py3_xlrd'
-  depends_on 'py3_docx2txt'
-  depends_on 'py3_argcomplete'
-  depends_on 'py3_speechrecognition'
-  depends_on 'py3_chardet'
-  depends_on 'py3_beautifulsoup4'
-  depends_on 'py3_six'
-  depends_on 'python3' => :build
+  depends_on 'py3_argcomplete' => :library
+  depends_on 'py3_beautifulsoup4' => :library
+  depends_on 'py3_chardet' => :library
+  depends_on 'py3_docx2txt' => :library
+  depends_on 'py3_ebooklib' => :library
+  depends_on 'py3_extract_msg' => :library
+  depends_on 'py3_pdfminer_six' => :library
+  depends_on 'py3_python_pptx' => :library
+  depends_on 'py3_six' => :library
+  depends_on 'py3_speechrecognition' => :library
+  depends_on 'py3_xlrd' => :library
+  depends_on 'python3' => :logical
 
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
+  no_source_build
 end

@@ -9,7 +9,7 @@ class Command
       pkg_name = File.basename(filelist, '.filelist')
       pkg_name_status = File.file?(File.join(CREW_PACKAGES_PATH, "#{pkg_name}.rb")) ? pkg_name : nil
       if pkg_name_status
-        if PackageUtils.compatible?(Package.load_package(File.join(CREW_PACKAGES_PATH, "#{pkg_name}.rb")))
+        if PackageUtils.compatible?(Package.load_package(File.join(CREW_PACKAGES_PATH, "#{pkg_name}.rb"), false, true))
           pkg_name_status = pkg_name.lightgreen if PackageUtils.installed?(pkg_name)
         else
           pkg_name_status = pkg_name.lightred
@@ -18,7 +18,11 @@ class Command
 
       pkg_name_status.nil? ? '' : "#{pkg_name_status}: #{matched_file}"
     end.sort.map(&:strip).reject(&:empty?)
-
-    puts matched_list, "\nTotal found: #{matched_list.length}".lightgreen if matched_list.any?
+    json_provides = matched_list.flat_map { it.split(':')[0] }
+    if CREW_OUTPUT_JSON
+      puts json_provides.to_json
+    elsif matched_list.any?
+      puts matched_list, "\nTotal found: #{matched_list.length}".lightgreen
+    end
   end
 end

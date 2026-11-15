@@ -1,7 +1,7 @@
-# Total size: 20351399
+# Total size: 1703381
 /usr/local/bin/kcov
 /usr/local/bin/kcov-system-daemon
 /usr/local/share/doc/kcov/COPYING
 /usr/local/share/doc/kcov/COPYING.externals
 /usr/local/share/doc/kcov/ChangeLog
-/usr/local/share/man/man1/kcov.1.gz
+/usr/local/share/man/man1/kcov.1.zst

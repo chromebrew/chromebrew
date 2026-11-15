@@ -1,4 +1,4 @@
-# Total size: 1373917
+# Total size: 1464785
 /usr/local/bin/gensquashfs
 /usr/local/bin/rdsquashfs
 /usr/local/bin/sqfs2tar
@@ -29,10 +29,10 @@
 /usr/local/lib64/libsquashfs.la
 /usr/local/lib64/libsquashfs.so
 /usr/local/lib64/libsquashfs.so.1
-/usr/local/lib64/libsquashfs.so.1.1.1
+/usr/local/lib64/libsquashfs.so.1.4.1
 /usr/local/lib64/pkgconfig/libsquashfs1.pc
-/usr/local/share/man/man1/gensquashfs.1.gz
-/usr/local/share/man/man1/rdsquashfs.1.gz
-/usr/local/share/man/man1/sqfs2tar.1.gz
-/usr/local/share/man/man1/sqfsdiff.1.gz
-/usr/local/share/man/man1/tar2sqfs.1.gz
+/usr/local/share/man/man1/gensquashfs.1.zst
+/usr/local/share/man/man1/rdsquashfs.1.zst
+/usr/local/share/man/man1/sqfs2tar.1.zst
+/usr/local/share/man/man1/sqfsdiff.1.zst
+/usr/local/share/man/man1/tar2sqfs.1.zst

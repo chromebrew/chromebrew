@@ -1,0 +1,3 @@
+#!/bin/bash
+ettercap -h | head
+ettercap -v

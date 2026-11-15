@@ -1,0 +1,3 @@
+#!/bin/bash
+profanity -h
+profanity -v

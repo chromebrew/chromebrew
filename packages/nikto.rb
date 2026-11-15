@@ -3,7 +3,7 @@ require 'package'
 class Nikto < Package
   description 'Open Source (GPL) web server scanner which performs comprehensive tests against web servers'
   homepage 'https://cirt.net/Nikto2'
-  version '2.6.0'
+  version '2.6.1'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/sullo/nikto.git'

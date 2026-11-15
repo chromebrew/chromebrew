@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Nano < Autotools
   description 'Nano\'s ANOther editor, an enhanced free Pico clone.'
   homepage 'https://www.nano-editor.org/'
-  version '9.1'
+  version '9.3'
   license 'GPL-3'
   compatibility 'all'
   source_url "https://www.nano-editor.org/dist/v#{version.split('.').first}/nano-#{version}.tar.xz"
-  source_sha256 '5f47764274cb7532349ce0aa20ec10f1e8e851a6e9fa3eb66812c43d196db042'
+  source_sha256 'a9affc52c9596ee0682bcdd4ceb3c0b235eb221d83d733dfd9b0dff45897cb0d'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c7db5b3255171de14cacf7ee2e14c7856b4e54ad81ecdaced59593498d356140',
-     armv7l: 'c7db5b3255171de14cacf7ee2e14c7856b4e54ad81ecdaced59593498d356140',
-       i686: 'e03d1a1ef430f514d311885cd1e29c2f067c8691def945cf89fa2456cf6aab6f',
-     x86_64: '3575f7e46d895a4a98aa39761ed699ea1d5b95cd8c2ffee6dc86b25e5431e924'
+    aarch64: 'c5fe4302456c2954cb67de20a7d901c975f4017ea5b22fa656b86956329d7f44',
+     armv7l: 'c5fe4302456c2954cb67de20a7d901c975f4017ea5b22fa656b86956329d7f44',
+       i686: '360f73d7a805d3a845383a0975e6ec5d6307bfa4cdfcc35f40cd4154f3625699',
+     x86_64: '33fd5a2bc3b92af300e37ce0d8f2abadcc202816c3b3c70bbd823ad7c898c6c4'
   })
 
   depends_on 'filecmd' => :executable

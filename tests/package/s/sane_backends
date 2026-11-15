@@ -1,0 +1,5 @@
+#!/bin/bash
+sane-config --help 2>&1
+sane-config --version
+scanimage -h | head
+scanimage -V

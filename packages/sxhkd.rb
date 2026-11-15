@@ -1,31 +1,27 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Sxhkd < Package
+class Sxhkd < Autotools
   description 'Simple X HotKey Daemon'
   homepage 'https://github.com/baskerville/sxhkd'
-  version '0.6.2'
+  version '0.6.3'
   license 'BSD-2'
   compatibility 'all'
-  source_url 'https://github.com/baskerville/sxhkd/archive/0.6.2.tar.gz'
-  source_sha256 '1edc8b1a8b3631c10ba9cb9df1181830dacbbdf77adb558e31d5dd2029637386'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/baskerville/sxhkd.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ddc4774617d8238d80e4319771f1a9d6ef76f91337f76fa68aa49c543042bed9',
-     armv7l: 'ddc4774617d8238d80e4319771f1a9d6ef76f91337f76fa68aa49c543042bed9',
-       i686: '0363cb29cef86ce890375b5b6f471b8f07bab7b4762d230a9e550e7cdb8ab29b',
-     x86_64: '8781a6790da9fa13c94e6b751f99fa448a9380d4be599aec7c56bad4a9b7e3b5'
+    aarch64: '0a2f474b4bb54024dec326a996118d66c09ff43534262155acd24dfd95682694',
+     armv7l: '0a2f474b4bb54024dec326a996118d66c09ff43534262155acd24dfd95682694',
+       i686: 'e4e8b0fd8d2b82a53882130e21f0f56601df4efbf16ce7f1320a4e562fd85db0',
+     x86_64: '75332a8ba73f04792c941538e9ed85d863b56156d0ab84c5e446a3ecd1c52c6d'
   })
 
-  depends_on 'xcb_util_keysyms'
-  depends_on 'xcb_util'
-  depends_on 'libxcb'
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'libxcb' => :executable
+  depends_on 'xcb_util' => :executable
+  depends_on 'xcb_util_keysyms' => :executable
 
-  def self.build
-    system "make PREFIX=#{CREW_PREFIX}"
-  end
-
-  def self.install
-    system 'make install'
-  end
+  autotools_skip_configure
 end

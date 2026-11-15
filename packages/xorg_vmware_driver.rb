@@ -1,32 +1,26 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Xorg_vmware_driver < Package
+class Xorg_vmware_driver < Autotools
   description 'The Xorg VMware Driver package contains the X.Org Video Driver for VMware SVGA virtual video cards.'
   homepage 'https://01.org/linuxgraphics/'
-  version '13.2.1'
+  version '13.4.0'
   license 'MIT and MIT-with-advertising'
-  compatibility 'all'
-  source_url 'https://www.x.org/pub/individual/driver/xf86-video-vmware-13.2.1.tar.bz2'
-  source_sha256 'e2f7f7101fba7f53b268e7a25908babbf155b3984fb5268b3d244eb6c11bf62b'
-  binary_compression 'tar.xz'
+  compatibility 'aarch64 armv7l x86_64'
+  source_url 'https://gitlab.freedesktop.org/xorg/driver/xf86-video-vmware.git'
+  git_hashtag "xf86-video-vmware-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '23546757562958f739b4121ba98cb3324ab32687d073bdd6a0d868ee993a0bc1',
-     armv7l: '23546757562958f739b4121ba98cb3324ab32687d073bdd6a0d868ee993a0bc1',
-       i686: '3ee148b38ba1ac371227ce7a121b03d97aa77895d0b9e02a8d5a0bc9f6e449d9',
-     x86_64: '2f4c4dd3532057e2fa8bdfc6f09427987e840696eae2464a9806dcaac315aac8'
+    aarch64: 'c6d78445a071062f9450a6b78bf5f2bef36005a27784098f0cdfc93d7a04bc1d',
+     armv7l: 'c6d78445a071062f9450a6b78bf5f2bef36005a27784098f0cdfc93d7a04bc1d',
+     x86_64: '1b9be5dea73c63036f47ae7bdb84ac12f868a8d3a6fc32e6a0875acdb2f48b97'
   })
 
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'xorg_server' => :build
 
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--enable-shared',
-           '--disable-static'
-    system 'make'
-  end
+  autotools_pre_configure_options "CFLAGS+=' -Wno-implicit-function-declaration'"
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install-strip'

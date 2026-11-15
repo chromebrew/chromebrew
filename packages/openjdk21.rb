@@ -3,12 +3,12 @@ require 'package'
 class Openjdk21 < Package
   description 'The JDK is a development environment for building applications, applets, and components using the Java programming language.'
   homepage 'https://openjdk.org/'
-  version '21.0.10'
+  version '21.0.12.1'
   license 'GPL-2'
   compatibility 'x86_64'
   # Visit https://www.azul.com/downloads/?version=java-21-lts&package=jdk#zulu to download the binary.
-  source_url 'https://cdn.azul.com/zulu/bin/zulu21.48.15-ca-jdk21.0.10-linux_x64.tar.gz'
-  source_sha256 '7f15f667580a8977962dc0a709cf2a097cc71244614fad3f236debce9d1c2670'
+  source_url 'https://cdn.azul.com/zulu/bin/zulu21.52.203-ca-jdk21.0.12.1-linux_x64.tar.gz'
+  source_sha256 'db0c11e13b545e64d520b4821f4ca38ea9bc1c515924eb1e7f48435df101f183'
 
   no_compile_needed
   no_shrink

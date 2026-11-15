@@ -1,0 +1,3 @@
+#!/bin/bash
+drop -h | head
+drop -v

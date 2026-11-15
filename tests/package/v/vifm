@@ -1,0 +1,3 @@
+#!/bin/bash
+vifm -h | head
+vifm -v

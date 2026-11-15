@@ -3,26 +3,28 @@ require 'buildsystems/autotools'
 class Libxi < Autotools
   description 'X.org libXi Client library for XInput'
   homepage 'https://x.org/wiki/'
-  version '1.8.2'
+  version '1.8.4'
   license 'MIT and custom'
-  compatibility 'aarch64 armv7l x86_64'
+  compatibility 'all'
   source_url "https://www.x.org/archive/individual/lib/libXi-#{version}.tar.gz"
-  source_sha256 '5542daec66febfeb6f51d57abfa915826efe2e3af57534f4105b82240ea3188d'
+  source_sha256 '4d52f03b693cf3b32ae21701310cce34344ec8535f50d1667b1510a7083eca4a'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b3e5642452b75fe976eae04dc4573b5924cba264033785ced61c934b7566cb88',
-     armv7l: 'b3e5642452b75fe976eae04dc4573b5924cba264033785ced61c934b7566cb88',
-     x86_64: 'a5cf0fb54f10f08851c562e2f9f60b5a87c3febee35c82cd9b53b267ebddfa2b'
+    aarch64: 'a2a4acb225f8f64b6256425bd6b6cd4f70edb71fa36422690f3827141c9cf27b',
+     armv7l: 'a2a4acb225f8f64b6256425bd6b6cd4f70edb71fa36422690f3827141c9cf27b',
+       i686: 'c808d94a1be5754e3cf55d29a2292c6b1dc639d89466a3e0bca6cdc26bf97faa',
+     x86_64: '102295c1d7d12bb928a86637bb4e194824e977cba6ba190ec79540de13892229'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'libbsd' # R
-  depends_on 'libx11' # R
-  depends_on 'libxau' # R
-  depends_on 'libxcb' # R
-  depends_on 'libxdmcp' # R
-  depends_on 'libxext' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'libbsd' => :library
+  depends_on 'libx11' => :library
+  depends_on 'libxau' => :library
+  depends_on 'libxcb' => :library
+  depends_on 'libxdmcp' => :library
+  depends_on 'libxext' => :library
   depends_on 'libxfixes' => :build
   depends_on 'xorg_proto' => :build
 end

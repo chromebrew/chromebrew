@@ -1,4 +1,4 @@
-# Total size: 1903734
+# Total size: 2106991
 /usr/local/include/xsimd/arch/common/xsimd_common_arithmetic.hpp
 /usr/local/include/xsimd/arch/common/xsimd_common_bit.hpp
 /usr/local/include/xsimd/arch/common/xsimd_common_cast.hpp
@@ -13,6 +13,7 @@
 /usr/local/include/xsimd/arch/utils/shifts.hpp
 /usr/local/include/xsimd/arch/xsimd_avx.hpp
 /usr/local/include/xsimd/arch/xsimd_avx2.hpp
+/usr/local/include/xsimd/arch/xsimd_avx2_128.hpp
 /usr/local/include/xsimd/arch/xsimd_avx512bw.hpp
 /usr/local/include/xsimd/arch/xsimd_avx512cd.hpp
 /usr/local/include/xsimd/arch/xsimd_avx512dq.hpp
@@ -22,8 +23,12 @@
 /usr/local/include/xsimd/arch/xsimd_avx512pf.hpp
 /usr/local/include/xsimd/arch/xsimd_avx512vbmi.hpp
 /usr/local/include/xsimd/arch/xsimd_avx512vbmi2.hpp
+/usr/local/include/xsimd/arch/xsimd_avx512vl.hpp
+/usr/local/include/xsimd/arch/xsimd_avx512vl_128.hpp
+/usr/local/include/xsimd/arch/xsimd_avx512vl_256.hpp
 /usr/local/include/xsimd/arch/xsimd_avx512vnni_avx512bw.hpp
 /usr/local/include/xsimd/arch/xsimd_avx512vnni_avx512vbmi2.hpp
+/usr/local/include/xsimd/arch/xsimd_avx_128.hpp
 /usr/local/include/xsimd/arch/xsimd_avxvnni.hpp
 /usr/local/include/xsimd/arch/xsimd_common.hpp
 /usr/local/include/xsimd/arch/xsimd_common_fwd.hpp
@@ -31,6 +36,7 @@
 /usr/local/include/xsimd/arch/xsimd_emulated.hpp
 /usr/local/include/xsimd/arch/xsimd_fma3_avx.hpp
 /usr/local/include/xsimd/arch/xsimd_fma3_avx2.hpp
+/usr/local/include/xsimd/arch/xsimd_fma3_avx2_128.hpp
 /usr/local/include/xsimd/arch/xsimd_fma3_sse.hpp
 /usr/local/include/xsimd/arch/xsimd_fma4.hpp
 /usr/local/include/xsimd/arch/xsimd_i8mm_neon64.hpp
@@ -74,6 +80,7 @@
 /usr/local/include/xsimd/types/xsimd_avx512pf_register.hpp
 /usr/local/include/xsimd/types/xsimd_avx512vbmi2_register.hpp
 /usr/local/include/xsimd/types/xsimd_avx512vbmi_register.hpp
+/usr/local/include/xsimd/types/xsimd_avx512vl_register.hpp
 /usr/local/include/xsimd/types/xsimd_avx512vnni_avx512bw_register.hpp
 /usr/local/include/xsimd/types/xsimd_avx512vnni_avx512vbmi2_register.hpp
 /usr/local/include/xsimd/types/xsimd_avx_register.hpp
@@ -83,6 +90,7 @@
 /usr/local/include/xsimd/types/xsimd_batch_fwd.hpp
 /usr/local/include/xsimd/types/xsimd_common_arch.hpp
 /usr/local/include/xsimd/types/xsimd_emulated_register.hpp
+/usr/local/include/xsimd/types/xsimd_fma3_avx2_128_register.hpp
 /usr/local/include/xsimd/types/xsimd_fma3_avx2_register.hpp
 /usr/local/include/xsimd/types/xsimd_fma3_avx_register.hpp
 /usr/local/include/xsimd/types/xsimd_fma3_sse_register.hpp

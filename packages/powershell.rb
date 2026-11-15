@@ -3,7 +3,7 @@ require 'package'
 class Powershell < Package
   description 'Powershell is a cross-platform, task-based command-line shell and scripting language that helps rapidly automate tasks that manage operating systems and processes'
   homepage 'https://learn.microsoft.com/en-us/powershell/'
-  version '7.6.3'
+  version '7.7.0'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   min_glibc '2.34'
@@ -14,9 +14,9 @@ class Powershell < Package
      x86_64: "https://github.com/PowerShell/PowerShell/releases/download/v#{version}/powershell-#{version}-linux-x64.tar.gz"
   })
   source_sha256({
-    aarch64: '885fec4143089832d9a1f3ef063e6f7cf3118e0078927ba49b3bef5345997330',
-     armv7l: '885fec4143089832d9a1f3ef063e6f7cf3118e0078927ba49b3bef5345997330',
-     x86_64: '856d0765d2332377f9d7a4aea76efdfde4de51446e7738dde2dfda41dba9e2a7'
+    aarch64: 'd05e2bbc7b165e4db1b7194f92ccb6951e09847d4013f9cc464ead1c8804a10a',
+     armv7l: 'd05e2bbc7b165e4db1b7194f92ccb6951e09847d4013f9cc464ead1c8804a10a',
+     x86_64: 'c89d9c682d2c403dfe726f3df948e359675235a5bd6fab535776de69729ca0cb'
   })
 
   depends_on 'xdg_base'

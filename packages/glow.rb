@@ -3,7 +3,7 @@ require 'package'
 class Glow < Package
   description 'Glow is a terminal based markdown reader.'
   homepage 'https://github.com/charmbracelet/glow'
-  version '2.1.2'
+  version '3.0.0'
   license 'MIT'
   compatibility 'all'
   source_url({
@@ -13,10 +13,10 @@ class Glow < Package
      x86_64: "https://github.com/charmbracelet/glow/releases/download/v#{version}/glow_#{version}_Linux_x86_64.tar.gz"
   })
   source_sha256({
-    aarch64: '108a4f0370c38965a4aaaadb498b4ba0d2dc2ebad31690e32cbbad87302ba03b',
-     armv7l: '108a4f0370c38965a4aaaadb498b4ba0d2dc2ebad31690e32cbbad87302ba03b',
-       i686: '755eb843a7d652bd24663cca07d3b73400cf8d919b93d3b6fc525dc8f3befcf9',
-     x86_64: '6063d4f2af8a82a5f4bba0831e165de9381660aa8b41df4816d0106a265b07d5'
+    aarch64: 'cb2aac35ae6c1e9656e38c5339ae30a826334e4d46511077c49f9699bd99c33d',
+     armv7l: 'cb2aac35ae6c1e9656e38c5339ae30a826334e4d46511077c49f9699bd99c33d',
+       i686: '9c304ad49cf0271e49d6f0a2c32df4b0a09941df4721f11795f82a7ef5df1ddf',
+     x86_64: '13e05e4b2acc18d2aee44291aefe6325b077ec321b631a0cfa780e8e3bc33f78'
   })
 
   no_compile_needed

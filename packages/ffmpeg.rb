@@ -3,7 +3,7 @@ require 'package'
 class Ffmpeg < Package
   description 'Complete solution to record, convert and stream audio and video'
   homepage 'https://ffmpeg.org/'
-  version '8.1.2'
+  version '9.0.2'
   license 'LGPL-2,1, GPL-2, GPL-3, and LGPL-3' # When changing ffmpeg's configure options, make sure this variable is still accurate.
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://git.ffmpeg.org/ffmpeg.git'
@@ -11,9 +11,9 @@ class Ffmpeg < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '36cf50b8abb97ab4cbc8a339cd4d5d10f835088d7857261ffc2bf8b04bdd8d99',
-     armv7l: '36cf50b8abb97ab4cbc8a339cd4d5d10f835088d7857261ffc2bf8b04bdd8d99',
-     x86_64: '53a556556da254bf5f51e93dce313482b86eb28dad4fe74a7810ea71626f8eed'
+    aarch64: '44fbf93b626f04c652e511074e097dc7788082adae4acb6f7bf98a369eff3ac2',
+     armv7l: '44fbf93b626f04c652e511074e097dc7788082adae4acb6f7bf98a369eff3ac2',
+     x86_64: '35631e0f17898c9e6c5584f8957b784199e7e017eceb0a2418e6dc7feef2f6fb'
   })
 
   depends_on 'alsa_lib' => :library
@@ -28,10 +28,9 @@ class Ffmpeg < Package
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
   depends_on 'gsm' => :build
-  depends_on 'gstreamer' => :library
-  depends_on 'harfbuzz' # R
-  depends_on 'intel_media_sdk' if ARCH == 'x86_64' && CREW_IS_INTEL # R
+  depends_on 'harfbuzz' => :library
   depends_on 'jack' => :library
+  depends_on 'ladspa' => :build
   depends_on 'libaom' => :library
   depends_on 'libass' => :library
   depends_on 'libavc1394' => :library
@@ -40,13 +39,14 @@ class Ffmpeg < Package
   depends_on 'libdrm' => :library
   depends_on 'libfdk_aac' => :library
   depends_on 'libfrei0r' => :build
-  depends_on 'libglvnd' # R
+  depends_on 'libglvnd' => :library
   depends_on 'libiec61883' => :library
   depends_on 'libjxl' => :library
   depends_on 'libmodplug' => :library
   depends_on 'libmp3lame' => :library
   depends_on 'libopencoreamr' => :library
   depends_on 'libraw1394' => :library
+  depends_on 'libsamplerate' => :library
   depends_on 'libsoxr' => :library
   depends_on 'libssh' => :library
   depends_on 'libtheora' => :library
@@ -69,8 +69,6 @@ class Ffmpeg < Package
   depends_on 'openjpeg' => :library
   depends_on 'openssl' => :library
   depends_on 'opus' => :library
-  depends_on 'pipewire' # R
-  depends_on 'pulseaudio' => :library
   depends_on 'rav1e' => :library
   depends_on 'rtmpdump' => :library
   depends_on 'rubberband' => :library
@@ -144,7 +142,7 @@ class Ffmpeg < Package
         --enable-libopencore_amrwb \
         --enable-libopenjpeg \
         --enable-libopus \
-        --enable-libpulse \
+        --disable-libpulse \
         --enable-librav1e \
         --enable-librtmp \
         --enable-librubberband \

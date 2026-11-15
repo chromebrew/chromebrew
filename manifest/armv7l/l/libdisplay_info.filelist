@@ -1,0 +1,16 @@
+# Total size: 380369
+/usr/local/bin/di-edid-decode
+/usr/local/include/libdisplay-info/cta-vic.h
+/usr/local/include/libdisplay-info/cta.h
+/usr/local/include/libdisplay-info/cvt.h
+/usr/local/include/libdisplay-info/displayid.h
+/usr/local/include/libdisplay-info/displayid2.h
+/usr/local/include/libdisplay-info/dmt.h
+/usr/local/include/libdisplay-info/edid.h
+/usr/local/include/libdisplay-info/gtf.h
+/usr/local/include/libdisplay-info/hdmi-vic.h
+/usr/local/include/libdisplay-info/info.h
+/usr/local/lib/libdisplay-info.so
+/usr/local/lib/libdisplay-info.so.0.4.0
+/usr/local/lib/libdisplay-info.so.4
+/usr/local/lib/pkgconfig/libdisplay-info.pc

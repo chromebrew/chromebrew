@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Tdb < Package
+class Tdb < Autotools
   description 'tdb is a simple database API for sharing structures between parts of Samba'
   homepage 'https://tdb.samba.org/'
   version "1.4.15-#{CREW_PY_VER}"
@@ -11,26 +11,23 @@ class Tdb < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fb421fffe1ad6455ef117cfdec23eba6b4f6726c942f6f8580b029ba3f12286d',
-     armv7l: 'fb421fffe1ad6455ef117cfdec23eba6b4f6726c942f6f8580b029ba3f12286d',
-       i686: 'f52321235c9ea865a35548230756540ba8f508efbf80a0525a880f4389b3bd16',
-     x86_64: 'f1b7e973def25de7d991adea278c12a3bcc8c89b7efaa3859bc7fdc1b1ec0958'
+    aarch64: '3698cc5856db7656f2094ec30e35dec63a25155b47b120799386bfab2c73f95d',
+     armv7l: '3698cc5856db7656f2094ec30e35dec63a25155b47b120799386bfab2c73f95d',
+       i686: 'fda29498309b065e20d7506c221a6f7778aa1ffc4ab01d59d1372b1dbf698c08',
+     x86_64: 'f9eefb6e611a40cdc6c00040a07304486a0ccbbe872b2f05e471cf6aeaa94cb4'
   })
 
   depends_on 'docbook_xml' => :build
-  depends_on 'gcc_lib' # R
+  depends_on 'gcc_lib' => :library
   depends_on 'gdb' => :build
-  depends_on 'glibc' # R
-  depends_on 'libbsd' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'libbsd' => :library
   depends_on 'libxslt' => :build
   depends_on 'python3' => :build
 
   def self.build
     system "./configure #{CREW_CONFIGURE_OPTIONS.sub(/--program-suffix.*/, '')}"
     system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

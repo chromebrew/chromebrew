@@ -1,0 +1,3 @@
+#!/bin/bash
+weather -h | head
+weather --version

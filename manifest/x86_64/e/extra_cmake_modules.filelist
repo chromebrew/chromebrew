@@ -1,10 +1,11 @@
-# Total size: 1939252
+# Total size: 2028070
 /usr/local/share/ECM/cmake/ECMConfig.cmake
 /usr/local/share/ECM/cmake/ECMConfigVersion.cmake
 /usr/local/share/ECM/find-modules/ECMFindModuleHelpersStub.cmake
 /usr/local/share/ECM/find-modules/Find7Zip.cmake
 /usr/local/share/ECM/find-modules/Find7z.cmake
 /usr/local/share/ECM/find-modules/FindCanberra.cmake
+/usr/local/share/ECM/find-modules/FindDesktopFileUtils.cmake
 /usr/local/share/ECM/find-modules/FindEGL.cmake
 /usr/local/share/ECM/find-modules/FindFFmpeg.cmake
 /usr/local/share/ECM/find-modules/FindGLIB2.cmake
@@ -89,6 +90,7 @@
 /usr/local/share/ECM/modules/ECMGenerateQDoc.cmake
 /usr/local/share/ECM/modules/ECMGenerateQmlTypes.cmake
 /usr/local/share/ECM/modules/ECMInstallIcons.cmake
+/usr/local/share/ECM/modules/ECMInstalledLibraryCheck.cmake
 /usr/local/share/ECM/modules/ECMMarkAsTest.cmake
 /usr/local/share/ECM/modules/ECMMarkNonGuiExecutable.cmake
 /usr/local/share/ECM/modules/ECMOptionalAddSubdirectory.cmake
@@ -119,6 +121,7 @@
 /usr/local/share/ECM/modules/ECMWinResolveSymlinks.cmake
 /usr/local/share/ECM/modules/QtVersionOption.cmake
 /usr/local/share/ECM/modules/check-outbound-license.py
+/usr/local/share/ECM/modules/ecm_create_installed_library_check.cmake
 /usr/local/share/ECM/modules/ecm_uninstall.cmake.in
 /usr/local/share/ECM/test-modules/test_execute_and_compare.cmake
 /usr/local/share/ECM/toolchain/Android.cmake
@@ -134,6 +137,7 @@
 /usr/local/share/doc/ECM/html/_sources/find-module/Find7Zip.rst.txt
 /usr/local/share/doc/ECM/html/_sources/find-module/Find7z.rst.txt
 /usr/local/share/doc/ECM/html/_sources/find-module/FindCanberra.rst.txt
+/usr/local/share/doc/ECM/html/_sources/find-module/FindDesktopFileUtils.rst.txt
 /usr/local/share/doc/ECM/html/_sources/find-module/FindEGL.rst.txt
 /usr/local/share/doc/ECM/html/_sources/find-module/FindFFmpeg.rst.txt
 /usr/local/share/doc/ECM/html/_sources/find-module/FindGLIB2.rst.txt
@@ -143,6 +147,7 @@
 /usr/local/share/doc/ECM/html/_sources/find-module/FindInotify.rst.txt
 /usr/local/share/doc/ECM/html/_sources/find-module/FindIsoCodes.rst.txt
 /usr/local/share/doc/ECM/html/_sources/find-module/FindKF5.rst.txt
+/usr/local/share/doc/ECM/html/_sources/find-module/FindKF6.rst.txt
 /usr/local/share/doc/ECM/html/_sources/find-module/FindLibExiv2.rst.txt
 /usr/local/share/doc/ECM/html/_sources/find-module/FindLibGit2.rst.txt
 /usr/local/share/doc/ECM/html/_sources/find-module/FindLibMount.rst.txt
@@ -205,6 +210,7 @@
 /usr/local/share/doc/ECM/html/_sources/module/ECMGenerateQDoc.rst.txt
 /usr/local/share/doc/ECM/html/_sources/module/ECMGenerateQmlTypes.rst.txt
 /usr/local/share/doc/ECM/html/_sources/module/ECMInstallIcons.rst.txt
+/usr/local/share/doc/ECM/html/_sources/module/ECMInstalledLibraryCheck.rst.txt
 /usr/local/share/doc/ECM/html/_sources/module/ECMMarkAsTest.rst.txt
 /usr/local/share/doc/ECM/html/_sources/module/ECMMarkNonGuiExecutable.rst.txt
 /usr/local/share/doc/ECM/html/_sources/module/ECMOptionalAddSubdirectory.rst.txt
@@ -241,6 +247,7 @@
 /usr/local/share/doc/ECM/html/find-module/Find7Zip.html
 /usr/local/share/doc/ECM/html/find-module/Find7z.html
 /usr/local/share/doc/ECM/html/find-module/FindCanberra.html
+/usr/local/share/doc/ECM/html/find-module/FindDesktopFileUtils.html
 /usr/local/share/doc/ECM/html/find-module/FindEGL.html
 /usr/local/share/doc/ECM/html/find-module/FindFFmpeg.html
 /usr/local/share/doc/ECM/html/find-module/FindGLIB2.html
@@ -250,6 +257,7 @@
 /usr/local/share/doc/ECM/html/find-module/FindInotify.html
 /usr/local/share/doc/ECM/html/find-module/FindIsoCodes.html
 /usr/local/share/doc/ECM/html/find-module/FindKF5.html
+/usr/local/share/doc/ECM/html/find-module/FindKF6.html
 /usr/local/share/doc/ECM/html/find-module/FindLibExiv2.html
 /usr/local/share/doc/ECM/html/find-module/FindLibGit2.html
 /usr/local/share/doc/ECM/html/find-module/FindLibMount.html
@@ -313,6 +321,7 @@
 /usr/local/share/doc/ECM/html/module/ECMGenerateQDoc.html
 /usr/local/share/doc/ECM/html/module/ECMGenerateQmlTypes.html
 /usr/local/share/doc/ECM/html/module/ECMInstallIcons.html
+/usr/local/share/doc/ECM/html/module/ECMInstalledLibraryCheck.html
 /usr/local/share/doc/ECM/html/module/ECMMarkAsTest.html
 /usr/local/share/doc/ECM/html/module/ECMMarkNonGuiExecutable.html
 /usr/local/share/doc/ECM/html/module/ECMOptionalAddSubdirectory.html

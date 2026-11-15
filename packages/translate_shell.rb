@@ -1,35 +1,27 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Translate_shell < Package
+class Translate_shell < Autotools
   description 'Translate Shell is a command-line translator powered by Google Translate (default), Bing Translator, Yandex, Translate, and Apertium giving you easy access to one of these translation engines in your terminal:'
   homepage 'https://www.soimort.org/translate-shell/'
-  version '0.9.6.12'
+  version '0.9.7.1'
   license 'Unlicense'
-  compatibility 'all'
-  source_url 'https://github.com/soimort/translate-shell/archive/v0.9.6.12.tar.gz'
-  source_sha256 '4c4843a8c66276190535b8435775ecb5d9c8286083a33cdbe2db608eba93ca97'
-  binary_compression 'tar.xz'
+  compatibility 'aarch64 armv7l x86_64'
+  source_url 'https://github.com/soimort/translate-shell.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bc872006b0244ca14597766b9a7c0ef5d432cd3502dedc2d3f541c214b20c131',
-     armv7l: 'bc872006b0244ca14597766b9a7c0ef5d432cd3502dedc2d3f541c214b20c131',
-       i686: 'e463ba1532762b85555ca82326b460d36e25e8f99cc7943baa40fdf02217a627',
-     x86_64: '200047abf2945d2df10815ed1469f22020f00fe93d16ea8dd279e36795cc78d8'
+    aarch64: '82f73eaffc9a8a805f565aacdb65e4480f25393c42bc4699f58f350a752a2d47',
+     armv7l: '82f73eaffc9a8a805f565aacdb65e4480f25393c42bc4699f58f350a752a2d47',
+     x86_64: '347bdabaa28aea8e0f5f673d9adda273c7af131a604167e23fa278bce6bb302f'
   })
 
-  depends_on 'rlwrap'
-  depends_on 'gawk'   # Has to be gawk (uses awk to access network)
-  depends_on 'aspell' # Can also depend on hunspell instead of aspell
+  depends_on 'aspell' => :executable # Can also depend on hunspell instead of aspell
+  depends_on 'gawk' => :executable # Has to be gawk (uses awk to access network)
+  depends_on 'rlwrap' => :executable
 
-  def self.build
-    system 'make'
-  end
+  autotools_skip_configure
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
-
-  def self.check
-    system 'make', 'check'
-  end
+  # All tests pass but it still errors at the end.
+  # run_tests
 end

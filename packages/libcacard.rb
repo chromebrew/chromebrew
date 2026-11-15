@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Libcacard < Meson
   description 'Common Access Card library that provides emulation of smart cards to a virtual card reader running in a guest virtual machine'
   homepage 'https://gitlab.freedesktop.org/spice/libcacard'
-  version '2.8.1'
+  version '2.8.2'
   license 'GPL2'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/spice/libcacard.git'
@@ -11,15 +11,16 @@ class Libcacard < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a8b86a163c09718f1461b6e1f20bd21bf6283c2ee3095614f387d4ebc9e34c0f',
-     armv7l: 'a8b86a163c09718f1461b6e1f20bd21bf6283c2ee3095614f387d4ebc9e34c0f',
-       i686: 'a4fdee78a6c9b6a7d0d9e703b553036e1877ae6645ccd8eac4a0278f2b429621',
-     x86_64: 'ef452da27348154a81ba090dbfcf96a64e61dd6f3e2ff2ca167f9cbcde15deaa'
+    aarch64: '3d75d17ee26620cd478eae1c3879c51e2af21b422567e35d31ae07f625289e03',
+     armv7l: '3d75d17ee26620cd478eae1c3879c51e2af21b422567e35d31ae07f625289e03',
+       i686: 'fcff909400ab70b7d4ca70fdeb61fcc35781484a4c2c63b74d6d0ff8035e62ee',
+     x86_64: 'd6f489b275ef77975dc1a9af0445eb38bc03699e23730e1d36f0ceb29dcfcdfb'
   })
 
-  depends_on 'glib'
-  depends_on 'glibc' # R
-  depends_on 'nss'
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'nss' => :library
 
   run_tests
 end

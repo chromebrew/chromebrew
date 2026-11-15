@@ -1,0 +1,3 @@
+#!/bin/bash
+geosop -h | head
+geos-config --version

@@ -4,7 +4,7 @@ require 'buildsystems/meson'
 class Pango < Meson
   description 'Pango is a library for laying out and rendering of text, with an emphasis on internationalization.'
   homepage 'https://www.pango.org/'
-  version '1.58.0'
+  version '1.58.2'
   license 'LGPL-2+ and FTL'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/pango.git'
@@ -12,9 +12,9 @@ class Pango < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9de4daf33db4be48fa18c3315c29c17b9fe0d3138ddffee83aabb5a39a9d0454',
-     armv7l: '9de4daf33db4be48fa18c3315c29c17b9fe0d3138ddffee83aabb5a39a9d0454',
-     x86_64: 'ad162bb9bccfd4dcd362272b19c996e86b6ccee8365797da9911ad7f79b020c6'
+    aarch64: '8c4997e4e0a65d1caa4083d79a92c43c0351a88e144af16e2f266f0f3315b1a1',
+     armv7l: '8c4997e4e0a65d1caa4083d79a92c43c0351a88e144af16e2f266f0f3315b1a1',
+     x86_64: '0f32e2a530f1f7051758bb25cb49aa7e0c68b8c768d81bdab6df067d1dfcae23'
   })
 
   depends_on 'cairo' => :library

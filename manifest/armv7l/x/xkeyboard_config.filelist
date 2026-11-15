@@ -1,4 +1,4 @@
-# Total size: 10732431
+# Total size: 10867792
 /usr/local/share/X11/xkb
 /usr/local/share/locale/af/LC_MESSAGES/xkeyboard-config-2.mo
 /usr/local/share/locale/af/LC_MESSAGES/xkeyboard-config.mo
@@ -194,6 +194,7 @@
 /usr/local/share/xkeyboard-config-2/symbols/bd
 /usr/local/share/xkeyboard-config-2/symbols/be
 /usr/local/share/xkeyboard-config-2/symbols/bg
+/usr/local/share/xkeyboard-config-2/symbols/blackberry_vndr/key2/us
 /usr/local/share/xkeyboard-config-2/symbols/bqn
 /usr/local/share/xkeyboard-config-2/symbols/br
 /usr/local/share/xkeyboard-config-2/symbols/brai
@@ -287,6 +288,7 @@
 /usr/local/share/xkeyboard-config-2/symbols/macintosh_vndr/us
 /usr/local/share/xkeyboard-config-2/symbols/md
 /usr/local/share/xkeyboard-config-2/symbols/me
+/usr/local/share/xkeyboard-config-2/symbols/meta
 /usr/local/share/xkeyboard-config-2/symbols/mk
 /usr/local/share/xkeyboard-config-2/symbols/ml
 /usr/local/share/xkeyboard-config-2/symbols/mm

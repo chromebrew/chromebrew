@@ -1,4 +1,4 @@
-# Total size: 220988
+# Total size: 249496
 /usr/local/bin/addr2name
 /usr/local/bin/dnssort
 /usr/local/bin/name2addr
@@ -16,6 +16,7 @@
 /usr/local/share/locale/en/LC_MESSAGES/ndisc6.mo
 /usr/local/share/locale/en_GB/LC_MESSAGES/ndisc6.mo
 /usr/local/share/locale/fr/LC_MESSAGES/ndisc6.mo
+/usr/local/share/locale/ka/LC_MESSAGES/ndisc6.mo
 /usr/local/share/locale/sv/LC_MESSAGES/ndisc6.mo
 /usr/local/share/man/man1/addr2name.1.zst
 /usr/local/share/man/man1/dnssort.1.zst

@@ -3,17 +3,17 @@ require 'buildsystems/meson'
 class Postgresql < Meson
   description 'PostgreSQL is a powerful, open source object-relational database system.'
   homepage 'https://www.postgresql.org'
-  version "18.4-#{CREW_ICU_VER}"
+  version "18.6-#{CREW_ICU_VER}"
   license 'PostgreSQL and GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://ftp.postgresql.org/pub/source/v#{version.split('-').first}/postgresql-#{version.split('-').first}.tar.bz2"
-  source_sha256 '81a81ec695fb0c7901407defaa1d2f7973617154cf27ba74e3a7ab8e64436094'
+  source_sha256 '555610c24d53e4316da5b7d3fc25c279d96856d5e0e23ee308c328c5fa881d9f'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e26d3d2b33fb86d939295a6e40aaa6166d2b4058aa1499ada914f742af8d27a2',
-     armv7l: 'e26d3d2b33fb86d939295a6e40aaa6166d2b4058aa1499ada914f742af8d27a2',
-     x86_64: '02d866fa34ded9e26f7a263d87fcf6e2c242e56de3d21783da707a2fd4f4aeb2'
+    aarch64: '8fdf13b4cab9ba8d57872932d6eefc3219d1ff43ba4b6b0c8fedd115e9a12894',
+     armv7l: '8fdf13b4cab9ba8d57872932d6eefc3219d1ff43ba4b6b0c8fedd115e9a12894',
+     x86_64: '74ca468b0e5c2a60dda71d58b9c8116e02888be443eda890dc5bee7959fabbe3'
   })
 
   depends_on 'brotli' => :build
@@ -23,6 +23,7 @@ class Postgresql < Meson
   depends_on 'fop' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'icu4c' => :executable
   depends_on 'krb5' => :library
   depends_on 'libcyrussasl' => :build

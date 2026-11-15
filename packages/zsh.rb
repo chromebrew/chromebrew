@@ -1,40 +1,35 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Zsh < Package
+class Zsh < Autotools
   description 'Zsh is a shell designed for interactive use, although it is also a powerful scripting language.'
   homepage 'https://zsh.sourceforge.io/'
-  version '5.9'
+  version '5.9.2'
   license 'ZSH and GPL-2'
   compatibility 'all'
-  source_url 'https://downloads.sourceforge.net/project/zsh/zsh/5.9/zsh-5.9.tar.xz'
-  source_sha256 '9b8d1ecedd5b5e81fbf1918e876752a7dd948e05c1a0dba10ab863842d45acd5'
+  source_url "https://downloads.sourceforge.net/project/zsh/zsh/#{version}/zsh-#{version}.tar.xz"
+  source_sha256 '36fa734374b44783582cec09bcd67822e2f992c779ec1624ab5596df078d2f81'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '712590cb87f8bb45b656c62b5cbbbe6bf06b382ac7dd71e9ed2e750df59c65a6',
-     armv7l: '712590cb87f8bb45b656c62b5cbbbe6bf06b382ac7dd71e9ed2e750df59c65a6',
-       i686: '83f48b8561ca5b3826eb486c5babbd510276a82837977eb4957b423d7cd3732b',
-     x86_64: '296b8325a681d2ff996d1731d88bc1e9b56f82dfa54acfbd7edc31f5e2612829'
+    aarch64: '7758a2c5c8c6edc3c78ae334bdf416b7b0d84b5bb6683b56bec206f0c0ba8d8d',
+     armv7l: '7758a2c5c8c6edc3c78ae334bdf416b7b0d84b5bb6683b56bec206f0c0ba8d8d',
+       i686: '2ff55f857f7443e133b789c9755fa4e302893333f1b17fd67fe47354c0d4d874',
+     x86_64: '6510b27762d5d3138bbbca19aa537bbbd7c7d35d0fa3dbc8794fbd6760e267bd'
   })
 
-  depends_on 'gdbm' # R
-  depends_on 'glibc' # R
-  depends_on 'ncurses' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'libcap' # R
-  depends_on 'pcre' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'gdbm' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'libcap' => :library
+  depends_on 'ncurses' => :library
+  depends_on 'pcre' => :library
+  depends_on 'pcre2' => :library
 
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS} \
-            --enable-zsh-mem \
-            --enable-pcre \
-            --enable-cap \
-            --enable-gdbm \
-            --enable-multibyte"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  autotools_configure_options ' \
+    --enable-zsh-mem \
+    --enable-pcre \
+    --enable-cap \
+    --enable-gdbm \
+    --enable-multibyte'
 end

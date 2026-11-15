@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Glib < Meson
   description 'GLib provides the core application building blocks for libraries and applications written in C.'
   homepage 'https://developer.gnome.org/glib'
-  version '2.88.2'
+  version '2.90.1'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/glib.git'
@@ -11,14 +11,15 @@ class Glib < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cae25b0de75010f8066b2e72e74e64582a437c2b42512ef5a9564288c3c50ea0',
-     armv7l: 'cae25b0de75010f8066b2e72e74e64582a437c2b42512ef5a9564288c3c50ea0',
-       i686: '0d33c7608d6a11419773518af9791fe81bdda464734c750168e662c694937d14',
-     x86_64: '9c6d8526cce4a46e3638da954f568cda7bf3c0113b3afc3f69b02604073253cc'
+    aarch64: '3790beb5853dae72017a40d473ff7fbe2eb3418d4a42352d51f9fe56e6f662e0',
+     armv7l: '3790beb5853dae72017a40d473ff7fbe2eb3418d4a42352d51f9fe56e6f662e0',
+       i686: 'a0e0abfbbe46aaacf9a01793feddd98a92425d91b8f1cdf586efc6abf8609eed',
+     x86_64: '4ddbde486f9f05cdff1dfe516fbd329dede06586d638949d7dcdee5fa3120966'
   })
 
   depends_on 'elfutils' => :executable
-  depends_on 'gcc_lib' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glib_stub' => :build
   depends_on 'gobject_introspection' => :build
   depends_on 'libffi' => :library
   depends_on 'pcre2' => :library
@@ -30,6 +31,46 @@ class Glib < Meson
   conflicts_ok # Conflicts with glib_stub.
   gnome
   no_strip if %w[aarch64 armv7l].include? ARCH
+
+  def self.patch
+    # See: https://gitlab.gnome.org/GNOME/glib/-/work_items/4068
+    # https://gitlab.gnome.org/GNOME/glib/-/commit/5b7f4b0403d29753d7c8c57f883e55a3366b0f0a
+    # Breaks python's LD_LIBRARY_PATH during this build step:
+    # Generating girepository/introspection/...h a custom command (wrapped by meson to set env)
+    File.write 'reverse_5b7f4b0403d29753d7c8c57f883e55a3366b0f0a.patch', <<~PATCH_EOF
+      --- b/girepository/introspection/meson.build
+      +++ a/girepository/introspection/meson.build
+      @@ -19,13 +19,6 @@
+
+       gi_gen_env_variables = environment()
+
+      -# Use currently built libraries to run g-ir-scanner and the various tools
+      -# this may not happen if we don't set the library paths.
+      -# FIXME: https://github.com/mesonbuild/meson/issues/16127
+      -gi_gen_env_variables.prepend(glib_exec_var_library_path,
+      -  fs.parent(libglib.full_path()), fs.parent(libgobject.full_path()),
+      -  fs.parent(libgmodule.full_path()), fs.parent(libgio.full_path()))
+      -
+       if 'address' in glib_sanitizers
+         gi_gen_env_variables.append(
+           'ASAN_OPTIONS', glib_exec_asan_option_ignore_preload, separator: ',')
+      --- b/meson.build
+      +++ a/meson.build
+      @@ -2727,11 +2727,9 @@
+       glib_exec_preloaded_env = {}
+
+       if host_system in ['ios', 'darwin']
+      -  glib_exec_var_library_path = 'DYLD_LIBRARY_PATH'
+         glib_exec_var_preload = 'DYLD_INSERT_LIBRARIES'
+         glib_exec_var_preload_separator = ':'
+       else
+      -  glib_exec_var_library_path = 'LD_LIBRARY_PATH'
+         glib_exec_var_preload = 'LD_PRELOAD'
+         glib_exec_var_preload_separator = ' '
+       endif
+    PATCH_EOF
+    system 'patch -Np1 -i reverse_5b7f4b0403d29753d7c8c57f883e55a3366b0f0a.patch' if version == '2.90.1'
+  end
 
   meson_options '-Dglib_debug=disabled \
     -Dselinux=disabled \

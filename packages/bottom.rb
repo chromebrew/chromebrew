@@ -3,21 +3,19 @@ require 'package'
 class Bottom < Package
   description 'Yet another cross-platform graphical process/system monitor.'
   homepage 'https://github.com/ClementTsang/bottom'
-  version '0.12.3'
+  version '0.15.0'
   license 'MIT'
-  compatibility 'all'
-  min_glibc '2.28' if ARCH.eql?('x86_64')
+  compatibility 'aarch64 armv7l x86_64'
+  min_glibc '2.28'
   source_url({
     aarch64: "https://github.com/ClementTsang/bottom/releases/download/#{version}/bottom_armv7-unknown-linux-gnueabihf.tar.gz",
      armv7l: "https://github.com/ClementTsang/bottom/releases/download/#{version}/bottom_armv7-unknown-linux-gnueabihf.tar.gz",
-       i686: "https://github.com/ClementTsang/bottom/releases/download/#{version}/bottom_i686-unknown-linux-gnu.tar.gz",
      x86_64: "https://github.com/ClementTsang/bottom/releases/download/#{version}/bottom_x86_64-unknown-linux-gnu.tar.gz"
   })
   source_sha256({
-    aarch64: '42554905f61056d760206a466e3732b348f9fa78221f2dfdb0700d6707661938',
-     armv7l: '42554905f61056d760206a466e3732b348f9fa78221f2dfdb0700d6707661938',
-       i686: 'e479e7f6e4cfeb96bc6c9045e266e6f5fa1bcdf937fd53d9561171221fc95e24',
-     x86_64: '468131d586dee6f4cce23fae597646cfd032103ecf749a478acb9d236adab6d6'
+    aarch64: '273387b032310c63bc1c3e7cb6a9069fb32a2d20568bfce3b1ba2967dadec1ef',
+     armv7l: '273387b032310c63bc1c3e7cb6a9069fb32a2d20568bfce3b1ba2967dadec1ef',
+     x86_64: '051888e0e064aa037728efed3fcf77820714f8f4dc7bea2b0179d40c54400c26'
   })
 
   no_compile_needed

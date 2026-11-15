@@ -3,17 +3,17 @@ require 'buildsystems/autotools'
 class Libraw < Autotools
   description 'Raw image decoder library'
   homepage 'https://www.libraw.org'
-  version '0.22.1'
+  version '0.22.3'
   license 'LGPL-2.1 and CDDL'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.libraw.org/data/LibRaw-#{version}.tar.gz"
-  source_sha256 'a789dc4e2409e2901d93793a4e0b80c7b49d0d97cf6ad71c850eb7616acfd786'
+  source_sha256 '789f3c33466210a1a0907f747a97c715d21bbf4af712f257fcbbd90111b227e4'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e76ea68b2b0411fa84e81dcdbd6d5a9c5a6d0d05379c6e5b212924fbfa5b0067',
-     armv7l: 'e76ea68b2b0411fa84e81dcdbd6d5a9c5a6d0d05379c6e5b212924fbfa5b0067',
-     x86_64: '848f56c2d17585c7d9fdc2408e9e6753535a0efd9ceb513e685a2ce0a3f1d438'
+    aarch64: '2e501bbce2ab788543a5a0b9caf1957b8ff54c7862dec0b343e391e404f51c73',
+     armv7l: '2e501bbce2ab788543a5a0b9caf1957b8ff54c7862dec0b343e391e404f51c73',
+     x86_64: '4d4a5733ea2d3a808feaf0cee10cecbb482c64e8b71cb53e6cd3a285ef968e10'
   })
 
   depends_on 'gcc_lib' => :library

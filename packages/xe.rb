@@ -1,27 +1,24 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Xe < Package
+class Xe < Autotools
   description 'simple xargs and apply replacement.'
   homepage 'https://github.com/leahneukirchen/xe'
-  version '0.11'
+  version '1.0'
   license 'public-domain'
   compatibility 'all'
-  source_url 'https://github.com/leahneukirchen/xe/archive/v0.11.tar.gz'
-  source_sha256 '4087d40be2db3df81a836f797e1fed17d6ac1c788dcf0fd6a904f2d2178a6f1a'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/leahneukirchen/xe.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '731178af47f83d6918dfd9967d57113f6552c48dc68a98c0c11837469f044540',
-     armv7l: '731178af47f83d6918dfd9967d57113f6552c48dc68a98c0c11837469f044540',
-       i686: 'b0db75159f9e4462852175ac47cf07f0f9e3f2962ac262df3daaa90b6f792e0b',
-     x86_64: '7ce6835e608e0638f5604eef58007735b42f9fcdc0e2d9f6811c93cf844aac27'
+    aarch64: 'c73139da82afefec7e73a35e7bb1af53297bc61f674ba10d81a825ae0f5c75f0',
+     armv7l: 'c73139da82afefec7e73a35e7bb1af53297bc61f674ba10d81a825ae0f5c75f0',
+       i686: '4b1c0540d41524ce2116610f236d334ab59a89c610124792a96c1213eb7c380e',
+     x86_64: 'e6a0320b238198f8c21313d1a5e340f18130bf8ff0bbca910f187b216d556951'
   })
 
-  def self.build
-    system 'make', "PREFIX=#{CREW_PREFIX}"
-  end
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  autotools_skip_configure
 end

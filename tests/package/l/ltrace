@@ -1,0 +1,3 @@
+#!/bin/bash
+ltrace -h | head
+ltrace -V

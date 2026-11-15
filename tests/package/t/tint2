@@ -1,0 +1,3 @@
+#!/bin/bash
+tint2 -h | head
+tint2 -v

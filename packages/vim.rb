@@ -12,18 +12,20 @@ class Vim < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7da1d150cecc21abe918a433b82830579905f6f6f90b40dd4de29bd94f3f4536',
-     armv7l: '7da1d150cecc21abe918a433b82830579905f6f6f90b40dd4de29bd94f3f4536',
-       i686: 'b7ecbc6cd3b10937b2c99ba6e457646b59ff1b16064099decbf5fda979958552',
-     x86_64: 'dc9849d266b93e5bfbdcc0d184e744efa5c7465fcca355105d8e3a30355fbe7b'
+    aarch64: '80f20260bdd349f10012ec92d6cb185a5d045611b3e965f9d78b68321a6f0e4c',
+     armv7l: '80f20260bdd349f10012ec92d6cb185a5d045611b3e965f9d78b68321a6f0e4c',
+       i686: 'd843e4dfbb3844eb732dabb3e9f7bd2bfac1fe0d1a9f8cfe9eb0761eccf3abfa',
+     x86_64: '7685c2356415b18f8facd7e388958c953e79f6f8bddc1f09d28a9e5139606f8a'
   })
 
   depends_on 'acl' => :executable
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'gpm' => :executable
   depends_on 'libsodium' => :executable
   depends_on 'ncurses' => :executable
   depends_on 'vim_runtime' => :logical
+  depends_on 'wayland' => :executable
 
   ignore_updater
 

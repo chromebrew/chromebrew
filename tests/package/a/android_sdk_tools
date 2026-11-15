@@ -1,0 +1,9 @@
+#!/bin/bash
+android --version
+d8 --version
+lint --version
+profgen --version
+r8 --version
+resourceshrinker --version
+retrace --version
+sdkmanager --version

@@ -52,8 +52,6 @@ class Gnutls < Autotools
     end
     # Use IPv4 fallback if default connection fails.
     system "#{CREW_PREFIX}/sbin/unbound-anchor -a '#{CREW_PREFIX}/etc/unbound/root.key' || #{CREW_PREFIX}/sbin/unbound-anchor -4 -a '#{CREW_PREFIX}/etc/unbound/root.key'"
-    # Rebuild ca-certificates.
-    system "#{CREW_PREFIX}/bin/update-ca-certificates --fresh --certsconf #{CREW_PREFIX}/etc/ca-certificates.conf"
   end
 
   autotools_configure_options "--disable-doc \

@@ -1,8 +1,8 @@
-# Total size: 1135024
+# Total size: 559343
 /usr/local/bin/virgl_test_server
+/usr/local/include/virgl/virgl-version.h
 /usr/local/include/virgl/virglrenderer.h
 /usr/local/lib/libvirglrenderer.so
 /usr/local/lib/libvirglrenderer.so.1
-/usr/local/lib/libvirglrenderer.so.1.5.3
+/usr/local/lib/libvirglrenderer.so.1.11.0
 /usr/local/lib/pkgconfig/virglrenderer.pc
-/usr/local/libexec/virgl_render_server

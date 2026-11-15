@@ -3,18 +3,18 @@ require 'package'
 class Ant < Package
   description 'Apache Ant is a Java library and command-line tool whose mission is to drive processes described in build files as targets and extension points dependent upon each other.'
   homepage 'https://ant.apache.org/'
-  version '1.10.17'
+  version '1.10.18'
   license 'Apache-2.0'
   compatibility 'all'
   source_url "https://downloads.apache.org/ant/source/apache-ant-#{version}-src.tar.xz"
-  source_sha256 'a2f44dff642b5490c3a728aaf7474486c9edf87da63f5ccbfda803f1e10ae7a6'
+  source_sha256 '89779e1d1288baa10687a2f1f7cdb6e9a666839a971a0c502a0c6b11bc061629'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fcaf05a6797376dc308bfeaa4788c72003fbf670401d44383984dbb255088eb5',
-     armv7l: 'fcaf05a6797376dc308bfeaa4788c72003fbf670401d44383984dbb255088eb5',
-       i686: 'd894863652447c4f8199fc1426ca8e82e51055f4a252538c572c38fc2dbd0b2b',
-     x86_64: '8c56ae059d09a60816cacb3a9d40c1f0a4c6069a92c1837374d6c56c2b0d1a34'
+    aarch64: '0c1548f11cd0911575aead01499edf07d55e8089c51c0b0027c1927080929bf4',
+     armv7l: '0c1548f11cd0911575aead01499edf07d55e8089c51c0b0027c1927080929bf4',
+       i686: 'cd46382104849df14084858e99179963cbd6e00e48ad6aa2dc2a0ce0a5b6a173',
+     x86_64: '9a6e8dba35adc4453d80c02246d487cde796a3e204f4bd665823a5d6009c451b'
   })
 
   depends_on 'openjdk17'

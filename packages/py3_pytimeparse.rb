@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_pytimeparse < Pip
   description 'Pytimeparse is a small Python module to parse various kinds of time expressions. '
   homepage 'https://github.com/wroberts/pytimeparse/'
-  version "1.1.8-#{CREW_PY_VER}"
+  version "1.1.10-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4a03c8587beca6772df2d1ab76bf08e6bd742a4f4e44b15210291615a110ac26',
-     armv7l: '4a03c8587beca6772df2d1ab76bf08e6bd742a4f4e44b15210291615a110ac26',
-       i686: 'd3b0259c497475d20cb2e5085caa82e308bd0805b0e9cb6232603ad78488dcad',
-     x86_64: '9b4d88014abb72ed400df33610e6832ba3aaafd559ef45f1018482710533621c'
+    aarch64: 'b2144a59ad0c6c2a3081db473aad8342feae9781043151dd3d38dda385e35cfd',
+     armv7l: 'b2144a59ad0c6c2a3081db473aad8342feae9781043151dd3d38dda385e35cfd',
+       i686: '4826ecbd019200371e8813cfc6b91559f73ca713a42a0b6e7afe1542dedd2656',
+     x86_64: 'fc5ab2846b819f709a1cf66794ec72c2f2391e937518d62ad6751a33890eb16b'
   })
 
   depends_on 'python3' => :logical

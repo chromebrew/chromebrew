@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_twine < Pip
   description 'A utility for interacting with PyPI'
   homepage 'https://pypi.python.org/pypi/twine'
-  version "6.2.0-#{CREW_PY_VER}"
+  version "7.0.0-#{CREW_PY_VER}"
   license 'APACHE'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd8af47fafc774e234b6bb6c2849b2fea5bb363dce9b5b9c281df2e9e6faf27b5',
-     armv7l: 'd8af47fafc774e234b6bb6c2849b2fea5bb363dce9b5b9c281df2e9e6faf27b5',
-       i686: '7f856334a6eadc87ad0f50453ee69beac1f57c746e41262a5e652ac2b8d76632',
-     x86_64: 'c96395c791a54d9b5aeae94fef798393f91e6bff6f25549e0bfdebae8fac8a98'
+    aarch64: '6a1bb7c9ee5827295aaf730a32383dd79b38def508275d511c86041732f25d0b',
+     armv7l: '6a1bb7c9ee5827295aaf730a32383dd79b38def508275d511c86041732f25d0b',
+       i686: '10c61ea3242876eca2594e1275e14fc2d1d54a76a9459c9fb1f2ddd12067d559',
+     x86_64: 'ff17eb4d0c46216855e03ea20c6568f12ca4e07435a9f418af27a258da99af97'
   })
 
   depends_on 'py3_certifi'

@@ -1,4 +1,4 @@
-# Total size: 334451
+# Total size: 327135
 /usr/local/bin/attr
 /usr/local/bin/getfattr
 /usr/local/bin/setfattr
@@ -10,7 +10,7 @@
 /usr/local/lib64/libattr.la
 /usr/local/lib64/libattr.so
 /usr/local/lib64/libattr.so.1
-/usr/local/lib64/libattr.so.1.1.2502
+/usr/local/lib64/libattr.so.1.1.2600
 /usr/local/lib64/pkgconfig/libattr.pc
 /usr/local/share/doc/attr/CHANGES
 /usr/local/share/doc/attr/COPYING

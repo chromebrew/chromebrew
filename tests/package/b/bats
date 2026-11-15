@@ -1,0 +1,3 @@
+#!/bin/bash
+bats -h | head
+bats -v

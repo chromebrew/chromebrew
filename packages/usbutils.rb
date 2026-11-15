@@ -3,26 +3,24 @@ require 'buildsystems/meson'
 class Usbutils < Meson
   description 'Tools for examining usb devices'
   homepage 'https://linux-usb.sourceforge.net/'
-  version '019'
+  version '020'
   license 'GPL-2'
   compatibility 'all'
   source_url "https://mirrors.kernel.org/pub/linux/utils/usb/usbutils/usbutils-#{version}.tar.xz"
-  source_sha256 '659f40c440e31ba865c52c818a33d3ba6a97349e3353f8b1985179cb2aa71ec5'
+  source_sha256 '20287d68fcd9ebb50a05ba0645a4af7583bd8dfc7307215ba121e4bc6d057aa1'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1fe75c769e0ca099a22c80412ddb1502b342e330ac17111a5de441f507027a86',
-     armv7l: '1fe75c769e0ca099a22c80412ddb1502b342e330ac17111a5de441f507027a86',
-       i686: 'bc1dcf49696c72b0166130339f72193bae79a0e9d280c8d3a4a6bfed519c4f6d',
-     x86_64: 'fe3326d1d91b055cb8985d04a424d6b31db45b7ad16927097aee4263f36064b7'
+    aarch64: 'd971440964123021c75cd24f42004f6edea5f3d42eb94dfdcc373b4f041af4b7',
+     armv7l: 'd971440964123021c75cd24f42004f6edea5f3d42eb94dfdcc373b4f041af4b7',
+       i686: '0066e8fc18895e2c1aaa997b44244ad1d88245e7922ae3987ab819828af64c0b',
+     x86_64: '455b48b745992cd780d2f1e0a217f280e603562ce79979fcc41f083d6ed4e9bc'
   })
 
   depends_on 'eudev' => :executable
-  depends_on 'eudev' => :library
   depends_on 'glibc' => :executable
-  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :executable
   depends_on 'libusb' => :executable
-  depends_on 'libusb' => :library
 
   meson_install_extras do
     downloader 'http://www.linux-usb.org/usb.ids',

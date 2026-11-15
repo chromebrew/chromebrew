@@ -1,4 +1,4 @@
-# Total size: 419818
+# Total size: 143413
 /usr/local/bin/combinediff
 /usr/local/bin/dehtmldiff
 /usr/local/bin/editdiff
@@ -6,10 +6,37 @@
 /usr/local/bin/filterdiff
 /usr/local/bin/fixcvsdiff
 /usr/local/bin/flipdiff
+/usr/local/bin/gitdiff
+/usr/local/bin/gitdiffview
+/usr/local/bin/gitshow
+/usr/local/bin/gitshowview
 /usr/local/bin/grepdiff
 /usr/local/bin/interdiff
 /usr/local/bin/lsdiff
+/usr/local/bin/move-to-front
+/usr/local/bin/patchview
+/usr/local/bin/patchview-wrapper
 /usr/local/bin/recountdiff
 /usr/local/bin/rediff
 /usr/local/bin/splitdiff
+/usr/local/bin/svndiff
+/usr/local/bin/svndiffview
 /usr/local/bin/unwrapdiff
+/usr/local/share/bash-completion/completions/combinediff
+/usr/local/share/bash-completion/completions/dehtmldiff
+/usr/local/share/bash-completion/completions/editdiff
+/usr/local/share/bash-completion/completions/espdiff
+/usr/local/share/bash-completion/completions/filterdiff
+/usr/local/share/bash-completion/completions/fixcvsdiff
+/usr/local/share/bash-completion/completions/flipdiff
+/usr/local/share/bash-completion/completions/gitdiff
+/usr/local/share/bash-completion/completions/gitdiffview
+/usr/local/share/bash-completion/completions/grepdiff
+/usr/local/share/bash-completion/completions/lsdiff
+/usr/local/share/bash-completion/completions/patchview
+/usr/local/share/bash-completion/completions/recountdiff
+/usr/local/share/bash-completion/completions/rediff
+/usr/local/share/bash-completion/completions/splitdiff
+/usr/local/share/bash-completion/completions/svndiff
+/usr/local/share/bash-completion/completions/svndiffview
+/usr/local/share/bash-completion/completions/unwrapdiff

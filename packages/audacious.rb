@@ -3,17 +3,17 @@ require 'buildsystems/meson'
 class Audacious < Meson
   description 'Audacious is an open source audio player.'
   homepage 'https://audacious-media-player.org/'
-  version '4.6'
+  version '4.6.2'
   license 'BSD-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://distfiles.audacious-media-player.org/audacious-#{version}.tar.bz2"
-  source_sha256 '03988a6a114e46f91dabcd4d0dae29fcad19f6029e3c28737938d1bd525979dd'
+  source_sha256 'af4c68b7dd09304d382df18616aecd843c8efa4e4eef31bfc76abce465271c83'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c9ce972c1c0c2c55a3aced050ec028bf52b3a7d466f6bc09839782a6c913d65a',
-     armv7l: 'c9ce972c1c0c2c55a3aced050ec028bf52b3a7d466f6bc09839782a6c913d65a',
-     x86_64: '7ed6d408a8c11c0f0a0b5e6a54c295ce4c8c80eae10676d0c6b91dda9caf96dd'
+    aarch64: '0712eac4bc832a39ceb206bff9e9d14b4f47131ffe5a5e802a804bcc50fa01e2',
+     armv7l: '0712eac4bc832a39ceb206bff9e9d14b4f47131ffe5a5e802a804bcc50fa01e2',
+     x86_64: 'ed2cff755c69aa3b2aa16c84482e68b5efda1555e56fc8f9b3765bfeab835d4f'
   })
 
   depends_on 'at_spi2_core' => :build

@@ -1,0 +1,3 @@
+#!/bin/bash
+kilo -h 2>&1 | head
+kilo -v

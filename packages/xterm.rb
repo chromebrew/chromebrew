@@ -3,7 +3,7 @@ require 'package'
 class Xterm < Package
   description 'The xterm program is a terminal emulator for the X Window System.'
   homepage 'https://invisible-island.net/xterm/'
-  version '410'
+  version '412'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/ThomasDickey/xterm-snapshots.git'
@@ -11,14 +11,15 @@ class Xterm < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3aade61d18517382ffaabe6326f1e8dc471bb8c4c4b64e62890f6f5a53b4b0f1',
-     armv7l: '3aade61d18517382ffaabe6326f1e8dc471bb8c4c4b64e62890f6f5a53b4b0f1',
-     x86_64: 'b9f5c469c0771fd8dde85b5990c831a2d3f56402d36959a618b4fb0938f5e944'
+    aarch64: 'eb14f1ea39afbde8ac804905fbd759b56ffd6d80577ce243f52ebad8cc1058e1',
+     armv7l: 'eb14f1ea39afbde8ac804905fbd759b56ffd6d80577ce243f52ebad8cc1058e1',
+     x86_64: 'ca7a0ac81a97b50f9bca5529d87a9f3469789b89f25ac3c2b1175de473cd559c'
   })
 
   depends_on 'fontconfig' => :executable
   depends_on 'freetype' => :executable
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'harfbuzz' => :executable
   depends_on 'libice' => :executable
   depends_on 'libutempter' => :executable
@@ -35,6 +36,7 @@ class Xterm < Package
   depends_on 'pcre' => :executable
   depends_on 'sommelier' => :logical
 
+  conflicts_ok # conflicts with terminfo defs in ncurses
   no_env_options
 
   def self.patch

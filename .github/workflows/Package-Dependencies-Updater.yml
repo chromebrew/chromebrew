@@ -1,5 +1,5 @@
 ---
-# Version 1.0
+# Version 1.1
 name: Generate Updates for Packages and Their Dependencies.
 on:
   workflow_dispatch:
@@ -22,7 +22,7 @@ permissions:                    # Global permissions configuration starts here
 jobs:
   dependencies:
     if: ${{ github.repository_owner == 'chromebrew' }}
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     outputs:
       packages: ${{ steps.get-dependencies.outputs.packages }}
     steps:
@@ -31,7 +31,7 @@ jobs:
           fetch-depth: 0
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '4.0.5'
+          ruby-version: '4.0.6'
       - name: Install bin/crew gem dependencies
         run: |
           # Install required gems.

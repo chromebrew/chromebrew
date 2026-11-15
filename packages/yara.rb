@@ -1,33 +1,27 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Yara < Package
+class Yara < Autotools
   description 'The pattern matching swiss knife for malware researchers (and everyone else).'
   homepage 'https://virustotal.github.io/yara/'
-  version '4.2.3'
+  version '4.6.0'
   license 'BSD-3 Clause'
   compatibility 'all'
-  source_url 'https://github.com/VirusTotal/yara/archive/v4.2.3.tar.gz'
-  source_sha256 '1cd84fc2db606e83084a648152eb35103c3e30350825cb7553448d5ccde02a0d'
+  source_url 'https://github.com/VirusTotal/yara.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ddbebdd46dbe4d0da19fde9596b1e4c0c33a6a2a25abe88c07e4f7d41d1d05fb',
-     armv7l: 'ddbebdd46dbe4d0da19fde9596b1e4c0c33a6a2a25abe88c07e4f7d41d1d05fb',
-       i686: '0bdee5b010c9765aa14c0fea82866914c087814e0ca540e460e17176020cf404',
-     x86_64: 'd63b0bcb7feb4eef29d8271dd008d9c4cf9825eecc9e12cddde8b875d2457e8a'
+    aarch64: '06cd2814399e204c98aafe0a4a66237798dd7fb85c87b1262bb58b3b9e193ea0',
+     armv7l: '06cd2814399e204c98aafe0a4a66237798dd7fb85c87b1262bb58b3b9e193ea0',
+       i686: '192484a8b7bc1fc1082ab00583ce3317f8d6b00b73c467a9f5a5ec8a8afb7244',
+     x86_64: '24a01482507427b2c8fbc4b23f3d78d749c22472aac3821b4618e3dfa7a58f4e'
   })
 
-  def self.build
-    system './bootstrap.sh'
-    system "YACC=bison ./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'openssl' => :library
 
-  def self.check
-    system 'make', 'check'
-  end
+  autotools_pre_configure_options 'YACC=bison'
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  run_tests
 end

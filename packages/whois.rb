@@ -1,41 +1,32 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Whois < Package
+class Whois < Autotools
   description 'Intelligent WHOIS client'
   homepage 'https://github.com/rfc1036/whois'
-  version '5.5.2'
+  version '5.6.6'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/rfc1036/whois/archive/v5.5.2.tar.gz'
-  source_sha256 '9e007306bc0a5e0da4fe9abd52bc79aa8202af5ee6e852fb4f130cf362340b40'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/rfc1036/whois.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e1fb23bf6dc47d2504f8452f33668599ab039b32bbe6b70c3b4cf0f9c529a424',
-     armv7l: 'e1fb23bf6dc47d2504f8452f33668599ab039b32bbe6b70c3b4cf0f9c529a424',
-       i686: '737063cadba182cd240e01a64b5380c781472877b7f2dfec91c33e9049dde4a2',
-     x86_64: 'b788ba9c31a33dcc7b3dafcb4984117527e1dd802994f05519631f75a14d4378'
+    aarch64: '943ee1aa0e5450732694343accddf1a14c71fdcce060baaba84266bb861aa1a6',
+     armv7l: '943ee1aa0e5450732694343accddf1a14c71fdcce060baaba84266bb861aa1a6',
+       i686: '7e722134682492bdecd300d517ebdcfcb53e6a2665339857329ede1ca8dacf89',
+     x86_64: 'ad3c41464a1ede24a1304261d66b79f46670a235086d766a20decdcd218e41d5'
   })
 
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'libidn2' => :executable
+  depends_on 'libxcrypt' => :executable
+
+  autotools_skip_configure
+  autotools_skip_autoreconf
+
   def self.patch
-    system "sed -i 's,prefix = /usr,prefix = #{CREW_PREFIX},' Makefile"
-    system "sed -i 's,prefix = /usr,prefix = #{CREW_PREFIX},' po/Makefile"
-    system "sed -i 's,/share/,/,g' Makefile"
-    system "sed -i 's,/share/,/,g' po/Makefile"
-    system "sed -i 's,/share/,/,g' config.h"
-  end
-
-  def self.build
-    system 'make'
-  end
-
-  def self.install
-    system 'gzip -9 mkpasswd.1 whois.1 whois.conf.5'
-    system "install -Dm755 mkpasswd #{CREW_DEST_PREFIX}/bin/mkpasswd"
-    system "install -Dm755 whois #{CREW_DEST_PREFIX}/bin/whois"
-    system "install -Dm644 whois.conf #{CREW_DEST_PREFIX}/etc/whois.conf"
-    system "install -Dm644 mkpasswd.1.gz #{CREW_DEST_PREFIX}/man/man1/mkpasswd.1.gz"
-    system "install -Dm644 whois.1.gz #{CREW_DEST_PREFIX}/man/man1/whois.1.gz"
-    system "install -Dm644 whois.conf.5.gz #{CREW_DEST_PREFIX}/man/man5/whois.conf.5.gz"
+    system "sed -i 's,\$(BASEDIR)\$(prefix),#{CREW_DEST_PREFIX},g' Makefile"
+    system "sed -i 's,\$(BASEDIR)\$(prefix),#{CREW_DEST_PREFIX},g' po/Makefile"
   end
 end

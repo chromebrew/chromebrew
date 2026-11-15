@@ -50,6 +50,7 @@ class Package
                    :no_shrink,
                    :no_source_build,
                    :no_strip,
+                   :no_update_deps,
                    :no_upstream_update,
                    :no_zstd,
                    :patchelf,
@@ -67,7 +68,6 @@ class Package
            :binary_sha256,
            :source_url,
            :source_sha256,
-           :git_branch,
            :git_hashtag,
            :max_glibc,
            :min_glibc,
@@ -96,7 +96,6 @@ class Package
                   :in_build,
                   :in_install,
                   :in_upgrade,
-                  :missing_binaries,
                   :name
   end
 
@@ -135,7 +134,22 @@ class Package
     end
   end
 
-  def self.load_package(pkg_file, reload = nil)
+  def self.load_package(pkg_file, reload = nil, output_to_null = nil)
+    if output_to_null
+      original_stderr = $stderr.clone
+      original_stdout = $stdout.clone
+      begin
+        $stderr.reopen(File::NULL, 'w')
+      rescue Errno::EACCES
+        Tempfile.create('tmp_stderr') { $stderr.reopen(it.to_path, 'w') }
+      end
+      begin
+        $stdout.reopen(File::NULL, 'w')
+      rescue Errno::EACCES
+        Tempfile.create('tmp_stdout') { $stdout.reopen(it.to_path, 'w') }
+      end
+    end
+
     reload = !reload.nil?
     # self.load_package: load a package under 'Package' class scope
     #
@@ -154,6 +168,11 @@ class Package
 
     @crew_current_package = @crew_current_package.nil? ? pkg_obj.name : @crew_current_package
 
+    # Restore original outputs.
+    if output_to_null
+      $stderr.reopen(original_stderr)
+      $stdout.reopen(original_stdout)
+    end
     return pkg_obj
   end
 
@@ -375,7 +394,7 @@ class Package
   end
 
   def self.binary?(architecture) = !@build_from_source && @binary_sha256&.key?(architecture)
-  def self.source?(architecture) = missing_binaries ? true : !(binary?(architecture) || is_fake?)
+  def self.source?(architecture) = !(binary?(architecture) || is_fake?)
 
   def self.system(*args, **opt_args)
     crew_env_options_hash = if no_env_options?

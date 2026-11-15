@@ -3,21 +3,23 @@ require 'package'
 class Nim < Package
   description 'Nim is a statically typed compiled systems programming language.'
   homepage 'https://nim-lang.org/'
-  version '1.6.10'
+  version '2.4.2'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://nim-lang.org/download/nim-1.6.10.tar.xz'
-  source_sha256 '13d7702f8b57087babe8cd051c13bc56a3171418ba867b49c6bbd09b29d24fea'
+  source_url "https://nim-lang.org/download/nim-#{version}.tar.xz"
+  source_sha256 'b28bf4da1fce46dba9d16685c981b3d5e98de8db1b60d66f279b0bd2af2d8211'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '56bb6808eebaa0468fd5e23d22321d091113da09221ed9b5d86b20452ceb3201',
-     armv7l: '56bb6808eebaa0468fd5e23d22321d091113da09221ed9b5d86b20452ceb3201',
-       i686: '55f1f066de4b66b0bb741c1469eb05a414bd85432aa7d682d3ec1f270d213ada',
-     x86_64: '1ca13bf167be97ac2bc1036a2b6a5e1ef27dcf148c8f836a36120b21d9c869e8'
+    aarch64: 'e06229e8c68e78d8b4c5a0d58cdb1ffbecc84b26e0b6071add1e56c393dc08bf',
+     armv7l: 'e06229e8c68e78d8b4c5a0d58cdb1ffbecc84b26e0b6071add1e56c393dc08bf',
+       i686: '4dd564e3ab9a0e462526bee283549c90cf1d678ab81af26ce2e4c554ecffceb7',
+     x86_64: '6d1b7c3ea9ed519e925ef790d39bd782dd5ded8b57368aa591cf7ae5f2b350f8'
   })
 
-  depends_on 'pcre'
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'pcre' => :executable
 
   def self.patch
     system 'sed -i "s,^ucpu=.*,ucpu=\"arm\"," build.sh' if ARCH == 'aarch64'

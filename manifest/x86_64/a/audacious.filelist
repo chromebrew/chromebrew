@@ -1,4 +1,4 @@
-# Total size: 2051696
+# Total size: 2105875
 /usr/local/bin/audacious
 /usr/local/include/audacious/audtag.h
 /usr/local/include/libaudcore/archive_reader.h
@@ -38,16 +38,23 @@
 /usr/local/lib64/libaudcore.so.6
 /usr/local/lib64/libaudcore.so.6.0.0
 /usr/local/lib64/libaudgui.so
-/usr/local/lib64/libaudgui.so.6
-/usr/local/lib64/libaudgui.so.6.0.0
+/usr/local/lib64/libaudgui.so.7
+/usr/local/lib64/libaudgui.so.7.0.0
 /usr/local/lib64/libaudtag.so
-/usr/local/lib64/libaudtag.so.3
-/usr/local/lib64/libaudtag.so.3.0.0
+/usr/local/lib64/libaudtag.so.4
+/usr/local/lib64/libaudtag.so.4.0.0
 /usr/local/lib64/pkgconfig/audacious.pc
 /usr/local/share/applications/audacious.desktop
 /usr/local/share/audacious/AUTHORS
 /usr/local/share/audacious/COPYING
+/usr/local/share/icons/hicolor/128x128/apps/audacious.png
+/usr/local/share/icons/hicolor/16x16/apps/audacious.png
+/usr/local/share/icons/hicolor/24x24/apps/audacious.png
+/usr/local/share/icons/hicolor/256x256/apps/audacious.png
+/usr/local/share/icons/hicolor/32x32/apps/audacious.png
 /usr/local/share/icons/hicolor/48x48/apps/audacious.png
+/usr/local/share/icons/hicolor/64x64/apps/audacious.png
+/usr/local/share/icons/hicolor/96x96/apps/audacious.png
 /usr/local/share/icons/hicolor/scalable/apps/audacious.svg
 /usr/local/share/locale/af/LC_MESSAGES/audacious.mo
 /usr/local/share/locale/ar/LC_MESSAGES/audacious.mo
@@ -73,6 +80,7 @@
 /usr/local/share/locale/id_ID/LC_MESSAGES/audacious.mo
 /usr/local/share/locale/it/LC_MESSAGES/audacious.mo
 /usr/local/share/locale/ja/LC_MESSAGES/audacious.mo
+/usr/local/share/locale/ka/LC_MESSAGES/audacious.mo
 /usr/local/share/locale/ko/LC_MESSAGES/audacious.mo
 /usr/local/share/locale/lt/LC_MESSAGES/audacious.mo
 /usr/local/share/locale/lv/LC_MESSAGES/audacious.mo

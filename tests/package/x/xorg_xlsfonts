@@ -1,0 +1,3 @@
+#!/bin/bash
+xlsfonts | head
+xlsfonts -v

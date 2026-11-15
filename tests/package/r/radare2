@@ -1,0 +1,37 @@
+#!/bin/bash
+r2 -h | head -2
+r2 -v
+r2agent -h | head -2
+r2agent -v
+r2pm -h | head -2
+r2pm -v
+r2r -h | head -2
+r2r -v
+r2sdb -h | head -2
+r2sdb -v
+rabin2 -h | head -2
+rabin2 -v
+radare2 -h | head -2
+radare2 -v
+radiff2 -h | head -2
+radiff2 -v
+rafind2 -h | head -2
+rafind2 -v
+rafs2 -h | head -2
+rafs2 -v
+ragg2 -h | head -2
+ragg2 -v
+rahash2 -h | head -2
+rahash2 -v
+rapatch2 -h | head -2 
+rapatch2 -v
+rarun2 -h | head -2
+rarun2 -v
+rasign2 -h | head -2
+rasign2 -v
+rasm2 -h | head -2
+rasm2 -v
+ravc2 -h | head -2
+ravc2 -v
+rax2 -h | head -2
+rax2 -v

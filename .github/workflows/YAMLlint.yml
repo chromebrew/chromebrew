@@ -1,4 +1,5 @@
 ---
+# Version 1.0
 name: YAMLLint
 on: workflow_call
 env:
@@ -6,7 +7,7 @@ env:
    GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
 jobs:
   yamllint:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     permissions:
       contents: read
       pull-requests: write

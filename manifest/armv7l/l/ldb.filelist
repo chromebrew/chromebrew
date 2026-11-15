@@ -1,4 +1,4 @@
-# Total size: 720555
+# Total size: 634575
 /usr/local/bin/ldbadd
 /usr/local/bin/ldbdel
 /usr/local/bin/ldbedit
@@ -27,10 +27,10 @@
 /usr/local/lib/libldb.so
 /usr/local/lib/libldb.so.2
 /usr/local/lib/libldb.so.2.9.2
-/usr/local/lib/libpyldb-util.cpython-314-arm-linux-gnueabihf.so
-/usr/local/lib/libpyldb-util.cpython-314-arm-linux-gnueabihf.so.2
-/usr/local/lib/libpyldb-util.cpython-314-arm-linux-gnueabihf.so.2.9.2
+/usr/local/lib/libpyldb-util.cpython-315-arm-linux-gnueabihf.so
+/usr/local/lib/libpyldb-util.cpython-315-arm-linux-gnueabihf.so.2
+/usr/local/lib/libpyldb-util.cpython-315-arm-linux-gnueabihf.so.2.9.2
 /usr/local/lib/pkgconfig/ldb.pc
-/usr/local/lib/pkgconfig/pyldb-util.cpython-314-arm-linux-gnueabihf.pc
-/usr/local/lib/python3.14/site-packages/_ldb_text.py
-/usr/local/lib/python3.14/site-packages/ldb.cpython-314-arm-linux-gnueabihf.so
+/usr/local/lib/pkgconfig/pyldb-util.cpython-315-arm-linux-gnueabihf.pc
+/usr/local/lib/python3.15/site-packages/_ldb_text.py
+/usr/local/lib/python3.15/site-packages/ldb.cpython-315-arm-linux-gnueabihf.so

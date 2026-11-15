@@ -1,0 +1,3 @@
+#!/bin/bash
+apr-1-config --help | head
+apr-1-config --version

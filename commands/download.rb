@@ -1,5 +1,4 @@
 require 'fileutils'
-require 'json'
 require_relative '../lib/const'
 require_relative '../lib/crew_lockfile'
 require_relative '../lib/downloader'
@@ -7,39 +6,32 @@ require_relative '../lib/package_utils'
 
 class Command
   def self.download(pkg, verbose: false, opt_source: false)
-    test_url = PackageUtils.get_url(pkg, build_from_source: opt_source || pkg.build_from_source)
-    sha256sum = PackageUtils.get_sha256(pkg, build_from_source: opt_source || pkg.build_from_source)
+    abort 'Unable to download fake package.'.lightred if pkg.is_fake?
 
-    device_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
+    url = PackageUtils.get_url(pkg, build_from_source: opt_source)
+    sha256sum = PackageUtils.get_sha256(pkg, build_from_source: opt_source)
 
-    # Do an early check for a missing binary package and if so rebuild.
-    if !pkg.source?(device_json['architecture'].to_sym) && pkg.superclass.to_s == 'Pip'
-      if `curl -sI #{test_url}`.lines.first.split[1] == '200' && PackageUtils.get_gitlab_pkginfo(pkg.name, pkg.version, ARCH, false, false)[:pkg_sha256] == sha256sum
-        url = test_url
-      else
-        url = 'SKIP'
-        pkg.missing_binaries = true
-      end
-    else
-      url = test_url
+    source = pkg.source?(ARCH.to_sym) || opt_source
+    # Check for a missing binary package and if so rebuild.
+    if !source && pkg.superclass.to_s == 'Pip' && !(`curl -sI #{url}`.lines.first.split[1] == '200' && PackageUtils.get_gitlab_pkginfo(pkg.name, pkg.version, ARCH, false, false)[:pkg_sha256] == sha256sum)
+      url = 'SKIP'
+      source = true
     end
-
-    source = pkg.source?(device_json['architecture'].to_sym)
 
     uri = URI.parse url
     filename = File.basename(uri.path)
     # # If we're downloading a binary, reset the filename to what it would have been if we didn't download from the API.
-    filename = "#{pkg.name}-#{pkg.version}-chromeos-#{device_json['architecture']}.#{pkg.binary_compression}" if filename.eql?('download')
+    filename = "#{pkg.name}-#{pkg.version}-chromeos-#{ARCH}.#{pkg.binary_compression}" if filename.eql?('download')
     extract_dir = "#{pkg.name}.#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.dir"
 
-    build_cachefile = File.join(CREW_CACHE_DIR, "#{pkg.name}-#{pkg.version}-build-#{device_json['architecture']}.tar.zst")
+    build_cachefile = File.join(CREW_CACHE_DIR, "#{pkg.name}-#{pkg.version}-build-#{ARCH}.tar.zst")
     return { source:, filename:, extract_dir: } if (CREW_CACHE_BUILD || pkg.cache_build?) && File.file?(build_cachefile) && !pkg.built
 
     if !url
-      abort "No precompiled binary or source is available for #{device_json['architecture']}.".lightred
+      abort "No precompiled binary or source is available for #{ARCH}.".lightred
     elsif url.casecmp?('SKIP') || (pkg.no_source_build? || pkg.gem_compile_needed?)
       puts 'Skipping source download...'
-    elsif pkg.build_from_source
+    elsif opt_source
       puts 'Downloading source...'
     elsif !source
       puts 'Precompiled binary available, downloading...'
@@ -48,23 +40,33 @@ class Command
     end
 
     git = true unless pkg.git_hashtag.to_s.empty?
-    gitlab_binary_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{pkg.name}/#{pkg.version}_#{device_json['architecture']}/#{pkg.name}-#{pkg.version}-chromeos-#{device_json['architecture']}.#{pkg.binary_compression}"
+    @curl_header = GITLAB_TOKEN.nil? ? '' : "--header '#{CREW_GITLAB_TOKEN_LABEL}: #{GITLAB_TOKEN}'"
+    gitlab_binary_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{pkg.name}/#{pkg.version}_#{ARCH}/#{pkg.name}-#{pkg.version}-chromeos-#{ARCH}.#{pkg.binary_compression}"
 
-    if (pkg.cache_build? || CREW_CACHE_BUILD) && !File.file?(build_cachefile) && !pkg.no_source_build? && !File.file?(File.join(CREW_CACHE_DIR, "#{pkg.name}-#{pkg.version}-chromeos-#{device_json['architecture']}.#{pkg.binary_compression}")) && `curl -fsI #{gitlab_binary_url}`.lines.first.split[1] != '200'
+    begin
+      gitlab_rate_limited = `curl #{@curl_header} -fsI #{gitlab_binary_url}`.lines.first.split[1] == '429'
+    rescue StandardError => e
+      puts "Unexpected error: #{e.message}"
+      system "curl #{@curl_header} -fsI #{gitlab_binary_url}"
+      gitlab_rate_limited = true
+    end
+    puts 'Gitlab may have rate limited you!'.lightred if gitlab_rate_limited
 
-      build_cache_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{pkg.name}/#{pkg.version}_#{device_json['architecture']}_build/#{pkg.name}-#{pkg.version}-build-#{device_json['architecture']}.tar.zst"
+    if (pkg.cache_build? || CREW_CACHE_BUILD) && !File.file?(build_cachefile) && !pkg.no_source_build? && !File.file?(File.join(CREW_CACHE_DIR, "#{pkg.name}-#{pkg.version}-chromeos-#{ARCH}.#{pkg.binary_compression}")) && (!%w[200 429].include? `curl #{@curl_header} -fsI #{gitlab_binary_url}`.lines.first.split[1])
+
+      build_cache_url = "#{CREW_GITLAB_PKG_REPO}/generic/#{pkg.name}/#{pkg.version}_#{ARCH}_build/#{pkg.name}-#{pkg.version}-build-#{ARCH}.tar.zst"
       puts 'Checking for cached build...'.orange
       # Does a remote build artifact exist?
       puts build_cache_url if verbose
-      puts "curl -fsI #{build_cache_url}" if verbose
-      if `curl -fsI #{build_cache_url}`.lines.first.split[1] == '200'
-        gitlab_pkginfo = PackageUtils.get_gitlab_pkginfo(pkg.name, pkg.version, device_json['architecture'], true, true)
+      puts "curl {@curl_header} -fsI #{build_cache_url}" if verbose
+      if `curl {@curl_header} -fsI #{build_cache_url}`.lines.first.split[1] == '200'
+        gitlab_pkginfo = PackageUtils.get_gitlab_pkginfo(pkg.name, pkg.version, ARCH, true, true)
         gitlab_build_artifact_sha256 = gitlab_pkginfo[:pkg_sha256]
         gitlab_build_artifact_date = gitlab_pkginfo[:pkg_upload_date]
         puts "Cached build artifact from #{gitlab_build_artifact_date} exists! with sha256 #{gitlab_build_artifact_sha256}".lightgreen
         puts "Downloading most recent cached build artifact for #{pkg.name}-#{pkg.version}...".orange
         # Download the package build artifact.
-        downloader(build_cache_url, gitlab_build_artifact_sha256, build_cachefile, no_update_hash: true)
+        downloader(build_cache_url, gitlab_build_artifact_sha256, build_cachefile, pkg, no_update_hash: true)
         File.write "#{build_cachefile}.sha256", <<~BUILD_CACHEFILE_SHA256_EOF
           #{gitlab_build_artifact_sha256} #{build_cachefile}
         BUILD_CACHEFILE_SHA256_EOF
@@ -95,7 +97,27 @@ class Command
           end
         end
         # Download file if not cached.
-        downloader url, sha256sum, filename, verbose: verbose
+        puts "Please install glab with 'crew install glab', as this helps with informing GitLab that we don't want to be rate limited.".lightred unless File.which('glab')
+        if !uri.to_s[%r{gitlab.com/chromebrew/binaries}].nil? && File.which('glab')
+          puts "Attempting to use glab for download of #{pkg.name} binaries...".orange
+          glab_cmd = "#{"GITLAB_TOKEN=#{GITLAB_GLAB_TOKEN}" unless GITLAB_GLAB_TOKEN.nil?} glab --repo chromebrew/Binaries packages download --name #{pkg.name} --version #{pkg.version}_#{ARCH} --filename #{pkg.name}-#{pkg.version}-chromeos-#{ARCH}.#{pkg.binary_compression} --path ."
+          glab_out, glab_stderr, glab_status = Open3.capture3(glab_cmd)
+          if glab_status.success?
+            puts glab_out
+          else
+            if ENV['NESTED_CI'] || CREW_VERBOSE
+              system "#{"GITLAB_TOKEN=#{GITLAB_GLAB_TOKEN}" unless GITLAB_GLAB_TOKEN.nil?} glab auth status"
+              puts "Download of #{pkg.name} binaries using glab failed:".orange
+              puts glab_cmd
+              puts glab_out
+              puts glab_stderr
+            end
+            puts "Attempting to use downloader for download of #{pkg.name} binaries...".orange
+            downloader url, sha256sum, filename, pkg, verbose: verbose
+          end
+        else
+          downloader url, sha256sum, filename, pkg, verbose: verbose
+        end
 
         puts "#{pkg.name.capitalize} archive downloaded.".lightgreen
         # Stow file in cache if requested, if cachefile does not exist, and cache is writable.
@@ -112,7 +134,7 @@ class Command
       else
         unless git # We don't want to download a git repository as a file.
           FileUtils.mkdir_p extract_dir
-          downloader url, sha256sum, filename, verbose: verbose
+          downloader url, sha256sum, filename, pkg, verbose: verbose
 
           puts "#{filename}: File downloaded.".lightgreen
 
@@ -136,20 +158,12 @@ class Command
         # Download via git
         FileUtils.mkdir_p extract_dir
         Dir.chdir extract_dir do
-          if pkg.git_branch.to_s.empty?
-            system 'git init'
-            system 'git config advice.detachedHead false'
-            system 'git config init.defaultBranch master'
-            system "git remote add origin #{pkg.source_url}", exception: true
-            system "git fetch #{'--depth 1' unless pkg.git_clone_deep?} origin #{pkg.git_hashtag}", exception: true
-            system 'git checkout FETCH_HEAD'
-          else
-            # Leave a message because this step can be slow.
-            puts 'Downloading src from a git branch. This may take a while...'
-            system "git clone --branch #{pkg.git_branch} --single-branch #{pkg.source_url} tmpdir", exception: true
-            system 'mv tmpdir/.git . && rm -rf tmpdir'
-            system "git reset --hard #{pkg.git_hashtag}", exception: true
-          end
+          system 'git init'
+          system 'git config advice.detachedHead false'
+          system 'git config init.defaultBranch master'
+          system "git remote add origin #{pkg.source_url}", exception: true
+          system "git fetch #{'--depth 1' unless pkg.git_clone_deep?} origin #{pkg.git_hashtag}", exception: true
+          system 'git checkout FETCH_HEAD'
           system 'git submodule update --init --recursive' unless pkg.no_git_submodules?
           system 'git fetch --tags', exception: true if pkg.git_fetchtags?
           puts 'Repository downloaded.'.lightgreen
@@ -171,8 +185,8 @@ def cached_download(pkg, source, filename, extract_dir, verbose: false)
   crew_cache_dir_cachefile = File.join(CREW_CACHE_DIR, filename)
   cachefile = File.file?(local_build_cachefile) ? local_build_cachefile : crew_cache_dir_cachefile
   # puts "Using #{pkg.name} archive from the build cache at #{cachefile}; The checksum will not be checked against the package file.".orange if cachefile.include?(CREW_LOCAL_BUILD_DIR)
-  puts "Using #{pkg.name} archive from the build cache at #{cachefile}".orange
-  if File.file?(cachefile)
+  puts "Trying to use #{pkg.name} archive from the build cache at #{cachefile}".orange
+  if File.file?(cachefile) && File.readable?(cachefile)
     puts "#{pkg.name.capitalize} archive file exists in cache".lightgreen if verbose
     # Don't validate checksum if file is in the local build cache.
     if cachefile.include?(CREW_LOCAL_BUILD_DIR) || cachefile.include?(CREW_CACHE_DIR)
@@ -216,18 +230,7 @@ rescue StandardError
 end
 
 def cached_git_download(pkg, source, filename, extract_dir, verbose: false)
-  # No git branch specified, just a git commit or tag
-  if pkg.git_branch.to_s.empty?
-    abort('No Git branch, commit, or tag specified!').lightred if pkg.git_hashtag.to_s.empty?
-    cachefile = File.join(CREW_CACHE_DIR, "#{filename}#{pkg.git_hashtag.gsub('/', '_')}.tar.zst")
-  # Git branch and git commit specified
-  elsif !pkg.git_hashtag.to_s.empty?
-    cachefile = File.join(CREW_CACHE_DIR, "#{filename}#{pkg.git_branch.gsub(/[^0-9A-Za-z.-]/, '_')}_#{pkg.git_hashtag.gsub('/', '_')}.tar.zst")
-  # Git branch specified, without a specific git commit.
-  else
-    # Use to the day granularity for a branch timestamp with no specific commit specified.
-    cachefile = File.join(CREW_CACHE_DIR, "#{filename}#{pkg.git_branch.gsub(/[^0-9A-Za-z.-]/, '_')}#{Time.now.strftime('%m%d%Y')}.tar.zst")
-  end
+  cachefile = File.join(CREW_CACHE_DIR, "#{filename}_#{pkg.git_hashtag.gsub('/', '_')}.tar.zst")
   puts "Git cachefile is #{cachefile}".orange if verbose
   if File.file?(cachefile) && File.file?("#{cachefile}.sha256")
     while File.file?("#{cachefile}.lock")

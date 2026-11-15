@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Hunspell_base < Autotools
   description 'Hunspell is a spell checker and morphological analyzer library'
   homepage 'http://hunspell.github.io/'
-  version '1.7.3'
+  version '1.7.6'
   license 'MPL-1.1, GPL-2 and LGPL-2.1'
   compatibility 'all'
   source_url 'https://github.com/hunspell/hunspell.git'
@@ -11,10 +11,10 @@ class Hunspell_base < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4c225dcf41eca361066d3db5462061493e3593b17ac9780794cffa8985709060',
-     armv7l: '4c225dcf41eca361066d3db5462061493e3593b17ac9780794cffa8985709060',
-       i686: '6556856dec7e5426f8433e92d4883360a33e62e0e49d3d784131c5e30e914e31',
-     x86_64: '5332efd061c450b1143447ac21899c878765a9da7e0a01c9f4f17d2fd15d2ce9'
+    aarch64: 'ce0988a828bf57a6b1d9793009371625cb682bebd86fd29f45b3e6f9e1117c76',
+     armv7l: 'ce0988a828bf57a6b1d9793009371625cb682bebd86fd29f45b3e6f9e1117c76',
+       i686: '7d70a2852cae64b6ae6b7a627b5b1d83a4b70691c5c3639b2e321f1ee596334f',
+     x86_64: '94e413626723b22b60d784a79323c1ab2559f89dc305f803a2f62a5c648bb281'
   })
 
   depends_on 'gcc_lib' => :library

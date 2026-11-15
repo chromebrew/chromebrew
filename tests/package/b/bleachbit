@@ -1,0 +1,3 @@
+#!/bin/bash
+bleachbit -h | head
+bleachbit -v

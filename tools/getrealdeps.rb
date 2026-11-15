@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-# getrealdeps version 2.16 (for Chromebrew)
+# getrealdeps version 2.24 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 #
 # Dependencies in Chromebrew can be:
@@ -34,6 +34,11 @@ if ARGV.include?('--use-crew-dest-dir')
   @opt_use_crew_dest_dir = true
 end
 
+if ARGV.include?('--print-only')
+  ARGV.delete('--print-only')
+  @opt_print_only = true
+end
+
 # If we're running as a script, exit quickly if an invalid package name is given.
 if __FILE__ == $PROGRAM_NAME && (ARGV[0].nil? || ARGV[0].empty? || ARGV[0].include?('#'))
   puts 'Getrealdeps checks for the runtime dependencies of a package.'
@@ -44,14 +49,13 @@ end
 
 # Search for which packages have a needed library in CREW_LIB_PREFIX.
 def whatprovidesfxn(pkgdepslcl, pkg)
-  packages = `crew whatprovides --no-color "#{CREW_LIB_PREFIX}/#{pkgdepslcl}"`.lines[0...-2].flat_map { it.split(':')[0] }.uniq.sort.join(' ')
+  packages = JSON.parse(`crew whatprovides --no-color "#{CREW_LIB_PREFIX}/#{pkgdepslcl}" --json`.chomp).join(' ')
   # If the package we're finding the dependencies for already provides this file, we don't need any of the packages that provide this file as dependencies.
   return packages.include?(pkg) ? '' : packages
 end
 
 # Write the missing dependencies to the package file.
 def write_deps(pkg_file, pkgdeps, pkg, label)
-  return if pkgdeps.empty?
   puts "Processing #{label} dependencies for #{pkg.name}...".orange
   suffix = " => :#{label}"
 
@@ -64,9 +68,9 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
     { name_regex: 'llvm.*_build', exclusion_regex: 'llvm.*_*', comments: 'created from the llvm build package.' },
     { name_regex: '(llvm.*_dev|llvm.*_lib|libclc|openmp)', exclusion_regex: 'llvm.*_build', comments: 'should only be a build dep.' },
     { name_regex: 'llvm.*_lib', exclusion_regex: 'llvm_lib', comments: 'should only be a build dep.' },
-    { name_regex: 'gcc_build', exclusion_regex: 'gcc.*_*', comments: 'created from the gcc_build package.' },
-    { name_regex: '(gcc_dev|gcc_lib|libssp)', exclusion_regex: 'gcc_build', comments: 'should only be a build dep.' },
-    { name_regex: 'gcc_lib', exclusion_regex: 'gcc_lib', comments: 'should only be a build dep.' },
+    { name_regex: 'gcc.*_build', exclusion_regex: 'gcc.*_*', comments: 'created from the gcc_build package.' },
+    { name_regex: '(gcc.*_dev|gcc.*_lib|libssp)', exclusion_regex: 'gcc.*_build', comments: 'should only be a build dep.' },
+    { name_regex: 'gcc.*_lib', exclusion_regex: 'gcc.*_lib', comments: 'should only be a build dep.' },
     { name_regex: 'mesa', exclusion_regex: 'libminigbm', comments: 'Conflicts with mesa' },
     { name_regex: 'python3', exclusion_regex: '(tcl|tk)', comments: 'optional for i686, which does not have gui libraries.' },
     { name_regex: 'qt5_base', exclusion_regex: 'mysql', comments: 'Do not want dep for armv7l, since mysql us 64 bit only.' },
@@ -85,21 +89,11 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
     puts "#{pkg.name}: #{exception[:exclusion_regex]} - #{exception[:comments]}..".orange if pkgdeps_length != pkgdeps.length
   end
 
-  puts "\n#{pkg.name.capitalize} has #{'executables with ' if label == 'executable'}#{'libraries with ' if label == 'library'}these #{'build ' if label == 'build'}#{'logical ' if label == 'logical'}dependencies:".lightblue
+  puts "\n#{pkg.name.capitalize} has #{'no ' if pkgdeps.empty?}#{'executables with ' if label == 'executable'}#{'libraries with ' if label == 'library'}#{'these ' unless pkgdeps.empty?}#{'build ' if label == 'build'}#{'logical ' if label == 'logical'}dependencies#{pkgdeps.empty? ? '.' : ':'}".lightblue
   pkgdeps.each do |i|
     puts "  depends_on '#{i}'#{suffix}".lightgreen
   end
-  pkg_read = File.read(pkg_file)
-  # Look for runtime dependencies that aren't already provided by the
-  # package, excepting build and logical dependencies, which get
-  # installed anyways.
-  missingpkgdeps = pkgdeps.reject { pkg_read.include?("depends_on '#{it}'#{suffix}") unless pkg_read.include?("depends_on '#{it}' => :build") }
-  missingpkgdeps = missingpkgdeps.reject { pkg_read.include?("depends_on '#{it}'#{suffix}") unless pkg_read.include?("depends_on '#{it}' => :logical") }
-
-  unless missingpkgdeps.empty?
-    puts "\nPackage file #{pkg_file} is missing these dependencies:".orange
-    puts "  depends_on '#{missingpkgdeps.join("#{suffix}\n  depends_on '")}#{suffix}".orange
-  end
+  return if pkg.no_update_deps?
 
   # Read the package file into an array of lines without newlines.
   pkg_file_lines = File.readlines(pkg_file)
@@ -107,6 +101,49 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
   # Remove newlines from the end of each line to allow better
   # duplicate removal.
   pkgdepsblock = pkg_file_lines.filter { it.include?("depends_on '") }.map(&:chomp)
+  original_pkgdepsblock = pkgdepsblock.dup
+
+  #   %w[build library logical executable].each do |dep_type|
+  #     instance_variable_set("@existing_deps_#{dep_type}", [])
+  #     pkgdepsblock.each { instance_variable_get("@existing_deps_#{dep_type}").push it.match(/(?<=  depends_on ')(.*)(?=' => :)/)[0] if it.match(/(?<=  depends_on ')*(?<= :)(.*)/)[0] == dep_type }
+  #     puts "Existing #{dep_type} deps:\n".orange
+  #     puts instance_variable_get("@existing_deps_#{dep_type}")
+  #   end
+
+  if pkgdeps.empty?
+    # Note deps of label type if package has no deps of that type.
+    outdated_deps = pkgdepsblock.reject { [it].grep(/#{suffix}/).empty? }
+
+    # Remove commented lines.
+    outdated_deps.delete_if { it.match(/(?<=^  #)/) }
+
+    unless outdated_deps.empty?
+      # Preserve them as build deps so we do not break future builds.
+      preserved_deps = outdated_deps.map { it.match(/(?<=  depends_on ')(.*)(?=' => :)/)[0] }
+
+      # Conservatively remove outdated dependencies, and add them as build dependencies.
+      # Build dependencies may be converted back to library or executable dependencies
+      # in another run of this function.
+      pkgdepsblock.select! { [it].grep(/#{suffix}/).empty? }
+      pkgdepsblock += preserved_deps.map { "  depends_on '#{it}' => :build" }
+    end
+  end
+
+  # Look for runtime dependencies that aren't already provided by the
+  # package, excepting build and logical dependencies, which get
+  # installed anyways.
+  # We want to reject executable deps that already exist as logical or
+  # library deps.
+  missingpkgdeps = if pkgdeps.empty? && label == 'library'
+                     pkgdeps.reject { !pkgdepsblock.grep(/depends_on '#{it}'#{suffix}/).empty? unless !pkgdepsblock.grep(/depends_on '#{it}' => :build/).empty? || !pkgdepsblock.grep(/depends_on '#{it}' => :logical/).empty? || !pkgdepsblock.grep(/depends_on '#{it}' => :library/).empty? }
+                   else
+                     pkgdeps.reject { !pkgdepsblock.grep(/depends_on '#{it}'#{suffix}/).empty? unless !pkgdepsblock.grep(/depends_on '#{it}' => :build/).empty? || !pkgdepsblock.grep(/depends_on '#{it}' => :logical/).empty? || (label == 'executable' && !pkgdepsblock.grep(/depends_on '#{it}' => :library/).empty?) }
+                   end
+
+  unless missingpkgdeps.empty?
+    puts "\nPackage file #{pkg_file} is missing these dependencies:".orange
+    puts "  depends_on '#{missingpkgdeps.join("#{suffix}\n  depends_on '")}#{suffix}".orange
+  end
 
   pkgdepsblock += pkgdeps.map { "  depends_on '#{it}'#{suffix}" }
 
@@ -156,6 +193,8 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
   # Remove newlines from the block to better remove duplicates.
   pkgdepsblock = pkgdepsblock.sort_by { it.sub('  # ', '  ') }.map(&:chomp).uniq
 
+  return if pkgdepsblock == original_pkgdepsblock
+
   puts "\nAdding to or replacing dependency block in #{pkg_file}..."
 
   # Find where we want to insert the dependencies, which is preferrably at the first dependency entry.
@@ -167,20 +206,22 @@ def write_deps(pkg_file, pkgdeps, pkg, label)
     dependency_insert = pkg_file_lines.index { it.include?('})') && pkg_file_lines.index(it) >= dependency_insert.to_i }
 
     # We then need to move one past the end of the binary_sha256 hash, and add an empty line at the start of our new dependency block.
-    dependency_insert += 1
+    dependency_insert += 1 unless dependency_insert.nil?
     pkgdepsblock.prepend('')
   end
 
-  # First remove all dependencies.
-  pkg_file_lines.reject! { it.include?("depends_on '") }
+  unless dependency_insert.nil?
+    # First remove all dependencies.
+    pkg_file_lines.reject! { it.include?("depends_on '") }
 
-  # Add back our sorted dependencies.
-  pkg_file_lines.insert(dependency_insert, pkgdepsblock)
+    # Add back our sorted dependencies.
+    pkg_file_lines.insert(dependency_insert, pkgdepsblock)
+  end
 
   # Only write back sorted dependencies if ARCH.include lines do not
   # appear on or around dependency lines.
-  if `grep -B1 'depends_on ' #{pkg_file}`.chomp.include?('ARCH.include')
-    puts 'Not swapping in this revised dependency block because an ARCH.include line was detected around the block.'.orange
+  if `grep -B1 'depends_on ' #{pkg_file}`.chomp.include?('ARCH.include') || @opt_print_only
+    puts "Not swapping in this revised dependency block #{'because an ARCH.include line was detected around the block.' if `grep -B1 'depends_on ' #{pkg_file}`.chomp.include?('ARCH.include')}.".orange
     puts 'Revised block:'.orange
     puts
     puts pkgdepsblock
@@ -226,6 +267,8 @@ def determine_dependencies(pkg_name, pkgfiles_to_check)
 
   # Massage the gcc entries in the dependency list.
   pkgdeps = pkgdeps.map { |i| i.gsub('gcc_build', 'gcc_lib') }.uniq
+  pkgdeps = pkgdeps.map { |i| i.gsub(/gcc(\d)+_build/, 'gcc_lib') }.uniq
+  pkgdeps = pkgdeps.map { |i| i.gsub(/gcc(\d)+_lib/, 'gcc_lib') }.uniq
 
   # Massage the llvm entries in the dependency list.
   pkgdeps = pkgdeps.map { |i| i.gsub(/llvm(\d)+_build/, 'llvm_lib') }.uniq
@@ -258,7 +301,11 @@ def main(pkg)
     return
   end
 
-  puts "Determining #{pkg.name}'s runtime dependencies...".lightblue
+  puts "Determining #{pkg.name}'s runtime dependencies on #{ARCH}...".lightpurple
+  if pkg.no_update_deps?
+    puts "This is advisory only because no_update_deps is set for #{pkg.name}.".lightpurple
+    puts "The dependency block for #{pkg.name} will not be replaced.".lightpurple
+  end
   pkg_file = Dir["{#{CREW_LOCAL_REPO_ROOT}/packages,#{CREW_PACKAGES_PATH}}/#{pkg.name}.rb"].max { |a, b| File.mtime(a) <=> File.mtime(b) }
   if @opt_use_crew_dest_dir
     define_singleton_method('pkgfilelist') { File.join(CREW_DEST_DIR, 'filelist') }
@@ -308,12 +355,16 @@ def main(pkg)
   pkgfiles = pkgfiles.reject { |i| !File.file?(i.chomp) || File.read(i.chomp, 4) != "\x7FELF" || i.include?('.zst') }
 
   # Try to select all libraries based upon filename and location.
-  library_pkgfiles = pkgfiles.select { |p| p.include?('.so') || p.include?(CREW_LIB_PREFIX) }
+  library_pkgfiles = pkgfiles.select { |p| p.include?('.so') || p.include?("#{CREW_LIB_PREFIX}/") }
   # Assume executable_pkgfiles is everything left.
   executable_pkgfiles = pkgfiles.reject { |p| library_pkgfiles.include?(p) }
 
   # Determine dependencies for each subset of files.
+  puts "Determining library dependencies for #{pkg.name}...".orange
   library_deps = determine_dependencies(pkg.name, library_pkgfiles).compact
+  write_deps(pkg_file, library_deps, pkg, 'library') if library_deps.empty?
+
+  puts "Determining executable dependencies for #{pkg.name}...".orange
   executable_deps = determine_dependencies(pkg.name, executable_pkgfiles).compact
 
   # Add logical deps for perl, pip, python, and ruby gem packages.

@@ -1,5 +1,5 @@
 ---
-# Version 1.7
+# Version 1.8
 name: Generate Updates PRs on Demand
 run-name: Generating Updates PRs on Demand using ${{ inputs.version_cmd_input }}
 on:
@@ -23,7 +23,7 @@ permissions:                    # Global permissions configuration starts here
 jobs:
   update-check:
     if: ${{ github.repository_owner == 'chromebrew' }}
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     steps:
       - name: Get GH Token
         id: get_workflow_token
@@ -46,7 +46,7 @@ jobs:
           git config user.email "${{ github.actor }}@users.noreply.github.com"
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '4.0.5'
+          ruby-version: '4.0.6'
       - name: Install bin/crew gem dependencies
         run: |
           # Install required gems.
@@ -133,6 +133,9 @@ jobs:
               # git pull --rebase origin master; git push origin "HEAD:${updater_branch}" -f ; git pull origin "${updater_branch}"
               # git stash pop || true
             else
+              old_branches=$(git branch -r --list "*updater-${pkg}-*" | sed -E 's|origin/||g')
+              [ -z "$old_branches" ] || git push -d origin $old_branches
+              echo "Deleted the following old branches:" ${old_branches}
               git checkout -b "${updater_branch}"
               echo "${updater_branch} branch created."
               git add packages/${i}.rb

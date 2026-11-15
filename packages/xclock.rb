@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Xclock < Package
+class Xclock < Meson
   description 'The xclock package contains a simple clock application which is used in the default xinit configuration.'
   homepage 'https://www.x.org/archive/X11R6.8.1/doc/xclock.1.html'
-  version '1.1.1'
+  version '1.2.1'
   license 'MIT-with-advertising'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/app/xclock.git'
@@ -11,27 +11,21 @@ class Xclock < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b35b8f4abbab0da7b6f8c04f7eabd4bddefb2b0ca56de1cbd94975c9119c5aae',
-     armv7l: 'b35b8f4abbab0da7b6f8c04f7eabd4bddefb2b0ca56de1cbd94975c9119c5aae',
-     x86_64: '388bff5a287f56d332c7f2cf8f0e7a8915fb6723e0b1dcdac826c4e966658c47'
+    aarch64: '64ab00cadd65260ce137e4d7e4f5ce2b2b40e81327129269ad42e96996bceaab',
+     armv7l: '64ab00cadd65260ce137e4d7e4f5ce2b2b40e81327129269ad42e96996bceaab',
+     x86_64: '2e6b7c05ccd7efdc5970412f945e2c8b312689116add350e8ccb35dea9cceeaa'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'libx11' # R
-  depends_on 'libxaw' # R
-  depends_on 'libxft' # R
-  depends_on 'libxkbfile' # R
-  depends_on 'libxmu' # R
-  depends_on 'libxrender' # R
-  depends_on 'libxt' # R
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'libx11' => :executable
+  depends_on 'libxaw' => :executable
+  depends_on 'libxft' => :executable
+  depends_on 'libxkbfile' => :executable
+  depends_on 'libxmu' => :executable
+  depends_on 'libxrender' => :executable
+  depends_on 'libxt' => :executable
+  depends_on 'wxwidgets' => :executable
 
-  def self.build
-    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  meson_options "-Dc_args='-I#{CREW_PREFIX}/include/wx-3.3'"
 end

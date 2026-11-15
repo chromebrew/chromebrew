@@ -32,8 +32,9 @@ class Llvm16_build < Package
   depends_on 'zlib' # R
   depends_on 'zstd' # R
 
-  no_env_options
   conflicts_ok
+  ignore_updater
+  no_env_options
 
   case ARCH
   when 'aarch64', 'armv7l'
@@ -163,7 +164,7 @@ class Llvm16_build < Package
             -DLLVM_TARGETS_TO_BUILD='#{LLVM_TARGETS_TO_BUILD}' \
             -DOPENMP_ENABLE_LIBOMPTARGET=OFF \
             -DPYTHON_EXECUTABLE=$(which python3) \
-            -Wno-dev"
+            -Wno-author"
     end
     @counter = 1
     @counter_max = 20

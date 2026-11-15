@@ -7,7 +7,7 @@ Package.load_package("#{__dir__}/freetype.rb")
 class Harfbuzz < Meson
   description 'HarfBuzz is an OpenType text shaping engine.'
   homepage 'https://harfbuzz.github.io/'
-  version "14.2.1-#{CREW_ICU_VER}"
+  version "15.1.0-#{CREW_ICU_VER}"
   license 'Old-MIT, ISC and icu'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/harfbuzz/harfbuzz.git'
@@ -15,9 +15,9 @@ class Harfbuzz < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '59bc51e47c0aa940a8f73e7e03802f4f95e95cefc1e82097c878fff3094a94c7',
-     armv7l: '59bc51e47c0aa940a8f73e7e03802f4f95e95cefc1e82097c878fff3094a94c7',
-     x86_64: '35c265c97008ed807231d17a678e8306278c30378260a8e43d4140f948f2e79b'
+    aarch64: '206c8fef3d830540cee040fb410dcc43f48bfee9dbf9f6ce247e84c44add4fdd',
+     armv7l: '206c8fef3d830540cee040fb410dcc43f48bfee9dbf9f6ce247e84c44add4fdd',
+     x86_64: '8f7d22527a1ca4ff753db9c240f205d2aae44380d4b49ad8055c91b5608c8b1a'
   })
 
   depends_on 'brotli' => :library
@@ -74,7 +74,6 @@ class Harfbuzz < Meson
 
       puts "#{build_exclusion} needs to be uninstalled before this build.".lightred
     end
-    system 'update-ca-certificates --fresh'
   end
 
   def self.patch

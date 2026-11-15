@@ -10,10 +10,10 @@ class Py3_secretstorage < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7cdad209a82403ba59b589913c9a82abaebacb740e684df52a61772a3f52dd0f',
-     armv7l: '7cdad209a82403ba59b589913c9a82abaebacb740e684df52a61772a3f52dd0f',
-       i686: 'bcbd502e657ea8263bab47f1381c8b87a9fb3a644dc57da1093ab8726f223d6f',
-     x86_64: '950429062f49cdeb1b5039606e327f755871581f3ff614211475eb90bb729f32'
+    aarch64: 'fc0d71eb0a23004a7fb683183e36de04bc8f51811c9ce860786c752fca09cb52',
+     armv7l: 'fc0d71eb0a23004a7fb683183e36de04bc8f51811c9ce860786c752fca09cb52',
+       i686: '3c47c074459605020fbcec0490f2f4de700a4539db534ed6e5844c1f82574f94',
+     x86_64: '0e98fa3e1f83818c05cf8647e0806b754737e343a183cab87da1a0cd535d3f6e'
   })
 
   depends_on 'py3_cryptography'

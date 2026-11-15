@@ -1,0 +1,3 @@
+#!/bin/bash
+zvbi-atsc-cc -h | head
+zvbi-ntsc-cc -h | head

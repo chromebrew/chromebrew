@@ -3,27 +3,27 @@ require 'buildsystems/autotools'
 class Sed < Autotools
   description 'sed (stream editor) is a non-interactive command-line text editor.'
   homepage 'https://www.gnu.org/software/sed/'
-  version '4.9-b4d01a9'
+  version '4.10'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://git.savannah.gnu.org/git/sed.git'
-  git_hashtag 'b4d01a9c9174b514fd9ccac50f6e7990a1e86fbe'
-  # source_url "https://ftp.gnu.org/gnu/sed/sed-#{version.split('-').first}.tar.lz"
-  # source_sha256 '6e226b732e1cd739464ad6862bd1a1aba42d7982922da7a53519631d24975181'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '95b4f7db1c34826159e39f9d604af322f31c92f37ba9b7ce2967023080eaa61d',
-     armv7l: '95b4f7db1c34826159e39f9d604af322f31c92f37ba9b7ce2967023080eaa61d',
-       i686: 'd86bfd2d533b0f3f47bbf33f5c9d4a24c3f5fae31db4869a4c967964e0b5b17d',
-     x86_64: '545c56168809e37a8c84381ad16905775def14949a09595453fc8ee5ffe7e0fc'
+    aarch64: '4362a8a474cea08d6f9ca254a913334daef865c7a735083d895d09c18faf08e2',
+     armv7l: '4362a8a474cea08d6f9ca254a913334daef865c7a735083d895d09c18faf08e2',
+       i686: '50c33a1f68aab08347f875b2a4441a36a381e01f683eff58bd6f052a6b8c8c89',
+     x86_64: 'efb63f2a8935789bdffc0e37978fd5c878996833e28d177a49716dead83e2382'
   })
 
   depends_on 'acl' => :executable
   depends_on 'attr' => :executable
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'wget2' => :build
 
+  autotools_skip_autoreconf
   autotools_configure_options '--without-selinux \
                                --enable-gcc-warnings=no'
 end

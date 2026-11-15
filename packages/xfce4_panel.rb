@@ -1,45 +1,43 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Xfce4_panel < Package
+class Xfce4_panel < Autotools
   description 'Next generation panel for the XFCE desktop environment'
   homepage 'https://xfce.org/'
-  version '4.16.3'
+  version '4.20.8'
   license 'GPL-2+ and LGPL-2.1+'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://archive.xfce.org/src/xfce/xfce4-panel/4.16/xfce4-panel-4.16.3.tar.bz2'
-  source_sha256 '5934eaed8a76da52c29b734ccd79600255420333dd6ebd8fd9f066379af1e092'
-  binary_compression 'tar.xz'
+  source_url "https://archive.xfce.org/src/xfce/xfce4-panel/#{version.sub(/\.\d+$/, '')}/xfce4-panel-#{version}.tar.bz2"
+  source_sha256 'd69cb1f377953aeb1fb9bdbcef12c246bea66586e3f2868f3b758e0e8ce3d3fe'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'be479ecd57ca0a60f2ca69ea39f4a65d240dae52f72f36da7e7280dbe007768c',
-     armv7l: 'be479ecd57ca0a60f2ca69ea39f4a65d240dae52f72f36da7e7280dbe007768c',
-     x86_64: 'fb4ddea55c05ed590a0c0b5d6bf383197182af9be828f9324279f3d3c9c8d694'
+    aarch64: 'fdef1186f229ee1b6cbb58f072b774466973f37144953c433f78c36feb6010cd',
+     armv7l: 'fdef1186f229ee1b6cbb58f072b774466973f37144953c433f78c36feb6010cd',
+     x86_64: 'f0c5922399bb1c86914ed65f92fc524239de23253fc76a4bd655725eace2556b'
   })
 
-  depends_on 'libwnck'
-  depends_on 'libxfce4ui'
-  depends_on 'xfconf'
-  depends_on 'garcon'
-  depends_on 'exo'
-  depends_on 'gtk3'
+  depends_on 'at_spi2_core' => :library
+  depends_on 'automake' => :executable
+  depends_on 'cairo' => :library
+  depends_on 'exo' => :library
+  depends_on 'garcon' => :library
+  depends_on 'gdk_pixbuf' => :library
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'gtk3' => :library
+  depends_on 'libwnck' => :library
+  depends_on 'libx11' => :library
+  depends_on 'libxext' => :library
+  depends_on 'libxfce4ui' => :library
+  depends_on 'libxfce4util' => :library
+  depends_on 'libxfce4windowing' => :library
+  depends_on 'pango' => :library
+  depends_on 'wayland' => :library
+  depends_on 'xfconf' => :library
 
-  def self.patch
-    system 'filefix'
-  end
-
-  def self.build
-    system <<~BUILD
-      [ -x autogen.sh ] && env NOCONFIGURE='1' ./autogen.sh
-      env #{CREW_ENV_OPTIONS} ./configure #{CREW_CONFIGURE_OPTIONS} \
-        --disable-static \
-        --enable-gio-unix
-
-      make
-    BUILD
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  def self.prebuild
+    ConvenienceFunctions.libtoolize('libglib-2.0', 'glib')
   end
 
   def self.postinstall

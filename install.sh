@@ -1,5 +1,5 @@
 #!/bin/bash
-CREW_INSTALLER_VERSION=2026052801
+CREW_INSTALLER_VERSION=2026102901
 export CREW_INSTALLER_RUNNING=1
 # Exit on fail.
 set -eE
@@ -87,6 +87,7 @@ set -a
 : "${BRANCH:=master}"
 : "${CREW_BRANCH:=${BRANCH}}"
 : "${CREW_REPO:=https://github.com/${OWNER}/${REPO}.git}"
+
 set +a
 
 : "${CREW_PREFIX:=/usr/local}"
@@ -193,7 +194,8 @@ PATCHELF_INTERPRETER="${CREW_PREFIX}/bin/ld.so"
 #  ;;
 #esac
 
-: "${CREW_PY_VER:=3.14}"
+: "${CREW_GCC_VER:=gcc16}"
+: "${CREW_PY_VER:=py3.15}"
 CREW_NPROC="$(nproc)"
 export CREW_NPROC
 
@@ -297,9 +299,10 @@ if [[ -n "${CREW_PRE_GLIBC_STANDALONE}" ]]; then
   [[ "$LIBC_VERSION" == "2.27" ]] && BOOTSTRAP_PACKAGES='zstd_static glibc_build227'
 
   [[ -n "${PREFIX_CMD}" ]] && BOOTSTRAP_PACKAGES+=' util_linux'
+  BOOTSTRAP_PACKAGES+=' glab '
   # Overwrite the glibc libcrypt.so.1.1.0 with the one from libxcrypt.
   BOOTSTRAP_PACKAGES+=' libxcrypt '
-  BOOTSTRAP_PACKAGES+=' upx patchelf lz4 zlib xzutils zlib_ng gcc_lib crew_mvdir ca_certificates libyaml openssl findutils ncurses readline bash psmisc'
+  BOOTSTRAP_PACKAGES+=" upx patchelf lz4 zlib xzutils zlib_ng ${CREW_GCC_VER}_build crew_mvdir ca_certificates libyaml openssl findutils ncurses readline bash psmisc"
 else
   # Ruby wants gcc_lib, so install our version build against our glibc
   # first.
@@ -308,7 +311,8 @@ else
   BOOTSTRAP_PACKAGES='zstd_static glibc crew_preload'
   # Get linux32 as early as possible.
   [[ -n "${PREFIX_CMD}" ]] && BOOTSTRAP_PACKAGES+=' util_linux'
-  BOOTSTRAP_PACKAGES+=' libxcrypt upx patchelf lz4 zlib xzutils zlib_ng crew_mvdir ncurses readline bash gcc_lib ca_certificates libyaml openssl gmp findutils psmisc'
+  BOOTSTRAP_PACKAGES+=' glab '
+  BOOTSTRAP_PACKAGES+=" libxcrypt upx patchelf lz4 zlib xzutils zlib_ng crew_mvdir ncurses readline bash ${CREW_GCC_VER}_build ca_certificates libyaml openssl gmp findutils psmisc"
   [[ "${ARCH}" == 'i686' ]] || BOOTSTRAP_PACKAGES+=' uutils_coreutils'
 fi
 
@@ -360,8 +364,12 @@ function download_check () {
       fi
     fi
     # Download
-    echo_intra "Downloading ${1}..."
-    curl_wrapper '-#' -L "${2}" -o "${3}"
+    echo_intra "Downloading ${1}...from ${2}"
+    if [[ "${2}" == *"gitlab.com/chromebrew/binaries"* ]]; then
+      glab --repo chromebrew/Binaries packages download --name "${1}" --version "${5}"_"${ARCH}" --filename "${1}"-"${5}"-chromeos-"${ARCH}"."${6}" || curl_wrapper '-#' -L "${2}" -o "${3}"
+    else
+      curl_wrapper '-#' -L "${2}" -o "${3}"
+    fi
 
     # Verify
     echo_intra "Verifying ${1}..."
@@ -439,6 +447,17 @@ function extract_install () {
         tar -I zstd -xpf ../"${2}"
       fi
     fi
+    if [[ "${2##*.}" == "gz" ]]; then
+      tar xpf ../"${2}"
+      if [[ "${1}" == *"glab"* ]]; then
+        mkdir -p ."${CREW_PREFIX}"/bin
+        mv bin/glab ."${CREW_PREFIX}"/bin/
+        echo "${CREW_PREFIX}/bin" >> dlist
+        glab_size=$(du -b ."${CREW_PREFIX}"/bin/glab | awk '{print $1}')
+        echo -e "# Total size: $glab_size" >> filelist
+        echo "${CREW_PREFIX}/bin/glab" >> filelist
+      fi
+    fi
 
     echo_intra "Installing ${1}..."
     tar cpf - ./*/* | (cd /; tar xp --keep-directory-symlink -m -f -)
@@ -471,7 +490,7 @@ function extract_install () {
 }
 
 function get_pkg_version () {
-  grep "\ \ version" "${1}" | head -n 1 | sed "s/#{LIBC_VERSION}/$LIBC_VERSION/g" | sed "s/#{@gcc_libc_version}/$LIBC_VERSION/g" | sed "s/#{CREW_PY_VER}/py$CREW_PY_VER/g"| sed "s/#{CREW_RUBY_VER}/$CREW_RUBY_VER/g"| awk '{print substr($2,2,length($2)-2)}'
+  grep "\ \ version" "${1}" | head -n 1 | sed "s/#{LIBC_VERSION}/$LIBC_VERSION/g" | sed "s/#{@gcc_libc_version}/$LIBC_VERSION/g" | sed "s/#{CREW_GCC_VER}/$CREW_GCC_VER/g"| sed "s/#{CREW_PY_VER}/$CREW_PY_VER/g"| sed "s/#{CREW_RUBY_VER}/$CREW_RUBY_VER/g"| awk '{print substr($2,2,length($2)-2)}'
 }
 
 function update_device_json () {
@@ -566,14 +585,18 @@ for package in $BOOTSTRAP_PACKAGES; do
     binary_compression='tar.zst'
   fi
 
-  url="https://gitlab.com/api/v4/projects/26210301/packages/generic/${package}/${version}_${ARCH}/${package}-${version}-chromeos-${ARCH}.${binary_compression}"
+  if [[ $package == 'glab' ]]; then
+    url=$(sed -n '/source_url({/,/})/p' "${CREW_LIB_PATH}"/packages/glab.rb  | grep "${ARCH}" | sed "s/#{version}/${version}/g" | grep -o "\".*\"" | tr -d '"')
+  else
+    url="https://gitlab.com/api/v4/projects/26210301/packages/generic/${package}/${version}_${ARCH}/${package}-${version}-chromeos-${ARCH}.${binary_compression}"
+  fi
   tarfile=$(basename "${url}")
 
   sha256=$(sed -n "s/.*${ARCH}: '\([^']*\)'.*/\1/p" "${package}.rb")
   shacount=$(echo "$sha256" | wc -w)
   for sha in $sha256
   do
-    if download_check "${package}" "${url}" "${tarfile}" "${sha}" "${shacount}"; then
+    if download_check "${package}" "${url}" "${tarfile}" "${sha}" "${shacount}" "${version}" "${binary_compression}"; then
       extract_install "${package}" "${tarfile}"
       update_device_json "${package}" "${version}" "${sha}"
     fi

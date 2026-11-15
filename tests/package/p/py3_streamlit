@@ -1,0 +1,3 @@
+#!/bin/bash
+streamlit --help | head
+streamlit --version

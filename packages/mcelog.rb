@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Mcelog < Autotools
   description 'logs and accounts machine checks (in particular memory, IO, and CPU hardware errors) on modern x86 Linux systems.'
   homepage 'https://www.mcelog.org/'
-  version '211'
+  version '213'
   license 'GPL-2'
   compatibility 'all'
   source_url "https://git.kernel.org/pub/scm/utils/cpu/mce/mcelog.git/snapshot/mcelog-#{version}.tar.gz"
-  source_sha256 '744322b5154ce657758afd942a1fa7bf55879ae618c9274c67dd9333389c6b4f'
+  source_sha256 'd93a14eb2abb26c740ec630c00e0e774fad67df4a07229399c6f977afd1ccd6a'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '38e45d54a822f53c3497f6a4cce8a30718d8a98809cd110ef0effdadc570d4ba',
-     armv7l: '38e45d54a822f53c3497f6a4cce8a30718d8a98809cd110ef0effdadc570d4ba',
-       i686: '48ba80075245b4e962605f8157810b5c094ee528c417e6662dee88fc24fe3b97',
-     x86_64: 'c9efb5ff4e1599c44b52daf94f09409ff0eb9f71f75a067b3ef6c336879aad36'
+    aarch64: 'a560af00af9e3d1aa99443c3cb565550eb948314039828034a0ae5c087a8349d',
+     armv7l: 'a560af00af9e3d1aa99443c3cb565550eb948314039828034a0ae5c087a8349d',
+       i686: '04a5aeba5a46e3b8a0b6eb570e43b4e83fa338ee140cb66c23c142654ea28622',
+     x86_64: '3218ddade6b36775b7e19bad534ae0f94dce3c0f74856cf8a6587606a8c0f2d7'
   })
 
   depends_on 'glibc' => :executable

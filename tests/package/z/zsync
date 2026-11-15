@@ -1,0 +1,5 @@
+#!/bin/bash
+zsync -h 2>&1
+zsync -V
+zsyncmake -h 2>&1
+zsyncmake -V

@@ -1,5 +1,5 @@
 ---
-# Version 1.0
+# Version 1.1
 name: Actions Updater
 on:
   schedule:
@@ -16,13 +16,13 @@ permissions:
 jobs:
   autocheck:
     if: ${{ github.repository_owner == 'chromebrew' }}
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@v7
         with:
           persist-credentials: true
       - name: Run GitHub Actions Version Updater
-        uses: saadmk11/github-actions-version-updater@v0.9.0
+        uses: saadmk11/github-actions-version-updater@v1.0.3
         with:
           token: ${{ secrets.CREW_PR_TOKEN}}
           pull_request_team_reviewers: chromebrew/active

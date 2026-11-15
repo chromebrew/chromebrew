@@ -36,7 +36,7 @@ class Libx265 < Package
           -DEXPORT_C_API=FALSE \
           -DENABLE_CLI=FALSE \
           -DENABLE_SHARED=FALSE \
-          -Wno-dev \
+          -Wno-author \
           ../source"
       end
       system 'ninja -C build-12'
@@ -53,7 +53,7 @@ class Libx265 < Package
           -DEXPORT_C_API=FALSE \
           -DENABLE_CLI=FALSE \
           -DENABLE_SHARED=FALSE \
-          -Wno-dev \
+          -Wno-author \
           ../source"
       end
       system 'ninja -C build-10'
@@ -72,7 +72,7 @@ class Libx265 < Package
           -DEXTRA_LINK_FLAGS='-L .' \
           -DLINKED_10BIT=TRUE \
           -DLINKED_12BIT=TRUE \
-          -Wno-dev \
+          -Wno-author \
           ../source"
       end
       FileUtils.ln_s '../build-10/libx265.a', 'builddir/libx265_main10.a'
@@ -88,7 +88,7 @@ class Libx265 < Package
         #{CREW_CMAKE_OPTIONS} \
         -DENABLE_SHARED=TRUE \
         -DLIB_INSTALL_DIR=lib#{CREW_LIB_SUFFIX} \
-        -Wno-dev \
+        -Wno-author \
         ../source"
       end
     end

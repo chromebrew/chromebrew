@@ -33,8 +33,9 @@ class Llvm19_build < Package
   depends_on 'zlib' # R
   depends_on 'zstd' # R
 
-  no_env_options
   conflicts_ok
+  ignore_updater
+  no_env_options
 
   case ARCH
   when 'aarch64', 'armv7l'
@@ -152,7 +153,7 @@ class Llvm19_build < Package
             -DLLVM_LINK_LLVM_DYLIB=ON \
             -DLLVM_OPTIMIZED_TABLEGEN=ON \
             -DLLVM_TARGETS_TO_BUILD='#{LLVM_TARGETS_TO_BUILD}' \
-            -Wno-dev"
+            -Wno-author"
     end
     @counter = 1
     @counter_max = 20

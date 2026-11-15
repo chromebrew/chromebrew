@@ -1,6 +1,5 @@
-# Total size: 1642624
+# Total size: 1834359
 /usr/local/bin/lynis
-/usr/local/man/man8/lynis.8.gz
 /usr/local/share/lynis/CHANGELOG.md
 /usr/local/share/lynis/CODE_OF_CONDUCT.md
 /usr/local/share/lynis/CONTRIBUTING.md
@@ -11,6 +10,8 @@
 /usr/local/share/lynis/LICENSE
 /usr/local/share/lynis/README
 /usr/local/share/lynis/SECURITY.md
+/usr/local/share/lynis/TODO.md
+/usr/local/share/lynis/db/control-links.db
 /usr/local/share/lynis/db/fileperms.db
 /usr/local/share/lynis/db/hints.db
 /usr/local/share/lynis/db/integrity.db
@@ -29,6 +30,7 @@
 /usr/local/share/lynis/db/languages/gr
 /usr/local/share/lynis/db/languages/he
 /usr/local/share/lynis/db/languages/hu
+/usr/local/share/lynis/db/languages/id
 /usr/local/share/lynis/db/languages/it
 /usr/local/share/lynis/db/languages/ja
 /usr/local/share/lynis/db/languages/ko
@@ -89,6 +91,7 @@
 /usr/local/share/lynis/include/tests_hardening
 /usr/local/share/lynis/include/tests_homedirs
 /usr/local/share/lynis/include/tests_insecure_services
+/usr/local/share/lynis/include/tests_kerberos
 /usr/local/share/lynis/include/tests_kernel
 /usr/local/share/lynis/include/tests_kernel_hardening
 /usr/local/share/lynis/include/tests_ldap
@@ -117,6 +120,9 @@
 /usr/local/share/lynis/include/tests_webservers
 /usr/local/share/lynis/include/tool_tips
 /usr/local/share/lynis/lynis
-/usr/local/share/lynis/lynis.8.gz
+/usr/local/share/lynis/lynis.8
+/usr/local/share/lynis/lynis.sh
 /usr/local/share/lynis/plugins/README
 /usr/local/share/lynis/plugins/custom_plugin.template
+/usr/local/share/lynis/publiccode.yml
+/usr/local/share/man/man8/lynis.8.zst

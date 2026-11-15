@@ -1,28 +1,22 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Sg3_utils < Package
+class Sg3_utils < Autotools
   description 'The sg3_utils package contains utilities that send SCSI commands to devices.'
-  homepage 'http://sg.danny.cz/sg/sg3_utils.html'
-  version '1.44'
+  homepage 'https://sg.danny.cz/sg/sg3_utils.html'
+  version '1.49'
   license 'BSD-2 Clause'
   compatibility 'all'
-  source_url 'http://sg.danny.cz/sg/p/sg3_utils-1.44.tar.xz'
-  source_sha256 'ca94ac106510742cd8ff5ead4a7e5c89d410653291401daf4632d2bef2a35b05'
-  binary_compression 'tar.xz'
+  source_url "https://sg.danny.cz/sg/p/sg3_utils-#{version}.tar.xz"
+  source_sha256 '4215e7876e786dcdbf5ae14a7c0b9549b7817cdf6f5ce0debe1d1674e0d1c900'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ae79701d44c714506fc6e96380cfe9bc401f8207bd3cef75ad6d22af62a947ab',
-     armv7l: 'ae79701d44c714506fc6e96380cfe9bc401f8207bd3cef75ad6d22af62a947ab',
-       i686: '1862071fbf2c6e4b89b596c9f643534311b2906b038fb25502db2f95b546c26e',
-     x86_64: 'bf5157d3ffb69c69cc71d4e6df55706cbc1cd31632159fe8fa2ca0298377a184'
+    aarch64: 'e76663bc18d8eecb37f0bafb2f0d20a504ac0989d86d22a05c182f64bbcc72a8',
+     armv7l: 'e76663bc18d8eecb37f0bafb2f0d20a504ac0989d86d22a05c182f64bbcc72a8',
+       i686: 'a5b6d29a527281a0f1817cb42cea5542b24215f17cb1ddd69ef34d6a14ea34d5',
+     x86_64: '2dd26011e25496934e3ddc4dc02fc476a8752c57dadcb3c147772b7cc0969b9d'
   })
 
-  def self.build
-    system './configure', "--prefix=#{CREW_PREFIX}", "--libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 end

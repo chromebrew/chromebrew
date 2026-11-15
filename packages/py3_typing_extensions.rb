@@ -10,10 +10,10 @@ class Py3_typing_extensions < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2c6d6c514d0844380b6a3f10f8571bd04af7119a6218baa5acf20a2a50b49b13',
-     armv7l: '2c6d6c514d0844380b6a3f10f8571bd04af7119a6218baa5acf20a2a50b49b13',
-       i686: '7f5b0294246c36c3d91ae92b57bfcd2ff5faba03ff5b034b9d642960b9050390',
-     x86_64: '4e1002fb76e49d24185417a888a9813ab5e6a9ca9400a1784bcd6458bc28ab29'
+    aarch64: '3b49ffe5ebbbf9a8852291cb27826861902122dd1daff5e07121cc1ccd7f0903',
+     armv7l: '3b49ffe5ebbbf9a8852291cb27826861902122dd1daff5e07121cc1ccd7f0903',
+       i686: '59670c2f5f1c5accd271249402a60ac3b9db62a095a4c81bb16db078326c40d0',
+     x86_64: '4cb22fcc00c975437867169ddbb150e8d20e1d1fc852779cd2c18a55adb47a74'
   })
 
   depends_on 'python3' => :logical

@@ -1,4 +1,5 @@
 ---
+# Version 1.1
 name: Linter-Handoff
 on:
   pull_request:
@@ -13,12 +14,18 @@ on:
     workflows: [Generate PR]
     types:
       - completed
+permissions:
+  contents: read
+  pull-requests: write
 env:
   GH_TOKEN: ${{ secrets.CREW_PR_TOKEN }}
+
+cache-mode: write  # actionlint:ignore cache-write-untrusted -- this job runs reviewed default-branch code only
+
 jobs:
   debug:
     if: ${{ ( github.repository_owner == 'chromebrew' ) }}
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     steps:
       - name: Dump GitHub context
         env:
@@ -33,7 +40,7 @@ jobs:
           STEPS_CONTEXT: ${{ toJson(steps) }}
         run: echo "$STEPS_CONTEXT"
   handoff:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     outputs:
       category: ${{ steps.changed-file-extensions.outputs.category }}
     steps:
@@ -100,7 +107,7 @@ jobs:
     uses: ./.github/workflows/Actionlint.yml
     secrets: inherit
   linter-tests:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     needs:
       - handoff
       - markdown

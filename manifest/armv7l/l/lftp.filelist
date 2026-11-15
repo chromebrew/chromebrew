@@ -1,4 +1,4 @@
-# Total size: 4647662
+# Total size: 8895821
 /usr/local/bin/lftp
 /usr/local/bin/lftpget
 /usr/local/etc/lftp.conf
@@ -13,6 +13,7 @@
 /usr/local/share/lftp/import-netscape
 /usr/local/share/lftp/verify-file
 /usr/local/share/lftp/xdg-move
-/usr/local/share/man/man1/lftp.1.gz
-/usr/local/share/man/man1/lftpget.1.gz
-/usr/local/share/man/man5/lftp.conf.5.gz
+/usr/local/share/man/man1/lftp.1.zst
+/usr/local/share/man/man1/lftpget.1.zst
+/usr/local/share/man/man5/lftp.conf.5.zst
+/usr/local/share/zsh/site-functions/_lftp

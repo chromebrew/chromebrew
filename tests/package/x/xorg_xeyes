@@ -1,0 +1,3 @@
+#!/bin/bash
+xeyes -help 2>&1
+xeyes -version

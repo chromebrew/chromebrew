@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Ffmpegthumbnailer < CMake
   description 'FFmpegthumbnailer is a lightweight video thumbnailer that can be used by file managers to create thumbnails for your video files.'
   homepage 'https://github.com/dirkvdb/ffmpegthumbnailer'
-  version '2.3.0'
+  version '2.4.1'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/dirkvdb/ffmpegthumbnailer.git'
@@ -11,9 +11,9 @@ class Ffmpegthumbnailer < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '30ea82b1f97dc3f1c80582a731d8522d186b29c99caa5eb5216cac873cd7e525',
-     armv7l: '30ea82b1f97dc3f1c80582a731d8522d186b29c99caa5eb5216cac873cd7e525',
-     x86_64: 'c4ff9cbb3798843b2326fb9d6b2de498899eb41e568e7446d22b01fcf3f8b408'
+    aarch64: 'ceca7f71d1c2b0610ba02ec21882d091566cacecedc456d6e5e28a7468e734bf',
+     armv7l: 'ceca7f71d1c2b0610ba02ec21882d091566cacecedc456d6e5e28a7468e734bf',
+     x86_64: 'fe4cd3f53b2eebd3a5cd340b5a5b10ea470df602f4fda5572ef8a32a7a116590'
   })
 
   depends_on 'ffmpeg' => :library

@@ -3,21 +3,22 @@ require 'buildsystems/autotools'
 class Sbc < Autotools
   description 'SBC is a digital audio encoder and decoder used to transfer data to Bluetooth audio output devices.'
   homepage 'https://www.linuxfromscratch.org/blfs/view/svn/multimedia/sbc.html'
-  version '2.0'
+  version '2.2'
   license 'GPL-2 and LGPL-2.1'
   compatibility 'all'
-  source_url 'https://www.kernel.org/pub/linux/bluetooth/sbc-2.0.tar.xz'
-  source_sha256 '8f12368e1dbbf55e14536520473cfb338c84b392939cc9b64298360fd4a07992'
+  source_url "https://www.kernel.org/pub/linux/bluetooth/sbc-#{version}.tar.xz"
+  source_sha256 'a1ada76ef35e5af9c2fbd063754dc9e37a8d989417c6eb1ecebb089b1383ae9e'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '94eb507ecb737f856ab6fd64d6fffbb56fa06fa17c3c9fd89b7f168dbd3836c0',
-     armv7l: '94eb507ecb737f856ab6fd64d6fffbb56fa06fa17c3c9fd89b7f168dbd3836c0',
-       i686: '7d910e200cf5edf6654369a94e6652b5af9989977ea3ec636fb2f900b72189e5',
-     x86_64: '5fd600e8ab31ea0668acb2679787a99c94fef58cb222e843a7781a820636c3bd'
+    aarch64: '57287efd1e700d01de2cdf1864df60770e141b8e34f35b99f50098c9e69e521c',
+     armv7l: '57287efd1e700d01de2cdf1864df60770e141b8e34f35b99f50098c9e69e521c',
+       i686: '712f5585af3360d502207aa806fd43da99f5ebfb09785c3349b2fcef97972402',
+     x86_64: '7fe4781bac996f63a148cec3fbc864dd6e0592f9e1d68f7d627f815133c68649'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'libsndfile' => :build
 
   autotools_configure_options '--enable-high-precision \

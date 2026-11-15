@@ -3,20 +3,21 @@ require 'buildsystems/pip'
 class Py3_chardet < Pip
   description 'Chardet is a universal encoding detector.'
   homepage 'https://github.com/chardet/chardet/'
-  version "7.4.3-#{CREW_PY_VER}"
+  version "7.7.0-#{CREW_PY_VER}"
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5dd27fa804f5227ae35d6f651e3b460c03b29e1dd8a74a2806929cc9baf22cd7',
-     armv7l: '5dd27fa804f5227ae35d6f651e3b460c03b29e1dd8a74a2806929cc9baf22cd7',
-       i686: '049e7e141ffa0d2fbbbb26e9695ab1207813025d48d0338a433492c3bc6db692',
-     x86_64: '8dd1e7916435f11073001363029b48ee579117b8a9c8fc4a38fda2e48149a7fe'
+    aarch64: '247a2b4543becec7b0468ed9e6bbfc86207d09303c6b117ad6fedac7bceebfff',
+     armv7l: '247a2b4543becec7b0468ed9e6bbfc86207d09303c6b117ad6fedac7bceebfff',
+       i686: '7994b2300b2319b4a7fe0a60d44cb11ab322149fe7adb4ebe1f1d14245d51dd6',
+     x86_64: '98115369e171cf6870fb05c8a576f5e9347366805c70b2b23eb68bb89d87b3de'
   })
 
-  depends_on 'glibc' => :library
+  depends_on 'glibc' => :build
+  depends_on 'glibc_lib' => :build
   depends_on 'python3' => :logical
 
   no_source_build

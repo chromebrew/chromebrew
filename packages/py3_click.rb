@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_click < Pip
   description 'Click is a simple wrapper around optparse for powerful command line utilities.'
   homepage 'https://click.palletsprojects.com'
-  version "8.4.2-#{CREW_PY_VER}"
+  version "8.5.1-#{CREW_PY_VER}"
   license 'BSD-3'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a74df8c48b405856dbf5fd36a69cf6e976f3c763c3c4119c13db12ff255e498d',
-     armv7l: 'a74df8c48b405856dbf5fd36a69cf6e976f3c763c3c4119c13db12ff255e498d',
-       i686: '4ffe375bbe9209235ba34f88dac294958f98ec29f75219f6055d4561140accdb',
-     x86_64: '596979b07b075d123f7a05673af2b2c1f4ed89feff2d2ab7c53ec8a20c193540'
+    aarch64: 'e4c8cfda8bb7eea1401606e10409875889edf2dac8eecdea58ff8d284da6d295',
+     armv7l: 'e4c8cfda8bb7eea1401606e10409875889edf2dac8eecdea58ff8d284da6d295',
+       i686: '0d920288c072580ac5ee7c934f703ece5a99039a0cf6d08251360f876b823746',
+     x86_64: 'b213ef873ce1bd99ebb47cb611cd3b0d5cf74283b9971f369fa1d1118b8f0fe8'
   })
 
   depends_on 'python3' => :logical

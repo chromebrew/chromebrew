@@ -1,11 +1,12 @@
-# Total size: 3752583
+# Total size: 5142772
 /usr/local/bin/vpnc-start
 /usr/local/bin/vpnc-stop
+/usr/local/etc/bash.d/10-vpnc-start
 /usr/local/include/openconnect.h
 /usr/local/lib64/libopenconnect.la
 /usr/local/lib64/libopenconnect.so
 /usr/local/lib64/libopenconnect.so.5
-/usr/local/lib64/libopenconnect.so.5.7.0
+/usr/local/lib64/libopenconnect.so.5.9.0
 /usr/local/lib64/pkgconfig/openconnect.pc
 /usr/local/libexec/openconnect/csd-post.sh
 /usr/local/libexec/openconnect/csd-wrapper.sh
@@ -78,12 +79,15 @@
 /usr/local/share/locale/hu/LC_MESSAGES/openconnect.mo
 /usr/local/share/locale/id/LC_MESSAGES/openconnect.mo
 /usr/local/share/locale/it/LC_MESSAGES/openconnect.mo
+/usr/local/share/locale/ja/LC_MESSAGES/openconnect.mo
+/usr/local/share/locale/ka/LC_MESSAGES/openconnect.mo
 /usr/local/share/locale/lt/LC_MESSAGES/openconnect.mo
 /usr/local/share/locale/nl/LC_MESSAGES/openconnect.mo
 /usr/local/share/locale/pa/LC_MESSAGES/openconnect.mo
 /usr/local/share/locale/pl/LC_MESSAGES/openconnect.mo
 /usr/local/share/locale/pt/LC_MESSAGES/openconnect.mo
 /usr/local/share/locale/pt_BR/LC_MESSAGES/openconnect.mo
+/usr/local/share/locale/ru/LC_MESSAGES/openconnect.mo
 /usr/local/share/locale/sk/LC_MESSAGES/openconnect.mo
 /usr/local/share/locale/sl/LC_MESSAGES/openconnect.mo
 /usr/local/share/locale/sr/LC_MESSAGES/openconnect.mo
@@ -95,4 +99,4 @@
 /usr/local/share/locale/uk/LC_MESSAGES/openconnect.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/openconnect.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/openconnect.mo
-/usr/local/share/man/man8/openconnect.8.gz
+/usr/local/share/man/man8/openconnect.8.zst

@@ -1,0 +1,3 @@
+#!/bin/bash
+darktable -h | head
+darktable-cli -v

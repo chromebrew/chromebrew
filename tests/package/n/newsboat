@@ -1,0 +1,3 @@
+#!/bin/bash
+newsboat -h | head
+newsboat -V

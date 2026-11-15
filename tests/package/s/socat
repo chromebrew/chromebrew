@@ -1,0 +1,3 @@
+#!/bin/bash
+socat -h | head
+socat -V | head

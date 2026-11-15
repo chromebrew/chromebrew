@@ -1,27 +1,36 @@
 # Adapted from Arch Linux nmap PKGBUILD at:
 # https://github.com/archlinux/svntogit-packages/raw/packages/nmap/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/autotools'
 
-class Nmap < Package
+class Nmap < Autotools
   description 'Utility for network discovery and security auditing'
   homepage 'https://nmap.org/'
-  version '7.94'
+  version '7.993'
   license 'GPL2'
-  compatibility 'all'
-  source_url 'https://nmap.org/dist/nmap-7.94.tar.bz2'
-  source_sha256 'd71be189eec43d7e099bac8571509d316c4577ca79491832ac3e1217bc8f92cc'
+  compatibility 'aarch64 armv7l x86_64'
+  source_url "https://nmap.org/dist/nmap-#{version}.tar.bz2"
+  source_sha256 '270e55f04915bfcecb5db8feb959d4c5ba86a48c094520a4f1c07571e1c79c59'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4ce57407189a3fb6becebd5c637a8cfbe774e19be1cea644964d71d37f89f451',
-     armv7l: '4ce57407189a3fb6becebd5c637a8cfbe774e19be1cea644964d71d37f89f451',
-       i686: '7e7251d159c50fe2e44ca92c65a36ab008d345e42689f8a108b75e007d58ccfd',
-     x86_64: 'e17ede47738f031cae4f8cc673550b293ae72d2315ecb09896fc60cbee9bd0a2'
+    aarch64: '0108f7e8a99bc1b9cf5e99d45fae7736fb6bdfa1d6326066b80bf8916379e23c',
+     armv7l: '0108f7e8a99bc1b9cf5e99d45fae7736fb6bdfa1d6326066b80bf8916379e23c',
+     x86_64: '352cc10a4abe9fb71f92b7d0e19f429439a562ff964ad724cc4ec51ead8590e8'
   })
 
-  depends_on 'libpcap'
-  depends_on 'libssh2'
+  depends_on 'cairo' => :library
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'gobject_introspection' => :library
+  depends_on 'libffi' => :library
+  depends_on 'libpcap' => :executable
+  depends_on 'libssh2' => :executable
+  depends_on 'openssl' => :executable
+  depends_on 'pcre2' => :executable
+  depends_on 'zlib' => :executable
 
   def self.patch
     # ensure we build "devendored deps"
@@ -29,18 +38,17 @@ class Nmap < Package
     @deps.each do |dep|
       FileUtils.rm_rf dep
     end
-    system 'filefix'
   end
 
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS} \
-      --with-libpcap=#{CREW_PREFIX} \
-      --with-libpcre=#{CREW_PREFIX} \
-      --with-zlib=#{CREW_PREFIX} \
-      --with-libssh2=#{CREW_PREFIX} \
-      --with-liblua=included \
-      --without-ndiff"
-    system 'make'
+  autotools_configure_options " \
+    --with-libpcap=#{CREW_PREFIX} \
+    --with-libpcre=#{CREW_PREFIX} \
+    --with-zlib=#{CREW_PREFIX} \
+    --with-libssh2=#{CREW_PREFIX} \
+    --with-liblua=included \
+    --without-ndiff"
+
+  autotools_build_extras do
     File.write 'zenmap.sh', <<~ZENMAP_EOF
       #!/bin/sh
       xhost si:localuser:root
@@ -48,8 +56,7 @@ class Nmap < Package
     ZENMAP_EOF
   end
 
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
+  autotools_install_extras do
     FileUtils.mv "#{CREW_DEST_PREFIX}/bin/zenmap", "#{CREW_DEST_PREFIX}/bin/zenmap.elf"
     FileUtils.install 'zenmap.sh', "#{CREW_DEST_PREFIX}/bin/zenmap", mode: 0o755
   end

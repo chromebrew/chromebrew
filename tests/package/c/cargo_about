@@ -1,0 +1,3 @@
+#!/bin/bash
+cargo-about -h
+cargo-about -V

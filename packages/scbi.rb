@@ -3,7 +3,7 @@ require 'package'
 class Scbi < Package
   description 'Setup Configure Build Install - Tool to build from sources with local developers checkout support'
   homepage 'https://github.com/TurboGit/scbi'
-  version '12.1'
+  version '12.6'
   license 'Copyright (C) Pascal Obry'
   compatibility 'all'
   source_url 'https://github.com/TurboGit/scbi.git'
@@ -32,11 +32,11 @@ class Scbi < Package
     system "sed -i 's,hostname --short,hostname,' #{CREW_DEST_PREFIX}/.config/scbi/6_distpkg"
     # Download and install User Guide.
     downloader "https://github.com/TurboGit/scbi/releases/download/v#{version}/scbi.pdf",
-               '9d085ede42b538a5ffc555da0d9a18619b00e094d7fdc538b1077fcac657aef5'
+               '8f37a85a2f9cf37fd18876fe55656b4022bb68ec501bbeeae68173ce8045dabf'
     FileUtils.install 'scbi.pdf', "#{CREW_DEST_PREFIX}/share/scbi/scbi.pdf", mode: 0o644
   end
 
   def self.postinstall
-    ExitMessage.add "\nTo view the User Guide, execute 'crew install zathura && zathura #{CREW_PREFIX}/share/scbi/scbi.pdf'.\n".lightblue
+    ExitMessage.add "\nTo view the User Guide, execute 'crew install zathura && zathura #{CREW_PREFIX}/share/scbi/scbi.pdf'.\n"
   end
 end

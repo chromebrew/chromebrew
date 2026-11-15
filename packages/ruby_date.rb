@@ -3,20 +3,21 @@ require 'buildsystems/ruby'
 class Ruby_date < RUBY
   description 'A subclass of object includes comparable module for handling dates.'
   homepage 'https://github.com/ruby/date'
-  version "3.5.1-#{CREW_RUBY_VER}"
+  version "3.6.0-#{CREW_RUBY_VER}"
   license 'Ruby'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: 'd3b60abec7054815d102eacbd6b575b17cb0e27c6fd72221af17e20be235f390',
-     armv7l: 'd3b60abec7054815d102eacbd6b575b17cb0e27c6fd72221af17e20be235f390',
-       i686: 'aea9f84ce0555113033d0248c4ba5f942e62a2d37d72f2288fec583d055a2914',
-     x86_64: 'f2a51c6e0a68bf936b84097cd3b7b0c5a111fd78dcf5c3cc43040c15610b5865'
+    aarch64: 'bc3fb5e74bf5a11695384d5805b0faffdba2e40d2897c4b8d94e913045f61e65',
+     armv7l: 'bc3fb5e74bf5a11695384d5805b0faffdba2e40d2897c4b8d94e913045f61e65',
+       i686: '414d03cc6f6cb04d82b6deaef50d8501644870acf9942304dd1b0a00bcf32ccf',
+     x86_64: '0c3dc71a2ce0e9dc851f773794861192ddb5b539ed3c899f48b42a55345f6c61'
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'ruby' => :library
 
   conflicts_ok

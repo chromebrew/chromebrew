@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Libpsl < Meson
   description 'C library for the Public Suffix List'
   homepage 'https://github.com/rockdaboot/libpsl'
-  version '0.22.0'
+  version '0.23.3'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/rockdaboot/libpsl.git'
@@ -11,10 +11,10 @@ class Libpsl < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7ed90011190545848f68d4cfcef52dbe26d17feacd1c47931ed17d0da3a6cf6d',
-     armv7l: '7ed90011190545848f68d4cfcef52dbe26d17feacd1c47931ed17d0da3a6cf6d',
-       i686: 'a96e5776b74d7b2a3b826efcc3ce0f2c567f43a633642f43a541adf495bb388e',
-     x86_64: '8a4c01a650aa69aead1c58bca4c78ed55364347fa91c400ab68fb3c00831e642'
+    aarch64: 'cf10a62ee4d52d2610a648b5c5103c6cc6f91360e7cb1c502eedb02e54e726c2',
+     armv7l: 'cf10a62ee4d52d2610a648b5c5103c6cc6f91360e7cb1c502eedb02e54e726c2',
+       i686: '872ee4e4e27ca94ada572f29c41281091f471ced27f24d0963c9086e9dd90d7c',
+     x86_64: '2d1abb5f1896bffe19b985e8539dea193c9476ed3010db29f5d5c259d1ae23ba'
   })
 
   depends_on 'glibc' => :library

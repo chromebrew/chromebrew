@@ -3,7 +3,7 @@ require 'package'
 class Wallstreet < Package
   description 'Fill your console with Wall Street-like news and stats.'
   homepage 'https://a.hollywood.computer/'
-  version '1.25'
+  version '1.26'
   license 'Apache-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/dustinkirkland/hollywood.git'
@@ -11,9 +11,9 @@ class Wallstreet < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '146ccb4f0733b892c7458cf0ee39057c9150b3235d6b5a30c44470664e7e4123',
-     armv7l: '146ccb4f0733b892c7458cf0ee39057c9150b3235d6b5a30c44470664e7e4123',
-     x86_64: 'd62743dff4ca8b8ccd347a692e93f2281b9e88d380ee8c90bca7f34b5617fdb4'
+    aarch64: 'f22b8c48d104ae63dae581f0fa1e3acb4d97f79a14fe1e96be7d79cf8524f6a4',
+     armv7l: 'f22b8c48d104ae63dae581f0fa1e3acb4d97f79a14fe1e96be7d79cf8524f6a4',
+     x86_64: '9bf1580d4d79febf6324693d709aad86e6a25b8c848308f16b5fe3c6892ae20f'
   })
 
   depends_on 'byobu' => :logical
@@ -30,13 +30,14 @@ class Wallstreet < Package
   depends_on 'w3m' => :logical
   depends_on 'wget2' => :logical
 
+  no_fhs
+
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/lib"
-    FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/man1"
-    FileUtils.cp './bin/wallstreet', "#{CREW_DEST_PREFIX}/bin/"
-    FileUtils.cp_r './lib/wallstreet/', "#{CREW_DEST_PREFIX}/lib/"
-    FileUtils.cp_r './share/wallstreet/', "#{CREW_DEST_PREFIX}/share/"
-    FileUtils.cp './share/man/man1/wallstreet.1', "#{CREW_DEST_MAN_PREFIX}/man1/"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share"
+    FileUtils.mv './lib/wallstreet/', "#{CREW_DEST_PREFIX}/lib/"
+    FileUtils.mv './share/wallstreet/', "#{CREW_DEST_PREFIX}/share/"
+    FileUtils.install './bin/wallstreet', "#{CREW_DEST_PREFIX}/bin/wallstreet", mode: 0o755
+    FileUtils.install './share/man/man1/wallstreet.1', "#{CREW_DEST_MAN_PREFIX}/man1/wallstreet.1", mode: 0o644
   end
 end

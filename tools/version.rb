@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# version.rb version 3.39 (for Chromebrew)
+# version.rb version 3.47 (for Chromebrew)
 
 OPTIONS = %w[-a --all -h --help -j --json -u --update-package-files -v --verbose -vv]
 
@@ -66,7 +66,11 @@ CREW_ANITYA_PACKAGE_NAME_MAPPINGS = Set[
   { pkg_name: 'alsa_lib', anitya_pkg: 'alsa-lib', comments: 'PackageUtils.get_clean_name mistakenly removes the _lib from the name' },
   { pkg_name: 'asdf', anitya_pkg: 'asdf-vm', comments: 'Anitya has a pip package named asdf' },
   { pkg_name: 'cvs', anitya_pkg: 'cvs-stable', comments: 'Anitya has a pip package named cvs' },
+  { pkg_name: "#{CREW_GCC_VER}_build", anitya_pkg: 'gcc', comments: '' },
+  { pkg_name: "#{CREW_GCC_VER}_dev", anitya_pkg: 'gcc', comments: '' },
+  { pkg_name: "#{CREW_GCC_VER}_lib", anitya_pkg: 'gcc', comments: '' },
   { pkg_name: 'gexiv2', anitya_pkg: 'gexiv2~14.x', comments: 'TODO: Why are we sticking to the 0.14.x release series?' },
+  { pkg_name: 'glib_stub', anitya_pkg: 'glib', comments: '' },
   { pkg_name: 'gnome_docking_library', anitya_pkg: 'gdl', comments: 'Anitya has two gdl packages, so this mapping doesnt work' },
   { pkg_name: 'go_tools', anitya_pkg: 'golang-tools', comments: 'Anitya has a different package named go-tools' },
   { pkg_name: 'gtk3', anitya_pkg: 'gtk+3.0~stable', comments: 'Anitya has Hackage, Rubygems, and CPAN (Perl) packages named gtk3' },
@@ -100,24 +104,27 @@ CREW_ANITYA_PACKAGE_NAME_MAPPINGS = Set[
   { pkg_name: 'libstfl', anitya_pkg: 'stfl', comments: '' },
   { pkg_name: 'libtinfo', anitya_pkg: 'ncurses~stable', comments: '' },
   { pkg_name: 'libunbound', anitya_pkg: 'unbound', comments: '' },
+  { pkg_name: 'libvips', anitya_pkg: 'vips', comments: '' },
   { pkg_name: 'libx264', anitya_pkg: 'x264', comments: '' },
   { pkg_name: 'linux_pam', anitya_pkg: 'pam', comments: '' },
   { pkg_name: "#{CREW_LLVM_VER}_build", anitya_pkg: 'llvm', comments: '' },
   { pkg_name: "#{CREW_LLVM_VER}_dev", anitya_pkg: 'llvm', comments: '' },
   { pkg_name: "#{CREW_LLVM_VER}_lib", anitya_pkg: 'llvm', comments: '' },
   { pkg_name: 'mediainfo_gui', anitya_pkg: 'mediainfo', comments: '' },
+  { pkg_name: 'minizip', anitya_pkg: 'zlib', comments: '' },
   { pkg_name: 'mold', anitya_pkg: 'mold', comments: 'Prefer to GitHub' },
   { pkg_name: 'ncurses', anitya_pkg: 'ncurses~stable', comments: '' },
   { pkg_name: 'ninja', anitya_pkg: 'ninja-build', comments: '' },
   { pkg_name: 'nnn', anitya_pkg: 'nnn', comments: 'Prefer to GitHub' },
   { pkg_name: 'openssl', anitya_pkg: 'openssl-3.5-LTS', comments: 'Prefer to GitHub' },
   { pkg_name: 'owl', anitya_pkg: 'Owl Lisp', comments: '' },
+  { pkg_name: 'p8_platform', anitya_pkg: 'platform', comments: 'Use Anitya name' },
   { pkg_name: 'pcre2', anitya_pkg: 'pcre2', comments: 'Prefer to GitHub' },
   { pkg_name: 'procps', anitya_pkg: 'procps-ng', comments: '' },
   { pkg_name: 'pthread_stubs', anitya_pkg: 'libpthread-stubs', comments: '' },
   { pkg_name: 'py3_atspi', anitya_pkg: 'pyatspi', comments: '' },
   { pkg_name: 'py3cairo', anitya_pkg: 'pycairo', comments: '' },
-  { pkg_name: 'python3', anitya_pkg: 'python314', comments: '' },
+  { pkg_name: 'python3', anitya_pkg: 'python315', comments: '' },
   { pkg_name: 'rdfind', anitya_pkg: 'rdfind', comments: 'Prefer to GitHub' },
   { pkg_name: 'rest', anitya_pkg: 'librest', comments: 'Anitya has a package called rest, but we want librest.' },
   { pkg_name: 'selenium_server_standalone', anitya_pkg: 'selenium', comments: '' },
@@ -130,6 +137,7 @@ CREW_ANITYA_PACKAGE_NAME_MAPPINGS = Set[
   { pkg_name: 'upx', anitya_pkg: 'upx', comments: 'Prefer to GitHub' },
   { pkg_name: 'vidstab', anitya_pkg: 'vid.stab', comments: 'Prefer to GitHub' },
   { pkg_name: 'vim_runtime', anitya_pkg: 'vim', comments: '' },
+  { pkg_name: 'vulkansdk', anitya_pkg: 'vulkan-sdk', comments: '' },
   { pkg_name: 'wallstreet', anitya_pkg: 'hollywood', comments: '' },
   { pkg_name: 'wayland_info', anitya_pkg: 'wayland-utils', comments: '' },
   { pkg_name: 'webkit2gtk_4_0', anitya_pkg: 'webkitgtk~stable', comments: '' },
@@ -172,13 +180,11 @@ def get_version(name, homepage, source)
     puts "source_url host is #{url.host}" if CREW_VERY_VERBOSE
     case url.host
     when 'github.com'
-      github_fallback(url)
+      return github_fallback(url)
     when 'gitlab.com'
-      gitlab_fallback(url)
+      return gitlab_fallback(url)
     when 'downloads.sourceforge.net'
-      sourceforge_fallback(url)
-    when 'pagure.io'
-      pagure_fallback(url)
+      return sourceforge_fallback(url)
     end
   end
 end

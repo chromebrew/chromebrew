@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Fakeroot < Autotools
   description 'Run a command in an environment faking root privileges for file manipulation.'
   homepage 'https://wiki.debian.org/FakeRoot'
-  version '2.0'
+  version '2.1.4'
   license 'GPL-3'
   compatibility 'all'
-  source_url "https://deb.debian.org/debian/pool/main/f/fakeroot/fakeroot_#{version}.orig.tar.gz"
-  source_sha256 '562d951828887e5ccc31489248feae62f334a16c3d81fe6592f34016ffb02636'
+  source_url 'https://salsa.debian.org/clint/fakeroot.git'
+  git_hashtag "upstream/#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '430a540c1e85576cc484e0033aa9f2e9bf38844bf674316cb056e868e233df02',
-     armv7l: '430a540c1e85576cc484e0033aa9f2e9bf38844bf674316cb056e868e233df02',
-       i686: '03c4860b32625966f958699d0702eac7a3505887fbc299249b5bf8ea01dfb6e4',
-     x86_64: 'e10acd2722f9c0983b3de3d459d59fd2293f8e4794cd85d5206d095444c0557a'
+    aarch64: '66de868d7cc8d7841bc7501d683784a7a17e9fc6ea6eed5b8bc92d474af5bd2d',
+     armv7l: '66de868d7cc8d7841bc7501d683784a7a17e9fc6ea6eed5b8bc92d474af5bd2d',
+       i686: '2e3fb0e4d16eb40dbf777cb46aab927a313e104cfe684cb0b79ea0733dc6c9b6',
+     x86_64: '894d209140c3bfd3d6fabf6a6a539c2fbf599bb365e9d0cad8a09bc3c7fde4bd'
   })
 
   depends_on 'glibc' => :library

@@ -3,20 +3,21 @@ require 'buildsystems/pip'
 class Py3_argparse_manpage < Pip
   description 'Automatically build man-pages for your Python project.'
   homepage 'https://github.com/praiskup/argparse-manpage'
-  version "4.7-#{CREW_PY_VER}"
+  version "4.8-#{CREW_PY_VER}"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4d40be600a62e42fc720c24be000f1ee776d275fc2d846e7461e5c16727bf139',
-     armv7l: '4d40be600a62e42fc720c24be000f1ee776d275fc2d846e7461e5c16727bf139',
-       i686: '421b8f031e10625b6762055320daf076c2617bf6f402296c2b5636e66c753c43',
-     x86_64: 'edc6319e8d339aaffe9a0f84cab3098d8387b44dbba961579a89960b7a405229'
+    aarch64: '55b1639709ddf7717d2e1d89b0ae82abe424789e61ba621a6c81a778b3be87f9',
+     armv7l: '55b1639709ddf7717d2e1d89b0ae82abe424789e61ba621a6c81a778b3be87f9',
+       i686: 'e785c017adf23fdc8c4bcb04c183ba1b970ed6bd3c76f4c26662566faf7f129b',
+     x86_64: '68359995eecb673dd8cd1ddecf860e710d52fd66bfe7c747cf4c97fc2411b3be'
   })
 
   depends_on 'python3'
+  depends_on 'python3' => :logical
 
   no_source_build
 end

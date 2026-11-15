@@ -1,0 +1,3 @@
+#!/bin/bash
+bacon -h | head
+bacon -v

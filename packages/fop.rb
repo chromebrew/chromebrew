@@ -3,11 +3,11 @@ require 'package'
 class Fop < Package
   description 'Apache FOP (Formatting Objects Processor) is a print formatter driven by XSL formatting objects (XSL-FO) and an output independent formatter.'
   homepage 'https://xmlgraphics.apache.org/fop/'
-  version '2.11'
+  version '2.12'
   license 'Apache-2.0'
   compatibility 'all'
   source_url "https://downloads.apache.org/xmlgraphics/fop/binaries/fop-#{version}-bin.tar.gz"
-  source_sha256 'b7e12dc8c96ce0087742757debad3798fa6f8778f8b8ed7acfbf6e405e4ede76'
+  source_sha256 'f43bf5227557c2653105f4494bb2c3c4e7715cef21997286a16e9847399b81a4'
 
   depends_on 'openjdk8' unless File.exist? "#{CREW_PREFIX}/bin/java"
 

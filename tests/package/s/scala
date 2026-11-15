@@ -1,0 +1,7 @@
+#!/bin/bash
+scala -help 2>&1 | head -5
+scala -version 2>&1
+scalac -help 2>&1 | head -5
+scalac -version 2>&1
+scaladoc -help 2>&1 | head -5
+scaladoc -version 2>&1

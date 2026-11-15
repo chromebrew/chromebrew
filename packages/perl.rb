@@ -3,22 +3,23 @@ require 'package'
 class Perl < Package
   description 'Perl 5 is a highly capable, feature-rich programming language with over 29 years of development.'
   homepage 'https://www.perl.org/'
-  version '5.42.2'
+  version '5.44.0'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
-  source_url "https://www.cpan.org/src/5.0/perl-#{version}.tar.xz"
-  source_sha256 '0a585eeb9e363c0f80482ddb3571625250c2c86aeb408853e8ea50805cfb14bb'
+  source_url 'https://github.com/Perl/perl5.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd5fa6151fcb58e605caef358089707fc254465d60bfbd81721f961ce725057fe',
-     armv7l: 'd5fa6151fcb58e605caef358089707fc254465d60bfbd81721f961ce725057fe',
-       i686: '697695ee4ab8bd0a1a6000cf3c55146a5024ec25ea086da3ffadb92bc947a504',
-     x86_64: '654e7141f45f4ef8beb9973b548198c6b8dda9646fb3c4be0803b60b87c8c45d'
+    aarch64: '5128f09e3053a56b3beae059c6e799d04a95559da27af6337ea62bbfc501dc94',
+     armv7l: '5128f09e3053a56b3beae059c6e799d04a95559da27af6337ea62bbfc501dc94',
+       i686: 'b742a9f39625e0f582cb22e52986d9b49a00c09c8081b06ca884c8b27d7fe291',
+     x86_64: '37626b09ba3029a6618bafb1490c6b7b2247a6052424e5a7c04c9e3096de28c7'
   })
 
   depends_on 'gdbm' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'libdb' => :library
   depends_on 'libxcrypt' => :library
 

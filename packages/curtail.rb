@@ -1,34 +1,29 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Curtail < Package
+class Curtail < Meson
   description 'Curtail (previously ImCompressor) is an useful image compressor, supporting PNG, JPEG and WEBP file types.'
   homepage 'https://github.com/Huluti/Curtail'
-  version '1.3.0'
+  version '1.17.0'
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://github.com/Huluti/Curtail/archive/1.3.0.tar.gz'
-  source_sha256 '56859211b1b147aec677a00295e524b6beabcdf415938db1bd8ca4dae79409cf'
+  source_url 'https://github.com/Huluti/Curtail.git'
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6d5947e652598d3e7aac80193bbb5a51e3b4bd2678ed8ed1f459e63b68c74da0',
-     armv7l: '6d5947e652598d3e7aac80193bbb5a51e3b4bd2678ed8ed1f459e63b68c74da0',
-       i686: '2643affd0cc34358f1b3540f7701313e699401975d242f5128b856b742cd7699',
-     x86_64: '8fab707529ff0e2d8db29045a9e05a91a30d8b66d738dde84a5ca12145a0d6fa'
+    aarch64: 'd3edb67248592218d01085c5b83fe28ea0d2b965432931423885d9ec7ee5a475',
+     armv7l: 'd3edb67248592218d01085c5b83fe28ea0d2b965432931423885d9ec7ee5a475',
+     x86_64: '9d8d5370f55143b2f67fb42c651ba34e4eed2491e4e2953034f4ddaa5724b14b'
   })
 
-  depends_on 'gtk3'
-  depends_on 'optipng'
-  depends_on 'pngquant'
-  depends_on 'jpegoptim'
-  depends_on 'libwebp'
-
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} build"
-    system 'ninja -C build'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
-  end
+  depends_on 'appstream' => :build
+  depends_on 'blueprint_compiler' => :build
+  depends_on 'desktop_file_utils' => :build
+  depends_on 'gobject_introspection' => :build
+  depends_on 'gtk4' => :build
+  depends_on 'jpegoptim' => :build
+  depends_on 'libadwaita' => :build
+  depends_on 'libwebp' => :build
+  depends_on 'optipng' => :build
+  depends_on 'pngquant' => :build
 end

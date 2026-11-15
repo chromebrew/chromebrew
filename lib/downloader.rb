@@ -1,5 +1,6 @@
 require 'io/console'
 require 'open3'
+require 'tempfile'
 require 'uri'
 require_relative 'const'
 require_relative 'color'
@@ -25,7 +26,7 @@ rescue RuntimeError => e
   end
 end
 
-def downloader(url, sha256sum, filename = File.basename(url).gsub(/\s+/, ''), no_update_hash: false, verbose: false)
+def downloader(url, sha256sum, filename = File.basename(url).gsub(/\s+/, ''), pkg = nil, no_update_hash: false, verbose: false)
   # downloader: wrapper for all Chromebrew downloaders (`net/http`,`curl`...)
   # Usage: downloader <url>, <sha256sum>, <filename::optional>, <verbose::optional>
   #
@@ -34,7 +35,7 @@ def downloader(url, sha256sum, filename = File.basename(url).gsub(/\s+/, ''), no
   #      <filename>: (Optional) Output path/filename
   #       <verbose>: (Optional) Verbose output
   #
-  puts "downloader(#{url}, #{sha256sum}, #{filename}, #{verbose})" if verbose
+  puts "downloader(#{url}, #{sha256sum}, #{filename},#{" #{pkg}," unless pkg.nil?} #{verbose})" if verbose
   uri = URI(url)
 
   # Make sure the destination dir for the filename exists.
@@ -76,11 +77,18 @@ def downloader(url, sha256sum, filename = File.basename(url).gsub(/\s+/, ''), no
       # When called from Convenience_functions, name ends up as
       # Convenience_functions, so we do not want to use it as a backstop
       # for a missing @pkg_name.
-      pkg_name = @pkg_name.blank? ? caller.select { it.include?('Package::') }.to_s.split('::').last.split('.').first.downcase : @pkg_name
+      # When called from commands/download.rb pass pkg so we get a name.
+      pkg_name = if pkg.nil?
+                   @pkg_name.to_s.blank? ? caller.select { it.include?('Package::') }.to_s.split('::').last.split('.').first.downcase : @pkg_name
+                 else
+                   pkg.name
+                 end
       puts "Updating checksum for #{filename}".lightblue
       puts "from #{sha256sum} to #{calc_sha256sum}".lightblue
       puts "in #{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb .".lightblue
-      system "sed 's/#{sha256sum}/#{calc_sha256sum}/g;w #{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb.new' #{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb && mv #{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb.new #{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb"
+      Tempfile.create do |f|
+        FileUtils.cp f.path, "#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb" if system "sed 's/#{sha256sum}/#{calc_sha256sum}/g;w #{f.path}' #{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb"
+      end
     else
       FileUtils.rm_f filename
 
@@ -138,7 +146,9 @@ def http_downloader(uri, filename = File.basename(url), verbose: false)
     ca_file:     SSL_CERT_FILE,
     ca_path:     SSL_CERT_DIR
   }) do |http|
-    http.request(Net::HTTP::Get.new(uri)) do |response|
+    req = Net::HTTP::Get.new(uri)
+    req[CREW_GITLAB_TOKEN_LABEL.to_s] = GITLAB_TOKEN if !uri.host[/gitlab.com$/i].nil? && !GITLAB_TOKEN.nil?
+    http.request(req) do |response|
       case
       when response.is_a?(Net::HTTPSuccess)
         # Response is successful, don't abort
@@ -155,6 +165,18 @@ def http_downloader(uri, filename = File.basename(url), verbose: false)
         redirect_uri.host ||= uri.host
 
         return send(__method__, redirect_uri, filename, verbose: verbose)
+      when response.is_a?(Net::HTTPTooManyRequests) # 429 Error
+        retry_after = response['Retry-After'].to_i
+        if retry_after.nil?
+          abort "Download of #{uri} failed with error #{response.code}: #{response.msg}".lightred
+        else
+          puts "Sleeping for #{retry_after} seconds as requested.".lightred
+          puts "The maximum number of requests allowed in the current rate limit window is #{response['RateLimit-Limit']}.".lightred unless response['RateLimit-Limit'].nil?
+          puts "The number of requests counted in the current window is #{response['RateLimit-Observed']}.".lightred unless response['RateLimit-Observed'].nil?
+          puts "The remaining number of requests in the current window is #{response['RateLimit-Remaining']}.".lightred unless response['RateLimit-Remaining'].nil?
+          sleep(retry_after)
+          return send(__method__, uri, filename, verbose: verbose)
+        end
       else
         abort "Download of #{uri} failed with error #{response.code}: #{response.msg}".lightred
       end
@@ -215,10 +237,13 @@ def external_downloader(uri, filename = File.basename(url), verbose: false)
   # Only bypass this when we are using the system curl early in install.
   @curl_binary = File.which('curl_static') && `curl_static --version` ? File.which('curl_static') : File.which('curl')
 
-  curl_cmdline = ARCH == 'i686' && @curl_binary == '/usr/bin/curl' ? "#{@curl_binary} %<verbose>s -kL -# --retry %<retry>s %<url>s -o %<output>s" : "#{@curl_binary} %<verbose>s -L -# --retry %<retry>s %<url>s -o %<output>s"
+  @curl_header = !uri.host[/gitlab.com$/i].nil? && !GITLAB_TOKEN.nil? ? "--header '#{CREW_GITLAB_TOKEN_LABEL}: #{GITLAB_TOKEN}'" : ''
+
+  curl_cmdline = ARCH == 'i686' && @curl_binary == '/usr/bin/curl' ? "#{@curl_binary} %<verbose>s -kL -# #{@curl_header} --retry %<retry>s %<url>s -o %<output>s" : "#{@curl_binary} %<verbose>s -L -# #{@curl_header} --retry %<retry>s %<url>s -o %<output>s"
 
   # use CREW_DOWNLOADER if specified, use curl by default
   downloader_cmdline = CREW_DOWNLOADER || curl_cmdline
+  puts "downloader_cmdline=#{downloader_cmdline}" if verbose
 
   return system(
     format(downloader_cmdline,

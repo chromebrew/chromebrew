@@ -1,22 +1,23 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Pngcheck < Package
+class Pngcheck < CMake
   description 'pngcheck verifies the integrity of PNG, JNG and MNG files'
   homepage 'http://www.libpng.org/pub/png/apps/pngcheck.html'
-  version '3.0.2'
+  version '4.0.1'
   license 'HPND and GPL-2+'
   compatibility 'all'
-  source_url 'https://downloads.sourceforge.net/project/png-mng/pngcheck/3.0.2/pngcheck-3.0.2.tar.gz'
-  source_sha256 '0d7e262f24116fddf2847a8ceb5c92d9f5f26efb42e9fff63ec2bb7676131ca7'
+  source_url 'https://github.com/pnggroup/pngcheck.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  def self.build
-    system 'make', '-f', 'Makefile.unx'
-  end
+  binary_sha256({
+    aarch64: '0423cfed0df61dbb619d82cf6df397ee47032bc0a2819bb76663b7e9be8ef8d1',
+     armv7l: '0423cfed0df61dbb619d82cf6df397ee47032bc0a2819bb76663b7e9be8ef8d1',
+       i686: 'd776bfb26526b9ab3c50c90074d16d8adc1235c57017f23ed38ec7a5c8c63b13',
+     x86_64: '9f3790df95f543e5d7959de55710f52b3baeadc05cc62f6c12efc789d0791c7a'
+  })
 
-  def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/man1"
-    FileUtils.install 'pngcheck', "#{CREW_DEST_PREFIX}/bin/pngcheck", mode: 0o755
-    FileUtils.install 'pngcheck.1', "#{CREW_DEST_MAN_PREFIX}/man1/pngcheck.1", mode: 0o644
-  end
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'zlib' => :executable
 end

@@ -1,38 +1,25 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Sysstat < Package
+class Sysstat < Autotools
   description 'The sysstat utilities are a collection of performance monitoring tools for Linux. These include sar, sadf, mpstat, iostat, tapestat, pidstat, cifsiostat and sa tools.'
-  homepage 'http://sebastien.godard.pagesperso-orange.fr/'
-  version '12.1.5'
+  homepage 'https://sysstat.github.io/'
+  version '12.8.0'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'http://pagesperso-orange.fr/sebastien.godard/sysstat-12.1.5.tar.xz'
-  source_sha256 'a496936bb3f5093d780a50735f00e39b0b7f3a688eb89051f2ef5f86739522c5'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/sysstat/sysstat.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '88f64d75bf8be7fe4cb8136ec188631a6e504c44951d8f2003f1998167be2df7',
-     armv7l: '88f64d75bf8be7fe4cb8136ec188631a6e504c44951d8f2003f1998167be2df7',
-       i686: 'c33bc10c60d55e2649e62a13b2f666e63035538103d8a81740de1ab0f170685e',
-     x86_64: '5aac1bfb1bdf0a8d3dbeb010f179bbddeac24134768755d9dc3ccad01fb26f24'
+    aarch64: 'fba6cb3a5d87032eeef03825ce89e4ec870cd5e88eb638b495004a7e79ffe282',
+     armv7l: 'fba6cb3a5d87032eeef03825ce89e4ec870cd5e88eb638b495004a7e79ffe282',
+       i686: '1c6b70023336e57001b3cfc35ac70e5b898f6528ccebb67adc230693041814aa',
+     x86_64: 'deec9065516e164d598cac67ef893d728528c8dd6e46a88bedcb096c47ca03b2'
   })
 
-  def self.patch
-    system "sed -i 's/GRP=root/GRP=$(whoami)/' configure"
-    system "sed -i 's/\"root\"/\"$(whoami)\"/g' configure"
-    system "sed -i 's/root/$(whoami)/g' configure.in"
-    system "sed -i 's/root/$(whoami)/g' sysstat-#{version}.spec"
-  end
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 
-  def self.build
-    system "./configure \
-            --docdir=#{CREW_PREFIX}/doc \
-            --infodir=#{CREW_PREFIX}/info \
-            --mandir=#{CREW_MAN_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  autotools_pre_configure_options "man_group=#{`whoami`.chomp}"
+  autotools_configure_options '--disable-automated-sar-reporting'
 end

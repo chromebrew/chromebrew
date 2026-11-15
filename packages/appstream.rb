@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Appstream < Meson
   description 'Provides a standard for creating app stores across distributions'
   homepage 'https://www.freedesktop.org/wiki/Distributions/AppStream/'
-  version '1.1.3'
+  version '1.2.3'
   license 'GPL'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/ximion/appstream.git'
@@ -11,9 +11,9 @@ class Appstream < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1468356552fe80bc4e6c0bb27281522027ba9a4a8a3a52a7b832931d5e5c7c10',
-     armv7l: '1468356552fe80bc4e6c0bb27281522027ba9a4a8a3a52a7b832931d5e5c7c10',
-     x86_64: 'ed8e2f310795dabf2ab970aa131970e1814a68143079790770d767f4780d5883'
+    aarch64: '36950cb261fe58dfc888c5654e89215707446df2d317835b4c7406a60de6e813',
+     armv7l: '36950cb261fe58dfc888c5654e89215707446df2d317835b4c7406a60de6e813',
+     x86_64: '8fa61ae6e6a077e43e6b2b35795f814fc74fcb063658418175d19da6dad0aebb'
   })
 
   depends_on 'cairo' => :library
@@ -31,6 +31,7 @@ class Appstream < Meson
   depends_on 'libfyaml' => :library
   depends_on 'librsvg' => :library
   depends_on 'libstemmer' => :library
+  depends_on 'libvips' => :library
   depends_on 'libxml2' => :library
   depends_on 'libxmlb' => :library
   depends_on 'pango' => :library
@@ -38,10 +39,19 @@ class Appstream < Meson
   depends_on 'py3_itstool' => :build
   depends_on 'py3_libxml2' => :build
   depends_on 'vala' => :build
+  depends_on 'wayland' => :build
   depends_on 'xmlto' => :build
   depends_on 'zstd' => :library
 
-  meson_options '-Dcompose=true -Dsystemd=false -Dvapi=true -Dblake3-support=false'
+  meson_options '-Dapidocs=false -Dcompose=true -Dsystemd=false -Dvapi=true -Dblake3-support=false'
+
+  def self.patch
+    patches = [
+      # https://github.com/ximion/appstream/issues/794
+      ['https://github.com/ximion/appstream/commit/2cf338e0e9f1c711844e1e55ac853cf5ed307678.patch', 'ec2d1d883e0c2c25091d53f745c718882626016bf94989e471dcc30d135e8bfa']
+    ]
+    ConvenienceFunctions.patch(patches) if version == '1.2.1'
+  end
 
   def self.postinstall
     ExitMessage.add "\nType 'appstreamcli --help' to get started.\n"

@@ -1,4 +1,4 @@
-# Total size: 334794
+# Total size: 338621
 /usr/local/include/SDL2/SDL_image.h
 /usr/local/lib64/cmake/SDL2_image/Findlibjxl.cmake
 /usr/local/lib64/cmake/SDL2_image/Findwebp.cmake
@@ -8,7 +8,7 @@
 /usr/local/lib64/cmake/SDL2_image/SDL2_imageConfigVersion.cmake
 /usr/local/lib64/libSDL2_image-2.0.so
 /usr/local/lib64/libSDL2_image-2.0.so.0
-/usr/local/lib64/libSDL2_image-2.0.so.0.800.8
+/usr/local/lib64/libSDL2_image-2.0.so.0.800.12
 /usr/local/lib64/libSDL2_image.so
 /usr/local/lib64/pkgconfig/SDL2_image.pc
 /usr/local/share/licenses/SDL2_image/LICENSE.txt

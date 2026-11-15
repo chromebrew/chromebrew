@@ -1,5 +1,6 @@
-# Total size: 289027
+# Total size: 295388
 /usr/local/bin/mat2
+/usr/local/lib/python3.14/site-packages/doc/mat2.1
 /usr/local/lib/python3.14/site-packages/libmat2/__init__.py
 /usr/local/lib/python3.14/site-packages/libmat2/__pycache__/__init__.cpython-314.pyc
 /usr/local/lib/python3.14/site-packages/libmat2/__pycache__/abstract.cpython-314.pyc
@@ -28,11 +29,11 @@
 /usr/local/lib/python3.14/site-packages/libmat2/torrent.py
 /usr/local/lib/python3.14/site-packages/libmat2/video.py
 /usr/local/lib/python3.14/site-packages/libmat2/web.py
-/usr/local/lib/python3.14/site-packages/mat2-0.14.0.dist-info/INSTALLER
-/usr/local/lib/python3.14/site-packages/mat2-0.14.0.dist-info/LICENSE
-/usr/local/lib/python3.14/site-packages/mat2-0.14.0.dist-info/METADATA
-/usr/local/lib/python3.14/site-packages/mat2-0.14.0.dist-info/RECORD
-/usr/local/lib/python3.14/site-packages/mat2-0.14.0.dist-info/REQUESTED
-/usr/local/lib/python3.14/site-packages/mat2-0.14.0.dist-info/WHEEL
-/usr/local/lib/python3.14/site-packages/mat2-0.14.0.dist-info/top_level.txt
+/usr/local/lib/python3.14/site-packages/mat2-0.15.0.dist-info/INSTALLER
+/usr/local/lib/python3.14/site-packages/mat2-0.15.0.dist-info/METADATA
+/usr/local/lib/python3.14/site-packages/mat2-0.15.0.dist-info/RECORD
+/usr/local/lib/python3.14/site-packages/mat2-0.15.0.dist-info/REQUESTED
+/usr/local/lib/python3.14/site-packages/mat2-0.15.0.dist-info/WHEEL
+/usr/local/lib/python3.14/site-packages/mat2-0.15.0.dist-info/licenses/LICENSE
+/usr/local/lib/python3.14/site-packages/mat2-0.15.0.dist-info/top_level.txt
 /usr/local/share/man/man1/mat2.1.zst

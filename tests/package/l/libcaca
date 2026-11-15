@@ -1,0 +1,3 @@
+#!/bin/bash
+caca-config --version
+cacaclock --version

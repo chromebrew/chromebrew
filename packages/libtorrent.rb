@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libtorrent < CMake
   description 'Feature complete C++ bittorrent implementation focusing on efficiency and scalability.'
   homepage 'https://www.libtorrent.org/'
-  version '2.0.13'
+  version '2.1.2'
   license 'Unknown, BSD-3-Clause'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/arvidn/libtorrent.git'
@@ -11,9 +11,9 @@ class Libtorrent < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e10f8410b71dc1c46a800de1af6d491ba780c53f870fd4eb2b12a6e7b5e39835',
-     armv7l: 'e10f8410b71dc1c46a800de1af6d491ba780c53f870fd4eb2b12a6e7b5e39835',
-     x86_64: '627ff09c68e4d82df66815b7cb0c59c05e06cb0c8b5a8206d68d9855546d8203'
+    aarch64: '8d5fe0a78cec9f8c99d2761e82a28054926537d9e1e04f788bcc78a3e4ef32cb',
+     armv7l: '8d5fe0a78cec9f8c99d2761e82a28054926537d9e1e04f788bcc78a3e4ef32cb',
+     x86_64: 'e38a9abf5015869535d2113669d34e649d9b60ef7fe0669f6f714b3063b49e85'
   })
 
   depends_on 'boost'

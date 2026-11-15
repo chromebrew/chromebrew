@@ -3,7 +3,7 @@ require 'package'
 class Tssh < Package
   description 'Highly OpenSSH-compatible client with extended features.'
   homepage 'https://trzsz.github.io/tssh'
-  version '0.1.25'
+  version '0.1.27'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/trzsz/trzsz-ssh.git'
@@ -11,13 +11,14 @@ class Tssh < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a73907dbb11bb9eaabf378cdf86a5dbe62a1a42bdbedc98b66f10e4b6012789e',
-     armv7l: 'a73907dbb11bb9eaabf378cdf86a5dbe62a1a42bdbedc98b66f10e4b6012789e',
-       i686: '3883d5c4b61c67694f3ce5e4f129781cf345bf5e16e2278e2b5240635a57ab9e',
-     x86_64: '5679eaf5b8b1368400e54dc09357e8b6131d13cc51f54d179c0005f3c9812308'
+    aarch64: '1d1fe77a0b8ca1e6758770ddbd3ec25d7b66ab69c2c20e855b1fbb15959edc44',
+     armv7l: '1d1fe77a0b8ca1e6758770ddbd3ec25d7b66ab69c2c20e855b1fbb15959edc44',
+       i686: '7558926c9c117521abdfd3e922d616e076bf643fd45ddd1a9d14c70318baf702',
+     x86_64: 'ca8a653070926f6ce55100a5897f52ee2df669da74f12483b49ffb4dfd9ea84d'
   })
 
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'go' => :build
 
   def self.install

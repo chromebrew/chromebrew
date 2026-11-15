@@ -12,32 +12,34 @@ class Gvim < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f3285509446d19f37d9f937e1ab384aef9150458faf6770e7167f504f71816e7',
-     armv7l: 'f3285509446d19f37d9f937e1ab384aef9150458faf6770e7167f504f71816e7',
-     x86_64: '2310ef469322ee94716e2eefb4b98b4029e3252e87535a3ee4d22f416ce2a6fc'
+    aarch64: 'c5ba249ff9e1d591c20f7dd45a796b56a832b59075f5c050d93826a9c6ed23b1',
+     armv7l: 'c5ba249ff9e1d591c20f7dd45a796b56a832b59075f5c050d93826a9c6ed23b1',
+     x86_64: 'cd6f4c221f77d93a9b8720ebf52a44d8646d7a3f01e87968a186e6bda1adc417'
   })
 
   depends_on 'acl' => :executable
   depends_on 'cairo' => :executable
   depends_on 'desktop_file_utils' => :executable
-  depends_on 'gcc_lib' => :library
+  depends_on 'gcc_lib' => :build
   depends_on 'gdk_pixbuf' => :executable
-  depends_on 'glib' => :library
-  depends_on 'glibc' => :library
+  depends_on 'glib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'gpm' => :executable
   depends_on 'gtk3' => :executable
   depends_on 'harfbuzz' => :executable
   depends_on 'imake' => :executable
-  depends_on 'libice' => :library
-  depends_on 'libsm' => :library
-  depends_on 'libsodium' => :library
-  depends_on 'libx11' => :library
-  depends_on 'libxpm' => :library
-  depends_on 'libxt' => :library
+  depends_on 'libice' => :executable
+  depends_on 'libsm' => :executable
+  depends_on 'libsodium' => :executable
+  depends_on 'libx11' => :executable
+  depends_on 'libxpm' => :build
+  depends_on 'libxt' => :executable
   depends_on 'lua' => :executable
   depends_on 'luajit' => :executable
   depends_on 'ncurses' => :executable
   depends_on 'pango' => :executable
+  depends_on 'pixman' => :executable
   depends_on 'vim_runtime' => :logical
   depends_on 'wayland' => :executable
 

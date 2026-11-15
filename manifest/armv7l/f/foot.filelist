@@ -1,4 +1,4 @@
-# Total size: 529633
+# Total size: 534778
 /usr/local/bin/foot
 /usr/local/bin/footclient
 /usr/local/etc/xdg/foot/foot.ini
@@ -12,6 +12,7 @@
 /usr/local/share/foot/themes/aeroroot
 /usr/local/share/foot/themes/alacritty
 /usr/local/share/foot/themes/apprentice
+/usr/local/share/foot/themes/ayu-dark
 /usr/local/share/foot/themes/ayu-mirage
 /usr/local/share/foot/themes/catppuccin-frappe
 /usr/local/share/foot/themes/catppuccin-latte
@@ -23,6 +24,7 @@
 /usr/local/share/foot/themes/dracula
 /usr/local/share/foot/themes/dracula-iterm
 /usr/local/share/foot/themes/electrophoretic
+/usr/local/share/foot/themes/ferra
 /usr/local/share/foot/themes/gruvbox
 /usr/local/share/foot/themes/gruvbox-dark
 /usr/local/share/foot/themes/gruvbox-light

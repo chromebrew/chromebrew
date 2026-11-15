@@ -6,7 +6,7 @@ require 'buildsystems/autotools'
 class Crun < Autotools
   description 'A fast and lightweight fully featured OCI runtime and C library for running containers'
   homepage 'https://github.com/containers/crun'
-  version '1.28'
+  version '1.31'
   license 'LGPL'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/containers/crun.git'
@@ -14,9 +14,9 @@ class Crun < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '08a77ac558a26273356753fc9af72fe1f3065a2d36cfe5c23e131357827eccaf',
-     armv7l: '08a77ac558a26273356753fc9af72fe1f3065a2d36cfe5c23e131357827eccaf',
-     x86_64: '1f0570508295afd42566cc65ac9bf43764003170c72800e93fb6e8d5fa08cb38'
+    aarch64: 'de4e5371551b4b19e582e1552d772d7d8132f306da29bbfd0d5ab88dd974dd39',
+     armv7l: 'de4e5371551b4b19e582e1552d772d7d8132f306da29bbfd0d5ab88dd974dd39',
+     x86_64: 'e3bc23ed13d47473434365c19da3b61ef00cb7518ff4e65d688d6f7e511c99e9'
   })
 
   depends_on 'criu' if ARCH.eql?('x86_64')

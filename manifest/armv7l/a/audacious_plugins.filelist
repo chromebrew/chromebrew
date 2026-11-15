@@ -1,4 +1,4 @@
-# Total size: 5793112
+# Total size: 5865704
 /usr/local/lib/audacious/Container/asx.so
 /usr/local/lib/audacious/Container/asx3.so
 /usr/local/lib/audacious/Container/audpl.so
@@ -228,6 +228,7 @@
 /usr/local/share/locale/id_ID/LC_MESSAGES/audacious-plugins.mo
 /usr/local/share/locale/it/LC_MESSAGES/audacious-plugins.mo
 /usr/local/share/locale/ja/LC_MESSAGES/audacious-plugins.mo
+/usr/local/share/locale/ka/LC_MESSAGES/audacious-plugins.mo
 /usr/local/share/locale/ko/LC_MESSAGES/audacious-plugins.mo
 /usr/local/share/locale/lt/LC_MESSAGES/audacious-plugins.mo
 /usr/local/share/locale/lv/LC_MESSAGES/audacious-plugins.mo

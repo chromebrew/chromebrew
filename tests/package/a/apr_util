@@ -1,0 +1,3 @@
+#!/bin/bash
+apu-1-config --help | head
+apu-1-config --version

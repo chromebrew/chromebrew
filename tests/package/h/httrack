@@ -1,0 +1,3 @@
+#!/bin/bash
+httrack -h | head
+httrack --version

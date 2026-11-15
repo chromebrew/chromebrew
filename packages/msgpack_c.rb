@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Msgpack_c < CMake
   description 'An efficient object serialization library'
   homepage 'https://github.com/msgpack/msgpack-c'
-  version '7.0.1'
+  version '7.0.2'
   license 'BSL-1.0'
   compatibility 'all'
   source_url 'https://github.com/msgpack/msgpack-c.git'
@@ -11,10 +11,10 @@ class Msgpack_c < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1189e6489f7bc4cb2e33dc2e789d7f0e35af35aae6022b8b5054c700fdefa8e8',
-     armv7l: '1189e6489f7bc4cb2e33dc2e789d7f0e35af35aae6022b8b5054c700fdefa8e8',
-       i686: 'a5872ba8b59735fefce6840c35e285b40266ecb473b42411c08b07e84a5134f1',
-     x86_64: 'ea64ea8910c60a69a68a9b9af4c5e27a0954c325993a4dd1e6dbaa2d1d535434'
+    aarch64: '006c33ced2b58d29ea0f93dbfc1b4ecb8248b6e230980df3e381142015719b5f',
+     armv7l: '006c33ced2b58d29ea0f93dbfc1b4ecb8248b6e230980df3e381142015719b5f',
+       i686: '2296f1525dce51d1a5e79aae16a496e54e5179a844897139fdbfa90b5094c464',
+     x86_64: '432f23bcf80010f3ab4c9e2ec51f5dbf7ae0decd696c04243e20dbaa0335e589'
   })
 
   depends_on 'doxygen' => :build

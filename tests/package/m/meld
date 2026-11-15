@@ -1,0 +1,3 @@
+#!/bin/bash
+meld -h 2>&1 | head
+meld --version

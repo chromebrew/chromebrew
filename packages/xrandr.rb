@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Xrandr < Autotools
   description 'Command line interface to X11 Resize, Rotate, and Reflect (RandR) extension'
   homepage 'https://gitlab.freedesktop.org/xorg/app/xrandr'
-  version '1.5.3'
+  version '1.5.4'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/xorg/app/xrandr.git'
@@ -11,15 +11,16 @@ class Xrandr < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '244014996409b4778ed756e3bdbb313f47bb9514f19945ece8c0cc0df2c45eae',
-     armv7l: '244014996409b4778ed756e3bdbb313f47bb9514f19945ece8c0cc0df2c45eae',
-     x86_64: '9e69504d88e1c4598a1936483d80fb05cefeea697511f0716c46bc44c11f6054'
+    aarch64: 'd04bea69eb13ed9e46d59c34e879eec0c4d1ce433affda981d4aebc319d3ef9e',
+     armv7l: 'd04bea69eb13ed9e46d59c34e879eec0c4d1ce433affda981d4aebc319d3ef9e',
+     x86_64: '8547c100ec66efd87de966dc0107a5ecc1469969ff9c7762bca3c988b4eb97d4'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'libx11' # R
-  depends_on 'libxrandr' # R
-  depends_on 'libxrender' # R
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'libx11' => :executable
+  depends_on 'libxrandr' => :executable
+  depends_on 'libxrender' => :executable
 
   run_tests
 end

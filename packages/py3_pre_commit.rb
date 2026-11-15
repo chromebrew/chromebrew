@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_pre_commit < Pip
   description 'A framework for managing and maintaining multi-language pre-commit hooks.'
   homepage 'https://pre-commit.com/'
-  version "4.6.0-#{CREW_PY_VER}"
+  version "4.7.0-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2288c6f0b2a5ceb013b39cf256b395b4a359ee4f02c11742d064873649a7d666',
-     armv7l: '2288c6f0b2a5ceb013b39cf256b395b4a359ee4f02c11742d064873649a7d666',
-       i686: '68feaf466de776afedc96a7df53ba21404e4e88ef5cbb552bf08887ccc32c413',
-     x86_64: 'c637ca09da7737e0e75a92f72d5391cb84d73c9647d7fd13e628b295e23d90df'
+    aarch64: '79248f99e52f4b9d12b580b4d2ec1389920bd8e5bfe7d4e8deac7355df8d6a84',
+     armv7l: '79248f99e52f4b9d12b580b4d2ec1389920bd8e5bfe7d4e8deac7355df8d6a84',
+       i686: 'bdade6f75f60889d85691d5f76ffe0fd9b3e6361266197c1a3a6285603dd9120',
+     x86_64: 'eb6d8cc70fd1d1bd8175e7d83d8d9c14eed253b632018db14b3d729518f95481'
   })
 
   depends_on 'py3_cfgv'

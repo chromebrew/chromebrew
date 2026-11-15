@@ -1,0 +1,3 @@
+#!/bin/bash
+putty --help 2>&1 | head
+putty --version 2>&1

@@ -1,3 +1,4 @@
-# Total size: 191690
+# Total size: 162636
+/usr/local/lib/xorg/modules/drivers/nouveau_drv.la
 /usr/local/lib/xorg/modules/drivers/nouveau_drv.so
-/usr/local/share/man/man4/nouveau.4
+/usr/local/share/man/man4/nouveau.4.zst

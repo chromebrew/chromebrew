@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Nasm < Autotools
   description 'The Netwide Assembler'
   homepage 'https://www.nasm.us/'
-  version '3.01'
+  version '3.02'
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/netwide-assembler/nasm.git'
@@ -11,16 +11,19 @@ class Nasm < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '981ea5b6b4422e2ea8474f7826b6dc40b7763c486a673c8e00647c7e67b1d31f',
-     armv7l: '981ea5b6b4422e2ea8474f7826b6dc40b7763c486a673c8e00647c7e67b1d31f',
-       i686: '14374c8074bb89ff97560e275c4b3bfff9bb285dd8041f58747b12dfb98c0b78',
-     x86_64: '907797c0e510b684488ade6f22c80e346352142cc66a5fe98a8559cfbd7812f9'
+    aarch64: '5ffca80369cc4c570cb44969af4456068aa8d8613a949bc9aac12b17ae67d950',
+     armv7l: '5ffca80369cc4c570cb44969af4456068aa8d8613a949bc9aac12b17ae67d950',
+       i686: '2b0c7d6dd11cb97499cb63e13335ee1126be19e5907fa977dcec830ab31dc3a5',
+     x86_64: '92b4f1c5fd25d9868e8108203bc6601a6abe1d2abc2be38e15042eadfab7f7b2'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'py3_asciidoc' => :build
   depends_on 'xmlto' => :build
+  depends_on 'zlib' => :executable
 
+  autotools_skip_autoreconf
   autotools_build_extras do
     system 'make manpages'
   end

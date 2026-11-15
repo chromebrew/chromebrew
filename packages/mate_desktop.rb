@@ -1,37 +1,42 @@
-require 'buildsystems/autotools'
+require 'buildsystems/meson'
 
-class Mate_desktop < Autotools
+class Mate_desktop < Meson
   description 'Libraries for the MATE desktop that are not part of the UI.'
   homepage 'https://mate-desktop.org'
-  version '1.28.2'
+  version '1.29.0'
   license 'FDL-1.1, GPL-2+, LGPL-2+, MIT-with-advertising'
   compatibility 'aarch64 armv7l x86_64'
-  source_url "https://pub.mate-desktop.org/releases/#{version.rpartition('.')[0]}/mate-desktop-#{version}.tar.xz"
-  source_sha256 '32bb4b792014b391c1e1b8ae9c18a82b4d447650984b4cba7d28e95564964aa2'
+  source_url 'https://github.com/mate-desktop/mate-desktop.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '241f30e2af2276b1d1e809ed9d6b243333514ab8798d6f124ba3f81635dae61c',
-     armv7l: '241f30e2af2276b1d1e809ed9d6b243333514ab8798d6f124ba3f81635dae61c',
-     x86_64: '4f790783bb5a3e5e850a51f85d2d7c01fd9420b167f91f31dddd933d0b8b697f'
+    aarch64: '0d766f7c38aff2b928334ff41884314c761764a078532c9f7ea741742e6cd3c0',
+     armv7l: '0d766f7c38aff2b928334ff41884314c761764a078532c9f7ea741742e6cd3c0',
+     x86_64: 'ab805f6cda35b42371278d8f6adf55721620f36f7730a23a5fedddc304bf209f'
   })
 
-  depends_on 'at_spi2_core' # R
-  depends_on 'cairo' # R
-  depends_on 'dconf' # R
-  depends_on 'gdk_pixbuf' # R
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
-  depends_on 'gtk3' # R
-  depends_on 'harfbuzz' # R
+  depends_on 'at_spi2_core' => :library
+  depends_on 'cairo' => :library
+  depends_on 'dconf' => :library
+  depends_on 'gdk_pixbuf' => :library
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'gobject_introspection' => :library
+  depends_on 'gtk3' => :library
+  depends_on 'harfbuzz' => :library
   depends_on 'iso_codes' => :build
-  depends_on 'libbsd' # R
-  depends_on 'libx11' # R
-  depends_on 'libxau' # R
-  depends_on 'libxcb' # R
-  depends_on 'libxdmcp' # R
-  depends_on 'libxrandr' # R
+  depends_on 'libbsd' => :library
+  depends_on 'libx11' => :library
+  depends_on 'libxau' => :library
+  depends_on 'libxcb' => :library
+  depends_on 'libxdmcp' => :library
+  depends_on 'libxrandr' => :library
   depends_on 'mate_common' => :build
-  depends_on 'pango' # R
-  depends_on 'zlib' # R
+  depends_on 'pango' => :library
+  depends_on 'startup_notification' => :library
+  depends_on 'zlib' => :library
+
+  meson_options '-Dintrospection=true'
 end

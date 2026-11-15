@@ -1,0 +1,3 @@
+#!/bin/bash
+zstd -h | head
+zstd -V

@@ -3,7 +3,7 @@ require 'package'
 class Mupdf < Package
   description 'MuPDF is a lightweight open source software framework for viewing and converting PDF, XPS, and E-book documents.'
   homepage 'https://mupdf.com/'
-  version '1.28.0'
+  version '1.28.6'
   license 'GPL-3'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/ArtifexSoftware/mupdf.git'
@@ -11,9 +11,9 @@ class Mupdf < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6f1b9a1cd0229bc98b9dec54daa069871eadc4a2ca54b7b0afb215ef806e44b4',
-     armv7l: '6f1b9a1cd0229bc98b9dec54daa069871eadc4a2ca54b7b0afb215ef806e44b4',
-     x86_64: 'f5b975c2ed9764b158cf45dac482b68c7578704c931840221b178d173a4dbc84'
+    aarch64: 'fea28c3217b7ae9f7409dee0fe0b3253cffcc87604bb23faf94a7fa51e7e932a',
+     armv7l: 'fea28c3217b7ae9f7409dee0fe0b3253cffcc87604bb23faf94a7fa51e7e932a',
+     x86_64: '2791ecb21a5f815729979818d039194e7431de2b6f95a4c3e855f74e10029efb'
   })
 
   depends_on 'freeglut'

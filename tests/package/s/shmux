@@ -1,0 +1,3 @@
+#!/bin/bash
+shmux -h 2>&1 | head
+shmux -V

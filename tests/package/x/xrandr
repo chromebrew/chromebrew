@@ -1,0 +1,3 @@
+#!/bin/bash
+xrandr --help | head
+xrandr --version

@@ -1,4 +1,4 @@
-# Total size: 458948352
+# Total size: 492974549
 /usr/local/bin/vivaldi
 /usr/local/bin/vivaldi-stable
 /usr/local/etc/cron.daily/vivaldi
@@ -15,12 +15,10 @@
 /usr/local/share/vivaldi/LICENSE.html
 /usr/local/share/vivaldi/MEIPreload/manifest.json
 /usr/local/share/vivaldi/MEIPreload/preloaded_data.pb
-/usr/local/share/vivaldi/PrivacySandboxAttestationsPreloaded/manifest.json
-/usr/local/share/vivaldi/PrivacySandboxAttestationsPreloaded/privacy-sandbox-attestations.dat
+/usr/local/share/vivaldi/apparmor.d/vivaldi-stable
 /usr/local/share/vivaldi/chrome_crashpad_handler
 /usr/local/share/vivaldi/cron/vivaldi
-/usr/local/share/vivaldi/libEGL.so
-/usr/local/share/vivaldi/libGLESv2.so
+/usr/local/share/vivaldi/icudtl.dat
 /usr/local/share/vivaldi/libffmpeg.so
 /usr/local/share/vivaldi/libqt5_shim.so
 /usr/local/share/vivaldi/libqt6_shim.so
@@ -38,14 +36,6 @@
 /usr/local/share/vivaldi/locales/ar_FEMININE.pak
 /usr/local/share/vivaldi/locales/ar_MASCULINE.pak
 /usr/local/share/vivaldi/locales/ar_NEUTER.pak
-/usr/local/share/vivaldi/locales/az.pak
-/usr/local/share/vivaldi/locales/az_FEMININE.pak
-/usr/local/share/vivaldi/locales/az_MASCULINE.pak
-/usr/local/share/vivaldi/locales/az_NEUTER.pak
-/usr/local/share/vivaldi/locales/be.pak
-/usr/local/share/vivaldi/locales/be_FEMININE.pak
-/usr/local/share/vivaldi/locales/be_MASCULINE.pak
-/usr/local/share/vivaldi/locales/be_NEUTER.pak
 /usr/local/share/vivaldi/locales/bg.pak
 /usr/local/share/vivaldi/locales/bg_FEMININE.pak
 /usr/local/share/vivaldi/locales/bg_MASCULINE.pak
@@ -110,10 +100,6 @@
 /usr/local/share/vivaldi/locales/et_FEMININE.pak
 /usr/local/share/vivaldi/locales/et_MASCULINE.pak
 /usr/local/share/vivaldi/locales/et_NEUTER.pak
-/usr/local/share/vivaldi/locales/eu.pak
-/usr/local/share/vivaldi/locales/eu_FEMININE.pak
-/usr/local/share/vivaldi/locales/eu_MASCULINE.pak
-/usr/local/share/vivaldi/locales/eu_NEUTER.pak
 /usr/local/share/vivaldi/locales/fa.pak
 /usr/local/share/vivaldi/locales/fa_FEMININE.pak
 /usr/local/share/vivaldi/locales/fa_MASCULINE.pak
@@ -138,10 +124,6 @@
 /usr/local/share/vivaldi/locales/gd_FEMININE.pak
 /usr/local/share/vivaldi/locales/gd_MASCULINE.pak
 /usr/local/share/vivaldi/locales/gd_NEUTER.pak
-/usr/local/share/vivaldi/locales/gl.pak
-/usr/local/share/vivaldi/locales/gl_FEMININE.pak
-/usr/local/share/vivaldi/locales/gl_MASCULINE.pak
-/usr/local/share/vivaldi/locales/gl_NEUTER.pak
 /usr/local/share/vivaldi/locales/gu.pak
 /usr/local/share/vivaldi/locales/gu_FEMININE.pak
 /usr/local/share/vivaldi/locales/gu_MASCULINE.pak
@@ -162,10 +144,6 @@
 /usr/local/share/vivaldi/locales/hu_FEMININE.pak
 /usr/local/share/vivaldi/locales/hu_MASCULINE.pak
 /usr/local/share/vivaldi/locales/hu_NEUTER.pak
-/usr/local/share/vivaldi/locales/hy.pak
-/usr/local/share/vivaldi/locales/hy_FEMININE.pak
-/usr/local/share/vivaldi/locales/hy_MASCULINE.pak
-/usr/local/share/vivaldi/locales/hy_NEUTER.pak
 /usr/local/share/vivaldi/locales/id.pak
 /usr/local/share/vivaldi/locales/id_FEMININE.pak
 /usr/local/share/vivaldi/locales/id_MASCULINE.pak
@@ -174,10 +152,6 @@
 /usr/local/share/vivaldi/locales/io_FEMININE.pak
 /usr/local/share/vivaldi/locales/io_MASCULINE.pak
 /usr/local/share/vivaldi/locales/io_NEUTER.pak
-/usr/local/share/vivaldi/locales/is.pak
-/usr/local/share/vivaldi/locales/is_FEMININE.pak
-/usr/local/share/vivaldi/locales/is_MASCULINE.pak
-/usr/local/share/vivaldi/locales/is_NEUTER.pak
 /usr/local/share/vivaldi/locales/it.pak
 /usr/local/share/vivaldi/locales/it_FEMININE.pak
 /usr/local/share/vivaldi/locales/it_MASCULINE.pak
@@ -194,10 +168,6 @@
 /usr/local/share/vivaldi/locales/jbo_FEMININE.pak
 /usr/local/share/vivaldi/locales/jbo_MASCULINE.pak
 /usr/local/share/vivaldi/locales/jbo_NEUTER.pak
-/usr/local/share/vivaldi/locales/ka.pak
-/usr/local/share/vivaldi/locales/ka_FEMININE.pak
-/usr/local/share/vivaldi/locales/ka_MASCULINE.pak
-/usr/local/share/vivaldi/locales/ka_NEUTER.pak
 /usr/local/share/vivaldi/locales/kab.pak
 /usr/local/share/vivaldi/locales/kab_FEMININE.pak
 /usr/local/share/vivaldi/locales/kab_MASCULINE.pak
@@ -222,10 +192,6 @@
 /usr/local/share/vivaldi/locales/lv_FEMININE.pak
 /usr/local/share/vivaldi/locales/lv_MASCULINE.pak
 /usr/local/share/vivaldi/locales/lv_NEUTER.pak
-/usr/local/share/vivaldi/locales/mk.pak
-/usr/local/share/vivaldi/locales/mk_FEMININE.pak
-/usr/local/share/vivaldi/locales/mk_MASCULINE.pak
-/usr/local/share/vivaldi/locales/mk_NEUTER.pak
 /usr/local/share/vivaldi/locales/ml.pak
 /usr/local/share/vivaldi/locales/ml_FEMININE.pak
 /usr/local/share/vivaldi/locales/ml_MASCULINE.pak
@@ -250,10 +216,6 @@
 /usr/local/share/vivaldi/locales/nn_FEMININE.pak
 /usr/local/share/vivaldi/locales/nn_MASCULINE.pak
 /usr/local/share/vivaldi/locales/nn_NEUTER.pak
-/usr/local/share/vivaldi/locales/pa.pak
-/usr/local/share/vivaldi/locales/pa_FEMININE.pak
-/usr/local/share/vivaldi/locales/pa_MASCULINE.pak
-/usr/local/share/vivaldi/locales/pa_NEUTER.pak
 /usr/local/share/vivaldi/locales/pl.pak
 /usr/local/share/vivaldi/locales/pl_FEMININE.pak
 /usr/local/share/vivaldi/locales/pl_MASCULINE.pak
@@ -286,14 +248,6 @@
 /usr/local/share/vivaldi/locales/sl_FEMININE.pak
 /usr/local/share/vivaldi/locales/sl_MASCULINE.pak
 /usr/local/share/vivaldi/locales/sl_NEUTER.pak
-/usr/local/share/vivaldi/locales/sq.pak
-/usr/local/share/vivaldi/locales/sq_FEMININE.pak
-/usr/local/share/vivaldi/locales/sq_MASCULINE.pak
-/usr/local/share/vivaldi/locales/sq_NEUTER.pak
-/usr/local/share/vivaldi/locales/sr-Latn.pak
-/usr/local/share/vivaldi/locales/sr-Latn_FEMININE.pak
-/usr/local/share/vivaldi/locales/sr-Latn_MASCULINE.pak
-/usr/local/share/vivaldi/locales/sr-Latn_NEUTER.pak
 /usr/local/share/vivaldi/locales/sr.pak
 /usr/local/share/vivaldi/locales/sr_FEMININE.pak
 /usr/local/share/vivaldi/locales/sr_MASCULINE.pak
@@ -356,6 +310,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/_locales/be/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/bg/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/bn/messages.json
+/usr/local/share/vivaldi/resources/vivaldi/_locales/brh/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/bs/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/ca/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/ca@valencia/messages.json
@@ -364,9 +319,11 @@
 /usr/local/share/vivaldi/resources/vivaldi/_locales/cy/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/da/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/de/messages.json
+/usr/local/share/vivaldi/resources/vivaldi/_locales/de_AT/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/de_CH/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/el/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/en/messages.json
+/usr/local/share/vivaldi/resources/vivaldi/_locales/en_AU/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/en_CA/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/en_GB/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/en_US/messages.json
@@ -439,6 +396,8 @@
 /usr/local/share/vivaldi/resources/vivaldi/_locales/th/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/tr/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/uk/messages.json
+/usr/local/share/vivaldi/resources/vivaldi/_locales/ur/messages.json
+/usr/local/share/vivaldi/resources/vivaldi/_locales/uz/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/vi/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/zh_CN/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/zh_HANT/messages.json
@@ -449,19 +408,16 @@
 /usr/local/share/vivaldi/resources/vivaldi/adblocker_resources/redirectable_resources.json
 /usr/local/share/vivaldi/resources/vivaldi/background-bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/background-common-bundle.js
-/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-9567491b38d101971077a1ceff057b7c.js
+/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-c4a181c19ff742e6a4b9fa4e7ea6fa12.js
 /usr/local/share/vivaldi/resources/vivaldi/bundle-mailreader-worker.js
 /usr/local/share/vivaldi/resources/vivaldi/bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/components/mail/mail.html
 /usr/local/share/vivaldi/resources/vivaldi/components/notes/richtexteditor/md.css
 /usr/local/share/vivaldi/resources/vivaldi/components/notes/richtexteditor/md.js
-/usr/local/share/vivaldi/resources/vivaldi/components/picture-in-picture/background.js
 /usr/local/share/vivaldi/resources/vivaldi/components/picture-in-picture/config.json
 /usr/local/share/vivaldi/resources/vivaldi/components/picture-in-picture/picture-in-picture.css
 /usr/local/share/vivaldi/resources/vivaldi/components/picture-in-picture/picture-in-picture.js
 /usr/local/share/vivaldi/resources/vivaldi/components/private-intro/private-intro.html
-/usr/local/share/vivaldi/resources/vivaldi/components/reader/reader.css
-/usr/local/share/vivaldi/resources/vivaldi/components/reader/reader.html
 /usr/local/share/vivaldi/resources/vivaldi/components/theme-store/theme-store.js
 /usr/local/share/vivaldi/resources/vivaldi/components/welcome/welcome.html
 /usr/local/share/vivaldi/resources/vivaldi/default-bookmarks/be-BY.json
@@ -520,9 +476,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/markdowneditor-bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/menus/contextmenu.json
 /usr/local/share/vivaldi/resources/vivaldi/menus/mainmenu.json
-/usr/local/share/vivaldi/resources/vivaldi/policy_prefs.json
 /usr/local/share/vivaldi/resources/vivaldi/prefs_definitions.json
-/usr/local/share/vivaldi/resources/vivaldi/reader-bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/resources/ToolbarIconFallback.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/badge-advocate-12@2x.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/badge-advocate-16@2x.png
@@ -590,6 +544,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/aftonbladet.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/agoda_com.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/airbnb.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/favicons/ajio.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/aliexpress_com.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/allegro_pl.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/amazon_com.png
@@ -629,6 +584,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/expressen.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/facebook.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/finn_no.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/favicons/flipkart.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/fnac_com.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/forum.ge.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/furunavi.png
@@ -672,6 +628,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/lynkco-colab.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/lynkco.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/macys_com.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/favicons/makemytrip.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/malaysiakini_com.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/mbl_is.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/mediaexpert_pl.png
@@ -692,6 +649,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/npo.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/nrk.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/nvidia.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/favicons/nykaa.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/nzherald.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/onliner_by.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/orf.png
@@ -771,7 +729,6 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/icon_128.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/icon_16.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/icon_notifications.png
-/usr/local/share/vivaldi/resources/vivaldi/resources/inverse-rounding-mask.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/mail_notification_icon.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/mask-add-outline.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/mask-add.svg
@@ -781,6 +738,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/mask-eye.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/mask-more.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/mask-open.svg
+/usr/local/share/vivaldi/resources/vivaldi/resources/mask-profile-managed.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/mask-reload.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/mask-remove.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/new_gift.svg
@@ -806,6 +764,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_accuweather.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_af_iol_co_za.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_airbnb.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_ajio.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_aliexpress.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_amazon.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_ar_ae_khaleej.png
@@ -969,6 +928,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_lamoda.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_lt_delfi.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_lu_lb.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_makemytrip.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_mg_lexpress.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_microsoft365.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_mk_sg_st.png
@@ -992,6 +952,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_no_cdon.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_nos.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_npo.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_nykaa.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_nz_stuff.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_outlook.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_overstock.png
@@ -1094,8 +1055,6 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/search_startpage.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/share-confetti.gif
 /usr/local/share/vivaldi/resources/vivaldi/resources/share-friends.png
-/usr/local/share/vivaldi/resources/vivaldi/resources/startup-static.svg
-/usr/local/share/vivaldi/resources/vivaldi/resources/startup.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/support-donate.webp
 /usr/local/share/vivaldi/resources/vivaldi/resources/support_tony.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/symbol-reload.svg
@@ -1177,6 +1136,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/tip-img-sync.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/tip-img-workspaces-dark.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/tip-img-workspaces.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/tony_cry.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/tony_thanks.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/unknown_file.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/unsynced_file.png

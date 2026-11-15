@@ -1,0 +1,3 @@
+#!/bin/bash
+pass help | head -20
+pass version

@@ -1,9 +1,10 @@
-# Total size: 229482
+# Total size: 245932
 /usr/local/bin/substrings.pl
 /usr/local/include/hyphen.h
 /usr/local/lib/libhyphen.a
 /usr/local/lib/libhyphen.la
 /usr/local/lib/libhyphen.so
 /usr/local/lib/libhyphen.so.0
-/usr/local/lib/libhyphen.so.0.4.0
+/usr/local/lib/libhyphen.so.0.4.1
+/usr/local/lib/pkgconfig/hyphen.pc
 /usr/local/share/hyphen/hyph_en_US.dic

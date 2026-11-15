@@ -1,6 +1,6 @@
-# Total size: 5692934
+# Total size: 5763618
 /usr/local/bin/gawk
-/usr/local/bin/gawk-5.4.0
+/usr/local/bin/gawk-5.4.1
 /usr/local/bin/gawkbug
 /usr/local/etc/profile.d/gawk.csh
 /usr/local/etc/profile.d/gawk.sh
@@ -57,8 +57,8 @@
 /usr/local/share/info/gawk_process-flow.png.zst
 /usr/local/share/info/gawk_statist.jpg.zst
 /usr/local/share/info/gawkinet.info.zst
+/usr/local/share/info/gawknotes.info.zst
 /usr/local/share/info/gawkworkflow.info.zst
-/usr/local/share/info/notes.info.zst
 /usr/local/share/info/pm-gawk.info.zst
 /usr/local/share/locale/ar/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/bg/LC_MESSAGES/gawk.mo
@@ -68,6 +68,7 @@
 /usr/local/share/locale/he/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/id/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/it/LC_MESSAGES/gawk.mo
+/usr/local/share/locale/ka/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/ko/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/nl/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/pl/LC_MESSAGES/gawk.mo
@@ -86,6 +87,7 @@
 /usr/local/share/man/man3/fnmatch.3am.zst
 /usr/local/share/man/man3/fork.3am.zst
 /usr/local/share/man/man3/inplace.3am.zst
+/usr/local/share/man/man3/intdiv.3am.zst
 /usr/local/share/man/man3/ordchr.3am.zst
 /usr/local/share/man/man3/readdir.3am.zst
 /usr/local/share/man/man3/readfile.3am.zst

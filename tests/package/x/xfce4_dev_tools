@@ -1,0 +1,5 @@
+#!/bin/bash
+xdt-autogen --version
+xdt-check-abi -h
+xdt-csource --version
+xdt-gen-visibility -h

@@ -3,7 +3,7 @@ require 'package'
 class Lesspipe < Package
   description 'Input filter for the pager less'
   homepage 'https://www-zeuthen.desy.de/~friebel/unix/lesspipe.html'
-  version '2.27'
+  version '2.30'
   license 'GPL-2.0'
   compatibility 'all'
   source_url 'https://github.com/wofr06/lesspipe.git'
@@ -11,10 +11,10 @@ class Lesspipe < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bd6525d466b9331209db7757fa5a91e52a10ad09350c3e05618f47ff9519be17',
-     armv7l: 'bd6525d466b9331209db7757fa5a91e52a10ad09350c3e05618f47ff9519be17',
-       i686: '545318a50139f171be312a4eadf560deea7e73d24e3cf9860f50e9457e85f6d4',
-     x86_64: 'fbf5435348f91bb6689e5d61977bd77134a16e0b9d81d067d4b702985f5ad864'
+    aarch64: 'c92adfe052184be401613bf5825f99e8f86bd40974a8be549cf2a4b8dee1ed2b',
+     armv7l: 'c92adfe052184be401613bf5825f99e8f86bd40974a8be549cf2a4b8dee1ed2b',
+       i686: 'cb7a7d11b19d8249f86d3cc6ce5ee9b309aaab2080afc083b3f1a56d9d6a3ff4',
+     x86_64: 'd2c55b8998ea0319b50f815c47bfed6008266cb490cda89bf590569ac48bcba8'
   })
 
   depends_on 'less'

@@ -1,0 +1,5 @@
+#!/bin/bash
+getfattr --help
+getfattr --version
+setfattr --help
+setfattr --version

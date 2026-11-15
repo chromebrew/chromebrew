@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Vmaf < Meson
   description 'Perceptual video quality assessment algorithm based on multi-method fusion'
   homepage 'https://github.com/Netflix/vmaf'
-  version '3.2.0'
+  version '3.2.1'
   license 'BSD-2'
   compatibility 'all'
   source_url 'https://github.com/Netflix/vmaf.git'
@@ -11,10 +11,10 @@ class Vmaf < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '21dddd8dd3896d60a4ec84d4d98e45d10cf4ec8a0e973cb6c08931aadff98c43',
-     armv7l: '21dddd8dd3896d60a4ec84d4d98e45d10cf4ec8a0e973cb6c08931aadff98c43',
-       i686: 'b092f3ad17b318c32e454f423010e9a10b5869f70e5c8f32e15a44e53f5dfeba',
-     x86_64: '0f2fe9d3a5959bc8e3608f8b76e823ef67af0302217fb992b70ca5646627d785'
+    aarch64: 'b372e8facf637f0289acca28a128b78bcb93cf3310a9a53748984e202beab14f',
+     armv7l: 'b372e8facf637f0289acca28a128b78bcb93cf3310a9a53748984e202beab14f',
+       i686: 'e839e4dda8747034e5f1b288a12e7cd533d12c8f5026a3179e6fb0f0a56042b2',
+     x86_64: 'a4e4c9c8828cbfec7dd09fd1bb8f66dbf4c4a1f298af753d15dd4255de5d0b99'
   })
 
   depends_on 'gcc_lib' => :library

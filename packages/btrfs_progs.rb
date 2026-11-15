@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Btrfs_progs < Autotools
   description 'BTRFS is a modern copy on write filesystem for Linux aimed at implementing advanced features while also focusing on fault tolerance, repair and easy administration.'
   homepage 'https://btrfs.readthedocs.io/en/latest/'
-  version '7.0'
+  version '7.3'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/kdave/btrfs-progs.git'
@@ -11,15 +11,16 @@ class Btrfs_progs < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ad8fa8a6eebc641abfbe7b830c4c75b690d8f0cb89c8f7f5225ca5c176303e42',
-     armv7l: 'ad8fa8a6eebc641abfbe7b830c4c75b690d8f0cb89c8f7f5225ca5c176303e42',
-     x86_64: 'bdc6b814c42065e19b3f795dd1ab43bdcebd4c504ca0ac7dcc1593db2a5fd49e'
+    aarch64: '89330572d11c2fd9ccca1d6e1e917bbbcc83ce5090631ac71840a96537d94eaf',
+     armv7l: '89330572d11c2fd9ccca1d6e1e917bbbcc83ce5090631ac71840a96537d94eaf',
+     x86_64: '033f7be978b3154b428dad8f588a209a93c87b4c7de90e238038f6e29d33f84b'
   })
 
   depends_on 'e2fsprogs'
   depends_on 'eudev' => :library
   depends_on 'gcc_lib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'libgcrypt' => :library
   depends_on 'libsodium' => :library
   depends_on 'libuuid' => :library

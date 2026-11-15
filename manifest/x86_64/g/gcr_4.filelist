@@ -1,4 +1,4 @@
-# Total size: 3273209
+# Total size: 3337409
 /usr/local/bin/gcr-viewer-gtk4
 /usr/local/include/gck-2/gck/gck-enum-types.h
 /usr/local/include/gck-2/gck/gck-version.h
@@ -38,10 +38,10 @@
 /usr/local/lib64/girepository-1.0/Gcr-4.typelib
 /usr/local/lib64/libgck-2.so
 /usr/local/lib64/libgck-2.so.2
-/usr/local/lib64/libgck-2.so.2.4.0
+/usr/local/lib64/libgck-2.so.2.4.1
 /usr/local/lib64/libgcr-4.so
 /usr/local/lib64/libgcr-4.so.4
-/usr/local/lib64/libgcr-4.so.4.4.0
+/usr/local/lib64/libgcr-4.so.4.4.1
 /usr/local/lib64/pkgconfig/gck-2.pc
 /usr/local/lib64/pkgconfig/gcr-4.pc
 /usr/local/libexec/gcr-ssh-agent
@@ -97,6 +97,7 @@
 /usr/local/share/locale/kk/LC_MESSAGES/gcr-4.mo
 /usr/local/share/locale/kn/LC_MESSAGES/gcr-4.mo
 /usr/local/share/locale/ko/LC_MESSAGES/gcr-4.mo
+/usr/local/share/locale/lo/LC_MESSAGES/gcr-4.mo
 /usr/local/share/locale/lt/LC_MESSAGES/gcr-4.mo
 /usr/local/share/locale/lv/LC_MESSAGES/gcr-4.mo
 /usr/local/share/locale/mai/LC_MESSAGES/gcr-4.mo
@@ -133,6 +134,7 @@
 /usr/local/share/locale/tr/LC_MESSAGES/gcr-4.mo
 /usr/local/share/locale/ug/LC_MESSAGES/gcr-4.mo
 /usr/local/share/locale/uk/LC_MESSAGES/gcr-4.mo
+/usr/local/share/locale/uz/LC_MESSAGES/gcr-4.mo
 /usr/local/share/locale/vi/LC_MESSAGES/gcr-4.mo
 /usr/local/share/locale/xh/LC_MESSAGES/gcr-4.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/gcr-4.mo

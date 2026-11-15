@@ -1,4 +1,4 @@
-# Total size: 2034868
+# Total size: 2224256
 /usr/local/bin/find
 /usr/local/bin/locate
 /usr/local/bin/updatedb
@@ -6,6 +6,7 @@
 /usr/local/libexec/frcode
 /usr/local/share/info/find-maint.info.zst
 /usr/local/share/info/find.info.zst
+/usr/local/share/locale/ar/LC_MESSAGES/findutils.mo
 /usr/local/share/locale/be/LC_MESSAGES/findutils.mo
 /usr/local/share/locale/bg/LC_MESSAGES/findutils.mo
 /usr/local/share/locale/ca/LC_MESSAGES/findutils.mo

@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Libshumate < Meson
   description 'GTK toolkit providing widgets for embedded maps'
   homepage 'https://wiki.gnome.org/Projects/libshumate'
-  version '1.6.2'
+  version '1.7.0'
   license 'LGPL2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/libshumate.git'
@@ -14,9 +14,9 @@ class Libshumate < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '296b0882693dc756f4aa5882f43a6a7c3c2f1dfd7cbacfa92de2819fe99a1e54',
-     armv7l: '296b0882693dc756f4aa5882f43a6a7c3c2f1dfd7cbacfa92de2819fe99a1e54',
-     x86_64: '74de189043f646facfc058cb07013222adc497a26fdfbdebf46aa228c4b07f55'
+    aarch64: 'a5384a1bc629457cab7abdfc4dc4ca50faf2786297a83e81bb423f070426f58c',
+     armv7l: 'a5384a1bc629457cab7abdfc4dc4ca50faf2786297a83e81bb423f070426f58c',
+     x86_64: '43333fd07982153b29176d6679f9ad3578083e04bea08bdf4c2cee93ea3766ed'
   })
 
   depends_on 'cairo' => :library

@@ -1,10 +1,11 @@
-# Total size: 741149
+# Total size: 792961
 /usr/local/include/fmt/args.h
 /usr/local/include/fmt/base.h
 /usr/local/include/fmt/chrono.h
 /usr/local/include/fmt/color.h
 /usr/local/include/fmt/compile.h
 /usr/local/include/fmt/core.h
+/usr/local/include/fmt/fmt-c.h
 /usr/local/include/fmt/format-inl.h
 /usr/local/include/fmt/format.h
 /usr/local/include/fmt/os.h
@@ -17,7 +18,8 @@
 /usr/local/lib/cmake/fmt/fmt-config.cmake
 /usr/local/lib/cmake/fmt/fmt-targets-release.cmake
 /usr/local/lib/cmake/fmt/fmt-targets.cmake
+/usr/local/lib/libfmt-c.a
 /usr/local/lib/libfmt.so
 /usr/local/lib/libfmt.so.12
-/usr/local/lib/libfmt.so.12.1.0
+/usr/local/lib/libfmt.so.12.2.0
 /usr/local/lib/pkgconfig/fmt.pc

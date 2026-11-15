@@ -1,0 +1,16 @@
+#!/bin/bash
+combinediff --version
+dehtmldiff --version
+editdiff --version
+espdiff --version
+filterdiff --version
+flipdiff --version
+grepdiff --version
+interdiff --version
+lsdiff --version
+move-to-front --version
+patchview --version
+recountdiff --version
+rediff --version
+splitdiff --version
+unwrapdiff --version

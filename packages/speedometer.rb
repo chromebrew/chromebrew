@@ -3,23 +3,27 @@ require 'package'
 class Speedometer < Package
   description 'Measure and display the rate of data across a network connection or data being stored in a file.'
   homepage 'https://excess.org/speedometer/'
-  version '2.8-3'
+  version '2.9-0.2'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://httpredir.debian.org/debian/pool/main/s/speedometer/speedometer_2.8-3_all.deb'
-  source_sha256 '63e676c96a9df953b4f7f631f1c1d21fedd71d23d159b53e60662c6bb4c19437'
-  binary_compression 'tar.xz'
+  source_url "https://httpredir.debian.org/debian/pool/main/s/speedometer/speedometer_#{version}_all.deb"
+  source_sha256 'bdf67873fa613510169c89d44f43aa637bc36891c719df5a1fbc4badee0b3f85'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6f3e7d29fde57f37d0f0ea595374166701b30a6153b932c25ced4be683d27edf',
-     armv7l: '6f3e7d29fde57f37d0f0ea595374166701b30a6153b932c25ced4be683d27edf',
-       i686: '8a7b3a69c6369867b7ac6443f080862450d2923df6fbc7a22be797ab33958f45',
-     x86_64: 'a926e76ca2d5de7773b2e2d5423892677c020f0b1328abe9ff84fe81d2801a97'
+    aarch64: '26e1b68b779890cfe9f451362732e5e83ac5401aedf2ce72ef3e2dc69c647b2c',
+     armv7l: '26e1b68b779890cfe9f451362732e5e83ac5401aedf2ce72ef3e2dc69c647b2c',
+       i686: '8fefc40adc19044d71f3fdb4705d5f79cc6c43bbb6ced41cb05d065480bef981',
+     x86_64: '07e7e6b7b052490b50e08bb0f5b97cedf87623e5e90e00e08f0f173b99046462'
   })
 
-  depends_on 'py3_psutil'
-  depends_on 'py3_six'
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'py3_nuitka' => :build
+  depends_on 'py3_psutil' => :executable
+  depends_on 'py3_six' => :executable
+  depends_on 'py3_urwid' => :executable
+  depends_on 'python3' => :executable
 
   def self.patch
     system "sed -i 's:#!/usr/bin/python3:#!#{CREW_PREFIX}/bin/python3:' bin/speedometer"
@@ -37,9 +41,7 @@ class Speedometer < Package
   end
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin/"
-    FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/man1/"
-    FileUtils.cp 'bin/speedometer', "#{CREW_DEST_PREFIX}/bin/"
-    FileUtils.cp 'share/man/man1/speedometer.1', "#{CREW_DEST_MAN_PREFIX}/man1/"
+    FileUtils.install 'bin/speedometer', "#{CREW_DEST_PREFIX}/bin/speedometer", mode: 0o755
+    FileUtils.install 'share/man/man1/speedometer.1', "#{CREW_DEST_MAN_PREFIX}/man1/speedometer.1", mode: 0o644
   end
 end

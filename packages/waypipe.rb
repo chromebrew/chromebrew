@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Waypipe < Meson
   description 'A proxy for Wayland protocol applications.'
   homepage 'https://gitlab.freedesktop.org/mstoeckl/waypipe'
-  version '0.11.0'
+  version '0.11.3'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.freedesktop.org/mstoeckl/waypipe.git'
@@ -11,13 +11,14 @@ class Waypipe < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b7ece71b5296e30daccc50d223d6df20e0d56b02e6c109b8c8f3b8ea8996b2f3',
-     armv7l: 'b7ece71b5296e30daccc50d223d6df20e0d56b02e6c109b8c8f3b8ea8996b2f3',
-     x86_64: '87d5054eb166205c5e55fbb736ca2dd3b16abd38d432a775be6a45ec0088f0dc'
+    aarch64: 'a508d4c98ad12f81c73b4af692eac2ab251a154d4c969e92353355d08a574be8',
+     armv7l: 'a508d4c98ad12f81c73b4af692eac2ab251a154d4c969e92353355d08a574be8',
+     x86_64: 'aeee0548bb6a9164b37a19ef63621772c4785bc6bb5527f56ec6e5b28eb47047'
   })
 
   depends_on 'gcc_lib' => :executable
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'libdrm' => :build
   depends_on 'rust' => :build
   depends_on 'scdoc' => :build

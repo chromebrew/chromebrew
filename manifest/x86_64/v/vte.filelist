@@ -1,4 +1,4 @@
-# Total size: 3551788
+# Total size: 3691654
 /usr/local/bin/vte-2.91
 /usr/local/bin/vte-2.91-gtk4
 /usr/local/etc/profile.d/vte.csh
@@ -31,7 +31,7 @@
 /usr/local/lib64/libvte-2.91-gtk4.so.0
 /usr/local/lib64/libvte-2.91.so
 /usr/local/lib64/libvte-2.91.so.0
-/usr/local/lib64/libvte-2.91.so.0.8400.0
+/usr/local/lib64/libvte-2.91.so.0.8400.1
 /usr/local/lib64/pkgconfig/vte-2.91-gtk4.pc
 /usr/local/lib64/pkgconfig/vte-2.91.pc
 /usr/local/libexec/vte-urlencode-cwd

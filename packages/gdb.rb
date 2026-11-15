@@ -6,24 +6,23 @@ require 'buildsystems/autotools'
 class Gdb < Autotools
   description 'The GNU Debugger'
   homepage 'https://www.gnu.org/software/gdb/'
-  version "17.2-#{CREW_GCC_VER}-#{CREW_PY_VER}"
+  version "18.1-#{CREW_GCC_VER}-#{CREW_PY_VER}"
   license 'GPL3'
   compatibility 'all'
   source_url "https://ftp.gnu.org/gnu/gdb/gdb-#{version.split('-').first}.tar.xz"
-  source_sha256 '1c036c0d72e4b3d1fb5c94c88632add6f9d76f4d7c4d2ea793c12a9f19a3228c'
+  source_sha256 'cd9fc3fe2b47743840e42c1592d3d87f8302eb18639c0b8b4ba0898002e2348f'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bc49e940c4849b860d3a18303d02d56c72439790926ce7063f7471b9b26ed3e2',
-     armv7l: 'bc49e940c4849b860d3a18303d02d56c72439790926ce7063f7471b9b26ed3e2',
-       i686: 'a865093e3d62636aa637191eb315920d1f0d71c9c919e336d958da0920cd8753',
-     x86_64: '908e778676a2d17774aec085e1d516989f25396bf768c133809c3c21395a804c'
+    aarch64: '39a1a65d4dea4dbb5cc1d2a4028d3f28d9ad02a18eebdd7a583109725f36e773',
+     armv7l: '39a1a65d4dea4dbb5cc1d2a4028d3f28d9ad02a18eebdd7a583109725f36e773',
+       i686: 'a82b1767cff23005f62fe8acdf91a5b1e8d5d4d393bbea366f330d0a09cdee03',
+     x86_64: 'b743ff881efc7c354f5af034e7d7c2301124ca5fb273692327a7777cd58f0349'
   })
 
   depends_on 'binutils' => :executable
-  depends_on 'binutils' => :library
   depends_on 'boost' => :executable
-  depends_on 'elfutils' # R
+  depends_on 'elfutils' => :library
   depends_on 'expat' => :executable
   depends_on 'gcc_lib' => :executable
   depends_on 'glibc' => :library
@@ -40,6 +39,7 @@ class Gdb < Autotools
   depends_on 'zlib' => :library
   depends_on 'zstd' => :library
 
+  autotools_skip_autoreconf
   conflicts_ok # binutils conflicts
 
   autotools_configure_options "--disable-binutils \
@@ -61,6 +61,14 @@ class Gdb < Autotools
       --with-system-readline \
       --with-system-zlib \
       #{'--with-x' unless ARCH == 'i686'}"
+
+  def self.patch
+    patches = [
+      # Fixes i686 build on older glibc.
+      ['https://inbox.sourceware.org/gdb-patches/20260928172119.425553-1-simon.marchi@efficios.com/raw', '98ef611ff73ca43544a5331a7ca86c8ddf78e28efca9a95b832fe4f9e2b58949']
+    ]
+    ConvenienceFunctions.patch(patches) if ARCH == 'i686' && version.split('-').first == '18.1'
+  end
 
   def self.prebuild
     # The c11threads threads.h breaks builds on software that uses gnulib.

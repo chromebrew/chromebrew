@@ -1,6 +1,7 @@
 # lib/convenience_functions.rb
 # Extracted bits of crew-specific code that we use frequently enough that it makes sense to split them out to here.
 require 'json'
+require 'tempfile'
 require_relative 'color'
 require_relative 'const'
 require_relative 'crewlog'
@@ -73,15 +74,12 @@ class ConvenienceFunctions
 
   def self.save_json(json_object)
     crewlog 'Saving device.json...'
-    begin
-      File.write File.join(CREW_CONFIG_PATH, 'device.json.tmp'), JSON.pretty_generate(JSON.parse(json_object.to_json))
+    Tempfile.create do |json_tmp|
+      FileUtils.cp(json_tmp, File.join(CREW_CONFIG_PATH, 'device.json')) if File.write(json_tmp, JSON.pretty_generate(JSON.parse(json_object.to_json)))
     rescue StandardError => e
       puts "Error writing updated packages json file!\n#{e.message}".lightred
       abort
     end
-
-    # Copy over original if the write to the tmp file succeeds.
-    FileUtils.cp("#{CREW_CONFIG_PATH}/device.json.tmp", File.join(CREW_CONFIG_PATH, 'device.json')) && FileUtils.rm("#{CREW_CONFIG_PATH}/device.json.tmp")
   end
 
   def self.libtoolize(library, lib_pkg_name = nil, install_dest: false)
@@ -154,13 +152,23 @@ class ConvenienceFunctions
     patch_array.each do |patch_item|
       abort 'Patch array is not valid!'.lightred unless patch_item[0]
       abort 'Patch sha256sum does not exist!'.lightred unless patch_item[1]
-      # Remove special characters from url when determining patch_file
-      # name.
+      abort "Patch directory '#{patch_item[2]}' does not exist!".lightred if patch_item[2] && !Dir.exist?(patch_item[2])
+      # Remove special characters from url when determining patch_file name.
       patch_file = File.basename(patch_item[0]).gsub(/[^\w\s]/, '')
-      puts "downloader #{patch_item[0]}, #{patch_item[1]}, #{patch_file}" if CREW_VERBOSE
-      downloader patch_item[0], patch_item[1], patch_file
-      puts "patch -Np1 -i #{patch_file}" if CREW_VERBOSE
-      system "patch -Np1 -i #{patch_file}"
+      if CREW_VERBOSE
+        puts "downloader #{patch_item[0]}, #{patch_item[1]}, #{patch_file}"
+        puts "#{patch_file} downloaded to #{patch_item[2]}." if patch_item[2]
+        puts "patch -Np1 -i #{patch_file}"
+      end
+      if patch_item[2]
+        Dir.chdir patch_item[2] do
+          downloader patch_item[0], patch_item[1], patch_file
+          system "patch -Np1 -i #{patch_file}"
+        end
+      else
+        downloader patch_item[0], patch_item[1], patch_file
+        system "patch -Np1 -i #{patch_file}"
+      end
     end
   end
 

@@ -1,4 +1,4 @@
-# Total size: 53492
+# Total size: 20071
 /usr/local/bin/xe
-/usr/local/share/man/man1/xe.1.gz
+/usr/local/share/man/man1/xe.1.zst
 /usr/local/share/zsh/site-functions/_xe

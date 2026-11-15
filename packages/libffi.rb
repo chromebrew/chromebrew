@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Libffi < Autotools
   description 'The libffi library provides a portable, high level programming interface to various calling conventions.'
   homepage 'https://sourceware.org/libffi/'
-  version '3.6.0'
+  version '3.8.1'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/libffi/libffi.git'
@@ -11,10 +11,10 @@ class Libffi < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b589b48f32b37d7199792fe7a9f971dab5c122bfbd3205bea74fa985d1c6aa1d',
-     armv7l: 'b589b48f32b37d7199792fe7a9f971dab5c122bfbd3205bea74fa985d1c6aa1d',
-       i686: 'a2e22f40a76b66c726578b1f147f34bae2bf49b0e4377c650dc7c1127a9681b5',
-     x86_64: 'ce86abb76761fc8fc946ec8f172315ba697a1a96b4f6df897224328436d8c5ab'
+    aarch64: 'e7040708b0ad0fb904b363d1213e49d121e7427e541ce1c5dc0922a01235cdf9',
+     armv7l: 'e7040708b0ad0fb904b363d1213e49d121e7427e541ce1c5dc0922a01235cdf9',
+       i686: 'bb8450d7a8197bcf4562fcc9850a3712870bb8afcde7672212062eaa35cb97e9',
+     x86_64: '7f89b96c9bde6accaab73839bf44fca94581265ef44bd0c1b36d6cfd6278bb56'
   })
 
   depends_on 'gcc_lib' => :library

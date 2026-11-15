@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Yt_dlp < Pip
   description 'A fork of youtube-dl with additional features and patches'
   homepage 'https://github.com/yt-dlp/yt-dlp'
-  version "2026.7.4-#{CREW_PY_VER}"
+  version "2026.10.26-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0c4fbbceafefd6c9ddefb57983c3b5517e72aac79830bec41aeb427837c10355',
-     armv7l: '0c4fbbceafefd6c9ddefb57983c3b5517e72aac79830bec41aeb427837c10355',
-       i686: '671ced7b2a057535356519def850de69a29cdd03f23dfd3de8fefb414852952a',
-     x86_64: '3d38238f05f2ec2a8b4ec929c0e7388bcadd91dfaf9a72bf8e6b129465a68f39'
+    aarch64: '66f90cda923f192777f581c8f15fcf59739330c784ae854e9d03cd27b8a7f33b',
+     armv7l: '66f90cda923f192777f581c8f15fcf59739330c784ae854e9d03cd27b8a7f33b',
+       i686: '53b21ea4021d296764ed19862e385a87cb49199e73a763f90653fe9ceda9210d',
+     x86_64: 'f130ed67734fec0cfbffd4ca90b4c1c99e883f23f0381aca79b044127c7d1fcb'
   })
 
   depends_on 'py3_brotlicffi'

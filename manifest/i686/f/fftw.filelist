@@ -1,4 +1,4 @@
-# Total size: 8691642
+# Total size: 8931133
 /usr/local/bin/fftw-wisdom
 /usr/local/bin/fftw-wisdom-to-conf
 /usr/local/include/fftw3.f
@@ -13,6 +13,11 @@
 /usr/local/lib/libfftw3.so
 /usr/local/lib/libfftw3.so.3
 /usr/local/lib/libfftw3.so.3.7.11
+/usr/local/lib/libfftw3_threads.a
+/usr/local/lib/libfftw3_threads.la
+/usr/local/lib/libfftw3_threads.so
+/usr/local/lib/libfftw3_threads.so.3
+/usr/local/lib/libfftw3_threads.so.3.7.11
 /usr/local/lib/pkgconfig/fftw3.pc
 /usr/local/share/info/fftw3.info-1.zst
 /usr/local/share/info/fftw3.info-2.zst

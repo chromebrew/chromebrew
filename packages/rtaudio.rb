@@ -1,41 +1,27 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Rtaudio < Package
+class Rtaudio < Autotools
   description 'RtAudio is a set of C++ classes that provide a common API (Application Programming Interface) for realtime audio input/output'
-  homepage 'http://www.music.mcgill.ca/~gary/rtaudio/'
-  version '5.1.0'
+  homepage 'https://github.com/thestk/rtaudio'
+  version '6.0.1'
   license 'MIT'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'http://www.music.mcgill.ca/~gary/rtaudio/release/rtaudio-5.1.0.tar.gz'
-  source_sha256 'ff138b2b6ed2b700b04b406be718df213052d4c952190280cf4e2fab4b61fe09'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/thestk/rtaudio.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '41cb81dbff61759c229705a92299c6e53329c8958d4d6381ea9d450750896e5d',
-     armv7l: '41cb81dbff61759c229705a92299c6e53329c8958d4d6381ea9d450750896e5d',
-     x86_64: '78bd93817203d87bfe03d8d203b8f0ac792339b5214b08bc1ccbcc842499793b'
+    aarch64: '770a125f507cfb03c6244c9d35b2b9a2479ba28364482d8c025abe04ec655fc9',
+     armv7l: '770a125f507cfb03c6244c9d35b2b9a2479ba28364482d8c025abe04ec655fc9',
+     x86_64: 'cb1d1eb3e165c7cb76c6eef9abc62974add54378459e797c0de578a76f4fcf23'
   })
 
-  depends_on 'alsa_lib'
-  depends_on 'jack'
-  depends_on 'pulseaudio'
+  depends_on 'alsa_lib' => :library
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'jack' => :library
+  depends_on 'pulseaudio' => :library
 
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-maintainer-mode',
-           '--with-alsa',
-           '--with-jack',
-           '--with-pulse'
-    system 'make'
-  end
-
-  # def self.check
-  #  system 'make', 'check'
-  # end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  autotools_configure_options '--with-alsa --with-jack --with-pulse'
 end

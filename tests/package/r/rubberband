@@ -1,0 +1,3 @@
+#!/bin/bash
+rubberband -h 2>&1 | head
+rubberband -V 2>&1

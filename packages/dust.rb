@@ -3,7 +3,7 @@ require 'package'
 class Dust < Package
   description 'A more intuitive version of du in rust'
   homepage 'https://github.com/bootandy/dust'
-  version '1.2.4'
+  version '1.2.7'
   license 'Apache-2.0'
   compatibility 'all'
   source_url({
@@ -13,10 +13,10 @@ class Dust < Package
      x86_64: "https://github.com/bootandy/dust/releases/download/v#{version}/dust-v#{version}-x86_64-unknown-linux-gnu.tar.gz"
   })
   source_sha256({
-    aarch64: '6418bb07a767c3cc37cd5730c308e62f780d82a2adff3ec1f3469c5cf032b084',
-     armv7l: '6418bb07a767c3cc37cd5730c308e62f780d82a2adff3ec1f3469c5cf032b084',
-       i686: 'a8387c884b1a7785cc0c5ebe03407389e00a393c16b46e3fac860e9a70707d34',
-     x86_64: '707cfdbfb9d2dc536f8c3853815bbe98a01012f2772463835edae06816551160'
+    aarch64: '1ffe45f79df92af43186591814d8e3169eb61b3c0aed163d2f47786111178fdf',
+     armv7l: '1ffe45f79df92af43186591814d8e3169eb61b3c0aed163d2f47786111178fdf',
+       i686: 'e7f99e414634c923e1f3f441ab257be4a9bb065839ea1fbfee17750da23dd670',
+     x86_64: 'ec3bf712c660dcaa5578b996741f5cca36b30c021c1e4b49352b11137a95a96e'
   })
 
   no_compile_needed

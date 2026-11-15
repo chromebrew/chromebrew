@@ -3,18 +3,18 @@ require 'package'
 class Perl_mozilla_ca < Package
   description "Mozilla::CA - Mozilla's CA cert bundle in PEM format"
   homepage 'https://metacpan.org/pod/Mozilla::CA'
-  version "20221114-#{CREW_PERL_VER}"
+  version "20261105-#{CREW_PERL_VER}"
   license 'GPL2'
   compatibility 'all'
-  source_url 'https://cpan.metacpan.org/authors/id/H/HA/HAARG/Mozilla-CA-20221114.tar.gz'
-  source_sha256 '701bea67be670add5a102f9f8c879402b4983096b1cb0e20dd47d52d7a10666b'
+  source_url "https://cpan.metacpan.org/authors/id/L/LW/LWP/Mozilla-CA-#{version.split('-')[0]}.tar.gz"
+  source_sha256 'b29dfd05d0f0038091fab9d7a184e8e476bc24fb5de5963cd23d21d262e0be10'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3484f9a0f64d1aa583e03bbb08d21697e4e120d4fb649ec5dd2650401d21228b',
-     armv7l: '3484f9a0f64d1aa583e03bbb08d21697e4e120d4fb649ec5dd2650401d21228b',
-       i686: 'e042ac8a5558913be55df3b0444b33443b8f12c2d5ce10949e491fe4633554e5',
-     x86_64: '55fc94a79a03820911dcd7185752b264bc9df6e1f13ca20ed66229bc8202d910'
+    aarch64: 'f9bf68cfed8868dc5844ca51e102e6938d3c66591639ace40f3de852dcfe1182',
+     armv7l: 'f9bf68cfed8868dc5844ca51e102e6938d3c66591639ace40f3de852dcfe1182',
+       i686: '37c6e5bfa1f75b80ed378a2329ce2d3a634471998310dbeaaf62c6fd849ff1fd',
+     x86_64: '9496c526be085c72d779e8bdb53e5f29ac05d32abfdc820f482e7d99430efab0'
   })
 
   def self.prebuild

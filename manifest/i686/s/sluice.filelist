@@ -1,3 +1,5 @@
-# Total size: 40156
+# Total size: 33183
 /usr/local/bin/sluice
-/usr/local/share/man/man1/sluice.1.gz
+/usr/local/etc/env.d/10-sluice
+/usr/local/share/bash-completion/completions/sluice
+/usr/local/share/man/man1/sluice.1.zst

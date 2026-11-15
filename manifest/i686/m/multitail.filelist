@@ -1,12 +1,12 @@
-# Total size: 379780
+# Total size: 354827
 /usr/local/bin/multitail
 /usr/local/etc/multitail.conf.new
-/usr/local/etc/multitail/conversion-scripts/colors-example.pl
-/usr/local/etc/multitail/conversion-scripts/colors-example.sh
-/usr/local/etc/multitail/conversion-scripts/convert-geoip.pl
-/usr/local/etc/multitail/conversion-scripts/convert-simple.pl
-/usr/local/share/doc/multitail-7.1.5/LICENSE
-/usr/local/share/doc/multitail-7.1.5/README.md
-/usr/local/share/doc/multitail-7.1.5/manual.html
-/usr/local/share/doc/multitail-7.1.5/thanks.txt
+/usr/local/share/doc/multitail/LICENSE
+/usr/local/share/doc/multitail/README.md
+/usr/local/share/doc/multitail/conversion-scripts/colors-example.pl
+/usr/local/share/doc/multitail/conversion-scripts/colors-example.sh
+/usr/local/share/doc/multitail/conversion-scripts/convert-geoip.pl
+/usr/local/share/doc/multitail/conversion-scripts/convert-simple.pl
+/usr/local/share/doc/multitail/manual.html
+/usr/local/share/doc/multitail/thanks.txt
 /usr/local/share/man/man1/multitail.1.zst

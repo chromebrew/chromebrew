@@ -3,7 +3,7 @@ require 'package'
 class Netpbm < Package
   description 'Netpbm is a toolkit for manipulation of graphic images, including conversion of images between a variety of different formats.'
   homepage 'https://netpbm.sourceforge.net/'
-  version '10.86.48'
+  version '10.86.51'
   license 'GPL-2'
   compatibility 'all'
   source_url "https://downloads.sourceforge.net/project/netpbm/super_stable/#{version}/netpbm-#{version}.tgz"
@@ -11,13 +11,14 @@ class Netpbm < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '05f9b56a49c5c0464f9fc75c92dec98ea9c621259d29c7a9e8da02565aaf97ce',
-     armv7l: '05f9b56a49c5c0464f9fc75c92dec98ea9c621259d29c7a9e8da02565aaf97ce',
-       i686: '85c1926bf1068365a062fb50fc2e5cb937be4a7693c7e09caf0c66d2e20731af',
-     x86_64: '340a481d769de24609e4b01b7a44686afd4b2afe4ff531e594a8102b7c32ea23'
+    aarch64: '676b83462a3464f58e8a26ed7d32206950ce54d4ce00ce08bc604e1c291a448f',
+     armv7l: '676b83462a3464f58e8a26ed7d32206950ce54d4ce00ce08bc604e1c291a448f',
+       i686: 'fafac86d9a275f6491f4f3d30a77031b3294521703a76b39c758242f01762544',
+     x86_64: '6e6615039412d4b6e148dc4977f02cb5adc49b8e94abd7d3cecc25b2085028c8'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'libjpeg_turbo' => :executable
   depends_on 'libpng' => :executable
   depends_on 'libtiff' => :executable

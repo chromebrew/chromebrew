@@ -1,0 +1,3 @@
+#!/bin/bash
+keybase h | head
+keybase version

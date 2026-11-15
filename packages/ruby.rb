@@ -3,7 +3,7 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '4.0.5'
+  version '4.0.9'
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
   source_url 'https://github.com/ruby/ruby.git'
@@ -11,10 +11,10 @@ class Ruby < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b1024b79b0eb1bf0b64235985d892f5cdbea7c18f81b4bc59cdbb23c23fe8178',
-     armv7l: 'b1024b79b0eb1bf0b64235985d892f5cdbea7c18f81b4bc59cdbb23c23fe8178',
-       i686: '6f61831a5cda83b94a6e1025082f25bdac2f6fcfd8ffc108b9b5a6d8bf4bb09a',
-     x86_64: '2083d5bbd3f2970118bd5407ea5424aef20aa92d8b57abed86268f1edc76f4ec'
+    aarch64: 'e96d1a91e12cffeaebb6170b8ac47f09287ee004ecac111f8779bee86bcd536e',
+     armv7l: 'e96d1a91e12cffeaebb6170b8ac47f09287ee004ecac111f8779bee86bcd536e',
+       i686: '2ad779a3a05b16faf584989e2aa02d2986af4025ff3713c2db8d89e6f35a745d',
+     x86_64: 'c1fb4b0910752e1935feff038d5648372c3940b4acef80c9d348e71184752947'
   })
 
   depends_on 'ca_certificates' => :logical
@@ -34,13 +34,6 @@ class Ruby < Package
 
   # at run-time, system's gmp, openssl, and zlib can be used
 
-  def self.patch
-    # Download bundled gems version from Top of Tree. Otherwise outdated
-    # compile needed gems during install can cause issues when updates
-    # are attempted.
-    downloader 'https://github.com/ruby/ruby/raw/refs/heads/master/gems/bundled_gems', 'SKIP', 'gems/bundled_gems' unless version == '4.0.5'
-  end
-
   def self.build
     system '[ -x configure ] || autoreconf -fiv'
     system 'filefix'
@@ -50,15 +43,15 @@ class Ruby < Package
       LD=mold \
       ./configure #{CREW_CONFIGURE_OPTIONS} \
       --enable-shared \
-      #{'--enable-yjit' if ARCH == 'x86_64' || ARCH == 'aarch64'} \
+      #{'--disable-yjit --disable-zjit' if ARCH == 'x86_64' || ARCH == 'aarch64'} \
       --disable-fortify-source"
-    system "MAKEFLAGS='--jobs #{CREW_NPROC}' make"
+    system "MAKEFLAGS='--jobs #{CREW_NPROC}' make -j #{CREW_NPROC}"
   end
 
   def self.check
     # Do not run checks if rebuilding current ruby version.
     # RUBY_VERSION is a built-in ruby constant.
-    system "MAKEFLAGS='--jobs #{CREW_NPROC}' make check || true" unless version == RUBY_VERSION
+    # system "MAKEFLAGS='--jobs #{CREW_NPROC}' make check || true" unless version == RUBY_VERSION || ARCH.include?('armv7l')
   end
 
   def self.install

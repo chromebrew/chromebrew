@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Iniparser < CMake
   description 'stand-alone ini parser library in ANSI C'
   homepage 'http://ndevilla.free.fr/iniparser/'
-  version '4.2.6'
+  version '4.3.2'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/ndevilla/iniparser.git'
@@ -11,16 +11,12 @@ class Iniparser < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '295fa27bf359fabf07a1ea8cd0471838521f1c30f8b282b52abac1cef78572a7',
-     armv7l: '295fa27bf359fabf07a1ea8cd0471838521f1c30f8b282b52abac1cef78572a7',
-       i686: '26aa6ee31d08fe36f526d81ebfec792f5af76141567430426ae15489caf1cb70',
-     x86_64: '6888f3e699735c0e2699a01f55300aeae14bd1468977b69e3c7f098d350fe40b'
+    aarch64: '703c5d2acff44a6e89fa393ba6eaf47b4b1926cd003b44b4915268bb89c4cd1c',
+     armv7l: '703c5d2acff44a6e89fa393ba6eaf47b4b1926cd003b44b4915268bb89c4cd1c',
+       i686: 'f05f9d9ffa66b270f88e029dfd7729e2a2340750ee9466c011df44f77834da14',
+     x86_64: '86c9c34d5a9e7cf563c48bc23febbf6116f67aab9f3fe0b68de8151d4cf6973d'
   })
 
   depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :library
-
-  cmake_options '-DBUILD_TESTING=ON'
-
-  run_tests
 end

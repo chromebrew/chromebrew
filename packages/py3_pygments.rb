@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_pygments < Pip
   description 'Python Syntax Highlighter'
   homepage 'https://pygments.org/'
-  version "2.20.0-#{CREW_PY_VER}"
+  version "2.21.0-#{CREW_PY_VER}"
   license 'BSD-2'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9fd1bf90d3111d0d385cbaf7d5c8132096699ffd6ebbe7c2e1ba6641f1f8842d',
-     armv7l: '9fd1bf90d3111d0d385cbaf7d5c8132096699ffd6ebbe7c2e1ba6641f1f8842d',
-       i686: '7de4f9d17baeae1bbc51c20c6f4746a4c3a53f893f385ea525a4972cb5ec54a5',
-     x86_64: 'fe427836a5c6ce2590e71bbeb48a80e174b82eb60a90d27fe90390c091171bf3'
+    aarch64: 'c92a8f2dd6ecc6c595cd26c76f6c3c1702273cbcf0a9424884320d395ffa18c7',
+     armv7l: 'c92a8f2dd6ecc6c595cd26c76f6c3c1702273cbcf0a9424884320d395ffa18c7',
+       i686: 'd1ae456bb5fb3f5061cff0e302a3490c103a56c499056f31947e0ae90567ba58',
+     x86_64: '73480c23c09e08429d9f6767eee0bfa1fadf5bb6d299964c362429c62d42e3e4'
   })
 
   depends_on 'python3' => :logical

@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_build < Pip
   description 'Python build is a simple, correct PEP 517 build frontend.'
   homepage 'https://pypa-build.readthedocs.io/'
-  version "1.5.0-#{CREW_PY_VER}"
+  version "1.6.1-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'dc45af60224c72fb6ec9dcf311f749bf14948c86f112d4bfe20a6167118bdb52',
-     armv7l: 'dc45af60224c72fb6ec9dcf311f749bf14948c86f112d4bfe20a6167118bdb52',
-       i686: '4be83f61774c7767d6c3d032b1ba8f261a2fa8ce311cd8e20900d660d102ed5f',
-     x86_64: 'a410e60de28f68741c7875c85cc83885c286d23e2f23a1e125e59f22a08f157b'
+    aarch64: 'eb704f70f8587f3c7bf43e879f483fc9e9a410e451367f8c30392b66cdbed652',
+     armv7l: 'eb704f70f8587f3c7bf43e879f483fc9e9a410e451367f8c30392b66cdbed652',
+       i686: '50b61ae4594c2eb9bc680876bc22665ab4c66ca44ab9349a0433ad814e144bce',
+     x86_64: 'e0d18c4e3ff24c9ecfa96f53ded0151a1605277f5ee0b58cc6c4204b644f978e'
   })
 
   depends_on 'py3_packaging'

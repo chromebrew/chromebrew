@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Faad2 < CMake
   description 'Freeware Advanced Audio (AAC) Decoder'
   homepage 'https://sourceforge.net/projects/faac/'
-  version '2.11.2'
+  version '2.11.4'
   license 'GPL2'
   compatibility 'all'
   source_url 'https://github.com/knik0/faad2.git'
@@ -11,11 +11,12 @@ class Faad2 < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '335da273b197cf7ebeaa1486c13cf5bd5f75fdd195cd980f2307fdda2b76ba08',
-     armv7l: '335da273b197cf7ebeaa1486c13cf5bd5f75fdd195cd980f2307fdda2b76ba08',
-       i686: 'b45016587d82ce30406358450df33cbf98b9ef6ed563df47df40a44ac23823f6',
-     x86_64: '1de0ae79020d437d94e84415434799bcf5f3d5bd72952f709dc5a352c895482e'
+    aarch64: '65816cd95204474f7f6251b67253108627013734972385c2c9899bbaf7b2fa3a',
+     armv7l: '65816cd95204474f7f6251b67253108627013734972385c2c9899bbaf7b2fa3a',
+       i686: '77d2cf3e2b995f338d29a76ac2ffb96ea896ca82d8116c428197509d8c0bd594',
+     x86_64: '26ff397835bb20ca4e196f15e47f71d008ce343a415746781ae35f04ee03875f'
   })
 
-  depends_on 'glibc'
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 end

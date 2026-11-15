@@ -3,17 +3,17 @@ require 'buildsystems/ruby'
 class Ruby_nokogiri < RUBY
   description 'Nokogiri (鋸) makes it easy and painless to work with XML and HTML from Ruby.'
   homepage 'https://nokogiri.org'
-  version "1.19.4-#{CREW_RUBY_VER}"
+  version "1.19.7-#{CREW_RUBY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'gem'
 
   binary_sha256({
-    aarch64: '1a6d0e2f3417875befbd2a222a3ba7922603f2d2b6ed116e1d4ec26605b220f8',
-     armv7l: '1a6d0e2f3417875befbd2a222a3ba7922603f2d2b6ed116e1d4ec26605b220f8',
-       i686: '621fa5fe06255d8b8940c342053d5f2717b96a78f71b4e6f3d4c68941721ba63',
-     x86_64: '9c37e23427179b71ba38488d07caa039c93cb63256f89c2bb390dc4f77acadfc'
+    aarch64: '8fb029d852167e8f4d9aa954892de4260b43dc96a090f5b0ac5a734fb43b7fdb',
+     armv7l: '8fb029d852167e8f4d9aa954892de4260b43dc96a090f5b0ac5a734fb43b7fdb',
+       i686: '8d800192273998626d8ba2ee2e636859760e594496e7d09a5a02d829532bf2ff',
+     x86_64: 'a5fd2db6e6b949789eeff13ee912189d4dfeeb3eebf1a8b9e522722e9046bc38'
   })
 
   depends_on 'glibc' => :library

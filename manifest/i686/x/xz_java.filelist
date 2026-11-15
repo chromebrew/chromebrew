@@ -1,0 +1,13 @@
+# Total size: 180785
+/usr/local/bin/lzma-dec
+/usr/local/bin/lzma-enc
+/usr/local/bin/xz-dec
+/usr/local/bin/xz-enc
+/usr/local/share/xz-java/LZMADecDemo.jar
+/usr/local/share/xz-java/LZMAEncDemo.jar
+/usr/local/share/xz-java/TestAllocSpeed.jar
+/usr/local/share/xz-java/XZDecDemo.jar
+/usr/local/share/xz-java/XZEncDemo.jar
+/usr/local/share/xz-java/XZSeekDecDemo.jar
+/usr/local/share/xz-java/XZSeekEncDemo.jar
+/usr/local/share/xz-java/xz.jar

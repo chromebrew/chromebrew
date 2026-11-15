@@ -1,29 +1,27 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Nsgenbind < Package
+class Nsgenbind < Autotools
   description 'Tool to generate javascript to dom bindings from w3c webid files'
   homepage 'https://www.netsurf-browser.org'
-  version '0.8'
+  version '0.9'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://download.netsurf-browser.org/libs/releases/nsgenbind-0.8-src.tar.gz'
-  source_sha256 '4d8d53ad000ada712772365e6a73eb8fc5ce97584af9c865ac5b26a2187f1cb3'
-  binary_compression 'tar.xz'
+  source_url "https://download.netsurf-browser.org/libs/releases/nsgenbind-#{version}-src.tar.gz"
+  source_sha256 '232ce0f66cbc2c3eed6288ae26de2c567bbfbbc01d8b0f6fc6c1c1649d4b385d'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '51a88fadaf90448c2ecac5213230cc0b18909832635e80d3eeb7ed00b3126e66',
-     armv7l: '51a88fadaf90448c2ecac5213230cc0b18909832635e80d3eeb7ed00b3126e66',
-       i686: '75b76a23ed86c489ac54d4aee6ecfcbc88404fd229d0e60846a6c274256972d2',
-     x86_64: '5f288d1f5ec7c781e2a7a326d9c618e6af60e6d5b643388f2349b30a641d951a'
+    aarch64: '7688c6172d4548e03751e38d9e05d097d9abef09d9b946a6baf7e6e1cbe93e5b',
+     armv7l: '7688c6172d4548e03751e38d9e05d097d9abef09d9b946a6baf7e6e1cbe93e5b',
+       i686: '059a63b0bed8ec8f4daad79087a74b8bc3f97ca8fe2de9b4786fb229c81e988e',
+     x86_64: 'b32b91aac310ebb64dcef8d0572e8dab38922880b759fe0d8411707006a07e66'
   })
 
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'netsurf_buildsystem' => :build
 
-  def self.build
-    system "make FLEX=flex BISON=bison PREFIX=#{CREW_PREFIX}"
-  end
-
-  def self.install
-    system "make install PREFIX=#{CREW_PREFIX} DESTDIR=#{CREW_DEST_DIR}"
-  end
+  autotools_skip_configure
+  autotools_make_options "PREFIX=#{CREW_PREFIX} FLEX=flex BISON=bison"
+  autotools_install_options "PREFIX=#{CREW_PREFIX} FLEX=flex BISON=bison"
 end

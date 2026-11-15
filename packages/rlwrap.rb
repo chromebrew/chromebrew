@@ -1,33 +1,32 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Rlwrap < Package
+class Rlwrap < Autotools
   description 'A readline wrapper'
   homepage 'https://github.com/hanslub42/rlwrap'
-  version '0.43'
+  version '0.48'
   license 'GPL-2+'
   compatibility 'all'
-  source_url 'https://github.com/hanslub42/rlwrap/archive/v0.43.tar.gz'
-  source_sha256 '29e5a850fbe4753f353b0734e46ec0da043621bdcf7b52a89b77517f3941aade'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/hanslub42/rlwrap.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bc4979020c1fe51241c491c674283c4f0a0b51521baca9b82553d69b6e984855',
-     armv7l: 'bc4979020c1fe51241c491c674283c4f0a0b51521baca9b82553d69b6e984855',
-       i686: '96078b16189de486043d84e1094b7a63a30d2e890662b414c548a4ee136fb58d',
-     x86_64: '288e6db9c583ec36d275a95be28daba69e254ae30d7cd5649214bf1df2b4540e'
+    aarch64: '4da021f1ebf34151603c6427e62fed5ac0a4fb11b5f784d767381872d6f5676a',
+     armv7l: '4da021f1ebf34151603c6427e62fed5ac0a4fb11b5f784d767381872d6f5676a',
+       i686: '3b27998dd713328b832065e21993a410d16caeef8914eb70dc3e0e616b72f888',
+     x86_64: '4266e7bc1db04af3c3b207d3193539ae562d9491be7a2c9e3c06dae2aaf84e35'
   })
 
-  depends_on 'autoconf'
-  depends_on 'automake'
-  depends_on 'readline'
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'libptytty' => :executable
+  depends_on 'ncurses' => :executable
+  depends_on 'readline' => :executable
 
-  def self.build
-    system 'autoreconf --install'
-    system "./configure --prefix=#{CREW_PREFIX}"
-    system 'make'
-  end
+  autotools_make_options "CFLAGS='-I#{CREW_PREFIX}/include/ncursesw'"
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  def self.patch
+    # Fix error: implicit declaration of function ‘tgetent’; did you mean ‘getenv’?
+    system "sed -i '22i#include <term.h>' src/term.c"
   end
 end

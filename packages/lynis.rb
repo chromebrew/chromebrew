@@ -3,32 +3,26 @@ require 'package'
 class Lynis < Package
   description 'Lynis is a security auditing tool for UNIX derivatives like Linux, macOS, BSD, Solaris, AIX, and others.'
   homepage 'https://cisofy.com/download/lynis/'
-  version '3.0.1'
+  version '3.1.7'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://downloads.cisofy.com/lynis/lynis-3.0.1.tar.gz'
-  source_sha256 '8381b62e11a5e0ead417bcfd92845adab7dc3b9d06271c852a1166cb65a61aff'
-  binary_compression 'tar.xz'
+  source_url "https://downloads.cisofy.com/lynis/lynis-#{version}.tar.gz"
+  source_sha256 'b5314a07fd85fa3ffc7da57b508f0108ec3280d84e4af823f805d95cbbc2428c'
 
-  binary_sha256({
-    aarch64: '4172f481e0e7fec75b0c5e7552a3cd6f22a4f6aed883bf8c08d3670216617f6b',
-     armv7l: '4172f481e0e7fec75b0c5e7552a3cd6f22a4f6aed883bf8c08d3670216617f6b',
-       i686: '9e3335b473b1b978c5c237a5866471220bf7024287c44735249be7a2d9f2094d',
-     x86_64: '73aa5996210bb14aca743a9a58bb8169fb377c1e9b19ac1e542484b11a86f260'
-  })
+  no_compile_needed
+
+  def self.build
+    File.write 'lynis.sh', <<~EOF
+      #!/bin/bash
+      cd #{CREW_PREFIX}/share/lynis
+      ./lynis "$@"
+    EOF
+  end
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/man/man8"
+    FileUtils.install 'lynis.sh', "#{CREW_DEST_PREFIX}/bin/lynis", mode: 0o755
+    FileUtils.install 'lynis.8', "#{CREW_DEST_MAN_PREFIX}/man8/lynis.8", mode: 0o644
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/lynis"
-    system 'gzip -9 lynis.8'
-    FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/share/lynis"
-    system "echo '#!/bin/bash' > lynis"
-    system "echo 'PWD=\$(pwd)' >> lynis"
-    system "echo 'cd #{CREW_PREFIX}/share/lynis' >> lynis"
-    system "echo './lynis \"\$@\"' >> lynis"
-    system "echo 'cd \$PWD' >> lynis"
-    system "install -Dm755 lynis #{CREW_DEST_PREFIX}/bin/lynis"
-    system "install -Dm644 lynis.8.gz #{CREW_DEST_PREFIX}/man/man8/lynis.8.gz"
+    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/lynis"
   end
 end

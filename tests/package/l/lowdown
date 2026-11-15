@@ -1,0 +1,5 @@
+#!/bin/bash
+lowdown -h 2>&1
+lowdown --version
+lowdown-diff -h 2>&1
+lowdown-diff --version

@@ -1,4 +1,4 @@
-# Total size: 6899622
+# Total size: 6919819
 /usr/local/include/libical-glib/i-cal-array.h
 /usr/local/include/libical-glib/i-cal-attach.h
 /usr/local/include/libical-glib/i-cal-comp-iter.h
@@ -50,6 +50,7 @@
 /usr/local/include/libical-glib/i-cal-vcard-tz.h
 /usr/local/include/libical-glib/i-cal-vcard-value.h
 /usr/local/include/libical-glib/libical-glib.h
+/usr/local/include/libical-glib/libical_glib_export.h
 /usr/local/include/libical/ical.h
 /usr/local/include/libical/icalarray.h
 /usr/local/include/libical/icalattach.h
@@ -94,9 +95,12 @@
 /usr/local/include/libical/icalvalue.h
 /usr/local/include/libical/icalvalue_cxx.hpp
 /usr/local/include/libical/icalvcal.h
+/usr/local/include/libical/icalversion.h
 /usr/local/include/libical/icptrholder_cxx.hpp
 /usr/local/include/libical/libical_deprecated.h
+/usr/local/include/libical/libical_ical_cxx_export.h
 /usr/local/include/libical/libical_ical_export.h
+/usr/local/include/libical/libical_icalss_cxx_export.h
 /usr/local/include/libical/libical_icalss_export.h
 /usr/local/include/libical/libical_sentinel.h
 /usr/local/include/libical/libical_vcal_export.h
@@ -129,25 +133,25 @@
 /usr/local/lib64/girepository-1.0/ICalGLib-4.0.typelib
 /usr/local/lib64/libical-glib.so
 /usr/local/lib64/libical-glib.so.4.0
-/usr/local/lib64/libical-glib.so.4.0.3
+/usr/local/lib64/libical-glib.so.4.0.8
 /usr/local/lib64/libical.so
 /usr/local/lib64/libical.so.4.0
-/usr/local/lib64/libical.so.4.0.3
+/usr/local/lib64/libical.so.4.0.8
 /usr/local/lib64/libical_cxx.so
 /usr/local/lib64/libical_cxx.so.4.0
-/usr/local/lib64/libical_cxx.so.4.0.3
+/usr/local/lib64/libical_cxx.so.4.0.8
 /usr/local/lib64/libicalss.so
 /usr/local/lib64/libicalss.so.4.0
-/usr/local/lib64/libicalss.so.4.0.3
+/usr/local/lib64/libicalss.so.4.0.8
 /usr/local/lib64/libicalss_cxx.so
 /usr/local/lib64/libicalss_cxx.so.4.0
-/usr/local/lib64/libicalss_cxx.so.4.0.3
+/usr/local/lib64/libicalss_cxx.so.4.0.8
 /usr/local/lib64/libicalvcal.so
 /usr/local/lib64/libicalvcal.so.4.0
-/usr/local/lib64/libicalvcal.so.4.0.3
+/usr/local/lib64/libicalvcal.so.4.0.8
 /usr/local/lib64/libicalvcard.so
 /usr/local/lib64/libicalvcard.so.4.0
-/usr/local/lib64/libicalvcard.so.4.0.3
+/usr/local/lib64/libicalvcard.so.4.0.8
 /usr/local/lib64/pkgconfig/libical-glib.pc
 /usr/local/lib64/pkgconfig/libical.pc
 /usr/local/lib64/pkgconfig/libicalss.pc

@@ -1,31 +1,38 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Pdfgrep < Package
+class Pdfgrep < Autotools
   description 'a commandline utility to search text in PDF files'
   homepage 'https://pdfgrep.org/'
-  version '2.0.1-1'
+  version '2.2.0'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://pdfgrep.org/download/pdfgrep-2.0.1.tar.gz'
-  source_sha256 '0370d744b3072d47383dbed2cb9c8b0b64b83c084da5a8961f8d4bc7669e941e'
-  binary_compression 'tar.xz'
+  source_url "https://pdfgrep.org/download/pdfgrep-#{version}.tar.gz"
+  source_sha256 '0661e531e4c0ef097959aa1c9773796585db39c72c84a02ff87d2c3637c620cb'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0614122a56626fbc83ea82f36cacbb6fca7e5912cc0ff9b5fc343e5c67667da9',
-     armv7l: '0614122a56626fbc83ea82f36cacbb6fca7e5912cc0ff9b5fc343e5c67667da9',
-     x86_64: '6bcca42a2012f845c17f3c4111d9ec104a212c809bc98ce75985f21bb03e010c'
+    aarch64: 'd472d3a763b753ab1e38f56e2548c22d0a81c9e58976f176207845d5663a3ca0',
+     armv7l: 'd472d3a763b753ab1e38f56e2548c22d0a81c9e58976f176207845d5663a3ca0',
+     x86_64: 'bcf191088d06e146b07859b42c4cb4fda4e2beca15ec4b503ef3441abc00cb22'
   })
 
-  depends_on 'libgcrypt'
-  depends_on 'pcre'
-  depends_on 'poppler'
+  depends_on 'gcc_lib' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'libgcrypt' => :executable
+  depends_on 'pcre2' => :executable
+  depends_on 'poppler' => :executable
 
-  def self.build
-    system "./configure --prefix=#{CREW_PREFIX}"
-    system 'make'
+  print_source_bashrc
+
+  autotools_build_extras do
+    File.write '10-pdfgrep', <<~EOF
+      #!/bin/bash
+      source #{CREW_PREFIX}/share/bash-completion/completions/pdfgrep
+    EOF
   end
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  autotools_install_extras do
+    FileUtils.install '10-pdfgrep', "#{CREW_DEST_PREFIX}/etc/env.d/10-pdfgrep", mode: 0o644
   end
 end

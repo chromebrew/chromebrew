@@ -1,4 +1,4 @@
-# Total size: 79435949
+# Total size: 78974519
 /usr/local/bin/R
 /usr/local/bin/Rscript
 /usr/local/lib/R/COPYING
@@ -866,6 +866,7 @@
 /usr/local/lib/R/library/lattice/doc/index.html
 /usr/local/lib/R/library/lattice/help/AnIndex
 /usr/local/lib/R/library/lattice/help/aliases.rds
+/usr/local/lib/R/library/lattice/help/figures/logo-saturated.svg
 /usr/local/lib/R/library/lattice/help/figures/logo.svg
 /usr/local/lib/R/library/lattice/help/lattice.rdb
 /usr/local/lib/R/library/lattice/help/lattice.rdx
@@ -1080,6 +1081,7 @@
 /usr/local/lib/R/library/spatial/DESCRIPTION
 /usr/local/lib/R/library/spatial/INDEX
 /usr/local/lib/R/library/spatial/Meta/Rd.rds
+/usr/local/lib/R/library/spatial/Meta/data.rds
 /usr/local/lib/R/library/spatial/Meta/features.rds
 /usr/local/lib/R/library/spatial/Meta/hsearch.rds
 /usr/local/lib/R/library/spatial/Meta/links.rds
@@ -1091,6 +1093,9 @@
 /usr/local/lib/R/library/spatial/R/spatial
 /usr/local/lib/R/library/spatial/R/spatial.rdb
 /usr/local/lib/R/library/spatial/R/spatial.rdx
+/usr/local/lib/R/library/spatial/data/Rdata.rdb
+/usr/local/lib/R/library/spatial/data/Rdata.rds
+/usr/local/lib/R/library/spatial/data/Rdata.rdx
 /usr/local/lib/R/library/spatial/help/AnIndex
 /usr/local/lib/R/library/spatial/help/aliases.rds
 /usr/local/lib/R/library/spatial/help/paths.rds
@@ -1235,6 +1240,8 @@
 /usr/local/lib/R/library/survival/doc/methods.R
 /usr/local/lib/R/library/survival/doc/methods.Rnw
 /usr/local/lib/R/library/survival/doc/methods.pdf
+/usr/local/lib/R/library/survival/doc/modelframe.Rnw
+/usr/local/lib/R/library/survival/doc/modelframe.pdf
 /usr/local/lib/R/library/survival/doc/multi.Rnw
 /usr/local/lib/R/library/survival/doc/multi.pdf
 /usr/local/lib/R/library/survival/doc/other.Rnw
@@ -1254,9 +1261,9 @@
 /usr/local/lib/R/library/survival/doc/tiedtimes.R
 /usr/local/lib/R/library/survival/doc/tiedtimes.Rnw
 /usr/local/lib/R/library/survival/doc/tiedtimes.pdf
-/usr/local/lib/R/library/survival/doc/timedep.R
-/usr/local/lib/R/library/survival/doc/timedep.Rnw
-/usr/local/lib/R/library/survival/doc/timedep.pdf
+/usr/local/lib/R/library/survival/doc/timeline.R
+/usr/local/lib/R/library/survival/doc/timeline.Rnw
+/usr/local/lib/R/library/survival/doc/timeline.pdf
 /usr/local/lib/R/library/survival/doc/validate.R
 /usr/local/lib/R/library/survival/doc/validate.Rnw
 /usr/local/lib/R/library/survival/doc/validate.pdf
@@ -1280,8 +1287,6 @@
 /usr/local/lib/R/library/tcltk/Meta/package.rds
 /usr/local/lib/R/library/tcltk/NAMESPACE
 /usr/local/lib/R/library/tcltk/R/tcltk
-/usr/local/lib/R/library/tcltk/R/tcltk.rdb
-/usr/local/lib/R/library/tcltk/R/tcltk.rdx
 /usr/local/lib/R/library/tcltk/demo/tkcanvas.R
 /usr/local/lib/R/library/tcltk/demo/tkdensity.R
 /usr/local/lib/R/library/tcltk/demo/tkfaq.R
@@ -1305,7 +1310,6 @@
 /usr/local/lib/R/library/tcltk/help/tcltk.rdx
 /usr/local/lib/R/library/tcltk/html/00Index.html
 /usr/local/lib/R/library/tcltk/html/R.css
-/usr/local/lib/R/library/tcltk/libs/tcltk.so
 /usr/local/lib/R/library/tools/DESCRIPTION
 /usr/local/lib/R/library/tools/INDEX
 /usr/local/lib/R/library/tools/Meta/Rd.rds

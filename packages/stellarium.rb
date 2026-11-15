@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Stellarium < CMake
   description 'Stellarium is a free open source planetarium for your computer.'
   homepage 'http://stellarium.org/'
-  version '25.2'
+  version '26.3'
   license 'GPL-2.0'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/Stellarium/stellarium.git'
@@ -11,24 +11,26 @@ class Stellarium < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '50af206f72e561b669898288d303852f1051bb84228f1be49d42c26f4bc1abda',
-     armv7l: '50af206f72e561b669898288d303852f1051bb84228f1be49d42c26f4bc1abda',
-     x86_64: 'e6ac5599476caa03fd3f867f7a2792149932c2f2c1fb07f5ec47aae1ccb94aed'
+    aarch64: '981378901f5fb197358bbdadc528f2e2e48038eaaf64d0aea2a8b94e9051e26b',
+     armv7l: '981378901f5fb197358bbdadc528f2e2e48038eaaf64d0aea2a8b94e9051e26b',
+     x86_64: '12ca21a30241b471607974c0be18c05f5df71a83e29fe3dbe292bcb01fddf565'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'libexiv2' # R
-  depends_on 'nlopt' # R
-  depends_on 'qt5_base' # R
-  depends_on 'qt5_charts' # R
-  depends_on 'qt5_location' # R
-  depends_on 'qt5_multimedia' # R
-  depends_on 'qt5_script' # R
-  depends_on 'qt5_serialport' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'libexiv2' => :executable
+  depends_on 'nlopt' => :executable
+  depends_on 'qt5_base' => :library
+  depends_on 'qt5_charts' => :executable
+  depends_on 'qt5_location' => :executable
+  depends_on 'qt5_multimedia' => :executable
+  depends_on 'qt5_script' => :executable
+  depends_on 'qt5_serialport' => :executable
+  depends_on 'qt5_svg' => :executable
   depends_on 'qt5_tools' => :build
   depends_on 'qt5_wayland' => :build
-  depends_on 'zlib' # R
+  depends_on 'zlib' => :executable
 
   cmake_options '-DENABLE_GPS=0'
 

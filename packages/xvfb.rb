@@ -4,16 +4,16 @@ Package.load_package("#{__dir__}/xorg_server.rb")
 class Xvfb < Package
   description 'XVfb from Xorg Server.'
   homepage 'https://gitlab.freedesktop.org/xorg/xserver'
-  version '21.1.23'
+  version '21.1.26'
   license 'BSD-3, MIT, BSD-4, MIT-with-advertising, ISC and custom'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '873e8fb0a937644fed1bb284a02462c303fd969746b6c23c15ab279abbafef2a',
-     armv7l: '873e8fb0a937644fed1bb284a02462c303fd969746b6c23c15ab279abbafef2a',
-     x86_64: 'f8936fcf50e6177a80bc285a82f7bf8b1bb52ac1c70089cc1e9487b8d1b58c14'
+    aarch64: '1d8ac3dfc0c69ca5214685f2603f82446649370a224b92daebcf9201aa42e9a8',
+     armv7l: '1d8ac3dfc0c69ca5214685f2603f82446649370a224b92daebcf9201aa42e9a8',
+     x86_64: 'f155767b3d9fd62f2c02f818402af38ff8a996057f89dc402157325fa1fc18ad'
   })
 
   depends_on 'glibc' => :executable

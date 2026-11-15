@@ -1,4 +1,4 @@
-# Total size: 1224766
+# Total size: 1274446
 /usr/local/include/log4cplus/appender.h
 /usr/local/include/log4cplus/asyncappender.h
 /usr/local/include/log4cplus/boost/deviceappender.hxx
@@ -31,6 +31,7 @@
 /usr/local/include/log4cplus/helpers/stringhelper.h
 /usr/local/include/log4cplus/helpers/thread-config.h
 /usr/local/include/log4cplus/helpers/timehelper.h
+/usr/local/include/log4cplus/helpers/win32fstream.h
 /usr/local/include/log4cplus/hierarchy.h
 /usr/local/include/log4cplus/hierarchylocker.h
 /usr/local/include/log4cplus/initializer.h
@@ -77,12 +78,12 @@
 /usr/local/include/log4cplus/version.h
 /usr/local/include/log4cplus/win32consoleappender.h
 /usr/local/include/log4cplus/win32debugappender.h
-/usr/local/lib/liblog4cplus-2.1.so.9
-/usr/local/lib/liblog4cplus-2.1.so.9.1.1
+/usr/local/lib/liblog4cplus-2.2.so.11
+/usr/local/lib/liblog4cplus-2.2.so.11.0.0
 /usr/local/lib/liblog4cplus.la
 /usr/local/lib/liblog4cplus.so
-/usr/local/lib/liblog4cplusU-2.1.so.9
-/usr/local/lib/liblog4cplusU-2.1.so.9.1.1
+/usr/local/lib/liblog4cplusU-2.2.so.11
+/usr/local/lib/liblog4cplusU-2.2.so.11.0.0
 /usr/local/lib/liblog4cplusU.la
 /usr/local/lib/liblog4cplusU.so
 /usr/local/lib/pkgconfig/log4cplus.pc

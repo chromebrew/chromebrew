@@ -1,45 +1,29 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Qhull < Package
+class Qhull < CMake
   description 'Qhull computes the convex hull, Delaunay triangulation, Voronoi diagram, halfspace intersection about a point, furthest-site Delaunay triangulation, and furthest-site Voronoi diagram.'
   homepage 'http://www.qhull.org/'
-  version '7.3.2'
+  version '8.0.2'
   license 'BSD'
   compatibility 'all'
-  source_url 'http://www.qhull.org/download/qhull-2019-src-7.3.2.tgz'
-  source_sha256 '2b7990558c363076261564f61b74db4d0d73b71869755108a469038c07dc43fb'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/qhull/qhull.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7bc54fddbe41b66894fa2c713145af000e85e761f4dbd3198ceea3d2fe2760d3',
-     armv7l: '7bc54fddbe41b66894fa2c713145af000e85e761f4dbd3198ceea3d2fe2760d3',
-       i686: '50e78beea512b3784524e7c3d844c14fb4ec5c08a0b76e61561336249c07ae22',
-     x86_64: '725d91947d86ef4b70977b56770d78284fadd6b1de54042da95e885aa5b6f215'
+    aarch64: 'd5923237e3976fef5545db839b2dfcd090a9ca2e299e0cc3e2cbae14af5ee894',
+     armv7l: 'd5923237e3976fef5545db839b2dfcd090a9ca2e299e0cc3e2cbae14af5ee894',
+       i686: 'c2665bfbcf05722e56d2c3c6907a22aea08a3473162a79164cb4eb72c7d74a12',
+     x86_64: '015344b1955d0dce18e0c77769e3a82f51ec3af9f0ea6dc853bf70ddc091f80b'
   })
 
-  def self.build
-    Dir.chdir 'build' do
-      system 'cmake',
-             '-DCMAKE_BUILD_TYPE=Release',
-             "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}",
-             '..'
-      system 'make'
-    end
-  end
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 
-  def self.check
-    Dir.chdir 'build' do
-      system 'ctest'
-    end
-  end
+  cmake_options '-DCMAKE_POLICY_VERSION_MINIMUM=3.5'
 
-  def self.install
-    Dir.chdir 'build' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-      if ARCH == 'x86_64'
-        FileUtils.mkdir CREW_DEST_LIB_PREFIX
-        FileUtils.mv Dir.glob("#{CREW_DEST_PREFIX}/lib/*"), CREW_DEST_LIB_PREFIX
-      end
-    end
+  cmake_install_extras do
+    # No cmake LIB_INSTALL_DIR option for x86_64.
+    FileUtils.mv "#{CREW_DEST_PREFIX}/lib", CREW_DEST_LIB_PREFIX if ARCH.eql?('x86_64')
   end
 end

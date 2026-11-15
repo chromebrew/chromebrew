@@ -3,7 +3,7 @@ require 'buildsystems/rust'
 class Fd < RUST
   description "A simple, fast and user-friendly alternative to 'find'."
   homepage 'https://github.com/sharkdp/fd/'
-  version '10.4.2'
+  version '10.5.2'
   license 'Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/sharkdp/fd.git'
@@ -11,10 +11,10 @@ class Fd < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f73056ff720be22f16bd56e7a0aa9a98f05f199f5555ad1316d2dbd87713433c',
-     armv7l: 'f73056ff720be22f16bd56e7a0aa9a98f05f199f5555ad1316d2dbd87713433c',
-       i686: '904f6f2e266e7a82d10e84e2d09fc17ebbe60e61d25f82414fb428ac771f1127',
-     x86_64: '66bca1a50dd1abc3f7c55607cc3a438b2c7e4a6904e3c0a1c6a2e2e457ef012f'
+    aarch64: '0cf6148453384fc320e3daa37a4a2a067eb96ce77ddf8a08ab237b989840029c',
+     armv7l: '0cf6148453384fc320e3daa37a4a2a067eb96ce77ddf8a08ab237b989840029c',
+       i686: '49dd784b8458e2d474ec94ee2bb572b81d4a9086c22568b183e7595d937a238d',
+     x86_64: '6bfa75e4c023b7e33a8681218b5c5ee9eb00930e2112693e0afd59fabd4a4197'
   })
 
   depends_on 'gcc_lib' => :executable

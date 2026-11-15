@@ -3,17 +3,17 @@ require 'buildsystems/autotools'
 class Bluefish < Autotools
   description 'Bluefish is a powerful editor targeted towards programmers and webdevelopers'
   homepage 'https://bluefish.openoffice.nl/index.html'
-  version '2.4.1'
+  version '2.4.2'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.bennewitz.com/bluefish/stable/source/bluefish-#{version}.tar.bz2"
-  source_sha256 '540b0e4f5a595fc418c41125a6a282b69f10cf01513bedde80906d25a56d0cc9'
+  source_sha256 'b2641f9ff8033719e02c519c5ddb4bdadbd7ff73ef252e9287d512c4770377c5'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '299d7fdd36464c81e4d039464bf862eccfab3f1491d97203acf1d529b685502f',
-     armv7l: '299d7fdd36464c81e4d039464bf862eccfab3f1491d97203acf1d529b685502f',
-     x86_64: '62f02eb119ea49df976fc843c3d3d74383d1d873d536c671ae3847dcd2942437'
+    aarch64: '68be867b19c7605f29adb3e2660822d6c7ccf243860d25c0a737f3fa049e1017',
+     armv7l: '68be867b19c7605f29adb3e2660822d6c7ccf243860d25c0a737f3fa049e1017',
+     x86_64: 'efed0f50f6ae07ac025f1d631fe5a04bb9bfa8efd6004df472210d156b09b34c'
   })
 
   depends_on 'at_spi2_core' => :library
@@ -22,6 +22,7 @@ class Bluefish < Autotools
   depends_on 'gdk_pixbuf' => :library
   depends_on 'glib' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gnome_icon_theme'
   depends_on 'gtk3' => :library
   depends_on 'gucharmap' => :library

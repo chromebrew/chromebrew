@@ -10,10 +10,10 @@ class Py3_jeepney < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd4790dd4cdec8b48628b5db022281b73508f70db49f0cced3fd5d53c153d2325',
-     armv7l: 'd4790dd4cdec8b48628b5db022281b73508f70db49f0cced3fd5d53c153d2325',
-       i686: '88e3f8305de34d52f0cf790a5ed17e007ab1be7dacaaca83238ff6d4210b9c71',
-     x86_64: 'a5c8ecb0b96b57984e0b9d77f35503597b56f0acc6ca649f237f7535ad1ab894'
+    aarch64: '1dd411511a07eaa98ab0ea1bcbf4a1f18f2ab6d5c9789c4acb0cf01b087f545c',
+     armv7l: '1dd411511a07eaa98ab0ea1bcbf4a1f18f2ab6d5c9789c4acb0cf01b087f545c',
+       i686: 'ed44898dbce2c2e2ff31e08e207e293a681d5ddbc7df3d7904e9403492dcc92e',
+     x86_64: '9ec8ea98790dfbeb5f53a353cdae9801b0a3471e450937198876aedf858a3fab'
   })
 
   depends_on 'python3' => :logical

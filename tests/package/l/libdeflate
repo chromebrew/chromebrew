@@ -1,0 +1,5 @@
+#!/bin/bash
+libdeflate-gzip -h | head
+libdeflate-gzip -V
+libdeflate-gunzip -h | head
+libdeflate-gunzip -V

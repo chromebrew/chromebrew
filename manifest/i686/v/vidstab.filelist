@@ -1,5 +1,6 @@
-# Total size: 151181
+# Total size: 550014
 /usr/local/include/vid.stab/boxblur.h
+/usr/local/include/vid.stab/compat.h
 /usr/local/include/vid.stab/frameinfo.h
 /usr/local/include/vid.stab/libvidstab.h
 /usr/local/include/vid.stab/localmotion2transform.h
@@ -7,12 +8,14 @@
 /usr/local/include/vid.stab/motiondetect_internal.h
 /usr/local/include/vid.stab/motiondetect_opt.h
 /usr/local/include/vid.stab/serialize.h
+/usr/local/include/vid.stab/sse2neon.h
 /usr/local/include/vid.stab/transform.h
 /usr/local/include/vid.stab/transform_internal.h
 /usr/local/include/vid.stab/transformfixedpoint.h
 /usr/local/include/vid.stab/transformfloat.h
 /usr/local/include/vid.stab/transformtype.h
 /usr/local/include/vid.stab/transformtype_operations.h
+/usr/local/include/vid.stab/vidstab_api.h
 /usr/local/include/vid.stab/vidstabdefines.h
 /usr/local/include/vid.stab/vsvector.h
 /usr/local/lib/libvidstab.so

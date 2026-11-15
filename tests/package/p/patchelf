@@ -1,0 +1,3 @@
+#!/bin/bash
+patchelf -h 2>&1 | head
+patchelf --version

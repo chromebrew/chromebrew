@@ -1,33 +1,35 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Irssi < Package
+class Irssi < Meson
   description 'Modular text mode IRC client with Perl scripting'
   homepage 'https://irssi.org/'
-  version '1.2.2'
+  version '1.4.5'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/irssi/irssi/releases/download/1.2.2/irssi-1.2.2.tar.xz'
-  source_sha256 '6727060c918568ba2ff4295ad736128dba0b995d7b20491bca11f593bd857578'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/irssi/irssi.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cef7c8a7eae8b5c8b3436808ba40d7ee47b6bee964accc6869ccc31d0bbd0c48',
-     armv7l: 'cef7c8a7eae8b5c8b3436808ba40d7ee47b6bee964accc6869ccc31d0bbd0c48',
-       i686: '2b55ec2d8ee5db531e350efc6e64e2e64c5b3a980bc1cf491d79d76cb873bf80',
-     x86_64: 'a507ca4d76b27659d03e421831da77ed161126ed7d8321cdd753fd4b45bd7536'
+    aarch64: 'a50a73a1defc56bdd4c28cbbbc09a1e12aeaa0da31452b58f2c6fce26a531ee2',
+     armv7l: 'a50a73a1defc56bdd4c28cbbbc09a1e12aeaa0da31452b58f2c6fce26a531ee2',
+       i686: '3582bc4fd81da5a21857e11fc6029bd241e6f80fb8e0a6e1ecce9f4178f60e8b',
+     x86_64: 'd1852d513ad6701eaa1a870aedf108e00051284a0c5d29f0b44027988f7c1762'
   })
 
-  depends_on 'glib' => :build
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'libgcrypt' => :library
+  depends_on 'libotr' => :library
+  depends_on 'libxcrypt' => :library
+  depends_on 'ncurses' => :executable
+  depends_on 'openssl' => :executable
+  depends_on 'perl' => :library
+  depends_on 'py3_meson' => :build
+  depends_on 'utf8proc' => :executable
 
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           "--sysconfdir=#{CREW_PREFIX}/etc"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  meson_options " \
+    -Dc_args='-O3 -pipe -ffat-lto-objects -fPIC -fuse-ld=mold -flto=auto -I#{CREW_PREFIX}/include/ncursesw' \
+    -Denable-true-color=yes"
 end

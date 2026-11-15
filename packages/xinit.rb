@@ -1,33 +1,25 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Xinit < Package
+class Xinit < Autotools
   description 'The xinit package contains a usable script to start the xserver.'
   homepage 'https://www.x.org/wiki/'
-  version '1.4.2'
+  version '1.4.4'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://www.x.org/archive/individual/app/xinit-1.4.2.tar.gz'
-  source_sha256 '9121c9162f6dedab1229a8c4ed4021c4d605699cb0da580ac2ee1b0c96b3f60e'
+  source_url "https://www.x.org/archive/individual/app/xinit-#{version}.tar.gz"
+  source_sha256 '45cca1b0f3a963105f43cecc24e9cc4db0d14faa87bd9860b9ec563e8c73fc47'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '23c169a3f7662628d1ee072ddb5e9275705d4625f7a32dc97addea86d2221140',
-     armv7l: '23c169a3f7662628d1ee072ddb5e9275705d4625f7a32dc97addea86d2221140',
-     x86_64: '39b6cdc11b9bbef6850969fa9f9d1e445b5eee7f377658927818b371d4928dc0'
+    aarch64: '7da85c40d91efc08a1e02b2e71d3eee68823585ff95724a2099f0afaf42c715c',
+     armv7l: '7da85c40d91efc08a1e02b2e71d3eee68823585ff95724a2099f0afaf42c715c',
+     x86_64: '3d6994af43d5ed2cc3501b40f16033a572667ccbf378b20a003b8a61b9559d57'
   })
 
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'libx11' => :executable
   depends_on 'xauth' => :logical
+  depends_on 'xorg_server' => :logical
   depends_on 'xterm' => :logical
-  depends_on 'glibc' # R
-  depends_on 'libx11' # R
-
-  def self.build
-    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end

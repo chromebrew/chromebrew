@@ -1,0 +1,3 @@
+#!/bin/bash
+rdfind -h | head
+rdfind -v

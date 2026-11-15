@@ -3,18 +3,18 @@ require 'package'
 class Perl_test_output < Package
   description 'Test::Output - Utilities to test STDOUT and STDERR messages.'
   homepage 'https://metacpan.org/pod/Test::Output'
-  version "1.034-#{CREW_PERL_VER}"
+  version "1.036-#{CREW_PERL_VER}"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
-  source_url 'https://cpan.metacpan.org/authors/id/B/BD/BDFOY/Test-Output-1.034.tar.gz'
-  source_sha256 'cd42e2801c0d2b482d18c9fb4b06c757054818bcbb2824e5dfbf33ad7a3d69a0'
+  source_url "https://cpan.metacpan.org/authors/id/B/BR/BRIANDFOY/Test-Output-#{version.split('-')[0]}.tar.gz"
+  source_sha256 'a3a95cb8c4d387fe079add4490757e69927ef0488bbb18b4d55e7fc6d25f1a63'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5287148fc2577817b063407a5315a135732ca35640120c01bed8de834f3869db',
-     armv7l: '5287148fc2577817b063407a5315a135732ca35640120c01bed8de834f3869db',
-       i686: '60dac3421aa63c86a6efc6eb705d1a15cf62f38babe0bf3d3a9d9ae43c12bc8c',
-     x86_64: 'fafdcc8354794227b310259021024219c8c5c3b94bec70d11a796ac705027bac'
+    aarch64: '8f9c2d6b2fd47e1f0e62d102189acd76026f3cd3362660d906a6657c7cdeaf5b',
+     armv7l: '8f9c2d6b2fd47e1f0e62d102189acd76026f3cd3362660d906a6657c7cdeaf5b',
+       i686: 'bd3ee95f7a609a3deb76ae647203f961e8581c0e4656a19eb0f4b21f70536e4e',
+     x86_64: '28fc990fc0f8719c492e8921230724d0f5d45d7d62ea20c542793a7f26fbbf68'
   })
 
   def self.prebuild

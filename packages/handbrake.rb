@@ -4,15 +4,15 @@ require 'convenience_functions'
 class Handbrake < Package
   description 'HandBrake is a tool for converting video from nearly any format to a selection of modern, widely supported codecs.'
   homepage 'https://handbrake.fr/'
-  version '1.11.2'
+  version '1.11.2-1'
   license 'GPL-2'
   compatibility 'x86_64'
   source_url 'https://github.com/HandBrake/HandBrake.git'
-  git_hashtag version
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '1d9fdaf5a57b94b81bdd1889922f9fba8f7e094ce5b877939e57828f3ecbcfa2'
+     x86_64: 'd9d82046b0e3362365f3761945450c35cdd892d61d8da411c222154a291c0a1c'
   })
 
   depends_on 'bzip2' => :executable
@@ -22,7 +22,6 @@ class Handbrake < Package
   depends_on 'glibc' => :executable
   depends_on 'glibc_lib' => :executable
   depends_on 'gtk4' => :executable
-  depends_on 'intel_media_sdk' => :executable
   depends_on 'jansson' => :executable
   depends_on 'libass' => :executable
   depends_on 'libdrm' => :executable

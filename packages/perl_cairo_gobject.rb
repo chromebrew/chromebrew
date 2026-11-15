@@ -11,14 +11,16 @@ class Perl_cairo_gobject < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '07a350ad5aafb68a2992c9ec80c3e91360b9533f6926b4fbd963273ab47cbf15'
+     x86_64: '85f72e403784d33104e7d64596553c08763b739449bbdf34560755a7b13144a1'
   })
 
-  depends_on 'cairo' # R
-  depends_on 'freetype' # R
-  depends_on 'glibc' # R
-  depends_on 'glib' # R
+  depends_on 'cairo' => :library
+  depends_on 'freetype' => :library
+  depends_on 'glib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'harfbuzz' # R
+  depends_on 'perl' => :logical
   depends_on 'perl_cairo' => :build
   depends_on 'perl_glib' => :build
 end

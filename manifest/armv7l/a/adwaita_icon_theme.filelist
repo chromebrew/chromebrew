@@ -1,4 +1,4 @@
-# Total size: 13222893
+# Total size: 12937127
 /usr/local/share/icons/Adwaita/16x16/devices/audio-headphones.png
 /usr/local/share/icons/Adwaita/16x16/devices/audio-headset.png
 /usr/local/share/icons/Adwaita/16x16/emblems/emblem-readonly.png
@@ -168,6 +168,7 @@
 /usr/local/share/icons/Adwaita/scalable/places/folder-drag-accept.svg
 /usr/local/share/icons/Adwaita/scalable/places/folder-music.svg
 /usr/local/share/icons/Adwaita/scalable/places/folder-pictures.svg
+/usr/local/share/icons/Adwaita/scalable/places/folder-projects.svg
 /usr/local/share/icons/Adwaita/scalable/places/folder-publicshare.svg
 /usr/local/share/icons/Adwaita/scalable/places/folder-remote.svg
 /usr/local/share/icons/Adwaita/scalable/places/folder-templates.svg
@@ -554,6 +555,7 @@
 /usr/local/share/icons/Adwaita/symbolic/places/folder-drag-accept-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/places/folder-music-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/places/folder-pictures-symbolic.svg
+/usr/local/share/icons/Adwaita/symbolic/places/folder-projects-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/places/folder-publicshare-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/places/folder-remote-symbolic.svg
 /usr/local/share/icons/Adwaita/symbolic/places/folder-saved-search-symbolic.svg

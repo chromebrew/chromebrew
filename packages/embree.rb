@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Embree < CMake
   description 'Intel Embree is a high-performance ray tracing library.'
   homepage 'https://www.embree.org/'
-  version '4.3.1'
+  version '4.4.1'
   license 'Apache-2.0'
   compatibility 'x86_64'
   source_url 'https://github.com/RenderKit/embree.git'
@@ -11,13 +11,16 @@ class Embree < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: 'fa8f7c350310b0add25b03f7d762ed3817ecf068f10b63c4a319759ea6ab19c4'
+     x86_64: '7f397dc49a97b81f0d4716276e91e3fec4306a924c9c0d7bfcfe5d6689aef9f0'
   })
 
-  depends_on 'glfw'
-  depends_on 'libjpeg_turbo'
-  depends_on 'openimageio'
-  depends_on 'tbb'
+  depends_on 'gcc_lib' => :library
+  depends_on 'glfw' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'libjpeg_turbo' => :library
+  depends_on 'openimageio' => :library
+  depends_on 'tbb' => :library
 
   # Embree is not FHS compliant with EMBREE_ZIP_MODE enabled, installing two shell scripts at the root of CREW_PREFIX.
   cmake_options '-DEMBREE_TUTORIALS=OFF -DEMBREE_TESTING_INSTALL_TESTS=OFF -DEMBREE_ZIP_MODE=OFF'

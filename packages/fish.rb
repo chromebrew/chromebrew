@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Fish < CMake
   description 'fish is a smart and user-friendly command line shell for macOS, Linux, and the rest of the family.'
   homepage 'https://fishshell.com/'
-  version '4.8.0'
+  version '4.9.3'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/fish-shell/fish-shell.git'
@@ -11,10 +11,10 @@ class Fish < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '76a013e95d25de0c57e4306ee1b81714d54b6749b3d7e79f8ec2f04d2ec7ef46',
-     armv7l: '76a013e95d25de0c57e4306ee1b81714d54b6749b3d7e79f8ec2f04d2ec7ef46',
-       i686: '3233daa4b6db260b817c63b1517ae00ea180336f5de3659f55834e9a36c90b50',
-     x86_64: '1895cf4c6439c7097c4b18be9565dc38b66889df916f27e03f57e8675d1d8466'
+    aarch64: 'f1688bc1f080140a15dfb094b8eb6706e68747b0890681413d0bcb5c1a642e33',
+     armv7l: 'f1688bc1f080140a15dfb094b8eb6706e68747b0890681413d0bcb5c1a642e33',
+       i686: '55f0150cb87520064bc1b8b3bf97af6b9c26504436766ac2674bc368ea64abc7',
+     x86_64: '0dcc051c253dc780207730dc323c76410eaafc729dcacfac8ce7651088daab6a'
   })
 
   depends_on 'gcc_lib' => :executable

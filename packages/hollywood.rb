@@ -3,7 +3,7 @@ require 'package'
 class Hollywood < Package
   description 'Fill your console with Hollywood melodrama technobabble.'
   homepage 'https://a.hollywood.computer/'
-  version '1.25'
+  version '1.26'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/dustinkirkland/hollywood.git'

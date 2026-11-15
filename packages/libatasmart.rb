@@ -6,9 +6,8 @@ class Libatasmart < Package
   version '0.19'
   license 'LGPL-2.1+'
   compatibility 'all'
-  source_url 'https://git.0pointer.net/clone/libatasmart.git'
+  source_url 'https://github.com/libatasmart/libatasmart.git'
   git_hashtag "v#{version}"
-  git_branch 'master'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -18,7 +17,10 @@ class Libatasmart < Package
      x86_64: 'dd683c2b7d97c91a9f02ffd0bfee195cf5ca0411c17b922498009e35c0203946'
   })
 
-  depends_on 'eudev' => :build
+  depends_on 'eudev' => :library
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
 
   def self.build
     system './autogen.sh'

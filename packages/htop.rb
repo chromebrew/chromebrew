@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Htop < Autotools
   description 'htop is an interactive process viewer for Unix systems.'
   homepage 'https://github.com/htop-dev/htop'
-  version '3.5.1'
+  version '3.5.3'
   license 'BSD and GPL-2'
   compatibility 'all'
   source_url 'https://github.com/htop-dev/htop.git'
@@ -11,13 +11,14 @@ class Htop < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '02f046b1c6b12309b646e917820a44415fa81971d8b5cc7f985154624660b3a1',
-     armv7l: '02f046b1c6b12309b646e917820a44415fa81971d8b5cc7f985154624660b3a1',
-       i686: 'e649d7a79c5dbf1a623b2f9cb42278b926c72d9d4cd47c5d742152c96582381f',
-     x86_64: '11f99378be6f5e439fa66baae3ca77f152cf89cd1b484931a6b69e126688b102'
+    aarch64: '0f3d03b205709c7ea8e581650d589c69b4f2a93b0c824b1aba6afef96777e6dd',
+     armv7l: '0f3d03b205709c7ea8e581650d589c69b4f2a93b0c824b1aba6afef96777e6dd',
+       i686: '0e18a86bcb047459002cc13be6f1df664d1ed03876ac695411cfafb3aa23fff4',
+     x86_64: '801741c7c5a3565039cb04e507394fdbddf3c82883dbb2a4522933fad636f942'
   })
 
   depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'libcap' => :executable
   depends_on 'libnl3' => :build
   depends_on 'libunwind' => :executable

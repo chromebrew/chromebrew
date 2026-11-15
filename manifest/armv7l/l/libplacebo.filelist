@@ -1,7 +1,8 @@
-# Total size: 1465449
+# Total size: 1603802
 /usr/local/include/libplacebo/cache.h
 /usr/local/include/libplacebo/colorspace.h
 /usr/local/include/libplacebo/common.h
+/usr/local/include/libplacebo/compositor.h
 /usr/local/include/libplacebo/config.h
 /usr/local/include/libplacebo/d3d11.h
 /usr/local/include/libplacebo/dispatch.h
@@ -34,5 +35,5 @@
 /usr/local/include/libplacebo/utils/upload.h
 /usr/local/include/libplacebo/vulkan.h
 /usr/local/lib/libplacebo.so
-/usr/local/lib/libplacebo.so.350
+/usr/local/lib/libplacebo.so.387
 /usr/local/lib/pkgconfig/libplacebo.pc

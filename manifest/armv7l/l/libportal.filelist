@@ -1,4 +1,4 @@
-# Total size: 638702
+# Total size: 697975
 /usr/local/include/libportal-gtk3/portal-gtk3.h
 /usr/local/include/libportal-gtk4/portal-gtk4.h
 /usr/local/include/libportal/account.h
@@ -8,6 +8,7 @@
 /usr/local/include/libportal/dynamic-launcher.h
 /usr/local/include/libportal/email.h
 /usr/local/include/libportal/filechooser.h
+/usr/local/include/libportal/globalshortcuts.h
 /usr/local/include/libportal/inhibit.h
 /usr/local/include/libportal/inputcapture-pointerbarrier.h
 /usr/local/include/libportal/inputcapture-zone.h

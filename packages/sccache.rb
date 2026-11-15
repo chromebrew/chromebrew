@@ -3,7 +3,7 @@ require 'package'
 class Sccache < Package
   description 'Shared Compilation Cache'
   homepage 'https://github.com/mozilla/sccache/'
-  version '0.16.0'
+  version '0.19.0'
   license 'Apache-2.0, Apache-2.0-with-LLVM-exceptions, BSD, BSD-2, Boost-1.0, ISC, MIT, Unlicense and ZLIB'
   compatibility 'all'
   source_url 'https://github.com/mozilla/sccache.git'
@@ -11,10 +11,10 @@ class Sccache < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ff49c09b067f482fe66047b9c8580990e560cf3ba3647f64baf7384783226fdf',
-     armv7l: 'ff49c09b067f482fe66047b9c8580990e560cf3ba3647f64baf7384783226fdf',
-       i686: 'c7b95c3e5fbc2bee80655e6ce6a9593a2f7269661fe56fac8a95848ccd07e3d2',
-     x86_64: 'e984f155a66dedc9288c3c2b1c051e8fda8aa3a5ee04c0c1b04eb3f551287d81'
+    aarch64: '10ac9006ba0fe6d17ff63a20c24e667d0aa7a00f4a9df792d1ac3f3138c37160',
+     armv7l: '10ac9006ba0fe6d17ff63a20c24e667d0aa7a00f4a9df792d1ac3f3138c37160',
+       i686: 'f50a56703fa11e13cd7953c863a50d0c5cdc87e29dbb01e0c283f06d59f001fa',
+     x86_64: '3a87e18429cf3a92fd9a99c59c5281f556ea88b45087609d073a8a0f6562bbae'
   })
 
   depends_on 'gcc_lib' => :executable

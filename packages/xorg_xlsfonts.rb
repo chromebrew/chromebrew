@@ -1,34 +1,26 @@
 # Adapted from Arch Linux xorg-xlsfonts PKGBUILD at:
 # https://github.com/archlinux/svntogit-packages/raw/packages/xorg-xlsfonts/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/autotools'
 
-class Xorg_xlsfonts < Package
+class Xorg_xlsfonts < Autotools
   description 'List available X fonts'
   homepage 'https://xorg.freedesktop.org/wiki/'
-  version '1.0.7'
+  version '1.0.9'
   license 'X11'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://xorg.freedesktop.org/archive/individual/app/xlsfonts-1.0.7.tar.xz'
-  source_sha256 '7b726945a967b44c35cddee5edd74802907a239ce2e2e515730b8a32c8e50465'
+  source_url 'https://gitlab.freedesktop.org/xorg/app/xlsfonts.git'
+  git_hashtag "xlsfonts-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a86a0ffa9e86dee2df9711303b9b3464773af0684b912e3487cf361de854ccea',
-     armv7l: 'a86a0ffa9e86dee2df9711303b9b3464773af0684b912e3487cf361de854ccea',
-     x86_64: 'cc8c7063814815f5752fc70ad12b61dc5891db6b2c0196eea937dde69096d9c5'
+    aarch64: '5ebf9093ea1ef6d4f329a49166fe78901edf154304d7b09fcca04ea922b9b64a',
+     armv7l: '5ebf9093ea1ef6d4f329a49166fe78901edf154304d7b09fcca04ea922b9b64a',
+     x86_64: '31c4d001c7ae648e606c3dcd4000617dec5ac0c21515b14fc752082473117d83'
   })
 
-  depends_on 'glibc' # R
-  depends_on 'libx11' # R
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'libx11' => :executable
   depends_on 'xorg_macros' => ':build'
-
-  def self.build
-    system "./configure #{CREW_CONFIGURE_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-  end
 end

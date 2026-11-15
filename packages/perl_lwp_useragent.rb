@@ -11,9 +11,11 @@ class Perl_lwp_useragent < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cbe709dcb00e8cf6a4adfeefe776d5d2b8a7f25ac5db643cb0ad088d40a39fbb',
-     armv7l: 'cbe709dcb00e8cf6a4adfeefe776d5d2b8a7f25ac5db643cb0ad088d40a39fbb',
-       i686: '5aca63c57d299e353a184e8793ef0aa9a006052b94aead9b283a73f648f7f719',
-     x86_64: '28e4153a2bad0ae8a4416e2de4d2db170394c0fe763ec16116faac9c2c6ea97c'
+    aarch64: '0264be7b26b78e9338fa0ac9bbbebbccb7e36b9427320c59ec3a2262d5d2e862',
+     armv7l: '0264be7b26b78e9338fa0ac9bbbebbccb7e36b9427320c59ec3a2262d5d2e862',
+       i686: 'b12dd243561884e0bbfb5b4f0499b2da55580144b80f7fba73242c2b9a90d289',
+     x86_64: '825faa26fe9b29ead15c1968613ce1da483011a5ffc800d8b67e52a56201f6b8'
   })
+
+  depends_on 'perl' => :logical
 end

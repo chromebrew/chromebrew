@@ -3,13 +3,13 @@ require 'package'
 class Missioncenter < Package
   description 'Monitor your CPU, Memory, Disk, Network and GPU usage.'
   homepage 'https://missioncenter.io/'
-  version '1.1.0'
+  version '1.2.0'
   license 'GPL-3.0'
   compatibility 'x86_64'
   min_glibc '2.33'
   # Get the latest at https://gitlab.com/mission-center-devs/mission-center/-/releases.
-  source_url 'https://gitlab.com/mission-center-devs/mission-center/-/jobs/12045090460/artifacts/raw/MissionCenter_v1.1.0-x86_64.AppImage'
-  source_sha256 '3e38288fb047c78bf38bfc7bf49173032c326f0e511204bf0b3fbd769ed887ed'
+  source_url 'https://gitlab.com/mission-center-devs/mission-center/-/jobs/15536631699/artifacts/raw/MissionCenter-1.2.0-x86_64.AppImage'
+  source_sha256 'b3b5c84470a927d189c251039d223464125f7068b3164fda43acb9100384576d'
 
   depends_on 'librsvg'
 
@@ -19,7 +19,7 @@ class Missioncenter < Package
   def self.build
     File.write 'missioncenter.sh', <<~EOF
       #!/bin/bash
-      cd #{CREW_PREFIX}/share/missioncenter
+      cd #{CREW_PREFIX}/share/missioncenter/AppDir
       ./AppRun "$@"
     EOF
   end

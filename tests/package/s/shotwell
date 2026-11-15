@@ -1,0 +1,3 @@
+#!/bin/bash
+shotwell -h | head
+shotwell -V

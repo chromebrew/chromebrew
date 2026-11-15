@@ -1,0 +1,3 @@
+#!/bin/bash
+openconnect -h | head
+openconnect -V

@@ -1,0 +1,3 @@
+#!/bin/bash
+sbcenc -h
+sbcdec -h

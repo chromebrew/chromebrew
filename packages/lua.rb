@@ -6,25 +6,26 @@ require 'package'
 class Lua < Package
   description 'Lua is a powerful, efficient, lightweight, embeddable scripting language.'
   homepage 'https://www.lua.org/'
-  version '5.4.8'
+  version '5.5.1'
   @_ver = version.rpartition('.')[0]
   @_ver_no_dot = @_ver.gsub('.', '')
   license 'MIT'
   compatibility 'all'
   source_url "https://www.lua.org/ftp/lua-#{version}.tar.gz"
-  source_sha256 '4f18ddae154e793e46eeab727c59ef1c0c0c2b744e7b94219710d76f530629ae'
+  source_sha256 '1c4b4068d67061f2a2231ad2b5422e77acea1487ea9890f6320af614f4373dce'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1971107d167bf8a58d78a6978deced7279a5c3519ae337aa7e0fd702c1789f51',
-     armv7l: '1971107d167bf8a58d78a6978deced7279a5c3519ae337aa7e0fd702c1789f51',
-       i686: '5ccbc62b03bd077493324ff995515f92c1f11e0fe92f787dc69b3b7e9d998a88',
-     x86_64: 'b5b2a4cea34214688bafb40d7d8162bb974fd61bdbe5cab3595c688af68e9abd'
+    aarch64: '862cba155323bbf00dc080dd7d73efbf3c66145fd3ce29ad44484b662b88da26',
+     armv7l: '862cba155323bbf00dc080dd7d73efbf3c66145fd3ce29ad44484b662b88da26',
+       i686: 'dd91779306c622751330910a004969ad66c37a9e2eac13cc50f4823022d9a61d',
+     x86_64: '6897fd7bea6ce47b19f36f28eee9babf317e5902c3133d866717dd2f0e6e810a'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'readline' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'readline' => :executable
 
   def self.patch
     # Patch adapted from https://gitlab.archlinux.org/archlinux/packaging/packages/lua/-/blob/main/liblua.so.patch

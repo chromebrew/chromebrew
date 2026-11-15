@@ -1,26 +1,32 @@
-require 'buildsystems/autotools'
+require 'package'
 
-class Zsync < Autotools
+class Zsync < Package
   description 'zsync is a client-side file transfer program similar to rsync.'
   homepage 'http://zsync.moria.org.uk/'
-  version '0.6.3'
+  version '0.8.0'
   license 'Artistic-2'
   compatibility 'all'
-  source_url "https://zsync.moria.org.uk/download/zsync-#{version}.tar.bz2"
-  source_sha256 '0b9d53433387aa4f04634a6c63a5efa8203070f2298af72a705f9be3dda65af2'
+  source_url "https://zsync.moria.org.uk/download/zsync-#{version}.tar.gz"
+  source_sha256 '58b02f27e14326b62b7fdd6ed431a3e243b1c5a3ea9e3c1678e136dbf00c238d'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f7e83459da35ae6c1ae2522f5303da8eb7d8efb54d95dfefc13eb997efdbb593',
-     armv7l: 'f7e83459da35ae6c1ae2522f5303da8eb7d8efb54d95dfefc13eb997efdbb593',
-       i686: 'dd72efc81d19983e828cedb61a0313d50b67e51a90a8fabbf019768c9ba2b856',
-     x86_64: 'c2fec91043612cbf99514003f273f2334596cfc7c41f8746e415cc88ae0f0099'
+    aarch64: '962ac9cfb9254758c9cfea7e9c3f4887b7e5ea3b9349722c9040714b550d609f',
+     armv7l: '962ac9cfb9254758c9cfea7e9c3f4887b7e5ea3b9349722c9040714b550d609f',
+       i686: 'e0cf3eb430b914ba711e7aa81c421a7073b60e3952bd02d4efc537dd1dae20b9',
+     x86_64: 'bab028f04261c378eebbbc369176a3ff99d877eade56e1aceb62778b11600572'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'go' => :build
 
-  def self.patch
-    downloader 'https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD', 'asasasa', 'autotools/config.guess'
-    downloader 'https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD', 'asascdcd', 'autotools/config.sub'
+  no_shrink
+
+  def self.install
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    system "go build -o #{CREW_DEST_PREFIX}/bin/zsync ./cmd/zsync"
+    system "go build -o #{CREW_DEST_PREFIX}/bin/zsyncmake ./cmd/zsyncmake"
+    FileUtils.install Dir['man/zsync*.1'], "#{CREW_DEST_MAN_PREFIX}/man1", mode: 0o644
   end
 end

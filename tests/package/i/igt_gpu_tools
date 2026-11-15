@@ -1,0 +1,4 @@
+#!/bin/bash
+gputop -h
+intel_gpu_top -h | head
+lsgpu -V

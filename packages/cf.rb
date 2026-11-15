@@ -3,7 +3,7 @@ require 'package'
 class Cf < Package
   description 'The official command line client for Cloud Foundry'
   homepage 'https://docs.cloudfoundry.org/cf-cli/'
-  version '8.18.4'
+  version '8.19.0'
   license 'Apache-2.0'
   compatibility 'i686 x86_64'
   source_url({
@@ -11,8 +11,8 @@ class Cf < Package
     x86_64: "https://github.com/cloudfoundry/cli/releases/download/v#{version}/cf8-cli_#{version}_linux_x86-64.tgz"
   })
   source_sha256({
-      i686: 'a7c85c83e07d237c263069146675e9da00d031d2818d570273582f98c197fe78',
-    x86_64: '562ce8b06fd76f7b2d7a46af9750ba8729ac8f43838f7f86e7b39cecebea59ba'
+      i686: '7581f1d6e5bc394f779d55b3fdbe154a6ebb55b183f3be5ee957bd6f8fdab0c2',
+    x86_64: '98268ab3134bb3a1c97ffce797b4e6d35590a82e006cd098ad7a29f0a5cae7d8'
   })
 
   no_compile_needed

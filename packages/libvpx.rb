@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Libvpx < Autotools
   description 'VP8/VP9 Codec SDK'
   homepage 'https://www.webmproject.org/code/'
-  version '1.16.0'
+  version '1.17.0'
   license 'BSD'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://chromium.googlesource.com/webm/libvpx.git'
@@ -11,14 +11,15 @@ class Libvpx < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2c0e052c6610524e555c476cde5dfe522d5538f711788e010223eeb85a439992',
-     armv7l: '2c0e052c6610524e555c476cde5dfe522d5538f711788e010223eeb85a439992',
-     x86_64: '300c1866fed6b25968edf355b952e66ffb83627002bf5ce807365df3ccf2afbe'
+    aarch64: '8c2a40ec88b98a65dbf994db7d0a49b3981df6539a2f2158b2ce6eaee5947361',
+     armv7l: '8c2a40ec88b98a65dbf994db7d0a49b3981df6539a2f2158b2ce6eaee5947361',
+     x86_64: '792708c2f5ab4bd2183841ad1e6d6dc35af3486ff8fdd24d13453c4629f4548d'
   })
 
   depends_on 'ccache' => :build
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
+  depends_on 'gcc_lib' => :library
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'libyuv' => :build
   depends_on 'yasm' => :build
 

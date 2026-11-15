@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Wxwidgets < CMake
   description 'wxWidgets is a C++ library that lets developers create applications for Windows, macOS, Linux and other platforms with a single code base.'
   homepage 'https://www.wxwidgets.org/'
-  version '3.3.2'
+  version '3.3.3'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/wxWidgets/wxWidgets.git'
@@ -11,9 +11,9 @@ class Wxwidgets < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '71a67c4702c781a8909cfcaa1d2232761a054c6d8c0a18e5e22693bf8cc8dba4',
-     armv7l: '71a67c4702c781a8909cfcaa1d2232761a054c6d8c0a18e5e22693bf8cc8dba4',
-     x86_64: 'f453b990265a984437373873055e71d78bba0ce92e3e21b1db979634bb7e3b89'
+    aarch64: '9d0b73c771bdd99fc540ea84b19351a018a86f3aa94ddd84c2b01f162531caaa',
+     armv7l: '9d0b73c771bdd99fc540ea84b19351a018a86f3aa94ddd84c2b01f162531caaa',
+     x86_64: 'eb30b2e5221f28fcf5daf1d51df93f3fc05ca5a9d6cd354090231e76324d5fe4'
   })
 
   depends_on 'at_spi2_core' => :library
@@ -26,6 +26,7 @@ class Wxwidgets < CMake
   depends_on 'glib' => :library
   depends_on 'glib_stub' => :library
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'gspell' => :library
   depends_on 'gstreamer' => :library
   depends_on 'gtk3' => :library
@@ -33,6 +34,7 @@ class Wxwidgets < CMake
   depends_on 'libglu' => :library
   depends_on 'libglvnd' => :library
   depends_on 'libice' => :library
+  depends_on 'libiconv' => :library
   depends_on 'libjpeg_turbo' => :library
   depends_on 'libmspack' => :library
   depends_on 'libnotify' => :library

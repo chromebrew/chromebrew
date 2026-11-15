@@ -1,35 +1,31 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Xorg_synaptics_driver < Package
+class Xorg_synaptics_driver < Autotools
   description 'The Xorg Synaptics Driver package contains the X.Org Input Driver, support programs and SDK for Synaptics touchpads.'
   homepage 'https://www.x.org/wiki/'
-  version '1.9.0'
+  version '1.10.0'
   license 'MIT'
-  compatibility 'all'
-  source_url 'https://www.x.org/pub/individual/driver/xf86-input-synaptics-1.9.0.tar.bz2'
-  source_sha256 'afba3289d7a40217a19d90db98ce181772f9ca6d77e1898727b0afcf02073b5a'
-  binary_compression 'tar.xz'
+  compatibility 'aarch64 armv7l x86_64'
+  source_url 'https://gitlab.freedesktop.org/xorg/driver/xf86-input-synaptics.git'
+  git_hashtag "xf86-input-synaptics-#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '455fe9b17ba1b46407680ad3c5c4f21ba2ff4db55578d3144fcfe38d844980dc',
-     armv7l: '455fe9b17ba1b46407680ad3c5c4f21ba2ff4db55578d3144fcfe38d844980dc',
-       i686: '98044f62dd0086f390d229b7b829a1d4347674a13c02a6aff24a52a2fc04622c',
-     x86_64: '20281d2dadaed44efd343a85e889b24062bdf9532354757ca266ba621931782a'
+    aarch64: '8000651be0f3fb1f49d331ba6149e773ab7ca0125f4c76ef7f7c7b6435d988dc',
+     armv7l: '8000651be0f3fb1f49d331ba6149e773ab7ca0125f4c76ef7f7c7b6435d988dc',
+     x86_64: '2e01d4d4d92920684d241cbef3b3dea34a06041060bcbd7f7203008d72814c51'
   })
 
-  depends_on 'libevdev'
+  depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
+  depends_on 'libbsd' => :executable
+  depends_on 'libevdev' => :library
+  depends_on 'libx11' => :executable
+  depends_on 'libxau' => :executable
+  depends_on 'libxcb' => :executable
+  depends_on 'libxdmcp' => :executable
+  depends_on 'libxext' => :executable
+  depends_on 'libxfixes' => :executable
+  depends_on 'libxi' => :executable
   depends_on 'xorg_server' => :build
-
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--enable-shared',
-           '--disable-static'
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install-strip'
-  end
 end
