@@ -1,3 +1,15 @@
-# Total size: 3452
+# Total size: 7121146
+/home/chronos/user/nh/install/games/lib/nethackdir/license
+/home/chronos/user/nh/install/games/lib/nethackdir/livelog
+/home/chronos/user/nh/install/games/lib/nethackdir/logfile
+/home/chronos/user/nh/install/games/lib/nethackdir/nethack
+/home/chronos/user/nh/install/games/lib/nethackdir/nhdat
+/home/chronos/user/nh/install/games/lib/nethackdir/perm
+/home/chronos/user/nh/install/games/lib/nethackdir/record
+/home/chronos/user/nh/install/games/lib/nethackdir/recover
+/home/chronos/user/nh/install/games/lib/nethackdir/symbols
+/home/chronos/user/nh/install/games/lib/nethackdir/sysconf
+/home/chronos/user/nh/install/games/lib/nethackdir/xlogfile
+/home/chronos/user/nh/install/games/nethack
 /usr/local/bin/nethack
-/usr/local/games/nethack
+/usr/local/bin/recover

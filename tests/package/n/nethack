@@ -1,0 +1,3 @@
+#!/bin/bash
+nethack --help | head
+nethack --version
