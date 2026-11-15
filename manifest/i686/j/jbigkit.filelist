@@ -7,8 +7,10 @@
 /usr/local/include/jbig85.h
 /usr/local/include/jbig_ar.h
 /usr/local/lib/libjbig.so
+/usr/local/lib/libjbig.so.0
 /usr/local/lib/libjbig.so.2.2
 /usr/local/lib/libjbig85.so
+/usr/local/lib/libjbig85.so.0
 /usr/local/lib/libjbig85.so.2.2
 /usr/local/share/man/man1/jbgtopbm.1.zst
 /usr/local/share/man/man1/pbmtojbg.1.zst

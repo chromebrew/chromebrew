@@ -11,10 +11,10 @@ class Jbigkit < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '39b54682e962a5b141bd9179079001f428899cc1de27c97115054263483d8796',
-     armv7l: '39b54682e962a5b141bd9179079001f428899cc1de27c97115054263483d8796',
-       i686: '8da0794e3f7090d174e6f01fbbae5eadf0847e2fd6eb8937df951638f5f52a32',
-     x86_64: '75ff730d0b7aaabfb10a07d1a67aaf2c25b076fca944a5506bf49aa73e30ea8a'
+    aarch64: '5b513eee203a17332901aa32dd1e6379a3384b1e184af6ba899a2471d6a49c88',
+     armv7l: '5b513eee203a17332901aa32dd1e6379a3384b1e184af6ba899a2471d6a49c88',
+       i686: '130fc610b947f5edd811d48b4cf9a51e5ff2e3a611248fba060d1a21d02200aa',
+     x86_64: '95d4e376799f09e7bddbbe80ac0d392b4cfc5599c4227e73394627c89ef1f789'
   })
 
   depends_on 'glibc' => :library
@@ -49,6 +49,9 @@ class Jbigkit < Package
       %w[libjbig85.so.2.2 libjbig85.so libjbig.so.2.2 libjbig.so].each do |lib|
         FileUtils.install lib, "#{CREW_DEST_LIB_PREFIX}/#{lib}", mode: 0o644
       end
+      # Fix error while loading shared libraries: libjbig.so.0: cannot open shared object file: No such file or directory.
+      FileUtils.ln_s "#{CREW_LIB_PREFIX}/libjbig.so.2.2", "#{CREW_DEST_LIB_PREFIX}/libjbig.so.0"
+      FileUtils.ln_s "#{CREW_LIB_PREFIX}/libjbig85.so.2.2", "#{CREW_DEST_LIB_PREFIX}/libjbig85.so.0"
     end
     Dir.chdir 'pbmtools' do
       %w[jbgtopbm jbgtopbm85 pbmtojbg pbmtojbg85].each do |bin|
