@@ -11,9 +11,9 @@ class Imlib2 < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b0a2d92e3ab3ab5ffcfad129338aeb955d4a50d7a9f8081eebbf04f8c3f14948',
-     armv7l: 'b0a2d92e3ab3ab5ffcfad129338aeb955d4a50d7a9f8081eebbf04f8c3f14948',
-     x86_64: '3e5c44043604db0b0e57d7417a8b9fe1a08ad711f480b273b681328fa75b6a61'
+    aarch64: '8125ec3dd0f41d01f0f777a816ad6a212ff97d247a16c6f9bc5bf5c392c09294',
+     armv7l: '8125ec3dd0f41d01f0f777a816ad6a212ff97d247a16c6f9bc5bf5c392c09294',
+     x86_64: 'd7f774c8be210eca8e720e74c96d3fd4b8a67f2abecd1ef88ab75e10a89954b4'
   })
 
   depends_on 'bzip2' => :library
