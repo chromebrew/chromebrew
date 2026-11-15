@@ -3,35 +3,47 @@ require 'package'
 class Nethack < Package
   description 'Nethack is a classic roguelike. Descend through the dungeon and retrieve the Amulet of Yendor.'
   homepage 'https://www.nethack.org/'
-  version '3.6.7'
+  version '5.0.0_Released'
   license 'nethack'
   compatibility 'all'
   source_url 'https://github.com/NetHack/NetHack.git'
-  git_hashtag "NetHack-#{version}_Released"
+  git_hashtag "NetHack-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f37b6c0eb4c63f3cd51e97b910cbcb2b22b5b7b0bb99052080460d3173ccd16a',
-     armv7l: 'f37b6c0eb4c63f3cd51e97b910cbcb2b22b5b7b0bb99052080460d3173ccd16a',
-       i686: 'b19d1508b6a70d8ab2a4b0fcde4a8069b7bd3d3d26bbe2318babe5fce1bcf1eb',
-     x86_64: '03c389969a9c876c6edd529c51f8f2d128ee0a2965d10fc14f02c6f2e7db3aa1'
+    aarch64: 'cca52c08ad04df69e1b06800e8f740c4d80d3c9b468e4303d55ec0cc17df047b',
+     armv7l: 'cca52c08ad04df69e1b06800e8f740c4d80d3c9b468e4303d55ec0cc17df047b',
+       i686: '9263381e36a6b3c85691978e01b6580b2db43bb92e18e95ac5540ac1247241c6',
+     x86_64: '6aa97af64bdc6a09e098e8ec19f9349ee9e740a49b5029a1cef63f9ce9b9aed4'
   })
 
-  no_fhs
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'ncurses' => :executable
+
+  def self.patch
+    system "sed -i 's,<curses.h>,<#{CREW_PREFIX}/include/ncursesw/curses.h>,' include/wintty.h"
+    system "sed -i 's,<term.h>,<#{CREW_PREFIX}/include/ncursesw/term.h>,' include/wintty.h"
+    system "sed -i 's,<curses.h>,<#{CREW_PREFIX}/include/ncursesw/curses.h>,' sys/share/unixtty.c"
+    system "sed -i 's,<curses.h>,<#{CREW_PREFIX}/include/ncursesw/curses.h>,' win/tty/termcap.c"
+  end
 
   def self.build
-    ENV['GAME'] = 'nethack'
-    system 'sys/unix/setup.sh sys/unix/hints/linux'
-    Dir['**/Makefile'].each do |mkfile|
-      system "sed -i 's,^HACKDIR=.*$,HACKDIR=#{CREW_PREFIX}/games/lib/nethackdir,g' #{mkfile}"
-      system "sed -i 's,^PREFIX=\$(wildcard ~)/nh/install,PREFIX=#{CREW_DEST_PREFIX},' #{mkfile}"
-      system "sed -i 's,\-I\.\./include,-I../include -I#{CREW_PREFIX}/include/ncursesw,' #{mkfile}"
-    end
-    system 'make'
+    system 'sys/unix/setup.sh sys/unix/hints/linux.500'
+    system 'make fetch-Lua'
+    system 'make all'
   end
 
   def self.install
-    system 'make', 'install'
-    FileUtils.install "#{CREW_DEST_PREFIX}/games/nethack", "#{CREW_DEST_PREFIX}/bin/nethack", mode: 0o755
+    system 'make install'
+    FileUtils.mkdir_p CREW_DEST_HOME
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    FileUtils.cp_r "#{HOME}/nh", CREW_DEST_HOME
+    FileUtils.ln_s "#{HOME}/nh/install/games/lib/nethackdir/nethack", "#{CREW_DEST_PREFIX}/bin/nethack"
+    FileUtils.ln_s "#{HOME}/nh/install/games/lib/nethackdir/recover", "#{CREW_DEST_PREFIX}/bin/recover"
+  end
+
+  def self.postinstall
+    ExitMessage.add "\nType 'nethack' to get started.\n"
   end
 end
