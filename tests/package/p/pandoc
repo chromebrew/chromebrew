@@ -1,0 +1,3 @@
+#!/bin/bash
+pandoc -h | head
+pandoc -v
