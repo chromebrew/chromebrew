@@ -1,4 +1,4 @@
-# Total size: 22444620
+# Total size: 22549516
 /usr/local/bin/nim
 /usr/local/share/nim/bin/nim
 /usr/local/share/nim/compiler/aliasanalysis.nim
@@ -116,6 +116,7 @@
 /usr/local/share/nim/compiler/parser.nim
 /usr/local/share/nim/compiler/passaux.nim
 /usr/local/share/nim/compiler/passes.nim
+/usr/local/share/nim/compiler/pathcache.nim
 /usr/local/share/nim/compiler/pathutils.nim
 /usr/local/share/nim/compiler/patterns.nim
 /usr/local/share/nim/compiler/pipelines.nim
@@ -490,6 +491,7 @@
 /usr/local/share/nim/lib/system/indexerrors.nim
 /usr/local/share/nim/lib/system/indices.nim
 /usr/local/share/nim/lib/system/integerops.nim
+/usr/local/share/nim/lib/system/integerprims.nim
 /usr/local/share/nim/lib/system/iterators.nim
 /usr/local/share/nim/lib/system/iterators_1.nim
 /usr/local/share/nim/lib/system/jssys.nim
