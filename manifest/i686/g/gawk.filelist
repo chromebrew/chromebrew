@@ -1,6 +1,6 @@
-# Total size: 5841730
+# Total size: 6124878
 /usr/local/bin/gawk
-/usr/local/bin/gawk-5.4.1
+/usr/local/bin/gawk-5.4.2
 /usr/local/bin/gawkbug
 /usr/local/etc/profile.d/gawk.csh
 /usr/local/etc/profile.d/gawk.sh
@@ -24,6 +24,7 @@
 /usr/local/share/awk/cliff_rand.awk
 /usr/local/share/awk/ctime.awk
 /usr/local/share/awk/ftrans.awk
+/usr/local/share/awk/gensub2.awk
 /usr/local/share/awk/getopt.awk
 /usr/local/share/awk/gettime.awk
 /usr/local/share/awk/group.awk
@@ -70,6 +71,7 @@
 /usr/local/share/locale/it/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/ka/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/ko/LC_MESSAGES/gawk.mo
+/usr/local/share/locale/lv/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/nl/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/pl/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/pt/LC_MESSAGES/gawk.mo
@@ -80,6 +82,7 @@
 /usr/local/share/locale/tr/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/uk/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/gawk.mo
+/usr/local/share/locale/zh_TW/LC_MESSAGES/gawk.mo
 /usr/local/share/man/man1/gawk.1.zst
 /usr/local/share/man/man1/gawkbug.1.zst
 /usr/local/share/man/man1/pm-gawk.1.zst
