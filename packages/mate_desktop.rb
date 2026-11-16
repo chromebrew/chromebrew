@@ -11,9 +11,9 @@ class Mate_desktop < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0d766f7c38aff2b928334ff41884314c761764a078532c9f7ea741742e6cd3c0',
-     armv7l: '0d766f7c38aff2b928334ff41884314c761764a078532c9f7ea741742e6cd3c0',
-     x86_64: 'ab805f6cda35b42371278d8f6adf55721620f36f7730a23a5fedddc304bf209f'
+    aarch64: '91576eca0a93f4fcef1f19a371a59d9b6a38abcac9b0af9588d9910e8bdf7351',
+     armv7l: '91576eca0a93f4fcef1f19a371a59d9b6a38abcac9b0af9588d9910e8bdf7351',
+     x86_64: '3d5b3205288e083a121fcaab72c161a075afb99d43380422e17303900a44c44a'
   })
 
   depends_on 'at_spi2_core' => :library
