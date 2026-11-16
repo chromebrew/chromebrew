@@ -18,10 +18,10 @@ class Gawk < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c30d9e452953d665054097dc95ae8188e9cb55f505204a4bdf342e0345db5900',
-     armv7l: 'c30d9e452953d665054097dc95ae8188e9cb55f505204a4bdf342e0345db5900',
-       i686: '3de4da5662976cc645124368c89c4b8fbcc11de4e5bd468dbcb3f2b2f5d67606',
-     x86_64: '90a700d3615944895f969045683faa375cb99c2f6c3dfb3fd09b54dba1405940'
+    aarch64: '28668b3670a65301aaafad05a3ca98eb8dcb7f35a281fb9e51548d18a0ec8ad7',
+     armv7l: '28668b3670a65301aaafad05a3ca98eb8dcb7f35a281fb9e51548d18a0ec8ad7',
+       i686: '0dbe2b0db1b71dec414a2fe0f5ce3472f505d038bdbac7efbc6e6bdec96de529',
+     x86_64: '0f0e1a13be4442316b78faf0009aed91414563921cbdd302025eb47cb3d2a9b7'
   })
 
   depends_on 'glibc' => :library
