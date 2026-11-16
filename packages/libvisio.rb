@@ -6,7 +6,7 @@ require 'buildsystems/autotools'
 class Libvisio < Autotools
   description 'Library providing ability to interpret and import visio diagrams'
   homepage 'https://wiki.documentfoundation.org/DLP/Libraries/libvisio'
-  version "0.1.11-#{CREW_ICU_VER}"
+  version "0.1.12-#{CREW_ICU_VER}"
   license 'LGPL'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://git.libreoffice.org/libvisio'
@@ -14,9 +14,9 @@ class Libvisio < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4e1ce81e66394f1280359b1da90ee5bb7e1c1e0c0a00fa329a3bd941782daf4b',
-     armv7l: '4e1ce81e66394f1280359b1da90ee5bb7e1c1e0c0a00fa329a3bd941782daf4b',
-     x86_64: '1c84ab59b4b815e7ba53c08306acf3d0063b776392f7e42b1eb623f2cf0f2376'
+    aarch64: 'f088b3a20d10e7642c2faa4aaf5810ae64a7622b595aad1b5ff566b429246167',
+     armv7l: 'f088b3a20d10e7642c2faa4aaf5810ae64a7622b595aad1b5ff566b429246167',
+     x86_64: '4ce036d144c82b62947336b1c264ee553f8200b5e947eb0151fca011bdbd8914'
   })
 
   depends_on 'boost' => :build

@@ -1,4 +1,4 @@
-# Total size: 8002614
+# Total size: 8291259
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/AES.py
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/ARC2.py
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/ARC4.py
@@ -36,12 +36,14 @@
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/__pycache__/_mode_eax.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/__pycache__/_mode_ecb.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/__pycache__/_mode_gcm.cpython-315.pyc
+/usr/local/lib/python3.15/site-packages/Crypto/Cipher/__pycache__/_mode_gcm_siv.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/__pycache__/_mode_kw.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/__pycache__/_mode_kwp.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/__pycache__/_mode_ocb.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/__pycache__/_mode_ofb.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/__pycache__/_mode_openpgp.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/__pycache__/_mode_siv.cpython-315.pyc
+/usr/local/lib/python3.15/site-packages/Crypto/Cipher/__pycache__/_mode_xts.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/__pycache__/_pkcs1_oaep_decode.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/__pycache__/_state_machine.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/__pycache__/oaep.cpython-315.pyc
@@ -53,12 +55,14 @@
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/_mode_eax.py
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/_mode_ecb.py
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/_mode_gcm.py
+/usr/local/lib/python3.15/site-packages/Crypto/Cipher/_mode_gcm_siv.py
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/_mode_kw.py
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/_mode_kwp.py
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/_mode_ocb.py
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/_mode_ofb.py
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/_mode_openpgp.py
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/_mode_siv.py
+/usr/local/lib/python3.15/site-packages/Crypto/Cipher/_mode_xts.py
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/_pkcs1_decode.abi3-arm-linux-gnueabihf.so
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/_pkcs1_oaep_decode.py
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/_raw_aes.abi3-arm-linux-gnueabihf.so
@@ -74,6 +78,7 @@
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/_raw_eksblowfish.abi3-arm-linux-gnueabihf.so
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/_raw_ocb.abi3-arm-linux-gnueabihf.so
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/_raw_ofb.abi3-arm-linux-gnueabihf.so
+/usr/local/lib/python3.15/site-packages/Crypto/Cipher/_raw_xts.abi3-arm-linux-gnueabihf.so
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/_state_machine.py
 /usr/local/lib/python3.15/site-packages/Crypto/Cipher/oaep.py
 /usr/local/lib/python3.15/site-packages/Crypto/Hash/BLAKE2b.py
@@ -246,12 +251,14 @@
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Cipher/__pycache__/test_DES3.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Cipher/__pycache__/test_EAX.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Cipher/__pycache__/test_GCM.cpython-315.pyc
+/usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Cipher/__pycache__/test_GCM_SIV.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Cipher/__pycache__/test_KW.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Cipher/__pycache__/test_OCB.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Cipher/__pycache__/test_OFB.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Cipher/__pycache__/test_OpenPGP.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Cipher/__pycache__/test_SIV.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Cipher/__pycache__/test_Salsa20.cpython-315.pyc
+/usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Cipher/__pycache__/test_XTS.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Cipher/__pycache__/test_message_too_long.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Cipher/__pycache__/test_pkcs1_15.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Cipher/__pycache__/test_pkcs1_oaep.cpython-315.pyc
@@ -272,12 +279,14 @@
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Cipher/test_DES3.py
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Cipher/test_EAX.py
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Cipher/test_GCM.py
+/usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Cipher/test_GCM_SIV.py
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Cipher/test_KW.py
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Cipher/test_OCB.py
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Cipher/test_OFB.py
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Cipher/test_OpenPGP.py
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Cipher/test_SIV.py
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Cipher/test_Salsa20.py
+/usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Cipher/test_XTS.py
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Cipher/test_message_too_long.py
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Cipher/test_pkcs1_15.py
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Cipher/test_pkcs1_oaep.py
@@ -341,8 +350,10 @@
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/IO/__init__.py
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/IO/__pycache__/__init__.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/IO/__pycache__/test_PBES.cpython-315.pyc
+/usr/local/lib/python3.15/site-packages/Crypto/SelfTest/IO/__pycache__/test_PEM.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/IO/__pycache__/test_PKCS8.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/IO/test_PBES.py
+/usr/local/lib/python3.15/site-packages/Crypto/SelfTest/IO/test_PEM.py
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/IO/test_PKCS8.py
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Math/__init__.py
 /usr/local/lib/python3.15/site-packages/Crypto/SelfTest/Math/__pycache__/__init__.cpython-315.pyc
@@ -484,6 +495,7 @@
 /usr/local/lib/python3.15/site-packages/Crypto/Util/__pycache__/asn1.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Crypto/Util/__pycache__/number.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Crypto/Util/__pycache__/strxor.cpython-315.pyc
+/usr/local/lib/python3.15/site-packages/Crypto/Util/_base64.abi3-arm-linux-gnueabihf.so
 /usr/local/lib/python3.15/site-packages/Crypto/Util/_bytes.py
 /usr/local/lib/python3.15/site-packages/Crypto/Util/_cpu_features.py
 /usr/local/lib/python3.15/site-packages/Crypto/Util/_cpuid_c.abi3-arm-linux-gnueabihf.so
@@ -497,12 +509,12 @@
 /usr/local/lib/python3.15/site-packages/Crypto/__init__.py
 /usr/local/lib/python3.15/site-packages/Crypto/__pycache__/__init__.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Crypto/py.typed
-/usr/local/lib/python3.15/site-packages/pycryptodome-4.4.0.dist-info/INSTALLER
-/usr/local/lib/python3.15/site-packages/pycryptodome-4.4.0.dist-info/METADATA
-/usr/local/lib/python3.15/site-packages/pycryptodome-4.4.0.dist-info/RECORD
-/usr/local/lib/python3.15/site-packages/pycryptodome-4.4.0.dist-info/REQUESTED
-/usr/local/lib/python3.15/site-packages/pycryptodome-4.4.0.dist-info/WHEEL
-/usr/local/lib/python3.15/site-packages/pycryptodome-4.4.0.dist-info/licenses/LICENSE.rst
-/usr/local/lib/python3.15/site-packages/pycryptodome-4.4.0.dist-info/licenses/src/mldsa-native/LICENSE
-/usr/local/lib/python3.15/site-packages/pycryptodome-4.4.0.dist-info/licenses/src/mlkem-native/LICENSE
-/usr/local/lib/python3.15/site-packages/pycryptodome-4.4.0.dist-info/top_level.txt
+/usr/local/lib/python3.15/site-packages/pycryptodome-4.5.0.dist-info/INSTALLER
+/usr/local/lib/python3.15/site-packages/pycryptodome-4.5.0.dist-info/METADATA
+/usr/local/lib/python3.15/site-packages/pycryptodome-4.5.0.dist-info/RECORD
+/usr/local/lib/python3.15/site-packages/pycryptodome-4.5.0.dist-info/REQUESTED
+/usr/local/lib/python3.15/site-packages/pycryptodome-4.5.0.dist-info/WHEEL
+/usr/local/lib/python3.15/site-packages/pycryptodome-4.5.0.dist-info/licenses/LICENSE.rst
+/usr/local/lib/python3.15/site-packages/pycryptodome-4.5.0.dist-info/licenses/src/mldsa-native/LICENSE
+/usr/local/lib/python3.15/site-packages/pycryptodome-4.5.0.dist-info/licenses/src/mlkem-native/LICENSE
+/usr/local/lib/python3.15/site-packages/pycryptodome-4.5.0.dist-info/top_level.txt

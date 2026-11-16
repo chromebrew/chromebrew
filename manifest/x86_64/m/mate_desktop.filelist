@@ -1,4 +1,4 @@
-# Total size: 3826198
+# Total size: 3935407
 /usr/local/bin/mate-about
 /usr/local/bin/mate-color-select
 /usr/local/include/mate-desktop-2.0/libmate-desktop/mate-bg-crossfade.h
@@ -17,6 +17,7 @@
 /usr/local/include/mate-desktop-2.0/libmate-desktop/mate-rr-config.h
 /usr/local/include/mate-desktop-2.0/libmate-desktop/mate-rr-labeler.h
 /usr/local/include/mate-desktop-2.0/libmate-desktop/mate-rr.h
+/usr/local/include/mate-desktop-2.0/libmate-desktop/mate-systemd.h
 /usr/local/lib64/girepository-1.0/MateDesktop-2.0.typelib
 /usr/local/lib64/libmate-desktop-2.so
 /usr/local/lib64/libmate-desktop-2.so.17

@@ -1,4 +1,4 @@
-# Total size: 10282482
+# Total size: 10373879
 /usr/local/bin/vsd2raw
 /usr/local/bin/vsd2text
 /usr/local/bin/vsd2xhtml
@@ -10,7 +10,7 @@
 /usr/local/lib64/libvisio-0.1.la
 /usr/local/lib64/libvisio-0.1.so
 /usr/local/lib64/libvisio-0.1.so.1
-/usr/local/lib64/libvisio-0.1.so.1.0.11
+/usr/local/lib64/libvisio-0.1.so.1.0.12
 /usr/local/lib64/pkgconfig/libvisio-0.1.pc
 /usr/local/share/doc/libvisio/html/VDXParser_8cpp.html
 /usr/local/share/doc/libvisio/html/VDXParser_8h.html
@@ -590,6 +590,7 @@
 /usr/local/share/doc/libvisio/html/navtreeindex15.js
 /usr/local/share/doc/libvisio/html/navtreeindex16.js
 /usr/local/share/doc/libvisio/html/navtreeindex17.js
+/usr/local/share/doc/libvisio/html/navtreeindex18.js
 /usr/local/share/doc/libvisio/html/navtreeindex2.js
 /usr/local/share/doc/libvisio/html/navtreeindex3.js
 /usr/local/share/doc/libvisio/html/navtreeindex4.js
