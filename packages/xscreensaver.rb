@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Xscreensaver < Autotools
   description 'XScreenSaver is the standard screen saver collection shipped on most Linux and Unix systems running the X11 Window System.'
   homepage 'https://www.jwz.org/xscreensaver/download.html'
-  version '6.16'
+  version '6.17'
   license 'BSD'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.jwz.org/xscreensaver/xscreensaver-#{version}.tar.gz"
-  source_sha256 '91153c7c5b996761606dd7962c9f4bd4005a25874eac02776d0cf0026e6454e4'
+  source_sha256 '258ccca06de822d500c249ac87aa16f0f6218ec200eadcdbe6678c7c52718271'
   binary_compression 'tar.zst'
 
   binary_sha256({
