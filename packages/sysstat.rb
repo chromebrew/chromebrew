@@ -11,10 +11,10 @@ class Sysstat < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fba6cb3a5d87032eeef03825ce89e4ec870cd5e88eb638b495004a7e79ffe282',
-     armv7l: 'fba6cb3a5d87032eeef03825ce89e4ec870cd5e88eb638b495004a7e79ffe282',
-       i686: '1c6b70023336e57001b3cfc35ac70e5b898f6528ccebb67adc230693041814aa',
-     x86_64: 'deec9065516e164d598cac67ef893d728528c8dd6e46a88bedcb096c47ca03b2'
+    aarch64: '5a0472e07e30b4e95b875926074af40dc8d76efb2e267adc760b8963497a90f6',
+     armv7l: '5a0472e07e30b4e95b875926074af40dc8d76efb2e267adc760b8963497a90f6',
+       i686: '82e57d6cb55b3b7ff1ca27292a95f2ad2a05a5b882ebd67a7261fdda170e20b5',
+     x86_64: '5bfb61a8a68d77c3eb1480bad406aa37b1b8d2d5863160785a3b5a8167cccd0d'
   })
 
   depends_on 'glibc' => :library
