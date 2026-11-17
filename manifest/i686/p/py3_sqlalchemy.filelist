@@ -1,12 +1,12 @@
-# Total size: 19654915
-/usr/local/lib/python3.15/site-packages/sqlalchemy-2.1.8.dist-info/INSTALLER
-/usr/local/lib/python3.15/site-packages/sqlalchemy-2.1.8.dist-info/METADATA
-/usr/local/lib/python3.15/site-packages/sqlalchemy-2.1.8.dist-info/RECORD
-/usr/local/lib/python3.15/site-packages/sqlalchemy-2.1.8.dist-info/REQUESTED
-/usr/local/lib/python3.15/site-packages/sqlalchemy-2.1.8.dist-info/WHEEL
-/usr/local/lib/python3.15/site-packages/sqlalchemy-2.1.8.dist-info/licenses/AUTHORS
-/usr/local/lib/python3.15/site-packages/sqlalchemy-2.1.8.dist-info/licenses/LICENSE
-/usr/local/lib/python3.15/site-packages/sqlalchemy-2.1.8.dist-info/top_level.txt
+# Total size: 19685563
+/usr/local/lib/python3.15/site-packages/sqlalchemy-2.1.9.dist-info/INSTALLER
+/usr/local/lib/python3.15/site-packages/sqlalchemy-2.1.9.dist-info/METADATA
+/usr/local/lib/python3.15/site-packages/sqlalchemy-2.1.9.dist-info/RECORD
+/usr/local/lib/python3.15/site-packages/sqlalchemy-2.1.9.dist-info/REQUESTED
+/usr/local/lib/python3.15/site-packages/sqlalchemy-2.1.9.dist-info/WHEEL
+/usr/local/lib/python3.15/site-packages/sqlalchemy-2.1.9.dist-info/licenses/AUTHORS
+/usr/local/lib/python3.15/site-packages/sqlalchemy-2.1.9.dist-info/licenses/LICENSE
+/usr/local/lib/python3.15/site-packages/sqlalchemy-2.1.9.dist-info/top_level.txt
 /usr/local/lib/python3.15/site-packages/sqlalchemy/__init__.py
 /usr/local/lib/python3.15/site-packages/sqlalchemy/__pycache__/__init__.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/sqlalchemy/__pycache__/events.cpython-315.pyc
