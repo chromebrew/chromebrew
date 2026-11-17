@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Imagemagick7 < Autotools
   description 'Use ImageMagick to create, edit, compose, or convert bitmap images.'
   homepage 'http://www.imagemagick.org/script/index.php'
-  version "7.1.2-35-#{CREW_PERL_VER}"
+  version "7.1.2-36-#{CREW_PERL_VER}"
   license 'imagemagick'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/ImageMagick/ImageMagick.git'
@@ -12,9 +12,9 @@ class Imagemagick7 < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '51a5de0eefbdd772a486d40f036a8433a5dc69be47ab82a8ffb428e0449c8601',
-     armv7l: '51a5de0eefbdd772a486d40f036a8433a5dc69be47ab82a8ffb428e0449c8601',
-     x86_64: 'cd6413f52ee8622f6ed5ed67652cfee5b3ecfdbe976ef41c07c3c7bd9a9e2461'
+    aarch64: '5eaed6bff9bc725393bc59779c8b1e2c5045fd5490c4f8db892e2ea6952a69fc',
+     armv7l: '5eaed6bff9bc725393bc59779c8b1e2c5045fd5490c4f8db892e2ea6952a69fc',
+     x86_64: 'daeabbeca1441287b066af94aa921d6189ec92c0632681a4385ed7658434b4aa'
   })
 
   depends_on 'bzip2' => :library
