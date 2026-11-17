@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Evince < Meson
   description 'Document viewer PDF, PostScript, XPS, djvu, dvi, tiff, cbr, cbz, cb7, cbt'
   homepage 'https://wiki.gnome.org/Apps/Evince'
-  version '48.4'
+  version '48.5'
   license 'GPL'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/evince.git'
@@ -14,9 +14,9 @@ class Evince < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '233e5205df5aa2ae3514847633815b8c747e6d1808121a1f01ee24cda256a8bd',
-     armv7l: '233e5205df5aa2ae3514847633815b8c747e6d1808121a1f01ee24cda256a8bd',
-     x86_64: 'a9e1fe4faea05591a79687ff2d211736ded1a2378ad8195ac3119d543ebea013'
+    aarch64: '5194b4ddb5d2bfa7e2aa6a4ef91e038128c70d373dddac51fc692d34cf13df38',
+     armv7l: '5194b4ddb5d2bfa7e2aa6a4ef91e038128c70d373dddac51fc692d34cf13df38',
+     x86_64: '53530b30b9405a8a8ee41f09460cc68084a890efa54dcace62347ef5c1eb9fdc'
   })
 
   depends_on 'at_spi2_core' => :library
