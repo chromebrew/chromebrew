@@ -152,6 +152,7 @@ deprecated_packages = Set[
   { pkg_name: 'libgc', comments: 'Mislabelled duplicate of bdwgc.' },
   { pkg_name: 'libmfx', comments: 'No longer compatible with any architecture' },
   { pkg_name: 'linter', comments: 'Replaced with py3_pre_commit.' },
+  { pkg_name: 'nethack4', comments: 'Replaced by updated nethack.' },
   { pkg_name: 'nping', comments: 'Removed to avoid conflict with nmap.' },
   { pkg_name: 'openjdk22', comments: 'Deprecated upstream.' },
   { pkg_name: 'openjdk23', comments: 'Deprecated upstream.' },
