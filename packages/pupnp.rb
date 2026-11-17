@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Pupnp < CMake
   description 'PUPnP is the Portable SDK for UPnP devices.'
   homepage 'https://pupnp.github.io/pupnp/'
-  version '22.2.2'
+  version '22.2.3'
   compatibility 'all'
   license 'BSD-3'
   source_url 'https://github.com/pupnp/pupnp.git'
@@ -11,10 +11,10 @@ class Pupnp < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '073192b6d0c0bc946c6cf4185b8fc8feae9dddfabaa0d2706b39fee4c8a763b9',
-     armv7l: '073192b6d0c0bc946c6cf4185b8fc8feae9dddfabaa0d2706b39fee4c8a763b9',
-       i686: 'f3af02c25632f104c2322c2b8a2c6733904a21a7199911f337c378bab31da8d6',
-     x86_64: 'e3845be67347632b6d91b145797212621c131a8d7c5cfe22df96800dcc352046'
+    aarch64: '55c5038960d7ffe104a64ba29608c037301a4986cb2e04918b386b8aa9366ce6',
+     armv7l: '55c5038960d7ffe104a64ba29608c037301a4986cb2e04918b386b8aa9366ce6',
+       i686: '6e8470167609a8d735908dfe848522770a23d67ae0ae22a21aea62ef17a49478',
+     x86_64: 'd4c24091b3828a7fb9da624daaf342439198ff8617f50ea9f257cfbb9e1570de'
   })
 
   depends_on 'glibc' => :library
