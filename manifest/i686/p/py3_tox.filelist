@@ -1,12 +1,13 @@
-# Total size: 2183992
+# Total size: 3139541
 /usr/local/bin/tox
-/usr/local/lib/python3.15/site-packages/tox-4.67.13.dist-info/INSTALLER
-/usr/local/lib/python3.15/site-packages/tox-4.67.13.dist-info/METADATA
-/usr/local/lib/python3.15/site-packages/tox-4.67.13.dist-info/RECORD
-/usr/local/lib/python3.15/site-packages/tox-4.67.13.dist-info/REQUESTED
-/usr/local/lib/python3.15/site-packages/tox-4.67.13.dist-info/WHEEL
-/usr/local/lib/python3.15/site-packages/tox-4.67.13.dist-info/entry_points.txt
-/usr/local/lib/python3.15/site-packages/tox-4.67.13.dist-info/licenses/LICENSE
+/usr/local/lib/python3.15/site-packages/tox-4.67.15.dist-info/INSTALLER
+/usr/local/lib/python3.15/site-packages/tox-4.67.15.dist-info/METADATA
+/usr/local/lib/python3.15/site-packages/tox-4.67.15.dist-info/RECORD
+/usr/local/lib/python3.15/site-packages/tox-4.67.15.dist-info/REQUESTED
+/usr/local/lib/python3.15/site-packages/tox-4.67.15.dist-info/WHEEL
+/usr/local/lib/python3.15/site-packages/tox-4.67.15.dist-info/entry_points.txt
+/usr/local/lib/python3.15/site-packages/tox-4.67.15.dist-info/licenses/LICENSE
+/usr/local/lib/python3.15/site-packages/tox-4.67.15.dist-info/sboms/tox.cdx.json
 /usr/local/lib/python3.15/site-packages/tox/__init__.py
 /usr/local/lib/python3.15/site-packages/tox/__main__.py
 /usr/local/lib/python3.15/site-packages/tox/__pycache__/__init__.cpython-315.pyc
@@ -124,9 +125,11 @@
 /usr/local/lib/python3.15/site-packages/tox/plugin/__pycache__/__init__.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/tox/plugin/__pycache__/inline.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/tox/plugin/__pycache__/manager.cpython-315.pyc
+/usr/local/lib/python3.15/site-packages/tox/plugin/__pycache__/marker.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/tox/plugin/__pycache__/spec.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/tox/plugin/inline.py
 /usr/local/lib/python3.15/site-packages/tox/plugin/manager.py
+/usr/local/lib/python3.15/site-packages/tox/plugin/marker.py
 /usr/local/lib/python3.15/site-packages/tox/plugin/spec.py
 /usr/local/lib/python3.15/site-packages/tox/provision.py
 /usr/local/lib/python3.15/site-packages/tox/py.typed
