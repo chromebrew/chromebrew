@@ -11,10 +11,10 @@ class Go_tools < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0141ec69c68b626a09930977d0579eaaf1d38ffb56000c44c5c0e69f4dcce6f8',
-     armv7l: '0141ec69c68b626a09930977d0579eaaf1d38ffb56000c44c5c0e69f4dcce6f8',
-       i686: '4443ceb77c72d12b45d8448df64931adb83ed9711a59c72ec206edd012251453',
-     x86_64: 'e652da1bf52b172a484378d15b258858398e97986b8a307eba99d63fabd5dde5'
+    aarch64: '05285fbb7b2590f71416bfa96b0fc3f355be242f33be9f3d06ec2065d8e9cc42',
+     armv7l: '05285fbb7b2590f71416bfa96b0fc3f355be242f33be9f3d06ec2065d8e9cc42',
+       i686: '7568ca0deb2377df3bb798b524a9bc48dbbd5605ae5eea42f5ade99b920adfe2',
+     x86_64: '1e546bb7a94c0a2dd622f262f6da95e3692b1e47be9c610199e4ee056240c385'
   })
 
   depends_on 'glibc' => :executable
