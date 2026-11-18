@@ -10,10 +10,10 @@ class Ansible < Pip
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'acf57c0c53a22ab510e13a130fd8a9fbbd3f2e7a73f61d164433c57ba1a9a77c',
-     armv7l: 'acf57c0c53a22ab510e13a130fd8a9fbbd3f2e7a73f61d164433c57ba1a9a77c',
-       i686: '924c1b567ecefc8855bacb3691ae3e08f054045ac2a863f8c416ca89984e9187',
-     x86_64: '6abdf56babe27bbe4fc58cc0a51c851c75f344ced7f62b61696cd232fed3a3b3'
+    aarch64: '9a08ff9540dfae1e06f1a18ed6031264b5364edc8f7ab6eaab88ff7431df4a61',
+     armv7l: '9a08ff9540dfae1e06f1a18ed6031264b5364edc8f7ab6eaab88ff7431df4a61',
+       i686: '5d392a09d8a5d3f0b87c20fcb8047680b41b8f45ac65fa72ab62647851a292d0',
+     x86_64: '1e9fcab9c827ca704a20b9bbf2ea6cec375591a915aec26c9d1790dbdfc6d520'
   })
 
   depends_on 'py3_cryptography'
