@@ -11,7 +11,7 @@ class Embree < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '7f397dc49a97b81f0d4716276e91e3fec4306a924c9c0d7bfcfe5d6689aef9f0'
+     x86_64: 'a6e9259006570d0f1d2ca72aca0915aaef07c48569b64789c906fb2628df598d'
   })
 
   depends_on 'gcc_lib' => :library
