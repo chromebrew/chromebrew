@@ -11,10 +11,10 @@ class Dav1d < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ee952aa8dcbad8dac19aa271a1bbbcf668ce5f34bbfa644c6c0c5ebd9847a371',
-     armv7l: 'ee952aa8dcbad8dac19aa271a1bbbcf668ce5f34bbfa644c6c0c5ebd9847a371',
-       i686: 'c168826efbecb20fb3720c0affccf022a54a62896052c019a1e8d104ce81280f',
-     x86_64: '5044e342960e619bb73de7006be272f3376cc6b03d6f8e3684997fc45493c893'
+    aarch64: 'f809296911a35fe0b5e11b6c45989ffc7cd8374f49b0965b601511e0591f9671',
+     armv7l: 'f809296911a35fe0b5e11b6c45989ffc7cd8374f49b0965b601511e0591f9671',
+       i686: 'c6468ab9e7796f4609dbcb523e85893b2bf444e9fd1178454db99e67cb6d68e2',
+     x86_64: '95e23ce5fc3c885d76a0bd9ac55bf162be7e091d42af3c1132a30168d864e282'
   })
 
   depends_on 'gcc_lib' # R
