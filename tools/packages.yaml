@@ -2340,6 +2340,11 @@ url: https://github.com/FreeCAD/FreeCAD/releases
 activity: high
 ---
 kind: url
+name: freedoom
+url: https://github.com/freedoom/freedoom/releases
+activity: none
+---
+kind: url
 name: freedos
 url: https://sourceforge.net/projects/freedos/files/Kernel/
 activity: none
@@ -10292,6 +10297,11 @@ activity: high
 kind: url
 name: uwsgi
 url: https://github.com/unbit/uwsgi/releases
+activity: medium
+---
+kind: url
+name: uzdoom
+url: https://github.com/UZDoom/UZDoom/releases
 activity: medium
 ---
 kind: url
