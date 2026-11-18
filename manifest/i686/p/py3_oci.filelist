@@ -1,10 +1,10 @@
-# Total size: 430670897
-/usr/local/lib/python3.15/site-packages/oci-2.191.0.dist-info/INSTALLER
-/usr/local/lib/python3.15/site-packages/oci-2.191.0.dist-info/METADATA
-/usr/local/lib/python3.15/site-packages/oci-2.191.0.dist-info/RECORD
-/usr/local/lib/python3.15/site-packages/oci-2.191.0.dist-info/REQUESTED
-/usr/local/lib/python3.15/site-packages/oci-2.191.0.dist-info/WHEEL
-/usr/local/lib/python3.15/site-packages/oci-2.191.0.dist-info/top_level.txt
+# Total size: 430876833
+/usr/local/lib/python3.15/site-packages/oci-2.192.0.dist-info/INSTALLER
+/usr/local/lib/python3.15/site-packages/oci-2.192.0.dist-info/METADATA
+/usr/local/lib/python3.15/site-packages/oci-2.192.0.dist-info/RECORD
+/usr/local/lib/python3.15/site-packages/oci-2.192.0.dist-info/REQUESTED
+/usr/local/lib/python3.15/site-packages/oci-2.192.0.dist-info/WHEEL
+/usr/local/lib/python3.15/site-packages/oci-2.192.0.dist-info/top_level.txt
 /usr/local/lib/python3.15/site-packages/oci/__init__.py
 /usr/local/lib/python3.15/site-packages/oci/__pycache__/__init__.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/oci/__pycache__/_log_redaction.cpython-315.pyc
@@ -12052,6 +12052,7 @@
 /usr/local/lib/python3.15/site-packages/oci/database/models/__pycache__/self_mount_details.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/oci/database/models/__pycache__/set_key_version_details.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/oci/database/models/__pycache__/source_database_details.cpython-315.pyc
+/usr/local/lib/python3.15/site-packages/oci/database/models/__pycache__/ssl_inspection_configuration.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/oci/database/models/__pycache__/stack_monitoring_config.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/oci/database/models/__pycache__/stop_autonomous_database_details.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/oci/database/models/__pycache__/storage_performance_details.cpython-315.pyc
@@ -12650,6 +12651,7 @@
 /usr/local/lib/python3.15/site-packages/oci/database/models/self_mount_details.py
 /usr/local/lib/python3.15/site-packages/oci/database/models/set_key_version_details.py
 /usr/local/lib/python3.15/site-packages/oci/database/models/source_database_details.py
+/usr/local/lib/python3.15/site-packages/oci/database/models/ssl_inspection_configuration.py
 /usr/local/lib/python3.15/site-packages/oci/database/models/stack_monitoring_config.py
 /usr/local/lib/python3.15/site-packages/oci/database/models/stop_autonomous_database_details.py
 /usr/local/lib/python3.15/site-packages/oci/database/models/storage_performance_details.py
@@ -20354,6 +20356,7 @@
 /usr/local/lib/python3.15/site-packages/oci/fusion_apps/models/__pycache__/admin_user_collection.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/oci/fusion_apps/models/__pycache__/admin_user_summary.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/oci/fusion_apps/models/__pycache__/allow_rule.cpython-315.pyc
+/usr/local/lib/python3.15/site-packages/oci/fusion_apps/models/__pycache__/application_migration_action.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/oci/fusion_apps/models/__pycache__/capabilities.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/oci/fusion_apps/models/__pycache__/certificate_info.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/oci/fusion_apps/models/__pycache__/change_fusion_environment_compartment_details.cpython-315.pyc
@@ -20459,6 +20462,7 @@
 /usr/local/lib/python3.15/site-packages/oci/fusion_apps/models/admin_user_collection.py
 /usr/local/lib/python3.15/site-packages/oci/fusion_apps/models/admin_user_summary.py
 /usr/local/lib/python3.15/site-packages/oci/fusion_apps/models/allow_rule.py
+/usr/local/lib/python3.15/site-packages/oci/fusion_apps/models/application_migration_action.py
 /usr/local/lib/python3.15/site-packages/oci/fusion_apps/models/capabilities.py
 /usr/local/lib/python3.15/site-packages/oci/fusion_apps/models/certificate_info.py
 /usr/local/lib/python3.15/site-packages/oci/fusion_apps/models/change_fusion_environment_compartment_details.py
@@ -26462,6 +26466,10 @@
 /usr/local/lib/python3.15/site-packages/oci/lustre_file_storage/models/__pycache__/sync_job.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/oci/lustre_file_storage/models/__pycache__/sync_job_collection.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/oci/lustre_file_storage/models/__pycache__/sync_job_summary.cpython-315.pyc
+/usr/local/lib/python3.15/site-packages/oci/lustre_file_storage/models/__pycache__/tiering_configuration.cpython-315.pyc
+/usr/local/lib/python3.15/site-packages/oci/lustre_file_storage/models/__pycache__/tiering_configuration_details.cpython-315.pyc
+/usr/local/lib/python3.15/site-packages/oci/lustre_file_storage/models/__pycache__/tiering_configuration_summary.cpython-315.pyc
+/usr/local/lib/python3.15/site-packages/oci/lustre_file_storage/models/__pycache__/tiering_policy_rule.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/oci/lustre_file_storage/models/__pycache__/update_lustre_file_system_details.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/oci/lustre_file_storage/models/__pycache__/update_object_storage_link_details.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/oci/lustre_file_storage/models/__pycache__/work_request.cpython-315.pyc
@@ -26497,6 +26505,10 @@
 /usr/local/lib/python3.15/site-packages/oci/lustre_file_storage/models/sync_job.py
 /usr/local/lib/python3.15/site-packages/oci/lustre_file_storage/models/sync_job_collection.py
 /usr/local/lib/python3.15/site-packages/oci/lustre_file_storage/models/sync_job_summary.py
+/usr/local/lib/python3.15/site-packages/oci/lustre_file_storage/models/tiering_configuration.py
+/usr/local/lib/python3.15/site-packages/oci/lustre_file_storage/models/tiering_configuration_details.py
+/usr/local/lib/python3.15/site-packages/oci/lustre_file_storage/models/tiering_configuration_summary.py
+/usr/local/lib/python3.15/site-packages/oci/lustre_file_storage/models/tiering_policy_rule.py
 /usr/local/lib/python3.15/site-packages/oci/lustre_file_storage/models/update_lustre_file_system_details.py
 /usr/local/lib/python3.15/site-packages/oci/lustre_file_storage/models/update_object_storage_link_details.py
 /usr/local/lib/python3.15/site-packages/oci/lustre_file_storage/models/work_request.py
@@ -28977,6 +28989,7 @@
 /usr/local/lib/python3.15/site-packages/oci/ocvp/models/__pycache__/network_configuration.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/oci/ocvp/models/__pycache__/remove_datastore_from_datastore_cluster_details.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/oci/ocvp/models/__pycache__/replace_host_details.cpython-315.pyc
+/usr/local/lib/python3.15/site-packages/oci/ocvp/models/__pycache__/resource_operation.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/oci/ocvp/models/__pycache__/sddc.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/oci/ocvp/models/__pycache__/sddc_byol_allocation_details.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/oci/ocvp/models/__pycache__/sddc_collection.cpython-315.pyc
@@ -29069,6 +29082,7 @@
 /usr/local/lib/python3.15/site-packages/oci/ocvp/models/network_configuration.py
 /usr/local/lib/python3.15/site-packages/oci/ocvp/models/remove_datastore_from_datastore_cluster_details.py
 /usr/local/lib/python3.15/site-packages/oci/ocvp/models/replace_host_details.py
+/usr/local/lib/python3.15/site-packages/oci/ocvp/models/resource_operation.py
 /usr/local/lib/python3.15/site-packages/oci/ocvp/models/sddc.py
 /usr/local/lib/python3.15/site-packages/oci/ocvp/models/sddc_byol_allocation_details.py
 /usr/local/lib/python3.15/site-packages/oci/ocvp/models/sddc_collection.py
