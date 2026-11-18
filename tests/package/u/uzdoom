@@ -1,0 +1,3 @@
+#!/bin/bash
+doom -help | head
+doom -version
