@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Embree < CMake
   description 'Intel Embree is a high-performance ray tracing library.'
   homepage 'https://www.embree.org/'
-  version '4.4.1'
+  version '4.5.0'
   license 'Apache-2.0'
   compatibility 'x86_64'
   source_url 'https://github.com/RenderKit/embree.git'
