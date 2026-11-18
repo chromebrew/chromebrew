@@ -1,14 +1,14 @@
-# Total size: 8029369
+# Total size: 8389412
 /usr/local/bin/virtualenv
-/usr/local/lib/python3.15/site-packages/virtualenv-21.15.6.dist-info/INSTALLER
-/usr/local/lib/python3.15/site-packages/virtualenv-21.15.6.dist-info/METADATA
-/usr/local/lib/python3.15/site-packages/virtualenv-21.15.6.dist-info/RECORD
-/usr/local/lib/python3.15/site-packages/virtualenv-21.15.6.dist-info/REQUESTED
-/usr/local/lib/python3.15/site-packages/virtualenv-21.15.6.dist-info/WHEEL
-/usr/local/lib/python3.15/site-packages/virtualenv-21.15.6.dist-info/entry_points.txt
-/usr/local/lib/python3.15/site-packages/virtualenv-21.15.6.dist-info/licenses/LICENSE
-/usr/local/lib/python3.15/site-packages/virtualenv-21.15.6.dist-info/licenses/THIRD-PARTY-NOTICES.md
-/usr/local/lib/python3.15/site-packages/virtualenv-21.15.6.dist-info/sboms/virtualenv.cdx.json
+/usr/local/lib/python3.15/site-packages/virtualenv-21.15.8.dist-info/INSTALLER
+/usr/local/lib/python3.15/site-packages/virtualenv-21.15.8.dist-info/METADATA
+/usr/local/lib/python3.15/site-packages/virtualenv-21.15.8.dist-info/RECORD
+/usr/local/lib/python3.15/site-packages/virtualenv-21.15.8.dist-info/REQUESTED
+/usr/local/lib/python3.15/site-packages/virtualenv-21.15.8.dist-info/WHEEL
+/usr/local/lib/python3.15/site-packages/virtualenv-21.15.8.dist-info/entry_points.txt
+/usr/local/lib/python3.15/site-packages/virtualenv-21.15.8.dist-info/licenses/LICENSE
+/usr/local/lib/python3.15/site-packages/virtualenv-21.15.8.dist-info/licenses/THIRD-PARTY-NOTICES.md
+/usr/local/lib/python3.15/site-packages/virtualenv-21.15.8.dist-info/sboms/virtualenv.cdx.json
 /usr/local/lib/python3.15/site-packages/virtualenv/__init__.py
 /usr/local/lib/python3.15/site-packages/virtualenv/__main__.py
 /usr/local/lib/python3.15/site-packages/virtualenv/__pycache__/__init__.cpython-315.pyc
@@ -53,11 +53,13 @@
 /usr/local/lib/python3.15/site-packages/virtualenv/app_data/__init__.py
 /usr/local/lib/python3.15/site-packages/virtualenv/app_data/__pycache__/__init__.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/virtualenv/app_data/__pycache__/base.cpython-315.pyc
+/usr/local/lib/python3.15/site-packages/virtualenv/app_data/__pycache__/cache_migration.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/virtualenv/app_data/__pycache__/na.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/virtualenv/app_data/__pycache__/read_only.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/virtualenv/app_data/__pycache__/via_disk_folder.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/virtualenv/app_data/__pycache__/via_tempdir.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/virtualenv/app_data/base.py
+/usr/local/lib/python3.15/site-packages/virtualenv/app_data/cache_migration.py
 /usr/local/lib/python3.15/site-packages/virtualenv/app_data/na.py
 /usr/local/lib/python3.15/site-packages/virtualenv/app_data/read_only.py
 /usr/local/lib/python3.15/site-packages/virtualenv/app_data/via_disk_folder.py
@@ -137,7 +139,11 @@
 /usr/local/lib/python3.15/site-packages/virtualenv/report.py
 /usr/local/lib/python3.15/site-packages/virtualenv/run/__init__.py
 /usr/local/lib/python3.15/site-packages/virtualenv/run/__pycache__/__init__.cpython-315.pyc
+/usr/local/lib/python3.15/site-packages/virtualenv/run/__pycache__/cli.cpython-315.pyc
+/usr/local/lib/python3.15/site-packages/virtualenv/run/__pycache__/parser.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/virtualenv/run/__pycache__/session.cpython-315.pyc
+/usr/local/lib/python3.15/site-packages/virtualenv/run/cli.py
+/usr/local/lib/python3.15/site-packages/virtualenv/run/parser.py
 /usr/local/lib/python3.15/site-packages/virtualenv/run/plugin/__init__.py
 /usr/local/lib/python3.15/site-packages/virtualenv/run/plugin/__pycache__/__init__.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/virtualenv/run/plugin/__pycache__/activators.cpython-315.pyc
@@ -165,9 +171,11 @@
 /usr/local/lib/python3.15/site-packages/virtualenv/seed/embed/via_app_data/__pycache__/via_app_data.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/virtualenv/seed/embed/via_app_data/pip_install/__init__.py
 /usr/local/lib/python3.15/site-packages/virtualenv/seed/embed/via_app_data/pip_install/__pycache__/__init__.cpython-315.pyc
+/usr/local/lib/python3.15/site-packages/virtualenv/seed/embed/via_app_data/pip_install/__pycache__/_safe_extract_zip.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/virtualenv/seed/embed/via_app_data/pip_install/__pycache__/base.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/virtualenv/seed/embed/via_app_data/pip_install/__pycache__/copy.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/virtualenv/seed/embed/via_app_data/pip_install/__pycache__/symlink.cpython-315.pyc
+/usr/local/lib/python3.15/site-packages/virtualenv/seed/embed/via_app_data/pip_install/_safe_extract_zip.py
 /usr/local/lib/python3.15/site-packages/virtualenv/seed/embed/via_app_data/pip_install/base.py
 /usr/local/lib/python3.15/site-packages/virtualenv/seed/embed/via_app_data/pip_install/copy.py
 /usr/local/lib/python3.15/site-packages/virtualenv/seed/embed/via_app_data/pip_install/symlink.py
