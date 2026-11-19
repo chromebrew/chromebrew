@@ -11,10 +11,10 @@ class Ettercap < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2a2c646b15e5eae1ebe2b6f73075b5f2b82ca7c3f5a335e58f4934bb6e49866f',
-     armv7l: '2a2c646b15e5eae1ebe2b6f73075b5f2b82ca7c3f5a335e58f4934bb6e49866f',
-       i686: '53a1a99f7a03cb9f88f10ccaf9e9eec5d9f9671afe4731bbab558dc6a4b1392d',
-     x86_64: '011d8163cd4acee2f51e61670747e78eafd2144bb4d3e277b64c7fda5f84e3d0'
+    aarch64: 'eede5125c6ecfb178a8133a050c85e06576aedd6f958a64bc584f2870ecca25c',
+     armv7l: 'eede5125c6ecfb178a8133a050c85e06576aedd6f958a64bc584f2870ecca25c',
+       i686: 'bdd30631e3926c6a91e4d064305384f01a201b432d3bf4d272706bd9b0b7a7be',
+     x86_64: '4f4210a62f12806e45759d5be2f733cc7920be0894c7118a980520f7459f7c72'
   })
 
   depends_on 'check' => :build
