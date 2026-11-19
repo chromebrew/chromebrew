@@ -11,10 +11,10 @@ class Gnutls < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9b486eb64ad4903aa450999d6cd2c7226d593dffc4d9afdcc2129a143b05d791',
-     armv7l: '9b486eb64ad4903aa450999d6cd2c7226d593dffc4d9afdcc2129a143b05d791',
-       i686: '4bb5143d70e669b802285171092e42a013d8c3848f002a44d6739601c36462a4',
-     x86_64: '90cf5b62ab2bbe170f2c372b49237178e0c370adc4b7539cfc69eecd330c3cca'
+    aarch64: 'd5d0315807438f8e60450cbb294300789d5f965605944aa60e15dc798fca2765',
+     armv7l: 'd5d0315807438f8e60450cbb294300789d5f965605944aa60e15dc798fca2765',
+       i686: '03cc35cfffbe742db3266de03b990544e41e323ed36094af93db902bb9630d50',
+     x86_64: '782d24f500ae90f59f0ed72b57bc8921d4810a978267a33e8507992d0687016d'
   })
 
   depends_on 'brotli' => :library
@@ -31,6 +31,7 @@ class Gnutls < Autotools
   depends_on 'libunbound' => :library
   depends_on 'libunistring' => :library
   depends_on 'nettle' => :library
+  depends_on 'openssl' => :executable
   depends_on 'openssl' => :library
   depends_on 'p11kit' => :library
   depends_on 'trousers' => :build
