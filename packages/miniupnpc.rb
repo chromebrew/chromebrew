@@ -11,10 +11,10 @@ class Miniupnpc < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6a28719c74e97b2521bb600cd0bb0e96218e90191797ec268ad74669fe52dd05',
-     armv7l: '6a28719c74e97b2521bb600cd0bb0e96218e90191797ec268ad74669fe52dd05',
-       i686: '92daa3c37ade34a273265adb4f300b306d5d8876cc45c661fa539e8167bc1626',
-     x86_64: 'fda08b9ddea8af4da3bdaf162d5279462b2444558b6fbc4be968fc396c671990'
+    aarch64: '9437bbcc14e77d7b3e55d281966ed0e829ffbb659ff16c6a80b17c246a5e2715',
+     armv7l: '9437bbcc14e77d7b3e55d281966ed0e829ffbb659ff16c6a80b17c246a5e2715',
+       i686: '9b0949e58ae5e61c67aac10fe087a51c05d0005d705568c6f132fcb14ed9d375',
+     x86_64: 'bb37949783e644f5e9e327bcccaf71deedab5e937e22826618039b05e5b9cc89'
   })
 
   depends_on 'glibc' => :library
