@@ -1,4 +1,4 @@
-# Total size: 68817849
+# Total size: 74018245
 /usr/local/bin/pnpm
 /usr/local/libexec/pnpm/dist/node-gyp-bin/node-gyp
 /usr/local/libexec/pnpm/dist/node_modules/@isaacs/fs-minipass/LICENSE
@@ -82,7 +82,6 @@
 /usr/local/libexec/pnpm/dist/node_modules/get-pnpm/lib/undoHint.js
 /usr/local/libexec/pnpm/dist/node_modules/get-pnpm/lib/verifySignature.js
 /usr/local/libexec/pnpm/dist/node_modules/get-pnpm/package.json
-/usr/local/libexec/pnpm/dist/node_modules/graceful-fs/LICENSE
 /usr/local/libexec/pnpm/dist/node_modules/graceful-fs/clone.js
 /usr/local/libexec/pnpm/dist/node_modules/graceful-fs/graceful-fs.js
 /usr/local/libexec/pnpm/dist/node_modules/graceful-fs/legacy-streams.js
