@@ -1,4 +1,4 @@
-# Total size: 41277584
+# Total size: 41390815
 /usr/local/bin/gh
 /usr/local/share/man/man1/gh-agent-task-create.1.zst
 /usr/local/share/man/man1/gh-agent-task-list.1.zst
@@ -55,6 +55,13 @@
 /usr/local/share/man/man1/gh-discussion-list.1.zst
 /usr/local/share/man/man1/gh-discussion-view.1.zst
 /usr/local/share/man/man1/gh-discussion.1.zst
+/usr/local/share/man/man1/gh-event-listen.1.zst
+/usr/local/share/man/man1/gh-event-subscription-create.1.zst
+/usr/local/share/man/man1/gh-event-subscription-delete.1.zst
+/usr/local/share/man/man1/gh-event-subscription-list.1.zst
+/usr/local/share/man/man1/gh-event-subscription-view.1.zst
+/usr/local/share/man/man1/gh-event-subscription.1.zst
+/usr/local/share/man/man1/gh-event.1.zst
 /usr/local/share/man/man1/gh-extension-browse.1.zst
 /usr/local/share/man/man1/gh-extension-create.1.zst
 /usr/local/share/man/man1/gh-extension-exec.1.zst
