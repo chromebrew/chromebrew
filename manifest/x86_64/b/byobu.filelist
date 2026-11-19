@@ -1,4 +1,4 @@
-# Total size: 1654239
+# Total size: 1679049
 /usr/local/bin/byobu
 /usr/local/bin/byobu-config
 /usr/local/bin/byobu-ctrl-a
@@ -27,6 +27,7 @@
 /usr/local/bin/byobu-silent
 /usr/local/bin/byobu-status
 /usr/local/bin/byobu-status-detail
+/usr/local/bin/byobu-status-tmux
 /usr/local/bin/byobu-tmux
 /usr/local/bin/byobu-ugraph
 /usr/local/bin/byobu-ulevel
@@ -167,6 +168,7 @@
 /usr/local/share/locale/sv/LC_MESSAGES/byobu.mo
 /usr/local/share/locale/tr/LC_MESSAGES/byobu.mo
 /usr/local/share/locale/uk/LC_MESSAGES/byobu.mo
+/usr/local/share/locale/vi/LC_MESSAGES/byobu.mo
 /usr/local/share/man/man1/byobu-config.1.zst
 /usr/local/share/man/man1/byobu-ctrl-a.1.zst
 /usr/local/share/man/man1/byobu-disable-prompt.1.zst
@@ -193,6 +195,7 @@
 /usr/local/share/man/man1/byobu-shell.1.zst
 /usr/local/share/man/man1/byobu-silent.1.zst
 /usr/local/share/man/man1/byobu-status-detail.1.zst
+/usr/local/share/man/man1/byobu-status-tmux.1.zst
 /usr/local/share/man/man1/byobu-status.1.zst
 /usr/local/share/man/man1/byobu-tmux.1.zst
 /usr/local/share/man/man1/byobu-ugraph.1.zst

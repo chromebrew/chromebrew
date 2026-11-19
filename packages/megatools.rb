@@ -3,18 +3,18 @@ require 'buildsystems/meson'
 class Megatools < Meson
   description 'Megatools is a collection of programs for accessing Mega.nz service from a command line of your desktop or server.'
   homepage 'https://megatools.megous.com/'
-  version '1.11.5.20250706'
+  version '1.12.2.20261116'
   license 'GPL-2'
   compatibility 'all'
   source_url "https://xff.cz/megatools/builds/megatools-#{version}.tar.gz"
-  source_sha256 '51f78a03748a64b1066ce28a2ca75d98dbef5f00fe9789dc894827f9a913b362'
+  source_sha256 '2c8cfbb41eabf1ffac92f08f5b3aecb361bcfb9c02ac258769fb5e3ba2f15b84'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '236286635d377470423b68f8996a11e7083333d8ce281b86fbb8f5207f22f0ef',
-     armv7l: '236286635d377470423b68f8996a11e7083333d8ce281b86fbb8f5207f22f0ef',
-       i686: '4c63d58ca40e839d7797e62a00effaff2b7169dbab8dc65d521f4604c40b49db',
-     x86_64: 'a6e15ca98f51159bec6359bed1c7b3ec7f085397cc1090243c19ad82b97ad073'
+    aarch64: '1d631da30882ca246ba8068d8339a1bc8fd20d1507145c70a4473bc4fc87c039',
+     armv7l: '1d631da30882ca246ba8068d8339a1bc8fd20d1507145c70a4473bc4fc87c039',
+       i686: '692041de125a0c0bde00dc735941f30c856225c5e766bdee83658f9706935818',
+     x86_64: 'c7ad6f79a47e4fe7f75a516471ba1be36b76f9b4721b3af8796b478da08c629f'
   })
 
   depends_on 'curl' => :executable

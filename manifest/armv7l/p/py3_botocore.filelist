@@ -1,12 +1,12 @@
-# Total size: 22714457
-/usr/local/lib/python3.15/site-packages/botocore-1.44.5.dist-info/INSTALLER
-/usr/local/lib/python3.15/site-packages/botocore-1.44.5.dist-info/LICENSE.txt
-/usr/local/lib/python3.15/site-packages/botocore-1.44.5.dist-info/METADATA
-/usr/local/lib/python3.15/site-packages/botocore-1.44.5.dist-info/NOTICE
-/usr/local/lib/python3.15/site-packages/botocore-1.44.5.dist-info/RECORD
-/usr/local/lib/python3.15/site-packages/botocore-1.44.5.dist-info/REQUESTED
-/usr/local/lib/python3.15/site-packages/botocore-1.44.5.dist-info/WHEEL
-/usr/local/lib/python3.15/site-packages/botocore-1.44.5.dist-info/top_level.txt
+# Total size: 22751120
+/usr/local/lib/python3.15/site-packages/botocore-1.44.6.dist-info/INSTALLER
+/usr/local/lib/python3.15/site-packages/botocore-1.44.6.dist-info/LICENSE.txt
+/usr/local/lib/python3.15/site-packages/botocore-1.44.6.dist-info/METADATA
+/usr/local/lib/python3.15/site-packages/botocore-1.44.6.dist-info/NOTICE
+/usr/local/lib/python3.15/site-packages/botocore-1.44.6.dist-info/RECORD
+/usr/local/lib/python3.15/site-packages/botocore-1.44.6.dist-info/REQUESTED
+/usr/local/lib/python3.15/site-packages/botocore-1.44.6.dist-info/WHEEL
+/usr/local/lib/python3.15/site-packages/botocore-1.44.6.dist-info/top_level.txt
 /usr/local/lib/python3.15/site-packages/botocore/__init__.py
 /usr/local/lib/python3.15/site-packages/botocore/__pycache__/__init__.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/botocore/__pycache__/args.cpython-315.pyc
@@ -68,6 +68,10 @@
 /usr/local/lib/python3.15/site-packages/botocore/crt/__pycache__/auth.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/botocore/crt/auth.py
 /usr/local/lib/python3.15/site-packages/botocore/data/_retry.json
+/usr/local/lib/python3.15/site-packages/botocore/data/abuse-signal/2026-01-12/endpoint-rule-set-1.json.gz
+/usr/local/lib/python3.15/site-packages/botocore/data/abuse-signal/2026-01-12/paginators-1.json
+/usr/local/lib/python3.15/site-packages/botocore/data/abuse-signal/2026-01-12/service-2.json.gz
+/usr/local/lib/python3.15/site-packages/botocore/data/abuse-signal/2026-01-12/waiters-2.json
 /usr/local/lib/python3.15/site-packages/botocore/data/accessanalyzer/2019-11-01/endpoint-rule-set-1.json.gz
 /usr/local/lib/python3.15/site-packages/botocore/data/accessanalyzer/2019-11-01/examples-1.json
 /usr/local/lib/python3.15/site-packages/botocore/data/accessanalyzer/2019-11-01/paginators-1.json

@@ -6,17 +6,17 @@ require 'buildsystems/pip'
 class Py3_nh3 < Pip
   description 'Ammonia HTML sanitizer Python binding'
   homepage 'https://pypi.org/project/nh3/'
-  version '0.3.7'
+  version '0.3.8'
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '70663ec305b3b4538a1642072d96b91a08bc5b07b47bfbc0d51594ad15e64a05',
-     armv7l: '70663ec305b3b4538a1642072d96b91a08bc5b07b47bfbc0d51594ad15e64a05',
-       i686: 'ac0c1ec88315fc9f33221593e8627549b9ac22a9bf48be3150096339e7bc3c65',
-     x86_64: '046071c727b662c021c04dd71c2d91ad6093a70cd63d62886f3bd892233bad19'
+    aarch64: '1062c136157ff4c4732b584343ad3fca59b6422526e38483d08876af9826bed7',
+     armv7l: '1062c136157ff4c4732b584343ad3fca59b6422526e38483d08876af9826bed7',
+       i686: '5751359afe399d2e32e50d992fb2c071508a5cc8519316283234b5bf76618a29',
+     x86_64: 'd988c6fc3fc665644fa07fab51eb9c23be09d90f61666c1e4464f09988de9766'
   })
 
   depends_on 'gcc_lib' => :library

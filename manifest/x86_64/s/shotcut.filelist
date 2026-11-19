@@ -1,4 +1,4 @@
-# Total size: 578575780
+# Total size: 579095879
 /usr/local/bin/shotcut
 /usr/local/share/applications/org.shotcut.Shotcut.desktop
 /usr/local/share/icons/hicolor/128x128/apps/org.shotcut.Shotcut.png
@@ -117,6 +117,7 @@
 /usr/local/share/shotcut/lib/frei0r-1/equaliz0r.so
 /usr/local/share/shotcut/lib/frei0r-1/euclid_eraser.so
 /usr/local/share/shotcut/lib/frei0r-1/filmgrain.so
+/usr/local/share/shotcut/lib/frei0r-1/flarefx.so
 /usr/local/share/shotcut/lib/frei0r-1/flippo.so
 /usr/local/share/shotcut/lib/frei0r-1/gamma.so
 /usr/local/share/shotcut/lib/frei0r-1/gateweave.so
@@ -125,6 +126,7 @@
 /usr/local/share/shotcut/lib/frei0r-1/grain_extract.so
 /usr/local/share/shotcut/lib/frei0r-1/grain_merge.so
 /usr/local/share/shotcut/lib/frei0r-1/hardlight.so
+/usr/local/share/shotcut/lib/frei0r-1/harris0r.so
 /usr/local/share/shotcut/lib/frei0r-1/heatmap0r.so
 /usr/local/share/shotcut/lib/frei0r-1/hue.so
 /usr/local/share/shotcut/lib/frei0r-1/hueshift0r.so
@@ -144,6 +146,7 @@
 /usr/local/share/shotcut/lib/frei0r-1/measure_pr0file.so
 /usr/local/share/shotcut/lib/frei0r-1/medians.so
 /usr/local/share/shotcut/lib/frei0r-1/mirr0r.so
+/usr/local/share/shotcut/lib/frei0r-1/motiondiff0r.so
 /usr/local/share/shotcut/lib/frei0r-1/multiply.so
 /usr/local/share/shotcut/lib/frei0r-1/ndvi.so
 /usr/local/share/shotcut/lib/frei0r-1/nervous.so
@@ -189,6 +192,7 @@
 /usr/local/share/shotcut/lib/frei0r-1/sleid0r_wipe-rect.so
 /usr/local/share/shotcut/lib/frei0r-1/sleid0r_wipe-right.so
 /usr/local/share/shotcut/lib/frei0r-1/sleid0r_wipe-up.so
+/usr/local/share/shotcut/lib/frei0r-1/slitscan0r.so
 /usr/local/share/shotcut/lib/frei0r-1/sobel.so
 /usr/local/share/shotcut/lib/frei0r-1/softglow.so
 /usr/local/share/shotcut/lib/frei0r-1/softlight.so
@@ -216,6 +220,7 @@
 /usr/local/share/shotcut/lib/frei0r-1/vertigo.so
 /usr/local/share/shotcut/lib/frei0r-1/vignette.so
 /usr/local/share/shotcut/lib/frei0r-1/water.so
+/usr/local/share/shotcut/lib/frei0r-1/whirlpinch0r.so
 /usr/local/share/shotcut/lib/frei0r-1/xfade0r.so
 /usr/local/share/shotcut/lib/ladspa/alias_1407.so
 /usr/local/share/shotcut/lib/ladspa/allpass_1895.so
@@ -2393,6 +2398,7 @@
 /usr/local/share/shotcut/share/mlt-7/plus/filter_text.yml
 /usr/local/share/shotcut/share/mlt-7/plus/filter_threshold.yml
 /usr/local/share/shotcut/share/mlt-7/plus/filter_timer.yml
+/usr/local/share/shotcut/share/mlt-7/plus/filter_wsola.yml
 /usr/local/share/shotcut/share/mlt-7/plus/producer_blipflash.yml
 /usr/local/share/shotcut/share/mlt-7/plus/producer_count.yml
 /usr/local/share/shotcut/share/mlt-7/plus/producer_pgm.yml
