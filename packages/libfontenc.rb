@@ -18,6 +18,7 @@ class Libfontenc < Meson
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'xorg_proto' => :build
   depends_on 'zlib' => :library
 
