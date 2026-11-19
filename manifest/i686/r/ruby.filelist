@@ -1,4 +1,4 @@
-# Total size: 39809742
+# Total size: 39830492
 /home/chronos/user/.gemrc
 /usr/local/bin/bundle
 /usr/local/bin/bundler
@@ -209,7 +209,7 @@
 /usr/local/include/ruby-4.0.0/ruby/vm.h
 /usr/local/lib/libruby.so
 /usr/local/lib/libruby.so.4.0
-/usr/local/lib/libruby.so.4.0.9
+/usr/local/lib/libruby.so.4.0.10
 /usr/local/lib/pkgconfig/ruby-4.0.pc
 /usr/local/lib/ruby/4.0.0/English.rb
 /usr/local/lib/ruby/4.0.0/bundled_gems.rb
@@ -2133,7 +2133,7 @@
 /usr/local/lib/ruby/gems/4.0.0/specifications/default/io-nonblock-0.3.2.gemspec
 /usr/local/lib/ruby/gems/4.0.0/specifications/default/io-wait-0.4.0.gemspec
 /usr/local/lib/ruby/gems/4.0.0/specifications/default/ipaddr-1.2.8.gemspec
-/usr/local/lib/ruby/gems/4.0.0/specifications/default/json-2.18.0.gemspec
+/usr/local/lib/ruby/gems/4.0.0/specifications/default/json-2.18.3.gemspec
 /usr/local/lib/ruby/gems/4.0.0/specifications/default/net-http-0.9.1.gemspec
 /usr/local/lib/ruby/gems/4.0.0/specifications/default/net-protocol-0.2.2.gemspec
 /usr/local/lib/ruby/gems/4.0.0/specifications/default/open-uri-0.5.0.gemspec
@@ -3218,6 +3218,7 @@
 /usr/local/share/ri/4.0.0/system/Enumerator/Lazy/_enumerable_collect_concat-i.ri
 /usr/local/share/ri/4.0.0/system/Enumerator/Lazy/_enumerable_drop-i.ri
 /usr/local/share/ri/4.0.0/system/Enumerator/Lazy/_enumerable_drop_while-i.ri
+/usr/local/share/ri/4.0.0/system/Enumerator/Lazy/_enumerable_each_with_index-i.ri
 /usr/local/share/ri/4.0.0/system/Enumerator/Lazy/_enumerable_filter-i.ri
 /usr/local/share/ri/4.0.0/system/Enumerator/Lazy/_enumerable_filter_map-i.ri
 /usr/local/share/ri/4.0.0/system/Enumerator/Lazy/_enumerable_find_all-i.ri
@@ -3240,6 +3241,7 @@
 /usr/local/share/ri/4.0.0/system/Enumerator/Lazy/compact-i.ri
 /usr/local/share/ri/4.0.0/system/Enumerator/Lazy/drop-i.ri
 /usr/local/share/ri/4.0.0/system/Enumerator/Lazy/drop_while-i.ri
+/usr/local/share/ri/4.0.0/system/Enumerator/Lazy/each_with_index-i.ri
 /usr/local/share/ri/4.0.0/system/Enumerator/Lazy/eager-i.ri
 /usr/local/share/ri/4.0.0/system/Enumerator/Lazy/enum_for-i.ri
 /usr/local/share/ri/4.0.0/system/Enumerator/Lazy/filter-i.ri
