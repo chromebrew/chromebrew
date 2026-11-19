@@ -3,18 +3,18 @@ require 'buildsystems/cmake'
 class Clamav < CMake
   description 'ClamAV is an open source antivirus engine for detecting trojans, viruses, malware & other malicious threats.'
   homepage 'https://www.clamav.net/'
-  version '1.5.4'
+  version '1.5.5'
   license 'GPL-2'
   compatibility 'all'
   source_url "https://www.clamav.net/downloads/production/clamav-#{version}.tar.gz"
-  source_sha256 '1af1117a228f1b5bc7fa91a0dabc37848a99e7d25188e9be8043332ce721dfd3'
+  source_sha256 '90284644e5568732c15fc4f4312fd0f09ac14c14e5b29fba3909d4da4e281b1e'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '36c0b81ac3e88d55ab21e848b50484df7578524b51f4b0aeb2fbc013bf2c52a5',
-     armv7l: '36c0b81ac3e88d55ab21e848b50484df7578524b51f4b0aeb2fbc013bf2c52a5',
-       i686: 'a87a01816065f891069a8e6756bc7f2c54fd5b97c02264e757c30f83e89c8dc6',
-     x86_64: 'be80ccb967d52328626da29f85b49a9986d186119d6b7004c792855153154f74'
+    aarch64: '33953b02cadb7e9d86c8a014ddd34a39ef723760bd2995ed1dd5fb549fa0294d',
+     armv7l: '33953b02cadb7e9d86c8a014ddd34a39ef723760bd2995ed1dd5fb549fa0294d',
+       i686: '7594504649d0f44bbc5b883354a8254dde4b5dd156937422fc6768e8157b6f4c',
+     x86_64: '558f832c92c03b991a997fa43e3b42f031799fc573f842864bfde8bdc8cc472b'
   })
 
   depends_on 'bzip2' => :library
