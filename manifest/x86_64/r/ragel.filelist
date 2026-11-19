@@ -1,4 +1,4 @@
-# Total size: 36979301
+# Total size: 38716644
 /usr/local/bin/cgil-c
 /usr/local/bin/cgil-crack
 /usr/local/bin/cgil-csharp
@@ -10,6 +10,7 @@
 /usr/local/bin/cgil-ocaml
 /usr/local/bin/cgil-ruby
 /usr/local/bin/cgil-rust
+/usr/local/bin/cgil-zig
 /usr/local/bin/colm
 /usr/local/bin/colm-wrap
 /usr/local/bin/ragel
@@ -25,6 +26,7 @@
 /usr/local/bin/ragel-ocaml
 /usr/local/bin/ragel-ruby
 /usr/local/bin/ragel-rust
+/usr/local/bin/ragel-zig
 /usr/local/include/aapl/astring.h
 /usr/local/include/aapl/avlbasic.h
 /usr/local/include/aapl/avlcommon.h
@@ -108,11 +110,11 @@
 /usr/local/include/libfsm/switchgoto.h
 /usr/local/include/libfsm/switchvar.h
 /usr/local/include/libfsm/tables.h
-/usr/local/lib64/libcolm-0.15.0-pre.1.so
+/usr/local/lib64/libcolm-0.15.0.so
 /usr/local/lib64/libcolm.a
 /usr/local/lib64/libcolm.la
 /usr/local/lib64/libcolm.so
-/usr/local/lib64/libfsm-0.15.0-pre.1.so
+/usr/local/lib64/libfsm-1.0.0.so
 /usr/local/lib64/libfsm.a
 /usr/local/lib64/libfsm.la
 /usr/local/lib64/libfsm.so
@@ -134,6 +136,7 @@
 /usr/local/share/colm-suite/rlhc-ocaml.lm
 /usr/local/share/colm-suite/rlhc-ruby.lm
 /usr/local/share/colm-suite/rlhc-rust.lm
+/usr/local/share/colm-suite/rlhc-zig.lm
 /usr/local/share/colm-suite/runtests
 /usr/local/share/doc/colm-suite/colm.vim
 /usr/local/share/doc/colm-suite/ragel.vim
