@@ -11,15 +11,15 @@ class Libfontenc < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e5adf56b3720b507dc715b20646f32dfe47cebfe6107a143e1fe5add3c6d426b',
-     armv7l: 'e5adf56b3720b507dc715b20646f32dfe47cebfe6107a143e1fe5add3c6d426b',
-       i686: '55476a9fea8f3a75351a4dff6906b251195e7b195056d656d14dff78c388aa40',
-     x86_64: '84f7004da7e7f4da177b01ebbce66b7e2d3b0733c428348ecb362b1ff9370faa'
+    aarch64: '4d94e8bf017c6c4b3e4fb018dc51b6f8002816746591a655fc009569cd166efc',
+     armv7l: '4d94e8bf017c6c4b3e4fb018dc51b6f8002816746591a655fc009569cd166efc',
+       i686: '0ba9b55036265a5dbdb3f64522871a434758aeebb8385954e5fd8c7057be3207',
+     x86_64: 'a215f9431d77cbb911debd16bb2de9a31e46766c879a5c313450853bcd1db4c2'
   })
 
-  depends_on 'glibc' # R
+  depends_on 'glibc' => :library
   depends_on 'xorg_proto' => :build
-  depends_on 'zlib' # R
+  depends_on 'zlib' => :library
 
   meson_options "-Dwith-fontrootdir=#{CREW_PREFIX}/share/fonts/X11"
 end
