@@ -13,10 +13,10 @@ class Llvm23_dev < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7d6a0081915b3a837d8c1120079adb7008f17b5d74b357ace6f920ddd2db88eb',
-     armv7l: '7d6a0081915b3a837d8c1120079adb7008f17b5d74b357ace6f920ddd2db88eb',
-       i686: 'f073f5a5d68253e5bd1180cca4458d9484bfdca5aa848992212d5443c0290310',
-     x86_64: '7b7bc44a878f9d08424ac8f48fac24e0f14aab231e1c24380de930060ea13bbb'
+    aarch64: 'a3a16861be178c8c94f10b7fffad95caf41e10b5cd85683f4d56c36681b8fc87',
+     armv7l: 'a3a16861be178c8c94f10b7fffad95caf41e10b5cd85683f4d56c36681b8fc87',
+       i686: '22238b2333c09239dd75d0467ed60d4cbfdbf6ca6387a05174d2092ac22eb7a5',
+     x86_64: 'd32c5b4387dfa19cc4f77341f0f78504e29e5b36c1b8c9fbdb39f538297b73e6'
   })
 
   depends_on 'gcc_lib' => :library
