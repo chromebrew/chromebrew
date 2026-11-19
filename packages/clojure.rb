@@ -11,10 +11,10 @@ class Clojure < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c2e37a64531caca0843100445f4b645121c7f48faffca610d15abdcaca8018ef',
-     armv7l: 'c2e37a64531caca0843100445f4b645121c7f48faffca610d15abdcaca8018ef',
-       i686: '540f49371358d71abc23dc1f345493cf1064fbc6b91a1b88b7afa9039ba2f3a8',
-     x86_64: 'ae86daac4a6da4ef82814abaffa727628649ff44c248c981f3bf9b66a12b1111'
+    aarch64: 'e7da80729fc884324deb780f82eacd9e470599c9856456e52034c923cfdb4626',
+     armv7l: 'e7da80729fc884324deb780f82eacd9e470599c9856456e52034c923cfdb4626',
+       i686: '2cc8004b94c127cedfda9aa606596570c9b2749707f05b782bdc16be80a3a872',
+     x86_64: 'be3f4a06f583d907fbb720991fc21a9ab4cc7ec7bff63b11ba138bb80a815af6'
   })
 
   depends_on 'ant' => :build
