@@ -3,11 +3,11 @@ require 'buildsystems/meson'
 class Megatools < Meson
   description 'Megatools is a collection of programs for accessing Mega.nz service from a command line of your desktop or server.'
   homepage 'https://megatools.megous.com/'
-  version '1.11.5.20250706'
+  version '1.12.2.20261116'
   license 'GPL-2'
   compatibility 'all'
   source_url "https://xff.cz/megatools/builds/megatools-#{version}.tar.gz"
-  source_sha256 '51f78a03748a64b1066ce28a2ca75d98dbef5f00fe9789dc894827f9a913b362'
+  source_sha256 '2c8cfbb41eabf1ffac92f08f5b3aecb361bcfb9c02ac258769fb5e3ba2f15b84'
   binary_compression 'tar.zst'
 
   binary_sha256({
