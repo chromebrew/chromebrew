@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Miniupnpc < CMake
   description 'UPnP IGD client lightweight library'
   homepage 'http://miniupnp.free.fr/'
-  version '2.3.4'
+  version '2.3.5'
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/miniupnp/miniupnp.git'
