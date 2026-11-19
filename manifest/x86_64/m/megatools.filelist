@@ -1,4 +1,5 @@
-# Total size: 252561
+# Total size: 374610
+/usr/local/bin/mega2fa
 /usr/local/bin/megacopy
 /usr/local/bin/megadf
 /usr/local/bin/megadl
@@ -6,16 +7,19 @@
 /usr/local/bin/megaget
 /usr/local/bin/megals
 /usr/local/bin/megamkdir
+/usr/local/bin/megapasswd
 /usr/local/bin/megaput
 /usr/local/bin/megareg
 /usr/local/bin/megarm
 /usr/local/bin/megatest
 /usr/local/bin/megatools
 /usr/local/etc/bash.d/10-megatools
+/usr/local/share/bash-completion/completions/megatools
 /usr/local/share/doc/megatools/LICENSE
 /usr/local/share/doc/megatools/NEWS
 /usr/local/share/doc/megatools/README
 /usr/local/share/doc/megatools/TODO
+/usr/local/share/man/man1/mega2fa.1.zst
 /usr/local/share/man/man1/megacopy.1.zst
 /usr/local/share/man/man1/megadf.1.zst
 /usr/local/share/man/man1/megadl.1.zst
@@ -23,6 +27,7 @@
 /usr/local/share/man/man1/megaget.1.zst
 /usr/local/share/man/man1/megals.1.zst
 /usr/local/share/man/man1/megamkdir.1.zst
+/usr/local/share/man/man1/megapasswd.1.zst
 /usr/local/share/man/man1/megaput.1.zst
 /usr/local/share/man/man1/megareg.1.zst
 /usr/local/share/man/man1/megarm.1.zst
