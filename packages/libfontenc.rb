@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Libfontenc < Meson
   description 'Fontenc Library from X.org'
   homepage 'https://xorg.freedesktop.org/wiki/'
-  version '1.1.9'
+  version '1.1.10'
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libfontenc.git'
