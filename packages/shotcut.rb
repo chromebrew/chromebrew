@@ -12,7 +12,7 @@ class Shotcut < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '041e70d61d73ee2783882f3e8563225e92ce01e0042d160e4e1a3179f1f7fa99'
+     x86_64: '26f4a8ee6c132be8b3d52d930dd7aab55e07c8cc756a48877aa157d7ec4a37f2'
   })
 
   depends_on 'acl' => :library
