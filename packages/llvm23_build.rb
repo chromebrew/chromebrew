@@ -6,19 +6,19 @@ class Llvm23_build < Package
   @llvm_projects_to_build = ARCH == 'x86_64' ? 'bolt;clang;clang-tools-extra;lld;lldb;compiler-rt;polly' : 'clang;clang-tools-extra;lld;lldb;compiler-rt;polly'
   description "The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The packages included are: #{@llvm_projects_to_build.gsub(';', ' ')}"
   homepage 'https://llvm.org/'
-  version '23.1.5'
+  version '23.1.6'
   # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
   source_url "https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-#{version}.tar.gz"
-  source_sha256 '70642a7e44e63c0ceff6624e5fd077b87766e4ed0bcd4a3ea8e3ffa3827ba538'
+  source_sha256 '66b37a51976c46ad86f49a2304c4dfd64be971f858846dfffaa8a32632474bb8'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0a5d568752635258b945a083fb1ff61725dd6d142dd04de79e38fec6e1afb16e',
-     armv7l: '0a5d568752635258b945a083fb1ff61725dd6d142dd04de79e38fec6e1afb16e',
-       i686: '8156dcfb51587d550884e5a9a3b42b6427cce3ab6782ffc32d9701620a8db4c0',
-     x86_64: 'ca7cf8fb07ef997c418c934de81bc11a5bccacb9b418c3d8f7b42e2641502996'
+    aarch64: 'eb747fe03d747aab193124b94498f0b2ac6a75cfd155fe4dfe99ba4ed3c722e7',
+     armv7l: 'eb747fe03d747aab193124b94498f0b2ac6a75cfd155fe4dfe99ba4ed3c722e7',
+       i686: '8afd4162d13e76703f0db8a6ce150c7935e3872e251badd41a4c478821c351b5',
+     x86_64: '9e9a4eb8b072630bf0253d441288350f5feee24867a9f036fe97062a8a59a07e'
   })
 
   depends_on 'gcc_lib' => :library

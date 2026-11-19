@@ -1,4 +1,4 @@
-# Total size: 5592411
+# Total size: 5670379
 /usr/local/bin/certtool
 /usr/local/bin/danetool
 /usr/local/bin/gnutls-cli
@@ -35,7 +35,7 @@
 /usr/local/lib/libgnutls.la
 /usr/local/lib/libgnutls.so
 /usr/local/lib/libgnutls.so.30
-/usr/local/lib/libgnutls.so.30.42.0
+/usr/local/lib/libgnutls.so.30.43.0
 /usr/local/lib/libgnutlsxx.la
 /usr/local/lib/libgnutlsxx.so
 /usr/local/lib/libgnutlsxx.so.30
@@ -50,6 +50,7 @@
 /usr/local/share/locale/fr/LC_MESSAGES/gnutls.mo
 /usr/local/share/locale/it/LC_MESSAGES/gnutls.mo
 /usr/local/share/locale/ka/LC_MESSAGES/gnutls.mo
+/usr/local/share/locale/lv/LC_MESSAGES/gnutls.mo
 /usr/local/share/locale/ms/LC_MESSAGES/gnutls.mo
 /usr/local/share/locale/nl/LC_MESSAGES/gnutls.mo
 /usr/local/share/locale/pl/LC_MESSAGES/gnutls.mo
@@ -60,6 +61,7 @@
 /usr/local/share/locale/uk/LC_MESSAGES/gnutls.mo
 /usr/local/share/locale/vi/LC_MESSAGES/gnutls.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/gnutls.mo
+/usr/local/share/locale/zh_TW/LC_MESSAGES/gnutls.mo
 /usr/local/share/man/man1/certtool.1.zst
 /usr/local/share/man/man1/danetool.1.zst
 /usr/local/share/man/man1/gnutls-cli-debug.1.zst
