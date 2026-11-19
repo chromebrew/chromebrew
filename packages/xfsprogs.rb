@@ -11,9 +11,9 @@ class Xfsprogs < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f9fde1bcfea1a224a3be15cd699996308ac35be9f1349cc8e2a62cb9be7fcdf2',
-     armv7l: 'f9fde1bcfea1a224a3be15cd699996308ac35be9f1349cc8e2a62cb9be7fcdf2',
-     x86_64: '501fef484e16d9e04de8415df41b980df900a6f4fb04b4fc370cf399966f1571'
+    aarch64: '6778c1e2c1d858d63ad3993b5027629194e57c3433b017346ff7988cb7318265',
+     armv7l: '6778c1e2c1d858d63ad3993b5027629194e57c3433b017346ff7988cb7318265',
+     x86_64: '204042840b39dd3d2cd266c20fee1c97651ce069b510e69cc11adc06da0be891'
   })
 
   depends_on 'gcc_lib' => :library
