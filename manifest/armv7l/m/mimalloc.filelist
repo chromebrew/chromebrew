@@ -1,15 +1,15 @@
-# Total size: 2776050
-/usr/local/include/mimalloc-3.6/mimalloc-new-delete.h
-/usr/local/include/mimalloc-3.6/mimalloc-override.h
-/usr/local/include/mimalloc-3.6/mimalloc-stats.h
-/usr/local/include/mimalloc-3.6/mimalloc.h
-/usr/local/lib/cmake/mimalloc-3.6/mimalloc-config-version.cmake
-/usr/local/lib/cmake/mimalloc-3.6/mimalloc-config.cmake
-/usr/local/lib/cmake/mimalloc-3.6/mimalloc-release.cmake
-/usr/local/lib/cmake/mimalloc-3.6/mimalloc.cmake
+# Total size: 3099278
+/usr/local/include/mimalloc-3.7/mimalloc-new-delete.h
+/usr/local/include/mimalloc-3.7/mimalloc-override.h
+/usr/local/include/mimalloc-3.7/mimalloc-stats.h
+/usr/local/include/mimalloc-3.7/mimalloc.h
+/usr/local/lib/cmake/mimalloc-3.7/mimalloc-config-version.cmake
+/usr/local/lib/cmake/mimalloc-3.7/mimalloc-config.cmake
+/usr/local/lib/cmake/mimalloc-3.7/mimalloc-release.cmake
+/usr/local/lib/cmake/mimalloc-3.7/mimalloc.cmake
 /usr/local/lib/libmimalloc.so
 /usr/local/lib/libmimalloc.so.3
-/usr/local/lib/libmimalloc.so.3.6
-/usr/local/lib/mimalloc-3.6/libmimalloc.a
-/usr/local/lib/mimalloc-3.6/mimalloc.o
+/usr/local/lib/libmimalloc.so.3.7
+/usr/local/lib/mimalloc-3.7/libmimalloc.a
+/usr/local/lib/mimalloc-3.7/mimalloc.o
 /usr/local/lib/pkgconfig/mimalloc.pc
