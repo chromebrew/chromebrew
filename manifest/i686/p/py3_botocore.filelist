@@ -1,12 +1,12 @@
-# Total size: 22751120
-/usr/local/lib/python3.15/site-packages/botocore-1.44.6.dist-info/INSTALLER
-/usr/local/lib/python3.15/site-packages/botocore-1.44.6.dist-info/LICENSE.txt
-/usr/local/lib/python3.15/site-packages/botocore-1.44.6.dist-info/METADATA
-/usr/local/lib/python3.15/site-packages/botocore-1.44.6.dist-info/NOTICE
-/usr/local/lib/python3.15/site-packages/botocore-1.44.6.dist-info/RECORD
-/usr/local/lib/python3.15/site-packages/botocore-1.44.6.dist-info/REQUESTED
-/usr/local/lib/python3.15/site-packages/botocore-1.44.6.dist-info/WHEEL
-/usr/local/lib/python3.15/site-packages/botocore-1.44.6.dist-info/top_level.txt
+# Total size: 22918056
+/usr/local/lib/python3.15/site-packages/botocore-1.44.7.dist-info/INSTALLER
+/usr/local/lib/python3.15/site-packages/botocore-1.44.7.dist-info/LICENSE.txt
+/usr/local/lib/python3.15/site-packages/botocore-1.44.7.dist-info/METADATA
+/usr/local/lib/python3.15/site-packages/botocore-1.44.7.dist-info/NOTICE
+/usr/local/lib/python3.15/site-packages/botocore-1.44.7.dist-info/RECORD
+/usr/local/lib/python3.15/site-packages/botocore-1.44.7.dist-info/REQUESTED
+/usr/local/lib/python3.15/site-packages/botocore-1.44.7.dist-info/WHEEL
+/usr/local/lib/python3.15/site-packages/botocore-1.44.7.dist-info/top_level.txt
 /usr/local/lib/python3.15/site-packages/botocore/__init__.py
 /usr/local/lib/python3.15/site-packages/botocore/__pycache__/__init__.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/botocore/__pycache__/args.cpython-315.pyc
@@ -1248,6 +1248,7 @@
 /usr/local/lib/python3.15/site-packages/botocore/data/marketplace-deployment/2023-01-25/endpoint-rule-set-1.json.gz
 /usr/local/lib/python3.15/site-packages/botocore/data/marketplace-deployment/2023-01-25/paginators-1.json
 /usr/local/lib/python3.15/site-packages/botocore/data/marketplace-deployment/2023-01-25/service-2.json.gz
+/usr/local/lib/python3.15/site-packages/botocore/data/marketplace-deployment/2023-01-25/waiters-2.json
 /usr/local/lib/python3.15/site-packages/botocore/data/marketplace-discovery/2026-02-05/endpoint-rule-set-1.json.gz
 /usr/local/lib/python3.15/site-packages/botocore/data/marketplace-discovery/2026-02-05/paginators-1.json
 /usr/local/lib/python3.15/site-packages/botocore/data/marketplace-discovery/2026-02-05/paginators-1.sdk-extras.json
@@ -1457,6 +1458,9 @@
 /usr/local/lib/python3.15/site-packages/botocore/data/partnercentral-channel/2024-03-18/paginators-1.json
 /usr/local/lib/python3.15/site-packages/botocore/data/partnercentral-channel/2024-03-18/service-2.json.gz
 /usr/local/lib/python3.15/site-packages/botocore/data/partnercentral-channel/2024-03-18/waiters-2.json
+/usr/local/lib/python3.15/site-packages/botocore/data/partnercentral-marketing/2026-05-31/endpoint-rule-set-1.json.gz
+/usr/local/lib/python3.15/site-packages/botocore/data/partnercentral-marketing/2026-05-31/paginators-1.json
+/usr/local/lib/python3.15/site-packages/botocore/data/partnercentral-marketing/2026-05-31/service-2.json.gz
 /usr/local/lib/python3.15/site-packages/botocore/data/partnercentral-revenue-measurement/2022-07-26/endpoint-rule-set-1.json.gz
 /usr/local/lib/python3.15/site-packages/botocore/data/partnercentral-revenue-measurement/2022-07-26/paginators-1.json
 /usr/local/lib/python3.15/site-packages/botocore/data/partnercentral-revenue-measurement/2022-07-26/service-2.json.gz
@@ -1523,6 +1527,7 @@
 /usr/local/lib/python3.15/site-packages/botocore/data/polly/2016-06-10/examples-1.json
 /usr/local/lib/python3.15/site-packages/botocore/data/polly/2016-06-10/paginators-1.json
 /usr/local/lib/python3.15/site-packages/botocore/data/polly/2016-06-10/service-2.json.gz
+/usr/local/lib/python3.15/site-packages/botocore/data/polly/2016-06-10/waiters-2.json
 /usr/local/lib/python3.15/site-packages/botocore/data/pricing-plan-manager/2025-08-05/endpoint-rule-set-1.json.gz
 /usr/local/lib/python3.15/site-packages/botocore/data/pricing-plan-manager/2025-08-05/paginators-1.json
 /usr/local/lib/python3.15/site-packages/botocore/data/pricing-plan-manager/2025-08-05/service-2.json.gz
