@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Exfatprogs < Autotools
   description 'exFAT filesystem userspace utilities for the Linux Kernel exfat driver.'
   homepage 'https://github.com/exfatprogs/exfatprogs'
-  version '1.4.4'
+  version '1.4.5'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/exfatprogs/exfatprogs.git'
