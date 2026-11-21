@@ -1,17 +1,18 @@
-# Total size: 934076
-/usr/local/lib/python3.15/site-packages/platformdirs-4.14.7.dist-info/INSTALLER
-/usr/local/lib/python3.15/site-packages/platformdirs-4.14.7.dist-info/METADATA
-/usr/local/lib/python3.15/site-packages/platformdirs-4.14.7.dist-info/RECORD
-/usr/local/lib/python3.15/site-packages/platformdirs-4.14.7.dist-info/REQUESTED
-/usr/local/lib/python3.15/site-packages/platformdirs-4.14.7.dist-info/WHEEL
-/usr/local/lib/python3.15/site-packages/platformdirs-4.14.7.dist-info/entry_points.txt
-/usr/local/lib/python3.15/site-packages/platformdirs-4.14.7.dist-info/licenses/LICENSE
-/usr/local/lib/python3.15/site-packages/platformdirs-4.14.7.dist-info/sboms/platformdirs.cdx.json
+# Total size: 973415
+/usr/local/lib/python3.15/site-packages/platformdirs-4.14.8.dist-info/INSTALLER
+/usr/local/lib/python3.15/site-packages/platformdirs-4.14.8.dist-info/METADATA
+/usr/local/lib/python3.15/site-packages/platformdirs-4.14.8.dist-info/RECORD
+/usr/local/lib/python3.15/site-packages/platformdirs-4.14.8.dist-info/REQUESTED
+/usr/local/lib/python3.15/site-packages/platformdirs-4.14.8.dist-info/WHEEL
+/usr/local/lib/python3.15/site-packages/platformdirs-4.14.8.dist-info/entry_points.txt
+/usr/local/lib/python3.15/site-packages/platformdirs-4.14.8.dist-info/licenses/LICENSE
+/usr/local/lib/python3.15/site-packages/platformdirs-4.14.8.dist-info/sboms/platformdirs.cdx.json
 /usr/local/lib/python3.15/site-packages/platformdirs/__init__.py
 /usr/local/lib/python3.15/site-packages/platformdirs/__main__.py
 /usr/local/lib/python3.15/site-packages/platformdirs/__pycache__/__init__.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/platformdirs/__pycache__/__main__.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/platformdirs/__pycache__/_android.cpython-315.pyc
+/usr/local/lib/python3.15/site-packages/platformdirs/__pycache__/_paths.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/platformdirs/__pycache__/_runtime.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/platformdirs/__pycache__/_xdg.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/platformdirs/__pycache__/android.cpython-315.pyc
@@ -24,6 +25,7 @@
 /usr/local/lib/python3.15/site-packages/platformdirs/__pycache__/version.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/platformdirs/__pycache__/windows.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/platformdirs/_android.py
+/usr/local/lib/python3.15/site-packages/platformdirs/_paths.py
 /usr/local/lib/python3.15/site-packages/platformdirs/_runtime.py
 /usr/local/lib/python3.15/site-packages/platformdirs/_xdg.py
 /usr/local/lib/python3.15/site-packages/platformdirs/android.py
