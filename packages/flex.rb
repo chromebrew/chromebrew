@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Flex < Autotools
   description 'Flex (The Fast Lexical Analyzer) is a fast lexical analyser generator tool for generating programs that perform pattern-matching on text.'
   homepage 'https://www.gnu.org/software/flex/'
-  version '2.6.4-2'
+  version '2.7.3'
   license 'BSD'
   compatibility 'all'
   source_url "https://github.com/westes/flex/releases/download/v#{version.split('-').first}/flex-#{version.split('-').first}.tar.gz"
-  source_sha256 'e87aae032bf07c26f85ac0ed3250998c37621d95f8bd748b31f15b33c45ee995'
+  source_sha256 'b18bbc3622b2b9ebecd0423f4e110adfad8db51d0c5ada3f26660c7cb7c735ec'
   binary_compression 'tar.zst'
 
   binary_sha256({
