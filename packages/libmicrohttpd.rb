@@ -11,10 +11,10 @@ class Libmicrohttpd < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6b2ca4cb0f4ac3616450eeaad8c24b86afce76b1bf34de9f7727a2cc137ee762',
-     armv7l: '6b2ca4cb0f4ac3616450eeaad8c24b86afce76b1bf34de9f7727a2cc137ee762',
-       i686: '488881b4d23262e50b21d251e8f46e9226b800ec428e1e514d11c7ae2b44aab0',
-     x86_64: '95e6d3809b310f8ff0bf95c4695db8072061e9b5a776f86ba01a1b74c9be888f'
+    aarch64: 'd652ddad6a231dd885e8eba003772ab24f87c8010a8dede04d6943cd04b9c48f',
+     armv7l: 'd652ddad6a231dd885e8eba003772ab24f87c8010a8dede04d6943cd04b9c48f',
+       i686: 'f79547edee8d3583864bd18193801b9b18fd1636846e7cc0c6fdc0b11de26431',
+     x86_64: '56b84c16258e4315afea980fc766e5e90ddaf51607611149547b1b5ba5675117'
   })
 
   depends_on 'brotli' => :library
