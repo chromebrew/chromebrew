@@ -3,12 +3,12 @@ require 'package'
 class Gjc < Package
   description 'Gajae-Code (gjc) is an external coding-agent harness'
   homepage 'https://github.com/Yeachan-Heo/gajae-code'
-  version '0.21.1'
+  version '0.22.0'
   license 'MIT'
   compatibility 'x86_64'
   min_glibc '2.29'
   source_url "https://github.com/Yeachan-Heo/gajae-code/releases/download/v#{version}/gjc-linux-x64"
-  source_sha256 '11da38eedc695626c50f52a94511b7e49ccff6719a2dc363709942e953325343'
+  source_sha256 '551314fe00d10f4530ab19437fdc86405e486433e5e8faaee6f0c59848f0f10a'
 
   no_compile_needed
 
