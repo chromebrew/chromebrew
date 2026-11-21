@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Libffcall < Autotools
   description 'GNU libffcall is a library which can be used to build foreign function call interfaces in embedded interpreters.'
   homepage 'https://www.gnu.org/software/libffcall/'
-  version '2.5'
+  version '2.6'
   license 'GPL-3+'
   compatibility 'all'
   source_url "https://ftp.gnu.org/gnu/libffcall/libffcall-#{version}.tar.gz"
-  source_sha256 '7f422096b40498b1389093955825f141bb67ed6014249d884009463dc7846879'
+  source_sha256 '7e3951d642a1884adaf7f15c60df1bf8fbde686daa9fa69df1a514471b8cff39'
   binary_compression 'tar.zst'
 
   binary_sha256({
