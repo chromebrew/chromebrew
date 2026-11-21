@@ -11,10 +11,10 @@ class Libseccomp < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a8783ff0030df832a3953dec6636fee9b2f1f2f28cc5ef63d8a0402290bff715',
-     armv7l: 'a8783ff0030df832a3953dec6636fee9b2f1f2f28cc5ef63d8a0402290bff715',
-       i686: 'e2b315bd37a85937ab2dc12dbdca901d0c03e4668b9e41e0d8794b247224d8e8',
-     x86_64: '3865f48498cc24e4d5e27b28faf9a830b1686ed5701919180958c33d187308bb'
+    aarch64: '5034d2f72ec8410f4d86a5e3392e66a2e0ca46e81330704c9c79db87b4c105a3',
+     armv7l: '5034d2f72ec8410f4d86a5e3392e66a2e0ca46e81330704c9c79db87b4c105a3',
+       i686: '1e7a212258c8f93fbe5591e8f3ad44b4c5966aa613d2722bba4e71ac3614379a',
+     x86_64: 'fc281c5b736a7e40e786a6d3e49ca93a86adacb4beb50ba17ff8338de9bf85e8'
   })
 
   depends_on 'glibc' => :library
