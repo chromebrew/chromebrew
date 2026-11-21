@@ -3,18 +3,18 @@ require 'package'
 class Libseccomp < Package
   description 'The libseccomp library provides an easy to use, platform independent, interface to the Linux Kernel\'s syscall filtering mechanism.'
   homepage 'https://github.com/seccomp/libseccomp'
-  version '2.6.1'
+  version '2.6.2'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url "https://github.com/seccomp/libseccomp/archive/v#{version}.tar.gz"
-  source_sha256 'f9a13e4c633d319a9240189760ca348caa0837c0ebe2a09b17061da8ceaf60f0'
+  source_sha256 '4e3dfa94dfc4c2aa21e5e707e5bfebc87063f2461b1d22f84e9d1ed507db7e4b'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a8783ff0030df832a3953dec6636fee9b2f1f2f28cc5ef63d8a0402290bff715',
-     armv7l: 'a8783ff0030df832a3953dec6636fee9b2f1f2f28cc5ef63d8a0402290bff715',
-       i686: 'e2b315bd37a85937ab2dc12dbdca901d0c03e4668b9e41e0d8794b247224d8e8',
-     x86_64: '3865f48498cc24e4d5e27b28faf9a830b1686ed5701919180958c33d187308bb'
+    aarch64: '5034d2f72ec8410f4d86a5e3392e66a2e0ca46e81330704c9c79db87b4c105a3',
+     armv7l: '5034d2f72ec8410f4d86a5e3392e66a2e0ca46e81330704c9c79db87b4c105a3',
+       i686: '1e7a212258c8f93fbe5591e8f3ad44b4c5966aa613d2722bba4e71ac3614379a',
+     x86_64: 'fc281c5b736a7e40e786a6d3e49ca93a86adacb4beb50ba17ff8338de9bf85e8'
   })
 
   depends_on 'glibc' => :library
