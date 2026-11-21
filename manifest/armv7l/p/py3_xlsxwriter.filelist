@@ -1,13 +1,13 @@
-# Total size: 1943748
+# Total size: 2048523
 /usr/local/bin/__pycache__/vba_extract.cpython-315.pyc
 /usr/local/bin/vba_extract.py
-/usr/local/lib/python3.15/site-packages/xlsxwriter-3.3.2.dist-info/INSTALLER
-/usr/local/lib/python3.15/site-packages/xlsxwriter-3.3.2.dist-info/METADATA
-/usr/local/lib/python3.15/site-packages/xlsxwriter-3.3.2.dist-info/RECORD
-/usr/local/lib/python3.15/site-packages/xlsxwriter-3.3.2.dist-info/REQUESTED
-/usr/local/lib/python3.15/site-packages/xlsxwriter-3.3.2.dist-info/WHEEL
-/usr/local/lib/python3.15/site-packages/xlsxwriter-3.3.2.dist-info/licenses/LICENSE.txt
-/usr/local/lib/python3.15/site-packages/xlsxwriter-3.3.2.dist-info/top_level.txt
+/usr/local/lib/python3.15/site-packages/xlsxwriter-3.3.3.dist-info/INSTALLER
+/usr/local/lib/python3.15/site-packages/xlsxwriter-3.3.3.dist-info/METADATA
+/usr/local/lib/python3.15/site-packages/xlsxwriter-3.3.3.dist-info/RECORD
+/usr/local/lib/python3.15/site-packages/xlsxwriter-3.3.3.dist-info/REQUESTED
+/usr/local/lib/python3.15/site-packages/xlsxwriter-3.3.3.dist-info/WHEEL
+/usr/local/lib/python3.15/site-packages/xlsxwriter-3.3.3.dist-info/licenses/LICENSE.txt
+/usr/local/lib/python3.15/site-packages/xlsxwriter-3.3.3.dist-info/top_level.txt
 /usr/local/lib/python3.15/site-packages/xlsxwriter/__init__.py
 /usr/local/lib/python3.15/site-packages/xlsxwriter/__pycache__/__init__.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/xlsxwriter/__pycache__/app.cpython-315.pyc
@@ -35,6 +35,8 @@
 /usr/local/lib/python3.15/site-packages/xlsxwriter/__pycache__/image.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/xlsxwriter/__pycache__/metadata.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/xlsxwriter/__pycache__/packager.cpython-315.pyc
+/usr/local/lib/python3.15/site-packages/xlsxwriter/__pycache__/pivot_cache.cpython-315.pyc
+/usr/local/lib/python3.15/site-packages/xlsxwriter/__pycache__/pivot_table.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/xlsxwriter/__pycache__/relationships.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/xlsxwriter/__pycache__/rich_value.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/xlsxwriter/__pycache__/rich_value_rel.cpython-315.pyc
@@ -76,6 +78,8 @@
 /usr/local/lib/python3.15/site-packages/xlsxwriter/image.py
 /usr/local/lib/python3.15/site-packages/xlsxwriter/metadata.py
 /usr/local/lib/python3.15/site-packages/xlsxwriter/packager.py
+/usr/local/lib/python3.15/site-packages/xlsxwriter/pivot_cache.py
+/usr/local/lib/python3.15/site-packages/xlsxwriter/pivot_table.py
 /usr/local/lib/python3.15/site-packages/xlsxwriter/relationships.py
 /usr/local/lib/python3.15/site-packages/xlsxwriter/rich_value.py
 /usr/local/lib/python3.15/site-packages/xlsxwriter/rich_value_rel.py
