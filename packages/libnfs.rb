@@ -11,10 +11,10 @@ class Libnfs < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fd5848c2e2b184066985194cacaec8b4b15bfaf9a14044cff2fc7ea0274dadbb',
-     armv7l: 'fd5848c2e2b184066985194cacaec8b4b15bfaf9a14044cff2fc7ea0274dadbb',
-       i686: '110f83635a37041fdd578a367a377335a39f5e8a9d41780460b7c806a82537a0',
-     x86_64: 'a489f64c01978520384abbeb9cd6c8ef7bf0d0a436befaf15d74d58138cee2ef'
+    aarch64: '433ca6968b56a5a54bff0f557f814945faa3e3d7a2905cabf8f011ad5574730c',
+     armv7l: '433ca6968b56a5a54bff0f557f814945faa3e3d7a2905cabf8f011ad5574730c',
+       i686: 'b0ce9ae36006cab8c3898c778bbf85c63b6032f63971a426a12e9adf3c8ab7ae',
+     x86_64: '39ecf2c9dec8161210bee50931e4c6c981bad6e38b8dee007c213fff7289dac6'
   })
 
   depends_on 'brotli' => :executable
