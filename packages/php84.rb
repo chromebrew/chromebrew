@@ -11,9 +11,9 @@ class Php84 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '940f05c8e2cd3e73686861951570d88a8e881988f7c0d0dffec17a290d5a4b15',
-     armv7l: '940f05c8e2cd3e73686861951570d88a8e881988f7c0d0dffec17a290d5a4b15',
-     x86_64: 'eb27221d0db4076d671fba8c17182845bc8d8f5e74144f1c4934f8f2876f007c'
+    aarch64: 'a54c9f98da8a1e98ac35cd5791d5c9a1e79418d063cb033a3b17eef1dfb8361d',
+     armv7l: 'a54c9f98da8a1e98ac35cd5791d5c9a1e79418d063cb033a3b17eef1dfb8361d',
+     x86_64: '2cad936bc33d0e16aa5c0668a4ce19999bf9c217de72dba28043db1b10ff4960'
   })
 
   depends_on 'aspell_en' => :build
