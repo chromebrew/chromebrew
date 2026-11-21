@@ -11,10 +11,10 @@ class Freetds < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a8641da817f2f8a08d4368c91e60b5874683cd5f55a701d6ecca7b1fdab24fd0',
-     armv7l: 'a8641da817f2f8a08d4368c91e60b5874683cd5f55a701d6ecca7b1fdab24fd0',
-       i686: '55cd86ae27b4d8c8e2c0679823f22848a271d5213e6352ac99807ea05a9722e8',
-     x86_64: 'fb84e7fd86d414415e5d71ab45f7f722cbb5e433d601ee9237fc9bc7e9fd4beb'
+    aarch64: 'c46bbe7e79451387c78ba310874578f83a108b522b0ec7aab7c012c65d79e8c5',
+     armv7l: 'c46bbe7e79451387c78ba310874578f83a108b522b0ec7aab7c012c65d79e8c5',
+       i686: '3e954dbbd23e70fef50452465d4e774beef6e782129e2e75fd205a2e2ad18da5',
+     x86_64: 'f0a0d27d2de5b3dd2e54bf4825f32bca16b5d06875f9e576aef7d2b4a3c752d3'
   })
 
   depends_on 'glibc' => :library
