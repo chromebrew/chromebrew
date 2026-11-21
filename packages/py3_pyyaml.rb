@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_pyyaml < Pip
   description 'PyYAML is a YAML parser and emitter for Python.'
   homepage 'https://pyyaml.org/'
-  version "6.0.3-#{CREW_PY_VER}"
+  version "6.0.4-#{CREW_PY_VER}"
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ef871a1118662d428064e3b602382523ab26884874e9017d287ca5d196ab70a0',
-     armv7l: 'ef871a1118662d428064e3b602382523ab26884874e9017d287ca5d196ab70a0',
-       i686: 'f348aacc9c917e66117cb8895a626b56acfafa7206ffb95be6ab1dbd9c392f74',
-     x86_64: '9fa0f002069edc840a47efe0858dcff6d78f501ce9185cbd0b65f1a90d448410'
+    aarch64: 'c403278ad27da8780f4e2096fdda7597433fef003d55554eaa49d0a5e313a727',
+     armv7l: 'c403278ad27da8780f4e2096fdda7597433fef003d55554eaa49d0a5e313a727',
+       i686: 'b605c8368ff8048115e1ecb9db62a2d8a1b9c1bb8ea86c4ebac029912cc176f5',
+     x86_64: '7c5f6a627d59e9f83c8eb95bf9569de6eb315741e27e2968edfef68cca0dcec3'
   })
 
   depends_on 'glibc' => :library
