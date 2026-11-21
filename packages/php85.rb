@@ -3,11 +3,11 @@ require 'package'
 class Php85 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'https://www.php.net/'
-  version '8.5.12'
+  version '8.5.13'
   license 'PHP-3.01'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.php.net/distributions/php-#{version}.tar.xz"
-  source_sha256 '08bc2eba2a588654ade1357174aa646b761556c862dda0678345ee29ed481209'
+  source_sha256 '607602acaf0c3061818e9916ec44a058e8b3d43959a83862b9cd3ec7bf5b785f'
   binary_compression 'tar.zst'
 
   binary_sha256({
