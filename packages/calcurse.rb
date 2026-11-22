@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Calcurse < Autotools
   description 'calcurse is a calendar and scheduling application for the command line.'
   homepage 'https://calcurse.org/'
-  version '4.9.0'
+  version '4.9.1'
   license 'BSD-2'
   compatibility 'all'
   source_url "https://calcurse.org/files/calcurse-#{version}.tar.gz"
-  source_sha256 '1e7b549af7518f0ea08bee118032f86d73875f5140980972f1a728d8ad483661'
+  source_sha256 '17621360d80f154aebf082ff52f5b3bfe43386a72e4f2c44e18f45a980b502b6'
   binary_compression 'tar.zst'
 
   binary_sha256({
