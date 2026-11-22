@@ -11,10 +11,10 @@ class Unrtf < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '776436a265610fe95ba2fe23f1ecd026fd3e00c6838efc93b9580c071e510f65',
-     armv7l: '776436a265610fe95ba2fe23f1ecd026fd3e00c6838efc93b9580c071e510f65',
-       i686: 'dcd2b077269904a591b9ab436f55e60e87c6660d98a0f9b8ecfcb161a4f3a298',
-     x86_64: 'b6c4d39dc9c19ceeb92f01c0bda8e40254d4f505cc04f084955244a155008d08'
+    aarch64: '4db7218ca1d71e65c87d825402c4aaac738477bb4eeab50a6dd20dae0d449c48',
+     armv7l: '4db7218ca1d71e65c87d825402c4aaac738477bb4eeab50a6dd20dae0d449c48',
+       i686: '76cd776fa7a13440362872ca45f9c3feeaeba43ed0a84904d122df19ff45095b',
+     x86_64: 'd9542be2cdbbc5f82391db9c983236fffc5562557803aa7f2f3937df4f915d91'
   })
 
   depends_on 'glibc' => :executable
