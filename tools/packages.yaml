@@ -9625,6 +9625,11 @@ url: https://sourceforge.net/projects/strace/files/strace/
 activity: low
 ---
 kind: url
+name: strata
+url: https://github.com/Niko1221/Strata/releases
+activity: high
+---
+kind: url
 name: stressng
 url: http://kernel.ubuntu.com/~cking/tarballs/stress-ng
 activity: high
