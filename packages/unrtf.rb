@@ -3,11 +3,11 @@ require 'buildsystems/autotools'
 class Unrtf < Autotools
   description 'UnRTF is a command-line program written in C which converts documents in Rich Text Format (.rtf) to HTML, LaTeX, troff macros, and RTF itself.'
   homepage 'https://www.gnu.org/software/unrtf/'
-  version '0.21.13'
+  version '0.21.14'
   license 'GPL-3'
   compatibility 'all'
   source_url "https://www.gnu.org/software/unrtf/unrtf-#{version}.tar.gz"
-  source_sha256 'ff227d1a0adb84a9e1a51b5e5c3cecbda3d67c8a31dbd7e8593a040a438fb44c'
+  source_sha256 'b1f72e87f195bd50dbc974b800918df61c881706c11716b7bd0a1981e81b9587'
   binary_compression 'tar.zst'
 
   binary_sha256({
