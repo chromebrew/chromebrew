@@ -1,31 +1,25 @@
-# Adapted from Arch Linux deno PKGBUILD at:
-# https://github.com/archlinux/svntogit-community/raw/packages/deno/trunk/PKGBUILD
+require 'package'
 
-require 'buildsystems/rust'
-
-class Deno < RUST
+class Deno < Package
   description 'A secure runtime for JavaScript and TypeScript'
   homepage 'https://deno.land'
   version '2.9.8'
   license 'MIT'
   compatibility 'x86_64'
-  source_url 'https://github.com/denoland/deno.git'
-  git_hashtag "v#{version}"
-  binary_compression 'tar.zst'
-
-  binary_sha256({
-     x86_64: '9360c860a146a34968d865032a6576fc3b60d83a069c91e3f1c2b99729ffed69'
-  })
+  source_url "https://dl.deno.land/release/v#{version}/deno-x86_64-unknown-linux-gnu.zip"
+  source_sha256 'a39762429792913fe762ef0b59c9cba41dbd38195984da99221a193b13d97b40'
 
   depends_on 'gcc_lib' => :executable
   depends_on 'glibc' => :executable
   depends_on 'glibc_lib' => :executable
-  depends_on 'llvm_dev' => :build
-  depends_on 'protobuf' => :build
+  depends_on 'zip' => :executable
+
+  no_compile_needed
+  print_source_bashrc
 
   def self.install
-    FileUtils.install 'target/release/deno', "#{CREW_DEST_PREFIX}/bin/deno", mode: 0o755
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/bash-completion/completions"
-    system "./target/release/deno completions bash > #{CREW_DEST_PREFIX}/share/bash-completion/completions/deno"
+    FileUtils.install 'deno', "#{CREW_DEST_PREFIX}/bin/deno", mode: 0o755
+    system "#{CREW_DEST_PREFIX}/bin/deno completions > 10-deno"
+    FileUtils.install '10-deno', "#{CREW_DEST_PREFIX}/etc/env.d/10-deno", mode: 0o644
   end
 end
