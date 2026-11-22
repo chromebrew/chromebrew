@@ -1,3 +1,3 @@
-# Total size: 142345704
+# Total size: 96079211
 /usr/local/bin/deno
-/usr/local/share/bash-completion/completions/deno
+/usr/local/etc/env.d/10-deno
