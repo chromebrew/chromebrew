@@ -16,7 +16,7 @@ class Py3_wcwidth < Pip
      x86_64: 'ceb26093f8f2aa4fbee6b9f64639896b71ae28848be170878e21ad2b01bf8331'
   })
 
-  depends_on 'glibc' => :build
+  depends_on 'glibc' => :library
   depends_on 'glibc_lib' => :build
   depends_on 'python3' => :logical
 
