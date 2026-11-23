@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Vte < Meson
   description 'Virtual Terminal Emulator widget for use with GTK'
   homepage 'https://wiki.gnome.org/Apps/Terminal/VTE'
-  version "0.84.1-#{CREW_ICU_VER}"
+  version "0.84.2-#{CREW_ICU_VER}"
   license 'LGPL-2+ and GPL-3+'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/vte.git'
@@ -11,9 +11,9 @@ class Vte < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'eecc6358aa495731dc45e9cbf197b045ccbb68f5adba0d6cab0612fdd0df2a90',
-     armv7l: 'eecc6358aa495731dc45e9cbf197b045ccbb68f5adba0d6cab0612fdd0df2a90',
-     x86_64: '9c837e978b605aaaf22c7dda068ac27159df14bd27970aeb3a5942bf526aa12b'
+    aarch64: 'ba9134e990b090055263edd81938b8f4b8a359732208e6b93d27710d01f19964',
+     armv7l: 'ba9134e990b090055263edd81938b8f4b8a359732208e6b93d27710d01f19964',
+     x86_64: '29a82c1ebd026a11ce051a295f354ebc3157aa6101c8a102e45f80ed592586e5'
   })
 
   depends_on 'at_spi2_core' => :library
