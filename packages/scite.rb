@@ -11,9 +11,9 @@ class Scite < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '809f5db946784870db3eeeb43c6d2021ffe81a9d5fd7158d12a762e8128cce12',
-     armv7l: '809f5db946784870db3eeeb43c6d2021ffe81a9d5fd7158d12a762e8128cce12',
-     x86_64: 'cabc4d412ac0a8b7f7d6dd8b68bfb76b9d341f892ce12bf4739505d254bcf584'
+    aarch64: 'edf1339562b3474095adaff12325df4bbd7c4dc39c8214d5e229ef99786eb7a4',
+     armv7l: 'edf1339562b3474095adaff12325df4bbd7c4dc39c8214d5e229ef99786eb7a4',
+     x86_64: '1be4a2e08e519481bb1f4ae050385eb98bb32e02aab53de69bdd9fcd7f6f0397'
   })
 
   depends_on 'at_spi2_core' => :library
