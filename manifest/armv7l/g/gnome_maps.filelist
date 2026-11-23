@@ -1,4 +1,4 @@
-# Total size: 6271168
+# Total size: 6340273
 /usr/local/bin/gnome-maps
 /usr/local/lib/gnome-maps/girepository-1.0/GnomeMaps-1.0.typelib
 /usr/local/lib/gnome-maps/libgnome-maps.so
@@ -222,6 +222,7 @@
 /usr/local/share/locale/an/LC_MESSAGES/gnome-maps.mo
 /usr/local/share/locale/ar/LC_MESSAGES/gnome-maps.mo
 /usr/local/share/locale/as/LC_MESSAGES/gnome-maps.mo
+/usr/local/share/locale/az/LC_MESSAGES/gnome-maps.mo
 /usr/local/share/locale/be/LC_MESSAGES/gnome-maps.mo
 /usr/local/share/locale/bg/LC_MESSAGES/gnome-maps.mo
 /usr/local/share/locale/bs/LC_MESSAGES/gnome-maps.mo
@@ -259,6 +260,7 @@
 /usr/local/share/locale/kw/LC_MESSAGES/gnome-maps.mo
 /usr/local/share/locale/lt/LC_MESSAGES/gnome-maps.mo
 /usr/local/share/locale/lv/LC_MESSAGES/gnome-maps.mo
+/usr/local/share/locale/mi/LC_MESSAGES/gnome-maps.mo
 /usr/local/share/locale/mjw/LC_MESSAGES/gnome-maps.mo
 /usr/local/share/locale/ml/LC_MESSAGES/gnome-maps.mo
 /usr/local/share/locale/ms/LC_MESSAGES/gnome-maps.mo
