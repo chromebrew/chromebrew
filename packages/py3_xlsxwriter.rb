@@ -3,17 +3,17 @@ require 'buildsystems/pip'
 class Py3_xlsxwriter < Pip
   description 'XlsxWriter is a Python module for creating Excel XLSX files.'
   homepage 'https://xlsxwriter.readthedocs.io/'
-  version "3.3.3-#{CREW_PY_VER}"
+  version "3.3.4-#{CREW_PY_VER}"
   license 'BSD'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c92ac59be50918bdf6ef7c8cd4963f97e5cb4cd482658153f55e42442af7af62',
-     armv7l: 'c92ac59be50918bdf6ef7c8cd4963f97e5cb4cd482658153f55e42442af7af62',
-       i686: 'd9073315d8455d014956d9bdef40a59a278cfa860634c174062b8a64456d2181',
-     x86_64: '6046c0ccad36d1aa96f02dbd4afaf6e0c2ed02e1666d17c6016f321e7a946a9d'
+    aarch64: 'd16b5c27dd5a2007db886f28c6a1164d64fdeb3106ccd353a3954811fb30bbf6',
+     armv7l: 'd16b5c27dd5a2007db886f28c6a1164d64fdeb3106ccd353a3954811fb30bbf6',
+       i686: '9de2bc97248ab76127cb1d09de54902c26ac1f74add6546e42565de81a4ae33f',
+     x86_64: '53ae730f8f7272a0881a83a2dd747301ddee40b5b102da808648844fa8a085c5'
   })
 
   depends_on 'python3' => :logical
