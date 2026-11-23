@@ -3,35 +3,48 @@ require 'buildsystems/autotools'
 class Snd < Autotools
   description 'Sound editor'
   homepage 'https://ccrma.stanford.edu/software/snd/'
-  version '24.1'
+  version '26.8'
   license 'Artistic'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://ccrma.stanford.edu/software/snd/snd-24.1.tar.gz'
-  source_sha256 '842e8675d623043ea9e33c070f77c2bd964bc2946234a39be9a687b2d4610353'
+  source_url "https://ccrma.stanford.edu/software/snd/snd-#{version}.tar.gz"
+  source_sha256 '68e9380da9b58a6da48a48e6bb93d6437eaa129efd3e213816f87a2313a88647'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '482dceabb30e90fc3b9a8fb1edf2be801d124d01780024e875247cc411c73c06',
-     armv7l: '482dceabb30e90fc3b9a8fb1edf2be801d124d01780024e875247cc411c73c06',
-     x86_64: '6c0062b078ee1a2928e281b3dcc484eb42cf464b14a2e621f4ccbcd1a18f2cb5'
+    aarch64: '8cf353d86272eb3091fd044cdce560f751b7914032b0de5f526f9270d01b2f89',
+     armv7l: '8cf353d86272eb3091fd044cdce560f751b7914032b0de5f526f9270d01b2f89',
+     x86_64: 'bda2de1a14de0c82be0df1b682a69ac665f2e809cc67ee052b119c0df9cc7c77'
   })
 
-  depends_on 'alsa_lib'
-  depends_on 'gl2ps'
-  depends_on 'gmp'
-  depends_on 'gsl'
-  depends_on 'gtk3'
-  depends_on 'jack'
-  depends_on 'ladspa'
-  depends_on 'libogg'
-  depends_on 'libxpm'
-  depends_on 'mesa'
-  depends_on 'motif'
-  depends_on 'mpg123'
-  depends_on 'scheme48'
-  depends_on 'speexdsp'
-  depends_on 'pulseaudio'
+  depends_on 'alsa_lib' => :executable
+  depends_on 'fftw' => :executable
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
+  depends_on 'gmp' => :executable
+  depends_on 'gsl' => :executable
+  depends_on 'gtk3' => :executable
+  depends_on 'jack' => :executable
+  depends_on 'ladspa' => :executable
+  depends_on 'libglu' => :executable
+  depends_on 'libglvnd' => :executable
+  depends_on 'libice' => :executable
+  depends_on 'libogg' => :executable
+  depends_on 'libsamplerate' => :executable
+  depends_on 'libsm' => :executable
+  depends_on 'libx11' => :executable
+  depends_on 'libxext' => :executable
+  depends_on 'libxft' => :executable
+  depends_on 'libxpm' => :executable
+  depends_on 'libxt' => :executable
+  depends_on 'mesa' => :executable
+  depends_on 'motif' => :executable
+  depends_on 'mpc' => :executable
+  depends_on 'mpfr' => :executable
+  depends_on 'mpg123' => :executable
+  depends_on 'scheme48' => :executable
+  depends_on 'speexdsp' => :executable
 
+  autotools_pre_configure_options "CFLAGS=' -Wno-implicit-function-declaration'"
   autotools_configure_options '--with-s7 \
     --with-ruby \
     --with-motif \
@@ -41,6 +54,5 @@ class Snd < Autotools
     --with-gmp \
     --with-alsa \
     --with-jack \
-    --with-pulseaudio \
     --with-ladspa'
 end
