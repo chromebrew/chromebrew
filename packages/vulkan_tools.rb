@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Vulkan_tools < CMake
   description 'Vulkan Utilities and Tools'
   homepage 'https://github.com/KhronosGroup/Vulkan-Tools'
-  version '1.4.368'
+  version '1.4.369'
   license 'custom'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/KhronosGroup/Vulkan-Tools.git'
@@ -14,9 +14,9 @@ class Vulkan_tools < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5c030daf710b743fd64498f7428fff97a50a26cb055832a032adb951bad0ea20',
-     armv7l: '5c030daf710b743fd64498f7428fff97a50a26cb055832a032adb951bad0ea20',
-     x86_64: 'a45d71439e0c086c807cc5b2f1f29e6a73d6622cc672b342e40326928346bf71'
+    aarch64: 'c79cdb782327c3ab07a9fc5e4b5d7cf7a18d28c0099a6232af94db7a6acf1062',
+     armv7l: 'c79cdb782327c3ab07a9fc5e4b5d7cf7a18d28c0099a6232af94db7a6acf1062',
+     x86_64: 'e57e54d1bfc90b5197391b7c5792531c738daeb985ec47f38b1da83ebc1a6924'
   })
 
   depends_on 'gcc_dev' => :build
