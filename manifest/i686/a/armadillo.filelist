@@ -1,4 +1,4 @@
-# Total size: 6096733
+# Total size: 6154387
 /usr/local/include/armadillo
 /usr/local/include/armadillo_bits/BaseCube_bones.hpp
 /usr/local/include/armadillo_bits/BaseCube_meat.hpp
@@ -217,6 +217,7 @@
 /usr/local/include/armadillo_bits/fn_shuffle.hpp
 /usr/local/include/armadillo_bits/fn_size.hpp
 /usr/local/include/armadillo_bits/fn_solve.hpp
+/usr/local/include/armadillo_bits/fn_solve_lse.hpp
 /usr/local/include/armadillo_bits/fn_sort.hpp
 /usr/local/include/armadillo_bits/fn_sort_index.hpp
 /usr/local/include/armadillo_bits/fn_speye.hpp
@@ -553,6 +554,8 @@
 /usr/local/include/armadillo_bits/running_stat_meat.hpp
 /usr/local/include/armadillo_bits/running_stat_vec_bones.hpp
 /usr/local/include/armadillo_bits/running_stat_vec_meat.hpp
+/usr/local/include/armadillo_bits/solve_factoriser_bones.hpp
+/usr/local/include/armadillo_bits/solve_factoriser_meat.hpp
 /usr/local/include/armadillo_bits/sp_auxlib_bones.hpp
 /usr/local/include/armadillo_bits/sp_auxlib_meat.hpp
 /usr/local/include/armadillo_bits/span.hpp
@@ -600,6 +603,8 @@
 /usr/local/include/armadillo_bits/spop_repmat_meat.hpp
 /usr/local/include/armadillo_bits/spop_reverse_bones.hpp
 /usr/local/include/armadillo_bits/spop_reverse_meat.hpp
+/usr/local/include/armadillo_bits/spop_spones_bones.hpp
+/usr/local/include/armadillo_bits/spop_spones_meat.hpp
 /usr/local/include/armadillo_bits/spop_strans_bones.hpp
 /usr/local/include/armadillo_bits/spop_strans_meat.hpp
 /usr/local/include/armadillo_bits/spop_symmat_bones.hpp
@@ -652,7 +657,7 @@
 /usr/local/include/armadillo_bits/xvec_htrans_meat.hpp
 /usr/local/lib/libarmadillo.so
 /usr/local/lib/libarmadillo.so.15
-/usr/local/lib/libarmadillo.so.15.6.2
+/usr/local/lib/libarmadillo.so.15.8.0
 /usr/local/lib/pkgconfig/armadillo.pc
 /usr/local/share/Armadillo/CMake/ArmadilloConfig.cmake
 /usr/local/share/Armadillo/CMake/ArmadilloConfigVersion.cmake

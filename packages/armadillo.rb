@@ -3,18 +3,18 @@ require 'buildsystems/cmake'
 class Armadillo < CMake
   description 'Armadillo is a high quality linear algebra library (matrix maths) for the C++ language, aiming towards a good balance between speed and ease of use'
   homepage 'https://arma.sourceforge.net/'
-  version '15.6.2'
+  version '15.8.0'
   license 'Apache-2.0'
   compatibility 'all'
   source_url "https://downloads.sourceforge.net/project/arma/armadillo-#{version}.tar.xz"
-  source_sha256 '63ee9351b54994dff7b4e2094a86ace48cfb41354cb65893a9dab7c8a16382c4'
+  source_sha256 '84cba6695fa523a7bf9d46bd20d000c4d4f108fbdc15ba45c294d507f5def880'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9b84f850fa472d2b36a8f81e32ea78255f7e49c5c20a55c4fd40543892128afc',
-     armv7l: '9b84f850fa472d2b36a8f81e32ea78255f7e49c5c20a55c4fd40543892128afc',
-       i686: 'cee0cffb53f48aef7989f7bb51530e7ae2db90bba35eb13c053373e98aee82d0',
-     x86_64: '59a9bbd1b9e75333b5bd19ae1ca61fee59e9caf5533a49a2f0030d8e2798cf8e'
+    aarch64: '9aa73df2d33c999258b2398c5cc5b16e4def388ee28466c031c750a156a958e3',
+     armv7l: '9aa73df2d33c999258b2398c5cc5b16e4def388ee28466c031c750a156a958e3',
+       i686: 'e50f297ddc684dfdcecaf0e93079d3790925d9d266dfe7f2c39d370d5f36ce43',
+     x86_64: 'd085cca6d2ce2ba21b42049928af6a0f0a7098fe5b63b7f82938a7b7e93e0c43'
   })
 
   depends_on 'arpack_ng' => :library
