@@ -6,6 +6,7 @@ class Ollama < Package
   version '0.40.17'
   license 'MIT'
   compatibility 'x86_64'
+  min_glibc '2.28'
   source_url "https://github.com/ollama/ollama/releases/download/v#{version}/ollama-linux-amd64.tar.zst"
   source_sha256 '1df9d6228bac5a22e420b242708c0d10e5b886db97bab99d446a41760f4e79af'
 
