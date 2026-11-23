@@ -1,0 +1,3 @@
+#!/bin/bash
+saxby -h
+saxby -V
