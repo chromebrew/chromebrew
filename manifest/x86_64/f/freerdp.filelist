@@ -1,4 +1,4 @@
-# Total size: 11041775
+# Total size: 12041449
 /usr/local/bin/freerdp-proxy
 /usr/local/bin/freerdp-shadow-cli
 /usr/local/bin/sdl2-freerdp
@@ -47,6 +47,7 @@
 /usr/local/include/freerdp3/freerdp/channels/video.h
 /usr/local/include/freerdp3/freerdp/channels/wtsvc.h
 /usr/local/include/freerdp3/freerdp/client.h
+/usr/local/include/freerdp3/freerdp/client/aad_helper.h
 /usr/local/include/freerdp3/freerdp/client/ainput.h
 /usr/local/include/freerdp3/freerdp/client/audin.h
 /usr/local/include/freerdp3/freerdp/client/channels.h
@@ -125,10 +126,13 @@
 /usr/local/include/freerdp3/freerdp/log.h
 /usr/local/include/freerdp3/freerdp/message.h
 /usr/local/include/freerdp3/freerdp/metrics.h
+/usr/local/include/freerdp3/freerdp/multitransport.h
 /usr/local/include/freerdp3/freerdp/peer.h
 /usr/local/include/freerdp3/freerdp/pointer.h
 /usr/local/include/freerdp3/freerdp/primary.h
 /usr/local/include/freerdp3/freerdp/primitives.h
+/usr/local/include/freerdp3/freerdp/private/proxy_client.h
+/usr/local/include/freerdp3/freerdp/private/proxy_server.h
 /usr/local/include/freerdp3/freerdp/rail.h
 /usr/local/include/freerdp3/freerdp/redirection.h
 /usr/local/include/freerdp3/freerdp/scancode.h
@@ -173,6 +177,7 @@
 /usr/local/include/freerdp3/freerdp/types.h
 /usr/local/include/freerdp3/freerdp/update.h
 /usr/local/include/freerdp3/freerdp/utils/aad.h
+/usr/local/include/freerdp3/freerdp/utils/channel_pdu_tracker.h
 /usr/local/include/freerdp3/freerdp/utils/cliprdr_utils.h
 /usr/local/include/freerdp3/freerdp/utils/drdynvc.h
 /usr/local/include/freerdp3/freerdp/utils/encoded_types.h
@@ -193,6 +198,7 @@
 /usr/local/include/freerdp3/freerdp/utils/smartcardlogon.h
 /usr/local/include/freerdp3/freerdp/utils/stopwatch.h
 /usr/local/include/freerdp3/freerdp/utils/string.h
+/usr/local/include/freerdp3/freerdp/utils/warnings.h
 /usr/local/include/freerdp3/freerdp/version.h
 /usr/local/include/freerdp3/freerdp/window.h
 /usr/local/include/uwac0/uwac/build-config.h
@@ -201,6 +207,7 @@
 /usr/local/include/uwac0/uwac/uwac-tools.h
 /usr/local/include/uwac0/uwac/uwac.h
 /usr/local/include/uwac0/uwac/version.h
+/usr/local/include/winpr3/winpr/Pathcch.h
 /usr/local/include/winpr3/winpr/asn1.h
 /usr/local/include/winpr3/winpr/assert-api.h
 /usr/local/include/winpr3/winpr/assert.h
@@ -214,6 +221,7 @@
 /usr/local/include/winpr3/winpr/cmdline.h
 /usr/local/include/winpr3/winpr/collections.h
 /usr/local/include/winpr3/winpr/comm.h
+/usr/local/include/winpr3/winpr/config-readers.h
 /usr/local/include/winpr3/winpr/config.h
 /usr/local/include/winpr3/winpr/cred.h
 /usr/local/include/winpr3/winpr/crt.h
@@ -226,6 +234,7 @@
 /usr/local/include/winpr3/winpr/error.h
 /usr/local/include/winpr3/winpr/file.h
 /usr/local/include/winpr3/winpr/handle.h
+/usr/local/include/winpr3/winpr/i18n.h
 /usr/local/include/winpr3/winpr/image.h
 /usr/local/include/winpr3/winpr/ini.h
 /usr/local/include/winpr3/winpr/input.h
@@ -236,6 +245,7 @@
 /usr/local/include/winpr3/winpr/library.h
 /usr/local/include/winpr3/winpr/memory.h
 /usr/local/include/winpr3/winpr/ncrypt.h
+/usr/local/include/winpr3/winpr/ndr.h
 /usr/local/include/winpr3/winpr/nt.h
 /usr/local/include/winpr3/winpr/ntlm.h
 /usr/local/include/winpr3/winpr/pack.h
@@ -311,31 +321,31 @@
 /usr/local/lib64/freerdp3/proxy/libproxy-dyn-channel-dump-plugin.so
 /usr/local/lib64/libfreerdp-client3.so
 /usr/local/lib64/libfreerdp-client3.so.3
-/usr/local/lib64/libfreerdp-client3.so.3.26.0
+/usr/local/lib64/libfreerdp-client3.so.3.33.1
 /usr/local/lib64/libfreerdp-server-proxy3.so
 /usr/local/lib64/libfreerdp-server-proxy3.so.3
-/usr/local/lib64/libfreerdp-server-proxy3.so.3.26.0
+/usr/local/lib64/libfreerdp-server-proxy3.so.3.33.1
 /usr/local/lib64/libfreerdp-server3.so
 /usr/local/lib64/libfreerdp-server3.so.3
-/usr/local/lib64/libfreerdp-server3.so.3.26.0
+/usr/local/lib64/libfreerdp-server3.so.3.33.1
 /usr/local/lib64/libfreerdp-shadow-subsystem3.so
 /usr/local/lib64/libfreerdp-shadow-subsystem3.so.3
-/usr/local/lib64/libfreerdp-shadow-subsystem3.so.3.26.0
+/usr/local/lib64/libfreerdp-shadow-subsystem3.so.3.33.1
 /usr/local/lib64/libfreerdp-shadow3.so
 /usr/local/lib64/libfreerdp-shadow3.so.3
-/usr/local/lib64/libfreerdp-shadow3.so.3.26.0
+/usr/local/lib64/libfreerdp-shadow3.so.3.33.1
 /usr/local/lib64/libfreerdp3.so
 /usr/local/lib64/libfreerdp3.so.3
-/usr/local/lib64/libfreerdp3.so.3.26.0
+/usr/local/lib64/libfreerdp3.so.3.33.1
 /usr/local/lib64/libuwac0.so
 /usr/local/lib64/libuwac0.so.0
 /usr/local/lib64/libuwac0.so.0.2.0
 /usr/local/lib64/libwinpr-tools3.so
 /usr/local/lib64/libwinpr-tools3.so.3
-/usr/local/lib64/libwinpr-tools3.so.3.26.0
+/usr/local/lib64/libwinpr-tools3.so.3.33.1
 /usr/local/lib64/libwinpr3.so
 /usr/local/lib64/libwinpr3.so.3
-/usr/local/lib64/libwinpr3.so.3.26.0
+/usr/local/lib64/libwinpr3.so.3.33.1
 /usr/local/lib64/pkgconfig/freerdp-client3.pc
 /usr/local/lib64/pkgconfig/freerdp-server-proxy3.pc
 /usr/local/lib64/pkgconfig/freerdp-server3.pc
@@ -356,4 +366,5 @@
 /usr/local/share/man/man1/winpr-makecert.1.zst
 /usr/local/share/man/man1/wlfreerdp.1.zst
 /usr/local/share/man/man1/xfreerdp.1.zst
+/usr/local/share/man/man7/freerdp.7.zst
 /usr/local/share/man/man7/wlog.7.zst
