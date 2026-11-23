@@ -1,4 +1,5 @@
-# Total size: 8746161
+# Total size: 9448601
+/usr/local/lib64/python3.15/site-packages/Crypto/Cipher/AEGIS.py
 /usr/local/lib64/python3.15/site-packages/Crypto/Cipher/AES.py
 /usr/local/lib64/python3.15/site-packages/Crypto/Cipher/ARC2.py
 /usr/local/lib64/python3.15/site-packages/Crypto/Cipher/ARC4.py
@@ -15,6 +16,7 @@
 /usr/local/lib64/python3.15/site-packages/Crypto/Cipher/_EKSBlowfish.py
 /usr/local/lib64/python3.15/site-packages/Crypto/Cipher/_Salsa20.abi3.so
 /usr/local/lib64/python3.15/site-packages/Crypto/Cipher/__init__.py
+/usr/local/lib64/python3.15/site-packages/Crypto/Cipher/__pycache__/AEGIS.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/Cipher/__pycache__/AES.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/Cipher/__pycache__/ARC2.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/Cipher/__pycache__/ARC4.cpython-315.pyc
@@ -65,6 +67,8 @@
 /usr/local/lib64/python3.15/site-packages/Crypto/Cipher/_mode_xts.py
 /usr/local/lib64/python3.15/site-packages/Crypto/Cipher/_pkcs1_decode.abi3.so
 /usr/local/lib64/python3.15/site-packages/Crypto/Cipher/_pkcs1_oaep_decode.py
+/usr/local/lib64/python3.15/site-packages/Crypto/Cipher/_raw_aegis.abi3.so
+/usr/local/lib64/python3.15/site-packages/Crypto/Cipher/_raw_aegis_aesni.abi3.so
 /usr/local/lib64/python3.15/site-packages/Crypto/Cipher/_raw_aes.abi3.so
 /usr/local/lib64/python3.15/site-packages/Crypto/Cipher/_raw_aesni.abi3.so
 /usr/local/lib64/python3.15/site-packages/Crypto/Cipher/_raw_arc2.abi3.so
@@ -206,6 +210,7 @@
 /usr/local/lib64/python3.15/site-packages/Crypto/PublicKey/MLDSA.py
 /usr/local/lib64/python3.15/site-packages/Crypto/PublicKey/MLKEM.py
 /usr/local/lib64/python3.15/site-packages/Crypto/PublicKey/RSA.py
+/usr/local/lib64/python3.15/site-packages/Crypto/PublicKey/SLHDSA.py
 /usr/local/lib64/python3.15/site-packages/Crypto/PublicKey/__init__.py
 /usr/local/lib64/python3.15/site-packages/Crypto/PublicKey/__pycache__/DSA.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/PublicKey/__pycache__/ECC.cpython-315.pyc
@@ -214,10 +219,12 @@
 /usr/local/lib64/python3.15/site-packages/Crypto/PublicKey/__pycache__/MLDSA.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/PublicKey/__pycache__/MLKEM.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/PublicKey/__pycache__/RSA.cpython-315.pyc
+/usr/local/lib64/python3.15/site-packages/Crypto/PublicKey/__pycache__/SLHDSA.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/PublicKey/__pycache__/__init__.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/PublicKey/__pycache__/_curve.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/PublicKey/__pycache__/_ec_lib.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/PublicKey/__pycache__/_edwards.cpython-315.pyc
+/usr/local/lib64/python3.15/site-packages/Crypto/PublicKey/__pycache__/_fips205.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/PublicKey/__pycache__/_montgomery.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/PublicKey/__pycache__/_nist_ecc.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/PublicKey/__pycache__/_openssh.cpython-315.pyc
@@ -229,12 +236,15 @@
 /usr/local/lib64/python3.15/site-packages/Crypto/PublicKey/_ec_nat_bmi2_adx.abi3.so
 /usr/local/lib64/python3.15/site-packages/Crypto/PublicKey/_ed25519.abi3.so
 /usr/local/lib64/python3.15/site-packages/Crypto/PublicKey/_edwards.py
+/usr/local/lib64/python3.15/site-packages/Crypto/PublicKey/_fips205.py
 /usr/local/lib64/python3.15/site-packages/Crypto/PublicKey/_mldsa.abi3.so
 /usr/local/lib64/python3.15/site-packages/Crypto/PublicKey/_mlkem.abi3.so
 /usr/local/lib64/python3.15/site-packages/Crypto/PublicKey/_montgomery.py
 /usr/local/lib64/python3.15/site-packages/Crypto/PublicKey/_nist_ecc.py
 /usr/local/lib64/python3.15/site-packages/Crypto/PublicKey/_openssh.py
 /usr/local/lib64/python3.15/site-packages/Crypto/PublicKey/_point.py
+/usr/local/lib64/python3.15/site-packages/Crypto/PublicKey/_slhdsa.abi3.so
+/usr/local/lib64/python3.15/site-packages/Crypto/PublicKey/_slhdsa_shani.abi3.so
 /usr/local/lib64/python3.15/site-packages/Crypto/Random/__init__.py
 /usr/local/lib64/python3.15/site-packages/Crypto/Random/__pycache__/__init__.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/Random/__pycache__/random.cpython-315.pyc
@@ -242,6 +252,7 @@
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/Cipher/__init__.py
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/Cipher/__pycache__/__init__.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/Cipher/__pycache__/common.cpython-315.pyc
+/usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/Cipher/__pycache__/test_AEGIS.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/Cipher/__pycache__/test_AES.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/Cipher/__pycache__/test_ARC2.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/Cipher/__pycache__/test_ARC4.cpython-315.pyc
@@ -270,6 +281,7 @@
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/Cipher/__pycache__/test_pkcs1_oaep.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/Cipher/__pycache__/test_shared_objects.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/Cipher/common.py
+/usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/Cipher/test_AEGIS.py
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/Cipher/test_AES.py
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/Cipher/test_ARC2.py
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/Cipher/test_ARC4.py
@@ -395,6 +407,7 @@
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/__pycache__/test_MLDSA.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/__pycache__/test_MLKEM.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/__pycache__/test_RSA.cpython-315.pyc
+/usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/__pycache__/test_SLHDSA.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/__pycache__/test_import_Curve25519.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/__pycache__/test_import_Curve448.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/__pycache__/test_import_DSA.cpython-315.pyc
@@ -402,6 +415,7 @@
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/__pycache__/test_import_MLDSA.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/__pycache__/test_import_MLKEM.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/__pycache__/test_import_RSA.cpython-315.pyc
+/usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/__pycache__/test_import_SLHDSA.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/__pycache__/test_import_passphrase.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/test_DSA.py
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/test_ECC_Curve25519.py
@@ -415,6 +429,7 @@
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/test_MLDSA.py
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/test_MLKEM.py
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/test_RSA.py
+/usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/test_SLHDSA.py
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/test_import_Curve25519.py
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/test_import_Curve448.py
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/test_import_DSA.py
@@ -422,6 +437,7 @@
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/test_import_MLDSA.py
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/test_import_MLKEM.py
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/test_import_RSA.py
+/usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/test_import_SLHDSA.py
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/PublicKey/test_import_passphrase.py
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/Random/__init__.py
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/Random/__pycache__/__init__.cpython-315.pyc
@@ -434,11 +450,13 @@
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/Signature/__pycache__/test_mldsa.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/Signature/__pycache__/test_pkcs1_15.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/Signature/__pycache__/test_pss.cpython-315.pyc
+/usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/Signature/__pycache__/test_slhdsa.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/Signature/test_dss.py
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/Signature/test_eddsa.py
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/Signature/test_mldsa.py
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/Signature/test_pkcs1_15.py
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/Signature/test_pss.py
+/usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/Signature/test_slhdsa.py
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/Util/__init__.py
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/Util/__pycache__/__init__.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/SelfTest/Util/__pycache__/test_Counter.cpython-315.pyc
@@ -481,10 +499,12 @@
 /usr/local/lib64/python3.15/site-packages/Crypto/Signature/__pycache__/mldsa.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/Signature/__pycache__/pkcs1_15.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/Signature/__pycache__/pss.cpython-315.pyc
+/usr/local/lib64/python3.15/site-packages/Crypto/Signature/__pycache__/slhdsa.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/Signature/eddsa.py
 /usr/local/lib64/python3.15/site-packages/Crypto/Signature/mldsa.py
 /usr/local/lib64/python3.15/site-packages/Crypto/Signature/pkcs1_15.py
 /usr/local/lib64/python3.15/site-packages/Crypto/Signature/pss.py
+/usr/local/lib64/python3.15/site-packages/Crypto/Signature/slhdsa.py
 /usr/local/lib64/python3.15/site-packages/Crypto/Util/Counter.py
 /usr/local/lib64/python3.15/site-packages/Crypto/Util/Padding.py
 /usr/local/lib64/python3.15/site-packages/Crypto/Util/RFC1751.py
@@ -498,6 +518,7 @@
 /usr/local/lib64/python3.15/site-packages/Crypto/Util/__pycache__/_file_system.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/Util/__pycache__/_raw_api.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/Util/__pycache__/_threads.cpython-315.pyc
+/usr/local/lib64/python3.15/site-packages/Crypto/Util/__pycache__/_typing.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/Util/__pycache__/asn1.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/Util/__pycache__/number.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/Util/__pycache__/strxor.cpython-315.pyc
@@ -509,18 +530,19 @@
 /usr/local/lib64/python3.15/site-packages/Crypto/Util/_raw_api.py
 /usr/local/lib64/python3.15/site-packages/Crypto/Util/_strxor.abi3.so
 /usr/local/lib64/python3.15/site-packages/Crypto/Util/_threads.py
+/usr/local/lib64/python3.15/site-packages/Crypto/Util/_typing.py
 /usr/local/lib64/python3.15/site-packages/Crypto/Util/asn1.py
 /usr/local/lib64/python3.15/site-packages/Crypto/Util/number.py
 /usr/local/lib64/python3.15/site-packages/Crypto/Util/strxor.py
 /usr/local/lib64/python3.15/site-packages/Crypto/__init__.py
 /usr/local/lib64/python3.15/site-packages/Crypto/__pycache__/__init__.cpython-315.pyc
 /usr/local/lib64/python3.15/site-packages/Crypto/py.typed
-/usr/local/lib64/python3.15/site-packages/pycryptodome-4.5.0.dist-info/INSTALLER
-/usr/local/lib64/python3.15/site-packages/pycryptodome-4.5.0.dist-info/METADATA
-/usr/local/lib64/python3.15/site-packages/pycryptodome-4.5.0.dist-info/RECORD
-/usr/local/lib64/python3.15/site-packages/pycryptodome-4.5.0.dist-info/REQUESTED
-/usr/local/lib64/python3.15/site-packages/pycryptodome-4.5.0.dist-info/WHEEL
-/usr/local/lib64/python3.15/site-packages/pycryptodome-4.5.0.dist-info/licenses/LICENSE.rst
-/usr/local/lib64/python3.15/site-packages/pycryptodome-4.5.0.dist-info/licenses/src/mldsa-native/LICENSE
-/usr/local/lib64/python3.15/site-packages/pycryptodome-4.5.0.dist-info/licenses/src/mlkem-native/LICENSE
-/usr/local/lib64/python3.15/site-packages/pycryptodome-4.5.0.dist-info/top_level.txt
+/usr/local/lib64/python3.15/site-packages/pycryptodome-4.6.0.dist-info/INSTALLER
+/usr/local/lib64/python3.15/site-packages/pycryptodome-4.6.0.dist-info/METADATA
+/usr/local/lib64/python3.15/site-packages/pycryptodome-4.6.0.dist-info/RECORD
+/usr/local/lib64/python3.15/site-packages/pycryptodome-4.6.0.dist-info/REQUESTED
+/usr/local/lib64/python3.15/site-packages/pycryptodome-4.6.0.dist-info/WHEEL
+/usr/local/lib64/python3.15/site-packages/pycryptodome-4.6.0.dist-info/licenses/LICENSE.rst
+/usr/local/lib64/python3.15/site-packages/pycryptodome-4.6.0.dist-info/licenses/src/mldsa-native/LICENSE
+/usr/local/lib64/python3.15/site-packages/pycryptodome-4.6.0.dist-info/licenses/src/mlkem-native/LICENSE
+/usr/local/lib64/python3.15/site-packages/pycryptodome-4.6.0.dist-info/top_level.txt
