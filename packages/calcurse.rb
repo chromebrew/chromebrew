@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Calcurse < Autotools
   description 'calcurse is a calendar and scheduling application for the command line.'
   homepage 'https://calcurse.org/'
-  version '4.9.0'
+  version '4.9.1'
   license 'BSD-2'
   compatibility 'all'
   source_url "https://calcurse.org/files/calcurse-#{version}.tar.gz"
-  source_sha256 '1e7b549af7518f0ea08bee118032f86d73875f5140980972f1a728d8ad483661'
+  source_sha256 '17621360d80f154aebf082ff52f5b3bfe43386a72e4f2c44e18f45a980b502b6'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bacaa45f901236e9a5377fe90c8c1736af9ff77f33c4ff24b0c0d63971146198',
-     armv7l: 'bacaa45f901236e9a5377fe90c8c1736af9ff77f33c4ff24b0c0d63971146198',
-       i686: '4f75d53c4461d52f0dd030a691992b08300e1cbe6a120fe03eab151ca1a68b75',
-     x86_64: '47216382b58231ddf5bb112b853177cd4ca7d1f9c9e3c691580fbb38159faaab'
+    aarch64: '276c2a66dab4b2f5a3fc7009ca090ffd5f1daff665261b49fe92124b98f71274',
+     armv7l: '276c2a66dab4b2f5a3fc7009ca090ffd5f1daff665261b49fe92124b98f71274',
+       i686: 'f7bea9183d70e31ff25de68c544cea8f34d426f9d3aacabfcd495b2f65c6b195',
+     x86_64: 'f1447e168a5b2fd2762638f4a31567c3d34a5110d3aa7a0a7833c6377380b361'
   })
 
   depends_on 'autoconf_archive' => :build

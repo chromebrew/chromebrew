@@ -3,17 +3,17 @@ require 'package'
 class Scite < Package
   description 'A free source code editing component for Win32, GTK+, and OS X'
   homepage 'https://www.scintilla.org/'
-  version '5.6.6'
+  version '5.6.9'
   license 'HPND and MIT'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://www.scintilla.org/scite#{version.gsub('.', '')}.tgz"
-  source_sha256 'eaf566bfb489328760e2f0d49addbed4a59eeaf5ffea1645710a0f51770a9ac5'
+  source_sha256 '34ceb63e91c3e895f364c3a6afa46fa3d21fc21af40644c23172fdff30b23acc'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '809f5db946784870db3eeeb43c6d2021ffe81a9d5fd7158d12a762e8128cce12',
-     armv7l: '809f5db946784870db3eeeb43c6d2021ffe81a9d5fd7158d12a762e8128cce12',
-     x86_64: 'cabc4d412ac0a8b7f7d6dd8b68bfb76b9d341f892ce12bf4739505d254bcf584'
+    aarch64: 'edf1339562b3474095adaff12325df4bbd7c4dc39c8214d5e229ef99786eb7a4',
+     armv7l: 'edf1339562b3474095adaff12325df4bbd7c4dc39c8214d5e229ef99786eb7a4',
+     x86_64: '1be4a2e08e519481bb1f4ae050385eb98bb32e02aab53de69bdd9fcd7f6f0397'
   })
 
   depends_on 'at_spi2_core' => :library
