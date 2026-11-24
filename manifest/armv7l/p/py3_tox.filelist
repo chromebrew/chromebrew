@@ -1,13 +1,13 @@
-# Total size: 3139541
+# Total size: 3200896
 /usr/local/bin/tox
-/usr/local/lib/python3.15/site-packages/tox-4.67.15.dist-info/INSTALLER
-/usr/local/lib/python3.15/site-packages/tox-4.67.15.dist-info/METADATA
-/usr/local/lib/python3.15/site-packages/tox-4.67.15.dist-info/RECORD
-/usr/local/lib/python3.15/site-packages/tox-4.67.15.dist-info/REQUESTED
-/usr/local/lib/python3.15/site-packages/tox-4.67.15.dist-info/WHEEL
-/usr/local/lib/python3.15/site-packages/tox-4.67.15.dist-info/entry_points.txt
-/usr/local/lib/python3.15/site-packages/tox-4.67.15.dist-info/licenses/LICENSE
-/usr/local/lib/python3.15/site-packages/tox-4.67.15.dist-info/sboms/tox.cdx.json
+/usr/local/lib/python3.15/site-packages/tox-4.67.16.dist-info/INSTALLER
+/usr/local/lib/python3.15/site-packages/tox-4.67.16.dist-info/METADATA
+/usr/local/lib/python3.15/site-packages/tox-4.67.16.dist-info/RECORD
+/usr/local/lib/python3.15/site-packages/tox-4.67.16.dist-info/REQUESTED
+/usr/local/lib/python3.15/site-packages/tox-4.67.16.dist-info/WHEEL
+/usr/local/lib/python3.15/site-packages/tox-4.67.16.dist-info/entry_points.txt
+/usr/local/lib/python3.15/site-packages/tox-4.67.16.dist-info/licenses/LICENSE
+/usr/local/lib/python3.15/site-packages/tox-4.67.16.dist-info/sboms/tox.cdx.json
 /usr/local/lib/python3.15/site-packages/tox/__init__.py
 /usr/local/lib/python3.15/site-packages/tox/__main__.py
 /usr/local/lib/python3.15/site-packages/tox/__pycache__/__init__.cpython-315.pyc
