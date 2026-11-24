@@ -11,10 +11,10 @@ class Zstd < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd8aca7c753c8f4a1663de9904a41d73c8905e1d04dfb90f48e0c9850b3170d2a',
-     armv7l: 'd8aca7c753c8f4a1663de9904a41d73c8905e1d04dfb90f48e0c9850b3170d2a',
-       i686: 'ecb3af46cb98143970f9f59ce1503b6401d762d4f4027aa3d7e40781dad4191d',
-     x86_64: '99908d616f54001466cb447fafe72d5cccde07cbff2ea7c1f505ffeb0d100c30'
+    aarch64: '41f01d4b98e4a6c22382765abf723bf1ba52909f5104ccc8697d5fb7477821ea',
+     armv7l: '41f01d4b98e4a6c22382765abf723bf1ba52909f5104ccc8697d5fb7477821ea',
+       i686: '863b16d8c40413210462900603fa1343d84cf32732a45b55a34bf43eaeebe5ba',
+     x86_64: 'c77dfd3bb27c44a86e38efc341e8cb35f38d7e4da69fe05ce2825257679c169d'
   })
 
   depends_on 'gcc_lib' => :executable
