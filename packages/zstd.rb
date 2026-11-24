@@ -27,12 +27,6 @@ class Zstd < CMake
   conflicts_ok # Conflicts with zstd_static.
   run_tests
 
-  def self.patch
-    # Fix missing man updates as per https://github.com/facebook/zstd/releases/tag/v1.5.7
-    downloader 'https://github.com/facebook/zstd/commit/6af3842118ea5325480b403213b2a9fbed3d3d74.diff', '505a0dc5d6b9a3e6d5eba26a90dfc6b488908bbd8a616229aa4f4a04c357883b'
-    system 'patch -Np1 -i 6af3842118ea5325480b403213b2a9fbed3d3d74.diff'
-  end
-
   cmake_build_relative_dir 'build/cmake'
   cmake_options '-DZSTD_LZ4_SUPPORT=ON \
       -DZSTD_LZMA_SUPPORT=ON \
