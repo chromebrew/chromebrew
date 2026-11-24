@@ -1,4 +1,4 @@
-# Total size: 9295200
+# Total size: 9277385
 /usr/local/bin/pzstd
 /usr/local/bin/unzstd
 /usr/local/bin/zstd
@@ -11,12 +11,15 @@
 /usr/local/include/zstd_errors.h
 /usr/local/lib64/cmake/zstd/zstdConfig.cmake
 /usr/local/lib64/cmake/zstd/zstdConfigVersion.cmake
-/usr/local/lib64/cmake/zstd/zstdTargets-release.cmake
 /usr/local/lib64/cmake/zstd/zstdTargets.cmake
+/usr/local/lib64/cmake/zstd/zstdTargets_shared-release.cmake
+/usr/local/lib64/cmake/zstd/zstdTargets_shared.cmake
+/usr/local/lib64/cmake/zstd/zstdTargets_static-release.cmake
+/usr/local/lib64/cmake/zstd/zstdTargets_static.cmake
 /usr/local/lib64/libzstd.a
 /usr/local/lib64/libzstd.so
 /usr/local/lib64/libzstd.so.1
-/usr/local/lib64/libzstd.so.1.5.7
+/usr/local/lib64/libzstd.so.1.6.0
 /usr/local/lib64/pkgconfig/libzstd.pc
 /usr/local/share/doc/zstd/zstd_manual.html
 /usr/local/share/man/man1/unzstd.1.zst
