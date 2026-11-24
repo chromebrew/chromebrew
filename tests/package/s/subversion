@@ -1,0 +1,3 @@
+#!/bin/bash
+svn -h | head
+svn --version
