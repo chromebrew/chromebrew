@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Geos < CMake
   description 'GEOS (Geometry Engine - Open Source) is a C++ port of the Java Topology Suite (JTS).'
   homepage 'https://libgeos.org/'
-  version '3.15.0'
+  version '3.15.1'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://github.com/libgeos/geos.git'
