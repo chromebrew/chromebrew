@@ -1,4 +1,4 @@
-# Total size: 105875588
+# Total size: 106089855
 /usr/local/bin/create_backup_from_onprem
 /usr/local/bin/oci
 /usr/local/lib/python3.15/site-packages/alloy/__init__.py
@@ -37,15 +37,15 @@
 /usr/local/lib/python3.15/site-packages/interactive/prompt_session.py
 /usr/local/lib/python3.15/site-packages/interactive/supported_resource_types.py
 /usr/local/lib/python3.15/site-packages/interactive/utils.py
-/usr/local/lib/python3.15/site-packages/oci_cli-3.96.3.dist-info/INSTALLER
-/usr/local/lib/python3.15/site-packages/oci_cli-3.96.3.dist-info/LICENSE.txt
-/usr/local/lib/python3.15/site-packages/oci_cli-3.96.3.dist-info/METADATA
-/usr/local/lib/python3.15/site-packages/oci_cli-3.96.3.dist-info/RECORD
-/usr/local/lib/python3.15/site-packages/oci_cli-3.96.3.dist-info/REQUESTED
-/usr/local/lib/python3.15/site-packages/oci_cli-3.96.3.dist-info/THIRD_PARTY_LICENSES.txt
-/usr/local/lib/python3.15/site-packages/oci_cli-3.96.3.dist-info/WHEEL
-/usr/local/lib/python3.15/site-packages/oci_cli-3.96.3.dist-info/entry_points.txt
-/usr/local/lib/python3.15/site-packages/oci_cli-3.96.3.dist-info/top_level.txt
+/usr/local/lib/python3.15/site-packages/oci_cli-3.97.0.dist-info/INSTALLER
+/usr/local/lib/python3.15/site-packages/oci_cli-3.97.0.dist-info/LICENSE.txt
+/usr/local/lib/python3.15/site-packages/oci_cli-3.97.0.dist-info/METADATA
+/usr/local/lib/python3.15/site-packages/oci_cli-3.97.0.dist-info/RECORD
+/usr/local/lib/python3.15/site-packages/oci_cli-3.97.0.dist-info/REQUESTED
+/usr/local/lib/python3.15/site-packages/oci_cli-3.97.0.dist-info/THIRD_PARTY_LICENSES.txt
+/usr/local/lib/python3.15/site-packages/oci_cli-3.97.0.dist-info/WHEEL
+/usr/local/lib/python3.15/site-packages/oci_cli-3.97.0.dist-info/entry_points.txt
+/usr/local/lib/python3.15/site-packages/oci_cli-3.97.0.dist-info/top_level.txt
 /usr/local/lib/python3.15/site-packages/oci_cli/__init__.py
 /usr/local/lib/python3.15/site-packages/oci_cli/__pycache__/__init__.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/oci_cli/__pycache__/cli.cpython-315.pyc
