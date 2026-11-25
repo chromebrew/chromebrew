@@ -1,4 +1,4 @@
-# Total size: 5846706
+# Total size: 6205806
 /usr/local/bin/remmina
 /usr/local/bin/remmina-file-wrapper
 /usr/local/include/remmina/plugin.h
@@ -35,6 +35,7 @@
 /usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-camera-photo-symbolic.svg
 /usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-connect-symbolic.svg
 /usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-disconnect-symbolic.svg
+/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-document-properties-symbolic.svg
 /usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-document-save-symbolic.svg
 /usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-document-send-symbolic.svg
 /usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-duplicate-symbolic.svg
@@ -42,6 +43,8 @@
 /usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-fit-window-symbolic.svg
 /usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-fullscreen-symbolic.svg
 /usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-go-bottom-symbolic.svg
+/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-go-home-symbolic.svg
+/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-insert-object-symbolic.svg
 /usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-keyboard-symbolic.svg
 /usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-multi-monitor-symbolic.svg
 /usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-pan-down-symbolic.svg
