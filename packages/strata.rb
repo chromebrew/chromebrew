@@ -3,12 +3,12 @@ require 'package'
 class Strata < Package
   description 'Strata inference engine, OpenAI/Anthropic API on localhost, optional image input.'
   homepage 'https://github.com/niko1221/strata'
-  version '0.2.18'
+  version '0.2.21'
   license 'MIT'
   compatibility 'x86_64'
   min_glibc '2.33'
   source_url "https://github.com/Niko1221/Strata/releases/download/v#{version}/Strata-#{version}-linux-x86_64.AppImage"
-  source_sha256 '5c43c53025bfc0727aa31aac9880727cd6e2ad2b268d02527e70b1085a0c6553'
+  source_sha256 '62e2b116205e0610b315370cb8b2d13952367e7ec445d9d19b74290368db6384'
 
   depends_on 'sommelier' => :logical
 
