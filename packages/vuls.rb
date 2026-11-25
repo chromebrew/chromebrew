@@ -3,7 +3,7 @@ require 'package'
 class Vuls < Package
   description 'Agent-less vulnerability scanner'
   homepage 'https://vuls.io/'
-  version '0.28.0'
+  version ARCH.eql?('x86_64') ? '0.43.0' : '0.29.0'
   license 'GPL-3.0'
   compatibility 'all'
   source_url({
@@ -13,24 +13,31 @@ class Vuls < Package
      x86_64: "https://github.com/future-architect/vuls/releases/download/v#{version}/future-vuls_#{version}_linux_amd64.tar.gz"
   })
   source_sha256({
-    aarch64: '2ff4b3f0e63170ab6905c5305590f1e4ee9b50a65db381eaddcf36a86dc96f8a',
-     armv7l: '2ff4b3f0e63170ab6905c5305590f1e4ee9b50a65db381eaddcf36a86dc96f8a',
-       i686: '7db11d9be1e9957b40ff2312bcfdc9f85b226bb8835df2c7844645b0a870f687',
-     x86_64: '3a824cf59c88bc21aac7b7af55a460bdead603ed7fbd077a4907a28346d3f594'
+    aarch64: '373dfbee23d20041eca55f635f4599c917ffaf0c863130c975b9ad94a545c618',
+     armv7l: '373dfbee23d20041eca55f635f4599c917ffaf0c863130c975b9ad94a545c618',
+       i686: '56f5823029ed304d95c226f39542e9ded0f757603cb56289756d8536fe91d250',
+     x86_64: 'aa3dbf675fe521e6c92c88c32c814f559d45fc510bf686fd8f7854421d82175e'
   })
-
   binary_compression 'tar.zst'
+
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vuls/0.29.0_armv7l/vuls-0.29.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vuls/0.29.0_armv7l/vuls-0.29.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vuls/0.29.0_i686/vuls-0.29.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vuls/0.43.0_x86_64/vuls-0.43.0-chromeos-x86_64.tar.zst'
+  })
   binary_sha256({
-    aarch64: '7168b0a1047b35c68100a30becd5c9573731e4a20ed7d9d9a5b95e7d76c063a1',
-     armv7l: '7168b0a1047b35c68100a30becd5c9573731e4a20ed7d9d9a5b95e7d76c063a1',
-       i686: 'f82652a73e25c17d866e2e94e016be05911a90458cf849b1d9e3be4aaf04e7ad',
-     x86_64: '28d880185524a4925c4bc743e39c41a2f45752ca406eb741a3fd8e2a16afd4b2'
+    aarch64: '1e6545e3aeb2ac7121b94a217e5335095cb7b110e802682b02729ca99afaf4e6',
+     armv7l: '1e6545e3aeb2ac7121b94a217e5335095cb7b110e802682b02729ca99afaf4e6',
+       i686: '6d79426edd9a6a153760abe48d365d9bb53199c24825d88a8635deacfa3a88b9',
+     x86_64: 'aa3dbf675fe521e6c92c88c32c814f559d45fc510bf686fd8f7854421d82175e'
   })
 
+  depends_on 'glibc' => :executable
+  depends_on 'glibc_lib' => :executable
   depends_on 'go' => :build
   depends_on 'revive' => :build
-  depends_on 'glibc' # R
-  depends_on 'sqlite' # R
+  depends_on 'sqlite' => :library
 
   no_shrink
   print_source_bashrc
