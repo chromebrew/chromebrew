@@ -1,11 +1,11 @@
-# Total size: 3492376
+# Total size: 3639189
 /usr/local/include/libcryptsetup.h
 /usr/local/lib/cryptsetup/libcryptsetup-token-ssh.la
 /usr/local/lib/cryptsetup/libcryptsetup-token-ssh.so
 /usr/local/lib/libcryptsetup.la
 /usr/local/lib/libcryptsetup.so
 /usr/local/lib/libcryptsetup.so.12
-/usr/local/lib/libcryptsetup.so.12.11.0
+/usr/local/lib/libcryptsetup.so.12.12.0
 /usr/local/lib/pkgconfig/libcryptsetup.pc
 /usr/local/sbin/cryptsetup
 /usr/local/sbin/cryptsetup-ssh
@@ -22,6 +22,7 @@
 /usr/local/share/locale/ja/LC_MESSAGES/cryptsetup.mo
 /usr/local/share/locale/ka/LC_MESSAGES/cryptsetup.mo
 /usr/local/share/locale/ko/LC_MESSAGES/cryptsetup.mo
+/usr/local/share/locale/lv/LC_MESSAGES/cryptsetup.mo
 /usr/local/share/locale/nl/LC_MESSAGES/cryptsetup.mo
 /usr/local/share/locale/pl/LC_MESSAGES/cryptsetup.mo
 /usr/local/share/locale/pt_BR/LC_MESSAGES/cryptsetup.mo
