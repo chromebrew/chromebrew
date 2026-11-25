@@ -11,10 +11,10 @@ class Ripgrep < RUST
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5b7a8062fd9cb4bedd1b52394b4f7423d4f0a82915d77cba7029c805ae8452ab',
-     armv7l: '5b7a8062fd9cb4bedd1b52394b4f7423d4f0a82915d77cba7029c805ae8452ab',
-       i686: 'b1ff66a6f8b683e8e63640efb6b6a48af0791677c2fa6dea61e8ac2a45950bb8',
-     x86_64: '5039e808a0542c47dca18dad9000e095616e2943031f4ad495c4a897d7d3b4b7'
+    aarch64: '7de186cd444e4be38f566b95e499e87f2b1f6f70606a563a47b5f3978d9ec975',
+     armv7l: '7de186cd444e4be38f566b95e499e87f2b1f6f70606a563a47b5f3978d9ec975',
+       i686: 'a16bca9e3be63c3bf63e5d4db10814d6b2b166f13c4d69f48943521376609be9',
+     x86_64: '7aefeea5fb67cd77e65aa8a854f9b2f58a70dd48482fe3259dcebf95244cd768'
   })
 
   depends_on 'gcc_lib' => :executable
