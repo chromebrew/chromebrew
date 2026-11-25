@@ -11,9 +11,9 @@ class Libgedit_gfls < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cbfd5480ddfe5a70acca31e753450265ef11a5f8692cd35f5a20084559fcf283',
-     armv7l: 'cbfd5480ddfe5a70acca31e753450265ef11a5f8692cd35f5a20084559fcf283',
-     x86_64: 'e2b65cbc96900225217612aba66863e746de6cca35a054d6f1b33f471bb82fdd'
+    aarch64: '4f773d02462ebcde69f00aa2251818cf826760e1526b5b79b30876cb0681e0f6',
+     armv7l: '4f773d02462ebcde69f00aa2251818cf826760e1526b5b79b30876cb0681e0f6',
+     x86_64: '3d515324355ab17f3ae4a6d6005f94a88d5575a35b2add45d0b76960134888bf'
   })
 
   depends_on 'glib' => :library
