@@ -11,9 +11,9 @@ class Gtk4 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2b57a389f8a3e4ca690e74558ca27d442993472395898ecca0ad3a13d02fd8c2',
-     armv7l: '2b57a389f8a3e4ca690e74558ca27d442993472395898ecca0ad3a13d02fd8c2',
-     x86_64: '49e4b740816fd2a93eb12d7b6aa0ad7da69b36acb88ede0f11051eaf58328ead'
+    aarch64: '1dfaea3da5ea9a13cd5aef72779e274c1cf2b3b6485cb5f3d74ea45e729a00d3',
+     armv7l: '1dfaea3da5ea9a13cd5aef72779e274c1cf2b3b6485cb5f3d74ea45e729a00d3',
+     x86_64: 'e8796d203b6b6abed55f004cceb27a23827704ca9c16a1dada7120be42112887'
   })
 
   depends_on 'adwaita_fonts' => :logical
