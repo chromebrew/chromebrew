@@ -11,10 +11,10 @@ class Openexr < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9a4bb82dd68fc8876cecfb623f72ecf5ab18b825938dda2815bc392a4f8b2e43',
-     armv7l: '9a4bb82dd68fc8876cecfb623f72ecf5ab18b825938dda2815bc392a4f8b2e43',
-       i686: 'c84b412281aa30e183a9666ac6e48e3b47ec3cf26bdd9b5ec55ef60207005dba',
-     x86_64: '51813f086728c880085ed62cfe086786f76d2ececaebaf31c79fe5e151975b94'
+    aarch64: '22e244044f26a16b7cf2b7aca5ecfd96773c9a6305f51440dcc334d3786526b7',
+     armv7l: '22e244044f26a16b7cf2b7aca5ecfd96773c9a6305f51440dcc334d3786526b7',
+       i686: '854e82707b852ca10332b27a81d1aa88c38ca200fbb74e884c48ce3aadbe9f21',
+     x86_64: 'b1cdec04246a5446a186ddbbbe2066031d23b4e91ffff121b81f4b5c2c362f99'
   })
 
   depends_on 'gcc_lib' => :library
