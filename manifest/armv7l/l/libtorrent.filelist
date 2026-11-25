@@ -1,4 +1,4 @@
-# Total size: 7694634
+# Total size: 7814890
 /usr/local/include/libtorrent/add_torrent_params.hpp
 /usr/local/include/libtorrent/address.hpp
 /usr/local/include/libtorrent/alert.hpp
@@ -22,6 +22,7 @@
 /usr/local/include/libtorrent/aux_/bt_peer_connection.hpp
 /usr/local/include/libtorrent/aux_/buffer.hpp
 /usr/local/include/libtorrent/aux_/byteswap.hpp
+/usr/local/include/libtorrent/aux_/ceil_div.hpp
 /usr/local/include/libtorrent/aux_/chained_buffer.hpp
 /usr/local/include/libtorrent/aux_/choker.hpp
 /usr/local/include/libtorrent/aux_/container_wrapper.hpp
@@ -46,6 +47,7 @@
 /usr/local/include/libtorrent/aux_/disk_job.hpp
 /usr/local/include/libtorrent/aux_/disk_job_fence.hpp
 /usr/local/include/libtorrent/aux_/disk_job_pool.hpp
+/usr/local/include/libtorrent/aux_/disk_tick_thread.hpp
 /usr/local/include/libtorrent/aux_/drive_info.hpp
 /usr/local/include/libtorrent/aux_/ed25519.hpp
 /usr/local/include/libtorrent/aux_/enum_net.hpp
@@ -300,6 +302,6 @@
 /usr/local/lib/cmake/LibtorrentRasterbar/LibtorrentRasterbarTargets.cmake
 /usr/local/lib/libtorrent-rasterbar.so
 /usr/local/lib/libtorrent-rasterbar.so.2.1
-/usr/local/lib/libtorrent-rasterbar.so.2.1.2
+/usr/local/lib/libtorrent-rasterbar.so.2.1.3
 /usr/local/lib/pkgconfig/libtorrent-rasterbar.pc
 /usr/local/share/cmake/Modules/FindLibtorrentRasterbar.cmake
