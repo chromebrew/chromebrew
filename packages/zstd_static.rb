@@ -3,17 +3,17 @@ require 'package'
 class Zstd_static < Package
   description 'Zstandard - Fast real-time compression algorithm'
   homepage 'https://facebook.github.io/zstd/'
-  version '1.5.7-1'
+  version '1.6.0'
   license 'BSD or GPL-2'
   compatibility 'all'
   source_url 'SKIP'
   binary_compression 'tar.xz'
 
   binary_sha256({
-    aarch64: '3656581e4d8ab2cd9fd49d5b280139092bf6ec44970715142dc7a44af320f4b2',
-     armv7l: '3656581e4d8ab2cd9fd49d5b280139092bf6ec44970715142dc7a44af320f4b2',
-       i686: '9caa7aa0ce6b7b71165cc0b16d82ad83b9e609311225b381b574cd92acf18ae9',
-     x86_64: '5f108a937cc27bb1ff05e7bc05bdb9e3eceb91204d76880f96103acdaa29a884'
+    aarch64: 'd11fe315039d12f11f07397d728c3eb88305af01719ad1dc1e29346903038cbe',
+     armv7l: 'd11fe315039d12f11f07397d728c3eb88305af01719ad1dc1e29346903038cbe',
+       i686: '1725585709fa73d1cc6f6d7aa2ae2a44f4055e724ab14ad758868ca2bb672020',
+     x86_64: 'd181505a190898bcc4ba5da0e2f81519c4882e522f35954e7695ccc9a210c711'
   })
 
   conflicts_ok
@@ -40,27 +40,27 @@ class Zstd_static < Package
 
       export BUILD_SCRIPT_DATE="$(date -r "$0" -Iseconds)"
 
-      PV_VERSION=1.8.5
-      SOCAT_VERSION=1.8.0.0
-      NCURSES_VERSION=6.4
-      READLINE_VERSION=8.2
+      PV_VERSION=1.12.7
+      SOCAT_VERSION=1.8.1.3
+      NCURSES_VERSION=6.6
+      READLINE_VERSION=8.3
       OPENSSL_VERSION=1.1.1w
-      LIBPCAP_VERSION=1.10.4
-      ZLIB_VERSION=1.3.1
-      TCPDUMP_VERSION=4.99.4
-      RSYNC_VERSION=3.3.0
-      XZ_VERSION=5.8.1
-      LZ4_VERSION=v1.10.0
-      ZSTD_VERSION=v1.5.7
-      XXHASH_VERSION=v0.8.2
+      LIBPCAP_VERSION=1.11.0
+      ZLIB_VERSION=1.4
+      TCPDUMP_VERSION=4.99.7
+      RSYNC_VERSION=3.5.2
+      XZ_VERSION=5.8.4
+      LZ4_VERSION=v1.11.1
+      ZSTD_VERSION=vCREW_ZSTD_VERSION
+      XXHASH_VERSION=v0.8.4
       DROPBEAR_VERSION=2022.83
-      GPGERROR_VERSION=1.48
-      GCRYPT_VERSION=1.10.2
-      GLIB_VERSION=2.80.0
-      CARES_VERSION=1.28.1
+      GPGERROR_VERSION=1.61
+      GCRYPT_VERSION=1.12.4
+      GLIB_VERSION=2.90.1
+      CARES_VERSION=1.34.9
       PCRE_VERSION=8.45
-      WIRESHARK_VERSION=4.0.11
-      LIBSODIUM_VERSION=1.0.19-RELEASE
+      WIRESHARK_VERSION=4.6.9
+      LIBSODIUM_VERSION=1.0.20-RELEASE
       MINISIGN_VERSION=v0.11-ryanc.4
       SHA2SUM_VERSION=v0.3.1
       MULTICALL_VERSION=v0.0.6
@@ -590,7 +590,7 @@ class Zstd_static < Package
 
       function build_xz() {
           # Download/extract
-          extract xz https://tukaani.org/xz tar.xz $XZ_VERSION
+          extract xz https://github.com/tukaani-project/xz/releases/download/v$XZ_VERSION/ tar.xz $XZ_VERSION
 
           # Configure
           ./configure \
@@ -621,7 +621,7 @@ class Zstd_static < Package
 
       function build_xzdec() {
           # Download/extract
-          extract xz https://tukaani.org/xz tar.xz $XZ_VERSION
+          extract xz https://github.com/tukaani-project/xz/releases/download/v$XZ_VERSION/ tar.xz $XZ_VERSION
 
           # Configure for barebones xzdec
           ./configure \
@@ -1529,6 +1529,7 @@ class Zstd_static < Package
       main "$@"
       # vim:sw=4:ts=4:et:
     BUILDER_EOF
+    system "sed -i 's/CREW_ZSTD_VERSION/#{version}/g' crew-static-builder.sh"
     Kernel.system "bash ./crew-static-builder.sh #{@cross}"
   end
 
