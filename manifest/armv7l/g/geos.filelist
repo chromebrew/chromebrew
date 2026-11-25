@@ -1,4 +1,4 @@
-# Total size: 6821020
+# Total size: 6822895
 /usr/local/bin/geos-config
 /usr/local/bin/geosop
 /usr/local/include/geos.h
@@ -556,8 +556,8 @@
 /usr/local/lib/cmake/GEOS/geos-targets-release.cmake
 /usr/local/lib/cmake/GEOS/geos-targets.cmake
 /usr/local/lib/libgeos.so
-/usr/local/lib/libgeos.so.3.15.0
+/usr/local/lib/libgeos.so.3.15.1
 /usr/local/lib/libgeos_c.so
 /usr/local/lib/libgeos_c.so.1
-/usr/local/lib/libgeos_c.so.1.21.0
+/usr/local/lib/libgeos_c.so.1.21.2
 /usr/local/lib/pkgconfig/geos.pc
