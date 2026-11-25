@@ -11,10 +11,10 @@ class Geos < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0a1ef15f80382b1fc219070c113befedf489adc754fc0961d3a2faf959d5e14a',
-     armv7l: '0a1ef15f80382b1fc219070c113befedf489adc754fc0961d3a2faf959d5e14a',
-       i686: '65c5e063057d6d16fe4598710a8479d7d2c880d431ee75aecbebd6d6aae1a223',
-     x86_64: 'f64cae983257535e7303d6de18c18e1a826063a125b1c22d5c693179b93050d6'
+    aarch64: 'a73f15ff9c63a0cd55051ef716a820c29107961ce97794c7797265efc2e791b0',
+     armv7l: 'a73f15ff9c63a0cd55051ef716a820c29107961ce97794c7797265efc2e791b0',
+       i686: 'a6e832645f0d644d89d3fa856f5fbb901cb70437e46d65f3f7c93affa262b117',
+     x86_64: 'a5f56ccbd6cd8bcc9ad1d7ca1335f23138a1c3b728a101fb709cea99a0e72de9'
   })
 
   depends_on 'gcc_lib' => :library
