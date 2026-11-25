@@ -3,7 +3,7 @@ require 'buildsystems/rust'
 class Ripgrep < RUST
   description 'ripgrep recursively searches directories for a regex pattern'
   homepage 'https://github.com/BurntSushi/ripgrep'
-  version '15.2.0'
+  version '16.0.0'
   license 'Apache-2.0, BSD-2, Boost-1.0 and MIT or Unlicense'
   compatibility 'all'
   source_url 'https://github.com/BurntSushi/ripgrep.git'
