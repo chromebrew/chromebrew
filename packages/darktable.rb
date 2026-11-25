@@ -11,7 +11,7 @@ class Darktable < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    x86_64: '5f1993b2c86aa8e2abf27be832411e123749dd4d48249b63c2951c4703b15cf9'
+     x86_64: '7acfaac4e697479c1ead4377dc3e713be68da94409062c0b2c8d9e3948d20702'
   })
 
   depends_on 'at_spi2_core' => :library
