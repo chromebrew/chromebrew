@@ -17,6 +17,7 @@ class Ruby_jaro_winkler < RUBY
   })
 
   depends_on 'glibc' => :library
+  depends_on 'glibc_lib' => :library
   depends_on 'ruby' => :library
 
   conflicts_ok
