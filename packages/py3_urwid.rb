@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_urwid < Pip
   description 'Urwid is a full-featured console user interface library.'
   homepage 'http://urwid.org/'
-  version "5.2.0-#{CREW_PY_VER}"
+  version "5.2.1-#{CREW_PY_VER}"
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'SKIP'
