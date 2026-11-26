@@ -6,17 +6,17 @@ require 'buildsystems/autotools'
 class Tevent < Autotools
   description 'Event system based on the talloc memory management library'
   homepage 'https://tevent.samba.org/'
-  version "0.17.2-#{CREW_PY_VER}"
+  version "0.17.3-#{CREW_PY_VER}"
   license 'LGPL'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://samba.org/ftp/tevent/tevent-#{version.split('-').first}.tar.gz"
-  source_sha256 'e53b1ac288d017d66dde0471cd429a806168ecf07179d7f019572d7a7e05f0d6'
+  source_sha256 '8eaa1b1b8d3c36ce8ddeae6d79c9a05360dcba5930115112c078415bcbe0d16d'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f067e62f5b9e37cf57838678b9d73828918e33e22fc231a376ab1256d20da397',
-     armv7l: 'f067e62f5b9e37cf57838678b9d73828918e33e22fc231a376ab1256d20da397',
-     x86_64: '9178285cbb6088533569aa4c042700e2f1e2e50174a849c077fdeefa12b923e5'
+    aarch64: 'cdf747e11b86182b14464bfda0cbf16e1b9cafd101491851cd5320268358f0dc',
+     armv7l: 'cdf747e11b86182b14464bfda0cbf16e1b9cafd101491851cd5320268358f0dc',
+     x86_64: '7810b05e46424a8e84c2cbfe12a6c167d94765288e957bb7995a56f090fb9114'
   })
 
   depends_on 'cmocka' => :build
