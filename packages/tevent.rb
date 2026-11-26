@@ -14,9 +14,9 @@ class Tevent < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f067e62f5b9e37cf57838678b9d73828918e33e22fc231a376ab1256d20da397',
-     armv7l: 'f067e62f5b9e37cf57838678b9d73828918e33e22fc231a376ab1256d20da397',
-     x86_64: '9178285cbb6088533569aa4c042700e2f1e2e50174a849c077fdeefa12b923e5'
+    aarch64: 'cdf747e11b86182b14464bfda0cbf16e1b9cafd101491851cd5320268358f0dc',
+     armv7l: 'cdf747e11b86182b14464bfda0cbf16e1b9cafd101491851cd5320268358f0dc',
+     x86_64: '7810b05e46424a8e84c2cbfe12a6c167d94765288e957bb7995a56f090fb9114'
   })
 
   depends_on 'cmocka' => :build
