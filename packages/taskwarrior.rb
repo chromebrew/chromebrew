@@ -11,10 +11,10 @@ class Taskwarrior < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4f103b7ff395d96b75a9fbdacf02f0d20154b180cb038fd601263e94da9a7820',
-     armv7l: '4f103b7ff395d96b75a9fbdacf02f0d20154b180cb038fd601263e94da9a7820',
-       i686: '8a50aa6fb78b6192e3d763243291a02f183b4e23dd8d54f6d49e3800eabaa293',
-     x86_64: '2f375a00d0d5d089e4ecafa0a363bf9a12acb1854bbd4eb889762c5c333400d8'
+    aarch64: 'a09e0b00b3d5c8f1cfe732c598b2b2fa568f2cad90d3b3044541b0f610689c87',
+     armv7l: 'a09e0b00b3d5c8f1cfe732c598b2b2fa568f2cad90d3b3044541b0f610689c87',
+       i686: '88acc23e9f160efbf2f23a18d058e1857700d784bf75be323bde5ea37129476d',
+     x86_64: '89c5c0700fc95ba3dd94ea58f7f626cdcd7c3a3647dca2611b163435c4dec442'
   })
 
   depends_on 'gcc_lib' => :executable
