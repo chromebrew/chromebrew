@@ -1,4 +1,4 @@
-# Total size: 10980513
+# Total size: 10975843
 /usr/local/bin/cygdb
 /usr/local/bin/cython
 /usr/local/bin/cythonize
@@ -439,13 +439,13 @@
 /usr/local/lib/python3.15/site-packages/Cython/__pycache__/__init__.cpython-315.pyc
 /usr/local/lib/python3.15/site-packages/Cython/py.typed
 /usr/local/lib/python3.15/site-packages/__pycache__/cython.cpython-315.pyc
-/usr/local/lib/python3.15/site-packages/cython-3.3.1.dist-info/INSTALLER
-/usr/local/lib/python3.15/site-packages/cython-3.3.1.dist-info/METADATA
-/usr/local/lib/python3.15/site-packages/cython-3.3.1.dist-info/RECORD
-/usr/local/lib/python3.15/site-packages/cython-3.3.1.dist-info/REQUESTED
-/usr/local/lib/python3.15/site-packages/cython-3.3.1.dist-info/WHEEL
-/usr/local/lib/python3.15/site-packages/cython-3.3.1.dist-info/entry_points.txt
-/usr/local/lib/python3.15/site-packages/cython-3.3.1.dist-info/top_level.txt
+/usr/local/lib/python3.15/site-packages/cython-3.3.2.dist-info/INSTALLER
+/usr/local/lib/python3.15/site-packages/cython-3.3.2.dist-info/METADATA
+/usr/local/lib/python3.15/site-packages/cython-3.3.2.dist-info/RECORD
+/usr/local/lib/python3.15/site-packages/cython-3.3.2.dist-info/REQUESTED
+/usr/local/lib/python3.15/site-packages/cython-3.3.2.dist-info/WHEEL
+/usr/local/lib/python3.15/site-packages/cython-3.3.2.dist-info/entry_points.txt
+/usr/local/lib/python3.15/site-packages/cython-3.3.2.dist-info/top_level.txt
 /usr/local/lib/python3.15/site-packages/cython.py
 /usr/local/lib/python3.15/site-packages/pyximport/__init__.py
 /usr/local/lib/python3.15/site-packages/pyximport/__pycache__/__init__.cpython-315.pyc
