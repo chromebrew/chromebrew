@@ -1,8 +1,9 @@
-# Total size: 347762
+# Total size: 489231
 /usr/local/bin/sngrep
 /usr/local/etc/sngreprc
 /usr/local/share/doc/sngrep/COPYING
 /usr/local/share/doc/sngrep/ChangeLog
 /usr/local/share/doc/sngrep/README
 /usr/local/share/doc/sngrep/TODO
+/usr/local/share/man/man5/sngreprc.5.zst
 /usr/local/share/man/man8/sngrep.8.zst
