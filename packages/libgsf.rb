@@ -11,9 +11,9 @@ class Libgsf < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '55f342daffb78b59a4abd77c8d5e1c4e789fe628aa96d25216ee03659783b76a',
-     armv7l: '55f342daffb78b59a4abd77c8d5e1c4e789fe628aa96d25216ee03659783b76a',
-     x86_64: '4b3617fb8d2582abc1a334f94b778512169b4cb9cd57dcd1ccbcaa2abbd7e303'
+    aarch64: 'ec6374c0bbcd502bf57811dd06f1a13b45d3e4bbf772d743a7dc92d51dbe73b2',
+     armv7l: 'ec6374c0bbcd502bf57811dd06f1a13b45d3e4bbf772d743a7dc92d51dbe73b2',
+     x86_64: '9d840268bbabacab1289c466d5f41108cd9c98f9545a4e362eed47194e2e5226'
   })
 
   depends_on 'bzip2' => :library
