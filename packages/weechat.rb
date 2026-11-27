@@ -11,10 +11,10 @@ class Weechat < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ac410ce7702930d9aaecbef277c4ace90520bcf489acb1ce23a13d2bee6b8e49',
-     armv7l: 'ac410ce7702930d9aaecbef277c4ace90520bcf489acb1ce23a13d2bee6b8e49',
-       i686: '80e900978523646e69da6f580279647cbe952a3cc54e4f8f6849f132279c18d5',
-     x86_64: '874341ee23b2faa1fa17ed8cc2e1a065a8041ff1cf4fec1a1fb411f5e2b6340b'
+    aarch64: '98a826627a2c0c0b938e34c79f56a4070f53d0c2b4eb995bb3d0b6240b3bcb11',
+     armv7l: '98a826627a2c0c0b938e34c79f56a4070f53d0c2b4eb995bb3d0b6240b3bcb11',
+       i686: '0012933610f2b80b08502c0a4d7efba5e5e83a184fd138b80e50192b283bf3d6',
+     x86_64: '51a7ad5a4a3bc846138a0d518dd1dfea41736e445aaf76028b74cedb6f6db628'
   })
 
   depends_on 'aspell' => :library
