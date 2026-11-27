@@ -2360,6 +2360,11 @@ url: https://sourceforge.net/projects/freeimage/files/Source%20Distribution/
 activity: none
 ---
 kind: url
+name: freellmapi
+url: https://github.com/tashfeenahmed/freellmapi/releases
+activity: high
+---
+kind: url
 name: freerdp
 url: https://github.com/FreeRDP/FreeRDP/releases
 activity: medium
