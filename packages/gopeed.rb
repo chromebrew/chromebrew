@@ -3,7 +3,7 @@ require 'package'
 class Gopeed < Package
   description 'A modern download manager built with Golang and Flutter.'
   homepage 'https://gopeed.com/'
-  version '1.9.3'
+  version '2.0.0'
   license 'GPL-3.0'
   compatibility 'all'
   source_url 'https://github.com/GopeedLab/gopeed.git'
