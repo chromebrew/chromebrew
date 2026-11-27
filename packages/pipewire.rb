@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Pipewire < Meson
   description 'PipeWire is a project that aims to greatly improve handling of audio and video under Linux.'
   homepage 'https://pipewire.org'
-  version '1.6.11'
+  version '1.6.12'
   compatibility 'aarch64 armv7l x86_64'
   license 'LGPL-2.1+'
   source_url 'https://gitlab.freedesktop.org/pipewire/pipewire.git'
@@ -11,9 +11,9 @@ class Pipewire < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cc8c879bdaa9d00b4fce50143c9136888739a60fe0fa2207dbbc9114b8c4791e',
-     armv7l: 'cc8c879bdaa9d00b4fce50143c9136888739a60fe0fa2207dbbc9114b8c4791e',
-     x86_64: '6ef3b27904e85871bbc7a6f539a599556961dcbad7e775dd0a58081941dc9507'
+    aarch64: 'ea1b5732bfd3de29d203832fa61260bd5484c648ec3a03fba77e960a4895e4f4',
+     armv7l: 'ea1b5732bfd3de29d203832fa61260bd5484c648ec3a03fba77e960a4895e4f4',
+     x86_64: '4be6f0667d2154bcf49af4cb5f77733ba4a85f24e03c15b9235227301db1f1e8'
   })
 
   depends_on 'alsa_lib' => :library
