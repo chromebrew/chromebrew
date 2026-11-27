@@ -11,10 +11,10 @@ class Screen < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b4e9708194cb19cad6082e6d2e34e9d378638ba6aa379d35924f8834742fbf6d',
-     armv7l: 'b4e9708194cb19cad6082e6d2e34e9d378638ba6aa379d35924f8834742fbf6d',
-       i686: '7742eae113ef5f0991c0a6792c12a0f8c4a307407e4ef4def4ddd1d085053e62',
-     x86_64: '661ab943c92c456b3427e8e2bf484b19a46d6d9283ac54f4f63713017f91f643'
+    aarch64: 'f31e0d21ca776cdb865ae21f36d69c3cec5894797a7a905ef4c3199ab9c16431',
+     armv7l: 'f31e0d21ca776cdb865ae21f36d69c3cec5894797a7a905ef4c3199ab9c16431',
+       i686: 'acc9e2dd071cb67a74c3304e65d2f81c8cd32e193e16a08c8eb9c30dd3e4c9b7',
+     x86_64: 'a62c63829fcf5c0861573ad3bbbab5ae38c9b7fe4796c8ea7df4e1fa539f192b'
   })
 
   depends_on 'glibc' => :executable
