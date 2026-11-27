@@ -1,4 +1,4 @@
-# Total size: 652716020
+# Total size: 661609063
 /usr/local/bin/joplin
 /usr/local/share/icons/hicolor/1024x1024/apps/joplin.png
 /usr/local/share/icons/hicolor/128x128/apps/joplin.png
@@ -157,6 +157,7 @@
 /usr/local/share/joplin/resources/build/images/SyncTarget_JoplinCloud.svg
 /usr/local/share/joplin/resources/build/images/SyncTarget_OneDrive.svg
 /usr/local/share/joplin/resources/build/images/chrome-logo.svg
+/usr/local/share/joplin/resources/build/images/cloud-offline-outline.svg
 /usr/local/share/joplin/resources/build/images/firefox-logo.svg
 /usr/local/share/joplin/resources/build/pdf.worker.min.js
 /usr/local/share/joplin/resources/build/tesseract.js-core/LICENSE

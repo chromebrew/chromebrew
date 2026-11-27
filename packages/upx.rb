@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Upx < CMake
   description 'Extendable, high-performance executable packer for several executable formats'
   homepage 'https://github.com/upx/upx'
-  version '5.3.0'
+  version '5.3.1'
   license 'custom GPL2'
   compatibility 'all'
   source_url 'https://github.com/upx/upx.git'
@@ -14,10 +14,10 @@ class Upx < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c1f33da39953136656faf2437a7964c3acd131aad4868662e72cec4bc8d51a9a',
-     armv7l: 'c1f33da39953136656faf2437a7964c3acd131aad4868662e72cec4bc8d51a9a',
-       i686: '2d328d9f8bde39fe4c61de42cd5b5ccdb13e00a9540d73a34f55f35beb9060c1',
-     x86_64: 'e75f8636971c3d95880d53a4b4607d1b38f75f4ccfac03264a9bc19064c23484'
+    aarch64: 'ac1e27216df3f1110a58521d98622625dede0d10b364fe573d695ff4e8c918b8',
+     armv7l: 'ac1e27216df3f1110a58521d98622625dede0d10b364fe573d695ff4e8c918b8',
+       i686: '052e5f7dbac3b15d4e27358048c7206a5f52b97dcbc6e790f6152711d567cd14',
+     x86_64: 'f19c46f9d8088f972406a0f5b592db3f29eedda8d65e34d9ed2f33712d9c294e'
   })
 
   depends_on 'gcc_lib' => :executable
