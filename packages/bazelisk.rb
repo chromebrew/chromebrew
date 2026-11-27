@@ -3,7 +3,7 @@ require 'package'
 class Bazelisk < Package
   description 'A user-friendly launcher for Bazel.'
   homepage 'https://github.com/bazelbuild/bazelisk'
-  version '1.30.0'
+  version '1.31.0'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/bazelbuild/bazelisk.git'
@@ -11,10 +11,10 @@ class Bazelisk < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4e2a02528dde5da4b17457b7aae242ab9471d0a7bf9e757b28409e84d7acb652',
-     armv7l: '4e2a02528dde5da4b17457b7aae242ab9471d0a7bf9e757b28409e84d7acb652',
-       i686: 'e3ef38e305f74c1d6a51ac6c001afe266d8a2c79aad18e000238f6c9edcdd22a',
-     x86_64: 'e3580b41faeab3b90233622f9f535fccc3301c8ead25dbfa3eb7c258fcf7f7d4'
+    aarch64: '9ba33cda8d85b0323780ad450e8038020c7092009c4bb49fbd8251acb8b59dab',
+     armv7l: '9ba33cda8d85b0323780ad450e8038020c7092009c4bb49fbd8251acb8b59dab',
+       i686: '90fcaee8cc5c2e469abf364349ce92cd575f0e392412db5e276364f26a4c81ab',
+     x86_64: '851c042549b2b6b5b788eb7319e871f0d870e7734b70a2aaa6bfc0a40c79c30d'
   })
 
   depends_on 'glibc' => :executable
