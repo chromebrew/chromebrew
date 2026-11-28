@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class F2fs_tools < Autotools
   description 'Tools for Flash-Friendly File System F2FS'
   homepage 'https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git/about/'
-  version '1.16.0'
+  version '1.17.0'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git'
