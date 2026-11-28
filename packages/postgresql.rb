@@ -3,11 +3,11 @@ require 'buildsystems/meson'
 class Postgresql < Meson
   description 'PostgreSQL is a powerful, open source object-relational database system.'
   homepage 'https://www.postgresql.org'
-  version "18.6-#{CREW_ICU_VER}"
+  version "19.0-#{CREW_ICU_VER}"
   license 'PostgreSQL and GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://ftp.postgresql.org/pub/source/v#{version.split('-').first}/postgresql-#{version.split('-').first}.tar.bz2"
-  source_sha256 '555610c24d53e4316da5b7d3fc25c279d96856d5e0e23ee308c328c5fa881d9f'
+  source_sha256 'a89fd70efbad6a08c7dbed8d4872e3af30170d9e5ca9dc7906523be95b4e692d'
   binary_compression 'tar.zst'
 
   binary_sha256({
