@@ -3,11 +3,11 @@ require 'package'
 class Nedit < Package
   description 'A fast, compact Motif/X11 plain text editor, for most popular Unix systems.'
   homepage 'https://sourceforge.net/projects/nedit/'
-  version '5.8'
+  version '5.8.1'
   license 'GPL-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://downloads.sourceforge.net/project/nedit/nedit-source/nedit-#{version}-src.tar.gz"
-  source_sha256 '5851aa7252dad952084529173640232562dec4a7c440209f196d53d4a5a8074d'
+  source_sha256 '17d4e3833c7066bea6be3ace5b1563d799a9eb48d8630c46d8bcefbaed49d74f'
   binary_compression 'tar.zst'
 
   binary_sha256({
