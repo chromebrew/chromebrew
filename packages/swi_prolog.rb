@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Swi_prolog < CMake
   description 'SWI-Prolog offers a comprehensive free Prolog environment.'
   homepage 'https://www.swi-prolog.org'
-  version '10.1.5'
+  version '11.1.0'
   license 'BSD-2'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/SWI-Prolog/swipl-devel.git'
