@@ -3,11 +3,11 @@ require 'package'
 class Freellmapi < Package
   description 'Aggregate free tiers from dozens of LLM providers'
   homepage 'https://freellmapi.co/'
-  version '0.16.47'
+  version '0.16.51'
   license 'MIT'
   compatibility 'x86_64'
   source_url "https://github.com/tashfeenahmed/freellmapi/releases/download/v#{version}/FreeLLMAPI-#{version}.AppImage"
-  source_sha256 '8f0b5b57acf855ba1f3ea59acab47a177d4fd3f3228841665c27f4802fe6dded'
+  source_sha256 '5e43b98caf1888d9381e143dfb00c8e6eabcae856e35a003b21e7ed819523bf9'
 
   depends_on 'gtk3' => :logical
 
