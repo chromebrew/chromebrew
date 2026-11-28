@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Shadow < Autotools
   description 'Shadow password file utilities'
   homepage 'https://github.com/shadow-maint/shadow'
-  version '4.20.3'
+  version '4.20.4'
   license 'BSD and GPL-2'
   compatibility 'all'
   source_url 'https://github.com/shadow-maint/shadow.git'
