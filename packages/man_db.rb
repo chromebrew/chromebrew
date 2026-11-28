@@ -3,11 +3,11 @@ require 'package'
 class Man_db < Package
   description 'mandb is used to initialize or manually update index database caches that are usually maintained by man.'
   homepage 'https://man-db.nongnu.org/'
-  version '2.13.1-2'
+  version '2.13.3'
   license 'GPL-3'
   compatibility 'all'
   source_url "https://download.savannah.gnu.org/releases/man-db/man-db-#{version.split('-').first}.tar.xz"
-  source_sha256 '8afebb6f7eb6bb8542929458841f5c7e6f240e30c86358c1fbcefbea076c87d9'
+  source_sha256 '7c10ac705433c740af91264fc29eee471090ead63a408541ab9736284a8c9deb'
   binary_compression 'tar.zst'
 
   binary_sha256({
