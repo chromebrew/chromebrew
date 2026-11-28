@@ -1,4 +1,4 @@
-# Total size: 409501
+# Total size: 437598
 /usr/local/bin/ytnef
 /usr/local/bin/ytnefprint
 /usr/local/bin/ytnefprocess
@@ -14,3 +14,6 @@
 /usr/local/lib64/libytnef.so.0
 /usr/local/lib64/libytnef.so.0.0.0
 /usr/local/lib64/pkgconfig/libytnef.pc
+/usr/local/share/man/man1/ytnef.1.zst
+/usr/local/share/man/man1/ytnefprint.1.zst
+/usr/local/share/man/man1/ytnefprocess.1.zst
