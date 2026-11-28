@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libmbedtls < CMake
   description 'An open source, portable, easy to use, readable and flexible SSL library'
   homepage 'https://www.trustedfirmware.org/projects/mbed-tls/'
-  version '4.2.0'
+  version '4.3.0'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/ARMmbed/mbedtls.git'
