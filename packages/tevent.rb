@@ -6,11 +6,11 @@ require 'buildsystems/autotools'
 class Tevent < Autotools
   description 'Event system based on the talloc memory management library'
   homepage 'https://tevent.samba.org/'
-  version "0.17.3-#{CREW_PY_VER}"
+  version "0.17.4-#{CREW_PY_VER}"
   license 'LGPL'
   compatibility 'aarch64 armv7l x86_64'
   source_url "https://samba.org/ftp/tevent/tevent-#{version.split('-').first}.tar.gz"
-  source_sha256 '8eaa1b1b8d3c36ce8ddeae6d79c9a05360dcba5930115112c078415bcbe0d16d'
+  source_sha256 'ffe5eff04c26fba4f710942635a4e520f9000c96cf1ad0c7cab16a516d93c852'
   binary_compression 'tar.zst'
 
   binary_sha256({
